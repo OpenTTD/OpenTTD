@@ -1,6 +1,6 @@
 ##name Italian
 ##ownname Italian (IT)
-##isocode it
+##isocode it_IT
 ##plural 0
 
 ##id 0x0000
@@ -233,7 +233,7 @@ STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFON
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Piantaggio di Gomma
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Falda Acquifera
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Cisterna d'Acqua
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Segheria
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Falegnameria
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Foresta di Cotone Candito
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fabbrica di Caramelle
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Fattoria delle Batterie
@@ -305,21 +305,21 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}Opzioni 
 
 STR_0150_SOMEONE                                                :qualcuno{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Mappa del mondo
-STR_0152_TOWN_DIRECTORY                                         :Elenco Città
+STR_0152_TOWN_DIRECTORY                                         :Elenco città
 STR_0153_SUBSIDIES                                              :Sussidi
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafico profitto operativo
 STR_0155_INCOME_GRAPH                                           :Grafico degli incassi
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Grafico merce consegnata
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafico prestazioni
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafico storico prestazioni
 STR_0158_COMPANY_VALUE_GRAPH                                    :Grafico valore società
 STR_0159_CARGO_PAYMENT_RATES                                    :Grafico % pagamento merce
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Classifica società
 STR_PERFORMANCE_DETAIL_MENU                                     :Dettagli prestazionali
 ############ range for menu	ends
 
-STR_015B_OPENTTD                                                :{WHITE}OpenTTD
+STR_015B_OPENTTD                                                :{WHITE}Informazioni su OpenTTD
 STR_015C_SAVE_GAME                                              :Salva partita
 STR_015D_LOAD_GAME                                              :Carica partita
 STR_015E_QUIT_GAME                                              :Abbandona partita
@@ -369,23 +369,23 @@ STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Salva pa
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra elenco delle stazioni delle società
 STR_0174_DISPLAY_MAP                                            :{BLACK}Mostra mappa
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Mostra mappa, elenco Città
-STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostra elenco Città
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostra elenco città
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Mostra info finanziarie delle società
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Mostra info generali sulle società
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Mostra grafici
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Mostra Classifica della società
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Mostra classifica della società
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra elenco dei treni delle società
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra elenco dei veicoli stradali delle società
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra elenco delle navi delle società
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostra lista degli aerei delle società
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Avvicina visuale
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Allontana visuale
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Costruisci percorsi ferroviari
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Costruisci ferrovie
 STR_0182_BUILD_ROADS                                            :{BLACK}Costruisci strade
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Costruisci moli
-STR_0184_BUILD_AIRPORTS                                         :{BLACK}Costruisci aereoporti
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Costruisci aeroporti
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Pianta alberi, posiziona cartelli ecc...
-STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Varie
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informazioni area terreno
 STR_0187_OPTIONS                                                :{BLACK}Opzioni
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
@@ -406,7 +406,7 @@ STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Mostra i
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Mostra percorsi di viaggio sulla mappa
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Mostra vegetazione sulla mappa
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Mostra proprietari dei terreni sulla mappa
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Visualizza nomi delle Città sulla mappa (on/off)
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Visualizza nomi delle città sulla mappa (on/off)
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Profitto quest'anno: {CURRENCY} (anno scorso: {CURRENCY})
 
 ############ range for service numbers starts
@@ -414,18 +414,18 @@ STR_AGE                                                         :{COMMA} ann{P o
 STR_AGE_RED                                                     :{RED}{COMMA} ann{P o i} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Veicolo Stradale
+STR_019C_ROAD_VEHICLE                                           :Veicolo stradale
 STR_019D_AIRCRAFT                                               :Aereo
 STR_019E_SHIP                                                   :Nave
 STR_019F_TRAIN                                                  :Treno
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} stà diventando vecchio
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} Stà diventando molto vecchio
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} sta diventando vecchio
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} sta diventando molto vecchio
 STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} è troppo vecchio e necessita di essere rimpiazzato urgentemente
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Info sull'area di terreno
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Costo per ripulirlo: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Costo per ripulirlo: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
-STR_01A7_OWNER                                                  :{BLACK}Prioprietario: {LTBLUE}{STRING}
+STR_01A7_OWNER                                                  :{BLACK}Proprietario: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autorità locale: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Nessuno
 STR_01AA_NAME                                                   :{BLACK}Nome
@@ -472,7 +472,7 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Merci ac
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
 STR_01D3_SOUND_MUSIC                                            :Suoni/musica
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Mostra finestra Suoni/musica
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Mostra finestra suoni/musica
 STR_01D5_ALL                                                    :{TINYFONT}Tutte
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Vecchio Stile
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Nuovo Stile
@@ -519,11 +519,11 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Ultimi messaggi/nuovi rapporti
 STR_0201_MESSAGE_SETTINGS                                       :Impostazioni messaggi
 STR_MESSAGE_HISTORY_MENU                                        :Cronologia messaggi
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostra ultimo messaggio/rapporto, mostra Impostazione messaggi
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostra ultimo messaggio/rapporto, mostra impostazione messaggi
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Impostazione messaggi
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipi di messaggio:-
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo primo veicolo a stazioni del giocatore
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo primo veicolo a stazioni della concorrenza
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni del giocatore
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni della concorrenza
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Incidenti / disastri
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informazioni sulle società
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Cambiamenti economici
@@ -547,22 +547,22 @@ STR_0218_MOGUL                                                  :Mogul
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Magnate del secolo
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
-STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} raggiunge lo stato '{STRING}'!
-STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} di {COMPANY} raggiunge lo stato '{STRING}'!
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} raggiunge lo status di '{STRING}'!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} di {COMPANY} raggiunge lo status di '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Crea Scenario
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Editor Scenario
-STR_0223_LAND_GENERATION                                        :{WHITE}Genera paesaggio
+STR_0223_LAND_GENERATION                                        :{WHITE}Genera Terreno
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
-STR_0226_RANDOM_LAND                                            :{BLACK}Terreno Casuale
+STR_0226_RANDOM_LAND                                            :{BLACK}Terreno casuale
 STR_0227_RESET_LAND                                             :{BLACK}Resetta Terreno
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Aumenta ampiezza del terreno da abbassare/alzare
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Decrementa ampiezza del terreno da abbassare/alzare
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genera territorio a caso
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Resetta paesaggio
-STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetta paesaggio
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetta Paesaggio
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Sei sicuro di voler resettare il paesaggio?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generazione paesaggio
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generazione città
@@ -573,7 +573,7 @@ STR_0234_NEW_TOWN                                               :{BLACK}Nuova Ci
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Costruisci nuova città
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Non puoi costruire una città qui...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...troppo vicino al bordo della mappa
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...troppo vicino a un'altra città
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...troppo vicino ad un'altra città
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...sito inadatto
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...troppe città
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Non puoi costruire nessuna città
@@ -585,7 +585,7 @@ STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Costruis
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generazione Industrie
 STR_0240_COAL_MINE                                              :{BLACK}Miniera di Carbone
 STR_0241_POWER_STATION                                          :{BLACK}Centrale Elettrica
-STR_0242_SAWMILL                                                :{BLACK}Falegnameria
+STR_0242_SAWMILL                                                :{BLACK}Segheria
 STR_0243_FOREST                                                 :{BLACK}Foresta
 STR_0244_OIL_REFINERY                                           :{BLACK}Raffineria
 STR_0245_OIL_RIG                                                :{BLACK}Piattaforma Petrolifera
@@ -597,11 +597,11 @@ STR_024A_OIL_WELLS                                              :{BLACK}Pozzi pe
 STR_024B_BANK                                                   :{BLACK}Banca
 STR_024C_PAPER_MILL                                             :{BLACK}Cartiera
 STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Azienda Alimentare
-STR_024E_PRINTING_WORKS                                         :{BLACK}Casa Editrice
+STR_024E_PRINTING_WORKS                                         :{BLACK}Tipografia
 STR_024F_GOLD_MINE                                              :{BLACK}Miniera d'Oro
-STR_0250_LUMBER_MILL                                            :{BLACK}Segheria
-STR_0251_FRUIT_PLANTATION                                       :{BLACK}Piantaggione di Frutta
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Piantaggione di Gomma
+STR_0250_LUMBER_MILL                                            :{BLACK}Falegnameria
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}Piantagione di Frutta
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}Piantagione di Gomma
 STR_0253_WATER_SUPPLY                                           :{BLACK}Falda Acquifera
 STR_0254_WATER_TOWER                                            :{BLACK}Cisterna d'Acqua
 STR_0255_DIAMOND_MINE                                           :{BLACK}Miniera di Diamanti
@@ -619,7 +619,7 @@ STR_0260_TOFFEE_QUARRY                                          :{BLACK}Estratto
 STR_0261_SUGAR_MINE                                             :{BLACK}Miniera di Zucchero
 STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Costruisci Miniera di Carbone
 STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Costruisci Centrale Elettrica
-STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Costruisci Falegnameria
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Costruisci Segheria
 STR_0265_PLANT_FOREST                                           :{BLACK}Pianta Foresta
 STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Costruisci Raffineria
 STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Costruisci Piattaforma Petrolifera (può essere costruita soltanto vicino al bordo della mappa)
@@ -631,19 +631,19 @@ STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Costruis
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Costruisci Banca (può essere costruita solo in città con una popolazione maggiori di 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Costruisci Cartiera
 STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Costruisci Azienda Alimentare
-STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Costruisci Casa Editrice
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Costruisci Tipografia
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Costruisci Miniera d'Oro
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Costruisci Banca (può essere costruita solo nelle città)
-STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Costruisci Segheria (per tagliare la foresta pluviale e produrre legna)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Pianta Piantaggione di Frutta
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Pianta Piantaggione di Gomma
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Costruisci Falegnameria (per tagliare la foresta pluviale e produrre legna)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Pianta Piantagione di Frutta
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Pianta Piantagione di Gomma
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Costruisci Falda Acquifera
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Costruisci Cisterna d'Acqua (può essere costruita solo nelle città)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Costruisci Miniera di Diamanti
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Costruisci Miniera di Rame Grezzo
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Costruisci Foresta di Cotone Candito
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Costruisci Fabbrica di Caramelle
-STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Costruisci Fattoria delle batterie
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Costruisci Fattoria delle Batterie
 STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Costruisci Pozzi di Cola
 STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Costruisci Negozio di Giocattoli
 STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Costruisci Fabbrica di Giocattoli
@@ -655,19 +655,19 @@ STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Costruis
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Non puoi costruire {STRING} qui...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...devi costruire prima una città
 STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...ammessa solo una per città
-STR_0288_PLANT_TREES                                            :{BLACK}Pianta Alberi
+STR_0288_PLANT_TREES                                            :{BLACK}Pianta alberi
 STR_0289_PLACE_SIGN                                             :{BLACK}Posiziona cartello
 STR_028A_RANDOM_TREES                                           :{BLACK}Alberi Casuali
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Pianta alberi casualmente nel paesaggio
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Piazza terreno roccioso nel paesaggio
-STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Piazza Faro
-STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Piazza Trasmettitore
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Piazza faro
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Piazza trasmettitore
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definisce area desertica.{}Clicca premendo CTRL per rimuoverla
 STR_CREATE_LAKE                                                 :{BLACK}Definisce area d'acqua.{}Si espande se definita a livello del mare
 STR_0290_DELETE                                                 :{BLACK}Elimina
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Elimina questa città completamente
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Elimina completamente questa città
 STR_0292_SAVE_SCENARIO                                          :Salva scenario
-STR_0293_LOAD_SCENARIO                                          :CArica scenario
+STR_0293_LOAD_SCENARIO                                          :Carica scenario
 STR_0294_QUIT_EDITOR                                            :Esci dall'editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Esci
@@ -680,7 +680,7 @@ STR_029C_QUIT_EDITOR                                            :{WHITE}Esci dal
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...può essere costruita solo in città con una popolazione di almeno 1200
 STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Sposta la data d'inizio indietro di un'anno
 STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Sposta la data d'inizio avanti di un'anno
-STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...gli estremi del ponte devono toccare entrambi la terra
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...gli estremi del ponte devono toccare entrambi il terreno
 STR_02A1_SMALL                                                  :{BLACK}Piccola
 STR_02A2_MEDIUM                                                 :{BLACK}Media
 STR_02A3_LARGE                                                  :{BLACK}Grande
@@ -693,7 +693,7 @@ STR_OFF                                                         :No
 STR_SUMMARY                                                     :Sommario
 STR_FULL                                                        :Completo
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Elenco Città
+STR_02BB_TOWN_DIRECTORY                                         :Elenco città
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Nomi veicoli
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Predefiniti
@@ -703,10 +703,10 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selezion
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salva  nomi personalizzati dei veicoli
 
 ############ range for menu	starts
-STR_02C3_GAME_OPTIONS                                           :Opzioni
-STR_02C4_GAME_OPTIONS                                           :Opzioni di gioco
-STR_02C5_DIFFICULTY_SETTINGS                                    :Scelta difficoltà
-STR_02C6_DIFFICULTY_SETTINGS                                    :Scelta difficoltà
+STR_02C3_GAME_OPTIONS                                           :Opzioni gioco
+STR_02C4_GAME_OPTIONS                                           :Opzioni gioco
+STR_02C5_DIFFICULTY_SETTINGS                                    :Impostazioni difficoltà
+STR_02C6_DIFFICULTY_SETTINGS                                    :Impostazioni difficoltà
 STR_02C7_CONFIG_PATCHES                                         :Configura patch
 STR_02C8_CONFIG_PATCHES                                         :Configura patch
 STR_NEWGRF_SETTINGS                                             :Impostazioni Newgrf
@@ -735,19 +735,19 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nomi s
 STR_02D5_LAND_BLOCK_INFO                                        :Informazioni sull'area
 STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Linea di comando
-STR_02D7_SCREENSHOT_CTRL_S                                      :ScreenShot (Ctrl-S)
-STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :ScreenShot Gigante (Ctrl-G)
+STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Screenshot Gigante (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Info su 'OpenTTD'
 ############ range ends	here
 
-STR_02DB_OFF                                                    :{BLACK}No
-STR_02DA_ON                                                     :{BLACK}Si
+STR_02DB_OFF                                                    :{BLACK}Off
+STR_02DA_ON                                                     :{BLACK}On
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Mostra sussidi
 STR_02DD_SUBSIDIES                                              :Sussidi
 STR_02DE_MAP_OF_WORLD                                           :Mappa del mondo
 STR_EXTRA_VIEW_PORT                                             :Mini visuale extra
 STR_SIGN_LIST                                                   :Lista cartelli
-STR_02DF_TOWN_DIRECTORY                                         :Elenco Città
+STR_02DF_TOWN_DIRECTORY                                         :Elenco città
 STR_TOWN_POPULATION                                             :{BLACK}Popolazione mondiale: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Mini visuale {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copia nella mini visuale
@@ -766,7 +766,7 @@ STR_02E7                                                        :{BLACK}{SKIP}{S
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Seleziona lato della strada sul quale devono guidare i veicoli stradali
 STR_02E9_DRIVE_ON_LEFT                                          :Guida a sinistra
 STR_02EA_DRIVE_ON_RIGHT                                         :Guida a destra
-STR_02EB_TOWN_NAMES                                             :{BLACK}Nomi Città
+STR_02EB_TOWN_NAMES                                             :{BLACK}Nomi città
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Seleziona il tipo di stile per i nomi delle città
 
@@ -777,7 +777,7 @@ STR_02F7_OFF                                                    :No
 STR_02F8_EVERY_3_MONTHS                                         :Ogni 3 mesi
 STR_02F9_EVERY_6_MONTHS                                         :Ogni 6 mesi
 STR_02FA_EVERY_12_MONTHS                                        :Ogni 12 mesi
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}Inizia nuovo gioco
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Inizia un nuovo gioco
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Carica un gioco salvato
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Crea uno scenario personalizzato
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Seleziona giocatore singolo
@@ -807,7 +807,7 @@ STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...può e
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...può essere costruito solo in aree desertiche
 STR_0319_PAUSED                                                 :{YELLOW}* *  IN PAUSA  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot salvato correttamente in '{STRING}'
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot salvato con successo come '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot non riuscito!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Compra terreno per usi futuri
@@ -1139,22 +1139,22 @@ STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Disabili
 STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Abilita tutti
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Costruisci Miniera di Carbone
-STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Posiziona Foresta
+STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Pianta Foresta
 STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Costruisci Piattaforma Petrolifera
 STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Fonda Fattoria
 STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Costruisci Miniera di Rame
 STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Costruisci Pozzo Petrolifero
 STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Costruisci Miniera d'Oro
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Costruisci Miniera di Diamanti
-STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Costruisci Miniera d'Argento
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Costruisci Miniera di Ferro
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Fonda Piantagione di Frutta
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Fonda Rubber Plantation
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Fonda Water Supply
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Pianta Cotton Candy Forest
-STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Fonda Battery Farm
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Fonda Piantagione di Gomma
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Fonda Sorgente di Acqua
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Pianta Foresta di Cotton Candy
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Fonda Fabbrica di Batterie
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Pozzi di Cola
-STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Fonda Plastic Fountains
-STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Costruisci Bubble Generator
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Fonda Fontane di Plastica
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Costruisci Generatore di Bolle
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fonda Toffee Quarry
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Costruisci Raffineria di Zucchero
 
@@ -1412,21 +1412,21 @@ STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Già al l
 STR_1004_TOO_HIGH                                               :{WHITE}Troppo alto
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo di binari non adatti
 STR_1007_ALREADY_BUILT                                          :{WHITE}...già costruito
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rimuovere binari prima
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Costruzioni ferroviarie
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Costruzione monorotaia
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Costruzioni MagLev
-STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Seleziona ponte ferroviario
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rimuovere i binari prima
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Costruzione Ferrovie
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Costruzione Monorotaia
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Costruzione MagLev
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Seleziona Ponte Ferroviario
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Non puoi costruire deposito qui...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Non puoi costruire stazione qui...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Non puoi piazzare segnali qui..
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Non puoi costruire i binari qui...
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Non puoi rimuovere binari da qui
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Non puoi rimuovere i binari da qui
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Non puoi rimuovere segnali da qui...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientamento Deposito
-STR_1015_RAILROAD_CONSTRUCTION                                  :Costruzioni ferroviarie
+STR_1015_RAILROAD_CONSTRUCTION                                  :Costruzione ferrovie
 STR_1016_MONORAIL_CONSTRUCTION                                  :Costruzione monorotaia
-STR_1017_MAGLEV_CONSTRUCTION                                    :Costruzioni MagLev
+STR_1017_MAGLEV_CONSTRUCTION                                    :Costruzione maglev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Costruisci binari
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Costruisci deposito treni (per costruzione e manutenzione)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Costruisci stazione ferroviaria
@@ -1449,7 +1449,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Binario ferrovi
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreno inclinato nella direzione errata
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Devi rimuovere la strada prima
-STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Costruzioni Stradali
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Costruzione Strade
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Seleziona ponte stradale
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Non puoi costruire strada da qui...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Non puoi rimuovere strada da qui...
@@ -1457,7 +1457,7 @@ STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientam
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Non puoi costruire deposito stradale qui...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Non puoi costruire fermata bus...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Non puoi costruire stazione di carico...
-STR_180A_ROAD_CONSTRUCTION                                      :Costruzioni stradali
+STR_180A_ROAD_CONSTRUCTION                                      :Costruzione strade
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Costruisci sezione stradale
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Costruisci deposito veicoli stradali (per costruzione e manutenzione)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Costruisci fermata bus
@@ -1479,11 +1479,11 @@ STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
-STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}E' necessario demolire l'edificio prima
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}E' necessario demolire prima l'edificio
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Popolazione: {ORANGE}{COMMA}{BLACK}  Case: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Rinomina città
-STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Non puoi rinominare città...
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Non puoi rinominare la città...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}L'autorità locale di {TOWN} non ti autorizza a farlo
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Elenco città - clicca sul nome per centrare la visuale sulla città
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centra la visuale sulla città
@@ -1509,7 +1509,7 @@ STR_201E_STADIUM                                                :Stadio
 STR_201F_OLD_HOUSES                                             :Case antiche
 STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Autorità locale
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Mostra informazioni sull'autorità locale
-STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} autorità locale
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Autorità locale di {TOWN}
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Valutazione servizi di trasporto delle società:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Sussidi
@@ -1548,7 +1548,7 @@ STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Piccola campagn
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Campagna pubblicitaria media
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Grande campagna pubblicitaria
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Finanzia ricostruzione delle strade locali
-STR_204A_BUILD_STATUE_OF_COMPANY                                :Costruisci statua del propietario della società
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Costruisci statua del proprietario della società
 STR_204B_FUND_NEW_BUILDINGS                                     :Finanzia nuove costruzioni
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Compra l'esclusiva sui trasporti
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Corrompi l'autorità locale
@@ -1558,7 +1558,7 @@ STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Finanzia la ricostruzione della rete stradale cittadina. Causa un cosiderabile disagio al traffico stradale per 6 mesi.{}  Costo: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Costruisci una statua in onore della tua società.{} Costo: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finanzia la costruzione di nuove strutture commerciali nella città.{}  Costo: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compra 1 anno di esclusiva sui trasporti nella città. Compra 1 anno di esclusiva sui diritti di trasporto in città. L'autorità cittadina autorizzerà passeggeri e merci a usare solo le tue stazioni.{} Costo: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Compra un anno di esclusiva sui trasporti nella città. Compra 1 anno di esclusiva sui diritti di trasporto in città. L'autorità cittadina autorizzerà passeggeri e merci a usare solo le tue stazioni.{} Costo: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Corrompi l'autorità locale per incrementare la tua valutazione con il rischio di una severa multa se scoperto.{}  Costo: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffico nel caos a {TOWN}!{}{}La ricostruzione stradale finanziata da {COMPANY} porterà 6 mesi di disagio agli automobilisti!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -1607,14 +1607,14 @@ STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Troppe f
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Troppe stazioni merci
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Troppo vicino ad un'altra stazione/Area di carico
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
-STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Devi demolire stazione ferroviaria prima
-STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Troppo vicino ad un altro aereoporto
-STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Devi demolire aereoporto prima
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Devi demolire prima la stazione ferroviaria
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Troppo vicino ad un altro aeroporto
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Devi demolire prima l'aeroporto
 
 STR_3030_RENAME_STATION_LOADING                                 :Rinomina stazione/area di carico
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Non puoi rinominare stazione...
 STR_3032_RATINGS                                                :{BLACK}Valutazione
-STR_3033_ACCEPTS                                                :{BLACK}Accettati
+STR_3033_ACCEPTS                                                :{BLACK}Accetta
 STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Valutazione del servizio trasporti locale
 
 ############ range for rating starts
@@ -1635,9 +1635,9 @@ STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} adesso accetta {STRING} e {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientamento fermata
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orient. Stazione Camion
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Devi demolire stazione bus prima
-STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Devi demolire stazione camion prima
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stazioni
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Devi demolire prima la stazione bus
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Devi demolire prima la stazione camion
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stazion{P e i}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nulla -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...sito inadatto
@@ -1651,7 +1651,7 @@ STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Selezion
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centra visuale sulla stazione
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Mostra valutazione servizio
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Cambia il nome della stazione
-STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Mostra la lista della merce accettata
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Mostra la lista delle merci accettate
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nomi stazioni - clicca sul nome per centrare la visuale sulla stazione
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Seleziona dimensione/tipo di aeroporto
 STR_3059_SMALL                                                  :{BLACK}Piccolo
@@ -1678,7 +1678,7 @@ STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stazi
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stazioni non uniformi disabilitate
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientamento deposito navale
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientamento Deposito Navale
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...deve essere costruito sull'acqua
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Non puoi costruire deposito navale qui...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Seleziona orientamento del deposito navale
@@ -1693,14 +1693,14 @@ STR_4001_LOAD_GAME                                              :{WHITE}Carica p
 STR_4002_SAVE                                                   :{BLACK}Salva
 STR_4003_DELETE                                                 :{BLACK}Elimina
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes liberi
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte liberi
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Impossibile leggere dal disco
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Salvataggio fallito
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Impossibile eliminare il file
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Caricamento fallito
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Elenco unità disco, cartelle e file save-game
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Nome correntemente scelto per il salvataggio
-STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Elimina il file selezionato
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Elimina il gioco salvato selezionato
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}salva il gioco corrente usando il nome selezionato
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selezione il tipo di gioco
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Seleziona scenario (verde), Partita pre-impostata (blu),Scenario casuale
@@ -1711,12 +1711,12 @@ STR_4800_IN_THE_WAY                                             :{WHITE}{STRING}
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Miniera di Carbone
 STR_4803_POWER_STATION                                          :Centrale Elettrica
-STR_4804_SAWMILL                                                :Falegnameria
+STR_4804_SAWMILL                                                :Segheria
 STR_4805_FOREST                                                 :Foresta
 STR_4806_OIL_REFINERY                                           :Raffineria
 STR_4807_OIL_RIG                                                :Piattaforma Petrolifera
 STR_4808_FACTORY                                                :Fabbrica
-STR_4809_PRINTING_WORKS                                         :Casa Editrica
+STR_4809_PRINTING_WORKS                                         :Tipografia
 STR_480A_STEEL_MILL                                             :Acciaieria
 STR_480B_FARM                                                   :Fattoria
 STR_480C_COPPER_ORE_MINE                                        :Miniera di Rame Grezzo
@@ -1728,13 +1728,13 @@ STR_4811_GOLD_MINE                                              :Miniera d'Oro
 STR_4812_BANK                                                   :Banca
 STR_4813_DIAMOND_MINE                                           :Miniera di Diamanti
 STR_4814_IRON_ORE_MINE                                          :Miniera di Ferro Grezzo
-STR_4815_FRUIT_PLANTATION                                       :Piantaggio di Frutta
-STR_4816_RUBBER_PLANTATION                                      :Piantaggio di Gomma
+STR_4815_FRUIT_PLANTATION                                       :Piantagione di Frutta
+STR_4816_RUBBER_PLANTATION                                      :Piantagione di Gomma
 STR_4817_WATER_SUPPLY                                           :Falda Acquifera
 STR_4818_WATER_TOWER                                            :Cisterna d'Acqua
 STR_4819_FACTORY                                                :Fabbrica
 STR_481A_FARM                                                   :Fattoria
-STR_481B_LUMBER_MILL                                            :Segheria
+STR_481B_LUMBER_MILL                                            :Falegnameria
 STR_481C_COTTON_CANDY_FOREST                                    :Foresta Cotone Candito
 STR_481D_CANDY_FACTORY                                          :Fabbrica Caramelle
 STR_481E_BATTERY_FARM                                           :Fattoria delle Batterie
@@ -1764,7 +1764,7 @@ STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...la fo
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} annuncia imminente chiusura!!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Per problemi di rifornimenti {INDUSTRY} annuncia imminente chiusura!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}La mancanza di alberi vicini costringe {INDUSTRY} ad imminente chiusura!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} produzione incrementata!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} incrementa la produzione!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nuovo giacimento di carbone trovato a {INDUSTRY}!{}Produzione destinata a duplicare!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nuovo giacimento di petrolio trovato a {INDUSTRY}!{}Produzione destinata a duplicare!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Metodi di coltivazione migliorati a {INDUSTRY} produzione destinata a duplicare!
@@ -1884,15 +1884,15 @@ STR_6804_CUSTOM                                                 :{BLACK}Personal
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Numero max di avversari: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Partenza avversari: {ORANGE}{STRING}
-STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Numero di città: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Numero di industrie: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Num. di città: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Num. di industrie: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Prestito iniziale massimo: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Tasso d'interesse iniziale: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Consumi dei veicoli: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Costi di uso dei veicoli: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Velocità di costruzione degli avversari: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intelligenza degli avversari: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Guasti dei veicoli: {ORANGE}{STRING}
-STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Moltiplicatori sussidi: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Moltiplicatore sussidi: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Costi di costruzione: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Tipo di terreno: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Quantità mare/laghi: {ORANGE}{STRING}
@@ -1962,11 +1962,11 @@ STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Spese/Ri
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Costruzioni
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nuovi Veicoli
-STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Consumi Treni
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Consumi Veicoli
-STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Consumi Aerei
-STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Consumi Navi
-STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Manutenzione Propietà
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Costi Uso Treni
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Costi Uso Veicoli
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Costi Uso Aerei
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Costi Uso Navi
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Manutenzione Proprietà
 STR_7018_TRAIN_INCOME                                           :{GOLD}Ricavi Treni
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ricavi Veicoli
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ricavi Aerei
@@ -1980,7 +1980,7 @@ STR_7021                                                        :{COMPANY}{PLAYE
 STR_7022_INCOME_GRAPH                                           :{WHITE}Grafico Incassi
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
-STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Grafico Profitti Operazionali
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Grafico Profitti Operativi
 STR_7026_BANK_BALANCE                                           :{WHITE}Bilancio Bancario
 STR_7027_LOAN                                                   :{WHITE}Prestito
 STR_MAX_LOAN                                                    :{WHITE}Prestito Massimo:  {BLACK}{CURRENCY64}
@@ -1991,7 +1991,7 @@ STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...il pr
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Non puoi chiedere altro denaro...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...debito già ripagato
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} richiesti
-STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Non puoi ripagare debito...
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Non puoi ripagare il debito...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Non è possibile donare denaro, è in prestito dalla banca
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Seleziona una nuova faccia per il presidente
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Cambia colore dei veicoli della società
@@ -2038,22 +2038,22 @@ STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Lanciata nuova società di trasporti!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} inizia a costruire vicino a {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Non puoi comprare la società...
-STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Percentuale Pagamento Merce
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Percentuale Pagamento Merci
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Giorni di viaggio
 STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Pagamento per la consegna di dieci unità (o 10,000 litri) di merce alla distanza di 20 quadrati
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Seleziona grafico tipo di merce on/off
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
-STR_7066_ENGINEER                                               :Ingeniere
+STR_7066_ENGINEER                                               :Ingegnere
 STR_7067_TRAFFIC_MANAGER                                        :Direttore del traffico
-STR_7068_TRANSPORT_COORDINATOR                                  :Coordinatore Dei trasporti
-STR_7069_ROUTE_SUPERVISOR                                       :Supervisore Dei Percorsi
+STR_7068_TRANSPORT_COORDINATOR                                  :Coordinatore dei Trasporti
+STR_7069_ROUTE_SUPERVISOR                                       :Supervisore dei Percorsi
 STR_706A_DIRECTOR                                               :Direttore
-STR_706B_CHIEF_EXECUTIVE                                        :Capo Esecutivo
+STR_706B_CHIEF_EXECUTIVE                                        :Amministratore Delegato
 STR_706C_CHAIRMAN                                               :Direttore Esecutivo
 STR_706D_PRESIDENT                                              :Presidente
-STR_706E_TYCOON                                                 :magnate
+STR_706E_TYCOON                                                 :Magnate
 STR_706F_BUILD_HQ                                               :{BLACK}Costr. Sede
-STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Costruisci/guarda la sede della società
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Costruisci/Guarda la sede della società
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Sposta la sede della compagnia pagando 1% del valore societario
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Non puoi costruire la sede della compagnia...
 STR_7072_VIEW_HQ                                                :{BLACK}Guarda Sede
@@ -2074,7 +2074,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Non puoi
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% posseduto da {COMPANY})
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% posseduto da {COMPANY}{}   {COMMA}% posseduto da {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} è stata rilevata da {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Questa compagnia non è abbastanza vecchia per compravendere azioni...
+STR_7080_PROTECTED                                              :{WHITE}Questa compagnia non è abbastanza vecchia per scambiare azioni...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapore)
@@ -2107,7 +2107,7 @@ STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Ele
 STR_801B_PASSENGER_CAR                                          :Carrozza Passeggeri
 STR_801C_MAIL_VAN                                               :Vagone Postale
 STR_801D_COAL_CAR                                               :Vagone Carbone
-STR_801E_OIL_TANKER                                             :Cisterna Petrolio
+STR_801E_OIL_TANKER                                             :Vagone Cisterna
 STR_801F_LIVESTOCK_VAN                                          :Vano Bestiame
 STR_8020_GOODS_VAN                                              :Vano Beni
 STR_8021_GRAIN_HOPPER                                           :Vagone Grano
@@ -2137,7 +2137,7 @@ STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 STR_8039_PASSENGER_CAR                                          :Carrozza Passeggeri
 STR_803A_MAIL_VAN                                               :Vagone Postale
 STR_803B_COAL_CAR                                               :Vagone Carbone
-STR_803C_OIL_TANKER                                             :Cisterna Petrolio
+STR_803C_OIL_TANKER                                             :Vagone Cisterna
 STR_803D_LIVESTOCK_VAN                                          :Vano Bestiame
 STR_803E_GOODS_VAN                                              :Vano Beni
 STR_803F_GRAIN_HOPPER                                           :Vagone Grano
@@ -2169,7 +2169,7 @@ STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocket
 STR_8059_PASSENGER_CAR                                          :Carrozza Passeggeri
 STR_805A_MAIL_VAN                                               :Vagone Postale
 STR_805B_COAL_CAR                                               :Vagone Carbone
-STR_805C_OIL_TANKER                                             :Cisterna Petrolio
+STR_805C_OIL_TANKER                                             :Vagone Cisterna
 STR_805D_LIVESTOCK_VAN                                          :Vano Bestiame
 STR_805E_GOODS_VAN                                              :Vano Beni
 STR_805F_GRAIN_HOPPER                                           :Vagone Grano
@@ -2334,7 +2334,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Elicottero Tric
 STR_80FE_GURU_X2_HELICOPTER                                     :Elicottero Guru X2
 STR_80FF_POWERNAUT_HELICOPTER                                   :Elicottero Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Messaggio dal fornitore del veicolo
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Abbiamo appena progettato un nuovo {STRING} - Le interessa un'anno di esclusiva sull'uso del veicolo? Così possiamo vedere come và prima di renderlo disponibile a tutti?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Abbiamo appena progettato un nuovo {STRING} - Le interessa un'anno di esclusiva sull'uso del veicolo? Così possiamo vedere come va prima di renderlo disponibile al mercato?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :locomotiva
 STR_8103_ROAD_VEHICLE                                           :veicolo stradale
 STR_8104_AIRCRAFT                                               :aereo
@@ -2344,7 +2344,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotiva per 
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Deposito Treni
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo treno arrivato a {STATION}!
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo treno arrivato alla {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Treno in mezzo
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
@@ -2374,15 +2374,15 @@ STR_INVALID_ORDER                                               :{RED} (Ordine n
 STR_UNKNOWN_DESTINATION                                         :destinazione sconosciuta
 STR_8812_EMPTY                                                  :{LTBLUE}Vuoto
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} da {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Treno {COMMA} stà aspettando nel deposito
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Treno {COMMA} sta aspettando nel deposito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuovi Veicoli
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Treno troppo lungo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Un treno può essere modificato solo quando è fermo nel deposito
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Treni
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tren{P o i}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nuovo Veicolo Ferroviario
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuovo  Veicolo Per Monorotaia
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuovo Veicolo Per Maglev
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuovo Veicolo Monorotaia
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuovo Veicolo Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Costruisci Veicolo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clona Veicolo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Costruisce una copia del veicolo stradale. Premere contemporaneamente Control per condividere gli ordini
@@ -2478,11 +2478,11 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}In frenata
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veicolo in mezzo
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Veicoli stradali
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Veicoli{P o i} stradal{P e i}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Deposito Veicoli Stradali
-STR_9004_NEW_VEHICLES                                           :{BLACK}Nuovo Veicolo Stradale
-STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nuovo Veicolo Stradale
+STR_9004_NEW_VEHICLES                                           :{BLACK}Nuovi Veicoli
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nuovi Veicoli Stradali
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Costruisci Veicolo
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Non puoi costruire veicolo...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Dettagli)
@@ -2539,7 +2539,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Costruzi
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Non puoi costruire molo qui...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Deposito Navale
 STR_9804_NEW_SHIPS                                              :{BLACK}Nuove Navi
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Navi
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Nav{P e i}
 STR_9808_NEW_SHIPS                                              :{WHITE}Nuove Navi
 STR_9809_BUILD_SHIP                                             :{BLACK}Costruisci Nave
 STR_CLONE_SHIP                                                  :{BLACK}Clona Nave
@@ -2614,7 +2614,7 @@ STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Costruis
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Costruisce una copia dell'aereo. Cliccare su questo pulsante e poi sull'aereo (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuovo Aereo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construisci Aereo
-STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non puoi costruire aereo
+STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non puoi costruire l'aereo
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Aereo
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Ordini)
@@ -2624,17 +2624,17 @@ STR_A00E_MAX_SPEED                                              :{BLACK}Velocità
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profitto quest'anno: {LTBLUE}{CURRENCY}  (anno scorso: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenz.: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Costr. nel: {LTBLUE}{NUM}{BLACK} Valore: {LTBLUE}{CURRENCY}
-STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non puoi mandare aereo nell'hangar...
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non puoi mandare l'aereo nell'hangar...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Direzione {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Direzione {STATION} Hangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aereo {COMMA} sta aspettano nell'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aereo in mezzo
-STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non puoi far fermare/ripartire aereo...
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non puoi far fermare/ripartire l'aereo...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aereo in volo
 STR_A019_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Dev'essere fermo nell'hangar
-STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Non puoi vendere aereo...
+STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Non puoi vendere l'aereo...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Costruzioni areoportuali
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Costruisci aeroporto
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aereo - fai clic sull'aereo per le informazioni
@@ -2648,7 +2648,7 @@ STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Costruis
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Azione corrente dell'aereo - fai clic qui per far fermare/ripartire l'aereo
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra ordini dell'aereo
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra visuale sull'aereo
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Manda aereo all'hangar
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Manda l'aereo all'hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostra dettagli dell'aereo
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nuovo aereo disponibile!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2659,20 +2659,20 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Non puoi
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nome aereo
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo aereo atterrato a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Aereo precipitato!{}{COMMA} morti in una palla di fuoco a {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Incidente aereo!{}L'aereo ha finito il carburante, {COMMA} morti in una palla di fuoco!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Incidente aereo!{}L'aereo ha esaurito il carburante, {COMMA} morti in una palla di fuoco!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Rinomina
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Rinomina tipo di aereo
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Rinomina tipo di aereo
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Non puoi rinominare tipo di aereo...
-STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converti aereo per trasportare un tipo di merce diversa
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converti l'aereo per trasportare un tipo di merce diversa
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Converti)
-STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Converti aereo
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Converti l'aereo
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleziona tipo di merce da caricare
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converti aereo per trasportare tipo di merce evidenziata
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converti l'aereo per trasportare tipo di merce evidenziata
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona il tipo di merce da caricare:-
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuova capacità: {GOLD}{STRING}{}{BLACK}Costo conversione: {GOLD}{CURRENCY}
-STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Non puoi convertire aereo...
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Non puoi convertire l'aereo...
 STR_GO_TO_AIRPORT_HANGAR                                        :Vai a {STATION} Hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Manutenzione a {STATION} Hangar
 
@@ -2708,7 +2708,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Prestito
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totale:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Numero di veicoli. Include Veicoli Stradali, Treni, Navi e Aerei.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Numero di blocchi stazione. Ogni parte di una stazione (e.g. stazione ferroviaria, fermata dell'autobus, aereoporti) viene contata, anche se insieme formano un'unica stazione.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Numero di blocchi stazione. Ogni parte di una stazione (e.g. stazione ferroviaria, fermata dell'autobus, aeroporti) viene contata, anche se insieme formano un'unica stazione.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Profitto del veicolo con l'incasso minore (tra tutti i veicoli più vecchi di 2 anni)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Ammontare di denaro guadagnato nel mese con il minimo profitto degli ultimi 12 quarti
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Ammontare di denaro guadagnato nel mese con il massimo profitto degli ultimi 12 quarti

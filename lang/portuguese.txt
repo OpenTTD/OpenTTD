@@ -1237,7 +1237,22 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Rede Local / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 jogadores
+STR_NETWORK_1_PLAYERS                                           :1 jogador
+STR_NETWORK_2_PLAYERS                                           :2 jogadores
+STR_NETWORK_3_PLAYERS                                           :3 jogadores
+STR_NETWORK_4_PLAYERS                                           :4 jogadores
+STR_NETWORK_5_PLAYERS                                           :5 jogadores
+STR_NETWORK_6_PLAYERS                                           :6 jogadores
+STR_NETWORK_7_PLAYERS                                           :7 jogadores
+STR_NETWORK_8_PLAYERS                                           :8 jogadores
+STR_NETWORK_9_PLAYERS                                           :9 jogadores
+STR_NETWORK_10_PLAYERS                                          :10 jogadores
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Máximo de Companhias:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar o servidor a um certo número de Companhias
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Máximo de espectadores:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar o servidor a um certo número de espectadores
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores ficarão a conhecer o idioma utilizado no servidor.
@@ -1335,6 +1350,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :palavra-chave d
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id do jogador incorrecta em DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :avisado pelo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :estava a tentar usar batota
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheio
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :entrou no jogo
 STR_NETWORK_GIVE_MONEY                                          :deu à sua empresa algum dinheiro ({CURRENCY})
@@ -2749,6 +2765,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccio
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
 STR_REPLACE_HELP                                                :{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do combóio, removendo vagões (do início), nas situações em que a substituição da locomotiva resultar num combóio maior.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva não construível
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais

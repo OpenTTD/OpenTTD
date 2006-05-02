@@ -39,7 +39,7 @@ STR_001F_PAPER                                                  :Kagit
 STR_0020_GOLD                                                   :Altin
 STR_0021_WATER                                                  :Su
 STR_0022_WHEAT                                                  :Un
-STR_0023_RUBBER                                                 :Lastik
+STR_0023_RUBBER                                                 :Kauçuk
 STR_0024_SUGAR                                                  :Seker
 STR_0025_TOYS                                                   :Oyuncak
 STR_0026_CANDY                                                  :Tatli
@@ -71,7 +71,7 @@ STR_003F_PAPER                                                  :Kagit
 STR_0040_GOLD                                                   :Altin
 STR_0041_WATER                                                  :Su
 STR_0042_WHEAT                                                  :Un
-STR_0043_RUBBER                                                 :Lastik
+STR_0043_RUBBER                                                 :Kauçuk
 STR_0044_SUGAR                                                  :Seker
 STR_0045_TOY                                                    :Oyuncak
 STR_0046_CANDY                                                  :Tatli
@@ -103,7 +103,7 @@ STR_QUANTITY_PAPER                                              :{COMMA} ton kag
 STR_QUANTITY_GOLD                                               :{COMMA} çanta altin
 STR_QUANTITY_WATER                                              :{VOLUME} su
 STR_QUANTITY_WHEAT                                              :{COMMA} ton un
-STR_QUANTITY_RUBBER                                             :{VOLUME} lastik
+STR_QUANTITY_RUBBER                                             :{VOLUME} kauçuk
 STR_QUANTITY_SUGAR                                              :{COMMA} ton seker
 STR_QUANTITY_TOYS                                               :{COMMA} oyuncak
 STR_QUANTITY_SWEETS                                             :{COMMA} canta tatli
@@ -135,7 +135,7 @@ STR_ABBREV_PAPER                                                :{TINYFONT}KA
 STR_ABBREV_GOLD                                                 :{TINYFONT}ES
 STR_ABBREV_WATER                                                :{TINYFONT}SU
 STR_ABBREV_WHEAT                                                :{TINYFONT}UN
-STR_ABBREV_RUBBER                                               :{TINYFONT}LA
+STR_ABBREV_RUBBER                                               :{TINYFONT}KA
 STR_ABBREV_SUGAR                                                :{TINYFONT}SK
 STR_ABBREV_TOYS                                                 :{TINYFONT}OY
 STR_ABBREV_SWEETS                                               :{TINYFONT}TA
@@ -230,7 +230,7 @@ STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFON
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Elmas Madeni
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Bakir Madeni
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Meyve Agaçlari
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Lastik Agaçlari
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kauçuk Bahçesi
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Su Kaynagi
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Su Kulesi
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Keresteci
@@ -601,7 +601,7 @@ STR_024E_PRINTING_WORKS                                         :{BLACK}Basimevi
 STR_024F_GOLD_MINE                                              :{BLACK}Altin Madeni
 STR_0250_LUMBER_MILL                                            :{BLACK}Oduncu
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}Mehve Bahçesi
-STR_0252_RUBBER_PLANTATION                                      :{BLACK}Lastik Bahçesi
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kauçuk Bahçesi
 STR_0253_WATER_SUPPLY                                           :{BLACK}Su Kaynagi
 STR_0254_WATER_TOWER                                            :{BLACK}Su Kulesi
 STR_0255_DIAMOND_MINE                                           :{BLACK}Gümüs Madeni
@@ -636,7 +636,7 @@ STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Altin Ma
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Banka Kur (Sadece sehirlerde kurulabilir)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Oduncu Yap (yagmurormanlarindan odun yapar)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Mehve Bahçesi Aç
-STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Lasik Bahçesi Aç
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Kauçuk Bahçesi Yap
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Su Kaynagi Yap
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Su Kulesi Yap (Sadece sehirlere yapilabilir)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Elmas Madeni Yap
@@ -759,7 +759,6 @@ STR_02E0_CURRENCY_UNITS                                         :{BLACK}Para bir
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Para birimi seçimi
 STR_02E3_DISTANCE_UNITS                                         :{BLACK}Uzaklik birimi
-STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Uzaklik birimi seçimi
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Karayolu tasitlari
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1148,7 +1147,7 @@ STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Altin Ma
 STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Elmas Madeni Aç
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Demir Madeni Aç
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Meyve Bahçesi Aç
-STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Lastik Ormani Kur
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Kauçuk Bahçesi Yap
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Su Kaynagi islet
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Pamukhelvasi Ormani Kur
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Pil Çiftligi Kur
@@ -1729,7 +1728,7 @@ STR_4812_BANK                                                   :Bankasi
 STR_4813_DIAMOND_MINE                                           :Elmas Madeni
 STR_4814_IRON_ORE_MINE                                          :Demir Madeni
 STR_4815_FRUIT_PLANTATION                                       :Meyve Bahçesi
-STR_4816_RUBBER_PLANTATION                                      :Lastik Bahçesi
+STR_4816_RUBBER_PLANTATION                                      :Kauçuk Bahçesi
 STR_4817_WATER_SUPPLY                                           :Su Kaynagi
 STR_4818_WATER_TOWER                                            :Su Kulesi
 STR_4819_FACTORY                                                :Fabrikasi
@@ -2120,7 +2119,7 @@ STR_8027_PAPER_TRUCK                                            :Kagit Vagonu
 STR_8028_COPPER_ORE_HOPPER                                      :Bakir Vagonu
 STR_8029_WATER_TANKER                                           :Su Vagonu
 STR_802A_FRUIT_TRUCK                                            :Meyve Vagonu
-STR_802B_RUBBER_TRUCK                                           :Lastik Vagonu
+STR_802B_RUBBER_TRUCK                                           :Kauçuk Vagonu
 STR_802C_SUGAR_TRUCK                                            :Seker Vagonu
 STR_802D_COTTON_CANDY_HOPPER                                    :Pamukhelva Vagonu
 STR_802E_TOFFEE_HOPPER                                          :Bonbon Vagonu
@@ -2150,7 +2149,7 @@ STR_8045_PAPER_TRUCK                                            :Kagit Vagonu
 STR_8046_COPPER_ORE_HOPPER                                      :Bakir Vagonu
 STR_8047_WATER_TANKER                                           :Su Tankeri
 STR_8048_FRUIT_TRUCK                                            :Meyve Vagonu
-STR_8049_RUBBER_TRUCK                                           :Lastik Vagonu
+STR_8049_RUBBER_TRUCK                                           :Kauçuk Vagonu
 STR_804A_SUGAR_TRUCK                                            :Seker Vagonu
 STR_804B_COTTON_CANDY_HOPPER                                    :Pamukhelva Vagonu
 STR_804C_TOFFEE_HOPPER                                          :Bonbon Vagonu
@@ -2182,7 +2181,7 @@ STR_8065_PAPER_TRUCK                                            :Kagit Vagonu
 STR_8066_COPPER_ORE_HOPPER                                      :Bakir Vagonu
 STR_8067_WATER_TANKER                                           :Su Tankeri
 STR_8068_FRUIT_TRUCK                                            :Meyve Vagonu
-STR_8069_RUBBER_TRUCK                                           :Lastik Vagonu
+STR_8069_RUBBER_TRUCK                                           :Kauçuk Vagonu
 STR_806A_SUGAR_TRUCK                                            :Seker Vagonu
 STR_806B_COTTON_CANDY_HOPPER                                    :Pamukhelva Vagonu
 STR_806C_TOFFEE_HOPPER                                          :Bonbon Vagonu
@@ -2248,9 +2247,9 @@ STR_80A7_MPS_WATER_TANKER                                       :MPS Su Tankeri
 STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Meyve Kamyonu
 STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Meyve Kamyonu
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Meyve Kamyonu
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Lastik Kamyonu
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Lastik Kamyonu
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Lastik Kamyonu
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Kauçuk Kamyonu
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Kauçuk Kamyonu
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Kauçuk Kamyonu
 STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Seker Kamyonu
 STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Seker Kamyonu
 STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Seker Kamyonu

@@ -304,7 +304,7 @@ STR_MAPSIZE                                                     :{BLACK}Kartengr
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Spieleinstellungen
 
-STR_0150_SOMEONE                                                :jemand{SKIP}{SKIP}
+STR_0150_SOMEONE                                                :Jemand{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Weltkarte
 STR_0152_TOWN_DIRECTORY                                         :Städteverzeichnis
 STR_0153_SUBSIDIES                                              :Subventionen
@@ -661,8 +661,8 @@ STR_0289_PLACE_SIGN                                             :{BLACK}Schild a
 STR_028A_RANDOM_TREES                                           :{BLACK}Zufällige Bäume
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Bäume zufällig über die Landschaft verteilen
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Felsige Gebiete in der Landschaft platzieren
-STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm erstellen
-STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender erstellen
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Leuchtturm errichten
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Sender errichten
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Lege Wüstengebiet an.{}STRG drücken zum entfernen
 STR_CREATE_LAKE                                                 :{BLACK}Gebiet fluten.{}Auf Meereshöhe entsteht ein Gewässer
 STR_0290_DELETE                                                 :{BLACK}Löschen
@@ -764,7 +764,7 @@ STR_02E4                                                        :{BLACK}{SKIP}{S
 STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Wähle Entfernungsmessung in
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Fahrzeuge
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Wähle auf welcher Straßenseite der Verkehr fließen soll
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Wähle auf welcher Straßenseite der Verkehr fahren soll
 STR_02E9_DRIVE_ON_LEFT                                          :Linksverkehr
 STR_02EA_DRIVE_ON_RIGHT                                         :Rechtsverkehr
 STR_02EB_TOWN_NAMES                                             :{BLACK}Städtenamen
@@ -863,7 +863,7 @@ STR_CURR_NOK                                                    :Norwegische Kro
 STR_CURR_PLN                                                    :Polnische Zloty (PLN)
 STR_CURR_ROL                                                    :Rumänische Lei (Lei)
 STR_CURR_RUR                                                    :Russische Rubel (rur)
-STR_CURR_SEK                                                    :Swedische Kronen (SEK)
+STR_CURR_SEK                                                    :Schwedische Kronen (SEK)
 
 STR_CURR_CUSTOM                                                 :Eigene...
 
@@ -1023,7 +1023,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Vorgege
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Vorgegebener Wartungsintervall für Schiffe: {ORANGE}{STRING} Tage
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vorgegebener Wartungsintervall für Schiffe: {ORANGE}abgeschaltet
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Wartung deaktivieren, wenn Pannen abgeschaltet: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiviere Waggon Höchstgeschwindigkeit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Berücksichtige Waggonhöchstgeschwindigkeit: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Farbige Nachrichten erscheinen ab: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
@@ -1128,7 +1128,7 @@ STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kann den
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kann Gleistyp hier nicht verändern...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Konvertiere / Erweitere den Typ des Gleises
 
-STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Zugmaschine hierher ziehen, um den ganzen Zug zu verkaufen
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Lok hierher ziehen, um den ganzen Zug zu verkaufen
 
 STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP                                           :{BLACK}Bahnhof mittels 'Drag & Drop' bauen
@@ -1432,7 +1432,7 @@ STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise l
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Zugdepot bauen (zum Bau und zur Wartung von Zügen)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Bahnhof bauen
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Signale errichten
-STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bahnbrücke bauen
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Eisenbahnbrücke bauen
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Eisenbahntunnel bauen
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Umschalter für Bau/Abriss von Gleisen und Signalen
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brückenauswahl - klicke auf die gewünschte Brücke, um sie zu bauen
@@ -1442,8 +1442,8 @@ STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zugdepot
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...Gelände gehört jemand anderem
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Gleis mit normalen Signalen
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Gleis mit Vorsignalen
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrtsignalen
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit kombinierten Vor-/Ausfahrtsignalen
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Gleis mit Ausfahrsignalen
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit kombinierten Vor-/Ausfahrsignalen
 
 
 
@@ -1743,7 +1743,7 @@ STR_481F_COLA_WELLS                                             :{G=w}Colaquelle
 STR_4820_TOY_SHOP                                               :{G=n}Spielwarengeschäft
 STR_4821_TOY_FACTORY                                            :{G=w}Spielwarenfabrik
 STR_4822_PLASTIC_FOUNTAINS                                      :{G=m}Plastikbrunnen
-STR_4823_FIZZY_DRINK_FACTORY                                    :{G=w}Limonadefabrik
+STR_4823_FIZZY_DRINK_FACTORY                                    :{G=w}Limonadenfabrik
 STR_4824_BUBBLE_GENERATOR                                       :{G=m}Luftblasengenerator
 STR_4825_TOFFEE_QUARRY                                          :{G=w}Karamellgrube
 STR_4826_SUGAR_MINE                                             :{G=w}Zuckermine
@@ -2058,7 +2058,7 @@ STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Firmensi
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Errichte Firmensitz für 1% des Firmenwertes an anderer Stelle neu.
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kann keinen Firmensitz bauen ...
 STR_7072_VIEW_HQ                                                :{BLACK}Zeige Firmensitz
-STR_RELOCATE_HQ                                                 :{BLACK}HQ verlegen
+STR_RELOCATE_HQ                                                 :{BLACK}Firmensitz verlegen
 STR_COMPANY_PASSWORD                                            :{BLACK}Passwort
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Schütze deine Firma mit einem Passwort, um unautorisierten Spielern den Beitritt zu verwehren.
 STR_SET_COMPANY_PASSWORD                                        :Firmen-Passwort setzen
@@ -2335,13 +2335,13 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Hubsch
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Hubschrauber
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Hubschrauber
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Nachricht vom Fahrzeughersteller
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben gerade ein(e) neue(s) {STRING} erstellt - sind Sie daran interessiert, das Fahrzeug ein Jahr lang exklusiv zu testen, so dass wir die Funktionen testen können, bevor es allgemein zur Verfügung gestellt wird?
-STR_8102_RAILROAD_LOCOMOTIVE                                    :Lokomotive
-STR_8103_ROAD_VEHICLE                                           :Fahrzeug
-STR_8104_AIRCRAFT                                               :Flugzeug
-STR_8105_SHIP                                                   :Schiff
-STR_8106_MONORAIL_LOCOMOTIVE                                    :Einschienbahn
-STR_8107_MAGLEV_LOCOMOTIVE                                      :Magnetschwebebahn
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben gerade ein{G en e ""} neue{G n "" s} {STRING} erstellt - sind Sie daran interessiert, das Fahrzeug ein Jahr lang exklusiv zu testen, so dass wir die Funktionen testen können, bevor es allgemein zur Verfügung gestellt wird?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=w}Lokomotive
+STR_8103_ROAD_VEHICLE                                           :{G=n}Fahrzeug
+STR_8104_AIRCRAFT                                               :{G=n}Flugzeug
+STR_8105_SHIP                                                   :{G=n}Schiff
+STR_8106_MONORAIL_LOCOMOTIVE                                    :{G=w}Einschienenbahn
+STR_8107_MAGLEV_LOCOMOTIVE                                      :{G=w}Magnetschwebebahn
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Zugdepot
@@ -2415,7 +2415,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kann kei
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kann den Auftrag nicht löschen...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kann den Auftrag nicht bearbeiten...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kann das Fahrzeug nicht bewegen...
-STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Hintere Lokomotive folgt immer der vorderen Lok
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Hintere Lok folgt immer der vorderen Lok
 STR_8838_N_A                                                    :k.A.{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kann Schienenfahrzeug nicht verkaufen...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kann keinen weg zum Depot finden
@@ -2517,7 +2517,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Fahrzeug
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Baue das ausgewählte Fahrzeug
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Neues Fahrzeug jetzt erhältlich!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY}/Jahr{}Capacity: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY}/Jahr{}Ladevermögen: {STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name des Fahrzeuges
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kann das Fahrzeug nicht benennen...
@@ -2603,7 +2603,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Neue Kap
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kann das Schiff nicht umrüsten...
 STR_9842_REFITTABLE                                             :(umrüstbar)
 STR_GO_TO_SHIP_DEPOT                                            :Fahre zu {TOWN} Schiffswerft
-SERVICE_AT_SHIP_DEPOT                                           :Wartung bei {TOWN} Schiffswerft
+SERVICE_AT_SHIP_DEPOT                                           :Wartung in der {TOWN} Schiffswerft
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Flughäfen
@@ -2675,7 +2675,7 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wähle Fra
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Neue Kapazität: {GOLD}{STRING}{}{BLACK}Kosten der Umrüstung: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht umrüsten...
 STR_GO_TO_AIRPORT_HANGAR                                        :Fliege zu {STATION} Hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Wartung bei {STATION} Hangar
+SERVICE_AT_AIRPORT_HANGAR                                       :Wartung im {STATION} Hangar
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinabsturz bei {STATION}!
@@ -2775,7 +2775,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilder
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Eisenbahn
-STR_MONORAIL_VEHICLES                                           :Einschienbahn
+STR_MONORAIL_VEHICLES                                           :Einschienenbahn
 STR_MAGLEV_VEHICLES                                             :Magnetschwebebahn
 
 ############ End of list of rail types

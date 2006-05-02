@@ -734,6 +734,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gjenno
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informasjon om felt.
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Toggle Console
 STR_02D7_SCREENSHOT_CTRL_S                                      :Skjermdump (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Stor skjermdump (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Om 'OpenTTD'
@@ -863,6 +864,7 @@ STR_CURR_ROL                                                    :Rumensk Leu (Le
 STR_CURR_RUR                                                    :Russisk Rubel (rur)
 STR_CURR_SEK                                                    :Söta Brors Krona (SEK)
 
+STR_CURR_CUSTOM                                                 :Custom...
 
 STR_OPTIONS_LANG                                                :{BLACK}Språk
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1235,7 +1237,21 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internett
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internett (annonsér)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 Spillere
+STR_NETWORK_1_PLAYERS                                           :1 spiller
+STR_NETWORK_2_PLAYERS                                           :2 spillere
+STR_NETWORK_3_PLAYERS                                           :3 spillere
+STR_NETWORK_4_PLAYERS                                           :4 spillere
+STR_NETWORK_5_PLAYERS                                           :5 spillere
+STR_NETWORK_6_PLAYERS                                           :6 spillere
+STR_NETWORK_7_PLAYERS                                           :7 spillere
+STR_NETWORK_8_PLAYERS                                           :8 spillere
+STR_NETWORK_9_PLAYERS                                           :9 spillere
+STR_NETWORK_10_PLAYERS                                          :10 spillere
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks bedrifter:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrens serveren til et bestemt antall bedrifter
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrens serveren til et bestemt antall seere
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk snakket på tjeneren:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Andre spiller skal kunne vite hvilket språk man snakker på denne tjeneren.
@@ -1333,6 +1349,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :feil passord ti
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :feil spiller-id i DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :sparket ut av tjeneren
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :prøvde å jukse
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er full
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :har blitt med i spillet
 STR_NETWORK_GIVE_MONEY                                          :gav deg penger ({CURRENCY})
