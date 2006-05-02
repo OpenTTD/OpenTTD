@@ -782,10 +782,6 @@ SOURCE=.\viewport.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\void.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\waypoint.h
 # End Source File
 # Begin Source File
@@ -1219,6 +1215,14 @@ SOURCE=.\tunnel_map.h
 # Begin Source File
 
 SOURCE=.\unmovable_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\void_map.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\water_map.h
 # End Source File
 # End Group
 # Begin Source File
