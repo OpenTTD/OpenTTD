@@ -224,7 +224,7 @@ void IConsoleInit(void)
 	memset(_iconsole_buffer, 0, sizeof(_iconsole_buffer));
 	memset(_iconsole_cbuffer, 0, sizeof(_iconsole_cbuffer));
 	_iconsole_cmdline.buf = calloc(ICON_CMDLN_SIZE, sizeof(*_iconsole_cmdline.buf)); // create buffer and zero it
-	_iconsole_cmdline.maxlength = ICON_CMDLN_SIZE - 1;
+	_iconsole_cmdline.maxlength = ICON_CMDLN_SIZE;
 
 	IConsolePrintF(13, "OpenTTD Game Console Revision 7 - %s", _openttd_revision);
 	IConsolePrint(12,  "------------------------------------");
