@@ -811,7 +811,7 @@ static const SettingDesc gameopt_settings[] = {
   {"diff_custom", SDT_INTLIST | SDT_UINT32 | (sizeof(GameDifficulty)/4) << 16, NULL, &_opt_newgame.diff, NULL},
   {"currency",    SDT_UINT8 | SDT_ONEOFMANY,  (void*)0, &_opt_newgame.currency,   "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SEK|custom" },
   {"distances",   SDT_UINT8 | SDT_ONEOFMANY,  (void*)1, &_opt_newgame.kilometers, "imperial|metric" },
-  {"town_names",  SDT_UINT8 | SDT_ONEOFMANY,  (void*)0, &_opt_newgame.town_name,  "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish" },
+  {"town_names",  SDT_UINT8 | SDT_ONEOFMANY,  (void*)0, &_opt_newgame.town_name,  "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish" },
   {"landscape",   SDT_UINT8 | SDT_ONEOFMANY,  (void*)0, &_opt_newgame.landscape,  "normal|hilly|desert|candy" },
   {"autosave",    SDT_UINT8 | SDT_ONEOFMANY,  (void*)1, &_opt_newgame.autosave,   "off|monthly|quarterly|half year|yearly" },
   {"road_side",   SDT_UINT8 | SDT_ONEOFMANY,  (void*)1, &_opt_newgame.road_side,  "left|right" },
