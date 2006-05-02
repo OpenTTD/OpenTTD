@@ -447,10 +447,10 @@ do_clear:;
 	}
 
 	cost = CheckRoadSlope(ti.tileh, &pieces, existing);
-	if (CmdFailed(cost)) return_cmd_error(STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION);
-
-	if (cost && (!_patches.build_on_slopes || _is_old_ai_player))
-		return CMD_ERROR;
+	/* Return an error if we need to build a foundation (ret != 0) but the
+	 * current patch-setting is turned off (or stupid AI@work) */
+	if (CmdFailed(cost) || (cost != 0 && (!_patches.build_on_slopes || _is_old_ai_player)))
+		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 
 	if (ti.type != MP_STREET || (ti.map5 & 0xF0) != 0) {
 		cost += DoCommandByTile(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
