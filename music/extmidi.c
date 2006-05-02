@@ -6,6 +6,7 @@
 #include "../sound.h"
 #include "../string.h"
 #include "../variables.h"
+#include "../debug.h"
 #include "extmidi.h"
 #include <fcntl.h>
 #include <sys/types.h>
@@ -58,7 +59,7 @@ static bool ExtMidiIsPlaying(void)
 
 static void ExtMidiSetVolume(byte vol)
 {
-	fprintf(stderr, "extmidi: set volume not implemented\n");
+	DEBUG(driver, 1) ("extmidi: set volume not implemented");
 }
 
 static void DoPlay(void)
@@ -81,7 +82,7 @@ static void DoPlay(void)
 		}
 
 		case -1:
-			fprintf(stderr, "extmidi: couldn't fork: %s\n", strerror(errno));
+			DEBUG(driver, 0) ("extmidi: couldn't fork: %s", strerror(errno));
 			/* FALLTHROUGH */
 
 		default:
