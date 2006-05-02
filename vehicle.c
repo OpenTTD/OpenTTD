@@ -1559,6 +1559,7 @@ int32 CmdCloneVehicle(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			} else {
 				// this is a front engine or not a train. It need orders
 				w_front = w;
+				w->service_interval = v->service_interval;
 				DoCommand(x, y, (v->index << 16) | w->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
 			}
 			w_rear = w;	// trains needs to know the last car in the train, so they can add more in next loop
@@ -1658,6 +1659,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			ChangeVehicleViewWindow(old_v, new_v);
 			new_v->profit_this_year = old_v->profit_this_year;
 			new_v->profit_last_year = old_v->profit_last_year;
+			new_v->service_interval = old_v->service_interval;
 			new_front = true;
 
 			new_v->current_order = old_v->current_order;
