@@ -1142,13 +1142,13 @@ static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces
 	/* Check if there's an industry close to the station that accepts
 	 * the cargo */
 	best = NULL;
-	u = _patches.station_spread + 8;
+	u = (_patches.station_spread + 8) * 2;
 	FOR_ALL_INDUSTRIES(ind) {
 		if (ind->xy != 0 && (cargo_type == ind->accepts_cargo[0] || cargo_type
 				 == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]) &&
 				 ind->produced_cargo[0] != CT_INVALID &&
 				 ind->produced_cargo[0] != cargo_type &&
-				 (t = DistanceManhattan(ind->xy, xy)) < 2 * u) {
+				 (t = DistanceManhattan(ind->xy, xy)) < 2) {
 			u = t;
 			best = ind;
 		}
