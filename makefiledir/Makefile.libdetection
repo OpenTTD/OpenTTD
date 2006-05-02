@@ -52,23 +52,26 @@ endif
 
 # FreeBSD uses sdl11 instead of sdl
 ifdef FREEBSD
-SDL-CONFIG:=sdl11-config
+SDL_CONFIG:=sdl11-config
 else
-SDL-CONFIG:=sdl-config
+SDL_CONFIG:=sdl-config
 endif
+
+# set libpng-config to the default value
+LIBPNG_CONFIG :=libpng-config
 
 # Networking, enabled by default
 WITH_NETWORK:=1
 
 # Library detections
-WITH_SDL:=$(shell $(SDL-CONFIG) --version 2>/dev/null)
+WITH_SDL:=$(shell $(SDL_CONFIG) --version 2>/dev/null)
 
 # libpng detection
-WITH_PNG:=$(shell $(LIBPNG-CONFIG) --version 2>/dev/null)
+WITH_PNG:=$(shell $(LIBPNG_CONFIG) --version 2>/dev/null)
 
 ifdef WITH_PNG
-# LibPNG depends on Zlib
-WITH_ZLIB:=1
+	# LibPNG depends on Zlib
+	WITH_ZLIB:=1
 else
 # We go looking for zlib with a little hack
 WITH_ZLIB:=$(shell ls /usr/include | grep "zlib.h" 2>/dev/null) \
@@ -78,6 +81,22 @@ WITH_ZLIB:=1
 endif
 endif
 
+ifdef WITH_ZLIB
+	TEMP:=$(shell ls /lib 2>/dev/null | grep "zlib.a")$(shell ls /lib 2>/dev/null | grep "libz.a")
+	ifdef TEMP
+		STATIC_ZLIB_PATH:=/lib/$(TEMP)
+	else
+		TEMP:=$(shell ls /usr/lib 2>/dev/null | grep "zlib.a")$(shell ls /usr/lib 2>/dev/null | grep "libz.a")
+		ifdef TEMP
+			STATIC_ZLIB_PATH:=/usr/lib/$(TEMP)
+		else
+			TEMP:=$(shell ls /usr/local/lib 2>/dev/null | grep "zlib.a")$(shell ls /usr/local/lib 2>/dev/null | grep "libz.a")
+			ifdef TEMP
+				STATIC_ZLIB_PATH:=/usr/local/lib/$(TEMP)
+			endif
+		endif
+	endif
+endif
 
 # sets the default paths
 ifdef UNIX
