@@ -546,6 +546,7 @@ int32 CmdBuildLongRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		ret = DoCommandByTile(tile, bits, 0, flags, CMD_BUILD_ROAD);
 		if (CmdFailed(ret)) {
 			if (_error_message != STR_1007_ALREADY_BUILT) return CMD_ERROR;
+			_error_message = INVALID_STRING_ID;
 		} else {
 			cost += ret;
 		}
