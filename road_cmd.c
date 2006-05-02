@@ -159,7 +159,7 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	// owner for railroad crossing is stored somewhere else
 	// XXX - Fix this so for a given tiletype the owner of the type is in the same variable
-	owner = IsLevelCrossing(tile) ? _m[tile].m3 : GetTileOwner(tile);
+	owner = (IsTileType(tile, MP_STREET) && IsLevelCrossing(tile)) ? _m[tile].m3 : GetTileOwner(tile);
 
 	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
 		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
