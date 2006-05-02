@@ -292,7 +292,6 @@ VARDEF byte _yearly_expenses_type;
 VARDEF TileIndex _terraform_err_tile;
 VARDEF TileIndex _build_tunnel_endtile;
 VARDEF bool _generating_world;
-VARDEF int _new_town_size;
 VARDEF uint _returned_refit_amount;
 
 // Deals with the type of the savegame, independent of extension
