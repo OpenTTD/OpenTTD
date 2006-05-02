@@ -431,7 +431,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 
 
 		colour = *sel == 0 ? 0xC : 0x10;
-		if (!(ENGINE_AVAILABLE && show_outdated && RailVehInfo(i)->power && e->railtype == railtype)) {
+		if (!(ENGINE_AVAILABLE && show_outdated && RailVehInfo(i)->power && IsCompatibleRail(e->railtype, railtype))) {
 			if (e->railtype != railtype || !(rvi->flags & RVI_WAGON) != is_engine ||
 				!HASBIT(e->player_avail, _local_player))
 				continue;
