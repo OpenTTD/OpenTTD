@@ -35,7 +35,7 @@ static void OpenBankFile(const char *filename)
 
 	FioOpenFile(SOUND_SLOT, filename);
 	count = FioReadDword() / 8;
-	fe = calloc(sizeof(*fe), count);
+	fe = calloc(count, sizeof(*fe));
 
 	if (fe == NULL) {
 		_file_count = 0;
