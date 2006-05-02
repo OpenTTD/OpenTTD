@@ -256,6 +256,36 @@ static void NetworkClientError(byte res, NetworkClientState *cs) {
 	_networking = false;
 }
 
+/** Retrieve a string representation of an internal error number
+ * @param buf buffer where the error message will be stored
+ * @param err NetworkErrorCode (integer)
+ * @return returns a pointer to the error message (buf) */
+char *GetNetworkErrorMsg(char *buf, NetworkErrorCode err)
+{
+	/* List of possible network errors, used by
+	 * PACKET_SERVER_ERROR and PACKET_CLIENT_ERROR */
+	static const StringID network_error_strings[] = {
+		STR_NETWORK_ERR_CLIENT_GENERAL,
+		STR_NETWORK_ERR_CLIENT_DESYNC,
+		STR_NETWORK_ERR_CLIENT_SAVEGAME,
+		STR_NETWORK_ERR_CLIENT_CONNECTION_LOST,
+		STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR,
+		STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED,
+		STR_NETWORK_ERR_CLIENT_NOT_EXPECTED,
+		STR_NETWORK_ERR_CLIENT_WRONG_REVISION,
+		STR_NETWORK_ERR_CLIENT_NAME_IN_USE,
+		STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD,
+		STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH,
+		STR_NETWORK_ERR_CLIENT_KICKED,
+		STR_NETWORK_ERR_CLIENT_CHEATER,
+		STR_NETWORK_ERR_CLIENT_SERVER_FULL,
+	};
+
+	if (err >= lengthof(network_error_strings)) err = 0;
+
+	return GetString(buf, network_error_strings[err]);
+}
+
 // Find all IP-aliases for this host
 static void NetworkFindIPs(void)
 {
@@ -524,7 +554,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		GetString(str, STR_NETWORK_ERR_CLIENT_GENERAL + errorno);
+		GetNetworkErrorMsg(str, errorno);
 
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
 
