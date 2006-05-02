@@ -500,6 +500,18 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 		case 0x46: /* Motion counter */
 			return 0;
+
+		/* Variables which use the parameter */
+		case 0x60: /* Count consist's engine ID occurance */
+			if (v->type != VEH_Train) return v->engine_type == parameter;
+
+			{
+				uint count = 0;
+				for (; v != NULL; v = v->next) {
+					if (v->engine_type == parameter) count++;
+				}
+				return count;
+			}
 	}
 
 	/* General vehicle properties */
