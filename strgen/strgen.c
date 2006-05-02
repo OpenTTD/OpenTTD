@@ -795,7 +795,7 @@ static void HandleString(char *str, bool master)
 			}
 
 			// Allocate a new LangString
-			ent = calloc(sizeof(LangString), 1);
+			ent = calloc(1, sizeof(*ent));
 			_strings[_next_string_id] = ent;
 			ent->index = _next_string_id++;
 			ent->name = strdup(str);
