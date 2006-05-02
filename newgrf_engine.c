@@ -765,7 +765,7 @@ bool UsesWagonOverride(const Vehicle* v)
  * @param vehicle  The vehicle to evaluate the callback for, or NULL if it doesnt exist yet
  * @return The value the callback returned, or CALLBACK_FAILED if it failed
  */
-uint16 GetVehicleCallback(byte callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v)
+uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
