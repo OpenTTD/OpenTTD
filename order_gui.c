@@ -191,6 +191,9 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	Order order;
 	int st_index;
 
+	order.next  = NULL;
+	order.index = 0;
+
 	// check depot first
 	if (_patches.gotodepot) {
 		switch (GetTileType(tile)) {
