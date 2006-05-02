@@ -403,7 +403,7 @@ enum {
 /* Vehicle Resolver Functions */
 static inline const Vehicle *GRV(const ResolverObject *object)
 {
-	return object->scope == VSG_SCOPE_SELF ? object->vehicle.self : object->vehicle.parent;
+	return object->scope == VSG_SCOPE_SELF ? object->u.vehicle.self : object->u.vehicle.parent;
 }
 
 
@@ -626,7 +626,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 static uint32 VehicleResolveReal(const ResolverObject *object, uint num_loaded, uint num_loading, bool *in_motion)
 {
-	const Vehicle *v = object->vehicle.self;
+	const Vehicle *v = object->u.vehicle.self;
 	uint totalsets;
 	uint set;
 
@@ -663,8 +663,8 @@ static inline void NewVehicleResolver(ResolverObject *res, const Vehicle *v)
 	res->GetVariable   = &VehicleGetVariable;
 	res->ResolveReal   = &VehicleResolveReal;
 
-	res->vehicle.self   = v;
-	res->vehicle.parent = (v != NULL && v->type == VEH_Train) ? GetFirstVehicleInChain(v) : v;
+	res->u.vehicle.self   = v;
+	res->u.vehicle.parent = (v != NULL && v->type == VEH_Train) ? GetFirstVehicleInChain(v) : v;
 
 	res->callback        = 0;
 	res->callback_param1 = 0;

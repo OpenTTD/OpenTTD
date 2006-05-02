@@ -175,7 +175,7 @@ typedef struct ResolverObject {
 			const struct Station *st;
 			const struct StationSpec *statspec;
 		} station;
-	};
+	} u;
 
 	uint32 (*GetRandomBits)(const struct ResolverObject*);
 	uint32 (*GetTriggers)(const struct ResolverObject*);
