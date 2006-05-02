@@ -1704,7 +1704,6 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				SetWagonOverrideSprites(engine, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 			} else {
 				SetCustomEngineSprites(engine, ctype, _cur_grffile->spritegroups[groupid]);
-				SetEngineGRF(engine, _cur_grffile->grfid);
 				last_engines[i] = engine;
 			}
 		}
@@ -1736,6 +1735,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				}
 			} else {
 				SetCustomEngineSprites(engine, GC_DEFAULT, _cur_grffile->spritegroups[groupid]);
+				SetEngineGRF(engine, _cur_grffile->grfid);
 				last_engines[i] = engine;
 			}
 		}
