@@ -538,6 +538,8 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->cargo_count = u->cargo_count = 0;
 		v->cargo_type = new_cid;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		RebuildVehicleLists();
 	}
 
 	return cost;
@@ -1113,6 +1115,18 @@ static void ProcessAircraftOrder(Vehicle *v)
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
+/** Mark all views dirty for an aircraft.
+ * @param v vehicle to be redrawn.
+ */
+static void MarkAircraftDirty(Vehicle *v)
+{
+		v->cur_image = GetAircraftImage(v, v->direction);
+		if (v->subtype == 0) {
+			v->next->next->cur_image = GetRotorImage(v);
+		}
+		MarkAllViewportsDirty(v->left_coord, v->top_coord, v->right_coord + 1, v->bottom_coord + 1);
+}
+
 static void HandleAircraftLoading(Vehicle *v, int mode)
 {
 	if (v->current_order.type == OT_NOTHING) return;
@@ -1124,7 +1138,10 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 
 		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
 			SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
-			LoadUnloadVehicle(v);
+			if (LoadUnloadVehicle(v)) {
+				InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
+				MarkAircraftDirty(v);
+			}
 			return;
 		}
 
@@ -1132,6 +1149,7 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 			Order b = v->current_order;
 			v->current_order.type = OT_NOTHING;
 			v->current_order.flags = 0;
+			MarkAircraftDirty(v);
 			if (!(b.flags & OF_NON_STOP)) return;
 		}
 	}
@@ -1238,6 +1256,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
 	LoadUnloadVehicle(v);
+	MarkAircraftDirty(v);
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
