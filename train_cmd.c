@@ -27,6 +27,7 @@
 #include "train.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
+#include "newgrf_text.h"
 #include "direction.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
@@ -1076,6 +1077,17 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) src->unitnumber = unit_num;
 	}
 
+	if (dst_head != NULL) {
+		/* Check NewGRF Callback 0x1D */
+		uint16 callback = GetVehicleCallbackParent(CBID_TRAIN_ALLOW_WAGON_ATTACH, 0, 0, dst_head->engine_type, src, dst_head);
+		if (callback != CALLBACK_FAILED) {
+			if (callback == 0xFD) return CMD_ERROR;
+			if (callback < 0xFD) {
+				StringID error = GetGRFStringID(GetEngineGRFID(dst_head->engine_type), 0xD000 + callback);
+				return_cmd_error(error);
+			}
+		}
+	}
 
 	/* do it? */
 	if (flags & DC_EXEC) {
