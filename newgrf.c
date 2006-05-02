@@ -1128,10 +1128,11 @@ static void VehicleChangeInfo(byte *buf, int len)
 	}
 
 	check_length(len, 6, "VehicleChangeInfo");
-	feature = buf[1];
-	numprops = buf[2];
-	numinfo = buf[3];
-	engine = buf[4];
+	buf++;
+	feature  = grf_load_byte(&buf);
+	numprops = grf_load_byte(&buf);
+	numinfo  = grf_load_byte(&buf);
+	engine   = grf_load_byte(&buf);
 
 	DEBUG(grf, 6) ("VehicleChangeInfo: Feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
@@ -1148,8 +1149,6 @@ static void VehicleChangeInfo(byte *buf, int len)
 		}
 		ei = &_engine_info[engine + _vehshifts[feature]];
 	}
-
-	buf += 5;
 
 	while (numprops-- && buf < bufend) {
 		uint8 prop = grf_load_byte(&buf);
@@ -1973,16 +1972,16 @@ static void SkipIf(byte *buf, int len)
 	GRFLabel *choice = NULL;
 
 	check_length(len, 6, "SkipIf");
-	param = buf[1];
-	paramsize = buf[2];
-	condtype = buf[3];
+	buf++;
+	param     = grf_load_byte(&buf);
+	paramsize = grf_load_byte(&buf);
+	condtype  = grf_load_byte(&buf);
 
 	if (condtype < 2) {
 		/* Always 1 for bit tests, the given value should be ignored. */
 		paramsize = 1;
 	}
 
-	buf += 4;
 	switch (paramsize) {
 		case 4: cond_val = grf_load_dword(&buf); break;
 		case 2: cond_val = grf_load_word(&buf);  break;
