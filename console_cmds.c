@@ -91,28 +91,6 @@ static void IConsoleHelp(const char *str)
 	IConsolePrintF(_icolour_warn, "- %s", str);
 }
 
-DEF_CONSOLE_CMD(ConStopAllVehicles)
-{
-	Vehicle* v;
-	if (argc == 0) {
-		IConsoleHelp("Stops all vehicles in the game. For debugging only! Use at your own risk... Usage: 'stopall'");
-		return true;
-	}
-
-	FOR_ALL_VEHICLES(v) {
-		if (IsValidVehicle(v)) {
-			/* Code ripped from CmdStartStopTrain. Can't call it, because of
-			 * ownership problems, so we'll duplicate some code, for now */
-			if (v->type == VEH_Train)
-				v->u.rail.days_since_order_progr = 0;
-			v->vehstatus |= VS_STOPPED;
-			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-		}
-	}
-	return true;
-}
-
 DEF_CONSOLE_CMD(ConResetEngines)
 {
 	if (argc == 0) {
@@ -142,6 +120,28 @@ DEF_CONSOLE_CMD(ConResetTile)
 	}
 
 	return false;
+}
+
+DEF_CONSOLE_CMD(ConStopAllVehicles)
+{
+	Vehicle* v;
+	if (argc == 0) {
+		IConsoleHelp("Stops all vehicles in the game. For debugging only! Use at your own risk... Usage: 'stopall'");
+		return true;
+	}
+
+	FOR_ALL_VEHICLES(v) {
+		if (IsValidVehicle(v)) {
+			/* Code ripped from CmdStartStopTrain. Can't call it, because of
+			 * ownership problems, so we'll duplicate some code, for now */
+			if (v->type == VEH_Train)
+				v->u.rail.days_since_order_progr = 0;
+			v->vehstatus |= VS_STOPPED;
+			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		}
+	}
+	return true;
 }
 #endif /* _DEBUG */
 
@@ -1321,6 +1321,7 @@ static void IConsoleDebugLibRegister(void)
 
 	IConsoleVarRegister("con_developer",    &_stdlib_con_developer, ICONSOLE_VAR_BOOLEAN, "Enable/disable console debugging information (internal)");
 	IConsoleCmdRegister("resettile",        ConResetTile);
+	IConsoleCmdRegister("stopall",          ConStopAllVehicles);
 	IConsoleAliasRegister("dbg_echo",       "echo %A; echo %B");
 	IConsoleAliasRegister("dbg_echo2",      "echo %!");
 }
@@ -1364,7 +1365,6 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
 	IConsoleCmdRegister("clear",        ConClearBuffer);
-	IConsoleCmdRegister("stopall",      ConStopAllVehicles);
 
 	IConsoleAliasRegister("dir",      "ls");
 	IConsoleAliasRegister("del",      "rm %+");
@@ -1378,7 +1378,6 @@ void IConsoleStdLibRegister(void)
 	/* networking variables and functions */
 #ifdef ENABLE_NETWORK
 	/* Network hooks; only active in network */
-	IConsoleCmdHookAdd ("stopall",      ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
 	IConsoleCmdHookAdd ("resetengines", ICONSOLE_HOOK_ACCESS, ConHookNoNetwork);
 
 	/*** Networking commands ***/
