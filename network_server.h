@@ -12,7 +12,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_SHUTDOWN);
 DEF_SERVER_SEND_COMMAND(PACKET_SERVER_NEWGAME);
 DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_RCON)(NetworkClientState *cs, uint16 color, const char *command);
 
-bool NetworkFindName(char new_name[NETWORK_NAME_LENGTH]);
+bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH]);
 void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest, const char *msg, uint16 from_index);
 
 bool NetworkServer_ReadPackets(NetworkClientState *cs);
