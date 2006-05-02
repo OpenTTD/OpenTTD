@@ -800,6 +800,52 @@ uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineI
 	return group->g.callback.result;
 }
 
+/**
+ * Evaluate a newgrf callback for vehicles with a different vehicle for parent scope.
+ * @param callback The callback to evalute
+ * @param param1   First parameter of the callback
+ * @param param2   Second parameter of the callback
+ * @param engine   Engine type of the vehicle to evaluate the callback for
+ * @param v        The vehicle to evaluate the callback for, or NULL if it doesnt exist yet
+ * @param parent   The vehicle to use for parent scope
+ * @return The value the callback returned, or CALLBACK_FAILED if it failed
+ */
+uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v, const Vehicle *parent)
+{
+	const SpriteGroup *group;
+	ResolverObject object;
+	CargoID cargo;
+
+	NewVehicleResolver(&object, v);
+
+	object.callback        = callback;
+	object.callback_param1 = param1;
+	object.callback_param2 = param2;
+
+	object.u.vehicle.parent = parent;
+
+	cargo = (v == NULL) ? GC_PURCHASE : _global_cargo_id[_opt.landscape][v->cargo_type];
+
+	group = engine_custom_sprites[engine][cargo];
+
+	if (v != NULL && v->type == VEH_Train) {
+		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
+
+		if (overset != NULL) group = overset;
+	}
+
+	group = Resolve(group, &object);
+
+	if ((group == NULL || group->type != SGT_CALLBACK) && cargo != GC_DEFAULT) {
+		// This group is empty but perhaps there'll be a default one.
+		group = Resolve(engine_custom_sprites[engine][GC_DEFAULT], &object);
+	}
+
+	if (group == NULL || group->type != SGT_CALLBACK)
+		return CALLBACK_FAILED;
+
+	return group->g.callback.result;
+}
 
 static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_random_bits, bool first)
 {

@@ -26,6 +26,7 @@ void SetEngineGRF(EngineID engine, uint32 grfid);
 uint32 GetEngineGRFID(EngineID engine);
 
 uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v);
+uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v, const Vehicle *parent);
 bool UsesWagonOverride(const Vehicle *v);
 #define GetCustomVehicleSprite(v, direction) GetCustomEngineSprite(v->engine_type, v, direction)
 #define GetCustomVehicleIcon(et, direction) GetCustomEngineSprite(et, NULL, direction)
