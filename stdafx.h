@@ -61,7 +61,7 @@
 
 // Stuff for GCC
 #if defined(__GNUC__)
-# define NORETURN
+# define NORETURN              __attribute((noreturn))
 # define FORCEINLINE inline
 # define CDECL
 //#include <alloca.h>
