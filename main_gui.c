@@ -2472,3 +2472,9 @@ void GameSizeChanged(void)
 	ScreenSizeChanged();
 	MarkWholeScreenDirty();
 }
+
+void InitializeMainGui(void)
+{
+	/* Clean old GUI values */
+	_last_built_railtype = 0;
+}

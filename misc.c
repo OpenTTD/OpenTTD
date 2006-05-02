@@ -101,6 +101,7 @@ void InitializeAirportGui(void);
 void InitializeDock(void);
 void InitializeDockGui(void);
 void InitializeIndustries(void);
+void InitializeMainGui(void);
 void InitializeLandscape(void);
 void InitializeTowns(void);
 void InitializeTrees(void);
@@ -165,6 +166,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeSigns();
 	InitializeStations();
 	InitializeIndustries();
+	InitializeMainGui();
 
 	InitializeNameMgr();
 	InitializeVehiclesGuiList();
