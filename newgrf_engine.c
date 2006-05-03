@@ -643,7 +643,7 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 	uint set;
 	bool in_motion;
 
-	if (v == NULL) return group->g.real.loaded[0];
+	if (v == NULL) return group->g.real.loading[0];
 
 	if (v->type == VEH_Train) {
 		in_motion = GetFirstVehicleInChain(v)->current_order.type != OT_LOADING;
