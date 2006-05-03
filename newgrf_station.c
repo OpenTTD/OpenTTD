@@ -264,28 +264,27 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
 		if (st->speclist[i].spec == NULL && st->speclist[i].grfid == 0) break;
 	}
 
-	if (i < 256) {
-		if (exec) {
-			if (i >= st->num_specs) {
-				st->num_specs = i + 1;
-				st->speclist = realloc(st->speclist, st->num_specs * sizeof(*st->speclist));
+	if (i == 256) return -1;
 
-				if (st->num_specs == 2) {
-					/* Initial allocation */
-					st->speclist[0].spec     = NULL;
-					st->speclist[0].grfid    = 0;
-					st->speclist[0].localidx = 0;
-				}
+	if (exec) {
+		if (i >= st->num_specs) {
+			st->num_specs = i + 1;
+			st->speclist = realloc(st->speclist, st->num_specs * sizeof(*st->speclist));
+
+			if (st->num_specs == 2) {
+				/* Initial allocation */
+				st->speclist[0].spec     = NULL;
+				st->speclist[0].grfid    = 0;
+				st->speclist[0].localidx = 0;
 			}
-
-			st->speclist[i].spec     = statspec;
-			st->speclist[i].grfid    = statspec->grfid;
-			st->speclist[i].localidx = statspec->localidx;
 		}
-		return i;
+
+		st->speclist[i].spec     = statspec;
+		st->speclist[i].grfid    = statspec->grfid;
+		st->speclist[i].localidx = statspec->localidx;
 	}
 
-	return -1;
+	return i;
 }
 
 
