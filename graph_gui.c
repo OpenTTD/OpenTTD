@@ -212,7 +212,7 @@ static void DrawGraph(const GraphDrawer *gw)
 /* GRAPH LEGEND */
 /****************/
 
-void DrawPlayerIcon(int p, int x, int y)
+void DrawPlayerIcon(PlayerID p, int x, int y)
 {
 	DrawSprite(SPRITE_PALETTE(PLAYER_SPRITE_COLOR(p) + 0x2EB), x, y);
 }
