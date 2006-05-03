@@ -847,31 +847,9 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				StationSpec *statspec = &_cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
 				const StationSpec *srcstatspec = &_cur_grffile->stations[srcid];
-				uint t;
 
 				statspec->tiles = srcstatspec->tiles;
-				statspec->renderdata = calloc(statspec->tiles, sizeof(*statspec->renderdata));
-				for (t = 0; t < statspec->tiles; t++) {
-					DrawTileSprites *dts = &statspec->renderdata[t];
-					const DrawTileSprites *sdts = &srcstatspec->renderdata[t];
-					DrawTileSeqStruct const *sdtss = sdts->seq;
-					int seq_count = 0;
-
-					dts->seq = NULL;
-					dts->ground_sprite = sdts->ground_sprite;
-					if (dts->ground_sprite == 0) continue;
-
-					while (true) {
-						DrawTileSeqStruct *dtss;
-
-						// no relative bounding box support
-						dts->seq = realloc((void*)dts->seq, ++seq_count * sizeof(DrawTileSeqStruct));
-						dtss = (DrawTileSeqStruct*) &dts->seq[seq_count - 1];
-						*dtss = *sdtss;
-						if ((byte) dtss->delta_x == 0x80) break;
-						sdtss++;
-					}
-				}
+				statspec->renderdata = srcstatspec->renderdata;
 			}
 			break;
 
