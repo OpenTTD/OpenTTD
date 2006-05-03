@@ -805,6 +805,8 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 				statspec->tiles = grf_load_extended(&buf);
 				statspec->renderdata = calloc(statspec->tiles, sizeof(*statspec->renderdata));
+				statspec->copied_renderdata = false;
+
 				for (t = 0; t < statspec->tiles; t++) {
 					DrawTileSprites *dts = &statspec->renderdata[t];
 					uint seq_count = 0;
@@ -850,6 +852,7 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 				statspec->tiles = srcstatspec->tiles;
 				statspec->renderdata = srcstatspec->renderdata;
+				statspec->copied_renderdata = true;
 			}
 			break;
 
@@ -2475,14 +2478,25 @@ static void InitializeGRFSpecial(void)
 
 static void ResetCustomStations(void)
 {
+	StationSpec *statspec;
 	GRFFile *file;
 	uint i;
+	uint t;
 
 	for (file = _first_grffile; file != NULL; file = file->next) {
 		for (i = 0; i < file->num_stations; i++) {
 			if (file->stations[i].grfid != file->grfid) continue;
+			statspec = &file->stations[i];
 
-			// TODO: Release renderdata, platforms and layouts
+			/* Release renderdata, if it wasn't copied from another custom station spec  */
+			if (!statspec->copied_renderdata) {
+				for (t = 0; t < statspec->tiles; t++) {
+					free((void*)statspec->renderdata[t].seq);
+				}
+				free(statspec->renderdata);
+			}
+
+			// TODO: Release platforms and layouts
 		}
 
 		/* Free and reset the station data */
