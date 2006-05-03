@@ -653,7 +653,7 @@ static uint32 VehicleResolveReal(const ResolverObject *object, uint num_loaded, 
 		*in_motion = v->current_order.type != OT_LOADING;
 	}
 
-	totalsets = in_motion ? num_loaded : num_loading;
+	totalsets = *in_motion ? num_loaded : num_loading;
 
 	if (v->cargo_count == v->cargo_cap || totalsets == 1) {
 		set = totalsets - 1;
