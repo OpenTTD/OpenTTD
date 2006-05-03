@@ -9,6 +9,7 @@
 #include "rail.h"
 #include "debug.h"
 #include "variables.h"
+#include "depot.h"
 
 // remember which tiles we have already visited so we don't visit them again.
 static bool TPFSetTileBit(TrackPathFinder *tpf, TileIndex tile, int dir)
@@ -293,6 +294,9 @@ static void TPFMode1(TrackPathFinder *tpf, TileIndex tile, uint direction)
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
+		// don't enter train depot from the back
+		if (IsTileDepotType(tile, TRANSPORT_RAIL) && GB(_m[tile].m5, 0, 2) == direction) return;
+
 		if (IsTileType(tile_org, MP_RAILWAY) || IsTileType(tile_org, MP_STATION) || IsTileType(tile_org, MP_TUNNELBRIDGE))
 			if (IsTileType(tile, MP_RAILWAY) || IsTileType(tile, MP_STATION) || IsTileType(tile, MP_TUNNELBRIDGE))
 				/* Check if we are on a bridge (middle parts don't have an owner */
