@@ -927,11 +927,7 @@ static void DrawSmallOrderList(const Vehicle *v, int x, int y) {
 	sel = v->cur_order_index;
 
 	FOR_VEHICLE_ORDERS(v, order) {
-		if (sel == 0) {
-			_stringwidth_base = 0xE0;
-			DoDrawString( "\xAF", x-6, y, 16);
-			_stringwidth_base = 0;
-		}
+		if (sel == 0) DrawString(x - 6, y, STR_SMALL_RIGHT_ARROW, 16);
 		sel--;
 
 		if (order->type == OT_GOTO_STATION) {

@@ -944,6 +944,8 @@ STR_CRATES                                                      :crates
 STR_RES_OTHER                                                   :other
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Can't share order list...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Can't copy order list...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - End of Shared Orders - -
