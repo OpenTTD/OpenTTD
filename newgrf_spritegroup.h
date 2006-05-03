@@ -181,7 +181,7 @@ typedef struct ResolverObject {
 	uint32 (*GetTriggers)(const struct ResolverObject*);
 	void (*SetTriggers)(const struct ResolverObject*, int);
 	uint32 (*GetVariable)(const struct ResolverObject*, byte, byte);
-	uint32 (*ResolveReal)(const struct ResolverObject*, uint, uint, bool*);
+	const SpriteGroup *(*ResolveReal)(const struct ResolverObject*, const SpriteGroup*);
 } ResolverObject;
 
 

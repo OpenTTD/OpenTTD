@@ -636,24 +636,22 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 }
 
 
-static uint32 VehicleResolveReal(const ResolverObject *object, uint num_loaded, uint num_loading, bool *in_motion)
+static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const SpriteGroup *group)
 {
 	const Vehicle *v = object->u.vehicle.self;
 	uint totalsets;
 	uint set;
+	bool in_motion;
 
-	if (v == NULL) {
-		*in_motion = false;
-		return 0;
-	}
+	if (v == NULL) return group->g.real.loaded[0];
 
 	if (v->type == VEH_Train) {
-		*in_motion = GetFirstVehicleInChain(v)->current_order.type != OT_LOADING;
+		in_motion = GetFirstVehicleInChain(v)->current_order.type != OT_LOADING;
 	} else {
-		*in_motion = v->current_order.type != OT_LOADING;
+		in_motion = v->current_order.type != OT_LOADING;
 	}
 
-	totalsets = *in_motion ? num_loaded : num_loading;
+	totalsets = in_motion ? group->g.real.num_loaded : group->g.real.num_loading;
 
 	if (v->cargo_count == v->cargo_cap || totalsets == 1) {
 		set = totalsets - 1;
@@ -663,7 +661,7 @@ static uint32 VehicleResolveReal(const ResolverObject *object, uint num_loaded, 
 		set = v->cargo_count * (totalsets - 2) / max(1, v->cargo_cap) + 1;
 	}
 
-	return set;
+	return in_motion ? group->g.real.loaded[set] : group->g.real.loading[set];
 }
 
 

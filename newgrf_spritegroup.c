@@ -71,19 +71,6 @@ void InitializeSpriteGroupPool(void)
 }
 
 
-static inline const SpriteGroup *ResolveReal(const SpriteGroup *group, ResolverObject *object)
-{
-	bool in_motion;
-	uint set;
-
-	set = object->ResolveReal(object, group->g.real.num_loaded, group->g.real.num_loading, &in_motion);
-
-	assert((in_motion && set < group->g.real.num_loaded) || (!in_motion && set < group->g.real.num_loading));
-
-	return in_motion ? group->g.real.loaded[set] : group->g.real.loading[set];
-}
-
-
 static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter)
 {
 	/* Return common variables */
@@ -240,7 +227,7 @@ const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object)
 	if (group == NULL) return NULL;
 
 	switch (group->type) {
-		case SGT_REAL:          return ResolveReal(group, object);
+		case SGT_REAL:          return object->ResolveReal(object, group);
 		case SGT_DETERMINISTIC: return ResolveVariable(group, object);
 		case SGT_RANDOMIZED:    return ResolveRandom(group, object);
 		default:                return group;
