@@ -26,6 +26,9 @@ static bool _has_console;
 	#define __TIMESTAMP__   __DATE__ __TIME__
 #endif
 
+#if defined(__MINGW32__)
+	#include <stdint.h>
+#endif
 
 static bool cursor_visible = true;
 
