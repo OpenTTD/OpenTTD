@@ -118,12 +118,12 @@ static inline bool IsValidDiagDirection(DiagDirection d)
 	return d < DIAGDIR_END;
 }
 
-static inline bool IsValidDirection(DiagDirection d)
+static inline bool IsValidDirection(Direction d)
 {
 	return d < DIR_END;
 }
 
-static inline bool IsValidAxis(DiagDirection d)
+static inline bool IsValidAxis(Axis d)
 {
 	return d < AXIS_END;
 }
