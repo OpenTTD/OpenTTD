@@ -1324,7 +1324,7 @@ static void DrawTile_Track(TileInfo *ti)
 				DrawTileSeqStruct const *seq;
 				// emulate station tile - open with building
 				const DrawTileSprites *cust = &statspec->renderdata[2 + GetWaypointAxis(ti->tile)];
-				uint32 relocation = GetCustomStationRelocation(statspec, ComposeWaypointStation(ti->tile), 0);
+				uint32 relocation = GetCustomStationRelocation(statspec, ComposeWaypointStation(ti->tile), ti->tile, 0);
 
 				/* We don't touch the 0x8000 bit. In all this
 				 * waypoint code, it is used to indicate that

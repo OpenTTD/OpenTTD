@@ -1989,7 +1989,7 @@ static void DrawTile_Station(TileInfo *ti)
 		if (statspec != NULL) {
 			uint tile = GetStationGfx(ti->tile);
 
-			relocation = GetCustomStationRelocation(statspec, st, 0);
+			relocation = GetCustomStationRelocation(statspec, st, ti->tile, 0);
 
 			/* Ensure the chosen tile layout is valid for this custom station */
 			t = &statspec->renderdata[tile < statspec->tiles ? tile : GetRailStationAxis(ti->tile)];

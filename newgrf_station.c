@@ -225,7 +225,7 @@ static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, 
 	}
 }
 
-uint32 GetCustomStationRelocation(const StationSpec *statspec, const Station *st, byte ctype)
+SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile, byte ctype)
 {
 	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(statspec->spritegroup[ctype], st);
 	if (rsg == NULL) return 0;
