@@ -1083,6 +1083,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 
 				MakeRailStation(tile, st->owner, st->index, axis, *layout_ptr++, GB(p2, 0, 4));
 				SetCustomStationSpecIndex(tile, specindex);
+				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
 
 				tile += tile_delta;
 			} while (--w);

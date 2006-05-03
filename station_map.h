@@ -236,6 +236,18 @@ static inline uint GetCustomStationSpecIndex(TileIndex t)
 	return _m[t].m4;
 }
 
+static inline void SetStationTileRandomBits(TileIndex t, byte random_bits)
+{
+	assert(IsTileType(t, MP_STATION));
+	SB(_m[t].m3, 4, 4, random_bits);
+}
+
+static inline byte GetStationTileRandomBits(TileIndex t)
+{
+	assert(IsTileType(t, MP_STATION));
+	return GB(_m[t].m3, 4, 4);
+}
+
 static inline void MakeStation(TileIndex t, Owner o, StationID sid, byte m5)
 {
 	SetTileType(t, MP_STATION);
