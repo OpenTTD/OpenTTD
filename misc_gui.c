@@ -194,7 +194,7 @@ static const char *credits[] = {
 	"  Matthijs Kooijman (blathijs) - Pathfinder-god",
 	"  Victor Fischer (Celestar) - Programming everywhere you need him to",
 	"  Tamás Faragó (Darkvater) - Lead coder",
-	"  Kerekes Miham (MiHaMiX) - Translator system, and Nightlies host",
+	"  Attila Bán (MiHaMiX) - WebTranslator, Nightlies, Wiki and bugtracker host",
 	"  Owen Rudge (orudge) - Forum- and masterserver host, OS/2 port",
 	"  Peter Nelson (peter1138) - Spiritual descendant from newgrf gods",
 	"  Christoph Mallon (Tron) - Programmer, code correctness police",
@@ -1065,7 +1065,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	w = AllocateWindowDesc(&_query_string_desc);
 
 	GetString(_edit_str_buf, str);
-	_edit_str_buf[realmaxlen] = '\0';
+	_edit_str_buf[realmaxlen-1] = '\0';
 
 	if (maxlen & 0x1000) {
 		WP(w, querystr_d).orig = NULL;
