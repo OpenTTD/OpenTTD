@@ -1996,7 +1996,7 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 	}
 
-	if (t == NULL) t = &_station_display_datas[GetStationGfx(ti->tile)];
+	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationGfx(ti->tile)];
 
 	image = t->ground_sprite;
 	if (image & PALETTE_MODIFIER_COLOR) image |= image_or_modificator;

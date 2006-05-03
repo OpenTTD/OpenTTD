@@ -1335,21 +1335,24 @@ static void DrawTile_Track(TileInfo *ti)
 				 * should be drawn in company colors, and it's
 				 * up to the GRF file to decide that. */
 
-				image = cust->ground_sprite;
-				image += (image < _custom_sprites_base) ? rti->total_offset : rti->custom_ground_offset;
+				/* If there is no sprite layout, we fall back to the default waypoint graphics. */
+				if (cust != NULL && cust->seq != NULL) {
+					image = cust->ground_sprite;
+					image += (image < _custom_sprites_base) ? rti->total_offset : rti->custom_ground_offset;
 
-				DrawGroundSprite(image);
+					DrawGroundSprite(image);
 
-				if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+					if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
-				foreach_draw_tile_seq(seq, cust->seq) {
-					DrawSpecialBuilding(
-						seq->image + relocation, 0, ti,
-						seq->delta_x, seq->delta_y, seq->delta_z,
-						seq->width, seq->height, seq->unk
-					);
+					foreach_draw_tile_seq(seq, cust->seq) {
+						DrawSpecialBuilding(
+							seq->image + relocation, 0, ti,
+							seq->delta_x, seq->delta_y, seq->delta_z,
+							seq->width, seq->height, seq->unk
+						);
+					}
+					return;
 				}
-				return;
 			}
 		}
 
@@ -1357,7 +1360,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		image = drss++->image;
 		/* @note This is kind of an ugly hack, as the PALETTE_MODIFIER_COLOR indicates
-	 	 * whether the sprite is railtype dependent. Rewrite this asap */
+		 * whether the sprite is railtype dependent. Rewrite this asap */
 		if (image & PALETTE_MODIFIER_COLOR) image = (image & SPRITE_MASK) + rti->total_offset;
 
 		// adjust ground tile for desert

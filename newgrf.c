@@ -810,12 +810,9 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					uint seq_count = 0;
 					PalSpriteID ground_sprite;
 
+					dts->seq = NULL;
 					ground_sprite = grf_load_dword(&buf);
-					if (ground_sprite == 0) {
-						static const DrawTileSeqStruct empty = {0x80, 0, 0, 0, 0, 0, 0};
-						dts->seq = &empty;
-						continue;
-					}
+					if (ground_sprite == 0) continue;
 
 					if (HASBIT(ground_sprite, 31)) {
 						// Bit 31 indicates that we should use a custom sprite.
@@ -825,7 +822,6 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						dts->ground_sprite = ground_sprite;
 					}
 
-					dts->seq = NULL;
 					while (buf < *bufp + len) {
 						DrawTileSeqStruct *dtss;
 
@@ -861,15 +857,11 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 					DrawTileSeqStruct const *sdtss = sdts->seq;
 					int seq_count = 0;
 
-					dts->ground_sprite = sdts->ground_sprite;
-					if (dts->ground_sprite == 0) {
-						static const DrawTileSeqStruct empty = {0x80, 0, 0, 0, 0, 0, 0};
-						dts->seq = &empty;
-						continue;
-					}
-
 					dts->seq = NULL;
-					while (1) {
+					dts->ground_sprite = sdts->ground_sprite;
+					if (dts->ground_sprite == 0) continue;
+
+					while (true) {
 						DrawTileSeqStruct *dtss;
 
 						// no relative bounding box support
