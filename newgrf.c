@@ -793,8 +793,8 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 		case 0x08: /* Class ID */
 			FOR_EACH_OBJECT {
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
-				uint32 classid = BSWAP32(grf_load_dword(&buf));
-				statspec[i].sclass = AllocateStationClass(classid);
+				uint32 classid = grf_load_dword(&buf);
+				statspec[i].sclass = AllocateStationClass(BSWAP32(classid));
 			}
 			break;
 
