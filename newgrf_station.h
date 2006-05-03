@@ -98,7 +98,7 @@ const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station);
 /* Get sprite offset for a given custom station and station structure (may be
  * NULL if ctype is set - that means we are in a build dialog). The station
  * structure is used for variational sprite groups. */
-SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile, byte ctype);
+SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile, CargoID ctype);
 
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
 int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec);

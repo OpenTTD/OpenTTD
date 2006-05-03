@@ -4,12 +4,14 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "variables.h"
 #include "debug.h"
 #include "sprite.h"
 #include "table/strings.h"
 #include "station.h"
 #include "station_map.h"
 #include "newgrf_station.h"
+#include "newgrf_spritegroup.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 
@@ -158,87 +160,167 @@ const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station)
 	return NULL;
 }
 
-static const RealSpriteGroup *ResolveStationSpriteGroup(const SpriteGroup *spg, const Station *st)
+
+/* Station Resolver Functions */
+static uint32 StationGetRandomBits(const ResolverObject *object)
 {
-	if (spg == NULL) return NULL;
-	switch (spg->type) {
-		case SGT_REAL:
-			return &spg->g.real;
-
-		case SGT_DETERMINISTIC: {
-			const DeterministicSpriteGroup *dsg = &spg->g.determ;
-			SpriteGroup *target;
-			int value = -1;
-			byte variable = dsg->adjusts[0].variable;
-
-			if ((variable >> 6) == 0) {
-				/* General property */
-				value = GetDeterministicSpriteValue(variable);
-			} else {
-				if (st == NULL) {
-					/* We are in a build dialog of something,
-					 * and we are checking for something undefined.
-					 * That means we should get the first target
-					 * (NOT the default one). */
-					if (dsg->num_ranges > 0) {
-						target = dsg->ranges[0].group;
-					} else {
-						target = dsg->default_group;
-					}
-					return ResolveStationSpriteGroup(target, NULL);
-				}
-
-				/* Station-specific property. */
-				if (dsg->var_scope == VSG_SCOPE_PARENT) {
-					/* TODO: Town structure. */
-
-				} else /* VSG_SELF */ {
-					if (variable == 0x40 || variable == 0x41) {
-						/* FIXME: This is ad hoc only
-						 * for waypoints. */
-						value = 0x01010000;
-					} else {
-						/* TODO: Only small fraction done. */
-						// TTDPatch runs on little-endian arch;
-						// Variable is 0x70 + offset in the TTD's station structure
-						switch (variable - 0x70) {
-							case 0x80: value = st->facilities;             break;
-							case 0x81: value = st->airport_type;           break;
-							case 0x82: value = st->truck_stops->status;    break;
-							case 0x83: value = st->bus_stops->status;      break;
-							case 0x86: value = st->airport_flags & 0xFFFF; break;
-							case 0x87: value = st->airport_flags & 0xFF;   break;
-							case 0x8A: value = st->build_date;             break;
-						}
-					}
-				}
-			}
-
-			target = value != -1 ? EvalDeterministicSpriteGroup(dsg, value) : dsg->default_group;
-			return ResolveStationSpriteGroup(target, st);
-		}
-
-		default:
-		case SGT_RANDOMIZED:
-			DEBUG(grf, 6)("I don't know how to handle random spritegroups yet!");
-			return NULL;
-	}
+	const Station *st = object->u.station.st;
+	const TileIndex tile = object->u.station.tile;
+	return (st == NULL ? 0 : st->random_bits) | (tile == INVALID_TILE ? 0 : GetStationTileRandomBits(tile) << 16);
 }
 
-SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile, byte ctype)
+
+static uint32 StationGetTriggers(const ResolverObject *object)
 {
-	const RealSpriteGroup *rsg = ResolveStationSpriteGroup(statspec->spritegroup[ctype], st);
-	if (rsg == NULL) return 0;
+	const Station *st = object->u.station.st;
+	return st == NULL ? 0 : st->waiting_triggers;
+}
 
-	if (rsg->num_loading != 0) return rsg->loading[0]->g.result.sprite;
-	if (rsg->num_loaded  != 0) return rsg->loaded[0]->g.result.sprite;
 
-	DEBUG(grf, 6)("Custom station 0x%08x::0x%02x has no sprites associated.",
-		statspec->grfid, statspec->localidx);
-	/* This is what gets subscribed of dtss->image in newgrf.c,
-	 * so it's probably kinda "default offset". Try to use it as
-	 * emergency measure. */
-	return 0;
+static void StationSetTriggers(const ResolverObject *object, int triggers)
+{
+	Station *st = (Station*)object->u.station.st;
+	assert(st != NULL);
+	st->waiting_triggers = triggers;
+}
+
+
+static uint32 StationGetVariable(const ResolverObject *object, byte variable, byte parameter)
+{
+	const Station *st = object->u.station.st;
+
+	if (st == NULL) {
+		/* Station does not exist, so we're in a purchase list */
+		switch (variable) {
+			case 0x40:
+			case 0x41:
+			case 0x46:
+			case 0x47:
+			case 0x49: return 0x2110000;       /* Platforms, tracks & position */
+			case 0x42: return 0;               /* Rail type (XXX Get current type from GUI?) */
+			case 0x43: return _current_player; /* Station owner */
+			case 0xFA: return _date;           /* Build date */
+			default:   return -1;
+		}
+	}
+
+	switch (variable) {
+		/* Calculated station variables */
+		case 0x43: return st->owner; /* Station owner */
+		case 0x44: return 0;         /* PBS status */
+		case 0x48: { /* Accepted cargo types */
+			CargoID cargo_type;
+			uint32 value = 0;
+
+			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
+				if (HASBIT(st->goods[cargo_type].waiting_acceptance, 15)) SETBIT(value, cargo_type);
+			}
+			return value;
+		}
+
+		/* Variables which use the parameter */
+		case 0x60: return GB(st->goods[parameter].waiting_acceptance, 0, 12);
+		case 0x61: return st->goods[parameter].days_since_pickup;
+		case 0x62: return st->goods[parameter].rating;
+		case 0x63: return st->goods[parameter].enroute_time;
+		case 0x64: return st->goods[parameter].last_speed | (st->goods[parameter].last_age << 8);
+
+		/* General station properties */
+		case 0x82: return 50;
+		case 0x84: return st->string_id;
+		case 0x86: return 0;
+		case 0x9A: return st->had_vehicle_of_type;
+		case 0xF0: return st->facilities;
+		case 0xF1: return st->airport_type;
+		case 0xF2: return st->truck_stops->status;
+		case 0xF3: return st->bus_stops->status;
+		case 0xF6: return st->airport_flags;
+		case 0xF7: return st->airport_flags & 0xFF;
+		case 0xFA: return st->build_date;
+	}
+
+	DEBUG(grf, 1)("Unhandled station property 0x%X", variable);
+
+	return -1;
+}
+
+
+static const SpriteGroup *StationResolveReal(const ResolverObject *object, const SpriteGroup *group)
+{
+	const Station *st = object->u.station.st;
+	const StationSpec *statspec = object->u.station.statspec;
+	uint set;
+
+	uint cargo = 0;
+	CargoID cargo_type = CT_INVALID; /* XXX Pick the correct cargo type */
+
+	if (st == NULL || statspec->sclass == STAT_CLASS_WAYP) {
+		return group->g.real.loading[0];
+	}
+
+	if (cargo_type == CT_INVALID) {
+		for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
+			cargo += GB(st->goods[cargo_type].waiting_acceptance, 0, 12);
+		}
+	} else {
+		cargo = GB(st->goods[cargo_type].waiting_acceptance, 0, 12);
+	}
+
+	if (HASBIT(statspec->flags, 1)) cargo /= (st->trainst_w + st->trainst_h);
+	cargo = min(0xfff, cargo);
+
+	if (cargo > statspec->cargo_threshold) {
+		if (group->g.real.num_loaded > 0) {
+			set = ((cargo - statspec->cargo_threshold) * group->g.real.num_loaded) / (0xfff - statspec->cargo_threshold);
+			return group->g.real.loaded[set];
+		}
+	} else {
+		if (group->g.real.num_loading > 0) {
+			set = (cargo * group->g.real.num_loading) / statspec->cargo_threshold;
+			return group->g.real.loading[set];
+		}
+	}
+
+	return group->g.real.loading[0];
+}
+
+
+static void NewStationResolver(ResolverObject *res, const StationSpec *statspec, const Station *st, TileIndex tile)
+{
+	res->GetRandomBits = StationGetRandomBits;
+	res->GetTriggers   = StationGetTriggers;
+	res->SetTriggers   = StationSetTriggers;
+	res->GetVariable   = StationGetVariable;
+	res->ResolveReal   = StationResolveReal;
+
+	res->u.station.st       = st;
+	res->u.station.statspec = statspec;
+	res->u.station.tile     = tile;
+
+	res->callback        = 0;
+	res->callback_param1 = 0;
+	res->callback_param2 = 0;
+	res->last_value      = 0;
+	res->trigger         = 0;
+	res->reseed          = 0;
+}
+
+
+SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile, CargoID ctype)
+{
+	const SpriteGroup *group;
+	ResolverObject object;
+
+	NewStationResolver(&object, statspec, st, tile);
+
+	group = Resolve(statspec->spritegroup[ctype], &object);
+	if ((group == NULL || group->type != SGT_RESULT) && ctype != GC_DEFAULT) {
+		group = Resolve(statspec->spritegroup[GC_DEFAULT], &object);
+	}
+
+	if (group == NULL || group->type != SGT_RESULT) return 0;
+
+	return group->g.result.sprite;
 }
 
 
