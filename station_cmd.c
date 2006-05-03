@@ -2449,7 +2449,7 @@ static void UpdateStationRating(Station *st)
 
 			{
 				byte days = ge->days_since_pickup;
-				if (st->last_vehicle != INVALID_VEHICLE &&
+				if (st->last_vehicle != INVALID_VEHICLE && IsVehicleIndex(st->last_vehicle) &&
 						GetVehicle(st->last_vehicle)->type == VEH_Ship)
 							days >>= 2;
 				(days > 21) ||
