@@ -669,7 +669,6 @@ SRCS += ship_gui.c
 SRCS += signs.c
 SRCS += smallmap_gui.c
 SRCS += sound.c
-SRCS += sprite.c
 SRCS += spritecache.c
 SRCS += station_cmd.c
 SRCS += station_gui.c

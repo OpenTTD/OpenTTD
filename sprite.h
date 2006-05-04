@@ -45,20 +45,4 @@ typedef struct DrawBuildingsTileStruct {
 #include "newgrf_spritegroup.h"
 
 
-/* This takes value (probably of the variable specified in the group) and
- * chooses corresponding SpriteGroup accordingly to the given
- * DeterministicSpriteGroup. */
-SpriteGroup *EvalDeterministicSpriteGroup(const DeterministicSpriteGroup *dsg, int value);
-/* Get value of a common deterministic SpriteGroup variable. */
-int GetDeterministicSpriteValue(byte var);
-
-/* This takes randomized bitmask (probably associated with
- * vehicle/station/whatever) and chooses corresponding SpriteGroup
- * accordingly to the given RandomizedSpriteGroup. */
-SpriteGroup *EvalRandomizedSpriteGroup(const RandomizedSpriteGroup *rsg, byte random_bits);
-/* Triggers given RandomizedSpriteGroup with given bitmask and returns and-mask
- * of random bits to be reseeded, or zero if there were no triggers matched
- * (then they are |ed to @waiting_triggers instead). */
-byte RandomizedSpriteGroupTriggeredBits(const RandomizedSpriteGroup *rsg, byte triggers, byte *waiting_triggers);
-
 #endif /* SPRITE_H */
