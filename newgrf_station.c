@@ -323,11 +323,11 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 }
 
 
-SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile, CargoID ctype)
+SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
-	ctype = (st == NULL) ? GC_PURCHASE : GC_DEFAULT_NA;
+	CargoID ctype = (st == NULL) ? GC_PURCHASE : GC_DEFAULT_NA;
 
 	NewStationResolver(&object, statspec, st, tile);
 

@@ -405,7 +405,7 @@ void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 		return;
 	}
 
-	relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE, 1);
+	relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE);
 	// emulate station tile - open with building
 	// add 1 to get the other direction
 	cust = &statspec->renderdata[2];
