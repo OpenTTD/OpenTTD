@@ -199,6 +199,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			case 0x49: return 0x2110000;       /* Platforms, tracks & position */
 			case 0x42: return 0;               /* Rail type (XXX Get current type from GUI?) */
 			case 0x43: return _current_player; /* Station owner */
+			case 0x44: return 2;               /* PBS status */
 			case 0xFA: return _date;           /* Build date */
 			default:   return -1;
 		}
@@ -208,7 +209,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		/* Calculated station variables */
 		case 0x42: GetRailType(object->u.station.tile) << 8; /* Rail type */
 		case 0x43: return st->owner; /* Station owner */
-		case 0x44: return 0;         /* PBS status */
+		case 0x44: return 2;         /* PBS status */
 		case 0x48: { /* Accepted cargo types */
 			CargoID cargo_type;
 			uint32 value = 0;
