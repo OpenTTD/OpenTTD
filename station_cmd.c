@@ -29,6 +29,8 @@
 #include "train.h"
 #include "water_map.h"
 #include "industry_map.h"
+#include "newgrf_callbacks.h"
+#include "newgrf_station.h"
 
 enum {
 	/* Max stations: 64000 (64 * 1000) */
@@ -1049,6 +1051,20 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	specindex = AllocateSpecToStation(statspec, st, flags & DC_EXEC);
 	if (specindex == -1) return CMD_ERROR;
 
+	if (statspec != NULL) {
+		/* Perform NewStation checks */
+
+		/* Check if the station size is permitted */
+		if (HASBIT(statspec->disallowed_platforms, numtracks - 1) || HASBIT(statspec->disallowed_lengths, plat_len - 1)) {
+			return CMD_ERROR;
+		}
+
+		/* Check if the station is buildable */
+		if (HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) && GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
+			return CMD_ERROR;
+		}
+	}
+
 	if (flags & DC_EXEC) {
 		TileIndexDiff tile_delta;
 		byte *layout_ptr;
@@ -1084,6 +1100,11 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 				MakeRailStation(tile, st->owner, st->index, axis, *layout_ptr++, GB(p2, 0, 4));
 				SetCustomStationSpecIndex(tile, specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
+
+				if (statspec != NULL) {
+					uint16 callback = GetStationCallback(CBID_STATION_TILE_LAYOUT, 0, 0, statspec, st, tile);
+					if (callback != CALLBACK_FAILED && callback < 8) SetStationGfx(tile, callback);
+				}
 
 				tile += tile_delta;
 			} while (--w);
@@ -1992,8 +2013,15 @@ static void DrawTile_Station(TileInfo *ti)
 
 			relocation = GetCustomStationRelocation(statspec, st, ti->tile);
 
+			if (HASBIT(statspec->callbackmask, CBM_CUSTOM_LAYOUT)) {
+				uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
+				if (callback != CALLBACK_FAILED) tile = callback + GetRailStationAxis(ti->tile);
+			}
+
 			/* Ensure the chosen tile layout is valid for this custom station */
-			t = &statspec->renderdata[tile < statspec->tiles ? tile : GetRailStationAxis(ti->tile)];
+			if (statspec->renderdata != NULL) {
+				t = &statspec->renderdata[tile < statspec->tiles ? tile : GetRailStationAxis(ti->tile)];
+			}
 		}
 	}
 

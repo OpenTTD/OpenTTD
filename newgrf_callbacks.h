@@ -19,6 +19,14 @@ enum CallbackID {
 	// only for train vehicles
 	CBID_TRAIN_VEHICLE_LENGTH       = 0x11,
 
+	/* Called (if appropriate bit in callback mask is set) to determine if a
+	 * newstation should be made available to build */
+	CBID_STATION_AVAILABILITY       = 0x13,
+
+	/* Called (if appropriate bit in callback mask is set) when drawing a tile
+	 * to choose a sprite layout to draw, instead of the standard 0-7 range */
+	CBID_STATION_SPRITE_LAYOUT      = 0x14,
+
 	// Refit capacity, the passed vehicle needs to have its ->cargo_type set to
 	// the cargo we are refitting to, returns the new cargo capacity
 	CBID_VEHICLE_REFIT_CAPACITY     = 0x15,
@@ -30,6 +38,9 @@ enum CallbackID {
 	/* This callback is called from vehicle purchase lists. It returns a value to be
 	 * used as a custom string ID in the 0xD000 range. */
 	CBID_VEHICLE_ADDITIONAL_TEXT    = 0x23,
+
+	/* Called when building a station to customize the tile layout */
+	CBID_STATION_TILE_LAYOUT        = 0x24,
 };
 
 /**
