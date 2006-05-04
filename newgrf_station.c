@@ -206,6 +206,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 	switch (variable) {
 		/* Calculated station variables */
+		case 0x42: GetRailType(object->u.station.tile) << 8; /* Rail type */
 		case 0x43: return st->owner; /* Station owner */
 		case 0x44: return 0;         /* PBS status */
 		case 0x48: { /* Accepted cargo types */
@@ -229,7 +230,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0x82: return 50;
 		case 0x84: return st->string_id;
 		case 0x86: return 0;
-		case 0x9A: return st->had_vehicle_of_type;
+		case 0x8A: return st->had_vehicle_of_type;
 		case 0xF0: return st->facilities;
 		case 0xF1: return st->airport_type;
 		case 0xF2: return st->truck_stops->status;
@@ -237,6 +238,21 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0xF6: return st->airport_flags;
 		case 0xF7: return st->airport_flags & 0xFF;
 		case 0xFA: return st->build_date;
+	}
+
+	/* Handle cargo variables (deprecated) */
+	if (variable >= 0x8C && variable <= 0xEC) {
+		const GoodsEntry *g = &st->goods[GB(variable - 0x8C, 3, 4)];
+		switch (GB(variable - 0x8C, 0, 3)) {
+			case 0: return g->waiting_acceptance;
+			case 1: return g->waiting_acceptance & 0xFF;
+			case 2: return g->days_since_pickup;
+			case 3: return g->rating;
+			case 4: return g->enroute_from;
+			case 5: return g->enroute_time;
+			case 6: return g->last_speed;
+			case 7: return g->last_age;
+		}
 	}
 
 	DEBUG(grf, 1)("Unhandled station property 0x%X", variable);
@@ -276,7 +292,7 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 		}
 	} else {
 		if (group->g.real.num_loading > 0) {
-			set = (cargo * group->g.real.num_loading) / statspec->cargo_threshold;
+			set = (cargo * group->g.real.num_loading) / (statspec->cargo_threshold + 1);
 			return group->g.real.loading[set];
 		}
 	}
