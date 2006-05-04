@@ -10,6 +10,7 @@
 #include "table/strings.h"
 #include "station.h"
 #include "station_map.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 
@@ -342,6 +343,32 @@ SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *
 	if (group == NULL || group->type != SGT_RESULT) return 0;
 
 	return group->g.result.sprite;
+}
+
+
+uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const StationSpec *statspec, const Station *st, TileIndex tile)
+{
+	const SpriteGroup *group;
+	ResolverObject object;
+	CargoID ctype = (st == NULL) ? GC_PURCHASE : GC_DEFAULT_NA;
+
+	NewStationResolver(&object, statspec, st, tile);
+
+	object.callback        = callback;
+	object.callback_param1 = param1;
+	object.callback_param2 = param2;
+
+	group = Resolve(statspec->spritegroup[ctype], &object);
+	if ((group == NULL || group->type != SGT_CALLBACK) && ctype != GC_DEFAULT_NA) {
+		group = Resolve(statspec->spritegroup[GC_DEFAULT_NA], &object);
+	}
+	if ((group == NULL || group->type != SGT_CALLBACK) && ctype != GC_DEFAULT) {
+		group = Resolve(statspec->spritegroup[GC_DEFAULT], &object);
+	}
+
+	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
+
+	return group->g.callback.result;
 }
 
 

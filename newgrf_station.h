@@ -99,6 +99,7 @@ const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station);
  * NULL - that means we are in a build dialog). The station structure is used
  * for variational sprite groups. */
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile);
+uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const StationSpec *statspec, const Station *st, TileIndex tile);
 
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
 int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec);
