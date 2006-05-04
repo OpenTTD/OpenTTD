@@ -188,7 +188,7 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 
 static inline const SpriteGroup *ResolveRandom(const SpriteGroup *group, ResolverObject *object)
 {
-	byte mask;
+	uint32 mask;
 	byte index;
 
 	object->scope = group->g.random.var_scope;
