@@ -1030,6 +1030,7 @@ STR_CRATES                                                      :skrzyn
 STR_RES_OTHER                                                   :inna
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nie mozna wspoldzielic polecen...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nie mozna skopiowac listy polecen...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Koniec wspoldzielonych polecen - -
@@ -1604,7 +1605,7 @@ STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populacja: {ORANGE}{COMMA}{BLACK}  Domow: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Zmien nazwe miasta
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nie mozna zmienic nazwy miasta...
-STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} Lokalne wladze nie pozwalaja na to
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Lokalne wladze {TOWN} nie pozwalaja na to
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Nazwy miast - klik na nazwie aby wycentrowac widok na miescie
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Wycentruj glowny widok na miescie
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Zmien nazwe miasta
@@ -1647,7 +1648,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING.d} z {STATION} do {STATION} bedzie oplacany podwojnie przez nastepny rok!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING.d} z {STATION} do {STATION} bedzie oplacany potrojnie przez nastepny rok!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Przyznano subsydia dla {COMPANY}!{}{}Przewoz {STRING.d} z {STATION} do {STATION} bedzie oplacany poczwornie przez nastepny rok!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokalne wladze nie pozwalaja na budowe kolejnego lotniska w tym miescie
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Lokalne wladze {TOWN} nie pozwalaja na budowe kolejnego lotniska w tym miescie
 STR_2036_COTTAGES                                               :Domki
 STR_2037_HOUSES                                                 :Domy
 STR_2038_FLATS                                                  :Mieszkania
@@ -1734,7 +1735,7 @@ STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Musisz n
 STR_3030_RENAME_STATION_LOADING                                 :Zmien nazwe stacji/miejsca zalad.
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Nie mozna zmienic nazwy.
 STR_3032_RATINGS                                                :{BLACK}Oceny
-STR_3033_ACCEPTS                                                :{BLACK}Przyjmuje
+STR_3033_ACCEPTS                                                :{BLACK}Akceptuje
 STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Lokalna ocena uslug transportowych:
 
 ############ range for rating starts
@@ -1749,10 +1750,10 @@ STR_303C_OUTSTANDING                                            :Bezkonkurencyjn
 ############ range for rating ends
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
-STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} dluzej nie akceptuje {STRING}
-STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} dluzej nie akceptuje {STRING} lub {STRING}
-STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} akceptuje {STRING}
-STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} akceptuje {STRING} i {STRING}
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} juz nie akceptuje {STRING.d}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} juz nie akceptuje {STRING.d} ani {STRING.d}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} juz akceptuje {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} juz akceptuje {STRING} i {STRING}
 STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientacja przystanku
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientacja st.s.ciez.
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Musisz zniszczyc najpierw przystanek
@@ -2198,9 +2199,9 @@ STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nowa firma zaczela dzialalnosc!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} zaczyna budowe niedaleko {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Nie mozna kupic firmy...
-STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Oplaty za przewoz
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Stawki za Ladunek
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dni w transporcie
-STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Oplata za przewoz 20 jednostek (lub 10,000 litrow) towaru na odleglosc 20 kwadratow
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Oplata za przewoz 10 jednostek (lub 10,000 litrow) towaru na odleglosc 20 pol
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Przelacznik wykresu ladunku wla/wyl
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Inzynier

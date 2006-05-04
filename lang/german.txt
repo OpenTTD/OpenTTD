@@ -944,6 +944,7 @@ STR_CRATES                                                      :Kisten
 STR_RES_OTHER                                                   :Andere
 STR_NOTHING                                                     :nichts
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Der Fahrplan kann nicht gemeinsam benutzt werden...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kann Fahrplan nicht kopieren...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ende des gemeinsamen Fahrplans - -
@@ -1448,7 +1449,7 @@ STR_1007_ALREADY_BUILT                                          :{WHITE}...ist b
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Gleise müssen erst entfernt werden
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gleis- / Bahnhofsbau
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Bau elektrifizierter Strecken
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einschienbahnbau
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einschienenbahnbau
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnetschwebebahnbau
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Eisenbahnbrücke auswählen
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Kann hier kein Zugdepot bauen...
@@ -1460,7 +1461,7 @@ STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kann die
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zugdepotausrichtung
 STR_1015_RAILROAD_CONSTRUCTION                                  :Eisenbahnbau
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Bau elektrifizierter Strecken
-STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienbahnbau
+STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienenbahnbau
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetschwebebahnbau
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise legen
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Zugdepot bauen (zum Bau und zur Wartung von Zügen)
@@ -1711,6 +1712,7 @@ STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Bahnhof ist zu groß
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ungleichförmige Stationen deaktiviert
 
+STR_UNDEFINED                                                   :(nicht definierter Wert)
 STR_STAT_CLASS_DFLT                                             :Standardstation
 STR_STAT_CLASS_WAYP                                             :Wegpunkte
 
@@ -2818,7 +2820,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilder
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Eisenbahn
-STR_ELRAIL_VEHICLES                                             :E-Loks und Waggons
+STR_ELRAIL_VEHICLES                                             :E-Loks
 STR_MONORAIL_VEHICLES                                           :Einschienenbahn
 STR_MAGLEV_VEHICLES                                             :Magnetschwebebahn
 

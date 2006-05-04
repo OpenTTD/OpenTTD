@@ -825,6 +825,7 @@ STR_MONTH_DEC                                                   :December
 STR_TONS                                                        :tone
 
 
+
 STR_TRAIN_IS_LOST                                               :{WHITE}Vlak {COMMA} se je izgubil
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Vlak {COMMA} je imel {CURRENCY} lansko leto
 
@@ -996,13 +997,107 @@ STR_2006_POPULATION                                             :{BLACK}Populaci
 STR_2007_RENAME_TOWN                                            :Preimenuj mesto
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nemores preimenovati mesta...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokalna oblast tega ne dovoli
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Spremeni ime mesta
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Potnikov prejsni mesec: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Poste prejsni mesec: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200F_TALL_OFFICE_BLOCK                                      :Visoka pisarniska hisa
+STR_2010_OFFICE_BLOCK                                           :Pisarniska hisa
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :Majhen blok
+STR_2012_CHURCH                                                 :Cerkev
+STR_2013_LARGE_OFFICE_BLOCK                                     :Velika pisarniska hisa
+STR_2014_TOWN_HOUSES                                            :Mestna hisa
+STR_2015_HOTEL                                                  :Hotel
+STR_2016_STATUE                                                 :Kip
+STR_2017_FOUNTAIN                                               :Vodnjak
+STR_2018_PARK                                                   :Park
+STR_2019_OFFICE_BLOCK                                           :Pisarniska hisa
+STR_201A_SHOPS_AND_OFFICES                                      :Trgovine in pisarne
+STR_201B_MODERN_OFFICE_BUILDING                                 :Moderna pisarniska hisa
+STR_201C_WAREHOUSE                                              :Skladisce
+STR_201D_OFFICE_BLOCK                                           :Pisarniska hisa
+STR_201E_STADIUM                                                :Stadion
+STR_201F_OLD_HOUSES                                             :Stare hise
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Mestni svet
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Pokazi informacije o lokalni oblasti
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} Mestni svet
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}
+STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2025_SUBSIDIES                                              :{WHITE}Subvencije
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponudba subvencij:-
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} iz {STRING2} v {STRING2}
+STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
+STR_202A_NONE                                                   :{ORANGE}Noben
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Subvencionirane storitve
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} od {STATION} do {STATION}{YELLOW} ({COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW},do {DATE_SHORT})
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ponudba za subvencijo umaknjena:{}{}{STRING} od {STRING2} do {STRING2} od sedaj ne bo prinesla subvencije.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvencija je potekla:{}{}{STRING} storitev od {STATION} do {STATION} ni vec subvencionirana is no longer subsidised.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Ponudena subvencija:{}{}Prva {STRING} storitev od {STRING2} do {STRING2} bo subvencionirana s strani mestnega sveta!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena {COMPANY}!{}{}{STRING} storitev od {STATION} do {STATION} bo prinesla 50% vecji prihodek za naslednje leto!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena {COMPANY}!{}{}{STRING} storitev od {STATION} do {STATION} bo prinesla dvakratni prihodek
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena {COMPANY}!{}{}{STRING} storitev od {STATION} do {STATION} bo prinesla trikratni prihodek za naslednje leto!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena {COMPANY}!{}{}{STRING} storitev od {STATION} do {STATION} bo prinesla stirikratni prihodek za naslednje leto!
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} mestni svet prepoveduje granjo se enega letalisca v tem mestu
+STR_2036_COTTAGES                                               :Koce
+STR_2037_HOUSES                                                 :Hise
+STR_2038_FLATS                                                  :Stanovanja
+STR_2039_TALL_OFFICE_BLOCK                                      :Visoka poslovna hisa
+STR_203A_SHOPS_AND_OFFICES                                      :Trgovince in pisarne
+STR_203B_SHOPS_AND_OFFICES                                      :Trgovince in pisarne
+STR_203C_THEATER                                                :Gledalisce
+STR_203D_STADIUM                                                :Stadion
+STR_203E_OFFICES                                                :Pisarne
+STR_203F_HOUSES                                                 :Hise
+STR_2040_CINEMA                                                 :Kino
+STR_2041_SHOPPING_MALL                                          :Trgovski center
+STR_2042_DO_IT                                                  :{BLACK}Stori to
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Seznam stvari, ki jih lahko naredis v tem mestu - klikni stvar za vec podrobnosti
+STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Majhna reklamna kampanja
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Srednja reklamna kampanja
+STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Velik reklamna kampanja
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Podpri obnovo cest
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Zgradi kip lastnikafirme
+STR_204B_FUND_NEW_BUILDINGS                                     :Sponzoriraj nove stavbe
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Kupi eksluzivne transportne novice
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Podkupi lokalno oblast
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Podkupi lokalno oblast za izboljsavo svojih  rating ob tveganju resnih kazni ob caught.{}  Stane: {CURRENCY}
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (v gradnji)
+STR_2059_IGLOO                                                  :Iglu
 
 
 ##id 0x2800
+STR_2800_PLANT_TREES                                            :Posadi drevesa
+STR_2801_PLACE_SIGN                                             :Postavi znak
+STR_2802_TREES                                                  :{WHITE}Drevesa
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...drevo ze posajeno
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...sajenje nemogoce
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Nemores posaditi drevesa tukaj...
+STR_2806                                                        :{WHITE}{STRING}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...prevec znakov
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Nemores postaviti znaka tukaj
+STR_280A_SIGN                                                   :Znak
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Uredi znak
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Nemores spremeniti ime znaka...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Izberi vrsto drevesa za posaditev
+STR_280E_TREES                                                  :Drevesa
+STR_280F_RAINFOREST                                             :Dezevni gozd
+STR_2810_CACTUS_PLANTS                                          :Kaktusi
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Izbira zelezniske postaje
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Izbira letalisca
+STR_3002_ORIENTATION                                            :{BLACK}Orientacija
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Stevilo peronov
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}Dolzina perona
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Preblizu druge zelezniske postaje
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Zdruzi dve postaji
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prevec postaj v tem mestu
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prevec postaj na zemljevidu
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Prevec avtobusnih postaj
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Prevec tovornih postaj
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Preblizu druge postaje
 
 
 ############ range for rating starts
@@ -1047,6 +1142,7 @@ STR_SV_STNAME_UPPER                                             :Zgornje {STRING
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}Odnos mestnega sveta glede restrukturiranja: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE                                                  :Noben
 STR_VERY_LOW                                                    :Zelo Nizko
 
 ##id 0x7000

@@ -331,6 +331,7 @@ STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Winstgrafiek
@@ -936,6 +937,7 @@ STR_ITEMS                                                       :stuks
 STR_CRATES                                                      :kratten
 STR_RES_OTHER                                                   :anders
 STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan orderlijst niet delen...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan orderlijst niet kopieren...
@@ -1705,6 +1707,8 @@ STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stati
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...niet uniforme stations uit
 
 STR_UNDEFINED                                                   :(ongedefinieerde string)
+STR_STAT_CLASS_DFLT                                             :Standaard station
+STR_STAT_CLASS_WAYP                                             :Controlepost
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Bouw scheepswerf

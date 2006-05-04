@@ -1008,6 +1008,7 @@ STR_CRATES                                                      :láda
 STR_RES_OTHER                                                   :egyéb
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nem lehet megosztani a menetrendet...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nem lehet másolni a menetrendet...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Megosztott menetrend vége - -
@@ -1776,8 +1777,8 @@ STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...az ál
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...csak egyféle vágánytípusú állomások lehetnek
 
 STR_UNDEFINED                                                   :(nem definiált string)
-STR_STAT_CLASS_DFLT                                             :Alap?elmezett ?om?
-STR_STAT_CLASS_WAYP                                             :?ipontok
+STR_STAT_CLASS_DFLT                                             :Alapértelmezett állomás
+STR_STAT_CLASS_WAYP                                             :Útipontok
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Dokk helyzete

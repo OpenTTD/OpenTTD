@@ -998,6 +998,7 @@ STR_CRATES                                                      :krabic
 STR_RES_OTHER                                                   :jiné
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemuzu sdílet seznam prikazu...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemohu kopírovat seznam prikazu...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Konec sdílených prikazu - -
@@ -2860,7 +2861,7 @@ STR_REPLACE_HELP                                                :{BLACK}Tato mo¸
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylep¨ování vlaku muze udr¸ovat stejnou délku vlaku odstranovanim vagonu (od zacatku vlaku), pokud by vylep¨ení ma¨iny by vlak prodlou¸ilo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovani: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTÁLNÍ VLASTNOST {}Prepne mezi okny na vymenu lokomotiv a vagonu.{}Vagon se vymeni, jen kdy¸ nový je vagon schopen vozit stejnou komoditu, jako ten starý. Toto se overuje pro ka¸dý vagon.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTÁLNÍ VLASTNOST {}Prepne mezi okny na vymenu lokomotiv a vagonu.{}Vagon se vymeni, jen kdy¸ je nový vagon schopen vozit stejnou komoditu, jako ten starý. Toto se overuje pro ka¸dý vagon.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj nelze postavit
 
 STR_ENGINES                                                     :lokomotivy
