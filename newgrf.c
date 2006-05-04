@@ -1582,12 +1582,10 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 					return;
 				}
 
-				if (ctype != 0xFF) {
-					/* TODO: No support for any other cargo. */
-					continue;
-				}
+				if (ctype == 0xFE) ctype = GC_DEFAULT_NA;
+				if (ctype == 0xFF) ctype = GC_PURCHASE;
 
-				statspec->spritegroup[1] = _cur_grffile->spritegroups[groupid];
+				statspec->spritegroup[ctype] = _cur_grffile->spritegroups[groupid];
 			}
 		}
 
@@ -1605,7 +1603,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				uint8 stid = buf[3 + i];
 				StationSpec *statspec = &_cur_grffile->stations[stid];
 
-				statspec->spritegroup[0] = _cur_grffile->spritegroups[groupid];
+				statspec->spritegroup[GC_DEFAULT] = _cur_grffile->spritegroups[groupid];
 				statspec->grfid = _cur_grffile->grfid;
 				statspec->localidx = stid;
 				SetCustomStationSpec(statspec);

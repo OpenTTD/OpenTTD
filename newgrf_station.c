@@ -327,10 +327,14 @@ SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *
 {
 	const SpriteGroup *group;
 	ResolverObject object;
+	ctype = (st == NULL) ? GC_PURCHASE : GC_DEFAULT_NA;
 
 	NewStationResolver(&object, statspec, st, tile);
 
 	group = Resolve(statspec->spritegroup[ctype], &object);
+	if ((group == NULL || group->type != SGT_RESULT) && ctype != GC_DEFAULT_NA) {
+		group = Resolve(statspec->spritegroup[GC_DEFAULT_NA], &object);
+	}
 	if ((group == NULL || group->type != SGT_RESULT) && ctype != GC_DEFAULT) {
 		group = Resolve(statspec->spritegroup[GC_DEFAULT], &object);
 	}

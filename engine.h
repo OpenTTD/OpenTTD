@@ -156,8 +156,9 @@ enum GlobalCargo {
 	GC_UNDEFINED    =  28, // undefined; unused slot in arctic climate
 	GC_DEFAULT      =  29,
 	GC_PURCHASE     =  30,
+	GC_DEFAULT_NA   =  31, // New stations only
 	GC_INVALID      = 255,
-	NUM_GLOBAL_CID  =  31
+	NUM_GLOBAL_CID  =  32
 };
 
 VARDEF const uint32 _default_refitmasks[NUM_VEHICLE_TYPES];
