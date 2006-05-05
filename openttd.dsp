@@ -7,19 +7,19 @@
 CFG=openttd - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
-!MESSAGE
+!MESSAGE 
 !MESSAGE NMAKE /f "openttd.mak".
-!MESSAGE
+!MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
-!MESSAGE
+!MESSAGE 
 !MESSAGE NMAKE /f "openttd.mak" CFG="openttd - Win32 Debug"
-!MESSAGE
+!MESSAGE 
 !MESSAGE Possible choices for configuration are:
-!MESSAGE
+!MESSAGE 
 !MESSAGE "openttd - Win32 Release" (based on "Win32 (x86) Console Application")
 !MESSAGE "openttd - Win32 Debug" (based on "Win32 (x86) Console Application")
-!MESSAGE
+!MESSAGE 
 
 # Begin Project
 # PROP AllowPerConfigDependencies 0
@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /Gr /Zp4 /MT /W3 /Zi /Ox /Oa /Ow /Og /Oi /Os /Gf /Gy /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "WIN32_EXCEPTION_TRACKER" /D "WIN32_ENABLE_DIRECTMUSIC_SUPPORT" /D "WITH_PNG" /D "WITH_ZLIB" /D "ENABLE_NETWORK" /FAcs /FR /Yu"stdafx.h" /J /FD /c
+# ADD CPP /nologo /Gr /Zp4 /MT /W3 /Zi /Ox /Oa /Ow /Og /Oi /Os /Gf /Gy /I "../include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "WIN32_EXCEPTION_TRACKER" /D "WIN32_ENABLE_DIRECTMUSIC_SUPPORT" /D "WITH_PNG" /D "WITH_ZLIB" /D "ENABLE_NETWORK" /FAcs /FR /Yu"stdafx.h" /J /FD /c
 # SUBTRACT CPP /WX /Ot
 # ADD BASE RSC /l 0x809 /d "NDEBUG"
 # ADD RSC /l 0x809 /d "NDEBUG"
@@ -51,7 +51,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib /nologo /subsystem:windows /map /machine:I386 /opt:nowin98
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib /nologo /subsystem:windows /map /machine:I386 /nodefaultlib:"libc.lib" /libpath:"../lib" /opt:nowin98
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
@@ -68,7 +68,7 @@ LINK32=link.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Yu"stdafx.h" /FD /GZ /c
-# ADD CPP /nologo /MTd /W3 /Gm /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "WITH_PNG" /D "WITH_ZLIB" /D "ENABLE_NETWORK" /D "WIN32_ENABLE_DIRECTMUSIC_SUPPORT" /YX"stdafx.h" /FD /GZ /c
+# ADD CPP /nologo /MTd /W3 /Gm /ZI /Od /I "../include" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /D "WITH_PNG" /D "WITH_ZLIB" /D "ENABLE_NETWORK" /D "WIN32_ENABLE_DIRECTMUSIC_SUPPORT" /YX"stdafx.h" /FD /GZ /c
 # SUBTRACT CPP /WX /Fr
 # ADD BASE RSC /l 0x809 /d "_DEBUG"
 # ADD RSC /l 0x809 /d "_DEBUG"
@@ -77,10 +77,10 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib /nologo /subsystem:windows /debug /machine:I386 /pdbtype:sept
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib /nologo /subsystem:windows /debug /machine:I386 /nodefaultlib:"libc.lib" /pdbtype:sept /libpath:"../lib"
 # SUBTRACT LINK32 /pdb:none
 
-!ENDIF
+!ENDIF 
 
 # Begin Target
 
@@ -92,50 +92,15 @@ LINK32=link.exe
 # Begin Source File
 
 SOURCE=.\ai\ai.c
+
 !IF  "$(CFG)" == "openttd - Win32 Release"
+
 # ADD CPP /Yu"../stdafx.h"
-!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
-!ENDIF
-# End Source File
-# Begin Source File
 
-SOURCE=.\ai\trolly\build.c
-!IF  "$(CFG)" == "openttd - Win32 Release"
-# ADD CPP /Yu"../../stdafx.h"
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
-!ENDIF
-# End Source File
-# Begin Source File
 
-SOURCE=.\ai\trolly\trolly.c
-!IF  "$(CFG)" == "openttd - Win32 Release"
-# ADD CPP /Yu"../../stdafx.h"
-!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
-!ENDIF
-# End Source File
-# Begin Source File
+!ENDIF 
 
-SOURCE=.\ai\default\default.c
-!IF  "$(CFG)" == "openttd - Win32 Release"
-# ADD CPP /Yu"../../stdafx.h"
-!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
-!ENDIF
-# End Source File
-# Begin Source File
-
-SOURCE=.\ai\trolly\pathfinder.c
-!IF  "$(CFG)" == "openttd - Win32 Release"
-# ADD CPP /Yu"../../stdafx.h"
-!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
-!ENDIF
-# End Source File
-# Begin Source File
-
-SOURCE=.\ai\trolly\shared.c
-!IF  "$(CFG)" == "openttd - Win32 Release"
-# ADD CPP /Yu"../../stdafx.h"
-!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
-!ENDIF
 # End Source File
 # Begin Source File
 
@@ -144,6 +109,19 @@ SOURCE=.\airport.c
 # Begin Source File
 
 SOURCE=.\aystar.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai\trolly\build.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF 
+
 # End Source File
 # Begin Source File
 
@@ -175,7 +153,20 @@ SOURCE=.\video\dedicated_v.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai\default\default.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -192,7 +183,7 @@ SOURCE=.\music\dmusic.cpp
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -255,7 +246,7 @@ SOURCE=.\minilzo.c
 
 # SUBTRACT CPP /YX
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -308,7 +299,7 @@ SOURCE=.\music\null_m.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -321,7 +312,7 @@ SOURCE=.\sound\null_s.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -334,7 +325,7 @@ SOURCE=.\video\null_v.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -356,6 +347,19 @@ SOURCE=.\ottdres.rc
 # Begin Source File
 
 SOURCE=.\pathfind.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai\trolly\pathfinder.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF 
+
 # End Source File
 # Begin Source File
 
@@ -395,7 +399,7 @@ SOURCE=.\sound\sdl_s.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -408,7 +412,7 @@ SOURCE=.\video\sdl_v.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -417,15 +421,24 @@ SOURCE=.\settings.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\ai\trolly\shared.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
 SOURCE=.\signs.c
 # End Source File
 # Begin Source File
 
 SOURCE=.\sound.c
-# End Source File
-# Begin Source File
-
-SOURCE=.\sprite.c
 # End Source File
 # Begin Source File
 
@@ -441,7 +454,7 @@ SOURCE=.\StdAfx.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -463,6 +476,19 @@ SOURCE=.\thread.c
 # Begin Source File
 
 SOURCE=.\tile.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai\trolly\trolly.c
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /Yu"../../stdafx.h"
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF 
+
 # End Source File
 # Begin Source File
 
@@ -503,7 +529,7 @@ SOURCE=.\music\win32_m.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -516,7 +542,7 @@ SOURCE=.\sound\win32_s.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -529,7 +555,7 @@ SOURCE=.\video\win32_v.c
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
-!ENDIF
+!ENDIF 
 
 # End Source File
 # Begin Source File
@@ -540,10 +566,6 @@ SOURCE=.\window.c
 # Begin Group "Header Files"
 
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
-# Begin Source File
-
-SOURCE=.\ai\trolly\trolly.h
-# End Source File
 # Begin Source File
 
 SOURCE=.\ai\ai.h
@@ -763,6 +785,10 @@ SOURCE=.\town.h
 # Begin Source File
 
 SOURCE=.\train.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\ai\trolly\trolly.h
 # End Source File
 # Begin Source File
 

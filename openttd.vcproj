@@ -58,6 +58,7 @@
 				OutputFile=".\Release/openttd.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
+				IgnoreDefaultLibraryNames="libc.lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile=".\Release/openttd.pdb"
 				SubSystem="2"
@@ -124,6 +125,7 @@
 				OutputFile=".\Debug/openttd.exe"
 				LinkIncremental="0"
 				SuppressStartupBanner="TRUE"
+				IgnoreDefaultLibraryNames="libc.lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile=".\Debug/openttd.pdb"
 				SubSystem="2"
@@ -348,9 +350,6 @@
 			</File>
 			<File
 				RelativePath=".\sound.c">
-			</File>
-			<File
-				RelativePath=".\sprite.c">
 			</File>
 			<File
 				RelativePath=".\spritecache.c">

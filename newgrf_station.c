@@ -208,7 +208,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 	switch (variable) {
 		/* Calculated station variables */
-		case 0x42: GetRailType(object->u.station.tile) << 8; /* Rail type */
+		case 0x42: return GetRailType(object->u.station.tile) << 8; /* Rail type */
 		case 0x43: return st->owner; /* Station owner */
 		case 0x44: return 2;         /* PBS status */
 		case 0x48: { /* Accepted cargo types */
