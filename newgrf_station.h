@@ -102,6 +102,9 @@ const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx);
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile);
 uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const StationSpec *statspec, const Station *st, TileIndex tile);
 
+/* Check if a rail station tile is traversable. */
+bool IsStationTileBlocked(TileIndex tile);
+
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
 int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec);
 

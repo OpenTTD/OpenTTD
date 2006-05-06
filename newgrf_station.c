@@ -640,3 +640,22 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	return true;
 }
 
+/* Check if a rail station tile is traversable.
+ * XXX This could be cached (during build) in the map array to save on all the dereferencing */
+bool IsStationTileBlocked(TileIndex tile)
+{
+	const Station *st;
+	const StationSpec *statspec;
+	uint specindex;
+
+	if (!IsCustomStationSpecIndex(tile)) return false;
+
+	st = GetStationByTile(tile);
+	specindex = GetCustomStationSpecIndex(tile);
+	if (specindex >= st->num_specs) return false;
+
+	statspec = st->speclist[specindex].spec;
+	if (statspec == NULL) return false;
+
+	return HASBIT(statspec->blocked, GetStationGfx(tile));
+}

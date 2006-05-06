@@ -2124,6 +2124,8 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 	switch (mode) {
 		case TRANSPORT_RAIL:
 			if (IsRailwayStation(tile)) {
+				if (IsStationTileBlocked(tile)) return 0;
+
 				return TrackToTrackBits(GetRailStationTrack(tile)) * 0x101;
 			}
 			break;
