@@ -15,7 +15,6 @@
 #include "town.h"
 #include "waypoint.h"
 #include "variables.h"
-#include "table/sprites.h"
 #include "table/strings.h"
 #include "vehicle.h"
 
@@ -379,47 +378,14 @@ Station *ComposeWaypointStation(TileIndex tile)
 	return &stat;
 }
 
-extern uint16 _custom_sprites_base;
-
-
 /* Draw a waypoint */
 void DrawWaypointSprite(int x, int y, int stat_id, RailType railtype)
 {
-	const StationSpec *statspec;
-	uint32 relocation;
-	const DrawTileSprites *cust;
-	DrawTileSeqStruct const *seq;
-	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
-	uint32 ormod, img;
-
-	ormod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player));
-
 	x += 33;
 	y += 17;
 
-	statspec = GetCustomStationSpec(STAT_CLASS_WAYP, stat_id);
-	if (statspec == NULL) {
-		// stat is NULL for default waypoints and when waypoint graphics are
-		// not loaded.
+	if (!DrawStationTile(x, y, railtype, AXIS_X, STAT_CLASS_WAYP, stat_id)) {
 		DrawDefaultWaypointSprite(x, y, railtype);
-		return;
-	}
-
-	relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE);
-	// emulate station tile - open with building
-	// add 1 to get the other direction
-	cust = &statspec->renderdata[2];
-
-	img = cust->ground_sprite;
-	img += (img < _custom_sprites_base) ? rti->total_offset : rti->custom_ground_offset;
-
-	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK);
-	DrawSprite(img, x, y);
-
-	foreach_draw_tile_seq(seq, cust->seq) {
-		Point pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
-		uint32 image = seq->image + relocation;
-		DrawSprite((image & SPRITE_MASK) | ormod, x + pt.x, y + pt.y);
 	}
 }
 

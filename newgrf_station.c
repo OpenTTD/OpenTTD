@@ -5,8 +5,10 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "variables.h"
+#include "functions.h"
 #include "debug.h"
 #include "sprite.h"
+#include "table/sprites.h"
 #include "table/strings.h"
 #include "station.h"
 #include "station_map.h"
@@ -564,3 +566,60 @@ bool DeallocateSpecFromStation(Station *st, byte specindex)
 
 	return freeable;
 }
+
+/** Draw representation of a station tile for GUI purposes.
+ * @param x, y Position of image.
+ * @param dir Direction.
+ * @param railtype Rail type.
+ * @param sclass, station Type of station.
+ * @return True if the tile was drawn (allows for fallback to default graphic)
+ */
+bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station)
+{
+	extern uint16 _custom_sprites_base;
+
+	const StationSpec *statspec;
+	const DrawTileSprites *sprites;
+	const DrawTileSeqStruct *seq;
+	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
+	SpriteID relocation;
+	PalSpriteID image;
+	PalSpriteID colourmod = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(_local_player));
+	uint tile = 2;
+
+	statspec = GetCustomStationSpec(sclass, station);
+	if (statspec == NULL) return false;
+
+	relocation = GetCustomStationRelocation(statspec, NULL, INVALID_TILE);
+
+	if (HASBIT(statspec->callbackmask, CBM_CUSTOM_LAYOUT)) {
+		uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0x2110000, 0, statspec, NULL, INVALID_TILE);
+		if (callback != CALLBACK_FAILED) tile = callback;
+	}
+
+	if (statspec->renderdata == NULL) {
+		sprites = GetStationTileLayout(tile + axis);
+		relocation -= 0x42D;
+	} else {
+		sprites = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : axis];
+	}
+
+	image = sprites->ground_sprite;
+	image += (image < _custom_sprites_base) ? rti->total_offset : rti->custom_ground_offset;
+
+	if (image & PALETTE_MODIFIER_COLOR) image &= SPRITE_MASK;
+	DrawSprite(image, x, y);
+
+	foreach_draw_tile_seq(seq, sprites->seq) {
+		Point pt;
+		image = seq->image + relocation;
+
+		if ((byte)seq->delta_z != 0x80) {
+			pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);
+			DrawSprite((image & SPRITE_MASK) | colourmod, x + pt.x, y + pt.y);
+		}
+	}
+
+	return true;
+}
+
