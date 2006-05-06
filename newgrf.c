@@ -85,6 +85,10 @@ static const int _vehshifts[4] = {
 	/* GSF_AIRCRAFT */ AIRCRAFT_ENGINES_INDEX,
 };
 
+enum {
+	MAX_STATIONS = 256,
+};
+
 static uint16 cargo_allowed[TOTAL_NUM_ENGINES];
 static uint16 cargo_disallowed[TOTAL_NUM_ENGINES];
 
@@ -771,36 +775,48 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int len)
 {
-	StationSpec *statspec;
+	StationSpec **statspec;
 	byte *buf = *bufp;
 	int i;
 	bool ret = false;
 
-	/* Allocate station specs if necessary */
-	if (_cur_grffile->num_stations < stid + numinfo) {
-		_cur_grffile->stations = realloc(_cur_grffile->stations, (stid + numinfo) * sizeof(*_cur_grffile->stations))
-;
-
-		while (_cur_grffile->num_stations < stid + numinfo) {
-			memset(&_cur_grffile->stations[_cur_grffile->num_stations], 0, sizeof(*_cur_grffile->stations));
-			_cur_grffile->num_stations++;
-		}
+	if (stid + numinfo > MAX_STATIONS) {
+		grfmsg(GMS_WARN, "StationChangeInfo: Station %u is invalid, max %u, ignoring.", stid + numinfo, MAX_STATIONS);
+		return false;
 	}
 
+	/* Allocate station specs if necessary */
+	if (_cur_grffile->stations == NULL) _cur_grffile->stations = calloc(MAX_STATIONS, sizeof(*_cur_grffile->stations));
+
 	statspec = &_cur_grffile->stations[stid];
+
+	if (prop != 0x08) {
+		/* Check that all stations we are modifying are defined. */
+		FOR_EACH_OBJECT {
+			if (statspec[i] == NULL) {
+				grfmsg(GMS_NOTICE, "StationChangeInfo: Attempt to modify undefined station %u, ignoring.", stid + i);
+				return false;
+			}
+		}
+	}
 
 	switch (prop) {
 		case 0x08: /* Class ID */
 			FOR_EACH_OBJECT {
+				uint32 classid;
+
+				/* Property 0x08 is special; it is where the station is allocated */
+				if (statspec[i] == NULL) statspec[i] = calloc(1, sizeof(*statspec[i]));
+
 				/* Swap classid because we read it in BE meaning WAYP or DFLT */
-				uint32 classid = grf_load_dword(&buf);
-				statspec[i].sclass = AllocateStationClass(BSWAP32(classid));
+				classid = grf_load_dword(&buf);
+				statspec[i]->sclass = AllocateStationClass(BSWAP32(classid));
 			}
 			break;
 
 		case 0x09: /* Define sprite layout */
 			FOR_EACH_OBJECT {
-				StationSpec *statspec = &_cur_grffile->stations[stid + i];
+				StationSpec *statspec = _cur_grffile->stations[stid + i];
 				uint t;
 
 				statspec->tiles = grf_load_extended(&buf);
@@ -846,9 +862,9 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 
 		case 0x0A: /* Copy sprite layout */
 			FOR_EACH_OBJECT {
-				StationSpec *statspec = &_cur_grffile->stations[stid + i];
+				StationSpec *statspec = _cur_grffile->stations[stid + i];
 				byte srcid = grf_load_byte(&buf);
-				const StationSpec *srcstatspec = &_cur_grffile->stations[srcid];
+				const StationSpec *srcstatspec = _cur_grffile->stations[srcid];
 
 				statspec->tiles = srcstatspec->tiles;
 				statspec->renderdata = srcstatspec->renderdata;
@@ -857,20 +873,20 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			break;
 
 		case 0x0B: /* Callback mask */
-			FOR_EACH_OBJECT statspec[i].callbackmask = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i]->callbackmask = grf_load_byte(&buf);
 			break;
 
 		case 0x0C: /* Disallowed number of platforms */
-			FOR_EACH_OBJECT statspec[i].disallowed_platforms = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i]->disallowed_platforms = grf_load_byte(&buf);
 			break;
 
 		case 0x0D: /* Disallowed platform lengths */
-			FOR_EACH_OBJECT statspec[i].disallowed_lengths = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i]->disallowed_lengths = grf_load_byte(&buf);
 			break;
 
 		case 0x0E: /* Define custom layout */
 			FOR_EACH_OBJECT {
-				StationSpec *statspec = &_cur_grffile->stations[stid + i];
+				StationSpec *statspec = _cur_grffile->stations[stid + i];
 
 				while (buf < *bufp + len) {
 					byte length = grf_load_byte(&buf);
@@ -929,27 +945,27 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			break;
 
 		case 0x10: /* Little/lots cargo threshold */
-			FOR_EACH_OBJECT statspec[i].cargo_threshold = grf_load_word(&buf);
+			FOR_EACH_OBJECT statspec[i]->cargo_threshold = grf_load_word(&buf);
 			break;
 
 		case 0x11: /* Pylon placement */
-			FOR_EACH_OBJECT statspec[i].pylons = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i]->pylons = grf_load_byte(&buf);
 			break;
 
 		case 0x12: /* Cargo types for random triggers */
-			FOR_EACH_OBJECT statspec[i].cargo_triggers = grf_load_dword(&buf);
+			FOR_EACH_OBJECT statspec[i]->cargo_triggers = grf_load_dword(&buf);
 			break;
 
 		case 0x13: /* General flags */
-			FOR_EACH_OBJECT statspec[i].flags = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i]->flags = grf_load_byte(&buf);
 			break;
 
 		case 0x14: /* Overhead wire placement */
-			FOR_EACH_OBJECT statspec[i].wires = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i]->wires = grf_load_byte(&buf);
 			break;
 
 		case 0x15: /* Blocked tiles */
-			FOR_EACH_OBJECT statspec[i].blocked = grf_load_byte(&buf);
+			FOR_EACH_OBJECT statspec[i]->blocked = grf_load_byte(&buf);
 			break;
 
 		default:
@@ -1569,7 +1585,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 		for (i = 0; i < idcount; i++) {
 			uint8 stid = buf[3 + i];
-			StationSpec *statspec = &_cur_grffile->stations[stid];
+			StationSpec *statspec = _cur_grffile->stations[stid];
 			byte *bp = &buf[4 + idcount];
 
 			for (c = 0; c < cidcount; c++) {
@@ -1601,7 +1617,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			for (i = 0; i < idcount; i++) {
 				uint8 stid = buf[3 + i];
-				StationSpec *statspec = &_cur_grffile->stations[stid];
+				StationSpec *statspec = _cur_grffile->stations[stid];
 
 				statspec->spritegroup[GC_DEFAULT] = _cur_grffile->spritegroups[groupid];
 				statspec->grfid = _cur_grffile->grfid;
@@ -1782,19 +1798,19 @@ static void VehicleNewName(byte *buf, int len)
 				default:
 					switch (GB(id, 8, 8)) {
 						case 0xC4: /* Station class name */
-							if (GB(id, 0, 8) >= _cur_grffile->num_stations) {
+							if (_cur_grffile->stations == NULL || _cur_grffile->stations[GB(id, 0, 8)] == NULL) {
 								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
 							} else {
-								StationClassID sclass = _cur_grffile->stations[GB(id, 0, 8)].sclass;
+								StationClassID sclass = _cur_grffile->stations[GB(id, 0, 8)]->sclass;
 								SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name));
 							}
 							break;
 
 						case 0xC5: /* Station name */
-							if (GB(id, 0, 8) >= _cur_grffile->num_stations) {
+							if (_cur_grffile->stations == NULL || _cur_grffile->stations[GB(id, 0, 8)] == NULL) {
 								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
 							} else {
-								_cur_grffile->stations[GB(id, 0, 8)].name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
+								_cur_grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
 							}
 							break;
 
@@ -2482,9 +2498,10 @@ static void ResetCustomStations(void)
 	uint t;
 
 	for (file = _first_grffile; file != NULL; file = file->next) {
-		for (i = 0; i < file->num_stations; i++) {
-			if (file->stations[i].grfid != file->grfid) continue;
-			statspec = &file->stations[i];
+		if (file->stations == NULL) continue;
+		for (i = 0; i < MAX_STATIONS; i++) {
+			if (file->stations[i] == NULL) continue;
+			statspec = file->stations[i];
 
 			/* Release renderdata, if it wasn't copied from another custom station spec  */
 			if (!statspec->copied_renderdata) {
@@ -2495,12 +2512,14 @@ static void ResetCustomStations(void)
 			}
 
 			// TODO: Release platforms and layouts
+
+			/* Release this station */
+			free(statspec);
 		}
 
 		/* Free and reset the station data */
 		free(file->stations);
 		file->stations = NULL;
-		file->num_stations = 0;
 	}
 }
 
