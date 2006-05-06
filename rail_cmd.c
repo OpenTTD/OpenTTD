@@ -1336,7 +1336,12 @@ static void DrawTile_Track(TileInfo *ti)
 					if (callback != CALLBACK_FAILED) tile = callback;
 				}
 
-				cust = &statspec->renderdata[(tile < statspec->tiles ? tile : 0) + GetWaypointAxis(ti->tile)];
+				if (statspec->renderdata == NULL) {
+					cust = GetStationTileLayout(tile);
+					relocation -= 0x42D;
+				} else {
+					cust = &statspec->renderdata[(tile < statspec->tiles ? tile : 0) + GetWaypointAxis(ti->tile)];
+				}
 
 				/* If there is no sprite layout, we fall back to the default waypoint graphics. */
 				if (cust != NULL && cust->seq != NULL) {

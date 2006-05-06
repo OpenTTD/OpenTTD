@@ -1977,6 +1977,10 @@ static int32 RemoveDock(Station *st, uint32 flags)
 
 #include "table/station_land.h"
 
+const DrawTileSprites *GetStationTileLayout(byte gfx)
+{
+	return &_station_display_datas[gfx];
+}
 
 extern uint16 _custom_sprites_base;
 

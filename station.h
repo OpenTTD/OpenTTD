@@ -199,6 +199,7 @@ void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int 
 uint GetStationPlatforms(const Station *st, TileIndex tile);
 
 
+const DrawTileSprites *GetStationTileLayout(byte gfx);
 void StationPickerDrawSprite(int x, int y, RailType railtype, int image);
 
 RoadStop * GetRoadStopByTile(TileIndex tile, RoadStopType type);
