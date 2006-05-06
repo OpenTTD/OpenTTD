@@ -27,6 +27,8 @@
 #include "rail.h"
 #include "railtypes.h" // include table for railtypes
 #include "newgrf.h"
+#include "newgrf_callbacks.h"
+#include "newgrf_station.h"
 
 extern uint16 _custom_sprites_base;
 
@@ -1323,17 +1325,18 @@ static void DrawTile_Track(TileInfo *ti)
 			if (statspec != NULL) {
 				DrawTileSeqStruct const *seq;
 				// emulate station tile - open with building
-				const DrawTileSprites *cust = &statspec->renderdata[2 + GetWaypointAxis(ti->tile)];
-				uint32 relocation = GetCustomStationRelocation(statspec, ComposeWaypointStation(ti->tile), ti->tile);
+				uint tile = 2;
+				const DrawTileSprites *cust;
+				Station *st = ComposeWaypointStation(ti->tile);
 
-				/* We don't touch the 0x8000 bit. In all this
-				 * waypoint code, it is used to indicate that
-				 * we should offset by railtype, but we always
-				 * do that for custom ground sprites and never
-				 * for station sprites. And in the drawing
-				 * code, it is used to indicate that the sprite
-				 * should be drawn in company colors, and it's
-				 * up to the GRF file to decide that. */
+				uint32 relocation = GetCustomStationRelocation(statspec, st, ti->tile);
+
+				if (HASBIT(statspec->callbackmask, CBM_CUSTOM_LAYOUT)) {
+					uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
+					if (callback != CALLBACK_FAILED) tile = callback;
+				}
+
+				cust = &statspec->renderdata[(tile < statspec->tiles ? tile : 0) + GetWaypointAxis(ti->tile)];
 
 				/* If there is no sprite layout, we fall back to the default waypoint graphics. */
 				if (cust != NULL && cust->seq != NULL) {
