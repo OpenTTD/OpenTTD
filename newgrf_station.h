@@ -94,6 +94,7 @@ uint GetNumCustomStations(StationClassID sclass);
 
 void SetCustomStationSpec(StationSpec *statspec);
 const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station);
+const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx);
 
 /* Get sprite offset for a given custom station and station structure (may be
  * NULL - that means we are in a build dialog). The station structure is used

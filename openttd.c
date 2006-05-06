@@ -1426,5 +1426,7 @@ bool AfterLoadGame(void)
 
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 
+	if (!CheckSavegameVersion(27)) AfterLoadStations();
+
 	return true;
 }

@@ -2821,6 +2821,22 @@ void InitializeStations(void)
 }
 
 
+void AfterLoadStations(void)
+{
+	Station *st;
+	uint i;
+
+	/* Update the speclists of all stations to point to the currently loaded custom stations. */
+	FOR_ALL_STATIONS(st) {
+		for (i = 0; i < st->num_specs; i++) {
+			if (st->speclist[i].grfid == 0) continue;
+
+			st->speclist[i].spec = GetCustomStationSpecByGrf(st->speclist[i].grfid, st->speclist[i].localidx);
+		}
+	}
+}
+
+
 const TileTypeProcs _tile_type_station_procs = {
 	DrawTile_Station,           /* draw_tile_proc */
 	GetSlopeZ_Station,          /* get_slope_z_proc */
@@ -2906,6 +2922,7 @@ static const SaveLoad _station_desc[] = {
 	/* Used by newstations for graphic variations */
 	SLE_CONDVAR(Station,random_bits,       SLE_UINT16, 27, SL_MAX_VERSION),
 	SLE_CONDVAR(Station,waiting_triggers,  SLE_UINT8,  27, SL_MAX_VERSION),
+	SLE_CONDVAR(Station,num_specs,         SLE_UINT8,  27, SL_MAX_VERSION),
 
 	// reserve extra space in savegame here. (currently 32 bytes)
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),
@@ -2927,10 +2944,17 @@ static const SaveLoad _goods_desc[] = {
 	SLE_END()
 };
 
+static const SaveLoad _station_speclist_desc[] = {
+	SLE_CONDVAR(StationSpecList, grfid,    SLE_UINT32, 27, SL_MAX_VERSION),
+	SLE_CONDVAR(StationSpecList, localidx, SLE_UINT8,  27, SL_MAX_VERSION),
+
+	SLE_END()
+};
+
 
 static void SaveLoad_STNS(Station *st)
 {
-	int i;
+	uint i;
 
 	SlObject(st, _station_desc);
 	for (i = 0; i != NUM_CARGO; i++) {
@@ -2940,6 +2964,12 @@ static void SaveLoad_STNS(Station *st)
 		if (CheckSavegameVersion(7) && st->goods[i].enroute_from == 0xFF) {
 			st->goods[i].enroute_from = INVALID_STATION;
 		}
+	}
+
+	if (st->num_specs != 0) {
+		/* Allocate speclist memory when loading a game */
+		if (st->speclist == NULL) st->speclist = calloc(st->num_specs, sizeof(*st->speclist));
+		for (i = 0; i < st->num_specs; i++) SlObject(&st->speclist[i], _station_speclist_desc);
 	}
 }
 

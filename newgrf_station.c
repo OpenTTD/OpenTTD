@@ -164,6 +164,23 @@ const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station)
 }
 
 
+const StationSpec *GetCustomStationSpecByGrf(uint32 grfid, byte localidx)
+{
+	StationClassID i;
+	uint j;
+
+	for (i = STAT_CLASS_DFLT; i < STAT_CLASS_MAX; i++) {
+		for (j = 0; j < station_classes[i].stations; j++) {
+			const StationSpec *statspec = station_classes[i].spec[j];
+			if (statspec == NULL) continue;
+			if (statspec->grfid == grfid && statspec->localidx == localidx) return statspec;
+		}
+	}
+
+	return NULL;
+}
+
+
 /* Evaluate a tile's position within a station, and return the result a bitstuffed format.
  * if not centred: .TNLcCpP, if centred: .TNL..CP
  * T = Tile layout number (GetStationGfx), N = Number of platforms, L = Length of platforms
