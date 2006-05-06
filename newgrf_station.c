@@ -162,6 +162,102 @@ const StationSpec *GetCustomStationSpec(StationClassID sclass, uint station)
 }
 
 
+/* Evaluate a tile's position within a station, and return the result a bitstuffed format.
+ * if not centred: .TNLcCpP, if centred: .TNL..CP
+ * T = Tile layout number (GetStationGfx), N = Number of platforms, L = Length of platforms
+ * C = Current platform number from start, c = from end
+ * P = Position along platform from start, p = from end
+ * if centred, C/P start from the centre and c/p are not available.
+ */
+uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, int y, bool centred)
+{
+	uint32 retval = 0;
+
+	if (axis == AXIS_X) {
+		intswap(platforms, length);
+		intswap(x, y);
+	}
+
+	/* Limit our sizes to 4 bits */
+	platforms = min(15, platforms);
+	length    = min(15, length);
+	x = min(15, x);
+	y = min(15, y);
+	if (centred) {
+		x -= platforms / 2;
+		y -= length / 2;
+		SB(retval,  0, 4, clamp(y, -8, 7));
+		SB(retval,  4, 4, clamp(x, -8, 7));
+	} else {
+		SB(retval,  0, 4, y);
+		SB(retval,  4, 4, length - y - 1);
+		SB(retval,  8, 4, x);
+		SB(retval, 12, 4, platforms - x - 1);
+	}
+	SB(retval, 16, 4, length);
+	SB(retval, 20, 4, platforms);
+	SB(retval, 24, 4, tile);
+
+	return retval;
+}
+
+
+/* Find the end of a railway station, from the tile, in the direction of delta.
+ * If check_type is set, we stop if the custom station type changes.
+ * If check_axis is set, we stop if the station direction changes.
+ */
+static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool check_type, bool check_axis)
+{
+	bool waypoint;
+	byte orig_type = 0;
+	Axis orig_axis = AXIS_X;
+
+	waypoint = IsTileType(tile, MP_RAILWAY);
+
+	if (waypoint) {
+		if (check_axis) orig_axis = GetWaypointAxis(tile);
+	} else {
+		if (check_type) orig_type = GetCustomStationSpecIndex(tile);
+		if (check_axis) orig_axis = GetRailStationAxis(tile);
+	}
+
+	while (true) {
+		TileIndex new_tile = TILE_ADD(tile, delta);
+
+		if (waypoint) {
+			if (!IsTileType(new_tile, MP_RAILWAY)) break;
+			if (GetRailTileType(new_tile) != RAIL_TYPE_DEPOT_WAYPOINT) break;
+			if (GetRailTileSubtype(new_tile) != RAIL_SUBTYPE_WAYPOINT) break;
+			if (check_axis && GetWaypointAxis(new_tile) != orig_axis) break;
+		} else {
+			if (!IsRailwayStationTile(new_tile)) break;
+			if (check_type && GetCustomStationSpecIndex(new_tile) != orig_type) break;
+			if (check_axis && GetRailStationAxis(new_tile) != orig_axis) break;
+		}
+
+		tile = new_tile;
+	}
+	return tile;
+}
+
+
+static uint32 GetPlatformInfoHelper(TileIndex tile, bool check_type, bool check_axis, bool centred)
+{
+	int tx = TileX(tile);
+	int ty = TileY(tile);
+	int sx = TileX(FindRailStationEnd(tile, TileDiffXY(-1,  0), check_type, check_axis));
+	int sy = TileY(FindRailStationEnd(tile, TileDiffXY( 0, -1), check_type, check_axis));
+	int ex = TileX(FindRailStationEnd(tile, TileDiffXY( 1,  0), check_type, check_axis)) + 1;
+	int ey = TileY(FindRailStationEnd(tile, TileDiffXY( 0,  1), check_type, check_axis)) + 1;
+	Axis axis = IsTileType(tile, MP_RAILWAY) ? GetWaypointAxis(tile) : GetRailStationAxis(tile);
+
+	tx -= sx; ex -= sx;
+	ty -= sy; ey -= sy;
+
+	return GetPlatformInfo(axis, IsTileType(tile, MP_RAILWAY) ? 2 : GetStationGfx(tile), ex, ey, tx, ty, centred);
+}
+
+
 /* Station Resolver Functions */
 static uint32 StationGetRandomBits(const ResolverObject *object)
 {
@@ -189,6 +285,7 @@ static void StationSetTriggers(const ResolverObject *object, int triggers)
 static uint32 StationGetVariable(const ResolverObject *object, byte variable, byte parameter)
 {
 	const Station *st = object->u.station.st;
+	TileIndex tile = object->u.station.tile;
 
 	if (st == NULL) {
 		/* Station does not exist, so we're in a purchase list */
@@ -208,9 +305,13 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 	switch (variable) {
 		/* Calculated station variables */
-		case 0x42: return GetRailType(object->u.station.tile) << 8; /* Rail type */
+		case 0x40: return GetPlatformInfoHelper(tile, false, false, false);
+		case 0x41: return GetPlatformInfoHelper(tile, true,  false, false);
+		case 0x42: return GetRailType(tile) << 8; /* Rail type */
 		case 0x43: return st->owner; /* Station owner */
 		case 0x44: return 2;         /* PBS status */
+		case 0x46: return GetPlatformInfoHelper(tile, false, false, true);
+		case 0x47: return GetPlatformInfoHelper(tile, true,  false, true);
 		case 0x48: { /* Accepted cargo types */
 			CargoID cargo_type;
 			uint32 value = 0;
@@ -220,6 +321,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			}
 			return value;
 		}
+		case 0x49: return GetPlatformInfoHelper(tile, false, true, false);
 
 		/* Variables which use the parameter */
 		case 0x60: return GB(st->goods[parameter].waiting_acceptance, 0, 12);
