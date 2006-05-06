@@ -854,7 +854,15 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						dtss->width = grf_load_byte(&buf);
 						dtss->height = grf_load_byte(&buf);
 						dtss->unk = grf_load_byte(&buf);
-						dtss->image = grf_load_dword(&buf) - 0x42d;
+						dtss->image = grf_load_dword(&buf);
+
+						/* Remap the colour map bit from 14 to 31 */
+						if (HASBIT(dtss->image, 14)) {
+							CLRBIT(dtss->image, 14);
+							SETBIT(dtss->image, 31);
+						}
+
+						dtss->image -= 0x42D;
 					}
 				}
 			}
