@@ -1753,7 +1753,7 @@ static void VehicleNewName(byte *buf, int len)
 	num      = grf_load_byte(&buf);
 	id       = (lang & 0x80) ? grf_load_word(&buf) : grf_load_byte(&buf);
 
-	if (feature < GSF_AIRCRAFT+1) {
+	if (feature <= GSF_AIRCRAFT && id < _vehcounts[feature]) {
 		id += _vehshifts[feature];
 	}
 	endid    = id + num;
@@ -1779,22 +1779,23 @@ static void VehicleNewName(byte *buf, int len)
 					break;
 				}
 
-				case GSF_STATION: {
-					byte station = GB(id, 0, 8);
-					if (station >= _cur_grffile->num_stations) {
-						grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", station);
-						break;
-					}
-
+				default:
 					switch (GB(id, 8, 8)) {
-						case 0xC4: { /* Station class name */
-							StationClassID sclass = _cur_grffile->stations[station].sclass;
-							SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name));
+						case 0xC4: /* Station class name */
+							if (GB(id, 0, 8) >= _cur_grffile->num_stations) {
+								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", station);
+							} else {
+								StationClassID sclass = _cur_grffile->stations[GB(id, 0, 8)].sclass;
+								SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name));
+							}
 							break;
-						}
 
-						case 0xC5:   /* Station name */
-							_cur_grffile->stations[station].name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
+						case 0xC5: /* Station name */
+							if (GB(id, 0, 8) >= _cur_grffile->num_stations) {
+								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", station);
+							} else {
+								_cur_grffile->stations[station].name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
+							}
 							break;
 
 						default:
@@ -1802,7 +1803,6 @@ static void VehicleNewName(byte *buf, int len)
 							break;
 					}
 					break;
-				}
 
 #if 0
 				case GSF_CANAL :
