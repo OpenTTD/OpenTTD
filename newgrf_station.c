@@ -307,7 +307,9 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		/* Calculated station variables */
 		case 0x40: return GetPlatformInfoHelper(tile, false, false, false);
 		case 0x41: return GetPlatformInfoHelper(tile, true,  false, false);
-		case 0x42: return GetRailType(tile) << 8; /* Rail type */
+		case 0x42: /* Terrain and rail type */
+			return ((_opt.landscape == LT_HILLY && GetTileZ(tile) > _opt.snow_line) ? 4 : 0) |
+			       (GetRailType(tile) << 8);
 		case 0x43: return st->owner; /* Station owner */
 		case 0x44: return 2;         /* PBS status */
 		case 0x46: return GetPlatformInfoHelper(tile, false, false, true);
