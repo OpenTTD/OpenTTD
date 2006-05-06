@@ -212,7 +212,7 @@ void DrawWindowWidgets(const Window *w)
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
 
 			str = wi->unkA;
-			if (str != 0) DrawString(r.left + 2, r.top + 1, str, 0);
+			if (str != 0) DrawStringTruncated(r.left + 2, r.top + 1, str, 0, r.right - r.left - 10);
 			goto draw_default;
 		}
 
@@ -494,7 +494,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 				}
 				if (WP(w,dropdown_d).items[i] != 0) {
 					if (sel == 0) GfxFillRect(x + 1, y, x + w->width - 4, y + 9, 0);
-					DrawString(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16);
+					DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16, w->width - 4);
 
 					if (HASBIT(WP(w,dropdown_d).disabled_state, i)) {
 						GfxFillRect(x, y, x + w->width - 3, y + 9,
