@@ -1783,7 +1783,7 @@ static void VehicleNewName(byte *buf, int len)
 					switch (GB(id, 8, 8)) {
 						case 0xC4: /* Station class name */
 							if (GB(id, 0, 8) >= _cur_grffile->num_stations) {
-								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", station);
+								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
 							} else {
 								StationClassID sclass = _cur_grffile->stations[GB(id, 0, 8)].sclass;
 								SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name));
@@ -1792,9 +1792,9 @@ static void VehicleNewName(byte *buf, int len)
 
 						case 0xC5: /* Station name */
 							if (GB(id, 0, 8) >= _cur_grffile->num_stations) {
-								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", station);
+								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
 							} else {
-								_cur_grffile->stations[station].name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
+								_cur_grffile->stations[GB(id, 0, 8)].name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
 							}
 							break;
 
