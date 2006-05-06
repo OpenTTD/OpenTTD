@@ -1068,6 +1068,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	if (flags & DC_EXEC) {
 		TileIndexDiff tile_delta;
 		byte *layout_ptr;
+		byte numtracks_orig;
 		Track track;
 
 		// Now really clear the land below the station
@@ -1092,17 +1093,20 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		layout_ptr = alloca(numtracks * plat_len);
 		GetStationLayout(layout_ptr, numtracks, plat_len, statspec);
 
+		numtracks_orig = numtracks;
+
 		do {
 			TileIndex tile = tile_org;
 			int w = plat_len;
 			do {
-
-				MakeRailStation(tile, st->owner, st->index, axis, *layout_ptr++, GB(p2, 0, 4));
+				byte layout = *layout_ptr++;
+				MakeRailStation(tile, st->owner, st->index, axis, layout, GB(p2, 0, 4));
 				SetCustomStationSpecIndex(tile, specindex);
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
 
 				if (statspec != NULL) {
-					uint16 callback = GetStationCallback(CBID_STATION_TILE_LAYOUT, 0, 0, statspec, st, tile);
+					uint32 platinfo = GetPlatformInfo(axis, layout, plat_len, numtracks_orig, plat_len - w, numtracks_orig - numtracks, false);
+					uint16 callback = GetStationCallback(CBID_STATION_TILE_LAYOUT, platinfo, 0, statspec, st, tile);
 					if (callback != CALLBACK_FAILED && callback < 8) SetStationGfx(tile, callback);
 				}
 
