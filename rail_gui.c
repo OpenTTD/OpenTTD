@@ -755,6 +755,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			SetWindowDirty(w);
 			break;
 
+		case 22:
 		case 23:
 			ShowDropDownMenu(w, BuildStationClassDropdown(), _railstation.station_class, 23, 0, 1 << STAT_CLASS_WAYP);
 			break;
