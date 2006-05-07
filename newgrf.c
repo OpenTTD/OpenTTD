@@ -1559,11 +1559,19 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	uint8 cidcount;
 	int c, i;
 
-	check_length(len, 7, "VehicleMapSpriteGroup");
+	check_length(len, 6, "VehicleMapSpriteGroup");
 	feature = buf[1];
 	idcount = buf[2] & 0x7F;
 	wagover = (buf[2] & 0x80) == 0x80;
 	check_length(len, 3 + idcount, "VehicleMapSpriteGroup");
+
+	/* If ``n-id'' (or ``idcount'') is zero, this is a ``feature
+	 * callback''. */
+	if (idcount == 0) {
+		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Feature callbacks not implemented yet.");
+		return;
+	}
+
 	cidcount = buf[3 + idcount];
 	check_length(len, 4 + idcount + cidcount * 3, "VehicleMapSpriteGroup");
 
@@ -1622,15 +1630,6 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				SetCustomStationSpec(statspec);
 			}
 		}
-		return;
-	}
-
-
-	/* If ``n-id'' (or ``idcount'') is zero, this is a ``feature
-	 * callback''. I have no idea how this works, so we will ignore it for
-	 * now.  --octo */
-	if (idcount == 0) {
-		grfmsg(GMS_NOTICE, "NewMapping: Feature callbacks not implemented yet.");
 		return;
 	}
 
