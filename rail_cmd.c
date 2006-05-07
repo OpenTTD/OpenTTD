@@ -852,7 +852,7 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 {
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
-	if (!(EnsureNoVehicle(tile) || (GetRailType(tile) == RAILTYPE_RAIL && totype == RAILTYPE_ELECTRIC)) && (!IsCompatibleRail(GetRailType(tile), totype) || IsPlainRailTile(tile))) return CMD_ERROR;
+	if (!EnsureNoVehicle(tile) && (!IsCompatibleRail(GetRailType(tile), totype) || IsPlainRailTile(tile))) return CMD_ERROR;
 
 	// tile is already of requested type?
 	if (GetRailType(tile) == totype) return CMD_ERROR;
