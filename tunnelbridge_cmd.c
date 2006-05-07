@@ -583,6 +583,15 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 }
 
 
+static uint GetBridgeHeightRamp(TileIndex t)
+{
+	/* Return the height there (the height of the NORTH CORNER)
+	 * If the end of the bridge is on a tile with all corners except the north corner raised,
+	 * the z coordinate is 1 height level too low. Compensate for that */
+	return TilePixelHeight(t) + (GetTileSlope(t, NULL) == SLOPE_WSE ? TILE_HEIGHT : 0);
+}
+
+
 static int32 DoClearBridge(TileIndex tile, uint32 flags)
 {
 	DiagDirection direction;
@@ -650,7 +659,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	v = FindVehicleBetween(
 		tile    + delta,
 		endtile - delta,
-		TilePixelHeight(tile) + TILE_HEIGHT + GetCorrectTileHeight(tile)
+		GetBridgeHeightRamp(tile) + TILE_HEIGHT
 	);
 	if (v != NULL) {
 		VehicleInTheWayErrMsg(v);
@@ -802,12 +811,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 // fast routine for getting the height of a middle bridge tile. 'tile' MUST be a middle bridge tile.
 uint GetBridgeHeight(TileIndex t)
 {
-	TileIndex tile = GetSouthernBridgeEnd(t);
-
-	/* Return the height there (the height of the NORTH CORNER)
-	 * If the end of the bridge is on a tile with all corners except the north corner raised,
-	 * the z coordinate is 1 height level too low. Compensate for that */
-	return TilePixelHeight(tile) + (GetTileSlope(tile, NULL) == SLOPE_WSE ? TILE_HEIGHT : 0);
+	return GetBridgeHeightRamp(GetSouthernBridgeEnd(t));
 }
 
 static const byte _bridge_foundations[2][16] = {
