@@ -71,6 +71,7 @@ typedef struct StationSpec {
 	 * evaluating callbacks.
 	 */
 	SpriteGroup *spritegroup[NUM_GLOBAL_CID];
+	SpriteGroup *groundgroup;
 } StationSpec;
 
 /**
@@ -103,6 +104,7 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
  * NULL - that means we are in a build dialog). The station structure is used
  * for variational sprite groups. */
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile);
+SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Station *st, TileIndex tile);
 uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const StationSpec *statspec, const Station *st, TileIndex tile);
 
 /* Check if a rail station tile is traversable. */

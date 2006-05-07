@@ -826,19 +826,10 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 				for (t = 0; t < statspec->tiles; t++) {
 					DrawTileSprites *dts = &statspec->renderdata[t];
 					uint seq_count = 0;
-					PalSpriteID ground_sprite;
 
 					dts->seq = NULL;
-					ground_sprite = grf_load_dword(&buf);
-					if (ground_sprite == 0) continue;
-
-					if (HASBIT(ground_sprite, 31)) {
-						// Bit 31 indicates that we should use a custom sprite.
-						dts->ground_sprite = GB(ground_sprite, 0, 15) - 0x42D;
-						dts->ground_sprite += _cur_grffile->first_spriteset;
-					} else {
-						dts->ground_sprite = ground_sprite;
-					}
+					dts->ground_sprite = grf_load_dword(&buf);
+					if (dts->ground_sprite == 0) continue;
 
 					while (buf < *bufp + len) {
 						DrawTileSeqStruct *dtss;
@@ -856,13 +847,15 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						dtss->unk = grf_load_byte(&buf);
 						dtss->image = grf_load_dword(&buf);
 
-						/* Remap the colour map bit from 14 to 31 */
+						/* Remap flags as ours collide */
+						if (HASBIT(dtss->image, 31)) {
+							CLRBIT(dtss->image, 31);
+							SETBIT(dtss->image, 30);
+						}
 						if (HASBIT(dtss->image, 14)) {
 							CLRBIT(dtss->image, 14);
 							SETBIT(dtss->image, 31);
 						}
-
-						dtss->image -= 0x42D;
 					}
 				}
 			}
@@ -1500,11 +1493,6 @@ static void NewSpriteGroup(byte *buf, int len)
 						return;
 					}
 
-					if (_cur_grffile->first_spriteset == 0) {
-						DEBUG(grf, 6) ("NewSpriteGroup: Setting 0x%X as first Sprite ID", _cur_grffile->spriteset_start);
-						_cur_grffile->first_spriteset = _cur_grffile->spriteset_start;
-					}
-
 					check_length(bufend - buf, 2 * num_loaded + 2 * num_loading, "NewSpriteGroup (Real) (1)");
 
 					group = AllocateSpriteGroup();
@@ -1628,6 +1616,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				StationSpec *statspec = _cur_grffile->stations[stid];
 
 				statspec->spritegroup[GC_DEFAULT] = _cur_grffile->spritegroups[groupid];
+				statspec->groundgroup = _cur_grffile->spritegroups[0];
 				statspec->grfid = _cur_grffile->grfid;
 				statspec->localidx = stid;
 				SetCustomStationSpec(statspec);

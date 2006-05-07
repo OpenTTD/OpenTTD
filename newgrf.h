@@ -18,7 +18,6 @@ typedef struct GRFFile {
 	uint32 grfid;
 	uint16 flags;
 	uint16 sprite_offset;
-	SpriteID first_spriteset; ///< Holds the first spriteset's sprite offset.
 	byte grf_version;
 	struct GRFFile *next;
 

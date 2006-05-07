@@ -1986,8 +1986,6 @@ const DrawTileSprites *GetStationTileLayout(byte gfx)
 	return &_station_display_datas[gfx];
 }
 
-extern uint16 _custom_sprites_base;
-
 static void DrawTile_Station(TileInfo *ti)
 {
 	uint32 image_or_modificator;
@@ -1996,8 +1994,9 @@ static void DrawTile_Station(TileInfo *ti)
 	const DrawTileSprites *t = NULL;
 	RailType railtype = GetRailType(ti->tile);
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
-	SpriteID offset;
 	uint32 relocation = 0;
+	const Station *st = NULL;
+	const StationSpec *statspec = NULL;
 
 	{
 		PlayerID owner = GetTileOwner(ti->tile);
@@ -2011,8 +2010,8 @@ static void DrawTile_Station(TileInfo *ti)
 
 	if (IsCustomStationSpecIndex(ti->tile)) {
 		// look for customization
-		const Station *st = GetStationByTile(ti->tile);
-		const StationSpec *statspec = st->speclist[GetCustomStationSpecIndex(ti->tile)].spec;
+		st = GetStationByTile(ti->tile);
+		statspec = st->speclist[GetCustomStationSpecIndex(ti->tile)].spec;
 
 		//debug("Cust-o-mized %p", statspec);
 
@@ -2036,11 +2035,14 @@ static void DrawTile_Station(TileInfo *ti)
 	if (t == NULL || t->seq == NULL) t = &_station_display_datas[GetStationGfx(ti->tile)];
 
 	image = t->ground_sprite;
+	if (HASBIT(image, 31)) {
+		CLRBIT(image, 31);
+		image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
+		image += rti->custom_ground_offset;
+	} else {
+		image += rti->total_offset;
+	}
 	if (image & PALETTE_MODIFIER_COLOR) image |= image_or_modificator;
-
-	// For custom sprites, there's no railtype-based pitching.
-	offset = (image & SPRITE_MASK) < _custom_sprites_base ? rti->total_offset : rti->custom_ground_offset;
-	image += offset;
 
 	// station_land array has been increased from 82 elements to 114
 	// but this is something else. If AI builds station with 114 it looks all weird
@@ -2049,8 +2051,14 @@ static void DrawTile_Station(TileInfo *ti)
 	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
 	foreach_draw_tile_seq(dtss, t->seq) {
-		image = dtss->image + relocation;
-		image += offset;
+		image = dtss->image;
+		if (HASBIT(image, 30)) {
+			CLRBIT(image, 30);
+			image += rti->total_offset;
+		} else {
+			image += relocation;
+		}
+
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			MAKE_TRANSPARENT(image);
 		} else {

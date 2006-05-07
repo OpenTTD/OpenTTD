@@ -465,7 +465,33 @@ SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *
 
 	if (group == NULL || group->type != SGT_RESULT) return 0;
 
-	return group->g.result.sprite;
+	return group->g.result.sprite - 0x42D;
+}
+
+
+SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Station *st, TileIndex tile)
+{
+	const SpriteGroup *group;
+	ResolverObject object;
+	CargoID ctype = (st == NULL) ? GC_PURCHASE : GC_DEFAULT_NA;
+
+	NewStationResolver(&object, statspec, st, tile);
+	object.callback_param1 = 1; /* Indicate we are resolving the ground sprite */
+
+	group = Resolve(statspec->spritegroup[ctype], &object);
+	if ((group == NULL || group->type != SGT_RESULT) && ctype != GC_DEFAULT_NA) {
+		group = Resolve(statspec->spritegroup[GC_DEFAULT_NA], &object);
+	}
+	if ((group == NULL || group->type != SGT_RESULT) && ctype != GC_DEFAULT) {
+		group = Resolve(statspec->spritegroup[GC_DEFAULT], &object);
+	}
+	if ((group == NULL || group->type != SGT_RESULT)) {
+		group = Resolve(statspec->groundgroup, &object);
+	}
+
+	if (group == NULL || group->type != SGT_RESULT) return 0;
+
+	return group->g.result.sprite - 0x42D;
 }
 
 
@@ -593,8 +619,6 @@ bool DeallocateSpecFromStation(Station *st, byte specindex)
  */
 bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID sclass, uint station)
 {
-	extern uint16 _custom_sprites_base;
-
 	const StationSpec *statspec;
 	const DrawTileSprites *sprites;
 	const DrawTileSeqStruct *seq;
@@ -616,20 +640,31 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 
 	if (statspec->renderdata == NULL) {
 		sprites = GetStationTileLayout(tile + axis);
-		relocation -= 0x42D;
 	} else {
 		sprites = &statspec->renderdata[(tile < statspec->tiles) ? tile + axis : axis];
 	}
 
 	image = sprites->ground_sprite;
-	image += (image < _custom_sprites_base) ? rti->total_offset : rti->custom_ground_offset;
+	if (HASBIT(image, 31)) {
+		CLRBIT(image, 31);
+		image += GetCustomStationGroundRelocation(statspec, NULL, INVALID_TILE);
+		image += rti->custom_ground_offset;
+	} else {
+		image += rti->total_offset;
+	}
 
 	if (image & PALETTE_MODIFIER_COLOR) image &= SPRITE_MASK;
 	DrawSprite(image, x, y);
 
 	foreach_draw_tile_seq(seq, sprites->seq) {
 		Point pt;
-		image = seq->image + relocation;
+		image = seq->image;
+		if (HASBIT(image, 30)) {
+			CLRBIT(image, 30);
+			image += rti->total_offset;
+		} else {
+			image += relocation;
+		}
 
 		if ((byte)seq->delta_z != 0x80) {
 			pt = RemapCoords(seq->delta_x, seq->delta_y, seq->delta_z);

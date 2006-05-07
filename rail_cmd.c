@@ -30,8 +30,6 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 
-extern uint16 _custom_sprites_base;
-
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
 	 0, 21, 17, 12,
@@ -1338,7 +1336,6 @@ static void DrawTile_Track(TileInfo *ti)
 
 				if (statspec->renderdata == NULL) {
 					cust = GetStationTileLayout(tile);
-					relocation -= 0x42D;
 				} else {
 					cust = &statspec->renderdata[(tile < statspec->tiles ? tile : 0) + GetWaypointAxis(ti->tile)];
 				}
@@ -1346,7 +1343,13 @@ static void DrawTile_Track(TileInfo *ti)
 				/* If there is no sprite layout, we fall back to the default waypoint graphics. */
 				if (cust != NULL && cust->seq != NULL) {
 					image = cust->ground_sprite;
-					image += (image < _custom_sprites_base) ? rti->total_offset : rti->custom_ground_offset;
+					if (HASBIT(image, 31)) {
+						CLRBIT(image, 31);
+						image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
+						image += rti->custom_ground_offset;
+					} else {
+						image += rti->total_offset;
+					}
 
 					DrawGroundSprite(image);
 
