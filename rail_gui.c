@@ -20,6 +20,8 @@
 #include "waypoint.h"
 #include "debug.h"
 #include "variables.h"
+#include "newgrf_callbacks.h"
+#include "newgrf_station.h"
 
 static RailType _cur_railtype;
 static bool _remove_button_clicked;
@@ -32,6 +34,11 @@ static struct {
 	byte numtracks;
 	byte platlength;
 	bool dragdrop;
+
+	bool newstations;
+	byte station_class;
+	byte station_type;
+	byte station_count;
 } _railstation;
 
 
@@ -133,7 +140,8 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
 		SndPlayTileFx(SND_20_SPLAT_2, tile);
-		ResetObjectToPlace();
+		/* Only close the station builder window if the default station is chosen. */
+		if (_railstation.station_class == STAT_CLASS_DFLT && _railstation.station_type == 0) ResetObjectToPlace();
 	}
 }
 
@@ -145,8 +153,9 @@ static void PlaceRail_Station(TileIndex tile)
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED);
 		VpSetPlaceSizingLimit(_patches.station_spread);
 	} else {
-		// TODO: Custom station selector GUI.
-		DoCommandP(tile, _railstation.orientation | (_railstation.numtracks<<8) | (_railstation.platlength<<16),_cur_railtype, CcStation,
+		DoCommandP(tile,
+				_railstation.orientation | (_railstation.numtracks << 8) | (_railstation.platlength << 16),
+				_cur_railtype | (_railstation.station_class << 8) | (_railstation.station_type << 16), CcStation,
 				CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 	}
 }
@@ -597,9 +606,10 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 	h = ey - sy + 1;
 	if (!_railstation.orientation) uintswap(w,h);
 
-	// TODO: Custom station selector GUI.
-	DoCommandP(TileXY(sx, sy), _railstation.orientation | (w << 8) | (h << 16), _cur_railtype, CcStation,
-		CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
+	DoCommandP(TileXY(sx, sy),
+			_railstation.orientation | (w << 8) | (h << 16),
+			_cur_railtype | (_railstation.station_class << 8) | (_railstation.station_type << 16), CcStation,
+			CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 }
 
 static void StationBuildWndProc(Window *w, WindowEvent *e)
@@ -608,6 +618,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		int rad;
 		uint bits;
+		bool newstations = _railstation.newstations;
+		int y_offset;
 
 		if (WP(w,def_d).close) return;
 
@@ -643,17 +655,56 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			SETBIT(w->disabled_state, bits + 12);
 		}
 
+		if (newstations) {
+			const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, _railstation.station_type);
+
+			if (statspec != NULL) {
+				for (bits = 0; bits < 7; bits++) {
+					if (HASBIT(statspec->disallowed_platforms, bits)) SETBIT(w->disabled_state, bits +  5);
+					if (HASBIT(statspec->disallowed_lengths,   bits)) SETBIT(w->disabled_state, bits + 12);
+				}
+			}
+		}
+
+		SetDParam(0, GetStationClassName(_railstation.station_class));
 		DrawWindowWidgets(w);
 
-		StationPickerDrawSprite(39, 42, _cur_railtype, 2);
-		StationPickerDrawSprite(107, 42, _cur_railtype, 3);
+		y_offset = newstations ? 90 : 0;
 
-		DrawStringCentered(74, 15, STR_3002_ORIENTATION, 0);
-		DrawStringCentered(74, 76, STR_3003_NUMBER_OF_TRACKS, 0);
-		DrawStringCentered(74, 101, STR_3004_PLATFORM_LENGTH, 0);
-		DrawStringCentered(74, 141, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
+		if (!DrawStationTile(39, 42 + y_offset, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
+			StationPickerDrawSprite(39, 42 + y_offset, _cur_railtype, 2);
+		}
+		if (!DrawStationTile(107, 42 + y_offset, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {
+			StationPickerDrawSprite(107, 42 + y_offset, _cur_railtype, 3);
+		}
 
-		DrawStationCoverageAreaText(2, 166, (uint)-1, rad);
+		DrawStringCentered(74, 15 + y_offset, STR_3002_ORIENTATION, 0);
+		DrawStringCentered(74, 76 + y_offset, STR_3003_NUMBER_OF_TRACKS, 0);
+		DrawStringCentered(74, 101 + y_offset, STR_3004_PLATFORM_LENGTH, 0);
+		DrawStringCentered(74, 141 + y_offset, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
+
+		DrawStationCoverageAreaText(2, 166 + y_offset, (uint)-1, rad);
+
+		if (newstations) {
+			uint i;
+			uint y = 35;
+
+			for (i = w->vscroll.pos; i < _railstation.station_count && i < w->vscroll.pos + w->vscroll.cap; i++) {
+				const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
+
+				if (statspec != NULL && statspec->name != 0) {
+					if (HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) && GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
+						GfxFillRect(8, y - 2, 127, y + 10, PALETTE_MODIFIER_GREYOUT);
+					}
+
+					DrawStringTruncated(9, y, statspec->name, i == _railstation.station_type ? 12 : 16, 118);
+				} else {
+					DrawStringTruncated(9, y, STR_STAT_CLASS_DFLT, i == _railstation.station_type ? 12 : 16, 118);
+				}
+
+				y += 14;
+			}
+		}
 	} break;
 
 	case WE_CLICK: {
@@ -703,8 +754,46 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
+
+		case 23:
+			ShowDropDownMenu(w, BuildStationClassDropdown(), _railstation.station_class, 23, 0, 1 << STAT_CLASS_WAYP);
+			break;
+
+		case 24: {
+			const StationSpec *statspec;
+			int y = (e->click.pt.y - 32) / 14;
+
+			if (y >= w->vscroll.cap) return;
+			y += w->vscroll.pos;
+			if (y >= _railstation.station_count) return;
+
+			/* Check station availability callback */
+			statspec = GetCustomStationSpec(_railstation.station_class, y);
+			if (statspec != NULL &&
+				HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) &&
+				GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) return;
+
+			_railstation.station_type = y;
+			SndPlayFx(SND_15_BEEP);
+			SetWindowDirty(w);
+			break;
+		}
 		}
 	} break;
+
+	case WE_DROPDOWN_SELECT:
+		if (_railstation.station_class != e->dropdown.index) {
+			_railstation.station_class = e->dropdown.index;
+			_railstation.station_type  = 0;
+			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
+
+			w->vscroll.count = _railstation.station_count;
+			w->vscroll.pos   = _railstation.station_type;
+		}
+
+		SndPlayFx(SND_15_BEEP);
+		SetWindowDirty(w);
+		break;
 
 	case WE_MOUSELOOP:
 		if (WP(w,def_d).close) {
@@ -749,6 +838,41 @@ static const Widget _station_builder_widgets[] = {
 {   WIDGETS_END},
 };
 
+static const Widget _newstation_builder_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3000_RAIL_STATION_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,   289, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     7,    72,   116,   163, 0x0, STR_304E_SELECT_RAILROAD_STATION},
+{      WWT_PANEL,   RESIZE_NONE,    14,    75,   140,   116,   163, 0x0, STR_304E_SELECT_RAILROAD_STATION},
+
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,   177,   188, STR_00CB_1, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,   177,   188, STR_00CC_2, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,   177,   188, STR_00CD_3, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,   177,   188, STR_00CE_4, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,   177,   188, STR_00CF_5, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,   177,   188, STR_0335_6, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,   177,   188, STR_0336_7, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,   202,   213, STR_00CB_1, STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,   202,   213, STR_00CC_2, STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,   202,   213, STR_00CD_3, STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,   202,   213, STR_00CE_4, STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,   202,   213, STR_00CF_5, STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,   202,   213, STR_0335_6, STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,   202,   213, STR_0336_7, STR_3050_SELECT_LENGTH_OF_RAILROAD},
+
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,   111,   216,   227, STR_DRAG_DROP, STR_STATION_DRAG_DROP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,   242,   253, STR_02DB_OFF, STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,   242,   253, STR_02DA_ON, STR_3064_HIGHLIGHT_COVERAGE_AREA},
+
+/* newstations gui additions */
+{          WWT_6,   RESIZE_NONE,    14,     7,   140,    17,    28, STR_02BD, STR_WAYPOINT_GRAPHICS_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   129,   139,    18,    27, STR_0225, STR_WAYPOINT_GRAPHICS_TIP},
+{     WWT_MATRIX,   RESIZE_NONE,    14,     7,   128,    32,   102, 0x501,    STR_WAYPOINT_GRAPHICS_TIP},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   129,   140,    32,   102, 0x0,      STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{   WIDGETS_END},
+};
+
 static const WindowDesc _station_builder_desc = {
 	-1, -1, 148, 200,
 	WC_BUILD_STATION,WC_BUILD_TOOLBAR,
@@ -757,9 +881,29 @@ static const WindowDesc _station_builder_desc = {
 	StationBuildWndProc
 };
 
+static const WindowDesc _newstation_builder_desc = {
+	-1, -1, 148, 290,
+	WC_BUILD_STATION,WC_BUILD_TOOLBAR,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	_newstation_builder_widgets,
+	StationBuildWndProc
+};
+
 static void ShowStationBuilder(void)
 {
-	AllocateWindowDesc(&_station_builder_desc);
+	Window *w;
+	if (GetNumStationClasses() <= 2 && GetNumCustomStations(STAT_CLASS_DFLT) == 1) {
+		w = AllocateWindowDesc(&_station_builder_desc);
+		_railstation.newstations = false;
+	} else {
+		w = AllocateWindowDesc(&_newstation_builder_desc);
+		_railstation.newstations = true;
+		_railstation.station_count = GetNumCustomStations(_railstation.station_class);
+
+		w->vscroll.count = _railstation.station_count;
+		w->vscroll.cap   = 5;
+		w->vscroll.pos   = clamp(_railstation.station_type - 2, 0, w->vscroll.count - w->vscroll.cap);
+	}
 }
 
 static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
@@ -838,18 +982,35 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 
 		for (i = 0; i < 5; i++) {
 			if (w->hscroll.pos + i < _waypoint_count) {
+				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, w->hscroll.pos + i);
+
 				DrawWaypointSprite(2 + i * 68, 25, w->hscroll.pos + i, _cur_railtype);
+
+				if (statspec != NULL &&
+						HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) &&
+						GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) {
+					GfxFillRect(4 + i * 68, 18, 67 + i * 68, 75, PALETTE_MODIFIER_GREYOUT);
+				}
 			}
 		}
 		break;
 	}
 	case WE_CLICK: {
 		switch (e->click.widget) {
-		case 3: case 4: case 5: case 6: case 7:
-			_cur_waypoint_type = e->click.widget - 3 + w->hscroll.pos;
+		case 3: case 4: case 5: case 6: case 7: {
+			byte type = e->click.widget - 3 + w->hscroll.pos;
+
+			/* Check station availability callback */
+			const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, type);
+			if (statspec != NULL &&
+					HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) &&
+					GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) return;
+
+			_cur_waypoint_type = type;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
+		}
 		}
 		break;
 	}
