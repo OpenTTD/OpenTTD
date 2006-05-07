@@ -21,6 +21,8 @@ typedef struct StationSpec {
 	uint32 grfid; ///< ID of GRF file station belongs to.
 	int localidx; ///< Index within GRF file of station.
 
+	bool allocated; ///< Flag whether this station has been added to a station class list
+
 	StationClassID sclass; ///< The class to which this spec belongs.
 	StringID name; ///< Name of this station.
 
