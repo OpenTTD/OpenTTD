@@ -2476,6 +2476,7 @@ static void InitializeGRFSpecial(void)
 	                   | (1 << 0x1C); /* electrifiedrailway */
 
 	_ttdpatch_flags[2] = (_patches.build_on_slopes ? (1 << 0x0D) : 0)       /* buildonslopes */
+	                   | (1 << 0x12)  /* newstations */
 	                   | (_patches.build_on_slopes ? (1 << 0x15) : 0)       /* buildoncoasts */
 	                   | (1 << 0x16)  /* canals */
 	                   | (1 << 0x17)  /* newstartyear */
