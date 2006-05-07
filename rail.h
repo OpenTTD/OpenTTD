@@ -178,49 +178,6 @@ static inline byte SignalOnTrack(Track track) {
 	return _signal_on_track[track];
 }
 
-/*
- * Some functions to query rail tiles
- */
-
-
-/**
- * Checks if a rail tile has signals.
- */
-static inline bool HasSignals(TileIndex tile)
-{
-	return GetRailTileType(tile) == RAIL_TYPE_SIGNALS;
-}
-
-/**
- * Returns the RailTileSubtype of a given rail tile with type
- * RAIL_TYPE_DEPOT_WAYPOINT
- */
-static inline RailTileSubtype GetRailTileSubtype(TileIndex tile)
-{
-	assert(GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT);
-	return (RailTileSubtype)(_m[tile].m5 & RAIL_SUBTYPE_MASK);
-}
-
-/**
- * Returns whether this is plain rails, with or without signals. Iow, if this
- * tiles RailTileType is RAIL_TYPE_NORMAL or RAIL_TYPE_SIGNALS.
- */
-static inline bool IsPlainRailTile(TileIndex tile)
-{
-	RailTileType rtt = GetRailTileType(tile);
-	return rtt == RAIL_TYPE_NORMAL || rtt == RAIL_TYPE_SIGNALS;
-}
-
-
-/**
- * Returns whether the given track is present on the given tile. Tile must be
- * a plain rail tile (IsPlainRailTile()).
- */
-static inline bool HasTrack(TileIndex tile, Track track)
-{
-	assert(IsValidTrack(track));
-	return HASBIT(GetTrackBits(tile), track);
-}
 
 /*
  * Functions describing logical relations between Tracks, TrackBits, Trackdirs

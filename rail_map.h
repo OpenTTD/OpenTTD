@@ -21,6 +21,24 @@ static inline RailTileType GetRailTileType(TileIndex t)
 	return _m[t].m5 & RAIL_TILE_TYPE_MASK;
 }
 
+/**
+ * Returns whether this is plain rails, with or without signals. Iow, if this
+ * tiles RailTileType is RAIL_TYPE_NORMAL or RAIL_TYPE_SIGNALS.
+ */
+static inline bool IsPlainRailTile(TileIndex tile)
+{
+	RailTileType rtt = GetRailTileType(tile);
+	return rtt == RAIL_TYPE_NORMAL || rtt == RAIL_TYPE_SIGNALS;
+}
+
+/**
+ * Checks if a rail tile has signals.
+ */
+static inline bool HasSignals(TileIndex tile)
+{
+	return GetRailTileType(tile) == RAIL_TYPE_SIGNALS;
+}
+
 
 /** These specify the subtype when the main rail type is
  * RAIL_TYPE_DEPOT_WAYPOINT */
@@ -29,6 +47,16 @@ typedef enum RailTileSubtypes {
 	RAIL_SUBTYPE_WAYPOINT = 0x04,
 	RAIL_SUBTYPE_MASK     = 0x3C
 } RailTileSubtype;
+
+/**
+ * Returns the RailTileSubtype of a given rail tile with type
+ * RAIL_TYPE_DEPOT_WAYPOINT
+ */
+static inline RailTileSubtype GetRailTileSubtype(TileIndex tile)
+{
+	assert(GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT);
+	return (RailTileSubtype)(_m[tile].m5 & RAIL_SUBTYPE_MASK);
+}
 
 
 typedef enum RailTypes {
@@ -116,6 +144,15 @@ static inline TrackBits GetTrackBits(TileIndex tile)
 static inline void SetTrackBits(TileIndex t, TrackBits b)
 {
 	SB(_m[t].m5, 0, 6, b);
+}
+
+/**
+ * Returns whether the given track is present on the given tile. Tile must be
+ * a plain rail tile (IsPlainRailTile()).
+ */
+static inline bool HasTrack(TileIndex tile, Track track)
+{
+	return HASBIT(GetTrackBits(tile), track);
 }
 
 
