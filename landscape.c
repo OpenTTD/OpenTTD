@@ -396,10 +396,9 @@ void InitializeLandscape(void)
 void ConvertGroundTilesIntoWaterTiles(void)
 {
 	TileIndex tile = 0;
-	uint h;
 
 	for (tile = 0; tile < MapSize(); ++tile) {
-		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h == 0) {
+		if (IsTileType(tile, MP_CLEAR) && GetTileMaxZ(tile) == 0) {
 			MakeWater(tile);
 		}
 	}

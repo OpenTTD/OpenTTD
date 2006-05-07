@@ -2623,13 +2623,8 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 
 		case MP_TUNNELBRIDGE:
 			if (IsBridge(tile) && IsBridgeMiddle(tile)) {
-				uint height;
-				Slope tileh = GetTileSlope(tile, &height);
-
-				// correct Z position of a train going under a bridge on slopes
-				if (tileh != SLOPE_FLAT) height += TILE_HEIGHT;
-
-				if (v->z_pos > height) return true; // train is going over bridge
+				// is train going over the bridge?
+				if (v->z_pos > GetTileMaxZ(tile)) return true;
 			}
 			break;
 

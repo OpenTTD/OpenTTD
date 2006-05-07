@@ -1357,10 +1357,8 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		}
 	} else if (IsBridge(tile)) { // XXX is this necessary?
 		if (v->type == VEH_Road || (v->type == VEH_Train && IsFrontEngine(v))) {
-			uint h;
+			uint h = GetTileMaxZ(tile);
 
-			// Compensate for possible foundation
-			if (GetTileSlope(tile, &h) != SLOPE_FLAT) h += TILE_HEIGHT;
 			if (IsBridgeRamp(tile) ||
 					myabs(h - v->z_pos) > 2) { // high above the ground -> on the bridge
 				/* modify speed of vehicle */

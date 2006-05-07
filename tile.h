@@ -30,6 +30,7 @@ typedef enum TropicZones {
 Slope GetTileh(uint n, uint w, uint e, uint s, uint *h);
 Slope GetTileSlope(TileIndex tile, uint *h);
 uint GetTileZ(TileIndex tile);
+uint GetTileMaxZ(TileIndex tile);
 
 static inline bool CorrectZ(Slope tileh)
 {

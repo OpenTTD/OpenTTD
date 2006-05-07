@@ -535,15 +535,11 @@ static void AnimateTile_Industry(TileIndex tile)
 
 static void CreateIndustryEffectSmoke(TileIndex tile)
 {
-	Slope tileh;
-	uint x;
-	uint y;
-	uint z;
+	uint x = TileX(tile) * TILE_SIZE;
+	uint y = TileY(tile) * TILE_SIZE;
+	uint z = GetTileMaxZ(tile);
 
-	tileh = GetTileSlope(tile, &z);
-	x = TileX(tile) * TILE_SIZE;
-	y = TileY(tile) * TILE_SIZE;
-	CreateEffectVehicle(x + 15, y + 14, z + 59 + (tileh != SLOPE_FLAT ? TILE_HEIGHT : 0), EV_CHIMNEY_SMOKE);
+	CreateEffectVehicle(x + 15, y + 14, z + 59, EV_CHIMNEY_SMOKE);
 }
 
 static void MakeIndustryTileBigger(TileIndex tile)

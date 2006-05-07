@@ -56,3 +56,20 @@ uint GetTileZ(TileIndex tile)
 	GetTileSlope(tile, &h);
 	return h;
 }
+
+
+uint GetTileMaxZ(TileIndex t)
+{
+	uint max;
+	uint h;
+
+	h = TileHeight(t);
+	max = h;
+	h = TileHeight(t + TileDiffXY(1, 0));
+	if (h > max) max = h;
+	h = TileHeight(t + TileDiffXY(0, 1));
+	if (h > max) max = h;
+	h = TileHeight(t + TileDiffXY(1, 1));
+	if (h > max) max = h;
+	return max * 8;
+}
