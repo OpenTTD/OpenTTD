@@ -420,7 +420,7 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 
 	if (cargo > statspec->cargo_threshold) {
 		if (group->g.real.num_loading > 0) {
-			set = ((cargo - statspec->cargo_threshold) * group->g.real.num_loading) / (0xfff - statspec->cargo_threshold);
+			set = ((cargo - statspec->cargo_threshold) * group->g.real.num_loading) / (4096 - statspec->cargo_threshold);
 			return group->g.real.loading[set];
 		}
 	} else {
