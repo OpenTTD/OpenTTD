@@ -18,6 +18,10 @@
 
 static StationClass station_classes[STAT_CLASS_MAX];
 
+enum {
+	MAX_SPECLIST = 255,
+};
+
 /**
  * Reset station classes to their default state.
  * This includes initialising the Default and Waypoint classes with an empty
@@ -539,15 +543,15 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
 	if (statspec == NULL) return 0;
 
 	/* Check if this spec has already been allocated */
-	for (i = 1; i < st->num_specs && i < 256; i++) {
+	for (i = 1; i < st->num_specs && i < MAX_SPECLIST; i++) {
 		if (st->speclist[i].spec == statspec) return i;
 	}
 
-	for (i = 1; i < st->num_specs && i < 256; i++) {
+	for (i = 1; i < st->num_specs && i < MAX_SPECLIST; i++) {
 		if (st->speclist[i].spec == NULL && st->speclist[i].grfid == 0) break;
 	}
 
-	if (i == 256) return -1;
+	if (i == MAX_SPECLIST) return -1;
 
 	if (exec) {
 		if (i >= st->num_specs) {

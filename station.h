@@ -72,7 +72,7 @@ struct Station {
 	byte trainst_w, trainst_h;
 
 	/** List of custom stations (StationSpecs) allocated to the station */
-	uint num_specs;
+	uint8 num_specs;
 	StationSpecList *speclist;
 
 	uint16 build_date;
