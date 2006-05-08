@@ -15,6 +15,8 @@
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 
+int _traininfo_vehicle_pitch = 0;
+
 // TODO: We don't support cargo-specific wagon overrides. Pretty exotic... ;-) --pasky
 
 typedef struct WagonOverride {

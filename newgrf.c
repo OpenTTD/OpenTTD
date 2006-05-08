@@ -38,7 +38,6 @@
 uint16 _custom_sprites_base;
 static int _skip_sprites; // XXX
 static uint _file_index; // XXX
-extern int _traininfo_vehicle_pitch;
 SpriteID _signal_base = 0;
 
 static GRFFile *_cur_grffile;

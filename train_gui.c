@@ -21,8 +21,6 @@
 #include "train.h"
 #include "newgrf_engine.h"
 
-int _traininfo_vehicle_pitch = 0;
-
 /**
  * Draw the purchase info details of train engine at a given location.
  * @param x,y location where to draw the info
