@@ -1105,9 +1105,10 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 				SetStationTileRandomBits(tile, GB(Random(), 0, 4));
 
 				if (statspec != NULL) {
-					uint32 platinfo = GetPlatformInfo(axis, layout, plat_len, numtracks_orig, plat_len - w, numtracks_orig - numtracks, false);
+					/* Use a fixed axis for GetPlatformInfo as our platforms / numtracks are always the right way around */
+					uint32 platinfo = GetPlatformInfo(AXIS_X, 0, plat_len, numtracks_orig, plat_len - w, numtracks_orig - numtracks, false);
 					uint16 callback = GetStationCallback(CBID_STATION_TILE_LAYOUT, platinfo, 0, statspec, st, tile);
-					if (callback != CALLBACK_FAILED && callback < 8) SetStationGfx(tile, callback);
+					if (callback != CALLBACK_FAILED && callback < 8) SetStationGfx(tile, callback + axis);
 				}
 
 				tile += tile_delta;
