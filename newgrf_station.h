@@ -112,6 +112,9 @@ uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const S
 /* Check if a rail station tile is traversable. */
 bool IsStationTileBlocked(TileIndex tile);
 
+/* Check if a rail station tile is electrifiable. */
+bool IsStationTileElectrifiable(TileIndex tile);
+
 /* Allocate a StationSpec to a Station. This is called once per build operation. */
 int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec);
 

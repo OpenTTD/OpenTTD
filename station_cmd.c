@@ -2049,7 +2049,7 @@ static void DrawTile_Station(TileInfo *ti)
 	// but this is something else. If AI builds station with 114 it looks all weird
 	DrawGroundSprite(image);
 
-	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
+	if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC && IsStationTileElectrifiable(ti->tile)) DrawCatenary(ti);
 
 	foreach_draw_tile_seq(dtss, t->seq) {
 		image = dtss->image;
