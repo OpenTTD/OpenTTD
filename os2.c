@@ -614,7 +614,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 
 				if (tb->length + length >= tb->maxlength - 1) break;
 
-				w = GetCharacterWidth((byte)*i);
+				w = GetCharacterWidth(FS_NORMAL, (byte)*i);
 				if (tb->maxwidth != 0 && width + tb->width + w > tb->maxwidth) break;
 
 				width += w;
