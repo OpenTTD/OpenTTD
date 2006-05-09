@@ -36,6 +36,14 @@ typedef struct CursorVars {
 } CursorVars;
 
 
+typedef enum FontSizes {
+	FS_NORMAL,
+	FS_SMALL,
+	FS_LARGE,
+	FS_END,
+} FontSize;
+
+
 void RedrawScreenRect(int left, int top, int right, int bottom);
 void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
@@ -94,12 +102,23 @@ void ToggleFullScreen(bool fs);
 
 /* gfx.c */
 #define ASCII_LETTERSTART 32
-VARDEF int _stringwidth_base;
-VARDEF byte _stringwidth_table[0x2A0];
-static inline byte GetCharacterWidth(uint key)
+extern FontSize _cur_fontsize;
+extern byte _stringwidth_table[FS_END][224];
+
+static inline byte GetCharacterWidth(FontSize size, byte key)
 {
-	assert(key >= ASCII_LETTERSTART && key - ASCII_LETTERSTART < lengthof(_stringwidth_table));
-	return _stringwidth_table[key - ASCII_LETTERSTART];
+	assert(key >= ASCII_LETTERSTART);
+	return _stringwidth_table[size][key - ASCII_LETTERSTART];
+}
+
+static inline byte GetCharacterHeight(FontSize size)
+{
+	switch (size) {
+		default: NOT_REACHED();
+		case FS_NORMAL: return 10;
+		case FS_SMALL:  return 6;
+		case FS_LARGE:  return 18;
+	}
 }
 
 VARDEF DrawPixelInfo _screen;

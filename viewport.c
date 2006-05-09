@@ -1002,9 +1002,9 @@ void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
 	sign->left = left - w / 2;
 
 	// zoomed out version
-	_stringwidth_base = 0xE0;
+	_cur_fontsize = FS_SMALL;
 	w = GetStringWidth(buffer) + 3;
-	_stringwidth_base = 0;
+	_cur_fontsize = FS_NORMAL;
 	sign->width_2 = w;
 }
 

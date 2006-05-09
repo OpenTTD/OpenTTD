@@ -18,10 +18,12 @@ bool _dbg_screen_rect;
 #endif
 
 Colour _cur_palette[256];
+byte _stringwidth_table[FS_END][224];
 
 static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode);
 
-static int _stringwidth_out;
+FontSize _cur_fontsize;
+static FontSize _last_fontsize;
 static Pixel _cursor_backup[64 * 64];
 static Rect _invalid_rect;
 static const byte *_color_remap_ptr;
@@ -243,6 +245,18 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 	}
 }
 
+
+static inline SpriteID GetFontBase(FontSize size)
+{
+	switch (size) {
+		default: NOT_REACHED();
+		case FS_NORMAL: return SPR_ASCII_SPACE;
+		case FS_SMALL:  return SPR_ASCII_SPACE_SMALL;
+		case FS_LARGE:  return SPR_ASCII_SPACE_BIG;
+	}
+}
+
+
 // ASSIGNMENT OF ASCII LETTERS < 32
 // 0 - end of string
 // 1 - SETX <BYTE>
@@ -274,18 +288,17 @@ enum {
 static int TruncateString(char *str, int maxw)
 {
 	int w = 0;
-	int base = _stringwidth_base;
+	FontSize size = _cur_fontsize;
 	int ddd, ddd_w;
 
 	byte c;
 	char *ddd_pos;
 
-	base = _stringwidth_base;
-	ddd_w = ddd = GetCharacterWidth(base + '.') * 3;
+	ddd_w = ddd = GetCharacterWidth(size, '.') * 3;
 
 	for (ddd_pos = str; (c = *str++) != '\0'; ) {
 		if (c >= ASCII_LETTERSTART) {
-			w += GetCharacterWidth(base + c);
+			w += GetCharacterWidth(size, c);
 
 			if (w >= maxw) {
 				// string got too big... insert dotdotdot
@@ -297,11 +310,11 @@ static int TruncateString(char *str, int maxw)
 			if (c == ASCII_SETX) str++;
 			else if (c == ASCII_SETXY) str += 2;
 			else if (c == ASCII_TINYFONT) {
-				base = 224;
-				ddd = GetCharacterWidth(base + '.') * 3;
+				size = FS_SMALL;
+				ddd = GetCharacterWidth(size, '.') * 3;
 			} else if (c == ASCII_BIGFONT) {
-				base = 448;
-				ddd = GetCharacterWidth(base + '.') * 3;
+				size = FS_LARGE;
+				ddd = GetCharacterWidth(size, '.') * 3;
 			}
 		}
 
@@ -397,7 +410,7 @@ void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, uin
 static uint32 FormatStringLinebreaks(char *str, int maxw)
 {
 	int num = 0;
-	int base = _stringwidth_base;
+	FontSize size = _cur_fontsize;
 	int w;
 	char *last_space;
 	byte c;
@@ -411,21 +424,21 @@ static uint32 FormatStringLinebreaks(char *str, int maxw)
 			if (c == ASCII_LETTERSTART) last_space = str;
 
 			if (c >= ASCII_LETTERSTART) {
-				w += GetCharacterWidth(base + (byte)c);
+				w += GetCharacterWidth(size, c);
 				if (w > maxw) {
 					str = last_space;
 					if (str == NULL)
-						return num + (base << 16);
+						return num + (size << 16);
 					break;
 				}
 			} else {
-				if (c == 0) return num + (base << 16);
+				if (c == 0) return num + (size << 16);
 				if (c == ASCII_NL) break;
 
 				if (c == ASCII_SETX) str++;
 				else if (c == ASCII_SETXY) str += 2;
-				else if (c == ASCII_TINYFONT) base = 224;
-				else if (c == ASCII_BIGFONT) base = 448;
+				else if (c == ASCII_TINYFONT) size = FS_SMALL;
+				else if (c == ASCII_BIGFONT) size = FS_LARGE;
 			}
 		}
 
@@ -447,11 +460,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 	tmp = FormatStringLinebreaks(buffer, maxw);
 	num = GB(tmp, 0, 16);
 
-	switch (GB(tmp, 16, 16)) {
-		case   0: mt = 10; break;
-		case 244: mt =  6; break;
-		default:  mt = 18; break;
-	}
+	mt = GetCharacterHeight(GB(tmp, 16, 16));
 
 	y -= (mt >> 1) * num;
 
@@ -460,14 +469,14 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 	for (;;) {
 		w = GetStringWidth(src);
 		DoDrawString(src, x - (w>>1), y, 0xFE);
-		_stringwidth_base = _stringwidth_out;
+		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
 			c = *src++;
 			if (c == 0) {
 				y += mt;
 				if (--num < 0) {
-					_stringwidth_base = 0;
+					_cur_fontsize = FS_NORMAL;
 					return;
 				}
 				break;
@@ -493,24 +502,20 @@ void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 	tmp = FormatStringLinebreaks(buffer, maxw);
 	num = GB(tmp, 0, 16);
 
-	switch (GB(tmp, 16, 16)) {
-		case   0: mt = 10; break;
-		case 244: mt =  6; break;
-		default:  mt = 18; break;
-	}
+	mt = GetCharacterHeight(GB(tmp, 16, 16));
 
 	src = buffer;
 
 	for (;;) {
 		DoDrawString(src, x, y, 0xFE);
-		_stringwidth_base = _stringwidth_out;
+		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
 			c = *src++;
 			if (c == 0) {
 				y += mt;
 				if (--num < 0) {
-					_stringwidth_base = 0;
+					_cur_fontsize = FS_NORMAL;
 					return;
 				}
 				break;
@@ -525,17 +530,17 @@ void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 
 int GetStringWidth(const char *str)
 {
+	FontSize size = _cur_fontsize;
 	int w = 0;
 	byte c;
-	int base = _stringwidth_base;
 	for (c = *str; c != '\0'; c = *(++str)) {
 		if (c >= ASCII_LETTERSTART) {
-			w += GetCharacterWidth(base + c);
+			w += GetCharacterWidth(size, c);
 		} else {
 			if (c == ASCII_SETX) str++;
 			else if (c == ASCII_SETXY) str += 2;
-			else if (c == ASCII_TINYFONT) base = 224;
-			else if (c == ASCII_BIGFONT) base = 448;
+			else if (c == ASCII_TINYFONT) size = FS_SMALL;
+			else if (c == ASCII_BIGFONT) size = FS_LARGE;
 		}
 	}
 	return w;
@@ -578,7 +583,7 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags
 int DoDrawString(const char *string, int x, int y, uint16 real_color)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
-	int base = _stringwidth_base;
+	FontSize size = _cur_fontsize;
 	byte c;
 	byte color;
 	int xo = x, yo = y;
@@ -618,23 +623,18 @@ skip_char:;
 		c = *string++;
 skip_cont:;
 		if (c == 0) {
-			_stringwidth_out = base;
+			_last_fontsize = size;
 			return x;
 		}
 		if (c >= ASCII_LETTERSTART) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
 			if (x + 26 >= dpi->left) {
-				GfxMainBlitter(GetSprite(base + 2 + c - ASCII_LETTERSTART), x, y, 1);
+				GfxMainBlitter(GetSprite(GetFontBase(size) + c - ASCII_LETTERSTART), x, y, 1);
 			}
-			x += GetCharacterWidth(base + c);
+			x += GetCharacterWidth(size, c);
 		} else if (c == ASCII_NL) { // newline = {}
 			x = xo;
-			y += 10;
-			if (base != 0) {
-				y -= 4;
-				if (base != 0xE0)
-					y += 12;
-			}
+			y += GetCharacterHeight(size);
 			goto check_bounds;
 		} else if (c >= ASCII_COLORSTART) { // change color?
 			color = (byte)(c - ASCII_COLORSTART);
@@ -645,9 +645,9 @@ skip_cont:;
 			x = xo + (byte)*string++;
 			y = yo + (byte)*string++;
 		} else if (c == ASCII_TINYFONT) { // {TINYFONT}
-			base = 0xE0;
+			size = FS_SMALL;
 		} else if (c == ASCII_BIGFONT) { // {BIGFONT}
-			base = 0x1C0;
+			size = FS_LARGE;
 		} else {
 			printf("Unknown string command character %d\n", c);
 		}
@@ -1607,23 +1607,25 @@ void DoPaletteAnimations(void)
 
 void LoadStringWidthTable(void)
 {
-	byte *b = _stringwidth_table;
+	SpriteID base;
 	uint i;
 
-	// 2 equals space.
 	/* Normal font */
-	for (i = 2; i != 226; i++) {
-		*b++ = SpriteExists(i) ? GetSprite(i)->width : 0;
+	base = GetFontBase(FS_NORMAL);
+	for (i = 0; i != 224; i++) {
+		_stringwidth_table[FS_NORMAL][i] = SpriteExists(base + i) ? GetSprite(base + i)->width : 0;
 	}
 
 	/* Small font */
-	for (i = 226; i != 450; i++) {
-		*b++ = SpriteExists(i) ? GetSprite(i)->width + 1 : 0;
+	base = GetFontBase(FS_SMALL);
+	for (i = 0; i != 224; i++) {
+		_stringwidth_table[FS_SMALL][i] = SpriteExists(base + i) ? GetSprite(base + i)->width + 1 : 0;
 	}
 
 	/* Large font */
-	for (i = 450; i != 674; i++) {
-		*b++ = SpriteExists(i) ? GetSprite(i)->width + 1 : 0;
+	base = GetFontBase(FS_LARGE);
+	for (i = 0; i != 224; i++) {
+		_stringwidth_table[FS_LARGE][i] = SpriteExists(base + i) ? GetSprite(base + i)->width + 1 : 0;
 	}
 }
 
