@@ -1611,16 +1611,19 @@ void LoadStringWidthTable(void)
 	uint i;
 
 	// 2 equals space.
+	/* Normal font */
 	for (i = 2; i != 226; i++) {
-		*b++ = i != 97 && (i < 99 || i > 113) && i != 116 && i != 117 && (i < 123 || i > 129) && (i < 151 || i > 153) && i != 155 ? GetSprite(i)->width : 0;
+		*b++ = SpriteExists(i) ? GetSprite(i)->width : 0;
 	}
 
+	/* Small font */
 	for (i = 226; i != 450; i++) {
-		*b++ = i != 321 && (i < 323 || i > 353) && i != 367 && (i < 375 || i > 377) && i != 379 ? GetSprite(i)->width + 1 : 0;
+		*b++ = SpriteExists(i) ? GetSprite(i)->width + 1 : 0;
 	}
 
+	/* Large font */
 	for (i = 450; i != 674; i++) {
-		*b++ = (i < 545 || i > 577) && i != 588 && i != 590 && i != 591 && i != 593 && (i < 599 || i > 601) && i != 603 ? GetSprite(i)->width + 1 : 0;
+		*b++ = SpriteExists(i) ? GetSprite(i)->width + 1 : 0;
 	}
 }
 
