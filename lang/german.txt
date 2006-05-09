@@ -871,6 +871,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumänisch
 STR_TOWNNAME_CZECH                                              :Tschechisch
 STR_TOWNNAME_SWISS                                              :Schweizerisch
 STR_TOWNNAME_DANISH                                             :Dänisch
+STR_TOWNNAME_TURKISH                                            :Türkisch
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pfund (£)
@@ -944,6 +945,7 @@ STR_CRATES                                                      :Kisten
 STR_RES_OTHER                                                   :Andere
 STR_NOTHING                                                     :nichts
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Der Fahrplan kann nicht gemeinsam benutzt werden...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kann Fahrplan nicht kopieren...
@@ -2515,6 +2517,7 @@ STR_886F_TRANSFER                                               :{BLACK}Umladen
 
 STR_TRAIN_STOPPING                                              :{RED}Halte an
 STR_TRAIN_STOPPING_VEL                                          :{RED}Halte an, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatible Gleistypen
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Fahrzeug ist im Weg

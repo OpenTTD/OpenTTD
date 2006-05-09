@@ -944,6 +944,7 @@ STR_CRATES                                                      :kasa
 STR_RES_OTHER                                                   :diger
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Talimat listesi paylasilamiyor...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Talimat listesi kopyalanamiyor...
@@ -2515,6 +2516,7 @@ STR_886F_TRANSFER                                               :{BLACK}Aktar
 
 STR_TRAIN_STOPPING                                              :{RED}Frenliyor
 STR_TRAIN_STOPPING_VEL                                          :{RED}Frenliyor, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Uyumsuz ray türleri
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Yolda araba var

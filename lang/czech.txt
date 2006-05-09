@@ -391,6 +391,8 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y u}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} megapond{P "" y u}
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -925,6 +927,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumunská
 STR_TOWNNAME_CZECH                                              :Ceska
 STR_TOWNNAME_SWISS                                              :¦výcarská
 STR_TOWNNAME_DANISH                                             :Dánská
+STR_TOWNNAME_TURKISH                                            :Turecká
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libry (£)
@@ -998,6 +1001,7 @@ STR_CRATES                                                      :krabic
 STR_RES_OTHER                                                   :jiné
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemuzu sdílet seznam prikazu...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemohu kopírovat seznam prikazu...
@@ -2569,6 +2573,7 @@ STR_886F_TRANSFER                                               :{BLACK}Prekladk
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Neslucitelne druhy kolejí
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Silnicni vozidlo v ceste
@@ -2620,6 +2625,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravní nehoda!{}Ridic zahynul v plamenech pri srá¸ce s vlakem
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravní nehoda!{}{COMMA} {P clovek lidé lidí} zahynul{P "" i o} v plamenech pri srá¸ce s vlakem
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nelze otocit vozidlo...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nelze otacet vozidla slo¸ená z více stroju
 STR_9034_RENAME                                                 :{BLACK}Prejmenovat
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Prejmenovat typ silnicniho vozidla
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Prejmenovat typ silnicniho vozidla

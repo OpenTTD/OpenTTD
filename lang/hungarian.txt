@@ -935,6 +935,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romániai
 STR_TOWNNAME_CZECH                                              :Cseh
 STR_TOWNNAME_SWISS                                              :Svájci
 STR_TOWNNAME_DANISH                                             :Dán
+STR_TOWNNAME_TURKISH                                            :Török
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Font (£)
@@ -1008,6 +1009,7 @@ STR_CRATES                                                      :láda
 STR_RES_OTHER                                                   :egyéb
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nem lehet megosztani a menetrendet...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nem lehet másolni a menetrendet...
@@ -2616,6 +2618,7 @@ STR_886F_TRANSFER                                               :{BLACK}Elszállí
 
 STR_TRAIN_STOPPING                                              :{RED}Lassít
 STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatibilis sintípusok
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármû van az útban

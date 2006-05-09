@@ -665,7 +665,21 @@ STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Zgradi v
 STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Zgradi tovarno gaziranih pijac
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Zgradi generator mehurckov
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Zgradi jamo karamele
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK} Zgradi rudnik sladkorja
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE} Tukaj ni mozno zgraditi {STRING}
+STR_0295                                                        :
+STR_0296_QUIT                                                   :Izhod
+STR_02A1_SMALL                                                  :{BLACK}Majhno
+STR_02A2_MEDIUM                                                 :{BLACK}Srednje
+STR_02A3_LARGE                                                  :{BLACK}Veliko
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izberi velikost mesta
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikost mesta:
 
+STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :Privzeto
+STR_02BF_CUSTOM                                                 :Po meri
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Shrani
 
 ############ range for menu	starts
@@ -691,6 +705,7 @@ STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Prozor
 
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Informacija o terenu
+STR_02D6                                                        :
 STR_02D7_SCREENSHOT_CTRL_S                                      :Zaslonska slika (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Ogromna zaslonska slika (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
@@ -961,7 +976,9 @@ STR_1004_TOO_HIGH                                               :{WHITE}Previsok
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nobene uporabne tracnice
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ze zgrajeno
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najprej moras odstraniti tracnice
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gradnja ¸eleznice
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrificirana Zeleznica
+STR_1015_RAILROAD_CONSTRUCTION                                  :Gradnja zeleznice
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrificirana zeleznica
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Zgradi tracnice
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Zgradi zelezznisko postajo
@@ -1098,11 +1115,28 @@ STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Prevec p
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Prevec avtobusnih postaj
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Prevec tovornih postaj
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Preblizu druge postaje
+STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Najprej je potrebno zrusiti postajo
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Preblizu sosednjemu letaliscu
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Najprej je potrebno zrusiti letalisce
 
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Ni mozno preimenovati postaje
+STR_3032_RATINGS                                                :{BLACK}Ugled
+STR_3033_ACCEPTS                                                :{BLACK}Sprejema
 
 ############ range for rating starts
+STR_3035_APPALLING                                              :Strasen
+STR_3036_VERY_POOR                                              :Zelo slab
+STR_3037_POOR                                                   :Slab
+STR_3039_GOOD                                                   :Dober
+STR_303A_VERY_GOOD                                              :Zelo dober
+STR_303B_EXCELLENT                                              :Izvrsten
+STR_303C_OUTSTANDING                                            :Sijajno
 ############ range for rating ends
 
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} ne sprejema vec {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ne sprejema vec {STRING} in {STRING}
 
 
 ##id 0x3800

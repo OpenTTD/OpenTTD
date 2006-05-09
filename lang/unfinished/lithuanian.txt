@@ -21,7 +21,7 @@ STR_000D_ACCEPTS                                                :{BLACK}Laukia: 
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Keleiviu
 STR_0010_COAL                                                   :Anglis
-STR_0011_MAIL                                                   :Pasto
+STR_0011_MAIL                                                   :Pa¨to
 STR_0012_OIL                                                    :Naftos
 STR_0013_LIVESTOCK                                              :Galviju
 STR_0014_GOODS                                                  :Prekiu
@@ -49,7 +49,7 @@ STR_0029_BUBBLES                                                :Burbulu
 STR_002A_TOFFEE                                                 :Karameles
 STR_002B_BATTERIES                                              :Bateriju
 STR_002C_PLASTIC                                                :Plastmases
-STR_002D_FIZZY_DRINKS                                           :Gaivuju gerimu
+STR_002D_FIZZY_DRINKS                                           :Gaiviuju gerimu
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Keleiviu
 STR_0030_COAL                                                   :Anglies
@@ -155,7 +155,7 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}To daryt
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Negalima griauti sios teritorijos....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Orginalo teises priklauso {COPYRIGHT} 1995 Chris Sawyer, Visos teises saugomos
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versija {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2005 OpenTTD komanda
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD komanda
 STR_TRANSLATED_BY                                               :{BLACK}  Vertejai: Mindaugas Surdokas (L781), Vytautas Liuolia
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -163,7 +163,7 @@ STR_00C6                                                        :{SILVER}{CROSS}
 STR_00C7_QUIT                                                   :{WHITE}Baigti
 STR_00C8_YES                                                    :{BLACK}Taip
 STR_00C9_NO                                                     :{BLACK}Ne
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ar tu tikrai nori nutraukti zaidima ir grizti i {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ar jus tikrai norite nutraukti zaidima ir grizti i {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -277,8 +277,6 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Mylios
-STR_013A_METRIC_KILOMETERS                                      :Metrai, kilometrai
 STR_013B_OWNED_BY                                               :{WHITE}...priklauso {STRING}
 STR_013C_CARGO                                                  :{BLACK}Keliamoji galia
 STR_013D_INFORMATION                                            :{BLACK}Informacija
@@ -306,6 +304,14 @@ STR_0150_SOMEONE                                                :kazkas{SKIP}{SK
 STR_0151_MAP_OF_WORLD                                           :Zemelapis
 STR_0152_TOWN_DIRECTORY                                         :Miestu sarasas
 STR_0153_SUBSIDIES                                              :Subsidijos
+
+
+
+
+
+
+
+
 
 ############ range for menu	starts
 STR_0155_INCOME_GRAPH                                           :Iplauku diagrama
@@ -422,6 +428,8 @@ STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kaina is
 STR_01A6_N_A                                                    :N/A
 STR_01A7_OWNER                                                  :{BLACK}Savininkas: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Valdzia: {LTBLUE}{STRING}
+STR_01A9_NONE                                                   :Nieko
+STR_01AA_NAME                                                   :{BLACK}Vardas
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
@@ -475,6 +483,7 @@ STR_01DA_CUSTOM_2                                               :{TINYFONT}Pasir
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Muzikos garsas
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Efektu garsas
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAKS
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Pereiti prie buvusio garso takelio
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Sustabdyti muzikos grojima
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Groti muzika
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Tempk uz slankiklio, jei nori nustatyti muzikos ir efektu garsuma
@@ -730,9 +739,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Ikelti e
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valiuta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Valiutos pasirinkimas
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Mato vienetai
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Pasirink mato vienetus
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Automobiliai
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Pasirink, kuria kelio puse vaziuos masinos
@@ -877,6 +884,7 @@ STR_ITEMS                                                       :vienetu
 STR_CRATES                                                      :deziu
 STR_RES_OTHER                                                   :Kita
 STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Uzduociu sarasu dalintis negalima...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Uzduociu saraso kopijuoti negalima...
@@ -1159,7 +1167,6 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Prideti 
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Prideda serveri i sarasa, kuris tikrinamas ieskant zaidimu
 STR_NETWORK_ENTER_IP                                            :{BLACK}Ivesk adresa (IP)
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Zaidejai
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Zaidzia / maksimaliai zaideju
 STR_NETWORK_GAME_INFO                                           :{SILVER}Zaidimo informacija
@@ -1194,9 +1201,9 @@ STR_NETWORK_INTERNET                                            :Internetas
 STR_NETWORK_LAN_INTERNET                                        :Vietinis tinklas/ Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internetas (reklamuotis metaserveryje)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Kalba:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Kiti zaidejai zinos kokia kalba kalbama serveryje
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Pradeti zaidima
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Predeti nauja zaidima tinkle (atsitiktinis zemelapis ar scenarijus)
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Atverti zaidima
@@ -1590,6 +1597,7 @@ STR_3069_BUOY                                                   :Pluduras
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...pluduras pakeliui
 STR_306B_HELIPORT                                               :{BLACK}Malunsp. aikstele
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nestandartines stoteles atjungtos
+
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Laivu depo orientacija
@@ -2329,10 +2337,8 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Iskrauti
 STR_SERVICE_HINT                                                :{BLACK}Nevykdyti sios uzduoties iki tol, kol nereikes remonto
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Naujas {STRING} atsirado!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Kaina: {CURRENCY} Svoris: {COMMA}t{}Greitis: {VELOCITY}  Galia: {COMMA}aj{}Eksploatacijos islaidos: {CURRENCY}/met{}Talpa: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Sugedo
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: {LTBLUE}{STRING}{BLACK}   Eksploatacijos islaidos: {LTBLUE}{CURRENCY}/met
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Svoris: {LTBLUE}{COMMA}t  {BLACK}Galia: {LTBLUE}{COMMA}aj{BLACK} Maks. greitis: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Siu metu pelnas : {LTBLUE}{CURRENCY}  (praeitu metu: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai nuo praeito remonto: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Sustabdyta
@@ -2621,6 +2627,7 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Spustelk
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Pasirink norimu keisti traukiniu begiu tipa
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Kaireje lango dalyje pazymeta tr. priemone bus pakeista tr. priemone, kuri yra pazymeta desineje lango puseje
 STR_REPLACE_HELP                                                :{BLACK}Tai leidzia tau keisti viena tr. priemoniu tipa kitu, kai pirmojo tipo traukinys uzsuka i depa
+
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zenklu sarasas - {COMMA} Zenklai

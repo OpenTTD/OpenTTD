@@ -870,6 +870,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romeno
 STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suiça
 STR_TOWNNAME_DANISH                                             :Dinamarquês
+STR_TOWNNAME_TURKISH                                            :Turco
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)
@@ -943,6 +944,7 @@ STR_CRATES                                                      :caixas
 STR_RES_OTHER                                                   :outros
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Não é possível partilhar a lista de ordens...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Não é possível copiar a lista de ordens...
@@ -2514,6 +2516,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}A Parar
 STR_TRAIN_STOPPING_VEL                                          :{RED}A Parar, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Vias férreas incompatíveis
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veículo de estrada no caminho
