@@ -686,7 +686,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		DrawStationCoverageAreaText(2, 166 + y_offset, (uint)-1, rad);
 
 		if (newstations) {
-			uint i;
+			uint16 i;
 			uint y = 35;
 
 			for (i = w->vscroll.pos; i < _railstation.station_count && i < w->vscroll.pos + w->vscroll.cap; i++) {
