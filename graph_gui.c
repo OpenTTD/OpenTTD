@@ -704,14 +704,6 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		x = 495;
 		y = 25;
 
-		for (i = 0; i != NUM_CARGO; i++) {
-			GfxFillRect(x, y, x+8, y+5, 0);
-			GfxFillRect(x+1, y+1, x+7, y+4, _cargo_legend_colors[i]);
-			SetDParam(0, _cargoc.names_s[i]);
-			DrawString(x+14, y, STR_7065, 0);
-			y += 8;
-		}
-
 		gd.left = 2;
 		gd.top = 24;
 		gd.height = 104;
@@ -728,6 +720,11 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.unk61C = 10;
 
 		for (i = 0; i != NUM_CARGO; i++) {
+			GfxFillRect(x, y, x+8, y+5, 0);
+			GfxFillRect(x+1, y+1, x+7, y+4, _cargo_legend_colors[i]);
+			SetDParam(0, _cargoc.names_s[i]);
+			DrawString(x+14, y, STR_7065, 0);
+			y += 8;
 			gd.colors[i] = _cargo_legend_colors[i];
 			for (j = 0; j != 20; j++) {
 				gd.cost[i][j] = (uint64)GetTransportedGoodsIncome(10, 20, j * 6 + 6, i);
@@ -1118,7 +1115,7 @@ static int CDECL SignNameSorter(const void *a, const void *b)
 		GetString(_bufcache, ss->str);
 	}
 
-	return strcmp(buf1, _bufcache);	// sort by name
+	return strcmp(buf1, _bufcache); // sort by name
 }
 
 static void GlobalSortSignList(void)
