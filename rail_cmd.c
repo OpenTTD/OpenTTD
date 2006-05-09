@@ -288,7 +288,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-			if (GetRoadType(tile) == ROAD_NORMAL && (
+			if (GetRoadTileType(tile) == ROAD_TILE_NORMAL && (
 						(track == TRACK_X && GetRoadBits(tile) == ROAD_Y) ||
 						(track == TRACK_Y && GetRoadBits(tile) == ROAD_X)
 					)) {

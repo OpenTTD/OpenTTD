@@ -14,11 +14,11 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case MP_STREET:
-			switch (GetRoadType(tile)) {
+			switch (GetRoadTileType(tile)) {
 				default:
-				case ROAD_NORMAL:   return GetRoadBits(tile);
-				case ROAD_CROSSING: return GetCrossingRoadBits(tile);
-				case ROAD_DEPOT:    return DiagDirToRoadBits(GetRoadDepotDirection(tile));
+				case ROAD_TILE_NORMAL:   return GetRoadBits(tile);
+				case ROAD_TILE_CROSSING: return GetCrossingRoadBits(tile);
+				case ROAD_TILE_DEPOT:    return DiagDirToRoadBits(GetRoadDepotDirection(tile));
 			}
 
 		case MP_STATION:

@@ -105,7 +105,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 				}
 			}
 		case MP_STREET:
-			if (GetRoadType(t) != ROAD_CROSSING) return 0;
+			if (GetRoadTileType(t) != ROAD_TILE_CROSSING) return 0;
 			if (GetRailTypeCrossing(t) != RAILTYPE_ELECTRIC) return 0;
 			return GetCrossingRailBits(t);
 		case MP_STATION:

@@ -9,13 +9,13 @@
 #include "tile.h"
 
 
-typedef enum RoadType {
-	ROAD_NORMAL,
-	ROAD_CROSSING,
-	ROAD_DEPOT
-} RoadType;
+typedef enum RoadTileType {
+	ROAD_TILE_NORMAL,
+	ROAD_TILE_CROSSING,
+	ROAD_TILE_DEPOT
+} RoadTileType;
 
-static inline RoadType GetRoadType(TileIndex t)
+static inline RoadTileType GetRoadTileType(TileIndex t)
 {
 	assert(IsTileType(t, MP_STREET));
 	return GB(_m[t].m5, 4, 4);
@@ -23,7 +23,7 @@ static inline RoadType GetRoadType(TileIndex t)
 
 static inline bool IsLevelCrossing(TileIndex t)
 {
-	return GetRoadType(t) == ROAD_CROSSING;
+	return GetRoadTileType(t) == ROAD_TILE_CROSSING;
 }
 
 static inline bool IsLevelCrossingTile(TileIndex t)
@@ -33,20 +33,20 @@ static inline bool IsLevelCrossingTile(TileIndex t)
 
 static inline RoadBits GetRoadBits(TileIndex t)
 {
-	assert(GetRoadType(t) == ROAD_NORMAL);
+	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL);
 	return GB(_m[t].m5, 0, 4);
 }
 
 static inline void SetRoadBits(TileIndex t, RoadBits r)
 {
-	assert(GetRoadType(t) == ROAD_NORMAL); // XXX incomplete
+	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL); // XXX incomplete
 	SB(_m[t].m5, 0, 4, r);
 }
 
 
 static inline Axis GetCrossingRoadAxis(TileIndex t)
 {
-	assert(GetRoadType(t) == ROAD_CROSSING);
+	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
 	return (Axis)GB(_m[t].m5, 3, 1);
 }
 
@@ -64,31 +64,31 @@ static inline TrackBits GetCrossingRailBits(TileIndex tile)
 // TODO swap owner of road and rail
 static inline Owner GetCrossingRoadOwner(TileIndex t)
 {
-	assert(GetRoadType(t) == ROAD_CROSSING);
+	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
 	return (Owner)_m[t].m3;
 }
 
 static inline void SetCrossingRoadOwner(TileIndex t, Owner o)
 {
-	assert(GetRoadType(t) == ROAD_CROSSING);
+	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
 	_m[t].m3 = o;
 }
 
 static inline void UnbarCrossing(TileIndex t)
 {
-	assert(GetRoadType(t) == ROAD_CROSSING);
+	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
 	CLRBIT(_m[t].m5, 2);
 }
 
 static inline void BarCrossing(TileIndex t)
 {
-	assert(GetRoadType(t) == ROAD_CROSSING);
+	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
 	SETBIT(_m[t].m5, 2);
 }
 
 static inline bool IsCrossingBarred(TileIndex t)
 {
-	assert(GetRoadType(t) == ROAD_CROSSING);
+	assert(GetRoadTileType(t) == ROAD_TILE_CROSSING);
 	return HASBIT(_m[t].m5, 2);
 }
 
@@ -161,7 +161,7 @@ static inline bool HasPavement(TileIndex t)
 
 static inline DiagDirection GetRoadDepotDirection(TileIndex t)
 {
-	assert(GetRoadType(t) == ROAD_DEPOT);
+	assert(GetRoadTileType(t) == ROAD_TILE_DEPOT);
 	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
@@ -187,7 +187,7 @@ static inline void MakeRoadNormal(TileIndex t, Owner owner, RoadBits bits, uint 
 	_m[t].m2 = town;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0 << 7 | 0 << 4 | 0;
-	_m[t].m5 = ROAD_NORMAL << 4 | bits;
+	_m[t].m5 = ROAD_TILE_NORMAL << 4 | bits;
 }
 
 
@@ -198,7 +198,7 @@ static inline void MakeRoadCrossing(TileIndex t, Owner road, Owner rail, Axis ro
 	_m[t].m2 = town;
 	_m[t].m3 = road;
 	_m[t].m4 = 0 << 7 | 0 << 4 | rt;
-	_m[t].m5 = ROAD_CROSSING << 4 | roaddir << 3 | 0 << 2;
+	_m[t].m5 = ROAD_TILE_CROSSING << 4 | roaddir << 3 | 0 << 2;
 }
 
 
@@ -209,7 +209,7 @@ static inline void MakeRoadDepot(TileIndex t, Owner owner, DiagDirection dir)
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
-	_m[t].m5 = ROAD_DEPOT << 4 | dir;
+	_m[t].m5 = ROAD_TILE_DEPOT << 4 | dir;
 }
 
 #endif

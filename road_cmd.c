@@ -149,8 +149,8 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			// removal allowance depends on difficulty setting
 			if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
 
-			switch (GetRoadType(tile)) {
-				case ROAD_NORMAL: {
+			switch (GetRoadTileType(tile)) {
+				case ROAD_TILE_NORMAL: {
 					RoadBits present = GetRoadBits(tile);
 					RoadBits c = pieces;
 
@@ -178,7 +178,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					return CountRoadBits(c) * _price.remove_road;
 				}
 
-				case ROAD_CROSSING: {
+				case ROAD_TILE_CROSSING: {
 					if (pieces & ComplementRoadBits(GetCrossingRoadBits(tile))) {
 						return CMD_ERROR;
 					}
@@ -193,7 +193,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				}
 
 				default:
-				case ROAD_DEPOT:
+				case ROAD_TILE_DEPOT:
 					return CMD_ERROR;
 			}
 
@@ -288,8 +288,8 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	switch (GetTileType(tile)) {
 		case MP_STREET:
-			switch (GetRoadType(tile)) {
-				case ROAD_NORMAL:
+			switch (GetRoadTileType(tile)) {
+				case ROAD_TILE_NORMAL:
 					existing = GetRoadBits(tile);
 					if ((existing & pieces) == pieces) {
 						return_cmd_error(STR_1007_ALREADY_BUILT);
@@ -297,14 +297,14 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 					break;
 
-				case ROAD_CROSSING:
+				case ROAD_TILE_CROSSING:
 					if (pieces != GetCrossingRoadBits(tile)) { // XXX is this correct?
 						return_cmd_error(STR_1007_ALREADY_BUILT);
 					}
 					goto do_clear;
 
 				default:
-				case ROAD_DEPOT:
+				case ROAD_TILE_DEPOT:
 					goto do_clear;
 			}
 			break;
@@ -604,8 +604,8 @@ static int32 RemoveRoadDepot(TileIndex tile, uint32 flags)
 
 static int32 ClearTile_Road(TileIndex tile, byte flags)
 {
-	switch (GetRoadType(tile)) {
-		case ROAD_NORMAL: {
+	switch (GetRoadTileType(tile)) {
+		case ROAD_TILE_NORMAL: {
 			RoadBits b = GetRoadBits(tile);
 
 			if (!((1 << b) & (M(1)|M(2)|M(4)|M(8))) &&
@@ -616,7 +616,7 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 			return DoCommand(tile, b, 0, flags, CMD_REMOVE_ROAD);
 		}
 
-		case ROAD_CROSSING: {
+		case ROAD_TILE_CROSSING: {
 			int32 ret;
 
 			if (flags & DC_AUTO) return_cmd_error(STR_1801_MUST_REMOVE_ROAD_FIRST);
@@ -631,7 +631,7 @@ static int32 ClearTile_Road(TileIndex tile, byte flags)
 		}
 
 		default:
-		case ROAD_DEPOT:
+		case ROAD_TILE_DEPOT:
 			if (flags & DC_AUTO) {
 				return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
 			}
@@ -742,12 +742,12 @@ static void DrawTile_Road(TileInfo *ti)
 {
 	PalSpriteID image;
 
-	switch (GetRoadType(ti->tile)) {
-		case ROAD_NORMAL:
+	switch (GetRoadTileType(ti->tile)) {
+		case ROAD_TILE_NORMAL:
 			DrawRoadBits(ti, GetRoadBits(ti->tile));
 			break;
 
-		case ROAD_CROSSING: {
+		case ROAD_TILE_CROSSING: {
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
 			image = GetRailTypeInfo(GetRailTypeCrossing(ti->tile))->base_sprites.crossing;
@@ -769,7 +769,7 @@ static void DrawTile_Road(TileInfo *ti)
 		}
 
 		default:
-		case ROAD_DEPOT: {
+		case ROAD_TILE_DEPOT: {
 			uint32 ormod;
 			PlayerID player;
 			const DrawRoadSeqStruct* drss;
@@ -829,7 +829,7 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 	uint z = ti->z;
 
 	if (tileh == SLOPE_FLAT) return z;
-	if (GetRoadType(ti->tile) == ROAD_NORMAL) {
+	if (GetRoadTileType(ti->tile) == ROAD_TILE_NORMAL) {
 		uint f = GetRoadFoundation(tileh, GetRoadBits(ti->tile));
 
 		if (f != 0) {
@@ -845,7 +845,7 @@ static uint GetSlopeZ_Road(const TileInfo* ti)
 static Slope GetSlopeTileh_Road(TileIndex tile, Slope tileh)
 {
 	if (tileh == SLOPE_FLAT) return SLOPE_FLAT;
-	if (GetRoadType(tile) == ROAD_NORMAL) {
+	if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
 		uint f = GetRoadFoundation(tileh, GetRoadBits(tile));
 
 		if (f == 0) return tileh;
@@ -904,7 +904,7 @@ static void TileLoop_Road(TileIndex tile)
 			break;
 	}
 
-	if (GetRoadType(tile) == ROAD_DEPOT) return;
+	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) return;
 
 	if (!HasRoadWorks(tile)) {
 		t = ClosestTownFromTile(tile, (uint)-1);
@@ -916,7 +916,7 @@ static void TileLoop_Road(TileIndex tile)
 			// Show an animation to indicate road work
 			if (t->road_build_months != 0 &&
 					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
-					GetRoadType(tile) == ROAD_NORMAL && (GetRoadBits(tile) == ROAD_X || GetRoadBits(tile) == ROAD_Y)) {
+					GetRoadTileType(tile) == ROAD_TILE_NORMAL && (GetRoadBits(tile) == ROAD_X || GetRoadBits(tile) == ROAD_Y)) {
 				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicle(tile) && CHANCE16(1, 20)) {
 					StartRoadWorks(tile);
 
@@ -963,7 +963,7 @@ void ShowRoadDepotWindow(TileIndex tile);
 
 static void ClickTile_Road(TileIndex tile)
 {
-	if (GetRoadType(tile) == ROAD_DEPOT) ShowRoadDepotWindow(tile);
+	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) ShowRoadDepotWindow(tile);
 }
 
 static const byte _road_trackbits[16] = {
@@ -978,11 +978,11 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 			return GetCrossingRailBits(tile) * 0x101;
 
 		case TRANSPORT_ROAD:
-			switch (GetRoadType(tile)) {
-				case ROAD_NORMAL:
+			switch (GetRoadTileType(tile)) {
+				case ROAD_TILE_NORMAL:
 					return HasRoadWorks(tile) ?  0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
 
-				case ROAD_CROSSING: {
+				case ROAD_TILE_CROSSING: {
 					uint32 r = (GetCrossingRoadAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
 
 					if (IsCrossingBarred(tile)) r *= 0x10001;
@@ -990,7 +990,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 				}
 
 				default:
-				case ROAD_DEPOT:
+				case ROAD_TILE_DEPOT:
 					break;
 			}
 			break;
@@ -1014,9 +1014,9 @@ static const StringID _road_tile_strings[] = {
 static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 {
 	td->owner = GetTileOwner(tile);
-	switch (GetRoadType(tile)) {
-		case ROAD_CROSSING: td->str = STR_1818_ROAD_RAIL_LEVEL_CROSSING; break;
-		case ROAD_DEPOT: td->str = STR_1817_ROAD_VEHICLE_DEPOT; break;
+	switch (GetRoadTileType(tile)) {
+		case ROAD_TILE_CROSSING: td->str = STR_1818_ROAD_RAIL_LEVEL_CROSSING; break;
+		case ROAD_TILE_DEPOT: td->str = STR_1817_ROAD_VEHICLE_DEPOT; break;
 		default: td->str = _road_tile_strings[GetGroundType(tile)]; break;
 	}
 }
@@ -1027,8 +1027,8 @@ static const byte _roadveh_enter_depot_unk0[4] = {
 
 static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 {
-	switch (GetRoadType(tile)) {
-		case ROAD_CROSSING:
+	switch (GetRoadTileType(tile)) {
+		case ROAD_TILE_CROSSING:
 			if (v->type == VEH_Train && !IsCrossingBarred(tile)) {
 				/* train crossing a road */
 				SndPlayVehicleFx(SND_0E_LEVEL_CROSSING, v);
@@ -1037,7 +1037,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 			}
 			break;
 
-		case ROAD_DEPOT:
+		case ROAD_TILE_DEPOT:
 			if (v->type == VEH_Road && v->u.road.frame == 11) {
 				if (_roadveh_enter_depot_unk0[GetRoadDepotDirection(tile)] == v->u.road.state) {
 					RoadVehEnterDepot(v);
@@ -1063,17 +1063,17 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	}	else {
-		switch (GetRoadType(tile)) {
-			case ROAD_NORMAL:
+		switch (GetRoadTileType(tile)) {
+			case ROAD_TILE_NORMAL:
 				SetTileOwner(tile, OWNER_NONE);
 				break;
 
-			case ROAD_CROSSING:
+			case ROAD_TILE_CROSSING:
 				MakeRoadNormal(tile, GetCrossingRoadOwner(tile), GetCrossingRoadBits(tile), GetTownIndex(tile));
 				break;
 
 			default:
-			case ROAD_DEPOT:
+			case ROAD_TILE_DEPOT:
 				DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 				break;
 		}

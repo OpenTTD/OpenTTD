@@ -2546,7 +2546,7 @@ static int32 AiDoBuildDefaultRoadBlock(TileIndex tile, const AiDefaultBlockData 
 
 		if (p->mode == 2) {
 			if (IsTileType(c, MP_STREET) &&
-					GetRoadType(c) == ROAD_NORMAL &&
+					GetRoadTileType(c) == ROAD_TILE_NORMAL &&
 					(GetRoadBits(c) & p->attr) != 0) {
 				roadflag |= 2;
 
@@ -2588,7 +2588,7 @@ clear_town_stuff:;
 
 			if (GetTileSlope(c, NULL) != SLOPE_FLAT) return CMD_ERROR;
 
-			if (!IsTileType(c, MP_STREET) || GetRoadType(c) != ROAD_NORMAL) {
+			if (!IsTileType(c, MP_STREET) || GetRoadTileType(c) != ROAD_TILE_NORMAL) {
 				ret = DoCommand(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
 				if (CmdFailed(ret)) return CMD_ERROR;
 			}
@@ -2765,7 +2765,7 @@ static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint leng
 	if (dist <= a->best_dist) {
 		TileIndex tile2 = TILE_MASK(tile + TileOffsByDir(_dir_by_track[track]));
 
-		if (IsTileType(tile2, MP_STREET) && GetRoadType(tile2) == ROAD_NORMAL) {
+		if (IsTileType(tile2, MP_STREET) && GetRoadTileType(tile2) == ROAD_TILE_NORMAL) {
 			a->best_dist = dist;
 			a->best_tile = tile;
 			a->best_track = track;
@@ -3653,7 +3653,7 @@ pos_3:
 
 		if (IsLevelCrossing(tile)) goto is_rail_crossing;
 
-		if (GetRoadType(tile) == ROAD_DEPOT) {
+		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
 			DiagDirection dir;
 
 			// Check if there are any stations around.

@@ -298,7 +298,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, int track, uint 
 	tile += TileOffsByDir(_road_pf_directions[track]);
 
 	if (IsTileType(tile, MP_STREET) &&
-			GetRoadType(tile) == ROAD_DEPOT &&
+			GetRoadTileType(tile) == ROAD_TILE_DEPOT &&
 			IsTileOwner(tile, rfdd->owner) &&
 			length < rfdd->best_length) {
 		rfdd->best_length = length;
@@ -1003,7 +1003,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
-		if (GetRoadType(tile) == ROAD_DEPOT && IsTileOwner(tile, v->owner)) {
+		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && IsTileOwner(tile, v->owner)) {
 			/* Road depot */
 			bitmask |= _road_veh_fp_ax_or[GetRoadDepotDirection(tile)];
 		}
@@ -1078,7 +1078,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		DiagDirection dir;
 
 		if (IsTileType(desttile, MP_STREET)) {
-			if (GetRoadType(desttile) == ROAD_DEPOT) {
+			if (GetRoadTileType(desttile) == ROAD_TILE_DEPOT) {
 				dir = GetRoadDepotDirection(desttile);
 				goto do_it;
 			}

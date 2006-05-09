@@ -211,7 +211,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			break;
 
 		case MP_STREET:
-			if (GetRoadType(tile) == ROAD_DEPOT && v->type == VEH_Road && IsTileOwner(tile, _local_player)) {
+			if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && v->type == VEH_Road && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
 				order.station = GetDepotByTile(tile)->index;
