@@ -2184,7 +2184,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 
 	// Then remove and signals if there are any.
 	if (IsTileType(tile, MP_RAILWAY) &&
-			GetRailTileType(tile) == RAIL_TYPE_SIGNALS) {
+			GetRailTileType(tile) == RAIL_TILE_SIGNALS) {
 		DoCommand(tile, 0, 0, DC_EXEC, CMD_REMOVE_SIGNALS);
 	}
 

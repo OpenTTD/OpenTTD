@@ -182,7 +182,7 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >= GetNumCustomStations(STAT_CLASS_WAYP)) return CMD_ERROR;
 
 	if (!IsTileType(tile, MP_RAILWAY) ||
-			GetRailTileType(tile) != RAIL_TYPE_NORMAL || (
+			GetRailTileType(tile) != RAIL_TILE_NORMAL || (
 				(axis = AXIS_X, GetTrackBits(tile) != TRACK_BIT_X) &&
 				(axis = AXIS_Y, GetTrackBits(tile) != TRACK_BIT_Y)
 			)) {

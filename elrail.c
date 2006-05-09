@@ -76,9 +76,9 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 		case MP_RAILWAY:
 			if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
 			switch (GetRailTileType(t)) {
-				case RAIL_TYPE_NORMAL: case RAIL_TYPE_SIGNALS:
+				case RAIL_TILE_NORMAL: case RAIL_TILE_SIGNALS:
 					return GetTrackBits(t);
-				case RAIL_TYPE_DEPOT_WAYPOINT:
+				case RAIL_TILE_DEPOT_WAYPOINT:
 					if (GetRailTileSubtype(t) == RAIL_SUBTYPE_WAYPOINT) return GetRailWaypointBits(t);
 				default:
 					return 0;
@@ -346,7 +346,7 @@ void DrawCatenary(const TileInfo *ti)
 {
 	switch (GetTileType(ti->tile)) {
 		case MP_RAILWAY:
-			if (GetRailTileType(ti->tile) == RAIL_TYPE_DEPOT_WAYPOINT && GetRailTileSubtype(ti->tile) == RAIL_SUBTYPE_DEPOT) {
+			if (GetRailTileType(ti->tile) == RAIL_TILE_DEPOT_WAYPOINT && GetRailTileSubtype(ti->tile) == RAIL_SUBTYPE_DEPOT) {
 				const SortableSpriteStruct *sss = &CatenarySpriteData[WIRE_DEPOT_SW + ReverseDiagDir(GetRailDepotDirection(ti->tile))];
 				AddSortableSpriteToDraw( sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,
 					sss->x_size, sss->y_size, sss->z_size, GetSlopeZ(ti->x, ti->y) + sss->z_offset);

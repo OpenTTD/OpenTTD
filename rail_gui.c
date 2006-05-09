@@ -90,7 +90,7 @@ static void PlaceRail_AutoRail(TileIndex tile)
 
 static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
 {
-	if (GetRailTileType(tile) != RAIL_TYPE_NORMAL) return;
+	if (GetRailTileType(tile) != RAIL_TILE_NORMAL) return;
 	if ((GetTrackBits(tile) & GB(extra, 8, 8)) == 0) return;
 
 	DoCommandP(tile, _cur_railtype, extra & 0xFF, NULL, CMD_BUILD_SINGLE_RAIL | CMD_AUTO | CMD_NO_WATER);

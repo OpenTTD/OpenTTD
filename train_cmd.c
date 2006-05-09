@@ -1819,7 +1819,7 @@ static bool NtpCallbFindDepot(TileIndex tile, TrainFindDepotData *tfdd, int trac
 {
 	if (IsTileType(tile, MP_RAILWAY) &&
 			IsTileOwner(tile, tfdd->owner) &&
-			GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT &&
+			GetRailTileType(tile) == RAIL_TILE_DEPOT_WAYPOINT &&
 			GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) {
 		tfdd->best_length = length;
 		tfdd->tile = tile;
@@ -2700,7 +2700,7 @@ static const DiagDirection _otherside_signal_directions[] = {
 static void TrainMovedChangeSignals(TileIndex tile, DiagDirection dir)
 {
 	if (IsTileType(tile, MP_RAILWAY) &&
-			GetRailTileType(tile) == RAIL_TYPE_SIGNALS) {
+			GetRailTileType(tile) == RAIL_TILE_SIGNALS) {
 		uint i = FindFirstBit2x64(GetTrackBits(tile) * 0x101 & _reachable_tracks[dir]);
 		UpdateSignalsOnSegment(tile, _otherside_signal_directions[i]);
 	}

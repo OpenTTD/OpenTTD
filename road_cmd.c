@@ -323,7 +323,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 #undef M
 
-			if (GetRailTileType(tile) != RAIL_TYPE_NORMAL) goto do_clear;
+			if (GetRailTileType(tile) != RAIL_TILE_NORMAL) goto do_clear;
 			switch (GetTrackBits(tile)) {
 				case TRACK_BIT_X:
 					if (pieces & ROAD_X) goto do_clear;

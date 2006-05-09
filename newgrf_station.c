@@ -253,7 +253,7 @@ static TileIndex FindRailStationEnd(TileIndex tile, TileIndexDiff delta, bool ch
 
 		if (waypoint) {
 			if (!IsTileType(new_tile, MP_RAILWAY)) break;
-			if (GetRailTileType(new_tile) != RAIL_TYPE_DEPOT_WAYPOINT) break;
+			if (GetRailTileType(new_tile) != RAIL_TILE_DEPOT_WAYPOINT) break;
 			if (GetRailTileSubtype(new_tile) != RAIL_SUBTYPE_WAYPOINT) break;
 			if (check_axis && GetWaypointAxis(new_tile) != orig_axis) break;
 		} else {

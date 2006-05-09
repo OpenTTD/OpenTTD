@@ -625,7 +625,7 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 		DEBUG(npf, 5)("Expanded into trackdir: %d, remaining trackdirs: 0x%X", dst_trackdir, trackdirbits);
 
 		/* Check for oneway signal against us */
-		if (IsTileType(dst_tile, MP_RAILWAY) && GetRailTileType(dst_tile) == RAIL_TYPE_SIGNALS) {
+		if (IsTileType(dst_tile, MP_RAILWAY) && GetRailTileType(dst_tile) == RAIL_TILE_SIGNALS) {
 			if (HasSignalOnTrackdir(dst_tile, ReverseTrackdir(dst_trackdir)) && !HasSignalOnTrackdir(dst_tile, dst_trackdir))
 				// if one way signal not pointing towards us, stop going in this direction.
 				break;

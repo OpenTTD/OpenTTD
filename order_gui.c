@@ -200,7 +200,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 		switch (GetTileType(tile)) {
 		case MP_RAILWAY:
 			if (v->type == VEH_Train && IsTileOwner(tile, _local_player)) {
-				if (GetRailTileType(tile) == RAIL_TYPE_DEPOT_WAYPOINT &&
+				if (GetRailTileType(tile) == RAIL_TILE_DEPOT_WAYPOINT &&
 						GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) {
 					order.type = OT_GOTO_DEPOT;
 					order.flags = OF_PART_OF_ORDERS;

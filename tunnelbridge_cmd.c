@@ -334,7 +334,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 				break;
 
 			case MP_RAILWAY:
-				if (GetRailTileType(tile) != RAIL_TYPE_NORMAL ||
+				if (GetRailTileType(tile) != RAIL_TILE_NORMAL ||
 						GetTrackBits(tile) != (direction == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X)) {
 					goto not_valid_below;
 				}

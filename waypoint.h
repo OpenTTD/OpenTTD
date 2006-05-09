@@ -25,7 +25,7 @@ struct Waypoint {
 };
 
 enum {
-	RAIL_TYPE_WAYPOINT = 0xC4,
+	RAIL_TILE_WAYPOINT = 0xC4,
 	RAIL_WAYPOINT_TRACK_MASK = 1,
 };
 
