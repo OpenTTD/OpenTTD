@@ -202,7 +202,7 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
 	 * Compare this with the current screen coordinates of the mouse and if it
 	 * falls outside of the area or our window we have left the window. */
 	GetClientRect(hwnd, &rc);
-	MapWindowPoints(hwnd, HWND_DESKTOP, (LPPOINT)&rc, 2);
+	MapWindowPoints(hwnd, HWND_DESKTOP, (LPPOINT)(LPRECT)&rc, 2);
 	GetCursorPos(&pt);
 
 	if (!PtInRect(&rc, pt) || (WindowFromPoint(pt) != hwnd)) {
