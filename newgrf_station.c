@@ -213,8 +213,8 @@ uint32 GetPlatformInfo(Axis axis, byte tile, int platforms, int length, int x, i
 	if (centred) {
 		x -= platforms / 2;
 		y -= length / 2;
-		SB(retval,  0, 4, clamp(y, -8, 7));
-		SB(retval,  4, 4, clamp(x, -8, 7));
+		SB(retval,  0, 4, y & 0xF);
+		SB(retval,  4, 4, x & 0xF);
 	} else {
 		SB(retval,  0, 4, y);
 		SB(retval,  4, 4, length - y - 1);
