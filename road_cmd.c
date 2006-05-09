@@ -125,7 +125,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	switch (GetTileType(tile)) {
 		case MP_TUNNELBRIDGE:
-			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 			if (!IsBridge(tile) ||
 					!IsBridgeMiddle(tile) ||

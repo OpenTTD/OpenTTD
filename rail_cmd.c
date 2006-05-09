@@ -349,7 +349,7 @@ int32 CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					GetTransportTypeUnderBridge(tile) != TRANSPORT_RAIL ||
 					GetRailBitsUnderBridge(tile) != trackbit ||
 					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
-					!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) {
+					!EnsureNoVehicleOnGround(tile)) {
 				return CMD_ERROR;
 			}
 

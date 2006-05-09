@@ -608,7 +608,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 			int32 cost;
 
 			// check if we own the tile below the bridge..
-			if (_current_player != OWNER_WATER && (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, TilePixelHeight(tile))))
+			if (_current_player != OWNER_WATER && (!CheckTileOwnership(tile) || !EnsureNoVehicleOnGround(tile)))
 				return CMD_ERROR;
 
 			if (GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
@@ -626,7 +626,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 			/* delete canal under bridge */
 
 			// check for vehicles under bridge
-			if (!EnsureNoVehicleZ(tile, TilePixelHeight(tile))) return CMD_ERROR;
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
 				SetClearUnderBridge(tile);
@@ -752,7 +752,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 			IsTransportUnderBridge(tile) &&
 			GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
 		// only check for train under bridge
-		if (!CheckTileOwnership(tile) || !EnsureNoVehicleZ(tile, TilePixelHeight(tile)))
+		if (!CheckTileOwnership(tile) || !EnsureNoVehicleOnGround(tile))
 			return CMD_ERROR;
 
 		if (GetRailType(tile) == totype) return CMD_ERROR;

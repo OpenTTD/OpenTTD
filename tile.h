@@ -32,13 +32,6 @@ Slope GetTileSlope(TileIndex tile, uint *h);
 uint GetTileZ(TileIndex tile);
 uint GetTileMaxZ(TileIndex tile);
 
-static inline bool CorrectZ(Slope tileh)
-{
-	/* tile height must be corrected if the north corner is not raised, but
-	 * any other corner is. These are the cases 1 till 7 */
-	return IS_INT_INSIDE(tileh, 1, 8);
-}
-
 static inline uint TileHeight(TileIndex tile)
 {
 	assert(tile < MapSize());
