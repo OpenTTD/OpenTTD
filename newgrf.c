@@ -1299,7 +1299,7 @@ static SpriteGroup* GetGroupFromGroupID(byte setid, byte type, uint16 groupid)
 }
 
 /* Helper function to either create a callback or a result sprite group. */
-static SpriteGroup* CreateGroupFromGroupID(byte setid, byte type, uint16 spriteid, uint16 num_sprites)
+static SpriteGroup* CreateGroupFromGroupID(byte feature, byte setid, byte type, uint16 spriteid, uint16 num_sprites)
 {
 	if (HASBIT(spriteid, 15)) return NewCallBackResultSpriteGroup(spriteid);
 
@@ -1316,6 +1316,12 @@ static SpriteGroup* CreateGroupFromGroupID(byte setid, byte type, uint16 spritei
 				setid, type,
 				_cur_grffile->spriteset_start + spriteid * num_sprites,
 				_cur_grffile->spriteset_start + spriteid * num_sprites + num_sprites - 1, _cur_spriteid - 1);
+		return NULL;
+	}
+
+	if (feature != _cur_grffile->spriteset_feature) {
+		grfmsg(GMS_WARN, "NewSpriteGroup(0x%02X:0x%02X): Sprite set feature 0x%02X does not match action feature 0x%02X, skipping.",
+				_cur_grffile->spriteset_feature, feature);
 		return NULL;
 	}
 
@@ -1354,14 +1360,6 @@ static void NewSpriteGroup(byte *buf, int len)
 		// Initialise new space to NULL
 		for (; _cur_grffile->spritegroups_count < (setid + 1); _cur_grffile->spritegroups_count++)
 			_cur_grffile->spritegroups[_cur_grffile->spritegroups_count] = NULL;
-	}
-
-	if (feature != _cur_grffile->spriteset_feature) {
-		grfmsg(GMS_WARN, "NewSpriteGroup: sprite set feature 0x%02X does not match action feature 0x%02X, skipping.",
-				_cur_grffile->spriteset_feature, feature);
-		/* Clear this group's reference */
-		_cur_grffile->spritegroups[setid] = NULL;
-		return;
 	}
 
 	switch (type) {
@@ -1475,6 +1473,8 @@ static void NewSpriteGroup(byte *buf, int len)
 		/* Neither a variable or randomized sprite group... must be a real group */
 		default:
 		{
+
+
 			switch (feature) {
 				case GSF_TRAIN:
 				case GSF_ROAD:
@@ -1507,13 +1507,13 @@ static void NewSpriteGroup(byte *buf, int len)
 
 					for (i = 0; i < num_loaded; i++) {
 						uint16 spriteid = grf_load_word(&buf);
-						group->g.real.loaded[i] = CreateGroupFromGroupID(setid, type, spriteid, sprites);
+						group->g.real.loaded[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
 						DEBUG(grf, 8) ("NewSpriteGroup: + rg->loaded[%i]  = subset %u", i, spriteid);
 					}
 
 					for (i = 0; i < num_loading; i++) {
 						uint16 spriteid = grf_load_word(&buf);
-						group->g.real.loading[i] = CreateGroupFromGroupID(setid, type, spriteid, sprites);
+						group->g.real.loading[i] = CreateGroupFromGroupID(feature, setid, type, spriteid, sprites);
 						DEBUG(grf, 8) ("NewSpriteGroup: + rg->loading[%i] = subset %u", i, spriteid);
 					}
 
