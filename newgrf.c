@@ -1931,6 +1931,58 @@ static void CfgApply(byte *buf, int len)
 	grfmsg(GMS_NOTICE, "CfgApply: Ignoring (not implemented).\n");
 }
 
+static uint32 GetParamVal(byte param, uint32 *cond_val)
+{
+	switch (param) {
+		case 0x83: /* current climate, 0=temp, 1=arctic, 2=trop, 3=toyland */
+			return _opt.landscape;
+
+		case 0x84: /* .grf loading stage, 0=initialization, 1=activation */
+			return _cur_stage;
+
+		case 0x85: { /* TTDPatch flags, only for bit tests */
+			uint32 param_val = _ttdpatch_flags[*cond_val / 0x20];
+			*cond_val %= 0x20;
+			return param_val;
+		}
+
+		case 0x86: /* road traffic side, bit 4 clear=left, set=right */
+			return _opt.road_side << 4;
+
+		case 0x88: /* GRF ID check */
+			return 0;
+
+		case 0x8B: { /* TTDPatch version */
+			uint major    = 2;
+			uint minor    = 0;
+			uint revision = 10; // special case: 2.0.1 is 2.0.10
+			uint build    = 73;
+			return (major << 24) | (minor << 20) | (revision << 16) | (build * 10);
+		}
+
+		case 0x8D: /* TTD Version, 00=DOS, 01=Windows */
+			return !_use_dos_palette;
+
+		case 0x8E: /* Y-offset for train sprites */
+			return _traininfo_vehicle_pitch;
+
+		case 0x92: /* Game mode */
+			return _game_mode;
+
+		case 0x9D: /* TTD Platform, 00=TTDPatch, 01=OpenTTD */
+			return 1;
+
+		default:
+			/* GRF Parameter */
+			if (param < 0x80) return _cur_grffile->param[param];
+
+			/* In-game variable. */
+			grfmsg(GMS_WARN, "Unsupported in-game variable 0x%02X.", param);
+			return -1;
+	}
+
+}
+
 /* Action 0x07 */
 /* Action 0x09 */
 static void SkipIf(byte *buf, int len)
@@ -1949,6 +2001,7 @@ static void SkipIf(byte *buf, int len)
 	uint8 numsprites;
 	uint32 param_val = 0;
 	uint32 cond_val = 0;
+	uint32 mask = 0;
 	bool result;
 	GRFLabel *label;
 	GRFLabel *choice = NULL;
@@ -1965,60 +2018,26 @@ static void SkipIf(byte *buf, int len)
 	}
 
 	switch (paramsize) {
-		case 4: cond_val = grf_load_dword(&buf); break;
-		case 2: cond_val = grf_load_word(&buf);  break;
-		case 1: cond_val = grf_load_byte(&buf);  break;
+		case 4: cond_val = grf_load_dword(&buf); mask = 0xFFFFFFFF; break;
+		case 2: cond_val = grf_load_word(&buf);  mask = 0x0000FFFF; break;
+		case 1: cond_val = grf_load_byte(&buf);  mask = 0x000000FF; break;
 		default: break;
 	}
 
-	switch (param) {
-		case 0x83:    /* current climate, 0=temp, 1=arctic, 2=trop, 3=toyland */
-			param_val = _opt.landscape;
-			break;
-		case 0x84:    /* .grf loading stage, 0=initialization, 1=activation */
-			param_val = _cur_stage;
-			break;
-		case 0x85:    /* TTDPatch flags, only for bit tests */
-			param_val = _ttdpatch_flags[cond_val / 0x20];
-			cond_val %= 0x20;
-			break;
-		case 0x86:    /* road traffic side, bit 4 clear=left, set=right */
-			param_val = _opt.road_side << 4;
-			break;
-		case 0x88: {  /* see if specified GRFID is active */
-			param_val = (GetFileByGRFID(cond_val) != NULL);
-		}	break;
-
-		case 0x8B: { /* TTDPatch version */
-			uint major    = 2;
-			uint minor    = 0;
-			uint revision = 10; // special case: 2.0.1 is 2.0.10
-			uint build    = 73;
-			param_val = (major << 24) | (minor << 20) | (revision << 16) | (build * 10);
-			break;
-		}
-
-		case 0x8D:    /* TTD Version, 00=DOS, 01=Windows */
-			param_val = !_use_dos_palette;
-			break;
-		case 0x8E:
-			param_val = _traininfo_vehicle_pitch;
-			break;
-		case 0x9D:    /* TTD Platform, 00=TTDPatch, 01=OpenTTD */
-			param_val = 1;
-			break;
-		/* TODO */
-		case 0x8F:    /* Track type cost multipliers */
-		default:
-			if (param < 0x80) {
-				/* Parameter. */
-				param_val = _cur_grffile->param[param];
-			} else {
-				/* In-game variable. */
-				grfmsg(GMS_WARN, "Unsupported in-game variable 0x%02X. Ignoring test.", param);
-				return;
-			}
+	if (param < 0x80 && _cur_grffile->param_end <= param) {
+		DEBUG(grf, 7) ("Param %d undefined, skipping test", param);
+		return;
 	}
+
+	if (param == 0x88 && GetFileByGRFID(cond_val) == NULL) {
+		DEBUG(grf, 7) ("GRFID 0x%08X unknown, skipping test", BSWAP32(cond_val));
+		return;
+	}
+
+	param_val = GetParamVal(param, &cond_val);
+
+	/* Apply parameter mask, only for GRF parameters. */
+	if (param < 0x80) param_val &= mask;
 
 	DEBUG(grf, 7) ("Test condtype %d, param 0x%08X, condval 0x%08X", condtype, param_val, cond_val);
 	switch (condtype) {
@@ -2035,9 +2054,27 @@ static void SkipIf(byte *buf, int len)
 			break;
 		case 5: result = (param_val > cond_val);
 			break;
-		case 6: result = !!param_val; /* GRFID is active (only for param-num=88) */
+		/* Tests 6 to 10 are only for param 0x88, GRFID checks */
+		case 6: /* Is GRFID active? */
+		case 9: /* GRFID is or will be active? */
+			result = (GetFileByGRFID(cond_val)->flags & 1) == 1;
 			break;
-		case 7: result = !param_val; /* GRFID is not active (only for param-num=88) */
+		case 7: /* Is GRFID non-active? */
+		case 10: /* GRFID is not nor will be active */
+			result = (GetFileByGRFID(cond_val)->flags & 1) == 0;
+			break;
+		case 8: /* GRFID is not but will be active? */
+			result = 0;
+			if ((GetFileByGRFID(cond_val)->flags & 1) == 1) {
+				const GRFFile *file;
+				for (file = _first_grffile; file != NULL; file = file->next) {
+					if (file->grfid == cond_val) break;
+					if (file == _cur_grffile) {
+						result = 1;
+						break;
+					}
+				}
+			}
 			break;
 		default:
 			grfmsg(GMS_WARN, "Unsupported test %d. Ignoring.", condtype);
