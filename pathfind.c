@@ -699,6 +699,10 @@ start_at:
 				// We are not driving into the tunnel, or it is an invalid tunnel
 				continue;
 			}
+			if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
+				bits = 0;
+				break;
+			}
 			flotr = FindLengthOfTunnel(tile, direction);
 			si.cur_length += flotr.length * DIAG_FACTOR;
 			tile = flotr.tile;
@@ -729,6 +733,12 @@ start_at:
 
 				// Check that the tile contains exactly one track
 				if (bits == 0 || KILL_FIRST_BIT(bits) != 0) break;
+
+				if ((IsTileType(tile, MP_STREET) && !HASBIT(tpf->railtypes, GetRailTypeCrossing(tile))) ||
+				      !HASBIT(tpf->railtypes, GetRailType(tile))) {
+					bits = 0;
+					break;
+				}
 
 				///////////////////
 				// If we reach here, the tile has exactly one track.
