@@ -865,6 +865,7 @@ STR_TOWNNAME_ROMANIAN                                           :Roemeens
 STR_TOWNNAME_CZECH                                              :Tsjechisch
 STR_TOWNNAME_SWISS                                              :Zwitsers
 STR_TOWNNAME_DANISH                                             :Deens
+STR_TOWNNAME_TURKISH                                            :Turks
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pond (£)
@@ -938,6 +939,7 @@ STR_CRATES                                                      :kratten
 STR_RES_OTHER                                                   :anders
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan orderlijst niet delen...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan orderlijst niet kopieren...
@@ -2509,6 +2511,7 @@ STR_886F_TRANSFER                                               :{BLACK}Overlade
 
 STR_TRAIN_STOPPING                                              :{RED}Gestopt
 STR_TRAIN_STOPPING_VEL                                          :{RED}Aan het stoppen, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Ongeschikt rail type
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Wegvoertuig in de weg

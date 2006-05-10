@@ -1231,6 +1231,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Húzd ide
 
 STR_DRAG_DROP                                                   :{BLACK}Fogd és dobd
 STR_STATION_DRAG_DROP                                           :{BLACK}Állomás építése fogd és dobd módon
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Válasz egy megjelenítendõ állomásfajtát
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Válaszd ki a megépítendõ állomásfajtát
 
 STR_FAST_FORWARD                                                :{BLACK}Játék gyorsítása
 STR_MESSAGE_HISTORY                                             :{WHITE}Elõzõ üzenetek

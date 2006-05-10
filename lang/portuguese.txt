@@ -1166,6 +1166,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Arrastar
 
 STR_DRAG_DROP                                                   :{BLACK}Arrastar
 STR_STATION_DRAG_DROP                                           :{BLACK}Construir estação arrastando
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Escolher a classe da estação a mostrar
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Escolher o tipo de estação a construir
 
 STR_FAST_FORWARD                                                :{BLACK}Aumentar velocidade do jogo
 STR_MESSAGE_HISTORY                                             :{WHITE}Histórico de Mensagens

@@ -11,10 +11,10 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Neuztenk
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Reikia lygaus pavirsiaus
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Reikia lygaus pavir¨iaus
 STR_0008_WAITING                                                :{BLACK}Laukia: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (marsrutas is
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (mar¨rutas i¨
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Laukia: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Laukia: {GOLD}
@@ -172,7 +172,7 @@ STR_00CF_5                                                      :{BLACK}5
 STR_00D0_NOTHING                                                :Tuscia
 STR_00D1_DARK_BLUE                                              :Tamsiai melyna
 STR_00D2_PALE_GREEN                                             :Pilksvai zalia
-STR_00D3_PINK                                                   :Rozine
+STR_00D3_PINK                                                   :Ruzava
 STR_00D4_YELLOW                                                 :Geltona
 STR_00D5_RED                                                    :Raudona
 STR_00D6_LIGHT_BLUE                                             :Zydra
@@ -502,7 +502,10 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Programa - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Isvalyti
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Issaugoti
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Panaikinti esama programa (tik Speciali1 arba Speciali2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Issaugoti muzikos nustatymus
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Paspauskite ant garso takelio, kad itrauktumete i sarasa (tik Speciali1 arba Speciali2)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Programos masyti ij./isj.
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Rodyti muzikos takeliu pasirinkimo langa
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Paspausk ant paslaugos, kad pamatytum? centre
 STR_01FE_DIFFICULTY                                             :{BLACK}Sunkumo lygis ({STRING})
@@ -538,6 +541,8 @@ STR_0218_MOGUL                                                  :Didziausias mag
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Amziaus magnatas
 STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
 STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} pasieke '{STRING}' statusa!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}Zaidejas{PLAYERNAME}{COMPANY} pasieke '{STRING}' statusa!
 STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Sukurti scenariju
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
@@ -547,6 +552,8 @@ STR_0224                                                        :{BLACK}{UPARROW
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Atsitiktine sausuma
 STR_0227_RESET_LAND                                             :{BLACK}Generuoti isnaujo sausuma
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Padidinkite plota zemes aukstinimui/zeminimui
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Sumazinkite plota zemes aukstinimui/zeminimui
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generuoti atsitiktine sausuma
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Perkrauti landsafta
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Perkrauti landsafta
@@ -619,6 +626,7 @@ STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Statyti 
 STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Statyti spaustuve
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Statyti aukso kasykla
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Statyti banka (statyti galima tiktai miestuose)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Pastatykite lentpjuve (nukirstos medienos perdirbimui)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Uzsodinti vaisiu plantacija
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Uzsodinti kauciuko plantacija
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Grezti artezini grezini
@@ -1495,10 +1503,15 @@ STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Inicijuos didele reklamine kompanija, kad pritraukti daugiau keleiviu ir kroviniu i tavo kompanijos stoteles.{}  Kainuos: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Finansuoja miesto keliu rekonstrukcija. Laikinai (iki 6 men.) sutrinka susisiekimas keliais.{}  Kainuos: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Statyti statula kompanijos garbei.{} Kainuos: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Finansuoti nauju komerciniu pastatu statyba mieste.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Pirkti isskirtines transporto teises mieste 1 metams. Miesto valdzia keleivius ir krovinius leis pervezti tik tavo kompanijai.{} Kaina: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Eismo chaosas {TOWN}!{}{}Keliu rekonstrukcija, finansuojama {COMPANY}, sukels 6 menesiu chaosa keliuose!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (statoma)
+STR_2059_IGLOO                                                  :iglus
+STR_205A_TEPEES                                                 :Vigvamai
+STR_205B_TEAPOT_HOUSE                                           :Arbatos namai
 STR_205C_PIGGY_BANK                                             :Parsiuku bankas
 
 STR_INDUSTRY                                                    :{INDUSTRY}
@@ -1507,7 +1520,12 @@ STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
+STR_2800_PLANT_TREES                                            :Sodinti medzius
 STR_2801_PLACE_SIGN                                             :Statyti zenkla
+STR_2802_TREES                                                  :{WHITE}Medziai
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...medis jau yra
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...vieta netinkama
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Neimanoma pasodinti medzio...
 STR_2806                                                        :{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...per daug zenklu
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Cia zenklo statyti negalima...
@@ -1515,6 +1533,9 @@ STR_280A_SIGN                                                   :Zenklas
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Redaguoti zenklo teksta
 STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Zenklo pavadinimo keisti negalima...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Pasirink norimu sodinti medziu tipa
+STR_280E_TREES                                                  :Medziai
+STR_280F_RAINFOREST                                             :Atograzu miskas
+STR_2810_CACTUS_PLANTS                                          :Kaktusiniai augalai
 
 ##id 0x3000
 STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Gelezinkelio stoties pasirinkimas
@@ -1576,6 +1597,7 @@ STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Parodyti
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Pakeisti stoteles pavadinima
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Rodyti priimamu kroviniu sarasa
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Paspausk ant stoteles pavadinimo, kad pamatytum ja ekrano centre
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Pasirinkite aerouosto dydi/tipa
 STR_3059_SMALL                                                  :{BLACK}Mazas
 STR_305A_LARGE                                                  :{BLACK}Vidutinis
 STR_305AA_LARGE                                                 :{BLACK}Tarpmiestinis oro uostas
@@ -1596,6 +1618,7 @@ STR_3068_DOCK                                                   :{WHITE}Prieplau
 STR_3069_BUOY                                                   :Pluduras
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...pluduras pakeliui
 STR_306B_HELIPORT                                               :{BLACK}Malunsp. aikstele
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stotis per daug issipletusi
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nestandartines stoteles atjungtos
 
 
@@ -1656,11 +1679,15 @@ STR_4817_WATER_SUPPLY                                           :vandens saugykl
 STR_4818_WATER_TOWER                                            :vandentiekio bokste
 STR_4819_FACTORY                                                :gamykloje
 STR_481A_FARM                                                   :ferma
+STR_481B_LUMBER_MILL                                            :Lentpjuve
 STR_481C_COTTON_CANDY_FOREST                                    :ledinuku miskas
 STR_481D_CANDY_FACTORY                                          :saldumynu fabrike
+STR_481E_BATTERY_FARM                                           :Bateriju gamykla
 STR_481F_COLA_WELLS                                             :kolos sulinyje
 STR_4820_TOY_SHOP                                               :zaislu parduotuveje
 STR_4821_TOY_FACTORY                                            :zaislu fabrile
+STR_4822_PLASTIC_FOUNTAINS                                      :Plastiko fontanai
+STR_4823_FIZZY_DRINK_FACTORY                                    :Putojanciu gerimu gamykla
 STR_4824_BUBBLE_GENERATOR                                       :burbulu generatoriuje
 STR_4825_TOFFEE_QUARRY                                          :saldainiu fabrike
 STR_4826_SUGAR_MINE                                             :cukraus kasykloje
@@ -1898,6 +1925,7 @@ STR_7021                                                        :{COMPANY}{PLAYE
 STR_7022_INCOME_GRAPH                                           :{WHITE}Pajamu diagrama
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Dirbancio pelno grafikas
 STR_7026_BANK_BALANCE                                           :{WHITE}Saskaitos balansas
 STR_7027_LOAN                                                   :{WHITE}Paskola
 STR_MAX_LOAN                                                    :{WHITE}Maksimali paskola:  {BLACK}{CURRENCY64}
@@ -1944,6 +1972,10 @@ STR_7052_COMPANY_VALUES                                         :{WHITE}Kompanij
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Kompaniju lentele
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transporto kompanija susidure su sunkumais!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} kompanija bus parduota arba bankrutuos nebent reikalai pasitaisys!
+STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Valdytojas)
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transporto kompaniju susijungimas!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} buvo parduota {COMPANY} uz {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Mes ieskome, kas galetu perimti musu kompanija.{}{}Ar jus noretumete pirkti {COMPANY} uz {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrotas!
@@ -1961,6 +1993,7 @@ STR_7067_TRAFFIC_MANAGER                                        :Eismo reguliuot
 STR_7068_TRANSPORT_COORDINATOR                                  :Transporto koordinatorius
 STR_7069_ROUTE_SUPERVISOR                                       :Marsrutu priziuretojas
 STR_706A_DIRECTOR                                               :Direktorius
+STR_706B_CHIEF_EXECUTIVE                                        :Vykdantysis vadovas
 STR_706C_CHAIRMAN                                               :Pirmininkas
 STR_706D_PRESIDENT                                              :Prezidentas
 STR_706E_TYCOON                                                 :Magnatas
@@ -2256,9 +2289,23 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :magnetinis loko
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Traukiniu depas
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Gyventojai svencia . . .{}Pirmas traukinys atvaziavo i {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{STRING1} (Detales)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Traukinys kelyje
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Vaziuoja i {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Vykti i {STATION} (Perkelti ir pakrauti krovinius)
+STR_8808_GO_TO_UNLOAD                                           :Vykti i {STATION} (Issikrauti)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Vykti i {STATION} (Perkrauti ir palikti tuscia)
+STR_880A_GO_TO_LOAD                                             :Vykti i {STATION} (Pasikrauti)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Vykti i {STATION} (Perkrauti ir palaukti pilno pakrovimo)
+STR_880C_GO_NON_STOP_TO                                         :Vykti be sustojimo i {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Vykti be sustojimo i {STATION} (Perkrauti ir paimti krovini)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Vykti be sustojimo i {STATION} (Issikrauti)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Vykti be sustojimo i {STATION} (Perkrauti ir palikti tuscia)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Vykti be sustojimo i {STATION} (Pasikrauti)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Vykti be sustojimo i {STATION} (Perkrauti ir palaukti pilno pakrovimo)
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Remontas {TOWN} traukiniu depe
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vaziuoti nestojant i {TOWN} traukiniu depa
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Remontas nestojant {TOWN} traukiniu depe
@@ -2277,6 +2324,9 @@ STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Traukinys per ilgas
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Sukeisti traukinius galima tiktai sustabdytus depe
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} traukiniai
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nauji Traukiniai
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nauji Vienbegiai Traukiniai
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nauji Maglev Traukiniai
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Pirkti
 STR_8820_RENAME                                                 :{BLACK}Pervardinti
 STR_8823_SKIP                                                   :{BLACK}Praleisti
