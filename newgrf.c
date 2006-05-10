@@ -2292,10 +2292,12 @@ static void ParamSet(byte *buf, int len)
 	 * - it OR A PARAMETER WITH HIGHER NUMBER has been set to any value by
 	 *   an earlier action D */
 	if (oper & 0x80) {
-		if (_cur_grffile->param_end < target)
-			oper &= 0x7F;
-		else
+		if (target < 0x80 && target < _cur_grffile->param_end) {
+			DEBUG(grf, 7) ("Param %u already defined, skipping.", target);
 			return;
+		}
+
+		oper &= 0x7F;
 	}
 
 	/* The source1 and source2 operands refer to the grf parameter number
@@ -2306,13 +2308,15 @@ static void ParamSet(byte *buf, int len)
 	if (src1 == 0xFF) {
 		src1 = data;
 	} else {
-		src1 = _cur_grffile->param_end >= src1 ? _cur_grffile->param[src1] : 0;
+		uint32 temp;
+		src1 = GetParamVal(src1, &temp);
 	}
 
 	if (src2 == 0xFF) {
 		src2 = data;
 	} else {
-		src2 = _cur_grffile->param_end >= src2 ? _cur_grffile->param[src2] : 0;
+		uint32 temp;
+		src2 = GetParamVal(src2, &temp);
 	}
 
 	/* TODO: You can access the parameters of another GRF file by using
