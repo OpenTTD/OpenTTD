@@ -2300,23 +2300,45 @@ static void ParamSet(byte *buf, int len)
 		oper &= 0x7F;
 	}
 
-	/* The source1 and source2 operands refer to the grf parameter number
-	 * like in action 6 and 7.  In addition, they can refer to the special
-	 * variables available in action 7, or they can be FF to use the value
-	 * of <data>.  If referring to parameters that are undefined, a value
-	 * of 0 is used instead.  */
-	if (src1 == 0xFF) {
-		src1 = data;
+	if (src2 == 0xFE) {
+		if (GB(data, 0, 8) == 0xFF) {
+			if (data == 0x0000FFFF) {
+				/* Patch variables */
+				grfmsg(GMS_WARN, "ParamSet: Reading Patch variables unsupport.");
+				return;
+			} else {
+				/* GRF Resource Management */
+				grfmsg(GMS_WARN, "ParamSet: GRF Resource Management unsupported.");
+				return;
+			}
+		} else {
+			/* Read another GRF File's parameter */
+			const GRFFile *file = GetFileByGRFID(data);
+			if (file == NULL || src1 >= file->param_end) {
+				src1 = 0;
+			} else {
+				src1 = file->param[src1];
+			}
+		}
 	} else {
-		uint32 temp;
-		src1 = GetParamVal(src1, &temp);
-	}
+		/* The source1 and source2 operands refer to the grf parameter number
+		 * like in action 6 and 7.  In addition, they can refer to the special
+		 * variables available in action 7, or they can be FF to use the value
+		 * of <data>.  If referring to parameters that are undefined, a value
+		 * of 0 is used instead.  */
+		if (src1 == 0xFF) {
+			src1 = data;
+		} else {
+			uint32 temp;
+			src1 = GetParamVal(src1, &temp);
+		}
 
-	if (src2 == 0xFF) {
-		src2 = data;
-	} else {
-		uint32 temp;
-		src2 = GetParamVal(src2, &temp);
+		if (src2 == 0xFF) {
+			src2 = data;
+		} else {
+			uint32 temp;
+			src2 = GetParamVal(src2, &temp);
+		}
 	}
 
 	/* TODO: You can access the parameters of another GRF file by using
