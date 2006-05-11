@@ -1686,7 +1686,10 @@ void HandleViewportClicked(const ViewPort *vp, int x, int y)
 	CheckClickOnLandscape(vp, x, y);
 
 	v = CheckClickOnVehicle(vp, x, y);
-	if (v != NULL) _on_vehicle_click_proc[v->type - 0x10](v);
+	if (v != NULL) {
+		DEBUG(misc, 2) ("Vehicle %d at %p", v->index, v);
+		_on_vehicle_click_proc[v->type - 0x10](v);
+	}
 }
 
 Vehicle *CheckMouseOverVehicle(void)
