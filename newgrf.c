@@ -47,6 +47,9 @@ static SpriteID _cur_spriteid;
 static int _cur_stage;
 static uint32 _nfo_line;
 
+/* Miscellaneous GRF features, set by Action 0x0D, parameter 0x9E */
+static byte _misc_grf_features = 0;
+
 /* 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static uint32 _ttdpatch_flags[8];
 
@@ -1976,6 +1979,9 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 		case 0x9D: /* TTD Platform, 00=TTDPatch, 01=OpenTTD */
 			return 1;
 
+		case 0x9E: /* Miscellaneous GRF features */
+			return _misc_grf_features;
+
 		default:
 			/* GRF Parameter */
 			if (param < 0x80) return _cur_grffile->param[param];
@@ -2433,6 +2439,10 @@ static void ParamSet(byte *buf, int len)
 		case 0x97: // Snow line height
 		case 0x99: // Global ID offset
 			DEBUG(grf, 7) ("ParamSet: Skipping unimplemented target 0x%02X", target);
+			break;
+
+		case 0x9E: /* Miscellaneous GRF features */
+			_misc_grf_features = res;
 			break;
 
 		default:
