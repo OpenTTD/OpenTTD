@@ -1,0 +1,4 @@
+##name Croatian
+##ownname Hrvatski
+##isocode HR.UTF-8
+#@charset UTF-8
