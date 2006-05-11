@@ -245,8 +245,15 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 	static byte facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 	static uint16 cargo_filter = 0x1FFF;
 	plstations_d *sl = &WP(w, plstations_d);
+
 	switch (e->event) {
 	case WE_PAINT: {
+		/* Set up cargo click-states. Toggle the all-vehicle and all-cargo types button
+		* depending on if all types are clicked or not */
+		SB(w->click_state, 6, 5, facilities);
+		SB(w->click_state, 26, 1, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+		SB(w->click_state, 12, NUM_CARGO + 1, cargo_filter);
+		SB(w->click_state, 27, 1, cargo_filter == 0x1FFF);
 
 		BuildStationsList(sl, owner, facilities, cargo_filter);
 		SortStationsList(sl);
@@ -330,15 +337,12 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 			id_v += w->vscroll.pos;
 
+			if (id_v >= sl->list_length) return; // click out of list bound
+
 			{
-				const Station* st;
-
-				if (id_v >= sl->list_length) return; // click out of list bound
-
-				st = GetStation(sl->sort_list[id_v].index);
+				const Station *st = GetStation(sl->sort_list[id_v].index);
 
 				assert(st->owner == owner);
-
 				ScrollMainWindowToTile(st->xy);
 			}
 		} break;
@@ -349,39 +353,20 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		case 10: /* dock */
 			if (_ctrl_pressed) {
 				TOGGLEBIT(facilities, e->click.widget - 6);
-				TOGGLEBIT(w->click_state, e->click.widget);
-				if (facilities == 0) { /* None selected, so select all */
-					facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-				}
 			} else {
-				/* We click on the only active button */
-				if (HAS_SINGLE_BIT(GB(w->click_state, 6, 5)) && HASBIT(w->click_state, e->click.widget)) {
-					facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-				} else {
-					facilities = 0;
-					SETBIT(facilities, e->click.widget - 6);
-				}
+				facilities = 0;
+				SETBIT(facilities, e->click.widget - 6);
 			}
-			SB(w->click_state, 6, 5, facilities);
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
-			if (facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK)) {
-				SETBIT(w->click_state, 26);
-			} else {
-				CLRBIT(w->click_state, 26);
-			}
 		break;
 		case 26:
 			facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-			SB(w->click_state, 6, 5, facilities);
-			SETBIT(w->click_state, e->click.widget);
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 			break;
 		case 27:
 			cargo_filter = 0x1FFF; /* select everything */
-			SB(w->click_state, 12, NUM_CARGO + 1, cargo_filter);
-			SETBIT(w->click_state, e->click.widget);
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 			break;
@@ -397,27 +382,12 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			if (e->click.widget >= 12 && e->click.widget <= 24) { //change cargo_filter
 				if (_ctrl_pressed) {
 					TOGGLEBIT(cargo_filter, e->click.widget - 12);
-					TOGGLEBIT(w->click_state, e->click.widget);
-					if (cargo_filter == 0) {
-						cargo_filter = 0x1FFF; /* select everything */
-					}
 				} else {
-				/* We click on the only active button */
-					if (HAS_SINGLE_BIT(GB(w->click_state, 12, NUM_CARGO + 1)) && HASBIT(w->click_state, e->click.widget)) {
-						cargo_filter = 0x1FFF;
-					} else {
-						cargo_filter = 0;
-						SETBIT(cargo_filter, e->click.widget - 12);
-					}
+					cargo_filter = 0;
+					SETBIT(cargo_filter, e->click.widget - 12);
 				}
-				SB(w->click_state, 12, NUM_CARGO + 1, cargo_filter);
 				sl->flags |= SL_REBUILD;
 				SetWindowDirty(w);
-			}
-			if (cargo_filter == 0x1FFF) {
-				SETBIT(w->click_state, 27);
-			} else {
-				CLRBIT(w->click_state, 27);
 			}
 		}
 	} break;
@@ -444,17 +414,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		sl->flags = SL_REBUILD;
 		sl->sort_type = 0;
 		sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
-		w->click_state = 0;
-		SB(w->click_state, 6, 5, facilities);
-		SB(w->click_state, 12, NUM_CARGO + 1, cargo_filter);
-		if (facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK)) {
-			SETBIT(w->click_state, 26);
-		}
-		if (cargo_filter == 0x1FFF) {
-			SETBIT(w->click_state, 27);
-		}
 		break;
-
 
 	case WE_RESIZE:
 		w->vscroll.cap += e->sizing.diff.y / 10;
@@ -497,7 +457,7 @@ static const Widget _player_stations_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,   271,   284,    14,    24, 0x0, STR_SELECT_ALL_TYPES},
 
 //28
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    80,    25,    36, STR_SORT_BY, STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    25,    36, STR_SORT_BY, STR_SORT_ORDER_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    25,    36, 0x0,         STR_SORT_CRITERIA_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   233,   243,    25,    36, STR_0225,    STR_SORT_CRITERIA_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   345,    25,    36, 0x0,         STR_NULL},
@@ -507,7 +467,7 @@ static const Widget _player_stations_widgets[] = {
 static const WindowDesc _player_stations_desc = {
 	-1, -1, 358, 162,
 	WC_STATION_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_player_stations_widgets,
 	PlayerStationsWndProc
 };
