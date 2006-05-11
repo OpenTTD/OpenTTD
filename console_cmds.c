@@ -18,6 +18,12 @@
 #include "hal.h" /* for file list */
 #include "vehicle.h"
 #include "station.h"
+#include "strings.h"
+
+#ifdef ENABLE_NETWORK
+	#include "table/strings.h"
+	#include "network.h"
+#endif /*ENABLE_NETWORK*/
 
 // ** scriptfile handling ** //
 static FILE *_script_file;
@@ -1126,6 +1132,25 @@ DEF_CONSOLE_CMD(ConSay)
 	return true;
 }
 
+DEF_CONSOLE_CMD(ConPlayers)
+{
+	Player *p;
+
+	if (argc == 0) {
+		IConsoleHelp("List the in-game details of all clients connected to the server. Usage 'players'");
+		return true;
+	}
+	NetworkPopulateCompanyInfo();
+
+	FOR_ALL_PLAYERS(p) {
+		if (!p->is_active)
+ 			continue;
+		IConsolePrintF(8, "#:%d Company Name: '%s'  Year Founded: '%d'  Money: '%d'  Loan: '%d' Value: '%d'", p->index, _network_player_info[p->index].company_name,  p->inaugurated_year + MAX_YEAR_BEGIN_REAL, p->player_money, p->current_loan, CalculateCompanyValue(p));
+	}
+
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConSayPlayer)
 {
 	if (argc == 0) {
@@ -1384,6 +1409,8 @@ void IConsoleStdLibRegister(void)
 	/*** Networking commands ***/
 	IConsoleCmdRegister("say",             ConSay);
 	IConsoleCmdHookAdd("say",              ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
+	IConsoleCmdRegister("players",             ConPlayers);
+	IConsoleCmdHookAdd("players",              ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdRegister("say_player",      ConSayPlayer);
 	IConsoleCmdHookAdd("say_player",       ICONSOLE_HOOK_ACCESS, ConHookNeedNetwork);
 	IConsoleCmdRegister("say_client",      ConSayClient);

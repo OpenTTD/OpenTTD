@@ -229,5 +229,6 @@ void NetworkUpdateClientInfo(uint16 client_index);
 void NetworkAddServer(const char *b);
 void NetworkRebuildHostList(void);
 bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
+void NetworkPopulateCompanyInfo(void);
 
 #endif /* NETWORK_H */
