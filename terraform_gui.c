@@ -158,8 +158,6 @@ void PlaceProc_LevelLand(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_X_AND_Y | GUI_PlaceProc_LevelArea);
 }
 
-static void PlaceProc_PlantTree(TileIndex tile) {}
-
 static void TerraformClick_Lower(Window *w)
 {
 	HandlePlacePushButton(w, 4, ANIMCURSOR_LOWERLAND, 2, PlaceProc_LowerLand);
@@ -187,7 +185,8 @@ static void TerraformClick_BuyLand(Window *w)
 
 static void TerraformClick_Trees(Window *w)
 {
-	if (HandlePlacePushButton(w, 9, SPR_CURSOR_MOUSE, 1, PlaceProc_PlantTree)) ShowBuildTreesToolbar();
+	/* This button is NOT a place-push-button, so don't treat it as such */
+	ShowBuildTreesToolbar();
 }
 
 static void TerraformClick_PlaceSign(Window *w)
