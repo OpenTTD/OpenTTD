@@ -1,0 +1,6 @@
+##name ukrainian
+##ownname Укра нська
+##isocode uk_UA.UTF-8
+##plural 6
+#@charset UTF-8
+
