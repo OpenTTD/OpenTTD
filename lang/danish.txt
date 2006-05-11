@@ -306,6 +306,14 @@ STR_0151_MAP_OF_WORLD                                           :Kort over verde
 STR_0152_TOWN_DIRECTORY                                         :Byoversigt
 STR_0153_SUBSIDIES                                              :Special aftaler
 
+
+
+
+
+
+
+
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf over profit
 STR_0155_INCOME_GRAPH                                           :Graf over indkomster
@@ -907,6 +915,7 @@ STR_CRATES                                                      :kasser
 STR_RES_OTHER                                                   :andet
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikke dele ordreliste...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke kopiere ordreliste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slut på delt ordreliste - -
@@ -1190,6 +1199,7 @@ STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Spillets
 STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Sprog, server version, osv.
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klik på et spil fra listen for at vælge det
 
+STR_NETWORK_FIND_SERVER                                         :{BLACK}Find server
 STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Søg netværket for en server
 STR_NETWORK_ADD_SERVER                                          :{BLACK}Tilføj server
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Tilføj en server til listen, som altid vil blive checket for om den kører et spil
@@ -1670,14 +1680,15 @@ STR_306B_HELIPORT                                               :{BLACK}Helikopt
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stationen er for spredt
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikke uniforme stationer er slået fra
 
+
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skibsdepot Orientering
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skibsværft orientering
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...skal bygges på vand
-STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Kan ikke bygge et skibsdepot her...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vælg orienteringen af skibsdepotet
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Kan ikke bygge et skibsværft her...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vælg orienteringen af skibsværft
 STR_3804_WATER                                                  :Vand
 STR_3805_COAST_OR_RIVERBANK                                     :Kyst eller flodbred
-STR_3806_SHIP_DEPOT                                             :Skibsdepot
+STR_3806_SHIP_DEPOT                                             :Skibsværft
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...kan ikke bygge på vand
 
 ##id 0x4000
@@ -2530,14 +2541,14 @@ STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN
 STR_9800_DOCK_CONSTRUCTION                                      :Havnekonstruktion
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Havnekonstruktion
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan ikke bygge en havn her...
-STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Skibsdepot
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} skibsværft
 STR_9804_NEW_SHIPS                                              :{BLACK}Nye skibe
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Skibe
 STR_9808_NEW_SHIPS                                              :{WHITE}Nye skibe
 STR_9809_BUILD_SHIP                                             :{BLACK}Byg skib
 STR_CLONE_SHIP                                                  :{BLACK}Klon Skib
 STR_CLONE_SHIP_INFO                                             :{BLACK}Dette vil bygge en kopi af skibet. Control-click vil dele ordre
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Dette vil bygge en kopi af skibet. Klik på denne knap så på et skib indeni eller udenfor depotet. Control-click vil dele ordre
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Dette vil bygge en kopi af skibet. Klik på denne knap så på et skib indeni eller udenfor skibsværftet. Control-klik vil dele ordre
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Skibet skal være stoppet i et depot
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan ikke sælge skibet...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke bygge skibet...
@@ -2553,11 +2564,11 @@ STR_9817_CAPACITY                                               :{BLACK}Kapacite
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke stoppe/starte skibet...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skibet til depot...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt depot
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Retning mod {TOWN} Skibsdepot
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Retning mod {TOWN} Skibsdepot, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Retning mod {TOWN} skibsværft
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Retning mod {TOWN} skibsværft, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skib {COMMA} venter i depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Byg havn
-STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Byg skibsdepot (til bygning og servicering af skibe)
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Byg skibsværft (til bygning og servicering af skibe)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skibe - klik på et skib for information
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Byg nyt skib
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Træk det her for at sælge det
@@ -2594,8 +2605,8 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den 
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(ombygning mulig)
-STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} Skip Depot
-SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} Skip Depot
+STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} skibsværft
+SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} skibsværft
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Lufthavne
@@ -2760,6 +2771,7 @@ STR_REPLACE_HELP                                                :{BLACK}Dette gi
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Køretøjet kan ikke bygges
+
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste of skilte - {COMMA} Skilte
