@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "openttd.h"
 #include "string.h"
+#include "strings.h"
 #include "variables.h"
 #include "macros.h"
 #include "table/strings.h"
@@ -165,7 +166,7 @@ static void TranslateTTDPatchCodes(char *str)
 /**
  * Add the new read string into our structure.
  */
-StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool new_scheme, const char *text_to_add)
+StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool new_scheme, const char *text_to_add, StringID def_string)
 {
 	GRFText *newtext;
 	uint id;
@@ -181,9 +182,9 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 			langid_to_add = GRFLX_ENGLISH;
 		} else {
 			StringID ret = STR_EMPTY;
-			if (langid_to_add & GRFLB_GERMAN)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_GERMAN,  true, text_to_add);
-			if (langid_to_add & GRFLB_FRENCH)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_FRENCH,  true, text_to_add);
-			if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_SPANISH, true, text_to_add);
+			if (langid_to_add & GRFLB_GERMAN)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_GERMAN,  true, text_to_add, def_string);
+			if (langid_to_add & GRFLB_FRENCH)  ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_FRENCH,  true, text_to_add, def_string);
+			if (langid_to_add & GRFLB_SPANISH) ret = AddGRFString(grfid, stringid, 1 << 6 | GRFLX_SPANISH, true, text_to_add, def_string);
 			return ret;
 		}
 	}
@@ -210,6 +211,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	if (_grf_text[id].textholder == NULL) {
 		_grf_text[id].grfid      = grfid;
 		_grf_text[id].stringid   = stringid;
+		_grf_text[id].def_string = def_string;
 		_grf_text[id].textholder = newtext;
 	} else {
 		GRFText *textptr = _grf_text[id].textholder;
@@ -242,17 +244,27 @@ StringID GetGRFStringID(uint32 grfid, uint16 stringid)
 char *GetGRFString(char *buff, uint16 stringid)
 {
 	GRFText *search_text;
+	GRFText *default_text = NULL;
 
 	assert(_grf_text[stringid].grfid != 0);
 	/*Search the list of lang-strings of this stringid for current lang */
 	for (search_text = _grf_text[stringid].textholder; search_text != NULL; search_text = search_text->next) {
-		if (search_text->langid == _currentLangID){
+		if (search_text->langid == _currentLangID) {
 			return strecpy(buff, search_text->text, NULL);
+		}
+
+		/* If the current string is English or American, set it as the
+		 * fallback language if the specific language isn't available. */
+		if (search_text->langid == GRFLX_ENGLISH || search_text->langid == GRFLX_AMERICAN) {
+			default_text = search_text;
 		}
 	}
 
-	/* Use the first text if the specific language isn't available */
-	return strecpy(buff, _grf_text[stringid].textholder->text, NULL);
+	/* If there is a fallback string, return that */
+	if (default_text != NULL) return strecpy(buff, default_text->text, NULL);
+
+	/* Use the default string ID if the fallback string isn't available */
+	return GetString(buff, _grf_text[stringid].def_string);
 }
 
 /**

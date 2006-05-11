@@ -26,11 +26,12 @@ typedef struct GRFText {
 typedef struct GRFTextEntry {
 	uint32 grfid;
 	uint16 stringid;
+	StringID def_string;
 	GRFText *textholder;
 } GRFTextEntry;
 
 
-StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid, bool new_scheme, const char *text_to_add);
+StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid, bool new_scheme, const char *text_to_add, StringID def_string);
 StringID GetGRFStringID(uint32 grfid, uint16 stringid);
 char *GetGRFString(char *buff, uint16 stringid);
 void CleanUpStrings(void);

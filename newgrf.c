@@ -16,6 +16,7 @@
 #include "newgrf.h"
 #include "variables.h"
 #include "string.h"
+#include "table/strings.h"
 #include "bridge.h"
 #include "economy.h"
 #include "newgrf_engine.h"
@@ -1788,8 +1789,12 @@ static void VehicleNewName(byte *buf, int len)
 				case GSF_ROAD:
 				case GSF_SHIP:
 				case GSF_AIRCRAFT: {
-					StringID string = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
-					if (id < TOTAL_NUM_ENGINES) SetCustomEngineName(id, string);
+					if (id < TOTAL_NUM_ENGINES) {
+						StringID string = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_8000_KIRBY_PAUL_TANK_STEAM + id);
+						SetCustomEngineName(id, string);
+					} else {
+						AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, id);
+					}
 					break;
 				}
 
@@ -1800,7 +1805,7 @@ static void VehicleNewName(byte *buf, int len)
 								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
 							} else {
 								StationClassID sclass = _cur_grffile->stations[GB(id, 0, 8)]->sclass;
-								SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name));
+								SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED));
 							}
 							break;
 
@@ -1808,7 +1813,7 @@ static void VehicleNewName(byte *buf, int len)
 							if (_cur_grffile->stations == NULL || _cur_grffile->stations[GB(id, 0, 8)] == NULL) {
 								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
 							} else {
-								_cur_grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name);
+								_cur_grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 							}
 							break;
 
