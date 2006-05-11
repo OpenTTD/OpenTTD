@@ -489,12 +489,12 @@ static const Widget _player_stations_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,   215,   228,    14,    24, 0x0, STR_USE_CTRL_TO_SELECT_MORE},
 {      WWT_PANEL,   RESIZE_NONE,    14,   229,   242,    14,    24, 0x0, STR_USE_CTRL_TO_SELECT_MORE},
 {      WWT_PANEL,   RESIZE_NONE,    14,   243,   256,    14,    24, 0x0, STR_USE_CTRL_TO_SELECT_MORE},
-{      WWT_PANEL,   RESIZE_NONE,    14,   257,   270,    14,    24, 0x0, STR_USE_CTRL_TO_SELECT_MORE},
-{      WWT_PANEL,  RESIZE_RIGHT,    14,   285,   358,    14,    24, 0x0, STR_USE_CTRL_TO_SELECT_MORE},
+{      WWT_PANEL,   RESIZE_NONE,    14,   257,   270,    14,    24, 0x0, STR_NO_WAITING_CARGO},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   285,   358,    14,    24, 0x0, STR_NULL},
 
 //26
-{      WWT_PANEL,   RESIZE_NONE,    14,    70,    83,    14,    24, 0x0, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,   271,   284,    14,    24, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,    70,    83,    14,    24, 0x0, STR_SELECT_ALL_FACILITIES},
+{      WWT_PANEL,   RESIZE_NONE,    14,   271,   284,    14,    24, 0x0, STR_SELECT_ALL_TYPES},
 
 //28
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    80,    25,    36, STR_SORT_BY, STR_SORT_ORDER_TIP},
@@ -523,7 +523,6 @@ void ShowPlayerStations(PlayerID player)
 		w->vscroll.cap = 12;
 		w->resize.step_height = 10;
 		w->resize.height = w->height - 10 * 7; // minimum if 5 in the list
-		w->widget[NUM_CARGO + 12].tooltips = STR_01A9_NONE;
 	}
 }
 
