@@ -1490,7 +1490,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v_front, *v;
 	Vehicle *w_front, *w, *w_rear;
 	int cost, total_cost = 0;
-	uint32 build_argument = 1;
+	uint32 build_argument = 2;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 	v = GetVehicle(p1);
@@ -1624,7 +1624,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type);
 	if (new_engine_type == INVALID_ENGINE) new_engine_type = old_v->engine_type;
 
-	cost = DoCommand(old_v->tile, new_engine_type, 1, flags, CMD_BUILD_VEH(old_v->type));
+	cost = DoCommand(old_v->tile, new_engine_type, 3, flags, CMD_BUILD_VEH(old_v->type));
 	if (CmdFailed(cost)) return cost;
 
 	if (flags & DC_EXEC) {
@@ -1660,6 +1660,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			new_v->profit_last_year = old_v->profit_last_year;
 			new_v->service_interval = old_v->service_interval;
 			new_front = true;
+			new_v->unitnumber = old_v->unitnumber;	// use the same unit number
 
 			new_v->current_order = old_v->current_order;
 			if (old_v->type == VEH_Train && GetNextVehicle(old_v) != NULL){

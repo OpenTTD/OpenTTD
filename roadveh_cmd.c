@@ -103,7 +103,7 @@ static int32 EstimateRoadVehCost(EngineID engine_type)
 /** Build a road vehicle.
  * @param tile tile of depot where road vehicle is built
  * @param p1 bus/truck type being built (engine)
- * @param p2 unused
+ * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
  */
 int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -129,7 +129,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	/* find the first free roadveh id */
-	unit_num = GetFreeUnitNumber(VEH_Road);
+	unit_num = (HASBIT(p2, 0) == true) ? 0 : GetFreeUnitNumber(VEH_Road);
 	if (unit_num > _patches.max_roadveh)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 

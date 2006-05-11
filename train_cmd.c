@@ -699,8 +699,8 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 /** Build a railroad vehicle.
  * @param tile tile of the depot where rail-vehicle is built
  * @param p1 engine type id
- * @param p2 bit 0 prevents any free cars from being added to the train
- *           bit 1 when set, the train will get number 0, otherwise it will get a free number
+ * @param p2 bit 0 when set, the train will get number 0, otherwise it will get a free number
+ *           bit 1 prevents any free cars from being added to the train
  */
 int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -744,14 +744,10 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v = vl[0];
 
-		if (HASBIT(p2, 1)) {
-			// no number is needed, so we assign 0. The engine is likely intended for a train with more than one engine
-			unit_num = 0;
-		} else {
-			unit_num = GetFreeUnitNumber(VEH_Train);
-			if (unit_num > _patches.max_trains)
-				return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
-		}
+		unit_num = (HASBIT(p2, 0) == true) ? 0 : GetFreeUnitNumber(VEH_Train);
+		if (unit_num > _patches.max_trains)
+			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+
 		if (flags & DC_EXEC) {
 			DiagDirection dir = GetRailDepotDirection(tile);
 			int x = TileX(tile) * TILE_SIZE + _vehicle_initial_x_fract[dir];
@@ -815,7 +811,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			TrainConsistChanged(v);
 			UpdateTrainAcceleration(v);
 
-			if (!HASBIT(p2, 0)) {	// check if the cars should be added to the new vehicle
+			if (!HASBIT(p2, 1)) {	// check if the cars should be added to the new vehicle
 				NormalizeTrainVehInDepot(v);
 			}
 

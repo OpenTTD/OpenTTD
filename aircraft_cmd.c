@@ -158,7 +158,7 @@ static int32 EstimateAircraftCost(EngineID engine_type)
 /** Build an aircraft.
  * @param tile tile of depot where aircraft is built
  * @param p1 aircraft type being built (engine)
- * @param p2 unused
+ * @param p2 bit 0 when set, the unitnumber will be 0, otherwise it will be a free number
  */
 int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -186,7 +186,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 	}
 
-	unit_num = GetFreeUnitNumber(VEH_Aircraft);
+	unit_num = (HASBIT(p2, 0) == true) ? 0 : GetFreeUnitNumber(VEH_Aircraft);
 	if (unit_num > _patches.max_aircraft)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
