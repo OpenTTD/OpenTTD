@@ -1534,6 +1534,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		cost = DoCommand(tile, v->engine_type, build_argument, flags, CMD_BUILD_VEH(v->type));
+		build_argument = 3; // ensure that we only assign a number to the first engine
 
 		if (CmdFailed(cost)) return cost;
 
@@ -1556,7 +1557,6 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				DoCommand(0, (w_rear->index << 16) | w->index, 1, flags, CMD_MOVE_RAIL_VEHICLE);
 			} else {
 				// this is a front engine or not a train. It need orders
-				build_argument = 3; // set bit 1, so it will not assign numbers to engines in the rest of the train
 				w_front = w;
 				w->service_interval = v->service_interval;
 				DoCommand(0, (v->index << 16) | w->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
