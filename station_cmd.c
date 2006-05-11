@@ -495,7 +495,6 @@ static void StationInitialize(Station *st, TileIndex tile)
 	st->random_bits = Random();
 	st->waiting_triggers = 0;
 
-	_global_station_sort_dirty = true; // build a new station
 }
 
 // Update the virtual coords needed to draw the station sign.
@@ -769,6 +768,7 @@ static void DeleteStationIfEmpty(Station* st)
 {
 	if (st->facilities == 0) {
 		st->delete_ctr = 0;
+		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 	}
 }
@@ -1119,6 +1119,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
+		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 	}
 
@@ -1465,6 +1466,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
+		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 	}
 	return cost;
@@ -1703,6 +1705,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
+		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 	}
 
@@ -1789,8 +1792,8 @@ int32 CmdBuildBuoy(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		MakeBuoy(tile, st->index);
 
 		UpdateStationVirtCoordDirty(st);
-
 		UpdateStationAcceptance(st, false);
+		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 	}
 
@@ -1946,6 +1949,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
+		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 	}
 	return _price.build_dock;
@@ -2320,7 +2324,7 @@ static void DeleteStation(Station *st)
 
 	DeleteName(st->string_id);
 	MarkStationDirty(st);
-	_global_station_sort_dirty = true; // delete station, remove sign
+	RebuildStationLists();
 	InvalidateWindowClasses(WC_STATION_LIST);
 
 	index = st->index;
@@ -2557,7 +2561,7 @@ int32 CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		st->string_id = str;
 		UpdateStationVirtCoord(st);
 		DeleteName(old_str);
-		_station_sort_dirty[st->owner] = true; // rename a station
+		ResortStationLists();
 		MarkWholeScreenDirty();
 	} else {
 		DeleteName(str);
@@ -2776,7 +2780,7 @@ static void ChangeTileOwner_Station(TileIndex tile, PlayerID old_player, PlayerI
 
 		SetTileOwner(tile, new_player);
 		st->owner = new_player;
-		_global_station_sort_dirty = true; // transfer ownership of station to another player
+		RebuildStationLists();
 		InvalidateWindowClasses(WC_STATION_LIST);
 	} else {
 		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
@@ -2830,9 +2834,6 @@ void InitializeStations(void)
 
 	_station_tick_ctr = 0;
 
-	// set stations to be sorted on load of savegame
-	memset(_station_sort_dirty, true, sizeof(_station_sort_dirty));
-	_global_station_sort_dirty = true; // load of savegame
 }
 
 

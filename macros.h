@@ -117,6 +117,9 @@ static inline int KillFirstBit2x64(int value)
 	}
 }
 
+/** returns true if value a has only one bit set to 1 */
+#define HAS_SINGLE_BIT(a) ( ((a) & ((a) - 1)) == 0)
+
 /* [min,max), strictly less than */
 #define IS_BYTE_INSIDE(a,min,max) ((byte)((a)-(min)) < (byte)((max)-(min)))
 #define IS_INT_INSIDE(a,min,max) ((uint)((a)-(min)) < (uint)((max)-(min)))

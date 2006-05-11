@@ -331,11 +331,6 @@ typedef struct {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tree_d));
 
 typedef struct {
-	byte refresh_counter;
-} plstations_d;
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
-
-typedef struct {
 	StringID string_id;
 } tooltips_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));

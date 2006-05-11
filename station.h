@@ -8,6 +8,7 @@
 #include "sprite.h"
 #include "tile.h"
 #include "newgrf_station.h"
+#include "window.h"
 
 typedef struct GoodsEntry {
 	uint16 waiting_acceptance;
@@ -138,6 +139,10 @@ void UpdateAllStationVirtCoord(void);
 
 VARDEF SortStruct *_station_sort;
 
+/* sorter stuff */
+void RebuildStationLists(void);
+void ResortStationLists(void);
+
 extern MemoryPool _station_pool;
 
 /**
@@ -190,9 +195,6 @@ static inline uint16 GetRoadStopPoolSize(void)
 
 /* End of stuff for ROADSTOPS */
 
-
-VARDEF bool _station_sort_dirty[MAX_PLAYERS];
-VARDEF bool _global_station_sort_dirty;
 
 void AfterLoadStations(void);
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int h, int rad);
