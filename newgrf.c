@@ -1940,11 +1940,15 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 		case 0x84: /* .grf loading stage, 0=initialization, 1=activation */
 			return _cur_stage;
 
-		case 0x85: { /* TTDPatch flags, only for bit tests */
-			uint32 param_val = _ttdpatch_flags[*cond_val / 0x20];
-			*cond_val %= 0x20;
-			return param_val;
-		}
+		case 0x85: /* TTDPatch flags, only for bit tests */
+			if (cond_val == NULL) {
+				/* Supported in Action 0x07 and 0x09, not 0x0D */
+				return 0;
+			} else {
+				uint32 param_val = _ttdpatch_flags[*cond_val / 0x20];
+				*cond_val %= 0x20;
+				return param_val;
+			}
 
 		case 0x86: /* road traffic side, bit 4 clear=left, set=right */
 			return _opt.road_side << 4;
@@ -1980,7 +1984,6 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 			grfmsg(GMS_WARN, "Unsupported in-game variable 0x%02X.", param);
 			return -1;
 	}
-
 }
 
 /* Action 0x07 */
@@ -2304,7 +2307,7 @@ static void ParamSet(byte *buf, int len)
 		if (GB(data, 0, 8) == 0xFF) {
 			if (data == 0x0000FFFF) {
 				/* Patch variables */
-				grfmsg(GMS_WARN, "ParamSet: Reading Patch variables unsupport.");
+				grfmsg(GMS_WARN, "ParamSet: Reading Patch variables unsupported.");
 				return;
 			} else {
 				/* GRF Resource Management */
@@ -2326,19 +2329,8 @@ static void ParamSet(byte *buf, int len)
 		 * variables available in action 7, or they can be FF to use the value
 		 * of <data>.  If referring to parameters that are undefined, a value
 		 * of 0 is used instead.  */
-		if (src1 == 0xFF) {
-			src1 = data;
-		} else {
-			uint32 temp;
-			src1 = GetParamVal(src1, &temp);
-		}
-
-		if (src2 == 0xFF) {
-			src2 = data;
-		} else {
-			uint32 temp;
-			src2 = GetParamVal(src2, &temp);
-		}
+		src1 = (src1 == 0xFF) ? data : GetParamVal(src1, NULL);
+		src2 = (src2 == 0xFF) ? data : GetParamVal(src2, NULL);
 	}
 
 	/* TODO: You can access the parameters of another GRF file by using
