@@ -67,6 +67,7 @@ typedef uint16 TownID;
 typedef byte PlayerID;
 typedef byte OrderID;
 typedef byte CargoID;
+typedef byte LandscapeID;
 typedef uint16 StringID;
 typedef uint32 SpriteID;    ///< The number of a sprite, without mapping bits and colortables
 typedef uint32 PalSpriteID; ///< The number of a sprite plus all the mapping bits and colortables

@@ -1050,6 +1050,11 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 	return ret;
 }
 
+static bool CargosChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
+{
+	return false;
+}
+
 static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
@@ -1098,15 +1103,19 @@ static void VehicleChangeInfo(byte *buf, int len)
 	/* TODO: Bridges, town houses. */
 
 	static const VCI_Handler handler[] = {
-		/* GSF_TRAIN */    RailVehicleChangeInfo,
-		/* GSF_ROAD */     RoadVehicleChangeInfo,
-		/* GSF_SHIP */     ShipVehicleChangeInfo,
-		/* GSF_AIRCRAFT */ AircraftVehicleChangeInfo,
-		/* GSF_STATION */  StationChangeInfo,
-		/* GSF_CANAL */    NULL,
-		/* GSF_BRIDGE */   BridgeChangeInfo,
-		/* GSF_TOWNHOUSE */NULL,
-		/* GSF_GLOBALVAR */GlobalVarChangeInfo,
+		/* GSF_TRAIN */        RailVehicleChangeInfo,
+		/* GSF_ROAD */         RoadVehicleChangeInfo,
+		/* GSF_SHIP */         ShipVehicleChangeInfo,
+		/* GSF_AIRCRAFT */     AircraftVehicleChangeInfo,
+		/* GSF_STATION */      StationChangeInfo,
+		/* GSF_CANAL */        NULL,
+		/* GSF_BRIDGE */       BridgeChangeInfo,
+		/* GSF_TOWNHOUSE */    NULL,
+		/* GSF_GLOBALVAR */    GlobalVarChangeInfo,
+		/* GSF_INDUSTRYTILES */NULL,
+		/* GSF_INDUSTRIES */   NULL,
+		/* GSF_CARGOS */       CargosChangeInfo,
+		/* GSF_SOUNDFX */      NULL,
 	};
 
 	uint8 feature;
