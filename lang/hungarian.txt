@@ -178,6 +178,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TK
 STR_ABBREV_BATTERIES                                            :{TINYFONT}EL
 STR_ABBREV_PLASTIC                                              :{TINYFONT}MA
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SS
+STR_ABBREV_NONE                                                 :{TINYFONT}SEMMI
+STR_ABBREV_ALL                                                  :{TINYFONT}ÖSSZ
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Térkép - {STRING}
@@ -442,6 +444,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Rakomány szerin
 STR_SORT_BY_MAX_SPEED                                           :Maximum sebesség
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Érték
+STR_SORT_BY_FACILITY                                            :Állomás típus
+STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
+STR_SORT_BY_RATING_MAX                                          :Várakozó rakomány
+STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
+STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)
 
 ############ range for months starts
 STR_0162_JAN                                                    :jan
@@ -1779,6 +1787,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bója 
 STR_306B_HELIPORT                                               :{BLACK}Helikopter-leszálló
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...az állomás túl kiterjedt
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...csak egyféle vágánytípusú állomások lehetnek
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Több elem kiválasztásához tartsd lenyomva a CTRL-t
 
 STR_UNDEFINED                                                   :(nem definiált string)
 STR_STAT_CLASS_DFLT                                             :Alapértelmezett állomás
@@ -2884,6 +2893,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Elõnéze
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}A saját pénznem paramétereinek megváltoztatása
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}

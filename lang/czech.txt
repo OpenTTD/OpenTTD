@@ -1223,6 +1223,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Potáhni 
 
 STR_DRAG_DROP                                                   :{BLACK}Táhni a pust
 STR_STATION_DRAG_DROP                                           :{BLACK}Stavet stanice pomocí tahaní my¨i
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Vyberte, který druh stanic se má zobrazit
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vyberte typ stavene stanice
 
 STR_FAST_FORWARD                                                :{BLACK}Zrychlit beh hry
 STR_MESSAGE_HISTORY                                             :{WHITE}Historie zpráv

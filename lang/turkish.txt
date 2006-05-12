@@ -874,7 +874,7 @@ STR_TOWNNAME_TURKISH                                            :Türkçe
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Sterlin (£)
-STR_CURR_USD                                                    :Dolars ($)
+STR_CURR_USD                                                    :Dolar ($)
 STR_CURR_EUR                                                    :Euro (¤)
 STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Avusturya Silini (ATS)
@@ -1166,6 +1166,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Trenin h
 
 STR_DRAG_DROP                                                   :{BLACK}Sürükle Birak
 STR_STATION_DRAG_DROP                                           :{BLACK}Sürükle birak teknigiyle istasyon kur
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Görüntülenecek istasyon türünü seçin
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Yapilacak istasyon türünü seçin
 
 STR_FAST_FORWARD                                                :{BLACK}Oyunu hizlandir
 STR_MESSAGE_HISTORY                                             :{WHITE}Mesaj Geçmisi

@@ -306,6 +306,30 @@ STR_0151_MAP_OF_WORLD                                           :Mapa del món
 STR_0152_TOWN_DIRECTORY                                         :Directori de Poblacions
 STR_0153_SUBSIDIES                                              :Subvencions
 
+STR_UNITS_IMPERIAL                                              :Imperial
+STR_UNITS_METRIC                                                :Mètric
+STR_UNITS_SI                                                    :Si
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galó{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+
+STR_UNITS_FORCE_METRIC                                          :{COMMA} força per tona
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Gràfic d'aprofitament d'operacions
 STR_0155_INCOME_GRAPH                                           :Gràfic d'ingressos
@@ -343,6 +367,8 @@ STR_SORT_BY_AGE                                                 :Antig.
 STR_SORT_BY_RELIABILITY                                         :Rendibilitat
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capac. total per tipus de càrrega
 STR_SORT_BY_MAX_SPEED                                           :Veloc. Màxima
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Valor
 
 ############ range for months starts
 STR_0162_JAN                                                    :Gen
@@ -756,7 +782,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Enganxar
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unitats de moneda
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Selecció d'unitats de moneda
+STR_MEASURING_UNITS                                             :{BLACK}Mesurant unitats
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Mesurant unitats seleccionades
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Trànsit rodat
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Selecciona el sentit de circulació del trànsit rodat
@@ -907,6 +935,7 @@ STR_CRATES                                                      :palets
 STR_RES_OTHER                                                   :altres
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No es pot compartir la llista d'ordres...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No es pot copiar la llista d'ordres...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi d'Ordres Compartides - -
@@ -1035,6 +1064,7 @@ STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radi de
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interficie
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcció
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vehicles
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Estacions
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economía
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Competidors
@@ -1232,7 +1262,20 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (anunci)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 jugadors
+STR_NETWORK_1_PLAYERS                                           :1 jugador
+STR_NETWORK_2_PLAYERS                                           :2 jugadors
+STR_NETWORK_3_PLAYERS                                           :3 jugadors
+STR_NETWORK_4_PLAYERS                                           :4 jugadors
+STR_NETWORK_5_PLAYERS                                           :5 jugadors
+STR_NETWORK_6_PLAYERS                                           :6 jugadors
+STR_NETWORK_7_PLAYERS                                           :7 jugadors
+STR_NETWORK_8_PLAYERS                                           :8 jugadors
+STR_NETWORK_9_PLAYERS                                           :9 jugadors
+STR_NETWORK_10_PLAYERS                                          :10 jugadors
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar el servidor a un cert nombre de companyies
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar el servidor a un cert nombre de espectadors
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma parlat:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Els altres jugadors sabràn quin idioma es parla en aquest servidor.
@@ -1330,6 +1373,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contrasenya de 
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id de jugador incorrecta en DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :tret pel servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :s'ha intentat usar un codi trampa
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor ple
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :ha entrat al joc
 STR_NETWORK_GIVE_MONEY                                          :gave you some money ({CURRENCY})
@@ -1393,6 +1437,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Via de t
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ja construit
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}S'ha de treure la vía primer
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construcció de Ferrocarril
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construcció de rail elèctric
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construcció de Monorail
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construcció de Maglev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selecciona pont per la vía
@@ -1404,6 +1449,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}No es po
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}No es poden treure senyals d'aqui...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientació de les Cotxeres de Tren
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construcció de Ferrocarril
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Contrucció de rail elèctric
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construcció de Monorail
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construcció de Maglev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir vía de tren
@@ -1654,6 +1700,9 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boia 
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estació massa extesa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estacions no uniformes desactivades
+
+STR_UNDEFINED                                                   :(cadena sense definir)
+STR_STAT_CLASS_DFLT                                             :Estació per defecte
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientació de les Drassanes
@@ -2359,6 +2408,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren mas
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Els trens només es poden modificar quan s'han parat dintre d'una cotxera
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trens
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nous Vehicles
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nous vehicles de rail elèctric
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nous Vehicles Monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nous Vehicles Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Vehicle
@@ -2504,6 +2554,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Accident de Vehicle Rodat!{}El conductor mor en una bola de foc després de la colisió amb un tren
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Accident de Vehicle Rodat!{}{COMMA} moren en una bola de foc després d'una colisió amb un tren
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}No es pot fer que el vehicle torni...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}No es pot girar vehicles que consisteixen de multiples unitats
 STR_9034_RENAME                                                 :{BLACK}Reanomenar
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Reanomena tipus de vehicle rodat
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Reanomena tipus de vehicle rodat
@@ -2674,6 +2725,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehicles:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estacions:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. benefici:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. ingrès:
@@ -2742,6 +2794,11 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mosyta quin motor dels seleccionats a l'esquerra es reemplaça, si hi ha
 STR_REPLACE_HELP                                                :{BLACK}Et permet reemplaçar un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la sustitució automàtica mantinga la llargaria del tren eliminant vagons (començant pel front), si sustituira la màquina faria el tren més llarg
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sustituint: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor no es pot construir
+
+STR_ENGINES                                                     :Motors
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals
@@ -2749,6 +2806,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista d
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Trens
+STR_ELRAIL_VEHICLES                                             :Vehicles de rail elèctric
 STR_MONORAIL_VEHICLES                                           :Monorrails
 STR_MAGLEV_VEHICLES                                             :Vehicles Maglev
 
