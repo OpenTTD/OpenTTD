@@ -329,7 +329,7 @@ static char *FormatYmdString(char *buff, uint16 number)
 	for (src = GetStringPtr(STR_0162_JAN + ymd.month); (*buff++ = *src++) != '\0';) {}
 	buff[-1] = ' ';
 
-	return FormatNoCommaNumber(buff + 4, ymd.year + MAX_YEAR_BEGIN_REAL);
+	return FormatNoCommaNumber(buff, ymd.year + MAX_YEAR_BEGIN_REAL);
 }
 
 static char *FormatMonthAndYear(char *buff, uint16 number)
