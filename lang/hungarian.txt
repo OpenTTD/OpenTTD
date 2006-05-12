@@ -178,8 +178,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TK
 STR_ABBREV_BATTERIES                                            :{TINYFONT}EL
 STR_ABBREV_PLASTIC                                              :{TINYFONT}MA
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SS
-STR_ABBREV_NONE                                                 :{TINYFONT}SEMMI
-STR_ABBREV_ALL                                                  :{TINYFONT}ÖSSZ
+STR_ABBREV_NONE                                                 :{TINYFONT}SÁ
+STR_ABBREV_ALL                                                  :{TINYFONT}ÖS
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Térkép - {STRING}

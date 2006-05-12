@@ -381,8 +381,11 @@ STR_SORT_BY_MAX_SPEED                                           :Höchstgeschwind
 STR_SORT_BY_MODEL                                               :Bauart
 STR_SORT_BY_VALUE                                               :Wert
 STR_SORT_BY_FACILITY                                            :Stationsart
+STR_SORT_BY_WAITING                                             :Anzahl der wartenden Fracht
 STR_SORT_BY_RATING_MAX                                          :Frachtbewertung
-STR_NO_WAITING_CARGO                                            :{BLACK}Keine Güter warten
+STR_NO_WAITING_CARGO                                            :{BLACK}Keine Fracht wartet
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Wähle alle Anlagen
+STR_SELECT_ALL_TYPES                                            :{BLACK}Wähle alle Frachtarten (inkl. nicht wartender Fracht)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1173,7 +1176,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Lok hier
 STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP                                           :{BLACK}Bahnhof mittels 'Drag & Drop' bauen
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Wähle eine Stationsart zum anzeigen
-STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Wähle die Stationsart die gebaut werden soll
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Wähle die Stationsart aus die gebaut werden soll
 
 STR_FAST_FORWARD                                                :{BLACK}Spiel vorspulen
 STR_MESSAGE_HISTORY                                             :{WHITE}Vorhergehende Nachrichten
@@ -1720,7 +1723,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...Boje 
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Bahnhof ist zu groß
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ungleichförmige Stationen deaktiviert
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Halte STRG gedrückt um mehrere Sachen auszuwählen
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}STRG gedrückt halten um mehrere Sachen auszuwählen
 
 STR_UNDEFINED                                                   :(nicht definierter Wert)
 STR_STAT_CLASS_DFLT                                             :Standardstation
