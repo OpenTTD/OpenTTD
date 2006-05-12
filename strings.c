@@ -324,10 +324,10 @@ static char *FormatYmdString(char *buff, uint16 number)
 	ConvertDayToYMD(&ymd, number);
 
 	for (src = GetStringPtr(ymd.day + STR_01AC_1ST - 1); (*buff++ = *src++) != '\0';) {}
-
 	buff[-1] = ' ';
-	memcpy(buff, GetStringPtr(STR_0162_JAN + ymd.month), 4);
-	buff[3] = ' ';
+
+	for (src = GetStringPtr(STR_0162_JAN + ymd.month); (*buff++ = *src++) != '\0';) {}
+	buff[-1] = ' ';
 
 	return FormatNoCommaNumber(buff + 4, ymd.year + MAX_YEAR_BEGIN_REAL);
 }
