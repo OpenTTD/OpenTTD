@@ -147,6 +147,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}KM
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}LI
+STR_ABBREV_NONE                                                 :{TINYFONT}NEIN
+STR_ABBREV_ALL                                                  :{TINYFONT}ALLES
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karte - {STRING}
@@ -378,6 +380,9 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Gesamtkapazität
 STR_SORT_BY_MAX_SPEED                                           :Höchstgeschwindigkeit
 STR_SORT_BY_MODEL                                               :Bauart
 STR_SORT_BY_VALUE                                               :Wert
+STR_SORT_BY_FACILITY                                            :Stationsart
+STR_SORT_BY_RATING_MAX                                          :Frachtbewertung
+STR_NO_WAITING_CARGO                                            :{BLACK}Keine Güter warten
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1168,6 +1173,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Lok hier
 STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP                                           :{BLACK}Bahnhof mittels 'Drag & Drop' bauen
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Wähle eine Stationsart zum anzeigen
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Wähle die Stationsart die gebaut werden soll
 
 STR_FAST_FORWARD                                                :{BLACK}Spiel vorspulen
 STR_MESSAGE_HISTORY                                             :{WHITE}Vorhergehende Nachrichten
@@ -1714,6 +1720,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...Boje 
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Bahnhof ist zu groß
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ungleichförmige Stationen deaktiviert
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Halte STRG gedrückt um mehrere Sachen auszuwählen
 
 STR_UNDEFINED                                                   :(nicht definierter Wert)
 STR_STAT_CLASS_DFLT                                             :Standardstation
@@ -2782,6 +2789,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vorscha
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Parameter für eigene Währung ändern
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
