@@ -306,6 +306,38 @@ STR_0151_MAP_OF_WORLD                                           :Mapa Mundi
 STR_0152_TOWN_DIRECTORY                                         :Lista de cidades
 STR_0153_SUBSIDIES                                              :Subsídios
 
+STR_UNITS_IMPERIAL                                              :Imperial
+STR_UNITS_METRIC                                                :Métrico
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonne{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galão{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton força
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Lucros operacionais
 STR_0155_INCOME_GRAPH                                           :Lucro
@@ -343,6 +375,8 @@ STR_SORT_BY_AGE                                                 :Idade
 STR_SORT_BY_RELIABILITY                                         :Confiabilidade
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade total por tipo de carga
 STR_SORT_BY_MAX_SPEED                                           :Velocidade máxima
+STR_SORT_BY_MODEL                                               :Modelo
+STR_SORT_BY_VALUE                                               :Valor
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -756,7 +790,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Colar a 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unidades monetárias
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Seleção de unidades monetárias
+STR_MEASURING_UNITS                                             :{BLACK}Unidade de medida
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Seleção da unidade de medida
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Veículos de estrada
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Seleccione o lado da estrada por onde os veículos deverão andar
@@ -906,6 +942,7 @@ STR_ITEMS                                                       :itens
 STR_CRATES                                                      :caixas
 STR_RES_OTHER                                                   :outros
 STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Não é possível compartilhar a lista de ordens...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Não é possível copiar a lista de ordens...
@@ -1233,7 +1270,21 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Rede Local / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (divulgar)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 jogadores
+STR_NETWORK_1_PLAYERS                                           :1 jogador
+STR_NETWORK_2_PLAYERS                                           :2 jogadores
+STR_NETWORK_3_PLAYERS                                           :3 jogadores
+STR_NETWORK_4_PLAYERS                                           :4 jogadores
+STR_NETWORK_5_PLAYERS                                           :5 jogadores
+STR_NETWORK_6_PLAYERS                                           :6 jogadores
+STR_NETWORK_7_PLAYERS                                           :7 jogadores
+STR_NETWORK_8_PLAYERS                                           :8 jogadores
+STR_NETWORK_9_PLAYERS                                           :9 jogadores
+STR_NETWORK_10_PLAYERS                                          :10 jogadores
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita o servidor para um certo valor de companhias
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max espectadores:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limita o servidor para um certa quantia de espectadores
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros jogadores saberão o idioma utilizado no servidor.
@@ -1331,6 +1382,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :A senha do jogo
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id do jogador incorreta em DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :chutado pelo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :estava a tentando trapacear
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheio
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :entrou no jogo
 STR_NETWORK_GIVE_MONEY                                          :deu à sua empresa algum dinheiro ({CURRENCY})
@@ -1655,6 +1707,8 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bóia 
 STR_306B_HELIPORT                                               :{BLACK}Heliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estação muito extensa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...Estações não-uniformes desativadas
+
+STR_UNDEFINED                                                   :(undefined string)
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientação do Depósito
@@ -2744,7 +2798,11 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccio
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
 STR_REPLACE_HELP                                                :{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remoção de vagões: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ativar essa opção fará com que a auto-reposição remova vagões dos trens, para que eles tenham o comprimento da menor estação em sua rota{}Ela removerá quantos vagões forem necessários, começando pelo da frente
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A locomotiva não pode ser construída
+
+STR_ENGINES                                                     :Motores
+STR_WAGONS                                                      :Vagões
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
