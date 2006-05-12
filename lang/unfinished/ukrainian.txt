@@ -1,6 +1,300 @@
 ##name ukrainian
-##ownname Укра нська
+##ownname Українська
 ##isocode uk_UA.UTF-8
 ##plural 6
-#@charset UTF-8
+##gender m f s
+##charset utf-8
+
+##id 0x0000
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}ÐÐ° ÐŒÐµÐ¶Ð°ÐŒÐž ÐºÐ°ÑÑÐž
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}ÐÐ»ÐžÐ·ÑÐºÐŸ ÐŽÐŸ ÐºÑÐ°Ñ ÐºÐ°ÑÑÐž
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}ÐÐµÐŽÐŸÑÑÐ°ÑÐœÑÐŸ ÐºÐŸÑÑÑÐ² - ÑÑÐµÐ±Ð° {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY64}
+STR_0005                                                        :{RED}{CURRENCY64}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ð¢ÑÐµÐ±Ð° ÑÑÐ²ÐœÐ° ÐŽÑÐ»ÑÐœÐºÐ°
+STR_0008_WAITING                                                :{BLACK}Ð§ÐµÐºÐ°Ñ: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (Ð¿ÐµÑÐµÐ²ÐµÐ·ÐµÐœÐŸ Ð·
+STR_000B                                                        :{YELLOW}{STATION})
+STR_000C_ACCEPTS                                                :{BLACK}ÐÑÐžÐ¹ÐŒÐ°Ñ: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}ÐÑÐžÐ¹ÐŒÐ°Ñ: {GOLD}
+STR_000F_PASSENGERS                                             :ÐÐ°ÑÐ°Ð¶ÐžÑÐž
+STR_0010_COAL                                                   :ÐÑÐ³ÑÐ»Ð»Ñ
+STR_0011_MAIL                                                   :ÐÐŸÑÑÐ°
+STR_0012_OIL                                                    :ÐÐ°ÑÑÐ°
+STR_0014_GOODS                                                  :Ð¢ÐŸÐ²Ð°ÑÐž
+STR_0015_GRAIN                                                  :ÐÐµÑÐœÐŸ
+STR_0016_WOOD                                                   :ÐÐµÑÐµÐ²ÐžÐœÐ°
+STR_0017_IRON_ORE                                               :ÐÐ°Ð»ÑÐ·ÐœÐ° ÑÑÐŽÐ°
+STR_0018_STEEL                                                  :Ð¡ÑÐ°Ð»Ñ
+STR_0019_VALUABLES                                              :ÐÐŸÑÑÐŸÐ²ÐœÐŸÑÑÑ
+STR_001A_COPPER_ORE                                             :ÐÑÐŽÐœÐ° ÑÑÐŽÐ°
+STR_001B_MAIZE                                                  :ÐÑÐºÑÑÑÐŽÐ·Ð°
+STR_001C_FRUIT                                                  :Ð€ÑÑÐºÑÐž
+STR_0020_GOLD                                                   :ÐÐŸÐ»ÐŸÑÐŸ
+STR_0021_WATER                                                  :ÐÐŸÐŽÐ°
+STR_0022_WHEAT                                                  :ÐÑÐµÐœÐžÑÑ
+STR_0023_RUBBER                                                 :ÐÐ°ÑÑÑÐº
+STR_0024_SUGAR                                                  :ÐŠÑÐºÐŸÑ
+STR_0025_TOYS                                                   :ÐÐ³ÑÐ°ÑÐºÐž
+STR_0026_CANDY                                                  :Ð¡ÐŸÐ»ÐŸÐŽÐŸÑÑ
+
+
+
+
+STR_BY                                                          :{BLACK}*
+
+
+
+
+
+
+
+
+
+
+############ range for menu	starts
+############ range for menu	ends
+
+
+
+############ range for months starts
+############ range for months ends
+
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days	starts
+############ range for days	ends
+
+
+
+
+
+############ range for menu	starts
+############ range ends	here
+
+############ range for menu	starts
+############ range ends	here
+
+STR_TOWN_POPULATION                                             :{BLACK}ÐÐ°ÑÐµÐ»ÐµÐœÐœÑ ÑÐ²ÑÑÑ: {COMMA}
+
+
+
+############ range for menu	starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of	townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}ÐÐŸÑÐ·ÐŽ {COMMA} ÐŒÐ°Ñ ÐŽÑÐ¶Ðµ ÐŒÐ°Ð»ÐŸ Ð·Ð°Ð²ÐŽÐ°ÐœÑ
+STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}ÐÐŸÑÐ·ÐŽ {COMMA} ÐœÐµ ÐŒÐ°Ñ Ð·Ð°Ð²ÐŽÐ°ÐœÑ
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+STR_CANT_BUILD_CANALS                                           :{WHITE}Ð¢ÑÑ ÐœÐµ ÐŒÐŸÐ¶ÐœÐ° Ð¿ÐŸÐ±ÑÐŽÑÐ²Ð°ÑÐž ÐºÐ°ÐœÐ°Ð»...
+STR_BUILD_CANALS_TIP                                            :{BLACK}ÐÑÐŽÑÐ²Ð°ÑÐž ÐºÐ°ÐœÐ°Ð»
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
+STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
+STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
+STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :ÐÑÐŽÐºÑÐ¿ÐžÑÐž ÐŒÑÑÑÐµÐ²Ñ Ð²Ð»Ð°ÐŽÑ
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} ÐÑÐŽÐºÑÐ¿ ÐŒÑÑÑÐµÐ²ÐŸÑ Ð²Ð»Ð°ÐŽÐž Ð·Ð±ÑÐ»ÑÑÐžÑÑ Ð²Ð°Ñ ÑÐµÐ¹ÑÐžÐœÐ³, Ð°Ð»Ðµ Ð¿ÑÐž Ð²ÐžÐºÑÐžÑÑÑ Ð·Ð°Ð³ÑÐŸÐ¶ÑÑ ÑÑÐ²ÐŸÑÐžÐŒ Ð¿ÐŸÐºÐ°ÑÐ°ÐœÐœÑÐŒ.{}  ÐÐ°ÑÑÑÑÑÑ: {CURRENCY}
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires	starts
+############ range for requires	ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
+##id 0x6000
+
+
+############ end of	savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}ÐÐŸÑÐ·ÐŽ ÑÑÐµÐ±Ð° Ð·Ð°Ð²ÐµÑÑÐž Ð² ÐŽÐµÐ¿ÐŸ
+
+
+STR_TRAIN_STOPPING                                              :{RED}ÐÑÐ¿ÐžÐœÑÑÑÑ
+STR_TRAIN_STOPPING_VEL                                          :{RED}ÐÑÐ¿ÐžÐœÑÑÑÑ, {VELOCITY}
+
+##id 0x9000
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+##id 0xB000
+
+STR_BUILD_DATE                                                  :{BLACK}ÐÐ±ÑÐŽÐŸÐ²Ð°ÐœÐŸ: {LTBLUE}{DATE_LONG}
+
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
 
