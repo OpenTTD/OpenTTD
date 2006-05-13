@@ -443,8 +443,6 @@ int GetTrainImage(const Vehicle* v, Direction direction)
 	return base;
 }
 
-extern int _traininfo_vehicle_pitch;
-
 void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine);
