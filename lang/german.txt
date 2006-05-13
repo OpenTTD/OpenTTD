@@ -147,8 +147,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}KM
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}LI
-STR_ABBREV_NONE                                                 :{TINYFONT}NEIN
-STR_ABBREV_ALL                                                  :{TINYFONT}ALLES
+STR_ABBREV_NONE                                                 :{TINYFONT}KEINE
+STR_ABBREV_ALL                                                  :{TINYFONT}ALLE
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karte - {STRING}
@@ -380,9 +380,9 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Gesamtkapazität
 STR_SORT_BY_MAX_SPEED                                           :Höchstgeschwindigkeit
 STR_SORT_BY_MODEL                                               :Bauart
 STR_SORT_BY_VALUE                                               :Wert
-STR_SORT_BY_FACILITY                                            :Stationsart
-STR_SORT_BY_WAITING                                             :Anzahl der wartenden Fracht
-STR_SORT_BY_RATING_MAX                                          :Frachtbewertung
+STR_SORT_BY_FACILITY                                            :Art der Station
+STR_SORT_BY_WAITING                                             :Wert der wartenden Fracht
+STR_SORT_BY_RATING_MAX                                          :Bewertung der Transportunternehmen
 STR_NO_WAITING_CARGO                                            :{BLACK}Keine Fracht wartet
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Wähle alle Anlagen
 STR_SELECT_ALL_TYPES                                            :{BLACK}Wähle alle Frachtarten (inkl. nicht wartender Fracht)
@@ -775,7 +775,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Durchs
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Gebietsinformation
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Konsole An/Aus
+STR_CONSOLE_SETTING                                             :Konsole öffnen/schließen
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Strg-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Riesiger Screenshot (Strg-G)
 STR_02D9_ABOUT_OPENTTD                                          :Über 'OpenTTD'
@@ -1176,7 +1176,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Lok hier
 STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP                                           :{BLACK}Bahnhof mittels 'Drag & Drop' bauen
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Wähle eine Stationsart zum anzeigen
-STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Wähle die Stationsart aus die gebaut werden soll
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Wähle die Stationsart aus, die gebaut werden soll
 
 STR_FAST_FORWARD                                                :{BLACK}Spiel vorspulen
 STR_MESSAGE_HISTORY                                             :{WHITE}Vorhergehende Nachrichten
@@ -1326,7 +1326,7 @@ STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Als Zusc
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Firma beitreten
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Beim Verwalten der Firma helfen
 STR_NETWORK_REFRESH                                             :{BLACK}Aktualisieren
-STR_NETWORK_REFRESH_TIP                                         :{BLACK}Aktuallisiert die Serverinformationen
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Aktualisiert die Serverinformationen
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}Firmenprofil
 
@@ -1341,18 +1341,18 @@ STR_NETWORK_VEHICLES                                            :{SILVER}Fahrzeu
 STR_NETWORK_STATIONS                                            :{SILVER}Stationen:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}Spieler:  {WHITE}{STRING}
 
-STR_NETWORK_CONNECTING                                          :{WHITE}Verbinde...
+STR_NETWORK_CONNECTING                                          :{WHITE}Verbinden...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Verbinde..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorisierung..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Warten..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Verbinden...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorisieren...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Warten...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Herunterladen der Karte..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Verarbeite Spieldaten..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Spieldaten verarbeiten...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrieren...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hole Spielinformationen..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hole Firmeninformationen..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Spielinformationen holen...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Firmeninformationen holen...
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Teilnehmer vor uns
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} KB bisher heruntergeladen
@@ -1723,7 +1723,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...Boje 
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Bahnhof ist zu groß
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ungleichförmige Stationen deaktiviert
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}STRG gedrückt halten um mehrere Sachen auszuwählen
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}STRG gedrückt halten um mehrere Einträge auszuwählen
 
 STR_UNDEFINED                                                   :(nicht definierter Wert)
 STR_STAT_CLASS_DFLT                                             :Standardstation
@@ -1986,7 +1986,7 @@ STR_6830_IMMEDIATE                                              :Zusammen mit de
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 Monate nach dem Spieler
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 Monate nach dem Spieler
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 Monate nach dem Spieler
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Am Streckenende und in Bahnhöfe
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Am Streckenende und in Bahnhöfen
 STR_6835_AT_END_OF_LINE_ONLY                                    :Nur am Streckenende
 STR_6836_OFF                                                    :Aus
 STR_6837_ON                                                     :An

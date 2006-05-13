@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FR
+STR_ABBREV_NONE                                                 :{TINYFONT}GEEN
+STR_ABBREV_ALL                                                  :{TINYFONT}ALLES
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
@@ -377,6 +379,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capaciteit per 
 STR_SORT_BY_MAX_SPEED                                           :Maximale snelheid
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Waarde
+STR_SORT_BY_FACILITY                                            :Station type
+STR_SORT_BY_WAITING                                             :Waarde van de wachtende vracht
+STR_SORT_BY_RATING_MAX                                          :Vracht waardering
+STR_NO_WAITING_CARGO                                            :{BLACK}Er wacht geen vracht van enig type
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Kies een faciliteit
+STR_SELECT_ALL_TYPES                                            :{BLACK}Kies alle vracht typen (inclusief niet wachtende vracht)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1714,10 +1722,11 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boei 
 STR_306B_HELIPORT                                               :{BLACK}Helipoort
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station te verspreid
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...niet uniforme stations uit
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Houd CTRL ingedrukt om meer items te kiezen
 
 STR_UNDEFINED                                                   :(ongedefinieerde string)
 STR_STAT_CLASS_DFLT                                             :Standaard station
-STR_STAT_CLASS_WAYP                                             :Controlepost
+STR_STAT_CLASS_WAYP                                             :Routepunt
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Bouw scheepswerf
@@ -2518,7 +2527,7 @@ STR_886F_TRANSFER                                               :{BLACK}Overlade
 
 STR_TRAIN_STOPPING                                              :{RED}Gestopt
 STR_TRAIN_STOPPING_VEL                                          :{RED}Aan het stoppen, {VELOCITY}
-STR_INCOMPATIBLE_RAIL_TYPES                                     :Ongeschikt rail type
+STR_INCOMPATIBLE_RAIL_TYPES                                     :spoortypes niet verenigbaar
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Wegvoertuig in de weg
@@ -2782,6 +2791,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorbee
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Verander aangepaste valuta optie
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
@@ -2811,7 +2821,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dit geef
 STR_REPLACE_HELP                                                :{BLACK}Deze optie stelt je in staat om een type voertuig te selecteren en die te vervangen door een andere, zodra de voertuigen een depot inrijden
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagons verwijderen: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}De te vervangen trein behoudt zijn lengte door wagons weg te halen (startend aan de voorkant), als het vervangen de trein langer zou maken
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vervangen: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Aan het vervangen: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTEEL {}Wissel tussen motor- en wagonvervangvensters.{}Wagonvervanging wordt alleen uitgevoerd als de nieuwe wagon omgebouwd kan worden om hetzelfde ladingtype te dragen als de oude wagon. Dit wordt gecontroleerd voor elke wagon wanneer de daadwerkelijke vervanging plaats vindt.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotief kan niet gebouwd worden
 
