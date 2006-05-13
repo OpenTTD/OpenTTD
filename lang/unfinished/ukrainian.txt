@@ -3,16 +3,13 @@
 ##isocode uk_UA.UTF-8
 ##plural 6
 ##gender m f s
-#@charset utf-8
 
 ##id 0x0000
-STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}За межами карти
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Близько до краю карти
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недостатньо коштів - потрібно {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
-STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Треба рівна ділянка
 STR_0008_WAITING                                                :{BLACK}Чекає: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
@@ -52,7 +49,6 @@ STR_002A_TOFFEE                                                 :ірис
 STR_002B_BATTERIES                                              :батарейки
 STR_002C_PLASTIC                                                :пластик
 STR_002D_FIZZY_DRINKS                                           :газовану воду
-STR_002E                                                        :
 STR_002F_PASSENGER                                              :пасажирів
 STR_0030_COAL                                                   :вугілля
 STR_0031_MAIL                                                   :пошти
@@ -84,7 +80,6 @@ STR_004A_TOFFEE                                                 :ірису
 STR_004B_BATTERY                                                :батарейок
 STR_004C_PLASTIC                                                :пластику
 STR_004D_FIZZY_DRINK                                            :газованої води
-STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} пасажир{P "" и iв}
 STR_QUANTITY_COAL                                               :{COMMA} тон{P а и ""} вугілля
 STR_QUANTITY_MAIL                                               :{COMMA} сум{P ка ки ок} пошти
@@ -116,7 +111,6 @@ STR_QUANTITY_TOFFEE                                             :{COMMA} тон{
 STR_QUANTITY_BATTERIES                                          :{COMMA} батарей{P ка ки ок}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} пластику
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} газованої води{P z "" s}
-STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}ПС
 STR_ABBREV_COAL                                                 :{TINYFONT}ВГ
 STR_ABBREV_MAIL                                                 :{TINYFONT}ПО
@@ -158,7 +152,6 @@ STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Немо
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Неможливо очистити цю ділянку...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Авторське право {COPYRIGHT} 1995 Кріс Сойєр, Всі права захищені
 STR_00B7_VERSION                                                :{BLACK}OpenTTD версія {REV}
-STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 The OpenTTD team
 STR_TRANSLATED_BY                                               :{BLACK} Перекладач(і) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
@@ -267,21 +260,12 @@ STR_012B_SNOW                                                   :{BLACK}{TINYFON
 STR_012C_MESSAGE                                                :{WHITE}Повідомлення
 STR_012D                                                        :{WHITE}{STRING}
 STR_012E_CANCEL                                                 :{BLACK}Відміна
-STR_012F_OK                                                     :{BLACK}OK
+STR_012F_OK                                                     :{BLACK}да
 STR_0130_RENAME                                                 :{BLACK}Перейменувати
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Дуже багато імен
 STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Таке ім'я вже є
 
-STR_0133_WINDOWS                                                :Windows
-STR_0134_UNIX                                                   :Unix
-STR_0135_OSX                                                    :OS X
-STR_OSNAME_BEOS                                                 :BeOS
-STR_OSNAME_MORPHOS                                              :MorphOS
-STR_OSNAME_AMIGAOS                                              :AmigaOS
-STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Англійська (милі)
-STR_013A_METRIC_KILOMETERS                                      :Метрична (кілометри)
 STR_013B_OWNED_BY                                               :{WHITE}...власність {STRING}
 STR_013C_CARGO                                                  :{BLACK}Вантаж
 STR_013D_INFORMATION                                            :{BLACK}Інформація
@@ -295,20 +279,21 @@ STR_0141_LOAD_GAME                                              :{BLACK}Зава
 STR_SINGLE_PLAYER                                               :{BLACK}Один гравець
 STR_MULTIPLAYER                                                 :{BLACK}Мережна гра
 
-STR_64                                                          :64
-STR_128                                                         :128
-STR_256                                                         :256
-STR_512                                                         :512
-STR_1024                                                        :1024
-STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Розмір карти:
-STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Налаштування гри
 
 STR_0150_SOMEONE                                                :дехто{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Карта
 STR_0152_TOWN_DIRECTORY                                         :Список міст
 STR_0153_SUBSIDIES                                              :Субсидії
+
+
+
+
+
+
+
+
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Прибуток виробництва
@@ -363,8 +348,6 @@ STR_016C_NOV                                                    :Лис
 STR_016D_DEC                                                    :Гру
 ############ range for months ends
 
-STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
-STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Пауза
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Зберегти гру, покинути гру, вихід
@@ -389,8 +372,6 @@ STR_0184_BUILD_AIRPORTS                                         :{BLACK}Буду
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Садити дерева, позначити місце, тощо
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Інформація про земельну ділянку
 STR_0187_OPTIONS                                                :{BLACK}Опції
-STR_0188                                                        :{BLACK}{SMALLUPARROW}
-STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Неможна змінити інтервал обслуговування...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Закрити вікно
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Заголовок вікна - потягніть для переміщення вікна
@@ -431,7 +412,6 @@ STR_01A7_OWNER                                                  :{BLACK}Влас
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Місцева влада: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :немає
 STR_01AA_NAME                                                   :{BLACK}Назва
-STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
 STR_01AC_1ST                                                    :1
@@ -467,11 +447,9 @@ STR_01C9_30TH                                                   :30
 STR_01CA_31ST                                                   :31
 ############ range for days	ends
 
-STR_01CB                                                        :{TINYFONT}{COMMA}
 
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Приймає: {LTBLUE}
 
-STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Музичний програвач
 STR_01D3_SOUND_MUSIC                                            :Звук/Музика
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Налаштувати звук/музику
@@ -489,10 +467,6 @@ STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Наст
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Зупинити
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Почати
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Потягніть повзунок для зміни рівня гучності
-STR_01E3                                                        :{DKGREEN}{TINYFONT}--
-STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
-STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
-STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Доріжка{SETX 88}Заголовок
 STR_01E9_SHUFFLE                                                :{TINYFONT}Випадково
@@ -517,7 +491,6 @@ STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Вкл/�
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Показує вікно вибору музичної програми
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Натисніть для показу в центрі екрану
 STR_01FE_DIFFICULTY                                             :{BLACK}Складність ({STRING})
-STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Останнє повідомлення
 STR_0201_MESSAGE_SETTINGS                                       :Налаштування повідомлень
 STR_MESSAGE_HISTORY_MENU                                        :Історія повідомлень
@@ -539,7 +512,6 @@ STR_MESSAGE_SOUND                                               :{YELLOW}Зву�
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...дуже далеко від попереднього пункту призначення
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Кращі компанії що досягли {NUM}{}({STRING} рівня)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Таблиця компаній з {NUM}
-STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Бізнесмен
 STR_0214_ENTREPRENEUR                                           :Підприємець
 STR_0215_INDUSTRIALIST                                          :Промисловець
@@ -547,17 +519,11 @@ STR_0216_CAPITALIST                                             :Капітал�
 STR_0217_MAGNATE                                                :Магнат
 STR_0218_MOGUL                                                  :Магнат року
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Магнат сторіччя
-STR_HIGHSCORE_NAME                                              :{BIGFONT}{PLAYERNAME}, {COMPANY}
-STR_HIGHSCORE_STATS                                             :{BIGFONT}'{STRING}'   ({COMMA})
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} досягла статусу '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}Гравець {PLAYERNAME} з {COMPANY} досяг статусу '{STRING}'
-STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Створити сценарій
-STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Редактор сценарію
 STR_0223_LAND_GENERATION                                        :{WHITE}Створити ландшафт
-STR_0224                                                        :{BLACK}{UPARROW}
-STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Випадковий ландшафт
 STR_0227_RESET_LAND                                             :{BLACK}Очистити ділянку
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Збільшити область ділянки для підняття/опускання
@@ -671,7 +637,6 @@ STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Вида
 STR_0292_SAVE_SCENARIO                                          :Зберегти сценарій
 STR_0293_LOAD_SCENARIO                                          :Завантажити сценарій
 STR_0294_QUIT_EDITOR                                            :Вийти з редактору
-STR_0295                                                        :
 STR_0296_QUIT                                                   :Вихід
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Зберегти сценарій, завантажити сценарій, вийти з редактору сценарію, вихід
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Завантажити сценарій
@@ -694,10 +659,8 @@ STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Пока
 STR_OFF                                                         :Викл
 STR_SUMMARY                                                     :Коротко
 STR_FULL                                                        :Повністю
-STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Список міст
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Назви транспорту
-STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Стандартні
 STR_02BF_CUSTOM                                                 :Власні
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Зберегти власні назви
@@ -713,8 +676,6 @@ STR_02C7_CONFIG_PATCHES                                         :Розшире�
 STR_02C8_CONFIG_PATCHES                                         :Розширені налаштування5
 STR_NEWGRF_SETTINGS                                             :Нова графіка
 STR_NEWGRF_SETTINGS2                                            :Нова графіка
-STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
 STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Показ назви міст
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Показ назви міст
 STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Показ назви станцій
@@ -735,7 +696,6 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Про
 
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Інформація про ділянку
-STR_02D6                                                        :
 STR_CONSOLE_SETTING                                             :Вкл/викл консоль
 STR_02D7_SCREENSHOT_CTRL_S                                      :Копія екрану (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Копія всієї карти (Ctrl-G)
@@ -758,22 +718,15 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Пере
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Перейти на основному екрані до цього місця
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Грошова одиниця
-STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Виберіть грошову одиницю
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Одиниця виміру
-STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Виберіть одиниці виміру
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Напрямок руху
-STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Виберіть по якій стороні їхатиме транспорт
 STR_02E9_DRIVE_ON_LEFT                                          :Лівосторонній
 STR_02EA_DRIVE_ON_RIGHT                                         :Правосторонній
 STR_02EB_TOWN_NAMES                                             :{BLACK}Назви міст
-STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Виберіть стиль назв міст
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Автозбереження
-STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Виберіть період автозбереження гри
 STR_02F7_OFF                                                    :Вимкнено
 STR_02F8_EVERY_3_MONTHS                                         :Кожні три місяці
@@ -789,7 +742,6 @@ STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Пока
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Почати нову використовуючи сценарій
 STR_0304_QUIT                                                   :{BLACK}Вихід
 STR_0305_QUIT_OPENTTD                                           :{BLACK}покинути 'OpenTTD'
-STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можна збудувати лише в містах
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Вибрати 'помірний' клімат
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Вибрати 'субарктичний' клімат
@@ -803,7 +755,6 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Нова про
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Нову промисловість
-STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...можна будувати лише у містах
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...можна будувати лише у джунглях
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...можна будувати лише у пустелі
@@ -818,8 +769,6 @@ STR_SAVING_GAME                                                 :{RED}*  *  ЗБ
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Збереження...,{}зачекайте поки завершиться!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Вибрати програму 'Дорожні теми'
 
-STR_0335_6                                                      :{BLACK}6
-STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Англійські(Оригінальні)
@@ -869,18 +818,15 @@ STR_CURR_SEK                                                    :Шведськ�
 STR_CURR_CUSTOM                                                 :Вибрана...
 
 STR_OPTIONS_LANG                                                :{BLACK}Мова
-STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Виберіть мову для використання
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}В повний екран
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Натисніть цю кнопку щоб грати в повний екран
 
 STR_OPTIONS_RES                                                 :{BLACK}Роздільна здатність
-STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_RES_TIP                                             :{BLACK}Виберіть роздільну здатність екрану
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Формат копій екрану
-STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Виберіть формат для створення копій екрану
 
 STR_AUTOSAVE_1_MONTH                                            :Щомісяця
@@ -911,7 +857,7 @@ STR_LITERS                                                      :літрів
 STR_ITEMS                                                       :штуК
 STR_CRATES                                                      :ЯщикИ
 STR_RES_OTHER                                                   :іншЕ
-STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Неможливо розділити список завдань...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Неможливо скопіювати список завдань...
@@ -1047,8 +993,6 @@ STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Екон
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Конкуренти
 
 STR_CONFIG_PATCHES_DISABLED                                     :вимкнено
-STR_CONFIG_PATCHES_INT32                                        :{NUM}
-STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Змініть значення
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Одне чи декілька значень інтервалів несумісні за даних умов! Дозволено 5-90% та 30-800 днів
@@ -1084,9 +1028,6 @@ STR_LANDINFO_WAYPOINT                                           :Пункт
 STR_WAYPOINT                                                    :{WHITE}Точка маршруту
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Виберіть тип точки маршруту
 
-STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
-STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
-STR_WAYPOINT_RAW                                                :{WAYPOINT}
 STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Перейменуйте точку маршруту
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Не можна перейменувати точку маршруту...
@@ -1163,7 +1104,6 @@ STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Збуд
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Промисловість
 STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
-STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...дуже близько до іншої промисловості
 
@@ -1202,14 +1142,11 @@ STR_NETWORK_ADD_SERVER                                          :{BLACK}Дода
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Додати сервер до списку, який завжди буде перевірятись на поточні ігри.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Введіть адресу сервера
 
-STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Клієнти
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Клієнти в мережі/макс.клієнтів{}Компанії в мережі/макс.компаній
 STR_NETWORK_GAME_INFO                                           :{SILVER}Інформація про гру
-STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING} : {NUM}
@@ -1233,12 +1170,10 @@ STR_NETWORK_SELECT_MAP                                          :{BLACK}Вибе
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}На якій карті бажаєте грати?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Макс. клієнтів:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Виберіть максимальну кількість клієнтів. Не всі слоти мають бути зайняті
-STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LAN                                                 :Локальна
 STR_NETWORK_INTERNET                                            :Інтернет
 STR_NETWORK_LAN_INTERNET                                        :Локальна/Інтернет
 STR_NETWORK_INTERNET_ADVERTISE                                  :Інтернет (advertise)
-STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_0_PLAYERS                                           :0 гравців
 STR_NETWORK_1_PLAYERS                                           :1 гравець
 STR_NETWORK_2_PLAYERS                                           :2 гравця
@@ -1252,13 +1187,10 @@ STR_NETWORK_9_PLAYERS                                           :9 гравці�
 STR_NETWORK_10_PLAYERS                                          :10 гравців
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Максимум компаній:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Обмежує кількість компаній на сервері
-STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Максмум глядачів:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Обмежує кількість глядачів на сервері
-STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Мова:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Інші гравці будуть знати якою мовою спілкуються на сервері
-STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Почати гру
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Почати нову мережну гру з випадковою картою або сценарієм
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Завантаження гри
@@ -1271,7 +1203,6 @@ STR_NETWORK_LANG_GERMAN                                         :Німецьк�
 STR_NETWORK_LANG_FRENCH                                         :Французька
 ############ End of leave-in-this-order
 
-STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Підготовка до з'єднання:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Список всіх компаній присутніх у цій грі. Ви можете як приєднатись до компанії так і створити нову, якщо є вільне місце
@@ -1315,7 +1246,6 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Роз'єднання
 
-STR_NETWORK_CHAT_QUERY_CAPTION                                  :{WHITE}Введіть текст повідомлення для відправки
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Введіть суму, яку бажаєте передати
 STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Сервер захищено паролем. Введіть пароль
 STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Компанія захищена паролем. Введіть пароль
@@ -1347,7 +1277,6 @@ STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :з'єднанн
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :помилка протоколу
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :відмова авторизації
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :отримано несумісний пакет даних
-STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :wrong revision
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :таке ім'я вже є
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :пароль невірний
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :невірний ID гравця в DoCommand
@@ -1450,7 +1379,6 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Колія з �
 
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Схил не співпадає з дорогою
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Спочатку зруйнуйте дорогу
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Будівництво дороги
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Виберіть дорожний міст
@@ -1477,13 +1405,8 @@ STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Залізни�
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Міста
-STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} ({COMMA})
-STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
-STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
-STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
 STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Спочатку зруйнуйте споруду
-STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Населення: {ORANGE}{COMMA}{BLACK}  Будинки: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Перейменувати
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Неможливо перейменувати...
@@ -1514,7 +1437,6 @@ STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Місц
 STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Інформація про місцеву владу
 STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} місцева влада
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Рейтинги компаній:
-STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидії
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Пропонуються субсидії:-
 STR_2027_FROM_TO                                                :{ORANGE}Перевезення {STRING} з {STRING} до {STRING}
@@ -1564,18 +1486,12 @@ STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Купити єдине транспортне право у місті на 1 рік. Пасажири і вантажі у місті будуть перевозитись лише вашою компанією.{} Вартість: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Підкуп місцевої влади збільшить ваш рейтинг, але при викритті загрожує суворим покаранням.{}  Вартість: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Транспортний безлад у місті {TOWN}!{}{}Реконструкція доріг, фінансована компанією {COMPANY} принесе транспорту незручності протягом 6 місяців!
-STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
-STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (будується)
 STR_2059_IGLOO                                                  :Іглу
 STR_205A_TEPEES                                                 :Вігвам
 STR_205B_TEAPOT_HOUSE                                           :Чайник-Дім
 STR_205C_PIGGY_BANK                                             :Копилка
 
-STR_INDUSTRY                                                    :{INDUSTRY}
-STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
-STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING                                                 :Ландшафт
@@ -1585,7 +1501,6 @@ STR_2802_TREES                                                  :{WHITE}Дере
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...Тут вже росте дерево
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...невідповідне місце
 STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Неможливо посадити тут дерево
-STR_2806                                                        :{WHITE}{STRING}
 STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...дуже багато позначень
 STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Неможливо позначити місце
 STR_280A_SIGN                                                   :Позначення
@@ -1609,7 +1524,6 @@ STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Дуже
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Дуже багато зупинок
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Дуже багато вантажних станцій
 STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Дуже близько до іншої станції
-STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Спочатку зруйнуйте залізничну станцію
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Дуже близько до іншого аеропорту
 STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Спочатку зруйнуйте аеропорт
@@ -1631,7 +1545,6 @@ STR_303B_EXCELLENT                                              :Відмінн�
 STR_303C_OUTSTANDING                                            :Найкраще
 ############ range for rating ends
 
-STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} більше не приймає {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} більше не приймає {STRING} або {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} тепер приймає {STRING}
@@ -1641,7 +1554,6 @@ STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Напр
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Спочатку зруйнуйте зупинку
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Спочатку зруйнуйте вантажну станцію
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} станці{P я ї й}
-STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- нема -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...ділянка не підходить для цього
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Дуже близько до іншого порту
@@ -1662,8 +1574,6 @@ STR_305A_LARGE                                                  :{BLACK}Місь
 STR_305AA_LARGE                                                 :{BLACK}Обласний аеропорт
 STR_305AB_LARGE                                                 :{BLACK}Міжнародний аеропорт
 STR_305B_SIZE                                                   :{BLACK}Розмір
-STR_305C_0                                                      :{STATION} {STATIONFEATURES}
-STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Залізнична станція
 STR_305F_AIRCRAFT_HANGAR                                        :Ангар
 STR_3060_AIRPORT                                                :Аеропорт
@@ -1680,6 +1590,7 @@ STR_306B_HELIPORT                                               :{BLACK}Верт
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...станції дуже розкидані
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...неоднорідні станції відмінено
 
+
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Направлення корабельного депо
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...має бути збудовано на воді
@@ -1695,7 +1606,6 @@ STR_4000_SAVE_GAME                                              :{WHITE}Збер
 STR_4001_LOAD_GAME                                              :{WHITE}Завантажити гру
 STR_4002_SAVE                                                   :{BLACK}Зберегти
 STR_4003_DELETE                                                 :{BLACK}Видалити
-STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт вільно
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Неможливо прочитати пристрій
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Помилка запису гри
@@ -1711,7 +1621,6 @@ STR_4010_GENERATE_RANDOM_NEW_GAME                               :Генерув�
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} на шляху
-STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Вугільна шахта
 STR_4803_POWER_STATION                                          :Електростанція
 STR_4804_SAWMILL                                                :Лісопилка
@@ -1788,7 +1697,6 @@ STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Поча
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Рівна земля чи вода має бути під мостом
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Початок та кінець мають бути на одній лінії
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Невідповідне місце для початку тунеля
-STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Підвісний сталевий
 STR_500F_GIRDER_STEEL                                           :Балочний сталевий
 STR_5010_CANTILEVER_STEEL                                       :Каркасний сталевий
@@ -1830,7 +1738,6 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...це 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
-STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Без назви
 STR_SV_TRAIN_NAME                                               :Поїзд {COMMA}
 STR_SV_ROADVEH_NAME                                             :Авто {COMMA}
@@ -1909,8 +1816,6 @@ STR_26816_NONE                                                  :Нема
 STR_6816_LOW                                                    :Мало
 STR_6817_NORMAL                                                 :Нормально
 STR_6818_HIGH                                                   :Багато
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
 STR_681B_VERY_SLOW                                              :Дуже повільно
 STR_681C_SLOW                                                   :Повільно
 STR_681D_MEDIUM                                                 :Середньо
@@ -1923,10 +1828,6 @@ STR_6822_HIGH                                                   :Багато
 STR_6823_NONE                                                   :Відкл.
 STR_6824_REDUCED                                                :Знижено
 STR_6825_NORMAL                                                 :Нормально
-STR_6826_X1_5                                                   :x1.5
-STR_6827_X2                                                     :x2
-STR_6828_X3                                                     :x3
-STR_6829_X4                                                     :x4
 STR_682A_VERY_FLAT                                              :Дуже рівний
 STR_682B_FLAT                                                   :Рівнинний
 STR_682C_HILLY                                                  :Горбкуватий
@@ -1947,8 +1848,6 @@ STR_683A_TOLERANT                                               :Терпиме
 STR_683B_HOSTILE                                                :Вороже
 
 ##id 0x7000
-STR_7000                                                        :
-STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Гравець {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Нове лице
 STR_7005_COLOR_SCHEME                                           :{BLACK}Колір
@@ -1962,7 +1861,6 @@ STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Немо
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Неможливо змінити ім'я керівника...
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Фінанси {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Витрати/Доходи
-STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Будівництво
 STR_7012_NEW_VEHICLES                                           :{GOLD}Нова техніка
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Поїзди: витрати
@@ -1976,18 +1874,12 @@ STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Літа�
 STR_701B_SHIP_INCOME                                            :{GOLD}Кораблі: прибуток
 STR_701C_LOAN_INTEREST                                          :{GOLD}Відсотки за кредит
 STR_701D_OTHER                                                  :{GOLD}Інше
-STR_701E                                                        :{BLACK}-{CURRENCY64}
-STR_701F                                                        :{BLACK}+{CURRENCY64}
 STR_7020_TOTAL                                                  :{WHITE}Всього:
-STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Графік доходів
-STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
-STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Графік прибутку від виробництва
 STR_7026_BANK_BALANCE                                           :{WHITE}Рахунок
 STR_7027_LOAN                                                   :{WHITE}Взято в кредит
 STR_MAX_LOAN                                                    :{WHITE}Макс. кредит:  {BLACK}{CURRENCY64}
-STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Позичити {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Повернути {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...найбільший дозволений розмір кредиту {CURRENCY}
@@ -2028,8 +1920,6 @@ STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Дост
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Рейтинг продуктивності компанії(найбільший рейтинг=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Вартість компанії
 STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Таблиця компаній
-STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
-STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Компанія у скруті!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} буде продано або оголошено банкрутом, якщо найблищим часом не зросте її продуктивність!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Керівник)
@@ -2045,7 +1935,6 @@ STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Тари
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Днів у дорозі
 STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Плата за доставку 10 одиниць (або 10,000 літрів) вантажу на відстань 20 квадратів
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Вкл/викл графік типів вантажу
-STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Інженер
 STR_7067_TRAFFIC_MANAGER                                        :Регулювальник
 STR_7068_TRANSPORT_COORDINATOR                                  :Диспетчер
@@ -2080,262 +1969,6 @@ STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT
 STR_7080_PROTECTED                                              :{WHITE}Ця компанія поки ще не продається...
 
 ##id 0x8000
-STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Steam)
-STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
-STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
-STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
-STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
-STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
-STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
-STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Steam)
-STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (Steam)
-STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (Steam)
-STR_800A_SH_8P_STEAM                                            :SH '8P' (Steam)
-STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Diesel)
-STR_800C_DASH_DIESEL                                            :'Dash' (Diesel)
-STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Diesel)
-STR_800E_UU_37_DIESEL                                           :UU '37' (Diesel)
-STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (Diesel)
-STR_8010_CS_4000_DIESEL                                         :CS 4000 (Diesel)
-STR_8011_CS_2400_DIESEL                                         :CS 2400 (Diesel)
-STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Diesel)
-STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Diesel)
-STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Diesel)
-STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Diesel)
-STR_8016_SH_125_DIESEL                                          :SH '125' (Diesel)
-STR_8017_SH_30_ELECTRIC                                         :SH '30' (Electric)
-STR_8018_SH_40_ELECTRIC                                         :SH '40' (Electric)
-STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Electric)
-STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Electric)
-STR_801B_PASSENGER_CAR                                          :Passenger Carriage
-STR_801C_MAIL_VAN                                               :Mail Van
-STR_801D_COAL_CAR                                               :Coal Truck
-STR_801E_OIL_TANKER                                             :Oil Tanker
-STR_801F_LIVESTOCK_VAN                                          :Livestock Van
-STR_8020_GOODS_VAN                                              :Goods Van
-STR_8021_GRAIN_HOPPER                                           :Grain Hopper
-STR_8022_WOOD_TRUCK                                             :Wood Truck
-STR_8023_IRON_ORE_HOPPER                                        :Iron Ore Hopper
-STR_8024_STEEL_TRUCK                                            :Steel Truck
-STR_8025_ARMORED_VAN                                            :Armoured Van
-STR_8026_FOOD_VAN                                               :Food Van
-STR_8027_PAPER_TRUCK                                            :Paper Truck
-STR_8028_COPPER_ORE_HOPPER                                      :Copper Ore Hopper
-STR_8029_WATER_TANKER                                           :Water Tanker
-STR_802A_FRUIT_TRUCK                                            :Fruit Truck
-STR_802B_RUBBER_TRUCK                                           :Rubber Truck
-STR_802C_SUGAR_TRUCK                                            :Sugar Truck
-STR_802D_COTTON_CANDY_HOPPER                                    :Candyfloss Hopper
-STR_802E_TOFFEE_HOPPER                                          :Toffee Hopper
-STR_802F_BUBBLE_VAN                                             :Bubble Van
-STR_8030_COLA_TANKER                                            :Cola Tanker
-STR_8031_CANDY_VAN                                              :Sweet Van
-STR_8032_TOY_VAN                                                :Toy Van
-STR_8033_BATTERY_TRUCK                                          :Battery Truck
-STR_8034_FIZZY_DRINK_TRUCK                                      :Fizzy Drink Truck
-STR_8035_PLASTIC_TRUCK                                          :Plastic Truck
-STR_8036_X2001_ELECTRIC                                         :'X2001' (Electric)
-STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Electric)
-STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
-STR_8039_PASSENGER_CAR                                          :Passenger Carriage
-STR_803A_MAIL_VAN                                               :Mail Van
-STR_803B_COAL_CAR                                               :Coal Truck
-STR_803C_OIL_TANKER                                             :Oil Tanker
-STR_803D_LIVESTOCK_VAN                                          :Livestock Van
-STR_803E_GOODS_VAN                                              :Goods Van
-STR_803F_GRAIN_HOPPER                                           :Grain Hopper
-STR_8040_WOOD_TRUCK                                             :Wood Truck
-STR_8041_IRON_ORE_HOPPER                                        :Iron Ore Hopper
-STR_8042_STEEL_TRUCK                                            :Steel Truck
-STR_8043_ARMORED_VAN                                            :Armoured Van
-STR_8044_FOOD_VAN                                               :Food Van
-STR_8045_PAPER_TRUCK                                            :Paper Truck
-STR_8046_COPPER_ORE_HOPPER                                      :Copper Ore Hopper
-STR_8047_WATER_TANKER                                           :Water Tanker
-STR_8048_FRUIT_TRUCK                                            :Fruit Truck
-STR_8049_RUBBER_TRUCK                                           :Rubber Truck
-STR_804A_SUGAR_TRUCK                                            :Sugar Truck
-STR_804B_COTTON_CANDY_HOPPER                                    :Candyfloss Hopper
-STR_804C_TOFFEE_HOPPER                                          :Toffee Hopper
-STR_804D_BUBBLE_VAN                                             :Bubble Van
-STR_804E_COLA_TANKER                                            :Cola Tanker
-STR_804F_CANDY_VAN                                              :Sweet Van
-STR_8050_TOY_VAN                                                :Toy Van
-STR_8051_BATTERY_TRUCK                                          :Battery Truck
-STR_8052_FIZZY_DRINK_TRUCK                                      :Fizzy Drink Truck
-STR_8053_PLASTIC_TRUCK                                          :Plastic Truck
-STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Electric)
-STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Electric)
-STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Electric)
-STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Electric)
-STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
-STR_8059_PASSENGER_CAR                                          :Passenger Carriage
-STR_805A_MAIL_VAN                                               :Mail Van
-STR_805B_COAL_CAR                                               :Coal Truck
-STR_805C_OIL_TANKER                                             :Oil Tanker
-STR_805D_LIVESTOCK_VAN                                          :Livestock Van
-STR_805E_GOODS_VAN                                              :Goods Van
-STR_805F_GRAIN_HOPPER                                           :Grain Hopper
-STR_8060_WOOD_TRUCK                                             :Wood Truck
-STR_8061_IRON_ORE_HOPPER                                        :Iron Ore Hopper
-STR_8062_STEEL_TRUCK                                            :Steel Truck
-STR_8063_ARMORED_VAN                                            :Armoured Van
-STR_8064_FOOD_VAN                                               :Food Van
-STR_8065_PAPER_TRUCK                                            :Paper Truck
-STR_8066_COPPER_ORE_HOPPER                                      :Copper Ore Hopper
-STR_8067_WATER_TANKER                                           :Water Tanker
-STR_8068_FRUIT_TRUCK                                            :Fruit Truck
-STR_8069_RUBBER_TRUCK                                           :Rubber Truck
-STR_806A_SUGAR_TRUCK                                            :Sugar Truck
-STR_806B_COTTON_CANDY_HOPPER                                    :Candyfloss Hopper
-STR_806C_TOFFEE_HOPPER                                          :Toffee Hopper
-STR_806D_BUBBLE_VAN                                             :Bubble Van
-STR_806E_COLA_TANKER                                            :Cola Tanker
-STR_806F_CANDY_VAN                                              :Sweet Van
-STR_8070_TOY_VAN                                                :Toy Van
-STR_8071_BATTERY_TRUCK                                          :Battery Truck
-STR_8072_FIZZY_DRINK_TRUCK                                      :Fizzy Drink Truck
-STR_8073_PLASTIC_TRUCK                                          :Plastic Truck
-STR_8074_MPS_REGAL_BUS                                          :MPS Regal Bus
-STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard Bus
-STR_8076_FOSTER_BUS                                             :Foster Bus
-STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Superbus
-STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Bus
-STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Bus
-STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Bus
-STR_807B_BALOGH_COAL_TRUCK                                      :Balogh Coal Truck
-STR_807C_UHL_COAL_TRUCK                                         :Uhl Coal Truck
-STR_807D_DW_COAL_TRUCK                                          :DW Coal Truck
-STR_807E_MPS_MAIL_TRUCK                                         :MPS Mail Truck
-STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard Mail Truck
-STR_8080_PERRY_MAIL_TRUCK                                       :Perry Mail Truck
-STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover Mail Truck
-STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught Mail Truck
-STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow Mail Truck
-STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe Oil Tanker
-STR_8085_FOSTER_OIL_TANKER                                      :Foster Oil Tanker
-STR_8086_PERRY_OIL_TANKER                                       :Perry Oil Tanker
-STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott Livestock Van
-STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl Livestock Van
-STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Livestock Van
-STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh Goods Truck
-STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead Goods Truck
-STR_808C_GOSS_GOODS_TRUCK                                       :Goss Goods Truck
-STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford Grain Truck
-STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas Grain Truck
-STR_808F_GOSS_GRAIN_TRUCK                                       :Goss Grain Truck
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Wood Truck
-STR_8091_FOSTER_WOOD_TRUCK                                      :Foster Wood Truck
-STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland Wood Truck
-STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS Iron Ore Truck
-STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl Iron Ore Truck
-STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy Iron Ore Truck
-STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh Steel Truck
-STR_8097_UHL_STEEL_TRUCK                                        :Uhl Steel Truck
-STR_8098_KELLING_STEEL_TRUCK                                    :Kelling Steel Truck
-STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh Armoured Truck
-STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Armoured Truck
-STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster Armoured Truck
-STR_809C_FOSTER_FOOD_VAN                                        :Foster Food Van
-STR_809D_PERRY_FOOD_VAN                                         :Perry Food Van
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy Food Van
-STR_809F_UHL_PAPER_TRUCK                                        :Uhl Paper Truck
-STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh Paper Truck
-STR_80A1_MPS_PAPER_TRUCK                                        :MPS Paper Truck
-STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Copper Ore Truck
-STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Copper Ore Truck
-STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Copper Ore Truck
-STR_80A5_UHL_WATER_TANKER                                       :Uhl Water Tanker
-STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Water Tanker
-STR_80A7_MPS_WATER_TANKER                                       :MPS Water Tanker
-STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Fruit Truck
-STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Fruit Truck
-STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Fruit Truck
-STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh Rubber Truck
-STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl Rubber Truck
-STR_80AD_RMT_RUBBER_TRUCK                                       :RMT Rubber Truck
-STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover Sugar Truck
-STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught Sugar Truck
-STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Sugar Truck
-STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Cola Truck
-STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Cola Truck
-STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Cola Truck
-STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Candyfloss Truck
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Candyfloss Truck
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Candyfloss Truck
-STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover Toffee Truck
-STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught Toffee Truck
-STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow Toffee Truck
-STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover Toy Van
-STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught Toy Van
-STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow Toy Van
-STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover Sweet Truck
-STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught Sweet Truck
-STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow Sweet Truck
-STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover Battery Truck
-STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught Battery Truck
-STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow Battery Truck
-STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover Fizzy Drink Truck
-STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught Fizzy Drink Truck
-STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow Fizzy Drink Truck
-STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover Plastic Truck
-STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught Plastic Truck
-STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow Plastic Truck
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover Bubble Truck
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught Bubble Truck
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow Bubble Truck
-STR_80CC_MPS_OIL_TANKER                                         :MPS Oil Tanker
-STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. Oil Tanker
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Passenger Ferry
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Passenger Ferry
-STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hovercraft
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Passenger Ferry
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Passenger Ferry
-STR_80D3_YATE_CARGO_SHIP                                        :Yate Cargo ship
-STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell Cargo ship
-STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover Cargo ship
-STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaut Cargo ship
-STR_80D7_SAMPSON_U52                                            :Sampson U52
-STR_80D8_COLEMAN_COUNT                                          :Coleman Count
-STR_80D9_FFP_DART                                               :FFP Dart
-STR_80DA_YATE_HAUGAN                                            :Yate Haugan
-STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Bakewell Cotswald LB-3
-STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell Luckett LB-8
-STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell Luckett LB-9
-STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell Luckett LB80
-STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell Luckett LB-10
-STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell Luckett LB-11
-STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate Aerospace YAC 1-11
-STR_80E2_DARWIN_100                                             :Darwin 100
-STR_80E3_DARWIN_200                                             :Darwin 200
-STR_80E4_DARWIN_300                                             :Darwin 300
-STR_80E5_DARWIN_400                                             :Darwin 400
-STR_80E6_DARWIN_500                                             :Darwin 500
-STR_80E7_DARWIN_600                                             :Darwin 600
-STR_80E8_GURU_GALAXY                                            :Guru Galaxy
-STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
-STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
-STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
-STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
-STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
-STR_80EE_DINGER_100                                             :Dinger 100
-STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
-STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
-STR_80F1_KELLING_K1                                             :Kelling K1
-STR_80F2_KELLING_K6                                             :Kelling K6
-STR_80F3_KELLING_K7                                             :Kelling K7
-STR_80F4_DARWIN_700                                             :Darwin 700
-STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
-STR_80F6_DINGER_200                                             :Dinger 200
-STR_80F7_DINGER_1000                                            :Dinger 1000
-STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
-STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
-STR_80FA_FLASHBANG_X1                                           :Flashbang X1
-STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
-STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
-STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
-STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
-STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Повідомлення від виробника транспорту
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Ми розробили новий {STRING} - бажаєте екслюзивно користуватись ним протягом року, так ми побачимо як він зарекомендує себе перед тим як буде доступним для всіх?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :локомотив
@@ -2379,10 +2012,8 @@ STR_8812_EMPTY                                                  :{LTBLUE}пор�
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} з {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Поїзд {COMMA} чекає в депо
 STR_8815_NEW_VEHICLES                                           :{BLACK}Новий транспорт
-STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Поїзд дуже довгий
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Поїзд можна змінювати тільки тоді, коли зупинений в депо
-STR_8815_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Поїзд{P "" и ів}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Новий залізничний транспорт
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Новий монорельсовий транспорт
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Новий транспорт на магнітній подушці
@@ -2402,12 +2033,10 @@ STR_8827_FULL_LOAD                                              :{BLACK}Повн
 STR_8828_UNLOAD                                                 :{BLACK}Не завантажувати
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Накази)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Кінець наказів - -
-STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Техогляд
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Неможливо збудувати поїзд...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Ціна: {LTBLUE}{CURRENCY}
-STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Завантаження
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Поїзд повинен стояти в депо
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Неможлтво відправити поїзд в депо...
@@ -2417,49 +2046,20 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Немо
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Неможливо видалити наказ...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Неможливо змінити наказ...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Неможливо перемістити транспорт...
-STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}The rear engine will always follow its front counterpart
 STR_8838_N_A                                                    :немає{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Неможливо продати поїзд...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Неможливо знайти маршрут до місцевого депо
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Неможливо зупинити поїзд...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}днів{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Інтервал техогляду: {LTBLUE}{COMMA}%{BLACK}   Останній техогляд: {LTBLUE}{DATE_LONG}
-STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - click on train for information
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Build new trains (requires train depot)
-STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains - click on train for info., drag vehicle to add/remove from train
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Build new train vehicle
-STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Drag train vehicle to here to sell it
-STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centre main view on train depot location
-STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Train vehicle selection list - click on vehicle for information
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Build the highlighted train vehicle
-STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Rename train vehicle type
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Current train action - click here to stop/start train
-STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Show train's orders
-STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centre main view on train's location
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Send train to depot
-STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Force train to proceed without waiting for signal to clear it
-STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Reverse direction of train
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Показати детальну інформацію
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Збільшити період техогляду
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Зменшити період техогляду
-STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Show details of cargo carried
-STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Show details of train vehicles
-STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Show capacities of each vehicle
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Show total capacity of train, split by cargo type
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orders list - click on an order to highlight it. CTRL + click scrolls to the station
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Пропустити це завдання, перейти до наступного
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Видалити виділене завдання
-STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order non-stop
-STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insert a new order before the highlighted order, or add to end of list
-STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order force the vehicle to wait for a full load
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Make the highlighted order force the vehicle to unload
-STR_SERVICE_HINT                                                :{BLACK}Skip this order unless a service is needed
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Доступний новий {STRING}!
-STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Вартість:{CURRENCY} Вага:{COMMA}т{}Швидкість:{VELOCITY}{}Потужність:{COMMA}кс{}Транспортні витрати: {CURRENCY}/рік{}Місткість: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Зламався
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Транспортні витрати: {LTBLUE}{CURRENCY}/рік
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Вага: {LTBLUE}{COMMA}t  {BLACK}Потужність: {LTBLUE}{COMMA} к.с.{BLACK} Макс. швидк: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Зупинено
@@ -2482,7 +2082,6 @@ STR_TRAIN_STOPPING_VEL                                          :{RED}Зупин
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}На шляху авто
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Авто
-STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Авто депо
 STR_9004_NEW_VEHICLES                                           :{BLACK}Новий транспорт
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Нове авто
@@ -2518,7 +2117,6 @@ STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Пока
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Список авто - натисніть на авто для інформації
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Будувати вибране авто
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Доступне нове авто!
-STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ціна: {CURRENCY}{}Швидкість: {VELOCITY}{}Транспортні витрати: {CURRENCY}/рік{}Місткість: {STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Назвати авто
@@ -2552,7 +2150,6 @@ STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Кора
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Неможливо продати корабель...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Неможливо будувати корабель...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Корабель на шляху
-STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Деталі)
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Траспортні витрати: {LTBLUE}{CURRENCY}/рік
 STR_9813_MAX_SPEED                                              :{BLACK}Макс. швидкість: {LTBLUE}{VELOCITY}
@@ -2582,7 +2179,6 @@ STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Пока
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Направити корабель в депо
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Показати корабель детально
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Доступний новий корабель!
-STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ціна: {CURRENCY} Макс. Швидкітсь: {VELOCITY}{}Місткість: {STRING}{}Транспортні витрати: {CURRENCY}/рік
 STR_982F_NAME_SHIP                                              :{BLACK}Назвати корабель
 
@@ -2619,7 +2215,6 @@ STR_A005_NEW_AIRCRAFT                                           :{WHITE}Нові
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Будувати
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Неможливо будувати літак...
 STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Літак {P "" и ів}
-STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Накази)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Детально)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}  Транспортні витрати: {LTBLUE}{CURRENCY}/рік
@@ -2654,7 +2249,6 @@ STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Пока
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Направити літак в ангар
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Показати літак детально
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Доступний новий літак!
-STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ціна: {CURRENCY} Макс. швидкість: {VELOCITY}{}Місткість: {COMMA} пасажирів, {COMMA} мішків пошти{}Транспортні витрати: {CURRENCY}/рік
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Назвати літак
@@ -2663,7 +2257,6 @@ STR_A032_NAME_AIRCRAFT                                          :{BLACK}Назв
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший літак з'явився на {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Авіакатастрофа!{}Літак розбився біля {STATION}, {COMMA} загинуло.
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Авіакатастрофа!{}В літака закінчилось пальне, {COMMA} загинуло!
-STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Зміна назви
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Перейменувати тип літака
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Перейменувати тип літака
@@ -2694,9 +2287,6 @@ STR_BUILD_DATE                                                  :{BLACK}Рік �
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Детальна характеристика продуктивності
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Детально
-STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
-STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
-STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Транспорт:
@@ -2739,10 +2329,6 @@ STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Пер�
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Відображення: {ORANGE}{CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Налаштування іншої грошової одиниці
 
-STR_TRAIN                                                       :{BLACK}{TRAIN}
-STR_LORRY                                                       :{BLACK}{LORRY}
-STR_PLANE                                                       :{BLACK}{PLANE}
-STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} поїзд{P "" и ів}
 STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} авто
@@ -2762,16 +2348,8 @@ STR_NOT_REPLACING                                               :{BLACK}Не м�
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Не вибрано машину
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Виберіть транспорт для оновлення
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Виберіть новий транспорт, яким ви бажаєте замінити старий
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Press to stop the replacement of the engine type selected on the left
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Press to begin replacement of the left selected engine type with the right selected engine type
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choose the railtype you want to replace engines for
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays which engine the left selected engine is being replaced with, if any
-STR_REPLACE_HELP                                                :{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine is not buildable
 
-STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
+
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Список позначень - {COMMA} Позначен{P ня ня ь}
 
 ############ Lists rail types
@@ -2782,7 +2360,6 @@ STR_MAGLEV_VEHICLES                                             :Магнітн�
 
 ############ End of list of rail types
 
-STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK}   Вага: {GOLD}{COMMA}т
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{COMMA}к.с.
