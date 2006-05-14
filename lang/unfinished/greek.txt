@@ -1,0 +1,4 @@
+##name Greek
+##ownname Ελληνικά
+##plural 0
+##isocode el_GR.UTF-8
