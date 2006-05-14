@@ -67,6 +67,7 @@ static const uint16 _cargo_classes[NUM_GLOBAL_CID] = {
 };
 
 int _traininfo_vehicle_pitch = 0;
+int _traininfo_vehicle_width = 29;
 
 // TODO: We don't support cargo-specific wagon overrides. Pretty exotic... ;-) --pasky
 

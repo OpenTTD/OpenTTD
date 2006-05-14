@@ -9,6 +9,7 @@
  */
 
 extern int _traininfo_vehicle_pitch;
+extern int _traininfo_vehicle_width;
 
 VARDEF const uint32 _default_refitmasks[NUM_VEHICLE_TYPES];
 VARDEF const CargoID _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];

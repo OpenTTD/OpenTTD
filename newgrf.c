@@ -2457,6 +2457,8 @@ static void ParamSet(byte *buf, int len)
 
 		case 0x9E: /* Miscellaneous GRF features */
 			_misc_grf_features = res;
+			/* Set train list engine width */
+			_traininfo_vehicle_width = HASBIT(res, 3) ? 32 : 29;
 			break;
 
 		default:
@@ -2647,6 +2649,11 @@ static void ResetNewGRFData(void)
 
 	// Add engine type to engine data. This is needed for the refit precalculation.
 	AddTypeToEngines();
+
+	/* Reset misc GRF features and train list display variables */
+	_misc_grf_features = 0;
+	_traininfo_vehicle_pitch = 0;
+	_traininfo_vehicle_width = 29;
 
 	InitializeSpriteGroupPool();
 }

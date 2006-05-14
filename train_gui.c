@@ -357,19 +357,19 @@ static void ShowBuildTrainWindow(TileIndex tile)
  * @return Number of pixels across.
  */
 static int WagonLengthToPixels(int len) {
-	return (len * 29) / 8;
+	return (len * _traininfo_vehicle_width) / 8;
 }
 
 static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
 {
 	int dx = 0;
-	count *= 8;
+	count *= 29;
 
 	do {
 		if (--skip < 0) {
 			int width = v->u.rail.cached_veh_length;
 
-			if (dx + width <= count) {
+			if (WagonLengthToPixels(dx + width) <= count) {
 				PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
 				DrawSprite(GetTrainImage(v, DIR_W) | pal, x + 14 + WagonLengthToPixels(dx), y + 6 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 				if (v->index == selection)
@@ -379,7 +379,7 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 		}
 
 		v = v->next;
-	} while (dx < count && v != NULL);
+	} while (WagonLengthToPixels(dx) < count && v != NULL);
 }
 
 static void DrawTrainDepotWindow(Window *w)
@@ -498,7 +498,7 @@ static int GetVehicleFromTrainDepotWndPt(const Window *w, int x, int y, GetDepot
 		}
 	}
 
-	x -= 29; /* free wagons don't have an initial loco. */
+	x -= _traininfo_vehicle_width; /* free wagons don't have an initial loco. */
 
 	/* and then the list of free wagons */
 	FOR_ALL_VEHICLES(v) {
