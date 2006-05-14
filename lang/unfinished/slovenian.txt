@@ -667,6 +667,7 @@ STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Zgradi g
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Zgradi jamo karamele
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK} Zgradi rudnik sladkorja
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE} Tukaj ni mozno zgraditi {STRING}
+STR_0294_QUIT_EDITOR                                            :
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Izhod
 STR_02A1_SMALL                                                  :{BLACK}Majhno
@@ -1120,6 +1121,7 @@ STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Najprej 
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Preblizu sosednjemu letaliscu
 STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Najprej je potrebno zrusiti letalisce
 
+STR_3030_RENAME_STATION_LOADING                                 :
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Ni mozno preimenovati postaje
 STR_3032_RATINGS                                                :{BLACK}Ugled
 STR_3033_ACCEPTS                                                :{BLACK}Sprejema
@@ -1128,6 +1130,7 @@ STR_3033_ACCEPTS                                                :{BLACK}Sprejema
 STR_3035_APPALLING                                              :Strasen
 STR_3036_VERY_POOR                                              :Zelo slab
 STR_3037_POOR                                                   :Slab
+STR_3038_MEDIOCRE                                               :Povprecen
 STR_3039_GOOD                                                   :Dober
 STR_303A_VERY_GOOD                                              :Zelo dober
 STR_303B_EXCELLENT                                              :Izvrsten
@@ -1137,21 +1140,147 @@ STR_303C_OUTSTANDING                                            :Sijajno
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} ne sprejema vec {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ne sprejema vec {STRING} in {STRING}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} zdaj sprejema {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} zdaj sprejema {STRING} in {STRING}
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Postaja{P "" s}
+STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_304A_NONE                                                   :{YELLOW}- Nobeno -
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Spremeni ime postaje
+STR_3059_SMALL                                                  :{BLACK}Majhno
+STR_305A_LARGE                                                  :{BLACK}Mesto
+STR_305AA_LARGE                                                 :{BLACK}Velemestno letalisce
+STR_305AB_LARGE                                                 :{BLACK}Internacionalno letalisce
+STR_305B_SIZE                                                   :{BLACK}Velikost
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_305E_RAILROAD_STATION                                       :Zelezniska postaja
+STR_305F_AIRCRAFT_HANGAR                                        :Hangar
+STR_3060_AIRPORT                                                :Letalisce
+STR_3061_TRUCK_LOADING_AREA                                     :Tovorna postaja
+STR_3062_BUS_STATION                                            :Avtobusna postaja
+STR_3063_SHIP_DOCK                                              :Pristanisce
+STR_3068_DOCK                                                   :{WHITE}Pristanisce
+STR_3069_BUOY                                                   :Boja
+STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja na poti
+STR_306B_HELIPORT                                               :{BLACK}Helikoptersko letalisce
 
 
 ##id 0x3800
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...potrebno je zgraditi na vodi
+STR_3804_WATER                                                  :Voda
+STR_3805_COAST_OR_RIVERBANK                                     :Obala ali recni breg
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Ni mozno graditi na vodi
 
 ##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}Shrani igro
+STR_4001_LOAD_GAME                                              :{WHITE}Nalozi igro
+STR_4002_SAVE                                                   :{BLACK}Shrani
+STR_4003_DELETE                                                 :{BLACK}Izbrisi
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabajtov{P "" s} prosto
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ni mozno brati diska
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Shranjevanje igre ni uspelo
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Ni mozno izbrisati datoteko
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nalaganje igre ni uspelo
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Seznam diskov, map in shranjenih iger
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Trenutno izbrano ime za shranjevanje
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Izbrisi trenutno izbrano shranjeno igro
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Shrani trenutno igro, z izbranim imenom
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Izberi tip nove igre
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :Ustvari nakljucno novo igro
 
 ##id 0x4800
+STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na poti
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :Rudnik premoga
+STR_4803_POWER_STATION                                          :Termoelektrarna
+STR_4804_SAWMILL                                                :´aga
+STR_4805_FOREST                                                 :Gozd
+STR_4806_OIL_REFINERY                                           :Naftna rafinerija
+STR_4807_OIL_RIG                                                :Naftna ploscad
+STR_4808_FACTORY                                                :Tovarna
+STR_4809_PRINTING_WORKS                                         :Tiskarna
+STR_480A_STEEL_MILL                                             :Zelezarna
+STR_480B_FARM                                                   :Kmetija
+STR_480C_COPPER_ORE_MINE                                        :Rudnik bakra
+STR_480D_OIL_WELLS                                              :Naftni izviri
+STR_480E_BANK                                                   :Banka
+STR_480F_FOOD_PROCESSING_PLANT                                  :Zivilska tovarna
+STR_4810_PAPER_MILL                                             :Papirnica
+STR_4811_GOLD_MINE                                              :Rudnik zlata
+STR_4812_BANK                                                   :Banka
+STR_4813_DIAMOND_MINE                                           :Rudnik diamantov
+STR_4814_IRON_ORE_MINE                                          :Rudnik zeleza
+STR_4815_FRUIT_PLANTATION                                       :Sadovnjak
+STR_4816_RUBBER_PLANTATION                                      :Plantaza kavcuka
+STR_4817_WATER_SUPPLY                                           :Vodno zajetje
+STR_4818_WATER_TOWER                                            :Vodni stolp
+STR_4819_FACTORY                                                :Tovarna
+STR_481A_FARM                                                   :Kmetija
+STR_481B_LUMBER_MILL                                            :Zaga
+STR_481C_COTTON_CANDY_FOREST                                    :Gozd sladkorne pene
+STR_481D_CANDY_FACTORY                                          :Tovarna slascic
+STR_481E_BATTERY_FARM                                           :Farma baterij
+STR_481F_COLA_WELLS                                             :Izviri cockte
+STR_4820_TOY_SHOP                                               :Trgovina z igracami
+STR_4821_TOY_FACTORY                                            :Tovarna igrac
+STR_4822_PLASTIC_FOUNTAINS                                      :Vodnjaki plastike
+STR_4823_FIZZY_DRINK_FACTORY                                    :Tovarna gaziranih pijac
+STR_4824_BUBBLE_GENERATOR                                       :Generator mehurckov
+STR_4825_TOFFEE_QUARRY                                          :Jama karamele
+STR_4826_SUGAR_MINE                                             :Rudnik sladkorja
 
 ############ range for requires	starts
+STR_4827_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Potrebuje: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Potrebuje:: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Proizvodnja prejsnega meseca:
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING1}{BLACK} ({COMMA}% transportirano)
+STR_482F_COST                                                   :{BLACK}Cena: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tukaj ni mozno zgraditi tega tipa industrije...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... gozd je mozno nasaditi samo nad snezno mejo
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...mozno je samo zgraditi ob robu zemljevida
 
 ##id 0x5000
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vlak v tunelu
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Cestno vozilo v tunelu
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Potrebno je najprej zakopati drugi tunel
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Potebno je najprej porusiti most
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Ni mozno zaceti in koncati v isti tocki
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Potrebno je izravnati teren ali vodo pod mostom
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Zacetek in konec morata biti na enaki visini
+STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :Viseci, Zelezni
+STR_500F_GIRDER_STEEL                                           :Nosilni, Zelezni
+STR_5010_CANTILEVER_STEEL                                       :Nosilni, Zelezni
+STR_5011_SUSPENSION_CONCRETE                                    :Viseci, Betonski
+STR_5012_WOODEN                                                 :Lesen
+STR_5013_CONCRETE                                               :Betonski
+STR_5014_TUBULAR_STEEL                                          :Cevast, Zelezen
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Tukaj ni mozno zgraditi most...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tukaj ni mozno zgraditi tunel
+STR_5017_RAILROAD_TUNNEL                                        :Zelezniski tunel
+STR_5018_ROAD_TUNNEL                                            :Cestni tunel
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Obeseni zelezni zelezniski most
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Nosilni zelezni zelezniski most
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Nosilni zelezni zelezniski most
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Obeseni betonsko okrepljeni zelezniski most
+STR_501F_WOODEN_RAIL_BRIDGE                                     :Lesen zelezniski most
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betonski zelezniski most
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Obeseni zelezni cestni most
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Nosilni zelezni cestni most
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Nosilni zelezni cestni most
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Obeseni betonsko okrepljeni cestni most
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Lesen cestni most
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betonski cestni most
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :Cevni zelezniski most
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :Cevni cestni most
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Objekt na poti
+STR_5801_TRANSMITTER                                            :Oddajnik
+STR_5802_LIGHTHOUSE                                             :Svetilnik
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1168,18 +1297,81 @@ STR_SV_STNAME_UPPER                                             :Zgornje {STRING
 ############ end of	savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Tezavnostna stopnja
 
 ############ range for difficulty levels starts
+STR_6801_EASY                                                   :{BLACK}Preprosto
+STR_6802_MEDIUM                                                 :{BLACK}Srednje
+STR_6803_HARD                                                   :{BLACK}Tezko
+STR_6804_CUSTOM                                                 :{BLACK}Po meri
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Najvecje stevilo nasprotnikov: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Nasportnikov zacetni cas: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}St. mest: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}St. industrije: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Najvisje mozno posojilo: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Obrestna mera: {ORANGE}{COMMA}%
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cena vzdrzevanja vozil: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Hitrost grajenja nasportnikov: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intiligenca naspornikov: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Okvare vozil: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Cena gradnje: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Tip terena: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Kolicina vode in morij: {ORANGE}{STRING}
+STR_6813_ECONOMY                                                :{LTBLUE}Ekonomija: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Obracanje vlakov: {ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}Katastrofe: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}Odnos mestnega sveta glede restrukturiranja: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Noben
+STR_6816_LOW                                                    :Nizko
+STR_6817_NORMAL                                                 :Normalno
+STR_6818_HIGH                                                   :Visoko
+STR_6819                                                        :{BLACK}<
+STR_681A                                                        :{BLACK}>
+STR_681B_VERY_SLOW                                              :Zelo pocasno
+STR_681C_SLOW                                                   :Pocasno
+STR_681D_MEDIUM                                                 :Srednje
+STR_681E_FAST                                                   :Hitro
+STR_681F_VERY_FAST                                              :Zelo hitro
 STR_VERY_LOW                                                    :Zelo Nizko
+STR_6820_LOW                                                    :Nizko
+STR_6821_MEDIUM                                                 :Srednje
+STR_6822_HIGH                                                   :Visoko
+STR_6823_NONE                                                   :Nobeno
+STR_6824_REDUCED                                                :Zmanjsano
+STR_6825_NORMAL                                                 :Normalno
+STR_6826_X1_5                                                   :x1,5
+STR_6827_X2                                                     :x2
+STR_6828_X3                                                     :x3
+STR_6829_X4                                                     :x4
+STR_682A_VERY_FLAT                                              :Zelo polozno
+STR_682B_FLAT                                                   :Polozno
+STR_682C_HILLY                                                  :Hribovito
+STR_682D_MOUNTAINOUS                                            :Gorato
+STR_682E_STEADY                                                 :Stalno
+STR_682F_FLUCTUATING                                            :Fluktacija
+STR_6830_IMMEDIATE                                              :Takojsno
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 mesece za igralcem
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mesecev za igralcem
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mesecev za igralcem
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Na koncu linije, in na postajah
+STR_6835_AT_END_OF_LINE_ONLY                                    :Samo na koncu linije
+STR_6836_OFF                                                    :Izklopljeno
+STR_6837_ON                                                     :Vklopljeno
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Pokazi tabelo najboljsih
+STR_6839_PERMISSIVE                                             :Dopustno
+STR_683A_TOLERANT                                               :Tolerantno
+STR_683B_HOSTILE                                                :Sovrazno
 
 ##id 0x7000
+STR_7000                                                        :
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7002_PLAYER                                                 :(Igralce {COMMA})
+STR_7004_NEW_FACE                                               :{BLACK}Nov obraz
 STR_TRAINS                                                      :{WHITE}{COMMA} vlak{P "" s}
 
 ##id 0x8000

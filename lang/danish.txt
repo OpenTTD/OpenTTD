@@ -1715,6 +1715,7 @@ STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikke 
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold CTRL nede for at vælge mere end en ting
 
 STR_UNDEFINED                                                   :(udefineret tekststring)
+STR_STAT_CLASS_WAYP                                             :Kontrolsteder
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skibsdepot Orientering

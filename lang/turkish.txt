@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}PH
 STR_ABBREV_BATTERIES                                            :{TINYFONT}PI
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}iç
+STR_ABBREV_NONE                                                 :{TINYFONT}YOK
+STR_ABBREV_ALL                                                  :{TINYFONT}HEPSI
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Harita - {STRING}
@@ -377,6 +379,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Her kargo için 
 STR_SORT_BY_MAX_SPEED                                           :En yüksek hiz
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Fiyat
+STR_SORT_BY_FACILITY                                            :istasyon türü
+STR_SORT_BY_WAITING                                             :Bekleyen kargo degeri
+STR_SORT_BY_RATING_MAX                                          :Kargo reytingi
+STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kargo yok
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
+STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Oca
@@ -1714,6 +1722,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...yolda
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...istasyon çok yayilmis
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...özel istasyon ayari kapali
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Birden fazla sey seçmek için CTRL'yi basili tutun
 
 STR_UNDEFINED                                                   :(tanimlanmamis sözcük)
 STR_STAT_CLASS_DFLT                                             :Varsayilan istasyon
@@ -2782,6 +2791,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Önizlem
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Özel para birimini degistir
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
