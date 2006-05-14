@@ -15,6 +15,57 @@
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 
+
+/* XXX These tables should be moved / ripped out when newcargos is implemented. */
+
+/* Cargo classes */
+enum {
+	CC_NONE         = 0,
+	CC_PASSENGERS   = 1 << 0,
+	CC_MAIL         = 1 << 1,
+	CC_EXPRESS      = 1 << 2,
+	CC_ARMOURED     = 1 << 3,
+	CC_BULK         = 1 << 4,
+	CC_PIECE_GOODS  = 1 << 5,
+	CC_LIQUID       = 1 << 6,
+	CC_REFRIGERATED = 1 << 7,
+};
+
+/* Default cargo classes */
+static const uint16 _cargo_classes[NUM_GLOBAL_CID] = {
+	CC_PASSENGERS,
+	CC_BULK,
+	CC_MAIL,
+	CC_LIQUID,
+	CC_PIECE_GOODS,
+	CC_EXPRESS,
+	CC_BULK,
+	CC_PIECE_GOODS,
+	CC_BULK,
+	CC_PIECE_GOODS,
+	CC_ARMOURED,
+	CC_PIECE_GOODS,
+	CC_REFRIGERATED | CC_EXPRESS,
+	CC_REFRIGERATED | CC_EXPRESS,
+	CC_BULK,
+	CC_LIQUID,
+	CC_LIQUID,
+	CC_BULK,
+	CC_PIECE_GOODS,
+	CC_PIECE_GOODS,
+	CC_EXPRESS,
+	CC_BULK,
+	CC_LIQUID,
+	CC_BULK,
+	CC_PIECE_GOODS,
+	CC_LIQUID,
+	CC_PIECE_GOODS,
+	CC_PIECE_GOODS,
+	CC_NONE,
+	CC_NONE,
+	CC_NONE,
+};
+
 int _traininfo_vehicle_pitch = 0;
 
 // TODO: We don't support cargo-specific wagon overrides. Pretty exotic... ;-) --pasky
@@ -475,6 +526,38 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 				return chain_before | chain_after << 8 | (chain_before + chain_after) << 16;
 			}
+
+		case 0x42: { /* Consist cargo information */
+			/* XXX Missing support for common refit cycle and property 25 */
+			const Vehicle *u;
+			byte cargo_classes = 0;
+			uint common_cargo_best = 0;
+			uint common_cargos[NUM_GLOBAL_CID];
+			CargoID cargo;
+			CargoID common_cargo_type = GC_PASSENGERS;
+
+			/* Reset our arrays */
+			memset(common_cargos, 0, sizeof(common_cargos));
+
+			for (u = v; u != NULL; u = u->next) {
+				/* Skip empty engines */
+				if (u->cargo_cap == 0) continue;
+				/* Map from climate to global cargo ID */
+				cargo = _global_cargo_id[_opt.landscape][u->cargo_type];
+				cargo_classes |= _cargo_classes[cargo];
+				common_cargos[cargo]++;
+			}
+
+			/* Pick the most common cargo type */
+			for (cargo = 0; cargo < NUM_GLOBAL_CID; cargo++) {
+				if (common_cargos[cargo] > common_cargo_best) {
+					common_cargo_best = common_cargos[cargo];
+					common_cargo_type = cargo;
+				}
+			}
+
+			return cargo_classes | (common_cargo_type << 8);
+		}
 
 		case 0x43: /* Player information */
 			return v->owner;
