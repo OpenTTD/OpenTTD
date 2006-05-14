@@ -1208,7 +1208,8 @@ static void DrawTrainDetailsWindow(Window *w)
 				int dx = 0;
 				u = v;
 				do {
-					DrawTrainImage(u, x + WagonLengthToPixels(dx), y, 1, 0, INVALID_VEHICLE);
+					PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
+					DrawSprite(GetTrainImage(u, DIR_W) | pal, x + 14 + WagonLengthToPixels(dx), y + 6 + (is_custom_sprite(RailVehInfo(u->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 					dx += u->u.rail.cached_veh_length;
 					u = u->next;
 				} while (u != NULL && IsArticulatedPart(u));
