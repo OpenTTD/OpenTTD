@@ -1143,9 +1143,12 @@ DEF_CONSOLE_CMD(ConPlayers)
 	NetworkPopulateCompanyInfo();
 
 	FOR_ALL_PLAYERS(p) {
-		if (!p->is_active)
- 			continue;
-		IConsolePrintF(8, "#:%d Company Name: '%s'  Year Founded: '%d'  Money: '%d'  Loan: '%d' Value: '%d'", p->index, _network_player_info[p->index].company_name,  p->inaugurated_year + MAX_YEAR_BEGIN_REAL, p->player_money, p->current_loan, CalculateCompanyValue(p));
+		char buffer[512];
+
+		if (!p->is_active) continue;
+
+		GetString(buffer, STR_00D1_DARK_BLUE + _player_colors[p->index]);
+		IConsolePrintF(8, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %d  Loan: %d  Value: %d", p->index + 1, buffer, _network_player_info[p->index].company_name, p->inaugurated_year + MAX_YEAR_BEGIN_REAL, p->player_money, p->current_loan, CalculateCompanyValue(p));
 	}
 
 	return true;
