@@ -1121,7 +1121,7 @@ STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Najprej 
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Preblizu sosednjemu letaliscu
 STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Najprej je potrebno zrusiti letalisce
 
-STR_3030_RENAME_STATION_LOADING                                 :
+STR_3030_RENAME_STATION_LOADING                                 :Preimenuj postajo
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Ni mozno preimenovati postaje
 STR_3032_RATINGS                                                :{BLACK}Ugled
 STR_3033_ACCEPTS                                                :{BLACK}Sprejema
@@ -1130,7 +1130,7 @@ STR_3033_ACCEPTS                                                :{BLACK}Sprejema
 STR_3035_APPALLING                                              :Strasen
 STR_3036_VERY_POOR                                              :Zelo slab
 STR_3037_POOR                                                   :Slab
-STR_3038_MEDIOCRE                                               :Povprecen
+STR_3038_MEDIOCRE                                               :Sreden
 STR_3039_GOOD                                                   :Dober
 STR_303A_VERY_GOOD                                              :Zelo dober
 STR_303B_EXCELLENT                                              :Izvrsten
@@ -1140,11 +1140,13 @@ STR_303C_OUTSTANDING                                            :Sijajno
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} ne sprejema vec {STRING}
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ne sprejema vec {STRING} in {STRING}
-STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} zdaj sprejema {STRING}
-STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} zdaj sprejema {STRING} in {STRING}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} sprejema {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} sprejema {STRING} in {STRING}
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Postaja{P "" s}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nobeno -
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Preblizu drugemu pristaniscu
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Najprej moras porusiti pristanisce
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Spremeni ime postaje
 STR_3059_SMALL                                                  :{BLACK}Majhno
 STR_305A_LARGE                                                  :{BLACK}Mesto

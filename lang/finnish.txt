@@ -45,7 +45,7 @@ STR_0025_TOYS                                                   :Leluja
 STR_0026_CANDY                                                  :Karkkia
 STR_0027_COLA                                                   :Limsaa
 STR_0028_COTTON_CANDY                                           :Hattaraa
-STR_0029_BUBBLES                                                :Kuplias
+STR_0029_BUBBLES                                                :Kuplia
 STR_002A_TOFFEE                                                 :Toffeeta
 STR_002B_BATTERIES                                              :Pattereita
 STR_002C_PLASTIC                                                :Muovia
@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}PT
 STR_ABBREV_PLASTIC                                              :{TINYFONT}MV
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SJ
+STR_ABBREV_NONE                                                 :{TINYFONT}EI
+STR_ABBREV_ALL                                                  :{TINYFONT}KAIKKI
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kartta - {STRING}
@@ -312,6 +314,7 @@ STR_UNITS_SI                                                    :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hv
 STR_UNITS_POWER_METRIC                                          :{COMMA}hv
@@ -376,6 +379,10 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kokonaiskapasit
 STR_SORT_BY_MAX_SPEED                                           :Huippunopeus
 STR_SORT_BY_MODEL                                               :Malli
 STR_SORT_BY_VALUE                                               :Arvo
+STR_SORT_BY_FACILITY                                            :Asematyyppi
+STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
+STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
+STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
 
 ############ range for months starts
 STR_0162_JAN                                                    :01.
@@ -869,6 +876,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romanialainen
 STR_TOWNNAME_CZECH                                              :Tsekkiläinen
 STR_TOWNNAME_SWISS                                              :Sveitsiläinen
 STR_TOWNNAME_DANISH                                             :Tanskalainen
+STR_TOWNNAME_TURKISH                                            :turkkilainen
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Punta (£)
@@ -1163,6 +1171,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Vedä jun
 
 STR_DRAG_DROP                                                   :{BLACK}Vedä&pudota
 STR_STATION_DRAG_DROP                                           :{BLACK}Rakenna asema vetämällä ja pudottamalla.
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Valitse asemaluokka
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Valitse asematyyppi
 
 STR_FAST_FORWARD                                                :{BLACK}Kelaa peliä eteenpäin
 STR_MESSAGE_HISTORY                                             :{WHITE}Viestihistoria
@@ -1709,6 +1719,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...poiju
 STR_306B_HELIPORT                                               :{BLACK}Helikopterikenttä
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...asema liian levittäytynyt.
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...epäyhdenmukaiset asemat poissa käytöstä.
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Pidä CTRL painettuna valitaksesi enemmän kuin yhden tavaran
 
 STR_UNDEFINED                                                   :(määrittelemätön)
 STR_STAT_CLASS_DFLT                                             :Oletusasema
@@ -2513,6 +2524,7 @@ STR_886F_TRANSFER                                               :{BLACK}Siirrä
 
 STR_TRAIN_STOPPING                                              :{RED}Pysäytetään
 STR_TRAIN_STOPPING_VEL                                          :{RED}Pysäytetään, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Raiteet eivät ole yhteensopivia
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Ajoneuvo tiellä.

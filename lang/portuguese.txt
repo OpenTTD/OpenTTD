@@ -377,6 +377,8 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade tota
 STR_SORT_BY_MAX_SPEED                                           :Velocidade máxima
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
+STR_SORT_BY_FACILITY                                            :Tipo de Estação
+STR_NO_WAITING_CARGO                                            :{BLACK}Nenhuma carga em espera
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1714,6 +1716,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bóia 
 STR_306B_HELIPORT                                               :{BLACK}Heliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estação muito extensa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estações não-uniformes desactivadas
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Manter CTRL premido para seleccionar mais do que um item
 
 STR_UNDEFINED                                                   :(frase indefinida)
 STR_STAT_CLASS_DFLT                                             :Estação por defeito
@@ -2782,6 +2785,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prevêr:
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Mudar parametro de moeda modificada
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}

@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mappa - {STRING}
@@ -943,8 +945,9 @@ STR_CRATES                                                      :casse
 STR_RES_OTHER                                                   :altro
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Non puoi condividere lista ordini...
-STR_CANT_COPY_ORDER_LIST                                        :{WHITE}non puoi copiare lista ordini...
+STR_CANT_COPY_ORDER_LIST                                        :{WHITE}non puoi copiare la lista ordini...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fine degli Ordini Condivisi - -
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Il Treno {COMMA} si è perso.
@@ -965,8 +968,8 @@ STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}La nave 
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}La nave {COMMA} non ha alcun ordine
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}La nave {COMMA} ha alcuni ordini duplicati
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}La nave {COMMA} ha un porto non valido negli ordini
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}L'aereo {COMMA} non ha sufficienti ordini pianificati
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}L'aereo {COMMA} non ha alcun ordine
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}L'aereo {COMMA} non ha abbastanza ordini pianificati
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}L'aereo {COMMA} ha un ordine vuoto nella lista
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}L'aereo {COMMA} ha alcuni ordini duplicati
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}L'aereo {COMMA} ha un aeroporto non valido negli ordini
 # end of order system
@@ -977,16 +980,16 @@ STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Rinnovo 
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Rinnovo automatico fallito per l'aereo {COMMA} (limite fondi)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Il treno {COMMA} dopo la sostituzione è diventato troppo lungo
 
-STR_CONFIG_PATCHES                                              :{BLACK}Configura patch
+STR_CONFIG_PATCHES                                              :{BLACK}Configura Patch
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configura le patch
-STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configurazione patch
+STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configura Patch
 
 STR_CONFIG_PATCHES_OFF                                          :No
 STR_CONFIG_PATCHES_ON                                           :Si
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostra velocità veicoli sulla barra di stato: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Consenti la costruzione sulle coste/pendii: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Consenti la costruzione sui pendii e coste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permetti aree di carico/scarico più realistiche: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione industrie, strade speciali, ecc.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di strade appartenute alle città, ponti, ecc.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Impedisci ai treni e alle navi di fare curve di 90 gradi: {ORANGE}{STRING} {LTBLUE} (Richiede NPF)
@@ -996,9 +999,9 @@ STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa l'a
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflazione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Scarica le merci in una stazione solo se richieste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Consenti la costruzione di ponti molto lunghi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Consenti ordine Vai al Deposito: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Consenti gli ordini 'vai al deposito': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Consenti la costruzione di industrie produttrici di materia prima: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Consenti la costruzione di più industrie uguali per città: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Consenti la costruzione di più industrie simili per città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Consenti la costruzione di industrie uguali anche se molto vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Mostra sempre formato esteso della data nella barra di stato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Mostra segnali sul lato guida: {ORANGE}{STRING}
@@ -1016,7 +1019,7 @@ STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Un tren
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Un treno è ritenuto perso in assenza di progressi da: {ORANGE}disabilitato
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Controlla gli ordini dei veicoli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :disabilitato
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :escludi i veicoli fermi
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :si, ma escludi i veicoli fermi
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :per tutti i veicoli
 STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Avvisa se i guadagni di un treno sono in negativo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}I veicoli non invecchiano mai: {ORANGE}{STRING}
@@ -1026,7 +1029,7 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Rinnova
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durata visualizzazione messaggio di errore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra la popolazione di un paese nell'etichetta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Alberi invisibili (se edifici trasparenti): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Dimensione limite delle nevi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altezza limite delle nevi perenni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Copertura max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valori alti rallentano il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenzione elicotteri direttamente all'eliporto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti modellazione terreno assieme a quelli di costruzione: {ORANGE}{STRING}
@@ -1056,10 +1059,10 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interva
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disabilità servicing quando i guasti sono "nessuno": {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Abilita limite velocità vagoni: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Notizie colorate pubblicate dal: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Notizie colorate appaiono dal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data di inizio: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Concludi il gioco il: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Abilita nuova economia stabile (diverse piccole modifiche)
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Abilita economia fluida (cambiamenti piccoli e frequenti)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permetti l'acquisto di azioni da altre compagnie
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Trascinando il cursore costruisci i semafori ogni: {ORANGE}{STRING} quadrato/i
 STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Posizione barra degli strumenti principale: {ORANGE}{STRING}
@@ -1089,13 +1092,13 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :paesaggio 'sub-
 STR_TOYLAND_LANDSCAPE                                           :paesaggio 'Città dei Giocattoli'
 
 STR_CHEATS                                                      :{WHITE}Trucchi
-STR_CHEATS_TIP                                                  :{BLACK}La casella indica se hai già utilizzato questo trucco in passato
-STR_CHEATS_WARNING                                              :{BLACK}Attenzione! Stai per denunciare i tuoi avversari. Ricordati che un così grande disonore verrà ricordato per l'eternità.
+STR_CHEATS_TIP                                                  :{BLACK}Le caselle indicano se hai già utilizzato questo trucco in passato
+STR_CHEATS_WARNING                                              :{BLACK}Attenzione! Stai per tradire i tuoi avversari. Ricordati che un così grande disonore verrà ricordato per l'eternità.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Aumenta soldi di {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Gioca come giocatore: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Bulldozer magico (rimuove industrie e altri): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}I tunnel possono incrociarsi tra loro: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Consenti costruzione quando in pausa: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Consenti costruzione in pausa: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}I jet non si schiantano troppo di frequente nei piccoli aeroporti: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambia paesaggio: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambia data: {ORANGE} {DATE_SHORT}
@@ -1830,7 +1833,7 @@ STR_5011_SUSPENSION_CONCRETE                                    :Sospeso in Ceme
 STR_5012_WOODEN                                                 :Di legno
 STR_5013_CONCRETE                                               :In cemento
 STR_5014_TUBULAR_STEEL                                          :Tubolare in acciaio
-STR_BRIDGE_TUBULAR_SILICON                                      :Tubolare in silicone
+STR_BRIDGE_TUBULAR_SILICON                                      :Tubolare, Silicone
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Non puoi costruire ponte qui...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Non puoi costruire tunnel qui...
 STR_5017_RAILROAD_TUNNEL                                        :Tunnel ferroviario
@@ -2424,10 +2427,10 @@ STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuovo Ve
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Costruisci Veicolo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clona Veicolo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Costruisce una copia del veicolo stradale. Premere contemporaneamente Control per condividere gli ordini
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Costruisce una copia del veicolo stradale. Cliccare su questo pulsante e poi sul veicolo stradale (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Costruisce una copia di un veicolo stradale. Cliccare su questo pulsante e poi sul veicolo stradale (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
 STR_CLONE_TRAIN                                                 :{BLACK}Clona Treno
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Costruisce una copia del treno, vagoni inclusi. Premere contemporaneamente Control per condividere gli ordini
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Costruisce una copia del treno, vagoni inclusi. Cliccare su questo pulsante e poi sul treno (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Costruisce una copia di un treno, vagoni inclusi. Cliccare su questo pulsante e poi sul treno (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
 STR_8820_RENAME                                                 :{BLACK}Rinomina
 STR_8823_SKIP                                                   :{BLACK}Salta
 STR_8824_DELETE                                                 :{BLACK}Elimina
@@ -2583,7 +2586,7 @@ STR_9808_NEW_SHIPS                                              :{WHITE}Nuove Na
 STR_9809_BUILD_SHIP                                             :{BLACK}Costruisci Nave
 STR_CLONE_SHIP                                                  :{BLACK}Clona Nave
 STR_CLONE_SHIP_INFO                                             :{BLACK}Costruisce una copia della nave. Premere contemporaneamente Control per condividere gli ordini
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Costruisce una copia della nave. Cliccare su questo pulsante e poi sulla nave (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Costruisce una copia di una nave. Cliccare su questo pulsante e poi sulla nave (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}La nave deve essere ferma nel deposito
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Non puoi vendere la nave...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Non puoi costruire nave...
@@ -2605,38 +2608,38 @@ STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Nave {CO
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Costruisci molo
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Costruisci deposito navale (per costruzione e manutenzione)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navi - fai clic sulla nave per le informazioni
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Costruisci nuova nave
-STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Trascina nave qui per venderla
-STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra visuale sul deposito
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Costruisci una nuova nave
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Trascina qui una nave per venderla
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la visuale sul deposito
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navi - fai clic sulla nave per le informazioni
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Costruisci nuove navi (richiede deposito navale)
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Costruisci nuove navi (richiede un deposito navale)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Lista navi - fai clic sulla nave per le informazioni
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Costruisci la nave evidenziata
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Azione corrente della nave - fai clic qui per farla fermare/ripartire
-STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostra ordini della nave
-STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra visuale sulla nave
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Manda nave al deposito
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Azione della nave corrente - fai clic qui per farla fermare/ripartire
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostra gli ordini della nave
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la visuale sulla nave
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Manda la nave al deposito
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Mostra dettagli sulla nave
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nuova nave disponibile!
+STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}E' disponibile una nuova nave!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Costo: {CURRENCY} Velocità Max: {VELOCITY}{}Capienza: {STRING}{}Consumi: {CURRENCY}/anno
 STR_982F_NAME_SHIP                                              :{BLACK}Nome Nave
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nome Nave
-STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Non puoi rinominare nave...
+STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Non puoi rinominare il nome della nave...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Prima nave arrivata a {STATION}!
 STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Posiziona boa, può essere usata come way point.
-STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Non puoi posizionare boa qui...
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Non puoi posizionare una boa qui...
 STR_9836_RENAME                                                 :{BLACK}Rinomina
-STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Rinomina tipo di nave
-STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Rinomina tipo di nave
-STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Non puoi rinominare tipo di nave...
-STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Converti nave mercantile per caricare un tipo di merce diversa
+STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Rinomina il tipo di nave
+STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Rinomina il tipo di nave
+STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Non puoi rinominare il tipo di nave...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Converti la nave per caricare un tipo di merce diversa
 STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Converti)
-STR_983C_REFIT_SHIP                                             :{BLACK}Converti Nave
+STR_983C_REFIT_SHIP                                             :{BLACK}Converti nave
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleziona tipo di merce da caricare
-STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Converti la nave per trasportare tipo di merce evidenziata
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona tipo di merce da caricare:-
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Converti la nave per trasportare il tipo di merce evidenziata
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona il tipo di merce da caricare:-
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuova Capienza: {GOLD}{STRING}{}{BLACK}Costo conversione: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Non puoi convertire la nave...
 STR_9842_REFITTABLE                                             :(convertibile)
@@ -2645,12 +2648,12 @@ SERVICE_AT_SHIP_DEPOT                                           :Manutenzione a 
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Aeroporti
-STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Non puoi costruire aeroporto qui...
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Non puoi costruire un aeroporto qui...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nuovo Aereo
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clona Aereo
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Costruisce una copia dell'aereo. Premere contemporaneamente Control per condividere gli ordini
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Costruisce una copia dell'aereo. Cliccare su questo pulsante e poi sull'aereo (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Costruisce una copia di un aereo. Cliccare su questo pulsante e poi sull'aereo (dentro o fuori dal deposito) da copiare. Premere contemporaneamente Control per condividere gli ordini
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nuovo Aereo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construisci Aereo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non puoi costruire l'aereo
@@ -2674,12 +2677,12 @@ STR_A019_CAPACITY                                               :{BLACK}Capienza
 STR_A01A_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Dev'essere fermo nell'hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Non puoi vendere l'aereo...
-STR_A01D_AIRPORT_CONSTRUCTION                                   :Costruzioni areoportuali
+STR_A01D_AIRPORT_CONSTRUCTION                                   :Costruzioni areoporto
 STR_A01E_BUILD_AIRPORT                                          :{BLACK}Costruisci aeroporto
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aereo - fai clic sull'aereo per le informazioni
-STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Costruisci nuovo aereo (richiesto aeroporto con hangar)
+STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Costruisci un nuovo aereo (richiesto aeroporto con hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aereo - clicca sull'aereo per le informazioni
-STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Costruisci nuovo aereo
+STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Costruisci un nuovo aereo
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Trascina qui l'aereo per venderlo
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centra visuale sull'hangar
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lista aerei - fai clic sull'aereo per le informazioni
@@ -2689,7 +2692,7 @@ STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra o
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra visuale sull'aereo
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Manda l'aereo all'hangar
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostra dettagli dell'aereo
-STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nuovo aereo disponibile!
+STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}E' disponibile un nuovo aereo!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Costo: {CURRENCY} Velocità Max: {VELOCITY}{}Capienza: {COMMA} passeggeri, {COMMA} sacchi postali{}Consumi: {CURRENCY}/anno
 
@@ -2701,14 +2704,14 @@ STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Incidente aereo!{}L'aereo ha esaurito il carburante, {COMMA} morti in una palla di fuoco!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Rinomina
-STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Rinomina tipo di aereo
-STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Rinomina tipo di aereo
-STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Non puoi rinominare tipo di aereo...
+STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Rinomina il tipo di aereo
+STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Rinomina il tipo di aereo
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Non puoi rinominare il tipo di aereo...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converti l'aereo per trasportare un tipo di merce diversa
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Converti)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Converti l'aereo
-STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleziona tipo di merce da caricare
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converti l'aereo per trasportare tipo di merce evidenziata
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleziona il tipo di merce da caricare
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converti l'aereo per trasportare il tipo di merce evidenziata
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona il tipo di merce da caricare:-
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuova capacità: {GOLD}{STRING}{}{BLACK}Costo conversione: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Non puoi convertire l'aereo...
@@ -2718,14 +2721,14 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Manutenzione a 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Disastro Zeppelin a {STATION}!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Veicolo distrutto in una collisione con un 'UFO'
-STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Raffineria esplosa vicino a {TOWN}!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Esplosione in una raffineria vicino a {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabbrica distrutta in circostanze sospette vicino a {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' atterra vicino a {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Cedimento in una miniera di carbone lascia tracce di distruzione vicino a {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Alluvione!{}{COMMA} distrutto o disperso a seguito di una mortale alluvione!
 
 STR_BRIBE_FAILED                                                :{WHITE}Il tentativo di corruzione è stato
-STR_BRIBE_FAILED_2                                              :{WHITE}scoperto dagli ispettori regionali.
+STR_BRIBE_FAILED_2                                              :{WHITE}scoperto dalla guardia di  finanzia regionale.
 STR_BUILD_DATE                                                  :{BLACK}Realizzato il: {LTBLUE}{DATE_LONG}
 
 STR_PERFORMANCE_DETAIL                                          :{WHITE}Dettagli valutazione delle prestazioni
@@ -2776,6 +2779,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Antepri
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambia i parametri della valuta personalizzata
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}

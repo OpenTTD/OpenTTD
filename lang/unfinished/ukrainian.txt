@@ -11,6 +11,7 @@ STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Близ
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недостатньо коштів - потрібно {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Треба рівна ділянка
 STR_0008_WAITING                                                :{BLACK}Чекає: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
@@ -90,7 +91,7 @@ STR_QUANTITY_OIL                                                :{VOLUME} наф
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} гол{P ова ови ів} тварин{P и и ""}
 STR_QUANTITY_GOODS                                              :{COMMA} ящи{P к ки ків} товарів
 STR_QUANTITY_GRAIN                                              :{WEIGHT} зерна
-STR_QUANTITY_WOOD                                               :{COMMA} тон{P а и ""} деревини
+STR_QUANTITY_WOOD                                               :{WEIGHT} деревини
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} залізної руди
 STR_QUANTITY_STEEL                                              :{WEIGHT} сталі
 STR_QUANTITY_VALUABLES                                          :{COMMA} сум{P ка ки ок} коштовностей
@@ -147,6 +148,7 @@ STR_ABBREV_BATTERIES                                            :{TINYFONT}БТ
 STR_ABBREV_PLASTIC                                              :{TINYFONT}ПЛ
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГЗ
 STR_ABBREV_NONE                                                 :{TINYFONT}Ні
+STR_ABBREV_ALL                                                  :{TINYFONT}Все!!!
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Карта - {STRING}
@@ -373,6 +375,7 @@ STR_SORT_BY_RELIABILITY                                         :за надій
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :за місткістю
 STR_SORT_BY_MAX_SPEED                                           :за швидкістю
 STR_SORT_BY_FACILITY                                            :Вид станцій
+STR_NO_WAITING_CARGO                                            :{BLACK}Звідси поки-що нічого перевозити
 
 ############ range for months starts
 STR_0162_JAN                                                    :Січ
@@ -786,7 +789,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Пере
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Грошова одиниця
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Виберіть грошову одиницю
+STR_MEASURING_UNITS                                             :{BLACK}Одиниці виміру
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Вибір одиниць виміру
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Напрямок руху
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Виберіть по якій стороні їхатиме транспорт
@@ -1235,6 +1240,7 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}Інф�
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING} : {NUM}
@@ -1296,6 +1302,7 @@ STR_NETWORK_LANG_GERMAN                                         :Німецьк�
 STR_NETWORK_LANG_FRENCH                                         :Французька
 ############ End of leave-in-this-order
 
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Multiplayer game lobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Підготовка до з'єднання:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Список всіх компаній присутніх у цій грі. Ви можете як приєднатись до компанії так і створити нову, якщо є вільне місце
@@ -1370,6 +1377,7 @@ STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :з'єднанн
 STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :помилка протоколу
 STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :відмова авторизації
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :отримано несумісний пакет даних
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :невірна версія гри
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :таке ім'я вже є
 STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :пароль невірний
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :невірний ID гравця в DoCommand
@@ -2160,6 +2168,53 @@ STR_8039_PASSENGER_CAR                                          :Пасажир�
 STR_803A_MAIL_VAN                                               :Вагон для пошти
 STR_803B_COAL_CAR                                               :Вагон для вугілля
 STR_803C_OIL_TANKER                                             :Цистерна для нафти
+STR_8062_STEEL_TRUCK                                            :вантажівка для сталі
+STR_8063_ARMORED_VAN                                            :броноване авто
+STR_8064_FOOD_VAN                                               :вантажівка для їжі
+STR_8065_PAPER_TRUCK                                            :вантажівка для паперу
+STR_806C_TOFFEE_HOPPER                                          :вагон для ірису
+STR_806D_BUBBLE_VAN                                             :вагон для кульок
+STR_806E_COLA_TANKER                                            :вагон для коли
+STR_806F_CANDY_VAN                                              :вагон для цукерок
+STR_8070_TOY_VAN                                                :вагон для іграшок
+STR_8071_BATTERY_TRUCK                                          :вагон для батарейок
+STR_8072_FIZZY_DRINK_TRUCK                                      :вагон для газованої води
+STR_8073_PLASTIC_TRUCK                                          :вагон для пластику
+STR_8074_MPS_REGAL_BUS                                          :MPS Regal автобус
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard автобус
+STR_8076_FOSTER_BUS                                             :Foster автобус
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII автобус
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI автобус
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII автобус
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII автобус
+STR_807B_BALOGH_COAL_TRUCK                                      :Balogh вугільний фургон
+STR_807C_UHL_COAL_TRUCK                                         :Uhl вугільний фургон
+STR_807D_DW_COAL_TRUCK                                          :DW вугільний фургон
+STR_807E_MPS_MAIL_TRUCK                                         :MPS поштовий фургон
+STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard поштовий фургон
+STR_8080_PERRY_MAIL_TRUCK                                       :Perry поштовий фургон
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover поштовий фургон
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught поштовий фургон
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow поштовий фургон
+STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe цистерна для нафти
+STR_8085_FOSTER_OIL_TANKER                                      :Foster  цистерна для нафти
+STR_8086_PERRY_OIL_TANKER                                       :Perry цистерна для нафти
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott фургон для худоби
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl фургон для худоби
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster фургон для худоби
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh вантажівка для товарів
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead вантажівка для товарів
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss вантажівка для товарів
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford вантажівка для зерна
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas вантажівка для зерна
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss вантажівка для зерна
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe вантажівка для дерева
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster вантажівка для дерева
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland вантажівка для дерева
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS вантажівка для залізної руди
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl вантажівка для залізної руди
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy вантажівка для залізної руди
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh вантажівка для сталі
 STR_8097_UHL_STEEL_TRUCK                                        :Uhl вантажівка для сталі
 STR_8098_KELLING_STEEL_TRUCK                                    :Kelling вантажівка для сталі
 STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh броньоване авто
@@ -2180,6 +2235,16 @@ STR_80A7_MPS_WATER_TANKER                                       :MPS цисте�
 STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh вантажівка для фруктів
 STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl вантажівка для фруктів
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling вантажівка для фруктів
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh вантажівка для каучука
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl вантажівка для каучука
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMTвантажівка для каучука
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover вантажівка для цукру
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught вантажівка для цукру
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow вантажівка для цукру
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover вантажівка для коли
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught вантажівка для коли
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow вантажівка для коли
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover вантажівка для цукрової вати
 STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught вантажівка для солодощів
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow вантажівка для солодощів
 STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover вантажівка для ірисок
@@ -2190,6 +2255,16 @@ STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught в�
 STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow вагон для іграшок
 STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover вантажівка для цукерок
 STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught вантажівка для цукерок
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow вантажівка для цукерок
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover вантажівка для батарейок
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught вантажівка для батарейок
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow вантажівка для батарейок
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover вантажівка для газованої води
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught вантажівка для газованої води
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow вантажівка для газованої води
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover вантажівка для пластику
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught вантажівка для пластику
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow вантажівка для пластику
 STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover вантажівка для кульок
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught вантажівка для кульок
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow вантажівка для кульок
@@ -2197,6 +2272,7 @@ STR_80CC_MPS_OIL_TANKER                                         :MPS цисте�
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. цистерна для нафти
 STR_80CE_MPS_PASSENGER_FERRY                                    :MPS для пасажирів
 STR_80CF_FFP_PASSENGER_FERRY                                    :FFP для пасажирів
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hovercraft
 STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug для пасажирів
 STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake для пасажирів
 STR_80D3_YATE_CARGO_SHIP                                        :Yate вантажний корабель
@@ -2292,6 +2368,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Поїз
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Поїзд можна змінювати тільки тоді, коли зупинений в депо
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Поїзд{P "" и}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Новий залізничний транспорт
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Нові елекричні потяги
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Новий монорельсовий транспорт
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Новий транспорт на магнітній подушці
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Будувати
@@ -2339,6 +2416,7 @@ STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Пере
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Показати депо в центрі головного екрану
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Список поїздів - клікніть на поїзді для інформації
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Будувати вибраний поїзд
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Перейменуйте тип транспорту
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Діяльність поїзда - клікніть тут для його запуску/зупинення
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Показати маршрут поїзда
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Показати поїзд в центрі головноuj екрану
@@ -2351,6 +2429,8 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Змен
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Показати інформацію про вантаж
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Показати інформацію про вагони
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Показати місткість кожного вагону
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Паказати загальну місткість поїзда, розділену за типом вантажу
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Маршрутний лист - клікніть на заданні для його вибору. CTRL + клік показати станцію
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Пропустити це завдання, перейти до наступного
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Видалити виділене завдання
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Не зупинятися на відміченій станції
@@ -2433,6 +2513,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Неможливо розвернути авто...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Can't turn vehicles consisting of multiple units
 STR_9034_RENAME                                                 :{BLACK}Зміна назви
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Перейменувати тип авто
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Перейменувати тип авто
@@ -2667,8 +2748,15 @@ STR_NOT_REPLACING                                               :{BLACK}Не м�
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Не вибрано машину
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Виберіть транспорт для оновлення
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Виберіть новий транспорт, яким ви бажаєте замінити старий
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів що вибрані ліворуч
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч на потяги що вибрані праворуч
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
+STR_REPLACE_HELP                                                :{BLACK}Це дозволить Вам оновити одні види потягів іншими, коли потяг прибуде в депо
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів!!!: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони зберігаючи довжину потягу(починаючи спереду), якщо оновлення робить поїзд довшим.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
 
+STR_ENGINES                                                     :Потяги
 STR_WAGONS                                                      :Вагони
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
