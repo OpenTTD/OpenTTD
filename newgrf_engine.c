@@ -587,6 +587,18 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x46: /* Motion counter */
 			return 0;
 
+		case 0x47: { /* Vehicle cargo info */
+			/* Format: ccccwwtt
+			 * tt - the cargo type transported by the vehicle,
+			 *     translated if a translation table has been installed.
+			 * ww - cargo unit weight in 1/16 tons, same as cargo prop. 0F.
+			 * cccc - the cargo class value of the cargo transported by the vehicle.
+			 */
+			CargoID cid = _global_cargo_id[_opt.landscape][v->cargo_type];
+
+			return (_cargo_classes[cid] << 16) | (_cargoc.weights[v->cargo_type] << 8) | cid;
+		}
+
 		/* Variables which use the parameter */
 		case 0x60: /* Count consist's engine ID occurance */
 			if (v->type != VEH_Train) return v->engine_type == parameter;
