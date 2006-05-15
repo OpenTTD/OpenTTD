@@ -1148,7 +1148,7 @@ DEF_CONSOLE_CMD(ConPlayers)
 		if (!p->is_active) continue;
 
 		GetString(buffer, STR_00D1_DARK_BLUE + _player_colors[p->index]);
-		IConsolePrintF(8, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %d  Loan: %d  Value: %d", p->index + 1, buffer, _network_player_info[p->index].company_name, p->inaugurated_year + MAX_YEAR_BEGIN_REAL, p->player_money, p->current_loan, CalculateCompanyValue(p));
+		IConsolePrintF(8, "#:%d(%s) Company Name: '%s'  Year Founded: %d  Money: %d  Loan: %d  Value: %" OTTD_PRINTF64 "d", p->index + 1, buffer, _network_player_info[p->index].company_name, p->inaugurated_year + MAX_YEAR_BEGIN_REAL, p->player_money, p->current_loan, CalculateCompanyValue(p));
 	}
 
 	return true;
