@@ -1377,6 +1377,24 @@ STR_7004_NEW_FACE                                               :{BLACK}Nov obra
 STR_TRAINS                                                      :{WHITE}{COMMA} vlak{P "" s}
 
 ##id 0x8000
+STR_804F_CANDY_VAN                                              :Tovornjak slascic
+STR_8050_TOY_VAN                                                :Tovornjak igrac
+STR_8051_BATTERY_TRUCK                                          :Tovornjak baterij
+STR_8052_FIZZY_DRINK_TRUCK                                      :Tovornjak gaziranih pijac
+STR_8053_PLASTIC_TRUCK                                          :Tovornjak plastike
+STR_8059_PASSENGER_CAR                                          :Potniski vagon
+STR_805A_MAIL_VAN                                               :Postni vagon
+STR_805B_COAL_CAR                                               :Vagon za premog
+STR_805C_OIL_TANKER                                             :Vagon za nafto
+STR_805D_LIVESTOCK_VAN                                          :Vagon za zivino
+STR_805E_GOODS_VAN                                              :Vagon za dobrine
+STR_805F_GRAIN_HOPPER                                           :Vagon za zito
+STR_8060_WOOD_TRUCK                                             :Vagon za les
+STR_8062_STEEL_TRUCK                                            :Vagon za jeklo
+STR_8063_ARMORED_VAN                                            :Oklepni vagon
+STR_8064_FOOD_VAN                                               :Vagon za hrano
+STR_8065_PAPER_TRUCK                                            :Vagon za papir
+STR_8066_COPPER_ORE_HOPPER                                      :Vagon za bakreno rudo
 
 ##id 0x8800
 

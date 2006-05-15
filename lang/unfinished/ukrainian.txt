@@ -114,7 +114,7 @@ STR_QUANTITY_BUBBLES                                            :{COMMA} бул�
 STR_QUANTITY_TOFFEE                                             :{WEIGHT}  ірису
 STR_QUANTITY_BATTERIES                                          :{COMMA} батарей{P ка ки ок}
 STR_QUANTITY_PLASTIC                                            :{VOLUME} пластику
-STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} газованої води{P z "" s}
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} газованої вод{P а "" и}!!!
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}ПС
 STR_ABBREV_COAL                                                 :{TINYFONT}ВГ
@@ -309,6 +309,7 @@ STR_0151_MAP_OF_WORLD                                           :Карта
 STR_0152_TOWN_DIRECTORY                                         :Список міст
 STR_0153_SUBSIDIES                                              :Субсидії
 
+STR_UNITS_IMPERIAL                                              :Імперська
 STR_UNITS_METRIC                                                :Метрична
 STR_UNITS_SI                                                    :СІ
 
@@ -324,18 +325,21 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}т
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}т
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}кг
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тон{P "" и}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P "" и}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тон{P а и ""}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P а и ""}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}гал
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}л
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}м�
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" ів}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} літр{P "" ів}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" а ів}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} літр{P "" а ів}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} м�
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton force
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Прибуток виробництва
@@ -374,8 +378,14 @@ STR_SORT_BY_AGE                                                 :за віком
 STR_SORT_BY_RELIABILITY                                         :за надійністю
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :за місткістю
 STR_SORT_BY_MAX_SPEED                                           :за швидкістю
+STR_SORT_BY_MODEL                                               :Модель
+STR_SORT_BY_VALUE                                               :Value
 STR_SORT_BY_FACILITY                                            :Вид станцій
+STR_SORT_BY_WAITING                                             :Waiting cargo value
+STR_SORT_BY_RATING_MAX                                          :Рейтинг вантажів
 STR_NO_WAITING_CARGO                                            :{BLACK}Звідси поки-що нічого перевозити
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Вибрати весь транспорт
+STR_SELECT_ALL_TYPES                                            :{BLACK}Вибрати всі типи вантажів
 
 ############ range for months starts
 STR_0162_JAN                                                    :Січ
@@ -869,6 +879,7 @@ STR_TOWNNAME_ROMANIAN                                           :Румунсь�
 STR_TOWNNAME_CZECH                                              :Чеські
 STR_TOWNNAME_SWISS                                              :Швейцарські
 STR_TOWNNAME_DANISH                                             :Датські
+STR_TOWNNAME_TURKISH                                            :Турецький
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Фунт
@@ -1164,6 +1175,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Пере
 
 STR_DRAG_DROP                                                   :{BLACK}Перетягнути й відпустити
 STR_STATION_DRAG_DROP                                           :{BLACK}Будувати станцію за методом "перетягнути й відпустити"
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Виберіть тип станції для відображення
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Виберіть тип станції для забудови
 
 STR_FAST_FORWARD                                                :{BLACK}Прискорити гру
 STR_MESSAGE_HISTORY                                             :{WHITE}Історія повідомлень
@@ -1447,6 +1460,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Не в�
 STR_1007_ALREADY_BUILT                                          :{WHITE}...вже побудовано
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Спочатку приберіть колію
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Будівництво залізниці
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Будувати електрифіковану колію
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Будівництво монорельса
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Будівництво магнітної подушки
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Виберіть міст
@@ -1458,6 +1472,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Немо
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Неможливо прибрати сигнали звідси...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Направлення депо
 STR_1015_RAILROAD_CONSTRUCTION                                  :Залізниця
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Будувати електрифіковану колію
 STR_1016_MONORAIL_CONSTRUCTION                                  :Монорельс
 STR_1017_MAGLEV_CONSTRUCTION                                    :Магнітна подушка
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Будувати колію
@@ -1710,6 +1725,9 @@ STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...ст�
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...неоднорідні станції відмінено
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Утримуйте CTRL для вибору більш ніж одного пункту
 
+STR_UNDEFINED                                                   :(невизначено)
+STR_STAT_CLASS_DFLT                                             :Default station
+STR_STAT_CLASS_WAYP                                             :Пункт
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Направлення корабельного депо
@@ -1861,6 +1879,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...це 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
+STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Без назви
 STR_SV_TRAIN_NAME                                               :Поїзд {COMMA}
 STR_SV_ROADVEH_NAME                                             :Авто {COMMA}
@@ -2161,6 +2180,9 @@ STR_802F_BUBBLE_VAN                                             :Вагон дл
 STR_8030_COLA_TANKER                                            :Цистерна для коли
 STR_8031_CANDY_VAN                                              :Вагон для цукерок
 STR_8032_TOY_VAN                                                :Вагон для іграшок
+STR_8033_BATTERY_TRUCK                                          :вантажівка для батарейок
+STR_8034_FIZZY_DRINK_TRUCK                                      :вантажівка для газованої води
+STR_8035_PLASTIC_TRUCK                                          :вантажівка для пластику
 STR_8036_X2001_ELECTRIC                                         :'X2001' (Електричка)
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Електричка)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
@@ -2168,10 +2190,53 @@ STR_8039_PASSENGER_CAR                                          :Пасажир�
 STR_803A_MAIL_VAN                                               :Вагон для пошти
 STR_803B_COAL_CAR                                               :Вагон для вугілля
 STR_803C_OIL_TANKER                                             :Цистерна для нафти
+STR_803D_LIVESTOCK_VAN                                          :вантажівка для тварин
+STR_803E_GOODS_VAN                                              :вантажівка для товарів
+STR_803F_GRAIN_HOPPER                                           :вагон для зерна
+STR_8040_WOOD_TRUCK                                             :лусовіз
+STR_8041_IRON_ORE_HOPPER                                        :вагон для залізноїї руди
+STR_8042_STEEL_TRUCK                                            :вантажівка для сталі
+STR_8043_ARMORED_VAN                                            :броньоване авто
+STR_8044_FOOD_VAN                                               :вагон для продуктів
+STR_8045_PAPER_TRUCK                                            :вантажівка для паперу
+STR_8046_COPPER_ORE_HOPPER                                      :вагон для мідної руди
+STR_8047_WATER_TANKER                                           :Танкер для води
+STR_8048_FRUIT_TRUCK                                            :вантажівка для фруктів
+STR_8049_RUBBER_TRUCK                                           :вантажівка для каучуку
+STR_804A_SUGAR_TRUCK                                            :вантажівка для цукру
+STR_804B_COTTON_CANDY_HOPPER                                    :вагон для цукрової вати
+STR_804C_TOFFEE_HOPPER                                          :вагон для ірисок
+STR_804D_BUBBLE_VAN                                             :вагон для бульбашок
+STR_804E_COLA_TANKER                                            :Танкер для коли
+STR_804F_CANDY_VAN                                              :вагон для цукерок
+STR_8050_TOY_VAN                                                :вагон для іграшок
+STR_8051_BATTERY_TRUCK                                          :вагон для батарейок
+STR_8052_FIZZY_DRINK_TRUCK                                      :вантажівка для газованої води
+STR_8053_PLASTIC_TRUCK                                          :вантажівка для пластику
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (електричка)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (електричка)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (електричка)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (електричка)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR                                          :Пасажирський катер
+STR_805A_MAIL_VAN                                               :поштовий вагон
+STR_805B_COAL_CAR                                               :вугільний фургон
+STR_805C_OIL_TANKER                                             :нафтовий танкер
+STR_805D_LIVESTOCK_VAN                                          :вагон для худоби
+STR_805E_GOODS_VAN                                              :вагон для товарів
+STR_805F_GRAIN_HOPPER                                           :вагон для зерна
+STR_8060_WOOD_TRUCK                                             :лісовіз
+STR_8061_IRON_ORE_HOPPER                                        :вагон для залізної руди
 STR_8062_STEEL_TRUCK                                            :вантажівка для сталі
 STR_8063_ARMORED_VAN                                            :броноване авто
 STR_8064_FOOD_VAN                                               :вантажівка для їжі
 STR_8065_PAPER_TRUCK                                            :вантажівка для паперу
+STR_8066_COPPER_ORE_HOPPER                                      :вагон для мідної руди
+STR_8067_WATER_TANKER                                           :цистерна для води
+STR_8068_FRUIT_TRUCK                                            :фургон для фруктів
+STR_8069_RUBBER_TRUCK                                           :вантажівка для каучуку
+STR_806A_SUGAR_TRUCK                                            :вантажівка для цукру
+STR_806B_COTTON_CANDY_HOPPER                                    :вагон для цукрової вати
 STR_806C_TOFFEE_HOPPER                                          :вагон для ірису
 STR_806D_BUBBLE_VAN                                             :вагон для кульок
 STR_806E_COLA_TANKER                                            :вагон для коли
@@ -2402,6 +2467,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Немо
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Неможливо видалити наказ...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Неможливо змінити наказ...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Неможливо перемістити транспорт...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}задній потяг зажди слідує  follow its front counterpart!!!
 STR_8838_N_A                                                    :немає{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Неможливо продати поїзд...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Неможливо знайти маршрут до місцевого депо
@@ -2437,6 +2503,7 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Не з�
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Вставити новий пункт перед відміченим або додати в кінець
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Чекати повного завантаження на цій станції
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Лише розвантажитися на цій станції
+STR_SERVICE_HINT                                                :{BLACK}Пропустити це завдання поки обслуговування потрібне!!!
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Доступний новий {STRING}!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}  Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {STRING}
@@ -2751,10 +2818,13 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Вибе
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів що вибрані ліворуч
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч на потяги що вибрані праворуч
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays which engine the left selected engine is being replaced with, if any
 STR_REPLACE_HELP                                                :{BLACK}Це дозволить Вам оновити одні види потягів іншими, коли потяг прибуде в депо
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів!!!: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони зберігаючи довжину потягу(починаючи спереду), якщо оновлення робить поїзд довшим.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL FEATURE {}Switch between engine and wagon replacement windows.{}Wagon replacement will only be done if the new wagon can be refitted into carrying the same type of cargo as the old one. This is checked for each wagon when the actual replacement takes place.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}потяг неможна будувати
 
 STR_ENGINES                                                     :Потяги
 STR_WAGONS                                                      :Вагони

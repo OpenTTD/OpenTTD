@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}KN
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}LÄ
+STR_ABBREV_NONE                                                 :{TINYFONT}NEJ
+STR_ABBREV_ALL                                                  :{TINYFONT}ALLA
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karta - {STRING}
@@ -377,6 +379,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapacitet
 STR_SORT_BY_MAX_SPEED                                           :Maximal hastighet
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Värde
+STR_SORT_BY_FACILITY                                            :Stationstyp
+STR_SORT_BY_WAITING                                             :Väntande last-värde
+STR_SORT_BY_RATING_MAX                                          :Last Värdering
+STR_NO_WAITING_CARGO                                            :{BLACK}Ingen sorts last väntar
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Markera alla inrättningar
+STR_SELECT_ALL_TYPES                                            :{BLACK}Välj alla last-typer (inklusive icke väntande last)
 
 ############ range for months starts
 STR_0162_JAN                                                    :jan
@@ -870,6 +878,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumänska
 STR_TOWNNAME_CZECH                                              :Tjeckiska
 STR_TOWNNAME_SWISS                                              :Schweiziska
 STR_TOWNNAME_DANISH                                             :Danska
+STR_TOWNNAME_TURKISH                                            :Turkiska
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
@@ -943,6 +952,7 @@ STR_CRATES                                                      :lådor
 STR_RES_OTHER                                                   :annan
 STR_NOTHING                                                     :ingenting
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan inte dela orderlistan...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan inte kopiera orderlistan...
@@ -1164,6 +1174,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Drag lok
 
 STR_DRAG_DROP                                                   :{BLACK}Drag & Släpp
 STR_STATION_DRAG_DROP                                           :{BLACK}Bygg en station genom drag & släpp
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Välj vilken stationsklass som ska visas
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Välj stationstyp att bygga
 
 STR_FAST_FORWARD                                                :{BLACK}Snabbspola spelet
 STR_MESSAGE_HISTORY                                             :{WHITE}Meddelandehistorik
@@ -1710,6 +1722,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boj i
 STR_306B_HELIPORT                                               :{BLACK}Helikopterplats
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station för utspridd
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ej enhetliga stationer inaktiverade
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Håll nere CTRL för att markera mer än en sak
 
 STR_UNDEFINED                                                   :(oidentifierad stäng)
 STR_STAT_CLASS_DFLT                                             :Grundinställd station
@@ -2514,6 +2527,7 @@ STR_886F_TRANSFER                                               :{BLACK}Lasta om
 
 STR_TRAIN_STOPPING                                              :{RED}Stannar
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stannar, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Fel järnvägstyp
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vägfordon i vägen
@@ -2777,6 +2791,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Förhand
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Ändra valutaparametrar
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
@@ -2807,6 +2822,7 @@ STR_REPLACE_HELP                                                :{BLACK}Detta gö
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagnborttagning: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så att automatiskt utbytning behåller ett tågs längd genom att ta bort vagnar (med början längst fram) om utbytandet av loket skulle göra tåget längre.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Byter ut: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTIELL FEATURE {}Välj mellan motor och vagn ersättnings-fönster.{}Vagns-ersättning kommer endast ske om den nya vagnen kan bli omrustad till att bära samma typ av last som den gamla. Detta kollas för varje vagn när den faktiska ersättningen sker
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Loket går inte att bygga
 
 STR_ENGINES                                                     :Lok

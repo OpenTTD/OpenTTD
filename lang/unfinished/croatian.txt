@@ -1,4 +1,248 @@
 ##name Croatian
 ##ownname Hrvatski
-##isocode HR.UTF-8
-#@charset UTF-8
+##isocode hr_HR.UTF-8
+##plural 6
+
+##id 0x0000
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ravna zemlja potrebna
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ range for menu	starts
+############ range for menu	ends
+
+
+
+############ range for months starts
+############ range for months ends
+
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+
+############ range for days	starts
+############ range for days	ends
+
+
+
+
+
+############ range for menu	starts
+############ range ends	here
+
+############ range for menu	starts
+############ range ends	here
+
+
+
+
+############ range for menu	starts
+############ range ends here
+
+
+
+
+
+############ start of townname region
+############ end of	townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+##id 0x0800
+
+##id 0x1000
+
+
+
+##id 0x1800
+
+##id 0x2000
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires	starts
+############ range for requires	ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
+##id 0x6000
+
+
+############ end of	savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+##id 0x9000
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+
+##id 0xB000
+
+
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+

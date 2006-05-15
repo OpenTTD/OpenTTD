@@ -936,6 +936,7 @@ STR_CRATES                                                      :kasser
 STR_RES_OTHER                                                   :annet
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikke dele ordre liste...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke kopiere ordre liste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordre - -
@@ -1276,6 +1277,7 @@ STR_NETWORK_10_PLAYERS                                          :10 spillere
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks bedrifter:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrens serveren til et bestemt antall bedrifter
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks Tilskuere
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrens serveren til et bestemt antall seere
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk snakket på tjeneren:
@@ -1438,6 +1440,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Upassend
 STR_1007_ALREADY_BUILT                                          :{WHITE}...allerede bygget
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Må fjerne jernbanespor først
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Bygg jernbane
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifisert Jernbanekonstruksjon
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Bygg Monorail
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Bygg MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Velg jernbanebrotype
@@ -1449,6 +1452,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Kan ikke
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kan ikke fjerne signallykter herfra...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Togstallens retning
 STR_1015_RAILROAD_CONSTRUCTION                                  :Bygg jernbane
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrifisert Jernbanekonstruksjon
 STR_1016_MONORAIL_CONSTRUCTION                                  :Bygg Monorail
 STR_1017_MAGLEV_CONSTRUCTION                                    :Bygg MagLev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Bygg jernbanespor
@@ -1699,6 +1703,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bøyen
 STR_306B_HELIPORT                                               :{BLACK}Landingsplass for helikopter
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasjonen er spredd for mye
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikke-ensartede stasjoner deaktivert
+
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skipdepot retning
@@ -2404,6 +2409,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan bare endres når det står stille i togstallen
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tog
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye tog/vogner for jernbane
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nytt Elektrifisert Tog
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye tog/vogner for Monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye tog/vogner for Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Kjøp tog/vogn
@@ -2788,7 +2794,9 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dette vi
 STR_REPLACE_HELP                                                :{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motoren kan ikke bygges
 
+STR_ENGINES                                                     :Motorer
 STR_WAGONS                                                      :Vogner
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
@@ -2797,6 +2805,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltlis
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Jernbanelokomotiv
+STR_ELRAIL_VEHICLES                                             :Elektrifiserte Tog
 STR_MONORAIL_VEHICLES                                           :Monoraillokomotiv
 STR_MAGLEV_VEHICLES                                             :Maglevlokomotiv
 

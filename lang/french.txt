@@ -147,6 +147,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}CM
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}GZ
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Carte - {STRING}
@@ -329,11 +331,11 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
@@ -377,6 +379,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacité totale
 STR_SORT_BY_MAX_SPEED                                           :Vitesse maximum
 STR_SORT_BY_MODEL                                               :Modèle
 STR_SORT_BY_VALUE                                               :Valeur
+STR_SORT_BY_FACILITY                                            :Type de station
+STR_SORT_BY_WAITING                                             :Marchandise en attente
+STR_SORT_BY_RATING_MAX                                          :Notation
+STR_NO_WAITING_CARGO                                            :{BLACK}Pas de marchandises en attente
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tous les types de station
+STR_SELECT_ALL_TYPES                                            :{BLACK}Tous les types de marchandise (y compris pas en attente)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -870,6 +878,7 @@ STR_TOWNNAME_ROMANIAN                                           :Roumain
 STR_TOWNNAME_CZECH                                              :Tchèques
 STR_TOWNNAME_SWISS                                              :Suisse
 STR_TOWNNAME_DANISH                                             :Danois
+STR_TOWNNAME_TURKISH                                            :Turques
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Livre (£)
@@ -943,6 +952,7 @@ STR_CRATES                                                      :caisses
 STR_RES_OTHER                                                   :autre
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossible de partager les ordres...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossible de copier les ordres...
@@ -1164,6 +1174,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Faire Gl
 
 STR_DRAG_DROP                                                   :{BLACK}Glisser/déposer
 STR_STATION_DRAG_DROP                                           :{BLACK}Construire une gare avec le glisser/déposer
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Choisir la classe de station à afficher
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Choisir le type de station à construire
 
 STR_FAST_FORWARD                                                :{BLACK}Avance rapide du jeu
 STR_MESSAGE_HISTORY                                             :{WHITE}Historique des Messages
@@ -1710,6 +1722,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bouée
 STR_306B_HELIPORT                                               :{BLACK}Héliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...gare trop étendue
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stations non-uniformes désactivées
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Cliquer avec CTRL pour sélectionner plus d'un élément
 
 STR_UNDEFINED                                                   :(chaîne non définie)
 STR_STAT_CLASS_DFLT                                             :Station par défaut
@@ -2319,8 +2332,8 @@ STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Camion de plast
 STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Camion de bulles MightyMover
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Camion de bulles Powernaught
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Camion de bulles Wizzowow
-STR_80CC_MPS_OIL_TANKER                                         :Camion-citerne de pétrole MPS
-STR_80CD_CS_INC_OIL_TANKER                                      :Camion-citerne de pétrole CS-Inc.
+STR_80CC_MPS_OIL_TANKER                                         :Pétrolier MPS
+STR_80CD_CS_INC_OIL_TANKER                                      :Pétrolier CS-Inc.
 STR_80CE_MPS_PASSENGER_FERRY                                    :Ferry de voyageurs MPS
 STR_80CF_FFP_PASSENGER_FERRY                                    :Ferry de voyageurs FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Aéroglisseur
@@ -2514,6 +2527,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Ralentit
 STR_TRAIN_STOPPING_VEL                                          :{RED}Ralentit, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Types de rail incompatibles
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Véhicule Routier présent
@@ -2776,6 +2790,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Prévisu
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Changer les paramètres de devises personnalisées
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
