@@ -26,8 +26,8 @@ void CDECL debug(const char *s, ...);
 void SetDebugString(const char *s);
 const char *GetDebugString(void);
 
-/* MSVC of course has to have a different syntax for long long *sigh* */
-#ifdef _MSC_VER
+/* MSVCRT of course has to have a different syntax for long long *sigh* */
+#if defined(_MSC_VER) || defined(__MINGW32__)
 # define OTTD_PRINTF64 "I64"
 #else
 # define OTTD_PRINTF64 "ll"
