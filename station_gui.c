@@ -427,7 +427,7 @@ static const Widget _player_stations_widgets[] = {
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   345,     0,    13, STR_3048_STATIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   346,   357,     0,    13, 0x0,               STR_STICKY_BUTTON},
 {      WWT_PANEL,     RESIZE_RB,    14,     0,   345,    37,   161, 0x0,               STR_3057_STATION_NAMES_CLICK_ON},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   346,   357,    14,   149, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   346,   357,    25,   149, 0x0,               STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   346,   357,   150,   161, 0x0,               STR_RESIZE_BUTTON},
 //Index 6
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    13,    14,    24, STR_TRAIN, STR_USE_CTRL_TO_SELECT_MORE},
@@ -450,7 +450,7 @@ static const Widget _player_stations_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,   229,   242,    14,    24, 0x0, STR_USE_CTRL_TO_SELECT_MORE},
 {      WWT_PANEL,   RESIZE_NONE,    14,   243,   256,    14,    24, 0x0, STR_USE_CTRL_TO_SELECT_MORE},
 {      WWT_PANEL,   RESIZE_NONE,    14,   257,   270,    14,    24, 0x0, STR_NO_WAITING_CARGO},
-{      WWT_PANEL,  RESIZE_RIGHT,    14,   285,   358,    14,    24, 0x0, STR_NULL},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   285,   357,    14,    24, 0x0, STR_NULL},
 
 //26
 {      WWT_PANEL,   RESIZE_NONE,    14,    70,    83,    14,    24, 0x0, STR_SELECT_ALL_FACILITIES},
