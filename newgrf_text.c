@@ -45,6 +45,8 @@ typedef enum grf_extended_languages {
 	GRFLX_RUSSIAN     = 0x07,
 	GRFLX_CZECH       = 0x15,
 	GRFLX_SLOVAK      = 0x16,
+	GRFLX_AFRIKAANS   = 0x1B,
+	GRFLX_GREEK       = 0x1E,
 	GRFLX_DUTCH       = 0x1F,
 	GRFLX_CATALAN     = 0x22,
 	GRFLX_HUNGARIAN   = 0x24,
@@ -60,10 +62,12 @@ typedef enum grf_extended_languages {
 	GRFLX_POLISH      = 0x30,
 	GRFLX_GALICIAN    = 0x31,
 	GRFLX_FRISIAN     = 0x32,
+	GRFLX_UKRAINIAN   = 0x33,
 	GRFLX_ESTONIAN    = 0x34,
 	GRFLX_FINNISH     = 0x35,
 	GRFLX_PORTUGUESE  = 0x36,
 	GRFLX_BRAZILIAN   = 0x37,
+	GRFLX_CROATIAN    = 0x38,
 	GRFLX_TURKISH     = 0x3E,
 	GRFLX_UNSPECIFIED = 0x7F,
 } grf_language;
@@ -85,32 +89,36 @@ typedef struct iso_grf {
 const iso_grf iso_codes[] = {
 	{"en_US", GRFLX_AMERICAN},
 	{"en_GB", GRFLX_ENGLISH},
-	{"de",    GRFLX_GERMAN},
-	{"fr",    GRFLX_FRENCH},
-	{"es",    GRFLX_SPANISH},
-	{"cs",    GRFLX_CZECH},
-	{"ca",    GRFLX_CATALAN},
-	{"da",    GRFLX_DANISH},
-	{"nl",    GRFLX_DUTCH},
-	{"et",    GRFLX_ESTONIAN},
-	{"fi",    GRFLX_FINNISH},
-	{"fy",    GRFLX_FRISIAN},
-	{"gl",    GRFLX_GALICIAN},
-	{"hu",    GRFLX_HUNGARIAN},
-	{"is",    GRFLX_ICELANDIC},
-	{"it",    GRFLX_ITALIAN},
-	{"lv",    GRFLX_LATVIAN},
-	{"lt",    GRFLX_LITHUANIAN},
-	{"nb",    GRFLX_NORWEGIAN},
-	{"pl",    GRFLX_POLISH},
-	{"pt",    GRFLX_PORTUGUESE},
+	{"de_DE", GRFLX_GERMAN},
+	{"fr_FR", GRFLX_FRENCH},
+	{"es_ES", GRFLX_SPANISH},
+	{"af_ZA", GRFLX_AFRIKAANS},
+	{"hr_HR", GRFLX_CROATIAN},
+	{"cs_CS", GRFLX_CZECH},
+	{"ca_ES", GRFLX_CATALAN},
+	{"da_DA", GRFLX_DANISH},
+	{"nl_NL", GRFLX_DUTCH},
+	{"et_ET", GRFLX_ESTONIAN},
+	{"fi_FI", GRFLX_FINNISH},
+	{"fy_NL", GRFLX_FRISIAN},
+	{"gl_ES", GRFLX_GALICIAN},
+	{"el_GR", GRFLX_GREEK},
+	{"hu_HU", GRFLX_HUNGARIAN},
+	{"is_IS", GRFLX_ICELANDIC},
+	{"it_IT", GRFLX_ITALIAN},
+	{"lv_LV", GRFLX_LATVIAN},
+	{"lt_LT", GRFLX_LITHUANIAN},
+	{"nb_NO", GRFLX_NORWEGIAN},
+	{"pl_PL", GRFLX_POLISH},
+	{"pt_PT", GRFLX_PORTUGUESE},
 	{"pt_BR", GRFLX_BRAZILIAN},
-	{"ro",    GRFLX_ROMANIAN},
-	{"ru",    GRFLX_RUSSIAN},
-	{"sk",    GRFLX_SLOVAK},
-	{"sl",    GRFLX_SLOVENIAN},
-	{"sv",    GRFLX_SWEDISH},
-	{"tr",    GRFLX_TURKISH},
+	{"ro_RO", GRFLX_ROMANIAN},
+	{"ru_RU", GRFLX_RUSSIAN},
+	{"sk_SK", GRFLX_SLOVAK},
+	{"sl_SL", GRFLX_SLOVENIAN},
+	{"sv_SE", GRFLX_SWEDISH},
+	{"tr_TR", GRFLX_TURKISH},
+	{"uk_UA", GRFLX_UKRAINIAN},
 	{"gen",   GRFLB_GENERIC}   //this is not iso code, but there has to be something...
 };
 
@@ -189,13 +197,6 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 		}
 	}
 
-	newtext = calloc(1, sizeof(*newtext));
-	newtext->langid = GB(langid_to_add, 0, 6);
-	newtext->text   = strdup(text_to_add);
-	newtext->next   = NULL;
-
-	TranslateTTDPatchCodes(newtext->text);
-
 	for (id = 0; id < _num_grf_texts; id++) {
 		if (_grf_text[id].grfid == grfid && _grf_text[id].stringid == stringid) {
 			break;
@@ -204,6 +205,13 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 
 	/* Too many strings allocated, return empty */
 	if (id == lengthof(_grf_text)) return STR_EMPTY;
+
+	newtext = calloc(1, sizeof(*newtext));
+	newtext->langid = GB(langid_to_add, 0, 6);
+	newtext->text   = strdup(text_to_add);
+	newtext->next   = NULL;
+
+	TranslateTTDPatchCodes(newtext->text);
 
 	/* If we didn't find our stringid and grfid in the list, allocate a new id */
 	if (id == _num_grf_texts) _num_grf_texts++;
@@ -285,7 +293,7 @@ void SetCurrentGrfLangID(const char *iso_name)
 	ret = GRFLX_ENGLISH;
 
 	for (i=0; i < lengthof(iso_codes); i++) {
-		if (strcmp(iso_codes[i].code, iso_name) == 0) {
+		if (strncmp(iso_codes[i].code, iso_name, strlen(iso_codes[i].code) == 0)) {
 			/* We found a match, so let's use it. */
 			ret = i;
 			break;
