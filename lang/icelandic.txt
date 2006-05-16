@@ -1,6 +1,6 @@
 ##name Icelandic
 ##ownname Íslenska
-##isocode is
+##isocode is_IS
 ##plural 0
 
 ##id 0x0000

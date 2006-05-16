@@ -1,6 +1,6 @@
 ##name German
 ##ownname Deutsch
-##isocode de
+##isocode de_DE
 ##plural 0
 ##gender m w n
 

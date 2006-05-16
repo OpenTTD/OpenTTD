@@ -1,6 +1,6 @@
 ##name Finnish
 ##ownname Suomi
-##isocode fi
+##isocode fi_FI
 ##plural 0
 
 ##id 0x0000

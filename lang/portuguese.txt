@@ -1,6 +1,6 @@
 ##name Portuguese
 ##ownname Português
-##isocode pt
+##isocode pt_PT
 ##plural 0
 
 ##id 0x0000

@@ -1,6 +1,6 @@
 ##name Spanish
 ##ownname Español (ES)
-##isocode es
+##isocode es_ES
 ##plural 0
 
 ##id 0x0000

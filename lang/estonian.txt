@@ -1,6 +1,6 @@
 ##name Estonian
 ##ownname Eesti keel
-##isocode et
+##isocode et_ET
 ##plural 0
 
 ##id 0x0000

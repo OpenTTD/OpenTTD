@@ -1,6 +1,6 @@
 ##name Dutch
 ##ownname Nederlands
-##isocode nl
+##isocode nl_NL
 ##plural 0
 
 ##id 0x0000

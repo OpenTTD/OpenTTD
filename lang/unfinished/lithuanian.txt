@@ -1,6 +1,6 @@
 ##name Lithuanian
 ##ownname Lietuviu
-##isocode lt
+##isocode lt_LT
 ##plural 5
 
 ##id 0x0000

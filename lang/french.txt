@@ -1,6 +1,6 @@
 ##name French
 ##ownname Français
-##isocode fr
+##isocode fr_FR
 ##plural 2
 ##gender m m2 f
 

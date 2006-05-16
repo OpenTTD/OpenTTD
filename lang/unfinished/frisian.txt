@@ -1,6 +1,6 @@
 ##name Frisian
 ##ownname Frysk
-##isocode fy
+##isocode fy_NL
 ##plural 0
 
 ##id 0x0000
