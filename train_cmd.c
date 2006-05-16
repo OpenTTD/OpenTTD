@@ -2580,9 +2580,9 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 				uint tileh = GetTileSlope(tile, &height);
 
 				// correct Z position of a train going under a bridge on slopes
-				if (CorrectZ(tileh)) height += 8;
+				if (tileh != 0) height += TILE_HEIGHT;
 
-				if (v->z_pos != height) return true; // train is going over bridge
+				if (v->z_pos > height) return true; // train is going over bridge
 			}
 			break;
 
