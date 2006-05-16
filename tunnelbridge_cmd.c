@@ -183,9 +183,10 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	int bridge_type;
 	TransportType transport;
 	RailType railtype;
-	int x;
-	int y;
-	int sx,sy;
+	uint x;
+	uint y;
+	uint sx;
+	uint sy;
 	TileIndex tile_start;
 	TileIndex tile_end;
 	Slope tileh_start;
@@ -227,16 +228,10 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	if (x == sx) {
 		if (y == sy) return_cmd_error(STR_5008_CANNOT_START_AND_END_ON);
 		direction = AXIS_Y;
-		if (y > sy) {
-			intswap(y,sy);
-			intswap(x,sx);
-		}
+		if (y > sy) intswap(y,sy);
 	} else if (y == sy) {
 		direction = AXIS_X;
-		if (x > sx) {
-			intswap(y,sy);
-			intswap(x,sx);
-		}
+		if (x > sx) intswap(x,sx);
 	} else {
 		return_cmd_error(STR_500A_START_AND_END_MUST_BE_IN);
 	}
