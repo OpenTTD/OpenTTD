@@ -379,6 +379,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Tot. capacità p
 STR_SORT_BY_MAX_SPEED                                           :Velocità massima
 STR_SORT_BY_MODEL                                               :Modello
 STR_SORT_BY_VALUE                                               :Valore
+STR_SORT_BY_FACILITY                                            :Tipo di stazione
+STR_SORT_BY_WAITING                                             :Valore merce in attesa
+STR_SORT_BY_RATING_MAX                                          :Rating di merce
+STR_NO_WAITING_CARGO                                            :{BLACK}Non c'è nessun tipo di merce in attesa
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleziona tuti i fabbricati
+STR_SELECT_ALL_TYPES                                            :{BLACK}Seleziona tutti i tipi di merce (comprese le merci non in attesa)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Gen
@@ -872,6 +878,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumeni
 STR_TOWNNAME_CZECH                                              :Cechi
 STR_TOWNNAME_SWISS                                              :Svizzero
 STR_TOWNNAME_DANISH                                             :Danese
+STR_TOWNNAME_TURKISH                                            :Turco
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Sterlina (£)
@@ -945,6 +952,7 @@ STR_CRATES                                                      :casse
 STR_RES_OTHER                                                   :altro
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Non puoi condividere lista ordini...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}non puoi copiare la lista ordini...
@@ -1166,6 +1174,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Trascina
 
 STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP                                           :{BLACK}Costruisci una stazione con il drag & drop
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Seleziona un tipo di classe di stazione per mostrare
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Scegli il tipo di stazione da costruire
 
 STR_FAST_FORWARD                                                :{BLACK}Aumenta la velocità di gioco
 STR_MESSAGE_HISTORY                                             :{WHITE}Cronologia messaggi
@@ -1712,6 +1722,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boa i
 STR_306B_HELIPORT                                               :{BLACK}Eliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stazione troppo estesa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stazioni non uniformi disabilitate
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tenere premuto CTRL per scegliere più di un oggetto
 
 STR_UNDEFINED                                                   :(stringa non definita)
 STR_STAT_CLASS_DFLT                                             :Stazione predefinita
@@ -2516,6 +2527,7 @@ STR_886F_TRANSFER                                               :{BLACK}Trasferi
 
 STR_TRAIN_STOPPING                                              :{RED}In frenata
 STR_TRAIN_STOPPING_VEL                                          :{RED}In frenata, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo binario incompatibile
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veicolo in mezzo

@@ -190,6 +190,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}0
+STR_ABBREV_ALL                                                  :{TINYFONT}+
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -430,6 +432,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Calkowita pojem
 STR_SORT_BY_MAX_SPEED                                           :Predkosc maks.
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Wartosc
+STR_SORT_BY_FACILITY                                            :Typ stacji
+STR_SORT_BY_WAITING                                             :Wartosc czekajacego towaru
+STR_SORT_BY_RATING_MAX                                          :Ocena towaru
+STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma zadnego czekajacego towaru
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Zaznacz wszystkie typy stacji
+STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy towaru (oraz brak czekajacego towaru)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Sty
@@ -1801,6 +1809,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja 
 STR_306B_HELIPORT                                               :{BLACK}Ladowisko
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stacja zbyt rozlegla
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...niejednorodne stacje niedostepne
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Przyczymaj CTRL aby zaznaczyc wiecej niz jedna opcje
 
 STR_UNDEFINED                                                   :(nieokreslony tekst)
 STR_STAT_CLASS_DFLT                                             :Typowa stacja
@@ -2911,6 +2920,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Podglad
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmien parametr wlasnej waluty
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}

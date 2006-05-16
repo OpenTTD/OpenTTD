@@ -211,7 +211,7 @@ STR_00F2_300M                                                   :{BLACK}{TINYFON
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Züge
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Fahrzeuge
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Straßenfahrzeuge
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Schiffe
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Flugzeuge
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transportstrecken
@@ -359,7 +359,7 @@ STR_015E_QUIT_GAME                                              :Spiel beenden
 STR_015F_QUIT                                                   :Beenden
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Bist du sicher, dass du das Spiel beenden willst?
 STR_0161_QUIT_GAME                                              :{WHITE}Spiel beenden
-STR_SORT_ORDER_TIP                                              :{BLACK}Sortierreihenfolge auswählen absteigend/aufsteigend
+STR_SORT_ORDER_TIP                                              :{BLACK}Sortierreihenfolge auswählen (absteigend/aufsteigend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sortierkriterium auswählen
 STR_SORT_BY                                                     :{BLACK}Sortieren nach
 
@@ -385,7 +385,7 @@ STR_SORT_BY_WAITING                                             :Menge der warte
 STR_SORT_BY_RATING_MAX                                          :Frachtbewertung
 STR_NO_WAITING_CARGO                                            :{BLACK}Keine Fracht wartet
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Wähle alle Anlagen
-STR_SELECT_ALL_TYPES                                            :{BLACK}Wähle alle Frachtarten (inkl. nicht wartender Fracht)
+STR_SELECT_ALL_TYPES                                            :{BLACK}Wähle alle Frachtarten (einschließlich ohne wartender Fracht)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -433,9 +433,9 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Das Wartungsintervall kann nicht geändert werden...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Fenster schließen
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titelleiste verschieben um das Fenster zu bewegen
-STR_STICKY_BUTTON                                               :{BLACK}Fenster wird nicht durch
+STR_STICKY_BUTTON                                               :{BLACK}Fenster wird nicht durch die "schließe alle Fenster"-Taste geschlossen
 STR_RESIZE_BUTTON                                               :{BLACK}Klicken und Ziehen zum Größe ändern
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standard-Spielstands-Verzeichnis zu gehen
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standardspielstandsverzeichnis zu gehen
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Gebäude usw. auf einem Planquadrat abreißen
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Land absenken
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Land anheben
@@ -455,7 +455,7 @@ STR_AGE                                                         :{COMMA} Jahr{P 
 STR_AGE_RED                                                     :{RED}{COMMA} Jahr{P "" e} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Fahrzeug
+STR_019C_ROAD_VEHICLE                                           :Straßenfahrzeug
 STR_019D_AIRCRAFT                                               :Flugzeug
 STR_019E_SHIP                                                   :Schiff
 STR_019F_TRAIN                                                  :Zug
@@ -563,8 +563,8 @@ STR_MESSAGE_HISTORY_MENU                                        :Vergangene Nach
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Zeige letzte Mitteilung / Nachricht, Nachrichtenoptionen anzeigen
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Nachrichtenoptionen
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Nachrichtenart:
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in der Station des Spielers
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in der Station eines Gegners
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in einer Station des Spielers
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in einer Station eines Gegners
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Unfälle / Katastrophen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmendaten
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Änderungen der Wirtschaftslage
@@ -802,7 +802,7 @@ STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Währung 
 STR_MEASURING_UNITS                                             :{BLACK}Maßeinheiten
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Auswahl der Maßeinheiten
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Fahrzeuge
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Straßenfahrzeuge
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Wähle auf welcher Straßenseite der Verkehr fahren soll
 STR_02E9_DRIVE_ON_LEFT                                          :Linksverkehr
@@ -864,7 +864,7 @@ STR_0336_7                                                      :{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Englisch
 STR_TOWNNAME_FRENCH                                             :Französisch
 STR_TOWNNAME_GERMAN                                             :Deutsch
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :English (Zusätzlich)
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Englisch (Zusätzlich)
 STR_TOWNNAME_LATIN_AMERICAN                                     :Lateinamerikanisch
 STR_TOWNNAME_SILLY                                              :Verrückt
 STR_TOWNNAME_SWEDISH                                            :Schwedisch
@@ -915,9 +915,9 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Sprache 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Vollbild
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD im Vollbildmodus spielen
 
-STR_OPTIONS_RES                                                 :{BLACK}Bildschirmgröße
+STR_OPTIONS_RES                                                 :{BLACK}Bildschirmauflösung
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Bildschirmgröße auswählen
+STR_OPTIONS_RES_TIP                                             :{BLACK}Bildschirmauflösung auswählen
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshotformat
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -951,7 +951,7 @@ STR_LITERS                                                      :Liter
 STR_ITEMS                                                       :Stück
 STR_CRATES                                                      :Kisten
 STR_RES_OTHER                                                   :Andere
-STR_NOTHING                                                     :nichts
+STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
@@ -1153,7 +1153,7 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Land aus
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufällige Baumart
-STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Zufällige Baumart platzieren
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Zufällige Baumart pflanzen
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kann hier keinen Kanal bauen...
 STR_BUILD_CANALS_TIP                                            :{BLACK}Kanal bauen
@@ -1259,7 +1259,7 @@ STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverv
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveradresse:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aktuelles Datum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_PASSWORD                                            :{SILVER}passwortgeschützt!
+STR_NETWORK_PASSWORD                                            :{SILVER}Passwortgeschützt!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOLL
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}Versionskonflikt festgestellt
@@ -1318,7 +1318,7 @@ STR_NETWORK_LANG_FRENCH                                         :Französisch
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Mehrspielerlobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Spieleintritt vorbereiten:   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden. Du kannst einer Firma beitreten oder eine eigene Firma gründen, sofern ein Platz frei ist.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Neues Unternehmen
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ein neues Unternehmen gründen
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Beim Spiel zusehen
@@ -1354,7 +1354,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Spielinformationen holen...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Firmeninformationen holen...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Teilnehmer vor uns
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Teilnehmer vor dir
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} KB bisher heruntergeladen
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Trennen
@@ -1392,7 +1392,7 @@ STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nicht authorisi
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :Unerwartetes Paket empfangen
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :Falsche Version
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :Name wird bereits verwendet
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :Falsches Spiel-Passwort
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :Falsches Spielpasswort
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :Falsche-SpielerID in DoCommand (Verarbeitungsfehler)
 STR_NETWORK_ERR_CLIENT_KICKED                                   :gekickt
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :versuchte einen Cheat zu nutzen
@@ -1501,22 +1501,22 @@ STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Brücke w
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kann hier keine Straße bauen...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kann diese Straße nicht entfernen...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Fahrzeugdepot-Ausr.
-STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann Fahrzeugdepot hier nicht bauen...
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann Straßenfahrzeugdepot hier nicht bauen...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kann Busbahnhof nicht bauen...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kann Lkw-Ladeplatz nicht bauen...
 STR_180A_ROAD_CONSTRUCTION                                      :Straßenbau
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Straße bauen
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Fahrzeugdepot bauen (zum Bau und zur Wartung von Fahrzeugen)
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Straßenfahrzeugdepot bauen (zum Bau und zur Wartung von Fahrzeugen)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Busbahnhof bauen
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Lkw-Ladeplatz bauen
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Straßenbrücke bauen
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Straßentunnel bauen
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Zwischen Bau/Abriss der Straße umschalten
-STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ausrichtung des Fahrzeugdepots wählen
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ausrichtung des Straßenfahrzeugdepots wählen
 STR_1814_ROAD                                                   :Straße
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Straße mit Laternen
 STR_1816_TREE_LINED_ROAD                                        :Straße mit Bäumen
-STR_1817_ROAD_VEHICLE_DEPOT                                     :Fahrzeugdepot
+STR_1817_ROAD_VEHICLE_DEPOT                                     :Straßenfahrzeugdepot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Bahnübergang
 
 ##id 0x2000
@@ -1828,7 +1828,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Zug im Tunnel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Fahrzeug im Tunnel
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Straßenfahrzeug im Tunnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Ein anderer Tunnel ist im Weg
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kann das Land am anderen Ende des Tunnels nicht anheben
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Der Tunnel muss zuerst abgerissen werden
@@ -2020,7 +2020,7 @@ STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Flugzeugb
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Schiffbetriebskosten
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Betriebskosten Gebäude
 STR_7018_TRAIN_INCOME                                           :{GOLD}Einnahmen Züge
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Einnahmen Fahrzeuge
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Einnahmen Straßenfahrzeuge
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Einnahmen Flugzeuge
 STR_701B_SHIP_INCOME                                            :{GOLD}Einnahmen Schiffe
 STR_701C_LOAN_INTEREST                                          :{GOLD}Kreditzinsen
@@ -2112,7 +2112,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Zeige Fi
 STR_RELOCATE_HQ                                                 :{BLACK}Firmensitz verlegen
 STR_COMPANY_PASSWORD                                            :{BLACK}Passwort
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Schütze deine Firma mit einem Passwort, um unautorisierten Spielern den Beitritt zu verwehren.
-STR_SET_COMPANY_PASSWORD                                        :Firmen-Passwort setzen
+STR_SET_COMPANY_PASSWORD                                        :Firmenpasswort setzen
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Weltwirtschaftskrise!{}{}Finanzexperten befürchten schlimmsten Zusammenbruch der Wirtschaft!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Wirtschaftskrise beendet!{}{}Aufschwung des Handels gibt Vertrauen in die Industrie und stärkt die Wirtschaft!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Schalter für großes/kleines Fenster
@@ -2434,7 +2434,7 @@ STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Züge kön
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Z{P ug üge}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Neues Schienenfahrzeug
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Neue E-Loks
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Einschienbahnzüge
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Einschienenbahnzüge
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Neue Magnetzüge
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Fahrzeug bauen
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Fahrzeug duplizieren
@@ -2580,7 +2580,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}Fahrer stirbt in einem Feuerball nach Zusammenstoß mit einem Zug
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Fahrzeug verunglückt!{}{COMMA} sterben nach Zusammenstoß mit einem Zug im Feuerball
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Das Fahrzeug kann nicht gewendet werden...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Fahrzeuge die aus mehreren Einheiten bestehen können nicht gedreht werden
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Fahrzeuge die aus mehreren Einheiten bestehen, können nicht gedreht werden.
 STR_9034_RENAME                                                 :{BLACK}Umbenennen
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Fahrzeug umbenennen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Fahrzeug umbenennen
@@ -2814,7 +2814,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fahrzeug
 STR_NOT_REPLACING                                               :{BLACK}Keine Ersetzung
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Kein Fahrzeug gewählt
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wähle das zu ersetzende Fahrzeug
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wähle den Fahrzeugtyp, der an Stelle des links gewählten Fahrzeugs verwendet werden soll
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wähle den Fahrzeugtyp, der anstelle des links gewählten Fahrzeugs verwendet werden soll
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drücke diesen Button, wenn das Fahrzeug auf der linken Seite nicht ersetzt werden soll
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Drücke diesen Button, wenn das Fahrzeug auf der linken Seite durch das auf der rechten Seite gewählte ersetzt werden soll
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wähle einen Schienentyp für den Loks ersetzt werden sollen

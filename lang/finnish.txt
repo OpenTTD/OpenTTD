@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Tarvitaan tasaista maata.
 STR_0008_WAITING                                                :{BLACK}Lähdössä: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING1}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING1}{YELLOW}  (matkalla:
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (matkalla:
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Vastaanottaa: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Vastaanottaa: {GOLD}
@@ -153,7 +153,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Kartta - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Pelin asetukset
 STR_00B2_MESSAGE                                                :{YELLOW}Viesti
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Viesti: {STRING1}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Viesti: {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ei onnistu....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Aluetta ei voi tyhjentää....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Alkuperäiset oikeudet {COPYRIGHT} 1995 Chris Sawyer, kaikki oikeudet pidätetään
@@ -285,7 +285,7 @@ STR_013C_CARGO                                                  :{BLACK}Rahti
 STR_013D_INFORMATION                                            :{BLACK}Tietoja
 STR_013E_CAPACITIES                                             :{BLACK}Kapasiteetit
 STR_013E_TOTAL_CARGO                                            :{BLACK}Rahtia yhteensä
-STR_013F_CAPACITY                                               :{BLACK}Kapaisteetti: {LTBLUE}{STRING1}
+STR_013F_CAPACITY                                               :{BLACK}Kapaisteetti: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Kokonaisrahtikapasiteetti:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Uusi peli
@@ -381,6 +381,7 @@ STR_SORT_BY_MODEL                                               :Malli
 STR_SORT_BY_VALUE                                               :Arvo
 STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
+STR_SORT_BY_RATING_MAX                                          :Rahtauksen arvosana
 STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
 STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
 
@@ -463,8 +464,8 @@ STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Maa-alue
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Puhdistuksen kustannus: {LTBLUE}-
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Puhdistuksen kustannus: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :-
-STR_01A7_OWNER                                                  :{BLACK}Omistaja: {LTBLUE}{STRING1}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Kunta: {LTBLUE}{STRING1}
+STR_01A7_OWNER                                                  :{BLACK}Omistaja: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Kunta: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ei mitään
 STR_01AA_NAME                                                   :{BLACK}Nimi
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
@@ -950,6 +951,7 @@ STR_CRATES                                                      :laatikkoa
 STR_RES_OTHER                                                   :muuta
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Aikataulua ei voi jakaa...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Aikataulua ei voi kopioida...
