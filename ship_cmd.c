@@ -64,7 +64,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 	uint best_dist = (uint)-1;
 	TileIndex tile;
 	TileIndex tile2 = v->tile;
-
+#if 0
 	if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		byte trackdir = GetVehicleTrackdir(v);
@@ -75,6 +75,8 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 			best_depot = NULL; /* Did not find target */
 		}
 	} else {
+#else
+	{
 		FOR_ALL_DEPOTS(depot) {
 			tile = depot->xy;
 			if (IsValidDepot(depot) && IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, v->owner)) {
@@ -86,6 +88,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 			}
 		}
 	}
+#endif
 	return best_depot;
 }
 
@@ -534,6 +537,7 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 {
 	assert(enterdir>=0 && enterdir<=3);
 
+#if 0
 	if (_patches.new_pathfinding_all) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
@@ -555,6 +559,8 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 			return -1; /* Already at target, reverse? */
 		}
 	} else {
+#else
+	{
 		uint b;
 		uint tot_dist, dist;
 		int track;
@@ -577,6 +583,7 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 			return -1;
 		return track;
 	}
+#endif
 }
 
 static const byte _new_vehicle_direction_table[11] = {

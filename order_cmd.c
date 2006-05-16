@@ -323,8 +323,7 @@ int32 CmdInsertOrder(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	/* For ships, make sure that the station is not too far away from the
 	 * previous destination, for human players with new pathfinding disabled */
 	if (v->type == VEH_Ship && IS_HUMAN_PLAYER(v->owner) &&
-		sel_ord != 0 && GetVehicleOrder(v, sel_ord - 1)->type == OT_GOTO_STATION
-		&& !_patches.new_pathfinding_all) {
+		sel_ord != 0 && GetVehicleOrder(v, sel_ord - 1)->type == OT_GOTO_STATION) {
 
 		int dist = DistanceManhattan(
 			GetStation(GetVehicleOrder(v, sel_ord - 1)->station)->xy,
