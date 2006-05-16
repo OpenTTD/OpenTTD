@@ -151,12 +151,6 @@ static int CDECL NGameAllowedSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? -r : r;
 }
 
-static NGameNameSortFunction* const _ngame_sorter[] = {
-	&NGameNameSorter,
-	&NGameClientSorter,
-	&NGameAllowedSorter
-};
-
 /** (Re)build the network game list as its amount has changed because
  * an item has been added or deleted for example
  * @param ngl list_d struct that contains all necessary information for sorting */
@@ -188,13 +182,20 @@ static void BuildNetworkGameList(network_ql_d *nqld)
 
 static void SortNetworkGameList(network_ql_d *nqld)
 {
+	static NGameNameSortFunction* const ngame_sorter[] = {
+		&NGameNameSorter,
+		&NGameClientSorter,
+		&NGameAllowedSorter
+	};
+
 	NetworkGameList *item;
 	uint i;
 
 	if (!(nqld->l.flags & VL_RESORT)) return;
+	if (nqld->l.list_length == 0) return;
 
 	_internal_sort_order = nqld->l.flags & VL_DESC;
-	qsort(nqld->sort_list, nqld->l.list_length, sizeof(nqld->sort_list[0]), _ngame_sorter[nqld->l.sort_type]);
+	qsort(nqld->sort_list, nqld->l.list_length, sizeof(nqld->sort_list[0]), ngame_sorter[nqld->l.sort_type]);
 
 	/* After sorting ngl->sort_list contains the sorted items. Put these back
 	 * into the original list. Basically nothing has changed, we are only
