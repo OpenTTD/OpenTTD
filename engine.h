@@ -6,7 +6,6 @@
 /** @file engine.h
   */
 
-#include "sprite.h"
 #include "pool.h"
 
 typedef struct RailVehicleInfo {

@@ -41,8 +41,4 @@ typedef struct DrawBuildingsTileStruct {
 #define foreach_draw_tile_seq(idx, list) for (idx = list; ((byte) idx->delta_x) != 0x80; idx++)
 
 
-// XXX Temporary include while juggling about
-#include "newgrf_spritegroup.h"
-
-
 #endif /* SPRITE_H */

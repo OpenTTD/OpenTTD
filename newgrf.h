@@ -3,7 +3,6 @@
 #ifndef NEWGRF_H
 #define NEWGRF_H
 
-#include "sprite.h"
 #include "station.h"
 
 typedef struct GRFLabel {
@@ -38,7 +37,7 @@ typedef struct GRFFile {
 	int spriteset_feature;
 
 	int spritegroups_count;
-	SpriteGroup **spritegroups;
+	struct SpriteGroup **spritegroups;
 
 	StationSpec **stations;
 

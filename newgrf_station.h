@@ -72,8 +72,8 @@ typedef struct StationSpec {
 	 * Used for obtaining the sprite offset of custom sprites, and for
 	 * evaluating callbacks.
 	 */
-	SpriteGroup *spritegroup[NUM_GLOBAL_CID];
-	SpriteGroup *groundgroup;
+	struct SpriteGroup *spritegroup[NUM_GLOBAL_CID];
+	struct SpriteGroup *groundgroup;
 } StationSpec;
 
 /**

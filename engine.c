@@ -13,10 +13,8 @@
 #include "vehicle.h"
 #include "news.h"
 #include "saveload.h"
-#include "sprite.h"
 #include "variables.h"
 #include "train.h"
-#include "newgrf_engine.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
