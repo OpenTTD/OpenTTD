@@ -211,7 +211,7 @@ STR_00F2_300M                                                   :{BLACK}{TINYFON
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Z¸ge
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Straﬂenfahrzeuge
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Fahrzeuge
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Schiffe
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Flugzeuge
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transportstrecken
@@ -455,7 +455,7 @@ STR_AGE                                                         :{COMMA} Jahr{P 
 STR_AGE_RED                                                     :{RED}{COMMA} Jahr{P "" e} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Straﬂenfahrzeug
+STR_019C_ROAD_VEHICLE                                           :Fahrzeug
 STR_019D_AIRCRAFT                                               :Flugzeug
 STR_019E_SHIP                                                   :Schiff
 STR_019F_TRAIN                                                  :Zug
@@ -802,7 +802,7 @@ STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}W‰hrung 
 STR_MEASURING_UNITS                                             :{BLACK}Maﬂeinheiten
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Auswahl der Maﬂeinheiten
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Straﬂenfahrzeuge
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Fahrzeuge
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}W‰hle auf welcher Straﬂenseite der Verkehr fahren soll
 STR_02E9_DRIVE_ON_LEFT                                          :Linksverkehr
@@ -889,7 +889,7 @@ STR_CURR_YEN                                                    :Yen (•)
 STR_CURR_ATS                                                    :÷sterreich. Schilling (ATS)
 STR_CURR_BEF                                                    :Belgische Franc (BEF)
 STR_CURR_CHF                                                    :Schweizer Franken (CHF)
-STR_CURR_CZK                                                    :Tschechische Koruna (CZK)
+STR_CURR_CZK                                                    :Tschechische Kronen (CZK)
 STR_CURR_DEM                                                    :Deutsche Mark (DEM)
 STR_CURR_DKK                                                    :D‰nische Kronen (DKK)
 STR_CURR_ESP                                                    :Peseta (ESP)
@@ -1501,22 +1501,22 @@ STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Br¸cke w
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kann hier keine Straﬂe bauen...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kann diese Straﬂe nicht entfernen...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Fahrzeugdepot-Ausr.
-STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann Straﬂenfahrzeugdepot hier nicht bauen...
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kann Fahrzeugdepot hier nicht bauen...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kann Busbahnhof nicht bauen...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kann Lkw-Ladeplatz nicht bauen...
 STR_180A_ROAD_CONSTRUCTION                                      :Straﬂenbau
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Straﬂe bauen
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Straﬂenfahrzeugdepot bauen (zum Bau und zur Wartung von Fahrzeugen)
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Fahrzeugdepot bauen (zum Bau und zur Wartung von Fahrzeugen)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Busbahnhof bauen
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Lkw-Ladeplatz bauen
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Straﬂenbr¸cke bauen
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Straﬂentunnel bauen
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Zwischen Bau/Abriss der Straﬂe umschalten
-STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ausrichtung des Straﬂenfahrzeugdepots w‰hlen
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ausrichtung des Fahrzeugdepots w‰hlen
 STR_1814_ROAD                                                   :Straﬂe
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Straﬂe mit Laternen
 STR_1816_TREE_LINED_ROAD                                        :Straﬂe mit B‰umen
-STR_1817_ROAD_VEHICLE_DEPOT                                     :Straﬂenfahrzeugdepot
+STR_1817_ROAD_VEHICLE_DEPOT                                     :Fahrzeugdepot
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Bahn¸bergang
 
 ##id 0x2000
@@ -1828,7 +1828,7 @@ STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Zug im Tunnel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Straﬂenfahrzeug im Tunnel
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Fahrzeug im Tunnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Ein anderer Tunnel ist im Weg
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Kann das Land am anderen Ende des Tunnels nicht anheben
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Der Tunnel muss zuerst abgerissen werden
@@ -2020,7 +2020,7 @@ STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Flugzeugb
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Schiffbetriebskosten
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Betriebskosten Geb‰ude
 STR_7018_TRAIN_INCOME                                           :{GOLD}Einnahmen Z¸ge
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Einnahmen Straﬂenfahrzeuge
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Einnahmen Fahrzeuge
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Einnahmen Flugzeuge
 STR_701B_SHIP_INCOME                                            :{GOLD}Einnahmen Schiffe
 STR_701C_LOAN_INTEREST                                          :{GOLD}Kreditzinsen
@@ -2666,7 +2666,7 @@ STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neues Flugzeug
 STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug duplizieren
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke diese Schaltfl‰che und dann auf eine Flugzeug innerhalb oder auﬂerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfl‰che und dann auf ein Flugzeug innerhalb oder auﬂerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neues Flugzeug
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Flugzeug bauen
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht bauen...
