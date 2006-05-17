@@ -1793,7 +1793,7 @@ static void VehicleNewName(byte *buf, int len)
 	for (; id < endid && len > 0; id++) {
 		size_t ofs = strlen(name) + 1;
 
-		if (ofs < 128) {
+		if (ofs > 1 && ofs < 128) {
 			DEBUG(grf, 8) ("VehicleNewName: %d <- %s", id, name);
 
 			switch (feature) {
@@ -1857,7 +1857,13 @@ static void VehicleNewName(byte *buf, int len)
 #endif
 			}
 		} else {
-			DEBUG(grf, 7) ("VehicleNewName: Too long a name (%d)", ofs);
+			/* ofs is the string length + 1, so if the string is empty, ofs
+			 * is 1 */
+			if (ofs == 1) {
+				DEBUG(grf, 7) ("VehicleNewName: Can't add empty name");
+			} else {
+				DEBUG(grf, 7) ("VehicleNewName: Too long a name (%d)", ofs);
+			}
 		}
 		name += ofs;
 		len -= ofs;
