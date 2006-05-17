@@ -65,7 +65,6 @@ SpriteGroup *AllocateSpriteGroup(void)
 void InitializeSpriteGroupPool(void)
 {
 	CleanPool(&_spritegroup_pool);
-	AddBlockToPool(&_spritegroup_pool);
 
 	_spritegroup_count = 0;
 }
