@@ -534,6 +534,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			byte cargo_classes = 0;
 			uint common_cargo_best = 0;
 			uint common_cargos[NUM_GLOBAL_CID];
+			byte user_def_data = 0;
 			CargoID cargo;
 			CargoID common_cargo_type = GC_PASSENGERS;
 
@@ -547,6 +548,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				cargo = _global_cargo_id[_opt.landscape][u->cargo_type];
 				cargo_classes |= _cargo_classes[cargo];
 				common_cargos[cargo]++;
+				user_def_data |= RailVehInfo(u->engine_type)->user_def_data;
 			}
 
 			/* Pick the most common cargo type */
@@ -557,7 +559,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				}
 			}
 
-			return cargo_classes | (common_cargo_type << 8);
+			return cargo_classes | (common_cargo_type << 8) | (user_def_data << 24);
 		}
 
 		case 0x43: /* Player information */

@@ -324,7 +324,7 @@ const EngineInfo orig_engine_info[] = {
  * @param j cargo_type
  * @param k ai_rank
  */
-#define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 0 }
+#define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 0, 0 }
 #define M RVI_MULTIHEAD
 #define W RVI_WAGON
 #define S 0

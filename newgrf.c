@@ -437,6 +437,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			}
 			break;
 
+		case 0x25: /* User-defined bit mask to set when checking veh. var. 42 */
+			FOR_EACH_OBJECT rvi[i].user_def_data = grf_load_byte(&buf);
+			break;
+
 		case 0x27: /* Miscellaneous flags */
 			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
 			break;
@@ -454,7 +458,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 		case 0x1C: /* Refit cost */
 		case 0x1F: /* Tractive effort */
 		case 0x20: /* Air drag */
-		case 0x25: /* User-defined bit mask to set when checking veh. var. 42 */
 		case 0x26: /* Retire vehicle early */
 			/* TODO */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
