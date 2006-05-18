@@ -861,6 +861,15 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 	if (exec) {
 		SetRailType(tile, totype);
 		MarkTileDirtyByTile(tile);
+
+		/* Update build vehicle window related to this depot */
+		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
+			Window *w = FindWindowById(WC_BUILD_VEHICLE, tile);
+			if (w != NULL) {
+				WP(w,buildtrain_d).railtype = totype;
+				SetWindowDirty(w);
+			}
+		}
 	}
 
 	return _price.build_rail / 2;
