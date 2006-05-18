@@ -6,6 +6,7 @@
 #define NEWGRF_STATION_H
 
 #include "engine.h"
+#include "newgrf_cargo.h"
 
 typedef enum {
 	STAT_CLASS_DFLT,     ///< Default station class.

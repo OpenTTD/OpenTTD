@@ -635,6 +635,7 @@ SRCS += network_gui.c
 SRCS += network_server.c
 SRCS += network_udp.c
 SRCS += newgrf.c
+SRCS += newgrf_cargo.c
 SRCS += newgrf_engine.c
 SRCS += newgrf_spritegroup.c
 SRCS += newgrf_station.c

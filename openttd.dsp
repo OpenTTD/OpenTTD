@@ -271,6 +271,10 @@ SOURCE=.\newgrf.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\newgrf_cargo.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\newgrf_engine.c
 # End Source File
 # Begin Source File
@@ -669,6 +673,10 @@ SOURCE=.\newgrf.h
 # Begin Source File
 
 SOURCE=.\newgrf_callbacks.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\newgrf_cargo.h
 # End Source File
 # Begin Source File
 

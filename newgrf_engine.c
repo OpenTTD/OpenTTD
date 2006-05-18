@@ -14,22 +14,9 @@
 #include "newgrf_engine.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
+#include "newgrf_cargo.h"
 
 
-/* XXX These tables should be moved / ripped out when newcargos is implemented. */
-
-/* Cargo classes */
-enum {
-	CC_NONE         = 0,
-	CC_PASSENGERS   = 1 << 0,
-	CC_MAIL         = 1 << 1,
-	CC_EXPRESS      = 1 << 2,
-	CC_ARMOURED     = 1 << 3,
-	CC_BULK         = 1 << 4,
-	CC_PIECE_GOODS  = 1 << 5,
-	CC_LIQUID       = 1 << 6,
-	CC_REFRIGERATED = 1 << 7,
-};
 
 /* Default cargo classes */
 static const uint16 _cargo_classes[NUM_GLOBAL_CID] = {
@@ -61,9 +48,9 @@ static const uint16 _cargo_classes[NUM_GLOBAL_CID] = {
 	CC_LIQUID,
 	CC_PIECE_GOODS,
 	CC_PIECE_GOODS,
-	CC_NONE,
-	CC_NONE,
-	CC_NONE,
+	CC_NOAVAILABLE,
+	CC_NOAVAILABLE,
+	CC_NOAVAILABLE,
 };
 
 int _traininfo_vehicle_pitch = 0;

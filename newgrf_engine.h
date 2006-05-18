@@ -4,6 +4,7 @@
 #define NEWGRF_ENGINE_H
 
 #include "direction.h"
+#include "newgrf_cargo.h"
 
 /** @file newgrf_engine.h
  */
@@ -12,10 +13,10 @@ extern int _traininfo_vehicle_pitch;
 extern int _traininfo_vehicle_width;
 
 VARDEF const uint32 _default_refitmasks[NUM_VEHICLE_TYPES];
-VARDEF const CargoID _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];
-VARDEF const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE];
-VARDEF const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID];
-VARDEF const uint32 cargo_classes[16];
+extern const CargoID _global_cargo_id[NUM_LANDSCAPE][NUM_CARGO];
+extern const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE];
+extern const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID];
+extern const uint32 cargo_classes[16];
 
 void SetWagonOverrideSprites(EngineID engine, const struct SpriteGroup *group, byte *train_id, int trains);
 void SetCustomEngineSprites(EngineID engine, byte cargo, const struct SpriteGroup *group);
