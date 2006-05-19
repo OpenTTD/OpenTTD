@@ -1174,7 +1174,7 @@ static const SettingDescGlobVarList _network_settings[] = {
 	 SDTG_STR("server_bind_ip",        SLE_STRB, S, 0, _network_server_bind_ip_host,  "0.0.0.0",   STR_NULL, NULL),
 	 SDTG_VAR("server_port",         SLE_UINT16, S, 0, _network_server_port,          NETWORK_DEFAULT_PORT, 0, 65535,STR_NULL, NULL),
 	SDTG_BOOL("server_advertise",                S, 0, _network_advertise,            false,       STR_NULL, NULL),
-	SDTG_BOOL("lan_internet",                    S, 0, _network_lan_internet,         false,       STR_NULL, NULL),
+	 SDTG_VAR("lan_internet",         SLE_UINT8, S, 0, _network_lan_internet,           0, 0,    1,STR_NULL, NULL),
 	 SDTG_STR("player_name",           SLE_STRB, S, 0, _network_player_name,          NULL,        STR_NULL, NULL),
 	 SDTG_STR("server_password",       SLE_STRB, S, 0, _network_server_password,      NULL,        STR_NULL, NULL),
 	 SDTG_STR("rcon_password",         SLE_STRB, S, 0, _network_rcon_password,        NULL,        STR_NULL, NULL),
