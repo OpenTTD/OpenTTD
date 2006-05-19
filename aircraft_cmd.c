@@ -1253,7 +1253,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 	if (old_order.type == OT_GOTO_STATION &&
 			v->current_order.station == v->last_station_visited) {
 		v->current_order.flags =
-			(old_order.flags & (OF_FULL_LOAD | OF_UNLOAD)) | OF_NON_STOP;
+			(old_order.flags & (OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER)) | OF_NON_STOP;
 	}
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
