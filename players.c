@@ -1146,16 +1146,16 @@ static const SaveLoad _player_desc[] = {
 	SLE_CONDARR(Player,yearly_expenses,	SLE_FILE_I32|SLE_VAR_I64, 3*13, 0, 1),
 	SLE_CONDARR(Player,yearly_expenses,	SLE_INT64, 3*13, 2, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Player,is_ai,			SLE_UINT8, 2, SL_MAX_VERSION),
-	SLE_CONDVAR(Player,is_active,	SLE_UINT8, 4, SL_MAX_VERSION),
+	SLE_CONDVAR(Player,is_ai,			SLE_BOOL, 2, SL_MAX_VERSION),
+	SLE_CONDVAR(Player,is_active,	SLE_BOOL, 4, SL_MAX_VERSION),
 
 	// Engine renewal settings
 	SLE_CONDNULL(512, 16, 18),
 	SLE_CONDREF(Player,engine_renew_list, REF_ENGINE_RENEWS, 19, SL_MAX_VERSION),
-	SLE_CONDVAR(Player,engine_renew,         SLE_UINT8,      16, SL_MAX_VERSION),
+	SLE_CONDVAR(Player,engine_renew,         SLE_BOOL,       16, SL_MAX_VERSION),
 	SLE_CONDVAR(Player,engine_renew_months,  SLE_INT16,      16, SL_MAX_VERSION),
 	SLE_CONDVAR(Player,engine_renew_money,  SLE_UINT32,      16, SL_MAX_VERSION),
-	SLE_CONDVAR(Player,renew_keep_length,    SLE_UINT8,       2, SL_MAX_VERSION),	// added with 16.1, but was blank since 2
+	SLE_CONDVAR(Player,renew_keep_length,    SLE_BOOL,        2, SL_MAX_VERSION),	// added with 16.1, but was blank since 2
 
 	// reserve extra space in savegame here. (currently 63 bytes)
 	SLE_CONDNULL(63, 2, SL_MAX_VERSION),
