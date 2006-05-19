@@ -183,6 +183,7 @@ struct Vehicle {
 	StationID cargo_source;// source of cargo
 	uint16 cargo_cap;	// total capacity
 	uint16 cargo_count;// how many pieces are used
+	byte cargo_subtype;      ///< Used for livery refits (NewGRF variations)
 
 	byte day_counter; // increased by one for each day
 	byte tick_counter;// increased by one for each tick

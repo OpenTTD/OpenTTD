@@ -535,6 +535,7 @@ static void AddArticulatedParts(const RailVehicleInfo *rvi, Vehicle **vl)
 		u->spritenum = rvi_artic->image_index;
 		if (flip_image) u->spritenum++;
 		u->cargo_type = rvi_artic->cargo_type;
+		u->cargo_subtype = 0;
 		u->cargo_cap = rvi_artic->capacity;
 		u->max_speed = 0;
 		u->max_age = 0;
@@ -616,6 +617,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			}
 
 			v->cargo_type = rvi->cargo_type;
+			v->cargo_subtype = 0;
 			v->cargo_cap = rvi->capacity;
 			v->value = value;
 //			v->day_counter = 0;
@@ -681,6 +683,7 @@ static void AddRearEngineToMultiheadedTrain(Vehicle* v, Vehicle* u, bool buildin
 	SetMultiheaded(u);
 	u->spritenum = v->spritenum + 1;
 	u->cargo_type = v->cargo_type;
+	u->cargo_subtype = v->cargo_subtype;
 	u->cargo_cap = v->cargo_cap;
 	u->u.rail.railtype = v->u.rail.railtype;
 	if (building) v->next = u;
@@ -763,6 +766,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
 			v->spritenum = rvi->image_index;
 			v->cargo_type = rvi->cargo_type;
+			v->cargo_subtype = 0;
 			v->cargo_cap = rvi->capacity;
 			v->max_speed = rvi->max_speed;
 			v->value = value;

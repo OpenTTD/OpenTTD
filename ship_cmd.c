@@ -863,6 +863,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->spritenum = svi->image_index;
 		v->cargo_type = svi->cargo_type;
+		v->cargo_subtype = 0;
 		v->cargo_cap = svi->capacity;
 		v->value = value;
 

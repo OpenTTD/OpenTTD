@@ -156,6 +156,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v->spritenum = rvi->image_index;
 		v->cargo_type = rvi->cargo_type;
+		v->cargo_subtype = 0;
 		v->cargo_cap = rvi->capacity;
 //		v->cargo_count = 0;
 		v->value = cost;

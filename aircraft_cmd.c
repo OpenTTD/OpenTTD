@@ -236,6 +236,8 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->cargo_type = CT_PASSENGERS;
 		u->cargo_type = CT_MAIL;
 
+		v->cargo_subtype = 0;
+
 		v->string_id = STR_SV_AIRCRAFT_NAME;
 //		v->next_order_param = v->next_order = 0;
 

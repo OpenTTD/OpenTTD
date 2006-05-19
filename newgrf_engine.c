@@ -675,7 +675,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x5F: return v->value & 0xFF;
 		case 0x60: return v->string_id;
 		case 0x61: return v->string_id & 0xFF;
-		case 0x72: return 0; // XXX Refit cycle
+		case 0x72: return v->cargo_subtype;
 		case 0x7A: return v->random_bits;
 		case 0x7B: return v->waiting_triggers;
 	}
