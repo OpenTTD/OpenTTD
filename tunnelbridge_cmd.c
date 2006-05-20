@@ -1208,23 +1208,6 @@ static inline DiagDirection GetBridgeRampDirection(TileIndex t) {return (DiagDir
 static inline bool IsTransportUnderBridge(TileIndex t) {return HASBIT(_m[t].m5, 5);}
 static inline uint GetBridgeAxis(TileIndex t) {return GB(_m[t].m5, 0, 1);}
 
-static uint GetTileMaxZ(TileIndex t)
-{
-	uint max;
-	uint h;
-
-	h = TileHeight(t);
-	max = h;
-	h = TileHeight(t + TileDiffXY(1, 0));
-	if (h > max) max = h;
-	h = TileHeight(t + TileDiffXY(0, 1));
-	if (h > max) max = h;
-	h = TileHeight(t + TileDiffXY(1, 1));
-	if (h > max) max = h;
-	return max * 8;
-}
-
-
 static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 {
 	TileIndex tile = ti->tile;

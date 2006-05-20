@@ -50,6 +50,7 @@ uint GetMapExtraBits(TileIndex tile);
 uint GetTileh(uint n, uint w, uint e, uint s, uint *h);
 uint GetTileSlope(TileIndex tile, uint *h);
 uint GetTileZ(TileIndex tile);
+uint GetTileMaxZ(TileIndex tile);
 
 static inline bool CorrectZ(uint tileh)
 {
