@@ -10,6 +10,7 @@
 #include "tile.h"
 #include "vehicle.h"
 #include "viewport.h"
+#include "window.h"
 #include "command.h"
 #include "pathfind.h"
 #include "engine.h"
@@ -985,6 +986,15 @@ static int32 DoConvertRail(TileIndex tile, uint totype, bool exec)
 	if (exec) {
 		SB(_m[tile].m3, 0, 4, totype);
 		MarkTileDirtyByTile(tile);
+
+		/* Update build vehicle window related to this depot */
+		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
+			Window *w = FindWindowById(WC_BUILD_VEHICLE, tile);
+			if (w != NULL) {
+				WP(w,buildtrain_d).railtype = totype;
+				SetWindowDirty(w);
+			}
+		}
 	}
 
 	return _price.build_rail / 2;
