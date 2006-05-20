@@ -1208,6 +1208,23 @@ static inline DiagDirection GetBridgeRampDirection(TileIndex t) {return (DiagDir
 static inline bool IsTransportUnderBridge(TileIndex t) {return HASBIT(_m[t].m5, 5);}
 static inline uint GetBridgeAxis(TileIndex t) {return GB(_m[t].m5, 0, 1);}
 
+static uint GetTileMaxZ(TileIndex t)
+{
+	uint max;
+	uint h;
+
+	h = TileHeight(t);
+	max = h;
+	h = TileHeight(t + TileDiffXY(1, 0));
+	if (h > max) max = h;
+	h = TileHeight(t + TileDiffXY(0, 1));
+	if (h > max) max = h;
+	h = TileHeight(t + TileDiffXY(1, 1));
+	if (h > max) max = h;
+	return max * 8;
+}
+
+
 static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 {
 	TileIndex tile = ti->tile;
@@ -1522,12 +1539,7 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 		}
 	} else if (_m[tile].m5 & 0x80) {
 		if (v->type == VEH_Road || (v->type == VEH_Train && IsFrontEngine(v))) {
-			uint h;
-
-			if (GetTileSlope(tile, &h) != 0)
-				h += 8; // Compensate for possible foundation
-			if (!(_m[tile].m5 & 0x40) || // start/end tile of bridge
-					myabs(h - v->z_pos) > 2) { // high above the ground -> on the bridge
+			if (IsBridgeRamp(tile) || v->z_pos > GetTileMaxZ(tile)) {
 				/* modify speed of vehicle */
 				uint16 spd = _bridge[GetBridgeType(tile)].speed;
 				if (v->type == VEH_Road) spd *= 2;
