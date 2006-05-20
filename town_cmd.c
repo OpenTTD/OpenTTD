@@ -1442,18 +1442,22 @@ const byte _town_action_costs[8] = {
 	2, 4, 9, 35, 48, 53, 117, 175
 };
 
-typedef void TownActionProc(Town *t, int action);
-
-static void TownActionAdvertise(Town *t, int action)
+static void TownActionAdvertiseSmall(Town* t)
 {
-	static const byte _advertising_amount[3] = {0x40, 0x70, 0xA0};
-	static const byte _advertising_radius[3] = {10, 15, 20};
-	ModifyStationRatingAround(t->xy, _current_player,
-		_advertising_amount[action],
-		_advertising_radius[action]);
+	ModifyStationRatingAround(t->xy, _current_player, 0x40, 10);
 }
 
-static void TownActionRoadRebuild(Town *t, int action)
+static void TownActionAdvertiseMedium(Town* t)
+{
+	ModifyStationRatingAround(t->xy, _current_player, 0x70, 15);
+}
+
+static void TownActionAdvertiseLarge(Town* t)
+{
+	ModifyStationRatingAround(t->xy, _current_player, 0xA0, 20);
+}
+
+static void TownActionRoadRebuild(Town* t)
 {
 	const Player* p;
 
@@ -1495,7 +1499,7 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 	return true;
 }
 
-static void TownActionBuildStatue(Town *t, int action)
+static void TownActionBuildStatue(Town* t)
 {
 	// Layouted as an outward spiral
 	static const TileIndexDiffC _statue_tiles[] = {
@@ -1529,7 +1533,7 @@ static void TownActionBuildStatue(Town *t, int action)
 	}
 }
 
-static void TownActionFundBuildings(Town *t, int action)
+static void TownActionFundBuildings(Town* t)
 {
 	// Build next tick
 	t->grow_counter = 1;
@@ -1539,7 +1543,7 @@ static void TownActionFundBuildings(Town *t, int action)
 	t->fund_buildings_months = 3;
 }
 
-static void TownActionBuyRights(Town *t, int action)
+static void TownActionBuyRights(Town* t)
 {
 	t->exclusive_counter = 12;
 	t->exclusivity = _current_player;
@@ -1547,7 +1551,7 @@ static void TownActionBuyRights(Town *t, int action)
 	ModifyStationRatingAround(t->xy, _current_player, 130, 17);
 }
 
-static void TownActionBribe(Town *t, int action)
+static void TownActionBribe(Town* t)
 {
 	if (!RandomRange(15)) {
 		Station *st;
@@ -1580,10 +1584,11 @@ static void TownActionBribe(Town *t, int action)
 	}
 }
 
+typedef void TownActionProc(Town* t);
 static TownActionProc * const _town_action_proc[] = {
-	TownActionAdvertise,
-	TownActionAdvertise,
-	TownActionAdvertise,
+	TownActionAdvertiseSmall,
+	TownActionAdvertiseMedium,
+	TownActionAdvertiseLarge,
 	TownActionRoadRebuild,
 	TownActionBuildStatue,
 	TownActionFundBuildings,
@@ -1616,7 +1621,7 @@ int32 CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost = (_price.build_industry >> 8) * _town_action_costs[p2];
 
 	if (flags & DC_EXEC) {
-		_town_action_proc[p2](t, p2);
+		_town_action_proc[p2](t);
 		InvalidateWindow(WC_TOWN_AUTHORITY, p1);
 	}
 

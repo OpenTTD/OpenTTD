@@ -1006,12 +1006,12 @@ void OnTick_Industry(void)
 }
 
 
-static bool CheckNewIndustry_NULL(TileIndex tile, IndustryType type)
+static bool CheckNewIndustry_NULL(TileIndex tile)
 {
 	return true;
 }
 
-static bool CheckNewIndustry_Forest(TileIndex tile, IndustryType type)
+static bool CheckNewIndustry_Forest(TileIndex tile)
 {
 	if (_opt.landscape == LT_HILLY) {
 		if (GetTileZ(tile) < _opt.snow_line + TILE_HEIGHT * 2U) {
@@ -1022,21 +1022,28 @@ static bool CheckNewIndustry_Forest(TileIndex tile, IndustryType type)
 	return true;
 }
 
+static bool CheckNewIndustry_OilRefinery(TileIndex tile)
+{
+	if (_game_mode == GM_EDITOR) return true;
+	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16) return true;
+
+	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
+	return false;
+}
+
 extern bool _ignore_restrictions;
 
-/* Oil Rig and Oil Refinery */
-static bool CheckNewIndustry_Oil(TileIndex tile, IndustryType type)
+static bool CheckNewIndustry_OilRig(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
-	if (_game_mode == GM_EDITOR && type != IT_OIL_RIG)   return true;
-	if ((type != IT_OIL_RIG || TileHeight(tile) == 0) &&
+	if (TileHeight(tile) == 0 &&
 			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16)   return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
 }
 
-static bool CheckNewIndustry_Farm(TileIndex tile, IndustryType type)
+static bool CheckNewIndustry_Farm(TileIndex tile)
 {
 	if (_opt.landscape == LT_HILLY) {
 		if (GetTileZ(tile) + TILE_HEIGHT * 2 >= _opt.snow_line) {
@@ -1047,7 +1054,7 @@ static bool CheckNewIndustry_Farm(TileIndex tile, IndustryType type)
 	return true;
 }
 
-static bool CheckNewIndustry_Plantation(TileIndex tile, IndustryType type)
+static bool CheckNewIndustry_Plantation(TileIndex tile)
 {
 	if (GetTropicZone(tile) == TROPICZONE_DESERT) {
 		_error_message = STR_0239_SITE_UNSUITABLE;
@@ -1057,7 +1064,7 @@ static bool CheckNewIndustry_Plantation(TileIndex tile, IndustryType type)
 	return true;
 }
 
-static bool CheckNewIndustry_Water(TileIndex tile, IndustryType type)
+static bool CheckNewIndustry_Water(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_DESERT) {
 		_error_message = STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT;
@@ -1067,7 +1074,7 @@ static bool CheckNewIndustry_Water(TileIndex tile, IndustryType type)
 	return true;
 }
 
-static bool CheckNewIndustry_Lumbermill(TileIndex tile, IndustryType type)
+static bool CheckNewIndustry_Lumbermill(TileIndex tile)
 {
 	if (GetTropicZone(tile) != TROPICZONE_RAINFOREST) {
 		_error_message = STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST;
@@ -1076,21 +1083,22 @@ static bool CheckNewIndustry_Lumbermill(TileIndex tile, IndustryType type)
 	return true;
 }
 
-static bool CheckNewIndustry_BubbleGen(TileIndex tile, IndustryType type)
+static bool CheckNewIndustry_BubbleGen(TileIndex tile)
 {
 	return GetTileZ(tile) <= TILE_HEIGHT * 4;
 }
 
-typedef bool CheckNewIndustryProc(TileIndex tile, IndustryType type);
+typedef bool CheckNewIndustryProc(TileIndex tile);
 static CheckNewIndustryProc * const _check_new_industry_procs[CHECK_END] = {
 	CheckNewIndustry_NULL,
 	CheckNewIndustry_Forest,
-	CheckNewIndustry_Oil,
+	CheckNewIndustry_OilRefinery,
 	CheckNewIndustry_Farm,
 	CheckNewIndustry_Plantation,
 	CheckNewIndustry_Water,
 	CheckNewIndustry_Lumbermill,
 	CheckNewIndustry_BubbleGen,
+	CheckNewIndustry_OilRig
 };
 
 static bool CheckSuitableIndustryPos(TileIndex tile)
@@ -1409,7 +1417,7 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	if (!_check_new_industry_procs[indspec->check_proc](tile, p1)) return CMD_ERROR;
+	if (!_check_new_industry_procs[indspec->check_proc](tile)) return CMD_ERROR;
 
 	t = CheckMultipleIndustryInTown(tile, p1);
 	if (t == NULL) return CMD_ERROR;
@@ -1445,7 +1453,7 @@ Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 
 	indspec =  GetIndustrySpec(type);
 
-	if (!_check_new_industry_procs[indspec->check_proc](tile, type)) return NULL;
+	if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
 
 	t = CheckMultipleIndustryInTown(tile, type);
 	if (t == NULL) return NULL;

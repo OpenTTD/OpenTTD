@@ -1070,12 +1070,13 @@ static const IndustryTileTable * const _tile_table_sugar_mine[] = {
 typedef enum CheckProcs {
 	CHECK_NOTHING    = 0,
 	CHECK_FOREST     = 1,
-	CHECK_OIL        = 2,
+	CHECK_REFINERY   = 2,
 	CHECK_FARM       = 3,
 	CHECK_PLANTATION = 4,
 	CHECK_WATER      = 5,
 	CHECK_LUMBERMILL = 6,
 	CHECK_BUBBLEGEN  = 7,
+	CHECK_OIL_RIG    = 8,
 	CHECK_END,
 } CheckProc;
 
@@ -1115,13 +1116,13 @@ static const IndustrySpec _industry_specs[] = {
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4835_INCREASES_PRODUCTION,     STR_483A_INSECT_INFESTATION_CAUSES),
 
 	MK(_tile_table_oil_refinery,               31,
-	   IT_OIL_RIG,        IT_INVALID,          IT_INVALID,       CHECK_OIL,
+	   IT_OIL_RIG,        IT_INVALID,          IT_INVALID,       CHECK_REFINERY,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_OIL,            CT_INVALID,          CT_INVALID,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
 	MK(_tile_table_oil_rig,                    240,
-	   IT_OIL_REFINERY,   IT_INVALID,          IT_INVALID,       CHECK_OIL,
+	   IT_OIL_REFINERY,   IT_INVALID,          IT_INVALID,       CHECK_OIL_RIG,
 	   CT_OIL,        15, CT_PASSENGERS,    2, 5,
 	   CT_INVALID,        CT_INVALID,          CT_INVALID,
 	   STR_4832_ANNOUNCES_IMMINENT_CLOSURE,    STR_4837_NEW_OIL_RESERVES_FOUND,   STR_4839_PRODUCTION_DOWN_BY_50),
