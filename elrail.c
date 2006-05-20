@@ -214,8 +214,8 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		PPPpreferred[i] *= HASBIT(PCPstatus, i);
 		PPPallowed[i] *= HASBIT(PCPstatus, i);
 
-		/* Station on a non-flat tile means foundation. add one height level and adjust tileh */
-		if (IsTileType(neighbour, MP_STATION) && tileh[TS_NEIGHBOUR] != SLOPE_FLAT) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
+		/* A station is always "flat", so adjust the tileh accordingly */
+		if (IsTileType(neighbour, MP_STATION)) tileh[TS_NEIGHBOUR] = SLOPE_FLAT;
 
 		/* Read the foundataions if they are present, and adjust the tileh */
 		if (IsTileType(neighbour, MP_RAILWAY)) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], trackconfig[TS_NEIGHBOUR]);
