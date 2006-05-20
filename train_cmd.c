@@ -88,6 +88,7 @@ void TrainConsistChanged(Vehicle* v)
 	rvi_v = RailVehInfo(v->engine_type);
 	first_engine = IsFrontEngine(v) ? v->engine_type : INVALID_VEHICLE;
 	v->u.rail.cached_total_length = 0;
+	v->u.rail.compatible_railtypes = 0;
 
 	for (u = v; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi_u = RailVehInfo(u->engine_type);
@@ -98,6 +99,7 @@ void TrainConsistChanged(Vehicle* v)
 
 		// update the 'first engine'
 		u->u.rail.first_engine = (v == u) ? INVALID_VEHICLE : first_engine;
+		u->u.rail.railtype = GetEngine(u->engine_type)->railtype;
 
 		if (rvi_u->visual_effect != 0) {
 			u->u.rail.cached_vis_effect = rvi_u->visual_effect;
@@ -134,6 +136,11 @@ void TrainConsistChanged(Vehicle* v)
 					power += rvi_v->pow_wag_power;
 				}
 			}
+
+			/* Do not count powered wagons for the compatible railtypes, as
+			 * wagons always have railtype normal */
+			if (rvi_u->power > 0)
+				v->u.rail.compatible_railtypes |= GetRailTypeInfo(u->u.rail.railtype)->compatible_railtypes;
 
 			// max speed is the minimum of the speed limits of all vehicles in the consist
 			if (!(rvi_u->flags & RVI_WAGON) || _patches.wagon_speed_limits)
@@ -1793,7 +1800,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 		Trackdir trackdir_rev = ReverseTrackdir(GetVehicleTrackdir(last));
 
 		assert (trackdir != INVALID_TRACKDIR);
-		ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, last->tile, trackdir_rev, TRANSPORT_RAIL, v->owner, v->u.rail.railtype, NPF_INFINITE_PENALTY);
+		ftd = NPFRouteToDepotBreadthFirstTwoWay(v->tile, trackdir, last->tile, trackdir_rev, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes, NPF_INFINITE_PENALTY);
 		if (ftd.best_bird_dist == 0) {
 			/* Found target */
 			tfdd.tile = ftd.node.tile;
@@ -1809,13 +1816,13 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 		// search in the forward direction first.
 		i = v->direction >> 1;
 		if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) i = (i - 1) & 3;
-		NewTrainPathfind(tile, 0, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
+		NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		if (tfdd.best_length == (uint)-1){
 			tfdd.reverse = true;
 			// search in backwards direction
 			i = (v->direction^4) >> 1;
 			if (!(v->direction & 1) && v->u.rail.track != _state_dir_table[i]) i = (i - 1) & 3;
-			NewTrainPathfind(tile, 0, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
+			NewTrainPathfind(tile, 0, v->u.rail.compatible_railtypes, i, (NTPEnumProc*)NtpCallbFindDepot, &tfdd);
 		}
 	}
 
@@ -2137,7 +2144,7 @@ static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirB
 		trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != 0xff);
 
-		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype);
+		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes);
 
 		if (ftd.best_trackdir == 0xff) {
 			/* We are already at our target. Just do something */
@@ -2161,7 +2168,7 @@ static byte ChooseTrainTrack(Vehicle *v, TileIndex tile, int enterdir, TrackdirB
 		fd.best_track = 0xFF;
 
 		NewTrainPathfind(tile - TileOffsByDir(enterdir), v->dest_tile,
-			enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
+			v->u.rail.compatible_railtypes, enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
 		if (fd.best_track == 0xff) {
 			// blaha
@@ -2217,7 +2224,7 @@ static bool CheckReverseTrain(Vehicle *v)
 		assert(trackdir != 0xff);
 		assert(trackdir_rev != 0xff);
 
-		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.railtype);
+		ftd = NPFRouteToStationOrTileTwoWay(v->tile, trackdir, last->tile, trackdir_rev, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes);
 		if (ftd.best_bird_dist != 0) {
 			/* We didn't find anything, just keep on going straight ahead */
 			reverse_best = false;
@@ -2232,7 +2239,7 @@ static bool CheckReverseTrain(Vehicle *v)
 			fd.best_bird_dist = (uint)-1;
 			fd.best_track_dist = (uint)-1;
 
-			NewTrainPathfind(v->tile, v->dest_tile, reverse ^ i, (NTPEnumProc*)NtpCallbFindStation, &fd);
+			NewTrainPathfind(v->tile, v->dest_tile, v->u.rail.compatible_railtypes, reverse ^ i, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
 			if (best_track != -1) {
 				if (best_bird_dist != 0) {
@@ -2601,7 +2608,7 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 	return
 		IsTileOwner(tile, v->owner) && (
 			!IsFrontEngine(v) ||
-			IsCompatibleRail(v->u.rail.railtype, GetRailType(tile))
+			HASBIT(v->u.rail.compatible_railtypes, GetRailType(tile))
 		);
 }
 

@@ -5,8 +5,8 @@
 #include "functions.h"
 #include "map.h"
 #include "tile.h"
-#include "pathfind.h"
 #include "rail.h"
+#include "pathfind.h"
 #include "debug.h"
 #include "variables.h"
 #include "depot.h"
@@ -442,7 +442,8 @@ typedef struct {
 	void *userdata;
 	TileIndex dest;
 
-	byte tracktype;
+	TransportType tracktype;
+	byte railtypes;
 	uint maxlength;
 
 	HashLink *new_link;
@@ -728,6 +729,11 @@ start_at:
 					/* We are not driving into the tunnel, or it
 					 * is an invalid tunnel */
 					continue;
+
+				if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
+					bits = 0;
+					break;
+				}
 				flotr = FindLengthOfTunnel(tile, direction);
 				si.cur_length += flotr.length * DIAG_FACTOR;
 				tile = flotr.tile;
@@ -760,6 +766,12 @@ start_at:
 				// Check that the tile contains exactly one track
 				if (bits == 0 || KILL_FIRST_BIT(bits) != 0) break;
 
+				if ((IsTileType(tile, MP_STREET) && !HASBIT(tpf->railtypes, GB(_m[tile].m4, 0, 4))) ||
+				      !HASBIT(tpf->railtypes, GetRailType(tile))) {
+					bits = 0;
+					break;
+				}
+
 				///////////////////
 				// If we reach here, the tile has exactly one track.
 				//   tile - index to a tile that is not rail tile, but still straight (with optional signals)
@@ -780,6 +792,11 @@ start_at:
 			 * or Intersection => End of rail segment. We check this agains all the
 			 * bits, not just reachable ones, to prevent infinite loops. */
 			if (bits == 0 || TracksOverlap(allbits)) break;
+
+			if (!HASBIT(tpf->railtypes, GetRailType(tile))) {
+				bits = 0;
+				break;
+			}
 
 			/* If we reach here, the tile has exactly one track, and this
 			 track is reachable => Rail segment continues */
@@ -916,14 +933,15 @@ start_at:
 
 
 // new pathfinder for trains. better and faster.
-void NewTrainPathfind(TileIndex tile, TileIndex dest, byte direction, NTPEnumProc *enum_proc, void *data)
+void NewTrainPathfind(TileIndex tile, TileIndex dest, byte railtypes, byte direction, NTPEnumProc *enum_proc, void *data)
 {
 	NewTrackPathFinder tpf;
 
 	tpf.dest = dest;
 	tpf.userdata = data;
 	tpf.enum_proc = enum_proc;
-	tpf.tracktype = 0;
+	tpf.tracktype = TRANSPORT_RAIL;
+	tpf.railtypes = railtypes;
 	tpf.maxlength = min(_patches.pf_maxlength * 3, 10000);
 	tpf.nstack = 0;
 	tpf.new_link = tpf.links;

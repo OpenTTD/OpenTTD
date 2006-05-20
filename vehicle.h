@@ -71,6 +71,7 @@ typedef struct VehicleRail {
 	byte track;
 	byte force_proceed;
 	byte railtype;
+	byte compatible_railtypes;
 
 	byte flags;
 
