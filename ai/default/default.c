@@ -3328,8 +3328,9 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 
 	for (; p->mode == 0; p++) {
 		TileIndex tile2 = TILE_ADD(tile, ToTileIndexDiff(p->tileoffs));
-		uint w = _airport_size_x[p->attr];
-		uint h = _airport_size_y[p->attr];
+		const AirportFTAClass* airport = GetAirport(p->attr);
+		uint w = airport->size_x;
+		uint h = airport->size_y;
 
 		if (cargo & 0x80) {
 			GetProductionAroundTiles(values, tile2, w, h, rad);

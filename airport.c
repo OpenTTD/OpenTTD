@@ -20,7 +20,9 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 																				const byte *terminals, const byte *helipads,
 																				const byte entry_point,  const byte acc_planes,
 																				const AirportFTAbuildup *FA,
-																				const TileIndexDiffC *depots, const byte nof_depots);
+																				const TileIndexDiffC *depots, const byte nof_depots,
+	uint size_x, uint size_y
+);
 static void AirportFTAClass_Destructor(AirportFTAClass *Airport);
 
 static uint16 AirportGetNofElements(const AirportFTAbuildup *FA);
@@ -42,7 +44,8 @@ void InitializeAirports(void)
 		ALL,
 		_airport_fta_country,
 		_airport_depots_country,
-		lengthof(_airport_depots_country)
+		lengthof(_airport_depots_country),
+		4, 3
 	);
 
 	// city airport
@@ -56,7 +59,8 @@ void InitializeAirports(void)
 		ALL,
 		_airport_fta_city,
 		_airport_depots_city,
-		lengthof(_airport_depots_city)
+		lengthof(_airport_depots_city),
+		6, 6
 	);
 
 	// metropolitan airport
@@ -70,7 +74,8 @@ void InitializeAirports(void)
 		ALL,
 		_airport_fta_metropolitan,
 		_airport_depots_metropolitan,
-		lengthof(_airport_depots_metropolitan)
+		lengthof(_airport_depots_metropolitan),
+		6, 6
 	);
 
 	// international airport
@@ -84,7 +89,8 @@ void InitializeAirports(void)
 		ALL,
 		_airport_fta_international,
 		_airport_depots_international,
-		lengthof(_airport_depots_international)
+		lengthof(_airport_depots_international),
+		7, 7
 	);
 
 	// heliport, oilrig
@@ -98,7 +104,8 @@ void InitializeAirports(void)
 		HELICOPTERS_ONLY,
 		_airport_fta_heliport_oilrig,
 		NULL,
-		0
+		0,
+		1, 1
 	);
 
 	Oilrig = Heliport;  // exactly the same structure for heliport/oilrig, so share state machine
@@ -117,7 +124,9 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 																				const byte *terminals, const byte *helipads,
 																				const byte entry_point, const byte acc_planes,
 																				const AirportFTAbuildup *FA,
-																				const TileIndexDiffC *depots, const byte nof_depots)
+																				const TileIndexDiffC *depots, const byte nof_depots,
+	uint size_x, uint size_y
+)
 {
 	byte nofterminals, nofhelipads;
 	byte nofterminalgroups = 0;
@@ -125,6 +134,9 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 	const byte * curr;
 	int i;
 	nofterminals = nofhelipads = 0;
+
+	Airport->size_x = size_x;
+	Airport->size_y = size_y;
 
 	//now we read the number of terminals we have
 	if (terminals != NULL) {

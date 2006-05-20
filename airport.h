@@ -105,6 +105,8 @@ typedef struct AirportFTAClass {
 	const TileIndexDiffC *airport_depots; // gives the position of the depots on the airports
 	byte nof_depots;                      // number of depots this airport has
 	struct AirportFTA *layout;            // state machine for airport
+	byte size_x;
+	byte size_y;
 } AirportFTAClass;
 
 // internal structure used in openttd - Finite sTate mAchine --> FTA

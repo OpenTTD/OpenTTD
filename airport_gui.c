@@ -147,6 +147,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		int sel;
 		int rad = 4; // default catchment radious
 		uint32 avail_airports;
+		const AirportFTAClass* airport;
 
 		if (WP(w,def_d).close) return;
 
@@ -164,7 +165,8 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		_selected_airport_type = sel;
 		// select default the coverage area to 'Off' (8)
 		w->click_state = ((1<<3) << sel) | ((1<<8) << _station_show_coverage);
-		SetTileSelectSize(_airport_size_x[sel],_airport_size_y[sel]);
+		airport = GetAirport(sel);
+		SetTileSelectSize(airport->size_x, airport->size_y);
 
 		if (_patches.modified_catchment) {
 			switch (sel) {

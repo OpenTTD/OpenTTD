@@ -78,11 +78,6 @@ MemoryPool _station_pool = { "Stations", STATION_POOL_MAX_BLOCKS, STATION_POOL_B
 MemoryPool _roadstop_pool = { "RoadStop", ROADSTOP_POOL_MAX_BLOCKS, ROADSTOP_POOL_BLOCK_SIZE_BITS, sizeof(RoadStop), &RoadStopPoolNewBlock, NULL, 0, 0, NULL };
 
 
-// FIXME -- need to be embedded into Airport variable. Is dynamically
-// deducteable from graphics-tile array, so will not be needed
-const byte _airport_size_x[] = {4, 6, 1, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
-const byte _airport_size_y[] = {3, 6, 1, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1};
-
 void ShowAircraftDepotWindow(TileIndex tile);
 extern void UpdateAirplanesOnNewStation(Station *st);
 
@@ -689,12 +684,11 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	}
 
 	if (st->airport_tile != 0) {
+		const AirportFTAClass* afc = GetAirport(st->airport_type);
+
 		MergePoint(&rect, st->airport_tile);
 		MergePoint(&rect,
-			st->airport_tile + TileDiffXY(
-				_airport_size_x[st->airport_type] - 1,
-				_airport_size_y[st->airport_type] - 1
-			)
+			st->airport_tile + TileDiffXY(afc->size_x - 1, afc->size_y - 1)
 		);
 	}
 
@@ -1599,6 +1593,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 ret;
 	int w, h;
 	bool airport_upgrade = true;
+	const AirportFTAClass* afc;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -1623,8 +1618,9 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	w = _airport_size_x[p1];
-	h = _airport_size_y[p1];
+	afc = GetAirport(p1);
+	w = afc->size_x;
+	h = afc->size_y;
 
 	ret = CheckFlatLandBelow(tile, w, h, flags, 0, NULL);
 	if (CmdFailed(ret)) return ret;
@@ -1672,8 +1668,6 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost += _price.build_airport * w * h;
 
 	if (flags & DC_EXEC) {
-		const AirportFTAClass *afc = GetAirport(p1);
-
 		st->owner = _current_player;
 		if (IsLocalPlayer() && afc->nof_depots != 0)
 			_last_built_aircraft_depot_tile = tile + ToTileIndexDiff(afc->airport_depots[0]);
@@ -1717,14 +1711,16 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 	TileIndex tile;
 	int w,h;
 	int32 cost;
+	const AirportFTAClass* afc;
 
 	if (_current_player != OWNER_WATER && !CheckOwnership(st->owner))
 		return CMD_ERROR;
 
 	tile = st->airport_tile;
 
-	w = _airport_size_x[st->airport_type];
-	h = _airport_size_y[st->airport_type];
+	afc = GetAirport(st->airport_type);
+	w = afc->size_x;
+	h = afc->size_y;
 
 	cost = w * h * _price.remove_airport;
 
@@ -1738,7 +1734,6 @@ static int32 RemoveAirport(Station *st, uint32 flags)
 	} END_TILE_LOOP(tile_cur, w,h,tile)
 
 	if (flags & DC_EXEC) {
-		const AirportFTAClass *afc = GetAirport(st->airport_type);
 		uint i;
 
 		for (i = 0; i < afc->nof_depots; ++i) {
