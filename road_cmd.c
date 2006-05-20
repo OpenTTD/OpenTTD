@@ -659,24 +659,25 @@ typedef struct DrawRoadSeqStruct {
 
 uint GetRoadFoundation(Slope tileh, RoadBits bits)
 {
-	int i;
+	uint i;
+
 	// normal level sloped building
 	if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0) return tileh;
 
 	// inclined sloped building
-	if ((
-				(i  = 0, tileh == SLOPE_W) ||
-				(i += 2, tileh == SLOPE_S) ||
-				(i += 2, tileh == SLOPE_E) ||
-				(i += 2, tileh == SLOPE_N)
-			) && (
-				(     bits == ROAD_X) ||
-				(i++, bits == ROAD_Y)
-			)) {
-		return i + 15;
+	switch (bits) {
+		case ROAD_X: i = 0; break;
+		case ROAD_Y: i = 1; break;
+		default:     return 0;
 	}
-
-	return 0;
+	switch (tileh) {
+		case SLOPE_W: i += 0; break;
+		case SLOPE_S: i += 2; break;
+		case SLOPE_E: i += 4; break;
+		case SLOPE_N: i += 6; break;
+		default:      return 0;
+	}
+	return i + 15;
 }
 
 const byte _road_sloped_sprites[14] = {

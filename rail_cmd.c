@@ -153,27 +153,24 @@ const TrackBits _valid_tileh_slopes[2][15] = {
 
 uint GetRailFoundation(Slope tileh, TrackBits bits)
 {
-	int i;
+	uint i;
 
-	if ((~_valid_tileh_slopes[0][tileh] & bits) == 0)
-		return 0;
+	if ((~_valid_tileh_slopes[0][tileh] & bits) == 0) return 0;
+	if ((~_valid_tileh_slopes[1][tileh] & bits) == 0) return tileh;
 
-	if ((~_valid_tileh_slopes[1][tileh] & bits) == 0)
-		return tileh;
-
-	if ((
-				(i  = 0, tileh == SLOPE_W) ||
-				(i += 2, tileh == SLOPE_S) ||
-				(i += 2, tileh == SLOPE_E) ||
-				(i += 2, tileh == SLOPE_N)
-			) && (
-				bits == TRACK_BIT_X ||
-				(i++, bits == TRACK_BIT_Y)
-			)) {
-		return i + 15;
-	} else {
-		return 0;
+	switch (bits) {
+		case TRACK_BIT_X: i = 0; break;
+		case TRACK_BIT_Y: i = 1; break;
+		default:          return 0;
 	}
+	switch (tileh) {
+		case SLOPE_W: i += 0; break;
+		case SLOPE_S: i += 2; break;
+		case SLOPE_E: i += 4; break;
+		case SLOPE_N: i += 6; break;
+		default:      return 0;
+	}
+	return i + 15;
 }
 
 

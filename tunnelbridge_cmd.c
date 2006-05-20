@@ -858,23 +858,20 @@ static void DrawBridgePillars(PalSpriteID image, const TileInfo *ti, int x, int 
 
 uint GetBridgeFoundation(Slope tileh, Axis axis)
 {
-	int i;
+	uint i;
+
 	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) return tileh;
 
 	// inclined sloped building
-	if ((
-				(i  = 0, tileh == SLOPE_W) ||
-				(i += 2, tileh == SLOPE_S) ||
-				(i += 2, tileh == SLOPE_E) ||
-				(i += 2, tileh == SLOPE_N)
-			) && (
-				      axis == AXIS_X ||
-				(i++, axis == AXIS_Y)
-			)) {
-		return i + 15;
+	switch (tileh) {
+		case SLOPE_W: i = 0; break;
+		case SLOPE_S: i = 2; break;
+		case SLOPE_E: i = 4; break;
+		case SLOPE_N: i = 6; break;
+		default:      return 0;
 	}
-
-	return 0;
+	if (axis != AXIS_X) ++i;
+	return i + 15;
 }
 
 /**
