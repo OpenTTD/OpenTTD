@@ -392,7 +392,6 @@ static void FixOldVehicles(void)
 
 extern TileIndex _animated_tile_list[256];
 extern char _name_array[512][32];
-extern uint16 _custom_sprites_base;
 
 static byte   _old_vehicle_multiplier;
 static uint8  _old_map3[OLD_MAP_SIZE * 2];
@@ -1219,9 +1218,6 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 			v->orders = GetOrder(REMAP_ORDER_IDX(_old_order_ptr));
 		}
 		AssignOrder(&v->current_order, UnpackOldOrder(_old_order));
-		/* TTDPatch maps sprites from 0x2000 up. */
-		if (v->cur_image >= 0x2000)
-			v->cur_image -= 0x2000 - _custom_sprites_base;
 
 		/* For some reason we need to correct for this */
 		switch (v->spritenum) {

@@ -36,7 +36,6 @@
  * served as subject to the initial testing of this codec. */
 
 
-uint16 _custom_sprites_base;
 static int _skip_sprites; // XXX
 static uint _file_index; // XXX
 SpriteID _signal_base = 0;
@@ -2902,7 +2901,6 @@ void LoadNewGRF(uint load_index, uint file_index)
 	/* Load newgrf sprites
 	 * in each loading stage, (try to) open each file specified in the config
 	 * and load information from it. */
-	_custom_sprites_base = load_index;
 	for (stage = 0; stage <= 2; stage++) {
 		uint slot = file_index;
 		GRFConfig *c;
