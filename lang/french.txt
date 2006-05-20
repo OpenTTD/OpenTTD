@@ -839,6 +839,7 @@ STR_TOWNNAME_ROMANIAN                                           :Roumain
 STR_TOWNNAME_CZECH                                              :Tchèques
 STR_TOWNNAME_SWISS                                              :Suisse
 STR_TOWNNAME_DANISH                                             :Danois
+STR_TOWNNAME_TURKISH                                            :Turques
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Livre (£)
@@ -911,6 +912,7 @@ STR_ITEMS                                                       :items
 STR_CRATES                                                      :caisses
 STR_RES_OTHER                                                   :autre
 STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Impossible de partager les ordres...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Impossible de copier les ordres...
@@ -1678,6 +1680,7 @@ STR_306B_HELIPORT                                               :{BLACK}Héliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...gare trop étendue
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stations non-uniformes désactivées
 
+
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientation du dépot naval
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...doit être construit sur l'eau
@@ -2282,8 +2285,8 @@ STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Camion de plast
 STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :Camion de bulles MightyMover
 STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Camion de bulles Powernaught
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Camion de bulles Wizzowow
-STR_80CC_MPS_OIL_TANKER                                         :Camion-citerne de pétrole MPS
-STR_80CD_CS_INC_OIL_TANKER                                      :Camion-citerne de pétrole CS-Inc.
+STR_80CC_MPS_OIL_TANKER                                         :Pétrolier MPS
+STR_80CD_CS_INC_OIL_TANKER                                      :Pétrolier CS-Inc.
 STR_80CE_MPS_PASSENGER_FERRY                                    :Ferry de voyageurs MPS
 STR_80CF_FFP_PASSENGER_FERRY                                    :Ferry de voyageurs FFP
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Aéroglisseur

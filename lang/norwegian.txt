@@ -911,6 +911,7 @@ STR_CRATES                                                      :kasser
 STR_RES_OTHER                                                   :annet
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikke dele ordre liste...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke kopiere ordre liste...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Slutt på delte ordre - -
@@ -1251,6 +1252,7 @@ STR_NETWORK_10_PLAYERS                                          :10 spillere
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks bedrifter:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Begrens serveren til et bestemt antall bedrifter
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks Tilskuere
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Begrens serveren til et bestemt antall seere
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Språk snakket på tjeneren:
@@ -1675,6 +1677,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bøyen
 STR_306B_HELIPORT                                               :{BLACK}Landingsplass for helikopter
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasjonen er spredd for mye
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikke-ensartede stasjoner deaktivert
+
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skipdepot retning
@@ -2763,6 +2766,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Velg jer
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dette viser hvilket lokomotiv som overtar for det valgte lokomotivet på venstresiden
 STR_REPLACE_HELP                                                :{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{SKIP}{STRING}
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motoren kan ikke bygges
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt

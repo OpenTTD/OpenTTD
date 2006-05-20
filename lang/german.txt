@@ -327,7 +327,7 @@ STR_015E_QUIT_GAME                                              :Spiel beenden
 STR_015F_QUIT                                                   :Beenden
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Bist du sicher, dass du das Spiel beenden willst?
 STR_0161_QUIT_GAME                                              :{WHITE}Spiel beenden
-STR_SORT_ORDER_TIP                                              :{BLACK}Sortierreihenfolge auswählen absteigend/aufsteigend
+STR_SORT_ORDER_TIP                                              :{BLACK}Sortierreihenfolge auswählen (absteigend/aufsteigend)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Sortierkriterium auswählen
 STR_SORT_BY                                                     :{BLACK}Sortieren nach
 
@@ -393,9 +393,9 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Das Wartungsintervall kann nicht geändert werden...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Fenster schließen
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titelleiste verschieben um das Fenster zu bewegen
-STR_STICKY_BUTTON                                               :{BLACK}Fenster wird nicht durch
+STR_STICKY_BUTTON                                               :{BLACK}Fenster wird nicht durch die "schließe alle Fenster"-Taste geschlossen
 STR_RESIZE_BUTTON                                               :{BLACK}Klicken und Ziehen zum Größe ändern
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standard-Spielstands-Verzeichnis zu gehen
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Hier klicken, um zum Standardspielstandsverzeichnis zu gehen
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Gebäude usw. auf einem Planquadrat abreißen
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Land absenken
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Land anheben
@@ -523,8 +523,8 @@ STR_MESSAGE_HISTORY_MENU                                        :Vergangene Nach
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Zeige letzte Mitteilung / Nachricht, Nachrichtenoptionen anzeigen
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Nachrichtenoptionen
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Nachrichtenart:
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in der Station des Spielers
-STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in der Station eines Gegners
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in einer Station des Spielers
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankunft des ersten Fahrzeugs in einer Station eines Gegners
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Unfälle / Katastrophen
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Firmendaten
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Änderungen der Wirtschaftslage
@@ -735,7 +735,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Durchs
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Gebietsinformation
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Konsole An/Aus
+STR_CONSOLE_SETTING                                             :Konsole öffnen/schließen
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Strg-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Riesiger Screenshot (Strg-G)
 STR_02D9_ABOUT_OPENTTD                                          :Über 'OpenTTD'
@@ -824,7 +824,7 @@ STR_0336_7                                                      :{BLACK}7
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Englisch
 STR_TOWNNAME_FRENCH                                             :Französisch
 STR_TOWNNAME_GERMAN                                             :Deutsch
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :English (Zusätzlich)
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Englisch (Zusätzlich)
 STR_TOWNNAME_LATIN_AMERICAN                                     :Lateinamerikanisch
 STR_TOWNNAME_SILLY                                              :Verrückt
 STR_TOWNNAME_SWEDISH                                            :Schwedisch
@@ -839,6 +839,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumänisch
 STR_TOWNNAME_CZECH                                              :Tschechisch
 STR_TOWNNAME_SWISS                                              :Schweizerisch
 STR_TOWNNAME_DANISH                                             :Dänisch
+STR_TOWNNAME_TURKISH                                            :Türkisch
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pfund (£)
@@ -848,7 +849,7 @@ STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Österreich. Schilling (ATS)
 STR_CURR_BEF                                                    :Belgische Franc (BEF)
 STR_CURR_CHF                                                    :Schweizer Franken (CHF)
-STR_CURR_CZK                                                    :Tschechische Koruna (CZK)
+STR_CURR_CZK                                                    :Tschechische Kronen (CZK)
 STR_CURR_DEM                                                    :Deutsche Mark (DEM)
 STR_CURR_DKK                                                    :Dänische Kronen (DKK)
 STR_CURR_ESP                                                    :Peseta (ESP)
@@ -874,9 +875,9 @@ STR_OPTIONS_LANG_TIP                                            :{BLACK}Sprache 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Vollbild
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}OpenTTD im Vollbildmodus spielen
 
-STR_OPTIONS_RES                                                 :{BLACK}Bildschirmgröße
+STR_OPTIONS_RES                                                 :{BLACK}Bildschirmauflösung
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Bildschirmgröße auswählen
+STR_OPTIONS_RES_TIP                                             :{BLACK}Bildschirmauflösung auswählen
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Screenshotformat
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -910,7 +911,8 @@ STR_LITERS                                                      :Liter
 STR_ITEMS                                                       :Stück
 STR_CRATES                                                      :Kisten
 STR_RES_OTHER                                                   :Andere
-STR_NOTHING                                                     :nichts
+STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Der Fahrplan kann nicht gemeinsam benutzt werden...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kann Fahrplan nicht kopieren...
@@ -1110,7 +1112,7 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Land aus
 
 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Zufällige Baumart
-STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Zufällige Baumart platzieren
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Zufällige Baumart pflanzen
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Kann hier keinen Kanal bauen...
 STR_BUILD_CANALS_TIP                                            :{BLACK}Kanal bauen
@@ -1214,7 +1216,7 @@ STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverv
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serveradresse:  {WHITE}{STRING} : {NUM}
 STR_NETWORK_START_DATE                                          :{SILVER}Startdatum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Aktuelles Datum:  {WHITE}{DATE_SHORT}
-STR_NETWORK_PASSWORD                                            :{SILVER}passwortgeschützt!
+STR_NETWORK_PASSWORD                                            :{SILVER}Passwortgeschützt!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVER OFFLINE
 STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVER VOLL
 STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}Versionskonflikt festgestellt
@@ -1273,7 +1275,7 @@ STR_NETWORK_LANG_FRENCH                                         :Französisch
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Mehrspielerlobby
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Spieleintritt vorbereiten:   {ORANGE}{STRING}
-STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Eine Liste aller Firmen, die sich im Spiel befinden. Du kannst einer Firma beitreten oder eine eigene Firma gründen, sofern ein Platz frei ist.
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Neues Unternehmen
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Ein neues Unternehmen gründen
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Beim Spiel zusehen
@@ -1281,7 +1283,7 @@ STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Als Zusc
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Firma beitreten
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Beim Verwalten der Firma helfen
 STR_NETWORK_REFRESH                                             :{BLACK}Aktualisieren
-STR_NETWORK_REFRESH_TIP                                         :{BLACK}Aktuallisiert die Serverinformationen
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Aktualisiert die Serverinformationen
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}Firmenprofil
 
@@ -1296,20 +1298,20 @@ STR_NETWORK_VEHICLES                                            :{SILVER}Fahrzeu
 STR_NETWORK_STATIONS                                            :{SILVER}Stationen:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
 STR_NETWORK_PLAYERS                                             :{SILVER}Spieler:  {WHITE}{STRING}
 
-STR_NETWORK_CONNECTING                                          :{WHITE}Verbinde...
+STR_NETWORK_CONNECTING                                          :{WHITE}Verbinden...
 
 ############ Leave those lines in this order!!
-STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Verbinde..
-STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorisierung..
-STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Warten..
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Verbinden...
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Autorisieren...
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Warten...
 STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Herunterladen der Karte..
-STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Verarbeite Spieldaten..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Spieldaten verarbeiten...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registrieren...
 
-STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hole Spielinformationen..
-STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hole Firmeninformationen..
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Spielinformationen holen...
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Firmeninformationen holen...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Teilnehmer vor uns
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} Teilnehmer vor dir
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} KB bisher heruntergeladen
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Trennen
@@ -1347,7 +1349,7 @@ STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :nicht authorisi
 STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :Unerwartetes Paket empfangen
 STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :Falsche Version
 STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :Name wird bereits verwendet
-STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :Falsches Spiel-Passwort
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :Falsches Spielpasswort
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :Falsche-SpielerID in DoCommand (Verarbeitungsfehler)
 STR_NETWORK_ERR_CLIENT_KICKED                                   :gekickt
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :versuchte einen Cheat zu nutzen
@@ -1415,7 +1417,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Keine ge
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ist bereits gebaut
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Gleise müssen erst entfernt werden
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gleis- / Bahnhofsbau
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einschienbahnbau
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einschienenbahnbau
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnetschwebebahnbau
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Eisenbahnbrücke auswählen
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Kann hier kein Zugdepot bauen...
@@ -1426,7 +1428,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Gleise k
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kann die Signale hier nicht entfernen...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Zugdepotausrichtung
 STR_1015_RAILROAD_CONSTRUCTION                                  :Eisenbahnbau
-STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienbahnbau
+STR_1016_MONORAIL_CONSTRUCTION                                  :Einschienenbahnbau
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetschwebebahnbau
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Gleise legen
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Zugdepot bauen (zum Bau und zur Wartung von Zügen)
@@ -1935,7 +1937,7 @@ STR_6830_IMMEDIATE                                              :Zusammen mit de
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 Monate nach dem Spieler
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 Monate nach dem Spieler
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 Monate nach dem Spieler
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Am Streckenende und in Bahnhöfe
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Am Streckenende und in Bahnhöfen
 STR_6835_AT_END_OF_LINE_ONLY                                    :Nur am Streckenende
 STR_6836_OFF                                                    :Aus
 STR_6837_ON                                                     :An
@@ -2061,7 +2063,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Zeige Fi
 STR_RELOCATE_HQ                                                 :{BLACK}Firmensitz verlegen
 STR_COMPANY_PASSWORD                                            :{BLACK}Passwort
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Schütze deine Firma mit einem Passwort, um unautorisierten Spielern den Beitritt zu verwehren.
-STR_SET_COMPANY_PASSWORD                                        :Firmen-Passwort setzen
+STR_SET_COMPANY_PASSWORD                                        :Firmenpasswort setzen
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Weltwirtschaftskrise!{}{}Finanzexperten befürchten schlimmsten Zusammenbruch der Wirtschaft!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Wirtschaftskrise beendet!{}{}Aufschwung des Handels gibt Vertrauen in die Industrie und stärkt die Wirtschaft!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Schalter für großes/kleines Fenster
@@ -2382,7 +2384,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Zug zu l
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Züge können nur verändert werden, wenn sie im Depot halten
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Z{P ug üge}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Neues Schienenfahrzeug
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Einschienbahnzüge
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Neue Einschienenbahnzüge
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Neue Magnetzüge
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Fahrzeug bauen
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Fahrzeug duplizieren
@@ -2612,7 +2614,7 @@ STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Neues Flugzeug
 STR_CLONE_AIRCRAFT                                              :{BLACK}Flugzeug duplizieren
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Baut eine Kopie des Flugzeuges. Strg+Klick erzeugt gemeinsamen Fahrplan
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke diese Schaltfläche und dann auf eine Flugzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Baut eine Kopie des Flugzeuges. Klicke auf diese Schaltfläche und dann auf ein Flugzeug innerhalb oder außerhalb des Depots. Strg+Klick erzeugt gemeinsamen Fahrplan
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Neues Flugzeug
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Flugzeug bauen
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kann das Flugzeug nicht bauen...
@@ -2759,7 +2761,7 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fahrzeug
 STR_NOT_REPLACING                                               :{BLACK}Keine Ersetzung
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Kein Fahrzeug gewählt
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wähle das zu ersetzende Fahrzeug
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wähle den Fahrzeugtyp, der an Stelle des links gewählten Fahrzeugs verwendet werden soll
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wähle den Fahrzeugtyp, der anstelle des links gewählten Fahrzeugs verwendet werden soll
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Drücke diesen Button, wenn das Fahrzeug auf der linken Seite nicht ersetzt werden soll
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Drücke diesen Button, wenn das Fahrzeug auf der linken Seite durch das auf der rechten Seite gewählte ersetzt werden soll
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wähle einen Schienentyp für den Loks ersetzt werden sollen

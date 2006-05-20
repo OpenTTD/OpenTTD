@@ -838,6 +838,7 @@ STR_TOWNNAME_ROMANIAN                                           :Roemeens
 STR_TOWNNAME_CZECH                                              :Tsjechisch
 STR_TOWNNAME_SWISS                                              :Zwitsers
 STR_TOWNNAME_DANISH                                             :Deens
+STR_TOWNNAME_TURKISH                                            :Turks
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pond (£)
@@ -910,6 +911,7 @@ STR_ITEMS                                                       :stuks
 STR_CRATES                                                      :kratten
 STR_RES_OTHER                                                   :anders
 STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan orderlijst niet delen...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan orderlijst niet kopieren...

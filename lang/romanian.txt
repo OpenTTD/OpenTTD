@@ -911,6 +911,7 @@ STR_CRATES                                                      :pachete
 STR_RES_OTHER                                                   :altele
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nu pot construi lista de comenzi comune...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nu pot copia lista de comenzi...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Sfârsitul comenzilor comune - -
@@ -1237,7 +1238,22 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (fa reclama)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 jucãtori
+STR_NETWORK_1_PLAYERS                                           :1 jucãtor
+STR_NETWORK_2_PLAYERS                                           :2 jucãtori
+STR_NETWORK_3_PLAYERS                                           :3 jucãtori
+STR_NETWORK_4_PLAYERS                                           :4 jucãtori
+STR_NETWORK_5_PLAYERS                                           :5 jucãtori
+STR_NETWORK_6_PLAYERS                                           :6 jucãtori
+STR_NETWORK_7_PLAYERS                                           :7 jucãtori
+STR_NETWORK_8_PLAYERS                                           :8 jucãtori
+STR_NETWORK_9_PLAYERS                                           :9 jucãtori
+STR_NETWORK_10_PLAYERS                                          :10 jucãtori
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximum companii:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limiteazã serverle la un anumit numãr companii
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maxim spectatori:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limiteazã serverul la un anumit numãr de spectatori
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Limba vorbita:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Ceilalti jucatori vor sti in ce limba se discuta per server.
@@ -1335,6 +1351,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :parola gresita
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :player-id in DoCommand gresit
 STR_NETWORK_ERR_CLIENT_KICKED                                   :dat afara de pe server
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :a incercat sa foloseasca un cheat
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server plin
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :a intrat in joc
 STR_NETWORK_GIVE_MONEY                                          :ti-a dat o suma de bani ({CURRENCY})
@@ -1660,6 +1677,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...baliz
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...statie prea mare
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...statii neuniforme dezactivat
+
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientarea santierului naval
@@ -2496,6 +2514,7 @@ STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Autovehi
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Cumpãrã un autovehicul
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Mutã un autovehicul aici pentru a-l vinde
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centreazã imaginea pe locatia acestei autobaze
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Road vehicle selection list - click on vehicle for information
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Un nou autovehicul disponibil!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2748,6 +2767,9 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Alege un
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Afiseaza cu ce model vor fi inlocuite vehiculele din stanga
 STR_REPLACE_HELP                                                :{BLACK}Aceasta functie iti permite sa selectezi un model de vehicul si sa-l inlocuiesti cu altul. Schimbarea se va efectua automat la intrarea vehiculului intr-un depou.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retragere vagoane: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã optiunea de autoînlocuire sã pãstreze identicã lungimea unui tren prin eliminarea vagoanelor (începând din fatã), dacã înlocuirea motorului ar face trenul mai lung.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motorul nu poate fi construit
+
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne

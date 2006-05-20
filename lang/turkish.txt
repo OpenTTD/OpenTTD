@@ -837,10 +837,11 @@ STR_TOWNNAME_ROMANIAN                                           :Romanca
 STR_TOWNNAME_CZECH                                              :Çekçe
 STR_TOWNNAME_SWISS                                              :isviçrece
 STR_TOWNNAME_DANISH                                             :Danimarkaca
+STR_TOWNNAME_TURKISH                                            :Türkçe
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Sterlin (£)
-STR_CURR_USD                                                    :Dolars ($)
+STR_CURR_USD                                                    :Dolar ($)
 STR_CURR_EUR                                                    :Euro (¤)
 STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Avusturya Silini (ATS)
@@ -909,6 +910,7 @@ STR_ITEMS                                                       :tane
 STR_CRATES                                                      :kasa
 STR_RES_OTHER                                                   :diger
 STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Talimat listesi paylasilamiyor...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Talimat listesi kopyalanamiyor...

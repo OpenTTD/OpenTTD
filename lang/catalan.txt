@@ -911,6 +911,7 @@ STR_CRATES                                                      :palets
 STR_RES_OTHER                                                   :altres
 STR_NOTHING                                                     :
 
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No es pot compartir la llista d'ordres...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No es pot copiar la llista d'ordres...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fi d'Ordres Compartides - -
@@ -1039,6 +1040,7 @@ STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radi de
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interficie
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcció
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vehicles
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Estacions
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economía
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Competidors
@@ -1236,7 +1238,20 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (anunci)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 jugadors
+STR_NETWORK_1_PLAYERS                                           :1 jugador
+STR_NETWORK_2_PLAYERS                                           :2 jugadors
+STR_NETWORK_3_PLAYERS                                           :3 jugadors
+STR_NETWORK_4_PLAYERS                                           :4 jugadors
+STR_NETWORK_5_PLAYERS                                           :5 jugadors
+STR_NETWORK_6_PLAYERS                                           :6 jugadors
+STR_NETWORK_7_PLAYERS                                           :7 jugadors
+STR_NETWORK_8_PLAYERS                                           :8 jugadors
+STR_NETWORK_9_PLAYERS                                           :9 jugadors
+STR_NETWORK_10_PLAYERS                                          :10 jugadors
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar el servidor a un cert nombre de companyies
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar el servidor a un cert nombre de espectadors
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma parlat:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Els altres jugadors sabràn quin idioma es parla en aquest servidor.
@@ -1334,6 +1349,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contrasenya de 
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id de jugador incorrecta en DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :tret pel servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :s'ha intentat usar un codi trampa
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor ple
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :ha entrat al joc
 STR_NETWORK_GIVE_MONEY                                          :gave you some money ({CURRENCY})
@@ -1659,6 +1675,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boia 
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estació massa extesa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estacions no uniformes desactivades
+
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientació de les Drassanes
@@ -2679,6 +2696,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehicles:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estacions:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. benefici:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. ingrès:
@@ -2747,6 +2765,9 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mosyta quin motor dels seleccionats a l'esquerra es reemplaça, si hi ha
 STR_REPLACE_HELP                                                :{BLACK}Et permet reemplaçar un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la sustitució automàtica mantinga la llargaria del tren eliminant vagons (començant pel front), si sustituira la màquina faria el tren més llarg
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor no es pot construir
+
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals

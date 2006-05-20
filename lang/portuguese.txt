@@ -838,6 +838,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romeno
 STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suiça
 STR_TOWNNAME_DANISH                                             :Dinamarquês
+STR_TOWNNAME_TURKISH                                            :Turco
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)
@@ -910,6 +911,7 @@ STR_ITEMS                                                       :itens
 STR_CRATES                                                      :caixas
 STR_RES_OTHER                                                   :outros
 STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Não é possível partilhar a lista de ordens...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Não é possível copiar a lista de ordens...
@@ -1051,7 +1053,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Alterar valor
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguns ou todos os intervalo(s) de serviço predefinidos abaixo são incompatíveis com o valor escolhido! São válidos 5-90% e 30-800 dias
 
-STR_TEMPERATE_LANDSCAPE                                         :terreno temperado
+STR_TEMPERATE_LANDSCAPE                                         :Terreno temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subárctico
 STR_SUB_TROPICAL_LANDSCAPE                                      :terreno subtropical
 STR_TOYLAND_LANDSCAPE                                           :terreno 'toyland'

@@ -903,6 +903,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romániai
 STR_TOWNNAME_CZECH                                              :Cseh
 STR_TOWNNAME_SWISS                                              :Svájci
 STR_TOWNNAME_DANISH                                             :Dán
+STR_TOWNNAME_TURKISH                                            :Török
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Font (£)
@@ -975,6 +976,7 @@ STR_ITEMS                                                       :darab
 STR_CRATES                                                      :láda
 STR_RES_OTHER                                                   :egyéb
 STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nem lehet megosztani a menetrendet...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nem lehet másolni a menetrendet...

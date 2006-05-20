@@ -895,6 +895,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumunská
 STR_TOWNNAME_CZECH                                              :Ceska
 STR_TOWNNAME_SWISS                                              :¦výcarská
 STR_TOWNNAME_DANISH                                             :Dánská
+STR_TOWNNAME_TURKISH                                            :Turecká
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libry (£)
@@ -967,6 +968,7 @@ STR_ITEMS                                                       :kusu
 STR_CRATES                                                      :krabic
 STR_RES_OTHER                                                   :jiné
 STR_NOTHING                                                     :
+
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemuzu sdílet seznam prikazu...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemohu kopírovat seznam prikazu...
