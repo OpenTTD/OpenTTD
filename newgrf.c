@@ -1086,7 +1086,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 }
 
 /* Action 0x00 */
-static void VehicleChangeInfo(byte *buf, int len)
+static void FeatureChangeInfo(byte *buf, int len)
 {
 	byte *bufend = buf + len;
 	int i;
@@ -1131,24 +1131,24 @@ static void VehicleChangeInfo(byte *buf, int len)
 		return;
 	}
 
-	check_length(len, 6, "VehicleChangeInfo");
+	check_length(len, 6, "FeatureChangeInfo");
 	buf++;
 	feature  = grf_load_byte(&buf);
 	numprops = grf_load_byte(&buf);
 	numinfo  = grf_load_byte(&buf);
 	engine   = grf_load_byte(&buf);
 
-	DEBUG(grf, 6) ("VehicleChangeInfo: Feature %d, %d properties, to apply to %d+%d",
+	DEBUG(grf, 6) ("FeatureChangeInfo: Feature %d, %d properties, to apply to %d+%d",
 	               feature, numprops, engine, numinfo);
 
 	if (feature >= lengthof(handler) || handler[feature] == NULL) {
-		grfmsg(GMS_WARN, "VehicleChangeInfo: Unsupported feature %d, skipping.", feature);
+		grfmsg(GMS_WARN, "FeatureChangeInfo: Unsupported feature %d, skipping.", feature);
 		return;
 	}
 
 	if (feature <= GSF_AIRCRAFT) {
 		if (engine + numinfo > _vehcounts[feature]) {
-			grfmsg(GMS_ERROR, "VehicleChangeInfo: Last engine ID %d out of bounds (max %d), skipping.", engine + numinfo, _vehcounts[feature]);
+			grfmsg(GMS_ERROR, "FeatureChangeInfo: Last engine ID %d out of bounds (max %d), skipping.", engine + numinfo, _vehcounts[feature]);
 			return;
 		}
 		ei = &_engine_info[engine + _vehshifts[feature]];
@@ -1210,7 +1210,7 @@ static void VehicleChangeInfo(byte *buf, int len)
 		}
 
 		if (ignoring)
-			grfmsg(GMS_NOTICE, "VehicleChangeInfo: Ignoring property 0x%02X (not implemented).", prop);
+			grfmsg(GMS_NOTICE, "FeatureChangeInfo: Ignoring property 0x%02X (not implemented).", prop);
 	}
 }
 
@@ -1546,7 +1546,7 @@ static void NewSpriteGroup(byte *buf, int len)
 }
 
 /* Action 0x03 */
-static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
+static void FeatureMapSpriteGroup(byte *buf, int len)
 {
 	/* <03> <feature> <n-id> <ids>... <num-cid> [<cargo-type> <cid>]... <def-cid>
 	 * id-list	:= [<id>] [id-list]
@@ -1573,27 +1573,27 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	uint8 cidcount;
 	int c, i;
 
-	check_length(len, 6, "VehicleMapSpriteGroup");
+	check_length(len, 6, "FeatureMapSpriteGroup");
 	feature = buf[1];
 	idcount = buf[2] & 0x7F;
 	wagover = (buf[2] & 0x80) == 0x80;
-	check_length(len, 3 + idcount, "VehicleMapSpriteGroup");
+	check_length(len, 3 + idcount, "FeatureMapSpriteGroup");
 
 	/* If ``n-id'' (or ``idcount'') is zero, this is a ``feature
 	 * callback''. */
 	if (idcount == 0) {
-		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Feature callbacks not implemented yet.");
+		grfmsg(GMS_WARN, "FeatureMapSpriteGroup: Feature callbacks not implemented yet.");
 		return;
 	}
 
 	cidcount = buf[3 + idcount];
-	check_length(len, 4 + idcount + cidcount * 3, "VehicleMapSpriteGroup");
+	check_length(len, 4 + idcount + cidcount * 3, "FeatureMapSpriteGroup");
 
-	DEBUG(grf, 6) ("VehicleMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d.",
+	DEBUG(grf, 6) ("FeatureMapSpriteGroup: Feature %d, %d ids, %d cids, wagon override %d.",
 			feature, idcount, cidcount, wagover);
 
 	if (feature > GSF_STATION) {
-		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Unsupported feature %d, skipping.", feature);
+		grfmsg(GMS_WARN, "FeatureMapSpriteGroup: Unsupported feature %d, skipping.", feature);
 		return;
 	}
 
@@ -1611,7 +1611,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 				uint16 groupid = grf_load_word(&bp);
 
 				if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-					grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
+					grfmsg(GMS_WARN, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
 					       groupid, _cur_grffile->spritegroups_count);
 					return;
 				}
@@ -1628,7 +1628,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			uint16 groupid = grf_load_word(&bp);
 
 			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
+				grfmsg(GMS_WARN, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.",
 				       groupid, _cur_grffile->spritegroups_count);
 				return;
 			}
@@ -1652,7 +1652,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 	// what should we exactly do with that? --pasky
 
 	if (_cur_grffile->spriteset_start == 0 || _cur_grffile->spritegroups == 0) {
-		grfmsg(GMS_WARN, "VehicleMapSpriteGroup: No sprite set to work on! Skipping.");
+		grfmsg(GMS_WARN, "FeatureMapSpriteGroup: No sprite set to work on! Skipping.");
 		return;
 	}
 
@@ -1663,10 +1663,10 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 	if (wagover) {
 		if (last_engines_count == 0) {
-			grfmsg(GMS_ERROR, "VehicleMapSpriteGroup: WagonOverride: No engine to do override with.");
+			grfmsg(GMS_ERROR, "FeatureMapSpriteGroup: WagonOverride: No engine to do override with.");
 			return;
 		}
-		DEBUG(grf, 6) ("VehicleMapSpriteGroup: WagonOverride: %u engines, %u wagons.",
+		DEBUG(grf, 6) ("FeatureMapSpriteGroup: WagonOverride: %u engines, %u wagons.",
 				last_engines_count, idcount);
 	}
 
@@ -1681,16 +1681,16 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 			return;
 		}
 
-		DEBUG(grf, 7) ("VehicleMapSpriteGroup: [%d] Engine %d...", i, engine);
+		DEBUG(grf, 7) ("FeatureMapSpriteGroup: [%d] Engine %d...", i, engine);
 
 		for (c = 0; c < cidcount; c++) {
 			uint8 ctype = grf_load_byte(&bp);
 			uint16 groupid = grf_load_word(&bp);
 
-			DEBUG(grf, 8) ("VehicleMapSpriteGroup: * [%d] Cargo type 0x%X, group id 0x%02X", c, ctype, groupid);
+			DEBUG(grf, 8) ("FeatureMapSpriteGroup: * [%d] Cargo type 0x%X, group id 0x%02X", c, ctype, groupid);
 
 			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.", groupid, _cur_grffile->spritegroups_count);
+				grfmsg(GMS_WARN, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.", groupid, _cur_grffile->spritegroups_count);
 				return;
 			}
 
@@ -1717,7 +1717,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 
 			// Don't tell me you don't love duplicated code!
 			if (groupid >= _cur_grffile->spritegroups_count || _cur_grffile->spritegroups[groupid] == NULL) {
-				grfmsg(GMS_WARN, "VehicleMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.", groupid, _cur_grffile->spritegroups_count);
+				grfmsg(GMS_WARN, "FeatureMapSpriteGroup: Spriteset 0x%04X out of range 0x%X or empty, skipping.", groupid, _cur_grffile->spritegroups_count);
 				return;
 			}
 
@@ -1740,7 +1740,7 @@ static void NewVehicle_SpriteGroupMapping(byte *buf, int len)
 }
 
 /* Action 0x04 */
-static void VehicleNewName(byte *buf, int len)
+static void FeatureNewName(byte *buf, int len)
 {
 	/* <04> <veh-type> <language-id> <num-veh> <offset> <data...>
 	 *
@@ -1772,7 +1772,7 @@ static void VehicleNewName(byte *buf, int len)
 	const char* name;
 	bool new_scheme = _cur_grffile->grf_version >= 7;
 
-	check_length(len, 6, "VehicleNewName");
+	check_length(len, 6, "FeatureNewName");
 	buf++;
 	feature  = grf_load_byte(&buf);
 	lang     = grf_load_byte(&buf);
@@ -1784,7 +1784,7 @@ static void VehicleNewName(byte *buf, int len)
 	}
 	endid    = id + num;
 
-	DEBUG(grf, 6) ("VehicleNewName: About to rename engines %d..%d (feature %d) in language 0x%02X.",
+	DEBUG(grf, 6) ("FeatureNewName: About to rename engines %d..%d (feature %d) in language 0x%02X.",
 	               id, endid, feature, lang);
 
 	name = (const char*)buf; /*transfer read value*/
@@ -1793,7 +1793,7 @@ static void VehicleNewName(byte *buf, int len)
 		size_t ofs = strlen(name) + 1;
 
 		if (ofs > 1 && ofs < 128) {
-			DEBUG(grf, 8) ("VehicleNewName: %d <- %s", id, name);
+			DEBUG(grf, 8) ("FeatureNewName: %d <- %s", id, name);
 
 			switch (feature) {
 				case GSF_TRAIN:
@@ -1813,7 +1813,7 @@ static void VehicleNewName(byte *buf, int len)
 					switch (GB(id, 8, 8)) {
 						case 0xC4: /* Station class name */
 							if (_cur_grffile->stations == NULL || _cur_grffile->stations[GB(id, 0, 8)] == NULL) {
-								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
+								grfmsg(GMS_WARN, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
 							} else {
 								StationClassID sclass = _cur_grffile->stations[GB(id, 0, 8)]->sclass;
 								SetStationClassName(sclass, AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED));
@@ -1822,14 +1822,14 @@ static void VehicleNewName(byte *buf, int len)
 
 						case 0xC5: /* Station name */
 							if (_cur_grffile->stations == NULL || _cur_grffile->stations[GB(id, 0, 8)] == NULL) {
-								grfmsg(GMS_WARN, "VehicleNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
+								grfmsg(GMS_WARN, "FeatureNewName: Attempt to name undefined station 0x%X, ignoring.", GB(id, 0, 8));
 							} else {
 								_cur_grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 							}
 							break;
 
 						default:
-							DEBUG(grf, 7) ("VehicleNewName: Unsupported ID (0x%04X)", id);
+							DEBUG(grf, 7) ("FeatureNewName: Unsupported ID (0x%04X)", id);
 							break;
 					}
 					break;
@@ -1842,7 +1842,7 @@ static void VehicleNewName(byte *buf, int len)
 					switch (GB(id, 8,8)) {
 						case 0xC9: /* House name */
 						default:
-							DEBUG(grf, 7) ("VehicleNewName: Unsupported ID (0x%04X)", id);
+							DEBUG(grf, 7) ("FeatureNewName: Unsupported ID (0x%04X)", id);
 					}
 					break;
 
@@ -1851,7 +1851,7 @@ static void VehicleNewName(byte *buf, int len)
 					AddGRFString(_cur_spriteid, id, lang, name);
 					break;
 				default :
-					DEBUG(grf,7) ("VehicleNewName: Unsupported feature (0x%02X)", feature);
+					DEBUG(grf,7) ("FeatureNewName: Unsupported feature (0x%02X)", feature);
 					break;
 #endif
 			}
@@ -1859,9 +1859,9 @@ static void VehicleNewName(byte *buf, int len)
 			/* ofs is the string length + 1, so if the string is empty, ofs
 			 * is 1 */
 			if (ofs == 1) {
-				DEBUG(grf, 7) ("VehicleNewName: Can't add empty name");
+				DEBUG(grf, 7) ("FeatureNewName: Can't add empty name");
 			} else {
-				DEBUG(grf, 7) ("VehicleNewName: Too long a name (%d)", ofs);
+				DEBUG(grf, 7) ("FeatureNewName: Too long a name (%d)", ofs);
 			}
 		}
 		name += ofs;
@@ -2774,11 +2774,11 @@ static void DecodeSpecialSprite(uint num, uint stage)
 	static const uint32 action_mask[] = {0x10000, 0x0000FB40, 0x0000FFBF};
 
 	static const SpecialSpriteHandler handlers[] = {
-		/* 0x00 */ VehicleChangeInfo,
+		/* 0x00 */ FeatureChangeInfo,
 		/* 0x01 */ NewSpriteSet,
 		/* 0x02 */ NewSpriteGroup,
-		/* 0x03 */ NewVehicle_SpriteGroupMapping,
-		/* 0x04 */ VehicleNewName,
+		/* 0x03 */ FeatureMapSpriteGroup,
+		/* 0x04 */ FeatureNewName,
 		/* 0x05 */ GraphicsNew,
 		/* 0x06 */ CfgApply,
 		/* 0x07 */ SkipIf,
