@@ -766,8 +766,7 @@ start_at:
 				// Check that the tile contains exactly one track
 				if (bits == 0 || KILL_FIRST_BIT(bits) != 0) break;
 
-				if ((IsTileType(tile, MP_STREET) && !HASBIT(tpf->railtypes, GB(_m[tile].m4, 0, 4))) ||
-				      !HASBIT(tpf->railtypes, GetRailType(tile))) {
+				if (IsTileType(tile, MP_STREET) ? !HASBIT(tpf->railtypes, GB(_m[tile].m4, 0, 4)) : !HASBIT(tpf->railtypes, GetRailType(tile))) {
 					bits = 0;
 					break;
 				}
