@@ -36,8 +36,7 @@ static void AI_DequeueCommands(PlayerID player)
 
 		/* Free item */
 		entry_com = com->next;
-		if (com->text != NULL)
-			free(com->text);
+		free(com->text);
 		free(com);
 	}
 }
@@ -99,8 +98,7 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	res = DoCommand(tile, p1, p2, flags & ~DC_EXEC, procc);
 	/* The command failed, or you didn't want to execute, or you are quering, return */
 	if ((CmdFailed(res)) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST)) {
-		if (tmp_cmdtext != NULL)
-			free(tmp_cmdtext);
+		free(tmp_cmdtext);
 		return res;
 	}
 
@@ -132,9 +130,7 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	/* Set _local_player back */
 	_local_player = old_lp;
 
-	/* Free the temp _cmd_text var */
-	if (tmp_cmdtext != NULL)
-		free(tmp_cmdtext);
+	free(tmp_cmdtext);
 
 	return res;
 }
