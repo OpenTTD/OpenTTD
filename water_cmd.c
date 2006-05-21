@@ -78,7 +78,6 @@ int32 CmdBuildShipDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		depot->xy = tile;
-		_last_built_ship_depot_tile = tile;
 		depot->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		MakeShipDepot(tile,_current_player, DEPOT_NORTH, p1);
@@ -698,10 +697,6 @@ static uint32 VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
 	return 0;
 }
 
-void InitializeDock(void)
-{
-	_last_built_ship_depot_tile = 0;
-}
 
 const TileTypeProcs _tile_type_water_procs = {
 	DrawTile_Water,						/* draw_tile_proc */

@@ -577,8 +577,6 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (dep == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (IsLocalPlayer()) _last_built_road_depot_tile = tile;
-
 		dep->xy = tile;
 		dep->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
@@ -1081,10 +1079,6 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 	}
 }
 
-void InitializeRoad(void)
-{
-	_last_built_road_depot_tile = 0;
-}
 
 const TileTypeProcs _tile_type_road_procs = {
 	DrawTile_Road,						/* draw_tile_proc */

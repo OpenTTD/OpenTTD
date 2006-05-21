@@ -590,8 +590,6 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (d == NULL) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (IsLocalPlayer()) _last_built_train_depot_tile = tile;
-
 		MakeRailDepot(tile, _current_player, p2, p1);
 		MarkTileDirtyByTile(tile);
 
@@ -2032,10 +2030,6 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	return 0;
 }
 
-void InitializeRail(void)
-{
-	_last_built_train_depot_tile = 0;
-}
 
 const TileTypeProcs _tile_type_rail_procs = {
 	DrawTile_Track,						/* draw_tile_proc */

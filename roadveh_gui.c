@@ -968,25 +968,11 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 9: { /* Build new Vehicle */
-			TileIndex tile;
-
-			if (!IsWindowOfPrototype(w, _player_roadveh_widgets))
-				break;
-
-			tile = _last_built_road_depot_tile;
-			do {
-				if (IsTileDepotType(tile, TRANSPORT_ROAD) && IsTileOwner(tile, _local_player)) {
-					ShowRoadDepotWindow(tile);
-					ShowBuildRoadVehWindow(tile);
-					return;
-				}
-
-				tile = TILE_MASK(tile + 1);
-			} while (tile != _last_built_road_depot_tile);
-
+		case 9: /* Build new Vehicle */
+			if (!IsWindowOfPrototype(w, _player_roadveh_widgets)) break;
 			ShowBuildRoadVehWindow(0);
-		} break;
+			break;
+
 		case 10: {
 			if (!IsWindowOfPrototype(w, _player_roadveh_widgets))
 				break;

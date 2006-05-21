@@ -1082,25 +1082,10 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 9: { /* Build new Vehicle */
-			TileIndex tile;
-
-			if (!IsWindowOfPrototype(w, _player_aircraft_widgets))
-				break;
-
-			tile = _last_built_aircraft_depot_tile;
-			do {
-				if (IsHangarTile(tile) && IsTileOwner(tile, _local_player)) {
-					ShowAircraftDepotWindow(tile);
-					ShowBuildAircraftWindow(tile);
-					return;
-				}
-
-				tile = TILE_MASK(tile + 1);
-			} while (tile != _last_built_aircraft_depot_tile);
-
+		case 9: /* Build new Vehicle */
+			if (!IsWindowOfPrototype(w, _player_aircraft_widgets)) break;
 			ShowBuildAircraftWindow(0);
-		} break;
+			break;
 
 		case 10:
 			if (!IsWindowOfPrototype(w, _player_aircraft_widgets))

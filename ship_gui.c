@@ -1065,24 +1065,10 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 9: { /* Build new Vehicle */
-			TileIndex tile;
-
+		case 9: /* Build new Vehicle */
 			if (!IsWindowOfPrototype(w, _player_ships_widgets)) break;
-
-			tile = _last_built_ship_depot_tile;
-			do {
-				if (IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, _local_player)) {
-					ShowShipDepotWindow(tile);
-					ShowBuildShipWindow(tile);
-					return;
-				}
-
-				tile = TILE_MASK(tile + 1);
-			} while (tile != _last_built_ship_depot_tile);
-
 			ShowBuildShipWindow(0);
-		} break;
+			break;
 
 		case 10: {
 			if (!IsWindowOfPrototype(w, _player_ships_widgets)) break;

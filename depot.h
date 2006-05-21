@@ -60,10 +60,6 @@ static inline uint16 GetServiceIntervalClamped(uint index)
 	return (_patches.servint_ispercent) ? clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
 }
 
-VARDEF TileIndex _last_built_train_depot_tile;
-VARDEF TileIndex _last_built_road_depot_tile;
-VARDEF TileIndex _last_built_aircraft_depot_tile;
-VARDEF TileIndex _last_built_ship_depot_tile;
 
 /**
  * Check if a depot really exists.

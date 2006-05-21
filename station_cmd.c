@@ -1669,9 +1669,6 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		st->owner = _current_player;
-		if (IsLocalPlayer() && afc->nof_depots != 0)
-			_last_built_aircraft_depot_tile = tile + ToTileIndexDiff(afc->airport_depots[0]);
-
 		st->airport_tile = tile;
 		if (!st->facilities) st->xy = tile;
 		st->facilities |= FACIL_AIRPORT;

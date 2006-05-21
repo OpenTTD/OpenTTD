@@ -249,5 +249,4 @@ static void ShowBuildAirportPicker(void)
 void InitializeAirportGui(void)
 {
 	_selected_airport_type = AT_SMALL;
-	_last_built_aircraft_depot_tile = 0;
 }
