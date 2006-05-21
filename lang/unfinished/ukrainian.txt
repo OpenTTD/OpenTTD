@@ -2431,7 +2431,7 @@ STR_8815_NEW_VEHICLES                                           :{BLACK}Нови
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Поїзд дуже довгий
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Поїзд можна змінювати тільки тоді, коли зупинений в депо
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Поїзд{P "" и}
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Поїзд{P "" и ів}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Новий залізничний транспорт
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Нові елекричні потяги
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Новий монорельсовий транспорт

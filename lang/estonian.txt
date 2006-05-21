@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}EI
+STR_ABBREV_ALL                                                  :{TINYFONT}KÕIK
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
@@ -377,6 +379,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Kogumahtuvus ve
 STR_SORT_BY_MAX_SPEED                                           :Maksimaalne kiirus
 STR_SORT_BY_MODEL                                               :Mudel
 STR_SORT_BY_VALUE                                               :Väärtus
+STR_SORT_BY_FACILITY                                            :Jaama tüüp
+STR_SORT_BY_WAITING                                             :Ootava kauba väärtus
+STR_SORT_BY_RATING_MAX                                          :Kauba reiting
+STR_NO_WAITING_CARGO                                            :{BLACK}Kaupa pole ootamas
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vali kõik tööstused
+STR_SELECT_ALL_TYPES                                            :{BLACK}Vali kõik kauba tüübod (Ka kaup, mis ei oota)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -870,6 +878,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumeenia
 STR_TOWNNAME_CZECH                                              :T¨ehhi
 STR_TOWNNAME_SWISS                                              :¦veitsi
 STR_TOWNNAME_DANISH                                             :Taani
+STR_TOWNNAME_TURKISH                                            :Türgi
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Naelad (£)
@@ -943,6 +952,7 @@ STR_CRATES                                                      :kasti
 STR_RES_OTHER                                                   :teised
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Sihtpunktide nimekirja ei saa jagada...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Sihtpunktide nimekirja ei saa kopeerida...
@@ -1164,6 +1174,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Tõsta ve
 
 STR_DRAG_DROP                                                   :{BLACK}Venitamine
 STR_STATION_DRAG_DROP                                           :{BLACK}Jaama ehitamine venitades hiirega sobiv suurus
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Vali jaama klass mida tahad näidata
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vali jaama tüüp, mida ehitada
 
 STR_FAST_FORWARD                                                :{BLACK}Mängu aja kiiresti edasi kerimine
 STR_MESSAGE_HISTORY                                             :{WHITE}Sõnumite ajalugu
@@ -1710,6 +1722,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...poi o
 STR_306B_HELIPORT                                               :{BLACK}Helikopteri plats
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...jaam on liiga laiaks venitatud
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...korrapäratud jaamad keelatud
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hoia all CTRL et valia rohkem kui üks asi
 
 STR_UNDEFINED                                                   :(määratlemata väljend)
 STR_STAT_CLASS_DFLT                                             :Vaikimisi jaam
@@ -2514,6 +2527,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transpor
 
 STR_TRAIN_STOPPING                                              :{RED}Peatub
 STR_TRAIN_STOPPING_VEL                                          :{RED}Peatub, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Ühildamatud raudtee tüübid
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Maanteesõiduk on ees
@@ -2777,6 +2791,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Eelvaad
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Muuda personaalse valuuta parameetreid
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}

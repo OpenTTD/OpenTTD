@@ -372,6 +372,7 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapasitet
 STR_SORT_BY_MAX_SPEED                                           :Maksimal fart
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Verdi
+STR_SORT_BY_FACILITY                                            :Stasjon type
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1157,6 +1158,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Dra loko
 
 STR_DRAG_DROP                                                   :{BLACK}Dra og slipp
 STR_STATION_DRAG_DROP                                           :{BLACK}Bygg stasjon med dra og slipp
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Velg stasjonen du vil bygge
 
 STR_FAST_FORWARD                                                :{BLACK}Hurtig tid
 STR_MESSAGE_HISTORY                                             :{WHITE}Tidligere meldinger
@@ -1703,6 +1705,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bøyen
 STR_306B_HELIPORT                                               :{BLACK}Landingsplass for helikopter
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasjonen er spredd for mye
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikke-ensartede stasjoner deaktivert
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold nede CTRL for å velge mer en en ting
 
 
 ##id 0x3800
@@ -2554,6 +2557,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Kollisjon!{}Sjåfør dør etter kollisjon med tog
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Kollisjon!{}{COMMA} dør etter kollisjon med tog
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikke snu...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikke snu kjøretøy som består av flere deler
 STR_9034_RENAME                                                 :{BLACK}Endre navn
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endre navnet til kjøretøytypen
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Endre navnet til kjøretøytypen

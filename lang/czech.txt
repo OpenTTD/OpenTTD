@@ -1782,7 +1782,7 @@ STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}... neje
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podr¸ením CTRL muzete oznacit více polo¸ek
 
 STR_UNDEFINED                                                   :(nedefinovaný retezec)
-STR_STAT_CLASS_DFLT                                             :Výchozí stanice
+STR_STAT_CLASS_DFLT                                             :Puvodni stanice
 STR_STAT_CLASS_WAYP                                             :Kontrolní body
 
 ##id 0x3800
@@ -2523,7 +2523,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nemohu p
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemohu tento prikaz smazat...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemohu tento prikaz zmenit...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nemohu presunout vozidlo...
-STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadní stroj bude vzdy doprovázet svuj protejsek vepredu
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadní stroj v¸dy doprovází svuj protejsek vepredu
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nemohu prodat vagon nebo lokomotivu...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nemohu najít cestu do místního depa...
@@ -2877,7 +2877,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber ty
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tady je zobrazeno, za jakou lokomotivu se ta v levém seznamu vymenuje
 STR_REPLACE_HELP                                                :{BLACK}Tato mo¸nost hry ti umoznuje vybrat typ lokomotivy, který nechá vymenit za jiný. To se bude automaticky provadet, kdy¸ lokomotiva zajede do depa.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odebírání vagonu: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylep¨ování vlaku muze udr¸ovat stejnou délku vlaku odstranovanim vagonu (od zacatku vlaku), pokud by vylep¨ení ma¨iny by vlak prodlou¸ilo.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce automatického vylep¨ování vlaku muze udr¸ovat stejnou délku vlaku odstranovanim vagonu (od zacatku vlaku), pokud by zmena ma¨iny vlak prodlou¸ila.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovani: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTÁLNÍ VLASTNOST {}Prepne mezi okny na vymenu lokomotiv a vagonu.{}Vagon se vymeni, jen kdy¸ je nový vagon schopen vozit stejnou komoditu, jako ten starý. Toto se overuje pro ka¸dý vagon.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj nelze postavit
