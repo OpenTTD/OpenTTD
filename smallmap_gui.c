@@ -449,7 +449,6 @@ static inline uint32 GetSmallMapRoutesPixels(TileIndex tile)
 	if (t == MP_STATION) {
 		switch (GetStationType(tile)) {
 			case STATION_RAIL:    bits = MKCOLOR(0x56565656); break;
-			case STATION_HANGAR:
 			case STATION_AIRPORT: bits = MKCOLOR(0xB8B8B8B8); break;
 			case STATION_TRUCK:   bits = MKCOLOR(0xC2C2C2C2); break;
 			case STATION_BUS:     bits = MKCOLOR(0xBFBFBFBF); break;

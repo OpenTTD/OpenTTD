@@ -57,7 +57,6 @@ typedef enum HangarTiles {
 
 typedef enum StationType {
 	STATION_RAIL,
-	STATION_HANGAR,
 	STATION_AIRPORT,
 	STATION_TRUCK,
 	STATION_BUS,

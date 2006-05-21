@@ -9,7 +9,6 @@ StationType GetStationType(TileIndex t)
 {
 	assert(IsTileType(t, MP_STATION));
 	if (IsRailwayStation(t)) return STATION_RAIL;
-	if (IsHangar(t)) return STATION_HANGAR;
 	if (IsAirport(t)) return STATION_AIRPORT;
 	if (IsTruckStop(t)) return STATION_TRUCK;
 	if (IsBusStop(t)) return STATION_BUS;

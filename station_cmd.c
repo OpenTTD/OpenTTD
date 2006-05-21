@@ -2119,8 +2119,9 @@ static void GetTileDesc_Station(TileIndex tile, TileDesc *td)
 	switch (GetStationType(tile)) {
 		default: NOT_REACHED();
 		case STATION_RAIL:    str = STR_305E_RAILROAD_STATION; break;
-		case STATION_HANGAR:  str = STR_305F_AIRCRAFT_HANGAR; break;
-		case STATION_AIRPORT: str = STR_3060_AIRPORT; break;
+		case STATION_AIRPORT:
+			str = (IsHangar(tile) ? STR_305F_AIRCRAFT_HANGAR : STR_3060_AIRPORT);
+			break;
 		case STATION_TRUCK:   str = STR_3061_TRUCK_LOADING_AREA; break;
 		case STATION_BUS:     str = STR_3062_BUS_STATION; break;
 		case STATION_OILRIG:  str = STR_4807_OIL_RIG; break;
@@ -2789,7 +2790,6 @@ static int32 ClearTile_Station(TileIndex tile, byte flags)
 	if (flags & DC_AUTO) {
 		switch (GetStationType(tile)) {
 			case STATION_RAIL:    return_cmd_error(STR_300B_MUST_DEMOLISH_RAILROAD);
-			case STATION_HANGAR:
 			case STATION_AIRPORT: return_cmd_error(STR_300E_MUST_DEMOLISH_AIRPORT_FIRST);
 			case STATION_TRUCK:   return_cmd_error(STR_3047_MUST_DEMOLISH_TRUCK_STATION);
 			case STATION_BUS:     return_cmd_error(STR_3046_MUST_DEMOLISH_BUS_STATION);
@@ -2805,7 +2805,6 @@ static int32 ClearTile_Station(TileIndex tile, byte flags)
 
 	switch (GetStationType(tile)) {
 		case STATION_RAIL:    return RemoveRailroadStation(st, tile, flags);
-		case STATION_HANGAR:
 		case STATION_AIRPORT: return RemoveAirport(st, flags);
 		case STATION_TRUCK:
 		case STATION_BUS:     return RemoveRoadStop(st, flags, tile);
