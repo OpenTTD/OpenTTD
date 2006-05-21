@@ -284,7 +284,7 @@ Vehicle *CreateEffectVehicleRel(const Vehicle *v, int x, int y, int z, EffectVeh
 
 uint32 VehicleEnterTile(Vehicle *v, TileIndex tile, int x, int y);
 
-void VehicleInTheWayErrMsg(const Vehicle* v);
+StringID VehicleInTheWayErrMsg(const Vehicle* v);
 Vehicle *FindVehicleBetween(TileIndex from, TileIndex to, byte z);
 TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v);
 

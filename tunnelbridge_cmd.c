@@ -656,10 +656,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 		endtile - delta,
 		GetBridgeHeightRamp(tile) + TILE_HEIGHT
 	);
-	if (v != NULL) {
-		VehicleInTheWayErrMsg(v);
-		return CMD_ERROR;
-	}
+	if (v != NULL) return_cmd_error(VehicleInTheWayErrMsg(v));
 
 	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
 	// check if you're allowed to remove the bridge owned by a town.
@@ -770,13 +767,11 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		// Make sure there's no vehicle on the bridge
 		v = FindVehicleBetween(tile, endtile, z);
 		if (v != NULL) {
-			VehicleInTheWayErrMsg(v);
-			return CMD_ERROR;
+			return_cmd_error(VehicleInTheWayErrMsg(v));
 		}
 
 		if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(endtile)) {
-			_error_message = STR_8803_TRAIN_IN_THE_WAY;
-			return CMD_ERROR;
+			return_cmd_error(STR_8803_TRAIN_IN_THE_WAY);
 		}
 
 		if (GetRailType(tile) == totype) return CMD_ERROR;

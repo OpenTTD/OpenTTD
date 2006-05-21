@@ -102,13 +102,13 @@ bool VehicleNeedsService(const Vehicle *v)
 		(v->date_of_last_service + v->service_interval < _date);
 }
 
-void VehicleInTheWayErrMsg(const Vehicle* v)
+StringID VehicleInTheWayErrMsg(const Vehicle* v)
 {
 	switch (v->type) {
-		case VEH_Train:    _error_message = STR_8803_TRAIN_IN_THE_WAY;        break;
-		case VEH_Road:     _error_message = STR_9000_ROAD_VEHICLE_IN_THE_WAY; break;
-		case VEH_Aircraft: _error_message = STR_A015_AIRCRAFT_IN_THE_WAY;     break;
-		default:           _error_message = STR_980E_SHIP_IN_THE_WAY;         break;
+		case VEH_Train:    return STR_8803_TRAIN_IN_THE_WAY;
+		case VEH_Road:     return STR_9000_ROAD_VEHICLE_IN_THE_WAY;
+		case VEH_Aircraft: return STR_A015_AIRCRAFT_IN_THE_WAY;
+		default:           return STR_980E_SHIP_IN_THE_WAY;
 	}
 }
 
@@ -117,7 +117,7 @@ static void *EnsureNoVehicleProc(Vehicle *v, void *data)
 	if (v->tile != *(const TileIndex*)data || v->type == VEH_Disaster)
 		return NULL;
 
-	VehicleInTheWayErrMsg(v);
+	_error_message = VehicleInTheWayErrMsg(v);
 	return v;
 }
 
@@ -133,7 +133,7 @@ static void *EnsureNoVehicleProcZ(Vehicle *v, void *data)
 	if (v->tile != ti->tile || v->type == VEH_Disaster) return NULL;
 	if (v->z_pos > ti->z) return NULL;
 
-	VehicleInTheWayErrMsg(v);
+	_error_message = VehicleInTheWayErrMsg(v);
 	return v;
 }
 

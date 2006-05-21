@@ -904,6 +904,7 @@ int32 CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	money = GetAvailableMoneyForCommand();
 	cost = 0;
+	ret = 0;
 
 	for (x = sx; x <= ex; ++x) {
 		for (y = sy; y <= ey; ++y) {
@@ -933,7 +934,7 @@ int32 CmdConvertRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	return (cost == 0) ? CMD_ERROR : cost;
+	return (cost == 0) ? ret : cost;
 }
 
 static int32 RemoveTrainDepot(TileIndex tile, uint32 flags)
