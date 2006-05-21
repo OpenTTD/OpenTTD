@@ -233,11 +233,12 @@ EngineID AiNew_PickVehicle(Player *p)
 
 		// Let's check it backwards.. we simply want to best engine available..
 		for (i = end - 1; i >= start; i--) {
+			const Engine* e = GetEngine(i);
 			int32 ret;
 
 			// Is it availiable?
 			// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
-			if (!HASBIT(GetEngine(i)->player_avail, _current_player) || GetEngine(i)->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
+			if (!HASBIT(e->player_avail, _current_player) || e->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
 			// Can we build it?
 			ret = AI_DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_ROAD_VEH);
 			if (!CmdFailed(ret)) return i;

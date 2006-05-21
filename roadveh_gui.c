@@ -222,7 +222,7 @@ static void ShowRoadVehDetailsWindow(const Vehicle* v)
 	w->caption_color = v->owner;
 }
 
-void CcCloneRoadVeh(bool success, uint tile, uint32 p1, uint32 p2)
+void CcCloneRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) ShowRoadVehViewWindow(GetVehicle(_new_roadveh_id));
 }

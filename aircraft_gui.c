@@ -86,7 +86,7 @@ void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
-void CcCloneAircraft(bool success, uint tile, uint32 p1, uint32 p2)
+void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) ShowAircraftViewWindow(GetVehicle(_new_aircraft_id));
 }

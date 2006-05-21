@@ -312,7 +312,7 @@ void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	ShowShipViewWindow(v);
 }
 
-void CcCloneShip(bool success, uint tile, uint32 p1, uint32 p2)
+void CcCloneShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) ShowShipViewWindow(GetVehicle(_new_ship_id));
 }

@@ -171,7 +171,7 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	ShowTrainViewWindow(v);
 }
 
-void CcCloneTrain(bool success, uint tile, uint32 p1, uint32 p2)
+void CcCloneTrain(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) ShowTrainViewWindow(GetVehicle(_new_train_id));
 }
