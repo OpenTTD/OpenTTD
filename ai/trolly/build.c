@@ -220,28 +220,30 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 
 
 // This functions tries to find the best vehicle for this type of cargo
-// It returns vehicle_id or -1 if not found
-int AiNew_PickVehicle(Player *p)
+// It returns INVALID_ENGINE if not suitable engine is found
+EngineID AiNew_PickVehicle(Player *p)
 {
 	if (p->ainew.tbt == AI_TRAIN) {
 		// Not supported yet
-		return -1;
+		return INVALID_ENGINE;
 	} else {
-		int start, count, i, ret = CMD_ERROR;
-		start = _cargoc.ai_roadveh_start[p->ainew.cargo];
-		count = _cargoc.ai_roadveh_count[p->ainew.cargo];
+		EngineID start = _cargoc.ai_roadveh_start[p->ainew.cargo];
+		EngineID end = start + _cargoc.ai_roadveh_count[p->ainew.cargo];
+		EngineID i;
 
 		// Let's check it backwards.. we simply want to best engine available..
-		for (i = start + count - 1; i >= start; i--) {
+		for (i = end - 1; i >= start; i--) {
+			int32 ret;
+
 			// Is it availiable?
 			// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
 			if (!HASBIT(GetEngine(i)->player_avail, _current_player) || GetEngine(i)->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
 			// Can we build it?
 			ret = AI_DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_ROAD_VEH);
-			if (!CmdFailed(ret)) break;
+			if (!CmdFailed(ret)) return i;
 		}
 		// We did not find a vehicle :(
-		return CmdFailed(ret) ? -1 : i;
+		return INVALID_ENGINE;
 	}
 }
 
@@ -249,9 +251,9 @@ int AiNew_PickVehicle(Player *p)
 // Builds the best vehicle possible
 int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
 {
-	int i = AiNew_PickVehicle(p);
-	if (i == -1) return CMD_ERROR;
+	EngineID i = AiNew_PickVehicle(p);
 
+	if (i == INVALID_ENGINE) return CMD_ERROR;
 	if (p->ainew.tbt == AI_TRAIN) return CMD_ERROR;
 
 	return AI_DoCommand(tile, i, 0, flag, CMD_BUILD_ROAD_VEH);

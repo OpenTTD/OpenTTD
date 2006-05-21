@@ -567,7 +567,8 @@ static void AiNew_State_FindStation(Player *p)
 {
 	TileIndex tile;
 	Station *st;
-	int i, count = 0;
+	int count = 0;
+	EngineID i;
 	TileIndex new_tile = 0;
 	byte direction = 0;
 	Town *town = NULL;
@@ -606,7 +607,10 @@ static void AiNew_State_FindStation(Player *p)
 	i = AiNew_PickVehicle(p);
 	// Euhmz, this should not happen _EVER_
 	// Quit finding a route...
-	if (i == -1) { p->ainew.state = AI_STATE_NOTHING; return; }
+	if (i == INVALID_ENGINE) {
+		p->ainew.state = AI_STATE_NOTHING;
+		return;
+	}
 
 	FOR_ALL_STATIONS(st) {
 		if (st->xy != 0) {
@@ -867,10 +871,11 @@ static int AiNew_HowManyVehicles(Player *p)
 {
 	if (p->ainew.tbt == AI_BUS) {
 		// For bus-routes we look at the time before we are back in the station
-		int i, length, tiles_a_day;
+		EngineID i;
+		int length, tiles_a_day;
 		int amount;
 		i = AiNew_PickVehicle(p);
-		if (i == -1) return 0;
+		if (i == INVALID_ENGINE) return 0;
 		// Passenger run.. how long is the route?
 		length = p->ainew.path_info.route_length;
 		// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
@@ -882,10 +887,11 @@ static int AiNew_HowManyVehicles(Player *p)
 		return amount;
 	} else if (p->ainew.tbt == AI_TRUCK) {
 		// For truck-routes we look at the cargo
-		int i, length, amount, tiles_a_day;
+		EngineID i;
+		int length, amount, tiles_a_day;
 		int max_cargo;
 		i = AiNew_PickVehicle(p);
-		if (i == -1) return 0;
+		if (i == INVALID_ENGINE) return 0;
 		// Passenger run.. how long is the route?
 		length = p->ainew.path_info.route_length;
 		// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
@@ -1122,7 +1128,7 @@ static void AiNew_State_BuildDepot(Player *p)
 
 	p->ainew.state = AI_STATE_BUILD_VEHICLE;
 	p->ainew.idle = 10;
-	p->ainew.veh_main_id = (VehicleID)-1;
+	p->ainew.veh_main_id = INVALID_VEHICLE;
 }
 
 
@@ -1181,7 +1187,7 @@ static void AiNew_State_GiveOrders(Player *p)
 		p->ainew.veh_id = _new_roadveh_id;
 	}
 
-	if (p->ainew.veh_main_id != (VehicleID)-1) {
+	if (p->ainew.veh_main_id != INVALID_VEHICLE) {
 		AI_DoCommand(0, p->ainew.veh_id + (p->ainew.veh_main_id << 16), 0, DC_EXEC, CMD_CLONE_ORDER);
 
 		p->ainew.state = AI_STATE_START_VEHICLE;
