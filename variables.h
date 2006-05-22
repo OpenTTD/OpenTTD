@@ -228,6 +228,7 @@ typedef struct Cheats {
 	Cheat switch_climate;
 	Cheat change_date;				//changes date ingame
 	Cheat setup_prod;				//setup raw-material production in game
+	Cheat elrail;                   //allow electric engines to be powered on conventional rail
 } Cheats;
 
 VARDEF Cheats _cheats;

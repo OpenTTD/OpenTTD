@@ -23,6 +23,8 @@
 #include "network.h"
 #include "string.h"
 #include "variables.h"
+#include "vehicle.h"
+#include "train.h"
 
 #include "hal.h" // for file list
 
@@ -1682,6 +1684,18 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	return _cur_year;
 }
 
+static int32 ClickAllowConvrail(int32 p1, int32 p2)
+{
+	Vehicle *v;
+	SB(_railtypes[RAILTYPE_ELECTRIC].powered_railtypes, RAILTYPE_RAIL, 1, p1);
+
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == VEH_Train && IsFrontEngine(v)) TrainConsistChanged(v);
+	}
+	return p1;
+}
+
+
 typedef int32 CheckButtonClick(int32, int32);
 
 enum ce_flags {CE_CLICK = 1 << 0};
@@ -1708,14 +1722,15 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,       0, STR_CHEAT_SETUP_PROD,     &_cheats.setup_prod.value,      &_cheats.setup_prod.been_used,      NULL,                     0,  0},
 	{SLE_UINT8,      0, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape,                &_cheats.switch_climate.been_used,  &ClickChangeClimateCheat,-1,  4},
 	{SLE_UINT8,      0, STR_CHEAT_CHANGE_DATE,    &_cur_year,                     &_cheats.change_date.been_used,     &ClickChangeDateCheat,   -1,  1},
+	{SLE_BOOL,       0, STR_CHEAT_ALLOW_CONVRAIL, &_cheats.elrail.value,          &_cheats.elrail.been_used,          &ClickAllowConvrail,      0,  0},
 };
 
 
 static const Widget _cheat_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   399,     0,    13, STR_CHEATS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   399,    14,   159, 0x0,					STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   399,    14,   159, 0x0,					STR_CHEATS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   399,    14,   169, 0x0,					STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   399,    14,   169, 0x0,					STR_CHEATS_TIP},
 {   WIDGETS_END},
 };
 
@@ -1845,7 +1860,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _cheats_desc = {
-	240, 22, 400, 160,
+	240, 22, 400, 170,
 	WC_CHEATS,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_cheat_widgets,

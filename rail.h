@@ -127,7 +127,7 @@ typedef struct RailtypeInfo {
 	byte custom_ground_offset;
 } RailtypeInfo;
 
-extern const RailtypeInfo _railtypes[RAILTYPE_END];
+extern RailtypeInfo _railtypes[RAILTYPE_END];
 
 // these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block
 enum {
