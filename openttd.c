@@ -46,6 +46,7 @@
 #include "waypoint.h"
 #include "ai/ai.h"
 #include "train.h"
+#include "settings.h"
 
 #include <stdarg.h>
 
@@ -406,7 +407,7 @@ int ttd_main(int argc, char* argv[])
 	if (sounddriver[0]) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
 	if (videodriver[0]) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
-	if (startdate != (uint)-1) _patches.starting_date = startdate;
+	if (startdate != (uint)-1) _patches_newgame.starting_date = startdate;
 
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 
