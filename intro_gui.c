@@ -10,6 +10,7 @@
 #include "player.h"
 #include "network.h"
 #include "variables.h"
+#include "settings.h"
 
 extern void SwitchMode(int new_mode);
 
@@ -54,7 +55,6 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 {
 	/* We do +/- 6 for the map_xy because 64 is 2^6, but it is the lowest available element */
 	static const StringID mapsizes[] = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
-	extern Patches _patches_newgame;
 
 	switch (e->event) {
 	case WE_PAINT:

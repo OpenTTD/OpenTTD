@@ -74,6 +74,9 @@ static inline void *ini_get_variable(const SaveLoad *sld, const void *object)
 	return (object == NULL) ? sld->address : (byte*)object + (ptrdiff_t)sld->address;
 }
 
+/** The patch values that are used for new games and/or modified in config file */
+extern Patches _patches_newgame;
+
 void IConsoleSetPatchSetting(const char *name, const char *value);
 void IConsoleGetPatchSetting(const char *name);
 const SettingDesc *GetPatchFromName(const char *name, uint *i);

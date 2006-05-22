@@ -675,7 +675,6 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_CREATE: {
-		extern Patches _patches_newgame;
 		static bool first_time = true;
 
 		patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
