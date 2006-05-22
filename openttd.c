@@ -625,6 +625,7 @@ static void MakeNewEditorWorld(void)
 
 void StartupPlayers(void);
 void StartupDisasters(void);
+extern void StartupEconomy(void);
 
 /**
  * Start Scenario starts a new game based on a scenario.
@@ -662,6 +663,7 @@ static void StartScenario(void)
 	_opt.diff_level = _opt_newgame.diff_level;
 
 	// Inititalize data
+	StartupEconomy();
 	StartupPlayers();
 	StartupEngines();
 	StartupDisasters();
