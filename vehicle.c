@@ -1550,6 +1550,9 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					DoCommand(0, w->index, v->cargo_type, flags, CMD_REFIT_VEH(v->type));
 				}
 			}
+			if (v->type == VEH_Train && HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
+				SETBIT(w->u.rail.flags, VRF_REVERSE_DIRECTION);
+			}
 
 			if (v->type == VEH_Train && !IsFrontEngine(v)) {
 				// this s a train car
@@ -1641,7 +1644,10 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 				if (!CmdFailed(temp_cost)) cost += temp_cost;
 			}
 		}
-
+		if (new_v->type == VEH_Train && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->next != NULL && IsArticulatedPart(new_v->next))) {
+			// we are autorenewing to a single engine, so we will turn it as the old one was turned as well
+			SETBIT(new_v->u.rail.flags, VRF_REVERSE_DIRECTION);
+		}
 
 		if (old_v->type == VEH_Train && !IsFrontEngine(old_v)) {
 			/* this is a railcar. We need to move the car into the train
