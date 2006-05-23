@@ -53,6 +53,9 @@ static byte _misc_grf_features = 0;
 /* 32 * 8 = 256 flags. Apparently TTDPatch uses this many.. */
 static uint32 _ttdpatch_flags[8];
 
+/* Used by Action 0x06 to preload a pseudo sprite and modify its content */
+static byte *_preload_sprite = NULL;
+
 
 typedef enum grfspec_feature {
 	GSF_TRAIN,
@@ -1939,23 +1942,6 @@ static void GraphicsNew(byte *buf, int len)
 	}
 }
 
-/* Action 0x06 */
-static void CfgApply(byte *buf, int len)
-{
-	/* <06> <param-num> <param-size> <offset> ... <FF>
-	 *
-	 * B param-num     Number of parameter to substitute (First = "zero")
-	 *                 Ignored if that parameter was not specified in newgrf.cfg
-	 * B param-size    How many bytes to replace.  If larger than 4, the
-	 *                 bytes of the following parameter are used.  In that
-	 *                 case, nothing is applied unless *all* parameters
-	 *                 were specified.
-	 * B offset        Offset into data from beginning of next sprite
-	 *                 to place where parameter is to be stored. */
-	/* TODO */
-	grfmsg(GMS_NOTICE, "CfgApply: Ignoring (not implemented).\n");
-}
-
 static uint32 GetParamVal(byte param, uint32 *cond_val)
 {
 	switch (param) {
@@ -2011,6 +1997,86 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 			/* In-game variable. */
 			grfmsg(GMS_WARN, "Unsupported in-game variable 0x%02X.", param);
 			return -1;
+	}
+}
+
+/* Action 0x06 */
+static void CfgApply(byte *buf, int len)
+{
+	/* <06> <param-num> <param-size> <offset> ... <FF>
+	 *
+	 * B param-num     Number of parameter to substitute (First = "zero")
+	 *                 Ignored if that parameter was not specified in newgrf.cfg
+	 * B param-size    How many bytes to replace.  If larger than 4, the
+	 *                 bytes of the following parameter are used.  In that
+	 *                 case, nothing is applied unless *all* parameters
+	 *                 were specified.
+	 * B offset        Offset into data from beginning of next sprite
+	 *                 to place where parameter is to be stored. */
+
+	/* Preload the next sprite */
+	uint32 pos = FioGetPos();
+	uint16 num = FioReadWord();
+	uint8 type = FioReadByte();
+
+	/* Check if the sprite is a pseudo sprite. We can't operate on real sprites. */
+	if (type == 0xFF) {
+		_preload_sprite = malloc(num);
+		FioReadBlock(_preload_sprite, num);
+	}
+
+	/* Reset the file position to the start of the next sprite */
+	FioSeekTo(pos, SEEK_SET);
+
+	if (type != 0xFF) {
+		grfmsg(GMS_NOTICE, "CfgApply: Ignoring (next sprite is real, unsupported)");
+		return;
+	}
+
+	/* Now perform the Action 0x06 on our data. */
+	buf++;
+
+	for (;;) {
+		uint i;
+		uint param_num;
+		uint param_size;
+		uint offset;
+		bool add_value;
+
+		/* Read the parameter to apply. 0xFF indicates no more data to change. */
+		param_num = grf_load_byte(&buf);
+		if (param_num == 0xFF) break;
+
+		/* Get the size of the parameter to use. If the size covers multiple
+		 * double words, sequential parameter values are used. */
+		param_size = grf_load_byte(&buf);
+
+		/* Bit 7 of param_size indicates we should add to the original value
+		 * instead of replacing it. */
+		add_value  = HASBIT(param_size, 7);
+		param_size = GB(param_size, 0, 7);
+
+		/* Where to apply the data to within the pseudo sprite data. */
+		offset     = grf_load_extended(&buf);
+
+		/* If the parameter is a GRF parameter (not an internal variable) check
+		 * if it (and all further sequential parameters) has been defined. */
+		if (param_num < 0x80 && (param_num + (param_size - 1) / 4) >= _cur_grffile->param_end) {
+			grfmsg(GMS_NOTICE, "CfgApply: Ignoring (param %d not set)", (param_num + (param_size - 1) / 4));
+			break;
+		}
+
+		DEBUG(grf, 8) ("CfgApply: Applying %u bytes from parameter 0x%02X at offset 0x%04X", param_size, param_num, offset);
+
+		for (i = 0; i < param_size; i++) {
+			uint32 value = GetParamVal(param_num + i / 4, NULL);
+
+			if (add_value) {
+				_preload_sprite[offset + i] += GB(value, (i % 4) * 8, 8);
+			} else {
+				_preload_sprite[offset + i] = GB(value, (i % 4) * 8, 8);
+			}
+		}
 	}
 }
 
@@ -2771,7 +2837,7 @@ static void DecodeSpecialSprite(uint num, uint stage)
 	/* We need a pre-stage to set up GOTO labels of Action 0x10 because the grf
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
-	static const uint32 action_mask[] = {0x10000, 0x0000FB40, 0x0000FFBF};
+	static const uint32 action_mask[] = {0x10000, 0x0000FB40, 0x0000FFFF};
 
 	static const SpecialSpriteHandler handlers[] = {
 		/* 0x00 */ FeatureChangeInfo,
@@ -2793,12 +2859,25 @@ static void DecodeSpecialSprite(uint num, uint stage)
 		/* 0x10 */ DefineGotoLabel,
 	};
 
-	byte* buf = malloc(num);
+	byte* buf;
 	byte action;
 
-	if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
+	if (_preload_sprite == NULL) {
+		/* No preloaded sprite to work with; allocate and read the
+		 * pseudo sprite content. */
+		buf = malloc(num);
+		if (buf == NULL) error("DecodeSpecialSprite: Could not allocate memory");
+		FioReadBlock(buf, num);
+	} else {
+		/* Use the preloaded sprite data. */
+		buf = _preload_sprite;
+		_preload_sprite = NULL;
+		DEBUG(grf, 7) ("DecodeSpecialSprite: Using preloaded pseudo sprite data");
 
-	FioReadBlock(buf, num);
+		/* Skip the real (original) content of this action. */
+		FioSeekTo(num, SEEK_CUR);
+	}
+
 	action = buf[0];
 
 	if (action >= lengthof(handlers)) {
