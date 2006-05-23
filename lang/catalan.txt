@@ -34,7 +34,7 @@ STR_001A_COPPER_ORE                                             :Mineral de Cour
 STR_001B_MAIZE                                                  :Blat de Moro
 STR_001C_FRUIT                                                  :Fruita
 STR_001D_DIAMONDS                                               :Diamants
-STR_001E_FOOD                                                   :Queviures
+STR_001E_FOOD                                                   :Menjar
 STR_001F_PAPER                                                  :Paper
 STR_0020_GOLD                                                   :Or
 STR_0021_WATER                                                  :Aigua
@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}CA
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}BG
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}TOT
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -208,7 +210,7 @@ STR_00F2_300M                                                   :{BLACK}{TINYFON
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Trens
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Vehicles
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Vehicles de carretera
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Vaixells
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeronaus
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rutes de Transport
@@ -218,7 +220,7 @@ STR_00FC_FOREST                                                 :{BLACK}{TINYFON
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Serradora
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Refinería de Petroli
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Granja
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Factoría
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fàbrica
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Impremta
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Pous de Petroli
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Mina de Ferro
@@ -226,7 +228,7 @@ STR_0104_STEEL_MILL                                             :{BLACK}{TINYFON
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banc
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paperera
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Mina d'Or
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Planta de Manipulació de Queviures
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Planta de Manipulació d'Aliments
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Mina de Diamants
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mina de Coure
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantació de Fruita
@@ -318,20 +320,28 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
 STR_UNITS_POWER_METRIC                                          :{COMMA}hp
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tona{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tone{P "" s}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galó{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} força per tona
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Gràfic d'aprofitament d'operacions
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Gràfic de benefici operatiu
 STR_0155_INCOME_GRAPH                                           :Gràfic d'ingressos
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Gràfic d'entrega de càrrega
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Gràfic històric de rendiment
@@ -369,6 +379,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capac. total pe
 STR_SORT_BY_MAX_SPEED                                           :Veloc. Màxima
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Valor
+STR_SORT_BY_FACILITY                                            :Tipus de estació
+STR_SORT_BY_WAITING                                             :Valor de espera de càrrega
+STR_SORT_BY_RATING_MAX                                          :Rati de càrrega
+STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha carrega de aquest tipus esperant
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal.lacions
+STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (inloent carga sense espera)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Gen
@@ -390,7 +406,7 @@ STR_016F                                                        :{TINYFONT}{STRI
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Parar joc
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Desar joc, deixar joc, sortir
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar la llista d'estacions de les empresses
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar la llista d'estacions de l'empresa
 STR_0174_DISPLAY_MAP                                            :{BLACK}Mostrar mapa
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Mostrar mapa, directori de poblacions
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostrar directori de poblacions
@@ -415,7 +431,7 @@ STR_0188                                                        :{BLACK}{SMALLUP
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}No es pot canviar l'interval del manteniment...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Tancar finestra
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Títol de finestra - arrosega aixó per moure la finestra
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Títol de finestra - arrosega açò per moure la finestra
 STR_STICKY_BUTTON                                               :{BLACK}Marca aquesta finestra com a no eliminable per a la clau 'Tancar totes les Finestres'
 STR_RESIZE_BUTTON                                               :{BLACK}Prem i arrosega per canviar el tamany de la finestra
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Prem aqui per anar a l'actual directori de desar/carregar per defecte
@@ -448,7 +464,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informació del terreny
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost de neteja: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost de neteja: {LTBLUE}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
+STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Propietari: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoritat Local: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ningú
@@ -507,7 +523,7 @@ STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFON
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Volum dels efectes
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
 STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Saltar a la pista anterior de la selecció
-STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}altar a la pista següent de la selecció
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Saltar a la pista següent de la selecció
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Parar la música
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Engegar la música
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Arrosega els controls per establir el volum de la música i els efectes de só
@@ -862,6 +878,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romanès
 STR_TOWNNAME_CZECH                                              :Txec
 STR_TOWNNAME_SWISS                                              :Suís
 STR_TOWNNAME_DANISH                                             :Danès
+STR_TOWNNAME_TURKISH                                            :Turc
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Lliures (£)
@@ -935,6 +952,7 @@ STR_CRATES                                                      :palets
 STR_RES_OTHER                                                   :altres
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No es pot compartir la llista d'ordres...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No es pot copiar la llista d'ordres...
@@ -1093,6 +1111,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avi
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Canviar clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canviar data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificació de valors de producció: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Deixar que els trens elèctrics marxen per rails normals
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Cap a {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Cap a {WAYPOINT}, a {VELOCITY}
@@ -1156,6 +1175,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Arrastra
 
 STR_DRAG_DROP                                                   :{BLACK}Arrastrar i Deixar
 STR_STATION_DRAG_DROP                                           :{BLACK}Construir una estació arrastrant i deixant
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecciona un tipus de estació a mostrar
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecciona el tipus de estació a construir
 
 STR_FAST_FORWARD                                                :{BLACK}Avanç ràpid del joc
 STR_MESSAGE_HISTORY                                             :{WHITE}Històric de Missatges
@@ -1273,8 +1294,10 @@ STR_NETWORK_7_PLAYERS                                           :7 jugadors
 STR_NETWORK_8_PLAYERS                                           :8 jugadors
 STR_NETWORK_9_PLAYERS                                           :9 jugadors
 STR_NETWORK_10_PLAYERS                                          :10 jugadors
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Màx companyies:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar el servidor a un cert nombre de companyies
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Màx espectadors:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar el servidor a un cert nombre de espectadors
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma parlat:
@@ -1700,9 +1723,11 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boia 
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estació massa extesa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estacions no uniformes desactivades
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Mantin apretat CTRL per a seleccionar més de un item
 
 STR_UNDEFINED                                                   :(cadena sense definir)
 STR_STAT_CLASS_DFLT                                             :Estació per defecte
+STR_STAT_CLASS_WAYP                                             :Punt de pas
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientació de les Drassanes
@@ -2503,6 +2528,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Parant
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipus de rail incompatible
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vehicle rodat en el camí
@@ -2766,6 +2792,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista p
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Canviar el paràmetre de la moneda personalitzada
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
@@ -2796,9 +2823,11 @@ STR_REPLACE_HELP                                                :{BLACK}Et perme
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la sustitució automàtica mantinga la llargaria del tren eliminant vagons (començant pel front), si sustituira la màquina faria el tren més llarg
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sustituint: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} CARACTERÍSTICA EXPERIMENTAL {}Alternar entre finestres de sustitució de vagons i de motors{}La sustitució del vagó només tindrà lloc si el nou vagó pot ser reformat per a admetre el mateix tipus de càrrega que el vell. Açò es comprova per a cada vagó quan el reemplaçament es produeix.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor no es pot construir
 
 STR_ENGINES                                                     :Motors
+STR_WAGONS                                                      :Vagons
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals

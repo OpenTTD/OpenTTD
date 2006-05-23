@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}CM
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SC
+STR_ABBREV_NONE                                                 :{TINYFONT}NU
+STR_ABBREV_ALL                                                  :{TINYFONT}TOATE
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Harta - {STRING}
@@ -377,6 +379,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacitatea tot
 STR_SORT_BY_MAX_SPEED                                           :Viteza maxima
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Valoare
+STR_SORT_BY_FACILITY                                            :Tipul de statie
+STR_SORT_BY_WAITING                                             :In asteptarea valorii  încãrcãturii
+STR_SORT_BY_RATING_MAX                                          :Evaluare încãrcãturã
+STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
+STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Ian
@@ -870,6 +878,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romanesti
 STR_TOWNNAME_CZECH                                              :Cehe
 STR_TOWNNAME_SWISS                                              :Elvetian
 STR_TOWNNAME_DANISH                                             :Danezã
+STR_TOWNNAME_TURKISH                                            :Turcã
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Lira sterlina (£)
@@ -943,6 +952,7 @@ STR_CRATES                                                      :pachete
 STR_RES_OTHER                                                   :altele
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nu pot construi lista de comenzi comune...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nu pot copia lista de comenzi...
@@ -1101,6 +1111,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Avioane
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Schimbã peisajul: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Schimbã data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activeaza accesul la valorile de productie: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Permite motoarealor electrice sã ruleze pe sine normale
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Merge spre {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Merge spre {WAYPOINT}, {VELOCITY}
@@ -1164,6 +1175,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Trage lo
 
 STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP                                           :{BLACK}Construieste o statie prin drag & drop
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Alege o clasã de statii pentru afisare
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Alege tipul de statie pentru constructie
 
 STR_FAST_FORWARD                                                :{BLACK}Mãreste viteza de trecere a timpului (TAB)
 STR_MESSAGE_HISTORY                                             :{WHITE}Cronologia mesajelor
@@ -1710,6 +1723,7 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...baliz
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...statie prea mare
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...statii neuniforme dezactivat
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tine apãsat CTRL pentru a alege mai mult decât un obiect
 
 STR_UNDEFINED                                                   :(sir nedefinit)
 STR_STAT_CLASS_DFLT                                             :Statie implicitã
@@ -2514,6 +2528,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Oprire
 STR_TRAIN_STOPPING_VEL                                          :{RED}Oprire, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipuri de sine incompatibile
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Autovehicul in cale
@@ -2777,6 +2792,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previzu
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Schimba un parametru al monedei proprii
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}

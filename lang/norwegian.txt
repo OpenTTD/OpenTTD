@@ -373,6 +373,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maksimal fart
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Verdi
 STR_SORT_BY_FACILITY                                            :Stasjon type
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg alle anlegg
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -864,6 +865,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumensk
 STR_TOWNNAME_CZECH                                              :Tsjekkisk
 STR_TOWNNAME_SWISS                                              :Sveitsisk
 STR_TOWNNAME_DANISH                                             :Dansk
+STR_TOWNNAME_TURKISH                                            :Tyrkisk
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
