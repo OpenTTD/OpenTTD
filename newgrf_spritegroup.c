@@ -70,7 +70,7 @@ void InitializeSpriteGroupPool(void)
 }
 
 
-static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter)
+static inline uint32 GetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
 	/* Return common variables */
 	switch (variable) {
@@ -90,7 +90,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 		case 0x20: return _opt.landscape == LT_HILLY ? _opt.snow_line : 0xFF;
 
 		/* Not a common variable, so evalute the feature specific variables */
-		default: return object->GetVariable(object, variable, parameter);
+		default: return object->GetVariable(object, variable, parameter, available);
 	}
 }
 
@@ -142,7 +142,6 @@ BUILD_EVAL_ADJUST(int32, uint32)
 static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, ResolverObject *object)
 {
 	static SpriteGroup nvarzero;
-	const SpriteGroup *target;
 	int32 last_value = object->last_value;
 	int32 value = -1;
 	uint i;
@@ -151,7 +150,17 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 
 	for (i = 0; i < group->g.determ.num_adjusts; i++) {
 		DeterministicSpriteGroupAdjust *adjust = &group->g.determ.adjusts[i];
-		value = GetVariable(object, adjust->variable, adjust->parameter);
+
+		/* Try to get the variable. We shall assume it is available, unless told otherwise. */
+		bool available = true;
+		value = GetVariable(object, adjust->variable, adjust->parameter, &available);
+
+		if (!available) {
+			/* Unsupported property: skip further processing and return either
+			 * the group from the first range or the default group. */
+			return Resolve(group->g.determ.num_ranges > 0 ? group->g.determ.ranges[0].group : group->g.determ.default_group, object);
+		}
+
 		switch (group->g.determ.size) {
 			case DSG_SIZE_BYTE:  value = EvalAdjust_int8(adjust, last_value, value); break;
 			case DSG_SIZE_WORD:  value = EvalAdjust_int16(adjust, last_value, value); break;
@@ -161,27 +170,20 @@ static inline const SpriteGroup *ResolveVariable(const SpriteGroup *group, Resol
 		last_value = value;
 	}
 
-	if (value == -1) {
-		/* Unsupported property */
-		target = group->g.determ.num_ranges > 0 ? group->g.determ.ranges[0].group : group->g.determ.default_group;
-	} else {
-		if (group->g.determ.num_ranges == 0) {
-			/* nvar == 0 is a special case -- we turn our value into a callback result */
-			nvarzero.type = SGT_CALLBACK;
-			nvarzero.g.callback.result = GB(value, 0, 15) | 0x8000;
-			return &nvarzero;
-		}
+	if (group->g.determ.num_ranges == 0) {
+		/* nvar == 0 is a special case -- we turn our value into a callback result */
+		nvarzero.type = SGT_CALLBACK;
+		nvarzero.g.callback.result = GB(value, 0, 15) | 0x8000;
+		return &nvarzero;
+	}
 
-		target = group->g.determ.default_group;
-		for (i = 0; i < group->g.determ.num_ranges; i++) {
-			if (group->g.determ.ranges[i].low <= (uint32)value && (uint32)value <= group->g.determ.ranges[i].high) {
-				target = group->g.determ.ranges[i].group;
-				break;
-			}
+	for (i = 0; i < group->g.determ.num_ranges; i++) {
+		if (group->g.determ.ranges[i].low <= (uint32)value && (uint32)value <= group->g.determ.ranges[i].high) {
+			return Resolve(group->g.determ.ranges[i].group, object);
 		}
 	}
 
-	return Resolve(target, object);
+	return Resolve(group->g.determ.default_group, object);
 }
 
 

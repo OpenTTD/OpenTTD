@@ -476,7 +476,7 @@ static void VehicleSetTriggers(const ResolverObject *object, int triggers)
 }
 
 
-static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter)
+static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
 	const Vehicle *v = GRV(object);
 
@@ -487,8 +487,10 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			case 0x46: return 0;               /* Motion counter */
 			case 0xC4: return _cur_year;       /* Build year */
 			case 0xDA: return INVALID_VEHICLE; /* Next vehicle */
-			default:   return -1;
 		}
+
+		*available = false;
+		return -1;
 	}
 
 	/* Calculated vehicle parameters */
@@ -719,6 +721,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 
 	DEBUG(grf, 1)("Unhandled vehicle property 0x%X, type 0x%X", variable, v->type);
 
+	*available = false;
 	return -1;
 }
 

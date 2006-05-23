@@ -309,7 +309,7 @@ static void StationSetTriggers(const ResolverObject *object, int triggers)
 }
 
 
-static uint32 StationGetVariable(const ResolverObject *object, byte variable, byte parameter)
+static uint32 StationGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
 	const Station *st = object->u.station.st;
 	TileIndex tile = object->u.station.tile;
@@ -326,8 +326,10 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			case 0x43: return _current_player; /* Station owner */
 			case 0x44: return 2;               /* PBS status */
 			case 0xFA: return _date;           /* Build date */
-			default:   return -1;
 		}
+
+		*available = false;
+		return -1;
 	}
 
 	switch (variable) {
@@ -390,6 +392,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 
 	DEBUG(grf, 1)("Unhandled station property 0x%X", variable);
 
+	*available = false;
 	return -1;
 }
 
