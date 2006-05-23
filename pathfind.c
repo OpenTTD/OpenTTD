@@ -734,9 +734,13 @@ start_at:
 				// Check that the tile contains exactly one track
 				if (bits == 0 || KILL_FIRST_BIT(bits) != 0) break;
 
-				if (IsTileType(tile, MP_STREET) ? !HASBIT(tpf->railtypes, GetRailTypeCrossing(tile)) : !HASBIT(tpf->railtypes, GetRailType(tile))) {
-					bits = 0;
-					break;
+				/* Check the rail type only if the train is *NOT* on top of
+				 * a bridge. */
+				if (!(IsBridgeTile(tile) && IsBridgeMiddle(tile) && GetBridgeAxis(tile) == DiagDirToAxis(direction))) {
+					if (IsTileType(tile, MP_STREET) ? !HASBIT(tpf->railtypes, GetRailTypeCrossing(tile)) : !HASBIT(tpf->railtypes, GetRailType(tile))) {
+						bits = 0;
+						break;
+					}
 				}
 
 				///////////////////
