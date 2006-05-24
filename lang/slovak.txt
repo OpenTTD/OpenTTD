@@ -6,7 +6,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Za okrajom mapy
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Prilis blizko okraju mapy
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Prilis blizko okraja mapy
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Mala hotovost - potrebna {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
@@ -155,7 +155,7 @@ STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sprava 
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Takto sa to neda...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast sa neda vycistit...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Povodny copyright: {COPYRIGHT} 1995 Chris Sawyer, vsetky prava vyhradene
-STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
+STR_00B7_VERSION                                                :{BLACK}OpenTTD verzia {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 team OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK} Preklad - gpsoft
 
@@ -306,6 +306,37 @@ STR_0151_MAP_OF_WORLD                                           :Mapa sveta
 STR_0152_TOWN_DIRECTORY                                         :Zoznam miest
 STR_0153_SUBSIDIES                                              :Dotacie
 
+STR_UNITS_METRIC                                                :Metricke
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hp
+STR_UNITS_POWER_METRIC                                          :{COMMA}hp
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" }
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tone{P "" }
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" ov}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" ov}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} megapond{P "" y ov}
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf prevadzkoveho zisku
 STR_0155_INCOME_GRAPH                                           :Graf trzieb
@@ -343,6 +374,12 @@ STR_SORT_BY_AGE                                                 :Vek
 STR_SORT_BY_RELIABILITY                                         :Spolahlivost
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Uplna kapacita podla typu nakladu
 STR_SORT_BY_MAX_SPEED                                           :Maximalna rychlost
+STR_SORT_BY_MODEL                                               :Model
+STR_SORT_BY_VALUE                                               :Hodnota
+STR_SORT_BY_FACILITY                                            :Typ stanice
+STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
+STR_SORT_BY_RATING_MAX                                          :Hodnotenie prepravy
+STR_NO_WAITING_CARGO                                            :{BLACK}Neceka ziadny typ nakladu
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -756,7 +793,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Nastavit
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Mena
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Vyber meny
+STR_MEASURING_UNITS                                             :{BLACK}Jednotky vzdialenosti
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Výber jednotiek vzdialenosti
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cestne vozidla
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Na ktorej strane jazdia cestne vozidla
@@ -834,6 +873,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumunske
 STR_TOWNNAME_CZECH                                              :Ceske
 STR_TOWNNAME_SWISS                                              :Svajciarske
 STR_TOWNNAME_DANISH                                             :Danske
+STR_TOWNNAME_TURKISH                                            :Turecké
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libry (£)
@@ -906,6 +946,8 @@ STR_ITEMS                                                       :kusov
 STR_CRATES                                                      :debien
 STR_RES_OTHER                                                   :ine
 STR_NOTHING                                                     :
+
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Nemoze zdielat zoznam smerov...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Nemoze kopirovat zoznam smerov...
@@ -1235,6 +1277,15 @@ STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznam
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_0_PLAYERS                                           :0 hracov
 STR_NETWORK_1_PLAYERS                                           :1 hrac
+STR_NETWORK_2_PLAYERS                                           :2 hráci
+STR_NETWORK_3_PLAYERS                                           :3 hráci
+STR_NETWORK_4_PLAYERS                                           :4 hráci
+STR_NETWORK_5_PLAYERS                                           :5 hrácov
+STR_NETWORK_6_PLAYERS                                           :6 hrácov
+STR_NETWORK_7_PLAYERS                                           :7 hrácov
+STR_NETWORK_8_PLAYERS                                           :8 hrácov
+STR_NETWORK_9_PLAYERS                                           :9 hrácov
+STR_NETWORK_10_PLAYERS                                          :10 hrácov
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max. pocet spolocnosti:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Obmedzi maximalny pocet spolocnosti na serveri
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1401,6 +1452,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Ziadne p
 STR_1007_ALREADY_BUILT                                          :{WHITE}...uz bolo vytvorene
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najskor treba odstranit zeleznicne kolaje
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Vystavba zeleznice
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Stavba elektrifikovanej ¸eleznice
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Vystavba jednokolajky
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Vystavba magnetickej drahy
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Vyber zeleznicny most
@@ -1412,6 +1464,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Tu nemoz
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Tu nemozno odstranit semafory...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Otocenie depa
 STR_1015_RAILROAD_CONSTRUCTION                                  :Vystavba zeleznice
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Stavba elektrifikovanej ¸eleznice
 STR_1016_MONORAIL_CONSTRUCTION                                  :Vystavba jednokolajky
 STR_1017_MAGLEV_CONSTRUCTION                                    :Vystavba magnetickej drahy
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Postavit zeleznicne kolaje
@@ -1662,6 +1715,10 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja 
 STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stanica je prilis velka
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nejednoliate stanice su zakazane
+
+STR_UNDEFINED                                                   :(nedefinovaný retezec)
+STR_STAT_CLASS_DFLT                                             :Pôvodná stanica
+STR_STAT_CLASS_WAYP                                             :Kontrólne body
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Otocenie lodenice
@@ -2367,6 +2424,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je 
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaky sa daju prerobit len v depe
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Vlaky
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nove vlaky
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nové elektrické lokomotívy a vagóny
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nove jednokolajove vlaky
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nove magneticke vlaky
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Vyrobit Vozidlo
@@ -2400,6 +2458,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nemozno 
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemozno vymazat tebnto prikaz...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemozno zmenit tento prikaz...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}nemozno posuvat vozdlo...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadný stroj v¸dy doprevádza svoj druhý stroj vpredu
 STR_8838_N_A                                                    :Nie je{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nemozno predat automobil...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nemoze najst cestu do depa
@@ -2511,6 +2570,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Automobilova havaria!{}Vodic zomrel po kolozii s vlakom
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Automobilova havaria!{}{COMMA} zomrel po kolozii s vlakom
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nemozno otocit vozidlo...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nemozes otacat vozidla ktore su zlozené z viacerych strojov
 STR_9034_RENAME                                                 :{BLACK}Premenovat
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Premenovat typ automobilu
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Premenovat typ automobilu
@@ -2722,6 +2782,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Nahlad:
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Zmenit parametre vlastnej meny
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
@@ -2750,6 +2811,12 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber ty
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tu sa zobrazuje, za ktoru lokomotiva sa lokomotiva v lavom zozname zamenuje
 STR_REPLACE_HELP                                                :{BLACK}Umoznuje vybrat typ lokomotivy, ktory automaticky sa zameni za iny typ, ak vlaky s takouto lokomotivou sa zastavia v depe
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena masiny vlak predlzila.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovanie: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTALNA VLASTNOST {}Prepne medzi oknami na vymenu lokomotiv a vagonov.{}Vagon sa vymeni, len ked je nový vagon schopny vozit rovnaky naklad, ako ten stary. Toto sa overuje pre kazdy vagon.
+
+STR_ENGINES                                                     :lokomotívy
+STR_WAGONS                                                      :Vagonov
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popisov
@@ -2757,6 +2824,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam p
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Lokomotiva pre zeleznicu
+STR_ELRAIL_VEHICLES                                             :Elektrické lokomotívy
 STR_MONORAIL_VEHICLES                                           :Lokomotiva pre jednokolajovku
 STR_MAGLEV_VEHICLES                                             :Lokomotiva pre magneticku drahu
 
