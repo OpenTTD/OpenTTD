@@ -22,7 +22,7 @@ typedef struct FileEntry {
 static uint _file_count;
 static FileEntry* _files;
 
-#define SOUND_SLOT 31
+#define SOUND_SLOT 63
 // Number of levels of panning per side
 #define PANNING_LEVELS 16
 

@@ -20,7 +20,7 @@ typedef struct {
 	byte *buffer, *buffer_end;
 	uint32 pos;
 	FILE *cur_fh;
-	FILE *handles[32];
+	FILE *handles[64];
 	byte buffer_start[512];
 } Fio;
 
