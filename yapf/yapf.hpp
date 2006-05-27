@@ -29,6 +29,7 @@ EXTERN_C_BEGIN
 EXTERN_C_END
 
 #include <limits.h>
+#include <new>
 
 #if defined(_WIN32) || defined(_WIN64)
 #  include <windows.h>
