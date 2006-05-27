@@ -50,15 +50,15 @@ $(TTD): $(OTTD_PPC) $(OTTD_i386) $(OTTD_PPC970)
 
 $(OTTD_PPC): $(MAKE_CONFIG) $(OBJS_ppc)
 	@echo '[PowerPC] Linking $(TTD)'
-	$(Q)$(CC_PPC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc) $(LIBS) $(LDFLAGS_PPC) -o $@
+	$(Q)$(CXX_PPC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc) $(LIBS) $(LDFLAGS_PPC) -o $@
 
 $(OTTD_i386): $(MAKE_CONFIG) $(OBJS_i386)
 	@echo '[i386] Linking $(TTD)'
-	$(Q)$(CC_I386) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_i386) $(LIBS) $(LDFLAGS_i386) -o $@
+	$(Q)$(CXX_I386) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_i386) $(LIBS) $(LDFLAGS_i386) -o $@
 
 $(OTTD_PPC970): $(MAKE_CONFIG) $(OBJS_ppc970)
 	@echo '[PowerPC G5] Linking $(TTD)'
-	$(Q)$(CC_PPC970) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc970) $(LIBS) $(LDFLAGS_PPC) $(G5_FLAGS) -o $@
+	$(Q)$(CXX_PPC970) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc970) $(LIBS) $(LDFLAGS_PPC) $(G5_FLAGS) -o $@
 
 # targets to compile each c, m and cpp file
 .OSX/%.o.ppc: %.c      .deps/%.d
