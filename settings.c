@@ -34,6 +34,7 @@
 #include "console.h"
 #include "saveload.h"
 #include "npf.h"
+#include "yapf/yapf.h"
 #include "newgrf.h"
 
 /** The patch values that are used for new games and/or modified in config file */
@@ -52,6 +53,7 @@ static void pool_init(SettingsMemoryPool **pool);
 static void *pool_alloc(SettingsMemoryPool **pool, uint size);
 static void *pool_strdup(SettingsMemoryPool **pool, const char *mem, uint size);
 static void pool_free(SettingsMemoryPool **pool);
+static bool IsSignedVarMemType(VarType vt);
 
 struct SettingsMemoryPool {
 	uint pos,size;
@@ -786,7 +788,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 
 			switch (sdb->cmd) {
 			case SDT_BOOLX:      strcpy(buf, (i != 0) ? "true" : "false"); break;
-			case SDT_NUMX:       sprintf(buf, "%u", i); break;
+			case SDT_NUMX:       sprintf(buf, IsSignedVarMemType(sld->conv) ? "%d" : "%u", i); break;
 			case SDT_ONEOFMANY:  make_oneofmany(buf, sdb->many, i); break;
 			case SDT_MANYOFMANY: make_manyofmany(buf, sdb->many, i); break;
 			default: NOT_REACHED();
@@ -916,7 +918,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
  * DON'T have to increase the savegame version. */
 
 #define NSD_GENERAL(name, def, cmd, guiflags, min, max, many, str, proc)\
-	{name, (const void*)def, cmd, guiflags, min, max, many, str, proc}
+	{name, (const void*)(def), cmd, guiflags, min, max, many, str, proc}
 
 /* Macros for various objects to go in the configuration file.
  * This section is for global variables */
@@ -1010,6 +1012,7 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
 /* Shortcuts for macros below. Logically if we don't save the value
  * we also don't sync it in a network game */
 #define S SLF_SAVE_NO | SLF_NETWORK_NO
+#define NS SLF_SAVE_NO
 #define C SLF_CONFIG_NO
 #define N SLF_NETWORK_NO
 
@@ -1254,6 +1257,11 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, gotodepot,                     0, 0,  true,                STR_CONFIG_PATCHES_GOTODEPOT,            NULL),
 	SDT_BOOL(Patches, roadveh_queue,                 0, 0,  true,                STR_CONFIG_PATCHES_ROADVEH_QUEUE,        NULL),
 	SDT_BOOL(Patches, new_pathfinding_all,           0, 0, false,                STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL,  NULL),
+
+	SDT_CONDBOOL(Patches, yapf.ship_use_yapf,      28, SL_MAX_VERSION, 0, 0, false, STR_CONFIG_PATCHES_YAPF_SHIPS,      NULL),
+	SDT_CONDBOOL(Patches, yapf.road_use_yapf,      28, SL_MAX_VERSION, 0, 0,  true, STR_CONFIG_PATCHES_YAPF_ROAD,       NULL),
+	SDT_CONDBOOL(Patches, yapf.rail_use_yapf,      28, SL_MAX_VERSION, 0, 0,  true, STR_CONFIG_PATCHES_YAPF_RAIL,       NULL),
+
 	SDT_BOOL(Patches, train_income_warn,             S, 0,  true,                STR_CONFIG_PATCHES_WARN_INCOME_LESS,     NULL),
 	 SDT_VAR(Patches, order_review_system,SLE_UINT8, S,MS,     2,      0,     2, STR_CONFIG_PATCHES_ORDER_REVIEW,         NULL),
 	SDT_BOOL(Patches, never_expire_vehicles,         0, 0, false,                STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES,NULL),
@@ -1375,6 +1383,30 @@ const SettingDesc _patch_settings[] = {
 	SDT_VAR(Patches, npf_road_curve_penalty,        SLE_UINT, 0, 0, 1,                      0, 100000, STR_NULL, NULL),
 	/* This is the penalty for level crossings, for both road and rail vehicles */
 	SDT_VAR(Patches, npf_crossing_penalty,          SLE_UINT, 0, 0, (3 * NPF_TILE_LENGTH),  0, 100000, STR_NULL, NULL),
+
+
+	// The maximum number of nodes to search
+	SDT_CONDBOOL(Patches, yapf.disable_node_optimization  ,           28, SL_MAX_VERSION, 0, 0, false                   ,                    STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.max_search_nodes           , SLE_UINT, 28, SL_MAX_VERSION, 0, 0, 10000                   ,      500, 1000000, STR_NULL, NULL),
+	SDT_CONDBOOL(Patches, yapf.rail_firstred_twoway_eol   ,           28, SL_MAX_VERSION, 0, 0,  true                   ,                    STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_firstred_penalty      , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,    10 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_firstred_exit_penalty , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,   100 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_lastred_penalty       , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,    10 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_lastred_exit_penalty  , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,   100 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_station_penalty       , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,    30 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_slope_penalty         , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,     2 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_curve45_penalty       , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,     1 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_curve90_penalty       , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,     6 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	// This penalty is applied when a train reverses inside a depot
+	SDT_CONDVAR (Patches, yapf.rail_depot_reverse_penalty , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,    50 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	// This is the penalty for level crossings (for trains only)
+	SDT_CONDVAR (Patches, yapf.rail_crossing_penalty      , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,     3 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	// look-ahead how many signals are checked
+	SDT_CONDVAR (Patches, yapf.rail_look_ahead_max_signals, SLE_UINT, 28, SL_MAX_VERSION, 0, 0,    10                   ,        0,     100, STR_NULL, NULL),
+	// look-ahead n-th red signal penalty polynomial: penalty = p2 * n^2 + p1 * n + p0
+	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p0  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,   500                   , -1000000, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p1  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,  -100                   , -1000000, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p2  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,     5                   , -1000000, 1000000, STR_NULL, NULL),
 
 	SDT_END()
 };
@@ -1706,3 +1738,16 @@ const ChunkHandler _setting_chunk_handlers[] = {
 	{ 'OPTS', Save_OPTS, Load_OPTS, CH_RIFF},
 	{ 'PATS', Save_PATS, Load_PATS, CH_RIFF | CH_LAST},
 };
+
+static bool IsSignedVarMemType(VarType vt)
+{
+	switch (GetVarMemType(vt)) {
+		case SLE_VAR_I8:
+		case SLE_VAR_I16:
+		case SLE_VAR_I32:
+		case SLE_VAR_I64:
+			return true;
+	}
+	return false;
+}
+

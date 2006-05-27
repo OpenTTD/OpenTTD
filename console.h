@@ -102,9 +102,9 @@ typedef struct IConsoleAlias {
 } IConsoleAlias;
 
 // ** console parser ** //
-IConsoleCmd   *_iconsole_cmds;    // list of registred commands
-IConsoleVar   *_iconsole_vars;    // list of registred vars
-IConsoleAlias *_iconsole_aliases; // list of registred aliases
+VARDEF IConsoleCmd   *_iconsole_cmds;    // list of registred commands
+VARDEF IConsoleVar   *_iconsole_vars;    // list of registred vars
+VARDEF IConsoleAlias *_iconsole_aliases; // list of registred aliases
 
 // ** console colors/modes ** //
 VARDEF byte _icolour_def;

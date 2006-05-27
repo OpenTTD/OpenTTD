@@ -106,6 +106,7 @@
 # if _MSC_VER < 1300             // MSVC 6 borkdness
 #  pragma warning(disable: 4018) // 'expression' : signed/unsigned mismatch
 #  pragma warning(disable: 4305) // 'identifier' : truncation from 'type1' to 'type2'
+#  pragma warning(disable: 4786) // 'identifier' : identifier was truncated to '255' characters in the browser information
 # endif /* _MSC_VER < 1300 */
 # if _MSC_VER >= 1400              // MSVC 2005 safety checks
 #  pragma warning(disable: 4996)   // 'strdup' was declared deprecated
@@ -155,6 +156,8 @@
 # endif
 
 # define strcasecmp stricmp
+// suppress: warning C4005: 'offsetof' : macro redefinition (VC8)
+# include <stddef.h>
 #endif /* defined(_MSC_VER) */
 
 
@@ -163,7 +166,7 @@
 # define TTD_LITTLE_ENDIAN
 #else
 // Else include endian[target/host].h, which has the endian-type, autodetected by the Makefile
-# if defined(STRGEN)
+# if defined(STRGEN) || defined(UNITTEST)
 #  include "endian_host.h"
 # else
 #  include "endian_target.h"
@@ -193,14 +196,22 @@ typedef unsigned char byte;
 #endif
 
 #ifndef __BEOS__
-  typedef signed char int8;
-  typedef signed short int16;
-  typedef signed int int32;
-# ifndef __cplusplus
-   typedef unsigned char bool;
-# endif
-  typedef signed __int64 int64;
-  typedef unsigned __int64 uint64;
+
+// some platforms use 4 bytes bool in C++
+// C bool has to be the same
+#	ifndef __cplusplus
+#		ifdef FOUR_BYTE_BOOL
+			typedef unsigned long bool;
+#		else /* FOUR_BYTE_BOOL */
+			typedef unsigned char bool;
+#		endif /* FOUR_BYTE_BOOL */
+#	endif /* __cplusplus */
+
+	typedef signed char int8;
+	typedef signed short int16;
+	typedef signed int int32;
+	typedef signed __int64 int64;
+	typedef unsigned __int64 uint64;
 #endif /* __BEOS__ */
 
 #if defined(ARM) || defined(__arm__) || defined(__alpha__)
@@ -253,8 +264,12 @@ typedef unsigned char byte;
 #ifdef __OS2__
 # define assert_compile(expr)
 #else
-# define assert_compile(expr) void __ct_assert__(int a[1 - 2 * !(expr)])
-#endif
+# ifdef __cplusplus
+#  define assert_compile(expr) extern "C" void __ct_assert__(int a[1 - 2 * !(expr)])
+# else /* __cplusplus */
+#  define assert_compile(expr) void __ct_assert__(int a[1 - 2 * !(expr)])
+# endif /* !__cplusplus */
+#endif /* __OS2__ */
 
 assert_compile(sizeof(uint32) == 4);
 assert_compile(sizeof(uint16) == 2);
@@ -280,5 +295,19 @@ assert_compile(sizeof(uint8)  == 1);
 // it seems AmigaOS already have a Point declared
 # define Point OTTD_AMIGA_POINT
 #endif
+
+#define EXTERN_C_BEGIN extern "C" {
+#define EXTERN_C_END   }
+
+
+// workaround for VC6 bug: Error C2258 and error C2252 occur if you try
+//  to perform in-place initialization of static const integral member
+//  data in Visual C++ (see http://support.microsoft.com/kb/241569/)
+#if defined(_MSC_VER) && (_MSC_VER < 1300)
+# define ST_CONST(type, name_val) enum {name_val};
+#else
+# define ST_CONST(type, name_val) static const type name_val;
+#endif
+
 
 #endif /* STDAFX_H */

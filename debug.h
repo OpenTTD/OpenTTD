@@ -19,6 +19,7 @@
 	extern int _debug_oldloader_level;
 	extern int _debug_ntp_level;
 	extern int _debug_npf_level;
+	extern int _debug_yapf_level;
 #endif
 
 void CDECL debug(const char *s, ...);

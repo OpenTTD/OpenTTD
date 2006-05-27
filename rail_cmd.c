@@ -27,6 +27,7 @@
 #include "rail.h"
 #include "railtypes.h" // include table for railtypes
 #include "newgrf.h"
+#include "yapf/yapf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 
@@ -316,6 +317,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		MarkTileDirtyByTile(tile);
 		SetSignalsOnBothDir(tile, track);
+		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
 	return cost + _price.build_rail;
@@ -407,8 +409,11 @@ int32 CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * 'connect' with the other piece. */
 			SetSignalsOnBothDir(tile, TRACK_X);
 			SetSignalsOnBothDir(tile, TRACK_Y);
+			YapfNotifyTrackLayoutChange(tile, TRACK_X);
+			YapfNotifyTrackLayoutChange(tile, TRACK_Y);
 		} else {
 			SetSignalsOnBothDir(tile, track);
+			YapfNotifyTrackLayoutChange(tile, track);
 		}
 	}
 
@@ -597,6 +602,7 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		d->town_index = ClosestTownFromTile(tile, (uint)-1)->index;
 
 		UpdateSignalsOnSegment(tile, p2);
+		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(p2)));
 	}
 
 	return cost + _price.build_train_depot;
@@ -694,6 +700,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		MarkTileDirtyByTile(tile);
 		SetSignalsOnBothDir(tile, track);
+		YapfNotifyTrackLayoutChange(tile, track);
 	}
 
 	return cost;
@@ -825,6 +832,7 @@ int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		SetSignalsOnBothDir(tile, track);
+		YapfNotifyTrackLayoutChange(tile, track);
 
 		MarkTileDirtyByTile(tile);
 	}
@@ -854,8 +862,13 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 
 	// change type.
 	if (exec) {
+		TrackBits tracks;
 		SetRailType(tile, totype);
 		MarkTileDirtyByTile(tile);
+
+		// notify YAPF about the track layout change
+		for (tracks = GetTrackBits(tile); tracks != TRACK_BIT_NONE; tracks = KILL_FIRST_BIT(tracks))
+			YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(tracks));
 
 		/* Update build vehicle window related to this depot */
 		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
@@ -948,6 +961,7 @@ static int32 RemoveTrainDepot(TileIndex tile, uint32 flags)
 
 		DoDeleteDepot(tile);
 		UpdateSignalsOnSegment(tile, dir);
+		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 	}
 
 	return _price.remove_train_depot;
@@ -1690,7 +1704,10 @@ bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection direction)
 		ChangeSignalStates(&ssd);
 
 		// remember the result only for the first iteration.
-		if (result < 0) result = ssd.stop;
+		if (result < 0) {
+			// stay in depot while segment is occupied or while all presignal exits are blocked
+			result = ssd.stop || (ssd.presignal_exits > 0 && ssd.presignal_exits_free == 0);
+		}
 
 		// if any exit signals were changed, we need to keep going to modify the stuff behind those.
 		if (ssd.cur_stack == 0) break;

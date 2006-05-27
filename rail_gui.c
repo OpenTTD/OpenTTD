@@ -689,7 +689,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			uint16 i;
 			uint y = 35;
 
-			for (i = w->vscroll.pos; i < _railstation.station_count && i < w->vscroll.pos + w->vscroll.cap; i++) {
+			for (i = w->vscroll.pos; i < _railstation.station_count && i < (uint)(w->vscroll.pos + w->vscroll.cap); i++) {
 				const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, i);
 
 				if (statspec != NULL && statspec->name != 0) {

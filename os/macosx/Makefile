@@ -28,54 +28,58 @@ $(TTD): $(OTTD_PPC) $(OTTD_i386) $(OTTD_PPC970)
 
 $(OTTD_PPC): $(MAKE_CONFIG) $(OBJS_ppc)
 	@echo '[PowerPC] Linking $(TTD)'
-	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc) $(LIBS) $(LDFLAGS_PPC) -arch ppc -o $@
+	$(Q)$(CXX) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc) $(LIBS) $(LDFLAGS_PPC) -arch ppc -o $@
 
 $(OTTD_i386): $(MAKE_CONFIG) $(OBJS_i386)
 	@echo '[i386] Linking $(TTD)'
-	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_i386) $(LIBS) $(LDFLAGS_i386) -arch i386 -o $@
+	$(Q)$(CXX) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_i386) $(LIBS) $(LDFLAGS_i386) -arch i386 -o $@
 
 $(OTTD_PPC970): $(MAKE_CONFIG) $(OBJS_ppc970)
 	@echo '[PowerPC G5] Linking $(TTD)'
-	$(Q)$(CC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc970) $(LIBS) $(LDFLAGS_PPC) $(G5_FLAGS) -arch ppc970 -o $@
+	$(Q)$(CXX) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc970) $(LIBS) $(LDFLAGS_PPC) $(G5_FLAGS) -arch ppc970 -o $@
 
 # targets to compile each c, m and cpp file
 .OSX/%.o.ppc: %.c      .deps/%.d
 	@echo '[PowerPC] Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
+	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
 
 .OSX/%.o.ppc: %.cpp    .deps/%.d
 	@echo '[PowerPC] Compiling $<'
-	$(Q)$(CPP) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
+	$(Q)$(CXX) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
 
 .OSX/%.o.ppc: %.m      .deps/%.d
 	@echo '[PowerPC] Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
+	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
 
 .OSX/%.o.i386: %.c     .deps/%.d
 	@echo '[i386] Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
+	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
 
 .OSX/%.o.i386: %.cpp   .deps/%.d
 	@echo '[i386] Compiling $<'
-	$(Q)$(CPP) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
+	$(Q)$(CXX) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
 
 .OSX/%.o.i386: %.m     .deps/%.d
 	@echo '[i386] Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
+	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
 
 .OSX/%.o.ppc970: %.c   .deps/%.d
 	@echo '[PowerPC G5] Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
+	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
 
 .OSX/%.o.ppc970: %.cpp .deps/%.d
 	@echo '[PowerPC G5] Compiling $<'
-	$(Q)$(CPP) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
+	$(Q)$(CXX) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
 
 .OSX/%.o.ppc970: %.m   .deps/%.d
 	@echo '[PowerPC G5] Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
+	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
 
 endif
+
+# manual strip, as the -s option fails
+$(OSX_STRIP): $(TTD)
+	$(Q)strip openttd
 
 ifdef JAGUAR
 JAGUAR_POSTFIX := -jaguar
@@ -84,7 +88,7 @@ endif
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
 
-BUILD_OSX_BUNDLE: $(TTD)
+BUILD_OSX_BUNDLE: $(TTD) $(OSX_STRIP)
 	@echo '===> Building application bundle'
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
@@ -119,6 +123,6 @@ release: all
 	$(Q)hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(REV)" openttd-"$(REV)"-osx"$(JAGUAR_POSTFIX)".dmg
 	$(Q)rm -fr "OpenTTD $(REV)"
 
-$(OSX): $(TTD) BUILD_OSX_BUNDLE
+$(OSX): $(TTD) $(OSX_STRIP) BUILD_OSX_BUNDLE
 
 .PHONY: release $(BUILD_OSX_BUNDLE) $(UNIVERSAL_BINARY)

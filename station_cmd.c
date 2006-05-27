@@ -31,6 +31,7 @@
 #include "industry_map.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
+#include "yapf/yapf.h"
 
 enum {
 	/* Max stations: 64000 (64 * 1000) */
@@ -1108,6 +1109,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 				tile += tile_delta;
 			} while (--w);
 			SetSignalsOnBothDir(tile_org, track);
+			YapfNotifyTrackLayoutChange(tile_org, track);
 			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
 
@@ -1205,6 +1207,7 @@ int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint
 		Track track = GetRailStationTrack(tile);
 		DoClearSquare(tile);
 		SetSignalsOnBothDir(tile, track);
+		YapfNotifyTrackLayoutChange(tile, track);
 
 		DeallocateSpecFromStation(st, specindex);
 
@@ -1287,6 +1290,7 @@ static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 					Track track = GetRailStationTrack(tile);
 					DoClearSquare(tile);
 					SetSignalsOnBothDir(tile, track);
+					YapfNotifyTrackLayoutChange(tile, track);
 				}
 			}
 			tile += TileDiffXY(1, 0);
@@ -1324,6 +1328,7 @@ int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 	if (exec) {
 		SetRailType(tile, totype);
 		MarkTileDirtyByTile(tile);
+		YapfNotifyTrackLayoutChange(tile, GetRailStationTrack(tile));
 	}
 
 	return _price.build_rail >> 1;
@@ -2144,6 +2149,12 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 			// buoy is coded as a station, it is always on open water
 			// (0x3F, all tracks available)
 			if (IsBuoy_(tile)) return 0x3F * 0x101;
+			break;
+
+		case TRANSPORT_ROAD:
+			if (IsRoadStopTile(tile))
+				return (DiagDirToAxis(GetRoadStopDir(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+
 			break;
 
 		default:

@@ -20,6 +20,8 @@
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "water_map.h"
+#include "yapf/yapf.h"
+#include "debug.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 static const byte _ship_sometracks[4] = {0x19, 0x16, 0x25, 0x2A};
@@ -518,6 +520,16 @@ bad:;
 	return best_bird_dist;
 }
 
+static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypeMask railtypes)
+{
+
+	void* perf = NpfBeginInterval();
+	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, target, type, owner, railtypes);
+	int t = NpfEndInterval(perf);
+	DEBUG(yapf, 1)("[YAPF][NPFW] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
+	return ret;
+}
+
 /* returns the track to choose on the next tile, or -1 when it's better to
  * reverse. The tile given is the tile we are about to enter, enterdir is the
  * direction in which we are entering the tile */
@@ -525,7 +537,10 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 {
 	assert(enterdir>=0 && enterdir<=3);
 
-	if (_patches.new_pathfinding_all) {
+	if (_patches.yapf.ship_use_yapf) {
+		Trackdir trackdir = YapfChooseShipTrack(v, tile, enterdir, tracks);
+		return (trackdir != INVALID_TRACKDIR) ? (int)TrackdirToTrack(trackdir) : -1;
+	} else if (_patches.new_pathfinding_all) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 		TileIndex src_tile = TILE_ADD(tile, TileOffsByDir(ReverseDiagDir(enterdir)));
@@ -534,7 +549,7 @@ static int ChooseShipTrack(Vehicle *v, TileIndex tile, int enterdir, uint tracks
 
 		NPFFillWithOrderData(&fstd, v);
 
-		ftd = NPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE);
+		ftd = PerfNPFRouteToStationOrTile(src_tile, trackdir, &fstd, TRANSPORT_WATER, v->owner, INVALID_RAILTYPE);
 
 		if (ftd.best_trackdir != 0xff) {
 			/* If ftd.best_bird_dist is 0, we found our target and ftd.best_trackdir contains

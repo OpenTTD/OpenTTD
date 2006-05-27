@@ -30,7 +30,7 @@
 				OptimizeForProcessor="1"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WIN32_EXCEPTION_TRACKER;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;ENABLE_NETWORK"
 				StringPooling="TRUE"
-				ExceptionHandling="FALSE"
+				ExceptionHandling="TRUE"
 				RuntimeLibrary="0"
 				StructMemberAlignment="3"
 				BufferSecurityCheck="FALSE"
@@ -58,7 +58,7 @@
 				OutputFile=".\Release/openttd.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="TRUE"
-				IgnoreDefaultLibraryNames="libc.lib"
+				IgnoreDefaultLibraryNames="LIBC.lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile=".\Release/openttd.pdb"
 				SubSystem="2"
@@ -125,7 +125,7 @@
 				OutputFile=".\Debug/openttd.exe"
 				LinkIncremental="0"
 				SuppressStartupBanner="TRUE"
-				IgnoreDefaultLibraryNames="libc.lib"
+				IgnoreDefaultLibraryNames="LIBC.lib"
 				GenerateDebugInformation="TRUE"
 				ProgramDatabaseFile=".\Debug/openttd.pdb"
 				SubSystem="2"
@@ -572,6 +572,9 @@
 				RelativePath=".\signs.h">
 			</File>
 			<File
+				RelativePath=".\slope.h">
+			</File>
+			<File
 				RelativePath=".\sound.h">
 			</File>
 			<File
@@ -936,6 +939,154 @@
 			</File>
 			<File
 				RelativePath=".\water_map.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="yapf"
+			Filter="">
+			<File
+				RelativePath=".\yapf\array.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\autocopyptr.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\binaryheap.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\blob.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\countedptr.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\crc32.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\fixedsizearray.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\follow_track.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\yapf\follow_track.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\hashtable.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\nodelist.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\track_dir.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf.h">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_base.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_common.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_common.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_costbase.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_costcache.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_costrail.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_destrail.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_node.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_node_rail.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_node_road.hpp">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_rail.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_road.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_settings.h">
+			</File>
+			<File
+				RelativePath=".\yapf\yapf_ship.cpp">
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						CompileAs="2"/>
+				</FileConfiguration>
 			</File>
 		</Filter>
 		<File

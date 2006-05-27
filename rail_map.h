@@ -18,7 +18,7 @@ typedef enum RailTileType {
 static inline RailTileType GetRailTileType(TileIndex t)
 {
 	assert(IsTileType(t, MP_RAILWAY));
-	return _m[t].m5 & RAIL_TILE_TYPE_MASK;
+	return (RailTileType)(_m[t].m5 & RAIL_TILE_TYPE_MASK);
 }
 
 /**
@@ -119,6 +119,7 @@ typedef enum Track {
 
 /** Bitfield corresponding to Track */
 typedef enum TrackBits {
+	TRACK_BIT_NONE  = 0U,
 	TRACK_BIT_X     = 1U << TRACK_X,
 	TRACK_BIT_Y     = 1U << TRACK_Y,
 	TRACK_BIT_UPPER = 1U << TRACK_UPPER,
@@ -264,7 +265,7 @@ typedef enum SignalStates {
 
 static inline SignalState GetSingleSignalState(TileIndex t, byte signalbit)
 {
-	return HASBIT(_m[t].m2, signalbit + 4);
+	return (SignalState)HASBIT(_m[t].m2, signalbit + 4);
 }
 
 
@@ -297,8 +298,8 @@ static inline void SetRailGroundType(TileIndex t, RailGroundType rgt)
 static inline RailGroundType GetRailGroundType(TileIndex t)
 {
 	/* TODO Unify this */
-	if (GetRailTileType(t) == RAIL_TILE_DEPOT_WAYPOINT) return GB(_m[t].m4, 0, 4);
-	return GB(_m[t].m2, 0, 4);
+	if (GetRailTileType(t) == RAIL_TILE_DEPOT_WAYPOINT) return (RailGroundType)GB(_m[t].m4, 0, 4);
+	return (RailGroundType)GB(_m[t].m2, 0, 4);
 }
 
 static inline bool IsBarrenRailGround(TileIndex t)

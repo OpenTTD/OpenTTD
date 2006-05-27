@@ -18,7 +18,7 @@ typedef enum RoadTileType {
 static inline RoadTileType GetRoadTileType(TileIndex t)
 {
 	assert(IsTileType(t, MP_STREET));
-	return GB(_m[t].m5, 4, 4);
+	return (RoadTileType)(GB(_m[t].m5, 4, 4));
 }
 
 static inline bool IsLevelCrossing(TileIndex t)
@@ -34,7 +34,7 @@ static inline bool IsLevelCrossingTile(TileIndex t)
 static inline RoadBits GetRoadBits(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL);
-	return GB(_m[t].m5, 0, 4);
+	return (RoadBits)(GB(_m[t].m5, 0, 4));
 }
 
 static inline void SetRoadBits(TileIndex t, RoadBits r)
@@ -143,13 +143,13 @@ static inline void StartRoadWorks(TileIndex t)
 {
 	assert(!HasRoadWorks(t));
 	/* Remove any trees or lamps in case or roadwork */
-	SetGroundType(t, min(GetGroundType(t), RGT_PAVED) + RGT_ROADWORK_OFFSET);
+	SetGroundType(t, (RoadGroundType)(min(GetGroundType(t), RGT_PAVED) + RGT_ROADWORK_OFFSET));
 }
 
 static inline void TerminateRoadWorks(TileIndex t)
 {
 	assert(HasRoadWorks(t));
-	SetGroundType(t, GetGroundType(t) - RGT_ROADWORK_OFFSET);
+	SetGroundType(t, (RoadGroundType)(GetGroundType(t) - RGT_ROADWORK_OFFSET));
 	/* Stop the counter */
 	SB(_m[t].m4, 0, 4, 0);
 }

@@ -18,6 +18,7 @@
 #include "town.h"
 #include "gfx.h"
 #include "sound.h"
+#include "yapf/yapf.h"
 #include "depot.h"
 
 void RoadVehEnterDepot(Vehicle *v);
@@ -425,6 +426,7 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 	if (exec) {
 		SetRailTypeCrossing(tile, totype);
 		MarkTileDirtyByTile(tile);
+		YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(GetCrossingRailBits(tile)));
 	}
 
 	return _price.build_rail >> 1;
@@ -990,6 +992,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 
 				default:
 				case ROAD_TILE_DEPOT:
+					return (DiagDirToAxis(GetRoadDepotDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
 					break;
 			}
 			break;

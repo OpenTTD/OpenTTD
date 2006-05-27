@@ -15,12 +15,12 @@ typedef enum RoadBits {
 
 static inline RoadBits ComplementRoadBits(RoadBits r)
 {
-	return ROAD_ALL ^ r;
+	return (RoadBits)(ROAD_ALL ^ r);
 }
 
 static inline RoadBits DiagDirToRoadBits(DiagDirection d)
 {
-	return 1U << (3 ^ d);
+	return (RoadBits)(1U << (3 ^ d));
 }
 
 #endif

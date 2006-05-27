@@ -27,7 +27,12 @@ static void DisasterClearSquare(TileIndex tile)
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (IS_HUMAN_PLAYER(GetTileOwner(tile)) && !IsRailWaypoint(tile)) DoClearSquare(tile);
+			if (IS_HUMAN_PLAYER(GetTileOwner(tile)) && !IsRailWaypoint(tile)) {
+				PlayerID p = _current_player;
+				_current_player = OWNER_WATER;
+				DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				_current_player = p;
+			}
 			break;
 
 		case MP_HOUSE: {

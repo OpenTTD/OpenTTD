@@ -17,6 +17,7 @@
 #include "variables.h"
 #include "table/strings.h"
 #include "vehicle.h"
+#include "yapf/yapf.h"
 
 enum {
 	/* Max waypoints: 64000 (8 * 8000) */
@@ -303,6 +304,7 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 		} else {
 			DoClearSquare(tile);
 			SetSignalsOnBothDir(tile, GetRailWaypointTrack(tile));
+			YapfNotifyTrackLayoutChange(tile, GetRailWaypointTrack(tile));
 		}
 	}
 

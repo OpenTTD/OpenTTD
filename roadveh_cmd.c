@@ -23,6 +23,7 @@
 #include "tunnel_map.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
+#include "yapf/yapf.h"
 
 static const uint16 _roadveh_images[63] = {
 	0xCD4, 0xCDC, 0xCE4, 0xCEC, 0xCF4, 0xCFC, 0xD0C, 0xD14,
@@ -314,7 +315,10 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 
 	if (v->u.road.state == 255) tile = GetVehicleOutOfTunnelTile(v);
 
-	if (_patches.new_pathfinding_all) {
+	if (_patches.yapf.road_use_yapf) {
+		Depot* ret = YapfFindNearestRoadDepot(v);
+		return ret;
+	} else if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		/* See where we are now */
 		Trackdir trackdir = GetVehicleTrackdir(v);
@@ -983,6 +987,16 @@ static bool EnumRoadTrackFindDist(TileIndex tile, void* data, int track, uint le
 	return false;
 }
 
+static inline NPFFoundTargetData PerfNPFRouteToStationOrTile(TileIndex tile, Trackdir trackdir, NPFFindStationOrTileData* target, TransportType type, Owner owner, RailTypeMask railtypes)
+{
+
+	void* perf = NpfBeginInterval();
+	NPFFoundTargetData ret = NPFRouteToStationOrTile(tile, trackdir, target, type, owner, railtypes);
+	int t = NpfEndInterval(perf);
+	DEBUG(yapf, 1)("[YAPF][NPFR] %d us - %d rounds - %d open - %d closed -- ", t, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
+	return ret;
+}
+
 // Returns direction to choose
 // or -1 if the direction is currently blocked
 static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir)
@@ -1053,7 +1067,11 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		return_track(FindFirstBit2x64(bitmask));
 	}
 
-	if (_patches.new_pathfinding_all) {
+	if (_patches.yapf.road_use_yapf) {
+		Trackdir trackdir = YapfChooseRoadTrack(v, tile, enterdir);
+		if (trackdir != INVALID_TRACKDIR) return_track(trackdir);
+		return_track(PickRandomBit(bitmask));
+	} else if (_patches.new_pathfinding_all) {
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 		byte trackdir;
@@ -1062,7 +1080,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		trackdir = DiagdirToDiagTrackdir(enterdir);
 		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
-		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
+		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
 		if (ftd.best_trackdir == 0xff) {
 			/* We are already at our target. Just do something */
 			//TODO: maybe display error?

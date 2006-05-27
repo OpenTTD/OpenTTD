@@ -3,6 +3,8 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "station_map.h"
+#include "depot.h"
 #include "functions.h"
 #include "map.h"
 #include "tile.h"
@@ -254,6 +256,15 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	RememberData rd;
 	TileIndex tile_org = tile;
 
+	// check if the old tile can be left at that direction
+	if (tpf->tracktype == TRANSPORT_ROAD) {
+		// road stops and depots now have a track (r4419)
+		// don't enter road stop from the back
+		if (IsRoadStopTile(tile) && GetRoadStopDir(tile) != direction) return;
+		// don't enter road depot from the back
+		if (IsTileDepotType(tile, TRANSPORT_ROAD) && GetRoadDepotDirection(tile) != direction) return;
+	}
+
 	if (IsTunnelTile(tile)) {
 		if (GetTunnelDirection(tile) != direction ||
 				GetTunnelTransportType(tile) != tpf->tracktype) {
@@ -275,6 +286,15 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 					if (!IsBridgeTile(tile_org) || !IsBridgeMiddle(tile_org))
 						if (GetTileOwner(tile_org) != GetTileOwner(tile))
 							return;
+	}
+
+	// check if the new tile can be entered from that direction
+	if (tpf->tracktype == TRANSPORT_ROAD) {
+		// road stops and depots now have a track (r4419)
+		// don't enter road stop from the back
+		if (IsRoadStopTile(tile) && GetRoadStopDir(tile) == direction) return;
+		// don't enter road depot from the back
+		if (IsTileDepotType(tile, TRANSPORT_ROAD) && GetRoadDepotDirection(tile) == direction) return;
 	}
 
 	tpf->rd.cur_length++;

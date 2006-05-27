@@ -46,6 +46,7 @@
 #include "waypoint.h"
 #include "ai/ai.h"
 #include "train.h"
+#include "yapf/yapf.h"
 #include "settings.h"
 
 #include <stdarg.h>
@@ -1426,6 +1427,8 @@ bool AfterLoadGame(void)
 			st->last_vehicle_type = VEH_Invalid;
 		}
 	}
+
+	YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
 
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 

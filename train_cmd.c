@@ -29,6 +29,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
 #include "direction.h"
+#include "yapf/yapf.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v);
@@ -1834,7 +1835,7 @@ static bool NtpCallbFindDepot(TileIndex tile, TrainFindDepotData *tfdd, int trac
 
 // returns the tile of a depot to goto to. The given vehicle must not be
 // crashed!
-static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
+static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 {
 	TrainFindDepotData tfdd;
 	TileIndex tile = v->tile;
@@ -1853,7 +1854,10 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v)
 
 	if (v->u.rail.track == 0x40) tile = GetVehicleOutOfTunnelTile(v);
 
-	if (_patches.new_pathfinding_all) {
+	if (_patches.yapf.rail_use_yapf) {
+		bool found = YapfFindNearestRailDepotTwoWay(v, max_distance, NPF_INFINITE_PENALTY, &tfdd.tile, &tfdd.reverse);
+		tfdd.best_length = found ? max_distance / 2 : -1; // some fake distance or NOT_FOUND
+	} else if (_patches.new_pathfinding_all) {
 		NPFFoundTargetData ftd;
 		Vehicle* last = GetLastVehicleInChain(v);
 		Trackdir trackdir = GetVehicleTrackdir(v);
@@ -1926,7 +1930,7 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return 0;
 	}
 
-	tfdd = FindClosestTrainDepot(v);
+	tfdd = FindClosestTrainDepot(v, 0);
 	if (tfdd.best_length == (uint)-1)
 		return_cmd_error(STR_883A_UNABLE_TO_FIND_ROUTE_TO);
 
@@ -2178,7 +2182,17 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 	/* quick return in case only one possible track is available */
 	if (KILL_FIRST_BIT(trackdirbits) == 0) return FIND_FIRST_BIT(trackdirbits);
 
-	if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
+	if (_patches.yapf.rail_use_yapf) {
+		Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, trackdirbits);
+		if (trackdir != INVALID_TRACKDIR) {
+			best_track = TrackdirToTrack(trackdir);
+		} else {
+			best_track = FIND_FIRST_BIT(TrackdirBitsToTrackBits(trackdirbits));
+		}
+	} else if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
+		void* perf = NpfBeginInterval();
+		int time = 0;
+
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 		Trackdir trackdir;
@@ -2203,7 +2217,13 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 			/* Discard enterdir information, making it a normal track */
 			best_track = TrackdirToTrack(ftd.best_trackdir);
 		}
+
+		time = NpfEndInterval(perf);
+		DEBUG(yapf, 1)("[YAPF][NPFT] %d us - %d rounds - %d open - %d closed -- ", time, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
 	} else {
+		void* perf = NpfBeginInterval();
+		int time = 0;
+
 		FillWithStationData(&fd, v);
 
 		/* New train pathfinding */
@@ -2220,6 +2240,9 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 		} else {
 			best_track = fd.best_track & 7;
 		}
+
+		time = NpfEndInterval(perf);
+		DEBUG(yapf, 1)("[YAPF][NTPT] %d us - %d rounds - %d open - %d closed -- ", time, 0, 0, 0);
 	}
 
 #ifdef PF_BENCHMARK
@@ -2253,7 +2276,9 @@ static bool CheckReverseTrain(Vehicle *v)
 
 	i = _search_directions[FIND_FIRST_BIT(v->u.rail.track)][DirToDiagDir(v->direction)];
 
-	if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
+	if (_patches.yapf.rail_use_yapf) {
+		reverse_best = YapfCheckReverseTrain(v);
+	} else if (_patches.new_pathfinding_all) { /* Use a new pathfinding for everything */
 		NPFFindStationOrTileData fstd;
 		NPFFoundTargetData ftd;
 		byte trackdir, trackdir_rev;
@@ -2890,7 +2915,7 @@ static void TrainController(Vehicle *v)
 				 * the signal status. */
 				tracks = ts | (ts >> 8);
 				bits = tracks & 0xFF;
-				if (_patches.new_pathfinding_all && _patches.forbid_90_deg && prev == NULL) {
+				if ((_patches.new_pathfinding_all || _patches.yapf.rail_use_yapf) && _patches.forbid_90_deg && prev == NULL) {
 					/* We allow wagons to make 90 deg turns, because forbid_90_deg
 					 * can be switched on halfway a turn */
 					bits &= ~TrackCrossesTracks(FIND_FIRST_BIT(v->u.rail.track));
@@ -3412,6 +3437,8 @@ void TrainEnterDepot(Vehicle *v, TileIndex tile)
 	InvalidateWindowClasses(WC_TRAINS_LIST);
 }
 
+#define MAX_ACCEPTABLE_DEPOT_DIST 16
+
 static void CheckIfTrainNeedsService(Vehicle *v)
 {
 	const Depot* depot;
@@ -3428,9 +3455,9 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 			(v->current_order.flags & (OF_HALT_IN_DEPOT | OF_PART_OF_ORDERS)) != 0)
 		return;
 
-	tfdd = FindClosestTrainDepot(v);
+	tfdd = FindClosestTrainDepot(v, MAX_ACCEPTABLE_DEPOT_DIST);
 	/* Only go to the depot if it is not too far out of our way. */
-	if (tfdd.best_length == (uint)-1 || tfdd.best_length > 16 ) {
+	if (tfdd.best_length == (uint)-1 || tfdd.best_length > MAX_ACCEPTABLE_DEPOT_DIST) {
 		if (v->current_order.type == OT_GOTO_DEPOT) {
 			/* If we were already heading for a depot but it has
 			 * suddenly moved farther away, we continue our normal

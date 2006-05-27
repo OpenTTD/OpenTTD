@@ -328,6 +328,8 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 			NOT_REACHED();
 			return 0;
 	}
+
+	return 0; // useless but silences warning
 }
 
 // return true if a tile is a water tile.
@@ -659,15 +661,25 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 {
 	static const byte coast_tracks[] = {0, 32, 4, 0, 16, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0};
 	static const byte water_tracks_by_axis[] = {1, 2};
+	uint32 ts;
 	if (mode != TRANSPORT_WATER) return 0;
 
 	switch (GetWaterTileType(tile)) {
-		case WATER_CLEAR: return 0x3F * 0x101; /* We can go everywhere */
-		case WATER_COAST: return coast_tracks[GetTileSlope(tile, NULL) & 0xF] * 0x101;
-		case WATER_LOCK: return water_tracks_by_axis[DiagDirToAxis(GetLockDirection(tile))] * 0x101;
-		case WATER_DEPOT: return water_tracks_by_axis[GetShipDepotAxis(tile)] * 0x101;
+		case WATER_CLEAR: ts = 0x3F; break;/* We can go everywhere */
+		case WATER_COAST: ts = coast_tracks[GetTileSlope(tile, NULL) & 0xF]; break;
+		case WATER_LOCK: ts = water_tracks_by_axis[DiagDirToAxis(GetLockDirection(tile))]; break;
+		case WATER_DEPOT: ts = water_tracks_by_axis[GetShipDepotAxis(tile)]; break;
 		default: return 0;
 	}
+	if (TileX(tile) == 0) {
+		// NE border: remove tracks that connects NE tile edge
+		ts &= ~(TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT);
+	}
+	if (TileY(tile) == 0) {
+		// NW border: remove tracks that connects NW tile edge
+		ts &= ~(TRACK_BIT_Y | TRACK_BIT_LEFT | TRACK_BIT_UPPER);
+	}
+	return ts * 0x101;
 }
 
 extern void ShowShipDepotWindow(TileIndex tile);

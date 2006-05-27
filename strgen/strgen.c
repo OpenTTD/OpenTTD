@@ -149,6 +149,11 @@ static LangString *HashFind(const char *s)
 	return NULL;
 }
 
+#ifdef _MSC_VER
+# define LINE_NUM_FMT "(%d)"
+#else
+# define LINE_NUM_FMT ":%d"
+#endif
 
 static void CDECL Warning(const char *s, ...)
 {
@@ -157,7 +162,7 @@ static void CDECL Warning(const char *s, ...)
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-	fprintf(stderr, "%s:%d: Warning: %s\n", _file, _cur_line, buf);
+	fprintf(stderr, "%s" LINE_NUM_FMT ": Warning: %s\n", _file, _cur_line, buf);
 	_warnings++;
 }
 
@@ -169,7 +174,7 @@ static void CDECL Error(const char *s, ...)
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-	fprintf(stderr, "%s:%d: Error: %s\n", _file, _cur_line, buf);
+	fprintf(stderr, "%s" LINE_NUM_FMT ": Error: %s\n", _file, _cur_line, buf);
 	_errors++;
 }
 
@@ -181,7 +186,7 @@ static void NORETURN CDECL Fatal(const char *s, ...)
 	va_start(va, s);
 	vsprintf(buf, s, va);
 	va_end(va);
-	fprintf(stderr, "%s:%d: FATAL: %s\n", _file, _cur_line, buf);
+	fprintf(stderr, "%s" LINE_NUM_FMT ": FATAL: %s\n", _file, _cur_line, buf);
 	exit(1);
 }
 

@@ -26,6 +26,7 @@
 #include "bridge.h"
 #include "train.h"
 #include "water_map.h"
+#include "yapf/yapf.h"
 
 #include "table/bridge_land.h"
 
@@ -402,6 +403,7 @@ not_valid_below:;
 	}
 
 	SetSignalsOnBothDir(tile_start, direction == AXIS_X ? TRACK_X : TRACK_Y);
+	YapfNotifyTrackLayoutChange(tile_start, direction == AXIS_X ? TRACK_X : TRACK_Y);
 
 	/*	for human player that builds the bridge he gets a selection to choose from bridges (DC_QUERY_COST)
 			It's unnecessary to execute this command every time for every bridge. So it is done only
@@ -491,12 +493,13 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 		if (GB(p1, 9, 1) == TRANSPORT_RAIL) {
 			MakeRailTunnel(start_tile, _current_player, direction,                 GB(p1, 0, 4));
 			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), GB(p1, 0, 4));
+			UpdateSignalsOnSegment(start_tile, direction);
+			YapfNotifyTrackLayoutChange(start_tile, DiagDirToAxis(direction) == AXIS_X ? TRACK_X : TRACK_Y);
 		} else {
 			MakeRoadTunnel(start_tile, _current_player, direction);
 			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction));
 		}
 
-		if (GB(p1, 9, 1) == 0) UpdateSignalsOnSegment(start_tile, direction);
 	}
 
 	return cost;
@@ -573,6 +576,8 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 		DoClearSquare(endtile);
 		UpdateSignalsOnSegment(tile, ReverseDiagDir(dir));
 		UpdateSignalsOnSegment(endtile, dir);
+		YapfNotifyTrackLayoutChange(tile, DiagDirToAxis(dir) == AXIS_X ? TRACK_X : TRACK_Y);
+		YapfNotifyTrackLayoutChange(endtile, DiagDirToAxis(dir) == AXIS_X ? TRACK_X : TRACK_Y);
 	}
 	return _price.clear_tunnel * (length + 1);
 }
@@ -700,6 +705,8 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 		UpdateSignalsOnSegment(tile, ReverseDiagDir(direction));
 		UpdateSignalsOnSegment(endtile, direction);
+		YapfNotifyTrackLayoutChange(tile, DiagDirToAxis(direction) == AXIS_X ? TRACK_X : TRACK_Y);
+		YapfNotifyTrackLayoutChange(endtile, DiagDirToAxis(direction) == AXIS_X ? TRACK_X : TRACK_Y);
 	}
 
 	return (DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge;
@@ -733,10 +740,17 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		if (endtile == INVALID_TILE) return CMD_ERROR;
 
 		if (exec) {
+			Track track, endtrack;
 			SetRailType(tile, totype);
 			SetRailType(endtile, totype);
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
+
+			// notify YAPF about the track layout change
+			track = TrackdirToTrack(DiagdirToDiagTrackdir(GetTunnelDirection(tile)));
+			endtrack = TrackdirToTrack(DiagdirToDiagTrackdir(GetTunnelDirection(endtile)));
+			YapfNotifyTrackLayoutChange(tile, track);
+			YapfNotifyTrackLayoutChange(endtile, endtrack);
 		}
 		return (length + 1) * (_price.build_rail >> 1);
 	} else if (IsBridge(tile) &&
@@ -750,8 +764,13 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		if (GetRailType(tile) == totype) return CMD_ERROR;
 
 		if (exec) {
+			TrackBits tracks;
 			SetRailType(tile, totype);
 			MarkTileDirtyByTile(tile);
+
+			// notify YAPF about the track layout change
+			for (tracks = GetRailBitsUnderBridge(tile); tracks != TRACK_BIT_NONE; tracks = KILL_FIRST_BIT(tracks))
+				YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(tracks));
 		}
 		return _price.build_rail >> 1;
 	} else if (IsBridge(tile) && IsBridgeRamp(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
@@ -777,10 +796,17 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		if (GetRailType(tile) == totype) return CMD_ERROR;
 
 		if (exec) {
+			Track track, endtrack;
 			SetRailType(tile, totype);
 			SetRailType(endtile, totype);
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
+
+			// notify YAPF about the track layout change
+			track = TrackdirToTrack(DiagdirToDiagTrackdir(GetBridgeRampDirection(tile)));
+			endtrack = TrackdirToTrack(DiagdirToDiagTrackdir(GetBridgeRampDirection(endtile)));
+			YapfNotifyTrackLayoutChange(tile, track);
+			YapfNotifyTrackLayoutChange(endtile, endtrack);
 		}
 		cost = 2 * (_price.build_rail >> 1);
 		delta = TileOffsByDir(GetBridgeRampDirection(tile));

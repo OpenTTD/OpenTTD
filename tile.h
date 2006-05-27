@@ -53,7 +53,7 @@ static inline uint TilePixelHeight(TileIndex tile)
 static inline TileType GetTileType(TileIndex tile)
 {
 	assert(tile < MapSize());
-	return GB(_m[tile].type_height, 4, 4);
+	return (TileType)GB(_m[tile].type_height, 4, 4);
 }
 
 static inline void SetTileType(TileIndex tile, TileType type)
@@ -80,7 +80,7 @@ static inline Owner GetTileOwner(TileIndex tile)
 	assert(!IsTileType(tile, MP_VOID));
 	assert(!IsTileType(tile, MP_INDUSTRY));
 
-	return _m[tile].m1;
+	return (Owner)_m[tile].m1;
 }
 
 static inline void SetTileOwner(TileIndex tile, Owner owner)

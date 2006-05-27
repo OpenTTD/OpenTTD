@@ -133,7 +133,7 @@ static inline DiagDirection GetDepotDirection(TileIndex tile, TransportType type
 */
 static inline bool CanBuildDepotByTileh(uint32 direction, Slope tileh)
 {
-	return (0x4C >> direction) & tileh;
+	return ((0x4C >> direction) & tileh) != 0;
 }
 
 

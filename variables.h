@@ -3,6 +3,8 @@
 #ifndef VARIABLES_H
 #define VARIABLES_H
 
+#include "yapf/yapf_settings.h"
+
 // ********* START OF SAVE REGION
 #if !defined(MAX_PATH)
 # define MAX_PATH 260
@@ -203,6 +205,10 @@ typedef struct Patches {
  	uint32 npf_crossing_penalty; /* The penalty for level crossings */
 
 	bool population_in_label; // Show the population of a town in his label?
+
+	/** YAPF settings */
+	YapfSettings  yapf;
+
 } Patches;
 
 VARDEF Patches _patches;

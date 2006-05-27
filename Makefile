@@ -28,6 +28,7 @@
 # upgradeconf: add new options to old Makefile.config
 # osx: OS X application
 # release: used by OSX to make a dmg file ready to release
+# unittest: compile and link ./yapf/unittest/unittest - test for some yapf related classes, and run it
 
 # Options:
 #
@@ -252,11 +253,19 @@ TTD=openttd$(EXE)
 ENDIAN_CHECK=endian_check$(EXE)
 STRGEN=strgen/strgen$(EXE)
 OSXAPP="OpenTTD.app"
+UNITTEST=unit_test$(EXE)
 
 ifdef RELEASE
 REV:=$(RELEASE)
 else
 REV := $(shell if test -d .svn; then svnversion . | awk '{ print "r"$$0 }'; fi)
+endif
+
+# define flag to use for -lrt (some OSes overwrites this later for compatibility)
+ifndef LRT
+ifndef MORPHOS
+LRT:= -lrt
+endif
 endif
 
 # MorphOS needs builddate
@@ -265,6 +274,21 @@ BUILDDATE=`date +%d.%m.%y`
 # Check if there is a windres override
 ifndef WINDRES
 WINDRES = windres
+endif
+
+# Check that CXX is defined. If not, then it's g++
+ifndef CXX
+CXX = g++
+endif
+
+# Check if CXX_HOST is defined. If not, it is CXX
+ifndef CXX_HOST
+CXX_HOST = $(CXX)
+endif
+
+# Check if we have a new target
+ifdef CXX_TARGET
+CXX = $(CXX_TARGET)
 endif
 
 # Check if CC_HOST is defined. If not, it is CC
@@ -285,14 +309,15 @@ CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1,3)
 # GNU make can only test for (in)equality
 # this is a workaround to test for >=
 ifeq ($(shell expr $(CC_VERSION) \>= 29), 1)
-  CFLAGS += -O -Wall -Wno-multichar -Wsign-compare -Wstrict-prototypes -Wundef
+  CFLAGS += -O -Wall -Wno-multichar -Wsign-compare -Wundef
+  CC_CFLAGS += -Wstrict-prototypes
   CFLAGS += -Wwrite-strings -Wpointer-arith
 endif
 ifeq ($(shell expr $(CC_VERSION) \>= 30), 1)
   CFLAGS += -W -Wno-unused-parameter
 endif
 ifeq ($(shell expr $(CC_VERSION) \>= 34), 1)
-  CFLAGS += -Wdeclaration-after-statement -Wold-style-definition
+  CC_CFLAGS += -Wdeclaration-after-statement -Wold-style-definition
 endif
 
 ifdef DEBUG
@@ -323,9 +348,15 @@ ifndef PROFILE
 # Release mode
 ifndef MORPHOS
 ifndef IRIX
+ifdef OSX
+# it appears that OSX can't handle automated stripping when mixing C and C++
+# we will do it manually in the target OSX_STRIP
+OSX_STRIP:=OSX_STRIP
+else
 # automatical strip breaks under morphos
-BASECFLAGS += -s
+CC_CFLAGS += -s
 LDFLAGS += -s
+endif
 endif
 endif
 endif
@@ -363,6 +394,8 @@ endif
 ifdef MINGW
 BASECFLAGS += -mno-cygwin
 LDFLAGS += -mno-cygwin
+# -lrt fails with MINGW, so we disable it
+LRT:=
 endif
 endif
 
@@ -388,7 +421,8 @@ endif
 
 ifdef MORPHOS
 # -Wstrict-prototypes generates much noise because of system headers
-CFLAGS += -Wno-strict-prototypes
+# and it also uses 4-byte bools in the C++ ABI, so C bools need to be that size as well for YAPF to work
+CFLAGS += -Wno-strict-prototypes -DFOUR_BYTE_BOOL
 endif
 
 ifdef SUNOS
@@ -448,6 +482,12 @@ LIBS += $(shell $(LIBPNG_CONFIG)  --L_opts $(PNGCONFIG_FLAGS))
 endif
 endif
 
+# use std C++ lib:
+LIBS += -lstdc++
+ifndef MINGW
+	LIBS += -lc
+endif
+
 # iconv is enabled defaultly on OSX >= 10.3
 ifdef OSX
 	ifndef JAGUAR
@@ -485,6 +525,9 @@ endif
 ifdef OSX
 	# set the endian flag for OSX, that can't fail
 	ENDIAN_FORCE:=PREPROCESSOR
+
+	# -lrt fails on OSX, so we disable it
+	LRT:=
 
 	ifndef DEDICATED
 		LIBS += -framework QuickTime
@@ -700,6 +743,11 @@ SRCS += music/null_m.c
 SRCS += sound/null_s.c
 SRCS += video/dedicated_v.c
 SRCS += video/null_v.c
+SRCS += yapf/follow_track.cpp
+SRCS += yapf/yapf_common.cpp
+SRCS += yapf/yapf_rail.cpp
+SRCS += yapf/yapf_road.cpp
+SRCS += yapf/yapf_ship.cpp
 
 # AI related files
 SRCS += ai/ai.c
@@ -786,7 +834,7 @@ OSX:=OSX
 endif
 
 
-all: endian_target.h endian_host.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX)
+all: endian_target.h endian_host.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX) $(UNITTEST)
 
 ifdef OSX
 -include os/macosx/Makefile
@@ -824,7 +872,23 @@ lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 	@echo '===> Compiling language $(*F)'
 	$(Q)$(STRGEN) $(STRGEN_FLAGS) $< $(LANG_ERRORS) || rm -f $@
 
+# stupid KUDr doesn't know how to setup unittest dependencies (so rm,cp,rm)
+# please don't blame him and repair it:
+unittest: endian_host.h $(UPDATECONFIG) $(UNITTEST) rununittest
+$(UNITTEST): yapf/unittest/unittest.cpp
+	@echo '===> Compiling and Linking $@'
+	$(Q)rm -f $(UNITTEST)
+	$(Q)$(CXX_HOST) $(CFLAGS_HOST) $(CDEFS) $< $(LIBS) $(LRT) -o $@
+
+.PHONY: unittest
+
+rununittest:
+	@echo '===> Starting unittest'
+	$(Q)./$(UNITTEST)
+.PHONY: rununittest
+
 ifdef MORPHOS
+
 release: all
 	$(Q)rm -fr "/t/openttd-$(RELEASE)-morphos.lha"
 	$(Q)mkdir -p "/t/"
@@ -877,7 +941,7 @@ FORCE:
 clean:
 	@echo '===> Cleaning up'
 # endian.h is out-dated and no longer in use, so it can be removed soon
-	$(Q)rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) $(OSX_MIDI_PLAYER_FILE) endian.h endian_host.h endian_target.h $(ENDIAN_CHECK) .OSX
+	$(Q)rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) $(OSX_MIDI_PLAYER_FILE) endian.h endian_host.h endian_target.h $(ENDIAN_CHECK) .OSX $(UNITTEST)
 
 mrproper: clean
 	$(Q)rm -rf $(MAKE_CONFIG)
@@ -963,7 +1027,7 @@ depend:
 	@true # The include handles this automagically
 
 # Introduce the dependencies
-ifeq ($(findstring $(MAKECMDGOALS), clean info depend mrproper upgradeconf $(MAKE_CONFIG)),)
+ifeq ($(findstring $(MAKECMDGOALS), clean info depend mrproper upgradeconf unittest $(MAKE_CONFIG)),)
 -include $(DEPS)
 endif
 
@@ -988,7 +1052,7 @@ ifndef NATIVE_OSX
 # OSX uses os/macosx/Makefile to compile files
 %.o: %.c $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
 
 %.o: %.cpp  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
@@ -996,7 +1060,7 @@ ifndef NATIVE_OSX
 
 %.o: %.m  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
 endif
 
 %.o: %.rc

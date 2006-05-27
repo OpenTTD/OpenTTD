@@ -33,6 +33,7 @@ typedef enum Trackdirs {
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum TrackdirBits {
+	TRACKDIR_BIT_NONE     = 0x0,
 	TRACKDIR_BIT_X_NE     = 0x1,
 	TRACKDIR_BIT_Y_SE     = 0x2,
 	TRACKDIR_BIT_UPPER_E  = 0x4,
@@ -216,13 +217,13 @@ static inline Trackdir TrackToTrackdir(Track track) { return (Trackdir)track; }
  * Returns a TrackdirBit mask that contains the two TrackdirBits that
  * correspond with the given Track (one for each direction).
  */
-static inline TrackdirBits TrackToTrackdirBits(Track track) { Trackdir td = TrackToTrackdir(track); return TrackdirToTrackdirBits(td) | TrackdirToTrackdirBits(ReverseTrackdir(td));}
+static inline TrackdirBits TrackToTrackdirBits(Track track) { Trackdir td = TrackToTrackdir(track); return (TrackdirBits)(TrackdirToTrackdirBits(td) | TrackdirToTrackdirBits(ReverseTrackdir(td)));}
 
 /**
  * Discards all directional information from the given TrackdirBits. Any
  * Track which is present in either direction will be present in the result.
  */
-static inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits) { return bits | (bits >> 8); }
+static inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits) { return (TrackBits)(bits | (bits >> 8)); }
 
 /**
  * Maps a trackdir to the trackdir that you will end up on if you go straight

@@ -42,7 +42,7 @@ RSC=rc.exe
 # PROP Ignore_Export_Lib 0
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /Yu"stdafx.h" /FD /c
-# ADD CPP /nologo /Gr /Zp4 /MT /W3 /Zi /Ox /Oa /Ow /Og /Oi /Os /Gf /Gy /I "../include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "WIN32_EXCEPTION_TRACKER" /D "WIN32_ENABLE_DIRECTMUSIC_SUPPORT" /D "WITH_PNG" /D "WITH_ZLIB" /D "ENABLE_NETWORK" /FAcs /FR /Yu"stdafx.h" /J /FD /c
+# ADD CPP /nologo /Gr /Zp4 /MT /W3 /Zi /Ox /Oa /Ow /Og /Oi /Os /Gf /Gy /I "../include" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /D "_MBCS" /D "WIN32_EXCEPTION_TRACKER" /D "WIN32_ENABLE_DIRECTMUSIC_SUPPORT" /D "WITH_PNG" /D "WITH_ZLIB" /D "ENABLE_NETWORK" /FAcs /FR /YX"stdafx.h" /J /FD /c
 # SUBTRACT CPP /WX /Ot
 # ADD BASE RSC /l 0x809 /d "NDEBUG"
 # ADD RSC /l 0x809 /d "NDEBUG"
@@ -51,7 +51,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /machine:I386
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib /nologo /subsystem:windows /map /machine:I386 /nodefaultlib:"libc.lib" /libpath:"../lib" /opt:nowin98
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib /nologo /subsystem:windows /map /machine:I386 /nodefaultlib:"LIBC.lib" /libpath:"../lib" /opt:nowin98
 # SUBTRACT LINK32 /pdb:none
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
@@ -77,7 +77,7 @@ BSC32=bscmake.exe
 # ADD BSC32 /nologo
 LINK32=link.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /debug /machine:I386 /pdbtype:sept
-# ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib /nologo /subsystem:windows /debug /machine:I386 /nodefaultlib:"libc.lib" /pdbtype:sept /libpath:"../lib"
+# ADD LINK32 kernel32.lib user32.lib gdi32.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib /nologo /subsystem:windows /debug /machine:I386 /nodefaultlib:"LIBC.lib" /pdbtype:sept /libpath:"../lib"
 # SUBTRACT LINK32 /pdb:none
 
 !ENDIF 
@@ -95,7 +95,7 @@ SOURCE=.\ai\ai.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -116,7 +116,7 @@ SOURCE=.\ai\trolly\build.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -149,7 +149,7 @@ SOURCE=.\video\dedicated_v.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -162,7 +162,7 @@ SOURCE=.\ai\default\default.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -299,7 +299,7 @@ SOURCE=.\music\null_m.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -312,7 +312,7 @@ SOURCE=.\sound\null_s.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -325,7 +325,7 @@ SOURCE=.\video\null_v.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -358,7 +358,7 @@ SOURCE=.\ai\trolly\pathfinder.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -399,7 +399,7 @@ SOURCE=.\sound\sdl_s.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -412,7 +412,7 @@ SOURCE=.\video\sdl_v.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -429,7 +429,7 @@ SOURCE=.\ai\trolly\shared.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -487,7 +487,7 @@ SOURCE=.\ai\trolly\trolly.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -529,7 +529,7 @@ SOURCE=.\music\win32_m.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -542,7 +542,7 @@ SOURCE=.\sound\win32_s.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -555,7 +555,7 @@ SOURCE=.\video\win32_v.c
 
 !IF  "$(CFG)" == "openttd - Win32 Release"
 
-# ADD CPP /Yu"../stdafx.h"
+# ADD CPP /YX
 
 !ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
 
@@ -565,6 +565,10 @@ SOURCE=.\video\win32_v.c
 # Begin Source File
 
 SOURCE=.\window.c
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_rail.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -760,6 +764,10 @@ SOURCE=.\signs.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\slope.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\sound.h
 # End Source File
 # Begin Source File
@@ -816,6 +824,10 @@ SOURCE=.\viewport.h
 # End Source File
 # Begin Source File
 
+SOURCE=.\void.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\waypoint.h
 # End Source File
 # Begin Source File
@@ -833,6 +845,10 @@ SOURCE=.\video\win32_v.h
 # Begin Source File
 
 SOURCE=.\window.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_node_rail.hpp
 # End Source File
 # End Group
 # Begin Group "Gui Source codes"
@@ -1250,13 +1266,132 @@ SOURCE=.\tunnel_map.h
 
 SOURCE=.\unmovable_map.h
 # End Source File
+# End Group
+# Begin Group "yapf"
+
+# PROP Default_Filter ""
 # Begin Source File
 
-SOURCE=.\void_map.h
+SOURCE=.\yapf\array.hpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\water_map.h
+SOURCE=.\yapf\autocopyptr.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\binaryheap.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\blob.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\countedptr.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\fixedsizearray.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\follow_track.cpp
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /YX
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\follow_track.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\hashtable.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\nodelist.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\track_dir.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_base.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_common.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_common.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_costbase.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_costcache.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_costrail.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_destrail.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_node.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_node_road.hpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_road.cpp
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# ADD CPP /YX
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF 
+
+# End Source File
+# Begin Source File
+
+SOURCE=.\yapf\yapf_ship.cpp
+
+!IF  "$(CFG)" == "openttd - Win32 Release"
+
+# SUBTRACT CPP /YX /Yc /Yu
+
+!ELSEIF  "$(CFG)" == "openttd - Win32 Debug"
+
+!ENDIF 
+
 # End Source File
 # End Group
 # Begin Source File

@@ -48,6 +48,9 @@ ifndef i386_OSX_TARGET
 i386_OSX_TARGET:=10.4u
 endif
 
+# 4-byte bools to make YAPF happy
+CFLAGS_PPC += -DFOUR_BYTE_BOOL
+
 ifndef G5_FLAGS
 G5_FLAGS := -mtune=970 -mcpu=970 -mpowerpc-gpopt
 endif

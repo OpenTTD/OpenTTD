@@ -138,7 +138,7 @@ static inline bool IsRoadStopTile(TileIndex t)
 static inline DiagDirection GetRoadStopDir(TileIndex t)
 {
 	assert(IsRoadStopTile(t));
-	return (GetStationGfx(t) - GFX_TRUCK_BASE) & 3;
+	return (DiagDirection)((GetStationGfx(t) - GFX_TRUCK_BASE) & 3);
 }
 
 static inline bool IsOilRig(TileIndex t)
