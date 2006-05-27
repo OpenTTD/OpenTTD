@@ -42,6 +42,9 @@ endif
 ifndef LIPO
 LIPO := lipo
 endif
+ifndef STRIP
+STRIP := strip
+endif
 
 # targets to link OpenTTD
 $(TTD): $(OTTD_PPC) $(OTTD_i386) $(OTTD_PPC970)
@@ -99,6 +102,10 @@ $(OTTD_PPC970): $(MAKE_CONFIG) $(OBJS_ppc970)
 
 endif
 
+# manual strip, as the -s option fails
+$(OSX_STRIP): $(TTD)
+	$(Q)$(STRIP) openttd
+
 ifdef JAGUAR
 JAGUAR_POSTFIX := -jaguar
 endif
@@ -106,7 +113,7 @@ endif
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
 
-BUILD_OSX_BUNDLE: $(TTD)
+BUILD_OSX_BUNDLE: $(TTD) $(OSX_STRIP)
 	@echo '===> Building application bundle'
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
@@ -141,6 +148,6 @@ release: all
 	$(Q)hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(REV)" openttd-"$(REV)"-osx"$(JAGUAR_POSTFIX)".dmg
 	$(Q)rm -fr "OpenTTD $(REV)"
 
-$(OSX): $(TTD) BUILD_OSX_BUNDLE
+$(OSX): $(TTD) $(OSX_STRIP) BUILD_OSX_BUNDLE
 
 .PHONY: release $(BUILD_OSX_BUNDLE) $(UNIVERSAL_BINARY)
