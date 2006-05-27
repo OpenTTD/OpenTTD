@@ -834,7 +834,7 @@ OSX:=OSX
 endif
 
 
-all: endian_target.h endian_host.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX) $(UNITTEST)
+all: endian_target.h endian_host.h $(UPDATECONFIG) $(LANGS) $(TTD) $(OSX)
 
 ifdef OSX
 -include os/macosx/Makefile

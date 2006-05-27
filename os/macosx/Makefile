@@ -42,6 +42,9 @@ endif
 ifndef LIPO
 LIPO := lipo
 endif
+ifndef STRIP
+STRIP := strip
+endif
 
 # targets to link OpenTTD
 $(TTD): $(OTTD_PPC) $(OTTD_i386) $(OTTD_PPC970)
@@ -101,7 +104,7 @@ endif
 
 # manual strip, as the -s option fails
 $(OSX_STRIP): $(TTD)
-	$(Q)strip openttd
+	$(Q)$(STRIP) openttd
 
 ifdef JAGUAR
 JAGUAR_POSTFIX := -jaguar
