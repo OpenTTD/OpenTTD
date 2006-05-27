@@ -2,78 +2,100 @@
 # This makefile is not a standalone makefile, but is called from the general one
 # it contains targets specific to MacOS X
 
-ifdef NATIVE_OSX
+ifdef MACOSX_BUILD
 
 DEPS_MAGIC := $(shell mkdir -p $(sort $(dir $(OBJS:%.o=.OSX/%))))
 
 ifdef OTTD_PPC
 OTTD_PPC    :=.OSX/openttd.ppc
 OBJS_ppc    := $(OBJS:%.o=.OSX/%.o.ppc)
+ifndef CC_PPC
+CC_PPC      := $(CC) -arch ppc
+endif
+ifndef CXX_PPC
+CXX_PPC     := $(CXX) -arch ppc
+endif
 endif
 
 ifdef OTTD_i386
 OTTD_i386   :=.OSX/openttd.i386
 OBJS_i386   := $(OBJS:%.o=.OSX/%.o.i386)
+ifndef CC_I386
+CC_I386     := $(CC) -arch i386
+endif
+ifndef CXX_I386
+CXX_I386    := $(CXX) -arch i386
+endif
 endif
 
 ifdef OTTD_PPC970
 OTTD_PPC970 :=.OSX/openttd.ppc970
 OBJS_ppc970 := $(OBJS:%.o=.OSX/%.o.ppc970)
+ifndef CC_PPC970
+CC_PPC970   := $(CC) -arch ppc970
+endif
+ifndef CXX_PPC970
+CXX_PPC970  := $(CXX) -arch ppc970
+endif
+endif
+
+ifndef LIPO
+LIPO := lipo
 endif
 
 # targets to link OpenTTD
 $(TTD): $(OTTD_PPC) $(OTTD_i386) $(OTTD_PPC970)
 	@echo '===> Linking $@ into a single file'
-	$(Q)lipo -create -output $@ $(OTTD_PPC) $(OTTD_i386) $(OTTD_PPC970)
+	$(Q)$(LIPO) -create -output $@ $(OTTD_PPC) $(OTTD_i386) $(OTTD_PPC970)
 
 $(OTTD_PPC): $(MAKE_CONFIG) $(OBJS_ppc)
 	@echo '[PowerPC] Linking $(TTD)'
-	$(Q)$(CXX) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc) $(LIBS) $(LDFLAGS_PPC) -arch ppc -o $@
+	$(Q)$(CC_PPC) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc) $(LIBS) $(LDFLAGS_PPC) -o $@
 
 $(OTTD_i386): $(MAKE_CONFIG) $(OBJS_i386)
 	@echo '[i386] Linking $(TTD)'
-	$(Q)$(CXX) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_i386) $(LIBS) $(LDFLAGS_i386) -arch i386 -o $@
+	$(Q)$(CC_I386) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_i386) $(LIBS) $(LDFLAGS_i386) -o $@
 
 $(OTTD_PPC970): $(MAKE_CONFIG) $(OBJS_ppc970)
 	@echo '[PowerPC G5] Linking $(TTD)'
-	$(Q)$(CXX) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc970) $(LIBS) $(LDFLAGS_PPC) $(G5_FLAGS) -arch ppc970 -o $@
+	$(Q)$(CC_PPC970) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS_ppc970) $(LIBS) $(LDFLAGS_PPC) $(G5_FLAGS) -o $@
 
 # targets to compile each c, m and cpp file
 .OSX/%.o.ppc: %.c      .deps/%.d
 	@echo '[PowerPC] Compiling $<'
-	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
+	$(Q)$(CC_PPC) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.ppc: %.cpp    .deps/%.d
 	@echo '[PowerPC] Compiling $<'
-	$(Q)$(CXX) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
+	$(Q)$(CXX_PPC) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.ppc: %.m      .deps/%.d
 	@echo '[PowerPC] Compiling $<'
-	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -arch ppc -c -o $@ $<
+	$(Q)$(CC_PPC) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.i386: %.c     .deps/%.d
 	@echo '[i386] Compiling $<'
-	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
+	$(Q)$(CC_I386) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.i386: %.cpp   .deps/%.d
 	@echo '[i386] Compiling $<'
-	$(Q)$(CXX) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
+	$(Q)$(CXX_I386) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.i386: %.m     .deps/%.d
 	@echo '[i386] Compiling $<'
-	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -arch i386 -c -o $@ $<
+	$(Q)$(CC_I386) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.ppc970: %.c   .deps/%.d
 	@echo '[PowerPC G5] Compiling $<'
-	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
+	$(Q)$(CC_PPC970) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.ppc970: %.cpp .deps/%.d
 	@echo '[PowerPC G5] Compiling $<'
-	$(Q)$(CXX) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
+	$(Q)$(CXX_PPC970) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.ppc970: %.m   .deps/%.d
 	@echo '[PowerPC G5] Compiling $<'
-	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -arch ppc970 -c -o $@ $<
+	$(Q)$(CC_PPC970) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -c -o $@ $<
 
 endif
 

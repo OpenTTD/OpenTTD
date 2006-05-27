@@ -65,13 +65,17 @@ endif
 
 # if any targets have been defined by now, we are crosscompiling and we will set up paths accordingly
 ifdef OTTD_PPC
-	CFLAGS_PPC   += -isysroot /Developer/SDKs/MacOSX$(PPC_OSX_TARGET).sdk
-	LDFLAGS_PPC  += -Wl,-syslibroot,/Developer/SDKs/MacOSX$(PPC_OSX_TARGET).sdk
+	ifndef OSX_NO_SYSROOT
+		CFLAGS_PPC   += -isysroot /Developer/SDKs/MacOSX$(PPC_OSX_TARGET).sdk
+		LDFLAGS_PPC  += -Wl,-syslibroot,/Developer/SDKs/MacOSX$(PPC_OSX_TARGET).sdk
+	endif
 endif
 
 ifdef OTTD_i386
-	CFLAGS_i386  += -isysroot /Developer/SDKs/MacOSX$(i386_OSX_TARGET).sdk
-	LDFLAGS_i386 += -Wl,-syslibroot,/Developer/SDKs/MacOSX$(i386_OSX_TARGET).sdk
+	ifndef OSX_NO_SYSROOT
+		CFLAGS_i386  += -isysroot /Developer/SDKs/MacOSX$(i386_OSX_TARGET).sdk
+		LDFLAGS_i386 += -Wl,-syslibroot,/Developer/SDKs/MacOSX$(i386_OSX_TARGET).sdk
+	endif
 endif
 
 ifdef OTTD_PPC970
@@ -123,3 +127,14 @@ ifdef NATIVE_OSX
 		endif
 	endif
 endif
+
+ifdef OTTD_PPC
+MACOSX_BUILD:=1
+endif
+ifdef OTTD_i386
+MACOSX_BUILD:=1
+endif
+ifdef OTTD_PPC970
+MACOSX_BUILD:=1
+endif
+

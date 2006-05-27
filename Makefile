@@ -173,7 +173,7 @@ LANG_ERRORS =  >/dev/null 2>&1
 endif
 
 ifdef OSX
--include os/MacOSX/Makefile.setup
+-include os/macosx/Makefile.setup
 endif
 
 ifdef STATIC
@@ -853,7 +853,7 @@ $(ENDIAN_CHECK): endian_check.c
 	$(Q)$(CC_HOST) $(CFLAGS_HOST) $(CDEFS) $< -o $@
 
 
-ifndef NATIVE_OSX
+ifndef MACOSX_BUILD
 # OSX links in os/macosx/Makefile to handle universal binaries better
 $(TTD): $(OBJS) $(MAKE_CONFIG)
 	@echo '===> Linking $@'
@@ -1048,7 +1048,7 @@ endif
 	$(Q)$(CC) $(OBJCFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 
-ifndef NATIVE_OSX
+ifndef MACOSX_BUILD
 # OSX uses os/macosx/Makefile to compile files
 %.o: %.c $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
