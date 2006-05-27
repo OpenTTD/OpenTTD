@@ -348,15 +348,8 @@ ifndef PROFILE
 # Release mode
 ifndef MORPHOS
 ifndef IRIX
-ifdef OSX
-# it appears that OSX can't handle automated stripping when mixing C and C++
-# we will do it manually in the target OSX_STRIP
-OSX_STRIP:=OSX_STRIP
-else
 # automatical strip breaks under morphos
-CC_CFLAGS += -s
 LDFLAGS += -s
-endif
 endif
 endif
 endif
