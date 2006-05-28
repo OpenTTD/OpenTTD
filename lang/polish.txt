@@ -1180,6 +1180,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmiana wartosci
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Niektore lub wszystkie domyslne okresy miedzyserwisowania sa sprzeczne z wybranymi! 5-90% i 30-800 dni sa poprawne
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Uzywaj YAPF dla statkow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Uzywaj YAPF dla samochodow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Uzywaj YAPF dla pociagow: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Krajobraz umiarkowany
 STR_SUB_ARCTIC_LANDSCAPE                                        :Krajobraz arktyczny

@@ -65,7 +65,7 @@ STR_0039_VALUABLES                                              :Arvotavara
 STR_003A_COPPER_ORE                                             :Kuparimalmi
 STR_003B_MAIZE                                                  :Maissi
 STR_003C_FRUIT                                                  :Hedelmä
-STR_003D_DIAMOND                                                :Timantti
+STR_003D_DIAMOND                                                :Jalokivi
 STR_003E_FOOD                                                   :Ruoka
 STR_003F_PAPER                                                  :Paperi
 STR_0040_GOLD                                                   :Kulta
@@ -199,21 +199,21 @@ STR_00E7_INDUSTRIES                                             :Teollisuus
 STR_00E8_ROUTES                                                 :Reitit
 STR_00E9_VEGETATION                                             :Kasvillisuus
 STR_00EA_OWNERS                                                 :Omistajat
-STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Tiet
-STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Rautatiet
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Asemat/lentokentät/satamat
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Rakennukset/teollisuus
-STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Liikennevälineet
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Tie
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Rautatie
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Asema/lentokenttä/satama
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Rakennus
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Liikenneväline
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
 STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
 STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
-STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Junat
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Ajoneuvot
-STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Laivat
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lentokoneet
-STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Kuljetusreitit
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Juna
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Ajoneuvo
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Laiva
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lentokone
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Kuljetusreitti
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Hiilikaivos
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Sähkölaitos
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Metsä
@@ -306,7 +306,7 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}Pelin as
 STR_0150_SOMEONE                                                :joku{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Maailmankartta
 STR_0152_TOWN_DIRECTORY                                         :Kaupunkihakemisto
-STR_0153_SUBSIDIES                                              :Tuet
+STR_0153_SUBSIDIES                                              :Tukitarjoukset
 
 STR_UNITS_IMPERIAL                                              :Englantilainen
 STR_UNITS_METRIC                                                :Metrinen
@@ -383,6 +383,7 @@ STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
 STR_SORT_BY_RATING_MAX                                          :Rahtauksen arvosana
 STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Valitse kaikki laitteet
 STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
 
 ############ range for months starts
@@ -678,7 +679,7 @@ STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Istuta h
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Istuta kumiviljelmä.
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Rakenna lähde.
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Rakenna vesitorni (voidaan rakentaa vain kaupunkeihin).
-STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Rakenna timanttikaivos.
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Rakenna jalokivikaivos.
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Rakenna kuparikaivos.
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Istuta hattarametsä.
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Rakenna karkkitehdas.
@@ -781,7 +782,7 @@ STR_02D9_ABOUT_OPENTTD                                          :Tietoja "OpenTT
 
 STR_02DB_OFF                                                    :{BLACK}pois
 STR_02DA_ON                                                     :{BLACK}päällä
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Näytä tuet
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Näytä tukitarjoukset
 STR_02DD_SUBSIDIES                                              :Tuet
 STR_02DE_MAP_OF_WORLD                                           :Maailmankartta
 STR_EXTRA_VIEW_PORT                                             :Lisänäkymä
@@ -835,11 +836,11 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Valitse 
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Rahoita uuden teollisuuden rakentamista.
 
 ############ range for menu	starts
-STR_INDUSTRY_DIR                                                :Rahoitushakemisto
-STR_0313_FUND_NEW_INDUSTRY                                      :Rahoita uutta teollisuutta
+STR_INDUSTRY_DIR                                                :Teollisuushakemisto
+STR_0313_FUND_NEW_INDUSTRY                                      :Rakenna uutta teollisuutta
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Rahoita uutta teollisuutta.
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Rakenna uutta teollisuutta
 STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin.
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...voidaan rakentaa vain sademetsäalueisiin.
@@ -948,7 +949,7 @@ STR_TONS                                                        :tonnia
 STR_LITERS                                                      :litraa
 STR_ITEMS                                                       :erää
 STR_CRATES                                                      :laatikkoa
-STR_RES_OTHER                                                   :muuta
+STR_RES_OTHER                                                   :muut
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -1092,6 +1093,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Muuta asetusarvo
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Osa allaolevista oletushuoltoväleistä ei ole yhteensopivia valitun asetuksen kanssa! 5-90{NBSP}% ja 30-800 päivää ovat oikein.
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Käytä uutta reitinetsijää (YAPF) laivoille: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Käytä uutta reitinetsijää (YAPF) autoille: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Käytä uutta reitinetsijää (YAPF) junille: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :lauhkea maasto
 STR_SUB_ARCTIC_LANDSCAPE                                        :pohjoinen maasto
@@ -1110,6 +1114,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Suihkuk
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Vaihda ilmastoa: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuta päiväystä: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Muuntuvat tuotantoarvot: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Salli sähköjunien kulkeminen tavallisella junaradalla.
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Kohde: {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Kohde: {WAYPOINT}, {VELOCITY}
@@ -1176,7 +1181,7 @@ STR_STATION_DRAG_DROP                                           :{BLACK}Rakenna 
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Valitse asemaluokka
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Valitse asematyyppi
 
-STR_FAST_FORWARD                                                :{BLACK}Kelaa peliä eteenpäin
+STR_FAST_FORWARD                                                :{BLACK}Nopeuta peliä
 STR_MESSAGE_HISTORY                                             :{WHITE}Viestihistoria
 STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Lista viimeisimmistä uutisviesteistä.
 STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Kaikki pois päältä
@@ -1189,7 +1194,7 @@ STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Rahoita 
 STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Rakenna kuparikaivos.
 STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Poraa öljyä.
 STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Rakenna kultakaivos.
-STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Rakenna timanttikaivos.
+STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Rakenna jalokivikaivos.
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Rakenna rautakaivos.
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Rahoita hedelmäviljelmää.
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Rahoita kumiviljelmää.
@@ -1428,14 +1433,14 @@ STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Kartan 
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Kartan y-koko: {ORANGE}{STRING}
 
 ##id 0x0800
-STR_0800_COST                                                   :{TINYFONT}{RED}Kulu: {CURRENCY}
-STR_0801_COST                                                   :{RED}Kulu: {CURRENCY}
+STR_0800_COST                                                   :{TINYFONT}{RED}Kustannus: {CURRENCY}
+STR_0801_COST                                                   :{RED}Kustannus: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Tulo: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Tulo: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Siirrä: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Siirrä: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Arvioitu kulu: {CURRENCY}
-STR_0805_ESTIMATED_COST                                         :{WHITE}Arvioitu kulu: {CURRENCY}
+STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Arvioitu kustannus: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}Arvioitu kustannus: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Arvioitu tulo: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Arvioitu tulo: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Maata ei voi korottaa...
@@ -1558,11 +1563,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN}: 
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Kuljetusyhtiön arvioinnit:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Tuet
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tarjolla olevat tuet palveluille:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tarjolla olevat tuet:-
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} välille {STRING}-{STRING}
 STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ei mitään
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Käytetyt tuet palveluille:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Käytetyt tuet-
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} välille {STATION}-{STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT} asti)
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Tuki päättynyt:{}{}{STRING} väli {STRING} - {STRING} ei sisällä enää tukia.
@@ -1597,13 +1602,13 @@ STR_204A_BUILD_STATUE_OF_COMPANY                                :Rakenna patsas 
 STR_204B_FUND_NEW_BUILDINGS                                     :Rahoita uusia rakennuksia
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Osta yksinoikeudet kuljetuksiin
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Lahjo viranomaisia
-STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Tee aloite pienestä mainoskampanjasta hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}  Kulu: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Tee aloite keskikokoisesta mainoskampanjasta hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}  Kulu: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Tee aloite suuresta mainoskampanjasta hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}  Kulu: {CURRENCY}
-STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Rahoita kaupungin tieverkon rakentamista. Aiheuttaa huomattavaa häiriötä tieliikenteessä jopa kuuden kuukauden ajan.{}  Kulu: {CURRENCY}
-STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Rakenna patsas yhtiösi kunniaksi.{} Kulu: {CURRENCY}
-STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Rahoita uusien kaupparakennusten rakentamista kaupungissa.{}  Kulu: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Osta vuoden yksinoikeudet kaupungin liikennöintiin. Paikallisviranomaiset eivät salli muiden yhtiöiden kuljettaa matkustajia ja rahtia.{} Kulu: {CURRENCY}
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Tee aloite pienestä mainoskampanjasta hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}  Kustannus: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Tee aloite keskikokoisesta mainoskampanjasta hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}  Kustannus: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Tee aloite suuresta mainoskampanjasta hoikutellaksesi lisää matkustajia ja rahtia kuljetuspalveluihisi.{}  Kustannus: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Rahoita kaupungin tieverkon rakentamista. Aiheuttaa huomattavaa häiriötä tieliikenteessä kuuden kuukauden ajan.{}  Kustannus: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Rakenna patsas yhtiösi kunniaksi.{} Kustannus: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Rahoita uusien kaupparakennusten rakentamista kaupungissa.{}  Kustannus: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Osta vuoden yksinoikeudet kaupungin liikennöintiin. Paikallisviranomaiset eivät salli muiden yhtiöiden kuljettaa matkustajia ja rahtia.{} Kustannus: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Lahjo viranomaisia lisätäksesi arviotasi; rangaistus voi olla kuitenkin suuri, jos jäät kiinni.{}  Kulu: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN}: liikenne on kaaoksessa!{}{}{COMPANY} rahoittaa katujen kunnostuksen; autoilijoille odotettavissa kuusi kuukautta kurjuutta!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -1776,7 +1781,7 @@ STR_480F_FOOD_PROCESSING_PLANT                                  :Ruoanjalostamo
 STR_4810_PAPER_MILL                                             :Paperitehdas
 STR_4811_GOLD_MINE                                              :Kultakaivos
 STR_4812_BANK                                                   :Pankki
-STR_4813_DIAMOND_MINE                                           :Timanttikaivos
+STR_4813_DIAMOND_MINE                                           :Jalokivikaivos
 STR_4814_IRON_ORE_MINE                                          :Rautakaivos
 STR_4815_FRUIT_PLANTATION                                       :Hedelmäviljelmä
 STR_4816_RUBBER_PLANTATION                                      :Kumiviljelmä
@@ -1808,7 +1813,7 @@ STR_482B_TRANSPORTED                                            :{YELLOW}{STRING
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Keskitä päänäkymä teollisuuden sijaintiin.
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Uusi {STRING} rakennetaan kaupungin {TOWN} lähistölle!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Uusi {STRING} istutetaan kaupungin {TOWN} lähistölle!
-STR_482F_COST                                                   :{BLACK}Kulu: {YELLOW}{CURRENCY}
+STR_482F_COST                                                   :{BLACK}Kustannus: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Teollisuustyyppiä ei voi rakentaa tähän...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...metsää voi istuttaa vain lumirajan yläpuolelle.
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY}: sulkeminen uhkaavan lähellä!
@@ -1943,7 +1948,7 @@ STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Vastust
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Vastustajien älykkyys: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Ajoneuvojen hajoaminen: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Tukikerroin: {ORANGE}{STRING}
-STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Rakentamisen kulu: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Rakentamisen kustannus: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Maaston tyyppi: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Meren/järvien määrä: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Talous: {ORANGE}{STRING}
@@ -2000,7 +2005,7 @@ STR_7002_PLAYER                                                 :(Pelaaja {COMMA
 STR_7004_NEW_FACE                                               :{BLACK}Uudet kasvot
 STR_7005_COLOR_SCHEME                                           :{BLACK}Väriteema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Väriteema:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Uusi väriteema
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Uusi tunnusväri
 STR_7008_COMPANY_NAME                                           :{BLACK}Yhtiön nimi
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Pääjohtajan nimi
 STR_700A_COMPANY_NAME                                           :Yhtiön nimi
@@ -2047,7 +2052,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Valitse 
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Muuta yhtiön ajoneuvoammattikuntaa.
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Muuta pääjohtajan nimeä.
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Muuta yhtiön nimeä.
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Napsauta valitussa väriteemassa.
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Valitse tunnusväri.
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Ota lisää lainaa.
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Lyhennä lainaa.
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(pääjohtaja)
@@ -2651,7 +2656,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Sovita l
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse laivan kuljettama rahtityyppi.
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Sovita laiva korostetulle rahtityypille.
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:-
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kulu: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kustannus: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Laivaa ei voi sovittaa...
 STR_9842_REFITTABLE                                             :(sovitettava)
 STR_GO_TO_SHIP_DEPOT                                            :Aseta kohteeksi telakka, {TOWN}
@@ -2724,7 +2729,7 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Sovita l
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse kuljetettavan rahdin tyyppi.
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Sovita lentokone kuljettamaan valittua rahtityyppiä.
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:-
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kulu: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kustannus: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi sovittaa...
 STR_GO_TO_AIRPORT_HANGAR                                        :Aseta kohteeksi lentokonehalli, {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Huolto, kohteena lentokonehalli, {STATION}
@@ -2821,6 +2826,7 @@ STR_REPLACE_HELP                                                :{BLACK}Tällä vo
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vaunun poisto: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaattikorvaus pitäköön junan vakiopituisena poistamalla vaunuja (edestä) jos veturi pidentäisi junaa.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Korvataan: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ERIKOIS OMINAISUUS {} Vaihda toiseen korvausikkunaan. {} Vaunu vaihdetaan ainoastaan jos uusi vaunu kuljettaa samaa rahtia. Tämä tarkistetaan, joka kerta kun vaunu korvataan.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Veturi ei ole rakennettavissa
 
 STR_ENGINES                                                     :Veturit
@@ -2843,7 +2849,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Paino: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: {GOLD}{VELOCITY}{BLACK}   Teho: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Nopeus: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökulu: {GOLD}{CURRENCY}/vuosi
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökukustannus: {GOLD}{CURRENCY}/vuosi
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuotta
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Enimmäisluotettavuus: {GOLD}{COMMA}%

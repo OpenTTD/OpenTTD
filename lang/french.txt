@@ -338,6 +338,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton-force
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -1111,6 +1112,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Les jet
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Changer de climat : {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Changer la date: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production : {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Autoriser les locomotives électriques à circuler sur des voies non-électrifiées
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}En route pour {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}
@@ -2579,6 +2581,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Tragédie routière!{}Un automobiliste meurt brûlé vif lors d'une collision avec un train
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Tragédie routière!{}{COMMA} morts, brûlés vifs lors d'une collision avec un train
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Impossible de faire faire demi-tour au véhicule...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Impossible de faire faire demi-tour aux unités multiples
 STR_9034_RENAME                                                 :{BLACK}Renommer
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renommer type de véhicule routier
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renommer type de véhicule routier
