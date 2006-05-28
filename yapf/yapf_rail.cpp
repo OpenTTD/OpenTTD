@@ -260,6 +260,7 @@ bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_pe
 	return ret;
 }
 
+/** if any track changes, this counter is incremented - that will invalidate segment cost cache */
 int CSegmentCostCacheBase::s_rail_change_counter = 0;
 
 void YapfNotifyTrackLayoutChange(TileIndex tile, Track track) {CSegmentCostCacheBase::NotifyTrackLayoutChange(tile, track);}

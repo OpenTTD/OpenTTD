@@ -8,6 +8,7 @@
 #include "yapf_costbase.hpp"
 #include "yapf_costcache.hpp"
 
+/** translate tileh to the bitset of up-hill trackdirs */
 const TrackdirBits CYapfCostBase::c_upwards_slopes[] = {
 	TRACKDIR_BIT_NONE                    , // no tileh
 	TRACKDIR_BIT_X_SW | TRACKDIR_BIT_Y_NW, // 1
