@@ -856,8 +856,8 @@ STR_CURR_ITL                                                    :Ítölsk Líra (IT
 STR_CURR_NLG                                                    :Hollensk Gyllini (NLG)
 STR_CURR_NOK                                                    :Norsk króna (NOK)
 STR_CURR_PLN                                                    :Pólsk Zloty (PLN)
-STR_CURR_ROL                                                    :Rúmensk Leu (Lei)
-STR_CURR_RUR                                                    :Rússnesk Rúbla (rur)
+STR_CURR_ROL                                                    :Rúmensk Leu (ROL)
+STR_CURR_RUR                                                    :Rússnesk Rúbla (RUR)
 STR_CURR_SEK                                                    :Sænsk Króna (SEK)
 
 STR_CURR_CUSTOM                                                 :Sérvalið...

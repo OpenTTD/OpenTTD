@@ -330,13 +330,13 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" it}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liiter(liitrit)
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liit{P er rit}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnine jõud
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -902,7 +902,7 @@ STR_CURR_NLG                                                    :Hollandi kulden
 STR_CURR_NOK                                                    :Norra kroon (NOK)
 STR_CURR_PLN                                                    :Poola Zlott (PLN)
 STR_CURR_ROL                                                    :Rumeenia Leu (ROL)
-STR_CURR_RUR                                                    :Vene rubla (rur)
+STR_CURR_RUR                                                    :Vene rubla (RUR)
 STR_CURR_SEK                                                    :Rootsi kroon (SEK)
 
 STR_CURR_CUSTOM                                                 :Omatehtud...
@@ -982,10 +982,6 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Õhusõidu
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Õhusõiduki {COMMA} plaanis on kehtetud jaam
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rongi automaatne uuendus ebaõnnestus {COMMA} (money limit)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Maanteesõiduki automaatne uuendus ebaõnnestus {COMMA} (money limit)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laeva automaatne uuendus ebaõnnestus {COMMA} (money limit)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Õhusõiduki automaatne uuendus ebaõnnestus{COMMA} (money limit)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Rong {COMMA} on liiga pikk peale asendust
 
 STR_CONFIG_PATCHES                                              :{BLACK}Paranduste seaded
@@ -1354,7 +1350,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hangin mängu infot...
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hangin ettevõtte infot...
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kelint(e) sinu ees
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} kelint{P "" e} sinu ees
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbaiti tõmmatud
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Katkesta
@@ -2450,7 +2446,6 @@ STR_8825_NON_STOP                                               :{BLACK}Peatuset
 STR_8826_GO_TO                                                  :{BLACK}Mine
 STR_8827_FULL_LOAD                                              :{BLACK}Täis laadung
 STR_8828_UNLOAD                                                 :{BLACK}Lae maha
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Käskude Lõpp - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Hooldus
@@ -2799,7 +2794,7 @@ STR_SHIP                                                        :{BLACK}{SHIP}
 
 STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Rong{P "" i}
 STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Maanteesõiduk{P "" it}
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Lennuk(it)
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Lennuk{P "" it}
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Laev{P "" a}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Näita kõiki ronge millel on see jaam nende sõiduplaanis

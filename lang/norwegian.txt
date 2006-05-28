@@ -326,10 +326,10 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -888,8 +888,8 @@ STR_CURR_ITL                                                    :Italiensk Lira 
 STR_CURR_NLG                                                    :Hollandsk Guilder (NLG)
 STR_CURR_NOK                                                    :Norsk Krone (NOK)
 STR_CURR_PLN                                                    :Polsk Zloty (PLN)
-STR_CURR_ROL                                                    :Rumensk Leu (Lei)
-STR_CURR_RUR                                                    :Russisk Rubel (rur)
+STR_CURR_ROL                                                    :Rumensk Leu (ROL)
+STR_CURR_RUR                                                    :Russisk Rubel (RUR)
 STR_CURR_SEK                                                    :Söta Brors Krona (SEK)
 
 STR_CURR_CUSTOM                                                 :Custom...
@@ -1338,7 +1338,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Henter spilloversikt..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter firmaoversikt..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient(er) foran oss
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} foran oss
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} KB lastet ned så langt
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Koble fra

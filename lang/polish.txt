@@ -389,7 +389,7 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y ow}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} kilonewtony
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 

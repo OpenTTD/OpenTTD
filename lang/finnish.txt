@@ -330,13 +330,13 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m^3
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallona{P "" a}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litra{P "" a}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m^3
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -900,8 +900,8 @@ STR_CURR_ITL                                                    :Italian liira (
 STR_CURR_NLG                                                    :Hollannin guildeni (NLG)
 STR_CURR_NOK                                                    :Norjan kruunu (NOK)
 STR_CURR_PLN                                                    :Puolan zloty (PLN)
-STR_CURR_ROL                                                    :Romanian leu (lei)
-STR_CURR_RUR                                                    :Venjän rupla (rur)
+STR_CURR_ROL                                                    :Romanian leu (ROL)
+STR_CURR_RUR                                                    :Venjän rupla (RUR)
 STR_CURR_SEK                                                    :Ruotsin kruunu (SEK)
 
 STR_CURR_CUSTOM                                                 :Oma...

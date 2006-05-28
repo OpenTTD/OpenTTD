@@ -330,13 +330,13 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 tryck (lbf)
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ tryck (lbf)
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tryck (ton)
 STR_UNITS_FORCE_SI                                              :{COMMA} tryck (newton)
 
@@ -901,8 +901,8 @@ STR_CURR_ITL                                                    :Italienska lire
 STR_CURR_NLG                                                    :Holländska guilder (NLG)
 STR_CURR_NOK                                                    :Norska kronor (NOK)
 STR_CURR_PLN                                                    :Polska Zloty (PLN)
-STR_CURR_ROL                                                    :Rumänsk Leu
-STR_CURR_RUR                                                    :Ryska rubel (rur)
+STR_CURR_ROL                                                    :Rumänsk Leu (ROL)
+STR_CURR_RUR                                                    :Ryska rubel (RUR)
 STR_CURR_SEK                                                    :Svenska kronor (SEK)
 
 STR_CURR_CUSTOM                                                 :Egen...
@@ -1353,7 +1353,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hämtar spelinfo..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hämtar företagsinfo..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient(er) före oss
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} före oss
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbyte nerladdat hittills
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Frånkopplad
@@ -1754,7 +1754,7 @@ STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Valt nam
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Ta bort markerat sparat spel
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Spara spelet med valt namn
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Välj typ av nytt spel
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Välj scenario (green), förbestämt spel (blue), eller slumpmässigt nytt spel
+STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Välj scenario (grön), förbestämt spel (blå), eller slumpmässigt nytt spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Skapa slumpmässigt nytt spel
 
 ##id 0x4800
@@ -2647,7 +2647,6 @@ STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Byt namn
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Byt namn på skeppstyp
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Kan inte byta namn på skeppstyp...
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Anpassa godsskepp att frakta en annan godstyp
-STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
 STR_983C_REFIT_SHIP                                             :{BLACK}Anpassa skepp
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj typ av gods för skepp att frakta
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Anpassa skepp att frakta markerad godstyp
@@ -2720,7 +2719,6 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Byt namn
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Byt namn på flygplanstyp
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Kan inte byta namn på flygplanstyp...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta en annan godstyp
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Anpassa flygplan
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj godstyp för flygplan att frakta
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta markerad godstyp

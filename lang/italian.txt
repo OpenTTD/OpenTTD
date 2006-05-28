@@ -330,13 +330,13 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P e i}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P o i}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnellata-forza
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -901,7 +901,7 @@ STR_CURR_ITL                                                    :Lira Italiana (
 STR_CURR_NLG                                                    :Fiorino olandese (NLG)
 STR_CURR_NOK                                                    :Corona Norvegese (NOK)
 STR_CURR_PLN                                                    :Zloty Polacco (PLN)
-STR_CURR_ROL                                                    :Leu rumeno (Lei)
+STR_CURR_ROL                                                    :Leu rumeno (ROL)
 STR_CURR_RUR                                                    :Rupie Russe (RUR)
 STR_CURR_SEK                                                    :Corona Svedese (SEK)
 

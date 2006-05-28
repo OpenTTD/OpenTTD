@@ -323,18 +323,18 @@ STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonelada{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P ""s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gal{P "ão" "ões}
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gal{P ão ões}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton force
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -895,8 +895,8 @@ STR_CURR_ITL                                                    :Lira Italiana (
 STR_CURR_NLG                                                    :Guilda Holandesa (NLG)
 STR_CURR_NOK                                                    :Coroa Norueguesa (NOK)
 STR_CURR_PLN                                                    :Zloty Polaco (PLN)
-STR_CURR_ROL                                                    :Lei Romeno (Lei)
-STR_CURR_RUR                                                    :Rublo Russo (rur)
+STR_CURR_ROL                                                    :Lei Romeno (ROL)
+STR_CURR_RUR                                                    :Rublo Russo (RUR)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
@@ -1348,7 +1348,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) A 
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}A obter a informação de jogo..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}A obter a informação da Companhia..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente(s) à sua frente
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} à sua frente
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes obtidos até agora
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desligar

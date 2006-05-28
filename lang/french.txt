@@ -901,7 +901,7 @@ STR_CURR_ITL                                                    :Lire Italienne 
 STR_CURR_NLG                                                    :Florint Hollandais (NLG)
 STR_CURR_NOK                                                    :Courronne Norvégienne (NOK)
 STR_CURR_PLN                                                    :Nouv. Zloty Polonais (PLN)
-STR_CURR_ROL                                                    :Leu Roumain (LEI)
+STR_CURR_ROL                                                    :Leu Roumain (ROL)
 STR_CURR_RUR                                                    :Rouble Russe (RUR)
 STR_CURR_SEK                                                    :Couronne Suédoise (SEK)
 

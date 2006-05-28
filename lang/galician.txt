@@ -850,8 +850,8 @@ STR_CURR_ITL                                                    :Lira Italiana (
 STR_CURR_NLG                                                    :Florín Holandés (NLG)
 STR_CURR_NOK                                                    :Corona Noruguesa (NOK)
 STR_CURR_PLN                                                    :Zloty Polaco (PLN)
-STR_CURR_ROL                                                    :Leu Rumano (Lei)
-STR_CURR_RUR                                                    :Rublo Ruso (rur)
+STR_CURR_ROL                                                    :Leu Rumano (ROL)
+STR_CURR_RUR                                                    :Rublo Ruso (RUR)
 STR_CURR_SEK                                                    :Corona Sueca(SEK)
 
 STR_CURR_CUSTOM                                                 :Persoal...
@@ -1274,7 +1274,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Descargando información da partida..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Descargando información da compañía..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente(s) diante túa
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} diante túa
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes descargados
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconectar

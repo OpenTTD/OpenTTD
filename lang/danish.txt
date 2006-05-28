@@ -893,8 +893,8 @@ STR_CURR_ITL                                                    :Italienske Lire
 STR_CURR_NLG                                                    :Hollandske Guilder (NLG)
 STR_CURR_NOK                                                    :Norske Kroner (NOK)
 STR_CURR_PLN                                                    :Polske Zloty (PLN)
-STR_CURR_ROL                                                    :Rumænske Lei
-STR_CURR_RUR                                                    :Russiske Rubel (rur)
+STR_CURR_ROL                                                    :Rumænske Lei (ROL)
+STR_CURR_RUR                                                    :Russiske Rubel (RUR)
 STR_CURR_SEK                                                    :Svenske Kroner (SEK)
 
 STR_CURR_CUSTOM                                                 :Brugerdefineret...
@@ -1343,7 +1343,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Henter spil info..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Henter firma info..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient(er) foran dig
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} foran dig
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes hentet indtil videre
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Afbryd forbindelse

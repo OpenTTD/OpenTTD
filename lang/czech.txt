@@ -142,7 +142,7 @@ STR_004D_FIZZY_DRINK                                            :limonád
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} cestující{P "" "" ch}
 STR_QUANTITY_COAL                                               :{WEIGHT} uhlí
-STR_QUANTITY_MAIL                                               :{COMMA} balík{P "" "y" u} po¨ty
+STR_QUANTITY_MAIL                                               :{COMMA} balík{P "" y u} po¨ty
 STR_QUANTITY_OIL                                                :{VOLUME} ropy
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} kus{P "" y u} dobytka
 STR_QUANTITY_GOODS                                              :{COMMA} krabic{P e e ""} zbo¸í
@@ -150,14 +150,14 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT} zrní
 STR_QUANTITY_WOOD                                               :{WEIGHT} dreva
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} ¸elezné rudy
 STR_QUANTITY_STEEL                                              :{WEIGHT} oceli
-STR_QUANTITY_VALUABLES                                          :{COMMA} balík{P "" "y" u} cenin
+STR_QUANTITY_VALUABLES                                          :{COMMA} balík{P "" y u} cenin
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} medene rudy
 STR_QUANTITY_MAIZE                                              :{WEIGHT} kukurice
 STR_QUANTITY_FRUIT                                              :{WEIGHT} ovoce
 STR_QUANTITY_DIAMONDS                                           :{COMMA} pyt{P el le lu} diamantu
 STR_QUANTITY_FOOD                                               :{WEIGHT} jídla
 STR_QUANTITY_PAPER                                              :{WEIGHT} papíru
-STR_QUANTITY_GOLD                                               :{COMMA} balík{P "" "y" u}
+STR_QUANTITY_GOLD                                               :{COMMA} balík{P "" y u}
 STR_QUANTITY_WATER                                              :{VOLUME} vody
 STR_QUANTITY_WHEAT                                              :{WEIGHT} kukurice
 STR_QUANTITY_RUBBER                                             :{VOLUME} kaucuku
@@ -387,13 +387,13 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA} gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA} l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y u}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y u}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} megapond{P "" y u}
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -1411,7 +1411,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Prijimani informací o hre..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Prijimani informací o spolecnosti..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient(u) pred námi
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" y u} pred námi
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kB sta¸eno
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odpojit se

@@ -330,13 +330,13 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galó{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} força per tona
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -901,8 +901,8 @@ STR_CURR_ITL                                                    :Lires Italianes
 STR_CURR_NLG                                                    :Florins Holandesos (NLG)
 STR_CURR_NOK                                                    :Corones Noruegues (NOK)
 STR_CURR_PLN                                                    :Zloty Polac (PLN)
-STR_CURR_ROL                                                    :Leu Romanès (Lei)
-STR_CURR_RUR                                                    :Rubles Russos (rur)
+STR_CURR_ROL                                                    :Leu Romanès (ROL)
+STR_CURR_RUR                                                    :Rubles Russos (RUR)
 STR_CURR_SEK                                                    :Corones Sueques (SEK)
 
 STR_CURR_CUSTOM                                                 :Personalitzat...
@@ -1354,7 +1354,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtenint informació del joc..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtenint informació de l'empresa..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client(s) rivals
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} rivals
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes descarregats aproximadament
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconnecta
@@ -1413,7 +1413,6 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} El serv
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Client
 
-STR_NETWORK_CLIENTLIST_NONE                                     :(none)
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Entregar diners
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parlar a tothom
