@@ -17,15 +17,19 @@ template <class Types>
 class CYapfFollowAnyDepotRailT
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type
+	typedef typename Node::Key Key;                      ///< key to hash tables
 
 protected:
+	/// to access inherited path finder
 	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
+	/** Called by YAPF to move from the given node to the next tile. For each
+	*   reachable trackdir on the new tile creates new node, initializes it
+	*   and adds it to the open list by calling Yapf().AddNewNode(n) */
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
@@ -33,6 +37,7 @@ public:
 			Yapf().AddMultipleNodes(&old_node, F.m_new_tile, F.m_new_td_bits);
 	}
 
+	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 't';}
 
 	static bool stFindNearestDepotTwoWay(Vehicle *v, TileIndex t1, Trackdir td1, TileIndex t2, Trackdir td2, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed)
@@ -75,15 +80,19 @@ template <class Types>
 class CYapfFollowRailT
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type
+	typedef typename Node::Key Key;                      ///< key to hash tables
 
 protected:
+	/// to access inherited path finder
 	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
+	/** Called by YAPF to move from the given node to the next tile. For each
+	*   reachable trackdir on the new tile creates new node, initializes it
+	*   and adds it to the open list by calling Yapf().AddNewNode(n) */
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
@@ -91,6 +100,7 @@ public:
 			Yapf().AddMultipleNodes(&old_node, F.m_new_tile, F.m_new_td_bits);
 	}
 
+	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 't';}
 
 	static Trackdir stChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs)

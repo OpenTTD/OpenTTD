@@ -45,34 +45,34 @@ extern int _total_pf_time_us;
 template <class Types>
 class CYapfBaseT {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;           ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList NodeList; ///< our node list
 	typedef typename NodeList::Titem Node;     ///< this will be our node type
 	typedef typename Node::Key Key;            ///< key to hash tables
 
 
-	NodeList             m_nodes;         ///< node list multi-container
+	NodeList             m_nodes;              ///< node list multi-container
 protected:
-	Node*                m_pBestDestNode; ///< pointer to the destination node found at last round
-	Node*                m_pBestIntermediateNode;
-	const YapfSettings  *m_settings;
-	int                  m_max_search_nodes;
-	Vehicle*             m_veh;
+	Node*                m_pBestDestNode;      ///< pointer to the destination node found at last round
+	Node*                m_pBestIntermediateNode; ///< here should be node closest to the destination if path not found
+	const YapfSettings  *m_settings;           ///< current settings (_patches.yapf)
+	int                  m_max_search_nodes;   ///< maximum number of nodes we are allowed to visit before we give up
+	Vehicle*             m_veh;                ///< vehicle that we are trying to drive
 
-	int                  m_stats_cost_calcs;
-	int                  m_stats_cache_hits;
-
-public:
-	CPerformanceTimer    m_perf_cost;
-	CPerformanceTimer    m_perf_slope_cost;
-	CPerformanceTimer    m_perf_ts_cost;
-	CPerformanceTimer    m_perf_other_cost;
+	int                  m_stats_cost_calcs;   ///< stats - how many node's costs were calculated
+	int                  m_stats_cache_hits;   ///< stats - how many node's costs were reused from cache
 
 public:
-	int                  m_num_steps;     ///< this is there for debugging purposes (hope it doesn't hurt)
+	CPerformanceTimer    m_perf_cost;          ///< stats - total CPU time of this run
+	CPerformanceTimer    m_perf_slope_cost;    ///< stats - slope calculation CPU time
+	CPerformanceTimer    m_perf_ts_cost;       ///< stats - GetTrackStatus() CPU time
+	CPerformanceTimer    m_perf_other_cost;    ///< stats - other CPU time
 
 public:
-	// default constructor
+	int                  m_num_steps;          ///< this is there for debugging purposes (hope it doesn't hurt)
+
+public:
+	/// default constructor
 	FORCEINLINE CYapfBaseT()
 		: m_pBestDestNode(NULL)
 		, m_pBestIntermediateNode(NULL)
@@ -90,12 +90,15 @@ public:
 	{
 	}
 
+	/// default destructor
 	~CYapfBaseT() {}
 
 protected:
+	/// to access inherited path finder
 	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
+	/// return current settings (can be custom - player based - but later)
 	FORCEINLINE const YapfSettings& PfGetSettings() const
 	{
 		return *m_settings;

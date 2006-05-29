@@ -9,15 +9,19 @@ template <class Types>
 class CYapfFollowShipT
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type
+	typedef typename Node::Key Key;                      ///< key to hash tables
 
 protected:
+	/// to access inherited path finder
 	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
+	/** Called by YAPF to move from the given node to the next tile. For each
+	*   reachable trackdir on the new tile creates new node, initializes it
+	*   and adds it to the open list by calling Yapf().AddNewNode(n) */
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F;
@@ -25,6 +29,7 @@ public:
 			Yapf().AddMultipleNodes(&old_node, F.m_new_tile, F.m_new_td_bits);
 	}
 
+	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 'w';}
 
 	static Trackdir ChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackBits tracks)
@@ -80,14 +85,18 @@ template <class Types>
 class CYapfCostShipT
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Node::Key Key;               ///< key to hash tables
 
 protected:
+	/// to access inherited path finder
 	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
+	/** Called by YAPF to calculate the cost from the origin to the given node.
+	*   Calculates only the cost of given node, adds it to the parent node cost
+	*   and stores the result into Node::m_cost member */
 	FORCEINLINE bool PfCalcCost(Node& n)
 	{
 		// base tile cost depending on distance

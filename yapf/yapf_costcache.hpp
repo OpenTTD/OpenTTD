@@ -11,14 +11,18 @@ template <class Types>
 class CYapfSegmentCostCacheNoneT
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
 
+	/** Called by YAPF to attach cached or local segment cost data to the given node.
+	*   @return true if globally cached data were used or false if local data was used */
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		return false;
 	};
 
+	/** Called by YAPF to flush the cached segment cost data back into cache storage.
+	*   Current cache implementation doesn't use that. */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
 	};
@@ -33,9 +37,9 @@ template <class Types>
 class CYapfSegmentCostCacheLocalT
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Node::Key Key;               ///< key to hash tables
 	typedef typename Node::CachedData CachedData;
 	typedef typename CachedData::Key CacheKey;
 	typedef CArrayT<CachedData> LocalCache;
@@ -43,9 +47,12 @@ public:
 protected:
 	LocalCache      m_local_cache;
 
+	/// to access inherited path finder
 	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
+	/** Called by YAPF to attach cached or local segment cost data to the given node.
+	*   @return true if globally cached data were used or false if local data was used */
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		CacheKey key(n.GetKey());
@@ -53,13 +60,19 @@ public:
 		return false;
 	};
 
+	/** Called by YAPF to flush the cached segment cost data back into cache storage.
+	*   Current cache implementation doesn't use that. */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
 	};
 };
 
 
-
+/** Base class for segment cost cache providers. Contains global counter
+*   of track layout changes and static notification function called whenever
+*   the track layout changes. It is implemented as base class because it needs
+*   to be shared between all rail YAPF types (one shared counter, one notification
+*   function. */
 struct CSegmentCostCacheBase
 {
 	static int   s_rail_change_counter;
@@ -76,7 +89,6 @@ struct CSegmentCostCacheBase
     of the segment (origin tile and exit-dir from this tile).
     Different CYapfCachedCostT types can share the same type of CSegmentCostCacheT.
     Look at CYapfRailSegment (yapf_node_rail.hpp) for the segment example */
-
 template <class Tsegment>
 struct CSegmentCostCacheT
 	: public CSegmentCostCacheBase
@@ -116,7 +128,7 @@ class CYapfSegmentCostCacheGlobalT
 {
 public:
 	typedef CYapfSegmentCostCacheLocalT<Types> Tlocal;
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
 	typedef typename Node::Key Key;    ///< key to hash tables
 	typedef typename Node::CachedData CachedData;
@@ -128,6 +140,7 @@ protected:
 
 	FORCEINLINE CYapfSegmentCostCacheGlobalT() : m_global_cache(stGetGlobalCache()) {};
 
+	/// to access inherited path finder
 	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 	FORCEINLINE static Cache*& stGlobalCachePtr() {static Cache* pC = NULL; return pC;}
@@ -159,6 +172,8 @@ protected:
 	}
 
 public:
+	/** Called by YAPF to attach cached or local segment cost data to the given node.
+	*   @return true if globally cached data were used or false if local data was used */
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		if (!Yapf().CanUseGlobalCache(n)) {
@@ -171,6 +186,8 @@ public:
 		return found;
 	};
 
+	/** Called by YAPF to flush the cached segment cost data back into cache storage.
+	*   Current cache implementation doesn't use that. */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
 	};

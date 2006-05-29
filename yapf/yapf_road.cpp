@@ -10,12 +10,13 @@ template <class Types>
 class CYapfCostRoadT
 {
 public:
-	typedef typename Types::Tpf Tpf;
-	typedef typename Types::TrackFollower TrackFollower;
+	typedef typename Types::Tpf Tpf; ///< pathfinder (derived from THIS class)
+	typedef typename Types::TrackFollower TrackFollower; ///< track follower helper
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
 	typedef typename Node::Key Key;    ///< key to hash tables
 
 protected:
+	/// to access inherited path finder
 	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 	int SlopeCost(TileIndex tile, TileIndex next_tile, Trackdir trackdir)
@@ -62,6 +63,9 @@ protected:
 	}
 
 public:
+	/** Called by YAPF to calculate the cost from the origin to the given node.
+	*   Calculates only the cost of given node, adds it to the parent node cost
+	*   and stores the result into Node::m_cost member */
 	FORCEINLINE bool PfCalcCost(Node& n)
 	{
 		int segment_cost = 0;
@@ -118,19 +122,23 @@ template <class Types>
 class CYapfDestinationAnyDepotRoadT
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type
+	typedef typename Node::Key Key;                      ///< key to hash tables
 
+	/// to access inherited path finder
 	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
+	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
 		bool bDest = IsTileDepotType(n.m_segment_last_tile, TRANSPORT_ROAD);
 		return bDest;
 	}
 
+	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
+	*   adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
 		n.m_estimate = n.m_cost;
@@ -143,10 +151,10 @@ template <class Types>
 class CYapfDestinationTileRoadT
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type
+	typedef typename Node::Key Key;                      ///< key to hash tables
 
 protected:
 	TileIndex    m_destTile;
@@ -160,15 +168,19 @@ public:
 	}
 
 protected:
+	/// to access inherited path finder
 	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
+	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
 		bool bDest = (n.m_segment_last_tile == m_destTile) && ((m_destTrackdirs & TrackdirToTrackdirBits(n.m_segment_last_td)) != TRACKDIR_BIT_NONE);
 		return bDest;
 	}
 
+	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
+	*   adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	inline bool PfCalcEstimate(Node& n)
 	{
 		static int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
@@ -201,16 +213,20 @@ template <class Types>
 class CYapfFollowRoadT
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;                     ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
-	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Types::NodeList::Titem Node;        ///< this will be our node type
+	typedef typename Node::Key Key;                      ///< key to hash tables
 
 protected:
+	/// to access inherited path finder
 	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
 
+	/** Called by YAPF to move from the given node to the next tile. For each
+	*   reachable trackdir on the new tile creates new node, initializes it
+	*   and adds it to the open list by calling Yapf().AddNewNode(n) */
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F;
@@ -218,6 +234,7 @@ public:
 			Yapf().AddMultipleNodes(&old_node, F.m_new_tile, F.m_new_td_bits);
 	}
 
+	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 'r';}
 
 	static Trackdir stChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir)

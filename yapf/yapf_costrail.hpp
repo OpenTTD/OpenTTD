@@ -10,10 +10,10 @@ class CYapfCostRailT
 	, public CostRailSettings
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::TrackFollower TrackFollower;
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Node::Key Key;               ///< key to hash tables
 	typedef typename Node::CachedData CachedData;
 
 protected:
@@ -33,6 +33,7 @@ protected:
 			pen[i] = p0 + i * (p1 + i * p2);
 	}
 
+	/// to access inherited path finder
 	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 public:
@@ -140,6 +141,9 @@ public:
 public:
 	FORCEINLINE void SetMaxCost(int max_cost) {m_max_cost = max_cost;}
 
+	/** Called by YAPF to calculate the cost from the origin to the given node.
+	*   Calculates only the cost of given node, adds it to the parent node cost
+	*   and stores the result into Node::m_cost member */
 	FORCEINLINE bool PfCalcCost(Node& n)
 	{
 		assert(!n.flags_u.flags_s.m_targed_seen);

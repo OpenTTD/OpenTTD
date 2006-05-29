@@ -25,18 +25,22 @@ class CYapfDestinationAnyDepotRailT
 	: public CYapfDestinationRailBase
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Node::Key Key;               ///< key to hash tables
 
+	/// to access inherited path finder
 	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
+	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
 		bool bDest = IsTileDepotType(n.GetLastTile(), TRANSPORT_RAIL);
 		return bDest;
 	}
 
+	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
+	*   adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
 		n.m_estimate = n.m_cost;
@@ -49,15 +53,16 @@ class CYapfDestinationTileOrStationRailT
 	: public CYapfDestinationRailBase
 {
 public:
-	typedef typename Types::Tpf Tpf;
+	typedef typename Types::Tpf Tpf;              ///< the pathfinder class (derived from THIS class)
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
-	typedef typename Node::Key Key;    ///< key to hash tables
+	typedef typename Node::Key Key;               ///< key to hash tables
 
 protected:
 	TileIndex    m_destTile;
 	TrackdirBits m_destTrackdirs;
 	StationID    m_dest_station_id;
 
+	/// to access inherited path finder
 	Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
 	static TileIndex CalcStationCenterTile(StationID station)
@@ -85,6 +90,7 @@ public:
 		CYapfDestinationRailBase::SetDestination(v);
 	}
 
+	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
 		bool bDest;
@@ -99,6 +105,8 @@ public:
 		return bDest;
 	}
 
+	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
+	*   adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
 		static int dg_dir_to_x_offs[] = {-1, 0, 1, 0};
