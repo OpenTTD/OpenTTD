@@ -85,7 +85,7 @@ protected:
 	FORCEINLINE bool QueryNewTileTrackStatus()
 	{
 		CPerfStart perf(*m_pPerf);
-		if (GetTileType(m_new_tile) == MP_RAILWAY && IsPlainRailTile(m_new_tile)) {
+		if (IsRailTT() && GetTileType(m_new_tile) == MP_RAILWAY && IsPlainRailTile(m_new_tile)) {
 			m_new_td_bits = (TrackdirBits)(GetTrackBits(m_new_tile) * 0x101);
 		} else {
 			uint32 ts = GetTileTrackStatus(m_new_tile, TT());
