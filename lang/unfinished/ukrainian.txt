@@ -1094,6 +1094,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Змініть значення
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Одне чи декілька значень інтервалів несумісні за даних умов! Дозволено 5-90% та 30-800 днів
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Використовувати YAPF для кораблів: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Використовувати YAPF для авто: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Використовувати YAPF для поїздів: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Помірний ландшафт
 STR_SUB_ARCTIC_LANDSCAPE                                        :Субарктичний ландшафт

@@ -1158,6 +1158,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Válassz beállítási értéket
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}A lenti alap szervíz intervallum beállítások némelyike/mindegyike inkompatibilis a választott beállítással! Csak 5-90% és 30-800 napig elfogadható.
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}YAPF használata hajóknál: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}YAPF használata közutakon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}YAPF használata vonatokhoz: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :mérsékelt táj
 STR_SUB_ARCTIC_LANDSCAPE                                        :sarkköri táj

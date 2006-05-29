@@ -1094,6 +1094,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Einstellungswert ändern
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Einige oder alle dieser Standardwartungsintervalle sind inkompatibel mit den gewählten Einstellungen! 5-90% und 30-800 Tage sind gültig.
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}BenutzeYAPF für Schiffe: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Benutze YAPF für Fahrzeuge: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Benutze YAPF für Züge: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Gemäßigt
 STR_SUB_ARCTIC_LANDSCAPE                                        :Subarktisch
