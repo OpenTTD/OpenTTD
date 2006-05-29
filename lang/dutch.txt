@@ -1093,6 +1093,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Verander waarde
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Sommige of alle van de standaard reparatie interval(len) hier onder zijn ongeldig met gekozen instelling! 5-90% en 30-800 dagen zijn geldig
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Gebruik YAPF voor schepen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Gebruik YAPF voor wegvoertuigen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Gebruik YAPF voor treinen: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :gematigd landschap
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarctisch landschap

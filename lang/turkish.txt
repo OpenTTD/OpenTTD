@@ -1093,6 +1093,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ayar degerini degistir
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Bazi servis gecikmeleri aralik disinda: %5-%90 veya 30-800 gün arasinda olmali
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Gemiler için YAPF kullan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Arabalar için YAPF kullan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Trenler için YAPF kullan: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :ILIMAN iklim
 STR_SUB_ARCTIC_LANDSCAPE                                        :Soguk iklim
@@ -1111,6 +1114,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetler 
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}iklimi degistir: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Tarihi degistir: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Üretim degerlerini degistir: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Elektrikli trenler normal raylarda da gidebilsin
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Gidiyor -> {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Gidiyor -> {WAYPOINT}, {VELOCITY}
