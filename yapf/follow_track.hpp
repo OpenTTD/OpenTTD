@@ -13,12 +13,12 @@ struct CFollowTrackT : public FollowTrack_t
 {
 	CPerformanceTimer* m_pPerf;
 
-	FORCEINLINE CFollowTrackT(Vehicle* v = NULL, CPerformanceTimer* pPerf = NULL)
+	FORCEINLINE CFollowTrackT(const Vehicle* v = NULL, CPerformanceTimer* pPerf = NULL)
 	{
 		Init(v, pPerf);
 	}
 
-	FORCEINLINE void Init(Vehicle* v, CPerformanceTimer* pPerf)
+	FORCEINLINE void Init(const Vehicle* v, CPerformanceTimer* pPerf)
 	{
 		assert(!IsRailTT() || (v != NULL && v->type == VEH_Train));
 		m_veh = v;

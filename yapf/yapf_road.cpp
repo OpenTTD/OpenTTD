@@ -97,7 +97,7 @@ public:
 			// add min/max speed penalties
 			int min_speed = 0;
 			int max_speed = F.GetSpeedLimit(&min_speed);
-			Vehicle* v = Yapf().GetVehicle();
+			const Vehicle* v = Yapf().GetVehicle();
 			if (max_speed < v->max_speed) segment_cost += 1 * (v->max_speed - max_speed);
 			if (min_speed > v->max_speed) segment_cost += 10 * (min_speed - v->max_speed);
 
@@ -287,6 +287,46 @@ public:
 		return next_trackdir;
 	}
 
+	static uint stDistanceToTile(const Vehicle *v, TileIndex tile)
+	{
+		Tpf pf;
+		return pf.DistanceToTile(v, tile);
+	}
+
+	FORCEINLINE uint DistanceToTile(const Vehicle *v, TileIndex dst_tile)
+	{
+		// handle special case - when current tile is the destination tile
+		if (dst_tile == v->tile) {
+			// distance is zero in this case
+			return 0;
+		}
+
+		// set origin (tile, trackdir)
+		TileIndex src_tile = v->tile;
+		Trackdir src_td = GetVehicleTrackdir(v);
+		Yapf().SetOrigin(src_tile, TrackdirToTrackdirBits(src_td));
+
+		// set destination tile, trackdir
+		//   get available trackdirs on the destination tile
+		uint dest_ts = GetTileTrackStatus(dst_tile, TRANSPORT_ROAD);
+		TrackdirBits dst_td_bits = (TrackdirBits)(dest_ts & TRACKDIR_BIT_MASK);
+		Yapf().SetDestination(dst_tile, dst_td_bits);
+
+		// find the best path
+		Yapf().FindPath(v);
+
+		// if path not found - return distance = UINT_MAX
+		uint dist = UINT_MAX;
+		Node* pNode = &Yapf().GetBestNode();
+		if (pNode != NULL) {
+			// path was found or at least suggested
+			// get the path cost estimate
+			dist = pNode->GetCostEstimate();
+		}
+
+		return dist;
+	}
+
 	static Depot* stFindNearestDepot(Vehicle* v, TileIndex tile, Trackdir td)
 	{
 		Tpf pf;
@@ -347,6 +387,25 @@ Trackdir YapfChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir)
 
 	Trackdir td_ret = pfnChooseRoadTrack(v, tile, enterdir);
 	return td_ret;
+}
+
+uint YapfRoadVehDistanceToTile(const Vehicle* v, TileIndex tile)
+{
+	// default is YAPF type 2
+	typedef uint (*PfnDistanceToTile)(const Vehicle*, TileIndex);
+	PfnDistanceToTile pfnDistanceToTile = &CYapfRoad2::stDistanceToTile; // default: ExitDir, allow 90-deg
+
+	// check if non-default YAPF type should be used
+	if (_patches.yapf.disable_node_optimization)
+		pfnDistanceToTile = &CYapfRoad1::stDistanceToTile; // Trackdir, allow 90-deg
+
+	// measure distance in YAPF units
+	uint dist = pfnDistanceToTile(v, tile);
+	// convert distance to tiles
+	if (dist != UINT_MAX)
+		dist = (dist + 10 - 1) / 10; // TODO: change road YAPF unit from 10 to YAPF_TILE_LENGTH
+
+	return dist;
 }
 
 Depot* YapfFindNearestRoadDepot(const Vehicle *v)

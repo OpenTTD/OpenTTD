@@ -152,7 +152,7 @@ public:
 		int first_tile_cost = 0;
 		int segment_cost = 0;
 		int extra_cost = 0;
-		Vehicle* v = Yapf().GetVehicle();
+		const Vehicle* v = Yapf().GetVehicle();
 
 		// start at n.m_key.m_tile / n.m_key.m_td and walk to the end of segment
 		TileIndex prev_tile      = (n.m_parent != NULL) ? n.m_parent->GetLastTile() : INVALID_TILE;

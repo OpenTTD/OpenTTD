@@ -9,6 +9,8 @@ Trackdir YapfChooseShipTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 Trackdir YapfChooseRoadTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir);
 Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs);
 
+uint YapfRoadVehDistanceToTile(const Vehicle* v, TileIndex tile);
+
 Depot* YapfFindNearestRoadDepot(const Vehicle *v);
 bool YapfFindNearestRailDepotTwoWay(Vehicle *v, int max_distance, int reverse_penalty, TileIndex* depot_tile, bool* reversed);
 
@@ -27,7 +29,7 @@ extern int _aystar_stats_closed_size;
 /** Base struct for track followers. */
 typedef struct FollowTrack_t
 {
-	Vehicle*      m_veh;
+	const Vehicle*      m_veh;
 	TileIndex     m_old_tile;
 	Trackdir      m_old_td;
 	TileIndex     m_new_tile;

@@ -1149,14 +1149,26 @@ found_best_track:;
 
 static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 {
-	NPFFindStationOrTileData fstd;
-	byte trackdir = GetVehicleTrackdir(v);
-	assert(trackdir != 0xFF);
+	uint dist = UINT_MAX;
+	if (_patches.yapf.road_use_yapf) {
+		// use YAPF
+		dist = YapfRoadVehDistanceToTile(v, tile);
+	} else {
+		// use NPF
+		NPFFindStationOrTileData fstd;
+		byte trackdir = GetVehicleTrackdir(v);
+		uint dist = UINT_MAX;
+		assert(trackdir != 0xFF);
 
-	fstd.dest_coords = tile;
-	fstd.station_index = INVALID_STATION; // indicates that the destination is a tile, not a station
+		fstd.dest_coords = tile;
+		fstd.station_index = INVALID_STATION; // indicates that the destination is a tile, not a station
 
-	return NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
+		dist = NPFRouteToStationOrTile(v->tile, trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE).best_path_dist;
+		// change units from NPF_TILE_LENGTH to # of tiles
+		if (dist != UINT_MAX)
+			dist = (dist + NPF_TILE_LENGTH - 1) / NPF_TILE_LENGTH;
+	}
+	return dist;
 }
 
 typedef struct RoadDriveEntry {
@@ -1652,7 +1664,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 						DEBUG(ms, 4) (" ---- stop 0x%X is not reachable, not treating further", rs->xy);
 						continue;
 					}
-					badness = (rs->num_vehicles + 1) * (rs->num_vehicles + 1) + dist / NPF_TILE_LENGTH;
+					badness = (rs->num_vehicles + 1) * (rs->num_vehicles + 1) + dist;
 
 					DEBUG(ms, 4) (" ---- stop 0x%X has %d vehicle%s waiting", rs->xy, rs->num_vehicles, rs->num_vehicles == 1 ? "":"s");
 					DEBUG(ms, 4) (" ---- Distance is %u", dist);
