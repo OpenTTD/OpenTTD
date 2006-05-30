@@ -362,24 +362,33 @@ static int WagonLengthToPixels(int len) {
 
 static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection)
 {
-	int dx = 0;
-	count *= 29;
+	DrawPixelInfo tmp_dpi, *old_dpi;
+	int dx = -(skip * 8) / _traininfo_vehicle_width;
+
+	if (!FillDrawPixelInfo(&tmp_dpi, NULL, x - 1, y - 1, count, 14)) return;
+
+	count = (count * 8) / _traininfo_vehicle_width;
+
+	old_dpi = _cur_dpi;
+	_cur_dpi = &tmp_dpi;
 
 	do {
-		if (--skip < 0) {
-			int width = v->u.rail.cached_veh_length;
+		int width = v->u.rail.cached_veh_length;
 
-			if (WagonLengthToPixels(dx + width) <= count) {
+		if (dx + width > 0) {
+			if (dx <= count) {
 				PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-				DrawSprite(GetTrainImage(v, DIR_W) | pal, x + 14 + WagonLengthToPixels(dx), y + 6 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
+				DrawSprite(GetTrainImage(v, DIR_W) | pal, 15 + WagonLengthToPixels(dx), 7 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 				if (v->index == selection)
-					DrawFrameRect(x - 1 + WagonLengthToPixels(dx), y - 1, x + WagonLengthToPixels(dx + width) - 1, y + 12, 15, FR_BORDERONLY);
+					DrawFrameRect(WagonLengthToPixels(dx), 0, WagonLengthToPixels(dx + width), 13, 15, FR_BORDERONLY);
 			}
-			dx += width;
 		}
+		dx += width;
 
 		v = v->next;
-	} while (WagonLengthToPixels(dx) < count && v != NULL);
+	} while (dx < count && v != NULL);
+
+	_cur_dpi = old_dpi;
 }
 
 static void DrawTrainDepotWindow(Window *w)
@@ -415,7 +424,7 @@ static void DrawTrainDepotWindow(Window *w)
 	num++;
 
 	SetVScrollCount(w, num);
-	SetHScrollCount(w, (hnum + 7) / 8);
+	SetHScrollCount(w, WagonLengthToPixels(hnum));
 
 	/* locate the depot struct */
 	depot = GetDepotByTile(tile);
@@ -433,7 +442,7 @@ static void DrawTrainDepotWindow(Window *w)
 		if (v->type == VEH_Train && IsFrontEngine(v) &&
 				v->tile == tile && v->u.rail.track == 0x80 &&
 				--num < 0 && num >= -w->vscroll.cap) {
-			DrawTrainImage(v, x+21, y, w->hscroll.cap, w->hscroll.pos, WP(w,traindepot_d).sel);
+			DrawTrainImage(v, x+21, y, w->hscroll.cap + 4, w->hscroll.pos, WP(w,traindepot_d).sel);
 			/* Draw the train number */
 			SetDParam(0, v->unitnumber);
 			DrawString(x, y, (v->max_age - 366 < v->age) ? STR_00E3 : STR_00E2, 0);
@@ -454,7 +463,7 @@ static void DrawTrainDepotWindow(Window *w)
 		if (v->type == VEH_Train && IsFreeWagon(v) &&
 				v->tile == tile && v->u.rail.track == 0x80 &&
 				--num < 0 && num >= -w->vscroll.cap) {
-			DrawTrainImage(v, x+50, y, w->hscroll.cap - 1, 0, WP(w,traindepot_d).sel);
+			DrawTrainImage(v, x+50, y, w->hscroll.cap - 29, 0, WP(w,traindepot_d).sel);
 			DrawString(x, y+2, STR_8816, 0);
 
 			/*Draw the train counter */
@@ -523,11 +532,14 @@ found_it:
 	/* either pressed the flag or the number, but only when it's a loco */
 	if (x < 0 && IsFrontEngine(v)) return (x >= -10) ? -2 : -1;
 
-	// skip vehicles that are scrolled off the left side
-	while (v != NULL && skip--) v = v->next;
+	skip = (skip * 8) / _traininfo_vehicle_width;
+	x = (x * 8) / _traininfo_vehicle_width;
+
+	/* Skip vehicles that are scrolled off the list */
+	x += skip;
 
 	/* find the vehicle in this row that was clicked */
-	while (v != NULL && (x -= WagonLengthToPixels(v->u.rail.cached_veh_length)) >= 0) v = v->next;
+	while (v != NULL && (x -= v->u.rail.cached_veh_length) >= 0) v = v->next;
 
 	// if an articulated part was selected, find its parent
 	while (v != NULL && IsArticulatedPart(v)) v = GetPrevVehicleInChain(v);
@@ -749,7 +761,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 	case WE_RESIZE: {
 		/* Update the scroll + matrix */
 		w->vscroll.cap += e->sizing.diff.y / 14;
-		w->hscroll.cap += e->sizing.diff.x / 29;
+		w->hscroll.cap += e->sizing.diff.x;
 		w->widget[6].unkA = (w->vscroll.cap << 8) + 1;
 	} break;
 	}
@@ -795,8 +807,8 @@ void ShowTrainDepotWindow(TileIndex tile)
 	if (w) {
 		w->caption_color = GetTileOwner(w->window_number);
 		w->vscroll.cap = 6;
-		w->hscroll.cap = 10;
-		w->resize.step_width = 29;
+		w->hscroll.cap = 10 * 29;
+		w->resize.step_width = 1;
 		w->resize.step_height = 14;
 		WP(w,traindepot_d).sel = INVALID_VEHICLE;
 		_backup_orders_tile = 0;
@@ -1547,7 +1559,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 	case WE_RESIZE:
 		/* Update the scroll + matrix */
-		w->hscroll.cap += e->sizing.diff.x / 29;
+		w->hscroll.cap += e->sizing.diff.x;
 		w->vscroll.cap += e->sizing.diff.y / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
 		break;
@@ -1581,11 +1593,11 @@ void ShowPlayerTrains(PlayerID player, StationID station)
 	}
 	if (w) {
 		w->caption_color = player;
-		w->hscroll.cap = 10;
+		w->hscroll.cap = 10 * 29;
 		w->vscroll.cap = 7; // maximum number of vehicles shown
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
 		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-		w->resize.step_width = 29;
+		w->resize.step_width = 1;
 		w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); /* Minimum of 4 vehicles */
 	}
 }
