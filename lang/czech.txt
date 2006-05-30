@@ -1150,6 +1150,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavení
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}V¨echny nebo nektere základní intervaly servisu ní¸e nesouhlasí s vybraným nastavením! 5-90 % nebo 30-800 dní jsou platné hodnoty
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Pou¸ívat YAPF pro lode: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Pou¸ívat YAPF pro silnicni vozidla: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Pou¸ívat YAPF ("opet dal¨í pathfinder") pro vlaky: {ORANGE}{STRING1}
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mírného pásma
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktická krajina
@@ -1411,7 +1414,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Prijimani informací o hre..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Prijimani informací o spolecnosti..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" y u} pred námi
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" i u} pred námi
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kB sta¸eno
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odpojit se

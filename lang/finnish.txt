@@ -250,7 +250,7 @@ STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFON
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Rautatieasema
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Lastauslaituri
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Linja-autoasema
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Lentokentt‰/helikopterikentt‰
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Lento-/helikopterikentt‰
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Satama
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Ep‰tasaista maata
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Ruohikkoa
@@ -435,12 +435,12 @@ STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Ikkunan 
 STR_STICKY_BUTTON                                               :{BLACK}Merkitse ikkuna tahmeaksi; 'Sulje kaikki ikkunat'-nappi ei vaikuta tahmeisiin ikkunoihin.
 STR_RESIZE_BUTTON                                               :{BLACK}Napsauta ja ved‰ muuttaaksesi t‰m‰n ikkunan kokoa.
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Siirry tallennusten oletuskansioon napsauttamalla t‰t‰
-STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Tyhjenn‰ ruutuja rakennuksista yms
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Tuhoa ruudulla olevat rakennukset, puut, jne.
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Madalla ruudun kulmausta
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Korota ruudun kulmausta
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Vierityspalkki - luettelon vieritys ylˆs/alas
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Vierityspalkki - luettelon vieritys vasemmalle/oikealle.
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}N‰yt‰ korkeusk‰yr‰t kartalla
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}N‰yt‰ korkeuserot kartalla
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}N‰yt‰ liikennev‰lineet kartalla
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}N‰yt‰ teollisuuus kartalla
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}N‰yt‰ kuljetusreitit kartalla
@@ -524,15 +524,15 @@ STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFON
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
 STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Hypp‰‰ edelliseen raitaan.
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Hypp‰‰ seuraavaan raitaan.
-STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Lopeta musiikin soittaminen.
-STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Aloita musiikin soittaminen.
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Pys‰yt‰ musiikki
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Aloita musiikin soittaminen
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Aseta liukus‰‰timi‰ vet‰m‰ll‰ sopiva ‰‰nenvoimakkuus musiikille ja ‰‰nitehosteille.
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
 STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
-STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Raita{SETX 88}Nimike
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Raita{SETX 88}Nimi
 STR_01E9_SHUFFLE                                                :{TINYFONT}Sekoita
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Ohjelmoi
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Musiikkiohjelman valinta
@@ -542,7 +542,7 @@ STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLAC
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Ohjelma - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Tyhj‰‰
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Tallenna
-STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Nykyinen musiikkiraitaohjelma
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Nykyinen ohjelmointi raidoille
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Valitse 'kaikki raidat'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Valitse 'vanhan tyylin musiikki'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Valitse 'uuden tyylin musiikki'

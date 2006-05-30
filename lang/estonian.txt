@@ -982,6 +982,10 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}’husıidu
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}’husıiduki {COMMA} plaanis on kehtetud jaam
 # end of order system
 
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Rongi automaatne uuendus ebaınnestus {COMMA} (money limit)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Maanteesıiduki automaatne uuendus ebaınnestus {COMMA} (money limit)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Laeva automaatne uuendus ebaınnestus {COMMA} (money limit)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}’husıiduki automaatne uuendus ebaınnestus{COMMA} (money limit)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Rong {COMMA} on liiga pikk peale asendust
 
 STR_CONFIG_PATCHES                                              :{BLACK}Paranduste seaded
@@ -1089,6 +1093,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Muuda seadete v‰‰rtusi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Mıni vıi kıik vaikimisi teeninudsvahemikud on kılbmatud! 5-90% vıi 30-800 p‰eva on lubatud
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Kasuta YAPF'i laevadel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Kasuta YAPF'i autodel: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Kasuta YAPF'i rongidel: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Mııdukas maastik
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktiline maastik
@@ -2446,6 +2453,7 @@ STR_8825_NON_STOP                                               :{BLACK}Peatuset
 STR_8826_GO_TO                                                  :{BLACK}Mine
 STR_8827_FULL_LOAD                                              :{BLACK}T‰is laadung
 STR_8828_UNLOAD                                                 :{BLACK}Lae maha
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - K‰skude Lıpp - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Hooldus
