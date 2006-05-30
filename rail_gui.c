@@ -620,6 +620,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		uint bits;
 		bool newstations = _railstation.newstations;
 		int y_offset;
+		DrawPixelInfo tmp_dpi, *old_dpi;
 
 		if (WP(w,def_d).close) return;
 
@@ -671,11 +672,24 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 		y_offset = newstations ? 90 : 0;
 
-		if (!DrawStationTile(39, 42 + y_offset, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
-			StationPickerDrawSprite(39, 42 + y_offset, _cur_railtype, 2);
+		/* Set up a clipping area for the '/' station preview */
+		if (FillDrawPixelInfo(&tmp_dpi, NULL, 7, 26 + y_offset, 66, 48)) {
+			old_dpi = _cur_dpi;
+			_cur_dpi = &tmp_dpi;
+			if (!DrawStationTile(32, 16, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
+				StationPickerDrawSprite(32, 16, _cur_railtype, 2);
+			}
+			_cur_dpi = old_dpi;
 		}
-		if (!DrawStationTile(107, 42 + y_offset, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {
-			StationPickerDrawSprite(107, 42 + y_offset, _cur_railtype, 3);
+
+		/* Set up a clipping area for the '\' station preview */
+		if (FillDrawPixelInfo(&tmp_dpi, NULL, 75, 26 + y_offset, 66, 48)) {
+			old_dpi = _cur_dpi;
+			_cur_dpi = &tmp_dpi;
+			if (!DrawStationTile(32, 16, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {
+				StationPickerDrawSprite(32, 16, _cur_railtype, 3);
+			}
+			_cur_dpi = old_dpi;
 		}
 
 		DrawStringCentered(74, 15 + y_offset, STR_3002_ORIENTATION, 0);
