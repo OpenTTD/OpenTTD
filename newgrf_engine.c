@@ -241,9 +241,9 @@ enum {
 	AMS_TTDP_FLIGHT_FINAL,
 	AMS_TTDP_FLIGHT_DESCENT,
 	AMS_TTDP_BRAKING,
-	AMS_TTDP_HELI_TAKEOFF_AIRPOPT,
-	AMS_TTDP_HELI_TO_TAKEOFF_AIRPOPT,
-	AMS_TTDP_HELI_LAND_AIRPOPT,
+	AMS_TTDP_HELI_TAKEOFF_AIRPORT,
+	AMS_TTDP_HELI_TO_TAKEOFF_AIRPORT,
+	AMS_TTDP_HELI_LAND_AIRPORT,
 	AMS_TTDP_HELI_TAKEOFF_HELIPORT,
 	AMS_TTDP_HELI_TO_TAKEOFF_HELIPORT,
 	AMS_TTDP_HELI_LAND_HELIPORT,
@@ -267,7 +267,7 @@ static byte MapAircraftMovementState(const Vehicle *v)
 
 			/* This condition only occurs for helicopters, during descent,
 			 * to a landing by the hanger of an international airport. */
-			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPOPT;
+			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPORT;
 
 			/* This condition only occurs for helicopters, before starting descent,
 			 * to a landing by the hanger of an international airport. */
@@ -298,7 +298,7 @@ static byte MapAircraftMovementState(const Vehicle *v)
 
 		case HELIPAD1:
 		case HELIPAD2: // Will only occur for helicopters.
-			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPOPT; // Descending.
+			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPORT; // Descending.
 			if (amdflag & AMED_SLOWTURN)   return AMS_TTDP_FLIGHT_TO_TOWER;   // Still hasn't started descent.
 			return AMS_TTDP_TO_JUNCTION; // On the ground.
 
@@ -317,7 +317,7 @@ static byte MapAircraftMovementState(const Vehicle *v)
 				case AT_LARGE:
 				case AT_METROPOLITAN:
 				case AT_INTERNATIONAL:
-					if (amdflag & AMED_HELI_RAISE) return AMS_TTDP_HELI_TAKEOFF_AIRPOPT;
+					if (amdflag & AMED_HELI_RAISE) return AMS_TTDP_HELI_TAKEOFF_AIRPORT;
 					return AMS_TTDP_TO_JUNCTION;
 
 				case AT_HELIPORT:
@@ -325,7 +325,7 @@ static byte MapAircraftMovementState(const Vehicle *v)
 					return AMS_TTDP_HELI_TAKEOFF_HELIPORT;
 
 				default:
-					return AMS_TTDP_HELI_TAKEOFF_AIRPOPT;
+					return AMS_TTDP_HELI_TAKEOFF_AIRPORT;
 			}
 
 		case FLYING:
@@ -348,7 +348,7 @@ static byte MapAircraftMovementState(const Vehicle *v)
 						return AMS_TTDP_HELI_LAND_HELIPORT;
 
 					default:
-						return AMS_TTDP_HELI_LAND_AIRPOPT;
+						return AMS_TTDP_HELI_LAND_AIRPORT;
 				}
 			}
 			return AMS_TTDP_FLIGHT_TO_TOWER;
