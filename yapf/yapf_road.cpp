@@ -301,10 +301,7 @@ public:
 			return 0;
 		}
 
-		// set origin (tile, trackdir)
-		TileIndex src_tile = v->tile;
-		Trackdir src_td = GetVehicleTrackdir(v);
-		Yapf().SetOrigin(src_tile, TrackdirToTrackdirBits(src_td));
+		if (!SetOriginFromVehiclePos(v)) return UINT_MAX;
 
 		// set destination tile, trackdir
 		//   get available trackdirs on the destination tile
@@ -325,6 +322,21 @@ public:
 		}
 
 		return dist;
+	}
+
+	/** Return true if the valid origin (tile/trackdir) was set from the current vehicle position. */
+	FORCEINLINE bool SetOriginFromVehiclePos(const Vehicle *v)
+	{
+		// set origin (tile, trackdir)
+		TileIndex src_tile = v->tile;
+		Trackdir src_td = GetVehicleTrackdir(v);
+		if ((GetTileTrackStatus(src_tile, TRANSPORT_ROAD) & TrackdirToTrackdirBits(src_td)) == 0) {
+			// sometimes the roadveh is not on the road (it resides on non-existing track)
+			// how should we handle that situation?
+			return false;
+		}
+		Yapf().SetOrigin(src_tile, TrackdirToTrackdirBits(src_td));
+		return true;
 	}
 
 	static Depot* stFindNearestDepot(Vehicle* v, TileIndex tile, Trackdir td)
