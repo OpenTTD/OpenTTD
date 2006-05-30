@@ -1150,9 +1150,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavení
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}V¨echny nebo nektere základní intervaly servisu ní¸e nesouhlasí s vybraným nastavením! 5-90 % nebo 30-800 dní jsou platné hodnoty
-STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Pou¸ívat YAPF pro lode: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Pou¸ívat YAPF pro silnicni vozidla: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Pou¸ívat YAPF ("opet dal¨í pathfinder") pro vlaky: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Pou¸ívat YAPF pro lode: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Pou¸ívat YAPF pro silnicni vozidla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Pou¸ívat YAPF ("opet dal¨í pathfinder") pro vlaky: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mírného pásma
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarktická krajina

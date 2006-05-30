@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Flat land required
 STR_0008_WAITING                                                :{BLACK}Waiting: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING1}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING1}{YELLOW}  (en-route from
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (en-route from
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepts: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepts: {GOLD}
@@ -151,7 +151,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Map - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Game Options
 STR_00B2_MESSAGE                                                :{YELLOW}Message
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Message from {STRING1}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Message from {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Can't do this....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Can't clear this area....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, All rights reserved
@@ -278,12 +278,12 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_013B_OWNED_BY                                               :{WHITE}...owned by {STRING2}
+STR_013B_OWNED_BY                                               :{WHITE}...owned by {STRING}
 STR_013C_CARGO                                                  :{BLACK}Cargo
 STR_013D_INFORMATION                                            :{BLACK}Information
 STR_013E_CAPACITIES                                             :{BLACK}Capacities
 STR_013E_TOTAL_CARGO                                            :{BLACK}Total Cargo
-STR_013F_CAPACITY                                               :{BLACK}Capacity: {LTBLUE}{STRING1}
+STR_013F_CAPACITY                                               :{BLACK}Capacity: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Total cargo (capacity) of this train:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}New Game
@@ -400,7 +400,7 @@ STR_016D_DEC                                                    :Dec
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_0170                                                        :{TINYFONT}{STRING2}-
+STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Pause game
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Save game, quit game, quit
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Display list of company's stations
@@ -462,8 +462,8 @@ STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Land Are
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost to clear: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost to clear: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
-STR_01A7_OWNER                                                  :{BLACK}Owner: {LTBLUE}{STRING1}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Local authority: {LTBLUE}{STRING1}
+STR_01A7_OWNER                                                  :{BLACK}Owner: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Local authority: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :None
 STR_01AA_NAME                                                   :{BLACK}Name
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
@@ -528,13 +528,13 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING1}"
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Track{SETX 88}Title
 STR_01E9_SHUFFLE                                                :{TINYFONT}Shuffle
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Music Program Selection
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING1}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING1}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Track Index
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Clear
@@ -724,7 +724,7 @@ STR_02A3_LARGE                                                  :{BLACK}Large
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Select town size
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Town size:
 
-STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Show last message or news report
 STR_OFF                                                         :Off
 STR_SUMMARY                                                     :Summary
@@ -989,90 +989,90 @@ STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Configur
 
 STR_CONFIG_PATCHES_OFF                                          :Off
 STR_CONFIG_PATCHES_ON                                           :On
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Show vehicle speed in status bar: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Allow removal of more town-owned roads, bridges, etc: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Enable building very long trains: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Enable realistic acceleration for trains: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING1} {LTBLUE} (requires NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Leave station when any cargo is full, if 'full load': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Deliver cargo to a station only when there is a demand: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Allow building very long bridges: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Allow goto depot orders: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Allow constructing raw material producing industries: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Allow multiple similar industries per town: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industries of the same type can be built close to each other: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Always show long date in the status bar: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch compatible nonstop handling: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Show vehicle speed in status bar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Allow building on slopes and coasts: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Allow more realistically sized catchment areas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Allow removal of more town-owned roads, bridges, etc: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Enable building very long trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Enable realistic acceleration for trains: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forbid trains and ships to make 90 deg turns: {ORANGE}{STRING} {LTBLUE} (requires NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Join train stations built next to each other: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Leave station when any cargo is full, if 'full load': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Use improved loading algorithm: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Deliver cargo to a station only when there is a demand: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Allow building very long bridges: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Allow goto depot orders: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Allow constructing raw material producing industries: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Allow multiple similar industries per town: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industries of the same type can be built close to each other: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Always show long date in the status bar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Show signals on the drive side: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Show finances window at the end of the year: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch compatible nonstop handling: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Always allow small airports: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Always allow small airports: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}A train is lost if no progress is made for: {ORANGE}{STRING1} days
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}A train is lost if no progress is made for: {ORANGE}{STRING} days
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}A train is lost if no progress is made for: {ORANGE}disabled
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Review vehicles' orders: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Review vehicles' orders: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :yes, but exclude stopped vehicles
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :of all vehicles
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Warn if a train's income is negative: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehicles never expire: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Warn if a train's income is negative: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Vehicles never expire: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Autorenew vehicle when it gets old
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenew when vehice is {ORANGE}{STRING1}{LTBLUE} months before/after max age
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duration of error message: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Show town population in the town name label: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snow line height: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING1} {RED}Warning: High setting slows game
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autorenew when vehice is {ORANGE}{STRING}{LTBLUE} months before/after max age
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autorenew minimum needed money for renew: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duration of error message: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Show town population in the town name label: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snow line height: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Max aircraft per player: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Max ships per player: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Max aircraft per player: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Max ships per player: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Disable trains for computer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Disable road vehicles for computer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disable aircraft for computer: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disable ships for computer: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Disable trains for computer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Disable road vehicles for computer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Disable aircraft for computer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disable ships for computer: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer (experimental): {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer (experimental): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING1} days/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING1} days/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING1} days/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING1} days/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Default service interval for ships: {ORANGE}disabled
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Enable railroad car speed limits: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Colored news appears in: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Starting date: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}End game in: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Colored news appears in: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Starting date: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}End game in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Enable smooth economy (more, smaller changes)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Allow buying shares from other companies
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING1} tile(s)
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position of main toolbar: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}When dragging place signals every: {ORANGE}{STRING} tile(s)
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Position of main toolbar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Left
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Right
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING1} px
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Window snap radius: {ORANGE}{STRING} px
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Window snap radius: {ORANGE}disabled
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interface
@@ -1099,13 +1099,13 @@ STR_CHEATS_TIP                                                  :{BLACK}Checkbox
 STR_CHEATS_WARNING                                              :{BLACK}Warning! You are about to betray your fellow competitors. Keep in mind that such a disgrace will be remembered for eternity.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Increase money by {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Playing as player: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovables): {ORANGE}{STRING1}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING1}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Build while in pause mode: {ORANGE}{STRING1}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magic bulldozer (remove industries, unmovables): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels may cross each other: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Build while in pause mode: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplanes will not crash (frequently) on small airports: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Switch climate: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING1}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Heading for {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
@@ -1199,8 +1199,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fund Tof
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construct Sugar Mine
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industries
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}){YELLOW} ({COMMA}% transported)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}/{STRING1}){YELLOW} ({COMMA}%/{COMMA}% transported)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transported)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transported)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...too close to another industry
@@ -1210,7 +1210,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Refit tr
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Select type of cargo for train to carry
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Refit train to carry highlighted cargo type
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Can't refit train...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervals are in percents: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervals are in percents: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Welcome to the new AI under development. If you encounter problems, take a screenshot and post it in the forum.
@@ -1420,8 +1420,8 @@ STR_NETWORK_SEND                                                :{BLACK}Send
 ############ end network gui strings
 
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-size of map: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-size of map: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-size of map: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-size of map: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Cost: {CURRENCY}
@@ -1519,7 +1519,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING1}
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Building must be demolished first
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Population: {ORANGE}{COMMA}{BLACK}  Houses: {ORANGE}{COMMA}
@@ -1555,15 +1555,15 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transpor
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidies
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidies on offer for services taking:-
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} from {STRING2} to {STRING2}
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} from {STRING} to {STRING}
 STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}None
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Services already subsidised:-
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} from {STATION} to {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, until {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offer of subsidy expired:{}{}{STRING} from {STRING2} to {STRING2} will now not attract a subsidy.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offer of subsidy expired:{}{}{STRING} from {STRING} to {STRING} will now not attract a subsidy.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidy withdrawn:{}{}{STRING} service from {STATION} to {STATION} is no longer subsidised.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Service subsidy offered:{}{}First {STRING} service from {STRING2} to {STRING2} will attract a year's subsidy from the local authority!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Service subsidy offered:{}{}First {STRING} service from {STRING} to {STRING} will attract a year's subsidy from the local authority!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay 50% extra for the next year!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay double rates for the next year!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay triple rates for the next year!
@@ -1800,7 +1800,7 @@ STR_4829_REQUIRES                                               :{BLACK}Requires
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Production last month:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING1}{BLACK} ({COMMA}% transported)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transported)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Center the main view on industry location
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}New {STRING} under construction near {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}New {STRING} being planted near {TOWN}!
@@ -1880,39 +1880,39 @@ STR_SV_ROADVEH_NAME                                             :Road Vehicle {C
 STR_SV_SHIP_NAME                                                :Ship {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aircraft {COMMA}
 
-STR_SV_STNAME                                                   :{STRING1}
-STR_SV_STNAME_NORTH                                             :{STRING1} North
-STR_SV_STNAME_SOUTH                                             :{STRING1} South
-STR_SV_STNAME_EAST                                              :{STRING1} East
-STR_SV_STNAME_WEST                                              :{STRING1} West
-STR_SV_STNAME_CENTRAL                                           :{STRING1} Central
-STR_SV_STNAME_TRANSFER                                          :{STRING1} Transfer
-STR_SV_STNAME_HALT                                              :{STRING1} Halt
-STR_SV_STNAME_VALLEY                                            :{STRING1} Valley
-STR_SV_STNAME_HEIGHTS                                           :{STRING1} Heights
-STR_SV_STNAME_WOODS                                             :{STRING1} Woods
-STR_SV_STNAME_LAKESIDE                                          :{STRING1} Lakeside
-STR_SV_STNAME_EXCHANGE                                          :{STRING1} Exchange
-STR_SV_STNAME_AIRPORT                                           :{STRING1} Airport
-STR_SV_STNAME_OILFIELD                                          :{STRING1} Oilfield
-STR_SV_STNAME_MINES                                             :{STRING1} Mines
-STR_SV_STNAME_DOCKS                                             :{STRING1} Docks
-STR_SV_STNAME_BUOY_1                                            :{STRING1} Buoy 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1} Buoy 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1} Buoy 3
-STR_SV_STNAME_BUOY_4                                            :{STRING1} Buoy 4
-STR_SV_STNAME_BUOY_5                                            :{STRING1} Buoy 5
-STR_SV_STNAME_BUOY_6                                            :{STRING1} Buoy 6
-STR_SV_STNAME_BUOY_7                                            :{STRING1} Buoy 7
-STR_SV_STNAME_BUOY_8                                            :{STRING1} Buoy 8
-STR_SV_STNAME_BUOY_9                                            :{STRING1} Buoy 9
-STR_SV_STNAME_ANNEXE                                            :{STRING1} Annexe
-STR_SV_STNAME_SIDINGS                                           :{STRING1} Sidings
-STR_SV_STNAME_BRANCH                                            :{STRING1} Branch
-STR_SV_STNAME_UPPER                                             :Upper {STRING1}
-STR_SV_STNAME_LOWER                                             :Lower {STRING1}
-STR_SV_STNAME_HELIPORT                                          :{STRING1} Heliport
-STR_SV_STNAME_FOREST                                            :{STRING1} Forest
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} North
+STR_SV_STNAME_SOUTH                                             :{STRING} South
+STR_SV_STNAME_EAST                                              :{STRING} East
+STR_SV_STNAME_WEST                                              :{STRING} West
+STR_SV_STNAME_CENTRAL                                           :{STRING} Central
+STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
+STR_SV_STNAME_HALT                                              :{STRING} Halt
+STR_SV_STNAME_VALLEY                                            :{STRING} Valley
+STR_SV_STNAME_HEIGHTS                                           :{STRING} Heights
+STR_SV_STNAME_WOODS                                             :{STRING} Woods
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Lakeside
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Exchange
+STR_SV_STNAME_AIRPORT                                           :{STRING} Airport
+STR_SV_STNAME_OILFIELD                                          :{STRING} Oilfield
+STR_SV_STNAME_MINES                                             :{STRING} Mines
+STR_SV_STNAME_DOCKS                                             :{STRING} Docks
+STR_SV_STNAME_BUOY_1                                            :{STRING} Buoy 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Buoy 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Buoy 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Buoy 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Buoy 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Buoy 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Buoy 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Buoy 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Buoy 9
+STR_SV_STNAME_ANNEXE                                            :{STRING} Annexe
+STR_SV_STNAME_SIDINGS                                           :{STRING} Sidings
+STR_SV_STNAME_BRANCH                                            :{STRING} Branch
+STR_SV_STNAME_UPPER                                             :Upper {STRING}
+STR_SV_STNAME_LOWER                                             :Lower {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
+STR_SV_STNAME_FOREST                                            :{STRING} Forest
 
 ############ end of	savegame specific region!
 
@@ -2391,7 +2391,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :maglev locomoti
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Train Depot
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First train arrives at {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING1} (Details)
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Train in the way
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
@@ -2501,7 +2501,7 @@ STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Weight: {WEIGHT_S}{}Speed: {VELOCITY}  Power: {POWER}{}Running Cost: {CURRENCY}/yr{}Capacity: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Broken down
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Weight: {LTBLUE}{WEIGHT_S}  {BLACK}Power: {LTBLUE}{POWER}{BLACK} Max. speed: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
@@ -2532,7 +2532,7 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}New Road
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Build Vehicle
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Can't build road vehicle...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Details)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
 STR_900E_MAX_SPEED                                              :{BLACK}Max. speed: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
@@ -2597,7 +2597,7 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Can't bu
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Ship in the way
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Details)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
 STR_9813_MAX_SPEED                                              :{BLACK}Max. speed: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
@@ -2665,7 +2665,7 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Details)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING2}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Age: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. speed: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit this year: {LTBLUE}{CURRENCY}  (last year: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Reliability: {LTBLUE}{COMMA}%  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
@@ -2677,8 +2677,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aircraft
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aircraft in the way
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Can't stop/start aircraft...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aircraft is in flight
-STR_A019_CAPACITY                                               :{BLACK}Capacity: {LTBLUE}{STRING1}, {STRING1}
-STR_A01A_CAPACITY                                               :{BLACK}Capacity: {LTBLUE}{STRING1}
+STR_A019_CAPACITY                                               :{BLACK}Capacity: {LTBLUE}{STRING}, {STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Capacity: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aircraft must be stopped in hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Can't sell aircraft...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Airport construction
@@ -2717,7 +2717,7 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Refit ai
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Select type of cargo for aircraft to carry
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Refit aircraft to carry highlighted cargo type
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Select cargo type to carry:-
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}New capacity: {GOLD}{STRING1}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}New capacity: {GOLD}{STRING}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Can't refit aircraft...
 STR_GO_TO_AIRPORT_HANGAR                                        :Go to {STATION} Hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Service at {STATION} Hangar
