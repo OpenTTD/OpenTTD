@@ -1735,7 +1735,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 				}
 			} else {
 				SetCustomEngineSprites(engine, GC_DEFAULT, _cur_grffile->spritegroups[groupid]);
-				SetEngineGRF(engine, _cur_grffile->grfid);
+				SetEngineGRF(engine, _cur_grffile);
 				last_engines[i] = engine;
 			}
 		}

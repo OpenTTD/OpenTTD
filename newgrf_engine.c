@@ -10,6 +10,7 @@
 #include "player.h"
 #include "station.h"
 #include "airport.h"
+#include "newgrf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_station.h"
@@ -141,7 +142,7 @@ void UnloadWagonOverrides(void)
 // may appear in future - however it's more convenient to store it like this in
 // memory. --pasky)
 static const SpriteGroup *engine_custom_sprites[TOTAL_NUM_ENGINES][NUM_GLOBAL_CID];
-static uint32 _engine_grf[TOTAL_NUM_ENGINES];
+static const GRFFile *_engine_grf[TOTAL_NUM_ENGINES];
 
 void SetCustomEngineSprites(EngineID engine, byte cargo, const SpriteGroup *group)
 {
@@ -194,16 +195,41 @@ void UnloadRotorOverrideSprites(void)
 	}
 }
 
-void SetEngineGRF(EngineID engine, uint32 grfid)
+
+/**
+ * Tie a GRFFile entry to an engine, to allow us to retrieve GRF parameters
+ * etc during a game.
+ * @param engine Engine ID to tie the GRFFile to.
+ * @param file   Pointer of GRFFile to tie.
+ */
+void SetEngineGRF(EngineID engine, const GRFFile *file)
 {
 	assert(engine < TOTAL_NUM_ENGINES);
-	_engine_grf[engine] = grfid;
+	_engine_grf[engine] = file;
 }
 
-uint32 GetEngineGRFID(EngineID engine)
+
+/**
+ * Retrieve the GRFFile tied to an engine
+ * @param engine Engine ID to retrieve.
+ * @return Pointer to GRFFile.
+ */
+const GRFFile *GetEngineGRF(EngineID engine)
 {
 	assert(engine < TOTAL_NUM_ENGINES);
 	return _engine_grf[engine];
+}
+
+
+/**
+ * Retrieve the GRF ID of the GRFFile tied to an engine
+ * @param engine Engine ID to retrieve.
+ * @return 32 bit GRFID value.
+ */
+uint32 GetEngineGRFID(EngineID engine)
+{
+	assert(engine < TOTAL_NUM_ENGINES);
+	return _engine_grf[engine]->grfid;
 }
 
 

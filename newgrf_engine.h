@@ -26,7 +26,12 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle* v);
 #define GetCustomRotorSprite(v) GetRotorOverrideSprite(v->engine_type, v)
 #define GetCustomRotorIcon(et) GetRotorOverrideSprite(et, NULL)
 
-void SetEngineGRF(EngineID engine, uint32 grfid);
+/* Forward declaration of GRFFile, to avoid unnecessary inclusion of newgrf.h
+ * elsewhere... */
+struct GRFFile;
+
+void SetEngineGRF(EngineID engine, const struct GRFFile *file);
+const struct GRFFile *GetEngineGRF(EngineID engine);
 uint32 GetEngineGRFID(EngineID engine);
 
 uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineID engine, const Vehicle *v);
