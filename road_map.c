@@ -8,6 +8,7 @@
 #include "station.h"
 #include "tunnel_map.h"
 #include "station_map.h"
+#include "depot.h"
 
 
 RoadBits GetAnyRoadBits(TileIndex tile)
@@ -51,6 +52,9 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 
 TrackBits GetAnyRoadTrackBits(TileIndex tile)
 {
-	uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
-	return (byte)(r | (r >> 8));
+	if (IsTileType(tile, MP_STREET) && !IsTileDepotType(tile, TRANSPORT_ROAD)) {
+		uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
+		return (byte)(r | (r >> 8));
+	}
+	return 0;
 }
