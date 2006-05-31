@@ -167,14 +167,15 @@ void TrainConsistChanged(Vehicle* v)
 		if (!IsArticulatedPart(u)) {
 			// check if its a powered wagon
 			CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
+
+			/* Check powered wagon / visual effect callback */
+			if (HASBIT(rvi_u->callbackmask, CBM_WAGON_POWER)) {
+				uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
+
+				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = callback;
+			}
+
 			if ((rvi_v->pow_wag_power != 0) && (rvi_u->flags & RVI_WAGON) && UsesWagonOverride(u)) {
-				if (HASBIT(rvi_u->callbackmask, CBM_WAGON_POWER)) {
-					uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
-
-					if (callback != CALLBACK_FAILED)
-						u->u.rail.cached_vis_effect = callback;
-				}
-
 				if (u->u.rail.cached_vis_effect < 0x40) {
 					/* wagon is powered */
 					SETBIT(u->u.rail.flags, VRF_POWEREDWAGON); // cache 'powered' status
