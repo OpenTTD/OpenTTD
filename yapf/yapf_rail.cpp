@@ -51,7 +51,7 @@ public:
 		// set origin and destination nodes
 		Yapf().SetOrigin(t1, td1, t2, td2, reverse_penalty, true);
 		Yapf().SetDestination(v);
-		Yapf().SetMaxCost(10 * max_distance);
+		Yapf().SetMaxCost(YAPF_TILE_LENGTH * max_distance);
 
 		// find the best path
 		bool bFound = Yapf().FindPath(v);
