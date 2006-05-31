@@ -627,6 +627,12 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				}
 				return count;
 			}
+
+		case 0x7F: { /* Read GRF parameter */
+			const GRFFile *file = GetEngineGRF(v->engine_type);
+			if (parameter >= file->param_end) return 0;
+			return file->param[parameter];
+		}
 	}
 
 	/* General vehicle properties */
