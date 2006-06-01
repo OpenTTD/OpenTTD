@@ -1408,8 +1408,8 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p1  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,  -100                   , -1000000, 1000000, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p2  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,     5                   , -1000000, 1000000, STR_NULL, NULL),
 	// penalties for too long or too short station platforms (TODO: NS flag or higher revision?)
-	SDT_CONDVAR (Patches, yapf.rail_longer_platform_penalty,  SLE_UINT, 28, SL_MAX_VERSION,NS, 0,  10 * YAPF_TILE_LENGTH,        0,   20000, STR_NULL, NULL),
-	SDT_CONDVAR (Patches, yapf.rail_shorter_platform_penalty, SLE_UINT, 28, SL_MAX_VERSION,NS, 0, 100 * YAPF_TILE_LENGTH,        0,   20000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_longer_platform_penalty,  SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   8 * YAPF_TILE_LENGTH,        0,   20000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_shorter_platform_penalty, SLE_UINT, 28, SL_MAX_VERSION,NS, 0,  40 * YAPF_TILE_LENGTH,        0,   20000, STR_NULL, NULL),
 
 	SDT_END()
 };

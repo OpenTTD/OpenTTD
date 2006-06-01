@@ -148,10 +148,10 @@ public:
 		int needed_platform_length = (v->u.rail.cached_total_length + TILE_SIZE - 1) / TILE_SIZE;
 		if (platform_length > needed_platform_length) {
 			// apply penalty for longer platform than needed
-			cost += Yapf().PfGetSettings().rail_longer_platform_penalty * (platform_length - needed_platform_length);
-		} else {
+			cost += Yapf().PfGetSettings().rail_longer_platform_penalty;
+		} else if (needed_platform_length > platform_length) {
 			// apply penalty for shorter platform than needed
-			cost += Yapf().PfGetSettings().rail_shorter_platform_penalty * (needed_platform_length - platform_length);
+			cost += Yapf().PfGetSettings().rail_shorter_platform_penalty;
 		}
 		return cost;
 	}
