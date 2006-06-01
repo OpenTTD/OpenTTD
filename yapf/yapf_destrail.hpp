@@ -35,7 +35,13 @@ public:
 	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
-		bool bDest = IsTileDepotType(n.GetLastTile(), TRANSPORT_RAIL);
+		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
+	}
+
+	/// Called by YAPF to detect if node ends in the desired destination
+	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
+	{
+		bool bDest = IsTileDepotType(tile, TRANSPORT_RAIL);
 		return bDest;
 	}
 
@@ -93,14 +99,20 @@ public:
 	/// Called by YAPF to detect if node ends in the desired destination
 	FORCEINLINE bool PfDetectDestination(Node& n)
 	{
+		return PfDetectDestination(n.GetLastTile(), n.GetLastTrackdir());
+	}
+
+	/// Called by YAPF to detect if node ends in the desired destination
+	FORCEINLINE bool PfDetectDestination(TileIndex tile, Trackdir td)
+	{
 		bool bDest;
 		if (m_dest_station_id != INVALID_STATION) {
-			bDest = IsRailwayStationTile(n.GetLastTile())
-				&& (GetStationIndex(n.GetLastTile()) == m_dest_station_id)
-				&& (GetRailStationTrack(n.GetLastTile()) == TrackdirToTrack(n.GetLastTrackdir()));
+			bDest = IsRailwayStationTile(tile)
+				&& (GetStationIndex(tile) == m_dest_station_id)
+				&& (GetRailStationTrack(tile) == TrackdirToTrack(td));
 		} else {
-			bDest = (n.GetLastTile() == m_destTile)
-				&& ((m_destTrackdirs & TrackdirToTrackdirBits(n.GetLastTrackdir())) != TRACKDIR_BIT_NONE);
+			bDest = (tile == m_destTile)
+				&& ((m_destTrackdirs & TrackdirToTrackdirBits(td)) != TRACKDIR_BIT_NONE);
 		}
 		return bDest;
 	}

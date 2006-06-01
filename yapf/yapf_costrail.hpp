@@ -165,7 +165,7 @@ public:
 
 		RailType rail_type = GetTileRailType(tile, trackdir);
 
-		bool target_seen = false;
+		bool target_seen = Yapf().PfDetectDestination(tile, trackdir);
 
 		while (true) {
 			segment_cost += Yapf().OneTileCost(tile, trackdir);
@@ -177,7 +177,6 @@ public:
 			}
 
 			// finish if we have reached the destination
-			target_seen = Yapf().PfDetectDestination(n);
 			if (target_seen) {
 				break;
 			}
@@ -236,6 +235,8 @@ public:
 			tile = F.m_new_tile;
 			trackdir = new_td;
 			tile_type = GetTileType(tile);
+
+			target_seen = Yapf().PfDetectDestination(tile, trackdir);
 
 			// reversing in depot penalty
 			if (tile == prev_tile) {
