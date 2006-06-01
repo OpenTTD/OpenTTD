@@ -334,7 +334,6 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		if (TrainShouldStop(v, v->tile)) {
 			uint station_length = GetPlatformLength(v->tile, DirToDiagDir(v->direction));
 			int delta_v;
-			DEBUG(misc, 0) ("Length: %d", station_length);
 
 			max_speed = 120;
 
