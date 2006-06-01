@@ -89,7 +89,7 @@ public:
 			if (F.m_new_tile == n.m_key.m_tile && new_td == n.m_key.m_td) return false;
 
 			// if we skipped some tunnel tiles, add their cost
-			segment_cost += 10 * F.m_tunnel_tiles_skipped;
+			segment_cost += 10 * F.m_tiles_skipped;
 
 			// add hilly terrain penalty
 			segment_cost += Yapf().SlopeCost(tile, F.m_new_tile, trackdir);

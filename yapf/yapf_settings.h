@@ -51,6 +51,9 @@ YS_DEF_BEGIN
 	YS_DEF(int32 , rail_look_ahead_signal_p0)  ///< constant in polynomial penalty function
 	YS_DEF(int32 , rail_look_ahead_signal_p1)  ///< constant in polynomial penalty function
 	YS_DEF(int32 , rail_look_ahead_signal_p2)  ///< constant in polynomial penalty function
+
+	YS_DEF(uint32, rail_longer_platform_penalty)  ///< penalty for longer  station platform than train
+	YS_DEF(uint32, rail_shorter_platform_penalty) ///< penalty for shorter station platform than train
 YS_DEF_END;
 
 #undef YS_DEF_BEGIN

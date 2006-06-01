@@ -27,8 +27,8 @@ struct CFollowTrackT : public FollowTrack_t
 		m_new_tile = INVALID_TILE;
 		m_new_td_bits = TRACKDIR_BIT_NONE;
 		m_exitdir = INVALID_DIAGDIR;
-		m_is_tunnel = false;
-		m_tunnel_tiles_skipped = 0;
+		m_is_station = m_is_tunnel = false;
+		m_tiles_skipped = 0;
 	}
 
 	FORCEINLINE static TransportType TT() {return Ttr_type_;}
@@ -57,7 +57,7 @@ struct CFollowTrackT : public FollowTrack_t
 	}
 
 protected:
-	/** Follow the m_exitdir from m_old_tile and fill m_new_tile and m_tunnel_tiles_skipped */
+	/** Follow the m_exitdir from m_old_tile and fill m_new_tile and m_tiles_skipped */
 	FORCEINLINE void FollowTileExit()
 	{
 		// extra handling for tunnels in our direction
@@ -68,17 +68,27 @@ protected:
 				FindLengthOfTunnelResult flotr = FindLengthOfTunnel(m_old_tile, m_exitdir);
 				m_new_tile = flotr.tile;
 				m_is_tunnel = true;
-				m_tunnel_tiles_skipped = flotr.length - 1;
+				m_tiles_skipped = flotr.length - 1;
 				return;
 			}
 			assert(ReverseDiagDir(tunnel_enterdir) == m_exitdir);
 		}
-		// not a tunnel
+		// not a tunnel or station
 		m_is_tunnel = false;
-		m_tunnel_tiles_skipped = 0;
-		// normal tile
+		m_tiles_skipped = 0;
+
+		// normal or station tile
 		TileIndexDiff diff = TileOffsByDir(m_exitdir);
 		m_new_tile = TILE_ADD(m_old_tile, diff);
+
+		// special handling for stations
+		if (IsRailTT() && IsRailwayStationTile(m_new_tile)) {
+			m_is_station = true;
+		} else if (IsRoadTT() && IsRoadStopTile(m_new_tile)) {
+			m_is_station = true;
+		} else {
+			m_is_station = false;
+		}
 	}
 
 	/** stores track status (available trackdirs) for the new tile into m_new_td_bits */
@@ -171,6 +181,21 @@ protected:
 			if (tunnel_enterdir != m_exitdir)
 				return false;
 		}
+
+		// special handling for rail stations - get to the end of platform
+		if (IsRailTT() && m_is_station) {
+			// entered railway station
+			// get platform length
+			uint length = GetPlatformLength(m_new_tile, TrackdirToExitdir(m_old_td));
+			// how big step we must do to get to the last platform tile;
+			m_tiles_skipped = length - 1;
+			// move to the platform end
+			TileIndexDiff diff = TileOffsByDir(m_exitdir);
+			diff *= m_tiles_skipped;
+			m_new_tile = TILE_ADD(m_new_tile, diff);
+			return true;
+		}
+
 		return true;
 	}
 
@@ -184,7 +209,7 @@ protected:
 				m_new_tile = m_old_tile;
 				m_new_td_bits = TrackdirToTrackdirBits(ReverseTrackdir(m_old_td));
 				m_exitdir = exitdir;
-				m_tunnel_tiles_skipped = 0;
+				m_tiles_skipped = 0;
 				m_is_tunnel = false;
 				return true;
 			}

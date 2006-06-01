@@ -138,6 +138,24 @@ public:
 		return cost;
 	}
 
+	FORCEINLINE int PlatformLengthPenalty(int platform_length)
+	{
+		int cost = 0;
+		const Vehicle* v = Yapf().GetVehicle();
+		assert(v != NULL);
+		assert(v->type == VEH_Train);
+		assert(v->u.rail.cached_total_length != 0);
+		int needed_platform_length = (v->u.rail.cached_total_length + TILE_SIZE - 1) / TILE_SIZE;
+		if (platform_length > needed_platform_length) {
+			// apply penalty for longer platform than needed
+			cost += Yapf().PfGetSettings().rail_longer_platform_penalty * (platform_length - needed_platform_length);
+		} else {
+			// apply penalty for shorter platform than needed
+			cost += Yapf().PfGetSettings().rail_shorter_platform_penalty * (needed_platform_length - platform_length);
+		}
+		return cost;
+	}
+
 public:
 	FORCEINLINE void SetMaxCost(int max_cost) {m_max_cost = max_cost;}
 
@@ -245,7 +263,20 @@ public:
 			}
 
 			// if we skipped some tunnel tiles, add their cost
-			segment_cost += YAPF_TILE_LENGTH * F.m_tunnel_tiles_skipped;
+			segment_cost += YAPF_TILE_LENGTH * F.m_tiles_skipped;
+
+			// add penalty for skipped station tiles
+			if (F.m_is_station)
+			{
+				if (target_seen) {
+					// it is our destination station
+					uint platform_length = F.m_tiles_skipped + 1;
+					segment_cost += PlatformLengthPenalty(platform_length);
+				} else {
+					// station is not our destination station, apply penalty for skipped platform tiles
+					segment_cost += Yapf().PfGetSettings().rail_station_penalty * F.m_tiles_skipped;
+				}
+			}
 
 			// add min/max speed penalties
 			int min_speed = 0;

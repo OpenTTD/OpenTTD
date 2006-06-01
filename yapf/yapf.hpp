@@ -13,6 +13,7 @@ EXTERN_C_BEGIN
 #include "../tunnel_map.h"
 #include "../bridge_map.h"
 #include "../bridge.h"
+#include "../station.h"
 #include "../station_map.h"
 #include "../vehicle.h"
 #include "../variables.h"

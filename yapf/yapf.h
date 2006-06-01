@@ -37,7 +37,8 @@ typedef struct FollowTrack_t
 //	TrackdirBits  m_red_td_bits;
 	DiagDirection m_exitdir;
 	bool          m_is_tunnel;
-	int           m_tunnel_tiles_skipped;
+	bool          m_is_station;
+	int           m_tiles_skipped;
 } FollowTrack_t;
 
 /** track followers */
