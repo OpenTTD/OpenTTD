@@ -200,6 +200,7 @@ void AfterLoadStations(void);
 void GetProductionAroundTiles(AcceptedCargo produced, TileIndex tile, int w, int h, int rad);
 void GetAcceptanceAroundTiles(AcceptedCargo accepts, TileIndex tile, int w, int h, int rad);
 uint GetStationPlatforms(const Station *st, TileIndex tile);
+uint GetPlatformLength(TileIndex tile, DiagDirection dir);
 
 
 const DrawTileSprites *GetStationTileLayout(byte gfx);

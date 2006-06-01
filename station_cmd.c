@@ -1255,6 +1255,28 @@ uint GetStationPlatforms(const Station *st, TileIndex tile)
 	return len - 1;
 }
 
+/** Determines the REMAINING length of a platform, starting at (and including)
+  * the given tile.
+  * @param tile the tile from which to start searching. Must be a railway station tile
+  * @param dir The direction in which to search.
+  * @return The platform length
+  */
+uint GetPlatformLength(TileIndex tile, DiagDirection dir)
+{
+	TileIndex start_tile = tile;
+	uint length = 0;
+	assert(IsRailwayStationTile(tile));
+	assert(dir < DIAGDIR_END);
+
+	do {
+		length ++;
+		tile += TileOffsByDir(dir);
+	} while (IsCompatibleTrainStationTile(tile, start_tile));
+
+	return length;
+}
+
+
 static int32 RemoveRailroadStation(Station *st, TileIndex tile, uint32 flags)
 {
 	int w,h;
