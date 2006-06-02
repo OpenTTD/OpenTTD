@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Map - {STRING}
@@ -380,6 +382,7 @@ STR_SORT_BY_VALUE                                               :Value
 STR_SORT_BY_FACILITY                                            :Station type
 STR_SORT_BY_WAITING                                             :Waiting cargo value
 STR_SORT_BY_RATING_MAX                                          :Cargo rating
+STR_NO_WAITING_CARGO                                            :{BLACK}No cargo of any type is waiting
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Select all facilities
 STR_SELECT_ALL_TYPES                                            :{BLACK}Select all cargo types (including no waiting cargo)
 
@@ -795,7 +798,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Paste th
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Currency units
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Currency units selection
+STR_MEASURING_UNITS                                             :{BLACK}Measuring units
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Measuring units selection
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Road vehicles
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Select side of road for vehicles to drive on
@@ -1088,6 +1093,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Change setting value
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Some or all of the default service interval(s) below are incompatible with chosen setting! 5-90% and 30-800 days are valid
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Use YAPF for ships: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Use YAPF for roadvehs: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Use YAPF for trains: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Temperate landscape
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arctic landscape
@@ -1106,6 +1114,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplan
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Switch climate: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Allow electric engines to run on normal rail
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Heading for {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}
@@ -2427,6 +2436,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Train to
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trains can only be altered when stopped inside a depot
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Train{P "" s}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}New Rail Vehicles
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}New Electric Rail Vehicles
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}New Monorail Vehicles
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}New Maglev Vehicles
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Build Vehicle
@@ -2521,6 +2531,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Incompatible rail types
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Road vehicle in the way
@@ -2572,6 +2583,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Road Vehicle Crash!{}Driver dies in fireball after collision with train
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Road Vehicle Crash!{}{COMMA} die in fireball after collision with train
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Can't make vehicle turn around...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Can't turn vehicles consisting of multiple units
 STR_9034_RENAME                                                 :{BLACK}Rename
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Rename road vehicle type
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Rename road vehicle type
@@ -2783,6 +2795,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Preview
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Change custom currency parameter
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
@@ -2816,6 +2829,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Replacin
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL FEATURE {}Switch between engine and car replacement windows.{}Car replacement will only be done if the new car can be refitted into carrying the same type of cargo as the old one. This is checked for each car when the actual replacement takes place.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine is not buildable
 
+STR_ENGINES                                                     :Engines
 STR_WAGONS                                                      :Cars
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
@@ -2824,6 +2838,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign Lis
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Rail Vehicles
+STR_ELRAIL_VEHICLES                                             :Electrified Rail Vehicles
 STR_MONORAIL_VEHICLES                                           :Monorail Vehicles
 STR_MAGLEV_VEHICLES                                             :Maglev Vehicles
 
