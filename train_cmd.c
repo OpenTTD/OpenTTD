@@ -2347,7 +2347,7 @@ bad:;
 static bool ProcessTrainOrder(Vehicle *v)
 {
 	const Order *order;
-	bool result;
+	bool at_waypoint = false;
 
 	switch (v->current_order.type) {
 		case OT_GOTO_DEPOT:
@@ -2366,6 +2366,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 	// check if we've reached the waypoint?
 	if (v->current_order.type == OT_GOTO_WAYPOINT && v->tile == v->dest_tile) {
 		v->cur_order_index++;
+		at_waypoint = true;
 	}
 
 	// check if we've reached a non-stop station while TTDPatch nonstop is enabled..
@@ -2400,29 +2401,28 @@ static bool ProcessTrainOrder(Vehicle *v)
 
 	v->dest_tile = 0;
 
-	result = false;
+	InvalidateVehicleOrder(v);
+
 	switch (order->type) {
 		case OT_GOTO_STATION:
 			if (order->station == v->last_station_visited)
 				v->last_station_visited = INVALID_STATION;
 			v->dest_tile = GetStation(order->station)->xy;
-			result = CheckReverseTrain(v);
 			break;
 
 		case OT_GOTO_DEPOT:
 			v->dest_tile = GetDepot(order->station)->xy;
-			result = CheckReverseTrain(v);
 			break;
 
 		case OT_GOTO_WAYPOINT:
 			v->dest_tile = GetWaypoint(order->station)->xy;
-			result = CheckReverseTrain(v);
 			break;
+
+		default:
+			return false;
 	}
 
-	InvalidateVehicleOrder(v);
-
-	return result;
+	return !at_waypoint && CheckReverseTrain(v);
 }
 
 static void MarkTrainDirty(Vehicle *v)
