@@ -344,7 +344,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 				break;
 
 			case MP_STREET:
-				if (GetRoadTileType(tile) != ROAD_TILE_NORMAL) goto not_valid_below;
+				if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) goto not_valid_below;
 				break;
 
 			case MP_TUNNELBRIDGE:
