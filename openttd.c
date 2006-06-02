@@ -49,6 +49,12 @@
 #include "yapf/yapf.h"
 #include "settings.h"
 
+#include "bridge_map.h"
+#include "clear_map.h"
+#include "rail_map.h"
+#include "road_map.h"
+#include "water_map.h"
+
 #include <stdarg.h>
 
 void GenerateWorld(int mode, uint size_x, uint size_y);
@@ -1256,6 +1262,72 @@ bool AfterLoadGame(void)
 		}
 	}
 
+	if (CheckSavegameVersion(29)) {
+		TileIndex map_end = MapSize();
+		TileIndex tile;
+		Vehicle* v;
+
+		for (tile = 0; tile != map_end; tile++) {
+			if (MayHaveBridgeAbove(tile)) ClearBridgeMiddle(tile);
+			if (IsTileType(tile, MP_TUNNELBRIDGE) &&
+					_m[tile].m5 & 0x80 && // bridge
+					_m[tile].m5 & 0x40) { // middle part
+				Axis axis = (Axis)GB(_m[tile].m5, 0, 1);
+
+				if (_m[tile].m5 & 0x20) { // transport route under bridge?
+					if (GB(_m[tile].m5, 3, 2) == TRANSPORT_RAIL) {
+						MakeRailNormal(
+							tile,
+							GetTileOwner(tile),
+							axis == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X,
+							GetRailType(tile)
+						);
+					} else {
+						uint town = IsTileOwner(tile, OWNER_TOWN) ? ClosestTownFromTile(tile, (uint)-1)->index : 0;
+
+						MakeRoadNormal(
+							tile,
+							GetTileOwner(tile),
+							axis == AXIS_X ? ROAD_Y : ROAD_X,
+							town
+						);
+					}
+				} else {
+					if (GB(_m[tile].m5, 3, 2) == 0) {
+						MakeClear(tile, CLEAR_GRASS, 3);
+					} else {
+						MakeWater(tile);
+					}
+				}
+				SetBridgeMiddle(tile, axis);
+			}
+		}
+
+		FOR_ALL_VEHICLES(v) {
+			if (v->type != VEH_Train && v->type != VEH_Road) continue;
+			if (IsBridgeTile(v->tile)) {
+				DiagDirection dir = GetBridgeRampDirection(v->tile);
+
+				if (dir != DirToDiagDir(v->direction)) continue;
+				switch (dir) {
+					default:
+					case DIAGDIR_NE: if ((v->x_pos & 0xF) !=  0) continue;
+					case DIAGDIR_SE: if ((v->y_pos & 0xF) != 15) continue;
+					case DIAGDIR_SW: if ((v->x_pos & 0xF) != 15) continue;
+					case DIAGDIR_NW: if ((v->y_pos & 0xF) !=  0) continue;
+				}
+			} else if (v->z_pos <= GetSlopeZ(v->x_pos, v->y_pos)) {
+				continue;
+			}
+			if (!IsBridgeTile(v->tile)) v->tile = GetNorthernBridgeEnd(v->tile);
+			if (v->type == VEH_Train) {
+				v->u.rail.track = 0x40;
+			} else {
+				v->u.road.state = 0xFF;
+			}
+		}
+	}
+
 	/* Elrails got added in rev 24 */
 	if (CheckSavegameVersion(24)) {
 		Vehicle* v;
@@ -1306,15 +1378,6 @@ bool AfterLoadGame(void)
 						}
 					} else {
 						if (GetBridgeTransportType(t) == TRANSPORT_RAIL) {
-							if (IsBridgeRamp(t)) {
-								SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
-							} else {
-								SetRailTypeOnBridge(t, UpdateRailType(GetRailTypeOnBridge(t), min_rail));
-							}
-						}
-						if (IsBridgeMiddle(t) &&
-								IsTransportUnderBridge(t) &&
-								GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL) {
 							SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 						}
 					}

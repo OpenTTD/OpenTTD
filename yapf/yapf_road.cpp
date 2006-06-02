@@ -423,7 +423,9 @@ uint YapfRoadVehDistanceToTile(const Vehicle* v, TileIndex tile)
 Depot* YapfFindNearestRoadDepot(const Vehicle *v)
 {
 	TileIndex tile = v->tile;
+#if 0 /* NOT NEEDED, function does/did nothing */
 	if (v->u.road.state == 255) tile = GetVehicleOutOfTunnelTile(v);
+#endif
 	Trackdir trackdir = GetVehicleTrackdir(v);
 	if ((GetTileTrackStatus(tile, TRANSPORT_ROAD) & TrackdirToTrackdirBits(trackdir)) == 0)
 		return NULL;

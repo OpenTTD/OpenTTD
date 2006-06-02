@@ -11,6 +11,7 @@
 #include "viewport.h"
 #include "command.h"
 #include "tunnel_map.h"
+#include "bridge_map.h"
 #include "variables.h"
 #include "table/sprites.h"
 #include "unmovable_map.h"
@@ -259,6 +260,14 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				} else return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 			}
 
+			if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) {
+				byte height = GetBridgeHeight(GetNorthernBridgeEnd(tile), GetBridgeAxis(tile));
+
+				height /= TILE_HEIGHT;
+
+				if (a >= height || b >= height || c >= height || d >= height) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+			}
+
 			if (direction == -1 && IsTunnelInWay(tile, min)) return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
 
 			_terraform_err_tile = 0;
@@ -501,6 +510,7 @@ static void DrawTile_Clear(TileInfo *ti)
 	}
 
 	DrawClearLandFence(ti);
+	DrawBridgeMiddle(ti);
 }
 
 static uint GetSlopeZ_Clear(const TileInfo* ti)

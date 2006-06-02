@@ -20,7 +20,9 @@
 #include "player.h"
 #include "sound.h"
 #include "depot.h"
+#include "bridge.h"
 #include "tunnel_map.h"
+#include "bridge_map.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "yapf/yapf.h"
@@ -313,8 +315,6 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 {
 	TileIndex tile = v->tile;
 
-	if (v->u.road.state == 255) tile = GetVehicleOutOfTunnelTile(v);
-
 	if (_patches.yapf.road_use_yapf) {
 		Depot* ret = YapfFindNearestRoadDepot(v);
 		return ret;
@@ -411,13 +411,18 @@ int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (v->vehstatus & (VS_HIDDEN | VS_STOPPED) ||
+	if (v->vehstatus & VS_STOPPED ||
 			v->u.road.crashed_ctr != 0 ||
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
+			v->u.road.state == 255 ||
+			v->u.road.state == 254 ||
 			v->cur_speed < 5) {
 		return CMD_ERROR;
 	}
+
+	if (IsTunnelTile(v->tile) && DirToDiagDir(v->direction) == GetTunnelDirection(v->tile)) return CMD_ERROR;
+	if (IsBridgeTile(v->tile) && DirToDiagDir(v->direction) == GetBridgeRampDirection(v->tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) v->u.road.reverse_ctr = 180;
 
@@ -485,11 +490,9 @@ static byte SetRoadVehPosition(Vehicle *v, int x, int y)
 	byte new_z, old_z;
 
 	// need this hint so it returns the right z coordinate on bridges.
-	_get_z_hint = v->z_pos;
 	v->x_pos = x;
 	v->y_pos = y;
 	new_z = GetSlopeZ(x, y);
-	_get_z_hint = 0;
 
 	old_z = v->z_pos;
 	v->z_pos = new_z;
@@ -824,6 +827,7 @@ static bool RoadVehAccelerate(Vehicle *v)
 
 	// Clamp
 	spd = min(spd, v->max_speed);
+	if (v->u.road.state == 255) spd = min(spd, SetSpeedLimitOnBridge(v));
 
 	//updates statusbar only if speed have changed to save CPU time
 	if (spd != v->cur_speed) {
@@ -1285,8 +1289,7 @@ static void RoadVehController(Vehicle *v)
 			return;
 		}
 
-		if (IsTunnelTile(gp.new_tile) &&
-				VehicleEnterTile(v, gp.new_tile, gp.x, gp.y) & 4) {
+		if ((IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) && VehicleEnterTile(v, gp.new_tile, gp.x, gp.y) & 4) {
 			//new_dir = RoadGetNewDirection(v, gp.x, gp.y)
 			v->cur_image = GetRoadVehImage(v, v->direction);
 			UpdateRoadVehDeltaXY(v);
@@ -1297,6 +1300,7 @@ static void RoadVehController(Vehicle *v)
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
 		VehiclePositionChanged(v);
+		if (!(v->vehstatus & VS_HIDDEN)) EndVehicleMove(v);
 		return;
 	}
 

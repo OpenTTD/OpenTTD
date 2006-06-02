@@ -1,7 +1,12 @@
-/* $Id */
+/* $Id$ */
 
 KNOWN BUGS / PROBLEMS:
 
+bridges:
+Graphical problems, especially in conjunction with signals and catenary
+
+electrified rails:
 Normal and elrail depots look the same. Use 'X' (transparent buildings)
    to distinguish between them
 Missing curors / icons for construction (currently using the conventional ones)
+
