@@ -50,10 +50,6 @@ static const uint16 _roadveh_full_adder[63] = {
 };
 
 
-static const uint16 _road_veh_fp_ax_or[4] = {
-	0x100,0x200,1,2,
-};
-
 static const uint16 _road_veh_fp_ax_and[4] = {
 	0x1009, 0x16, 0x520, 0x2A00
 };
@@ -1022,20 +1018,27 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
-		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && IsTileOwner(tile, v->owner)) {
-			/* Road depot */
-			bitmask |= _road_veh_fp_ax_or[GetRoadDepotDirection(tile)];
+		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && !IsTileOwner(tile, v->owner)) {
+			/* Road depot owned by another player */
+			bitmask = 0;
 		}
 	} else if (IsTileType(tile, MP_STATION) && IsRoadStopTile(tile)) {
-		if (IsTileOwner(tile, v->owner)) {
+		if (!IsTileOwner(tile, v->owner)) {
+			// different station owner
+			bitmask = 0;
+		} else {
 			/* Our station */
 			RoadStopType rstype = (v->cargo_type == CT_PASSENGERS) ? RS_BUS : RS_TRUCK;
 
-			if (GetRoadStopType(tile) == rstype) {
+			if (GetRoadStopType(tile) != rstype) {
+				// wrong station type
+				bitmask = 0;
+			} else {
+				// proper station type, check if there is free loading bay
 				const RoadStop *rs = GetRoadStopByTile(tile, rstype);
-
-				if (rs != NULL && (_patches.roadveh_queue || GB(rs->status, 0, 2) != 0)) {
-					bitmask |= _road_veh_fp_ax_or[GetRoadStopDir(tile)];
+				if (rs == NULL || (!_patches.roadveh_queue && GB(rs->status, 0, 2) == 0)) {
+					// station is full and RV queuing is off
+					bitmask = 0;
 				}
 			}
 		}
