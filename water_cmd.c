@@ -148,7 +148,7 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 	}
 
 	if (flags & DC_EXEC) {
-		MakeLock(tile, dir);
+		MakeLock(tile, _current_player, dir);
 		MarkTileDirtyByTile(tile);
 		MarkTileDirtyByTile(tile - delta);
 		MarkTileDirtyByTile(tile + delta);
@@ -160,6 +160,8 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 static int32 RemoveShiplift(TileIndex tile, uint32 flags)
 {
 	TileIndexDiff delta = TileOffsByDir(GetLockDirection(tile));
+
+	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 	// make sure no vehicle is on the tile.
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(tile + delta) || !EnsureNoVehicle(tile - delta))
@@ -249,7 +251,11 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		cost += ret;
 
 		if (flags & DC_EXEC) {
-			MakeWater(tile);
+			if (TileHeight(tile) == 0) {
+				MakeWater(tile);
+			} else {
+				MakeCanal(tile, _current_player);
+			}
 			MarkTileDirtyByTile(tile);
 			MarkTilesAroundDirty(tile);
 		}
@@ -278,6 +284,8 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 					!IS_INT_INSIDE(TileY(tile), 1, MapMaxY() - 1)) {
 				return_cmd_error(STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP);
 			}
+
+			if (GetTileOwner(tile) != OWNER_WATER && !CheckTileOwnership(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) DoClearSquare(tile);
 			return _price.clear_water;

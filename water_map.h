@@ -95,6 +95,16 @@ static inline void MakeShore(TileIndex t)
 	_m[t].m5 = 1;
 }
 
+static inline void MakeCanal(TileIndex t, Owner o)
+{
+	SetTileType(t, MP_WATER);
+	SetTileOwner(t, o);
+	_m[t].m2 = 0;
+	_m[t].m3 = 0;
+	_m[t].m4 = 0;
+	_m[t].m5 = 0;
+}
+
 static inline void MakeShipDepot(TileIndex t, Owner o, DepotPart base, Axis a)
 {
 	SetTileType(t, MP_WATER);
@@ -105,23 +115,23 @@ static inline void MakeShipDepot(TileIndex t, Owner o, DepotPart base, Axis a)
 	_m[t].m5 = base + a * 2;
 }
 
-static inline void MakeLockTile(TileIndex t, byte section)
+static inline void MakeLockTile(TileIndex t, Owner o, byte section)
 {
 	SetTileType(t, MP_WATER);
-	SetTileOwner(t, OWNER_WATER);
+	SetTileOwner(t, o);
 	_m[t].m2 = 0;
 	_m[t].m3 = 0;
 	_m[t].m4 = 0;
 	_m[t].m5 = section;
 }
 
-static inline void MakeLock(TileIndex t, DiagDirection d)
+static inline void MakeLock(TileIndex t, Owner o, DiagDirection d)
 {
 	TileIndexDiff delta = TileOffsByDir(d);
 
-	MakeLockTile(t, LOCK_MIDDLE + d);
-	MakeLockTile(t - delta, LOCK_LOWER + d);
-	MakeLockTile(t + delta, LOCK_UPPER + d);
+	MakeLockTile(t, o, LOCK_MIDDLE + d);
+	MakeLockTile(t - delta, o, LOCK_LOWER + d);
+	MakeLockTile(t + delta, o, LOCK_UPPER + d);
 }
 
 #endif
