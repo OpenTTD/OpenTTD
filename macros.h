@@ -126,7 +126,7 @@ static inline int KillFirstBit2x64(int value)
 
 
 #define CHANCE16(a,b) ((uint16)Random() <= (uint16)((65536 * (a)) / (b)))
-#define CHANCE16R(a,b,r) ((uint16)(r=Random()) <= (uint16)((65536 * a) / (b)))
+#define CHANCE16R(a,b,r) ((uint16)(r=Random()) <= (uint16)((65536 * (a)) / (b)))
 #define CHANCE16I(a,b,v) ((uint16)(v) <= (uint16)((65536 * (a)) / (b)))
 
 
