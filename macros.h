@@ -73,7 +73,7 @@ static inline int64 BIGMULS(int32 a, int32 b) {
 #define SETBITS(x,y) ((x) |= (y))
 #define CLRBITS(x,y) ((x) &= ~(y))
 
-#define GENERAL_SPRITE_COLOR(color) ( (color + PALETTE_RECOLOR_START) << PALETTE_SPRITE_START)
+#define GENERAL_SPRITE_COLOR(color) ( ((color) + PALETTE_RECOLOR_START) << PALETTE_SPRITE_START)
 #define PLAYER_SPRITE_COLOR(owner) ( GENERAL_SPRITE_COLOR(_player_colors[owner]))
 #define SPRITE_PALETTE(x) ((x) | PALETTE_MODIFIER_COLOR)
 
@@ -125,9 +125,9 @@ static inline int KillFirstBit2x64(int value)
 #define IS_INT_INSIDE(a,min,max) ((uint)((a)-(min)) < (uint)((max)-(min)))
 
 
-#define CHANCE16(a,b) ((uint16)Random() <= (uint16)((65536 * a) / b))
-#define CHANCE16R(a,b,r) ((uint16)(r=Random()) <= (uint16)((65536 * a) / b))
-#define CHANCE16I(a,b,v) ((uint16)(v) <= (uint16)((65536 * a) / b))
+#define CHANCE16(a,b) ((uint16)Random() <= (uint16)((65536 * (a)) / (b)))
+#define CHANCE16R(a,b,r) ((uint16)(r=Random()) <= (uint16)((65536 * a) / (b)))
+#define CHANCE16I(a,b,v) ((uint16)(v) <= (uint16)((65536 * (a)) / (b)))
 
 
 #define for_each_bit(_i, _b)            \
