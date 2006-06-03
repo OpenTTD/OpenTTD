@@ -141,7 +141,11 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	}
 
-	if (IsBridgeAbove(tile) || IsBridgeAbove(tile - delta) || IsBridgeAbove(tile + delta)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+	if ((MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) ||
+	    (MayHaveBridgeAbove(tile - delta) && IsBridgeAbove(tile - delta)) ||
+	    (MayHaveBridgeAbove(tile + delta) && IsBridgeAbove(tile + delta))) {
+		return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
+	}
 
 	if (flags & DC_EXEC) {
 		MakeLock(tile, dir);
