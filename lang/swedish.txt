@@ -861,8 +861,8 @@ STR_CURR_ITL                                                    :Italienska lire
 STR_CURR_NLG                                                    :Holländska guilder (NLG)
 STR_CURR_NOK                                                    :Norska kronor (NOK)
 STR_CURR_PLN                                                    :Polska Zloty (PLN)
-STR_CURR_ROL                                                    :Rumänsk Leu
-STR_CURR_RUR                                                    :Ryska rubel (rur)
+STR_CURR_ROL                                                    :Rumänsk Leu (ROL)
+STR_CURR_RUR                                                    :Ryska rubel (RUR)
 STR_CURR_SEK                                                    :Svenska kronor (SEK)
 
 STR_CURR_CUSTOM                                                 :Egen...
@@ -1310,7 +1310,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Hämtar spelinfo..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Hämtar företagsinfo..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient(er) före oss
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" er} före oss
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbyte nerladdat hittills
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Frånkopplad
@@ -1706,7 +1706,7 @@ STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Valt nam
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Ta bort markerat sparat spel
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Spara spelet med valt namn
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Välj typ av nytt spel
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Välj scenario (green), förbestämt spel (blue), eller slumpmässigt nytt spel
+STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Välj scenario (grön), förbestämt spel (blå), eller slumpmässigt nytt spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Skapa slumpmässigt nytt spel
 
 ##id 0x4800

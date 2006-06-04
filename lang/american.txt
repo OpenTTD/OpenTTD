@@ -185,7 +185,7 @@ STR_00DB_MAUVE                                                  :Mauve
 STR_00DC_PURPLE                                                 :Purple
 STR_00DD_ORANGE                                                 :Orange
 STR_00DE_BROWN                                                  :Brown
-STR_00DF_GREY                                                   :Grey
+STR_00DF_GREY                                                   :Gray
 STR_00E0_WHITE                                                  :White
 STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Too many vehicles in game
 STR_00E2                                                        :{BLACK}{COMMA}
@@ -268,7 +268,7 @@ STR_012E_CANCEL                                                 :{BLACK}Cancel
 STR_012F_OK                                                     :{BLACK}OK
 STR_0130_RENAME                                                 :{BLACK}Rename
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Too many names defined
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Chosen name in use already
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Chosen name already in use
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
@@ -316,7 +316,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Performance his
 STR_0158_COMPANY_VALUE_GRAPH                                    :Company value graph
 STR_0159_CARGO_PAYMENT_RATES                                    :Cargo payment rates
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Company league table
-STR_PERFORMANCE_DETAIL_MENU                                     :Detail performance rating
+STR_PERFORMANCE_DETAIL_MENU                                     :Detailed performance rating
 ############ range for menu	ends
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD
@@ -326,7 +326,7 @@ STR_015E_QUIT_GAME                                              :Quit game
 STR_015F_QUIT                                                   :Quit
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Are you sure you want to quit this game ?
 STR_0161_QUIT_GAME                                              :{WHITE}Quit Game
-STR_SORT_ORDER_TIP                                              :{BLACK}Select sorting order descending/ascending
+STR_SORT_ORDER_TIP                                              :{BLACK}Select sorting order (descending/ascending)
 STR_SORT_CRITERIA_TIP                                           :{BLACK}Select sorting criteria
 STR_SORT_BY                                                     :{BLACK}Sort by
 
@@ -371,7 +371,7 @@ STR_0174_DISPLAY_MAP                                            :{BLACK}Display 
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Display map, town directory
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Display town directory
 STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Display company finances information
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Display company general information
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Display general company information
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Display graphs
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Display company league table
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Display list of company's trains
@@ -392,7 +392,7 @@ STR_0189                                                        :{BLACK}{SMALLDO
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Can't change servicing interval...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Close window
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Window title - drag this to move window
-STR_STICKY_BUTTON                                               :{BLACK}Mark this window as undeletable for the 'Close All Windows' key
+STR_STICKY_BUTTON                                               :{BLACK}Mark this window as uncloseable for the 'Close All Windows' key
 STR_RESIZE_BUTTON                                               :{BLACK}Click and drag to resize this window
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click here to jump to the current default save/load directory
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demolish buildings etc. on a square of land
@@ -558,8 +558,8 @@ STR_0224                                                        :{BLACK}{UPARROW
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Random Land
 STR_0227_RESET_LAND                                             :{BLACK}Reset Land
-STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Increase size of land area to lower/raise
-STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Decrease size of land area to lower/raise
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Increase area of land to lower/raise
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Decrease area of land to lower/raise
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generate random land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reset landscape
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reset Landscape
@@ -700,7 +700,7 @@ STR_02BE_DEFAULT                                                :Default
 STR_02BF_CUSTOM                                                 :Custom
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Save custom names
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vehicle design names selection
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Save customized vehicle design names to disk
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Save customized vehicle design names
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Game options
@@ -807,7 +807,7 @@ STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...can o
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...can only be built in desert areas
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSED  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot successfully saved to disk as '{STRING}'
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot successfully saved as '{STRING}'
 STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot failed!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Purchase land for future use
@@ -820,7 +820,7 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :English
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :English (Original)
 STR_TOWNNAME_FRENCH                                             :French
 STR_TOWNNAME_GERMAN                                             :German
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :English (Additional)
@@ -838,6 +838,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romanian
 STR_TOWNNAME_CZECH                                              :Czech
 STR_TOWNNAME_SWISS                                              :Swiss
 STR_TOWNNAME_DANISH                                             :Danish
+STR_TOWNNAME_TURKISH                                            :Turkish
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pounds (£)
@@ -904,7 +905,7 @@ STR_NO_ORDERS_VEL                                               :{LTBLUE}No orde
 
 STR_PASSENGERS                                                  :passengers
 STR_BAGS                                                        :bags
-STR_TONS                                                        :tons
+STR_TONS                                                        :tonnes
 STR_LITERS                                                      :liters
 STR_ITEMS                                                       :items
 STR_CRATES                                                      :crates
@@ -930,7 +931,7 @@ STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Road Veh
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Road Vehicle {COMMA} has duplicate orders
 STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Road Vehicle {COMMA} has an invalid station in the orders
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Ship {COMMA} has too few orders in the schedule
-STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ship {COMMA} has void order
+STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ship {COMMA} has a void order
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA} has duplicate orders
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Ship {COMMA} has an invalid station in the orders
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aircraft {COMMA} has too few orders in the schedule
@@ -974,7 +975,7 @@ STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Show fi
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch compatible nonstop handling: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Road vehicle queueing (with quantum effects): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pan window when mouse is at the edge: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow bribing the local authority: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Allow bribing of the local authority: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Nonuniform stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}New global pathfinding (NPF, overrides NTP): {ORANGE}{STRING}
 
@@ -1013,16 +1014,16 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Disable
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Enable new AI (alpha): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Allow AIs in multiplayer (experimental): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Default service interval for trains: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Default service interval for trains: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Default service interval for road vehicles: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Default service interval for road vehicles: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Default service interval for aircraft: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Default service interval for aircraft: {ORANGE}disabled
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Default service interval for ships: {ORANGE}{STRING} days/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Default service interval for ships: {ORANGE}disabled
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Enable wagon speed limits: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Enable railroad car speed limits: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Colored news appears in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Starting date: {ORANGE}{STRING}
@@ -1051,10 +1052,10 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Change setting value
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Some or all of the default service interval(s) below are incompatible with chosen setting! 5-90% and 30-800 days are valid
 
-STR_TEMPERATE_LANDSCAPE                                         :temperate landscape
-STR_SUB_ARCTIC_LANDSCAPE                                        :sub-arctic landscape
-STR_SUB_TROPICAL_LANDSCAPE                                      :sub-tropical landscape
-STR_TOYLAND_LANDSCAPE                                           :toyland landscape
+STR_TEMPERATE_LANDSCAPE                                         :Temperate landscape
+STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arctic landscape
+STR_SUB_TROPICAL_LANDSCAPE                                      :Sub-tropical landscape
+STR_TOYLAND_LANDSCAPE                                           :Toyland landscape
 
 STR_CHEATS                                                      :{WHITE}Cheats
 STR_CHEATS_TIP                                                  :{BLACK}Checkboxes indicate if you have used this cheat before
@@ -1173,7 +1174,7 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Can't re
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervals are in percents: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Change production
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Welcome to this new AI, in progress. You can expect problems. When you do, make a screenshot and post it at the forum. Enjoy!
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Welcome to the new AI under development. If you encounter problems, take a screenshot and post it in the forum.
 TEMP_AI_ACTIVATED                                               :{WHITE}Warning: this new AI is still alpha! Currently, only trucks and busses work!
 TEMP_AI_MULTIPLAYER                                             :{WHITE}Warning: implementation is still experimental (using new AI). Please report any problems to truelight@openttd.org.
 
@@ -1249,10 +1250,10 @@ STR_NETWORK_8_PLAYERS                                           :8 players
 STR_NETWORK_9_PLAYERS                                           :9 players
 STR_NETWORK_10_PLAYERS                                          :10 players
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max companies:
-STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limit the server to a certain amount of companies
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limit the server to a certain number of companies
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max spectators:
-STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limit the server to a certain amount of spectators
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limit the server to a certain number of spectators
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Language spoken:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Other players will know which language is spoken on the server.
@@ -1434,7 +1435,7 @@ STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Build ra
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Build railroad bridge
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Build railroad tunnel
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Toggle build/remove for railroad track and signals
-STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Bridge selection - click on selected bridge to build it
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Bridge selection - click on your prefered bridge to build it
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Select railroad depot orientation
 STR_1021_RAILROAD_TRACK                                         :Railroad track
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Railroad train depot
@@ -1470,7 +1471,7 @@ STR_1814_ROAD                                                   :Road
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Road with streetlights
 STR_1816_TREE_LINED_ROAD                                        :Tree-lined road
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Road vehicle depot
-STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Road/rail level crossing
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Road/rail grade crossing
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Towns
@@ -1485,7 +1486,7 @@ STR_2006_POPULATION                                             :{BLACK}Populati
 STR_2007_RENAME_TOWN                                            :Rename Town
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Can't rename town...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} local authority refuses to allow this
-STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Town names - click on name to center main view on town
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Town names - click on name to center view on town
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Center the main view on town location
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Change town name
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passengers last month: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
@@ -1560,7 +1561,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Fund the construction of new commercial buildings in the town.{}  Cost: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Buy 1 year's exclusive transport rights in town. Town authority will only allow passengers and cargo to use your company's stations.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bribe the local authority to increase your rating, at the risk of a severe penalty if caught.{}  Cost: {CURRENCY}
-STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffic chaos in {TOWN}!{}{}Road rebuilding programme funded by {COMPANY} brings 6 months of misery to motorists!
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Traffic chaos in {TOWN}!{}{}Road rebuilding program funded by {COMPANY} brings 6 months of misery to motorists!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (under construction)
@@ -1771,7 +1772,7 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} production down by 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insect infestation causes havoc at {INDUSTRY}!{}Production down by 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...can only be positioned near edges of map
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} production at {INDUSTRY} goes up by {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} production at {INDUSTRY} increases by {COMMA}%!
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} production at {INDUSTRY} goes down by {COMMA}%!
 
 ##id 0x5000
@@ -1968,7 +1969,7 @@ STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Aircraft 
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Ship Running Costs
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Property Maintenance
 STR_7018_TRAIN_INCOME                                           :{GOLD}Train Income
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Road Vehicles Income
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Road Vehicle Income
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Aircraft Income
 STR_701B_SHIP_INCOME                                            :{GOLD}Ship Income
 STR_701C_LOAN_INTEREST                                          :{GOLD}Loan Interest
@@ -1997,7 +1998,7 @@ STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Select n
 STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Change the company vehicle livery
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Change the president's name
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Change the company name
-STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Click on selected new color scheme
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Click on desired color scheme
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Increase size of loan
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Repay part of loan
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(President)
@@ -2074,7 +2075,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Can't se
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% owned by {COMPANY})
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% owned by {COMPANY}{}   {COMMA}% owned by {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} has been taken over by {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}This company does not trade shares yet...
+STR_7080_PROTECTED                                              :{WHITE}This company is not old enough to trade shares yet...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Steam)
@@ -2406,7 +2407,7 @@ STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Value: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Loading / Unloading
-STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Train must be stopped inside depot
+STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Train must be stopped inside a depot
 STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Can't send train to depot...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}No more space for orders
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Too many orders
@@ -2689,7 +2690,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Your att
 STR_BRIBE_FAILED_2                                              :{WHITE}discovered by a regional investigator
 STR_BUILD_DATE                                                  :{BLACK}Built: {LTBLUE}{DATE_LONG}
 
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Detail performance rating
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailed performance rating
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Detail
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -2707,15 +2708,15 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Money:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Loan:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Amount of vehicles. This includes road vehicles, trains, ships and aircraft.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Amount of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Number of vehicles; this includes road vehicles, trains, ships and aircraft
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Number of station parts. Every part of a station (e.g. train station, bus stop, airport) is counted, even if they are connected to one station.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}The profit of the vehicle with the lowest income (of all vehicles older than 2 years)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Amount of cash made in the month with the lowest profit of the past 12 quarters
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Amount of cash made in the month with the highest profit of the past 12 quarters
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Units of cargo delivered in the past four quarters.
-STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Types of cargo delivered in the last quarter.
-STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Amount of cash on hand
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Do you have a high loan?
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Number of types of cargo delivered in the past quarter.
+STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Amount of money this company has in the bank
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}The amount of money this company has taken on loan
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total points out of possible points
 
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf settings
@@ -2764,8 +2765,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Press to
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Choose the railtype you want to replace engines for
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays which engine the left selected engine is being replaced with, if any
 STR_REPLACE_HELP                                                :{BLACK}This allows you to replace one engine type with another type, when trains of the original type enter a depot
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Wagon removal: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing wagons (starting at the front), if replacing the engine would make the train longer.
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Car removal: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make autoreplace keep the length of a train the same by removing cars (starting at the front), if replacing the engine would make the train longer.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine is not buildable
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}

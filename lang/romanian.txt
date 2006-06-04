@@ -838,6 +838,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romanesti
 STR_TOWNNAME_CZECH                                              :Cehe
 STR_TOWNNAME_SWISS                                              :Elvetian
 STR_TOWNNAME_DANISH                                             :Danezã
+STR_TOWNNAME_TURKISH                                            :Turcã
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Lira sterlina (£)
@@ -860,7 +861,7 @@ STR_CURR_ITL                                                    :Lirã italianã (
 STR_CURR_NLG                                                    :Gulden olandez (NLG)
 STR_CURR_NOK                                                    :Coroanã norvegianã (NOK)
 STR_CURR_PLN                                                    :Zlot (PLN)
-STR_CURR_ROL                                                    :Leu românesc (Lei)
+STR_CURR_ROL                                                    :Leu românesc (ROL)
 STR_CURR_RUR                                                    :Rublã ruseascã (RUR)
 STR_CURR_SEK                                                    :Coroanã suedezã (SEK)
 
@@ -1309,7 +1310,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) In
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Preluare info joc..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Preluare info companie..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client(i) inaintea noastra
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" i} inaintea noastra
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes descarcati pana acum
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Deconectare

@@ -34,7 +34,7 @@ STR_001A_COPPER_ORE                                             :Mineral de Cour
 STR_001B_MAIZE                                                  :Blat de Moro
 STR_001C_FRUIT                                                  :Fruita
 STR_001D_DIAMONDS                                               :Diamants
-STR_001E_FOOD                                                   :Queviures
+STR_001E_FOOD                                                   :Menjar
 STR_001F_PAPER                                                  :Paper
 STR_0020_GOLD                                                   :Or
 STR_0021_WATER                                                  :Aigua
@@ -208,7 +208,7 @@ STR_00F2_300M                                                   :{BLACK}{TINYFON
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Trens
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Vehicles
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Vehicles de carretera
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Vaixells
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeronaus
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rutes de Transport
@@ -218,7 +218,7 @@ STR_00FC_FOREST                                                 :{BLACK}{TINYFON
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Serradora
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Refinería de Petroli
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Granja
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Factoría
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fàbrica
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Impremta
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Pous de Petroli
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Mina de Ferro
@@ -226,7 +226,7 @@ STR_0104_STEEL_MILL                                             :{BLACK}{TINYFON
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banc
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Paperera
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Mina d'Or
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Planta de Manipulació de Queviures
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Planta de Manipulació d'Aliments
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Mina de Diamants
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mina de Coure
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantació de Fruita
@@ -309,7 +309,7 @@ STR_0152_TOWN_DIRECTORY                                         :Directori de Po
 STR_0153_SUBSIDIES                                              :Subvencions
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Gràfic d'aprofitament d'operacions
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Gràfic de benefici operatiu
 STR_0155_INCOME_GRAPH                                           :Gràfic d'ingressos
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Gràfic d'entrega de càrrega
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Gràfic històric de rendiment
@@ -366,7 +366,7 @@ STR_016F                                                        :{TINYFONT}{STRI
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Parar joc
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Desar joc, deixar joc, sortir
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar la llista d'estacions de les empresses
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Mostrar la llista d'estacions de l'empresa
 STR_0174_DISPLAY_MAP                                            :{BLACK}Mostrar mapa
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Mostrar mapa, directori de poblacions
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Mostrar directori de poblacions
@@ -391,7 +391,7 @@ STR_0188                                                        :{BLACK}{SMALLUP
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}No es pot canviar l'interval del manteniment...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Tancar finestra
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Títol de finestra - arrosega aixó per moure la finestra
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Títol de finestra - arrosega açò per moure la finestra
 STR_STICKY_BUTTON                                               :{BLACK}Marca aquesta finestra com a no eliminable per a la clau 'Tancar totes les Finestres'
 STR_RESIZE_BUTTON                                               :{BLACK}Prem i arrosega per canviar el tamany de la finestra
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Prem aqui per anar a l'actual directori de desar/carregar per defecte
@@ -424,7 +424,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informació del terreny
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Cost de neteja: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Cost de neteja: {LTBLUE}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
+STR_01A6_N_A                                                    :N/D
 STR_01A7_OWNER                                                  :{BLACK}Propietari: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Autoritat Local: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ningú
@@ -483,7 +483,7 @@ STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFON
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Volum dels efectes
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
 STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Saltar a la pista anterior de la selecció
-STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}altar a la pista següent de la selecció
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Saltar a la pista següent de la selecció
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Parar la música
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Engegar la música
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Arrosega els controls per establir el volum de la música i els efectes de só
@@ -838,6 +838,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romanès
 STR_TOWNNAME_CZECH                                              :Txec
 STR_TOWNNAME_SWISS                                              :Suís
 STR_TOWNNAME_DANISH                                             :Danès
+STR_TOWNNAME_TURKISH                                            :Turc
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Lliures (£)
@@ -860,8 +861,8 @@ STR_CURR_ITL                                                    :Lires Italianes
 STR_CURR_NLG                                                    :Florins Holandesos (NLG)
 STR_CURR_NOK                                                    :Corones Noruegues (NOK)
 STR_CURR_PLN                                                    :Zloty Polac (PLN)
-STR_CURR_ROL                                                    :Leu Romanès (Lei)
-STR_CURR_RUR                                                    :Rubles Russos (rur)
+STR_CURR_ROL                                                    :Leu Romanès (ROL)
+STR_CURR_RUR                                                    :Rubles Russos (RUR)
 STR_CURR_SEK                                                    :Corones Sueques (SEK)
 
 STR_CURR_CUSTOM                                                 :Personalitzat...
@@ -1249,8 +1250,10 @@ STR_NETWORK_7_PLAYERS                                           :7 jugadors
 STR_NETWORK_8_PLAYERS                                           :8 jugadors
 STR_NETWORK_9_PLAYERS                                           :9 jugadors
 STR_NETWORK_10_PLAYERS                                          :10 jugadors
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Màx companyies:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limitar el servidor a un cert nombre de companyies
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Màx espectadors:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limitar el servidor a un cert nombre de espectadors
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma parlat:
@@ -1307,7 +1310,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Obtenint informació del joc..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Obtenint informació de l'empresa..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client(s) rivals
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} client{P "" s} rivals
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes descarregats aproximadament
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desconnecta

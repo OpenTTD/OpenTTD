@@ -6,7 +6,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Za okrajom mapy
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Prilis blizko okraju mapy
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Prilis blizko okraja mapy
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Mala hotovost - potrebna {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
@@ -155,7 +155,7 @@ STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sprava 
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Takto sa to neda...
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast sa neda vycistit...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Povodny copyright: {COPYRIGHT} 1995 Chris Sawyer, vsetky prava vyhradene
-STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
+STR_00B7_VERSION                                                :{BLACK}OpenTTD verzia {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 team OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK} Preklad - gpsoft
 
@@ -838,6 +838,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumunske
 STR_TOWNNAME_CZECH                                              :Ceske
 STR_TOWNNAME_SWISS                                              :Svajciarske
 STR_TOWNNAME_DANISH                                             :Danske
+STR_TOWNNAME_TURKISH                                            :Turecké
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libry (£)
@@ -860,8 +861,8 @@ STR_CURR_ITL                                                    :Talianske Liry 
 STR_CURR_NLG                                                    :Danske Guldeny (NLG)
 STR_CURR_NOK                                                    :Norske Koruny (NOK)
 STR_CURR_PLN                                                    :Polske Zloty (PLN)
-STR_CURR_ROL                                                    :Rumunske Lei
-STR_CURR_RUR                                                    :Rusle Ruble (rur)
+STR_CURR_ROL                                                    :Rumunske Lei (ROL)
+STR_CURR_RUR                                                    :Rusle Ruble (RUR)
 STR_CURR_SEK                                                    :Svedske Koruny (SEK)
 
 STR_CURR_CUSTOM                                                 :Vlasne...
@@ -1239,6 +1240,15 @@ STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznam
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_0_PLAYERS                                           :0 hracov
 STR_NETWORK_1_PLAYERS                                           :1 hrac
+STR_NETWORK_2_PLAYERS                                           :2 hráci
+STR_NETWORK_3_PLAYERS                                           :3 hráci
+STR_NETWORK_4_PLAYERS                                           :4 hráci
+STR_NETWORK_5_PLAYERS                                           :5 hrácov
+STR_NETWORK_6_PLAYERS                                           :6 hrácov
+STR_NETWORK_7_PLAYERS                                           :7 hrácov
+STR_NETWORK_8_PLAYERS                                           :8 hrácov
+STR_NETWORK_9_PLAYERS                                           :9 hrácov
+STR_NETWORK_10_PLAYERS                                          :10 hrácov
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max. pocet spolocnosti:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Obmedzi maximalny pocet spolocnosti na serveri
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1299,7 +1309,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Re
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Prijem informacii o hre..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Prijem informacii o spolocnosti..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient(i) pred nami
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} klient{P "" e i} pred nami
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kB stiahnute
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odpojit sa
@@ -2405,6 +2415,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nemozno 
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemozno vymazat tebnto prikaz...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemozno zmenit tento prikaz...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}nemozno posuvat vozdlo...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadný stroj v¸dy doprevádza svoj druhý stroj vpredu
 STR_8838_N_A                                                    :Nie je{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nemozno predat automobil...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nemoze najst cestu do depa
@@ -2755,6 +2766,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber ty
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tu sa zobrazuje, za ktoru lokomotiva sa lokomotiva v lavom zozname zamenuje
 STR_REPLACE_HELP                                                :{BLACK}Umoznuje vybrat typ lokomotivy, ktory automaticky sa zameni za iny typ, ak vlaky s takouto lokomotivou sa zastavia v depe
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena masiny vlak predlzila.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popisov

@@ -861,8 +861,8 @@ STR_CURR_ITL                                                    :Lira Italiana (
 STR_CURR_NLG                                                    :Guilda Holandesa (NLG)
 STR_CURR_NOK                                                    :Coroa Norueguesa (NOK)
 STR_CURR_PLN                                                    :Zloty Polaco (PLN)
-STR_CURR_ROL                                                    :Lei Romeno (Lei)
-STR_CURR_RUR                                                    :Rublo Russo (rur)
+STR_CURR_ROL                                                    :Lei Romeno (ROL)
+STR_CURR_RUR                                                    :Rublo Russo (RUR)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
@@ -1310,7 +1310,7 @@ STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) A 
 STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}A obter a informação de jogo..
 STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}A obter a informação da Companhia..
 ############ End of leave-in-this-order
-STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente(s) à sua frente
+STR_NETWORK_CONNECTING_WAITING                                  :{BLACK}{NUM} cliente{P "" s} à sua frente
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kbytes obtidos até agora
 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Desligar
