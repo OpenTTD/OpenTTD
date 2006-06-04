@@ -483,6 +483,7 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
  * @param p1 vehicle ID of the aircraft to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to
+ * - p2 = (bit 8-15) - the new cargo subtype to refit to
  */
 int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -490,6 +491,7 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int pass, mail;
 	int32 cost;
 	CargoID new_cid = GB(p2, 0, 8);
+	byte new_subtype = GB(p2, 8, 8);
 	const AircraftVehicleInfo *avi;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
@@ -538,6 +540,7 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		u->cargo_cap = mail;
 		v->cargo_count = u->cargo_count = 0;
 		v->cargo_type = new_cid;
+		v->cargo_subtype = new_subtype;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();

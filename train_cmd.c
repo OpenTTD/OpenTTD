@@ -1719,11 +1719,14 @@ int32 CmdForceTrainProceed(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Refits a train to the specified cargo type.
  * @param tile unused
  * @param p1 vehicle ID of the train to refit
- * @param p2 the new cargo type to refit to (p2 & 0xFF)
+ * param p2 various bitstuffed elements
+ * - p2 = (bit 0-7) - the new cargo type to refit to
+ * - p2 = (bit 8-15) - the new cargo subtype to refit to
  */
 int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	CargoID new_cid = GB(p2, 0, 8);
+	byte new_subtype = GB(p2, 8, 8);
 	Vehicle *v;
 	int32 cost;
 	uint num;
@@ -1789,8 +1792,10 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					v->cargo_count = 0;
 					v->cargo_type = new_cid;
 					v->cargo_cap = amount;
+					v->cargo_subtype = new_subtype;
 					InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 					InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+					RebuildVehicleLists();
 				}
 			}
 		}

@@ -1030,12 +1030,14 @@ int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 vehicle ID of the ship to refit
  * @param p2 various bitstuffed elements
  * - p2 = (bit 0-7) - the new cargo type to refit to (p2 & 0xFF)
+ * - p2 = (bit 8-15) - the new cargo subtype to refit to
  */
 int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	int32 cost;
-	CargoID new_cid = p2 & 0xFF; //gets the cargo number
+	CargoID new_cid = GB(p2, 0, 8); //gets the cargo number
+	byte new_subtype = GB(p2, 8, 8);
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
@@ -1061,7 +1063,10 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		v->cargo_count = 0;
 		v->cargo_type = new_cid;
+		v->cargo_subtype = new_subtype;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		RebuildVehicleLists();
 	}
 
 	return cost;
