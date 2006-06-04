@@ -477,7 +477,7 @@ static void AiNew_State_LocateRoute(Player *p)
 					if (GetIndustry(p->ainew.temp)->produced_cargo[0] == GetIndustry(p->ainew.from_ic)->accepts_cargo[i]) {
 						// Found a compatbiel industry
 						found = true;
-						max_cargo = GetIndustry(p->ainew.temp)->total_production[0] - GetIndustry(p->ainew.from_ic)->total_transported[0];
+						max_cargo = GetIndustry(p->ainew.temp)->total_production[0] - GetIndustry(p->ainew.temp)->total_transported[0];
 						p->ainew.from_deliver = false;
 						p->ainew.to_deliver = true;
 						break;
