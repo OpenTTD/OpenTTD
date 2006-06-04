@@ -2212,7 +2212,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 		}
 
 		time = NpfEndInterval(perf);
-		DEBUG(yapf, 1)("[YAPF][NPFT] %d us - %d rounds - %d open - %d closed -- ", time, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
+		DEBUG(yapf, 4)("[YAPF][NPFT] %d us - %d rounds - %d open - %d closed -- ", time, 0, _aystar_stats_open_size, _aystar_stats_closed_size);
 	} else {
 		void* perf = NpfBeginInterval();
 		int time = 0;
@@ -2235,7 +2235,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 		}
 
 		time = NpfEndInterval(perf);
-		DEBUG(yapf, 1)("[YAPF][NTPT] %d us - %d rounds - %d open - %d closed -- ", time, 0, 0, 0);
+		DEBUG(yapf, 4)("[YAPF][NTPT] %d us - %d rounds - %d open - %d closed -- ", time, 0, 0, 0);
 	}
 
 #ifdef PF_BENCHMARK

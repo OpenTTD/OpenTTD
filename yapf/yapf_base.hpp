@@ -154,7 +154,7 @@ public:
 #ifdef UNITTEST
 		printf("%c%c%4d-%6d us -%5d rounds -%4d open -%5d closed - CHR %4.1f%% - c/d(%d, %d) - c%d(sc%d, ts%d, o%d) -- \n", bDestFound ? '-' : '!', ttc, veh_idx, t, m_num_steps, m_nodes.OpenCount(), m_nodes.ClosedCount(), cache_hit_ratio, cost, dist, m_perf_cost.Get(1000000), m_perf_slope_cost.Get(1000000), m_perf_ts_cost.Get(1000000), m_perf_other_cost.Get(1000000));
 #else
-		DEBUG(yapf, 1)("[YAPF][YAPF%c]%c%4d- %d us - %d rounds - %d open - %d closed - CHR %4.1f%% - c%d(sc%d, ts%d, o%d) -- ", ttc, bDestFound ? '-' : '!', veh_idx, t, m_num_steps, m_nodes.OpenCount(), m_nodes.ClosedCount(), cache_hit_ratio, cost, dist, m_perf_cost.Get(1000000), m_perf_slope_cost.Get(1000000), m_perf_ts_cost.Get(1000000), m_perf_other_cost.Get(1000000));
+		DEBUG(yapf, 3)("[YAPF][YAPF%c]%c%4d- %d us - %d rounds - %d open - %d closed - CHR %4.1f%% - c%d(sc%d, ts%d, o%d) -- ", ttc, bDestFound ? '-' : '!', veh_idx, t, m_num_steps, m_nodes.OpenCount(), m_nodes.ClosedCount(), cache_hit_ratio, cost, dist, m_perf_cost.Get(1000000), m_perf_slope_cost.Get(1000000), m_perf_ts_cost.Get(1000000), m_perf_other_cost.Get(1000000));
 #endif
 		return bDestFound;
 	}
