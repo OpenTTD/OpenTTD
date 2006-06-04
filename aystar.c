@@ -149,7 +149,8 @@ int AyStarMain_Loop(AyStar *aystar) {
 	// Get the best node from OpenList
 	OpenListNode *current = AyStarMain_OpenList_Pop(aystar);
 	// If empty, drop an error
-	if (current == NULL) return AYSTAR_EMPTY_OPENLIST;
+	if (current == NULL)
+		return AYSTAR_EMPTY_OPENLIST;
 
 	// Check for end node and if found, return that code
 	if (aystar->EndNodeCheck(aystar, current) == AYSTAR_FOUND_END_NODE) {
@@ -236,11 +237,12 @@ int AyStarMain_Main(AyStar *aystar) {
 	else if (r == AYSTAR_LIMIT_REACHED)
 		printf("[AyStar] Exceeded search_nodes, no path found\n");
 #endif
-	if (r != AYSTAR_STILL_BUSY)
+	if (r != AYSTAR_STILL_BUSY) {
 		/* We're done, clean up */
 		_aystar_stats_open_size = aystar->OpenListHash.size;
 		_aystar_stats_closed_size = aystar->ClosedListHash.size;
 		aystar->clear(aystar);
+	}
 
 	// Check result-value
 	if (r == AYSTAR_FOUND_END_NODE) return AYSTAR_FOUND_END_NODE;
