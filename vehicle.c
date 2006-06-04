@@ -1569,8 +1569,8 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} while (v->type == VEH_Train && (v = GetNextVehicle(v)) != NULL);
 
 	if (flags & DC_EXEC && v_front->type == VEH_Train) {
-		// _new_train_id needs to be the front engine due to the callback function
-		_new_train_id = w_front->index;
+		// for trains this needs to be the front engine due to the callback function
+		_new_vehicle_id = w_front->index;
 	}
 	return total_cost;
 }

@@ -316,7 +316,7 @@ static void AiHandleReplaceTrain(Player *p)
 
 		if (!CmdFailed(DoCommand(0, v->index, 2, DC_EXEC, CMD_SELL_RAIL_WAGON)) &&
 			  !CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE)) ) {
-			VehicleID veh = _new_train_id;
+			VehicleID veh = _new_vehicle_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_TRAIN);
 
@@ -345,7 +345,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 
 		if (!CmdFailed(DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH)) &&
 			  !CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH)) ) {
-			VehicleID veh = _new_roadveh_id;
+			VehicleID veh = _new_vehicle_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
 
@@ -374,7 +374,7 @@ static void AiHandleReplaceAircraft(Player *p)
 
 		if (!CmdFailed(DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_AIRCRAFT)) &&
 			  !CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT)) ) {
-			VehicleID veh = _new_aircraft_id;
+			VehicleID veh = _new_vehicle_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);
 
@@ -2382,7 +2382,7 @@ static void AiStateBuildRailVeh(Player *p)
 			if (veh == INVALID_ENGINE) goto handle_nocash;
 			cost = DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE);
 			if (CmdFailed(cost)) goto handle_nocash;
-			p->ai.wagon_list[i] = _new_wagon_id;
+			p->ai.wagon_list[i] = _new_vehicle_id;
 			p->ai.wagon_list[i + 1] = INVALID_VEHICLE;
 			return;
 		}
@@ -2410,7 +2410,7 @@ handle_nocash:
 	// Try to build the locomotive
 	cost = DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE);
 	assert(!CmdFailed(cost));
-	loco_id = _new_train_id;
+	loco_id = _new_vehicle_id;
 
 	// Sell a vehicle if the train is double headed.
 	v = GetVehicle(loco_id);
@@ -3163,7 +3163,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 
 	if (CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH))) return;
 
-	loco_id = _new_roadveh_id;
+	loco_id = _new_vehicle_id;
 
 	for (i = 0; p->ai.order_list_blocks[i] != 0xFF; i++) {
 		const AiBuildRec* aib = &p->ai.src + p->ai.order_list_blocks[i];
@@ -3454,7 +3454,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	 * and offset to the FIRST depot because the AI picks the st->xy tile */
 	tile += ToTileIndexDiff(GetAirport(GetStationByTile(tile)->airport_type)->airport_depots[0]);
 	if (CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) return;
-	loco_id = _new_aircraft_id;
+	loco_id = _new_vehicle_id;
 
 	for (i=0; p->ai.order_list_blocks[i] != 0xFF; i++) {
 		AiBuildRec *aib = (&p->ai.src) + p->ai.order_list_blocks[i];

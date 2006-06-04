@@ -152,7 +152,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (found != NULL) {
 		found = GetLastVehicleInChain(found);
 		// put the new wagon at the end of the loco.
-		DoCommandP(0, _new_wagon_id | (found->index<<16), 0, NULL, CMD_MOVE_RAIL_VEHICLE);
+		DoCommandP(0, _new_vehicle_id | (found->index << 16), 0, NULL, CMD_MOVE_RAIL_VEHICLE);
 		RebuildVehicleLists();
 	}
 }
@@ -163,7 +163,7 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 	if (!success) return;
 
-	v = GetVehicle(_new_train_id);
+	v = GetVehicle(_new_vehicle_id);
 	if (tile == _backup_orders_tile) {
 		_backup_orders_tile = 0;
 		RestoreVehicleOrders(v, _backup_orders_data);
@@ -173,7 +173,7 @@ void CcBuildLoco(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 void CcCloneTrain(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) ShowTrainViewWindow(GetVehicle(_new_train_id));
+	if (success) ShowTrainViewWindow(GetVehicle(_new_vehicle_id));
 }
 
 static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,

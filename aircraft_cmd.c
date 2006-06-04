@@ -260,7 +260,6 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->reliability_spd_dec = e->reliability_spd_dec;
 		v->max_age = e->lifelength * 366;
 
-		_new_aircraft_id = v->index;
 		_new_vehicle_id = v->index;
 
 		v->u.air.pos = MAX_ELEMENTS;

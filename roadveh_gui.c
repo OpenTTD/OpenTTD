@@ -224,7 +224,7 @@ static void ShowRoadVehDetailsWindow(const Vehicle* v)
 
 void CcCloneRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) ShowRoadVehViewWindow(GetVehicle(_new_roadveh_id));
+	if (success) ShowRoadVehViewWindow(GetVehicle(_new_vehicle_id));
 }
 
 static void RoadVehViewWndProc(Window *w, WindowEvent *e)
@@ -430,7 +430,7 @@ void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 	if (!success) return;
 
-	v = GetVehicle(_new_roadveh_id);
+	v = GetVehicle(_new_vehicle_id);
 	if (v->tile == _backup_orders_tile) {
 		_backup_orders_tile = 0;
 		RestoreVehicleOrders(v, _backup_orders_data);

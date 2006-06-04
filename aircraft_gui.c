@@ -76,7 +76,7 @@ static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selectio
 void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		const Vehicle* v = GetVehicle(_new_aircraft_id);
+		const Vehicle* v = GetVehicle(_new_vehicle_id);
 
 		if (v->tile == _backup_orders_tile) {
 			_backup_orders_tile = 0;
@@ -88,7 +88,7 @@ void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	if (success) ShowAircraftViewWindow(GetVehicle(_new_aircraft_id));
+	if (success) ShowAircraftViewWindow(GetVehicle(_new_vehicle_id));
 }
 
 static void NewAircraftWndProc(Window *w, WindowEvent *e)

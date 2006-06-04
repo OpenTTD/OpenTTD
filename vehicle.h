@@ -416,11 +416,6 @@ static inline Vehicle *GetFirstVehicleFromSharedList(Vehicle *v)
 }
 
 // NOSAVE: Return values from various commands.
-VARDEF VehicleID _new_train_id;
-VARDEF VehicleID _new_wagon_id;
-VARDEF VehicleID _new_aircraft_id;
-VARDEF VehicleID _new_ship_id;
-VARDEF VehicleID _new_roadveh_id;
 VARDEF VehicleID _new_vehicle_id;
 VARDEF uint16 _returned_refit_capacity;
 
