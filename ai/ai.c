@@ -85,27 +85,24 @@ int32 AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint pr
 {
 	PlayerID old_lp;
 	int32 res = 0;
-	char *tmp_cmdtext = NULL;
+	const char* tmp_cmdtext;
 
 	/* If you enable DC_EXEC with DC_QUERY_COST you are a really strange
 	 *   person.. should we check for those funny jokes?
 	 */
 
-	/* The test already free _cmd_text in most cases, so let's backup the string, else we have a problem ;) */
-	if (_cmd_text != NULL)
-		tmp_cmdtext = strdup(_cmd_text);
+	/* The test already resets _cmd_text, so backup the pointer */
+	tmp_cmdtext = _cmd_text;
 
 	/* First, do a test-run to see if we can do this */
 	res = DoCommand(tile, p1, p2, flags & ~DC_EXEC, procc);
 	/* The command failed, or you didn't want to execute, or you are quering, return */
 	if ((CmdFailed(res)) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST)) {
-		free(tmp_cmdtext);
 		return res;
 	}
 
-	/* Recover _cmd_text */
-	if (tmp_cmdtext != NULL)
-		_cmd_text = tmp_cmdtext;
+	/* Restore _cmd_text */
+	_cmd_text = tmp_cmdtext;
 
 	/* If we did a DC_EXEC, and the command did not return an error, execute it
 	    over the network */
@@ -130,8 +127,6 @@ int32 AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint pr
 
 	/* Set _local_player back */
 	_local_player = old_lp;
-
-	free(tmp_cmdtext);
 
 	return res;
 }
