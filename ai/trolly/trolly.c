@@ -430,18 +430,24 @@ static void AiNew_State_LocateRoute(Player *p)
 		//   is.
 
 		if (p->ainew.from_type == AI_CITY && p->ainew.tbt == AI_BUS) {
-			int max_cargo = GetTown(p->ainew.from_ic)->max_pass + GetTown(p->ainew.temp)->max_pass;
-			max_cargo -= GetTown(p->ainew.from_ic)->act_pass + GetTown(p->ainew.temp)->act_pass;
+			const Town* town_from = GetTown(p->ainew.from_ic);
+			const Town* town_temp = GetTown(p->ainew.temp);
+			uint distance = DistanceManhattan(town_from->xy, town_temp->xy);
+			int max_cargo;
+
+			max_cargo  = town_from->max_pass + town_temp->max_pass;
+			max_cargo -= town_from->act_pass + town_temp->act_pass;
+
 			// max_cargo is now the amount of cargo we can move between the two cities
 			// If it is more than the distance, we allow it
-			if (DistanceManhattan(GetTown(p->ainew.from_ic)->xy, GetTown(p->ainew.temp)->xy) <= max_cargo * AI_LOCATEROUTE_BUS_CARGO_DISTANCE) {
+			if (distance <= max_cargo * AI_LOCATEROUTE_BUS_CARGO_DISTANCE) {
 				// We found a good city/industry, save the data of it
 				p->ainew.to_ic = p->ainew.temp;
 				p->ainew.state = AI_STATE_FIND_STATION;
 
 				DEBUG(ai,1)(
 					"[AiNew - LocateRoute] Found bus-route of %d tiles long (from %d to %d)",
-					DistanceManhattan(GetTown(p->ainew.from_ic)->xy, GetTown(p->ainew.temp)->xy),
+					distance,
 					p->ainew.from_ic,
 					p->ainew.temp
 				);
@@ -452,17 +458,20 @@ static void AiNew_State_LocateRoute(Player *p)
 				return;
 			}
 		} else if (p->ainew.tbt == AI_TRUCK) {
+			const Industry* ind_from = GetIndustry(p->ainew.from_ic);
+			const Industry* ind_temp = GetIndustry(p->ainew.temp);
 			bool found = false;
 			int max_cargo = 0;
-			int i;
+			uint i;
+
 			// TODO: in max_cargo, also check other cargo (beside [0])
 			// First we check if the from_ic produces cargo that this ic accepts
-			if (GetIndustry(p->ainew.from_ic)->produced_cargo[0] != CT_INVALID && GetIndustry(p->ainew.from_ic)->total_production[0] != 0) {
-				for (i=0;i<3;i++) {
-					if (GetIndustry(p->ainew.temp)->accepts_cargo[i] == CT_INVALID) break;
-					if (GetIndustry(p->ainew.from_ic)->produced_cargo[0] == GetIndustry(p->ainew.temp)->accepts_cargo[i]) {
+			if (ind_from->produced_cargo[0] != CT_INVALID && ind_from->total_production[0] != 0) {
+				for (i = 0; i < lengthof(ind_temp->accepts_cargo); i++) {
+					if (ind_temp->accepts_cargo[i] == CT_INVALID) break;
+					if (ind_from->produced_cargo[0] == ind_temp->accepts_cargo[i]) {
 						// Found a compatbiel industry
-						max_cargo = GetIndustry(p->ainew.from_ic)->total_production[0] - GetIndustry(p->ainew.from_ic)->total_transported[0];
+						max_cargo = ind_from->total_production[0] - ind_from->total_transported[0];
 						found = true;
 						p->ainew.from_deliver = true;
 						p->ainew.to_deliver = false;
@@ -470,14 +479,14 @@ static void AiNew_State_LocateRoute(Player *p)
 					}
 				}
 			}
-			if (!found && GetIndustry(p->ainew.temp)->produced_cargo[0] != CT_INVALID && GetIndustry(p->ainew.temp)->total_production[0] != 0) {
+			if (!found && ind_temp->produced_cargo[0] != CT_INVALID && ind_temp->total_production[0] != 0) {
 				// If not check if the current ic produces cargo that the from_ic accepts
-				for (i=0;i<3;i++) {
-					if (GetIndustry(p->ainew.from_ic)->accepts_cargo[i] == CT_INVALID) break;
-					if (GetIndustry(p->ainew.temp)->produced_cargo[0] == GetIndustry(p->ainew.from_ic)->accepts_cargo[i]) {
+				for (i = 0; i < lengthof(ind_from->accepts_cargo); i++) {
+					if (ind_from->accepts_cargo[i] == CT_INVALID) break;
+					if (ind_temp->produced_cargo[0] == ind_from->accepts_cargo[i]) {
 						// Found a compatbiel industry
 						found = true;
-						max_cargo = GetIndustry(p->ainew.temp)->total_production[0] - GetIndustry(p->ainew.temp)->total_transported[0];
+						max_cargo = ind_temp->total_production[0] - ind_temp->total_transported[0];
 						p->ainew.from_deliver = false;
 						p->ainew.to_deliver = true;
 						break;
@@ -487,19 +496,21 @@ static void AiNew_State_LocateRoute(Player *p)
 			if (found) {
 				// Yeah, they are compatible!!!
 				// Check the length against the amount of goods
-				if (DistanceManhattan(GetIndustry(p->ainew.from_ic)->xy, GetIndustry(p->ainew.temp)->xy) > AI_LOCATEROUTE_TRUCK_MIN_DISTANCE &&
-						DistanceManhattan(GetIndustry(p->ainew.from_ic)->xy, GetIndustry(p->ainew.temp)->xy) <= max_cargo * AI_LOCATEROUTE_TRUCK_CARGO_DISTANCE) {
+				uint distance = DistanceManhattan(ind_from->xy, ind_temp->xy);
+
+				if (distance > AI_LOCATEROUTE_TRUCK_MIN_DISTANCE &&
+						distance <= max_cargo * AI_LOCATEROUTE_TRUCK_CARGO_DISTANCE) {
 					p->ainew.to_ic = p->ainew.temp;
 					if (p->ainew.from_deliver) {
-						p->ainew.cargo = GetIndustry(p->ainew.from_ic)->produced_cargo[0];
+						p->ainew.cargo = ind_from->produced_cargo[0];
 					} else {
-						p->ainew.cargo = GetIndustry(p->ainew.temp)->produced_cargo[0];
+						p->ainew.cargo = ind_temp->produced_cargo[0];
 					}
 					p->ainew.state = AI_STATE_FIND_STATION;
 
 					DEBUG(ai,1)(
 						"[AiNew - LocateRoute] Found truck-route of %d tiles long (from %d to %d)",
-						DistanceManhattan(GetIndustry(p->ainew.from_ic)->xy, GetIndustry(p->ainew.temp)->xy),
+						distance,
 						p->ainew.from_ic,
 						p->ainew.temp
 					);
@@ -564,7 +575,6 @@ static void AiNew_State_FindStation(Player *p)
 	TileIndex new_tile = 0;
 	byte direction = 0;
 	Town *town = NULL;
-	Industry *industry = NULL;
 	assert(p->ainew.state == AI_STATE_FIND_STATION);
 
 	if (p->ainew.from_tile == 0) {
@@ -573,8 +583,7 @@ static void AiNew_State_FindStation(Player *p)
 			town = GetTown(p->ainew.from_ic);
 			tile = town->xy;
 		} else {
-			industry = GetIndustry(p->ainew.from_ic);
-			tile = industry->xy;
+			tile = GetIndustry(p->ainew.from_ic)->xy;
 		}
 	} else if (p->ainew.to_tile == 0) {
 		// Second we scan for a station in the to-city
@@ -582,8 +591,7 @@ static void AiNew_State_FindStation(Player *p)
 			town = GetTown(p->ainew.to_ic);
 			tile = town->xy;
 		} else {
-			industry = GetIndustry(p->ainew.to_ic);
-			tile = industry->xy;
+			tile = GetIndustry(p->ainew.to_ic)->xy;
 		}
 	} else {
 		// Unsupported request
@@ -721,9 +729,11 @@ static void AiNew_State_FindPath(Player *p)
 	if (p->ainew.temp == -1) {
 		// Init path_info
 		if (p->ainew.from_tile == AI_STATION_RANGE) {
+			const Industry* i = GetIndustry(p->ainew.from_ic);
+
 			// For truck routes we take a range around the industry
-			p->ainew.path_info.start_tile_tl = GetIndustry(p->ainew.from_ic)->xy - TileDiffXY(1, 1);
-			p->ainew.path_info.start_tile_br = GetIndustry(p->ainew.from_ic)->xy + TileDiffXY(GetIndustry(p->ainew.from_ic)->width, GetIndustry(p->ainew.from_ic)->height) + TileDiffXY(1, 1);
+			p->ainew.path_info.start_tile_tl = i->xy - TileDiffXY(1, 1);
+			p->ainew.path_info.start_tile_br = i->xy + TileDiffXY(i->width + 1, i->height + 1);
 			p->ainew.path_info.start_direction = p->ainew.from_direction;
 		} else {
 			p->ainew.path_info.start_tile_tl = p->ainew.from_tile;
@@ -732,8 +742,10 @@ static void AiNew_State_FindPath(Player *p)
 		}
 
 		if (p->ainew.to_tile == AI_STATION_RANGE) {
-			p->ainew.path_info.end_tile_tl = GetIndustry(p->ainew.to_ic)->xy - TileDiffXY(1, 1);
-			p->ainew.path_info.end_tile_br = GetIndustry(p->ainew.to_ic)->xy + TileDiffXY(GetIndustry(p->ainew.to_ic)->width, GetIndustry(p->ainew.to_ic)->height) + TileDiffXY(1, 1);
+			const Industry* i = GetIndustry(p->ainew.to_ic);
+
+			p->ainew.path_info.end_tile_tl = i->xy - TileDiffXY(1, 1);
+			p->ainew.path_info.end_tile_br = i->xy + TileDiffXY(i->width + 1, i->height + 1);
 			p->ainew.path_info.end_direction = p->ainew.to_direction;
 		} else {
 			p->ainew.path_info.end_tile_tl = p->ainew.to_tile;
