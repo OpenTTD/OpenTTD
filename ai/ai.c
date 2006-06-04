@@ -32,7 +32,7 @@ static void AI_DequeueCommands(byte player)
 
 		/* Copy the DP back in place */
 		_cmd_text = com->text;
-		DoCommandP(com->tile, com->p1, com->p2, NULL, com->procc);
+		DoCommandP(com->tile, com->p1, com->p2, com->callback, com->procc);
 
 		/* Free item */
 		entry_com = com->next;
@@ -46,7 +46,7 @@ static void AI_DequeueCommands(byte player)
  * Needed for SP; we need to delay DoCommand with 1 tick, because else events
  *  will make infinite loops (AIScript).
  */
-static void AI_PutCommandInQueue(byte player, uint tile, uint32 p1, uint32 p2, uint procc)
+static void AI_PutCommandInQueue(PlayerID player, TileIndex tile, uint32 p1, uint32 p2, uint procc, CommandCallback* callback)
 {
 	AICommand *com;
 
@@ -68,6 +68,7 @@ static void AI_PutCommandInQueue(byte player, uint tile, uint32 p1, uint32 p2, u
 	com->p1    = p1;
 	com->p2    = p2;
 	com->procc = procc;
+	com->callback = callback;
 	com->next  = NULL;
 	com->text  = NULL;
 
@@ -81,7 +82,7 @@ static void AI_PutCommandInQueue(byte player, uint tile, uint32 p1, uint32 p2, u
 /**
  * Executes a raw DoCommand for the AI.
  */
-int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
+int32 AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc, CommandCallback* callback)
 {
 	PlayerID old_lp;
 	int32 res = 0;
@@ -122,12 +123,12 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 	/* Send the command */
 	if (_networking)
 		/* Network is easy, send it to his handler */
-		NetworkSend_Command(tile, p1, p2, procc, NULL);
+		NetworkSend_Command(tile, p1, p2, procc, callback);
 	else
 #endif
 		/* If we execute BuildCommands directly in SP, we have a big problem with events
 		 *  so we need to delay is for 1 tick */
-		AI_PutCommandInQueue(_current_player, tile, p1, p2, procc);
+		AI_PutCommandInQueue(_current_player, tile, p1, p2, procc, callback);
 
 	/* Set _local_player back */
 	_local_player = old_lp;
@@ -138,6 +139,13 @@ int32 AI_DoCommand(uint tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 
 	return res;
 }
+
+
+int32 AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
+{
+	return AI_DoCommandCc(tile, p1, p2, flags, procc, NULL);
+}
+
 
 /**
  * Run 1 tick of the AI. Don't overdo it, keep it realistic.

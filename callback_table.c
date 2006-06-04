@@ -53,6 +53,8 @@ CommandCallback CcBuildWagon;
 CommandCallback CcBuildLoco;
 CommandCallback CcCloneTrain;
 
+CommandCallback CcAI;
+
 CommandCallback *_callback_table[] = {
 	/* 0x00 */ NULL,
 	/* 0x01 */ CcBuildAircraft,
@@ -79,6 +81,7 @@ CommandCallback *_callback_table[] = {
 	/* 0x16 */ CcCloneRoadVeh,
 	/* 0x17 */ CcCloneShip,
 	/* 0x18 */ CcCloneTrain,
+	/* 0x19 */ CcAI
 };
 
 const int _callback_table_count = lengthof(_callback_table);
