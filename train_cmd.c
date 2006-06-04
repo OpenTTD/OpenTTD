@@ -167,7 +167,7 @@ void TrainConsistChanged(Vehicle* v)
 			CLRBIT(u->u.rail.flags, VRF_POWEREDWAGON);
 
 			/* Check powered wagon / visual effect callback */
-			if (HASBIT(rvi_u->callbackmask, CBM_WAGON_POWER)) {
+			if (HASBIT(EngInfo(u->engine_type)->callbackmask, CBM_WAGON_POWER)) {
 				uint16 callback = GetVehicleCallback(CBID_TRAIN_WAGON_POWER, 0, 0, u->engine_type, u);
 
 				if (callback != CALLBACK_FAILED) u->u.rail.cached_vis_effect = callback;
@@ -194,10 +194,10 @@ void TrainConsistChanged(Vehicle* v)
 
 		// check the vehicle length (callback)
 		veh_len = CALLBACK_FAILED;
-		if (HASBIT(rvi_u->callbackmask, CBM_VEHICLE_LENGTH))
+		if (HASBIT(EngInfo(u->engine_type)->callbackmask, CBM_VEHICLE_LENGTH)) {
 			veh_len = GetVehicleCallback(CBID_TRAIN_VEHICLE_LENGTH, 0, 0, u->engine_type, u);
-		if (veh_len == CALLBACK_FAILED)
-			veh_len = rvi_u->shorten_factor;
+		}
+		if (veh_len == CALLBACK_FAILED) veh_len = rvi_u->shorten_factor;
 		veh_len = clamp(veh_len, 0, u->next == NULL ? 7 : 5); // the clamp on vehicles not the last in chain is stricter, as too short wagons can break the 'follow next vehicle' code
 		u->u.rail.cached_veh_length = 8 - veh_len;
 		v->u.rail.cached_total_length += u->u.rail.cached_veh_length;
@@ -474,12 +474,12 @@ void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	DrawSprite(image | image_ormod, x, y);
 }
 
-static uint CountArticulatedParts(const RailVehicleInfo *rvi, EngineID engine_type)
+static uint CountArticulatedParts(EngineID engine_type)
 {
 	uint16 callback;
 	uint i;
 
-	if (!HASBIT(rvi->callbackmask, CBM_ARTIC_ENGINE)) return 0;
+	if (!HASBIT(EngInfo(engine_type)->callbackmask, CBM_ARTIC_ENGINE)) return 0;
 
 	for (i = 1; i < 10; i++) {
 		callback = GetVehicleCallback(CBID_TRAIN_ARTIC_ENGINE, i, 0, engine_type, NULL);
@@ -489,7 +489,7 @@ static uint CountArticulatedParts(const RailVehicleInfo *rvi, EngineID engine_ty
 	return i - 1;
 }
 
-static void AddArticulatedParts(const RailVehicleInfo *rvi, Vehicle **vl)
+static void AddArticulatedParts(Vehicle **vl)
 {
 	const RailVehicleInfo *rvi_artic;
 	EngineID engine_type;
@@ -499,7 +499,7 @@ static void AddArticulatedParts(const RailVehicleInfo *rvi, Vehicle **vl)
 	bool flip_image;
 	uint i;
 
-	if (!HASBIT(rvi->callbackmask, CBM_ARTIC_ENGINE)) return;
+	if (!HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) return;
 
 	for (i = 1; i < 10; i++) {
 		callback = GetVehicleCallback(CBID_TRAIN_ARTIC_ENGINE, i, 0, v->engine_type, NULL);
@@ -557,7 +557,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 	rvi = RailVehInfo(engine);
 	value = (rvi->base_cost * _price.build_railwagon) >> 8;
 
-	num_vehicles = 1 + CountArticulatedParts(rvi, engine);
+	num_vehicles = 1 + CountArticulatedParts(engine);
 
 	if (!(flags & DC_QUERY_COST)) {
 		Vehicle *vl[11]; // Allow for wagon and upto 10 artic parts.
@@ -624,7 +624,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 			v->cur_image = 0xAC2;
 			v->random_bits = VehicleRandomBits();
 
-			AddArticulatedParts(rvi, vl);
+			AddArticulatedParts(vl);
 
 			_new_vehicle_id = v->index;
 
@@ -730,7 +730,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	value = EstimateTrainCost(rvi);
 
 	num_vehicles = (rvi->flags & RVI_MULTIHEAD) ? 2 : 1;
-	num_vehicles += CountArticulatedParts(rvi, p1);
+	num_vehicles += CountArticulatedParts(p1);
 
 	if (!(flags & DC_QUERY_COST)) {
 		Vehicle *vl[12]; // Allow for upto 10 artic parts and dual-heads
@@ -800,7 +800,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				vl[0]->u.rail.other_multiheaded_part = vl[1];
 				vl[1]->u.rail.other_multiheaded_part = vl[0];
 			} else {
-				AddArticulatedParts(rvi, vl);
+				AddArticulatedParts(vl);
 			}
 
 			TrainConsistChanged(v);
@@ -1666,7 +1666,7 @@ int32 CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		// turn a single unit around
 		Vehicle *front;
 
-		if (IsMultiheaded(v) || HASBIT(RailVehInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) {
+		if (IsMultiheaded(v) || HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) {
 			return_cmd_error(STR_ONLY_TURN_SINGLE_UNIT);
 		}
 
@@ -1756,7 +1756,7 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
 			uint16 amount = CALLBACK_FAILED;
 
-			if (HASBIT(rvi->callbackmask, CBM_REFIT_CAPACITY)) {
+			if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_REFIT_CAPACITY)) {
 				/* Check the 'refit capacity' callback */
 				CargoID temp_cid = v->cargo_type;
 				v->cargo_type = new_cid;

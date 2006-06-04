@@ -21,7 +21,6 @@ typedef struct RailVehicleInfo {
 	byte capacity;
 	CargoID cargo_type;
 	byte ai_rank;
-	byte callbackmask; // see CallbackMask enum
 	uint16 pow_wag_power;
 	byte pow_wag_weight;
 	byte visual_effect; // NOTE: this is not 100% implemented yet, at the moment it is only used as a 'fallback' value
@@ -41,7 +40,6 @@ typedef struct ShipVehicleInfo {
 	byte running_cost;
 	byte sfx;
 	byte refittable;
-	byte callbackmask;
 } ShipVehicleInfo;
 
 typedef struct AircraftVehicleInfo {
@@ -54,7 +52,6 @@ typedef struct AircraftVehicleInfo {
 	byte max_speed;
 	byte mail_capacity;
 	uint16 passenger_capacity;
-	byte callbackmask;
 } AircraftVehicleInfo;
 
 typedef struct RoadVehicleInfo {
@@ -65,7 +62,6 @@ typedef struct RoadVehicleInfo {
 	byte max_speed;
 	byte capacity;
 	CargoID cargo_type;
-	byte callbackmask;
 } RoadVehicleInfo;
 
 /** Information about a vehicle
@@ -80,6 +76,7 @@ typedef struct EngineInfo {
 	byte climates:4;
 	uint32 refit_mask;
 	byte misc_flags;
+	byte callbackmask;
 } EngineInfo;
 
 typedef struct Engine {

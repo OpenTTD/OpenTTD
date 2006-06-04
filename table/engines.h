@@ -15,7 +15,7 @@
   * @param e Rail Type of the vehicle
   * @param f Bitmask of the climates
   */
-#define MK(a, b, c, d, e, f) { a, b, c, d, e, f, 0, 0 }
+#define MK(a, b, c, d, e, f) { a, b, c, d, e, f, 0, 0, 0 }
 /** Writes the properties of a train carriage into the EngineInfo struct.
   * @see EngineInfo
   * @param a Introduction date
@@ -23,7 +23,7 @@
   * @param f Bitmask of the climates
   * @note the 0x80 in parameter b sets the "is carriage bit"
   */
-#define MW(a, b, c, d, e, f) { a, b | 0x80, c, d, e, f, 0, 0 }
+#define MW(a, b, c, d, e, f) { a, b | 0x80, c, d, e, f, 0, 0, 0 }
 
 // Rail types
 // R = Conventional railway
@@ -324,7 +324,7 @@ const EngineInfo orig_engine_info[] = {
  * @param j cargo_type
  * @param k ai_rank
  */
-#define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 0, 0 }
+#define RVI(a, b, c, d, e, f, g, h, i, j, k) { a, b, c, d, e, f, g, h, h, i, j, k, 0, 0, 0, 0, 0 }
 #define M RVI_MULTIHEAD
 #define W RVI_WAGON
 #define S 0
@@ -471,7 +471,7 @@ const RailVehicleInfo orig_rail_vehicle_info[NUM_TRAIN_ENGINES] = {
  * @param g sound effect
  * @param h refittable
  */
-#define SVI(a, b, c, d, e, f, g, h) { a, b, c, d, e, f, g, h, 0 }
+#define SVI(a, b, c, d, e, f, g, h) { a, b, c, d, e, f, g, h }
 const ShipVehicleInfo orig_ship_vehicle_info[NUM_SHIP_ENGINES] = {
 	//   image_index  cargo_type     cargo_amount                 refittable
 	//   |    base_cost |              |    running_cost          |
@@ -503,7 +503,7 @@ const ShipVehicleInfo orig_ship_vehicle_info[NUM_SHIP_ENGINES] = {
  * @param h mail_capacity
  * @param i passenger_capacity
  */
-#define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, f, g, h, i, 0 }
+#define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, f, g, h, i }
 #define H 0
 #define P 1
 #define J 3
@@ -570,7 +570,7 @@ const AircraftVehicleInfo orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
  * @param f capacity
  * @param g cargo_type
  */
-#define RVI(a, b, c, d, e, f, g) { a, b, c, d, e, f, g, 0 }
+#define RVI(a, b, c, d, e, f, g) { a, b, c, d, e, f, g }
 const RoadVehicleInfo orig_road_vehicle_info[NUM_ROAD_ENGINES] = {
 	//    image_index       sfx                                 max_speed
 	//    |    base_cost    |                                   |   capacity

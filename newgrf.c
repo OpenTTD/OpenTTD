@@ -411,7 +411,7 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x1E: /* Callback */
-			FOR_EACH_OBJECT rvi[i].callbackmask = grf_load_byte(&buf);
+			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
 		case 0x21: /* Shorter vehicle */
@@ -549,7 +549,7 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x17: /* Callback mask */
-			FOR_EACH_OBJECT rvi[i].callbackmask = grf_load_byte(&buf);
+			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
 		case 0x1C: /* Miscellaneous flags */
@@ -653,7 +653,7 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x12: /* Callback mask */
-			FOR_EACH_OBJECT svi[i].callbackmask = grf_load_byte(&buf);
+			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
 		case 0x17: /* Miscellaneous flags */
@@ -750,7 +750,7 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			break;
 
 		case 0x14: /* Callback mask */
-			FOR_EACH_OBJECT avi[i].callbackmask = grf_load_byte(&buf);
+			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
 		case 0x17: /* Miscellaneous flags */
