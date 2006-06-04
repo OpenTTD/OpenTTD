@@ -12,6 +12,7 @@
 #include "road_map.h"
 #include "tile.h"
 #include "variables.h"
+#include "water_map.h"
 
 struct Depot {
 	TileIndex xy;
@@ -98,20 +99,11 @@ static inline DiagDirection GetDepotDirection(TileIndex tile, TransportType type
 {
 	assert(IsTileDepotType(tile, type));
 
-	switch (type)
-	{
-		case TRANSPORT_RAIL: return GetRailDepotDirection(tile);
-		case TRANSPORT_ROAD: return GetRoadDepotDirection(tile);
-		case TRANSPORT_WATER:
-			/* Water is stubborn, it stores the directions in a different order. */
-			switch (GB(_m[tile].m5, 0, 2)) {
-				case 0: return DIAGDIR_NE;
-				case 1: return DIAGDIR_SW;
-				case 2: return DIAGDIR_NW;
-				case 3: return DIAGDIR_SE;
-			}
-		default:
-			return INVALID_DIAGDIR; /* Not reached */
+	switch (type) {
+		case TRANSPORT_RAIL:  return GetRailDepotDirection(tile);
+		case TRANSPORT_ROAD:  return GetRoadDepotDirection(tile);
+		case TRANSPORT_WATER: return GetShipDepotDirection(tile);
+		default: return INVALID_DIAGDIR; /* Not reached */
 	}
 }
 

@@ -63,6 +63,11 @@ static inline Axis GetShipDepotAxis(TileIndex t)
 	return (Axis)GB(_m[t].m5, 1, 1);
 }
 
+static inline DiagDirection GetShipDepotDirection(TileIndex t)
+{
+	return XYNSToDiagDir(GetShipDepotAxis(t), GB(_m[t].m5, 0, 1));
+}
+
 static inline DiagDirection GetLockDirection(TileIndex t)
 {
 	return (DiagDirection)GB(_m[t].m5, 0, 2);

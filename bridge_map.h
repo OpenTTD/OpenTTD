@@ -78,10 +78,7 @@ static inline uint GetBridgeType(TileIndex t)
  */
 static inline DiagDirection GetBridgeRampDirection(TileIndex t)
 {
-	/* Heavy wizardry to convert the X/Y (bit 0) + N/S (bit 5) encoding of
-	 * bridges to a DiagDirection
-	 */
-	return (DiagDirection)((6 - (_m[t].m5 >> 4 & 2) - (_m[t].m5 & 1)) % 4);
+	return ReverseDiagDir(XYNSToDiagDir((Axis)GB(_m[t].m5, 0, 1), GB(_m[t].m5, 5, 1)));
 }
 
 

@@ -113,6 +113,16 @@ static inline DiagDirection AxisToDiagDir(Axis a)
 	return (DiagDirection)(2 - a);
 }
 
+/**
+ * Convert an axis and a flag for north/south into a DiagDirection
+ * @param ns north -> 0, south -> 1
+ */
+static inline DiagDirection XYNSToDiagDir(Axis xy, uint ns)
+{
+	return (DiagDirection)(xy * 3 ^ ns * 2);
+}
+
+
 static inline bool IsValidDiagDirection(DiagDirection d)
 {
 	return d < DIAGDIR_END;

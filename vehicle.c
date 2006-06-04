@@ -1989,7 +1989,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 		case VEH_Ship:
 			if (v->u.ship.state == 0x80)  /* Inside a depot? */
 				/* We'll assume the ship is facing outwards */
-				return DiagdirToDiagTrackdir(GetDepotDirection(v->tile, TRANSPORT_WATER)); /* Ship in depot */
+				return DiagdirToDiagTrackdir(GetShipDepotDirection(v->tile));
 
 			return TrackDirectionToTrackdir(FIND_FIRST_BIT(v->u.ship.state),v->direction);
 
