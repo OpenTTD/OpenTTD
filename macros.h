@@ -115,9 +115,9 @@ static inline int KillFirstBit2x64(int value)
 #define IS_INT_INSIDE(a,min,max) ((uint)((a)-(min)) < (uint)((max)-(min)))
 
 
-#define CHANCE16(a,b) ((uint16)Random() <= (uint16)((65536 * a) / b))
-#define CHANCE16R(a,b,r) ((uint16)(r=Random()) <= (uint16)((65536 * a) / b))
-#define CHANCE16I(a,b,v) ((uint16)(v) <= (uint16)((65536 * a) / b))
+#define CHANCE16(a,b) ((uint16)Random() <= (uint16)((65536 * (a)) / (b)))
+#define CHANCE16R(a,b,r) ((uint16)(r=Random()) <= (uint16)((65536 * (a)) / (b)))
+#define CHANCE16I(a,b,v) ((uint16)(v) <= (uint16)((65536 * (a)) / (b)))
 
 
 #define for_each_bit(_i,_b)										\
