@@ -155,14 +155,6 @@ static void AiNew_State_WakeUp(Player *p)
 		return;
 	}
 
-	if (_patches.ai_disable_veh_roadveh && (
-				p->ainew.action == AI_ACTION_BUS_ROUTE ||
-				p->ainew.action == AI_ACTION_TRUCK_ROUTE
-			)) {
-		p->ainew.action = AI_ACTION_NONE;
-		return;
-	}
-
 	if (p->ainew.action == AI_ACTION_REPAY_LOAN &&
 			money > AI_MINIMUM_LOAN_REPAY_MONEY) {
 		// We start repaying some money..
