@@ -1061,7 +1061,7 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		v->cargo_count = 0;
+		v->cargo_count = (v->cargo_type == new_cid) ? min(v->cargo_cap, v->cargo_count) : 0;
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);

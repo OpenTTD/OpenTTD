@@ -1789,7 +1789,7 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (new_cid != v->cargo_type) cost += _price.build_railvehicle >> 8;
 				num += amount;
 				if (flags & DC_EXEC) {
-					v->cargo_count = 0;
+					v->cargo_count = (v->cargo_type == new_cid) ? min(amount, v->cargo_count) : 0;
 					v->cargo_type = new_cid;
 					v->cargo_cap = amount;
 					v->cargo_subtype = new_subtype;

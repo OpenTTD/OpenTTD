@@ -538,7 +538,13 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		u = v->next;
 		mail = (new_cid != CT_PASSENGERS) ? 0 : avi->mail_capacity;
 		u->cargo_cap = mail;
-		v->cargo_count = u->cargo_count = 0;
+		if (v->cargo_type == new_cid) {
+			v->cargo_count = min(pass, v->cargo_count);
+			u->cargo_count = min(mail, u->cargo_count);
+		} else {
+			v->cargo_count = 0;
+			u->cargo_count = 0;
+		}
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
