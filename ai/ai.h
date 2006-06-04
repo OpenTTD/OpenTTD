@@ -11,6 +11,7 @@ typedef struct AICommand {
 	uint32 p1;
 	uint32 p2;
 	uint32 procc;
+	CommandCallback* callback;
 
 	char *text;
 	uint uid;
@@ -46,6 +47,7 @@ void AI_RunGameLoop(void);
 void AI_Initialize(void);
 void AI_Uninitialize(void);
 int32 AI_DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
+int32 AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc, CommandCallback* callback);
 
 /** Is it allowed to start a new AI.
  * This function checks some boundries to see if we should launch a new AI.

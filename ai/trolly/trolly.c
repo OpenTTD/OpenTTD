@@ -1155,7 +1155,7 @@ static void AiNew_State_BuildVehicle(Player *p)
 	// Decrease the total counter
 	p->ainew.amount_veh--;
 	// Go give some orders!
-	p->ainew.state = AI_STATE_GIVE_ORDERS;
+	p->ainew.state = AI_STATE_WAIT_FOR_BUILD;
 }
 
 
@@ -1166,18 +1166,6 @@ static void AiNew_State_GiveOrders(Player *p)
 	Order order;
 
 	assert(p->ainew.state == AI_STATE_GIVE_ORDERS);
-
-	// Get the new ID
-	/* XXX -- Because this AI isn't using any event-system, this is VERY dangerous!
-	 *  There is no way telling if the vehicle is already bought (or delayed by the
-	 *  network), and if bought, if not an other vehicle is bought in between.. in
-	 *  other words, there is absolutely no way knowing if this id is the true
-	 *  id.. soon this will all change, but for now, we needed something to test
-	 *  on ;) -- TrueLight -- 21-11-2005 */
-	if (p->ainew.tbt == AI_TRAIN) {
-	} else {
-		p->ainew.veh_id = _new_roadveh_id;
-	}
 
 	if (p->ainew.veh_main_id != INVALID_VEHICLE) {
 		AI_DoCommand(0, p->ainew.veh_id + (p->ainew.veh_main_id << 16), 0, DC_EXEC, CMD_CLONE_ORDER);
@@ -1323,6 +1311,7 @@ static AiNew_StateFunction* const _ainew_state[] = {
 	AiNew_State_BuildPath,
 	AiNew_State_BuildDepot,
 	AiNew_State_BuildVehicle,
+	NULL,
 	AiNew_State_GiveOrders,
 	AiNew_State_StartVehicle,
 	AiNew_State_RepayMoney,

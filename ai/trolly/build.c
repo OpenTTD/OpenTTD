@@ -7,6 +7,7 @@
 #include "../../map.h"
 #include "../../road_map.h"
 #include "../../tile.h"
+#include "../../vehicle.h"
 #include "../../command.h"
 #include "trolly.h"
 #include "../../engine.h"
@@ -249,6 +250,20 @@ EngineID AiNew_PickVehicle(Player *p)
 }
 
 
+void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
+{
+	Player* p = GetPlayer(_current_player);
+
+	if (success) {
+		p->ainew.state = AI_STATE_GIVE_ORDERS;
+		p->ainew.veh_id = _new_vehicle_id;
+	} else {
+		/* XXX this should be handled more gracefully */
+		p->ainew.state = AI_STATE_NOTHING;
+	}
+}
+
+
 // Builds the best vehicle possible
 int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
 {
@@ -257,7 +272,11 @@ int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
 	if (i == INVALID_ENGINE) return CMD_ERROR;
 	if (p->ainew.tbt == AI_TRAIN) return CMD_ERROR;
 
-	return AI_DoCommand(tile, i, 0, flag, CMD_BUILD_ROAD_VEH);
+	if (flag & DC_EXEC) {
+		return AI_DoCommandCc(tile, i, 0, flag, CMD_BUILD_ROAD_VEH, CcAI);
+	} else {
+		return AI_DoCommand(tile, i, 0, flag, CMD_BUILD_ROAD_VEH);
+	}
 }
 
 int AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte flag)
