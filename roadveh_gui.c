@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "roadveh.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
@@ -554,7 +555,7 @@ static void DrawRoadDepotWindow(Window *w)
 	/* determine amount of items for scroller */
 	num = 0;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road && v->u.road.state == 254 && v->tile == tile)
+		if (v->type == VEH_Road && IsRoadVehInDepot(v) && v->tile == tile)
 			num++;
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
@@ -571,7 +572,7 @@ static void DrawRoadDepotWindow(Window *w)
 	num = w->vscroll.pos * w->hscroll.cap;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road && v->u.road.state == 254 && v->tile == tile &&
+		if (v->type == VEH_Road && IsRoadVehInDepot(v) && v->tile == tile &&
 				--num < 0 && num >=	-w->vscroll.cap * w->hscroll.cap) {
 			DrawRoadVehImage(v, x+24, y, WP(w,traindepot_d).sel);
 
@@ -608,7 +609,7 @@ static int GetVehicleFromRoadDepotWndPt(const Window *w, int x, int y, Vehicle *
 
 	tile = w->window_number;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road && v->u.road.state == 254 && v->tile == tile &&
+		if (v->type == VEH_Road && IsRoadVehInDepot(v) && v->tile == tile &&
 				--pos < 0) {
 			*veh = v;
 			if (xm >= 24) return 0;
@@ -917,7 +918,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsTileDepotType(v->tile, TRANSPORT_ROAD) && (v->vehstatus & VS_HIDDEN))
+			if (IsRoadVehInDepot(v))
 				str = STR_021F;
 			else
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;

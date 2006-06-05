@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "road_map.h"
+#include "roadveh.h"
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1996,7 +1997,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 			return TrackDirectionToTrackdir(FIND_FIRST_BIT(v->u.ship.state),v->direction);
 
 		case VEH_Road:
-			if (v->u.road.state == 254) /* We'll assume the road vehicle is facing outwards */
+			if (IsRoadVehInDepot(v)) /* We'll assume the road vehicle is facing outwards */
 				return DiagdirToDiagTrackdir(GetRoadDepotDirection(v->tile));
 
 			if (IsRoadStopTile(v->tile)) /* We'll assume the road vehicle is facing outwards */

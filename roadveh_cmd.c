@@ -6,6 +6,7 @@
 #include "debug.h"
 #include "functions.h"
 #include "road_map.h"
+#include "roadveh.h"
 #include "station_map.h"
 #include "table/strings.h"
 #include "map.h"
@@ -216,7 +217,7 @@ int32 CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (v->vehstatus & VS_STOPPED && v->u.road.state == 254) {
+		if (IsRoadVehInDepotStopped(v)) {
 			DeleteVehicleNews(p1, STR_9016_ROAD_VEHICLE_IS_WAITING);
 		}
 
@@ -259,7 +260,7 @@ int32 CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	if (v->u.road.state != 254 || !(v->vehstatus & VS_STOPPED)) {
+	if (!IsRoadVehInDepotStopped(v)) {
 		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
 	}
 
@@ -409,7 +410,7 @@ int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			v->breakdown_ctr != 0 ||
 			v->u.road.overtaking != 0 ||
 			v->u.road.state == 255 ||
-			v->u.road.state == 254 ||
+			IsRoadVehInDepot(v) ||
 			v->cur_speed < 5) {
 		return CMD_ERROR;
 	}
@@ -742,7 +743,7 @@ static void* EnumCheckRoadVehClose(Vehicle *v, void* data)
 	return
 		rvf->veh != v &&
 		v->type == VEH_Road &&
-		v->u.road.state != 254 &&
+		!IsRoadVehInDepot(v) &&
 		myabs(v->z_pos - rvf->veh->z_pos) < 6 &&
 		v->direction == rvf->dir &&
 		(dist_x[v->direction] >= 0 || (x_diff > dist_x[v->direction] && x_diff <= 0)) &&
@@ -1226,7 +1227,7 @@ static void RoadVehController(Vehicle *v)
 
 	if (v->current_order.type == OT_LOADING) return;
 
-	if (v->u.road.state == 254) {
+	if (IsRoadVehInDepot(v)) {
 		DiagDirection dir;
 		const RoadDriveEntry* rdp;
 		byte rd2;
