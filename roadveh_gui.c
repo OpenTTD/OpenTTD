@@ -330,7 +330,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			Vehicle *v;
 			uint32 h;
 			v = GetVehicle(w->window_number);
-			h = IsTileDepotType(v->tile, TRANSPORT_ROAD) && (v->vehstatus&VS_STOPPED) ? (1<< 7) : (1 << 11);
+			h = IsRoadVehInDepotStopped(v) ? 1 << 7 : 1 << 11;
 			if (h != w->hidden_state) {
 				w->hidden_state = h;
 				SetWindowDirty(w);
