@@ -15,6 +15,7 @@
 #include "depot.h"
 #include "tunnel_map.h"
 #include "network.h"
+#include "water_map.h"
 
 static AyStar _npf_aystar;
 
@@ -490,6 +491,23 @@ static bool VehicleMayEnterTile(Owner owner, TileIndex tile, DiagDirection enter
 
 	return true; /* no need to check */
 }
+
+
+/**
+ * Returns the direction the exit of the depot on the given tile is facing.
+ */
+static DiagDirection GetDepotDirection(TileIndex tile, TransportType type)
+{
+	assert(IsTileDepotType(tile, type));
+
+	switch (type) {
+		case TRANSPORT_RAIL:  return GetRailDepotDirection(tile);
+		case TRANSPORT_ROAD:  return GetRoadDepotDirection(tile);
+		case TRANSPORT_WATER: return GetShipDepotDirection(tile);
+		default: return INVALID_DIAGDIR; /* Not reached */
+	}
+}
+
 
 /* Will just follow the results of GetTileTrackStatus concerning where we can
  * go and where not. Uses AyStar.user_data[NPF_TYPE] as the transport type and

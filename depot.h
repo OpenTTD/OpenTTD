@@ -8,11 +8,8 @@
 
 #include "direction.h"
 #include "pool.h"
-#include "rail_map.h"
-#include "road_map.h"
 #include "tile.h"
 #include "variables.h"
-#include "water_map.h"
 
 struct Depot {
 	TileIndex xy;
@@ -92,20 +89,6 @@ static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 	}
 }
 
-/**
- * Returns the direction the exit of the depot on the given tile is facing.
- */
-static inline DiagDirection GetDepotDirection(TileIndex tile, TransportType type)
-{
-	assert(IsTileDepotType(tile, type));
-
-	switch (type) {
-		case TRANSPORT_RAIL:  return GetRailDepotDirection(tile);
-		case TRANSPORT_ROAD:  return GetRoadDepotDirection(tile);
-		case TRANSPORT_WATER: return GetShipDepotDirection(tile);
-		default: return INVALID_DIAGDIR; /* Not reached */
-	}
-}
 
 /**
 	Find out if the slope of the tile is suitable to build a depot of given direction

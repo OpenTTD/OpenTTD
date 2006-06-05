@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "road_map.h"
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -25,6 +26,7 @@
 #include "train.h"
 #include "industry_map.h"
 #include "station_map.h"
+#include "water_map.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
