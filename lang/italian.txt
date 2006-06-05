@@ -85,7 +85,7 @@ STR_004D_FIZZY_DRINK                                            :Bevande Frizzan
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passegger{P o i}
 STR_QUANTITY_COAL                                               :{WEIGHT} di carbone
-STR_QUANTITY_MAIL                                               :{COMMA} sacc{P o i} postal{P e i}
+STR_QUANTITY_MAIL                                               :{COMMA} sacc{P o hi} postal{P e i}
 STR_QUANTITY_OIL                                                :{VOLUME} di petrolio
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P o i} di bestiame
 STR_QUANTITY_GOODS                                              :{COMMA} cass{P a e} di beni
@@ -1847,8 +1847,8 @@ STR_5010_CANTILEVER_STEEL                                       :In travi d'acci
 STR_5011_SUSPENSION_CONCRETE                                    :Sospeso in Cemento
 STR_5012_WOODEN                                                 :Di legno
 STR_5013_CONCRETE                                               :In cemento
-STR_5014_TUBULAR_STEEL                                          :Tubolare in acciaio
-STR_BRIDGE_TUBULAR_SILICON                                      :Tubolare, Silicone
+STR_5014_TUBULAR_STEEL                                          :Tubolare, Acciaio
+STR_BRIDGE_TUBULAR_SILICON                                      :Tubolare, Silicio
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Non puoi costruire ponte qui...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Non puoi costruire tunnel qui...
 STR_5017_RAILROAD_TUNNEL                                        :Tunnel ferroviario

@@ -146,6 +146,7 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_ALL                                                  :{TINYFONT}TODO
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -211,7 +212,7 @@ STR_00F5_TRAINS                                                 :{BLACK}{TINYFON
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Camións/Buses
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Navíos
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Aeronaves
-STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rutas de transporte
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Rutas De Transporte
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Mina de Carbón
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Estación Enerxética
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Bosque
@@ -233,7 +234,7 @@ STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFON
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plant. de Árbores de Caucho
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Acuífero
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Torre de Auga
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Fábrica de Madeiros
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Fábrica de Táboas
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Bosque de Algodón de Azucre
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Fábrica de Caramelos
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Granxa de Baterías
@@ -306,8 +307,29 @@ STR_0151_MAP_OF_WORLD                                           :Mapa do mundo
 STR_0152_TOWN_DIRECTORY                                         :Directorio de cidades
 STR_0153_SUBSIDIES                                              :Subsidios
 
+STR_UNITS_IMPERIAL                                              :Imperial
+STR_UNITS_METRIC                                                :Métrico
+STR_UNITS_SI                                                    :SI
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}cv
+STR_UNITS_POWER_METRIC                                          :{COMMA}cv
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+
+
+
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :G. Beneficios Operativos
+STR_0154_OPERATING_PROFIT_GRAPH                                 :G. beneficios operativos
 STR_0155_INCOME_GRAPH                                           :Gráfica de ingresos
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Gráfica de carga entregada
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :G. historial de Rendemento
@@ -317,7 +339,7 @@ STR_015A_COMPANY_LEAGUE_TABLE                                   :Táboa da Liga d
 STR_PERFORMANCE_DETAIL_MENU                                     :Puntuación de rendemento detallado
 ############ range for menu	ends
 
-STR_015B_OPENTTD                                                :{WHITE}OpenTTD
+STR_015B_OPENTTD                                                :{WHITE}Acerca de OpenTTD
 STR_015C_SAVE_GAME                                              :Grabar Partida
 STR_015D_LOAD_GAME                                              :Cargar Partida
 STR_015E_QUIT_GAME                                              :Saír ó menu principal
@@ -343,12 +365,15 @@ STR_SORT_BY_AGE                                                 :Idade
 STR_SORT_BY_RELIABILITY                                         :Rendabilidade
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidade total por tipo de carga
 STR_SORT_BY_MAX_SPEED                                           :Velocidade Máxima
+STR_SORT_BY_MODEL                                               :Modelo
+STR_SORT_BY_VALUE                                               :Valor
+STR_SORT_BY_FACILITY                                            :Tipo de estación
 
 ############ range for months starts
 STR_0162_JAN                                                    :Xan
 STR_0163_FEB                                                    :Feb
 STR_0164_MAR                                                    :Mar
-STR_0165_APR                                                    :Apr
+STR_0165_APR                                                    :Abr
 STR_0166_MAY                                                    :Mai
 STR_0167_JUN                                                    :Xuñ
 STR_0168_JUL                                                    :Xul
@@ -531,7 +556,7 @@ STR_020E_SUBSIDIES                                              :{YELLOW}Subsidi
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Información xeral
 STR_MESSAGES_ALL                                                :{YELLOW}Configuración para tódolos tipos de mesaxes (off/sumario/completo)
 STR_MESSAGE_SOUND                                               :{YELLOW}Reproducir son para mensaxes de noticias resumidas
-STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...Demasiado lonxe do destino anterior
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...demasiado lonxe do destino anterior
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Mellores compañías que chegaron ó {NUM}{}(Nivel {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Táboa da Liga de Compañías en {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
@@ -737,6 +762,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Capt.Pant. Xiga
 STR_02D9_ABOUT_OPENTTD                                          :Acerca de 'OpenTTD'
 ############ range ends	here
 
+STR_02DB_OFF                                                    :{BLACK}Off
+STR_02DA_ON                                                     :{BLACK}On
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Amosa-los subsidios
 STR_02DD_SUBSIDIES                                              :Subsidios
 STR_02DE_MAP_OF_WORLD                                           :Mapa do Mundo
@@ -804,6 +831,7 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}¡Captura
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Comprar terreo para futuro uso
 STR_032F_AUTOSAVE                                               :{RED}AUTOGUARDADO
 STR_SAVING_GAME                                                 :{RED}*  *  GRABANDO PARTIDA  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}¡Grabación en progreso,{}por favor espera ata que termine!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Selecciona-lo programa 'Música Estilo Ezy Street'
 
 STR_0335_6                                                      :{BLACK}6
@@ -828,6 +856,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumano
 STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suízo
 STR_TOWNNAME_DANISH                                             :Danés
+STR_TOWNNAME_TURKISH                                            :Turco
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)
@@ -901,6 +930,8 @@ STR_CRATES                                                      :caixóns
 STR_RES_OTHER                                                   :outro
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
+
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Non se pode comparti-la lista de ordes...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Non se pode copia-la lista de ordes...
 STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Fin das ordes compartidas - -
@@ -933,6 +964,7 @@ STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autoreno
 STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Autorenovación fallida para o vehículo de estrada {COMMA} (límite de diñeiro)
 STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Autorenovación fallida para o barco {COMMA} (límite de diñeiro)
 STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Autorenovación fallida para a aeronave {COMMA} (límite de diñeiro)
+STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}O tren {COMMA} e demasiado longo despois de substituír
 
 STR_CONFIG_PATCHES                                              :{BLACK}Configuración dos Parches
 STR_CONFIG_PATCHES_TIP                                          :{BLACK}Configura-los parches
@@ -986,6 +1018,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árbores
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da liña de neve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Extensión Max. Estación: {ORANGE}{STRING} {RED}Aviso: Valores altos reducen rendemento
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Face-lo servicio os helicópteros no heliporto automáticam.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverti-la dirección de desplazamento: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nº máximo de trens por xogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nº máximo de vehículos de estrada por xogador: {ORANGE}{STRING}
@@ -998,6 +1031,7 @@ STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deshabi
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Deshabilita-los barcos para o ordenador: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Activar nova AI (alpha): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permitir IAs en multixogador (experimental): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Intervalo de servicio para os trens: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Intervalo de servicio para os trens: {ORANGE}deshabilitado
@@ -1218,7 +1252,20 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (anunciar)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 xogadores
+STR_NETWORK_1_PLAYERS                                           :1 xogador
+STR_NETWORK_2_PLAYERS                                           :2 xogadores
+STR_NETWORK_3_PLAYERS                                           :3 xogadores
+STR_NETWORK_4_PLAYERS                                           :4 xogadores
+STR_NETWORK_5_PLAYERS                                           :5 xogadores
+STR_NETWORK_6_PLAYERS                                           :6 xogadores
+STR_NETWORK_7_PLAYERS                                           :7 xogadores
+STR_NETWORK_8_PLAYERS                                           :8 xogadores
+STR_NETWORK_9_PLAYERS                                           :9 xogadores
+STR_NETWORK_10_PLAYERS                                          :10 xogadores
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Nº máx. de compañías:
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Nº máx. de espectadores:
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros xogadores sabrán cal é o idioma que se fala no servidor
@@ -1316,6 +1363,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :contrasinal inc
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :id de xogador errónea en DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :pateado polo servidor
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :intentaba usar un truco
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheo
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :uniuse á partida
 STR_NETWORK_GIVE_MONEY                                          :deu a túa compañía algún diñeiro ({CURRENCY})
@@ -1641,6 +1689,10 @@ STR_306B_HELIPORT                                               :{BLACK}"Helipor
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...a estación ocupa demasiado
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estacións non uniformes deshabilitadas
 
+STR_UNDEFINED                                                   :(cadea indefinida)
+STR_STAT_CLASS_DFLT                                             :Estación por defecto
+STR_STAT_CLASS_WAYP                                             :Puntos de ruta
+
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orient. do Depósito de Barcos
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...debes construí-lo na auga
@@ -1731,7 +1783,9 @@ STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}¡{INDUSTRY} incrementa a súa producción!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}¡Nova veta de carbón atopada en {INDUSTRY}!{}¡Espérase que a producción dóbrese!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}¡Novas reservas de petróleo atopadas en {INDUSTRY}!{}¡Espérase que a producción dóbrese!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}¡Espérase que a producción se dobre en {INDUSTRY} debido a métodos de cultivo mellorados!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} baixa a producción nun 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}¡Infestación de insectos causa estragos en {INDUSTRY}!{}A producción baixa un 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só se pode emprazar cerca dos bordes do mapa
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}¡A producción de {STRING} en {INDUSTRY} sube un {COMMA}%!
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}¡A producción de {STRING} en {INDUSTRY} baixa un {COMMA}%!
@@ -2311,6 +2365,17 @@ STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Hai un t
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Ir a {STATION}
+STR_8807_GO_TO_TRANSFER                                         :Ir a {STATION} (Transferir e coller carga)
+STR_8808_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Ir a {STATION} (Transferir e sair valeiro)
+STR_880A_GO_TO_LOAD                                             :Ir a {STATION} (Cargar)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Ir a {STATION} (Transferir e esperar a encher)
+STR_880C_GO_NON_STOP_TO                                         :Ir sen parar a {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Ir sen parar a {STATION} (Transferir e coller carga)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Ir sen parar a {STATION} (Descargar)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Ir sen parar a {STATION} (Cargar)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Ir sen parar a {STATION} (Transferir e esperar a encher)
+STR_GO_TO_TRAIN_DEPOT                                           :Ir o Depósito De Trens de {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Face-lo servicio no Depósito de Trens de {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sen paradas o Depósito de Trens de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Face-lo servicio sen paradas no Depósito de Trens de {TOWN}
@@ -2333,6 +2398,7 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novos Ve
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Vehículos de Monorraíl
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Vehículos de Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construír Vehículo
+STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar Vehículo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esto construíra unha copia do vehículo. CTRL+Click compartirá as ordes
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Esto construíra unha copia do vehículo. Pincha neste botón e despois nun vehículo dentro ou fora do depósito. CTRL+Click compartirá as ordes
 STR_CLONE_TRAIN                                                 :{BLACK}Clonar Tren
@@ -2555,6 +2621,8 @@ STR_A000_AIRPORTS                                               :{WHITE}Aeroport
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Nonse pode construí-lo aeroporto aí...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Hangar de Aeronaves de {STATION}
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nova Aeronave
+STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar Aeronave
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto construirá una copia da aeronave. CTRL-Click compartirá as ordes
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nova Aeronave
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construír Aeronave
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non se pode construí-lo avíon...
@@ -2601,6 +2669,7 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Renomear
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Non se pode renomea-la aeronave...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Renomear aeronave
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega a primeira aeronave a {STATION}!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}¡Accidente Aéreo!{}{COMMA} morren na bola de lume en {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}¡Accidente de Aeronave!¡A aeronave {} quedou sen combustible, hai {COMMA} mortos na explosión!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Renomear
@@ -2676,6 +2745,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Vista p
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambia-lo parámetro de moeda personalizada
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
@@ -2696,6 +2766,9 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de Reemplazar Vehículos
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Non hai vehículos seleccionados
 STR_REPLACE_HELP                                                :{BLACK}Permíteche reemplazar untipo de máquina cunha doutro tipo, cando trens do tipo orixinal entran nun depósito
+
+STR_ENGINES                                                     :Máquinas
+STR_WAGONS                                                      :Vagóns
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA} Sinais

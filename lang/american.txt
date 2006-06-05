@@ -967,19 +967,19 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Train {COMMA} has too few orders in the schedule
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Train {COMMA} has a void order
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Train {COMMA} has duplicate orders
-STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Train {COMMA} has an invalid station in the orders
+STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Train {COMMA} has an invalid station in its orders
 STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Road Vehicle {COMMA} has too few orders in the schedule
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Road Vehicle {COMMA} has void order
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Road Vehicle {COMMA} has a void order
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Road Vehicle {COMMA} has duplicate orders
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Road Vehicle {COMMA} has an invalid station in the orders
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Road Vehicle {COMMA} has an invalid station in its orders
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Ship {COMMA} has too few orders in the schedule
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Ship {COMMA} has a void order
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Ship {COMMA} has duplicate orders
-STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Ship {COMMA} has an invalid station in the orders
+STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Ship {COMMA} has an invalid station in its orders
 STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aircraft {COMMA} has too few orders in the schedule
-STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aircraft {COMMA} has void order
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aircraft {COMMA} has a void order
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aircraft {COMMA} has duplicate orders
-STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aircraft {COMMA} has an invalid station in the orders
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aircraft {COMMA} has an invalid station in its orders
 # end of order system
 
 STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Autorenew failed on train {COMMA} (money limit)
@@ -1284,7 +1284,7 @@ STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{S
 STR_NETWORK_LAN                                                 :LAN
 STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
-STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertise)
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (advertize)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_0_PLAYERS                                           :0 players
 STR_NETWORK_1_PLAYERS                                           :1 player
@@ -1567,7 +1567,7 @@ STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidie
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} from {STRING} to {STRING}
 STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}None
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Services already subsidised:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Services already subsidized:-
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} from {STATION} to {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, until {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offer of subsidy expired:{}{}{STRING} from {STRING} to {STRING} will now not attract a subsidy.
@@ -2114,7 +2114,7 @@ STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Can't bu
 STR_7072_VIEW_HQ                                                :{BLACK}View HQ
 STR_RELOCATE_HQ                                                 :{BLACK}Relocate HQ
 STR_COMPANY_PASSWORD                                            :{BLACK}Password
-STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Password-protect your company to prevent unauthorised users from joining.
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Password-protect your company to prevent unauthorized users from joining.
 STR_SET_COMPANY_PASSWORD                                        :Set company password
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}World Recession!{}{}Financial experts fear worst as economy slumps!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recession Over!{}{}Upturn in trade gives confidence to industries as economy strengthens!
@@ -2644,8 +2644,8 @@ STR_982F_NAME_SHIP                                              :{BLACK}Name shi
 STR_9831_NAME_SHIP                                              :{WHITE}Name ship
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Can't name ship...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Citizens celebrate . . .{}First ship arrives at {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Position buoy, which can be used for additional way points
-STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Can't position buoy here...
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Place a buoy which can be used as a waypoint
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Can't place buoy here...
 STR_9836_RENAME                                                 :{BLACK}Rename
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Rename ship type
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Rename ship type
@@ -2741,7 +2741,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Factory destroyed in suspicious circumstances near {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' lands near {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Coal mine subsidence leaves trail of destruction near {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Floods!{}At least {COMMA} presumed missing or dead after deadly floods!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Floods!{}At least {COMMA} missing, presumed dead after significant flooding!
 
 STR_BRIBE_FAILED                                                :{WHITE}Your attempted bribery has been
 STR_BRIBE_FAILED_2                                              :{WHITE}discovered by a regional investigator
