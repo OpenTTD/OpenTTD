@@ -2,9 +2,9 @@ Welcome to the manual for OpenTTD. The latest release version at the time of  wr
 
 1 Obtaining OpenTTD.
 
-You can obtain built binaries of OpenTTD for the 4 supported platforms - Win32, Linux,-x86, BeOS 5 and MacOS-X from the projects Sourceforge page, at http://sourceforge.net/projects/openttd . For the non-Win32 builds you will need libSDL.so, libpng.so and zlib.so compiled for your platform. Some builds will include these. 
+You can obtain built binaries of OpenTTD for the 4 supported platforms - Win32, Linux,-x86, BeOS 5 and MacOS-X from the projects Sourceforge page, at http://sourceforge.net/projects/openttd . For the non-Win32 builds you will need libSDL.so, libpng.so and zlib.so compiled for your platform. Some builds will include these.
 
-If you use another platform, such as FreeBSD, which has POSIX file i/o and an SDL port, you should be able to build OpenTTD from its source. This is available in the proejcts Subversion repository at svn://svn.openttd.com . The module name is "trunk". 
+If you use another platform, such as FreeBSD, which has POSIX file i/o and an SDL port, you should be able to build OpenTTD from its source. This is available in the proejcts Subversion repository at svn://svn.openttd.com . The module name is "trunk".
 
 1.1 Building OpenTTD.
 
@@ -21,9 +21,9 @@ On BeOS, run ./configure and then use jam. There are a variaty of options you ca
 
 1.2 Installing OpenTTD.
 
-On Windows, insert your "Transport Tycoon Deluxe for Windows 95" disk. You can use a DOS version, but your graphics will be purple. NB: Even if your version of Transport Tycoon Deluxe ran on Windows 95, it may still be the DOS version. Then run the OpenTTD installer. 
+On Windows, insert your "Transport Tycoon Deluxe for Windows 95" disk. You can use a DOS version, but your graphics will be purple. NB: Even if your version of Transport Tycoon Deluxe ran on Windows 95, it may still be the DOS version. Then run the OpenTTD installer.
 
-On UNIX platforms; decompress your OpenTTD archive, or otherwise run the installer. You should be left with an OpenTTD directory on your system. In this directory, make a subdirectory called 'data', and into this place the sample.cat file and all the .grf files from the install CD of 'Transport Tycoon Deluxe for Windows 95". 
+On UNIX platforms; decompress your OpenTTD archive, or otherwise run the installer. You should be left with an OpenTTD directory on your system. In this directory, make a subdirectory called 'data', and into this place the sample.cat file and all the .grf files from the install CD of 'Transport Tycoon Deluxe for Windows 95".
 (Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF, TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. A few minor graphical glitches with the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't look as nice as with the Windows graphics.)
 
 If you want MIDI music, copy the 'gm' folder from the original game directory/CD to the OpenTTD folder.
@@ -38,7 +38,7 @@ On BeOS and Mac OS-X, just double click the ttd binary in the Tracker/Finder. Yo
 
 1.4 Configuring OpenTTD
 
-OpenTTD's launch menu contains three configuration menus - Difficulty Settings, Configure Patches and Game Settings. Most of these menus can be configured from within a running game as well. 
+OpenTTD's launch menu contains three configuration menus - Difficulty Settings, Configure Patches and Game Settings. Most of these menus can be configured from within a running game as well.
 
 Difficulty Settings lets you configure settings that affect the difficulty of playing the game. These include when your (computer-controlled) competitors can start building, how many of them there are, and how intelligent they are. You can also control how much the subsidy mutliplier is for subsidised routes, and how stable/volitile the in-game economy is. You can also set how you want the terrain to be configured in a random game.
 
@@ -52,14 +52,14 @@ This section of the manual is written with the assumption that you already know 
 
 2.2 Station Construction
 
-In OpenTTD, you can build rail stations up to seven squares long and with up to seven platforms. You can also have stations spreading across far larger distances, allowing a large rail station to be connected to a large airport, for instance. 
+In OpenTTD, you can build rail stations up to seven squares long and with up to seven platforms. You can also have stations spreading across far larger distances, allowing a large rail station to be connected to a large airport, for instance.
 
 However, there is an even more noticable difference in rail station construction. You may now add platforms and lenght to a station after it has been built, and you may also add platforms of a different type. Users of TTDPatch will be used to this behaviour. But beyond what TTDPatch has, you can make stations of uneven lenght/width, and even ones with perpendicular tracks. You can also delete single tiles or tracks from a station, by holding down Shift before pressing the station construction button.
 
 2.3 Checkpoint Stations
 
 
-Checkpoint stations (the small blue item in the rail construction window) are small 1x1 stations. They must be built on top of pre-existing track. They do not accept or produce carge of any kind. They exist solely for use as route points. They become useful when dealing with large networks  where trains may attempt to route themselves along undesirable or impossible routes. As an alternative to checkpoint stations, you can also direct trains to visit depots along the way. This has the advantage of also servicing the train and hence the train will rarely to never need to depart from its route to be serviced. 
+Checkpoint stations (the small blue item in the rail construction window) are small 1x1 stations. They must be built on top of pre-existing track. They do not accept or produce carge of any kind. They exist solely for use as route points. They become useful when dealing with large networks  where trains may attempt to route themselves along undesirable or impossible routes. As an alternative to checkpoint stations, you can also direct trains to visit depots along the way. This has the advantage of also servicing the train and hence the train will rarely to never need to depart from its route to be serviced.
 
 2.4 Freeform Rail Laying.
 
@@ -75,7 +75,7 @@ This allows you to build roads, rails, stations and depots on slopes. It also al
 
 2.7 Long Bridges
 
-OpenTTD allows you to constuct bridges up to 127 squares - half the size of the current map. This means that the crossing of large estuaries, such at the Bristol Channel in the original "West Country 90210" scenario can be acheived with one bridge instead of many bridges with staging points. 
+OpenTTD allows you to constuct bridges up to 127 squares - half the size of the current map. This means that the crossing of large estuaries, such at the Bristol Channel in the original "West Country 90210" scenario can be acheived with one bridge instead of many bridges with staging points.
 
 2.8 Long trains
 
@@ -89,7 +89,7 @@ This addition to OpenTTD allows you to see the current speed of any vehicle in t
 
 Virtually any settings - train numbers, start date, what vehicles your competitors can use, etc - can be set in OpenTTD. Just use the Configure Patches menu on the main screen.
 
-2.11 Network Play 
+2.11 Network Play
 
 See multiplayer.txt for more info.
 

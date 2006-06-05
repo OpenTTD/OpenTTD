@@ -41,7 +41,7 @@ Copy the following files from Transport Tycoon Deluxe to openttd/data/
 
 (Alternatively you can use the TTD GRF files from the DOS version: TRG1.GRF, TRGC.GRF, TRGH.GRF, TRGI.GRF, TRGT.GRF. A few minor graphical glitches with the DOS graphics remain. E.g. the autorail button in the rail toolbar doesn't look as nice as with the Windows graphics.)
 
-  
+
 4.) Compiling and running:
 
 Compile OpenTTD with
@@ -49,7 +49,7 @@ Compile OpenTTD with
 and run it with
   $ ./ttd
 
-     
+
 5.) Playing the soundtrack:
 
 If you want the original TTD music you need to copy the whole /gm/ directory from Windows. Additionally the TiMidity driver is required:
@@ -57,6 +57,6 @@ If you want the original TTD music you need to copy the whole /gm/ directory fro
 To run OpenTTD with music support type
   $ ./ttd -m extmidi
 
-  
+
 X.) Last Update: $Date: 2004-06-01 19:08:09 +0200 (Tue, 01 Jun 2004) $
     Written for revision $Rev: 710 $

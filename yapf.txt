@@ -34,6 +34,3 @@ Same types as for ships:
  - 2 - YAPF type 2 (Node = Tile/ExitDir , 90 deg. turns allowed)
  - 3 - YAPF type 3 (Node = Tile/Trackdir, no 90 deg.)
  - 4 - YAPF type 4 (Node = Tile/ExitDir , no 90 deg.)
-
-
-

@@ -46,4 +46,3 @@ or if you want it to tell the revision too
 gcc strgen/strgen.c rev.o -o strgen/strgen -DUNIX -DWITH_REV (this is the one the makefile uses)
 
 you now have a program called strgen in the strgen directory
-

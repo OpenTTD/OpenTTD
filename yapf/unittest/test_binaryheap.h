@@ -100,4 +100,3 @@ static int TestBinaryHeap2(bool silent)
 	CHECK_INT(7, CData::NumInstances(), 0);
 	return res;
 }
-

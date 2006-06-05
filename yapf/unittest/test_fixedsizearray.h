@@ -111,4 +111,3 @@ static int TestArray(bool silent)
 
 	return res;
 }
-

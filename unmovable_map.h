@@ -114,4 +114,3 @@ static inline void MakeCompanyHQ(TileIndex t, Owner o)
 	MakeUnmovable(t + TileDiffXY(1, 0), UNMOVABLE_HQ_EAST, o);
 	MakeUnmovable(t + TileDiffXY(1, 1), UNMOVABLE_HQ_SOUTH, o);
 }
-

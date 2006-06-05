@@ -357,5 +357,3 @@ struct CTestYapf2
 	: public CYapfT<CYapf_TypesT<CTestYapf2, CNodeList2, CYapfMap1> >
 {
 };
-
-

@@ -174,4 +174,3 @@ int NpfEndInterval(void* vperf)
 	delete &perf;
 	return t;
 }
-

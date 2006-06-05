@@ -234,4 +234,3 @@ const SpriteGroup *Resolve(const SpriteGroup *group, ResolverObject *object)
 		default:                return group;
 	}
 }
-

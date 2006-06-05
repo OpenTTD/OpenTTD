@@ -27,8 +27,3 @@ typedef int(*TESTPROC)(bool silent);
 #  include <windows.h>
 #else
 #endif
-
-
-
-
-

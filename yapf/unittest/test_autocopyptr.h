@@ -40,4 +40,3 @@ static int TestAutoCopyPtr(bool silent)
 	CHECK_INT(5, CData::NumInstances(), 0);
 	return res;
 }
-

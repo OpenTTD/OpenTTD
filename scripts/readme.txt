@@ -19,4 +19,3 @@ local scripts:
  - 'on_dedicated.scr' is additionally executed after starting a server [dedicated only]
 
 For examples how a script can look, check the .example examples.
-

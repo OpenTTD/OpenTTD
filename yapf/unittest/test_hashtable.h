@@ -70,5 +70,3 @@ static int TestHashTable1(bool silent)
 	}
 	return res;
 }
-
-

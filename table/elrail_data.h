@@ -447,4 +447,3 @@ static const CatenarySprite Wires[5][TRACK_END][4] = {
 };
 
 #endif /* ELRAIL_DATA_H */
-

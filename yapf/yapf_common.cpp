@@ -27,4 +27,3 @@ const TrackdirBits CYapfCostBase::c_upwards_slopes[] = {
 	TRACKDIR_BIT_NONE                    , //14
 	TRACKDIR_BIT_NONE                    , //15
 };
-

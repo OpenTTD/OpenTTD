@@ -369,4 +369,3 @@ void DrawCatenary(const TileInfo *ti)
 			break;
 	}
 }
-

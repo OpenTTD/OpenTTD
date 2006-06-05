@@ -39,4 +39,3 @@ bool FollowTrackRailNo90(FollowTrack_t *This, TileIndex old_tile, Trackdir old_t
 	CFollowTrackRailNo90& F = *(CFollowTrackRailNo90*) This;
 	return F.Follow(old_tile, old_td);
 }
-
