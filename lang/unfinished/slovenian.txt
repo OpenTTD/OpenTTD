@@ -517,12 +517,12 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING1}"
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Skladba{SETX 88}Title
 STR_01E9_SHUFFLE                                                :{TINYFONT}Mesaj
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Izbor glasbenega programa
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING1}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Spisek skladb
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
@@ -676,7 +676,7 @@ STR_02A3_LARGE                                                  :{BLACK}Veliko
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izberi velikost mesta
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikost mesta:
 
-STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Privzeto
@@ -1008,7 +1008,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING1}
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Najprej mora bit porusena stavba
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Populacija: {ORANGE}{COMMA}{BLACK}  His: {ORANGE}{COMMA}
@@ -1042,15 +1042,15 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencije
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponudba subvencij:-
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} iz {STRING2} v {STRING2}
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} iz {STRING} v {STRING}
 STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Noben
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Subvencionirane storitve
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} od {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW},do {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ponudba za subvencijo umaknjena:{}{}{STRING} od {STRING2} do {STRING2} od sedaj ne bo prinesla subvencije.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ponudba za subvencijo umaknjena:{}{}{STRING} od {STRING} do {STRING} od sedaj ne bo prinesla subvencije.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subvencija je potekla:{}{}{STRING} storitev od {STATION} do {STATION} ni vec subvencionirana is no longer subsidised.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Ponudena subvencija:{}{}Prva {STRING} storitev od {STRING2} do {STRING2} bo subvencionirana s strani mestnega sveta!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Ponudena subvencija:{}{}Prva {STRING} storitev od {STRING} do {STRING} bo subvencionirana s strani mestnega sveta!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena {COMPANY}!{}{}{STRING} storitev od {STATION} do {STATION} bo prinesla 50% vecji prihodek za naslednje leto!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena {COMPANY}!{}{}{STRING} storitev od {STATION} do {STATION} bo prinesla dvakratni prihodek
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvencija podeljena {COMPANY}!{}{}{STRING} storitev od {STATION} do {STATION} bo prinesla trikratni prihodek za naslednje leto!
@@ -1238,7 +1238,7 @@ STR_4829_REQUIRES                                               :{BLACK}Potrebuj
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Proizvodnja prejsnega meseca:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING1}{BLACK} ({COMMA}% transportirano)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportirano)
 STR_482F_COST                                                   :{BLACK}Cena: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tukaj ni mozno zgraditi tega tipa industrije...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... gozd je mozno nasaditi samo nad snezno mejo
@@ -1291,10 +1291,10 @@ STR_5802_LIGHTHOUSE                                             :Svetilnik
 STR_SV_UNNAMED                                                  :Neimenovano
 STR_SV_TRAIN_NAME                                               :Vlak {COMMA}
 
-STR_SV_STNAME_SOUTH                                             :{STRING1} Jug
-STR_SV_STNAME_WEST                                              :{STRING1} Zahod
-STR_SV_STNAME_VALLEY                                            :{STRING1} Dolina
-STR_SV_STNAME_UPPER                                             :Zgornje {STRING1}
+STR_SV_STNAME_SOUTH                                             :{STRING} Jug
+STR_SV_STNAME_WEST                                              :{STRING} Zahod
+STR_SV_STNAME_VALLEY                                            :{STRING} Dolina
+STR_SV_STNAME_UPPER                                             :Zgornje {STRING}
 
 ############ end of	savegame specific region!
 
