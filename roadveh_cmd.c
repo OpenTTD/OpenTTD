@@ -259,9 +259,7 @@ int32 CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	if (!IsTileDepotType(v->tile, TRANSPORT_ROAD) ||
-			v->u.road.state != 254 ||
-			!(v->vehstatus & VS_STOPPED)) {
+	if (v->u.road.state != 254 || !(v->vehstatus & VS_STOPPED)) {
 		return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
 	}
 
