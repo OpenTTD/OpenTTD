@@ -220,8 +220,11 @@ static int32 AiGetBasePrice(Player *p)
 
 	// adjust base price when more expensive vehicles are available
 	switch (p->ai.railtype_to_use) {
-		case 1: base = (base * 3) >> 1; break;
-		case 2: base *= 2; break;
+		default: NOT_REACHED();
+		case RAILTYPE_RAIL:     break;
+		case RAILTYPE_ELECTRIC: break;
+		case RAILTYPE_MONO:     base = (base * 3) >> 1; break;
+		case RAILTYPE_MAGLEV:   base *= 2; break;
 	}
 
 	return base;
