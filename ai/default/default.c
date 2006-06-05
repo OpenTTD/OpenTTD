@@ -28,7 +28,6 @@
 #include "default.h"
 
 // remove some day perhaps?
-static Player *_cur_ai_player;
 static uint _ai_service_interval;
 
 typedef void AiStateAction(Player *p);
@@ -1537,7 +1536,7 @@ static bool AiCheckTrackResources(TileIndex tile, const AiDefaultBlockData *p, b
 	return true;
 }
 
-static int32 AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData *p, byte flag)
+static int32 AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData* p, RailType railtype, byte flag)
 {
 	int32 ret;
 	int32 total_cost = 0;
@@ -1554,10 +1553,10 @@ static int32 AiDoBuildDefaultRailTrack(TileIndex tile, const AiDefaultBlockData 
 		if (p->mode < 2) {
 			if (p->mode == 0) {
 				// Depot
-				ret = DoCommand(c, _cur_ai_player->ai.railtype_to_use, p->attr, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_TRAIN_DEPOT);
+				ret = DoCommand(c, railtype, p->attr, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_TRAIN_DEPOT);
 			} else {
 				// Station
-				ret = DoCommand(c, (p->attr&1) | (p->attr>>4)<<8 | (p->attr>>1&7)<<16, _cur_ai_player->ai.railtype_to_use, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_RAILROAD_STATION);
+				ret = DoCommand(c, (p->attr&1) | (p->attr>>4)<<8 | (p->attr>>1&7)<<16, railtype, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_RAILROAD_STATION);
 			}
 
 			if (CmdFailed(ret)) return CMD_ERROR;
@@ -1581,7 +1580,7 @@ clear_town_stuff:;
 			for (i = 0; i != 6; i++, j >>= 1) {
 				if (j&1) {
 					k = i;
-					ret = DoCommand(c, _cur_ai_player->ai.railtype_to_use, i, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
+					ret = DoCommand(c, railtype, i, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_SINGLE_RAIL);
 					if (CmdFailed(ret)) return CMD_ERROR;
 					total_cost += ret;
 				}
@@ -1613,7 +1612,7 @@ clear_town_stuff:;
 			total_cost += ret + _price.build_rail;
 
 			if (flag & DC_EXEC) {
-				DoCommand(c, _cur_ai_player->ai.railtype_to_use, p->attr&1, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_SINGLE_RAIL);
+				DoCommand(c, railtype, p->attr&1, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_BUILD_SINGLE_RAIL);
 			}
 
 			goto clear_town_stuff;
@@ -1635,7 +1634,7 @@ clear_town_stuff:;
 }
 
 // Returns rule and cost
-static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, byte p3, byte dir, byte cargo, int32 *cost)
+static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, byte p3, byte dir, byte cargo, RailType railtype, int32* cost)
 {
 	int i;
 	const AiDefaultRailBlock *p;
@@ -1643,7 +1642,7 @@ static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, by
 	for (i = 0; (p = _default_rail_track_data[i]) != NULL; i++) {
 		if (p->p0 == p0 && p->p1 == p1 && p->p2 == p2 && p->p3 == p3 &&
 				(p->dir == 0xFF || p->dir == dir || ((p->dir - 1) & 3) == dir)) {
-			*cost = AiDoBuildDefaultRailTrack(tile, p->data, DC_NO_TOWN_RATING);
+			*cost = AiDoBuildDefaultRailTrack(tile, p->data, railtype, DC_NO_TOWN_RATING);
 			if (!CmdFailed(*cost) && AiCheckTrackResources(tile, p->data, cargo))
 				return i;
 		}
@@ -1747,7 +1746,9 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 			rule = AiBuildDefaultRailTrack(aib->use_tile,
 				p->ai.build_kind, p->ai.num_wagons,
 				aib->unk6, aib->unk7,
-				aib->direction, aib->cargo, &cost
+				aib->direction, aib->cargo,
+				p->ai.railtype_to_use,
+				&cost
 			);
 
 			if (rule == -1) {
@@ -1768,6 +1769,7 @@ static void AiStateBuildDefaultRailBlocks(Player *p)
 				r = AiDoBuildDefaultRailTrack(
 					aib->use_tile,
 					_default_rail_track_data[rule]->data,
+					p->ai.railtype_to_use,
 					DC_EXEC | DC_NO_TOWN_RATING
 				);
 				assert(!CmdFailed(r));
@@ -3862,8 +3864,6 @@ static void AiBuildCompanyHQ(Player *p)
 
 void AiDoGameLoop(Player *p)
 {
-	_cur_ai_player = p;
-
 	if (p->bankrupt_asked != 0) {
 		AiHandleTakeover(p);
 		return;
