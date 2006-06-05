@@ -223,6 +223,3 @@ FORCEINLINE void CBinaryHeapT<Titem_>::CheckConsistency()
 
 
 #endif /* BINARYHEAP_HPP */
-
-
-

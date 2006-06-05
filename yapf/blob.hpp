@@ -263,4 +263,3 @@ struct CStrA : public CBlobT<char>
 };
 
 #endif /* BLOB_HPP */
-
