@@ -7,11 +7,13 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"
 #include "tile.h"
+#include "tunnel_map.h"
 #include "vehicle.h"
 #include "viewport.h"
 #include "command.h"
@@ -1200,13 +1202,6 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 	}
 }
 
-static inline bool IsTunnel(TileIndex t) {return !HASBIT(_m[t].m5, 7);}
-static inline uint DiagDirToAxis(DiagDirection d) {return (d & 1);}
-static inline DiagDirection GetTunnelDirection(TileIndex t) {return (DiagDirection)GB(_m[t].m5, 0, 2);}
-static inline bool IsBridgeRamp(TileIndex t) {return !HASBIT(_m[t].m5, 6);}
-static inline DiagDirection GetBridgeRampDirection(TileIndex t) {return (DiagDirection)((6 - (_m[t].m5 >> 4 & 2) - (_m[t].m5 & 1)) % 4);}
-static inline bool IsTransportUnderBridge(TileIndex t) {return HASBIT(_m[t].m5, 5);}
-static inline uint GetBridgeAxis(TileIndex t) {return GB(_m[t].m5, 0, 1);}
 
 static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 {

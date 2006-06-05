@@ -2,10 +2,12 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "bridge_map.h"
 #include "functions.h"
 #include "map.h"
 #include "tile.h"
 #include "rail.h"
+#include "rail_map.h"
 #include "pathfind.h"
 #include "debug.h"
 #include "variables.h"
@@ -672,12 +674,6 @@ static const byte _length_of_track[16] = {
 	DIAG_FACTOR,DIAG_FACTOR,STR_FACTOR,STR_FACTOR,STR_FACTOR,STR_FACTOR,0,0
 };
 
-static inline bool IsBridgeMiddle(TileIndex t) {return HASBIT(_m[t].m5, 6);}
-static inline uint GetBridgeAxis(TileIndex t) {return GB(_m[t].m5, 0, 1);}
-static inline uint DiagDirToAxis(DiagDirection d) {return (d & 1);}
-static inline bool IsBridge(TileIndex t) {return HASBIT(_m[t].m5, 7);}
-static inline bool IsBridgeTile(TileIndex t) {return IsTileType(t, MP_TUNNELBRIDGE) && IsBridge(t);}
-static inline RailType GetRailTypeCrossing(TileIndex t) {return (RailType)GB(_m[t].m4, 0, 4);}
 
 // new more optimized pathfinder for trains...
 // Tile is the tile the train is at.
