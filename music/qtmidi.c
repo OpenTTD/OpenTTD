@@ -1,6 +1,4 @@
-/*
- * qtmidi.c - MIDI Player for OpenTTD using QuickTime (MacOS X).
- */
+/* $Id$ */
 
 /**
  * @file qtmidi.c
