@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "road_map.h"
 #include "roadveh.h"
+#include "ship.h"
 #include "spritecache.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -1990,7 +1991,7 @@ Trackdir GetVehicleTrackdir(const Vehicle* v)
 			return TrackDirectionToTrackdir(FIND_FIRST_BIT(v->u.rail.track),v->direction);
 
 		case VEH_Ship:
-			if (v->u.ship.state == 0x80)  /* Inside a depot? */
+			if (IsShipInDepot(v))
 				/* We'll assume the ship is facing outwards */
 				return DiagdirToDiagTrackdir(GetShipDepotDirection(v->tile));
 

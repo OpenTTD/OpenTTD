@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "ship.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"
@@ -466,11 +467,9 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 			StringID str;
 
 			// Possible to refit?
-			if (ShipVehInfo(v->engine_type)->refittable &&
-				v->vehstatus&VS_STOPPED &&
-				v->u.ship.state == 0x80 &&
-				IsTileDepotType(v->tile, TRANSPORT_WATER))
+			if (ShipVehInfo(v->engine_type)->refittable && IsShipInDepotStopped(v)) {
 				disabled = 0;
+			}
 
 			if (v->owner != _local_player)
 				disabled |= 1<<8 | 1<<7;
@@ -568,7 +567,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 			Vehicle *v;
 			uint32 h;
 			v = GetVehicle(w->window_number);
-			h = IsTileDepotType(v->tile, TRANSPORT_WATER) && v->vehstatus & VS_HIDDEN ? (1<< 7) : (1 << 11);
+			h = IsShipInDepot(v) ? 1 << 7 : 1 << 11;
 			if (h != w->hidden_state) {
 				w->hidden_state = h;
 				SetWindowDirty(w);
@@ -629,7 +628,7 @@ static void DrawShipDepotWindow(Window *w)
 	/* determine amount of items for scroller */
 	num = 0;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship && v->u.ship.state == 0x80 && v->tile == tile)
+		if (v->type == VEH_Ship && IsShipInDepot(v) && v->tile == tile)
 			num++;
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
@@ -646,7 +645,7 @@ static void DrawShipDepotWindow(Window *w)
 	num = w->vscroll.pos * w->hscroll.cap;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship && v->u.ship.state == 0x80 && v->tile == tile &&
+		if (v->type == VEH_Ship && IsShipInDepot(v) && v->tile == tile &&
 				--num < 0 && num >= -w->vscroll.cap * w->hscroll.cap) {
 			DrawShipImage(v, x+19, y, WP(w,traindepot_d).sel);
 
@@ -1013,7 +1012,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsTileDepotType(v->tile, TRANSPORT_WATER) && (v->vehstatus & VS_HIDDEN))
+			if (IsShipInDepot(v))
 				str = STR_021F;
 			else
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;

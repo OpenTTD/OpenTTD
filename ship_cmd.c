@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "ship.h"
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"
@@ -319,7 +320,7 @@ static void CheckShipLeaveDepot(Vehicle *v)
 	Axis axis;
 	uint m;
 
-	if (v->u.ship.state != 0x80) return;
+	if (!IsShipInDepot(v)) return;
 
 	tile = v->tile;
 	axis = GetShipDepotAxis(tile);
@@ -681,7 +682,7 @@ static void ShipController(Vehicle *v)
 
 	if (GetNewVehiclePos(v, &gp)) {
 		// staying in tile
-		if (v->u.ship.state == 0x80) {
+		if (IsShipInDepot(v)) {
 			gp.x = v->x_pos;
 			gp.y = v->y_pos;
 		} else {
@@ -931,8 +932,9 @@ int32 CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
-	if (!IsTileDepotType(v->tile, TRANSPORT_WATER) || v->u.ship.state != 0x80 || !(v->vehstatus&VS_STOPPED))
+	if (!IsShipInDepotStopped(v)) {
 		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
+	}
 
 	if (flags & DC_EXEC) {
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
@@ -963,7 +965,7 @@ int32 CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		if (v->vehstatus & VS_STOPPED && v->u.ship.state == 0x80) {
+		if (IsShipInDepotStopped(v)) {
 			DeleteVehicleNews(p1, STR_981C_SHIP_IS_WAITING_IN_DEPOT);
 		}
 
@@ -1045,9 +1047,9 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (!IsTileDepotType(v->tile, TRANSPORT_WATER) || !(v->vehstatus&VS_STOPPED) || v->u.ship.state != 0x80)
-			return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
-
+	if (!IsShipInDepotStopped(v)) {
+		return_cmd_error(STR_980B_SHIP_MUST_BE_STOPPED_IN);
+	}
 
 	/* Check cargo */
 	if (!ShipVehInfo(v->engine_type)->refittable) return CMD_ERROR;
