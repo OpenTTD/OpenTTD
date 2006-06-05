@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "aircraft.h"
 #include "debug.h"
 #include "functions.h"
 #include "station_map.h"
@@ -492,7 +493,6 @@ static const Widget _aircraft_view_widgets[] = {
 { WIDGETS_END }
 };
 
-bool CheckStoppedInHangar(const Vehicle* v); /* XXX extern function declaration in .c */
 
 static void AircraftViewWndProc(Window *w, WindowEvent *e)
 {
@@ -502,7 +502,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		uint32 disabled = 1 << 8;
 		StringID str;
 
-		if (v->vehstatus & VS_STOPPED && IsHangarTile(v->tile)) disabled = 0;
+		if (IsAircraftInHangarStopped(v)) disabled = 0;
 
 		if (v->owner != _local_player) disabled |= 1 << 8 | 1 << 7;
 		w->disabled_state = disabled;
@@ -595,7 +595,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_MOUSELOOP: {
 		const Vehicle* v = GetVehicle(w->window_number);
-		uint32 h = CheckStoppedInHangar(v) ? (1 << 7) : (1 << 11);
+		uint32 h = IsAircraftInHangarStopped(v) ? 1 << 7 : 1 << 11;
 
 		if (h != w->hidden_state) {
 			w->hidden_state = h;
@@ -1027,7 +1027,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsHangarTile(v->tile) && v->vehstatus & VS_HIDDEN) {
+			if (IsAircraftInHangar(v)) {
 				str = STR_021F;
 			} else {
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;

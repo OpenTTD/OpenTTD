@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "aircraft.h"
 #include "debug.h"
 #include "functions.h"
 #include "station_map.h"
@@ -338,12 +339,6 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 
-bool CheckStoppedInHangar(const Vehicle* v)
-{
-	return v->vehstatus & VS_STOPPED && IsHangarTile(v->tile);
-}
-
-
 static void DoDeleteAircraft(Vehicle *v)
 {
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
@@ -367,7 +362,7 @@ int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!CheckStoppedInHangar(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
+	if (!IsAircraftInHangarStopped(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -402,7 +397,7 @@ int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_A017_AIRCRAFT_IS_IN_FLIGHT);
 
 	if (flags & DC_EXEC) {
-		if (v->vehstatus & VS_STOPPED && IsHangarTile(v->tile)) {
+		if (IsAircraftInHangarStopped(v)) {
 			DeleteVehicleNews(p1, STR_A014_AIRCRAFT_IS_WAITING_IN);
 		}
 
@@ -499,7 +494,7 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!CheckStoppedInHangar(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
+	if (!IsAircraftInHangarStopped(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	avi = AircraftVehInfo(v->engine_type);
 
