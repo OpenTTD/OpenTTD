@@ -15,9 +15,9 @@ struct CYapfRoadNodeT
 	TileIndex       m_segment_last_tile;
 	Trackdir        m_segment_last_td;
 
-	void Set(CYapfRoadNodeT* parent, TileIndex tile, Trackdir td)
+	void Set(CYapfRoadNodeT* parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
-		base::Set(parent, tile, td);
+		base::Set(parent, tile, td, is_choice);
 		m_segment_last_tile = tile;
 		m_segment_last_td = td;
 	}

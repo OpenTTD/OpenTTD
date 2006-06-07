@@ -38,7 +38,7 @@ struct CYapfNodeT {
 	int         m_cost;
 	int         m_estimate;
 
-	FORCEINLINE void Set(Node *parent, TileIndex tile, Trackdir td)
+	FORCEINLINE void Set(Node *parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
 		m_key.Set(tile, td);
 		m_hash_next = NULL;

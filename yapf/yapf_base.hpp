@@ -186,10 +186,11 @@ public:
 	/** add multiple nodes - direct children of the given node */
 	FORCEINLINE void AddMultipleNodes(Node* parent, TileIndex tile, TrackdirBits td_bits)
 	{
+		bool is_choice = (KillFirstBit2x64(td_bits) != 0);
 		for (TrackdirBits rtds = td_bits; rtds != TRACKDIR_BIT_NONE; rtds = (TrackdirBits)KillFirstBit2x64(rtds)) {
 			Trackdir td = (Trackdir)FindFirstBit2x64(rtds);
 			Node& n = Yapf().CreateNewNode();
-			n.Set(parent, tile, td);
+			n.Set(parent, tile, td, is_choice);
 			Yapf().AddNewNode(n);
 		}
 	}

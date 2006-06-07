@@ -30,10 +30,11 @@ public:
 	/// Called when YAPF needs to place origin nodes into open list
 	void PfSetStartupNodes()
 	{
+		bool is_choice = (KillFirstBit2x64(m_orgTrackdirs) != 0);
 		for (TrackdirBits tdb = m_orgTrackdirs; tdb != TRACKDIR_BIT_NONE; tdb = (TrackdirBits)KillFirstBit2x64(tdb)) {
 			Trackdir td = (Trackdir)FindFirstBit2x64(tdb);
 			Node& n1 = Yapf().CreateNewNode();
-			n1.Set(NULL, m_orgTile, td);
+			n1.Set(NULL, m_orgTile, td, is_choice);
 			Yapf().AddStartupNode(n1);
 		}
 	}
@@ -76,12 +77,12 @@ public:
 	{
 		if (m_orgTile != INVALID_TILE && m_orgTd != INVALID_TRACKDIR) {
 			Node& n1 = Yapf().CreateNewNode();
-			n1.Set(NULL, m_orgTile, m_orgTd);
+			n1.Set(NULL, m_orgTile, m_orgTd, false);
 			Yapf().AddStartupNode(n1);
 		}
 		if (m_revTile != INVALID_TILE && m_revTd != INVALID_TRACKDIR) {
 			Node& n2 = Yapf().CreateNewNode();
-			n2.Set(NULL, m_revTile, m_revTd);
+			n2.Set(NULL, m_revTile, m_revTd, false);
 			n2.m_cost = m_reverse_penalty;
 			Yapf().AddStartupNode(n2);
 		}

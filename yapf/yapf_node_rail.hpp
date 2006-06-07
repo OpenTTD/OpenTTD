@@ -70,17 +70,18 @@ struct CYapfRailNodeT
 	CYapfRailSegment *m_segment;
 	uint16            m_num_signals_passed;
 	union {
-		byte            m_inherited_flags;
+		uint32          m_inherited_flags;
 		struct {
 			bool          m_targed_seen : 1;
+			bool          m_choice_seen : 1;
 			bool          m_last_signal_was_red : 1;
 		} flags_s;
 	} flags_u;
 	SignalType        m_last_red_signal_type;
 
-	FORCEINLINE void Set(CYapfRailNodeT* parent, TileIndex tile, Trackdir td)
+	FORCEINLINE void Set(CYapfRailNodeT* parent, TileIndex tile, Trackdir td, bool is_choice)
 	{
-		base::Set(parent, tile, td);
+		base::Set(parent, tile, td, is_choice);
 		m_segment = NULL;
 		if (parent == NULL) {
 			m_num_signals_passed      = 0;
@@ -91,6 +92,7 @@ struct CYapfRailNodeT
 			flags_u.m_inherited_flags = parent->flags_u.m_inherited_flags;
 			m_last_red_signal_type    = parent->m_last_red_signal_type;
 		}
+		flags_u.flags_s.m_choice_seen |= is_choice;
 	}
 
 	FORCEINLINE TileIndex GetLastTile() const {assert(m_segment != NULL); return m_segment->m_last_tile;}
