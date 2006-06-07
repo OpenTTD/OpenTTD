@@ -21,6 +21,7 @@
 #include "vehicle_gui.h"
 #include "table/sprites.h"
 #include "newgrf_engine.h"
+#include "newgrf_callbacks.h"
 
 static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport);
 static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *Airport);
@@ -156,6 +157,34 @@ static int32 EstimateAircraftCost(EngineID engine_type)
 }
 
 
+/**
+ * Calculates cargo capacity based on an aircraft's passenger
+ * and mail capacities.
+ * @param cid Which cargo type to calculate a capacity for.
+ * @param engine Which engine to find a cargo capacity for.
+ * @return New cargo capacity value.
+ */
+static uint16 AircraftDefaultCargoCapacity(CargoID cid, EngineID engine_type)
+{
+	const AircraftVehicleInfo *avi = AircraftVehInfo(engine_type);
+
+	assert(cid != CT_INVALID);
+
+	/* An aircraft can carry twice as much goods as normal cargo,
+	 * and four times as many passengers. */
+	switch (cid) {
+		case CT_PASSENGERS:
+			return avi->passenger_capacity;
+		case CT_MAIL:
+			return avi->passenger_capacity + avi->mail_capacity;
+		case CT_GOODS:
+			return (avi->passenger_capacity + avi->mail_capacity) / 2;
+		default:
+			return (avi->passenger_capacity + avi->mail_capacity) / 4;
+	}
+}
+
+
 /** Build an aircraft.
  * @param tile tile of depot where aircraft is built
  * @param p1 aircraft type being built (engine)
@@ -192,6 +221,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	if (flags & DC_EXEC) {
+		CargoID cargo;
 		uint x;
 		uint y;
 
@@ -255,6 +285,32 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->value = value;
 
 		u->subtype = 4;
+
+		/* Danger, Will Robinson!
+		 * If the aircraft is refittable, but cannot be refitted to
+		 * passengers, we select the cargo type from the refit mask.
+		 * This is a fairly nasty hack to get around the fact that TTD
+		 * has no default cargo type specifier for planes... */
+		cargo = FindFirstRefittableCargo(p1);
+		if (cargo != CT_INVALID && cargo != CT_PASSENGERS) {
+			uint16 callback = CALLBACK_FAILED;
+
+			v->cargo_type = cargo;
+
+			if (HASBIT(EngInfo(p1)->callbackmask, CBM_REFIT_CAPACITY)) {
+				callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
+			}
+
+			if (callback == CALLBACK_FAILED) {
+				/* Callback failed, or not executed; use the default cargo capacity */
+				v->cargo_cap = AircraftDefaultCargoCapacity(v->cargo_type, v->engine_type);
+			} else {
+				v->cargo_cap = callback;
+			}
+
+			/* Set the 'second compartent' capacity to none */
+			u->cargo_cap = 0;
+		}
 
 		e = GetEngine(p1);
 		v->reliability = e->reliability;

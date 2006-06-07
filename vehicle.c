@@ -692,6 +692,25 @@ bool CanRefitTo(EngineID engine_type, CargoID cid_to)
 	return HASBIT(EngInfo(engine_type)->refit_mask, cid);
 }
 
+/** Find the first cargo type that an engine can be refitted to.
+ * @param engine Which engine to find cargo for.
+ * @return A climate dependent cargo type. CT_INVALID is returned if not refittable.
+ */
+CargoID FindFirstRefittableCargo(EngineID engine_type)
+{
+	CargoID cid;
+	uint32 refit_mask = EngInfo(engine_type)->refit_mask;
+
+	if (refit_mask != 0) {
+		for (cid = CT_PASSENGERS; cid < NUM_CARGO; cid++) {
+			if (HASBIT(refit_mask, _global_cargo_id[_opt_ptr->landscape][cid])) return cid;
+		}
+	}
+
+	return CT_INVALID;
+}
+
+
 static void DoDrawVehicle(const Vehicle *v)
 {
 	uint32 image = v->cur_image;
