@@ -544,6 +544,7 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	CargoID new_cid = GB(p2, 0, 8);
 	byte new_subtype = GB(p2, 8, 8);
 	const AircraftVehicleInfo *avi;
+	uint16 callback = CALLBACK_FAILED;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
@@ -559,21 +560,24 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_RUN);
 
-	switch (new_cid) {
-		case CT_PASSENGERS:
-			pass = avi->passenger_capacity;
-			break;
-		case CT_MAIL:
-			pass = avi->passenger_capacity + avi->mail_capacity;
-			break;
-		case CT_GOODS:
-			pass = avi->passenger_capacity + avi->mail_capacity;
-			pass /= 2;
-			break;
-		default:
-			pass = avi->passenger_capacity + avi->mail_capacity;
-			pass /= 4;
-			break;
+	/* Check the refit capacity callback */
+	if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_REFIT_CAPACITY)) {
+		/* Back up the existing cargo type */
+		CargoID temp_cid = v->cargo_type;
+		v->cargo_type = new_cid;
+
+		callback = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
+
+		/* Restore the cargo type */
+		v->cargo_type = temp_cid;
+	}
+
+	if (callback == CALLBACK_FAILED) {
+		/* If the callback failed, or wasn't executed, use the aircraft's
+		 * default cargo capacity */
+		pass = AircraftDefaultCargoCapacity(new_cid, v->engine_type);
+	} else {
+		pass = callback;
 	}
 	_returned_refit_capacity = pass;
 
