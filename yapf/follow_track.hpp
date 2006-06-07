@@ -45,10 +45,10 @@ struct CFollowTrackT : public FollowTrack_t
 		m_old_td = old_td;
 		assert((GetTileTrackStatus(m_old_tile, TT()) & TrackdirToTrackdirBits(m_old_td)) != 0);
 		m_exitdir = TrackdirToExitdir(m_old_td);
-		if (EnteredRailDepot()) return true;
+		if (EnteredDepot()) return true;
 		if (!CanExitOldTile()) return false;
 		FollowTileExit();
-		if (!QueryNewTileTrackStatus()) return false;
+		if (!QueryNewTileTrackStatus()) return TryReverse();
 		if (!CanEnterNewTile()) return false;
 		m_new_td_bits &= DiagdirReachesTrackdirs(m_exitdir);
 		if (!Allow90degTurns())
@@ -198,23 +198,44 @@ protected:
 		return true;
 	}
 
-	FORCEINLINE bool EnteredRailDepot()
+	/** return true if we entered depot and reversed inside */
+	FORCEINLINE bool EnteredDepot()
 	{
-		// rail depots cause reversing
-		if (IsRailTT() && IsTileDepotType(m_old_tile, TT())) {
-			DiagDirection exitdir = GetRailDepotDirection(m_old_tile);
+		// rail and road depots cause reversing
+		if (!IsWaterTT() && IsTileDepotType(m_old_tile, TT())) {
+			DiagDirection exitdir = IsRailTT() ? GetRailDepotDirection(m_old_tile) : GetRoadDepotDirection(m_old_tile);
 			if (exitdir != m_exitdir) {
 				// reverse
 				m_new_tile = m_old_tile;
 				m_new_td_bits = TrackdirToTrackdirBits(ReverseTrackdir(m_old_td));
 				m_exitdir = exitdir;
 				m_tiles_skipped = 0;
-				m_is_tunnel = false;
+				m_is_tunnel = m_is_bridge = m_is_station = false;
 				return true;
 			}
 		}
 		return false;
 	}
+
+	/** return true if we successfully reversed at end of road/track */
+	FORCEINLINE bool TryReverse()
+	{
+		if (IsRoadTT()) {
+			// if we reached the end of road, we can reverse the RV and continue moving
+			m_exitdir = ReverseDiagDir(m_exitdir);
+			// new tile will be the same as old one
+			m_new_tile = m_old_tile;
+			// set new trackdir bits to all reachable trackdirs
+			QueryNewTileTrackStatus();
+			m_new_td_bits &= DiagdirReachesTrackdirs(m_exitdir);
+			if (m_new_td_bits != TRACKDIR_BIT_NONE) {
+				// we have some trackdirs reachable after reversal
+				return true;
+			}
+		}
+		return false;
+	}
+
 public:
 	/** Helper for pathfinders - get min/max speed on the m_old_tile/m_old_td */
 	int GetSpeedLimit(int *pmin_speed = NULL)

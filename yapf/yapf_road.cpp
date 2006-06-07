@@ -76,7 +76,13 @@ public:
 			// base tile cost depending on distance between edges
 			segment_cost += Yapf().OneTileCost(tile, trackdir);
 
-			// if there are no reachable trackdirs n new tile, we have end of road
+			// stop if we have just entered the depot
+			if (IsTileDepotType(tile, TRANSPORT_ROAD) && trackdir == DiagdirToDiagTrackdir(ReverseDiagDir(GetRoadDepotDirection(tile)))) {
+				// next time we will reverse and leave the depot
+				break;
+			}
+
+			// if there are no reachable trackdirs on new tile, we have end of road
 			TrackFollower F;
 			if (!F.Follow(tile, trackdir)) break;
 
