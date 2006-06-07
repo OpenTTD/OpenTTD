@@ -231,6 +231,29 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	switch (GetTileType(tile)) {
+		case MP_TUNNELBRIDGE:
+			if (!IsBridge(tile) ||
+					!IsBridgeMiddle(tile) ||
+					(GetBridgeAxis(tile) == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) != trackbit) {
+				// Get detailed error message
+				return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			}
+
+			if (IsClearUnderBridge(tile)) {
+				ret = CheckRailSlope(tileh, trackbit, 0, tile);
+				if (CmdFailed(ret)) return ret;
+				cost += ret;
+
+				if (flags & DC_EXEC) SetRailUnderBridge(tile, _current_player, p1);
+			} else if (IsTransportUnderBridge(tile) &&
+					GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
+				return_cmd_error(STR_1007_ALREADY_BUILT);
+			} else {
+				// Get detailed error message
+				return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
+			}
+			break;
+
 		case MP_RAILWAY:
 			if (!CheckTrackCombination(tile, trackbit, flags) ||
 					!EnsureNoVehicle(tile)) {
@@ -318,6 +341,20 @@ int32 CmdRemoveSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	switch (GetTileType(tile)) {
+		case MP_TUNNELBRIDGE:
+			if (!IsBridge(tile) ||
+					!IsBridgeMiddle(tile) ||
+					!IsTransportUnderBridge(tile) ||
+					GetTransportTypeUnderBridge(tile) != TRANSPORT_RAIL ||
+					GetRailBitsUnderBridge(tile) != trackbit ||
+					(_current_player != OWNER_WATER && !CheckTileOwnership(tile)) ||
+					!EnsureNoVehicleOnGround(tile)) {
+				return CMD_ERROR;
+			}
+
+			if (flags & DC_EXEC) SetClearUnderBridge(tile);
+			break;
+
 		case MP_STREET: {
 			if (!IsLevelCrossing(tile) ||
 					GetCrossingRailBits(tile) != trackbit ||
@@ -553,8 +590,6 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 	cost = ret;
-
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	d = AllocateDepot();
 	if (d == NULL) return CMD_ERROR;
@@ -1381,7 +1416,6 @@ static void DrawTile_Track(TileInfo *ti)
 			);
 		}
 	}
-	DrawBridgeMiddle(ti);
 }
 
 void DrawTrainDepotSprite(int x, int y, int image, RailType railtype)
@@ -1491,11 +1525,19 @@ typedef struct SignalVehicleCheckStruct {
 static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 {
 	const SignalVehicleCheckStruct* dest = data;
+	TileIndex tile;
 
 	if (v->type != VEH_Train) return NULL;
 
+	/* Find the tile outside the tunnel, for signalling */
+	if (v->u.rail.track == 0x40) {
+		tile = GetVehicleOutOfTunnelTile(v);
+	} else {
+		tile = v->tile;
+	}
+
 	/* Wrong tile, or no train? Not a match */
-	if (v->tile != dest->tile) return NULL;
+	if (tile != dest->tile) return NULL;
 
 	/* Are we on the same piece of track? */
 	if (dest->track & (v->u.rail.track + (v->u.rail.track << 8))) return v;
@@ -1511,18 +1553,15 @@ static bool SignalVehicleCheck(TileIndex tile, uint track)
 	dest.tile = tile;
 	dest.track = track;
 
-	/* Locate vehicles in tunnels or on bridges */
-	if (IsTunnelTile(tile) || IsBridgeTile(tile)) {
-		TileIndex end;
-		DiagDirection direction;
-
-		if (IsTunnelTile(tile)) {
-			end = GetOtherTunnelEnd(tile);
-			direction = GetTunnelDirection(tile);
-		} else {
-			end = GetOtherBridgeEnd(tile);
-			direction = GetBridgeRampDirection(tile);
-		}
+	/** @todo "Hackish" fix for the tunnel problems. This is needed because a tunnel
+	 * is some kind of invisible black hole, and there is some special magic going
+	 * on in there. This 'workaround' can be removed once the maprewrite is done.
+	 */
+	if (IsTunnelTile(tile)) {
+		// It is a tunnel we're checking, we need to do some special stuff
+		// because VehicleFromPos will not find the vihicle otherwise
+		TileIndex end = GetOtherTunnelEnd(tile);
+		DiagDirection direction = GetTunnelDirection(tile);
 
 		dest.track = 1 << (direction & 1); // get the trackbit the vehicle would have if it has not entered the tunnel yet (ie is still visible)
 
@@ -1532,9 +1571,9 @@ static bool SignalVehicleCheck(TileIndex tile, uint track)
 		// check for a vehicle with that trackdir on the end tile of the tunnel
 		if (VehicleFromPos(end, &dest, SignalVehicleCheckProc) != NULL) return true;
 
-		// now check all tiles from start to end for a warping vehicle
+		// now check all tiles from start to end for a "hidden" vehicle
 		// NOTE: the hashes for tiles may overlap, so this could maybe be optimised a bit by not checking every tile?
-		dest.track = 0x40;
+		dest.track = 0x40; // trackbit for vehicles "hidden" inside a tunnel
 		for (; tile != end; tile += TileOffsByDir(direction)) {
 			if (VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL)
 				return true;

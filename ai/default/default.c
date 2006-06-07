@@ -2165,7 +2165,9 @@ static bool AiRemoveTileAndGoForward(Player *p)
 				return false;
 			p->ai.cur_tile_a = TILE_MASK(_build_tunnel_endtile - TileOffsByDir(p->ai.cur_dir_a));
 			return true;
-		} else {
+		}
+
+		if (IsBridgeRamp(tile)) {
 			// Check if the bridge points in the right direction.
 			// This is not really needed the first place AiRemoveTileAndGoForward is called.
 			if (DiagDirToAxis(GetBridgeRampDirection(tile)) != (p->ai.cur_dir_a & 1U)) return false;
@@ -3697,6 +3699,7 @@ pos_3:
 	} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if (!IsTileOwner(tile, _current_player) ||
 				!IsBridge(tile) ||
+				!IsBridgeRamp(tile) ||
 				GetBridgeTransportType(tile) != TRANSPORT_RAIL) {
 			return;
 		}

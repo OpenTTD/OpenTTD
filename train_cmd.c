@@ -25,7 +25,6 @@
 #include "waypoint.h"
 #include "vehicle_gui.h"
 #include "train.h"
-#include "bridge.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
@@ -92,7 +91,10 @@ void TrainPowerChanged(Vehicle* v)
 		/* Power is not added for articulated parts */
 		if (IsArticulatedPart(u)) continue;
 
-		if (IsLevelCrossingTile(u->tile)) {
+		if (IsBridgeTile(u->tile) && IsBridgeMiddle(u->tile) && DiagDirToAxis(DirToDiagDir(u->direction)) == GetBridgeAxis(u->tile)) {
+			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeOnBridge(u->tile))) engine_has_power = false;
+			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeOnBridge(u->tile))) wagon_has_power = false;
+		} else if (IsLevelCrossingTile(u->tile)) {
 			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeCrossing(u->tile)))	engine_has_power = false;
 			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeCrossing(u->tile)))	wagon_has_power = false;
 		} else {
@@ -1525,14 +1527,13 @@ static void ReverseTrainSwapVeh(Vehicle *v, int l, int r)
 		UpdateVarsAfterSwap(a);
 		UpdateVarsAfterSwap(b);
 
-		/* call the proper EnterTile function unless we are in a wormhole */
-		if (!(a->u.rail.track & 0x40)) VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
-		if (!(b->u.rail.track & 0x40)) VehicleEnterTile(b, b->tile, b->x_pos, b->y_pos);
+		VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
+		VehicleEnterTile(b, b->tile, b->x_pos, b->y_pos);
 	} else {
 		if (!(a->u.rail.track & 0x80)) a->direction = ReverseDir(a->direction);
 		UpdateVarsAfterSwap(a);
 
-		if (!(a->u.rail.track & 0x40)) VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
+		VehicleEnterTile(a, a->tile, a->x_pos, a->y_pos);
 	}
 
 	/* Update train's power incase tiles were different rail type */
@@ -1849,6 +1850,8 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 		tfdd.best_length = 0;
 		return tfdd;
 	}
+
+	if (v->u.rail.track == 0x40) tile = GetVehicleOutOfTunnelTile(v);
 
 	if (_patches.yapf.rail_use_yapf) {
 		bool found = YapfFindNearestRailDepotTwoWay(v, max_distance, NPF_INFINITE_PENALTY, &tfdd.tile, &tfdd.reverse);
@@ -2567,7 +2570,9 @@ static byte AfterSetTrainPos(Vehicle *v, bool new_tile)
 	byte new_z, old_z;
 
 	// need this hint so it returns the right z coordinate on bridges.
+	_get_z_hint = v->z_pos;
 	new_z = GetSlopeZ(v->x_pos, v->y_pos);
+	_get_z_hint = 0;
 
 	old_z = v->z_pos;
 	v->z_pos = new_z;
@@ -2641,6 +2646,13 @@ static bool CheckCompatibleRail(const Vehicle *v, TileIndex tile)
 		case MP_RAILWAY:
 		case MP_STATION:
 			// normal tracks, jump to owner check
+			break;
+
+		case MP_TUNNELBRIDGE:
+			if (IsBridge(tile) && IsBridgeMiddle(tile)) {
+				// is train going over the bridge?
+				if (v->z_pos > GetTileMaxZ(tile)) return true;
+			}
 			break;
 
 		case MP_STREET:
@@ -2983,16 +2995,15 @@ static void TrainController(Vehicle *v)
 				v->direction = chosen_dir;
 			}
 		} else {
-			/* in tunnel on on a bridge */
+			/* in tunnel */
 			GetNewVehiclePos(v, &gp);
 
-			SetSpeedLimitOnBridge(v);
-
-			if (!(IsTunnelTile(gp.new_tile) || IsBridgeTile(gp.new_tile)) || !(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y) & 0x4)) {
+			// Check if to exit the tunnel...
+			if (!IsTunnelTile(gp.new_tile) ||
+					!(VehicleEnterTile(v, gp.new_tile, gp.x, gp.y)&0x4) ) {
 				v->x_pos = gp.x;
 				v->y_pos = gp.y;
 				VehiclePositionChanged(v);
-				if (!(v->vehstatus & VS_HIDDEN)) EndVehicleMove(v);
 				continue;
 			}
 		}
@@ -3089,7 +3100,7 @@ static void DeleteLastWagon(Vehicle *v)
 	 * others are on it */
 	DisableTrainCrossing(v->tile);
 
-	if ( (v->u.rail.track == 0x40 && v->vehstatus & VS_HIDDEN) ) { // inside a tunnel
+	if (v->u.rail.track == 0x40) { // inside a tunnel
 		TileIndex endtile = CheckTunnelBusy(v->tile, NULL);
 
 		if (endtile == INVALID_TILE) return; // tunnel is busy (error returned)
@@ -3120,16 +3131,15 @@ static void ChangeTrainDirRandomly(Vehicle *v)
 	};
 
 	do {
-		/* We don't need to twist around vehicles if they're not visible */
-		if (!(v->vehstatus & VS_HIDDEN)) {
+		//I need to buffer the train direction
+		if (!(v->u.rail.track & 0x40)) {
 			v->direction = ChangeDir(v->direction, delta[GB(Random(), 0, 2)]);
+		}
+		if (!(v->vehstatus & VS_HIDDEN)) {
 			BeginVehicleMove(v);
 			UpdateTrainDeltaXY(v, v->direction);
 			v->cur_image = GetTrainImage(v, v->direction);
-			/* Refrain from updating the z position of the vehicle when on
-			   a bridge, because AfterSetTrainPos will put the vehicle under
-			   the bridge in that case */
-			if (!(v->u.rail.track & 0x40)) AfterSetTrainPos(v, false);
+			AfterSetTrainPos(v, false);
 		}
 	} while ((v = v->next) != NULL);
 }
@@ -3140,7 +3150,7 @@ static void HandleCrashedTrain(Vehicle *v)
 	uint32 r;
 	Vehicle *u;
 
-	if (state == 4 && !(v->u.rail.track & VS_HIDDEN)) {
+	if (state == 4 && v->u.rail.track != 0x40) {
 		CreateEffectVehicleRel(v, 4, 4, 8, EV_EXPLOSION_LARGE);
 	}
 
@@ -3227,15 +3237,10 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 
 	tile = v->tile;
 
-	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-		DiagDirection dir;
-
-		if (IsTunnel(tile)) {
-			dir = GetTunnelDirection(tile);
-		} else {
-			dir = GetBridgeRampDirection(tile);
-		}
-		if (DiagDirToDir(dir) == v->direction) return true;
+	// tunnel entrance?
+	if (IsTunnelTile(tile) &&
+			DiagDirToDir(GetTunnelDirection(tile)) == v->direction) {
+		return true;
 	}
 
 	// depot?

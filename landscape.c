@@ -2,7 +2,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "bridge_map.h"
 #include "clear_map.h"
 #include "functions.h"
 #include "map.h"
@@ -388,8 +387,6 @@ void InitializeLandscape(void)
 		for (x = 0; x < maxx; x++) {
 			MakeClear(sizex * y + x, CLEAR_GRASS, 3);
 			SetTileHeight(sizex * y + x, 0);
-			_m[sizex * y + x].extra = 0;
-			ClearBridgeMiddle(sizex * y + x);
 		}
 		MakeVoid(sizex * y + x);
 	}

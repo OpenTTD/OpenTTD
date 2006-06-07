@@ -91,10 +91,18 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 				return DiagDirToAxis(GetTunnelDirection(t)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
 			} else {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
-				if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) {
-					*override = 1 << GetBridgeRampDirection(t);
+				if (IsBridgeMiddle(t)) {
+					if (IsTransportUnderBridge(t) &&
+						GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL) {
+						return GetRailBitsUnderBridge(t);
+					} else {
+						return 0;
+					}
+				} else {
+					if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) *override = 1 << GetBridgeRampDirection(t);
+
+					return DiagDirToAxis(GetBridgeRampDirection(t)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
 				}
-				return DiagDirToAxis(GetBridgeRampDirection(t)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
 			}
 		case MP_STREET:
 			if (GetRoadTileType(t) != ROAD_TILE_CROSSING) return 0;
@@ -117,7 +125,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 static void AdjustTileh(TileIndex tile, Slope* tileh)
 {
 	if (IsTunnelTile(tile)) *tileh = SLOPE_FLAT;
-	if (IsBridgeTile(tile)) {
+	if (IsBridgeTile(tile) && IsBridgeRamp(tile)) {
 		if (*tileh != SLOPE_FLAT) {
 			*tileh = SLOPE_FLAT;
 		} else {
@@ -185,10 +193,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		for (k = 0; k < NUM_TRACKS_AT_PCP; k++) {
 			/* Next to us, we have a bridge head, don't worry about that one, if it shows away from us */
 			if (TrackSourceTile[i][k] == TS_NEIGHBOUR &&
-			    IsBridgeTile(neighbour) &&
-			    GetBridgeRampDirection(neighbour) == ReverseDiagDir(i)) {
-				continue;
-			}
+			    IsBridgeTile(neighbour) && IsBridgeRamp(neighbour) &&
+			    GetBridgeRampDirection(neighbour) == ReverseDiagDir(i)
+			   ) continue;
 
 			/* We check whether the track in question (k) is present in the tile
 			   (TrackSourceTile) */
@@ -212,7 +219,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 		/* Read the foundataions if they are present, and adjust the tileh */
 		if (IsTileType(neighbour, MP_RAILWAY)) foundation = GetRailFoundation(tileh[TS_NEIGHBOUR], trackconfig[TS_NEIGHBOUR]);
-		if (IsBridgeTile(neighbour)) {
+		if (IsBridgeTile(neighbour) && IsBridgeRamp(neighbour)) {
 			foundation = GetBridgeFoundation(tileh[TS_NEIGHBOUR], DiagDirToAxis(GetBridgeRampDirection(neighbour)));
 		}
 
@@ -239,14 +246,6 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		   anything. Note that the preferred PPPs still contain the end-of-line markers.
 		   Remove those (simply by ANDing with allowed, since these markers are never allowed) */
 		if ( (PPPallowed[i] & PPPpreferred[i]) != 0) PPPallowed[i] &= PPPpreferred[i];
-
-		if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
-			Track bridgetrack = GetBridgeAxis(ti->tile) == AXIS_X ? TRACK_X : TRACK_Y;
-			uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile), GetBridgeAxis(ti->tile));
-
-			if ((height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) &&
-			(i == PCPpositions[bridgetrack][0] || i == PCPpositions[bridgetrack][1])) SETBIT(OverridePCP, i);
-		}
 
 		if (PPPallowed[i] != 0 && HASBIT(PCPstatus, i) && !HASBIT(OverridePCP, i)) {
 			for (k = 0; k < DIR_END; k++) {
@@ -280,11 +279,12 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			const SortableSpriteStruct *sss;
 			int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; /* tileh for the slopes, 0 otherwise */
 
-			if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile) && !(_display_opt & DO_TRANS_BUILDINGS)) {
-				uint height = GetBridgeHeight(GetNorthernBridgeEnd(ti->tile), GetBridgeAxis(ti->tile));
-
-				if (height <= TilePixelHeight(ti->tile) + TILE_HEIGHT) return;
-			}
+			if ( /* We are not drawing a wire under a low bridge */
+					IsBridgeTile(ti->tile) &&
+					IsBridgeMiddle(ti->tile) &&
+					!(_display_opt & DO_TRANS_BUILDINGS) &&
+					GetBridgeHeight(ti->tile) <= TilePixelHeight(ti->tile)
+			   ) return;
 
 			assert(PCPconfig != 0); /* We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that) */
 			assert(!IsSteepSlope(tileh[TS_HOME]));
@@ -320,37 +320,30 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 	}
 
 	AddSortableSpriteToDraw( sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,
-			sss->x_size, sss->y_size, sss->z_size, GetBridgeHeight(end, axis) + sss->z_offset);
+			sss->x_size, sss->y_size, sss->z_size, GetBridgeHeight(ti->tile) + sss->z_offset + 8);
 
 	/* Finished with wires, draw pylons */
 	/* every other tile needs a pylon on the northern end */
 	if (num % 2) {
 		if (axis == AXIS_X) {
-			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(end, axis));
+			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile) + TILE_HEIGHT);
 		} else {
-			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y, 1, 1, 10, GetBridgeHeight(end, axis));
+			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y, 1, 1, 10, GetBridgeHeight(ti->tile) + TILE_HEIGHT);
 		}
 	}
 
 	/* need a pylon on the southern end of the bridge */
 	if (DistanceMax(ti->tile, start) == length) {
 		if (axis == AXIS_X) {
-			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x + 16, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(end, axis));
+			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x + 16, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile) + TILE_HEIGHT);
 		} else {
-			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y + 16, 1, 1, 10, GetBridgeHeight(end, axis));
+			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y + 16, 1, 1, 10, GetBridgeHeight(ti->tile) + TILE_HEIGHT);
 		}
 	}
 }
 
 void DrawCatenary(const TileInfo *ti)
 {
-	if (MayHaveBridgeAbove(ti->tile) && IsBridgeAbove(ti->tile)) {
-		TileIndex head = GetNorthernBridgeEnd(ti->tile);
-
-		if (GetBridgeTransportType(head) == TRANSPORT_RAIL && GetRailType(head) == RAILTYPE_ELECTRIC) {
-			DrawCatenaryOnBridge(ti);
-		}
-	}
 	switch (GetTileType(ti->tile)) {
 		case MP_RAILWAY:
 			if (GetRailTileType(ti->tile) == RAIL_TILE_DEPOT_WAYPOINT && GetRailTileSubtype(ti->tile) == RAIL_SUBTYPE_DEPOT) {
@@ -361,8 +354,9 @@ void DrawCatenary(const TileInfo *ti)
 			}
 			/* Fall through */
 		case MP_TUNNELBRIDGE:
-		case MP_STREET:
-		case MP_STATION:
+			if (IsBridgeTile(ti->tile) && IsBridgeMiddle(ti->tile) && GetRailTypeOnBridge(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenaryOnBridge(ti);
+			/* Fall further */
+		case MP_STREET: case MP_STATION:
 			DrawCatenaryRailway(ti);
 			break;
 		default:

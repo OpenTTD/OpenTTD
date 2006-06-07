@@ -27,7 +27,7 @@ struct CFollowTrackT : public FollowTrack_t
 		m_new_tile = INVALID_TILE;
 		m_new_td_bits = TRACKDIR_BIT_NONE;
 		m_exitdir = INVALID_DIAGDIR;
-		m_is_station = m_is_bridge = m_is_tunnel = false;
+		m_is_station = m_is_tunnel = false;
 		m_tiles_skipped = 0;
 	}
 
@@ -60,9 +60,6 @@ protected:
 	/** Follow the m_exitdir from m_old_tile and fill m_new_tile and m_tiles_skipped */
 	FORCEINLINE void FollowTileExit()
 	{
-		m_is_station = m_is_bridge = m_is_tunnel = false;
-		m_tiles_skipped = 0;
-
 		// extra handling for tunnels in our direction
 		if (IsTunnelTile(m_old_tile)) {
 			DiagDirection tunnel_enterdir = GetTunnelDirection(m_old_tile);
@@ -76,22 +73,11 @@ protected:
 			}
 			assert(ReverseDiagDir(tunnel_enterdir) == m_exitdir);
 		}
+		// not a tunnel or station
+		m_is_tunnel = false;
+		m_tiles_skipped = 0;
 
-		// extra handling for bridge ramp in our direction
-		if (IsBridgeTile(m_old_tile)) {
-			DiagDirection bridge_enterdir = GetBridgeRampDirection(m_old_tile);
-			if (bridge_enterdir == m_exitdir) {
-				// we are entering the bridge ramp
-				m_new_tile = GetOtherBridgeEnd(m_old_tile);
-				uint32 bridge_length = GetBridgeLength(m_old_tile, m_new_tile);
-				m_tiles_skipped = bridge_length;
-				m_is_bridge = true;
-				return;
-			}
-			assert(ReverseDiagDir(bridge_enterdir) == m_exitdir);
-		}
-
-		// normal or station tile, do one step
+		// normal or station tile
 		TileIndexDiff diff = TileOffsByDir(m_exitdir);
 		m_new_tile = TILE_ADD(m_old_tile, diff);
 
@@ -162,7 +148,22 @@ protected:
 		// rail transport is possible only on tiles with the same owner as vehicle
 		if (IsRailTT() && GetTileOwner(m_new_tile) != m_veh->owner) {
 			// different owner
-			return false;
+			if (IsBridgeTile(m_new_tile)) {
+				if (IsBridgeMiddle(m_new_tile)) {
+						// bridge middle has no owner - tile is owned by the owner of the under-bridge track
+					if (GetBridgeAxis(m_new_tile) != DiagDirToAxis(m_exitdir)) {
+						// so it must be under bridge track (and wrong owner)
+						return false;
+					}
+					// in the middle of the bridge - when we came here, it should be ok
+				} else {
+					// different owner, on the bridge ramp
+					return false;
+				}
+			} else {
+				// different owner, not a bridge
+				return false;
+			}
 		}
 
 		// rail transport is possible only on compatible rail types
@@ -210,7 +211,7 @@ protected:
 				m_new_td_bits = TrackdirToTrackdirBits(ReverseTrackdir(m_old_td));
 				m_exitdir = exitdir;
 				m_tiles_skipped = 0;
-				m_is_tunnel = m_is_bridge = m_is_station = false;
+				m_is_tunnel = m_is_station = false;
 				return true;
 			}
 		}
@@ -244,10 +245,20 @@ public:
 		int max_speed = INT_MAX; // no limit
 
 		// for now we handle only on-bridge speed limit
-		if (!IsWaterTT() && IsBridgeTile(m_old_tile)) {
-			int spd = _bridge[GetBridgeType(m_old_tile)].speed;
-			if (IsRoadTT()) spd *= 2;
-			if (max_speed > spd) max_speed = spd;
+		if (IsBridgeTile(m_old_tile) && !IsWaterTT() && IsDiagonalTrackdir(m_old_td)) {
+			bool is_on_bridge = true;
+			if (IsBridgeMiddle(m_old_tile)) {
+				// get track axis
+				Axis track_axis = DiagDirToAxis(TrackdirToExitdir(m_old_td));
+				// get under-bridge axis
+				Axis bridge_axis =  GetBridgeAxis(m_old_tile);
+				if (track_axis != bridge_axis) is_on_bridge = false;
+			}
+			if (is_on_bridge) {
+				int spd = _bridge[GetBridgeType(m_old_tile)].speed;
+				if (IsRoadTT()) spd *= 2;
+				if (max_speed > spd) max_speed = spd;
+			}
 		}
 
 		// if min speed was requested, return it

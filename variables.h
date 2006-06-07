@@ -309,6 +309,7 @@ VARDEF bool _exit_game;
 VARDEF SmallFiosItem _file_to_saveload;
 VARDEF byte _make_screenshot;
 
+VARDEF byte _get_z_hint; // used as a hint to getslopez to return the right height at a bridge.
 
 VARDEF char *_newgrf_files[32];
 

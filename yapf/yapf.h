@@ -34,9 +34,9 @@ typedef struct FollowTrack_t
 	Trackdir      m_old_td;
 	TileIndex     m_new_tile;
 	TrackdirBits  m_new_td_bits;
+//	TrackdirBits  m_red_td_bits;
 	DiagDirection m_exitdir;
 	bool          m_is_tunnel;
-	bool          m_is_bridge;
 	bool          m_is_station;
 	int           m_tiles_skipped;
 } FollowTrack_t;

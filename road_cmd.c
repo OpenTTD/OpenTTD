@@ -108,70 +108,97 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p1 >> 4) return CMD_ERROR;
 	pieces = p1;
 
-	if (!IsTileType(tile, MP_STREET)) return CMD_ERROR;
+	if (!IsTileType(tile, MP_STREET) && !IsTileType(tile, MP_TUNNELBRIDGE)) return CMD_ERROR;
 
 	owner = IsLevelCrossingTile(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile);
 
 	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
-		t = GetTownByTile(tile);
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
+			t = ClosestTownFromTile(tile, _patches.dist_local_authority);
+		} else {
+			t = GetTownByTile(tile);
+		}
 	} else {
 		t = NULL;
 	}
 
 	if (!CheckAllowRemoveRoad(tile, pieces, &edge_road)) return CMD_ERROR;
 
-	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+	switch (GetTileType(tile)) {
+		case MP_TUNNELBRIDGE:
+			if (!EnsureNoVehicleOnGround(tile)) return CMD_ERROR;
 
-	// check if you're allowed to remove the street owned by a town
-	// removal allowance depends on difficulty setting
-	if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
-
-	switch (GetRoadTileType(tile)) {
-		case ROAD_TILE_NORMAL: {
-			RoadBits present = GetRoadBits(tile);
-			RoadBits c = pieces;
-
-			if (GetTileSlope(tile, NULL) != SLOPE_FLAT  &&
-					(present == ROAD_Y || present == ROAD_X)) {
-				c |= (c & 0xC) >> 2;
-				c |= (c & 0x3) << 2;
-			}
-
-			// limit the bits to delete to the existing bits.
-			c &= present;
-			if (c == 0) return CMD_ERROR;
-
-			if (flags & DC_EXEC) {
-				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-
-				present ^= c;
-				if (present == 0) {
-					DoClearSquare(tile);
-				} else {
-					SetRoadBits(tile, present);
-					MarkTileDirtyByTile(tile);
-				}
-			}
-			return CountRoadBits(c) * _price.remove_road;
-		}
-
-		case ROAD_TILE_CROSSING: {
-			if (pieces & ComplementRoadBits(GetCrossingRoadBits(tile))) {
+			if (!IsBridge(tile) ||
+					!IsBridgeMiddle(tile) ||
+					!IsTransportUnderBridge(tile) ||
+					GetTransportTypeUnderBridge(tile) != TRANSPORT_ROAD ||
+					(pieces & ComplementRoadBits(GetRoadBitsUnderBridge(tile))) != 0) {
 				return CMD_ERROR;
 			}
 
 			if (flags & DC_EXEC) {
 				ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
-
-				MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GetRailTypeCrossing(tile));
+				SetClearUnderBridge(tile);
 				MarkTileDirtyByTile(tile);
 			}
 			return _price.remove_road * 2;
-		}
 
-		case ROAD_TILE_DEPOT:
-		default:
-			return CMD_ERROR;
+		case MP_STREET:
+			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
+
+			// check if you're allowed to remove the street owned by a town
+			// removal allowance depends on difficulty setting
+			if (!CheckforTownRating(flags, t, ROAD_REMOVE)) return CMD_ERROR;
+
+			switch (GetRoadTileType(tile)) {
+				case ROAD_TILE_NORMAL: {
+					RoadBits present = GetRoadBits(tile);
+					RoadBits c = pieces;
+
+					if (GetTileSlope(tile, NULL) != SLOPE_FLAT &&
+							(present == ROAD_Y || present == ROAD_X)) {
+						c |= (c & 0xC) >> 2;
+						c |= (c & 0x3) << 2;
+					}
+
+					// limit the bits to delete to the existing bits.
+					c &= present;
+					if (c == 0) return CMD_ERROR;
+
+					if (flags & DC_EXEC) {
+						ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
+
+						present ^= c;
+						if (present == 0) {
+							DoClearSquare(tile);
+						} else {
+							SetRoadBits(tile, present);
+							MarkTileDirtyByTile(tile);
+						}
+					}
+					return CountRoadBits(c) * _price.remove_road;
+				}
+
+				case ROAD_TILE_CROSSING: {
+					if (pieces & ComplementRoadBits(GetCrossingRoadBits(tile))) {
+						return CMD_ERROR;
+					}
+
+					if (flags & DC_EXEC) {
+						ChangeTownRating(t, -road_remove_cost[(byte)edge_road], RATING_ROAD_MINIMUM);
+
+						MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GetRailTypeCrossing(tile));
+						MarkTileDirtyByTile(tile);
+					}
+					return _price.remove_road * 2;
+				}
+
+				default:
+				case ROAD_TILE_DEPOT:
+					return CMD_ERROR;
+			}
+
+		default: return CMD_ERROR;
 	}
 }
 
@@ -320,6 +347,37 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 			return _price.build_road * 2;
 		}
+
+		case MP_TUNNELBRIDGE:
+			/* check for flat land */
+			if (IsSteepSlope(tileh)) {
+				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
+			}
+
+			if (!IsBridge(tile) || !IsBridgeMiddle(tile)) goto do_clear;
+
+			/* only allow roads pertendicular to bridge */
+			if ((pieces & (GetBridgeAxis(tile) == AXIS_X ? ROAD_X : ROAD_Y)) != 0) {
+				goto do_clear;
+			}
+
+			/* check if clear land under bridge */
+			if (IsTransportUnderBridge(tile)) {
+				switch (GetTransportTypeUnderBridge(tile)) {
+					case TRANSPORT_ROAD: return_cmd_error(STR_1007_ALREADY_BUILT);
+					default: return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+				}
+			} else {
+				if (IsWaterUnderBridge(tile)) {
+					return_cmd_error(STR_3807_CAN_T_BUILD_ON_WATER);
+				}
+			}
+
+			if (flags & DC_EXEC) {
+				SetRoadUnderBridge(tile, _current_player);
+				MarkTileDirtyByTile(tile);
+			}
+			return _price.build_road * 2;
 
 		default:
 do_clear:;
@@ -516,8 +574,6 @@ int32 CmdBuildRoadDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
-
-	if (MayHaveBridgeAbove(tile) && IsBridgeAbove(tile)) return_cmd_error(STR_5007_MUST_DEMOLISH_BRIDGE_FIRST);
 
 	dep = AllocateDepot();
 	if (dep == NULL) return CMD_ERROR;
@@ -742,7 +798,6 @@ static void DrawTile_Road(TileInfo *ti)
 			break;
 		}
 	}
-	DrawBridgeMiddle(ti);
 }
 
 void DrawRoadDepotSprite(int x, int y, int image)
