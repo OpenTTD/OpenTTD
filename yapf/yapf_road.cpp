@@ -430,6 +430,12 @@ Depot* YapfFindNearestRoadDepot(const Vehicle *v)
 	if ((GetTileTrackStatus(tile, TRANSPORT_ROAD) & TrackdirToTrackdirBits(trackdir)) == 0)
 		return NULL;
 
+	// handle the case when our vehicle is already in the depot tile
+	if (IsTileType(tile, MP_STREET) && IsTileDepotType(tile, TRANSPORT_ROAD)) {
+		// only what we need to return is the Depot*
+		return GetDepotByTile(tile);
+	}
+
 	// default is YAPF type 2
 	typedef Depot* (*PfnFindNearestDepot)(Vehicle*, TileIndex, Trackdir);
 	PfnFindNearestDepot pfnFindNearestDepot = &CYapfRoadAnyDepot2::stFindNearestDepot;
