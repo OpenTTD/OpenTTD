@@ -106,7 +106,7 @@ public:
 				} else {
 					// we have a red signal in our direction
 					// was it first signal which is two-way?
-					if (Yapf().TreatFirstRedTwoWaySignalAsEOL() && has_signal_against && n.m_num_signals_passed == 0) {
+					if (Yapf().TreatFirstRedTwoWaySignalAsEOL() && n.flags_u.flags_s.m_choice_seen && has_signal_against && n.m_num_signals_passed == 0) {
 						// yes, the first signal is two-way red signal => DEAD END
 						n.m_segment->flags_u.flags_s.m_end_of_line = true;
 						return -1;
