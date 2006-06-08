@@ -839,8 +839,10 @@ int CheckTrainStoppedInDepot(const Vehicle *v)
 	for (; v != NULL; v = v->next) {
 		/* This count is used by the depot code to determine the number of engines
 		 * in the consist. Exclude articulated parts so that autoreplacing to
-		 * engines with more articulated parts that before works correctly. */
-		if (!IsArticulatedPart(v)) count++;
+		 * engines with more articulated parts that before works correctly.
+		 *
+		 * Also skip counting rear ends of multiheaded engines */
+		if (!IsArticulatedPart(v) && !(!IsTrainEngine(v) && IsMultiheaded(v))) count++;
 		if (v->u.rail.track != 0x80 || v->tile != tile ||
 				(IsFrontEngine(v) && !(v->vehstatus & VS_STOPPED))) {
 			return -1;
