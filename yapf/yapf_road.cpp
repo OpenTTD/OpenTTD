@@ -33,7 +33,7 @@ protected:
 
 		if (z2 - z1 > 1) {
 			/* Slope up */
-			return Yapf().PfGetSettings().rail_slope_penalty;
+			return Yapf().PfGetSettings().road_slope_penalty;
 		}
 		return 0;
 	}
@@ -44,12 +44,12 @@ protected:
 		int cost = 0;
 		// set base cost
 		if (IsDiagonalTrackdir(trackdir)) {
-			cost += 10;
+			cost += YAPF_TILE_LENGTH;
 			switch (GetTileType(tile)) {
 				case MP_STREET:
 					/* Increase the cost for level crossings */
 					if (IsLevelCrossing(tile))
-						cost += Yapf().PfGetSettings().rail_crossing_penalty;
+						cost += Yapf().PfGetSettings().road_crossing_penalty;
 					break;
 
 				default:
@@ -57,7 +57,7 @@ protected:
 			}
 		} else {
 			// non-diagonal trackdir
-			cost = 7;
+			cost = YAPF_TILE_CORNER_LENGTH;
 		}
 		return cost;
 	}
@@ -95,7 +95,7 @@ public:
 			if (F.m_new_tile == n.m_key.m_tile && new_td == n.m_key.m_td) return false;
 
 			// if we skipped some tunnel tiles, add their cost
-			segment_cost += 10 * F.m_tiles_skipped;
+			segment_cost += F.m_tiles_skipped * YAPF_TILE_LENGTH;
 
 			// add hilly terrain penalty
 			segment_cost += Yapf().SlopeCost(tile, F.m_new_tile, trackdir);
@@ -206,7 +206,7 @@ public:
 		int dy = abs(y1 - y2);
 		int dmin = min(dx, dy);
 		int dxy = abs(dx - dy);
-		int d = dmin * 7 + (dxy - 1) * 5;
+		int d = dmin * YAPF_TILE_CORNER_LENGTH + (dxy - 1) * (YAPF_TILE_LENGTH / 2);
 		n.m_estimate = n.m_cost + d;
 		assert(n.m_estimate >= n.m_parent->m_estimate);
 		return true;

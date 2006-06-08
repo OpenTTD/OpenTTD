@@ -36,6 +36,8 @@ YS_DEF_BEGIN
 	YS_DEF(bool  , ship_use_yapf)              ///< use YAPF for ships
 	YS_DEF(bool  , road_use_yapf)              ///< use YAPF for road
 	YS_DEF(bool  , rail_use_yapf)              ///< use YAPF for rail
+	YS_DEF(uint32, road_slope_penalty)         ///< penalty for up-hill slope
+	YS_DEF(uint32, road_crossing_penalty)      ///< penalty for level crossing
 	YS_DEF(bool  , rail_firstred_twoway_eol)   ///< treat first red two-way signal as dead end
 	YS_DEF(uint32, rail_firstred_penalty)      ///< penalty for first red signal
 	YS_DEF(uint32, rail_firstred_exit_penalty) ///< penalty for first red exit signal
