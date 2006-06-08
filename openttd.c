@@ -1382,12 +1382,12 @@ bool AfterLoadGame(void)
 	if (CheckSavegameVersion(21) && !CheckSavegameVersion(15)) {
 		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
 			if (IsTileType(tile, MP_RAILWAY)) {
-				// Clear PBS signals, move back sempahore bit to 2
 				if (HasSignals(tile)) {
 					// convert PBS signals to combo-signals
-					if (HASBIT(_m[tile].m4, 2)) SB(_m[tile].m4, 0, 2, 3);
+					if (HASBIT(_m[tile].m4, 2)) SetSignalType(tile, SIGTYPE_COMBO);
 
-					SB(_m[tile].m4, 2, 2, HASBIT(_m[tile].m4, 3));
+					// move the signal variant back
+					SetSignalVariant(tile, HASBIT(_m[tile].m4, 3) ? SIG_SEMAPHORE : SIG_ELECTRIC);
 					CLRBIT(_m[tile].m4, 3);
 				}
 
