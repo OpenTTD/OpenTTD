@@ -1739,17 +1739,11 @@ bool CheckIfAuthorityAllows(TileIndex tile)
 }
 
 
-Town *ClosestTownFromTile(TileIndex tile, uint threshold)
+Town* CalcClosestTownFromTile(TileIndex tile, uint threshold)
 {
 	Town *t;
 	uint dist, best = threshold;
 	Town *best_town = NULL;
-
-	if (IsTileType(tile, MP_HOUSE) || (
-				IsTileType(tile, MP_STREET) &&
-				(IsLevelCrossing(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile)) == OWNER_TOWN
-			))
-		return GetTownByTile(tile);
 
 	FOR_ALL_TOWNS(t) {
 		if (t->xy != 0) {
@@ -1763,6 +1757,20 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold)
 
 	return best_town;
 }
+
+
+Town *ClosestTownFromTile(TileIndex tile, uint threshold)
+{
+	if (IsTileType(tile, MP_HOUSE) || (
+				IsTileType(tile, MP_STREET) &&
+				(IsLevelCrossing(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile)) == OWNER_TOWN
+			)) {
+		return GetTownByTile(tile);
+	} else {
+		return CalcClosestTownFromTile(tile, threshold);
+	}
+}
+
 
 void ChangeTownRating(Town *t, int add, int max)
 {

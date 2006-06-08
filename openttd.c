@@ -1210,22 +1210,22 @@ bool AfterLoadGame(void)
 	 *  all about ;) */
 	if (CheckSavegameVersionOldStyle(6, 1)) {
 		BEGIN_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0) {
-			if (IsTileType(tile, MP_HOUSE)) {
-				_m[tile].m4 = _m[tile].m2;
-				//XXX magic
-				SetTileType(tile, MP_VOID);
-				_m[tile].m2 = ClosestTownFromTile(tile,(uint)-1)->index;
-				SetTileType(tile, MP_HOUSE);
-			} else if (IsTileType(tile, MP_STREET)) {
-				//XXX magic
-				_m[tile].m4 |= (_m[tile].m2 << 4);
-				if (IsTileOwner(tile, OWNER_TOWN)) {
-					SetTileType(tile, MP_VOID);
-					_m[tile].m2 = ClosestTownFromTile(tile,(uint)-1)->index;
-					SetTileType(tile, MP_STREET);
-				} else {
-					SetTownIndex(tile, 0);
-				}
+			switch (GetTileType(tile)) {
+				case MP_HOUSE:
+					_m[tile].m4 = _m[tile].m2;
+					SetTownIndex(tile, CalcClosestTownFromTile(tile, (uint)-1)->index);
+					break;
+
+				case MP_STREET:
+					_m[tile].m4 |= (_m[tile].m2 << 4);
+					if (IsTileOwner(tile, OWNER_TOWN)) {
+						SetTownIndex(tile, CalcClosestTownFromTile(tile, (uint)-1)->index);
+					} else {
+						SetTownIndex(tile, 0);
+					}
+					break;
+
+				default: break;
 			}
 		} END_TILE_LOOP(tile, MapSizeX(), MapSizeY(), 0);
 	}

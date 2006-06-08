@@ -20,14 +20,13 @@ static inline TownID GetTownIndex(TileIndex t)
 }
 
 /**
- * Set the town index for a street tile.
+ * Set the town index for a road or house tile.
  * @param tile the tile
  * @param index the index of the town
- * @pre IsTileType(tile, MP_STREET)
  */
 static inline void SetTownIndex(TileIndex t, TownID index)
 {
-	assert(IsTileType(t, MP_STREET));
+	assert(IsTileType(t, MP_STREET) || IsTileType(t, MP_HOUSE));
 	_m[t].m2 = index;
 }
 
@@ -80,6 +79,10 @@ static inline Town* GetTownByTile(TileIndex t)
 {
 	return GetTown(GetTownIndex(t));
 }
+
+
+Town* CalcClosestTownFromTile(TileIndex tile, uint threshold);
+
 
 static inline void MakeHouseTile(TileIndex t, TownID tid, byte counter, byte stage, byte type)
 {
