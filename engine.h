@@ -75,6 +75,7 @@ typedef struct EngineInfo {
 	byte railtype:4;
 	byte climates:4;
 	uint32 refit_mask;
+	byte refit_cost;
 	byte misc_flags;
 	byte callbackmask;
 } EngineInfo;

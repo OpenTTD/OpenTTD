@@ -406,6 +406,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT rvi[i].pow_wag_power = grf_load_word(&buf);
 			break;
 
+		case 0x1C: /* Refit cost */
+			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
+			break;
+
 		case 0x1D: /* Refit cargo */
 			FOR_EACH_OBJECT ei[i].refit_mask = grf_load_dword(&buf);
 			break;
@@ -457,7 +461,6 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 		/* TODO */
 		/* Fall-through for unimplemented one byte long properties. */
-		case 0x1C: /* Refit cost */
 		case 0x1F: /* Tractive effort */
 		case 0x20: /* Air drag */
 		case 0x26: /* Retire vehicle early */
@@ -552,6 +555,10 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
+		case 0x1A: /* Refit cost */
+			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
+			break;
+
 		case 0x1C: /* Miscellaneous flags */
 			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
 			break;
@@ -566,7 +573,6 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 
 		case 0x18: /* Tractive effort */
 		case 0x19: /* Air drag */
-		case 0x1A: /* Refit cost */
 		case 0x1B: /* Retire vehicle early */
 			/* TODO */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
@@ -656,6 +662,10 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
+		case 0x13: /* Refit cost */
+			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
+			break;
+
 		case 0x17: /* Miscellaneous flags */
 			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
 			break;
@@ -668,7 +678,6 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT cargo_disallowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x13: /* Refit cost */
 		case 0x14: /* Ocean speed fraction */
 		case 0x15: /* Canal speed fraction */
 		case 0x16: /* Retire vehicle early */
@@ -753,6 +762,10 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			FOR_EACH_OBJECT ei[i].callbackmask = grf_load_byte(&buf);
 			break;
 
+		case 0x15: /* Refit cost */
+			FOR_EACH_OBJECT ei[i].refit_cost = grf_load_byte(&buf);
+			break;
+
 		case 0x17: /* Miscellaneous flags */
 			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
 			break;
@@ -765,7 +778,6 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			FOR_EACH_OBJECT cargo_disallowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
-		case 0x15: /* Refit cost */
 		case 0x16: /* Retire vehicle early */
 			/* TODO */
 			FOR_EACH_OBJECT grf_load_byte(&buf);
