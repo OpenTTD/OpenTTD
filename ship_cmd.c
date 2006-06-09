@@ -23,6 +23,7 @@
 #include "water_map.h"
 #include "yapf/yapf.h"
 #include "debug.h"
+#include "newgrf_callbacks.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 static const byte _ship_sometracks[4] = {0x19, 0x16, 0x25, 0x2A};
@@ -1040,6 +1041,7 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	CargoID new_cid = GB(p2, 0, 8); //gets the cargo number
 	byte new_subtype = GB(p2, 8, 8);
+	uint16 capacity = CALLBACK_FAILED;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
@@ -1057,12 +1059,33 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_SHIP_RUN);
 
+	/* Check the refit capacity callback */
+	if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_REFIT_CAPACITY)) {
+		/* Back up the existing cargo type */
+		CargoID temp_cid = v->cargo_type;
+		byte temp_subtype = v->cargo_subtype;
+		v->cargo_type = new_cid;
+		v->cargo_subtype = new_subtype;
+
+		capacity = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
+
+		/* Restore the cargo type */
+		v->cargo_type = temp_cid;
+		v->cargo_subtype = temp_subtype;
+	}
+
+	if (capacity == CALLBACK_FAILED) {
+		capacity = ShipVehInfo(v->engine_type)->capacity;
+	}
+	_returned_refit_capacity = capacity;
+
 	cost = 0;
 	if (IS_HUMAN_PLAYER(v->owner) && new_cid != v->cargo_type) {
 		cost = _price.ship_base >> 7;
 	}
 
 	if (flags & DC_EXEC) {
+		v->cargo_cap = capacity;
 		v->cargo_count = (v->cargo_type == new_cid) ? min(v->cargo_cap, v->cargo_count) : 0;
 		v->cargo_type = new_cid;
 		v->cargo_subtype = new_subtype;
