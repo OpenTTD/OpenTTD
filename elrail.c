@@ -352,14 +352,16 @@ void DrawCatenary(const TileInfo *ti)
 					sss->x_size, sss->y_size, sss->z_size, GetSlopeZ(ti->x, ti->y) + sss->z_offset);
 				return;
 			}
-			/* Fall through */
+			break;
+
 		case MP_TUNNELBRIDGE:
-			if (IsBridgeTile(ti->tile) && IsBridgeMiddle(ti->tile) && GetRailTypeOnBridge(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenaryOnBridge(ti);
-			/* Fall further */
-		case MP_STREET: case MP_STATION:
-			DrawCatenaryRailway(ti);
+			if (IsBridge(ti->tile) && IsBridgeMiddle(ti->tile) && GetRailTypeOnBridge(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenaryOnBridge(ti);
 			break;
-		default:
-			break;
+
+		case MP_STREET:  break;
+		case MP_STATION: break;
+
+		default: return;
 	}
+	DrawCatenaryRailway(ti);
 }
