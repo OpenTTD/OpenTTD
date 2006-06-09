@@ -190,12 +190,12 @@ static uint NPFSlopeCost(AyStarNode* current)
 	x = TileX(current->tile) * TILE_SIZE;
 	y = TileY(current->tile) * TILE_SIZE;
 	/* get the height of the center of the current tile */
-	z1 = GetSlopeZ(x+TILE_HEIGHT, y+TILE_HEIGHT);
+	z1 = GetSlopeZ(x + TILE_SIZE / 2, y + TILE_SIZE / 2);
 
 	x = TileX(next) * TILE_SIZE;
 	y = TileY(next) * TILE_SIZE;
 	/* get the height of the center of the next tile */
-	z2 = GetSlopeZ(x+TILE_HEIGHT, y+TILE_HEIGHT);
+	z2 = GetSlopeZ(x + TILE_SIZE / 2, y + TILE_SIZE / 2);
 
 	if (z2 - z1 > 1) {
 		/* Slope up */
