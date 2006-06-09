@@ -5,7 +5,7 @@
 
 ##id 0x0000
 STR_NULL                                                        :
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Harita siniri
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Harita kenarinda
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Sinira cok yakin
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Para Yetersiz - su kadar gerekli: {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
@@ -612,7 +612,7 @@ STR_0233_TOWN_GENERATION                                        :{WHITE}Sehir Ya
 STR_0234_NEW_TOWN                                               :{BLACK}Yeni Sehir
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Yeni sehir yap
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Buraya sehir yapilamiyor...
-STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...haritanin sinirina çok yakin
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...haritanin kenarina çok yakin
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...baska bir sehre çok yakin
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...yer uygun degil
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...çok fazla sehir var
@@ -1016,7 +1016,7 @@ STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Sinyali
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Sene sonunda ekonomik durumu göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch uyumlu ekspress trenler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Karayolu tasitlari kuyruga girsin (içiçe geçerek): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Fare sinirdayken pencere etkin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Fare kenardayken pencere etkin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Belediye rüsveti izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni evrensel yol bulma (NPF, NTP üzerinde): {ORANGE}{STRING}
@@ -1815,7 +1815,7 @@ STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Yeni bir {STRING}, {TOWN} sehri yakinlarinda kuruldu!
 STR_482F_COST                                                   :{BLACK}Fiyat: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Buraya bu fabrikadan yapilamaz...
-STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Orman kar siniri üzerine yapilabilir
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Orman sadece kar siniri üzerinde olabilir
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} tükendi, kapaniyor!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}{INDUSTRY} kaynak sorunlari yüzünden kapaniyor!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Yakinda agaç olmadigi için {INDUSTRY} kapaniyor!
@@ -2590,6 +2590,11 @@ STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Araç tür
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Araç türü yeniden adlandirilamiyor...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Garaja git: {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servise git: {TOWN} Garaji
+
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Kamyonu baska türde kargo tasiyabilmesi için modifiye et
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Kamyonu modifiye et
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Kamyonu seçili kargoyu tasiyabilmesi için modifiye et
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kamyon modifiye edilemiyor...
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :iskele yapimi

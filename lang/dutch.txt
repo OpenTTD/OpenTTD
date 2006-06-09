@@ -2591,6 +2591,11 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan wegv
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ga naar {TOWN} Wegvoertuig Depot
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Repareren in {TOWN} Wegvoertuig Depot
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Verbouw het wegvoertuig om een andere lading the vervoeren
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Verbouw wegvoertuig
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Verbouw wegvoertuig om geselecteerd vrachttype te vervoeren
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan wegvoertuig niet verbouwen
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Dokbouw
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Dokbouw

@@ -2592,6 +2592,11 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Немо
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Їхати в {TOWN} депо
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Ремонтуватись в {TOWN} депо
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Переобладнати авто для перевезення інших вантажів
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Переобладнати авто
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Переобладнати авто для перевезення вибраного вантажу
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Неможливо переобладнати авто
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Будувати порт
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Будівництво порту
