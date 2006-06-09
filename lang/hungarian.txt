@@ -2693,6 +2693,11 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nem vált
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Menj a  {TOWN}i garázsba
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Javítsd a jármûvet a {TOWN}i garázsban
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Teherautó átalakítása hogy mást is tudjon szállítani
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Teherautó átalakítása
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Teherautó átalakítása a kijelölt áru szállíthatóságáért
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nem lehet átalakítani a teherautót...
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Kikötõépítés
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Kikötõépítés

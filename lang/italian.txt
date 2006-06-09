@@ -2535,7 +2535,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo binario in
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veicolo in mezzo
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Veicoli{P o i} stradal{P e i}
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Veicol{P o i} stradal{P e i}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Deposito Veicoli Stradali
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nuovi Veicoli
@@ -2590,6 +2590,7 @@ STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Rinomina
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Non puoi rinominare tipo di veicolo...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Vai a {TOWN} Deposito Veicoli
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manutenzione a {TOWN} Deposito Stradale
+
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Costruzione moli
