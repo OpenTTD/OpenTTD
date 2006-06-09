@@ -258,7 +258,10 @@ UNITTEST=unit_test$(EXE)
 ifdef RELEASE
 REV:=$(RELEASE)
 else
-REV := $(shell if test -d .svn; then svnversion . | awk '{ print "r"$$0 }'; fi)
+ifeq ($(shell if test -d .svn; then echo 1; fi), 1)
+REV_MODIFIED := $(shell svnversion . | grep -o M)
+REV := $(shell LC_ALL=C svn info | awk '/^URL:.*branch/ { BRANCH="-"a[split($$2, a, "/")] } /^Last Changed Rev:/ { REV="r"$$4"$(REV_MODIFIED)" } END { print REV BRANCH }')
+endif
 endif
 
 # define flag to use for -lrt (some OSes overwrites this later for compatibility)
