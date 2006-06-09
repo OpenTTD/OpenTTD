@@ -23,6 +23,7 @@
 #include "depot.h"
 #include "tunnel_map.h"
 #include "vehicle_gui.h"
+#include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "yapf/yapf.h"
 
@@ -1720,4 +1721,88 @@ void RoadVehiclesYearlyLoop(void)
 			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		}
 	}
+}
+
+/** Refit a road vehicle to the specified cargo type
+ * @param tile unused
+ * @param p1 Vehicle ID of the vehicle to refit
+ * @param p2 Bitstuffed elements
+ * - p2 = (bit 0-7) - the new cargo type to refit to
+ * - p2 = (bit 8-15) - the new cargo subtype to refit to
+ */
+int32 CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	Vehicle *v;
+	int32 cost;
+	CargoID new_cid = GB(p2, 0, 8);
+	byte new_subtype = GB(p2, 8, 8);
+	uint16 capacity = CALLBACK_FAILED;
+
+	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+
+	v = GetVehicle(p1);
+
+	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!IsRoadVehInDepotStopped(v)) return_cmd_error(STR_9013_MUST_BE_STOPPED_INSIDE);
+
+	if (new_cid > NUM_CARGO || !CanRefitTo(v->engine_type, new_cid)) return CMD_ERROR;
+
+	SET_EXPENSES_TYPE(EXPENSES_ROADVEH_RUN);
+
+	if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_REFIT_CAPACITY)) {
+		/* Back up the cargo type */
+		CargoID temp_cid = v->cargo_type;
+		byte temp_subtype = v->cargo_subtype;
+		v->cargo_type = new_cid;
+		v->cargo_subtype = new_subtype;
+
+		/* Check the refit capacity callback */
+		capacity = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
+
+		/* Restore the original cargo type */
+		v->cargo_type = temp_cid;
+		v->cargo_subtype = temp_subtype;
+	}
+
+	if (capacity == CALLBACK_FAILED) {
+		/* callback failed or not used, use default capacity */
+		const RoadVehicleInfo *rvi = RoadVehInfo(v->engine_type);
+
+		CargoID old_cid = rvi->cargo_type;
+		/* normally, the capacity depends on the cargo type, a vehicle can
+		 * carry twice as much mail/goods as normal cargo, and four times as
+		 * many passengers
+		 */
+		capacity = rvi->capacity;
+		switch (old_cid) {
+			case CT_PASSENGERS: break;
+			case CT_MAIL:
+			case CT_GOODS: capacity *= 2; break;
+			default:       capacity *= 4; break;
+		}
+		switch (new_cid) {
+			case CT_PASSENGERS: break;
+			case CT_MAIL:
+			case CT_GOODS: capacity /= 2; break;
+			default:       capacity /= 4; break;
+		}
+	}
+	_returned_refit_capacity = capacity;
+
+	cost = 0;
+	if (IS_HUMAN_PLAYER(v->owner) && new_cid != v->cargo_type) {
+		cost = _price.roadveh_base >> 7;
+	}
+
+	if (flags & DC_EXEC) {
+		v->cargo_cap = capacity;
+		v->cargo_count = (v->cargo_type == new_cid) ? min(capacity, v->cargo_count) : 0;
+		v->cargo_type = new_cid;
+		v->cargo_subtype = new_subtype;
+		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		RebuildVehicleLists();
+	}
+
+	return cost;
 }

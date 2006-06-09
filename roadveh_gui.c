@@ -30,6 +30,7 @@ void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const RoadVehicleInfo *rvi = RoadVehInfo(engine_number);
 	const Engine* e = GetEngine(engine_number);
+	bool refittable = (_engine_info[engine_number].refit_mask != 0);
 	YearMonthDay ymd;
 	ConvertDayToYMD(&ymd, e->intro_date);
 
@@ -47,7 +48,7 @@ void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 	/* Cargo type + capacity */
 	SetDParam(0, _cargoc.names_long[rvi->cargo_type]);
 	SetDParam(1, rvi->capacity);
-	SetDParam(2, STR_EMPTY);
+	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
 	y += 10;
 
@@ -71,6 +72,87 @@ static void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection
 	if (v->index == selection) {
 		DrawFrameRect(x - 1, y - 1, x + 28, y + 12, 15, FR_BORDERONLY);
 	}
+}
+
+static void RoadVehRefitWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+		case WE_PAINT: {
+			const Vehicle *v = GetVehicle(w->window_number);
+
+			SetDParam(0, v->string_id);
+			SetDParam(1, v->unitnumber);
+			DrawWindowWidgets(w);
+
+			DrawString(1, 15, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, 0);
+
+			WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w,refit_d).sel);
+
+			if (WP(w,refit_d).cargo != CT_INVALID) {
+				int32 cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_ROAD_VEH);
+				if (!CmdFailed(cost)) {
+					SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
+					SetDParam(1, _returned_refit_capacity);
+					SetDParam(2, cost);
+					DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
+				}
+			}
+
+			break;
+		}
+
+		case WE_CLICK:
+			switch (e->click.widget) {
+				case 2: { /* List box */
+					int y = e->click.pt.y - 25;
+					if (y >= 0) {
+						WP(w,refit_d).sel = y / 10;
+						SetWindowDirty(w);
+					}
+
+					break;
+				}
+
+				case 4: /* Refit button */
+					if (WP(w,refit_d).cargo != CT_INVALID) {
+						const Vehicle *v = GetVehicle(w->window_number);
+						if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_ROAD_VEH | CMD_MSG(STR_REFIT_ROAD_VEHICLE_CAN_T)))
+							DeleteWindow(w);
+					}
+					break;
+			}
+			break;
+	}
+}
+
+static const Widget _road_veh_refit_widgets[] = {
+{   WWT_CLOSEBOX, RESIZE_NONE, 14,  0,  10,   0,  13, STR_00C5,               STR_018B_CLOSE_WINDOW },
+{    WWT_CAPTION, RESIZE_NONE, 14, 11, 239,   0,  13, STR_983B_REFIT,         STR_018C_WINDOW_TITLE_DRAG_THIS },
+{     WWT_IMGBTN, RESIZE_NONE, 14,  0, 239,  14, 135, 0x0,                    STR_983D_SELECT_TYPE_OF_CARGO_FOR },
+{     WWT_IMGBTN, RESIZE_NONE, 14,  0, 239, 136, 157, 0x0,                    STR_NULL },
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 14,  0, 239, 158, 169, STR_REFIT_ROAD_VEHICLE, STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED },
+{    WIDGETS_END },
+};
+
+static const WindowDesc _road_veh_refit_desc = {
+	-1, -1, 240, 170,
+	WC_VEHICLE_REFIT, WC_VEHICLE_VIEW,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_road_veh_refit_widgets,
+	RoadVehRefitWndProc,
+};
+
+static void ShowRoadVehRefitWindow(const Vehicle *v)
+{
+	Window *w;
+
+	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
+
+	_alloc_wnd_parent_num = v->index;
+	w = AllocateWindowDesc(&_road_veh_refit_desc);
+	w->window_number = v->index;
+	w->caption_color = v->owner;
+	WP(w,refit_d).sel = -1;
 }
 
 static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
@@ -235,7 +317,10 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = GetVehicle(w->window_number);
 		StringID str;
 
-		w->disabled_state = (v->owner != _local_player) ? (1<<8 | 1<<7) : 0;
+		w->disabled_state = (v->owner != _local_player) ? (1 << 8 | 1 << 7 | 1 << 12) : 0;
+
+		/* Disable refit button if vehicle not refittable */
+		if (_engine_info[v->engine_type].refit_mask == 0) SETBIT(w->disabled_state, 12);
 
 		/* draw widgets & caption */
 		SetDParam(0, v->string_id);
@@ -294,7 +379,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		case 6: /* center main view */
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
-		case 7: /* goto hangar */
+		case 7: /* goto depot */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_ROADVEH_TO_DEPOT | CMD_MSG(STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT));
 			break;
 		case 8: /* turn around */
@@ -306,10 +391,12 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		case 10: /* show details */
 			ShowRoadVehDetailsWindow(v);
 			break;
-		case 11: {
-			/* clone vehicle */
+		case 11: /* clone vehicle */
 			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneRoadVeh, CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
-			} break;
+			break;
+		case 12: /* Refit vehicle */
+			ShowRoadVehRefitWindow(v);
+			break;
 		}
 	} break;
 
@@ -321,6 +408,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DESTROY:
+		DeleteWindowById(WC_VEHICLE_REFIT, w->window_number);
 		DeleteWindowById(WC_VEHICLE_ORDERS, w->window_number);
 		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
 		break;
@@ -330,7 +418,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			Vehicle *v;
 			uint32 h;
 			v = GetVehicle(w->window_number);
-			h = IsRoadVehInDepotStopped(v) ? 1 << 7 : 1 << 11;
+			h = IsRoadVehInDepotStopped(v) ? (1 << 7) | (1 << 8) : (1 << 11) | (1 << 12);
 			if (h != w->hidden_state) {
 				w->hidden_state = h;
 				SetWindowDirty(w);
@@ -352,6 +440,7 @@ static const Widget _roadveh_view_widgets[] = {
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B2,    STR_901D_SHOW_VEHICLE_S_ORDERS },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B3,    STR_9021_SHOW_ROAD_VEHICLE_DETAILS },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_ROADVEH,      STR_CLONE_ROAD_VEHICLE_INFO },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2B4,    STR_REFIT_ROAD_VEHICLE_TO_CARRY },
 { WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,      STR_NULL },
 { WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,      STR_NULL },
 { WIDGETS_END }

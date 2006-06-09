@@ -113,6 +113,7 @@ DEF_COMMAND(CmdStartStopRoadVeh);
 DEF_COMMAND(CmdSellRoadVeh);
 DEF_COMMAND(CmdSendRoadVehToDepot);
 DEF_COMMAND(CmdTurnRoadVeh);
+DEF_COMMAND(CmdRefitRoadVeh);
 
 DEF_COMMAND(CmdPause);
 
@@ -245,7 +246,7 @@ static const Command _command_proc_table[] = {
 	{CmdSellRoadVeh,                         0}, /*  69 */
 	{CmdSendRoadVehToDepot,                  0}, /*  70 */
 	{CmdTurnRoadVeh,                         0}, /*  71 */
-	{NULL,                                   0}, /*  72 */
+	{CmdRefitRoadVeh,                        0}, /*  72 */
 
 	{CmdPause,                      CMD_SERVER}, /*  73 */
 

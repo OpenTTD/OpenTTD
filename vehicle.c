@@ -59,7 +59,7 @@ static const uint32 _veh_sell_proc_table[] = {
 
 static const uint32 _veh_refit_proc_table[] = {
 	CMD_REFIT_RAIL_VEHICLE,
-	0,	// road vehicles can't be refitted
+	CMD_REFIT_ROAD_VEH,
 	CMD_REFIT_SHIP,
 	CMD_REFIT_AIRCRAFT,
 };
@@ -1658,14 +1658,12 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 		*w = new_v;	//we changed the vehicle, so MaybeReplaceVehicle needs to work on the new one. Now we tell it what the new one is
 
 		/* refit if needed */
-		if (new_v->type != VEH_Road) { // road vehicles can't be refitted
-			if (old_v->cargo_type != new_v->cargo_type && old_v->cargo_cap != 0 && new_v->cargo_cap != 0) {// some train engines do not have cargo capacity
-				// we add the refit cost to cost, so it's added to the cost animation
-				// it's not in the calculation of having enough money to actually do the replace since it's rather hard to do by design, but since
-				// we pay for it, it's nice to make the cost animation include it
-				int32 temp_cost = DoCommand(0, new_v->index, old_v->cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
-				if (!CmdFailed(temp_cost)) cost += temp_cost;
-			}
+		if (old_v->cargo_type != new_v->cargo_type && old_v->cargo_cap != 0 && new_v->cargo_cap != 0) {// some train engines do not have cargo capacity
+			// we add the refit cost to cost, so it's added to the cost animation
+			// it's not in the calculation of having enough money to actually do the replace since it's rather hard to do by design, but since
+			// we pay for it, it's nice to make the cost animation include it
+			int32 temp_cost = DoCommand(0, new_v->index, old_v->cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
+			if (!CmdFailed(temp_cost)) cost += temp_cost;
 		}
 		if (new_v->type == VEH_Train && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->next != NULL && IsArticulatedPart(new_v->next))) {
 			// we are autorenewing to a single engine, so we will turn it as the old one was turned as well
