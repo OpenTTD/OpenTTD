@@ -1241,41 +1241,26 @@ static void ClickTile_TunnelBridge(TileIndex tile)
 
 static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode)
 {
-	uint32 result;
-
 	if (IsTunnel(tile)) {
-		if (GetTunnelTransportType(tile) == mode) {
-			return DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? 0x101 : 0x202;
-		}
-	} else if (IsBridge(tile)) { // XXX is this necessary?
+		if (GetTunnelTransportType(tile) != mode) return 0;
+		return (DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+	} else {
 		if (IsBridgeRamp(tile)) {
 			if (GetBridgeTransportType(tile) != mode) return 0;
 			return (DiagDirToAxis(GetBridgeRampDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
 		} else {
-			result = 0;
+			uint32 result = 0;
+
 			if (GetBridgeTransportType(tile) == mode) {
 				result = (GetBridgeAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
 			}
-			if (IsTransportUnderBridge(tile)) {
-				if (GetTransportTypeUnderBridge(tile) != mode) return result;
-			} else {
-				if (IsClearUnderBridge(tile)) {
-					return result;
-				} else {
-					if (mode != TRANSPORT_WATER) return result;
-				}
+			if ((IsTransportUnderBridge(tile) && mode == GetTransportTypeUnderBridge(tile)) ||
+					(IsWaterUnderBridge(tile)     && mode == TRANSPORT_WATER)) {
+				result |= (GetBridgeAxis(tile) == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) * 0x101;
 			}
-			/* If we've not returned yet, there is a compatible
-			 * transport or water beneath, so we can add it to
-			 * result */
-			/* Why is this xor'd ? Can't it just be or'd? */
-			result ^= (GetBridgeAxis(tile) == AXIS_X ? 0x202 : 0x101);
+			return result;
 		}
-		return result;
-	} else {
-		assert(0); /* This should never occur */
 	}
-	return 0;
 }
 
 static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, PlayerID new_player)
