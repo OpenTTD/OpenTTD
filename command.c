@@ -301,7 +301,7 @@ static const Command _command_proc_table[] = {
 	{CmdGiveMoney,                           0}, /* 113 */
 	{CmdChangePatchSetting,         CMD_SERVER}, /* 114 */
 	{CmdReplaceVehicle,                      0}, /* 115 */
-	{CmdCloneVehicle,						 0}, /* 116 */
+	{CmdCloneVehicle,                        0}, /* 116 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */
