@@ -1760,11 +1760,16 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			uint16 amount = CALLBACK_FAILED;
 
 			if (HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_REFIT_CAPACITY)) {
-				/* Check the 'refit capacity' callback */
+				/* Back up the vehicle's cargo type */
 				CargoID temp_cid = v->cargo_type;
+				byte temp_subtype = v->cargo_subtype;
 				v->cargo_type = new_cid;
+				v->cargo_subtype = new_subtype;
+				/* Check the refit capacity callback */
 				amount = GetVehicleCallback(CBID_VEHICLE_REFIT_CAPACITY, 0, 0, v->engine_type, v);
+				/* Restore the original cargo type */
 				v->cargo_type = temp_cid;
+				v->cargo_subtype = temp_subtype;
 			}
 
 			if (amount == CALLBACK_FAILED) { // callback failed or not used, use default
