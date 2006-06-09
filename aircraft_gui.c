@@ -32,6 +32,7 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine_number);
 	const Engine* e = GetEngine(engine_number);
+	CargoID cargo;
 	YearMonthDay ymd;
 	ConvertDayToYMD(&ymd, e->intro_date);
 
@@ -42,9 +43,19 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Cargo capacity */
-	SetDParam(0, avi->passenger_capacity);
-	SetDParam(1, avi->mail_capacity);
-	DrawString(x, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY, 0);
+	cargo = FindFirstRefittableCargo(engine_number);
+	if (cargo == CT_INVALID || cargo == CT_PASSENGERS) {
+		SetDParam(0, avi->passenger_capacity);
+		SetDParam(1, avi->mail_capacity);
+		DrawString(x, y, STR_PURCHASE_INFO_AIRCRAFT_CAPACITY, 0);
+	} else {
+		/* Note, if the default capacity is selected by the refit capacity
+		 * callback, then the capacity shown is likely to be incorrect. */
+		SetDParam(0, _cargoc.names_long[cargo]);
+		SetDParam(1, AircraftDefaultCargoCapacity(cargo, engine_number));
+		SetDParam(2, STR_9842_REFITTABLE);
+		DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
+	}
 	y += 10;
 
 	/* Running cost */

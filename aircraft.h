@@ -1,5 +1,8 @@
 /* $Id$ */
 
+#ifndef AIRCRAFT_H
+#define AIRCRAFT_H
+
 #include "station_map.h"
 #include "vehicle.h"
 
@@ -14,3 +17,7 @@ static inline bool IsAircraftInHangarStopped(const Vehicle* v)
 {
 	return IsAircraftInHangar(v) && v->vehstatus & VS_STOPPED;
 }
+
+uint16 AircraftDefaultCargoCapacity(CargoID cid, EngineID engine_type);
+
+#endif /* AIRCRAFT_H */

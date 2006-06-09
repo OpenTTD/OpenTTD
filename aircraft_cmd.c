@@ -164,7 +164,7 @@ static int32 EstimateAircraftCost(EngineID engine_type)
  * @param engine Which engine to find a cargo capacity for.
  * @return New cargo capacity value.
  */
-static uint16 AircraftDefaultCargoCapacity(CargoID cid, EngineID engine_type)
+uint16 AircraftDefaultCargoCapacity(CargoID cid, EngineID engine_type)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine_type);
 
