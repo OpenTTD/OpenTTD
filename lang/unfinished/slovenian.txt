@@ -1041,7 +1041,7 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} M
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencije
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponudba subvencij:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponudba subvencij:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} iz {STRING} v {STRING}
 STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Noben

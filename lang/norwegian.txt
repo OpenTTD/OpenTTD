@@ -550,7 +550,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Meldingsinnstil
 STR_MESSAGE_HISTORY_MENU                                        :Tidligere meldinger
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis siste melding/nyhet, vis meldingsinnstillinger
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Meldingsinnstillinger
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Meldingstyper:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Meldingstyper:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankommst av første kjøretøy på spillers stasjon
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankommst av første kjøretøy på motstanders stasjon
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ulykker / Katastrofer

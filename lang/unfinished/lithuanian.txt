@@ -515,7 +515,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Zinuciu nustaty
 STR_MESSAGE_HISTORY_MENU                                        :Zinuciu istorija
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Parodyti paskutine zinute/naujiena, rodyti zinuciu nustatymus
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Zinuciu nustatymai
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Zinuciu tipai:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Zinuciu tipai:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Pirmos transporto priemones atvykimas i zaidejo stotele
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Pirmos transporto priemones atvykimas i konkurento stotele
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Incidentai / nelaimes
@@ -1459,11 +1459,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} v
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transporto kompaniju reitingai:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidijos
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Dar nepanaudotos subsidijos:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Dar nepanaudotos subsidijos:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} is {STRING} i {STRING}
 STR_2028_BY                                                     :{YELLOW} (iki {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Niekas
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Jau subsidijuojama:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Jau subsidijuojama:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} is {STATION} i {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, iki {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidiju pasiulymas baigesi:{}{}{STRING} pervezimas is {STRING} i {STRING} daugiau nebesubsidijuojamas.
@@ -2515,7 +2515,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Perorientuoti laiva
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pasirink krovinio tipa, kuri laivas tures 'sergeti'
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Pakeisti pervezamo krovinio tipa
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pasirink 'sergimo' krovinio tipa:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pasirink 'sergimo' krovinio tipa:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nauja talpa: {GOLD}{STRING}{}{BLACK}Remonto kaina: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Negalima perorientuotilaivo...
 STR_9842_REFITTABLE                                             :(perorientuotinas)
@@ -2584,7 +2584,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Keisti krovinio tipa
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pasirink nauja krovinio tipa
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Pakeisti lektuvo pervezamo krovinio tipa pazymetu
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pasirink nauja kroviniu tipa:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pasirink nauja kroviniu tipa:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nauja talpa: {GOLD}{STRING}{}{BLACK}Pakeitimo kaina: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Negalima pakeisti krovinio tipo...
 STR_GO_TO_AIRPORT_HANGAR                                        :Kursas: {STATION} angaras

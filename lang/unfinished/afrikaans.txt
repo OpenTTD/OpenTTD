@@ -426,7 +426,7 @@ STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Laaste boodskap
 STR_0201_MESSAGE_SETTINGS                                       :Boodskap stellings
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vertoon laaste boodskap/nuus verslag, vertoon boodskap opsies
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Boodskap Opsies
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Boodskap tipes:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Boodskap tipes:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aankoms van eerste voetuig by speler se stasie
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aankoms van eerste voertuig by mededinger se stasie
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongelukke / rampe
@@ -903,11 +903,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} p
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Vervoer maatskappy belastings:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidiee
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidiee op aanbod vir diens opneming:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidiee op aanbod vir diens opneming:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} van {STRING} tot {STRING}
 STR_2028_BY                                                     :{YELLOW} (voor {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Geen
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Dienste reeds gesubsidieer:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Dienste reeds gesubsidieer:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} van {STATION} tot {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, tot {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Aanbod vansubsidie verval:{}{}{STRING} van {STRING} tot {STRING} sal nou nie 'n subsidie aantrek nie.

@@ -553,7 +553,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Besked Indstill
 STR_MESSAGE_HISTORY_MENU                                        :Tidligere beskeder
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Vis sidste besked/nyheds rapport, vis besked indstillinger
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Besked Indstillinger
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Besked typer:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Besked typer:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Andkomst af første køretøj til spillerens station
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Andkomst af første køretøj til modstanderens station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Uheld / katastrofer
@@ -1549,11 +1549,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} l
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transportselskabsbedømmelse:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Specialaftaler
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Specialaftaler til udlicitering:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Specialaftaler til udlicitering:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} fra {STRING} til {STRING}
 STR_2028_BY                                                     :{YELLOW} (inden {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ingen
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Specialaftaler der allerede er vundet:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Specialaftaler der allerede er vundet:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, indtil {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Specialaftale udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse en bonus.
@@ -2639,7 +2639,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Ombyg skibet
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den slags last skibet skal sejle med
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Ombyg skibet til den markerede slags last
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den lasttype der skal sejles med:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den lasttype der skal sejles med:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(ombygning mulig)
@@ -2712,7 +2712,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Ombyg fly
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den type last flyet skal flyve med
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Ombyg flyet til at flyve med den markerede slags last
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den type last der skal flyves med:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den type last der skal flyves med:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Ombygningspris: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikke ombygge fly...
 STR_GO_TO_AIRPORT_HANGAR                                        :Flyv til {STATION} hangar

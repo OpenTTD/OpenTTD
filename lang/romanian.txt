@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Setãri mesaje
 STR_MESSAGE_HISTORY_MENU                                        :Lista ultimelor mesaje
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Afiseaza ultimul mesaj (ultima stire) si optiunile pentru mesaje
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Optiuni mesaje
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipuri mesaje:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipuri mesaje:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sosirea primului vehicul la una din statiile tale
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sosirea primului vehicul la una din statiile competitorilor
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidente/dezastre
@@ -2651,7 +2651,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Schimbã marfa transportatã
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de încãrcãturã ce va fi transportat de navã
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Schimbã tipul de încãrcãturã al acestei nave
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege tipul încãrcãturii:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege tipul încãrcãturii:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nu pot schimba tipul navei...
 STR_9842_REFITTABLE                                             :(suportã alte mãrfuri)
@@ -2724,7 +2724,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Schimbã tipul de încãrcãturã transportat
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege marfa care doresti sã fie transportatã
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Schimbã tipul de încãrcãturã al acestei aeronave
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege marfa de transportat:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege marfa de transportat:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nu pot schimba tipul de încãrcãturã...
 STR_GO_TO_AIRPORT_HANGAR                                        :Mergi la Hangarul {STATION}

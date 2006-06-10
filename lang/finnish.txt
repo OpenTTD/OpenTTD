@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Viestiasetukset
 STR_MESSAGE_HISTORY_MENU                                        :Viestihistoria
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Näytä viimeisin viesti/uutisraportti, näytä viestiasetukset.
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Viestiasetukset
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Viestityypit::-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Viestityypit:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimmäinen ajoneuvo saapuu pelaajan asemalle
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ensimmäinen ajoneuvo saapuu kilpailijan asemalle
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Vahingot/onnettomuudet
@@ -1563,7 +1563,7 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN}: 
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Kuljetusyhtiön arvioinnit:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Tuet
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tarjolla olevat tuet:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Tarjolla olevat tuet:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} välille {STRING}-{STRING}
 STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ei mitään
@@ -2655,7 +2655,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Sovita laiva
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse laivan kuljettama rahtityyppi.
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Sovita laiva korostetulle rahtityypille.
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kustannus: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Laivaa ei voi sovittaa...
 STR_9842_REFITTABLE                                             :(sovitettava)
@@ -2728,7 +2728,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Sovita lentokone
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse kuljetettavan rahdin tyyppi.
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Sovita lentokone kuljettamaan valittua rahtityyppiä.
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kustannus: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Lentokonetta ei voi sovittaa...
 STR_GO_TO_AIRPORT_HANGAR                                        :Aseta kohteeksi lentokonehalli, {STATION}

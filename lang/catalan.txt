@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Preferències de
 STR_MESSAGE_HISTORY_MENU                                        :Historial de Missatges
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostrar darrers missatges/notícies, mostrar opcions de missatges
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcions de Missatges
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipus de Missages:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipus de Missages:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribada del 1er. vehicle a una estació teva
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribada del 1er. vehicle a una estació competidora
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / desastres
@@ -1559,11 +1559,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} a
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ratis de l'Empresa de Transports:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencions
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvencions per prestació de serveis oferides:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvencions per prestació de serveis oferides:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} a {STRING}
 STR_2028_BY                                                     :{YELLOW} (per {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Cap
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Serveis ja subvencionats:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Serveis ja subvencionats:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} des de {STATION} fins a {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, fins a {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Oferiment de subvenció caducada: {}{}{STRING} des de {STRING} fins a {STRING} s'ha declarat desert.
@@ -2651,7 +2651,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Remodelar vaixell
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona el tipus de càrrega a transportar
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Remodelar vaixell per portar el tipus de càrrega seleccionat
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona el tipus de càrrega a transportar:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona el tipus de càrrega a transportar:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacitat: {GOLD}{STRING}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}No es pot remodelar el vaixell...
 STR_9842_REFITTABLE                                             :(remodelable)
@@ -2724,7 +2724,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Remodelar aeronaus
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona tipus de càrrega a transportar
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Remodelar aeronau per transportar el tipus de càrrega seleccionat
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona tipus de càrrega a transportar:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona tipus de càrrega a transportar:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacitat: {GOLD}{STRING}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No es pot remodelar l'aeronau...
 STR_GO_TO_AIRPORT_HANGAR                                        :Anar a l'hangar de {STATION}.

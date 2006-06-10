@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Message setting
 STR_MESSAGE_HISTORY_MENU                                        :Message History
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Show last message/news report, show message options
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Message Options
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Message types:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Message types:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrival of first vehicle at player's station
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrival of first vehicle at competitor's station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / disasters
@@ -1563,11 +1563,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} l
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transport company ratings:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidies
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidies on offer for services taking:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subsidies on offer for services taking:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} from {STRING2} to {STRING2}
 STR_2028_BY                                                     :{YELLOW} (by {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}None
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Services already subsidised:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Services already subsidised:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} from {STATION} to {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, until {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offer of subsidy expired:{}{}{STRING} from {STRING2} to {STRING2} will now not attract a subsidy.
@@ -2660,7 +2660,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Refit ship
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Select type of cargo for ship to carry
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Refit ship to carry highlighted cargo type
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Select cargo type to carry:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Select cargo type to carry:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}New capacity: {GOLD}{STRING1}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Can't refit ship...
 STR_9842_REFITTABLE                                             :(refittable)
@@ -2733,7 +2733,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Refit aircraft
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Select type of cargo for aircraft to carry
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Refit aircraft to carry highlighted cargo type
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Select cargo type to carry:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Select cargo type to carry:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}New capacity: {GOLD}{STRING1}{}{BLACK}Cost of refit: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Can't refit aircraft...
 STR_GO_TO_AIRPORT_HANGAR                                        :Go to {STATION} Hangar

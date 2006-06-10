@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Meddelandeinstä
 STR_MESSAGE_HISTORY_MENU                                        :Meddelandehistorik
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Visa senaste meddelandet/nyheten, visa meddelandeinställningar
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Meddelandeinställningar
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Meddelandetyper:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Meddelandetyper:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst av första fordonet vid spelarens stn.
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Ankomst av första fordonet vid konkurrenternas stn.
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Olyckor / katastrofer
@@ -1559,11 +1559,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} k
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transportföretags värderingar:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventioner
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Aktuella subventioner:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Aktuella subventioner:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} från {STRING} till {STRING}
 STR_2028_BY                                                     :{YELLOW} (tills {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Inga
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Redan subventionerade rutter:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Redan subventionerade rutter:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} från {STATION} till {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, tills {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subventionen har gått ut:{}{}{STRING} från {STRING} till {STRING} är inte längre subventionerad
@@ -2650,7 +2650,7 @@ STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Anpassa 
 STR_983C_REFIT_SHIP                                             :{BLACK}Anpassa skepp
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj typ av gods för skepp att frakta
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Anpassa skepp att frakta markerad godstyp
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Välj godstyp att frakta:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Välj godstyp att frakta:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Kostnad av anpassning: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan inte anpassa skepp...
 STR_9842_REFITTABLE                                             :(anpassningsbart)
@@ -2722,7 +2722,7 @@ STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa 
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Anpassa flygplan
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj godstyp för flygplan att frakta
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta markerad godstyp
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Välj godstyp att frakta:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Välj godstyp att frakta:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Kostnad av anpassning: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan inte anpassa flygplan...
 STR_GO_TO_AIRPORT_HANGAR                                        :Gå till {STATION} Hangar

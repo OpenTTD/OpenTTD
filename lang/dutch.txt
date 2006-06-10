@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Berichteninstel
 STR_MESSAGE_HISTORY_MENU                                        :Berichtengeschiedenis
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Toon laatste (nieuws)bericht, toon berichteninstellingen
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Berichtenopties
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Berichttypen:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Berichttypen:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste voertuig bij eigen station
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Eerste voertuig bij concurrerend station
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ongelukken/rampen
@@ -1563,11 +1563,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN}'s
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Reputatie van transportbedrijven:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidies
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Beschikbare subsidies:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Beschikbare subsidies:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} van {STRING} naar {STRING}
 STR_2028_BY                                                     :{YELLOW} (voor {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Geen
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Bestaande subsidies:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Bestaande subsidies:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} van {STATION} naar {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, tot {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsidieaanbod is verlopen:{}{}{STRING} van {STRING} naar {STRING} wordt nu niet meer gesubsidieerd.
@@ -2660,7 +2660,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Schip ombouwen
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecteer type goederen dat dit schip moet vervoeren
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Bouw schip om om geselecteerde goederen te vervoeren
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecteer goederentype om te vervoeren:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecteer goederentype om te vervoeren:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nieuwe capaciteit: {GOLD}{STRING}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan schip niet ombouwen...
 STR_9842_REFITTABLE                                             :(ombouwbaar)
@@ -2733,7 +2733,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Vliegtuig ombouwen
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecteer goederentype om te vervoeren door het vliegtuig
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Bouw vliegtuig om om het geselecteerde goederentype te vervoeren
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecteer goederentype om te vervoeren:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecteer goederentype om te vervoeren:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nieuwe capaciteit: {GOLD}{STRING}{}{BLACK}Ombouwkosten: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan vliegtuig niet ombouwen...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ga naar {STATION} hanger

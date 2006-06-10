@@ -543,7 +543,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Configuración d
 STR_MESSAGE_HISTORY_MENU                                        :Historial de Mensaxes
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Amosa-la última mensaxe/noticia, amosa-las opcións das mensaxes
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcións das mensaxes
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipos de mensaxes:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipos de mensaxes:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada do 1º vehículo a estación do xogador
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada do 1º vehículo a estación dun oponente
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidentes / desastres
@@ -2609,7 +2609,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Reaxustar barco
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona o tipo de mercadoría que vai levar
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Reaxusta-lo barco para leva-lo tipo de mercacdoría seleccionada
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona-lo tipo de carga a levar:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona-lo tipo de carga a levar:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova Capacidade: {GOLD}{STRING}{}{BLACK}Coste do reaxuste: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Non se pode reaxusta-lo barco...
 STR_9842_REFITTABLE                                             :(reax.)
@@ -2681,7 +2681,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Reaxustar aeronave
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona o tipo de carga que levará
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reaxusta-la aeronave para levar o tipo de carga seleccionada
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona o tipo de carga a levar:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona o tipo de carga a levar:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacidade: {GOLD}{STRING}{}{BLACK}Cose do reaxuste: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Non se pode reaxusta-la aeronave...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ir ó hangar de {STATION}

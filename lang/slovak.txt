@@ -556,7 +556,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Nastavenia spra
 STR_MESSAGE_HISTORY_MENU                                        :Historia Sprav
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Zobrazit poslednu spravu/novinku, nastavenia sprav
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Nastavenia sprav
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Typ sprav:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Typ sprav:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd prveho vozidla do stanice hraca
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Prijazd prveho vozidla do stanice konkurencie
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Havarie / Katastrofy
@@ -1552,11 +1552,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} M
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Hodnotenie dopravnych spolocnosti:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Dotacie
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponuknute dotacie:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponuknute dotacie:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING} do {STRING}
 STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nie je
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Uz dotovane:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Uz dotovane:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Dotacia skoncila:{}{}Preprava {STRING} z {STRING} do {STRING} uz nebude dotovana.
@@ -2642,7 +2642,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Prerobit lod
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vybrat typ nakladu pre lod
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Prerobit lod na vybrany typ nakladu
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vyber typ nakladu:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vyber typ nakladu:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapacita: {GOLD}{STRING}{}{BLACK}Cena prerabky: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nemozno prerobit lod...
 STR_9842_REFITTABLE                                             :(prerobitelna)
@@ -2715,7 +2715,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Prerobit lietadlo
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyber novy typ nakladu
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prerobit lietadlo na novy typ nakladu
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vybrat typ noveho nakladu:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vybrat typ noveho nakladu:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}nova kapacita: {GOLD}{STRING}{}{BLACK}cena prerobenia: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nemozno prerobit na novy typ nakladu...
 STR_GO_TO_AIRPORT_HANGAR                                        :Chod do {STATION} Hangaru

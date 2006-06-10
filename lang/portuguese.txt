@@ -555,7 +555,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Opções de mensa
 STR_MESSAGE_HISTORY_MENU                                        :Histórico de Mensagens
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostrar última mensagem/notícia, mostrar opções de mensagens
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opções de Mensagens
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipos de mensagens:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipos de mensagens:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada do primeiro veículo à estação do jogador
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Chegada do primeiro veículo à estação de um oponente
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Acidentes / desastres
@@ -1554,11 +1554,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} a
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Avaliações da companhia de transporte
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsídios
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta de subsídios para os serviços:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta de subsídios para os serviços:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} para {STRING}
 STR_2028_BY                                                     :{YELLOW} (por {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nenhum
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Serviços já subsidiados:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Serviços já subsidiados:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} para {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, até {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}A oferta do subsídio expirou:{}{}{STRING} de {STRING} para {STRING} já não é subsidiado.
@@ -2646,7 +2646,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Adaptar barco
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccionar tipo de carga do barco
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Adaptar barco para transportar a carga seleccionada
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleccionar tipo de carga:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleccionar tipo de carga:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacidade: {GOLD}{STRING}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Não é possível adaptar barco...
 STR_9842_REFITTABLE                                             :(adaptável)
@@ -2719,7 +2719,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Adaptar aeronave
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccionar tipo de carga da aeronave
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Adaptar aeronave para transportar a carga seleccionada
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleccionar tipo de carga:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleccionar tipo de carga:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacidade: {GOLD}{STRING}{}{BLACK}Custo da adaptação: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Não é possível adaptar aeronave...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ir para o hangar de {STATION}

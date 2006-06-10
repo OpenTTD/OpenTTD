@@ -562,7 +562,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Options de mess
 STR_MESSAGE_HISTORY_MENU                                        :Historique des Messages
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Afficher le dernier message/bulletin, afficher les options des messages
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Options des messages
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Types de message:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Types de message:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er véhicule dans la station du joueur
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}1er véhicule dans la station d'un competiteur
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / désastres
@@ -1564,11 +1564,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Municipa
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Notation de la compagnie de transport:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventions
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Offres de subvention pour le transport de:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Offres de subvention pour le transport de:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} à {STRING}
 STR_2028_BY                                                     :{YELLOW} (avant {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Aucune
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Subventions déjà accordées:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Subventions déjà accordées:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} de {STATION} à {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, jusqu'à {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offre de subvention expirée:{}{}Le transport de {STRING} entre {STRING} et {STRING} n'est désormais plus subventionné.
@@ -2656,7 +2656,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Réaménager navire
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaisons à transporter
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Réaménager le navire pour transporter la cargaison sélectionnée
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selectionner cargaison à transporter:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selectionner cargaison à transporter:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nouvelle capacité: {GOLD}{STRING}{}{BLACK}Prix du réaménagement: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Impossible de réaménager le navire...
 STR_9842_REFITTABLE                                             :(réaménageable)
@@ -2729,7 +2729,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Réaménager aéronef
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir type de cargaison à transporter
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Réaménager aéronef pour transporter type de cargaison sélectionné
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selectionner type de cargaison à transporter:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selectionner type de cargaison à transporter:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nouvelle capacité: {GOLD}{STRING}{}{BLACK}Prix du réaménagement: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Impossible de réaménager l'aéronef...
 STR_GO_TO_AIRPORT_HANGAR                                        :Aller au hangar {STATION}

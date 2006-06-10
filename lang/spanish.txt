@@ -1543,11 +1543,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} a
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ranking de empresas de transporte:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvenciones
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Se ofrecen subvenciones por llevar:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Se ofrecen subvenciones por llevar:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} desde {STRING} a {STRING}
 STR_2028_BY                                                     :{YELLOW} (antes de {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ninguna
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Líneas ya subvencionadas:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Líneas ya subvencionadas:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} desde {STATION} a {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, hasta {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Oferta de subsidio caducada:{}{}{STRING} de {STRING} a {STRING} ya no conlleva una subvención.
@@ -2629,7 +2629,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Reformar barco
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccione tipo de carga para que el barco la lleve
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Reformar barco para que transporte el tipo de carga resaltado
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleccione tipo de carga a llevar:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleccione tipo de carga a llevar:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nueva capacidad: {GOLD}{STRING}{}{BLACK}Coste de reforma: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}No se puede reformar barco...
 STR_9842_REFITTABLE                                             :(reformable)
@@ -2702,7 +2702,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Reformar aeronave
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccione tipo de carga para que la aeronave la lleve
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Reformar aeronave para que lleve el tipo de carga resaltado
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Elige tipo de carga para llevar:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Elige tipo de carga para llevar:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nueva capacidad: {GOLD}{STRING}{}{BLACK}Coste de reforma: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}No se puede reformar aeronave...
 STR_GO_TO_AIRPORT_HANGAR                                        :Ir al hangar de {STATION}

@@ -521,7 +521,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Zin'ojumu rez'i
 STR_MESSAGE_HISTORY_MENU                                        :Zin'ojumu ve'sture
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Para'di't pe'de'jo zin'u, para'di't zin'as rez'i'mus
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Zin'ojuma rez'i'mi
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Zin'ojumu veidi:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Zin'ojumu veidi:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Spe'le'ta'ja stacija' ierodas pirmais transporta li'dzeklis
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Sa'ncens'a stacija' ierodas pirmais transporta li'dzeklis
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Negadijumi / ava'rijas

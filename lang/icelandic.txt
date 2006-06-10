@@ -519,7 +519,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Skilaboðastilli
 STR_MESSAGE_HISTORY_MENU                                        :Saga skilaboða
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Sýna síðustu skilaboð/fréttatilkynningu, sýna skilaboðastillingar
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Skilaboðastillingar
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Skilaboðategundir:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Skilaboðategundir:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aðkoma fyrsta farartækis á stöð leikmanns
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Aðkoma fyrsta farartækis á stöð andstæðings
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Slys / hamfarir
@@ -1492,11 +1492,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Bæjaryfi
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Einkunnir flutningsfyrirtækis:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Samstarfssamningar
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Samstarfssamningar í boði fyrir eftirfarandi þjónustur:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Samstarfssamningar í boði fyrir eftirfarandi þjónustur:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} frá {STRING} til {STRING}
 STR_2028_BY                                                     :{YELLOW} (til {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Enginn
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Samningar þegar í gildi:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Samningar þegar í gildi:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} frá {STATION} til {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, þangað til {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Tilboð til samstarfssamnings runnið út:{}{}{STRING} frá {STRING} til {STRING} mun ekki vera samningsbundið.
@@ -2575,7 +2575,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Breyta skipi
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Veldu hvernig farm skipið á að flytja
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Breyta skipi svo það flytji valinn farm
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Veldu farm sem á að flytja:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Veldu farm sem á að flytja:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ný burðargeta: {GOLD}{STRING}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Get ekki breytt skipi...
 STR_9842_REFITTABLE                                             :(breytanlegt)
@@ -2648,7 +2648,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Breyta flugvél
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Veldu farm sem flugvél á að flytja
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Breyta flugvél svo hún flytji valinn farm
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Veldu farm sem á að flytja:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Veldu farm sem á að flytja:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ný burðargeta: {GOLD}{STRING}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Get ekki breytt flugvél...
 STR_GO_TO_AIRPORT_HANGAR                                        :Fara í {STATION} flugskýli

@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Mesaj ayarlari
 STR_MESSAGE_HISTORY_MENU                                        :Mesaj Geçmisi
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Son mesaji/haberi göster, mesaj ayarlarini göster
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Mesaj Seçenekleri
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Mesaj türleri:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Mesaj türleri:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oyuncunun duragina ilk aracin gelisi
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Rakibin duragina ilk aracin gelisi
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kazalar / felaketler
@@ -1563,11 +1563,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} b
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Tasima sirketi reytingleri:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}ihaleler
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Beklenen ihaleler:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Beklenen ihaleler:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} {STRING} -> {STRING}
 STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Yok
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Verilen ihaleler:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Verilen ihaleler:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} {STATION} -> {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}ihale zamani doldu: {}{}{STRING} {STRING} -> {STRING} artik fazla gelir getirmeyecek.
@@ -2660,7 +2660,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}modifiye
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Tasinacak kargoyu seçin
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Seçili kargoyu tasimak için modifiye et
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Tasinacak kargo türünü seçin:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Tasinacak kargo türünü seçin:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Yeni kapasite: {GOLD}{STRING}{}{BLACK}Modifiye fiyati: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Modifiye edilemez...
 STR_9842_REFITTABLE                                             :(modifiyeli)
@@ -2733,7 +2733,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Modifiye
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Tasinacak kargo türünü seçin
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Seçili kargoyu tasimasi için uçagi modifiye et
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Tasinacak kargoyu seçin:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Tasinacak kargoyu seçin:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Yeni kapasite: {GOLD}{STRING}{}{BLACK}Modifiye fiyati: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Modifiye edilemez...
 STR_GO_TO_AIRPORT_HANGAR                                        :{STATION} Hangarina git

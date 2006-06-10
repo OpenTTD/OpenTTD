@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Teadete seaded
 STR_MESSAGE_HISTORY_MENU                                        :Teadete ajalugu
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Näita viimast teadet, kuva teadete seaded
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Teadete Seaded
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Teate tüüp:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Teate tüüp:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Esimese sõiduki saabumine mängija jaama
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Esimese sõiduki saabumine konkurendi jaama
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Õnnetused / katastroofid
@@ -1563,11 +1563,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} k
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ettevõtete reitingud:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsiidiumid
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Pakutavad subsiidiumid teenusepakkumise eest:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Pakutavad subsiidiumid teenusepakkumise eest:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} kohast {STRING} kohta {STRING}
 STR_2028_BY                                                     :{YELLOW} (kuni {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Mitte ühtegi
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Teenused, mida juba subsideeritakse:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Teenused, mida juba subsideeritakse:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} kohast {STATION} kohta {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, kuni {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Pakkumine subsiidiumile lõppes:{}{}Transporditeenuse {STRING} kohast {STRING} kohta {STRING} eest ei maksta enam subsiidiumi.
@@ -2655,7 +2655,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Seadista ümber laev
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali kauba tüüp, mida laev hakkab kandma
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Seadista laev ümber valitud kauba tüübi jaoks
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kauba tüüp mida vedada:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kauba tüüp mida vedada:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus mahutuvus: {GOLD}{STRING}{}{BLACK}Laeva ümberseadistamise hind: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Ei saa laeva ümberseadistada...
 STR_9842_REFITTABLE                                             :(ümberseadistatav)
@@ -2728,7 +2728,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Seadista lennuk ümber
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali kauba tüüp mida lennuk hakkab kandma
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Seadista ümber lennuk et kanda valitud kauba tüüpi
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kauba tüüp mida kanda:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kauba tüüp mida kanda:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus mahutuvus: {GOLD}{STRING}{}{BLACK}Maksumus et ümber seadistada: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ei saa ümber seadistada lennukit...
 STR_GO_TO_AIRPORT_HANGAR                                        :Mine {STATION} Angaari

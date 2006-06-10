@@ -561,7 +561,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Impostazioni me
 STR_MESSAGE_HISTORY_MENU                                        :Cronologia messaggi
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostra ultimo messaggio/rapporto, mostra impostazione messaggi
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Impostazione messaggi
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipi di messaggio:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipi di messaggio:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni del giocatore
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arrivo del primo veicolo alle stazioni della concorrenza
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Incidenti / disastri
@@ -1563,11 +1563,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Autorità
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Valutazione servizi di trasporto delle società:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Sussidi
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Sussidi offerti per il servizio:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Sussidi offerti per il servizio:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} da {STRING} a {STRING}
 STR_2028_BY                                                     :{YELLOW} (del {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Nessuno
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Servizi già sussidiati:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Servizi già sussidiati:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} da {STATION} a {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, fino al {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offerta di sussidio scaduta:{}{}{STRING} da {STRING} a {STRING} non sarà più sovvenzionato.
@@ -2656,7 +2656,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Converti nave
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleziona tipo di merce da caricare
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Converti la nave per trasportare il tipo di merce evidenziata
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona il tipo di merce da caricare:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona il tipo di merce da caricare:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuova Capienza: {GOLD}{STRING}{}{BLACK}Costo conversione: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Non puoi convertire la nave...
 STR_9842_REFITTABLE                                             :(convertibile)
@@ -2729,7 +2729,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Converti l'aereo
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleziona il tipo di merce da caricare
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Converti l'aereo per trasportare il tipo di merce evidenziata
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona il tipo di merce da caricare:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona il tipo di merce da caricare:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuova capacità: {GOLD}{STRING}{}{BLACK}Costo conversione: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Non puoi convertire l'aereo...
 STR_GO_TO_AIRPORT_HANGAR                                        :Vai a {STATION} Hangar

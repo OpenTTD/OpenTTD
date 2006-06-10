@@ -614,7 +614,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Ustawienia wiad
 STR_MESSAGE_HISTORY_MENU                                        :Poprzednie wiadomosci
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Pokaz ostatnia wiadomosc/ogloszenie, pokaz ustawienia wiadomosci
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcje wiadomosci
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Typy wiadomosci:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Typy wiadomosci:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybycie pierwszego pojazdu do stacji gracza
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybycie pierwszego pojazdu do stacji przeciwnika
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Wypadki / kleski
@@ -1650,11 +1650,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} l
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ocena transportu firmy:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsydia
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta subsydiow dla uslugi przewozu:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta subsydiow dla uslugi przewozu:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING} do {STRING}
 STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Zadne
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Uslugi juz subsydiowane:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Uslugi juz subsydiowane:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsydiowanie wygaslo:{}{}{STRING} z {STRING} do {STRING} juz nie bedzie dotowane.
@@ -2784,7 +2784,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Przebudowa statku
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ ladunku jaki ma przewozic statek
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Przebuduj statek do przewozu zaznaczonego typu towaru
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ladunku do przewozu:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ladunku do przewozu:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nie mozna przebudowac statku...
 STR_9842_REFITTABLE                                             :(przebudowalny)
@@ -2857,7 +2857,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Przebudowa samolotu
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ towaru jaki ma przenosic samolot
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebuduj samolot do przewozu zaznaczonego typu towaru
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ towaru do przewozu:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ towaru do przewozu:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie mozna przebudowac samolotu...
 STR_GO_TO_AIRPORT_HANGAR                                        :Idz do hangaru na {STATION}
