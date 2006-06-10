@@ -27,14 +27,6 @@ void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
-static void GenericRaiseLowerLand(TileIndex tile, int mode)
-{
-	if (mode) {
-		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE));
-	} else {
-		DoCommandP(tile, 8, (uint32)mode, CcTerraform, CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE));
-	}
-}
 
 /** Scenario editor command that generates desert areas */
 static void GenerateDesertArea(TileIndex end, TileIndex start)
@@ -145,12 +137,18 @@ void PlaceProc_DemolishArea(TileIndex tile)
 
 static void PlaceProc_RaiseLand(TileIndex tile)
 {
-	GenericRaiseLowerLand(tile, 1);
+	DoCommandP(
+		tile, SLOPE_N, 1, CcTerraform,
+		CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0808_CAN_T_RAISE_LAND_HERE)
+	);
 }
 
 static void PlaceProc_LowerLand(TileIndex tile)
 {
-	GenericRaiseLowerLand(tile, 0);
+	DoCommandP(
+		tile, SLOPE_N, 0, CcTerraform,
+		CMD_TERRAFORM_LAND | CMD_AUTO | CMD_MSG(STR_0809_CAN_T_LOWER_LAND_HERE)
+	);
 }
 
 void PlaceProc_LevelLand(TileIndex tile)
