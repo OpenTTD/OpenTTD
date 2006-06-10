@@ -262,10 +262,7 @@ then
 fi
 
 # First remove the Makefile.config, else you can have double entries
-if test -e "Makefile.config"
-then
-	rm -f Makefile.config
-fi
+rm -f Makefile.config
 
 echo "make upgradeconf $PARAM" > Makefile.run
 . Makefile.run
