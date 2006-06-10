@@ -59,11 +59,9 @@ static inline TileType GetTileType(TileIndex tile)
 static inline void SetTileType(TileIndex tile, TileType type)
 {
 	assert(tile < MapSize());
-	/* Allow only MP_VOID to be set to border tiles. This code is put here since
-	 * it seems there is a bug that violates this somewhere. (Formely know as
-	 * the "old ship pf" bug, which presented a case in which this broke). It
-	 * can be removed as soon as  the bug is squashed. */
-	assert((TileX(tile) < MapMaxX() && TileY(tile) < MapMaxY()) || type == MP_VOID);
+	/* VOID tiles (and no others) are exactly allowed at the lower left and right
+	 *edges of the map */
+	assert((TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) == (type == MP_VOID));
 	SB(_m[tile].type_height, 4, 4, type);
 }
 
