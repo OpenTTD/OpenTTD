@@ -741,20 +741,19 @@ static void DrawRoadBits(TileInfo* ti, RoadBits road)
 
 static void DrawTile_Road(TileInfo *ti)
 {
-	PalSpriteID image;
-
 	switch (GetRoadTileType(ti->tile)) {
 		case ROAD_TILE_NORMAL:
 			DrawRoadBits(ti, GetRoadBits(ti->tile));
 			break;
 
 		case ROAD_TILE_CROSSING: {
+			PalSpriteID image;
+
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
 			image = GetRailTypeInfo(GetRailTypeCrossing(ti->tile))->base_sprites.crossing;
 
 			if (GetCrossingRoadAxis(ti->tile) == AXIS_X) image++;
-
 			if (IsCrossingBarred(ti->tile)) image += 2;
 
 			if (IsOnSnow(ti->tile)) {
@@ -802,12 +801,8 @@ static void DrawTile_Road(TileInfo *ti)
 
 void DrawRoadDepotSprite(int x, int y, int image)
 {
-	uint32 ormod;
-	const DrawRoadSeqStruct *dtss;
-
-	ormod = PLAYER_SPRITE_COLOR(_local_player);
-
-	dtss = _road_display_datas[image];
+	const DrawRoadSeqStruct* dtss = _road_display_datas[image];
+	uint32 ormod = PLAYER_SPRITE_COLOR(_local_player);
 
 	x += 33;
 	y += 17;
@@ -1064,7 +1059,7 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 
 	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
-	}	else {
+	} else {
 		switch (GetRoadTileType(tile)) {
 			case ROAD_TILE_NORMAL:
 				SetTileOwner(tile, OWNER_NONE);

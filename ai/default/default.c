@@ -348,11 +348,11 @@ static void AiHandleReplaceRoadVeh(Player *p)
 		tile = v->tile;
 
 		if (!CmdFailed(DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH)) &&
-			  !CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH)) ) {
+			  !CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH))) {
 			VehicleID veh = _new_vehicle_id;
+
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
-
 			DoCommand(0, veh, _ai_service_interval, DC_EXEC, CMD_CHANGE_SERVICE_INT);
 		}
 	}
@@ -1608,8 +1608,7 @@ clear_town_stuff:;
 			}
 		} else if (p->mode == 3) {
 			//Clear stuff and then build single rail.
-			if (GetTileSlope(c, NULL) != SLOPE_FLAT)
-				return CMD_ERROR;
+			if (GetTileSlope(c, NULL) != SLOPE_FLAT) return CMD_ERROR;
 			ret = DoCommand(c, 0, 0, flag | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, CMD_LANDSCAPE_CLEAR);
 			if (CmdFailed(ret)) return CMD_ERROR;
 			total_cost += ret + _price.build_rail;
@@ -1927,7 +1926,6 @@ static bool AiCheckRailPathBetter(AiRailFinder *arf, const byte *p)
 
 static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile, const byte *p)
 {
-	TileIndex tile_new;
 	Slope tileh;
 	uint z;
 	bool flag;
@@ -1936,7 +1934,8 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 
 	tileh = GetTileSlope(tile, &z);
 	if (tileh == _dir_table_1[dir2] || (tileh == SLOPE_FLAT && z != 0)) {
-		tile_new = tile;
+		TileIndex tile_new = tile;
+
 		// Allow bridges directly over bottom tiles
 		flag = z == 0;
 		for (;;) {
@@ -1977,9 +1976,7 @@ static inline void AiCheckBuildRailTunnelHere(AiRailFinder *arf, TileIndex tile,
 
 		if (!CmdFailed(cost) && cost <= (arf->player->player_money>>4)) {
 			AiBuildRailRecursive(arf, _build_tunnel_endtile, p[0]&3);
-			if (arf->depth == 1) {
-				AiCheckRailPathBetter(arf, p);
-			}
+			if (arf->depth == 1) AiCheckRailPathBetter(arf, p);
 		}
 	}
 }
@@ -2009,6 +2006,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
 	// Depth too deep?
 	if (arf->depth >= 4) {
 		uint dist = DistanceMaxPlusManhattan(tile, arf->final_tile);
+
 		if (dist < arf->cur_best_dist) {
 			// Store the tile that is closest to the final position.
 			arf->cur_best_depth = arf->depth;
@@ -2037,9 +2035,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
 			}
 
 			// At the bottom depth?
-			if (arf->depth == 1) {
-				AiCheckRailPathBetter(arf, p);
-			}
+			if (arf->depth == 1) AiCheckRailPathBetter(arf, p);
 
 			p += 2;
 		} while (!(p[0]&0x80));
@@ -2093,8 +2089,9 @@ static void AiBuildRailConstruct(Player *p)
 	// Didn't find anything to build?
 	if (arf.best_ptr == NULL) {
 		// Terraform some
-		for (i=0; i!=5; i++)
+		for (i = 0; i != 5; i++) {
 			AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
+		}
 
 		if (++p->ai.state_counter == 21) {
 			p->ai.state_counter = 40;
@@ -2112,16 +2109,16 @@ static void AiBuildRailConstruct(Player *p)
 		int i;
 		int32 bridge_len = GetBridgeLength(arf.bridge_end_tile, p->ai.cur_tile_a);
 
-		/*	Figure out what (rail)bridge type to build
-				start with best bridge, then go down to worse and worse bridges
-				unnecessary to check for worse bridge (i=0), since AI will always build that.
-				AI is so fucked up that fixing this small thing will probably not solve a thing
-		*/
+		/* Figure out which (rail)bridge type to build
+		 * start with best bridge, then go down to worse and worse bridges
+		 * unnecessary to check for worst bridge (i=0), since AI will always build
+		 * that. AI is so fucked up that fixing this small thing will probably not
+		 * solve a thing
+		 */
 		for (i = MAX_BRIDGES - 1; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
 				int32 cost = DoCommand(arf.bridge_end_tile, p->ai.cur_tile_a, i | (p->ai.railtype_to_use << 8), DC_AUTO, CMD_BUILD_BRIDGE);
-				if (!CmdFailed(cost) && cost < (p->player_money >> 5))
-					break;
+				if (!CmdFailed(cost) && cost < (p->player_money >> 5)) break;
 			}
 		}
 
@@ -2130,7 +2127,7 @@ static void AiBuildRailConstruct(Player *p)
 
 		p->ai.cur_tile_a = arf.bridge_end_tile;
 		p->ai.state_counter = 0;
-	} else if (arf.best_ptr[0]&0x40) {
+	} else if (arf.best_ptr[0] & 0x40) {
 		// tunnel
 		DoCommand(p->ai.cur_tile_a, p->ai.railtype_to_use, 0, DC_AUTO | DC_EXEC, CMD_BUILD_TUNNEL);
 		p->ai.cur_tile_a = _build_tunnel_endtile;
@@ -2348,9 +2345,7 @@ static EngineID AiFindBestWagon(CargoID cargo, RailType railtype)
 			continue;
 		}
 
-		if (rvi->cargo_type != cargo) {
-			continue;
-		}
+		if (rvi->cargo_type != cargo) continue;
 
 		/* max_speed of 0 indicates no speed limit */
 		speed = rvi->max_speed == 0 ? 0xFFFF : rvi->max_speed;
@@ -2374,7 +2369,7 @@ static void AiStateBuildRailVeh(Player *p)
 	CargoID cargo;
 	int32 cost;
 	Vehicle *v;
-	uint loco_id;
+	VehicleID loco_id;
 
 	ptr = _default_rail_track_data[p->ai.src.cur_building_rule]->data;
 	while (ptr->mode != 0) ptr++;
@@ -2395,14 +2390,12 @@ static void AiStateBuildRailVeh(Player *p)
 			p->ai.wagon_list[i + 1] = INVALID_VEHICLE;
 			return;
 		}
-		if (cargo == CT_MAIL)
-			cargo = CT_PASSENGERS;
-		if (++i == p->ai.num_wagons * 2 - 1)
-			break;
+		if (cargo == CT_MAIL) cargo = CT_PASSENGERS;
+		if (++i == p->ai.num_wagons * 2 - 1) break;
 	}
 
 	// Which locomotive to build?
-	veh = AiChooseTrainToBuild(p->ai.railtype_to_use, p->player_money, (cargo!=CT_PASSENGERS)?1:0, tile);
+	veh = AiChooseTrainToBuild(p->ai.railtype_to_use, p->player_money, cargo != CT_PASSENGERS ? 1 : 0, tile);
 	if (veh == INVALID_ENGINE) {
 handle_nocash:
 		// after a while, if AI still doesn't have cash, get out of this block by selling the wagons.
@@ -2435,7 +2428,7 @@ handle_nocash:
 	}
 
 	for (i = 0; p->ai.order_list_blocks[i] != 0xFF; i++) {
-		AiBuildRec *aib = (&p->ai.src) + p->ai.order_list_blocks[i];
+		const AiBuildRec* aib = &p->ai.src + p->ai.order_list_blocks[i];
 		bool is_pass = (
 			p->ai.cargo_type == CT_PASSENGERS ||
 			p->ai.cargo_type == CT_MAIL ||
@@ -2615,11 +2608,8 @@ clear_town_stuff:;
 // Make sure the blocks are not too close to each other
 static bool AiCheckBlockDistances(Player *p, TileIndex tile)
 {
-	AiBuildRec *aib;
-	int num;
-
-	num = p->ai.num_build_rec;
-	aib = &p->ai.src;
+	const AiBuildRec* aib = &p->ai.src;
+	uint num = p->ai.num_build_rec;
 
 	do {
 		if (aib->cur_building_rule != 255) {
@@ -2835,7 +2825,6 @@ static bool AiBuildRoadHelper(TileIndex tile, int flags, int type)
 
 static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile, const byte *p)
 {
-	TileIndex tile_new;
 	Slope tileh;
 	uint z;
 	bool flag;
@@ -2844,7 +2833,8 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 
 	tileh = GetTileSlope(tile, &z);
 	if (tileh == _dir_table_1[dir2] || (tileh == SLOPE_FLAT && z != 0)) {
-		tile_new = tile;
+		TileIndex tile_new = tile;
+
 		// Allow bridges directly over bottom tiles
 		flag = z == 0;
 		for (;;) {
@@ -2885,9 +2875,7 @@ static inline void AiCheckBuildRoadTunnelHere(AiRoadFinder *arf, TileIndex tile,
 
 		if (!CmdFailed(cost) && cost <= (arf->player->player_money>>4)) {
 			AiBuildRoadRecursive(arf, _build_tunnel_endtile, p[0]&3);
-			if (arf->depth == 1) {
-				AiCheckRoadPathBetter(arf, p);
-			}
+			if (arf->depth == 1)  AiCheckRoadPathBetter(arf, p);
 		}
 	}
 }
@@ -3032,7 +3020,6 @@ do_some_terraform:
 		p->ai.cur_tile_a = _build_tunnel_endtile;
 		p->ai.state_counter = 0;
 	} else {
-
 		// road
 		if (!AiBuildRoadHelper(tile, DC_EXEC | DC_AUTO | DC_NO_WATER | DC_AI_BUILDING, arf.best_ptr[0]))
 			goto do_some_terraform;
@@ -3062,8 +3049,9 @@ static void AiBuildRoad(Player *p)
 		uint i;
 
 		// Terraform some and then try building again.
-		for (i = 0; i != 4; i++)
+		for (i = 0; i != 4; i++) {
 			AiDoTerraformLand(p->ai.cur_tile_a, p->ai.cur_dir_a, 3, 0);
+		}
 
 		if (++p->ai.state_counter == 4) {
 			p->ai.state_counter = 0;
@@ -3156,7 +3144,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 {
 	const AiDefaultBlockData *ptr;
 	TileIndex tile;
-	uint loco_id;
+	VehicleID loco_id;
 	EngineID veh;
 	uint i;
 
@@ -3227,7 +3215,7 @@ static void AiStateDeleteRoadBlocks(Player *p)
 
 static void AiStateAirportStuff(Player *p)
 {
-	Station *st;
+	const Station* st;
 	byte acc_planes;
 	int i;
 	AiBuildRec *aib;
@@ -3449,10 +3437,10 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	TileIndex tile;
 	EngineID veh;
 	int i;
-	uint loco_id;
+	VehicleID loco_id;
 
 	ptr = _airport_default_block_data[p->ai.src.cur_building_rule];
-	for (;ptr->mode!=0;ptr++) {}
+	for (; ptr->mode != 0; ptr++) {}
 
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
@@ -3465,7 +3453,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 	if (CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) return;
 	loco_id = _new_vehicle_id;
 
-	for (i=0; p->ai.order_list_blocks[i] != 0xFF; i++) {
+	for (i = 0; p->ai.order_list_blocks[i] != 0xFF; i++) {
 		AiBuildRec *aib = (&p->ai.src) + p->ai.order_list_blocks[i];
 		bool is_pass = (p->ai.cargo_type == CT_PASSENGERS || p->ai.cargo_type == CT_MAIL);
 		Order order;
@@ -3664,27 +3652,20 @@ pos_3:
 
 		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) {
 			DiagDirection dir;
+			TileIndex t;
 
 			// Check if there are any stations around.
-			if (IsTileType(tile + TileDiffXY(-1, 0), MP_STATION) &&
-					IsTileOwner(tile + TileDiffXY(-1, 0), _current_player)) {
-				return;
-			}
+			t = tile + TileDiffXY(-1, 0);
+			if (IsTileType(t, MP_STATION) && IsTileOwner(t, _current_player)) return;
 
-			if (IsTileType(tile + TileDiffXY(1, 0), MP_STATION) &&
-					IsTileOwner(tile + TileDiffXY(1, 0), _current_player)) {
-				return;
-			}
+			t = tile + TileDiffXY(1, 0);
+			if (IsTileType(t, MP_STATION) && IsTileOwner(t, _current_player)) return;
 
-			if (IsTileType(tile + TileDiffXY(0, -1), MP_STATION) &&
-					IsTileOwner(tile + TileDiffXY(0, -1), _current_player)) {
-				return;
-			}
+			t = tile + TileDiffXY(0, -1);
+			if (IsTileType(t, MP_STATION) && IsTileOwner(t, _current_player)) return;
 
-			if (IsTileType(tile + TileDiffXY(0, 1), MP_STATION) &&
-					IsTileOwner(tile + TileDiffXY(0, 1), _current_player)) {
-				return;
-			}
+			t = tile + TileDiffXY(0, 1);
+			if (IsTileType(t, MP_STATION) && IsTileOwner(t, _current_player)) return;
 
 			dir = GetRoadDepotDirection(tile);
 
@@ -3881,8 +3862,7 @@ void AiDoGameLoop(Player *p)
 	//  or in %
 	_ai_service_interval = _patches.servint_ispercent?80:180;
 
-	if (IS_HUMAN_PLAYER(_current_player))
-		return;
+	if (IS_HUMAN_PLAYER(_current_player)) return;
 
 	AiAdjustLoan(p);
 	AiBuildCompanyHQ(p);

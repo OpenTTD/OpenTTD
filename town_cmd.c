@@ -1063,17 +1063,20 @@ bool GenerateTowns(void)
 	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
 
 	do {
-		if (CreateRandomTown(20, 0) != NULL) 	//try 20 times to create a random-sized town for the first loop.
-			num++;
+		// try 20 times to create a random-sized town for the first loop.
+		if (CreateRandomTown(20, 0) != NULL) num++;
 	} while (--n);
 
 	// give it a last try, but now more aggressive
 	if (num == 0 && CreateRandomTown(10000, 0) == NULL) {
-		Town *t;
-		FOR_ALL_TOWNS(t) { if (IsValidTown(t)) {num = 1; break;}}
+		const Town* t;
+
+		FOR_ALL_TOWNS(t) if (IsValidTown(t)) return true;
 
 		//XXX can we handle that more gracefully?
-		if (num == 0 && _game_mode != GM_EDITOR) error("Could not generate any town");
+		if (num == 0 && _game_mode != GM_EDITOR) {
+			error("Could not generate any town");
+		}
 		return false;
 	}
 
@@ -1102,19 +1105,18 @@ static bool CheckBuildHouseMode(TileIndex tile, Slope tileh, int mode)
 	return !CmdFailed(DoCommand(tile, 0, 0, DC_EXEC | DC_AUTO | DC_NO_WATER, CMD_LANDSCAPE_CLEAR));
 }
 
-int GetTownRadiusGroup(const Town *t, TileIndex tile)
-{
-	uint dist;
-	int i,smallest;
 
-	dist = DistanceSquare(tile, t->xy);
-	if (t->fund_buildings_months && dist <= 25)
-		return 4;
+uint GetTownRadiusGroup(const Town* t, TileIndex tile)
+{
+	uint dist = DistanceSquare(tile, t->xy);
+	uint smallest;
+	uint i;
+
+	if (t->fund_buildings_months && dist <= 25) return 4;
 
 	smallest = 0;
 	for (i = 0; i != lengthof(t->radius); i++) {
-		if (dist < t->radius[i])
-			smallest = i;
+		if (dist < t->radius[i]) smallest = i;
 	}
 
 	return smallest;
@@ -1160,8 +1162,7 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		uint rad = GetTownRadiusGroup(t, tile);
 
 		int land = _opt.landscape;
-		if (land == LT_HILLY && z >= _opt.snow_line)
-			land = -1;
+		if (land == LT_HILLY && z >= _opt.snow_line) land = -1;
 
 		bitmask = (1 << rad) + (1 << (land + 12));
 	}
@@ -1259,8 +1260,6 @@ static void DoBuildTownHouse(Town *t, TileIndex tile)
 		size_flags = GB(_housetype_extra_flags[house], 2, 3);
 		MakeTownHouse(tile, t->index, construction_counter, construction_stage, size_flags, house);
 	}
-
-	// ENDING
 }
 
 static bool BuildTownHouse(Town *t, TileIndex tile)
@@ -1710,11 +1709,10 @@ static void UpdateTownAmounts(Town *t)
 
 static void UpdateTownUnwanted(Town *t)
 {
-	Player *p;
+	const Player* p;
 
 	FOR_ALL_PLAYERS(p) {
-		if (t->unwanted[p->index] > 0)
-			t->unwanted[p->index]--;
+		if (t->unwanted[p->index] > 0) t->unwanted[p->index]--;
 	}
 }
 
@@ -1722,15 +1720,12 @@ bool CheckIfAuthorityAllows(TileIndex tile)
 {
 	Town *t;
 
-	if (_current_player >= MAX_PLAYERS)
-		return true;
+	if (_current_player >= MAX_PLAYERS) return true;
 
 	t = ClosestTownFromTile(tile, _patches.dist_local_authority);
-	if (t == NULL)
-		return true;
+	if (t == NULL) return true;
 
-	if (t->ratings[_current_player] > -200)
-		return true;
+	if (t->ratings[_current_player] > -200) return true;
 
 	_error_message = STR_2009_LOCAL_AUTHORITY_REFUSES;
 	SetDParam(0, t->index);
@@ -1837,12 +1832,10 @@ void TownsMonthlyLoop(void)
 	Town *t;
 
 	FOR_ALL_TOWNS(t) if (t->xy != 0) {
-		if (t->road_build_months != 0)
-			t->road_build_months--;
+		if (t->road_build_months != 0) t->road_build_months--;
 
 		if (t->exclusive_counter != 0)
-			if (--t->exclusive_counter == 0)
-				t->exclusivity = (byte)-1;
+			if (--t->exclusive_counter == 0) t->exclusivity = (byte)-1;
 
 		UpdateTownGrowRate(t);
 		UpdateTownAmounts(t);

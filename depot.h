@@ -72,8 +72,7 @@ static inline bool IsValidDepot(const Depot* depot)
  */
 static inline bool IsTileDepotType(TileIndex tile, TransportType type)
 {
-	switch (type)
-	{
+	switch (type) {
 		case TRANSPORT_RAIL:
 			return IsTileType(tile, MP_RAILWAY) && (_m[tile].m5 & 0xFC) == 0xC0;
 

@@ -649,13 +649,15 @@ static const uint16 default_resolutions[][2] = {
 
 static void FindResolutions(void)
 {
-	int i = 0, n = 0;
+	uint n = 0;
+	uint i;
 	DEVMODE dm;
 
-	while (EnumDisplaySettings(NULL, i++, &dm) != 0) {
+	for (i = 0; EnumDisplaySettings(NULL, i, &dm) != 0; i++) {
 		if (dm.dmBitsPerPel == 8 && IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
-				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1)){
-			int j;
+				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1)) {
+			uint j;
+
 			for (j = 0; j < n; j++) {
 				if (_resolutions[j][0] == dm.dmPelsWidth && _resolutions[j][1] == dm.dmPelsHeight) break;
 			}

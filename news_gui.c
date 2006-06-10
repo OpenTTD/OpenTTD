@@ -221,11 +221,9 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 // (to deal with overflows)
 static byte increaseIndex(byte i)
 {
-	if (i == INVALID_NEWS)
-		return 0;
+	if (i == INVALID_NEWS) return 0;
 	i++;
-	if (i >= MAX_NEWS)
-		i = i % MAX_NEWS;
+	if (i >= MAX_NEWS) i = i % MAX_NEWS;
 	return i;
 }
 
@@ -234,8 +232,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 	NewsItem *ni;
 	Window *w;
 
-	if (_game_mode == GM_MENU)
-		return;
+	if (_game_mode == GM_MENU) return;
 
 	// check the rare case that the oldest (to be overwritten) news item is open
 	if (_total_news==MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news))

@@ -1914,7 +1914,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
-	tile_cur = tile_cur + TileOffsByDir(direction);
+	tile_cur += TileOffsByDir(direction);
 	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	}

@@ -128,16 +128,19 @@ static void AiNew_State_WakeUp(Player *p)
 		} else if (c < 100 && !_patches.ai_disable_veh_roadveh) {
 			// Do we have any spots for road-vehicles left open?
 			if (GetFreeUnitNumber(VEH_Road) <= _patches.max_roadveh) {
-				if (c < 85)
+				if (c < 85) {
 					p->ainew.action = AI_ACTION_TRUCK_ROUTE;
-				else
+				} else {
 					p->ainew.action = AI_ACTION_BUS_ROUTE;
+				}
 			}
-		}/* else if (c < 200 && !_patches.ai_disable_veh_train) {
+#if 0
+		} else if (c < 200 && !_patches.ai_disable_veh_train) {
 			if (GetFreeUnitNumber(VEH_Train) <= _patches.max_trains) {
 				p->ainew.action = AI_ACTION_TRAIN_ROUTE;
 			}
-		}*/
+#endif
+		}
 
 		p->ainew.counter = 0;
 	}
@@ -208,8 +211,8 @@ static void AiNew_State_ActionDone(Player *p)
 static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 {
 	if (type == AI_CITY) {
-		Town *t = GetTown(ic);
-		Station *st;
+		const Town* t = GetTown(ic);
+		const Station* st;
 		uint count = 0;
 		int j = 0;
 
@@ -270,8 +273,8 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 		return true;
 	}
 	if (type == AI_INDUSTRY) {
-		Industry *i = GetIndustry(ic);
-		Station *st;
+		const Industry* i = GetIndustry(ic);
+		const Station* st;
 		int count = 0;
 		int j = 0;
 
@@ -379,10 +382,11 @@ static void AiNew_State_LocateRoute(Player *p)
 	if (p->ainew.from_ic == -1) {
 		if (p->ainew.temp == -1) {
 			// First, we pick a random spot to search from
-			if (p->ainew.from_type == AI_CITY)
+			if (p->ainew.from_type == AI_CITY) {
 				p->ainew.temp = AI_RandomRange(_total_towns);
-			else
+			} else {
 				p->ainew.temp = AI_RandomRange(_total_industries);
+			}
 		}
 
 		if (!AiNew_Check_City_or_Industry(p, p->ainew.temp, p->ainew.from_type)) {
@@ -414,10 +418,11 @@ static void AiNew_State_LocateRoute(Player *p)
 	// Find a to-city
 	if (p->ainew.temp == -1) {
 		// First, we pick a random spot to search to
-		if (p->ainew.to_type == AI_CITY)
+		if (p->ainew.to_type == AI_CITY) {
 			p->ainew.temp = AI_RandomRange(_total_towns);
-		else
+		} else {
 			p->ainew.temp = AI_RandomRange(_total_industries);
+		}
 	}
 
 	// The same city is not allowed
@@ -425,9 +430,10 @@ static void AiNew_State_LocateRoute(Player *p)
 	if (p->ainew.temp != p->ainew.from_ic && AiNew_Check_City_or_Industry(p, p->ainew.temp, p->ainew.to_type)) {
 		// Maybe it is valid..
 
-		// We need to know if they are not to far apart from eachother..
-		// We do that by checking how much cargo we have to move and how long the route
-		//   is.
+		/* We need to know if they are not to far apart from eachother..
+		 * We do that by checking how much cargo we have to move and how long the
+		 * route is.
+		 */
 
 		if (p->ainew.from_type == AI_CITY && p->ainew.tbt == AI_BUS) {
 			const Town* town_from = GetTown(p->ainew.from_ic);
@@ -470,7 +476,7 @@ static void AiNew_State_LocateRoute(Player *p)
 				for (i = 0; i < lengthof(ind_temp->accepts_cargo); i++) {
 					if (ind_temp->accepts_cargo[i] == CT_INVALID) break;
 					if (ind_from->produced_cargo[0] == ind_temp->accepts_cargo[i]) {
-						// Found a compatbiel industry
+						// Found a compatible industry
 						max_cargo = ind_from->total_production[0] - ind_from->total_transported[0];
 						found = true;
 						p->ainew.from_deliver = true;
@@ -672,7 +678,7 @@ static void AiNew_State_FindStation(Player *p)
 			}
 		}
 
-		// If i is still zero, we did not found anything :(
+		// If i is still zero, we did not find anything
 		if (i == 0) {
 			p->ainew.state = AI_STATE_NOTHING;
 			return;
@@ -682,7 +688,7 @@ static void AiNew_State_FindStation(Player *p)
 		best = 0;
 		new_tile = 0;
 
-		for (x=0;x<i;x++) {
+		for (x = 0; x < i; x++) {
 			if (found_best[x] > best ||
 					(found_best[x] == best && DistanceManhattan(tile, new_tile) > DistanceManhattan(tile, found_spot[x]))) {
 				new_tile = found_spot[x];
@@ -753,10 +759,7 @@ static void AiNew_State_FindPath(Player *p)
 			p->ainew.path_info.end_direction = p->ainew.to_direction;
 		}
 
-		if (p->ainew.tbt == AI_TRAIN)
-			p->ainew.path_info.rail_or_road = true;
-		else
-			p->ainew.path_info.rail_or_road = false;
+		p->ainew.path_info.rail_or_road = (p->ainew.tbt == AI_TRAIN);
 
 		// First, clean the pathfinder with our new begin and endpoints
 		clean_AyStar_AiPathFinder(p->ainew.pathfinder, &p->ainew.path_info);
@@ -766,20 +769,21 @@ static void AiNew_State_FindPath(Player *p)
 
 	// Start the pathfinder
 	r = p->ainew.pathfinder->main(p->ainew.pathfinder);
-	// If it return: no match, stop it...
-	if (r == AYSTAR_NO_PATH) {
-		DEBUG(ai,1)("[AiNew] PathFinder found no route!");
-		// Start all over again...
-		p->ainew.state = AI_STATE_NOTHING;
-		return;
+	switch (r) {
+		case AYSTAR_NO_PATH:
+			DEBUG(ai,1)("[AiNew] PathFinder found no route!");
+			// Start all over again
+			p->ainew.state = AI_STATE_NOTHING;
+			break;
+
+		case AYSTAR_FOUND_END_NODE: // We found the end-point
+			p->ainew.temp = -1;
+			p->ainew.state = AI_STATE_FIND_DEPOT;
+			break;
+
+		// In any other case, we are still busy finding the route
+		default: break;
 	}
-	if (r == AYSTAR_FOUND_END_NODE) {
-		// We found the end-point
-		p->ainew.temp = -1;
-		p->ainew.state = AI_STATE_FIND_DEPOT;
-		return;
-	}
-	// In any other case, we are still busy finding the route...
 }
 
 
@@ -900,10 +904,11 @@ static int AiNew_HowManyVehicles(Player *p)
 		length = p->ainew.path_info.route_length;
 		// Calculating tiles a day a vehicle moves is not easy.. this is how it must be done!
 		tiles_a_day = RoadVehInfo(i)->max_speed * DAY_TICKS / 256 / 16;
-		if (p->ainew.from_deliver)
+		if (p->ainew.from_deliver) {
 			max_cargo = GetIndustry(p->ainew.from_ic)->total_production[0];
-		else
+		} else {
 			max_cargo = GetIndustry(p->ainew.to_ic)->total_production[0];
+		}
 
 		// This is because moving 60% is more than we can dream of!
 		max_cargo *= 0.6;
@@ -1109,7 +1114,7 @@ static void AiNew_State_BuildDepot(Player *p)
 
 	if (IsTileType(p->ainew.depot_tile, MP_STREET) && GetRoadTileType(p->ainew.depot_tile) == ROAD_TILE_DEPOT) {
 		if (IsTileOwner(p->ainew.depot_tile, _current_player)) {
-			// The depot is already builded!
+			// The depot is already built
 			p->ainew.state = AI_STATE_BUILD_VEHICLE;
 			return;
 		} else {

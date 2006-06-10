@@ -66,14 +66,12 @@ enum {
 static bool PathToFSSpec(const char *path, FSSpec *spec)
 {
 	FSRef ref;
-	assert(spec);
-	assert(path);
+	assert(spec != NULL);
+	assert(path != NULL);
 
-	if (noErr != FSPathMakeRef((UInt8*) path, &ref, NULL))
-		return false;
-
-	return (noErr ==
-			FSGetCatalogInfo(&ref, kFSCatInfoNone, NULL, NULL, spec, NULL));
+	return
+		FSPathMakeRef((UInt8*)path, &ref, NULL) == noErr &&
+		FSGetCatalogInfo(&ref, kFSCatInfoNone, NULL, NULL, spec, NULL) == noErr;
 }
 
 
@@ -91,7 +89,7 @@ static void SetMIDITypeIfNeeded(const FSSpec *spec)
 	if (noErr != FSpGetFInfo(spec, &info)) return;
 
 	/* Set file type to 'Midi' if the file is _not_ an alias. */
-	if ((info.fdType != midiType) && !(info.fdFlags & kIsAlias)) {
+	if (info.fdType != midiType && !(info.fdFlags & kIsAlias)) {
 		info.fdType = midiType;
 		FSpSetFInfo(spec, &info);
 		DEBUG(driver, 3) ("qtmidi: changed filetype to 'Midi'");
@@ -115,8 +113,8 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	short refnum = 0;
 	short resid  = 0;
 
-	assert(path);
-	assert(moov);
+	assert(path != NULL);
+	assert(moov != NULL);
 
 	DEBUG(driver, 2) ("qtmidi: begin loading '%s'...", path);
 
@@ -126,23 +124,20 @@ static bool LoadMovieForMIDIFile(const char *path, Movie *moov)
 	 * a MIDI file and setting the OSType of the file to the 'Midi' value.
 	 * Perhahaps ugly, but it seems that it does the Right Thing(tm).
 	 */
-	if ((fd = open(path, O_RDONLY, 0)) == -1)
-		return false;
+	fd = open(path, O_RDONLY, 0);
+	if (fd == -1) return false;
 	ret = read(fd, magic, 4);
 	close(fd);
 	if (ret < 4) return false;
 
-	DEBUG(driver, 3) ("qtmidi: header is '%c%c%c%c'",
-			magic[0], magic[1], magic[2], magic[3]);
+	DEBUG(driver, 3) ("qtmidi: header is '%.4s'", magic);
 	if (magic[0] != 'M' || magic[1] != 'T' || magic[2] != 'h' || magic[3] != 'd')
 		return false;
 
-	if (!PathToFSSpec(path, &fsspec))
-		return false;
+	if (!PathToFSSpec(path, &fsspec)) return false;
 	SetMIDITypeIfNeeded(&fsspec);
 
-	if (noErr != OpenMovieFile(&fsspec, &refnum, fsRdPerm))
-		return false;
+	if (OpenMovieFile(&fsspec, &refnum, fsRdPerm) != noErr) return false;
 	DEBUG(driver, 1) ("qtmidi: '%s' successfully opened", path);
 
 	if (noErr != NewMovieFromFile(moov, refnum, &resid, NULL,
@@ -182,13 +177,13 @@ static void InitQuickTimeIfNeeded(void)
 		(noErr == Gestalt(gestaltQuickTime, &dummy)) &&
 		(noErr == EnterMovies());
 	DEBUG(driver, 1) ("qtmidi: Quicktime was %s initialized",
-			_quicktime_started ? "successfully" : "NOT");
+		_quicktime_started ? "successfully" : "NOT"
+	);
 }
 
 
 /** Possible states of the QuickTime music driver. */
-enum
-{
+enum {
 	QT_STATE_IDLE, /**< No file loaded. */
 	QT_STATE_PLAY, /**< File loaded, playing. */
 	QT_STATE_STOP, /**< File loaded, stopped. */
@@ -247,7 +242,7 @@ static bool SongIsPlaying(void)
 				_quicktime_state = QT_STATE_STOP;
 	}
 
-	return (_quicktime_state == QT_STATE_PLAY);
+	return _quicktime_state == QT_STATE_PLAY;
 }
 
 

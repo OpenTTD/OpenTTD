@@ -217,8 +217,9 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		MakeRailWaypoint(tile, GetTileOwner(tile), axis, GetRailType(tile), wp->index);
 		MarkTileDirtyByTile(tile);
 
-		if (GB(p1, 0, 8) < GetNumCustomStations(STAT_CLASS_WAYP))
+		if (GB(p1, 0, 8) < GetNumCustomStations(STAT_CLASS_WAYP)) {
 			statspec = GetCustomStationSpec(STAT_CLASS_WAYP, GB(p1, 0, 8));
+		}
 
 		if (statspec != NULL) {
 			SetCustomWaypointSprite(tile);
@@ -237,8 +238,7 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		wp->xy = tile;
 		wp->build_date = _date;
 
-		if (wp->town_index == 0)
-			MakeDefaultWaypointName(wp);
+		if (wp->town_index == 0) MakeDefaultWaypointName(wp);
 
 		UpdateWaypointSign(wp);
 		RedrawWaypointSign(wp);

@@ -271,7 +271,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 		for (i = 0; i != 16; i++) {
 			if (!(used_colors & 1) && --pos < 0 && pos >= -8) {
 				DrawString(x + 30, y, STR_00D1_DARK_BLUE + i, 2);
-				DrawSprite(((GENERAL_SPRITE_COLOR(i) | PALETTE_MODIFIER_COLOR) | SPR_VEH_BUS_SIDE_VIEW), x + 14, y + 4);
+				DrawSprite(GENERAL_SPRITE_COLOR(i) | PALETTE_MODIFIER_COLOR | SPR_VEH_BUS_SIDE_VIEW, x + 14, y + 4);
 				y += 14;
 			}
 			used_colors >>= 1;

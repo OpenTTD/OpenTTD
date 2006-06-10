@@ -25,24 +25,24 @@ int _aystar_stats_closed_size;
 
 // This looks in the Hash if a node exists in ClosedList
 //  If so, it returns the PathNode, else NULL
-static PathNode *AyStarMain_ClosedList_IsInList(AyStar *aystar, AyStarNode *node)
+static PathNode* AyStarMain_ClosedList_IsInList(AyStar* aystar, const AyStarNode* node)
 {
 	return (PathNode*)Hash_Get(&aystar->ClosedListHash, node->tile, node->direction);
 }
 
 // This adds a node to the ClosedList
 //  It makes a copy of the data
-static void AyStarMain_ClosedList_Add(AyStar *aystar, PathNode *node)
+static void AyStarMain_ClosedList_Add(AyStar* aystar, const PathNode* node)
 {
 	// Add a node to the ClosedList
-	PathNode *new_node = malloc(sizeof(PathNode));
+	PathNode* new_node = malloc(sizeof(*new_node));
 	*new_node = *node;
 	Hash_Set(&aystar->ClosedListHash, node->node.tile, node->node.direction, new_node);
 }
 
 // Checks if a node is in the OpenList
 //   If so, it returns the OpenListNode, else NULL
-static OpenListNode *AyStarMain_OpenList_IsInList(AyStar *aystar, AyStarNode *node)
+static OpenListNode* AyStarMain_OpenList_IsInList(AyStar* aystar, const AyStarNode* node)
 {
 	return (OpenListNode*)Hash_Get(&aystar->OpenListHash, node->tile, node->direction);
 }
@@ -54,18 +54,19 @@ static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
 {
 	// Return the item the Queue returns.. the best next OpenList item.
 	OpenListNode* res = (OpenListNode*)aystar->OpenListQueue.pop(&aystar->OpenListQueue);
-	if (res != NULL)
+	if (res != NULL) {
 		Hash_Delete(&aystar->OpenListHash, res->path.node.tile, res->path.node.direction);
+	}
 
 	return res;
 }
 
 // Adds a node to the OpenList
 //  It makes a copy of node, and puts the pointer of parent in the struct
-static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, AyStarNode *node, int f, int g)
+static void AyStarMain_OpenList_Add(AyStar* aystar, PathNode* parent, const AyStarNode* node, int f, int g)
 {
 	// Add a new Node to the OpenList
-	OpenListNode* new_node = malloc(sizeof(OpenListNode));
+	OpenListNode* new_node = malloc(sizeof(*new_node));
 	new_node->g = g;
 	new_node->path.parent = parent;
 	new_node->path.node = *node;
@@ -80,7 +81,8 @@ static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, AyStarNode
  *  return values:
  *	AYSTAR_DONE : indicates we are done
  */
-int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent) {
+int AyStarMain_CheckTile(AyStar* aystar, AyStarNode* current, OpenListNode* parent)
+{
 	int new_f, new_g, new_h;
 	PathNode *closedlist_parent;
 	OpenListNode *check;
@@ -111,7 +113,8 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
 	closedlist_parent = AyStarMain_ClosedList_IsInList(aystar, &parent->path.node);
 
 	// Check if this item is already in the OpenList
-	if ((check = AyStarMain_OpenList_IsInList(aystar, current)) != NULL) {
+	check = AyStarMain_OpenList_IsInList(aystar, current);
+	if (check != NULL) {
 		uint i;
 		// Yes, check if this g value is lower..
 		if (new_g > check->g) return AYSTAR_DONE;
@@ -120,8 +123,9 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
 		check->g = new_g;
 		check->path.parent = closedlist_parent;
 		/* Copy user data, will probably have changed */
-		for (i=0;i<lengthof(current->user_data);i++)
+		for (i = 0; i < lengthof(current->user_data); i++) {
 			check->path.node.user_data[i] = current->user_data[i];
+		}
 		// Readd him in the OpenListQueue
 		aystar->OpenListQueue.push(&aystar->OpenListQueue, check, new_f);
 	} else {
@@ -143,15 +147,14 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
  *	AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
  *	AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
  */
-int AyStarMain_Loop(AyStar *aystar) {
+int AyStarMain_Loop(AyStar* aystar)
+{
 	int i, r;
 
 	// Get the best node from OpenList
 	OpenListNode *current = AyStarMain_OpenList_Pop(aystar);
 	// If empty, drop an error
-	if (current == NULL) {
-		return AYSTAR_EMPTY_OPENLIST;
-	}
+	if (current == NULL) return AYSTAR_EMPTY_OPENLIST;
 
 	// Check for end node and if found, return that code
 	if (aystar->EndNodeCheck(aystar, current) == AYSTAR_FOUND_END_NODE) {
@@ -168,7 +171,7 @@ int AyStarMain_Loop(AyStar *aystar) {
 	aystar->GetNeighbours(aystar, current);
 
 	// Go through all neighbours
-	for (i=0;i<aystar->num_neighbours;i++) {
+	for (i = 0; i < aystar->num_neighbours; i++) {
 		// Check and add them to the OpenList if needed
 		r = aystar->checktile(aystar, &aystar->neighbours[i], current);
 	}
@@ -188,7 +191,8 @@ int AyStarMain_Loop(AyStar *aystar) {
 /*
  * This function frees the memory it allocated
  */
-void AyStarMain_Free(AyStar *aystar) {
+void AyStarMain_Free(AyStar* aystar)
+{
 	aystar->OpenListQueue.free(&aystar->OpenListQueue, false);
 	/* 2nd argument above is false, below is true, to free the values only
 	 * once */
@@ -203,7 +207,8 @@ void AyStarMain_Free(AyStar *aystar) {
  * This function make the memory go back to zero
  *  This function should be called when you are using the same instance again.
  */
-void AyStarMain_Clear(AyStar *aystar) {
+void AyStarMain_Clear(AyStar* aystar)
+{
 	// Clean the Queue, but not the elements within. That will be done by
 	// the hash.
 	aystar->OpenListQueue.clear(&aystar->OpenListQueue, false);
@@ -232,12 +237,12 @@ int AyStarMain_Main(AyStar *aystar) {
 	//  Quit if result is no AYSTAR_STILL_BUSY or is more than loops_per_tick
 	while ((r = aystar->loop(aystar)) == AYSTAR_STILL_BUSY && (aystar->loops_per_tick == 0 || ++i < aystar->loops_per_tick)) { }
 #ifdef AYSTAR_DEBUG
-	if (r == AYSTAR_FOUND_END_NODE)
-		printf("[AyStar] Found path!\n");
-	else if (r == AYSTAR_EMPTY_OPENLIST)
-		printf("[AyStar] OpenList run dry, no path found\n");
-	else if (r == AYSTAR_LIMIT_REACHED)
-		printf("[AyStar] Exceeded search_nodes, no path found\n");
+	switch (r) {
+		case AYSTAR_FOUND_END_NODE: printf("[AyStar] Found path!\n"); break;
+		case AYSTAR_EMPTY_OPENLIST: printf("[AyStar] OpenList run dry, no path found\n"); break;
+		case AYSTAR_LIMIT_REACHED:  printf("[AyStar] Exceeded search_nodes, no path found\n"); break;
+		default: break;
+	}
 #endif
 	if (r != AYSTAR_STILL_BUSY) {
 		/* We're done, clean up */
@@ -246,13 +251,12 @@ int AyStarMain_Main(AyStar *aystar) {
 		aystar->clear(aystar);
 	}
 
-	// Check result-value
-	if (r == AYSTAR_FOUND_END_NODE) return AYSTAR_FOUND_END_NODE;
-	// Check if we have some left in the OpenList
-	if (r == AYSTAR_EMPTY_OPENLIST || r == AYSTAR_LIMIT_REACHED) return AYSTAR_NO_PATH;
-
-	// Return we are still busy
-	return AYSTAR_STILL_BUSY;
+	switch (r) {
+		case AYSTAR_FOUND_END_NODE: return AYSTAR_FOUND_END_NODE;
+		case AYSTAR_EMPTY_OPENLIST:
+		case AYSTAR_LIMIT_REACHED:  return AYSTAR_NO_PATH;
+		default:                    return AYSTAR_STILL_BUSY;
+	}
 }
 
 /*
@@ -262,7 +266,8 @@ int AyStarMain_Main(AyStar *aystar) {
  * clear() automatically when the algorithm finishes
  * g is the cost for starting with this node.
  */
-void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g) {
+void AyStarMain_AddStartNode(AyStar* aystar, AyStarNode* start_node, uint g)
+{
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n",
 		TileX(start_node->tile), TileY(start_node->tile), start_node->direction);
@@ -270,7 +275,8 @@ void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g) {
 	AyStarMain_OpenList_Add(aystar, NULL, start_node, 0, g);
 }
 
-void init_AyStar(AyStar* aystar, Hash_HashProc hash, uint num_buckets) {
+void init_AyStar(AyStar* aystar, Hash_HashProc hash, uint num_buckets)
+{
 	// Allocated the Hash for the OpenList and ClosedList
 	init_Hash(&aystar->OpenListHash, hash, num_buckets);
 	init_Hash(&aystar->ClosedListHash, hash, num_buckets);

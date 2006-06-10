@@ -277,8 +277,7 @@ static int32 NPFRoadPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 		case MP_STREET:
 			cost = NPF_TILE_LENGTH;
 			/* Increase the cost for level crossings */
-			if (IsLevelCrossing(tile))
-				cost += _patches.npf_crossing_penalty;
+			if (IsLevelCrossing(tile)) cost += _patches.npf_crossing_penalty;
 			break;
 
 		default:
@@ -407,15 +406,10 @@ static int32 NPFRailPathCost(AyStar* as, AyStarNode* current, OpenListNode* pare
 /* Will find any depot */
 static int32 NPFFindDepot(AyStar* as, OpenListNode *current)
 {
-	TileIndex tile = current->path.node.tile;
-
 	/* It's not worth caching the result with NPF_FLAG_IS_TARGET here as below,
 	 * since checking the cache not that much faster than the actual check */
-	if (IsTileDepotType(tile, as->user_data[NPF_TYPE])) {
-		return AYSTAR_FOUND_END_NODE;
-	} else {
-		return AYSTAR_DONE;
-	}
+	return IsTileDepotType(current->path.node.tile, as->user_data[NPF_TYPE]) ?
+		AYSTAR_FOUND_END_NODE : AYSTAR_DONE;
 }
 
 /* Will find a station identified using the NPFFindStationOrTileData */
@@ -682,14 +676,12 @@ static NPFFoundTargetData NPFRouteInternal(AyStarNode* start1, AyStarNode* start
 	_npf_aystar.EndNodeCheck = target_proc;
 	_npf_aystar.FoundEndNode = NPFSaveTargetData;
 	_npf_aystar.GetNeighbours = NPFFollowTrack;
-	if (type == TRANSPORT_RAIL)
-		_npf_aystar.CalculateG = NPFRailPathCost;
-	else if (type == TRANSPORT_ROAD)
-		_npf_aystar.CalculateG = NPFRoadPathCost;
-	else if (type == TRANSPORT_WATER)
-		_npf_aystar.CalculateG = NPFWaterPathCost;
-	else
-		assert(0);
+	switch (type) {
+		default: NOT_REACHED();
+		case TRANSPORT_RAIL:  _npf_aystar.CalculateG = NPFRailPathCost;  break;
+		case TRANSPORT_ROAD:  _npf_aystar.CalculateG = NPFRoadPathCost;  break;
+		case TRANSPORT_WATER: _npf_aystar.CalculateG = NPFWaterPathCost; break;
+	}
 
 	/* Initialize Start Node(s) */
 	start1->user_data[NPF_TRACKDIR_CHOICE] = INVALID_TRACKDIR;

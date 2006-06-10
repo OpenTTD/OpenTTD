@@ -546,6 +546,7 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 	return ss;
 }
 
+
 static void DrawSelectionSprite(uint32 image, const TileInfo *ti)
 {
 	if (_added_tile_sprite && !(_thd.drawstyle & HT_LINE)) { // draw on real ground

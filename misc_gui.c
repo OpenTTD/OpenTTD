@@ -159,20 +159,20 @@ static void Place_LandInfo(TileIndex tile)
 	GetAcceptedCargo(tile, lid.ac);
 	GetTileDesc(tile, &lid.td);
 
-		#if defined(_DEBUG)
-		# define LANDINFOD_LEVEL 0
-		#else
-		# define LANDINFOD_LEVEL 1
-		#endif
-		DEBUG(misc, LANDINFOD_LEVEL) ("TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
-		DEBUG(misc, LANDINFOD_LEVEL) ("type_height  = %#x", _m[tile].type_height);
-		DEBUG(misc, LANDINFOD_LEVEL) ("m1           = %#x", _m[tile].m1);
-		DEBUG(misc, LANDINFOD_LEVEL) ("m2           = %#x", _m[tile].m2);
-		DEBUG(misc, LANDINFOD_LEVEL) ("m3           = %#x", _m[tile].m3);
-		DEBUG(misc, LANDINFOD_LEVEL) ("m4           = %#x", _m[tile].m4);
-		DEBUG(misc, LANDINFOD_LEVEL) ("m5           = %#x", _m[tile].m5);
-		DEBUG(misc, LANDINFOD_LEVEL) ("extra        = %#x", _m[tile].extra);
-		#undef LANDINFOD_LEVEL
+#if defined(_DEBUG)
+#	define LANDINFOD_LEVEL 0
+#else
+#	define LANDINFOD_LEVEL 1
+#endif
+	DEBUG(misc, LANDINFOD_LEVEL) ("TILE: %#x (%i,%i)", tile, TileX(tile), TileY(tile));
+	DEBUG(misc, LANDINFOD_LEVEL) ("type_height  = %#x", _m[tile].type_height);
+	DEBUG(misc, LANDINFOD_LEVEL) ("m1           = %#x", _m[tile].m1);
+	DEBUG(misc, LANDINFOD_LEVEL) ("m2           = %#x", _m[tile].m2);
+	DEBUG(misc, LANDINFOD_LEVEL) ("m3           = %#x", _m[tile].m3);
+	DEBUG(misc, LANDINFOD_LEVEL) ("m4           = %#x", _m[tile].m4);
+	DEBUG(misc, LANDINFOD_LEVEL) ("m5           = %#x", _m[tile].m5);
+	DEBUG(misc, LANDINFOD_LEVEL) ("extra        = %#x", _m[tile].extra);
+#undef LANDINFOD_LEVEL
 }
 
 void PlaceLandBlockInfo(void)
@@ -730,7 +730,8 @@ void CheckRedrawStationCoverage(const Window* w)
 void UnclickSomeWindowButtons(Window *w, uint32 mask)
 {
 	uint32 x = w->click_state & mask;
-	int i = 0;
+	uint i = 0;
+
 	w->click_state ^= x;
 	do {
 		if (x & 1) InvalidateWidget(w, i);
@@ -1251,8 +1252,8 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 	case WE_PAINT: {
-		int y,pos;
-		const FiosItem *item;
+		int pos;
+		int y;
 
 		SetVScrollCount(w, _fios_num);
 		DrawWindowWidgets(w);
@@ -1271,11 +1272,10 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		);
 
 		y = w->widget[7].top + 1;
-		pos = w->vscroll.pos;
-		while (pos < _fios_num) {
-			item = _fios_list + pos;
+		for (pos = w->vscroll.pos; pos < _fios_num; pos++) {
+			const FiosItem* item = _fios_list + pos;
+
 			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], w->width - 18);
-			pos++;
 			y += 10;
 			if (y >= w->vscroll.cap * 10 + w->widget[7].top + 1) break;
 		}
@@ -1285,6 +1285,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	}
+
 	case WE_CLICK:
 		switch (e->click.widget) {
 		case 2: /* Sort save names by name */

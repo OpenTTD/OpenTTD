@@ -57,7 +57,8 @@ static bool IsRoad(TileIndex tile)
 // Check if the current tile is in our end-area
 static int32 AyStar_AiPathFinder_EndNodeCheck(AyStar *aystar, OpenListNode *current)
 {
-	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
+	const Ai_PathFinderInfo* PathFinderInfo = aystar->user_target;
+
 	// It is not allowed to have a station on the end of a bridge or tunnel ;)
 	if (current->path.node.user_data[0] != 0) return AYSTAR_DONE;
 	if (TILES_BETWEEN(current->path.node.tile, PathFinderInfo->end_tile_tl, PathFinderInfo->end_tile_br))
@@ -155,9 +156,11 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 	// Now we add all the starting tiles
 	for (x = TileX(PathFinderInfo->start_tile_tl); x <= TileX(PathFinderInfo->start_tile_br); x++) {
 		for (y = TileY(PathFinderInfo->start_tile_tl); y <= TileY(PathFinderInfo->start_tile_br); y++) {
-			if (!(IsTileType(TileXY(x, y), MP_CLEAR) || IsTileType(TileXY(x, y), MP_TREES))) continue;
-			if (!TestCanBuildStationHere(TileXY(x, y), TEST_STATION_NO_DIR)) continue;
-			start_node.node.tile = TileXY(x, y);
+			TileIndex tile = TileXY(x, y);
+
+			if (!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) continue;
+			if (!TestCanBuildStationHere(tile, TEST_STATION_NO_DIR)) continue;
+			start_node.node.tile = tile;
 			aystar->addstart(aystar, &start_node.node, 0);
 		}
 	}
@@ -167,8 +170,9 @@ void clean_AyStar_AiPathFinder(AyStar *aystar, Ai_PathFinderInfo *PathFinderInfo
 // The h-value, simple calculation
 static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
 {
-	Ai_PathFinderInfo *PathFinderInfo = (Ai_PathFinderInfo*)aystar->user_target;
+	const Ai_PathFinderInfo* PathFinderInfo = aystar->user_target;
 	int r, r2;
+
 	if (PathFinderInfo->end_direction != AI_PATHFINDER_NO_DIRECTION) {
 		// The station is pointing to a direction, add a tile towards that direction, so the H-value is more accurate
 		r = DistanceManhattan(current->tile, PathFinderInfo->end_tile_tl + TileOffsByDir(PathFinderInfo->end_direction));
@@ -447,13 +451,15 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		// Check if we are going up or down, first for the starting point
 		// In user_data[0] is at the 8th bit the direction
 		if (!HASBIT(BRIDGE_NO_FOUNDATION, parent_tileh)) {
-			if (GetBridgeFoundation(parent_tileh, (current->user_data[0] >> 8) & 1) < 15)
+			if (GetBridgeFoundation(parent_tileh, (current->user_data[0] >> 8) & 1) < 15) {
 				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
+			}
 		}
 		// Second for the end point
 		if (!HASBIT(BRIDGE_NO_FOUNDATION, tileh)) {
-			if (GetBridgeFoundation(tileh, (current->user_data[0] >> 8) & 1) < 15)
+			if (GetBridgeFoundation(tileh, (current->user_data[0] >> 8) & 1) < 15) {
 				res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
+			}
 		}
 		if (parent_tileh == SLOPE_FLAT) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
 		if (tileh == SLOPE_FLAT) res += AI_PATHFINDER_BRIDGE_GOES_UP_PENALTY;
@@ -466,10 +472,11 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 		if (parent->path.parent != NULL &&
 				AiNew_GetDirection(current->tile, parent->path.node.tile) != AiNew_GetDirection(parent->path.node.tile, parent->path.parent->node.tile)) {
 			// When road exists, we don't like turning, but its free, so don't be to piggy about it
-			if (IsRoad(parent->path.node.tile))
+			if (IsRoad(parent->path.node.tile)) {
 				res += AI_PATHFINDER_DIRECTION_CHANGE_ON_EXISTING_ROAD_PENALTY;
-			else
+			} else {
 				res += AI_PATHFINDER_DIRECTION_CHANGE_PENALTY;
+			}
 		}
 	} else {
 		// For rail we have 1 exeption: diagonal rail..

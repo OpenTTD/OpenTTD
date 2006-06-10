@@ -194,8 +194,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			/* Next to us, we have a bridge head, don't worry about that one, if it shows away from us */
 			if (TrackSourceTile[i][k] == TS_NEIGHBOUR &&
 			    IsBridgeTile(neighbour) && IsBridgeRamp(neighbour) &&
-			    GetBridgeRampDirection(neighbour) == ReverseDiagDir(i)
-			   ) continue;
+			    GetBridgeRampDirection(neighbour) == ReverseDiagDir(i)) {
+				continue;
+			}
 
 			/* We check whether the track in question (k) is present in the tile
 			   (TrackSourceTile) */

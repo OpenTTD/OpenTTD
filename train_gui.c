@@ -340,7 +340,7 @@ static void ShowBuildTrainWindow(TileIndex tile)
 	w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
 
 	w->resize.step_height = 14;
-	w->resize.height = w->height - 14 * 4; /* Minimum of 4 vehicles in the display */
+	w->resize.height = w->height - 14 * 4; // Minimum of 4 vehicles in the display
 
 	if (tile != 0) {
 		w->caption_color = GetTileOwner(tile);
@@ -1049,10 +1049,9 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MOUSELOOP: {
-		Vehicle *v;
+		const Vehicle* v = GetVehicle(w->window_number);
 		uint32 h;
 
-		v = GetVehicle(w->window_number);
 		assert(v->type == VEH_Train);
 		h = CheckTrainStoppedInDepot(v) >= 0 ? (1 << 9)| (1 << 7) : (1 << 12) | (1 << 13);
 		if (h != w->hidden_state) {

@@ -314,7 +314,10 @@ bool IsValidCommand(uint cmd)
 		_command_proc_table[cmd].proc != NULL;
 }
 
-byte GetCommandFlags(uint cmd) {return _command_proc_table[cmd & 0xFF].flags;}
+byte GetCommandFlags(uint cmd)
+{
+	return _command_proc_table[cmd & 0xFF].flags;
+}
 
 
 static int _docommand_recursive;
@@ -344,9 +347,11 @@ int32 DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc)
 			goto error;
 		}
 
-		if (_docommand_recursive == 1) {
-			if (!(flags&DC_QUERY_COST) && res != 0 && !CheckPlayerHasMoney(res))
-				goto error;
+		if (_docommand_recursive == 1 &&
+				!(flags & DC_QUERY_COST) &&
+				res != 0 &&
+				!CheckPlayerHasMoney(res)) {
+			goto error;
 		}
 
 		if (!(flags & DC_EXEC)) {
@@ -496,12 +501,14 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 #endif /* ENABLE_NETWORK */
 
 	// update last build coordinate of player.
-	if ( tile != 0 && _current_player < MAX_PLAYERS) GetPlayer(_current_player)->last_build_coordinate = tile;
+	if (tile != 0 && _current_player < MAX_PLAYERS) {
+		GetPlayer(_current_player)->last_build_coordinate = tile;
+	}
 
 	/* Actually try and execute the command. If no cost-type is given
 	 * use the construction one */
 	_yearly_expenses_type = EXPENSES_CONSTRUCTION;
-	res2 = proc(tile, flags|DC_EXEC, p1, p2);
+	res2 = proc(tile, flags | DC_EXEC, p1, p2);
 
 	// If notest is on, it means the result of the test can be different than
 	//   the real command.. so ignore the test
@@ -517,8 +524,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	SubtractMoneyFromPlayer(res2);
 
 	if (IsLocalPlayer() && _game_mode != GM_EDITOR) {
-		if (res2 != 0)
-			ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2);
+		if (res2 != 0) ShowCostOrIncomeAnimation(x, y, GetSlopeZ(x, y), res2);
 		if (_additional_cash_required) {
 			SetDParam(0, _additional_cash_required);
 			ShowErrorMessage(STR_0003_NOT_ENOUGH_CASH_REQUIRES, error_part1, x,y);

@@ -97,7 +97,7 @@ int32 AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint pr
 	/* First, do a test-run to see if we can do this */
 	res = DoCommand(tile, p1, p2, flags & ~DC_EXEC, procc);
 	/* The command failed, or you didn't want to execute, or you are quering, return */
-	if ((CmdFailed(res)) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST)) {
+	if (CmdFailed(res) || !(flags & DC_EXEC) || (flags & DC_QUERY_COST)) {
 		return res;
 	}
 
@@ -105,25 +105,28 @@ int32 AI_DoCommandCc(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint pr
 	_cmd_text = tmp_cmdtext;
 
 	/* If we did a DC_EXEC, and the command did not return an error, execute it
-	    over the network */
-	if (flags & DC_AUTO)                  procc |= CMD_AUTO;
-	if (flags & DC_NO_WATER)              procc |= CMD_NO_WATER;
+	 * over the network */
+	if (flags & DC_AUTO)     procc |= CMD_AUTO;
+	if (flags & DC_NO_WATER) procc |= CMD_NO_WATER;
 
 	/* NetworkSend_Command needs _local_player to be set correctly, so
-	    adjust it, and put it back right after the function */
+	 * adjust it, and put it back right after the function */
 	old_lp = _local_player;
 	_local_player = _current_player;
 
 #ifdef ENABLE_NETWORK
 	/* Send the command */
-	if (_networking)
+	if (_networking) {
 		/* Network is easy, send it to his handler */
 		NetworkSend_Command(tile, p1, p2, procc, callback);
-	else
+	} else {
+#else
+	{
 #endif
 		/* If we execute BuildCommands directly in SP, we have a big problem with events
 		 *  so we need to delay is for 1 tick */
 		AI_PutCommandInQueue(_current_player, tile, p1, p2, procc, callback);
+	}
 
 	/* Set _local_player back */
 	_local_player = old_lp;
@@ -173,16 +176,14 @@ void AI_RunGameLoop(void)
 	 *   them.. this avoids that, while loading a network game in singleplayer, does make
 	 *   the AIs to continue ;))
 	 */
-	if (_networking && !_network_server && !_ai.network_client)
-		return;
+	if (_networking && !_network_server && !_ai.network_client) return;
 
 	/* New tick */
 	_ai.tick++;
 
 	/* Make sure the AI follows the difficulty rule.. */
 	assert(_opt.diff.competitor_speed <= 4);
-	if ((_ai.tick & ((1 << (4 - _opt.diff.competitor_speed)) - 1)) != 0)
-		return;
+	if ((_ai.tick & ((1 << (4 - _opt.diff.competitor_speed)) - 1)) != 0) return;
 
 	/* Check for AI-client (so joining a network with an AI) */
 	if (_ai.network_client && _ai_player[_ai.network_playas].active) {
@@ -191,7 +192,7 @@ void AI_RunGameLoop(void)
 		AI_RunTick(_ai.network_playas);
 	} else if (!_networking || _network_server) {
 		/* Check if we want to run AIs (server or SP only) */
-		Player *p;
+		const Player* p;
 
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active && p->is_ai) {
@@ -224,8 +225,9 @@ void AI_StartNewAI(PlayerID player)
  */
 void AI_PlayerDied(PlayerID player)
 {
-	if (_ai.network_client && _ai.network_playas == player)
+	if (_ai.network_client && _ai.network_playas == player) {
 		_ai.network_playas = OWNER_SPECTATOR;
+	}
 
 	/* Called if this AI died */
 	_ai_player[player].active = false;
@@ -254,7 +256,7 @@ void AI_Initialize(void)
  */
 void AI_Uninitialize(void)
 {
-	Player* p;
+	const Player* p;
 
 	FOR_ALL_PLAYERS(p) {
 		if (p->is_active && p->is_ai) AI_PlayerDied(p->index);

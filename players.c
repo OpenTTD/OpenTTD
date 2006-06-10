@@ -266,7 +266,7 @@ void GetNameOfOwner(PlayerID owner, TileIndex tile)
 		if (owner >= 8)
 			SetDParam(0, STR_0150_SOMEONE);
 		else {
-			Player *p = GetPlayer(owner);
+			const Player* p = GetPlayer(owner);
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 		}
@@ -479,8 +479,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	Player *p;
 
 	p = AllocatePlayer();
-	if (p == NULL)
-		return NULL;
+	if (p == NULL) return NULL;
 
 	// Make a color
 	p->player_color = GeneratePlayerColor();
@@ -531,15 +530,19 @@ static void MaybeStartNewPlayer(void)
 	// count number of competitors
 	n = 0;
 	FOR_ALL_PLAYERS(p) {
-		if (p->is_active && p->is_ai)
-			n++;
+		if (p->is_active && p->is_ai) n++;
 	}
 
 	// when there's a lot of computers in game, the probability that a new one starts is lower
-	if (n < (uint)_opt.diff.max_no_competitors)
-		if (n < (_network_server ? InteractiveRandomRange(_opt.diff.max_no_competitors + 2) : RandomRange(_opt.diff.max_no_competitors + 2)) )
-			/* Send a command to all clients to start  up a new AI. Works fine for Multiplayer and Singleplayer */
-			DoCommandP(0, 1, 0, NULL, CMD_PLAYER_CTRL);
+	if (n < (uint)_opt.diff.max_no_competitors &&
+			n < (_network_server ?
+				InteractiveRandomRange(_opt.diff.max_no_competitors + 2) :
+				RandomRange(_opt.diff.max_no_competitors + 2)
+			)) {
+		/* Send a command to all clients to start up a new AI.
+		 * Works fine for Multiplayer and Singleplayer */
+		DoCommandP(0, 1, 0, NULL, CMD_PLAYER_CTRL);
+	}
 
 	// The next AI starts like the difficulty setting said, with +2 month max
 	_next_competitor_start = _opt.diff.competitor_start_time * 90 * DAY_TICKS + 1;
@@ -548,10 +551,10 @@ static void MaybeStartNewPlayer(void)
 
 void InitializePlayers(void)
 {
-	int i;
+	uint i;
+
 	memset(_players, 0, sizeof(_players));
-	for (i = 0; i != MAX_PLAYERS; i++)
-		_players[i].index=i;
+	for (i = 0; i != MAX_PLAYERS; i++) _players[i].index = i;
 	_cur_player_tick_index = 0;
 }
 
@@ -559,8 +562,7 @@ void OnTick_Players(void)
 {
 	Player *p;
 
-	if (_game_mode == GM_EDITOR)
-		return;
+	if (_game_mode == GM_EDITOR) return;
 
 	p = GetPlayer(_cur_player_tick_index);
 	_cur_player_tick_index = (_cur_player_tick_index + 1) % MAX_PLAYERS;
@@ -816,15 +818,20 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		p = DoStartupNewPlayer(false);
 
 #ifdef ENABLE_NETWORK
-		if (_networking && !_network_server && _local_player == OWNER_SPECTATOR)
+		if (_networking && !_network_server && _local_player == OWNER_SPECTATOR) {
 			/* In case we are a client joining a server... */
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+		}
 #endif /* ENABLE_NETWORK */
 
 		if (p != NULL) {
-			if (_local_player == OWNER_SPECTATOR && (!_ai.network_client || _ai.network_playas == OWNER_SPECTATOR)) {
+			if (_local_player == OWNER_SPECTATOR &&
+					(!_ai.network_client || _ai.network_playas == OWNER_SPECTATOR)) {
 				/* Check if we do not want to be a spectator in network */
-				if (!_networking || (_network_server && !_network_dedicated) || _network_playas != OWNER_SPECTATOR || _ai.network_client) {
+				if (!_networking ||
+						(_network_server && !_network_dedicated) ||
+						_network_playas != OWNER_SPECTATOR ||
+						_ai.network_client) {
 					if (_ai.network_client) {
 						/* As ai-network-client, we have our own rulez (disable GUI and stuff) */
 						_ai.network_playas = p->index;
@@ -982,8 +989,7 @@ int8 SaveHighScoreValue(const Player *p)
 	uint16 score = p->old_economy[0].performance_history;
 
 	/* Exclude cheaters from the honour of being in the highscore table */
-	if (CheatHasBeenUsed())
-		return -1;
+	if (CheatHasBeenUsed()) return -1;
 
 	for (i = 0; i < lengthof(_highscore_table[0]); i++) {
 		/* You are in the TOP5. Move all values one down and save us there */
@@ -1247,8 +1253,9 @@ static void SaveLoad_PLYR(Player* p)
 	// Write AI?
 	if (!IS_HUMAN_PLAYER(p->index)) {
 		SlObject(&p->ai, _player_ai_desc);
-		for (i = 0; i != p->ai.num_build_rec; i++)
+		for (i = 0; i != p->ai.num_build_rec; i++) {
 			SlObject(&p->ai.src + i, _player_ai_build_rec_desc);
+		}
 	}
 
 	// Write economy

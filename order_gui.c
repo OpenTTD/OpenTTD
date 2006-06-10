@@ -468,9 +468,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			if (e->keypress.keycode == _order_keycodes[i]) {
 				e->keypress.cont = false;
 				//see if the button is disabled
-				if (!(HASBIT(w->disabled_state, (i + 4)))) {
-					_order_button_proc[i](w, v);
-				}
+				if (!HASBIT(w->disabled_state, i + 4)) _order_button_proc[i](w, v);
 				break;
 			}
 		}

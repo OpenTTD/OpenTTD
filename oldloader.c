@@ -188,12 +188,11 @@ static inline uint32 ReadUint32(LoadgameState *ls)
 static bool LoadChunk(LoadgameState *ls, void *base, const OldChunks *chunks)
 {
 	const OldChunks *chunk = chunks;
-	byte *ptr;
 	byte *base_ptr = base;
-	uint i;
 
 	while (chunk->type != OC_END) {
-		ptr = chunk->ptr;
+		byte* ptr = chunk->ptr;
+		uint i;
 
 		for (i = 0; i < chunk->amount; i++) {
 			if (ls->failed) return false;

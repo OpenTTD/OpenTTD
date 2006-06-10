@@ -18,7 +18,7 @@ typedef enum RoadTileType {
 static inline RoadTileType GetRoadTileType(TileIndex t)
 {
 	assert(IsTileType(t, MP_STREET));
-	return (RoadTileType)(GB(_m[t].m5, 4, 4));
+	return (RoadTileType)GB(_m[t].m5, 4, 4);
 }
 
 static inline bool IsLevelCrossing(TileIndex t)
@@ -34,7 +34,7 @@ static inline bool IsLevelCrossingTile(TileIndex t)
 static inline RoadBits GetRoadBits(TileIndex t)
 {
 	assert(GetRoadTileType(t) == ROAD_TILE_NORMAL);
-	return (RoadBits)(GB(_m[t].m5, 0, 4));
+	return (RoadBits)GB(_m[t].m5, 0, 4);
 }
 
 static inline void SetRoadBits(TileIndex t, RoadBits r)

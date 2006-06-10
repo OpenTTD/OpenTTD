@@ -68,14 +68,15 @@ int AiNew_Build_Bridge(Player *p, TileIndex tile_a, TileIndex tile_b, byte flag)
 			if (type2 != 0) break;
 		}
 	}
-	// There is only one bridge that can be build..
+	// There is only one bridge that can be built
 	if (type2 == 0 && type != 0) type2 = type;
 
 	// Now, simply, build the bridge!
-	if (p->ainew.tbt == AI_TRAIN)
-		return AI_DoCommand(tile_a, tile_b, (0<<8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
-
-	return AI_DoCommand(tile_a, tile_b, (0x80 << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
+	if (p->ainew.tbt == AI_TRAIN) {
+		return AI_DoCommand(tile_a, tile_b, (0x00 << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
+	} else {
+		return AI_DoCommand(tile_a, tile_b, (0x80 << 8) + type2, flag | DC_AUTO, CMD_BUILD_BRIDGE);
+	}
 }
 
 
@@ -102,7 +103,10 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 	//  the first pieces and the last piece
 	if (part < 1) part = 1;
 	// When we are done, stop it
-	if (part >= PathFinderInfo->route_length - 1) { PathFinderInfo->position = -2; return 0; }
+	if (part >= PathFinderInfo->route_length - 1) {
+		PathFinderInfo->position = -2;
+		return 0;
+	}
 
 
 	if (PathFinderInfo->rail_or_road) {
@@ -112,7 +116,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
-				DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: tunnel could not be build!");
+				DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: tunnel could not be built!");
 				return 0;
 			}
 			return cost;
@@ -123,7 +127,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 			PathFinderInfo->position++;
 			// TODO: problems!
 			if (CmdFailed(cost)) {
-				DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: bridge could not be build!");
+				DEBUG(ai,0)("[AiNew - BuildPath] We have a serious problem: bridge could not be built!");
 				return 0;
 			}
 			return cost;
@@ -131,7 +135,7 @@ int AiNew_Build_RoutePart(Player *p, Ai_PathFinderInfo *PathFinderInfo, byte fla
 
 		// Build normal rail
 		// Keep it doing till we go an other way
-		if (route_extra[part-1] == 0 && route_extra[part] == 0) {
+		if (route_extra[part - 1] == 0 && route_extra[part] == 0) {
 			while (route_extra[part] == 0) {
 				// Get the current direction
 				dir = AiNew_GetRailDirection(route[part-1], route[part], route[part+1]);

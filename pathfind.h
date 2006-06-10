@@ -37,7 +37,6 @@ typedef struct RememberData {
 } RememberData;
 
 struct TrackPathFinder {
-
 	int num_links_left;
 	TrackPathFinderLink *new_link;
 

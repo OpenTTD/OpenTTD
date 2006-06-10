@@ -664,8 +664,6 @@ static bool QZ_PollEvent(void)
 }
 
 
-
-
 static void QZ_GameLoop(void)
 {
 	uint32 next_tick = GetTick() + 30;

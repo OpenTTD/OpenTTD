@@ -271,7 +271,7 @@ static void BuildRoadToolbWndProc(Window* w, WindowEvent* e)
 		TileIndex tile = e->place.tile;
 
 		DoCommand(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
-		VpSetPresizeRange(tile, _build_tunnel_endtile==0?tile:_build_tunnel_endtile);
+		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
 		break;
 	}
 

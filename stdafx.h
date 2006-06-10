@@ -69,11 +69,9 @@
 
 // Stuff for GCC
 #if defined(__GNUC__)
-# define NORETURN              __attribute((noreturn))
+# define NORETURN __attribute__ ((noreturn))
 # define FORCEINLINE inline
 # define CDECL
-//#include <alloca.h>
-//#include <malloc.h>
 # define __int64 long long
 # define NOT_REACHED() assert(0)
 # define GCC_PACK __attribute__((packed))

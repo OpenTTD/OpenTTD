@@ -725,7 +725,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	int mode = p2 & 0x1;
 	Track track = GB(p2, 4, 3);
 	Trackdir trackdir = TrackToTrackdir(track);
-	byte semaphores = (HASBIT(p2, 3)) ? 8 : 0;
+	byte semaphores = (HASBIT(p2, 3) ? 8 : 0);
 	byte signal_density = (p2 >> 24);
 
 	if (p1 >= MapSize()) return CMD_ERROR;

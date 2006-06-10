@@ -238,13 +238,15 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	/* set and test bridge length, availability */
-	bridge_len = (sx + sy - x - y) - 1;
+	bridge_len = sx + sy - x - y - 1;
 	if (!CheckBridge_Stuff(bridge_type, bridge_len)) return_cmd_error(STR_5015_CAN_T_BUILD_BRIDGE_HERE);
 
 	/* retrieve landscape height and ensure it's on land */
 	tile_start = TileXY(x, y);
 	tile_end = TileXY(sx, sy);
-	if (IsClearWaterTile(tile_start) || IsClearWaterTile(tile_end)) return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);
+	if (IsClearWaterTile(tile_start) || IsClearWaterTile(tile_end)) {
+		return_cmd_error(STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH);
+	}
 
 	tileh_start = GetTileSlope(tile_start, &z_start);
 	tileh_end = GetTileSlope(tile_end, &z_end);
@@ -325,7 +327,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 		switch (GetTileType(tile)) {
 			case MP_WATER:
 				if (!EnsureNoVehicle(tile)) return_cmd_error(STR_980E_SHIP_IN_THE_WAY);
-				if (!(IsWater(tile) || IsCoast(tile))) goto not_valid_below;
+				if (!IsWater(tile) && !IsCoast(tile)) goto not_valid_below;
 				transport_under = TRANSPORT_WATER;
 				owner_under = GetTileOwner(tile);
 				break;
@@ -508,7 +510,6 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 			MakeRoadTunnel(start_tile, _current_player, direction);
 			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction));
 		}
-
 	}
 
 	return cost;
@@ -660,10 +661,11 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	direction = GetBridgeRampDirection(tile);
 	delta = TileOffsByDir(direction);
 
-	/*	Make sure there's no vehicle on the bridge
-			Omit tile and endtile, since these are already checked, thus solving the problem
-			of bridges over water, or higher bridges, where z is not increased, eg level bridge
-	*/
+	/* Make sure there's no vehicle on the bridge
+	 * Omit tile and endtile, since these are already checked, thus solving the
+	 * problem of bridges over water, or higher bridges, where z is not increased,
+	 * eg level bridge
+	 */
 	/* Bridges on slopes might have their Z-value offset..correct this */
 	v = FindVehicleBetween(
 		tile    + delta,
@@ -737,10 +739,10 @@ static int32 ClearTile_TunnelBridge(TileIndex tile, byte flags)
 int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 {
 	TileIndex endtile;
-	uint length;
-	Vehicle *v;
 
 	if (IsTunnel(tile) && GetTunnelTransportType(tile) == TRANSPORT_RAIL) {
+		uint length;
+
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 		if (GetRailType(tile) == totype) return CMD_ERROR;
@@ -783,11 +785,10 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		}
 		return _price.build_rail >> 1;
 	} else if (IsBridge(tile) && IsBridgeRamp(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
+		uint z = TilePixelHeight(tile) + TILE_HEIGHT;
+		const Vehicle* v;
 		TileIndexDiff delta;
 		int32 cost;
-		uint z = TilePixelHeight(tile);
-
-		z += TILE_HEIGHT;
 
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
@@ -828,8 +829,9 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		}
 
 		return cost;
-	} else
+	} else {
 		return CMD_ERROR;
+	}
 }
 
 
@@ -876,7 +878,7 @@ static void DrawBridgePillars(PalSpriteID image, const TileInfo *ti, int x, int 
 
 		for (; z >= front_height || z >= back_height; z -= TILE_HEIGHT) {
 			if (z >= front_height) { // front facing pillar
-				AddSortableSpriteToDraw(image, x,y, p[4], p[5], 0x28, z);
+				AddSortableSpriteToDraw(image, x, y, p[4], p[5], 0x28, z);
 			}
 
 			if (drawfarpillar && z >= back_height && z < i - TILE_HEIGHT) { // back facing pillar

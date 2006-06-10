@@ -1242,11 +1242,9 @@ void NetworkUDPGameLoop(void)
 		if (_udp_master_socket != INVALID_SOCKET) {
 			NetworkUDPReceive(_udp_master_socket);
 		}
-	}
-	else if (_udp_client_socket != INVALID_SOCKET) {
+	} else if (_udp_client_socket != INVALID_SOCKET) {
 		NetworkUDPReceive(_udp_client_socket);
-		if (_network_udp_broadcast > 0)
-			_network_udp_broadcast--;
+		if (_network_udp_broadcast > 0) _network_udp_broadcast--;
 	}
 }
 

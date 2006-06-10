@@ -415,10 +415,9 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_MOUSELOOP:
 		{
-			Vehicle *v;
-			uint32 h;
-			v = GetVehicle(w->window_number);
-			h = IsRoadVehInDepotStopped(v) ? (1 << 7) | (1 << 8) : (1 << 11) | (1 << 12);
+			const Vehicle* v = GetVehicle(w->window_number);
+			uint32 h = IsRoadVehInDepotStopped(v) ? 1 << 7 | 1 << 8 : 1 << 11 | 1 << 12;
+
 			if (h != w->hidden_state) {
 				w->hidden_state = h;
 				SetWindowDirty(w);
@@ -1007,10 +1006,11 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsRoadVehInDepot(v))
+			if (IsRoadVehInDepot(v)) {
 				str = STR_021F;
-			else
+			} else {
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
+			}
 			DrawString(x, y + 2, str, 0);
 
 			SetDParam(0, v->profit_this_year);

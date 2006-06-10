@@ -189,7 +189,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			st = GetStation(new_order.station);
 
 			if (!IsValidStation(st) ||
-					(st->airport_type != AT_OILRIG && !(IsBuoy(st)) && !CheckOwnership(st->owner))) {
+					(st->airport_type != AT_OILRIG && !IsBuoy(st) && !CheckOwnership(st->owner))) {
 				return CMD_ERROR;
 			}
 

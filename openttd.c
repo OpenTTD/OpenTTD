@@ -1013,14 +1013,18 @@ static void ConvertTownOwner(void)
 	TileIndex tile;
 
 	for (tile = 0; tile != MapSize(); tile++) {
-		if (IsTileType(tile, MP_STREET)) {
-			if (IsLevelCrossing(tile) && GetCrossingRoadOwner(tile) & 0x80) {
-				SetCrossingRoadOwner(tile, OWNER_TOWN);
-			}
+		switch (GetTileType(tile)) {
+			case MP_STREET:
+				if (IsLevelCrossing(tile) && GetCrossingRoadOwner(tile) & 0x80) {
+					SetCrossingRoadOwner(tile, OWNER_TOWN);
+				}
+				/* FALLTHROUGH */
 
-			if (GetTileOwner(tile) & 0x80) SetTileOwner(tile, OWNER_TOWN);
-		} else if (IsTileType(tile, MP_TUNNELBRIDGE)) {
-			if (GetTileOwner(tile) & 0x80) SetTileOwner(tile, OWNER_TOWN);
+			case MP_TUNNELBRIDGE:
+				if (GetTileOwner(tile) & 0x80) SetTileOwner(tile, OWNER_TOWN);
+				break;
+
+			default: break;
 		}
 	}
 }

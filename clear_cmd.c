@@ -142,8 +142,7 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 
 	for (;;) {
 		if (count == 0) {
-			if (ts->modheight_count >= 576)
-				return false;
+			if (ts->modheight_count >= 576) return false;
 			ts->modheight_count++;
 			break;
 		}
@@ -190,6 +189,7 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	TerraformerState ts;
+	TileIndex t;
 	int direction;
 
 	TerraformerHeightMod modheight_data[576];
@@ -210,27 +210,31 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (tile + TileDiffXY(1, 1) >= MapSize()) return CMD_ERROR;
 
 	if (p1 & 1) {
-		if (!TerraformTileHeight(&ts, tile + TileDiffXY(1, 0),
-				TileHeight(tile + TileDiffXY(1, 0)) + direction))
-					return CMD_ERROR;
+		t = tile + TileDiffXY(1, 0);
+		if (!TerraformTileHeight(&ts, t, TileHeight(t) + direction)) {
+			return CMD_ERROR;
+		}
 	}
 
 	if (p1 & 2) {
-		if (!TerraformTileHeight(&ts, tile + TileDiffXY(1, 1),
-				TileHeight(tile + TileDiffXY(1, 1)) + direction))
-					return CMD_ERROR;
+		t = tile + TileDiffXY(1, 1);
+		if (!TerraformTileHeight(&ts, t, TileHeight(t) + direction)) {
+			return CMD_ERROR;
+		}
 	}
 
 	if (p1 & 4) {
-		if (!TerraformTileHeight(&ts, tile + TileDiffXY(0, 1),
-				TileHeight(tile + TileDiffXY(0, 1)) + direction))
-					return CMD_ERROR;
+		t = tile + TileDiffXY(0, 1);
+		if (!TerraformTileHeight(&ts, t, TileHeight(t) + direction)) {
+			return CMD_ERROR;
+		}
 	}
 
 	if (p1 & 8) {
-		if (!TerraformTileHeight(&ts, tile + TileDiffXY(0, 0),
-				TileHeight(tile + TileDiffXY(0, 0)) + direction))
-					return CMD_ERROR;
+		t = tile + TileDiffXY(0, 0);
+		if (!TerraformTileHeight(&ts, t, TileHeight(t) + direction)) {
+			return CMD_ERROR;
+		}
 	}
 
 	{ /* Check if tunnel or track would take damage */
@@ -430,8 +434,7 @@ int32 CmdSellLandArea(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (flags & DC_EXEC)
-		DoClearSquare(tile);
+	if (flags & DC_EXEC) DoClearSquare(tile);
 
 	return - _price.purchase_land * 2;
 }

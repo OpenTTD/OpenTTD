@@ -712,9 +712,11 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
  * @param sd read-only SettingDesc structure which contains the unmodified,
  *        loaded values of the configuration file and various information about it
  * @param grpname holds the name of the group (eg. [network]) where these will be saved
- * The function works as follows: for each item in the SettingDesc structure we have
- * a look if the value has changed since we started the game (the original values
- * are reloaded when saving). If settings indeed have changed, we get these and save them.*/
+ * The function works as follows: for each item in the SettingDesc structure we
+ * have a look if the value has changed since we started the game (the original
+ * values are reloaded when saving). If settings indeed have changed, we get
+ * these and save them.
+ */
 static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *grpname, void *object)
 {
 	IniGroup *group_def = NULL, *group;
@@ -894,28 +896,28 @@ static void ini_save_setting_list(IniFile *ini, const char *grpname, char **list
  * We have two types of list:
  * 1. SDTG_something
  * 2. SDT_something
- * The 'G' stands for global, so this is the one you will use for a SettingDescGlobVarList
- * section meaning global variables. The other uses a Base/Offset and runtime variable
- * selection mechanism, known from the saveload convention (it also has global so it
- * should not be hard).
- * Of each type there are again two versions, the normal one and one prefixed with 'COND'.
- * COND means that the setting is only valid in certain savegame versions (since patches
- * are saved to the savegame, this bookkeeping is necessary.
+ * The 'G' stands for global, so this is the one you will use for a
+ * SettingDescGlobVarList section meaning global variables. The other uses a
+ * Base/Offset and runtime variable selection mechanism, known from the saveload * convention (it also has global so it should not be hard).
+ * Of each type there are again two versions, the normal one and one prefixed
+ * with 'COND'.
+ * COND means that the setting is only valid in certain savegame versions
+ * (since patches are saved to the savegame, this bookkeeping is necessary.
  * Now there are a lot of types. Easy ones are:
  * - VAR:  any number type, 'type' field specifies what number. eg int8 or uint32
  * - BOOL: a boolean number type
  * - STR:  a string or character. 'type' field specifies what string. Normal, string, or quoted
  * A bit more difficult to use are MMANY (meaning ManyOfMany) and OMANY (OneOfMany)
- * These are actually normal numbers, only bitmasked. In MMANY several bits can be
- * set, in the other only one.
+ * These are actually normal numbers, only bitmasked. In MMANY several bits can
+ * be set, in the other only one.
  * The most complex type is INTLIST. This is basically an array of numbers. If
  * the intlist is only valid in certain savegame versions because for example
  * it has grown in size its length cannot be automatically be calculated so
  * use SDT(G)_CONDLISTO() meaning Old.
- * If nothing fits you, you can use the GENERAL macros, but it exposes the internal
- * structure somewhat so it needs a little looking. There are _NULL() macros as
- * well, these fill up space so you can add more patches there (in place) and you
- * DON'T have to increase the savegame version. */
+ * If nothing fits you, you can use the GENERAL macros, but it exposes the
+ * internal structure somewhat so it needs a little looking. There are _NULL()
+ * macros as well, these fill up space so you can add more patches there (in
+ * place) and you DON'T have to increase the savegame version. */
 
 #define NSD_GENERAL(name, def, cmd, guiflags, min, max, many, str, proc)\
 	{name, (const void*)(def), cmd, guiflags, min, max, many, str, proc}
@@ -1218,11 +1220,11 @@ static const SettingDesc _gameopt_settings[] = {
  * These include for example the GUI settings and will not be saved with the
  * savegame.
  * It is also a bit tricky since you would think that service_interval
- * for example doesn't need to be synched. Every client assigns the service_interval
- * value to the v->service_interval, meaning that every client assigns his value. If
- * the setting was player-based, that would mean that vehicles could decide on
- * different moments that they are heading back to a service depot, causing desyncs
- * on a massive scale. */
+ * for example doesn't need to be synched. Every client assigns the
+ * service_interval value to the v->service_interval, meaning that every client
+ * assigns his value. If the setting was player-based, that would mean that
+ * vehicles could decide on different moments that they are heading back to a
+ * service depot, causing desyncs on a massive scale. */
 const SettingDesc _patch_settings[] = {
 	/***************************************************************************/
 	/* User-interface section of the GUI-configure patches window */
@@ -1336,20 +1338,20 @@ const SettingDesc _patch_settings[] = {
 	SDT_VAR(Patches, npf_max_search_nodes,SLE_UINT, 0, 0,10000,500,100000, STR_NULL, NULL),
 
 	/* When a red signal is encountered, a small detour can be made around
-	* it. This specifically occurs when a track is doubled, in which case
-	* the detour is typically 2 tiles. It is also often used at station
-	* entrances, when there is a choice of multiple platforms. If we take
-	* a typical 4 platform station, the detour is 4 tiles. To properly
-	* support larger stations we increase this value.
-	* We want to prevent that trains that want to leave at one side of a
-	* station, leave through the other side, turn around, enter the
-	* station on another platform and exit the station on the right side
-	* again, just because the sign at the right side was red. If we take
-	* a typical 5 length station, this detour is 10 or 11 tiles (not
-	* sure), so we set the default penalty at 10 (the station tile
-	* penalty will further prevent this.
-	* We give presignal exits (and combo's) a different (larger) penalty, because we really
-	* don't want trains waiting in front of a presignal exit. */
+	 * it. This specifically occurs when a track is doubled, in which case
+	 * the detour is typically 2 tiles. It is also often used at station
+	 * entrances, when there is a choice of multiple platforms. If we take
+	 * a typical 4 platform station, the detour is 4 tiles. To properly
+	 * support larger stations we increase this value.
+	 * We want to prevent that trains that want to leave at one side of a
+	 * station, leave through the other side, turn around, enter the
+	 * station on another platform and exit the station on the right side
+	 * again, just because the sign at the right side was red. If we take
+	 * a typical 5 length station, this detour is 10 or 11 tiles (not
+	 * sure), so we set the default penalty at 10 (the station tile
+	 * penalty will further prevent this.
+	 * We give presignal exits (and combo's) a different (larger) penalty, because
+	 * we really don't want trains waiting in front of a presignal exit. */
 	SDT_VAR(Patches, npf_rail_firstred_penalty,     SLE_UINT, 0, 0, (10 * NPF_TILE_LENGTH), 0, 100000, STR_NULL, NULL),
 	SDT_VAR(Patches, npf_rail_firstred_exit_penalty,SLE_UINT, 0, 0, (100 * NPF_TILE_LENGTH),0, 100000, STR_NULL, NULL),
 	/* This penalty is for when the last signal before the target is red.

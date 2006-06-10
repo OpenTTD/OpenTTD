@@ -1456,9 +1456,9 @@ void InputLoop(void)
 	_current_player = _local_player;
 
 	// Handle pressed keys
-	if (_pressed_key) {
-		uint32 key = _pressed_key; _pressed_key = 0;
-		HandleKeypress(key);
+	if (_pressed_key != 0) {
+		HandleKeypress(_pressed_key);
+		_pressed_key = 0;
 	}
 
 	// Mouse event?
