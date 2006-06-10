@@ -1215,7 +1215,7 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...trop proche d'une autre industrie
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Réamenager le train pour d'autres marchandises
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Réaménager le train pour d'autres marchandises
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Réaménager le train
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choix du type de marchandises à transporter
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Réaménager le train pour les marchandises sélectionnées
@@ -2110,7 +2110,7 @@ STR_706D_PRESIDENT                                              :Président
 STR_706E_TYCOON                                                 :Tycoon
 STR_706F_BUILD_HQ                                               :{BLACK}Const. siège
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Contruire/voir le Siège Social
-STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Reconstruit le quartier général de la compagne ailleurs pour le prix de 1% de la valeur de la compagnie
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Reconstruit le quartier général de la compagnie ailleurs pour le prix de 1% de la valeur de la compagnie
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Impossible de construire le siège...
 STR_7072_VIEW_HQ                                                :{BLACK}Voir le siège
 STR_RELOCATE_HQ                                                 :{BLACK}Déménager le QG
@@ -2591,6 +2591,11 @@ STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renommer
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Impossible de renommer type de véhicule routier...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Aller à {TOWN} Dépôt Routier
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Entretien au dépôt de {TOWN}
+
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Réaménager le véhicule routier pour d'autres marchandises
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Réaménager le véhicule routier
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Réaménager le véhicule routier pour les marchandises sélectionnées
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossible de réaménager le véhicule routier...
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construction Portuaire

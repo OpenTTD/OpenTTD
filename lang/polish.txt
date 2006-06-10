@@ -2720,6 +2720,11 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nie mozn
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Jedz do {TOWN} zajednia sam.
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Serwisuj w zajezdni sam. {TOWN}
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa samochodu do przewozu innego typu towaru
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Przebudowa samochodu
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Przebuduj samochod do przewozu zaznaczonego typu towaru
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nie mozna przebudowac samochodu...
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Konstrukcje portowe
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Konstrukcje portowe
