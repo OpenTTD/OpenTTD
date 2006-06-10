@@ -1,6 +1,6 @@
 ##name Afrikaans
 ##ownname Afrikaans
-##isocode af_ZA.UTF-8
+##isocode af_ZA
 ##plural 0
 
 ##id 0x0000
@@ -282,7 +282,7 @@ STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vertoon 
 STR_0174_DISPLAY_MAP                                            :{BLACK}Vertoon kaart
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Vertoon kaart, stad index
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Vertoon stad index
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Vertoon maatskappy finasiÃ«le inligting
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Vertoon maatskappy finasiële inligting
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Vertoon generale maatskappy inligting
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Vertoon grafieke
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Vertoon maatskappy verbond tafel
@@ -376,7 +376,7 @@ STR_01CB                                                        :{TINYFONT}{COMM
 STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Vrag aanvaar: {LTBLUE}
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
-STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz BlÃ©rkas
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Blérkas
 STR_01D3_SOUND_MUSIC                                            :Klank/musiek
 STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Vertoon klank/musiek venster
 STR_01D5_ALL                                                    :{TINYFONT}Alle
@@ -822,7 +822,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Kan nie 
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Kan nie spoorweg spoor hier bou nie...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Kan nie spoorweg spoor van hier verwyder nie...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kan nie seine van hier verwyder nie...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Trein Depot OriÃ«ntering
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Trein Depot Oriëntering
 STR_1015_RAILROAD_CONSTRUCTION                                  :Spoorweg konstruksie
 STR_1016_MONORAIL_CONSTRUCTION                                  :Eenspoor konstruksie
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev konstruksie
@@ -834,7 +834,7 @@ STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Bou spoo
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Bou spoorweg tonnel
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Skakel bou/verwyder vir spoorweg spoor en seine
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Brug keuse - kliek op jou verkiesde brug om dit te bou
-STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Selekteer spoorweg depot oriÃ«ntering
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Selekteer spoorweg depot oriëntering
 STR_1021_RAILROAD_TRACK                                         :Spoorweg spoor
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Spoorweg trein depot
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...area is besit by 'n ander maatskappy
@@ -847,7 +847,7 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Pad Kons
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Kies Pad Brug
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan nie pad hier bou nie...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan nie pad van hier verwyder nie...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Pad Depot OriÃ«ntering
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Pad Depot Oriëntering
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan nie pad voertuig depot hier bou nie...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan nie bus stasie hier bou nie...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan nie vraagmotor stasie bou nie...
@@ -859,7 +859,7 @@ STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Bou vraa
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Bou pad brug
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Bou pad tonnel
 STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Skakel bou/verwyder vir pad bou
-STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selekteer pad voertuig depot oriÃ«ntering
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Selekteer pad voertuig depot oriëntering
 STR_1814_ROAD                                                   :Pad
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Pad met straatligte
 STR_1816_TREE_LINED_ROAD                                        :Boom-belynde pad
@@ -978,7 +978,7 @@ STR_2810_CACTUS_PLANTS                                          :Kaktus Plante
 ##id 0x3000
 STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Spoor Stasie Keuse
 STR_3001_AIRPORT_SELECTION                                      :{WHITE}Lughawe Keuse
-STR_3002_ORIENTATION                                            :{BLACK}OriÃ«ntering
+STR_3002_ORIENTATION                                            :{BLACK}Oriëntering
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Nommer van spoore
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Verhoog lengte
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te naby aan 'n ander spoorweg stasie
@@ -1013,8 +1013,8 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} aanvaar nie mee {STRING} of {STRING} nie
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} aanvaar nou {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} aanvaar nou {STRING} en {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Bus Stasie OriÃ«ntering
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Vraagmotor Stasie OriÃ«nt.
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Bus Stasie Oriëntering
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Vraagmotor Stasie Oriënt.
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Moet eers bus stasie afbreek
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Moet eers vraagmotor stasie afbreek
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stasie{P "" s}
@@ -1023,11 +1023,11 @@ STR_304A_NONE                                                   :{YELLOW}- Geen 
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...plek ongeskik
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Te naby aan 'n ander werf
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Moet eers werf afbreek
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Kies spoorweg stasie oriÃ«ntering
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Kies spoorweg stasie oriëntering
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Kies nommer van verhoogte vir spoorweg stasie
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Kies lengte van spoorweg stasie
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Kies bus stasie oriÃ«ntering
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Kies vraagmotor laai area oriÃ«ntering
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Kies bus stasie oriëntering
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Kies vraagmotor laai area oriëntering
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Senter skerm op stasie
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Verander naam van stasie
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Wys lys van aanvaarde vrag
@@ -1051,10 +1051,10 @@ STR_306B_HELIPORT                                               :{BLACK}Helihawe
 
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skip Depot OriÃ«ntering
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skip Depot Oriëntering
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...moet op water gebou word
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Skip depot kan nie hier gebou word nie...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Kies skip depot oriÃ«ntering
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Kies skip depot oriëntering
 STR_3804_WATER                                                  :Water
 STR_3806_SHIP_DEPOT                                             :Skip depot
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Kan nie op water bou nie
