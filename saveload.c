@@ -1464,7 +1464,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 {
 	uint32 hdr[2];
 	const SaveLoadFormat *fmt;
-	uint version;
 
 	/* An instance of saving is already active, so don't go saving again */
 	if (_ts.saveinprogress && mode == SL_SAVE) {
@@ -1515,10 +1514,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		return SL_ERROR;
 	}
 
-	/* We first initialize here to avoid: "warning: variable `version' might
-	 * be clobbered by `longjmp' or `vfork'" */
-	version = 0;
-
 	/* General tactic is to first save the game to memory, then use an available writer
 	 * to write it to file, either in threaded mode if possible, or single-threaded */
 	if (mode == SL_SAVE) { /* SAVE game */
@@ -1557,7 +1552,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 			if (fmt == endof(_saveload_formats)) {
 				DEBUG(misc, 0) ("[Sl] Unknown savegame type, trying to load it as the buggy format.");
 				rewind(_sl.fh);
-				_sl_version = version = 0;
+				_sl_version = 0;
 				_sl_minor_version = 0;
 				fmt = _saveload_formats + 1; // LZO
 				break;
@@ -1565,7 +1560,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 
 			if (fmt->tag == hdr[0]) {
 				// check version number
-				_sl_version = version = TO_BE32(hdr[1]) >> 16;
+				_sl_version = TO_BE32(hdr[1]) >> 16;
 				/* Minor is not used anymore from version 18.0, but it is still needed
 				 *  in versions before that (4 cases) which can't be removed easy.
 				 *  Therefor it is loaded, but never saved (or, it saves a 0 in any scenario).
