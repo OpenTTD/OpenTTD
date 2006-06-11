@@ -14,6 +14,7 @@
 #include "table/strings.h"
 #include "functions.h"
 #include "network_data.h"
+#include "network_client.h"
 #include "network_gamelist.h"
 #include "window.h"
 #include "gui.h"
@@ -1464,6 +1465,21 @@ void ShowJoinStatusWindowAfterJoin(void)
 }
 
 
+static byte _chat_type;
+static byte _chat_dest;
+
+
+static void SendChat(const char* buf)
+{
+	if (buf[0] == '\0') return;
+	if (!_network_server) {
+		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT + _chat_type, _chat_type, _chat_dest, buf);
+	} else {
+		NetworkServer_HandleChat(NETWORK_ACTION_CHAT + _chat_type, _chat_type, _chat_dest, buf, NETWORK_SERVER_INDEX);
+	}
+}
+
+
 /* uses querystr_d WP macro */
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
@@ -1480,48 +1496,21 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->click.widget) {
-		case 3: DeleteWindow(w); break; // Cancel
-		case 2: // Send
-press_ok:;
-			if (WP(w, querystr_d).text.buf[0] == '\0') {
-				DeleteWindow(w);
-			} else {
-				char *buf = WP(w, querystr_d).text.buf;
-				WindowClass wnd_class = WP(w, querystr_d).wnd_class;
-				WindowNumber wnd_num = WP(w, querystr_d).wnd_num;
-				Window *parent;
-
-				DeleteWindow(w);
-
-				parent = FindWindowById(wnd_class, wnd_num);
-				if (parent != NULL) {
-					WindowEvent e;
-					e.event = WE_ON_EDIT_TEXT;
-					e.edittext.str = buf;
-					parent->wndproc(parent, &e);
-				}
-			}
-			break;
+			case 2: /* Send */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
+			case 3: /* Cancel */ DeleteWindow(w); break;
 		}
 		break;
 
-	case WE_MOUSELOOP: {
-		if (!FindWindowById(WP(w,querystr_d).wnd_class, WP(w,querystr_d).wnd_num)) {
-			DeleteWindow(w);
-			return;
-		}
+	case WE_MOUSELOOP:
 		HandleEditBox(w, &WP(w, querystr_d), 1);
-	} break;
+		break;
 
-	case WE_KEYPRESS: {
+	case WE_KEYPRESS:
 		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 1, e)) {
-		case 1: // Return
-			goto press_ok;
-		case 2: // Escape
-			DeleteWindow(w);
-			break;
+			case 1: /* Return */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
+			case 2: /* Escape */ DeleteWindow(w); break;
 		}
-	} break;
+		break;
 
 	case WE_DESTROY:
 		SendWindowMessage(WC_NEWS_WINDOW, 0, WE_DESTROY, 0, 0);
@@ -1546,9 +1535,13 @@ static const WindowDesc _chat_window_desc = {
 	ChatWindowWndProc
 };
 
-void ShowChatWindow(void)
+
+void ShowNetworkChatQueryWindow(byte desttype, byte dest)
 {
 	Window *w;
+
+	_chat_type = desttype;
+	_chat_dest = dest;
 
 	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
 

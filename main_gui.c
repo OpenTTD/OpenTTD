@@ -77,12 +77,6 @@ void HandleOnEditText(WindowEvent *e)
 		DoCommandP(0, id, 0, NULL, CMD_RENAME_WAYPOINT | CMD_MSG(STR_CANT_CHANGE_WAYPOINT_NAME));
 		break;
 #ifdef ENABLE_NETWORK
-	case 2: /* Speak to.. */
-		if (!_network_server)
-			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT + (id & 0xFF), id & 0xFF, (id >> 8) & 0xFF, e->edittext.str);
-		else
-			NetworkServer_HandleChat(NETWORK_ACTION_CHAT + (id & 0xFF), id & 0xFF, (id >> 8) & 0xFF, e->edittext.str, NETWORK_SERVER_INDEX);
-		break;
 	case 3: { /* Give money, you can only give money in excess of loan */
 		const Player *p = GetPlayer(_current_player);
 		int32 money = min(p->money64 - p->current_loan, atoi(e->edittext.str) / _currency->rate);
@@ -327,13 +321,6 @@ static void MenuClickBuildAir(int index)
 }
 
 #ifdef ENABLE_NETWORK
-
-void ShowNetworkChatQueryWindow(byte desttype, byte dest)
-{
-	_rename_id = desttype + (dest << 8);
-	_rename_what = 2;
-	ShowChatWindow();
-}
 
 void ShowNetworkGiveMoneyWindow(byte player)
 {
