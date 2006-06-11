@@ -179,12 +179,6 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_4:
-		if (w->window_number != 0 && !FindWindowById(WC_VEHICLE_DEPOT, w->window_number)) {
-			DeleteWindow(w);
-		}
-		break;
-
 	case WE_ON_EDIT_TEXT: {
 		if (e->edittext.str[0] != '\0') {
 			_cmd_text = e->edittext.str;
@@ -431,11 +425,6 @@ do_change_service_int:
 			break;
 		}
 	} break;
-
-	case WE_4:
-		if (FindWindowById(WC_VEHICLE_VIEW, w->window_number) == NULL)
-			DeleteWindow(w);
-		break;
 
 	case WE_ON_EDIT_TEXT:
 		if (e->edittext.str[0] != '\0') {

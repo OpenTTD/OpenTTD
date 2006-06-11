@@ -487,11 +487,6 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		}
 	} break;
 
-	case WE_4: {
-		if (FindWindowById(WC_VEHICLE_VIEW, w->window_number) == NULL)
-			DeleteWindow(w);
-	} break;
-
 	case WE_PLACE_OBJ: {
 		OrdersPlaceObj(GetVehicle(w->window_number), e->place.tile, w);
 	} break;

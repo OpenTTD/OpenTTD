@@ -256,11 +256,6 @@ do_change_service_int:
 		}
 	} break;
 
-	case WE_4:
-		if (FindWindowById(WC_VEHICLE_VIEW, w->window_number) == NULL)
-			DeleteWindow(w);
-		break;
-
 	case WE_ON_EDIT_TEXT: {
 		if (e->edittext.str[0] != '\0') {
 			_cmd_text = e->edittext.str;
@@ -558,12 +553,6 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 					STR_9036_RENAME_ROAD_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number);
 			}
 		}	break;
-		}
-		break;
-
-	case WE_4:
-		if (w->window_number != 0 && !FindWindowById(WC_VEHICLE_DEPOT, w->window_number)) {
-			DeleteWindow(w);
 		}
 		break;
 
