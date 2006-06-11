@@ -484,7 +484,7 @@ static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
 	if (cargo == CT_GOODS || cargo == CT_FOOD) {
 		Town* to_tow = GetTown(s->to);
 
-		if (to_tow->population < (cargo == CT_FOOD ? 200 : 900)) return; // error
+		if (to_tow->population < (cargo == CT_FOOD ? 200U : 900U)) return; // error
 		fr->to = to_tow;
 		to_xy = to_tow->xy;
 	} else {
@@ -567,7 +567,7 @@ static void AiFindRandomIndustryRoute(FoundRoute *fr)
 		// pick a dest town, and see if it's big enough
 		Town* t = AiFindRandomTown();
 
-		if (t == NULL || t->population < (cargo == CT_FOOD ? 200 : 900)) return;
+		if (t == NULL || t->population < (cargo == CT_FOOD ? 200U : 900U)) return;
 
 		fr->to = t;
 		fr->distance = DistanceManhattan(i->xy, t->xy);
