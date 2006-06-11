@@ -484,7 +484,7 @@ STR_0188                                                        :{BLACK}{SMALLUP
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Nie mozna zmienic okresu miedzy serwisowaniem...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Zamkniecie okna
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Tytul okienka - przeciagnij to by ruszyc oknem
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Tytul okna - przeciagnij aby przesunac okno
 STR_STICKY_BUTTON                                               :{BLACK}Zaznacza to okno jako niezamykalne dla funkcji 'Zamknij wszystkie okna'
 STR_RESIZE_BUTTON                                               :{BLACK}Kliknij i przeciagnij by zmienic rozmiar okna
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij tutaj aby przejsc do domyslnego katalogu
@@ -792,7 +792,7 @@ STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiesc A
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definuj obszar pustyni.{}Wcinij i trzymaj CTRL by usunac
 STR_CREATE_LAKE                                                 :{BLACK}Definuj akwen wodny.{}Okolice beda zalane jesli sa na poziomie morza
 STR_0290_DELETE                                                 :{BLACK}Skasuj
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Skasuj to miasto calkowicie
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Skasuj to miasto
 STR_0292_SAVE_SCENARIO                                          :Zapisz scenariusz
 STR_0293_LOAD_SCENARIO                                          :Wczytaj scenariusz
 STR_0294_QUIT_EDITOR                                            :Wyjdz z edytora
@@ -834,8 +834,8 @@ STR_02C3_GAME_OPTIONS                                           :Opcje gry
 STR_02C4_GAME_OPTIONS                                           :Opcje gry
 STR_02C5_DIFFICULTY_SETTINGS                                    :Ustawienia trudnosci
 STR_02C6_DIFFICULTY_SETTINGS                                    :Ustawienia trudnosci
-STR_02C7_CONFIG_PATCHES                                         :Konfiguracja patcha
-STR_02C8_CONFIG_PATCHES                                         :Konfiguracja patcha
+STR_02C7_CONFIG_PATCHES                                         :Konfiguracja wtyczek
+STR_02C8_CONFIG_PATCHES                                         :Konfiguracja wtyczek
 STR_NEWGRF_SETTINGS                                             :Ustawienia newgrf
 STR_NEWGRF_SETTINGS2                                            :Ustawienia newgrf
 STR_GAMEOPTMENU_0A                                              :

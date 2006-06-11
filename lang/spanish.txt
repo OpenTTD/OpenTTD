@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}NO
+STR_ABBREV_ALL                                                  :{TINYFONT}TODOS
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -334,6 +336,9 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galón{P
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton. fuerza
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Gráfico de benefício operativo
@@ -374,6 +379,12 @@ STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Capacidad por t
 STR_SORT_BY_MAX_SPEED                                           :Velocidad máxima
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
+STR_SORT_BY_FACILITY                                            :Tipo de estación
+STR_SORT_BY_WAITING                                             :Esperando valor de la carga
+STR_SORT_BY_RATING_MAX                                          :Clasificación de la carga
+STR_NO_WAITING_CARGO                                            :{BLACK}Ningún tipo de carga está esperando
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas las facilidades
+STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar todos los tipos de carga (incluidas las que no están en espera)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Ene
@@ -867,6 +878,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rumano
 STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suizo
 STR_TOWNNAME_DANISH                                             :Danes
+STR_TOWNNAME_TURKISH                                            :Turco
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)
@@ -939,6 +951,8 @@ STR_ITEMS                                                       :artículos
 STR_CRATES                                                      :cajones
 STR_RES_OTHER                                                   :otros
 STR_NOTHING                                                     :
+
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}No se puede compartir la lista de órdenes...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}No se puede copiar la lista de órdenes...
@@ -1079,6 +1093,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambiar valor de la opción
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguno o todos los intervalos de servicio por defecto mostrados son incompatibles con la configuración elegida! 5-90% y 30-800 días son válidos
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Usar YAPF para barcos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Usar YAPF para vehículos de carretera: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usar YAPF para trenes: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Paisaje templado
 STR_SUB_ARCTIC_LANDSCAPE                                        :Paisaje sub-ártico
@@ -1097,6 +1114,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Los Jet
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambiar clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambiar fecha: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificación de los valores de producción: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Permitir locomotoras eléctricas sobre railes normales
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Hacia {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Hacia {WAYPOINT}, {VELOCITY}
@@ -1160,6 +1178,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Arrastra
 
 STR_DRAG_DROP                                                   :{BLACK}Drag & Drop
 STR_STATION_DRAG_DROP                                           :{BLACK}Construir una estación con arrastrar & soltar
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecciona el tipo de estación a mostrar
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecciona el tipo de estación a construir
 
 STR_FAST_FORWARD                                                :{BLACK}Avanzar el juego rápidamente
 STR_MESSAGE_HISTORY                                             :{WHITE}Historial de mensajes
@@ -1706,6 +1726,11 @@ STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boya 
 STR_306B_HELIPORT                                               :{BLACK}Helipuerto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estación demasiado extendida
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...desactivada estaciones no uniformes
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Manten pulsado CTRL para seleccionar varios elementos
+
+STR_UNDEFINED                                                   :(cadena sin determinar)
+STR_STAT_CLASS_DFLT                                             :Estación por defecto
+STR_STAT_CLASS_WAYP                                             :Puntos de paso
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientación del astillero
@@ -2506,6 +2531,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Parándose
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo de vía incompatible
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vehículo de carretera en camino
@@ -2564,6 +2590,11 @@ STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renombra
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}No se puede renombrar tipo de vehículo....
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ir al depósito de {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Ir al depósito de {TOWN} para mantenimiento
+
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reparar vehículo de carretera para transportar otro tipo de cargas
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reparar vehículo de carretera
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reparar vehículo de carretera para transportar la carga seleccionada
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}No se puede reparar vehículo de carretera
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construir muelles
@@ -2769,6 +2800,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Previa:
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Cambiar parámetro de moneda personalizada
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
@@ -2797,7 +2829,9 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccio
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Muestra que locomotora será reemplazada
 STR_REPLACE_HELP                                                :{BLACK}Esta función permite seleccionar un tipo de locomotora y reemplazarla por otra. El cambio se realizará cuando el vehículo llegue al depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Quitar vagón: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer que el cambio automático mantenga la longitud del tren quitando vagones (empezando por adelante), si el cambio de locomotora produce un tren más largo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNCIÓN EXPERIMENTAL {}Cambia entre las ventanas de cambio de vagón y locomotora.{}Los cambios de vagón solo se harán si el nuevo vagón puede ser reparado para transportar el mismo tipo de carga que el anterior. Está marcado para cada vagón cuando el cambio actual se realiza.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}No es posible construir este motor
 
 STR_ENGINES                                                     :Motores

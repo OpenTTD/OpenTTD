@@ -84,7 +84,7 @@ STR_004C_PLASTIC                                                :Plastic
 STR_004D_FIZZY_DRINK                                            :Gaiviuju gerimu
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} keleiviai
-STR_QUANTITY_COAL                                               :{COMMA} tonu anglies
+STR_QUANTITY_COAL                                               :{WEIGHT} tonu anglies
 STR_QUANTITY_MAIL                                               :{COMMA} pasto maisu
 STR_QUANTITY_OIL                                                :{VOLUME} naftos
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} galvijas
@@ -107,7 +107,7 @@ STR_QUANTITY_SUGAR                                              :{WEIGHT} tonu c
 STR_QUANTITY_TOYS                                               :{COMMA} zaislu
 STR_QUANTITY_SWEETS                                             :{COMMA} saldumynu krepseliu
 STR_QUANTITY_COLA                                               :{VOLUME} Coca-Colos
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonu cukraus vatos
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} tonu cukraus vatos
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbulu
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} tonu karameles
 STR_QUANTITY_BATTERIES                                          :{COMMA} bateriju
@@ -527,6 +527,8 @@ STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Dabartin
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Pazymeti 'visi takeliai' programa
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Pazymeti 'seno stiliaus muzika' programa
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Pazymeti 'naujo stiliaus muzika' programa
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Pazymeti 'Speciali 1' (vartotojo sukurta) programa
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Pazymeti 'Speciali 2' (vartotojo sukurta) programa
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Panaikinti esama programa (tik Speciali1 arba Speciali2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Issaugoti muzikos nustatymus
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Paspauskite ant garso takelio, kad itrauktumete i sarasa (tik Speciali1 arba Speciali2)
@@ -1038,6 +1040,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Lektuvu
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Laivu remonto intervalas: {ORANGE}{STRING} (d. ar %)
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Laivu remonto intervalas: {ORANGE} isjungta
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Atjungti technine apziura, jei gedimai nenaudojami: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Suaktyvinti vagonu greicio apribojima: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Spalvotos naujienos atsiranda: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Zaidimo pradzia: {ORANGE}{STRING}
@@ -1064,6 +1067,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Keisti reiksmes
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Klaidingai nurodytas remonto intervalas. Intervalas dienomis: 30-800 d., procentais: 5-90%.
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Naudoti YAPF laivams: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Naudoti YAPF masinoms: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Naudoti YAPF traukiniams: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Normalus klimatas
 STR_SUB_ARCTIC_LANDSCAPE                                        :Sub-arktinis klimatas
@@ -1082,6 +1088,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktyv
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Perjungti klimata: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Pakeisti data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leisti keisti produkcijos vertes: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Leisti elektriniams traukiniams vaziuoti paprastais begiais
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Juda i {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Juda i {WAYPOINT}, {VELOCITY}
@@ -1145,6 +1152,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Nutempki
 
 STR_DRAG_DROP                                                   :{BLACK}Nutempti
 STR_STATION_DRAG_DROP                                           :{BLACK}Statyti stotele uzbreziant jos dydi
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Pasirinkti stoties klase rodymui
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Pasirinkti stoties statymo tipa
 
 STR_FAST_FORWARD                                                :{BLACK}Pagreitinti laiko tekme
 STR_MESSAGE_HISTORY                                             :{WHITE}Zinuciu istorija
@@ -1265,8 +1274,10 @@ STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Riboti s
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maksimum ziurovu:
 STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Riboti serveri iki tam tikro skaiciaus ziurovu
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Kalba:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Kiti zaidejai zinos kokia kalba kalbama serveryje
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Pradeti zaidima
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Predeti nauja zaidima tinkle (atsitiktinis zemelapis ar scenarijus)
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Atverti zaidima
@@ -2014,7 +2025,7 @@ STR_7038_INAUGURATED                                            :{GOLD}Eina pare
 STR_7039_VEHICLES                                               :{GOLD}Transporto priemones:
 STR_TRAINS                                                      :{WHITE}{COMMA} traukin{P ys iai}
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} automobili{P s ai}
-STR_AIRCRAFT                                                    :{WHITE}{COMMA} lektuva{P s i}
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} lektuvai
 STR_SHIPS                                                       :{WHITE}{COMMA} laiva{P s i}
 STR_7042_NONE                                                   :{WHITE}Neturi
 STR_7043_FACE_SELECTION                                         :{WHITE}Veido pasirinkimas
@@ -2462,6 +2473,7 @@ STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Amzius: 
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Siu metu pelnas : {LTBLUE}{CURRENCY}  (praeitu metu: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai nuo praeito remonto: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Sustabdyta
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Neimanoma priversti traukinio vaziuoti nesaugiai...
 STR_8863_CRASHED                                                :{RED}Avarija!
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Traukinio vardas
@@ -2475,6 +2487,7 @@ STR_886F_TRANSFER                                               :{BLACK}Perkelti
 
 STR_TRAIN_STOPPING                                              :{RED}Stabdoma
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stabdomas, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Nesuderinami begiai
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobilis kelyje
@@ -2583,6 +2596,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Nukreipt
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Rodyti laivo informacija
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Atsirado naujas laivas!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kainuoja: {CURRENCY} Maks. Greitis: {VELOCITY}{}Talpa: {STRING}{}Vaziavimo kaina: {CURRENCY}/m
 STR_982F_NAME_SHIP                                              :{BLACK}Laivo vardas
 
 STR_9831_NAME_SHIP                                              :{WHITE}Laivo vardas
@@ -2612,6 +2626,7 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Negalima
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Lektuvu angaras
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Naujas lektuvas
 STR_CLONE_AIRCRAFT                                              :{BLACK}Klonuoti lektuva
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Tai pagamins lektuvo kopija ir nustatys marsrutus.
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Naujas lektuvas
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Isigyti lektuva
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Negalima isigyti lektuvo...
@@ -2789,6 +2804,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kaina: {
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Greitis: {GOLD}{VELOCITY}{BLACK}   Galia: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Greitis: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Vaziavimo kaina: {GOLD}{CURRENCY}/m
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Talpa: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Sukurtas: {GOLD}{NUM}{BLACK} Tarnavimo laikas: {GOLD}{COMMA} metu
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. Patikimumas: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kaina: {GOLD}{CURRENCY}
