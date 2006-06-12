@@ -59,7 +59,7 @@ static void TrainCargoChanged(Vehicle* v)
 
 			// powered wagons have extra weight added
 			if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON))
-				vweight += RailVehInfo(v->engine_type)->pow_wag_weight;
+				vweight += RailVehInfo(u->u.rail.first_engine)->pow_wag_weight;
 		}
 
 		// consist weight is the sum of the weight of all vehicles in the consist
@@ -79,7 +79,6 @@ static void TrainCargoChanged(Vehicle* v)
  */
 void TrainPowerChanged(Vehicle* v)
 {
-	const RailVehicleInfo *rvi_v = RailVehInfo(v->engine_type);
 	Vehicle* u;
 	uint32 power = 0;
 
@@ -106,7 +105,7 @@ void TrainPowerChanged(Vehicle* v)
 
 		if (engine_has_power) power += rvi_u->power;
 		if (HASBIT(u->u.rail.flags, VRF_POWEREDWAGON) && (wagon_has_power)) {
-			power += rvi_v->pow_wag_power;
+			power += RailVehInfo(u->u.rail.first_engine)->pow_wag_power;
 		}
 	}
 
@@ -148,6 +147,8 @@ void TrainConsistChanged(Vehicle* v)
 		// update the 'first engine'
 		u->u.rail.first_engine = (v == u) ? INVALID_ENGINE : first_engine;
 		u->u.rail.railtype = GetEngine(u->engine_type)->railtype;
+
+		if (IsTrainEngine(u)) first_engine = u->engine_type;
 
 		if (rvi_u->visual_effect != 0) {
 			u->u.rail.cached_vis_effect = rvi_u->visual_effect;
