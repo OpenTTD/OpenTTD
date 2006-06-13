@@ -285,6 +285,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	uint maxlines;
 	uint y;
 	PcxHeader pcx;
+	bool success;
 
 	if (pixelformat != 8 || w == 0)
 		return false;
@@ -388,14 +389,24 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 		return false;
 	}
 
-	{assert_compile(sizeof(*palette) == 3);}
-	if (fwrite(palette, 256 * sizeof(*palette), 1, f) != 1) {
-		fclose(f);
-		return false;
+	if (sizeof(*palette) == 3) {
+		success = fwrite(palette, 256 * sizeof(*palette), 1, f) == 1;
+	} else {
+		/* If the palette is word-aligned, copy it to a temporary byte array */
+		byte *tmp = malloc(256 * 3);
+		uint i;
+		for (i = 0; i < 256; i++) {
+			tmp[i * 3 + 0] = palette[i].r;
+			tmp[i * 3 + 1] = palette[i].g;
+			tmp[i * 3 + 2] = palette[i].b;
+		}
+		success = fwrite(tmp, 256 * 3, 1, f) == 1;
+		free(tmp);
 	}
+
 	fclose(f);
 
-	return true;
+	return success;
 }
 
 //************************************************
