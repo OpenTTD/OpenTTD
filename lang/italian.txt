@@ -337,7 +337,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P 
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
-STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnellata-forza
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton. forza
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -2591,6 +2591,10 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Non puoi
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Vai a {TOWN} Deposito Veicoli
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manutenzione a {TOWN} Deposito Stradale
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Riadatta il veicolo stradale per trasportare un tipo di merce differente
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Riadatta il veicolo stradale
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Riadatta il veicolo stradale tper trasportare il tipo di merce selezionato
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Non posso riadattare il veicolo...
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Costruzione moli
