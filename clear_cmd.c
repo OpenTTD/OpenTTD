@@ -86,14 +86,13 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
 	TerraformAddDirtyTile(ts, tile);
 }
 
-static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
+static int TerraformProc(TerraformerState *ts, TileIndex tile)
 {
 	int r;
 
 	assert(tile < MapSize());
 
-	if ((r=TerraformAllowTileProcess(ts, tile)) <= 0)
-		return r;
+	if ((r = TerraformAllowTileProcess(ts, tile)) <= 0) return r;
 
 	if (!IsTileType(tile, MP_RAILWAY)) {
 		int32 ret = DoCommand(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
@@ -132,10 +131,10 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 	nh = TerraformGetHeightOfTile(ts, tile);
 	if (nh < 0 || height == nh) return false;
 
-	if (TerraformProc(ts, tile, 0) < 0) return false;
-	if (TerraformProc(ts, tile + TileDiffXY( 0, -1), 1) < 0) return false;
-	if (TerraformProc(ts, tile + TileDiffXY(-1, -1), 2) < 0) return false;
-	if (TerraformProc(ts, tile + TileDiffXY(-1,  0), 3) < 0) return false;
+	if (TerraformProc(ts, tile) < 0) return false;
+	if (TerraformProc(ts, tile + TileDiffXY( 0, -1)) < 0) return false;
+	if (TerraformProc(ts, tile + TileDiffXY(-1, -1)) < 0) return false;
+	if (TerraformProc(ts, tile + TileDiffXY(-1,  0)) < 0) return false;
 
 	mod = ts->modheight;
 	count = ts->modheight_count;
