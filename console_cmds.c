@@ -440,7 +440,7 @@ DEF_CONSOLE_CMD(ConUnBan)
 	for (i = 0; i < lengthof(_network_ban_list); i++) {
 		if (_network_ban_list[i] == NULL) continue;
 
-		if (strncmp(_network_ban_list[i], argv[1], strlen(_network_ban_list[i])) == 0 || index == i) {
+		if (strcmp(_network_ban_list[i], argv[1]) == 0 || index == i) {
 			free(_network_ban_list[i]);
 			_network_ban_list[i] = NULL;
 			IConsolePrint(_icolour_def, "IP unbanned.");
