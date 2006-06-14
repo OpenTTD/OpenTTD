@@ -738,7 +738,8 @@ int32 CmdReplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					return CMD_ERROR;
 
 				// make sure that we do not replace a plane with a helicopter or vise versa
-				if (GetEngine(new_engine_type)->type == VEH_Aircraft && HASBIT(AircraftVehInfo(old_engine_type)->subtype, 0) != HASBIT(AircraftVehInfo(new_engine_type)->subtype, 0))
+				if (GetEngine(new_engine_type)->type == VEH_Aircraft &&
+						(AircraftVehInfo(old_engine_type)->subtype & AIR_CTOL) != (AircraftVehInfo(new_engine_type)->subtype & AIR_CTOL))
 					return CMD_ERROR;
 
 				// make sure that the player can actually buy the new engine

@@ -133,7 +133,8 @@ SpriteID GetRotorImage(const Vehicle *v)
 
 void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 {
-	int spritenum = AircraftVehInfo(engine)->image_index;
+	const AircraftVehicleInfo* avi = AircraftVehInfo(engine);
+	int spritenum = avi->image_index;
 	int sprite = (6 + _aircraft_sprite[spritenum]);
 
 	if (is_custom_sprite(spritenum)) {
@@ -144,7 +145,7 @@ void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 
 	DrawSprite(sprite | image_ormod, x, y);
 
-	if ((AircraftVehInfo(engine)->subtype & 1) == 0) {
+	if (!(avi->subtype & AIR_CTOL)) {
 		SpriteID rotor_sprite = GetCustomRotorIcon(engine);
 		if (rotor_sprite == 0) rotor_sprite = SPR_ROTOR_STOPPED;
 		DrawSprite(rotor_sprite, x, y - 5);
@@ -211,7 +212,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	avi = AircraftVehInfo(p1);
 	// allocate 2 or 3 vehicle structs, depending on type
-	if (!AllocateVehicles(vl, (avi->subtype & 1) == 0 ? 3 : 2) ||
+	if (!AllocateVehicles(vl, avi->subtype & AIR_CTOL ? 2 : 3) ||
 			IsOrderPoolFull()) {
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 	}
@@ -281,7 +282,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->acceleration = avi->acceleration;
 		v->engine_type = p1;
 
-		v->subtype = (avi->subtype & 1) == 0 ? 0 : 2;
+		v->subtype = (avi->subtype & AIR_CTOL ? 2 : 0);
 		v->value = value;
 
 		u->subtype = 4;
@@ -1271,7 +1272,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 
 	//FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports
 	prob = 0x10000 / 1500;
-	if (st->airport_type == AT_SMALL && (AircraftVehInfo(v->engine_type)->subtype & 2) && !_cheats.no_jetcrash.value) {
+	if (st->airport_type == AT_SMALL && AircraftVehInfo(v->engine_type)->subtype & AIR_FAST && !_cheats.no_jetcrash.value) {
 		prob = 0x10000 / 20;
 	}
 

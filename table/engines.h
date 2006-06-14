@@ -505,8 +505,8 @@ const ShipVehicleInfo orig_ship_vehicle_info[NUM_SHIP_ENGINES] = {
  */
 #define AVI(a, b, c, d, e, f, g, h, i) { a, b, c, d, e, f, g, h, i }
 #define H 0
-#define P 1
-#define J 3
+#define P AIR_CTOL
+#define J AIR_CTOL | AIR_FAST
 const AircraftVehicleInfo orig_aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES] = {
 	//    image_index         sfx                         acceleration
 	//    |   base_cost       |                           |   max_speed

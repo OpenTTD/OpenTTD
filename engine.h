@@ -42,6 +42,12 @@ typedef struct ShipVehicleInfo {
 	byte refittable;
 } ShipVehicleInfo;
 
+// Aircraft subtypes
+enum {
+	AIR_CTOL = 1, // Conventional Take Off and Landing, i.e. planes
+	AIR_FAST = 2
+};
+
 typedef struct AircraftVehicleInfo {
 	byte image_index;
 	byte base_cost;

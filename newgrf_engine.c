@@ -850,7 +850,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v)
 	assert(engine < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES);
 
 	/* Only valid for helicopters */
-	assert((AircraftVehInfo(engine)->subtype & 1) == 0);
+	assert(!(AircraftVehInfo(engine)->subtype & AIR_CTOL));
 
 	NewVehicleResolver(&object, v);
 
