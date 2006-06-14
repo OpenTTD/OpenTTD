@@ -142,8 +142,8 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 
 			/* Check if we are allowed on this server based on the revision-match */
 			item->info.compatible = (
-			strncmp(item->info.server_revision, _openttd_revision, NETWORK_REVISION_LENGTH) == 0 ||
-			strncmp(item->info.server_revision, NOREV_STRING, NETWORK_REVISION_LENGTH) == 0) ? true : false;
+			strcmp(item->info.server_revision, _openttd_revision) == 0 ||
+			strcmp(item->info.server_revision, NOREV_STRING) == 0) ? true : false;
 
 			break;
 	}

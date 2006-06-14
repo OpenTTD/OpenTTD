@@ -1202,7 +1202,7 @@ DEF_CONSOLE_CMD(ConSayClient)
 
 DEF_CONSOLE_HOOK(ConHookServerPW)
 {
-	if (strncmp(_network_server_password, "*", NETWORK_PASSWORD_LENGTH) == 0) {
+	if (strcmp(_network_server_password, "*") == 0) {
 		_network_server_password[0] = '\0';
 		_network_game_info.use_password = 0;
 	} else {
@@ -1215,7 +1215,7 @@ DEF_CONSOLE_HOOK(ConHookServerPW)
 
 DEF_CONSOLE_HOOK(ConHookRconPW)
 {
-	if (strncmp(_network_rcon_password, "*", NETWORK_PASSWORD_LENGTH) == 0)
+	if (strcmp(_network_rcon_password, "*") == 0)
 		_network_rcon_password[0] = '\0';
 
 	ttd_strlcpy(_network_game_info.rcon_password, _network_rcon_password, sizeof(_network_game_info.rcon_password));
@@ -1239,8 +1239,7 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 
 	if (argc != 1) return false;
 
-	if (strncmp(argv[0], "*", sizeof(_network_player_info[_local_player].password)) == 0)
-		argv[0][0] = '\0';
+	if (strcmp(argv[0], "*") == 0) argv[0][0] = '\0';
 
 	ttd_strlcpy(_network_player_info[_local_player].password, argv[0], sizeof(_network_player_info[_local_player].password));
 

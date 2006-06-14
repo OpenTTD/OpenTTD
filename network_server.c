@@ -578,8 +578,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 #if defined(WITH_REV) || defined(WITH_REV_HACK)
 	// Check if the client has revision control enabled
-	if (strncmp(NOREV_STRING, client_revision, sizeof(client_revision)) != 0) {
-		if (strncmp(_network_game_info.server_revision, client_revision, sizeof(_network_game_info.server_revision) - 1) != 0) {
+	if (strcmp(NOREV_STRING, client_revision) != 0) {
+		if (strcmp(_network_game_info.server_revision, client_revision) != 0) {
 			// Different revisions!!
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
 
@@ -656,7 +656,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 
 	if (cs->status == STATUS_INACTIVE && type == NETWORK_GAME_PASSWORD) {
 		// Check game-password
-		if (strncmp(password, _network_game_info.server_password, sizeof(password)) != 0) {
+		if (strcmp(password, _network_game_info.server_password) != 0) {
 			// Password is invalid
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 			return;
@@ -675,7 +675,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 	} else if (cs->status == STATUS_INACTIVE && type == NETWORK_COMPANY_PASSWORD) {
 		ci = DEREF_CLIENT_INFO(cs);
 
-		if (strncmp(password, _network_player_info[ci->client_playas - 1].password, sizeof(password)) != 0) {
+		if (strcmp(password, _network_player_info[ci->client_playas - 1].password) != 0) {
 			// Password is invalid
 			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_PASSWORD);
 			return;
@@ -1119,7 +1119,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
 	NetworkRecv_string(cs, p, pass, sizeof(pass));
 	NetworkRecv_string(cs, p, command, sizeof(command));
 
-	if (strncmp(pass, _network_game_info.rcon_password, sizeof(pass)) != 0) {
+	if (strcmp(pass, _network_game_info.rcon_password) != 0) {
 		DEBUG(net, 0)("[RCon] Wrong password from client-id %d", cs->index);
 		return;
 	}
@@ -1396,7 +1396,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 		found_name = true;
 		FOR_ALL_CLIENTS(new_cs) {
 			ci = DEREF_CLIENT_INFO(new_cs);
-			if (strncmp(ci->client_name, new_name, NETWORK_CLIENT_NAME_LENGTH) == 0) {
+			if (strcmp(ci->client_name, new_name) == 0) {
 				// Name already in use
 				found_name = false;
 				break;
@@ -1405,7 +1405,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 		// Check if it is the same as the server-name
 		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci != NULL) {
-			if (strncmp(ci->client_name, new_name, NETWORK_CLIENT_NAME_LENGTH) == 0) {
+			if (strcmp(ci->client_name, new_name) == 0) {
 				// Name already in use
 				found_name = false;
 			}
