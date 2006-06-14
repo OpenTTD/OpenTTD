@@ -26,7 +26,7 @@ STR_0012_OIL                                                    :Petrolio
 STR_0013_LIVESTOCK                                              :Bestiame
 STR_0014_GOODS                                                  :Beni
 STR_0015_GRAIN                                                  :Grano
-STR_0016_WOOD                                                   :Legna
+STR_0016_WOOD                                                   :Legname
 STR_0017_IRON_ORE                                               :Ferro Grezzo
 STR_0018_STEEL                                                  :Acciaio
 STR_0019_VALUABLES                                              :Valori
@@ -58,7 +58,7 @@ STR_0032_OIL                                                    :Petrolio
 STR_0033_LIVESTOCK                                              :Bestiame
 STR_0034_GOODS                                                  :Beni
 STR_0035_GRAIN                                                  :Grano
-STR_0036_WOOD                                                   :Legna
+STR_0036_WOOD                                                   :Legname
 STR_0037_IRON_ORE                                               :Ferro Grezzo
 STR_0038_STEEL                                                  :Acciaio
 STR_0039_VALUABLES                                              :Valori
@@ -90,7 +90,7 @@ STR_QUANTITY_OIL                                                :{VOLUME} di pet
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P o i} di bestiame
 STR_QUANTITY_GOODS                                              :{COMMA} cass{P a e} di beni
 STR_QUANTITY_GRAIN                                              :{WEIGHT} di grano
-STR_QUANTITY_WOOD                                               :{WEIGHT} di legna
+STR_QUANTITY_WOOD                                               :{WEIGHT} di legname
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} di ferro grezzo
 STR_QUANTITY_STEEL                                              :{WEIGHT} di acciaio
 STR_QUANTITY_VALUABLES                                          :{COMMA} bors{P a e} di valori
@@ -997,10 +997,10 @@ STR_CONFIG_PATCHES_ON                                           :Si
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostra velocità veicoli sulla barra di stato: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Consenti la costruzione sui pendii e coste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permetti aree di carico/scarico più realistiche: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Consenti la rimozione di strade appartenute alle città, ponti, ecc.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permetti la rimozione di strade, ponti, ecc. appartenuti alle città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Impedisci ai treni e alle navi di fare curve di 90 gradi: {ORANGE}{STRING} {LTBLUE} (Richiede NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Vieta ai treni e alle navi di fare curve di 90°: {ORANGE}{STRING} {LTBLUE} (Richiede NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unisci stazioni ferroviarie quando sono vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Lascia stazione quanto uno dei tipi di merce è a pieno carico: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa l'algoritmo di caricamento migliorato: {ORANGE}{STRING}
@@ -1038,9 +1038,9 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durata 
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra la popolazione di un paese nell'etichetta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Alberi invisibili (se edifici trasparenti): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altezza limite delle nevi perenni: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Copertura max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valori alti rallentano il gioco
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Dispersione max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valore alto rallenta il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenzione elicotteri direttamente all'eliporto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti modellazione terreno assieme a quelli di costruzione: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti terreno assieme a quelli di costruzione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Scorri mappa nella direzione opposta a quella del mouse: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
@@ -2044,7 +2044,7 @@ STR_7029_BORROW                                                 :{BLACK}Richiedi
 STR_702A_REPAY                                                  :{BLACK}Ripaga {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...il prestito massimo concesso è di {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Non puoi chiedere altro denaro...
-STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...debito già ripagato
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...debito già estinto
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} richiesti
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Non puoi ripagare il debito...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Non è possibile donare denaro, è in prestito dalla banca
@@ -2166,7 +2166,7 @@ STR_801E_OIL_TANKER                                             :Vagone Cisterna
 STR_801F_LIVESTOCK_VAN                                          :Vano Bestiame
 STR_8020_GOODS_VAN                                              :Vano Beni
 STR_8021_GRAIN_HOPPER                                           :Vagone Grano
-STR_8022_WOOD_TRUCK                                             :Vagone Legna
+STR_8022_WOOD_TRUCK                                             :Vagone Legname
 STR_8023_IRON_ORE_HOPPER                                        :Vagone Ferro
 STR_8024_STEEL_TRUCK                                            :Vagone Acciaio
 STR_8025_ARMORED_VAN                                            :Vagone Blindato
@@ -2196,7 +2196,7 @@ STR_803C_OIL_TANKER                                             :Vagone Cisterna
 STR_803D_LIVESTOCK_VAN                                          :Vano Bestiame
 STR_803E_GOODS_VAN                                              :Vano Beni
 STR_803F_GRAIN_HOPPER                                           :Vagone Grano
-STR_8040_WOOD_TRUCK                                             :Vagone Legna
+STR_8040_WOOD_TRUCK                                             :Vagone Legname
 STR_8041_IRON_ORE_HOPPER                                        :Vagone Ferro
 STR_8042_STEEL_TRUCK                                            :Vagone Acciaio
 STR_8043_ARMORED_VAN                                            :Vagone Blindato
@@ -2228,7 +2228,7 @@ STR_805C_OIL_TANKER                                             :Vagone Cisterna
 STR_805D_LIVESTOCK_VAN                                          :Vano Bestiame
 STR_805E_GOODS_VAN                                              :Vano Beni
 STR_805F_GRAIN_HOPPER                                           :Vagone Grano
-STR_8060_WOOD_TRUCK                                             :Vagone Legna
+STR_8060_WOOD_TRUCK                                             :Vagone Legname
 STR_8061_IRON_ORE_HOPPER                                        :Vagone Ferro
 STR_8062_STEEL_TRUCK                                            :Vagone Acciaio
 STR_8063_ARMORED_VAN                                            :Vagone Blindato
@@ -2276,9 +2276,9 @@ STR_808C_GOSS_GOODS_TRUCK                                       :Camion Beni Gos
 STR_808D_HEREFORD_GRAIN_TRUCK                                   :Camion Grano Hereford
 STR_808E_THOMAS_GRAIN_TRUCK                                     :Camion Grano Thomas
 STR_808F_GOSS_GRAIN_TRUCK                                       :Camion Grano Goss
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Camion Legna Witcombe
-STR_8091_FOSTER_WOOD_TRUCK                                      :Camion Legna Foster
-STR_8092_MORELAND_WOOD_TRUCK                                    :Camion Legna Moreland
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Camion Legname Witcombe
+STR_8091_FOSTER_WOOD_TRUCK                                      :Camion Legname Foster
+STR_8092_MORELAND_WOOD_TRUCK                                    :Camion Legname Moreland
 STR_8093_MPS_IRON_ORE_TRUCK                                     :Camion Ferro MPS
 STR_8094_UHL_IRON_ORE_TRUCK                                     :Camion Ferro Uhl
 STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Camion Ferro Chippy
@@ -2399,7 +2399,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotiva per 
 
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Deposito Treni
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo treno arrivato alla {STATION}!
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo treno arrivato a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Treno in mezzo
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
