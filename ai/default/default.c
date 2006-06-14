@@ -197,11 +197,7 @@ static EngineID AiChooseAircraftToBuild(int32 money, byte flag)
 			continue;
 		}
 
-		if (flag & 1) {
-			if (i<253) continue;
-		} else {
-			if (i>=253) continue;
-		}
+		if ((AircraftVehInfo(i)->subtype & AIR_CTOL) != flag) continue;
 
 		ret = DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_AIRCRAFT);
 		if (!CmdFailed(ret) && ret <= money && ret >= best_veh_cost) {
@@ -246,7 +242,9 @@ static EngineID AiChooseRoadVehToReplaceWith(const Player* p, const Vehicle* v)
 static EngineID AiChooseAircraftToReplaceWith(const Player* p, const Vehicle* v)
 {
 	int32 avail_money = p->player_money + v->value;
-	return AiChooseAircraftToBuild(avail_money, v->engine_type>=253?1:0);
+	return AiChooseAircraftToBuild(
+		avail_money, AircraftVehInfo(v->engine_type)->subtype & AIR_CTOL
+	);
 }
 
 static EngineID AiChooseTrainToReplaceWith(const Player* p, const Vehicle* v)
@@ -3453,7 +3451,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 	tile = TILE_ADD(p->ai.src.use_tile, ToTileIndexDiff(ptr->tileoffs));
 
-	veh = AiChooseAircraftToBuild(p->player_money, p->ai.build_kind!=0 ? 1 : 0);
+	veh = AiChooseAircraftToBuild(p->player_money, p->ai.build_kind != 0 ? 0 : AIR_CTOL);
 	if (veh == INVALID_ENGINE) return;
 
 	/* XXX - Have the AI pick the hangar terminal in an airport. Eg get airport-type
