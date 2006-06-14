@@ -598,7 +598,10 @@ static uint GetBridgeHeightRamp(TileIndex t)
 	/* Return the height there (the height of the NORTH CORNER)
 	 * If the end of the bridge is on a tile with all corners except the north corner raised,
 	 * the z coordinate is 1 height level too low. Compensate for that */
-	return TilePixelHeight(t) + (GetTileSlope(t, NULL) == SLOPE_WSE ? TILE_HEIGHT : 0);
+	return
+		TilePixelHeight(t) +
+		(GetTileSlope(t, NULL) == SLOPE_WSE ? TILE_HEIGHT : 0) +
+		TILE_HEIGHT;
 }
 
 
@@ -670,7 +673,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	v = FindVehicleBetween(
 		tile    + delta,
 		endtile - delta,
-		GetBridgeHeightRamp(tile) + TILE_HEIGHT
+		GetBridgeHeightRamp(tile)
 	);
 	if (v != NULL) return_cmd_error(VehicleInTheWayErrMsg(v));
 
@@ -1040,7 +1043,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 			// get bridge sprites
 			b = GetBridgeSpriteTable(GetBridgeType(ti->tile), GetBridgePiece(ti->tile)) + base_offset;
 
-			z = GetBridgeHeight(ti->tile) + 5;
+			z = GetBridgeHeight(ti->tile) - 3;
 
 			// draw rail or road component
 			image = b[0];
