@@ -123,7 +123,6 @@ extern const byte _fios_colors[];
 
 /* network gui */
 void ShowNetworkGameWindow(void);
-void ShowChatWindow(void);
 
 /* bridge_gui.c */
 void ShowBuildBridgeWindow(uint start, uint end, byte type);
