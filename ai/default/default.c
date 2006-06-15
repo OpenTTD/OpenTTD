@@ -351,7 +351,7 @@ static void AiHandleReplaceAircraft(Player *p)
 	BackuppedOrders orderbak[1];
 	EngineID veh;
 
-	if (!IsAircraftHangarTile(v->tile) && !(v->vehstatus&VS_STOPPED)) {
+	if (!IsAircraftHangarTile(v->tile) || !(v->vehstatus&VS_STOPPED)) {
 		AiHandleGotoDepot(p, CMD_SEND_AIRCRAFT_TO_HANGAR);
 		return;
 	}
@@ -3575,7 +3575,7 @@ static void AiStateSellVeh(Player *p)
 
 			DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
 		} else if (v->type == VEH_Aircraft) {
-			if (!IsAircraftHangarTile(v->tile) && !(v->vehstatus&VS_STOPPED)) {
+			if (!IsAircraftHangarTile(v->tile) || !(v->vehstatus & VS_STOPPED)) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
 					DoCommandByTile(0, v->index, 0, DC_EXEC, CMD_SEND_AIRCRAFT_TO_HANGAR);
 				goto going_to_depot;
