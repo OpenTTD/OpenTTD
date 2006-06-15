@@ -8,6 +8,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "slope.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -713,6 +714,19 @@ static TileIndex FindEdgesOfBridge(TileIndex tile, TileIndex *endtile)
 	return start;
 }
 
+
+static uint GetBridgeHeightRamp(TileIndex t)
+{
+	/* Return the height there (the height of the NORTH CORNER)
+	 * If the end of the bridge is on a tile with all corners except the north corner raised,
+	 * the z coordinate is 1 height level too low. Compensate for that */
+	return
+		TilePixelHeight(t) +
+		(GetTileSlope(t, NULL) == SLOPE_WSE ? TILE_HEIGHT : 0) +
+		TILE_HEIGHT;
+}
+
+
 static int32 DoClearBridge(TileIndex tile, uint32 flags)
 {
 	TileIndex endtile;
@@ -898,16 +912,13 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, uint totype, bool exec)
 	} else if ((_m[tile].m5 & 0xC6) == 0x80) {
 		TileIndex starttile;
 		int32 cost;
-		uint z = TilePixelHeight(tile);
-
-		z += 8;
 
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 		// railway bridge
 		starttile = tile = FindEdgesOfBridge(tile, &endtile);
 		// Make sure there's no vehicle on the bridge
-		v = FindVehicleBetween(tile, endtile, z);
+		v = FindVehicleBetween(tile, endtile, GetBridgeHeightRamp(tile));
 		if (v != NULL) {
 			VehicleInTheWayErrMsg(v);
 			return CMD_ERROR;
