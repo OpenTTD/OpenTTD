@@ -1571,7 +1571,7 @@ STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Services
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} from {STATION} to {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, until {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Offer of subsidy expired:{}{}{STRING} from {STRING} to {STRING} will now not attract a subsidy.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidy withdrawn:{}{}{STRING} service from {STATION} to {STATION} is no longer subsidised.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Subsidy withdrawn:{}{}{STRING} service from {STATION} to {STATION} is no longer subsidized.
 STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Service subsidy offered:{}{}First {STRING} service from {STRING} to {STRING} will attract a year's subsidy from the local authority!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay 50% extra for the next year!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Service subsidy awarded to {COMPANY}!{}{}{STRING} service from {STATION} to {STATION} will pay double rates for the next year!
