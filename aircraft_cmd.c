@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "aircraft.h"
 #include "debug.h"
 #include "functions.h"
 #include "table/strings.h"
@@ -312,16 +313,6 @@ bool IsAircraftHangarTile(TileIndex tile)
 				(_m[tile].m5 == 32 || _m[tile].m5 == 65 || _m[tile].m5 == 86);
 }
 
-bool CheckStoppedInHangar(const Vehicle* v)
-{
-	if (!(v->vehstatus & VS_STOPPED) || !IsAircraftHangarTile(v->tile)) {
-		_error_message = STR_A01B_AIRCRAFT_MUST_BE_STOPPED;
-		return false;
-	}
-
-	return true;
-}
-
 
 static void DoDeleteAircraft(Vehicle *v)
 {
@@ -345,8 +336,8 @@ int32 CmdSellAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner) || !CheckStoppedInHangar(v))
-		return CMD_ERROR;
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!IsAircraftInHangarStopped(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
@@ -472,7 +463,7 @@ int32 CmdRefitAircraft(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
-	if (!CheckStoppedInHangar(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
+	if (!IsAircraftInHangarStopped(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	avi = AircraftVehInfo(v->engine_type);
 
