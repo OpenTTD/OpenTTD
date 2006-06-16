@@ -519,8 +519,8 @@ STR_01FF                                                        :{TINYFONT}{BLAC
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Viimane teade
 STR_0201_MESSAGE_SETTINGS                                       :Teadete seaded
 STR_MESSAGE_HISTORY_MENU                                        :Teadete ajalugu
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Näitab viimase teate, kuvab teadete seaded
-STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Teadete seaded
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Näita viimast teadet, kuva teadete seaded
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Teadete Seaded
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Teate tüüp:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Esimese sõiduki saabumine mängija jaama
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Esimese sõiduki saabumine konkurendi jaama
@@ -1024,7 +1024,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Vaikimi
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Vaikimisi hooldusintervall laevadele: {ORANGE}{STRING} päeva
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vaikimisi teenindusvahemik laevadele: {ORANGE}välja lülitatud
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Peata hooldus, kui purunemine on keelatud: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Luba vaguni kiiruse limiidid: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Luba vaguni kiiruse limiidid: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Värvilised uudised ilmuvad aastast {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Alustamise aeg: {ORANGE}{STRING}
@@ -2348,7 +2348,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :maglevi vedur
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Rongi depot
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab. . .{}Esimene rong saabus {STATION}i!
-STR_8802_DETAILS                                                :{WHITE}{STRING1} (Detailid)
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Detailid)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on ees
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
@@ -2600,7 +2600,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Seadista ümber laev
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali kauba tüüp, mida laev hakkab kandma
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Seadista laev ümber valitud kauba tüübi jaoks
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kauba tüüp mida vedada:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kauba tüüp mida vedada:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus mahutuvus: {GOLD}{STRING}{}{BLACK}Laeva ümberseadistamise hind: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Ei saa laeva ümberseadistada...
 STR_9842_REFITTABLE                                             :(ümberseadistatav)
@@ -2673,7 +2673,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Seadista lennuk ümber
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali kauba tüüp mida lennuk hakkab kandma
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Seadista ümber lennuk et kanda valitud kauba tüüpi
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kauba tüüp mida kanda:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kauba tüüp mida kanda:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus mahutuvus: {GOLD}{STRING}{}{BLACK}Maksumus et ümber seadistada: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Ei saa ümber seadistada lennukit...
 STR_GO_TO_AIRPORT_HANGAR                                        :Mine {STATION} Angaari

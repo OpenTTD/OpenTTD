@@ -444,7 +444,7 @@ STR_0188                                                        :{BLACK}{SMALLUP
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Nie mozna zmienic okresu miedzy serwisowaniem...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Zamkniecie okna
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Tytul okienka - przeciagnij to by ruszyc oknem
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Tytul okna - przeciagnij aby przesunac okno
 STR_STICKY_BUTTON                                               :{BLACK}Zaznacza to okno jako niezamykalne dla funkcji 'Zamknij wszystkie okna'
 STR_RESIZE_BUTTON                                               :{BLACK}Kliknij i przeciagnij by zmienic rozmiar okna
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij tutaj aby przejsc do domyslnego katalogu
@@ -574,7 +574,7 @@ STR_0201_MESSAGE_SETTINGS                                       :Ustawienia wiad
 STR_MESSAGE_HISTORY_MENU                                        :Poprzednie wiadomosci
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Pokaz ostatnia wiadomosc/ogloszenie, pokaz ustawienia wiadomosci
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcje wiadomosci
-STR_0205_MESSAGE_TYPES                                          :{BLACK}Typy wiadomosci:-
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Typy wiadomosci:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybycie pierwszego pojazdu do stacji gracza
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Przybycie pierwszego pojazdu do stacji przeciwnika
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Wypadki / kleski
@@ -752,7 +752,7 @@ STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiesc A
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definuj obszar pustyni.{}Wcinij i trzymaj CTRL by usunac
 STR_CREATE_LAKE                                                 :{BLACK}Definuj akwen wodny.{}Okolice beda zalane jesli sa na poziomie morza
 STR_0290_DELETE                                                 :{BLACK}Skasuj
-STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Skasuj to miasto calkowicie
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Skasuj to miasto
 STR_0292_SAVE_SCENARIO                                          :Zapisz scenariusz
 STR_0293_LOAD_SCENARIO                                          :Wczytaj scenariusz
 STR_0294_QUIT_EDITOR                                            :Wyjdz z edytora
@@ -794,8 +794,8 @@ STR_02C3_GAME_OPTIONS                                           :Opcje gry
 STR_02C4_GAME_OPTIONS                                           :Opcje gry
 STR_02C5_DIFFICULTY_SETTINGS                                    :Ustawienia trudnosci
 STR_02C6_DIFFICULTY_SETTINGS                                    :Ustawienia trudnosci
-STR_02C7_CONFIG_PATCHES                                         :Konfiguracja patcha
-STR_02C8_CONFIG_PATCHES                                         :Konfiguracja patcha
+STR_02C7_CONFIG_PATCHES                                         :Konfiguracja wtyczek
+STR_02C8_CONFIG_PATCHES                                         :Konfiguracja wtyczek
 STR_NEWGRF_SETTINGS                                             :Ustawienia newgrf
 STR_NEWGRF_SETTINGS2                                            :Ustawienia newgrf
 STR_GAMEOPTMENU_0A                                              :
@@ -1602,11 +1602,11 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} l
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ocena transportu firmy:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsydia
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta subsydiow dla uslugi przewozu:-
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Oferta subsydiow dla uslugi przewozu:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING} do {STRING}
 STR_2028_BY                                                     :{YELLOW} (do {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Zadne
-STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Uslugi juz subsydiowane:-
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Uslugi juz subsydiowane:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Subsydiowanie wygaslo:{}{}{STRING} z {STRING} do {STRING} juz nie bedzie dotowane.
@@ -2597,7 +2597,7 @@ STR_8863_CRASHED                                                :{RED}Wypadek!
 STR_8865_NAME_TRAIN                                             :{WHITE}Nazwa pociagu
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Nie mozna zmienic nazwy pociagu...
 STR_8867_NAME_TRAIN                                             :{BLACK}Nazwa pociagu
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Wypadek kolejowy!{}{COMMA} ofiar{G a y ""} w kolizji
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Wypadek kolejowy!{}{COMMA} ofiar{P a y ""} w kolizji
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nie mozna odwrocic kierunku jazdy pociagu...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Zmiana nazwy typu pociagu
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Nie mozna zmienic nazwy typu pojazdu...
@@ -2655,7 +2655,7 @@ STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Nazwij s
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwszy autobus przybyl do {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwsza ciezarowka przybyla do {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Wypadek samochodowy!{}Kierowca zginal po zderzeniu z pociagiem
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wypadek samochodowy!{}{COMMA} ofiar{G a y ""} zderzenia z pociagiem
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Wypadek samochodowy!{}{COMMA} ofiar{P a y ""} zderzenia z pociagiem
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nie mozna zawrocic samochodu...
 STR_9034_RENAME                                                 :{BLACK}Zmien nazwe
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Zmien nazwe typu samochodu
@@ -2728,7 +2728,7 @@ STR_983B_REFIT                                                  :{WHITE}{VEHICLE
 STR_983C_REFIT_SHIP                                             :{BLACK}Przebudowa statku
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ ladunku jaki ma przewozic statek
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Przebuduj statek do przewozu zaznaczonego typu towaru
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ladunku do przewozu:-
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ladunku do przewozu:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nie mozna przebudowac statku...
 STR_9842_REFITTABLE                                             :(przebudowalny)
@@ -2789,8 +2789,8 @@ STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nazwa sa
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nie mozna zmienic nazwy samolotu...
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Nazwa samolotu
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mieszkancy swietuja . . .{}Pierwszy samolot przylecial do {STATION}!
-STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Katastrofa lotnicza!{}{COMMA} ofiar{G a y ""} na {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbil sie z braku paliwa, zginelo {COMMA} osob!
+STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Katastrofa lotnicza!{}{COMMA} ofiar{P a y ""} na {STATION}
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Wypadek lotniczy!{}Samolot rozbil sie z powodu braku paliwa, zginelo {COMMA} osob!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Zmien nazwe
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Zmien nazwe typu samolotu
@@ -2801,7 +2801,7 @@ STR_A03C_REFIT                                                  :{WHITE}{VEHICLE
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Przebudowa samolotu
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ towaru jaki ma przenosic samolot
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebuduj samolot do przewozu zaznaczonego typu towaru
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ towaru do przewozu:-
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ towaru do przewozu:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie mozna przebudowac samolotu...
 STR_GO_TO_AIRPORT_HANGAR                                        :Idz do hangaru na {STATION}
