@@ -3,8 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="strgen"
-	ProjectGUID="{DFCBA918-FCBD-43E1-B9E6-517EA39F9042}"
-	RootNamespace="strgen_vs80"
+	ProjectGUID="{A133A442-BD0A-4ADE-B117-AD7545E4BDD1}"
 	>
 	<Platforms>
 		<Platform
@@ -16,8 +15,8 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\..\Debug"
-			IntermediateDirectory="..\..\Debug"
+			OutputDirectory=".\Debug"
+			IntermediateDirectory=".\Debug"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -47,10 +46,10 @@
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
-				PrecompiledHeaderFile="..\..\Debug/strgen.pch"
-				AssemblerListingLocation="..\..\Debug/"
-				ObjectFile="..\..\Debug/"
-				ProgramDataBaseFileName="..\..\Debug/"
+				PrecompiledHeaderFile=".\Debug/strgen.pch"
+				AssemblerListingLocation=".\Debug/"
+				ObjectFile=".\Debug/"
+				ProgramDataBaseFileName=".\Debug/"
 				WarningLevel="3"
 				WarnAsError="true"
 				SuppressStartupBanner="true"
@@ -69,11 +68,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="Debug/strgen.exe"
+				OutputFile=".\Debug/strgen.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="..\..\Debug/strgen.pdb"
+				ProgramDatabaseFile=".\Debug/strgen.pdb"
 				SubSystem="1"
 				TargetMachine="1"
 			/>

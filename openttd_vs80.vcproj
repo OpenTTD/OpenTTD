@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="openttd"
-	ProjectGUID="{A7741714-F259-48CB-94D4-1F75BA88E907}"
+	ProjectGUID="{668328A0-B40E-4CDB-BD72-D0064424414A}"
 	RootNamespace="openttd"
 	>
 	<Platforms>
@@ -16,8 +16,8 @@
 	<Configurations>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\Release"
-			IntermediateDirectory="..\Release"
+			OutputDirectory=".\$(ConfigurationName)\"
+			IntermediateDirectory=".\$(ConfigurationName)\"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -44,15 +44,14 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				Optimization="2"
-				InlineFunctionExpansion="1"
+				Optimization="3"
+				InlineFunctionExpansion="2"
 				EnableIntrinsicFunctions="true"
-				FavorSizeOrSpeed="1"
+				FavorSizeOrSpeed="2"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE;WIN32_EXCEPTION_TRACKER;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;ENABLE_NETWORK"
 				StringPooling="true"
-				ExceptionHandling="2"
+				ExceptionHandling="1"
 				RuntimeLibrary="0"
 				StructMemberAlignment="3"
 				BufferSecurityCheck="false"
@@ -62,9 +61,9 @@
 				PrecompiledHeaderThrough=""
 				PrecompiledHeaderFile=""
 				AssemblerOutput="2"
-				AssemblerListingLocation=".\Release/"
-				ObjectFile=".\Release/"
-				ProgramDataBaseFileName=".\Release/"
+				AssemblerListingLocation=".\$(ConfigurationName)\"
+				ObjectFile=".\$(ConfigurationName)\"
+				ProgramDataBaseFileName=".\$(ConfigurationName)\"
 				BrowseInformation="1"
 				WarningLevel="3"
 				WarnAsError="true"
@@ -87,15 +86,12 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib"
-				OutputFile="..\Release/openttd.exe"
+				OutputFile=".\$(ConfigurationName)\openttd.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(SolutionDir)../lib"
+				IgnoreDefaultLibraryNames="LIBC.lib"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="..\Release/openttd.pdb"
-				GenerateMapFile="true"
-				MapFileName=".\Release/openttd.map"
-				MapExports="true"
+				ProgramDatabaseFile=".\$(ConfigurationName)\openttd.pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				OptimizeForWindows98="1"
@@ -128,8 +124,8 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\Debug"
-			IntermediateDirectory="..\Debug"
+			OutputDirectory=".\$(ConfigurationName)\"
+			IntermediateDirectory=".\$(ConfigurationName)\"
 			ConfigurationType="1"
 			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="0"
@@ -156,16 +152,15 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(SolutionDir)../include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;__WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;ENABLE_NETWORK"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE;WIN32_ENABLE_DIRECTMUSIC_SUPPORT;WITH_ZLIB;WITH_PNG;ENABLE_NETWORK"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="stdafx.h"
-				PrecompiledHeaderFile="..\Debug/openttd.pch"
-				AssemblerListingLocation="..\Debug/"
-				ObjectFile="..\Debug/"
-				ProgramDataBaseFileName="..\Debug/"
+				PrecompiledHeaderThrough=""
+				PrecompiledHeaderFile=""
+				AssemblerListingLocation=".\$(ConfigurationName)\"
+				ObjectFile=".\$(ConfigurationName)\"
+				ProgramDataBaseFileName=".\$(ConfigurationName)\"
 				WarningLevel="3"
 				WarnAsError="true"
 				SuppressStartupBanner="true"
@@ -188,12 +183,12 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib"
-				OutputFile="..\Debug/openttd.exe"
+				OutputFile=".\$(ConfigurationName)\openttd.exe"
 				LinkIncremental="0"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(SolutionDir)../lib"
+				IgnoreDefaultLibraryNames="LIBC.lib"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="..\Debug/openttd.pdb"
+				ProgramDatabaseFile=".\$(ConfigurationName)\openttd.pdb"
 				SubSystem="2"
 				TargetMachine="1"
 			/>
@@ -930,14 +925,6 @@
 			<File
 				RelativePath=".\player_gui.c"
 				>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-						ShowIncludes="false"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\rail_gui.c"
@@ -1092,6 +1079,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\table\elrail_data.h"
+				>
+			</File>
+			<File
 				RelativePath=".\table\engines.h"
 				>
 			</File>
@@ -1213,7 +1204,7 @@
 			</Filter>
 		</Filter>
 		<Filter
-			Name="map"
+			Name="Map Accessors"
 			>
 			<File
 				RelativePath=".\bridge_map.c"

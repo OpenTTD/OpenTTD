@@ -3,8 +3,8 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="unittest"
-	ProjectGUID="{01F91A15-3DA0-4FD1-981D-38F935BDD8FE}"
-	RootNamespace="test_bh"
+	ProjectGUID="{4AECBDC3-D57E-4AFB-90BD-DDF10707588C}"
+	RootNamespace="unittest"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -17,10 +17,11 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)../$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)../$(ConfigurationName)"
+			OutputDirectory=".\$(ConfigurationName)\"
+			IntermediateDirectory=".\$(ConfigurationName)\"
 			ConfigurationType="1"
-			CharacterSet="1"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -40,15 +41,14 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				InlineFunctionExpansion="0"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
-				BasicRuntimeChecks="0"
-				RuntimeLibrary="3"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
-				DebugInformationFormat="3"
+				DebugInformationFormat="4"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -61,9 +61,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(SolutionDir)../bin/$(ProjectName).exe"
+				OutputFile="$(OutDir)/unittest.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(OutDir)/unittest.pdb"
 				SubSystem="1"
 				TargetMachine="1"
 			/>
@@ -94,11 +95,11 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)../$(ConfigurationName)"
-			IntermediateDirectory="$(SolutionDir)../$(ConfigurationName)"
+			OutputDirectory=".\$(ConfigurationName)\"
+			IntermediateDirectory=".\$(ConfigurationName)\"
 			ConfigurationType="1"
-			CharacterSet="1"
-			WholeProgramOptimization="1"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -117,12 +118,8 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="true"
-				FavorSizeOrSpeed="1"
-				OmitFramePointers="true"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
-				RuntimeLibrary="2"
+				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
@@ -139,7 +136,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="$(SolutionDir)../bin/$(ProjectName).exe"
+				OutputFile="$(OutDir)/unittest.exe"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
 				SubSystem="1"
@@ -178,7 +175,7 @@
 	<Files>
 		<Filter
 			Name="Source Files"
-			Filter="cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
@@ -222,7 +219,7 @@
 		</Filter>
 		<Filter
 			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
@@ -263,6 +260,10 @@
 			</File>
 			<File
 				RelativePath="..\track_dir.hpp"
+				>
+			</File>
+			<File
+				RelativePath="..\yapfbase.hpp"
 				>
 			</File>
 		</Filter>
