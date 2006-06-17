@@ -427,7 +427,9 @@ static void NetworkFindIPs(void)
 			struct ifreq r;
 
 			strncpy(r.ifr_name, req->ifr_name, lengthof(r.ifr_name));
-			if (ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {
+			if (ioctl(sock, SIOCGIFFLAGS, &r) != -1 &&
+					r.ifr_flags & IFF_BROADCAST &&
+					ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {
 				_broadcast_list[i++] =
 					((struct sockaddr_in*)&r.ifr_broadaddr)->sin_addr.s_addr;
 			}
