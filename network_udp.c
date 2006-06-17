@@ -489,6 +489,8 @@ static void NetworkUDPBroadCast(SOCKET udp)
 
 		i++;
 	}
+
+	free(p);
 }
 
 
