@@ -215,6 +215,13 @@ byte NetworkSpectatorCount(void);
 VARDEF char *_network_host_list[10];
 VARDEF char *_network_ban_list[25];
 
+void ParseConnectionString(const char **player, const char **port, char *connection_string);
+void NetworkUpdateClientInfo(uint16 client_index);
+void NetworkAddServer(const char *b);
+void NetworkRebuildHostList(void);
+bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
+void NetworkPopulateCompanyInfo(void);
+
 #endif /* ENABLE_NETWORK */
 
 // Those variables must always be registered!
@@ -223,12 +230,5 @@ VARDEF bool _network_available;  // is network mode available?
 VARDEF bool _network_server; // network-server is active
 VARDEF bool _network_dedicated; // are we a dedicated server?
 VARDEF PlayerID _network_playas; // an id to play as..
-
-void ParseConnectionString(const char **player, const char **port, char *connection_string);
-void NetworkUpdateClientInfo(uint16 client_index);
-void NetworkAddServer(const char *b);
-void NetworkRebuildHostList(void);
-bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
-void NetworkPopulateCompanyInfo(void);
 
 #endif /* NETWORK_H */

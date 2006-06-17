@@ -1433,9 +1433,5 @@ void NetworkShutDown(void)
 	}
 	#endif
 }
-#else
-
-void ParseConnectionString(const char **player, const char **port, char *connection_string) {}
-void NetworkUpdateClientInfo(uint16 client_index) {}
 
 #endif /* ENABLE_NETWORK */
