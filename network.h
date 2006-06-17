@@ -157,7 +157,7 @@ VARDEF uint32 _frame_counter_max; // To where we may go with our clients
 VARDEF uint32 _last_sync_frame; // Used in the server to store the last time a sync packet was sent to clients.
 
 // networking settings
-VARDEF uint32 _network_ip_list[MAX_INTERFACES + 1]; // Network IPs
+VARDEF uint32 _broadcast_list[MAX_INTERFACES + 1];
 
 VARDEF uint16 _network_server_port;
 /* We use bind_ip and bind_ip_host, where bind_ip_host is the readable form of

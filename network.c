@@ -285,7 +285,7 @@ char *GetNetworkErrorMsg(char *buf, NetworkErrorCode err)
 // Find all IP-aliases for this host
 static void NetworkFindIPs(void)
 {
-	int i, last;
+	int i;
 
 #if defined(BEOS_NET_SERVER) /* doesn't have neither getifaddrs or net/if.h */
 	/* Based on Andrew Bachmann's netstat+.c. Big thanks to him! */
@@ -307,7 +307,7 @@ static void NetworkFindIPs(void)
 	i = 0;
 
 	// If something fails, make sure the list is empty
-	_network_ip_list[0] = 0;
+	_broadcast_list[0] = 0;
 
 	if (sock < 0) {
 		DEBUG(net, 0)("Error creating socket!");
@@ -326,15 +326,22 @@ static void NetworkFindIPs(void)
 			uint32 n, fields, read;
 			uint8 i1, i2, i3, i4, j1, j2, j3, j4;
 			struct in_addr inaddr;
+			uint32 ip;
+			uint32 netmask;
+
 			fields = sscanf(*output, "%u: %hhu.%hhu.%hhu.%hhu, netmask %hhu.%hhu.%hhu.%hhu%n",
 												&n, &i1,&i2,&i3,&i4, &j1,&j2,&j3,&j4, &read);
 			read += 1;
 			if (fields != 9) {
 				break;
 			}
-			inaddr.s_addr = htonl((uint32)i1 << 24 | (uint32)i2 << 16 | (uint32)i3 << 8 | (uint32)i4);
-			if (inaddr.s_addr != 0) {
-				_network_ip_list[i] = inaddr.s_addr;
+
+			ip      = (uint32)i1 << 24 | (uint32)i2 << 16 | (uint32)i3 << 8 | (uint32)i4;
+			netmask = (uint32)j1 << 24 | (uint32)j2 << 16 | (uint32)j3 << 8 | (uint32)j4;
+
+			if (ip != INADDR_LOOPBACK && ip != INADDR_ANY) {
+				inaddr.s_addr = htonl(ip | ~netmask);
+				_broadcast_list[i] = inaddr.s_addr;
 				i++;
 			}
 			if (read < 0) {
@@ -351,16 +358,17 @@ static void NetworkFindIPs(void)
 	struct ifaddrs *ifap, *ifa;
 
 	// If something fails, make sure the list is empty
-	_network_ip_list[0] = 0;
+	_broadcast_list[0] = 0;
 
 	if (getifaddrs(&ifap) != 0)
 		return;
 
 	i = 0;
 	for (ifa = ifap; ifa != NULL; ifa = ifa->ifa_next) {
-		if (ifa->ifa_addr == NULL || ifa->ifa_addr->sa_family != AF_INET)
-			continue;
-		_network_ip_list[i] = ((struct sockaddr_in *)ifa->ifa_addr)->sin_addr.s_addr;
+		if (!(ifa->ifa_flags & IFF_BROADCAST)) continue;
+		if (ifa->ifa_broadaddr == NULL) continue;
+		if (ifa->ifa_broadaddr->sa_family != AF_INET) continue;
+		_broadcast_list[i] = ((struct sockaddr_in*)ifa->ifa_broadaddr)->sin_addr.s_addr;
 		i++;
 	}
 	freeifaddrs(ifap);
@@ -370,6 +378,7 @@ static void NetworkFindIPs(void)
 #ifdef WIN32
 	DWORD len = 0;
 	INTERFACE_INFO ifo[MAX_INTERFACES];
+	uint j;
 #else
 	char buf[4 * 1024]; // Arbitrary buffer size
 	struct ifconf ifconf;
@@ -378,7 +387,7 @@ static void NetworkFindIPs(void)
 #endif
 
 	// If something fails, make sure the list is empty
-	_network_ip_list[0] = 0;
+	_broadcast_list[0] = 0;
 
 	sock = socket(AF_INET, SOCK_DGRAM, 0);
 	if (sock == INVALID_SOCKET) return;
@@ -391,9 +400,9 @@ static void NetworkFindIPs(void)
 	}
 
 	// Now walk through all IPs and list them
-	for (i = 0; i < (int)(len / sizeof(IFREQ)); i++) {
-		// Request IP for this interface
-		_network_ip_list[i] = *(&ifo[i].iiAddress.AddressIn.sin_addr.s_addr);
+	for (j = 0; j < len / sizeof(*ifo); j++) {
+		if (!(ifo[j].iiFlags & IFF_BROADCAST)) continue;
+		_broadcast_list[i++] = ifo[j].iiBroadcastAddress.AddressIn.sin_addr.s_addr;
 	}
 #else
 	ifconf.ifc_len = sizeof(buf);
@@ -412,9 +421,9 @@ static void NetworkFindIPs(void)
 			struct ifreq r;
 
 			strncpy(r.ifr_name, req->ifr_name, lengthof(r.ifr_name));
-			if (ioctl(sock, SIOCGIFADDR, &r) != -1) {
-				_network_ip_list[i++] =
-					((struct sockaddr_in*)&r.ifr_addr)->sin_addr.s_addr;
+			if (ioctl(sock, SIOCGIFBRDADDR, &r) != -1) {
+				_broadcast_list[i++] =
+					((struct sockaddr_in*)&r.ifr_broadaddr)->sin_addr.s_addr;
 			}
 		}
 
@@ -428,27 +437,12 @@ static void NetworkFindIPs(void)
 	closesocket(sock);
 #endif /* not HAVE_GETIFADDRS */
 
-	_network_ip_list[i] = 0;
-	last = i - 1;
+	_broadcast_list[i] = 0;
 
-	DEBUG(net, 3)("Detected IPs:");
+	DEBUG(net, 3)("Detected broadcast addresses:");
 	// Now display to the debug all the detected ips
-	i = 0;
-	while (_network_ip_list[i] != 0) {
-		// Also check for non-used ips (127.0.0.1)
-		if (_network_ip_list[i] == inet_addr("127.0.0.1")) {
-			// If there is an ip after thisone, put him in here
-			if (last > i)
-				_network_ip_list[i] = _network_ip_list[last];
-			// Clear the last ip
-			_network_ip_list[last] = 0;
-			// And we have 1 ip less
-			last--;
-			continue;
-		}
-
-		DEBUG(net, 3)(" %d) %s", i, inet_ntoa(*(struct in_addr *)&_network_ip_list[i]));//inet_ntoa(inaddr));
-		i++;
+	for (i = 0; _broadcast_list[i] != 0; i++) {
+		DEBUG(net, 3)(" %d) %s", i, inet_ntoa(*(struct in_addr *)&_broadcast_list[i]));//inet_ntoa(inaddr));
 	}
 }
 

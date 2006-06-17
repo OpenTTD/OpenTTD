@@ -472,26 +472,18 @@ static void NetworkUDPBroadCast(SOCKET udp)
 {
 	int i;
 	struct sockaddr_in out_addr;
-	byte *bcptr;
-	uint32 bcaddr;
 	Packet *p;
 
 	// Init the packet
 	p = NetworkSend_Init(PACKET_UDP_CLIENT_FIND_SERVER);
 
-	// Go through all the ips on this pc
 	i = 0;
-	while (_network_ip_list[i] != 0) {
-		bcaddr = _network_ip_list[i];
-		bcptr = (byte *)&bcaddr;
-		// Make the address a broadcast address
-		bcptr[3] = 255;
-
-		DEBUG(net, 6)("[NET][UDP] Broadcasting to %s", inet_ntoa(*(struct in_addr *)&bcaddr));
-
+	while (_broadcast_list[i] != 0) {
 		out_addr.sin_family = AF_INET;
 		out_addr.sin_port = htons(_network_server_port);
-		out_addr.sin_addr.s_addr = bcaddr;
+		out_addr.sin_addr.s_addr = _broadcast_list[i];
+
+		DEBUG(net, 6)("[NET][UDP] Broadcasting to %s", inet_ntoa(out_addr.sin_addr));
 
 		NetworkSendUDP_Packet(udp, p, &out_addr);
 
