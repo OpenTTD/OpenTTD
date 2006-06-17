@@ -399,10 +399,16 @@ static void NetworkFindIPs(void)
 		return;
 	}
 
-	// Now walk through all IPs and list them
+	i = 0;
 	for (j = 0; j < len / sizeof(*ifo); j++) {
+		if (ifo[j].iiFlags & IFF_LOOPBACK) continue;
 		if (!(ifo[j].iiFlags & IFF_BROADCAST)) continue;
-		_broadcast_list[i++] = ifo[j].iiBroadcastAddress.AddressIn.sin_addr.s_addr;
+		/* iiBroadcast is unusable, because it always seems to be set to
+		 * 255.255.255.255.
+		 */
+		_broadcast_list[i++] =
+			 ifo[j].iiAddress.AddressIn.sin_addr.s_addr |
+			~ifo[j].iiNetmask.AddressIn.sin_addr.s_addr;
 	}
 #else
 	ifconf.ifc_len = sizeof(buf);
