@@ -366,13 +366,15 @@ static void NetworkFindIPs(void)
 	freeifaddrs(ifap);
 
 #else /* not HAVE_GETIFADDRS */
-
-	unsigned long len = 0;
 	SOCKET sock;
-	IFREQ ifo[MAX_INTERFACES];
-
-#ifndef WIN32
-	struct ifconf if_conf;
+#ifdef WIN32
+	DWORD len = 0;
+	INTERFACE_INFO ifo[MAX_INTERFACES];
+#else
+	char buf[4 * 1024]; // Arbitrary buffer size
+	struct ifconf ifconf;
+	const char* buf_end;
+	const char* p;
 #endif
 
 	// If something fails, make sure the list is empty
@@ -382,40 +384,48 @@ static void NetworkFindIPs(void)
 	if (sock == INVALID_SOCKET) return;
 
 #ifdef WIN32
-	// On windows it is easy
 	memset(&ifo[0], 0, sizeof(ifo));
 	if ((WSAIoctl(sock, SIO_GET_INTERFACE_LIST, NULL, 0, &ifo[0], sizeof(ifo), &len, NULL, NULL)) != 0) {
 		closesocket(sock);
 		return;
 	}
-#else
-	// On linux a bit harder
-	if_conf.ifc_len = (sizeof (struct ifreq)) * MAX_INTERFACES;
-	if_conf.ifc_buf = (char *)&ifo[0];
-	if ((ioctl(sock, SIOCGIFCONF, &if_conf)) == -1) {
-		closesocket(sock);
-		return;
-	}
-	len = if_conf.ifc_len;
-#endif /* WIN32 */
 
 	// Now walk through all IPs and list them
 	for (i = 0; i < (int)(len / sizeof(IFREQ)); i++) {
 		// Request IP for this interface
-#ifdef WIN32
 		_network_ip_list[i] = *(&ifo[i].iiAddress.AddressIn.sin_addr.s_addr);
+	}
 #else
-		if ((ioctl(sock, SIOCGIFADDR, &ifo[i])) != 0) {
-			closesocket(sock);
-			return;
-		}
-
-		_network_ip_list[i] = ((struct sockaddr_in *)&ifo[i].ifr_addr)->sin_addr.s_addr;
-#endif
+	ifconf.ifc_len = sizeof(buf);
+	ifconf.ifc_buf = buf;
+	if (ioctl(sock, SIOCGIFCONF, &ifconf) == -1) {
+		closesocket(sock);
+		return;
 	}
 
-	closesocket(sock);
+	i = 0;
+	buf_end = buf + ifconf.ifc_len;
+	for (p = buf; p < buf_end;) {
+		const struct ifreq* req = (const struct ifreq*)p;
 
+		if (req->ifr_addr.sa_family == AF_INET) {
+			struct ifreq r;
+
+			strncpy(r.ifr_name, req->ifr_name, lengthof(r.ifr_name));
+			if (ioctl(sock, SIOCGIFADDR, &r) != -1) {
+				_network_ip_list[i++] =
+					((struct sockaddr_in*)&r.ifr_addr)->sin_addr.s_addr;
+			}
+		}
+
+		p += sizeof(struct ifreq);
+#ifdef AF_LINK
+		p += req->ifr_addr.sa_len - sizeof(struct sockaddr);
+#endif
+	}
+#endif
+
+	closesocket(sock);
 #endif /* not HAVE_GETIFADDRS */
 
 	_network_ip_list[i] = 0;
