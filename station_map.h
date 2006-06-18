@@ -3,6 +3,7 @@
 #ifndef STATION_MAP_H
 #define STATION_MAP_H
 
+#include "rail_map.h"
 #include "station.h"
 
 typedef byte StationGfx;

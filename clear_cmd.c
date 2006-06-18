@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "clear_map.h"
+#include "rail_map.h"
 #include "table/strings.h"
 #include "functions.h"
 #include "map.h"

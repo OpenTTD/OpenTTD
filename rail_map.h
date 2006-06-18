@@ -4,6 +4,7 @@
 #define RAIL_MAP_H
 
 #include "direction.h"
+#include "rail.h"
 #include "tile.h"
 
 
@@ -59,17 +60,6 @@ static inline RailTileSubtype GetRailTileSubtype(TileIndex tile)
 }
 
 
-typedef enum RailTypes {
-	RAILTYPE_RAIL     = 0,
-	RAILTYPE_ELECTRIC = 1,
-	RAILTYPE_MONO     = 2,
-	RAILTYPE_MAGLEV   = 3,
-	RAILTYPE_END,
-	INVALID_RAILTYPE = 0xFF
-} RailType;
-
-typedef byte RailTypeMask;
-
 static inline RailType GetRailType(TileIndex t)
 {
 	return (RailType)GB(_m[t].m3, 0, 4);
@@ -102,40 +92,6 @@ static inline void SetRailTypeOnBridge(TileIndex t, RailType r)
 	SB(_m[t].m3, 4, 4, r);
 }
 
-
-/** These are used to specify a single track.
- * Can be translated to a trackbit with TrackToTrackbit */
-typedef enum Track {
-	TRACK_X     = 0,
-	TRACK_Y     = 1,
-	TRACK_UPPER = 2,
-	TRACK_LOWER = 3,
-	TRACK_LEFT  = 4,
-	TRACK_RIGHT = 5,
-	TRACK_END,
-	INVALID_TRACK = 0xFF
-} Track;
-
-
-/** Bitfield corresponding to Track */
-typedef enum TrackBits {
-	TRACK_BIT_NONE  = 0U,
-	TRACK_BIT_X     = 1U << TRACK_X,
-	TRACK_BIT_Y     = 1U << TRACK_Y,
-	TRACK_BIT_UPPER = 1U << TRACK_UPPER,
-	TRACK_BIT_LOWER = 1U << TRACK_LOWER,
-	TRACK_BIT_LEFT  = 1U << TRACK_LEFT,
-	TRACK_BIT_RIGHT = 1U << TRACK_RIGHT,
-	TRACK_BIT_CROSS = TRACK_BIT_X     | TRACK_BIT_Y,
-	TRACK_BIT_HORZ  = TRACK_BIT_UPPER | TRACK_BIT_LOWER,
-	TRACK_BIT_VERT  = TRACK_BIT_LEFT  | TRACK_BIT_RIGHT,
-	TRACK_BIT_3WAY_NE = TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT,
-	TRACK_BIT_3WAY_SE = TRACK_BIT_Y | TRACK_BIT_LOWER | TRACK_BIT_RIGHT,
-	TRACK_BIT_3WAY_SW = TRACK_BIT_X | TRACK_BIT_LOWER | TRACK_BIT_LEFT,
-	TRACK_BIT_3WAY_NW = TRACK_BIT_Y | TRACK_BIT_UPPER | TRACK_BIT_LEFT,
-	TRACK_BIT_ALL   = TRACK_BIT_CROSS | TRACK_BIT_HORZ | TRACK_BIT_VERT,
-	TRACK_BIT_MASK  = 0x3FU
-} TrackBits;
 
 static inline TrackBits GetTrackBits(TileIndex tile)
 {
@@ -267,6 +223,58 @@ static inline SignalState GetSingleSignalState(TileIndex t, byte signalbit)
 {
 	return (SignalState)HASBIT(_m[t].m2, signalbit + 4);
 }
+
+
+/**
+ * Checks for the presence of signals (either way) on the given track on the
+ * given rail tile.
+ */
+static inline bool HasSignalOnTrack(TileIndex tile, Track track)
+{
+	assert(IsValidTrack(track));
+	return
+		GetRailTileType(tile) == RAIL_TILE_SIGNALS &&
+		(_m[tile].m3 & SignalOnTrack(track)) != 0;
+}
+
+/**
+ * Checks for the presence of signals along the given trackdir on the given
+ * rail tile.
+ *
+ * Along meaning if you are currently driving on the given trackdir, this is
+ * the signal that is facing us (for which we stop when it's red).
+ */
+static inline bool HasSignalOnTrackdir(TileIndex tile, Trackdir trackdir)
+{
+	assert (IsValidTrackdir(trackdir));
+	return
+		GetRailTileType(tile) == RAIL_TILE_SIGNALS &&
+		_m[tile].m3 & SignalAlongTrackdir(trackdir);
+}
+
+/**
+ * Gets the state of the signal along the given trackdir.
+ *
+ * Along meaning if you are currently driving on the given trackdir, this is
+ * the signal that is facing us (for which we stop when it's red).
+ */
+static inline SignalState GetSignalStateByTrackdir(TileIndex tile, Trackdir trackdir)
+{
+	assert(IsValidTrackdir(trackdir));
+	assert(HasSignalOnTrack(tile, TrackdirToTrack(trackdir)));
+	return _m[tile].m2 & SignalAlongTrackdir(trackdir) ?
+		SIGNAL_STATE_GREEN : SIGNAL_STATE_RED;
+}
+
+
+/**
+ * Return the rail type of tile, or INVALID_RAILTYPE if this is no rail tile.
+ * Note that there is no check if the given trackdir is actually present on
+ * the tile!
+ * The given trackdir is used when there are (could be) multiple rail types on
+ * one tile.
+ */
+RailType GetTileRailType(TileIndex tile, Trackdir trackdir);
 
 
 typedef enum RailGroundType {
