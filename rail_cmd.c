@@ -1161,35 +1161,24 @@ static void DrawTrackFence_WE_2(const TileInfo *ti)
 		ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 4, z);
 }
 
-static void DetTrackDrawProc_Null(const TileInfo *ti)
+
+static void DrawTrackDetails(const TileInfo* ti)
 {
-	/* nothing should be here */
+	switch (GetRailGroundType(ti->tile)) {
+		case RAIL_GROUND_FENCE_NW:     DrawTrackFence_NW(ti);    break;
+		case RAIL_GROUND_FENCE_SE:     DrawTrackFence_SE(ti);    break;
+		case RAIL_GROUND_FENCE_SENW:   DrawTrackFence_NW_SE(ti); break;
+		case RAIL_GROUND_FENCE_NE:     DrawTrackFence_NE(ti);    break;
+		case RAIL_GROUND_FENCE_SW:     DrawTrackFence_SW(ti);    break;
+		case RAIL_GROUND_FENCE_NESW:   DrawTrackFence_NE_SW(ti); break;
+		case RAIL_GROUND_FENCE_VERT1:  DrawTrackFence_NS_1(ti);  break;
+		case RAIL_GROUND_FENCE_VERT2:  DrawTrackFence_NS_2(ti);  break;
+		case RAIL_GROUND_FENCE_HORIZ1: DrawTrackFence_WE_1(ti);  break;
+		case RAIL_GROUND_FENCE_HORIZ2: DrawTrackFence_WE_2(ti);  break;
+		default: break;
+	}
 }
 
-typedef void DetailedTrackProc(const TileInfo *ti);
-static DetailedTrackProc* const _detailed_track_proc[] = {
-	DetTrackDrawProc_Null,
-	DetTrackDrawProc_Null,
-
-	DrawTrackFence_NW,
-	DrawTrackFence_SE,
-	DrawTrackFence_NW_SE,
-
-	DrawTrackFence_NE,
-	DrawTrackFence_SW,
-	DrawTrackFence_NE_SW,
-
-	DrawTrackFence_NS_1,
-	DrawTrackFence_NS_2,
-
-	DrawTrackFence_WE_1,
-	DrawTrackFence_WE_2,
-
-	DetTrackDrawProc_Null,
-	DetTrackDrawProc_Null,
-	DetTrackDrawProc_Null,
-	DetTrackDrawProc_Null,
-};
 
 static void DrawSpecialBuilding(
 	uint32 image, uint32 offset,
@@ -1322,7 +1311,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		DrawTrackBits(ti, rails, false);
 
-		if (_display_opt & DO_FULL_DETAIL) _detailed_track_proc[GetRailGroundType(ti->tile)](ti);
+		if (_display_opt & DO_FULL_DETAIL) DrawTrackDetails(ti);
 
 		/* draw signals also? */
 		if (GetRailTileType(ti->tile) == RAIL_TILE_SIGNALS) DrawSignals(ti->tile, rails);
