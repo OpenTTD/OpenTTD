@@ -37,9 +37,6 @@ byte   _sl_minor_version; /// the minor savegame version, DO NOT USE!
 typedef void WriterProc(uint len);
 typedef uint ReaderProc(void);
 
-typedef uint ReferenceToIntProc(const void *obj, SLRefType rt);
-typedef void *IntToReferenceProc(uint index, SLRefType rt);
-
 /** The saveload struct, containing reader-writer functions, bufffer, version, etc. */
 static struct {
 	bool save;                           /// are we doing a save or a load atm. True when saving
@@ -54,9 +51,6 @@ static struct {
 
 	WriterProc *write_bytes;             /// savegame writer function
 	ReaderProc *read_bytes;              /// savegame loader function
-
-	ReferenceToIntProc *ref_to_int_proc; /// function to convert pointers to numbers when saving a game
-	IntToReferenceProc *int_to_ref_proc; /// function to convert numbers to pointers when loading a game
 
 	const ChunkHandler* const *chs;      /// the chunk of data that is being processed atm (vehicles, signs, etc.)
 	const SaveLoad* const *includes;     /// the internal layouf of the given chunk
@@ -657,6 +651,11 @@ size_t SlCalcObjMemberLength(const SaveLoad *sld)
 	return 0;
 }
 
+
+static uint ReferenceToInt(const void* obj, SLRefType rt);
+static void* IntToReference(uint index, SLRefType rt);
+
+
 bool SlObjectMember(void *ptr, const SaveLoad *sld)
 {
 	VarType conv = GB(sld->conv, 0, 8);
@@ -674,9 +673,10 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		case SL_REF: /* Reference variable, translate */
 			/// @todo XXX - another artificial limitof 65K elements of pointers?
 			if (_sl.save) { // XXX - read/write pointer as uint16? What is with higher indeces?
-				SlWriteUint16(_sl.ref_to_int_proc(*(void**)ptr, conv));
-			} else
-				*(void**)ptr = _sl.int_to_ref_proc(SlReadUint16(), conv);
+				SlWriteUint16(ReferenceToInt(*(void**)ptr, conv));
+			} else {
+				*(void**)ptr = IntToReference(SlReadUint16(), conv);
+			}
 			break;
 		case SL_ARR: SlArray(ptr, sld->length, conv); break;
 		case SL_STR: SlString(ptr, sld->length, conv); break;
@@ -1490,8 +1490,6 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 
 	_sl.bufe = _sl.bufp = NULL;
 	_sl.offs_base = 0;
-	_sl.int_to_ref_proc = IntToReference;
-	_sl.ref_to_int_proc = ReferenceToInt;
 	_sl.save = mode;
 	_sl.includes = _desc_includes;
 	_sl.chs = _chunk_handlers;
