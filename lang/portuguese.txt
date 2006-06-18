@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}NÃO
+STR_ABBREV_ALL                                                  :{TINYFONT}TODOS
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -378,7 +380,11 @@ STR_SORT_BY_MAX_SPEED                                           :Velocidade máxi
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipo de Estação
+STR_SORT_BY_WAITING                                             :Valor da carga em espera
+STR_SORT_BY_RATING_MAX                                          :Avaliação de carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Nenhuma carga em espera
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas as acções
+STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar todos os tipos de carga (incluindo carga sem espera)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1087,6 +1093,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Alterar valor
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguns ou todos os intervalo(s) de serviço predefinidos abaixo são incompatíveis com o valor escolhido! São válidos 5-90% e 30-800 dias
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Usar YAPF para navios: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Usar YAPF para veículos de estrada: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usar YAPF para combóios: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Terreno temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subárctico
@@ -2581,6 +2590,11 @@ STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renomear
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Não é possível renomear tipo de veículo de estrada...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ir para o depósito de {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manutenção no depósito de {TOWN}
+
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reconverter veículo para transportar outro tipo de carga
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reconverter veiculo
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reconverter veículo para transportar o tipo de carga seleccionado
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Não é possível reconverter veículo
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construir docas

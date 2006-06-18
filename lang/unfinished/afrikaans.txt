@@ -1,6 +1,6 @@
 ##name Afrikaans
 ##ownname Afrikaans
-##isocode af_ZA
+##isocode af_ZA.UTF-8
 ##plural 0
 
 ##id 0x0000
@@ -629,7 +629,7 @@ STR_02DF_TOWN_DIRECTORY                                         :Stad index
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Koers eenheide
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Koers eendheide seleksie
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Koers eendheide keuse
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Pad voertuie
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
@@ -875,7 +875,7 @@ STR_2006_POPULATION                                             :{BLACK}Populasi
 STR_2007_RENAME_TOWN                                            :Hernaam Stad
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan nie stad hernaam nie...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} plaaslike gesag weier om dit te toelaat
-STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Stad naame - kliek op naam om uitsig op stad te senter
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Stad naame - kliek op naam om skerm op stad te senter
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Senter skerm op stad
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Verander stad naam
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passasiers verlede maand: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
@@ -1048,6 +1048,7 @@ STR_3068_DOCK                                                   :{WHITE}Werf
 STR_3069_BUOY                                                   :Baken
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...baken in die pad
 STR_306B_HELIPORT                                               :{BLACK}Helihawe
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Stasie te ver van mekaar af
 
 
 ##id 0x3800
@@ -1065,6 +1066,15 @@ STR_4001_LOAD_GAME                                              :{WHITE}Laai Spe
 STR_4002_SAVE                                                   :{BLACK}Bewaar
 STR_4003_DELETE                                                 :{BLACK}Uitwis
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} vry
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan nie skyf lees nie
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Spel Bewaar Gedop
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan nie lêer uitwis nie
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Spel Laai Gedop
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Lys van skywe, voublaaie en spel-bewaar lêers
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Huidige naam vir bewaarde-spel
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Uitwis die verkieste bewaarde-spel
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Bewaar die huidige spel, met die verkieste naame
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} in die pad
@@ -1108,33 +1118,69 @@ STR_4825_TOFFEE_QUARRY                                          :Tamletjie Prooi
 STR_4826_SUGAR_MINE                                             :Suiker Myn
 
 ############ range for requires	starts
+STR_4827_REQUIRES                                               :{BLACK}Vereis: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Vereis: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Vereis: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produksie verlede maand:
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% uitgevoer)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Senter skerm op nywerheid
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nuwe {STRING} onder opbou naby {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nuwe {STRING} word naby {TOWN} beplant!
 STR_482F_COST                                                   :{BLACK}Koste: {YELLOW}{CURRENCY}
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...Woud kan net bo sneeu-lyn beplant word
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} aankondig dreigend sluiting!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Lewering probleme veroorsaak {INDUSTRY} om dreigend sluting te aankondig!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Gebrek van naby boome veroorsaak {INDUSTRY} om dreigend sluiting te aankondig!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} vermeerder produksie!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nuwe steenkool laag vevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nuwe olie reserwes gevind by {INDUSTRY}!{}Produksie is verwag om te verdubbel!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Verbeterde boerdery metodes by {INDUSTRY} sal produksie verdubbel!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produksie verminder 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insek vervuiling oorsaak verwoesting by {INDUSTRY}!{}Produksie verminder 50%
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kan net naby aan kant van kaart geplaas word
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Trein in tonnel
 STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Pad voetuig in tonnel
 STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Ander tonnel in die pad
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Onbekwaam om land vir ander einde van tonnel te uitgrawe
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Moet eers tonnel afbreek
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Moet eers brug afbreek
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Kan nie in die selfde plek begin en eindig
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Platte land of water nooding onder brug
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Begin en eindig moet in lyn wees
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Plek ongeskik vir tonnel ingang
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :Staking, Staal
+STR_5010_CANTILEVER_STEEL                                       :Vrydraer, Staal
+STR_5011_SUSPENSION_CONCRETE                                    :Staking, Beton
+STR_5012_WOODEN                                                 :Houterig
+STR_5013_CONCRETE                                               :Beton
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Brug kan nie daar gebou word nie...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tonnel kan nie daar gebou word nie...
 STR_5017_RAILROAD_TUNNEL                                        :Spoorweg tonnel
 STR_5018_ROAD_TUNNEL                                            :Pad tonnel
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Staal staking spoor brug
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Gewapende beton staking spoor brug
+STR_501F_WOODEN_RAIL_BRIDGE                                     :Houterig spoor brug
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :Beton spoor brug
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Staal staking pad brug
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Staal vrydraer pad brug
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Gewapende beton staking pad brug
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Houterig pad brug
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :Beton pad brug
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Voorwerp in die pad
 STR_5801_TRANSMITTER                                            :Sender
 STR_5802_LIGHTHOUSE                                             :Vuurtoring
 STR_5803_COMPANY_HEADQUARTERS                                   :Maatskappy Hoofkwartier
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...maatskappy hoofkwartiers in die pad
+STR_5805_COMPANY_OWNED_LAND                                     :Maatskappy-besit land
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Land area kan nie aangekoop word nie...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...jy besit dit alreeds!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1145,6 +1191,7 @@ STR_5803_COMPANY_HEADQUARTERS                                   :Maatskappy Hoof
 ############ end of	savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Moeilikheids Vlakte
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Maklik
@@ -1163,6 +1210,8 @@ STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Aanvang
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Voertuig bestuur koste: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Konstruksie spoed van mededinge: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intelligensie van mededinge: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Voertuig instorting: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Subsidie vermenigvuld: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}koste van kconstruksie: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Landerye tipe: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomie: {ORANGE}{STRING}
@@ -1175,6 +1224,8 @@ STR_26816_NONE                                                  :Geen
 STR_6816_LOW                                                    :Laag
 STR_6817_NORMAL                                                 :Normaal
 STR_6818_HIGH                                                   :Hoog
+STR_6819                                                        :{BLACK}<
+STR_681A                                                        :{BLACK}>
 STR_681B_VERY_SLOW                                              :Baie Stadig
 STR_681C_SLOW                                                   :Stadig
 STR_681D_MEDIUM                                                 :Gemiddel
@@ -1190,6 +1241,9 @@ STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
+STR_682A_VERY_FLAT                                              :Baie Plat
+STR_682B_FLAT                                                   :Plat
+STR_682C_HILLY                                                  :Koppierig
 STR_682D_MOUNTAINOUS                                            :Bergagtig
 STR_682E_STEADY                                                 :Gereeld
 STR_682F_FLUCTUATING                                            :Skommelende
@@ -1201,27 +1255,35 @@ STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Op die einde va
 STR_6835_AT_END_OF_LINE_ONLY                                    :Slegs op die ende van die lyn
 STR_6836_OFF                                                    :Af
 STR_6837_ON                                                     :Aan
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Wys hoë-telling tabel
 STR_6839_PERMISSIVE                                             :Permissief
 STR_683A_TOLERANT                                               :Toelaatbaar
 STR_683B_HOSTILE                                                :Vyandelik
 
 ##id 0x7000
+STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Speler {COMMA})
+STR_7004_NEW_FACE                                               :{BLACK}Nuwe Gesig
 STR_7005_COLOR_SCHEME                                           :{BLACK}Kleur Skema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Kleur Skema
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nuwe Kleur Skema
 STR_7008_COMPANY_NAME                                           :{BLACK}Maatskappy Naam
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Bestuurder Naam
 STR_700A_COMPANY_NAME                                           :Maatskappy Naam
+STR_700B_PRESIDENT_S_NAME                                       :Bestuurder se Naam
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Maatskappy naam kan nie verander word nie...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Bestuurder se naam kan nie verander word nie...
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Finansies {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Onkoste/Inkome
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Kostruksie
+STR_7012_NEW_VEHICLES                                           :{GOLD}Nuwe Voetuie
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Trein Bestuur koste
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Pad Voetuig Bestuur Koste
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Vliegtuig Bestuur Koste
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Skip Bestuur Koste
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Eiendom Onderhoud
 STR_7018_TRAIN_INCOME                                           :{GOLD}Trein Inkome
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Pad Voertuig Inkome
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Vliegtuig Inkome
@@ -1245,12 +1307,66 @@ STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Kan nie 
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...geen lening om terugbetaal te word
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} nodig
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Kan nie lening terugbetaal nie...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Kies nuwe gesig vir bestuurder
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Verander die maatskappy voertuig lewery
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}verander bestuurder se naam
 STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Verander die maatskappy se naam
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Kliek op verkieste kleur skema
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Vermeer groote van lening
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Terugbetaal deel van lening
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Bestuurder)
+STR_7038_INAUGURATED                                            :{GOLD}Bevestig: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Voertuie
 STR_7042_NONE                                                   :{WHITE}Geen
+STR_7043_FACE_SELECTION                                         :{WHITE}Gesig Keuse
 STR_7044_MALE                                                   :{BLACK}Manlik
 STR_7045_FEMALE                                                 :{BLACK}Vroulik
+STR_7046_NEW_FACE                                               :{BLACK}Nuwe Gesig
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Kanselleer nuwe gesig keuse
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Aanvar nuwe gesig keuse
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Kies manlik gesige
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Kies vroulik gesige
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Ontwikkel lukrake Nuwe Gesig
+STR_704C_KEY                                                    :{BLACK}Sleutel
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Wys sleutel na grafieke
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Sleutel na maatskappy grafieke
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Kliek hier om maatskappy se intrede op grafiek aan/af te skakel
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Eenheide van vrag afgelewer
+STR_7052_COMPANY_VALUES                                         :{WHITE}Maatskappy waarde
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Maatskappy Liga Tabel
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Vervoer maatsappy in moelikheid!
+STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Bestuurder)
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Vervoer maatskappy samesmelting!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} is na {COMPANY} verkoop vir  {CURRENCY}!
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrotspeler!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} is deur skuldeisers toegemaak en alle bates is afverkoop!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nuwe vervoer maatskappy geloods!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} begin konstruksie naby {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Kan nie maatskappy koop nie...
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dae in deurtog
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Betaaling vir aflewering van 10 eenhuide (of 10,000 litres) van vrag 'n afstand van 20 blokkies
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Skakel grafiek vir vrag tipe aan/af
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :Ingenieur
+STR_7067_TRAFFIC_MANAGER                                        :Verkeer Bestuurder
+STR_7069_ROUTE_SUPERVISOR                                       :Roete Opsiener
+STR_706A_DIRECTOR                                               :Direkteur
+STR_706B_CHIEF_EXECUTIVE                                        :Hoofbestuursleier
+STR_706C_CHAIRMAN                                               :Voorsitter
+STR_706D_PRESIDENT                                              :President
+STR_706F_BUILD_HQ                                               :{BLACK}Bou HQ
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Bou maatskappy hoofkwartiers / wys maatskappy hoofkwartiers
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Maatskappy hoofkwartiers kan nie hier gebou word nie...
+STR_7072_VIEW_HQ                                                :{BLACK}Wys HQ
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Insinking Oor!{}{}Oplewing in sake gee vertroue na nywerheide as ekonomie Versterk!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Skakel groot/klein venster groote
+STR_7076_COMPANY_VALUE                                          :{GOLD}Maatskappy waarde: {WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Koop 25% deel in maatskappy
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Verkoop 25% deel in maatskappy
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Koop 25% deel in die maatskappy
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Verkoop 25% deel in die maatskappy
 
 ##id 0x8000
 
@@ -1262,6 +1378,7 @@ STR_7045_FEMALE                                                 :{BLACK}Vroulik
 
 
 ##id 0x9000
+
 
 
 ##id 0x9800
