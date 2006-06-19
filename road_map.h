@@ -143,7 +143,11 @@ static inline void StartRoadWorks(TileIndex t)
 {
 	assert(!HasRoadWorks(t));
 	/* Remove any trees or lamps in case or roadwork */
-	SetGroundType(t, (RoadGroundType)(min(GetGroundType(t), RGT_PAVED) + RGT_ROADWORK_OFFSET));
+	switch (GetGroundType(t)) {
+		case RGT_BARREN:
+		case RGT_GRASS:  SetGroundType(t, RGT_ROADWORK_GRASS); break;
+		default:         SetGroundType(t, RGT_ROADWORK_PAVED); break;
+	}
 }
 
 static inline void TerminateRoadWorks(TileIndex t)
