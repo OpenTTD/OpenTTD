@@ -24,11 +24,6 @@ struct Waypoint {
 	byte deleted;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 };
 
-enum {
-	RAIL_TILE_WAYPOINT = 0xC4,
-	RAIL_WAYPOINT_TRACK_MASK = 1,
-};
-
 extern MemoryPool _waypoint_pool;
 
 /**
@@ -55,10 +50,6 @@ static inline bool IsWaypointIndex(uint index)
 #define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL)
 #define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
 
-static inline bool IsRailWaypoint(TileIndex tile)
-{
-	return (_m[tile].m5 & 0xFC) == 0xC4;
-}
 
 /**
  * Fetch a waypoint by tile

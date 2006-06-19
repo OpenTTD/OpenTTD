@@ -60,6 +60,14 @@ static inline RailTileSubtype GetRailTileSubtype(TileIndex tile)
 }
 
 
+static inline bool IsRailWaypoint(TileIndex t)
+{
+	return
+		GetRailTileType(t) == RAIL_TILE_DEPOT_WAYPOINT &&
+		GetRailTileSubtype(t) == RAIL_SUBTYPE_WAYPOINT;
+}
+
+
 static inline RailType GetRailType(TileIndex t)
 {
 	return (RailType)GB(_m[t].m3, 0, 4);
