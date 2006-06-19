@@ -2591,6 +2591,11 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ei saa n
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Mine {TOWN} Garaaþi
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Hoolda {TOWN} Garaaþis
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Seadista maanteesõidukit kandma teist tüüpi kaupa
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Seadista maantee sõiduk ümber
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Seadista maanteesõiduk kandma valitud kauba tüüpi
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ei saa seadistada maantee sõidukit ümber
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Sadama ehitus
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Sadama ehitus
