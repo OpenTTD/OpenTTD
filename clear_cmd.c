@@ -259,13 +259,14 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (IsSteepSlope(s)) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
 
 				if (IsPlainRailTile(tile)) {
-					/* We need to check if a rail is on a leveled foundation and
-					 * then treat it as such. Important for correct tunneling */
+					/* If a piece of rail is on a foundation, prohibit any terraforming
+					 * of that tile. We do need to check this with the original slope, not
+					 * the would-be one. */
 					extern const TrackBits _valid_tileh_slopes[2][15];
 					TrackBits tb = GetTrackBits(tile);
-					uint foundation = (GetRailFoundation(s, tb) == 0) ? 1 : 0;
 
-					if (tb & ~_valid_tileh_slopes[foundation][s]) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+					if (GetRailFoundation(GetTileSlope(tile, NULL), tb) != 0) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+					if (tb & ~_valid_tileh_slopes[0][s]) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
 				} else return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 			}
 
