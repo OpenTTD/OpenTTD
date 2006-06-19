@@ -228,7 +228,7 @@ static void NPFMarkTile(TileIndex tile)
 
 		case MP_STREET:
 			if (!IsTileDepotType(tile, TRANSPORT_ROAD)) {
-				SetGroundType(tile, RGT_BARREN);
+				SetRoadside(tile, ROADSIDE_BARREN);
 				MarkTileDirtyByTile(tile);
 			}
 			break;

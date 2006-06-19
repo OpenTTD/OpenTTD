@@ -700,6 +700,7 @@ static void DrawRoadBits(TileInfo* ti, RoadBits road)
 {
 	const DrawRoadTileStruct *drts;
 	PalSpriteID image = 0;
+	Roadside roadside;
 
 	if (ti->tileh != SLOPE_FLAT) {
 		int foundation = GetRoadFoundation(ti->tileh, road);
@@ -713,13 +714,17 @@ static void DrawRoadBits(TileInfo* ti, RoadBits road)
 
 	if (image == 0) image = _road_tile_sprites_1[road];
 
-	if (GetGroundType(ti->tile) == RGT_BARREN) image |= PALETTE_TO_BARE_LAND;
+	roadside = GetRoadside(ti->tile);
 
 	if (IsOnSnow(ti->tile)) {
 		image += 19;
-	} else if (HasPavement(ti->tile)) {
-		// Pavement tiles.
-		image -= 19;
+	} else {
+		switch (roadside) {
+			case ROADSIDE_BARREN:           image |= PALETTE_TO_BARE_LAND; break;
+			case ROADSIDE_GRASS:            break;
+			case ROADSIDE_GRASS_ROAD_WORKS: break;
+			default:                        image -= 19; break; // Paved
+		}
 	}
 
 	DrawGroundSprite(image);
@@ -734,7 +739,7 @@ static void DrawRoadBits(TileInfo* ti, RoadBits road)
 	}
 
 	// Draw extra details.
-	for (drts = _road_display_table[GetGroundType(ti->tile)][road]; drts->image != 0; drts++) {
+	for (drts = _road_display_table[roadside][road]; drts->image != 0; drts++) {
 		int x = ti->x | drts->subcoord_x;
 		int y = ti->y | drts->subcoord_y;
 		byte z = ti->z;
@@ -763,8 +768,11 @@ static void DrawTile_Road(TileInfo *ti)
 			if (IsOnSnow(ti->tile)) {
 				image += 8;
 			} else {
-				if (GetGroundType(ti->tile) == RGT_BARREN) image |= PALETTE_TO_BARE_LAND;
-				if (HasPavement(ti->tile)) image += 4;
+				switch (GetRoadside(ti->tile)) {
+					case ROADSIDE_BARREN: image |= PALETTE_TO_BARE_LAND; break;
+					case ROADSIDE_GRASS:  break;
+					default:              image += 4; break; // Paved
+				}
 			}
 
 			DrawGroundSprite(image);
@@ -866,20 +874,21 @@ static void AnimateTile_Road(TileIndex tile)
 	if (IsLevelCrossing(tile)) MarkTileDirtyByTile(tile);
 }
 
-static const RoadGroundType _town_road_types[5][2] = {
-	{RGT_GRASS,RGT_GRASS},
-	{RGT_PAVED,RGT_PAVED},
-	{RGT_PAVED,RGT_PAVED},
-	{RGT_ALLEY,RGT_ALLEY},
-	{RGT_LIGHT,RGT_PAVED},
+
+static const Roadside _town_road_types[][2] = {
+	{ ROADSIDE_GRASS,         ROADSIDE_GRASS },
+	{ ROADSIDE_PAVED,         ROADSIDE_PAVED },
+	{ ROADSIDE_PAVED,         ROADSIDE_PAVED },
+	{ ROADSIDE_TREES,         ROADSIDE_TREES },
+	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED }
 };
 
-static const RoadGroundType _town_road_types_2[5][2] = {
-	{RGT_GRASS,RGT_GRASS},
-	{RGT_PAVED,RGT_PAVED},
-	{RGT_LIGHT,RGT_PAVED},
-	{RGT_LIGHT,RGT_PAVED},
-	{RGT_LIGHT,RGT_PAVED},
+static const Roadside _town_road_types_2[][2] = {
+	{ ROADSIDE_GRASS,         ROADSIDE_GRASS },
+	{ ROADSIDE_PAVED,         ROADSIDE_PAVED },
+	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED },
+	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED },
+	{ ROADSIDE_STREET_LIGHTS, ROADSIDE_PAVED }
 };
 
 
@@ -934,23 +943,23 @@ static void TileLoop_Road(TileIndex tile)
 
 		{
 			/* Adjust road ground type depending on 'grp' (grp is the distance to the center) */
-			const RoadGroundType *target_rgt = (_opt.landscape == LT_CANDY) ? _town_road_types_2[grp] : _town_road_types[grp];
-			RoadGroundType rgt = GetGroundType(tile);
+			const Roadside* new_rs = (_opt.landscape == LT_CANDY) ? _town_road_types_2[grp] : _town_road_types[grp];
+			Roadside cur_rs = GetRoadside(tile);
 
 			/* We have our desired type, do nothing */
-			if (rgt == target_rgt[0]) return;
+			if (cur_rs == new_rs[0]) return;
 
 			/* We have the pre-type of the desired type, switch to the desired type */
-			if (rgt == target_rgt[1]) {
-				rgt = target_rgt[0];
+			if (cur_rs == new_rs[1]) {
+				cur_rs = new_rs[0];
 			/* We have barren land, install the pre-type */
-			} else if (rgt == RGT_BARREN) {
-				rgt = target_rgt[1];
+			} else if (cur_rs == ROADSIDE_BARREN) {
+				cur_rs = new_rs[1];
 			/* We're totally off limits, remove any installation and make barren land */
 			} else {
-				rgt = RGT_BARREN;
+				cur_rs = ROADSIDE_BARREN;
 			}
-			SetGroundType(tile, rgt);
+			SetRoadside(tile, cur_rs);
 			MarkTileDirtyByTile(tile);
 		}
 	} else if (IncreaseRoadWorksCounter(tile)) {
@@ -1018,7 +1027,7 @@ static void GetTileDesc_Road(TileIndex tile, TileDesc *td)
 	switch (GetRoadTileType(tile)) {
 		case ROAD_TILE_CROSSING: td->str = STR_1818_ROAD_RAIL_LEVEL_CROSSING; break;
 		case ROAD_TILE_DEPOT: td->str = STR_1817_ROAD_VEHICLE_DEPOT; break;
-		default: td->str = _road_tile_strings[GetGroundType(tile)]; break;
+		default: td->str = _road_tile_strings[GetRoadside(tile)]; break;
 	}
 }
 

@@ -104,32 +104,30 @@ static inline void ToggleSnow(TileIndex t)
 	TOGGLEBIT(_m[t].m4, 7);
 }
 
-typedef enum RoadGroundType {
-	RGT_BARREN,
-	RGT_GRASS,
-	RGT_PAVED,
-	RGT_LIGHT,
-	RGT_NOT_IN_USE, /* Has something to do with fund buildings */
-	RGT_ALLEY,
-	RGT_ROADWORK_GRASS,
-	RGT_ROADWORK_PAVED,
 
-	RGT_ROADWORK_OFFSET = RGT_ROADWORK_GRASS - RGT_GRASS
-} RoadGroundType;
+typedef enum Roadside {
+	ROADSIDE_BARREN           = 0,
+	ROADSIDE_GRASS            = 1,
+	ROADSIDE_PAVED            = 2,
+	ROADSIDE_STREET_LIGHTS    = 3,
+	ROADSIDE_TREES            = 5,
+	ROADSIDE_GRASS_ROAD_WORKS = 6,
+	ROADSIDE_PAVED_ROAD_WORKS = 7
+} Roadside;
 
-static inline RoadGroundType GetGroundType(TileIndex t)
+static inline Roadside GetRoadside(TileIndex tile)
 {
-	return (RoadGroundType)GB(_m[t].m4, 4, 3);
+	return (Roadside)GB(_m[tile].m4, 4, 3);
 }
 
-static inline void SetGroundType(TileIndex t, RoadGroundType rgt)
+static inline void SetRoadside(TileIndex tile, Roadside s)
 {
-	SB(_m[t].m4, 4, 3, rgt);
+	SB(_m[tile].m4, 4, 3, s);
 }
 
 static inline bool HasRoadWorks(TileIndex t)
 {
-	return GetGroundType(t) >= RGT_ROADWORK_GRASS;
+	return GetRoadside(t) >= ROADSIDE_GRASS_ROAD_WORKS;
 }
 
 static inline bool IncreaseRoadWorksCounter(TileIndex t)
@@ -143,25 +141,21 @@ static inline void StartRoadWorks(TileIndex t)
 {
 	assert(!HasRoadWorks(t));
 	/* Remove any trees or lamps in case or roadwork */
-	switch (GetGroundType(t)) {
-		case RGT_BARREN:
-		case RGT_GRASS:  SetGroundType(t, RGT_ROADWORK_GRASS); break;
-		default:         SetGroundType(t, RGT_ROADWORK_PAVED); break;
+	switch (GetRoadside(t)) {
+		case ROADSIDE_BARREN:
+		case ROADSIDE_GRASS:  SetRoadside(t, ROADSIDE_GRASS_ROAD_WORKS); break;
+		default:              SetRoadside(t, ROADSIDE_PAVED_ROAD_WORKS); break;
 	}
 }
 
 static inline void TerminateRoadWorks(TileIndex t)
 {
 	assert(HasRoadWorks(t));
-	SetGroundType(t, (RoadGroundType)(GetGroundType(t) - RGT_ROADWORK_OFFSET));
+	SetRoadside(t, (Roadside)(GetRoadside(t) - ROADSIDE_GRASS_ROAD_WORKS + ROADSIDE_GRASS));
 	/* Stop the counter */
 	SB(_m[t].m4, 0, 4, 0);
 }
 
-static inline bool HasPavement(TileIndex t)
-{
-	return GetGroundType(t) >= RGT_PAVED && GetGroundType(t) != RGT_ROADWORK_GRASS;
-}
 
 static inline DiagDirection GetRoadDepotDirection(TileIndex t)
 {
