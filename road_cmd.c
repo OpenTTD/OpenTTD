@@ -155,6 +155,8 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					RoadBits present = GetRoadBits(tile);
 					RoadBits c = pieces;
 
+					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+
 					if (GetTileSlope(tile, NULL) != SLOPE_FLAT &&
 							(present == ROAD_Y || present == ROAD_X)) {
 						c |= (c & 0xC) >> 2;
@@ -291,6 +293,8 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MP_STREET:
 			switch (GetRoadTileType(tile)) {
 				case ROAD_TILE_NORMAL:
+					if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+
 					existing = GetRoadBits(tile);
 					if ((existing & pieces) == pieces) {
 						return_cmd_error(STR_1007_ALREADY_BUILT);

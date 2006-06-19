@@ -343,8 +343,9 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 				break;
 
 			case MP_STREET:
-				if (GetRoadTileType(tile) != ROAD_TILE_NORMAL ||
-						GetRoadBits(tile) != (direction == AXIS_X ? ROAD_Y : ROAD_X)) {
+				if (GetRoadTileType(tile) != ROAD_TILE_NORMAL) goto not_valid_below;
+				if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+				if (GetRoadBits(tile) != (direction == AXIS_X ? ROAD_Y : ROAD_X)) {
 					goto not_valid_below;
 				}
 				transport_under = TRANSPORT_ROAD;

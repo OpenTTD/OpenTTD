@@ -1500,6 +1500,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gleis mit kombi
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Straﬂe muss erst entfernt werden
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Straﬂenarbeiten sind im Gange
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Straﬂenbau
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Br¸cke w‰hlen
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kann hier keine Straﬂe bauen...
