@@ -359,8 +359,11 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 {
 	DrawPixelInfo tmp_dpi, *old_dpi;
 	int dx = -(skip * 8) / _traininfo_vehicle_width;
+	/* Position of highlight box */
+	int highlight_l = 0;
+	int highlight_r = 0;
 
-	if (!FillDrawPixelInfo(&tmp_dpi, NULL, x - 1, y - 1, count, 14)) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, NULL, x - 2, y - 1, count + 1, 14)) return;
 
 	count = (count * 8) / _traininfo_vehicle_width;
 
@@ -373,15 +376,24 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 		if (dx + width > 0) {
 			if (dx <= count) {
 				PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
-				DrawSprite(GetTrainImage(v, DIR_W) | pal, 15 + WagonLengthToPixels(dx), 7 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
-				if (v->index == selection)
-					DrawFrameRect(WagonLengthToPixels(dx), 0, WagonLengthToPixels(dx + width), 13, 15, FR_BORDERONLY);
+				DrawSprite(GetTrainImage(v, DIR_W) | pal, 16 + WagonLengthToPixels(dx), 7 + (is_custom_sprite(RailVehInfo(v->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
+				if (v->index == selection) {
+					/* Set the highlight position */
+					highlight_l = WagonLengthToPixels(dx) + 1;
+					highlight_r = WagonLengthToPixels(dx + width) + 1;
+				}
 			}
 		}
 		dx += width;
 
 		v = v->next;
 	} while (dx < count && v != NULL);
+
+	if (highlight_l != highlight_r) {
+		/* Draw the highlight. Now done after drawing all the engines, as
+		 * the next engine after the highlight could overlap it. */
+		DrawFrameRect(highlight_l, 0, highlight_r, 13, 15, FR_BORDERONLY);
+	}
 
 	_cur_dpi = old_dpi;
 }
