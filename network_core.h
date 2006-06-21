@@ -32,14 +32,12 @@
 #define EWOULDBLOCK WSAEWOULDBLOCK
 // Windows has some different names for some types..
 typedef unsigned long in_addr_t;
-typedef INTERFACE_INFO IFREQ;
 #endif // WIN32
 
 // UNIX stuff
 #if defined(UNIX)
 #	define SOCKET int
 #	define INVALID_SOCKET -1
-typedef struct ifreq IFREQ;
 #	if !defined(__MORPHOS__) && !defined(__AMIGA__)
 #		define ioctlsocket ioctl
 #	if !defined(BEOS_NET_SERVER)
@@ -100,7 +98,6 @@ typedef struct ifreq IFREQ;
 #if defined(__OS2__)
 #	define SOCKET int
 #	define INVALID_SOCKET -1
-typedef struct ifreq IFREQ;
 #	define ioctlsocket ioctl
 #	define closesocket close
 #	define GET_LAST_ERROR() (sock_errno())
