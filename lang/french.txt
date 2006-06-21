@@ -1500,6 +1500,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rails avec des 
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Doit d'abord retirer la route
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Route en travaux
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construction routière
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Choisir Pont Routier
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Impossible de construire la route ici...

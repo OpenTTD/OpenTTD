@@ -1000,7 +1000,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permett
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permetti la rimozione di strade, ponti, ecc. appartenuti alle città: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Consenti la costruzione di treni molto lunghi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Abilita accelerazione realistica per i treni: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Vieta ai treni e alle navi di fare curve di 90°: {ORANGE}{STRING} {LTBLUE} (Richiede NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Vieta ai treni e navi di fare curve di 90°: {ORANGE}{STRING} {LTBLUE} (Richiede YAPF o NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unisci stazioni ferroviarie quando sono vicine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Lascia stazione quanto uno dei tipi di merce è a pieno carico: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa l'algoritmo di caricamento migliorato: {ORANGE}{STRING}
@@ -1499,6 +1499,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Binario ferrovi
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Devi rimuovere la strada prima
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Lavori stradali in progresso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Costruzione Strade
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Seleziona ponte stradale
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Non puoi costruire strada da qui...

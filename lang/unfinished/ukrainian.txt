@@ -1500,6 +1500,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Колія з �
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Спочатку зруйнуйте дорогу
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Дорога ремонтується
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Будівництво дороги
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Виберіть дорожний міст
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Неможливо будувати дорогу тут...

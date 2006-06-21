@@ -2593,6 +2593,11 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kann das
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Fahre zu {TOWN} Fahrzeugdepot
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Wartung bei {TOWN} Fahrzeugdepot
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Straßenfahrzeug für den Transport anderer Güter ausrüsten
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Erneuere Straßenfahrzeug
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Straßenfahrzeug für den Transport des markierten Gutes ausrüsten
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kann Straßenfahrzeug nicht erneuern...
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Hafenanlage bauen
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Hafenanlage bauen
