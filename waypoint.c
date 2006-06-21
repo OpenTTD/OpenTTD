@@ -221,13 +221,11 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		statspec = GetCustomStationSpec(STAT_CLASS_WAYP, p1);
 
 		if (statspec != NULL) {
-			SetCustomWaypointSprite(tile);
 			wp->stat_id = p1;
 			wp->grfid = statspec->grfid;
 			wp->localidx = statspec->localidx;
 		} else {
 			// Specified custom graphics do not exist, so use default.
-			ClearCustomWaypointSprite(tile);
 			wp->stat_id = 0;
 			wp->grfid = 0;
 			wp->localidx = 0;

@@ -136,20 +136,6 @@ static inline TrackBits GetRailWaypointBits(TileIndex t)
 	return _m[t].m5 & 1 ? TRACK_BIT_Y : TRACK_BIT_X;
 }
 
-static inline void SetCustomWaypointSprite(TileIndex t)
-{
-	SETBIT(_m[t].m3, 4);
-}
-
-static inline void ClearCustomWaypointSprite(TileIndex t)
-{
-	CLRBIT(_m[t].m3, 4);
-}
-
-static inline bool IsCustomWaypoint(TileIndex t)
-{
-	return HASBIT(_m[t].m3, 4);
-}
 
 static inline Axis GetWaypointAxis(TileIndex t)
 {

@@ -1325,7 +1325,7 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
-		if (IsRailWaypoint(ti->tile) && IsCustomWaypoint(ti->tile)) {
+		if (IsRailWaypoint(ti->tile)) {
 			// look for customization
 			byte stat_id = GetWaypointByTile(ti->tile)->stat_id;
 			const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, stat_id);
