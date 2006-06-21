@@ -213,17 +213,16 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		const StationSpec *statspec = NULL;
+		const StationSpec* statspec;
+
 		MakeRailWaypoint(tile, GetTileOwner(tile), axis, GetRailType(tile), wp->index);
 		MarkTileDirtyByTile(tile);
 
-		if (GB(p1, 0, 8) < GetNumCustomStations(STAT_CLASS_WAYP)) {
-			statspec = GetCustomStationSpec(STAT_CLASS_WAYP, GB(p1, 0, 8));
-		}
+		statspec = GetCustomStationSpec(STAT_CLASS_WAYP, p1);
 
 		if (statspec != NULL) {
 			SetCustomWaypointSprite(tile);
-			wp->stat_id = GB(p1, 0, 8);
+			wp->stat_id = p1;
 			wp->grfid = statspec->grfid;
 			wp->localidx = statspec->localidx;
 		} else {
