@@ -69,7 +69,6 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 static void DrawTile_Town(TileInfo *ti)
 {
 	const DrawBuildingsTileStruct *dcts;
-	byte z;
 	uint32 image;
 
 	/* Retrieve pointer to the draw town tile struct */
@@ -84,17 +83,8 @@ static void DrawTile_Town(TileInfo *ti)
 		dcts = &_town_draw_tile_data[GetHouseType(ti->tile) << 4 | variant << 2 | GetHouseBuildingStage(ti->tile)];
 	}
 
-	z = ti->z;
-
-	/* Add bricks below the house? */
-	if (ti->tileh != SLOPE_FLAT) {
-		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
-		AddChildSpriteScreen(dcts->ground, 31, 1);
-		z += TILE_HEIGHT;
-	} else {
-		/* Else draw regular ground */
-		DrawGroundSprite(dcts->ground);
-	}
+	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+	DrawGroundSprite(dcts->ground);
 
 	/* Add a house on top of the ground? */
 	image = dcts->building;
@@ -107,7 +97,8 @@ static void DrawTile_Town(TileInfo *ti)
 			dcts->width + 1,
 			dcts->height + 1,
 			dcts->dz,
-			z);
+			ti->z
+		);
 
 		if (_display_opt & DO_TRANS_BUILDINGS) return;
 	}
