@@ -244,8 +244,8 @@ static int MapOldSubType(const Vehicle *v)
 
 /* TTDP style aircraft movement states for GRF Action 2 Var 0xE2 */
 enum {
-	AMS_TTDP_HANGER,
-	AMS_TTDP_TO_HANGER,
+	AMS_TTDP_HANGAR,
+	AMS_TTDP_TO_HANGAR,
 	AMS_TTDP_TO_PAD1,
 	AMS_TTDP_TO_PAD2,
 	AMS_TTDP_TO_PAD3,
@@ -301,10 +301,10 @@ static byte MapAircraftMovementState(const Vehicle *v)
 
 			// The final two conditions apply to helicopters or aircraft.
 			/* Has reached hanger? */
-			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_HANGER;
+			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_HANGAR;
 
 			// Still moving towards hanger.
-			return AMS_TTDP_TO_HANGER;
+			return AMS_TTDP_TO_HANGAR;
 
 		case TERM1:
 			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_TO_PAD1;
@@ -380,31 +380,31 @@ static byte MapAircraftMovementState(const Vehicle *v)
 			return AMS_TTDP_FLIGHT_TO_TOWER;
 
 		default:
-			return AMS_TTDP_HANGER;
+			return AMS_TTDP_HANGAR;
 	}
 }
 
 
 /* TTDP style aircraft movement action for GRF Action 2 Var 0xE6 */
 enum {
-	AMA_TTDP_IN_HANGER,
+	AMA_TTDP_IN_HANGAR,
 	AMA_TTDP_ON_PAD1,
 	AMA_TTDP_ON_PAD2,
 	AMA_TTDP_ON_PAD3,
-	AMA_TTDP_HANGER_TO_PAD1,
-	AMA_TTDP_HANGER_TO_PAD2,
-	AMA_TTDP_HANGER_TO_PAD3,
+	AMA_TTDP_HANGAR_TO_PAD1,
+	AMA_TTDP_HANGAR_TO_PAD2,
+	AMA_TTDP_HANGAR_TO_PAD3,
 	AMA_TTDP_LANDING_TO_PAD1,
 	AMA_TTDP_LANDING_TO_PAD2,
 	AMA_TTDP_LANDING_TO_PAD3,
-	AMA_TTDP_PAD1_TO_HANGER,
-	AMA_TTDP_PAD2_TO_HANGER,
-	AMA_TTDP_PAD3_TO_HANGER,
+	AMA_TTDP_PAD1_TO_HANGAR,
+	AMA_TTDP_PAD2_TO_HANGAR,
+	AMA_TTDP_PAD3_TO_HANGAR,
 	AMA_TTDP_PAD1_TO_TAKEOFF,
 	AMA_TTDP_PAD2_TO_TAKEOFF,
 	AMA_TTDP_PAD3_TO_TAKEOFF,
-	AMA_TTDP_HANGER_TO_TAKOFF,
-	AMA_TTDP_LANDING_TO_HANGER,
+	AMA_TTDP_HANGAR_TO_TAKOFF,
+	AMA_TTDP_LANDING_TO_HANGAR,
 	AMA_TTDP_IN_FLIGHT,
 };
 
@@ -418,7 +418,7 @@ static byte MapAircraftMovementAction(const Vehicle *v)
 {
 	switch (v->u.air.state) {
 		case HANGAR:
-			return (v->cur_speed > 0) ? AMA_TTDP_LANDING_TO_HANGER : AMA_TTDP_IN_HANGER;
+			return (v->cur_speed > 0) ? AMA_TTDP_LANDING_TO_HANGAR : AMA_TTDP_IN_HANGAR;
 
 		case TERM1:
 		case HELIPAD1:
@@ -450,10 +450,10 @@ static byte MapAircraftMovementAction(const Vehicle *v)
 		case HELIENDLANDING:
 			// TODO Need to check terminal we're landing to. Is it known yet?
 			return (v->current_order.type == OT_GOTO_DEPOT) ?
-				AMA_TTDP_LANDING_TO_HANGER : AMA_TTDP_LANDING_TO_PAD1;
+				AMA_TTDP_LANDING_TO_HANGAR : AMA_TTDP_LANDING_TO_PAD1;
 
 		default:
-			return AMA_TTDP_IN_HANGER;
+			return AMA_TTDP_IN_HANGAR;
 	}
 }
 
