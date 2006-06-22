@@ -22,9 +22,9 @@ void SetWagonOverrideSprites(EngineID engine, const struct SpriteGroup *group, b
 void SetCustomEngineSprites(EngineID engine, byte cargo, const struct SpriteGroup *group);
 void SetRotorOverrideSprites(EngineID engine, const struct SpriteGroup *group);
 SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction);
-SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle* v);
-#define GetCustomRotorSprite(v) GetRotorOverrideSprite(v->engine_type, v)
-#define GetCustomRotorIcon(et) GetRotorOverrideSprite(et, NULL)
+SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle* v, bool info_view);
+#define GetCustomRotorSprite(v, i) GetRotorOverrideSprite(v->engine_type, v, i)
+#define GetCustomRotorIcon(et) GetRotorOverrideSprite(et, NULL, true)
 
 /* Forward declaration of GRFFile, to avoid unnecessary inclusion of newgrf.h
  * elsewhere... */

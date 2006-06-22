@@ -660,7 +660,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x1C: return v->y_pos;
 		case 0x1D: return v->y_pos & 0xFF;
 		case 0x1E: return v->z_pos;
-		case 0x1F: return v->direction;
+		case 0x1F: return object->info_view ? DIR_W : v->direction;
 		case 0x28: return v->cur_image;
 		case 0x29: return v->cur_image & 0xFF;
 		case 0x32: return v->vehstatus;
@@ -799,6 +799,8 @@ static inline void NewVehicleResolver(ResolverObject *res, const Vehicle *v)
 	res->u.vehicle.self   = v;
 	res->u.vehicle.parent = (v != NULL && v->type == VEH_Train) ? GetFirstVehicleInChain(v) : v;
 
+	res->info_view = false;
+
 	res->callback        = 0;
 	res->callback_param1 = 0;
 	res->callback_param2 = 0;
@@ -842,7 +844,7 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 }
 
 
-SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v)
+SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_view)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
@@ -855,6 +857,8 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v)
 
 	NewVehicleResolver(&object, v);
 
+	object.info_view = info_view;
+
 	group = heli_rotor_custom_sprites[engine - AIRCRAFT_ENGINES_INDEX];
 	group = Resolve(group, &object);
 
@@ -862,7 +866,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v)
 
 	if (v == NULL) return group->g.result.sprite;
 
-	return group->g.result.sprite + (v->next->next->u.air.state % group->g.result.num_sprites);
+	return group->g.result.sprite + (info_view ? 0 : (v->next->next->u.air.state % group->g.result.num_sprites));
 }
 
 

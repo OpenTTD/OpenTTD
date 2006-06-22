@@ -165,6 +165,8 @@ typedef struct ResolverObject {
 	uint32 reseed;
 	VarSpriteGroupScope scope;
 
+	bool info_view; ///< Indicates if the item is being drawn in an info window
+
 	union {
 		struct {
 			const struct Vehicle *self;

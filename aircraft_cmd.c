@@ -123,7 +123,7 @@ SpriteID GetRotorImage(const Vehicle *v)
 
 	w = v->next->next;
 	if (is_custom_sprite(v->spritenum)) {
-		SpriteID spritenum = GetCustomRotorSprite(v);
+		SpriteID spritenum = GetCustomRotorSprite(v, false);
 		if (spritenum != 0) return spritenum;
 	}
 
