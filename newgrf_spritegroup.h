@@ -171,6 +171,7 @@ typedef struct ResolverObject {
 		struct {
 			const struct Vehicle *self;
 			const struct Vehicle *parent;
+			EngineID self_type;
 		} vehicle;
 		struct {
 			TileIndex tile;

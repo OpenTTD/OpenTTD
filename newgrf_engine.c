@@ -502,6 +502,15 @@ static void VehicleSetTriggers(const ResolverObject *object, int triggers)
 }
 
 
+static uint32 GetGRFParameter(EngineID engine_type, byte parameter)
+{
+	const GRFFile *file = GetEngineGRF(engine_type);
+
+	if (parameter >= file->param_end) return 0;
+	return file->param[parameter];
+}
+
+
 static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, byte parameter, bool *available)
 {
 	const Vehicle *v = GRV(object);
@@ -513,6 +522,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			case 0x46: return 0;               /* Motion counter */
 			case 0xC4: return _cur_year;       /* Build year */
 			case 0xDA: return INVALID_VEHICLE; /* Next vehicle */
+			case 0x7F: return GetGRFParameter(object->u.vehicle.self_type, parameter); /* Read GRF parameter */
 		}
 
 		*available = false;
@@ -628,11 +638,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				return count;
 			}
 
-		case 0x7F: { /* Read GRF parameter */
-			const GRFFile *file = GetEngineGRF(v->engine_type);
-			if (parameter >= file->param_end) return 0;
-			return file->param[parameter];
-		}
+		case 0x7F: return GetGRFParameter(v->engine_type, parameter); /* Read GRF parameter */
 	}
 
 	/* General vehicle properties */
@@ -788,7 +794,7 @@ static const SpriteGroup *VehicleResolveReal(const ResolverObject *object, const
 }
 
 
-static inline void NewVehicleResolver(ResolverObject *res, const Vehicle *v)
+static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type, const Vehicle *v)
 {
 	res->GetRandomBits = &VehicleGetRandomBits;
 	res->GetTriggers   = &VehicleGetTriggers;
@@ -798,6 +804,8 @@ static inline void NewVehicleResolver(ResolverObject *res, const Vehicle *v)
 
 	res->u.vehicle.self   = v;
 	res->u.vehicle.parent = (v != NULL && v->type == VEH_Train) ? GetFirstVehicleInChain(v) : v;
+
+	res->u.vehicle.self_type = engine_type;
 
 	res->info_view = false;
 
@@ -816,7 +824,7 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 	ResolverObject object;
 	CargoID cargo = GC_PURCHASE;
 
-	NewVehicleResolver(&object, v);
+	NewVehicleResolver(&object, engine, v);
 
 	if (v != NULL) {
 		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
@@ -855,7 +863,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
 	/* Only valid for helicopters */
 	assert(!(AircraftVehInfo(engine)->subtype & AIR_CTOL));
 
-	NewVehicleResolver(&object, v);
+	NewVehicleResolver(&object, engine, v);
 
 	object.info_view = info_view;
 
@@ -896,7 +904,7 @@ uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineI
 	ResolverObject object;
 	CargoID cargo;
 
-	NewVehicleResolver(&object, v);
+	NewVehicleResolver(&object, engine, v);
 
 	object.callback        = callback;
 	object.callback_param1 = param1;
@@ -941,7 +949,7 @@ uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, E
 	ResolverObject object;
 	CargoID cargo;
 
-	NewVehicleResolver(&object, v);
+	NewVehicleResolver(&object, engine, v);
 
 	object.callback        = callback;
 	object.callback_param1 = param1;
@@ -982,7 +990,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	/* We can't trigger a non-existent vehicle... */
 	assert(v != NULL);
 
-	NewVehicleResolver(&object, v);
+	NewVehicleResolver(&object, v->engine_type, v);
 
 	object.trigger = trigger;
 
