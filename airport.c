@@ -15,12 +15,16 @@ static AirportFTAClass* Oilrig;
 static AirportFTAClass* Heliport;
 static AirportFTAClass* MetropolitanAirport;
 static AirportFTAClass* InternationalAirport;
+static AirportFTAClass* CommuterAirport;
+static AirportFTAClass* HeliDepot;
+static AirportFTAClass* IntercontinentalAirport;
+static AirportFTAClass* HeliStation;
 
 static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
-																				const byte *terminals, const byte *helipads,
-																				const byte entry_point,  const byte acc_planes,
-																				const AirportFTAbuildup *FA,
-																				const TileIndexDiffC *depots, const byte nof_depots,
+	const byte *terminals, const byte *helipads,
+	const byte entry_point,  const byte acc_planes,
+	const AirportFTAbuildup *FA,
+	const TileIndexDiffC *depots, const byte nof_depots,
 	uint size_x, uint size_y
 );
 static void AirportFTAClass_Destructor(AirportFTAClass *Airport);
@@ -93,6 +97,21 @@ void InitializeAirports(void)
 		7, 7
 	);
 
+	// intercontintental airport
+	IntercontinentalAirport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
+
+	AirportFTAClass_Constructor(
+		IntercontinentalAirport,
+		_airport_terminal_intercontinental,
+		_airport_helipad_intercontinental,
+		43,
+		ALL,
+		_airport_fta_intercontinental,
+		_airport_depots_intercontinental,
+		lengthof(_airport_depots_intercontinental),
+		9,11
+	);
+
 	// heliport, oilrig
 	Heliport = (AirportFTAClass *)malloc(sizeof(AirportFTAClass));
 
@@ -109,6 +128,52 @@ void InitializeAirports(void)
 	);
 
 	Oilrig = Heliport;  // exactly the same structure for heliport/oilrig, so share state machine
+
+	// commuter airport
+	CommuterAirport = malloc(sizeof(AirportFTAClass));
+
+	AirportFTAClass_Constructor(
+		CommuterAirport,
+		_airport_terminal_commuter,
+		_airport_helipad_commuter,
+		22,
+		ALL,
+		_airport_fta_commuter,
+		_airport_depots_commuter,
+		lengthof(_airport_depots_commuter),
+		5,4
+	);
+
+	// helidepot airport
+	HeliDepot = malloc(sizeof(AirportFTAClass));
+
+	AirportFTAClass_Constructor(
+		HeliDepot,
+		NULL,
+		_airport_helipad_helidepot,
+		4,
+		HELICOPTERS_ONLY,
+		_airport_fta_helidepot,
+		_airport_depots_helidepot,
+		lengthof(_airport_depots_helidepot),
+		2,2
+	);
+
+	// helistation airport
+	HeliStation = malloc(sizeof(AirportFTAClass));
+
+	AirportFTAClass_Constructor(
+		HeliStation,
+		NULL,
+		_airport_helipad_helistation,
+		25,
+		HELICOPTERS_ONLY,
+		_airport_fta_helistation,
+		_airport_depots_helistation,
+		lengthof(_airport_depots_helistation),
+		4,2
+	);
+
 }
 
 void UnInitializeAirports(void)
@@ -118,6 +183,10 @@ void UnInitializeAirports(void)
 	AirportFTAClass_Destructor(Heliport);
 	AirportFTAClass_Destructor(MetropolitanAirport);
 	AirportFTAClass_Destructor(InternationalAirport);
+	AirportFTAClass_Destructor(CommuterAirport);
+	AirportFTAClass_Destructor(HeliDepot);
+	AirportFTAClass_Destructor(IntercontinentalAirport);
+	AirportFTAClass_Destructor(HeliStation);
 }
 
 static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
@@ -317,6 +386,10 @@ static const char* const _airport_heading_strings[] = {
 	"ENDLANDING",
 	"HELILANDING",
 	"HELIENDLANDING",
+	"TERM7",
+	"TERM8",
+	"HELIPAD3",
+	"HELIPAD4",
 	"DUMMY"	// extra heading for 255
 };
 
@@ -369,17 +442,21 @@ const AirportFTAClass* GetAirport(const byte airport_type)
 	//FIXME -- AircraftNextAirportPos_and_Order -> Needs something nicer, don't like this code
 	// needs constant change if more airports are added
 	switch (airport_type) {
-		case AT_SMALL: Airport = CountryAirport; break;
-		case AT_LARGE: Airport = CityAirport; break;
-		case AT_METROPOLITAN: Airport = MetropolitanAirport; break;
-		case AT_HELIPORT: Airport = Heliport; break;
-		case AT_OILRIG: Airport = Oilrig; break;
+		case AT_SMALL:         Airport = CountryAirport; break;
+		case AT_LARGE:         Airport = CityAirport; break;
+		case AT_METROPOLITAN:  Airport = MetropolitanAirport; break;
+		case AT_HELIPORT:      Airport = Heliport; break;
+		case AT_OILRIG:        Airport = Oilrig; break;
 		case AT_INTERNATIONAL: Airport = InternationalAirport; break;
+		case AT_COMMUTER:      Airport = CommuterAirport; break;
+		case AT_HELIDEPOT:     Airport = HeliDepot; break;
+		case AT_INTERCON:      Airport = IntercontinentalAirport; break;
+		case AT_HELISTATION:   Airport = HeliStation; break;
 		default:
 			#ifdef DEBUG__
 				printf("Airport AircraftNextAirportPos_and_Order not yet implemented\n");
 			#endif
-			assert(airport_type <= AT_INTERNATIONAL);
+			assert(airport_type <= AT_HELISTATION);
 	}
 	return Airport;
 }
@@ -399,5 +476,9 @@ uint32 GetValidAirports(void)
 	// 1990-1-1 is --> 25568
 	if (_date >= 21915) SETBIT(bytemask, 3); // metropilitan airport 1980
 	if (_date >= 25568) SETBIT(bytemask, 4); // international airport 1990
+	if (_date >= 23011) SETBIT(bytemask, 5); // commuter airport 1983
+	if (_date >= 20455) SETBIT(bytemask, 6); // helidepot 1976
+	if (_date >= 29951) SETBIT(bytemask, 7); // intercontinental airport 2002
+	if (_date >= 21915) SETBIT(bytemask, 8); // helistation 1980
 	return bytemask;
 }

@@ -38,7 +38,9 @@ enum {
 	GFX_RADAR_INTERNATIONAL_LAST  = 101,
 	GFX_RADAR_METROPOLITAN_FIRST  = 102,
 	GFX_RADAR_METROPOLITAN_LAST   = 113,
-	GFX_BASE_END                  = 155
+	GFX_RADAR_DISTRICTWE_FIRST    = 145,
+	GFX_RADAR_DISTRICTWE_LAST     = 156,
+	GFX_BASE_END                  = 161
 };
 
 enum {
@@ -53,7 +55,10 @@ enum {
 typedef enum HangarTiles {
 	HANGAR_TILE_0 = 32,
 	HANGAR_TILE_1 = 65,
-	HANGAR_TILE_2 = 86
+	HANGAR_TILE_2 = 86,
+	HANGAR_TILE_3 = 129, // added for west facing hangar
+	HANGAR_TILE_4 = 130, // added for north facing hangar
+	HANGAR_TILE_5 = 131 // added for east facing hangar
 } HangarTiles;
 
 typedef enum StationType {
@@ -102,7 +107,10 @@ static inline bool IsHangar(TileIndex t)
 	return
 		gfx == HANGAR_TILE_0 ||
 		gfx == HANGAR_TILE_1 ||
-		gfx == HANGAR_TILE_2;
+		gfx == HANGAR_TILE_2 ||
+		gfx == HANGAR_TILE_3 ||
+		gfx == HANGAR_TILE_4 ||
+		gfx == HANGAR_TILE_5;
 }
 
 static inline bool IsAirport(TileIndex t)

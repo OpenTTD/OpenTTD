@@ -180,6 +180,10 @@ static uint FindCatchmentRadius(const Station* st)
 			case AT_LARGE:         ret = max(ret, CA_AIR_LARGE);    break;
 			case AT_METROPOLITAN:  ret = max(ret, CA_AIR_METRO);    break;
 			case AT_INTERNATIONAL: ret = max(ret, CA_AIR_INTER);    break;
+			case AT_COMMUTER:      ret = max(ret, CA_AIR_COMMUTER); break;
+			case AT_HELIDEPOT:     ret = max(ret, CA_AIR_HELIDEPOT); break;
+			case AT_INTERCON:      ret = max(ret, CA_AIR_INTERCON); break;
+			case AT_HELISTATION:   ret = max(ret, CA_AIR_HELISTATION); break;
 		}
 	}
 
@@ -1594,17 +1598,57 @@ static const byte _airport_sections_international[] = {
 	26, 23, 23, 23, 23, 23,  26
 };
 
+// Intercontinental Airport (vlarge) - 4 runways
+static const byte _airport_sections_intercontinental[] = {
+  	102, 120,  89,  89,  89,  89,  89,  89, 118,
+  	120,  22,  22,  22,  22,  22,  22, 119, 117,
+ 	 87,  54,  87,   8,   8,   8,   8,  51, 117,
+ 	 87,  18,  87,  85, 116, 116,   8,   9,  10,
+	 87,   8,   8,  11,  31,  11,   8, 160,  32,
+	 32, 160,   8,  11,  27,  11,   8,   8,  10,
+	 87,   8,   8,  11,  30,  11,   8,   8,  10,
+	 87, 142,   8,  11,  29,  11,  10,  12,  10,
+	 87,  58,  87,   8,   8,   8,  10,  56, 117,
+  	 87, 120,  89,  89,  89,  89,  89,  89, 119,
+  	121,  22,  22,  22,  22,  22,  22, 119,  37
+};
+
+
+// Commuter Airfield (small)
+static const byte _airport_sections_commuter[] = {
+	85, 30, 115, 115, 32,
+	87, 8,    8,   8, 10,
+	87, 11,  11,  11, 10,
+	26, 23,  23,  23, 26
+};
+
 // Heliport
 static const byte _airport_sections_heliport[] = {
 	66,
 };
 
+// Helidepot
+static const byte _airport_sections_helidepot[] = {
+	124, 32,
+	122, 123
+};
+
+// Helistation
+static const byte _airport_sections_helistation[] = {
+	 32, 134, 159, 158,
+	161, 142, 142, 157
+};
+
 static const byte * const _airport_sections[] = {
-	_airport_sections_country,        // Country Airfield (small)
-	_airport_sections_town,           // City Airport (large)
-	_airport_sections_heliport,       // Heliport
-	_airport_sections_metropolitan,   // Metropolitain Airport (large)
-	_airport_sections_international,  // International Airport (xlarge)
+	_airport_sections_country,           // Country Airfield (small)
+	_airport_sections_town,              // City Airport (large)
+	_airport_sections_heliport,          // Heliport
+	_airport_sections_metropolitan,      // Metropolitain Airport (large)
+	_airport_sections_international,     // International Airport (xlarge)
+	_airport_sections_commuter,          // Commuter Airport (small)
+	_airport_sections_helidepot,         // Helidepot
+	_airport_sections_intercontinental,  // Intercontinental Airport (xxlarge)
+	_airport_sections_helistation        // Helistation
 };
 
 /** Place an Airport.
@@ -1686,7 +1730,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		// if airport type equals Heliport then generate
 		// type 5 name, which is heliport, otherwise airport names (1)
-		if (!GenerateStationName(st, tile, (p1 == AT_HELIPORT) ? 5 : 1))
+		if (!GenerateStationName(st, tile, (p1 == AT_HELIPORT)||(p1 == AT_HELIDEPOT)||(p1 == AT_HELISTATION) ? 5 : 1))
 			return CMD_ERROR;
 
 		if (flags & DC_EXEC) StationInitialize(st, tile);
@@ -2196,6 +2240,7 @@ static void TileLoop_Station(TileIndex tile)
 		case GFX_WINDSACK_FIRST : // for small airport
 		case GFX_RADAR_INTERNATIONAL_FIRST:
 		case GFX_RADAR_METROPOLITAN_FIRST:
+		case GFX_RADAR_DISTRICTWE_FIRST: // radar district W-E airport
 			AddAnimatedTile(tile);
 			break;
 
@@ -2226,7 +2271,7 @@ static void AnimateTile_Station(TileIndex tile)
 		SetStationGfx(tile, gfx);
 		MarkTileDirtyByTile(tile);
 	//added - begin
-	} else if (IS_BYTE_INSIDE(gfx, GFX_RADAR_INTERNATIONAL_FIRST, GFX_RADAR_METROPOLITAN_LAST+1)) {
+	} else if (IS_BYTE_INSIDE(gfx, GFX_RADAR_INTERNATIONAL_FIRST, GFX_RADAR_METROPOLITAN_LAST + 1) || IS_BYTE_INSIDE(gfx, GFX_RADAR_DISTRICTWE_FIRST, GFX_RADAR_DISTRICTWE_LAST + 1) ) {
 		if (_tick_counter & 3)
 			return;
 
@@ -2237,6 +2282,9 @@ static void AnimateTile_Station(TileIndex tile)
 		}
 		else if (gfx == GFX_RADAR_METROPOLITAN_LAST+1) {
 			gfx = GFX_RADAR_METROPOLITAN_FIRST;
+		}
+		else if (gfx == GFX_RADAR_DISTRICTWE_LAST + 1) {
+			gfx = GFX_RADAR_DISTRICTWE_FIRST;
 		}
 
 		SetStationGfx(tile, gfx);

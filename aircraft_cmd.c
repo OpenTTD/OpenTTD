@@ -91,9 +91,8 @@ static bool HaveHangarInOrderList(Vehicle *v)
 	FOR_VEHICLE_ORDERS(v, order) {
 		const Station *st = GetStation(order->station);
 		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT) {
-			// If an airport doesn't have terminals (so no landing space for airports),
-			// it surely doesn't have any hangars
-			if (GetAirport(st->airport_type)->terminals != NULL)
+			// If an airport doesn't have a hangar, skip it
+			if (GetAirport(st->airport_type)->nof_depots != 0)
 				return true;
 		}
 	}
@@ -197,6 +196,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *vl[3], *v, *u, *w;
 	UnitID unit_num;
 	const AircraftVehicleInfo *avi;
+	const Station *st2;
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Aircraft)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
@@ -215,6 +215,12 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!AllocateVehicles(vl, avi->subtype & AIR_CTOL ? 2 : 3) ||
 			IsOrderPoolFull()) {
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
+	}
+
+	// prevent building of aircraft in helidepot/helistation
+	st2 = GetStationByTile(tile);
+	if ((avi->subtype != 0) && (GetAirport(st2->airport_type)->acc_planes == HELICOPTERS_ONLY)) {
+		return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 	}
 
 	unit_num = (HASBIT(p2, 0) == true) ? 0 : GetFreeUnitNumber(VEH_Aircraft);
@@ -450,7 +456,7 @@ int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	// cannot stop airplane when in flight, or when taking off / landing
-	if (v->u.air.state >= STARTTAKEOFF)
+	if (v->u.air.state >= STARTTAKEOFF && v->u.air.state < TERM7)
 		return_cmd_error(STR_A017_AIRCRAFT_IS_IN_FLIGHT);
 
 	if (flags & DC_EXEC) {
@@ -1082,6 +1088,8 @@ static void HandleCrashedAircraft(Vehicle *v)
 		// small airports use AIRPORT_BUSY, city airports use RUNWAY_IN_OUT_block, etc.
 		// but they all share the same number
 		CLRBITS(st->airport_flags, RUNWAY_IN_block);
+		CLRBITS(st->airport_flags, RUNWAY_IN_OUT_block); // commuter airport
+		CLRBITS(st->airport_flags, RUNWAY_IN2_block); // intercontinental
 
 		BeginVehicleMove(v);
 		EndVehicleMove(v);
@@ -1272,7 +1280,7 @@ static void MaybeCrashAirplane(Vehicle *v)
 
 	//FIXME -- MaybeCrashAirplane -> increase crashing chances of very modern airplanes on smaller than AT_METROPOLITAN airports
 	prob = 0x10000 / 1500;
-	if (st->airport_type == AT_SMALL && AircraftVehInfo(v->engine_type)->subtype & AIR_FAST && !_cheats.no_jetcrash.value) {
+	if (((st->airport_type == AT_SMALL) || (st->airport_type == AT_COMMUTER)) && (AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) && !_cheats.no_jetcrash.value) {
 		prob = 0x10000 / 20;
 	}
 
@@ -1669,7 +1677,7 @@ static void AircraftEventHandler_HeliEndLanding(Vehicle *v, const AirportFTAClas
 	if (v->current_order.type == OT_GOTO_STATION) {
 		if (AirportFindFreeHelipad(v, Airport)) return;
 	}
-	v->u.air.state = (Airport->terminals != NULL) ? HANGAR : HELITAKEOFF;
+	v->u.air.state = (Airport->nof_depots != 0) ? HANGAR : HELITAKEOFF;
 }
 
 typedef void AircraftStateHandler(Vehicle *v, const AirportFTAClass *Airport);
@@ -1693,6 +1701,10 @@ static AircraftStateHandler * const _aircraft_state_handlers[] = {
 	AircraftEventHandler_EndLanding,		// ENDLANDING     = 16
 	AircraftEventHandler_HeliLanding,		// HELILANDING    = 17
 	AircraftEventHandler_HeliEndLanding,// HELIENDLANDING = 18
+	AircraftEventHandler_AtTerminal,		// TERM7          =  19
+	AircraftEventHandler_AtTerminal,		// TERM8          =  20
+	AircraftEventHandler_AtTerminal,		// HELIPAD3       =  21
+	AircraftEventHandler_AtTerminal,		// HELIPAD4       =  22
 };
 
 static void AirportClearBlock(const Vehicle* v, const AirportFTAClass* Airport)
@@ -1796,10 +1808,9 @@ static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportF
 	AirportFTA* current;
 
 	// if the next position is in another block, check it and wait until it is free
-	if (Airport->layout[current_pos->position].block != next->block) {
+	if ((Airport->layout[current_pos->position].block & next->block) != next->block) {
 		uint32 airport_flags = next->block;
 		Station* st = GetStation(v->u.air.targetairport);
-
 		//search for all all elements in the list with the same state, and blocks != N
 		// this means more blocks should be checked/set
 		current = current_pos;
@@ -1833,10 +1844,10 @@ static bool FreeTerminal(Vehicle *v, byte i, byte last_terminal)
 {
 	Station *st = GetStation(v->u.air.targetairport);
 	for (; i < last_terminal; i++) {
-		if (!HASBIT(st->airport_flags, i)) {
+		if (!HASBIT(st->airport_flags, _airport_terminal_flag[i])) {
 			// TERMINAL# HELIPAD#
-			v->u.air.state = i + TERM1; // start moving to that terminal/helipad
-			SETBIT(st->airport_flags, i); // occupy terminal/helipad
+			v->u.air.state = _airport_terminal_state[i]; // start moving to that terminal/helipad
+			SETBIT(st->airport_flags, _airport_terminal_flag[i]); // occupy terminal/helipad
 			return true;
 		}
 	}

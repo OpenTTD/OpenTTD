@@ -128,6 +128,10 @@ enum {
 	CA_DOCK = 5,
 	CA_AIR_METRO = 6,
 	CA_AIR_INTER = 8,
+	CA_AIR_COMMUTER    = 4,
+	CA_AIR_HELIDEPOT   = 4,
+	CA_AIR_INTERCON    = 10,
+	CA_AIR_HELISTATION = 4,
 };
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);

@@ -159,12 +159,12 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 
 		/* 'Country Airport' starts at widget 3, and if its bit is set, it is
 		 * available, so take its opposite value to set the disabled_state. There
-		 * are only 5 available airports, so XOR with 0x1F (1 1111) */
-		w->disabled_state = (avail_airports ^ 0x1F) << 3;
+		 * are 9 buildable airports, so XOR with 0x01FF (1 1111 1111) */
+		w->disabled_state = (avail_airports ^ 0x01FF) << 7;
 
 		_selected_airport_type = sel;
-		// select default the coverage area to 'Off' (8)
-		w->click_state = ((1<<3) << sel) | ((1<<8) << _station_show_coverage);
+		// select default the coverage area to 'Off' (16)
+		w->click_state = ((1<<7) << sel) | ((1<<16) << _station_show_coverage);
 		airport = GetAirport(sel);
 		SetTileSelectSize(airport->size_x, airport->size_y);
 
@@ -176,6 +176,10 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 				case AT_LARGE:         rad = CA_AIR_LARGE;    break;
 				case AT_METROPOLITAN:  rad = CA_AIR_METRO;    break;
 				case AT_INTERNATIONAL: rad = CA_AIR_INTER;    break;
+				case AT_COMMUTER:      rad = CA_AIR_COMMUTER; break;
+				case AT_HELIDEPOT:     rad = CA_AIR_HELIDEPOT; break;
+				case AT_INTERCON:      rad = CA_AIR_INTERCON; break;
+				case AT_HELISTATION:   rad = CA_AIR_HELISTATION; break;
 			}
 		}
 
@@ -183,21 +187,24 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
     // strings such as 'Size' and 'Coverage Area'
-		DrawStringCentered(74, 16, STR_305B_SIZE, 0);
-		DrawStringCentered(74, 78, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
-		DrawStationCoverageAreaText(2, 104, (uint)-1, rad);
+		DrawStringCentered(74,  16, STR_SMALL_AIRPORTS, 0);
+		DrawStringCentered(74,  54, STR_LARGE_AIRPORTS, 0);
+		DrawStringCentered(74,  92, STR_HUB_AIRPORTS, 0);
+		DrawStringCentered(74, 130, STR_HELIPORTS, 0);
+		DrawStringCentered(74, 180, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
+		DrawStationCoverageAreaText(2, 206, (uint)-1, rad);
 		break;
 	}
 
 	case WE_CLICK: {
 		switch (e->click.widget) {
-		case 3: case 4: case 5: case 6: case 7:
-			_selected_airport_type = e->click.widget - 3;
+		case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15:
+			_selected_airport_type = e->click.widget - 7;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
-		case 8: case 9:
-			_station_show_coverage = e->click.widget - 8;
+		case 16: case 17:
+			_station_show_coverage = e->click.widget - 16;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -220,21 +227,29 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_airport_picker_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3001_AIRPORT_SELECTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,   130, 0x0,													STR_NULL},
-{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,    73,    27,    38, STR_3059_SMALL,							STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{WWT_NODISTXTBTN,   RESIZE_NONE,    14,    74,   145,    27,    38, STR_305A_LARGE,							STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    63,    74, STR_306B_HELIPORT,						STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    39,    50, STR_305AA_LARGE,	  					STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    51,    62, STR_305AB_LARGE,	  					STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,    88,    98, STR_02DB_OFF,								STR_3065_DON_T_HIGHLIGHT_COVERAGE},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,    88,    98, STR_02DA_ON,									STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                      STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3001_AIRPORT_SELECTION,    STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,    52, 0x0,                           STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    53,    89, 0x0,                           STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    90,   127, 0x0,                           STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,   128,   177, 0x0,                           STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,   178,   239, 0x0,                           STR_NULL},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    27,    38, STR_SMALL_AIRPORT,             STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    65,    76, STR_CITY_AIRPORT,              STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,   141,   152, STR_HELIPORT,                  STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    77,    88, STR_METRO_AIRPORT ,            STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,   103,   114, STR_INTERNATIONAL_AIRPORT,     STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,    39,    50, STR_COMMUTER_AIRPORT,          STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,   165,   176, STR_HELIDEPOT,                 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,   115,   126, STR_INTERCONTINENTAL_AIRPORT,  STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{WWT_NODISTXTBTN,   RESIZE_NONE,    14,     2,   145,   153,   164, STR_HELISTATION,               STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,   191,   202, STR_02DB_OFF,                  STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,   191,   202, STR_02DA_ON,                   STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _build_airport_desc = {
-	-1, -1, 148, 131, // height, 130+1
+	-1, -1, 148, 240,
 	WC_BUILD_STATION,WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_airport_picker_widgets,

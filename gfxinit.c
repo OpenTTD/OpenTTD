@@ -368,6 +368,9 @@ static void LoadSpriteTables(void)
 	LoadGrfIndexed("openttd.grf", _openttd_grf_indexes, i++);
 	load_index = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT;
 
+	assert(load_index == SPR_AIRPORTX_BASE);
+	load_index += LoadGrfFile("airports.grf", load_index, i++);
+
 	LoadNewGRF(load_index, i);
 }
 

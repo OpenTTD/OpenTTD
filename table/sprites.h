@@ -80,6 +80,21 @@ enum Sprites {
 	SPR_LOCK = SPR_OPENTTD_BASE + 19,       // lock icon (for password protected servers)
 	SPR_FLAGS_BASE = SPR_OPENTTD_BASE + 83, // start of the flags block (in same order as enum NetworkLanguage)
 
+	SPR_AIRPORTX_BASE = SPR_OPENTTD_BASE + 95, // The sprites used for other airport angles
+	SPR_NEWAIRPORT_TARMAC = SPR_AIRPORTX_BASE,
+	SPR_NSRUNWAY1 = SPR_AIRPORTX_BASE + 1,
+	SPR_NSRUNWAY2 = SPR_AIRPORTX_BASE + 2,
+	SPR_NSRUNWAY3 = SPR_AIRPORTX_BASE + 3,
+	SPR_NSRUNWAY4 = SPR_AIRPORTX_BASE + 4,
+	SPR_NSRUNWAY_END = SPR_AIRPORTX_BASE + 5,
+	SPR_NEWHANGAR_S = SPR_AIRPORTX_BASE + 6,
+	SPR_NEWHANGAR_S_WALL = SPR_AIRPORTX_BASE + 7,
+	SPR_NEWHANGAR_W = SPR_AIRPORTX_BASE + 8,
+	SPR_NEWHANGAR_W_WALL = SPR_AIRPORTX_BASE + 9,
+	SPR_NEWHANGAR_N = SPR_AIRPORTX_BASE + 10,
+	SPR_NEWHANGAR_E = SPR_AIRPORTX_BASE + 11,
+	SPR_NEWHELIPAD = SPR_AIRPORTX_BASE + 12,
+
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face
 
@@ -317,6 +332,7 @@ enum Sprites {
 	SPR_AIRPORT_RADAR_B             = 2690,
 	SPR_AIRPORT_RADAR_C             = 2691,
 	SPR_AIRPORT_HELIPAD             = SPR_OPENTTD_BASE + 28,
+	SPR_AIRPORT_HELIDEPOT_OFFICE	= 2095,
 
 	/* Road Stops */
 	/* Road stops have a ground tile and 3 buildings, one on each side

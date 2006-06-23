@@ -63,12 +63,12 @@ static const DrawTileSeqStruct _station_display_datas_8[] = {
 };
 
 static const DrawTileSeqStruct _station_display_datas_9[] = {
-	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR },
+	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
 	TILE_SEQ_END()
 };
 
 static const DrawTileSeqStruct _station_display_datas_10[] = {
-	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR },
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
 	TILE_SEQ_END()
 };
 
@@ -678,6 +678,344 @@ static const DrawTileSeqStruct _station_display_datas_0114[] = {
 	TILE_SEQ_END()
 };
 
+// helipad for commuter airport
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0115[] = {
+	{ 10,  6,  0,  0,  0,  0, SPR_AIRPORT_HELIPAD },
+	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences left
+	TILE_SEQ_END()
+};
+
+// helipad for continental airport
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0116[] = {
+	{ 10,  6,  0,  0,  0,  0, SPR_AIRPORT_HELIPAD },
+	TILE_SEQ_END()
+};
+
+// asphalt tile with fences in north and south
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0117[] = {
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR },
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR },
+	TILE_SEQ_END()
+};
+
+// runway tiles with 2 corner fences
+static const DrawTileSeqStruct _station_display_datas_0118[] = {
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
+	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
+	TILE_SEQ_END()
+};
+
+// runway tiles with 2 corner fences
+static const DrawTileSeqStruct _station_display_datas_0119[] = {
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// runway tiles with 2 corner fences
+static const DrawTileSeqStruct _station_display_datas_0120[] = {
+	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	TILE_SEQ_END()
+};
+
+// runway tiles with 2 corner fences
+static const DrawTileSeqStruct _station_display_datas_0121[] = {
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// ======== new 2x2 helidepot ========
+// helipad tiles with 2 corner fences top+right
+static const DrawTileSeqStruct _station_display_datas_0122[] = {
+	{ 10,  6,  0,  0,  0,  0, SPR_AIRPORT_HELIPAD },
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// tarmac tiles with 2 corner fences bottom+right
+static const DrawTileSeqStruct _station_display_datas_0123[] = {
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences north
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// helidepot office with concrete underground and no fence
+// concrete underground, fences top + left
+static const DrawTileSeqStruct _station_display_datas_0124[] = {
+	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences left
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	{  3,  3,  0, 10, 10, 60, SPR_AIRPORT_HELIDEPOT_OFFICE | PALETTE_MODIFIER_COLOR },  // helidepot office
+	TILE_SEQ_END()
+};
+
+// N/S runway plain
+static const DrawTileSeqStruct _station_display_datas_0125[] = {
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	TILE_SEQ_END()
+};
+
+// N/S runway end
+static const DrawTileSeqStruct _station_display_datas_0126[] = {
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	TILE_SEQ_END()
+};
+
+// N/S runway plain
+static const DrawTileSeqStruct _station_display_datas_0127[] = {
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences bottom
+	TILE_SEQ_END()
+};
+
+// N/S runway end
+static const DrawTileSeqStruct _station_display_datas_0128[] = {
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences bottom
+	TILE_SEQ_END()
+};
+
+// West facing hangar
+static const DrawTileSeqStruct _station_display_datas_0129[] = {
+	{ 14,  0,  0,  2, 16, 28, SPR_NEWHANGAR_W | PALETTE_MODIFIER_COLOR },
+	{  0,  0,  0,  2, 16, 28, SPR_NEWHANGAR_W_WALL },
+	TILE_SEQ_END()
+};
+
+// North facing hangar
+static const DrawTileSeqStruct _station_display_datas_0130[] = {
+	{ 14,  0,  0,  2, 16, 28, SPR_NEWHANGAR_N | PALETTE_MODIFIER_COLOR },
+	TILE_SEQ_END()
+};
+
+// East facing hangar
+static const DrawTileSeqStruct _station_display_datas_0131[] = {
+	{ 14,  0,  0,  2, 16, 28, SPR_NEWHANGAR_E | PALETTE_MODIFIER_COLOR },
+	TILE_SEQ_END()
+};
+
+// helipad for district airport NS
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0132[] = {
+	{ 10,  6,  0,  0,  0,  0, SPR_AIRPORT_HELIPAD },
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences bottom
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences right
+	TILE_SEQ_END()
+};
+
+// helipad for district airport NS
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0133[] = {
+	{ 10,  6,  0,  0,  0,  0, SPR_AIRPORT_HELIPAD },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// helidepot office with concrete underground and fence north
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0134[] = {
+	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
+	{  3,  3,  0, 10, 10, 60, SPR_AIRPORT_HELIDEPOT_OFFICE | PALETTE_MODIFIER_COLOR },  // helidepot office
+	TILE_SEQ_END()
+};
+
+// helidepot office with concrete underground and fence east
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0135[] = {
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	{  3,  3,  0, 10, 10, 60, SPR_AIRPORT_HELIDEPOT_OFFICE | PALETTE_MODIFIER_COLOR },  // helidepot office
+	TILE_SEQ_END()
+};
+
+// helidepot office with concrete underground and fence west
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0136[] = {
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
+	{  3,  3,  0, 10, 10, 60, SPR_AIRPORT_HELIDEPOT_OFFICE | PALETTE_MODIFIER_COLOR },  // helidepot office
+	TILE_SEQ_END()
+};
+
+// helidepot office with concrete underground and fence south
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0137[] = {
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	{  3,  3,  0, 10, 10, 60, SPR_AIRPORT_HELIDEPOT_OFFICE | PALETTE_MODIFIER_COLOR },  // helidepot office
+	TILE_SEQ_END()
+};
+
+// terminal with fence to east
+static const DrawTileSeqStruct _station_display_datas_0138[] = {
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	TILE_SEQ_END()
+};
+
+// terminal with fence to south
+static const DrawTileSeqStruct _station_display_datas_0139[] = {
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// terminal with fence to north
+static const DrawTileSeqStruct _station_display_datas_0140[] = {
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
+	TILE_SEQ_END()
+};
+
+// concrete with fence to east
+static const DrawTileSeqStruct _station_display_datas_0141[] = {
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	TILE_SEQ_END()
+};
+
+// concrete with fence to south
+static const DrawTileSeqStruct _station_display_datas_0142[] = {
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// helipad for district airport EW
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0143[] = {
+	{ 10,  6,  0,  0,  0,  0, SPR_AIRPORT_HELIPAD },
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
+	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
+	TILE_SEQ_END()
+};
+
+// helipad for district airport EW
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0144[] = {
+	{ 10,  6,  0,  0,  0,  0, SPR_AIRPORT_HELIPAD },
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
+	TILE_SEQ_END()
+};
+
+// turning radar with concrete underground fences on south -- needs 12 tiles
+// concrete underground
+//BEGIN
+static const DrawTileSeqStruct _station_display_datas_0145[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_1 },   // turning radar
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0146[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_2 },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0147[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_3 },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0148[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_4 },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0149[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_5 },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0150[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_6 },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0151[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_7 },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0152[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_8 },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0153[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_9 },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0154[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_A },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0155[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_B },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0156[] = {
+	{ 7,  7,  0,  2,  2,  8, SPR_AIRPORT_RADAR_C },
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+//END
+
+// helipad for helistation
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0157[] = {
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// helipad for helistation
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0158[] = {
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
+	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
+	TILE_SEQ_END()
+};
+
+// helipad for helistation
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0159[] = {
+	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
+	TILE_SEQ_END()
+};
+
+// helidepot office with concrete underground - no fence
+static const DrawTileSeqStruct _station_display_datas_0160[] = {
+	{  3,  3,  0, 10, 10, 60, SPR_AIRPORT_HELIDEPOT_OFFICE | PALETTE_MODIFIER_COLOR },  // helidepot office
+	TILE_SEQ_END()
+};
+
+// concrete underground
+static const DrawTileSeqStruct _station_display_datas_0161[] = {
+	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
+	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
 static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_RAIL_TRACK_X,              _station_display_datas_0 },
 	{ SPR_RAIL_TRACK_Y,              _station_display_datas_1 },
@@ -794,4 +1132,51 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_AIRPORT_APRON,             _station_display_datas_0112 },
 	{ SPR_AIRPORT_APRON,             _station_display_datas_0113 },
 	{ SPR_AIRPORT_APRON,             _station_display_datas_0114 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0115 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0116 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0117 },
+	{ SPR_AIRPORT_RUNWAY_END,        _station_display_datas_0118 },
+	{ SPR_AIRPORT_RUNWAY_END,        _station_display_datas_0119 },
+	{ SPR_AIRPORT_RUNWAY_END,        _station_display_datas_0120 },
+	{ SPR_AIRPORT_RUNWAY_END,        _station_display_datas_0121 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0122 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0123 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0124 },
+	{ SPR_NSRUNWAY1,                 _station_display_datas_0125 },
+	{ SPR_NSRUNWAY_END,              _station_display_datas_0126 },
+	{ SPR_NSRUNWAY1,                 _station_display_datas_0127 },
+	{ SPR_NSRUNWAY_END,              _station_display_datas_0128 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0129 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0130 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0131 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0132 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0133 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0134 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0135 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0136 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0137 },
+	{ SPR_AIRPORT_AIRCRAFT_STAND,    _station_display_datas_0138 },
+	{ SPR_AIRPORT_AIRCRAFT_STAND,    _station_display_datas_0139 },
+	{ SPR_AIRPORT_AIRCRAFT_STAND,    _station_display_datas_0140 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0141 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0142 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0143 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0144 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0145 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0146 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0147 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0148 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0149 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0150 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0151 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0152 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0153 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0154 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0155 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0156 },
+	{ SPR_NEWHELIPAD,                _station_display_datas_0157 },
+	{ SPR_NEWHELIPAD,                _station_display_datas_0158 },
+	{ SPR_NEWHELIPAD,                _station_display_datas_0159 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0160 },
+	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0161 },
 };

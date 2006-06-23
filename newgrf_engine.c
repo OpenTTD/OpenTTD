@@ -318,12 +318,16 @@ static byte MapAircraftMovementState(const Vehicle *v)
 		case TERM4:
 		case TERM5:
 		case TERM6:
+		case TERM7:
+		case TERM8:
 			/* TTDPatch only has 3 terminals, so treat these states the same */
 			if (amdflag & AMED_EXACTPOS) return AMS_TTDP_TO_PAD3;
 			return AMS_TTDP_TO_ENTRY_2_AND_3_AND_H;
 
 		case HELIPAD1:
-		case HELIPAD2: // Will only occur for helicopters.
+		case HELIPAD2:
+		case HELIPAD3:
+		case HELIPAD4: // Will only occur for helicopters.
 			if (amdflag & AMED_HELI_LOWER) return AMS_TTDP_HELI_LAND_AIRPORT; // Descending.
 			if (amdflag & AMED_SLOWTURN)   return AMS_TTDP_FLIGHT_TO_TOWER;   // Still hasn't started descent.
 			return AMS_TTDP_TO_JUNCTION; // On the ground.
@@ -343,6 +347,12 @@ static byte MapAircraftMovementState(const Vehicle *v)
 				case AT_LARGE:
 				case AT_METROPOLITAN:
 				case AT_INTERNATIONAL:
+				case AT_COMMUTER:
+				case AT_INTERCON:
+				/* Note, Helidepot and Helistation are treated as airports as
+				 * helicopters are taking off from ground level. */
+				case AT_HELIDEPOT:
+				case AT_HELISTATION:
 					if (amdflag & AMED_HELI_RAISE) return AMS_TTDP_HELI_TAKEOFF_AIRPORT;
 					return AMS_TTDP_TO_JUNCTION;
 
@@ -374,6 +384,8 @@ static byte MapAircraftMovementState(const Vehicle *v)
 						return AMS_TTDP_HELI_LAND_HELIPORT;
 
 					default:
+						/* Note, Helidepot and Helistation are treated as airports as
+						 * helicopters are landing at ground level. */
 						return AMS_TTDP_HELI_LAND_AIRPORT;
 				}
 			}
@@ -432,6 +444,10 @@ static byte MapAircraftMovementAction(const Vehicle *v)
 		case TERM4:
 		case TERM5:
 		case TERM6:
+		case TERM7:
+		case TERM8:
+		case HELIPAD3:
+		case HELIPAD4:
 			return (v->current_order.type == OT_LOADING) ? AMA_TTDP_ON_PAD3 : AMA_TTDP_LANDING_TO_PAD3;
 
 		case TAKEOFF:      // Moving to takeoff position
@@ -615,13 +631,19 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 				byte airporttype;
 
 				switch (GetStation(v->u.air.targetairport)->airport_type) {
-					case AT_SMALL: airporttype = ATP_TTDP_SMALL; break;
+					/* Note, Helidepot and Helistation are treated as small airports
+					 * as they are at ground level. */
+					case AT_HELIDEPOT:
+					case AT_HELISTATION:
+					case AT_COMMUTER:
+					case AT_SMALL:         airporttype = ATP_TTDP_SMALL; break;
 					case AT_METROPOLITAN:
 					case AT_INTERNATIONAL:
-					case AT_LARGE: airporttype = ATP_TTDP_LARGE; break;
-					case AT_HELIPORT: airporttype = ATP_TTDP_HELIPORT; break;
-					case AT_OILRIG: airporttype = ATP_TTDP_OILRIG; break;
-					default: airporttype = ATP_TTDP_LARGE; break;
+					case AT_INTERCON:
+					case AT_LARGE:         airporttype = ATP_TTDP_LARGE; break;
+					case AT_HELIPORT:      airporttype = ATP_TTDP_HELIPORT; break;
+					case AT_OILRIG:        airporttype = ATP_TTDP_OILRIG; break;
+					default:               airporttype = ATP_TTDP_LARGE; break;
 				}
 
 				return (altitude << 8) | airporttype;
