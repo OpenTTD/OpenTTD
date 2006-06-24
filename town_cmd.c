@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
+#include "slope.h"
 #include "strings.h"
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -89,7 +90,6 @@ static TownDrawTileProc * const _town_draw_tile_procs[1] = {
 static void DrawTile_Town(TileInfo *ti)
 {
 	const DrawTownTileStruct *dcts;
-	byte z;
 	uint32 image;
 
 	/* Retrieve pointer to the draw town tile struct */
@@ -106,17 +106,8 @@ static void DrawTile_Town(TileInfo *ti)
 		dcts = &_town_draw_tile_data[gfx << 4 | variant << 2 | stage];
 	}
 
-	z = ti->z;
-
-	/* Add bricks below the house? */
-	if (ti->tileh) {
-		AddSortableSpriteToDraw(SPR_FOUNDATION_BASE + ti->tileh, ti->x, ti->y, 16, 16, 7, z);
-		AddChildSpriteScreen(dcts->sprite_1, 0x1F, 1);
-		z += 8;
-	} else {
-		/* Else draw regular ground */
-		DrawGroundSprite(dcts->sprite_1);
-	}
+	if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+	DrawGroundSprite(dcts->sprite_1);
 
 	/* Add a house on top of the ground? */
 	image = dcts->sprite_2;
@@ -129,7 +120,8 @@ static void DrawTile_Town(TileInfo *ti)
 			dcts->width + 1,
 			dcts->height + 1,
 			dcts->dz,
-			z);
+			ti->z
+		);
 
 		if (_display_opt & DO_TRANS_BUILDINGS) return;
 	}
