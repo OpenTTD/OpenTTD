@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -210,6 +211,8 @@ int32 CmdRemoveRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 		if ((ti.map5 & 0xF0) == 0) { // normal road
 			byte c = pieces, t2;
 
+			if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+
 			if (ti.tileh != 0  && (ti.map5 == 5 || ti.map5 == 10)) {
 				c |= (c & 0xC) >> 2;
 				c |= (c & 0x3) << 2;
@@ -372,6 +375,8 @@ int32 CmdBuildRoad(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 
 	if (ti.type == MP_STREET) {
 		if (!(ti.map5 & 0xF0)) {
+			if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+
 			if ((pieces & (byte)ti.map5) == pieces)
 				return_cmd_error(STR_1007_ALREADY_BUILT);
 			existing = ti.map5;

@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
@@ -344,6 +345,8 @@ int32 CmdBuildSingleRail(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 						(track == TRACK_DIAG1 && m5 == 0x05) ||
 						(track == TRACK_DIAG2 && m5 == 0x0A) // correct direction?
 					)) {
+				if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
+
 				if (flags & DC_EXEC) {
 					_m[tile].m3 = GetTileOwner(tile);
 					SetTileOwner(tile, _current_player);

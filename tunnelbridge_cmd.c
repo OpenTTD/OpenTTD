@@ -8,6 +8,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "bridge_map.h"
+#include "road_map.h"
 #include "slope.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -354,6 +355,8 @@ int32 CmdBuildBridge(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 			}
 			m5 = 0xE0;
 		} else if (ti.type == MP_STREET) {
+			if (GetRoadTileType(ti.tile) != ROAD_TILE_NORMAL) goto not_valid_below;
+			if (HasRoadWorks(ti.tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 			if (direction == 0) {
 				if (ti.map5 != 5) goto not_valid_below;
 			} else {
