@@ -1583,7 +1583,6 @@ const SettingDesc *GetPatchFromName(const char *name, uint *i)
  * and besides, it is also better to keep stuff like this at the same place */
 void IConsoleSetPatchSetting(const char *name, const char *value)
 {
-	char newval[20];
 	int32 val;
 	uint index;
 	const SettingDesc *sd = GetPatchFromName(name, &index);
