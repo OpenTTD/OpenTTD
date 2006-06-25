@@ -101,10 +101,13 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 		static const TrackBits safe_track[] = { TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER, TRACK_BIT_RIGHT };
 		static const Slope unsafe_slope[] = { SLOPE_S, SLOPE_W, SLOPE_N, SLOPE_E };
 
+		Slope tileh;
+		uint z;
+
 		// Nothing could be built at the steep slope - this avoids a bug
 		// when you have a single diagonal track in one corner on a
 		// basement and then you raise/lower the other corner.
-		Slope tileh = GetTileSlope(tile, NULL);
+		tileh = GetTileSlope(tile, &z);
 		if (tileh == unsafe_slope[mode] ||
 				tileh == ComplementSlope(unsafe_slope[mode])) {
 			_terraform_err_tile = tile;
@@ -115,6 +118,18 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 		// If we have a single diagonal track there, the other side of
 		// tile can be terraformed.
 		if (IsPlainRailTile(tile) && GetTrackBits(tile) == safe_track[mode]) {
+			/* If terraforming downwards prevent damaging a potential tunnel below.
+			 * This check is only necessary for flat tiles, because if the tile is
+			 * non-flat, then the corner opposing the rail is raised. Only this corner
+			 * can be lowered and this is a safe action
+			 */
+			if (tileh == SLOPE_FLAT &&
+					ts->direction == -1 &&
+					IsTunnelInWay(tile, z - TILE_HEIGHT)) {
+				_terraform_err_tile = tile;
+				_error_message = STR_1002_EXCAVATION_WOULD_DAMAGE;
+				return -1;
+			}
 			return 0;
 		}
 	}
