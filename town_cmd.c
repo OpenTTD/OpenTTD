@@ -3,7 +3,6 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
-#include "slope.h"
 #include "strings.h"
 #include "table/strings.h"
 #include "table/sprites.h"

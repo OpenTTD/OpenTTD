@@ -9,7 +9,6 @@
 #include "openttd.h"
 #include "bridge_map.h"
 #include "road_map.h"
-#include "slope.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
