@@ -94,20 +94,19 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 
 	assert(tile < MapSize());
 
-	if ((r=TerraformAllowTileProcess(ts, tile)) <= 0)
-		return r;
+	r = TerraformAllowTileProcess(ts, tile);
+	if (r <= 0) return r;
 
 	if (IsTileType(tile, MP_RAILWAY)) {
-		static const TrackBits _railway_modes[] = { TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER, TRACK_BIT_RIGHT };
-		static const byte _railway_dangslopes[4] = {0xd, 0xe, 7, 0xb};
-		static const byte _railway_dangslopes2[4] = {0x2, 0x1, 0x8, 0x4};
+		static const TrackBits safe_track[] = { TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER, TRACK_BIT_RIGHT };
+		static const Slope unsafe_slope[] = { SLOPE_S, SLOPE_W, SLOPE_N, SLOPE_E };
 
 		// Nothing could be built at the steep slope - this avoids a bug
 		// when you have a single diagonal track in one corner on a
 		// basement and then you raise/lower the other corner.
-		int tileh = GetTileSlope(tile, NULL) & 0xF;
-		if (tileh == _railway_dangslopes[mode] ||
-				tileh == _railway_dangslopes2[mode]) {
+		Slope tileh = GetTileSlope(tile, NULL);
+		if (tileh == unsafe_slope[mode] ||
+				tileh == ComplementSlope(unsafe_slope[mode])) {
 			_terraform_err_tile = tile;
 			_error_message = STR_1008_MUST_REMOVE_RAILROAD_TRACK;
 			return -1;
@@ -115,7 +114,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 
 		// If we have a single diagonal track there, the other side of
 		// tile can be terraformed.
-		if (IsPlainRailTile(tile) && GetTrackBits(tile) == _railway_modes[mode]) {
+		if (IsPlainRailTile(tile) && GetTrackBits(tile) == safe_track[mode]) {
 			return 0;
 		}
 	}
