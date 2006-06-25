@@ -94,6 +94,8 @@ enum Sprites {
 	SPR_NEWHANGAR_N = SPR_AIRPORTX_BASE + 10,
 	SPR_NEWHANGAR_E = SPR_AIRPORTX_BASE + 11,
 	SPR_NEWHELIPAD = SPR_AIRPORTX_BASE + 12,
+	SPR_GRASS_RIGHT = SPR_AIRPORTX_BASE + 13,
+	SPR_GRASS_LEFT = SPR_AIRPORTX_BASE + 14,
 
 	/* Manager face sprites */
 	SPR_GRADIENT = 874, // background gradient behind manager face

@@ -1603,12 +1603,12 @@ static const byte _airport_sections_intercontinental[] = {
   	102, 120,  89,  89,  89,  89,  89,  89, 118,
   	120,  22,  22,  22,  22,  22,  22, 119, 117,
  	 87,  54,  87,   8,   8,   8,   8,  51, 117,
- 	 87,  18,  87,  85, 116, 116,   8,   9,  10,
+ 	 87, 162,  87,  85, 116, 116,   8,   9,  10,
 	 87,   8,   8,  11,  31,  11,   8, 160,  32,
 	 32, 160,   8,  11,  27,  11,   8,   8,  10,
 	 87,   8,   8,  11,  30,  11,   8,   8,  10,
-	 87, 142,   8,  11,  29,  11,  10,  12,  10,
-	 87,  58,  87,   8,   8,   8,  10,  56, 117,
+	 87, 142,   8,  11,  29,  11,  10, 163,  10,
+	 87, 164,  87,   8,   8,   8,  10,  37, 117,
   	 87, 120,  89,  89,  89,  89,  89,  89, 119,
   	121,  22,  22,  22,  22,  22,  22, 119,  37
 };
@@ -2241,6 +2241,7 @@ static void TileLoop_Station(TileIndex tile)
 		case GFX_RADAR_INTERNATIONAL_FIRST:
 		case GFX_RADAR_METROPOLITAN_FIRST:
 		case GFX_RADAR_DISTRICTWE_FIRST: // radar district W-E airport
+		case GFX_WINDSACK_INTERCON_FIRST : // for intercontinental airport
 			AddAnimatedTile(tile);
 			break;
 
@@ -2296,6 +2297,17 @@ static void AnimateTile_Station(TileIndex tile)
 
 		if (++gfx == GFX_WINDSACK_LAST+1) {
 			gfx = GFX_WINDSACK_FIRST;
+		}
+
+		SetStationGfx(tile, gfx);
+		MarkTileDirtyByTile(tile);
+	// handle intercontinental windsock
+	} else if (IS_BYTE_INSIDE(gfx, GFX_WINDSACK_INTERCON_FIRST, GFX_WINDSACK_INTERCON_LAST+1)) {
+		if (_tick_counter & 1)
+			return;
+
+		if (++gfx == GFX_WINDSACK_INTERCON_LAST+1) {
+			gfx = GFX_WINDSACK_INTERCON_FIRST;
 		}
 
 		SetStationGfx(tile, gfx);

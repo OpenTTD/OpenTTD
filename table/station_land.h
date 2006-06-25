@@ -983,6 +983,7 @@ static const DrawTileSeqStruct _station_display_datas_0156[] = {
 // helipad for helistation
 // concrete underground
 static const DrawTileSeqStruct _station_display_datas_0157[] = {
+	{  0,  1,  2, 16, 11, 40, SPR_NEWHELIPAD },
 	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
 	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
 	TILE_SEQ_END()
@@ -991,6 +992,7 @@ static const DrawTileSeqStruct _station_display_datas_0157[] = {
 // helipad for helistation
 // concrete underground
 static const DrawTileSeqStruct _station_display_datas_0158[] = {
+	{  0,  1,  2, 16, 11, 40, SPR_NEWHELIPAD },
 	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
 	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
 	TILE_SEQ_END()
@@ -999,6 +1001,7 @@ static const DrawTileSeqStruct _station_display_datas_0158[] = {
 // helipad for helistation
 // concrete underground
 static const DrawTileSeqStruct _station_display_datas_0159[] = {
+	{  0,  1,  2, 16, 11, 40, SPR_NEWHELIPAD },
 	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
 	TILE_SEQ_END()
 };
@@ -1013,6 +1016,18 @@ static const DrawTileSeqStruct _station_display_datas_0160[] = {
 static const DrawTileSeqStruct _station_display_datas_0161[] = {
 	{  0,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences east
 	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
+	TILE_SEQ_END()
+};
+
+// half grass half SPR_AIRPORT_APRON
+static const DrawTileSeqStruct _station_display_datas_0162[] = {
+	{ 0,  0,  0,  0,  0,  0, SPR_GRASS_LEFT },
+	TILE_SEQ_END()
+};
+
+// half grass half SPR_AIRPORT_APRON
+static const DrawTileSeqStruct _station_display_datas_0163[] = {
+	{ 0,  0,  0,  0,  0,  0, SPR_GRASS_RIGHT },
 	TILE_SEQ_END()
 };
 
@@ -1146,37 +1161,43 @@ static const DrawTileSprites _station_display_datas[] = {
 	{ SPR_NSRUNWAY_END,              _station_display_datas_0126 },
 	{ SPR_NSRUNWAY1,                 _station_display_datas_0127 },
 	{ SPR_NSRUNWAY_END,              _station_display_datas_0128 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0129 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0130 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0131 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0132 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0133 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0134 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0135 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0136 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0137 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0129 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0130 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0131 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0132 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0133 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0134 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0135 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0136 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0137 },
 	{ SPR_AIRPORT_AIRCRAFT_STAND,    _station_display_datas_0138 },
 	{ SPR_AIRPORT_AIRCRAFT_STAND,    _station_display_datas_0139 },
 	{ SPR_AIRPORT_AIRCRAFT_STAND,    _station_display_datas_0140 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0141 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0142 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0143 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0144 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0145 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0146 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0147 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0148 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0149 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0150 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0151 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0152 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0153 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0154 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0155 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0156 },
-	{ SPR_NEWHELIPAD,                _station_display_datas_0157 },
-	{ SPR_NEWHELIPAD,                _station_display_datas_0158 },
-	{ SPR_NEWHELIPAD,                _station_display_datas_0159 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0160 },
-	{ SPR_NEWAIRPORT_TARMAC,         _station_display_datas_0161 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0141 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0142 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0143 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0144 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0145 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0146 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0147 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0148 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0149 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0150 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0151 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0152 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0153 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0154 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0155 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0156 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0157 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0158 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0159 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0160 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0161 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0162 },
+	{ SPR_AIRPORT_APRON,             _station_display_datas_0163 },
+	{ SPR_FLAT_GRASS_TILE,          _station_display_datas_58 },
+	{ SPR_FLAT_GRASS_TILE,          _station_display_datas_59 },
+	{ SPR_FLAT_GRASS_TILE,          _station_display_datas_60 },
+	{ SPR_FLAT_GRASS_TILE,          _station_display_datas_61 },
 };
