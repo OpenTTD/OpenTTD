@@ -87,24 +87,47 @@ static void TerraformAddDirtyTileAround(TerraformerState *ts, TileIndex tile)
 	TerraformAddDirtyTile(ts, tile);
 }
 
-static int TerraformProc(TerraformerState *ts, TileIndex tile)
+static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 {
 	int r;
+	int32 ret;
 
 	assert(tile < MapSize());
 
-	if ((r = TerraformAllowTileProcess(ts, tile)) <= 0) return r;
+	if ((r=TerraformAllowTileProcess(ts, tile)) <= 0)
+		return r;
 
-	if (!IsTileType(tile, MP_RAILWAY)) {
-		int32 ret = DoCommand(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+	if (IsTileType(tile, MP_RAILWAY)) {
+		static const TrackBits _railway_modes[] = { TRACK_BIT_LOWER, TRACK_BIT_LEFT, TRACK_BIT_UPPER, TRACK_BIT_RIGHT };
+		static const byte _railway_dangslopes[4] = {0xd, 0xe, 7, 0xb};
+		static const byte _railway_dangslopes2[4] = {0x2, 0x1, 0x8, 0x4};
 
-		if (CmdFailed(ret)) {
+		// Nothing could be built at the steep slope - this avoids a bug
+		// when you have a single diagonal track in one corner on a
+		// basement and then you raise/lower the other corner.
+		int tileh = GetTileSlope(tile, NULL) & 0xF;
+		if (tileh == _railway_dangslopes[mode] ||
+				tileh == _railway_dangslopes2[mode]) {
 			_terraform_err_tile = tile;
+			_error_message = STR_1008_MUST_REMOVE_RAILROAD_TRACK;
 			return -1;
 		}
 
-		ts->cost += ret;
+		// If we have a single diagonal track there, the other side of
+		// tile can be terraformed.
+		if (IsPlainRailTile(tile) && GetTrackBits(tile) == _railway_modes[mode]) {
+			return 0;
+		}
 	}
+
+	ret = DoCommand(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
+
+	if (ret == CMD_ERROR) {
+		_terraform_err_tile = tile;
+		return -1;
+	}
+
+	ts->cost += ret;
 
 	if (ts->tile_table_count >= 625) return -1;
 	ts->tile_table[ts->tile_table_count++] = tile;
@@ -132,10 +155,10 @@ static bool TerraformTileHeight(TerraformerState *ts, TileIndex tile, int height
 	nh = TerraformGetHeightOfTile(ts, tile);
 	if (nh < 0 || height == nh) return false;
 
-	if (TerraformProc(ts, tile) < 0) return false;
-	if (TerraformProc(ts, tile + TileDiffXY( 0, -1)) < 0) return false;
-	if (TerraformProc(ts, tile + TileDiffXY(-1, -1)) < 0) return false;
-	if (TerraformProc(ts, tile + TileDiffXY(-1,  0)) < 0) return false;
+	if (TerraformProc(ts, tile, 0) < 0) return false;
+	if (TerraformProc(ts, tile + TileDiffXY( 0, -1), 1) < 0) return false;
+	if (TerraformProc(ts, tile + TileDiffXY(-1, -1), 2) < 0) return false;
+	if (TerraformProc(ts, tile + TileDiffXY(-1,  0), 3) < 0) return false;
 
 	mod = ts->modheight;
 	count = ts->modheight_count;
@@ -237,42 +260,26 @@ int32 CmdTerraformLand(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	}
 
-	{ /* Check if tunnel or track would take damage */
+	if (direction == -1) {
+		/* Check if tunnel would take damage */
 		int count;
 		TileIndex *ti = ts.tile_table;
 
 		for (count = ts.tile_table_count; count != 0; count--, ti++) {
-			uint a, b, c, d, min;
-			Slope s;
+			uint z, t;
 			TileIndex tile = *ti;
 
-			_terraform_err_tile = tile;
+			z = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
+			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
+			if (t <= z) z = t;
+			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
+			if (t <= z) z = t;
+			t = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
+			if (t <= z) z = t;
 
-			a = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 0));
-			b = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 0));
-			c = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(0, 1));
-			d = TerraformGetHeightOfTile(&ts, tile + TileDiffXY(1, 1));
-
-			s = GetTileh(a, b, c, d, &min);
-
-			if (IsTileType(tile, MP_RAILWAY)) {
-				if (IsSteepSlope(s)) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
-
-				if (IsPlainRailTile(tile)) {
-					/* If a piece of rail is on a foundation, prohibit any terraforming
-					 * of that tile. We do need to check this with the original slope, not
-					 * the would-be one. */
-					extern const TrackBits _valid_tileh_slopes[2][15];
-					TrackBits tb = GetTrackBits(tile);
-
-					if (GetRailFoundation(GetTileSlope(tile, NULL), tb) != 0) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
-					if (tb & ~_valid_tileh_slopes[0][s]) return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
-				} else return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
+			if (IsTunnelInWay(tile, z * TILE_HEIGHT)) {
+				return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
 			}
-
-			if (direction == -1 && IsTunnelInWay(tile, min)) return_cmd_error(STR_1002_EXCAVATION_WOULD_DAMAGE);
-
-			_terraform_err_tile = 0;
 		}
 	}
 
