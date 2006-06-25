@@ -1600,17 +1600,7 @@ void IConsoleSetPatchSetting(const char *name, const char *value)
 	ptr = ini_get_variable(&sd->save, patches_ptr);
 
 	SetPatchValue(index, patches_ptr, val);
-	val = ReadValue(ptr, sd->save.conv);
-
 	if (sd->desc.proc != NULL) sd->desc.proc(val);
-
-	if (sd->desc.cmd == SDT_BOOLX) {
-		snprintf(newval, sizeof(newval), (val != 0) ? "on" : "off");
-	} else {
-		snprintf(newval, sizeof(newval), "%d", val);
-	}
-
-	IConsolePrintF(_icolour_warn, "'%s' changed to:  %s", name, newval);
 }
 
 void IConsoleGetPatchSetting(const char *name)
