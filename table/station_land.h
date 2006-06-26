@@ -983,7 +983,7 @@ static const DrawTileSeqStruct _station_display_datas_0156[] = {
 // helipad for helistation
 // concrete underground
 static const DrawTileSeqStruct _station_display_datas_0157[] = {
-	{  0,  1,  2, 16, 11, 40, SPR_NEWHELIPAD },
+	{  0,  1,  2,  0,  0,  0, SPR_NEWHELIPAD },
 	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
 	{  0, 15,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences south
 	TILE_SEQ_END()
@@ -992,7 +992,7 @@ static const DrawTileSeqStruct _station_display_datas_0157[] = {
 // helipad for helistation
 // concrete underground
 static const DrawTileSeqStruct _station_display_datas_0158[] = {
-	{  0,  1,  2, 16, 11, 40, SPR_NEWHELIPAD },
+	{  0,  1,  2,  0,  0,  0, SPR_NEWHELIPAD },
 	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences west
 	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
 	TILE_SEQ_END()
@@ -1001,7 +1001,7 @@ static const DrawTileSeqStruct _station_display_datas_0158[] = {
 // helipad for helistation
 // concrete underground
 static const DrawTileSeqStruct _station_display_datas_0159[] = {
-	{  0,  1,  2, 16, 11, 40, SPR_NEWHELIPAD },
+	{  0,  1,  2,  0,  0,  0, SPR_NEWHELIPAD },
 	{  0,  0,  0, 16,  1,  6, SPR_AIRPORT_FENCE_X | PALETTE_MODIFIER_COLOR }, // fences north
 	TILE_SEQ_END()
 };
