@@ -939,6 +939,7 @@ STR_CRATES                                                      :kasser
 STR_RES_OTHER                                                   :annet
 STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan ikke dele ordre liste...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Kan ikke kopiere ordre liste...
@@ -1685,11 +1686,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Endre na
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Vis liste over aksepterte varer
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Stasjonsnavn - Trykk på navnet for å sentrere bildet på stasjonen
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Velg størrelse/type flyplass
-STR_3059_SMALL                                                  :{BLACK}Liten
-STR_305A_LARGE                                                  :{BLACK}Stor
-STR_305AA_LARGE                                                 :{BLACK}Nasjonal flyplass
-STR_305AB_LARGE                                                 :{BLACK}Internasjonal flyplass
-STR_305B_SIZE                                                   :{BLACK}Størrelse
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Jernbanestasjon
@@ -1704,7 +1700,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Deknings
 STR_3068_DOCK                                                   :{WHITE}Havn
 STR_3069_BUOY                                                   :Bøye
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bøyen er i veien
-STR_306B_HELIPORT                                               :{BLACK}Landingsplass for helikopter
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasjonen er spredd for mye
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikke-ensartede stasjoner deaktivert
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold nede CTRL for å velge mer en en ting
@@ -2567,6 +2562,7 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Kjør til {TOWN} garasje
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service ved {TOWN} garasje
 
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Bygg havn
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Bygg havn
@@ -2831,3 +2827,13 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitet: {GOLD}{COMMA} passasjerer, {COMMA} sekker post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internasjonal flyplass
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinental
+STR_HELIPORT                                                    :{BLACK}Heliport
+STR_HELISTATION                                                 :{BLACK}Helistasjon
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Små Flyplasser
+STR_LARGE_AIRPORTS                                              :{BLACK}Store flyplasser
+########

@@ -2862,16 +2862,16 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Potenza 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Piccolo
 STR_CITY_AIRPORT                                                :{BLACK}Cittadino
-STR_METRO_AIRPORT                                               :{BLACK}Aeroporto metropolitano
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroporto Internazionale
+STR_METRO_AIRPORT                                               :{BLACK}Metropolitano
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internazionale
 STR_COMMUTER_AIRPORT                                            :{BLACK}Commuter
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinentale
 STR_HELIPORT                                                    :{BLACK}Eliporto
 STR_HELIDEPOT                                                   :{BLACK}Elideposito
 STR_HELISTATION                                                 :{BLACK}Elistatione
 
-STR_SMALL_AIRPORTS                                              :{BLACK}Piccoli aeroporti
-STR_LARGE_AIRPORTS                                              :{BLACK}Aeroporto grande
+STR_SMALL_AIRPORTS                                              :{BLACK}Aeroporti piccoli
+STR_LARGE_AIRPORTS                                              :{BLACK}Aeroporti grandi
 STR_HUB_AIRPORTS                                                :{BLACK}Aeroporti Hub
 STR_HELIPORTS                                                   :{BLACK}Eliporti
 ########
