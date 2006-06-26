@@ -1705,11 +1705,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Cambia i
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Mostra la lista delle merci accettate
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nomi stazioni - clicca sul nome per centrare la visuale sulla stazione
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Seleziona dimensione/tipo di aeroporto
-STR_3059_SMALL                                                  :{BLACK}Piccolo
-STR_305A_LARGE                                                  :{BLACK}Grande
-STR_305AA_LARGE                                                 :{BLACK}Aeroporto metropolitano
-STR_305AB_LARGE                                                 :{BLACK}Aeroporto internazionale
-STR_305B_SIZE                                                   :{BLACK}Dimensioni
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Stazione ferroviaria
@@ -1724,7 +1719,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Evidenzi
 STR_3068_DOCK                                                   :{WHITE}Molo
 STR_3069_BUOY                                                   :Boa
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boa in mezzo
-STR_306B_HELIPORT                                               :{BLACK}Eliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stazione troppo estesa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stazioni non uniformi disabilitate
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tenere premuto CTRL per scegliere più di un oggetto
@@ -2864,3 +2858,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capienza: {GOLD}{COMMA} passeggeri, {COMMA} sacchi postali
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Potenza Vagone: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Piccolo
+STR_CITY_AIRPORT                                                :{BLACK}Cittadino
+STR_METRO_AIRPORT                                               :{BLACK}Aeroporto metropolitano
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroporto Internazionale
+STR_COMMUTER_AIRPORT                                            :{BLACK}Commuter
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinentale
+STR_HELIPORT                                                    :{BLACK}Eliporto
+STR_HELIDEPOT                                                   :{BLACK}Elideposito
+STR_HELISTATION                                                 :{BLACK}Elistatione
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Piccoli aeroporti
+STR_LARGE_AIRPORTS                                              :{BLACK}Aeroporto grande
+STR_HUB_AIRPORTS                                                :{BLACK}Aeroporti Hub
+STR_HELIPORTS                                                   :{BLACK}Eliporti
+########

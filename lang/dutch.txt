@@ -1705,11 +1705,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Hernoem 
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Laat lijst van gevraagde goederen zien
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Station namen - klik op naam om het hoofdbeeld te centreren op het station
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Selecteer grootte en type van vliegveld
-STR_3059_SMALL                                                  :{BLACK}Klein
-STR_305A_LARGE                                                  :{BLACK}Stedelijk
-STR_305AA_LARGE                                                 :{BLACK}Hoofdstedelijk vliegveld
-STR_305AB_LARGE                                                 :{BLACK}Internationaal vliegveld
-STR_305B_SIZE                                                   :{BLACK}Grootte
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Treinstation
@@ -1724,7 +1719,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Dekkings
 STR_3068_DOCK                                                   :{WHITE}Dok
 STR_3069_BUOY                                                   :Boei
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boei in de weg
-STR_306B_HELIPORT                                               :{BLACK}Helipoort
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station te verspreid
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...niet uniforme stations uit
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Houd CTRL ingedrukt om meer items te kiezen
@@ -2864,3 +2858,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht:
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capaciteit: {GOLD}{COMMA} passagiers, {COMMA} zakken post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Klein
+STR_CITY_AIRPORT                                                :{BLACK}Stad
+STR_METRO_AIRPORT                                               :{BLACK}Hoofdstedelijk vliegveld
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internationaal vliegveld
+STR_COMMUTER_AIRPORT                                            :{BLACK}Pendel
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinentaal
+STR_HELIPORT                                                    :{BLACK}Heliport
+STR_HELIDEPOT                                                   :{BLACK}Helihanger
+STR_HELISTATION                                                 :{BLACK}Helikopter station
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Kleine vliegvelden
+STR_LARGE_AIRPORTS                                              :{BLACK}Grote vliegvelden
+STR_HUB_AIRPORTS                                                :{BLACK}Centraal vliegveld
+STR_HELIPORTS                                                   :{BLACK}Helikopter vliegveld
+########

@@ -774,7 +774,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Arazi bilgisi
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Konsola Geç
+STR_CONSOLE_SETTING                                             :Konsol Aç/Kapa
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ekran Görüntüsü (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Dev Ekran Görüntüsü (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' Hakkinda
@@ -1499,6 +1499,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :ön+çikis-sinyal
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Önce yol silinmeli
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Yol çalismalari
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Yol Yapimi
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Köprü Seç
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Yol yapilamiyor...
@@ -1704,11 +1705,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}istasyon
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}istenen kargolarin listesini göster
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}istasyon isimleri - gitmek için istasyon ismini tiklayin
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Havalimani boyutunu seç
-STR_3059_SMALL                                                  :{BLACK}Küçük
-STR_305A_LARGE                                                  :{BLACK}Büyük
-STR_305AA_LARGE                                                 :{BLACK}Sehirlerarasi
-STR_305AB_LARGE                                                 :{BLACK}Uluslararasi
-STR_305B_SIZE                                                   :{BLACK}Boyut
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Tren istasyonu
@@ -1723,7 +1719,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Kapsama 
 STR_3068_DOCK                                                   :{WHITE}iskele
 STR_3069_BUOY                                                   :Samandira
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...yolda samandira var
-STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...istasyon çok yayilmis
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...özel istasyon ayari kapali
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Birden fazla sey seçmek için CTRL'yi basili tutun
@@ -2863,3 +2858,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Agirlik:
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Hiz: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite: {GOLD}{COMMA} yolcu, {COMMA} çanta posta
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Veren Vagonlar: {GOLD}+{POWER}{BLACK} Agirlik: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Küçük
+STR_CITY_AIRPORT                                                :{BLACK}Sehirlerarasi
+STR_METRO_AIRPORT                                               :{BLACK}Büyüksehir havalimani
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Uluslararasi havalimani
+STR_COMMUTER_AIRPORT                                            :{BLACK}Abonman
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Kitalararasi
+STR_HELIPORT                                                    :{BLACK}Heliport
+STR_HELIDEPOT                                                   :{BLACK}Heligaraj
+STR_HELISTATION                                                 :{BLACK}Helistasyon
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Küçük havalimanlari
+STR_LARGE_AIRPORTS                                              :{BLACK}Büyük Havalimanlari
+STR_HUB_AIRPORTS                                                :{BLACK}Merkezi havalimanlari
+STR_HELIPORTS                                                   :{BLACK}Helikopter havalimanlari
+########

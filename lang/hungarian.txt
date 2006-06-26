@@ -1770,11 +1770,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Az állom
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Az elfogadott áruk listájának mutatása
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Állomásnevek - kattints egy névre az állomás megnézéséhez
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Repülõtér méretének/típusának kiválasztása
-STR_3059_SMALL                                                  :{BLACK}Kicsi
-STR_305A_LARGE                                                  :{BLACK}Városi
-STR_305AA_LARGE                                                 :{BLACK}Nagyvárosi repülõtér
-STR_305AB_LARGE                                                 :{BLACK}Nemzetközi repülõter
-STR_305B_SIZE                                                   :{BLACK}Méret
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Vasútállomás
@@ -1789,7 +1784,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Lefedett
 STR_3068_DOCK                                                   :{WHITE}Kikötõ
 STR_3069_BUOY                                                   :Bója
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bója van az útban
-STR_306B_HELIPORT                                               :{BLACK}Helikopter-leszálló
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...az állomás túl kiterjedt
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...csak egyféle vágánytípusú állomások lehetnek
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Több elem kiválasztásához tartsd lenyomva a CTRL-t
@@ -2966,3 +2960,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{COMMA} utas, {COMMA} csomag levél
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Kicsi
+STR_CITY_AIRPORT                                                :{BLACK}Városi
+STR_METRO_AIRPORT                                               :{BLACK}Nagyvárosi reptér
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Nemzetközi reptér
+STR_COMMUTER_AIRPORT                                            :{BLACK}Bejáró
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinentális
+STR_HELIPORT                                                    :{BLACK}Helileszálló
+STR_HELIDEPOT                                                   :{BLACK}Helidepó
+STR_HELISTATION                                                 :{BLACK}Heliállomás
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Kis repterek
+STR_LARGE_AIRPORTS                                              :{BLACK}Nagy repterek
+STR_HUB_AIRPORTS                                                :{BLACK}Hub repterek
+STR_HELIPORTS                                                   :{BLACK}Helikopter repterek
+########
