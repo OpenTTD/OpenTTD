@@ -219,8 +219,8 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	// prevent building of aircraft in helidepot/helistation
 	st2 = GetStationByTile(tile);
-	if ((avi->subtype != 0) && (GetAirport(st2->airport_type)->acc_planes == HELICOPTERS_ONLY)) {
-		return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if ((avi->subtype & AIR_CTOL) && (GetAirport(st2->airport_type)->acc_planes == HELICOPTERS_ONLY)) {
+		return_cmd_error(STR_AIRPORT_HAS_NO_RUNWAY);
 	}
 
 	unit_num = (HASBIT(p2, 0) == true) ? 0 : GetFreeUnitNumber(VEH_Aircraft);
