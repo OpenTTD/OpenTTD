@@ -922,6 +922,10 @@ SOURCE=.\tree_cmd.c
 # End Source File
 # Begin Source File
 
+SOURCE=.\tunnel_map.c
+# End Source File
+# Begin Source File
+
 SOURCE=.\tunnelbridge_cmd.c
 # End Source File
 # Begin Source File

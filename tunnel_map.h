@@ -20,4 +20,7 @@ static inline uint GetTunnelDirection(TileIndex t)
 	return (uint)GB(_m[t].m5, 0, 2);
 }
 
+
+bool IsTunnelInWay(TileIndex, uint z);
+
 #endif

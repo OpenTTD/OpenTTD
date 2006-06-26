@@ -130,7 +130,7 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 }
 
 
-const TrackBits _valid_tileh_slopes[4][15] = {
+static const TrackBits _valid_tileh_slopes[][15] = {
 
 // set of normal ones
 {

@@ -725,6 +725,9 @@
 				RelativePath=".\tree_cmd.c">
 			</File>
 			<File
+				RelativePath=".\tunnel_map.c">
+			</File>
+			<File
 				RelativePath=".\tunnelbridge_cmd.c">
 			</File>
 			<File

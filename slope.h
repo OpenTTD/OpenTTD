@@ -27,4 +27,15 @@ typedef enum Slope {
 	SLOPE_STEEP_N = SLOPE_STEEP | SLOPE_ENW
 } Slope;
 
+static inline bool IsSteepSlope(Slope s)
+{
+	return (s & SLOPE_STEEP) != 0;
+}
+
+static inline Slope ComplementSlope(Slope s)
+{
+	assert(!IsSteepSlope(s));
+	return (Slope)(0xF ^ s);
+}
+
 #endif
