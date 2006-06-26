@@ -1277,8 +1277,31 @@ static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
 
 static uint GetSlopeTileh_TunnelBridge(const TileInfo* ti)
 {
-	// not accurate, but good enough for slope graphics drawing
-	return 0;
+	TileIndex tile = ti->tile;
+	Slope tileh = ti->tileh;
+	uint f;
+
+	if (IsTunnel(tile)) {
+		return tileh;
+	} else {
+		if (IsBridgeRamp(tile)) {
+			if (HASBIT(BRIDGE_NO_FOUNDATION, tileh)) {
+				return tileh;
+			} else {
+				f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(tile)));
+			}
+		} else {
+			if (IsTransportUnderBridge(tile)) {
+				f = _bridge_foundations[GetBridgeAxis(tile)][tileh];
+			} else {
+				return tileh;
+			}
+		}
+	}
+
+	if (f == 0) return tileh;
+	if (f < 15) return SLOPE_FLAT;
+	return _inclined_tileh[f - 15];
 }
 
 

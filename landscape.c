@@ -184,34 +184,54 @@ uint GetSlopeZ(int x,  int y)
 	return _tile_type_procs[ti.type]->get_slope_z_proc(&ti);
 }
 
-// direction=true:  check for foundation in east and south corner
-// direction=false: check for foundation in west and south corner
-static bool hasFoundation(const TileInfo* ti, bool direction)
+
+static Slope GetFoundationSlope(TileIndex tile, uint* z)
 {
-	bool south, other; // southern corner and east/west corner
-	uint slope = _tile_type_procs[ti->type]->get_slope_tileh_proc(ti);
-	uint tileh = ti->tileh;
+	TileInfo ti;
+	Slope tileh;
+	Slope slope;
 
-	if (slope == 0 && slope != tileh) tileh = 15;
-	south = (tileh & 2) != (slope & 2);
+	FindLandscapeHeightByTile(&ti, tile);
+	tileh = ti.tileh;
+	slope = _tile_type_procs[GetTileType(tile)]->get_slope_tileh_proc(&ti);
 
-	if (direction) {
-		other = (tileh & 4) != (slope & 4);
-	} else {
-		other = (tileh & 1) != (slope & 1);
-	}
-	return south || other;
+	// Flatter slope -> higher base height
+	if (slope < tileh) *z += TILE_HEIGHT;
+	return slope;
 }
+
+
+static bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
+{
+	uint z;
+	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, 0, -1), &z);
+
+	return
+		(z_here + (slope_here & SLOPE_N ? TILE_HEIGHT : 0) > z + (slope & SLOPE_E ? TILE_HEIGHT : 0)) ||
+		(z_here + (slope_here & SLOPE_W ? TILE_HEIGHT : 0) > z + (slope & SLOPE_S ? TILE_HEIGHT : 0));
+}
+
+
+static bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
+{
+	uint z;
+	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, -1, 0), &z);
+
+	return
+		(z_here + (slope_here & SLOPE_N ? TILE_HEIGHT : 0) > z + (slope & SLOPE_W ? TILE_HEIGHT : 0)) ||
+		(z_here + (slope_here & SLOPE_E ? TILE_HEIGHT : 0) > z + (slope & SLOPE_S ? TILE_HEIGHT : 0));
+}
+
 
 void DrawFoundation(TileInfo *ti, uint f)
 {
 	uint32 sprite_base = SPR_SLOPES_BASE-14;
+	Slope slope;
+	uint z;
 
-	TileInfo ti2;
-	FindLandscapeHeight(&ti2, ti->x, ti->y - 1);
-	if (hasFoundation(&ti2, true)) sprite_base += 22;		// foundation in NW direction
-	FindLandscapeHeight(&ti2, ti->x - 1, ti->y);
-	if (hasFoundation(&ti2, false)) sprite_base += 22 * 2;	// foundation in NE direction
+	slope = GetFoundationSlope(ti->tile, &z);
+	if (!HasFoundationNW(ti->tile, slope, z)) sprite_base += 22;
+	if (!HasFoundationNE(ti->tile, slope, z)) sprite_base += 44;
 
 	if (f < 15) {
 		// leveled foundation
