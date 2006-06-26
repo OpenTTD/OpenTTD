@@ -23,39 +23,25 @@
  * @param tile tile coordinates where HQ is located to destroy
  * @param flags docommand flags of calling function
  */
-static int32 DestroyCompanyHQ(TileIndex tile, uint32 flags)
+static int32 DestroyCompanyHQ(PlayerID pid, uint32 flags)
 {
-	Player *p;
+	Player* p = GetPlayer(pid);
 
 	SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
 
-	/* Find player that has HQ flooded, and reset their location_of_house */
-	if (_current_player == OWNER_WATER) {
-		bool dodelete = false;
+	if (flags & DC_EXEC) {
+		TileIndex t = p->location_of_house;
 
-		FOR_ALL_PLAYERS(p) {
-			if (p->location_of_house == tile) {
-				dodelete = true;
-				break;
-			}
-		}
-		if (!dodelete) return CMD_ERROR;
-	} else /* Destruction was initiated by player */
-		p = GetPlayer(_current_player);
-
-		if (p->location_of_house == 0) return CMD_ERROR;
-
-		if (flags & DC_EXEC) {
-			DoClearSquare(p->location_of_house + TileDiffXY(0, 0));
-			DoClearSquare(p->location_of_house + TileDiffXY(0, 1));
-			DoClearSquare(p->location_of_house + TileDiffXY(1, 0));
-			DoClearSquare(p->location_of_house + TileDiffXY(1, 1));
-			p->location_of_house = 0; // reset HQ position
-			InvalidateWindow(WC_COMPANY, (int)p->index);
-		}
+		DoClearSquare(t + TileDiffXY(0, 0));
+		DoClearSquare(t + TileDiffXY(0, 1));
+		DoClearSquare(t + TileDiffXY(1, 0));
+		DoClearSquare(t + TileDiffXY(1, 1));
+		p->location_of_house = 0; // reset HQ position
+		InvalidateWindow(WC_COMPANY, pid);
+	}
 
 	// cost of relocating company is 1% of company value
-		return CalculateCompanyValue(p) / 100;
+	return CalculateCompanyValue(p) / 100;
 }
 
 /** Build or relocate the HQ. This depends if the HQ is already built or not
@@ -76,9 +62,7 @@ int32 CmdBuildCompanyHQ(int x, int y, uint32 flags, uint32 p1, uint32 p2)
 	if (CmdFailed(cost)) return CMD_ERROR;
 
 	if (p->location_of_house != 0) { /* Moving HQ */
-		int32 ret = DestroyCompanyHQ(p->location_of_house, flags);
-		if (CmdFailed(ret)) return CMD_ERROR;
-		cost += ret;
+		cost += DestroyCompanyHQ(_current_player, flags);
 	}
 
 	if (flags & DC_EXEC) {
@@ -199,8 +183,11 @@ static int32 ClearTile_Unmovable(TileIndex tile, byte flags)
 	byte m5 = _m[tile].m5;
 
 	if (m5 & 0x80) {
-		if (_current_player == OWNER_WATER) return DestroyCompanyHQ(tile, DC_EXEC);
-		return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
+		if (_current_player == OWNER_WATER) {
+			return DestroyCompanyHQ(GetTileOwner(tile), DC_EXEC);
+		} else {
+			return_cmd_error(STR_5804_COMPANY_HEADQUARTERS_IN);
+		}
 	}
 
 	if (m5 == 3) // company owned land
