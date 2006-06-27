@@ -760,6 +760,8 @@ STR_CONFIG_PATCHES_ON                                           :Aan
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Toelaat opbou op hellings en strande: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Toelaat meer werklikheide groote opvanggebied: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Toelaat verwydering van meer stad-besite paaie, bruge, ens: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Stel in staat die gebou van baie lang treine: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Stel in staat realistiese versnelling vir treine: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbied triene en skepe om 90 graad draaie te maak: {ORANGE}{STRING} {LTBLUE} (benodig NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Verbind trein stasies wat langsaan gebou is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Verlaat stasie as enige vrag vol is, as 'volle laai': {ORANGE}{STRING}
@@ -769,6 +771,7 @@ STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Toelaat
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Toelaat gaan na depot opdrage: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Toelaat opbou van rumateriaal oplewering nywerheide: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Toelaat veelvout soortgelyke nywerheide per stad: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Nywerheide van die selfde tipe kan naby aan mekaar gebou word: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Altyd wys lang datum in die standbalie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Wys seine op die bestuur kant: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Pad voertuig toustaan (met kwantum effekte): {ORANGE}{STRING}
@@ -793,6 +796,7 @@ STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Wys sta
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Onsigbaar boome (met deurskynend geboue): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeu lyn hoogte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Diens helikopters by helihawes outomaties: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Skakel landereye werktuigbalie na spoor/pad/water/lughawe werktuigbaliee: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Omkeer rol rigting: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treine per speler: {ORANGE}{STRING}
@@ -808,6 +812,9 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Vermink
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Stel nuwe AI (alpha) in staat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Toelaat AIe in meerspeeler (proefondervindelik): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Gebrekte diens tussentyd vir pad voertuie: {ORANGE}{STRING} dae/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Gebrekte diens tussentyd vir vlietuie: {ORANGE}{STRING} dae/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Gebrekte diens tussentyd vir vlietuie: {ORANGE}gestrem
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Gestrem diens wanneer oponthoude is na geen gestel: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Gekleur nuus verskyn in: {ORANGE}{STRING}
@@ -830,6 +837,7 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Verander stelling waarde
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Party of almal van die gebrekte diens tussentyd(e) onder is onbestaanbaar met die verkiesde stelling! 5-90% en 30-800 dae is geldig
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Gebruik YAPF vir skepe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Gebruik YAPF vir pad voertuie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Gebruik YAPF vir treine: {ORANGE}{STRING}
@@ -841,7 +849,7 @@ STR_CHEAT_MONEY                                                 :{LTBLUE}Vermeer
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Speel as speler: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Tower stootskraper (uitwis nywerheide, onbeweegbare): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tonnels mag vir mekaar kruis: {ORANGE}{STRING}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bou terwyl in pouseer: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bou terwyl in pouseer metode: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Straalvliegtuie sal nie (dikwels) op klein lughawe bots nie: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skakel klimaat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Verander datum: {ORANGE} {DATE_SHORT}
@@ -1091,6 +1099,7 @@ STR_2040_CINEMA                                                 :Kinema
 STR_2041_SHOPPING_MALL                                          :Inkoopies winkelplein
 STR_2042_DO_IT                                                  :{BLACK}Doen dit
 STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Lys van dinge te doen by die stad - kliek op item vir meer besonderheide
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Voeg die beklemtoonde aksie in die lys bo uit
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Aksies beskikbaar:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Klein adverteer kampeer
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Medium adverteer kampeer
@@ -1202,6 +1211,9 @@ STR_3060_AIRPORT                                                :Lughawe
 STR_3061_TRUCK_LOADING_AREA                                     :Vraagmotor laai area
 STR_3062_BUS_STATION                                            :Bus stasie
 STR_3063_SHIP_DOCK                                              :Skip werf
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Beklemtoon dekkingsarea van die voorgestelde bouterrein
+STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Moenie die dekkingsarea van die voorgestelde bouterrein beklemtoon nie
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Dekkingsarea beklemtoon
 STR_3068_DOCK                                                   :{WHITE}Werf
 STR_3069_BUOY                                                   :Baken
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...baken in die pad
@@ -1329,6 +1341,7 @@ STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tonnel k
 STR_5017_RAILROAD_TUNNEL                                        :Spoorweg tonnel
 STR_5018_ROAD_TUNNEL                                            :Pad tonnel
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Staal staking spoor brug
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Staal staaf spoor brug
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Staal vrydraer spoor brug
 STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Gewapende beton staking spoor brug
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Houterig spoor brug

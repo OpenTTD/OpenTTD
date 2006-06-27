@@ -2957,6 +2957,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymi
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zastepowanie: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERYMENTALNE NARZEDZIE {}Przejdz pomiedzy oknami zamiany lokomotyw i wagonow.{}Wymiana wagonu nastapi tylko jesli nowy wagon moze byc przebudowany do przewozenia tego samego towaru co poprzedni. Kazdy wagon pociagu jest sprawdzany podczas procesu zamiany.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotywa nie moze byc zbudowana
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Lotnisko nie ma pasa startowego
 
 STR_ENGINES                                                     :Lokomotywy
 STR_WAGONS                                                      :Wagonow

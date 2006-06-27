@@ -1706,11 +1706,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Renommer
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Afficher les marchandises acceptées
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nom des stations - Cliquer sur un nom pour centrer la vue
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Choix du type & taille de l'aéroport
-STR_3059_SMALL                                                  :{BLACK}Petit
-STR_305A_LARGE                                                  :{BLACK}Grand
-STR_305AA_LARGE                                                 :{BLACK}Aéroport métropolitain
-STR_305AB_LARGE                                                 :{BLACK}Aéroport international
-STR_305B_SIZE                                                   :{BLACK}Taille
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Gare ferroviaire
@@ -1725,7 +1720,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Afficher
 STR_3068_DOCK                                                   :{WHITE}Port
 STR_3069_BUOY                                                   :Bouée
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bouée présente
-STR_306B_HELIPORT                                               :{BLACK}Héliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...gare trop étendue
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stations non-uniformes désactivées
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Cliquer avec CTRL pour sélectionner plus d'un élément
@@ -2835,6 +2829,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}L'autore
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}En Remplacement: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FONCTION EXPERIMENTALE {}Passer à la fenêtre de remplacement de locomotives/wagons.{}Le remplacement de wagon ne se fera que si le nouveau wagon peut être réaménagé pour le même type de marchandises que l'ancien. Ceci est vérifié pour chaque wagon lors du remplacement.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ce véhicule ne peut pas être construit
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}L'aéroport n'a pas de piste
 
 STR_ENGINES                                                     :Locomotives
 STR_WAGONS                                                      :Wagons
@@ -2865,3 +2860,19 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Vitesse: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacité: {GOLD}{COMMA} passagers, {COMMA} sacs de courrier
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons Motorisés: {GOLD}+{POWER}{BLACK} Poids: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Petit
+STR_CITY_AIRPORT                                                :{BLACK}Urbain
+STR_METRO_AIRPORT                                               :{BLACK}Aéroport métropolitain
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}International
+STR_COMMUTER_AIRPORT                                            :{BLACK}de Banlieue
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
+STR_HELIPORT                                                    :{BLACK}Héliport
+STR_HELIDEPOT                                                   :{BLACK}Héli-dépôt
+STR_HELISTATION                                                 :{BLACK}Héli-station
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Petits aéroports
+STR_LARGE_AIRPORTS                                              :{BLACK}Grands aéroports
+STR_HELIPORTS                                                   :{BLACK}Héliportuaires
+########
