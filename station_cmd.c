@@ -1600,17 +1600,17 @@ static const byte _airport_sections_international[] = {
 
 // Intercontinental Airport (vlarge) - 4 runways
 static const byte _airport_sections_intercontinental[] = {
-  	102, 120,  89,  89,  89,  89,  89,  89, 118,
-  	120,  22,  22,  22,  22,  22,  22, 119, 117,
- 	 87,  54,  87,   8,   8,   8,   8,  51, 117,
- 	 87, 162,  87,  85, 116, 116,   8,   9,  10,
+	102, 120,  89,  89,  89,  89,  89,  89, 118,
+	120,  22,  22,  22,  22,  22,  22, 119, 117,
+	 87,  54,  87,   8,   8,   8,   8,  51, 117,
+	 87, 162,  87,  85, 116, 116,   8,   9,  10,
 	 87,   8,   8,  11,  31,  11,   8, 160,  32,
 	 32, 160,   8,  11,  27,  11,   8,   8,  10,
 	 87,   8,   8,  11,  30,  11,   8,   8,  10,
 	 87, 142,   8,  11,  29,  11,  10, 163,  10,
 	 87, 164,  87,   8,   8,   8,  10,  37, 117,
-  	 87, 120,  89,  89,  89,  89,  89,  89, 119,
-  	121,  22,  22,  22,  22,  22,  22, 119,  37
+	 87, 120,  89,  89,  89,  89,  89,  89, 119,
+	121,  22,  22,  22,  22,  22,  22, 119,  37
 };
 
 
@@ -2204,23 +2204,20 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 {
 	switch (mode) {
 		case TRANSPORT_RAIL:
-			if (IsRailwayStation(tile)) {
-				if (IsStationTileBlocked(tile)) return 0;
-
+			if (IsRailwayStation(tile) && !IsStationTileBlocked(tile)) {
 				return TrackToTrackBits(GetRailStationTrack(tile)) * 0x101;
 			}
 			break;
 
 		case TRANSPORT_WATER:
 			// buoy is coded as a station, it is always on open water
-			// (0x3F, all tracks available)
-			if (IsBuoy_(tile)) return 0x3F * 0x101;
+			if (IsBuoy_(tile)) return TRACK_BIT_ALL * 0x101;
 			break;
 
 		case TRANSPORT_ROAD:
-			if (IsRoadStopTile(tile))
+			if (IsRoadStopTile(tile)) {
 				return (DiagDirToAxis(GetRoadStopDir(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
-
+			}
 			break;
 
 		default:
@@ -2549,10 +2546,11 @@ static void UpdateStationRating(Station *st)
 
 	index = st->index;
 
-	if (waiting_changed)
+	if (waiting_changed) {
 		InvalidateWindow(WC_STATION_VIEW, index);
-	else
+	} else {
 		InvalidateWindowWidget(WC_STATION_VIEW, index, 5);
+	}
 }
 
 /* called for every station each tick */

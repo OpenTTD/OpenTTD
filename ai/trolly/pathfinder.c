@@ -425,12 +425,13 @@ static int32 AyStar_AiPathFinder_CalculateG(AyStar *aystar, AyStarNode *current,
 					res += AI_PATHFINDER_FOUNDATION_PENALTY;
 				}
 			} else {
-				if (!(IsRoad(parent->path.node.tile) && IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE))) {
+				if (!IsRoad(parent->path.node.tile) || !IsTileType(parent->path.node.tile, MP_TUNNELBRIDGE)) {
 					r = GetRoadFoundation(parent_tileh, AiNew_GetRoadDirection(parent->path.parent->node.tile, parent->path.node.tile, current->tile));
-					if (r >= 15 || r == 0)
+					if (r >= 15 || r == 0) {
 						res += AI_PATHFINDER_TILE_GOES_UP_PENALTY;
-					else
+					} else {
 						res += AI_PATHFINDER_FOUNDATION_PENALTY;
+					}
 				}
 			}
 		}

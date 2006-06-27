@@ -213,9 +213,7 @@ static uint NPFSlopeCost(AyStarNode* current)
  */
 static void NPFMarkTile(TileIndex tile)
 {
-#ifdef NO_DEBUG_MESSAGES
-	return;
-#else
+#ifndef NO_DEBUG_MESSAGES
 	if (_debug_npf_level < 1 || _networking) return;
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
@@ -806,14 +804,12 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	_npf_aystar.EndNodeCheck = NPFFindStationOrTile;
 	_npf_aystar.FoundEndNode = NPFSaveTargetData;
 	_npf_aystar.GetNeighbours = NPFFollowTrack;
-	if (type == TRANSPORT_RAIL)
-		_npf_aystar.CalculateG = NPFRailPathCost;
-	else if (type == TRANSPORT_ROAD)
-		_npf_aystar.CalculateG = NPFRoadPathCost;
-	else if (type == TRANSPORT_WATER)
-		_npf_aystar.CalculateG = NPFWaterPathCost;
-	else
-		assert(0);
+	switch (type) {
+		default: NOT_REACHED();
+		case TRANSPORT_RAIL:  _npf_aystar.CalculateG = NPFRailPathCost;  break;
+		case TRANSPORT_ROAD:  _npf_aystar.CalculateG = NPFRoadPathCost;  break;
+		case TRANSPORT_WATER: _npf_aystar.CalculateG = NPFWaterPathCost; break;
+	}
 
 	/* Initialize target */
 	target.station_index = INVALID_STATION; /* We will initialize dest_coords inside the loop below */

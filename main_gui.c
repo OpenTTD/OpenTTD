@@ -90,10 +90,11 @@ void HandleOnEditText(WindowEvent *e)
 		// Inform the player of this action
 		snprintf(msg, sizeof(msg), "%d", money);
 
-		if (!_network_server)
+		if (!_network_server) {
 			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_PLAYER, id + 1, msg);
-		else
+		} else {
 			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_PLAYER, id + 1, msg, NETWORK_SERVER_INDEX);
+		}
 		break;
 	}
 	case 4: /* Game-Password and Company-Password */
@@ -2273,7 +2274,8 @@ static WindowDesc _main_status_desc = {
 
 extern void UpdateAllStationVirtCoord(void);
 
-static void MainWindowWndProc(Window *w, WindowEvent *e) {
+static void MainWindowWndProc(Window* w, WindowEvent* e)
+{
 	int off_x;
 
 	switch (e->event) {

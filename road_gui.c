@@ -418,8 +418,9 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		if (_station_show_coverage) {
 			int rad = _patches.modified_catchment ? CA_TRUCK /* = CA_BUS */ : 4;
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
-		} else
+		} else {
 			SetTileSelectSize(1, 1);
+		}
 
 		image = (w->window_class == WC_BUS_STATION) ? 0x47 : 0x43;
 

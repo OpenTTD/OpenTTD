@@ -79,9 +79,9 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 		// draw max loan aligned to loan below (y += 10)
 		SetDParam64(0, (uint64)_economy.max_loan);
 		DrawString(202, y+10, STR_MAX_LOAN, 0);
-
-	} else
+	} else {
 		y = 15;
+	}
 
 	DrawString(2, y, STR_7026_BANK_BALANCE, 0);
 	SetDParam64(0, p->money64);
@@ -524,8 +524,9 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 				/* Spectators cannot do anything of course */
 				if (_local_player == OWNER_SPECTATOR) dis |= (1 << 9) | (1 << 10);
-			} else /* shares are not allowed, disable buy/sell buttons */
+			} else { /* shares are not allowed, disable buy/sell buttons */
 				dis |= (1 << 9) | (1 << 10);
+			}
 		}
 
 		SetDParam(0, p->name_1);

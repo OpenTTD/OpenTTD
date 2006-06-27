@@ -50,8 +50,8 @@ bool LoadLibraryList(Function proc[], const char* dll)
 		HMODULE lib = LoadLibrary(dll);
 
 		if (lib == NULL) return false;
-		while (true) {
-		  	FARPROC p;
+		for (;;) {
+			FARPROC p;
 
 			while (*dll++ != '\0');
 			if (*dll == '\0') break;
@@ -108,10 +108,7 @@ static void MakeCRCTable(uint32 *table) {
 	for (i = 0; i != 256; i++) {
 		crc = i;
 		for (j = 8; j != 0; j--) {
-			if (crc & 1)
-				crc = (crc >> 1) ^ poly;
-			else
-				crc >>= 1;
+			src = (crc & 1 ? (crc >> 1) ^ poly : crc >> 1);
 		}
 		table[i] = crc;
 	}
@@ -369,10 +366,11 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM l
 		case 12: // Close
 			ExitProcess(0);
 		case 13: { // Emergency save
-			if (DoEmergencySave(wnd))
+			if (DoEmergencySave(wnd)) {
 				MessageBoxA(wnd, _save_succeeded, "Save successful", MB_ICONINFORMATION);
-			else
+			} else {
 				MessageBoxA(wnd, "Save failed", "Save failed", MB_ICONINFORMATION);
+			}
 			break;
 		}
 		case 14: { // Submit crash report
@@ -904,10 +902,11 @@ char *FiosBrowseTo(const FiosItem *item)
 
 		case FIOS_TYPE_PARENT:
 			s = strrchr(path, '\\');
-			if (s != path + 2)
+			if (s != path + 2) {
 				s[0] = '\0';
-			else
+			} else {
 				s[1] = '\0';
+			}
 			break;
 
 		case FIOS_TYPE_DIR:
@@ -955,8 +954,9 @@ StringID FiosGetDescText(const char **path, uint32 *tot)
 	if (tot != NULL && GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
 		*tot = ((spc * bps) * (uint64)nfc) >> 20;
 		sid = STR_4005_BYTES_FREE;
-	} else
+	} else {
 		sid = STR_4006_UNABLE_TO_READ_DRIVE;
+	}
 
 	SetErrorMode(sem); // reset previous setting
 	return sid;
@@ -967,10 +967,7 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 	const char* extension;
 	const char* period;
 
-	if (_game_mode == GM_EDITOR)
-		extension = ".scn";
-	else
-		extension = ".sav";
+	extension = (_game_mode == GM_EDITOR ? ".scn" : ".sav");
 
 	// Don't append the extension, if it is already there
 	period = strrchr(name, '.');
@@ -1091,9 +1088,9 @@ void CreateConsole(void)
 
 void ShowInfo(const char *str)
 {
-	if (_has_console)
+	if (_has_console) {
 		puts(str);
-	else {
+	} else {
 		bool old;
 
 		ReleaseCapture();

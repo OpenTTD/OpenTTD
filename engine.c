@@ -249,7 +249,7 @@ void EnginesDailyLoop(void)
 					DeleteWindowById(WC_ENGINE_PREVIEW, i);
 					e->preview_player++;
 				}
- 			} else if (e->preview_player != 0xFF) {
+			} else if (e->preview_player != 0xFF) {
 				PlayerID best_player = GetBestPlayer(e->preview_player);
 
 				if (best_player == OWNER_SPECTATOR) {

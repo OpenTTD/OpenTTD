@@ -272,7 +272,6 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir);
 
 
 typedef enum RailGroundType {
-	RAIL_MAP2LO_GROUND_MASK = 0xF,
 	RAIL_GROUND_BARREN = 0,
 	RAIL_GROUND_GRASS = 1,
 	RAIL_GROUND_FENCE_NW = 2,

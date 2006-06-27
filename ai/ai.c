@@ -30,7 +30,6 @@ static void AI_DequeueCommands(PlayerID player)
 	while ((com = entry_com) != NULL) {
 		_current_player = player;
 
-		/* Copy the DP back in place */
 		_cmd_text = com->text;
 		DoCommandP(com->tile, com->p1, com->p2, com->callback, com->procc);
 

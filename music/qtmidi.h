@@ -1,8 +1,4 @@
-/*
- * qtmidi.h
- *
- * $Id$
- */
+/* $Id$ */
 
 #ifndef MUSIC_MACOSX_QUICKTIME_H
 #define MUSIC_MACOSX_QUICKTIME_H

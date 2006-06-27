@@ -1625,7 +1625,6 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 void OnNewDay_RoadVeh(Vehicle *v)
 {
 	int32 cost;
-	Station *st;
 
 	if ((++v->day_counter & 7) == 0) DecreaseVehicleValue(v);
 	if (v->u.road.blocked_ctr == 0) CheckVehicleBreakdown(v);
@@ -1646,19 +1645,19 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED)) {
-		RoadStop *rs;
-		RoadStop *best = NULL;
-
-		st = GetStation(v->current_order.station);
-		rs = GetPrimaryRoadStop(st, v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK);
+		Station* st = GetStation(v->current_order.station);
+		RoadStop* rs = GetPrimaryRoadStop(st, v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK);
+		RoadStop* best = NULL;
 
 		if (rs != NULL) {
 			if (DistanceManhattan(v->tile, st->xy) < 16) {
 				uint dist, badness;
 				uint minbadness = UINT_MAX;
 
-				DEBUG(ms, 2) ("Multistop: Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%X)", v->unitnumber,
-						v->index, st->index, st->xy);
+				DEBUG(ms, 2) (
+					"Multistop: Attempting to obtain a slot for vehicle %d (index %d) at station %d (0x%X)",
+					v->unitnumber, v->index, st->index, st->xy
+				);
 				/* Now we find the nearest road stop that has a free slot */
 				for (; rs != NULL; rs = rs->next) {
 					dist = RoadFindPathToStop(v, rs->xy);

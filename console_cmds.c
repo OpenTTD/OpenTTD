@@ -191,8 +191,9 @@ DEF_CONSOLE_CMD(ConSave)
 
 		if (SaveOrLoad(buf, SL_SAVE) != SL_OK) {
 			IConsolePrint(_icolour_err, "SaveMap failed");
-		} else
+		} else {
 			IConsolePrintF(_icolour_def, "Map sucessfully saved to %s", buf);
+		}
 		return true;
 	}
 
@@ -247,8 +248,9 @@ DEF_CONSOLE_CMD(ConLoad)
 			} break;
 			default: IConsolePrintF(_icolour_err, "%s: Not a savegame.", file);
 		}
-	} else
+	} else {
 		IConsolePrintF(_icolour_err, "%s: No such file or directory.", file);
+	}
 
 	FiosFreeSavegameList();
 	return true;
@@ -272,8 +274,9 @@ DEF_CONSOLE_CMD(ConRemove)
 	if (item != NULL) {
 		if (!FiosDelete(item->name))
 			IConsolePrintF(_icolour_err, "%s: Failed to delete file", file);
-	} else
+	} else {
 		IConsolePrintF(_icolour_err, "%s: No such file or directory.", file);
+	}
 
 	FiosFreeSavegameList();
 	return true;
@@ -323,8 +326,9 @@ DEF_CONSOLE_CMD(ConChangeDirectory)
 				break;
 			default: IConsolePrintF(_icolour_err, "%s: Not a directory.", file);
 		}
-	} else
+	} else {
 		IConsolePrintF(_icolour_err, "%s: No such file or directory.", file);
+	}
 
 	FiosFreeSavegameList();
 	return true;
@@ -408,8 +412,9 @@ DEF_CONSOLE_CMD(ConBan)
 		banip = inet_ntoa(*(struct in_addr *)&ci->client_ip);
 		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
 		IConsolePrint(_icolour_def, "Client banned");
-	} else
+	} else {
 		IConsolePrint(_icolour_def, "Client not online, banned IP");
+	}
 
 	/* Add user to ban-list */
 	for (index = 0; index < lengthof(_network_ban_list); index++) {
@@ -481,8 +486,9 @@ DEF_CONSOLE_CMD(ConPauseGame)
 	if (_pause == 0) {
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
 		IConsolePrint(_icolour_def, "Game paused.");
-	} else
+	} else {
 		IConsolePrint(_icolour_def, "Game is already paused.");
+	}
 
 	return true;
 }
@@ -497,8 +503,9 @@ DEF_CONSOLE_CMD(ConUnPauseGame)
 	if (_pause != 0) {
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 		IConsolePrint(_icolour_def, "Game unpaused.");
-	} else
+	} else {
 		IConsolePrint(_icolour_def, "Game is already unpaused.");
+	}
 
 	return true;
 }
@@ -519,8 +526,16 @@ DEF_CONSOLE_CMD(ConRcon)
 
 DEF_CONSOLE_CMD(ConStatus)
 {
-	static const char *stat_str[] = {"inactive", "authorized", "waiting", "loading map", "map done", "ready", "active"};
-	const char *status;
+	static const char* const stat_str[] = {
+		"inactive",
+		"authorized",
+		"waiting",
+		"loading map",
+		"map done",
+		"ready",
+		"active"
+	};
+
 	const NetworkClientState *cs;
 
 	if (argc == 0) {
@@ -531,8 +546,9 @@ DEF_CONSOLE_CMD(ConStatus)
 	FOR_ALL_CLIENTS(cs) {
 		int lag = NetworkCalculateLag(cs);
 		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+		const char* status;
 
-		status = (cs->status <= STATUS_ACTIVE) ? stat_str[cs->status] : "unknown";
+		status = (cs->status <= lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrintF(8, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
 			cs->index, ci->client_name, status, lag, ci->client_playas, GetPlayerIP(ci), ci->unique_id);
 	}
@@ -558,7 +574,8 @@ DEF_CONSOLE_CMD(ConServerInfo)
 	return true;
 }
 
-DEF_CONSOLE_HOOK(ConHookValidateMaxClientsCount) {
+DEF_CONSOLE_HOOK(ConHookValidateMaxClientsCount)
+{
 	/* XXX - hardcoded, string limiation -- TrueLight
 	 * XXX - also see network.c:NetworkStartup ~1356 */
 	if (_network_game_info.clients_max > 10) {
@@ -569,7 +586,8 @@ DEF_CONSOLE_HOOK(ConHookValidateMaxClientsCount) {
 	return true;
 }
 
-DEF_CONSOLE_HOOK(ConHookValidateMaxCompaniesCount) {
+DEF_CONSOLE_HOOK(ConHookValidateMaxCompaniesCount)
+{
 	if (_network_game_info.companies_max > MAX_PLAYERS) {
 		_network_game_info.companies_max = MAX_PLAYERS;
 		IConsoleError("Maximum companies out of bounds, truncating to limit.");
@@ -578,7 +596,8 @@ DEF_CONSOLE_HOOK(ConHookValidateMaxCompaniesCount) {
 	return true;
 }
 
-DEF_CONSOLE_HOOK(ConHookValidateMaxSpectatorsCount) {
+DEF_CONSOLE_HOOK(ConHookValidateMaxSpectatorsCount)
+{
 	/* XXX @see ConHookValidateMaxClientsCount */
 	if (_network_game_info.spectators_max > 10) {
 		_network_game_info.spectators_max = 10;
@@ -621,8 +640,9 @@ DEF_CONSOLE_CMD(ConKick)
 
 	if (ci != NULL) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(NetworkFindClientStateFromIndex(index), NETWORK_ERROR_KICKED);
-	} else
+	} else {
 		IConsoleError("Client not found");
+	}
 
 	return true;
 }
@@ -974,7 +994,9 @@ DEF_CONSOLE_CMD(ConDebugLevel)
 
 	if (argc == 1) {
 		IConsolePrintF(_icolour_def, "Current debug-level: '%s'", GetDebugString());
-	} else SetDebugString(argv[1]);
+	} else {
+		SetDebugString(argv[1]);
+	}
 
 	return true;
 }
@@ -1126,8 +1148,9 @@ DEF_CONSOLE_CMD(ConSay)
 
 	if (!_network_server) {
 		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0 /* param does not matter */, argv[1]);
-	} else
+	} else {
 		NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, argv[1], NETWORK_SERVER_INDEX);
+	}
 
 	return true;
 }
@@ -1176,8 +1199,9 @@ DEF_CONSOLE_CMD(ConSayPlayer)
 
 	if (!_network_server) {
 		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2]);
-	} else
+	} else {
 		NetworkServer_HandleChat(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+	}
 
 	return true;
 }
@@ -1194,8 +1218,9 @@ DEF_CONSOLE_CMD(ConSayClient)
 
 	if (!_network_server) {
 		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2]);
-	} else
+	} else {
 		NetworkServer_HandleChat(NETWORK_ACTION_CHAT_CLIENT, DESTTYPE_CLIENT, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+	}
 
 	return true;
 }
@@ -1314,8 +1339,9 @@ DEF_CONSOLE_CMD(ConPatch)
 
 	if (argc == 2) {
 		IConsoleGetPatchSetting(argv[1]);
-	} else
+	} else {
 		IConsoleSetPatchSetting(argv[1], argv[2]);
+	}
 
 	return true;
 }

@@ -159,8 +159,8 @@ VARDEF Engine _engines[TOTAL_NUM_ENGINES];
 
 static inline Engine* GetEngine(EngineID i)
 {
-  assert(i < lengthof(_engines));
-  return &_engines[i];
+	assert(i < lengthof(_engines));
+	return &_engines[i];
 }
 
 VARDEF StringID _engine_name_strings[TOTAL_NUM_ENGINES];

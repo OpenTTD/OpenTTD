@@ -566,7 +566,7 @@ void SlArray(void *array, uint length, VarType conv)
 	 * as a byte-type. So detect this, and adjust array size accordingly */
 	if (!_sl.save && _sl_version == 0) {
 		if (conv == SLE_INT16 || conv == SLE_UINT16 || conv == SLE_STRINGID ||
-			  conv == SLE_INT32 || conv == SLE_UINT32) {
+				conv == SLE_INT32 || conv == SLE_UINT32) {
 			length *= SlCalcConvFileLen(conv);
 			conv = SLE_INT8;
 		}
@@ -1408,8 +1408,11 @@ static void* SaveFileToDisk(void *arg)
 		_sl.excpt_uninit();
 
 		fprintf(stderr, "Save game failed: %s.", _sl.excpt_msg);
-		if (arg != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_ERROR);
-		else SaveFileError();
+		if (arg != NULL) {
+			OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_ERROR);
+		} else {
+			SaveFileError();
+		}
 		return NULL;
 	}
 
@@ -1633,8 +1636,7 @@ int GetSavegameType(char *file)
 	if (fread(&hdr, sizeof(hdr), 1, f) != 1) {
 		printf("Savegame is obsolete or invalid format.\n");
 		mode = SL_LOAD; // don't try to get filename, just show name as it is written
-	}
-	else {
+	} else {
 		// see if we have any loader for this type.
 		for (fmt = _saveload_formats; fmt != endof(_saveload_formats); fmt++) {
 			if (fmt->tag == hdr) {

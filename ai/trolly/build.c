@@ -286,14 +286,15 @@ int AiNew_Build_Vehicle(Player *p, TileIndex tile, byte flag)
 int AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte flag)
 {
 	int ret, ret2;
-	if (p->ainew.tbt == AI_TRAIN)
+	if (p->ainew.tbt == AI_TRAIN) {
 		return AI_DoCommand(tile, 0, direction, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_TRAIN_DEPOT);
-
-	ret = AI_DoCommand(tile, direction, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_DEPOT);
-	if (CmdFailed(ret)) return ret;
-	// Try to build the road from the depot
-	ret2 = AI_DoCommand(tile + TileOffsByDir(direction), DiagDirToRoadBits(ReverseDiagDir(direction)), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
-	// If it fails, ignore it..
-	if (CmdFailed(ret2)) return ret;
-	return ret + ret2;
+	} else {
+		ret = AI_DoCommand(tile, direction, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_DEPOT);
+		if (CmdFailed(ret)) return ret;
+		// Try to build the road from the depot
+		ret2 = AI_DoCommand(tile + TileOffsByDir(direction), DiagDirToRoadBits(ReverseDiagDir(direction)), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
+		// If it fails, ignore it..
+		if (CmdFailed(ret2)) return ret;
+		return ret + ret2;
+	}
 }

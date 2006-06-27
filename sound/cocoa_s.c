@@ -83,29 +83,35 @@ static const char *CocoaSoundStart(const char * const *parm)
 	desc.componentFlagsMask = 0;
 
 	comp = FindNextComponent (NULL, &desc);
-	if (comp == NULL)
+	if (comp == NULL) {
 		return "cocoa_s: Failed to start CoreAudio: FindNextComponent returned NULL";
+	}
 
 	/* Open & initialize the default output audio unit */
-	if (OpenAComponent(comp, &_outputAudioUnit) != noErr)
+	if (OpenAComponent(comp, &_outputAudioUnit) != noErr) {
 		return "cocoa_s: Failed to start CoreAudio: OpenAComponent";
+	}
 
-	if (AudioUnitInitialize(_outputAudioUnit) != noErr)
+	if (AudioUnitInitialize(_outputAudioUnit) != noErr) {
 		return "cocoa_s: Failed to start CoreAudio: AudioUnitInitialize";
+	}
 
 	/* Set the input format of the audio unit. */
-	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &requestedDesc, sizeof(requestedDesc)) != noErr)
+	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &requestedDesc, sizeof(requestedDesc)) != noErr) {
 		return "cocoa_s: Failed to start CoreAudio: AudioUnitSetProperty (kAudioUnitProperty_StreamFormat)";
+	}
 
 	/* Set the audio callback */
 	callback.inputProc = audioCallback;
 	callback.inputProcRefCon = NULL;
-	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetInputCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr)
+	if (AudioUnitSetProperty(_outputAudioUnit, kAudioUnitProperty_SetInputCallback, kAudioUnitScope_Input, 0, &callback, sizeof(callback)) != noErr) {
 		return "cocoa_s: Failed to start CoreAudio: AudioUnitSetProperty (kAudioUnitProperty_SetInputCallback)";
+	}
 
 	/* Finally, start processing of the audio unit */
-	if (AudioOutputUnitStart(_outputAudioUnit) != noErr)
+	if (AudioOutputUnitStart(_outputAudioUnit) != noErr) {
 		return "cocoa_s: Failed to start CoreAudio: AudioOutputUnitStart";
+	}
 
 	/* We're running! */
 	return NULL;
@@ -119,7 +125,7 @@ static void CocoaSoundStop(void)
 	DEBUG(driver, 1)("cocoa_s: CocoaSoundStop");
 
 	/* stop processing the audio unit */
-	if(AudioOutputUnitStop(_outputAudioUnit) != noErr) {
+	if (AudioOutputUnitStop(_outputAudioUnit) != noErr) {
 		DEBUG(driver, 1)("cocoa_s: Core_CloseAudio: AudioOutputUnitStop failed");
 		return;
 	}

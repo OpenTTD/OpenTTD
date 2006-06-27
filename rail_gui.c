@@ -147,9 +147,9 @@ void CcStation(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceRail_Station(TileIndex tile)
 {
-	if (_remove_button_clicked)
+	if (_remove_button_clicked) {
 		DoCommandP(tile, 0, 0, CcPlaySound1E, CMD_REMOVE_FROM_RAILROAD_STATION | CMD_MSG(STR_CANT_REMOVE_PART_OF_STATION));
-	else if (_railstation.dragdrop) {
+	} else if (_railstation.dragdrop) {
 		VpStartPlaceSizing(tile, VPM_X_AND_Y_LIMITED);
 		VpSetPlaceSizingLimit(_patches.station_spread);
 	} else {
@@ -470,8 +470,9 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 					DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
 			} else if (e->place.userdata == VPM_X_AND_Y_LIMITED) {
 				HandleStationPlacement(start_tile, end_tile);
-			} else
+			} else {
 				DoRailroadTrack(e->place.userdata & 1);
+			}
 		}
 		break;
 

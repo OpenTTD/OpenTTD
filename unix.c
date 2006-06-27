@@ -302,10 +302,11 @@ char *FiosBrowseTo(const FiosItem *item)
 	switch (item->type) {
 		case FIOS_TYPE_PARENT:
 			s = strrchr(path, '/');
-			if (s != path)
+			if (s != path) {
 				s[0] = '\0';
-			else
+			} else {
 				s[1] = '\0';
+			}
 			break;
 
 		case FIOS_TYPE_DIR:
@@ -351,8 +352,9 @@ StringID FiosGetDescText(const char **path, uint32 *tot)
 
 		if (statvfs(*path, &s) == 0) {
 			free = (uint64)s.f_frsize * s.f_bavail >> 20;
-		} else
+		} else {
 			return STR_4006_UNABLE_TO_READ_DRIVE;
+		}
 	}
 #endif
 	if (tot != NULL) *tot = free;
@@ -364,10 +366,7 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 	const char* extension;
 	const char* period;
 
-	if (_game_mode == GM_EDITOR)
-		extension = ".scn";
-	else
-		extension = ".sav";
+	extension = (_game_mode == GM_EDITOR ? ".scn" : ".sav");
 
 	// Don't append the extension, if it is already there
 	period = strrchr(name, '.');
@@ -458,8 +457,8 @@ int CDECL main(int argc, char* argv[])
 
 #ifdef WITH_COCOA
 	cocoaSetupAutoreleasePool();
-    /* This is passed if we are launched by double-clicking */
-	if (argc >= 2 && strncmp (argv[1], "-psn", 4) == 0) {
+	/* This is passed if we are launched by double-clicking */
+	if (argc >= 2 && strncmp(argv[1], "-psn", 4) == 0) {
 		argv[1] = NULL;
 		argc = 1;
 		cocoaSetWorkingDirectory();

@@ -238,10 +238,11 @@ static IniFile *ini_load(const char *filename)
 
 		// it's a group?
 		if (s[0] == '[') {
-			if (e[-1] != ']')
+			if (e[-1] != ']') {
 				ShowInfoF("ini: invalid group name '%s'\n", buffer);
-			else
+			} else {
 				e--;
+			}
 			s++; // skip [
 			group = ini_group_alloc(ini, s, e - s);
 			if (comment_size) {
@@ -341,8 +342,9 @@ static bool ini_save(const char *filename, IniFile *ini)
 			//*Don't give an equal sign to list items that don't have a parameter */
 			if (group->type == IGT_LIST && *item->value == '\0') {
 				fprintf(f, "%s\n", item->name);
-			} else
+			} else {
 				fprintf(f, "%s = %s\n", item->name, item->value);
+			}
 		}
 	}
 	if (ini->comment) fputs(ini->comment, f);
@@ -609,8 +611,12 @@ static void Write_ValidateSetting(void *ptr, const SettingDesc *sd, int32 val)
 {
 	const SettingDescBase *sdb = &sd->desc;
 
-	if (sdb->cmd != SDT_BOOLX && sdb->cmd != SDT_NUMX &&
-		  sdb->cmd != SDT_ONEOFMANY && sdb->cmd != SDT_MANYOFMANY) return;
+	if (sdb->cmd != SDT_BOOLX &&
+			sdb->cmd != SDT_NUMX &&
+			sdb->cmd != SDT_ONEOFMANY &&
+			sdb->cmd != SDT_MANYOFMANY) {
+		return;
+	}
 
 	/* We cannot know the maximum value of a bitset variable, so just have faith */
 	if (sdb->cmd != SDT_MANYOFMANY) {
@@ -1559,8 +1565,8 @@ void SetPatchValue(uint index, const Patches *object, int32 value)
 		Write_ValidateSetting(var, sd, value);
 
 		if (_game_mode != GM_MENU) {
-		 void *var2 = ini_get_variable(&sd->save, &_patches_newgame);
-		 Write_ValidateSetting(var2, sd, value);
+			void* var2 = ini_get_variable(&sd->save, &_patches_newgame);
+			Write_ValidateSetting(var2, sd, value);
 		}
 	} else {
 		DoCommandP(0, index, value, NULL, CMD_CHANGE_PATCH_SETTING);

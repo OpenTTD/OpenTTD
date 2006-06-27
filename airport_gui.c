@@ -88,10 +88,9 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		_place_proc(e->place.tile);
 		break;
 
-	case WE_PLACE_DRAG: {
+	case WE_PLACE_DRAG:
 		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata);
-		return;
-	}
+		break;
 
 	case WE_PLACE_MOUSEUP:
 		if (e->place.pt.x != -1) {
@@ -186,7 +185,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		DrawWindowWidgets(w);
-    // strings such as 'Size' and 'Coverage Area'
+		// strings such as 'Size' and 'Coverage Area'
 		DrawStringCentered(74,  16, STR_SMALL_AIRPORTS, 0);
 		DrawStringCentered(74,  54, STR_LARGE_AIRPORTS, 0);
 		DrawStringCentered(74,  92, STR_HUB_AIRPORTS, 0);

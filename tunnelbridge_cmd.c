@@ -142,8 +142,9 @@ static uint32 CheckBridgeSlope(Axis direction, Slope tileh, bool is_start_tile)
 	}
 
 	// slope foundations
-	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION | BRIDGE_PARTLY_LEVELED_FOUNDATION, tileh))
+	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION | BRIDGE_PARTLY_LEVELED_FOUNDATION, tileh)) {
 		return _price.terraform;
+	}
 
 	return CMD_ERROR;
 }

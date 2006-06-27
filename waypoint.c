@@ -34,8 +34,7 @@ static void WaypointPoolNewBlock(uint start_item)
 {
 	Waypoint *wp;
 
-	FOR_ALL_WAYPOINTS_FROM(wp, start_item)
-		wp->index = start_item++;
+	FOR_ALL_WAYPOINTS_FROM(wp, start_item) wp->index = start_item++;
 }
 
 /* Initialize the town-pool */
@@ -50,7 +49,7 @@ static Waypoint* AllocateWaypoint(void)
 		if (wp->xy == 0) {
 			uint index = wp->index;
 
-			memset(wp, 0, sizeof(Waypoint));
+			memset(wp, 0, sizeof(*wp));
 			wp->index = index;
 
 			return wp;
@@ -58,8 +57,7 @@ static Waypoint* AllocateWaypoint(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_waypoint_pool))
-		return AllocateWaypoint();
+	if (AddBlockToPool(&_waypoint_pool)) return AllocateWaypoint();
 
 	return NULL;
 }
@@ -88,8 +86,7 @@ void UpdateAllWaypointSigns(void)
 	Waypoint *wp;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->xy)
-			UpdateWaypointSign(wp);
+		if (wp->xy != 0) UpdateWaypointSign(wp);
 	}
 }
 
@@ -106,8 +103,7 @@ static void MakeDefaultWaypointName(Waypoint* wp)
 
 	/* Find an unused waypoint number belonging to this town */
 	FOR_ALL_WAYPOINTS(local_wp) {
-		if (wp == local_wp)
-			continue;
+		if (wp == local_wp) continue;
 
 		if (local_wp->xy && local_wp->string == STR_NULL && local_wp->town_index == wp->town_index)
 			used_waypoint[local_wp->town_cn] = true;
@@ -124,11 +120,12 @@ static void MakeDefaultWaypointName(Waypoint* wp)
 static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
 {
 	Waypoint *wp, *best = NULL;
-	uint thres = 8, cur_dist;
+	uint thres = 8;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->deleted && wp->xy) {
-			cur_dist = DistanceManhattan(tile, wp->xy);
+		if (wp->deleted && wp->xy != 0) {
+			uint cur_dist = DistanceManhattan(tile, wp->xy);
+
 			if (cur_dist < thres) {
 				thres = cur_dist;
 				best = wp;
@@ -190,15 +187,13 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_1005_NO_SUITABLE_RAILROAD_TRACK);
 	}
 
-	if (!CheckTileOwnership(tile))
-		return CMD_ERROR;
-
+	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	tileh = GetTileSlope(tile, NULL);
-	if (tileh != SLOPE_FLAT) {
-		if (!_patches.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))
-			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
+	if (tileh != SLOPE_FLAT &&
+			(!_patches.build_on_slopes || IsSteepSlope(tileh) || !(tileh & (0x3 << axis)) || !(tileh & ~(0x3 << axis)))) {
+		return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
 	}
 
 	/* Check if there is an already existing, deleted, waypoint close to us that we can reuse. */
@@ -255,8 +250,7 @@ static void DoDeleteWaypoint(Waypoint *wp)
 	order.station = wp->index;
 	DeleteDestinationFromVehicleOrder(order);
 
-	if (wp->string != STR_NULL)
-		DeleteName(wp->string);
+	if (wp->string != STR_NULL) DeleteName(wp->string);
 
 	RedrawWaypointSign(wp);
 }
@@ -268,9 +262,7 @@ void WaypointsDailyLoop(void)
 
 	/* Check if we need to delete a waypoint */
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->deleted && !--wp->deleted) {
-			DoDeleteWaypoint(wp);
-		}
+		if (wp->deleted != 0 && --wp->deleted == 0) DoDeleteWaypoint(wp);
 	}
 }
 
@@ -280,14 +272,12 @@ int32 RemoveTrainWaypoint(TileIndex tile, uint32 flags, bool justremove)
 	Waypoint *wp;
 
 	/* Make sure it's a waypoint */
-	if (!IsTileType(tile, MP_RAILWAY) || !IsRailWaypoint(tile))
+	if (!IsTileType(tile, MP_RAILWAY) ||
+			!IsRailWaypoint(tile) ||
+			(!CheckTileOwnership(tile) && _current_player != OWNER_WATER) ||
+			!EnsureNoVehicle(tile)) {
 		return CMD_ERROR;
-
-	if (!CheckTileOwnership(tile) && !(_current_player == OWNER_WATER))
-		return CMD_ERROR;
-
-	if (!EnsureNoVehicle(tile))
-		return CMD_ERROR;
+	}
 
 	if (flags & DC_EXEC) {
 		wp = GetWaypointByTile(tile);
@@ -327,19 +317,17 @@ int32 CmdRemoveTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Waypoint *wp;
-	StringID str;
 
 	if (!IsWaypointIndex(p1)) return CMD_ERROR;
 
 	if (_cmd_text[0] != '\0') {
-		str = AllocateNameUnique(_cmd_text, 0);
-		if (str == 0)
-			return CMD_ERROR;
+		StringID str = AllocateNameUnique(_cmd_text, 0);
+
+		if (str == 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
 			wp = GetWaypoint(p1);
-			if (wp->string != STR_NULL)
-				DeleteName(wp->string);
+			if (wp->string != STR_NULL) DeleteName(wp->string);
 
 			wp->string = str;
 			wp->town_cn = 0;
@@ -352,8 +340,7 @@ int32 CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	} else {
 		if (flags & DC_EXEC) {
 			wp = GetWaypoint(p1);
-			if (wp->string != STR_NULL)
-				DeleteName(wp->string);
+			if (wp->string != STR_NULL) DeleteName(wp->string);
 
 			MakeDefaultWaypointName(wp);
 			UpdateWaypointSign(wp);
@@ -395,8 +382,7 @@ void FixOldWaypoints(void)
 
 	/* Convert the old 'town_or_string', to 'string' / 'town' / 'town_cn' */
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->xy == 0)
-			continue;
+		if (wp->xy == 0) continue;
 
 		wp->town_index = ClosestTownFromTile(wp->xy, (uint)-1)->index;
 		wp->town_cn = 0;

@@ -134,8 +134,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	Vehicle *v,*found;
 
-	if (!success)
-		return;
+	if (!success) return;
 
 	// find a locomotive in the depot.
 	found = NULL;
@@ -143,8 +142,7 @@ void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
 		if (v->type == VEH_Train && IsFrontEngine(v) &&
 				v->tile == tile &&
 				v->u.rail.track == 0x80) {
-			if (found != NULL) // must be exactly one.
-				return;
+			if (found != NULL) return; // must be exactly one.
 			found = v;
 		}
 	}
@@ -191,8 +189,7 @@ static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 				!HASBIT(e->player_avail, _local_player))
 			continue;
 
-		if (*sel == 0)
-			*selected_id = i;
+		if (*sel == 0) *selected_id = i;
 
 		if (IS_INT_INSIDE(--*pos, -show_max, 0)) {
 			DrawString(*x + 59, *y + 2, GetCustomEngineName(i), *sel == 0 ? 0xC : 0x10);
@@ -208,8 +205,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT:
 
-		if (w->window_number == 0)
-			SETBIT(w->disabled_state, 5);
+		if (w->window_number == 0) SETBIT(w->disabled_state, 5);
 
 		{
 			int count = 0;
@@ -218,9 +214,10 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 				const Engine *e = GetEngine(i);
-				if (HasPowerOnRail(e->railtype, railtype)
-				    && HASBIT(e->player_avail, _local_player))
+				if (HasPowerOnRail(e->railtype, railtype) &&
+						HASBIT(e->player_avail, _local_player)) {
 					count++;
+				}
 			}
 			SetVScrollCount(w, count);
 		}
@@ -416,7 +413,7 @@ static void DrawTrainDepotWindow(Window *w)
 	hnum = 8;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train &&
-			  (IsFrontEngine(v) || IsFreeWagon(v)) &&
+				(IsFrontEngine(v) || IsFreeWagon(v)) &&
 				v->tile == tile &&
 				v->u.rail.track == 0x80) {
 			num++;
@@ -562,20 +559,16 @@ static void TrainDepotMoveVehicle(Vehicle *wagon, VehicleID sel, Vehicle *head)
 
 	v = GetVehicle(sel);
 
-	if (v == wagon)
-		return;
+	if (v == wagon) return;
 
 	if (wagon == NULL) {
-		if (head != NULL)
-			wagon = GetLastVehicleInChain(head);
+		if (head != NULL) wagon = GetLastVehicleInChain(head);
 	} else  {
 		wagon = GetPrevVehicleInChain(wagon);
-		if (wagon == NULL)
-			return;
+		if (wagon == NULL) return;
 	}
 
-	if (wagon == v)
-		return;
+	if (wagon == v) return;
 
 	DoCommandP(v->tile, v->index + ((wagon == NULL ? INVALID_VEHICLE : wagon->index) << 16), _ctrl_pressed ? 1 : 0, NULL, CMD_MOVE_RAIL_VEHICLE | CMD_MSG(STR_8837_CAN_T_MOVE_VEHICLE));
 }
@@ -589,7 +582,10 @@ static void TrainDepotClickTrain(Window *w, int x, int y)
 	mode = GetVehicleFromTrainDepotWndPt(w, x, y, &gdvp);
 
 	// share / copy orders
-	if (_thd.place_mode && mode <= 0) { _place_clicked_vehicle = gdvp.head; return; }
+	if (_thd.place_mode && mode <= 0) {
+		_place_clicked_vehicle = gdvp.head;
+		return;
+	}
 
 	v = gdvp.wagon;
 
@@ -680,17 +676,17 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
- 		}
- 	} break;
-
-	case WE_PLACE_OBJ: {
-		ClonePlaceObj(w);
+		}
 	} break;
 
-	case WE_ABORT_PLACE_OBJ: {
+	case WE_PLACE_OBJ:
+		ClonePlaceObj(w);
+		break;
+
+	case WE_ABORT_PLACE_OBJ:
 		CLRBIT(w->click_state, 9);
 		InvalidateWidget(w, 9);
-	} break;
+		break;
 
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
@@ -994,8 +990,9 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
 					SetDParam(0, v->u.rail.last_speed);
-				} else
+				} else {
 					str = STR_EMPTY;
+				}
 				break;
 			}
 		}
@@ -1308,8 +1305,7 @@ do_change_service_int:
 		break;
 
 	case WE_RESIZE:
-		if (e->sizing.diff.y == 0)
-			break;
+		if (e->sizing.diff.y == 0) break;
 
 		w->vscroll.cap += e->sizing.diff.y / 14;
 		w->widget[4].unkA = (w->vscroll.cap << 8) + 1;
@@ -1418,8 +1414,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, vl->list_length);
 
 		// disable 'Sort By' tooltip on Unsorted sorting criteria
-		if (vl->sort_type == SORT_BY_UNSORTED)
-			w->disabled_state |= (1 << 3);
+		if (vl->sort_type == SORT_BY_UNSORTED) w->disabled_state |= (1 << 3);
 
 		/* draw the widgets */
 		{
@@ -1454,10 +1449,11 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			DrawVehicleProfitButton(v, x, y + 13);
 
 			SetDParam(0, v->unitnumber);
-			if (IsTileDepotType(v->tile, TRANSPORT_RAIL) && (v->vehstatus & VS_HIDDEN))
+			if (IsTileDepotType(v->tile, TRANSPORT_RAIL) && (v->vehstatus & VS_HIDDEN)) {
 				str = STR_021F;
-			else
+			} else {
 				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
+			}
 			DrawString(x, y + 2, str, 0);
 
 			SetDParam(0, v->profit_this_year);
@@ -1489,22 +1485,19 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+			const Vehicle* v;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
 			id_v += w->vscroll.pos;
 
-			{
-				Vehicle *v;
+			if (id_v >= vl->list_length) return; // click out of list bound
 
-				if (id_v >= vl->list_length) return; // click out of list bound
+			v = GetVehicle(vl->sort_list[id_v].index);
 
-				v = GetVehicle(vl->sort_list[id_v].index);
+			assert(v->type == VEH_Train && IsFrontEngine(v) && v->owner == owner);
 
-				assert(v->type == VEH_Train && IsFrontEngine(v) && v->owner == owner);
-
-				ShowTrainViewWindow(v);
-			}
+			ShowTrainViewWindow(v);
 		} break;
 
 		case 9: /* Build new Vehicle */
@@ -1512,13 +1505,10 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			ShowBuildTrainWindow(0);
 			break;
 
-		case 10: {
-			if (!IsWindowOfPrototype(w, _player_trains_widgets))
-				break;
-
+		case 10:
+			if (IsWindowOfPrototype(w, _player_trains_widgets)) break;
 			ShowReplaceVehicleWindow(VEH_Train);
 			break;
- 		}
 
 		}
 	}	break;
@@ -1531,8 +1521,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			_sorting.train.criteria = vl->sort_type;
 
 			// enable 'Sort By' if a sorter criteria is chosen
-			if (vl->sort_type != SORT_BY_UNSORTED)
-				CLRBIT(w->disabled_state, 3);
+			if (vl->sort_type != SORT_BY_UNSORTED) CLRBIT(w->disabled_state, 3);
 		}
 		SetWindowDirty(w);
 		break;
@@ -1592,7 +1581,7 @@ void ShowPlayerTrains(PlayerID player, StationID station)
 	} else {
 		w = AllocateWindowDescFront(&_other_player_trains_desc, (station << 16) | player);
 	}
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = player;
 		w->hscroll.cap = 10 * 29;
 		w->vscroll.cap = 7; // maximum number of vehicles shown

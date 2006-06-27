@@ -315,8 +315,8 @@ static int32 ClearTile_Industry(TileIndex tile, byte flags)
 	*/
 	if ((_current_player != OWNER_WATER && _game_mode != GM_EDITOR &&
 			!_cheats.magic_bulldozer.value) ||
-			(_current_player == OWNER_WATER && i->type == IT_OIL_RIG) ) {
- 		SetDParam(0, STR_4802_COAL_MINE + i->type);
+			(_current_player == OWNER_WATER && i->type == IT_OIL_RIG)) {
+		SetDParam(0, STR_4802_COAL_MINE + i->type);
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
 

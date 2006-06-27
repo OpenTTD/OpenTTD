@@ -1244,9 +1244,11 @@ static void AiNew_State_StartVehicle(Player *p)
 // Repays money
 static void AiNew_State_RepayMoney(Player *p)
 {
-	int i;
-	for (i=0;i<AI_LOAN_REPAY;i++)
+	uint i;
+
+	for (i = 0; i < AI_LOAN_REPAY; i++) {
 		AI_DoCommand(0, 0, 0, DC_EXEC, CMD_DECREASE_LOAN);
+	}
 	p->ainew.state = AI_STATE_ACTION_DONE;
 }
 

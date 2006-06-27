@@ -148,9 +148,9 @@ static void showhelp(void)
 		"  -G seed             = Set random seed\n"
 		"  -n [ip#player:port] = Start networkgame\n"
 		"  -D                  = Start dedicated server\n"
-		#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
+#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"  -f                  = Fork into the background (dedicated only)\n"
-		#endif
+#endif
 		"  -i                  = Force to use the DOS palette\n"
 		"                          (use this if you see a lot of pink)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
@@ -335,11 +335,11 @@ int ttd_main(int argc, char* argv[])
 	//   a letter means: it accepts that param (e.g.: -h)
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
-	#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
-		optformat = "bm:s:v:hDfn::eit:d::r:g::G:c:";
-	#else
-		optformat = "bm:s:v:hDn::eit:d::r:g::G:c:"; // no fork option
-	#endif
+	optformat = "bm:s:v:hDn::eit:d::r:g::G:c:"
+#if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
+		"f"
+#endif
+	;
 
 	MyGetOptInit(&mgo, argc-1, argv+1, optformat);
 	while ((i = MyGetOpt(&mgo)) != -1) {
@@ -373,8 +373,9 @@ int ttd_main(int argc, char* argv[])
 			if (mgo.opt != NULL) {
 				strcpy(_file_to_saveload.name, mgo.opt);
 				_switch_mode = SM_LOAD;
-			} else
+			} else {
 				_switch_mode = SM_NEWGAME;
+			}
 			break;
 		case 'G': _random_seeds[0][0] = atoi(mgo.opt); break;
 		case 'c': _config_file = strdup(mgo.opt); break;
@@ -1298,7 +1299,7 @@ bool AfterLoadGame(void)
 					break;
 
 				case MP_STATION:
-					if (IsRailwayStation(t))  {
+					if (IsRailwayStation(t)) {
 						SetRailType(t, UpdateRailType(GetRailType(t), min_rail));
 					}
 					break;
@@ -1339,9 +1340,7 @@ bool AfterLoadGame(void)
 	 * replaced, shall keep their old length. In all prior versions, just default
 	 * to false */
 	if (CheckSavegameVersionOldStyle(16, 1)) {
-		FOR_ALL_PLAYERS(p) {
-			p->renew_keep_length = false;
-		}
+		FOR_ALL_PLAYERS(p) p->renew_keep_length = false;
 	}
 
 	/* In version 17, ground type is moved from m2 to m4 for depots and
@@ -1396,10 +1395,11 @@ bool AfterLoadGame(void)
 				}
 
 				// Clear PBS reservation on track
-				if (!IsTileDepotType(tile, TRANSPORT_RAIL))
+				if (!IsTileDepotType(tile, TRANSPORT_RAIL)) {
 					SB(_m[tile].m4, 4, 4, 0);
-				else
+				} else {
 					CLRBIT(_m[tile].m3, 6);
+				}
 			}
 
 			// Clear PBS reservation on crossing

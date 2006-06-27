@@ -467,8 +467,9 @@ static int32 ValidateAutoDrag(Trackdir *trackdir, TileIndex start, TileIndex end
 			SETBIT(*trackdir, 3); // reverse the direction
 			trdx = -trdx;
 			trdy = -trdy;
-		} else // other direction is invalid too, invalid drag
+		} else { // other direction is invalid too, invalid drag
 			return CMD_ERROR;
+		}
 	}
 
 	// (for diagonal tracks, this is already made sure of by above test), but:
@@ -517,8 +518,9 @@ static int32 CmdRailTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint32 
 		if (CmdFailed(ret)) {
 			if ((_error_message != STR_1007_ALREADY_BUILT) && (mode == 0)) break;
 			_error_message = INVALID_STRING_ID;
-		} else
+		} else {
 			total_cost += ret;
+		}
 
 		if (tile == end_tile) break;
 
@@ -644,13 +646,13 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	_error_message = STR_1005_NO_SUITABLE_RAILROAD_TRACK;
 
 	{
- 		/* See if this is a valid track combination for signals, (ie, no overlap) */
- 		TrackBits trackbits = GetTrackBits(tile);
+		/* See if this is a valid track combination for signals, (ie, no overlap) */
+		TrackBits trackbits = GetTrackBits(tile);
 		if (KILL_FIRST_BIT(trackbits) != 0 && /* More than one track present */
 				trackbits != TRACK_BIT_HORZ &&
-				trackbits != TRACK_BIT_VERT
-		)
+				trackbits != TRACK_BIT_VERT) {
 			return CMD_ERROR;
+		}
 	}
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
@@ -740,8 +742,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 	/* for vertical/horizontal tracks, double the given signals density
 	* since the original amount will be too dense (shorter tracks) */
-	if (!IsDiagonalTrack(track))
-		signal_density *= 2;
+	if (!IsDiagonalTrack(track)) signal_density *= 2;
 
 	if (CmdFailed(ValidateAutoDrag(&trackdir, tile, end_tile))) return CMD_ERROR;
 
@@ -754,8 +755,9 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 
 		// copy signal/semaphores style (independent of CTRL)
 		semaphores = (GetSignalVariant(tile) == SIG_ELECTRIC ? 0 : 8);
-	} else // no signals exist, drag a two-way signal stretch
+	} else { // no signals exist, drag a two-way signal stretch
 		signals = SignalOnTrack(track);
+	}
 
 	/* signal_ctr         - amount of tiles already processed
 	 * signals_density    - patch setting to put signal on every Nth tile (double space on |, -- tracks)
@@ -768,7 +770,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	signal_ctr = total_cost = 0;
 	for (;;) {
 		// only build/remove signals with the specified density
-		if ((signal_ctr % signal_density) == 0 ) {
+		if (signal_ctr % signal_density == 0) {
 			ret = DoCommand(tile, TrackdirToTrack(trackdir) | semaphores, signals, flags, (mode == 1) ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
 			/* Abort placement for any other error than NOT_SUITABLE_TRACK
@@ -811,11 +813,12 @@ int32 CmdRemoveSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Track track = (Track)(p1 & 0x7);
 
-	if (!ValParamTrackOrientation(track) || !IsTileType(tile, MP_RAILWAY) || !EnsureNoVehicle(tile))
+	if (!ValParamTrackOrientation(track) ||
+			!IsTileType(tile, MP_RAILWAY) ||
+			!EnsureNoVehicle(tile) ||
+			!HasSignalOnTrack(tile, track)) {
 		return CMD_ERROR;
-
-	if (!HasSignalOnTrack(tile, track)) // no signals on track?
-		return CMD_ERROR;
+	}
 
 	/* Only water can remove signals from anyone */
 	if (_current_player != OWNER_WATER && !CheckTileOwnership(tile)) return CMD_ERROR;
@@ -1238,8 +1241,7 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool flat)
 			foundation = GetRailFoundation(ti->tileh, track);
 		}
 
-		if (foundation != 0)
-			DrawFoundation(ti, foundation);
+		if (foundation != 0) DrawFoundation(ti, foundation);
 
 		// DrawFoundation() modifies ti.
 		// Default sloped sprites..
@@ -1317,7 +1319,6 @@ static void DrawTile_Track(TileInfo *ti)
 
 		/* draw signals also? */
 		if (GetRailTileType(ti->tile) == RAIL_TILE_SIGNALS) DrawSignals(ti->tile, rails);
-
 	} else {
 		/* draw depots / waypoints */
 		const DrawTrackSeqStruct *drss;
@@ -1531,7 +1532,7 @@ static void *SignalVehicleCheckProc(Vehicle *v, void *data)
 	if (tile != dest->tile) return NULL;
 
 	/* Are we on the same piece of track? */
-	if (dest->track & (v->u.rail.track + (v->u.rail.track << 8))) return v;
+	if (dest->track & v->u.rail.track * 0x101) return v;
 
 	return NULL;
 }

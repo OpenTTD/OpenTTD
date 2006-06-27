@@ -114,7 +114,7 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_SHIP | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP)))
 					DeleteWindow(w);
 			}
-		  break;
+			break;
 		}
 		break;
 	}
@@ -159,8 +159,8 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		StringID str;
 
 		w->disabled_state = v->owner == _local_player ? 0 : (1 << 2);
-		if (!_patches.servint_ships) // disable service-scroller when interval is set to disabled
-			w->disabled_state |= (1 << 5) | (1 << 6);
+		// disable service-scroller when interval is set to disabled
+		if (!_patches.servint_ships) w->disabled_state |= (1 << 5) | (1 << 6);
 
 		SetDParam(0, v->string_id);
 		SetDParam(1, v->unitnumber);
@@ -448,7 +448,8 @@ static void ShowBuildShipWindow(TileIndex tile)
 }
 
 
-static void ShipViewWndProc(Window *w, WindowEvent *e) {
+static void ShipViewWndProc(Window* w, WindowEvent* e)
+{
 	switch (e->event) {
 		case WE_PAINT: {
 			Vehicle *v = GetVehicle(w->window_number);
@@ -460,8 +461,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 				disabled = 0;
 			}
 
-			if (v->owner != _local_player)
-				disabled |= 1<<8 | 1<<7;
+			if (v->owner != _local_player) disabled |= 1<<8 | 1<<7;
 			w->disabled_state = disabled;
 
 			/* draw widgets & caption */
@@ -497,8 +497,9 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 						if (v->num_orders == 0) {
 							str = STR_NO_ORDERS + _patches.vehicle_speed;
 							SetDParam(0, v->cur_speed / 2);
-						} else
+						} else {
 							str = STR_EMPTY;
+						}
 						break;
 				}
 			}
@@ -616,8 +617,7 @@ static void DrawShipDepotWindow(Window *w)
 	/* determine amount of items for scroller */
 	num = 0;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship && IsShipInDepot(v) && v->tile == tile)
-			num++;
+		if (v->type == VEH_Ship && IsShipInDepot(v) && v->tile == tile) num++;
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
@@ -659,13 +659,11 @@ static int GetVehicleFromShipDepotWndPt(const Window *w, int x, int y, Vehicle *
 
 	xt = x / 90;
 	xm = x % 90;
-	if (xt >= w->hscroll.cap)
-		return 1;
+	if (xt >= w->hscroll.cap) return 1;
 
 	row = (y - 14) / 24;
 	ym = (y - 14) % 24;
-	if (row >= w->vscroll.cap)
-		return 1;
+	if (row >= w->vscroll.cap) return 1;
 
 	pos = (row + w->vscroll.pos) * w->hscroll.cap + xt;
 
@@ -681,7 +679,6 @@ static int GetVehicleFromShipDepotWndPt(const Window *w, int x, int y, Vehicle *
 	}
 
 	return 1; /* outside */
-
 }
 
 static void ShipDepotClick(Window *w, int x, int y)
@@ -690,7 +687,10 @@ static void ShipDepotClick(Window *w, int x, int y)
 	int mode = GetVehicleFromShipDepotWndPt(w, x, y, &v);
 
 	// share / copy orders
-	if (_thd.place_mode && mode <= 0) { _place_clicked_vehicle = v; return; }
+	if (_thd.place_mode && mode <= 0) {
+		_place_clicked_vehicle = v;
+		return;
+	}
 
 	switch (mode) {
 	case 1: // invalid
@@ -1035,22 +1035,19 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 			return;
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
+			const Vehicle* v;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
 			id_v += w->vscroll.pos;
 
-			{
-				Vehicle *v;
+			if (id_v >= vl->list_length) return; // click out of list bound
 
-				if (id_v >= vl->list_length) return; // click out of list bound
+			v	= GetVehicle(vl->sort_list[id_v].index);
 
-				v	= GetVehicle(vl->sort_list[id_v].index);
+			assert(v->type == VEH_Ship);
 
-				assert(v->type == VEH_Ship);
-
-				ShowShipViewWindow(v);
-			}
+			ShowShipViewWindow(v);
 		} break;
 
 		case 9: /* Build new Vehicle */
@@ -1075,8 +1072,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 			_sorting.ship.criteria = vl->sort_type;
 
 			// enable 'Sort By' if a sorter criteria is chosen
-			if (vl->sort_type != SORT_BY_UNSORTED)
-				CLRBIT(w->disabled_state, 3);
+			if (vl->sort_type != SORT_BY_UNSORTED) CLRBIT(w->disabled_state, 3);
 		}
 		SetWindowDirty(w);
 		break;

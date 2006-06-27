@@ -2467,17 +2467,19 @@ static void ParamSet(byte *buf, int len)
 			break;
 
 		case 0x05:
-			if ((int32)src2 < 0)
+			if ((int32)src2 < 0) {
 				res = src1 >> -(int32)src2;
-			else
+			} else {
 				res = src1 << src2;
+			}
 			break;
 
 		case 0x06:
-			if ((int32)src2 < 0)
+			if ((int32)src2 < 0) {
 				res = (int32)src1 >> -(int32)src2;
-			else
+			} else {
 				res = (int32)src1 << src2;
+			}
 			break;
 
 		case 0x07: /* Bitwise AND */

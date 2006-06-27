@@ -254,7 +254,7 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 
 	// foundation is used. Whole tile is leveled up
 	if ((~_valid_tileh_slopes_road[1][tileh] & road_bits) == 0) {
-		return existing ? 0 : _price.terraform;
+		return existing != 0 ? 0 : _price.terraform;
 	}
 
 	// partly leveled up tile, only if there's no road on that tile
@@ -802,7 +802,8 @@ static void DrawTile_Road(TileInfo *ti)
 				if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
 				if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
-				AddSortableSpriteToDraw(image, ti->x | drss->subcoord_x,
+				AddSortableSpriteToDraw(
+					image, ti->x | drss->subcoord_x,
 					ti->y | drss->subcoord_y, drss->width, drss->height, 0x14, ti->z
 				);
 			}
@@ -894,9 +895,6 @@ static const Roadside _town_road_types_2[][2] = {
 
 static void TileLoop_Road(TileIndex tile)
 {
-	Town *t;
-	int grp;
-
 	switch (_opt.landscape) {
 		case LT_HILLY:
 			if (IsOnSnow(tile) != (GetTileZ(tile) > _opt.snow_line)) {
@@ -916,15 +914,15 @@ static void TileLoop_Road(TileIndex tile)
 	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) return;
 
 	if (!HasRoadWorks(tile)) {
-		t = ClosestTownFromTile(tile, (uint)-1);
+		const Town* t = ClosestTownFromTile(tile, (uint)-1);
+		int grp = 0;
 
-		grp = 0;
 		if (t != NULL) {
 			grp = GetTownRadiusGroup(t, tile);
 
 			// Show an animation to indicate road work
 			if (t->road_build_months != 0 &&
-					!(DistanceManhattan(t->xy, tile) >= 8 && grp == 0) &&
+					(DistanceManhattan(t->xy, tile) < 8 || grp != 0) &&
 					GetRoadTileType(tile) == ROAD_TILE_NORMAL && (GetRoadBits(tile) == ROAD_X || GetRoadBits(tile) == ROAD_Y)) {
 				if (GetTileSlope(tile, NULL) == SLOPE_FLAT && EnsureNoVehicle(tile) && CHANCE16(1, 20)) {
 					StartRoadWorks(tile);
@@ -989,7 +987,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 		case TRANSPORT_ROAD:
 			switch (GetRoadTileType(tile)) {
 				case ROAD_TILE_NORMAL:
-					return HasRoadWorks(tile) ?  0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
+					return HasRoadWorks(tile) ? 0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
 
 				case ROAD_TILE_CROSSING: {
 					uint32 r = (GetCrossingRoadAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
@@ -1001,7 +999,6 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 				default:
 				case ROAD_TILE_DEPOT:
 					return (DiagDirToAxis(GetRoadDepotDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
-					break;
 			}
 			break;
 
@@ -1048,11 +1045,11 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 			break;
 
 		case ROAD_TILE_DEPOT:
-			if (v->type == VEH_Road && v->u.road.frame == 11) {
-				if (_roadveh_enter_depot_unk0[GetRoadDepotDirection(tile)] == v->u.road.state) {
-					RoadVehEnterDepot(v);
-					return 4;
-				}
+			if (v->type == VEH_Road &&
+					v->u.road.frame == 11 &&
+					_roadveh_enter_depot_unk0[GetRoadDepotDirection(tile)] == v->u.road.state) {
+				RoadVehEnterDepot(v);
+				return 4;
 			}
 			break;
 

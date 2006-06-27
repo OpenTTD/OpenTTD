@@ -43,8 +43,7 @@ static void DispatchLeftClickEvent(Window* w, int x, int y)
 		wi = &w->widget[e.click.widget];
 
 		/* don't allow any interaction if the button has been disabled */
-		if (HASBIT(w->disabled_state, e.click.widget))
-			return;
+		if (HASBIT(w->disabled_state, e.click.widget)) return;
 
 		if (wi->type & 0xE0) {
 			/* special widget handling for buttons*/
@@ -230,13 +229,14 @@ void DeleteWindow(Window *w)
 {
 	WindowClass wc;
 	WindowNumber wn;
-	ViewPort *vp;
 	Window *v;
 	int count;
 
 	if (w == NULL) return;
 
-	if (_thd.place_mode != 0 && _thd.window_class == w->window_class && _thd.window_number == w->window_number) {
+	if (_thd.place_mode != VHM_NONE &&
+			_thd.window_class == w->window_class &&
+			_thd.window_number == w->window_number) {
 		ResetObjectToPlace();
 	}
 
@@ -247,11 +247,10 @@ void DeleteWindow(Window *w)
 
 	w = FindWindowById(wc, wn);
 
-	vp = w->viewport;
-	w->viewport = NULL;
-	if (vp != NULL) {
-		_active_viewports &= ~(1 << (vp - _viewports));
-		vp->width = 0;
+	if (w->viewport != NULL) {
+		CLRBIT(_active_viewports, w->viewport - _viewports);
+		w->viewport->width = 0;
+		w->viewport = NULL;
 	}
 
 	SetWindowDirty(w);
@@ -647,8 +646,11 @@ Window *AllocateWindowDesc(const WindowDesc *desc)
 			pt = GetAutoPlacePosition(desc->width, desc->height);
 		} else {
 			if (pt.x == WDP_CENTER) pt.x = (_screen.width - desc->width) >> 1;
-			if (pt.y == WDP_CENTER) pt.y = (_screen.height - desc->height) >> 1;
-			else if(pt.y < 0) pt.y = _screen.height + pt.y; // if y is negative, it's from the bottom of the screen
+			if (pt.y == WDP_CENTER) {
+				pt.y = (_screen.height - desc->height) >> 1;
+			} else if (pt.y < 0) {
+				pt.y = _screen.height + pt.y; // if y is negative, it's from the bottom of the screen
+			}
 		}
 	}
 
@@ -1618,8 +1620,9 @@ void DeleteAllNonVitalWindows(void)
 		if (w->flags4 & WF_STICKY) {
 			DeleteWindow(w);
 			w = _windows;
-		} else
+		} else {
 			w++;
+		}
 	}
 }
 
@@ -1634,8 +1637,9 @@ int PositionMainToolbar(Window *w)
 {
 	DEBUG(misc, 1) ("Repositioning Main Toolbar...");
 
-	if (w == NULL || w->window_class != WC_MAIN_TOOLBAR)
+	if (w == NULL || w->window_class != WC_MAIN_TOOLBAR) {
 		w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+	}
 
 	switch (_patches.toolbar_pos) {
 		case 1:  w->left = (_screen.width - w->width) >> 1; break;

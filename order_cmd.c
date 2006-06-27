@@ -568,9 +568,10 @@ int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	order = GetVehicleOrder(v, sel_ord);
 	if (order->type != OT_GOTO_STATION &&
-		 (order->type != OT_GOTO_DEPOT || p2 == OFB_UNLOAD) &&
-		 (order->type != OT_GOTO_WAYPOINT || p2 != OFB_NON_STOP))
+			(order->type != OT_GOTO_DEPOT    || p2 == OFB_UNLOAD) &&
+			(order->type != OT_GOTO_WAYPOINT || p2 != OFB_NON_STOP)) {
 		return CMD_ERROR;
+	}
 
 	if (flags & DC_EXEC) {
 		switch (p2) {
@@ -902,11 +903,15 @@ void CheckOrders(const Vehicle* v)
 		}
 
 		/* Check if the last and the first order are the same */
-		if (v->num_orders > 1 &&
-				v->orders->type    == GetLastVehicleOrder(v)->type &&
-				v->orders->flags   == GetLastVehicleOrder(v)->flags &&
-				v->orders->station == GetLastVehicleOrder(v)->station)
-			problem_type = 2;
+		if (v->num_orders > 1) {
+			const Order* last = GetLastVehicleOrder(v);
+
+			if (v->orders->type    == last->type &&
+					v->orders->flags   == last->flags &&
+					v->orders->station == last->station) {
+				problem_type = 2;
+			}
+		}
 
 		/* Do we only have 1 station in our order list? */
 		if (n_st < 2 && problem_type == -1) problem_type = 0;

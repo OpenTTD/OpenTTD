@@ -279,7 +279,7 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_AIRCRAFT | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT)))
 					DeleteWindow(w);
 			}
-		  break;
+			break;
 		}
 		break;
 	}
@@ -695,8 +695,7 @@ static int GetVehicleFromAircraftDepotWndPt(const Window *w, int x, int y, Vehic
 
 	row = (y - 14) / 24;
 	ym = (y - 14) % 24;
-	if (row >= w->vscroll.cap)
-		return 1;
+	if (row >= w->vscroll.cap) return 1;
 
 	pos = (row + w->vscroll.pos) * w->hscroll.cap + xt;
 
@@ -811,14 +810,14 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_PLACE_OBJ: {
+	case WE_PLACE_OBJ:
 		ClonePlaceObj(w);
-	} break;
+		break;
 
-	case WE_ABORT_PLACE_OBJ: {
+	case WE_ABORT_PLACE_OBJ:
 		CLRBIT(w->click_state, 8);
 		InvalidateWidget(w, 8);
-	} break;
+		break;
 
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
@@ -924,7 +923,8 @@ void ShowAircraftDepotWindow(TileIndex tile)
 	}
 }
 
-static void DrawSmallOrderList(const Vehicle *v, int x, int y) {
+static void DrawSmallOrderList(const Vehicle* v, int x, int y)
+{
 	const Order *order;
 	int sel, i = 0;
 
@@ -1068,22 +1068,19 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
+			const Vehicle* v;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
 			id_v += w->vscroll.pos;
 
-			{
-				Vehicle *v;
+			if (id_v >= vl->list_length) return; // click out of list bound
 
-				if (id_v >= vl->list_length) return; // click out of list bound
+			v = GetVehicle(vl->sort_list[id_v].index);
 
-				v = GetVehicle(vl->sort_list[id_v].index);
+			assert(v->type == VEH_Aircraft && v->subtype <= 2);
 
-				assert(v->type == VEH_Aircraft && v->subtype <= 2);
-
-				ShowAircraftViewWindow(v);
-			}
+			ShowAircraftViewWindow(v);
 		} break;
 
 		case 9: /* Build new Vehicle */
@@ -1092,9 +1089,7 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 10:
-			if (!IsWindowOfPrototype(w, _player_aircraft_widgets))
-				break;
-
+			if (!IsWindowOfPrototype(w, _player_aircraft_widgets)) break;
 			ShowReplaceVehicleWindow(VEH_Aircraft);
 			break;
 

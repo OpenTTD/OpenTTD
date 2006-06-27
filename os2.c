@@ -64,10 +64,11 @@ int compare_FiosItems(const void *a, const void *b)
 
 static void append_path(char *out, const char *path, const char *file)
 {
-	if (path[2] == '\\' && path[3] == '\0')
+	if (path[2] == '\\' && path[3] == '\0') {
 		sprintf(out, "%s%s", path, file);
-	else
+	} else {
 		sprintf(out, "%s\\%s", path, file);
+	}
 }
 
 // Get a list of savegames
@@ -347,10 +348,11 @@ char *FiosBrowseTo(const FiosItem *item)
 
 		case FIOS_TYPE_PARENT:
 			s = strrchr(path, '\\');
-			if (s != path + 2)
+			if (s != path + 2) {
 				s[0] = '\0';
-			else
+			} else {
 				s[1] = '\0';
+			}
 			break;
 
 		case FIOS_TYPE_DIR:
@@ -406,10 +408,7 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 	const char* extension;
 	const char* period;
 
-	if (_game_mode == GM_EDITOR)
-		extension = ".scn";
-	else
-		extension = ".sav";
+	extension = (_game_mode == GM_EDITOR ? ".scn" : ".sav");
 
 	// Don't append the extension, if it is already there
 	period = strrchr(name, '.');

@@ -1929,16 +1929,14 @@ static uint GetNumHelipads(const AirportFTAClass *Airport)
 
 static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *Airport)
 {
-  Station *st;
-  AirportFTA *temp;
-
 	// if an airport doesn't have helipads, use terminals
 	if (Airport->helipads == NULL) return AirportFindFreeTerminal(v, Airport);
 
 	// if there are more helicoptergroups, pick one, just as in AirportFindFreeTerminal()
 	if (Airport->helipads[0] > 1) {
-		st = GetStation(v->u.air.targetairport);
-		temp = Airport->layout[v->u.air.pos].next_in_chain;
+		const Station* st = GetStation(v->u.air.targetairport);
+		const AirportFTA* temp = Airport->layout[v->u.air.pos].next_in_chain;
+
 		while (temp != NULL) {
 			if (temp->heading == 255) {
 				if (!HASBITS(st->airport_flags, temp->block)) {

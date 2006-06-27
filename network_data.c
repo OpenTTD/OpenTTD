@@ -178,8 +178,9 @@ bool NetworkSend_Packets(NetworkClientState *cs)
 			cs->packet_queue = p->next;
 			free(p);
 			p = cs->packet_queue;
-		} else
+		} else {
 			return true;
+		}
 	}
 
 	return true;
@@ -192,8 +193,7 @@ bool NetworkSend_Packets(NetworkClientState *cs)
 uint8 NetworkRecv_uint8(NetworkClientState *cs, Packet *packet)
 {
 	/* Don't allow reading from a closed socket */
-	if (cs->quited)
-		return 0;
+	if (cs->quited) return 0;
 
 	/* Check if variable is within packet-size */
 	if (packet->pos + 1 > packet->size) {
@@ -209,8 +209,7 @@ uint16 NetworkRecv_uint16(NetworkClientState *cs, Packet *packet)
 	uint16 n;
 
 	/* Don't allow reading from a closed socket */
-	if (cs->quited)
-		return 0;
+	if (cs->quited) return 0;
 
 	/* Check if variable is within packet-size */
 	if (packet->pos + 2 > packet->size) {
@@ -228,8 +227,7 @@ uint32 NetworkRecv_uint32(NetworkClientState *cs, Packet *packet)
 	uint32 n;
 
 	/* Don't allow reading from a closed socket */
-	if (cs->quited)
-		return 0;
+	if (cs->quited) return 0;
 
 	/* Check if variable is within packet-size */
 	if (packet->pos + 4 > packet->size) {
@@ -249,8 +247,7 @@ uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet)
 	uint64 n;
 
 	/* Don't allow reading from a closed socket */
-	if (cs->quited)
-		return 0;
+	if (cs->quited) return 0;
 
 	/* Check if variable is within packet-size */
 	if (packet->pos + 8 > packet->size) {
@@ -388,13 +385,13 @@ Packet *NetworkRecv_Packet(NetworkClientState *cs, NetworkRecvStatus *status)
 // Add a command to the local command queue
 void NetworkAddCommandQueue(NetworkClientState *cs, CommandPacket *cp)
 {
-	CommandPacket *new_cp = malloc(sizeof(CommandPacket));
+	CommandPacket* new_cp = malloc(sizeof(*new_cp));
 
 	*new_cp = *cp;
 
-	if (cs->command_queue == NULL)
+	if (cs->command_queue == NULL) {
 		cs->command_queue = new_cp;
-	else {
+	} else {
 		CommandPacket *c = cs->command_queue;
 		while (c->next != NULL) c = c->next;
 		c->next = new_cp;
@@ -443,9 +440,7 @@ void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, Comma
 
 		// And we queue it for delivery to the clients
 		FOR_ALL_CLIENTS(cs) {
-			if (cs->status > STATUS_AUTH) {
-				NetworkAddCommandQueue(cs, c);
-			}
+			if (cs->status > STATUS_AUTH) NetworkAddCommandQueue(cs, c);
 		}
 
 		// Only the server gets the callback, because clients should not get them

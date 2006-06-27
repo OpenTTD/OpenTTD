@@ -235,9 +235,9 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_MOUSEUP:
-		if (e->click.pt.x != -1) {
-			if ((e->place.userdata & 0xF) == VPM_X_AND_Y) // dragged actions
-				GUIPlaceProcDragXY(e);
+		if (e->click.pt.x != -1 &&
+				(e->place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
+			GUIPlaceProcDragXY(e);
 		}
 		break;
 

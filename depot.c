@@ -41,8 +41,7 @@ Depot *GetDepotByTile(TileIndex tile)
 	Depot *depot;
 
 	FOR_ALL_DEPOTS(depot) {
-		if (depot->xy == tile)
-			return depot;
+		if (depot->xy == tile) return depot;
 	}
 
 	return NULL;
@@ -67,8 +66,7 @@ Depot *AllocateDepot(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_depot_pool))
-		return AllocateDepot();
+	if (AddBlockToPool(&_depot_pool)) return AllocateDepot();
 
 	return NULL;
 }

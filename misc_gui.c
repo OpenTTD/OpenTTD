@@ -915,13 +915,14 @@ int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we)
 	case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
 		if (MoveTextBufferPos(&string->text, we->keypress.keycode))
 			InvalidateWidget(w, wid);
-  	break;
+		break;
 	default:
 		if (IsValidAsciiChar(we->keypress.ascii)) {
 			if (InsertTextBufferChar(&string->text, we->keypress.ascii))
 				InvalidateWidget(w, wid);
-		} else // key wasn't caught
+		} else { // key wasn't caught
 			we->keypress.cont = true;
+		}
 	}
 
 	return 0;
@@ -1507,8 +1508,7 @@ static void SelectScenarioWndProc(Window* w, WindowEvent* e)
 	const int list_start = 45;
 
 	switch (e->event) {
-	case WE_PAINT:
-	{
+	case WE_PAINT: {
 		int y,pos;
 		const FiosItem *item;
 
@@ -1556,15 +1556,14 @@ static void SelectScenarioWndProc(Window* w, WindowEvent* e)
 			break;
 
 		case 6: /* Click the listbox */
-			if (e->click.pt.y < list_start)
+			if (e->click.pt.y < list_start) {
 				GenRandomNewGame(Random(), InteractiveRandom());
-			else {
-				char *name;
+			} else {
 				int y = (e->click.pt.y - list_start) / 10;
+				const char* name;
 				const FiosItem *file;
 
-				if (y < 0 || (y += w->vscroll.pos) >= w->vscroll.count)
-					return;
+				if (y < 0 || (y += w->vscroll.pos) >= w->vscroll.count) return;
 
 				file = _fios_list + y;
 
@@ -1578,8 +1577,6 @@ static void SelectScenarioWndProc(Window* w, WindowEvent* e)
 			}
 			break;
 		}
-	case WE_DESTROY:
-		break;
 
 	case WE_RESIZE: {
 		/* Widget 3 and 4 have to go with halve speed, make it so obiwan */

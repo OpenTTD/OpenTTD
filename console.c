@@ -109,31 +109,35 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_PAGEUP:
-					if (_iconsole_scroll - (w->height / ICON_LINE_HEIGHT) - 1 < 0)
+					if (_iconsole_scroll - (w->height / ICON_LINE_HEIGHT) - 1 < 0) {
 						_iconsole_scroll = 0;
-					else
+					} else {
 						_iconsole_scroll -= (w->height / ICON_LINE_HEIGHT) - 1;
+					}
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_PAGEDOWN:
-					if (_iconsole_scroll + (w->height / ICON_LINE_HEIGHT) - 1 > ICON_BUFFER)
+					if (_iconsole_scroll + (w->height / ICON_LINE_HEIGHT) - 1 > ICON_BUFFER) {
 						_iconsole_scroll = ICON_BUFFER;
-					else
+					} else {
 						_iconsole_scroll += (w->height / ICON_LINE_HEIGHT) - 1;
+					}
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_UP:
-					if (_iconsole_scroll <= 0)
+					if (_iconsole_scroll <= 0) {
 						_iconsole_scroll = 0;
-					else
+					} else {
 						--_iconsole_scroll;
+					}
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_DOWN:
-					if (_iconsole_scroll >= ICON_BUFFER)
+					if (_iconsole_scroll >= ICON_BUFFER) {
 						_iconsole_scroll = ICON_BUFFER;
-					else
+					} else {
 						++_iconsole_scroll;
+					}
 					SetWindowDirty(w);
 					break;
 				case WKC_BACKQUOTE:
@@ -182,8 +186,9 @@ static void IConsoleWndProc(Window* w, WindowEvent* e)
 						InsertTextBufferChar(&_iconsole_cmdline, e->keypress.ascii);
 						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
-					} else
+					} else {
 						e->keypress.cont = true;
+					}
 			break;
 		}
 	}
@@ -565,40 +570,41 @@ void IConsoleVarHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *
  * three types, just with different variables. Yes, templates would be handy. It was
  * either this define or an even more ugly void* magic function
  */
-#define IConsoleAddSorted(_base, item_new, IConsoleType, type)                      \
-{                                                                                   \
-	IConsoleType *item, *item_before;                                                 \
-	/* first command */                                                               \
-	if (_base == NULL) {                                                              \
-		_base = item_new;                                                               \
-		return;                                                                         \
-	}                                                                                 \
-                                                                                    \
-	item_before = NULL;                                                               \
-	item = _base;                                                                     \
-                                                                                    \
-	/* BEGIN - Alphabetically insert the commands into the linked list */             \
-	while (item != NULL) {                                                            \
-		int i = strcmp(item->name, item_new->name);                                     \
-		if (i == 0) {                                                                   \
-			IConsoleError(type " with this name already exists; insertion aborted");      \
-			free(item_new);                                                               \
-			return;                                                                       \
-		}                                                                               \
-                                                                                    \
-		if (i > 0) break; /* insert at this position */                                 \
-                                                                                    \
-		item_before = item;                                                             \
-		item = item->next;                                                              \
-	}                                                                                 \
-                                                                                    \
-	if (item_before == NULL) {                                                        \
-		_base = item_new;                                                               \
-	} else                                                                            \
-		item_before->next = item_new;                                                   \
-                                                                                    \
-	item_new->next = item;                                                            \
-	/* END - Alphabetical insert */                                                   \
+#define IConsoleAddSorted(_base, item_new, IConsoleType, type)                 \
+{                                                                              \
+	IConsoleType *item, *item_before;                                            \
+	/* first command */                                                          \
+	if (_base == NULL) {                                                         \
+		_base = item_new;                                                          \
+		return;                                                                    \
+	}                                                                            \
+                                                                               \
+	item_before = NULL;                                                          \
+	item = _base;                                                                \
+                                                                               \
+	/* BEGIN - Alphabetically insert the commands into the linked list */        \
+	while (item != NULL) {                                                       \
+		int i = strcmp(item->name, item_new->name);                                \
+		if (i == 0) {                                                              \
+			IConsoleError(type " with this name already exists; insertion aborted"); \
+			free(item_new);                                                          \
+			return;                                                                  \
+		}                                                                          \
+                                                                               \
+		if (i > 0) break; /* insert at this position */                            \
+                                                                               \
+		item_before = item;                                                        \
+		item = item->next;                                                         \
+	}                                                                            \
+                                                                               \
+	if (item_before == NULL) {                                                   \
+		_base = item_new;                                                          \
+	} else {                                                                     \
+		item_before->next = item_new;                                              \
+  }                                                                            \
+                                                                               \
+	item_new->next = item;                                                       \
+	/* END - Alphabetical insert */                                              \
 }
 
 /**
@@ -853,12 +859,12 @@ static void IConsoleVarSetValue(const IConsoleVar *var, uint32 value)
  * @param *var the variable in question
  * @param *value the new value
  */
-static void IConsoleVarSetStringvalue(const IConsoleVar *var, char *value)
+static void IConsoleVarSetStringvalue(const IConsoleVar* var, const char* value)
 {
 	if (var->type != ICONSOLE_VAR_STRING || var->addr == NULL) return;
 
 	IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_PRE_ACTION);
-	ttd_strlcpy((char*)var->addr, (char*)value, var->size);
+	ttd_strlcpy(var->addr, value, var->size);
 	IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_POST_ACTION);
 	IConsoleVarPrintSetValue(var); // print out the new value, giving feedback
 	return;
@@ -1098,8 +1104,10 @@ void IConsoleCmdExec(const char *cmdstr)
 
 	if (_stdlib_con_developer) {
 		uint i;
-		for (i = 0; tokens[i] != NULL; i++)
+
+		for (i = 0; tokens[i] != NULL; i++) {
 			IConsolePrintF(_icolour_dbg, "condbg: token %d is: '%s'", i, tokens[i]);
+		}
 	}
 
 	if (tokens[0] == '\0') return; // don't execute empty commands
@@ -1107,31 +1115,33 @@ void IConsoleCmdExec(const char *cmdstr)
 	 * First try commands, then aliases, and finally variables. Execute
 	 * the found action taking into account its hooking code
 	 */
-	 cmd = IConsoleCmdGet(tokens[0]);
-	 if (cmd != NULL) {
+	cmd = IConsoleCmdGet(tokens[0]);
+	if (cmd != NULL) {
 		if (IConsoleHookHandle(&cmd->hook, ICONSOLE_HOOK_ACCESS)) {
 			IConsoleHookHandle(&cmd->hook, ICONSOLE_HOOK_PRE_ACTION);
 			if (cmd->proc(t_index, tokens)) { // index started with 0
 				IConsoleHookHandle(&cmd->hook, ICONSOLE_HOOK_POST_ACTION);
-  		} else cmd->proc(0, NULL); // if command failed, give help
+			} else {
+				cmd->proc(0, NULL); // if command failed, give help
+			}
 		}
-	 	return;
-	 }
+		return;
+	}
 
-	 t_index--; // ignore the variable-name for comfort for both aliases and variaables
-	 alias = IConsoleAliasGet(tokens[0]);
-	 if (alias != NULL) {
-	 	IConsoleAliasExec(alias, t_index, &tokens[1]);
-	 	return;
-	 }
+	t_index--; // ignore the variable-name for comfort for both aliases and variaables
+	alias = IConsoleAliasGet(tokens[0]);
+	if (alias != NULL) {
+		IConsoleAliasExec(alias, t_index, &tokens[1]);
+		return;
+	}
 
-	 var = IConsoleVarGet(tokens[0]);
-	 if (var != NULL) {
-	 	if (IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_ACCESS))
-	 		IConsoleVarExec(var, t_index, &tokens[1]);
+	var = IConsoleVarGet(tokens[0]);
+	if (var != NULL) {
+		if (IConsoleHookHandle(&var->hook, ICONSOLE_HOOK_ACCESS)) {
+			IConsoleVarExec(var, t_index, &tokens[1]);
+		}
+		return;
+	}
 
-	 	return;
-	 }
-
-	 IConsoleError("command or variable not found");
+	IConsoleError("command or variable not found");
 }

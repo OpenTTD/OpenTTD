@@ -220,10 +220,11 @@ static void SubtractMoneyFromAnyPlayer(Player *p, int32 cost)
 
 	p->yearly_expenses[0][_yearly_expenses_type] += cost;
 
-	if ( ( 1 << _yearly_expenses_type ) & (1<<7|1<<8|1<<9|1<<10))
+	if (HASBIT(1<<7|1<<8|1<<9|1<<10, _yearly_expenses_type)) {
 		p->cur_economy.income -= cost;
-	else if (( 1 << _yearly_expenses_type ) & (1<<2|1<<3|1<<4|1<<5|1<<6|1<<11))
+	} else if (HASBIT(1<<2|1<<3|1<<4|1<<5|1<<6|1<<11, _yearly_expenses_type)) {
 		p->cur_economy.expenses -= cost;
+	}
 
 	InvalidatePlayerWindows(p);
 }
@@ -231,31 +232,31 @@ static void SubtractMoneyFromAnyPlayer(Player *p, int32 cost)
 void SubtractMoneyFromPlayer(int32 cost)
 {
 	PlayerID pid = _current_player;
-	if (pid < MAX_PLAYERS)
-		SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
+
+	if (pid < MAX_PLAYERS) SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
 }
 
 void SubtractMoneyFromPlayerFract(PlayerID player, int32 cost)
 {
 	Player *p = GetPlayer(player);
 	byte m = p->player_money_fraction;
+
 	p->player_money_fraction = m - (byte)cost;
 	cost >>= 8;
-	if (p->player_money_fraction > m)
-		cost++;
-	if (cost != 0)
-		SubtractMoneyFromAnyPlayer(p, cost);
+	if (p->player_money_fraction > m) cost++;
+	if (cost != 0) SubtractMoneyFromAnyPlayer(p, cost);
 }
 
 // the player_money field is kept as it is, but money64 contains the actual amount of money.
 void UpdatePlayerMoney32(Player *p)
 {
-	if (p->money64 < -2000000000)
+	if (p->money64 < -2000000000) {
 		p->player_money = -2000000000;
-	else if (p->money64 > 2000000000)
+	} else if (p->money64 > 2000000000) {
 		p->player_money = 2000000000;
-	else
+	} else {
 		p->player_money = (int32)p->money64;
+	}
 }
 
 void GetNameOfOwner(PlayerID owner, TileIndex tile)
@@ -263,15 +264,17 @@ void GetNameOfOwner(PlayerID owner, TileIndex tile)
 	SetDParam(2, owner);
 
 	if (owner != OWNER_TOWN) {
-		if (owner >= 8)
+		if (owner >= MAX_PLAYERS) {
 			SetDParam(0, STR_0150_SOMEONE);
-		else {
+		} else {
 			const Player* p = GetPlayer(owner);
+
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
 		}
 	} else {
-		Town *t = ClosestTownFromTile(tile, (uint)-1);
+		const Town* t = ClosestTownFromTile(tile, (uint)-1);
+
 		SetDParam(0, STR_TOWN);
 		SetDParam(1, t->index);
 	}
@@ -282,8 +285,7 @@ bool CheckOwnership(PlayerID owner)
 {
 	assert(owner <= OWNER_WATER);
 
-	if (owner == _current_player)
-		return true;
+	if (owner == _current_player) return true;
 	_error_message = STR_013B_OWNED_BY;
 	GetNameOfOwner(owner, 0);
 	return false;
@@ -295,8 +297,7 @@ bool CheckTileOwnership(TileIndex tile)
 
 	assert(owner <= OWNER_WATER);
 
-	if (owner == _current_player)
-		return true;
+	if (owner == _current_player) return true;
 	_error_message = STR_013B_OWNED_BY;
 
 	// no need to get the name of the owner unless we're the local player (saves some time)
@@ -313,12 +314,10 @@ static void GenerateCompanyName(Player *p)
 	uint32 strp;
 	char buffer[100];
 
-	if (p->name_1 != STR_SV_UNNAMED)
-		return;
+	if (p->name_1 != STR_SV_UNNAMED) return;
 
 	tile = p->last_build_coordinate;
-	if (tile == 0)
-		return;
+	if (tile == 0) return;
 
 	t = ClosestTownFromTile(tile, (uint)-1);
 
@@ -329,8 +328,7 @@ static void GenerateCompanyName(Player *p)
 verify_name:;
 		// No player must have this name already
 		FOR_ALL_PLAYERS(pp) {
-			if (pp->name_1 == str && pp->name_2 == strp)
-				goto bad_town_name;
+			if (pp->name_1 == str && pp->name_2 == strp) goto bad_town_name;
 		}
 
 		GetString(buffer, str);
@@ -423,11 +421,8 @@ static byte GeneratePlayerColor(void)
 	}
 
 	// Return the first available color
-	i = 0;
-	for (;;) {
-		if (colors[i] != 0xFF)
-			return colors[i];
-		i++;
+	for (i = 0;; i++) {
+		if (colors[i] != 0xFF) return colors[i];
 	}
 }
 
@@ -851,8 +846,9 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
-				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at server-side
-				 * in network_server.c:838, function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
+				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
+				 * server-side in network_server.c:838, function
+				 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 				NetworkClientInfo *ci = &_network_client_info[pid];
 				ci->client_playas = p->index + 1;
 				NetworkUpdateClientInfo(ci->client_index);
@@ -878,16 +874,16 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					_local_player = player_backup;
 				}
 			}
-		} else if (_network_server) { // Creating player failed, defer client to spectator
-				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at server-side
-				* in network_server.c:838, function DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
+		} else if (_network_server) {
+			// Creating player failed, defer client to spectator
+			/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
+			 * server-side in network_server.c:838, function
+			 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 			NetworkClientInfo *ci = &_network_client_info[pid];
 			ci->client_playas = OWNER_SPECTATOR;
 			NetworkUpdateClientInfo(ci->client_index);
-		}
-#else
-		}
 #endif /* ENABLE_NETWORK */
+		}
 	} break;
 
 	case 1: /* Make a new AI player */
@@ -941,7 +937,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
-static const StringID _endgame_perf_titles[16] = {
+static const StringID _endgame_perf_titles[] = {
 	STR_0213_BUSINESSMAN,
 	STR_0213_BUSINESSMAN,
 	STR_0213_BUSINESSMAN,
@@ -957,13 +953,12 @@ static const StringID _endgame_perf_titles[16] = {
 	STR_0217_MAGNATE,
 	STR_0218_MOGUL,
 	STR_0218_MOGUL,
-	STR_0219_TYCOON_OF_THE_CENTURY,
+	STR_0219_TYCOON_OF_THE_CENTURY
 };
 
 StringID EndGameGetPerformanceTitleFromValue(uint value)
 {
-	value = minu(value, 1000) >> 6;
-	if (value >= lengthof(_endgame_perf_titles)) value = lengthof(_endgame_perf_titles) - 1;
+	value = minu(value / 64, lengthof(_endgame_perf_titles) - 1);
 
 	return _endgame_perf_titles[value];
 }
@@ -971,12 +966,11 @@ StringID EndGameGetPerformanceTitleFromValue(uint value)
 /* Return true if any cheat has been used, false otherwise */
 static bool CheatHasBeenUsed(void)
 {
-	const Cheat* cht = (Cheat*) &_cheats;
+	const Cheat* cht = (Cheat*)&_cheats;
 	const Cheat* cht_last = &cht[sizeof(_cheats) / sizeof(Cheat)];
 
 	for (; cht != cht_last; cht++) {
-		if (cht->been_used)
-			return true;
+		if (cht->been_used) return true;
 	}
 
 	return false;
@@ -1109,7 +1103,7 @@ void LoadFromHighScore(void)
 	}
 
 	/* Initialize end of game variable (when to show highscore chart) */
-	 _patches.ending_date = 2051;
+	_patches.ending_date = 2051;
 }
 
 // Save/load of players

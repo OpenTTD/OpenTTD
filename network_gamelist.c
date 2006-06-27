@@ -6,7 +6,6 @@
 
 #ifdef ENABLE_NETWORK
 
-//
 // This file handles the GameList
 // Also, it handles the request to a server for data about the server
 
@@ -33,8 +32,11 @@ NetworkGameList *NetworkGameListAddItem(uint32 ip, uint16 port)
 	item->ip = ip;
 	item->port = port;
 
-	if (prev_item == NULL) {_network_game_list = item;}
-	else {prev_item->next = item;}
+	if (prev_item == NULL) {
+		_network_game_list = item;
+	} else {
+		prev_item->next = item;
+	}
 	DEBUG(net, 4) ("[NET][GameList] Added server to list");
 
 	UpdateNetworkGameWindow(false);
@@ -51,8 +53,11 @@ void NetworkGameListRemoveItem(NetworkGameList *remove)
 	prev_item = NULL;
 	for (item = _network_game_list; item != NULL; item = item->next) {
 		if (remove == item) {
-			if (prev_item == NULL) {_network_game_list = remove->next;}
-			else {prev_item->next = remove->next;}
+			if (prev_item == NULL) {
+				_network_game_list = remove->next;
+			} else {
+				prev_item->next = remove->next;
+			}
 
 			free(remove);
 			DEBUG(net, 4) ("[NET][GameList] Removed server from list");

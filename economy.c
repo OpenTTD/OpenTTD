@@ -32,16 +32,16 @@
 
 // Score info
 const ScoreInfo _score_info[] = {
-    {SCORE_VEHICLES,		120, 			100},
-    {SCORE_STATIONS,		80, 			100},
-    {SCORE_MIN_PROFIT,	10000,		100},
-    {SCORE_MIN_INCOME,	50000,		50},
-    {SCORE_MAX_INCOME,	100000,		100},
-    {SCORE_DELIVERED,		40000, 		400},
-    {SCORE_CARGO,				8,				50},
-    {SCORE_MONEY,				10000000,	50},
-    {SCORE_LOAN,				250000,		50},
-    {SCORE_TOTAL,				0,				0}
+	{ SCORE_VEHICLES,        120, 100 },
+	{ SCORE_STATIONS,         80, 100 },
+	{ SCORE_MIN_PROFIT,    10000, 100 },
+	{ SCORE_MIN_INCOME,    50000,  50 },
+	{ SCORE_MAX_INCOME,   100000, 100 },
+	{ SCORE_DELIVERED,     40000, 400 },
+	{ SCORE_CARGO,             8,  50 },
+	{ SCORE_MONEY,      10000000,  50 },
+	{ SCORE_LOAN,         250000,  50 },
+	{ SCORE_TOTAL,             0,   0 }
 };
 
 int _score_part[MAX_PLAYERS][NUM_SCORE];
@@ -102,8 +102,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		uint num = 0;
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->owner != owner)
-				continue;
+			if (v->owner != owner) continue;
 			if ((v->type == VEH_Train && IsFrontEngine(v)) ||
 					 v->type == VEH_Road ||
 					(v->type == VEH_Aircraft && v->subtype <= 2) ||
@@ -114,8 +113,9 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 					if (min_profit_first == true) {
 						min_profit = v->profit_last_year;
 						min_profit_first = false;
-					} else if (min_profit > v->profit_last_year)
+					} else if (min_profit > v->profit_last_year) {
 						min_profit = v->profit_last_year;
+					}
 				}
 			}
 		}
@@ -229,10 +229,10 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 	}
 
 	if (update) {
-    	p->old_economy[0].performance_history = score;
-    	UpdateCompanyHQ(p, score);
-    	p->old_economy[0].company_value = CalculateCompanyValue(p);
-    }
+		p->old_economy[0].performance_history = score;
+		UpdateCompanyHQ(p, score);
+		p->old_economy[0].company_value = CalculateCompanyValue(p);
+	}
 
 	InvalidateWindow(WC_PERFORMANCE_DETAIL, 0);
 	return score;
@@ -249,8 +249,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 
 		for (s = _subsidies; s != endof(_subsidies); s++) {
 			if (s->cargo_type != CT_INVALID && s->age >= 12) {
-				if (GetStation(s->to)->owner == old_player)
-					s->cargo_type = CT_INVALID;
+				if (GetStation(s->to)->owner == old_player) s->cargo_type = CT_INVALID;
 			}
 		}
 	}
@@ -290,18 +289,10 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == new_player) {
 				switch (v->type) {
-					case VEH_Train:
-						if (IsFrontEngine(v)) num_train++;
-						break;
-					case VEH_Road:
-						num_road++;
-						break;
-					case VEH_Ship:
-						num_ship++;
-						break;
-					case VEH_Aircraft:
-						if (v->subtype <= 2) num_aircraft++;
-						break;
+					case VEH_Train:    if (IsFrontEngine(v)) num_train++; break;
+					case VEH_Road:     num_road++; break;
+					case VEH_Ship:     num_ship++; break;
+					case VEH_Aircraft: if (v->subtype <= 2) num_aircraft++; break;
 					default: break;
 				}
 			}
@@ -339,8 +330,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	if (new_player != OWNER_SPECTATOR) {
 		Window *w;
 		for (w = _windows; w != _last_window; w++) {
-			if (w->caption_color == old_player)
-				w->caption_color = new_player;
+			if (w->caption_color == old_player) w->caption_color = new_player;
 		}
 	}
 
@@ -352,8 +342,9 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		FOR_ALL_PLAYERS(p) {
 			for (i = 0; i < 4; i++) {
 				/* 'Sell' the share if this player has any */
-				if (p->share_owners[i] == _current_player)
+				if (p->share_owners[i] == _current_player) {
 					p->share_owners[i] = OWNER_SPECTATOR;
+				}
 			}
 		}
 		p = GetPlayer(_current_player);
@@ -1211,7 +1202,7 @@ static int32 DeliverGoods(int num_pieces, CargoID cargo_type, StationID source, 
 	Station *s_from, *s_to;
 	int32 profit;
 
- 	assert(num_pieces > 0);
+	assert(num_pieces > 0);
 
 	// Update player statistics
 	{

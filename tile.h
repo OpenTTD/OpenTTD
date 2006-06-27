@@ -46,7 +46,7 @@ static inline void SetTileHeight(TileIndex tile, uint height)
 
 static inline uint TilePixelHeight(TileIndex tile)
 {
-	return TileHeight(tile) * 8;
+	return TileHeight(tile) * TILE_HEIGHT;
 }
 
 static inline TileType GetTileType(TileIndex tile)
@@ -59,7 +59,7 @@ static inline void SetTileType(TileIndex tile, TileType type)
 {
 	assert(tile < MapSize());
 	/* VOID tiles (and no others) are exactly allowed at the lower left and right
-	 *edges of the map */
+	 * edges of the map */
 	assert((TileX(tile) == MapMaxX() || TileY(tile) == MapMaxY()) == (type == MP_VOID));
 	SB(_m[tile].type_height, 4, 4, type);
 }

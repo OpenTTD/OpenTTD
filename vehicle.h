@@ -97,7 +97,7 @@ enum {
 typedef struct VehicleAir {
 	uint16 crashed_counter;
 	byte pos;
-  byte previous_pos;
+	byte previous_pos;
 	StationID targetairport;
 	byte state;
 } VehicleAir;

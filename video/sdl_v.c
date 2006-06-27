@@ -362,18 +362,21 @@ static int PollEvent(void)
 			if (_patches.autosave_on_exit) {
 				DoExitSave();
 				return 0;
-			} else
+			} else {
 				AskExitGame();
-		} else
+			}
+		} else {
 			return 0;
+		}
 		break;
 
 		case SDL_KEYDOWN: /* Toggle full-screen on ALT + ENTER/F */
 		if ((ev.key.keysym.mod & (KMOD_ALT | KMOD_META)) &&
 				(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
 			ToggleFullScreen(!_fullscreen);
-		} else
+		} else {
 			_pressed_key = ConvertSdlKeyIntoMy(&ev.key.keysym);
+		}
 
 		break;
 

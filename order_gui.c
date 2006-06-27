@@ -398,31 +398,24 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = GetVehicle(w->window_number);
 		switch (e->click.widget) {
 		case 2: { /* orders list */
-			int sel;
-			sel = (e->click.pt.y - 15) / 10;
+			int sel = (e->click.pt.y - 15) / 10;
 
-			if ((uint)sel >= w->vscroll.cap)
-				return;
+			if ((uint)sel >= w->vscroll.cap) return;
 
 			sel += w->vscroll.pos;
 
 			if (_ctrl_pressed && sel < v->num_orders) {
 				const Order *ord = GetVehicleOrder(v, sel);
-				int xy = 0;
+				TileIndex xy;
+
 				switch (ord->type) {
-				case OT_GOTO_STATION:			/* station order */
-					xy = GetStation(ord->station)->xy ;
-					break;
-				case OT_GOTO_DEPOT:				/* goto depot order */
-					xy = GetDepot(ord->station)->xy;
-					break;
-				case OT_GOTO_WAYPOINT:	/* goto waypoint order */
-					xy = GetWaypoint(ord->station)->xy;
+					case OT_GOTO_STATION:  xy = GetStation(ord->station)->xy ; break;
+					case OT_GOTO_DEPOT:    xy = GetDepot(ord->station)->xy;    break;
+					case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->station)->xy; break;
+					default:               xy = 0; break;
 				}
 
-				if (xy)
-					ScrollMainWindowToTile(xy);
-
+				if (xy != 0) ScrollMainWindowToTile(xy);
 				return;
 			}
 
@@ -518,7 +511,6 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		w->vscroll.cap = (w->widget[2].bottom - w->widget[2].top) / 10;
 		break;
 	}
-
 }
 
 static const Widget _orders_train_widgets[] = {

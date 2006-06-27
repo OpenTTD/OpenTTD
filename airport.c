@@ -32,8 +32,9 @@ static void AirportFTAClass_Destructor(AirportFTAClass *Airport);
 static uint16 AirportGetNofElements(const AirportFTAbuildup *FA);
 static void AirportBuildAutomata(AirportFTAClass *Airport, const AirportFTAbuildup *FA);
 static byte AirportTestFTA(const AirportFTAClass *Airport);
-/*static void AirportPrintOut(const AirportFTAClass *Airport, const bool full_report);
-static byte AirportBlockToString(uint32 block);*/
+#if 0
+static void AirportPrintOut(const AirportFTAClass *Airport, const bool full_report);
+#endif
 
 void InitializeAirports(void)
 {
@@ -272,7 +273,9 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 	// print out full information
 	// true  -- full info including heading, block, etc
 	// false -- short info, only position and next position
-	//AirportPrintOut(Airport, false);
+#if 0
+	AirportPrintOut(Airport, false);
+#endif
 }
 
 static void AirportFTAClass_Destructor(AirportFTAClass *Airport)
@@ -393,28 +396,45 @@ static const char* const _airport_heading_strings[] = {
 	"DUMMY"	// extra heading for 255
 };
 
+
+static uint AirportBlockToString(uint32 block)
+{
+	uint i = 0;
+	if (block & 0xffff0000) { block >>= 16; i += 16; }
+	if (block & 0x0000ff00) { block >>=  8; i +=  8; }
+	if (block & 0x000000f0) { block >>=  4; i +=  4; }
+	if (block & 0x0000000c) { block >>=  2; i +=  2; }
+	if (block & 0x00000002) { i += 1; }
+	return i;
+}
+
+
 static void AirportPrintOut(const AirportFTAClass *Airport, const bool full_report)
 {
-	AirportFTA *temp;
-	uint16 i;
 	byte heading;
+	uint i;
 
 	printf("(P = Current Position; NP = Next Position)\n");
 	for (i = 0; i < Airport->nofelements; i++) {
-		temp = &Airport->layout[i];
+		const AirportFTA* temp = &Airport->layout[i];
+
 		if (full_report) {
-			heading = (temp->heading == 255) ? MAX_HEADINGS+1 : temp->heading;
-			printf("Pos:%2d NPos:%2d Heading:%15s Block:%2d\n", temp->position, temp->next_position,
-						 _airport_heading_strings[heading], AirportBlockToString(temp->block));
+			heading = (temp->heading == 255) ? MAX_HEADINGS + 1 : temp->heading;
+			printf("Pos:%2d NPos:%2d Heading:%15s Block:%2d\n",
+				temp->position, temp->next_position,
+				_airport_heading_strings[heading], AirportBlockToString(temp->block)
+			);
 		} else {
 			printf("P:%2d NP:%2d", temp->position, temp->next_position);
 		}
 		while (temp->next_in_chain != NULL) {
 			temp = temp->next_in_chain;
 			if (full_report) {
-				heading = (temp->heading == 255) ? MAX_HEADINGS+1 : temp->heading;
-				printf("Pos:%2d NPos:%2d Heading:%15s Block:%2d\n", temp->position, temp->next_position,
-							_airport_heading_strings[heading], AirportBlockToString(temp->block));
+				heading = (temp->heading == 255) ? MAX_HEADINGS + 1 : temp->heading;
+				printf("Pos:%2d NPos:%2d Heading:%15s Block:%2d\n",
+					temp->position, temp->next_position,
+					_airport_heading_strings[heading], AirportBlockToString(temp->block)
+				);
 			} else {
 				printf("P:%2d NP:%2d", temp->position, temp->next_position);
 			}
@@ -422,43 +442,25 @@ static void AirportPrintOut(const AirportFTAClass *Airport, const bool full_repo
 		printf("\n");
 	}
 }
-
-
-static byte AirportBlockToString(uint32 block)
-{
-	byte i = 0;
-	if (block & 0xffff0000) { block >>= 16; i += 16; }
-	if (block & 0x0000ff00) { block >>= 8;  i += 8; }
-	if (block & 0x000000f0) { block >>= 4;  i += 4; }
-	if (block & 0x0000000c) { block >>= 2;  i += 2; }
-	if (block & 0x00000002) { i += 1; }
-	return i;
-}
 #endif
 
 const AirportFTAClass* GetAirport(const byte airport_type)
 {
-	AirportFTAClass *Airport = NULL;
 	//FIXME -- AircraftNextAirportPos_and_Order -> Needs something nicer, don't like this code
 	// needs constant change if more airports are added
 	switch (airport_type) {
-		case AT_SMALL:         Airport = CountryAirport; break;
-		case AT_LARGE:         Airport = CityAirport; break;
-		case AT_METROPOLITAN:  Airport = MetropolitanAirport; break;
-		case AT_HELIPORT:      Airport = Heliport; break;
-		case AT_OILRIG:        Airport = Oilrig; break;
-		case AT_INTERNATIONAL: Airport = InternationalAirport; break;
-		case AT_COMMUTER:      Airport = CommuterAirport; break;
-		case AT_HELIDEPOT:     Airport = HeliDepot; break;
-		case AT_INTERCON:      Airport = IntercontinentalAirport; break;
-		case AT_HELISTATION:   Airport = HeliStation; break;
-		default:
-			#ifdef DEBUG__
-				printf("Airport AircraftNextAirportPos_and_Order not yet implemented\n");
-			#endif
-			assert(airport_type <= AT_HELISTATION);
+		default:               NOT_REACHED();
+		case AT_SMALL:         return CountryAirport;
+		case AT_LARGE:         return CityAirport;
+		case AT_METROPOLITAN:  return MetropolitanAirport;
+		case AT_HELIPORT:      return Heliport;
+		case AT_OILRIG:        return Oilrig;
+		case AT_INTERNATIONAL: return InternationalAirport;
+		case AT_COMMUTER:      return CommuterAirport;
+		case AT_HELIDEPOT:     return HeliDepot;
+		case AT_INTERCON:      return IntercontinentalAirport;
+		case AT_HELISTATION:   return HeliStation;
 	}
-	return Airport;
 }
 
 const AirportMovingData *GetAirportMovingData(byte airport_type, byte position)

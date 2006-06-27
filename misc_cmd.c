@@ -146,8 +146,9 @@ int32 CmdChangeCompanyName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteName(p->name_1);
 		p->name_1 = str;
 		MarkWholeScreenDirty();
-	} else
+	} else {
 		DeleteName(str);
+	}
 
 	return 0;
 }
@@ -180,8 +181,9 @@ int32 CmdChangePresidentName(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			DoCommand(0, 0, 0, DC_EXEC, CMD_CHANGE_COMPANY_NAME);
 		}
 		MarkWholeScreenDirty();
-	} else
+	} else {
 		DeleteName(str);
+	}
 
 	return 0;
 }
@@ -269,8 +271,9 @@ int32 CmdChangeDifficultyLevel(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 		if (p1 != (uint32)-1L) {
 			((int*)&_opt_ptr->diff)[p1] = p2;
 			_opt_ptr->diff_level = 3; // custom difficulty level
-		} else
+		} else {
 			_opt_ptr->diff_level = p2;
+		}
 
 		/* If we are a network-client, update the difficult setting (if it is open).
 		 * Use this instead of just dirtying the window because we need to load in

@@ -84,8 +84,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	NetworkPopulateCompanyInfo();
 
 	FOR_ALL_PLAYERS(player) {
-		if (!player->is_active)
-			continue;
+		if (!player->is_active) continue;
 
 		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
@@ -102,21 +101,24 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 		/* Send 1 if there is a passord for the company else send 0 */
 		if (_network_player_info[player->index].password[0] != '\0') {
-			NetworkSend_uint8 (p, 1);
+			NetworkSend_uint8(p, 1);
 		} else {
-			NetworkSend_uint8 (p, 0);
+			NetworkSend_uint8(p, 0);
 		}
 
-		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
+		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++) {
 			NetworkSend_uint16(p, _network_player_info[player->index].num_vehicle[i]);
+		}
 
-		for (i = 0; i < NETWORK_STATION_TYPES; i++)
+		for (i = 0; i < NETWORK_STATION_TYPES; i++) {
 			NetworkSend_uint16(p, _network_player_info[player->index].num_station[i]);
+		}
 
-		if (_network_player_info[player->index].players[0] == '\0')
+		if (_network_player_info[player->index].players[0] == '\0') {
 			NetworkSend_string(p, "<none>");
-		else
+		} else {
 			NetworkSend_string(p, _network_player_info[player->index].players);
+		}
 
 		NetworkSend_Packet(p, cs);
 	}
@@ -240,8 +242,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_WAIT)
 
 	// Count how many players are waiting in the queue
 	FOR_ALL_CLIENTS(new_cs) {
-		if (new_cs->status == STATUS_MAP_WAIT)
-			waiting++;
+		if (new_cs->status == STATUS_MAP_WAIT) waiting++;
 	}
 
 	p = NetworkSend_Init(PACKET_SERVER_WAIT);
@@ -578,13 +579,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 #if defined(WITH_REV) || defined(WITH_REV_HACK)
 	// Check if the client has revision control enabled
-	if (strcmp(NOREV_STRING, client_revision) != 0) {
-		if (strcmp(_network_game_info.server_revision, client_revision) != 0) {
-			// Different revisions!!
-			SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
-
-			return;
-		}
+	if (strcmp(NOREV_STRING, client_revision) != 0 &&
+			strcmp(_network_game_info.server_revision, client_revision) != 0) {
+		// Different revisions!!
+		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_WRONG_REVISION);
+		return;
 	}
 #endif
 
@@ -629,20 +628,20 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	// We now want a password from the client
 	//  else we do not allow him in!
-	if (_network_game_info.use_password)
+	if (_network_game_info.use_password) {
 		SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_GAME_PASSWORD);
-	else {
+	} else {
 		if (ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS && _network_player_info[ci->client_playas - 1].password[0] != '\0') {
 			SEND_COMMAND(PACKET_SERVER_NEED_PASSWORD)(cs, NETWORK_COMPANY_PASSWORD);
-		}
-		else {
+		} else {
 			SEND_COMMAND(PACKET_SERVER_WELCOME)(cs);
 		}
 	}
 
 	/* Make sure companies to who people try to join are not autocleaned */
-	if (playas >= 1 && playas <= MAX_PLAYERS)
+	if (playas >= 1 && playas <= MAX_PLAYERS) {
 		_network_player_info[playas-1].months_empty = 0;
+	}
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
@@ -1113,8 +1112,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_RCON)
 	char pass[NETWORK_PASSWORD_LENGTH];
 	char command[NETWORK_RCONCOMMAND_LENGTH];
 
-	if (_network_game_info.rcon_password[0] == '\0')
-		return;
+	if (_network_game_info.rcon_password[0] == '\0') return;
 
 	NetworkRecv_string(cs, p, pass, sizeof(pass));
 	NetworkRecv_string(cs, p, command, sizeof(command));
@@ -1209,13 +1207,16 @@ void NetworkPopulateCompanyInfo(void)
 		GetString(_network_player_info[p->index].company_name, STR_JUST_STRING);
 
 		// Check the income
-		if (_cur_year - 1 == p->inaugurated_year)
+		if (_cur_year - 1 == p->inaugurated_year) {
 			// The player is here just 1 year, so display [2], else display[1]
-			for (i = 0; i < 13; i++)
+			for (i = 0; i < 13; i++) {
 				_network_player_info[p->index].income -= p->yearly_expenses[2][i];
-		else
-			for (i = 0; i < 13; i++)
+			}
+		} else {
+			for (i = 0; i < 13; i++) {
 				_network_player_info[p->index].income -= p->yearly_expenses[1][i];
+			}
+		}
 
 		// Set some general stuff
 		_network_player_info[p->index].inaugurated_year = p->inaugurated_year;
@@ -1226,44 +1227,48 @@ void NetworkPopulateCompanyInfo(void)
 
 	// Go through all vehicles and count the type of vehicles
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner < MAX_PLAYERS)
-			switch (v->type) {
-				case VEH_Train:
-					if (IsFrontEngine(v))
-						_network_player_info[v->owner].num_vehicle[0]++;
-					break;
-				case VEH_Road:
-					if (v->cargo_type != CT_PASSENGERS)
-						_network_player_info[v->owner].num_vehicle[1]++;
-					else
-						_network_player_info[v->owner].num_vehicle[2]++;
-					break;
-				case VEH_Aircraft:
-					if (v->subtype <= 2)
-						_network_player_info[v->owner].num_vehicle[3]++;
-					break;
-				case VEH_Ship:
-					_network_player_info[v->owner].num_vehicle[4]++;
-					break;
-				case VEH_Special:
-				case VEH_Disaster:
-					break;
-			}
+		if (v->owner >= MAX_PLAYERS) continue;
+		switch (v->type) {
+			case VEH_Train:
+				if (IsFrontEngine(v)) {
+					_network_player_info[v->owner].num_vehicle[0]++;
+				}
+				break;
+
+			case VEH_Road:
+				if (v->cargo_type != CT_PASSENGERS) {
+					_network_player_info[v->owner].num_vehicle[1]++;
+				} else {
+					_network_player_info[v->owner].num_vehicle[2]++;
+				}
+				break;
+
+			case VEH_Aircraft:
+				if (v->subtype <= 2) {
+					_network_player_info[v->owner].num_vehicle[3]++;
+				}
+				break;
+
+			case VEH_Ship:
+				_network_player_info[v->owner].num_vehicle[4]++;
+				break;
+
+			case VEH_Special:
+			case VEH_Disaster:
+				break;
+		}
 	}
 
 	// Go through all stations and count the types of stations
 	FOR_ALL_STATIONS(s) {
 		if (s->owner < MAX_PLAYERS) {
-			if ((s->facilities & FACIL_TRAIN))
-				_network_player_info[s->owner].num_station[0]++;
-			if ((s->facilities & FACIL_TRUCK_STOP))
-				_network_player_info[s->owner].num_station[1]++;
-			if ((s->facilities & FACIL_BUS_STOP))
-				_network_player_info[s->owner].num_station[2]++;
-			if ((s->facilities & FACIL_AIRPORT))
-				_network_player_info[s->owner].num_station[3]++;
-			if ((s->facilities & FACIL_DOCK))
-				_network_player_info[s->owner].num_station[4]++;
+			NetworkPlayerInfo* npi = &_network_player_info[s->owner];
+
+			if (s->facilities & FACIL_TRAIN)      npi->num_station[0]++;
+			if (s->facilities & FACIL_TRUCK_STOP) npi->num_station[1]++;
+			if (s->facilities & FACIL_BUS_STOP)   npi->num_station[2]++;
+			if (s->facilities & FACIL_AIRPORT)    npi->num_station[3]++;
+			if (s->facilities & FACIL_DOCK)       npi->num_station[4]++;
 		}
 	}
 
@@ -1295,8 +1300,7 @@ void NetworkUpdateClientInfo(uint16 client_index)
 
 	ci = NetworkFindClientInfoFromIndex(client_index);
 
-	if (ci == NULL)
-		return;
+	if (ci == NULL) return;
 
 	FOR_ALL_CLIENTS(cs) {
 		SEND_COMMAND(PACKET_SERVER_CLIENT_INFO)(cs, ci);
@@ -1330,8 +1334,7 @@ static void NetworkAutoCleanCompanies(void)
 	Player *p;
 	bool clients_in_company[MAX_PLAYERS];
 
-	if (!_network_autoclean_companies)
-		return;
+	if (!_network_autoclean_companies) return;
 
 	memset(clients_in_company, 0, sizeof(clients_in_company));
 
@@ -1352,8 +1355,7 @@ static void NetworkAutoCleanCompanies(void)
 	/* Go through all the comapnies */
 	FOR_ALL_PLAYERS(p) {
 		/* Skip the non-active once */
-		if (!p->is_active || p->is_ai)
-			continue;
+		if (!p->is_active || p->is_ai) continue;
 
 		if (!clients_in_company[p->index]) {
 			/* The company is empty for one month more */
@@ -1430,10 +1432,11 @@ bool NetworkServer_ReadPackets(NetworkClientState *cs)
 	NetworkRecvStatus res;
 	while ((p = NetworkRecv_Packet(cs, &res)) != NULL) {
 		byte type = NetworkRecv_uint8(cs, p);
-		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->quited)
+		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->quited) {
 			_network_server_packet[type](cs, p);
-		else
+		} else {
 			DEBUG(net, 0)("[NET][Server] Received invalid packet type %d", type);
+		}
 		free(p);
 	}
 

@@ -16,35 +16,20 @@ int AiNew_GetRailDirection(TileIndex tile_a, TileIndex tile_b, TileIndex tile_c)
 	// 4 = dig down-left
 	// 5 = dig up-right
 
-	int x1, x2, x3;
-	int y1, y2, y3;
+	uint x1 = TileX(tile_a);
+	uint x2 = TileX(tile_b);
+	uint x3 = TileX(tile_c);
 
-	x1 = TileX(tile_a);
-	x2 = TileX(tile_b);
-	x3 = TileX(tile_c);
-
-	y1 = TileY(tile_a);
-	y2 = TileY(tile_b);
-	y3 = TileY(tile_c);
+	uint y1 = TileY(tile_a);
+	uint y2 = TileY(tile_b);
+	uint y3 = TileY(tile_c);
 
 	if (y1 == y2 && y2 == y3) return 0;
 	if (x1 == x2 && x2 == x3) return 1;
-	if (y2 > y1) {
-		if (x2 > x3) return 2;
-		else return 4;
-	}
-	if (x2 > x1) {
-		if (y2 > y3) return 2;
-		else return 5;
-	}
-	if (y1 > y2) {
-		if (x2 > x3) return 5;
-		else return 3;
-	}
-	if (x1 > x2) {
-		if (y2 > y3) return 4;
-		else return 3;
-	}
+	if (y2 > y1) return x2 > x3 ? 2 : 4;
+	if (x2 > x1) return y2 > y3 ? 2 : 5;
+	if (y1 > y2) return x2 > x3 ? 5 : 3;
+	if (x1 > x2) return y2 > y3 ? 4 : 3;
 
 	return 0;
 }
@@ -87,11 +72,14 @@ DiagDirection AiNew_GetDirection(TileIndex tile_a, TileIndex tile_b)
 	return DIAGDIR_NE;
 }
 
+
 // This functions looks up if this vehicle is special for this AI
 //  and returns his flag
-uint AiNew_GetSpecialVehicleFlag(Player *p, Vehicle *v) {
-	int i;
-	for (i=0;i<AI_MAX_SPECIAL_VEHICLES;i++) {
+uint AiNew_GetSpecialVehicleFlag(Player* p, Vehicle* v)
+{
+	uint i;
+
+	for (i = 0; i < AI_MAX_SPECIAL_VEHICLES; i++) {
 		if (p->ainew.special_vehicles[i].veh_id == v->index) {
 			return p->ainew.special_vehicles[i].flag;
 		}
@@ -101,16 +89,22 @@ uint AiNew_GetSpecialVehicleFlag(Player *p, Vehicle *v) {
 	return 0;
 }
 
-bool AiNew_SetSpecialVehicleFlag(Player *p, Vehicle *v, uint flag) {
-	int i, new_id = -1;
-	for (i=0;i<AI_MAX_SPECIAL_VEHICLES;i++) {
+
+bool AiNew_SetSpecialVehicleFlag(Player* p, Vehicle* v, uint flag)
+{
+	int new_id = -1;
+	uint i;
+
+	for (i = 0; i < AI_MAX_SPECIAL_VEHICLES; i++) {
 		if (p->ainew.special_vehicles[i].veh_id == v->index) {
 			p->ainew.special_vehicles[i].flag |= flag;
 			return true;
 		}
-		if (new_id == -1 && p->ainew.special_vehicles[i].veh_id == 0 &&
-			p->ainew.special_vehicles[i].flag == 0)
+		if (new_id == -1 &&
+				p->ainew.special_vehicles[i].veh_id == 0 &&
+				p->ainew.special_vehicles[i].flag == 0) {
 			new_id = i;
+		}
 	}
 
 	// Out of special_vehicle spots :s

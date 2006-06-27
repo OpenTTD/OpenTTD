@@ -133,9 +133,9 @@ bool FiosCheckFileExists(const char *filename)
 	}
 #endif
 
-	if (f == NULL)
+	if (f == NULL) {
 		return false;
-	else {
+	} else {
 		fclose(f);
 		return true;
 	}

@@ -337,7 +337,6 @@ static int32 ClearTile_Water(TileIndex tile, byte flags)
 
 		case WATER_DEPOT:
 			if (flags & DC_AUTO) return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
-
 			return RemoveShipDepot(tile, flags);
 
 		default:

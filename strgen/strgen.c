@@ -890,7 +890,7 @@ static uint32 MyHashStr(uint32 hash, const char *s)
 {
 	for (; *s != '\0'; s++) {
 		hash = ROL(hash, 3) ^ *s;
-		if (hash & 1) hash = (hash >> 1) ^ 0xDEADBEEF; else hash >>= 1;
+		hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
 	}
 	return hash;
 }
@@ -914,7 +914,7 @@ static void MakeHashOfStrings(void)
 
 			s = ls->name;
 			hash ^= i * 0x717239;
-			if (hash & 1) hash = (hash >> 1) ^ 0xDEADBEEF; else hash >>= 1;
+			hash = (hash & 1 ? hash >> 1 ^ 0xDEADBEEF : hash >> 1);
 			hash = MyHashStr(hash, s + 1);
 
 			s = ls->english;
@@ -922,7 +922,7 @@ static void MakeHashOfStrings(void)
 				if (cs->flags & C_DONTCOUNT) continue;
 
 				hash ^= (cs - _cmd_structs) * 0x1234567;
-				if (hash & 1) hash = (hash >> 1) ^ 0xF00BAA4; else hash >>= 1;
+				hash = (hash & 1 ? hash >> 1 ^ 0xF00BAA4 : hash >> 1);
 			}
 		}
 	}

@@ -164,8 +164,8 @@ typedef struct RailtypeInfo {
 	SpriteID total_offset;
 
 	/**
-	  * Bridge offset
-	  */
+	 * Bridge offset
+	 */
 	SpriteID bridge_offset;
 
 	/**
@@ -263,20 +263,28 @@ static inline Trackdir TrackToTrackdir(Track track) { return (Trackdir)track; }
  * Returns a TrackdirBit mask that contains the two TrackdirBits that
  * correspond with the given Track (one for each direction).
  */
-static inline TrackdirBits TrackToTrackdirBits(Track track) { Trackdir td = TrackToTrackdir(track); return (TrackdirBits)(TrackdirToTrackdirBits(td) | TrackdirToTrackdirBits(ReverseTrackdir(td)));}
+static inline TrackdirBits TrackToTrackdirBits(Track track)
+{
+	Trackdir td = TrackToTrackdir(track);
+	return (TrackdirBits)(TrackdirToTrackdirBits(td) | TrackdirToTrackdirBits(ReverseTrackdir(td)));
+}
 
 /**
  * Discards all directional information from the given TrackdirBits. Any
  * Track which is present in either direction will be present in the result.
  */
-static inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits) { return (TrackBits)(bits | (bits >> 8)); }
+static inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits)
+{
+	return (TrackBits)(bits | (bits >> 8));
+}
 
 /**
  * Maps a trackdir to the trackdir that you will end up on if you go straight
  * ahead. This will be the same trackdir for diagonal trackdirs, but a
  * different (alternating) one for straight trackdirs
  */
-static inline Trackdir NextTrackdir(Trackdir trackdir) {
+static inline Trackdir NextTrackdir(Trackdir trackdir)
+{
 	extern const Trackdir _next_trackdir[TRACKDIR_END];
 	return _next_trackdir[trackdir];
 }
@@ -284,7 +292,8 @@ static inline Trackdir NextTrackdir(Trackdir trackdir) {
 /**
  * Maps a track to all tracks that make 90 deg turns with it.
  */
-static inline TrackBits TrackCrossesTracks(Track track) {
+static inline TrackBits TrackCrossesTracks(Track track)
+{
 	extern const TrackBits _track_crosses_tracks[TRACK_END];
 	return _track_crosses_tracks[track];
 }
@@ -293,7 +302,8 @@ static inline TrackBits TrackCrossesTracks(Track track) {
  * Maps a trackdir to the (4-way) direction the tile is exited when following
  * that trackdir.
  */
-static inline DiagDirection TrackdirToExitdir(Trackdir trackdir) {
+static inline DiagDirection TrackdirToExitdir(Trackdir trackdir)
+{
 	extern const DiagDirection _trackdir_to_exitdir[TRACKDIR_END];
 	return _trackdir_to_exitdir[trackdir];
 }
@@ -302,7 +312,8 @@ static inline DiagDirection TrackdirToExitdir(Trackdir trackdir) {
  * Maps a track and an (4-way) dir to the trackdir that represents the track
  * with the exit in the given direction.
  */
-static inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir) {
+static inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir)
+{
 	extern const Trackdir _track_exitdir_to_trackdir[TRACK_END][DIAGDIR_END];
 	return _track_exitdir_to_trackdir[track][diagdir];
 }
@@ -311,7 +322,8 @@ static inline Trackdir TrackExitdirToTrackdir(Track track, DiagDirection diagdir
  * Maps a track and an (4-way) dir to the trackdir that represents the track
  * with the exit in the given direction.
  */
-static inline Trackdir TrackEnterdirToTrackdir(Track track, DiagDirection diagdir) {
+static inline Trackdir TrackEnterdirToTrackdir(Track track, DiagDirection diagdir)
+{
 	extern const Trackdir _track_enterdir_to_trackdir[TRACK_END][DIAGDIR_END];
 	return _track_enterdir_to_trackdir[track][diagdir];
 }
@@ -320,7 +332,8 @@ static inline Trackdir TrackEnterdirToTrackdir(Track track, DiagDirection diagdi
  * Maps a track and a full (8-way) direction to the trackdir that represents
  * the track running in the given direction.
  */
-static inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir) {
+static inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir)
+{
 	extern const Trackdir _track_direction_to_trackdir[TRACK_END][DIR_END];
 	return _track_direction_to_trackdir[track][dir];
 }
@@ -329,7 +342,8 @@ static inline Trackdir TrackDirectionToTrackdir(Track track, Direction dir) {
  * Maps a (4-way) direction to the diagonal trackdir that runs in that
  * direction.
  */
-static inline Trackdir DiagdirToDiagTrackdir(DiagDirection diagdir) {
+static inline Trackdir DiagdirToDiagTrackdir(DiagDirection diagdir)
+{
 	extern const Trackdir _dir_to_diag_trackdir[DIAGDIR_END];
 	return _dir_to_diag_trackdir[diagdir];
 }
@@ -411,11 +425,11 @@ static inline bool HasPowerOnRail(RailType enginetype, RailType tiletype)
  */
 static inline bool TracksOverlap(TrackBits bits)
 {
-  /* With no, or only one track, there is no overlap */
-  if (bits == 0 || KILL_FIRST_BIT(bits) == 0) return false;
-  /* We know that there are at least two tracks present. When there are more
-   * than 2 tracks, they will surely overlap. When there are two, they will
-   * always overlap unless they are lower & upper or right & left. */
+	/* With no, or only one track, there is no overlap */
+	if (bits == 0 || KILL_FIRST_BIT(bits) == 0) return false;
+	/* We know that there are at least two tracks present. When there are more
+	 * than 2 tracks, they will surely overlap. When there are two, they will
+	 * always overlap unless they are lower & upper or right & left. */
 	return bits != TRACK_BIT_HORZ && bits != TRACK_BIT_VERT;
 }
 

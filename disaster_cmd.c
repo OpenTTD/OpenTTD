@@ -599,8 +599,9 @@ static void DisasterTick_4(Vehicle *v)
 		} while (tile != tile_org);
 		v->dest_tile = tile;
 		v->age = 0;
-	} else
+	} else {
 		return;
+	}
 }
 
 // The plane which will shoot down the UFO
@@ -664,8 +665,7 @@ static void DisasterTick_5_and_6(Vehicle *v)
 		return;
 	}
 
-	if (!(v->tick_counter&1))
-		return;
+	if (!(v->tick_counter & 1)) return;
 
 	tile = v->tile + TileOffsByDir(DirToDiagDir(v->direction));
 	if (IsValidTile(tile) &&
@@ -715,11 +715,9 @@ static void Disaster0_Init(void)
 	Station *st;
 	int x;
 
-	if (v == NULL)
-		return;
+	if (v == NULL) return;
 
-	/* Pick a random place, unless we find
-	    a small airport */
+	/* Pick a random place, unless we find a small airport */
 	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	FOR_ALL_STATIONS(st) {
@@ -747,8 +745,7 @@ static void Disaster1_Init(void)
 	Vehicle *v = ForceAllocateSpecialVehicle(), *u;
 	int x;
 
-	if (v == NULL)
-		return;
+	if (v == NULL) return;
 
 	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
@@ -776,17 +773,15 @@ static void Disaster2_Init(void)
 	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy != 0 &&
 				i->type == IT_OIL_REFINERY &&
-				(found==NULL || CHANCE16(1,2))) {
+				(found == NULL || CHANCE16(1, 2))) {
 			found = i;
 		}
 	}
 
-	if (found == NULL)
-		return;
+	if (found == NULL) return;
 
 	v = ForceAllocateSpecialVehicle();
-	if (v == NULL)
-		return;
+	if (v == NULL) return;
 
 	x = (MapSizeX() + 9) * TILE_SIZE - 1;
 	y = TileY(found->xy) * TILE_SIZE + 37;
@@ -817,12 +812,10 @@ static void Disaster3_Init(void)
 		}
 	}
 
-	if (found == NULL)
-		return;
+	if (found == NULL) return;
 
 	v = ForceAllocateSpecialVehicle();
-	if (v == NULL)
-		return;
+	if (v == NULL) return;
 
 	x = -16 * TILE_SIZE;
 	y = TileY(found->xy) * TILE_SIZE + 37;

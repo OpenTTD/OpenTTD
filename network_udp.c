@@ -141,10 +141,9 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 				snprintf(item->info.hostname, sizeof(item->info.hostname), "%s", inet_ntoa(client_addr->sin_addr));
 
 			/* Check if we are allowed on this server based on the revision-match */
-			item->info.compatible = (
-			strcmp(item->info.server_revision, _openttd_revision) == 0 ||
-			strcmp(item->info.server_revision, NOREV_STRING) == 0) ? true : false;
-
+			item->info.compatible =
+				strcmp(item->info.server_revision, _openttd_revision) == 0 ||
+				strcmp(item->info.server_revision, NOREV_STRING) == 0;
 			break;
 	}
 
@@ -163,8 +162,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 	int i;
 
 	// Just a fail-safe.. should never happen
-	if (!_network_udp_server)
-		return;
+	if (!_network_udp_server) return;
 
 	packet = NetworkSend_Init(PACKET_UDP_SERVER_DETAIL_INFO);
 
@@ -178,13 +176,12 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 	/* Go through all the players */
 	FOR_ALL_PLAYERS(player) {
 		/* Skip non-active players */
-		if (!player->is_active)
-			continue;
+		if (!player->is_active) continue;
 
 		current++;
 
 		/* Send the information */
-		NetworkSend_uint8 (packet, current);
+		NetworkSend_uint8(packet, current);
 
 		NetworkSend_string(packet, _network_player_info[player->index].company_name);
 		NetworkSend_uint8 (packet, _network_player_info[player->index].inaugurated_year);
@@ -193,11 +190,11 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 		NetworkSend_uint64(packet, _network_player_info[player->index].income);
 		NetworkSend_uint16(packet, _network_player_info[player->index].performance);
 
-                /* Send 1 if there is a passord for the company else send 0 */
+		/* Send 1 if there is a passord for the company else send 0 */
 		if (_network_player_info[player->index].password[0] != '\0') {
-			NetworkSend_uint8 (packet, 1);
+			NetworkSend_uint8(packet, 1);
 		} else {
-			NetworkSend_uint8 (packet, 0);
+			NetworkSend_uint8(packet, 0);
 		}
 
 		for (i = 0; i < NETWORK_VEHICLE_TYPES; i++)
@@ -209,7 +206,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 		/* Find the clients that are connected to this player */
 		FOR_ALL_CLIENTS(cs) {
 			ci = DEREF_CLIENT_INFO(cs);
-			if ((ci->client_playas - 1) == player->index) {
+			if (ci->client_playas - 1 == player->index) {
 				/* The uint8 == 1 indicates that a client is following */
 				NetworkSend_uint8(packet, 1);
 				NetworkSend_string(packet, ci->client_name);
@@ -219,7 +216,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 		}
 		/* Also check for the server itself */
 		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-		if ((ci->client_playas - 1) == player->index) {
+		if (ci->client_playas - 1 == player->index) {
 			/* The uint8 == 1 indicates that a client is following */
 			NetworkSend_uint8(packet, 1);
 			NetworkSend_string(packet, ci->client_name);
@@ -234,7 +231,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 	/* And check if we have any spectators */
 	FOR_ALL_CLIENTS(cs) {
 		ci = DEREF_CLIENT_INFO(cs);
-		if ((ci->client_playas - 1) > MAX_PLAYERS) {
+		if (ci->client_playas - 1 > MAX_PLAYERS) {
 			/* The uint8 == 1 indicates that a client is following */
 			NetworkSend_uint8(packet, 1);
 			NetworkSend_string(packet, ci->client_name);
@@ -244,7 +241,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 	}
 	/* Also check for the server itself */
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-	if ((ci->client_playas - 1) > MAX_PLAYERS) {
+	if (ci->client_playas - 1 > MAX_PLAYERS) {
 		/* The uint8 == 1 indicates that a client is following */
 		NetworkSend_uint8(packet, 1);
 		NetworkSend_string(packet, ci->client_name);
@@ -260,7 +257,8 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 	free(packet);
 }
 
-DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST) {
+DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST)
+{
 	int i;
 	struct in_addr ip;
 	uint16 port;
@@ -286,13 +284,15 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST) {
 	}
 }
 
-DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER) {
+DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_ACK_REGISTER)
+{
 	_network_advertise_retries = 0;
 	DEBUG(net, 2)("[NET][UDP] We are advertised on the master-server!");
 
-	if (!_network_advertise)
+	if (!_network_advertise) {
 		/* We are advertised, but we don't want to! */
 		NetworkUDPRemoveAdvertise();
+	}
 }
 
 
@@ -440,8 +440,7 @@ void NetworkUDPReceive(SOCKET udp)
 	int packet_len;
 
 	// If p is NULL, malloc him.. this prevents unneeded mallocs
-	if (p == NULL)
-		p = malloc(sizeof(Packet));
+	if (p == NULL) p = malloc(sizeof(*p));
 
 	packet_len = sizeof(p->buffer);
 	client_len = sizeof(client_addr);
@@ -470,15 +469,12 @@ void NetworkUDPReceive(SOCKET udp)
 // Broadcast to all ips
 static void NetworkUDPBroadCast(SOCKET udp)
 {
-	int i;
-	struct sockaddr_in out_addr;
-	Packet *p;
+	Packet* p = NetworkSend_Init(PACKET_UDP_CLIENT_FIND_SERVER);
+	uint i;
 
-	// Init the packet
-	p = NetworkSend_Init(PACKET_UDP_CLIENT_FIND_SERVER);
+	for (i = 0; _broadcast_list[i] != 0; i++) {
+		struct sockaddr_in out_addr;
 
-	i = 0;
-	while (_broadcast_list[i] != 0) {
 		out_addr.sin_family = AF_INET;
 		out_addr.sin_port = htons(_network_server_port);
 		out_addr.sin_addr.s_addr = _broadcast_list[i];
@@ -486,8 +482,6 @@ static void NetworkUDPBroadCast(SOCKET udp)
 		DEBUG(net, 6)("[NET][UDP] Broadcasting to %s", inet_ntoa(out_addr.sin_addr));
 
 		NetworkSendUDP_Packet(udp, p, &out_addr);
-
-		i++;
 	}
 
 	free(p);

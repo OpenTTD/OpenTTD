@@ -54,9 +54,9 @@ NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
 {
 	NetworkClientInfo *ci;
 
-	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++)
-		if (ci->client_index == client_index)
-			return ci;
+	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
+		if (ci->client_index == client_index) return ci;
+	}
 
 	return NULL;
 }
@@ -81,9 +81,9 @@ NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index)
 {
 	NetworkClientState *cs;
 
-	for (cs = _clients; cs != &_clients[MAX_CLIENT_INFO]; cs++)
-		if (cs->index == client_index)
-			return cs;
+	for (cs = _clients; cs != &_clients[MAX_CLIENT_INFO]; cs++) {
+		if (cs->index == client_index) return cs;
+	}
 
 	return NULL;
 }
@@ -93,10 +93,12 @@ NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index)
 void NetworkGetClientName(char *client_name, size_t size, const NetworkClientState *cs)
 {
 	const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
-	if (*ci->client_name == '\0')
+
+	if (ci->client_name[0] == '\0') {
 		snprintf(client_name, size, "Client #%4d", cs->index);
-	else
+	} else {
 		ttd_strlcpy(client_name, ci->client_name, size);
+	}
 }
 
 byte NetworkSpectatorCount(void)
@@ -218,7 +220,8 @@ static void ServerStartError(const char *error)
 	NetworkError(STR_NETWORK_ERR_SERVER_START);
 }
 
-static void NetworkClientError(byte res, NetworkClientState *cs) {
+static void NetworkClientError(byte res, NetworkClientState* cs)
+{
 	// First, send a CLIENT_ERROR to the server, so he knows we are
 	//  disconnection (and why!)
 	NetworkErrorCode errorno;
@@ -234,9 +237,9 @@ static void NetworkClientError(byte res, NetworkClientState *cs) {
 	}
 
 	switch (res) {
-		case NETWORK_RECV_STATUS_DESYNC: errorno = NETWORK_ERROR_DESYNC; break;
+		case NETWORK_RECV_STATUS_DESYNC:   errorno = NETWORK_ERROR_DESYNC; break;
 		case NETWORK_RECV_STATUS_SAVEGAME: errorno = NETWORK_ERROR_SAVEGAME_FAILED; break;
-		default: errorno = NETWORK_ERROR_GENERAL;
+		default:                           errorno = NETWORK_ERROR_GENERAL; break;
 	}
 	// This means we fucked up and the server closed the connection
 	if (res != NETWORK_RECV_STATUS_SERVER_ERROR && res != NETWORK_RECV_STATUS_SERVER_FULL &&
@@ -254,7 +257,7 @@ static void NetworkClientError(byte res, NetworkClientState *cs) {
 
 /** Retrieve a string representation of an internal error number
  * @param buf buffer where the error message will be stored
- * @param err NetworkErrorCode (integer)
+ * @param err NetworkErrorCode
  * @return returns a pointer to the error message (buf) */
 char *GetNetworkErrorMsg(char *buf, NetworkErrorCode err)
 {
@@ -274,7 +277,7 @@ char *GetNetworkErrorMsg(char *buf, NetworkErrorCode err)
 		STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH,
 		STR_NETWORK_ERR_CLIENT_KICKED,
 		STR_NETWORK_ERR_CLIENT_CHEATER,
-		STR_NETWORK_ERR_CLIENT_SERVER_FULL,
+		STR_NETWORK_ERR_CLIENT_SERVER_FULL
 	};
 
 	if (err >= lengthof(network_error_strings)) err = 0;
@@ -992,10 +995,11 @@ static void NetworkInitGameInfo(void)
 	memset(ci, 0, sizeof(*ci));
 
 	ci->client_index = NETWORK_SERVER_INDEX;
-	if (_network_dedicated)
+	if (_network_dedicated) {
 		ci->client_playas = OWNER_SPECTATOR;
-	else
+	} else {
 		ci->client_playas = _local_player + 1;
+	}
 	ttd_strlcpy(ci->client_name, _network_player_name, sizeof(ci->client_name));
 	ttd_strlcpy(ci->unique_id, _network_unique_id, sizeof(ci->unique_id));
 }
@@ -1127,23 +1131,26 @@ static bool NetworkReceive(void)
 	if (n == -1 && !_network_server) NetworkError(STR_NETWORK_ERR_LOSTCONNECTION);
 
 	// accept clients..
-	if (_network_server && FD_ISSET(_listensocket, &read_fd))
+	if (_network_server && FD_ISSET(_listensocket, &read_fd)) {
 		NetworkAcceptClients();
+	}
 
 	// read stuff from clients
 	FOR_ALL_CLIENTS(cs) {
 		cs->writable = !!FD_ISSET(cs->socket, &write_fd);
 		if (FD_ISSET(cs->socket, &read_fd)) {
-			if (_network_server)
+			if (_network_server) {
 				NetworkServer_ReadPackets(cs);
-			else {
+			} else {
 				byte res;
+
 				// The client already was quiting!
 				if (cs->quited) return false;
-				if ((res = NetworkClient_ReadPackets(cs)) != NETWORK_RECV_STATUS_OKAY) {
+
+				res = NetworkClient_ReadPackets(cs);
+				if (res != NETWORK_RECV_STATUS_OKAY) {
 					// The client made an error of which we can not recover
 					//   close the client and drop back to main menu
-
 					NetworkClientError(res, cs);
 					return false;
 				}
@@ -1336,38 +1343,40 @@ void NetworkStartUp(void)
 {
 	DEBUG(net, 3) ("[NET][Core] Starting network...");
 
-	#if defined(__MORPHOS__) || defined(__AMIGA__)
+#if defined(__MORPHOS__) || defined(__AMIGA__)
 	/*
 	 *  IMPORTANT NOTE: SocketBase needs to be initialized before we use _any_
 	 *  network related function, else: crash.
 	 */
-	{
-		DEBUG(misc,3) ("[NET][Core] Loading bsd socket library");
-		if (!(SocketBase = OpenLibrary("bsdsocket.library", 4))) {
-			DEBUG(net, 0) ("[NET][Core] Error: couldn't open bsdsocket.library version 4. Network not available.");
-			_network_available = false;
-			return;
-		}
+	DEBUG(misc,3) ("[NET][Core] Loading bsd socket library");
+	SocketBase = OpenLibrary("bsdsocket.library", 4);
+	if (SocketBase == NULL) {
+		DEBUG(net, 0) ("[NET][Core] Error: couldn't open bsdsocket.library version 4. Network not available.");
+		_network_available = false;
+		return;
+	}
 
-		#if defined(__AMIGA__)
-		// for usleep() implementation (only required for legacy AmigaOS builds)
-		if ( (TimerPort = CreateMsgPort()) ) {
-			if ( (TimerRequest = (struct timerequest *) CreateIORequest(TimerPort, sizeof(struct timerequest))) ) {
-				if ( OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest *) TimerRequest, 0) == 0 ) {
-					if ( !(TimerBase = TimerRequest->tr_node.io_Device) ) {
-						// free ressources...
-						DEBUG(net, 0) ("[NET][Core] Error: couldn't initialize timer. Network not available.");
-						_network_available = false;
-						return;
-					}
+#if defined(__AMIGA__)
+	// for usleep() implementation (only required for legacy AmigaOS builds)
+	TimerPort = CreateMsgPort();
+	if (TimerPort != NULL) {
+		TimerRequest = (struct timerequest*)CreateIORequest(TimerPort, sizeof(struct timerequest);
+		if (TimerRequest != NULL) {
+			if (OpenDevice("timer.device", UNIT_MICROHZ, (struct IORequest*)TimerRequest, 0) == 0) {
+				TimerBase = TimerRequest->tr_node.io_Device;
+				if (TimerBase == NULL) {
+					// free ressources...
+					DEBUG(net, 0) ("[NET][Core] Error: couldn't initialize timer. Network not available.");
+					_network_available = false;
+					return;
 				}
 			}
 		}
-		#endif // __AMIGA__
 	}
-	#endif // __MORPHOS__ / __AMIGA__
+#endif // __AMIGA__
+#endif // __MORPHOS__ / __AMIGA__
 
-    // Network is available
+	// Network is available
 	_network_available = true;
 	_network_dedicated = false;
 	_network_last_advertise_frame = 0;
@@ -1412,26 +1421,20 @@ void NetworkShutDown(void)
 
 	_network_available = false;
 
-	#if defined(__MORPHOS__) || defined(__AMIGA__)
-	{
-		// free allocated ressources
-		#if defined(__AMIGA__)
-			if (TimerBase)    { CloseDevice((struct IORequest *) TimerRequest); }
-			if (TimerRequest) { DeleteIORequest(TimerRequest); }
-			if (TimerPort)    { DeleteMsgPort(TimerPort); }
-		#endif
+#if defined(__MORPHOS__) || defined(__AMIGA__)
+	// free allocated ressources
+#if defined(__AMIGA__)
+	if (TimerBase    != NULL) CloseDevice((struct IORequest*)TimerRequest); // XXX This smells wrong
+	if (TimerRequest != NULL) DeleteIORequest(TimerRequest);
+	if (TimerPort    != NULL) DeleteMsgPort(TimerPort);
+#endif
 
-		if (SocketBase) {
-			CloseLibrary(SocketBase);
-		}
-	}
-	#endif
+	if (SocketBase != NULL) CloseLibrary(SocketBase);
+#endif
 
-	#if defined(WIN32)
-	{
-		WSACleanup();
-	}
-	#endif
+#if defined(WIN32)
+	WSACleanup();
+#endif
 }
 
 #endif /* ENABLE_NETWORK */

@@ -628,8 +628,11 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			if (item == nd->map || (pos == 0 && nd->map == NULL))
 				GfxFillRect(11, y - 1, 258, y + 10, 155); // show highlighted item with a different colour
 
-			if (pos == 0) DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
-			else DoDrawString(item->title, 14, y, _fios_colors[item->type] );
+			if (pos == 0) {
+				DrawString(14, y, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
+			} else {
+				DoDrawString(item->title, 14, y, _fios_colors[item->type] );
+			}
 			pos++;
 			y += NSSWND_ROWSIZE;
 
@@ -1262,7 +1265,9 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 			if (sel-- == 0) { // Selected item, highlight it
 				GfxFillRect(1, y, 150 - 2, y + CLNWND_ROWSIZE - 1, 0);
 				colour = 0xC;
-			} else colour = 0x10;
+			} else {
+				colour = 0x10;
+			}
 
 			DoDrawString(_clientlist_action[i], 4, y, colour);
 		}
@@ -1320,8 +1325,9 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 			if (_selected_clientlist_item == i++) { // Selected item, highlight it
 				GfxFillRect(1, y, 248, y + CLNWND_ROWSIZE - 1, 0);
 				colour = 0xC;
-			} else
+			} else {
 				colour = 0x10;
+			}
 
 			if (ci->client_index == NETWORK_SERVER_INDEX) {
 				DrawString(4, y, STR_NETWORK_SERVER, colour);
@@ -1362,8 +1368,9 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 		_selected_clientlist_y = e->mouseover.pt.y;
 		if (e->mouseover.pt.y > CLNWND_OFFSET) {
 			_selected_clientlist_item = (e->mouseover.pt.y - CLNWND_OFFSET) / CLNWND_ROWSIZE;
-		} else
+		} else {
 			_selected_clientlist_item = 255;
+		}
 
 		// Repaint
 		SetWindowDirty(w);

@@ -1660,8 +1660,8 @@ static void CheckClickOnLandscape(const ViewPort *vp, int x, int y)
 
 static void SafeShowTrainViewWindow(const Vehicle* v)
 {
-  if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
-  ShowTrainViewWindow(v);
+	if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
+	ShowTrainViewWindow(v);
 }
 
 static void Nop(const Vehicle* v) {}
@@ -1955,25 +1955,28 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 	h = myabs(dy) + 16;
 
 	if (TileVirtXY(thd->selstart.x, thd->selstart.y) == TileVirtXY(x, y)) { // check if we're only within one tile
-		if (method == VPM_RAILDIRS)
+		if (method == VPM_RAILDIRS) {
 			b = GetAutorailHT(x, y);
-		else // rect for autosignals on one tile
+		} else { // rect for autosignals on one tile
 			b = HT_RECT;
+		}
 	} else if (h == 16) { // Is this in X direction?
-		if (dx == 16) // 2x1 special handling
+		if (dx == 16) { // 2x1 special handling
 			b = (Check2x1AutoRail(3)) | HT_LINE;
-		else if (dx == -16)
+		} else if (dx == -16) {
 			b = (Check2x1AutoRail(2)) | HT_LINE;
-		else
+		} else {
 			b = HT_LINE | HT_DIR_X;
+		}
 		y = thd->selstart.y;
 	} else if (w == 16) { // Or Y direction?
-		if (dy == 16) // 2x1 special handling
+		if (dy == 16) { // 2x1 special handling
 			b = (Check2x1AutoRail(1)) | HT_LINE;
-		else if (dy == -16) // 2x1 other direction
+		} else if (dy == -16) { // 2x1 other direction
 			b = (Check2x1AutoRail(0)) | HT_LINE;
-		else
+		} else {
 			b = HT_LINE | HT_DIR_Y;
+		}
 		x = thd->selstart.x;
 	} else if (w > h * 2) { // still count as x dir?
 		b = HT_LINE | HT_DIR_X;
@@ -2082,7 +2085,11 @@ void VpSelectTilesWithMethod(int x, int y, int method)
 			break;
 
 		case VPM_X_OR_Y:
-			if (myabs(sy - y) < myabs(sx - x)) y = sy; else x = sx;
+			if (myabs(sy - y) < myabs(sx - x)) {
+				y = sy;
+			} else {
+				x = sx;
+			}
 			break;
 
 		case VPM_X_AND_Y:
@@ -2196,5 +2203,5 @@ void SetObjectToPlace(CursorID icon, byte mode, WindowClass window_class, Window
 
 void ResetObjectToPlace(void)
 {
-	SetObjectToPlace(SPR_CURSOR_MOUSE, 0, 0, 0);
+	SetObjectToPlace(SPR_CURSOR_MOUSE, VHM_NONE, 0, 0);
 }

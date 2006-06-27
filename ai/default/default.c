@@ -316,7 +316,7 @@ static void AiHandleReplaceTrain(Player *p)
 		tile = v->tile;
 
 		if (!CmdFailed(DoCommand(0, v->index, 2, DC_EXEC, CMD_SELL_RAIL_WAGON)) &&
-			  !CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE)) ) {
+				!CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_RAIL_VEHICLE))) {
 			VehicleID veh = _new_vehicle_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_TRAIN);
@@ -345,7 +345,7 @@ static void AiHandleReplaceRoadVeh(Player *p)
 		tile = v->tile;
 
 		if (!CmdFailed(DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_ROAD_VEH)) &&
-			  !CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH))) {
+				!CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH))) {
 			VehicleID veh = _new_vehicle_id;
 
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
@@ -374,7 +374,7 @@ static void AiHandleReplaceAircraft(Player *p)
 		tile = v->tile;
 
 		if (!CmdFailed(DoCommand(0, v->index, 0, DC_EXEC, CMD_SELL_AIRCRAFT)) &&
-			  !CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT)) ) {
+				!CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_AIRCRAFT))) {
 			VehicleID veh = _new_vehicle_id;
 			AiRestoreVehicleOrders(GetVehicle(veh), orderbak);
 			DoCommand(0, veh, 0, DC_EXEC, CMD_START_STOP_AIRCRAFT);

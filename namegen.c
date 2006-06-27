@@ -279,11 +279,10 @@ static byte MakeFinnishTownName(char *buf, uint32 seed)
 	// Select randomly if town name should consists of one or two parts.
 	if (SeedChance(0, 15, seed) >= 10) {
 		strcat(buf, name_finnish_real[SeedChance( 2, lengthof(name_finnish_real), seed)]);
-	}
-	// A two-part name by combining one of name_finnish_1 + "la"/"lä"
-	// The reason for not having the contents of name_finnish_{1,2} in the same table is
-	// that the ones in name_finnish_2 are not good for this purpose.
-	else if (SeedChance(0, 15, seed) >= 5) {
+	} else if (SeedChance(0, 15, seed) >= 5) {
+		// A two-part name by combining one of name_finnish_1 + "la"/"lä"
+		// The reason for not having the contents of name_finnish_{1,2} in the same table is
+		// that the ones in name_finnish_2 are not good for this purpose.
 		uint sel = SeedChance( 0, lengthof(name_finnish_1), seed);
 		char *last;
 		strcat(buf, name_finnish_1[sel]);
@@ -297,10 +296,9 @@ static byte MakeFinnishTownName(char *buf, uint32 seed)
 		} else {
 			strcat(buf, "lä");
 		}
-	}
-	// A two-part name by combining one of name_finnish_{1,2} + name_finnish_3.
-	// Why aren't name_finnish_{1,2} just one table? See above.
-	else {
+	} else {
+		// A two-part name by combining one of name_finnish_{1,2} + name_finnish_3.
+		// Why aren't name_finnish_{1,2} just one table? See above.
 		uint sel = SeedChance(2,
 			lengthof(name_finnish_1) + lengthof(name_finnish_2), seed);
 		if (sel >= lengthof(name_finnish_1)) {
@@ -424,10 +422,11 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 			// Always drop a postfix.
 			postfix += lengthof(name_czech_subst_postfix);
 		}
-		if (postfix < lengthof(name_czech_subst_postfix))
+		if (postfix < lengthof(name_czech_subst_postfix)) {
 			choose |= CZC_POSTFIX;
-		else
+		} else {
 			choose |= CZC_NOPOSTFIX;
+		}
 
 		// Localize the array segment containing a good gender
 		for (ending = 0; ending < (int) lengthof(name_czech_subst_ending); ending++) {

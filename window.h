@@ -293,7 +293,7 @@ struct Window {
 	WindowProc *wndproc;
 	ViewPort *viewport;
 	const Widget *original_widget;
- 	Widget *widget;
+	Widget *widget;
 	uint32 desc_flags;
 
 	WindowMessage message;

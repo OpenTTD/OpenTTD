@@ -51,8 +51,7 @@ void UpdateCompanyHQ(Player *p, uint score)
 	byte val;
 	TileIndex tile = p->location_of_house;
 
-	if (tile == 0)
-		return;
+	if (tile == 0) return;
 
 	(val = 0, score < 170) ||
 	(val++, score < 350) ||
@@ -110,21 +109,24 @@ static void DrawTile_Unmovable(TileInfo *ti)
 
 	switch (GetUnmovableType(ti->tile)) {
 		case UNMOVABLE_TRANSMITTER:
-		case UNMOVABLE_LIGHTHOUSE:
-			{
-				const DrawTileUnmovableStruct *dtus;
+		case UNMOVABLE_LIGHTHOUSE: {
+			const DrawTileUnmovableStruct* dtus;
 
-				if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
-				DrawClearLandTile(ti, 2);
+			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+			DrawClearLandTile(ti, 2);
 
-				dtus = &_draw_tile_unmovable_data[GetUnmovableType(ti->tile)];
+			dtus = &_draw_tile_unmovable_data[GetUnmovableType(ti->tile)];
 
-				image = dtus->image;
-				if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
+			image = dtus->image;
+			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 
-				AddSortableSpriteToDraw(image, ti->x | dtus->subcoord_x, ti->y | dtus->subcoord_y,
-					dtus->width, dtus->height, dtus->z_size, ti->z);
-			} break;
+			AddSortableSpriteToDraw(
+				image, ti->x | dtus->subcoord_x, ti->y | dtus->subcoord_y,
+				dtus->width, dtus->height, dtus->z_size, ti->z
+			);
+			break;
+		}
+
 		case UNMOVABLE_STATUE:
 			DrawGroundSprite(SPR_CONCRETE_GROUND);
 
@@ -133,6 +135,7 @@ static void DrawTile_Unmovable(TileInfo *ti)
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
 			AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 16, 25, ti->z);
 			break;
+
 		case UNMOVABLE_OWNED_LAND:
 			DrawClearLandTile(ti, 0);
 
@@ -140,32 +143,34 @@ static void DrawTile_Unmovable(TileInfo *ti)
 				PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)) + PALETTE_MODIFIER_COLOR + SPR_BOUGHT_LAND,
 				ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2, 1, 1, 10, GetSlopeZ(ti->x + TILE_SIZE / 2, ti->y + TILE_SIZE / 2)
 			);
-
 			break;
-		default:
-			{
-				const DrawTileSeqStruct *dtss;
-				const DrawTileSprites *t;
 
-				assert(IsCompanyHQ(ti->tile));
-				if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
+		default: {
+			const DrawTileSeqStruct* dtss;
+			const DrawTileSprites* t;
 
-				ormod = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
+			assert(IsCompanyHQ(ti->tile));
+			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
-				t = &_unmovable_display_datas[GetCompanyHQSection(ti->tile)];
-				DrawGroundSprite(t->ground_sprite | ormod);
+			ormod = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
-				foreach_draw_tile_seq(dtss, t->seq) {
-					image = dtss->image;
-					if (_display_opt & DO_TRANS_BUILDINGS) {
-						MAKE_TRANSPARENT(image);
-					} else {
-						image |= ormod;
-					}
-					AddSortableSpriteToDraw(image, ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-						dtss->width, dtss->height, dtss->unk, ti->z + dtss->delta_z);
+			t = &_unmovable_display_datas[GetCompanyHQSection(ti->tile)];
+			DrawGroundSprite(t->ground_sprite | ormod);
+
+			foreach_draw_tile_seq(dtss, t->seq) {
+				image = dtss->image;
+				if (_display_opt & DO_TRANS_BUILDINGS) {
+					MAKE_TRANSPARENT(image);
+				} else {
+					image |= ormod;
 				}
-			} break;
+				AddSortableSpriteToDraw(
+					image, ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+					dtss->width, dtss->height, dtss->unk, ti->z + dtss->delta_z
+				);
+			}
+			break;
+		}
 	}
 }
 

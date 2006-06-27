@@ -252,8 +252,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		UINT nChanged = RealizePalette(hDC);
 		SelectPalette(hDC, hOldPalette, TRUE);
 		ReleaseDC(hwnd, hDC);
-		if (nChanged)
-			InvalidateRect(hwnd, NULL, FALSE);
+		if (nChanged) InvalidateRect(hwnd, NULL, FALSE);
 		return 0;
 	}
 
@@ -263,9 +262,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		} else if (_patches.autosave_on_exit) {
 			DoExitSave();
 			_exit_game = true;
-		} else
+		} else {
 			AskExitGame();
-
+		}
 		return 0;
 
 	case WM_LBUTTONDOWN:
@@ -787,8 +786,9 @@ static void Win32GdiMainLoop(void)
 #endif
 			    !_networking && _game_mode != GM_MENU)
 				_fast_forward |= 2;
-		} else if (_fast_forward & 2)
+		} else if (_fast_forward & 2) {
 			_fast_forward = 0;
+		}
 
 		cur_ticks = GetTickCount();
 		if ((_fast_forward && !_pause) || cur_ticks > next_tick)
@@ -809,14 +809,14 @@ static void Win32GdiMainLoop(void)
 					(GetAsyncKeyState(VK_UP) < 0 ? 2 : 0) +
 					(GetAsyncKeyState(VK_RIGHT) < 0 ? 4 : 0) +
 					(GetAsyncKeyState(VK_DOWN) < 0 ? 8 : 0);
-			} else
+			} else {
 				_dirkeys = 0;
+			}
 
 			GameLoop();
 			_cursor.delta.x = _cursor.delta.y = 0;
 
-			if (_force_full_redraw)
-				MarkWholeScreenDirty();
+			if (_force_full_redraw) MarkWholeScreenDirty();
 
 			GdiFlush();
 			_screen.dst_ptr = _wnd.buffer_bits;

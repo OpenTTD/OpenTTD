@@ -84,6 +84,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 					return 0;
 			}
 			break;
+
 		case MP_TUNNELBRIDGE:
 			if (IsTunnel(t)) {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
@@ -104,15 +105,18 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 					return DiagDirToAxis(GetBridgeRampDirection(t)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
 				}
 			}
+
 		case MP_STREET:
 			if (GetRoadTileType(t) != ROAD_TILE_CROSSING) return 0;
 			if (GetRailTypeCrossing(t) != RAILTYPE_ELECTRIC) return 0;
 			return GetCrossingRailBits(t);
+
 		case MP_STATION:
 			if (!IsRailwayStation(t)) return 0;
 			if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
 			if (!IsStationTileElectrifiable(t)) return 0;
 			return TrackToTrackBits(GetRailStationTrack(t));
+
 		default:
 			return 0;
 	}
@@ -124,17 +128,22 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
   */
 static void AdjustTileh(TileIndex tile, Slope* tileh)
 {
-	if (IsTunnelTile(tile)) *tileh = SLOPE_FLAT;
-	if (IsBridgeTile(tile) && IsBridgeRamp(tile)) {
-		if (*tileh != SLOPE_FLAT) {
+	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
+		if (IsTunnel(tile)) {
 			*tileh = SLOPE_FLAT;
 		} else {
-			switch (GetBridgeRampDirection(tile)) {
-				case DIAGDIR_NE: *tileh = SLOPE_NE; break;
-				case DIAGDIR_SE: *tileh = SLOPE_SE; break;
-				case DIAGDIR_SW: *tileh = SLOPE_SW; break;
-				case DIAGDIR_NW: *tileh = SLOPE_NW; break;
-				default: break;
+			if (IsBridgeRamp(tile)) {
+				if (*tileh != SLOPE_FLAT) {
+					*tileh = SLOPE_FLAT;
+				} else {
+					switch (GetBridgeRampDirection(tile)) {
+						case DIAGDIR_NE: *tileh = SLOPE_NE; break;
+						case DIAGDIR_SE: *tileh = SLOPE_SE; break;
+						case DIAGDIR_SW: *tileh = SLOPE_SW; break;
+						case DIAGDIR_NW: *tileh = SLOPE_NW; break;
+						default: break;
+					}
+				}
 			}
 		}
 	}
@@ -246,11 +255,12 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		   In that case, we try the any of the allowed ones. if they don't exist either, don't draw
 		   anything. Note that the preferred PPPs still contain the end-of-line markers.
 		   Remove those (simply by ANDing with allowed, since these markers are never allowed) */
-		if ( (PPPallowed[i] & PPPpreferred[i]) != 0) PPPallowed[i] &= PPPpreferred[i];
+		if ((PPPallowed[i] & PPPpreferred[i]) != 0) PPPallowed[i] &= PPPpreferred[i];
 
 		if (PPPallowed[i] != 0 && HASBIT(PCPstatus, i) && !HASBIT(OverridePCP, i)) {
 			for (k = 0; k < DIR_END; k++) {
 				byte temp = PPPorder[i][GetTLG(ti->tile)][k];
+
 				if (HASBIT(PPPallowed[i], temp)) {
 					uint x  = ti->x + x_pcp_offsets[i] + x_ppp_offsets[temp];
 					uint y  = ti->y + y_pcp_offsets[i] + y_ppp_offsets[temp];

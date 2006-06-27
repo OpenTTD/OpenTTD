@@ -109,7 +109,6 @@ static void RoadVehRefitWndProc(Window *w, WindowEvent *e)
 						WP(w,refit_d).sel = y / 10;
 						SetWindowDirty(w);
 					}
-
 					break;
 				}
 
@@ -163,8 +162,8 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		StringID str;
 
 		w->disabled_state = v->owner == _local_player ? 0 : (1 << 2);
-		if (!_patches.servint_roadveh) // disable service-scroller when interval is set to disabled
-			w->disabled_state |= (1 << 5) | (1 << 6);
+		// disable service-scroller when interval is set to disabled
+		if (!_patches.servint_roadveh) w->disabled_state |= (1 << 5) | (1 << 6);
 
 		SetDParam(0, v->string_id);
 		SetDParam(1, v->unitnumber);
@@ -352,8 +351,9 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 				if (v->num_orders == 0) {
 					str = STR_NO_ORDERS + _patches.vehicle_speed;
 					SetDParam(0, v->cur_speed / 2);
-				} else
+				} else {
 					str = STR_EMPTY;
+				}
 				break;
 			}
 		}
@@ -565,8 +565,7 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_RESIZE: {
-		if (e->sizing.diff.y == 0)
-			break;
+		if (e->sizing.diff.y == 0) break;
 
 		w->vscroll.cap += e->sizing.diff.y / 14;
 		w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
@@ -632,8 +631,7 @@ static void DrawRoadDepotWindow(Window *w)
 	/* determine amount of items for scroller */
 	num = 0;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road && IsRoadVehInDepot(v) && v->tile == tile)
-			num++;
+		if (v->type == VEH_Road && IsRoadVehInDepot(v) && v->tile == tile) num++;
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
@@ -675,12 +673,10 @@ static int GetVehicleFromRoadDepotWndPt(const Window *w, int x, int y, Vehicle *
 
 	xt = x / 56;
 	xm = x % 56;
-	if (xt >= w->hscroll.cap)
-		return 1;
+	if (xt >= w->hscroll.cap) return 1;
 
 	row = (y - 14) / 14;
-	if (row >= w->vscroll.cap)
-		return 1;
+	if (row >= w->vscroll.cap) return 1;
 
 	pos = (row + w->vscroll.pos) * w->hscroll.cap + xt;
 
@@ -707,7 +703,10 @@ static void RoadDepotClickVeh(Window *w, int x, int y)
 	if (mode > 0) return;
 
 	// share / copy orders
-	if (_thd.place_mode && mode <= 0) { _place_clicked_vehicle = v; return; }
+	if (_thd.place_mode && mode <= 0) {
+		_place_clicked_vehicle = v;
+		return;
+	}
 
 	switch (mode) {
 	case 0: // start dragging of vehicle
@@ -791,14 +790,14 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 		}
 	} break;
 
-	case WE_PLACE_OBJ: {
+	case WE_PLACE_OBJ:
 		ClonePlaceObj(w);
-	} break;
+		break;
 
-	case WE_ABORT_PLACE_OBJ: {
+	case WE_ABORT_PLACE_OBJ:
 		CLRBIT(w->click_state, 8);
 		InvalidateWidget(w, 8);
-	} break;
+		break;
 
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
@@ -833,7 +832,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 		case 4:
 			if (!HASBIT(w->disabled_state, 4) &&
-					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
+					WP(w,traindepot_d).sel != INVALID_VEHICLE) {
 				Vehicle *v;
 
 				HandleButtonClick(w, 4);
@@ -848,22 +847,21 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 					_backup_orders_tile = 0;
 			}
 			break;
+
 		default:
 			WP(w,traindepot_d).sel = INVALID_VEHICLE;
 			SetWindowDirty(w);
 		}
 		break;
 
-	case WE_RESIZE: {
+	case WE_RESIZE:
 		/* Update the scroll + matrix */
 		w->vscroll.cap += e->sizing.diff.y / 14;
 		w->hscroll.cap += e->sizing.diff.x / 56;
 		w->widget[5].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
-
-	} break;
+		break;
 
 	}
-
 }
 
 static const Widget _road_depot_widgets[] = {
@@ -893,10 +891,9 @@ static const WindowDesc _road_depot_desc = {
 
 void ShowRoadDepotWindow(TileIndex tile)
 {
-	Window *w;
+	Window* w = AllocateWindowDescFront(&_road_depot_desc, tile);
 
-	w = AllocateWindowDescFront(&_road_depot_desc, tile);
-	if (w) {
+	if (w != NULL) {
 		w->caption_color = GetTileOwner(w->window_number);
 		w->hscroll.cap = 5;
 		w->vscroll.cap = 3;
@@ -959,26 +956,24 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 		SetVScrollCount(w, vl->list_length);
 
 		// disable 'Sort By' tooltip on Unsorted sorting criteria
-		if (vl->sort_type == SORT_BY_UNSORTED)
-			w->disabled_state |= (1 << 3);
+		if (vl->sort_type == SORT_BY_UNSORTED) w->disabled_state |= (1 << 3);
 
 		/* draw the widgets */
-		{
-			const Player *p = GetPlayer(owner);
-			if (station == INVALID_STATION) {
-				/* Company Name -- (###) Road vehicles */
-				SetDParam(0, p->name_1);
-				SetDParam(1, p->name_2);
-				SetDParam(2, w->vscroll.count);
-				w->widget[1].unkA = STR_9001_ROAD_VEHICLES;
-			} else {
-				/* Station Name -- (###) Road vehicles */
-				SetDParam(0, station);
-				SetDParam(1, w->vscroll.count);
-				w->widget[1].unkA = STR_SCHEDULED_ROAD_VEHICLES;
-			}
-			DrawWindowWidgets(w);
+		if (station == INVALID_STATION) {
+			const Player* p = GetPlayer(owner);
+
+			/* Company Name -- (###) Road vehicles */
+			SetDParam(0, p->name_1);
+			SetDParam(1, p->name_2);
+			SetDParam(2, w->vscroll.count);
+			w->widget[1].unkA = STR_9001_ROAD_VEHICLES;
+		} else {
+			/* Station Name -- (###) Road vehicles */
+			SetDParam(0, station);
+			SetDParam(1, w->vscroll.count);
+			w->widget[1].unkA = STR_SCHEDULED_ROAD_VEHICLES;
 		}
+		DrawWindowWidgets(w);
 		/* draw sorting criteria string */
 		DrawString(85, 15, _vehicle_sort_listing[vl->sort_type], 0x10);
 		/* draw arrow pointing up/down for ascending/descending sorting */
@@ -1029,22 +1024,19 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			return;
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+			const Vehicle* v;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
 			id_v += w->vscroll.pos;
 
-			{
-				Vehicle *v;
+			if (id_v >= vl->list_length) return; // click out of list bound
 
-				if (id_v >= vl->list_length) return; // click out of list bound
+			v	= GetVehicle(vl->sort_list[id_v].index);
 
-				v	= GetVehicle(vl->sort_list[id_v].index);
+			assert(v->type == VEH_Road && v->owner == owner);
 
-				assert(v->type == VEH_Road && v->owner == owner);
-
-				ShowRoadVehViewWindow(v);
-			}
+			ShowRoadVehViewWindow(v);
 		} break;
 
 		case 9: /* Build new Vehicle */
@@ -1053,9 +1045,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 10: {
-			if (!IsWindowOfPrototype(w, _player_roadveh_widgets))
-				break;
-
+			if (!IsWindowOfPrototype(w, _player_roadveh_widgets)) break;
 			ShowReplaceVehicleWindow(VEH_Road);
 			break;
 		}
@@ -1070,8 +1060,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			_sorting.roadveh.criteria = vl->sort_type;
 
 			// enable 'Sort By' if a sorter criteria is chosen
-			if (vl->sort_type != SORT_BY_UNSORTED)
-				CLRBIT(w->disabled_state, 3);
+			if (vl->sort_type != SORT_BY_UNSORTED) CLRBIT(w->disabled_state, 3);
 		}
 		SetWindowDirty(w);
 		break;

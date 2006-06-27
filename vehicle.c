@@ -481,7 +481,7 @@ Vehicle *GetPrevVehicleInChain(const Vehicle *v)
 
 	u = GetFirstVehicleInChain(v);
 
- 	// Check to see if this is the first
+	// Check to see if this is the first
 	if (v == u) return NULL;
 
 	do {
@@ -637,7 +637,9 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 
 	//if the aircraft carries passengers and is NOT full, then
 	//continue loading, no matter how much mail is in
-	if ((v->type == VEH_Aircraft) && (v->cargo_type == CT_PASSENGERS) && (v->cargo_cap != v->cargo_count)) {
+	if (v->type == VEH_Aircraft &&
+			v->cargo_type == CT_PASSENGERS &&
+			v->cargo_cap != v->cargo_count) {
 		return true;
 	}
 
@@ -648,9 +650,14 @@ static bool CanFillVehicle_FullLoadAny(Vehicle *v)
 
 		if (v->cargo_cap != 0) {
 			uint32 mask = 1 << v->cargo_type;
-			if (v->cargo_cap == v->cargo_count) full |= mask; else not_full |= mask;
+
+			if (v->cargo_cap == v->cargo_count) {
+				full |= mask;
+			} else {
+				not_full |= mask;
+			}
 		}
-	} while ( (v=v->next) != NULL);
+	} while ((v = v->next) != NULL);
 
 	// continue loading if there is a non full cargo type and no cargo type that is full
 	return not_full && (full & ~not_full) == 0;
@@ -670,13 +677,11 @@ bool CanFillVehicle(Vehicle *v)
 			))) {
 
 		// If patch is active, use alternative CanFillVehicle-function
-		if (_patches.full_load_any)
-			return CanFillVehicle_FullLoadAny(v);
+		if (_patches.full_load_any) return CanFillVehicle_FullLoadAny(v);
 
 		do {
-			if (v->cargo_count != v->cargo_cap)
-				return true;
-		} while ( (v=v->next) != NULL);
+			if (v->cargo_count != v->cargo_cap) return true;
+		} while ((v = v->next) != NULL);
 	}
 	return false;
 }
@@ -754,14 +759,12 @@ void ViewportAddVehicles(DrawPixelInfo *dpi)
 				veh = v->next_hash;
 			}
 
-			if (x == x2)
-				break;
+			if (x == x2) break;
 			x = (x + 1) & 0x3F;
 		}
 		x = xb;
 
-		if (y == y2)
-			break;
+		if (y == y2) break;
 		y = (y + 0x40) & ((0x3F) << 6);
 	}
 }
