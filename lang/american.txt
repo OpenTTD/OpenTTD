@@ -2828,6 +2828,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Make aut
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Replacing: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL FEATURE {}Switch between engine and car replacement windows.{}Car replacement will only be done if the new car can be refitted into carrying the same type of cargo as the old one. This is checked for each car when the actual replacement takes place.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine is not buildable
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Airport has no runway
 
 STR_ENGINES                                                     :Engines
 STR_WAGONS                                                      :Cars
