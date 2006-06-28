@@ -3,7 +3,7 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#define NOREV_STRING "0.4.7-norev000"
+#define NOREV_STRING "0.4.8-norev000"
 
 #ifdef ENABLE_NETWORK
 
