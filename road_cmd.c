@@ -696,8 +696,9 @@ const byte _road_sloped_sprites[14] = {
  * @param ti TileInfo
  * @param road RoadBits to draw
  */
-static void DrawRoadBits(TileInfo* ti, RoadBits road)
+static void DrawRoadBits(TileInfo* ti)
 {
+	RoadBits road = GetRoadBits(ti->tile);
 	const DrawRoadTileStruct *drts;
 	PalSpriteID image = 0;
 	Roadside roadside;
@@ -752,7 +753,7 @@ static void DrawTile_Road(TileInfo *ti)
 {
 	switch (GetRoadTileType(ti->tile)) {
 		case ROAD_TILE_NORMAL:
-			DrawRoadBits(ti, GetRoadBits(ti->tile));
+			DrawRoadBits(ti);
 			break;
 
 		case ROAD_TILE_CROSSING: {

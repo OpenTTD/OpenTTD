@@ -756,7 +756,7 @@ start_at:
 
 				/* Check the rail type only if the train is *NOT* on top of a bridge. */
 				if (!(IsBridgeTile(tile) && IsBridgeMiddle(tile) && GetBridgeAxis(tile) == DiagDirToAxis(direction))) {
-					if (IsTileType(tile, MP_STREET) ? !HASBIT(tpf->railtypes, GetRailTypeCrossing(tile)) : !HASBIT(tpf->railtypes, GetRailType(tile))) {
+					if (!HASBIT(tpf->railtypes, IsTileType(tile, MP_STREET) ? GetRailTypeCrossing(tile) : GetRailType(tile))) {
 						bits = 0;
 						break;
 					}

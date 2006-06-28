@@ -1205,7 +1205,7 @@ static void DrawSpecialBuilding(
  * @param snow Draw as snow
  * @param flat Always draw foundation
  */
-static void DrawTrackBits(TileInfo* ti, TrackBits track, bool flat)
+static void DrawTrackBits(TileInfo* ti, TrackBits track)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 	PalSpriteID image;
@@ -1233,13 +1233,7 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track, bool flat)
 	(image++, true);
 
 	if (ti->tileh != SLOPE_FLAT) {
-		int foundation;
-
-		if (flat) {
-			foundation = ti->tileh;
-		} else {
-			foundation = GetRailFoundation(ti->tileh, track);
-		}
+		uint foundation = GetRailFoundation(ti->tileh, track);
 
 		if (foundation != 0) DrawFoundation(ti, foundation);
 
@@ -1313,7 +1307,7 @@ static void DrawTile_Track(TileInfo *ti)
 	if (GetRailTileType(ti->tile) != RAIL_TILE_DEPOT_WAYPOINT) {
 		TrackBits rails = GetTrackBits(ti->tile);
 
-		DrawTrackBits(ti, rails, false);
+		DrawTrackBits(ti, rails);
 
 		if (_display_opt & DO_FULL_DETAIL) DrawTrackDetails(ti);
 
