@@ -1069,7 +1069,7 @@ static int32 PopulationInLabelActive(int32 p1)
 	return 0;
 }
 
-static int32 InvisibleTreesActive(int32 p1)
+static int32 RedrawScreen(int32 p1)
 {
 	MarkWholeScreenDirty();
 	return 0;
@@ -1242,7 +1242,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, errmsg_duration,    SLE_UINT8, S, 0,  5, 0,20, STR_CONFIG_PATCHES_ERRMSG_DURATION,       NULL),
 	 SDT_VAR(Patches, toolbar_pos,        SLE_UINT8, S,MS,  0, 0, 2, STR_CONFIG_PATCHES_TOOLBAR_POS,           v_PositionMainToolbar),
 	 SDT_VAR(Patches, window_snap_radius, SLE_UINT8, S,D0, 10, 1,32, STR_CONFIG_PATCHES_SNAP_RADIUS,           NULL),
-	SDT_BOOL(Patches, invisible_trees,               S, 0, false,    STR_CONFIG_PATCHES_INVISIBLE_TREES,       InvisibleTreesActive),
+	SDT_BOOL(Patches, invisible_trees,               S, 0, false,    STR_CONFIG_PATCHES_INVISIBLE_TREES,       RedrawScreen),
 	SDT_BOOL(Patches, population_in_label,           S, 0,  true,    STR_CONFIG_PATCHES_POPULATION_IN_LABEL,   PopulationInLabelActive),
 	 SDT_VAR(Patches, map_x,              SLE_UINT8, S, 0,  8, 6,11, STR_CONFIG_PATCHES_MAP_X,                 NULL),
 	 SDT_VAR(Patches, map_y,              SLE_UINT8, S, 0,  8, 6,11, STR_CONFIG_PATCHES_MAP_Y,                 NULL),
@@ -1253,7 +1253,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, build_on_slopes,               0, 0,  true,    STR_CONFIG_PATCHES_BUILDONSLOPES,       NULL),
 	SDT_BOOL(Patches, extra_dynamite,                0, 0, false,    STR_CONFIG_PATCHES_EXTRADYNAMITE,       NULL),
 	SDT_BOOL(Patches, longbridges,                   0, 0,  true,    STR_CONFIG_PATCHES_LONGBRIDGES,         NULL),
-	SDT_BOOL(Patches, signal_side,                   N, 0,  true,    STR_CONFIG_PATCHES_SIGNALSIDE,          NULL),
+	SDT_BOOL(Patches, signal_side,                   N, 0,  true,    STR_CONFIG_PATCHES_SIGNALSIDE,          RedrawScreen),
 	SDT_BOOL(Patches, always_small_airport,          0, 0, false,    STR_CONFIG_PATCHES_SMALL_AIRPORTS,      NULL),
 	 SDT_VAR(Patches, drag_signals_density,SLE_UINT8,S, 0,  4, 1,20, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY,NULL),
 
