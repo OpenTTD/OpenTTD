@@ -108,7 +108,7 @@ static void MakeCRCTable(uint32 *table) {
 	for (i = 0; i != 256; i++) {
 		crc = i;
 		for (j = 8; j != 0; j--) {
-			src = (crc & 1 ? (crc >> 1) ^ poly : crc >> 1);
+			crc = (crc & 1 ? (crc >> 1) ^ poly : crc >> 1);
 		}
 		table[i] = crc;
 	}
