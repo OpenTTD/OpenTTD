@@ -538,9 +538,8 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				const EngineInfo* info = EngInfo(eid);
 
 				// left window contains compatible engines while right window only contains engines of the selected type
-				if (ENGINE_AVAILABLE && (
-							(RailVehInfo(eid)->power != 0 && WP(w, replaceveh_d).wagon_btnstate) ||
-							(RailVehInfo(eid)->power == 0 && !WP(w, replaceveh_d).wagon_btnstate))) {
+				if (ENGINE_AVAILABLE &&
+						(RailVehInfo(eid)->power != 0) == (WP(w, replaceveh_d).wagon_btnstate != 0)) {
 					if (IsCompatibleRail(e->railtype, railtype) && (_player_num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid))) {
 						if (sel[0] == count) selected_id[0] = eid;
 						count++;
