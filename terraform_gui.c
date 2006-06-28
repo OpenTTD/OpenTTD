@@ -244,15 +244,7 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 	case WE_ABORT_PLACE_OBJ:
 		UnclickWindowButtons(w);
 		SetWindowDirty(w);
-
-		w = FindWindowById(WC_BUILD_STATION, 0);
-		if (w != NULL) WP(w,def_d).close=true;
-		w = FindWindowById(WC_BUILD_DEPOT, 0);
-		if (w != NULL) WP(w,def_d).close=true;
 		break;
-
-	case WE_PLACE_PRESIZE: {
-	} break;
 	}
 }
 
