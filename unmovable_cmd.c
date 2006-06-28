@@ -297,14 +297,14 @@ static void ClickTile_Unmovable(TileIndex tile)
 
 
 /* checks, if a radio tower is within a 9x9 tile square around tile */
-static bool checkRadioTowerNearby(TileIndex tile)
+static bool IsRadioTowerNearby(TileIndex tile)
 {
 	TileIndex tile_s = tile - TileDiffXY(4, 4);
 
 	BEGIN_TILE_LOOP(tile, 9, 9, tile_s)
-		if (IsTransmitterTile(tile)) return false;
+		if (IsTransmitterTile(tile)) return true;
 	END_TILE_LOOP(tile, 9, 9, tile_s)
-	return true;
+	return false;
 }
 
 void GenerateUnmovables(void)
@@ -323,7 +323,7 @@ void GenerateUnmovables(void)
 	do {
 		tile = RandomTile();
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4) {
-			if (!checkRadioTowerNearby(tile)) continue;
+			if (IsRadioTowerNearby(tile)) continue;
 			MakeTransmitter(tile);
 			if (--j == 0) break;
 		}
