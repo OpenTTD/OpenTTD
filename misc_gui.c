@@ -1577,6 +1577,7 @@ static void SelectScenarioWndProc(Window* w, WindowEvent* e)
 			}
 			break;
 		}
+		break;
 
 	case WE_RESIZE: {
 		/* Widget 3 and 4 have to go with halve speed, make it so obiwan */
