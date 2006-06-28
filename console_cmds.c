@@ -548,7 +548,7 @@ DEF_CONSOLE_CMD(ConStatus)
 		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 		const char* status;
 
-		status = (cs->status <= lengthof(stat_str) ? stat_str[cs->status] : "unknown");
+		status = (cs->status < lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrintF(8, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
 			cs->index, ci->client_name, status, lag, ci->client_playas, GetPlayerIP(ci), ci->unique_id);
 	}
