@@ -1,3 +1,62 @@
+0.4.8-RC1 (2006-06-28)
+------------------------------------------------------------------------
+- Feature: Add Turkish town names as we have an official Turkish translation
+- Feature: Add a fully optional configure script that is a wrapper around the cumbersome makefile.config
+- Codechange: [NPF] Disable NPF totally for ships as it wholly kills performance (blathijs). Only for 0.4/ branch and 0.4.8.
+- Fix: Redraw the screen when switching the signal side in the patches window
+- Fix: It was possible to dig into a tunnel if certain rail combinations were ontop of it
+- Fix: A HQ could only be flooded at its northern tile, the other 3 were immune to water
+- Fix: Fix several glitches concerning foundations. Houses, property (rail/road/bridge/etc.) and cursor are now aligned properly
+- Fix: Prohibit altering a road tile while road works are in progress. This fixes some glitches like "turning" the excavation by adding/removing road bits or removing the road piece
+- Fix: Only advertise the server to your external IP/network (eg not to 127.0.0.1) and use proper broadcast addresses
+- Fix: '-f' switch is not valid on windows, so don't show it in help
+- Fix: [autoreplace] Autoreplaced trains can leave all wagons in depot under certain circumstances
+- Fix: The wrong IP could get unbanned, e.g. 'unban 1.2.3.42' could result in unbanning 1.2.3.4
+- Fix: It was possible to convert the railtype of a bridge while a train was on it
+- Fix: It was possible to rename signs or waypoints with the chat box
+- Fix: Be more strict what it means for an aircraft to be in a hangar: It's not just being stopped on a hangar tile
+- Fix: If a road vehicle is on a road depot tile and stopped doesn't mean it's in the depot. Use the proper test for this
+- Fix: [AI] The AI should send a plane into a hangar if it's not in a hangar _or_ not stopped, not when it's not in a hangar _and_ not stopped
+- Fix: [AI] The trolly AI used information from the wrong industry when calculating the amount of to be transported goods
+- Fix: [NTP] Fix NTP over bridges: don't check the rail type when on a bridge
+- Fix: Truncate text in dropdown lists to stop text overflowing.
+- Fix: "Erroneous train reversal on waypoints". When processing the next train order, do not even consider reversing the train if the last order was to a waypoint.
+- Fix: Starting a new scenario did not adhere to local difficulty settings but took it from the scenario itself. That mode is for 'play scenario'
+- Fix: Vehicles on a sloped tile under a bridge were affected by the bridge speed limit
+- Fix: Issue with train pathfinding over level crossings.
+- Fix: [AI] The AI no longer attempts to build signals under bridges.
+- Fix: Refresh build vehicle window (if opened) when converting rail depot
+- Fix: Crash when sorting an empty server list.
+- Fix: The build-tree window button defaulted to a place-push-button on opening where no treetype is selected.
+- Fix: Game crashes when cloning/autoreplace reaches train-limit
+- Fix: [NTP] properly check for railtypes on non-plain-rail-tiles
+- Fix: Trains could enter certain sloped rail tiles under bridges with incompatible rail type
+- Fix: Ensure the map memory is cleared after it is allocated. This fixes random deserts that sometimes occurred.
+- Fix: Some weird behaviour with tile selection near bridges
+- Fix: Don't allow PF to enter train depot from the back (signal updates)
+- Fix: Game no longer crashes when the last vehicle servicing a station has been deleted
+- Fix: Reset the last built railtype when starting a new game
+- Fix: Cloned vehicles get the same service interval as the original vehicle
+- Fix: Game no longer errors out when "Many random towns" is selected in the scenario editor.
+- Fix: Obscure road dragging bug. The road build command did not return the appropiate error message of invalid-slope when building road.
+- Fix: Temperate bank will no longer appear (during game) in tropic landscape. This bug is from the original game.
+- Fix: Specify the 'stopall' console command as a debug command.
+- Fix: Fixed a problem that caused DeliverGoodsToIndustry to not work as intended
+- Fix: Ships and aircraft can now be used as feeders as well
+- Fix: When a multiheaded train is sold the pointers were not updated correctly causing sporadious crashes/disconnects.
+- Fix: New plantations now cause the correct ".. being planted .." news item
+- Fix: Danish town names were saved/loaded as Swiss
+- Fix: Removing roads on crossings was done without a check for ownership
+- Fix: [autoreplace] Fix drawing of train list for outdated engines
+- Fix: Malicious clients/servers could crash the game
+- Fix: [autoreplace] allow replacement of wagons even when the engine fails to be replaced
+- Fix: Certain operations involving trains inside a depot could cause a crash
+- Fix: [autoreplace] cost for refitting a new vehicle is added to the cost animation (player always paid for it, it just wasn't shown)
+- Fix: [OSX] Save/Load issues solved for OSX 10.3.9 universal binaries
+- Fix: Illegal servers in the master-server list could kick the client back to the main menu, effectively making Multiplayer impossible
+- Fix: [NPF] Don't mark tiles when debugging in multiplayer, this will cause desyncs
+- Fix: Several fixes to chatbox code, mainly plug a buffer overflow
+
 0.4.7 (2006-03-26)
 ------------------------------------------------------------------------
 
