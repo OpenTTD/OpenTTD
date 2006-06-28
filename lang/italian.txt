@@ -1451,6 +1451,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Binario ferrovi
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreno inclinato nella direzione errata
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Devi rimuovere la strada prima
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Lavori stradali in progresso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Costruzione Strade
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Seleziona ponte stradale
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Non puoi costruire strada da qui...
@@ -2768,7 +2769,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra c
 STR_REPLACE_HELP                                                :{BLACK}Permette di rimpiazzare un locomotere con uno di un'altro tipo, quando il treno entra in un deposito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimuovi vagoni: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autosostituzione deve mantenere uguale la lunghezza del treno, rimuovendo vagoni (iniziando davanti), se la sostituzione del treno lo farebbe piu lungo.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva non e costruibile
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi costruire la locomotiva
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista dei Cartelli - {COMMA} Cartelli

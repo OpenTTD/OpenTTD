@@ -1508,6 +1508,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicni trat
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Nesprávný sklon zeme pro silnici
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Musí¨ nejprve odstranit silnici
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Silnice je v rekonstrukci
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Výstavba silnic
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Zvolit silnicni most
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Zde nemohu postavit silnici...

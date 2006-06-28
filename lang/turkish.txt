@@ -734,7 +734,7 @@ STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transp
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Arazi bilgisi
 STR_02D6                                                        :
-STR_CONSOLE_SETTING                                             :Konsola Geç
+STR_CONSOLE_SETTING                                             :Konsol Aç/Kapa
 STR_02D7_SCREENSHOT_CTRL_S                                      :Ekran Görüntüsü (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Dev Ekran Görüntüsü (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :'OpenTTD' Hakkinda
@@ -1451,6 +1451,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :ön+çikis-sinyal
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Arazi yol yapimi için uygun egimli degil
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Önce yol silinmeli
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Yol çalismalari
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Yol Yapimi
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Köprü Seç
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Yol yapilamiyor...
