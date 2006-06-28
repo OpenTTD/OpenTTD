@@ -2827,7 +2827,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimuovi 
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autosostituzione deve mantenere uguale la lunghezza del treno, rimuovendo vagoni (iniziando davanti), se la sostituzione del treno lo farebbe piu lungo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sostituzione: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FEATURE SPERIMENTALE {}Scambia tra loro le finestre di sostituizione locomotive e vagoni. {}La sostituizione del vagone avverrà solo se il nuovo vagone può essere convertito nello stesso tipo di merce del  vecchio vagone. Questo controllo viene fatto per ogni vagone sostituito.
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva non e costruibile
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi costruire la locomotiva
 STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}L'aeroporto non ha piste
 
 STR_ENGINES                                                     :Motrici

@@ -1556,6 +1556,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicni trat
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Musí¨ nejprve odstranit silnici
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Silnice je v rekonstrukci
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Výstavba silnic
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Zvolit silnicni most
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Zde nemohu postavit silnici...
@@ -1761,11 +1762,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Zmenit j
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Ukázat seznam prijimaneho nákladu
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Jména stanic - pro nahlédnutí na stanici klepni na její jméno
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Zvol velikost a typ letiste
-STR_3059_SMALL                                                  :{BLACK}Malé
-STR_305A_LARGE                                                  :{BLACK}Mestske
-STR_305AA_LARGE                                                 :{BLACK}Metropolitní
-STR_305AB_LARGE                                                 :{BLACK}Mezinárodní
-STR_305B_SIZE                                                   :{BLACK}Velikost
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Nádra¸í
@@ -1780,7 +1776,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Zvyrazne
 STR_3068_DOCK                                                   :{WHITE}Pristav
 STR_3069_BUOY                                                   :Bójka
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}... bójka v ceste
-STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... stanice je prilis rozlo¸itá
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}... nejednolité stanice nejsou povoleny
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podr¸ením CTRL muzete oznacit více polo¸ek
@@ -2890,6 +2885,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce a
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovani: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTÁLNÍ VLASTNOST {}Prepne mezi okny na vymenu lokomotiv a vagonu.{}Vagon se vymeni, jen kdy¸ je nový vagon schopen vozit stejnou komoditu, jako ten starý. Toto se overuje pro ka¸dý vagon.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj nelze postavit
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Letiste nemá ranvej
 
 STR_ENGINES                                                     :lokomotivy
 STR_WAGONS                                                      :vagony
@@ -2920,3 +2916,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestující{P "" "" ch}, {COMMA} bal{P ík íky iku} po¨ty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanene vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Malé
+STR_CITY_AIRPORT                                                :{BLACK}Mestske
+STR_METRO_AIRPORT                                               :{BLACK}Metropolitní
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Mezinárodní
+STR_COMMUTER_AIRPORT                                            :{BLACK}Primestske
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Mezikontinentální
+STR_HELIPORT                                                    :{BLACK}Klasické
+STR_HELIDEPOT                                                   :{BLACK}Servisní
+STR_HELISTATION                                                 :{BLACK}Stanice
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Malá letiste
+STR_LARGE_AIRPORTS                                              :{BLACK}Velká letiste
+STR_HUB_AIRPORTS                                                :{BLACK}Hlavní letiste
+STR_HELIPORTS                                                   :{BLACK}Letiste pro vrtulníky
+########

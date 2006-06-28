@@ -1916,7 +1916,7 @@ STR_SV_STNAME_SIDINGS                                           :{STRING} Voies 
 STR_SV_STNAME_BRANCH                                            :{STRING} Embranchement
 STR_SV_STNAME_UPPER                                             :Haut {STRING}
 STR_SV_STNAME_LOWER                                             :Bas {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
+STR_SV_STNAME_HELIPORT                                          :{STRING} Héli-port
 STR_SV_STNAME_FOREST                                            :{STRING} Forêt
 
 ############ end of	savegame specific region!
@@ -2868,11 +2868,12 @@ STR_METRO_AIRPORT                                               :{BLACK}Aéroport
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}International
 STR_COMMUTER_AIRPORT                                            :{BLACK}de Banlieue
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
-STR_HELIPORT                                                    :{BLACK}Héliport
+STR_HELIPORT                                                    :{BLACK}Héli-tour
 STR_HELIDEPOT                                                   :{BLACK}Héli-dépôt
 STR_HELISTATION                                                 :{BLACK}Héli-station
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Petits aéroports
 STR_LARGE_AIRPORTS                                              :{BLACK}Grands aéroports
-STR_HELIPORTS                                                   :{BLACK}Héliportuaires
+STR_HUB_AIRPORTS                                                :{BLACK}Aéroports Internodaux
+STR_HELIPORTS                                                   :{BLACK}Héli-ports
 ########
