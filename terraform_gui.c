@@ -110,7 +110,7 @@ bool GUIPlaceProcDragXY(const WindowEvent *we)
 		GenerateDesertArea(end_tile, start_tile);
 		break;
 	case GUI_PlaceProc_WaterArea >> 4:
-		DoCommandP(end_tile, start_tile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+		DoCommandP(end_tile, start_tile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
 		break;
 	default: return false;
 	}

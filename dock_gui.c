@@ -151,7 +151,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 			if ((e->place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
 				GUIPlaceProcDragXY(e);
 			} else if (e->place.userdata == VPM_X_OR_Y) {
-				DoCommandP(e->place.tile, e->place.starttile, 0, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+				DoCommandP(e->place.tile, e->place.starttile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
 			}
 		}
 		break;

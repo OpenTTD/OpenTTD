@@ -637,7 +637,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 				MarkTileDirtyByTile(tile);
 			}
 			return cost;
-		} else if (IsWaterUnderBridge(tile) && TilePixelHeight(tile) != 0) {
+		} else if (IsWaterUnderBridge(tile) && !IsTileOwner(tile, OWNER_WATER)) {
 			/* delete canal under bridge */
 
 			// check for vehicles under bridge
@@ -710,7 +710,11 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 					DoClearSquare(c);
 				} else {
 					if (GetTileSlope(c, NULL) == SLOPE_FLAT) {
-						MakeWater(c);
+						if (IsTileOwner(c, OWNER_WATER)) {
+							MakeWater(c);
+						} else {
+							MakeCanal(c, GetTileOwner(c));
+						}
 					} else {
 						MakeShore(c);
 					}
@@ -1030,7 +1034,7 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 				} else {
 					if (ti->tileh == SLOPE_FLAT) {
 						DrawGroundSprite(SPR_FLAT_WATER_TILE);
-						if (ti->z != 0) DrawCanalWater(ti->tile);
+						if (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER)) DrawCanalWater(ti->tile);
 					} else {
 						DrawGroundSprite(_water_shore_sprites[ti->tileh]);
 					}

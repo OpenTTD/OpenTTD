@@ -200,7 +200,7 @@ int32 CmdBuildLock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Build a piece of canal.
  * @param tile end tile of stretch-dragging
  * @param p1 start tile of stretch-dragging
- * @param p2 unused
+ * @param p2 ctrl pressed - toggles ocean / canals at sealevel
  */
 int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -234,7 +234,7 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		// can't make water of water!
-		if (IsTileType(tile, MP_WATER)) continue;
+		if (IsTileType(tile, MP_WATER) && (!IsTileOwner(tile, OWNER_WATER) || HASBIT(p2, 0))) continue;
 
 		/* is middle piece of a bridge? */
 		if (IsBridgeTile(tile) && IsBridgeMiddle(tile)) {
@@ -242,10 +242,10 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return_cmd_error(STR_5800_OBJECT_IN_THE_WAY);
 			}
 
-			if (IsWaterUnderBridge(tile)) return_cmd_error(STR_1007_ALREADY_BUILT);
+			if (IsWaterUnderBridge(tile) && (!IsTileOwner(tile, OWNER_WATER) || HASBIT(p2, 0))) return_cmd_error(STR_1007_ALREADY_BUILT);
 
 			if (flags & DC_EXEC) {
-				if (TileHeight(tile) == 0) {
+				if (TileHeight(tile) == 0 && HASBIT(p2, 0)) {
 					SetWaterUnderBridge(tile);
 				} else {
 					SetCanalUnderBridge(tile, _current_player);
@@ -259,7 +259,7 @@ int32 CmdBuildCanal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			cost += ret;
 
 			if (flags & DC_EXEC) {
-				if (TileHeight(tile) == 0) {
+				if (TileHeight(tile) == 0 && HASBIT(p2, 0)) {
 					MakeWater(tile);
 				} else {
 					MakeCanal(tile, _current_player);
@@ -352,7 +352,18 @@ static bool IsWateredTile(TileIndex tile)
 {
 	switch (GetTileType(tile)) {
 		case MP_WATER:
-			return !IsCoast(tile);
+			if (!IsCoast(tile)) return true;
+
+			switch (GetTileSlope(tile, NULL)) {
+				case SLOPE_W:
+				case SLOPE_S:
+				case SLOPE_E:
+				case SLOPE_N:
+					return true;
+
+				default:
+					return false;
+			}
 
 		case MP_STATION:
 			return IsOilRig(tile) || IsDock(tile) || IsBuoy_(tile);
@@ -436,7 +447,7 @@ static void DrawTile_Water(TileInfo *ti)
 	switch (GetWaterTileType(ti->tile)) {
 		case WATER_CLEAR:
 			DrawGroundSprite(SPR_FLAT_WATER_TILE);
-			if (ti->z != 0) DrawCanalWater(ti->tile);
+			if (ti->z != 0 || !IsTileOwner(ti->tile, OWNER_WATER)) DrawCanalWater(ti->tile);
 			break;
 
 		case WATER_COAST:
@@ -487,7 +498,7 @@ static void GetTileDesc_Water(TileIndex tile, TileDesc *td)
 {
 	switch (GetWaterTileType(tile)) {
 		case WATER_CLEAR:
-			if (TilePixelHeight(tile) == 0) {
+			if (TilePixelHeight(tile) == 0 || IsTileOwner(tile, OWNER_WATER)) {
 				td->str = STR_3804_WATER;
 			} else {
 				td->str = STR_LANDINFO_CANAL;
@@ -641,6 +652,9 @@ void TileLoop_Water(TileIndex tile)
 		{{ 1,  0}, {1, 0}, {1, 1}, { 2,  0}, { 2,  1}},
 		{{ 0, -1}, {0, 0}, {1, 0}, { 0, -1}, { 1, -1}}
 	};
+
+	/* Ensure sea-level canals do not flood */
+	if (!IsTileOwner(tile, OWNER_WATER)) return;
 
 	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
 			IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) {
