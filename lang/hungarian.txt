@@ -1224,7 +1224,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Véletlen
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Véletlenszerûen kiválasztott fákat helyez el
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Nem lehet csatornát építeni ide...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Csatorna építése
+STR_BUILD_CANALS_TIP                                            :{BLACK}Csatorna építése. Nyomj CTRL-t hogy tengert csinálj (tengerszinten csak).
 STR_LANDINFO_CANAL                                              :Csatorna
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Nem lehet zsilipet építeni ide...
