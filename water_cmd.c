@@ -642,7 +642,7 @@ static void FloodVehicle(Vehicle *v)
 	}
 }
 
-// called from tunnelbridge_cmd
+// called from tunnelbridge_cmd, and by TileLoop_Industry()
 void TileLoop_Water(TileIndex tile)
 {
 	static const TileIndexDiffC _tile_loop_offs_array[][5] = {
@@ -654,7 +654,7 @@ void TileLoop_Water(TileIndex tile)
 	};
 
 	/* Ensure sea-level canals do not flood */
-	if (!IsTileOwner(tile, OWNER_WATER)) return;
+	if (IsTileType(tile, MP_WATER) && !IsTileOwner(tile, OWNER_WATER)) return;
 
 	if (IS_INT_INSIDE(TileX(tile), 1, MapSizeX() - 3 + 1) &&
 			IS_INT_INSIDE(TileY(tile), 1, MapSizeY() - 3 + 1)) {
