@@ -587,7 +587,7 @@ static int32 PopulationInLabelActive(int32 p1)
 	return 0;
 }
 
-static int32 InvisibleTreesActive(int32 p1)
+static int32 RedrawScreen(int32 p1)
 {
 	MarkWholeScreenDirty();
 	return 0;
@@ -684,7 +684,7 @@ static const PatchEntry _patches_ui[] = {
 
 	{PE_UINT8,	PF_MULTISTRING | PF_PLAYERBASED, STR_CONFIG_PATCHES_TOOLBAR_POS, "toolbar_pos", &_patches.toolbar_pos,			0,  2,  1, &v_PositionMainToolbar},
 	{PE_UINT8,	PF_0ISDIS | PF_PLAYERBASED, STR_CONFIG_PATCHES_SNAP_RADIUS, "window_snap_radius", &_patches.window_snap_radius,     1, 32,  1, NULL},
-	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_INVISIBLE_TREES,	"invisible_trees", &_patches.invisible_trees,					0,  1,  1, &InvisibleTreesActive},
+	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_INVISIBLE_TREES,	"invisible_trees", &_patches.invisible_trees,					0,  1,  1, &RedrawScreen},
 	{PE_BOOL,		PF_PLAYERBASED, STR_CONFIG_PATCHES_POPULATION_IN_LABEL, "population_in_label", &_patches.population_in_label, 0, 1, 1, &PopulationInLabelActive},
 
 	{PE_INT32, 0, STR_CONFIG_PATCHES_MAP_X, "map_x", &_patches.map_x, 6, 11, 1, NULL},
@@ -697,7 +697,7 @@ static const PatchEntry _patches_construction[] = {
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_BUILDONSLOPES,		"build_on_slopes",	&_patches.build_on_slopes,					0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_EXTRADYNAMITE,		"extra_dynamite",		&_patches.extra_dynamite,						0,  0,  0, NULL},
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_LONGBRIDGES,			"long_bridges",			&_patches.longbridges,							0,  0,  0, NULL},
-	{PE_BOOL,		0, STR_CONFIG_PATCHES_SIGNALSIDE,				"signal_side",			&_patches.signal_side,							0,  0,  0, NULL},
+	{PE_BOOL,		0, STR_CONFIG_PATCHES_SIGNALSIDE,				"signal_side",			&_patches.signal_side,							0,  0,  0, &RedrawScreen},
 
 	{PE_BOOL,		0, STR_CONFIG_PATCHES_SMALL_AIRPORTS,		"always_small_airport", &_patches.always_small_airport,			0,  0,  0, NULL},
 	{PE_UINT8,	PF_PLAYERBASED, STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY, "drag_signals_density", &_patches.drag_signals_density, 1, 20,  1, NULL},
