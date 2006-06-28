@@ -1506,7 +1506,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 10:
-			if (IsWindowOfPrototype(w, _player_trains_widgets)) break;
+			if (!IsWindowOfPrototype(w, _player_trains_widgets)) break;
 			ShowReplaceVehicleWindow(VEH_Train);
 			break;
 
