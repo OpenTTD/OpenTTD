@@ -290,21 +290,22 @@ CXX_HOST = $(CXX)
 endif
 
 # Check if we have a new target
-ifdef CXX_TARGET
-CXX = $(CXX_TARGET)
+ifndef CXX_TARGET
+CXX_TARGET = $(CXX_HOST)
 endif
 
 # Check if CC_HOST is defined. If not, it is CC
 ifndef CC_HOST
 CC_HOST = $(CC)
 endif
+
 ifndef CFLAGS_HOST
 CFLAGS_HOST = $(BASECFLAGS)
 endif
 
 # Check if we have a new target
-ifdef CC_TARGET
-CC = $(CC_TARGET)
+ifndef CC_TARGET
+CC_TARGET = $(CC_HOST)
 endif
 
 CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1,3)
@@ -859,7 +860,7 @@ ifndef MACOSX_BUILD
 # OSX links in os/macosx/Makefile to handle universal binaries better
 $(TTD): $(OBJS) $(MAKE_CONFIG)
 	@echo '===> Linking $@'
-	$(Q)$(CXX) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
+	$(Q)$(CXX_TARGET) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
 endif
 
 $(STRGEN): strgen/strgen.c endian_host.h
@@ -1039,30 +1040,30 @@ endif
 
 .deps/%.d: %.c $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> DEP $<'
-	$(Q)$(CC) $(CFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
+	$(Q)$(CC_TARGET) $(CFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 .deps/%.d: %.cpp $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> DEP $<'
-	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
+	$(Q)$(CXX_TARGET) $(CFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 .deps/%.d: %.m $(MAKE_CONFIG) table/strings.h endian_target.h
 	@echo '===> DEP $<'
-	$(Q)$(CC) $(OBJCFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
+	$(Q)$(CC_TARGET) $(OBJCFLAGS) $(CDEFS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:.deps/%.d=%.o):#' > $@
 
 
 ifndef MACOSX_BUILD
 # OSX uses os/macosx/Makefile to compile files
 %.o: %.c $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC_TARGET) $(CC_CFLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
 
 %.o: %.cpp  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CXX) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CXX_TARGET) $(CFLAGS) $(CDEFS) -c -o $@ $<
 
 %.o: %.m  $(MAKE_CONFIG)
 	@echo '===> Compiling $<'
-	$(Q)$(CC) $(CC_CFLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC_TARGET) $(CC_CFLAGS) $(CFLAGS) $(CDEFS) -c -o $@ $<
 endif
 
 %.o: %.rc

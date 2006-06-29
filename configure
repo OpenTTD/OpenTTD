@@ -17,6 +17,7 @@ function showhelp() {
 	echo " --target-cc        Sets the target-compiler            [\$CC]"
 	echo " --target-cxx       Sets the C++ target-compiler        []"
 	echo " --host-cc          Sets the host-compiler              [\$CC]"
+	echo " --host-cxx         Sets the C++ host-compiler          []"
 	echo " --os               Sets the OS. Listens to:            [detected]"
 	echo "                       UNIX, OSX, FREEBSD, MORPHOS"
 	echo "                       BEOS, SUNOS, CYGWIN, MINGW"
@@ -85,16 +86,22 @@ do
 			ITEM="CC_TARGET"
 			;;
 		--target-cxx=*)
-			TARGET_CXX=`awk 'BEGIN { FS="="; $0="'"$n"'"; print $2;}'`
+			handle "CXX_TARGET" "$n"
 			;;
 		--target-cxx)
-			SITEM="TARGET_CXX"
+			SITEM="CXX_TARGET"
 			;;
 		--host-cc=*)
-			handle CC_HOST "$n"
+			handle "CC_HOST" "$n"
 			;;
 		--host-cc)
 			ITEM="CC_HOST"
+			;;
+		--host-cxx=*)
+			handle "CXX_HOST" "$n"
+			;;
+		--host-cxx)
+			ITEM="CXX_HOST"
 			;;
 		--host-cflags=*)
 			handle CFLAGS_HOST "$n"
@@ -182,7 +189,7 @@ do
 		--libpng-config=*)
 			handle LIBPNG_CONFIG "$n"
 			;;
-		--lib-png-config)
+		--libpng-config)
 			ITEM="LIBPNG_CONFIG"
 			;;
 
@@ -268,15 +275,8 @@ echo "make upgradeconf $PARAM" > Makefile.run
 . Makefile.run
 rm -f Makefile.run
 
-# Makefile.config currently doesn't support custom CXX, so, we add the line
-#  ourself!
-
-if ! test -z "$TARGET_CXX"
-then
-	echo "CXX=$TARGET_CXX" >> Makefile.config
-fi
-
-# Same for RELEASE (read: REVISION)
+# Makefile.config currently doesn't support custom RELEASE (revision), so, we add the line
+# yourself!
 
 if ! test -z "$RELEASE"
 then
