@@ -1148,11 +1148,6 @@ STR_304A_NONE                                                   :{YELLOW}- Noben
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Preblizu drugemu pristaniscu
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Najprej moras porusiti pristanisce
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Spremeni ime postaje
-STR_3059_SMALL                                                  :{BLACK}Majhno
-STR_305A_LARGE                                                  :{BLACK}Mesto
-STR_305AA_LARGE                                                 :{BLACK}Velemestno letalisce
-STR_305AB_LARGE                                                 :{BLACK}Internacionalno letalisce
-STR_305B_SIZE                                                   :{BLACK}Velikost
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_305E_RAILROAD_STATION                                       :Zelezniska postaja
 STR_305F_AIRCRAFT_HANGAR                                        :Hangar

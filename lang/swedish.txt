@@ -1700,11 +1700,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Byt namn
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Visa lista av accepterat gods
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Stationsnamn - klicka på ett namn för att centrera vyn på stationen
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Välj storlek/typ av flygplats
-STR_3059_SMALL                                                  :{BLACK}Liten
-STR_305A_LARGE                                                  :{BLACK}Stor
-STR_305AA_LARGE                                                 :{BLACK}Metropolisk flygplats
-STR_305AB_LARGE                                                 :{BLACK}IInternationell flygplats
-STR_305B_SIZE                                                   :{BLACK}Storlek
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Järnvägsstation
@@ -1719,7 +1714,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Markera 
 STR_3068_DOCK                                                   :{WHITE}Hamn
 STR_3069_BUOY                                                   :Boj
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boj i vägen
-STR_306B_HELIPORT                                               :{BLACK}Helikopterplats
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station för utspridd
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ej enhetliga stationer inaktiverade
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Håll nere CTRL för att markera mer än en sak

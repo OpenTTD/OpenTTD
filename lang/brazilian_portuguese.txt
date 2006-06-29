@@ -1685,11 +1685,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Alterar 
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Mostrar lista de carga aceita
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nome da estação - clique no nome para centralizar a visualização na estação
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Selecionar tamanho/tipo de aeroporto
-STR_3059_SMALL                                                  :{BLACK}Pequeno
-STR_305A_LARGE                                                  :{BLACK}Cidade
-STR_305AA_LARGE                                                 :{BLACK}Aeroporto Metropolitano
-STR_305AB_LARGE                                                 :{BLACK}Aeroporto Internacional
-STR_305B_SIZE                                                   :{BLACK}Tamanho
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Estação ferroviária
@@ -1704,7 +1699,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Destacar
 STR_3068_DOCK                                                   :{WHITE}Doca
 STR_3069_BUOY                                                   :Bóia
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bóia no caminho
-STR_306B_HELIPORT                                               :{BLACK}Heliporto
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...estação muito extensa
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...Estações não-uniformes desativadas
 

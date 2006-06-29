@@ -1706,11 +1706,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Name der
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Zeige Liste der akzeptierten Frachten
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Stationsnamen - Klicke auf den Namen, um die Station anzuzeigen
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Wähle die Größe/Art des Flughafens
-STR_3059_SMALL                                                  :{BLACK}klein
-STR_305A_LARGE                                                  :{BLACK}mittel
-STR_305AA_LARGE                                                 :{BLACK}Großstädtischer Flughafen
-STR_305AB_LARGE                                                 :{BLACK}Internationaler Flughafen
-STR_305B_SIZE                                                   :{BLACK}Größe
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Bahnhof
@@ -1725,7 +1720,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Zeige Ei
 STR_3068_DOCK                                                   :{WHITE}Hafen
 STR_3069_BUOY                                                   :Boje
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...Boje ist im Weg
-STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...Bahnhof ist zu groß
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ungleichförmige Stationen deaktiviert
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}STRG gedrückt halten um mehrere Einträge auszuwählen

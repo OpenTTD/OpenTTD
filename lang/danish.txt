@@ -1690,11 +1690,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Ændrer s
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Vis liste over accepteret last
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Stationsnavne - klik på et navn for at centrere skærmen over stationen
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Vælg lufthavnens størrelse/type
-STR_3059_SMALL                                                  :{BLACK}Lille
-STR_305A_LARGE                                                  :{BLACK}Stor
-STR_305AA_LARGE                                                 :{BLACK}National lufthavn
-STR_305AB_LARGE                                                 :{BLACK}International lufthavn
-STR_305B_SIZE                                                   :{BLACK}Størrelse
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Togstation
@@ -1709,7 +1704,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Markerin
 STR_3068_DOCK                                                   :{WHITE}Havn
 STR_3069_BUOY                                                   :Bøje
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...der er en bøje i vejen
-STR_306B_HELIPORT                                               :{BLACK}Helikopterplads
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stationen er for spredt
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikke uniforme stationer er slået fra
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold CTRL nede for at vælge mere end en ting

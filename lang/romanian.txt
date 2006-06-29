@@ -1700,11 +1700,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Schimbã 
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Afiseazã lista de încarcãturi acceptate
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Numele statiilor - clic pe un nume pentru a centra imaginea pe statia respectivã
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Alege tipul de aeroport
-STR_3059_SMALL                                                  :{BLACK}Mic
-STR_305A_LARGE                                                  :{BLACK}Municipal
-STR_305AA_LARGE                                                 :{BLACK}Metropolitan
-STR_305AB_LARGE                                                 :{BLACK}International
-STR_305B_SIZE                                                   :{BLACK}Mãrimea
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Garã
@@ -1719,7 +1714,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Aratã ar
 STR_3068_DOCK                                                   :{WHITE}Port
 STR_3069_BUOY                                                   :Balizã
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...balizã în cale
-STR_306B_HELIPORT                                               :{BLACK}Heliport
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...statie prea mare
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...statii neuniforme dezactivat
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Tine apãsat CTRL pentru a alege mai mult decât un obiect
