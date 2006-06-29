@@ -2054,6 +2054,14 @@ UnitID GetFreeUnitNumber(byte type)
 		default: NOT_REACHED();
 	}
 
+	if (max == 0) {
+		/* we can't build any of this kind of vehicle, so we just return 1 instead of looking for a free number
+		 * a max of 0 will cause the following code to write to a NULL pointer
+		 * We know that 1 is bigger than the max allowed vehicle number, so it's the same as returning something, that is too big
+		 */
+		return 1;
+	}
+
 	if (max > gmax) {
 		gmax = max;
 		free(cache);
