@@ -128,7 +128,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
 	/* find the first free roadveh id */
-	unit_num = (HASBIT(p2, 0) == true) ? 0 : GetFreeUnitNumber(VEH_Road);
+	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_Road);
 	if (unit_num > _patches.max_roadveh)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 

@@ -742,7 +742,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		v = vl[0];
 
-		unit_num = (HASBIT(p2, 0) == true) ? 0 : GetFreeUnitNumber(VEH_Train);
+		unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_Train);
 		if (unit_num > _patches.max_trains)
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 

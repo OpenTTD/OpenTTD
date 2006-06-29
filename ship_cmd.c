@@ -850,7 +850,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
 
 	v = AllocateVehicle();
-	unit_num = (HASBIT(p2, 0) == true) ? 0 : GetFreeUnitNumber(VEH_Ship);
+	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_Ship);
 
 	if (v == NULL || IsOrderPoolFull() || unit_num > _patches.max_ships)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);

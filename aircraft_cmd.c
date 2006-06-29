@@ -223,7 +223,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(STR_AIRPORT_HAS_NO_RUNWAY);
 	}
 
-	unit_num = (HASBIT(p2, 0) == true) ? 0 : GetFreeUnitNumber(VEH_Aircraft);
+	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_Aircraft);
 	if (unit_num > _patches.max_aircraft)
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
