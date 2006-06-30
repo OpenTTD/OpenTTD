@@ -373,6 +373,7 @@ STR_SORT_BY_MAX_SPEED                                           :Maksimal fart
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Verdi
 STR_SORT_BY_FACILITY                                            :Stasjon type
+STR_NO_WAITING_CARGO                                            :{BLACK}Ingen last venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg alle anlegg
 
 ############ range for months starts
@@ -787,7 +788,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kopier s
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valutaenhet
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Velg valutaenhet
+STR_MEASURING_UNITS                                             :{BLACK}Oppmålingsenheter
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Oppmålingsenhetsutvelging
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Veigående kjøretøy
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Velg kjøreretning
@@ -2443,6 +2446,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Kan ikke slette denne ordren...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Kan ikke endre denne ordren...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan ikke flytte kjøretøy...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Bakmaskinen vil alltid følge det fremste motstykket
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan ikke selge jernbanekjøretøy...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan ikke finne en togstall i nærheten
@@ -2829,11 +2833,14 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_S}
 
 ########### String for new airports
+STR_METRO_AIRPORT                                               :{BLACK}Metropolflypklass
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internasjonal flyplass
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinental
 STR_HELIPORT                                                    :{BLACK}Heliport
+STR_HELIDEPOT                                                   :{BLACK}Helikopterdepot
 STR_HELISTATION                                                 :{BLACK}Helistasjon
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Små Flyplasser
 STR_LARGE_AIRPORTS                                              :{BLACK}Store flyplasser
+STR_HELIPORTS                                                   :{BLACK}Helikopterflyplass
 ########
