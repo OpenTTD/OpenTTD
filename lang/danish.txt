@@ -308,6 +308,7 @@ STR_0151_MAP_OF_WORLD                                           :Kort over verde
 STR_0152_TOWN_DIRECTORY                                         :Byoversigt
 STR_0153_SUBSIDIES                                              :Special aftaler
 
+STR_UNITS_IMPERIAL                                              :Imperialistisk
 STR_UNITS_METRIC                                                :Metersystem
 STR_UNITS_SI                                                    :SI
 
@@ -333,6 +334,7 @@ STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
 
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton kraft
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -377,6 +379,8 @@ STR_SORT_BY_VALUE                                               :Værdi
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Værdi af ventende fragt
 STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
+STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle last typer (inklusiv fragttyper, der ikke venter)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1167,6 +1171,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Træk lok
 
 STR_DRAG_DROP                                                   :{BLACK}Træk & slip
 STR_STATION_DRAG_DROP                                           :{BLACK}Byg en station via træk & slip
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Vælg hvilken stationstype, der skal vises
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vælg hvilen stationstype du vil bygge
 
 STR_FAST_FORWARD                                                :{BLACK}Kør spillet hurtigere
 STR_MESSAGE_HISTORY                                             :{WHITE}Tidligere beskeder
@@ -1486,6 +1492,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Togskinner med 
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Det er nødvendigt at fjerne vejen først
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vejarbejde er i gang
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vej Konstruktion
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vælg vejbro
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan ikke bygge vej her...
@@ -2570,6 +2577,9 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gå til {TOWN} Lastbilsdepot
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN} Lastbilsdepot
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Ombyg vejkøretøj til at laste en anden type last
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Ombyg vejkøretøjet til at laste den markede type last
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke ombygge vejkøretøj
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Havnekonstruktion
@@ -2841,11 +2851,13 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Lasteevn
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserede Vogne: {GOLD}+{POWER}{BLACK} Vægt: {GOLD}+{WEIGHT_S}
 
 ########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Lille
 STR_CITY_AIRPORT                                                :{BLACK}By
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}International
 STR_HELIPORT                                                    :{BLACK}Helijopter landingsplads
 STR_HELIDEPOT                                                   :{BLACK}Helikopter værksted
 
+STR_SMALL_AIRPORTS                                              :{BLACK}Små lufthavne
 STR_LARGE_AIRPORTS                                              :{BLACK}Store lufthavne
 STR_HELIPORTS                                                   :{BLACK}Helikopter lufthavn
 ########
