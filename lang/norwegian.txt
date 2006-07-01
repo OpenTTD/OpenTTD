@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}KM
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}MV
+STR_ABBREV_NONE                                                 :{TINYFONT}NE
+STR_ABBREV_ALL                                                  :{TINYFONT}ALL
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kart - {STRING}
@@ -306,6 +308,7 @@ STR_0151_MAP_OF_WORLD                                           :Verdenskart
 STR_0152_TOWN_DIRECTORY                                         :Bykatalog
 STR_0153_SUBSIDIES                                              :Subsidier
 
+STR_UNITS_IMPERIAL                                              :Imperial
 STR_UNITS_METRIC                                                :Metrisk
 STR_UNITS_SI                                                    :SI
 
@@ -317,10 +320,11 @@ STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
 STR_UNITS_POWER_METRIC                                          :{COMMA}hk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonn{P "" s}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} britisk tonn{P "" s}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
@@ -328,9 +332,12 @@ STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} tonn kraft
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -791,11 +798,11 @@ STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Velg val
 STR_MEASURING_UNITS                                             :{BLACK}Oppmålingsenheter
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Oppmålingsenhetsutvelging
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Veigående kjøretøy
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Kjøreretning
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Velg kjøreretning
-STR_02E9_DRIVE_ON_LEFT                                          :Kjør på venstre
-STR_02EA_DRIVE_ON_RIGHT                                         :Kjør på høyre
+STR_02E9_DRIVE_ON_LEFT                                          :Kjør på venstre side
+STR_02EA_DRIVE_ON_RIGHT                                         :Kjør på høyre side
 STR_02EB_TOWN_NAMES                                             :{BLACK}Bynavn
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Velg bynavntype
@@ -1001,7 +1008,7 @@ STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillat 
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Tillat bygging av anlegg som produserer råmaterialer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillat flere like industrier i samme by: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrier av samme type kan bygges nær hverandre: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Alltid vis lang dato på statuslinja: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vis alltid lang dato på statuslinjen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Vis jernbanesignaler på samme side som kjøreretningen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Vis regnskap ved nyttår: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch-kompatibel nonstop-håndtering: {ORANGE}{STRING}
@@ -1015,11 +1022,11 @@ STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Alltid 
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Et tog har kjørt seg vill hvis ingen framdrift er gjort etter: {ORANGE}{STRING} dager
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Et tog har kjørt seg vill hvis ingen framdrift er gjort etter: {ORANGE}deaktivert
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøy's ordrer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Inspiser kjøretøyenes ordrer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, men ekskluder stoppede kjøretøy
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :av alle kjøretøy
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et tog går med større underskudd enn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Advar hvis et tog går i underskudd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Kjøretøy utgår aldri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Bytt automatisk ut kjøretøy når det blir gammelt:
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Autoforny når kjøretøy er {ORANGE}{STRING}{LTBLUE} måneder før/etter maks alder
@@ -1083,6 +1090,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Endre innstillingsverdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Noen eller alle av standard serviceintervall(ene) under er inkompatible med valgte instillinger! 5-90% og 30-800 dager er gyldige
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Skip skal bruke YAPF: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Kjøretøy skal bruke YAPF: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Tog skal bruke YAPF: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :temperert landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :sub-arktisk landskap
@@ -1101,6 +1111,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly 
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Bytt klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Bytt dato: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tillat endring av produksjonsmengder: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Tillat elektriske lokomotiv å kjøre på vanlige skinner
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Har kurs mot {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Har kurs mot {WAYPOINT}, {VELOCITY}
@@ -1197,7 +1208,7 @@ STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUST
 STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportert)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
-STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...For nært en annen industri
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for nært en annen industri
 
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Bygg om et lokomotiv til å ta en annen type last
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Bygg om lokomotivet
@@ -1484,6 +1495,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbanespor me
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Må fjerne vei først
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Veiarbeid i gang
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Bygg vei
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Velg brotype
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan ikke bygge vei her
@@ -2507,6 +2519,7 @@ STR_886F_TRANSFER                                               :{BLACK}Overfør
 
 STR_TRAIN_STOPPING                                              :{RED}Stopper
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Inkompatible jernbanetyper
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kjøretøy i veien
@@ -2566,6 +2579,8 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Kjør til {TOWN} garasje
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service ved {TOWN} garasje
 
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Bygg om bil
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke bygge om bil...
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Bygg havn
@@ -2771,6 +2786,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Forhånd
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Bytt vanlig valutagrense
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
@@ -2801,6 +2817,7 @@ STR_REPLACE_HELP                                                :{BLACK}Dette ve
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motoren kan ikke bygges
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Flyplassen har ingen rullebane
 
 STR_ENGINES                                                     :Motorer
 STR_WAGONS                                                      :Vogner
@@ -2833,14 +2850,18 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_S}
 
 ########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Liten
+STR_CITY_AIRPORT                                                :{BLACK}By
 STR_METRO_AIRPORT                                               :{BLACK}Metropolflypklass
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internasjonal flyplass
+STR_COMMUTER_AIRPORT                                            :{BLACK}Pendler
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinental
-STR_HELIPORT                                                    :{BLACK}Heliport
+STR_HELIPORT                                                    :{BLACK}Helikopterlufthavn
 STR_HELIDEPOT                                                   :{BLACK}Helikopterdepot
-STR_HELISTATION                                                 :{BLACK}Helistasjon
+STR_HELISTATION                                                 :{BLACK}Helikopterstasjon
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Små Flyplasser
 STR_LARGE_AIRPORTS                                              :{BLACK}Store flyplasser
-STR_HELIPORTS                                                   :{BLACK}Helikopterflyplass
+STR_HUB_AIRPORTS                                                :{BLACK}Sentrumsflyplasser
+STR_HELIPORTS                                                   :{BLACK}Helikopterlufthavner
 ########
