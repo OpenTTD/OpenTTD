@@ -1499,6 +1499,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Raudtee kombo-s
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Enne on vaja tee eemaldada
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Tee ehitus käib
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Tee ehitamine
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vali sillatüüp
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Siia ei saa teed ehitada...
@@ -2447,7 +2448,7 @@ STR_8825_NON_STOP                                               :{BLACK}Peatuset
 STR_8826_GO_TO                                                  :{BLACK}Mine
 STR_8827_FULL_LOAD                                              :{BLACK}Täis laadung
 STR_8828_UNLOAD                                                 :{BLACK}Lae maha
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Käsud)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Käskude Lõpp - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Hooldus
@@ -2827,6 +2828,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Sunni au
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vahetan: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} TESTIMISEL! {}Vaheta aken mootori ja vaguni vahetamise aknate vahel.{}Vaguni vahetus tehakse ainult siis kui uus vagun suudetakse muuta kandmaks sama tüüpi kaupa kui vana vagun. See valitakse igale vagunile kui tegelik vahetus käib
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Mootorit ei saa ehitada
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Lennujaamal ei ole maandumisrada
 
 STR_ENGINES                                                     :Mootorid
 STR_WAGONS                                                      :Vaguneid
@@ -2857,3 +2859,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Kaal: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Maksumus: {GOLD}{CURRENCY}{BLACK} Kiirus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Mahutuvusy: {GOLD}{COMMA} reisjat, {COMMA} kotti kirju
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirendavad vagunid: {GOLD}+{POWER}{BLACK} Kaal: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Väike
+STR_CITY_AIRPORT                                                :{BLACK}Linn
+STR_METRO_AIRPORT                                               :{BLACK}Metropoli lennujaam
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Rahvusvaheline lennujaam
+STR_COMMUTER_AIRPORT                                            :{BLACK}Pendelrong
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Ülemaailmne lennujaam
+STR_HELIPORT                                                    :{BLACK}Helikopteri jaam
+STR_HELIDEPOT                                                   :{BLACK}Helikopteri depoo
+STR_HELISTATION                                                 :{BLACK}Helijaam
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Väikesed lennujaamad
+STR_LARGE_AIRPORTS                                              :{BLACK}Suured lennujaamad
+STR_HUB_AIRPORTS                                                :{BLACK}Suured lennujaamad
+STR_HELIPORTS                                                   :{BLACK}Helikopteri lennujaamad
+########

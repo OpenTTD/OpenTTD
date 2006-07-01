@@ -1103,6 +1103,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly 
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skift klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ændre dato: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifisering af produktion: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Tillad elektriske tog at køre på almindelige skinner
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Retning mod {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Retning mod {WAYPOINT}, {VELOCITY}
@@ -2569,6 +2570,7 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gå til {TOWN} Lastbilsdepot
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN} Lastbilsdepot
 
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Havnekonstruktion
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Havnekonstruktion
@@ -2806,6 +2808,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autou
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Udskifter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTEL EGENSKAB {}Skift imellem lokomotiv- og vogn-udskiftningsvindue.{}Vognudskiftning vil kun finde sted hvis den nye vogn kan ændres til at transportere samme godstype some den gamle vogn. Dette bliver checket for hver vogn, når udskiftningen finder sted
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Køretøjet kan ikke bygges
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Lufthavnen har ingen landingsbane
 
 STR_ENGINES                                                     :Lokomotiver
 STR_WAGONS                                                      :Vogne
@@ -2836,3 +2839,13 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vægt: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Hastighed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Lasteevne: {GOLD}{COMMA} passagerer, {COMMA} sække post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserede Vogne: {GOLD}+{POWER}{BLACK} Vægt: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_CITY_AIRPORT                                                :{BLACK}By
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}International
+STR_HELIPORT                                                    :{BLACK}Helijopter landingsplads
+STR_HELIDEPOT                                                   :{BLACK}Helikopter værksted
+
+STR_LARGE_AIRPORTS                                              :{BLACK}Store lufthavne
+STR_HELIPORTS                                                   :{BLACK}Helikopter lufthavn
+########

@@ -321,12 +321,21 @@ STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonelada{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galóns{P "" s}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :G. beneficios operativos
@@ -778,7 +787,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Pega a s
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unidades monetarias
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Selección de unidades monetarias
+STR_MEASURING_UNITS                                             :{BLACK}Unidades de medida
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Selección das unidades de medida
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Vehículos de estrada
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Selecciona o lado da estrada polo que rodarán os vehículos
@@ -1264,8 +1275,10 @@ STR_NETWORK_8_PLAYERS                                           :8 xogadores
 STR_NETWORK_9_PLAYERS                                           :9 xogadores
 STR_NETWORK_10_PLAYERS                                          :10 xogadores
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Nº máx. de compañías:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita-lo servidor a unha certa cantidade de compañías
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Nº máx. de espectadores:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limita-lo servidor a unha certa cantidade de espectadores
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros xogadores sabrán cal é o idioma que se fala no servidor
@@ -1682,6 +1695,7 @@ STR_3069_BUOY                                                   :Boia
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boia no camiño
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...a estación ocupa demasiado
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...estacións non uniformes deshabilitadas
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Presiona CTRL para seleccionar máis dun ítem
 
 STR_UNDEFINED                                                   :(cadea indefinida)
 STR_STAT_CLASS_DFLT                                             :Estación por defecto
@@ -2539,6 +2553,9 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Non se p
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ir ó Depósito de Vehículos de Estrada de {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servicio no Depósito de Vehículos de Estrada de {TOWN}
 
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reparar vehículo
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Non se pode repara-lo vehículo
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construcción de Peiraos
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Construcción de Peiraos
@@ -2760,6 +2777,7 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de Reemplazar Vehículos
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Non hai vehículos seleccionados
 STR_REPLACE_HELP                                                :{BLACK}Permíteche reemplazar untipo de máquina cunha doutro tipo, cando trens do tipo orixinal entran nun depósito
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemprazando: {ORANGE}{SKIP}{SKIP}{STRING}
 
 STR_ENGINES                                                     :Máquinas
 STR_WAGONS                                                      :Vagóns
@@ -2789,3 +2807,15 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} pasaxeiros, {COMMA} sacos de correo
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns tractores: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Pequeno
+STR_METRO_AIRPORT                                               :{BLACK}Aeroporto metropolitano
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroporto Internacional
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
+STR_HELIPORT                                                    :{BLACK}Heliporto
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Aeroportos pequenos
+STR_LARGE_AIRPORTS                                              :{BLACK}Aeroportos grandes
+STR_HELIPORTS                                                   :{BLACK}Aeroportos para helicópteros
+########

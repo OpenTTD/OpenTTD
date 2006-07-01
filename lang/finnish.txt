@@ -1499,6 +1499,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Rautatie yhdist
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Tie pitää siirtää ensin.
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Tietyöt ovat käynnissä.
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Tien rakentaminen
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Valitse maantiesilta
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Tietä ei voi rakentaa...
@@ -2585,6 +2586,11 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Ajoneuvo
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Aseta kohteeksi huoltoasema, {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Huolto, kohteena huoltoasema, {TOWN}
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Muuta ajoneuvo rahtaamaan muuta rahtityyppiä.
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Korjaa ajoneuvo.
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Muuta ajoneuvo rahtaamaan korostettua rahtityyppiä.
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ajoneuvoa ei voida korjata.
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Sataman rakentaminen
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Sataman rakentaminen
@@ -2822,6 +2828,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Automaat
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Korvataan: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ERIKOIS OMINAISUUS {} Vaihda toiseen korvausikkunaan. {} Vaunu vaihdetaan ainoastaan jos uusi vaunu kuljettaa samaa rahtia. Tämä tarkistetaan, joka kerta kun vaunu korvataan.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Veturi ei ole rakennettavissa
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Lentokentällä ei ole kiitorataa.
 
 STR_ENGINES                                                     :Veturit
 STR_WAGONS                                                      :Vaunut
@@ -2852,3 +2859,18 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Paino: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteetti: {GOLD}{COMMA} matkustajaa, {COMMA} säkkiä postia
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoroidut vaunut: {GOLD}+{POWER}{BLACK} Paino: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Pieni
+STR_CITY_AIRPORT                                                :{BLACK}Kaupunki
+STR_METRO_AIRPORT                                               :{BLACK}Suurkaupungin lentokenttä
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Kansainvälinen lentokenttä
+STR_COMMUTER_AIRPORT                                            :{BLACK}Työmatkalainen
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Mannertenvälinen
+STR_HELIDEPOT                                                   :{BLACK}Helikopterihalli
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Pienet lentokentät
+STR_LARGE_AIRPORTS                                              :{BLACK}Isot lentokentät
+STR_HUB_AIRPORTS                                                :{BLACK}Keskuslentokenttä
+STR_HELIPORTS                                                   :{BLACK}Helikopteri lentokenttä
+########
