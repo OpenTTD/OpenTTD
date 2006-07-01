@@ -84,7 +84,7 @@ endif
 # build the bundle. OSX wants to keep apps in bundles, so we will give it one
 # the good thing about bundles is that you can keep extra files in them, so we keep lng files and a data dir in it
 
-$(BUILD_OSX_BUNDLE): $(TTD)
+BUILD_OSX_BUNDLE: $(TTD)
 	@echo '===> Building application bundle'
 	$(Q)rm -fr "$(OSXAPP)"
 	$(Q)mkdir -p "$(OSXAPP)"/Contents/MacOS
@@ -118,6 +118,6 @@ release: all
 	$(Q)/usr/bin/hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(REV)" openttd-"$(REV)"-osx"$(JAGUAR_POSTFIX)".dmg
 	$(Q)rm -fr "OpenTTD $(REV)"
 
-$(OSX): $(TTD) $(BUILD_OSX_BUNDLE)
+$(OSX): $(TTD) BUILD_OSX_BUNDLE
 
-.PHONY: release $(BUILD_OSX_BUNDLE) $(UNIVERSAL_BINARY)
+.PHONY: release BUILD_OSX_BUNDLE
