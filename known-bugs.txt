@@ -23,7 +23,6 @@ URL: http://bugs.openttd.org
 -73	vehicle selection bug
 -66	wagon re-fitting
 -65	short wagons bug
--52	desync when server saves game (on slow hardware)
 -51	Windows doesn't support CUSTOM_LANG_DIR
 -50	Trains chosing an alternative path when encountering a 1-way presignal instead of waiting
 -47	Low rating calculation and cargo loading priority
