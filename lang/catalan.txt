@@ -1413,6 +1413,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} El serv
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Client
 
+STR_NETWORK_CLIENTLIST_NONE                                     :(none)
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Entregar diners
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parlar a tothom
@@ -1495,6 +1496,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Vía de tren amb
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}S'ha de treure la carretera primer
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Obres en progrés
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construcció de Carreteres
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecciona Pont per Carretera
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}No es pot construir carretera aqui...
@@ -2581,6 +2583,11 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}No es po
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Anar a la cotxera de {TOWN}.
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Manteniment a la cotxera de {TOWN}.
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reformar vehicle de carretera per a dur un tipus diferent de càrrega
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reformar vehicle de carretera
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reformar vehicle de carretera per a dur el tipus de carrega senyalat
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}No es pot reformar el vehicle de carretera...
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construcció de Port
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Construcció de Port
@@ -2818,6 +2825,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sustituint: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} CARACTERÍSTICA EXPERIMENTAL {}Alternar entre finestres de sustitució de vagons i de motors{}La sustitució del vagó només tindrà lloc si el nou vagó pot ser reformat per a admetre el mateix tipus de càrrega que el vell. Açò es comprova per a cada vagó quan el reemplaçament es produeix.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor no es pot construir
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}L'aeroport no te pista
 
 STR_ENGINES                                                     :Motors
 STR_WAGONS                                                      :Vagons
@@ -2848,3 +2856,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pes: {GO
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Velocitat: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitat: {GOLD}{COMMA} passatgers, {COMMA} saques de correu
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagons Automotrius: {GOLD}+{POWER}{BLACK} Pes: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Petit
+STR_CITY_AIRPORT                                                :{BLACK}Ciutat
+STR_METRO_AIRPORT                                               :{BLACK}Aeroport metropolità
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroport internacional
+STR_COMMUTER_AIRPORT                                            :{BLACK}Viatjer
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
+STR_HELIPORT                                                    :{BLACK}Heliport
+STR_HELIDEPOT                                                   :{BLACK}Helidipòsit
+STR_HELISTATION                                                 :{BLACK}Helistació
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Aeroports petits
+STR_LARGE_AIRPORTS                                              :{BLACK}Aeroports grans
+STR_HUB_AIRPORTS                                                :{BLACK}Hub airports
+STR_HELIPORTS                                                   :{BLACK}Aeroports d'helicòpters
+########

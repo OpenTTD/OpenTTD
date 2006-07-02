@@ -1093,6 +1093,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Schimbã valoarea setãrii
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Unele sau toate din intervalurile de service alese sunt incompatibile cu setarea aleasa! Valorile valide sunt cuprinse intre 5-90% si 30-800 zile
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Foloseste YAPF pentru nave: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Foloseste YAPF pentru autoveh: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Foloseste YAPF pentru trenuri: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :peisajul temperat
 STR_SUB_ARCTIC_LANDSCAPE                                        :peisajul sub-arctic
@@ -1413,6 +1416,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Serverul
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
 
+STR_NETWORK_CLIENTLIST_NONE                                     :(none)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Doneaza bani
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Vorbeste catre toti
@@ -1495,6 +1499,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Cale feratã cu 
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Mai întâi trebuie demolatã soseaua
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Lucrari la drum in curs de desfasurare
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Constructii rutiere
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Alege pod rutier
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Nu pot construi sosea aici...
@@ -2581,6 +2586,11 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nu pot r
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Mergi la Autobaza {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service la Autobaza {TOWN}
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Adapteaza autovehiculul pentru o incarcatura diferita
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Adaptare autovehicul
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Adapteaza autovehiculul pentru transportul incarcaturii evidentiate
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nu pot adapta autovehiculul...
+
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Constructii navale
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Constructie port
@@ -2818,6 +2828,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fã optiu
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Înlocuire: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ELEMENT EXPERIMENTAL {}Comutã între ferestrele de ]nlocuire motoare si vagoane.{}Înlocuirea de vagoane va fi efectuatã numai dacã noul vagon poate transporta acelasi tip de încãrcãturã ca cel vechi. Aceast lucru este verificat pentru fiecare vagon atunci când este fãcutã înlocuirea efectivã.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motorul nu poate fi construit
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Aeroportul nu are pista
 
 STR_ENGINES                                                     :Motoare
 STR_WAGONS                                                      :Vagoane
@@ -2848,3 +2859,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Viteza: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{COMMA} calatori, {COMMA} saci de posta
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Mic
+STR_CITY_AIRPORT                                                :{BLACK}Oras
+STR_METRO_AIRPORT                                               :{BLACK}Aeroporturi metropolitane
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroport international
+STR_COMMUTER_AIRPORT                                            :{BLACK}Comutator
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
+STR_HELIPORT                                                    :{BLACK}Helidrom
+STR_HELIDEPOT                                                   :{BLACK}Hangar elicoptere
+STR_HELISTATION                                                 :{BLACK}Baza elicoptere
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Aeroporturi mici
+STR_LARGE_AIRPORTS                                              :{BLACK}Aeroporturi mari
+STR_HUB_AIRPORTS                                                :{BLACK}Aeroporturi centrale
+STR_HELIPORTS                                                   :{BLACK}Aeroporturi elicoptere
+########

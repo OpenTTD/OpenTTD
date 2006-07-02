@@ -6,7 +6,7 @@
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Utanför kanten
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}För nära kanten
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}För nära kanten av kartan
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Inte tillräckligt med pengar - krävs {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
@@ -44,7 +44,7 @@ STR_0024_SUGAR                                                  :Socker
 STR_0025_TOYS                                                   :Leksaker
 STR_0026_CANDY                                                  :Godis
 STR_0027_COLA                                                   :Kola
-STR_0028_COTTON_CANDY                                           :Spunnet socker
+STR_0028_COTTON_CANDY                                           :Sockervadd
 STR_0029_BUBBLES                                                :Bubblor
 STR_002A_TOFFEE                                                 :Knäck
 STR_002B_BATTERIES                                              :Batterier
@@ -76,7 +76,7 @@ STR_0044_SUGAR                                                  :Socker
 STR_0045_TOY                                                    :Leksaker
 STR_0046_CANDY                                                  :Godis
 STR_0047_COLA                                                   :Kola
-STR_0048_COTTON_CANDY                                           :Spunnet socker
+STR_0048_COTTON_CANDY                                           :Sockervadd
 STR_0049_BUBBLE                                                 :Bubblor
 STR_004A_TOFFEE                                                 :Knäck
 STR_004B_BATTERY                                                :Batterier
@@ -236,7 +236,7 @@ STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFON
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vattentillgång
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vattentorn
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Sågverk
-STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Spunnet socker-skog
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Sockervadd-skog
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Godisfabrik
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Batteribondgård
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Kolakälla
@@ -305,23 +305,23 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}Spelinst
 
 STR_0150_SOMEONE                                                :någon{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Världskarta
-STR_0152_TOWN_DIRECTORY                                         :Lista av städer
+STR_0152_TOWN_DIRECTORY                                         :Lista med städer
 STR_0153_SUBSIDIES                                              :Subventioner
 
-STR_UNITS_IMPERIAL                                              :Brittisk standard
-STR_UNITS_METRIC                                                :Metersystemet
+STR_UNITS_IMPERIAL                                              :Engelsk
+STR_UNITS_METRIC                                                :Metrisk
 STR_UNITS_SI                                                    :SI
 
-STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} miles/tim
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/tim
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/sek
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
 STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hk
 STR_UNITS_POWER_METRIC                                          :{COMMA}hk
 STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}T
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonn{P "" s}
@@ -338,7 +338,7 @@ STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ tryck (lbf)
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tryck (ton)
-STR_UNITS_FORCE_SI                                              :{COMMA} tryck (newton)
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf över gångbar inkomst
@@ -414,10 +414,10 @@ STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Visa fin
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Visa allmän företagsinformation
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Visa grafer
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Visa ledande företag
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Visa lista av företags tåg
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Visa lista av företags vägfordon
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Visa lista av företags skepp
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Visa lista av företags flygplan
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Visa lista av företagets tåg
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Visa lista av företagagets vägfordon
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Visa lista av företagets skepp
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Visa lista av företagets flygplan
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Zooma in
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Zooma ut
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Bygg järnväg
@@ -464,7 +464,7 @@ STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING}
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Markinformation
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnad att röja: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnad att röja: {LTBLUE}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
+STR_01A6_N_A                                                    :Otillgänglig
 STR_01A7_OWNER                                                  :{BLACK}Ägare: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Kommun: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ingen
@@ -600,7 +600,7 @@ STR_0226_RANDOM_LAND                                            :{BLACK}Slumpmäs
 STR_0227_RESET_LAND                                             :{BLACK}Återställ mark
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Öka storlek av yta att höja/sänka
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Minska storlek av yta att höja/sänka
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Gör slumpmässig mark
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generera slumpmässig mark
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Återställ landskapet
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Återställ landskapet
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Vill du verkligen återställa landskapet?
@@ -646,7 +646,7 @@ STR_0253_WATER_SUPPLY                                           :{BLACK}Vattenti
 STR_0254_WATER_TOWER                                            :{BLACK}Vattentorn
 STR_0255_DIAMOND_MINE                                           :{BLACK}Diamantgruva
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Koppargruva
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Spunnet socker-skog
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Sockervadd-skog
 STR_0258_CANDY_FACTORY                                          :{BLACK}Godisfabrik
 STR_0259_BATTERY_FARM                                           :{BLACK}Batteribondgård
 STR_025A_COLA_WELLS                                             :{BLACK}Kolakälla
@@ -681,7 +681,7 @@ STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Bygg vat
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bygg vattentorn (Kan bara byggas i städer)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Bygg diamantgruva
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bygg koppargruva
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plantera Spunnet socker-skog
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plantera Sockervadd-skog
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Bygg godisfabrik
 STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Bygg batteribondgård
 STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Bygg kolakälla
@@ -733,7 +733,7 @@ STR_OFF                                                         :Av
 STR_SUMMARY                                                     :Summering
 STR_FULL                                                        :Full
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
-STR_02BB_TOWN_DIRECTORY                                         :Lista av städer
+STR_02BB_TOWN_DIRECTORY                                         :Lista med städer
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Fordonens modellnamn
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Original
@@ -787,7 +787,7 @@ STR_02DD_SUBSIDIES                                              :Subventioner
 STR_02DE_MAP_OF_WORLD                                           :Världskarta
 STR_EXTRA_VIEW_PORT                                             :Nytt vy fönster
 STR_SIGN_LIST                                                   :Skyltlista
-STR_02DF_TOWN_DIRECTORY                                         :Lista av städer
+STR_02DF_TOWN_DIRECTORY                                         :Lista med städer
 STR_TOWN_POPULATION                                             :{BLACK}Världsbefolkning: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vy fönster {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Kopiera till vy
@@ -808,18 +808,18 @@ STR_02E9_DRIVE_ON_LEFT                                          :Kör på vänster 
 STR_02EA_DRIVE_ON_RIGHT                                         :Kör på höger sida
 STR_02EB_TOWN_NAMES                                             :{BLACK}Stadsnamn
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Välj typ på stadsnamn
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Välj typ av stadsnamn
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Autosparning
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Välj intervall mellan autosparning
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Välj intervall mellan automatiskt sparande
 STR_02F7_OFF                                                    :Avstängd
 STR_02F8_EVERY_3_MONTHS                                         :Var 3:e månad
 STR_02F9_EVERY_6_MONTHS                                         :Var 6:e månad
 STR_02FA_EVERY_12_MONTHS                                        :Var 12:e månad
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Börja ett nytt spel
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Ladda sparat spel
-STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Skapa egen ny spel värld/scenario
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Skapa ett eget nytt spel värld/scenario
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Välj en spelare
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Välj nätverksspel med 2-8 spelare
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Visa spelinställningar
@@ -844,11 +844,11 @@ STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Bekosta 
 STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan bara byggas i städer
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...kan bara byggas i regnskog
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kan bara byggas på öken
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...kan bara byggas i öken
 STR_0319_PAUSED                                                 :{YELLOW}* *  PAUSAD  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Skärmdump sparades som '{STRING}'
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Kunde inte spara skärmdump!
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Skärmdump misslyckades!
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Köp mark för framtida användning
 STR_032F_AUTOSAVE                                               :{RED}AUTOSPARNING
@@ -1093,6 +1093,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ändra inställningsvärde
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Några eller alla av standard serviceintervalls-inställningarna är felaktiga! (5-90% och 30-800 dagar är giltiga inställningar)
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Använd YAPF för skepp: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Använd YAPF för fordon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Använd YAPF för tåg: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :tempererat landskap
 STR_SUB_ARCTIC_LANDSCAPE                                        :sub-arktiskt landskap
@@ -1111,6 +1114,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplan
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Byt klimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Byt datum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktivera modifierande produceringsvärden: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Tillåt elektriska lok att använda vanlig räls
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}På väg mot {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}På väg mot {WAYPOINT}, {VELOCITY}
@@ -1495,6 +1499,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Järnväg med nor
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Måste ta bort väg först
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vägarbete pågår
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Bygg väg
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Välj vägbro
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan inte bygga väg här...
@@ -1516,7 +1521,7 @@ STR_1814_ROAD                                                   :Väg
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Väg med gatubelysning
 STR_1816_TREE_LINED_ROAD                                        :Väg med träd
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Bussgarage
-STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Järnvägskorsning
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Väg-/Järnvägskorsning
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Städer
@@ -2573,13 +2578,18 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Vägfordonskrash!{}förare dör i eldklot efter kollision med tåg
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Vägfordonskrash!{}{COMMA} dör i eldklot efter kollision med tåg
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan inte tvinga fordonet att vända om...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan inte vända på fordon som består av flera enheter.
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan inte vända fordon bestående av flera delar
 STR_9034_RENAME                                                 :{BLACK}Byt namn på
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Byt namn på vägfordon typ
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Byt namn på vägfordon typ
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan inte byta namn på vägfordon typ...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gå till {TOWN} vägfordonsdepå
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servning vid {TOWN} vägfordonsdepå Depot
+
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Anpassa fordon att frakta annat gods
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Anpassa fordon
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Anpassa fordon att frakta markerat gods
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan inte anpassa fordon
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Hamnbyggnation
@@ -2641,6 +2651,7 @@ STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Byt namn
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Byt namn på skeppstyp
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Kan inte byta namn på skeppstyp...
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Anpassa godsskepp att frakta en annan godstyp
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
 STR_983C_REFIT_SHIP                                             :{BLACK}Anpassa skepp
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj typ av gods för skepp att frakta
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Anpassa skepp att frakta markerad godstyp
@@ -2713,6 +2724,7 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Byt namn
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Byt namn på flygplanstyp
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Kan inte byta namn på flygplanstyp...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta en annan godstyp
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Anpassa flygplan
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj godstyp för flygplan att frakta
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta markerad godstyp
@@ -2813,11 +2825,12 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Visa vil
 STR_REPLACE_HELP                                                :{BLACK}Detta gör det möjligt att byta ut en fordonstyp med en annan typ, när tågen av den ursprungliga typen anländer till en depå
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagnborttagning: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Gör så att automatiskt utbytning behåller ett tågs längd genom att ta bort vagnar (med början längst fram) om utbytandet av loket skulle göra tåget längre.
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Byter ut: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersätter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTIELL FEATURE {}Välj mellan motor och vagn ersättnings-fönster.{}Vagns-ersättning kommer endast ske om den nya vagnen kan bli omrustad till att bära samma typ av last som den gamla. Detta kollas för varje vagn när den faktiska ersättningen sker
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Loket går inte att bygga
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Flygplatsen har inga landningsbanor
 
-STR_ENGINES                                                     :Lok
+STR_ENGINES                                                     :
 STR_WAGONS                                                      :Vagnar
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
@@ -2846,3 +2859,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vikt: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{COMMA} passagerare, {COMMA} säckar post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserade vagnar: {GOLD}+{POWER}{BLACK} Vikt: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Liten
+STR_CITY_AIRPORT                                                :{BLACK}Stad
+STR_METRO_AIRPORT                                               :{BLACK}Metropolflygplats
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internationell flygplats
+STR_COMMUTER_AIRPORT                                            :{BLACK}Pendlare
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinental
+STR_HELIPORT                                                    :{BLACK}Helikopterplatta
+STR_HELIDEPOT                                                   :{BLACK}Helikopterhangar
+STR_HELISTATION                                                 :{BLACK}Helikopterplatta
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Små flygfält
+STR_LARGE_AIRPORTS                                              :{BLACK}Stora flygplatser
+STR_HUB_AIRPORTS                                                :{BLACK}Flygterminaler
+STR_HELIPORTS                                                   :{BLACK}Helikopterfält
+########

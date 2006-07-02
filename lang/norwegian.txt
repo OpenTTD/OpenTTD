@@ -380,8 +380,11 @@ STR_SORT_BY_MAX_SPEED                                           :Maksimal fart
 STR_SORT_BY_MODEL                                               :Modell
 STR_SORT_BY_VALUE                                               :Verdi
 STR_SORT_BY_FACILITY                                            :Stasjon type
+STR_SORT_BY_WAITING                                             :Verdi av ventende last
+STR_SORT_BY_RATING_MAX                                          :Vurdering av last
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen last venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg alle anlegg
+STR_SELECT_ALL_TYPES                                            :{BLACK}Velg alle lasttyper (inkludert last som ikke venter)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1175,6 +1178,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Dra loko
 
 STR_DRAG_DROP                                                   :{BLACK}Dra og slipp
 STR_STATION_DRAG_DROP                                           :{BLACK}Bygg stasjon med dra og slipp
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Velg en stasjontype å se
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Velg stasjonen du vil bygge
 
 STR_FAST_FORWARD                                                :{BLACK}Hurtig tid
@@ -1719,6 +1723,9 @@ STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stasj
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ikke-ensartede stasjoner deaktivert
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Hold nede CTRL for å velge mer en en ting
 
+STR_UNDEFINED                                                   :(undefined string)
+STR_STAT_CLASS_DFLT                                             :Standard stasjon
+STR_STAT_CLASS_WAYP                                             :Lokalstasjoner
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Skipdepot retning
@@ -2579,7 +2586,9 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Kjør til {TOWN} garasje
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service ved {TOWN} garasje
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Bygg om bil for å kunne frakte en annen last
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Bygg om bil
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Bygg om bil for å kunne frakte den valgte lasten
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke bygge om bil...
 
 ##id 0x9800
@@ -2815,7 +2824,9 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Velg jer
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Dette viser hvilket lokomotiv som overtar for det valgte lokomotivet på venstresiden
 STR_REPLACE_HELP                                                :{BLACK}Dette verktøyet lar deg bytte ut en type lokomotiv med en annen. Dette blir gjort neste gang lokomotivet er innom et depot.
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vognfjerning: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}La den automatiske utskiftningen beholde lengen på toget ved å fjerne vogner (fra første vogn), hvis utskiftningen gjør toget lenger.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Erstatter: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} Eksperimentell del {}Skift mellom tog- og vognvinduet.{}Vognutskiftningen vil bare bli utført hvis den nye vognen kan ha samme last som den gamle. Dette blir sjekket når utskiftingen finner sted.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motoren kan ikke bygges
 STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Flyplassen har ingen rullebane
 
