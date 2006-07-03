@@ -478,8 +478,8 @@ int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 vehicle ID to send to the hangar
  * @param p2 various bitmasked elements
  * - p2 = 0      - aircraft goes to the depot and stays there (user command)
- * - p2 non-zero - aircraft will try to goto a depot, but not stop there (eg forced servicing)
- * - p2 (bit 17) - aircraft will try to goto a depot at the next airport
+ * - p2 (bit 16) - aircraft will try to goto a depot, but not stop there (eg autorenew or autoreplace)
+ * - p2 (bit 17) - aircraft will try to goto a depot at the airport specified by low word of p2 XXX - Not Used
  */
 int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -500,11 +500,11 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		}
 	} else {
 		bool next_airport_has_hangar = true;
+		/* If bit 17 is set, next airport is specified by low word of p2, otherwise it's the target airport */
 		/* XXX - I don't think p2 is any valid station cause all calls use either 0, 1, or 1<<16!!!!!!!!! */
 		StationID next_airport_index = (HASBIT(p2, 17)) ? (StationID)p2 : v->u.air.targetairport;
 		const Station *st = GetStation(next_airport_index);
-		// If an airport doesn't have terminals (so no landing space for airports),
-		// it surely doesn't have any hangars
+		/* If the station is not a valid airport or if it has no hangars */
 		if (!IsValidStation(st) || st->airport_tile == 0 || GetAirport(st->airport_type)->nof_depots == 0) {
 			StationID station;
 
@@ -1565,12 +1565,14 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 	AircraftNextAirportPos_and_Order(v);
 
 	// check if the aircraft needs to be replaced or renewed and send it to a hangar if needed
+	// unless it is due for renewal but the engine is no longer available
 	if (v->owner == _local_player && (
 				EngineHasReplacementForPlayer(p, v->engine_type) ||
-				(p->engine_renew && v->age - v->max_age > p->engine_renew_months * 30)
+				((p->engine_renew && v->age - v->max_age > p->engine_renew_months * 30) &&
+				HASBIT(GetEngine(v->engine_type)->player_avail, _local_player))
 			)) {
 		_current_player = _local_player;
-		DoCommandP(v->tile, v->index, 1, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
+		DoCommandP(v->tile, v->index, 1 << 16, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
 		_current_player = OWNER_NONE;
 	}
 }
