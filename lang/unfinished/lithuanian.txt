@@ -307,11 +307,17 @@ STR_0151_MAP_OF_WORLD                                           :Zemelapis
 STR_0152_TOWN_DIRECTORY                                         :Miestu sarasas
 STR_0153_SUBSIDIES                                              :Subsidijos
 
+STR_UNITS_IMPERIAL                                              :Imperines
+STR_UNITS_METRIC                                                :Metrine
+STR_UNITS_SI                                                    :SI
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mph
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
 STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}AG
+STR_UNITS_POWER_METRIC                                          :{COMMA}AG
+STR_UNITS_POWER_SI                                              :{COMMA}kW
 
 
 
@@ -321,6 +327,7 @@ STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m?
 
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m?
 
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Dirbancio pelno grafikas
@@ -2805,3 +2812,7 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Kaina: {
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svoris: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Greitis: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Talpa: {GOLD}{COMMA} keleiviu, {COMMA} pasto maisu
+
+########### String for new airports
+
+########

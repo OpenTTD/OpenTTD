@@ -1,4 +1,4 @@
-##name bulgarian
+##name Bulgarian
 ##ownname Български
 ##isocode bg_BG.UTF-8
 ##plural 0
@@ -215,6 +215,7 @@ STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}Нова игра
 STR_0141_LOAD_GAME                                              :{BLACK}Зареждане на игра
 
+STR_64                                                          :64
 STR_0148_GAME_OPTIONS                                           :{BLACK}Настройки
 
 STR_0150_SOMEONE                                                :някой{SKIP}{SKIP}
@@ -222,12 +223,31 @@ STR_0151_MAP_OF_WORLD                                           :Карта на
 STR_0152_TOWN_DIRECTORY                                         :Спидък с градове
 STR_0153_SUBSIDIES                                              :Субсидии
 
+STR_UNITS_IMPERIAL                                              :Английска
+STR_UNITS_METRIC                                                :Метрическа
+STR_UNITS_SI                                                    :СИ
 
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} мили/ч
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/ч
 
+STR_UNITS_POWER_METRIC                                          :{COMMA}кс
+STR_UNITS_POWER_SI                                              :{COMMA}кв
 
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}т.
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}т.
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}кг.
 
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} тон{P "" ове}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} тон{P "" ове}
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} кг
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}галон
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}л.
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}куб. м.
 
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} галон{P "" а}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} литър{P "" и}
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} куб. м.
 
 
 ############ range for menu	starts
@@ -507,7 +527,7 @@ STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Стро
 STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Строене златна мина
 STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Строене банка (само в градове)
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Строене дъскорезница (за изсичане на гората и произвеждане на дърва)
-STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Засаждане офощна градина
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Засаждане овощна градина
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Засаждане каучукова градина
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Строяване водоизточник
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Строене водна кула(само в градове)
@@ -533,9 +553,41 @@ STR_028A_RANDOM_TREES                                           :{BLACK}Прои
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Засаждане дървета на произволни места
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Поставяне скалисти области
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставяне фар
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Постави предавател
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Избери пустинен терен.{}Задръж CTRL за да го премахнеш.
+STR_0290_DELETE                                                 :{BLACK}Изтрий
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни този град
+STR_0292_SAVE_SCENARIO                                          :
+STR_0294_QUIT_EDITOR                                            :Изход от редактора
+STR_0296_QUIT                                                   :Изход
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да бъде построен само в градове с население повече от 1200
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Премести назад началната дата с 1 година
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Премести напред началната дата с 1 година
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...краищата на моста трябва да бъдат на земя
+STR_02A1_SMALL                                                  :{BLACK}Малък
+STR_02A2_MEDIUM                                                 :{BLACK}Среден
+STR_02A3_LARGE                                                  :{BLACK}Голям
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Избери големина на града
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Големина на града:
 
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Покажи последното съобщение или отчет на новините
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :Списък от градовете
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Имена на превозни средства
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :По подразбиране
+STR_02BF_CUSTOM                                                 :Изборен
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Запис на новоизбраните имена
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Избор на имена на превозни средства
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Запис на имена на превозни средства
 
 ############ range for menu	starts
+STR_02C3_GAME_OPTIONS                                           :Игрови опции
+STR_02C4_GAME_OPTIONS                                           :Игрови опции
+STR_02C5_DIFFICULTY_SETTINGS                                    :Опции за трудност
+STR_02C6_DIFFICULTY_SETTINGS                                    :Опции за трудност
+STR_02C7_CONFIG_PATCHES                                         :Конфигурирай патчове
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Невидими гарови знаци
 ############ range ends	here
 
 ############ range for menu	starts
@@ -552,6 +604,23 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 
 
 ############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Английски
+STR_TOWNNAME_FRENCH                                             :Френски
+STR_TOWNNAME_GERMAN                                             :Германски
+STR_TOWNNAME_LATIN_AMERICAN                                     :Латиноамерикански
+STR_TOWNNAME_SWEDISH                                            :Шведски
+STR_TOWNNAME_DUTCH                                              :Холандски
+STR_TOWNNAME_FINNISH                                            :Финландски
+STR_TOWNNAME_POLISH                                             :Полски
+STR_TOWNNAME_SLOVAKISH                                          :Словашки
+STR_TOWNNAME_NORWEGIAN                                          :Норвежки
+STR_TOWNNAME_HUNGARIAN                                          :Унгарски
+STR_TOWNNAME_AUSTRIAN                                           :Австрийски
+STR_TOWNNAME_ROMANIAN                                           :Румънски
+STR_TOWNNAME_CZECH                                              :Чешки
+STR_TOWNNAME_SWISS                                              :Швейцарски
+STR_TOWNNAME_DANISH                                             :Датски
+STR_TOWNNAME_TURKISH                                            :Турски
 ############ end of	townname region
 
 
@@ -597,6 +666,8 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 
 
 
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Дървета от произволен тип
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Постави дървета от произволен тип
 
 
 
@@ -610,6 +681,9 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 
 
 
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Добре дошли в новия АИ, който е още в процес на разработване. Ако срещнете проблеми, направете screenshot и го пуснете във форума.
+TEMP_AI_ACTIVATED                                               :{WHITE}Внимание: този нов АИ е все още alpha! Засега, само камионите и автобусите работят!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Внимание: имплементацията е все още експериментална (използва се новия АИ). Моля съобщете за всякаквипроблеми на truelight@openttd.org.
 
 ############ network gui strings
 
@@ -659,6 +733,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 ##id 0x1800
 
 ##id 0x2000
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Подкупи местните власти
 
 
 ##id 0x2800
@@ -669,6 +744,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 ############ range for rating starts
 ############ range for rating ends
 
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Задържете CTRL за да изберете повече от един обект
 
 
 ##id 0x3800
@@ -684,16 +760,24 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 ##id 0x5000
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Обект на пътя
+STR_5801_TRANSMITTER                                            :Предавател
+STR_5802_LIGHTHOUSE                                             :Фар
+STR_5803_COMPANY_HEADQUARTERS                                   :
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Земята не може да бъде закупена...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE} ... вие вече го притежавате!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
 ############ These strings may never get a new id, or savegames	will break!
 ##id 0x6000
+STR_SV_UNNAMED                                                  :Неименован
 
 
 ############ end of	savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Ниво на трудност
 
 ############ range for difficulty levels starts
 ############ range for difficulty levels ends
@@ -701,6 +785,7 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
 
+STR_VERY_LOW                                                    :Много нисък
 
 ##id 0x7000
 
@@ -710,6 +795,8 @@ STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Пост
 
 
 
+STR_UNKNOWN_DESTINATION                                         :неизвестна дестинация
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Тегло: {LTBLUE}{WEIGHT_S}  {BLACK}Мощност: {LTBLUE}{POWER}{BLACK} Максимална скорост: {LTBLUE}{VELOCITY}
 
 
 
@@ -738,6 +825,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
+STR_WAGONS                                                      :Вагони
 
 
 ############ Lists rail types
