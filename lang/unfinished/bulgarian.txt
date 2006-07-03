@@ -587,21 +587,80 @@ STR_02C4_GAME_OPTIONS                                           :Игрови о
 STR_02C5_DIFFICULTY_SETTINGS                                    :Опции за трудност
 STR_02C6_DIFFICULTY_SETTINGS                                    :Опции за трудност
 STR_02C7_CONFIG_PATCHES                                         :Конфигурирай патчове
+STR_02D2_FULL_DETAIL                                            :{SETX 12}Пълни подробности
+STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Прозрачни сгради
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Прозрачни сгради
 STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Невидими гарови знаци
 ############ range ends	here
 
 ############ range for menu	starts
+STR_02D5_LAND_BLOCK_INFO                                        :Информация за терена
+STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Огромен Screenshot (Ctrl-G)
+STR_02D9_ABOUT_OPENTTD                                          :За 'OpenTTD'
 ############ range ends	here
 
+STR_02DB_OFF                                                    :{BLACK}Изключен
+STR_02DA_ON                                                     :{BLACK}Включен
+STR_02DE_MAP_OF_WORLD                                           :Карта на света
+STR_02DF_TOWN_DIRECTORY                                         :Директория на градовете
 
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Валутни единици
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Избор на валутни единици
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Пътни превозни средства
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Избери страна на пътя за превозните средства
+STR_02E9_DRIVE_ON_LEFT                                          :Шофиране отляво
+STR_02EA_DRIVE_ON_RIGHT                                         :Шофиране отдясно
+STR_02EB_TOWN_NAMES                                             :{BLACK}Имена на градове
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Избери стил за имената на градовете
 
+STR_02F4_AUTOSAVE                                               :{BLACK}Автоматичен запис
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Избери интервал между автоматичните записи на играта
+STR_02F7_OFF                                                    :Изключен
+STR_02F8_EVERY_3_MONTHS                                         :Всеки 3 месеца
+STR_02F9_EVERY_6_MONTHS                                         :Всеки 6 месеца
+STR_02FA_EVERY_12_MONTHS                                        :Всеки 12 месеца
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Започване на нова игра
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Възстановяване на записана игра
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Създаване на къстомизиран игрови свят/сценарий
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Избери игра за един играч
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Избери игра за 2-8 играчи
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Покажи игрови опции
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Покажи опции за трудност
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Започни нова игра - къстомизиран сценарий
+STR_0304_QUIT                                                   :{BLACK}Изход
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Изход от 'OpenTTD'
+STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да бъде построен само в градове
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Избери умерен климат
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Избери субарктичен климат
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Избери субтропочен климат
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Избери toyland климат
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Финансирай изграждането на нова индустрия
 
 ############ range for menu	starts
+STR_0313_FUND_NEW_INDUSTRY                                      :Финансирай нова индустрия
 ############ range ends here
 
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Финансирай нова индустрия
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да бъде построен само в градове
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...може да бъде построен само в тропически гори
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...може да бъде построен само в пустини
+STR_0319_PAUSED                                                 :{YELLOW}* *  ПАУЗА *  *
 
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot успешно записан като '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot неуспешно записан!
 
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Закупи земя за бъдещо ползване
+STR_032F_AUTOSAVE                                               :{RED}АВТОМАТИЧЕН ЗАПИС
 
+STR_0335_6                                                      :{BLACK}6
+STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Английски
@@ -725,8 +784,53 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Вним
 
 
 ##id 0x0800
+STR_0800_COST                                                   :{TINYFONT}{RED}Цена: {CURRENCY}
+STR_0801_COST                                                   :{RED}Цена: {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Приход: {CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}Приход: {CURRENCY}
+STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Приблизителна цена: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}Приблизителна цена: {CURRENCY}
+STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Приблизителен приход: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Приблизителен приход: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Тук не е позволено издигането на земя...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Тук не е позволено понижаването на земя...
+STR_080A_ROCKS                                                  :Скали
+STR_080B_ROUGH_LAND                                             :Неравна местност
+STR_080C_BARE_LAND                                              :Гола земя
+STR_080D_GRASS                                                  :Трева
+STR_080E_FIELDS                                                 :Полета
+STR_080F_SNOW_COVERED_LAND                                      :Заснежена земя
+STR_0810_DESERT                                                 :Пустиня
 
 ##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Земята е наклонена в неправилната посока
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Невъзможна комбинация от пътища
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Копаенето ще разруши тунела
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Вече се намирате на морското ниво
+STR_1004_TOO_HIGH                                               :{WHITE}Твърде високо
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Няма подходяща железопътна линия
+STR_1007_ALREADY_BUILT                                          :{WHITE}...вече построен
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Първо трябва да бъде премахната железопътната линия
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Изграждане на железопътна линия
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Изграждане на еднорелсова линия
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Избор на железопътен мост
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Тук не може да бъде построено влаково депо...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Тук не може да бъде построена жп гара...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Тук не може да бъдат поставяни семафори...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Тук не може да се строи жп линия...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Оттук не може да бъде премахвана жп линията...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Оттук не може да се премахват семафори...
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Ориентация на влаковото депо
+STR_1015_RAILROAD_CONSTRUCTION                                  :Изграждане на жп линия
+STR_1016_MONORAIL_CONSTRUCTION                                  :Изграждане на еднорелсова жп линия
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Строене на жп линия
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Строене на влаково депо (за изграждане и ремонт на влакове)
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Строене на жп гара
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Строене на семафори
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Строене на жп мост
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Сттроене на жп тунел
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Строене/премахване на жп линия и жп сигнали
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Избор на мост - натисни на моста за построяване
 
 
 
