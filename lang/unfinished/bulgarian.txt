@@ -216,6 +216,8 @@ STR_0140_NEW_GAME                                               :{BLACK}Нова
 STR_0141_LOAD_GAME                                              :{BLACK}Зареждане на игра
 
 STR_64                                                          :64
+STR_256                                                         :256
+STR_2048                                                        :2048
 STR_0148_GAME_OPTIONS                                           :{BLACK}Настройки
 
 STR_0150_SOMEONE                                                :някой{SKIP}{SKIP}
@@ -602,62 +604,65 @@ STR_02D9_ABOUT_OPENTTD                                          :За 'OpenTTD'
 
 STR_02DB_OFF                                                    :{BLACK}Изключен
 STR_02DA_ON                                                     :{BLACK}Включен
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Покажи субсидиите
+STR_02DD_SUBSIDIES                                              :Субсидии
 STR_02DE_MAP_OF_WORLD                                           :Карта на света
-STR_02DF_TOWN_DIRECTORY                                         :Директория на градовете
+STR_02DF_TOWN_DIRECTORY                                         :Списък на градовете
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Валутни единици
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Валути
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Избор на валутни единици
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Избор на валута
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Пътни превозни средства
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Избери страна на пътя за превозните средства
-STR_02E9_DRIVE_ON_LEFT                                          :Шофиране отляво
-STR_02EA_DRIVE_ON_RIGHT                                         :Шофиране отдясно
-STR_02EB_TOWN_NAMES                                             :{BLACK}Имена на градове
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Избери посока на движение по пътищата
+STR_02E9_DRIVE_ON_LEFT                                          :Ляво движение
+STR_02EA_DRIVE_ON_RIGHT                                         :Дясно движение
+STR_02EB_TOWN_NAMES                                             :{BLACK}Имена на градовете
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Избери стил за имената на градовете
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Избери стила на имената на градовете
 
-STR_02F4_AUTOSAVE                                               :{BLACK}Автоматичен запис
+STR_02F4_AUTOSAVE                                               :{BLACK}Автозапазване
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Избери интервал между автоматичните записи на играта
-STR_02F7_OFF                                                    :Изключен
-STR_02F8_EVERY_3_MONTHS                                         :Всеки 3 месеца
-STR_02F9_EVERY_6_MONTHS                                         :Всеки 6 месеца
-STR_02FA_EVERY_12_MONTHS                                        :Всеки 12 месеца
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}Започване на нова игра
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Възстановяване на записана игра
-STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Създаване на къстомизиран игрови свят/сценарий
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Избери игра за един играч
-STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Избери игра за 2-8 играчи
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Покажи игрови опции
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Покажи опции за трудност
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Започни нова игра - къстомизиран сценарий
-STR_0304_QUIT                                                   :{BLACK}Изход
-STR_0305_QUIT_OPENTTD                                           :{BLACK}Изход от 'OpenTTD'
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Избери интервала между две автозапазвания
+STR_02F7_OFF                                                    :Изключено
+STR_02F8_EVERY_3_MONTHS                                         :На всеки 3 месеца
+STR_02F9_EVERY_6_MONTHS                                         :На всеки 6 месеца
+STR_02FA_EVERY_12_MONTHS                                        :На всеки 12 месеца
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Започни нова игра
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Отвори запасена игра
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Създай свой собствен карта-свят
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Избери игра със себе си
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Избери игра в интернета с още 1-7 други играча
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Покажи параметрите на играта
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Покажи параметрите на трудност
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Започни нова игра, използвайки предварително моделиран карта-свят
+STR_0304_QUIT                                                   :{BLACK}Излез
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Излез от играта 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да бъде построен само в градове
-STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Избери умерен климат
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Избери субарктичен климат
-STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Избери субтропочен климат
-STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Избери toyland климат
-STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Финансирай изграждането на нова индустрия
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да се построи само в градовете
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Избери "умерен" климат на картата
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Избери "зимен" климат на картата
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Избери "пустинен" климат на картата
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Избери "играчков" тип на картата
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Инвестирай в нова индустрия
 
 ############ range for menu	starts
-STR_0313_FUND_NEW_INDUSTRY                                      :Финансирай нова индустрия
+STR_0313_FUND_NEW_INDUSTRY                                      :Инвестирай в нова индустрия
 ############ range ends here
 
-STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Финансирай нова индустрия
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да бъде построен само в градове
-STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...може да бъде построен само в тропически гори
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...може да бъде построен само в пустини
-STR_0319_PAUSED                                                 :{YELLOW}* *  ПАУЗА *  *
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Инвестирай в нова индустрия
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...може да бъде построено само в градовете
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...може да бъде построено само около и в джунглите
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...може да бъде построено само около и в пустините
+STR_0319_PAUSED                                                 :{YELLOW}* * ИГРАТА Е В ПАУЗА  *  *
 
-STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot успешно записан като '{STRING}'
-STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Screenshot неуспешно записан!
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Екраноснимката е успешно зъхранена с името '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Екраноснимката не се получи!
 
-STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Закупи земя за бъдещо ползване
-STR_032F_AUTOSAVE                                               :{RED}АВТОМАТИЧЕН ЗАПИС
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Купи земя за бъдещо ползване
+STR_032F_AUTOSAVE                                               :{RED}АВТОЗАПАЗВАНЕ
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Избери програмата 'Ezy Street style music'
 
 STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
@@ -792,57 +797,174 @@ STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHIT
 STR_0805_ESTIMATED_COST                                         :{WHITE}Приблизителна цена: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Приблизителен приход: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Приблизителен приход: {CURRENCY}
-STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Тук не е позволено издигането на земя...
-STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Тук не е позволено понижаването на земя...
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Не може да повдигаш земята тук...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Не може да понижиш земята тук...
 STR_080A_ROCKS                                                  :Скали
-STR_080B_ROUGH_LAND                                             :Неравна местност
-STR_080C_BARE_LAND                                              :Гола земя
+STR_080B_ROUGH_LAND                                             :Неравна земя
+STR_080C_BARE_LAND                                              :Пуста земя
 STR_080D_GRASS                                                  :Трева
-STR_080E_FIELDS                                                 :Полета
+STR_080E_FIELDS                                                 :Поля
 STR_080F_SNOW_COVERED_LAND                                      :Заснежена земя
 STR_0810_DESERT                                                 :Пустиня
 
 ##id 0x1000
-STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Земята е наклонена в неправилната посока
-STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Невъзможна комбинация от пътища
-STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Копаенето ще разруши тунела
-STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Вече се намирате на морското ниво
-STR_1004_TOO_HIGH                                               :{WHITE}Твърде високо
-STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Няма подходяща железопътна линия
-STR_1007_ALREADY_BUILT                                          :{WHITE}...вече построен
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Първо трябва да бъде премахната железопътната линия
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Изграждане на железопътна линия
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Изграждане на еднорелсова линия
-STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Избор на железопътен мост
-STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Тук не може да бъде построено влаково депо...
-STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Тук не може да бъде построена жп гара...
-STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Тук не може да бъдат поставяни семафори...
-STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Тук не може да се строи жп линия...
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Оттук не може да бъде премахвана жп линията...
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Оттук не може да се премахват семафори...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Ориентация на влаковото депо
-STR_1015_RAILROAD_CONSTRUCTION                                  :Изграждане на жп линия
-STR_1016_MONORAIL_CONSTRUCTION                                  :Изграждане на еднорелсова жп линия
-STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Строене на жп линия
-STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Строене на влаково депо (за изграждане и ремонт на влакове)
-STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Строене на жп гара
-STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Строене на семафори
-STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Строене на жп мост
-STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Сттроене на жп тунел
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Строене/премахване на жп линия и жп сигнали
-STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Избор на мост - натисни на моста за построяване
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Земята е наклонена в неправилна посока
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Невъзможна комбинация на пътя
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Изкопните работи ще повредят тунела
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Морското ниво е вече достигнато
+STR_1004_TOO_HIGH                                               :{WHITE}Прекалено високо
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Неподходящ за употреба релсов път
+STR_1007_ALREADY_BUILT                                          :{WHITE}...вече е построено
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Първо трябва да премахнеш релсовия път
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Конструкции за Двурелсов път
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Конструкции за Еднорелсов път
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Конструкции за Магниторелсов път
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Избери ЖП мост
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Не може да построиш влаково депо тук...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Не може да построиш ЖП гара тук...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Не може да сложиш сигнализация тук...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Не може да построиш ЖП релси тук...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Не може да премахнеш тези ЖП релси...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Не може да премахнеш тази сигнализация...
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Посока на входа на влаковото депо
+STR_1015_RAILROAD_CONSTRUCTION                                  :Конструиране на Двурелсов път
+STR_1016_MONORAIL_CONSTRUCTION                                  :Конструиране на Еднорелсов път
+STR_1017_MAGLEV_CONSTRUCTION                                    :Конструиране на Магниторелсов път
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Построй релсовия път
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Построй влаково депо (за купуване и обслужване на влакове)
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Построй ЖП гара
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Построй ЖП сигнализация
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Построй ЖП мост
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Построй ЖП тунел
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Активирай построяване/премахване на релсите и сигнализациатя
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Избиране на мост - натисни върху избрания от теб мост, за да се построи
 
 
 
 ##id 0x1800
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Пътя не може да се построи...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Пътя не може да се махне...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Ориентация на гараж
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Гаража не може да се построи...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Автогарата не може да се построи...
+STR_180A_ROAD_CONSTRUCTION                                      :Строене на път
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Построй път
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Построй гараж (за строене и сервиз на превозни средства)
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}Построй автогара
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Построй мост
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Построй тунел
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Ориентация на гараж
+STR_1814_ROAD                                                   :път
 
 ##id 0x2000
+STR_2000_TOWNS                                                  :{WHITE}Градове
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Сградата първо трябва да бъде разрушена
+STR_2005                                                        :{WHITE}{TOWN}
+STR_2006_POPULATION                                             :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Жилища: {ORANGE}{COMMA}
+STR_2007_RENAME_TOWN                                            :Преименуване на град
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Градът не може да бъде преименуван
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} местните власти отказват да позволят това
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Имена на градовете - натисни на името за да центрираш този град
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Центриране на главния изглед спрямо разположението на града
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Промяна на име на град
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Пътници през последния месец: {ORANGE}{COMMA}{BLACK}  максимум: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Поща през последния месец: {ORANGE}{COMMA}{BLACK}  максимум: {ORANGE}{COMMA}
+STR_200F_TALL_OFFICE_BLOCK                                      :Висока офис сграда
+STR_2010_OFFICE_BLOCK                                           :Офис сграда
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :Малък жилищен блок
+STR_2012_CHURCH                                                 :Църква
+STR_2013_LARGE_OFFICE_BLOCK                                     :Голяма офис сграда
+STR_2014_TOWN_HOUSES                                            :Градски къщи
+STR_2015_HOTEL                                                  :Хотел
+STR_2016_STATUE                                                 :Статуя
+STR_2017_FOUNTAIN                                               :Фонтан
+STR_2018_PARK                                                   :Парк
+STR_2019_OFFICE_BLOCK                                           :Офис сграда
+STR_201A_SHOPS_AND_OFFICES                                      :Магазини и офиси
+STR_201B_MODERN_OFFICE_BUILDING                                 :Модерна офис сграда
+STR_201C_WAREHOUSE                                              :Склад
+STR_201D_OFFICE_BLOCK                                           :Офис сграда
+STR_201E_STADIUM                                                :Стадион
+STR_201F_OLD_HOUSES                                             :Стари къщи
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Местни власти
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Показване на информация за местните власти
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} местни власти
+STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2025_SUBSIDIES                                              :{WHITE}Субсидии
+STR_2028_BY                                                     :{YELLOW} (от{DATE_SHORT})
+STR_202A_NONE                                                   :{ORANGE}Николко
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} местни власти отказват да позволят построяването на друго летище в града
+STR_2036_COTTAGES                                               :Селски къщи
+STR_2037_HOUSES                                                 :Къщи
+STR_2038_FLATS                                                  :Апартаменти
+STR_2039_TALL_OFFICE_BLOCK                                      :Висока офис сграда
+STR_203A_SHOPS_AND_OFFICES                                      :Магазини и офиси
+STR_203B_SHOPS_AND_OFFICES                                      :Магазини и офиси
+STR_203C_THEATER                                                :Театър
+STR_203D_STADIUM                                                :Стадион
+STR_203E_OFFICES                                                :Офиси
+STR_203F_HOUSES                                                 :Къщи
+STR_2040_CINEMA                                                 :Кино
+STR_2042_DO_IT                                                  :{BLACK}Направи го
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Списък от нещата за правене в този град - натисни за подробности
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Изпълнение на отбелязаната дейност в списъка по-горе
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Валидни дейности:
+STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Малка рекламна кампания
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Средна рекламна кампания
+STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Голяма рекламна кампания
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Финансиране преустройството на местните пътища
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Построяване на статуя на собственика на компанията
+STR_204B_FUND_NEW_BUILDINGS                                     :Финансиране построяването на нови сгради
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Покупка на специални транспортни права
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Подкупи местните власти
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Иницииране на малка местна рекламна кампания, за привличане на повече пътници и товар към вашите транспортни услуги.{}  Цена: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Иницииране на малка местна рекламна кампания, за привличане на повече пътници и товар към вашите транспортни услуги.{}  Цена: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Иницииране на малка местна рекламна кампания, за привличане на повече пътници и товар към вашите транспортни услуги.{}  Цена: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Финансиране преустройството на градската пътна мрежа. Ще породи значителен разрив на градския трафик за не повече от 6 месеца.{}  Цена: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Строеж на статуя в чест на вашата компания.{} Цена: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Финансиране изграждането на нови комерсиални сгради в града.{}  Цена: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Покупка на едногодишни специални транспортни права в града. Градските власти ще позволят единствено на пътниците и товара да използват гарите на вашата компания.{} Цена: {CURRENCY}
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK} Хаос на трафика в {TOWN}!{}{}Програма за пътна реконструкция финансирана от {COMPANY} носи 6 месеца мизерия за мотористите!
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (в процес на изграждане)
+STR_2059_IGLOO                                                  :Иглу
+STR_205A_TEPEES                                                 :Индиански колиби
+STR_205B_TEAPOT_HOUSE                                           :Фабрика за чай
+STR_205C_PIGGY_BANK                                             :Детска касичка
 
 
 ##id 0x2800
+STR_2800_PLANT_TREES                                            :Засаждане на дървета
+STR_2801_PLACE_SIGN                                             :Поставяне на знак
+STR_2802_TREES                                                  :{WHITE}Дървета
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...вече има дърво
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...неподходящо място
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Тук не може да бъде засадено дърво...
+STR_2806                                                        :{WHITE}{STRING}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...твърде много знаци
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Тук не може да бъде поставян знак...
+STR_280A_SIGN                                                   :Знак
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Промяна текста на знака
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Името на знака не може да бъде променяно...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Избор тип на дърво за засаждане
+STR_280E_TREES                                                  :Дървета
+STR_280F_RAINFOREST                                             :Дъждовни гори
+STR_2810_CACTUS_PLANTS                                          :Кактуси
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Избор на жп гара
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Избор на летище
+STR_3002_ORIENTATION                                            :{BLACK}Ориентация
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Брои на пътищата
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}Дължина на платформата
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Твърде близо до друга жп гара
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Граничи с повече от една гара/товарна платформа
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Твърде много гари/товарни платформи в града
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Твърде много гари/товарни платформи
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Твърде много автобусни спирки
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Твърде много гари за камиони
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Твърде близо до друга гара/товарна платформа
 
 
 ############ range for rating starts
@@ -889,11 +1011,80 @@ STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Ниво
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
 
+STR_26816_NONE                                                  :Николко
 STR_VERY_LOW                                                    :Много нисък
 
 ##id 0x7000
 
 ##id 0x8000
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Електрически)
+STR_801A_ASIASTAR_ELECTRIC                                      :'Източна Звезда' (Електрически)
+STR_801B_PASSENGER_CAR                                          :Пътнически вагон
+STR_801C_MAIL_VAN                                               :Пощенски вагон
+STR_801D_COAL_CAR                                               :Вагон за въглища
+STR_801E_OIL_TANKER                                             :Цистерна за нефт
+STR_801F_LIVESTOCK_VAN                                          :Вагон за добитък
+STR_8020_GOODS_VAN                                              :Вагон за стоки
+STR_8021_GRAIN_HOPPER                                           :Вагон за зърно
+STR_8022_WOOD_TRUCK                                             :Вагон за дърва
+STR_8023_IRON_ORE_HOPPER                                        :Вагон за желязна руда
+STR_8024_STEEL_TRUCK                                            :Вагон за стомана
+STR_8025_ARMORED_VAN                                            :Вагон за скъпоценности
+STR_8026_FOOD_VAN                                               :Вагон за храна
+STR_8027_PAPER_TRUCK                                            :Вагон за хартия
+STR_8028_COPPER_ORE_HOPPER                                      :Вагон за медна руда
+STR_8029_WATER_TANKER                                           :Цистерна за вода
+STR_802A_FRUIT_TRUCK                                            :Вагон за плодове
+STR_802B_RUBBER_TRUCK                                           :Вагон за каучук
+STR_802C_SUGAR_TRUCK                                            :Вагон за захар
+STR_802D_COTTON_CANDY_HOPPER                                    :Вагон за захарен памук
+STR_802E_TOFFEE_HOPPER                                          :Вагон за карамел
+STR_802F_BUBBLE_VAN                                             :Вагон за въздушни мехури
+STR_8030_COLA_TANKER                                            :Цистерна за кола
+STR_8031_CANDY_VAN                                              :Вагон за сладки
+STR_8032_TOY_VAN                                                :Вагон за играчки
+STR_8033_BATTERY_TRUCK                                          :Вагон за батерии
+STR_8034_FIZZY_DRINK_TRUCK                                      :Вагон за газирани напитки
+STR_8035_PLASTIC_TRUCK                                          :Вагон за пластмаса
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Електрически)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Хилядолетие Z1' (Електрически)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :Пътнически вагон
+STR_803A_MAIL_VAN                                               :Пощенски вагон
+STR_803B_COAL_CAR                                               :Вагон за въглища
+STR_803C_OIL_TANKER                                             :Цистерна за нефт
+STR_803D_LIVESTOCK_VAN                                          :Вагон за добитък
+STR_803E_GOODS_VAN                                              :Вагон за стоки
+STR_803F_GRAIN_HOPPER                                           :Вагон за зърно
+STR_8040_WOOD_TRUCK                                             :Вагон за дърва
+STR_8041_IRON_ORE_HOPPER                                        :Вагон за желязна руда
+STR_8042_STEEL_TRUCK                                            :Вагон за стомана
+STR_8043_ARMORED_VAN                                            :Вагон за скъпоценности
+STR_8044_FOOD_VAN                                               :Вагон за храна
+STR_8045_PAPER_TRUCK                                            :Вагон за хартия
+STR_8046_COPPER_ORE_HOPPER                                      :Вагон за медна руда
+STR_8047_WATER_TANKER                                           :Цистерна за вода
+STR_8048_FRUIT_TRUCK                                            :Вагон за плодове
+STR_8049_RUBBER_TRUCK                                           :Вагон за каучук
+STR_804A_SUGAR_TRUCK                                            :Вагон за захар
+STR_804B_COTTON_CANDY_HOPPER                                    :Вагон за захарен памук
+STR_804C_TOFFEE_HOPPER                                          :Вагон за карамел
+STR_804D_BUBBLE_VAN                                             :Вагон за въздушни мехури
+STR_804E_COLA_TANKER                                            :Цистерна за кола
+STR_804F_CANDY_VAN                                              :Вагон за сладки
+STR_8050_TOY_VAN                                                :Вагон за играчки
+STR_8051_BATTERY_TRUCK                                          :Вагон за батерии
+STR_8052_FIZZY_DRINK_TRUCK                                      :Вагон за газирани напитки
+STR_8053_PLASTIC_TRUCK                                          :Вагон за пластмаса
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Чудовище' (Електрически)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Циклоп' (Електрически)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Пегас' (Електрически)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Химера' (Електрически)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Ракетата
+STR_8059_PASSENGER_CAR                                          :Пътнически вагон
+STR_805A_MAIL_VAN                                               :Пощенски вагон
+STR_805B_COAL_CAR                                               :Вагон за въглища
+STR_805C_OIL_TANKER                                             :Цистерна за нефт
 
 ##id 0x8800
 

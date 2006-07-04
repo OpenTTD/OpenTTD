@@ -1158,7 +1158,6 @@ STR_3063_SHIP_DOCK                                              :Pristanisce
 STR_3068_DOCK                                                   :{WHITE}Pristanisce
 STR_3069_BUOY                                                   :Boja
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja na poti
-STR_306B_HELIPORT                                               :{BLACK}Helikoptersko letalisce
 
 
 ##id 0x3800
@@ -1385,24 +1384,107 @@ STR_805D_LIVESTOCK_VAN                                          :Vagon za zivino
 STR_805E_GOODS_VAN                                              :Vagon za dobrine
 STR_805F_GRAIN_HOPPER                                           :Vagon za zito
 STR_8060_WOOD_TRUCK                                             :Vagon za les
+STR_8061_IRON_ORE_HOPPER                                        :Vagon za zelezovo rudo
 STR_8062_STEEL_TRUCK                                            :Vagon za jeklo
 STR_8063_ARMORED_VAN                                            :Oklepni vagon
 STR_8064_FOOD_VAN                                               :Vagon za hrano
 STR_8065_PAPER_TRUCK                                            :Vagon za papir
 STR_8066_COPPER_ORE_HOPPER                                      :Vagon za bakreno rudo
+STR_8067_WATER_TANKER                                           :Vodni tanker
+STR_8068_FRUIT_TRUCK                                            :Vagon za sadje
+STR_8069_RUBBER_TRUCK                                           :Vagon za kavcuk
+STR_806A_SUGAR_TRUCK                                            :Vagon za sladkor
+STR_806B_COTTON_CANDY_HOPPER                                    :Vagon za sladkorno peno
+STR_806C_TOFFEE_HOPPER                                          :Vagon za karamelo
+STR_806D_BUBBLE_VAN                                             :Vagon za mehurcke
+STR_806E_COLA_TANKER                                            :Tank za cockto
+STR_806F_CANDY_VAN                                              :Vagon za slascice
+STR_8070_TOY_VAN                                                :Vagon za igrace
+STR_8071_BATTERY_TRUCK                                          :Tovornjak za baterije
+STR_8072_FIZZY_DRINK_TRUCK                                      :Tovornjak za gazirane pijace
+STR_8073_PLASTIC_TRUCK                                          :Tovornjak za plastiko
+STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotiva
+STR_8103_ROAD_VEHICLE                                           :cestno vozilo
+STR_8104_AIRCRAFT                                               :letalo
+STR_8105_SHIP                                                   :ladja
+STR_8106_MONORAIL_LOCOMOTIVE                                    :enotirni vlak
+STR_8107_MAGLEV_LOCOMOTIVE                                      :magnetni vlak
 
 ##id 0x8800
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prvi vlak pripelje v {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Podrobnosti)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na poti
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8806_GO_TO                                                  :Pojdi do {STATION}
+STR_8808_GO_TO_UNLOAD                                           :Go to {STATION} (Razlozi)
+STR_880A_GO_TO_LOAD                                             :Pojdi do {STATION} (Nalozi)
+STR_880C_GO_NON_STOP_TO                                         :Pojdi skozi {STATION}
 
 
 
 STR_UNKNOWN_DESTINATION                                         :neznana lokacija
+STR_8812_EMPTY                                                  :{LTBLUE}Prazen
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
+STR_8815_NEW_VEHICLES                                           :{BLACK}Novo vozilo
+STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je predolg
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nov enotirni vlak
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nov magnetni vlak
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Zgradi vozilo
+STR_8820_RENAME                                                 :{BLACK}Preimenuj
+STR_8823_SKIP                                                   :{BLACK}Preskoci
+STR_8824_DELETE                                                 :{BLACK}Izbrisi
+STR_8825_NON_STOP                                               :{BLACK}Brez prestanka
+STR_8826_GO_TO                                                  :{BLACK}Pojdi do
+STR_8828_UNLOAD                                                 :{BLACK}Razlozi
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Navaodila)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec navodil - -
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ni mozno kupiti vlak
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Nalaganje / Razkladanje
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ni vec prostora za vec ukazov
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prevec ukazov
+STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ni mozno vstaviti nov ukaz...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ni mozno izbrisati ta ukaz...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ni mozno spreminjati ta ukaz
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ni mozno premakniti vozilo...
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Ni mozno prodati vlaka...
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Obrni smer vlakov
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Pokazi podrobnosti vlaka
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Zvisaj cas med servisirjanji
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Zmanjsaj cas med servisirjanji
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Pokazi podrobnosti vagonov na vlaku
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Pokazi podrobnosti o vagonih
+STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nov {STRING} je zdaj navoljo!
+STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
+STR_885C_BROKEN_DOWN                                            :{RED}Pokvarjen
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Teza: {LTBLUE}{WEIGHT_S}  {BLACK}Moc: {LTBLUE}{POWER}{BLACK} Max. hitrost: {LTBLUE}{VELOCITY}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letosnji profit: {LTBLUE}{CURRENCY}  (lansko leto: {CURRENCY})
+STR_8861_STOPPED                                                :{RED}Ustavljen
 
+STR_8865_NAME_TRAIN                                             :{WHITE}Poimenuj vlak
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Ni mozno poimenovati vlaka
+STR_8867_NAME_TRAIN                                             :{BLACK}Poimenuj vlak
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Ni mozno spremeniti smeri vlaka...
+STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Preimenuj tip vozila
 
 STR_TRAIN_STOPPING                                              :{RED}Ustavljam
 STR_TRAIN_STOPPING_VEL                                          :{RED}Ustavljam, {VELOCITY}
 
 ##id 0x9000
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Cestno vozilo na poti
+STR_9002                                                        :{WHITE}{VEHICLE}
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nova vozila
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Zgradi vozilo
+STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Podrobnosti)
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Starost: {LTBLUE}{STRING}{BLACK}   Stroski vzdrzevanja: {LTBLUE}{CURRENCY}/ na leto
+STR_900E_MAX_SPEED                                              :{BLACK}Najvecja hitrost: {LTBLUE}{VELOCITY}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Letosnji profit: {LTBLUE}{CURRENCY}  (lansko leto: {CURRENCY})
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zgrajent: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ni mozno prodati cestno vozilo...
+
 
 
 ##id 0x9800
@@ -1436,3 +1518,7 @@ STR_WAGONS                                                      :Vagoni
 ############ End of list of rail types
 
 
+
+########### String for new airports
+
+########
