@@ -308,7 +308,7 @@ ifndef CC_TARGET
 CC_TARGET = $(CC_HOST)
 endif
 
-CC_VERSION = $(shell $(CC) -dumpversion | cut -c 1,3)
+CC_VERSION = $(shell $(CC_TARGET) -dumpversion | cut -c 1,3)
 
 # GNU make can only test for (in)equality
 # this is a workaround to test for >=
