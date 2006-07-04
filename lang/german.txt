@@ -2829,6 +2829,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zwinge d
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersetze: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTELLE FUNKTION {}Umschalter für Lok- oder Waggonersetzung{}Waggons werden nur ersetzt, wenn der neue Waggon den selben Warentyp transportieren kann wie der alte. Dies wird beim Ersetzen eines jeden Waggons einzeln geprüft.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotive ist nicht baubar
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}der Flughafen hat keine Rollbahn
 
 STR_ENGINES                                                     :Loks
 STR_WAGONS                                                      :Waggons
@@ -2859,3 +2860,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht:
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Geschwindigk.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazität: {GOLD}{COMMA} Passagiere, {COMMA} Postsäcke
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}klein
+STR_CITY_AIRPORT                                                :{BLACK}Stadt
+STR_METRO_AIRPORT                                               :{BLACK}städtischer Flughafen
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}internationaler Flughafen
+STR_COMMUTER_AIRPORT                                            :{BLACK}Nahverkehr
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Interkontinental
+STR_HELIPORT                                                    :{BLACK}Hubschrauberlandeplatz
+STR_HELIDEPOT                                                   :{BLACK}Hubschrauberhalle
+STR_HELISTATION                                                 :{BLACK}Hubschrauberstation
+
+STR_SMALL_AIRPORTS                                              :{BLACK}kleine Flughäfen
+STR_LARGE_AIRPORTS                                              :{BLACK}große Flughäfen
+STR_HUB_AIRPORTS                                                :{BLACK}Großflughäfen
+STR_HELIPORTS                                                   :{BLACK}Flughäfen für Hubschrauber
+########

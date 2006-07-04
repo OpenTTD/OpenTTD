@@ -933,7 +933,7 @@ STR_MONTH_APR                                                   :Abril
 STR_MONTH_MAY                                                   :Mayo
 STR_MONTH_JUN                                                   :Junio
 STR_MONTH_JUL                                                   :Julio
-STR_MONTH_AUG                                                   :Augosto
+STR_MONTH_AUG                                                   :Agosto
 STR_MONTH_SEP                                                   :Septiembre
 STR_MONTH_OCT                                                   :Octubre
 STR_MONTH_NOV                                                   :Noviembre
@@ -1001,7 +1001,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir demoler más propiedades de poblaciones: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permitir la construcción de trenes muy largos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Activar aceleración realista de trenes: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibir a trenes y barcos realizar giros de 90 grados: {ORANGE}{STRING} {LTBLUE} (requires NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibir a trenes/barcos giros de 90 grados: {ORANGE}{STRING} {LTBLUE} (requiere NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unir estaciones de tren unas junto a otras: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Abandona est. con alguna carga completa, en 'carga completa': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo mejorado de carga: {ORANGE}{STRING}
@@ -1041,8 +1041,8 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árboles
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura de la línea de nieve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Expansión máxima de est.: {ORANGE}{STRING} {RED}Atención: Valores altos relantizan
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enlaza la caja de herramientas de paisaje a la barra de rail/carretera/agua/aeropuerto: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Cuando se hace scroll con el ratón la vista se mueve en dirección opuesta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Une la caja de paisaje a la barra de rail/carretera...: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}El scroll de ratón mueve la vista en dirección opuesta: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máx trenes por jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máx vehículos de carretera por jugador: {ORANGE}{STRING}

@@ -2867,7 +2867,9 @@ STR_METRO_AIRPORT                                               :{BLACK}Suurkaup
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Kansainvälinen lentokenttä
 STR_COMMUTER_AIRPORT                                            :{BLACK}Työmatkalainen
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Mannertenvälinen
+STR_HELIPORT                                                    :{BLACK}Helikopterikenttä
 STR_HELIDEPOT                                                   :{BLACK}Helikopterihalli
+STR_HELISTATION                                                 :{BLACK}Helikopteriasema
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Pienet lentokentät
 STR_LARGE_AIRPORTS                                              :{BLACK}Isot lentokentät
