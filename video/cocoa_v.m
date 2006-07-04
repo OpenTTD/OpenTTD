@@ -649,11 +649,11 @@ static bool QZ_PollEvent(void)
 			break;
 
 		case NSScrollWheel:
-			if ([ event deltaX ] > 0.0 || [ event deltaY ] > 0.0) { /* Scroll up */
+			if ([ event deltaY ] > 0.0) { /* Scroll up */
 				_cursor.wheel--;
-			} else { /* Scroll down */
+			} else if ([ event deltaY ] < 0.0) { /* Scroll down */
 				_cursor.wheel++;
-			}
+			} /* else: deltaY was 0.0 and we don't want to do anything */
 			break;
 
 		default:
