@@ -27,10 +27,10 @@ STR_0013_LIVESTOCK                                              :Bestiame
 STR_0014_GOODS                                                  :Beni
 STR_0015_GRAIN                                                  :Grano
 STR_0016_WOOD                                                   :Legname
-STR_0017_IRON_ORE                                               :Ferro Grezzo
+STR_0017_IRON_ORE                                               :Minerale Ferroso
 STR_0018_STEEL                                                  :Acciaio
 STR_0019_VALUABLES                                              :Valori
-STR_001A_COPPER_ORE                                             :Rame Grezzo
+STR_001A_COPPER_ORE                                             :Minerale di Rame
 STR_001B_MAIZE                                                  :Mais
 STR_001C_FRUIT                                                  :Frutta
 STR_001D_DIAMONDS                                               :Diamanti
@@ -59,10 +59,10 @@ STR_0033_LIVESTOCK                                              :Bestiame
 STR_0034_GOODS                                                  :Beni
 STR_0035_GRAIN                                                  :Grano
 STR_0036_WOOD                                                   :Legname
-STR_0037_IRON_ORE                                               :Ferro Grezzo
+STR_0037_IRON_ORE                                               :Minerale Ferroso
 STR_0038_STEEL                                                  :Acciaio
 STR_0039_VALUABLES                                              :Valori
-STR_003A_COPPER_ORE                                             :Rame Grezzo
+STR_003A_COPPER_ORE                                             :Minerale di Rame
 STR_003B_MAIZE                                                  :Mais
 STR_003C_FRUIT                                                  :Frutta
 STR_003D_DIAMOND                                                :Diamanti
@@ -91,10 +91,10 @@ STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P o
 STR_QUANTITY_GOODS                                              :{COMMA} cass{P a e} di beni
 STR_QUANTITY_GRAIN                                              :{WEIGHT} di grano
 STR_QUANTITY_WOOD                                               :{WEIGHT} di legname
-STR_QUANTITY_IRON_ORE                                           :{WEIGHT} di ferro grezzo
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} di mineral{P e i} ferros{P o i}
 STR_QUANTITY_STEEL                                              :{WEIGHT} di acciaio
 STR_QUANTITY_VALUABLES                                          :{COMMA} bors{P a e} di valori
-STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} di rame grezzo
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} di mineral{P e i} di rame
 STR_QUANTITY_MAIZE                                              :{WEIGHT} di mais
 STR_QUANTITY_FRUIT                                              :{WEIGHT} di frutta
 STR_QUANTITY_DIAMONDS                                           :{COMMA} bors{P a e} di diamanti
@@ -223,14 +223,14 @@ STR_00FF_FARM                                                   :{BLACK}{TINYFON
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabbrica
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Casa Editrice
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Pozzi Petroliferi
-STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Miniera di Ferro Grezzo
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Miniera di Ferro
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Acciaieria
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Banca
 STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Cartiera
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Miniera d'Oro
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Azienda Alimentare
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Miniera di Diamanti
-STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Miniera di Rame Grezzo
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Miniera di Rame
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Piantaggio di Frutta
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Piantaggio di Gomma
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Falda Acquifera
@@ -632,7 +632,7 @@ STR_0245_OIL_RIG                                                :{BLACK}Piattafo
 STR_0246_FACTORY                                                :{BLACK}Fabbrica
 STR_0247_STEEL_MILL                                             :{BLACK}Acciaieria
 STR_0248_FARM                                                   :{BLACK}Fattoria
-STR_0249_IRON_ORE_MINE                                          :{BLACK}Miniera di Ferro Grezzo
+STR_0249_IRON_ORE_MINE                                          :{BLACK}Miniera di Ferro
 STR_024A_OIL_WELLS                                              :{BLACK}Pozzi petroliferi
 STR_024B_BANK                                                   :{BLACK}Banca
 STR_024C_PAPER_MILL                                             :{BLACK}Cartiera
@@ -645,7 +645,7 @@ STR_0252_RUBBER_PLANTATION                                      :{BLACK}Piantagi
 STR_0253_WATER_SUPPLY                                           :{BLACK}Falda Acquifera
 STR_0254_WATER_TOWER                                            :{BLACK}Cisterna d'Acqua
 STR_0255_DIAMOND_MINE                                           :{BLACK}Miniera di Diamanti
-STR_0256_COPPER_ORE_MINE                                        :{BLACK}Miniera di Rame Grezzo
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}Miniera di Rame
 STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Foresta di Cotone Candito
 STR_0258_CANDY_FACTORY                                          :{BLACK}Fabbrica Caramelle
 STR_0259_BATTERY_FARM                                           :{BLACK}Fattoria delle batterie
@@ -666,7 +666,7 @@ STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Costruis
 STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Costruisci Fabbrica
 STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Costruisci Acciaieria
 STR_026A_CONSTRUCT_FARM                                         :{BLACK}Costruisci Fattoria
-STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Costruisci Miniera di Ferro Grezzo
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Costruisci Miniera di Ferro
 STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Costruisci Pozzo Petrolifero
 STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Costruisci Banca (può essere costruita solo in città con una popolazione maggiori di 1200)
 STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Costruisci Cartiera
@@ -680,7 +680,7 @@ STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Pianta P
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Costruisci Falda Acquifera
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Costruisci Cisterna d'Acqua (può essere costruita solo nelle città)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Costruisci Miniera di Diamanti
-STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Costruisci Miniera di Rame Grezzo
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Costruisci Miniera di Rame
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Costruisci Foresta di Cotone Candito
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Costruisci Fabbrica di Caramelle
 STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Costruisci Fattoria delle Batterie
@@ -1769,7 +1769,7 @@ STR_4808_FACTORY                                                :Fabbrica
 STR_4809_PRINTING_WORKS                                         :Tipografia
 STR_480A_STEEL_MILL                                             :Acciaieria
 STR_480B_FARM                                                   :Fattoria
-STR_480C_COPPER_ORE_MINE                                        :Miniera di Rame Grezzo
+STR_480C_COPPER_ORE_MINE                                        :Miniera di Rame
 STR_480D_OIL_WELLS                                              :Pozzi Petroliferi
 STR_480E_BANK                                                   :Banca
 STR_480F_FOOD_PROCESSING_PLANT                                  :Azienda Alimentare
@@ -1777,7 +1777,7 @@ STR_4810_PAPER_MILL                                             :Cartiera
 STR_4811_GOLD_MINE                                              :Miniera d'Oro
 STR_4812_BANK                                                   :Banca
 STR_4813_DIAMOND_MINE                                           :Miniera di Diamanti
-STR_4814_IRON_ORE_MINE                                          :Miniera di Ferro Grezzo
+STR_4814_IRON_ORE_MINE                                          :Miniera di Ferro
 STR_4815_FRUIT_PLANTATION                                       :Piantagione di Frutta
 STR_4816_RUBBER_PLANTATION                                      :Piantagione di Gomma
 STR_4817_WATER_SUPPLY                                           :Falda Acquifera

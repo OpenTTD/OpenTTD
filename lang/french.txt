@@ -1160,7 +1160,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Au hasar
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Planter des arbres de types choisis au hasard
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Impossible de construire un canal ici...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Construire des canaux
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construire des canaux. Appuyer sur CTRL pour placer de l'eau non canalisée (seulement au niveau de la mer).
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossible de construire un écluse ici...
