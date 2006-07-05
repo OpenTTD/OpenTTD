@@ -4,6 +4,7 @@
 ##plural 0
 
 ##id 0x0000
+STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Oor kant van kaart
 STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Te naby aan kant van kaart
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Nie genoeg kontant nie - vereis {CURRENCY}
@@ -241,6 +242,10 @@ STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Verkiest
 STR_0133_WINDOWS                                                :Vensters
 STR_0134_UNIX                                                   :Unix
 STR_0135_OSX                                                    :OS X
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
 
 STR_013B_OWNED_BY                                               :{WHITE}...besit by {STRING}
 STR_013C_CARGO                                                  :{BLACK}Vrag
@@ -295,6 +300,7 @@ STR_015F_QUIT                                                   :Uitgang
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Is jy seker jy wil die spel verlaat?
 STR_0161_QUIT_GAME                                              :{WHITE}Verlaat Spel
 
+STR_NO_WAITING_CARGO                                            :{BLACK}Geen vrag van enige tipe is op wag
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -520,6 +526,7 @@ STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...te na
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...plek ongeskik
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...te veel stede
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan nie enige stede bou nie
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...daar is nie meer spasie op die kaart nie
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Vergroot stad
 STR_023C_EXPAND                                                 :{BLACK}Uitbrei
 STR_023D_RANDOM_TOWN                                            :{BLACK}Lukraak Stad
@@ -631,6 +638,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Stad gr
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Vertoon laaste boodskap of nuus verslag
+STR_OFF                                                         :Af
 STR_FULL                                                        :Vol
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Stad index
@@ -647,6 +655,8 @@ STR_02C3_GAME_OPTIONS                                           :Spel opsies
 STR_02C4_GAME_OPTIONS                                           :Spel opsies
 STR_02C5_DIFFICULTY_SETTINGS                                    :Moeilikheid stellings
 STR_02C6_DIFFICULTY_SETTINGS                                    :Moeilikheid stellings
+STR_NEWGRF_SETTINGS                                             :Newgrf stellings
+STR_NEWGRF_SETTINGS2                                            :Newgrf stellings
 STR_GAMEOPTMENU_0A                                              :
 STR_GAMEOPTMENU_0B                                              :
 STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Stad naame vertoon
@@ -774,9 +784,14 @@ STR_CURR_SEK                                                    :Swedish Krona (
 
 STR_CURR_CUSTOM                                                 :Gewoonte...
 
+STR_OPTIONS_LANG                                                :{BLACK}Taal
+STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Volskerm
 
+STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
+STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 
 STR_AUTOSAVE_1_MONTH                                            :Elke maand
 STR_AUTOSAVE_FAILED                                             :{WHITE}Outobewaar gedop
@@ -796,11 +811,15 @@ STR_MONTH_DEC                                                   :Desember
 
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Op pad na {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Op pad na {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Geen Opdrae
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Geen opdrae, {VELOCITY}
 
+STR_PASSENGERS                                                  :passasiers
 STR_BAGS                                                        :sakke
 STR_LITERS                                                      :litres
 STR_ITEMS                                                       :items
 STR_CRATES                                                      :hokke
+STR_NOTHING                                                     :
 
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Kan nie opdraglys deel nie...
@@ -956,6 +975,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kan nie 
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Bou spoorweg spoor met die Outospoor metode
 
+STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...daar is geen stad in die draaiboek
 
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Is jy seker jy wil 'n lukraake landeryke skep?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Baie lukraak stede
@@ -1029,10 +1049,13 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Verander
 
 STR_NETWORK_MULTIPLAYER                                         :{WHITE}Veelspeler
 
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Speler naam:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Die is die naam waarmee ander spelers sal jou aanwys
 STR_NETWORK_CONNECTION                                          :{BLACK}Verbinding:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Kies tueen internet spel of 'n Plaaslike Area Netwerk (LAN) spel
 
+STR_NETWORK_START_SERVER                                        :{BLACK}Begin bediender
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Begin u eie bediender
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Naam
 STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Naam van die spel
@@ -1049,19 +1072,31 @@ STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/
 STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Kliente
 STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Kliente oplyn / Kliente max{}Maatskappye oplyn / Maatskappye max
 STR_NETWORK_GAME_INFO                                           :{SILVER}SPEL INLIGTING
+STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Kliente:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Taal:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Blokkiestel:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Kaart groote:  {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Bediender hersiening:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Bediender adres:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_START_DATE                                          :{SILVER}Begin datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Huidige datum:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Wagwoord beskerm!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}BEDIENDER AFLYN
+STR_NETWORK_SERVER_FULL                                         :{SILVER}BEDIENDER VOL
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}HERSIENING ONGELYK
 
 STR_NETWORK_JOIN_GAME                                           :{BLACK}Verbind spel
 
 
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Begin nuwe veelspeler spel
 
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spel naam:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Die spel naam sal vertoon word na ander spelers in die veelspeler keuse
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Stel wagwoord
 STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Beskerm jou spel met 'n wagwoord as jy wil dit nie publieke toepassing wees
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Kies 'n kaart
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Watter kaart wil jy speel?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max kliente:
 STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Kies die maksimum nommer van kielnte. Alle gleufe hoef nie om vol te wees nie
 STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1090,6 +1125,8 @@ STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{S
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Taal gepraat:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Ander spelers sal weet watter taal op die bediender gepraat is
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME                                          :{BLACK}Begin Spel
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}Begin 'n nuwe netwerk spel van 'n lukraak kaart, of draaiboek
 STR_NETWORK_LOAD_GAME                                           :{BLACK}Laai Spel
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Vervolg 'n vroeër bewaarde veelspeler spel (wees seker om te verbind as die korrekte speler)
 
@@ -1102,20 +1139,29 @@ STR_NETWORK_LANG_FRENCH                                         :Frans
 
 STR_NETWORK_GAME_LOBBY                                          :{WHITE}Veelspeler spel tuiste
 
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Voorberei om te verbind:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}'n Lys van alle maatskappye huiding in die spel. Of kan jy een verbind of as daar 'n vry maatskappy gleuf is 'n nuwe ene begin
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nuwe Maatskappy
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Skep 'n nuwe maatskappy
+STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Aanskou spel
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Bekyk die spel an 'n aanskouer
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Verbind maatskappy
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Hulp om die maatskappy te bestuur
+STR_NETWORK_REFRESH                                             :{BLACK}Vervris bediender
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Vervris die bediender inligting
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}MAATSKAPPY INLIGTING
 
 STR_NETWORK_COMPANY_NAME                                        :{SILVER}Maatskappy naam:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inwyding:  {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Maatskappy waarde:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Hudige balans:  {WHITE}{CURRENCY64}
 STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Verlede jaar se inkome:  {WHITE}{CURRENCY64}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Prestasie:  {WHITE}{NUM}
 
+STR_NETWORK_VEHICLES                                            :{SILVER}Voertuie:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stasies:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Spelers:  {WHITE}{STRING}
 
 STR_NETWORK_CONNECTING                                          :{WHITE}Aansluit...
 
@@ -1183,7 +1229,10 @@ STR_NETWORK_CHAT_CLIENT                                         :[Privaat] {STRI
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Privaat] Na {STRING}:
 STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
 STR_NETWORK_NAME_CHANGE                                         :het hy/sy naam verander na
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Die bediender het die sessie toegemaak
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Die bediender is besig om te weerbegin...{}Wag asb...
 
+STR_NETWORK_SERVER                                              :Bediender
 STR_NETWORK_CLIENT                                              :Klient
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(geen)
@@ -1194,6 +1243,7 @@ STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Praat met maats
 STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privaate boodskap
 
 
+STR_NETWORK_SEND                                                :{BLACK}Stuur
 
 ############ end network gui strings
 
@@ -1632,6 +1682,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...jy be
 
 ##id 0x6800
 STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Moeilikheids Vlakte
+STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Bewaar
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Maklik
@@ -2129,6 +2180,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trein te
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Treine kan slegs verander word as hulle in die depot gestop is
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trein{P "" s}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nuwe Spoor Voertuie
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nuwe Elektries Spoor Voertuie
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuwe Eenspoor Voertuie
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuwe Maglev Voertuie
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bou Voertuig
@@ -2266,6 +2318,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Pad Voertuig Botsing!{}Bestuurder sterf in vuurbol na botsing met trein
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Pad voertuig Botsing!{}{COMMA} sterf in vuurbol na botsing met trein
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan nie voertuig dwing om te omdraai nie
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan nie voertuie van veel deele draai nie
 STR_9034_RENAME                                                 :{BLACK}Hernaam
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Hernaam pad voertuig tipe
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Hernaam pad voertuig tipe
@@ -2428,10 +2481,33 @@ STR_BRIBE_FAILED                                                :{WHITE}Jou omko
 STR_BRIBE_FAILED_2                                              :{WHITE}'n streek navorser uitgevind
 STR_BUILD_DATE                                                  :{BLACK}Gebou: {LTBLUE}{DATE_LONG}
 
+STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
+STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
+STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Voertuie:
+STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stasies:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. profyt:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. inkome:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. inkome:
+STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Afgelewer:
+STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Vrag:
+STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:
+STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lening:
+STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Die profyt van die voertuig met die laagste inkome (van alle voertuie ouer as 2 jaare)
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Bedrag van kontant gemaak in die maand met die laagste profyt in die laaste 12 kwartiers
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Bedrag van kontant gemaak in die maand met die hoogste profyt in die laaste 12 kwartiers
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Nommer van vrag tipes afgelewer in die verlede kwartier
+STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Bedrag van geld die maatskappy het in die bank
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Die bedrag van geld dat die maatskappy het gevat op lening
 
+STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf stellings
+STR_NEWGRF_TIP                                                  :{BLACK}'n Lys van al die Newgrf stelle wat ingestel is. Kliek op 'n stel om die stellings te verander
+STR_NEWGRF_FILENAME                                             :{BLACK}Leernaam:
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Gewoonte koers
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2445,9 +2521,12 @@ STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Verander
 
 STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
+STR_PLANE                                                       :{BLACK}{PLANE}
 
 
 
+STR_NOT_REPLACING                                               :{BLACK}Word nie vervang nie
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Geen voertuig gekies
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Enjin is nie boubaar nie
 STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Lughawe het geen aanloopbaan
 
