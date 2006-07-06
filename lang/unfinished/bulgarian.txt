@@ -166,7 +166,7 @@ STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFON
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Каучукова плантация
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Извор
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Водна кула
-STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Lumber Mill
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Дърворезница
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Гора от захарен памук
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Завод за сладки
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Ферма за батерии
@@ -176,16 +176,16 @@ STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFON
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Пластмасов фонтан
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Завод за газирани напитки
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Генератор на балони
-STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Карамеломна
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Карамелоломна
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Захарна мина
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}ЖП гара
-STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Торавна гара
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Товарна гара
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Автогара
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Летище
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Док
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Неравна земя
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Тревна земя
-STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Гола земя
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Пуста земя
 STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Ниви
 STR_0124_TREES                                                  :{BLACK}{TINYFONT}Дървета
 STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Скали
@@ -197,11 +197,11 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Сняг
 STR_012C_MESSAGE                                                :{WHITE}Съобщение
 STR_012D                                                        :{WHITE}{STRING}
-STR_012E_CANCEL                                                 :{BLACK}Отказ
+STR_012E_CANCEL                                                 :{BLACK}Преустанови
 STR_012F_OK                                                     :{BLACK}OK
-STR_0130_RENAME                                                 :{BLACK}Преименуване
+STR_0130_RENAME                                                 :{BLACK}Преименувай
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Прекалено много имена
-STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Избраното име се използва
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Избраното име вече е в употреба
 
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
@@ -210,13 +210,13 @@ STR_0135_OSX                                                    :ОС Х
 STR_013B_OWNED_BY                                               :{WHITE}...собственост на {STRING}
 STR_013C_CARGO                                                  :{BLACK}Товар
 STR_013D_INFORMATION                                            :{BLACK}Информация
-STR_013E_CAPACITIES                                             :{BLACK}Капацитети
+STR_013E_CAPACITIES                                             :{BLACK}Вместимости
 STR_013E_TOTAL_CARGO                                            :{BLACK}Общо товар
-STR_013F_CAPACITY                                               :{BLACK}Капацитет: {LTBLUE}{STRING}
-STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Общ товарен капацитет на влака:
+STR_013F_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{STRING}
+STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Обща товарна вместимост на влака:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Нова игра
-STR_0141_LOAD_GAME                                              :{BLACK}Зареждане на игра
+STR_0141_LOAD_GAME                                              :{BLACK}Отвори игра
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -228,7 +228,7 @@ STR_0148_GAME_OPTIONS                                           :{BLACK}Наст
 
 STR_0150_SOMEONE                                                :някой{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Карта на света
-STR_0152_TOWN_DIRECTORY                                         :Спидък с градове
+STR_0152_TOWN_DIRECTORY                                         :Списък с градове
 STR_0153_SUBSIDIES                                              :Субсидии
 
 STR_UNITS_IMPERIAL                                              :Английска
@@ -265,16 +265,16 @@ STR_0156_DELIVERED_CARGO_GRAPH                                  :Графика 
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Графика на изпълнение
 STR_0158_COMPANY_VALUE_GRAPH                                    :Стойност на компанията
 STR_0159_CARGO_PAYMENT_RATES                                    :Тарифи за доставка на стоки
-STR_015A_COMPANY_LEAGUE_TABLE                                   :Класация на компаниите
+STR_015A_COMPANY_LEAGUE_TABLE                                   :Класиране на компаниите
 ############ range for menu	ends
 
 STR_015B_OPENTTD                                                :{WHITE}Относно OpenTTD
-STR_015C_SAVE_GAME                                              :Запис
-STR_015D_LOAD_GAME                                              :Зареждане
-STR_015E_QUIT_GAME                                              :Прекъсване
+STR_015C_SAVE_GAME                                              :Запази игра
+STR_015D_LOAD_GAME                                              :Отвори игра
+STR_015E_QUIT_GAME                                              :Преустанови играта
 STR_015F_QUIT                                                   :Изход
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Желаете ли да прекъснете от играта?
-STR_0161_QUIT_GAME                                              :{WHITE}Прекъсване
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Желаете ли да преустановите играта?
+STR_0161_QUIT_GAME                                              :{WHITE}Преустанови играта
 
 
 ############ range for months starts
@@ -296,44 +296,44 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Пауза
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Запис, прекъсване, изход
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Списък със станциите
-STR_0174_DISPLAY_MAP                                            :{BLACK}Показва карта
-STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Показва карта, списък с градове
-STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Показва списък с градове
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Показва финансова информация
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Показва обща информация
-STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Показва графики
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Показва класация на компаниите
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показва списък с влакове
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показва списък с камиони/автобуси
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показва списък с кораби
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показва списък със самолети
-STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Zoom the view in
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Запази, преустанови или излез от играта
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Списък със станциите на компанията
+STR_0174_DISPLAY_MAP                                            :{BLACK}Покажи картата
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Покажи картата, списъка с градове
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Покажи списъка с градове
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Покажи финансова информация на компанията
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Покажи обща информация за компанията
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Покажи графиките
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Покажи класирането на компаниите
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Покажи списъка с влакове на компанията
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Покажи списъка с камиони/автобуси на компанията
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Покажи списъка с кораби на компанията
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Покажи списъка със самолети на компанията
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Увеличи мащаба
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Намаляване на мащаба
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Строене на ЖП линии
-STR_0182_BUILD_ROADS                                            :{BLACK}Строене на пътища
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Строене на докове
-STR_0184_BUILD_AIRPORTS                                         :{BLACK}Строене на летища
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Садене на дървета, поставяне на знати и др.
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Построй ЖП линии
+STR_0182_BUILD_ROADS                                            :{BLACK}Построй пътища
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Построй докове
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Построй летища
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Засади дървета, постави знаци и др.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Информация за земята
 STR_0187_OPTIONS                                                :{BLACK}Настройки
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Интервала на техн. преглед не може да се промени...
-STR_018B_CLOSE_WINDOW                                           :{BLACK}Затваряне на прозорец
+STR_018B_CLOSE_WINDOW                                           :{BLACK}Затвори прозореца
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Заглавие на прозорец - преместване на прозореца с мишката
-STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Разрушаване на постройки и др.
-STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Понижаване ъгъл от земята
-STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Повишаване ъгъл от земята
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Разруши постройки и др. върху квадрат от картата
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Понижи ъгъл от земята
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Повиши ъгъл от земята
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Лента за позициониране - превърта списъка нагоре/надолу
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Показване земните контури
-STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Показване на превозните средства
-STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Показване на индустриите
-STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Показване транспортните маршрути
-STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Показване растителността
-STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Показване собствениците на земя
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Показване имената на градовете
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Покажи земните контури на картата
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Покажи превозните средства
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Покажи индустриите на картата
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Покажи транспортните маршрути на картата
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Покажи растителността на картата
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Покажи собствениците на земя на картата
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Покажи имената на градовете на картата
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Печалба тази година: {CURRENCY} (минала година: {CURRENCY})
 
 ############ range for service numbers starts
@@ -343,13 +343,13 @@ STR_019C_ROAD_VEHICLE                                           :Автобус/
 STR_019D_AIRCRAFT                                               :Самолет
 STR_019E_SHIP                                                   :Кораб
 STR_019F_TRAIN                                                  :Влак
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} е стар
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} е много стар
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} е много стар и спешно се нуждае от подмяна
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} е вече стар
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} е вече много стар
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} е вече много стар и спешно се нуждае от подмяна
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Информация за земята
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Цена за изчистване: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Цена за изчистване: {LTBLUE}{CURRENCY}
-STR_01A6_N_A                                                    :N/A
+STR_01A6_N_A                                                    :Не се предлага
 STR_01A7_OWNER                                                  :{BLACK}Собственик: {LTBLUE}{STRING}
 STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Община: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Нищо
@@ -397,7 +397,7 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Прие
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Джаз
 STR_01D3_SOUND_MUSIC                                            :Звук/музика
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Показва прозореца за звук/музика
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Покажи прозореца за звук/музика
 STR_01D5_ALL                                                    :{TINYFONT}Всички
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Стар стил
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Нов стил
@@ -407,10 +407,10 @@ STR_01DA_CUSTOM_2                                               :{TINYFONT}Пе�
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Сила на музиката
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Сила на ефектите
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
-STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Превъртане до предишната песен
-STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Превъртане до следващата песен
-STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Спиране на музиката
-STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Пускане на музиката
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Превърти до предишната песен
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Превърти до следващата песен
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Спри музиката
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Пусни музиката
 STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Преместете плъзгачите за промяна силата на звука
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
@@ -425,24 +425,25 @@ STR_01EC_0                                                      :{TINYFONT}{LTBL
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Номер на песен
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Програма - '{STRING}'
-STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Изчистване
-STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Запис
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Изчисти
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Запази
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Текуща програма от музикални парчета
-STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Избор на програма 'всички парчета'
-STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избор на програма 'стар стил музика'
-STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Избор на програма 'нов стил музика'
-STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Избор на програма 'Custom 1' (user-defined)
-STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Избор на програма 'Custom 2' (user-defined)
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Изчистване на текущата програма (само Custom1 или Custom2)
-STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Запис на музикалните настройки
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Натиснете върху музикално парче за да го добавите към текущата програма (само Custom1 или Custom2)
-STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Разместване на парчетата
-STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Показване на прозореца за избора на музикални парчета
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Избери програма 'всички парчета'
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Избери програма 'стар стил музика'
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Избери програма 'нов стил музика'
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Избери програма 'Мой вкус1' (определена от теб)
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Избери програма 'Мой вкус 2' (определена от теб)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Изчисти текущата програма (само Мой вкус1 или Мой вкус2)
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Запази музикалните настройки
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Натисни върху музикално парче за да го добавиш към текущата програма (само Мой вкус1 или Мой вкус2)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Активирай/деактивирай разместване на парчетата
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Покажи прозореца за избор на музикални парчета
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Кликни върху услугата, за да се фокусира върху индустрията/града
 STR_01FE_DIFFICULTY                                             :{BLACK}Сложност ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Последно съобщение/новини
 STR_0201_MESSAGE_SETTINGS                                       :Настройки на съобщенията
-STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Показване на последно съобщение/новини, настройки на съобщенията
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Покажи последното съобщение/новини, покажи настройките на съобщенията
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Настройки на съобщенията
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Типове съобщения:
 STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Първо пристигане на превозно средство в станция
@@ -463,24 +464,24 @@ STR_0214_ENTREPRENEUR                                           :Предпри�
 STR_0215_INDUSTRIALIST                                          :Индустриалист
 STR_0216_CAPITALIST                                             :Капиталист
 STR_0217_MAGNATE                                                :Магнат
-STR_0218_MOGUL                                                  :Магнат
+STR_0218_MOGUL                                                  :Завоевател
 STR_0219_TYCOON_OF_THE_CENTURY                                  :Акула на века
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} достигна статус '{STRING}'!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} от {COMPANY} достигна статус '{STRING}'!
 STR_021F                                                        :{BLUE}{COMMA}
-STR_0220_CREATE_SCENARIO                                        :{BLACK}Създаване на сценарий
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Създай сценарий
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Редактор на сценарии
 STR_0223_LAND_GENERATION                                        :{WHITE}Генератор на терен
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Случаен терен
-STR_0227_RESET_LAND                                             :{BLACK}Празен терен
-STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Увеличаване на площа за понижаване/повишаване на терена
-STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Намаляване площа за понижаване/повишаване на терена
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Случаен терен
-STR_022B_RESET_LANDSCAPE                                        :{BLACK}Изчистване терена
-STR_022C_RESET_LANDSCAPE                                        :{WHITE}Изчистване на терена
+STR_0227_RESET_LAND                                             :{BLACK}Изчисти терена
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Увеличи площа на терена, за да го понижиш/повишиш
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Намали площа на терена, за да го понижиш/повишиш
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Генерирай случаен терен
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}Изчисти терена
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Изчисти терена
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Желаете ли да изчистите терена?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Създаване на терен
 STR_022F_TOWN_GENERATION                                        :{BLACK}Създаване на град
@@ -488,14 +489,14 @@ STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Създ
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Строене на път
 STR_0233_TOWN_GENERATION                                        :{WHITE}Създаване на град
 STR_0234_NEW_TOWN                                               :{BLACK}Нов град
-STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Construct new town
-STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Не може да построи град тук...
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Построй нов град
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Не може да построиш град тук...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...прекалено близо до края на картата
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...прекалено близо до друг град
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...неподходящо място
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...прекалено много градове
-STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}По-голям град
-STR_023C_EXPAND                                                 :{BLACK}Разрастване
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Увеличи размера на града
+STR_023C_EXPAND                                                 :{BLACK}Увеличи
 STR_023D_RANDOM_TOWN                                            :{BLACK}Случаен град
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Построяване град на произволно място
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Създаване на индустрия
@@ -1045,7 +1046,7 @@ STR_3030_RENAME_STATION_LOADING                                 :Преимен�
 STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Станцията не може да бъде преименувана...
 STR_3032_RATINGS                                                :{BLACK}Рейтинги
 STR_3033_ACCEPTS                                                :{BLACK}Приема
-STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Ниво на обслужване на:
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Местно ниво на обслужване:
 
 ############ range for rating starts
 STR_3035_APPALLING                                              :Плачевно
@@ -1093,7 +1094,7 @@ STR_3062_BUS_STATION                                            :Автогар�
 STR_3063_SHIP_DOCK                                              :Корабен док
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Отбележи зоната от предложеното място
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Не отбелязвай зоната от предложеното място
-STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Отбелязаната зона
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Маркиране на Отбелязаната зона
 STR_3068_DOCK                                                   :{WHITE}Док
 STR_3069_BUOY                                                   :Шамандура
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...шамандура на пътя
@@ -1115,7 +1116,7 @@ STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Не 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Запази играта
 STR_4001_LOAD_GAME                                              :{WHITE}Отвори игра
-STR_4002_SAVE                                                   :{BLACK}Запазване
+STR_4002_SAVE                                                   :{BLACK}Запази
 STR_4003_DELETE                                                 :{BLACK}Изтрий
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} мегабайт{P "" а} свободно
@@ -1125,11 +1126,11 @@ STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Изтр
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Отварянето на играта е неуспешно
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Списък с хард-дисковете, директориите и запазените игри
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Избрано име за запазена игра
-STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Изтрий избраното име на запазената игра
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Изтрий избраната запазената игра
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Запазване на настоящата игра с избраното име
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Избери нов тип игра
-STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Избери сценарий (зелено), моделирана карта (синьо) или случайна карта
-STR_4010_GENERATE_RANDOM_NEW_GAME                               :Генерирай случайна карта
+STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Избери на сценарии (зелено), предварително настроена игра (синьо), или произволна нова игра
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :Генерирай произволна нова игра
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} пречи
@@ -1190,8 +1191,8 @@ STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Проблеми с доставките предизвикаха незабавно закриване на {INDUSTRY}!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Липса на дървета предизвикаха незабавно закриване на {INDUSTRY}!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} увеличава прозводството!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Нови залижи на въглища са намерени в {INDUSTRY}!{}Очаква се производството  да се удвои!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Нови залижи на Нефт са намерени в {INDUSTRY}!{}Очаква се производстото да се удвои!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Нови залежи на въглища са намерени в {INDUSTRY}!{}Очаква се производството  да се удвои!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Нови залежи на Нефт са намерени в {INDUSTRY}!{}Очаква се производстото да се удвои!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Иноваторските селскостопански технологии в {INDUSTRY} се очаква да удвоят производството!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Прозиводството в {INDUSTRY} спадна с 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Напаст от насекоми предизвика опустошение в {INDUSTRY}!{}Производството намаля с 50%
@@ -1204,7 +1205,7 @@ STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Друг
 STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Не може да бъде изкопан другия край на тунела
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Първо разрушете тунела
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Първо трябва да разрушите моста
-STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Не може да започва и свърша на едно и също място
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Не може да започва и да свърша на едно и също място
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Равна земя или вода е необходима под моста
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Началото и краят трябва да са на една линия
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Мястото е неподходящо за вход на тунел
@@ -1215,7 +1216,7 @@ STR_5010_CANTILEVER_STEEL                                       :Конзоле�
 STR_5011_SUSPENSION_CONCRETE                                    :Висящ, Бетонен
 STR_5012_WOODEN                                                 :Дървен
 STR_5013_CONCRETE                                               :Бетонен
-STR_5014_TUBULAR_STEEL                                          :Цилиндричен, Стоманен
+STR_5014_TUBULAR_STEEL                                          :Тръбен, Стоманен
 STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Не може да бъде построен мост тук...
 STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Не може да бъде построен тунел тук...
 STR_5017_RAILROAD_TUNNEL                                        :ЖП тунел
@@ -1223,7 +1224,7 @@ STR_5018_ROAD_TUNNEL                                            :Пътен ту
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Стоманен висящ ЖП мост
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Стоманен гредореден ЖП мост
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Стоманен конзолен ЖП мост
-STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Железобетонен висящ мост
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Железобетонен висящ ЖП мост
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Дървен ЖП мост
 STR_5020_CONCRETE_RAIL_BRIDGE                                   :Бетонен ЖП мост
 STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Стоманен висящ пътен мост
@@ -1232,8 +1233,8 @@ STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Стомане�
 STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Железобетонен висящ пътен мост
 STR_5025_WOODEN_ROAD_BRIDGE                                     :Дървен пътен мост
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Бетонен пътен мост
-STR_5027_TUBULAR_RAIL_BRIDGE                                    :Цилиндричен ЖП мост
-STR_5028_TUBULAR_ROAD_BRIDGE                                    :Цилиндричен пътен мост
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :Тръбовиден ЖП мост
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :Тръбовиден пътен мост
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Обект на пътя
@@ -1241,7 +1242,7 @@ STR_5801_TRANSMITTER                                            :Предава�
 STR_5802_LIGHTHOUSE                                             :Фар
 STR_5803_COMPANY_HEADQUARTERS                                   :Централен офис
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...централен офис е на пътя
-STR_5805_COMPANY_OWNED_LAND                                     :Земя, притежавана от компания
+STR_5805_COMPANY_OWNED_LAND                                     :Земя, притежавана от компанията
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Земята не може да бъде закупена...
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...вие вече притежавате това!
 
@@ -1267,11 +1268,11 @@ STR_6804_CUSTOM                                                 :{BLACK}По в�
 ############ range for difficulty settings starts
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Максимален брой конкуренти: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Конкурентите стартират: {ORANGE}{STRING}
-STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Количество на градовете: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Количество на индустриите: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Брой на градовете: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Брой на индустриите: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Максимален начален заем: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Начална лихва: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Оперативни разходи на превозното средство: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Оперативни разходи на превозните средства: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Скорост на строене на конкурентите: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Интелигентност на конкурентите: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Повреди на превозното средство: {ORANGE}{STRING}
@@ -1469,6 +1470,9 @@ STR_8012_CENTENNIAL_DIESEL                                      :Стогоди�
 STR_8013_KELLING_3100_DIESEL                                    :Келинг 3100 (Дизелов)
 STR_8014_TURNER_TURBO_DIESEL                                    :Търнър Турбо (Дизелов)
 STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Дизелов)
+STR_8016_SH_125_DIESEL                                          :SH '125' (Дизелов)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (Електрически)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (Електрически)
 STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Електрически)
 STR_801A_ASIASTAR_ELECTRIC                                      :'Източна Звезда' (Електрически)
 STR_801B_PASSENGER_CAR                                          :Вагон за пътници
@@ -1537,6 +1541,69 @@ STR_8059_PASSENGER_CAR                                          :Вагон за
 STR_805A_MAIL_VAN                                               :Вагон за поща
 STR_805B_COAL_CAR                                               :Вагон за въглища
 STR_805C_OIL_TANKER                                             :Цистерна за нефт
+STR_805D_LIVESTOCK_VAN                                          :Вагон за добитък
+STR_805E_GOODS_VAN                                              :Вагон за стоки
+STR_805F_GRAIN_HOPPER                                           :Вагон за зърно
+STR_8060_WOOD_TRUCK                                             :Вагон за дърва
+STR_8061_IRON_ORE_HOPPER                                        :Вагон за желязна руда
+STR_8062_STEEL_TRUCK                                            :Вагон за стомана
+STR_8063_ARMORED_VAN                                            :Вагон за скъпоценности
+STR_8064_FOOD_VAN                                               :Вагон за храна
+STR_8065_PAPER_TRUCK                                            :Вагон за хартия
+STR_8066_COPPER_ORE_HOPPER                                      :Вагон за медна руда
+STR_8067_WATER_TANKER                                           :Вагон-цистерна за вода
+STR_8068_FRUIT_TRUCK                                            :Вагон за плодове
+STR_8069_RUBBER_TRUCK                                           :Вагон за каучук
+STR_806A_SUGAR_TRUCK                                            :Вагон за захар
+STR_806B_COTTON_CANDY_HOPPER                                    :Вагон за захарен памук
+STR_806C_TOFFEE_HOPPER                                          :Вагон за карамел
+STR_806D_BUBBLE_VAN                                             :Вагон за балончета
+STR_806E_COLA_TANKER                                            :Вагон-цистерна за кола
+STR_806F_CANDY_VAN                                              :Вагон за сладки
+STR_8070_TOY_VAN                                                :Вагон за играчки
+STR_8071_BATTERY_TRUCK                                          :Вагон за батерии
+STR_8072_FIZZY_DRINK_TRUCK                                      :Вагон за газирани напитки
+STR_8073_PLASTIC_TRUCK                                          :Вагон за пластмаса
+STR_8074_MPS_REGAL_BUS                                          :Автобус МПС Цасрски
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Автобус Херефорд Леопард
+STR_8076_FOSTER_BUS                                             :Автобус Грижовния
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Автобус Грижовния МК II
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Автобус Упорития МК I
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Автобус Упорития МК II
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Автобус Упорития МК III
+STR_807B_BALOGH_COAL_TRUCK                                      :Камион за въглища "Балоф"
+STR_807C_UHL_COAL_TRUCK                                         :Камион за въглища "Ухл"
+STR_807D_DW_COAL_TRUCK                                          :Камион за въглища "ДВ"
+STR_807E_MPS_MAIL_TRUCK                                         :Камион за поща "МПС"
+STR_807F_REYNARD_MAIL_TRUCK                                     :Камион за поща "Рейнард"
+STR_8080_PERRY_MAIL_TRUCK                                       :Камион за поща "Пери"
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :Камион за поща "Мощнодвигателен"
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Камион за поща "Силният"
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Камион за поща "Уизоуоу"
+STR_8084_WITCOMBE_OIL_TANKER                                    :Камион-цистерна "Уиткомб"
+STR_8085_FOSTER_OIL_TANKER                                      :Камион-цистерна "Уиткомб"
+STR_8086_PERRY_OIL_TANKER                                       :Камион-цистерна "Пери"
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Камион за добитък "Талбот"
+STR_8088_UHL_LIVESTOCK_VAN                                      :Камион за добитък "Ухл"
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Камион за добитък "Грижовният"
+STR_808A_BALOGH_GOODS_TRUCK                                     :Камион за стоки "Балоф"
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Камион за стоки "Твърдоглавият"
+STR_808C_GOSS_GOODS_TRUCK                                       :Камион за стоки "Шумният"
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Камион за зърно "Херефорд"
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Камион за зърно "Томас"
+STR_808F_GOSS_GRAIN_TRUCK                                       :Камион за зърно "Шумният"
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Камион за дърва "Уиткомб"
+STR_8091_FOSTER_WOOD_TRUCK                                      :Камион за дърва "Грижовният"
+STR_8092_MORELAND_WOOD_TRUCK                                    :Камион за дърва "Многоземният"
+STR_8093_MPS_IRON_ORE_TRUCK                                     :Камион за желязна руда "МПС"
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Камион за желязна руда "Ухл"
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Камион за желязна руда "Скучният"
+STR_8096_BALOGH_STEEL_TRUCK                                     :Камион за стомана "Балоф"
+STR_8097_UHL_STEEL_TRUCK                                        :Камион за стомана "Ухл"
+STR_8098_KELLING_STEEL_TRUCK                                    :Камион за стомана "Келинг"
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Камион за скъпоценности "Балоф"
+STR_809A_UHL_ARMORED_TRUCK                                      :Камион за скъпоценности "Ухл"
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Камион за скъпоценности "Грижовният"
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Уизоуоу камион за захарен памук
 STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :Майтимувер камион за карамел
 STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Пауернаут камион за карамел

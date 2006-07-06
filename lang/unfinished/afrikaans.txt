@@ -1094,7 +1094,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Begin nu
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Spel naam:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Die spel naam sal vertoon word na ander spelers in die veelspeler keuse
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Stel wagwoord
-STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Beskerm jou spel met 'n wagwoord as jy wil dit nie publieke toepassing wees
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Beskerm jou spel met 'n wagwoord as jy wil dit nie publieke toepassing laat wees nie
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Kies 'n kaart
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Watter kaart wil jy speel?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Max kliente:
@@ -1144,7 +1144,7 @@ STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}'n Lys v
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nuwe Maatskappy
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Skep 'n nuwe maatskappy
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Aanskou spel
-STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Bekyk die spel an 'n aanskouer
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Bekyk die spel as 'n aanskouer
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Verbind maatskappy
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Hulp om die maatskappy te bestuur
 STR_NETWORK_REFRESH                                             :{BLACK}Vervris bediender
@@ -2497,9 +2497,11 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Lening:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Totaal:
 ############ End of order list
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Nommer van voertuie; dit sluit pad voertuie, treine, skepe en vliegtuie in
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Die profyt van die voertuig met die laagste inkome (van alle voertuie ouer as 2 jaare)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Bedrag van kontant gemaak in die maand met die laagste profyt in die laaste 12 kwartiers
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Bedrag van kontant gemaak in die maand met die hoogste profyt in die laaste 12 kwartiers
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Eenheide van vrag afgelewer in die laaste vier kwartiers
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Nommer van vrag tipes afgelewer in die verlede kwartier
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Bedrag van geld die maatskappy het in die bank
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Die bedrag van geld dat die maatskappy het gevat op lening
