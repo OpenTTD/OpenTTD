@@ -18,6 +18,7 @@
 #include "variables.h"
 #include "newgrf_text.h"
 #include "table/landscape_const.h"
+#include "music.h"
 
 char _userstring[128];
 
@@ -1015,31 +1016,6 @@ static char *GenPresidentName(char *buff, uint32 x)
 	return buff;
 }
 
-static const char * const _song_names[] = {
-	"Tycoon DELUXE Theme",
-	"Easy Driver",
-	"Little Red Diesel",
-	"Cruise Control",
-	"Don't Walk!",
-	"Fell Apart On Me",
-	"City Groove",
-	"Funk Central",
-	"Stoke It",
-	"Road Hog",
-	"Aliens Ate My Railway",
-	"Snarl Up",
-	"Stroll On",
-	"Can't Get There From Here",
-	"Sawyer's Tune",
-	"Hold That Train!",
-	"Movin' On",
-	"Goss Groove",
-	"Small Town",
-	"Broomer's Oil Rag",
-	"Jammit",
-	"Hard Drivin'"
-};
-
 static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv)
 {
 	switch (ind) {
@@ -1053,7 +1029,7 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv)
 			return GenPresidentName(buff, GetInt32(&argv));
 
 		case 4: // song names
-			return strecpy(buff, _song_names[GetInt32(&argv) - 1], NULL);
+			return strecpy(buff, origin_songs_specs[GetInt32(&argv) - 1].song_name, NULL);
 	}
 
 	// town name?

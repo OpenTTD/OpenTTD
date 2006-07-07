@@ -671,6 +671,7 @@ SRCS += misc.c
 SRCS += misc_cmd.c
 SRCS += misc_gui.c
 SRCS += mixer.c
+SRCS += music.c
 SRCS += music_gui.c
 SRCS += namegen.c
 SRCS += network.c

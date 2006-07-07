@@ -551,6 +551,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Select '
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Clear current programme (Custom1 or Custom2 only)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Save music settings
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Click on music track to add to current programme (Custom1 or Custom2 only)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Click on music track to remove it from current programme (Custom1 or Custom2 only)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Toggle programme shuffle on/off
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Show music track selection window
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Click on service to centre view on industry/town

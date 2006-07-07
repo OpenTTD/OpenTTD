@@ -346,6 +346,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\music.c"
+				>
+			</File>
+			<File
 				RelativePath=".\namegen.c"
 				>
 			</File>
@@ -652,6 +656,10 @@
 			</File>
 			<File
 				RelativePath=".\mixer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\music.h"
 				>
 			</File>
 			<File

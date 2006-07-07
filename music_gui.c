@@ -10,12 +10,12 @@
 #include "hal.h"
 #include "macros.h"
 #include "variables.h"
+#include "music.h"
 
 static byte _music_wnd_cursong;
 static bool _song_is_active;
-static byte _cur_playlist[33];
+static byte _cur_playlist[NUM_SONGS_PLAYLIST];
 
-#define NUM_SONGS_AVAILABLE 22
 
 
 static byte _playlist_all[] = {
@@ -42,33 +42,6 @@ static byte * const _playlists[] = {
 	msf.custom_1,
 	msf.custom_2,
 };
-
-// Map the order of the song names to the numbers of the midi filenames
-static const byte midi_idx[] = {
-	 0, // Tycoon DELUXE Theme
-	 2, // Easy Driver
-	 3, // Little Red Diesel
-	17, // Cruise Control
-	 7, // Don't Walk!
-	 9, // Fell Apart On Me
-	 4, // City Groove
-	19, // Funk Central
-	 6, // Stoke It
-	12, // Road Hog
-	 5, // Aliens Ate My Railway
-	 1, // Snarl Up
-	18, // Stroll On
-	10, // Can't Get There From Here
-	 8, // Sawyer's Tune
-	13, // Hold That Train!
-	21, // Movin' On
-	15, // Goss Groove
-	16, // Small Town
-	14, // Broomer's Oil Rag
-	20, // Jammit
-	11  // Hard Drivin'
-};
-
 
 static void SkipToPrevSong(void)
 {
@@ -118,8 +91,8 @@ static void MusicVolumeChanged(byte new_vol)
 static void DoPlaySong(void)
 {
 	char filename[256];
-	snprintf(filename, sizeof(filename), "%sgm_tt%.2d.gm",
-		_path.gm_dir, midi_idx[_music_wnd_cursong - 1]);
+	snprintf(filename, sizeof(filename), "%s%s",
+		_path.gm_dir, origin_songs_specs[_music_wnd_cursong - 1].filename);
 	_music_driver->play_song(filename);
 }
 
@@ -131,10 +104,19 @@ static void DoStopMusic(void)
 static void SelectSongToPlay(void)
 {
 	uint i = 0;
+	uint j = 0;
+	char filename[256];
 
 	memset(_cur_playlist, 0, sizeof(_cur_playlist));
 	do {
-		_cur_playlist[i] = _playlists[msf.playlist][i];
+		snprintf(filename, sizeof(filename),  "%s%s",
+		_path.gm_dir, origin_songs_specs[_playlists[msf.playlist][i]].filename);
+		//we are now checking for the existence of that file prior
+		//to add it to the list of available songs
+		if (FileExists(filename)) {
+			_cur_playlist[j] = _playlists[msf.playlist][i];
+			j++;
+		}
 	} while (_playlists[msf.playlist][i++] != 0 && i < lengthof(_cur_playlist) - 1);
 
 	if (msf.shuffle) {
@@ -165,7 +147,15 @@ static void PlayPlaylistSong(void)
 {
 	if (_cur_playlist[0] == 0) {
 		SelectSongToPlay();
-		if (_cur_playlist[0] == 0) return;
+		//if there is not songs in the playlist, it may indicate
+		//no file on the gm folder, or even no gm folder.
+		//Stop the playback, then
+		if (_cur_playlist[0] == 0) {
+			_song_is_active = false;
+			_music_wnd_cursong = 0;
+			msf.playing = false;
+			return;
+		}
 	}
 	_music_wnd_cursong = _cur_playlist[0];
 	DoPlaySong();
@@ -188,7 +178,7 @@ void MusicLoop(void)
 		PlayPlaylistSong();
 	}
 
-	if (_song_is_active == false) return;
+	if (!_song_is_active) return;
 
 	if (!_music_driver->is_song_playing()) {
 		if (_game_mode != GM_MENU) {
@@ -233,7 +223,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 		}
 
 		DrawStringCentered(216, 45+8*6+16, STR_01F0_CLEAR, 0);
-		DrawStringCentered(216, 45+8*6+16*2, STR_01F1_SAVE, 0);
+		//DrawStringCentered(216, 45+8*6+16*2, STR_01F1_SAVE, 0);
 
 		y = 23;
 		for (p = _playlists[msf.playlist], i = 0; (i = *p) != 0; p++) {
@@ -257,7 +247,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			if (!IS_INT_INSIDE(y, 0, NUM_SONGS_AVAILABLE)) return;
 
 			p = _playlists[msf.playlist];
-			for (i = 0; i != 32; i++) {
+			for (i = 0; i != NUM_SONGS_PLAYLIST - 1; i++) {
 				if (p[i] == 0) {
 					p[i] = y + 1;
 					p[i + 1] = 0;
@@ -266,17 +256,36 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 					break;
 				}
 			}
-
 		} break;
+
+		case 4: { /* remove from playlist */
+			int y = (e->click.pt.y - 23) / 6;
+			uint i;
+			byte *p;
+
+			if (msf.playlist < 4) return;
+			if (!IS_INT_INSIDE(y, 0, NUM_SONGS_AVAILABLE)) return;
+
+			p = _playlists[msf.playlist];
+			for (i = y; i != NUM_SONGS_PLAYLIST - 1; i++) {
+				p[i] = p[i + 1];
+				}
+
+			SetWindowDirty(w);
+			SelectSongToPlay();
+		} break;
+
 		case 11: /* clear */
 			_playlists[msf.playlist][0] = 0;
 			SetWindowDirty(w);
 			StopMusic();
 			SelectSongToPlay();
 			break;
-		case 12: /* save */
-			ShowInfo("MusicTrackSelectionWndProc:save not implemented\n");
-			break;
+
+		//case 12: /* save */
+		//	ShowInfo("MusicTrackSelectionWndProc:save not implemented\n");
+		//	break;
+
 		case 5: case 6: case 7: case 8: case 9: case 10: /* set playlist */
 			msf.playlist = e->click.widget - 5;
 			SetWindowDirty(w);
@@ -294,7 +303,7 @@ static const Widget _music_track_selection_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   431,     0,    13, STR_01EB_MUSIC_PROGRAM_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   431,    14,   217, 0x0,			STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   181,    22,   215, 0x0,			STR_01FA_CLICK_ON_MUSIC_TRACK_TO},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   250,   429,    22,   215, 0x0,			STR_01F2_CURRENT_PROGRAM_OF_MUSIC},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   250,   429,    22,   215, 0x0,			STR_CLICK_ON_TRACK_TO_REMOVE},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,    44,    51, 0x0,			STR_01F3_SELECT_ALL_TRACKS_PROGRAM},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,    52,    59, 0x0,			STR_01F4_SELECT_OLD_STYLE_MUSIC},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,    60,    67, 0x0,			STR_01F5_SELECT_NEW_STYLE_MUSIC},
@@ -302,7 +311,7 @@ static const Widget _music_track_selection_widgets[] = {
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,    76,    83, 0x0,			STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,    84,    91, 0x0,			STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,   108,   115, 0x0,			STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,   124,   131, 0x0,			STR_01F9_SAVE_MUSIC_SETTINGS},
+//{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,   124,   131, 0x0,			STR_01F9_SAVE_MUSIC_SETTINGS},
 {   WIDGETS_END},
 };
 
@@ -339,7 +348,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 					color = 0xB8;
 				}
 			}
-			GfxFillRect(187, 33 - i * 2, 200, 33 - i * 2, color);
+			GfxFillRect(187, NUM_SONGS_PLAYLIST - i * 2, 200, NUM_SONGS_PLAYLIST - i * 2, color);
 		}
 
 		GfxFillRect(60, 46, 239, 52, 0);
