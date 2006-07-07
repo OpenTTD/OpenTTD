@@ -1659,13 +1659,35 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	if (flags & DC_EXEC) {
 		new_v = GetVehicle(_new_vehicle_id);
 		*w = new_v;	//we changed the vehicle, so MaybeReplaceVehicle needs to work on the new one. Now we tell it what the new one is
+		CargoID new_cargo_type = old_v->cargo_type;
 
 		/* refit if needed */
-		if (old_v->cargo_type != new_v->cargo_type && old_v->cargo_cap != 0 && new_v->cargo_cap != 0) {// some train engines do not have cargo capacity
+		if (old_v->type == VEH_Train && old_v->cargo_cap == 0 && new_v->cargo_cap != 0) {
+			// the old engine didn't have cargo capacity, but the new one does
+			// now we will figure out what cargo the train is carrying and refit to fit this
+			Vehicle *v = old_v;
+			CargoID cargo_type_buffer = new_v->cargo_type;
+			printf("A: %d\n", cargo_type_buffer);
+			do {
+				if (v->cargo_cap == 0) continue;
+				printf("B: %d\n", cargo_type_buffer);
+				if (v->cargo_type == new_v->cargo_type) {
+					// the default type is already being carried on the train. No need to refit
+					cargo_type_buffer = new_v->cargo_type;
+					break;
+				}
+				printf("C: %d\n", cargo_type_buffer);
+				// now we know that the vehicle is carrying cargo and that it's not the same as
+				cargo_type_buffer = v->cargo_type;
+			} while ((v=v->next) != NULL);
+			new_cargo_type = cargo_type_buffer;
+		}
+
+		if (new_cargo_type != new_v->cargo_type && new_v->cargo_cap != 0) {
 			// we add the refit cost to cost, so it's added to the cost animation
 			// it's not in the calculation of having enough money to actually do the replace since it's rather hard to do by design, but since
 			// we pay for it, it's nice to make the cost animation include it
-			int32 temp_cost = DoCommand(0, new_v->index, old_v->cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
+			int32 temp_cost = DoCommand(0, new_v->index, new_cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
 			if (!CmdFailed(temp_cost)) cost += temp_cost;
 		}
 		if (new_v->type == VEH_Train && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->next != NULL && IsArticulatedPart(new_v->next))) {
