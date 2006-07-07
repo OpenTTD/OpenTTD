@@ -616,6 +616,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}A 'Saját
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Az aktuális mûsor kiürítése (csak Saját 1 és Saját 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Zenei beállítások elmentése
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Egy számra kattintva hozzáadod azt a kiválasztott zenei mûsorhoz (csak Saját 1 és Saját 2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kattints a zeneszámra annak aktuális listából való eltávolításához (Custom1 és Custom2 esetén csak)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}A mûsor megkeverése be/ki
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}A zenekiválasztó ablak megjelenítése
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Kattints egy sorra a város/gazdasági épület megnézéséhez
