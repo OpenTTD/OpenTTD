@@ -2,6 +2,7 @@
 ##ownname Íslenska
 ##isocode is_IS
 ##plural 0
+##gender karlkyn kvenkyn hvorugkyn
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -146,6 +147,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}EKKERT
+STR_ABBREV_ALL                                                  :{TINYFONT}ALLT
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kort - {STRING}
@@ -306,6 +309,33 @@ STR_0151_MAP_OF_WORLD                                           :Heimskort
 STR_0152_TOWN_DIRECTORY                                         :Bæjarmappa
 STR_0153_SUBSIDIES                                              :Samstarfssamningar
 
+STR_UNITS_IMPERIAL                                              :Amerískt kerfi
+STR_UNITS_METRIC                                                :Metrakerfi
+STR_UNITS_SI                                                    :SI kerfi
+
+STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mílur/klst
+STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/klst
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}hestöfl
+STR_UNITS_POWER_METRIC                                          :{COMMA}hestöfl
+STR_UNITS_POWER_SI                                              :{COMMA}kW
+
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}tonn
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}tonn
+STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonn
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn
+STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+
+STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+
+
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Línurit: Rekstrarhagnaður
 STR_0155_INCOME_GRAPH                                           :Línurit: Tekjur
@@ -343,6 +373,12 @@ STR_SORT_BY_AGE                                                 :Aldur
 STR_SORT_BY_RELIABILITY                                         :Áreiðanleiki
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Burðargeta alls á hverja tegund farms
 STR_SORT_BY_MAX_SPEED                                           :Hámarkshraði
+STR_SORT_BY_MODEL                                               :Týpa
+STR_SORT_BY_VALUE                                               :Virði
+STR_SORT_BY_FACILITY                                            :Tegund stöðvar
+STR_SORT_BY_RATING_MAX                                          :Flutningur farms
+STR_NO_WAITING_CARGO                                            :{BLACK}Enginn farmur bíður
+STR_SELECT_ALL_TYPES                                            :{BLACK}Velja allar tegundir farms (einnig þær sem ekki bíða)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -509,6 +545,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Velja 'S
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Hreinsa núverandi lista (aðeins Sérval1 eða Sérval2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Vista tónlistarstillingar
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Veldu lag til að bæta í núverandi lista (aðeins Sérval1 eða Sérval2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Smelltu á lag til að fjarlægja það úr listanum (á aðeins við um Sérvalið1 og Sérvalið2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Kveikja/slökkva á stokkun
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Sýna lagalista
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Ýttu á þjónustu til að færa sýnishorn á tiltekinn iðnað/bæ
@@ -756,7 +793,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Afrita s
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Gjaldeyriseining
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Val á gjaldeyriseiningu
+STR_MEASURING_UNITS                                             :{BLACK}Mælieiningar
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Veldu mælieiningu
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Bifreið
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Veldu vegarhelming fyrir bifreiðir
@@ -834,6 +873,7 @@ STR_TOWNNAME_ROMANIAN                                           :Rúmensk
 STR_TOWNNAME_CZECH                                              :Tékknesk
 STR_TOWNNAME_SWISS                                              :Svissnesk
 STR_TOWNNAME_DANISH                                             :Dönsk
+STR_TOWNNAME_TURKISH                                            :Tyrkneska
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
@@ -906,6 +946,8 @@ STR_ITEMS                                                       :hlutir
 STR_CRATES                                                      :kassar
 STR_RES_OTHER                                                   :annað
 STR_NOTHING                                                     :
+
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Get ekki deilt áætlun...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Get ekki afritað áætlun...
@@ -1046,6 +1088,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Breyta gildi stillingar
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Einhver eða öll bil milli skoðana hér fyrir neðan eru ósamhæfanleg við valdar stillingar! 5-90% og 30-800 dagar er leyfilegt
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Nota YAPF fyrir skip: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Nota YAPF fyrir bifreiðar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Nota YAPF fyrir lestir: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Temprað landslag
 STR_SUB_ARCTIC_LANDSCAPE                                        :Heimskautalandslag
@@ -1064,6 +1109,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Þotur b
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skipta um loftslag: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Breyta dagsetningu: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leyfa breytingar á verðmæti framleiðslu: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Leyfa rafdrifnum lestum að nota venjuleg spor
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Á leiðinni til {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Á leiðinni til {WAYPOINT}, {VELOCITY}
@@ -1127,6 +1173,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Dragðu e
 
 STR_DRAG_DROP                                                   :{BLACK}Draga & Sleppa
 STR_STATION_DRAG_DROP                                           :{BLACK}Byggja lestarstöð með 'draga og sleppa' aðferðinni
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Veldu flokk stöðva sem á að sýna
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Veldu tegund stöðvar til að reisa
 
 STR_FAST_FORWARD                                                :{BLACK}Spóla leikinn áfram
 STR_MESSAGE_HISTORY                                             :{WHITE}Saga skilaboða
@@ -1233,7 +1281,22 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Staðarnet / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (auglýsa)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 leikmenn
+STR_NETWORK_1_PLAYERS                                           :1 leikmaður
+STR_NETWORK_2_PLAYERS                                           :2 leikmenn
+STR_NETWORK_3_PLAYERS                                           :3 leikmenn
+STR_NETWORK_4_PLAYERS                                           :4 leikmenn
+STR_NETWORK_5_PLAYERS                                           :5 leikmenn
+STR_NETWORK_6_PLAYERS                                           :6 leikmenn
+STR_NETWORK_7_PLAYERS                                           :7 leikmenn
+STR_NETWORK_8_PLAYERS                                           :8 leikmenn
+STR_NETWORK_9_PLAYERS                                           :9 leikmenn
+STR_NETWORK_10_PLAYERS                                          :10 leikmenn
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Hámarksfjöldi fyrirtækja:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Takmarka fjölda fyrirtækja á vefþjóni
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Hámarksfjöldi áhorfanda:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Takmarka fjölda áhorfanda á vefþjóninum
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Tungumál:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
@@ -1331,6 +1394,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :rangt leikjalyk
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :rangt notandanúmer í DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :hent út af þjón
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :reyndi að svindla
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :vefþjónn fullur
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :hefur bæst við leikinn
 STR_NETWORK_GIVE_MONEY                                          :gaf fyrirtækinu þínu pening ({CURRENCY})
@@ -1394,6 +1458,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Enginn h
 STR_1007_ALREADY_BUILT                                          :{WHITE}...nú þegar byggt
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Verður að fjarlægja lestartein fyrst
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Járnbrautarlestarframkvæmdir
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Raflestaframkvæmdir
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Einteinungsframkvæmdir
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev framkvæmdir
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Veldu tegund brúar
@@ -1405,6 +1470,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Get ekki
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Get ekki fjarlægt umferðarljós héðan...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Lega lestarskýlis
 STR_1015_RAILROAD_CONSTRUCTION                                  :Járnbrautarlestarframkvæmdir
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Raflestarramkvæmdir
 STR_1016_MONORAIL_CONSTRUCTION                                  :Einteinungsframkvæmdir
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev framkvæmdir
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Leggja lestartein
@@ -1649,6 +1715,9 @@ STR_3069_BUOY                                                   :Bauja
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bauja fyrir
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stöð of dreyfð
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...óregluleg lögun lestarstöðva bönnuð
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Haltu CTRL inni til að velja fleiri en eitt
+
+STR_UNDEFINED                                                   :(óskilgreindur strengur)
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Staða skipaslipps
@@ -2354,6 +2423,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Lestin e
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Aðeins er hægt að eiga við lestir þegar þær bíða í skýli
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Lestir
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nýir lestarvagnar
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nýjir rafdrifnir lestarvagnar
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nýir einteingungsvagnar
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nýir segullestarvagnar
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Smíða vagn
@@ -2387,6 +2457,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Get ekki
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Get ekki eytt þessari skipun...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Get ekki breytt þessari skipun...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Get ekki fært farartæki...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Aftari dráttarvagn fylgir alltaf fremri hluta
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Get ekki selt lest...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Get ekki fundið leit til staðbundins skýlis
@@ -2447,6 +2518,7 @@ STR_886F_TRANSFER                                               :{BLACK}Yfirfæra
 
 STR_TRAIN_STOPPING                                              :{RED}Stöðva
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stöðva, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Ósamstæðir lestarteinar
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Bíll fyrir
@@ -2504,6 +2576,7 @@ STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Endurnef
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE} Get ekki endurnefnat tegund bifreiðar...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Fara í {TOWN} bifreiðaskýli
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Skoða í  {TOWN} bifreiðaskýli
+
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Hafnarframkvæmdir
@@ -2709,6 +2782,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Sýnisho
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta sérvöldum gjaldeyri
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
@@ -2737,6 +2811,12 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Veldu hv
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Sýnir hvaða vagn kemur í stað þess sem valinn er vinstra megin
 STR_REPLACE_HELP                                                :{BLACK}Þetta gerir þér kleift að skipta út öllum vögum af einni tegund með annarri, þegar þeir fara í lestarskýli
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Skipti út: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ekki hægt að smíða dráttarvagn
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Flugvöllurinn hefur enga flugbraut
+
+STR_ENGINES                                                     :Dráttarvagnar
+STR_WAGONS                                                      :Vagnar
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} merki
@@ -2744,6 +2824,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjali
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Járnbrautavagnar
+STR_ELRAIL_VEHICLES                                             :Rafdrifnir lestarvagnar
 STR_MONORAIL_VEHICLES                                           :Einteinungsvagnar
 STR_MAGLEV_VEHICLES                                             :Segulsvifvagnar
 
@@ -2763,3 +2844,18 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Þyngd: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hámarkshraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Burðargeta: {GOLD}{COMMA} farþegar, {COMMA} pokar af pósti
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagnar: {GOLD}+{POWER}{BLACK} Þyngd: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Lítill
+STR_CITY_AIRPORT                                                :{BLACK}Borg
+STR_METRO_AIRPORT                                               :{BLACK}Stórborgar flugvöllur
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Alþjóðaflugvöllur
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Meginlandsflugvöllur
+STR_HELIPORT                                                    :{BLACK}Þyrlupallur
+STR_HELIDEPOT                                                   :{BLACK}Þyrluskýli
+STR_HELISTATION                                                 :{BLACK}Þyrlustöð
+
+STR_SMALL_AIRPORTS                                              :{BLACK}Litlir flugvellir
+STR_LARGE_AIRPORTS                                              :{BLACK}Stórir flugvellir
+STR_HELIPORTS                                                   :{BLACK}Þyrluflugvellir
+########
