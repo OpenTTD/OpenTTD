@@ -29,6 +29,8 @@
 #include "industry_map.h"
 #include "station_map.h"
 #include "water_map.h"
+#include "network.h"
+#include "yapf/yapf.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
@@ -610,6 +612,14 @@ static VehicleTickProc* _vehicle_tick_procs[] = {
 void CallVehicleTicks(void)
 {
 	Vehicle *v;
+
+#ifdef ENABLE_NETWORK
+	// hotfix for desync problem:
+	//  for MP games invalidate the YAPF cache every tick to keep it exactly the same on the server and all clients
+	if (_networking) {
+		YapfNotifyTrackLayoutChange(0, 0);
+	}
+#endif //ENABLE_NETWORK
 
 	_first_veh_in_depot_list = NULL;	// now we are sure it's initialized at the start of each tick
 
