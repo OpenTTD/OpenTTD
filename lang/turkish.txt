@@ -551,6 +551,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}'Özel 2'
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Simdiki programi temizle (Sadece özel1 ve özel2 için)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Müzik ayarlarini kaydet
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Su anki programa eklenecek müzige tiklayin (Sadece özel1 ve özel2 için)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kullanilan programdan kaldirilacak müzige tiklayin(Custom1 veya Custom2 için geçerli)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Rastgele programi aç/kapa
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Sarki seçim penceresini göster
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Görüntüyü ortalamak için servisi tiklayin

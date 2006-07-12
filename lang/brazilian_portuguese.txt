@@ -2548,7 +2548,7 @@ STR_9012_CAPACITY                                               :{BLACK}Capacida
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve estar parado num depósito de veículos de estrada
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Não é possível vender veículo de estrada...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Não é possível iniciar/parar veículo de estrada...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Veículo de Estrada {COMMA} está a aguardar no depósito
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Veículo de Estrada {COMMA} está aguardando no depósito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Dirige-se ao depósito de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Dirige-se ao depósito de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Não é possível mandar o veículo para o depósito...
@@ -2621,7 +2621,7 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Não é po
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Não é possível encontrar depósito local
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Dirige-se ao depósito de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Dirige-se ao depósito {TOWN}, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Navio {COMMA} está a aguardar no depósito
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Navio {COMMA} está aguardando no depósito
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construir doca naval
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir depósito (para criação e manutenção de barcos)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navios - clique num navio para informações
@@ -2651,7 +2651,7 @@ STR_9836_RENAME                                                 :{BLACK}Renomear
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Renomear tipo de barco
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Renomear tipo de barco
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Não é possível renomear tipo de barco...
-STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Adaptar barco de mercadorias para um tipo de carga diferente
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Adaptar navio de carga para um tipo de carga diferente
 STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Adaptar)
 STR_983C_REFIT_SHIP                                             :{BLACK}Adaptar barco
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccionar tipo de carga do barco
@@ -2686,7 +2686,7 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Não é possível mandar aeronave para o hangar...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Dirige-se ao hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Dirige-se ao hangar de {STATION}, {VELOCITY}
-STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronave {COMMA} está a aguardar no hangar
+STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronave {COMMA} está aguardando no hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave no caminho
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Não é possível iniciar/parar aeronave...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronave está em voo
