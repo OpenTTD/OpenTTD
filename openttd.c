@@ -971,7 +971,8 @@ void GameLoop(void)
 
 #ifdef ENABLE_NETWORK
 	// Check for UDP stuff
-	NetworkUDPGameLoop();
+	if (_network_available)
+		NetworkUDPGameLoop();
 
 	if (_networking) {
 		// Multiplayer
