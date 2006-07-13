@@ -79,6 +79,19 @@ int compare_FiosItems(const void *a, const void *b)
 	return r;
 }
 
+#if !defined(__MORPHOS__) && !defined(__AMIGAOS__)
+#define ISROOT(__p)  (__p[1] == '\0')
+#define PATHTEMPLATE "%s/%s"
+#else
+/*  on MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory".
+ *  This is some evil magic which tries to handle this transparently w/o
+ *  disturbing code with too much #ifdefs. It's not possible to switch the
+ *  volume, but at least it doesn't crash :) (tokai)
+ */
+static bool __isroot; /* not very thread save, but will do in this case */
+#define ISROOT(__p)  (__isroot = (__p[strlen(__p)-1] == ':'))
+#define PATHTEMPLATE (__isroot ? "%s:%s" : "%s/%s")
+#endif
 
 // Get a list of savegames
 FiosItem *FiosGetSavegameList(int *num, int mode)
@@ -98,7 +111,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	_fios_path = _fios_save_path;
 
 	// Parent directory, only if not in root already.
-	if (_fios_path[1] != '\0') {
+	if (!ISROOT(_fios_path)) {
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
@@ -110,7 +123,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 	dir = opendir(_fios_path);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
-			snprintf(filename, lengthof(filename), "%s/%s",
+			snprintf(filename, lengthof(filename), PATHTEMPLATE,
 				_fios_path, dirent->d_name);
 			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
 					dirent->d_name[0] != '.') {
@@ -147,7 +160,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 		while ((dirent = readdir(dir)) != NULL) {
 			char *t;
 
-			snprintf(filename, lengthof(filename), "%s/%s",
+			snprintf(filename, lengthof(filename), PATHTEMPLATE,
 				_fios_path, dirent->d_name);
 			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
 
@@ -202,7 +215,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	_fios_path = _fios_scn_path;
 
 	// Parent directory, only if not of the type C:\.
-	if (_fios_path[1] != '\0' && mode != SLD_NEW_GAME) {
+	if ((!ISROOT(_fios_path)) && mode != SLD_NEW_GAME) {
 		fios = FiosAlloc();
 		fios->type = FIOS_TYPE_PARENT;
 		fios->mtime = 0;
@@ -213,7 +226,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	dir = opendir(_fios_path);
 	if (dir != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
-			snprintf(filename, lengthof(filename), "%s/%s",
+			snprintf(filename, lengthof(filename), PATHTEMPLATE,
 				_fios_path, dirent->d_name);
 			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
 					dirent->d_name[0] != '.') {
@@ -249,7 +262,7 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 		while ((dirent = readdir(dir)) != NULL) {
 			char *t;
 
-			snprintf(filename, lengthof(filename), "%s/%s", _fios_path, dirent->d_name);
+			snprintf(filename, lengthof(filename), PATHTEMPLATE, _fios_path, dirent->d_name);
 			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
 
 			t = strrchr(dirent->d_name, '.');
@@ -301,16 +314,25 @@ char *FiosBrowseTo(const FiosItem *item)
 
 	switch (item->type) {
 		case FIOS_TYPE_PARENT:
-			s = strrchr(path, '/');
-			if (s != path) {
-				s[0] = '\0';
-			} else {
-				s[1] = '\0';
+			/* Check for possible NULL ptr (not required for UNIXes, but AmigaOS-alikes) */
+			if ((s = strrchr(path, '/'))) {
+				if (s != path) {
+					s[0] = '\0';
+				} else {
+					s[1] = '\0';
+				}
 			}
+#if defined(__MORPHOS__) || defined(__AMIGAOS__)
+			else {
+				if ((s = strrchr(path, ':'))) {
+					s[1] = '\0';
+				}
+			}
+#endif
 			break;
 
 		case FIOS_TYPE_DIR:
-			if (path[1] != '\0') strcat(path, "/");
+			if (!ISROOT(path)) strcat(path, "/");
 			strcat(path, item->name);
 			break;
 
@@ -326,7 +348,11 @@ char *FiosBrowseTo(const FiosItem *item)
 		case FIOS_TYPE_OLD_SCENARIO: {
 			static char str_buffr[512];
 
-			sprintf(str_buffr, "%s/%s", path, item->name);
+#if defined(__MORPHOS__) || defined(__AMIGAOS__)
+			ISROOT(path); /* init __isroot for PATHTEMPLATE */
+#endif
+
+			sprintf(str_buffr, PATHTEMPLATE, path, item->name);
 			return str_buffr;
 		}
 	}
