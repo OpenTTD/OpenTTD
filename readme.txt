@@ -166,8 +166,9 @@ FreeBSD:
   Use "gmake".
 
 MorphOS:
-  Use "make". Note that you need the MorphOS SDK and the
-  powersdl.library SDK.
+  Use "make". Note that you need the MorphOS SDK, latest libnix updates (else
+  C++ parts of OpenTTD will not build) and the powersdl.library SDK. Optionally
+  libz and libpng developer files.
 
 OS/2:
   Open Watcom C/C++ 1.3 or later is required to build the OS/2 version. See the
@@ -280,7 +281,7 @@ Thanks to:
   Stefan Meiﬂner (sign_de) - For his work on the console
   Mike Ragsdale - OpenTTD installer
   Cian Duffy (MYOB) - BeOS port / manual writing
-  Christian Rosentreter (tokaiz) - MorphOS / AmigaOS port
+  Christian Rosentreter (tokai) - MorphOS / AmigaOS port
   Michael Blunck - For revolutionizing TTD with awesome graphics
   George - Canal graphics
   All Translators - For their support to make OpenTTD a truly international game

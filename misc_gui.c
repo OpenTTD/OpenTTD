@@ -214,7 +214,7 @@ static const char *credits[] = {
 	"  Stefan Meiﬂner (sign_de) - For his work on the console",
 	"  Simon Sasburg (HackyKid) - Many bugfixes he has blessed us with (and PBS)",
 	"  Cian Duffy (MYOB) - BeOS port / manual writing",
-	"  Christian Rosentreter (tokaiz) - MorphOS / AmigaOS port",
+	"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
 	"",
 	"  Michael Blunck - Pre-Signals and Semaphores © 2003",
 	"  George - Canal/Lock graphics © 2003-2004",
