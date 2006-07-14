@@ -98,3 +98,4 @@ void CheckSwitchToEuro(void)
 		AddNewsItem(STR_EURO_INTRODUCE, NEWS_FLAGS(NM_NORMAL, 0, NT_ECONOMY, 0), 0, 0);
 	}
 }
+

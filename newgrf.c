@@ -1067,11 +1067,6 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 	return ret;
 }
 
-static bool CargosChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
-{
-	return false;
-}
-
 static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, int len)
 {
 	byte *buf = *bufp;
@@ -1131,7 +1126,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 		/* GSF_GLOBALVAR */    GlobalVarChangeInfo,
 		/* GSF_INDUSTRYTILES */NULL,
 		/* GSF_INDUSTRIES */   NULL,
-		/* GSF_CARGOS */       CargosChangeInfo,
+		/* GSF_CARGOS */       NULL,
 		/* GSF_SOUNDFX */      NULL,
 	};
 
