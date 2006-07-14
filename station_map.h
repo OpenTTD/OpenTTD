@@ -42,7 +42,7 @@ enum {
 	GFX_RADAR_DISTRICTWE_LAST     = 156,
 	GFX_WINDSACK_INTERCON_FIRST   = 164,
 	GFX_WINDSACK_INTERCON_LAST    = 167,
-	GFX_BASE_END                  = 167
+	GFX_BASE_END                  = 168
 };
 
 enum {
