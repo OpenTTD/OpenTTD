@@ -380,6 +380,8 @@ STR_SORT_BY_FACILITY                                            :Typ stanice
 STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
 STR_SORT_BY_RATING_MAX                                          :Hodnotenie prepravy
 STR_NO_WAITING_CARGO                                            :{BLACK}Neceka ziadny typ nakladu
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
+STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1169,6 +1171,8 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Prenes l
 
 STR_DRAG_DROP                                                   :{BLACK}Automaticky
 STR_STATION_DRAG_DROP                                           :{BLACK}Automaticky postavit stanicu podla oznaceneho bloku terenu
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Vyberte druh stanice pre zobrazenie
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vyberte typ stanice pre vystavbu
 
 STR_FAST_FORWARD                                                :{BLACK}Rychle posunutie hry do predu
 STR_MESSAGE_HISTORY                                             :{WHITE}Historia Sprav
@@ -1488,6 +1492,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kola
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Cesta musi byt najskor odstranena
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Prebiehaju cestne prace
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vystavba cesty
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vyber cestny most
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Tu sa neda postavit cesta...
@@ -1709,6 +1714,7 @@ STR_3069_BUOY                                                   :Boja
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja v ceste
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stanica je prilis velka
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nejednoliate stanice su zakazane
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podrzte CTRL pre vyber viacerych poloziek
 
 STR_UNDEFINED                                                   :(nedefinovaný retezec)
 STR_STAT_CLASS_DFLT                                             :Pôvodná stanica
@@ -2513,6 +2519,7 @@ STR_886F_TRANSFER                                               :{BLACK}Prekladk
 
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Nekompatibilne typy kolaji
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobil v ceste
@@ -2571,6 +2578,11 @@ STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Premenov
 STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nemozno premenovat typ automobilu...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Chod do {TOWN} garaze
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Opravit v {TOWN} garazi
+
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prestavat vozidlo na prepravu ineho druhu nakladu
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Prestavat vozidlo
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Prestavat vozidlo na prepravu vyznaceneho druhu nakladu
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Prestavba vozidla nie je mozna ...
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Stavba doku
@@ -2808,6 +2820,7 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstrane
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena masiny vlak predlzila.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovanie: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTALNA VLASTNOST {}Prepne medzi oknami na vymenu lokomotiv a vagonov.{}Vagon sa vymeni, len ked je nový vagon schopny vozit rovnaky naklad, ako ten stary. Toto sa overuje pre kazdy vagon.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Nie je mozne postavit
 
 STR_ENGINES                                                     :lokomotívy
 STR_WAGONS                                                      :Vagonov
@@ -2838,3 +2851,17 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestujucich, {COMMA} balikov posty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
+
+########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Maly
+STR_METRO_AIRPORT                                               :{BLACK}Metropolitne letisko
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Medzinarodne letisko
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Medzikontinentalny
+STR_HELIPORT                                                    :{BLACK}Heliport
+STR_HELIDEPOT                                                   :{BLACK}Helidepot
+STR_HELISTATION                                                 :{BLACK}Stanice pre vrtulniky
+
+STR_LARGE_AIRPORTS                                              :{BLACK}Velke letiska
+STR_HUB_AIRPORTS                                                :{BLACK}Rozbocovacie letiska
+STR_HELIPORTS                                                   :{BLACK}Letiska pre vrtulniky
+########

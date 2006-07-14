@@ -1886,18 +1886,18 @@ STR_SV_SHIP_NAME                                                :Barco {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Aeronave {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{STRING} Norte
-STR_SV_STNAME_SOUTH                                             :{STRING} Sul
+STR_SV_STNAME_NORTH                                             :Norte de {STRING}
+STR_SV_STNAME_SOUTH                                             :Sul de {STRING}
 STR_SV_STNAME_EAST                                              :{STRING} Leste
-STR_SV_STNAME_WEST                                              :{STRING} Oeste
-STR_SV_STNAME_CENTRAL                                           :{STRING} Central
-STR_SV_STNAME_TRANSFER                                          :{STRING} Transporte
-STR_SV_STNAME_HALT                                              :{STRING} Paragem
+STR_SV_STNAME_WEST                                              :Oeste de {STRING}
+STR_SV_STNAME_CENTRAL                                           :Central de {STRING}
+STR_SV_STNAME_TRANSFER                                          :{STRING} Baldeação
+STR_SV_STNAME_HALT                                              :Parada de {STRING}
 STR_SV_STNAME_VALLEY                                            :Vale de {STRING}
 STR_SV_STNAME_HEIGHTS                                           :Montes de {STRING}
 STR_SV_STNAME_WOODS                                             :Floresta de {STRING}
 STR_SV_STNAME_LAKESIDE                                          :Lago de {STRING}
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Intercâmbio
+STR_SV_STNAME_EXCHANGE                                          :Intercâmbio de {STRING}
 STR_SV_STNAME_AIRPORT                                           :Aeroporto de {STRING}
 STR_SV_STNAME_OILFIELD                                          :Petrolífera de {STRING}
 STR_SV_STNAME_MINES                                             :Minas de {STRING}
@@ -1911,11 +1911,11 @@ STR_SV_STNAME_BUOY_6                                            :{STRING} Bóia 6
 STR_SV_STNAME_BUOY_7                                            :{STRING} Bóia 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} Bóia 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} Bóia 9
-STR_SV_STNAME_ANNEXE                                            :{STRING} Anexo
+STR_SV_STNAME_ANNEXE                                            :Anexo de {STRING}
 STR_SV_STNAME_SIDINGS                                           :Desvio de {STRING}
 STR_SV_STNAME_BRANCH                                            :Ramal de {STRING}
-STR_SV_STNAME_UPPER                                             :{STRING} do norte
-STR_SV_STNAME_LOWER                                             :{STRING} do sul
+STR_SV_STNAME_UPPER                                             :{STRING} de cima
+STR_SV_STNAME_LOWER                                             :Sul de {STRING}
 STR_SV_STNAME_HELIPORT                                          :Heliporto de {STRING}
 STR_SV_STNAME_FOREST                                            :Floresta de {STRING}
 

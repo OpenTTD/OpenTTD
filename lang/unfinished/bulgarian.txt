@@ -1604,6 +1604,32 @@ STR_8098_KELLING_STEEL_TRUCK                                    :Камион з
 STR_8099_BALOGH_ARMORED_TRUCK                                   :Камион за скъпоценности "Балоф"
 STR_809A_UHL_ARMORED_TRUCK                                      :Камион за скъпоценности "Ухл"
 STR_809B_FOSTER_ARMORED_TRUCK                                   :Камион за скъпоценности "Грижовният"
+STR_809C_FOSTER_FOOD_VAN                                        :камион за храна Фостер
+STR_809D_PERRY_FOOD_VAN                                         :камион за храна Пери
+STR_809E_CHIPPY_FOOD_VAN                                        :камион за храна Чипи
+STR_809F_UHL_PAPER_TRUCK                                        :камион за хартия Ул
+STR_80A0_BALOGH_PAPER_TRUCK                                     :камион за хартия Бейлоф
+STR_80A1_MPS_PAPER_TRUCK                                        :камион за хартия MPS
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :камион за медна руда MPS
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :камион за медна руда Ул
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :камион за медна руда Гос
+STR_80A5_UHL_WATER_TANKER                                       :камион за вода Ул
+STR_80A6_BALOGH_WATER_TANKER                                    :камион за вода Бейлоф
+STR_80A7_MPS_WATER_TANKER                                       :камион за вода MPS
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :камион за плодове Бейлоф
+STR_80A9_UHL_FRUIT_TRUCK                                        :камион за плодове Ул
+STR_80AA_KELLING_FRUIT_TRUCK                                    :камион за плодове Келинг
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :камион за каучук Бейлоф
+STR_80AC_UHL_RUBBER_TRUCK                                       :камион за каучук Ул
+STR_80AD_RMT_RUBBER_TRUCK                                       :камион за каучук RMT
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :камион за захар Майтимувер
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :камион за захар Пауернат
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :камион за захар Уизоуоу
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :камион за кола Майтимувер
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :камион за кола Пауернат
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :камион за кола Уизоуоу
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :камион за захарен памук Майтимувер
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :камион за захарен памук Пауернат
 STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Уизоуоу камион за захарен памук
 STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :Майтимувер камион за карамел
 STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Пауернаут камион за карамел
