@@ -1148,7 +1148,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, byte cargo_type, int num_pieces
 				 == ind->accepts_cargo[1] || cargo_type == ind->accepts_cargo[2]) &&
 				 ind->produced_cargo[0] != CT_INVALID &&
 				 ind->produced_cargo[0] != cargo_type &&
-				 (t = DistanceManhattan(ind->xy, xy)) < 2) {
+				 (t = DistanceManhattan(ind->xy, xy)) < u) {
 			u = t;
 			best = ind;
 		}
