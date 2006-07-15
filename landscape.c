@@ -193,6 +193,7 @@ static Slope GetFoundationSlope(TileIndex tile, uint* z)
 
 	FindLandscapeHeightByTile(&ti, tile);
 	tileh = ti.tileh;
+	*z    = ti.z;
 	slope = _tile_type_procs[GetTileType(tile)]->get_slope_tileh_proc(&ti);
 
 	// Flatter slope -> higher base height
