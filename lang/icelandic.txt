@@ -88,7 +88,7 @@ STR_QUANTITY_PASSENGERS                                         :{COMMA} farþeg{
 STR_QUANTITY_COAL                                               :{WEIGHT} af kolum
 STR_QUANTITY_MAIL                                               :{COMMA} pokar af pósti
 STR_QUANTITY_OIL                                                :{VOLUME} af olíu
-STR_QUANTITY_LIVESTOCK                                          :{COMMA} nautgrip{P u i}r
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} grip{P u i}r
 STR_QUANTITY_GOODS                                              :{COMMA} kass{P i ar} af vörum
 STR_QUANTITY_GRAIN                                              :{WEIGHT} af korni
 STR_QUANTITY_WOOD                                               :{WEIGHT} af timbri
@@ -120,7 +120,7 @@ STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL
 STR_ABBREV_MAIL                                                 :{TINYFONT}ML
 STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}gripir
 STR_ABBREV_GOODS                                                :{TINYFONT}GD
 STR_ABBREV_GRAIN                                                :{TINYFONT}GR
 STR_ABBREV_WOOD                                                 :{TINYFONT}WD
@@ -1494,6 +1494,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Lestarteinn með
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Verður að fjarlægja veg fyrst
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vegaframkvæmdir standa yfir
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vegagerð
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Veldu vegabrú
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Get ekki lagt veg hér...
@@ -1718,6 +1719,7 @@ STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...óregl
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Haltu CTRL inni til að velja fleiri en eitt
 
 STR_UNDEFINED                                                   :(óskilgreindur strengur)
+STR_STAT_CLASS_WAYP                                             :Millistöð
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Staða skipaslipps
@@ -2150,7 +2152,7 @@ STR_801B_PASSENGER_CAR                                          :Fólks
 STR_801C_MAIL_VAN                                               :Póst Geymsla
 STR_801D_COAL_CAR                                               :Kola Pallur
 STR_801E_OIL_TANKER                                             :Olíu Tankur
-STR_801F_LIVESTOCK_VAN                                          :Búfénaðs Geymsla
+STR_801F_LIVESTOCK_VAN                                          :Búfénaðsvagn
 STR_8020_GOODS_VAN                                              :Gæðavöru Geymsla
 STR_8021_GRAIN_HOPPER                                           :Hveiti Pallur
 STR_8022_WOOD_TRUCK                                             :Viðar Pallur
@@ -2180,7 +2182,7 @@ STR_8039_PASSENGER_CAR                                          :Fólks bifreið
 STR_803A_MAIL_VAN                                               :Póst geymsl
 STR_803B_COAL_CAR                                               :Kola trukkure
 STR_803C_OIL_TANKER                                             :Olíu Tankur
-STR_803D_LIVESTOCK_VAN                                          :Nautgripa Geymsla
+STR_803D_LIVESTOCK_VAN                                          :Búfénaðsvagn
 STR_803E_GOODS_VAN                                              :Gæðavöru Geymsla
 STR_803F_GRAIN_HOPPER                                           :Hveiti Pallur
 STR_8040_WOOD_TRUCK                                             :Viðar Pallur
@@ -2212,7 +2214,7 @@ STR_8059_PASSENGER_CAR                                          :Fólks Bifreið
 STR_805A_MAIL_VAN                                               :Póst Geymsla
 STR_805B_COAL_CAR                                               :Kola Pallur
 STR_805C_OIL_TANKER                                             :Olíu Tankur
-STR_805D_LIVESTOCK_VAN                                          :Búfénaðs Geymsla
+STR_805D_LIVESTOCK_VAN                                          :Búfénaðsvagn
 STR_805E_GOODS_VAN                                              :Gæðavöru Geymsla
 STR_805F_GRAIN_HOPPER                                           :Hveiti Pallur
 STR_8060_WOOD_TRUCK                                             :Viðar Pallur
@@ -2254,9 +2256,9 @@ STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow Póstbí
 STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe Olíubíll
 STR_8085_FOSTER_OIL_TANKER                                      :Foster Olíubíll
 STR_8086_PERRY_OIL_TANKER                                       :Perry Olíubíll
-STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott Nautgripabíll
-STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl Nautgripabíll
-STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Nautgripabíll
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott búfénaðsbíll
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl búfénaðsbíll
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster búfénaðsbíll
 STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh Gæðavörubíll
 STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead Gæðavörubíll
 STR_808C_GOSS_GOODS_TRUCK                                       :Goss Gæðavörubíll
@@ -2570,6 +2572,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Bílslys!{}Bílstjóri deyr í sprengingu eftir árekstur við lest
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Bílslys!{}{COMMA} deyja í sprengingu eftir árekstur við lest
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Get ekki snúið bifreið við...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Get ekki snúið vögnum sem tilheyra vagnapari
 STR_9034_RENAME                                                 :{BLACK}Endurnefna
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Endurnefna tegund bifreiðar
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Endurnefna tegund bifreiðar
@@ -2577,6 +2580,10 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE} Get ekk
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Fara í {TOWN} bifreiðaskýli
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Skoða í  {TOWN} bifreiðaskýli
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Breyta bifreið svo hún flytji annan farm
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Breyta bifreið
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Breyta bifreið svo hún flytji valinn farm
+STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Get ekki breytt bifreið...
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Hafnarframkvæmdir
@@ -2812,6 +2819,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Sýnir hv
 STR_REPLACE_HELP                                                :{BLACK}Þetta gerir þér kleift að skipta út öllum vögum af einni tegund með annarri, þegar þeir fara í lestarskýli
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Skipti út: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} TILRAUNAEIGINLEIKI {}Skipta á milli útskiptiglugga dráttar- og flutningavagna.{}Útskipting vagna fer aðeins fram ef hægt er að breyta nýju vögnunum til að flytja sama farm og þeir gömlu. Það er kannað fyrir hvern vagn þegar útskipting á honum fer fram.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ekki hægt að smíða dráttarvagn
 STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Flugvöllurinn hefur enga flugbraut
 
@@ -2846,10 +2854,11 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Burðarge
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagnar: {GOLD}+{POWER}{BLACK} Þyngd: {GOLD}+{WEIGHT_S}
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Lítill
-STR_CITY_AIRPORT                                                :{BLACK}Borg
-STR_METRO_AIRPORT                                               :{BLACK}Stórborgar flugvöllur
+STR_SMALL_AIRPORT                                               :{BLACK}Lítill flugvöllur
+STR_CITY_AIRPORT                                                :{BLACK}Borgarflugvöllur
+STR_METRO_AIRPORT                                               :{BLACK}Stórborgarflugvöllur
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Alþjóðaflugvöllur
+STR_COMMUTER_AIRPORT                                            :{BLACK}Innanlandsflugvöllur
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Meginlandsflugvöllur
 STR_HELIPORT                                                    :{BLACK}Þyrlupallur
 STR_HELIDEPOT                                                   :{BLACK}Þyrluskýli
@@ -2857,5 +2866,6 @@ STR_HELISTATION                                                 :{BLACK}Þyrlustö
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Litlir flugvellir
 STR_LARGE_AIRPORTS                                              :{BLACK}Stórir flugvellir
+STR_HUB_AIRPORTS                                                :{BLACK}Háannaflugvellir
 STR_HELIPORTS                                                   :{BLACK}Þyrluflugvellir
 ########

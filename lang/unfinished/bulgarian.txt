@@ -1787,11 +1787,81 @@ STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Тегл
 
 
 ##id 0x9000
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Прати МПС-то в депото
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Накарай МПС-то да обърне
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Покажи детайлите на МПС-то
+STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}МПС-та - натисни върху МПС за информация
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Купи ново МПС
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Премести МПС-то тук, за да го продадеш
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Фокусирай общия план върху местонахождението на МПС-депото
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Списък с избор на МПС-та - натисни върху МПС за информация
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Купи посоченото МПС
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Ново МПС излезе на пазара!
+STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорост: {VELOCITY}{}Оперативен разход: {CURRENCY}/год{}Вместимост: {STRING}
 
+STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Преименувай МПС-то
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Не може да преименуваш МПС-то...
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Преименувай МПС-то
+STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи автобус пристигна на {STATION}!
+STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи камион пристигна на {STATION}!
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}Шофьор загина на място при екплозия на МПС след сблъсък с влак
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Пътно-транспортно Произшествие!{}{COMMA} загинаха на място при екплозия на МПС след сблъсък с влак
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Не може да обърнеш МПС-то...
+STR_9034_RENAME                                                 :{BLACK}Преименувай
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Преименувай МПС-то
+STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Преименувай МПС-то
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Не може да преименуваш МПС-то...
+STR_9038_GO_TO_ROADVEH_DEPOT                                    :Отиди  в {TOWN} МПС-депото
 
 
 ##id 0x9800
+STR_9800_DOCK_CONSTRUCTION                                      :Създаване на Пристанище
+STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Създаване на Пристанище
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Не може да построиш пристанище тук...
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Корабно депо
+STR_9804_NEW_SHIPS                                              :{BLACK}Нови Кораби
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Кораб{P "" и}
+STR_9808_NEW_SHIPS                                              :{WHITE}Нови Кораби
+STR_9809_BUILD_SHIP                                             :{BLACK}Купи Кораб
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Корабът трябва да е спрян в депото
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Не може да продадеш кораба...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Не може да купиш кораба...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Кораб на пътя
+STR_980F                                                        :{WHITE}{VEHICLE}
+STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Детайли)
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Възраст: {LTBLUE}{STRING}{BLACK}   Оперативни разходи: {LTBLUE}{CURRENCY}/год
+STR_9813_MAX_SPEED                                              :{BLACK}Макс. скорост: {LTBLUE}{VELOCITY}
+STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Печалба тази година: {LTBLUE}{CURRENCY}  (миналата година: {CURRENCY})
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Повреди след последния сервиз: {LTBLUE}{COMMA}
+STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Купен: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
+STR_9817_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{STRING}
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не може да спреш/задвижиш кораба...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не може да пратиш кораба в депото...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Не може да намери местното депо
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Кораб {COMMA} чака в депото
+STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Създай Пристанище
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Създай Корабно Депо (за закупуване и обслужване на кораби)
+STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Кораби - натисни върху кораб за инфорамция
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Купи нов кораб
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Премести кораба тук, за да го продадеш
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Фокусирай общия план върху местонахождението на корабното депо
+STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Кораби - натисни върху кораб за информация
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Купи нови кораби (необходимо е корабно депо)
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Списък с избор на кораби - натисни върху кораб за информация
+STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Купи посоченият кораб
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Настоящо корабно действие - натисни тук, за да спреш/задвижиш кораба
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Покажи заповедите на кораба
+STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Фокусирай общия план върху местонахождението на кораба
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Прати кораба в депото
+STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Покажи детайлите за кораба
+STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Нов кораб излезе на пазара!
+STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Макс. Скорост: {VELOCITY}{}Вместимост: {STRING}{}Оперативен разход: {CURRENCY}/год
+STR_982F_NAME_SHIP                                              :{BLACK}Наименувай кораба
 
+STR_9831_NAME_SHIP                                              :{WHITE}Наименувай кораба
+STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Не може да наименуваш кораба...
 SERVICE_AT_SHIP_DEPOT                                           :Сервиз на {TOWN} док
 
 ##id 0xA000

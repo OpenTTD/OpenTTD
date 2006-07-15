@@ -146,6 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BT
 STR_ABBREV_PLASTIC                                              :{TINYFONT}ZU
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SU
+STR_ABBREV_NONE                                                 :{TINYFONT}NIE
+STR_ABBREV_ALL                                                  :{TINYFONT}VSETKO
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
@@ -306,6 +308,7 @@ STR_0151_MAP_OF_WORLD                                           :Mapa sveta
 STR_0152_TOWN_DIRECTORY                                         :Zoznam miest
 STR_0153_SUBSIDIES                                              :Dotacie
 
+STR_UNITS_IMPERIAL                                              :Imperialne
 STR_UNITS_METRIC                                                :Metricke
 STR_UNITS_SI                                                    :SI
 
@@ -548,6 +551,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Vybrat '
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Vymazat aktualny program (len Vlastny 1 a Vlastny 2 program)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Ulozit nastavenie hudby
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Kliknut na stopu pre ulozenie (len Vlastny 1 a Vlastny 2 program)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kliknite na hudobnu stopu pre jej odstranenie z programu (len Custom1 alebo Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Zapnut / Vypnut nahodny vyber
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Zobrazit okno pre vyber hudobnych stop
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Kliknut na trasu pre centrovanie pohladu na tovaren/mesto
@@ -1090,6 +1094,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Zmenit hodnotu nastavenia
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Niektore alebo vsetky implicitne servisne intervaly su nekompatibilne s vybranym nastavenim. 5-90% a 30-800 dni su sprave.
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Pouzit YAPF pre lode: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Pouzit YAPF pre vozidla: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Pouzit YAPF pre vlaky: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :krajina mierneho pasma
 STR_SUB_ARCTIC_LANDSCAPE                                        :subarkticka krajina
@@ -1108,6 +1115,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Triskov
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmenit klimu: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povolit zmenu objemu vyroby: {ORANGE}{STRING}
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Umoznit pouzitie el. rusnov na normalnych tratiach
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Smeruje do {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Smeruje do {WAYPOINT}, {VELOCITY}
@@ -2821,6 +2829,7 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia 
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovanie: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTALNA VLASTNOST {}Prepne medzi oknami na vymenu lokomotiv a vagonov.{}Vagon sa vymeni, len ked je nový vagon schopny vozit rovnaky naklad, ako ten stary. Toto sa overuje pre kazdy vagon.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Nie je mozne postavit
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Letisko nema pristavaciu drahu
 
 STR_ENGINES                                                     :lokomotívy
 STR_WAGONS                                                      :Vagonov
@@ -2854,8 +2863,10 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Maly
+STR_CITY_AIRPORT                                                :{BLACK}Mesto
 STR_METRO_AIRPORT                                               :{BLACK}Metropolitne letisko
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Medzinarodne letisko
+STR_COMMUTER_AIRPORT                                            :{BLACK}Komutator
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Medzikontinentalny
 STR_HELIPORT                                                    :{BLACK}Heliport
 STR_HELIDEPOT                                                   :{BLACK}Helidepot

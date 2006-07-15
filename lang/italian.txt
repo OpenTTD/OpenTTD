@@ -551,7 +551,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Selezion
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Elimina programmazioni attuali (solo personalizzato 1 o personalizzato 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Salva le impostazioni musicali
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Clicca sul brano per aggiungerlo al programma corrente (solamente personallizzato 1 o personalizzato 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Clicca sulla traccia musicale per cancellarlo dal programma corrente (solo Custom1 o Custom2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Clicca sulla traccia musicale per cancellarlo dal programma corrente (solamente personalizzato 1 o personalizzato 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Seleziona programmazione casuale on/off
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Mostra finestra 'selezione brani'
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Clicca sul servizio per vedere  l'industria/città

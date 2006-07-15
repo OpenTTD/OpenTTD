@@ -1,1 +1,1223 @@
-##name simplified_chinese
+##name Chinese (Simplified)
+##ownname 简体中文
+##isocode zh_CN.UTF-8
+
+##id 0x0000
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}超过地图边缘
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}距离地图边缘太近
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}现金不足：需要{CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY64}
+STR_0005                                                        :{RED}{CURRENCY64}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}需要一块平地
+STR_0008_WAITING                                                :{BLACK}正在等待：{WHITE}{STRING}
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (从
+STR_000B                                                        :{YELLOW}{STATION} 出发的途中)
+STR_000C_ACCEPTS                                                :{BLACK}接受: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}接受: {GOLD}
+STR_000E                                                        :
+STR_000F_PASSENGERS                                             :乘客
+STR_0010_COAL                                                   :煤
+STR_0011_MAIL                                                   :邮件
+STR_0012_OIL                                                    :原油
+STR_0013_LIVESTOCK                                              :家畜
+STR_0014_GOODS                                                  :货物
+STR_0015_GRAIN                                                  :谷子
+STR_0016_WOOD                                                   :木材
+STR_0017_IRON_ORE                                               :铁矿石
+STR_0018_STEEL                                                  :钢材
+STR_0019_VALUABLES                                              :珠宝
+STR_001A_COPPER_ORE                                             :铜矿石
+STR_001B_MAIZE                                                  :玉米
+STR_001C_FRUIT                                                  :水果
+STR_001D_DIAMONDS                                               :钻石
+STR_001E_FOOD                                                   :食品
+STR_001F_PAPER                                                  :纸张
+STR_0020_GOLD                                                   :金条
+STR_0021_WATER                                                  :淡水
+STR_0022_WHEAT                                                  :小麦
+STR_0023_RUBBER                                                 :橡胶
+STR_0024_SUGAR                                                  :糖
+STR_0025_TOYS                                                   :玩具
+STR_0026_CANDY                                                  :糖果
+STR_0027_COLA                                                   :可乐
+STR_0028_COTTON_CANDY                                           :棉花糖
+STR_0029_BUBBLES                                                :泡泡
+STR_002A_TOFFEE                                                 :太妃糖
+STR_002B_BATTERIES                                              :电池
+STR_002C_PLASTIC                                                :塑料
+STR_002D_FIZZY_DRINKS                                           :激吼饮料
+STR_002F_PASSENGER                                              :乘客
+STR_0030_COAL                                                   :煤
+STR_0031_MAIL                                                   :信件
+STR_0032_OIL                                                    :原油
+STR_0033_LIVESTOCK                                              :家畜
+STR_0034_GOODS                                                  :货物
+STR_0035_GRAIN                                                  :谷子
+STR_0036_WOOD                                                   :木材
+STR_0037_IRON_ORE                                               :铁矿石
+STR_0038_STEEL                                                  :钢材
+STR_0039_VALUABLES                                              :珠宝
+STR_003A_COPPER_ORE                                             :铜矿石
+STR_003B_MAIZE                                                  :玉米
+STR_003C_FRUIT                                                  :水果
+STR_003D_DIAMOND                                                :钻石
+STR_003E_FOOD                                                   :食品
+STR_003F_PAPER                                                  :纸张
+STR_0040_GOLD                                                   :金条
+STR_0041_WATER                                                  :淡水
+STR_0042_WHEAT                                                  :小麦
+STR_0043_RUBBER                                                 :橡胶
+STR_0044_SUGAR                                                  :糖
+STR_0045_TOY                                                    :玩具
+STR_0046_CANDY                                                  :糖果
+STR_0047_COLA                                                   :可乐
+STR_0048_COTTON_CANDY                                           :棉花糖
+STR_0049_BUBBLE                                                 :泡泡
+STR_004A_TOFFEE                                                 :太妃糖
+STR_004B_BATTERY                                                :电池
+STR_004C_PLASTIC                                                :塑料
+STR_004D_FIZZY_DRINK                                            :激吼水
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}地图：{STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}游戏选项
+STR_00B2_MESSAGE                                                :{YELLOW}消息
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}来自{STRING}的消息
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}不能这样做…
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}不能清除该区域…
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}原始版权人：{COPYRIGHT} 1995 Chris Sawyer, All rights reserved
+STR_00B7_VERSION                                                :{BLACK}OpenTTD版本{REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 The OpenTTD team
+
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C7_QUIT                                                   :{WHITE}退出
+STR_00C8_YES                                                    :{BLACK}是
+STR_00C9_NO                                                     :{BLACK}不
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}你确定要放弃当前的游戏并返回{STRING}吗？
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :什么都没有
+STR_00D1_DARK_BLUE                                              :深蓝
+STR_00D2_PALE_GREEN                                             :浅绿
+STR_00D3_PINK                                                   :粉红
+STR_00D4_YELLOW                                                 :黄
+STR_00D5_RED                                                    :红
+STR_00D6_LIGHT_BLUE                                             :亮蓝
+STR_00D7_GREEN                                                  :绿
+STR_00D8_DARK_GREEN                                             :深绿
+STR_00D9_BLUE                                                   :蓝
+STR_00DA_CREAM                                                  :奶白
+STR_00DB_MAUVE                                                  :紫红
+STR_00DC_PURPLE                                                 :紫
+STR_00DD_ORANGE                                                 :橙黄
+STR_00DE_BROWN                                                  :棕
+STR_00DF_GREY                                                   :灰
+STR_00E0_WHITE                                                  :白
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}游戏中的车辆已经太多了
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
+STR_00E4_LOCATION                                               :{BLACK}位置
+STR_00E5_CONTOURS                                               :等高线
+STR_00E6_VEHICLES                                               :车辆
+STR_00E7_INDUSTRIES                                             :工业
+STR_00E8_ROUTES                                                 :路线
+STR_00E9_VEGETATION                                             :植被
+STR_00EA_OWNERS                                                 :属主
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}公路
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}铁路
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}车站/机场/码头
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}建筑物/工业设施
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}车辆
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100米
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200米
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300米
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400米
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500米
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}火车
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}汽车
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}船只
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}飞机
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}运输路线
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}煤矿
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}发电厂
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}林场
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}锯木厂
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}炼油厂
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}农场
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}工厂
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}印刷厂
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}油井
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}铁矿
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}炼钢厂
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}银行
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}造纸厂
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}金矿
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}食品加工厂
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}钻石矿
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}铜矿
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}果园
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}橡胶园
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}水厂
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}水塔
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}木材厂
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}棉花糖果园
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}糖果厂
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}电池农场
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}可乐井
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}玩具船
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}玩具厂
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}塑料泉
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}激吼水厂
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}泡泡机
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}太妃糖矿场
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}蔗糖矿
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}火车站
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}公车站
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}机场/直升飞机停机坪
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}码头
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}粗糙的土地
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}草地
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}赤裸的土地
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}田地
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}树
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}石头
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}水
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}无人拥有
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}城镇
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}工业
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}沙漠
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}雪
+STR_012C_MESSAGE                                                :{WHITE}消息
+STR_012D                                                        :{WHITE}{STRING}
+STR_012E_CANCEL                                                 :{BLACK}取消
+STR_012F_OK                                                     :{BLACK}确定
+STR_0130_RENAME                                                 :{BLACK}重命名
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}已经定义了太多名字
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}选定的名字已经被使用了
+
+STR_0133_WINDOWS                                                :Windows
+STR_0134_UNIX                                                   :Unix
+STR_0135_OSX                                                    :OS X
+
+STR_013C_CARGO                                                  :{BLACK}货舱
+STR_013D_INFORMATION                                            :{BLACK}信息
+STR_013E_CAPACITIES                                             :{BLACK}容量
+STR_013E_TOTAL_CARGO                                            :{BLACK}总货物
+STR_013F_CAPACITY                                               :{BLACK}容量：{LTBLUE}{STRING}
+STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}此列车的总容量为：
+STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_0140_NEW_GAME                                               :{BLACK}新游戏
+STR_0141_LOAD_GAME                                              :{BLACK}读取游戏
+
+STR_128                                                         :128
+STR_256                                                         :256
+STR_1024                                                        :1024
+STR_2048                                                        :2048
+STR_0148_GAME_OPTIONS                                           :{BLACK}游戏选项
+
+STR_0150_SOMEONE                                                :某人{SKIP}{SKIP}
+STR_0151_MAP_OF_WORLD                                           :世界地图
+STR_0152_TOWN_DIRECTORY                                         :城镇列表
+STR_0153_SUBSIDIES                                              :特殊补助
+
+
+
+
+
+
+
+
+
+############ range for menu	starts
+STR_0154_OPERATING_PROFIT_GRAPH                                 :利润曲线
+STR_0155_INCOME_GRAPH                                           :收入曲线
+STR_0156_DELIVERED_CARGO_GRAPH                                  :运输成果曲线
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :表现情况曲线
+STR_0158_COMPANY_VALUE_GRAPH                                    :公司价值曲线
+STR_0159_CARGO_PAYMENT_RATES                                    :货物标准率
+STR_015A_COMPANY_LEAGUE_TABLE                                   :公司联盟表
+############ range for menu	ends
+
+STR_015B_OPENTTD                                                :{WHITE}关于OpenTTD
+STR_015C_SAVE_GAME                                              :保存游戏
+STR_015D_LOAD_GAME                                              :读取游戏
+STR_015E_QUIT_GAME                                              :放弃游戏
+STR_015F_QUIT                                                   :退出
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}你确定要退出当前游戏吗？
+STR_0161_QUIT_GAME                                              :{WHITE}放弃游戏
+
+
+############ range for months starts
+STR_0162_JAN                                                    :一月
+STR_0163_FEB                                                    :二月
+STR_0164_MAR                                                    :三月
+STR_0165_APR                                                    :四月
+STR_0166_MAY                                                    :五月
+STR_0167_JUN                                                    :六月
+STR_0168_JUL                                                    :七月
+STR_0169_AUG                                                    :八月
+STR_016A_SEP                                                    :九月
+STR_016B_OCT                                                    :十月
+STR_016C_NOV                                                    :十一月
+STR_016D_DEC                                                    :十二月
+############ range for months ends
+
+STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
+STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_0170                                                        :{TINYFONT}{STRING}-
+STR_0171_PAUSE_GAME                                             :{BLACK}暂停游戏
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}保存游戏，放弃游戏，退出
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}显示公司拥有的所有车站的列表
+STR_0174_DISPLAY_MAP                                            :{BLACK}显示地图
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}显示地图，城镇列表
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}显示城镇列表
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}显示公司财政信息
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}显示公司概况
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}显示图表
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}显示公司联盟列表
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}显示公司拥有的火车的列表
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}显示公司拥有的汽车的列表
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}显示公司拥有的船只的列表
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}显示公司拥有的飞机的列表
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}放大
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}缩小
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}建设铁路
+STR_0182_BUILD_ROADS                                            :{BLACK}建设公路
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}建设码头
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}建设机场
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}植树、设置地标等
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}土地信息
+STR_0187_OPTIONS                                                :{BLACK}选项
+STR_0188                                                        :{BLACK}{SMALLUPARROW}
+STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}不能更改维护周期
+STR_018B_CLOSE_WINDOW                                           :{BLACK}关闭窗口
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}窗口标题 - 拖拽此处以移动窗口
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}清除当前土地上的建筑物等
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}降低地表
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}提升地表
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}滚动条 - 拖动滑块可以查看更多信息
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}在地图上显示经纬线
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}在地图上显示车辆
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}在地图上显示工业
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}在地图上显示运输路线
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}在地图上显示植被
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}在地图上显示属主
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}在地图上显示/隐藏城镇名字
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}今年的利润：{CURRENCY} (去年的利润：{CURRENCY})
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+STR_019C_ROAD_VEHICLE                                           :汽车
+STR_019D_AIRCRAFT                                               :飞机
+STR_019E_SHIP                                                   :船只
+STR_019F_TRAIN                                                  :火车
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} 已经老化
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} 已经超期服役多年
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} 已经超期服役多年并且亟待更新
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}土地信息
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}清除费用：{LTBLUE}N/A
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}清除费用: {LTBLUE}{CURRENCY}
+STR_01A6_N_A                                                    :无效
+STR_01A7_OWNER                                                  :{BLACK}属主: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}当地政府: {LTBLUE}{STRING}
+STR_01A9_NONE                                                   :没有
+STR_01AA_NAME                                                   :{BLACK}名字
+STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+
+############ range for days	starts
+STR_01AC_1ST                                                    :1日
+STR_01AD_2ND                                                    :2日
+STR_01AE_3RD                                                    :3日
+STR_01AF_4TH                                                    :4日
+STR_01B0_5TH                                                    :5日
+STR_01B1_6TH                                                    :6日
+STR_01B2_7TH                                                    :7日
+STR_01B3_8TH                                                    :8日
+STR_01B4_9TH                                                    :9日
+STR_01B5_10TH                                                   :10日
+STR_01B6_11TH                                                   :11日
+STR_01B7_12TH                                                   :12日
+STR_01B8_13TH                                                   :13日
+STR_01B9_14TH                                                   :14日
+STR_01BA_15TH                                                   :15日
+STR_01BB_16TH                                                   :16日
+STR_01BC_17TH                                                   :17日
+STR_01BD_18TH                                                   :18日
+STR_01BE_19TH                                                   :19日
+STR_01BF_20TH                                                   :20日
+STR_01C0_21ST                                                   :21日
+STR_01C1_22ND                                                   :22日
+STR_01C2_23RD                                                   :23日
+STR_01C3_24TH                                                   :24日
+STR_01C4_25TH                                                   :25日
+STR_01C5_26TH                                                   :26日
+STR_01C6_27TH                                                   :27日
+STR_01C7_28TH                                                   :28日
+STR_01C8_29TH                                                   :29日
+STR_01C9_30TH                                                   :30日
+STR_01CA_31ST                                                   :31日
+############ range for days	ends
+
+STR_01CB                                                        :{TINYFONT}{COMMA}
+
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}接受: {LTBLUE}
+
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}爵士乐唱片机
+STR_01D3_SOUND_MUSIC                                            :音乐/音效
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}显示音乐/音效窗口
+STR_01D5_ALL                                                    :{TINYFONT}全部
+STR_01D6_OLD_STYLE                                              :{TINYFONT}旧风格
+STR_01D7_NEW_STYLE                                              :{TINYFONT}新风格
+STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy街
+STR_01D9_CUSTOM_1                                               :{TINYFONT}自定义1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}自定义2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}音乐音量
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}音效银两
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}最小  '  '  ' '  '  '  最大
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}跳到上一首歌
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}跳到下一首歌
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}停止播放音乐
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}开始播放音乐
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}拖动滑块来调节音效和音乐的音量
+STR_01E3                                                        :{DKGREEN}{TINYFONT}--
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
+STR_01E6                                                        :{DKGREEN}{TINYFONT}------
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}轨道{SETX 88}标题
+STR_01E9_SHUFFLE                                                :{TINYFONT}拖拽
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}程序
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}选择音乐程序
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}音轨索引
+STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}程序 - '{STRING}'
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}清除
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}保存
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}当前音轨程序
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}选择 全部音轨 程序
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}选择 老式音乐 程序
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}选择 新式音乐 程序
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}没有 自定义1(用户定义)程序
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}没有 自定义2(用户定义)程序
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}清除当前程序(仅适用于 自定义1 或 自定义2)
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}保存音乐设置
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}点击音乐可以加入当前程序(自定义1 或 自定义2)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}切换程序拖拽 开/关
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}显示选择音轨窗口
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}点击服务可以将工业/城市居中
+STR_01FE_DIFFICULTY                                             :{BLACK}难度 ({STRING})
+STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :最新消息/新闻
+STR_0201_MESSAGE_SETTINGS                                       :消息设置
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}显示最新消息/新闻 显示消息选项
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}消息选项
+STR_0205_MESSAGE_TYPES                                          :{BLACK}消息类型:
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}玩家的首次通车庆典
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}对手的首次通车庆典
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}事故/灾难
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}公司信息
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}经济新闻
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}玩家的车辆信息/建议
+STR_020C_NEW_VEHICLES                                           :{YELLOW}新建车辆
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}接受货物种类变更
+STR_020E_SUBSIDIES                                              :{YELLOW}特殊津贴
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}一般信息
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...距离上一目的地过远
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}达到{NUM}{}({STRING} 级别)的顶级公司
+STR_0212                                                        :{BIGFONT}{COMMA}.
+STR_0213_BUSINESSMAN                                            :小商人
+STR_0214_ENTREPRENEUR                                           :企业家
+STR_0215_INDUSTRIALIST                                          :实业家
+STR_0216_CAPITALIST                                             :资本家
+STR_0217_MAGNATE                                                :商业巨头
+STR_0218_MOGUL                                                  :财阀
+STR_0219_TYCOON_OF_THE_CENTURY                                  :世纪大亨
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} 达到 '{STRING}' 状态!
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} 的 {COMPANY} 达到 '{STRING}' 状态!
+STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}创建场景
+STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}场景编辑器
+STR_0223_LAND_GENERATION                                        :{WHITE}生成地形
+STR_0224                                                        :{BLACK}{UPARROW}
+STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}随机地形
+STR_0227_RESET_LAND                                             :{BLACK}重置地形
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}增加可以 提升/降低 的区域
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}减少可以 提升/降低 的区域
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}生成随机地形
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}重置景观
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}重置景观
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}你确定要重置景观么？
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}省城景观
+STR_022F_TOWN_GENERATION                                        :{BLACK}生成城镇
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}生成工业
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}建设道路
+STR_0233_TOWN_GENERATION                                        :{WHITE}生成城镇
+STR_0234_NEW_TOWN                                               :{BLACK}新的城镇
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}建设新城镇
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}不能在这里建立城镇...
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...距离地图边缘过近
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...距离另一城镇过近
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...不适当的位置
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...城镇过多
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}扩大城镇规模
+STR_023C_EXPAND                                                 :{BLACK}拓展
+STR_023D_RANDOM_TOWN                                            :{BLACK}随机城镇
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}建立一个随机城镇
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}生成工业
+STR_0240_COAL_MINE                                              :{BLACK}煤矿
+STR_0241_POWER_STATION                                          :{BLACK}发电厂
+STR_0242_SAWMILL                                                :{BLACK}木材厂
+STR_0243_FOREST                                                 :{BLACK}林场
+STR_0244_OIL_REFINERY                                           :{BLACK}炼油厂
+STR_0245_OIL_RIG                                                :{BLACK}钻井平台
+STR_0246_FACTORY                                                :{BLACK}工厂
+STR_0247_STEEL_MILL                                             :{BLACK}炼钢厂
+STR_0248_FARM                                                   :{BLACK}农场
+STR_0249_IRON_ORE_MINE                                          :{BLACK}铁矿
+STR_024A_OIL_WELLS                                              :{BLACK}油井
+STR_024B_BANK                                                   :{BLACK}银行
+STR_024C_PAPER_MILL                                             :{BLACK}造纸厂
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}食品加工厂
+STR_024E_PRINTING_WORKS                                         :{BLACK}印刷厂
+STR_024F_GOLD_MINE                                              :{BLACK}金矿
+STR_0250_LUMBER_MILL                                            :{BLACK}木材厂
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}果园
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}橡胶园
+STR_0253_WATER_SUPPLY                                           :{BLACK}水厂
+STR_0254_WATER_TOWER                                            :{BLACK}水塔
+STR_0255_DIAMOND_MINE                                           :{BLACK}钻石矿
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}铜矿
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}棉花糖森林
+STR_0258_CANDY_FACTORY                                          :{BLACK}糖果厂
+STR_0259_BATTERY_FARM                                           :{BLACK}电池农场
+STR_025A_COLA_WELLS                                             :{BLACK}可乐井
+STR_025B_TOY_SHOP                                               :{BLACK}玩具商店
+STR_025C_TOY_FACTORY                                            :{BLACK}玩具工厂
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}塑料喷泉
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}泡泡饮料厂
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}泡泡发生器
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}太妃糖厂
+STR_0261_SUGAR_MINE                                             :{BLACK}蔗糖矿
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}创建煤矿
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}创建发电厂
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}创建木材厂
+STR_0265_PLANT_FOREST                                           :{BLACK}创建林场
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}创建炼油厂
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}创建钻井平台(只能在地图边缘创建)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}创建工厂
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}创建炼钢厂
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}创建农场
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}创建铁矿
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}创建油井
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}创建银行(只能在人口超过1200人的城镇中创建)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}创建造纸厂
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}创建食品加工厂
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}创建印刷厂
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}创建金矿
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}创建银行(只能在城镇中创建)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}创建木材厂(可以采伐雨林中的树木并生产木材)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}创建果园
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}创建橡胶园
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}创建水厂
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}创建水塔(只能在城市中创建)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}创建钻石矿
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}创建铜矿
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}创建棉花糖森林
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}创建糖果厂
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}创建电池农场
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}创建可乐井
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}创建玩具商店
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}创建玩具工厂
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}创建塑料喷泉
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}创建泡泡水工厂
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}创建泡泡发生器
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}创建太妃糖厂
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}创建蔗糖矿
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}不能在这里创建 {STRING} ...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...必须建创建一个城镇
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...每个城镇只能建设一个
+STR_0288_PLANT_TREES                                            :{BLACK}植树
+STR_0289_PLACE_SIGN                                             :{BLACK}设置地标
+STR_028A_RANDOM_TREES                                           :{BLACK}随机指数
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}在场景上随机植树
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}在场景随机创建石地
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}设置灯塔
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}创建转播塔
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}设置沙漠区域.{}摁住CTRL不放可以清除
+STR_0290_DELETE                                                 :{BLACK}删除
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}删除整个城镇
+STR_0292_SAVE_SCENARIO                                          :保存场景
+STR_0293_LOAD_SCENARIO                                          :读取场景
+STR_0294_QUIT_EDITOR                                            :退出编辑器
+STR_0296_QUIT                                                   :退出
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}保存场景 读取场景 放弃编辑退出
+STR_0298_LOAD_SCENARIO                                          :{WHITE}读取场景
+STR_0299_SAVE_SCENARIO                                          :{WHITE}保存场景
+STR_029A_PLAY_SCENARIO                                          :{BLACK}从场景开始游戏
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}真的要退出场景?
+STR_029C_QUIT_EDITOR                                            :{WHITE}退出编辑器
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... 只能在人口超过 1200 的城镇创建
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}将开始年份提前1年
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}将开始年份推后1年
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...桥的两端必须都在陆地上
+STR_02A1_SMALL                                                  :{BLACK}小
+STR_02A2_MEDIUM                                                 :{BLACK}中
+STR_02A3_LARGE                                                  :{BLACK}大
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}选择城镇规模
+STR_02A5_TOWN_SIZE                                              :{YELLOW}城镇规模:
+
+STR_02B6                                                        :{STRING}  -  {STRING}
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}显示最后一次消息或新闻
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :城市索引
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}车辆名称
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :默认
+STR_02BF_CUSTOM                                                 :自定义
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}保存自定义名称
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}选择车辆名称
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}保存自定义车辆名称
+
+############ range for menu	starts
+STR_02C3_GAME_OPTIONS                                           :游戏选项
+STR_02C4_GAME_OPTIONS                                           :游戏选项
+STR_02C5_DIFFICULTY_SETTINGS                                    :难度设定
+STR_02C6_DIFFICULTY_SETTINGS                                    :难度设定
+STR_02C7_CONFIG_PATCHES                                         :配置patch
+STR_02C8_CONFIG_PATCHES                                         :配置patch
+STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}显示城镇名称
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}显示城镇名称
+STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}显示车站名称
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}显示车站名称
+STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}显示标牌
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}显示标牌
+STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}完整动画
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}完整动画
+STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}完整细节
+STR_02D2_FULL_DETAIL                                            :{SETX 12}完整细节
+STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}建筑物透明
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}建筑物透明
+############ range ends	here
+
+############ range for menu	starts
+STR_02D5_LAND_BLOCK_INFO                                        :显示地块信息
+STR_02D7_SCREENSHOT_CTRL_S                                      :屏幕截图 (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :大型屏幕截图 (Ctrl-G)
+STR_02D9_ABOUT_OPENTTD                                          :关于 'OpenTTD'
+############ range ends	here
+
+STR_02DB_OFF                                                    :{BLACK}关闭
+STR_02DA_ON                                                     :{BLACK}开启
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}显示特殊津贴
+STR_02DD_SUBSIDIES                                              :津贴
+STR_02DE_MAP_OF_WORLD                                           :世界地图
+STR_02DF_TOWN_DIRECTORY                                         :城镇索引
+
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}流通单位
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}选择流通单位
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}汽车
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}选择汽车行驶方向
+STR_02E9_DRIVE_ON_LEFT                                          :左侧
+STR_02EA_DRIVE_ON_RIGHT                                         :右侧
+STR_02EB_TOWN_NAMES                                             :{BLACK}城镇名称
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}选择城镇名称风格
+
+STR_02F4_AUTOSAVE                                               :{BLACK}自动保存
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}选择自动保存间隔
+STR_02F7_OFF                                                    :关闭
+STR_02F8_EVERY_3_MONTHS                                         :每 3 个月
+STR_02F9_EVERY_6_MONTHS                                         :每 6 个月
+STR_02FA_EVERY_12_MONTHS                                        :每 12 个月
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}开始新游戏
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}读取存档游戏
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}创建一个自定义的游戏世界/场景
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}选择单玩家游戏
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}选择多玩家游戏 (2-8玩家)
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}显示游戏选项
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}选择难度选项
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}开始新游戏，使用自定义场景
+STR_0304_QUIT                                                   :{BLACK}退出
+STR_0305_QUIT_OPENTTD                                           :{BLACK}退出 'OpenTTD'
+STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...只能在城镇里建设
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}选择 温润 气候
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}选择 寒带 气候
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}选择 亚热带 气候
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}选择 玩偶 场景
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}创建新的工业设施
+
+############ range for menu	starts
+STR_0313_FUND_NEW_INDUSTRY                                      :创建新工业
+############ range ends here
+
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}创建新工业
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...只能在城镇中建设
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...只能在雨林中建设
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...只能在沙漠中建设
+STR_0319_PAUSED                                                 :{YELLOW}* *  暂停中  *  *
+
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}屏幕截图被成功保存为 '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}屏幕截图失败!
+
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}为将来建设购买土地
+STR_032F_AUTOSAVE                                               :{RED}自动保存
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}选择 '街舞风格音乐' 程序
+
+STR_0335_6                                                      :{BLACK}6
+STR_0336_7                                                      :{BLACK}7
+
+############ start of townname region
+############ end of	townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+##id 0x0800
+STR_0800_COST                                                   :{TINYFONT}{RED}费用: {CURRENCY}
+STR_0801_COST                                                   :{RED}费用: {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}收入: {CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}收入: {CURRENCY}
+STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}预期费用: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}预期费用: {CURRENCY}
+STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}预期收入: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}预期收入: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}不能提升地表...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}不能降低地表...
+STR_080A_ROCKS                                                  :岩石地面
+STR_080B_ROUGH_LAND                                             :粗糙地面
+STR_080C_BARE_LAND                                              :秃地
+STR_080D_GRASS                                                  :草地
+STR_080E_FIELDS                                                 :田地
+STR_080F_SNOW_COVERED_LAND                                      :积雪地面
+STR_0810_DESERT                                                 :沙漠
+
+##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}错误的斜面方向
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}错误的路轨组合
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}挖掘土地将会破坏隧道
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}已经降到海平面了
+STR_1004_TOO_HIGH                                               :{WHITE}地表太高
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}没有适合的铁轨
+STR_1007_ALREADY_BUILT                                          :{WHITE}...已经建造了
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}必须先清除铁轨
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}铁路建设
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}单轨铁路建设
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}磁悬浮铁路建设
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}选择铁路桥
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}不能在这里建设火车车库...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}不能在这里建设火车站...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}不能在这里设立信号灯...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}不能在这里建设铁路...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}不能清除这里的铁轨...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}不能清除这里的信号灯...
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}火车车库的方向
+STR_1015_RAILROAD_CONSTRUCTION                                  :铁路建设
+STR_1016_MONORAIL_CONSTRUCTION                                  :单轨铁路建设
+STR_1017_MAGLEV_CONSTRUCTION                                    :磁悬浮铁路建设
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}建设铁轨
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}建设火车车库 (用以购买或维护火车)
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}建设火车站
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}建设铁路信号
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}建设铁路桥
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}建设火车隧道
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}切换 建设/清除 铁轨和信号
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}选择桥梁 - 在需要的桥梁上单击即可
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}选择火车车库方向
+STR_1021_RAILROAD_TRACK                                         :铁轨
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :火车车库
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...这个地块由另一公司拥有
+
+
+
+##id 0x1800
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}必须先清除公路
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}公路建设
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}选择公路桥
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}不能在这里建设公路...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}不能清除这里的公路...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}汽车车库的方向
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}不能在这里建设汽车车库...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}不能建设公车站...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}不能建设货车场...
+STR_180A_ROAD_CONSTRUCTION                                      :公路建设
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}公路建设区
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}建设汽车车库 (用以购买和维护车辆)
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}建设公共汽车站
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}建设货车场
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}建设公路桥梁
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}建设公路隧道
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}切换 建设/清除 公路设施
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}选择汽车车库方向
+STR_1814_ROAD                                                   :公路
+STR_1815_ROAD_WITH_STREETLIGHTS                                 :带路灯的公路
+STR_1816_TREE_LINED_ROAD                                        :林荫公路
+STR_1817_ROAD_VEHICLE_DEPOT                                     :汽车车库
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :公路/铁路平交路口
+
+##id 0x2000
+STR_2000_TOWNS                                                  :{WHITE}城镇
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}必须先拆除原有建筑
+STR_2005                                                        :{WHITE}{TOWN}
+STR_2006_POPULATION                                             :{BLACK}人口: {ORANGE}{COMMA}{BLACK}  房屋: {ORANGE}{COMMA}
+STR_2007_RENAME_TOWN                                            :重命名城镇
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}不能重命名城镇...
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} 市政府不允许这样做
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}城镇名称 - 点击名称可以将视点居中
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}将视点中心移至城镇所在地
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}修改城镇名称
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}上个月的乘客: {ORANGE}{COMMA}{BLACK}  最多: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}上个月的邮件: {ORANGE}{COMMA}{BLACK}  最多: {ORANGE}{COMMA}
+STR_200F_TALL_OFFICE_BLOCK                                      :高档办公区
+STR_2010_OFFICE_BLOCK                                           :办公区
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :低档办公区
+STR_2012_CHURCH                                                 :教堂
+STR_2013_LARGE_OFFICE_BLOCK                                     :大型办公区
+STR_2014_TOWN_HOUSES                                            :镇屋
+STR_2015_HOTEL                                                  :宾馆
+STR_2016_STATUE                                                 :塑像
+STR_2017_FOUNTAIN                                               :喷泉
+STR_2018_PARK                                                   :公园
+STR_2019_OFFICE_BLOCK                                           :办公区
+STR_201A_SHOPS_AND_OFFICES                                      :商店和咖啡屋
+STR_201B_MODERN_OFFICE_BUILDING                                 :现代办公大楼
+STR_201C_WAREHOUSE                                              :仓库
+STR_201D_OFFICE_BLOCK                                           :办公区
+STR_201E_STADIUM                                                :运动场
+STR_201F_OLD_HOUSES                                             :老房子
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}市政府
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}显示市政府信息
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} 市政府
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}运输公司声誉:
+STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2025_SUBSIDIES                                              :{WHITE}津贴
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}可用的津贴项目:
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} 从 {STRING} 到 {STRING}
+STR_2028_BY                                                     :{YELLOW} (到 {DATE_SHORT} 为止)
+STR_202A_NONE                                                   :{ORANGE}没有
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}已经实现的项目:
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} 从 {STATION} 到 {STATION}{YELLOW} ({COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW}, 到 {DATE_SHORT} 为止)
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}津贴项目到期:{}{}{STRING} 从 {STRING} 到 {STRING} 的津贴项目已经到期.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}津贴项目作废:{}{}运输 {STRING} 服务 (从 {STATION} 到 {STATION}) 已经作废.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}新的津贴项目:{}{}第一提供 {STRING} 运输服务 (从 {STRING} 到 {STRING}) 将获得由市政府奖励的一年的专营权!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}奖励给 {COMPANY} 的特殊津贴!{}{}运输 {STRING} (从 {STATION} 到 {STATION}) 明年将获得额外的50%的收入!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}奖励给 {COMPANY} 的特殊津贴!{}{}运输 {STRING} (从 {STATION} 到 {STATION}) 明年将得到双倍收入!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}奖励给 {COMPANY} 的特殊津贴!{}{}运输 {STRING} (从 {STATION} 到 {STATION}) 明年将得到三倍收入!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}奖励给 {COMPANY} 的特殊津贴!{}{}运输 {STRING} (从 {STATION} 到 {STATION}) 明年将得到四倍收入!
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} 市政府不允许在城镇内再建立另一个机场
+STR_2036_COTTAGES                                               :村舍
+STR_2037_HOUSES                                                 :别墅
+STR_2038_FLATS                                                  :平房
+STR_2039_TALL_OFFICE_BLOCK                                      :高档办公区
+STR_203A_SHOPS_AND_OFFICES                                      :商店和办公室
+STR_203B_SHOPS_AND_OFFICES                                      :商店和办公室
+STR_203C_THEATER                                                :剧场
+STR_203D_STADIUM                                                :体育场
+STR_203E_OFFICES                                                :办公室
+STR_203F_HOUSES                                                 :别墅
+STR_2040_CINEMA                                                 :电影院
+STR_2041_SHOPPING_MALL                                          :购物商场
+STR_2042_DO_IT                                                  :{BLACK}执行
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}可以在当前城镇进行的活动 - 点击项目以察看详细信息
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}执行上面高亮的项目
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}可执行的操作:
+STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :小型广告投放
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :中等广告投放
+STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :大型广告投放
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :进行道路翻修
+STR_204A_BUILD_STATUE_OF_COMPANY                                :为公司所有人建设塑像
+STR_204B_FUND_NEW_BUILDINGS                                     :建设新房屋
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :购买专营权
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} 进行一个小型的广告投放, 从而为你的公司吸引更多的乘客和货物.{}  费用: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} 进行一个中等的广告投放, 从而为你的公司吸引更多的乘客和货物.{}  费用: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} 进行一个大型的广告投放, 从而为你的公司吸引更多的乘客和货物.{}  费用: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} 翻修市内的道路网. 未来6个月内市内公路交通将受到一定影响.{}  费用: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} 将为你的公司建设一尊雄伟的塑像.{} 费用: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} 在城镇中建设新的商业设施.{}  费用: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} 向市政府购买一年的专营权. 所有乘客和货物只能选择你的公司提供的服务.{} 费用: {CURRENCY}
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}{TOWN} 的交通陷入混乱!{}{}由 {COMPANY} 赞助的道路翻修工程导致市内公路交通6个月的瘫痪!
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (建设中)
+STR_2059_IGLOO                                                  :圆顶建筑
+STR_205A_TEPEES                                                 :锥顶建筑
+STR_205B_TEAPOT_HOUSE                                           :茶壶小屋
+STR_205C_PIGGY_BANK                                             :扑满银行
+
+
+##id 0x2800
+STR_2800_PLANT_TREES                                            :植树
+STR_2801_PLACE_SIGN                                             :放置标签
+STR_2802_TREES                                                  :{WHITE}树木
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...此处已有树木
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...地点不合适
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}不能在这里植树...
+STR_2806                                                        :{WHITE}{STRING}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...标签过多
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}不能在这里放置标签...
+STR_280A_SIGN                                                   :标签
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}编辑标签文本
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}不能改变标签的名字...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}选择树木的类型
+STR_280E_TREES                                                  :树木
+STR_280F_RAINFOREST                                             :雨林
+STR_2810_CACTUS_PLANTS                                          :仙人掌
+
+##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}选择火车站
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}选择机场
+STR_3002_ORIENTATION                                            :{BLACK}方向
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}月台总数
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}月台长度
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}距离另一火车站过近
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}与两个或以上的车站/货场毗邻
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}城镇中的车站/货场过多
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}车站/货场过多
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}公车站过多
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}货车场过多
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}距离另一车站/货场过近
+STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}必须先清除火车站
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}距离另一飞机场过近
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}必须先清除飞机场
+
+STR_3030_RENAME_STATION_LOADING                                 :重命名车站/货场区域
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}不能重命名车站...
+STR_3032_RATINGS                                                :{BLACK}评价
+STR_3033_ACCEPTS                                                :{BLACK}接收
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}运输服务的地方评价:
+
+############ range for rating starts
+STR_3035_APPALLING                                              :骇人听闻
+STR_3036_VERY_POOR                                              :非常差
+STR_3037_POOR                                                   :差
+STR_3038_MEDIOCRE                                               :一般
+STR_3039_GOOD                                                   :好
+STR_303A_VERY_GOOD                                              :非常好
+STR_303B_EXCELLENT                                              :优秀
+STR_303C_OUTSTANDING                                            :完美
+############ range for rating ends
+
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} 将不再接受 {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} 将不再接受 {STRING} 或 {STRING}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} 开始接受 {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} 开始接受 {STRING} 和 {STRING}
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}公车站方向
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}货场方向
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}必须先清除公车站
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}必须前清除货场
+STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_304A_NONE                                                   :{YELLOW}- 没有 -
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}...地点不合适
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}距离另一码头过近
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}必须先清除码头
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}选择火车站方向
+STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}选择月台的数量
+STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}选择月台的长度
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}选择公车站方向
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}选择货场方向
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}将视点中心移动到车站位置
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}显示车展评价
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}更改车站名称
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}显示接受的货物类型
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}车站名称 - 点击车站名字可以将视点移动到车站位置
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}选择机场的大小/类型
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_305E_RAILROAD_STATION                                       :火车站
+STR_305F_AIRCRAFT_HANGAR                                        :飞机库
+STR_3060_AIRPORT                                                :机场
+STR_3061_TRUCK_LOADING_AREA                                     :货场
+STR_3062_BUS_STATION                                            :公车站
+STR_3063_SHIP_DOCK                                              :码头
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}高亮显示车站/机场/码头的覆盖范围
+STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}停止高亮显示车站/机场/码头的覆盖范围
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}高亮覆盖范围
+STR_3068_DOCK                                                   :{WHITE}码头
+STR_3069_BUOY                                                   :浮标
+STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...已经有浮标了
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...车站太大了
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...已经禁用非矩形的车站
+
+
+##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}船坞的方向
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...必须在水上建设
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}不能在这里建造船坞...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}选择船坞方向
+STR_3804_WATER                                                  :水
+STR_3805_COAST_OR_RIVERBANK                                     :海岸或河堤
+STR_3806_SHIP_DEPOT                                             :船坞
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...不能在水上建造
+
+##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}保存游戏
+STR_4001_LOAD_GAME                                              :{WHITE}读取存档
+STR_4002_SAVE                                                   :{BLACK}保存
+STR_4003_DELETE                                                 :{BLACK}删除
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}不能读取磁盘
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}游戏保存失败
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}不能删除文件
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}游戏读取失败
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}车辆, 索引和存档的文件
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}当前选择的存档的名字
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}删除当前选择的存档
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}用当前游戏覆盖选定的存档
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}选择新游戏类型
+STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}选择场景(绿色), 预设游戏(蓝色), 或随机游戏
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :生成随机游戏
+
+##id 0x4800
+STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} 挡路
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :煤矿
+STR_4803_POWER_STATION                                          :发电厂
+STR_4804_SAWMILL                                                :木材场
+STR_4805_FOREST                                                 :森林
+STR_4806_OIL_REFINERY                                           :炼油厂
+STR_4807_OIL_RIG                                                :钻井平台
+STR_4808_FACTORY                                                :工厂
+STR_4809_PRINTING_WORKS                                         :印刷厂
+STR_480A_STEEL_MILL                                             :炼钢厂
+STR_480B_FARM                                                   :农场
+STR_480C_COPPER_ORE_MINE                                        :铜矿
+STR_480D_OIL_WELLS                                              :油井
+STR_480E_BANK                                                   :银行
+STR_480F_FOOD_PROCESSING_PLANT                                  :食品加工厂
+STR_4810_PAPER_MILL                                             :造纸厂
+STR_4811_GOLD_MINE                                              :金矿
+STR_4812_BANK                                                   :银行
+STR_4813_DIAMOND_MINE                                           :钻石矿
+STR_4814_IRON_ORE_MINE                                          :铁矿
+STR_4815_FRUIT_PLANTATION                                       :果园
+STR_4816_RUBBER_PLANTATION                                      :橡胶园
+STR_4817_WATER_SUPPLY                                           :水厂
+STR_4818_WATER_TOWER                                            :水塔
+STR_4819_FACTORY                                                :工厂
+STR_481A_FARM                                                   :农场
+STR_481B_LUMBER_MILL                                            :木材场
+STR_481C_COTTON_CANDY_FOREST                                    :棉花糖森林
+STR_481D_CANDY_FACTORY                                          :糖果厂
+STR_481E_BATTERY_FARM                                           :电池农场
+STR_481F_COLA_WELLS                                             :可乐井
+STR_4820_TOY_SHOP                                               :玩具商店
+STR_4821_TOY_FACTORY                                            :玩具工厂
+STR_4822_PLASTIC_FOUNTAINS                                      :塑料喷泉
+STR_4823_FIZZY_DRINK_FACTORY                                    :泡泡饮料工厂
+STR_4824_BUBBLE_GENERATOR                                       :泡泡厂
+STR_4825_TOFFEE_QUARRY                                          :太妃矿
+STR_4826_SUGAR_MINE                                             :糖矿
+
+############ range for requires	starts
+STR_4827_REQUIRES                                               :{BLACK}需要: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}需要: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}需要: {YELLOW}{STRING}, {STRING}, {STRING}
+############ range for requires	ends
+
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}上月产量:
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% 被运走)
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}将视点移动到工厂位置
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}新的 {STRING} 在 {TOWN} 附近开始建设!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}新的 {STRING} 在 {TOWN} 附近开始生长!
+STR_482F_COST                                                   :{BLACK}费用: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}不能在这里建设此类的工业设施...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...森林必须在雪线以上建设
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} 即将宣告关张!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}由于供应不足, {INDUSTRY} 即将宣告关张!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}由于附近缺少树木, {INDUSTRY} 即将宣告关张!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} 增加产量!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}在 {INDUSTRY} 发现新的煤矿!{}产量即将加倍!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}在 {INDUSTRY} 发现新的石油!{}产量即将加倍!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}{INDUSTRY} 的生产方法改良, 产量即将加倍!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} 产量减少50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}虫害导致 {INDUSTRY} 歉收!{}产量降低50%
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...只能在地图边缘设置
+
+##id 0x5000
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}火车正在隧道中
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}汽车正在隧道中
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}和另一个隧道交叉
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}没有合适的位置建造隧道出口
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}必须先清除隧道
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}必须先清除桥梁
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}起点和终点不能重合
+
+##id 0x5800
+
+
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
+##id 0x6000
+
+
+############ end of	savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+STR_16816_CITY_APPROVAL                                         :{LTBLUE}市政委员会对地块重新规划的态度: {ORANGE}{STRING}
+############ range for difficulty settings ends
+
+STR_26816_NONE                                                  :没有
+
+##id 0x7000
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+
+##id 0xA000
+
+SERVICE_AT_AIRPORT_HANGAR                                       :在 {STATION}
+
+##id 0xB000
+
+
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### String for new airports
+
+########
