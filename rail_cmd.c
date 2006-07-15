@@ -286,14 +286,16 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-			if (GetRoadTileType(tile) == ROAD_TILE_NORMAL &&
-					((track == TRACK_X && GetRoadBits(tile) == ROAD_Y) ||
-					(track == TRACK_Y && GetRoadBits(tile) == ROAD_X))) {
-				if (flags & DC_EXEC) {
-					MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), p1, GetTownIndex(tile));
-				}
+			if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+				if (HasRoadWorks(tile)) return_cmd_error(STR_ROAD_WORKS_IN_PROGRESS);
 
-				break;
+				if ((track == TRACK_X && GetRoadBits(tile) == ROAD_Y) ||
+						(track == TRACK_Y && GetRoadBits(tile) == ROAD_X)) {
+					if (flags & DC_EXEC) {
+						MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), p1, GetTownIndex(tile));
+					}
+					break;
+				}
 			}
 
 			if (IsLevelCrossing(tile) && GetCrossingRailBits(tile) == trackbit) {
