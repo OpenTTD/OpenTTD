@@ -551,7 +551,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Velg 'Eg
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Slett gjeldende program (Gjelder bare Egendefinert 1 og 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Lagre musikkvalg
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klikk på musikkspor for å legge til gjeldene program (Gjelder bare egendefinert 1 og 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikk på et musikkspor for å fjerne det fra nåværende program (bare Tilfeldig1 eller Tilfeldig2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikk på et musikkspor for å fjerne det fra nåværende program (Gjelder bare egendefinert 1 og 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Skru tilfeldig program av/på
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Vis musikkspormeny
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Trykk for å sentere bildet rundt industri/by
@@ -1180,7 +1180,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Dra loko
 
 STR_DRAG_DROP                                                   :{BLACK}Dra og slipp
 STR_STATION_DRAG_DROP                                           :{BLACK}Bygg stasjon med dra og slipp
-STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Velg en stasjontype å se
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Velg en stasjonstypen å vise
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Velg stasjonen du vil bygge
 
 STR_FAST_FORWARD                                                :{BLACK}Hurtig tid
@@ -2588,9 +2588,9 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Kjør til {TOWN} garasje
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service ved {TOWN} garasje
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Bygg om bil for å kunne frakte en annen last
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Bygg om kjøretøyet til å ta en annen type last
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Bygg om bil
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Bygg om bil for å kunne frakte den valgte lasten
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Bygg om kjøretøyet til å ta den valgte lasten
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke bygge om bil...
 
 ##id 0x9800
