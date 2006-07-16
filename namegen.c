@@ -647,6 +647,54 @@ static byte MakeTurkishTownName(char *buf, uint32 seed)
 	return 0;
 }
 
+static byte MakeItalianTownName(char *buf, uint32 seed) {
+
+	byte i;
+	char *c;
+	strcpy(buf, "");
+
+	if (SeedModChance(0, 6, seed) == 0) {
+		// real city names
+		strcat(buf, name_italian_real[SeedModChance(4, lengthof(name_italian_real), seed)]);
+	} else {
+		if (SeedModChance(0, 8, seed) == 0) {
+			// prefix
+			strcat(buf, name_italian_pref[SeedModChance(11, lengthof(name_italian_pref), seed)]);
+		}
+
+		i = SeedModChance(0, 2, seed);
+		if (i == 0) { // masculine form
+			strcat(buf, name_italian_1m[SeedModChance(4, lengthof(name_italian_1m), seed)]);
+			c = "o";
+		} else {  // femminine form
+			strcat(buf, name_italian_1f[SeedModChance(4, lengthof(name_italian_1f), seed)]);
+			c = "a";
+		}
+
+		if (SeedModChance(0, 3, seed) == 0) {
+			strcat(buf, name_italian_2[SeedModChance(11, lengthof(name_italian_2), seed)]);
+			strcat(buf,c);
+		} else {
+			strcat(buf, name_italian_2i[SeedModChance(16, lengthof(name_italian_2i), seed)]);
+		}
+
+
+		if (SeedModChance(15, 4, seed) == 0) {
+			if (SeedModChance(0, 2, seed) == 0) {
+				// generic suffix
+				strcat(buf, name_italian_3[SeedModChance(4, lengthof(name_italian_3), seed)]);
+			}
+			else {
+				// river name suffix
+				strcat(buf, name_italian_river1[SeedModChance(4, lengthof(name_italian_river1), seed)]);
+				strcat(buf, name_italian_river2[SeedModChance(16, lengthof(name_italian_river2), seed)]);
+			}
+		}
+	}
+
+	return 0;
+}
+
 TownNameGenerator * const _town_name_generators[] =
 {
 	MakeEnglishOriginalTownName,
@@ -668,6 +716,7 @@ TownNameGenerator * const _town_name_generators[] =
 	MakeSwissTownName,
 	MakeDanishTownName,
 	MakeTurkishTownName,
+	MakeItalianTownName,
 };
 
 // DO WE NEED THIS ANY MORE?
