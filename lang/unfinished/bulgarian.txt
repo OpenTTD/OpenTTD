@@ -80,6 +80,39 @@ STR_004A_TOFFEE                                                 :Карамел
 STR_004B_BATTERY                                                :Батерии
 STR_004C_PLASTIC                                                :Пластмаса
 STR_004D_FIZZY_DRINK                                            :Газирани напитки
+STR_ABBREV_PASSENGERS                                           :{TINYFONT}ПН
+STR_ABBREV_COAL                                                 :{TINYFONT}ВГ
+STR_ABBREV_MAIL                                                 :{TINYFONT}ПЩ
+STR_ABBREV_OIL                                                  :{TINYFONT}НФ
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}ДБ
+STR_ABBREV_GOODS                                                :{TINYFONT}СТ
+STR_ABBREV_GRAIN                                                :{TINYFONT}ЗР
+STR_ABBREV_WOOD                                                 :{TINYFONT}ДВ
+STR_ABBREV_IRON_ORE                                             :{TINYFONT}ЖР
+STR_ABBREV_STEEL                                                :{TINYFONT}СТ
+STR_ABBREV_VALUABLES                                            :{TINYFONT}СЦ
+STR_ABBREV_COPPER_ORE                                           :{TINYFONT}МР
+STR_ABBREV_MAIZE                                                :{TINYFONT}ЦВ
+STR_ABBREV_FRUIT                                                :{TINYFONT}ПЛ
+STR_ABBREV_DIAMONDS                                             :{TINYFONT}ДМ
+STR_ABBREV_FOOD                                                 :{TINYFONT}ХР
+STR_ABBREV_PAPER                                                :{TINYFONT}ХТ
+STR_ABBREV_GOLD                                                 :{TINYFONT}ЗЛ
+STR_ABBREV_WATER                                                :{TINYFONT}ВД
+STR_ABBREV_WHEAT                                                :{TINYFONT}ЗР
+STR_ABBREV_RUBBER                                               :{TINYFONT}КЧ
+STR_ABBREV_SUGAR                                                :{TINYFONT}ЗХ
+STR_ABBREV_TOYS                                                 :{TINYFONT}ИЧ
+STR_ABBREV_SWEETS                                               :{TINYFONT}СЛ
+STR_ABBREV_COLA                                                 :{TINYFONT}КЛ
+STR_ABBREV_CANDYFLOSS                                           :{TINYFONT}ЗП
+STR_ABBREV_BUBBLES                                              :{TINYFONT}БЛ
+STR_ABBREV_TOFFEE                                               :{TINYFONT}КМ
+STR_ABBREV_BATTERIES                                            :{TINYFONT}БТ
+STR_ABBREV_PLASTIC                                              :{TINYFONT}ПМ
+STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}ГН
+STR_ABBREV_NONE                                                 :{TINYFONT}НЩ
+STR_ABBREV_ALL                                                  :{TINYFONT}ВЧ
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Карта - {STRING}
@@ -337,6 +370,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Пока
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Печалба тази година: {CURRENCY} (минала година: {CURRENCY})
 
 ############ range for service numbers starts
+STR_AGE                                                         :{COMMA} годин{P "а" и} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} годин{P "а" и} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Автобус/камион
@@ -736,17 +771,25 @@ STR_TOWNNAME_TURKISH                                            :Турски
 
 
 
+STR_AUTOSAVE_1_MONTH                                            :Всеки месец
+STR_AUTOSAVE_FAILED                                             :{WHITE}Автозапазването е неуспешно
 
 
 
+STR_BAGS                                                        :торби
 
 
 
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Самолет {COMMA} има прекалено малко заповеди в програмата си
+STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Самолет {COMMA} има празна заповед
+STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Самолет {COMMA} има повтарящи се заповеди
+STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Самолет {COMMA} има невалидно летище в своите заповеди
 # end of order system
 
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Автообновяването на самолето е неуспешно {COMMA} (ограничени средства)
 
 
 
@@ -1383,6 +1426,7 @@ STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Изпл
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Управител)
 STR_7038_INAUGURATED                                            :{GOLD}Открита: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}МПС-та:
+STR_AIRCRAFT                                                    :{WHITE}{COMMA} самолет
 STR_7042_NONE                                                   :{WHITE}Николко
 STR_7043_FACE_SELECTION                                         :{WHITE}Избор на лице
 STR_7044_MALE                                                   :{BLACK}Мъж
@@ -1866,10 +1910,26 @@ SERVICE_AT_SHIP_DEPOT                                           :Сервиз н
 
 ##id 0xA000
 
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Преустрой)
+STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Преустрой самолета
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Избери какъв тип товар да превозва самолета
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Преустрой самолета да превозва посочения тип товар
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Избери тип товар за превозване:
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нова вместимост: {GOLD}{STRING}{}{BLACK}Цена на преустройството: {GOLD}{CURRENCY}
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не може да преустроиш самолета...
 SERVICE_AT_AIRPORT_HANGAR                                       :Сервиз в {STATION} хангар
 
 ##id 0xB000
+STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Катастрофа с Цепелин на {STATION}!
+STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}МПС бе унищожено при сблъсък с НЛО!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Екплозия в нефтена рафинерия близо до {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Фабрика бе унищожена при съмнителни обстоятелства близо до {TOWN}!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}НЛО кацна близо до {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Срутване на мина за въглища остави следи от разрушение близо до {TOWN}!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Наводнения!{}Най-малко {COMMA} са изчезнали, считат се за загинали след значителни наводнения!
 
+STR_BRIBE_FAILED                                                :{WHITE}Твоят опит за подкуп беше
+STR_BRIBE_FAILED_2                                              :{WHITE}разкрит от местен дознател
 
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
@@ -1887,6 +1947,7 @@ STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 
 
+STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Летището няма писта
 
 STR_WAGONS                                                      :Вагони
 

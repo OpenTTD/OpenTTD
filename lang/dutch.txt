@@ -880,6 +880,7 @@ STR_TOWNNAME_CZECH                                              :Tsjechisch
 STR_TOWNNAME_SWISS                                              :Zwitsers
 STR_TOWNNAME_DANISH                                             :Deens
 STR_TOWNNAME_TURKISH                                            :Turks
+STR_TOWNNAME_ITALIAN                                            :Italiaans
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pond (£)

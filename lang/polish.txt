@@ -967,6 +967,7 @@ STR_TOWNNAME_CZECH                                              :Czeskie
 STR_TOWNNAME_SWISS                                              :Szwajcarskie
 STR_TOWNNAME_DANISH                                             :Dunskie
 STR_TOWNNAME_TURKISH                                            :Tureckie
+STR_TOWNNAME_ITALIAN                                            :Wloskie
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Funty (£)
