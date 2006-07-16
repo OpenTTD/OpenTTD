@@ -24,7 +24,7 @@ STR_000F_PASSENGERS                                             :Farþegar
 STR_0010_COAL                                                   :Kol
 STR_0011_MAIL                                                   :Póstur
 STR_0012_OIL                                                    :Olía
-STR_0013_LIVESTOCK                                              :Nautgripir
+STR_0013_LIVESTOCK                                              :Búfé
 STR_0014_GOODS                                                  :Vörur
 STR_0015_GRAIN                                                  :Korn
 STR_0016_WOOD                                                   :Timbur
@@ -56,7 +56,7 @@ STR_002F_PASSENGER                                              :Farþega
 STR_0030_COAL                                                   :Kola
 STR_0031_MAIL                                                   :Póst
 STR_0032_OIL                                                    :Olíu
-STR_0033_LIVESTOCK                                              :Nautgripa
+STR_0033_LIVESTOCK                                              :Búfé
 STR_0034_GOODS                                                  :Vöru
 STR_0035_GRAIN                                                  :Korn
 STR_0036_WOOD                                                   :Timbur
@@ -120,7 +120,7 @@ STR_ABBREV_PASSENGERS                                           :{TINYFONT}PS
 STR_ABBREV_COAL                                                 :{TINYFONT}CL
 STR_ABBREV_MAIL                                                 :{TINYFONT}ML
 STR_ABBREV_OIL                                                  :{TINYFONT}OL
-STR_ABBREV_LIVESTOCK                                            :{TINYFONT}gripir
+STR_ABBREV_LIVESTOCK                                            :{TINYFONT}LV
 STR_ABBREV_GOODS                                                :{TINYFONT}GD
 STR_ABBREV_GRAIN                                                :{TINYFONT}GR
 STR_ABBREV_WOOD                                                 :{TINYFONT}WD
@@ -329,10 +329,12 @@ STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonn
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lítr{P i ar}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 
@@ -376,8 +378,10 @@ STR_SORT_BY_MAX_SPEED                                           :Hámarkshraði
 STR_SORT_BY_MODEL                                               :Týpa
 STR_SORT_BY_VALUE                                               :Virði
 STR_SORT_BY_FACILITY                                            :Tegund stöðvar
+STR_SORT_BY_WAITING                                             :Verðgildi farms á stöð
 STR_SORT_BY_RATING_MAX                                          :Flutningur farms
 STR_NO_WAITING_CARGO                                            :{BLACK}Enginn farmur bíður
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velja allar gerðir
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velja allar tegundir farms (einnig þær sem ekki bíða)
 
 ############ range for months starts

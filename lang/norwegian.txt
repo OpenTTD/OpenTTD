@@ -551,6 +551,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Velg 'Eg
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Slett gjeldende program (Gjelder bare Egendefinert 1 og 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Lagre musikkvalg
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klikk på musikkspor for å legge til gjeldene program (Gjelder bare egendefinert 1 og 2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikk på et musikkspor for å fjerne det fra nåværende program (bare Tilfeldig1 eller Tilfeldig2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Skru tilfeldig program av/på
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Vis musikkspormeny
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Trykk for å sentere bildet rundt industri/by
@@ -879,6 +880,7 @@ STR_TOWNNAME_CZECH                                              :Tsjekkisk
 STR_TOWNNAME_SWISS                                              :Sveitsisk
 STR_TOWNNAME_DANISH                                             :Dansk
 STR_TOWNNAME_TURKISH                                            :Tyrkisk
+STR_TOWNNAME_ITALIAN                                            :Italiensk
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
