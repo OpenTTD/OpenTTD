@@ -1686,21 +1686,21 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} uz neprijima {STRING} alebo {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} teraz prijima {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} teraz prijima {STRING} a {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Otocenie zastavky
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Otocenie vykladky
-STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Zastavka musi byt najskor zburana
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientacia stanice
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientacia vykladky
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Stanica musi byt najskor zburana
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Vykladka musi byt najskor zburana
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stanice
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stanic{P a e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nie je -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...miesto je nepouzitelne
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Priliz blizko ineho pristavu
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Pristav musi byt najskor zburany
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Vybrat otocenie zeleznicnej stanice
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Vybrat orientaciu zeleznicnej stanice
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Pocet kolaji zeleznicnej stanice
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Dlzka zeleznicnej stanice
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vybrat otocenie zastavky
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vybrat otocenie vykladky
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vybrat orientaciu stanice
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vybrat orientaciu vykladky
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Vycentrovat pohlad na poziciu stanice
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Zobrazit hodnotenie stanice
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Zmenit nazov stanice
@@ -1713,7 +1713,7 @@ STR_305E_RAILROAD_STATION                                       :Zeleznicna stan
 STR_305F_AIRCRAFT_HANGAR                                        :Letecky hangar
 STR_3060_AIRPORT                                                :Letisko
 STR_3061_TRUCK_LOADING_AREA                                     :Vykladka
-STR_3062_BUS_STATION                                            :Zastavka
+STR_3062_BUS_STATION                                            :Stanica
 STR_3063_SHIP_DOCK                                              :Pristav
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Zobrazit oblast pokrytia stavanej plochy
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Nezobrazit oblast pokrytia stavanej plochy
@@ -1722,7 +1722,7 @@ STR_3068_DOCK                                                   :{WHITE}Molo
 STR_3069_BUOY                                                   :Boja
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja v ceste
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stanica je prilis velka
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...nejednoliate stanice su zakazane
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...roznorode stanice nie su povolene
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podrzte CTRL pre vyber viacerych poloziek
 
 STR_UNDEFINED                                                   :(nedefinovaný retezec)
@@ -1730,18 +1730,18 @@ STR_STAT_CLASS_DFLT                                             :Pôvodná stanica
 STR_STAT_CLASS_WAYP                                             :Kontrólne body
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Otocenie lodenice
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientacia lodenice
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...musi byt postavene na vode
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Lodenica sa tu neda postavit
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vyber otocenie pristavu
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vyber orientaciu pristavu
 STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Pobrezie alebo nabrezie
 STR_3806_SHIP_DEPOT                                             :Lodenica
 STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...nemoze byt postavene na vode
 
 ##id 0x4000
-STR_4000_SAVE_GAME                                              :{WHITE}Ulozit Hru
-STR_4001_LOAD_GAME                                              :{WHITE}Nahrat Hru
+STR_4000_SAVE_GAME                                              :{WHITE}Ulozit hru
+STR_4001_LOAD_GAME                                              :{WHITE}Nahrat hru
 STR_4002_SAVE                                                   :{BLACK}Ulozit
 STR_4003_DELETE                                                 :{BLACK}Vymazat
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
@@ -1779,7 +1779,7 @@ STR_4810_PAPER_MILL                                             :Vyroba papiera
 STR_4811_GOLD_MINE                                              :Zlata bana
 STR_4812_BANK                                                   :Banka
 STR_4813_DIAMOND_MINE                                           :Diamantova bana
-STR_4814_IRON_ORE_MINE                                          :Bana na zeleznu rudu
+STR_4814_IRON_ORE_MINE                                          :Zelezorudna bana
 STR_4815_FRUIT_PLANTATION                                       :Ovocny sad
 STR_4816_RUBBER_PLANTATION                                      :Kaucukova plantaz
 STR_4817_WATER_SUPPLY                                           :Zasobaren vody
@@ -1815,11 +1815,11 @@ STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tento ty
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...les sa moze sadit len pod ciarou snehu
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} oznamuje skore uzavretie!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zasobovacie problemy donutili {INDUSTRY} oznamit skore uzavretie!
-STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostupnost blizkeho lesa donutil {INDUSTRY} oznamit skore uzavretie!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostatok dostupnej drevnej suroviny donutil {INDUSTRY} oznamit skore uzavretie!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zvysuje produkciu!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nove nalezisko uhlia sa objavilo pri {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nove nalezisko ropy sa objavilo pri {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Na {INDUSTRY} objavili nove metody!Ocakava sa zdvojnasobenie produkcie!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Na {INDUSTRY} zlepsili metody!Ocakava sa zdvojnasobenie produkcie!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} znizuje produkciu o 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Premnozenie skodcov sposobilo znicenie urody pri {INDUSTRY}!{}Produkcia sa znizila o 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...moze byt umiestnene len pri okraji mapy
@@ -1866,7 +1866,7 @@ STR_5027_TUBULAR_RAIL_BRIDGE                                    :Kryty zeleznicn
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Kryty cestny most
 
 ##id 0x5800
-STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Nieco je v ceste
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Prekazka je v ceste
 STR_5801_TRANSMITTER                                            :Vysielac
 STR_5802_LIGHTHOUSE                                             :Majak
 STR_5803_COMPANY_HEADQUARTERS                                   :Sidlo firmy
@@ -1934,18 +1934,18 @@ STR_6804_CUSTOM                                                 :{BLACK}Vlastna
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Pocet konkurentov: {ORANGE}{COMMA}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Max. pocet konkurentov: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Zaciatok konkurencie: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Pocet miest: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Pocet priemyslu: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximalna prvotna pozicka: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Pociatocny urok: {ORANGE}{COMMA}%
-STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cena prevadzky vozidiel: {ORANGE}{STRING}
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Naklady na prevadzku vozidiel: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Rychlost konkurencie: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Inteligencia konkurencie: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Poruchy vozidiel: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Nasobok dotacii: {ORANGE}{STRING}
-STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Cena vystavby: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Naklady na vystavbu: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Typ terenu: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Rozsah oceanov/jazier: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Ekonomika: {ORANGE}{STRING}
@@ -1976,24 +1976,24 @@ STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
 STR_6829_X4                                                     :x4
-STR_682A_VERY_FLAT                                              :Velmi rovne
-STR_682B_FLAT                                                   :Rovne
-STR_682C_HILLY                                                  :Kopcovite
-STR_682D_MOUNTAINOUS                                            :Hory
+STR_682A_VERY_FLAT                                              :Velmi rovny
+STR_682B_FLAT                                                   :Rovny
+STR_682C_HILLY                                                  :Kopcovity
+STR_682D_MOUNTAINOUS                                            :Horsky
 STR_682E_STEADY                                                 :Stabilna
 STR_682F_FLUCTUATING                                            :Kolisava
 STR_6830_IMMEDIATE                                              :Ihned
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 mesiace po hracovi
-STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mesiace po hracovi
-STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mesiace po hracovi
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mesiacov po hracovi
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mesiacov po hracovi
 STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Na konci trasy a v stanicach
 STR_6835_AT_END_OF_LINE_ONLY                                    :Len na konci trasy
 STR_6836_OFF                                                    :Vyp.
 STR_6837_ON                                                     :Zap.
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Zobrazit tabulku najlepsich
-STR_6839_PERMISSIVE                                             :Priatelsky
+STR_6839_PERMISSIVE                                             :Pozitivny
 STR_683A_TOLERANT                                               :Tolerantny
-STR_683B_HOSTILE                                                :Nepriatelsky
+STR_683B_HOSTILE                                                :Odmietavy
 
 ##id 0x7000
 STR_7000                                                        :
@@ -2014,17 +2014,17 @@ STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Vydaje/P
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Vystavba
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nove vozidla
-STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Cena prevadzky vlakov
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Cena prevadzky automobilov
-STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Cena prevadzky lietadiel
-STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Cena prevadzky lodi
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Prevadzka vlakov
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Prevadzka automobilov
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Prevadzka lietadiel
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Prevadzka lodi
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Udrzba majetku
-STR_7018_TRAIN_INCOME                                           :{GOLD}Zisk vlakov
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Zisk automobilov
-STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Zisk lietadiel
-STR_701B_SHIP_INCOME                                            :{GOLD}Zisk lodi
+STR_7018_TRAIN_INCOME                                           :{GOLD}Trzby vlakov
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Trzby automobilov
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Trzby lietadiel
+STR_701B_SHIP_INCOME                                            :{GOLD}Trzby lodi
 STR_701C_LOAN_INTEREST                                          :{GOLD}Uroky
-STR_701D_OTHER                                                  :{GOLD}Ine
+STR_701D_OTHER                                                  :{GOLD}Ostatne
 STR_701E                                                        :{BLACK}-{CURRENCY64}
 STR_701F                                                        :{BLACK}+{CURRENCY64}
 STR_7020_TOTAL                                                  :{WHITE}Spolu:
@@ -2034,11 +2034,11 @@ STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf prevadzkoveho zisku
 STR_7026_BANK_BALANCE                                           :{WHITE}Zostatok v banke
-STR_7027_LOAN                                                   :{WHITE}Pozicka
+STR_7027_LOAN                                                   :{WHITE}Uver
 STR_MAX_LOAN                                                    :{WHITE}Max. pozicka:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Pozicat {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702A_REPAY                                                  :{BLACK}Vratit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Splatit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...maximalna vyska pozicky je {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nemozno pozicat viac penazi...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...pozicka uz bola splatena

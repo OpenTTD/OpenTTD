@@ -1826,8 +1826,45 @@ STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Влак
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Купи нова ЖП машина
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Домъкни ЖП машина тук, за да я продадеш
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Фокусирай върху мястото на влаковото депо
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Списък с влакове - натисни върху влак за информация
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Строене на избрания влак
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Преименуване на влак
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Текущо същояние на влака - натиснете за спиране/пускане
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Пътен лист
+STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Центриране главния прозорец върху влака
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Изпращане влака в депо
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Игнориране на семафор
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Обръщане посоката на влака
+STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Показва информация за влака
+STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Увеличава интервалa за сервиз
+STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Намалява интервал за сервиз
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Информация за превозвания товар
+STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Информация за влаковата композиция
+STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Капацитет на влаковата композиция
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Общ капацитет на влака, разбит по типове товар
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Пътен лист - натиснете върху назначение за маркиране. CTRL + натискане - центрира върху станцията
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Прескачане на текущото назначение и насочване към следващото
+STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Изтриване на избраното назначение
+STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Преминавай през избраното назначение без спиране
+STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Добавяне на назначение преди избраната или в края на списъка
+STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Изчакай на избраното назначение до пълно зареждане с товар
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Разтоварва на избраното назначение целия товар
+STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Нов {STRING} вече е достъпен!
+STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
+STR_885C_BROKEN_DOWN                                            :{RED}Развален
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Възраст: {LTBLUE}{STRING}{BLACK}   Оперативни разходи: {LTBLUE}{CURRENCY}/г.
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Тегло: {LTBLUE}{WEIGHT_S}  {BLACK}Мощност: {LTBLUE}{POWER}{BLACK} Максимална скорост: {LTBLUE}{VELOCITY}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Приход тази година: {LTBLUE}{CURRENCY}  (предходна: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Разваляния след последния сервиз: {LTBLUE}{COMMA}
+STR_8861_STOPPED                                                :{RED}Спрян
+STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Влака не може да пропусне сигнала при опасност...
+STR_8863_CRASHED                                                :{RED}Катастрофа!
 
+STR_8865_NAME_TRAIN                                             :{WHITE}Име на влак
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Не може да сложи име...
+STR_8867_NAME_TRAIN                                             :{BLACK}Име на влак
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Влакова катастрофа!{}{COMMA} умрели в огнената експлозия
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Не може да обърне посоката на влак...
 
 
 ##id 0x9000
