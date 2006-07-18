@@ -804,9 +804,9 @@ STR_02E4                                                        :{BLACK}{SKIP}{S
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Výber jednotiek vzdialenosti
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cestne vozidla
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Strana, na ktorej jazdia cestne vozidla
-STR_02E9_DRIVE_ON_LEFT                                          :Nalavo
-STR_02EA_DRIVE_ON_RIGHT                                         :Napravo
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Strana po ktorej jazdia cestne vozidla
+STR_02E9_DRIVE_ON_LEFT                                          :Jazdia nalavo
+STR_02EA_DRIVE_ON_RIGHT                                         :Jazdia napravo
 STR_02EB_TOWN_NAMES                                             :{BLACK}Nazvy miest
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Vyber styl nazvov miest
@@ -821,7 +821,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Kazdych 12 mesi
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Spustit novu hru
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nacitat ulozenu hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvorit vlastny svet / scenar
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vyber hry pre 1 hraca
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vyberte hru pre 1 hraca
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vyberte hru pre 2-8 hracov
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Zobraz nastavenia hry
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Zobraz nastavenia obtiaznosti
@@ -829,7 +829,7 @@ STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Spustit 
 STR_0304_QUIT                                                   :{BLACK}Ukoncit program
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Ukoncit 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
-STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...moze byt postavene len v meste
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... moze byt postavene len v meste
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Vyber styl uzemia
 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Vyber 'arkticky' styl uzemia
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Vyber 'tropicky' styl uzemia
@@ -843,9 +843,9 @@ STR_0313_FUND_NEW_INDUSTRY                                      :Financovat novy
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financovat novy priemysel
 STR_JUST_STRING                                                 :{STRING}
-STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...moze byt postavene len v meste
-STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...moze byt postavene len v dazdovom pralese
-STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...moze byt postavene len v pusti
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}... moze byt postavene len v meste
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}... moze byt postavene len v dazdovom pralese
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}... moze byt postavene len v pusti
 STR_0319_PAUSED                                                 :{YELLOW}* *  ZASTAVENE  *  *
 
 STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Screenshot bol ulozeny na disk ako '{STRING}'
@@ -1442,11 +1442,11 @@ STR_0803_INCOME                                                 :{GREEN}Zisk: {C
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Prekladka: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Prekladka: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Priblizna cena: {CURRENCY}
-STR_0805_ESTIMATED_COST                                         :{WHITE}Priblizna Cena: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Priblizny Zisk: {CURRENCY}
-STR_0807_ESTIMATED_INCOME                                       :{WHITE}Priblizny Zisk: {CURRENCY}
-STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Tu nemozno zdvihnut teren...
-STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Tu nemozno znizit teren...
+STR_0805_ESTIMATED_COST                                         :{WHITE}Priblizna cena: {CURRENCY}
+STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Priblizny zisk: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Priblizny zisk: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Tu nemozno zdvihnut teren ...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Tu nemozno znizit teren ...
 STR_080A_ROCKS                                                  :Skaly
 STR_080B_ROUGH_LAND                                             :Nerovny teren
 STR_080C_BARE_LAND                                              :Holy teren
@@ -1462,19 +1462,19 @@ STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Vyhlbeni
 STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Na urovni mora
 STR_1004_TOO_HIGH                                               :{WHITE}Prilis vysoko
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Ziadne pouzitelne zeleznicne kolaje
-STR_1007_ALREADY_BUILT                                          :{WHITE}...uz bolo vytvorene
+STR_1007_ALREADY_BUILT                                          :{WHITE}... uz bolo vytvorene
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najskor treba odstranit zeleznicne kolaje
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Vystavba zeleznice
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Stavba elektrifikovanej ¸eleznice
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Vystavba jednokolajky
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Vystavba magnetickej drahy
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Vyber zeleznicny most
-STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Tu nemoze byt postavene depo...
-STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Tu nemoze byt postavena zeleznicna stanica...
-STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Tu sa nedaju stavat semafory...
-STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Tu sa nedaju stavat zeleznicne kolaje...
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Tu nemozno odstranit zeleznicne kolaje...
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Tu nemozno odstranit semafory...
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Tu nemoze byt postavene depo ...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Tu nemoze byt postavena zeleznicna stanica ...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Tu sa nedaju stavat semafory ...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Tu sa nedaju stavat zeleznicne kolaje ...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Tu nemozno odstranit zeleznicne kolaje ...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Tu nemozno odstranit semafory ...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientacia depa
 STR_1015_RAILROAD_CONSTRUCTION                                  :Vystavba zeleznice
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Stavba elektrifikovanej ¸eleznice
@@ -1486,12 +1486,12 @@ STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Postavit
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Postavit zeleznicne semafory
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Postavit zeleznicny most
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Postavit zeleznicny tunel
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Zapnut postavit/odstranit zeleznicne kolaje a semafory
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Prepnut stavbu/odstranenie zeleznicnych kolaji a semaforov
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Vyber mostu - kliknut na vybrany most
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Vyber orientacie depa
 STR_1021_RAILROAD_TRACK                                         :Zeleznicne kolaje
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zeleznicne depo
-STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...oblast vlastni ina spolocnost
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}... oblast vlastni ina spolocnost
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kolaje zo standartnym semaforom
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje z pre-signami
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje z exit-signalmi
@@ -1504,12 +1504,12 @@ STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Cesta mu
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Prebiehaju cestne prace
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vystavba cesty
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vyber cestny most
-STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Tu sa neda postavit cesta...
-STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Tu sa neda odstranit cesta...
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Tu sa neda postavit cesta ...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Tu sa neda odstranit cesta ...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientacia garaze
-STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tu sa neda postavit garaz...
-STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nemozno postavit autobusovu zastavku...
-STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nemozno postavit vykladku...
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Tu sa neda postavit garaz ...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Nemozno postavit autobusovu zastavku ...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Nemozno postavit vykladku ...
 STR_180A_ROAD_CONSTRUCTION                                      :Vystavba cesty
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Postavit cast cesty
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Postavit garaz (na vyroby a opravy automobilov)
@@ -1536,7 +1536,7 @@ STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Budova s
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Obyvatelstvo: {ORANGE}{COMMA}{BLACK}  Domov: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Premenovat mesto
-STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Mesto nemoze byt odstranene...
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Mesto nemoze byt odstranene ...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} miestna sprava to nedovoli
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Nazvy miest - kliknut na meno pre pohlad na stred mesta
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Pohlad na stred mesta
@@ -1580,7 +1580,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING} z {STATION} to {STATION} bude buduci rok 2x vynosejnsia!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING} z {STATION} do {STATION} bude buduci rok 3x vynosnejsia!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING} z {STATION} do {STATION} bude buduci rok 4x vynosnejsia!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} miestna sprava odmietla stavbu letiska v tomto meste
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Miestna sprava {TOWN} odmietla stavbu letiska v tomto meste
 STR_2036_COTTAGES                                               :Chaty
 STR_2037_HOUSES                                                 :Domy
 STR_2038_FLATS                                                  :Byty
@@ -1632,15 +1632,15 @@ STR_LANDSCAPING                                                 :Uprava krajiny
 STR_2800_PLANT_TREES                                            :Sadit stromy
 STR_2801_PLACE_SIGN                                             :Vlozit popis
 STR_2802_TREES                                                  :{WHITE}Stromy
-STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...strom tu uz je
-STR_2804_SITE_UNSUITABLE                                        :{WHITE}...nevhodne miesto
-STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Tu sa strom neda zasadit...
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}... strom tu uz je
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}... nevhodne miesto
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Tu sa strom neda zasadit ...
 STR_2806                                                        :{WHITE}{STRING}
-STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...prilis vela popisov
-STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Tu sa neda dat popis...
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}... prilis vela popisov
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Tu sa neda dat popis ...
 STR_280A_SIGN                                                   :Popis
 STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Upravit text popisu
-STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Nemozno zmenit text popisu...
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Nemozno zmenit text popisu ...
 STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Vybrat typ stromu pre sadenie
 STR_280E_TREES                                                  :Stromy
 STR_280F_RAINFOREST                                             :Dazdovy prales
@@ -1649,7 +1649,7 @@ STR_2810_CACTUS_PLANTS                                          :Kaktusy
 ##id 0x3000
 STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Vyber zeleznicnej stanice
 STR_3001_AIRPORT_SELECTION                                      :{WHITE}Vyber letiska
-STR_3002_ORIENTATION                                            :{BLACK}Otocenie
+STR_3002_ORIENTATION                                            :{BLACK}Orientacia
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Pocet kolaji
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Dlzka nastupista
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Prilis blizko inej zeleznicnej stanice
@@ -1665,7 +1665,7 @@ STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Prilis b
 STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Letisko sa musi najskor zburat
 
 STR_3030_RENAME_STATION_LOADING                                 :Premenovat stanicu/vykladku
-STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Stanica sa neda premenovat...
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Stanica sa neda premenovat ...
 STR_3032_RATINGS                                                :{BLACK}Hodnotenie
 STR_3033_ACCEPTS                                                :{BLACK}Prijima
 STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Hodnotenie prepravy:
@@ -1693,7 +1693,7 @@ STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Vykladka
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stanic{P a e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Nie je -
-STR_304B_SITE_UNSUITABLE                                        :{WHITE}...miesto je nepouzitelne
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}... miesto je nepouzitelne
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Priliz blizko ineho pristavu
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Pristav musi byt najskor zburany
 STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Vybrat orientaciu zeleznicnej stanice
@@ -1704,7 +1704,7 @@ STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vybrat o
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Vycentrovat pohlad na poziciu stanice
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Zobrazit hodnotenie stanice
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Zmenit nazov stanice
-STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Zobrazit zoznam prijmaneho nakladu
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Zobrazit zoznam prijimaneho nakladu
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Nazvy stanic - kliknut pre vycentrovanie pohladu na poziciu stanice
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Vybrat velkost/typ letiska
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
@@ -1720,9 +1720,9 @@ STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Nezobraz
 STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Ukazat oblast pokrytia
 STR_3068_DOCK                                                   :{WHITE}Molo
 STR_3069_BUOY                                                   :Boja
-STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boja v ceste
-STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...stanica je prilis velka
-STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...roznorode stanice nie su povolene
+STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}... boja v ceste
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... stanica je prilis velka
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}... roznorode stanice nie su povolene
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podrzte CTRL pre vyber viacerych poloziek
 
 STR_UNDEFINED                                                   :(nedefinovaný retezec)
@@ -1731,13 +1731,13 @@ STR_STAT_CLASS_WAYP                                             :Kontrólne body
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientacia lodenice
-STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...musi byt postavene na vode
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}... musi byt postavene na vode
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Lodenica sa tu neda postavit
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Vyber orientaciu pristavu
 STR_3804_WATER                                                  :Voda
 STR_3805_COAST_OR_RIVERBANK                                     :Pobrezie alebo nabrezie
 STR_3806_SHIP_DEPOT                                             :Lodenica
-STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...nemoze byt postavene na vode
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}... nemoze byt postavene na vode
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Ulozit hru
@@ -1750,11 +1750,11 @@ STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Zariaden
 STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Ulozenie hry zlyhalo
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Subor sa neda vymazat
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Nahratie hry zlyhalo
-STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Zoznam diskov, adresare a subory ulozenych hier
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Zoznam diskov, adresarov a subory ulozenych hier
 STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Vybrane meno pre ulozenie hry
 STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Vymazat vybranu ulozenu hru
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Ulozit aktualnu hru s pouzitim vybraneho mena
-STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vyber novy typ hry
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vyber typ novej hry
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vyber scenar (zeleny), prednastavena hra (modra), alebo nahodnu hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vygenerovat nahodnu novu hru
 
@@ -1811,18 +1811,18 @@ STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Vycentro
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}{STRING} sa zacina stavat nedaleko {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}{STRING} sa vysadza nedaleko {TOWN}!
 STR_482F_COST                                                   :{BLACK}Cena: {YELLOW}{CURRENCY}
-STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tento typ priemyslu sa tu neda postavit...
-STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...les sa moze sadit len pod ciarou snehu
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tento typ priemyslu sa tu neda postavit ...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... les sa moze sadit len pod ciarou snehu
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} oznamuje skore uzavretie!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Zasobovacie problemy donutili {INDUSTRY} oznamit skore uzavretie!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostatok dostupnej drevnej suroviny donutil {INDUSTRY} oznamit skore uzavretie!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zvysuje produkciu!
-STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nove nalezisko uhlia sa objavilo pri {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nove nalezisko uhlia sa objavilo v {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nove nalezisko ropy sa objavilo pri {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
-STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Na {INDUSTRY} zlepsili metody!Ocakava sa zdvojnasobenie produkcie!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Na {INDUSTRY} zlepsili pouzivane metody!Ocakava sa zdvojnasobenie produkcie!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} znizuje produkciu o 50%
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Premnozenie skodcov sposobilo znicenie urody pri {INDUSTRY}!{}Produkcia sa znizila o 50%
-STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...moze byt umiestnene len pri okraji mapy
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Premnozenie skodcov sposobilo znicenie urody na {INDUSTRY}!{}Produkcia sa znizila o 50%
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}... moze byt umiestnene len pri okraji mapy
 STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produkcia v {INDUSTRY} sa zvysuje o {COMMA}%!
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produkcia v {INDUSTRY} sa znizuje o {COMMA}%!
 
@@ -1846,8 +1846,8 @@ STR_5012_WOODEN                                                 :Drevenny
 STR_5013_CONCRETE                                               :Betonovy
 STR_5014_TUBULAR_STEEL                                          :Kryty ocelovy
 STR_BRIDGE_TUBULAR_SILICON                                      :Kryty plastovy
-STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Tu sa neda postavit most...
-STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tu sa neda postavit tunel...
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Tu sa neda postavit most ...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Tu sa neda postavit tunel ...
 STR_5017_RAILROAD_TUNNEL                                        :Zeleznicny tunel
 STR_5018_ROAD_TUNNEL                                            :Cestny tunel
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Ocelovy zavesny zeleznicny most
@@ -1866,14 +1866,14 @@ STR_5027_TUBULAR_RAIL_BRIDGE                                    :Kryty zeleznicn
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Kryty cestny most
 
 ##id 0x5800
-STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Prekazka je v ceste
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}V ceste je prekazka
 STR_5801_TRANSMITTER                                            :Vysielac
 STR_5802_LIGHTHOUSE                                             :Majak
 STR_5803_COMPANY_HEADQUARTERS                                   :Sidlo firmy
-STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...sidlo firmy v ceste
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}... sidlo firmy v ceste
 STR_5805_COMPANY_OWNED_LAND                                     :Spolocnostou vlastnene uzemie
-STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}To uzemie sa neda kupit...
-STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...uz to vlastnis!
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}To uzemie sa neda kupit ...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}... uz to vlastnis!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1938,7 +1938,7 @@ STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Max. po
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Zaciatok konkurencie: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Pocet miest: {ORANGE}{STRING}
 STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Pocet priemyslu: {ORANGE}{STRING}
-STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximalna prvotna pozicka: {ORANGE}{CURRENCY}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximalny prvotny uver: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Pociatocny urok: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Naklady na prevadzku vozidiel: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Rychlost konkurencie: {ORANGE}{STRING}
@@ -1986,8 +1986,8 @@ STR_6830_IMMEDIATE                                              :Ihned
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 mesiace po hracovi
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 mesiacov po hracovi
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 mesiacov po hracovi
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Na konci trasy a v stanicach
-STR_6835_AT_END_OF_LINE_ONLY                                    :Len na konci trasy
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Na konci trate a v stanicach
+STR_6835_AT_END_OF_LINE_ONLY                                    :Len na konci trate
 STR_6836_OFF                                                    :Vyp.
 STR_6837_ON                                                     :Zap.
 STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Zobrazit tabulku najlepsich
@@ -2010,7 +2010,7 @@ STR_700B_PRESIDENT_S_NAME                                       :Meno prezidenta
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Nazov spolocnosti sa neda zmenit...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Meno prezidenta sa neda zmenit...
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Financie {BLACK}{PLAYERNAME}
-STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Vydaje/Prijmy
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Vydavky/Prijmy
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Vystavba
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nove vozidla
@@ -2863,11 +2863,11 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
 
 ########### String for new airports
-STR_SMALL_AIRPORT                                               :{BLACK}Maly
-STR_CITY_AIRPORT                                                :{BLACK}Mesto
+STR_SMALL_AIRPORT                                               :{BLACK}Male
+STR_CITY_AIRPORT                                                :{BLACK}Mestske
 STR_METRO_AIRPORT                                               :{BLACK}Metropolitne letisko
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Medzinarodne letisko
-STR_COMMUTER_AIRPORT                                            :{BLACK}Komutator
+STR_COMMUTER_AIRPORT                                            :{BLACK}Vnutrostatne
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Medzikontinentalny
 STR_HELIPORT                                                    :{BLACK}Heliport
 STR_HELIDEPOT                                                   :{BLACK}Helidepot
@@ -2875,6 +2875,6 @@ STR_HELISTATION                                                 :{BLACK}Stanice 
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Male letiska
 STR_LARGE_AIRPORTS                                              :{BLACK}Velke letiska
-STR_HUB_AIRPORTS                                                :{BLACK}Rozbocovacie letiska
+STR_HUB_AIRPORTS                                                :{BLACK}Centralne letiska
 STR_HELIPORTS                                                   :{BLACK}Letiska pre vrtulniky
 ########

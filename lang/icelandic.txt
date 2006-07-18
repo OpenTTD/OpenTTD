@@ -152,7 +152,7 @@ STR_ABBREV_ALL                                                  :{TINYFONT}ALLT
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kort - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Leikjastillingar
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Stillingar
 STR_00B2_MESSAGE                                                :{YELLOW}Skilaboð
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Skilaboð frá {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Get ekki gert þetta....
@@ -302,7 +302,7 @@ STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Kortastærð:
 STR_BY                                                          :{BLACK}*
-STR_0148_GAME_OPTIONS                                           :{BLACK}Leikjastillingar
+STR_0148_GAME_OPTIONS                                           :{BLACK}Stillingar
 
 STR_0150_SOMEONE                                                :einhver{SKIP}{SKIP}
 STR_0151_MAP_OF_WORLD                                           :Heimskort
@@ -520,7 +520,7 @@ STR_01DA_CUSTOM_2                                               :{TINYFONT}Sérva
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Tónlistarstyrkur
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Hljóðstyrkur
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}LÁG  '  '  ' '  '  '  HÁM
-STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Skipta yfir í seinasta lag
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Skipta yfir í fyrra lag
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Skipta yfir í næsta lag
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Hætta að spila tónlist
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Byrja að spila tónlist
@@ -742,8 +742,8 @@ STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Nöfn far
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Vista sérvalin hönnunarnöfn farartækja á disk
 
 ############ range for menu	starts
-STR_02C3_GAME_OPTIONS                                           :Leikjastillingar
-STR_02C4_GAME_OPTIONS                                           :Leikjastillingar
+STR_02C3_GAME_OPTIONS                                           :Stillingar
+STR_02C4_GAME_OPTIONS                                           :Stillingar
 STR_02C5_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
 STR_02C6_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
 STR_02C7_CONFIG_PATCHES                                         :Viðbætur
@@ -800,7 +800,7 @@ STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Val á gj
 STR_MEASURING_UNITS                                             :{BLACK}Mælieiningar
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Veldu mælieiningu
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Bifreið
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Bifreiðar
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Veldu vegarhelming fyrir bifreiðir
 STR_02E9_DRIVE_ON_LEFT                                          :Keyra vinstra megin
@@ -812,18 +812,18 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Veldu st
 STR_02F4_AUTOSAVE                                               :{BLACK}Sjálfvirk vistun
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Veldu millibil fyrir sjálfvirkar vistanir
-STR_02F7_OFF                                                    :Slökkt
-STR_02F8_EVERY_3_MONTHS                                         :Með 3. mánaða millibili
+STR_02F7_OFF                                                    :Aldrei
+STR_02F8_EVERY_3_MONTHS                                         :Ársfjórðungslega
 STR_02F9_EVERY_6_MONTHS                                         :Hálfsárslega
 STR_02FA_EVERY_12_MONTHS                                        :Árlega
-STR_02FB_START_A_NEW_GAME                                       :{BLACK}Byrja nýjan leik
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Hefja nýjan leik
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Opna vistaðan leik
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Búa til eigið land
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Velja einspilunarleik
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Velja 2-8 leikmanna fjölspilunarleik
-STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Sýna Leikjastillingar
-STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Sýna Erfiðleikastig
-STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Byrja nýjan leik, í sérvöldu korti
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Stilla OpenTTD
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Stilla erfiðleikastig
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Hefja nýjan leik í sérvöldu korti
 STR_0304_QUIT                                                   :{BLACK}Hætta í OpenTTD
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Hætta í OpenTTD
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
@@ -859,50 +859,51 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Ensk
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Ensk (Upphafleg)
 STR_TOWNNAME_FRENCH                                             :Frönsk
 STR_TOWNNAME_GERMAN                                             :Þýsk
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Enska (Aukaleg)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latin-Amerísk
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Ensk (Aukaleg)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Rómönsk-Amerísk
 STR_TOWNNAME_SILLY                                              :Fáránleg
 STR_TOWNNAME_SWEDISH                                            :Sænsk
 STR_TOWNNAME_DUTCH                                              :Hollensk
 STR_TOWNNAME_FINNISH                                            :Finnsk
 STR_TOWNNAME_POLISH                                             :Pólsk
 STR_TOWNNAME_SLOVAKISH                                          :Slóvakísk
-STR_TOWNNAME_NORWEGIAN                                          :Norska
+STR_TOWNNAME_NORWEGIAN                                          :Norsk
 STR_TOWNNAME_HUNGARIAN                                          :Ungversk
 STR_TOWNNAME_AUSTRIAN                                           :Austurrísk
 STR_TOWNNAME_ROMANIAN                                           :Rúmensk
 STR_TOWNNAME_CZECH                                              :Tékknesk
 STR_TOWNNAME_SWISS                                              :Svissnesk
 STR_TOWNNAME_DANISH                                             :Dönsk
-STR_TOWNNAME_TURKISH                                            :Tyrkneska
+STR_TOWNNAME_TURKISH                                            :Tyrknesk
+STR_TOWNNAME_ITALIAN                                            :Ítölsk
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
-STR_CURR_USD                                                    :Bandaríkjadalir ($)
+STR_CURR_USD                                                    :Bandaríkjadalur ($)
 STR_CURR_EUR                                                    :Evra (¤)
 STR_CURR_YEN                                                    :Jen (¥)
 STR_CURR_ATS                                                    :Austurrískur skildingur (ATS)
-STR_CURR_BEF                                                    :Belgískur Franki (BEF)
-STR_CURR_CHF                                                    :Svissneskur Franki (CHF)
-STR_CURR_CZK                                                    :Tékknesk Kóróna (CZK)
+STR_CURR_BEF                                                    :Belgískur franki (BEF)
+STR_CURR_CHF                                                    :Svissneskur franki (CHF)
+STR_CURR_CZK                                                    :Tékknesk kóróna (CZK)
 STR_CURR_DEM                                                    :Þýskt mark (DEM)
-STR_CURR_DKK                                                    :Dönsk Króna (DKK)
+STR_CURR_DKK                                                    :Dönsk króna (DKK)
 STR_CURR_ESP                                                    :Pesetar (ESP)
 STR_CURR_FIM                                                    :Finnskt mark (FIM)
 STR_CURR_FRF                                                    :Franki (FRF)
 STR_CURR_GRD                                                    :Grísk drakma (GRD)
 STR_CURR_HUF                                                    :Ungversk forinta (HUF)
-STR_CURR_ISK                                                    :Íslensk Króna (ISK)
-STR_CURR_ITL                                                    :Ítölsk Líra (ITL)
-STR_CURR_NLG                                                    :Hollensk Gyllini (NLG)
+STR_CURR_ISK                                                    :Íslensk króna (ISK)
+STR_CURR_ITL                                                    :Ítölsk líra (ITL)
+STR_CURR_NLG                                                    :Hollensk gyllini (NLG)
 STR_CURR_NOK                                                    :Norsk króna (NOK)
-STR_CURR_PLN                                                    :Pólsk Zloty (PLN)
-STR_CURR_ROL                                                    :Rúmensk Leu (ROL)
-STR_CURR_RUR                                                    :Rússnesk Rúbla (RUR)
-STR_CURR_SEK                                                    :Sænsk Króna (SEK)
+STR_CURR_PLN                                                    :Pólsk zloty (PLN)
+STR_CURR_ROL                                                    :Rúmensk leu (ROL)
+STR_CURR_RUR                                                    :Rússnesk rúbla (RUR)
+STR_CURR_SEK                                                    :Sænsk króna (SEK)
 
 STR_CURR_CUSTOM                                                 :Sérvalið...
 
@@ -910,8 +911,8 @@ STR_OPTIONS_LANG                                                :{BLACK}Tungumál
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_OPTIONS_LANG_TIP                                            :{BLACK}Veldu tungumál viðmótsins
 
-STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fylla útí skjá
-STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Hakaðu við hér til að OpenTTD fylli útí skjáinn
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fylla út í skjá
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Smelltu hér til að OpenTTD fylli út í skjáinn
 
 STR_OPTIONS_RES                                                 :{BLACK}Skjáupplausn
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -988,7 +989,7 @@ STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Sjálfvir
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Lest {COMMA} er of löng eftir endurnýjun
 
 STR_CONFIG_PATCHES                                              :{BLACK}Viðbætur
-STR_CONFIG_PATCHES_TIP                                          :{BLACK}Viðbætur
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Stilla viðbætur
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Viðbætur
 
 STR_CONFIG_PATCHES_OFF                                          :Nei
@@ -1723,6 +1724,7 @@ STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...óregl
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Haltu CTRL inni til að velja fleiri en eitt
 
 STR_UNDEFINED                                                   :(óskilgreindur strengur)
+STR_STAT_CLASS_DFLT                                             :Sjálfgefin stöð
 STR_STAT_CLASS_WAYP                                             :Millistöð
 
 ##id 0x3800
@@ -2011,14 +2013,14 @@ STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Bygging
 STR_7012_NEW_VEHICLES                                           :{GOLD}Ný Farartæki
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Rekstrarkostnaður lesta
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Rekstrarkostnaður bíla
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Rekstrarkostnaður bifreiða
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Rekstrarkostnaður flugvéla
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Rekstrarkostnaður skipa
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Viðhald eigna
-STR_7018_TRAIN_INCOME                                           :{GOLD}Lestartekjur
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Bílatekjur
-STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Flúgvélatekjur
-STR_701B_SHIP_INCOME                                            :{GOLD}Skipstekjur
+STR_7018_TRAIN_INCOME                                           :{GOLD}Tekjur vegna lesta
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Tekjur vegna bifreiða
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Tekjur vegna flugvéla
+STR_701B_SHIP_INCOME                                            :{GOLD}Tekjur vegna skipa
 STR_701C_LOAN_INTEREST                                          :{GOLD}Lánsvextir
 STR_701D_OTHER                                                  :{GOLD}Annað
 STR_701E                                                        :{BLACK}-{CURRENCY64}
