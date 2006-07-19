@@ -20,6 +20,7 @@
 #include "viewport.h"
 #include "player.h"
 #include "depot.h"
+#include "airport.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 
@@ -117,10 +118,13 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			int count = 0;
 			int num = NUM_AIRCRAFT_ENGINES;
 			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
+			EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
 
 			do {
-				if (HASBIT(e->player_avail, _local_player)) count++;
-			} while (++e,--num);
+				if (HASBIT(e->player_avail, _local_player) &&
+					!( (GetAirport(GetStationByTile(w->window_number)->airport_type)->acc_planes == HELICOPTERS_ONLY) &&
+					   (AircraftVehInfo(engine_id)->subtype & AIR_CTOL) ) ) count++;
+			} while (++engine_id, ++e,--num);
 			SetVScrollCount(w, count);
 		}
 
@@ -137,7 +141,9 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 			EngineID selected_id = INVALID_ENGINE;
 
 			do {
-				if (HASBIT(e->player_avail, _local_player)) {
+				if (HASBIT(e->player_avail, _local_player) &&
+					!( (GetAirport(GetStationByTile(w->window_number)->airport_type)->acc_planes == HELICOPTERS_ONLY) &&
+					   (AircraftVehInfo(engine_id)->subtype & AIR_CTOL) ) ) {
 					if (sel==0) selected_id = engine_id;
 					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 						DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
