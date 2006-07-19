@@ -1457,6 +1457,108 @@ STR_8070_TOY_VAN                                                :Vagon za igrace
 STR_8071_BATTERY_TRUCK                                          :Tovornjak za baterije
 STR_8072_FIZZY_DRINK_TRUCK                                      :Tovornjak za gazirane pijace
 STR_8073_PLASTIC_TRUCK                                          :Tovornjak za plastiko
+STR_807B_BALOGH_COAL_TRUCK                                      :Balogh kamion premoga
+STR_807C_UHL_COAL_TRUCK                                         :Uhl kamion premoga
+STR_807D_DW_COAL_TRUCK                                          :DW kamion premoga
+STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe naftni tanker
+STR_8085_FOSTER_OIL_TANKER                                      :Foster naftni tanker
+STR_8086_PERRY_OIL_TANKER                                       :Perry naftni tanker
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh kamion blaga
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead kamion blaga
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss kamion blaga
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford kamion zita
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas kamion zita
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss kamion zita
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe kamion lesa
+STR_8091_FOSTER_WOOD_TRUCK                                      :Fooster kamion lesa
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland kamion lesa
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS kamion zelezne rude
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl kamion zelezne rude
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy kamion zelezne rude
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh kamion jekla
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl kamion jekla
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling kamion jekla
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh oklepni kamion
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl oklepni kamion
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster oklepni kamion
+STR_809C_FOSTER_FOOD_VAN                                        :Foster kamion ¸ivil
+STR_809D_PERRY_FOOD_VAN                                         :Perry kamion ¸ivil
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy kamion ¸ivil
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl kamion papirja
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh kamion papirja
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS kamion papirja
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS kamion bakrove rude
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl kamion bakrove rude
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss kamion bakrove rude
+STR_80A5_UHL_WATER_TANKER                                       :Uhl tanker mineralne vode
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh tanker mineralne vode
+STR_80A7_MPS_WATER_TANKER                                       :MPS tanker mineralne vode
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh kamion sadja
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl kamion sadja
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling kamion sadja
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh kamion kavcuka
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl kamion kavcuka
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT kamion kavcuka
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover kamion sladkorja
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught kamion sladkorja
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow kamion sladkorja
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover kamion Cockte
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught kamion Cockte
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow kamion Cockte
+STR_80CC_MPS_OIL_TANKER                                         :MPS naftni tanker
+STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. naftni tanker
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS potniski trajekt
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP potniski trajekt
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hovercraft
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug potniski trajekt
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake potniski trajekt
+STR_80D3_YATE_CARGO_SHIP                                        :Yate tovorna ladja
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell tovorna ladja
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover tovorna ladja
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaut tovorna ladja
+STR_80D7_SAMPSON_U52                                            :Sampson U52
+STR_80D8_COLEMAN_COUNT                                          :Coleman Count
+STR_80D9_FFP_DART                                               :FFP Dart
+STR_80DA_YATE_HAUGAN                                            :Yate Haugan
+STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Bakewell Cotswald LB-3
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate Aerospace YAC 1-11
+STR_80E2_DARWIN_100                                             :Darwin 100
+STR_80E3_DARWIN_200                                             :Darwin 200
+STR_80E4_DARWIN_300                                             :Darwin 300
+STR_80E5_DARWIN_400                                             :Darwin 400
+STR_80E6_DARWIN_500                                             :Darwin 500
+STR_80E7_DARWIN_600                                             :Darwin 600
+STR_80E8_GURU_GALAXY                                            :Guru Galaxy
+STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
+STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
+STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
+STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
+STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
+STR_80EE_DINGER_100                                             :Dinger 100
+STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
+STR_80F1_KELLING_K1                                             :Kelling K1
+STR_80F2_KELLING_K6                                             :Kelling K6
+STR_80F3_KELLING_K7                                             :Kelling K7
+STR_80F4_DARWIN_700                                             :Darwin 700
+STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
+STR_80F6_DINGER_200                                             :Dinger 200
+STR_80F7_DINGER_1000                                            :Dinger 1000
+STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
+STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
+STR_80FA_FLASHBANG_X1                                           :Flashbang X1
+STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER                                    :Tricario helikopter
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 helikopter
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut helikopter
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Sporocilo od proizvajalca vozila
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Pravkar smo izdelali novi {STRING} - ali te zanima enoletna ekskluzivna pravica do uporabe tega vozila, preden ga ponudimo na trgu?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :lokomotiva
 STR_8103_ROAD_VEHICLE                                           :cestno vozilo
 STR_8104_AIRCRAFT                                               :letalo
@@ -1465,23 +1567,35 @@ STR_8106_MONORAIL_LOCOMOTIVE                                    :enotirni vlak
 STR_8107_MAGLEV_LOCOMOTIVE                                      :magnetni vlak
 
 ##id 0x8800
-STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prvi vlak pripelje v {STATION}!
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Zelezniska garaza
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Prebivalci praznujejo . . .{}Prvi vlak je pripeljal v {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Podrobnosti)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na poti
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Pojdi do {STATION}
-STR_8808_GO_TO_UNLOAD                                           :Go to {STATION} (Razlozi)
+STR_8807_GO_TO_TRANSFER                                         :Pojdi do {STATION} (Prenesi in vzemi tovor)
+STR_8808_GO_TO_UNLOAD                                           :Pojdi do {STATION} (Raztovori)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Pojdi do {STATION} (Prenesi in pusti prazno)
 STR_880A_GO_TO_LOAD                                             :Pojdi do {STATION} (Nalozi)
-STR_880C_GO_NON_STOP_TO                                         :Pojdi skozi {STATION}
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Pojdi do {STATION} (Prenesi in pocakaj na polno nalozitev)
+STR_880C_GO_NON_STOP_TO                                         :Pojdi brez postanka do {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Pojdi brez postanka do {STATION} (Prenesi in vzemi tovor)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Pojdi brez postanka do {STATION} (Raztovori)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Pojdi brez postanka do {STATION} (Prenesi in pusti prazno)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Pojdi brez postanka do {STATION} (Nalozi)
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Pojdi brez postanka do {TOWN} zelezniske garaze
 
 
 
 STR_UNKNOWN_DESTINATION                                         :neznana lokacija
 STR_8812_EMPTY                                                  :{LTBLUE}Prazen
-STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
-STR_8815_NEW_VEHICLES                                           :{BLACK}Novo vozilo
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} iz {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} caka v garazi
+STR_8815_NEW_VEHICLES                                           :{BLACK}Nova vozila
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je predolg
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova zelezniska vozila
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nov enotirni vlak
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nov magnetni vlak
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Zgradi vozilo
@@ -1490,21 +1604,25 @@ STR_8823_SKIP                                                   :{BLACK}Preskoci
 STR_8824_DELETE                                                 :{BLACK}Izbrisi
 STR_8825_NON_STOP                                               :{BLACK}Brez prestanka
 STR_8826_GO_TO                                                  :{BLACK}Pojdi do
-STR_8828_UNLOAD                                                 :{BLACK}Razlozi
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Navaodila)
+STR_8827_FULL_LOAD                                              :{BLACK}Polno natovorjenje
+STR_8828_UNLOAD                                                 :{BLACK}Raztovori
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Navodila)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec navodil - -
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ni mozno kupiti vlak
-STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Kupljen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ne mores kupiti vozila...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zgrajen: {LTBLUE}{NUM}{BLACK} Vrednost: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Vrednost: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
-STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Nalaganje / Razkladanje
-STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ni vec prostora za vec ukazov
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Natovorjenje / Raztovorjenje
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Vlaka ne mores poslati v garazo...
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ni vec prostora za ukaze
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prevec ukazov
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Ni mozno vstaviti nov ukaz...
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Ni mozno izbrisati ta ukaz...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Ni mozno spreminjati ta ukaz
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Ni mozno premakniti vozilo...
-STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Ni mozno prodati vlaka...
+STR_8838_N_A                                                    :Ni razpolozljiv{SKIP}
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Vlaka ne mores prodati...
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaki - klikni na vlak za informacije
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Obrni smer vlakov
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Pokazi podrobnosti vlaka
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Zvisaj cas med servisirjanji

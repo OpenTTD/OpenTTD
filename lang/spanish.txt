@@ -881,6 +881,7 @@ STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suizo
 STR_TOWNNAME_DANISH                                             :Danes
 STR_TOWNNAME_TURKISH                                            :Turco
+STR_TOWNNAME_ITALIAN                                            :Italiano
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)

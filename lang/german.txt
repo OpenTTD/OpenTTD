@@ -552,6 +552,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Programm
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Lösche laufendes Programm  (nur für Individuell 1 und Individuell 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Musikeinstellungen speichern
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klicke auf den Musiktitel, um ihn in das laufende Programm zu übernehmen (nur für Individuell 1 und Individuell 2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klicke auf einen Musiktitel, um ihn aus der aktuellen Liste zu entfernen(Custom1 or Custom2 only)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Schalte Programmauswahl an/aus
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Zeige Musiktitelauswahl
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Anklicken, um die Ansicht auf die Industrie/Stadt zu zentrieren
@@ -880,6 +881,7 @@ STR_TOWNNAME_CZECH                                              :Tschechisch
 STR_TOWNNAME_SWISS                                              :Schweizerisch
 STR_TOWNNAME_DANISH                                             :Dänisch
 STR_TOWNNAME_TURKISH                                            :Türkisch
+STR_TOWNNAME_ITALIAN                                            :italienisch
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pfund (£)

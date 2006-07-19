@@ -325,7 +325,7 @@ STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
 STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tone
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
@@ -966,7 +966,7 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vlak {COMMA} ma priliz malo prikazov
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vlak {COMMA} ma prilis malo prikazov
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Vlak {COMMA} ma prazdny prikaz
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Vlak {COMMA} ma zdvojene prikazy
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Vlak {COMMA} ma neplatnu stanicu v prikazoch
@@ -2035,13 +2035,13 @@ STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Graf prevadzkoveho zisku
 STR_7026_BANK_BALANCE                                           :{WHITE}Zostatok v banke
 STR_7027_LOAN                                                   :{WHITE}Uver
-STR_MAX_LOAN                                                    :{WHITE}Max. pozicka:  {BLACK}{CURRENCY64}
+STR_MAX_LOAN                                                    :{WHITE}Uverovy limit:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Pozicat {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Splatit {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}... uverovy limit je {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nemozno pozicat viac penazi ...
-STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}... uver uz bola splateny
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}... uver uz bol splateny
 STR_702E_REQUIRED                                               :{WHITE}... {CURRENCY} potrebne
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Uver sa neda splatit ...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Nie je mozne poskytnut peniaze, ktore su pozicane z banky...
@@ -2089,11 +2089,11 @@ STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} bola zavreta veritelmi a cely majetok bol rozpredany!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Zalozena nova dopravna spolocnost!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} zacina stavat nedaleko {TOWN}!
-STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Spolocnost sa neda kupit...
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Spolocnost nie je mozne kupit ...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ceny prepravy
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Pocet dni transportu
 STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Cena za prepravenie 10 jednotiek (alebo 10,000 litrov) nakladu cez 20 stvorcov terenu
-STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Prepinac typu nakladu zap./vyp.
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Graf pre typ nakladu zap./vyp.
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Inzinier
 STR_7067_TRAFFIC_MANAGER                                        :Manazer dopravy
@@ -2105,9 +2105,9 @@ STR_706C_CHAIRMAN                                               :Predseda
 STR_706D_PRESIDENT                                              :Prezident
 STR_706E_TYCOON                                                 :Tycoon
 STR_706F_BUILD_HQ                                               :{BLACK}Postavit sidlo
-STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Postavit sidlo spolocnosti / pozriet na sidlo spolocnosti
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Postavit sidlo spolocnosti / pozriet sidlo spolocnosti
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Sidlo spolocnosti mozes premiestnit za 1% hodnoty spolocnosti
-STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Sidlo spolocnosti sa neda postavit...
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Sidlo spolocnosti sa neda postavit ...
 STR_7072_VIEW_HQ                                                :{BLACK}Pozriet sidlo
 STR_RELOCATE_HQ                                                 :{BLACK}Premiestnit sidlo
 STR_COMPANY_PASSWORD                                            :{BLACK}Heslo
@@ -2115,18 +2115,18 @@ STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Heslo-oc
 STR_SET_COMPANY_PASSWORD                                        :Nastavte heslo spolocnosti
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Svetova kriza!{}{}Financni experti maju obavy z prepadu ekonomiky!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Koniec krizy!{}{}Ocakava sa vzostup predaja a posilnenie ekonomiky!
-STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Prepinac velkosti okna
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Prepnut velkost okna
 STR_7076_COMPANY_VALUE                                          :{GOLD}Hodnota spolocnosti: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kupit 25% podiel v spolocnosti
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Predat 25% podiel v spolocnosti
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kupit 25% podiel v tejto spolocnosti
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Predat 25% podiel v tejto spolocnosti
-STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}25% podiel v tejto spolocnosti sa neda kupit...
-STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}25% podiel v tejto spolocnosti sa neda predat...
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}25% podiel v tejto spolocnosti sa neda kupit ...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}25% podiel v tejto spolocnosti sa neda predat ...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% vlastnene {COMPANY})
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% vlastnene {COMPANY}{}   {COMMA}% vlastnene {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} bola kupena spolocnostou {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Tato spolocnost zatial neobchoduje s akciami...
+STR_7080_PROTECTED                                              :{WHITE}S akciami tejto spolocnosti nie je zatial mozne obchodovat ...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Parny)
@@ -2335,11 +2335,11 @@ STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught - B
 STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow - Bubliny
 STR_80CC_MPS_OIL_TANKER                                         :MPS - Ropa
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. - Ropa
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Prievoz
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Prievoz
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Trajekt
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Trajekt
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Vznasadlo
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Prievoz
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Prievoz
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Trajekt
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Trajekt
 STR_80D3_YATE_CARGO_SHIP                                        :Yate Nakladna lod
 STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell Nakladna lod
 STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover Nakladna lod
@@ -2386,7 +2386,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helico
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Sprava od vyrobcu dopravnych prostriedkov
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Prave sme vyrobili {STRING} - mate zaujem o rok exkluzivneho pouzivania? Chceme vyskusat funkcnost pred tym ako to uvedieme na verejny trh.
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Prave sme vyrobili {STRING} - mate zaujem o pravo exkluzivneho pouzivania na 1 rok? Chceme otestovat vlastnosti tohto vyrobku pred jeho uvedenim na trh.
 STR_8102_RAILROAD_LOCOMOTIVE                                    :zeleznicna lokomotiva
 STR_8103_ROAD_VEHICLE                                           :automobil
 STR_8104_AIRCRAFT                                               :lietadlo
@@ -2436,7 +2436,7 @@ STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nove vla
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nové elektrické lokomotívy a vagóny
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nove jednokolajove vlaky
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nove magneticke vlaky
-STR_881F_BUILD_VEHICLE                                          :{BLACK}Vyrobit Vozidlo
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Zakupit vozidlo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonovat vozidlo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Vytvori kopiu cestneho vozidla. Stlacenim Control budu prikazy zdielane
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Vytvori kopiu cestneho vozidla. Klikni na toto tlacidlo a potom na cestne vozidlo v garazi alebo mimo neho. Stlacenim Control budu prikazy zdielane
@@ -2454,7 +2454,7 @@ STR_8829_ORDERS                                                 :{WHITE}{VEHICLE
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec prikazov - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Oprava
-STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nemozno vyrobit vlak...
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Nemozno kupit vlak...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} cena: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Cena: {LTBLUE}{CURRENCY}
 STR_882E                                                        :{WHITE}{VEHICLE}
@@ -2464,24 +2464,24 @@ STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Vlak sa 
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Nemozno zadat dalsie prikazy
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}Prilis vela prikazov
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nemozno vlozit novy prikaz...
-STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemozno vymazat tebnto prikaz...
-STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemozno zmenit tento prikaz...
-STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}nemozno posuvat vozdlo...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemozno vymazat tebnto prikaz ...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemozno zmenit tento prikaz ...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nemozno posuvat vozdlo ...
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadný stroj v¸dy doprevádza svoj druhý stroj vpredu
 STR_8838_N_A                                                    :Nie je{SKIP}
-STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nemozno predat automobil...
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nemozno predat automobil ...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nemoze najst cestu do depa
-STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nemozno zastavit/spustit vlak...
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nemozno zastavit/spustit vlak ...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Servisny interval: {LTBLUE}{COMMA}dni{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Servisny interval: {LTBLUE}{COMMA}%{BLACK}   Posledny servis bol: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaky - kliknut na vlak pre informacie
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Vyrobit nove vlaky (potrebne depo)
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Kupit nove vlaky (potrebne depo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaky - kliknut na vlak pre informacie, potiahni pre zmenu pozicie
-STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Vyrobit novy vlak
-STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Potiahni vlak tu, na predaj
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Kupit novy vlak
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Pre predaj vlaku ho potiahni sem
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vycentrovat pohlad na poziciu depa
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Vyber vlakov - kliknut na vlak pre informacie
-STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Vyrobit vybrany vlak
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kupit vybrany vlak
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Premenovat vlak
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aktualna cinnost vlaku - kliknut pre zastavenie/spustenie
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Zobrazit cestovne prikazy vlakov
@@ -2495,8 +2495,8 @@ STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Skratit 
 STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Zobrazit detaily o prevezenom naklade
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Zobrazit detaily o vlaku
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Zobrazit kapacitu kazdeho vozidla
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Zobrazit celkovu kapacitu vlaku, rozdelenu podla tovaru
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Zoznam prikazov - kliknut na prikaz pre zobrazenie
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Zobrazit celkovu kapacitu vlaku, rozdelenu podla typu nakladu
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Zoznam prikazov - kliknut na prikaz pre oznacenie
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Vynechat aktualny prikaz - preskocit na dalsi
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Vymazat oznaceny prikaz
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaceny prikaz bude prevedeny bez zastavenia
@@ -2508,21 +2508,21 @@ STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Nosnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Vykon: {POWER}{}Cena prevadzky: {CURRENCY}/rok{}Kapacita: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokazene
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Cena prevadzky: {LTBLUE}{CURRENCY}/rok
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Naklady na prevadzku: {LTBLUE}{CURRENCY}/rok
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Nosnost: {LTBLUE}{WEIGHT_S}  {BLACK}Vykon: {LTBLUE}{POWER}{BLACK} Max. Rychlost: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (predchadzajuci rok: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pokazene od posledneho servisu: {LTBLUE}{COMMA}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Zastavene
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nemozno pustit vlak na cervenu ked hrozi nebezpecenstvo...
 STR_8863_CRASHED                                                :{RED}Havaroval!
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Pomenovat vlak
-STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Vlak nemozno pomenovat...
+STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Vlak nemozno pomenovat ...
 STR_8867_NAME_TRAIN                                             :{BLACK}Pomenovat vlak
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vlak havaroval!{}{COMMA} mrtvych pri poziari po kolizii
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nemozno zmenit smer vlaku...
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vlakove nestastiel!{}{COMMA} mrtvych pri poziari po kolizii
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nemozno zmenit smer vlaku ...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Premenovat typ vlaku
-STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Typ vlaku nemoze byt premenovany...
+STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Typ vlaku nemoze byt premenovany ...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}U vyznaceneho prikazu musi vozidlo vylozit naklad
 STR_886F_TRANSFER                                               :{BLACK}Prekladka
 
@@ -2537,25 +2537,25 @@ STR_9002                                                        :{WHITE}{VEHICLE
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Garaz
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nove automobily
-STR_9007_BUILD_VEHICLE                                          :{BLACK}Vyrobit vozidlo
-STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nemozno vyrobit automobil...
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Zakupit vozidlo
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Nie je mozne zakupit automobil ...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Cena prevadzky: {LTBLUE}{CURRENCY}/rok
-STR_900E_MAX_SPEED                                              :{BLACK}Max. Rychlost: {LTBLUE}{VELOCITY}
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Naklady na prevadzku: {LTBLUE}{CURRENCY}/rok
+STR_900E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (posledny rok: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pokazene od posledneho servisu: {LTBLUE}{COMMA}
-STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
+STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
-STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...musi byt zastaveny v garazi
-STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemozno predat automobil...
-STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemozno zastavit/spustit automobil...
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musi byt zastaveny v garazi
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemozno predat automobil ...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemozno zastavit/spustit automobil ...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobil {COMMA} caka v garazi
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Smeruje do {TOWN} garaze
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}smeruje do {TOWN} garaze, {VELOCITY}
-STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemozno poslat automobil do garaze...
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemozno poslat automobil do garaze ...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu garaz
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automobily - kliknut pre detaily
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Vyrobit novy automobil (potrebna garaz)
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Zakupit novy automobil (potrebna garaz)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Aktualna cinnost vozidla - kliknut pre zastavenie/spustenie
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Zobrazit cestovne prikazy
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Vycentrovat pohlad na vozidlo
@@ -2563,28 +2563,28 @@ STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Poslat v
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Otocit vozidlo
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Zobrazit detaily o automobile
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vozidla - kliknut pre detaily
-STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Vyrobit novy automobil
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Zakupit novy automobil
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Potiahni sem pre predaj automobilu
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrovat pohlad na poziciu garaze
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vyber vozidiel - kliknut pre detaily
-STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Vyrobit vybrany automobil
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zakupit vybrany automobil
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Novy automobil dostupny!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Cena prevadzky: {CURRENCY}/rok{}Kapacita: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Naklady na prevadzku: {CURRENCY}/rok{}Kapacita: {STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pomenovat automobil
-STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nemozno pomenovat automobil...
-STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}pomenovat automobil
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nemozno pomenovat automobil ...
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Pomenovat automobil
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy autobus dorazil do {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy automobil dorazil do {STATION}!
-STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Automobilova havaria!{}Vodic zomrel po kolozii s vlakom
-STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Automobilova havaria!{}{COMMA} zomrel po kolozii s vlakom
-STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nemozno otocit vozidlo...
+STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
+STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
+STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nemozno otocit vozidlo ...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nemozes otacat vozidla ktore su zlozené z viacerych strojov
 STR_9034_RENAME                                                 :{BLACK}Premenovat
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Premenovat typ automobilu
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Premenovat typ automobilu
-STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nemozno premenovat typ automobilu...
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Nemozno premenovat typ automobilu ...
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Chod do {TOWN} garaze
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Opravit v {TOWN} garazi
 
@@ -2594,9 +2594,9 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Prestava
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Prestavba vozidla nie je mozna ...
 
 ##id 0x9800
-STR_9800_DOCK_CONSTRUCTION                                      :Stavba doku
-STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Stavba doku
-STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Tu nemozno postavit dok...
+STR_9800_DOCK_CONSTRUCTION                                      :Stavba pristavu
+STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Stavba pristavu
+STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Tu nemozno postavit pristav ...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Lodenica
 STR_9804_NEW_SHIPS                                              :{BLACK}Nove lode
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Lode
@@ -2605,20 +2605,20 @@ STR_9809_BUILD_SHIP                                             :{BLACK}Vyrobit 
 STR_CLONE_SHIP                                                  :{BLACK}Klonovat lod
 STR_CLONE_SHIP_INFO                                             :{BLACK}Vytvori kopiu lode. Stlacenim Control budu prikazy zdielane
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Vytvori kopiu lode. Klikni na toto tlacidlo a potom na lod v depe alebo mimo neho. Stlacenim Control budu prikazy zdielane
-STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}lob musi byt zastavena v lodenici
-STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nemozno predat lod...
-STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}nemozno vyrobit lod...
-STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Lod na ceste
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Lod musi byt zastavena v lodenici
+STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Nemozno predat lod ...
+STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Nemozno vyrobit lod...
+STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Lod v ceste
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Cena prevadzky: {LTBLUE}{CURRENCY}/rok
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Naklady na prevadzku: {LTBLUE}{CURRENCY}/rok
 STR_9813_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (posledny rok: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pokazene od posledneho servisu: {LTBLUE}{COMMA}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
-STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nemozno zastavit/spustit lod...
-STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nemozno poslat lod do lodenice...
+STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nemozno zastavit/spustit lod ...
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nemozno poslat lod do lodenice ...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu lodenicu
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Smeruje do {TOWN} lodenice
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Smeruje do {TOWN} lodenice, {VELOCITY}
@@ -2626,47 +2626,47 @@ STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Lod {COM
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit lodenicu
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodenicu (pre vyrobu a opravy lodi)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Lode - kliknut pre informacie
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Postavit novu lod
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Vyrobit novu lod
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Potiahnut lod sem, na predaj
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vycentrovat pohlad na lodenicu
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Lode - kliknut pre informacie
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Vyrabat nove lode (poterna lodenica)
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Vyrobit nove lode (potrebna lodenica)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Vyber lodi - kliknut pre informacie
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Vyrobit vybranu lod
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Atualna cinnost lode - klini pre zastavenie/spustenie
-STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}ZObrazit cestovne prikazy lodi
+STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Zobrazit cestovne prikazy lodi
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vycentrovat pohlad na lod
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Poslat lod do lodenice
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zobrazit detaily o lodi
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nova lod je dostupna!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {STRING}{}Cena prevadzky: {CURRENCY}/rok
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {STRING}{}Naklady na prevadzku: {CURRENCY}/rok
 STR_982F_NAME_SHIP                                              :{BLACK}Pomenovat lod
 
 STR_9831_NAME_SHIP                                              :{WHITE}Pomenovat lod
-STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nemozno pomenovat lod...
-STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}mesto oslavuje . . .{}Prva lod dorazila do {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Postavit boju, moze byt pouzita pre vytycenie smeru
-STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Tu nemozno postavit boju...
+STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Nemozno pomenovat lod ...
+STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prva lod dorazila do {STATION}!
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Postavit boju pouzitelnu pre vyznacenie trasy
+STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Tu nemozno postavit boju ...
 STR_9836_RENAME                                                 :{BLACK}Premenovat
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Premenovat typ lode
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Premenovat typ lode
-STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Nemozno premenovat typ lode...
-STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Prerobit lod na iny typ nakladu
-STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Prerobit)
-STR_983C_REFIT_SHIP                                             :{BLACK}Prerobit lod
+STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Nemozno premenovat typ lode ...
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Prestavat lod na iny typ nakladu
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Prestavat)
+STR_983C_REFIT_SHIP                                             :{BLACK}Prestavat lod
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vybrat typ nakladu pre lod
-STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Prerobit lod na vybrany typ nakladu
+STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Prestavat lod na vybrany typ nakladu
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vyber typ nakladu:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapacita: {GOLD}{STRING}{}{BLACK}Cena prerabky: {GOLD}{CURRENCY}
-STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nemozno prerobit lod...
-STR_9842_REFITTABLE                                             :(prerobitelna)
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapacita: {GOLD}{STRING}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
+STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nemozno prestavat lod...
+STR_9842_REFITTABLE                                             :(mozna prestvba)
 STR_GO_TO_SHIP_DEPOT                                            :Chod do {TOWN} Lodenice
 SERVICE_AT_SHIP_DEPOT                                           :Opravit v {TOWN} Lodenici
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Letiska
-STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Tu sa letisko neda postavit...
+STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Tu sa letisko neda postavit ...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Hangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nove Lietadlo
 STR_CLONE_AIRCRAFT                                              :{BLACK}Klonovat lietadlo
@@ -2679,18 +2679,18 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Cena prevadzky: {LTBLUE}{CURRENCY}/rok
-STR_A00E_MAX_SPEED                                              :{BLACK}Max. Rychlost: {LTBLUE}{VELOCITY}
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Naklady na prevadzku: {LTBLUE}{CURRENCY}/rok
+STR_A00E_MAX_SPEED                                              :{BLACK}Max. rychlost: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (posledny rok: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pokazene od posledneho servisu: {LTBLUE}{COMMA}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
-STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nemozno poslat lietadlo do hangaru...
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nemozno poslat lietadlo do hangaru ...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Smeruje do {STATION} hangaru
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Smeruje do {STATION} hangaru, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lietadlo {COMMA} caka v hangare
-STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lietadlo na ceste
-STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemozno zastavit/spustit lietadlo
-STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lietadlo leti
+STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lietadlo v ceste
+STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemozno zastavit/spustit lietadlo ...
+STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lietadlo je vo vzduchu
 STR_A019_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}, {STRING}
 STR_A01A_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Letadlo sa musi zastavit v hangari
@@ -2865,16 +2865,16 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Male
 STR_CITY_AIRPORT                                                :{BLACK}Mestske
-STR_METRO_AIRPORT                                               :{BLACK}Metropolitne letisko
+STR_METRO_AIRPORT                                               :{BLACK}Metropolitne
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Medzinarodne letisko
 STR_COMMUTER_AIRPORT                                            :{BLACK}Vnutrostatne
-STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Medzikontinentalny
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Medzikontinentalne
 STR_HELIPORT                                                    :{BLACK}Heliport
 STR_HELIDEPOT                                                   :{BLACK}Heliport s hangarom
 STR_HELISTATION                                                 :{BLACK}Velky heliport
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Male letiska
 STR_LARGE_AIRPORTS                                              :{BLACK}Velke letiska
-STR_HUB_AIRPORTS                                                :{BLACK}Centralne letiska
-STR_HELIPORTS                                                   :{BLACK}Letiska pre vrtulniky
+STR_HUB_AIRPORTS                                                :{BLACK}Najvacsie letiska
+STR_HELIPORTS                                                   :{BLACK}Heliporty
 ########
