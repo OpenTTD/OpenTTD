@@ -164,7 +164,7 @@ STR_TRANSLATED_BY                                               :{BLACK}  Þýðend
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
-STR_00C7_QUIT                                                   :{WHITE}Hætta í OpenTTD
+STR_00C7_QUIT                                                   :{WHITE}Hætta
 STR_00C8_YES                                                    :{BLACK}Já
 STR_00C9_NO                                                     :{BLACK}Nei
 STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ertu viss um að þú viljir hætta í OpenTTD og fara aftur í {STRING}?
@@ -337,6 +337,9 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lítr{P i ar}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ pundkraftur
+STR_UNITS_FORCE_METRIC                                          :{COMMA} tonnkraftur
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Línurit: Rekstrarhagnaður
@@ -353,7 +356,7 @@ STR_015B_OPENTTD                                                :{WHITE}Um OpenT
 STR_015C_SAVE_GAME                                              :Vista leik
 STR_015D_LOAD_GAME                                              :Opna leik
 STR_015E_QUIT_GAME                                              :Hætta leik
-STR_015F_QUIT                                                   :Hætta í OpenTTD
+STR_015F_QUIT                                                   :Hætta
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ertu viss um að þú viljir hætta í þessum leik ?
 STR_0161_QUIT_GAME                                              :{WHITE}Hætta leik
 STR_SORT_ORDER_TIP                                              :{BLACK}Velja uppröðun (minnkandi/stækkandi)
@@ -429,7 +432,7 @@ STR_0188                                                        :{BLACK}{SMALLUP
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Get ekki breytt viðgerðarmillibili...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Loka glugga
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titill glugga - dragðu þetta til að færa gluggann
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Haus glugga - dragðu með músinni til að færa gluggann
 STR_STICKY_BUTTON                                               :{BLACK}Merkja þennan glugga sem ólokanlegan fyrir
 STR_RESIZE_BUTTON                                               :{BLACK}Ýttu og dragðu til að breyta stærð gluggans
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Smelltu hér til að opna möppu fyrir vistaða leiki
@@ -709,7 +712,7 @@ STR_0292_SAVE_SCENARIO                                          :Vista kort
 STR_0293_LOAD_SCENARIO                                          :Opna kort
 STR_0294_QUIT_EDITOR                                            :Hætta í kortagerð
 STR_0295                                                        :
-STR_0296_QUIT                                                   :Hætta í OpenTTD
+STR_0296_QUIT                                                   :Hætta
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Vista kort, opna kort, hætta í kortagerð, hætta í OpenTTD
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Opna kort
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Vista kort
@@ -824,7 +827,7 @@ STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Velja 2-
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Stilla OpenTTD
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Stilla erfiðleikastig
 STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Hefja nýjan leik í sérvöldu korti
-STR_0304_QUIT                                                   :{BLACK}Hætta í OpenTTD
+STR_0304_QUIT                                                   :{BLACK}Hætta
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Hætta í OpenTTD
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...aðeins hægt að byggja í bæjum
@@ -2011,7 +2014,7 @@ STR_700E_FINANCES                                               :{WHITE}{COMPANY
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Útgjöld/Tekjur
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Bygging
-STR_7012_NEW_VEHICLES                                           :{GOLD}Ný Farartæki
+STR_7012_NEW_VEHICLES                                           :{GOLD}Kaupa bifreiðar
 STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Rekstrarkostnaður lesta
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Rekstrarkostnaður bifreiða
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Rekstrarkostnaður flugvéla
@@ -2533,7 +2536,7 @@ STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Bíll fyr
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Bílar
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Bílastöð
-STR_9004_NEW_VEHICLES                                           :{BLACK}Ný Farartæki
+STR_9004_NEW_VEHICLES                                           :{BLACK}Kaupa bifreiðar
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nýjir bílar
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Byggja bíl
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Get ekki byggt bíl...
@@ -2791,7 +2794,7 @@ STR_CURRENCY_PREFIX                                             :{LTBLUE}Forskey
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Viðskeyti:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Skipta í Evrur: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Skipta í Evrur: {ORANGE}aldrei
-STR_CURRENCY_PREVIEW                                            :{LTBLUE}Sýnishorn: {ORANGE}{CURRENCY}
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Dæmi: {ORANGE}{CURRENCY}
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Breyta sérvöldum gjaldeyri
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
@@ -2824,6 +2827,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Veldu hv
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Sýnir hvaða vagn kemur í stað þess sem valinn er vinstra megin
 STR_REPLACE_HELP                                                :{BLACK}Þetta gerir þér kleift að skipta út öllum vögum af einni tegund með annarri, þegar þeir fara í lestarskýli
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá) ef útskipting dráttarvagna myndi lengja hana.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Skipti út: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} TILRAUNAEIGINLEIKI {}Skipta á milli útskiptiglugga dráttar- og flutningavagna.{}Útskipting vagna fer aðeins fram ef hægt er að breyta nýju vögnunum til að flytja sama farm og þeir gömlu. Það er kannað fyrir hvern vagn þegar útskipting á honum fer fram.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ekki hægt að smíða dráttarvagn

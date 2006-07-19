@@ -42,7 +42,7 @@ STR_0022_WHEAT                                                  :Psenica
 STR_0023_RUBBER                                                 :Guma
 STR_0024_SUGAR                                                  :Sladkor
 STR_0025_TOYS                                                   :Igrace
-STR_0026_CANDY                                                  :
+STR_0026_CANDY                                                  :Bonboni
 STR_0027_COLA                                                   :Cockta
 STR_0028_COTTON_CANDY                                           :Sladkorna pena
 STR_0029_BUBBLES                                                :Mehurcki
@@ -560,10 +560,11 @@ STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...preda
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Najboljsa podjetja, ki so dosegla {NUM}{}({STRING} stopnjo)
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Poslovnez
+STR_0214_ENTREPRENEUR                                           :Podjetnik
 STR_0215_INDUSTRIALIST                                          :Industrijalist
 STR_0216_CAPITALIST                                             :Kapitalist
 STR_0217_MAGNATE                                                :Magnat
-STR_0218_MOGUL                                                  :
+STR_0218_MOGUL                                                  :Vladar
 STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} doseze '{STRING}' status!
 STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} iz {COMPANY} je dosegel '{STRING}' status!
 STR_021F                                                        :{BLUE}{COMMA}
@@ -666,10 +667,27 @@ STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Zgradi t
 STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Zgradi generator mehurckov
 STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Zgradi jamo karamele
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK} Zgradi rudnik sladkorja
-STR_0285_CAN_T_BUILD_HERE                                       :{WHITE} Tukaj ni mozno zgraditi {STRING}
-STR_0294_QUIT_EDITOR                                            :
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Tukaj ni mozno zgraditi {STRING}
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...najprej je potrebno zgraditi mesto
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...samo en dovoljen v mestu
+STR_0288_PLANT_TREES                                            :{BLACK}Posadi drevesa
+STR_0289_PLACE_SIGN                                             :{BLACK}Postavi znak
+STR_028A_RANDOM_TREES                                           :{BLACK}Nakljucna drevesa
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Zgradi svetilnik
+STR_0290_DELETE                                                 :{BLACK}Izbrisi
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Popolnoma izbrisi mesto
+STR_0292_SAVE_SCENARIO                                          :Shrani scenarij
+STR_0293_LOAD_SCENARIO                                          :Nalozi scenarij
+STR_0294_QUIT_EDITOR                                            :Izhod iz urejevalnika
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Izhod
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Nalozi scenarij
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Shrani scenarij
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Igraj scenarij
+STR_029C_QUIT_EDITOR                                            :{WHITE}Izhod iz urejevalnika
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Premakni zacetni datum za 1. leto nazaj
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Premakni zacetni datum za 1. leto naprej
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...oba prikljucka mosta morata biti na kopnem
 STR_02A1_SMALL                                                  :{BLACK}Majhno
 STR_02A2_MEDIUM                                                 :{BLACK}Srednje
 STR_02A3_LARGE                                                  :{BLACK}Veliko
@@ -677,6 +695,7 @@ STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izberi v
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Velikost mesta:
 
 STR_02B6                                                        :{STRING}  -  {STRING}
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Prikazi zadnje sporocilo oziroma porocilo novice
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Privzeto
@@ -688,6 +707,8 @@ STR_02C3_GAME_OPTIONS                                           :Moznosti igre
 STR_02C4_GAME_OPTIONS                                           :Moznosti igre
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavitve tezavnosti
 STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavitve tezavnosti
+STR_02C7_CONFIG_PATCHES                                         :Urejevanje popravkov
+STR_02C8_CONFIG_PATCHES                                         :Urejevanje popravkov
 STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Imena mest prikazana
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Imena mest prikazana
 STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Imena postaj prikazana
@@ -712,6 +733,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Ogromna zaslons
 STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
 ############ range ends	here
 
+STR_02DB_OFF                                                    :{BLACK}Izklopljeno
+STR_02DA_ON                                                     :{BLACK}Vklopljeno
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Prikazi subvencije
 STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Zemljevid sveta
@@ -734,6 +757,7 @@ STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Izberi s
 STR_02F4_AUTOSAVE                                               :{BLACK}Shrani
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Izberi interval med samodejnim shranjevanjem igre
+STR_02F7_OFF                                                    :Izklopljeno
 STR_02F8_EVERY_3_MONTHS                                         :vsake 3 mesece
 STR_02F9_EVERY_6_MONTHS                                         :vsakih 6 mesecev
 STR_02FA_EVERY_12_MONTHS                                        :vsakih 12 mesecev
@@ -979,14 +1003,24 @@ STR_1007_ALREADY_BUILT                                          :{WHITE}...ze zg
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najprej moras odstraniti tracnice
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gradnja ¸eleznice
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrificirana Zeleznica
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Izberi zelezniski most
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Tu ne morete zgraditi zelezniskega skladisca...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Tu ne morete zgraditi zelezniske postaje...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Tu ne morete zgraditi signalov...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Tu ne morete zgraditi zelezniskih tirov...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Tu ne morete odstraniti zelezniskih tirov...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Tu ne morete odstraniti signalov...
 STR_1015_RAILROAD_CONSTRUCTION                                  :Gradnja zeleznice
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrificirana zeleznica
+STR_1016_MONORAIL_CONSTRUCTION                                  :Enotirna zeleznica
+STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetna zeleznica
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Zgradi tracnice
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Zgradi zelezznisko postajo
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Zgradi zelezniske semaforje
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Zgradi zelezniski most
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Zgradi zelezniski tunel
 STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Preklopi gradi/rusi za zelezniske semaforje
+STR_1021_RAILROAD_TRACK                                         :Zelezniska proga
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...zemljisce je last neke druge druzbe
 
 
@@ -994,6 +1028,10 @@ STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...zemlj
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Najprej zgradi cesto
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Cestne gradnje
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Izberi cestni most
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Tu ne mores zgraditi ceste...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Tu ne mores odstraniti ceste...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Ne mores zgraditi avtobusne postaje...
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Zgradi avtobusno postajo
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Zgradi cestni most
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Zgradi cestni predor
@@ -1147,6 +1185,7 @@ STR_3049_0                                                      :{YELLOW}{STATIO
 STR_304A_NONE                                                   :{YELLOW}- Nobeno -
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Preblizu drugemu pristaniscu
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Najprej moras porusiti pristanisce
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Prikaz rangov postaje
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Spremeni ime postaje
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_305E_RAILROAD_STATION                                       :Zelezniska postaja
@@ -1369,6 +1408,21 @@ STR_7001                                                        :{WHITE}{COMPANY
 STR_7002_PLAYER                                                 :(Igralce {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nov obraz
 STR_TRAINS                                                      :{WHITE}{COMMA} vlak{P "" s}
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Izberi mosko sliko
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Izberi zensko sliko
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Naredi nakljucno novo sliko
+STR_704C_KEY                                                    :{BLACK}Kljuc
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrotiral si!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Ne mores kupiti podjetja...
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :Inzenir
+STR_7067_TRAFFIC_MANAGER                                        :Upravnik prometa
+STR_706A_DIRECTOR                                               :Direktor
+STR_706C_CHAIRMAN                                               :Minister
+STR_706D_PRESIDENT                                              :Predsednik
+STR_706E_TYCOON                                                 :Velekapitalist
+STR_706F_BUILD_HQ                                               :{BLACK}Izgradi sede¸ podjetja
+STR_7072_VIEW_HQ                                                :{BLACK}Poglej sede¸ podjetja
 
 ##id 0x8000
 STR_804F_CANDY_VAN                                              :Tovornjak slascic
