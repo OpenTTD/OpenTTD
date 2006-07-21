@@ -93,7 +93,7 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT} obilia
 STR_QUANTITY_WOOD                                               :{WEIGHT} dreva
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} zeleznej rudy
 STR_QUANTITY_STEEL                                              :{WEIGHT} ocele
-STR_QUANTITY_VALUABLES                                          :{COMMA} vr{P eco ecia iec} cennosti
+STR_QUANTITY_VALUABLES                                          :{COMMA} vr{P ece ecia iec} cennosti
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} medennej rudy
 STR_QUANTITY_MAIZE                                              :{WEIGHT} kukurice
 STR_QUANTITY_FRUIT                                              :{WEIGHT} ovocia
@@ -346,7 +346,7 @@ STR_0155_INCOME_GRAPH                                           :Graf trzieb
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf prepraveneho nakladu
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Graf hodnotenia vykonu
 STR_0158_COMPANY_VALUE_GRAPH                                    :Graf hodnoty spolocnosti
-STR_0159_CARGO_PAYMENT_RATES                                    :Ceny Prepravy
+STR_0159_CARGO_PAYMENT_RATES                                    :Ceny prepravy
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Hodnotenie spolocnosti
 STR_PERFORMANCE_DETAIL_MENU                                     :Detailny rating vykonu
 ############ range for menu	ends
@@ -372,7 +372,7 @@ STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_UNSORTED                                            :Neusporiadane
 STR_SORT_BY_NUMBER                                              :Cislo
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zisk v poslednom roku
-STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zisk toho roku
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zisk v tomto roku
 STR_SORT_BY_AGE                                                 :Vek
 STR_SORT_BY_RELIABILITY                                         :Spolahlivost
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Uplna kapacita podla typu nakladu
@@ -382,9 +382,9 @@ STR_SORT_BY_VALUE                                               :Hodnota
 STR_SORT_BY_FACILITY                                            :Typ stanice
 STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
 STR_SORT_BY_RATING_MAX                                          :Hodnotenie prepravy
-STR_NO_WAITING_CARGO                                            :{BLACK}Neceka ziadny typ nakladu
+STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
-STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu
+STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -417,7 +417,7 @@ STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Hodnoten
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zoznam vlakov
 STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zoznam automobilov
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zoznam lodi
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zoznam Lietadiel
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Zoznam lietadiel
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Priblizit
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Oddialit
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Vystavba zeleznice
@@ -783,7 +783,7 @@ STR_02D9_ABOUT_OPENTTD                                          :O hre 'OpenTTD'
 
 STR_02DB_OFF                                                    :{BLACK}Vyp.
 STR_02DA_ON                                                     :{BLACK}Zap.
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Zobrazit Dotacie
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Zobrazit dotacie
 STR_02DD_SUBSIDIES                                              :Dotacie
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
 STR_EXTRA_VIEW_PORT                                             :Extra pohlad
@@ -2054,7 +2054,7 @@ STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Zvysit v
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Splatit cast uveru
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Prezident)
 STR_7038_INAUGURATED                                            :{GOLD}Zvoleny: {WHITE}{NUM}
-STR_7039_VEHICLES                                               :{GOLD}Dopravne prostriedky:
+STR_7039_VEHICLES                                               :{GOLD}Stroje:
 STR_TRAINS                                                      :{WHITE}{COMMA} vlak{P "" y ov}
 STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} automobil{P "" y ov}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} lietad{P lo la iel}
@@ -2430,8 +2430,8 @@ STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {CO
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je prilis dlhy
-STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaky sa daju prerobit len v depe
-STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Vlaky
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaky sa daju nahradit len v depe
+STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Vlak{P "" y ov}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nove vlaky
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nové elektrické lokomotívy a vagóny
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nove jednokolajove vlaky
@@ -2532,7 +2532,7 @@ STR_INCOMPATIBLE_RAIL_TYPES                                     :Nekompatibilne 
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Automobil v ceste
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Automobily
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Automobil{P "" y ov}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Garaz
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nove vozidla
@@ -2599,7 +2599,7 @@ STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Stavba p
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Tu nemozno postavit pristav ...
 STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Lodenica
 STR_9804_NEW_SHIPS                                              :{BLACK}Nove lode
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Lode
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Lod{P "" e i}
 STR_9808_NEW_SHIPS                                              :{WHITE}Nove lode
 STR_9809_BUILD_SHIP                                             :{BLACK}Vyrobit lod
 STR_CLONE_SHIP                                                  :{BLACK}Klonovat lod
@@ -2675,7 +2675,7 @@ STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Vytvori 
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nove Lietadlo
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Vyrobit lietadlo
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Nemozno vyrobit lietadlo...
-STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Lietadlo
+STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY} - {COMMA} Lietad{P lo la iel}
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaily)
@@ -2802,10 +2802,10 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Vlaky
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Auta
-STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Lietadla
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Lode
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Vlak{P "" y ov}
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Aut{P o a ""}
+STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Lietad{P lo la iel}
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Lod{P "" e i}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Zobrazit vsetky vlaky, ktore maju tuto stanicu v cestovnom poriadku
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Zobrazit vsetky auta, ktore maju tuto stanicu v cestovnom poriadku
