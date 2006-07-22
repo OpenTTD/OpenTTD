@@ -113,11 +113,14 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		TileIndex tile = w->window_number;
-		const AirportFTAClass* ap;
+		byte acc_planes;
 
-		if (tile == 0) SETBIT(w->disabled_state, 5);
-
-		ap = GetAirport(GetStationByTile(tile)->airport_type);
+		if (tile == 0) {
+			SETBIT(w->disabled_state, 5);
+			acc_planes = ALL;
+		} else {
+			acc_planes = GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
+		}
 
 		{
 			int count = 0;
@@ -129,7 +132,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 				if (!HASBIT(GetEngine(eid)->player_avail, _local_player)) continue;
 
 				avi = AircraftVehInfo(eid);
-				if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == ap->acc_planes) continue;
+				if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == acc_planes) continue;
 
 				count++;
 			}
@@ -152,7 +155,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 				if (!HASBIT(GetEngine(eid)->player_avail, _local_player)) continue;
 
 				avi = AircraftVehInfo(eid);
-				if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == ap->acc_planes) continue;
+				if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == acc_planes) continue;
 
 				if (sel == 0) selected_id = eid;
 
