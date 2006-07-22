@@ -1234,16 +1234,9 @@ static void TileLoop_TunnelBridge(TileIndex tile)
 {
 	switch (_opt.landscape) {
 		case LT_HILLY:
-			if (GetTileZ(tile) > _opt.snow_line) {
-				if (!(_m[tile].m4 & 0x80)) {
-					_m[tile].m4 |= 0x80;
-					MarkTileDirtyByTile(tile);
-				}
-			} else {
-				if (_m[tile].m4 & 0x80) {
-					_m[tile].m4 &= ~0x80;
-					MarkTileDirtyByTile(tile);
-				}
+			if (HASBIT(_m[tile].m4, 7) != (GetTileZ(tile) > _opt.snow_line)) {
+				TOGGLEBIT(_m[tile].m4, 7);
+				MarkTileDirtyByTile(tile);
 			}
 			break;
 
