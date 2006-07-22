@@ -595,17 +595,16 @@ void TileLoopClearHelper(TileIndex tile)
 /* convert into snowy tiles */
 static void TileLoopClearAlps(TileIndex tile)
 {
-	/* distance from snow line, in steps of 8 */
-	int k = GetTileZ(tile) - _opt.snow_line;
+	int k = GetTileZ(tile) - _opt.snow_line + TILE_HEIGHT;
 
-	if (k < -TILE_HEIGHT) { // well below the snow line
+	if (k < 0) { // well below the snow line
 		if (!IsClearGround(tile, CLEAR_SNOW)) return;
 		if (GetClearDensity(tile) == 0) SetClearGroundDensity(tile, CLEAR_GRASS, 3);
 	} else {
 		if (!IsClearGround(tile, CLEAR_SNOW)) {
 			SetClearGroundDensity(tile, CLEAR_SNOW, 0);
 		} else {
-			uint density = min((uint)(k + TILE_HEIGHT) / TILE_HEIGHT, 3);
+			uint density = min((uint)k / TILE_HEIGHT, 3);
 
 			if (GetClearDensity(tile) < density) {
 				AddClearDensity(tile, 1);

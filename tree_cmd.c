@@ -405,13 +405,13 @@ static void TileLoopTreesDesert(TileIndex tile)
 
 static void TileLoopTreesAlps(TileIndex tile)
 {
-	int k = GetTileZ(tile) - _opt.snow_line;
+	int k = GetTileZ(tile) - _opt.snow_line + TILE_HEIGHT;
 
-	if (k < -TILE_HEIGHT) {
+	if (k < 0) {
 		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT) return;
 		SetTreeGroundDensity(tile, TREE_GROUND_GRASS, 0);
 	} else {
-		uint density = min((uint)(k + TILE_HEIGHT) / TILE_HEIGHT, 3);
+		uint density = min((uint)k / TILE_HEIGHT, 3);
 
 		if (GetTreeGround(tile) != TREE_GROUND_SNOW_DESERT ||
 				GetTreeDensity(tile) != density) {
