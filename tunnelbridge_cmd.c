@@ -597,13 +597,12 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 
 static uint GetBridgeHeightRamp(TileIndex t)
 {
-	/* Return the height there (the height of the NORTH CORNER)
-	 * If the end of the bridge is on a tile with all corners except the north corner raised,
-	 * the z coordinate is 1 height level too low. Compensate for that */
-	return
-		TilePixelHeight(t) +
-		(GetTileSlope(t, NULL) == SLOPE_WSE ? TILE_HEIGHT : 0) +
-		TILE_HEIGHT;
+	uint h;
+	uint tileh = GetTileSlope(t, &h);
+	uint f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(t)));
+
+	// one height level extra if the ramp is on a flat foundation
+	return h + TILE_HEIGHT + (IS_INT_INSIDE(f, 1, 15) ? TILE_HEIGHT : 0);
 }
 
 
