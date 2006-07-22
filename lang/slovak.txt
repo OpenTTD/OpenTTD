@@ -107,7 +107,7 @@ STR_QUANTITY_RUBBER                                             :{VOLUME} kaucuk
 STR_QUANTITY_SUGAR                                              :{WEIGHT} cukru
 STR_QUANTITY_TOYS                                               :{COMMA} hrac{P ka ky iek}
 STR_QUANTITY_SWEETS                                             :{COMMA} deb{P na ny ien} cukrikov
-STR_QUANTITY_COLA                                               :{VOLUME} kofola
+STR_QUANTITY_COLA                                               :{VOLUME} kofoly
 STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} cukrovej vaty
 STR_QUANTITY_BUBBLES                                            :{COMMA} bublin{P a y ""}
 STR_QUANTITY_TOFFEE                                             :{WEIGHT} karamelu
@@ -159,7 +159,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast s
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Povodny copyright: {COPYRIGHT} 1995 Chris Sawyer, vsetky prava vyhradene
 STR_00B7_VERSION                                                :{BLACK}OpenTTD verzia {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 team OpenTTD
-STR_TRANSLATED_BY                                               :{BLACK} Preklad - gpsoft
+STR_TRANSLATED_BY                                               :{BLACK} Preklad - Lukas Lengyel & gpsoft
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -333,7 +333,7 @@ STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y ov}
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" y ov}
+STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P er re rov}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
@@ -359,15 +359,15 @@ STR_015F_QUIT                                                   :Ukoncit program
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Si si isty ze chces ukoncit tuto hru ?
 STR_0161_QUIT_GAME                                              :{WHITE}Koniec hry
 STR_SORT_ORDER_TIP                                              :{BLACK}Vyber sposob triedenia (zostupny/vzostupny)
-STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber, podla coho sa ma triedit
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Vyber kriterium triedenia
 STR_SORT_BY                                                     :{BLACK}Usporiadat
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Populacia
 STR_SORT_BY_PRODUCTION                                          :{BLACK}Produkcia
 STR_SORT_BY_TYPE                                                :{BLACK}Typ
-STR_SORT_BY_TRANSPORTED                                         :{BLACK}Prevezene
-STR_SORT_BY_NAME                                                :{BLACK}Meno
-STR_SORT_BY_DROPDOWN_NAME                                       :Meno
+STR_SORT_BY_TRANSPORTED                                         :{BLACK}Prepravene
+STR_SORT_BY_NAME                                                :{BLACK}Nazov
+STR_SORT_BY_DROPDOWN_NAME                                       :Nazvo
 STR_SORT_BY_DATE                                                :{BLACK}Datum
 STR_SORT_BY_UNSORTED                                            :Neusporiadane
 STR_SORT_BY_NUMBER                                              :Cislo
@@ -618,7 +618,7 @@ STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...prili
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...miesto je nepouzitelne
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...prilis vela miest
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Nie je mozne postavit viac miest
-STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...nie je dalsie miesto na mape
+STR_NO_SPACE_FOR_TOWN                                           :{WHITE}... nie je dalsie miesto na mape
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Zvacsit velkost mesta
 STR_023C_EXPAND                                                 :{BLACK}Rozsirit
 STR_023D_RANDOM_TOWN                                            :{BLACK}Nahodne mesto
@@ -966,7 +966,7 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vlak {COMMA} ma prilis malo prikazov
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Vlak {COMMA} ma malo prikazov
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Vlak {COMMA} ma prazdny prikaz
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Vlak {COMMA} ma zdvojene prikazy
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Vlak {COMMA} ma neplatnu stanicu v prikazoch
@@ -1128,7 +1128,7 @@ STR_WAYPOINTNAME_CITY                                           :Smerovy bod {TO
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Smerovy bod {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Smerovy bod
 
-STR_WAYPOINT                                                    :{WHITE}Kontrolny bod
+STR_WAYPOINT                                                    :{WHITE}Smerovy bod
 STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vyber typ kontrolneho bodu
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
@@ -1147,9 +1147,9 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}... v to
 
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Si si isty, ze chces vytvorit nahodny teren?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Vela nahodnych miest
-STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryt mapu s nahodne umiestnenymi mestami
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryt mapu nahodne umiestnenymi mestami
 STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Vela nahodneho priemyslu
-STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryt mapu s nahodne umiestnenym priemyslom
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryt mapu nahodne umiestnenym priemyslom
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nemozno vygenerovat priemysel ...
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Otvorit panel nastrojov pre upravy terenu, vysadbu stromov, ...
@@ -1216,11 +1216,11 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... prilis blizko ineho priemyslu
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Prerobit vlak na prepravu ineho nakladu
-STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Prerobit vlak
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Prestavat vlak na prepravu ineho nakladu
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Prestavat vlak
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vybrat typ prepravovaneho nakladu
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prerobit vlak na prepravu vybraneho nakladu
-STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemozno prerobit vlak...
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prestavat vlak na prepravu vybraneho nakladu
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemozno prestavat vlak ...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servisne intervaly su v percentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmenit produkciu
 
@@ -1237,7 +1237,7 @@ STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Toto je 
 STR_NETWORK_CONNECTION                                          :{BLACK}Pripojenie:
 STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Vyber si medzi hrou na internete alebo na localnej sieti
 
-STR_NETWORK_START_SERVER                                        :{BLACK}Urobit server
+STR_NETWORK_START_SERVER                                        :{BLACK}Spustit server
 STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Spustit vlastny server
 
 STR_NETWORK_GAME_NAME                                           :{BLACK}Meno
@@ -1246,7 +1246,7 @@ STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Jazyk, v
 STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Vyberte hru zo zoznamu
 
 STR_NETWORK_FIND_SERVER                                         :{BLACK}Najst server
-STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Hlada po sieti servery
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Hladat po sieti servery
 STR_NETWORK_ADD_SERVER                                          :{BLACK}Pridat server
 STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Prida server do zoznamu, v ktorom sa automaticky budu hladat beziacie hry.
 STR_NETWORK_ENTER_IP                                            :{BLACK}Zadajte IP adresu serveru
@@ -1277,7 +1277,7 @@ STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Zacat no
 STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Nazov hry:
 STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Nazov hry, ktory uvidia ostatni v zozname sietovych hier
 STR_NETWORK_SET_PASSWORD                                        :{BLACK}Nastavit heslo
-STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Ochran hru heslom, ak nechcec aby sa pripajali ostatny ludia
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Ochran hru heslom, ak nechcec aby sa pripajali ostatni ludia
 STR_NETWORK_SELECT_MAP                                          :{BLACK}Vyber mapu:
 STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Ktoru mapu chces hrat?
 STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maximalny pocet klientov:
@@ -1365,8 +1365,8 @@ STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / 
 STR_NETWORK_DISCONNECT                                          :{BLACK}Odpojit sa
 
 STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Napis sumu, ktoru chces poskytnut
-STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server je chraneny. Napis heslo
-STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Spolocnost je chranena. Napis heslo
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Server je chraneny. Zadaj heslo
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Spolocnost je chranena. Zadaj heslo
 STR_NETWORK_CLIENT_LIST                                         :{WHITE}Zoznam klientov
 
 STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Nie su ziadne sietove zariadenie alebo hra je kompilovana bez ENABLE_NETWORK
@@ -1380,7 +1380,7 @@ STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Nemozem
 STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Vyprsal casovy limit pre spojenie #{NUM}.
 STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Chyba vznikla v protokole a spojenie je zatvorene.
 STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} Revizia hry u tohto klienta nezodpoveda revizii hry na serveri.
-STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Chybne heslo.
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Nespravne heslo.
 STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} Server je plny
 STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Si zablokovany na tomto serveri
 STR_NETWORK_ERR_KICKED                                          :{WHITE} Bol si vyhodeny z hry
@@ -1404,8 +1404,8 @@ STR_NETWORK_ERR_CLIENT_CHEATER                                  :sa pokusal chea
 STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server je plny
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :vstupil do hry
-STR_NETWORK_GIVE_MONEY                                          :ti dal nejake peniaze ({CURRENCY})
-STR_NETWORK_GAVE_MONEY_AWAY                                     :dal si {STRING} nejake penazi ({CURRENCY})
+STR_NETWORK_GIVE_MONEY                                          :ti poslal peniaze ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY                                     :poslal si {STRING} penazie ({CURRENCY})
 STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}:
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRING}:
 STR_NETWORK_CHAT_CLIENT                                         :[Osobny] {STRING}:
@@ -1413,7 +1413,7 @@ STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre 
 STR_NETWORK_CHAT_ALL                                            :[Vsetci] {STRING}:
 STR_NETWORK_NAME_CHANGE                                         :si zmenil meno na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server ukoncil relaciu
-STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server sa restartuje...{}Cakajte prosim...
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server sa restartuje ...{}Cakajte prosim ...
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
@@ -1612,7 +1612,7 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Postavit sochu na oslavu vasej spolocnosti.{} Cena: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financovat vystavbu administrativnych a obchodnych budov.{}  Cena: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Zakupit exkluzivne dopravne prava na 1 rok pre vasu spolocnost. Miestna sprava vam zaruci vyuzivanie len dopravnych sluzieb vasej spolocnosti.{} Cena: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Podplatit miestnu spravu pre zvysenie hodnotenia vasej spolocnosti, s rizikom tazkeho postihu ked sa to prevali!{}  Cost: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Podplatit miestnu spravu pre zvysenie hodnotenia vasej spolocnosti, s rizikom tazkeho postihu pri odhaleni!{}  Cena: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}V meste {TOWN} zavladol dopravny chaos!{}{}Rekonstrukcia ciest financovana {COMPANY} prinesie 6 mesiacov utrpenia pre motoristov!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1727,7 +1727,7 @@ STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podrzte 
 
 STR_UNDEFINED                                                   :(nedefinovaný retezec)
 STR_STAT_CLASS_DFLT                                             :Pôvodná stanica
-STR_STAT_CLASS_WAYP                                             :Kontrólne body
+STR_STAT_CLASS_WAYP                                             :Smerove body
 
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientacia lodenice
@@ -1912,9 +1912,9 @@ STR_SV_STNAME_BUOY_6                                            :{STRING} Boja 6
 STR_SV_STNAME_BUOY_7                                            :{STRING} Boja 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} Boja 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} Boja 9
-STR_SV_STNAME_ANNEXE                                            :{STRING} Zatavka
-STR_SV_STNAME_SIDINGS                                           :{STRING} Sihot
-STR_SV_STNAME_BRANCH                                            :{STRING} Za rohom
+STR_SV_STNAME_ANNEXE                                            :{STRING} Zastavka
+STR_SV_STNAME_SIDINGS                                           :{STRING} Vidiek
+STR_SV_STNAME_BRANCH                                            :{STRING} Konecna
 STR_SV_STNAME_UPPER                                             :Horny {STRING}
 STR_SV_STNAME_LOWER                                             :Dolny {STRING}
 STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
@@ -2106,7 +2106,7 @@ STR_706D_PRESIDENT                                              :Prezident
 STR_706E_TYCOON                                                 :Tycoon
 STR_706F_BUILD_HQ                                               :{BLACK}Postavit sidlo
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Postavit sidlo spolocnosti / pozriet sidlo spolocnosti
-STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Sidlo spolocnosti mozes premiestnit za 1% hodnoty spolocnosti
+STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Sidlo spolocnosti je mozne premiestnit za 1% hodnoty spolocnosti
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Sidlo spolocnosti sa neda postavit ...
 STR_7072_VIEW_HQ                                                :{BLACK}Pozriet sidlo
 STR_RELOCATE_HQ                                                 :{BLACK}Premiestnit sidlo
@@ -2473,7 +2473,7 @@ STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nemozno 
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nemoze najst cestu do depa
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Nemozno zastavit/spustit vlak ...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Servisny interval: {LTBLUE}{COMMA}dni{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
-STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Servisny interval: {LTBLUE}{COMMA}%{BLACK}   Posledny servis bol: {LTBLUE}{DATE_LONG}
+STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Servisny interval: {LTBLUE}{COMMA}%{BLACK}   Posledny servis: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaky - kliknut na vlak pre informacie
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Kupit nove vlaky (potrebne depo)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Vlaky - kliknut na vlak pre informacie, potiahni pre zmenu pozicie
@@ -2503,13 +2503,13 @@ STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaceny
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Vlozit novy prikaz pred oznaceny prikaz, alebo na koniec zoznamu
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo cakat na plne nalozenie
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Na oznacenom prikaze bude vozidlo uplne vylozene
-STR_SERVICE_HINT                                                :{BLACK}Vynechat tento prikaz pokial nieje potrebna oprava
+STR_SERVICE_HINT                                                :{BLACK}Vynechat tento prikaz pokial nie je potrebna oprava
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nove {STRING} je uz dostupne!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Nosnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Vykon: {POWER}{}Cena prevadzky: {CURRENCY}/rok{}Kapacita: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Nosnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Vykon: {POWER}{}Naklady na prevadzku: {CURRENCY}/rok{}Kapacita: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Pokazene
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vek: {LTBLUE}{STRING}{BLACK}   Naklady na prevadzku: {LTBLUE}{CURRENCY}/rok
-STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Nosnost: {LTBLUE}{WEIGHT_S}  {BLACK}Vykon: {LTBLUE}{POWER}{BLACK} Max. Rychlost: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Nosnost: {LTBLUE}{WEIGHT_S}  {BLACK}Vykon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk tento rok: {LTBLUE}{CURRENCY}  (predchadzajuci rok: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Zastavene
@@ -2580,7 +2580,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nemozno otocit vozidlo ...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nemozes otacat vozidla ktore su zlozené z viacerych strojov
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nie je mozne otacat vozidla zlozené z viacerych jednotiek
 STR_9034_RENAME                                                 :{BLACK}Premenovat
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Premenovat typ automobilu
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Premenovat typ automobilu
@@ -2719,7 +2719,7 @@ STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Nie je m
 STR_A032_NAME_AIRCRAFT                                          :{BLACK}Pomenovat lietadlo
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prve lietadlo pristalo na {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Letecke nestastie!{}{COMMA} mrtv{P y i ych} po poziari na {STATION}
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Letecka havaria!{}Lietadlu doslo palivo, {COMMA} mrtvych pri poziari!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Letecke nestastie!{}Lietadlu doslo palivo, {COMMA} mrtvych pri poziari!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
 STR_A037_RENAME                                                 :{BLACK}Premenovat
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Premenovat typ lietadla
@@ -2749,7 +2749,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Vas poku
 STR_BRIBE_FAILED_2                                              :{WHITE}miestnym vysetrovatelom.
 STR_BUILD_DATE                                                  :{BLACK}Postavene: {LTBLUE}{DATE_LONG}
 
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Podrobne hodnotenie vykonu
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Detailny rating vykonu
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Podrobne
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
@@ -2758,7 +2758,7 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vozidla:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stanice:
-STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. profit:
+STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. zisk:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. prijem:
 STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. prijem:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Prepravene:
@@ -2772,16 +2772,16 @@ STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Pocet ca
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Zisk vozidla s najnizsim prijmom (zo vsetkych vozidiel starsich ako 2 roky)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Mnozstvo penazi zarobenych v mesiaci s najmensim ziskom v poslednych 12 kvartaloch
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Mnozstvo penazi zarobenych v mesiaci s najvacsim ziskom v poslednych 12 kvartaloch
-STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Pocet jednotiek tovaru prevezenych v poslednych styroch kvartaloch.
-STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Typy nakladu donesene v poslednom kvartali.
+STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Pocet jednotiek nakladu prepravenych v poslednych styroch kvartaloch.
+STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Pocet druhov nakladu prepraveneho v poslednom kvartali.
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Mnozstvo penazi k dispozicii
-STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Mas velku pozicku?
+STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Vyska uveru spolocnosti
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Celkove body z vsetkych moznych
 
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Nastavenie novych grafickych suborov
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdit zmeny
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nastavit parametre
-STR_NEWGRF_TIP                                                  :{BLACK}Zoznam sady nainstalovanych novych grafik. Nastavenie zmenite kliknutim na set.
+STR_NEWGRF_TIP                                                  :{BLACK}Zoznam vsetkych sad nainstalovanych novych grafik. Nastavenie zmenite kliknutim na set.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nie su nainstalovane ziadne subory s novou grafikou. Postup instalacie novych grafik najdete v manuali.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nazov suboru:
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF:
@@ -2823,11 +2823,11 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vyber ty
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Stlac toto tlacidlo, ak nechces vymienat typ lokomotivy vybrany v lavom zozname
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Stlac toto tlacidlo, ak chces zacat vymienat typ lokomotivy v lavom zozname za typ lokomotivy v pravom zozname
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ kolajnic, pre ktore chces vymienat lokomotivy
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tu sa zobrazuje, za ktoru lokomotiva sa lokomotiva v lavom zozname zamenuje
-STR_REPLACE_HELP                                                :{BLACK}Umoznuje vybrat typ lokomotivy, ktory automaticky sa zameni za iny typ, ak vlaky s takouto lokomotivou sa zastavia v depe
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Zobrazenie za ktoru lokomotiva sa lokomotiva v lavom zozname zamiena
+STR_REPLACE_HELP                                                :{BLACK}Umoznuje vybrat typ lokomotivy, ktory sa automaticky zameni za iny typ, ak sa vlaky s takouto lokomotivou zastavia v depe
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena masiny vlak predlzila.
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovanie: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena rusna vlak predlzila.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymena: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTALNA VLASTNOST {}Prepne medzi oknami na vymenu lokomotiv a vagonov.{}Vagon sa vymeni, len ked je nový vagon schopny vozit rovnaky naklad, ako ten stary. Toto sa overuje pre kazdy vagon.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotiva sa nevyraba
 
@@ -2835,7 +2835,7 @@ STR_ENGINES                                                     :Lokomotívy
 STR_WAGONS                                                      :Vagonov
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popisov
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
 
 ############ Lists rail types
 
@@ -2851,7 +2851,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Hmotnost: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Vykon: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cena prevadzky: {GOLD}{CURRENCY}/yr
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Naklady na prevadzku: {GOLD}{CURRENCY}/rok
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyrobene: {GOLD}{NUM}{BLACK} Zivotnost: {GOLD}{COMMA} rokov
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolahlivost: {GOLD}{COMMA}%
