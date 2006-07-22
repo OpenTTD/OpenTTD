@@ -98,6 +98,12 @@ typedef enum Axis {
 } Axis;
 
 
+static inline Axis OtherAxis(Axis a)
+{
+	return (Axis)(a ^ 1);
+}
+
+
 static inline Axis DiagDirToAxis(DiagDirection d)
 {
 	return (Axis)(d & 1);

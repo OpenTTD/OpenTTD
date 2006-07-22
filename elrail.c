@@ -89,7 +89,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 			if (IsTunnel(t)) {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
 				if (override != NULL) *override = 1 << GetTunnelDirection(t);
-				return DiagDirToAxis(GetTunnelDirection(t)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
+				return AxisToTrackBits(DiagDirToAxis(GetTunnelDirection(t)));
 			} else {
 				if (GetRailType(t) != RAILTYPE_ELECTRIC) return 0;
 				if (IsBridgeMiddle(t)) {
@@ -102,7 +102,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 				} else {
 					if (override != NULL && DistanceMax(t, GetOtherBridgeEnd(t)) > 1) *override = 1 << GetBridgeRampDirection(t);
 
-					return DiagDirToAxis(GetBridgeRampDirection(t)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y;
+					return AxisToTrackBits(DiagDirToAxis(GetBridgeRampDirection(t)));
 				}
 			}
 

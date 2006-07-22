@@ -34,6 +34,17 @@ typedef enum Track {
 } Track;
 
 
+/** Convert an Axis to the corresponding Track
+ * AXIS_X -> TRACK_X
+ * AXIS_Y -> TRACK_Y
+ * Uses the fact that they share the same internal encoding
+ */
+static inline Track AxisToTrack(Axis a)
+{
+	return (Track)a;
+}
+
+
 /** Bitfield corresponding to Track */
 typedef enum TrackBits {
 	TRACK_BIT_NONE  = 0U,
@@ -53,6 +64,21 @@ typedef enum TrackBits {
 	TRACK_BIT_ALL   = TRACK_BIT_CROSS | TRACK_BIT_HORZ | TRACK_BIT_VERT,
 	TRACK_BIT_MASK  = 0x3FU
 } TrackBits;
+
+
+/**
+ * Maps a Track to the corresponding TrackBits value
+ */
+static inline TrackBits TrackToTrackBits(Track track)
+{
+	return (TrackBits)(1 << track);
+}
+
+
+static inline TrackBits AxisToTrackBits(Axis a)
+{
+	return TrackToTrackBits(AxisToTrack(a));
+}
 
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
@@ -240,11 +266,6 @@ static inline byte SignalOnTrack(Track track) {
 static inline Trackdir ReverseTrackdir(Trackdir trackdir) {
 	return (Trackdir)(trackdir ^ 8);
 }
-
-/**
- * Maps a Track to the corresponding TrackBits value
- */
-static inline TrackBits TrackToTrackBits(Track track) { return (TrackBits)(1 << track); }
 
 /**
  * Returns the Track that a given Trackdir represents

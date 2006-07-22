@@ -115,10 +115,15 @@ static inline RoadBits GetRoadBitsUnderBridge(TileIndex t)
 	return GetBridgeAxis(t) == AXIS_X ? ROAD_Y : ROAD_X;
 }
 
-static inline TrackBits GetRailBitsUnderBridge(TileIndex t)
+static inline Track GetRailUnderBridge(TileIndex t)
 {
 	assert(GetTransportTypeUnderBridge(t) == TRANSPORT_RAIL);
-	return GetBridgeAxis(t) == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X;
+	return AxisToTrack(OtherAxis(GetBridgeAxis(t)));
+}
+
+static inline TrackBits GetRailBitsUnderBridge(TileIndex t)
+{
+	return TrackToTrackBits(GetRailUnderBridge(t));
 }
 
 

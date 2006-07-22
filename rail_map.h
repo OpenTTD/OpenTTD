@@ -126,20 +126,20 @@ static inline DiagDirection GetRailDepotDirection(TileIndex t)
 	return (DiagDirection)GB(_m[t].m5, 0, 2);
 }
 
-static inline Track GetRailWaypointTrack(TileIndex t)
-{
-	return HASBIT(_m[t].m5, 0) ? TRACK_Y : TRACK_X;
-}
-
-static inline TrackBits GetRailWaypointBits(TileIndex t)
-{
-	return _m[t].m5 & 1 ? TRACK_BIT_Y : TRACK_BIT_X;
-}
-
 
 static inline Axis GetWaypointAxis(TileIndex t)
 {
 	return HASBIT(_m[t].m5, 0) ? AXIS_Y : AXIS_X;
+}
+
+static inline Track GetRailWaypointTrack(TileIndex t)
+{
+	return AxisToTrack(GetWaypointAxis(t));
+}
+
+static inline TrackBits GetRailWaypointBits(TileIndex t)
+{
+	return TrackToTrackBits(GetRailWaypointTrack(t));
 }
 
 

@@ -991,7 +991,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 					return HasRoadWorks(tile) ? 0 : _road_trackbits[GetRoadBits(tile)] * 0x101;
 
 				case ROAD_TILE_CROSSING: {
-					uint32 r = (GetCrossingRoadAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+					uint32 r = AxisToTrackBits(GetCrossingRoadAxis(tile)) * 0x101;
 
 					if (IsCrossingBarred(tile)) r *= 0x10001;
 					return r;
@@ -999,7 +999,7 @@ static uint32 GetTileTrackStatus_Road(TileIndex tile, TransportType mode)
 
 				default:
 				case ROAD_TILE_DEPOT:
-					return (DiagDirToAxis(GetRoadDepotDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+					return AxisToTrackBits(DiagDirToAxis(GetRoadDepotDirection(tile))) * 0x101;
 			}
 			break;
 

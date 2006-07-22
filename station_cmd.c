@@ -1087,7 +1087,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		st->build_date = _date;
 
 		tile_delta = (axis == AXIS_X ? TileDiffXY(1, 0) : TileDiffXY(0, 1));
-		track = (axis == AXIS_X ? TRACK_X : TRACK_Y);
+		track = AxisToTrack(axis);
 
 		layout_ptr = alloca(numtracks * plat_len);
 		GetStationLayout(layout_ptr, numtracks, plat_len, statspec);
@@ -2216,7 +2216,7 @@ static uint32 GetTileTrackStatus_Station(TileIndex tile, TransportType mode)
 
 		case TRANSPORT_ROAD:
 			if (IsRoadStopTile(tile)) {
-				return (DiagDirToAxis(GetRoadStopDir(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+				return AxisToTrackBits(DiagDirToAxis(GetRoadStopDir(tile))) * 0x101;
 			}
 			break;
 

@@ -335,7 +335,7 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 
 			case MP_RAILWAY:
 				if (GetRailTileType(tile) != RAIL_TILE_NORMAL ||
-						GetTrackBits(tile) != (direction == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X)) {
+						GetTrackBits(tile) != AxisToTrackBits(OtherAxis(direction))) {
 					goto not_valid_below;
 				}
 				transport_under = TRANSPORT_RAIL;
@@ -415,8 +415,8 @@ not_valid_below:;
 		}
 	}
 
-	SetSignalsOnBothDir(tile_start, direction == AXIS_X ? TRACK_X : TRACK_Y);
-	YapfNotifyTrackLayoutChange(tile_start, direction == AXIS_X ? TRACK_X : TRACK_Y);
+	SetSignalsOnBothDir(tile_start, AxisToTrack(direction));
+	YapfNotifyTrackLayoutChange(tile_start, AxisToTrack(direction));
 
 	/*	for human player that builds the bridge he gets a selection to choose from bridges (DC_QUERY_COST)
 			It's unnecessary to execute this command every time for every bridge. So it is done only
@@ -507,7 +507,7 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 			MakeRailTunnel(start_tile, _current_player, direction,                 GB(p1, 0, 4));
 			MakeRailTunnel(end_tile,   _current_player, ReverseDiagDir(direction), GB(p1, 0, 4));
 			UpdateSignalsOnSegment(start_tile, direction);
-			YapfNotifyTrackLayoutChange(start_tile, DiagDirToAxis(direction) == AXIS_X ? TRACK_X : TRACK_Y);
+			YapfNotifyTrackLayoutChange(start_tile, AxisToTrack(DiagDirToAxis(direction)));
 		} else {
 			MakeRoadTunnel(start_tile, _current_player, direction);
 			MakeRoadTunnel(end_tile,   _current_player, ReverseDiagDir(direction));
@@ -579,6 +579,7 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 		// We first need to request the direction before calling DoClearSquare
 		//  else the direction is always 0.. dah!! ;)
 		DiagDirection dir = GetTunnelDirection(tile);
+		Track track;
 
 		// Adjust the town's player rating. Do this before removing the tile owner info.
 		if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR)
@@ -588,8 +589,9 @@ static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 		DoClearSquare(endtile);
 		UpdateSignalsOnSegment(tile, ReverseDiagDir(dir));
 		UpdateSignalsOnSegment(endtile, dir);
-		YapfNotifyTrackLayoutChange(tile, DiagDirToAxis(dir) == AXIS_X ? TRACK_X : TRACK_Y);
-		YapfNotifyTrackLayoutChange(endtile, DiagDirToAxis(dir) == AXIS_X ? TRACK_X : TRACK_Y);
+		track = AxisToTrack(DiagDirToAxis(dir));
+		YapfNotifyTrackLayoutChange(tile, track);
+		YapfNotifyTrackLayoutChange(endtile, track);
 	}
 	return _price.clear_tunnel * (length + 1);
 }
@@ -687,6 +689,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 	if (flags & DC_EXEC) {
 		TileIndex c;
+		Track track;
 
 		//checks if the owner is town then decrease town rating by RATING_TUNNEL_BRIDGE_DOWN_STEP until
 		// you have a "Poor" (0) town rating
@@ -724,8 +727,9 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 
 		UpdateSignalsOnSegment(tile, ReverseDiagDir(direction));
 		UpdateSignalsOnSegment(endtile, direction);
-		YapfNotifyTrackLayoutChange(tile, DiagDirToAxis(direction) == AXIS_X ? TRACK_X : TRACK_Y);
-		YapfNotifyTrackLayoutChange(endtile, DiagDirToAxis(direction) == AXIS_X ? TRACK_X : TRACK_Y);
+		track = AxisToTrack(DiagDirToAxis(direction));
+		YapfNotifyTrackLayoutChange(tile, track);
+		YapfNotifyTrackLayoutChange(endtile, track);
 	}
 
 	return (DistanceManhattan(tile, endtile) + 1) * _price.clear_bridge;
@@ -759,17 +763,15 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		if (endtile == INVALID_TILE) return CMD_ERROR;
 
 		if (exec) {
-			Track track, endtrack;
+			Track track;
 			SetRailType(tile, totype);
 			SetRailType(endtile, totype);
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
 
-			// notify YAPF about the track layout change
-			track = TrackdirToTrack(DiagdirToDiagTrackdir(GetTunnelDirection(tile)));
-			endtrack = TrackdirToTrack(DiagdirToDiagTrackdir(GetTunnelDirection(endtile)));
+			track = AxisToTrack(DiagDirToAxis(GetTunnelDirection(tile)));
 			YapfNotifyTrackLayoutChange(tile, track);
-			YapfNotifyTrackLayoutChange(endtile, endtrack);
+			YapfNotifyTrackLayoutChange(endtile, track);
 		}
 		return (length + 1) * (_price.build_rail >> 1);
 	} else if (IsBridge(tile) &&
@@ -783,13 +785,10 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		if (GetRailType(tile) == totype) return CMD_ERROR;
 
 		if (exec) {
-			TrackBits tracks;
 			SetRailType(tile, totype);
 			MarkTileDirtyByTile(tile);
 
-			// notify YAPF about the track layout change
-			for (tracks = GetRailBitsUnderBridge(tile); tracks != TRACK_BIT_NONE; tracks = KILL_FIRST_BIT(tracks))
-				YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(tracks));
+			YapfNotifyTrackLayoutChange(tile, GetRailUnderBridge(tile));
 		}
 		return _price.build_rail >> 1;
 	} else if (IsBridge(tile) && IsBridgeRamp(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
@@ -813,17 +812,15 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		if (GetRailType(tile) == totype) return CMD_ERROR;
 
 		if (exec) {
-			Track track, endtrack;
+			Track track;
 			SetRailType(tile, totype);
 			SetRailType(endtile, totype);
 			MarkTileDirtyByTile(tile);
 			MarkTileDirtyByTile(endtile);
 
-			// notify YAPF about the track layout change
-			track = TrackdirToTrack(DiagdirToDiagTrackdir(GetBridgeRampDirection(tile)));
-			endtrack = TrackdirToTrack(DiagdirToDiagTrackdir(GetBridgeRampDirection(endtile)));
+			track = AxisToTrack(DiagDirToAxis(GetBridgeRampDirection(tile)));
 			YapfNotifyTrackLayoutChange(tile, track);
-			YapfNotifyTrackLayoutChange(endtile, endtrack);
+			YapfNotifyTrackLayoutChange(endtile, track);
 		}
 		cost = 2 * (_price.build_rail >> 1);
 		delta = TileOffsByDir(GetBridgeRampDirection(tile));
@@ -1273,20 +1270,20 @@ static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode
 {
 	if (IsTunnel(tile)) {
 		if (GetTunnelTransportType(tile) != mode) return 0;
-		return (DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+		return AxisToTrackBits(DiagDirToAxis(GetTunnelDirection(tile))) * 0x101;
 	} else {
 		if (IsBridgeRamp(tile)) {
 			if (GetBridgeTransportType(tile) != mode) return 0;
-			return (DiagDirToAxis(GetBridgeRampDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+			return AxisToTrackBits(DiagDirToAxis(GetBridgeRampDirection(tile))) * 0x101;
 		} else {
 			uint32 result = 0;
 
 			if (GetBridgeTransportType(tile) == mode) {
-				result = (GetBridgeAxis(tile) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+				result = AxisToTrackBits(GetBridgeAxis(tile)) * 0x101;
 			}
 			if ((IsTransportUnderBridge(tile) && mode == GetTransportTypeUnderBridge(tile)) ||
 					(IsWaterUnderBridge(tile)     && mode == TRANSPORT_WATER)) {
-				result |= (GetBridgeAxis(tile) == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) * 0x101;
+				result |= AxisToTrackBits(OtherAxis(GetBridgeAxis(tile))) * 0x101;
 			}
 			return result;
 		}

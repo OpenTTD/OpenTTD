@@ -188,7 +188,7 @@ static inline Axis GetRailStationAxis(TileIndex t)
 
 static inline Track GetRailStationTrack(TileIndex t)
 {
-	return GetRailStationAxis(t) == AXIS_X ? TRACK_X : TRACK_Y;
+	return AxisToTrack(GetRailStationAxis(t));
 }
 
 static inline bool IsCompatibleTrainStationTile(TileIndex t1, TileIndex t2)

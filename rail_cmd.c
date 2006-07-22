@@ -234,7 +234,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case MP_TUNNELBRIDGE:
 			if (!IsBridge(tile) ||
 					!IsBridgeMiddle(tile) ||
-					(GetBridgeAxis(tile) == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X) != trackbit) {
+					AxisToTrackBits(OtherAxis(GetBridgeAxis(tile))) != trackbit) {
 				// Get detailed error message
 				return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
@@ -1918,7 +1918,7 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 		return ret;
 	} else {
 		if (GetRailTileSubtype(tile) == RAIL_SUBTYPE_DEPOT) {
-			return (DiagDirToAxis(GetRailDepotDirection(tile)) == AXIS_X ? TRACK_BIT_X : TRACK_BIT_Y) * 0x101;
+			return AxisToTrackBits(DiagDirToAxis(GetRailDepotDirection(tile))) * 0x101;
 		} else {
 			return GetRailWaypointBits(tile) * 0x101;
 		}

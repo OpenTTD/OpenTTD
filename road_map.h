@@ -57,7 +57,7 @@ static inline RoadBits GetCrossingRoadBits(TileIndex tile)
 
 static inline TrackBits GetCrossingRailBits(TileIndex tile)
 {
-	return GetCrossingRoadAxis(tile) == AXIS_X ? TRACK_BIT_Y : TRACK_BIT_X;
+	return AxisToTrackBits(OtherAxis(GetCrossingRoadAxis(tile)));
 }
 
 
