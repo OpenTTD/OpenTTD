@@ -314,6 +314,7 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 
 	uint length = GetBridgeLength(start, end);
 	uint num = DistanceMax(ti->tile, start);
+	uint height;
 
 	const SortableSpriteStruct *sss;
 	Axis axis = GetBridgeAxis(ti->tile);
@@ -330,25 +331,28 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 		sss = &CatenarySpriteData[WIRE_X_FLAT_SW + (num % 2) + offset];
 	}
 
+	height = GetBridgeHeight(ti->tile);
+
 	AddSortableSpriteToDraw( sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,
-			sss->x_size, sss->y_size, sss->z_size, GetBridgeHeight(ti->tile) + sss->z_offset);
+		sss->x_size, sss->y_size, sss->z_size, height + sss->z_offset
+	);
 
 	/* Finished with wires, draw pylons */
 	/* every other tile needs a pylon on the northern end */
 	if (num % 2) {
 		if (axis == AXIS_X) {
-			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile));
+			AddSortableSpriteToDraw(pylons_bridge[0 + HASBIT(tlg, 0)], ti->x, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, height);
 		} else {
-			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y, 1, 1, 10, GetBridgeHeight(ti->tile));
+			AddSortableSpriteToDraw(pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y, 1, 1, 10, height);
 		}
 	}
 
 	/* need a pylon on the southern end of the bridge */
 	if (DistanceMax(ti->tile, start) == length) {
 		if (axis == AXIS_X) {
-			AddSortableSpriteToDraw( pylons_bridge[0 + HASBIT(tlg, 0)], ti->x + 16, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, GetBridgeHeight(ti->tile));
+			AddSortableSpriteToDraw(pylons_bridge[0 + HASBIT(tlg, 0)], ti->x + 16, ti->y + 4 + 8 * HASBIT(tlg, 0), 1, 1, 10, height);
 		} else {
-			AddSortableSpriteToDraw( pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y + 16, 1, 1, 10, GetBridgeHeight(ti->tile));
+			AddSortableSpriteToDraw(pylons_bridge[2 + HASBIT(tlg, 1)], ti->x + 4 + 8 * HASBIT(tlg, 1), ti->y + 16, 1, 1, 10, height);
 		}
 	}
 }
