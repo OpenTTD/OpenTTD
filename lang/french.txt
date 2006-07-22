@@ -2831,7 +2831,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}L'autore
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}En Remplacement: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FONCTION EXPERIMENTALE {}Passer à la fenêtre de remplacement de locomotives/wagons.{}Le remplacement de wagon ne se fera que si le nouveau wagon peut être réaménagé pour le même type de marchandises que l'ancien. Ceci est vérifié pour chaque wagon lors du remplacement.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ce véhicule ne peut pas être construit
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}L'aéroport n'a pas de piste
 
 STR_ENGINES                                                     :Locomotives
 STR_WAGONS                                                      :Wagons

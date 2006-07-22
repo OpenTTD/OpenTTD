@@ -2828,7 +2828,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Sunni au
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vahetan: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} TESTIMISEL! {}Vaheta aken mootori ja vaguni vahetamise aknate vahel.{}Vaguni vahetus tehakse ainult siis kui uus vagun suudetakse muuta kandmaks sama tüüpi kaupa kui vana vagun. See valitakse igale vagunile kui tegelik vahetus käib
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Mootorit ei saa ehitada
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Lennujaamal ei ole maandumisrada
 
 STR_ENGINES                                                     :Mootorid
 STR_WAGONS                                                      :Vaguneid

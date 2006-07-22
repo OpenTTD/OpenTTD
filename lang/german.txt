@@ -2831,7 +2831,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Zwinge d
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersetze: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTELLE FUNKTION {}Umschalter für Lok- oder Waggonersetzung{}Waggons werden nur ersetzt, wenn der neue Waggon den selben Warentyp transportieren kann wie der alte. Dies wird beim Ersetzen eines jeden Waggons einzeln geprüft.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotive ist nicht baubar
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}der Flughafen hat keine Rollbahn
 
 STR_ENGINES                                                     :Loks
 STR_WAGONS                                                      :Waggons

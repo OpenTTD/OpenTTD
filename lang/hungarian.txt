@@ -2932,7 +2932,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az autom
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Lecserél: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} KISÉRLETI TULAJDONSÁG {}Váltás a mozdony és a vasúti-kocsi cserélõ ablak között.{}A vagonok cseréje csak akkor történik meg, ha az új vagon átalakítható ugyanolyan típusú teher szállítására. Ez minden vagoncserénél ellenõrzõdik.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A mozdony így nem építhetõ meg
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}A reptérnek nincs kifutója
 
 STR_ENGINES                                                     :Mozdonyok
 STR_WAGONS                                                      :Vagonok

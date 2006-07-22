@@ -2044,7 +2044,6 @@ STR_BUS                                                         :{BLACK}{BUS}
 
 
 
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Летището няма писта
 
 STR_WAGONS                                                      :Вагони
 

@@ -2818,7 +2818,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autou
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Udskifter: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTEL EGENSKAB {}Skift imellem lokomotiv- og vogn-udskiftningsvindue.{}Vognudskiftning vil kun finde sted hvis den nye vogn kan ændres til at transportere samme godstype some den gamle vogn. Dette bliver checket for hver vogn, når udskiftningen finder sted
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Køretøjet kan ikke bygges
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Lufthavnen har ingen landingsbane
 
 STR_ENGINES                                                     :Lokomotiver
 STR_WAGONS                                                      :Vogne

@@ -2530,7 +2530,6 @@ STR_PLANE                                                       :{BLACK}{PLANE}
 STR_NOT_REPLACING                                               :{BLACK}Word nie vervang nie
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Geen voertuig gekies
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Enjin is nie boubaar nie
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Lughawe het geen aanloopbaan
 
 STR_ENGINES                                                     :Enjine
 

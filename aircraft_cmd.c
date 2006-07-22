@@ -196,7 +196,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *vl[3], *v, *u, *w;
 	UnitID unit_num;
 	const AircraftVehicleInfo *avi;
-	const Station *st2;
+	const AirportFTAClass* ap;
 	Engine *e;
 
 	if (!IsEngineBuildable(p1, VEH_Aircraft)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
@@ -211,16 +211,17 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 
 	avi = AircraftVehInfo(p1);
+
+	// Prevent building aircraft types at places which can't handle them
+	ap = GetAirport(GetStationByTile(tile)->airport_type);
+	if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == ap->acc_planes) {
+		return CMD_ERROR;
+	}
+
 	// allocate 2 or 3 vehicle structs, depending on type
 	if (!AllocateVehicles(vl, avi->subtype & AIR_CTOL ? 2 : 3) ||
 			IsOrderPoolFull()) {
 		return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
-	}
-
-	// prevent building of aircraft in helidepot/helistation
-	st2 = GetStationByTile(tile);
-	if ((avi->subtype & AIR_CTOL) && (GetAirport(st2->airport_type)->acc_planes == HELICOPTERS_ONLY)) {
-		return_cmd_error(STR_AIRPORT_HAS_NO_RUNWAY);
 	}
 
 	unit_num = HASBIT(p2, 0) ? 0 : GetFreeUnitNumber(VEH_Aircraft);

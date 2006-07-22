@@ -2829,7 +2829,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Ativar e
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Substituindo: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL {}Troca entre substituir máquinas e substituir vagões.{}Só haverá a substituição se puder haver o reacondicionamento para carregar o mesmo tipo de carga. Essa checagem ocorre para cada vagão enquanto a substituição ocorre.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A locomotiva não pode ser construída
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Aeroporto não possui pista
 
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagões

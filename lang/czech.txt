@@ -2887,7 +2887,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkce a
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymenovani: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTÁLNÍ VLASTNOST {}Prepne mezi okny na vymenu lokomotiv a vagonu.{}Vagon se vymeni, jen kdy¸ je nový vagon schopen vozit stejnou komoditu, jako ten starý. Toto se overuje pro ka¸dý vagon.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj nelze postavit
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Letiste nemá ranvej
 
 STR_ENGINES                                                     :lokomotivy
 STR_WAGONS                                                      :vagony

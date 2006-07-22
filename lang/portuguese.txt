@@ -2830,7 +2830,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Trocando: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNCIONALIDADE EXPERIMENTAL{}Alternar entre a janela de substituição de locomotivas e a janela de substituição de vagões.{}A substituição de vagões só ocorrerá se o novo vagão puder ser reconvertido para o mesmo tipo de carga que o vagão antigo. Esta verificação ocorre para cada vagão, durante a substituição.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva não construível
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Aeroporto sem pista de aterragem
 
 STR_ENGINES                                                     :Locomotivas
 STR_WAGONS                                                      :Vagões

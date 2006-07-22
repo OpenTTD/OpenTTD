@@ -2829,7 +2829,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Otomatik
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Degistiriyor: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} DENEYSEL ÖZELLiK {}Lokomotif ve vagon degisimi pencereleri arasinda geçis yap.{}Vagon degisimi sadece yeni vagon eskisinin tasidigi türde yükü tasiyabiliyorsa yapilir. Degistirme islemi sirasinda tüm vagonlar için bu durum kontrol edilir.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotif alinamaz
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Havalimaninda inis pisti yok
 
 STR_ENGINES                                                     :Lokomotifler
 STR_WAGONS                                                      :Vagon

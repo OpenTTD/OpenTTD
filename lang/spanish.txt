@@ -2831,7 +2831,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Hacer qu
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemplazando: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNCIÓN EXPERIMENTAL {}Cambia entre las ventanas de cambio de vagón y locomotora.{}Los cambios de vagón solo se harán si el nuevo vagón puede ser reparado para transportar el mismo tipo de carga que el anterior. Está marcado para cada vagón cuando el cambio actual se realiza.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}No es posible construir este motor
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}El Aeropuerto no tiene pista
 
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagones

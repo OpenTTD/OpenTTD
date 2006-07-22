@@ -112,47 +112,58 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		if (w->window_number == 0) SETBIT(w->disabled_state, 5);
+		TileIndex tile = w->window_number;
+		const AirportFTAClass* ap;
+
+		if (tile == 0) SETBIT(w->disabled_state, 5);
+
+		ap = GetAirport(GetStationByTile(tile)->airport_type);
 
 		{
 			int count = 0;
-			int num = NUM_AIRCRAFT_ENGINES;
-			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
-			EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
+			EngineID eid;
 
-			do {
-				if (HASBIT(e->player_avail, _local_player) &&
-					!( (GetAirport(GetStationByTile(w->window_number)->airport_type)->acc_planes == HELICOPTERS_ONLY) &&
-					   (AircraftVehInfo(engine_id)->subtype & AIR_CTOL) ) ) count++;
-			} while (++engine_id, ++e,--num);
+			for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
+				const AircraftVehicleInfo* avi;
+
+				if (!HASBIT(GetEngine(eid)->player_avail, _local_player)) continue;
+
+				avi = AircraftVehInfo(eid);
+				if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == ap->acc_planes) continue;
+
+				count++;
+			}
 			SetVScrollCount(w, count);
 		}
 
 		DrawWindowWidgets(w);
 
 		{
-			int num = NUM_AIRCRAFT_ENGINES;
-			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
 			int x = 2;
 			int y = 15;
 			int sel = WP(w,buildtrain_d).sel_index;
 			int pos = w->vscroll.pos;
-			EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
 			EngineID selected_id = INVALID_ENGINE;
+			EngineID eid;
 
-			do {
-				if (HASBIT(e->player_avail, _local_player) &&
-					!( (GetAirport(GetStationByTile(w->window_number)->airport_type)->acc_planes == HELICOPTERS_ONLY) &&
-					   (AircraftVehInfo(engine_id)->subtype & AIR_CTOL) ) ) {
-					if (sel==0) selected_id = engine_id;
-					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-						DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
-						DrawAircraftEngine(x+29, y+10, engine_id, GetEnginePalette(engine_id, _local_player));
-						y += 24;
-					}
-					sel--;
+			for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
+				const AircraftVehicleInfo* avi;
+
+				if (!HASBIT(GetEngine(eid)->player_avail, _local_player)) continue;
+
+				avi = AircraftVehInfo(eid);
+				if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == ap->acc_planes) continue;
+
+				if (sel == 0) selected_id = eid;
+
+				if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
+					DrawString(x + 62, y + 7, GetCustomEngineName(eid), sel == 0 ? 0xC : 0x10);
+					DrawAircraftEngine(x + 29, y + 10, eid, GetEnginePalette(eid, _local_player));
+					y += 24;
 				}
-			} while (++engine_id, ++e,--num);
+
+				sel--;
+			}
 
 			WP(w,buildtrain_d).sel_engine = selected_id;
 

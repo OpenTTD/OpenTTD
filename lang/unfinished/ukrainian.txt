@@ -2830,7 +2830,6 @@ STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозв
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL FEATURE {}Switch between engine and wagon replacement windows.{}Wagon replacement will only be done if the new wagon can be refitted into carrying the same type of cargo as the old one. This is checked for each wagon when the actual replacement takes place.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}потяг неможна будувати
-STR_AIRPORT_HAS_NO_RUNWAY                                       :{WHITE}Аеропорт зайнятий
 
 STR_ENGINES                                                     :Потяги
 STR_WAGONS                                                      :Вагони
