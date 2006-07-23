@@ -88,7 +88,6 @@ typedef struct ViewportDrawer {
 	byte combine_sprites;
 
 	int offs_x, offs_y; // used when drawing ground sprites relative
-	bool ground_child;
 } ViewportDrawer;
 
 static ViewportDrawer *_cur_vd;
@@ -1180,7 +1179,6 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 	mask = (-1) << vp->zoom;
 
 	vd.combine_sprites = 0;
-	vd.ground_child = 0;
 
 	vd.dpi.width = (right - left) & mask;
 	vd.dpi.height = (bottom - top) & mask;
