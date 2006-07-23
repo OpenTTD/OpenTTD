@@ -486,11 +486,9 @@ Vehicle *GetPrevVehicleInChain(const Vehicle *v)
 	// Check to see if this is the first
 	if (v == u) return NULL;
 
-	do {
-		if (u->next == v) return u;
-	} while ( ( u = u->next) != NULL);
+	for (; u->next != v; u = u->next) assert(u->next != NULL);
 
-	return NULL;
+	return u;
 }
 
 /** Finds the first vehicle in a chain.
