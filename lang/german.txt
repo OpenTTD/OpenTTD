@@ -810,7 +810,7 @@ STR_02E9_DRIVE_ON_LEFT                                          :Linksverkehr
 STR_02EA_DRIVE_ON_RIGHT                                         :Rechtsverkehr
 STR_02EB_TOWN_NAMES                                             :{BLACK}Städtenamen
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Wähle Städtenamen in
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Wähle die Sprache für die Städtenamen aus
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Autosicherung
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}

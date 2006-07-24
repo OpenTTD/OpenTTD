@@ -151,7 +151,7 @@ STR_ABBREV_ALL                                                  :{TINYFONT}VS.
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Mapa - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Nastavenia Hry
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Nastavenia hry
 STR_00B2_MESSAGE                                                :{YELLOW}Sprava
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sprava od {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Takto sa to neda...
@@ -1210,8 +1210,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Postavit
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Postavit cukrovu banu
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Priemysel
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% prevezenych)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% prenesenych)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% prepravenych)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% prepravenych)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... prilis blizko ineho priemyslu
@@ -1593,7 +1593,7 @@ STR_203E_OFFICES                                                :Kancelarie
 STR_203F_HOUSES                                                 :Domy
 STR_2040_CINEMA                                                 :Kino
 STR_2041_SHOPPING_MALL                                          :Obchodny dom
-STR_2042_DO_IT                                                  :{BLACK}Vykonaj
+STR_2042_DO_IT                                                  :{BLACK}Vykonat
 STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Co sa da urobit v tomto meste - kliknut na polozku pre detaily
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Vykonat vybranu cinnost
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Dostupne cinnosti:
@@ -1629,8 +1629,8 @@ STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_LANDSCAPING                                                 :Uprava terenu
-STR_2800_PLANT_TREES                                            :Sadit stromy
-STR_2801_PLACE_SIGN                                             :Vlozit popis
+STR_2800_PLANT_TREES                                            :Vysadba stromov
+STR_2801_PLACE_SIGN                                             :Umiestnenie popisu
 STR_2802_TREES                                                  :{WHITE}Stromy
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}... strom tu uz je
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}... nevhodne miesto
@@ -1806,7 +1806,7 @@ STR_4829_REQUIRES                                               :{BLACK}Potrebuj
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkcia za posledny mesiac:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% prepravene)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% prepravenych)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Vycentrovanie pohladu na poziciu tovarne
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}{STRING} sa zacina stavat nedaleko {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}{STRING} sa vysadza nedaleko {TOWN}!
@@ -1891,7 +1891,7 @@ STR_SV_STNAME_NORTH                                             :{STRING} Sever
 STR_SV_STNAME_SOUTH                                             :{STRING} Juh
 STR_SV_STNAME_EAST                                              :{STRING} Vychod
 STR_SV_STNAME_WEST                                              :{STRING} Zapad
-STR_SV_STNAME_CENTRAL                                           :{STRING} Stred
+STR_SV_STNAME_CENTRAL                                           :{STRING} Centrum
 STR_SV_STNAME_TRANSFER                                          :{STRING} Razcestie
 STR_SV_STNAME_HALT                                              :{STRING} Za horou
 STR_SV_STNAME_VALLEY                                            :{STRING} Udolie
@@ -2819,11 +2819,11 @@ STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zastavit
 STR_NOT_REPLACING                                               :{BLACK}Nevymiena sa
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Nie je oznacene vozidlo
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vyber typ lokomotivy na vymenu
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vyber typ novej lokomotivy, ktoru chces pouzit namiesto typu v lavom zozname
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vyber typ novej lokomotivy, ktoru chces pouzit namiesto typu v zozname nalavo
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Stlac toto tlacidlo, ak nechces vymienat typ lokomotivy vybrany v lavom zozname
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Stlac toto tlacidlo, ak chces zacat vymienat typ lokomotivy v lavom zozname za typ lokomotivy v pravom zozname
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vyber typ kolajnic, pre ktore chces vymienat lokomotivy
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Zobrazenie za ktoru lokomotiva sa lokomotiva v lavom zozname zamiena
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Zobrazenie za ktoru lokomotivu sa lokomotiva v zozname nalavo zamiena
 STR_REPLACE_HELP                                                :{BLACK}Umoznuje vybrat typ lokomotivy, ktory sa automaticky zameni za iny typ, ak sa vlaky s takouto lokomotivou zastavia v depe
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena rusna vlak predlzila.
