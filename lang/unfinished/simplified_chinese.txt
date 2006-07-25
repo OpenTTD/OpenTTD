@@ -177,6 +177,7 @@ STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFON
 STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}太妃糖矿场
 STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}蔗糖矿
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}火车站
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Lorry Loading Bay
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}公车站
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}机场/直升飞机停机坪
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}码头
@@ -204,6 +205,7 @@ STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
 STR_0135_OSX                                                    :OS X
 
+STR_013B_OWNED_BY                                               :{WHITE}...属于 {STRING}
 STR_013C_CARGO                                                  :{BLACK}货舱
 STR_013D_INFORMATION                                            :{BLACK}信息
 STR_013E_CAPACITIES                                             :{BLACK}容量
@@ -214,8 +216,10 @@ STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}新游戏
 STR_0141_LOAD_GAME                                              :{BLACK}读取游戏
 
+STR_64                                                          :64
 STR_128                                                         :128
 STR_256                                                         :256
+STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_0148_GAME_OPTIONS                                           :{BLACK}游戏选项
@@ -560,6 +564,7 @@ STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}删除�
 STR_0292_SAVE_SCENARIO                                          :保存场景
 STR_0293_LOAD_SCENARIO                                          :读取场景
 STR_0294_QUIT_EDITOR                                            :退出编辑器
+STR_0295                                                        :
 STR_0296_QUIT                                                   :退出
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}保存场景 读取场景 放弃编辑退出
 STR_0298_LOAD_SCENARIO                                          :{WHITE}读取场景
@@ -612,6 +617,7 @@ STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}建筑
 
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :显示地块信息
+STR_02D6                                                        :
 STR_02D7_SCREENSHOT_CTRL_S                                      :屏幕截图 (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :大型屏幕截图 (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :关于 'OpenTTD'
@@ -1152,8 +1158,45 @@ STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}没有�
 STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}必须先清除隧道
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}必须先清除桥梁
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}起点和终点不能重合
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}桥下的地面或水面必须为平面
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}起始点和结束点必须在一条线上
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}该地点不适合作为隧道入口
+STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :斜拉钢索桥
+STR_500F_GIRDER_STEEL                                           :钢架桥
+STR_5010_CANTILEVER_STEEL                                       :钢制悬臂桥
+STR_5011_SUSPENSION_CONCRETE                                    :混凝土高架桥
+STR_5012_WOODEN                                                 :木桥
+STR_5013_CONCRETE                                               :混凝土桥
+STR_5014_TUBULAR_STEEL                                          :钢制封闭桥
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}不能在这里建造桥梁...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}不能在这里建设隧道...
+STR_5017_RAILROAD_TUNNEL                                        :铁路隧道
+STR_5018_ROAD_TUNNEL                                            :公路隧道
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :钢质斜拉铁路桥
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :钢架铁路桥
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :钢架悬臂铁路桥
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :混凝土斜拉铁路桥
+STR_501F_WOODEN_RAIL_BRIDGE                                     :木质铁路桥
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :混凝土铁路桥
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :钢质斜拉公路桥
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :钢架公路桥
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :钢质悬臂公路桥
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :混凝土斜拉公路桥
+STR_5025_WOODEN_ROAD_BRIDGE                                     :木质公路桥
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :混凝土公路桥
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :封闭铁路桥
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :封闭公路桥
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}目标处有障碍物
+STR_5801_TRANSMITTER                                            :中继塔
+STR_5802_LIGHTHOUSE                                             :灯塔
+STR_5803_COMPANY_HEADQUARTERS                                   :公司总部
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...目标处有公司总部
+STR_5805_COMPANY_OWNED_LAND                                     :公司所拥有的土地
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}不能够买这个地块...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...你已经拥有这个地块了!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1164,24 +1207,529 @@ STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}起点�
 ############ end of	savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}难度级别
 
 ############ range for difficulty levels starts
+STR_6801_EASY                                                   :{BLACK}容易
+STR_6802_MEDIUM                                                 :{BLACK}中等
+STR_6803_HARD                                                   :{BLACK}困难
+STR_6804_CUSTOM                                                 :{BLACK}自定义
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}最大竞争对手数量: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}竞争对手开业时间: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}城镇数量: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}工业数量: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}最大初始贷款额: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}初始贷款利率: {ORANGE}{COMMA}%
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}车辆运营成本: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}对手的建设速度: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}对手的智慧程度: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}车辆抛锚: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}津贴增益率: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}建设成本: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE                                           :{LTBLUE}地形类别 {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}水域比例: {ORANGE}{STRING}
+STR_6813_ECONOMY                                                :{LTBLUE}经济: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}火车掉头: {ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}灾害: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}市政委员会对地块重新规划的态度: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :没有
+STR_6816_LOW                                                    :较低
+STR_6817_NORMAL                                                 :正常
+STR_6818_HIGH                                                   :较高
+STR_6819                                                        :{BLACK}<
+STR_681A                                                        :{BLACK}>
+STR_681B_VERY_SLOW                                              :很慢
+STR_681C_SLOW                                                   :慢
+STR_681D_MEDIUM                                                 :中等
+STR_681E_FAST                                                   :快
+STR_681F_VERY_FAST                                              :很快
+STR_6820_LOW                                                    :较低
+STR_6821_MEDIUM                                                 :中等
+STR_6822_HIGH                                                   :较高
+STR_6823_NONE                                                   :没有
+STR_6824_REDUCED                                                :较少
+STR_6825_NORMAL                                                 :正常
+STR_6826_X1_5                                                   :1.5 倍
+STR_6827_X2                                                     :2 倍
+STR_6828_X3                                                     :3 倍
+STR_6829_X4                                                     :4 倍
+STR_682A_VERY_FLAT                                              :非常平整
+STR_682B_FLAT                                                   :平整
+STR_682C_HILLY                                                  :丘陵
+STR_682D_MOUNTAINOUS                                            :山地
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :玩家开始后 3 个月
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :玩家开始后 6 个月
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :玩家开始后 9 个月
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :在铁轨末端和车站
+STR_6835_AT_END_OF_LINE_ONLY                                    :仅在铁轨末端
+STR_6836_OFF                                                    :关闭
+STR_6837_ON                                                     :开启
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}显示高分图表
+STR_6839_PERMISSIVE                                             :温和的
+STR_683A_TOLERANT                                               :忍耐的
+STR_683B_HOSTILE                                                :敌对的
 
 ##id 0x7000
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7002_PLAYER                                                 :(玩家 {COMMA})
+STR_7004_NEW_FACE                                               :{BLACK}新头像
+STR_7005_COLOR_SCHEME                                           :{BLACK}颜色
+STR_7006_COLOR_SCHEME                                           :{GOLD}颜色:
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}新颜色
+STR_7008_COMPANY_NAME                                           :{BLACK}公司名称
+STR_7009_PRESIDENT_NAME                                         :{BLACK}经营者
+STR_700A_COMPANY_NAME                                           :公司名称
+STR_700B_PRESIDENT_S_NAME                                       :经营者
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}不能更改公司名称...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}不能更改经营者的姓名...
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} 财政 {BLACK}{PLAYERNAME}
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}支出/收入
+STR_7010                                                        :{WHITE}{NUM}
+STR_7011_CONSTRUCTION                                           :{GOLD}建设
+STR_7012_NEW_VEHICLES                                           :{GOLD}新购车辆
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}铁路运营成本
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}公路运营成本
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}航空运营成本
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}船只运营成本
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}资产维护费用
+STR_7018_TRAIN_INCOME                                           :{GOLD}铁路运营收入
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}公路运营收入
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}航空运营收入
+STR_701B_SHIP_INCOME                                            :{GOLD}船只运营收入
+STR_701C_LOAN_INTEREST                                          :{GOLD}贷款利息
+STR_701D_OTHER                                                  :{GOLD}其他
+STR_701E                                                        :{BLACK}-{CURRENCY64}
+STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_7020_TOTAL                                                  :{WHITE}总计:
+STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7022_INCOME_GRAPH                                           :{WHITE}收益图
+STR_7024                                                        :{COMMA}
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}运营利润图
+STR_7026_BANK_BALANCE                                           :{WHITE}银行账户
+STR_7027_LOAN                                                   :{WHITE}贷款
+STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_7029_BORROW                                                 :{BLACK}贷款 {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}偿还 {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...贷款的最大许可额度是 {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}不能再贷款了...
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...没有可以偿还的贷款
+STR_702E_REQUIRED                                               :{WHITE}...需要 {CURRENCY}
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}不能偿还贷款...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}为经营者选择新头像
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}更改公司所属的车辆和设施的颜色
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}更改经营者的姓名
+STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}更该公司名称
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}在喜欢的颜色上单击
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}增加贷款规模
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}偿还部分贷款
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(经营者)
+STR_7038_INAUGURATED                                            :{GOLD}开张大吉: {WHITE}{NUM}
+STR_7039_VEHICLES                                               :{GOLD}车辆:
+STR_7042_NONE                                                   :{WHITE}没有
+STR_7043_FACE_SELECTION                                         :{WHITE}选择头像
+STR_7044_MALE                                                   :{BLACK}男性
+STR_7045_FEMALE                                                 :{BLACK}女性
+STR_7046_NEW_FACE                                               :{BLACK}新头像
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}取消选择新头像
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}确定选择新头像
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}选择男性头像
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}选择女性头像
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}生成随机的新头像
+STR_704C_KEY                                                    :{BLACK}索引
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}显示图表索引
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}公司索引
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}单击此处选择是否在图表中显示该公司
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}运输的货物数量
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}公司表现率 (最大表现率为1000)
+STR_7052_COMPANY_VALUES                                         :{WHITE}公司价值
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}公司联盟表
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}运输公司陷入困境!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} 如果不能在近期提高业绩将被出售或破产!
+STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(经营者)
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}运输公司合并!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} 被 {COMPANY} 以 {CURRENCY} 收购!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}我们正在寻找一个可以接受我公司的买家.{}{}你愿意收购 {COMPANY} 并支付 {CURRENCY} 吗?
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}破产!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} 被债权人强行关闭并出售全部资产!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}新公司开张大吉!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} 开始在 {TOWN} 附近大兴土木!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}不能购买公司...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}货物运价表
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}运输时间
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}将 10 单位 (或 10,000 升) 货物运输 20 方格的价格
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}切换是否显示该货物类型
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :技师
+STR_7067_TRAFFIC_MANAGER                                        :运输管理员
+STR_7068_TRANSPORT_COORDINATOR                                  :运输调度员
+STR_7069_ROUTE_SUPERVISOR                                       :路线负责人
+STR_706A_DIRECTOR                                               :主管
+STR_706B_CHIEF_EXECUTIVE                                        :首席执行官
+STR_706C_CHAIRMAN                                               :主席
+STR_706D_PRESIDENT                                              :总统
+STR_706E_TYCOON                                                 :大亨
+STR_706F_BUILD_HQ                                               :{BLACK}建设公司总部
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}建设/查看公司总部
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}不能建设公司总部...
+STR_7072_VIEW_HQ                                                :{BLACK}查看公司总部
+STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}世界经济疲软!{}{}经济专家预测大衰退!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}经济复苏!{}{}企业家恢复对工业投资的信心!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}切换窗口大小
+STR_7076_COMPANY_VALUE                                          :{GOLD}公司价值: {WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}购买该公司 25% 的股权
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}出售该公司 25% 的股权
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}购买该公司 25% 的股权
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}出售该公司 25% 的股权
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}不能购买该公司的股权...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}不能出售该公司的股权...
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% 的股权属于 {COMPANY})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% 的股权属于 {COMPANY}{}   {COMMA}% 的股权属于 {COMPANY})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} 被 {COMPANY} 整体收购!
+STR_7080_PROTECTED                                              :{WHITE}该公司草创之初, 尚不能出售股权...
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (蒸汽机)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (柴油机)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut 柴油型
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut 柴油型
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (蒸汽机)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (蒸汽机)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (蒸汽机)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (蒸汽机)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (柴油机)
+STR_800C_DASH_DIESEL                                            :'Dash' (柴油机)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (柴油机)
+STR_800E_UU_37_DIESEL                                           :UU '37' (柴油机)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (柴油机)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (柴油机)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (柴油机)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (柴油机)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (柴油机)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (柴油机)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (柴油机)
+STR_8016_SH_125_DIESEL                                          :SH '125' (柴油机)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (电力机车)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (电力机车)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (电力机车)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (电力机车)
+STR_801B_PASSENGER_CAR                                          :旅客车厢
+STR_801C_MAIL_VAN                                               :邮政车厢
+STR_801D_COAL_CAR                                               :煤炭挂车
+STR_801E_OIL_TANKER                                             :原油罐车
+STR_801F_LIVESTOCK_VAN                                          :牲畜挂车
+STR_8020_GOODS_VAN                                              :货物挂车
+STR_8021_GRAIN_HOPPER                                           :谷物挂车
+STR_8022_WOOD_TRUCK                                             :木材挂车
+STR_8023_IRON_ORE_HOPPER                                        :铁矿石挂车
+STR_8024_STEEL_TRUCK                                            :钢材挂车
+STR_8025_ARMORED_VAN                                            :装甲挂车
+STR_8026_FOOD_VAN                                               :食品挂车
+STR_8027_PAPER_TRUCK                                            :纸张挂车
+STR_8028_COPPER_ORE_HOPPER                                      :铜矿石挂车
+STR_8029_WATER_TANKER                                           :水罐车
+STR_802A_FRUIT_TRUCK                                            :水果挂车
+STR_802B_RUBBER_TRUCK                                           :橡胶挂车
+STR_802C_SUGAR_TRUCK                                            :蔗糖挂车
+STR_802D_COTTON_CANDY_HOPPER                                    :棉花糖挂车
+STR_802E_TOFFEE_HOPPER                                          :太妃糖挂车
+STR_802F_BUBBLE_VAN                                             :泡泡挂车
+STR_8030_COLA_TANKER                                            :可乐罐车
+STR_8031_CANDY_VAN                                              :糖果挂车
+STR_8032_TOY_VAN                                                :玩具挂车
+STR_8033_BATTERY_TRUCK                                          :电池挂车
+STR_8034_FIZZY_DRINK_TRUCK                                      :泡泡水挂车
+STR_8035_PLASTIC_TRUCK                                          :塑料挂车
+STR_8036_X2001_ELECTRIC                                         :'X2001' (电力机车)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (电力机车)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8039_PASSENGER_CAR                                          :旅客车厢
+STR_803A_MAIL_VAN                                               :邮政车厢
+STR_803B_COAL_CAR                                               :煤炭挂车
+STR_803C_OIL_TANKER                                             :原油挂车
+STR_803D_LIVESTOCK_VAN                                          :牲畜挂车
+STR_803E_GOODS_VAN                                              :货物挂车
+STR_803F_GRAIN_HOPPER                                           :谷物挂车
+STR_8040_WOOD_TRUCK                                             :木材挂车
+STR_8041_IRON_ORE_HOPPER                                        :铁矿石挂车
+STR_8042_STEEL_TRUCK                                            :钢材挂车
+STR_8043_ARMORED_VAN                                            :装甲挂车
+STR_8044_FOOD_VAN                                               :食品挂车
+STR_8045_PAPER_TRUCK                                            :纸张挂车
+STR_8046_COPPER_ORE_HOPPER                                      :铜矿石挂车
+STR_8047_WATER_TANKER                                           :水罐车
+STR_8048_FRUIT_TRUCK                                            :水果挂车
+STR_8049_RUBBER_TRUCK                                           :橡胶挂车
+STR_804A_SUGAR_TRUCK                                            :蔗糖挂车
+STR_804B_COTTON_CANDY_HOPPER                                    :棉花糖挂车
+STR_804C_TOFFEE_HOPPER                                          :太妃挂车
+STR_804D_BUBBLE_VAN                                             :泡泡挂车
+STR_804E_COLA_TANKER                                            :可乐罐车
+STR_804F_CANDY_VAN                                              :糖果挂车
+STR_8050_TOY_VAN                                                :玩具挂车
+STR_8051_BATTERY_TRUCK                                          :电池挂车
+STR_8052_FIZZY_DRINK_TRUCK                                      :泡泡水挂车
+STR_8053_PLASTIC_TRUCK                                          :塑料挂车
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (电力机车)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (电力机车)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (电力机车)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (电力机车)
+STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
+STR_8059_PASSENGER_CAR                                          :旅客车厢
+STR_805A_MAIL_VAN                                               :邮政车厢
+STR_805B_COAL_CAR                                               :煤炭挂车
+STR_805C_OIL_TANKER                                             :原油挂车
+STR_805D_LIVESTOCK_VAN                                          :牲畜挂车
+STR_805E_GOODS_VAN                                              :货物挂车
+STR_805F_GRAIN_HOPPER                                           :谷物挂车
+STR_8060_WOOD_TRUCK                                             :木材挂车
+STR_8061_IRON_ORE_HOPPER                                        :铁矿石挂车
+STR_8062_STEEL_TRUCK                                            :钢材挂车
+STR_8063_ARMORED_VAN                                            :装甲挂车
+STR_8064_FOOD_VAN                                               :食品挂车
+STR_8065_PAPER_TRUCK                                            :纸张挂车
+STR_8066_COPPER_ORE_HOPPER                                      :铜矿石挂车
+STR_8067_WATER_TANKER                                           :水罐车
+STR_8068_FRUIT_TRUCK                                            :水果挂车
+STR_8069_RUBBER_TRUCK                                           :橡胶挂车
+STR_806A_SUGAR_TRUCK                                            :蔗糖挂车
+STR_806B_COTTON_CANDY_HOPPER                                    :棉花糖挂车
+STR_806C_TOFFEE_HOPPER                                          :太妃糖挂车
+STR_806D_BUBBLE_VAN                                             :泡泡挂车
+STR_806E_COLA_TANKER                                            :可乐罐车
+STR_806F_CANDY_VAN                                              :糖果挂车
+STR_8070_TOY_VAN                                                :玩具挂车
+STR_8071_BATTERY_TRUCK                                          :电池挂车
+STR_8072_FIZZY_DRINK_TRUCK                                      :泡泡水挂车
+STR_8073_PLASTIC_TRUCK                                          :塑料挂车
+STR_8074_MPS_REGAL_BUS                                          :MPS Regal 客车
+STR_8075_HEREFORD_LEOPARD_BUS                                   :Hereford Leopard 客车
+STR_8076_FOSTER_BUS                                             :Foster 客车
+STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII 超级客车
+STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI 客车
+STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII 客车
+STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII 客车
+STR_807B_BALOGH_COAL_TRUCK                                      :Balogh 煤炭卡车
+STR_807C_UHL_COAL_TRUCK                                         :Uhl 煤炭卡车
+STR_807D_DW_COAL_TRUCK                                          :DW 煤炭卡车
+STR_807E_MPS_MAIL_TRUCK                                         :MPS 邮政卡车
+STR_807F_REYNARD_MAIL_TRUCK                                     :Reynard 邮政卡车
+STR_8080_PERRY_MAIL_TRUCK                                       :Perry 邮政卡车
+STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover 邮政卡车
+STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught 邮政卡车
+STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow 邮政卡车
+STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe 油罐车
+STR_8085_FOSTER_OIL_TANKER                                      :Foster 油罐车
+STR_8086_PERRY_OIL_TANKER                                       :Perry 油罐车
+STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott 牲畜卡车
+STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl 牲畜卡车
+STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster 牲畜卡车
+STR_808A_BALOGH_GOODS_TRUCK                                     :Balogh 货物卡车
+STR_808B_CRAIGHEAD_GOODS_TRUCK                                  :Craighead 货物卡车
+STR_808C_GOSS_GOODS_TRUCK                                       :Goss 货物卡车
+STR_808D_HEREFORD_GRAIN_TRUCK                                   :Hereford 谷物卡车
+STR_808E_THOMAS_GRAIN_TRUCK                                     :Thomas 谷物卡车
+STR_808F_GOSS_GRAIN_TRUCK                                       :Goss 谷物卡车
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe 木材卡车
+STR_8091_FOSTER_WOOD_TRUCK                                      :Foster 木材卡车
+STR_8092_MORELAND_WOOD_TRUCK                                    :Moreland 木材卡车
+STR_8093_MPS_IRON_ORE_TRUCK                                     :MPS 铁矿石卡车
+STR_8094_UHL_IRON_ORE_TRUCK                                     :Uhl 铁矿石卡车
+STR_8095_CHIPPY_IRON_ORE_TRUCK                                  :Chippy 铁矿石卡车
+STR_8096_BALOGH_STEEL_TRUCK                                     :Balogh 钢材卡车
+STR_8097_UHL_STEEL_TRUCK                                        :Uhl 钢材卡车
+STR_8098_KELLING_STEEL_TRUCK                                    :Kelling 钢材卡车
+STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh 装甲卡车
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl 装甲卡车
+STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster 装甲卡车
+STR_809C_FOSTER_FOOD_VAN                                        :Foster 食品卡车
+STR_809D_PERRY_FOOD_VAN                                         :Perry 装甲卡车
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy 装甲卡车
+STR_809F_UHL_PAPER_TRUCK                                        :Uhl 纸张卡车
+STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh 纸张卡车
+STR_80A1_MPS_PAPER_TRUCK                                        :MPS 纸张卡车
+STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS 铜矿石卡车
+STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl 铜矿石卡车
+STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss 铜矿石卡车
+STR_80A5_UHL_WATER_TANKER                                       :Uhl 水罐车
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh 水罐车
+STR_80A7_MPS_WATER_TANKER                                       :MPS 水罐车
+STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh 水果卡车
+STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl 水果卡车
+STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling 水果卡车
+STR_80AB_BALOGH_RUBBER_TRUCK                                    :Balogh 橡胶卡车
+STR_80AC_UHL_RUBBER_TRUCK                                       :Uhl 橡胶卡车
+STR_80AD_RMT_RUBBER_TRUCK                                       :RMT 橡胶卡车
+STR_80AE_MIGHTYMOVER_SUGAR_TRUCK                                :MightyMover 蔗糖卡车
+STR_80AF_POWERNAUGHT_SUGAR_TRUCK                                :Powernaught 蔗糖卡车
+STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow 蔗糖卡车
+STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover 可乐罐车
+STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught 可乐罐车
+STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow 可乐罐车
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover 棉花糖卡车
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught 棉花糖卡车
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow 棉花糖卡车
+STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover 太妃糖卡车
+STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught 太妃糖卡车
+STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow 太妃糖卡车
+STR_80BA_MIGHTYMOVER_TOY_VAN                                    :MightyMover 玩具卡车
+STR_80BB_POWERNAUGHT_TOY_VAN                                    :Powernaught 玩具卡车
+STR_80BC_WIZZOWOW_TOY_VAN                                       :Wizzowow 玩具卡车
+STR_80BD_MIGHTYMOVER_CANDY_TRUCK                                :MightyMover 糖果卡车
+STR_80BE_POWERNAUGHT_CANDY_TRUCK                                :Powernaught 糖果卡车
+STR_80BF_WIZZOWOW_CANDY_TRUCK                                   :Wizzowow 糖果卡车
+STR_80C0_MIGHTYMOVER_BATTERY_TRUCK                              :MightyMover 电池卡车
+STR_80C1_POWERNAUGHT_BATTERY_TRUCK                              :Powernaught 电池卡车
+STR_80C2_WIZZOWOW_BATTERY_TRUCK                                 :Wizzowow 电池卡车
+STR_80C3_MIGHTYMOVER_FIZZY_DRINK                                :MightyMover 泡泡水卡车
+STR_80C4_POWERNAUGHT_FIZZY_DRINK                                :Powernaught 泡泡水卡车
+STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow 泡泡水卡车
+STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover 塑料卡车
+STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught 塑料卡车
+STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow 塑料卡车
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover 泡泡卡车
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught 泡泡卡车
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow 泡泡卡车
+STR_80CC_MPS_OIL_TANKER                                         :MPS 油罐车
+STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. 油罐车
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS 旅客渡船
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP 旅客渡船
+STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 气垫船
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug 旅客渡船
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake 旅客渡船
+STR_80D3_YATE_CARGO_SHIP                                        :Yate 货船
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Bakewell 货船
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Mightymover 货船
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Powernaut 货船
+STR_80D7_SAMPSON_U52                                            :Sampson U52
+STR_80D8_COLEMAN_COUNT                                          :Coleman Count
+STR_80D9_FFP_DART                                               :FFP Dart
+STR_80DA_YATE_HAUGAN                                            :Yate Haugan
+STR_80DB_BAKEWELL_COTSWALD_LB_3                                 :Bakewell Cotswald LB-3
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate Aerospace YAC 1-11
+STR_80E2_DARWIN_100                                             :Darwin 100
+STR_80E3_DARWIN_200                                             :Darwin 200
+STR_80E4_DARWIN_300                                             :Darwin 300
+STR_80E5_DARWIN_400                                             :Darwin 400
+STR_80E6_DARWIN_500                                             :Darwin 500
+STR_80E7_DARWIN_600                                             :Darwin 600
+STR_80E8_GURU_GALAXY                                            :Guru Galaxy
+STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
+STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
+STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
+STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
+STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
+STR_80EE_DINGER_100                                             :Dinger 100
+STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
+STR_80F1_KELLING_K1                                             :Kelling K1
+STR_80F2_KELLING_K6                                             :Kelling K6
+STR_80F3_KELLING_K7                                             :Kelling K7
+STR_80F4_DARWIN_700                                             :Darwin 700
+STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
+STR_80F6_DINGER_200                                             :Dinger 200
+STR_80F7_DINGER_1000                                            :Dinger 1000
+STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
+STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
+STR_80FA_FLASHBANG_X1                                           :Flashbang X1
+STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER                                    :Tricario 直升机
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 直升机
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut 直升机
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}车辆制造厂来的消息
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}我们新近设计了一种新的 {STRING} - 在我们正式推向市场之前将充分测试它的性能, 您是否愿意提前一年试用?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :铁路机车
+STR_8103_ROAD_VEHICLE                                           :汽车
+STR_8104_AIRCRAFT                                               :飞机
+STR_8105_SHIP                                                   :船只
+STR_8106_MONORAIL_LOCOMOTIVE                                    :单轨机车
+STR_8107_MAGLEV_LOCOMOTIVE                                      :磁悬浮机车
 
 ##id 0x8800
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} 火车车库
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}市民欢庆 . . .{}历史上第一辆火车到达 {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{STRING} (详情)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}这个位置上有火车
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8806_GO_TO                                                  :前往 {STATION}
+STR_8807_GO_TO_TRANSFER                                         :前往 {STATION} (联运站, 装载货物或乘客)
+STR_8808_GO_TO_UNLOAD                                           :前往 {STATION} (卸载)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :前往 {STATION} (联运终点, 卸载全部货物或乘客)
+STR_880A_GO_TO_LOAD                                             :前往 {STATION} (装载)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :前往 {STATION} (联运站, 装满乘客或货物)
+STR_880C_GO_NON_STOP_TO                                         :前往 {STATION} 但不停车
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :前往 {STATION} 但不停车 (联运站, 装载货物或乘客)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :前往 {STATION} 但不停车 (卸载)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :前往 {STATION} 但不停车 (联运终点, 卸载全部货物或乘客)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :前往 {STATION} 但不停车 (装载)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :前往 {STATION} 但不停车 (联运站, 装满货物或乘客)
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :前往 {TOWN} 火车车库但不停车
 
 
 
+STR_8812_EMPTY                                                  :{LTBLUE}空
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} 来自 {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}列车 {COMMA} 正在车库中等侯调度
+STR_8815_NEW_VEHICLES                                           :{BLACK}购买新火车
+STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}火车太长了
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}只有完全停入火车车库后才能更改火车配置
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}购买新火车
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}购买单轨列车
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}购买磁悬浮列车
+STR_881F_BUILD_VEHICLE                                          :{BLACK}购买列车
+STR_8820_RENAME                                                 :{BLACK}重命名
+STR_8823_SKIP                                                   :{BLACK}跳过
+STR_8824_DELETE                                                 :{BLACK}删除
+STR_8825_NON_STOP                                               :{BLACK}不停车
+STR_8826_GO_TO                                                  :{BLACK}前往
+STR_8827_FULL_LOAD                                              :{BLACK}完全装载
+STR_8828_UNLOAD                                                 :{BLACK}完全卸载
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (调度)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - 调度表结尾 - -
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}不能够买列车...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   购买年份: {LTBLUE}{NUM}{BLACK} 价值: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   价值: {LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}正在装载/卸载
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}不能将列车召回车库...
+STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}没有更多的位置放置新的调度命令了
+STR_8832_TOO_MANY_ORDERS                                        :{WHITE}调度命令太多了
+STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}不能插入新的调度命令...
+STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}不能删除这个调度命令...
+STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}不能修改这条调度命令...
+STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}不能移动列车...
+STR_8838_N_A                                                    :不存在{SKIP}
+STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}不能出售列车...
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}找不到前往车库的路径
+STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}不能停止/启动列车...
+STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}保养周期: {LTBLUE}{COMMA}天{BLACK}   上次保养: {LTBLUE}{DATE_LONG}
+STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}列车 - 单击列车查看详情
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}购买新的列车 (需要火车车库)
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}列车 - 点击查看详情, 拖动以增加/删除列车车厢
+STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}购买新的列车车厢
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}将列车车厢拖动到这里可以将其出售
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}将视点调整到列车车库的位置
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}列车车厢选择表 - 单击车辆查看详情
+STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}购买高亮的列车车量
+STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}重命名列车车辆类型
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}列车当前的状态 - 单击以启动/停止列车
+STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}显示列车的调度信息
 
 
 
@@ -1191,6 +1739,7 @@ STR_26816_NONE                                                  :没有
 
 ##id 0x9800
 
+SERVICE_AT_SHIP_DEPOT                                           :在 {TOWN} 船坞进行保养
 
 ##id 0xA000
 
