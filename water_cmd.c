@@ -690,15 +690,16 @@ void TileLoop_Water(TileIndex tile)
 static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 {
 	static const byte coast_tracks[] = {0, 32, 4, 0, 16, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0};
-	static const byte water_tracks_by_axis[] = {1, 2};
-	uint32 ts;
+
+	TrackBits ts;
+
 	if (mode != TRANSPORT_WATER) return 0;
 
 	switch (GetWaterTileType(tile)) {
-		case WATER_CLEAR: ts = 0x3F; break;/* We can go everywhere */
+		case WATER_CLEAR: ts = TRACK_BIT_ALL; break;
 		case WATER_COAST: ts = coast_tracks[GetTileSlope(tile, NULL) & 0xF]; break;
-		case WATER_LOCK: ts = water_tracks_by_axis[DiagDirToAxis(GetLockDirection(tile))]; break;
-		case WATER_DEPOT: ts = water_tracks_by_axis[GetShipDepotAxis(tile)]; break;
+		case WATER_LOCK:  ts = AxisToTrackBits(DiagDirToAxis(GetLockDirection(tile))); break;
+		case WATER_DEPOT: ts = AxisToTrackBits(GetShipDepotAxis(tile)); break;
 		default: return 0;
 	}
 	if (TileX(tile) == 0) {
