@@ -723,7 +723,7 @@ static void DoDrawVehicle(const Vehicle *v)
 {
 	uint32 image = v->cur_image;
 
-	if (v->vehstatus & VS_DISASTER) {
+	if (v->vehstatus & VS_SHADOW) {
 		MAKE_TRANSPARENT(image);
 	} else if (v->vehstatus & VS_DEFPAL) {
 		image |= (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);

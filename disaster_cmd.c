@@ -570,7 +570,7 @@ static void DisasterTick_4(Vehicle *v)
 
 		u->next = w;
 		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, 12);
-		w->vehstatus |= VS_DISASTER;
+		w->vehstatus |= VS_SHADOW;
 	} else if (v->current_order.station < 1) {
 
 		int x = TileX(v->dest_tile) * TILE_SIZE;
@@ -736,7 +736,7 @@ static void Disaster0_Init(void)
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, 1);
-		u->vehstatus |= VS_DISASTER;
+		u->vehstatus |= VS_SHADOW;
 	}
 }
 
@@ -758,7 +758,7 @@ static void Disaster1_Init(void)
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, 0, 0, DIR_SE, 3);
-		u->vehstatus |= VS_DISASTER;
+		u->vehstatus |= VS_SHADOW;
 	}
 }
 
@@ -792,7 +792,7 @@ static void Disaster2_Init(void)
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, y, 0, DIR_SE, 5);
-		u->vehstatus |= VS_DISASTER;
+		u->vehstatus |= VS_SHADOW;
 	}
 }
 
@@ -826,7 +826,7 @@ static void Disaster3_Init(void)
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, y, 0, DIR_SW, 7);
-		u->vehstatus |= VS_DISASTER;
+		u->vehstatus |= VS_SHADOW;
 
 		w = ForceAllocateSpecialVehicle();
 		if (w != NULL) {
@@ -855,7 +855,7 @@ static void Disaster4_Init(void)
 	if (u != NULL) {
 		v->next = u;
 		InitializeDisasterVehicle(u, x, y, 0, DIR_NW, 10);
-		u->vehstatus |= VS_DISASTER;
+		u->vehstatus |= VS_SHADOW;
 	}
 }
 

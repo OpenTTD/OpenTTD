@@ -264,7 +264,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		u->z_height = 1;
 
 		v->vehstatus = VS_HIDDEN | VS_STOPPED | VS_DEFPAL;
-		u->vehstatus = VS_HIDDEN | VS_UNCLICKABLE | VS_DISASTER;
+		u->vehstatus = VS_HIDDEN | VS_UNCLICKABLE | VS_SHADOW;
 
 		v->spritenum = avi->image_index;
 //		v->cargo_count = u->number_of_pieces = 0;
