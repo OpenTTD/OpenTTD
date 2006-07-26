@@ -672,7 +672,6 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	 * problem of bridges over water, or higher bridges, where z is not increased,
 	 * eg level bridge
 	 */
-	/* Bridges on slopes might have their Z-value offset..correct this */
 	v = FindVehicleBetween(
 		tile    + delta,
 		endtile - delta,
