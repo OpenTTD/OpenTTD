@@ -593,6 +593,7 @@ void VehicleEnteredDepotThisTick(Vehicle *v)
 	}
 }
 
+typedef void VehicleTickProc(Vehicle*);
 static VehicleTickProc* _vehicle_tick_procs[] = {
 	Train_Tick,
 	RoadVeh_Tick,
