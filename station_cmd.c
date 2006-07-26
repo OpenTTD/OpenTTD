@@ -216,23 +216,6 @@ static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest
 	return (closest_station == INVALID_STATION) ? NULL : GetStation(closest_station);
 }
 
-TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st)
-{
-	switch (v->type) {
-		case VEH_Train: 		return st->train_tile;
-		case VEH_Aircraft:	return st->airport_tile;
-		case VEH_Ship:			return st->dock_tile;
-		case VEH_Road:
-			if (v->cargo_type == CT_PASSENGERS) {
-				return (st->bus_stops != NULL) ? st->bus_stops->xy : 0;
-			} else {
-				return (st->truck_stops != NULL) ? st->truck_stops->xy : 0;
-			}
-		default:
-			assert(false);
-			return 0;
-	}
-}
 
 static bool CheckStationSpreadOut(Station *st, TileIndex tile, int w, int h)
 {

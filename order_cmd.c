@@ -855,6 +855,24 @@ int32 CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+
+static TileIndex GetStationTileForVehicle(const Vehicle* v, const Station* st)
+{
+	switch (v->type) {
+		default: NOT_REACHED();
+		case VEH_Train:     return st->train_tile;
+		case VEH_Aircraft:  return st->airport_tile;
+		case VEH_Ship:      return st->dock_tile;
+		case VEH_Road:
+			if (v->cargo_type == CT_PASSENGERS) {
+				return (st->bus_stops != NULL) ? st->bus_stops->xy : 0;
+			} else {
+				return (st->truck_stops != NULL) ? st->truck_stops->xy : 0;
+			}
+	}
+}
+
+
 /**
  *
  * Check the orders of a vehicle, to see if there are invalid orders and stuff
@@ -879,7 +897,6 @@ void CheckOrders(const Vehicle* v)
 	if (v->owner == _local_player && v->day_counter % 20 == 0) {
 		int n_st, problem_type = -1;
 		const Order *order;
-		const Station *st;
 		int message = 0;
 
 		/* Check the order list */
@@ -893,11 +910,10 @@ void CheckOrders(const Vehicle* v)
 			}
 			/* Does station have a load-bay for this vehicle? */
 			if (order->type == OT_GOTO_STATION) {
-				TileIndex required_tile;
+				const Station* st = GetStation(order->station);
+				TileIndex required_tile = GetStationTileForVehicle(v, st);
 
 				n_st++;
-				st = GetStation(order->station);
-				required_tile = GetStationTileForVehicle(v, st);
 				if (required_tile == 0) problem_type = 3;
 			}
 		}

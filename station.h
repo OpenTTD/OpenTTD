@@ -136,8 +136,6 @@ enum {
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);
 
-TileIndex GetStationTileForVehicle(const Vehicle *v, const Station *st);
-
 void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord(void);
 
