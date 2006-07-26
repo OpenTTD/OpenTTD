@@ -641,40 +641,48 @@ static void ProcessRoadVehOrder(Vehicle *v)
 	}
 
 	v->current_order = *order;
-	v->dest_tile = 0;
 
-	if (order->type == OT_GOTO_STATION) {
-		const Station* st = GetStation(order->station);
-		const RoadStop* rs;
-		TileIndex dest;
-		uint mindist;
+	switch (order->type) {
+		case OT_GOTO_STATION: {
+			const RoadStop* rs;
 
-		if (order->station == v->last_station_visited) {
-			v->last_station_visited = INVALID_STATION;
-		}
-
-		rs = GetPrimaryRoadStop(st, v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK);
-
-		if (rs == NULL) {
-			// There is no stop left at the station, so don't even TRY to go there
-			v->cur_order_index++;
-			InvalidateVehicleOrder(v);
-			return;
-		}
-
-		dest = rs->xy;
-		mindist = DistanceManhattan(v->tile, rs->xy);
-		for (rs = rs->next; rs != NULL; rs = rs->next) {
-			uint dist = DistanceManhattan(v->tile, rs->xy);
-
-			if (dist < mindist) {
-				mindist = dist;
-				dest = rs->xy;
+			if (order->station == v->last_station_visited) {
+				v->last_station_visited = INVALID_STATION;
 			}
+
+			rs = GetPrimaryRoadStop(
+				GetStation(order->station),
+				v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK
+			);
+
+			if (rs != NULL) {
+				TileIndex dest = rs->xy;
+				uint mindist = DistanceManhattan(v->tile, rs->xy);
+
+				for (rs = rs->next; rs != NULL; rs = rs->next) {
+					uint dist = DistanceManhattan(v->tile, rs->xy);
+
+					if (dist < mindist) {
+						mindist = dist;
+						dest = rs->xy;
+					}
+				}
+				v->dest_tile = dest;
+			} else {
+				// There is no stop left at the station, so don't even TRY to go there
+				v->cur_order_index++;
+				v->dest_tile = 0;
+			}
+			break;
 		}
-		v->dest_tile = dest;
-	} else if (order->type == OT_GOTO_DEPOT) {
-		v->dest_tile = GetDepot(order->station)->xy;
+
+		case OT_GOTO_DEPOT:
+			v->dest_tile = GetDepot(order->station)->xy;
+			break;
+
+		default:
+			v->dest_tile = 0;
+			break;
 	}
 
 	InvalidateVehicleOrder(v);
