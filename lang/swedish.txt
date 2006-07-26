@@ -81,7 +81,7 @@ STR_0049_BUBBLE                                                 :Bubblor
 STR_004A_TOFFEE                                                 :Knäck
 STR_004B_BATTERY                                                :Batterier
 STR_004C_PLASTIC                                                :Plast
-STR_004D_FIZZY_DRINK                                            :läsk
+STR_004D_FIZZY_DRINK                                            :Läsk
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passagerare
 STR_QUANTITY_COAL                                               :{WEIGHT} kol
@@ -324,8 +324,8 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}T
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonn{P "" s}
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonn{P "" s}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton{P "" s}
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
@@ -337,7 +337,7 @@ STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ tryck (lbf)
-STR_UNITS_FORCE_METRIC                                          :{COMMA} tryck (ton)
+STR_UNITS_FORCE_METRIC                                          :{COMMA} ton
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -517,8 +517,8 @@ STR_01D5_ALL                                                    :{TINYFONT}Alla
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Gammaldags
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Modern
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
-STR_01D9_CUSTOM_1                                               :{TINYFONT}Egen 1
-STR_01DA_CUSTOM_2                                               :{TINYFONT}Egen 2
+STR_01D9_CUSTOM_1                                               :{TINYFONT}Personlig 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}Personlig 2
 STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Musikvolym
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Effektvolym
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}MIN  '  '  ' '  '  '  MAX
@@ -546,11 +546,12 @@ STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Nuvarand
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Välj spellistan 'alla'
 STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Välj spellistan 'gammaldags'
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Välj spellistan 'modern'
-STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Välj spellistan 'Egen 1' (användardefinerad)
-STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Välj spellistan 'Egen 2' (användardefinerad)
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Töm aktuellt program (Enbart Egen1 eller Egen2)
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Välj spellistan 'Personlig 1' (användardefinerad)
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Välj spellistan 'Personlig 2' (användardefinerad)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Töm aktuellt program (Enbart Personlig1 eller Personlig2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Spara ljudinställningar
-STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klicka på ett spår för att lägga till den till spellistan (Enbart Egen1 eller Egen2)
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klicka på ett spår för att lägga till den till spellistan (Enbart Personlig1 eller Personlig2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klicka på musikstycket för att ta bort det från den aktuella listan (endast Personlig1 och Personlig2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Växla slumpning av/på
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Visa fönstret för val av musikspår
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klicka för att centrera vyn ovanför industrin/staden
@@ -879,6 +880,7 @@ STR_TOWNNAME_CZECH                                              :Tjeckiska
 STR_TOWNNAME_SWISS                                              :Schweiziska
 STR_TOWNNAME_DANISH                                             :Danska
 STR_TOWNNAME_TURKISH                                            :Turkiska
+STR_TOWNNAME_ITALIAN                                            :Italienska
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
@@ -2431,7 +2433,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tåg för 
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tåg kan bara ändras när det står still inuti en depå
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tåg
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nytt tågfordon
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nya Elektrifierade Tåg
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nya elektriska järnvägsfordon
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nytt monorail-fordon
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nytt maglev-Fordon
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bygg fordon
@@ -2660,7 +2662,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapac
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan inte anpassa skepp...
 STR_9842_REFITTABLE                                             :(anpassningsbart)
 STR_GO_TO_SHIP_DEPOT                                            :Åk till {TOWN} båtdepå
-SERVICE_AT_SHIP_DEPOT                                           :Servning vid {TOWN} båtdepå
+SERVICE_AT_SHIP_DEPOT                                           :Service vid {TOWN} båtdepå
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Flygplatser
@@ -2732,7 +2734,7 @@ STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Välj gods
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Kostnad av anpassning: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan inte anpassa flygplan...
 STR_GO_TO_AIRPORT_HANGAR                                        :Gå till {STATION} Hangar
-SERVICE_AT_AIRPORT_HANGAR                                       :Servning vid {STATION} Hangar
+SERVICE_AT_AIRPORT_HANGAR                                       :Service vid {STATION} hangar
 
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelinare-katastrof på {STATION}!
@@ -2838,7 +2840,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlis
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Järnvägsfordon
-STR_ELRAIL_VEHICLES                                             :Elektrifierat Tåg
+STR_ELRAIL_VEHICLES                                             :Elektriska järnvägsfordon
 STR_MONORAIL_VEHICLES                                           :Monorail-fordon
 STR_MAGLEV_VEHICLES                                             :Maglevfordon
 
