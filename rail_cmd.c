@@ -259,8 +259,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					!EnsureNoVehicle(tile)) {
 				return CMD_ERROR;
 			}
-			if (GetRailTileType(tile) == RAIL_TILE_DEPOT_WAYPOINT ||
-					!IsTileOwner(tile, _current_player) ||
+			if (!IsTileOwner(tile, _current_player) ||
 					GetRailType(tile) != p1) {
 				// Get detailed error message
 				return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
