@@ -33,7 +33,7 @@
 #include "yapf/yapf.h"
 
 #define INVALID_COORD (-0x8000)
-#define GEN_HASH(x,y) (((x & 0x1F80)>>7) + ((y & 0xFC0)))
+#define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
 
 /*
  *	These command macros are used to call vehicle type specific commands with non type specific commands
@@ -361,39 +361,33 @@ static VehicleID _vehicle_position_hash[0x1000];
 
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc)
 {
-	int x,y,x2,y2;
 	Point pt = RemapCoords(TileX(tile) * TILE_SIZE, TileY(tile) * TILE_SIZE, 0);
 
-	x2 = ((pt.x + 104) & 0x1F80) >> 7;
-	x  = ((pt.x - 174) & 0x1F80) >> 7;
+	// The hash area to scan
+	const int xl = GB(pt.x - 174, 7, 6);
+	const int xu = GB(pt.x + 104, 7, 6);
+	const int yl = GB(pt.y - 294, 6, 6) << 6;
+	const int yu = GB(pt.y +  56, 6, 6) << 6;
 
-	y2 = ((pt.y + 56) & 0xFC0);
-	y  = ((pt.y - 294) & 0xFC0);
+	int x;
+	int y;
 
-	for (;;) {
-		int xb = x;
-		for (;;) {
+	for (y = yl;; y = (y + (1 << 6)) & (0x3F << 6)) {
+		for (x = xl;; x = (x + 1) & 0x3F) {
 			VehicleID veh = _vehicle_position_hash[(x + y) & 0xFFFF];
+
 			while (veh != INVALID_VEHICLE) {
 				Vehicle *v = GetVehicle(veh);
-				void *a;
+				void* a = proc(v, data);
 
-				a = proc(v, data);
 				if (a != NULL) return a;
 				veh = v->next_hash;
 			}
 
-			if (x == x2)
-				break;
-
-			x = (x + 1) & 0x3F;
+			if (x == xu) break;
 		}
-		x = xb;
 
-		if (y == y2)
-			break;
-
-		y = (y + 0x40) & ((0x3F) << 6);
+		if (y == yu) break;
 	}
 	return NULL;
 }
@@ -437,7 +431,7 @@ static void UpdateVehiclePosHash(Vehicle* v, int x, int y)
 
 void InitializeVehicles(void)
 {
-	int i;
+	uint i;
 
 	/* Clean the vehicle pool, and reserve enough blocks
 	 *  for the special vehicles, plus one for all the other
@@ -447,8 +441,9 @@ void InitializeVehicles(void)
 	for (i = 0; i < BLOCKS_FOR_SPECIAL_VEHICLES; i++)
 		AddBlockToPool(&_vehicle_pool);
 
-	// clear it...
-	memset(_vehicle_position_hash, -1, sizeof(_vehicle_position_hash));
+	for (i = 0; i < lengthof(_vehicle_position_hash); i++) {
+		_vehicle_position_hash[i] = INVALID_VEHICLE;
+	}
 }
 
 Vehicle *GetLastVehicleInChain(Vehicle *v)
@@ -740,40 +735,42 @@ static void DoDrawVehicle(const Vehicle *v)
 
 void ViewportAddVehicles(DrawPixelInfo *dpi)
 {
-	int x,xb, y, x2, y2;
-	VehicleID veh;
-	Vehicle *v;
+	// The bounding rectangle
+	const int l = dpi->left;
+	const int r = dpi->left + dpi->width;
+	const int t = dpi->top;
+	const int b = dpi->top + dpi->height;
 
-	x  = ((dpi->left - 70) & 0x1F80) >> 7;
-	x2 = ((dpi->left + dpi->width) & 0x1F80) >> 7;
+	// The hash area to scan
+	const int xl = GB(l - 70, 7, 6);
+	const int xu = GB(r,      7, 6);
+	const int yl = GB(t - 70, 6, 6) << 6;
+	const int yu = GB(b,      6, 6) << 6;
 
-	y  = ((dpi->top - 70) & 0xFC0);
-	y2 = ((dpi->top + dpi->height) & 0xFC0);
+	int x;
+	int y;
 
-	for (;;) {
-		xb = x;
-		for (;;) {
-			veh = _vehicle_position_hash[(x + y) & 0xFFFF];
+	for (y = yl;; y = (y + (1 << 6)) & (0x3F << 6)) {
+		for (x = xl;; x = (x + 1) & 0x3F) {
+			VehicleID veh = _vehicle_position_hash[(x + y) & 0xFFFF];
+
 			while (veh != INVALID_VEHICLE) {
-				v = GetVehicle(veh);
+				const Vehicle* v = GetVehicle(veh);
 
 				if (!(v->vehstatus & VS_HIDDEN) &&
-						dpi->left <= v->right_coord &&
-						dpi->top <= v->bottom_coord &&
-						dpi->left + dpi->width >= v->left_coord &&
-						dpi->top + dpi->height >= v->top_coord) {
+						l <= v->right_coord &&
+						t <= v->bottom_coord &&
+						r >= v->left_coord &&
+						b >= v->top_coord) {
 					DoDrawVehicle(v);
 				}
 				veh = v->next_hash;
 			}
 
-			if (x == x2) break;
-			x = (x + 1) & 0x3F;
+			if (x == xu) break;
 		}
-		x = xb;
 
-		if (y == y2) break;
-		y = (y + 0x40) & ((0x3F) << 6);
+		if (y == yu) break;
 	}
 }
 
