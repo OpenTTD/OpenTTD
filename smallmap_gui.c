@@ -216,7 +216,7 @@ static const uint16 * const _legend_table[] = {
 	}
 
 /* need to use OR, otherwise we will overwrite the wrong pixels at the edges :( */
-	static inline void WRITE_PIXELS_OR(Pixel* d, uint32 val)
+	static inline void WRITE_PIXELS_OR(Pixel *d, uint32 val)
 	{
 #	if defined(TTD_BIG_ENDIAN)
 		d[0] |= GB(val, 24, 8);
@@ -262,7 +262,7 @@ typedef struct AndOr {
 	uint32 mand;
 } AndOr;
 
-static inline uint32 ApplyMask(uint32 colour, const AndOr* mask)
+static inline uint32 ApplyMask(uint32 colour, const AndOr *mask)
 {
 	return (colour & mask->mand) | mask->mor;
 }
@@ -605,7 +605,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 
 	/* setup owner table */
 	if (type == 5) {
-		const Player* p;
+		const Player *p;
 
 		/* fill with some special colors */
 		_owner_colors[OWNER_TOWN] = MKCOLOR(0xB4B4B4B4);
@@ -672,7 +672,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		reps = (dpi->height - y + 1) / 2;
 		if (reps > 0) {
 //			assert(ptr >= dpi->dst_ptr);
-			DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch*2, reps, mask, _smallmap_draw_procs[type]);
+			DrawSmallMapStuff(ptr, tile_x, tile_y, dpi->pitch * 2, reps, mask, _smallmap_draw_procs[type]);
 		}
 
 skip_column:
@@ -963,7 +963,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 8: { /* inverse location button (move this view to same spot as main view) 'Copy Location' */
-			const Window* w2 = FindWindowById(WC_MAIN_WINDOW, 0);
+			const Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 			int x = WP(w2, const vp_d).scrollpos_x;
 			int y = WP(w2, const vp_d).scrollpos_y;
 

@@ -677,8 +677,8 @@ void DrawSprite(uint32 img, int x, int y)
 
 typedef struct BlitterParams {
 	int start_x, start_y;
-	const byte* sprite;
-	const byte* sprite_org;
+	const byte *sprite;
+	const byte *sprite_org;
 	Pixel *dst;
 	int mode;
 	int width, height;
@@ -690,12 +690,12 @@ typedef struct BlitterParams {
 
 static void GfxBlitTileZoomIn(BlitterParams *bp)
 {
-	const byte* src_o = bp->sprite;
-	const byte* src;
+	const byte *src_o = bp->sprite;
+	const byte *src;
 	int num, skip;
 	byte done;
 	Pixel *dst;
-	const byte* ctab;
+	const byte *ctab;
 
 	if (bp->mode & 1) {
 		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
@@ -892,12 +892,12 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 
 static void GfxBlitTileZoomMedium(BlitterParams *bp)
 {
-	const byte* src_o = bp->sprite;
-	const byte* src;
+	const byte *src_o = bp->sprite;
+	const byte *src;
 	int num, skip;
 	byte done;
 	Pixel *dst;
-	const byte* ctab;
+	const byte *ctab;
 
 	if (bp->mode & 1) {
 		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
@@ -1097,12 +1097,12 @@ static void GfxBlitZoomMediumUncomp(BlitterParams *bp)
 
 static void GfxBlitTileZoomOut(BlitterParams *bp)
 {
-	const byte* src_o = bp->sprite;
-	const byte* src;
+	const byte *src_o = bp->sprite;
+	const byte *src;
 	int num, skip;
 	byte done;
 	Pixel *dst;
-	const byte* ctab;
+	const byte *ctab;
 
 	if (bp->mode & 1) {
 		src_o += ReadLE16Aligned(src_o + bp->start_y * 2);
@@ -1313,7 +1313,7 @@ static void GfxBlitTileZoomOut(BlitterParams *bp)
 
 static void GfxBlitZoomOutUncomp(BlitterParams *bp)
 {
-	const byte* src = bp->sprite;
+	const byte *src = bp->sprite;
 	Pixel *dst = bp->dst;
 	int height = bp->height;
 	int width = bp->width;
@@ -1361,9 +1361,9 @@ static void GfxBlitZoomOutUncomp(BlitterParams *bp)
 
 typedef void (*BlitZoomFunc)(BlitterParams *bp);
 
-static void GfxMainBlitter(const Sprite* sprite, int x, int y, int mode)
+static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode)
 {
-	const DrawPixelInfo* dpi = _cur_dpi;
+	const DrawPixelInfo *dpi = _cur_dpi;
 	int start_x, start_y;
 	byte info;
 	BlitterParams bp;
@@ -1496,8 +1496,8 @@ void GfxInitPalettes(void)
 
 void DoPaletteAnimations(void)
 {
-	const Colour* s;
-	Colour* d;
+	const Colour *s;
+	Colour *d;
 	/* Amount of colors to be rotated.
 	 * A few more for the DOS palette, because the water colors are
 	 * 245-254 for DOS and 217-226 for Windows.  */
@@ -1712,7 +1712,7 @@ void DrawMouseCursor(void)
 static void DbgScreenRect(int left, int top, int right, int bottom)
 {
 	DrawPixelInfo dp;
-	DrawPixelInfo* old;
+	DrawPixelInfo *old;
 
 	old = _cur_dpi;
 	_cur_dpi = &dp;
@@ -1864,7 +1864,7 @@ void MarkWholeScreenDirty(void)
 	SetDirtyBlocks(0, 0, _screen.width, _screen.height);
 }
 
-bool FillDrawPixelInfo(DrawPixelInfo* n, const DrawPixelInfo* o, int left, int top, int width, int height)
+bool FillDrawPixelInfo(DrawPixelInfo *n, const DrawPixelInfo *o, int left, int top, int width, int height)
 {
 	int t;
 

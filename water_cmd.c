@@ -479,7 +479,7 @@ void DrawShipDepotSprite(int x, int y, int image)
 }
 
 
-static uint GetSlopeZ_Water(const TileInfo* ti)
+static uint GetSlopeZ_Water(const TileInfo *ti)
 {
 	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
 }
@@ -610,7 +610,7 @@ static void FloodVehicle(Vehicle *v)
 			v->u.road.crashed_ctr = 2000;	// max 2220, disappear pretty fast
 			RebuildVehicleLists();
 		} else if (v->type == VEH_Train) {
-			Vehicle* u;
+			Vehicle *u;
 
 			v = GetFirstVehicleInChain(v);
 			u = v;
@@ -747,7 +747,7 @@ const TileTypeProcs _tile_type_water_procs = {
 	ClearTile_Water,					/* clear_tile_proc */
 	GetAcceptedCargo_Water,		/* get_accepted_cargo_proc */
 	GetTileDesc_Water,				/* get_tile_desc_proc */
-	GetTileTrackStatus_Water,	/* get_tile_track_status_proc */
+	GetTileTrackStatus_Water,/* get_tile_track_status_proc */
 	ClickTile_Water,					/* click_tile_proc */
 	AnimateTile_Water,				/* animate_tile_proc */
 	TileLoop_Water,						/* tile_loop_clear */

@@ -110,7 +110,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 
 		{
 			int y;
-			const Player* p;
+			const Player *p;
 			int r;
 			StringID str;
 
@@ -219,7 +219,7 @@ static const WindowDesc _town_authority_desc = {
 
 static void ShowTownAuthorityWindow(uint town)
 {
-	Window* w = AllocateWindowDescFront(&_town_authority_desc, town);
+	Window *w = AllocateWindowDescFront(&_town_authority_desc, town);
 
 	if (w != NULL) {
 		w->vscroll.cap = 5;
@@ -442,7 +442,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		DoDrawString(_town_sort_order & 1 ? DOWNARROW : UPARROW, (_town_sort_order <= 1) ? 88 : 187, 15, 0x10);
 
 		{
-			const Town* t;
+			const Town *t;
 			int n = 0;
 			uint16 i = w->vscroll.pos;
 			int y = 28;
@@ -489,7 +489,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 			if (id_v >= _num_town_sort) return; // click out of town bounds
 
 			{
-				const Town* t = GetTown(_town_sort[id_v]);
+				const Town *t = GetTown(_town_sort[id_v]);
 				assert(t->xy);
 
 				ScrollMainWindowToTile(t->xy);
@@ -519,7 +519,7 @@ static const WindowDesc _town_directory_desc = {
 
 void ShowTownDirectory(void)
 {
-	Window* w = AllocateWindowDescFront(&_town_directory_desc, 0);
+	Window *w = AllocateWindowDescFront(&_town_directory_desc, 0);
 
 	if (w != NULL) {
 		w->vscroll.cap = 16;

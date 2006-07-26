@@ -249,7 +249,7 @@ typedef struct querystr_d {
 	WindowClass wnd_class;
 	WindowNumber wnd_num;
 	Textbuf text;
-	const char* orig;
+	const char *orig;
 } querystr_d;
 
 #define WP(ptr,str) (*(str*)(ptr)->custom)
@@ -301,11 +301,11 @@ struct Window {
 };
 
 typedef struct {
-	byte item_count; /* follow_vehicle */
-	byte sel_index;		/* scrollpos_x */
-	byte main_button; /* scrollpos_y */
+	byte item_count;      /* follow_vehicle */
+	byte sel_index;       /* scrollpos_x */
+	byte main_button;     /* scrollpos_y */
 	byte action_id;
-	StringID string_id; /* unk30 */
+	StringID string_id;   /* unk30 */
 	uint16 checked_items; /* unk32 */
 	byte disabled_items;
 } menu_d;
@@ -556,7 +556,7 @@ enum WindowFlags {
 /* window.c */
 void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent(void);
-void SetWindowDirty(const Window* w);
+void SetWindowDirty(const Window *w);
 void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, uint wparam, uint lparam);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
@@ -564,7 +564,7 @@ void DeleteWindow(Window *w);
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);
 
-bool IsWindowOfPrototype(const Window* w, const Widget* widget);
+bool IsWindowOfPrototype(const Window *w, const Widget *widget);
 void AssignWidgetToWindow(Window *w, const Widget *widget);
 Window *AllocateWindow(
 							int x,
@@ -586,7 +586,7 @@ void ResetWindowSystem(void);
 int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop(void);
 void UpdateWindows(void);
-void InvalidateWidget(const Window* w, byte widget_index);
+void InvalidateWidget(const Window *w, byte widget_index);
 
 void GuiShowTooltips(StringID string_id);
 

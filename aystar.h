@@ -99,7 +99,7 @@ typedef void AyStar_GetNeighbours(AyStar *aystar, OpenListNode *current);
 typedef void AyStar_FoundEndNode(AyStar *aystar, OpenListNode *current);
 
 // For internal use, see aystar.c
-typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode* start_node, uint g);
+typedef void AyStar_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g);
 typedef int AyStar_Main(AyStar *aystar);
 typedef int AyStar_Loop(AyStar *aystar);
 typedef int AyStar_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
@@ -112,11 +112,11 @@ struct AyStar {
 
 	/* These should point to the application specific routines that do the
 	 * actual work */
-	AyStar_CalculateG* CalculateG;
-	AyStar_CalculateH* CalculateH;
-	AyStar_GetNeighbours* GetNeighbours;
-	AyStar_EndNodeCheck* EndNodeCheck;
-	AyStar_FoundEndNode* FoundEndNode;
+	AyStar_CalculateG *CalculateG;
+	AyStar_CalculateH *CalculateH;
+	AyStar_GetNeighbours *GetNeighbours;
+	AyStar_EndNodeCheck *EndNodeCheck;
+	AyStar_FoundEndNode *FoundEndNode;
 
 	/* These are completely untouched by AyStar, they can be accesed by
 	 * the application specific routines to input and output data.
@@ -144,12 +144,12 @@ struct AyStar {
 
 	/* These will contain the methods for manipulating the AyStar. Only
 	 * main() should be called externally */
-	AyStar_AddStartNode* addstart;
-	AyStar_Main* main;
-	AyStar_Loop* loop;
-	AyStar_Free* free;
-	AyStar_Clear* clear;
-	AyStar_CheckTile* checktile;
+	AyStar_AddStartNode *addstart;
+	AyStar_Main *main;
+	AyStar_Loop *loop;
+	AyStar_Free *free;
+	AyStar_Clear *clear;
+	AyStar_CheckTile *checktile;
 
 	/* These will contain the open and closed lists */
 
@@ -173,7 +173,7 @@ void AyStarMain_Clear(AyStar *aystar);
 /* Initialize an AyStar. You should fill all appropriate fields before
  * callling init_AyStar (see the declaration of AyStar for which fields are
  * internal */
-void init_AyStar(AyStar* aystar, Hash_HashProc hash, uint num_buckets);
+void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets);
 
 
 #endif /* AYSTAR_H */

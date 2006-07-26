@@ -29,7 +29,7 @@
 void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	const RoadVehicleInfo *rvi = RoadVehInfo(engine_number);
-	const Engine* e = GetEngine(engine_number);
+	const Engine *e = GetEngine(engine_number);
 	bool refittable = (_engine_info[engine_number].refit_mask != 0);
 	YearMonthDay ymd;
 	ConvertDayToYMD(&ymd, e->intro_date);
@@ -286,7 +286,7 @@ static const WindowDesc _roadveh_details_desc = {
 	RoadVehDetailsWndProc
 };
 
-static void ShowRoadVehDetailsWindow(const Vehicle* v)
+static void ShowRoadVehDetailsWindow(const Vehicle *v)
 {
 	Window *w;
 	VehicleID veh = v->index;
@@ -365,7 +365,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		const Vehicle* v = GetVehicle(w->window_number);
+		const Vehicle *v = GetVehicle(w->window_number);
 
 		switch (e->click.widget) {
 		case 5: /* start stop */
@@ -410,7 +410,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_MOUSELOOP:
 		{
-			const Vehicle* v = GetVehicle(w->window_number);
+			const Vehicle *v = GetVehicle(w->window_number);
 			uint32 h = IsRoadVehInDepotStopped(v) ? 1 << 7 | 1 << 8 : 1 << 11 | 1 << 12;
 
 			if (h != w->hidden_state) {
@@ -448,9 +448,9 @@ static const WindowDesc _roadveh_view_desc = {
 	RoadVehViewWndProc,
 };
 
-void ShowRoadVehViewWindow(const Vehicle* v)
+void ShowRoadVehViewWindow(const Vehicle *v)
 {
-	Window* w = AllocateWindowDescFront(&_roadveh_view_desc, v->index);
+	Window *w = AllocateWindowDescFront(&_roadveh_view_desc, v->index);
 
 	if (w != NULL) {
 		w->caption_color = v->owner;
@@ -468,7 +468,7 @@ static void DrawNewRoadVehWindow(Window *w)
 	{
 		int count = 0;
 		int num = NUM_ROAD_ENGINES;
-		const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
+		const Engine *e = GetEngine(ROAD_ENGINES_INDEX);
 
 		do {
 			if (HASBIT(e->player_avail, _local_player))
@@ -481,7 +481,7 @@ static void DrawNewRoadVehWindow(Window *w)
 
 	{
 		int num = NUM_ROAD_ENGINES;
-		const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
+		const Engine *e = GetEngine(ROAD_ENGINES_INDEX);
 		int x = 1;
 		int y = 15;
 		int sel = WP(w,buildtrain_d).sel_index;
@@ -510,7 +510,7 @@ static void DrawNewRoadVehWindow(Window *w)
 
 void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	const Vehicle* v;
+	const Vehicle *v;
 
 	if (!success) return;
 
@@ -735,7 +735,7 @@ static void RoadDepotClickVeh(Window *w, int x, int y)
  * @param *v is the original vehicle to clone
  * @param *w is the window of the depot where the clone is build
  */
-static void HandleCloneVehClick(const Vehicle* v, const Window* w)
+static void HandleCloneVehClick(const Vehicle *v, const Window *w)
 {
 	if (v == NULL || v->type != VEH_Road) return;
 
@@ -746,9 +746,9 @@ static void HandleCloneVehClick(const Vehicle* v, const Window* w)
 	ResetObjectToPlace();
 }
 
-static void ClonePlaceObj(const Window* w)
+static void ClonePlaceObj(const Window *w)
 {
-	const Vehicle* v = CheckMouseOverVehicle();
+	const Vehicle *v = CheckMouseOverVehicle();
 
 	if (v != NULL) HandleCloneVehClick(v, w);
 }
@@ -801,7 +801,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
-		const Vehicle* v = _place_clicked_vehicle;
+		const Vehicle *v = _place_clicked_vehicle;
 
 		// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
 		if (v != NULL && HASBIT(w->click_state, 8)) {
@@ -891,7 +891,7 @@ static const WindowDesc _road_depot_desc = {
 
 void ShowRoadDepotWindow(TileIndex tile)
 {
-	Window* w = AllocateWindowDescFront(&_road_depot_desc, tile);
+	Window *w = AllocateWindowDescFront(&_road_depot_desc, tile);
 
 	if (w != NULL) {
 		w->caption_color = GetTileOwner(w->window_number);
@@ -960,7 +960,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 		/* draw the widgets */
 		if (station == INVALID_STATION) {
-			const Player* p = GetPlayer(owner);
+			const Player *p = GetPlayer(owner);
 
 			/* Company Name -- (###) Road vehicles */
 			SetDParam(0, p->name_1);
@@ -1024,7 +1024,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 			return;
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-			const Vehicle* v;
+			const Vehicle *v;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 

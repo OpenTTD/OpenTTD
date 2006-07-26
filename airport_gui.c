@@ -146,7 +146,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		int sel;
 		int rad = 4; // default catchment radious
 		uint32 avail_airports;
-		const AirportFTAClass* airport;
+		const AirportFTAClass *airport;
 
 		if (WP(w,def_d).close) return;
 

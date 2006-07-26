@@ -179,7 +179,7 @@ static OnButtonClick* const _build_road_button_proc[] = {
 	BuildRoadClick_Landscaping,
 };
 
-static void BuildRoadToolbWndProc(Window* w, WindowEvent* e)
+static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
@@ -346,7 +346,7 @@ void ShowBuildRoadScenToolbar(void)
 	AllocateWindowDescFront(&_build_road_scen_desc, 0);
 }
 
-static void BuildRoadDepotWndProc(Window* w, WindowEvent* e)
+static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:

@@ -459,7 +459,7 @@ static void MoveToNexItem(void)
 
 		switch (GetNewsDisplayValue(ni->type)) {
 		case 0: { /* Off - show nothing only a small reminder in the status bar */
-			Window* w = FindWindowById(WC_STATUS_BAR, 0);
+			Window *w = FindWindowById(WC_STATUS_BAR, 0);
 
 			if (w != NULL) {
 				WP(w, def_d).data_2 = 91;
@@ -866,7 +866,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 		if (ni->flags & NF_VEHICLE &&
 				ni->data_a == vid &&
 				(news == INVALID_STRING_ID || ni->string_id == news)) {
-			Window* w;
+			Window *w;
 			byte i;
 
 			if (_forced_news  == n) MoveToNexItem();

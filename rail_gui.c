@@ -555,7 +555,7 @@ typedef enum {
  * @param railtype the railtype to display
  * @param w the window to modify
  */
-static void SetupRailToolbar(RailType railtype, Window* w)
+static void SetupRailToolbar(RailType railtype, Window *w)
 {
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 

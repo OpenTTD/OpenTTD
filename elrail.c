@@ -126,7 +126,7 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
   * @param tile The tile to analyse
   * @param *tileh the tileh
   */
-static void AdjustTileh(TileIndex tile, Slope* tileh)
+static void AdjustTileh(TileIndex tile, Slope *tileh)
 {
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 		if (IsTunnel(tile)) {

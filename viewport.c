@@ -215,7 +215,7 @@ static void DoSetViewportPosition(Window *w, int left, int top, int width, int h
 	}
 }
 
-static void SetViewportPosition(Window* w, int x, int y)
+static void SetViewportPosition(Window *w, int x, int y)
 {
 	ViewPort *vp = w->viewport;
 	int old_left = vp->virtual_left;
@@ -420,7 +420,7 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 {
 	ViewportDrawer *vd = _cur_vd;
 	ParentSpriteToDraw *ps;
-	const Sprite* spr;
+	const Sprite *spr;
 	Point pt;
 
 	assert((image & SPRITE_MASK) < MAX_SPRITES);
@@ -1018,7 +1018,7 @@ static void ViewportDrawTileSprites(TileSpriteToDraw *ts)
 	} while (ts != NULL);
 }
 
-static void ViewportSortParentSprites(ParentSpriteToDraw* psd[])
+static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 {
 	while (*psd != NULL) {
 		ParentSpriteToDraw* ps = *psd;
@@ -1662,9 +1662,9 @@ static void SafeShowTrainViewWindow(const Vehicle* v)
 	ShowTrainViewWindow(v);
 }
 
-static void Nop(const Vehicle* v) {}
+static void Nop(const Vehicle *v) {}
 
-typedef void OnVehicleClickProc(const Vehicle* v);
+typedef void OnVehicleClickProc(const Vehicle *v);
 static OnVehicleClickProc* const _on_vehicle_click_proc[] = {
 	SafeShowTrainViewWindow,
 	ShowRoadVehViewWindow,
@@ -1676,7 +1676,7 @@ static OnVehicleClickProc* const _on_vehicle_click_proc[] = {
 
 void HandleViewportClicked(const ViewPort *vp, int x, int y)
 {
-	const Vehicle* v;
+	const Vehicle *v;
 
 	if (CheckClickOnTown(vp, x, y)) return;
 	if (CheckClickOnStation(vp, x, y)) return;
@@ -1693,8 +1693,8 @@ void HandleViewportClicked(const ViewPort *vp, int x, int y)
 
 Vehicle *CheckMouseOverVehicle(void)
 {
-	const Window* w;
-	const ViewPort* vp;
+	const Window *w;
+	const ViewPort *vp;
 
 	int x = _cursor.pos.x;
 	int y = _cursor.pos.y;
@@ -1737,7 +1737,7 @@ void PlaceObject(void)
 
 
 /* scrolls the viewport in a window to a given location */
-bool ScrollWindowTo(int x , int y, Window* w)
+bool ScrollWindowTo(int x , int y, Window *w)
 {
 	Point pt;
 

@@ -537,7 +537,7 @@ static const Widget _player_menu_widgets[] = {
 static int GetPlayerIndexFromMenu(int index)
 {
 	if (index >= 0) {
-		const Player* p;
+		const Player *p;
 
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active && --index < 0) return p->index;
@@ -549,7 +549,7 @@ static int GetPlayerIndexFromMenu(int index)
 static void UpdatePlayerMenuHeight(Window *w)
 {
 	uint num = 0;
-	const Player* p;
+	const Player *p;
 
 	FOR_ALL_PLAYERS(p) {
 		if (p->is_active) num++;
@@ -786,7 +786,7 @@ static void ToolbarIndustryClick(Window *w)
 
 static void ToolbarTrainClick(Window *w)
 {
-	const Vehicle* v;
+	const Vehicle *v;
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
@@ -797,7 +797,7 @@ static void ToolbarTrainClick(Window *w)
 
 static void ToolbarRoadClick(Window *w)
 {
-	const Vehicle* v;
+	const Vehicle *v;
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
@@ -808,7 +808,7 @@ static void ToolbarRoadClick(Window *w)
 
 static void ToolbarShipClick(Window *w)
 {
-	const Vehicle* v;
+	const Vehicle *v;
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
@@ -819,7 +819,7 @@ static void ToolbarShipClick(Window *w)
 
 static void ToolbarAirClick(Window *w)
 {
-	const Vehicle* v;
+	const Vehicle *v;
 	int dis = -1;
 
 	FOR_ALL_VEHICLES(v) {
@@ -869,7 +869,7 @@ bool DoZoomInOutWindow(int how, Window *w)
 
 	// routine to disable/enable the zoom buttons. Didn't know where to place these otherwise
 	{
-		Window* wt = NULL;
+		Window *wt = NULL;
 
 		switch (w->window_class) {
 			case WC_MAIN_WINDOW:
@@ -920,7 +920,7 @@ static void ToolbarZoomOutClick(Window *w)
 
 static void ToolbarBuildRailClick(Window *w)
 {
-	const Player* p = GetPlayer(_local_player);
+	const Player *p = GetPlayer(_local_player);
 	Window *w2;
 	w2 = PopupMainToolbMenu(w, 457, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes);
 	WP(w2,menu_d).sel_index = _last_built_railtype;
@@ -1032,7 +1032,7 @@ static void ToolbarScenZoomOut(Window *w)
 
 void ZoomInOrOutToCursorWindow(bool in, Window *w)
 {
-	ViewPort * vp;
+	ViewPort *vp;
 	Point pt;
 
 	assert(w != 0);
@@ -1629,7 +1629,7 @@ static const Widget _scenedit_industry_candy_widgets[] = {
 
 static bool AnyTownExists(void)
 {
-	const Town* t;
+	const Town *t;
 
 	FOR_ALL_TOWNS(t) {
 		if (t->xy != 0) return true;
@@ -1809,7 +1809,7 @@ static void ToolbarBtn_NULL(Window *w)
 
 typedef void ToolbarButtonProc(Window *w);
 
-static ToolbarButtonProc* const _toolbar_button_procs[] = {
+static ToolbarButtonProc * const _toolbar_button_procs[] = {
 	ToolbarPauseClick,
 	ToolbarFastForwardClick,
 	ToolbarOptionsClick,
@@ -2016,7 +2016,7 @@ static const Widget _toolb_scen_widgets[] = {
 {WIDGETS_END},
 };
 
-static ToolbarButtonProc* const _scen_toolbar_button_procs[] = {
+static ToolbarButtonProc * const _scen_toolbar_button_procs[] = {
 	ToolbarPauseClick,
 	ToolbarFastForwardClick,
 	ToolbarOptionsClick,
@@ -2274,7 +2274,7 @@ static WindowDesc _main_status_desc = {
 
 extern void UpdateAllStationVirtCoord(void);
 
-static void MainWindowWndProc(Window* w, WindowEvent* e)
+static void MainWindowWndProc(Window *w, WindowEvent *e)
 {
 	int off_x;
 
@@ -2392,7 +2392,7 @@ void SetupColorsAndInitialWindow(void)
 	int width,height;
 
 	for (i = 0; i != 16; i++) {
-		const byte* b = GetNonSprite(PALETTE_RECOLOR_START + i);
+		const byte *b = GetNonSprite(PALETTE_RECOLOR_START + i);
 
 		assert(b);
 		_color_list[i] = *(const ColorList*)(b + 0xC6);

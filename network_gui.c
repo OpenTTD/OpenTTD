@@ -100,7 +100,7 @@ enum {
 // called when a new server is found on the network
 void UpdateNetworkGameWindow(bool unselect)
 {
-	Window* w = FindWindowById(WC_NETWORK_WINDOW, 0);
+	Window  *w = FindWindowById(WC_NETWORK_WINDOW, 0);
 
 	if (w != NULL) {
 		if (unselect) WP(w, network_ql_d).n.server = NULL;
@@ -183,7 +183,7 @@ static void BuildNetworkGameList(network_ql_d *nqld)
 
 static void SortNetworkGameList(network_ql_d *nqld)
 {
-	static NGameNameSortFunction* const ngame_sorter[] = {
+	static NGameNameSortFunction * const ngame_sorter[] = {
 		&NGameNameSorter,
 		&NGameClientSorter,
 		&NGameAllowedSorter
@@ -564,7 +564,7 @@ void ShowNetworkGameWindow(void)
 
 	w = AllocateWindowDesc(&_network_game_window_desc);
 	if (w != NULL) {
-		querystr_d* querystr = &WP(w, network_ql_d).q;
+		querystr_d *querystr = &WP(w, network_ql_d).q;
 
 		ttd_strlcpy(_edit_str_buf, _network_player_name, lengthof(_edit_str_buf));
 		w->vscroll.cap = 12;
@@ -1052,9 +1052,9 @@ static WindowDesc _client_list_desc = {
 };
 
 // Finds the Xth client-info that is active
-static const NetworkClientInfo* NetworkFindClientInfo(byte client_no)
+static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 {
-	const NetworkClientInfo* ci;
+	const NetworkClientInfo *ci;
 
 	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
 		// Skip non-active items
@@ -1174,7 +1174,7 @@ static uint ClientListPopupHeigth(void) {
 static Window *PopupClientList(Window *w, int client_no, int x, int y)
 {
 	int i, h;
-	const NetworkClientInfo* ci;
+	const NetworkClientInfo *ci;
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
 	// Clean the current actions
@@ -1476,7 +1476,7 @@ static byte _chat_type;
 static byte _chat_dest;
 
 
-static void SendChat(const char* buf)
+static void SendChat(const char *buf)
 {
 	if (buf[0] == '\0') return;
 	if (!_network_server) {

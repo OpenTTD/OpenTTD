@@ -151,7 +151,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		PlayerID player = w->window_number;
-		const Player* p = GetPlayer(player);
+		const Player *p = GetPlayer(player);
 
 		w->disabled_state = p->current_loan != 0 ? 0 : (1 << 7);
 
@@ -248,7 +248,7 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		const Player* p;
+		const Player *p;
 		uint used_colors = 0;
 		int num_free = 16;
 		int x,y,pos;
@@ -421,7 +421,7 @@ static void DrawPlayerVehiclesAmount(PlayerID player)
 {
 	const int x = 110;
 	int y = 72;
-	const Vehicle* v;
+	const Vehicle *v;
 	uint train = 0;
 	uint road  = 0;
 	uint air   = 0;
@@ -479,7 +479,7 @@ int GetAmountOwnedBy(const Player *p, PlayerID owner)
 
 static void DrawCompanyOwnerText(const Player *p)
 {
-	const Player* p2;
+	const Player *p2;
 	int num = -1;
 
 	FOR_ALL_PLAYERS(p2) {
@@ -502,7 +502,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		const Player* p = GetPlayer(w->window_number);
+		const Player *p = GetPlayer(w->window_number);
 		uint32 dis = 0;
 
 		if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
@@ -577,7 +577,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 5: {/* change president name */
-			const Player* p = GetPlayer(w->window_number);
+			const Player *p = GetPlayer(w->window_number);
 			WP(w, def_d).byte_1 = 0;
 			SetDParam(0, p->president_name_2);
 			ShowQueryString(p->president_name_1, STR_700B_PRESIDENT_S_NAME, 31, 94, w->window_class, w->window_number);
@@ -686,7 +686,7 @@ static const WindowDesc _other_player_company_desc = {
 
 void ShowPlayerCompany(PlayerID player)
 {
-	Window* w;
+	Window *w;
 
 	w = AllocateWindowDescFront(player == _local_player ? &_my_player_company_desc : &_other_player_company_desc, player);
 	if (w != NULL) w->caption_color = w->window_number;

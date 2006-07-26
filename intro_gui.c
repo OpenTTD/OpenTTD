@@ -156,7 +156,7 @@ static const Widget _ask_abandon_game_widgets[] = {
 {  WIDGETS_END },
 };
 
-static void AskAbandonGameWndProc(Window* w, WindowEvent* e)
+static void AskAbandonGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
@@ -220,7 +220,7 @@ static const Widget _ask_quit_game_widgets[] = {
 {  WIDGETS_END },
 };
 
-static void AskQuitGameWndProc(Window* w, WindowEvent* e)
+static void AskQuitGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT:

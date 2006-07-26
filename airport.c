@@ -9,16 +9,16 @@
 #include "variables.h"
 #include "airport_movement.h"
 
-static AirportFTAClass* CountryAirport;
-static AirportFTAClass* CityAirport;
-static AirportFTAClass* Oilrig;
-static AirportFTAClass* Heliport;
-static AirportFTAClass* MetropolitanAirport;
-static AirportFTAClass* InternationalAirport;
-static AirportFTAClass* CommuterAirport;
-static AirportFTAClass* HeliDepot;
-static AirportFTAClass* IntercontinentalAirport;
-static AirportFTAClass* HeliStation;
+static AirportFTAClass *CountryAirport;
+static AirportFTAClass *CityAirport;
+static AirportFTAClass *Oilrig;
+static AirportFTAClass *Heliport;
+static AirportFTAClass *MetropolitanAirport;
+static AirportFTAClass *InternationalAirport;
+static AirportFTAClass *CommuterAirport;
+static AirportFTAClass *HeliDepot;
+static AirportFTAClass *IntercontinentalAirport;
+static AirportFTAClass *HeliStation;
 
 static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 	const byte *terminals, const byte *helipads,
@@ -201,7 +201,7 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 	byte nofterminals, nofhelipads;
 	byte nofterminalgroups = 0;
 	byte nofhelipadgroups = 0;
-	const byte * curr;
+	const byte *curr;
 	int i;
 	nofterminals = nofhelipads = 0;
 
@@ -329,7 +329,7 @@ static void AirportBuildAutomata(AirportFTAClass *Airport, const AirportFTAbuild
 
 		// outgoing nodes from the same position, create linked list
 		while (current->position == FA[internalcounter + 1].position) {
-			AirportFTA* newNode = malloc(sizeof(AirportFTA));
+			AirportFTA *newNode = malloc(sizeof(AirportFTA));
 
 			newNode->position = FA[internalcounter + 1].position;
 			newNode->heading  = FA[internalcounter + 1].heading;
@@ -444,7 +444,7 @@ static void AirportPrintOut(const AirportFTAClass *Airport, const bool full_repo
 }
 #endif
 
-const AirportFTAClass* GetAirport(const byte airport_type)
+const AirportFTAClass *GetAirport(const byte airport_type)
 {
 	//FIXME -- AircraftNextAirportPos_and_Order -> Needs something nicer, don't like this code
 	// needs constant change if more airports are added

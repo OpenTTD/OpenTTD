@@ -150,7 +150,7 @@ typedef struct AirportFTA {
 
 void InitializeAirports(void);
 void UnInitializeAirports(void);
-const AirportFTAClass* GetAirport(const byte airport_type);
+const AirportFTAClass *GetAirport(const byte airport_type);
 const AirportMovingData *GetAirportMovingData(byte airport_type, byte position);
 
 /** Get buildable airport bitmask.

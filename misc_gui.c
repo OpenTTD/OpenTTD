@@ -43,7 +43,7 @@ typedef struct LandInfoData {
 static void LandInfoWndProc(Window *w, WindowEvent *e)
 {
 	if (e->event == WE_PAINT) {
-		const LandInfoData* lid;
+		const LandInfoData *lid;
 		StringID str;
 		int i;
 
@@ -488,7 +488,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 					_errmsg_message_1,
 					238);
 		} else {
-			const Player* p = GetPlayer(GetDParamX(_errmsg_decode_params,2));
+			const Player *p = GetPlayer(GetDParamX(_errmsg_decode_params,2));
 			DrawPlayerFace(p->face, p->player_color, 2, 16);
 
 			DrawStringMultiCenter(
@@ -718,7 +718,7 @@ void DrawStationCoverageAreaText(int sx, int sy, uint mask, int rad) {
 	}
 }
 
-void CheckRedrawStationCoverage(const Window* w)
+void CheckRedrawStationCoverage(const Window *w)
 {
 	if (_thd.dirty & 1) {
 		_thd.dirty &= ~1;
@@ -1197,9 +1197,9 @@ static void MakeSortedSaveGameList(void)
 	uint s_amount;
 	int i;
 
-	/*	Directories are always above the files (FIOS_TYPE_DIR)
-	 *	Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
-	 *	Only sort savegames/scenarios, not directories
+	/* Directories are always above the files (FIOS_TYPE_DIR)
+	 * Drives (A:\ (windows only) are always under the files (FIOS_TYPE_DRIVE)
+	 * Only sort savegames/scenarios, not directories
 	 */
 	for (i = 0; i < _fios_num; i++) {
 		switch (_fios_list[i].type) {
@@ -1218,7 +1218,7 @@ static void GenerateFileName(void)
 {
 	/* Check if we are not a specatator who wants to generate a name..
 	    Let's use the name of player #0 for now. */
-	const Player* p = GetPlayer(_local_player < MAX_PLAYERS ? _local_player : 0);
+	const Player *p = GetPlayer(_local_player < MAX_PLAYERS ? _local_player : 0);
 
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);
@@ -1274,7 +1274,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 		y = w->widget[7].top + 1;
 		for (pos = w->vscroll.pos; pos < _fios_num; pos++) {
-			const FiosItem* item = _fios_list + pos;
+			const FiosItem *item = _fios_list + pos;
 
 			DoDrawStringTruncated(item->title, 4, y, _fios_colors[item->type], w->width - 18);
 			y += 10;
@@ -1503,7 +1503,7 @@ static const Widget _select_scenario_widgets[] = {
 {   WIDGETS_END},
 };
 
-static void SelectScenarioWndProc(Window* w, WindowEvent* e)
+static void SelectScenarioWndProc(Window *w, WindowEvent *e)
 {
 	const int list_start = 45;
 
@@ -1560,7 +1560,7 @@ static void SelectScenarioWndProc(Window* w, WindowEvent* e)
 				GenRandomNewGame(Random(), InteractiveRandom());
 			} else {
 				int y = (e->click.pt.y - list_start) / 10;
-				const char* name;
+				const char *name;
 				const FiosItem *file;
 
 				if (y < 0 || (y += w->vscroll.pos) >= w->vscroll.count) return;

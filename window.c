@@ -24,10 +24,10 @@ void HandleButtonClick(Window *w, byte widget)
 }
 
 
-static Window* StartWindowDrag(Window* w);
-static Window* StartWindowSizing(Window* w);
+static Window *StartWindowDrag(Window *w);
+static Window *StartWindowSizing(Window *w);
 
-static void DispatchLeftClickEvent(Window* w, int x, int y)
+static void DispatchLeftClickEvent(Window *w, int x, int y)
 {
 	WindowEvent e;
 	const Widget *wi;
@@ -86,7 +86,7 @@ static void DispatchLeftClickEvent(Window* w, int x, int y)
 	w->wndproc(w, &e);
 }
 
-static void DispatchRightClickEvent(Window* w, int x, int y)
+static void DispatchRightClickEvent(Window *w, int x, int y)
 {
 	WindowEvent e;
 
@@ -114,7 +114,7 @@ static void DispatchRightClickEvent(Window* w, int x, int y)
  * @param widget the widget where the scrollwheel was used
  * @param wheel scroll up or down
  */
-static void DispatchMouseWheelEvent(Window* w, int widget, int wheel)
+static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 {
 	const Widget *wi1, *wi2;
 	Scrollbar *sb;
@@ -142,7 +142,7 @@ static void DispatchMouseWheelEvent(Window* w, int widget, int wheel)
 }
 
 
-static void DrawOverlappedWindow(Window* w, int left, int top, int right, int bottom);
+static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom);
 
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 {
@@ -160,9 +160,9 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 	}
 }
 
-static void DrawOverlappedWindow(Window* w, int left, int top, int right, int bottom)
+static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
 {
-	const Window* v = w;
+	const Window *v = w;
 	int x;
 
 	while (++v != _last_window) {
@@ -219,7 +219,7 @@ void CallWindowEventNP(Window *w, int event)
 	w->wndproc(w, &e);
 }
 
-void SetWindowDirty(const Window* w)
+void SetWindowDirty(const Window *w)
 {
 	if (w == NULL) return;
 	SetDirtyBlocks(w->left, w->top, w->left + w->width, w->top + w->height);
@@ -293,7 +293,7 @@ void DeleteWindowByClass(WindowClass cls)
 }
 
 
-static Window* BringWindowToFront(Window* w);
+static Window *BringWindowToFront(Window *w);
 
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 {
@@ -320,7 +320,7 @@ static inline bool IsVitalWindow(const Window *w)
  * - New window, Chatbar (only if open)
  * @param w window that is put into the foreground
  */
-static Window* BringWindowToFront(Window* w)
+static Window *BringWindowToFront(Window *w)
 {
 	Window *v;
 	Window temp;
@@ -378,7 +378,7 @@ static Window *ForceFindDeletableWindow(void)
 	}
 }
 
-bool IsWindowOfPrototype(const Window* w, const Widget* widget)
+bool IsWindowOfPrototype(const Window *w, const Widget *widget)
 {
 	return (w->original_widget == widget);
 }
@@ -390,7 +390,7 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 
 	if (widget != NULL) {
 		uint index = 1;
-		const Widget* wi;
+		const Widget *wi;
 
 		for (wi = widget; wi->type != WWT_LAST; wi++) index++;
 
@@ -1070,7 +1070,7 @@ static bool HandleWindowDragging(void)
 	return false;
 }
 
-static Window* StartWindowDrag(Window* w)
+static Window *StartWindowDrag(Window *w)
 {
 	w->flags4 |= WF_DRAGGING;
 	_dragging_window = true;
@@ -1083,7 +1083,7 @@ static Window* StartWindowDrag(Window* w)
 	return w;
 }
 
-static Window* StartWindowSizing(Window* w)
+static Window *StartWindowSizing(Window *w)
 {
 	w->flags4 |= WF_SIZING;
 	_dragging_window = true;
@@ -1170,7 +1170,7 @@ stop_capt:;
 	}
 
 	if (w->window_class != WC_SMALLMAP) {
-		ViewPort* vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
+		ViewPort *vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
 
 		if (vp == NULL)
 			goto stop_capt;
@@ -1282,7 +1282,7 @@ static Window *MaybeBringWindowToFront(Window *w)
  * @param wparam Specifies additional message-specific information
  * @param lparam Specifies additional message-specific information
  */
-static void SendWindowMessageW(Window* w, uint msg, uint wparam, uint lparam)
+static void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam)
 {
 	WindowEvent e;
 
@@ -1536,14 +1536,14 @@ int GetMenuItemIndex(const Window *w, int x, int y)
 
 void InvalidateWindow(WindowClass cls, WindowNumber number)
 {
-	const Window* w;
+	const Window *w;
 
 	for (w = _windows; w != _last_window; w++) {
 		if (w->window_class == cls && w->window_number == number) SetWindowDirty(w);
 	}
 }
 
-void InvalidateWidget(const Window* w, byte widget_index)
+void InvalidateWidget(const Window *w, byte widget_index)
 {
 	const Widget *wi = &w->widget[widget_index];
 
@@ -1555,7 +1555,7 @@ void InvalidateWidget(const Window* w, byte widget_index)
 
 void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index)
 {
-	const Window* w;
+	const Window *w;
 
 	for (w = _windows; w != _last_window; w++) {
 		if (w->window_class == cls && w->window_number == number) {
@@ -1566,7 +1566,7 @@ void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_in
 
 void InvalidateWindowClasses(WindowClass cls)
 {
-	const Window* w;
+	const Window *w;
 
 	for (w = _windows; w != _last_window; w++) {
 		if (w->window_class == cls) SetWindowDirty(w);

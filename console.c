@@ -59,11 +59,11 @@ static void IConsoleClearCommand(void)
 static inline void IConsoleResetHistoryPos(void) {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
 
 
-static void IConsoleHistoryAdd(const char* cmd);
+static void IConsoleHistoryAdd(const char *cmd);
 static void IConsoleHistoryNavigate(int direction);
 
 // ** console window ** //
-static void IConsoleWndProc(Window* w, WindowEvent* e)
+static void IConsoleWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT: {
@@ -255,7 +255,7 @@ static void IConsoleClear(void)
 	IConsoleClearBuffer();
 }
 
-static void IConsoleWriteToLogFile(const char* string)
+static void IConsoleWriteToLogFile(const char *string)
 {
 	if (_iconsole_output_file != NULL) {
 		// if there is an console output file ... also print it there
@@ -331,7 +331,7 @@ void IConsoleOpen(void)  {if (_iconsole_mode == ICONSOLE_CLOSED) IConsoleSwitch(
  * scroll, etc. Put it to the beginning as it is the latest text
  * @param cmd Text to be entered into the 'history'
  */
-static void IConsoleHistoryAdd(const char* cmd)
+static void IConsoleHistoryAdd(const char *cmd)
 {
 	free(_iconsole_history[ICON_HISTORY_SIZE - 1]);
 
@@ -376,7 +376,7 @@ static void IConsoleHistoryNavigate(int direction)
  * @param color_code the colour of the command. Red in case of errors, etc.
  * @param string the message entered or output on the console (notice, error, etc.)
  */
-void IConsolePrint(uint16 color_code, const char* string)
+void IConsolePrint(uint16 color_code, const char *string)
 {
 #ifdef ENABLE_NETWORK
 	if (_redirect_console_to_client != 0) {
@@ -433,7 +433,7 @@ void CDECL IConsolePrintF(uint16 color_code, const char *s, ...)
  * @debug() in debug.c. You need at least a level 2 (developer) for debugging
  * messages to show up
  */
-void IConsoleDebug(const char* string)
+void IConsoleDebug(const char *string)
 {
 	if (_stdlib_developer > 1)
 		IConsolePrintF(_icolour_dbg, "dbg: %s", string);
@@ -444,7 +444,7 @@ void IConsoleDebug(const char* string)
  * errors or mishaps, but non-fatal. You need at least a level 1 (developer) for
  * debugging messages to show up
  */
-void IConsoleWarning(const char* string)
+void IConsoleWarning(const char *string)
 {
 	if (_stdlib_developer > 0)
 		IConsolePrintF(_icolour_warn, "WARNING: %s", string);
@@ -454,7 +454,7 @@ void IConsoleWarning(const char* string)
  * It is possible to print error information to the console. This can include
  * game errors, or errors in general you would want the user to notice
  */
-void IConsoleError(const char* string)
+void IConsoleError(const char *string)
 {
 	IConsolePrintF(_icolour_err, "ERROR: %s", string);
 }
@@ -693,7 +693,7 @@ static inline int IConsoleCopyInParams(char *dst, const char *src, uint bufpos)
  * @param tokencount the number of parameters passed
  * @param *tokens are the parameters given to the original command (0 is the first param)
  */
-static void IConsoleAliasExec(const IConsoleAlias* alias, byte tokencount, char* tokens[ICON_TOKEN_COUNT])
+static void IConsoleAliasExec(const IConsoleAlias *alias, byte tokencount, char *tokens[ICON_TOKEN_COUNT])
 {
 	const char *cmdptr;
 	char *aliases[ICON_MAX_ALIAS_LINES], aliasstream[ICON_MAX_STREAMSIZE];
@@ -859,7 +859,7 @@ static void IConsoleVarSetValue(const IConsoleVar *var, uint32 value)
  * @param *var the variable in question
  * @param *value the new value
  */
-static void IConsoleVarSetStringvalue(const IConsoleVar* var, const char* value)
+static void IConsoleVarSetStringvalue(const IConsoleVar *var, const char *value)
 {
 	if (var->type != ICONSOLE_VAR_STRING || var->addr == NULL) return;
 

@@ -41,9 +41,9 @@ void PlaceProc_BuyLand(TileIndex tile);
 /* train_gui.c */
 void ShowPlayerTrains(PlayerID player, StationID station);
 void ShowTrainViewWindow(const Vehicle *v);
-void ShowOrdersWindow(const Vehicle* v);
+void ShowOrdersWindow(const Vehicle *v);
 
-void ShowRoadVehViewWindow(const Vehicle* v);
+void ShowRoadVehViewWindow(const Vehicle *v);
 
 /* road_gui.c */
 void ShowBuildRoadToolbar(void);
@@ -54,7 +54,7 @@ void ShowPlayerRoadVehicles(PlayerID player, StationID station);
 void ShowBuildDocksToolbar(void);
 void ShowPlayerShips(PlayerID player, StationID station);
 
-void ShowShipViewWindow(const Vehicle* v);
+void ShowShipViewWindow(const Vehicle *v);
 
 /* aircraft_gui.c */
 void ShowBuildAirToolbar(void);
@@ -93,7 +93,7 @@ void ShowEstimatedCostOrIncome(int32 cost, int x, int y);
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y);
 
 void DrawStationCoverageAreaText(int sx, int sy, uint mask,int rad);
-void CheckRedrawStationCoverage(const Window* w);
+void CheckRedrawStationCoverage(const Window *w);
 
 void ShowSmallMap(void);
 void ShowExtraViewPortWindow(void);
@@ -134,7 +134,7 @@ enum {
 	ZOOM_NONE = 2, // hack, used to update the button status
 };
 
-bool DoZoomInOutWindow(int how, Window * w);
+bool DoZoomInOutWindow(int how, Window *w);
 void ShowBuildIndustryWindow(void);
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number);
 void ShowMusicWindow(void);

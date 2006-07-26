@@ -30,7 +30,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 {
 	YearMonthDay ymd;
 	const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
-	const Engine* e;
+	const Engine *e;
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, svi->base_cost * (_price.ship_base>>3)>>5);
@@ -138,7 +138,7 @@ static const WindowDesc _ship_refit_desc = {
 	ShipRefitWndProc,
 };
 
-static void ShowShipRefitWindow(const Vehicle* v)
+static void ShowShipRefitWindow(const Vehicle *v)
 {
 	Window *w;
 
@@ -282,7 +282,7 @@ static const WindowDesc _ship_details_desc = {
 	ShipDetailsWndProc
 };
 
-static void ShowShipDetailsWindow(const Vehicle* v)
+static void ShowShipDetailsWindow(const Vehicle *v)
 {
 	Window *w;
 	VehicleID veh = v->index;
@@ -297,7 +297,7 @@ static void ShowShipDetailsWindow(const Vehicle* v)
 
 void CcBuildShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
-	const Vehicle* v;
+	const Vehicle *v;
 	if (!success) return;
 
 	v = GetVehicle(_new_vehicle_id);
@@ -323,7 +323,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 		{
 			int count = 0;
 			int num = NUM_SHIP_ENGINES;
-			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
+			const Engine *e = GetEngine(SHIP_ENGINES_INDEX);
 
 			do {
 				if (HASBIT(e->player_avail, _local_player)) count++;
@@ -335,7 +335,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 
 		{
 			int num = NUM_SHIP_ENGINES;
-			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
+			const Engine *e = GetEngine(SHIP_ENGINES_INDEX);
 			int x = 2;
 			int y = 15;
 			int sel = WP(w,buildtrain_d).sel_index;
@@ -448,7 +448,7 @@ static void ShowBuildShipWindow(TileIndex tile)
 }
 
 
-static void ShipViewWndProc(Window* w, WindowEvent* e)
+static void ShipViewWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT: {
@@ -511,7 +511,7 @@ static void ShipViewWndProc(Window* w, WindowEvent* e)
 	} break;
 
 		case WE_CLICK: {
-			const Vehicle* v = GetVehicle(w->window_number);
+			const Vehicle *v = GetVehicle(w->window_number);
 
 			switch (e->click.widget) {
 				case 5: /* start stop */
@@ -554,7 +554,7 @@ static void ShipViewWndProc(Window* w, WindowEvent* e)
 
 		case WE_MOUSELOOP:
 		{
-			const Vehicle* v = GetVehicle(w->window_number);
+			const Vehicle *v = GetVehicle(w->window_number);
 			uint32 h = IsShipInDepot(v) ? 1 << 7 : 1 << 11;
 
 			if (h != w->hidden_state) {
@@ -591,9 +591,9 @@ static const WindowDesc _ship_view_desc = {
 	ShipViewWndProc
 };
 
-void ShowShipViewWindow(const Vehicle* v)
+void ShowShipViewWindow(const Vehicle *v)
 {
-	Window* w = AllocateWindowDescFront(&_ship_view_desc, v->index);
+	Window *w = AllocateWindowDescFront(&_ship_view_desc, v->index);
 
 	if (w != NULL) {
 		w->caption_color = v->owner;
@@ -722,7 +722,7 @@ static void ShipDepotClick(Window *w, int x, int y)
  * @param *v is the original vehicle to clone
  * @param *w is the window of the depot where the clone is build
  */
-static void HandleCloneVehClick(const Vehicle* v, const Window* w)
+static void HandleCloneVehClick(const Vehicle *v, const Window *w)
 {
 	if (v == NULL || v->type != VEH_Ship) return;
 
@@ -733,14 +733,14 @@ static void HandleCloneVehClick(const Vehicle* v, const Window* w)
 	ResetObjectToPlace();
 }
 
-static void ClonePlaceObj(const Window* w)
+static void ClonePlaceObj(const Window *w)
 {
-	const Vehicle* v = CheckMouseOverVehicle();
+	const Vehicle *v = CheckMouseOverVehicle();
 
 	if (v != NULL) HandleCloneVehClick(v, w);
 }
 
-static void ShipDepotWndProc(Window* w, WindowEvent* e)
+static void ShipDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
@@ -788,7 +788,7 @@ static void ShipDepotWndProc(Window* w, WindowEvent* e)
 
 	// check if a vehicle in a depot was clicked..
 	case WE_MOUSELOOP: {
-		const Vehicle* v = _place_clicked_vehicle;
+		const Vehicle *v = _place_clicked_vehicle;
 
 		// since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button
 		if (v != NULL && HASBIT(w->click_state, 8)) {
@@ -875,7 +875,7 @@ static const WindowDesc _ship_depot_desc = {
 
 void ShowShipDepotWindow(TileIndex tile)
 {
-	Window* w = AllocateWindowDescFront(&_ship_depot_desc,tile);
+	Window *w = AllocateWindowDescFront(&_ship_depot_desc,tile);
 
 	if (w != NULL) {
 		w->caption_color = GetTileOwner(w->window_number);
@@ -889,7 +889,7 @@ void ShowShipDepotWindow(TileIndex tile)
 }
 
 
-static void DrawSmallOrderList(const Vehicle* v, int x, int y)
+static void DrawSmallOrderList(const Vehicle *v, int x, int y)
 {
 	const Order *order;
 	int sel, i = 0;
@@ -1035,7 +1035,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 			return;
 		case 7: { /* Matrix to show vehicles */
 			uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / PLY_WND_PRC__SIZE_OF_ROW_BIG;
-			const Vehicle* v;
+			const Vehicle *v;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 

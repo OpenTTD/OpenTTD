@@ -20,7 +20,7 @@ typedef struct FileEntry {
 } FileEntry;
 
 static uint _file_count;
-static FileEntry* _files;
+static FileEntry *_files;
 
 #define SOUND_SLOT 63
 // Number of levels of panning per side
@@ -29,7 +29,7 @@ static FileEntry* _files;
 
 static void OpenBankFile(const char *filename)
 {
-	FileEntry* fe;
+	FileEntry *fe;
 	uint count;
 	uint i;
 
@@ -102,8 +102,8 @@ static void OpenBankFile(const char *filename)
 
 static bool SetBankSource(MixerChannel *mc, uint bank)
 {
-	const FileEntry* fe;
-	int8* mem;
+	const FileEntry *fe;
+	int8 *mem;
 	uint i;
 
 	if (bank >= _file_count) return false;
@@ -136,7 +136,7 @@ bool SoundInitialize(const char *filename)
 // Low level sound player
 static void StartSound(uint sound, int panning, uint volume)
 {
-	MixerChannel* mc;
+	MixerChannel *mc;
 	uint left_vol, right_vol;
 
 	if (volume == 0) return;
@@ -182,7 +182,7 @@ static const byte _sound_idx[] = {
 
 static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 {
-	const Window* w;
+	const Window *w;
 
 	if (msf.effect_vol == 0) return;
 

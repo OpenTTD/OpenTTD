@@ -25,24 +25,24 @@ int _aystar_stats_closed_size;
 
 // This looks in the Hash if a node exists in ClosedList
 //  If so, it returns the PathNode, else NULL
-static PathNode* AyStarMain_ClosedList_IsInList(AyStar* aystar, const AyStarNode* node)
+static PathNode* AyStarMain_ClosedList_IsInList(AyStar *aystar, const AyStarNode *node)
 {
 	return (PathNode*)Hash_Get(&aystar->ClosedListHash, node->tile, node->direction);
 }
 
 // This adds a node to the ClosedList
 //  It makes a copy of the data
-static void AyStarMain_ClosedList_Add(AyStar* aystar, const PathNode* node)
+static void AyStarMain_ClosedList_Add(AyStar *aystar, const PathNode *node)
 {
 	// Add a node to the ClosedList
-	PathNode* new_node = malloc(sizeof(*new_node));
+	PathNode *new_node = malloc(sizeof(*new_node));
 	*new_node = *node;
 	Hash_Set(&aystar->ClosedListHash, node->node.tile, node->node.direction, new_node);
 }
 
 // Checks if a node is in the OpenList
 //   If so, it returns the OpenListNode, else NULL
-static OpenListNode* AyStarMain_OpenList_IsInList(AyStar* aystar, const AyStarNode* node)
+static OpenListNode *AyStarMain_OpenList_IsInList(AyStar *aystar, const AyStarNode *node)
 {
 	return (OpenListNode*)Hash_Get(&aystar->OpenListHash, node->tile, node->direction);
 }
@@ -53,7 +53,7 @@ static OpenListNode* AyStarMain_OpenList_IsInList(AyStar* aystar, const AyStarNo
 static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
 {
 	// Return the item the Queue returns.. the best next OpenList item.
-	OpenListNode* res = (OpenListNode*)aystar->OpenListQueue.pop(&aystar->OpenListQueue);
+	OpenListNode *res = (OpenListNode*)aystar->OpenListQueue.pop(&aystar->OpenListQueue);
 	if (res != NULL) {
 		Hash_Delete(&aystar->OpenListHash, res->path.node.tile, res->path.node.direction);
 	}
@@ -63,10 +63,10 @@ static OpenListNode *AyStarMain_OpenList_Pop(AyStar *aystar)
 
 // Adds a node to the OpenList
 //  It makes a copy of node, and puts the pointer of parent in the struct
-static void AyStarMain_OpenList_Add(AyStar* aystar, PathNode* parent, const AyStarNode* node, int f, int g)
+static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, const AyStarNode *node, int f, int g)
 {
 	// Add a new Node to the OpenList
-	OpenListNode* new_node = malloc(sizeof(*new_node));
+	OpenListNode *new_node = malloc(sizeof(*new_node));
 	new_node->g = g;
 	new_node->path.parent = parent;
 	new_node->path.node = *node;
@@ -81,7 +81,7 @@ static void AyStarMain_OpenList_Add(AyStar* aystar, PathNode* parent, const AySt
  *  return values:
  *	AYSTAR_DONE : indicates we are done
  */
-int AyStarMain_CheckTile(AyStar* aystar, AyStarNode* current, OpenListNode* parent)
+int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
 {
 	int new_f, new_g, new_h;
 	PathNode *closedlist_parent;
@@ -147,7 +147,7 @@ int AyStarMain_CheckTile(AyStar* aystar, AyStarNode* current, OpenListNode* pare
  *	AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
  *	AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
  */
-int AyStarMain_Loop(AyStar* aystar)
+int AyStarMain_Loop(AyStar *aystar)
 {
 	int i, r;
 
@@ -191,7 +191,7 @@ int AyStarMain_Loop(AyStar* aystar)
 /*
  * This function frees the memory it allocated
  */
-void AyStarMain_Free(AyStar* aystar)
+void AyStarMain_Free(AyStar *aystar)
 {
 	aystar->OpenListQueue.free(&aystar->OpenListQueue, false);
 	/* 2nd argument above is false, below is true, to free the values only
@@ -207,7 +207,7 @@ void AyStarMain_Free(AyStar* aystar)
  * This function make the memory go back to zero
  *  This function should be called when you are using the same instance again.
  */
-void AyStarMain_Clear(AyStar* aystar)
+void AyStarMain_Clear(AyStar *aystar)
 {
 	// Clean the Queue, but not the elements within. That will be done by
 	// the hash.
@@ -266,7 +266,7 @@ int AyStarMain_Main(AyStar *aystar) {
  * clear() automatically when the algorithm finishes
  * g is the cost for starting with this node.
  */
-void AyStarMain_AddStartNode(AyStar* aystar, AyStarNode* start_node, uint g)
+void AyStarMain_AddStartNode(AyStar *aystar, AyStarNode *start_node, uint g)
 {
 #ifdef AYSTAR_DEBUG
 	printf("[AyStar] Starting A* Algorithm from node (%d, %d, %d)\n",
@@ -275,7 +275,7 @@ void AyStarMain_AddStartNode(AyStar* aystar, AyStarNode* start_node, uint g)
 	AyStarMain_OpenList_Add(aystar, NULL, start_node, 0, g);
 }
 
-void init_AyStar(AyStar* aystar, Hash_HashProc hash, uint num_buckets)
+void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
 {
 	// Allocated the Hash for the OpenList and ClosedList
 	init_Hash(&aystar->OpenListHash, hash, num_buckets);

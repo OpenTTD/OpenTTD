@@ -240,7 +240,7 @@ void EnginesDailyLoop(void)
 	if (_cur_year >= 130) return;
 
 	for (i = 0; i != lengthof(_engines); i++) {
-		Engine* e = &_engines[i];
+		Engine *e = &_engines[i];
 
 		if (e->flags & ENGINE_INTRODUCING) {
 			if (e->flags & ENGINE_PREVIEWING) {
@@ -489,7 +489,7 @@ static EngineRenew *AllocateEngineRenew(void)
  * engine type from the given renewlist */
 static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine)
 {
-	EngineRenew* er = (EngineRenew*)erl; /* Fetch first element */
+	EngineRenew *er = (EngineRenew*)erl; /* Fetch first element */
 	while (er) {
 		if (er->from == engine) return er;
 		er = er->next;
@@ -497,9 +497,9 @@ static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine)
 	return NULL;
 }
 
-void RemoveAllEngineReplacement(EngineRenewList* erl)
+void RemoveAllEngineReplacement(EngineRenewList *erl)
 {
-	EngineRenew* er = (EngineRenew*)(*erl); /* Fetch first element */
+	EngineRenew *er = (EngineRenew*)(*erl); /* Fetch first element */
 	while (er) {
 		er->from = INVALID_ENGINE; /* "Deallocate" all elements */
 		er = er->next;
@@ -513,7 +513,7 @@ EngineID EngineReplacement(EngineRenewList erl, EngineID engine)
 	return er == NULL ? INVALID_ENGINE : er->to;
 }
 
-int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID new_engine, uint32 flags)
+int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID new_engine, uint32 flags)
 {
 	EngineRenew *er;
 
@@ -538,10 +538,10 @@ int32 AddEngineReplacement(EngineRenewList* erl, EngineID old_engine, EngineID n
 	return 0;
 }
 
-int32 RemoveEngineReplacement(EngineRenewList* erl, EngineID engine, uint32 flags)
+int32 RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, uint32 flags)
 {
-	EngineRenew* er = (EngineRenew*)(*erl); /* Start at the first element */
-	EngineRenew* prev = NULL;
+	EngineRenew *er = (EngineRenew*)(*erl); /* Start at the first element */
+	EngineRenew *prev = NULL;
 
 	while (er)
 	{

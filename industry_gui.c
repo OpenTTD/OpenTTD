@@ -279,7 +279,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_PAINT: {
-		const Industry* i = GetIndustry(w->window_number);
+		const Industry *i = GetIndustry(w->window_number);
 
 		SetDParam(0, w->window_number);
 		DrawWindowWidgets(w);
@@ -433,7 +433,7 @@ static const WindowDesc _industry_view_desc = {
 
 void ShowIndustryViewWindow(int industry)
 {
-	Window* w = AllocateWindowDescFront(&_industry_view_desc, industry);
+	Window *w = AllocateWindowDescFront(&_industry_view_desc, industry);
 
 	if (w != NULL) {
 		w->flags4 |= WF_DISABLE_VP_SCROLL;
@@ -571,7 +571,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		n = 0;
 
 		while (p < _num_industry_sort) {
-			const Industry* i = GetIndustry(_industry_sort[p]);
+			const Industry *i = GetIndustry(_industry_sort[p]);
 
 			SetDParam(0, i->index);
 			if (i->produced_cargo[0] != CT_INVALID) {
@@ -658,7 +658,7 @@ static const WindowDesc _industry_directory_desc = {
 
 void ShowIndustryDirectory(void)
 {
-	Window* w = AllocateWindowDescFront(&_industry_directory_desc, 0);
+	Window *w = AllocateWindowDescFront(&_industry_directory_desc, 0);
 
 	if (w != NULL) {
 		w->vscroll.cap = 16;

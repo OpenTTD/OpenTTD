@@ -68,7 +68,7 @@ extern void ShowOSErrorBox(const char *buf);
  * caused by the user, i.e. missing files or fatal configuration errors.
  * Post-0.4.0 since Celestar doesn't want this in SVN before. --pasky */
 
-void CDECL error(const char* s, ...)
+void CDECL error(const char *s, ...)
 {
 	va_list va;
 	char buf[512];
@@ -230,7 +230,7 @@ md_continue_here:;
 }
 
 
-static void ParseResolution(int res[2], const char* s)
+static void ParseResolution(int res[2], const char *s)
 {
 	char *t = strchr(s, 'x');
 	if (t == NULL) {
@@ -310,7 +310,7 @@ static void LoadIntroGame(void)
 extern void DedicatedFork(void);
 #endif
 
-int ttd_main(int argc, char* argv[])
+int ttd_main(int argc, char *argv[])
 {
 	MyGetOptData mgo;
 	int i;
@@ -1001,7 +1001,7 @@ void GameLoop(void)
 
 void BeforeSaveGame(void)
 {
-	const Window* w = FindWindowById(WC_MAIN_WINDOW, 0);
+	const Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 
 	if (w != NULL) {
 		_saved_scrollpos_x = WP(w, const vp_d).scrollpos_x;
@@ -1034,7 +1034,7 @@ static void ConvertTownOwner(void)
 // before savegame version 4, the name of the company determined if it existed
 static void CheckIsPlayerActive(void)
 {
-	Player* p;
+	Player *p;
 
 	FOR_ALL_PLAYERS(p) {
 		if (p->name_1 != 0) p->is_active = true;
@@ -1044,7 +1044,7 @@ static void CheckIsPlayerActive(void)
 // since savegame version 4.1, exclusive transport rights are stored at towns
 static void UpdateExclusiveRights(void)
 {
-	Town* t;
+	Town *t;
 
 	FOR_ALL_TOWNS(t) {
 		if (t->xy != 0) t->exclusivity = (byte)-1;
@@ -1264,13 +1264,13 @@ bool AfterLoadGame(void)
 
 	/* Elrails got added in rev 24 */
 	if (CheckSavegameVersion(24)) {
-		Vehicle* v;
+		Vehicle *v;
 		uint i;
 		TileIndex t;
 		RailType min_rail = RAILTYPE_ELECTRIC;
 
 		for (i = 0; i < lengthof(_engines); i++) {
-			Engine* e = GetEngine(i);
+			Engine *e = GetEngine(i);
 			if (e->type == VEH_Train &&
 					(e->railtype != RAILTYPE_RAIL || RailVehInfo(i)->engclass == 2)) {
 				e->railtype++;
