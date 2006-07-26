@@ -792,20 +792,16 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 		}
 		return _price.build_rail >> 1;
 	} else if (IsBridge(tile) && IsBridgeRamp(tile) && GetBridgeTransportType(tile) == TRANSPORT_RAIL) {
-		const Vehicle* v;
 		TileIndexDiff delta;
 		int32 cost;
 
 		if (!CheckTileOwnership(tile)) return CMD_ERROR;
 
 		endtile = GetOtherBridgeEnd(tile);
-		// Make sure there's no vehicle on the bridge
-		v = FindVehicleBetween(tile, endtile, GetBridgeHeightRamp(tile));
-		if (v != NULL) {
-			return_cmd_error(VehicleInTheWayErrMsg(v));
-		}
 
-		if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(endtile)) {
+		if (!EnsureNoVehicle(tile) ||
+				!EnsureNoVehicle(endtile) ||
+				FindVehicleBetween(tile, endtile, GetBridgeHeightRamp(tile)) != NULL) {
 			return_cmd_error(STR_8803_TRAIN_IN_THE_WAY);
 		}
 
