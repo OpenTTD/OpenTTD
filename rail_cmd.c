@@ -73,13 +73,11 @@ void ShowTrainDepotWindow(TileIndex tile);
 
 static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags)
 {
-	RailTileType type = GetRailTileType(tile);
 	TrackBits current; /* The current track layout */
 	TrackBits future; /* The track layout we want to build */
 	_error_message = STR_1001_IMPOSSIBLE_TRACK_COMBINATION;
 
-	if (type != RAIL_TILE_NORMAL && type != RAIL_TILE_SIGNALS)
-		return false; /* Cannot build anything on depots and checkpoints */
+	if (!IsPlainRailTile(tile)) return false;
 
 	/* So, we have a tile with tracks on it (and possibly signals). Let's see
 	 * what tracks first */
@@ -94,7 +92,7 @@ static bool CheckTrackCombination(TileIndex tile, TrackBits to_build, uint flags
 	}
 
 	/* Let's see if we may build this */
-	if ((flags & DC_NO_RAIL_OVERLAP) || type == RAIL_TILE_SIGNALS) {
+	if (flags & DC_NO_RAIL_OVERLAP || HasSignals(tile)) {
 		/* If we are not allowed to overlap (flag is on for ai players or we have
 		 * signals on the tile), check that */
 		return future == TRACK_BIT_HORZ || future == TRACK_BIT_VERT;
@@ -670,7 +668,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (flags & DC_EXEC) {
-		if (GetRailTileType(tile) != RAIL_TILE_SIGNALS) {
+		if (!HasSignals(tile)) {
 			// there are no signals at all on this tile yet
 			_m[tile].m5 |= RAIL_TILE_SIGNALS; // change into signals
 			_m[tile].m2 |= 0xF0;              // all signals are on
@@ -748,7 +746,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	track = TrackdirToTrack(trackdir); /* trackdir might have changed, keep track in sync */
 
 	// copy the signal-style of the first rail-piece if existing
-	if (GetRailTileType(tile) == RAIL_TILE_SIGNALS && GetTrackBits(tile) != 0) { /* XXX: GetTrackBits check useless? */
+	if (HasSignals(tile)) {
 		signals = _m[tile].m3 & SignalOnTrack(track);
 		if (signals == 0) signals = SignalOnTrack(track); /* Can this actually occur? */
 
@@ -980,14 +978,14 @@ static int32 ClearTile_Track(TileIndex tile, byte flags)
 	m5 = _m[tile].m5;
 
 	if (flags & DC_AUTO) {
-		if (GetRailTileType(tile) == RAIL_TILE_DEPOT_WAYPOINT) {
-			return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
-		}
-
 		if (!IsTileOwner(tile, _current_player))
 			return_cmd_error(STR_1024_AREA_IS_OWNED_BY_ANOTHER);
 
-		return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+		if (IsPlainRailTile(tile)) {
+			return_cmd_error(STR_1008_MUST_REMOVE_RAILROAD_TRACK);
+		} else {
+			return_cmd_error(STR_2004_BUILDING_MUST_BE_DEMOLISHED);
+		}
 	}
 
 	cost = 0;
@@ -1303,15 +1301,14 @@ static void DrawTile_Track(TileInfo *ti)
 
 	_drawtile_track_palette = SPRITE_PALETTE(PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile)));
 
-	if (GetRailTileType(ti->tile) != RAIL_TILE_DEPOT_WAYPOINT) {
+	if (IsPlainRailTile(ti->tile)) {
 		TrackBits rails = GetTrackBits(ti->tile);
 
 		DrawTrackBits(ti, rails);
 
 		if (_display_opt & DO_FULL_DETAIL) DrawTrackDetails(ti);
 
-		/* draw signals also? */
-		if (GetRailTileType(ti->tile) == RAIL_TILE_SIGNALS) DrawSignals(ti->tile, rails);
+		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails);
 	} else {
 		/* draw depots / waypoints */
 		const DrawTrackSeqStruct *drss;
@@ -1724,9 +1721,7 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 	uint z = ti->z;
 
 	if (tileh == SLOPE_FLAT) return z;
-	if (GetRailTileType(ti->tile) == RAIL_TILE_DEPOT_WAYPOINT) {
-		return z + TILE_HEIGHT;
-	} else {
+	if (IsPlainRailTile(ti->tile)) {
 		uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
 
 		if (f != 0) {
@@ -1734,20 +1729,22 @@ static uint GetSlopeZ_Track(const TileInfo* ti)
 			tileh = _inclined_tileh[f - 15]; // inclined foundation
 		}
 		return z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh);
+	} else {
+		return z + TILE_HEIGHT;
 	}
 }
 
 static Slope GetSlopeTileh_Track(TileIndex tile, Slope tileh)
 {
 	if (tileh == SLOPE_FLAT) return SLOPE_FLAT;
-	if (GetRailTileType(tile) == RAIL_TILE_DEPOT_WAYPOINT) {
-		return SLOPE_FLAT;
-	} else {
+	if (IsPlainRailTile(tile)) {
 		uint f = GetRailFoundation(tileh, GetTrackBits(tile));
 
 		if (f == 0) return tileh;
 		if (f < 15) return SLOPE_FLAT; // leveled foundation
 		return _inclined_tileh[f - 15]; // inclined foundation
+	} else {
+		return SLOPE_FLAT;
 	}
 }
 
@@ -1790,8 +1787,7 @@ static void TileLoop_Track(TileIndex tile)
 
 	if (quick_return) return;
 
-	// Don't continue tile loop for depots
-	if (GetRailTileType(tile) == RAIL_TILE_DEPOT_WAYPOINT) return;
+	if (!IsPlainRailTile(tile)) return;
 
 	new_ground = RAIL_GROUND_GRASS;
 
@@ -1888,15 +1884,11 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 
 	if (mode != TRANSPORT_RAIL) return 0;
 
-	if (GetRailTileType(tile) != RAIL_TILE_DEPOT_WAYPOINT) {
+	if (IsPlainRailTile(tile)) {
 		TrackBits rails = GetTrackBits(tile);
 		uint32 ret = rails * 0x101;
 
-		if (GetRailTileType(tile) != RAIL_TILE_SIGNALS) {
-			if (rails == TRACK_BIT_CROSS) ret |= 0x40;
-		} else {
-			/* has_signals */
-
+		if (HasSignals(tile)) {
 			a = _m[tile].m3;
 			b = _m[tile].m2;
 
@@ -1913,6 +1905,8 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 			if ((b & 0x40) == 0) ret |= 0x07100000;
 			if ((b & 0x20) == 0) ret |= 0x20080000;
 			if ((b & 0x10) == 0) ret |= 0x08200000;
+		} else {
+			if (rails == TRACK_BIT_CROSS) ret |= 0x40;
 		}
 		return ret;
 	} else {

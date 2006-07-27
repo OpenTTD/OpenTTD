@@ -361,7 +361,7 @@ void DrawCatenary(const TileInfo *ti)
 {
 	switch (GetTileType(ti->tile)) {
 		case MP_RAILWAY:
-			if (GetRailTileType(ti->tile) == RAIL_TILE_DEPOT_WAYPOINT && GetRailTileSubtype(ti->tile) == RAIL_SUBTYPE_DEPOT) {
+			if (IsRailDepot(ti->tile)) {
 				const SortableSpriteStruct *sss = &CatenarySpriteData[WIRE_DEPOT_SW + ReverseDiagDir(GetRailDepotDirection(ti->tile))];
 				AddSortableSpriteToDraw( sss->image, ti->x + sss->x_offset, ti->y + sss->y_offset,
 					sss->x_size, sss->y_size, sss->z_size, GetSlopeZ(ti->x, ti->y) + sss->z_offset);
