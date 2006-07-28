@@ -936,19 +936,7 @@ void GameLoop(void)
 	if (_dirkeys) HandleKeyScrolling();
 
 	// make a screenshot?
-	if (_make_screenshot != 0) {
-		switch (_make_screenshot) {
-			case 1: // make small screenshot
-				UndrawMouseCursor();
-				ShowScreenshotResult(MakeScreenshot());
-				break;
-
-			case 2: // make large screenshot
-				ShowScreenshotResult(MakeWorldScreenshot(-(int)MapMaxX() * TILE_PIXELS, 0, (MapMaxX() + MapMaxY()) * TILE_PIXELS, (MapMaxX() + MapMaxY()) * TILE_PIXELS >> 1, 0));
-				break;
-		}
-		_make_screenshot = 0;
-	}
+	if (IsScreenshotRequested()) ShowScreenshotResult(MakeScreenshot());
 
 	// switch game mode?
 	if (_switch_mode != SM_NONE) {

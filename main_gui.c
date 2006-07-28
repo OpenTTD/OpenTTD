@@ -28,6 +28,7 @@
 #include "variables.h"
 #include "train.h"
 #include "unmovable_map.h"
+#include "screenshot.h"
 
 #include "network_data.h"
 #include "network_client.h"
@@ -403,14 +404,24 @@ static void MenuClickNewspaper(int index)
 	}
 }
 
+static void MenuClickSmallScreenshot(void)
+{
+	SetScreenshotType(SC_VIEWPORT);
+}
+
+static void MenuClickWorldScreenshot(void)
+{
+	SetScreenshotType(SC_WORLD);
+}
+
 static void MenuClickHelp(int index)
 {
 	switch (index) {
-		case 0: PlaceLandBlockInfo(); break;
-		case 2: IConsoleSwitch();     break;
-		case 3: _make_screenshot = 1; break;
-		case 4: _make_screenshot = 2; break;
-		case 5: ShowAboutWindow();    break;
+		case 0: PlaceLandBlockInfo();       break;
+		case 2: IConsoleSwitch();           break;
+		case 3: MenuClickSmallScreenshot(); break;
+		case 4: MenuClickWorldScreenshot(); break;
+		case 5: ShowAboutWindow();          break;
 	}
 }
 
@@ -1894,8 +1905,8 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_SHIFT | WKC_F10:ShowBuildAirToolbar(); break;
 		case WKC_SHIFT | WKC_F11: ShowBuildTreesToolbar(); break;
 		case WKC_SHIFT | WKC_F12: ShowMusicWindow(); break;
-		case WKC_CTRL  | 'S': _make_screenshot = 1; break;
-		case WKC_CTRL  | 'G': _make_screenshot = 2; break;
+		case WKC_CTRL  | 'S': MenuClickSmallScreenshot(); break;
+		case WKC_CTRL  | 'G': MenuClickWorldScreenshot(); break;
 		case WKC_CTRL | WKC_ALT | 'C': if (!_networking) ShowCheatWindow(); break;
 		case 'A': ShowBuildRailToolbar(_last_built_railtype, 4); break; /* Invoke Autorail */
 		case 'L': ShowTerraformToolbar(); break;
@@ -2095,8 +2106,8 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_F9: ToolbarScenPlaceSign(w); break;
 		case WKC_F10: ShowMusicWindow(); break;
 		case WKC_F11: PlaceLandBlockInfo(); break;
-		case WKC_CTRL | 'S': _make_screenshot = 1; break;
-		case WKC_CTRL | 'G': _make_screenshot = 2; break;
+		case WKC_CTRL | 'S': MenuClickSmallScreenshot(); break;
+		case WKC_CTRL | 'G': MenuClickWorldScreenshot(); break;
 		case 'L': ShowEditorTerraformToolBar(); break;
 		}
 		break;

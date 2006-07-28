@@ -19,6 +19,7 @@
 #include "vehicle.h"
 #include "station.h"
 #include "strings.h"
+#include "screenshot.h"
 
 #ifdef ENABLE_NETWORK
 	#include "table/strings.h"
@@ -914,10 +915,10 @@ DEF_CONSOLE_CMD(ConScreenShot)
 
 	if (argc > 3) return false;
 
-	_make_screenshot = 1;
+	SetScreenshotType(SC_VIEWPORT);
 	if (argc > 1) {
 		if (strcmp(argv[1], "big") == 0 || (argc == 3 && strcmp(argv[2], "big") == 0))
-			_make_screenshot = 2;
+			SetScreenshotType(SC_WORLD);
 
 		if (strcmp(argv[1], "no_con") == 0 || (argc == 3 && strcmp(argv[2], "no_con") == 0))
 			IConsoleClose();

@@ -16,6 +16,7 @@
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;
 uint _cur_screenshot_format;
+ScreenshotType current_screenshot_type;
 
 // called by the ScreenShot proc to generate screenshot lines.
 typedef void ScreenshotCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n);
@@ -431,6 +432,7 @@ void InitializeScreenshotFormats(void)
 		}
 	_cur_screenshot_format = j;
 	_num_screenshot_formats = lengthof(_screenshot_formats);
+	make_screenshot = SC_NONE;
 }
 
 const char *GetScreenshotFormatDesc(int i)
@@ -518,27 +520,52 @@ static char *MakeScreenshotName(const char *ext)
 	return filename;
 }
 
-bool MakeScreenshot(void)
+void SetScreenshotType(ScreenshotType t)
+{
+	current_screenshot_type = t;
+}
+
+bool IsScreenshotRequested(void)
+{
+	return (current_screenshot_type != SC_NONE);
+}
+
+static bool MakeSmallScreenshot(void)
 {
 	const ScreenshotFormat *sf = _screenshot_formats + _cur_screenshot_format;
 	return sf->proc(MakeScreenshotName(sf->extension), CurrentScreenCallback, NULL, _screen.width, _screen.height, 8, _cur_palette);
 }
 
-bool MakeWorldScreenshot(int left, int top, int width, int height, int zoom)
+static bool MakeWorldScreenshot(void)
 {
 	ViewPort vp;
 	const ScreenshotFormat *sf;
 
-	vp.zoom = zoom;
+	vp.zoom = 0;
 	vp.left = 0;
 	vp.top = 0;
-	vp.virtual_width = width;
-	vp.width = width >> zoom;
-	vp.virtual_height = height;
-	vp.height = height >> zoom;
-	vp.virtual_left = left;
-	vp.virtual_top = top;
+	vp.virtual_left = -(int)MapMaxX() * TILE_PIXELS;
+	vp.virtual_top = 0;
+	vp.virtual_width = (MapMaxX() + MapMaxY()) * TILE_PIXELS;
+	vp.width = vp.virtual_width;
+	vp.virtual_height = (MapMaxX() + MapMaxY()) * TILE_PIXELS >> 1;
+	vp.height = vp.virtual_height;
 
 	sf = _screenshot_formats + _cur_screenshot_format;
 	return sf->proc(MakeScreenshotName(sf->extension), LargeWorldCallback, &vp, vp.width, vp.height, 8, _cur_palette);
 }
+
+bool MakeScreenshot(void)
+{
+	switch (current_screenshot_type) {
+		case SC_VIEWPORT:
+			UndrawMouseCursor();
+			current_screenshot_type = SC_NONE;
+			return MakeSmallScreenshot();
+		case SC_WORLD:
+			current_screenshot_type = SC_NONE;
+			return MakeWorldScreenshot();
+		default: return false;
+	}
+}
+
