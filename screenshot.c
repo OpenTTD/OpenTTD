@@ -432,7 +432,7 @@ void InitializeScreenshotFormats(void)
 		}
 	_cur_screenshot_format = j;
 	_num_screenshot_formats = lengthof(_screenshot_formats);
-	make_screenshot = SC_NONE;
+	current_screenshot_type = SC_NONE;
 }
 
 const char *GetScreenshotFormatDesc(int i)
