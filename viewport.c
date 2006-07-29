@@ -463,6 +463,15 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 		return;
 	}
 
+	pt = RemapCoords(x, y, z);
+	spr = GetSprite(image & SPRITE_MASK);
+	if ((ps->left   = (pt.x += spr->x_offs)) >= vd->dpi.left + vd->dpi.width ||
+			(ps->right  = (pt.x +  spr->width )) <= vd->dpi.left ||
+			(ps->top    = (pt.y += spr->y_offs)) >= vd->dpi.top + vd->dpi.height ||
+			(ps->bottom = (pt.y +  spr->height)) <= vd->dpi.top) {
+		return;
+	}
+
 	vd->spritelist_mem += sizeof(ParentSpriteToDraw);
 
 	ps->image = image;
@@ -474,16 +483,6 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 
 	ps->zmin = z;
 	ps->zmax = z + dz - 1;
-
-	pt = RemapCoords(x, y, z);
-
-	spr = GetSprite(image & SPRITE_MASK);
-	if ((ps->left   = (pt.x += spr->x_offs)) >= vd->dpi.left + vd->dpi.width ||
-			(ps->right  = (pt.x +  spr->width )) <= vd->dpi.left ||
-			(ps->top    = (pt.y += spr->y_offs)) >= vd->dpi.top + vd->dpi.height ||
-			(ps->bottom = (pt.y +  spr->height)) <= vd->dpi.top) {
-		return;
-	}
 
 	ps->unk16 = 0;
 	ps->child = NULL;
