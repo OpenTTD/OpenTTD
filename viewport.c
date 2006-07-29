@@ -1044,7 +1044,7 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 
 			while (*++psd2 != NULL) {
 				ParentSpriteToDraw* ps2 = *psd2;
-				bool mustswap = false;
+				ParentSpriteToDraw** psd3;
 
 				if (ps2->unk16 & 1) continue;
 
@@ -1054,37 +1054,37 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 				if (ps->xmax > ps2->xmin && ps->xmin < ps2->xmax && // overlap in X?
 						ps->ymax > ps2->ymin && ps->ymin < ps2->ymax && // overlap in Y?
 						ps->zmax > ps2->zmin && ps->zmin < ps2->zmax) { // overlap in Z?
-					// Use X+Y+Z as the sorting order, so sprites nearer the bottom of the screen,
-					// and with higher Z elevation, draw in front.
-					// Here X,Y,Z are the coordinates of the "center of mass" of the sprite,
-					// i.e. X=(left+right)/2, etc.
-					// However, since we only care about order, don't actually calculate the division / 2.
-					mustswap =
-						ps->xmin + ps->xmax + ps->ymin + ps->ymax + ps->zmin + ps->zmax >
-						ps2->xmin + ps2->xmax + ps2->ymin + ps2->ymax + ps2->zmin + ps2->zmax;
+					/* Use X+Y+Z as the sorting order, so sprites closer to the bottom of
+					 * the screen and with higher Z elevation, are drawn in front.
+					 * Here X,Y,Z are the coordinates of the "center of mass" of the sprite,
+					 * i.e. X=(left+right)/2, etc.
+					 * However, since we only care about order, don't actually divide / 2
+					 */
+					if (ps->xmin + ps->xmax + ps->ymin + ps->ymax + ps->zmin + ps->zmax <=
+							ps2->xmin + ps2->xmax + ps2->ymin + ps2->ymax + ps2->zmin + ps2->zmax) {
+						continue;
+					}
 				} else {
-					// No overlap; use the original TTD sort algorithm.
-					mustswap =
-						ps->xmax >= ps2->xmin &&
-						ps->ymax >= ps2->ymin &&
-						ps->zmax >= ps2->zmin && (
-							ps->xmin >= ps2->xmax ||
-							ps->ymin >= ps2->ymax ||
-							ps->zmin >= ps2->zmax
-						);
+					if (ps->xmax < ps2->xmin ||
+							ps->ymax < ps2->ymin ||
+							ps->zmax < ps2->zmin || (
+								ps->xmin < ps2->xmax &&
+								ps->ymin < ps2->ymax &&
+								ps->zmin < ps2->zmax
+							)) {
+						continue;
+					}
 				}
-				if (mustswap) {
-					// Swap the two sprites ps and ps2 using bubble-sort algorithm.
-					ParentSpriteToDraw** psd3 = psd;
 
-					do {
-						ParentSpriteToDraw* temp = *psd3;
-						*psd3 = ps2;
-						ps2 = temp;
+				// Swap the two sprites ps and ps2 using bubble-sort algorithm.
+				psd3 = psd;
+				do {
+					ParentSpriteToDraw* temp = *psd3;
+					*psd3 = ps2;
+					ps2 = temp;
 
-						psd3++;
-					} while (psd3 <= psd2);
-				}
+					psd3++;
+				} while (psd3 <= psd2);
 			}
 		} else {
 			psd++;
