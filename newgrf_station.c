@@ -582,42 +582,35 @@ int AllocateSpecToStation(const StationSpec *statspec, Station *st, bool exec)
  * @param specindex Index of the custom station within the Station's spec list.
  * @return Indicates whether the StationSpec was deallocated.
  */
-bool DeallocateSpecFromStation(Station *st, byte specindex)
+void DeallocateSpecFromStation(Station* st, byte specindex)
 {
-	bool freeable = true;
-
 	/* specindex of 0 (default) is never freeable */
-	if (specindex == 0) return false;
+	if (specindex == 0) return;
 
 	/* Check all tiles over the station to check if the specindex is still in use */
 	BEGIN_TILE_LOOP(tile, st->trainst_w, st->trainst_h, st->train_tile) {
 		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index && IsRailwayStation(tile) && GetCustomStationSpecIndex(tile) == specindex) {
-			freeable = false;
-			break;
+			return;
 		}
 	} END_TILE_LOOP(tile, st->trainst_w, st->trainst_h, st->train_tile)
 
-	if (freeable) {
-		/* This specindex is no longer in use, so deallocate it */
-		st->speclist[specindex].spec     = NULL;
-		st->speclist[specindex].grfid    = 0;
-		st->speclist[specindex].localidx = 0;
+	/* This specindex is no longer in use, so deallocate it */
+	st->speclist[specindex].spec     = NULL;
+	st->speclist[specindex].grfid    = 0;
+	st->speclist[specindex].localidx = 0;
 
-		/* If this was the highest spec index, reallocate */
-		if (specindex == st->num_specs - 1) {
-			for (; st->speclist[st->num_specs - 1].grfid == 0 && st->num_specs > 1; st->num_specs--);
+	/* If this was the highest spec index, reallocate */
+	if (specindex == st->num_specs - 1) {
+		for (; st->speclist[st->num_specs - 1].grfid == 0 && st->num_specs > 1; st->num_specs--);
 
-			if (st->num_specs > 1) {
-				st->speclist = realloc(st->speclist, st->num_specs * sizeof(*st->speclist));
-			} else {
-				free(st->speclist);
-				st->num_specs = 0;
-				st->speclist  = NULL;
-			}
+		if (st->num_specs > 1) {
+			st->speclist = realloc(st->speclist, st->num_specs * sizeof(*st->speclist));
+		} else {
+			free(st->speclist);
+			st->num_specs = 0;
+			st->speclist  = NULL;
 		}
 	}
-
-	return freeable;
 }
 
 /** Draw representation of a station tile for GUI purposes.
