@@ -26,6 +26,20 @@
 static bool _added_tile_sprite;
 static bool _offset_ground_sprites;
 
+/* The in-game coordiante system looks like this *
+ *                                               *
+ *                    ^ Z                        *
+ *                    |                          *
+ *                    |                          *
+ *                    |                          *
+ *                    |                          *
+ *                 /     \                       *
+ *              /           \                    *
+ *           /                 \                 *
+ *        /                       \              *
+ *   X <                             > Y         *
+ */
+
 typedef struct StringSpriteToDraw {
 	uint16 string;
 	uint16 color;
@@ -57,14 +71,14 @@ typedef struct ParentSpriteToDraw {
 	int32 top;
 	int32 right;
 	int32 bottom;
-	int32 tile_x;
-	int32 tile_y;
-	int32 tile_right;
-	int32 tile_bottom;
+	int32 xmin;
+	int32 ymin;
+	int32 xmax;
+	int32 ymax;
 	ChildScreenSpriteToDraw *child;
 	byte unk16;
-	byte tile_z;
-	byte tile_z_bottom;
+	byte zmin;
+	byte zmax;
 } ParentSpriteToDraw;
 
 // Quick hack to know how much memory to reserve when allocating from the spritelist
@@ -452,14 +466,14 @@ void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, 
 	vd->spritelist_mem += sizeof(ParentSpriteToDraw);
 
 	ps->image = image;
-	ps->tile_x = x;
-	ps->tile_right = x + w - 1;
+	ps->xmin = x;
+	ps->xmax = x + w - 1;
 
-	ps->tile_y = y;
-	ps->tile_bottom = y + h - 1;
+	ps->ymin = y;
+	ps->ymax = y + h - 1;
 
-	ps->tile_z = z;
-	ps->tile_z_bottom = z + dz - 1;
+	ps->zmin = z;
+	ps->zmax = z + dz - 1;
 
 	pt = RemapCoords(x, y, z);
 
@@ -1035,28 +1049,35 @@ static void ViewportSortParentSprites(ParentSpriteToDraw *psd[])
 				if (ps2->unk16 & 1) continue;
 
 				// Decide which sort order algorithm to use, based on whether the sprites have some overlapping area.
-				if (((ps2->tile_x > ps->tile_x && ps2->tile_x < ps->tile_right) ||
-				    (ps2->tile_right > ps->tile_x && ps2->tile_x < ps->tile_right)) &&        // overlap in X
-				    ((ps2->tile_y > ps->tile_y && ps2->tile_y < ps->tile_bottom) ||
-				    (ps2->tile_bottom > ps->tile_y && ps2->tile_y < ps->tile_bottom)) &&      // overlap in Y
-				    ((ps2->tile_z > ps->tile_z && ps2->tile_z < ps->tile_z_bottom) ||
-				    (ps2->tile_z_bottom > ps->tile_z && ps2->tile_z < ps->tile_z_bottom)) ) { // overlap in Z
+				if ((
+							(ps2->xmin > ps->xmin && ps2->xmin < ps->xmax) ||
+							(ps2->xmax > ps->xmin && ps2->xmin < ps->xmax)
+						) && ( // overlap in X
+							(ps2->ymin > ps->ymin && ps2->ymin < ps->ymax) ||
+							(ps2->ymax > ps->ymin && ps2->ymin < ps->ymax)
+						) && ( // overlap in Y
+							(ps2->zmin > ps->zmin && ps2->zmin < ps->zmax) ||
+							(ps2->zmax > ps->zmin && ps2->zmin < ps->zmax)
+						)) { // overlap in Z
 					// Sprites overlap.
 					// Use X+Y+Z as the sorting order, so sprites nearer the bottom of the screen,
 					// and with higher Z elevation, draw in front.
 					// Here X,Y,Z are the coordinates of the "center of mass" of the sprite,
 					// i.e. X=(left+right)/2, etc.
 					// However, since we only care about order, don't actually calculate the division / 2.
-					mustswap = ps->tile_x + ps->tile_right + ps->tile_y + ps->tile_bottom + ps->tile_z + ps->tile_z_bottom >
-					           ps2->tile_x + ps2->tile_right + ps2->tile_y + ps2->tile_bottom + ps2->tile_z + ps2->tile_z_bottom;
+					mustswap =
+						ps->xmin + ps->xmax + ps->ymin + ps->ymax + ps->zmin + ps->zmax >
+						ps2->xmin + ps2->xmax + ps2->ymin + ps2->ymax + ps2->zmin + ps2->zmax;
 				} else {
 					// No overlap; use the original TTD sort algorithm.
-					mustswap = (ps->tile_right >= ps2->tile_x &&
-					            ps->tile_bottom >= ps2->tile_y &&
-					            ps->tile_z_bottom >= ps2->tile_z &&
-					           (ps->tile_x >= ps2->tile_right ||
-					            ps->tile_y >= ps2->tile_bottom ||
-					            ps->tile_z >= ps2->tile_z_bottom));
+					mustswap =
+						ps->xmax >= ps2->xmin &&
+						ps->ymax >= ps2->ymin &&
+						ps->zmax >= ps2->zmin && (
+							ps->xmin >= ps2->xmax ||
+							ps->ymin >= ps2->ymax ||
+							ps->zmin >= ps2->zmax
+						);
 				}
 				if (mustswap) {
 					// Swap the two sprites ps and ps2 using bubble-sort algorithm.
@@ -1081,7 +1102,7 @@ static void ViewportDrawParentSprites(ParentSpriteToDraw *psd[])
 {
 	for (; *psd != NULL; psd++) {
 		const ParentSpriteToDraw* ps = *psd;
-		Point pt = RemapCoords(ps->tile_x, ps->tile_y, ps->tile_z);
+		Point pt = RemapCoords(ps->xmin, ps->ymin, ps->zmin);
 		const ChildScreenSpriteToDraw* cs;
 
 		DrawSprite(ps->image, pt.x, pt.y);
