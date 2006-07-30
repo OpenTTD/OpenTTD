@@ -270,7 +270,12 @@ void ShowBuildIndustryWindow(void)
 	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt_ptr->landscape],0);
 }
 
-#define NEED_ALTERB	((_game_mode == GM_EDITOR || _cheats.setup_prod.value) && (i->accepts_cargo[0] == CT_INVALID || i->accepts_cargo[0] == CT_VALUABLES))
+static inline bool IsProductionAlterable(const Industry *i)
+{
+	return ((_game_mode == GM_EDITOR || _cheats.setup_prod.value) &&
+		     (i->accepts_cargo[0] == CT_INVALID || i->accepts_cargo[0] == CT_VALUABLES));
+}
+
 static void IndustryViewWndProc(Window *w, WindowEvent *e)
 {
 	// WP(w,vp2_d).data_1 is for the editbox line
@@ -307,20 +312,19 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			SetDParam(1, i->total_production[0]);
 
 			SetDParam(2, i->pct_transported[0] * 100 >> 8);
-			DrawString(4 + (NEED_ALTERB ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
+			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
 			// Let's put out those buttons..
-			if (NEED_ALTERB)
+			if (IsProductionAlterable(i))
 				DrawArrowButtons(5, 127, 3, (WP(w,vp2_d).data_2 == 1) ? WP(w,vp2_d).data_3 : 0, true);
 
 			if (i->produced_cargo[1] != CT_INVALID) {
 				SetDParam(0, _cargoc.names_long[i->produced_cargo[1]]);
 				SetDParam(1, i->total_production[1]);
 				SetDParam(2, i->pct_transported[1] * 100 >> 8);
-				DrawString(4 + (NEED_ALTERB ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
+				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
 				// Let's put out those buttons..
-				if (NEED_ALTERB) {
+				if (IsProductionAlterable(i))
 					DrawArrowButtons(5, 137, 3, (WP(w,vp2_d).data_2 == 2) ? WP(w,vp2_d).data_3 : 0, true);
-				}
 			}
 		}
 
@@ -338,7 +342,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			i = GetIndustry(w->window_number);
 
 			// We should work if needed..
-			if (!NEED_ALTERB) return;
+			if (!IsProductionAlterable(i)) return;
 
 			x = e->click.pt.x;
 			line = (e->click.pt.y - 127) / 10;
