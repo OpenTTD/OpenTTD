@@ -333,33 +333,24 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 		switch (e->click.widget) {
 		case 5: {
-			int line;
-			int x;
-			byte b;
+			int line, x;
 
 			i = GetIndustry(w->window_number);
 
 			// We should work if needed..
-			if (!NEED_ALTERB)
-				return;
+			if (!NEED_ALTERB) return;
 
 			x = e->click.pt.x;
 			line = (e->click.pt.y - 127) / 10;
 			if (e->click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
 				if (IS_INT_INSIDE(x, 5, 25) ) {
-					// clicked buttons
+					/* Clicked buttons, decrease or increase production */
 					if (x < 15) {
-						// decrease
-						i->production_rate[line] /= 2;
-						if (i->production_rate[line] < 4)
-							i->production_rate[line] = 4;
+						i->production_rate[line] = maxu(i->production_rate[line] / 2, 1);
 					} else {
-						// increase
-						b = i->production_rate[line] * 2;
-						if (i->production_rate[line] >= 128)
-							b=255;
-						i->production_rate[line] = b;
+						i->production_rate[line] = minu(i->production_rate[line] * 2, 255);
 					}
+
 					UpdateIndustryProduction(i);
 					SetWindowDirty(w);
 					w->flags4 |= 5 << WF_TIMEOUT_SHL;
@@ -375,13 +366,12 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 							w->window_number);
 				}
 			}
-			}
-			break;
+		} break;
 		case 6:
 			i = GetIndustry(w->window_number);
 			ScrollMainWindowToTile(i->xy + TileDiffXY(1, 1));
-			break;
-		}
+		}	break;
+
 		}
 		break;
 	case WE_TIMEOUT:
@@ -395,7 +385,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			Industry* i = GetIndustry(w->window_number);
 			int line = WP(w,vp2_d).data_1;
 
-			i->production_rate[line] = clamp(atoi(e->edittext.str), 32, 2040) / 8;
+			i->production_rate[line] = clampu(atoi(e->edittext.str), 0, 255);
 			UpdateIndustryProduction(i);
 			SetWindowDirty(w);
 		}
