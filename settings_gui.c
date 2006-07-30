@@ -192,7 +192,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 17: /* Autosave options */
-			_opt_ptr->autosave = e->dropdown.index;
+			_opt.autosave = _opt_newgame.autosave = e->dropdown.index;
 			SetWindowDirty(w);
 			break;
 		case 24: /* Change interface language */
