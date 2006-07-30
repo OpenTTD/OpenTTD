@@ -1156,6 +1156,8 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				src_head = src_head->next;
 			}
 			AddWagonToConsist(src->u.rail.other_multiheaded_part, src);
+			// previous line set the front engine to the old front. We need to clear that
+			src->u.rail.other_multiheaded_part->first = NULL;
 		}
 
 		if (HASBIT(p2, 0) && src_head != NULL && src_head != src) {
