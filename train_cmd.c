@@ -958,8 +958,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	// if nothing is selected as destination, try and find a matching vehicle to drag to.
 	if (d == INVALID_VEHICLE) {
-		dst = NULL;
-		if (!IsTrainEngine(src)) dst = FindGoodVehiclePos(src);
+		dst = IsTrainEngine(src) ? NULL : FindGoodVehiclePos(src);
 	} else {
 		dst = GetVehicle(d);
 	}
@@ -1009,14 +1008,13 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (IsTrainEngine(u) && IsMultiheaded(u) && u->u.rail.other_multiheaded_part != NULL) {
 				engine = u;
 			}
-				if (engine != NULL && engine->u.rail.other_multiheaded_part == u) {
-					engine = NULL;
-				}
-				if (u == dst) {
-					if (engine != NULL) dst = engine->u.rail.other_multiheaded_part;
-					break;
-				}
-
+			if (engine != NULL && engine->u.rail.other_multiheaded_part == u) {
+				engine = NULL;
+			}
+			if (u == dst) {
+				if (engine != NULL) dst = engine->u.rail.other_multiheaded_part;
+				break;
+			}
 		}
 	}
 
@@ -1111,8 +1109,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 		} else {
 			// if moving within the same chain, dont use dst_head as it may get invalidated
-			if (src_head == dst_head)
-				dst_head = NULL;
+			if (src_head == dst_head) dst_head = NULL;
 			// unlink single wagon from linked list
 			src_head = UnlinkWagon(src, src_head);
 			GetLastEnginePart(src)->next = NULL;
@@ -1188,7 +1185,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			src_head = NULL;	// don't do anything more to this train since the new call will do it
 		}
 
-		if (src_head) {
+		if (src_head != NULL) {
 			NormaliseTrainConsist(src_head);
 			TrainConsistChanged(src_head);
 			if (IsFrontEngine(src_head)) {
@@ -1202,7 +1199,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			InvalidateWindow(WC_VEHICLE_DEPOT, src_head->tile);
 		};
 
-		if (dst_head) {
+		if (dst_head != NULL) {
 			NormaliseTrainConsist(dst_head);
 			TrainConsistChanged(dst_head);
 			if (IsFrontEngine(dst_head)) {
