@@ -345,7 +345,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 
 			x = e->click.pt.x;
 			line = (e->click.pt.y - 127) / 10;
-			if (e->click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line]) {
+			if (e->click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
 				if (IS_INT_INSIDE(x, 5, 25) ) {
 					// clicked buttons
 					if (x < 15) {
