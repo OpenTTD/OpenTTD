@@ -241,7 +241,7 @@ void DrawFoundation(TileInfo *ti, uint f)
 		AddSortableSpriteToDraw(
 			HASBIT(M(SLOPE_W) | M(SLOPE_S) | M(SLOPE_E) | M(SLOPE_N), ti->tileh) ?
 				sprite_base + (f - 15) : SPR_FOUNDATION_BASE + ti->tileh,
-			ti->x, ti->y, 1, 1, 1, ti->z
+			ti->x, ti->y, 16, 16, 1, ti->z
 		);
 #undef M
 

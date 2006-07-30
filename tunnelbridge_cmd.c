@@ -858,10 +858,10 @@ static void DrawBridgePillars(PalSpriteID image, const TileInfo *ti, int x, int 
 		const byte *p;
 
 		static const byte _tileh_bits[4][8] = {
-			{2,1,8,4,  16,11,0,9},
-			{1,8,4,2,  11,16,9,0},
-			{4,8,1,2,  16,11,0,9},
-			{2,4,8,1,  11,16,9,0},
+			{ 2, 1, 8, 4,  16,  2, 0, 9 },
+			{ 1, 8, 4, 2,   2, 16, 9, 0 },
+			{ 4, 8, 1, 2,  16,  2, 0, 9 },
+			{ 2, 4, 8, 1,   2, 16, 9, 0 }
 		};
 
 		if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
@@ -876,12 +876,15 @@ static void DrawBridgePillars(PalSpriteID image, const TileInfo *ti, int x, int 
 		}
 
 		for (; z >= front_height || z >= back_height; z -= TILE_HEIGHT) {
+			/* HACK set height of the BB of pillars to 1, because the origin of the
+			 * sprites is at the top
+			 */
 			if (z >= front_height) { // front facing pillar
-				AddSortableSpriteToDraw(image, x, y, p[4], p[5], 0x28, z);
+				AddSortableSpriteToDraw(image, x, y, p[4], p[5], 1, z);
 			}
 
 			if (drawfarpillar && z >= back_height && z < i - TILE_HEIGHT) { // back facing pillar
-				AddSortableSpriteToDraw(image, x - p[6], y - p[7], p[4], p[5], 0x28, z);
+				AddSortableSpriteToDraw(image, x - p[6], y - p[7], p[4], p[5], 1, z);
 			}
 		}
 	}
@@ -987,7 +990,12 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 
 			// draw ramp
 			if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
-			AddSortableSpriteToDraw(image, ti->x, ti->y, 16, 16, 7, ti->z);
+			/* HACK set the height of the BB of a sloped ramp to 1 so a vehicle on
+			 * it doesn't disappear behind it
+			 */
+			AddSortableSpriteToDraw(
+				image, ti->x, ti->y, 16, 16, ti->tileh == SLOPE_FLAT ? 1 : 8, ti->z
+			);
 		} else {
 			// bridge middle part.
 			Axis axis = GetBridgeAxis(ti->tile);
