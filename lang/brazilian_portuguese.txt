@@ -838,6 +838,7 @@ STR_TOWNNAME_ROMANIAN                                           :Romeno
 STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suiça
 STR_TOWNNAME_DANISH                                             :Dinamarquês
+STR_TOWNNAME_TURKISH                                            :Turco
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)
@@ -1249,6 +1250,7 @@ STR_NETWORK_7_PLAYERS                                           :7 jogadores
 STR_NETWORK_8_PLAYERS                                           :8 jogadores
 STR_NETWORK_9_PLAYERS                                           :9 jogadores
 STR_NETWORK_10_PLAYERS                                          :10 jogadores
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Limite de companhias:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita o servidor para um certo valor de companhias
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Max espectadores:
@@ -1449,6 +1451,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ferrovia com si
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Terreno inclinado na direção incorreta para a estrada
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Deverá remover a estrada primeiro
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Trabalhos em ruas em progresso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construir Estradas
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecionar Ponte de Estrada
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Não é possível construir estrada aqui...

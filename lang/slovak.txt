@@ -1450,6 +1450,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kola
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Teren ma nevhodny sklon pre stavbu cesty
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Cesta musi byt najskor odstranena
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Prebiehaju cestne prace
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vystavba cesty
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vyber cestny most
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Tu sa neda postavit cesta...
@@ -2767,6 +2768,7 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Tu sa zo
 STR_REPLACE_HELP                                                :{BLACK}Umoznuje vybrat typ lokomotivy, ktory automaticky sa zameni za iny typ, ak vlaky s takouto lokomotivou sa zastavia v depe
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena masiny vlak predlzila.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotiva sa nevyraba
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popisov

@@ -820,24 +820,25 @@ STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
-STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Ensk
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Ensk (Upphafleg)
 STR_TOWNNAME_FRENCH                                             :Frönsk
 STR_TOWNNAME_GERMAN                                             :Þýsk
-STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Enska (Aukaleg)
-STR_TOWNNAME_LATIN_AMERICAN                                     :Latin-Amerísk
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Ensk (Aukaleg)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Rómönsk-Amerísk
 STR_TOWNNAME_SILLY                                              :Fáránleg
 STR_TOWNNAME_SWEDISH                                            :Sænsk
 STR_TOWNNAME_DUTCH                                              :Hollensk
 STR_TOWNNAME_FINNISH                                            :Finnsk
 STR_TOWNNAME_POLISH                                             :Pólsk
 STR_TOWNNAME_SLOVAKISH                                          :Slóvakísk
-STR_TOWNNAME_NORWEGIAN                                          :Norska
+STR_TOWNNAME_NORWEGIAN                                          :Norsk
 STR_TOWNNAME_HUNGARIAN                                          :Ungversk
 STR_TOWNNAME_AUSTRIAN                                           :Austurrísk
 STR_TOWNNAME_ROMANIAN                                           :Rúmensk
 STR_TOWNNAME_CZECH                                              :Tékknesk
 STR_TOWNNAME_SWISS                                              :Svissnesk
 STR_TOWNNAME_DANISH                                             :Dönsk
+STR_TOWNNAME_TURKISH                                            :Tyrknesk
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
@@ -1237,7 +1238,22 @@ STR_NETWORK_INTERNET                                            :Internet
 STR_NETWORK_LAN_INTERNET                                        :Staðarnet / Internet
 STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (auglýsa)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 leikmenn
+STR_NETWORK_1_PLAYERS                                           :1 leikmaður
+STR_NETWORK_2_PLAYERS                                           :2 leikmenn
+STR_NETWORK_3_PLAYERS                                           :3 leikmenn
+STR_NETWORK_4_PLAYERS                                           :4 leikmenn
+STR_NETWORK_5_PLAYERS                                           :5 leikmenn
+STR_NETWORK_6_PLAYERS                                           :6 leikmenn
+STR_NETWORK_7_PLAYERS                                           :7 leikmenn
+STR_NETWORK_8_PLAYERS                                           :8 leikmenn
+STR_NETWORK_9_PLAYERS                                           :9 leikmenn
+STR_NETWORK_10_PLAYERS                                          :10 leikmenn
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Hámarksfjöldi fyrirtækja:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Takmarka fjölda fyrirtækja á vefþjóni
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Hámarksfjöldi áhorfanda:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Takmarka fjölda áhorfanda á vefþjóninum
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Tungumál:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aðrir notendur munu vita hvaða tungumál er talað á þjóninum
@@ -1335,6 +1351,7 @@ STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :rangt leikjalyk
 STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :rangt notandanúmer í DoCommand
 STR_NETWORK_ERR_CLIENT_KICKED                                   :hent út af þjón
 STR_NETWORK_ERR_CLIENT_CHEATER                                  :reyndi að svindla
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :vefþjónn fullur
 ############ End of leave-in-this-order
 STR_NETWORK_CLIENT_JOINED                                       :hefur bæst við leikinn
 STR_NETWORK_GIVE_MONEY                                          :gaf fyrirtækinu þínu pening ({CURRENCY})
@@ -1433,6 +1450,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Lestarteinn með
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Land hallar í ranga átt fyrir vegagerð
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Verður að fjarlægja veg fyrst
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vegaframkvæmdir standa yfir
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vegagerð
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Veldu vegabrú
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Get ekki lagt veg hér...
@@ -2398,6 +2416,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Get ekki
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Get ekki eytt þessari skipun...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Get ekki breytt þessari skipun...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Get ekki fært farartæki...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Aftari dráttarvagn fylgir alltaf fremri hluta
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Get ekki selt lest...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Get ekki fundið leit til staðbundins skýlis
@@ -2748,6 +2767,8 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Veldu hv
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Sýnir hvaða vagn kemur í stað þess sem valinn er vinstra megin
 STR_REPLACE_HELP                                                :{BLACK}Þetta gerir þér kleift að skipta út öllum vögum af einni tegund með annarri, þegar þeir fara í lestarskýli
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Selja lestarvagna: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Heldur lengd lestar með því að fjarlægja vagna (framan frá) ef útskipting dráttarvagna myndi lengja hana.
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ekki hægt að smíða dráttarvagn
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} merki

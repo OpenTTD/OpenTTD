@@ -1241,8 +1241,10 @@ STR_NETWORK_8_PLAYERS                                           :8 xogadores
 STR_NETWORK_9_PLAYERS                                           :9 xogadores
 STR_NETWORK_10_PLAYERS                                          :10 xogadores
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Nº máx. de compañías:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limita-lo servidor a unha certa cantidade de compañías
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Nº máx. de espectadores:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limita-lo servidor a unha certa cantidade de espectadores
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Idioma falado:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Outros xogadores sabrán cal é o idioma que se fala no servidor

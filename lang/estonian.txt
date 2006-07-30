@@ -1451,6 +1451,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Raudtee kombo-s
 ##id 0x1800
 STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Maapind on tee ehitamiseks sobimatu kaldega
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Enne on vaja tee eemaldada
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Tee ehitus käib
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Tee ehitamine
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vali sillatüüp
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Siia ei saa teed ehitada...
