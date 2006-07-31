@@ -29,6 +29,9 @@ char* CDECL str_fmt(const char* str, ...);
  * replaces them with a question mark '?' */
 void str_validate(char *str);
 
+/** Convert the given string to lowercase */
+void strtolower(char *str);
+
 /** Only allow valid ascii-function codes. Filter special codes like BELL and
  * so on [we need a special filter here later]
  * @param key character to be checked

@@ -4,11 +4,9 @@
 #include "openttd.h"
 #include "fileio.h"
 #include "functions.h"
+#include "string.h"
 #include "macros.h"
 #include "variables.h"
-#if defined(UNIX) || defined(__OS2__)
-#include <ctype.h> // required for tolower()
-#endif
 
 /*************************************************/
 /* FILE IO ROUTINES ******************************/
@@ -114,20 +112,16 @@ bool FiosCheckFileExists(const char *filename)
 
 	f = fopen(buf, "rb");
 #if !defined(WIN32)
-	if (f == NULL) {
-		char *s;
-		// Make lower case and try again
-		for (s = buf + strlen(_path.data_dir) - 1; *s != 0; s++)
-			*s = tolower(*s);
+	if (f == NULL) { // Make lower case and try again
+		strtolower(buf + strlen(_path.data_dir) - 1);
 		f = fopen(buf, "rb");
 
 #if defined SECOND_DATA_DIR
-	// tries in the 2nd data directory
+		// tries in the 2nd data directory
 		if (f == NULL) {
 			sprintf(buf, "%s%s", _path.second_data_dir, filename);
-			for (s = buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
-			*s = tolower(*s);
-		f = fopen(buf, "rb");
+			strtolower(buf + strlen(_path.second_data_dir) - 1);
+			f = fopen(buf, "rb");
 		}
 #endif
 	}
@@ -151,18 +145,14 @@ FILE *FioFOpenFile(const char *filename)
 	f = fopen(buf, "rb");
 #if !defined(WIN32)
 	if (f == NULL) {
-		char *s;
-		// Make lower case and try again
-		for (s = buf + strlen(_path.data_dir) - 1; *s != 0; s++)
-			*s = tolower(*s);
+		strtolower(buf + strlen(_path.data_dir) - 1);
 		f = fopen(buf, "rb");
 
 #if defined SECOND_DATA_DIR
 		// tries in the 2nd data directory
 		if (f == NULL) {
 			sprintf(buf, "%s%s", _path.second_data_dir, filename);
-			for (s = buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
-				*s = tolower(*s);
+			strtolower(buf + strlen(_path.second_data_dir) - 1);
 			f = fopen(buf, "rb");
 		}
 #endif
@@ -182,19 +172,15 @@ void FioOpenFile(int slot, const char *filename)
 	f = fopen(buf, "rb");
 #if !defined(WIN32)
 	if (f == NULL) {
-		char *s;
-		// Make lower case and try again
-		for (s = buf + strlen(_path.data_dir) - 1; *s != 0; s++)
-			*s = tolower(*s);
+		strtolower(buf + strlen(_path.data_dir) - 1);
 		f = fopen(buf, "rb");
 
 #if defined SECOND_DATA_DIR
 	// tries in the 2nd data directory
 		if (f == NULL) {
 			sprintf(buf, "%s%s", _path.second_data_dir, filename);
-			for (s = buf + strlen(_path.second_data_dir) - 1; *s != 0; s++)
-			*s = tolower(*s);
-		f = fopen(buf, "rb");
+			strtolower(buf + strlen(_path.second_data_dir) - 1);
+			f = fopen(buf, "rb");
 		}
 
 	if (f == NULL)

@@ -4,6 +4,9 @@
 #include "string.h"
 
 #include <stdarg.h>
+#if defined(UNIX) || defined(__OS2__)
+#include <ctype.h> // required for tolower()
+#endif
 
 void ttd_strlcat(char *dst, const char *src, size_t size)
 {
@@ -62,4 +65,9 @@ void str_validate(char *str)
 {
 	for (; *str != '\0'; str++)
 		if (!IsValidAsciiChar(*str)) *str = '?';
+}
+
+void strtolower(char *str)
+{
+	for (; *str != '\0'; str++) *str = tolower(*str);
 }
