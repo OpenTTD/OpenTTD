@@ -1,3 +1,15 @@
+0.4.8-RC2 (2006-07-31)
+------------------------------------------------------------------------
+- Feature: Add Italian town names as we have an official Italian translation
+- Codechange: Verify the presence of music files in the gm/ folder. This should also solve some 100% CPU buildup for some users.
+- Fix: Certain combinations of trains crash when moved around inside the depot.
+- Fix: Reversed arrow-sign in the multiplayer list column headers on sort by name
+- Fix: Industry production change button doesn't work for oilrig passangers.
+- Fix: Helicopters stopping in depot after autorenew/autoreplace
+- Fix: MorphOS crashes when you go a level up in the root level
+- Fix: UDP sockets were used even if network-availability was set to false
+- Fix: Crash when trying to build a vehicle type that is set to a max of zero
+
 0.4.8-RC1 (2006-06-28)
 ------------------------------------------------------------------------
 - Feature: Add Turkish town names as we have an official Turkish translation

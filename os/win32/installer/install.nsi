@@ -2,7 +2,7 @@
 !define APPNAME "OpenTTD"
 !define APPNAMEANDVERSION "OpenTTD 0.4.8.0"
 !define APPVERSION "0.4.8.0"
-!define INSTALLERVERSION 20 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
+!define INSTALLERVERSION 21 ;NEED TO UPDATE THIS FOR EVERY RELEASE!!!
 !define MUI_ICON "..\..\..\openttd.ico"
 !define MUI_UNICON "..\..\..\openttd.ico"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "welcome.bmp"

@@ -27,31 +27,27 @@ URL: http://bugs.openttd.org
 -50	Trains chosing an alternative path when encountering a 1-way presignal instead of waiting
 -47	Low rating calculation and cargo loading priority
 -20	Low Saving files when run from gdb 2005-12-06 Unconfirmed
-- 9	Low [MorphOS] write to NULL when going to device root in filerequester 2005-11-28 Assigned Christian Rosentreter
 
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 
--1436419	Vehicles profits gone negitive.......bug
+-1459262	Towns building too many roads way too long now
+-1458995	Another bug with smooth_economy
+-1458894	Crashed suddenly from scenario editor
+-1436419	Vehicles profits gone negative.......bug
 -1434000	Error in Transfer-Function
 -1427531	Newspapers problem
 -1417453	Makefile and Variables issue
 -1397638	Economics bug?
--1395628	Trackpad panning/scrolling broken
 -1394799	Dual headed engines disagreement
 -1393415	NPF & one-way sigs
--1389999	Child windows not sticking
 -1389986	Shares problem (nightly 3330)
--1362784	Incorrect vehicule profit calcul with inflation on
 -1299162	Music volume too low
 -1250094	Towns Shrink when center tile is built on
 -1244842	Multiplayer interface bug (0.4.0.1)
 -1212267	station visited twice when servicing
--1211764	AI companies behave weird on the stock market
 -1208170	Duplicate station names can be created
 -1197116	Some stations are cargo-less
--1188897	Station with cargo enroute_from INVALID_STATION
--1181888	Invaild Station Order => Crash
 -1174829	Waypoint / Orders Bug
 -1168820	Some mouse and keyboard events are lost
 -1167810	Cargo payment after deleting stations (st->xy = 0)
@@ -63,32 +59,20 @@ Minor Bugs for 0.4.8
 ------------------------------------------------------------------------
 URL: http://sourceforge.net/tracker/?atid=669662&group_id=103924&func=browse
 
--1424115	Reversed arrow sign in list view column headers
 -1412031	fast forward scrolling is also fast forward :)
 -1387424	overtake insolvent company is to cheap
 -1382782	Loan interest calculated 'wrong'
--1372891	Performance loss with NTP & NPF
--1296259	Autosave override for multiplayer games
--1242753	Town population minus 10
 -1236320	Bug in main menu allows moving screen
 -1201284	permanent hilight in a depot
--1193870	keep the date counter running
 -1185852	Scrollbars get arbitrarily small
 -1184634	Replace vehicles window bug
--1183253	Incorrect Load vs Loading Sprites
--1183251	Hangar sprite does not update when refit.
 -1160732	little bug with transparency
 -1117731	Editor-StartingDate
--1114237	Wrong autoreplace hint
 -1108046	game freezes
--1106889	Chat Interface enhancements
--1104358	train lost message - history
 -1102174	Bug if 3 people buy 25% shares in one company
--1087407	wrong message in history
 -1084620	Minor bug considering buses/trucks
 -1034310	color mauve in diagrams
 -1030661	It's possible to build a tunnel under oil wells
--1009171	Canals and locks at sea level cause flooding
 -0993516	Canal + bouy -> wrong graphics.
 -0987891	Large UFO destruction bug
 -0987883	Aircraft landing/taking off
