@@ -1,4 +1,4 @@
-/* $Id */
+/* $Id$ */
 
 #ifndef MUSIC_H
 #define MUSIC_H
