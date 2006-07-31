@@ -103,7 +103,7 @@ void FioCloseAll(void)
 		FioCloseFile(i);
 }
 
-bool FiosCheckFileExists(const char *filename)
+bool FioCheckFileExists(const char *filename)
 {
 	FILE *f;
 	char buf[MAX_PATH];

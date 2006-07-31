@@ -2996,7 +2996,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 		_cur_stage = stage;
 		_cur_spriteid = load_index;
 		for (c = _first_grfconfig; c != NULL; c = c->next) {
-			if (!FiosCheckFileExists(c->filename)) {
+			if (!FioCheckFileExists(c->filename)) {
 				// TODO: usrerror()
 				error("NewGRF file missing: %s", c->filename);
 			}
