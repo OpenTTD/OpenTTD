@@ -839,6 +839,7 @@ STR_TOWNNAME_CZECH                                              :Tjeckiska
 STR_TOWNNAME_SWISS                                              :Schweiziska
 STR_TOWNNAME_DANISH                                             :Danska
 STR_TOWNNAME_TURKISH                                            :Turkiska
+STR_TOWNNAME_ITALIAN                                            :Italienska
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)

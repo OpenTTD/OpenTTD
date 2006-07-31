@@ -896,6 +896,7 @@ STR_TOWNNAME_CZECH                                              :Ceska
 STR_TOWNNAME_SWISS                                              :¦výcarská
 STR_TOWNNAME_DANISH                                             :Dánská
 STR_TOWNNAME_TURKISH                                            :Turecká
+STR_TOWNNAME_ITALIAN                                            :Italská
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libry (£)

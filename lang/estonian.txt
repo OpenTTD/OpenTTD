@@ -839,6 +839,7 @@ STR_TOWNNAME_CZECH                                              :T¨ehhi
 STR_TOWNNAME_SWISS                                              :¦veitsi
 STR_TOWNNAME_DANISH                                             :Taani
 STR_TOWNNAME_TURKISH                                            :Türgi
+STR_TOWNNAME_ITALIAN                                            :Itaalia
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Naelad (£)
