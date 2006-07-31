@@ -105,34 +105,11 @@ void FioCloseAll(void)
 
 bool FioCheckFileExists(const char *filename)
 {
-	FILE *f;
-	char buf[MAX_PATH];
+	FILE *f = FioFOpenFile(filename);
+	if (f == NULL) return false;
 
-	sprintf(buf, "%s%s", _path.data_dir, filename);
-
-	f = fopen(buf, "rb");
-#if !defined(WIN32)
-	if (f == NULL) { // Make lower case and try again
-		strtolower(buf + strlen(_path.data_dir) - 1);
-		f = fopen(buf, "rb");
-
-#if defined SECOND_DATA_DIR
-		// tries in the 2nd data directory
-		if (f == NULL) {
-			sprintf(buf, "%s%s", _path.second_data_dir, filename);
-			strtolower(buf + strlen(_path.second_data_dir) - 1);
-			f = fopen(buf, "rb");
-		}
-#endif
-	}
-#endif
-
-	if (f == NULL) {
-		return false;
-	} else {
-		fclose(f);
-		return true;
-	}
+	fclose(f);
+	return true;
 }
 
 FILE *FioFOpenFile(const char *filename)
@@ -164,34 +141,9 @@ FILE *FioFOpenFile(const char *filename)
 
 void FioOpenFile(int slot, const char *filename)
 {
-	FILE *f;
-	char buf[MAX_PATH];
+	FILE *f = FioFOpenFile(filename);
 
-	sprintf(buf, "%s%s", _path.data_dir, filename);
-
-	f = fopen(buf, "rb");
-#if !defined(WIN32)
-	if (f == NULL) {
-		strtolower(buf + strlen(_path.data_dir) - 1);
-		f = fopen(buf, "rb");
-
-#if defined SECOND_DATA_DIR
-	// tries in the 2nd data directory
-		if (f == NULL) {
-			sprintf(buf, "%s%s", _path.second_data_dir, filename);
-			strtolower(buf + strlen(_path.second_data_dir) - 1);
-			f = fopen(buf, "rb");
-		}
-
-	if (f == NULL)
-		sprintf(buf, "%s%s", _path.data_dir, filename);	//makes it print the primary datadir path instead of the secundary one
-
-#endif
-	}
-#endif
-
-	if (f == NULL)
-		error("Cannot open file '%s'", buf);
+	if (f == NULL) error("Cannot open file '%s%s'", _path.data_dir, filename);
 
 	FioCloseFile(slot); // if file was opened before, close it
 	_fio.handles[slot] = f;
