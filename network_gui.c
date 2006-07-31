@@ -129,7 +129,7 @@ static int CDECL NGameClientSorter(const void *a, const void *b)
 	const NetworkGameList *cmp1 = *(const NetworkGameList**)a;
 	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
 	/* Reverse as per default we are interested in most-clients first */
-	int r = cmp2->info.clients_on - cmp1->info.clients_on;
+	int r = cmp1->info.clients_on - cmp2->info.clients_on;
 
 	if (r == 0) r = cmp1->info.clients_max - cmp2->info.clients_max;
 	if (r == 0) r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
