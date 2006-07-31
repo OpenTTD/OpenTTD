@@ -15,11 +15,11 @@
 #define FIO_BUFFER_SIZE 512
 
 typedef struct {
-	byte *buffer, *buffer_end;
-	uint32 pos;
-	FILE *cur_fh;
-	FILE *handles[64];
-	byte buffer_start[512];
+	byte *buffer, *buffer_end;          ///< position pointer in local buffer and last valid byte of buffer
+	uint32 pos;                         ///< current (system) position in file
+	FILE *cur_fh;                       ///< current file handle
+	FILE *handles[64];                  ///< array of file handles we can have open
+	byte buffer_start[FIO_BUFFER_SIZE]; ///< local buffer when read from file
 } Fio;
 
 static Fio _fio;
@@ -34,7 +34,8 @@ void FioSeekTo(uint32 pos, int mode)
 {
 	if (mode == SEEK_CUR) pos += FioGetPos();
 	_fio.buffer = _fio.buffer_end = _fio.buffer_start + FIO_BUFFER_SIZE;
-	fseek(_fio.cur_fh, (_fio.pos=pos), SEEK_SET);
+	_fio.pos = pos;
+	fseek(_fio.cur_fh, _fio.pos, SEEK_SET);
 }
 
 // Seek to a file and a position
@@ -43,7 +44,7 @@ void FioSeekToFile(uint32 pos)
 	FILE *f = _fio.handles[pos >> 24];
 	assert(f != NULL);
 	_fio.cur_fh = f;
-	FioSeekTo(pos & 0xFFFFFF, SEEK_SET);
+	FioSeekTo(GB(pos, 0, 24), SEEK_SET);
 }
 
 byte FioReadByte(void)
