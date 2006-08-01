@@ -146,7 +146,7 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}KR
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BT
 STR_ABBREV_PLASTIC                                              :{TINYFONT}ZU
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}SU
-STR_ABBREV_NONE                                                 :{TINYFONT}NIE
+STR_ABBREV_NONE                                                 :{TINYFONT}NIC
 STR_ABBREV_ALL                                                  :{TINYFONT}VS.
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
@@ -154,8 +154,8 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Nastavenia hry
 STR_00B2_MESSAGE                                                :{YELLOW}Sprava
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Sprava od {STRING}
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Takto sa to neda...
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast sa neda vycistit...
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Nie je mozne vykonat ...
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Oblast nie je mozne vycistit ...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Povodny copyright: {COPYRIGHT} 1995 Chris Sawyer, vsetky prava vyhradene
 STR_00B7_VERSION                                                :{BLACK}OpenTTD verzia {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 team OpenTTD
@@ -172,7 +172,7 @@ STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
 STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
-STR_00D0_NOTHING                                                :Nie je
+STR_00D0_NOTHING                                                :Nic
 STR_00D1_DARK_BLUE                                              :Tmavomodra
 STR_00D2_PALE_GREEN                                             :Svetlozelena
 STR_00D3_PINK                                                   :Ruzova
@@ -355,7 +355,7 @@ STR_015B_OPENTTD                                                :{WHITE}OpenTTD
 STR_015C_SAVE_GAME                                              :Ulozit hru
 STR_015D_LOAD_GAME                                              :Nahrat hru
 STR_015E_QUIT_GAME                                              :Ukoncit hru
-STR_015F_QUIT                                                   :Ukoncit program
+STR_015F_QUIT                                                   :Ukoncit OpenTTD
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Si si isty ze chces ukoncit tuto hru ?
 STR_0161_QUIT_GAME                                              :{WHITE}Ukoncit hru
 STR_SORT_ORDER_TIP                                              :{BLACK}Vyber sposob triedenia (zostupny/vzostupny)
@@ -786,7 +786,7 @@ STR_02DA_ON                                                     :{BLACK}Zap.
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Zobrazit dotacie
 STR_02DD_SUBSIDIES                                              :Dotacie
 STR_02DE_MAP_OF_WORLD                                           :Mapa sveta
-STR_EXTRA_VIEW_PORT                                             :Extra pohlad
+STR_EXTRA_VIEW_PORT                                             :Dalsi pohlad
 STR_SIGN_LIST                                                   :Zoznam popisov
 STR_02DF_TOWN_DIRECTORY                                         :Zoznam miest
 STR_TOWN_POPULATION                                             :{BLACK}Svetova populacia: {COMMA}
@@ -1569,7 +1569,7 @@ STR_2025_SUBSIDIES                                              :{WHITE}Dotacie
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Ponuknute dotacie:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} z {STRING} do {STRING}
 STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
-STR_202A_NONE                                                   :{ORANGE}Nie je
+STR_202A_NONE                                                   :{ORANGE}Ziadne
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}V sucasnosti poskytovane dotacie:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
@@ -1624,7 +1624,7 @@ STR_205C_PIGGY_BANK                                             :Mala Banka
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
-STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
+STR_INDUSTRY_FORMAT                                             :{1:STRING} {0:TOWN}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
@@ -1692,7 +1692,7 @@ STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Stanica 
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Vykladka musi byt najskor zburana
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stanic{P a e ""}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
-STR_304A_NONE                                                   :{YELLOW}- Nie je -
+STR_304A_NONE                                                   :{YELLOW}- Ziadne -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}... miesto je nepouzitelne
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Priliz blizko ineho pristavu
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Pristav musi byt najskor zburany
@@ -2519,7 +2519,7 @@ STR_8863_CRASHED                                                :{RED}Havaroval!
 STR_8865_NAME_TRAIN                                             :{WHITE}Pomenovat vlak
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Vlak nemozno pomenovat ...
 STR_8867_NAME_TRAIN                                             :{BLACK}Pomenovat vlak
-STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vlakove nestastiel!{}{COMMA} mrtvych pri poziari po kolizii
+STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Vlakove nestastie!{}{COMMA} mrtv{P i i ych} pri poziari po kolizii
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Nemozno zmenit smer vlaku ...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Premenovat typ vlaku
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Typ vlaku nemoze byt premenovany ...
@@ -2660,7 +2660,7 @@ STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Prestava
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vyber typ nakladu:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapacita: {GOLD}{STRING}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nemozno prestavat lod...
-STR_9842_REFITTABLE                                             :(mozna prestvba)
+STR_9842_REFITTABLE                                             :(mozna prestavba)
 STR_GO_TO_SHIP_DEPOT                                            :Chod do {TOWN} Lodenice
 SERVICE_AT_SHIP_DEPOT                                           :Opravit v {TOWN} Lodenici
 
