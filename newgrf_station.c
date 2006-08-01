@@ -710,10 +710,10 @@ bool IsStationTileElectrifiable(TileIndex tile)
 
 	st = GetStationByTile(tile);
 	specindex = GetCustomStationSpecIndex(tile);
-	if (specindex >= st->num_specs) return false;
+	if (specindex >= st->num_specs) return true;
 
 	statspec = st->speclist[specindex].spec;
-	if (statspec == NULL) return false;
+	if (statspec == NULL) return true;
 
 	return HASBIT(statspec->pylons, GetStationGfx(tile)) || !HASBIT(statspec->wires, GetStationGfx(tile));
 }
