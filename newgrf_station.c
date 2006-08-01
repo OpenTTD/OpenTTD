@@ -678,42 +678,37 @@ bool DrawStationTile(int x, int y, RailType railtype, Axis axis, StationClassID 
 	return true;
 }
 
+
+static const StationSpec* GetStationSpec(TileIndex t)
+{
+	const Station* st;
+	uint specindex;
+
+	if (!IsCustomStationSpecIndex(t)) return NULL;
+
+	st = GetStationByTile(t);
+	specindex = GetCustomStationSpecIndex(t);
+	return specindex < st->num_specs ? st->speclist[specindex].spec : NULL;
+}
+
+
 /* Check if a rail station tile is traversable.
  * XXX This could be cached (during build) in the map array to save on all the dereferencing */
 bool IsStationTileBlocked(TileIndex tile)
 {
-	const Station *st;
-	const StationSpec *statspec;
-	uint specindex;
+	const StationSpec* statspec = GetStationSpec(tile);
 
-	if (!IsCustomStationSpecIndex(tile)) return false;
-
-	st = GetStationByTile(tile);
-	specindex = GetCustomStationSpecIndex(tile);
-	if (specindex >= st->num_specs) return false;
-
-	statspec = st->speclist[specindex].spec;
-	if (statspec == NULL) return false;
-
-	return HASBIT(statspec->blocked, GetStationGfx(tile));
+	return statspec != NULL && HASBIT(statspec->blocked, GetStationGfx(tile));
 }
 
 /* Check if a rail station tile is electrifiable.
  * XXX This could be cached (during build) in the map array to save on all the dereferencing */
 bool IsStationTileElectrifiable(TileIndex tile)
 {
-	const Station *st;
-	const StationSpec *statspec;
-	uint specindex;
+	const StationSpec* statspec = GetStationSpec(tile);
 
-	if (!IsCustomStationSpecIndex(tile)) return true;
-
-	st = GetStationByTile(tile);
-	specindex = GetCustomStationSpecIndex(tile);
-	if (specindex >= st->num_specs) return true;
-
-	statspec = st->speclist[specindex].spec;
-	if (statspec == NULL) return true;
-
-	return HASBIT(statspec->pylons, GetStationGfx(tile)) || !HASBIT(statspec->wires, GetStationGfx(tile));
+	return
+		statspec == NULL ||
+		HASBIT(statspec->pylons, GetStationGfx(tile)) ||
+		!HASBIT(statspec->wires, GetStationGfx(tile));
 }
