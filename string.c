@@ -4,9 +4,7 @@
 #include "string.h"
 
 #include <stdarg.h>
-#if defined(UNIX) || defined(__OS2__)
 #include <ctype.h> // required for tolower()
-#endif
 
 void ttd_strlcat(char *dst, const char *src, size_t size)
 {

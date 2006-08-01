@@ -18,7 +18,6 @@
 #include <fcntl.h>
 #include "variables.h"
 #include "win32.h"
-#include <ctype.h>
 
 static bool _has_console;
 

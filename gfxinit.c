@@ -13,7 +13,6 @@
 #include "newgrf.h"
 #include "md5.h"
 #include "variables.h"
-#include <ctype.h>
 
 typedef struct MD5File {
 	const char * const filename;     // filename
