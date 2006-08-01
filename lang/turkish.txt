@@ -353,7 +353,7 @@ STR_PERFORMANCE_DETAIL_MENU                                     :Detayli Perform
 
 STR_015B_OPENTTD                                                :{WHITE}OpenTTD Hakkinda
 STR_015C_SAVE_GAME                                              :Kaydet
-STR_015D_LOAD_GAME                                              :Yukle
+STR_015D_LOAD_GAME                                              :Yükle
 STR_015E_QUIT_GAME                                              :Bitir
 STR_015F_QUIT                                                   :Çikis
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Oyunu bitirmek istediginizden emin misiniz?
@@ -519,7 +519,7 @@ STR_01D7_NEW_STYLE                                              :{TINYFONT}Yeni 
 STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Sokagi
 STR_01D9_CUSTOM_1                                               :{TINYFONT}Özel 1
 STR_01DA_CUSTOM_2                                               :{TINYFONT}Özel 2
-STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Mzik Sesi
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Müzik Sesi
 STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Efekt Sesi
 STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}Düsük  '  '  ' '  '  '  Yüksek
 STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Önceki sarki
@@ -535,10 +535,10 @@ STR_01E7                                                        :{DKGREEN}{TINYF
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Sarki{SETX 88}Basligi
 STR_01E9_SHUFFLE                                                :{TINYFONT}Rastgele
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Program
-STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Muzik Programi Seçimi
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Müzik Programi Seçimi
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA}   "{STRING}"
-STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Sarki içerigi
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Parça Listesi
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Temizle
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Kaydet
@@ -567,7 +567,7 @@ STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Oyuncun
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Rakibin duragina ilk aracin gelisi
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Kazalar / felaketler
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Sirket bilgisi
-STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomi degisikligi
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Ekonomi degisimleri
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Oyuncunun araçlariyla ilgili ögüt / bilgi
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Yeni araçlar
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Kargo istegindeki degisiklik
