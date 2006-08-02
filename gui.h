@@ -17,7 +17,7 @@ void ShowGameOptions(void);
 void ShowGameDifficulty(void);
 void ShowPatchesSelection(void);
 void ShowNewgrf(void);
-void DrawArrowButtons(int x, int y, int ctab, byte state, bool enabled);
+void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, bool clickable_right);
 
 /* graph_gui.c */
 void ShowOperatingProfitGraph(void);

@@ -734,10 +734,10 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			} else {
 				int32 value;
 
-				/* Draw [<][>] boxes for settings of an integer-type */
-				DrawArrowButtons(x, y, 3, WP(w,def_d).data_2 - (i * 2), editable);
-
 				value = (int32)ReadValue(var, sd->save.conv);
+
+				/* Draw [<][>] boxes for settings of an integer-type */
+				DrawArrowButtons(x, y, 3, WP(w,def_d).data_2 - (i * 2), (editable && value != sdb->min), (editable && value != sdb->max));
 
 				disabled = (value == 0) && (sdb->flags & SGF_0ISDISABLED);
 				if (disabled) {
@@ -1049,20 +1049,29 @@ void ShowNewgrf(void)
 	w->disabled_state = (1 << 5) | (1 << 6) | (1 << 7);
 }
 
-/** Draw [<][>] boxes
- * state: 0 = none clicked, 1 = first clicked, 2 = second clicked */
-void DrawArrowButtons(int x, int y, int ctab, byte state, bool enabled)
+/**
+ * Draw [<][>] boxes.
+ * @param x the x position to draw
+ * @param y the y position to draw
+ * @param ctab the color of the buttons
+ * @param state 0 = none clicked, 1 = first clicked, 2 = second clicked
+ * @param clickable_left is the left button clickable?
+ * @param clickable_right is the right button clickable?
+ */
+void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, bool clickable_right)
 {
-	DrawFrameRect(x,    y+1, x + 9, y+9, ctab, (state == 1) ? FR_LOWERED : 0);
-	DrawFrameRect(x+10, y+1, x +19, y+9, ctab, (state == 2) ? FR_LOWERED : 0);
-	DrawStringCentered(x+ 5, y+1, STR_6819, 0); // [<]
-	DrawStringCentered(x+15, y+1, STR_681A, 0); // [>]
+	int color = PALETTE_MODIFIER_GREYOUT | _color_list[3].unk2;
 
-	if (!enabled) {
-		int color = PALETTE_MODIFIER_GREYOUT | _color_list[3].unk2;
-		GfxFillRect(x+ 1, y+1, x+ 1+8, y+8, color);
-		GfxFillRect(x+11, y+1, x+11+8, y+8, color);
-	}
+	DrawFrameRect(x,      y + 1, x +  9, y + 9, ctab, (state == 1) ? FR_LOWERED : 0);
+	DrawFrameRect(x + 10, y + 1, x + 19, y + 9, ctab, (state == 2) ? FR_LOWERED : 0);
+	DrawStringCentered(x +  5, y + 1, STR_6819, 0); // [<]
+	DrawStringCentered(x + 15, y + 1, STR_681A, 0); // [>]
+
+	/* Grey out the buttons that aren't clickable */
+	if (!clickable_left)
+		GfxFillRect(x +  1, y + 1, x +  1 + 8, y + 8, color);
+	if (!clickable_right)
+		GfxFillRect(x + 11, y + 1, x + 11 + 8, y + 8, color);
 }
 
 static char _str_separator[2];
@@ -1076,7 +1085,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		// exchange rate
-		DrawArrowButtons(10, y, 3, (clk >> (i*2)) & 0x03, true);
+		DrawArrowButtons(10, y, 3, (clk >> (i*2)) & 0x03, true, true);
 		SetDParam(0, 1);
 		SetDParam(1, 1);
 		DrawString(x, y + 1, STR_CURRENCY_EXCHANGE_RATE, 0);
@@ -1109,7 +1118,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		i++;
 
 		// switch to euro
-		DrawArrowButtons(10, y, 3, (clk >> (i*2)) & 0x03, true);
+		DrawArrowButtons(10, y, 3, (clk >> (i*2)) & 0x03, true, true);
 		SetDParam(0, _custom_currency.to_euro);
 		DrawString(x, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, 0);
 		x = 35;

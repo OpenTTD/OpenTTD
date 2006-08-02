@@ -1776,7 +1776,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				char buf[512];
 
 				/* Draw [<][>] boxes for settings of an integer-type */
-				DrawArrowButtons(x + 20, y, 3, clk - (i * 2), true);
+				DrawArrowButtons(x + 20, y, 3, clk - (i * 2), true, true);
 
 				switch (ce->str) {
 				/* Display date for change date cheat */

@@ -270,6 +270,14 @@ void ShowBuildIndustryWindow(void)
 	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt_ptr->landscape],0);
 }
 
+static inline bool isProductionMinimum(const Industry *i, int pt) {
+	return i->production_rate[pt] == 1;
+}
+
+static inline bool isProductionMaximum(const Industry *i, int pt) {
+	return i->production_rate[pt] == 255;
+}
+
 static inline bool IsProductionAlterable(const Industry *i)
 {
 	return ((_game_mode == GM_EDITOR || _cheats.setup_prod.value) &&
@@ -314,8 +322,10 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			SetDParam(2, i->pct_transported[0] * 100 >> 8);
 			DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 127, STR_482B_TRANSPORTED, 0);
 			// Let's put out those buttons..
-			if (IsProductionAlterable(i))
-				DrawArrowButtons(5, 127, 3, (WP(w,vp2_d).data_2 == 1) ? WP(w,vp2_d).data_3 : 0, true);
+			if (IsProductionAlterable(i)) {
+				DrawArrowButtons(5, 127, 3, (WP(w,vp2_d).data_2 == 1) ? WP(w,vp2_d).data_3 : 0,
+						!isProductionMinimum(i, 0), !isProductionMaximum(i, 0));
+			}
 
 			if (i->produced_cargo[1] != CT_INVALID) {
 				SetDParam(0, _cargoc.names_long[i->produced_cargo[1]]);
@@ -323,8 +333,10 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				SetDParam(2, i->pct_transported[1] * 100 >> 8);
 				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
 				// Let's put out those buttons..
-				if (IsProductionAlterable(i))
-					DrawArrowButtons(5, 137, 3, (WP(w,vp2_d).data_2 == 2) ? WP(w,vp2_d).data_3 : 0, true);
+				if (IsProductionAlterable(i)) {
+					DrawArrowButtons(5, 137, 3, (WP(w,vp2_d).data_2 == 2) ? WP(w,vp2_d).data_3 : 0,
+						!isProductionMinimum(i, 1), !isProductionMaximum(i, 1));
+				}
 			}
 		}
 
@@ -350,8 +362,10 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 				if (IS_INT_INSIDE(x, 5, 25) ) {
 					/* Clicked buttons, decrease or increase production */
 					if (x < 15) {
+						if (isProductionMinimum(i, line)) return;
 						i->production_rate[line] = maxu(i->production_rate[line] / 2, 1);
 					} else {
+						if (isProductionMaximum(i, line)) return;
 						i->production_rate[line] = minu(i->production_rate[line] * 2, 255);
 					}
 
