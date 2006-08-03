@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "road_cmd.h"
 #include "road_map.h"
 #include "table/sprites.h"
 #include "table/strings.h"
@@ -353,10 +354,10 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 		w->click_state = (1<<3) << _road_depot_orientation;
 		DrawWindowWidgets(w);
 
-		DrawRoadDepotSprite(70, 17, 0);
-		DrawRoadDepotSprite(70, 69, 1);
-		DrawRoadDepotSprite( 2, 69, 2);
-		DrawRoadDepotSprite( 2, 17, 3);
+		DrawRoadDepotSprite(70, 17, DIAGDIR_NE);
+		DrawRoadDepotSprite(70, 69, DIAGDIR_SE);
+		DrawRoadDepotSprite( 2, 69, DIAGDIR_SW);
+		DrawRoadDepotSprite( 2, 17, DIAGDIR_NW);
 		break;
 
 	case WE_CLICK: {

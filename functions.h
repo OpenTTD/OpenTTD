@@ -48,9 +48,6 @@ void DrawClearLandTile(const TileInfo *ti, byte set);
 void DrawClearLandFence(const TileInfo *ti);
 void TileLoopClearHelper(TileIndex tile);
 
-/* road_land.c */
-void DrawRoadDepotSprite(int x, int y, int image);
-
 /* water_land.c */
 void DrawShipDepotSprite(int x, int y, int image);
 void TileLoop_Water(TileIndex tile);

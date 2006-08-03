@@ -793,7 +793,7 @@ static void DrawTile_Road(TileInfo *ti)
 			player = GetTileOwner(ti->tile);
 			if (player < MAX_PLAYERS) ormod = PLAYER_SPRITE_COLOR(player);
 
-			drss = _road_display_datas[GetRoadDepotDirection(ti->tile)];
+			drss = _road_depot[GetRoadDepotDirection(ti->tile)];
 
 			DrawGroundSprite(drss++->image);
 
@@ -813,9 +813,9 @@ static void DrawTile_Road(TileInfo *ti)
 	}
 }
 
-void DrawRoadDepotSprite(int x, int y, int image)
+void DrawRoadDepotSprite(int x, int y, DiagDirection dir)
 {
-	const DrawRoadSeqStruct* dtss = _road_display_datas[image];
+	const DrawRoadSeqStruct* dtss = _road_depot[dir];
 	uint32 ormod = PLAYER_SPRITE_COLOR(_local_player);
 
 	x += 33;
@@ -825,8 +825,8 @@ void DrawRoadDepotSprite(int x, int y, int image)
 
 	for (; dtss->image != 0; dtss++) {
 		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
+		uint32 image = dtss->image;
 
-		image = dtss->image;
 		if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
 
 		DrawSprite(image, x + pt.x, y + pt.y);
