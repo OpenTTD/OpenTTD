@@ -233,7 +233,7 @@ STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFON
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Medenna bana
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Ovocny sad
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Kaucukova plantaz
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Zasobaren vody
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Vodny zdroj
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Vodojem
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Pila
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Les cukrovej vaty
@@ -438,8 +438,8 @@ STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknuti
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Zburanie budov, cistenie terenu
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Znizit roh terenu
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Zvysit roh terenu
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Posuvacia lista
-STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Posuvacia lista - posuva vypis dolava/doprava
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Navigacna lista
+STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Navigacna lista - posuva vypis dolava/doprava
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Zobrazit vrstevnice na mape
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Zobrazit dopravne prostriedky na mape
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Zobrazit priemysel na mape
@@ -643,7 +643,7 @@ STR_024F_GOLD_MINE                                              :{BLACK}Zlata ba
 STR_0250_LUMBER_MILL                                            :{BLACK}Pila
 STR_0251_FRUIT_PLANTATION                                       :{BLACK}Ovocny sad
 STR_0252_RUBBER_PLANTATION                                      :{BLACK}Kaucukova plantaz
-STR_0253_WATER_SUPPLY                                           :{BLACK}Zasobaren vody
+STR_0253_WATER_SUPPLY                                           :{BLACK}Vodny zdroj
 STR_0254_WATER_TOWER                                            :{BLACK}Vodojem
 STR_0255_DIAMOND_MINE                                           :{BLACK}Diamantova bana
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Medenna bana
@@ -678,7 +678,7 @@ STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Postavit
 STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Postavit pilu (na cistenie dazdoveho pralesa a produkciu dreva)
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Postavit ovocny sad
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Postavit kaucukovu plantaz
-STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Postavit zasobaren vody
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Postavit vodny zdroj
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Postavit vodojem (len v mestach)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Postavit diamantovu banu
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Postavit medennu banu
@@ -1011,14 +1011,14 @@ STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vyklada
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Umoznit stavbu dlhych mostov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Umoznit zaradenie depa do zoznamu prikazov: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Umoznit vystavbu priemyslu produkujuceho suroviny: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Umoznit viac priemyslu rovnakeho typu v 1 meste: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Umoznit viac priemyslu rovnakeho typu v jednom meste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Rovnaky priemysel moze byt stavany blizko seba: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Zobrazit dlhy format datumu v stavovej liste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Zobrazit zel. signaly na strane, kde jazdia vozidla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Zobrazit rozpocet na konci roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch kompatibilna interpretacia prikazu nonstop: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Radenie cestnych vozidiel (podla mnozstva tovaru): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posuvanie okna ked je mys na kraji: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posuvat okna ked je kurzor mysi na jeho okraji: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy globalny algoritmus hladania cesty (NPF namiesto NTP): {ORANGE}{STRING}
@@ -1040,7 +1040,7 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Dlzka z
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazit pocet obyvatelov mesta v jeho nazve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neviditelne stromy (pri priesvitnych budovach): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. pokrytie stanice: {ORANGE}{STRING} {RED}Pozor: Vysoke hodnoty spomaluju hru
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoke hodnoty spomaluju hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvarat panel uprav terenu s panelom stavby trati, ciest, ... : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pri posuvani mapy mysou posuvat opacnym smerom: {ORANGE}{STRING}
@@ -1062,7 +1062,7 @@ STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Implici
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Implicitny servisny interval pre vlaky: {ORANGE}vypnuty
 STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Implicitny servisny interval pre automobily: {ORANGE}vypnuty
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Imlicitny servisny interval pre lietadla: {ORANGE}{STRING} dni/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Implicitny servisny interval pre lietadla: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Implicitny servisny interval pre lietadla: {ORANGE}vypnuty
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}{STRING} dni/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}vypnuty
@@ -1200,7 +1200,7 @@ STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Postavit
 STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Postavit zelezorudnu banu
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Financovat ovocnu plantaz
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Financovat kaucukovu plantaz
-STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financovat zasobaren vody
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financovat vodny zdroj
 STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Vysadit les na cukrovu vatu
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Postavit vyrobu baterii
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Postavit vyrobu kofoly
@@ -1221,7 +1221,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Prestava
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vybrat typ prepravovaneho nakladu
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prestavat vlak na prepravu vybraneho nakladu
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nemozno prestavat vlak ...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servisne intervaly su v percentach: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servisne intervaly v percentach: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Zmenit produkciu
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Vitajte v novom AI. Mozete ocakavat problemy. Ak by nejake nastali urobte screenshot a poslite ho na forum.
@@ -1782,7 +1782,7 @@ STR_4813_DIAMOND_MINE                                           :Diamantova bana
 STR_4814_IRON_ORE_MINE                                          :Zelezorudna bana
 STR_4815_FRUIT_PLANTATION                                       :Ovocny sad
 STR_4816_RUBBER_PLANTATION                                      :Kaucukova plantaz
-STR_4817_WATER_SUPPLY                                           :Zasobaren vody
+STR_4817_WATER_SUPPLY                                           :Vodny zdroj
 STR_4818_WATER_TOWER                                            :Vodojem
 STR_4819_FACTORY                                                :Tovaren
 STR_481A_FARM                                                   :Farma
