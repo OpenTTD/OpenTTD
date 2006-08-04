@@ -31,7 +31,6 @@
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
 
-
 typedef struct LandInfoData {
 	Town *town;
 	int32 costclear;

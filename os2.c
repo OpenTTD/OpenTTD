@@ -22,7 +22,6 @@
 #define INCL_WINCLIPBOARD
 
 #include <os2.h>
-
 #include <i86.h>
 
 static char *_fios_path;

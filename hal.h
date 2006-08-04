@@ -42,7 +42,7 @@ enum DriverType {
 	MUSIC_DRIVER = 2,
 };
 
-extern void GameLoop(void);
+void GameLoop(void);
 
 
 // Deals with finding savegames

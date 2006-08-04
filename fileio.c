@@ -68,7 +68,6 @@ void FioSkipBytes(int n)
 	}
 }
 
-
 uint16 FioReadWord(void)
 {
 	byte b = FioReadByte();
