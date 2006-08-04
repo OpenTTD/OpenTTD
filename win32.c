@@ -18,7 +18,11 @@
 #include <fcntl.h>
 #include "variables.h"
 #include "win32.h"
+#include "fios.h" // opendir/readdir/closedir
 #include <ctype.h>
+#include <errno.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 static bool _has_console;
 
@@ -601,6 +605,107 @@ static void Win32InitializeExceptions(void)
 	SetUnhandledExceptionFilter(ExceptionHandler);
 }
 #endif /* _MSC_VER */
+
+/* Code below for windows version of opendir/readdir/closedir copied and
+ * modified from Jan Wassenberg's GPL implementation posted over at
+ * http://www.gamedev.net/community/forums/topic.asp?topic_id=364584&whichpage=1&#2398903 */
+
+/* suballocator - satisfies most requests with a reusable static instance.
+ * this avoids hundreds of alloc/free which would fragment the heap.
+ * To guarantee thread-safety, we fall back to malloc if the instance is
+ * already in use (it's important to avoid suprises since this is such a
+ * low-level routine). */
+static DIR _global_dir;
+static bool _global_dir_is_in_use = false;
+
+static inline DIR *dir_calloc(void)
+{
+	DIR *d;
+
+	if (_global_dir_is_in_use) {
+		d = calloc(1, sizeof(DIR));
+	} else {
+		_global_dir_is_in_use = true;
+		d = &_global_dir;
+		memset(d, 0, sizeof(DIR));
+	}
+	return d;
+}
+
+static inline void dir_free(DIR *d)
+{
+	if (d == &_global_dir) {
+		_global_dir_is_in_use = false;
+	} else {
+		free(d);
+	}
+}
+
+DIR *opendir(const char *path)
+{
+	char search_path[MAX_PATH];
+	DIR *d;
+	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
+	DWORD fa = GetFileAttributes(path);
+
+	/* not a directory or path not found */
+	if (fa == INVALID_FILE_ATTRIBUTES || (fa & FILE_ATTRIBUTE_DIRECTORY) == 0) {
+		errno = ENOENT;
+		return NULL;
+	}
+
+	d = dir_calloc();
+	if (d == NULL) {
+		errno = ENOMEM;
+		return NULL;
+	}
+
+	/* build search path for FindFirstFile */
+	snprintf(search_path, lengthof(search_path), "%s" PATHSEP "*", path);
+	d->hFind = FindFirstFile(search_path, &d->fd);
+	SetErrorMode(sem); // restore previous setting
+
+	if (d->hFind == INVALID_HANDLE_VALUE) {
+		/* not an error - the directory is just empty */
+		if (GetLastError() == ERROR_NO_MORE_FILES) return NULL;
+		dir_free(d);
+	}
+
+	d->ent.dir = d;
+	d->at_first_entry = true;
+	return d;
+}
+
+struct dirent *readdir(DIR *d)
+{
+	DWORD prev_err = GetLastError(); // avoid polluting last error
+
+	if (d->at_first_entry) {
+		/* the directory was empty when opened */
+		if (d->hFind == INVALID_HANDLE_VALUE) return NULL;
+		d->at_first_entry = false;
+		goto already_have_file;
+	}
+
+	/* Go until the end of directory or until a valid entry was found */
+	if (!FindNextFile(d->hFind, &d->fd)) { // determine cause and bail
+		if (GetLastError() == ERROR_NO_MORE_FILES) SetLastError(prev_err);
+		return NULL;
+	}
+
+already_have_file:
+	/* This entry has passed all checks; return information about it.
+	 * (note: d_name is a pointer; see struct dirent definition) */
+	d->ent.d_name = d->fd.cFileName;
+	return &d->ent;
+}
+
+int closedir(DIR *d)
+{
+	FindClose(d->hFind);
+	dir_free(d);
+	return 0;
+}
 
 static char *_fios_path;
 static char *_fios_save_path;
