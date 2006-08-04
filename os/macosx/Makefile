@@ -123,7 +123,7 @@ BUILD_OSX_BUNDLE: $(TTD) $(OSX_STRIP)
 	$(Q)echo "APPL????" > "$(OSXAPP)"/Contents/PkgInfo
 	$(Q)cp os/macosx/openttd.icns "$(OSXAPP)"/Contents/Resources/openttd.icns
 	$(Q)os/macosx/plistgen.sh "$(OSXAPP)" "$(REV)"
-	$(Q)cp data/* "$(OSXAPP)"/Contents/Data/
+	$(Q)cp -R data/* "$(OSXAPP)"/Contents/Data/
 	$(Q)cp os/macosx/splash.png "$(OSXAPP)"/Contents/Data/
 	$(Q)cp lang/*.lng "$(OSXAPP)"/Contents/Lang/
 	$(Q)cp $(TTD) "$(OSXAPP)"/Contents/MacOS/$(TTD)
@@ -141,10 +141,9 @@ release: all
 	$(Q)cp docs/console.txt "OpenTTD $(REV)/docs/"
 	$(Q)cp COPYING "OpenTTD $(REV)/docs/"
 	$(Q)cp changelog.txt "OpenTTD $(REV)/docs/"
-	$(Q)cp docs/README_if_game_crashed_on_OSX.txt "OpenTTD $(REV)/docs/"
 	$(Q)cp os/macosx/*.webloc "OpenTTD $(REV)"
 	$(Q)cp known-bugs.txt "OpenTTD $(REV)/known-bugs.txt"
-	$(Q)cp scenario/* "OpenTTD $(REV)/scenario/"
+	$(Q)cp -R scenario/* "OpenTTD $(REV)/scenario/"
 	$(Q)hdiutil create -ov -format UDZO -srcfolder "OpenTTD $(REV)" openttd-"$(REV)"-osx"$(JAGUAR_POSTFIX)".dmg
 	$(Q)rm -fr "OpenTTD $(REV)"
 
