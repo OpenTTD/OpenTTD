@@ -22,6 +22,7 @@
 
 #if defined(__OS2__)
 # include <types.h>
+# define strcasecmp stricmp
 #endif
 
 #ifdef __BEOS__

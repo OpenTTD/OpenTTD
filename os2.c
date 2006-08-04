@@ -25,11 +25,6 @@
 
 #include <i86.h>
 
-static inline int strcasecmp(const char* s1, const char* s2)
-{
-	return stricmp(s1, s2);
-}
-
 static char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;
