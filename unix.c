@@ -414,34 +414,6 @@ bool FileExists(const char *filename)
 	return access(filename, 0) == 0;
 }
 
-static int LanguageCompareFunc(const void *a, const void *b)
-{
-	return strcmp(*(const char* const *)a, *(const char* const *)b);
-}
-
-int GetLanguageList(char **languages, int max)
-{
-	DIR *dir;
-	struct dirent *dirent;
-	int num = 0;
-
-	dir = opendir(_path.lang_dir);
-	if (dir != NULL) {
-		while ((dirent = readdir(dir)) != NULL) {
-			char *t = strrchr(dirent->d_name, '.');
-
-			if (t != NULL && strcmp(t, ".lng") == 0) {
-				languages[num++] = strdup(dirent->d_name);
-				if (num == max) break;
-			}
-		}
-		closedir(dir);
-	}
-
-	qsort(languages, num, sizeof(char*), LanguageCompareFunc);
-	return num;
-}
-
 #if defined(__BEOS__) || defined(__linux__)
 static void ChangeWorkingDirectory(char *exe)
 {

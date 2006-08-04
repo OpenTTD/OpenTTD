@@ -1097,34 +1097,6 @@ bool FileExists(const char *filename)
 	return true;
 }
 
-static int CDECL LanguageCompareFunc(const void *a, const void *b)
-{
-	return strcmp(*(const char* const *)a, *(const char* const *)b);
-}
-
-int GetLanguageList(char **languages, int max)
-{
-	HANDLE hand;
-	int num = 0;
-	char filedir[MAX_PATH];
-	WIN32_FIND_DATA fd;
-	sprintf(filedir, "%s*.lng", _path.lang_dir);
-
-	hand = FindFirstFile(filedir, &fd);
-	if (hand != INVALID_HANDLE_VALUE) {
-		do {
-			if (!(fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-				languages[num++] = strdup(fd.cFileName);
-				if (num == max) break;
-			}
-		} while (FindNextFile(hand, &fd));
-		FindClose(hand);
-	}
-
-	qsort(languages, num, sizeof(char*), LanguageCompareFunc);
-	return num;
-}
-
 static int ParseCommandLine(char *line, char **argv, int max_argc)
 {
 	int n = 0;

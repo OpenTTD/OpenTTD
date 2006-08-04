@@ -20,6 +20,14 @@
 #include "table/landscape_const.h"
 #include "music.h"
 
+#ifdef WIN32
+/* for opendir/readdir/closedir */
+# include "fios.h"
+#else
+# include <sys/types.h>
+# include <dirent.h>
+#endif /* WIN32 */
+
 char _userstring[128];
 
 static char *StationGetSpecialString(char *buff, int x);
@@ -1166,6 +1174,34 @@ const char *GetCurrentLocale(const char *param)
 	}
 
 	return getenv("LANG");
+}
+
+static int CDECL LanguageCompareFunc(const void *a, const void *b)
+{
+	return strcmp(*(const char* const *)a, *(const char* const *)b);
+}
+
+static int GetLanguageList(char **languages, int max)
+{
+	DIR *dir;
+	struct dirent *dirent;
+	int num = 0;
+
+	dir = opendir(_path.lang_dir);
+	if (dir != NULL) {
+		while ((dirent = readdir(dir)) != NULL) {
+			char *t = strrchr(dirent->d_name, '.');
+
+			if (t != NULL && strcmp(t, ".lng") == 0) {
+				languages[num++] = strdup(dirent->d_name);
+				if (num == max) break;
+			}
+		}
+		closedir(dir);
+	}
+
+	qsort(languages, num, sizeof(char*), LanguageCompareFunc);
+	return num;
 }
 
 // make a list of the available language packs. put the data in _dynlang struct.
