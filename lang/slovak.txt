@@ -2,6 +2,8 @@
 ##ownname Slovensky
 ##isocode sk_SK
 ##plural 6
+##case g
+##gender m z s
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -20,36 +22,67 @@ STR_000C_ACCEPTS                                                :{BLACK}Prijima:
 STR_000D_ACCEPTS                                                :{BLACK}Prijima: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Cestujucich
+STR_000F_PASSENGERS.g                                           :cestujucich
 STR_0010_COAL                                                   :Uhlie
+STR_0010_COAL.g                                                 :uhlia
 STR_0011_MAIL                                                   :Postu
+STR_0011_MAIL.g                                                 :posty
 STR_0012_OIL                                                    :Ropu
+STR_0012_OIL.g                                                  :ropy
 STR_0013_LIVESTOCK                                              :Dobytok
+STR_0013_LIVESTOCK.g                                            :dobytka
 STR_0014_GOODS                                                  :Tovar
+STR_0014_GOODS.g                                                :tovaru
 STR_0015_GRAIN                                                  :Obilie
+STR_0015_GRAIN.g                                                :obilia
 STR_0016_WOOD                                                   :Drevo
+STR_0016_WOOD.g                                                 :dreva
 STR_0017_IRON_ORE                                               :Zeleznu rudu
+STR_0017_IRON_ORE.g                                             :zeleznej rudy
 STR_0018_STEEL                                                  :Ocel
+STR_0018_STEEL.g                                                :ocele
 STR_0019_VALUABLES                                              :Cennosti
+STR_0019_VALUABLES.g                                            :cennosti
 STR_001A_COPPER_ORE                                             :Medenna ruda
+STR_001A_COPPER_ORE.g                                           :medennej rudy
 STR_001B_MAIZE                                                  :Kukuricu
+STR_001B_MAIZE.g                                                :kukurice
 STR_001C_FRUIT                                                  :Ovocie
+STR_001C_FRUIT.g                                                :ovocia
 STR_001D_DIAMONDS                                               :Diamanty
+STR_001D_DIAMONDS.g                                             :diamantov
 STR_001E_FOOD                                                   :Jedlo
+STR_001E_FOOD.g                                                 :jedla
 STR_001F_PAPER                                                  :Papier
+STR_001F_PAPER.g                                                :papiera
 STR_0020_GOLD                                                   :Zlato
+STR_0020_GOLD.g                                                 :zlata
 STR_0021_WATER                                                  :Vodu
+STR_0021_WATER.g                                                :vody
 STR_0022_WHEAT                                                  :Psenicu
+STR_0022_WHEAT.g                                                :psenice
 STR_0023_RUBBER                                                 :Kaucuk
+STR_0023_RUBBER.g                                               :kaucuku
 STR_0024_SUGAR                                                  :Cukor
+STR_0024_SUGAR.g                                                :cukru
 STR_0025_TOYS                                                   :Hracky
+STR_0025_TOYS.g                                                 :hraciek
 STR_0026_CANDY                                                  :Cukriky
+STR_0026_CANDY.g                                                :cukrikov
 STR_0027_COLA                                                   :Kofolu
+STR_0027_COLA.g                                                 :kofoly
 STR_0028_COTTON_CANDY                                           :Cukrovu vatu
+STR_0028_COTTON_CANDY.g                                         :cukrovej vaty
 STR_0029_BUBBLES                                                :Bublin
+STR_0029_BUBBLES.g                                              :bublin
 STR_002A_TOFFEE                                                 :Karamelky
+STR_002A_TOFFEE.g                                               :karameliek
 STR_002B_BATTERIES                                              :Baterie
+STR_002B_BATTERIES.g                                            :baterii
 STR_002C_PLASTIC                                                :Zuvaciek
+STR_002C_PLASTIC.g                                              :zuvaciek
 STR_002D_FIZZY_DRINKS                                           :Sumienku
+STR_002D_FIZZY_DRINKS.g                                         :sumienky
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Cestujuci
 STR_0030_COAL                                                   :Uhlie
@@ -454,13 +487,13 @@ STR_AGE                                                         :{COMMA} rok{P "
 STR_AGE_RED                                                     :{RED}{COMMA} rok{P "" y ov} ({COMMA})
 ############ range for service numbers ends
 
-STR_019C_ROAD_VEHICLE                                           :Automobil
-STR_019D_AIRCRAFT                                               :Lietadlo
-STR_019E_SHIP                                                   :Lod
-STR_019F_TRAIN                                                  :Vlak
-STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} je stary
-STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} je velmi stary
-STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} je velmi stary a potrebuje vymenit
+STR_019C_ROAD_VEHICLE                                           :{G=m}Automobil
+STR_019D_AIRCRAFT                                               :{G=s}Lietadlo
+STR_019E_SHIP                                                   :{G=z}Lod
+STR_019F_TRAIN                                                  :{G=m}Vlak
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} je star{G y a e}
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} je velmi star{G y a e}
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} je velmi star{G y a e} a potrebuje vymenit
 STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Informacie o pozemku
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Naklady na odstranenie: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Naklady na odstranenie: {LTBLUE}{CURRENCY}
@@ -1492,10 +1525,10 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Vyber or
 STR_1021_RAILROAD_TRACK                                         :Zeleznicne kolaje
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Zeleznicne depo
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}... oblast vlastni ina spolocnost
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kolaje zo standartnym semaforom
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje z pre-signami
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje z exit-signalmi
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kolaje z combo-signalmi
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Zeleznicne kolaje so standartnym semaforom
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Zeleznicne kolaje s pre-signami
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Zeleznicne kolaje s exit-signalmi
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Zeleznicne kolaje s combo-signalmi
 
 
 
@@ -1573,13 +1606,13 @@ STR_202A_NONE                                                   :{ORANGE}Ziadne
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}V sucasnosti poskytovane dotacie:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} z {STATION} do {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ponuka dotacie skoncila:{}{}Preprava {STRING} z {STRING} do {STRING} uz nebude dotovana.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Dotacia ukoncena:{}{}Preprava {STRING} z {STATION} do {STATION} uz viac nebude dotovana.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Ponuka dotacie:{}{}Prva preprava {STRING} z {STRING} do {STRING} bude dotovana miestnou spravou!
-STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING} z {STATION} do {STATION} bude buduci rok o 50% vynosnejsia!
-STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING} z {STATION} to {STATION} bude buduci rok 2x vynosejnsia!
-STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING} z {STATION} do {STATION} bude buduci rok 3x vynosnejsia!
-STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING} z {STATION} do {STATION} bude buduci rok 4x vynosnejsia!
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Ponuka dotacie skoncila:{}{}Preprava {STRING.g} z {STRING} do {STRING} uz nebude dotovana.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Dotacia ukoncena:{}{}Preprava {STRING.g} z {STATION} do {STATION} uz viac nebude dotovana.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Ponuka dotacie:{}{}Prva preprava {STRING.g} z {STRING} do {STRING} bude dotovana miestnou spravou!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING.g} z {STATION} do {STATION} bude buduci rok o 50% vynosnejsia!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING.g} z {STATION} to {STATION} bude buduci rok 2x vynosejnsia!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING.g} z {STATION} do {STATION} bude buduci rok 3x vynosnejsia!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Dotacia udelena spolocnosti {COMPANY}!{}{}Preprava {STRING.g} z {STATION} do {STATION} bude buduci rok 4x vynosnejsia!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Miestna sprava {TOWN} odmietla stavbu letiska v tomto meste
 STR_2036_COTTAGES                                               :Chaty
 STR_2037_HOUSES                                                 :Domy
@@ -1823,8 +1856,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} znizuje produkciu o 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Premnozenie skodcov sposobilo znicenie urody na {INDUSTRY}!{}Produkcia sa znizila o 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}... moze byt umiestnene len pri okraji mapy
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produkcia v {INDUSTRY} sa zvysuje o {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produkcia v {INDUSTRY} sa znizuje o {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produkcia {STRING.g} sa v {INDUSTRY} zvysuje o {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produkcia {STRING.g} sa v {INDUSTRY} znizuje o {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vlak v tuneli
@@ -1842,7 +1875,7 @@ STR_500E_SUSPENSION_STEEL                                       :Zavesny ocelovy
 STR_500F_GIRDER_STEEL                                           :Pilierovy ocelovy
 STR_5010_CANTILEVER_STEEL                                       :Visuty ocelovy
 STR_5011_SUSPENSION_CONCRETE                                    :Zavesny betonovy
-STR_5012_WOODEN                                                 :Drevenny
+STR_5012_WOODEN                                                 :Dreveny
 STR_5013_CONCRETE                                               :Betonovy
 STR_5014_TUBULAR_STEEL                                          :Kryty ocelovy
 STR_BRIDGE_TUBULAR_SILICON                                      :Kryty plastovy
@@ -1854,13 +1887,13 @@ STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Ocelovy zavesny
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Ocelovy pilierovy zeleznicny most
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Ocelovy visuty zeleznicny most
 STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Vystuzeny zavesny betonovy zeleznicny most
-STR_501F_WOODEN_RAIL_BRIDGE                                     :Drevenny zeleznicny most
+STR_501F_WOODEN_RAIL_BRIDGE                                     :Dreveny zeleznicny most
 STR_5020_CONCRETE_RAIL_BRIDGE                                   :Betonovy zeleznicny most
 STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Ocelovy zavesny cestny most
 STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Ocelovy pilierovy cestny most
 STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Ocelovy visuty cestny most
 STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Vystuzeny zavesny betonovy cestny most
-STR_5025_WOODEN_ROAD_BRIDGE                                     :Drevenny cestny most
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Dreveny cestny most
 STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betonovy cestny most
 STR_5027_TUBULAR_RAIL_BRIDGE                                    :Kryty zeleznicny most
 STR_5028_TUBULAR_ROAD_BRIDGE                                    :Kryty cestny most
@@ -2514,7 +2547,7 @@ STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk ten
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Zastavene
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Nemozno pustit vlak na cervenu ked hrozi nebezpecenstvo...
-STR_8863_CRASHED                                                :{RED}Havaroval!
+STR_8863_CRASHED                                                :{RED}Znicene!
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Pomenovat vlak
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Vlak nemozno pomenovat ...
