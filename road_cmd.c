@@ -783,15 +783,12 @@ static void DrawTile_Road(TileInfo *ti)
 
 		default:
 		case ROAD_TILE_DEPOT: {
-			uint32 ormod;
-			PlayerID player;
 			const DrawRoadSeqStruct* drss;
+			uint32 palette;
 
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
-			ormod = PALETTE_TO_GREY;	//was this a bug/problem?
-			player = GetTileOwner(ti->tile);
-			if (player < MAX_PLAYERS) ormod = PLAYER_SPRITE_COLOR(player);
+			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
 			drss = _road_depot[GetRoadDepotDirection(ti->tile)];
 
@@ -800,8 +797,11 @@ static void DrawTile_Road(TileInfo *ti)
 			for (; drss->image != 0; drss++) {
 				uint32 image = drss->image;
 
-				if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
-				if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
+				if (_display_opt & DO_TRANS_BUILDINGS) {
+					MAKE_TRANSPARENT(image);
+				} else if (image & PALETTE_MODIFIER_COLOR) {
+					image |= palette;
+				}
 
 				AddSortableSpriteToDraw(
 					image, ti->x | drss->subcoord_x,
