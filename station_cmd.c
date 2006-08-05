@@ -2039,7 +2039,6 @@ const DrawTileSprites *GetStationTileLayout(byte gfx)
 
 static void DrawTile_Station(TileInfo *ti)
 {
-	uint32 image_or_modificator;
 	uint32 image;
 	const DrawTileSeqStruct *dtss;
 	const DrawTileSprites *t = NULL;
@@ -2048,11 +2047,14 @@ static void DrawTile_Station(TileInfo *ti)
 	uint32 relocation = 0;
 	const Station *st = NULL;
 	const StationSpec *statspec = NULL;
+	PlayerID owner = GetTileOwner(ti->tile);
+	uint32 palette;
 
-	{
-		PlayerID owner = GetTileOwner(ti->tile);
-		image_or_modificator = PALETTE_TO_GREY; /* NOTE: possible bug in ttd here? */
-		if (owner < MAX_PLAYERS) image_or_modificator = PLAYER_SPRITE_COLOR(owner);
+	if (owner < MAX_PLAYERS) {
+		palette = PLAYER_SPRITE_COLOR(owner);
+	} else {
+		// Some stations are not owner by a player, namely oil rigs
+		palette = PALETTE_TO_GREY;
 	}
 
 	// don't show foundation for docks
@@ -2093,7 +2095,7 @@ static void DrawTile_Station(TileInfo *ti)
 	} else {
 		image += rti->total_offset;
 	}
-	if (image & PALETTE_MODIFIER_COLOR) image |= image_or_modificator;
+	if (image & PALETTE_MODIFIER_COLOR) image |= palette;
 
 	// station_land array has been increased from 82 elements to 114
 	// but this is something else. If AI builds station with 114 it looks all weird
@@ -2112,8 +2114,8 @@ static void DrawTile_Station(TileInfo *ti)
 
 		if (_display_opt & DO_TRANS_BUILDINGS) {
 			MAKE_TRANSPARENT(image);
-		} else {
-			if (image & PALETTE_MODIFIER_COLOR) image |= image_or_modificator;
+		} else if (image & PALETTE_MODIFIER_COLOR) {
+			image |= palette;
 		}
 
 		if ((byte)dtss->delta_z != 0x80) {
