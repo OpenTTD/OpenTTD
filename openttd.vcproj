@@ -226,6 +226,9 @@
 				RelativePath=".\fileio.c">
 			</File>
 			<File
+				RelativePath=".\fios.c">
+			</File>
+			<File
 				RelativePath=".\gfx.c">
 			</File>
 			<File

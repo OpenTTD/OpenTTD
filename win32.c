@@ -707,20 +707,11 @@ int closedir(DIR *d)
 	return 0;
 }
 
-static char *_fios_path;
+extern char *_fios_path;
 static char *_fios_save_path;
 static char *_fios_scn_path;
-static FiosItem *_fios_items;
-static int _fios_count, _fios_alloc;
-
-static FiosItem *FiosAlloc(void)
-{
-	if (_fios_count == _fios_alloc) {
-		_fios_alloc += 256;
-		_fios_items = realloc(_fios_items, _fios_alloc * sizeof(FiosItem));
-	}
-	return &_fios_items[_fios_count++];
-}
+extern FiosItem *_fios_items;
+extern int _fios_count, _fios_alloc;
 
 static HANDLE MyFindFirstFile(const char *path, const char *file, WIN32_FIND_DATA *fd)
 {
@@ -735,23 +726,6 @@ static HANDLE MyFindFirstFile(const char *path, const char *file, WIN32_FIND_DAT
 	SetErrorMode(sem); // restore previous setting
 	return h;
 }
-
-int CDECL compare_FiosItems(const void *a, const void *b)
-{
-	const FiosItem *da = (const FiosItem *)a;
-	const FiosItem *db = (const FiosItem *)b;
-	int r;
-
-	if (_savegame_sort_order & SORT_BY_NAME) {
-		r = strcasecmp(da->title, db->title);
-	} else {
-		r = da->mtime < db->mtime ? -1 : 1;
-	}
-
-	if (_savegame_sort_order & SORT_DESCENDING) r = -r;
-	return r;
-}
-
 
 // Get a list of savegames
 FiosItem *FiosGetSavegameList(int *num, int mode)
@@ -985,15 +959,6 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	return _fios_items;
 }
 
-
-// Free the list of savegames
-void FiosFreeSavegameList(void)
-{
-	free(_fios_items);
-	_fios_items = NULL;
-	_fios_alloc = _fios_count = 0;
-}
-
 // Browse to
 char *FiosBrowseTo(const FiosItem *item)
 {
@@ -1065,36 +1030,6 @@ StringID FiosGetDescText(const char **path, uint32 *tot)
 
 	SetErrorMode(sem); // reset previous setting
 	return sid;
-}
-
-void FiosMakeSavegameName(char *buf, const char *name, size_t size)
-{
-	const char* extension;
-	const char* period;
-
-	extension = (_game_mode == GM_EDITOR ? ".scn" : ".sav");
-
-	// Don't append the extension, if it is already there
-	period = strrchr(name, '.');
-	if (period != NULL && strcasecmp(period, extension) == 0) extension = "";
-
-	snprintf(buf, size, "%s\\%s%s", _fios_path, name, extension);
-}
-
-bool FiosDelete(const char *name)
-{
-	char path[512];
-
-	FiosMakeSavegameName(path, name, sizeof(path));
-	return DeleteFile(path) != 0;
-}
-
-bool FileExists(const char *filename)
-{
-	HANDLE hand = CreateFile(filename, 0, 0, NULL, OPEN_EXISTING, 0, NULL);
-	if (hand == INVALID_HANDLE_VALUE) return false;
-	CloseHandle(hand);
-	return true;
 }
 
 static int ParseCommandLine(char *line, char **argv, int max_argc)

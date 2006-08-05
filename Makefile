@@ -655,6 +655,7 @@ SRCS += elrail.c
 SRCS += engine.c
 SRCS += engine_gui.c
 SRCS += fileio.c
+SRCS += fios.c
 SRCS += gfx.c
 SRCS += gfxinit.c
 SRCS += graph_gui.c

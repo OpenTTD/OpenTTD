@@ -310,6 +310,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\fios.c"
+				>
+			</File>
+			<File
 				RelativePath=".\gfx.c"
 				>
 			</File>
