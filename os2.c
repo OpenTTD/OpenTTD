@@ -58,6 +58,19 @@ void FiosGetDrives(void)
 	_dos_setdrive(save, &total); // restore the original drive
 }
 
+bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
+{
+	struct diskfree_t free;
+	char drive = path[0] - 'A' + 1;
+
+	if (tot != NULL && _getdiskfree(drive, &free) == 0) {
+		*tot = free.avail_clusters * free.sectors_per_cluster * free.bytes_per_sector;
+		return true;
+	}
+
+	return false;
+}
+
 bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
 {
 	char filename[MAX_PATH];
@@ -66,74 +79,6 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	if (stat(filename, sb) != 0) return false;
 
 	return (ent->d_name[0] != '.'); // hidden file
-}
-
-// Browse to
-char *FiosBrowseTo(const FiosItem *item)
-{
-	char *path = _fios_path;
-	char *s;
-
-	switch (item->type) {
-		case FIOS_TYPE_DRIVE:
-			sprintf(path, "%c:\\", item->title[0]);
-			break;
-
-		case FIOS_TYPE_PARENT:
-			s = strrchr(path, '\\');
-			if (s != path + 2) {
-				s[0] = '\0';
-			} else {
-				s[1] = '\0';
-			}
-			break;
-
-		case FIOS_TYPE_DIR:
-			if (path[3] != '\0') strcat(path, "\\");
-			strcat(path, item->name);
-			break;
-
-		case FIOS_TYPE_DIRECT:
-			sprintf(path, "%s\\", item->name);
-			s = strrchr(path, '\\');
-			if (s[1] == '\0') s[0] = '\0'; // strip trailing slash
-			break;
-
-		case FIOS_TYPE_FILE:
-		case FIOS_TYPE_OLDFILE:
-		case FIOS_TYPE_SCENARIO:
-		case FIOS_TYPE_OLD_SCENARIO: {
-			static char str_buffr[512];
-
-			sprintf(str_buffr, "%s\\%s", path, item->name);
-			return str_buffr;
-		}
-	}
-
-	return NULL;
-}
-
-/**
- * Get descriptive texts. Returns the path and free space
- * left on the device
- * @param path string describing the path
- * @param tfs total free space in megabytes, optional (can be NULL)
- * @return StringID describing the path (free space or failure)
- */
-StringID FiosGetDescText(const char **path, uint32 *tot)
-{
-	struct diskfree_t free;
-	char drive;
-
-	*path = _fios_path;
-	drive = *path[0] - 'A' + 1;
-
-	if (tot != NULL && _getdiskfree(drive, &free) == 0) {
-		*tot = free.avail_clusters * free.sectors_per_cluster * free.bytes_per_sector;
-		return STR_4005_BYTES_FREE;
-	}
-
-	return STR_4006_UNABLE_TO_READ_DRIVE;
 }
 
 static void ChangeWorkingDirectory(char *exe)

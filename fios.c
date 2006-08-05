@@ -31,6 +31,7 @@ int _fios_count, _fios_alloc;
 extern bool FiosIsRoot(const char *path);
 extern bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb);
 extern void FiosGetDrives(void);
+extern bool FiosGetDiskFreeSpace(const char *path, uint32 *tot);
 
 /* get the name of an oldstyle savegame */
 extern void GetOldSaveGameName(char *title, const char *path, const char *file);
@@ -78,6 +79,76 @@ void FiosFreeSavegameList(void)
 	free(_fios_items);
 	_fios_items = NULL;
 	_fios_alloc = _fios_count = 0;
+}
+
+/**
+ * Get descriptive texts. Returns the path and free space
+ * left on the device
+ * @param path string describing the path
+ * @param total_free total free space in megabytes, optional (can be NULL)
+ * @return StringID describing the path (free space or failure)
+ */
+StringID FiosGetDescText(const char **path, uint32 *total_free)
+{
+	*path = _fios_path;
+	return FiosGetDiskFreeSpace(*path, total_free) ? STR_4005_BYTES_FREE : STR_4006_UNABLE_TO_READ_DRIVE;
+}
+
+/* Browse to a new path based on the passed FiosItem struct
+ * @param *item FiosItem object telling us what to do
+ * @return a string if we have given a file as a target, otherwise NULL */
+char *FiosBrowseTo(const FiosItem *item)
+{
+	char *s;
+	char *path = _fios_path;
+
+	switch (item->type) {
+#if defined(WIN32) || defined(__OS2__)
+	case FIOS_TYPE_DRIVE: sprintf(path, "%c:" PATHSEP, item->title[0]); break;
+#endif
+
+	case FIOS_TYPE_PARENT:
+		/* Check for possible NULL ptr (not required for UNIXes, but AmigaOS-alikes) */
+		if ((s = strrchr(path, PATHSEPCHAR)) != NULL) {
+			s[1] = '\0'; // go up a directory
+			if (!FiosIsRoot(path)) s[0] = '\0';
+		}
+#if defined(__MORPHOS__) || defined(__AMIGAOS__)
+		/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
+		else if ((s = strrchr(path, ':')) != NULL) s[1] = '\0';
+#endif
+		break;
+
+	case FIOS_TYPE_DIR:
+		if (!FiosIsRoot(path)) strcat(path, PATHSEP);
+		strcat(path, item->name);
+		break;
+
+	case FIOS_TYPE_DIRECT:
+		sprintf(path, "%s" PATHSEP, item->name);
+		s = strrchr(path, PATHSEPCHAR);
+		if (s != NULL && s[1] == '\0') s[0] = '\0'; // strip trailing slash
+		break;
+
+	case FIOS_TYPE_FILE:
+	case FIOS_TYPE_OLDFILE:
+	case FIOS_TYPE_SCENARIO:
+	case FIOS_TYPE_OLD_SCENARIO: {
+		static char str_buffr[512];
+
+#if defined(__MORPHOS__) || defined(__AMIGAOS__)
+		/* On MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory" */
+		if (FiosIsRoot(path)) {
+			snprintf(str_buffr, lengthof(str_buffr), "%s:%s", path, item->name);
+		} else // XXX - only next line!
+#endif
+		snprintf(str_buffr, lengthof(str_buffr), "%s" PATHSEP "%s", path, item->name);
+
+		return str_buffr;
+	}
+	}
+
+	return NULL;
 }
 
 void FiosMakeSavegameName(char *buf, const char *name, size_t size)

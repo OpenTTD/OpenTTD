@@ -52,20 +52,6 @@ extern char *_fios_path;
 extern FiosItem *_fios_items;
 extern int _fios_count, _fios_alloc;
 
-#if !defined(__MORPHOS__) && !defined(__AMIGAOS__)
-#define ISROOT(__p)  (__p[1] == '\0')
-#define PATHTEMPLATE "%s/%s"
-#else
-/*  on MorphOS or AmigaOS paths look like: "Volume:directory/subdirectory".
- *  This is some evil magic which tries to handle this transparently w/o
- *  disturbing code with too much #ifdefs. It's not possible to switch the
- *  volume, but at least it doesn't crash :) (tokai)
- */
-static bool __isroot; /* not very thread save, but will do in this case */
-#define ISROOT(__p)  (__isroot = (__p[strlen(__p)-1] == ':'))
-#define PATHTEMPLATE (__isroot ? "%s:%s" : "%s/%s")
-#endif
-
 bool FiosIsRoot(const char *path)
 {
 #if !defined(__MORPHOS__) && !defined(__AMIGAOS__)
@@ -80,6 +66,22 @@ bool FiosIsRoot(const char *path)
 void FiosGetDrives(void)
 {
 	return;
+}
+
+bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
+{
+	uint32 free = 0;
+
+#ifdef HAS_STATVFS
+	{
+		struct statvfs s;
+
+		if (statvfs(path, &s) != 0) return false;
+		free = (uint64)s.f_frsize * s.f_bavail >> 20;
+	}
+#endif
+	if (tot != NULL) *tot = free;
+	return true;
 }
 
 bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
@@ -97,87 +99,6 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	if (stat(filename, sb) != 0) return false;
 
 	return (ent->d_name[0] != '.'); // hidden file
-}
-
-// Browse to
-char *FiosBrowseTo(const FiosItem *item)
-{
-	char *path = _fios_path;
-	char *s;
-
-	switch (item->type) {
-		case FIOS_TYPE_PARENT:
-			/* Check for possible NULL ptr (not required for UNIXes, but AmigaOS-alikes) */
-			if ((s = strrchr(path, '/'))) {
-				if (s != path) {
-					s[0] = '\0';
-				} else {
-					s[1] = '\0';
-				}
-			}
-#if defined(__MORPHOS__) || defined(__AMIGAOS__)
-			else {
-				if ((s = strrchr(path, ':'))) {
-					s[1] = '\0';
-				}
-			}
-#endif
-			break;
-
-		case FIOS_TYPE_DIR:
-			if (!ISROOT(path)) strcat(path, "/");
-			strcat(path, item->name);
-			break;
-
-		case FIOS_TYPE_DIRECT:
-			sprintf(path, "%s/", item->name);
-			s = strrchr(path, '/');
-			if (s[1] == '\0') s[0] = '\0'; // strip trailing slash
-			break;
-
-		case FIOS_TYPE_FILE:
-		case FIOS_TYPE_OLDFILE:
-		case FIOS_TYPE_SCENARIO:
-		case FIOS_TYPE_OLD_SCENARIO: {
-			static char str_buffr[512];
-
-#if defined(__MORPHOS__) || defined(__AMIGAOS__)
-			ISROOT(path); /* init __isroot for PATHTEMPLATE */
-#endif
-
-			sprintf(str_buffr, PATHTEMPLATE, path, item->name);
-			return str_buffr;
-		}
-	}
-
-	return NULL;
-}
-
-/**
- * Get descriptive texts. Returns the path and free space
- * left on the device
- * @param path string describing the path
- * @param tfs total free space in megabytes, optional (can be NULL)
- * @return StringID describing the path (free space or failure)
- */
-StringID FiosGetDescText(const char **path, uint32 *tot)
-{
-	uint32 free = 0;
-	*path = _fios_path;
-
-#ifdef HAS_STATVFS
-	{
-		struct statvfs s;
-
-		if (statvfs(*path, &s) == 0) {
-			free = (uint64)s.f_frsize * s.f_bavail >> 20;
-		} else {
-			return STR_4006_UNABLE_TO_READ_DRIVE;
-		}
-	}
-#endif
-	if (tot != NULL) *tot = free;
-	return STR_4005_BYTES_FREE;
 }
 
 #if defined(__BEOS__) || defined(__linux__)

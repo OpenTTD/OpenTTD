@@ -8,7 +8,6 @@
 #include "macros.h"
 #include "saveload.h"
 #include "string.h"
-#include "table/strings.h"
 #include "gfx.h"
 #include "window.h"
 #include <windows.h>
@@ -743,77 +742,21 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 	return true;
 }
 
-// Browse to
-char *FiosBrowseTo(const FiosItem *item)
-{
-	char *path = _fios_path;
-	char *s;
-
-	switch (item->type) {
-		case FIOS_TYPE_DRIVE:
-			sprintf(path, "%c:\\", item->title[0]);
-			break;
-
-		case FIOS_TYPE_PARENT:
-			s = strrchr(path, '\\');
-			if (s != path + 2) {
-				s[0] = '\0';
-			} else {
-				s[1] = '\0';
-			}
-			break;
-
-		case FIOS_TYPE_DIR:
-			if (path[3] != '\0') strcat(path, "\\");
-			strcat(path, item->name);
-			break;
-
-		case FIOS_TYPE_DIRECT:
-			sprintf(path, "%s\\", item->name);
-			s = strrchr(path, '\\');
-			if (s[1] == '\0') s[0] = '\0'; // strip trailing slash
-			break;
-
-		case FIOS_TYPE_FILE:
-		case FIOS_TYPE_OLDFILE:
-		case FIOS_TYPE_SCENARIO:
-		case FIOS_TYPE_OLD_SCENARIO: {
-			static char str_buffr[512];
-
-			sprintf(str_buffr, "%s\\%s", path, item->name);
-			return str_buffr;
-		}
-	}
-
-	return NULL;
-}
-
-/**
- * Get descriptive texts. Returns the path and free space
- * left on the device
- * @param path string describing the path
- * @param tfs total free space in megabytes, optional (can be NULL)
- * @return StringID describing the path (free space or failure)
- */
-StringID FiosGetDescText(const char **path, uint32 *tot)
+bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
 {
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS);  // disable 'no-disk' message box
+	bool retval = false;
 	char root[4];
 	DWORD spc, bps, nfc, tnc;
-	StringID sid;
 
-	*path = _fios_path;
-
-	sprintf(root, "%c:\\", _fios_path[0]);
+	snprintf(root, lengthof(root), "%c:" PATHSEP, path[0]);
 	if (tot != NULL && GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
 		*tot = ((spc * bps) * (uint64)nfc) >> 20;
-		sid = STR_4005_BYTES_FREE;
-	} else {
-		sid = STR_4006_UNABLE_TO_READ_DRIVE;
+		retval = true;
 	}
 
 	SetErrorMode(sem); // reset previous setting
-	return sid;
+	return retval;
 }
 
 static int ParseCommandLine(char *line, char **argv, int max_argc)
