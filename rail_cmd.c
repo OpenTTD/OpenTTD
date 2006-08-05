@@ -1182,18 +1182,6 @@ static void DrawTrackDetails(const TileInfo* ti)
 }
 
 
-static void DrawSpecialBuilding(
-	uint32 image, uint32 offset,
-	const TileInfo* ti,
-	byte x, byte y, byte z,
-	byte xsize, byte ysize, byte zsize)
-{
-	if (image & PALETTE_MODIFIER_COLOR) image |= _drawtile_track_palette;
-	image += offset;
-	if (_display_opt & DO_TRANS_BUILDINGS) MAKE_TRANSPARENT(image);
-	AddSortableSpriteToDraw(image, ti->x + x, ti->y + y, xsize, ysize, zsize, ti->z + z);
-}
-
 /**
  * Draw ground sprite and track bits
  * @param ti TileInfo
@@ -1310,40 +1298,55 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (HasSignals(ti->tile)) DrawSignals(ti->tile, rails);
 	} else {
-		/* draw depots / waypoints */
-		const DrawTrackSeqStruct *drss;
-		bool is_depot = GetRailTileSubtype(ti->tile) == RAIL_SUBTYPE_DEPOT;
+		// draw depot/waypoint
+		const DrawTileSprites* dts;
+		const DrawTileSeqStruct* dtss;
+		uint32 relocation;
 
 		if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
-		if (IsRailWaypoint(ti->tile)) {
+		if (GetRailTileSubtype(ti->tile) == RAIL_SUBTYPE_DEPOT) {
+			dts = &_depot_gfx_table[GetRailDepotDirection(ti->tile)];
+
+			relocation = rti->total_offset;
+
+			image = dts->ground_sprite;
+			if (image != SPR_FLAT_GRASS_TILE) image += rti->total_offset;
+
+			// adjust ground tile for desert
+			// don't adjust for snow, because snow in depots looks weird
+			if (IsSnowRailGround(ti->tile) && _opt.landscape == LT_DESERT) {
+				if (image != SPR_FLAT_GRASS_TILE) {
+					image += rti->snow_offset; // tile with tracks
+				} else {
+					image = SPR_FLAT_SNOWY_TILE; // flat ground
+				}
+			}
+		} else {
 			// look for customization
 			byte stat_id = GetWaypointByTile(ti->tile)->stat_id;
 			const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, stat_id);
 
 			if (statspec != NULL) {
-				DrawTileSeqStruct const *seq;
 				// emulate station tile - open with building
-				uint tile = 2;
-				const DrawTileSprites *cust;
-				Station *st = ComposeWaypointStation(ti->tile);
-
-				uint32 relocation = GetCustomStationRelocation(statspec, st, ti->tile);
+				const Station* st = ComposeWaypointStation(ti->tile);
+				uint gfx = 2;
 
 				if (HASBIT(statspec->callbackmask, CBM_CUSTOM_LAYOUT)) {
 					uint16 callback = GetStationCallback(CBID_STATION_SPRITE_LAYOUT, 0, 0, statspec, st, ti->tile);
-					if (callback != CALLBACK_FAILED) tile = callback;
+					if (callback != CALLBACK_FAILED) gfx = callback;
 				}
 
 				if (statspec->renderdata == NULL) {
-					cust = GetStationTileLayout(tile);
+					dts = GetStationTileLayout(gfx);
 				} else {
-					cust = &statspec->renderdata[(tile < statspec->tiles ? tile : 0) + GetWaypointAxis(ti->tile)];
+					dts = &statspec->renderdata[(gfx < statspec->tiles ? gfx : 0) + GetWaypointAxis(ti->tile)];
 				}
 
-				/* If there is no sprite layout, we fall back to the default waypoint graphics. */
-				if (cust != NULL && cust->seq != NULL) {
-					image = cust->ground_sprite;
+				if (dts != NULL && dts->seq != NULL) {
+					relocation = GetCustomStationRelocation(statspec, st, ti->tile);
+
+					image = dts->ground_sprite;
 					if (HASBIT(image, 31)) {
 						CLRBIT(image, 31);
 						image += GetCustomStationGroundRelocation(statspec, st, ti->tile);
@@ -1351,38 +1354,16 @@ static void DrawTile_Track(TileInfo *ti)
 					} else {
 						image += rti->total_offset;
 					}
-
-					DrawGroundSprite(image);
-
-					if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
-
-					foreach_draw_tile_seq(seq, cust->seq) {
-						DrawSpecialBuilding(
-							seq->image + relocation, 0, ti,
-							seq->delta_x, seq->delta_y, seq->delta_z,
-							seq->width, seq->height, seq->unk
-						);
-					}
-					return;
+				} else {
+					goto default_waypoint;
 				}
-			}
-		}
-
-		drss = is_depot ? _track_depot_layout_table[GetRailDepotDirection(ti->tile)] : _track_waypoint_layout_table[GetWaypointAxis(ti->tile)];
-
-		image = drss++->image;
-		/* @note This is kind of an ugly hack, as the PALETTE_MODIFIER_COLOR indicates
-		 * whether the sprite is railtype dependent. Rewrite this asap */
-		if (image & PALETTE_MODIFIER_COLOR) image = (image & SPRITE_MASK) + rti->total_offset;
-
-		// adjust ground tile for desert
-		// (don't adjust for arctic depots, because snow in depots looks weird)
-		// type >= 4 means waypoints
-		if (IsSnowRailGround(ti->tile) && (_opt.landscape == LT_DESERT || !is_depot)) {
-			if (image != SPR_FLAT_GRASS_TILE) {
-				image += rti->snow_offset; // tile with tracks
 			} else {
-				image = SPR_FLAT_SNOWY_TILE; // flat ground
+default_waypoint:
+				// There is no custom layout, fall back to the default graphics
+				dts = &_waypoint_gfx_table[GetWaypointAxis(ti->tile)];
+				relocation = 0;
+				image = dts->ground_sprite + rti->total_offset;
+				if (IsSnowRailGround(ti->tile)) image += rti->snow_offset;
 			}
 		}
 
@@ -1390,59 +1371,55 @@ static void DrawTile_Track(TileInfo *ti)
 
 		if (GetRailType(ti->tile) == RAILTYPE_ELECTRIC) DrawCatenary(ti);
 
-		for (; drss->image != 0; drss++) {
-			DrawSpecialBuilding(
-				drss->image, is_depot ? rti->total_offset : 0, ti,
-				drss->subcoord_x, drss->subcoord_y, 0,
-				drss->width, drss->height, 0x17
+		foreach_draw_tile_seq(dtss, dts->seq) {
+			uint32 image = dtss->image + relocation;
+
+			if (_display_opt & DO_TRANS_BUILDINGS) {
+				MAKE_TRANSPARENT(image);
+			} else if (image & PALETTE_MODIFIER_COLOR) {
+				image |= _drawtile_track_palette;
+			}
+			AddSortableSpriteToDraw(
+				image,
+				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+				dtss->width, dtss->height,
+				dtss->unk, ti->z + dtss->delta_z
 			);
 		}
 	}
 }
 
-void DrawTrainDepotSprite(int x, int y, int image, RailType railtype)
+
+static void DrawTileSequence(int x, int y, uint32 ground, const DrawTileSeqStruct* dtss, uint32 offset)
 {
-	uint32 ormod, img;
-	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
-	const DrawTrackSeqStruct *dtss;
+	uint32 palette = PLAYER_SPRITE_COLOR(_local_player);
 
-	ormod = PLAYER_SPRITE_COLOR(_local_player);
-
-	dtss = _track_depot_layout_table[image];
-
-	x += 33;
-	y += 17;
-
-	img = dtss++->image;
-	/* @note This is kind of an ugly hack, as the PALETTE_MODIFIER_COLOR indicates
-	 * whether the sprite is railtype dependent. Rewrite this asap */
-	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + rti->total_offset;
-	DrawSprite(img, x, y);
-
+	DrawSprite(ground, x, y);
 	for (; dtss->image != 0; dtss++) {
-		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
-		image = dtss->image;
-		if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
-		DrawSprite(image + rti->total_offset, x + pt.x, y + pt.y);
+		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
+		uint32 image = dtss->image + offset;
+
+		if (image & PALETTE_MODIFIER_COLOR) image |= palette;
+		DrawSprite(image, x + pt.x, y + pt.y);
 	}
+}
+
+void DrawTrainDepotSprite(int x, int y, int dir, RailType railtype)
+{
+	const DrawTileSprites* dts = &_depot_gfx_table[dir];
+	uint32 image = dts->ground_sprite;
+	uint32 offset = GetRailTypeInfo(railtype)->total_offset;
+
+	if (image != SPR_FLAT_GRASS_TILE) image += offset;
+	DrawTileSequence(x + 33, y + 17, image, dts->seq, offset);
 }
 
 void DrawDefaultWaypointSprite(int x, int y, RailType railtype)
 {
-	const DrawTrackSeqStruct *dtss = _track_waypoint_layout_table[0];
-	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
-	uint32 img;
+	uint32 offset = GetRailTypeInfo(railtype)->total_offset;
+	const DrawTileSprites* dts = &_waypoint_gfx_table[AXIS_X];
 
-	img = dtss++->image;
-	if (img & PALETTE_MODIFIER_COLOR) img = (img & SPRITE_MASK) + rti->total_offset;
-	DrawSprite(img, x, y);
-
-	for (; dtss->image != 0; dtss++) {
-		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
-		img = dtss->image;
-		if (img & PALETTE_MODIFIER_COLOR) img |= PLAYER_SPRITE_COLOR(_local_player);
-		DrawSprite(img, x + pt.x, y + pt.y);
-	}
+	DrawTileSequence(x, y, dts->ground_sprite + offset, dts->seq, 0);
 }
 
 typedef struct SetSignalsData {
