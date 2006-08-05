@@ -11,7 +11,6 @@
 #include "variables.h"
 #include "functions.h"
 #include "table/strings.h"
-#include "hal.h"
 #include "fios.h"
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -23,9 +22,12 @@
 # include <dirent.h>
 #endif /* WIN32 */
 
-char *_fios_path;
-FiosItem *_fios_items;
-int _fios_count, _fios_alloc;
+/* Variables to display file lists */
+int _fios_num;
+
+static char *_fios_path;
+static FiosItem *_fios_items;
+static int _fios_count, _fios_alloc;
 
 /* OS-specific functions are taken from their respective files (win32/unix/os2 .c) */
 extern bool FiosIsRoot(const char *path);
@@ -184,7 +186,7 @@ typedef byte fios_getlist_callback_proc(int mode, const char *filename, const ch
  *  @param mode The mode we are in. Some modes don't allow 'parent'.
  *  @param callback The function that is called where you need to do the filtering.
  *  @return Return the list of files. */
-static FiosItem *FiosGetFileList(int *num, int mode, fios_getlist_callback_proc *callback_proc)
+static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_proc)
 {
 	struct stat sb;
 	struct dirent *dirent;
@@ -265,7 +267,7 @@ static FiosItem *FiosGetFileList(int *num, int mode, fios_getlist_callback_proc 
 	/* Show drives */
 	if (mode != SLD_NEW_GAME) FiosGetDrives();
 
-	*num = _fios_count;
+	_fios_num = _fios_count;
 	return _fios_items;
 }
 
@@ -305,7 +307,7 @@ static byte FiosGetSavegameListCallback(int mode, const char *file, const char *
  * @return A pointer to an array of FiosItem representing all the files to be shown in the save/load dialog.
  * @see FiosGetFileList
  */
-FiosItem *FiosGetSavegameList(int *num, int mode)
+FiosItem *FiosGetSavegameList(int mode)
 {
 	static char *_fios_save_path = NULL;
 
@@ -316,7 +318,7 @@ FiosItem *FiosGetSavegameList(int *num, int mode)
 
 	_fios_path = _fios_save_path;
 
-	return FiosGetFileList(num, mode, &FiosGetSavegameListCallback);
+	return FiosGetFileList(mode, &FiosGetSavegameListCallback);
 }
 
 /**
@@ -353,7 +355,7 @@ static byte FiosGetScenarioListCallback(int mode, const char *file, const char *
  * @return A pointer to an array of FiosItem representing all the files to be shown in the save/load dialog.
  * @see FiosGetFileList
  */
-FiosItem *FiosGetScenarioList(int *num, int mode)
+FiosItem *FiosGetScenarioList(int mode)
 {
 	static char *_fios_scn_path = NULL;
 
@@ -364,5 +366,5 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 
 	_fios_path = _fios_scn_path;
 
-	return FiosGetFileList(num, mode, &FiosGetScenarioListCallback);
+	return FiosGetFileList(mode, &FiosGetScenarioListCallback);
 }

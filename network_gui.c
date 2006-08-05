@@ -7,7 +7,7 @@
 #include "table/sprites.h"
 #include "network.h"
 
-#include "hal.h" // for file list
+#include "fios.h"
 
 #ifdef ENABLE_NETWORK
 

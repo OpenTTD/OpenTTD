@@ -15,7 +15,7 @@
 #include "network_udp.h"
 #include "command.h"
 #include "settings.h"
-#include "hal.h" /* for file list */
+#include "fios.h"
 #include "vehicle.h"
 #include "station.h"
 #include "strings.h"
@@ -345,7 +345,7 @@ DEF_CONSOLE_CMD(ConPrintWorkingDirectory)
 	}
 
 	// XXX - Workaround for broken file handling
-	FiosGetSavegameList(&_fios_num, SLD_LOAD_GAME);
+	FiosGetSavegameList(SLD_LOAD_GAME);
 	FiosFreeSavegameList();
 
 	FiosGetDescText(&path, NULL);

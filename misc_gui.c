@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "hal.h"
 #include "debug.h"
 #include "functions.h"
 #include "gfxinit.h"
@@ -26,7 +27,10 @@
 #include "vehicle.h"
 #include "train.h"
 
-#include "hal.h" // for file list
+#include "fios.h"
+/* Variables to display file lists */
+FiosItem *_fios_list;
+int _saveload_mode;
 
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
@@ -1160,16 +1164,14 @@ void BuildFileList(void)
 {
 	_fios_path_changed = true;
 	FiosFreeSavegameList();
+
 	switch (_saveload_mode) {
 		case SLD_NEW_GAME:
 		case SLD_LOAD_SCENARIO:
 		case SLD_SAVE_SCENARIO:
-			_fios_list = FiosGetScenarioList(&_fios_num, _saveload_mode);
-			break;
+			_fios_list = FiosGetScenarioList(_saveload_mode); break;
 
-		default:
-			_fios_list = FiosGetSavegameList(&_fios_num, _saveload_mode);
-			break;
+		default: _fios_list = FiosGetSavegameList(_saveload_mode); break;
 	}
 }
 

@@ -6,7 +6,6 @@
 #include "window.h"
 #include "string.h"
 #include "table/strings.h"
-#include "hal.h"
 #include "variables.h"
 
 #include <dirent.h>
@@ -48,9 +47,6 @@ ULONG __stack = (1024*1024)*2; // maybe not that much is needed actually ;)
 		#include <SDL.h>
 	#endif
 #endif
-extern char *_fios_path;
-extern FiosItem *_fios_items;
-extern int _fios_count, _fios_alloc;
 
 bool FiosIsRoot(const char *path)
 {

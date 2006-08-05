@@ -4,7 +4,6 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "hal.h"
 #include "macros.h"
 #include "saveload.h"
 #include "string.h"
@@ -705,10 +704,6 @@ int closedir(DIR *d)
 	dir_free(d);
 	return 0;
 }
-
-extern char *_fios_path;
-extern FiosItem *_fios_items;
-extern int _fios_count, _fios_alloc;
 
 bool FiosIsRoot(const char *file)
 {

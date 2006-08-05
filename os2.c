@@ -2,7 +2,6 @@
 
 #include "stdafx.h"
 #include "openttd.h"
-#include "hal.h"
 #include "variables.h"
 #include "string.h"
 #include "table/strings.h"
@@ -24,11 +23,7 @@
 #include <os2.h>
 #include <i86.h>
 
-extern char *_fios_path;
-extern FiosItem *_fios_items;
-extern int _fios_count, _fios_alloc;
-
-bool FioIsRoot(const char *path)
+bool FiosIsRoot(const char *file)
 {
 	return path[3] == '\0';
 }
