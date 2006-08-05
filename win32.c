@@ -610,7 +610,7 @@ static void Win32InitializeExceptions(void)
 
 /* suballocator - satisfies most requests with a reusable static instance.
  * this avoids hundreds of alloc/free which would fragment the heap.
- * To guarantee thread-safety, we fall back to malloc if the instance is
+ * To guarantee reentrancy, we fall back to malloc if the instance is
  * already in use (it's important to avoid suprises since this is such a
  * low-level routine). */
 static DIR _global_dir;
@@ -621,11 +621,11 @@ static inline DIR *dir_calloc(void)
 	DIR *d;
 
 	if (_global_dir_is_in_use) {
-		d = calloc(1, sizeof(DIR));
+		d = calloc(1, sizeof(*d));
 	} else {
 		_global_dir_is_in_use = true;
 		d = &_global_dir;
-		memset(d, 0, sizeof(DIR));
+		memset(d, 0, sizeof(*d));
 	}
 	return d;
 }
@@ -646,31 +646,31 @@ DIR *opendir(const char *path)
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
 	DWORD fa = GetFileAttributes(path);
 
-	/* not a directory or path not found */
-	if (fa == INVALID_FILE_ATTRIBUTES || (fa & FILE_ATTRIBUTE_DIRECTORY) == 0) {
+	if ((fa != INVALID_FILE_ATTRIBUTES) && (fa & FILE_ATTRIBUTE_DIRECTORY)) {
+		d = dir_calloc();
+		if (d != NULL) {
+			/* build search path for FindFirstFile */
+			snprintf(search_path, lengthof(search_path), "%s" PATHSEP "*", path);
+			d->hFind = FindFirstFile(search_path, &d->fd);
+
+			if (d->hFind != INVALID_HANDLE_VALUE ||
+					GetLastError() == ERROR_NO_MORE_FILES) { // the directory is empty
+				d->ent.dir = d;
+				d->at_first_entry = true;
+			} else {
+				dir_free(d);
+				d = NULL;
+			}
+		} else {
+			errno = ENOMEM;
+		}
+	} else {
+		/* path not found or not a directory */
+		d = NULL;
 		errno = ENOENT;
-		return NULL;
 	}
 
-	d = dir_calloc();
-	if (d == NULL) {
-		errno = ENOMEM;
-		return NULL;
-	}
-
-	/* build search path for FindFirstFile */
-	snprintf(search_path, lengthof(search_path), "%s" PATHSEP "*", path);
-	d->hFind = FindFirstFile(search_path, &d->fd);
 	SetErrorMode(sem); // restore previous setting
-
-	if (d->hFind == INVALID_HANDLE_VALUE) {
-		/* not an error - the directory is just empty */
-		if (GetLastError() == ERROR_NO_MORE_FILES) return NULL;
-		dir_free(d);
-	}
-
-	d->ent.dir = d;
-	d->at_first_entry = true;
 	return d;
 }
 
@@ -682,16 +682,11 @@ struct dirent *readdir(DIR *d)
 		/* the directory was empty when opened */
 		if (d->hFind == INVALID_HANDLE_VALUE) return NULL;
 		d->at_first_entry = false;
-		goto already_have_file;
-	}
-
-	/* Go until the end of directory or until a valid entry was found */
-	if (!FindNextFile(d->hFind, &d->fd)) { // determine cause and bail
+	} else if (!FindNextFile(d->hFind, &d->fd)) { // determine cause and bail
 		if (GetLastError() == ERROR_NO_MORE_FILES) SetLastError(prev_err);
 		return NULL;
 	}
 
-already_have_file:
 	/* This entry has passed all checks; return information about it.
 	 * (note: d_name is a pointer; see struct dirent definition) */
 	d->ent.d_name = d->fd.cFileName;
@@ -729,11 +724,12 @@ void FiosGetDrives(void)
 bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
 {
 	const WIN32_FIND_DATA *fd = &ent->dir->fd;
-	if ((fd->dwFileAttributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) != 0) return false;
+	if (fd->dwFileAttributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) return false;
 
-	sb->st_size  = (fd->nFileSizeHigh * MAXDWORD+1) + fd->nFileSizeLow;
-	sb->st_mtime = (fd->ftLastWriteTime.dwHighDateTime * MAXDWORD+1) + fd->ftLastWriteTime.dwLowDateTime;
+	sb->st_size  = ((uint64) fd->nFileSizeHigh << 32) + fd->nFileSizeLow;
+	sb->st_mtime = *(uint64*)&fd->ftLastWriteTime;
 	sb->st_mode  = (fd->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)? S_IFDIR : S_IFREG;
+
 	return true;
 }
 
