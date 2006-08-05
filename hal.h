@@ -62,6 +62,7 @@ enum {
 	FIOS_TYPE_SCENARIO = 5,
 	FIOS_TYPE_OLD_SCENARIO = 6,
 	FIOS_TYPE_DIRECT = 7,
+	FIOS_TYPE_INVALID = 255,
 };
 
 
@@ -71,9 +72,7 @@ int _fios_num;
 int _saveload_mode;
 
 // get the name of an oldstyle savegame
-void GetOldSaveGameName(char *title, const char *file);
-// get the name of an oldstyle scenario
-void GetOldScenarioGameName(char *title, const char *file);
+void GetOldSaveGameName(char *title, const char *path, const char *file);
 
 // Get a list of savegames
 FiosItem *FiosGetSavegameList(int *num, int mode);

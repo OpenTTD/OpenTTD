@@ -174,8 +174,10 @@
 
 #if defined(UNIX)
 # define PATHSEP "/"
+# define PATHSEPCHAR '/'
 #else
 # define PATHSEP "\\"
+# define PATHSEPCHAR '\\'
 #endif
 
 typedef unsigned char byte;

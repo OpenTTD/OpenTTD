@@ -25,273 +25,47 @@
 #include <i86.h>
 
 extern char *_fios_path;
-static char *_fios_save_path;
-static char *_fios_scn_path;
 extern FiosItem *_fios_items;
 extern int _fios_count, _fios_alloc;
 
-static void append_path(char *out, const char *path, const char *file)
+bool FioIsRoot(const char *path)
 {
-	if (path[2] == '\\' && path[3] == '\0') {
-		sprintf(out, "%s%s", path, file);
-	} else {
-		sprintf(out, "%s\\%s", path, file);
-	}
+	return path[3] == '\0';
 }
 
-// Get a list of savegames
-FiosItem *FiosGetSavegameList(int *num, int mode)
+void FiosGetDrives(void)
 {
 	FiosItem *fios;
-	DIR *dir;
-	struct dirent *dirent;
-	struct stat sb;
-	int sort_start;
-	char filename[MAX_PATH];
+	unsigned disk, disk2, save, total;
 
-	if (_fios_save_path == NULL) {
-		_fios_save_path = malloc(MAX_PATH);
-		strcpy(_fios_save_path, _path.save_dir);
-	}
+	_dos_getdrive(&save); // save original drive
 
-	_fios_path = _fios_save_path;
+	/* get an available drive letter */
+	for (disk = 1;; disk++) {
+		_dos_setdrive(disk, &total);
+		if (disk >= total) return;
+		_dos_getdrive(&disk2);
 
-	// Parent directory, only if not of the type C:\.
-	if (_fios_path[3] != '\0') {
-		fios = FiosAlloc();
-		fios->type = FIOS_TYPE_PARENT;
-		fios->mtime = 0;
-		strcpy(fios->name, "..");
-		strcpy(fios->title, ".. (Parent directory)");
-	}
-
-	// Show subdirectories first
-	dir = opendir(_fios_path);
-	if (dir != NULL) {
-		while ((dirent = readdir(dir)) != NULL) {
-			append_path(filename, _fios_path, dirent->d_name);
-			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
-					strcmp(dirent->d_name, ".") != 0 &&
-					strcmp(dirent->d_name, "..") != 0) {
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_DIR;
-				fios->mtime = 0;
-				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
-				snprintf(fios->title, lengthof(fios->title), "%s\\ (Directory)", FS2OTTD(dirent->d_name));
-				str_validate(fios->title);
-			}
+		if (disk == disk2) {
+			FiosItem *fios = FiosAlloc();
+			fios->type = FIOS_TYPE_DRIVE;
+			fios->mtime = 0;
+			snprintf(fios->name, lengthof(fios->name),  "%c:", 'A' + disk - 1);
+			ttd_strlcpy(fios->title, fios->name, lengthof(fios->title));
 		}
-		closedir(dir);
 	}
 
-	{
-		/* XXX ugly global variables ... */
-		byte order = _savegame_sort_order;
-		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
-		_savegame_sort_order = order;
-	}
-
-	// this is where to start sorting
-	sort_start = _fios_count;
-
-	/* Show savegame files
-	 * .SAV OpenTTD saved game
-	 * .SS1 Transport Tycoon Deluxe preset game
-	 * .SV1 Transport Tycoon Deluxe (Patch) saved game
-	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game
-	 */
-	dir = opendir(_fios_path);
-	if (dir != NULL) {
-		while ((dirent = readdir(dir)) != NULL) {
-			char *t;
-
-			append_path(filename, _fios_path, dirent->d_name);
-			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
-
-			t = strrchr(dirent->d_name, '.');
-			if (t == NULL) continue;
-
-			if (strcasecmp(t, ".sav") == 0) { // OpenTTD
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_FILE;
-				fios->mtime = sb.st_mtime;
-				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
-
-				*t = '\0'; // strip extension
-				ttd_strlcpy(fios->title, FS2OTTD(dirent->d_name), lengthof(fios->title));
-				str_validate(fios->title);
-			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
-				if (strcasecmp(t, ".ss1") == 0 ||
-						strcasecmp(t, ".sv1") == 0 ||
-						strcasecmp(t, ".sv2") == 0) { // TTDLX(Patch)
-					fios = FiosAlloc();
-					fios->type = FIOS_TYPE_OLDFILE;
-					fios->mtime = sb.st_mtime;
-					ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
-					GetOldSaveGameName(fios->title, filename);
-				}
-			}
-		}
-		closedir(dir);
-	}
-
-	qsort(_fios_items + sort_start, _fios_count - sort_start, sizeof(FiosItem), compare_FiosItems);
-
-	// Drives
-	{
-		uint save;
-		uint disk;
-		uint total;
-
-		/* save original drive */
-		_dos_getdrive(&save);
-
-		/* get available drive letters */
-		for (disk = 1; disk < 27; ++disk) {
-			uint disk2;
-
-			_dos_setdrive(disk, &total);
-			_dos_getdrive(&disk2);
-
-			if (disk == disk2) {
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_DRIVE;
-				sprintf(fios->name, "%c:", 'A' + disk - 1);
-				sprintf(fios->title, "%c:", 'A' + disk - 1);
-			}
-		}
-
-		_dos_setdrive(save, &total);
-	}
-
-	*num = _fios_count;
-	return _fios_items;
+	_dos_setdrive(save, &total); // restore the original drive
 }
 
-// Get a list of scenarios
-FiosItem *FiosGetScenarioList(int *num, int mode)
+bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
 {
-	FiosItem *fios;
-	DIR *dir;
-	struct dirent *dirent;
-	struct stat sb;
-	int sort_start;
 	char filename[MAX_PATH];
 
-	if (_fios_scn_path == NULL) {
-		_fios_scn_path = malloc(MAX_PATH);
-		strcpy(_fios_scn_path, _path.scenario_dir);
-	}
+	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, ent->d_name);
+	if (stat(filename, sb) != 0) return false;
 
-	_fios_path = _fios_scn_path;
-
-	// Parent directory, only if not of the type C:\.
-	if (_fios_path[3] != '\0' && mode != SLD_NEW_GAME) {
-		fios = FiosAlloc();
-		fios->type = FIOS_TYPE_PARENT;
-		fios->mtime = 0;
-		strcpy(fios->title, ".. (Parent directory)");
-	}
-
-	// Show subdirectories first
-	dir = opendir(_fios_path);
-	if (dir != NULL) {
-		while ((dirent = readdir(dir)) != NULL) {
-			append_path(filename, _fios_path, dirent->d_name);
-			if (!stat(filename, &sb) && S_ISDIR(sb.st_mode) &&
-					strcmp(dirent->d_name, ".") != 0 &&
-					strcmp(dirent->d_name, "..") != 0) {
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_DIR;
-				fios->mtime = 0;
-				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
-				snprintf(fios->title, lengthof(fios->title), "%s\\ (Directory)", FS2OTTD(dirent->d_name));
-				str_validate(fios->title);
-			}
-		}
-		closedir(dir);
-	}
-
-	{
-		/* XXX ugly global variables ... */
-		byte order = _savegame_sort_order;
-		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
-		_savegame_sort_order = order;
-	}
-
-	// this is where to start sorting
-	sort_start = _fios_count;
-
-	/* Show scenario files
-	 * .SCN OpenTTD style scenario file
-	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
-	 * .SS0 Transport Tycoon Deluxe preset scenario
-	 */
-	dir = opendir(_fios_path);
-	if (dir != NULL) {
-		while ((dirent = readdir(dir)) != NULL) {
-			char *t;
-
-			append_path(filename, _fios_path, dirent->d_name);
-			if (stat(filename, &sb) || S_ISDIR(sb.st_mode)) continue;
-
-			t = strrchr(dirent->d_name, '.');
-			if (t == NULL) continue;
-
-			if (strcasecmp(t, ".scn") == 0) { // OpenTTD
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_SCENARIO;
-				fios->mtime = sb.st_mtime;
-				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
-
-				*t = '\0'; // strip extension
-				ttd_strlcpy(fios->title, FS2OTTD(dirent->d_name), lengthof(fios->title));
-				str_validate(fios->title);
-			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
-					mode == SLD_NEW_GAME) {
-				if (strcasecmp(t, ".sv0") == 0 ||
-						strcasecmp(t, ".ss0") == 0) { // TTDLX(Patch)
-					fios = FiosAlloc();
-					fios->type = FIOS_TYPE_OLD_SCENARIO;
-					fios->mtime = sb.st_mtime;
-					GetOldScenarioGameName(fios->title, filename);
-					ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
-				}
-			}
-		}
-		closedir(dir);
-	}
-
-	qsort(_fios_items + sort_start, _fios_count - sort_start, sizeof(FiosItem), compare_FiosItems);
-
-	// Drives
-	if (mode != SLD_NEW_GAME) {
-		unsigned save, disk, disk2, total;
-
-		/* save original drive */
-		_dos_getdrive(&save);
-
-		/* get available drive letters */
-
-		for (disk = 1; disk < 27; ++disk) {
-			_dos_setdrive(disk, &total);
-			_dos_getdrive(&disk2);
-
-			if (disk == disk2) {
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_DRIVE;
-				sprintf(fios->name, "%c:", 'A' + disk - 1);
-				sprintf(fios->title, "%c:", 'A' + disk - 1);
-			}
-		}
-
-		_dos_setdrive(save, &total);
-	}
-
-	*num = _fios_count;
-	return _fios_items;
+	return (ent->d_name[0] != '.'); // hidden file
 }
 
 // Browse to

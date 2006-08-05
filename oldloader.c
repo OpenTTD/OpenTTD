@@ -1571,20 +1571,19 @@ bool LoadOldSaveGame(const char *file)
 	return true;
 }
 
-void GetOldSaveGameName(char *title, const char *file)
+void GetOldSaveGameName(char *title, const char *path, const char *file)
 {
-	FILE *f = fopen(file, "rb");
-	title[0] = 0;
-	title[48] = 0;
+	char filename[MAX_PATH];
+	FILE *f;
+
+	snprintf(filename, lengthof(filename), "%s" PATHSEP "%s", path, file);
+	f = fopen(filename, "rb");
+	title[0] = '\0';
+	title[48] = '\0';
 
 	if (f == NULL) return;
 
 	if (fread(title, 1, 48, f) != 48) snprintf(title, 48, "Corrupt file");
 
 	fclose(f);
-}
-
-void GetOldScenarioGameName(char *title, const char *file)
-{
-	GetOldSaveGameName(title, file);
 }

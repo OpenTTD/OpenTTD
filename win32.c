@@ -708,255 +708,39 @@ int closedir(DIR *d)
 }
 
 extern char *_fios_path;
-static char *_fios_save_path;
-static char *_fios_scn_path;
 extern FiosItem *_fios_items;
 extern int _fios_count, _fios_alloc;
 
-static HANDLE MyFindFirstFile(const char *path, const char *file, WIN32_FIND_DATA *fd)
+bool FiosIsRoot(const char *file)
 {
-	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
-	HANDLE h;
-	char paths[MAX_PATH];
-	const char *s = strrchr(path, '\\');
-
-	snprintf(paths, sizeof(paths), "%s%s%s", path, (s[1] == '\0') ? "" : "\\", file);
-	h = FindFirstFile(paths, fd);
-
-	SetErrorMode(sem); // restore previous setting
-	return h;
+	return file[3] == '\0'; // C:\...
 }
 
-// Get a list of savegames
-FiosItem *FiosGetSavegameList(int *num, int mode)
+void FiosGetDrives(void)
 {
-	WIN32_FIND_DATA fd;
-	HANDLE h;
-	FiosItem *fios;
-	int sort_start;
+	char drives[256];
+	const char *s;
 
-	if (_fios_save_path == NULL) {
-		_fios_save_path = malloc(MAX_PATH);
-		strcpy(_fios_save_path, _path.save_dir);
-	}
-
-	_fios_path = _fios_save_path;
-
-	// Parent directory, only if not of the type C:\.
-	if (_fios_path[3] != '\0') {
-		fios = FiosAlloc();
-		fios->type = FIOS_TYPE_PARENT;
+	GetLogicalDriveStrings(sizeof(drives), drives);
+	for (s = drives; *s != '\0';) {
+		FiosItem *fios = FiosAlloc();
+		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
-		strcpy(fios->name, "..");
-		strcpy(fios->title, ".. (Parent directory)");
+		snprintf(fios->name,  lengthof(fios->name),  "%c:", s[0]);
+		ttd_strlcpy(fios->title, fios->name, lengthof(fios->title));
+		while (*s++ != '\0');
 	}
-
-	// Show subdirectories first
-	h = MyFindFirstFile(_fios_path, "*.*", &fd);
-	if (h != INVALID_HANDLE_VALUE) {
-		do {
-			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY &&
-					strcmp(fd.cFileName, ".") != 0 &&
-					strcmp(fd.cFileName, "..") != 0) {
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_DIR;
-				fios->mtime = 0;
-				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
-				snprintf(fios->title, lengthof(fios->title), "%s\\ (Directory)", FS2OTTD(fd.cFileName));
-				str_validate(fios->title);
-			}
-		} while (FindNextFile(h, &fd));
-		FindClose(h);
-	}
-
-	{
-		/* XXX ugly global variables ... */
-		byte order = _savegame_sort_order;
-		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
-		_savegame_sort_order = order;
-	}
-
-	// this is where to start sorting
-	sort_start = _fios_count;
-
-	/* Show savegame files
-	 * .SAV OpenTTD saved game
-	 * .SS1 Transport Tycoon Deluxe preset game
-	 * .SV1 Transport Tycoon Deluxe (Patch) saved game
-	 * .SV2 Transport Tycoon Deluxe (Patch) saved 2-player game
-	 */
-	h = MyFindFirstFile(_fios_path, "*.*", &fd);
-	if (h != INVALID_HANDLE_VALUE) {
-		do {
-			char *t;
-
-			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) continue;
-
-			t = strrchr(fd.cFileName, '.');
-			if (t == NULL) continue;
-
-			if (strcasecmp(t, ".sav") == 0) { // OpenTTD
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_FILE;
-				fios->mtime = *(uint64*)&fd.ftLastWriteTime;
-				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
-
-				*t = '\0'; // strip extension
-				ttd_strlcpy(fios->title, FS2OTTD(fd.cFileName), lengthof(fios->title));
-				str_validate(fios->title);
-			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO) {
-				if (strcasecmp(t, ".ss1") == 0 ||
-						strcasecmp(t, ".sv1") == 0 ||
-						strcasecmp(t, ".sv2") == 0) { // TTDLX(Patch)
-					char buf[MAX_PATH];
-
-					fios = FiosAlloc();
-					fios->type = FIOS_TYPE_OLDFILE;
-					fios->mtime = *(uint64*)&fd.ftLastWriteTime;
-					ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
-					sprintf(buf, "%s\\%s", _fios_path, fd.cFileName);
-					GetOldSaveGameName(fios->title, buf);
-				}
-			}
-		} while (FindNextFile(h, &fd));
-		FindClose(h);
-	}
-
-	qsort(_fios_items + sort_start, _fios_count - sort_start, sizeof(FiosItem), compare_FiosItems);
-
-	// Drives
-	{
-		char drives[256];
-		const char *s;
-
-		GetLogicalDriveStrings(sizeof(drives), drives);
-		for (s = drives; *s != '\0';) {
-			fios = FiosAlloc();
-			fios->type = FIOS_TYPE_DRIVE;
-			sprintf(fios->name, "%c:", s[0]);
-			sprintf(fios->title, "%c:", s[0]);
-			while (*s++ != '\0') {}
-		}
-	}
-
-	*num = _fios_count;
-	return _fios_items;
 }
 
-// Get a list of scenarios
-FiosItem *FiosGetScenarioList(int *num, int mode)
+bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb)
 {
-	FiosItem *fios;
-	WIN32_FIND_DATA fd;
-	HANDLE h;
-	int sort_start;
+	const WIN32_FIND_DATA *fd = &ent->dir->fd;
+	if ((fd->dwFileAttributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) != 0) return false;
 
-	if (_fios_scn_path == NULL) {
-		_fios_scn_path = malloc(MAX_PATH);
-		strcpy(_fios_scn_path, _path.scenario_dir);
-	}
-
-	_fios_path = _fios_scn_path;
-
-	// Parent directory, only if not of the type C:\.
-	if (_fios_path[3] != '\0' && mode != SLD_NEW_GAME) {
-		fios = FiosAlloc();
-		fios->type = FIOS_TYPE_PARENT;
-		fios->mtime = 0;
-		strcpy(fios->title, ".. (Parent directory)");
-	}
-
-	// Show subdirectories first
-	h = MyFindFirstFile(_fios_scn_path, "*.*", &fd);
-	if (h != INVALID_HANDLE_VALUE && mode != SLD_NEW_GAME) {
-		do {
-			if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY &&
-					strcmp(fd.cFileName, ".") != 0 &&
-					strcmp(fd.cFileName, "..") != 0) {
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_DIR;
-				fios->mtime = 0;
-				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
-				snprintf(fios->title, lengthof(fios->title), "%s\\ (Directory)", FS2OTTD(fd.cFileName));
-				str_validate(fios->title);
-			}
-		} while (FindNextFile(h, &fd));
-		FindClose(h);
-	}
-
-	{
-		/* XXX ugly global variables ... */
-		byte order = _savegame_sort_order;
-		_savegame_sort_order = SORT_BY_NAME | SORT_ASCENDING;
-		qsort(_fios_items, _fios_count, sizeof(FiosItem), compare_FiosItems);
-		_savegame_sort_order = order;
-	}
-
-	// this is where to start sorting
-	sort_start = _fios_count;
-
-	/* Show scenario files
-	 * .SCN OpenTTD style scenario file
-	 * .SV0 Transport Tycoon Deluxe (Patch) scenario
-	 * .SS0 Transport Tycoon Deluxe preset scenario
-	 */
-	h = MyFindFirstFile(_fios_scn_path, "*.*", &fd);
-	if (h != INVALID_HANDLE_VALUE) {
-		do {
-			char *t;
-
-			if ((fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) continue;
-
-			t = strrchr(fd.cFileName, '.');
-			if (t == NULL) continue;
-
-			if (strcasecmp(t, ".scn") == 0) { // OpenTTD
-				fios = FiosAlloc();
-				fios->type = FIOS_TYPE_SCENARIO;
-				fios->mtime = *(uint64*)&fd.ftLastWriteTime;
-				ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
-
-				*t = '\0'; // strip extension
-				ttd_strlcpy(fios->title, FS2OTTD(fd.cFileName), lengthof(fios->title));
-				str_validate(fios->title);
-			} else if (mode == SLD_LOAD_GAME || mode == SLD_LOAD_SCENARIO ||
-					mode == SLD_NEW_GAME) {
-				if (strcasecmp(t, ".sv0") == 0 ||
-						strcasecmp(t, ".ss0") == 0) { // TTDLX(Patch)
-					char buf[MAX_PATH];
-
-					fios = FiosAlloc();
-					fios->type = FIOS_TYPE_OLD_SCENARIO;
-					fios->mtime = *(uint64*)&fd.ftLastWriteTime;
-					sprintf(buf, "%s\\%s", _fios_path, fd.cFileName);
-					GetOldScenarioGameName(fios->title, buf);
-					ttd_strlcpy(fios->name, fd.cFileName, lengthof(fios->name));
-				}
-			}
-		} while (FindNextFile(h, &fd));
-		FindClose(h);
-	}
-
-	qsort(_fios_items + sort_start, _fios_count - sort_start, sizeof(FiosItem), compare_FiosItems);
-
-	// Drives
-	if (mode != SLD_NEW_GAME) {
-		char drives[256];
-		const char *s;
-
-		GetLogicalDriveStrings(sizeof(drives), drives);
-		for (s = drives; *s != '\0';) {
-			fios = FiosAlloc();
-			fios->type = FIOS_TYPE_DRIVE;
-			sprintf(fios->name, "%c:", s[0]);
-			sprintf(fios->title, "%c:", s[0]);
-			while (*s++ != '\0') {}
-		}
-	}
-
-	*num = _fios_count;
-	return _fios_items;
+	sb->st_size  = (fd->nFileSizeHigh * MAXDWORD+1) + fd->nFileSizeLow;
+	sb->st_mtime = (fd->ftLastWriteTime.dwHighDateTime * MAXDWORD+1) + fd->ftLastWriteTime.dwLowDateTime;
+	sb->st_mode  = (fd->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)? S_IFDIR : S_IFREG;
+	return true;
 }
 
 // Browse to
