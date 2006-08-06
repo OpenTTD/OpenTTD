@@ -26,7 +26,7 @@ static const DrawTileSeqStruct _depot_gfx_NW[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSprites const _depot_gfx_table[] = {
+static const DrawTileSprites _depot_gfx_table[] = {
 	{ SPR_FLAT_GRASS_TILE, _depot_gfx_NE },
 	{ SPR_RAIL_TRACK_Y,    _depot_gfx_SE },
 	{ SPR_RAIL_TRACK_X,    _depot_gfx_SW },
@@ -46,7 +46,7 @@ static const DrawTileSeqStruct _waypoint_gfx_Y[] = {
 	TILE_SEQ_END()
 };
 
-static const DrawTileSprites const _waypoint_gfx_table[] = {
+static const DrawTileSprites _waypoint_gfx_table[] = {
 	{ SPR_RAIL_TRACK_X, _waypoint_gfx_X },
 	{ SPR_RAIL_TRACK_Y, _waypoint_gfx_Y }
 };
