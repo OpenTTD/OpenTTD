@@ -294,7 +294,6 @@ ViewPort *IsPtInWindowViewport(const Window *w, int x, int y)
 
 static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 {
-	int z;
 	Point pt;
 	int a,b;
 
@@ -314,16 +313,19 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	a = x+y;
 	b = x-y;
 #endif
-	z = GetSlopeZ(a, b) >> 1;
-	z = GetSlopeZ(a+z, b+z) >> 1;
-	z = GetSlopeZ(a+z, b+z) >> 1;
-	z = GetSlopeZ(a+z, b+z) >> 1;
-	z = GetSlopeZ(a+z, b+z) >> 1;
 
-	pt.x = a+z;
-	pt.y = b+z;
+	if ((uint)a < MapMaxX() * TILE_SIZE && (uint)b < MapMaxY() * TILE_SIZE) {
+		uint z;
 
-	if ((uint)pt.x >= MapMaxX() * TILE_SIZE || (uint)pt.y >= MapMaxY() * TILE_SIZE) {
+		z = GetSlopeZ(a,     b    ) / 2;
+		z = GetSlopeZ(a + z, b + z) / 2;
+		z = GetSlopeZ(a + z, b + z) / 2;
+		z = GetSlopeZ(a + z, b + z) / 2;
+		z = GetSlopeZ(a + z, b + z) / 2;
+
+		pt.x = a + z;
+		pt.y = b + z;
+	} else {
 		pt.x = pt.y = -1;
 	}
 

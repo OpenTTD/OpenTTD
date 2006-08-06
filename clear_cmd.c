@@ -534,9 +534,12 @@ static void DrawTile_Clear(TileInfo *ti)
 	DrawClearLandFence(ti);
 }
 
-static uint GetSlopeZ_Clear(const TileInfo* ti)
+static uint GetSlopeZ_Clear(TileIndex tile, uint x, uint y)
 {
-	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
+	uint z;
+	uint tileh = GetTileSlope(tile, &z);
+
+	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 }
 
 static Slope GetSlopeTileh_Clear(TileIndex tile, Slope tileh)

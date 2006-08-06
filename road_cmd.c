@@ -833,20 +833,20 @@ void DrawRoadDepotSprite(int x, int y, DiagDirection dir)
 	}
 }
 
-static uint GetSlopeZ_Road(const TileInfo* ti)
+static uint GetSlopeZ_Road(TileIndex tile, uint x, uint y)
 {
-	Slope tileh = ti->tileh;
-	uint z = ti->z;
+	uint z;
+	Slope tileh = GetTileSlope(tile, &z);
 
 	if (tileh == SLOPE_FLAT) return z;
-	if (GetRoadTileType(ti->tile) == ROAD_TILE_NORMAL) {
-		uint f = GetRoadFoundation(tileh, GetRoadBits(ti->tile));
+	if (GetRoadTileType(tile) == ROAD_TILE_NORMAL) {
+		uint f = GetRoadFoundation(tileh, GetRoadBits(tile));
 
 		if (f != 0) {
 			if (f < 15) return z + TILE_HEIGHT; // leveled foundation
 			tileh = _inclined_tileh[f - 15]; // inclined foundation
 		}
-		return z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh);
+		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 	} else {
 		return z + TILE_HEIGHT;
 	}

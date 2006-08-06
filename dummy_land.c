@@ -14,7 +14,7 @@ static void DrawTile_Dummy(TileInfo *ti)
 }
 
 
-static uint GetSlopeZ_Dummy(const TileInfo* ti)
+static uint GetSlopeZ_Dummy(TileIndex tile, uint x, uint y)
 {
 	return 0;
 }

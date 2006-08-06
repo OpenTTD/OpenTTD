@@ -298,7 +298,7 @@ typedef struct {
 
 
 typedef void DrawTileProc(TileInfo *ti);
-typedef uint GetSlopeZProc(const TileInfo* ti);
+typedef uint GetSlopeZProc(TileIndex tile, uint x, uint y);
 typedef int32 ClearTileProc(TileIndex tile, byte flags);
 typedef void GetAcceptedCargoProc(TileIndex tile, AcceptedCargo res);
 typedef void GetTileDescProc(TileIndex tile, TileDesc *td);

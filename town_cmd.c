@@ -110,9 +110,9 @@ static void DrawTile_Town(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_Town(const TileInfo* ti)
+static uint GetSlopeZ_Town(TileIndex tile, uint x, uint y)
 {
-	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT);
+	return GetTileMaxZ(tile);
 }
 
 static Slope GetSlopeTileh_Town(TileIndex tile, Slope tileh)

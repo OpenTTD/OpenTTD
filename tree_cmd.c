@@ -323,9 +323,12 @@ static void DrawTile_Trees(TileInfo *ti)
 }
 
 
-static uint GetSlopeZ_Trees(const TileInfo* ti)
+static uint GetSlopeZ_Trees(TileIndex tile, uint x, uint y)
 {
-	return GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh) + ti->z;
+	uint z;
+	uint tileh = GetTileSlope(tile, &z);
+
+	return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 }
 
 static Slope GetSlopeTileh_Trees(TileIndex tile, Slope tileh)

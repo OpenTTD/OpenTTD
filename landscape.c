@@ -174,11 +174,9 @@ uint GetPartialZ(int x, int y, Slope corners)
 
 uint GetSlopeZ(int x, int y)
 {
-	TileInfo ti;
+	TileIndex tile = TileVirtXY(x, y);
 
-	FindLandscapeHeight(&ti, x, y);
-
-	return _tile_type_procs[ti.type]->get_slope_z_proc(&ti);
+	return _tile_type_procs[GetTileType(tile)]->get_slope_z_proc(tile, x, y);
 }
 
 

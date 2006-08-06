@@ -267,9 +267,9 @@ static void DrawTile_Industry(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_Industry(const TileInfo *ti)
+static uint GetSlopeZ_Industry(TileIndex tile, uint x, uint y)
 {
-	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT);
+	return GetTileMaxZ(tile);
 }
 
 static Slope GetSlopeTileh_Industry(TileIndex tile, Slope tileh)

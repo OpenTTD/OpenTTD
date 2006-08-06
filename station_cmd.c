@@ -2152,9 +2152,9 @@ void StationPickerDrawSprite(int x, int y, RailType railtype, int image)
 	}
 }
 
-static uint GetSlopeZ_Station(const TileInfo* ti)
+static uint GetSlopeZ_Station(TileIndex tile, uint x, uint y)
 {
-	return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT);
+	return GetTileMaxZ(tile);
 }
 
 static Slope GetSlopeTileh_Station(TileIndex tile, Slope tileh)

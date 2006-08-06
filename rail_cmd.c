@@ -1692,20 +1692,20 @@ void SetSignalsOnBothDir(TileIndex tile, byte track)
 	UpdateSignalsOnSegment(tile, _search_dir_2[track]);
 }
 
-static uint GetSlopeZ_Track(const TileInfo* ti)
+static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)
 {
-	Slope tileh = ti->tileh;
-	uint z = ti->z;
+	uint z;
+	Slope tileh = GetTileSlope(tile, &z);
 
 	if (tileh == SLOPE_FLAT) return z;
-	if (IsPlainRailTile(ti->tile)) {
-		uint f = GetRailFoundation(ti->tileh, GetTrackBits(ti->tile));
+	if (IsPlainRailTile(tile)) {
+		uint f = GetRailFoundation(tileh, GetTrackBits(tile));
 
 		if (f != 0) {
 			if (f < 15) return z + TILE_HEIGHT; // leveled foundation
 			tileh = _inclined_tileh[f - 15]; // inclined foundation
 		}
-		return z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, tileh);
+		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 	} else {
 		return z + TILE_HEIGHT;
 	}

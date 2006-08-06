@@ -1089,13 +1089,13 @@ static void DrawTile_TunnelBridge(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_TunnelBridge(const TileInfo* ti)
+static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 {
-	TileIndex tile = ti->tile;
-	uint z = ti->z;
-	uint x = ti->x & 0xF;
-	uint y = ti->y & 0xF;
-	Slope tileh = ti->tileh;
+	uint z;
+	Slope tileh = GetTileSlope(tile, &z);
+
+	x &= 0xF;
+	y &= 0xF;
 
 	if (IsTunnel(tile)) {
 		uint pos = (DiagDirToAxis(GetTunnelDirection(tile)) == AXIS_X ? y : x);

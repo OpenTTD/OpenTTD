@@ -176,12 +176,15 @@ static void DrawTile_Unmovable(TileInfo *ti)
 	}
 }
 
-static uint GetSlopeZ_Unmovable(const TileInfo* ti)
+static uint GetSlopeZ_Unmovable(TileIndex tile, uint x, uint y)
 {
-	if (IsOwnedLand(ti->tile)) {
-		return ti->z + GetPartialZ(ti->x & 0xF, ti->y & 0xF, ti->tileh);
+	if (IsOwnedLand(tile)) {
+		uint z;
+		uint tileh = GetTileSlope(tile, &z);
+
+		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
 	} else {
-		return ti->z + (ti->tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT);
+		return GetTileMaxZ(tile);
 	}
 }
 
