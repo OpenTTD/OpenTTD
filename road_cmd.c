@@ -5,6 +5,7 @@
 #include "bridge_map.h"
 #include "rail_map.h"
 #include "road_map.h"
+#include "sprite.h"
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "functions.h"
@@ -650,14 +651,6 @@ typedef struct DrawRoadTileStruct {
 	byte subcoord_y;
 } DrawRoadTileStruct;
 
-typedef struct DrawRoadSeqStruct {
-	uint32 image;
-	byte subcoord_x;
-	byte subcoord_y;
-	byte width;
-	byte height;
-} DrawRoadSeqStruct;
-
 #include "table/road_land.h"
 
 
@@ -783,19 +776,19 @@ static void DrawTile_Road(TileInfo *ti)
 
 		default:
 		case ROAD_TILE_DEPOT: {
-			const DrawRoadSeqStruct* drss;
+			const DrawTileSprites* dts;
+			const DrawTileSeqStruct* dtss;
 			uint32 palette;
 
 			if (ti->tileh != SLOPE_FLAT) DrawFoundation(ti, ti->tileh);
 
 			palette = PLAYER_SPRITE_COLOR(GetTileOwner(ti->tile));
 
-			drss = _road_depot[GetRoadDepotDirection(ti->tile)];
+			dts =  &_road_depot[GetRoadDepotDirection(ti->tile)];
+			DrawGroundSprite(dts->ground_sprite);
 
-			DrawGroundSprite(drss++->image);
-
-			for (; drss->image != 0; drss++) {
-				uint32 image = drss->image;
+			for (dtss = dts->seq; dtss->image != 0; dtss++) {
+				uint32 image = dtss->image;
 
 				if (_display_opt & DO_TRANS_BUILDINGS) {
 					MAKE_TRANSPARENT(image);
@@ -804,8 +797,10 @@ static void DrawTile_Road(TileInfo *ti)
 				}
 
 				AddSortableSpriteToDraw(
-					image, ti->x | drss->subcoord_x,
-					ti->y | drss->subcoord_y, drss->width, drss->height, 0x14, ti->z
+					image,
+					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+					dtss->size_x, dtss->size_y,
+					dtss->size_z, ti->z
 				);
 			}
 			break;
@@ -815,19 +810,20 @@ static void DrawTile_Road(TileInfo *ti)
 
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir)
 {
-	const DrawRoadSeqStruct* dtss = _road_depot[dir];
-	uint32 ormod = PLAYER_SPRITE_COLOR(_local_player);
+	uint32 palette = PLAYER_SPRITE_COLOR(_local_player);
+	const DrawTileSprites* dts =  &_road_depot[dir];
+	const DrawTileSeqStruct* dtss;
 
 	x += 33;
 	y += 17;
 
-	DrawSprite(dtss++->image, x, y);
+	DrawSprite(dts->ground_sprite, x, y);
 
-	for (; dtss->image != 0; dtss++) {
-		Point pt = RemapCoords(dtss->subcoord_x, dtss->subcoord_y, 0);
+	for (dtss = dts->seq; dtss->image != 0; dtss++) {
+		Point pt = RemapCoords(dtss->delta_x, dtss->delta_y, dtss->delta_z);
 		uint32 image = dtss->image;
 
-		if (image & PALETTE_MODIFIER_COLOR) image |= ormod;
+		if (image & PALETTE_MODIFIER_COLOR) image |= palette;
 
 		DrawSprite(image, x + pt.x, y + pt.y);
 	}
