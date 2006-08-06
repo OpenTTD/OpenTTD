@@ -2119,7 +2119,12 @@ static void DrawTile_Station(TileInfo *ti)
 		}
 
 		if ((byte)dtss->delta_z != 0x80) {
-			AddSortableSpriteToDraw(image, ti->x + dtss->delta_x, ti->y + dtss->delta_y, dtss->width, dtss->height, dtss->unk, ti->z + dtss->delta_z);
+			AddSortableSpriteToDraw(
+				image,
+				ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+				dtss->size_x, dtss->size_y,
+				dtss->size_z, ti->z + dtss->delta_z
+			);
 		} else {
 			AddChildSpriteScreen(image, dtss->delta_x, dtss->delta_y);
 		}

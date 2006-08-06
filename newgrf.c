@@ -862,9 +862,9 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 						if ((byte) dtss->delta_x == 0x80) break;
 						dtss->delta_y = grf_load_byte(&buf);
 						dtss->delta_z = grf_load_byte(&buf);
-						dtss->width = grf_load_byte(&buf);
-						dtss->height = grf_load_byte(&buf);
-						dtss->unk = grf_load_byte(&buf);
+						dtss->size_x = grf_load_byte(&buf);
+						dtss->size_y = grf_load_byte(&buf);
+						dtss->size_z = grf_load_byte(&buf);
 						dtss->image = grf_load_dword(&buf);
 
 						/* Remap flags as ours collide */

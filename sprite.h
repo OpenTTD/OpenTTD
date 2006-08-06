@@ -12,8 +12,9 @@ typedef struct DrawTileSeqStruct {
 	int8 delta_x; // 0x80 is sequence terminator
 	int8 delta_y;
 	int8 delta_z;
-	byte width,height;
-	byte unk; // 'depth', just z-size; TODO: rename
+	byte size_x;
+	byte size_y;
+	byte size_z;
 	uint32 image;
 } DrawTileSeqStruct;
 

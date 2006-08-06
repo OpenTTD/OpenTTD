@@ -165,8 +165,10 @@ static void DrawTile_Unmovable(TileInfo *ti)
 					image |= ormod;
 				}
 				AddSortableSpriteToDraw(
-					image, ti->x + dtss->delta_x, ti->y + dtss->delta_y,
-					dtss->width, dtss->height, dtss->unk, ti->z + dtss->delta_z
+					image,
+					ti->x + dtss->delta_x, ti->y + dtss->delta_y,
+					dtss->size_x, dtss->size_y,
+					dtss->size_z, ti->z + dtss->delta_z
 				);
 			}
 			break;
