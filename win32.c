@@ -24,10 +24,6 @@
 
 static bool _has_console;
 
-#if defined(__MINGW32__) || defined(__CYGWIN__)
-	#define __TIMESTAMP__   __DATE__ __TIME__
-#endif
-
 #if defined(__MINGW32__)
 	#include <stdint.h>
 #endif
@@ -440,10 +436,10 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	{
 		SYSTEMTIME time;
 		GetLocalTime(&time);
-		output += sprintf(output,
+		output += snprintf(output, 8192,
 			"*** OpenTTD Crash Report ***\r\n"
 			"Date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n"
-			"Build: %s built on " __TIMESTAMP__ "\r\n",
+			"Build: %s built on " __DATE__ " " __TIME__ "\r\n",
 			time.wYear,
 			time.wMonth,
 			time.wDay,
