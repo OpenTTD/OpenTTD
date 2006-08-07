@@ -55,26 +55,6 @@ const byte _inclined_tileh[] = {
 };
 
 
-/* find the landscape height for the coordinates x y */
-void FindLandscapeHeight(TileInfo *ti, uint x, uint y)
-{
-	ti->x = x;
-	ti->y = y;
-
-	if (x >= MapMaxX() * TILE_SIZE - 1 || y >= MapMaxY() * TILE_SIZE - 1) {
-		ti->tileh = SLOPE_FLAT;
-		ti->type = MP_VOID;
-		ti->tile = 0;
-		ti->z = 0;
-	} else {
-		TileIndex tile = TileVirtXY(x, y);
-
-		ti->tile = tile;
-		ti->type = GetTileType(tile);
-		ti->tileh = GetTileSlope(tile, &ti->z);
-	}
-}
-
 uint GetPartialZ(int x, int y, Slope corners)
 {
 	int z = 0;
@@ -278,11 +258,6 @@ void AnimateTile(TileIndex tile)
 void ClickTile(TileIndex tile)
 {
 	_tile_type_procs[GetTileType(tile)]->click_tile_proc(tile);
-}
-
-void DrawTile(TileInfo *ti)
-{
-	_tile_type_procs[ti->type]->draw_tile_proc(ti);
 }
 
 void GetTileDesc(TileIndex tile, TileDesc *td)

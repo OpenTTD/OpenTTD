@@ -3,9 +3,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-/* landscape.c */
-void FindLandscapeHeight(TileInfo *ti, uint x, uint y);
-
 void DoClearSquare(TileIndex tile);
 void RunTileLoop(void);
 
@@ -17,7 +14,6 @@ void ChangeTileOwner(TileIndex tile, byte old_player, byte new_player);
 void AnimateTile(TileIndex tile);
 void ClickTile(TileIndex tile);
 void GetTileDesc(TileIndex tile, TileDesc *td);
-void DrawTile(TileInfo *ti);
 void UpdateTownMaxPass(Town *t);
 
 bool IsValidTile(TileIndex tile);

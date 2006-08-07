@@ -707,7 +707,24 @@ static void ViewportAddLandscape(void)
 		int y_cur = y;
 
 		do {
-			FindLandscapeHeight(&ti, x_cur, y_cur);
+			TileType tt;
+
+			ti.x = x_cur;
+			ti.y = y_cur;
+			if (0 <= x_cur && x_cur < (int)MapMaxX() * TILE_SIZE &&
+					0 <= y_cur && y_cur < (int)MapMaxY() * TILE_SIZE) {
+				TileIndex tile = TileVirtXY(x_cur, y_cur);
+
+				ti.tile = tile;
+				ti.tileh = GetTileSlope(tile, &ti.z);
+				tt = GetTileType(tile);
+			} else {
+				ti.tileh = SLOPE_FLAT;
+				ti.tile = 0;
+				ti.z = 0;
+				tt = MP_VOID;
+			}
+
 #if !defined(NEW_ROTATION)
 			y_cur += 0x10;
 			x_cur -= 0x10;
@@ -718,7 +735,7 @@ static void ViewportAddLandscape(void)
 			_added_tile_sprite = false;
 			_offset_ground_sprites = false;
 
-			DrawTile(&ti);
+			_tile_type_procs[tt]->draw_tile_proc(&ti);
 			DrawTileSelection(&ti);
 		} while (--width_cur);
 
