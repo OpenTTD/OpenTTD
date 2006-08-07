@@ -215,8 +215,8 @@ VARDEF Patches _patches;
 
 
 typedef struct Cheat {
-	bool been_used;	// has this cheat been used before?
-	byte value;			// active?
+	bool been_used; // has this cheat been used before?
+	bool value;     // tells if the bool cheat is active or not
 } Cheat;
 
 
