@@ -357,14 +357,15 @@ static byte FiosGetScenarioListCallback(int mode, const char *file, const char *
  */
 FiosItem *FiosGetScenarioList(int mode)
 {
-	static char *_fios_scn_path = NULL;
+	static char *fios_scn_path = NULL;
 
-	if (_fios_scn_path == NULL) {
-		_fios_scn_path = malloc(MAX_PATH);
-		ttd_strlcpy(_fios_scn_path, _path.scenario_dir, MAX_PATH);
+	/* Copy the default path on first run or on 'New Game' */
+	if (mode == SLD_NEW_GAME || fios_scn_path == NULL) {
+		if (fios_scn_path == NULL) fios_scn_path = malloc(MAX_PATH);
+		ttd_strlcpy(fios_scn_path, _path.scenario_dir, MAX_PATH);
 	}
 
-	_fios_path = _fios_scn_path;
+	_fios_path = fios_scn_path;
 
 	return FiosGetFileList(mode, &FiosGetScenarioListCallback);
 }
