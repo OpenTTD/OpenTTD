@@ -52,9 +52,13 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 
 TrackBits GetAnyRoadTrackBits(TileIndex tile)
 {
-	if (IsTileType(tile, MP_STREET) && !IsTileDepotType(tile, TRANSPORT_ROAD)) {
-		uint32 r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
-		return (byte)(r | (r >> 8));
+	uint32 r;
+
+	// Don't allow building through road depot tiles.
+	if (IsTileType(tile, MP_STREET) && IsTileDepotType(tile, TRANSPORT_ROAD)) {
+		return 0;
 	}
-	return 0;
+
+	r = GetTileTrackStatus(tile, TRANSPORT_ROAD);
+	return (byte)(r | (r >> 8));
 }
