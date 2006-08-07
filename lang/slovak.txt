@@ -85,36 +85,67 @@ STR_002D_FIZZY_DRINKS                                           :Sumienku
 STR_002D_FIZZY_DRINKS.g                                         :sumienky
 STR_002E                                                        :
 STR_002F_PASSENGER                                              :Cestujuci
+STR_002F_PASSENGER.g                                            :cestujucich
 STR_0030_COAL                                                   :Uhlie
+STR_0030_COAL.g                                                 :uhlia
 STR_0031_MAIL                                                   :Posta
+STR_0031_MAIL.g                                                 :posty
 STR_0032_OIL                                                    :Ropa
+STR_0032_OIL.g                                                  :ropy
 STR_0033_LIVESTOCK                                              :Dobytok
+STR_0033_LIVESTOCK.g                                            :dobytka
 STR_0034_GOODS                                                  :Tovar
+STR_0034_GOODS.g                                                :tovaru
 STR_0035_GRAIN                                                  :Obilie
+STR_0035_GRAIN.g                                                :obilia
 STR_0036_WOOD                                                   :Drevo
+STR_0036_WOOD.g                                                 :dreva
 STR_0037_IRON_ORE                                               :Zelezna ruda
+STR_0037_IRON_ORE.g                                             :zeleznej rudy
 STR_0038_STEEL                                                  :Ocel
+STR_0038_STEEL.g                                                :ocele
 STR_0039_VALUABLES                                              :Cennosti
+STR_0039_VALUABLES.g                                            :cennosti
 STR_003A_COPPER_ORE                                             :Medenna ruda
+STR_003A_COPPER_ORE.g                                           :medennej rudy
 STR_003B_MAIZE                                                  :Kukurica
+STR_003B_MAIZE.g                                                :kukurice
 STR_003C_FRUIT                                                  :Ovocie
+STR_003C_FRUIT.g                                                :ovocia
 STR_003D_DIAMOND                                                :Diamant
+STR_003D_DIAMOND.g                                              :diamantov
 STR_003E_FOOD                                                   :Jedlo
+STR_003E_FOOD.g                                                 :jedla
 STR_003F_PAPER                                                  :Papier
+STR_003F_PAPER.g                                                :papiera
 STR_0040_GOLD                                                   :Zlato
+STR_0040_GOLD.g                                                 :zlata
 STR_0041_WATER                                                  :Voda
+STR_0041_WATER.g                                                :vody
 STR_0042_WHEAT                                                  :Psenica
+STR_0042_WHEAT.g                                                :psenice
 STR_0043_RUBBER                                                 :Kaucuk
+STR_0043_RUBBER.g                                               :kaucuku
 STR_0044_SUGAR                                                  :Cukor
+STR_0044_SUGAR.g                                                :cukru
 STR_0045_TOY                                                    :Hracky
+STR_0045_TOY.g                                                  :hraciek
 STR_0046_CANDY                                                  :Cukriky
+STR_0046_CANDY.g                                                :cukrikov
 STR_0047_COLA                                                   :Kofola
+STR_0047_COLA.g                                                 :kofoly
 STR_0048_COTTON_CANDY                                           :Cukrova vata
+STR_0048_COTTON_CANDY.g                                         :cukrovej vaty
 STR_0049_BUBBLE                                                 :Bubliny
+STR_0049_BUBBLE.g                                               :bublin
 STR_004A_TOFFEE                                                 :Karamel
+STR_004A_TOFFEE.g                                               :karamelu
 STR_004B_BATTERY                                                :Baterie
+STR_004B_BATTERY.g                                              :baterii
 STR_004C_PLASTIC                                                :Zuvacky
+STR_004C_PLASTIC.g                                              :zuvaciek
 STR_004D_FIZZY_DRINK                                            :Sumienka
+STR_004D_FIZZY_DRINK.g                                          :sumienky
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} cestujuci{P "" "" ch}
 STR_QUANTITY_COAL                                               :{WEIGHT} uhlia
@@ -1851,13 +1882,13 @@ STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Nedostatok dostupnej drevnej suroviny donutil {INDUSTRY} oznamit skore uzavretie!
 STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}{INDUSTRY} zvysuje produkciu!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nove nalezisko uhlia sa objavilo v {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
-STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nove nalezisko ropy sa objavilo pri {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Nove nalezisko ropy sa objavilo na {INDUSTRY}!{}Ocakava sa zdvojnasobenie produkcie!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Na {INDUSTRY} zlepsili pouzivane metody!Ocakava sa zdvojnasobenie produkcie!
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} znizuje produkciu o 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Premnozenie skodcov sposobilo znicenie urody na {INDUSTRY}!{}Produkcia sa znizila o 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}... moze byt umiestnene len pri okraji mapy
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produkcia {STRING.g} sa v {INDUSTRY} zvysuje o {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produkcia {STRING.g} sa v {INDUSTRY} znizuje o {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{1:INDUSTRY} zvysuje produkciu {0:STRING.g} o {2:COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{1:INDUSTRY} znizuje produkciu {0:STRING.g} o {2:COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vlak v tuneli
