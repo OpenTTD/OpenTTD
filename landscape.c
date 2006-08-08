@@ -195,7 +195,7 @@ static bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 
 void DrawFoundation(TileInfo *ti, uint f)
 {
-	uint32 sprite_base = SPR_SLOPES_BASE-14;
+	uint32 sprite_base = SPR_SLOPES_BASE - 15;
 	Slope slope;
 	uint z;
 
@@ -205,24 +205,16 @@ void DrawFoundation(TileInfo *ti, uint f)
 
 	if (f < 15) {
 		// leveled foundation
-		if (sprite_base < SPR_SLOPES_BASE) sprite_base = SPR_FOUNDATION_BASE + 1; // use original slope sprites
+		// Use the original slope sprites if NW and NE borders should be visible
+		if (sprite_base  == SPR_SLOPES_BASE - 15) sprite_base = SPR_FOUNDATION_BASE;
 
-		AddSortableSpriteToDraw(f - 1 + sprite_base, ti->x, ti->y, 16, 16, 7, ti->z);
+		AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 7, ti->z);
 		ti->z += TILE_HEIGHT;
 		ti->tileh = SLOPE_FLAT;
 		OffsetGroundSprite(31, 1);
 	} else {
 		// inclined foundation
-		sprite_base += 14;
-
-#define M(x) (1 << (x))
-		AddSortableSpriteToDraw(
-			HASBIT(M(SLOPE_W) | M(SLOPE_S) | M(SLOPE_E) | M(SLOPE_N), ti->tileh) ?
-				sprite_base + (f - 15) : SPR_FOUNDATION_BASE + ti->tileh,
-			ti->x, ti->y, 16, 16, 1, ti->z
-		);
-#undef M
-
+		AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 1, ti->z);
 		ti->tileh = _inclined_tileh[f - 15];
 		OffsetGroundSprite(31, 9);
 	}
