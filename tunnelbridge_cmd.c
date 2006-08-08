@@ -103,51 +103,44 @@ static inline const PalSpriteID *GetBridgeSpriteTable(int index, byte table)
 
 static inline byte GetBridgeFlags(int index) { return _bridge[index].flags;}
 
-/**	check if bridge can be built on slope
- *	direction 0 = X-axis, direction 1 = Y-axis
- *	is_start_tile = false		<-- end tile
- *	is_start_tile = true		<-- start tile
+
+/** Check the slope at the bridge ramps in three easy steps:
+ * - valid slopes without foundation
+ * - valid slopes with foundation
+ * - rest is invalid
  */
-static uint32 CheckBridgeSlope(Axis direction, Slope tileh, bool is_start_tile)
-{
-	if (IsSteepSlope(tileh)) return CMD_ERROR;
-
-	if (is_start_tile) {
-		/* check slope at start tile
-				- no extra cost
-		*/
 #define M(x) (1 << (x))
-		if (HASBIT(M(SLOPE_FLAT) | (direction == AXIS_X ? M(SLOPE_NE) : M(SLOPE_NW)), tileh)) return 0;
+static int32 CheckBridgeSlopeNorth(Axis axis, Slope tileh)
+{
+	uint32 valid;
 
-		// disallow certain start tiles to avoid certain crooked bridges
-		if (tileh == SLOPE_S) return CMD_ERROR;
-	} else {
-		/*	check slope at end tile
-				- no extra cost
-		*/
-		if (HASBIT(M(SLOPE_FLAT) | (direction == AXIS_X ? M(SLOPE_SW) : M(SLOPE_SE)), tileh)) return 0;
-#undef M
+	valid = M(SLOPE_FLAT) | (axis == AXIS_X ? M(SLOPE_NE) : M(SLOPE_NW));
+	if (HASBIT(valid, tileh)) return 0;
 
-		// disallow certain end tiles to avoid certain crooked bridges
-		if (tileh == SLOPE_N) return CMD_ERROR;
-	}
-
-	/*	disallow common start/end tiles to avoid certain crooked bridges e.g.
-	 *	start-tile:	X 2,1 Y 2,4 (2 was disabled before)
-	 *	end-tile:		X 8,4 Y 8,1 (8 was disabled before)
-	 */
-	if ((tileh == SLOPE_W && is_start_tile != (direction != AXIS_X)) ||
-			(tileh == SLOPE_E && is_start_tile == (direction != AXIS_X))) {
-		return CMD_ERROR;
-	}
-
-	// slope foundations
-	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION | BRIDGE_PARTLY_LEVELED_FOUNDATION, tileh)) {
-		return _price.terraform;
-	}
+	valid =
+		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_N) |
+		(axis == AXIS_X ? M(SLOPE_E) : M(SLOPE_W));
+	if (HASBIT(valid, tileh)) return _price.terraform;
 
 	return CMD_ERROR;
 }
+
+static int32 CheckBridgeSlopeSouth(Axis axis, Slope tileh)
+{
+	uint32 valid;
+
+	valid = M(SLOPE_FLAT) | (axis == AXIS_X ? M(SLOPE_SW) : M(SLOPE_SE));
+	if (HASBIT(valid, tileh)) return 0;
+
+	valid =
+		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_S) |
+		(axis == AXIS_X ? M(SLOPE_W) : M(SLOPE_E));
+	if (HASBIT(valid, tileh)) return _price.terraform;
+
+	return CMD_ERROR;
+}
+#undef M
+
 
 uint32 GetBridgeLength(TileIndex begin, TileIndex end)
 {
@@ -274,9 +267,8 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	if (CmdFailed(ret)) return ret;
 	cost = ret;
 
-	// true - bridge-start-tile, false - bridge-end-tile
-	terraformcost = CheckBridgeSlope(direction, tileh_start, true);
-	if (CmdFailed(terraformcost) || (terraformcost && !allow_on_slopes))
+	terraformcost = CheckBridgeSlopeNorth(direction, tileh_start);
+	if (CmdFailed(terraformcost) || (terraformcost != 0 && !allow_on_slopes))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	cost += terraformcost;
 
@@ -287,8 +279,8 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	cost += ret;
 
 	// false - end tile slope check
-	terraformcost = CheckBridgeSlope(direction, tileh_end, false);
-	if (CmdFailed(terraformcost) || (terraformcost && !allow_on_slopes))
+	terraformcost = CheckBridgeSlopeSouth(direction, tileh_end);
+	if (CmdFailed(terraformcost) || (terraformcost != 0 && !allow_on_slopes))
 		return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
 	cost += terraformcost;
 
