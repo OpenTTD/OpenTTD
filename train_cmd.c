@@ -1794,7 +1794,12 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			};
 
 			if (amount != 0) {
-				if (new_cid != v->cargo_type) cost += _price.build_railvehicle >> 8;
+				if (new_cid != v->cargo_type) {
+					int32 base_cost = (rvi->flags & RVI_WAGON) ?
+						_price.build_railwagon : _price.build_railvehicle;
+					cost += (EngInfo(v->engine_type)->refit_cost * base_cost) >> 9;
+				}
+
 				num += amount;
 				if (flags & DC_EXEC) {
 					v->cargo_count = (v->cargo_type == new_cid) ? min(amount, v->cargo_count) : 0;
