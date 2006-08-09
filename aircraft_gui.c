@@ -74,6 +74,10 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 	SetDParam(0, e->reliability * 100 >> 16);
 	DrawString(x, y, STR_PURCHASE_INFO_RELIABILITY, 0);
 	y += 10;
+
+	/* Additional text from NewGRF */
+	// XXX 227 will become a calculated width...
+	y += ShowAdditionalText(x, y, 227, engine_number);
 }
 
 static void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
@@ -223,15 +227,15 @@ static const Widget _new_aircraft_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_A005_NEW_AIRCRAFT,		STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   227,    14,   109, 0x401,										STR_A025_AIRCRAFT_SELECTION_LIST},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   228,   239,    14,   109, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   239,   110,   161, 0x0,											STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   162,   173, STR_A006_BUILD_AIRCRAFT,	STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   115,   227,   162,   173, STR_A037_RENAME,					STR_A038_RENAME_AIRCRAFT_TYPE},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   228,   239,   162,   173, 0x0,											STR_RESIZE_BUTTON},
+{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   239,   110,   181, 0x0,											STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   182,   193, STR_A006_BUILD_AIRCRAFT,	STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   115,   227,   182,   193, STR_A037_RENAME,					STR_A038_RENAME_AIRCRAFT_TYPE},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   228,   239,   182,   193, 0x0,											STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _new_aircraft_desc = {
-	-1, -1, 240, 174,
+	-1, -1, 240, 194,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_aircraft_widgets,

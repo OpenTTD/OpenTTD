@@ -903,7 +903,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 				}
 
-				DrawString(145, (w->resize.step_height == 24 ? 67 : 87) + w->resize.step_height * w->vscroll.cap, STR_02BD, 0x10);
+				DrawString(145, 87 + w->resize.step_height * w->vscroll.cap, STR_02BD, 0x10);
 
 				/*	now we draw the two arrays according to what we just counted */
 				DrawEngineArrayInReplaceWindow(w, x, y, x2, y2, pos, pos2, sel[0], sel[1], selected_id[0], selected_id[1]);
@@ -1081,16 +1081,16 @@ static const Widget _replace_ship_aircraft_vehicle_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,       STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   443,     0,    13, STR_REPLACE_VEHICLES_WHITE,  STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,    14,   444,   455,     0,    13, STR_NULL,       STR_STICKY_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   110,   161, STR_NULL,       STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   162,   173, STR_REPLACE_VEHICLES_START,  STR_REPLACE_HELP_START_BUTTON},
-{      WWT_PANEL,     RESIZE_TB,    14,   139,   305,   162,   173, STR_NULL,       STR_REPLACE_HELP_REPLACE_INFO_TAB},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   443,   162,   173, STR_REPLACE_VEHICLES_STOP,   STR_REPLACE_HELP_STOP_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   110,   181, STR_NULL,       STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   138,   182,   193, STR_REPLACE_VEHICLES_START,  STR_REPLACE_HELP_START_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,   139,   305,   182,   193, STR_NULL,       STR_REPLACE_HELP_REPLACE_INFO_TAB},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   306,   443,   182,   193, STR_REPLACE_VEHICLES_STOP,   STR_REPLACE_HELP_STOP_BUTTON},
 {     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,   109, 0x401,          STR_REPLACE_HELP_LEFT_ARRAY},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,   109, STR_NULL,       STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {     WWT_MATRIX, RESIZE_BOTTOM,    14,   228,   443,    14,   109, 0x401,          STR_REPLACE_HELP_RIGHT_ARRAY},
 { WWT_SCROLL2BAR, RESIZE_BOTTOM,    14,   444,   455,    14,   109, STR_NULL,       STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   110,   161, STR_NULL,       STR_NULL},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   444,   455,   162,   173, STR_NULL,       STR_RESIZE_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,   228,   455,   110,   181, STR_NULL,       STR_NULL},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   444,   455,   182,   193, STR_NULL,       STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1111,7 +1111,7 @@ static const WindowDesc _replace_road_vehicle_desc = {
 };
 
 static const WindowDesc _replace_ship_aircraft_vehicle_desc = {
-	-1, -1, 456, 174,
+	-1, -1, 456, 194,
 	WC_REPLACE_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_ship_aircraft_vehicle_widgets,

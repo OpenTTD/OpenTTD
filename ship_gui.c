@@ -62,6 +62,10 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 	SetDParam(0, e->reliability * 100 >> 16);
 	DrawString(x,y, STR_PURCHASE_INFO_RELIABILITY, 0);
 	y += 10;
+
+	/* Additional text from NewGRF */
+	// XXX 227 will become a calculated width...
+	y += ShowAdditionalText(x, y, 227, engine_number);
 }
 
 static void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)

@@ -62,6 +62,10 @@ void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 	SetDParam(0, e->reliability * 100 >> 16);
 	DrawString(x, y, STR_PURCHASE_INFO_RELIABILITY, 0);
 	y += 10;
+
+	/* Additional text from NewGRF */
+	// XXX 227 will become a calculated width...
+	y += ShowAdditionalText(x, y, 227, engine_number);
 }
 
 static void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection)
@@ -579,15 +583,15 @@ static const Widget _new_road_veh_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   247,     0,    13, STR_9006_NEW_ROAD_VEHICLES, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   235,    14,   125, 0x801,									STR_9026_ROAD_VEHICLE_SELECTION},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   236,   247,    14,   125, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   247,   126,   177, 0x0,										STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   117,   178,   189, STR_9007_BUILD_VEHICLE,STR_9027_BUILD_THE_HIGHLIGHTED_ROAD},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   118,   235,   178,   189, STR_9034_RENAME,				STR_9035_RENAME_ROAD_VEHICLE_TYPE},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   236,   247,   178,   189, 0x0,										STR_RESIZE_BUTTON},
+{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   247,   126,   197, 0x0,										STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   117,   198,   209, STR_9007_BUILD_VEHICLE,STR_9027_BUILD_THE_HIGHLIGHTED_ROAD},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   118,   235,   198,   209, STR_9034_RENAME,				STR_9035_RENAME_ROAD_VEHICLE_TYPE},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   236,   247,   198,   209, 0x0,										STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _new_road_veh_desc = {
-	-1, -1, 248, 190,
+	-1, -1, 248, 210,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_road_veh_widgets,
