@@ -24,6 +24,7 @@
 #include "yapf/yapf.h"
 #include "debug.h"
 #include "newgrf_callbacks.h"
+#include "newgrf_text.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
 static const byte _ship_sometracks[4] = {0x19, 0x16, 0x25, 0x2A};
@@ -958,12 +959,21 @@ int32 CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
+	uint16 callback;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
 	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
+
+	/* Check if this ship can be started/stopped. The callback will fail or
+	 * return 0xFF if it can. */
+	callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
+	if (callback != CALLBACK_FAILED && callback != 0xFF) {
+		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
+		return_cmd_error(error);
+	}
 
 	if (flags & DC_EXEC) {
 		if (IsShipInDepotStopped(v)) {

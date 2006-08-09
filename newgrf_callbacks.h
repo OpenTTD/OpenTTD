@@ -41,6 +41,10 @@ enum CallbackID {
 
 	/* Called when building a station to customize the tile layout */
 	CBID_STATION_TILE_LAYOUT        = 0x24,
+
+	/* Called when the player (or AI) tries to start or stop a vehicle. Mainly
+	 * used for preventing a vehicle from leaving the depot. */
+	CBID_VEHICLE_START_STOP_CHECK   = 0x31,
 };
 
 /**
