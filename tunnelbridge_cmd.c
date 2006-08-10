@@ -118,8 +118,8 @@ static int32 CheckBridgeSlopeNorth(Axis axis, Slope tileh)
 	if (HASBIT(valid, tileh)) return 0;
 
 	valid =
-		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_N) |
-		(axis == AXIS_X ? M(SLOPE_E) : M(SLOPE_W));
+		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_N) | M(SLOPE_STEEP_N) |
+		(axis == AXIS_X ? M(SLOPE_E) | M(SLOPE_STEEP_E) : M(SLOPE_W) | M(SLOPE_STEEP_W));
 	if (HASBIT(valid, tileh)) return _price.terraform;
 
 	return CMD_ERROR;
@@ -133,8 +133,8 @@ static int32 CheckBridgeSlopeSouth(Axis axis, Slope tileh)
 	if (HASBIT(valid, tileh)) return 0;
 
 	valid =
-		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_S) |
-		(axis == AXIS_X ? M(SLOPE_W) : M(SLOPE_E));
+		BRIDGE_FULL_LEVELED_FOUNDATION | M(SLOPE_S) | M(SLOPE_STEEP_S) |
+		(axis == AXIS_X ? M(SLOPE_W) | M(SLOPE_STEEP_W) : M(SLOPE_E) | M(SLOPE_STEEP_E));
 	if (HASBIT(valid, tileh)) return _price.terraform;
 
 	return CMD_ERROR;
@@ -245,11 +245,13 @@ int32 CmdBuildBridge(TileIndex end_tile, uint32 flags, uint32 p1, uint32 p2)
 	tileh_start = GetTileSlope(tile_start, &z_start);
 	tileh_end = GetTileSlope(tile_end, &z_end);
 
+	if (IsSteepSlope(tileh_start)) z_start += TILE_HEIGHT;
 	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_start)) {
 		z_start += TILE_HEIGHT;
 		tileh_start = SLOPE_FLAT;
 	}
 
+	if (IsSteepSlope(tileh_end)) z_end += TILE_HEIGHT;
 	if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh_end)) {
 		z_end += TILE_HEIGHT;
 		tileh_end = SLOPE_FLAT;
@@ -596,7 +598,10 @@ static uint GetBridgeHeightRamp(TileIndex t)
 	uint f = GetBridgeFoundation(tileh, DiagDirToAxis(GetBridgeRampDirection(t)));
 
 	// one height level extra if the ramp is on a flat foundation
-	return h + TILE_HEIGHT + (IS_INT_INSIDE(f, 1, 15) ? TILE_HEIGHT : 0);
+	return
+		h + TILE_HEIGHT +
+		(IS_INT_INSIDE(f, 1, 15) ? TILE_HEIGHT : 0) +
+		(IsSteepSlope(tileh) ? TILE_HEIGHT : 0);
 }
 
 
@@ -832,10 +837,10 @@ uint GetBridgeHeight(TileIndex t)
 	return GetBridgeHeightRamp(GetSouthernBridgeEnd(t));
 }
 
-static const byte _bridge_foundations[2][16] = {
-// 0 1  2  3  4 5 6 7  8 9 10 11 12 13 14 15
-	{0,16,18,3,20,5,0,7,22,0,10,11,12,13,14},
-	{0,15,17,0,19,5,6,7,21,9,10,11, 0,13,14},
+static const byte _bridge_foundations[][31] = {
+//  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15                      _S          _W    _N _E
+	{ 0,16,18, 3,20, 5, 0, 7,22, 0,10,11,12,13,14, 0, 0, 0, 0, 0, 0, 0, 0,18, 0, 0, 0,16, 0,22,20 },
+	{ 0,15,17, 0,19, 5, 6, 7,21, 9,10,11, 0,13,14, 0, 0, 0, 0, 0, 0, 0, 0,17, 0, 0, 0,15, 0,21,19 }
 };
 
 extern const byte _road_sloped_sprites[14];
@@ -890,11 +895,15 @@ uint GetBridgeFoundation(Slope tileh, Axis axis)
 
 	// inclined sloped building
 	switch (tileh) {
-		case SLOPE_W: i = 0; break;
-		case SLOPE_S: i = 2; break;
-		case SLOPE_E: i = 4; break;
-		case SLOPE_N: i = 6; break;
-		default:      return 0;
+		case SLOPE_W:
+		case SLOPE_STEEP_W: i = 0; break;
+		case SLOPE_S:
+		case SLOPE_STEEP_S: i = 2; break;
+		case SLOPE_E:
+		case SLOPE_STEEP_E: i = 4; break;
+		case SLOPE_N:
+		case SLOPE_STEEP_N: i = 6; break;
+		default: return 0;
 	}
 	if (axis != AXIS_X) ++i;
 	return i + 15;
@@ -1103,6 +1112,7 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 			if (5 <= pos && pos <= 10) {
 				uint delta;
 
+				if (IsSteepSlope(tileh)) return z + TILE_HEIGHT * 2;
 				if (HASBIT(BRIDGE_HORZ_RAMP, tileh)) return z + TILE_HEIGHT;
 
 				if (HASBIT(BRIDGE_FULL_LEVELED_FOUNDATION, tileh)) z += TILE_HEIGHT;
@@ -1118,19 +1128,32 @@ static uint GetSlopeZ_TunnelBridge(TileIndex tile, uint x, uint y)
 				uint f = GetBridgeFoundation(tileh, DiagDirToAxis(dir));
 
 				if (f != 0) {
-					if (f < 15) return z + TILE_HEIGHT;
+					if (IsSteepSlope(tileh)) {
+						z += TILE_HEIGHT;
+					} else if (f < 15) {
+						return z + TILE_HEIGHT;
+					}
 					tileh = _inclined_tileh[f - 15];
 				}
 			}
 		} else {
+			uint ground_z;
+
 			// HACK on the bridge?
-			if (_get_z_hint >= z + TILE_HEIGHT + (tileh == SLOPE_FLAT ? 0 : TILE_HEIGHT)) return _get_z_hint;
+			ground_z = z + TILE_HEIGHT;
+			if (tileh != SLOPE_FLAT) ground_z += TILE_HEIGHT;
+			if (IsSteepSlope(tileh)) ground_z += TILE_HEIGHT;
+			if (_get_z_hint >= ground_z) return _get_z_hint;
 
 			if (IsTransportUnderBridge(tile)) {
 				uint f = _bridge_foundations[GetBridgeAxis(tile)][tileh];
 
 				if (f != 0) {
-					if (f < 15) return z + TILE_HEIGHT;
+					if (IsSteepSlope(tileh)) {
+						z += TILE_HEIGHT;
+					} else if (f < 15) {
+						return z + TILE_HEIGHT;
+					}
 					tileh = _inclined_tileh[f - 15];
 				}
 			}

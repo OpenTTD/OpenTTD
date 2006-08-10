@@ -214,6 +214,17 @@ void DrawFoundation(TileInfo *ti, uint f)
 		OffsetGroundSprite(31, 1);
 	} else {
 		// inclined foundation
+		if (IsSteepSlope(ti->tileh)) {
+			uint32 lower_base;
+
+			// Lower part of foundation
+			lower_base = sprite_base;
+			if (lower_base == SPR_SLOPES_BASE - 15) lower_base = SPR_FOUNDATION_BASE;
+			AddSortableSpriteToDraw(
+				lower_base + (ti->tileh & ~SLOPE_STEEP), ti->x, ti->y, 16, 16, 7, ti->z
+			);
+			ti->z += TILE_HEIGHT;
+		}
 		AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 1, ti->z);
 		ti->tileh = _inclined_tileh[f - 15];
 		OffsetGroundSprite(31, 9);

@@ -243,7 +243,15 @@ static uint32 CheckRoadSlope(Slope tileh, RoadBits* pieces, RoadBits existing)
 {
 	RoadBits road_bits;
 
-	if (IsSteepSlope(tileh)) return CMD_ERROR;
+	if (IsSteepSlope(tileh)) {
+		if (existing == 0) {
+			// force full pieces.
+			*pieces |= (*pieces & 0xC) >> 2;
+			*pieces |= (*pieces & 0x3) << 2;
+			if (*pieces == ROAD_X || *pieces == ROAD_Y) return _price.terraform;
+		}
+		return CMD_ERROR;
+	}
 	road_bits = *pieces | existing;
 
 	// no special foundation
@@ -354,11 +362,6 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		case MP_TUNNELBRIDGE:
-			/* check for flat land */
-			if (IsSteepSlope(tileh)) {
-				return_cmd_error(STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION);
-			}
-
 			if (!IsBridge(tile) || !IsBridgeMiddle(tile)) goto do_clear;
 
 			/* only allow roads pertendicular to bridge */
@@ -659,7 +662,10 @@ uint GetRoadFoundation(Slope tileh, RoadBits bits)
 	uint i;
 
 	// normal level sloped building
-	if ((~_valid_tileh_slopes_road[1][tileh] & bits) == 0) return tileh;
+	if (!IsSteepSlope(tileh) &&
+			(~_valid_tileh_slopes_road[1][tileh] & bits) == 0) {
+		return tileh;
+	}
 
 	// inclined sloped building
 	switch (bits) {
@@ -668,11 +674,15 @@ uint GetRoadFoundation(Slope tileh, RoadBits bits)
 		default:     return 0;
 	}
 	switch (tileh) {
-		case SLOPE_W: i += 0; break;
-		case SLOPE_S: i += 2; break;
-		case SLOPE_E: i += 4; break;
-		case SLOPE_N: i += 6; break;
-		default:      return 0;
+		case SLOPE_W:
+		case SLOPE_STEEP_W: i += 0; break;
+		case SLOPE_S:
+		case SLOPE_STEEP_S: i += 2; break;
+		case SLOPE_E:
+		case SLOPE_STEEP_E: i += 4; break;
+		case SLOPE_N:
+		case SLOPE_STEEP_N: i += 6; break;
+		default: return 0;
 	}
 	return i + 15;
 }
@@ -839,7 +849,11 @@ static uint GetSlopeZ_Road(TileIndex tile, uint x, uint y)
 		uint f = GetRoadFoundation(tileh, GetRoadBits(tile));
 
 		if (f != 0) {
-			if (f < 15) return z + TILE_HEIGHT; // leveled foundation
+			if (IsSteepSlope(tileh)) {
+				z += TILE_HEIGHT;
+			} else if (f < 15) {
+				return z + TILE_HEIGHT; // leveled foundation
+			}
 			tileh = _inclined_tileh[f - 15]; // inclined foundation
 		}
 		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);

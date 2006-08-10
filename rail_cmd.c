@@ -154,8 +154,10 @@ uint GetRailFoundation(Slope tileh, TrackBits bits)
 {
 	uint i;
 
-	if ((~_valid_tileh_slopes[0][tileh] & bits) == 0) return 0;
-	if ((~_valid_tileh_slopes[1][tileh] & bits) == 0) return tileh;
+	if (!IsSteepSlope(tileh)) {
+		if ((~_valid_tileh_slopes[0][tileh] & bits) == 0) return 0;
+		if ((~_valid_tileh_slopes[1][tileh] & bits) == 0) return tileh;
+	}
 
 	switch (bits) {
 		case TRACK_BIT_X: i = 0; break;
@@ -163,11 +165,15 @@ uint GetRailFoundation(Slope tileh, TrackBits bits)
 		default:          return 0;
 	}
 	switch (tileh) {
-		case SLOPE_W: i += 0; break;
-		case SLOPE_S: i += 2; break;
-		case SLOPE_E: i += 4; break;
-		case SLOPE_N: i += 6; break;
-		default:      return 0;
+		case SLOPE_W:
+		case SLOPE_STEEP_W: i += 0; break;
+		case SLOPE_S:
+		case SLOPE_STEEP_S: i += 2; break;
+		case SLOPE_E:
+		case SLOPE_STEEP_E: i += 4; break;
+		case SLOPE_N:
+		case SLOPE_STEEP_N: i += 6; break;
+		default: return 0;
 	}
 	return i + 15;
 }
@@ -175,8 +181,12 @@ uint GetRailFoundation(Slope tileh, TrackBits bits)
 
 static uint32 CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits existing, TileIndex tile)
 {
-	// never allow building on top of steep tiles
-	if (!IsSteepSlope(tileh)) {
+	if (IsSteepSlope(tileh)) {
+		if (existing == 0 &&
+				(rail_bits == TRACK_BIT_X || rail_bits == TRACK_BIT_Y)) {
+			return _price.terraform;
+		}
+	} else {
 		rail_bits |= existing;
 
 		// don't allow building on the lower side of a coast
@@ -1702,7 +1712,11 @@ static uint GetSlopeZ_Track(TileIndex tile, uint x, uint y)
 		uint f = GetRailFoundation(tileh, GetTrackBits(tile));
 
 		if (f != 0) {
-			if (f < 15) return z + TILE_HEIGHT; // leveled foundation
+			if (IsSteepSlope(tileh)) {
+				z += TILE_HEIGHT;
+			} else if (f < 15) {
+				return z + TILE_HEIGHT; // leveled foundation
+			}
 			tileh = _inclined_tileh[f - 15]; // inclined foundation
 		}
 		return z + GetPartialZ(x & 0xF, y & 0xF, tileh);
