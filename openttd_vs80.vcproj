@@ -15,8 +15,8 @@
 		/>
 	</Platforms>
 	<ToolFiles>
-		<DefaultToolFile
-			FileName="masm64.rules"
+		<ToolFile
+			RelativePath="masm64.rules"
 		/>
 	</ToolFiles>
 	<Configurations>
