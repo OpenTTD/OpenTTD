@@ -559,7 +559,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 		case WE_MOUSELOOP:
 		{
 			const Vehicle *v = GetVehicle(w->window_number);
-			uint32 h = IsShipInDepot(v) ? 1 << 7 : 1 << 11;
+			uint32 h = IsShipInDepotStopped(v) ? 1 << 7 : 1 << 11;
 
 			if (h != w->hidden_state) {
 				w->hidden_state = h;
