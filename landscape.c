@@ -51,7 +51,9 @@ const byte _tileh_to_sprite[32] = {
 };
 
 const byte _inclined_tileh[] = {
-	SLOPE_SW, SLOPE_NW, SLOPE_SW, SLOPE_SE, SLOPE_NE, SLOPE_SE, SLOPE_NE, SLOPE_NW
+	SLOPE_SW, SLOPE_NW, SLOPE_SW, SLOPE_SE, SLOPE_NE, SLOPE_SE, SLOPE_NE, SLOPE_NW,
+	SLOPE_E, SLOPE_N, SLOPE_W, SLOPE_S,
+	SLOPE_NWS, SLOPE_WSE, SLOPE_SEN, SLOPE_ENW
 };
 
 
@@ -203,31 +205,48 @@ void DrawFoundation(TileInfo *ti, uint f)
 	if (!HasFoundationNW(ti->tile, slope, z)) sprite_base += 22;
 	if (!HasFoundationNE(ti->tile, slope, z)) sprite_base += 44;
 
-	if (f < 15) {
-		// leveled foundation
-		// Use the original slope sprites if NW and NE borders should be visible
-		if (sprite_base  == SPR_SLOPES_BASE - 15) sprite_base = SPR_FOUNDATION_BASE;
+	if (IsSteepSlope(ti->tileh)) {
+		uint32 lower_base;
 
-		AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 7, ti->z);
+		// Lower part of foundation
+		lower_base = sprite_base;
+		if (lower_base == SPR_SLOPES_BASE - 15) lower_base = SPR_FOUNDATION_BASE;
+		AddSortableSpriteToDraw(
+			lower_base + (ti->tileh & ~SLOPE_STEEP), ti->x, ti->y, 16, 16, 7, ti->z
+		);
 		ti->z += TILE_HEIGHT;
-		ti->tileh = SLOPE_FLAT;
-		OffsetGroundSprite(31, 1);
-	} else {
-		// inclined foundation
-		if (IsSteepSlope(ti->tileh)) {
-			uint32 lower_base;
-
-			// Lower part of foundation
-			lower_base = sprite_base;
-			if (lower_base == SPR_SLOPES_BASE - 15) lower_base = SPR_FOUNDATION_BASE;
-			AddSortableSpriteToDraw(
-				lower_base + (ti->tileh & ~SLOPE_STEEP), ti->x, ti->y, 16, 16, 7, ti->z
-			);
-			ti->z += TILE_HEIGHT;
-		}
-		AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 1, ti->z);
 		ti->tileh = _inclined_tileh[f - 15];
-		OffsetGroundSprite(31, 9);
+		if (f < 15 + 8) {
+			// inclined
+			AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 1, ti->z);
+			OffsetGroundSprite(31, 9);
+		} else if (f >= 15 + 8 + 4) {
+			// three corners raised
+			uint32 upper = sprite_base + 15 + (f - 15 - 8 - 4) * 2;
+
+			AddSortableSpriteToDraw(upper, ti->x, ti->y, 16, 16, 1, ti->z);
+			AddChildSpriteScreen(upper + 1, 31, 9);
+			OffsetGroundSprite(31, 9);
+		} else {
+			// one corner raised
+			OffsetGroundSprite(31, 1);
+		}
+	} else {
+		if (f < 15) {
+			// leveled foundation
+			// Use the original slope sprites if NW and NE borders should be visible
+			if (sprite_base  == SPR_SLOPES_BASE - 15) sprite_base = SPR_FOUNDATION_BASE;
+
+			AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 7, ti->z);
+			ti->z += TILE_HEIGHT;
+			ti->tileh = SLOPE_FLAT;
+			OffsetGroundSprite(31, 1);
+		} else {
+			// inclined foundation
+			AddSortableSpriteToDraw(sprite_base + f, ti->x, ti->y, 16, 16, 1, ti->z);
+			ti->tileh = _inclined_tileh[f - 15];
+			OffsetGroundSprite(31, 9);
+		}
 	}
 }
 

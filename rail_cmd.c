@@ -160,9 +160,13 @@ uint GetRailFoundation(Slope tileh, TrackBits bits)
 	}
 
 	switch (bits) {
+		default: NOT_REACHED();
 		case TRACK_BIT_X: i = 0; break;
 		case TRACK_BIT_Y: i = 1; break;
-		default:          return 0;
+		case TRACK_BIT_LEFT:  return 15 + 8 + (tileh == SLOPE_STEEP_W ? 4 : 0);
+		case TRACK_BIT_LOWER: return 15 + 8 + (tileh == SLOPE_STEEP_S ? 5 : 1);
+		case TRACK_BIT_RIGHT: return 15 + 8 + (tileh == SLOPE_STEEP_E ? 6 : 2);
+		case TRACK_BIT_UPPER: return 15 + 8 + (tileh == SLOPE_STEEP_N ? 7 : 3);
 	}
 	switch (tileh) {
 		case SLOPE_W:
@@ -182,9 +186,9 @@ uint GetRailFoundation(Slope tileh, TrackBits bits)
 static uint32 CheckRailSlope(Slope tileh, TrackBits rail_bits, TrackBits existing, TileIndex tile)
 {
 	if (IsSteepSlope(tileh)) {
-		if (existing == 0 &&
-				(rail_bits == TRACK_BIT_X || rail_bits == TRACK_BIT_Y)) {
-			return _price.terraform;
+		if (existing == 0) {
+			TrackBits valid = TRACK_BIT_CROSS | (HASBIT(1 << SLOPE_STEEP_W | 1 << SLOPE_STEEP_E, tileh) ? TRACK_BIT_VERT : TRACK_BIT_HORZ);
+			if (valid & rail_bits) return _price.terraform;
 		}
 	} else {
 		rail_bits |= existing;

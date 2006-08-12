@@ -38,14 +38,14 @@ static const int _AutorailTilehSprite[][6] = {
 	{       0,       1,       2,       3,       4,       5 }, // invalid (20)
 	{       0,       1,       2,       3,       4,       5 }, // invalid (21)
 	{       0,       1,       2,       3,       4,       5 }, // invalid (22)
-	{       6,      11, RED(17), RED(27), RED(39), RED(47) }, // tileh = 23
+	{       6,      11,      17,      27, RED(39), RED(47) }, // tileh = 23
 	{       0,       1,       2,       3,       4,       5 }, // invalid (24)
 	{       0,       1,       2,       3,       4,       5 }, // invalid (25)
 	{       0,       1,       2,       3,       4,       5 }, // invalid (26)
-	{       7,      15, RED(24), RED(33), RED(36), RED(44) }, // tileh = 27
+	{       7,      15, RED(24), RED(33),      36,      44 }, // tileh = 27
 	{       0,       1,       2,       3,       4,       5 }, // invalid (28)
-	{       3,      14, RED(18), RED(26), RED(41), RED(49) }, // tileh = 29
-	{       4,      12, RED(21), RED(30), RED(37), RED(45) }  // tileh = 30
+	{       3,      14,      18,      26, RED(41), RED(49) }, // tileh = 29
+	{       4,      12, RED(21), RED(30),      37,      45 }  // tileh = 30
 };
 #undef RED
 

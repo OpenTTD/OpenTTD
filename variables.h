@@ -405,7 +405,7 @@ StringID BindCString(const char *str);
 
 /* landscape.c */
 extern const byte _tileh_to_sprite[32];
-extern const byte _inclined_tileh[8];
+extern const byte _inclined_tileh[16];
 
 extern const TileTypeProcs * const _tile_type_procs[16];
 
