@@ -2079,6 +2079,13 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 		if (u->u.rail.track != 0x80 || u->tile != v->tile) return false;
 	}
 
+	// if the train got no power, then keep it in the depot
+	if (v->u.rail.cached_power == 0) {
+		v->vehstatus |= VS_STOPPED;
+		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+		return true;
+	}
+
 	if (v->u.rail.force_proceed == 0) {
 		if (++v->load_unload_time_rem < 37) {
 			InvalidateWindowClasses(WC_TRAINS_LIST);
