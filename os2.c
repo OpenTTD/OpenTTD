@@ -210,9 +210,10 @@ FiosItem *FiosGetScenarioList(int *num, int mode)
 	int sort_start;
 	char filename[MAX_PATH];
 
-	if (_fios_scn_path == NULL) {
-		_fios_scn_path = malloc(MAX_PATH);
-		strcpy(_fios_scn_path, _path.scenario_dir);
+	/* Copy the default path on first run or on 'New Game' */
+	if (mode == SLD_NEW_GAME || _fios_scn_path == NULL) {
+		if (_fios_scn_path == NULL) _fios_scn_path = malloc(MAX_PATH);
+		ttd_strlcpy(_fios_scn_path, _path.scenario_dir, MAX_PATH);
 	}
 
 	_fios_path = _fios_scn_path;
