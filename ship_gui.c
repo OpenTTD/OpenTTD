@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
+#include "ship.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "map.h"
@@ -569,7 +570,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e) {
 			Vehicle *v;
 			uint32 h;
 			v = GetVehicle(w->window_number);
-			h = IsTileDepotType(v->tile, TRANSPORT_WATER) && v->vehstatus & VS_HIDDEN ? (1<< 7) : (1 << 11);
+			h = IsShipInDepotStopped(v) ? (1<< 7) : (1 << 11);
 			if (h != w->hidden_state) {
 				w->hidden_state = h;
 				SetWindowDirty(w);
