@@ -33,7 +33,6 @@ URL: http://sourceforge.net/tracker/?atid=636365&group_id=103924&func=browse
 
 -1459262	Towns building too many roads way too long now
 -1458995	Another bug with smooth_economy
--1458894	Crashed suddenly from scenario editor
 -1436419	Vehicles profits gone negative.......bug
 -1434000	Error in Transfer-Function
 -1427531	Newspapers problem
