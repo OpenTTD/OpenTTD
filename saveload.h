@@ -98,8 +98,10 @@ enum VarTypes {
 	SLE_VAR_U64  =  8 << 4,
 	SLE_VAR_NULL =  9 << 4, ///< useful to write zeros in savegame.
 	SLE_VAR_STRB = 10 << 4, ///< normal string (with pre-allocated buffer)
-	SLE_VAR_STRQ = 11 << 4, ///< string enclosed in parentheses
-	/* 4 more possible memory-primitives */
+	SLE_VAR_STRBQ= 11 << 4, ///< string enclosed in parentheses (with pre-allocated buffer)
+	SLE_VAR_STR  = 12 << 4, ///< string pointer
+	SLE_VAR_STRQ = 13 << 4, ///< string enclosed in parentheses
+	/* 2 more possible memory-primitives */
 
 	/* Shortcut values */
 	SLE_VAR_CHAR = SLE_VAR_I8,
@@ -119,12 +121,16 @@ enum VarTypes {
 	SLE_CHAR        = SLE_FILE_I8  | SLE_VAR_CHAR,
 	SLE_STRINGID    = SLE_FILE_STRINGID | SLE_VAR_U16,
 	SLE_STRINGBUF   = SLE_FILE_STRING   | SLE_VAR_STRB,
+	SLE_STRINGBQUOTE= SLE_FILE_STRING   | SLE_VAR_STRBQ,
+	SLE_STRING      = SLE_FILE_STRING   | SLE_VAR_STR,
 	SLE_STRINGQUOTE = SLE_FILE_STRING   | SLE_VAR_STRQ,
 
 	/* Shortcut values */
 	SLE_UINT = SLE_UINT32,
 	SLE_INT  = SLE_INT32,
 	SLE_STRB = SLE_STRINGBUF,
+	SLE_STRBQ= SLE_STRINGBQUOTE,
+	SLE_STR  = SLE_STRING,
 	SLE_STRQ = SLE_STRINGQUOTE,
 
 	/* 8 bytes allocated for a maximum of 8 flags

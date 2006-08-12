@@ -510,11 +510,13 @@ static inline size_t SlCalcStringLen(const char *ptr, uint length)
  * Save/Load a string.
  * @param ptr the string being manipulated
  * @param the length of the string (full length)
- * @param conv must be SLE_FILE_STRING */
+ * @param conv must be SLE_FILE_STRING
+ * XXX - only works with global strings of a pre-allocated buffer */
 static void SlString(void *ptr, uint length, VarType conv)
 {
 	uint len;
 	assert(GetVarFileType(conv) == SLE_FILE_STRING);
+	assert(GetVarMemType(conv) == SLE_VAR_STRB || GetVarMemType(conv) == SLE_VAR_STRQ);
 
 	if (_sl.save) {
 		len = SlCalcNetStringLen(ptr, length);

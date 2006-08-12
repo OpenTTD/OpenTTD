@@ -695,8 +695,15 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		case SDT_STRING:
 			switch (GetVarMemType(sld->conv)) {
 				case SLE_VAR_STRB:
-				case SLE_VAR_STRQ:
+				case SLE_VAR_STRBQ:
 					if (p != NULL) ttd_strlcpy((char*)ptr, p, sld->length);
+					break;
+				case SLE_VAR_STR:
+				case SLE_VAR_STRQ:
+					if (p != NULL) {
+						free(*(char**)ptr);
+						*(char**)ptr = strdup((const char*)p);
+					}
 					break;
 				case SLE_VAR_CHAR: *(char*)ptr = *(char*)p; break;
 				default: NOT_REACHED(); break;
@@ -806,7 +813,9 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		case SDT_STRING:
 			switch (GetVarMemType(sld->conv)) {
 			case SLE_VAR_STRB: strcpy(buf, (char*)ptr); break;
-			case SLE_VAR_STRQ: sprintf(buf, "\"%s\"", (char*)ptr); break;
+			case SLE_VAR_STRBQ:sprintf(buf, "\"%s\"", (char*)ptr); break;
+			case SLE_VAR_STR:  strcpy(buf, *(char**)ptr); break;
+			case SLE_VAR_STRQ: sprintf(buf, "\"%s\"", *(char**)ptr); break;
 			case SLE_VAR_CHAR: sprintf(buf, "\"%c\"", *(char*)ptr); break;
 			default: NOT_REACHED();
 			}
@@ -1431,8 +1440,8 @@ static const SettingDesc _currency_settings[] = {
 	SDT_VAR(CurrencySpec, rate,    SLE_UINT16, S, 0,  1, 0, 100, STR_NULL, NULL),
 	SDT_CHR(CurrencySpec, separator,           S, 0,        ".", STR_NULL, NULL),
 	SDT_VAR(CurrencySpec, to_euro, SLE_UINT16, S, 0,  0, 0,1000, STR_NULL, NULL),
-	SDT_STR(CurrencySpec, prefix,    SLE_STRQ, S, 0,       NULL, STR_NULL, NULL),
-	SDT_STR(CurrencySpec, suffix,    SLE_STRQ, S, 0, " credits", STR_NULL, NULL),
+	SDT_STR(CurrencySpec, prefix,   SLE_STRBQ, S, 0,       NULL, STR_NULL, NULL),
+	SDT_STR(CurrencySpec, suffix,   SLE_STRBQ, S, 0, " credits", STR_NULL, NULL),
 	SDT_END()
 };
 
