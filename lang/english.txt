@@ -2529,6 +2529,8 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Incompatible rail types
+STR_TRAIN_NO_POWER                                              :{RED}No power
+STR_TRAIN_START_NO_CATENARY                                     :This track lacks catenary, so the train can't start
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Road vehicle in the way

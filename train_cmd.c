@@ -1243,6 +1243,8 @@ int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return_cmd_error(error);
 	}
 
+	if (v->vehstatus & VS_STOPPED && v->u.rail.cached_power == 0) return_cmd_error(STR_TRAIN_START_NO_CATENARY);
+
 	if (flags & DC_EXEC) {
 		if (v->vehstatus & VS_STOPPED && v->u.rail.track == 0x80) {
 			DeleteVehicleNews(p1, STR_8814_TRAIN_IS_WAITING_IN_DEPOT);

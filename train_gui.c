@@ -954,7 +954,11 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			str = STR_885C_BROKEN_DOWN;
 		} else if (v->vehstatus & VS_STOPPED) {
 			if (v->u.rail.last_speed == 0) {
-				str = STR_8861_STOPPED;
+				if (v->u.rail.cached_power == 0) {
+					str = STR_TRAIN_NO_POWER;
+				} else {
+					str = STR_8861_STOPPED;
+				}
 			} else {
 				SetDParam(0, v->u.rail.last_speed);
 				str = STR_TRAIN_STOPPING + _patches.vehicle_speed;
