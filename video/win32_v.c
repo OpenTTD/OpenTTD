@@ -29,6 +29,7 @@ static struct {
 
 bool _force_full_redraw;
 bool _double_size;
+bool _window_maximize;
 uint _display_hz;
 uint _fullscreen_bpp;
 
@@ -265,6 +266,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		} else {
 			AskExitGame();
 		}
+		_window_maximize = IsZoomed(_wnd.main_wnd);
 		return 0;
 
 	case WM_LBUTTONDOWN:
@@ -565,6 +567,7 @@ static void MakeWindow(bool full_screen)
 		y = (GetSystemMetrics(SM_CYSCREEN) - h) / 2;
 
 		if (_wnd.main_wnd) {
+			ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL); // remove maximize-flag
 			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 		} else {
 			char Windowtitle[50];
@@ -572,8 +575,13 @@ static void MakeWindow(bool full_screen)
 			snprintf(Windowtitle, lengthof(Windowtitle), "OpenTTD %s", _openttd_revision);
 
 			_wnd.main_wnd = CreateWindow("OTTD", Windowtitle, style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
-			if (_wnd.main_wnd == NULL)
-				error("CreateWindow failed");
+			if (_wnd.main_wnd == NULL) error("CreateWindow failed");
+
+			/* On startup let's see if we quit maximized the last time, restore that */
+			if (_window_maximize) {
+				ShowWindow(_wnd.main_wnd, SW_MAXIMIZE);
+				_window_maximize = false;
+			}
 		}
 	}
 	GameSizeChanged(); // invalidate all windows, force redraw
