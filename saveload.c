@@ -516,7 +516,8 @@ static void SlString(void *ptr, uint length, VarType conv)
 {
 	uint len;
 	assert(GetVarFileType(conv) == SLE_FILE_STRING);
-	assert(GetVarMemType(conv) == SLE_VAR_STRB || GetVarMemType(conv) == SLE_VAR_STRQ);
+	assert(GetVarMemType(conv) == SLE_VAR_STRB || GetVarMemType(conv) == SLE_VAR_STRBQ);
+	assert(ptr != NULL);
 
 	if (_sl.save) {
 		len = SlCalcNetStringLen(ptr, length);
