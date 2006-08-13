@@ -616,6 +616,10 @@ endif
 ifdef USE_HOMEDIR
 CDEFS += -DUSE_HOMEDIR
 endif
+
+ifdef ICON_DIR
+CDEFS += -DICON_DIR=\"$(ICON_DIR_PREFIXED)/\"
+endif
 endif
 
 ##############################################################################

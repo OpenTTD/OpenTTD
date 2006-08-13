@@ -41,6 +41,11 @@ void SdlClose(uint32 x);
 		void (SDLCALL *SDL_VideoDriverName)(char *, int);
 		SDL_Rect **(SDLCALL *SDL_ListModes)(void *, int);
 		Uint8 *(SDLCALL *SDL_GetKeyState)(int *);
+		SDL_Surface *(SDLCALL *SDL_LoadBMP_RW)(SDL_RWops *, int);
+		SDL_RWops *(SDLCALL *SDL_RWFromFile)(const char *, const char *);
+		int (SDLCALL *SDL_SetColorKey)(SDL_Surface *, Uint32, Uint32);
+		void (SDLCALL *SDL_WM_SetIcon)(SDL_Surface *, Uint8 *);
+		Uint32 (SDLCALL *SDL_MapRGB)(SDL_PixelFormat *, Uint8, Uint8, Uint8);
 	} SDLProcs;
 
 	extern SDLProcs sdl_proc;

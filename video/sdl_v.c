@@ -161,14 +161,35 @@ static int GetAvailableVideoMode(int *w, int *h)
 
 extern const char _openttd_revision[];
 
+#ifndef ICON_DIR
+#define ICON_DIR "media"
+#endif
+
+#ifdef WIN32
+/* Let's redefine the LoadBMP macro with because we are dynamically
+ * loading SDL and need to 'SDL_CALL' all functions */
+#undef SDL_LoadBMP
+#define SDL_LoadBMP(file)	SDL_LoadBMP_RW(SDL_CALL SDL_RWFromFile(file, "rb"), 1)
+#endif
+
 static bool CreateMainSurface(int w, int h)
 {
-	SDL_Surface *newscreen;
+	SDL_Surface *newscreen, *icon;
 	char caption[50];
 
 	GetAvailableVideoMode(&w, &h);
 
 	DEBUG(driver, 1) ("sdl: using mode %dx%d", w, h);
+
+	/* Give the application an icon */
+	icon = SDL_CALL SDL_LoadBMP(ICON_DIR PATHSEP "openttd.32.bmp");
+	if (icon != NULL) {
+		/* Get the colourkey, which will be magenta */
+		uint32 rgbmap = SDL_CALL SDL_MapRGB(icon->format, 255, 0, 255);
+		SDL_CALL SDL_SetColorKey(icon, SDL_SRCCOLORKEY, rgbmap);
+		SDL_CALL SDL_WM_SetIcon(icon, NULL);
+		SDL_CALL SDL_FreeSurface(icon);
+	}
 
 	// DO NOT CHANGE TO HWSURFACE, IT DOES NOT WORK
 	newscreen = SDL_CALL SDL_SetVideoMode(w, h, 8, SDL_SWSURFACE | SDL_HWPALETTE | (_fullscreen ? SDL_FULLSCREEN : SDL_RESIZABLE));
