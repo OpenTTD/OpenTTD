@@ -764,7 +764,8 @@ static void HelicopterTickHandler(Vehicle *v)
 static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 {
 	Vehicle *u;
-	int yt;
+	int safe_x;
+	int safe_y;
 
 	v->x_pos = x;
 	v->y_pos = y;
@@ -779,10 +780,13 @@ static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 
 	u = v->next;
 
-	yt = y - ((v->z_pos-GetSlopeZ(x, y-1)) >> 3);
+	safe_x = clamp(x, 0, MapMaxX() * TILE_SIZE);
+	safe_y = clamp(y - 1, 0, MapMaxY() * TILE_SIZE);
 	u->x_pos = x;
-	u->y_pos = yt;
-	u->z_pos = GetSlopeZ(x,yt);
+	u->y_pos = y - ((v->z_pos-GetSlopeZ(safe_x, safe_y)) >> 3);;
+
+	safe_y = clamp(u->y_pos, 0, MapMaxY() * TILE_SIZE);
+	u->z_pos = GetSlopeZ(safe_x, safe_y);
 	u->cur_image = v->cur_image;
 
 	BeginVehicleMove(u);
