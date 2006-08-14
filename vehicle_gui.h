@@ -19,18 +19,9 @@ void ResortVehicleLists(void);
 void BuildVehicleList(struct vehiclelist_d* vl, int type, PlayerID, StationID);
 void SortVehicleList(struct vehiclelist_d *vl);
 
-int CDECL GeneralOwnerSorter(const void *a, const void *b);
-
 #define PERIODIC_RESORT_DAYS 10
 #define SORT_BY_UNSORTED 0
 extern const StringID _vehicle_sort_listing[];
-
-enum VehicleSortTypes {
-	VEHTRAIN     = 0,
-	VEHROAD      = 1,
-	VEHSHIP      = 2,
-	VEHAIRCRAFT  = 3
-};
 
 typedef struct Listing {
 	bool order;	// Ascending/descending?
@@ -63,6 +54,5 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number);
 void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v);
 
 int ShowAdditionalText(int x, int y, int w, EngineID engine_number);
-
 
 #endif /* VEHICLE_GUI_H */

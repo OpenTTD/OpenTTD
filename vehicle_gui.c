@@ -265,11 +265,6 @@ int ShowAdditionalText(int x, int y, int w, EngineID engine)
 	return 10;
 }
 
-/************ Sorter functions *****************/
-int CDECL GeneralOwnerSorter(const void *a, const void *b)
-{
-	return (*(const SortStruct*)a).owner - (*(const SortStruct*)b).owner;
-}
 
 /* Variables you need to set before calling this function!
 * 1. (byte)_internal_sort_type:					sorting criteria to sort on
