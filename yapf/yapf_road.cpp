@@ -365,6 +365,7 @@ public:
 		Node& n = Yapf().GetBestNode();
 		TileIndex depot_tile = n.m_segment_last_tile;
 		assert(IsTileDepotType(depot_tile, TRANSPORT_ROAD));
+		if (!IsTileOwner(depot_tile, (Owner)v->owner)) return false;
 		Depot* ret = GetDepotByTile(depot_tile);
 		return ret;
 	}
