@@ -244,6 +244,12 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	PlayerID old = _current_player;
 	_current_player = old_player;
 
+	/* Temporarily increase the player's money, to be sure that
+	* removing his/her property doesn't fail because of lack of money */
+	if (new_player == OWNER_SPECTATOR) {
+		GetPlayer(old_player)->money64 = ((uint64)-1)>>1; // jackpot ;p
+	}
+
 	if (new_player == OWNER_SPECTATOR) {
 		Subsidy *s;
 
@@ -255,25 +261,24 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	}
 
 	/* Take care of rating in towns */
-	{ Town *t;
-		if (new_player != OWNER_SPECTATOR) {
-			FOR_ALL_TOWNS(t) {
-				/* If a player takes over, give the ratings to that player. */
-				if (IsValidTown(t) && HASBIT(t->have_ratings, old_player)) {
-					if (HASBIT(t->have_ratings, new_player)) {
-						// use max of the two ratings.
-						t->ratings[new_player] = max(t->ratings[new_player], t->ratings[old_player]);
-					} else {
-						SETBIT(t->have_ratings, new_player);
-						t->ratings[new_player] = t->ratings[old_player];
-					}
+	if (new_player != OWNER_SPECTATOR) {
+		Town *t;
+		FOR_ALL_TOWNS(t) {
+			/* If a player takes over, give the ratings to that player. */
+			if (IsValidTown(t) && HASBIT(t->have_ratings, old_player)) {
+				if (HASBIT(t->have_ratings, new_player)) {
+					// use max of the two ratings.
+					t->ratings[new_player] = max(t->ratings[new_player], t->ratings[old_player]);
+				} else {
+					SETBIT(t->have_ratings, new_player);
+					t->ratings[new_player] = t->ratings[old_player];
 				}
+			}
 
-				/* Reset ratings for the town */
-				if (IsValidTown(t)) {
-					t->ratings[old_player] = 500;
-					CLRBIT(t->have_ratings, old_player);
-				}
+			/* Reset ratings for the town */
+			if (IsValidTown(t)) {
+				t->ratings[old_player] = 500;
+				CLRBIT(t->have_ratings, old_player);
 			}
 		}
 	}
@@ -435,8 +440,7 @@ static void PlayersCheckBankrupt(Player *p)
 				}
 #endif /* ENABLE_NETWORK */
 
-				// Convert everything the player owns to NO_OWNER
-				p->money64 = p->player_money = 100000000;
+				/* Remove the player */
 				ChangeOwnershipOfPlayerItems(owner, OWNER_SPECTATOR);
 				// Register the player as not-active
 				p->is_active = false;

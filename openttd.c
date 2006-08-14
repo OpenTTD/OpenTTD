@@ -771,16 +771,18 @@ void SwitchMode(int new_mode)
 
 	case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
 		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR)) {
-			PlayerID i;
+			Player *p;
 
 			_opt_ptr = &_opt;
 
 			_local_player = OWNER_NONE;
 			_generating_world = true;
-			// delete all players.
-			for (i = 0; i != MAX_PLAYERS; i++) {
-				ChangeOwnershipOfPlayerItems(i, OWNER_SPECTATOR);
-				_players[i].is_active = false;
+			/* Delete all players */
+			FOR_ALL_PLAYERS(p) {
+				if (p->is_active) {
+					ChangeOwnershipOfPlayerItems(p->index, OWNER_SPECTATOR);
+					p->is_active = false;
+				}
 			}
 			_generating_world = false;
 			// delete all stations owned by a player

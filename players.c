@@ -913,7 +913,6 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			/* Remove the company */
 			ChangeOwnershipOfPlayerItems(p->index, OWNER_SPECTATOR);
-			p->money64 = p->player_money = 100000000; // XXX - wtf?
 			p->is_active = false;
 		}
 		RemoveAllEngineReplacementForPlayer(p);
