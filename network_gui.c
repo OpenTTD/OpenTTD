@@ -6,6 +6,7 @@
 #include "strings.h"
 #include "table/sprites.h"
 #include "network.h"
+#include "date.h"
 
 #include "fios.h"
 

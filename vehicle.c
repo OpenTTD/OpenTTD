@@ -31,6 +31,7 @@
 #include "water_map.h"
 #include "network.h"
 #include "yapf/yapf.h"
+#include "date.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))

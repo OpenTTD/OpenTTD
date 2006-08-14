@@ -36,6 +36,7 @@
 #include "npf.h"
 #include "yapf/yapf.h"
 #include "newgrf.h"
+#include "date.h"
 
 /** The patch values that are used for new games and/or modified in config file */
 Patches _patches_newgame;

@@ -16,6 +16,7 @@
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
 #include "newgrf_cargo.h"
+#include "date.h"
 
 
 

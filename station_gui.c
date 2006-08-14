@@ -16,6 +16,7 @@
 #include "command.h"
 #include "variables.h"
 #include "vehicle_gui.h"
+#include "date.h"
 
 typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
 

@@ -29,14 +29,15 @@
 #include "train.h"
 #include "unmovable_map.h"
 #include "screenshot.h"
+#include "date.h"
 
 #include "network_data.h"
 #include "network_client.h"
 #include "network_server.h"
 
 /* Min/Max date for scenario editor */
-static const uint MinDate = 0;     // 1920-01-01 (MAX_YEAR_BEGIN_REAL)
-static const uint MaxDate = 29220; // 2000-01-01
+static const Date MinDate = 0;     // 1920-01-01 (MAX_YEAR_BEGIN_REAL)
+static const Date MaxDate = 29220; // 2000-01-01
 
 static int _rename_id;
 static int _rename_what;

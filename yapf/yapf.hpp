@@ -16,7 +16,7 @@ EXTERN_C_BEGIN
 #include "../station.h"
 #include "../station_map.h"
 #include "../vehicle.h"
-#include "../variables.h"
+#include "../date.h"
 #include "../functions.h"
 #include "yapf.h"
 #include "../pathfind.h"

@@ -30,23 +30,6 @@ typedef struct SortStruct {
 	byte		owner;
 } SortStruct;
 
-typedef struct YearMonthDay {
-	int year, month, day;
-} YearMonthDay;
-
-/* --- 1 Day is 74 ticks ---
-* The game's internal structure is dictated by ticks. The date counter (date_fract) is an integer of
-* uint16 type, so it can have a max value of 65536. Every tick this variable (date_fract) is
-* increased by 885. When it overflows, the new day loop is called.
-* * this that means 1 day is : 65536 / 885 = 74 ticks
-* * 1 tick is approximately 27ms.
-* * 1 day is thus about 2 seconds (74*27 = 1998) on a machine that can run OpenTTD normally
-*/
-#define DAY_TICKS 74
-#define MAX_YEAR_BEGIN_REAL 1920
-#define MAX_YEAR_END_REAL 2090
-#define MAX_YEAR_END 170
-
 #include "map.h"
 #include "slope.h"
 
@@ -77,6 +60,9 @@ typedef uint16 UnitID;   ///< All unitnumber stuff is of this type (or anyway, s
 
 typedef uint32 WindowNumber;
 typedef byte WindowClass;
+
+typedef uint8  Year;
+typedef uint32 Date;
 
 
 enum GameModes {

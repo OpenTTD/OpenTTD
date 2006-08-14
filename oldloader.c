@@ -18,6 +18,7 @@
 #include "depot.h"
 #include "network.h"
 #include "ai/ai.h"
+#include "date.h"
 
 enum {
 	HEADER_SIZE = 49,

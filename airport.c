@@ -8,6 +8,7 @@
 #include "macros.h"
 #include "variables.h"
 #include "airport_movement.h"
+#include "date.h"
 
 static AirportFTAClass *CountryAirport;
 static AirportFTAClass *CityAirport;

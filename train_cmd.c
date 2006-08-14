@@ -30,6 +30,7 @@
 #include "newgrf_text.h"
 #include "direction.h"
 #include "yapf/yapf.h"
+#include "date.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v);

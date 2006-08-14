@@ -6,6 +6,7 @@
 #include "news.h"
 #include "variables.h"
 #include "table/strings.h"
+#include "date.h"
 
 // exchange rate    prefix
 // |  separator        |     postfix

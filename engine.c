@@ -16,6 +16,7 @@
 #include "variables.h"
 #include "train.h"
 #include "newgrf_cargo.h"
+#include "date.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];

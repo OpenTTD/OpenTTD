@@ -22,6 +22,7 @@
 #include "variables.h"
 #include "table/industry_land.h"
 #include "table/build_industry.h"
+#include "date.h"
 
 enum {
 	/* Max industries: 64000 (8 * 8000) */

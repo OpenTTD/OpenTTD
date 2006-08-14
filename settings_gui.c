@@ -20,6 +20,7 @@
 #include "variables.h"
 #include "settings.h"
 #include "vehicle.h"
+#include "date.h"
 
 static uint32 _difficulty_click_a;
 static uint32 _difficulty_click_b;

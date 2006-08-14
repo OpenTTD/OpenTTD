@@ -477,6 +477,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\date.c"
+				>
+			</File>
+			<File
 				RelativePath=".\debug.c"
 				>
 			</File>
@@ -861,6 +865,10 @@
 			</File>
 			<File
 				RelativePath=".\currency.h"
+				>
+			</File>
+			<File
+				RelativePath=".\date.h"
 				>
 			</File>
 			<File

@@ -12,6 +12,7 @@
 #include "player.h"
 #include "screenshot.h"
 #include "variables.h"
+#include "date.h"
 
 char _screenshot_format_name[8];
 uint _num_screenshot_formats;

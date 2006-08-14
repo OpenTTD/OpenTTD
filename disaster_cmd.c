@@ -20,6 +20,7 @@
 #include "sound.h"
 #include "variables.h"
 #include "table/sprites.h"
+#include "date.h"
 
 static void DisasterClearSquare(TileIndex tile)
 {

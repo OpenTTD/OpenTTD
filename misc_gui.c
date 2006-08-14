@@ -26,6 +26,7 @@
 #include "variables.h"
 #include "vehicle.h"
 #include "train.h"
+#include "date.h"
 
 #include "fios.h"
 /* Variables to display file lists */

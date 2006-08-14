@@ -27,6 +27,7 @@
 #include "train.h"
 #include "water_map.h"
 #include "yapf/yapf.h"
+#include "date.h"
 
 #include "table/bridge_land.h"
 

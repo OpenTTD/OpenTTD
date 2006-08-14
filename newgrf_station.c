@@ -15,6 +15,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "newgrf_spritegroup.h"
+#include "date.h"
 
 static StationClass station_classes[STAT_CLASS_MAX];
 

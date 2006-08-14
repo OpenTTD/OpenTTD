@@ -108,7 +108,6 @@ static inline TileIndex RandomTile(void) { return TILE_MASK(Random()); }
 uint32 InteractiveRandom(void); /* Used for random sequences that are not the same on the other end of the multiplayer link */
 uint InteractiveRandomRange(uint max);
 
-void SetDate(uint date);
 /* facedraw.c */
 void DrawPlayerFace(uint32 face, int color, int x, int y);
 
@@ -122,7 +121,6 @@ void InitTextMessage(void);
 void DrawTextMessage(void);
 void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...);
 void UndrawTextMessage(void);
-void TextMessageDailyLoop(void);
 
 bool AddAnimatedTile(TileIndex tile);
 void DeleteAnimatedTile(TileIndex tile);
@@ -163,9 +161,6 @@ char *GetName(int id, char *buff);
 #define AllocateNameUnique(name, skip) RealAllocateName(name, skip, true)
 #define AllocateName(name, skip) RealAllocateName(name, skip, false)
 StringID RealAllocateName(const char *name, byte skip, bool check_double);
-void ConvertDayToYMD(YearMonthDay *ymd, uint16 date);
-uint ConvertYMDToDay(uint year, uint month, uint day);
-uint ConvertIntDate(uint date);
 
 /* misc functions */
 void MarkTileDirty(int x, int y);
@@ -205,7 +200,6 @@ void ShowNetworkNeedGamePassword(void);
 void ShowNetworkNeedCompanyPassword(void);
 int FindFirstBit(uint32 x);
 void ShowHighscoreTable(int difficulty, int8 rank);
-void ShowEndGameChart(void);
 TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);
 
 void AfterLoadTown(void);

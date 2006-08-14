@@ -16,6 +16,7 @@
 #include "network.h"
 #include "variables.h"
 #include "train.h"
+#include "date.h"
 
 #ifdef ENABLE_NETWORK
 #include "network_data.h"

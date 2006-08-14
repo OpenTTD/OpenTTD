@@ -23,6 +23,7 @@
 #include "airport.h"
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
+#include "date.h"
 
 /**
  * Draw the purchase info details of an aircraft at a given location.

@@ -22,6 +22,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
+#include "date.h"
 
 Sorting _sorting;
 

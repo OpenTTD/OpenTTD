@@ -647,6 +647,7 @@ SRCS += command.c
 SRCS += console.c
 SRCS += console_cmds.c
 SRCS += currency.c
+SRCS += date.c
 SRCS += debug.c
 SRCS += dedicated.c
 SRCS += depot.c

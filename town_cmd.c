@@ -26,6 +26,7 @@
 #include "water_map.h"
 #include "variables.h"
 #include "bridge.h"
+#include "date.h"
 #include "table/town_land.h"
 
 enum {

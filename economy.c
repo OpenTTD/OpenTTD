@@ -29,6 +29,7 @@
 #include "train.h"
 #include "newgrf_engine.h"
 #include "unmovable.h"
+#include "date.h"
 
 // Score info
 const ScoreInfo _score_info[] = {

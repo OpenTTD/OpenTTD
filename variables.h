@@ -39,10 +39,6 @@ VARDEF GameOptions _opt_newgame;
 // Pointer to one of the two _opt OR _opt_newgame structs
 VARDEF GameOptions *_opt_ptr;
 
-// Current date
-VARDEF uint16 _date;
-VARDEF uint16 _date_fract;
-
 // Amount of game ticks
 VARDEF uint16 _tick_counter;
 
@@ -256,10 +252,6 @@ VARDEF Paths _path;
 // NOSAVE: Used in palette animations only, not really important.
 VARDEF int _timer_counter;
 
-
-// NOSAVE: can be determined from _date
-VARDEF byte _cur_year;
-VARDEF byte _cur_month;
 
 VARDEF uint32 _frame_counter;
 

@@ -23,6 +23,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_text.h"
+#include "date.h"
 
 static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport);
 static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *Airport);

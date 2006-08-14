@@ -20,6 +20,7 @@
 #include "station.h"
 #include "strings.h"
 #include "screenshot.h"
+#include "date.h"
 
 #ifdef ENABLE_NETWORK
 	#include "table/strings.h"

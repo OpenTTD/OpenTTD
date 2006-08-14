@@ -6,6 +6,7 @@
 #include "macros.h"
 #include "pool.h"
 #include "newgrf_spritegroup.h"
+#include "date.h"
 
 enum {
 	SPRITEGROUP_POOL_BLOCK_SIZE_BITS = 4, /* (1 << 4) == 16 items */

@@ -32,6 +32,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
 #include "yapf/yapf.h"
+#include "date.h"
 
 enum {
 	/* Max stations: 64000 (64 * 1000) */

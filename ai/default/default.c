@@ -25,6 +25,7 @@
 #include "../../depot.h"
 #include "../../variables.h"
 #include "../../bridge.h"
+#include "../../date.h"
 #include "default.h"
 
 // remove some day perhaps?

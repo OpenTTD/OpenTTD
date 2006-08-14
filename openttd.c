@@ -48,6 +48,7 @@
 #include "train.h"
 #include "yapf/yapf.h"
 #include "settings.h"
+#include "date.h"
 
 #include <stdarg.h>
 

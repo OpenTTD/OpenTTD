@@ -25,6 +25,7 @@
 #include "variables.h"
 #include "engine.h"
 #include "ai/ai.h"
+#include "date.h"
 
 static const SpriteID cheeks_table[4] = {
 	0x325, 0x326,

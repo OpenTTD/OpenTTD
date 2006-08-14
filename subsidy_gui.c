@@ -12,6 +12,7 @@
 #include "gfx.h"
 #include "economy.h"
 #include "variables.h"
+#include "date.h"
 
 static void HandleSubsidyClick(int y)
 {

@@ -13,6 +13,7 @@
 #include "variables.h"
 #include "table/sprites.h"
 #include <stdarg.h> /* va_list */
+#include "date.h"
 
 typedef struct TextEffect {
 	StringID string_id;

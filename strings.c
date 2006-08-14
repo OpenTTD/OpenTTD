@@ -19,6 +19,7 @@
 #include "newgrf_text.h"
 #include "table/landscape_const.h"
 #include "music.h"
+#include "date.h"
 
 #ifdef WIN32
 /* for opendir/readdir/closedir */

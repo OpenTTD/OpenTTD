@@ -27,6 +27,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
 #include "yapf/yapf.h"
+#include "date.h"
 
 static const uint16 _roadveh_images[63] = {
 	0xCD4, 0xCDC, 0xCE4, 0xCEC, 0xCF4, 0xCFC, 0xD0C, 0xD14,

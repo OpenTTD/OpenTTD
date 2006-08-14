@@ -18,6 +18,7 @@
 #include "table/strings.h"
 #include "vehicle.h"
 #include "yapf/yapf.h"
+#include "date.h"
 
 enum {
 	/* Max waypoints: 64000 (8 * 8000) */

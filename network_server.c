@@ -6,6 +6,7 @@
 #include "strings.h"
 #include "network_data.h"
 #include "train.h"
+#include "date.h"
 
 #ifdef ENABLE_NETWORK
 

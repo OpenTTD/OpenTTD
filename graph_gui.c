@@ -14,6 +14,7 @@
 #include "strings.h"
 #include "debug.h"
 #include "variables.h"
+#include "date.h"
 
 static uint _legend_excludebits;
 static uint _legend_cargobits;

@@ -5,6 +5,7 @@
 #include "string.h"
 #include "strings.h"
 #include "network_data.h"
+#include "date.h"
 
 #ifdef ENABLE_NETWORK
 

@@ -21,6 +21,7 @@
 #include "depot.h"
 #include "train.h"
 #include "newgrf_engine.h"
+#include "date.h"
 
 /**
  * Draw the purchase info details of train engine at a given location.
