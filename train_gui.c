@@ -1445,7 +1445,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 		max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
 		for (i = w->vscroll.pos; i < max; ++i) {
-			Vehicle *v = GetVehicle(vl->sort_list[i].index);
+			const Vehicle* v = vl->sort_list[i];
 			StringID str;
 
 			assert(v->type == VEH_Train && v->owner == owner);
@@ -1498,7 +1498,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 			if (id_v >= vl->list_length) return; // click out of list bound
 
-			v = GetVehicle(vl->sort_list[id_v].index);
+			v = vl->sort_list[id_v];
 
 			assert(v->type == VEH_Train && IsFrontEngine(v) && v->owner == owner);
 

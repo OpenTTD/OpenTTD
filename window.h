@@ -431,7 +431,7 @@ typedef enum VehicleListFlags {
 } VehicleListFlags;
 
 typedef struct vehiclelist_d {
-	SortStruct *sort_list;
+	const Vehicle** sort_list;
 	uint16 list_length;
 	byte sort_type;
 	VehicleListFlags flags;

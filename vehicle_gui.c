@@ -117,7 +117,7 @@ void ResortVehicleLists(void)
 
 void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station)
 {
-	SortStruct* sort_list;
+	const Vehicle** sort_list;
 	uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
 	uint n = 0;
 	uint i;
@@ -143,9 +143,7 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 
 				FOR_VEHICLE_ORDERS(v, order) {
 					if (order->type == OT_GOTO_STATION && order->station == station) {
-						sort_list[n].index = v->index;
-						sort_list[n].owner = v->owner;
-						++n;
+						sort_list[n++] = v;
 						break;
 					}
 				}
@@ -158,9 +156,7 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 						(type == VEH_Train && IsFrontEngine(v)) ||
 						(type != VEH_Train && v->subtype <= subtype)
 					)) {
-				sort_list[n].index = v->index;
-				sort_list[n].owner = v->owner;
-				++n;
+				sort_list[n++] = v;
 			}
 		}
 	}
@@ -283,7 +279,7 @@ int CDECL GeneralOwnerSorter(const void *a, const void *b)
 */
 static int CDECL VehicleUnsortedSorter(const void *a, const void *b)
 {
-	return ((const SortStruct*)a)->index - ((const SortStruct*)b)->index;
+	return (*(const Vehicle**)a)->index - (*(const Vehicle**)b)->index;
 }
 
 // if the sorting criteria had the same value, sort vehicle by unitnumber
@@ -291,8 +287,8 @@ static int CDECL VehicleUnsortedSorter(const void *a, const void *b)
 
 static int CDECL VehicleNumberSorter(const void *a, const void *b)
 {
-	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
-	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	int r = va->unitnumber - vb->unitnumber;
 
 	return (_internal_sort_order & 1) ? -r : r;
@@ -301,10 +297,8 @@ static int CDECL VehicleNumberSorter(const void *a, const void *b)
 static char _bufcache[64];	// used together with _last_vehicle_idx to hopefully speed up stringsorting
 static int CDECL VehicleNameSorter(const void *a, const void *b)
 {
-	const SortStruct *cmp1 = (const SortStruct*)a;
-	const SortStruct *cmp2 = (const SortStruct*)b;
-	const Vehicle *va = GetVehicle(cmp1->index);
-	const Vehicle *vb = GetVehicle(cmp2->index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	char buf1[64] = "\0";
 	int r;
 
@@ -313,8 +307,8 @@ static int CDECL VehicleNameSorter(const void *a, const void *b)
 		GetString(buf1, STR_JUST_STRING);
 	}
 
-	if (cmp2->index != _last_vehicle_idx) {
-		_last_vehicle_idx = cmp2->index;
+	if (vb->index != _last_vehicle_idx) {
+		_last_vehicle_idx = vb->index;
 		_bufcache[0] = '\0';
 		if (vb->string_id != _internal_name_sorter_id) {
 			SetDParam(0, vb->string_id);
@@ -331,8 +325,8 @@ static int CDECL VehicleNameSorter(const void *a, const void *b)
 
 static int CDECL VehicleAgeSorter(const void *a, const void *b)
 {
-	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
-	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	int r = va->age - vb->age;
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
@@ -342,8 +336,8 @@ static int CDECL VehicleAgeSorter(const void *a, const void *b)
 
 static int CDECL VehicleProfitThisYearSorter(const void *a, const void *b)
 {
-	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
-	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	int r = va->profit_this_year - vb->profit_this_year;
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
@@ -353,8 +347,8 @@ static int CDECL VehicleProfitThisYearSorter(const void *a, const void *b)
 
 static int CDECL VehicleProfitLastYearSorter(const void *a, const void *b)
 {
-	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
-	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	int r = va->profit_last_year - vb->profit_last_year;
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
@@ -364,8 +358,8 @@ static int CDECL VehicleProfitLastYearSorter(const void *a, const void *b)
 
 static int CDECL VehicleCargoSorter(const void *a, const void *b)
 {
-	const Vehicle* va = GetVehicle(((const SortStruct*)a)->index);
-	const Vehicle* vb = GetVehicle(((const SortStruct*)b)->index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	const Vehicle* v;
 	AcceptedCargo cargoa;
 	AcceptedCargo cargob;
@@ -389,8 +383,8 @@ static int CDECL VehicleCargoSorter(const void *a, const void *b)
 
 static int CDECL VehicleReliabilitySorter(const void *a, const void *b)
 {
-	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
-	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	int r = va->reliability - vb->reliability;
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
@@ -400,8 +394,8 @@ static int CDECL VehicleReliabilitySorter(const void *a, const void *b)
 
 static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 {
-	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
-	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	int max_speed_a = 0xFFFF, max_speed_b = 0xFFFF;
 	int r;
 	const Vehicle *ua = va, *ub = vb;
@@ -429,8 +423,8 @@ static int CDECL VehicleMaxSpeedSorter(const void *a, const void *b)
 
 static int CDECL VehicleModelSorter(const void *a, const void *b)
 {
-	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
-	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	int r = va->engine_type - vb->engine_type;
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
@@ -440,8 +434,8 @@ static int CDECL VehicleModelSorter(const void *a, const void *b)
 
 static int CDECL VehicleValueSorter(const void *a, const void *b)
 {
-	const Vehicle *va = GetVehicle((*(const SortStruct*)a).index);
-	const Vehicle *vb = GetVehicle((*(const SortStruct*)b).index);
+	const Vehicle* va = *(const Vehicle**)a;
+	const Vehicle* vb = *(const Vehicle**)b;
 	const Vehicle *u;
 	int valuea = 0, valueb = 0;
 	int r;
