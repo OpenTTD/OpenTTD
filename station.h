@@ -139,8 +139,6 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 void ShowStationViewWindow(StationID station);
 void UpdateAllStationVirtCoord(void);
 
-VARDEF SortStruct *_station_sort;
-
 /* sorter stuff */
 void RebuildStationLists(void);
 void ResortStationLists(void);

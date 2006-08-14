@@ -74,18 +74,18 @@ static int _internal_sort_order;
 
 static int CDECL StationNameSorter(const void *a, const void *b)
 {
+	const Station* st1 = *(const Station**)a;
+	const Station* st2 = *(const Station**)b;
 	char buf1[64];
 	int32 argv[1];
-	const SortStruct *cmp1 = (const SortStruct*)a;
-	const SortStruct *cmp2 = (const SortStruct*)b;
 	int r;
 
-	argv[0] = cmp1->index;
+	argv[0] = st1->index;
 	GetStringWithArgs(buf1, STR_STATION, argv);
 
-	if (cmp2->index != _last_station_idx) {
-		_last_station_idx = cmp2->index;
-		argv[0] = cmp2->index;
+	if (st2->index != _last_station_idx) {
+		_last_station_idx = st2->index;
+		argv[0] = st2->index;
 		GetStringWithArgs(_bufcache, STR_STATION, argv);
 	}
 
@@ -95,17 +95,17 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 
 static int CDECL StationTypeSorter(const void *a, const void *b)
 {
-	const Station *st1 = GetStation(((const SortStruct*)a)->index);
-	const Station *st2 = GetStation(((const SortStruct*)b)->index);
+	const Station* st1 = *(const Station**)a;
+	const Station* st2 = *(const Station**)b;
 	return (_internal_sort_order & 1) ? st2->facilities - st1->facilities : st1->facilities - st2->facilities;
 }
 
 static int CDECL StationWaitingSorter(const void *a, const void *b)
 {
+	const Station* st1 = *(const Station**)a;
+	const Station* st2 = *(const Station**)b;
 	int sum1 = 0, sum2 = 0;
 	int j;
-	const Station *st1 = GetStation(((const SortStruct*)a)->index);
-	const Station *st2 = GetStation(((const SortStruct*)b)->index);
 
 	for (j = 0; j < NUM_CARGO; j++) {
 		if (st1->goods[j].waiting_acceptance & 0xfff) sum1 += GetTransportedGoodsIncome(st1->goods[j].waiting_acceptance & 0xfff, 20, 50, j);
@@ -117,11 +117,11 @@ static int CDECL StationWaitingSorter(const void *a, const void *b)
 
 static int CDECL StationRatingMaxSorter(const void *a, const void *b)
 {
+	const Station* st1 = *(const Station**)a;
+	const Station* st2 = *(const Station**)b;
 	byte maxr1 = 0;
 	byte maxr2 = 0;
 	int j;
-	const Station *st1 = GetStation(((const SortStruct*)a)->index);
-	const Station *st2 = GetStation(((const SortStruct*)b)->index);
 
 	for (j = 0; j < NUM_CARGO; j++) {
 		if (st1->goods[j].waiting_acceptance & 0xfff) maxr1 = max(maxr1, st1->goods[j].rating);
@@ -138,7 +138,7 @@ typedef enum StationListFlags {
 } StationListFlags;
 
 typedef struct plstations_d {
-	SortStruct *sort_list;
+	const Station** sort_list;
 	uint16 list_length;
 	byte sort_type;
 	StationListFlags flags;
@@ -174,13 +174,14 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 {
 	uint n = 0;
 	uint i, j;
+	const Station** station_sort;
 	const Station *st;
 
 	if (!(sl->flags & SL_REBUILD)) return;
 
 	/* Create array for sorting */
-	_station_sort = realloc(_station_sort, GetStationPoolSize() * sizeof(_station_sort[0]));
-	if (_station_sort == NULL)
+	station_sort = malloc(GetStationPoolSize() * sizeof(station_sort[0]));
+	if (station_sort == NULL)
 		error("Could not allocate memory for the station-sorting-list");
 
 	DEBUG(misc, 1) ("Building station list for player %d...", owner);
@@ -193,18 +194,14 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 					if (st->goods[j].waiting_acceptance & 0xFFF) {
 						num_waiting_cargo++; //count number of waiting cargo
 						if (HASBIT(cargo_filter, j)) {
-							_station_sort[n].index = st->index;
-							_station_sort[n].owner = st->owner;
-							n++;
+							station_sort[n++] = st;
 							break;
 						}
 					}
 				}
 				//stations without waiting cargo
 				if (num_waiting_cargo == 0 && HASBIT(cargo_filter, NUM_CARGO)) {
-					_station_sort[n].index = st->index;
-					_station_sort[n].owner = st->owner;
-					n++;
+					station_sort[n++] = st;
 				}
 			}
 		}
@@ -215,10 +212,11 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 	if (n != 0 && sl->sort_list == NULL) error("Could not allocate memory for the station-sorting-list");
 	sl->list_length = n;
 
-	for (i = 0; i < n; ++i) sl->sort_list[i] = _station_sort[i];
+	for (i = 0; i < n; ++i) sl->sort_list[i] = station_sort[i];
 
 	sl->flags &= ~SL_REBUILD;
 	sl->flags |= SL_RESORT;
+	free(station_sort);
 }
 
 static void SortStationsList(plstations_d *sl)
@@ -305,7 +303,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			y = 40; // start of the list-widget
 
 			for (i = w->vscroll.pos; i < max; ++i) { // do until max number of stations of owner
-				Station* st = GetStation(sl->sort_list[i].index);
+				const Station* st = sl->sort_list[i];
 				uint j;
 				int x;
 
@@ -332,6 +330,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		switch (e->click.widget) {
 		case 3: {
+			const Station* st;
+
 			uint32 id_v = (e->click.pt.y - 41) / 10;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
@@ -340,13 +340,12 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 			if (id_v >= sl->list_length) return; // click out of list bound
 
-			{
-				const Station *st = GetStation(sl->sort_list[id_v].index);
+			st = sl->sort_list[id_v];
+			assert(st->owner == owner);
+			ScrollMainWindowToTile(st->xy);
+			break;
+		}
 
-				assert(st->owner == owner);
-				ScrollMainWindowToTile(st->xy);
-			}
-		} break;
 		case 6: /* train */
 		case 7: /* truck */
 		case 8: /* bus */
