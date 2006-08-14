@@ -1170,7 +1170,7 @@ found_best_track:;
 
 static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 {
-	uint dist = UINT_MAX;
+	uint dist;
 	if (_patches.yapf.road_use_yapf) {
 		// use YAPF
 		dist = YapfRoadVehDistanceToTile(v, tile);
@@ -1178,7 +1178,6 @@ static uint RoadFindPathToStop(const Vehicle *v, TileIndex tile)
 		// use NPF
 		NPFFindStationOrTileData fstd;
 		byte trackdir = GetVehicleTrackdir(v);
-		uint dist = UINT_MAX;
 		assert(trackdir != 0xFF);
 
 		fstd.dest_coords = tile;
