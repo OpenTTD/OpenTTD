@@ -62,7 +62,7 @@ typedef uint32 WindowNumber;
 typedef byte WindowClass;
 
 typedef uint8  Year;
-typedef uint32 Date;
+typedef uint16 Date;
 
 
 enum GameModes {
