@@ -98,11 +98,15 @@ void VehicleServiceInDepot(Vehicle *v)
 
 bool VehicleNeedsService(const Vehicle *v)
 {
-	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0)
-		return false;
-
 	if (v->vehstatus & VS_CRASHED)
 		return false; /* Crashed vehicles don't need service anymore */
+
+	if (_patches.no_servicing_if_no_breakdowns && _opt.diff.vehicle_breakdowns == 0) {
+		if (EngineReplacementForPlayer(GetPlayer(v->owner), v->engine_type) != INVALID_ENGINE)
+			return true; /* Vehicles set for autoreplacing needs to go to a depot even if breakdowns are turned off */
+		else
+			return false;
+	}
 
 	return _patches.servint_ispercent ?
 		(v->reliability < GetEngine(v->engine_type)->reliability * (100 - v->service_interval) / 100) :
