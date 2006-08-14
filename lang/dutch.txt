@@ -2529,6 +2529,8 @@ STR_886F_TRANSFER                                               :{BLACK}Overlade
 STR_TRAIN_STOPPING                                              :{RED}Gestopt
 STR_TRAIN_STOPPING_VEL                                          :{RED}Aan het stoppen, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :spoortypes niet verenigbaar
+STR_TRAIN_NO_POWER                                              :{RED}Geen stroom
+STR_TRAIN_START_NO_CATENARY                                     :Er is geen bovenleiding, de trein kan niet starten
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Wegvoertuig in de weg

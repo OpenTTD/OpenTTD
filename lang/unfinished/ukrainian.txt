@@ -2530,6 +2530,7 @@ STR_886F_TRANSFER                                               :{BLACK}Пере
 STR_TRAIN_STOPPING                                              :{RED}Зупиняється
 STR_TRAIN_STOPPING_VEL                                          :{RED}Зупиняється, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Залізничні колій несумісні
+STR_TRAIN_NO_POWER                                              :{RED}Неелектрифіковано
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}На шляху авто

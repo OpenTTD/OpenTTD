@@ -2631,6 +2631,8 @@ STR_886F_TRANSFER                                               :{BLACK}Elszállí
 STR_TRAIN_STOPPING                                              :{RED}Lassít
 STR_TRAIN_STOPPING_VEL                                          :{RED}Lassít, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :inkompatibilis sintípusok
+STR_TRAIN_NO_POWER                                              :{RED}Nincs áram
+STR_TRAIN_START_NO_CATENARY                                     :Ennek a sínnek nincs felsõvezetéke, a vonat nem tud indulni
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Közúti jármû van az útban

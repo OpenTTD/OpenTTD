@@ -2530,6 +2530,8 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 STR_TRAIN_STOPPING                                              :{RED}Ralentit
 STR_TRAIN_STOPPING_VEL                                          :{RED}Ralentit, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Types de rail incompatibles
+STR_TRAIN_NO_POWER                                              :{RED}Pas de puissance
+STR_TRAIN_START_NO_CATENARY                                     :Cette voie n'a pas de caténaire, le train ne peut pas démarrer
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Véhicule Routier présent

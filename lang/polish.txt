@@ -2658,6 +2658,8 @@ STR_886F_TRANSFER                                               :{BLACK}Przewiez
 STR_TRAIN_STOPPING                                              :{RED}Hamowanie
 STR_TRAIN_STOPPING_VEL                                          :{RED}Hamowanie, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Niezgodne typy szyn
+STR_TRAIN_NO_POWER                                              :{RED}Brak zasilania
+STR_TRAIN_START_NO_CATENARY                                     :Ta trasa nie jest zelektryfikowana, wiec pociag nie wystartuje
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Samochod na drodze
