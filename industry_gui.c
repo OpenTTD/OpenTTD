@@ -478,47 +478,64 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
 	const Industry* i = *(const Industry**)a;
 	const Industry* j = *(const Industry**)b;
-	char buf1[96];
-	int r = 0;
+	int r;
 
 	switch (_industry_sort_order >> 1) {
-	/* case 0: Sort by Name (handled later) */
-	case 1: /* Sort by Type */
-		r = i->type - j->type;
-		break;
-	// FIXME - Production & Transported sort need to be inversed...but, WTF it does not wanna!
-	// FIXME - And no simple --> "if (!(_industry_sort_order & 1)) r = -r;" hack at the bottom!!
-	case 2: { /* Sort by Production */
-		if (i->produced_cargo[0] != CT_INVALID && j->produced_cargo[0] != CT_INVALID) { // both industries produce cargo?
-				if (i->produced_cargo[1] == CT_INVALID) // producing one or two things?
-					r = j->total_production[0] - i->total_production[0];
-				else
-					r = (j->total_production[0] + j->total_production[1]) / 2 - (i->total_production[0] + i->total_production[1]) / 2;
-		} else if (i->produced_cargo[0] == CT_INVALID && j->produced_cargo[0] == CT_INVALID) // none of them producing anything, let them go to the name-sorting
+		default: NOT_REACHED();
+		case 0: /* Sort by Name (handled later) */
 			r = 0;
-		else if (i->produced_cargo[0] == CT_INVALID) // end up the non-producer industry first/last in list
-			r = 1;
-		else
-			r = -1;
-		break;
-	}
-	case 3: /* Sort by Transported amount */
-		if (i->produced_cargo[0] != CT_INVALID && j->produced_cargo[0] != CT_INVALID) { // both industries produce cargo?
-				if (i->produced_cargo[1] == CT_INVALID) // producing one or two things?
-					r = (j->pct_transported[0] * 100 >> 8) - (i->pct_transported[0] * 100 >> 8);
-				else
-					r = ((j->pct_transported[0] * 100 >> 8) + (j->pct_transported[1] * 100 >> 8)) / 2 - ((i->pct_transported[0] * 100 >> 8) + (i->pct_transported[1] * 100 >> 8)) / 2;
-		} else if (i->produced_cargo[0] == CT_INVALID && j->produced_cargo[0] == CT_INVALID) // none of them producing anything, let them go to the name-sorting
-			r = 0;
-		else if (i->produced_cargo[0] == CT_INVALID) // end up the non-producer industry first/last in list
-			r = 1;
-		else
-			r = -1;
-		break;
+			break;
+
+		case 1: /* Sort by Type */
+			r = i->type - j->type;
+			break;
+
+		case 2: /* Sort by Production */
+			if (i->produced_cargo[0] == CT_INVALID) {
+				r = (j->produced_cargo[0] == CT_INVALID ? 0 : -1);
+			} else {
+				if (j->produced_cargo[0] == CT_INVALID) {
+					r = 1;
+				} else {
+					r =
+						(i->total_production[0] + i->total_production[1]) -
+						(j->total_production[0] + j->total_production[1]);
+				}
+			}
+			break;
+
+		case 3: /* Sort by transported fraction */
+			if (i->produced_cargo[0] == CT_INVALID) {
+				r = (j->produced_cargo[0] == CT_INVALID ? 0 : -1);
+			} else {
+				if (j->produced_cargo[0] == CT_INVALID) {
+					r = 1;
+				} else {
+					int pi;
+					int pj;
+
+					pi = i->pct_transported[0] * 100 >> 8;
+					if (i->produced_cargo[1] != CT_INVALID) {
+						int p = i->pct_transported[1] * 100 >> 8;
+						if (p < pi) pi = p;
+					}
+
+					pj = j->pct_transported[0] * 100 >> 8;
+					if (j->produced_cargo[1] != CT_INVALID) {
+						int p = j->pct_transported[1] * 100 >> 8;
+						if (p < pj) pj = p;
+					}
+
+					r = pi - pj;
+				}
+			}
+			break;
 	}
 
 	// default to string sorting if they are otherwise equal
 	if (r == 0) {
+		char buf1[96];
+
 		SetDParam(0, i->town->index);
 		GetString(buf1, STR_TOWN);
 
