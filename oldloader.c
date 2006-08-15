@@ -995,7 +995,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 		p->money64 = p->player_money = p->current_loan = 100000;
 
 	_player_colors[num] = p->player_color;
-	p->inaugurated_year = _old_inaugurated_year - MAX_YEAR_BEGIN_REAL;
+	p->inaugurated_year = _old_inaugurated_year - BASE_YEAR;
 	if (p->location_of_house == 0xFFFF)
 		p->location_of_house = 0;
 

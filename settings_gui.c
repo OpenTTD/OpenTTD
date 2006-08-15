@@ -1185,7 +1185,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 						WP(w,def_d).data_1 = (1 << (line * 2 + 0));
 					} else {
 						_custom_currency.to_euro =
-							clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR_END_REAL);
+							clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
 						WP(w,def_d).data_1 = (1 << (line * 2 + 1));
 					}
 				} else { // enter text
@@ -1237,7 +1237,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 
 				case 4: /* Year to switch to euro */
 					val = atoi(b);
-					val = clamp(val, 1999, MAX_YEAR_END_REAL);
+					val = clamp(val, 1999, MAX_YEAR);
 					if (val == 1999) val = 0;
 					_custom_currency.to_euro = val;
 					break;

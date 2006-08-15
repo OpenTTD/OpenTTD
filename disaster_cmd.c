@@ -951,7 +951,7 @@ static DisasterInitProc * const _disaster_initprocs[] = {
 	Disaster7_Init,
 };
 
-#define MK(a, b) { (a) - MAX_YEAR_BEGIN_REAL, (b) - MAX_YEAR_BEGIN_REAL }
+#define MK(a, b) { (a) - BASE_YEAR, (b) - BASE_YEAR }
 static const struct {
 	byte min;
 	byte max;

@@ -73,7 +73,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Design date - Life length */
-	SetDParam(0, ymd.year + 1920);
+	SetDParam(0, BASE_YEAR + ymd.year);
 	SetDParam(1, e->lifelength);
 	DrawString(x,y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
 	y += 10;
@@ -1115,7 +1115,7 @@ static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
 
 	if (!(rvi->flags & RVI_WAGON)) {
 		SetDParam(0, GetCustomEngineName(v->engine_type));
-		SetDParam(1, v->build_year + 1920);
+		SetDParam(1, BASE_YEAR + v->build_year);
 		SetDParam(2, v->value);
 		DrawString(x, y, STR_882C_BUILT_VALUE, 0x10);
 	} else {

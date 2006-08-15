@@ -47,7 +47,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 		tbl = p->yearly_expenses + 2;
 		do {
 			if (year >= p->inaugurated_year) {
-				SetDParam(0, year + 1920);
+				SetDParam(0, BASE_YEAR + year);
 				DrawStringCenterUnderline(x-17, 15, STR_7010, 0);
 				sum = 0;
 				for (i = 0; i != 13; i++) {
@@ -537,7 +537,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		w->disabled_state = dis;
 		DrawWindowWidgets(w);
 
-		SetDParam(0, p->inaugurated_year + 1920);
+		SetDParam(0, BASE_YEAR + p->inaugurated_year);
 		DrawString(110, 25, STR_7038_INAUGURATED, 0);
 
 		DrawPlayerVehiclesAmount(w->window_number);

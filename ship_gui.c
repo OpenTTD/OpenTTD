@@ -54,7 +54,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 	/* Design date - Life length */
 	e = GetEngine(engine_number);
 	ConvertDayToYMD(&ymd, e->intro_date);
-	SetDParam(0, ymd.year + 1920);
+	SetDParam(0, BASE_YEAR + ymd.year);
 	SetDParam(1, e->lifelength);
 	DrawString(x,y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
 	y += 10;
@@ -212,7 +212,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 
 		DrawShipImage(v, 3, 57, INVALID_VEHICLE);
 
-		SetDParam(1, 1920 + v->build_year);
+		SetDParam(1, BASE_YEAR + v->build_year);
 		SetDParam(0, GetCustomEngineName(v->engine_type));
 		SetDParam(2, v->value);
 		DrawString(74, 57, STR_9816_BUILT_VALUE, 0);

@@ -129,7 +129,7 @@ Date ConvertIntDate(uint date)
 	Month month = 0;
 	Day   day   = 1;
 
-	if (IS_INT_INSIDE(date, 1920, MAX_YEAR_END_REAL + 1)) {
+	if (IS_INT_INSIDE(date, 1920, MAX_YEAR + 1)) {
 		year = date - 1920;
 	} else if (IS_INT_INSIDE(date, 192001, 209012 + 1)) {
 		month = date % 100 - 1;
@@ -282,13 +282,13 @@ void IncreaseDate(void)
 #endif /* ENABLE_NETWORK */
 
 	/* check if we reached end of the game */
-	if (_cur_year == _patches.ending_year - MAX_YEAR_BEGIN_REAL) {
+	if (_cur_year == _patches.ending_year - MAX_YEAR) {
 			ShowEndGameChart();
 	/* check if we reached the maximum year, decrement dates by a year */
-	} else if (_cur_year == (MAX_YEAR_END + 1)) {
+	} else if (BASE_YEAR + _cur_year == MAX_YEAR + 1) {
 		Vehicle *v;
 
-		_cur_year = MAX_YEAR_END;
+		_cur_year--;
 		_date -= 365;
 		FOR_ALL_VEHICLES(v) {
 			v->date_of_last_service -= 365;

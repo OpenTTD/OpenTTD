@@ -1677,7 +1677,7 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	YearMonthDay ymd;
 	ConvertDayToYMD(&ymd, _date);
 
-	if ((ymd.year == 0 && p2 == -1) || (ymd.year == 170 && p2 == 1)) return _cur_year;
+	if ((BASE_YEAR + ymd.year == MIN_YEAR && p2 == -1) || (BASE_YEAR + ymd.year == MAX_YEAR && p2 == 1)) return _cur_year;
 
 	SetDate(ConvertYMDToDay(_cur_year + p2, ymd.month, ymd.day));
 	EnginesMonthlyLoop();

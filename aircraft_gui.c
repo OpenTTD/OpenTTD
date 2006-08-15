@@ -66,7 +66,7 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Design date - Life length */
-	SetDParam(0, ymd.year + 1920);
+	SetDParam(0, BASE_YEAR + ymd.year);
 	SetDParam(1, e->lifelength);
 	DrawString(x, y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
 	y += 10;
@@ -402,7 +402,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 			do {
 				if (v->subtype <= 2) {
 					SetDParam(0, GetCustomEngineName(v->engine_type));
-					SetDParam(1, 1920 + v->build_year);
+					SetDParam(1, BASE_YEAR + v->build_year);
 					SetDParam(2, v->value);
 					DrawString(60, y, STR_A011_BUILT_VALUE, 0);
 					y += 10;

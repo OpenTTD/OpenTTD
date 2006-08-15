@@ -876,7 +876,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			DrawStringTruncated(x, y, STR_NETWORK_COMPANY_NAME, 2, trunc_width);
 			y += 10;
 
-			SetDParam(0, _network_player_info[nd->company].inaugurated_year + MAX_YEAR_BEGIN_REAL);
+			SetDParam(0, BASE_YEAR + _network_player_info[nd->company].inaugurated_year);
 			DrawString(x, y, STR_NETWORK_INAUGURATION_YEAR, 2); // inauguration year
 			y += 10;
 

@@ -8,9 +8,9 @@
  */
 #define DAY_TICKS 74
 
-#define MAX_YEAR_BEGIN_REAL 1920
-#define MAX_YEAR_END_REAL 2090
-#define MAX_YEAR_END 170
+#define BASE_YEAR 1920
+#define MIN_YEAR 1920
+#define MAX_YEAR 2090
 
 /* Year and Date are defined elsewhere */
 typedef uint8  Month;
