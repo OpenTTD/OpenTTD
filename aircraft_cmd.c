@@ -63,6 +63,7 @@ static StationID FindNearestHangar(const Vehicle *v)
 	const Station *st;
 	uint best = 0;
 	StationID index = INVALID_STATION;
+	TileIndex vtile = TileVirtXY(v->x_pos, v->y_pos);
 
 	FOR_ALL_STATIONS(st) {
 		if (st->owner == v->owner && st->facilities & FACIL_AIRPORT &&
@@ -70,11 +71,13 @@ static StationID FindNearestHangar(const Vehicle *v)
 			uint distance;
 
 			// don't crash the plane if we know it can't land at the airport
-			if (HASBIT(v->subtype, 1) && st->airport_type == AT_SMALL &&
+			if ((AircraftVehInfo(v->engine_type)->subtype & AIR_FAST) &&
+					(st->airport_type == AT_SMALL || st->airport_type == AT_COMMUTER) &&
 					!_cheats.no_jetcrash.value)
 				continue;
 
-			distance = DistanceSquare(v->tile, st->airport_tile);
+			// v->tile can't be used here, when aircraft is flying v->tile is set to 0
+			distance = DistanceSquare(vtile, st->airport_tile);
 			if (distance < best || index == INVALID_STATION) {
 				best = distance;
 				index = st->index;
