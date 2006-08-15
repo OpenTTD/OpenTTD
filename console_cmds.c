@@ -1342,7 +1342,8 @@ DEF_CONSOLE_CMD(ConPatch)
 	if (argc == 2) {
 		IConsoleGetPatchSetting(argv[1]);
 	} else {
-		IConsoleSetPatchSetting(argv[1], argv[2]);
+		int32 val;
+		if (GetArgumentInteger(&val, argv[2])) IConsoleSetPatchSetting(argv[1], val);
 	}
 
 	return true;

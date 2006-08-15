@@ -77,7 +77,7 @@ static inline void *ini_get_variable(const SaveLoad *sld, const void *object)
 /** The patch values that are used for new games and/or modified in config file */
 extern Patches _patches_newgame;
 
-void IConsoleSetPatchSetting(const char *name, const char *value);
+void IConsoleSetPatchSetting(const char *name, int32 value);
 void IConsoleGetPatchSetting(const char *name);
 const SettingDesc *GetPatchFromName(const char *name, uint *i);
 void SetPatchValue(uint index, const Patches *object, int32 value);
