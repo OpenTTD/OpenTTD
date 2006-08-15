@@ -1425,15 +1425,27 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
 	return 0;
 }
 
+/** Retrieve the exit-tile of the vehicle from inside a tunnel
+ * Very similar to GetOtherTunnelEnd(), but we use the vehicle's
+ * direction for determining which end of the tunnel to find
+ * @param v the vehicle which is inside the tunnel and needs an exit
+ * @return the exit-tile of the tunnel based on the vehicle's direction */
 TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 {
-	TileIndex tile;
-	TileIndexDiff delta = (v->direction & 2) ? TileDiffXY(0, 1) : TileDiffXY(1, 0);
+	TileIndex tile = v->tile;
+	DiagDirection dir = DirToDiagDir(v->direction);
+	TileIndexDiff delta = TileOffsByDir(dir);
 	byte z = v->z_pos;
 
-	for (tile = v->tile;; tile += delta) {
-		if (IsTunnelTile(tile) && GetTileZ(tile) == z) break;
-	}
+	dir = ReverseDiagDir(dir);
+	do {
+		tile += delta;
+	} while (
+		!IsTunnelTile(tile) ||
+		GetTunnelDirection(tile) != dir ||
+		GetTileZ(tile) != z
+	);
+
 	return tile;
 }
 
