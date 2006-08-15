@@ -296,7 +296,7 @@ static inline TrackdirBits TrackToTrackdirBits(Track track)
  */
 static inline TrackBits TrackdirBitsToTrackBits(TrackdirBits bits)
 {
-	return (TrackBits)(bits | (bits >> 8));
+	return (TrackBits)((bits | (bits >> 8)) & TRACK_BIT_MASK);
 }
 
 /**
