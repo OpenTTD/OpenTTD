@@ -1438,13 +1438,13 @@ TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 	byte z = v->z_pos;
 
 	dir = ReverseDiagDir(dir);
-	do {
-		tile += delta;
-	} while (
+	while (
 		!IsTunnelTile(tile) ||
 		GetTunnelDirection(tile) != dir ||
 		GetTileZ(tile) != z
-	);
+	) {
+		tile += delta;
+	}
 
 	return tile;
 }
