@@ -27,7 +27,7 @@
 Sorting _sorting;
 
 static uint32 _internal_name_sorter_id; // internal StringID for default vehicle-names
-static uint32 _last_vehicle_idx;        // cached index to hopefully speed up name-sorting
+static const Vehicle* _last_vehicle; // cached vehicle to hopefully speed up name-sorting
 static bool   _internal_sort_order;     // descending/ascending
 
 static uint16 _player_num_engines[TOTAL_NUM_ENGINES];
@@ -161,7 +161,7 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 		}
 	}
 
-	free(vl->sort_list);
+	free((void*)vl->sort_list);
 	vl->sort_list = malloc(n * sizeof(vl->sort_list[0]));
 	if (n != 0 && vl->sort_list == NULL) {
 		error("Could not allocate memory for the vehicle-sorting-list");
@@ -169,7 +169,7 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 	vl->list_length = n;
 
 	for (i = 0; i < n; ++i) vl->sort_list[i] = sort_list[i];
-	free(sort_list);
+	free((void*)sort_list);
 
 	vl->flags &= ~VL_REBUILD;
 	vl->flags |= VL_RESORT;
@@ -181,7 +181,7 @@ void SortVehicleList(vehiclelist_d *vl)
 
 	_internal_sort_order = vl->flags & VL_DESC;
 	_internal_name_sorter_id = STR_SV_TRAIN_NAME;
-	_last_vehicle_idx = 0; // used for "cache" in namesorting
+	_last_vehicle = NULL; // used for "cache" in namesorting
 	qsort(vl->sort_list, vl->list_length, sizeof(vl->sort_list[0]),
 		_vehicle_sorter[vl->sort_type]);
 
@@ -289,7 +289,7 @@ static int CDECL VehicleNumberSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? -r : r;
 }
 
-static char _bufcache[64];	// used together with _last_vehicle_idx to hopefully speed up stringsorting
+static char _bufcache[64]; // used together with _last_vehicle to hopefully speed up stringsorting
 static int CDECL VehicleNameSorter(const void *a, const void *b)
 {
 	const Vehicle* va = *(const Vehicle**)a;
@@ -302,8 +302,8 @@ static int CDECL VehicleNameSorter(const void *a, const void *b)
 		GetString(buf1, STR_JUST_STRING);
 	}
 
-	if (vb->index != _last_vehicle_idx) {
-		_last_vehicle_idx = vb->index;
+	if (vb != _last_vehicle) {
+		_last_vehicle = vb;
 		_bufcache[0] = '\0';
 		if (vb->string_id != _internal_name_sorter_id) {
 			SetDParam(0, vb->string_id);

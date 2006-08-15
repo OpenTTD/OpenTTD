@@ -470,16 +470,15 @@ static const Widget _industry_directory_widgets[] = {
 static uint _num_industry_sort;
 
 static char _bufcache[96];
-static uint16 _last_industry_idx;
+static const Industry* _last_industry;
 
 static byte _industry_sort_order;
 
 static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 {
+	const Industry* i = *(const Industry**)a;
+	const Industry* j = *(const Industry**)b;
 	char buf1[96];
-	uint16 val;
-	Industry *i = GetIndustry(*(const uint16*)a);
-	Industry *j = GetIndustry(*(const uint16*)b);
 	int r = 0;
 
 	switch (_industry_sort_order >> 1) {
@@ -523,8 +522,8 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 		SetDParam(0, i->town->index);
 		GetString(buf1, STR_TOWN);
 
-		if ( (val=*(const uint16*)b) != _last_industry_idx) {
-			_last_industry_idx = val;
+		if (j != _last_industry) {
+			_last_industry = j;
 			SetDParam(0, j->town->index);
 			GetString(_bufcache, STR_TOWN);
 		}
@@ -537,21 +536,21 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 
 static void MakeSortedIndustryList(void)
 {
-	Industry *i;
+	const Industry* i;
 	int n = 0;
 
 	/* Create array for sorting */
-	_industry_sort = realloc(_industry_sort, GetIndustryPoolSize() * sizeof(_industry_sort[0]));
+	_industry_sort = realloc((void*)_industry_sort, GetIndustryPoolSize() * sizeof(_industry_sort[0]));
 	if (_industry_sort == NULL)
 		error("Could not allocate memory for the industry-sorting-list");
 
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy != 0) _industry_sort[n++] = i->index;
+		if (i->xy != 0) _industry_sort[n++] = i;
 	}
 	_num_industry_sort = n;
-	_last_industry_idx = 0xFFFF; // used for "cache"
+	_last_industry = NULL; // used for "cache"
 
-	qsort(_industry_sort, n, sizeof(_industry_sort[0]), GeneralIndustrySorter);
+	qsort((void*)_industry_sort, n, sizeof(_industry_sort[0]), GeneralIndustrySorter);
 
 	DEBUG(misc, 1) ("Resorting Industries list...");
 }
@@ -579,7 +578,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		n = 0;
 
 		while (p < _num_industry_sort) {
-			const Industry *i = GetIndustry(_industry_sort[p]);
+			const Industry* i = _industry_sort[p];
 
 			SetDParam(0, i->index);
 			if (i->produced_cargo[0] != CT_INVALID) {
@@ -637,7 +636,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 			if (!IS_INT_INSIDE(y, 0, w->vscroll.cap)) return;
 			p = y + w->vscroll.pos;
 			if (p < _num_industry_sort) {
-				ScrollMainWindowToTile(GetIndustry(_industry_sort[p])->xy);
+				ScrollMainWindowToTile(_industry_sort[p]->xy);
 			}
 		} break;
 		}

@@ -96,7 +96,7 @@ static inline uint16 GetIndustryPoolSize(void)
 
 VARDEF int _total_industries; // For the AI: the amount of industries active
 
-VARDEF uint16 *_industry_sort;
+VARDEF const Industry** _industry_sort;
 VARDEF bool _industry_sort_dirty;
 
 

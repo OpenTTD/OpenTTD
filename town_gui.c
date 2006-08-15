@@ -368,25 +368,25 @@ static const Widget _town_directory_widgets[] = {
 static uint _num_town_sort;
 
 static char _bufcache[64];
-static uint16 _last_town_idx;
+static const Town* _last_town;
 
 static int CDECL TownNameSorter(const void *a, const void *b)
 {
+	const Town* ta = *(const Town**)a;
+	const Town* tb = *(const Town**)b;
 	char buf1[64];
-	uint16 val;
 	int r;
 	int32 argv[1];
 
-	argv[0] = *(const uint16*)a;
+	argv[0] = ta->index;
 	GetStringWithArgs(buf1, STR_TOWN, argv);
 
 	/* If 'b' is the same town as in the last round, use the cached value
 	 *  We do this to speed stuff up ('b' is called with the same value a lot of
-	*  times after eachother) */
-	val = *(const uint16*)b;
-	if (val != _last_town_idx) {
-		_last_town_idx = val;
-		argv[0] = val;
+	 *  times after eachother) */
+	if (tb != _last_town) {
+		_last_town = tb;
+		argv[0] = tb->index;
 		GetStringWithArgs(_bufcache, STR_TOWN, argv);
 	}
 
@@ -397,8 +397,8 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 
 static int CDECL TownPopSorter(const void *a, const void *b)
 {
-	const Town *ta = GetTown(*(const uint16*)a);
-	const Town *tb = GetTown(*(const uint16*)b);
+	const Town* ta = *(const Town**)a;
+	const Town* tb = *(const Town**)b;
 	int r = ta->population - tb->population;
 	if (_town_sort_order & 1) r = -r;
 	return r;
@@ -410,18 +410,18 @@ static void MakeSortedTownList(void)
 	uint n = 0;
 
 	/* Create array for sorting */
-	_town_sort = realloc(_town_sort, GetTownPoolSize() * sizeof(_town_sort[0]));
+	_town_sort = realloc((void*)_town_sort, GetTownPoolSize() * sizeof(_town_sort[0]));
 	if (_town_sort == NULL)
 		error("Could not allocate memory for the town-sorting-list");
 
 	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0) _town_sort[n++] = t->index;
+		if (t->xy != 0) _town_sort[n++] = t;
 	}
 
 	_num_town_sort = n;
 
-	_last_town_idx = 0; // used for "cache"
-	qsort(_town_sort, n, sizeof(_town_sort[0]), _town_sort_order & 2 ? TownPopSorter : TownNameSorter);
+	_last_town = NULL; // used for "cache"
+	qsort((void*)_town_sort, n, sizeof(_town_sort[0]), _town_sort_order & 2 ? TownPopSorter : TownNameSorter);
 
 	DEBUG(misc, 1) ("Resorting Towns list...");
 }
@@ -442,13 +442,12 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		DoDrawString(_town_sort_order & 1 ? DOWNARROW : UPARROW, (_town_sort_order <= 1) ? 88 : 187, 15, 0x10);
 
 		{
-			const Town *t;
 			int n = 0;
 			uint16 i = w->vscroll.pos;
 			int y = 28;
 
 			while (i < _num_town_sort) {
-				t = GetTown(_town_sort[i]);
+				const Town* t = _town_sort[i];
 
 				assert(t->xy);
 
@@ -480,6 +479,8 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 5: { /* Click on Town Matrix */
+			const Town* t;
+
 			uint16 id_v = (e->click.pt.y - 28) / 10;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
@@ -488,13 +489,11 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 
 			if (id_v >= _num_town_sort) return; // click out of town bounds
 
-			{
-				const Town *t = GetTown(_town_sort[id_v]);
-				assert(t->xy);
-
-				ScrollMainWindowToTile(t->xy);
-			}
-		}	break;
+			t = _town_sort[id_v];
+			assert(t->xy);
+			ScrollMainWindowToTile(t->xy);
+			break;
+		}
 		}
 		break;
 

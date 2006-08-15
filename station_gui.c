@@ -69,7 +69,7 @@ const StringID _station_sort_listing[] = {
 };
 
 static char _bufcache[64];
-static uint16 _last_station_idx;
+static const Station* _last_station;
 static int _internal_sort_order;
 
 static int CDECL StationNameSorter(const void *a, const void *b)
@@ -83,8 +83,8 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 	argv[0] = st1->index;
 	GetStringWithArgs(buf1, STR_STATION, argv);
 
-	if (st2->index != _last_station_idx) {
-		_last_station_idx = st2->index;
+	if (st2 != _last_station) {
+		_last_station = st2;
 		argv[0] = st2->index;
 		GetStringWithArgs(_bufcache, STR_STATION, argv);
 	}
@@ -207,7 +207,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 		}
 	}
 
-	free(sl->sort_list);
+	free((void*)sl->sort_list);
 	sl->sort_list = malloc(n * sizeof(sl->sort_list[0]));
 	if (n != 0 && sl->sort_list == NULL) error("Could not allocate memory for the station-sorting-list");
 	sl->list_length = n;
@@ -216,7 +216,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 
 	sl->flags &= ~SL_REBUILD;
 	sl->flags |= SL_RESORT;
-	free(station_sort);
+	free((void*)station_sort);
 }
 
 static void SortStationsList(plstations_d *sl)
@@ -231,7 +231,7 @@ static void SortStationsList(plstations_d *sl)
 	if (!(sl->flags & SL_RESORT)) return;
 
 	_internal_sort_order = sl->flags & SL_ORDER;
-	_last_station_idx = 0; // used for "cache" in namesorting
+	_last_station = NULL; // used for "cache" in namesorting
 	qsort(sl->sort_list, sl->list_length, sizeof(sl->sort_list[0]), _station_sorter[sl->sort_type]);
 
 	sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;

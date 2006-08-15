@@ -260,8 +260,8 @@ static void UnInitializeDynamicVariables(void)
 	CleanPool(&_sign_pool);
 	CleanPool(&_order_pool);
 
-	free(_town_sort);
-	free(_industry_sort);
+	free((void*)_town_sort);
+	free((void*)_industry_sort);
 }
 
 static void UnInitializeGame(void)

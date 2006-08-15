@@ -151,7 +151,7 @@ enum {
 
 bool CheckforTownRating(uint32 flags, Town *t, byte type);
 
-VARDEF TownID *_town_sort;
+VARDEF const Town** _town_sort;
 
 extern MemoryPool _town_pool;
 
