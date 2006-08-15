@@ -819,7 +819,7 @@ static void HighScoreWndProc(Window *w, WindowEvent *e)
 
 		SetupHighScoreEndWindow(w, &x, &y);
 
-		SetDParam(0, _patches.ending_date);
+		SetDParam(0, _patches.ending_year);
 		SetDParam(1, w->window_number + STR_6801_EASY);
 		DrawStringMultiCenter(x + (640 / 2), y + 62, !_networking ? STR_0211_TOP_COMPANIES_WHO_REACHED : STR_TOP_COMPANIES_NETWORK_GAME, 500);
 

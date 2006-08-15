@@ -601,9 +601,9 @@ static const char *_patches_economy[] = {
 	"same_industry_close",
 	"bribe",
 	"snow_line_height",
-	"colored_news_date",
-	"starting_date",
-	"ending_date",
+	"colored_news_year",
+	"starting_year",
+	"ending_year",
 	"smooth_economy",
 	"allow_shares",
 };

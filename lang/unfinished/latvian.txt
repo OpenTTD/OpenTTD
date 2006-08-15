@@ -1002,7 +1002,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksima
 
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Aizliedz servisu kad saboja's'ana's izsle'gta: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Nobeidz spe'li: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Nobeidz spe'li: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Atïauj akciju pirkðanu no citâm kompânijâm
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Pa kreisi
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centrâ

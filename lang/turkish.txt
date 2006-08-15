@@ -1069,9 +1069,9 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Gemiler
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Bozulmalar kapaliysa sevisler kapali olsun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Vagonlarin yavaslatmasi izinli: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Renkli gazete su senede çiksin: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Baslangiç tarihi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Bitis tarihi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Renkli gazete su senede çiksin: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Baslangiç tarihi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Bitis tarihi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Yüzeysel ekonomi (daha çok ve küçük çapta degisiklikler)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Diger sirketlerin hisseleri alinabilsin
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Sürüklerken her: {ORANGE}{STRING} karede bir sinyal koy

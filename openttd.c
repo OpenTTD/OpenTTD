@@ -142,7 +142,7 @@ static void showhelp(void)
 		"  -m drv              = Set music driver (see below)\n"
 		"  -r res              = Set resolution (for instance 800x600)\n"
 		"  -h                  = Display this help text\n"
-		"  -t date             = Set starting date\n"
+		"  -t year             = Set starting year\n"
 		"  -d [[fac=]lvl[,...]]= Debug mode\n"
 		"  -e                  = Start Editor\n"
 		"  -g [savegame]       = Start new/save game immediately\n"
@@ -316,7 +316,7 @@ int ttd_main(int argc, char *argv[])
 	const char *optformat;
 	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
-	uint startdate = -1;
+	uint startyear = -1;
 
 	bool dedicated = false;
 	bool network   = false;
@@ -359,7 +359,7 @@ int ttd_main(int argc, char *argv[])
 			break;
 		case 'b': _ai.network_client = true; break;
 		case 'r': ParseResolution(resolution, mgo.opt); break;
-		case 't': startdate = atoi(mgo.opt); break;
+		case 't': startyear = atoi(mgo.opt); break;
 		case 'd': {
 #if defined(WIN32)
 				CreateConsole();
@@ -408,7 +408,7 @@ int ttd_main(int argc, char *argv[])
 	if (sounddriver[0]) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
 	if (videodriver[0]) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
-	if (startdate != (uint)-1) _patches_newgame.starting_date = startdate;
+	if (startyear != (uint)-1) _patches_newgame.starting_year = startyear;
 
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 

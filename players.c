@@ -1103,7 +1103,7 @@ void LoadFromHighScore(void)
 	}
 
 	/* Initialize end of game variable (when to show highscore chart) */
-	_patches.ending_date = 2051;
+	_patches.ending_year = 2051;
 }
 
 // Save/load of players

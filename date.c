@@ -282,7 +282,7 @@ void IncreaseDate(void)
 #endif /* ENABLE_NETWORK */
 
 	/* check if we reached end of the game */
-	if (_cur_year == _patches.ending_date - MAX_YEAR_BEGIN_REAL) {
+	if (_cur_year == _patches.ending_year - MAX_YEAR_BEGIN_REAL) {
 			ShowEndGameChart();
 	/* check if we reached the maximum year, decrement dates by a year */
 	} else if (_cur_year == (MAX_YEAR_END + 1)) {

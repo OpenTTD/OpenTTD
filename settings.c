@@ -1206,7 +1206,7 @@ static const SettingDescGlobVarList _network_settings[] = {
 	SDTG_BOOL("autoclean_companies",             S, 0, _network_autoclean_companies,  false,       STR_NULL, NULL),
 	 SDTG_VAR("autoclean_unprotected",SLE_UINT8, S, 0, _network_autoclean_unprotected,12, 0,  60,  STR_NULL, NULL),
 	 SDTG_VAR("autoclean_protected",  SLE_UINT8, S, 0, _network_autoclean_protected,  36, 0, 180,  STR_NULL, NULL),
-	 SDTG_VAR("restart_game_date",   SLE_UINT16, S,D0, _network_restart_game_date,    0, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_NULL, NULL),
+	 SDTG_VAR("restart_game_year",   SLE_UINT16, S,D0, _network_restart_game_year,    0, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_NULL, NULL),
 	 SDTG_END()
 };
 #endif /* ENABLE_NETWORK */
@@ -1320,9 +1320,9 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, same_industry_close,        0, 0, false,            STR_CONFIG_PATCHES_SAMEINDCLOSE,     NULL),
 	SDT_BOOL(Patches, bribe,                      0, 0,  true,            STR_CONFIG_PATCHES_BRIBE,            NULL),
 	 SDT_VAR(Patches, snow_line_height,SLE_UINT8, 0, 0,     7,   2,   13, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,  NULL),
-	 SDT_VAR(Patches, colored_news_date,SLE_UINT, 0,NC,  2000,1900, 2200, STR_CONFIG_PATCHES_COLORED_NEWS_DATE,NULL),
-	 SDT_VAR(Patches, starting_date,    SLE_UINT, 0,NC,  1950, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_CONFIG_PATCHES_STARTING_DATE,NULL),
-	 SDT_VAR(Patches, ending_date,      SLE_UINT,0,NC|NO,2051, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_CONFIG_PATCHES_ENDING_DATE,  NULL),
+	 SDT_VAR(Patches, colored_news_year,SLE_UINT, 0,NC,  2000, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_CONFIG_PATCHES_COLORED_NEWS_YEAR,NULL),
+	 SDT_VAR(Patches, starting_year,    SLE_UINT, 0,NC,  1950, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_CONFIG_PATCHES_STARTING_YEAR,NULL),
+	 SDT_VAR(Patches, ending_year,      SLE_UINT,0,NC|NO,2051, MAX_YEAR_BEGIN_REAL, MAX_YEAR_END_REAL, STR_CONFIG_PATCHES_ENDING_YEAR,  NULL),
 	SDT_BOOL(Patches, smooth_economy,             0, 0,  true,            STR_CONFIG_PATCHES_SMOOTH_ECONOMY,   NULL),
 	SDT_BOOL(Patches, allow_shares,               0, 0,  true,            STR_CONFIG_PATCHES_ALLOW_SHARES,     NULL),
 

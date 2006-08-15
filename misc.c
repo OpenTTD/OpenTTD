@@ -124,7 +124,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	_cur_tileloop_tile = 0;
 
 	if ((mode & IG_DATE_RESET) == IG_DATE_RESET) {
-		uint starting = ConvertIntDate(_patches.starting_date);
+		uint starting = ConvertIntDate(_patches.starting_year);
 		if (starting == (uint)-1) starting = 10958;
 		SetDate(starting);
 	}

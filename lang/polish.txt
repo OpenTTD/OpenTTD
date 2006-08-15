@@ -1156,9 +1156,9 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Domysln
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Wylacz serwisowanie jesli awarie pojazdow sa wylaczone: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Wlacz limity predkosci wagonow: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Pojawianie sie kolorowych wiadomosci w: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Data rozpoczecia gry: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Data zakonczenia gry: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Pojawianie sie kolorowych wiadomosci w: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data rozpoczecia gry: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Data zakonczenia gry: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Pozwol na lagodna ekonomie (wiecej malych zmian)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Pozwol kupowac udzialy w innych firmach
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}W trakcie przeciagania ustaw sygnaly co: {ORANGE}{STRING} kratk{P e i ek}

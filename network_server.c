@@ -1313,7 +1313,7 @@ extern void SwitchMode(int new_mode);
 /* Check if we want to restart the map */
 static void NetworkCheckRestartMap(void)
 {
-	if (_network_restart_game_date != 0 && _cur_year + MAX_YEAR_BEGIN_REAL >= _network_restart_game_date) {
+	if (_network_restart_game_year != 0 && _cur_year + MAX_YEAR_BEGIN_REAL >= _network_restart_game_year) {
 		DEBUG(net, 0)("Auto-restarting map. Year %d reached.", _cur_year + MAX_YEAR_BEGIN_REAL);
 
 		_random_seeds[0][0] = Random();
