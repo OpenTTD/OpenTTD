@@ -30,6 +30,6 @@ extern DateFract _date_fract;
 
 
 void SetDate(Date date);
-void ConvertDayToYMD(YearMonthDay *ymd, Date date);
-uint ConvertYMDToDay(Year year, Month month, Day day);
+void ConvertDateToYMD(Date date, YearMonthDay *ymd);
+Date ConvertYMDToDate(Year year, Month month, Day day);
 Date ConvertIntDate(uint date);

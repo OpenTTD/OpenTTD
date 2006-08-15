@@ -331,7 +331,7 @@ static char *FormatYmdString(char *buff, uint16 number)
 	const char *src;
 	YearMonthDay ymd;
 
-	ConvertDayToYMD(&ymd, number);
+	ConvertDateToYMD(number, &ymd);
 
 	for (src = GetStringPtr(ymd.day + STR_01AC_1ST - 1); (*buff++ = *src++) != '\0';) {}
 	buff[-1] = ' ';
@@ -347,7 +347,7 @@ static char *FormatMonthAndYear(char *buff, uint16 number)
 	const char *src;
 	YearMonthDay ymd;
 
-	ConvertDayToYMD(&ymd, number);
+	ConvertDateToYMD(number, &ymd);
 
 	for (src = GetStringPtr(STR_MONTH_JAN + ymd.month); (*buff++ = *src++) != '\0';) {}
 	buff[-1] = ' ';
@@ -359,7 +359,7 @@ static char *FormatTinyDate(char *buff, uint16 number)
 {
 	YearMonthDay ymd;
 
-	ConvertDayToYMD(&ymd, number);
+	ConvertDateToYMD(number, &ymd);
 	buff += sprintf(buff, " %02i-%02i-%04i", ymd.day, ymd.month + 1, BASE_YEAR + ymd.year);
 
 	return buff;

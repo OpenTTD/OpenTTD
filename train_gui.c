@@ -34,7 +34,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	const Engine *e = GetEngine(engine_number);
 	int multihead = (rvi->flags&RVI_MULTIHEAD?1:0);
 	YearMonthDay ymd;
-	ConvertDayToYMD(&ymd, e->intro_date);
+	ConvertDateToYMD(e->intro_date, &ymd);
 
 	/* Purchase Cost - Engine weight */
 	SetDParam(0, rvi->base_cost * (_price.build_railvehicle >> 3) >> 5);

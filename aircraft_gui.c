@@ -36,7 +36,7 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 	const Engine *e = GetEngine(engine_number);
 	CargoID cargo;
 	YearMonthDay ymd;
-	ConvertDayToYMD(&ymd, e->intro_date);
+	ConvertDateToYMD(e->intro_date, &ymd);
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, avi->base_cost * (_price.aircraft_base>>3)>>5);

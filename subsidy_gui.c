@@ -84,7 +84,7 @@ static void DrawSubsidiesWindow(const Window *w)
 
 	DrawWindowWidgets(w);
 
-	ConvertDayToYMD(&ymd, _date);
+	ConvertDateToYMD(_date, &ymd);
 
 	y = 15;
 	x = 1;

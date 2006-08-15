@@ -1004,7 +1004,7 @@ static void ToolbarScenDateBackward(Window *w)
 		HandleButtonClick(w, 6);
 		InvalidateWidget(w, 5);
 
-		if (_date > MinDate) SetDate(ConvertYMDToDay(_cur_year - 1, 0, 1));
+		if (_date > MinDate) SetDate(ConvertYMDToDate(_cur_year - 1, 0, 1));
 	}
 	_left_button_clicked = false;
 }
@@ -1016,7 +1016,7 @@ static void ToolbarScenDateForward(Window *w)
 		HandleButtonClick(w, 7);
 		InvalidateWidget(w, 5);
 
-		if (_date < MaxDate) SetDate(ConvertYMDToDay(_cur_year + 1, 0, 1));
+		if (_date < MaxDate) SetDate(ConvertYMDToDate(_cur_year + 1, 0, 1));
 	}
 	_left_button_clicked = false;
 }

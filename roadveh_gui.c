@@ -33,7 +33,7 @@ void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 	const Engine *e = GetEngine(engine_number);
 	bool refittable = (_engine_info[engine_number].refit_mask != 0);
 	YearMonthDay ymd;
-	ConvertDayToYMD(&ymd, e->intro_date);
+	ConvertDateToYMD(e->intro_date, &ymd);
 
 	/* Purchase cost - Max speed */
 	SetDParam(0, rvi->base_cost * (_price.roadveh_base>>3)>>5);

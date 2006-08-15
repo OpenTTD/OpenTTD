@@ -23,7 +23,7 @@ void SetDate(Date date)
 	YearMonthDay ymd;
 
 	_date = date;
-	ConvertDayToYMD(&ymd, date);
+	ConvertDateToYMD(date, &ymd);
 	_cur_year = ymd.year;
 	_cur_month = ymd.month;
 #ifdef ENABLE_NETWORK
@@ -71,7 +71,7 @@ static const uint16 _accum_days_for_month[] = {
 };
 
 
-void ConvertDayToYMD(YearMonthDay *ymd, Date date)
+void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 {
 	uint yr  = date / (365 + 365 + 365 + 366);
 	uint rem = date % (365 + 365 + 365 + 366);
@@ -101,7 +101,7 @@ void ConvertDayToYMD(YearMonthDay *ymd, Date date)
  * @param month is a number between 0..11
  * @param day   is a number between 1..31
  */
-uint ConvertYMDToDay(Year year, Month month, Day day)
+Date ConvertYMDToDate(Year year, Month month, Day day)
 {
 	uint rem;
 
@@ -147,7 +147,7 @@ Date ConvertIntDate(uint date)
 	/* invalid ranges? */
 	if (month >= 12 || !IS_INT_INSIDE(day, 1, 31 + 1)) return (Date)-1;
 
-	return ConvertYMDToDay(year, month, day);
+	return ConvertYMDToDate(year, month, day);
 }
 
 
@@ -246,7 +246,7 @@ void IncreaseDate(void)
 	}
 
 	/* check if we entered a new month? */
-	ConvertDayToYMD(&ymd, _date);
+	ConvertDateToYMD(_date, &ymd);
 	if (ymd.month == _cur_month) return;
 	_cur_month = ymd.month;
 
