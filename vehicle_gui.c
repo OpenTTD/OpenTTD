@@ -182,7 +182,7 @@ void SortVehicleList(vehiclelist_d *vl)
 	_internal_sort_order = vl->flags & VL_DESC;
 	_internal_name_sorter_id = STR_SV_TRAIN_NAME;
 	_last_vehicle = NULL; // used for "cache" in namesorting
-	qsort(vl->sort_list, vl->list_length, sizeof(vl->sort_list[0]),
+	qsort((void*)vl->sort_list, vl->list_length, sizeof(vl->sort_list[0]),
 		_vehicle_sorter[vl->sort_type]);
 
 	vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;

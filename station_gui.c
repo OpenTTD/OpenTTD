@@ -232,7 +232,7 @@ static void SortStationsList(plstations_d *sl)
 
 	_internal_sort_order = sl->flags & SL_ORDER;
 	_last_station = NULL; // used for "cache" in namesorting
-	qsort(sl->sort_list, sl->list_length, sizeof(sl->sort_list[0]), _station_sorter[sl->sort_type]);
+	qsort((void*)sl->sort_list, sl->list_length, sizeof(sl->sort_list[0]), _station_sorter[sl->sort_type]);
 
 	sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 	sl->flags &= ~SL_RESORT;

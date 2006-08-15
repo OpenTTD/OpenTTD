@@ -1539,7 +1539,7 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DESTROY:
-		free(vl->sort_list);
+		free((void*)vl->sort_list);
 		break;
 
 	case WE_TICK: /* resort the list every 20 seconds orso (10 days) */
