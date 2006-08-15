@@ -55,7 +55,7 @@ static inline uint32 BIGMULUS(uint32 a, uint32 b, int shift) {
 }
 
 static inline int64 BIGMULS(int32 a, int32 b) {
-	return (int32)(((int64)(a) * (int64)(b)));
+	return (int64)(a) * (int64)(b);
 }
 
 /* OPT: optimized into an unsigned comparison */
