@@ -74,7 +74,7 @@ typedef struct RoadVehicleInfo {
   * @see table/engines.h
   */
 typedef struct EngineInfo {
-	uint16 base_intro;
+	Date base_intro;
 	byte unk2;              ///< Carriages have the highest bit set in this one
 	byte lifelength;
 	byte base_life;
@@ -87,8 +87,8 @@ typedef struct EngineInfo {
 } EngineInfo;
 
 typedef struct Engine {
-	uint16 intro_date;
-	uint16 age;
+	Date intro_date;
+	Date age;
 	uint16 reliability;
 	uint16 reliability_spd_dec;
 	uint16 reliability_start, reliability_max, reliability_final;

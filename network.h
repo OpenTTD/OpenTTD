@@ -76,8 +76,8 @@ typedef struct NetworkGameInfo {
 	byte companies_on;                              // How many started companies do we have (XXX - disabled for server atm, use ActivePlayerCount())
 	byte spectators_max;                            // Max spectators allowed on server
 	byte spectators_on;                             // How many spectators do we have? (XXX - disabled for server atm, use NetworkSpectatorCount())
-	uint16 game_date;                               // Current date
-	uint16 start_date;                              // When the game started
+	Date game_date;                                 // Current date
+	Date start_date;                                // When the game started
 	char map_name[NETWORK_NAME_LENGTH];             // Map which is played ["random" for a randomized map]
 	uint16 map_width;                               // Map width
 	uint16 map_height;                              // Map height
@@ -107,7 +107,7 @@ typedef struct NetworkClientInfo {
 	byte client_lang;                             /// The language of the client
 	byte client_playas;                           /// As which player is this client playing (PlayerID)
 	uint32 client_ip;                             /// IP-address of the client (so he can be banned)
-	uint16 join_date;                             /// Gamedate the player has joined
+	Date join_date;                               /// Gamedate the player has joined
 	char unique_id[NETWORK_NAME_LENGTH];          /// Every play sends an unique id so we can indentify him
 } NetworkClientInfo;
 

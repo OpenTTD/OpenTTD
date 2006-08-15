@@ -76,7 +76,7 @@ struct Station {
 	uint8 num_specs;
 	StationSpecList *speclist;
 
-	uint16 build_date;
+	Date build_date;
 
 	//uint16 airport_flags;
 	uint32 airport_flags;

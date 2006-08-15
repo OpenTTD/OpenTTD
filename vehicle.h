@@ -210,8 +210,8 @@ struct Vehicle {
 	// Related to age and service time
 	uint16 age;				// Age in days
 	uint16 max_age;		// Maximum age
-	uint16 date_of_last_service;
-	uint16 service_interval;
+	Date date_of_last_service;
+	Date service_interval;
 	uint16 reliability;
 	uint16 reliability_spd_dec;
 	byte breakdown_ctr;

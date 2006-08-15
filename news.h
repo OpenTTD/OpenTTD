@@ -6,7 +6,7 @@
 struct NewsItem {
 	StringID string_id;
 	uint16 duration;
-	uint16 date;
+	Date date;
 	byte flags;
 	byte display_mode;
 	byte type;

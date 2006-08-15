@@ -15,7 +15,7 @@ struct Waypoint {
 	StringID string;   ///< If this is zero (i.e. no custom name), town + town_cn is used for naming
 
 	ViewportSign sign; ///< Dimensions of sign (not saved)
-	uint16 build_date; ///< Date of construction
+	Date build_date;   ///< Date of construction
 
 	byte stat_id;      ///< ID of waypoint within the waypoint class (not saved)
 	uint32 grfid;      ///< ID of GRF file
