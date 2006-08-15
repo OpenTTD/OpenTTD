@@ -1597,7 +1597,10 @@ const SettingDesc *GetPatchFromName(const char *name, uint *i)
 }
 
 /* Those 2 functions need to be here, else we have to make some stuff non-static
- * and besides, it is also better to keep stuff like this at the same place */
+ * and besides, it is also better to keep stuff like this at the same place
+ * XXX - Perhaps back to console[_cmds].c? They are console functions after all */
+extern bool GetArgumentInteger(uint32 *value, const char *arg);
+
 void IConsoleSetPatchSetting(const char *name, const char *value)
 {
 	int32 val;
@@ -1611,7 +1614,8 @@ void IConsoleSetPatchSetting(const char *name, const char *value)
 		return;
 	}
 
-	sscanf(value, "%d", &val);
+	if (!GetArgumentInteger(&val, value)) return;
+
 	patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
 	ptr = ini_get_variable(&sd->save, patches_ptr);
 
