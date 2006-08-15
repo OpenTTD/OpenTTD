@@ -465,8 +465,12 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 
 	ret = DoCommand(start_tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return ret;
-	cost = _price.build_tunnel + ret;
 
+	/* XXX - do NOT change 'ret' in the loop, as it is used as the price
+	 * for the clearing of the entrance of the tunnel. Assigning it to
+	 * cost before the loop will yield different costs depending on start-
+	 * position, because of increased-cost-by-length: 'cost += cost >> 3' */
+	cost = 0;
 	delta = TileOffsByDir(direction);
 	end_tile = start_tile;
 	for (;;) {
@@ -480,9 +484,12 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		cost += _price.build_tunnel;
-		cost += cost >> 3;
+		cost += cost >> 3; // add a multiplier for longer tunnels
 		if (cost >= 400000000) cost = 400000000;
 	}
+
+	/* Add the cost of the entrance */
+	cost += _price.build_tunnel + ret;
 
 	// if the command fails from here on we want the end tile to be highlighted
 	_build_tunnel_endtile = end_tile;
