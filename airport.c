@@ -475,13 +475,11 @@ uint32 GetValidAirports(void)
 {
 	uint32 bytemask = _avail_aircraft; /// sets the first 3 bytes, 0 - 2, @see AdjustAvailAircraft()
 
-	// 1980-1-1 is --> 21915
-	// 1990-1-1 is --> 25568
-	if (_date >= 21915) SETBIT(bytemask, 3); // metropilitan airport 1980
-	if (_date >= 25568) SETBIT(bytemask, 4); // international airport 1990
-	if (_date >= 23011) SETBIT(bytemask, 5); // commuter airport 1983
-	if (_date >= 20455) SETBIT(bytemask, 6); // helidepot 1976
-	if (_date >= 29951) SETBIT(bytemask, 7); // intercontinental airport 2002
-	if (_date >= 21915) SETBIT(bytemask, 8); // helistation 1980
+	if (_cur_year >= 1980) SETBIT(bytemask, 3); // metropilitan airport
+	if (_cur_year >= 1990) SETBIT(bytemask, 4); // international airport
+	if (_cur_year >= 1983) SETBIT(bytemask, 5); // commuter airport
+	if (_cur_year >= 1976) SETBIT(bytemask, 6); // helidepot
+	if (_cur_year >= 2002) SETBIT(bytemask, 7); // intercontinental airport
+	if (_cur_year >= 1980) SETBIT(bytemask, 8); // helistation
 	return bytemask;
 }
