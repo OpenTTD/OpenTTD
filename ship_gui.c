@@ -54,7 +54,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 	/* Design date - Life length */
 	e = GetEngine(engine_number);
 	ConvertDateToYMD(e->intro_date, &ymd);
-	SetDParam(0, BASE_YEAR + ymd.year);
+	SetDParam(0, ymd.year);
 	SetDParam(1, e->lifelength);
 	DrawString(x,y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
 	y += 10;

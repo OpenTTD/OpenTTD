@@ -316,7 +316,7 @@ int ttd_main(int argc, char *argv[])
 	const char *optformat;
 	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
-	uint startyear = -1;
+	Year startyear = INVALID_YEAR;
 
 	bool dedicated = false;
 	bool network   = false;
@@ -408,7 +408,7 @@ int ttd_main(int argc, char *argv[])
 	if (sounddriver[0]) ttd_strlcpy(_ini_sounddriver, sounddriver, sizeof(_ini_sounddriver));
 	if (videodriver[0]) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
-	if (startyear != (uint)-1) _patches_newgame.starting_year = startyear;
+	if (startyear != INVALID_YEAR) _patches_newgame.starting_year = startyear;
 
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 

@@ -30,7 +30,7 @@ typedef struct GraphDrawer {
 	byte num_dataset;
 	byte num_on_x_axis;
 	byte month;
-	byte year;
+	Year year;
 	bool include_neg;
 	byte num_vert_lines;
 	uint16 unk61A;
@@ -151,7 +151,7 @@ static void DrawGraph(const GraphDrawer *gw)
 		x = gw->left + 44;
 		y = gw->top + gw->height + 1;
 		j = gw->month;
-		k = BASE_YEAR + gw->year;
+		k = gw->year;
 		i = gw->num_on_x_axis;assert(i>0);
 		do {
 			SetDParam(2, k);

@@ -339,7 +339,7 @@ static char *FormatYmdString(char *buff, Date date)
 	for (src = GetStringPtr(STR_0162_JAN + ymd.month); (*buff++ = *src++) != '\0';) {}
 	buff[-1] = ' ';
 
-	return FormatNoCommaNumber(buff, BASE_YEAR + ymd.year);
+	return FormatNoCommaNumber(buff, ymd.year);
 }
 
 static char *FormatMonthAndYear(char *buff, Date date)
@@ -352,7 +352,7 @@ static char *FormatMonthAndYear(char *buff, Date date)
 	for (src = GetStringPtr(STR_MONTH_JAN + ymd.month); (*buff++ = *src++) != '\0';) {}
 	buff[-1] = ' ';
 
-	return FormatNoCommaNumber(buff, BASE_YEAR + ymd.year);
+	return FormatNoCommaNumber(buff, ymd.year);
 }
 
 static char *FormatTinyDate(char *buff, Date date)
@@ -360,7 +360,7 @@ static char *FormatTinyDate(char *buff, Date date)
 	YearMonthDay ymd;
 
 	ConvertDateToYMD(date, &ymd);
-	buff += sprintf(buff, " %02i-%02i-%04i", ymd.day, ymd.month + 1, BASE_YEAR + ymd.year);
+	buff += sprintf(buff, " %02i-%02i-%04i", ymd.day, ymd.month + 1, ymd.year);
 
 	return buff;
 }

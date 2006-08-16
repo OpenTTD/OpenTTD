@@ -52,7 +52,12 @@ typedef uint16 UnitID;   ///< All unitnumber stuff is of this type (or anyway, s
 typedef uint32 WindowNumber;
 typedef byte WindowClass;
 
-typedef uint8  Year;
+enum {
+	INVALID_YEAR = -1,
+	INVALID_DATE = (uint16)-1,
+};
+
+typedef int16  Year;
 typedef uint16 Date;
 
 

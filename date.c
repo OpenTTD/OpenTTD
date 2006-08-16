@@ -88,7 +88,7 @@ void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 		if (rem >= 31 + 28) rem++;
 	}
 
-	ymd->year = yr;
+	ymd->year = BASE_YEAR + yr;
 
 	x = _month_date_from_year_day[rem];
 	ymd->month = x >> 5;
@@ -104,15 +104,16 @@ void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 Date ConvertYMDToDate(Year year, Month month, Day day)
 {
 	uint rem;
+	uint yr = year - BASE_YEAR;
 
 	/* day in the year */
 	rem = _accum_days_for_month[month] + day - 1;
 
 	/* remove feb 29 from year 1,2,3 */
-	if (year & 3) rem += (year & 3) * 365 + (rem < 31 + 29);
+	if (yr & 3) rem += (yr & 3) * 365 + (rem < 31 + 29);
 
 	/* base date. */
-	return (year >> 2) * (365 + 365 + 365 + 366) + rem;
+	return (yr >> 2) * (365 + 365 + 365 + 366) + rem;
 }
 
 /**
@@ -130,14 +131,14 @@ Date ConvertIntDate(uint date)
 	Day   day   = 1;
 
 	if (IS_INT_INSIDE(date, 1920, MAX_YEAR + 1)) {
-		year = date - 1920;
+		year = date;
 	} else if (IS_INT_INSIDE(date, 192001, 209012 + 1)) {
 		month = date % 100 - 1;
-		year = date / 100 - 1920;
+		year = date / 100;
 	} else if (IS_INT_INSIDE(date, 19200101, 20901231 + 1)) {
 		day = date % 100; date /= 100;
 		month = date % 100 - 1;
-		year = date / 100 - 1920;
+		year = date / 100;
 	} else if (IS_INT_INSIDE(date, 2091, 65536)) {
 		return date;
 	} else {
@@ -282,10 +283,10 @@ void IncreaseDate(void)
 #endif /* ENABLE_NETWORK */
 
 	/* check if we reached end of the game */
-	if (_cur_year == _patches.ending_year - MAX_YEAR) {
+	if (_cur_year == _patches.ending_year) {
 			ShowEndGameChart();
 	/* check if we reached the maximum year, decrement dates by a year */
-	} else if (BASE_YEAR + _cur_year == MAX_YEAR + 1) {
+	} else if (_cur_year == MAX_YEAR + 1) {
 		Vehicle *v;
 
 		_cur_year--;

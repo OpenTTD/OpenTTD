@@ -258,7 +258,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 	ni->flags = (byte)(flags >> 8) | NF_NOEXPIRE;
 
 	// show this news message in color?
-	if (_date >= ConvertIntDate(_patches.colored_news_year))
+	if (_cur_year >= _patches.colored_news_year)
 		ni->flags |= NF_INCOLOR;
 
 	ni->type = (byte)(flags >> 16);

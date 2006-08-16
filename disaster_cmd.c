@@ -951,33 +951,30 @@ static DisasterInitProc * const _disaster_initprocs[] = {
 	Disaster7_Init,
 };
 
-#define MK(a, b) { (a) - BASE_YEAR, (b) - BASE_YEAR }
 static const struct {
-	byte min;
-	byte max;
+	Year min;
+	Year max;
 } _dis_years[] = {
-	MK(1930, 1955),
-	MK(1940, 1970),
-	MK(1960, 1990),
-	MK(1970, 2000),
-	MK(2000, 2100),
-	MK(1940, 1965),
-	MK(1975, 2010),
-	MK(1950, 1985)
+	{ 1930, 1955 },
+	{ 1940, 1970 },
+	{ 1960, 1990 },
+	{ 1970, 2000 },
+	{ 2000, 2100 },
+	{ 1940, 1965 },
+	{ 1975, 2010 },
+	{ 1950, 1985 }
 };
-#undef MK
 
 
 static void DoDisaster(void)
 {
 	byte buf[lengthof(_dis_years)];
-	byte year = _cur_year;
 	uint i;
 	uint j;
 
 	j = 0;
 	for (i = 0; i != lengthof(_dis_years); i++) {
-		if (year >= _dis_years[i].min && year < _dis_years[i].max) buf[j++] = i;
+		if (_cur_year >= _dis_years[i].min && _cur_year < _dis_years[i].max) buf[j++] = i;
 	}
 
 	if (j == 0) return;

@@ -46,8 +46,8 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 		x = 215;
 		tbl = p->yearly_expenses + 2;
 		do {
-			if (year >= p->inaugurated_year) {
-				SetDParam(0, BASE_YEAR + year);
+			if (year >= BASE_YEAR + p->inaugurated_year) {
+				SetDParam(0, year);
 				DrawStringCenterUnderline(x-17, 15, STR_7010, 0);
 				sum = 0;
 				for (i = 0; i != 13; i++) {

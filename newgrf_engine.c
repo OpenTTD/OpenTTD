@@ -553,7 +553,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			case 0x43: return _current_player; /* Owner information */
 			case 0x46: return 0;               /* Motion counter */
 			case 0x48: return GetVehicleTypeInfo(object->u.vehicle.self_type); /* Vehicle Type Info */
-			case 0xC4: return _cur_year;       /* Build year */
+			case 0xC4: return clamp(_cur_year, BASE_YEAR, MAX_YEAR) - BASE_YEAR; /* Build year */
 			case 0xDA: return INVALID_VEHICLE; /* Next vehicle */
 			case 0x7F: return GetGRFParameter(object->u.vehicle.self_type, parameter); /* Read GRF parameter */
 		}

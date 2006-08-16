@@ -238,7 +238,7 @@ void EnginesDailyLoop(void)
 {
 	EngineID i;
 
-	if (_cur_year >= 130) return;
+	if (_cur_year >= 2050) return;
 
 	for (i = 0; i != lengthof(_engines); i++) {
 		Engine *e = &_engines[i];
@@ -359,7 +359,7 @@ void EnginesMonthlyLoop(void)
 {
 	Engine *e;
 
-	if (_cur_year < 130) {
+	if (_cur_year < 2050) {
 		for (e = _engines; e != endof(_engines); e++) {
 			// Age the vehicle
 			if (e->flags & ENGINE_AVAILABLE && e->age != 0xFFFF) {

@@ -490,7 +490,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = OWNER_SPECTATOR;
 
 	p->avail_railtypes = GetPlayerRailtypes(p->index);
-	p->inaugurated_year = _cur_year;
+	p->inaugurated_year = _cur_year - BASE_YEAR;
 	p->face = Random();
 
 	/* Engine renewal settings */

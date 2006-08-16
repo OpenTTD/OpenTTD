@@ -66,7 +66,7 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Design date - Life length */
-	SetDParam(0, BASE_YEAR + ymd.year);
+	SetDParam(0, ymd.year);
 	SetDParam(1, e->lifelength);
 	DrawString(x, y, STR_PURCHASE_INFO_DESIGNED_LIFE, 0);
 	y += 10;

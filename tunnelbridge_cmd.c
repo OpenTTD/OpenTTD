@@ -38,26 +38,26 @@ extern void DrawCanalWater(TileIndex tile);
 
 const Bridge orig_bridge[] = {
 /*
-	   year of availablity
-	   |  minimum length
-	   |  |   maximum length
-	   |  |   |    price
-	   |  |   |    |    maximum speed
-	   |  |   |    |    |  sprite to use in GUI                string with description
-	   |  |   |    |    |  |                                   |                            */
-	{  0, 0, 16,  80,  32, 0xA24                             , STR_5012_WOODEN             , NULL, 0 },
-	{  0, 0,  2, 112,  48, 0xA26 | PALETTE_TO_STRUCT_RED     , STR_5013_CONCRETE           , NULL, 0 },
-	{ 10, 0,  5, 144,  64, 0xA25                             , STR_500F_GIRDER_STEEL       , NULL, 0 },
-	{  0, 2, 10, 168,  80, 0xA22 | PALETTE_TO_STRUCT_CONCRETE, STR_5011_SUSPENSION_CONCRETE, NULL, 0 },
-	{ 10, 3, 16, 185,  96, 0xA22                             , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
-	{ 10, 3, 16, 192, 112, 0xA22 | PALETTE_TO_STRUCT_YELLOW  , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
-	{ 10, 3,  7, 224, 160, 0xA23                             , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
-	{ 10, 3,  8, 232, 208, 0xA23 | PALETTE_TO_STRUCT_BROWN   , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
-	{ 10, 3,  9, 248, 240, 0xA23 | PALETTE_TO_STRUCT_RED     , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
-	{ 10, 0,  2, 240, 256, 0xA27                             , STR_500F_GIRDER_STEEL       , NULL, 0 },
-	{ 75, 2, 16, 255, 320, 0xA28                             , STR_5014_TUBULAR_STEEL      , NULL, 0 },
-	{ 85, 2, 32, 380, 512, 0xA28 | PALETTE_TO_STRUCT_YELLOW  , STR_5014_TUBULAR_STEEL      , NULL, 0 },
-	{ 90, 2, 32, 510, 608, 0xA28 | PALETTE_TO_STRUCT_GREY    , STR_BRIDGE_TUBULAR_SILICON  , NULL, 0 }
+	     year of availablity
+	     |  minimum length
+	     |  |   maximum length
+	     |  |   |    price
+	     |  |   |    |    maximum speed
+	     |  |   |    |    |  sprite to use in GUI                string with description
+	     |  |   |    |    |  |                                   |                            */
+	{    0, 0, 16,  80,  32, 0xA24                             , STR_5012_WOODEN             , NULL, 0 },
+	{    0, 0,  2, 112,  48, 0xA26 | PALETTE_TO_STRUCT_RED     , STR_5013_CONCRETE           , NULL, 0 },
+	{ 1930, 0,  5, 144,  64, 0xA25                             , STR_500F_GIRDER_STEEL       , NULL, 0 },
+	{    0, 2, 10, 168,  80, 0xA22 | PALETTE_TO_STRUCT_CONCRETE, STR_5011_SUSPENSION_CONCRETE, NULL, 0 },
+	{ 1930, 3, 16, 185,  96, 0xA22                             , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
+	{ 1930, 3, 16, 192, 112, 0xA22 | PALETTE_TO_STRUCT_YELLOW  , STR_500E_SUSPENSION_STEEL   , NULL, 0 },
+	{ 1930, 3,  7, 224, 160, 0xA23                             , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
+	{ 1930, 3,  8, 232, 208, 0xA23 | PALETTE_TO_STRUCT_BROWN   , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
+	{ 1930, 3,  9, 248, 240, 0xA23 | PALETTE_TO_STRUCT_RED     , STR_5010_CANTILEVER_STEEL   , NULL, 0 },
+	{ 1930, 0,  2, 240, 256, 0xA27                             , STR_500F_GIRDER_STEEL       , NULL, 0 },
+	{ 1995, 2, 16, 255, 320, 0xA28                             , STR_5014_TUBULAR_STEEL      , NULL, 0 },
+	{ 2005, 2, 32, 380, 512, 0xA28 | PALETTE_TO_STRUCT_YELLOW  , STR_5014_TUBULAR_STEEL      , NULL, 0 },
+	{ 2010, 2, 32, 510, 608, 0xA28 | PALETTE_TO_STRUCT_GREY    , STR_BRIDGE_TUBULAR_SILICON  , NULL, 0 }
 };
 
 Bridge _bridge[MAX_BRIDGES];

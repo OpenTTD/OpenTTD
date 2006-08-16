@@ -23,6 +23,7 @@
 #include "vehicle.h"
 #include "newgrf_text.h"
 #include "table/sprites.h"
+#include "date.h"
 
 #include "newgrf_spritegroup.h"
 
@@ -1006,7 +1007,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 
 	switch (prop) {
 		case 0x08: /* Year of availability */
-			FOR_EACH_OBJECT _bridge[brid + i].avail_year = grf_load_byte(&buf);
+			FOR_EACH_OBJECT _bridge[brid + i].avail_year = BASE_YEAR + grf_load_byte(&buf);
 			break;
 
 		case 0x09: /* Minimum length */
@@ -1057,6 +1058,10 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 
 		case 0x0E: /* Flags; bit 0 - disable far pillars */
 			FOR_EACH_OBJECT _bridge[brid + i].flags = grf_load_byte(&buf);
+			break;
+
+		case 0x0F: /* Long year -- must be set after property 8 */
+			FOR_EACH_OBJECT _bridge[brid + i].avail_year = grf_load_word(&buf);
 			break;
 
 		default:

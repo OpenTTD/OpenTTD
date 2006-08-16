@@ -147,9 +147,9 @@ typedef struct Patches {
 	bool ai_disable_veh_roadveh;		// disable types for AI
 	bool ai_disable_veh_aircraft;		// disable types for AI
 	bool ai_disable_veh_ship;		// disable types for AI
-	uint32 starting_year;		// starting date
-	uint32 ending_year;		// end of the game (just show highscore)
-	uint32 colored_news_year; // when does newspaper become colored?
+	Year starting_year;				// starting date
+	Year ending_year;					// end of the game (just show highscore)
+	Year colored_news_year;		// when does newspaper become colored?
 
 	bool keep_all_autosave;		// name the autosave in a different way.
 	bool autosave_on_exit;		// save an autosave when you quit the game, but do not ask "Do you really want to quit?"
