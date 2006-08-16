@@ -2586,6 +2586,8 @@ STR_886F_TRANSFER                                               :{BLACK}Prekladk
 STR_TRAIN_STOPPING                                              :{RED}Zastavuje
 STR_TRAIN_STOPPING_VEL                                          :{RED}Zastavuje, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Neslucitelne druhy kolejí
+STR_TRAIN_NO_POWER                                              :{RED}Bez proudu
+STR_TRAIN_START_NO_CATENARY                                     :Tato trat není elektrifikována, vlak nemuze odjet
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Silnicni vozidlo v ceste
