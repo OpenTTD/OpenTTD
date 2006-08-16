@@ -116,42 +116,6 @@ Date ConvertYMDToDate(Year year, Month month, Day day)
 	return (yr >> 2) * (365 + 365 + 365 + 366) + rem;
 }
 
-/**
- * Convert a date on the form:
- * 1920 - 2090 (MAX_YEAR_END_REAL)
- * 192001 - 209012
- * 19200101 - 20901231
- * or if > 2090 and below 65536, treat it as a daycount.
- * @return -1 if no conversion was possible
- */
-Date ConvertIntDate(uint date)
-{
-	Year  year;
-	Month month = 0;
-	Day   day   = 1;
-
-	if (IS_INT_INSIDE(date, 1920, MAX_YEAR + 1)) {
-		year = date;
-	} else if (IS_INT_INSIDE(date, 192001, 209012 + 1)) {
-		month = date % 100 - 1;
-		year = date / 100;
-	} else if (IS_INT_INSIDE(date, 19200101, 20901231 + 1)) {
-		day = date % 100; date /= 100;
-		month = date % 100 - 1;
-		year = date / 100;
-	} else if (IS_INT_INSIDE(date, 2091, 65536)) {
-		return date;
-	} else {
-		return (Date)-1;
-	}
-
-	/* invalid ranges? */
-	if (month >= 12 || !IS_INT_INSIDE(day, 1, 31 + 1)) return (Date)-1;
-
-	return ConvertYMDToDate(year, month, day);
-}
-
-
 /** Functions used by the IncreaseDate function */
 
 extern void OnNewDay_Train(Vehicle *v);
