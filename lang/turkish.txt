@@ -2529,6 +2529,8 @@ STR_886F_TRANSFER                                               :{BLACK}Aktar
 STR_TRAIN_STOPPING                                              :{RED}Frenliyor
 STR_TRAIN_STOPPING_VEL                                          :{RED}Frenliyor, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Uyumsuz ray türleri
+STR_TRAIN_NO_POWER                                              :{RED}Elektrik yok
+STR_TRAIN_START_NO_CATENARY                                     :Bu rayda elektrik olmadigi için bu tren çalisamaz
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Yolda araba var
