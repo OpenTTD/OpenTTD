@@ -53,7 +53,7 @@ static inline bool IsDepotIndex(uint index)
  * within the given bounds. @see MIN_SERVINT_PERCENT ,etc.
  * @param index proposed service interval
  */
-static inline uint16 GetServiceIntervalClamped(uint index)
+static inline Date GetServiceIntervalClamped(uint index)
 {
 	return (_patches.servint_ispercent) ? clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
 }

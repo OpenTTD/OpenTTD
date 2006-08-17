@@ -1060,10 +1060,6 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 			FOR_EACH_OBJECT _bridge[brid + i].flags = grf_load_byte(&buf);
 			break;
 
-		case 0x0F: /* Long year -- must be set after property 8 */
-			FOR_EACH_OBJECT _bridge[brid + i].avail_year = grf_load_word(&buf);
-			break;
-
 		default:
 			ret = true;
 	}

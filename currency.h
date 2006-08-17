@@ -11,7 +11,7 @@ enum {
 typedef struct {
 	uint16 rate;
 	char separator;
-	uint16 to_euro;
+	Year to_euro;
 	char prefix[16];
 	char suffix[16];
 } CurrencySpec;

@@ -88,11 +88,10 @@ static void SetupEngineNames(void)
 
 static void AdjustAvailAircraft(void)
 {
-	uint16 date = _date;
 	byte avail = 0;
-	if (date >= 12784) avail |= 2; // big airport
-	if (date < 14610 || _patches.always_small_airport) avail |= 1;  // small airport
-	if (date >= 15706) avail |= 4; // enable heliport
+	if (_cur_year >= 1955) avail |= 2; // big airport
+	if (_cur_year <  1960 || _patches.always_small_airport) avail |= 1;  // small airport
+	if (_cur_year >= 1963) avail |= 4; // enable heliport
 
 	if (avail != _avail_aircraft) {
 		_avail_aircraft = avail;
@@ -151,7 +150,7 @@ void StartupEngines(void)
 		// base intro date is before 1922 then the random number of days is not
 		// added.
 		r = Random();
-		e->intro_date = ei->base_intro <= 729 ? ei->base_intro : GB(r, 0, 9) + ei->base_intro;
+		e->intro_date = ei->base_intro <= ConvertYMDToDate(1922, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
 		if (e->intro_date <= _date) {
 			e->age = (_date - e->intro_date) >> 5;
 			e->player_avail = (byte)-1;

@@ -148,11 +148,11 @@ protected:
 	FORCEINLINE static Cache& stGetGlobalCache()
 	{
 		static int last_rail_change_counter = 0;
-		static uint32 last_day = 0;
+		static Date last_date = 0;
 
 		// some statistics
-		if (last_day != _date) {
-			last_day = _date;
+		if (last_date != _date) {
+			last_date = _date;
 			DEBUG(yapf, 1)("pf time today:%5d ms\n", _total_pf_time_us / 1000);
 			_total_pf_time_us = 0;
 		}

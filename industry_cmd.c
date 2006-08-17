@@ -1647,8 +1647,8 @@ static void MaybeNewIndustry(uint32 r)
 
 	type = _new_industry_rand[_opt.landscape][GB(r, 16, 5)];
 
-	if (type == IT_OIL_WELL && _date > 10958) return;
-	if (type == IT_OIL_RIG  && _date < 14610) return;
+	if (type == IT_OIL_WELL && _cur_year > 1950) return;
+	if (type == IT_OIL_RIG  && _cur_year < 1960) return;
 
 	j = 2000;
 	for (;;) {

@@ -79,7 +79,7 @@ uint GetMaskOfAllowedCurrencies(void)
 	uint i;
 
 	for (i = 0; i != lengthof(_currency_specs); i++) {
-		uint16 to_euro = _currency_specs[i].to_euro;
+		Year to_euro = _currency_specs[i].to_euro;
 
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= to_euro) continue;
 		if (to_euro == CF_ISEURO && _cur_year < 2000) continue;
