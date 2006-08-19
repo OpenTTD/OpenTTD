@@ -141,7 +141,7 @@ static void *_GenerateWorld(void *arg)
 
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
 	/* Show all vital windows again, because we have hidden them */
-	if (_gw.threaded) ShowVitalWindows();
+	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
 	_gw.active   = false;
 	_gw.thread   = NULL;
 	_gw.proc     = NULL;
@@ -203,7 +203,7 @@ void HandleGeneratingWorldAbortion(void)
 
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
 	/* Show all vital windows again, because we have hidden them */
-	if (_gw.threaded) ShowVitalWindows();
+	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
 	_gw.active   = false;
 	_gw.thread   = NULL;
 	_gw.proc     = NULL;
