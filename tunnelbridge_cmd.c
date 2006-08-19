@@ -1432,6 +1432,9 @@ static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y
  * @return the exit-tile of the tunnel based on the vehicle's direction */
 TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 {
+#if 1
+	return v->tile;
+#else
 	TileIndex tile = v->tile;
 	DiagDirection dir = DirToDiagDir(v->direction);
 	TileIndexDiff delta = TileOffsByDir(dir);
@@ -1447,6 +1450,7 @@ TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 	}
 
 	return tile;
+#endif
 }
 
 const TileTypeProcs _tile_type_tunnelbridge_procs = {
