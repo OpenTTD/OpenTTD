@@ -1039,7 +1039,12 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Dinheir
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duração das mensagens de erro: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra população da cidade na janela da cidade: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árvores invisíveis (com edifícios transparentes): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da linha de neve: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Melhorado
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar barra de ferramentas de paisagem às barras de ferramentas de carris/estradas/vias aquáticas/aeroportos: {ORANGE}{STRING}
@@ -1433,6 +1438,12 @@ STR_NETWORK_SEND                                                :{BLACK}Enviar
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-tamanho do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-tamanho do mapa: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...ficheiro não encontrado.
+
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Custo: {CURRENCY}
@@ -2862,6 +2873,20 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} passageiros, {COMMA} sacos de correio
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões Motorizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nível do mar:
+STR_DATE                                                        :{BLACK}Data:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de indústrias:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_PROGRESS                                                    :{WHITE}{NUM}% completo
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_PREPARING_GAME                                              :{BLACK}A preparar jogo
+STR_SE_CAPTION                                                  :{WHITE}Tipo de cenário
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeno

@@ -1039,7 +1039,9 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autofor
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Varighet til feilmelding: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis byers befolkning i tittel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlige trær (med gjennomsiktige bygninger): {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snøhøyde: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks stasjonspedning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir treger spill
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Utfør service på helikopter automatisk på helikopterlandingsteder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskap verktøylinjen til tog/vei/vann/flyplass verktøylinjene: {ORANGE}{STRING}
@@ -1433,6 +1435,11 @@ STR_NETWORK_SEND                                                :{BLACK}Send
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-størrelse på kart: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-størrelse på kart: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kostnad: {CURRENCY}
@@ -2529,6 +2536,8 @@ STR_886F_TRANSFER                                               :{BLACK}Overfør
 STR_TRAIN_STOPPING                                              :{RED}Stopper
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Inkompatible jernbanetyper
+STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
+STR_TRAIN_START_NO_CATENARY                                     :Dette sporet mangler et kjede, så toget kan ikke starte
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Kjøretøy i veien
@@ -2860,6 +2869,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vekt: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasitet: {GOLD}{COMMA} passasjerer, {COMMA} sekker post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomotivvogner: {GOLD}+{POWER}{BLACK} Vekt: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Liten

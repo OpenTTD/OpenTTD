@@ -669,6 +669,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Az emele
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Véletlenszerû táj készítése
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}A táj törlése
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Táj törlése
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Magasságtérkép használata
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Magasságtérkép használata
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Biztosan le akarod törölni az egész tájat?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Táj szerkesztése
 STR_022F_TOWN_GENERATION                                        :{BLACK}Városkészítés
@@ -781,6 +783,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Pálya be
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Pálya betöltése
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Pálya mentése
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Játék saját pályán
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Magasságtérképen játszás
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Új játékot kezd egy magasságtérkép alapján
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Biztosan abba akarod hagyni a pálya szerkesztését ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Kilépés a szerkesztõbõl
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...csak 1200-nál nagyobb lakosságú városokba építhetõ
@@ -1104,7 +1108,27 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automat
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hibaüzenetek megjelenítési ideje: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mutassa a lakosságot a feliratban: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Láthatatlan fák (átlátszó épületekkel): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Térkép generálás: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Eredeti
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Olajfinomítók max távolsága a szélektõl {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Hóhatár magassága: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}A terep durvasága (csak TerraGenesisnél) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Nagyon sima
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sima
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Durva
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Nagyon durva
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Fa-elhelyezõ módszer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nincs
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Eredeti
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Javított
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Magasságtérkép forgatása: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Órairánnyal szemben
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Órairányban
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Folyamatjelzõ frissítése: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}A sima térképhez hozzáadandó magasság: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Állomások legnagyobb kiterjedése: {ORANGE}{STRING} {RED}Figyelem: magas érték lelassítja a játékot
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendezõ eszköztár megnyitása a közúti/vasúti/vízi/légi eszköztárakkal: {ORANGE}{STRING}
@@ -1499,6 +1523,17 @@ STR_NETWORK_SEND                                                :{BLACK}Elküld
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}ÉK-DNY térképszélesség: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}ÉNY-DK térképszélesség: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERROR                                                :{WHITE}NEm tudom a térképet betölteni a PNG-bõl...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...fájl nem található.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nem tudtam konverálni a kép típusát. 8 vagy 24-bites PNG kép kell.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...valami nem igazán sikerült. Bocs. (talán sérült a fájl)
+
+STR_BMPMAP_ERROR                                                :{WHITE}Nem sikerült a térkép betöltése a BMP-bõl...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nem sikerült a képtípust konvertálni.
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}{CURRENCY} kiadás
 STR_0801_COST                                                   :{RED}{CURRENCY} kiadás
@@ -1822,6 +1857,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}A játék 
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Az új játék típusa
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Válassz egy pályát (zöld), elõre beállított játékot (kék) vagy véletlenszerû új játékot
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Véletlenszerû új játék
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Magasságtérkép betöltése
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}...{STRING} van az útban
@@ -2964,6 +3000,59 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{COMMA} utas, {COMMA} csomag levél
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Generál
+STR_RANDOM                                                      :{BLACK}Véletlenszerûen
+STR_RANDOM_HELP                                                 :{BLACK}Megváltoztatja a térképgenerálásnál használt véletlen alapszámot
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Térkép létrehozása
+STR_RANDOM_SEED                                                 :{BLACK}Véletlen alapszám:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Kattints ide a véletlen alapszám beírásához
+STR_LAND_GENERATOR                                              :{BLACK}Térkép generátor:
+STR_TREE_PLACER                                                 :{BLACK}Fa algoritmus:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Magasságtérkép elforgatása:
+STR_TERRAIN_TYPE                                                :{BLACK}Tereptípus:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Tengerszint:
+STR_SMOOTHNESS                                                  :{BLACK}Simaság:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Hóhatár:
+STR_DATE                                                        :{BLACK}Dátum:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Várossûrûség:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Iparsûrûség:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}A hóhatár eggyel megnövelése
+STR_SNOW_LINE_DOWN                                              :{BLACK}A hóhatár eggyel csökkentése
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Hóhatár megváltoztatása
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Kezdõ év megváltoztatása
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Átméretezési figyelmeztetés
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}A forrás térkép túlságosan nagy mértékû átméretezése nem javasolt. Folytatod mégis?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Magasságtérkép neve:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Méret: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Térkép létrehozása...
+STR_GENERATION_ABORT                                            :{BLACK}Félbeszakít
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Megszakítja a térkép létrehozását
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Tényleg meg akarod szakítani a térkép generálását?
+STR_PROGRESS                                                    :{WHITE}{NUM}% kész
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Térkép létrehozása
+STR_TREE_GENERATION                                             :{BLACK}Fák generálás
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Világítótornyok létrehozása
+STR_CLEARING_TILES                                              :{BLACK}Durva és köves területek generálása
+STR_SETTINGUP_GAME                                              :{BLACK}Játék beállítása
+STR_PREPARING_TILELOOP                                          :{BLACK}Mezõk véglegesítése
+STR_PREPARING_GAME                                              :{BLACK}Játék elõkészítése
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Ez a módosítás megváltoztatta a nehézségi szintet egyedire.
+STR_SE_FLAT_WORLD                                               :{WHITE}Lapos térkép
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Lapos térképet generál
+STR_SE_RANDOM_LAND                                              :{WHITE}Véletlen térkép
+STR_SE_NEW_WORLD                                                :{BLACK}Új küldetés létrehozása
+STR_SE_CAPTION                                                  :{WHITE}Küldetés típusa
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Csökkenti eggyel a sima terep magasságát
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Növeli eggyel a sima terep magasságát
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Sima terem magasságát változtatja
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Sima terep magassága:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Kicsi

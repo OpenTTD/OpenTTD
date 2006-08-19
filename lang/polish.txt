@@ -1126,7 +1126,9 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. il
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Czas trwania komunikatu o bledzie: {ORANGE}{STRING} sekund{P a y ""}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Pokaz populacje miasta w jego nazwie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Niewidoczne drzewa (i przezroczyste budynki): {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Wysokosc granicy wiecznych sniegow: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. wielkosc stacji: {ORANGE}{STRING} {RED}Uwaga: Duze wartosci spowalniaja gre
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatycznie serwisuj helikoptery na ladowiskach: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Przylacz pasek narzedzi edycji krajobrazu do paska narzedzi srodkow transportu: {ORANGE}{STRING}
@@ -1520,6 +1522,11 @@ STR_NETWORK_SEND                                                :{BLACK}Wyslij
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Rozmiar mapy X: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Rozmiar mapy Y: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Koszt: {CURRENCY}
@@ -2873,7 +2880,7 @@ STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Eksplozja rafineri blisko {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabryka zniszczona w podejrzanych okolicznosciach w poblizu {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' wyladowalo blisko {TOWN}!
-STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Obsuniecie sie ziemii nad kopalnia pozostawilo pas zniszczenia blisko {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Tapniecie przy kopalni pozostawilo pas zniszczenia blisko {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Powodz!{}Przynajmniej {COMMA} zaginelo lub utonelo w czasie powodzi!
 
 STR_BRIBE_FAILED                                                :{WHITE}Twoja lapowka zostala
@@ -2991,6 +2998,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Predkosc: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ladownosc: {GOLD}{COMMA} pasazerow, {COMMA} paczek poczty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Male

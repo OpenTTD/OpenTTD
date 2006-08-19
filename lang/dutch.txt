@@ -604,6 +604,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Verklein
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genereer willekeurig land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Verwijder landschap
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Verwijder landschap
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Gebruik hoogtekaart
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Gebruik hoogtekaart
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Weet je zeker dat je het land wilt verwijderen?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landschapproductie
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadproductie
@@ -716,6 +718,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Sla scen
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Scenario openen
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Scenario opslaan
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Scenario spelen
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Weet je zeker dat je dit scenario wilt sluiten?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sluit editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan alleen in steden met bevolking van meer dan 1200 gebouwd worden
@@ -1039,7 +1042,21 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimum
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duur van foutmeldingen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Geef het inwoneraantal bij een stad weer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Onzichtbare bomen (met transparante gebouwen): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Origineel
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg vlak
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :vlak
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ruig
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erg ruig
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Geen
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Origineel
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Verbeterd
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap draaiing: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tegen de klok
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Met de klok mee
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Verbind de landschaptoolbar met de trein/weg/water/vliegveld toolbars: {ORANGE}{STRING}
@@ -1434,6 +1451,16 @@ STR_NETWORK_SEND                                                :{BLACK}Verstuur
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-grootte van de kaart: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-grootte van de kaart: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERROR                                                :{WHITE}Kan landschap uit PNG niet laden...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...bestand niet gevonden.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kon plaatje niet omzetten. 8 óf 24-bit PNG benodigd.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...er ging iets fout. Sorry. (waarschijnlijk corrupt bestand)
+
+STR_BMPMAP_ERROR                                                :{WHITE}Kan het landschap uit de BMP niet laden...
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kosten: {CURRENCY}
 STR_0801_COST                                                   :{RED}Kosten: {CURRENCY}
@@ -1757,6 +1784,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Sla het 
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selecteer nieuw speltype
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecteer scenario (groen), vooraf ingesteld spel (blauw), or willekeurig nieuw spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genereer willekeurig nieuw spel
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Laad Heightmap
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} in de weg
@@ -2862,6 +2890,42 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht:
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capaciteit: {GOLD}{COMMA} passagiers, {COMMA} zakken post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Creeër
+STR_RANDOM_HELP                                                 :{BLACK}Wijzig het willekeurige getal voor terrein creatie
+STR_RANDOM_SEED                                                 :{BLACK}Willekeurig getal
+STR_RANDOM_SEED_HELP                                            :{BLACK}Klik voor een willekeurig getal
+STR_LAND_GENERATOR                                              :{BLACK}Land generator:
+STR_TREE_PLACER                                                 :{BLACK}Bos algoritme:
+STR_TERRAIN_TYPE                                                :{BLACK}Terrein type:
+STR_SMOOTHNESS                                                  :{BLACK}Vlakte:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sneeuwlijn hoogte:
+STR_DATE                                                        :{BLACK}Datum:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Aantal steden:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Aantal Industrieën:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Verschuif de sneeuwlijn één omhoog
+STR_SNOW_LINE_DOWN                                              :{BLACK}Verschuif de sneeuwlijn één naar beneden
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander sneeuwlijn hoogte
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begin jaar
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Grootte: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Wereld creeren
+STR_GENERATION_ABORT                                            :{BLACK}Stop
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Stop Wereld Generatie
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Weet je zeker dat je de actie wilt stoppen?
+STR_PROGRESS                                                    :{WHITE}{NUM}% compleet
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_TREE_GENERATION                                             :{BLACK}Bos plaatsing
+STR_CLEARING_TILES                                              :{BLACK}Ruig en
+STR_PREPARING_GAME                                              :{BLACK}Voorbereiden spel
+STR_SE_FLAT_WORLD                                               :{WHITE}Vlak land
+STR_SE_RANDOM_LAND                                              :{WHITE}Willekeurig land
+STR_SE_NEW_WORLD                                                :{BLACK}Creeër nieuw scenario
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Verander hoogte van vlak land
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Klein
