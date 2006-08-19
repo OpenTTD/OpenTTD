@@ -698,7 +698,7 @@ const Widget _create_scenario_widgets[] = {
 {      WWT_PANEL, RESIZE_NONE, 12, 150, 185,  95, 106, STR_NULL,                STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 186, 197,  95, 106, STR_0225,                STR_NULL}, // Mapsize Y
 
-{    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 117, 128, STR_SE_FLAT_WORLD,       STR_SE_FLAT_WORLD},                      // Empty (sea-level) map
+{    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 117, 128, STR_SE_FLAT_WORLD,       STR_SE_FLAT_WORLD_TIP},                      // Empty (sea-level) map
 {    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 135, 146, STR_SE_RANDOM_LAND,      STR_022A_GENERATE_RANDOM_LAND}, // Generate
 {    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 153, 164, STR_LOAD_GAME_HEIGHTMAP, STR_LOAD_SCEN_HEIGHTMAP},       // Heightmap
 

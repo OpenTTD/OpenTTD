@@ -2942,6 +2942,7 @@ STR_PREPARING_TILELOOP                                          :{BLACK}Running 
 STR_PREPARING_GAME                                              :{BLACK}Preparing game
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}This action changed the difficulty level to custom
 STR_SE_FLAT_WORLD                                               :{WHITE}Flat land
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generate a flat land
 STR_SE_RANDOM_LAND                                              :{WHITE}Random land
 STR_SE_NEW_WORLD                                                :{BLACK}Create new scenario
 STR_SE_CAPTION                                                  :{WHITE}Scenario type
