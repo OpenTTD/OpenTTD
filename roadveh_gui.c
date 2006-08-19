@@ -241,7 +241,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		case 2: /* rename */
 			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
-			ShowQueryString(v->string_id, STR_902C_NAME_ROAD_VEHICLE, 31, 150, w->window_class, w->window_number);
+			ShowQueryString(v->string_id, STR_902C_NAME_ROAD_VEHICLE, 31, 150, w->window_class, w->window_number, CS_ALPHANUMERAL);
 			break;
 
 		case 5: /* increase int */
@@ -555,7 +555,7 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 			if (sel_eng != INVALID_ENGINE) {
 				WP(w,buildtrain_d).rename_engine = sel_eng;
 				ShowQueryString(GetCustomEngineName(sel_eng),
-					STR_9036_RENAME_ROAD_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number);
+					STR_9036_RENAME_ROAD_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
 			}
 		}	break;
 		}

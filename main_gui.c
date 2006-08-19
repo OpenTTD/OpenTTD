@@ -329,21 +329,21 @@ void ShowNetworkGiveMoneyWindow(byte player)
 {
 	_rename_id = player;
 	_rename_what = 3;
-	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, 1, 0);
+	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, 1, 0, CS_NUMERAL);
 }
 
 void ShowNetworkNeedGamePassword(void)
 {
 	_rename_id = NETWORK_GAME_PASSWORD;
 	_rename_what = 4;
-	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_GAME_PASSWORD_CAPTION, 20, 180, WC_SELECT_GAME, 0);
+	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_GAME_PASSWORD_CAPTION, 20, 180, WC_SELECT_GAME, 0, CS_ALPHANUMERAL);
 }
 
 void ShowNetworkNeedCompanyPassword(void)
 {
 	_rename_id = NETWORK_COMPANY_PASSWORD;
 	_rename_what = 4;
-	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, 20, 180, WC_SELECT_GAME, 0);
+	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, 20, 180, WC_SELECT_GAME, 0, CS_ALPHANUMERAL);
 }
 
 #endif /* ENABLE_NETWORK */
@@ -352,7 +352,7 @@ void ShowRenameSignWindow(const SignStruct *ss)
 {
 	_rename_id = ss->index;
 	_rename_what = 0;
-	ShowQueryString(ss->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, 1, 0);
+	ShowQueryString(ss->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, 1, 0, CS_ALPHANUMERAL);
 }
 
 void ShowRenameWaypointWindow(const Waypoint *wp)
@@ -369,7 +369,7 @@ void ShowRenameWaypointWindow(const Waypoint *wp)
 	_rename_id = id;
 	_rename_what = 1;
 	SetDParam(0, id);
-	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, 1, 0);
+	ShowQueryString(STR_WAYPOINT_RAW, STR_EDIT_WAYPOINT_NAME, 30, 180, 1, 0, CS_ALPHANUMERAL);
 }
 
 static void SelectSignTool(void)

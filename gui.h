@@ -5,6 +5,7 @@
 
 #include "station.h"
 #include "window.h"
+#include "string.h"
 
 /* main_gui.c */
 void SetupColorsAndInitialWindow(void);
@@ -106,7 +107,7 @@ void AskForNewGameToStart(void);
 
 void DrawEditBox(Window *w, querystr_d *string, int wid);
 void HandleEditBox(Window *w, querystr_d *string, int wid);
-int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we);
+int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we, CharSetFilter afilter);
 bool HandleCaret(Textbuf *tb);
 
 void DeleteTextBufferAll(Textbuf *tb);
@@ -136,7 +137,7 @@ enum {
 
 bool DoZoomInOutWindow(int how, Window *w);
 void ShowBuildIndustryWindow(void);
-void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number);
+void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number, CharSetFilter afilter);
 void ShowMusicWindow(void);
 
 /* main_gui.c */

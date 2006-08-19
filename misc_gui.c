@@ -897,7 +897,7 @@ void UpdateTextBufferSize(Textbuf *tb)
 	tb->caretxoffs = tb->width;
 }
 
-int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we)
+int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we, CharSetFilter afilter)
 {
 	we->keypress.cont = false;
 
@@ -921,11 +921,11 @@ int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we)
 			InvalidateWidget(w, wid);
 		break;
 	default:
-		if (IsValidAsciiChar(we->keypress.ascii)) {
+		if (IsValidAsciiChar(we->keypress.ascii, afilter)) {
 			if (InsertTextBufferChar(&string->text, we->keypress.ascii))
 				InvalidateWidget(w, wid);
-		} else { // key wasn't caught
-			we->keypress.cont = true;
+		} else { // key wasn't caught. Continue only if standard entry specified
+			we->keypress.cont = (afilter == CS_ALPHANUMERAL);
 		}
 	}
 
@@ -1015,7 +1015,7 @@ press_ok:;
 	} break;
 
 	case WE_KEYPRESS: {
-		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 5, e)) {
+		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 5, e, WP(w, querystr_d).afilter)) {
 		case 1: // Return
 			goto press_ok;
 		case 2: // Escape
@@ -1060,7 +1060,7 @@ static const WindowDesc _query_string_desc = {
 static char _edit_str_buf[64];
 static char _orig_str_buf[lengthof(_edit_str_buf)];
 
-void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number)
+void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number, CharSetFilter afilter)
 {
 	Window *w;
 	uint realmaxlen = maxlen & ~0x1000;
@@ -1090,6 +1090,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	WP(w, querystr_d).text.maxlength = realmaxlen;
 	WP(w, querystr_d).text.maxwidth = maxwidth;
 	WP(w, querystr_d).text.buf = _edit_str_buf;
+	WP(w, querystr_d).afilter = afilter;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
 }
 
@@ -1358,7 +1359,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			if (HandleEditBoxKey(w, &WP(w, querystr_d), 10, e) == 1) /* Press Enter */
+			if (HandleEditBoxKey(w, &WP(w, querystr_d), 10, e, CS_ALPHANUMERAL) == 1) /* Press Enter */
 					HandleButtonClick(w, 12);
 		}
 		break;

@@ -24,6 +24,7 @@
 #include "variables.h"
 #include "network_server.h"
 #include "network_udp.h"
+#include "string.h"
 
 #define BGC 5
 #define BTC 15
@@ -430,7 +431,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 				31 | 0x1000,  // maximum number of characters OR
 				250, // characters up to this width pixels, whichever is satisfied first
 				w->window_class,
-				w->window_number);
+				w->window_number, CS_ALPHANUMERAL);
 		} break;
 		case 13: /* Start server */
 			ShowNetworkStartServerWindow();
@@ -480,7 +481,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e) == 1) break; // enter pressed
+		if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e, CS_ALPHANUMERAL) == 1) break; // enter pressed
 
 		// The name is only allowed when it starts with a letter!
 		if (_edit_str_buf[0] != '\0' && _edit_str_buf[0] != ' ') {
@@ -651,7 +652,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 
 		case 4: /* Set password button */
 			ShowQueryString(BindCString(_network_server_password),
-				STR_NETWORK_SET_PASSWORD, 20, 250, w->window_class, w->window_number);
+				STR_NETWORK_SET_PASSWORD, 20, 250, w->window_class, w->window_number, CS_ALPHANUMERAL);
 			break;
 
 		case 5: { /* Select map */
@@ -723,7 +724,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		if (nd->field == 3) {
-			if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e) == 1) break; // enter pressed
+			if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e, CS_ALPHANUMERAL) == 1) break; // enter pressed
 
 			ttd_strlcpy(_network_server_name, WP(w, network_ql_d).q.text.buf, sizeof(_network_server_name));
 			UpdateTextBufferSize(&WP(w, network_ql_d).q.text);
@@ -1514,7 +1515,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 1, e)) {
+		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 1, e, CS_ALPHANUMERAL)) {
 			case 1: /* Return */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
 			case 2: /* Escape */ DeleteWindow(w); break;
 		}

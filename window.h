@@ -3,6 +3,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include "string.h"
+
 typedef union WindowEvent WindowEvent;
 
 typedef void WindowProc(Window *w, WindowEvent *e);
@@ -244,19 +246,11 @@ typedef struct Textbuf {
 	uint16 caretxoffs;          /* the current position of the caret in pixels */
 } Textbuf;
 
-typedef struct querystr_d {
-	StringID caption;
-	WindowClass wnd_class;
-	WindowNumber wnd_num;
-	Textbuf text;
-	const char *orig;
-} querystr_d;
-
 #define WP(ptr,str) (*(str*)(ptr)->custom)
 /* You cannot 100% reliably calculate the biggest custom struct as
  * the number of pointers in it and alignment will have a huge impact.
- * 88 is the largest window-size for 64-bit machines currently */
-#define WINDOW_CUSTOM_SIZE 88
+ * 96 is the largest window-size for 64-bit machines currently */
+#define WINDOW_CUSTOM_SIZE 96
 
 typedef struct Scrollbar {
 	uint16 count, cap, pos;
@@ -299,6 +293,16 @@ struct Window {
 	WindowMessage message;
 	byte custom[WINDOW_CUSTOM_SIZE];
 };
+
+typedef struct querystr_d {
+	StringID caption;
+	WindowClass wnd_class;
+	WindowNumber wnd_num;
+	Textbuf text;
+	const char *orig;
+	CharSetFilter afilter;
+} querystr_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(querystr_d));
 
 typedef struct {
 	byte item_count;      /* follow_vehicle */

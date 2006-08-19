@@ -840,7 +840,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 					WP(w,def_d).data_3 = btn;
 					SetDParam(0, value);
-					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, WC_GAME_OPTIONS, 0);
+					ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_CONFIG_PATCHES_QUERY_CAPT, 10, 100, WC_GAME_OPTIONS, 0, CS_NUMERAL);
 				}
 			}
 
@@ -1138,6 +1138,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		int len = 0;
 		int x = e->click.pt.x;
 		StringID str = 0;
+		CharSetFilter afilter = CS_ALPHANUMERAL;
 
 		switch ( line ) {
 			case 0: // rate
@@ -1154,6 +1155,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					str = STR_CONFIG_PATCHES_INT32;
 					len = 4;
 					edittext = true;
+					afilter = CS_NUMERAL;
 				}
 			break;
 			case 1: // separator
@@ -1193,6 +1195,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 					str = STR_CONFIG_PATCHES_INT32;
 					len = 4;
 					edittext = true;
+					afilter = CS_NUMERAL;
 				}
 			break;
 		}
@@ -1205,7 +1208,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 			len + 1, // maximum number of characters OR
 			250, // characters up to this width pixels, whichever is satisfied first
 			w->window_class,
-			w->window_number);
+			w->window_number, afilter);
 		}
 
 		w->flags4 |= 5 << WF_TIMEOUT_SHL;

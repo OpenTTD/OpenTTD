@@ -32,16 +32,16 @@ void str_validate(char *str);
 /** Convert the given string to lowercase */
 void strtolower(char *str);
 
+typedef enum CharSetFilter {  //valid char filtering
+	CS_ALPHANUMERAL,   //both numeric and alphabetic
+	CS_NUMERAL,        //only numeric ones.
+	CS_ALPHA,          //only alphabetic values
+} CharSetFilter;
+
 /** Only allow valid ascii-function codes. Filter special codes like BELL and
  * so on [we need a special filter here later]
  * @param key character to be checked
  * @return true or false depending if the character is printable/valid or not */
-static inline bool IsValidAsciiChar(byte key)
-{
-	// XXX This filter stops certain crashes, but may be too restrictive.
-	return (key >= ' ' && key < 127) || (key >= 160 &&
-		key != 0xAA && key != 0xAC && key != 0xAD && key != 0xAF &&
-		key != 0xB5 && key != 0xB6 && key != 0xB7 && key != 0xB9);
-}
+bool IsValidAsciiChar(byte key, CharSetFilter afilter);
 
 #endif /* STRING_H */

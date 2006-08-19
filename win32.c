@@ -956,7 +956,7 @@ bool InsertTextBufferClipboard(Textbuf *tb)
 		data = GlobalLock(cbuf); // clipboard data
 		dataptr = data;
 
-		for (; IsValidAsciiChar(*dataptr) && (tb->length + length) < (tb->maxlength - 1) &&
+		for (; IsValidAsciiChar(*dataptr, CS_ALPHANUMERAL) && (tb->length + length) < (tb->maxlength - 1) &&
 				(tb->maxwidth == 0 || width + tb->width + GetCharacterWidth(FS_NORMAL, (byte)*dataptr) <= tb->maxwidth); dataptr++) {
 					width += GetCharacterWidth(FS_NORMAL, (byte)*dataptr);
 			length++;

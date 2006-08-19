@@ -164,7 +164,7 @@ static void TranslateTTDPatchCodes(char *str)
 			case 0x98: *c = 31; break;
 			default:
 				/* Validate any unhandled character */
-				if (!IsValidAsciiChar(*c)) *c = '?';
+				if (!IsValidAsciiChar(*c, CS_ALPHANUMERAL)) *c = '?';
 				break;
 		}
 	}

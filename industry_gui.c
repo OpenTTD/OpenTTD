@@ -381,7 +381,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 					ShowQueryString(STR_CONFIG_PATCHES_INT32,
 							STR_CONFIG_GAME_PRODUCTION,
 							10, 100, w->window_class,
-							w->window_number);
+							w->window_number, CS_ALPHANUMERAL);
 				}
 			}
 		} break;
