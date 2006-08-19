@@ -455,6 +455,7 @@
 			<File
 				RelativePath=".\aystar.c"
 				>
+			</File>
 			<File
 				RelativePath=".\bmp.c"
 				>
@@ -865,6 +866,7 @@
 			<File
 				RelativePath=".\aystar.h"
 				>
+			</File>
 			<File
 				RelativePath=".\bmp.h"
 				>
