@@ -36,6 +36,7 @@
 #include "npf.h"
 #include "yapf/yapf.h"
 #include "newgrf.h"
+#include "genworld.h"
 #include "date.h"
 
 /** The patch values that are used for new games and/or modified in config file */
@@ -1434,6 +1435,17 @@ const SettingDesc _patch_settings[] = {
 	// road vehicles - penalties
 	SDT_CONDVAR (Patches, yapf.road_slope_penalty                    , SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   2 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.road_crossing_penalty                 , SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   3 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+
+	/***************************************************************************/
+	/* Terrain genation related patch options */
+	SDT_CONDVAR(Patches,      land_generator,           SLE_UINT8,  30, SL_MAX_VERSION, 0, MS,   1,                   0,    1,               STR_CONFIG_PATCHES_LAND_GENERATOR,           NULL),
+	SDT_CONDVAR(Patches,      oil_refinery_limit,       SLE_UINT8,  30, SL_MAX_VERSION, 0, 0,   16,                  12,   48,               STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE,    NULL),
+	SDT_CONDVAR(Patches,      tgen_smoothness,          SLE_UINT8,  30, SL_MAX_VERSION, 0, MS,   1,                   0,    3,               STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN,     NULL),
+	SDT_CONDVAR(Patches,      generation_seed,          SLE_UINT32, 30, SL_MAX_VERSION, 0, 0,    GENERATE_NEW_SEED,   0, MAX_UVALUE(uint32), STR_NULL,                                    NULL),
+	SDT_CONDVAR(Patches,      tree_placer,              SLE_UINT8,  30, SL_MAX_VERSION, 0, MS,   2,                   0,    2,               STR_CONFIG_PATCHES_TREE_PLACER,              NULL),
+	SDT_VAR    (Patches,      heightmap_rotation,       SLE_UINT8,                      S, MS,   0,                   0,    1,               STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION,       NULL),
+	SDT_VAR    (Patches,      progress_update_interval, SLE_UINT16,                     S, 0,  200,                   0, 5000,               STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL, NULL),
+	SDT_VAR    (Patches,      se_flat_world_height,     SLE_UINT8,                      S, 0,    0,                   0,   15,               STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT,     NULL),
 
 	SDT_END()
 };

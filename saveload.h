@@ -14,6 +14,8 @@ typedef enum SaveOrLoadMode {
 	SL_LOAD     =  0,
 	SL_SAVE     =  1,
 	SL_OLD_LOAD =  2,
+	SL_PNG      =  3,
+	SL_BMP      =  4,
 } SaveOrLoadMode;
 
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode);

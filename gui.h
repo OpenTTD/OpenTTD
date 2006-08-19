@@ -64,6 +64,10 @@ void ShowPlayerAircraft(PlayerID player, StationID station);
 /* terraform_gui.c */
 void ShowTerraformToolbar(void);
 
+/* tgp_gui.c */
+void ShowGenerateLandscape(void);
+void ShowHeightmapLoad(void);
+
 void PlaceProc_DemolishArea(TileIndex tile);
 void PlaceProc_LevelLand(TileIndex tile);
 bool GUIPlaceProcDragXY(const WindowEvent *we);
@@ -103,7 +107,6 @@ void SetVScroll2Count(Window *w, int num);
 void SetHScrollCount(Window *w, int num);
 
 void ShowCheatWindow(void);
-void AskForNewGameToStart(void);
 
 void DrawEditBox(Window *w, querystr_d *string, int wid);
 void HandleEditBox(Window *w, querystr_d *string, int wid);
@@ -138,6 +141,7 @@ enum {
 bool DoZoomInOutWindow(int how, Window *w);
 void ShowBuildIndustryWindow(void);
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number, CharSetFilter afilter);
+void ShowQuery(StringID caption, StringID message, void (*ok_cancel_callback)(bool ok_clicked), WindowClass window_class, WindowNumber window_number);
 void ShowMusicWindow(void);
 
 /* main_gui.c */

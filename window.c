@@ -12,6 +12,7 @@
 #include "console.h"
 #include "variables.h"
 #include "table/sprites.h"
+#include "genworld.h"
 
 // delta between mouse cursor and upper left corner of dragged window
 static Point _drag_delta;
@@ -1323,10 +1324,11 @@ static void HandleKeypress(uint32 key)
 	we.keypress.cont = true;
 
 	// check if we have a query string window open before allowing hotkeys
-	if (FindWindowById(WC_QUERY_STRING,     0) != NULL ||
-			FindWindowById(WC_SEND_NETWORK_MSG, 0) != NULL ||
-			FindWindowById(WC_CONSOLE,          0) != NULL ||
-			FindWindowById(WC_SAVELOAD,         0) != NULL) {
+	if (FindWindowById(WC_QUERY_STRING,       0) != NULL ||
+			FindWindowById(WC_SEND_NETWORK_MSG,   0) != NULL ||
+			FindWindowById(WC_GENERATE_LANDSCAPE, 0) != NULL ||
+			FindWindowById(WC_CONSOLE,            0) != NULL ||
+			FindWindowById(WC_SAVELOAD,           0) != NULL) {
 		query_open = true;
 	}
 
@@ -1337,6 +1339,7 @@ static void HandleKeypress(uint32 key)
 		if (query_open &&
 				w->window_class != WC_QUERY_STRING &&
 				w->window_class != WC_SEND_NETWORK_MSG &&
+				w->window_class != WC_GENERATE_LANDSCAPE &&
 				w->window_class != WC_CONSOLE &&
 				w->window_class != WC_SAVELOAD) {
 			continue;
@@ -1376,7 +1379,7 @@ static void MouseLoop(int click, int mousewheel)
 	y = _cursor.pos.y;
 
 	if (click == 0 && mousewheel == 0) {
-		if (_patches.autoscroll && _game_mode != GM_MENU) {
+		if (_patches.autoscroll && _game_mode != GM_MENU && !IsGeneratingWorld()) {
 			w = FindWindowFromPt(x, y);
 			if (w == NULL || w->flags4 & WF_DISABLE_VP_SCROLL) return;
 			vp = IsPtInWindowViewport(w, x, y);
@@ -1406,7 +1409,7 @@ static void MouseLoop(int click, int mousewheel)
 	w = MaybeBringWindowToFront(w);
 	vp = IsPtInWindowViewport(w, x, y);
 	if (vp != NULL) {
-		if (_game_mode == GM_MENU) return;
+		if (_game_mode == GM_MENU || IsGeneratingWorld()) return;
 
 		// only allow zooming in-out in main window, or in viewports
 		if (mousewheel &&
@@ -1455,7 +1458,16 @@ void InputLoop(void)
 	int click;
 	int mousewheel;
 
-	_current_player = _local_player;
+	/*
+	 * During the generation of the world, there might be
+	 * another thread that is currently building for example
+	 * a road. To not interfere with those tasks, we should
+	 * NOT change the _current_player here.
+	 *
+	 * This is not necessary either, as the only events that
+	 * can be handled are the 'close application' events
+	 */
+	if (!IsGeneratingWorld()) _current_player = _local_player;
 
 	// Handle pressed keys
 	if (_pressed_key != 0) {

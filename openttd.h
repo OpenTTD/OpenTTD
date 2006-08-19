@@ -77,14 +77,17 @@ enum SwitchModes {
 	SM_GENRANDLAND = 6,
 	SM_LOAD_SCENARIO = 9,
 	SM_START_SCENARIO = 10,
+	SM_START_HEIGHTMAP = 11,
+	SM_LOAD_HEIGHTMAP = 12,
 };
 
 
 /* Modes for GenerateWorld */
 enum GenerateWorldModes {
-	GW_NEWGAME  = 0,    /* Generate a map for a new game */
-	GW_EMPTY    = 1,    /* Generate an empty map (sea-level) */
-	GW_RANDOM   = 2,    /* Generate a random map for SE */
+	GW_NEWGAME   = 0,    /* Generate a map for a new game */
+	GW_EMPTY     = 1,    /* Generate an empty map (sea-level) */
+	GW_RANDOM    = 2,    /* Generate a random map for SE */
+	GW_HEIGHTMAP = 3,    /* Generate a newgame from a heightmap */
 };
 
 /* Modes for InitializeGame, those are _bits_! */
@@ -410,6 +413,9 @@ enum {
 	WC_HIGHSCORE = 0x4D,
 	WC_ENDSCREEN = 0x4E,
 	WC_SIGN_LIST = 0x4F,
+	WC_GENERATE_LANDSCAPE = 0x50,
+	WC_GENERATE_PROGRESS_WINDOW = 0x51,
+	WC_OK_CANCEL_QUERY = 0x52,
 };
 
 

@@ -28,6 +28,7 @@
 #include "bridge.h"
 #include "date.h"
 #include "table/town_land.h"
+#include "genworld.h"
 
 enum {
 	/* Max towns: 64000 (8 * 8000) */
@@ -1054,7 +1055,10 @@ bool GenerateTowns(void)
 	uint num = 0;
 	uint n = ScaleByMapSize(_num_initial_towns[_opt.diff.number_towns] + (Random() & 7));
 
+	SetGeneratingWorldProgress(GWP_TOWN, n);
+
 	do {
+		IncreaseGeneratingWorldProgress(GWP_TOWN);
 		// try 20 times to create a random-sized town for the first loop.
 		if (CreateRandomTown(20, 0) != NULL) num++;
 	} while (--n);

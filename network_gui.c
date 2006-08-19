@@ -24,6 +24,7 @@
 #include "variables.h"
 #include "network_server.h"
 #include "network_udp.h"
+#include "settings.h"
 #include "string.h"
 
 #define BGC 5
@@ -57,6 +58,7 @@ static char _edit_str_buf[64];
 
 static void ShowNetworkStartServerWindow(void);
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
+extern void SwitchMode(int new_mode);
 
 static const StringID _connection_types_dropdown[] = {
 	STR_NETWORK_LAN_INTERNET,
@@ -683,7 +685,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			_is_network_server = true;
 
 			if (nd->map == NULL) { // start random new game
-				GenRandomNewGame(Random(), InteractiveRandom());
+				ShowGenerateLandscape();
 			} else { // load a scenario
 				char *name = FiosBrowseTo(nd->map);
 				if (name != NULL) {
@@ -692,7 +694,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 					ttd_strlcpy(_file_to_saveload.title, nd->map->title, sizeof(_file_to_saveload.title));
 
 					DeleteWindow(w);
-					StartScenarioEditor(Random(), InteractiveRandom());
+					SwitchMode(SM_START_SCENARIO);
 				}
 			}
 			break;
@@ -1391,8 +1393,6 @@ void ShowClientList(void)
 	Window *w = AllocateWindowDescFront(&_client_list_desc, 0);
 	if (w != NULL) w->window_number = 0;
 }
-
-extern void SwitchMode(int new_mode);
 
 static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 {

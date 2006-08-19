@@ -19,8 +19,6 @@
 #include "table/landscape_const.h"
 #include "date.h"
 
-extern void StartupEconomy(void);
-
 char _name_array[512][32];
 
 #ifndef MERSENNE_TWISTER
@@ -96,19 +94,6 @@ void InitializePlayers(void);
 static void InitializeCheats(void);
 void InitializeNPF(void);
 
-void GenerateLandscape(void);
-void GenerateClearTile(void);
-
-void GenerateIndustries(void);
-void GenerateUnmovables(void);
-bool GenerateTowns(void);
-
-void StartupPlayers(void);
-void StartupDisasters(void);
-void GenerateTrees(void);
-
-void ConvertGroundTilesIntoWaterTiles(void);
-
 void InitializeGame(int mode, uint size_x, uint size_y)
 {
 	AllocateMap(size_x, size_y);
@@ -161,53 +146,6 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeAnimatedTiles();
 
 	InitializeLandscapeVariables(false);
-
-	ResetObjectToPlace();
-}
-
-void GenerateWorld(int mode, uint size_x, uint size_y)
-{
-	// Make sure everything is done via OWNER_NONE
-	_current_player = OWNER_NONE;
-
-	UpdatePatches();
-
-	_generating_world = true;
-	InitializeGame(mode == GW_RANDOM ? 0 : IG_DATE_RESET, size_x, size_y);
-	SetObjectToPlace(SPR_CURSOR_ZZZ, 0, 0, 0);
-
-	// Must start economy early because of the costs.
-	StartupEconomy();
-
-	// Don't generate landscape items when in the scenario editor.
-	if (mode == GW_EMPTY) {
-		// empty world in scenario editor
-		ConvertGroundTilesIntoWaterTiles();
-	} else {
-		GenerateLandscape();
-		GenerateClearTile();
-
-		// only generate towns, tree and industries in newgame mode.
-		if (mode == GW_NEWGAME) {
-			GenerateTowns();
-			GenerateTrees();
-			GenerateIndustries();
-			GenerateUnmovables();
-		}
-	}
-
-	// These are probably pointless when inside the scenario editor.
-	StartupPlayers();
-	StartupEngines();
-	StartupDisasters();
-	_generating_world = false;
-
-	// No need to run the tile loop in the scenario editor.
-	if (mode != GW_EMPTY) {
-		uint i;
-
-		for (i = 0; i < 0x500; i++) RunTileLoop();
-	}
 
 	ResetObjectToPlace();
 }

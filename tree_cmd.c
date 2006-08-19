@@ -15,6 +15,13 @@
 #include "town.h"
 #include "sound.h"
 #include "variables.h"
+#include "genworld.h"
+
+enum TreePlacer {
+	TP_NONE,
+	TP_ORIGINAL,
+	TP_IMPROVED,
+};
 
 static TreeType GetRandomTreeType(TileIndex tile, uint seed)
 {
@@ -83,18 +90,70 @@ static void PlaceMoreTrees(void)
 	} while (--i);
 }
 
-void PlaceTreesRandomly(void)
+/**
+ * Place a tree at the same height as an existing tree.
+ *  This gives cool effects to the map.
+ */
+void PlaceTreeAtSameHeight(TileIndex tile, uint height)
 {
 	uint i;
+
+	for (i = 0; i < 1000; i++) {
+		uint32 r = Random();
+		int x = GB(r, 0, 5) - 16;
+		int y = GB(r, 8, 5) - 16;
+		TileIndex cur_tile = TILE_MASK(tile + TileDiffXY(x, y));
+
+		/* Keep in range of the existing tree */
+		if (myabs(x) + myabs(y) > 16) continue;
+
+		/* Clear tile, no farm-tiles or rocks */
+		if (!IsTileType(cur_tile, MP_CLEAR) ||
+				IsClearGround(cur_tile, CLEAR_FIELDS) ||
+				IsClearGround(cur_tile, CLEAR_ROCKS))
+			continue;
+
+		/* Not too much height difference */
+		if (myabs(GetTileZ(cur_tile) - height) > 2) continue;
+
+		/* Place one tree and quit */
+		PlaceTree(cur_tile, r);
+		break;
+	}
+}
+
+void PlaceTreesRandomly(void)
+{
+	uint i, j, ht;
 
 	i = ScaleByMapSize(1000);
 	do {
 		uint32 r = Random();
 		TileIndex tile = RandomTileSeed(r);
+
+		IncreaseGeneratingWorldProgress(GWP_TREE);
+
 		if (IsTileType(tile, MP_CLEAR) &&
 				!IsClearGround(tile, CLEAR_FIELDS) &&
 				!IsClearGround(tile, CLEAR_ROCKS)) {
 			PlaceTree(tile, r);
+			if (_patches.tree_placer != TP_IMPROVED) continue;
+
+			/* Place a number of trees based on the tile height.
+			 *  This gives a cool effect of multiple trees close together.
+			 *  It is almost real life ;) */
+			ht = GetTileZ(tile);
+			/* The higher we get, the more trees we plant */
+			j = GetTileZ(tile) / TILE_HEIGHT * 2;
+			while (j--) {
+				/* Above snowline more trees! */
+				if (_opt.landscape == LT_HILLY && ht > _opt.snow_line) {
+					PlaceTreeAtSameHeight(tile, ht);
+					PlaceTreeAtSameHeight(tile, ht);
+				};
+
+				PlaceTreeAtSameHeight(tile, ht);
+			}
 		}
 	} while (--i);
 
@@ -105,7 +164,10 @@ void PlaceTreesRandomly(void)
 		do {
 			uint32 r = Random();
 			TileIndex tile = RandomTileSeed(r);
-			if (IsTileType(tile, MP_CLEAR) && GetTropicZone(tile) == TROPICZONE_RAINFOREST) {
+
+			IncreaseGeneratingWorldProgress(GWP_TREE);
+
+			if (IsTileType(tile, MP_CLEAR) && !IsClearGround(tile, CLEAR_FIELDS) && GetTropicZone(tile) == TROPICZONE_RAINFOREST) {
 				PlaceTree(tile, r);
 			}
 		} while (--i);
@@ -114,11 +176,24 @@ void PlaceTreesRandomly(void)
 
 void GenerateTrees(void)
 {
-	uint i;
+	uint i, total;
+
+	if (_patches.tree_placer == TP_NONE) return;
 
 	if (_opt.landscape != LT_CANDY) PlaceMoreTrees();
 
-	for (i = _opt.landscape == LT_HILLY ? 15 : 6; i != 0; i--) {
+	switch (_patches.tree_placer) {
+		case TP_ORIGINAL: i = _opt.landscape == LT_HILLY ? 15 : 6; break;
+		case TP_IMPROVED: i = _opt.landscape == LT_HILLY ?  4 : 2; break;
+		default: NOT_REACHED(); return;
+	}
+
+	total = ScaleByMapSize(1000);
+	if (_opt.landscape == LT_DESERT) total += ScaleByMapSize(15000);
+	total *= i;
+	SetGeneratingWorldProgress(GWP_TREE, total);
+
+	for (; i != 0; i--) {
 		PlaceTreesRandomly();
 	}
 }

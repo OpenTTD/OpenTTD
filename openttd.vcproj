@@ -169,6 +169,9 @@
 				RelativePath=".\aystar.c">
 			</File>
 			<File
+				RelativePath=".\bmp.c">
+			</File>
+			<File
 				RelativePath=".\callback_table.c">
 			</File>
 			<File
@@ -232,10 +235,16 @@
 				RelativePath=".\fios.c">
 			</File>
 			<File
+				RelativePath=".\genworld.c">
+			</File>
+			<File
 				RelativePath=".\gfx.c">
 			</File>
 			<File
 				RelativePath=".\gfxinit.c">
+			</File>
+			<File
+				RelativePath=".\heightmap.c">
 			</File>
 			<File
 				RelativePath=".\landscape.c">
@@ -379,6 +388,9 @@
 				RelativePath=".\texteff.c">
 			</File>
 			<File
+				RelativePath=".\tgp.c">
+			</File>
+			<File
 				RelativePath=".\thread.c">
 			</File>
 			<File
@@ -425,6 +437,9 @@
 				RelativePath=".\aystar.h">
 			</File>
 			<File
+				RelativePath=".\bmp.h">
+			</File>
+			<File
 				RelativePath=".\command.h">
 			</File>
 			<File
@@ -464,6 +479,10 @@
 				RelativePath=".\functions.h">
 			</File>
 			<File
+				RelativePath=".\genworld.h"
+				>
+			</File>
+			<File
 				RelativePath=".\gfx.h">
 			</File>
 			<File
@@ -474,6 +493,9 @@
 			</File>
 			<File
 				RelativePath=".\hal.h">
+			</File>
+			<File
+				RelativePath=".\heightmap.h">
 			</File>
 			<File
 				RelativePath=".\industry.h">
@@ -605,6 +627,9 @@
 				RelativePath=".\string.h">
 			</File>
 			<File
+				RelativePath=".\tgp.h">
+			</File>
+			<File
 				RelativePath=".\thread.h">
 			</File>
 			<File
@@ -661,6 +686,9 @@
 			</File>
 			<File
 				RelativePath=".\engine_gui.c">
+			</File>
+			<File
+				RelativePath=".\genworld_gui.c">
 			</File>
 			<File
 				RelativePath=".\graph_gui.c">

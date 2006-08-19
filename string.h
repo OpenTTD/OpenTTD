@@ -29,19 +29,25 @@ char* CDECL str_fmt(const char* str, ...);
  * replaces them with a question mark '?' */
 void str_validate(char *str);
 
-/** Convert the given string to lowercase */
-void strtolower(char *str);
-
-typedef enum CharSetFilter {  //valid char filtering
-	CS_ALPHANUMERAL,   //both numeric and alphabetic
-	CS_NUMERAL,        //only numeric ones.
-	CS_ALPHA,          //only alphabetic values
+/**
+ * Valid filter types for IsValidAsciiChar.
+ */
+typedef enum CharSetFilter {
+	CS_ALPHANUMERAL,      //! Both numeric and alphabetic and spaces and stuff
+	CS_NUMERAL,           //! Only numeric ones
+	CS_ALPHA,             //! Only alphabetic values
 } CharSetFilter;
 
-/** Only allow valid ascii-function codes. Filter special codes like BELL and
- * so on [we need a special filter here later]
+/**
+ * Only allow certain keys. You can define the filter to be used. This makes
+ *  sure no invalid keys can get into an editbox, like BELL.
  * @param key character to be checked
- * @return true or false depending if the character is printable/valid or not */
+ * @param afilter the filter to use
+ * @return true or false depending if the character is printable/valid or not
+ */
 bool IsValidAsciiChar(byte key, CharSetFilter afilter);
+
+/** Convert the given string to lowercase */
+void strtolower(char *str);
 
 #endif /* STRING_H */

@@ -568,9 +568,8 @@ static const char *_patches_ui[] = {
 	"window_snap_radius",
 	"invisible_trees",
 	"population_in_label",
-	"map_x",
-	"map_y",
 	"link_terraform_toolbar",
+	"progress_update_interval",
 };
 
 static const char *_patches_construction[] = {
@@ -580,6 +579,7 @@ static const char *_patches_construction[] = {
 	"signal_side",
 	"always_small_airport",
 	"drag_signals_density",
+	"oil_refinery_limit",
 };
 
 static const char *_patches_stations[] = {
@@ -600,9 +600,7 @@ static const char *_patches_economy[] = {
 	"multiple_industry_per_town",
 	"same_industry_close",
 	"bribe",
-	"snow_line_height",
 	"colored_news_year",
-	"starting_year",
 	"ending_year",
 	"smooth_economy",
 	"allow_shares",

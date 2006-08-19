@@ -10,6 +10,7 @@
 #include "player.h"
 #include "network.h"
 #include "variables.h"
+#include "genworld.h"
 
 const char* _cmd_text = NULL;
 
@@ -456,7 +457,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	_docommand_recursive = 1;
 
 	// cost estimation only?
-	if (_shift_pressed && IsLocalPlayer() && !(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR))) {
+	if (!IsGeneratingWorld() && _shift_pressed && IsLocalPlayer() && !(cmd & (CMD_NETWORK_COMMAND | CMD_SHOW_NO_ERROR))) {
 		// estimate the cost.
 		res = proc(tile, flags, p1, p2);
 		if (CmdFailed(res)) {

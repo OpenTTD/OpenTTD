@@ -11,39 +11,33 @@
 #include "network.h"
 #include "variables.h"
 #include "settings.h"
-
-extern void SwitchMode(int new_mode);
+#include "heightmap.h"
+#include "genworld.h"
 
 static const Widget _select_game_widgets[] = {
 {    WWT_CAPTION, RESIZE_NONE, 13,   0, 335,   0,  13, STR_0307_OPENTTD,       STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 335,  14, 196, STR_NULL,               STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 335,  14, 176, STR_NULL,               STR_NULL},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  22,  33, STR_0140_NEW_GAME,      STR_02FB_START_A_NEW_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  22,  33, STR_0141_LOAD_GAME,     STR_02FC_LOAD_A_SAVED_GAME},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  40,  51, STR_0220_CREATE_SCENARIO,STR_02FE_CREATE_A_CUSTOMIZED_GAME},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  40,  51, STR_029A_PLAY_SCENARIO, STR_0303_START_A_NEW_GAME_USING},
-{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  86,  59, 113, 0x1312,                 STR_030E_SELECT_TEMPERATE_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 166,  59, 113, 0x1314,                 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  59, 113, 0x1316,                 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  59, 113, 0x1318,                 STR_0311_SELECT_TOYLAND_LANDSCAPE},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  40,  51, STR_029A_PLAY_SCENARIO, STR_0303_START_A_NEW_GAME_USING},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  40,  51, STR_PLAY_HEIGHTMAP,     STR_PLAY_HEIGHTMAP_HINT},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  58,  69, STR_0220_CREATE_SCENARIO,STR_02FE_CREATE_A_CUSTOMIZED_GAME},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  58,  69, STR_MULTIPLAYER,        STR_0300_SELECT_MULTIPLAYER_GAME},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 219, 254, 120, 131, STR_NULL,               STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 255, 266, 120, 131, STR_0225,               STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 12, 279, 314, 120, 131, STR_NULL,               STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 315, 326, 120, 131, STR_0225,               STR_NULL},
+{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  86,  77, 131, 0x1312,                 STR_030E_SELECT_TEMPERATE_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 166,  77, 131, 0x1314,                 STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  77, 131, 0x1316,                 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  77, 131, 0x1318,                 STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 138, 149, STR_SINGLE_PLAYER,      STR_02FF_SELECT_SINGLE_PLAYER_GAME},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 138, 149, STR_MULTIPLAYER,        STR_0300_SELECT_MULTIPLAYER_GAME},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 159, 170, STR_0148_GAME_OPTIONS,  STR_0301_DISPLAY_GAME_OPTIONS},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 159, 170, STR_01FE_DIFFICULTY,    STR_0302_DISPLAY_DIFFICULTY_OPTIONS},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 177, 188, STR_CONFIG_PATCHES,     STR_CONFIG_PATCHES_TIP},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 177, 188, STR_0304_QUIT,          STR_0305_QUIT_OPENTTD},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 139, 150, STR_0148_GAME_OPTIONS,  STR_0301_DISPLAY_GAME_OPTIONS},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 139, 150, STR_01FE_DIFFICULTY,    STR_0302_DISPLAY_DIFFICULTY_OPTIONS},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 157, 168, STR_CONFIG_PATCHES,     STR_CONFIG_PATCHES_TIP},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 157, 168, STR_0304_QUIT,          STR_0305_QUIT_OPENTTD},
 {    WIDGETS_END },
 };
 
 extern void HandleOnEditText(WindowEvent *e);
 extern void HandleOnEditTextCancel(void);
-
-static inline void CreateScenario(void) {_switch_mode = SM_EDITOR;}
 
 static inline void SetNewLandscapeType(byte landscape)
 {
@@ -53,37 +47,21 @@ static inline void SetNewLandscapeType(byte landscape)
 
 static void SelectGameWndProc(Window *w, WindowEvent *e)
 {
-	/* We do +/- 6 for the map_xy because 64 is 2^6, but it is the lowest available element */
-	static const StringID mapsizes[] = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
-
 	switch (e->event) {
 	case WE_PAINT:
-		w->click_state = (w->click_state & ~(1 << 14) & ~(0xF << 6)) | (1 << (_opt_newgame.landscape + 6)) | (1 << 14);
+		w->click_state = (w->click_state & ~(0xF << 8)) | (1 << (_opt_newgame.landscape + 8));
 		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
 		DrawWindowWidgets(w);
-
-		DrawStringRightAligned(216, 121, STR_MAPSIZE, 0);
-		DrawString(223, 121, mapsizes[_patches_newgame.map_x - 6], 0x10);
-		DrawString(270, 121, STR_BY, 0);
-		DrawString(283, 121, mapsizes[_patches_newgame.map_y - 6], 0x10);
 		break;
 
 	case WE_CLICK:
 		switch (e->click.widget) {
-		case 2: AskForNewGameToStart(); break;
+		case 2: ShowGenerateLandscape(); break;
 		case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
-		case 4: CreateScenario(); break;
-		case 5: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
-		case 6: case 7: case 8: case 9:
-			SetNewLandscapeType(e->click.widget - 6);
-			break;
-		case 10: case 11: /* Mapsize X */
-			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, 11, 0, 0);
-			break;
-		case 12: case 13: /* Mapsize Y */
-			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_y - 6, 13, 0, 0);
-			break;
-		case 15:
+		case 4: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
+		case 5: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
+		case 6: ShowCreateScenario(); break;
+		case 7:
 #ifdef ENABLE_NETWORK
 			if (!_network_available) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
@@ -94,32 +72,20 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 			ShowErrorMessage(INVALID_STRING_ID ,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
 #endif
 			break;
-		case 16: ShowGameOptions(); break;
-		case 17: ShowGameDifficulty(); break;
-		case 18: ShowPatchesSelection(); break;
-		case 19: AskExitGame(); break;
+		case 8: case 9: case 10: case 11:
+			SetNewLandscapeType(e->click.widget - 8);
+			break;
+		case 12: ShowGameOptions(); break;
+		case 13: ShowGameDifficulty(); break;
+		case 14: ShowPatchesSelection(); break;
+		case 15: AskExitGame(); break;
 		}
-		break;
-
-	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
-	case WE_ON_EDIT_TEXT_CANCEL: HandleOnEditTextCancel(); break;
-
-	case WE_DROPDOWN_SELECT: /* Mapsize selection */
-		switch (e->dropdown.button) {
-			/* We need a *hacky* here because generateworld is called with _patches
-			 * but it only gets the new value INSIDE generateworld so not setting it would
-			 * break generating a new game on the run (eg MP) */
-			case 11: _patches.map_x = _patches_newgame.map_x = e->dropdown.index + 6; break;
-			case 13: _patches.map_y = _patches_newgame.map_y = e->dropdown.index + 6; break;
-		}
-		SetWindowDirty(w);
 		break;
 	}
-
 }
 
 static const WindowDesc _select_game_desc = {
-	WDP_CENTER, WDP_CENTER, 336, 197,
+	WDP_CENTER, WDP_CENTER, 336, 177,
 	WC_SELECT_GAME,0,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_game_widgets,
@@ -129,22 +95,6 @@ static const WindowDesc _select_game_desc = {
 void ShowSelectGameWindow(void)
 {
 	AllocateWindowDesc(&_select_game_desc);
-}
-
-void GenRandomNewGame(uint32 rnd1, uint32 rnd2)
-{
-	_random_seeds[0][0] = rnd1;
-	_random_seeds[0][1] = rnd2;
-
-	SwitchMode(SM_NEWGAME);
-}
-
-void StartScenarioEditor(uint32 rnd1, uint32 rnd2)
-{
-	_random_seeds[0][0] = rnd1;
-	_random_seeds[0][1] = rnd2;
-
-	SwitchMode(SM_START_SCENARIO);
 }
 
 static const Widget _ask_abandon_game_widgets[] = {

@@ -107,7 +107,15 @@ typedef struct Patches {
 	bool roadveh_queue;			// buggy road vehicle queueing
 	bool autoscroll;				// scroll when moving mouse to the edge.
 	byte errmsg_duration;		// duration of error message
+	byte land_generator;		// the landscape generator
+	byte oil_refinery_limit;	// distance oil refineries allowed from map edge
 	byte snow_line_height;	// a number 0-15 that configured snow line height
+	byte tgen_smoothness;		// how rough is the terrain from 0-3
+	uint32 generation_seed;	// noise seed for world generation
+	byte tree_placer;				// the tree placer algorithm
+	byte heightmap_rotation;// rotation director for the heightmap
+	uint16 progress_update_interval;// interval between two updates of the progress in hundreds of milliseconds
+	byte se_flat_world_height;	// land height a flat world gets in SE
 	bool bribe;							// enable bribing the local authority
 	bool nonuniform_stations;// allow nonuniform train stations
 	bool always_small_airport; // always allow small airports
@@ -244,6 +252,7 @@ typedef struct Paths {
 	char *save_dir;
 	char *autosave_dir;
 	char *scenario_dir;
+	char *heightmap_dir;
 	char *second_data_dir;
 } Paths;
 

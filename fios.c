@@ -10,6 +10,7 @@
 #include "string.h"
 #include "variables.h"
 #include "functions.h"
+#include "heightmap.h"
 #include "table/strings.h"
 #include "fios.h"
 #include <sys/types.h>
@@ -135,7 +136,10 @@ char *FiosBrowseTo(const FiosItem *item)
 	case FIOS_TYPE_FILE:
 	case FIOS_TYPE_OLDFILE:
 	case FIOS_TYPE_SCENARIO:
-	case FIOS_TYPE_OLD_SCENARIO: {
+	case FIOS_TYPE_OLD_SCENARIO:
+	case FIOS_TYPE_PNG:
+	case FIOS_TYPE_BMP:
+	{
 		static char str_buffr[512];
 
 #if defined(__MORPHOS__) || defined(__AMIGAOS__)
@@ -357,15 +361,45 @@ static byte FiosGetScenarioListCallback(int mode, const char *file, const char *
  */
 FiosItem *FiosGetScenarioList(int mode)
 {
-	static char *fios_scn_path = NULL;
+	static char *_fios_scn_path = NULL;
 
-	/* Copy the default path on first run or on 'New Game' */
-	if (mode == SLD_NEW_GAME || fios_scn_path == NULL) {
-		if (fios_scn_path == NULL) fios_scn_path = malloc(MAX_PATH);
-		ttd_strlcpy(fios_scn_path, _path.scenario_dir, MAX_PATH);
+	if (_fios_scn_path == NULL) {
+		_fios_scn_path = malloc(MAX_PATH);
+		ttd_strlcpy(_fios_scn_path, _path.scenario_dir, MAX_PATH);
 	}
 
-	_fios_path = fios_scn_path;
+	_fios_path = _fios_scn_path;
 
 	return FiosGetFileList(mode, &FiosGetScenarioListCallback);
+}
+
+static byte FiosGetHeightmapListCallback(int mode, const char *file, const char *ext, char *title)
+{
+	/* Show heightmap files
+	 * .PNG PNG Based heightmap files
+	 * .BMP BMP Based heightmap files
+	 */
+
+#ifdef WITH_PNG
+	if (strcasecmp(ext, ".png") == 0) return FIOS_TYPE_PNG;
+#endif /* WITH_PNG */
+
+	if (strcasecmp(ext, ".bmp") == 0) return FIOS_TYPE_BMP;
+
+	return FIOS_TYPE_INVALID;
+}
+
+// Get a list of Heightmaps
+FiosItem *FiosGetHeightmapList(int mode)
+{
+	static char *_fios_hmap_path = NULL;
+
+	if (_fios_hmap_path == NULL) {
+		_fios_hmap_path = malloc(MAX_PATH);
+		strcpy(_fios_hmap_path, _path.heightmap_dir);
+	}
+
+	_fios_path = _fios_hmap_path;
+
+	return FiosGetFileList(mode, &FiosGetHeightmapListCallback);
 }

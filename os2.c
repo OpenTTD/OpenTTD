@@ -180,6 +180,7 @@ void DeterminePaths(void)
 	_path.save_dir = str_fmt("%ssave", _path.personal_dir);
 	_path.autosave_dir = str_fmt("%s\\autosave", _path.save_dir);
 	_path.scenario_dir = str_fmt("%sscenario", _path.personal_dir);
+	_path.heightmap_dir = str_fmt("%sscenario\\heightmap", _path.personal_dir);
 	_path.gm_dir = str_fmt("%sgm\\", _path.game_data_dir);
 	_path.data_dir = str_fmt("%sdata\\", _path.game_data_dir);
 
@@ -202,6 +203,7 @@ void DeterminePaths(void)
 	mkdir(_path.save_dir);
 	mkdir(_path.autosave_dir);
 	mkdir(_path.scenario_dir);
+	mkdir(_path.heightmap_dir);
 }
 
 /**

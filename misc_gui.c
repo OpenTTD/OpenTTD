@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "hal.h"
+#include "heightmap.h"
 #include "debug.h"
 #include "functions.h"
 #include "gfxinit.h"
@@ -26,12 +27,17 @@
 #include "variables.h"
 #include "vehicle.h"
 #include "train.h"
+#include "tgp.h"
+#include "settings.h"
 #include "date.h"
 
 #include "fios.h"
 /* Variables to display file lists */
 FiosItem *_fios_list;
 int _saveload_mode;
+
+extern void GenerateLandscape(byte mode);
+extern void SwitchMode(int new_mode);
 
 static bool _fios_path_changed;
 static bool _savegame_sort_dirty;
@@ -1094,6 +1100,72 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
 }
 
+static void QueryWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+	case WE_PAINT:
+		SetDParam(0, WP(w, query_d).caption);
+		DrawWindowWidgets(w);
+
+		DrawStringMultiCenter(90, 38, WP(w, query_d).message, 178);
+		break;
+
+	case WE_CLICK:
+		switch (e->click.widget) {
+		case 3:
+		case 4:
+			WP(w, query_d).calledback = true;
+			if (WP(w, query_d).ok_cancel_callback != NULL) WP(w, query_d).ok_cancel_callback(e->click.widget == 4);
+			DeleteWindow(w);
+			break;
+		}
+		break;
+
+	case WE_MOUSELOOP:
+		if (!FindWindowById(WP(w, query_d).wnd_class, WP(w, query_d).wnd_num)) DeleteWindow(w);
+		break;
+
+	case WE_DESTROY:
+		if (!WP(w, query_d).calledback && WP(w, query_d).ok_cancel_callback != NULL) WP(w, query_d).ok_cancel_callback(false);
+		break;
+	}
+}
+
+static const Widget _query_widgets[] = {
+{ WWT_CLOSEBOX, RESIZE_NONE,  4,   0,  10,   0,  13, STR_00C5,        STR_018B_CLOSE_WINDOW},
+{  WWT_CAPTION, RESIZE_NONE,  4,  11, 179,   0,  13, STR_012D,        STR_NULL},
+{   WWT_IMGBTN, RESIZE_NONE,  4,   0, 179,  14,  91, 0x0,             STR_NULL},
+{  WWT_TEXTBTN, RESIZE_NONE, 12,  25,  84,  72,  83, STR_012E_CANCEL, STR_NULL},
+{  WWT_TEXTBTN, RESIZE_NONE, 12,  95, 154,  72,  83, STR_012F_OK,     STR_NULL},
+{  WIDGETS_END },
+};
+
+static const WindowDesc _query_desc = {
+	WDP_CENTER, WDP_CENTER, 180, 92,
+	WC_OK_CANCEL_QUERY, 0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	_query_widgets,
+	QueryWndProc
+};
+
+void ShowQuery(StringID caption, StringID message, void (*ok_cancel_callback)(bool ok_clicked), WindowClass window_class, WindowNumber window_number)
+{
+	Window *w;
+
+	DeleteWindowById(WC_OK_CANCEL_QUERY, 0);
+
+	w = AllocateWindowDesc(&_query_desc);
+
+	w->click_state = 1 << 5;
+	WP(w, query_d).caption            = caption;
+	WP(w, query_d).message            = message;
+	WP(w, query_d).wnd_class          = window_class;
+	WP(w, query_d).wnd_num            = window_number;
+	WP(w, query_d).ok_cancel_callback = ok_cancel_callback;
+	WP(w, query_d).calledback         = false;
+}
+
+
 static const Widget _load_dialog_1_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13, STR_4001_LOAD_GAME,	STR_018C_WINDOW_TITLE_DRAG_THIS},
@@ -1119,6 +1191,20 @@ static const Widget _load_dialog_2_widgets[] = {
 {          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291, 0x0,										STR_400A_LIST_OF_DRIVES_DIRECTORIES},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   281, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   282,   293, 0x0,										STR_RESIZE_BUTTON},
+{   WIDGETS_END},
+};
+
+static const Widget _load_dialog_3_widgets[] = {
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13,  STR_00C5,           STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   256,     0,    13,  STR_4011_LOAD_HEIGHTMAP,STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   127,    14,    25,  STR_SORT_BY_NAME,   STR_SORT_ORDER_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   128,   256,    14,    25,  STR_SORT_BY_DATE,   STR_SORT_ORDER_TIP},
+{     WWT_IMGBTN,  RESIZE_RIGHT,    14,     0,   256,    26,    47,  0x0,                STR_NULL},
+{     WWT_IMGBTN,     RESIZE_RB,    14,     0,   256,    48,   293,  0x0,                STR_NULL},
+{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   245,   256,    48,    59,  SPR_HOUSE_ICON,     STR_SAVELOAD_HOME_BUTTON},
+{          WWT_6,     RESIZE_RB,    14,     2,   243,    50,   291,  0x0,                STR_400A_LIST_OF_DRIVES_DIRECTORIES},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   245,   256,    60,   281,  0x0,                STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   245,   256,   282,   293,  0x0,                STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -1158,9 +1244,8 @@ static const Widget _save_dialog_scen_widgets[] = {
 {   WIDGETS_END},
 };
 
-
 // Colors for fios types
-const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5};
+const byte _fios_colors[] = {13, 9, 9, 6, 5, 6, 5, 6, 6, 8};
 
 void BuildFileList(void)
 {
@@ -1172,6 +1257,8 @@ void BuildFileList(void)
 		case SLD_LOAD_SCENARIO:
 		case SLD_SAVE_SCENARIO:
 			_fios_list = FiosGetScenarioList(_saveload_mode); break;
+		case SLD_LOAD_HEIGHTMAP:
+			_fios_list = FiosGetHeightmapList(_saveload_mode); break;
 
 		default: _fios_list = FiosGetSavegameList(_saveload_mode); break;
 	}
@@ -1247,6 +1334,10 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			case SLD_SAVE_SCENARIO:
 			case SLD_LOAD_SCENARIO:
 				ttd_strlcpy(&o_dir.name[0], _path.scenario_dir, sizeof(o_dir.name));
+				break;
+
+			case SLD_LOAD_HEIGHTMAP:
+				ttd_strlcpy(&o_dir.name[0], _path.heightmap_dir, sizeof(o_dir.name));
 				break;
 
 			default:
@@ -1331,6 +1422,13 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 					ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
 
 					DeleteWindow(w);
+				} else if (_saveload_mode == SLD_LOAD_HEIGHTMAP) {
+					SetFiosType(file->type);
+					ttd_strlcpy(_file_to_saveload.name, name, sizeof(_file_to_saveload.name));
+					ttd_strlcpy(_file_to_saveload.title, file->title, sizeof(_file_to_saveload.title));
+
+					DeleteWindow(w);
+					ShowHeightmapLoad();
 				} else {
 					// SLD_SAVE_GAME, SLD_SAVE_SCENARIO copy clicked name to editbox
 					ttd_strlcpy(WP(w, querystr_d).text.buf, file->title, WP(w, querystr_d).text.maxlength);
@@ -1442,11 +1540,20 @@ static const WindowDesc _save_dialog_scen_desc = {
 	SaveLoadDlgWndProc,
 };
 
+static const WindowDesc _load_dialog_heightmap_desc = {
+	WDP_CENTER, WDP_CENTER, 257, 294,
+	WC_SAVELOAD,0,
+	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	_load_dialog_3_widgets,
+	SaveLoadDlgWndProc,
+};
+
 static const WindowDesc * const _saveload_dialogs[] = {
 	&_load_dialog_desc,
 	&_load_dialog_scen_desc,
 	&_save_dialog_desc,
 	&_save_dialog_scen_desc,
+	&_load_dialog_heightmap_desc,
 };
 
 void ShowSaveLoadDialog(int mode)
@@ -1493,107 +1600,6 @@ void RedrawAutosave(void)
 	SetWindowDirty(FindWindowById(WC_STATUS_BAR, 0));
 }
 
-static const Widget _select_scenario_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,     7,    11,   256,     0,    13, STR_400E_SELECT_NEW_GAME_TYPE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,  RESIZE_RIGHT,     7,     0,   256,    14,    25, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     7,     0,   127,    14,    25, STR_SORT_BY_NAME,		STR_SORT_ORDER_TIP},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     7,   128,   256,    14,    25, STR_SORT_BY_DATE,		STR_SORT_ORDER_TIP},
-{     WWT_IMGBTN,     RESIZE_RB,     7,     0,   244,    26,   319, 0x0,								STR_NULL},
-{          WWT_6,     RESIZE_RB,     7,     2,   243,    28,   317, 0x0,								STR_400F_SELECT_SCENARIO_GREEN_PRE},
-{  WWT_SCROLLBAR,    RESIZE_LRB,     7,   245,   256,    26,   307, 0x0,								STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,     7,   245,   256,   308,   319, 0x0,								STR_RESIZE_BUTTON},
-{   WIDGETS_END},
-};
-
-static void SelectScenarioWndProc(Window *w, WindowEvent *e)
-{
-	const int list_start = 45;
-
-	switch (e->event) {
-	case WE_PAINT: {
-		int y,pos;
-		const FiosItem *item;
-
-		if (_savegame_sort_dirty) {
-			_savegame_sort_dirty = false;
-			MakeSortedSaveGameList();
-		}
-
-		SetVScrollCount(w, _fios_num);
-
-		DrawWindowWidgets(w);
-		DoDrawString(
-			_savegame_sort_order & SORT_DESCENDING ? DOWNARROW : UPARROW,
-			_savegame_sort_order & SORT_BY_NAME ? w->widget[3].right - 9 : w->widget[4].right - 9,
-			15, 16
-		);
-		DrawString(4, 32, STR_4010_GENERATE_RANDOM_NEW_GAME, 9);
-
-		y = list_start;
-		pos = w->vscroll.pos;
-		while (pos < _fios_num) {
-			item = _fios_list + pos;
-			DoDrawString(item->title, 4, y, _fios_colors[item->type]);
-			pos++;
-			y += 10;
-			if (y >= w->vscroll.cap * 10 + list_start) break;
-		}
-	}
-		break;
-
-	case WE_CLICK:
-		switch (e->click.widget) {
-		case 3: /* Sort scenario names by name */
-			_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
-				SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
-			_savegame_sort_dirty = true;
-			SetWindowDirty(w);
-			break;
-
-		case 4: /* Sort scenario names by date */
-			_savegame_sort_order = (_savegame_sort_order == SORT_BY_DATE) ?
-				SORT_BY_DATE | SORT_DESCENDING : SORT_BY_DATE;
-			_savegame_sort_dirty = true;
-			SetWindowDirty(w);
-			break;
-
-		case 6: /* Click the listbox */
-			if (e->click.pt.y < list_start) {
-				GenRandomNewGame(Random(), InteractiveRandom());
-			} else {
-				int y = (e->click.pt.y - list_start) / 10;
-				const char *name;
-				const FiosItem *file;
-
-				if (y < 0 || (y += w->vscroll.pos) >= w->vscroll.count) return;
-
-				file = _fios_list + y;
-
-				name = FiosBrowseTo(file);
-				if (name != NULL) {
-					SetFiosType(file->type);
-					strcpy(_file_to_saveload.name, name);
-					DeleteWindow(w);
-					StartScenarioEditor(Random(), InteractiveRandom());
-				}
-			}
-			break;
-		}
-		break;
-
-	case WE_RESIZE: {
-		/* Widget 3 and 4 have to go with halve speed, make it so obiwan */
-		uint diff = e->sizing.diff.x / 2;
-		w->widget[3].right += diff;
-		w->widget[4].left  += diff;
-		w->widget[4].right += e->sizing.diff.x;
-
-		w->vscroll.cap += e->sizing.diff.y / 10;
-		} break;
-	}
-}
-
 void SetFiosType(const byte fiostype)
 {
 	switch (fiostype) {
@@ -1607,35 +1613,20 @@ void SetFiosType(const byte fiostype)
 			_file_to_saveload.mode = SL_OLD_LOAD;
 			break;
 
+#ifdef WITH_PNG
+		case FIOS_TYPE_PNG:
+			_file_to_saveload.mode = SL_PNG;
+			break;
+#endif /* WITH_PNG */
+
+		case FIOS_TYPE_BMP:
+			_file_to_saveload.mode = SL_BMP;
+			break;
+
 		default:
 			_file_to_saveload.mode = SL_INVALID;
 			break;
 	}
-}
-
-static const WindowDesc _select_scenario_desc = {
-	WDP_CENTER, WDP_CENTER, 257, 320,
-	WC_SAVELOAD,0,
-	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_STD_BTN | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
-	_select_scenario_widgets,
-	SelectScenarioWndProc
-};
-
-void AskForNewGameToStart(void)
-{
-	Window *w;
-
-	DeleteWindowById(WC_QUERY_STRING, 0);
-	DeleteWindowById(WC_SAVELOAD, 0);
-
-	_saveload_mode = SLD_NEW_GAME;
-	BuildFileList();
-
-	w = AllocateWindowDesc(&_select_scenario_desc);
-	w->vscroll.cap = 27;
-	w->resize.step_width = 2;
-	w->resize.step_height = 10;
-	w->resize.height = w->height - 10 * 17; // Minimum of 10 in the list
 }
 
 static int32 ClickMoneyCheat(int32 p1, int32 p2)

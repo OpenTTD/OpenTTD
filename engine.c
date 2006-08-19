@@ -30,6 +30,10 @@ enum {
 	ENGINE_PREVIEWING = 4,
 };
 
+enum {
+	YEAR_ENGINE_AGING_STOPS = 2050,
+};
+
 /** Bitmasked values of what type of cargo is refittable for the given vehicle-type.
  * This coupled with the landscape information (_landscape_global_cargo_mask) gives
  * us exactly what is refittable and what is not */
@@ -135,6 +139,8 @@ void StartupEngines(void)
 {
 	Engine *e;
 	const EngineInfo *ei;
+	/* Aging of vehicles stops, so account for that when starting late */
+	const uint16 aging_date = min(_date, ConvertYMDToDate(YEAR_ENGINE_AGING_STOPS, 0, 1));
 
 	SetupEngineNames();
 
@@ -152,7 +158,7 @@ void StartupEngines(void)
 		r = Random();
 		e->intro_date = ei->base_intro <= ConvertYMDToDate(1922, 0, 1) ? ei->base_intro : (Date)GB(r, 0, 9) + ei->base_intro;
 		if (e->intro_date <= _date) {
-			e->age = (_date - e->intro_date) >> 5;
+			e->age = (aging_date - e->intro_date) >> 5;
 			e->player_avail = (byte)-1;
 			e->flags |= ENGINE_AVAILABLE;
 		}
@@ -237,7 +243,7 @@ void EnginesDailyLoop(void)
 {
 	EngineID i;
 
-	if (_cur_year >= 2050) return;
+	if (_cur_year >= YEAR_ENGINE_AGING_STOPS) return;
 
 	for (i = 0; i != lengthof(_engines); i++) {
 		Engine *e = &_engines[i];
@@ -358,7 +364,7 @@ void EnginesMonthlyLoop(void)
 {
 	Engine *e;
 
-	if (_cur_year < 2050) {
+	if (_cur_year < YEAR_ENGINE_AGING_STOPS) {
 		for (e = _engines; e != endof(_engines); e++) {
 			// Age the vehicle
 			if (e->flags & ENGINE_AVAILABLE && e->age != 0xFFFF) {

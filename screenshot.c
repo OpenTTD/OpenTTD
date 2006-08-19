@@ -254,7 +254,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	fclose(f);
 	return true;
 }
-#endif // WITH_PNG
+#endif /* WITH_PNG */
 
 
 //************************************************

@@ -137,8 +137,8 @@ void DisplaySplashImage(void)
 
 
 
-#else // WITH_PNG
+#else /* WITH_PNG */
 
 void DisplaySplashImage(void) {}
 
-#endif // WITH_PNG
+#endif /* WITH_PNG */

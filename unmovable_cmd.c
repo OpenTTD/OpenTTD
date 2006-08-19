@@ -18,6 +18,7 @@
 #include "unmovable_map.h"
 #include "variables.h"
 #include "table/unmovable_land.h"
+#include "genworld.h"
 
 /** Destroy a HQ.
  * During normal gameplay you can only implicitely destroy a HQ when you are
@@ -309,12 +310,13 @@ static bool IsRadioTowerNearby(TileIndex tile)
 	BEGIN_TILE_LOOP(tile, 9, 9, tile_s)
 		if (IsTransmitterTile(tile)) return true;
 	END_TILE_LOOP(tile, 9, 9, tile_s)
+
 	return false;
 }
 
 void GenerateUnmovables(void)
 {
-	int i,j;
+	int i, li, j, loop_count;
 	TileIndex tile;
 	uint h;
 	uint maxx;
@@ -324,12 +326,16 @@ void GenerateUnmovables(void)
 
 	/* add radio tower */
 	i = ScaleByMapSize(1000);
-	j = ScaleByMapSize(40); // maximum number of radio towers on the map
+	j = ScaleByMapSize(15); // maximum number of radio towers on the map
+	li = ScaleByMapSize1D((Random() & 3) + 7);
+	SetGeneratingWorldProgress(GWP_UNMOVABLE, j + li);
+
 	do {
 		tile = RandomTile();
 		if (IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h >= TILE_HEIGHT * 4) {
 			if (IsRadioTowerNearby(tile)) continue;
 			MakeTransmitter(tile);
+			IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
 			if (--j == 0) break;
 		}
 	} while (--i);
@@ -337,16 +343,27 @@ void GenerateUnmovables(void)
 	if (_opt.landscape == LT_DESERT) return;
 
 	/* add lighthouses */
-	i = ScaleByMapSize1D((Random() & 3) + 7);
+	i = li;
 	maxx = MapMaxX();
 	maxy = MapMaxY();
+	loop_count = 0;
 	do {
 		uint32 r;
 		DiagDirection dir;
+		int perimeter;
 
 restart:
+		/* Avoid infinite loops */
+		if (++loop_count > 1000) break;
+
 		r = Random();
-		dir = GB(r, 30, 2);
+
+		/* Scatter the lighthouses more evenly around the perimeter */
+		perimeter = (GB(r, 16, 16) % (2 * (maxx + maxy))) - maxy;
+		for (dir = DIAGDIR_NE; perimeter > 0; dir++) {
+			perimeter -= (DiagDirToAxis(dir) == AXIS_X) ? maxx : maxy;
+		}
+
 		switch (dir) {
 			default:
 			case DIAGDIR_NE: tile = TileXY(maxx,     r % maxy); break;
@@ -363,6 +380,7 @@ restart:
 		assert(tile == TILE_MASK(tile));
 
 		MakeLighthouse(tile);
+		IncreaseGeneratingWorldProgress(GWP_UNMOVABLE);
 	} while (--i);
 }
 

@@ -12,6 +12,7 @@
 #include "../window.h"
 #include "../console.h"
 #include "../variables.h"
+#include "../genworld.h"
 #include "dedicated_v.h"
 
 #ifdef BEOS_NET_SERVER
@@ -240,8 +241,9 @@ static void DedicatedVideoMainLoop(void)
 
 	/* If SwitchMode is SM_LOAD, it means that the user used the '-g' options */
 	if (_switch_mode != SM_LOAD) {
+		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
+		SwitchMode(_switch_mode);
 		_switch_mode = SM_NONE;
-		GenRandomNewGame(Random(), InteractiveRandom());
 	} else {
 		_switch_mode = SM_NONE;
 		/* First we need to test if the savegame can be loaded, else we will end up playing the

@@ -22,6 +22,7 @@
 #include "variables.h"
 #include "table/industry_land.h"
 #include "table/build_industry.h"
+#include "genworld.h"
 #include "date.h"
 
 enum {
@@ -1026,7 +1027,7 @@ static bool CheckNewIndustry_Forest(TileIndex tile)
 static bool CheckNewIndustry_OilRefinery(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR) return true;
-	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16) return true;
+	if (DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _patches.oil_refinery_limit) return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
@@ -1038,7 +1039,7 @@ static bool CheckNewIndustry_OilRig(TileIndex tile)
 {
 	if (_game_mode == GM_EDITOR && _ignore_restrictions) return true;
 	if (TileHeight(tile) == 0 &&
-			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < 16)   return true;
+			DistanceFromEdge(TILE_ADDXY(tile, 1, 1)) < _patches.oil_refinery_limit) return true;
 
 	_error_message = STR_483B_CAN_ONLY_BE_POSITIONED;
 	return false;
@@ -1161,7 +1162,7 @@ static const byte _industry_section_bits[] = {
 	16, 16, 16, 16, 16, 16, 16,
 };
 
-static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, int type, const Town *t)
+static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable *it, int type)
 {
 	_error_message = STR_0239_SITE_UNSUITABLE;
 
@@ -1191,22 +1192,27 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				tileh = GetTileSlope(cur_tile, NULL);
 				if (IsSteepSlope(tileh)) return false;
 
-				if (tileh != SLOPE_FLAT) {
-					Slope t;
-					byte bits = _industry_section_bits[it->gfx];
+				if (_patches.land_generator == LG_TERRAGENESIS || !_generating_world) {
+					/* It is almost impossible to have a fully flat land in TG, so what we
+					 *  do is that we check if we can make the land flat later on. See
+					 *  CheckIfCanLevelIndustryPlatform(). */
+					if (tileh != SLOPE_FLAT) {
+						Slope t;
+						byte bits = _industry_section_bits[it->gfx];
 
-					if (bits & 0x10) return false;
+						if (bits & 0x10) return false;
 
-					t = ComplementSlope(tileh);
+						t = ComplementSlope(tileh);
 
-					if (bits & 1 && (t & SLOPE_NW)) return false;
-					if (bits & 2 && (t & SLOPE_NE)) return false;
-					if (bits & 4 && (t & SLOPE_SW)) return false;
-					if (bits & 8 && (t & SLOPE_SE)) return false;
+						if (bits & 1 && (t & SLOPE_NW)) return false;
+						if (bits & 2 && (t & SLOPE_NE)) return false;
+						if (bits & 4 && (t & SLOPE_SW)) return false;
+						if (bits & 8 && (t & SLOPE_SE)) return false;
+					}
 				}
 
 				if (type == IT_BANK_TEMP) {
-					if (!IsTileType(cur_tile, MP_HOUSE) || t->population < 1200) {
+					if (!IsTileType(cur_tile, MP_HOUSE)) {
 						_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
 						return false;
 					}
@@ -1216,7 +1222,6 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 						return false;
 					}
 				} else if (type == IT_TOY_SHOP) {
-					if (DistanceMax(t->xy, cur_tile) > 9) return false;
 					if (!IsTileType(cur_tile, MP_HOUSE)) goto do_clear;
 				} else if (type == IT_WATER_TOWER) {
 					if (!IsTileType(cur_tile, MP_HOUSE)) {
@@ -1234,6 +1239,115 @@ do_clear:
 
 	return true;
 }
+
+static bool CheckIfIndustryIsAllowed(TileIndex tile, int type, const Town *t)
+{
+	if (type == IT_BANK_TEMP && t->population < 1200) {
+		_error_message = STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS;
+		return false;
+	}
+
+	if (type == IT_TOY_SHOP && DistanceMax(t->xy, tile) > 9) {
+		_error_message = STR_0239_SITE_UNSUITABLE;
+		return false;
+	}
+
+	return true;
+}
+
+static bool CheckCanTerraformSurroundingTiles(TileIndex tile, uint height, int internal)
+{
+	int size_x, size_y;
+	uint curh;
+
+	size_x = 2;
+	size_y = 2;
+
+	/* Check if we don't leave the map */
+	if (TileX(tile) == 0 || TileY(tile) == 0 || GetTileType(tile) == MP_VOID) return false;
+
+	tile += TileDiffXY(-1, -1);
+	BEGIN_TILE_LOOP(tile_walk, size_x, size_y, tile) {
+		curh = TileHeight(tile_walk);
+		/* Is the tile clear? */
+		if ((GetTileType(tile_walk) != MP_CLEAR) && (GetTileType(tile_walk) != MP_TREES))
+			return false;
+
+		/* Don't allow too big of a change if this is the sub-tile check */
+		if (internal != 0 && myabs(curh - height) > 1) return false;
+
+		/* Different height, so the surrounding tiles of this tile
+		 *  has to be correct too (in level, or almost in level)
+		 *  else you get a chain-reaction of terraforming. */
+		if (internal == 0 && curh != height) {
+			if (!CheckCanTerraformSurroundingTiles(tile_walk + TileDiffXY(-1, -1), height, internal + 1))
+				return false;
+		}
+	} END_TILE_LOOP(tile_walk, size_x, size_y, tile);
+
+	return true;
+}
+
+/**
+ * This function tries to flatten out the land below an industry, without
+ *  damaging the surroundings too much.
+ */
+static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const IndustryTileTable* it, int type)
+{
+	const int MKEND = -0x80;   // used for last element in an IndustryTileTable (see build_industry.h)
+	int max_x = 0;
+	int max_y = 0;
+	TileIndex cur_tile;
+	uint size_x, size_y;
+	uint h, curh;
+
+	/* Finds dimensions of largest variant of this industry */
+	do {
+		if (it->ti.x > max_x) max_x = it->ti.x;
+		if (it->ti.y > max_y) max_y = it->ti.y;
+	} while ((++it)->ti.x != MKEND);
+
+	/* Remember level height */
+	h = TileHeight(tile);
+
+	/* Check that all tiles in area and surrounding are clear
+	 * this determines that there are no obstructing items */
+	cur_tile = tile + TileDiffXY(-1, -1);
+	size_x = max_x + 4;
+	size_y = max_y + 4;
+
+	/* Check if we don't leave the map */
+	if (TileX(cur_tile) == 0 || TileY(cur_tile) == 0 || GetTileType(cur_tile) == MP_VOID) return false;
+
+	BEGIN_TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
+		curh = TileHeight(tile_walk);
+		if (curh != h) {
+			/* This tile needs terraforming. Check if we can do that without
+			 *  damaging the surroundings too much. */
+			if (!CheckCanTerraformSurroundingTiles(tile_walk, h, 0)) return false;
+			/* This is not 100% correct check, but the best we can do without modifying the map.
+			 *  What is missing, is if the difference in height is more than 1.. */
+			if (CmdFailed(DoCommand(tile_walk, 8, (curh > h) ? 0 : 1, flags & ~DC_EXEC, CMD_TERRAFORM_LAND))) return false;
+		}
+	} END_TILE_LOOP(tile_walk, size_x, size_y, cur_tile)
+
+	if (flags & DC_EXEC) {
+		/* Terraform the land under the industry */
+		BEGIN_TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
+			curh = TileHeight(tile_walk);
+			while (curh != h) {
+				/* We give the terraforming for free here, because we can't calculate
+				 *  exact cost in the test-round, and as we all know, that will cause
+				 *  a nice assert if they don't match ;) */
+				DoCommand(tile_walk, 8, (curh > h) ? 0 : 1, flags, CMD_TERRAFORM_LAND);
+				curh += (curh > h) ? -1 : 1;
+			}
+		} END_TILE_LOOP(tile_walk, size_x, size_y, cur_tile)
+	}
+
+	return true;
+}
+
 
 static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 {
@@ -1373,6 +1487,33 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
 }
 
+static Industry *CreateNewIndustryHelper(TileIndex tile, IndustryType type, uint32 flags, const IndustrySpec *indspec, const IndustryTileTable *it)
+{
+	const Town *t;
+	Industry *i;
+
+	if (!CheckIfIndustryTilesAreFree(tile, it, type)) return NULL;
+	if (_patches.land_generator == LG_TERRAGENESIS && _generating_world && !CheckIfCanLevelIndustryPlatform(tile, 0, it, type)) return NULL;
+	if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
+	if (!CheckIfTooCloseToIndustry(tile, type)) return NULL;
+
+	t = CheckMultipleIndustryInTown(tile, type);
+	if (t == NULL) return NULL;
+
+	if (!CheckIfIndustryIsAllowed(tile, type, t)) return NULL;
+	if (!CheckSuitableIndustryPos(tile)) return NULL;
+
+	i = AllocateIndustry();
+	if (i == NULL) return NULL;
+
+	if (flags & DC_EXEC) {
+		CheckIfCanLevelIndustryPlatform(tile, DC_EXEC, it, type);
+		DoCreateNewIndustry(i, tile, type, it, t, OWNER_NONE);
+	}
+
+	return i;
+}
+
 /** Build/Fund an industry
  * @param tile tile where industry is built
  * @param p1 industry type @see build_industry.h and @see industry.h
@@ -1380,16 +1521,12 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
  */
 int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	const Town *t;
-	Industry *i;
 	int num;
 	const IndustryTileTable * const *itt;
 	const IndustryTileTable *it;
 	const IndustrySpec *indspec;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
-
-	if (!CheckSuitableIndustryPos(tile)) return CMD_ERROR;
 
 	/* Check if the to-be built/founded industry is available for this climate.
 	 * Unfortunately we have no easy way of checking, except for looping the table */
@@ -1418,25 +1555,14 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return CMD_ERROR;
 	}
 
-	if (!_check_new_industry_procs[indspec->check_proc](tile)) return CMD_ERROR;
-
-	t = CheckMultipleIndustryInTown(tile, p1);
-	if (t == NULL) return CMD_ERROR;
-
 	num = indspec->num_table;
 	itt = indspec->table;
 
 	do {
 		if (--num < 0) return_cmd_error(STR_0239_SITE_UNSUITABLE);
-	} while (!CheckIfIndustryTilesAreFree(tile, it = itt[num], p1, t));
+	} while (!CheckIfIndustryTilesAreFree(tile, it = itt[num], p1));
 
-
-	if (!CheckIfTooCloseToIndustry(tile, p1)) return CMD_ERROR;
-
-	i = AllocateIndustry();
-	if (i == NULL) return CMD_ERROR;
-
-	if (flags & DC_EXEC) DoCreateNewIndustry(i, tile, p1, it, t, OWNER_NONE);
+	if (CreateNewIndustryHelper(tile, p1, flags, indspec, it) == NULL) return CMD_ERROR;
 
 	return (_price.build_industry >> 5) * indspec->cost_multiplier;
 }
@@ -1444,33 +1570,10 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 Industry *CreateNewIndustry(TileIndex tile, IndustryType type)
 {
-	const Town *t;
-	const IndustryTileTable *it;
-	Industry *i;
+	const IndustrySpec *indspec = GetIndustrySpec(type);
+	const IndustryTileTable *it = indspec->table[RandomRange(indspec->num_table)];
 
-	const IndustrySpec *indspec;
-
-	if (!CheckSuitableIndustryPos(tile)) return NULL;
-
-	indspec =  GetIndustrySpec(type);
-
-	if (!_check_new_industry_procs[indspec->check_proc](tile)) return NULL;
-
-	t = CheckMultipleIndustryInTown(tile, type);
-	if (t == NULL) return NULL;
-
-	/* pick a random layout */
-	it = indspec->table[RandomRange(indspec->num_table)];
-
-	if (!CheckIfIndustryTilesAreFree(tile, it, type, t)) return NULL;
-	if (!CheckIfTooCloseToIndustry(tile, type)) return NULL;
-
-	i = AllocateIndustry();
-	if (i == NULL) return NULL;
-
-	DoCreateNewIndustry(i, tile, type, it, t, OWNER_NONE);
-
-	return i;
+	return CreateNewIndustryHelper(tile, type, DC_EXEC, indspec, it);
 }
 
 static const byte _numof_industry_table[4][12] = {
@@ -1500,6 +1603,8 @@ static void PlaceInitialIndustry(IndustryType type, int amount)
 		do {
 			uint i;
 
+			IncreaseGeneratingWorldProgress(GWP_INDUSTRY);
+
 			for (i = 0; i < 2000; i++) {
 				if (CreateNewIndustry(RandomTile(), type) != NULL) break;
 			}
@@ -1512,6 +1617,23 @@ static void PlaceInitialIndustry(IndustryType type, int amount)
 void GenerateIndustries(void)
 {
 	const byte *b;
+	uint i = 0;
+
+	/* Find the total amount of industries */
+	b = _industry_create_table[_opt.landscape];
+	do {
+		int num = _numof_industry_table[_opt.diff.number_industries][b[0]];
+
+		if (b[1] == IT_OIL_REFINERY || b[1] == IT_OIL_RIG) {
+			/* These are always placed next to the coastline, so we scale by the perimeter instead. */
+			num = ScaleByMapSize1D(num);
+		} else {
+			num = ScaleByMapSize(num);
+		}
+
+		i += num;
+	} while ( (b+=2)[0] != 0);
+	SetGeneratingWorldProgress(GWP_INDUSTRY, i);
 
 	b = _industry_create_table[_opt.landscape];
 	do {

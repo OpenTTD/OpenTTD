@@ -204,8 +204,6 @@ TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);
 
 void AfterLoadTown(void);
 void UpdatePatches(void);
-void GenRandomNewGame(uint32 rnd1, uint32 rnd2);
-void StartScenarioEditor(uint32 rnd1, uint32 rnd2);
 void AskExitGame(void);
 void AskExitToGameMenu(void);
 
@@ -216,11 +214,12 @@ StringID RemapOldStringID(StringID s);
 void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str);
 
 enum {
-	SLD_LOAD_GAME = 0,
-	SLD_LOAD_SCENARIO = 1,
-	SLD_SAVE_GAME = 2,
-	SLD_SAVE_SCENARIO = 3,
-	SLD_NEW_GAME = 4,
+	SLD_LOAD_GAME,
+	SLD_LOAD_SCENARIO,
+	SLD_SAVE_GAME,
+	SLD_SAVE_SCENARIO,
+	SLD_LOAD_HEIGHTMAP,
+	SLD_NEW_GAME,
 };
 void ShowSaveLoadDialog(int mode);
 

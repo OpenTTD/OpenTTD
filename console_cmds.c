@@ -20,6 +20,7 @@
 #include "station.h"
 #include "strings.h"
 #include "screenshot.h"
+#include "genworld.h"
 #include "date.h"
 
 #ifdef ENABLE_NETWORK
@@ -871,17 +872,44 @@ DEF_CONSOLE_CMD(ConEchoC)
 	return true;
 }
 
-extern void SwitchMode(int new_mode);
-
 DEF_CONSOLE_CMD(ConNewGame)
 {
 	if (argc == 0) {
-		IConsoleHelp("Start a new game. Usage: 'newgame'");
-		IConsoleHelp("The server can force a new game using 'newgame', any client using it will part and start a single-player game");
+		IConsoleHelp("Start a new game. Usage: 'newgame [seed]'");
+		IConsoleHelp("The server can force a new game using 'newgame'; any client joined will rejoin after the server is done generating the new game.");
 		return true;
 	}
 
-	GenRandomNewGame(Random(), InteractiveRandom());
+	StartNewGameWithoutGUI((argc == 2) ? (uint)atoi(argv[1]) : GENERATE_NEW_SEED);
+	return true;
+}
+
+extern void SwitchMode(int new_mode);
+
+DEF_CONSOLE_CMD(ConRestart)
+{
+	if (argc == 0) {
+		IConsoleHelp("Restart game. Usage: 'restart'");
+		IConsoleHelp("Restarts a game. It tries to reproduce the exact same map as the game started with.");
+		return true;
+	}
+
+	/* Don't copy the _newgame pointers to the real pointers, so call SwitchMode directly */
+	_patches.map_x = MapLogX();
+	_patches.map_y = FindFirstBit(MapSizeY());
+	SwitchMode(SM_NEWGAME);
+	return true;
+}
+
+DEF_CONSOLE_CMD(ConGetSeed)
+{
+	if (argc == 0) {
+		IConsoleHelp("Returns the seed used to create this game. Usage: 'getseed'");
+		IConsoleHelp("The seed can be used to reproduce the exact same map as the game started with.");
+		return true;
+	}
+
+	IConsolePrintF(_icolour_def, "Generation Seed: %u", _patches.generation_seed);
 	return true;
 }
 
@@ -1413,6 +1441,8 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("list_vars",    ConListVariables);
 	IConsoleCmdRegister("list_aliases", ConListAliases);
 	IConsoleCmdRegister("newgame",      ConNewGame);
+	IConsoleCmdRegister("restart",      ConRestart);
+	IConsoleCmdRegister("getseed",      ConGetSeed);
 	IConsoleCmdRegister("quit",         ConExit);
 	IConsoleCmdRegister("resetengines", ConResetEngines);
 	IConsoleCmdRegister("return",       ConReturn);

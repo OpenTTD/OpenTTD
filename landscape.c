@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "heightmap.h"
 #include "clear_map.h"
 #include "functions.h"
 #include "map.h"
@@ -16,6 +17,9 @@
 #include "variables.h"
 #include "void_map.h"
 #include "water_map.h"
+#include "tgp.h"
+#include "genworld.h"
+#include "heightmap.h"
 
 extern const TileTypeProcs
 	_tile_type_clear_procs,
@@ -409,10 +413,34 @@ void InitializeLandscape(void)
 void ConvertGroundTilesIntoWaterTiles(void)
 {
 	TileIndex tile;
+	uint z;
+	Slope slope;
 
 	for (tile = 0; tile < MapSize(); ++tile) {
-		if (IsTileType(tile, MP_CLEAR) && GetTileMaxZ(tile) == 0) {
-			MakeWater(tile);
+		slope = GetTileSlope(tile, &z);
+		if (IsTileType(tile, MP_CLEAR) && z == 0) {
+			/* Make both water for tiles at level 0
+			 * and make shore, as that looks much better
+			 * during the generation. */
+			switch (slope) {
+				case SLOPE_FLAT:
+					MakeWater(tile);
+					break;
+
+				case SLOPE_N:
+				case SLOPE_E:
+				case SLOPE_S:
+				case SLOPE_W:
+				case SLOPE_NW:
+				case SLOPE_SW:
+				case SLOPE_SE:
+				case SLOPE_NE:
+					MakeShore(tile);
+					break;
+
+				default:
+					break;
+			}
 		}
 	}
 }
@@ -547,10 +575,13 @@ static void GenerateTerrain(int type, int flag)
 static void CreateDesertOrRainForest(void)
 {
 	TileIndex tile;
+	TileIndex update_freq = MapSize() / 4;
 	const TileIndexDiffC *data;
 	uint i;
 
 	for (tile = 0; tile != MapSize(); ++tile) {
+		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
 			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
@@ -560,10 +591,15 @@ static void CreateDesertOrRainForest(void)
 			SetTropicZone(tile, TROPICZONE_DESERT);
 	}
 
-	for (i = 0; i != 256; i++)
+	for (i = 0; i != 256; i++) {
+		if ((i % 64) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+
 		RunTileLoop();
+	}
 
 	for (tile = 0; tile != MapSize(); ++tile) {
+		if ((tile % update_freq) == 0) IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+
 		for (data = _make_desert_or_rainforest_data;
 				data != endof(_make_desert_or_rainforest_data); ++data) {
 			TileIndex t = TILE_MASK(tile + ToTileIndexDiff(*data));
@@ -574,49 +610,71 @@ static void CreateDesertOrRainForest(void)
 	}
 }
 
-void GenerateLandscape(void)
+void GenerateLandscape(byte mode)
 {
+	const int gwp_desert_amount = 4 + 8;
 	uint i;
 	uint flag;
 	uint32 r;
 
-	switch (_opt.landscape) {
-		case LT_HILLY:
-			for (i = ScaleByMapSize((Random() & 0x7F) + 950); i != 0; --i) {
-				GenerateTerrain(2, 0);
-			}
+	if (mode == GW_HEIGHTMAP) {
+		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_DESERT) ? 1 + gwp_desert_amount : 1);
+		LoadHeightmap(_file_to_saveload.name);
+		IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+	} else if (_patches.land_generator == LG_TERRAGENESIS) {
+		SetGeneratingWorldProgress(GWP_LANDSCAPE, (_opt.landscape == LT_DESERT) ? 3 + gwp_desert_amount : 3);
+		GenerateTerrainPerlin();
+	} else {
+		switch (_opt.landscape) {
+			case LT_HILLY:
+				SetGeneratingWorldProgress(GWP_LANDSCAPE, 2);
 
-			r = Random();
-			flag = GB(r, 0, 2) | 4;
-			for (i = ScaleByMapSize(GB(r, 16, 7) + 450); i != 0; --i) {
-				GenerateTerrain(4, flag);
-			}
-			break;
+				for (i = ScaleByMapSize((Random() & 0x7F) + 950); i != 0; --i) {
+					GenerateTerrain(2, 0);
+				}
+				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
-		case LT_DESERT:
-			for (i = ScaleByMapSize((Random() & 0x7F) + 170); i != 0; --i) {
-				GenerateTerrain(0, 0);
-			}
+				r = Random();
+				flag = GB(r, 0, 2) | 4;
+				for (i = ScaleByMapSize(GB(r, 16, 7) + 450); i != 0; --i) {
+					GenerateTerrain(4, flag);
+				}
+				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+				break;
 
-			r = Random();
-			flag = GB(r, 0, 2) | 4;
-			for (i = ScaleByMapSize(GB(r, 16, 8) + 1700); i != 0; --i) {
-				GenerateTerrain(0, flag);
-			}
+			case LT_DESERT:
+				SetGeneratingWorldProgress(GWP_LANDSCAPE, 3 + gwp_desert_amount);
 
-			flag ^= 2;
+				for (i = ScaleByMapSize((Random() & 0x7F) + 170); i != 0; --i) {
+					GenerateTerrain(0, 0);
+				}
+				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
-			for (i = ScaleByMapSize((Random() & 0x7F) + 410); i != 0; --i) {
-				GenerateTerrain(3, flag);
-			}
-			break;
+				r = Random();
+				flag = GB(r, 0, 2) | 4;
+				for (i = ScaleByMapSize(GB(r, 16, 8) + 1700); i != 0; --i) {
+					GenerateTerrain(0, flag);
+				}
+				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
 
-		default:
-			i = ScaleByMapSize((Random() & 0x7F) + (3 - _opt.diff.quantity_sea_lakes) * 256 + 100);
-			for (; i != 0; --i) {
-				GenerateTerrain(_opt.diff.terrain_type, 0);
-			}
-			break;
+				flag ^= 2;
+
+				for (i = ScaleByMapSize((Random() & 0x7F) + 410); i != 0; --i) {
+					GenerateTerrain(3, flag);
+				}
+				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+				break;
+
+			default:
+				SetGeneratingWorldProgress(GWP_LANDSCAPE, 1);
+
+				i = ScaleByMapSize((Random() & 0x7F) + (3 - _opt.diff.quantity_sea_lakes) * 256 + 100);
+				for (; i != 0; --i) {
+					GenerateTerrain(_opt.diff.terrain_type, 0);
+				}
+				IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
+				break;
+		}
 	}
 
 	ConvertGroundTilesIntoWaterTiles();

@@ -7,7 +7,7 @@
 #if defined(__AMIGA__) || defined(__MORPHOS__)
 OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg) { return NULL; }
 void* OTTDJoinThread(OTTDThread* t) { return NULL; }
-
+void OTTDExitThread() { NOT_REACHED(); };
 
 #elif defined(__OS2__)
 
@@ -57,6 +57,10 @@ void* OTTDJoinThread(OTTDThread* t)
 	return ret;
 }
 
+void OTTDExitThread(void)
+{
+	_endthread();
+}
 
 #elif defined(UNIX)
 
@@ -91,6 +95,10 @@ void* OTTDJoinThread(OTTDThread* t)
 	return ret;
 }
 
+void OTTDExitThread(void)
+{
+	pthread_exit(NULL);
+}
 
 #elif defined(WIN32)
 
@@ -140,5 +148,10 @@ void* OTTDJoinThread(OTTDThread* t)
 	ret = t->ret;
 	free(t);
 	return ret;
+}
+
+void OTTDExitThread(void)
+{
+	ExitThread(0);
 }
 #endif

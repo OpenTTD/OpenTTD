@@ -9,6 +9,7 @@
 #include "../variables.h"
 #include "../win32.h"
 #include "../window.h"
+#include "../genworld.h"
 #include "win32_v.h"
 #include <windows.h>
 
@@ -792,7 +793,7 @@ static void Win32GdiMainLoop(void)
 			 * real key is in the upper 16 bits (see WM_SYSKEYDOWN in WndProcGdi()) */
 			if ((_pressed_key >> 16) & WKC_TAB &&
 #endif
-			    !_networking && _game_mode != GM_MENU)
+			    !_networking && _game_mode != GM_MENU && !IsGeneratingWorld())
 				_fast_forward |= 2;
 		} else if (_fast_forward & 2) {
 			_fast_forward = 0;

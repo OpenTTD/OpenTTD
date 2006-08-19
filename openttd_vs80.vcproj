@@ -455,6 +455,9 @@
 			<File
 				RelativePath=".\aystar.c"
 				>
+			<File
+				RelativePath=".\bmp.c"
+				>
 			</File>
 			<File
 				RelativePath=".\callback_table.c"
@@ -557,11 +560,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\genworld.c"
+				>
+			</File>
+			<File
 				RelativePath=".\gfx.c"
 				>
 			</File>
 			<File
 				RelativePath=".\gfxinit.c"
+				>
+			</File>
+			<File
+				RelativePath=".\heightmap.c"
 				>
 			</File>
 			<File
@@ -753,6 +764,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\tgp.c"
+				>
+			</File>
+			<File
 				RelativePath=".\thread.c"
 				>
 			</File>
@@ -850,6 +865,9 @@
 			<File
 				RelativePath=".\aystar.h"
 				>
+			<File
+				RelativePath=".\bmp.h"
+				>
 			</File>
 			<File
 				RelativePath=".\clear.h"
@@ -912,6 +930,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\genworld.h"
+				>
+			</File>
+			<File
 				RelativePath=".\gfx.h"
 				>
 			</File>
@@ -925,6 +947,10 @@
 			</File>
 			<File
 				RelativePath=".\hal.h"
+				>
+			</File>
+			<File
+				RelativePath=".\heightmap.h"
 				>
 			</File>
 			<File
@@ -1104,6 +1130,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\tgp.h"
+				>
+			</File>
+			<File
 				RelativePath=".\thread.h"
 				>
 			</File>
@@ -1181,6 +1211,10 @@
 			</File>
 			<File
 				RelativePath=".\engine_gui.c"
+				>
+			</File>
+			<File
+				RelativePath=".\genworld_gui.c"
 				>
 			</File>
 			<File

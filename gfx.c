@@ -12,6 +12,7 @@
 #include "table/sprites.h"
 #include "hal.h"
 #include "variables.h"
+#include "genworld.h"
 
 #ifdef _DEBUG
 bool _dbg_screen_rect;
@@ -1753,6 +1754,8 @@ void DrawDirtyBlocks(void)
 	int x;
 	int y;
 
+	if (IsGeneratingWorld() && !IsGeneratingWorldReadyForPaint()) return;
+
 	y = 0;
 	do {
 		x = 0;
@@ -1819,6 +1822,12 @@ void DrawDirtyBlocks(void)
 	_invalid_rect.top = h;
 	_invalid_rect.right = 0;
 	_invalid_rect.bottom = 0;
+
+	/* If we are generating a world, and waiting for a paint run, mark it here
+	 *  as done painting, so we can continue generating. */
+	if (IsGeneratingWorld() && IsGeneratingWorldReadyForPaint()) {
+		SetGeneratingWorldPaintStatus(false);
+	}
 }
 
 

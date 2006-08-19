@@ -56,6 +56,7 @@ extern void HideMenuBar(void);
 #include "../window.h"
 #include "../network.h"
 #include "../variables.h"
+#include "../genworld.h"
 #include "../os/macosx/splash.h"
 
 #include "cocoa_v.h"
@@ -709,7 +710,7 @@ static void QZ_GameLoop(void)
 #endif
 		{
 			if (!_networking && _game_mode != GM_MENU) _fast_forward |= 2;
-		} else if (_fast_forward & 2) {
+		} else if (_fast_forward & 2 && !IsGeneratingWorld()) {
 			_fast_forward = 0;
 		}
 

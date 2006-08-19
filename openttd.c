@@ -48,11 +48,11 @@
 #include "train.h"
 #include "yapf/yapf.h"
 #include "settings.h"
+#include "genworld.h"
 #include "date.h"
 
 #include <stdarg.h>
 
-void GenerateWorld(int mode, uint size_x, uint size_y);
 void CallLandscapeTick(void);
 void IncreaseDate(void);
 void DoPaletteAnimations(void);
@@ -295,6 +295,7 @@ static void LoadIntroGame(void)
 #endif
 	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
 		GenerateWorld(GW_EMPTY, 64, 64); // if failed loading, make empty world.
+		WaitTillGeneratedWorld();
 	}
 
 	_pause = 0;
@@ -317,7 +318,7 @@ int ttd_main(int argc, char *argv[])
 	char musicdriver[16], sounddriver[16], videodriver[16];
 	int resolution[2] = {0,0};
 	Year startyear = INVALID_YEAR;
-
+	uint generation_seed = GENERATE_NEW_SEED;
 	bool dedicated = false;
 	bool network   = false;
 	char *network_conn = NULL;
@@ -376,7 +377,7 @@ int ttd_main(int argc, char *argv[])
 				_switch_mode = SM_NEWGAME;
 			}
 			break;
-		case 'G': _random_seeds[0][0] = atoi(mgo.opt); break;
+		case 'G': generation_seed = atoi(mgo.opt); break;
 		case 'c': _config_file = strdup(mgo.opt); break;
 		case -2:
 		case 'h':
@@ -409,6 +410,7 @@ int ttd_main(int argc, char *argv[])
 	if (videodriver[0]) ttd_strlcpy(_ini_videodriver, videodriver, sizeof(_ini_videodriver));
 	if (resolution[0]) { _cur_resolution[0] = resolution[0]; _cur_resolution[1] = resolution[1]; }
 	if (startyear != INVALID_YEAR) _patches_newgame.starting_year = startyear;
+	if (generation_seed != GENERATE_NEW_SEED) _patches_newgame.generation_seed = generation_seed;
 
 	if (_dedicated_forks && !dedicated) _dedicated_forks = false;
 
@@ -457,6 +459,13 @@ int ttd_main(int argc, char *argv[])
 	/* XXX - ugly hack, if diff_level is 9, it means we got no setting from the config file */
 	if (_opt_newgame.diff_level == 9) SetDifficultyLevel(0, &_opt_newgame);
 
+	/* Make sure _patches is filled with _patches_newgame if we switch to a game directly */
+	if (_switch_mode != SM_NONE) {
+		memcpy(&_opt, &_opt_newgame, sizeof(_opt));
+		GfxLoadSprites();
+		UpdatePatches();
+	}
+
 	// initialize the ingame console
 	IConsoleInit();
 	_cursor.in_window = true;
@@ -464,6 +473,7 @@ int ttd_main(int argc, char *argv[])
 	IConsoleCmdExec("exec scripts/autoexec.scr 0");
 
 	GenerateWorld(GW_EMPTY, 64, 64); // Make the viewport initialization happy
+	WaitTillGeneratedWorld();
 
 #ifdef ENABLE_NETWORK
 	if (network && _network_available) {
@@ -567,36 +577,35 @@ static void ShowScreenshotResult(bool b)
 
 }
 
-static void MakeNewGame(void)
+static void MakeNewGameDone(void)
+{
+	/* In a dedicated server, the server does not play */
+	if (_network_dedicated) {
+		_local_player = OWNER_SPECTATOR;
+		return;
+	}
+
+	/* Create a single player */
+	DoStartupNewPlayer(false);
+
+	_local_player = 0;
+	_current_player = _local_player;
+	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
+
+	MarkWholeScreenDirty();
+}
+
+static void MakeNewGame(bool from_heightmap)
 {
 	_game_mode = GM_NORMAL;
 
-	// Copy in game options
-	_opt_ptr = &_opt;
-	memcpy(_opt_ptr, &_opt_newgame, sizeof(*_opt_ptr));
+	GenerateWorldSetCallback(&MakeNewGameDone);
+	GenerateWorld(from_heightmap ? GW_HEIGHTMAP : GW_NEWGAME, 1 << _patches.map_x, 1 << _patches.map_y);
+}
 
-	GfxLoadSprites();
-
-	// Reinitialize windows
-	ResetWindowSystem();
-	LoadStringWidthTable();
-
-	SetupColorsAndInitialWindow();
-
-	// Randomize world
-	GenerateWorld(GW_NEWGAME, 1<<_patches.map_x, 1<<_patches.map_y);
-
-	// In a dedicated server, the server does not play
-	if (_network_dedicated) {
-		_local_player = OWNER_SPECTATOR;
-	} else {
-		// Create a single player
-		DoStartupNewPlayer(false);
-
-		_local_player = 0;
-		_current_player = _local_player;
-		DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
-	}
+static void MakeNewEditorWorldDone(void)
+{
+	_local_player = OWNER_NONE;
 
 	MarkWholeScreenDirty();
 }
@@ -605,23 +614,8 @@ static void MakeNewEditorWorld(void)
 {
 	_game_mode = GM_EDITOR;
 
-	// Copy in game options
-	_opt_ptr = &_opt;
-	memcpy(_opt_ptr, &_opt_newgame, sizeof(GameOptions));
-
-	GfxLoadSprites();
-
-	// Re-init the windowing system
-	ResetWindowSystem();
-
-	// Create toolbars
-	SetupColorsAndInitialWindow();
-
-	// Startup the game system
+	GenerateWorldSetCallback(&MakeNewEditorWorldDone);
 	GenerateWorld(GW_EMPTY, 1 << _patches.map_x, 1 << _patches.map_y);
-
-	_local_player = OWNER_NONE;
-	MarkWholeScreenDirty();
 }
 
 void StartupPlayers(void);
@@ -688,7 +682,7 @@ bool SafeSaveOrLoad(const char *filename, int mode, int newgm)
 			switch (ogm) {
 				case GM_MENU:   LoadIntroGame();      break;
 				case GM_EDITOR: MakeNewEditorWorld(); break;
-				default:        MakeNewGame();        break;
+				default:        MakeNewGame(false);   break;
 			}
 			return false;
 
@@ -738,7 +732,7 @@ void SwitchMode(int new_mode)
 			snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "Random Map");
 		}
 #endif /* ENABLE_NETWORK */
-		MakeNewGame();
+		MakeNewGame(false);
 		break;
 
 	case SM_START_SCENARIO: /* New Game --> Choose one of the preset scenarios */
@@ -768,6 +762,22 @@ void SwitchMode(int new_mode)
 		break;
 	}
 
+	case SM_START_HEIGHTMAP: /* Load a heightmap and start a new game from it */
+#ifdef ENABLE_NETWORK
+		if (_network_server) {
+			snprintf(_network_game_info.map_name, lengthof(_network_game_info.map_name), "%s (Heightmap)", _file_to_saveload.title);
+		}
+#endif /* ENABLE_NETWORK */
+		MakeNewGame(true);
+		break;
+
+	case SM_LOAD_HEIGHTMAP: /* Load heightmap from scenario editor */
+		_local_player = OWNER_NONE;
+
+		GenerateWorld(GW_HEIGHTMAP, 1 << _patches.map_x, 1 << _patches.map_y);
+		MarkWholeScreenDirty();
+		break;
+
 	case SM_LOAD_SCENARIO: { /* Load scenario from scenario editor */
 		if (SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_EDITOR)) {
 			Player *p;
@@ -784,6 +794,7 @@ void SwitchMode(int new_mode)
 				}
 			}
 			_generating_world = false;
+			_patches_newgame.starting_year = BASE_YEAR + _cur_year;
 			// delete all stations owned by a player
 			DeleteAllPlayerStations();
 		} else {
@@ -805,9 +816,9 @@ void SwitchMode(int new_mode)
 		break;
 
 	case SM_GENRANDLAND: /* Generate random land within scenario editor */
+		_local_player = OWNER_NONE;
 		GenerateWorld(GW_RANDOM, 1 << _patches.map_x, 1 << _patches.map_y);
 		// XXX: set date
-		_local_player = OWNER_NONE;
 		MarkWholeScreenDirty();
 		break;
 	}
@@ -826,6 +837,7 @@ void StateGameLoop(void)
 {
 	// dont execute the state loop during pause
 	if (_pause) return;
+	if (IsGeneratingWorld()) return;
 
 	if (_game_mode == GM_EDITOR) {
 		RunTileLoop();
@@ -884,7 +896,7 @@ static void DoAutosave(void)
 
 static void ScrollMainViewport(int x, int y)
 {
-	if (_game_mode != GM_MENU) {
+	if (_game_mode != GM_MENU && !IsGeneratingWorld()) {
 		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 		assert(w);
 
@@ -963,7 +975,7 @@ void GameLoop(void)
 	if (_network_available)
 		NetworkUDPGameLoop();
 
-	if (_networking) {
+	if (_networking && !IsGeneratingWorld()) {
 		// Multiplayer
 		NetworkGameLoop();
 	} else {

@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "openttd.h"
+#include "heightmap.h"
 #include "currency.h"
 #include "functions.h"
 #include "spritecache.h"
@@ -29,22 +30,19 @@
 #include "train.h"
 #include "unmovable_map.h"
 #include "screenshot.h"
+#include "genworld.h"
+#include "settings.h"
 #include "date.h"
 
 #include "network_data.h"
 #include "network_client.h"
 #include "network_server.h"
 
-/* Min/Max date for scenario editor */
-static const Date MinDate = 0;     // 1920-01-01 (MAX_YEAR_BEGIN_REAL)
-static const Date MaxDate = 29220; // 2000-01-01
-
 static int _rename_id;
 static int _rename_what;
 
 static byte _terraform_size = 1;
 static RailType _last_built_railtype;
-extern void GenerateWorld(int mode, uint size_x, uint size_y);
 
 extern void GenerateIndustries(void);
 extern bool GenerateTowns(void);
@@ -1002,9 +1000,10 @@ static void ToolbarScenDateBackward(Window *w)
 	// don't allow too fast scrolling
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 		HandleButtonClick(w, 6);
-		InvalidateWidget(w, 5);
+		SetWindowDirty(w);
 
-		if (_date > MinDate) SetDate(ConvertYMDToDate(_cur_year - 1, 0, 1));
+		_patches_newgame.starting_year = clamp(_patches_newgame.starting_year - 1, MIN_YEAR, MAX_YEAR);
+		SetDate(ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;
 }
@@ -1014,9 +1013,10 @@ static void ToolbarScenDateForward(Window *w)
 	// don't allow too fast scrolling
 	if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
 		HandleButtonClick(w, 7);
-		InvalidateWidget(w, 5);
+		SetWindowDirty(w);
 
-		if (_date < MaxDate) SetDate(ConvertYMDToDate(_cur_year + 1, 0, 1));
+		_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + 1, MIN_YEAR, MAX_YEAR);
+		SetDate(ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
 	}
 	_left_button_clicked = false;
 }
@@ -1051,7 +1051,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 	vp = w->viewport;
 
-	if (_game_mode != GM_MENU) {
+	if (_game_mode != GM_MENU && !IsGeneratingWorld()) {
 		if ((in && vp->zoom == 0) || (!in && vp->zoom == 2))
 			return;
 
@@ -1062,74 +1062,6 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 			DoZoomInOutWindow(in ? ZOOM_IN : ZOOM_OUT, w);
 		}
 	}
-}
-
-static void ResetLandscape(void)
-{
-	_random_seeds[0][0] = InteractiveRandom();
-	_random_seeds[0][1] = InteractiveRandom();
-
-	GenerateWorld(GW_EMPTY, 1 << _patches.map_x, 1 << _patches.map_y);
-	MarkWholeScreenDirty();
-}
-
-static const Widget _ask_reset_landscape_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     4,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     4,    11,   179,     0,    13, STR_022C_RESET_LANDSCAPE,	STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,     4,     0,   179,    14,    91, 0x0,												STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    12,    25,    84,    72,    83, STR_00C9_NO,								STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    12,    95,   154,    72,    83, STR_00C8_YES,							STR_NULL},
-{   WIDGETS_END},
-};
-
-// Ask first to reset landscape or to make a random landscape
-static void AskResetLandscapeWndProc(Window *w, WindowEvent *e)
-{
-	uint mode = w->window_number;
-
-	switch (e->event) {
-	case WE_PAINT:
-		DrawWindowWidgets(w);
-		DrawStringMultiCenter(
-			90, 38,
-			mode ? STR_022D_ARE_YOU_SURE_YOU_WANT_TO : STR_GENERATE_RANDOM_LANDSCAPE,
-			168
-		);
-		break;
-	case WE_CLICK:
-		switch (e->click.widget) {
-		case 3:
-			DeleteWindow(w);
-			break;
-		case 4:
-			DeleteWindow(w);
-			DeleteWindowByClass(WC_INDUSTRY_VIEW);
-			DeleteWindowByClass(WC_TOWN_VIEW);
-			DeleteWindowByClass(WC_LAND_INFO);
-
-			if (mode) { // reset landscape
-				ResetLandscape();
-			} else { // make random landscape
-				SndPlayFx(SND_15_BEEP);
-				_switch_mode = SM_GENRANDLAND;
-			}
-			break;
-		}
-		break;
-	}
-}
-
-static const WindowDesc _ask_reset_landscape_desc = {
-	230,205, 180, 92,
-	WC_ASK_RESET_LANDSCAPE,0,
-	WDF_STD_BTN | WDF_DEF_WIDGET,
-	_ask_reset_landscape_widgets,
-	AskResetLandscapeWndProc,
-};
-
-static void AskResetLandscape(uint mode)
-{
-	AllocateWindowDescFront(&_ask_reset_landscape_desc, mode);
 }
 
 // TODO - Incorporate into game itself to allow for ingame raising/lowering of
@@ -1238,8 +1170,7 @@ static const Widget _scen_edit_land_gen_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
 {   WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_STICKYBOX,   RESIZE_NONE,     7,   170,   181,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},
-{    WWT_IMGBTN,   RESIZE_NONE,     7,     0,   181,    14,   101, STR_NULL,                  STR_NULL},
-
+{    WWT_IMGBTN,   RESIZE_NONE,     7,     0,   181,    14,    95, STR_NULL,                  STR_NULL},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,     2,    23,    14,    35, SPR_IMG_DYNAMITE,          STR_018D_DEMOLISH_BUILDINGS_ETC},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    24,    45,    14,    35, SPR_IMG_TERRAFORM_DOWN,    STR_018E_LOWER_A_CORNER_OF_LAND},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    46,    67,    14,    35, SPR_IMG_TERRAFORM_UP,      STR_018F_RAISE_A_CORNER_OF_LAND},
@@ -1250,8 +1181,7 @@ static const Widget _scen_edit_land_gen_widgets[] = {
 {    WWT_IMGBTN,   RESIZE_NONE,    14,   158,   179,    14,    35, SPR_IMG_TRANSMITTER,       STR_028E_PLACE_TRANSMITTER},
 {   WWT_TEXTBTN,   RESIZE_NONE,    14,   139,   149,    43,    54, STR_0224,                  STR_0228_INCREASE_SIZE_OF_LAND_AREA},
 {   WWT_TEXTBTN,   RESIZE_NONE,    14,   139,   149,    56,    67, STR_0225,                  STR_0229_DECREASE_SIZE_OF_LAND_AREA},
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    34,   149,    75,    86, STR_0226_RANDOM_LAND,      STR_022A_GENERATE_RANDOM_LAND},
-{   WWT_TEXTBTN,   RESIZE_NONE,    14,    34,   149,    88,    99, STR_0227_RESET_LAND,       STR_022B_RESET_LANDSCAPE},
+{   WWT_TEXTBTN,   RESIZE_NONE,    14,    34,   149,    75,    86, STR_SE_NEW_WORLD,          STR_022A_GENERATE_RANDOM_LAND},
 {   WIDGETS_END},
 };
 
@@ -1388,11 +1318,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		} break;
 		case 14: /* gen random land */
 			HandleButtonClick(w, 14);
-			AskResetLandscape(0);
-			break;
-		case 15: /* reset landscape */
-			HandleButtonClick(w,15);
-			AskResetLandscape(1);
+			ShowCreateScenario();
 			break;
 		}
 		break;
@@ -1422,7 +1348,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _scen_edit_land_gen_desc = {
-	-1,-1, 182, 102,
+	-1,-1, 182, 96,
 	WC_SCEN_LAND_GEN,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_land_gen_widgets,
@@ -1879,6 +1805,8 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_KEYPRESS: {
 		PlayerID local = (_local_player != OWNER_SPECTATOR) ? _local_player : 0;
 
+		if (IsGeneratingWorld()) break;
+
 		switch (e->keypress.keycode) {
 		case WKC_F1: case WKC_PAUSE:
 			ToolbarPauseClick(w);
@@ -2062,13 +1990,12 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		/* XXX look for better place for these */
-		if (_date <= MinDate) {
+		if (_patches_newgame.starting_year <= MIN_YEAR) {
 			SETBIT(w->disabled_state, 6);
 		} else {
 			CLRBIT(w->disabled_state, 6);
 		}
-		if (_date >= MaxDate) {
+		if (_patches_newgame.starting_year >= MAX_YEAR) {
 			SETBIT(w->disabled_state, 7);
 		} else {
 			CLRBIT(w->disabled_state, 7);
@@ -2080,10 +2007,10 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 		DrawWindowWidgets(w);
 
-		SetDParam(0, _date);
+		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
 		DrawStringCentered(298, 6, STR_00AF, 0);
 
-		SetDParam(0, _date);
+		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
 		DrawStringCentered(161, 1, STR_0221_OPENTTD, 0);
 		DrawStringCentered(161, 11,STR_0222_SCENARIO_EDITOR, 0);
 
@@ -2207,7 +2134,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			70, 1, (_pause || _patches.status_long_date) ? STR_00AF : STR_00AE, 0
 		);
 
-		if (p != NULL) {
+		if (p != NULL && !IsGeneratingWorld()) {
 			// Draw player money
 			SetDParam64(0, p->money64);
 			DrawStringCentered(570, 1, p->player_money >= 0 ? STR_0004 : STR_0005, 0);
@@ -2225,7 +2152,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w,def_d).data_1))
 				WP(w,def_d).data_1 = -1280;
 		} else {
-			if (p != NULL) {
+			if (p != NULL && !IsGeneratingWorld()) {
 				// This is the default text
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
@@ -2327,7 +2254,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		if (e->keypress.keycode == WKC_BACKQUOTE) {
-			IConsoleSwitch();
+			if (!IsGeneratingWorld()) IConsoleSwitch();
 			e->keypress.cont = false;
 			break;
 		}
@@ -2339,7 +2266,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				break;
 		}
 
-		if (_game_mode == GM_MENU) break;
+		if (_game_mode == GM_MENU || IsGeneratingWorld()) break;
 
 		switch (e->keypress.keycode) {
 			case 'C':
@@ -2435,11 +2362,7 @@ void SetupColorsAndInitialWindow(void)
 		w = AllocateWindow(0, 0, width, height, MainWindowWndProc, WC_MAIN_WINDOW, NULL);
 		AssignWindowViewport(w, 0, 0, width, height, 0, 0);
 
-		w = AllocateWindowDesc(&_toolb_scen_desc);
-		w->disabled_state = 1 << 9;
-		CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
-
-		PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_scen_desc)
+		ShowVitalWindows();
 		break;
 	default:
 		NOT_REACHED();
@@ -2450,17 +2373,31 @@ void ShowVitalWindows(void)
 {
 	Window *w;
 
-	w = AllocateWindowDesc(&_toolb_normal_desc);
-	w->disabled_state = 1 << 17; // disable zoom-in button (by default game is zoomed in)
+	if (_game_mode != GM_EDITOR) {
+		w = AllocateWindowDesc(&_toolb_normal_desc);
+		/* Disable zoom-in for normal things, and zoom-out if we come
+		 *  from world-generating. */
+		w->disabled_state = IsGeneratingWorld() ? (1 << 18) : (1 << 17);
+	} else {
+		w = AllocateWindowDesc(&_toolb_scen_desc);
+		/* Disable zoom-in for normal things, and zoom-out if we come
+		 *  from world-generating. */
+		w->disabled_state = IsGeneratingWorld() ? (1 << 10) : (1 << 9);
+	}
 	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
 
-	if (_networking) { // if networking, disable fast-forward button
+	if (_networking) {
+		/* If networking, disable fast-forward button */
 		SETBIT(w->disabled_state, 1);
-		if (!_network_server) // if not server, disable pause button
-			SETBIT(w->disabled_state, 0);
+		/* If not server, disable pause button */
+		if (!_network_server) SETBIT(w->disabled_state, 0);
 	}
 
-	PositionMainToolbar(w); // already WC_MAIN_TOOLBAR passed (&_toolb_normal_desc)
+	/* 'w' is for sure a WC_MAIN_TOOLBAR */
+	PositionMainToolbar(w);
+
+	/* Status bad only for normal games */
+	if (_game_mode == GM_EDITOR) return;
 
 	_main_status_desc.top = _screen.height - 12;
 	w = AllocateWindowDesc(&_main_status_desc);

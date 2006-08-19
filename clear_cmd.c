@@ -15,6 +15,7 @@
 #include "variables.h"
 #include "table/sprites.h"
 #include "unmovable_map.h"
+#include "genworld.h"
 
 typedef struct TerraformerHeightMod {
 	TileIndex tile;
@@ -693,22 +694,28 @@ static void TileLoop_Clear(TileIndex tile)
 
 void GenerateClearTile(void)
 {
-	uint i;
+	uint i, gi;
 	TileIndex tile;
 
-	/* add hills */
+	/* add rough tiles */
 	i = ScaleByMapSize(GB(Random(), 0, 10) + 0x400);
+	gi = ScaleByMapSize(GB(Random(), 0, 7) + 0x80);
+
+	SetGeneratingWorldProgress(GWP_ROUGH_ROCKY, gi + i);
 	do {
+		IncreaseGeneratingWorldProgress(GWP_ROUGH_ROCKY);
 		tile = RandomTile();
-		if (IsTileType(tile, MP_CLEAR)) SetClearGroundDensity(tile, CLEAR_ROUGH, 3);
+		if (IsTileType(tile, MP_CLEAR) && !IsClearGround(tile, CLEAR_DESERT)) SetClearGroundDensity(tile, CLEAR_ROUGH, 3);
 	} while (--i);
 
-	/* add grey squares */
-	i = ScaleByMapSize(GB(Random(), 0, 7) + 0x80);
+	/* add rocky tiles */
+	i = gi;
 	do {
 		uint32 r = Random();
 		tile = RandomTileSeed(r);
-		if (IsTileType(tile, MP_CLEAR)) {
+
+		IncreaseGeneratingWorldProgress(GWP_ROUGH_ROCKY);
+		if (IsTileType(tile, MP_CLEAR) && !IsClearGround(tile, CLEAR_DESERT)) {
 			uint j = GB(r, 16, 4) + 5;
 			for (;;) {
 				TileIndex tile_new;
@@ -717,7 +724,7 @@ void GenerateClearTile(void)
 				do {
 					if (--j == 0) goto get_out;
 					tile_new = tile + TileOffsByDir(GB(Random(), 0, 2));
-				} while (!IsTileType(tile_new, MP_CLEAR));
+				} while (!IsTileType(tile_new, MP_CLEAR) || IsClearGround(tile_new, CLEAR_DESERT));
 				tile = tile_new;
 			}
 get_out:;

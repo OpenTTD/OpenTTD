@@ -21,6 +21,7 @@
 #include "vehicle.h"
 #include "station.h"
 #include "variables.h"
+#include "genworld.h"
 
 // This file handles all the server-commands
 
@@ -1308,18 +1309,13 @@ void NetworkUpdateClientInfo(uint16 client_index)
 	}
 }
 
-extern void SwitchMode(int new_mode);
-
 /* Check if we want to restart the map */
 static void NetworkCheckRestartMap(void)
 {
 	if (_network_restart_game_year != 0 && _cur_year >= _network_restart_game_year) {
 		DEBUG(net, 0)("Auto-restarting map. Year %d reached.", _cur_year);
 
-		_random_seeds[0][0] = Random();
-		_random_seeds[0][1] = InteractiveRandom();
-
-		SwitchMode(SM_NEWGAME);
+		StartNewGameWithoutGUI(GENERATE_NEW_SEED);
 	}
 }
 

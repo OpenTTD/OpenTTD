@@ -20,6 +20,8 @@ enum {
 	FIOS_TYPE_SCENARIO = 5,
 	FIOS_TYPE_OLD_SCENARIO = 6,
 	FIOS_TYPE_DIRECT = 7,
+	FIOS_TYPE_PNG = 8,
+	FIOS_TYPE_BMP = 9,
 	FIOS_TYPE_INVALID = 255,
 };
 
@@ -32,6 +34,8 @@ extern int _saveload_mode;   // defined in misc_gui.c
 FiosItem *FiosGetSavegameList(int mode);
 // Get a list of scenarios
 FiosItem *FiosGetScenarioList(int mode);
+// Get a list of Heightmaps
+FiosItem *FiosGetHeightmapList(int mode);
 // Free the list of savegames
 void FiosFreeSavegameList(void);
 // Browse to. Returns a filename w/path if we reached a file.

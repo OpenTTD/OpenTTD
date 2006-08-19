@@ -899,6 +899,7 @@ void DeterminePaths(void)
 	_path.save_dir = str_fmt("%ssave", cfg);
 	_path.autosave_dir = str_fmt("%s\\autosave", _path.save_dir);
 	_path.scenario_dir = str_fmt("%sscenario", cfg);
+	_path.heightmap_dir = str_fmt("%sscenario\\heightmap", cfg);
 	_path.gm_dir = str_fmt("%sgm\\", cfg);
 	_path.data_dir = str_fmt("%sdata\\", cfg);
 	_path.lang_dir = str_fmt("%slang\\", cfg);
@@ -913,6 +914,7 @@ void DeterminePaths(void)
 	CreateDirectory(_path.save_dir, NULL);
 	CreateDirectory(_path.autosave_dir, NULL);
 	CreateDirectory(_path.scenario_dir, NULL);
+	CreateDirectory(_path.heightmap_dir, NULL);
 }
 
 int CDECL snprintf(char *str, size_t size, const char *format, ...)
