@@ -1192,7 +1192,7 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 				tileh = GetTileSlope(cur_tile, NULL);
 				if (IsSteepSlope(tileh)) return false;
 
-				if (_patches.land_generator == LG_TERRAGENESIS || !_generating_world) {
+				if (_patches.land_generator != LG_TERRAGENESIS || !_generating_world) {
 					/* It is almost impossible to have a fully flat land in TG, so what we
 					 *  do is that we check if we can make the land flat later on. See
 					 *  CheckIfCanLevelIndustryPlatform(). */
