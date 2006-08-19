@@ -6,31 +6,6 @@
  * Header of Action 04 "universal holder" structure and functions
  */
 
-/**
- * Element of the linked list.
- * Each of those elements represent the string,
- * but according to a different lang.
- */
-typedef struct GRFText {
-	byte langid;
-	char *text;
-	struct GRFText *next;
-} GRFText;
-
-
-/**
- * Holder of the above structure.
- * Putting both grfid and stringid togueter allow us to avoid duplicates,
- * since it is NOT SUPPOSED to happen.
- */
-typedef struct GRFTextEntry {
-	uint32 grfid;
-	uint16 stringid;
-	StringID def_string;
-	GRFText *textholder;
-} GRFTextEntry;
-
-
 StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid, bool new_scheme, const char *text_to_add, StringID def_string);
 StringID GetGRFStringID(uint32 grfid, uint16 stringid);
 char *GetGRFString(char *buff, uint16 stringid);

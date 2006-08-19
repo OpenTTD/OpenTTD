@@ -123,6 +123,31 @@ const iso_grf iso_codes[] = {
 };
 
 
+/**
+ * Element of the linked list.
+ * Each of those elements represent the string,
+ * but according to a different lang.
+ */
+typedef struct GRFText {
+	struct GRFText *next;
+	byte langid;
+	char text[VARARRAY_SIZE];
+} GRFText;
+
+
+/**
+ * Holder of the above structure.
+ * Putting both grfid and stringid together allows us to avoid duplicates,
+ * since it is NOT SUPPOSED to happen.
+ */
+typedef struct GRFTextEntry {
+	uint32 grfid;
+	uint16 stringid;
+	StringID def_string;
+	GRFText *textholder;
+} GRFTextEntry;
+
+
 static uint _num_grf_texts = 0;
 static GRFTextEntry _grf_text[(1 << TABSIZE) * 3];
 static byte _currentLangID = GRFLX_ENGLISH;  //by default, english is used.
@@ -206,10 +231,10 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	/* Too many strings allocated, return empty */
 	if (id == lengthof(_grf_text)) return STR_EMPTY;
 
-	newtext = calloc(1, sizeof(*newtext));
-	newtext->langid = GB(langid_to_add, 0, 6);
-	newtext->text   = strdup(text_to_add);
+	newtext = malloc(sizeof(*newtext) + strlen(text_to_add) + 1);
 	newtext->next   = NULL;
+	newtext->langid = GB(langid_to_add, 0, 6);
+	strcpy(newtext->text, text_to_add);
 
 	TranslateTTDPatchCodes(newtext->text);
 
@@ -251,8 +276,8 @@ StringID GetGRFStringID(uint32 grfid, uint16 stringid)
 
 char *GetGRFString(char *buff, uint16 stringid)
 {
-	GRFText *search_text;
-	GRFText *default_text = NULL;
+	const GRFText *default_text = NULL;
+	const GRFText *search_text;
 
 	assert(_grf_text[stringid].grfid != 0);
 	/*Search the list of lang-strings of this stringid for current lang */
@@ -287,10 +312,9 @@ char *GetGRFString(char *buff, uint16 stringid)
  */
 void SetCurrentGrfLangID(const char *iso_name)
 {
-	byte ret,i;
-
 	/* Use English by default, if we can't match up the iso_code. */
-	ret = GRFLX_ENGLISH;
+	byte ret = GRFLX_ENGLISH;
+	byte i;
 
 	for (i=0; i < lengthof(iso_codes); i++) {
 		if (strncmp(iso_codes[i].code, iso_name, strlen(iso_codes[i].code)) == 0) {
@@ -314,7 +338,6 @@ void CleanUpStrings(void)
 		GRFText *grftext = _grf_text[id].textholder;
 		while (grftext != NULL) {
 			GRFText *grftext2 = grftext->next;
-			free(grftext->text);
 			free(grftext);
 			grftext = grftext2;
 		}
