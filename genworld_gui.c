@@ -580,9 +580,9 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		DrawString( 12,  96, STR_MAPSIZE, 0);
-		DrawString( 89,  96, mapsizes[_patches_newgame.map_x - 6], 0x10);
-		DrawString(138,  96, STR_BY, 0);
-		DrawString(152,  96, mapsizes[_patches_newgame.map_y - 6], 0x10);
+		DrawString(167,  96, mapsizes[_patches_newgame.map_x - 6], 0x10);
+		DrawString(216,  96, STR_BY, 0);
+		DrawString(230,  96, mapsizes[_patches_newgame.map_y - 6], 0x10);
 
 		DrawString(162, 118, STR_DATE, 0);
 		SetDParam(0, ConvertYMDToDate(_patches_newgame.starting_year, 0, 1));
@@ -693,10 +693,10 @@ const Widget _create_scenario_widgets[] = {
 {    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  24,  78, 0x1316,                  STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
 {    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  24,  78, 0x1318,                  STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{      WWT_PANEL, RESIZE_NONE, 12,  84, 119,  95, 106, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 120, 131,  95, 106, STR_0225,                STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 150, 185,  95, 106, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 186, 197,  95, 106, STR_0225,                STR_NULL}, // Mapsize Y
+{      WWT_PANEL, RESIZE_NONE, 12, 162, 197,  95, 106, STR_NULL,                STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 198, 209,  95, 106, STR_0225,                STR_NULL}, // Mapsize X
+{      WWT_PANEL, RESIZE_NONE, 12, 228, 263,  95, 106, STR_NULL,                STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 264, 275,  95, 106, STR_0225,                STR_NULL}, // Mapsize Y
 
 {    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 117, 128, STR_SE_FLAT_WORLD,       STR_SE_FLAT_WORLD_TIP},                      // Empty (sea-level) map
 {    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 135, 146, STR_SE_RANDOM_LAND,      STR_022A_GENERATE_RANDOM_LAND}, // Generate
