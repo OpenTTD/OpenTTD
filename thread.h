@@ -3,11 +3,11 @@
 #ifndef THREAD_H
 #define THREAD_H
 
-typedef struct Thread Thread;
+typedef struct OTTDThread OTTDThread;
 
-typedef void* (*ThreadFunc)(void*);
+typedef void* (*OTTDThreadFunc)(void*);
 
-Thread* OTTDCreateThread(ThreadFunc, void*);
-void*   OTTDJoinThread(Thread*);
+OTTDThread* OTTDCreateThread(OTTDThreadFunc, void*);
+void*   OTTDJoinThread(OTTDThread*);
 
 #endif /* THREAD_H */

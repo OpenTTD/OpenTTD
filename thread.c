@@ -5,8 +5,8 @@
 #include <stdlib.h>
 
 #if defined(__AMIGA__) || defined(__MORPHOS__)
-Thread* OTTDCreateThread(ThreadFunc function, void* arg) { return NULL; }
-void* OTTDJoinThread(Thread* t) { return NULL; }
+OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg) { return NULL; }
+void* OTTDJoinThread(OTTDThread* t) { return NULL; }
 
 
 #elif defined(__OS2__)
@@ -15,22 +15,22 @@ void* OTTDJoinThread(Thread* t) { return NULL; }
 #include <os2.h>
 #include <process.h>
 
-struct Thread {
+struct OTTDThread {
 	TID thread;
-	ThreadFunc func;
+	OTTDThreadFunc func;
 	void* arg;
 	void* ret;
 };
 
 static void Proxy(void* arg)
 {
-	Thread* t = arg;
+	OTTDThread* t = arg;
 	t->ret = t->func(t->arg);
 }
 
-Thread* OTTDCreateThread(ThreadFunc function, void* arg)
+OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg)
 {
-	Thread* t = malloc(sizeof(*t));
+	OTTDThread* t = malloc(sizeof(*t));
 
 	if (t == NULL) return NULL;
 
@@ -45,7 +45,7 @@ Thread* OTTDCreateThread(ThreadFunc function, void* arg)
 	}
 }
 
-void* OTTDJoinThread(Thread* t)
+void* OTTDJoinThread(OTTDThread* t)
 {
 	void* ret;
 
@@ -62,13 +62,13 @@ void* OTTDJoinThread(Thread* t)
 
 #include <pthread.h>
 
-struct Thread {
+struct OTTDThread {
 	pthread_t thread;
 };
 
-Thread* OTTDCreateThread(ThreadFunc function, void* arg)
+OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg)
 {
-	Thread* t = malloc(sizeof(*t));
+	OTTDThread* t = malloc(sizeof(*t));
 
 	if (t == NULL) return NULL;
 
@@ -80,7 +80,7 @@ Thread* OTTDCreateThread(ThreadFunc function, void* arg)
 	}
 }
 
-void* OTTDJoinThread(Thread* t)
+void* OTTDJoinThread(OTTDThread* t)
 {
 	void* ret;
 
@@ -96,23 +96,23 @@ void* OTTDJoinThread(Thread* t)
 
 #include <windows.h>
 
-struct Thread {
+struct OTTDThread {
 	HANDLE thread;
-	ThreadFunc func;
+	OTTDThreadFunc func;
 	void* arg;
 	void* ret;
 };
 
 static DWORD WINAPI Proxy(LPVOID arg)
 {
-	Thread* t = arg;
+	OTTDThread* t = arg;
 	t->ret = t->func(t->arg);
 	return 0;
 }
 
-Thread* OTTDCreateThread(ThreadFunc function, void* arg)
+OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg)
 {
-	Thread* t = malloc(sizeof(*t));
+	OTTDThread* t = malloc(sizeof(*t));
 	DWORD dwThreadId;
 
 	if (t == NULL) return NULL;
@@ -129,7 +129,7 @@ Thread* OTTDCreateThread(ThreadFunc function, void* arg)
 	}
 }
 
-void* OTTDJoinThread(Thread* t)
+void* OTTDJoinThread(OTTDThread* t)
 {
 	void* ret;
 

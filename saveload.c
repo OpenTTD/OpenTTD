@@ -1392,7 +1392,7 @@ void SaveFileError(void)
 	SaveFileDone();
 }
 
-static Thread* save_thread;
+static OTTDThread* save_thread;
 
 /** We have written the whole game into memory, _save_pool, now find
  * and appropiate compressor and start writing to file.
