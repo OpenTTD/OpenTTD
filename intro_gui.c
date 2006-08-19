@@ -81,6 +81,9 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		case 15: AskExitGame(); break;
 		}
 		break;
+
+		case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
+		case WE_ON_EDIT_TEXT_CANCEL: HandleOnEditTextCancel(); break;
 	}
 }
 
