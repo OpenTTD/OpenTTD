@@ -2876,12 +2876,15 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões M
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Criar
+STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nível do mar:
 STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de indústrias:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}
 STR_PROGRESS                                                    :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_PREPARING_GAME                                              :{BLACK}A preparar jogo

@@ -305,7 +305,7 @@ STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFON
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Przystanek
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Lotnisko
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Port
-STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Wyboista ziemia
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Wyboisty teren
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Trawa
 STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Odslonieta ziemia
 STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Pola
@@ -1136,6 +1136,7 @@ STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Oryginalny
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksymalna odleglosc rafinerii od brzegu mapy  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Wysokosc granicy wiecznych sniegow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Wyboistosc terenu (tylko TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo lagodny
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lagodny
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Wyboisty
@@ -1147,11 +1148,12 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Ulepszony
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Obrot mapy wysokosci: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Przec. do wsk. zegara
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Zg. ze wsk. zegara
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Interwal odswiezania paskow postepu: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Wysokosc jaka dostaje plaska mapa: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. wielkosc stacji: {ORANGE}{STRING} {RED}Uwaga: Duze wartosci spowalniaja gre
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatycznie serwisuj helikoptery na ladowiskach: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Przylacz pasek narzedzi edycji krajobrazu do paska narzedzi srodkow transportu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Przylacz okno narzedzi krajobrazu do okien srodkow transportu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Przewijaj obraz myszka w przeciwnym kierunku: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. liczba pociagow na gracza: {ORANGE}{STRING}
@@ -1568,7 +1570,7 @@ STR_0807_ESTIMATED_INCOME                                       :{WHITE}Przypusz
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Nie mozna wzniesc ladu tutaj...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Nie mozna obnizyc ladu tutaj...
 STR_080A_ROCKS                                                  :Skaly
-STR_080B_ROUGH_LAND                                             :Pagorkowaty teren
+STR_080B_ROUGH_LAND                                             :Wyboisty teren
 STR_080C_BARE_LAND                                              :Odkryty teren
 STR_080D_GRASS                                                  :Trawa
 STR_080E_FIELDS                                                 :Pola

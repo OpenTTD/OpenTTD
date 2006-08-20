@@ -604,6 +604,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}yükseltm
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Rastgele harita yap
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Haritayi sifirla
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Haritayi Sifirla
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Yükseklik Haritasi Kullan
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Yükseklik Haritasi Kullan
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Her taraf su olsun mu?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Harita yapimi
 STR_022F_TOWN_GENERATION                                        :{BLACK}Sehir yapimi
@@ -1039,7 +1041,22 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Yenilem
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hata mesaji görünme süresi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Sehir nüfusunu isminin yanina yaz: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Görünmez agaçlar (transparan binalarla): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Arazi üretici: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Özgün
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Kar kalinligi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Dümdüz
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Düzgün
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Engebeli
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Çok Engebeli
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Hiçbiri
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Özgün
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Gelismis
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Yükseklik haritasini döndür: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Saat yönünün tersi
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Saat yönü
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}istasyon genisleme siniri: {ORANGE}{STRING} {RED}Uyari: Yüksek degerler oyunu yavaslatir
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubugunu diger araç çubuklarina bagla: {ORANGE}{STRING}
@@ -1434,6 +1451,15 @@ STR_NETWORK_SEND                                                :{BLACK}Gönder
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Haritanin genisligi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Haritanin yuksekligi: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...resim türü islenemiyor. 8 veya 24-bit PNG resmi gerekli.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...yanlis bir seyler oldu. (dosya bozuk olabilir)
+
+STR_BMPMAP_ERROR                                                :{WHITE}arazi BMP'den yüklenemedi...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...resim türü çevrilemedi.
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Gider: {CURRENCY}
 STR_0801_COST                                                   :{RED}Gider: {CURRENCY}
@@ -1757,6 +1783,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Oyunu se
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Yeni oyun türü seç
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Senaryo (yesil), kurulu oyun (mavi) veya yeni oyun seç
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Rastgele haritada oyna
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Yükseklik haritasi yükle
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}yolda {STRING} var
@@ -2862,6 +2889,43 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Agirlik:
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Fiyat: {GOLD}{CURRENCY}{BLACK} Hiz: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite: {GOLD}{COMMA} yolcu, {COMMA} çanta posta
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Veren Vagonlar: {GOLD}+{POWER}{BLACK} Agirlik: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Olustur
+STR_RANDOM                                                      :{BLACK}Rastgele
+STR_RANDOM_HELP                                                 :{BLACK}Harita yapimi için kullanilan rastgele sayiyi degistir
+STR_RANDOM_SEED                                                 :{BLACK}Rastgele Sayi:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Rastgele bir sayi girmek için tiklayin
+STR_LAND_GENERATOR                                              :{BLACK}Harita üretici:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Yükseklik haritasi döndür:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Deniz seviyesi:
+STR_SMOOTHNESS                                                  :{BLACK}Düzlük seviyesi:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Kar yuksekligi:
+STR_DATE                                                        :{BLACK}Tarih:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Sehir sayisi:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Fabrika sayisi:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_DOWN                                              :{BLACK}Kar yüksekligini bir azalt
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ölcek uyarisi
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Yükseklik haritasi adi:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Boyut: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Harita olusturuluyor...
+STR_GENERATION_ABORT                                            :{BLACK}iptal
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Olusturmayi iptal etmek istediginizden emin misiniz?
+STR_PROGRESS                                                    :{WHITE}%{NUM} tamamlandi
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_CLEARING_TILES                                              :{BLACK}Engebeli ve kayalik alan olustur
+STR_SETTINGUP_GAME                                              :{BLACK}Oyun ayarlaniyor
+STR_PREPARING_TILELOOP                                          :{BLACK}tile-loop çalistiriliyor
+STR_PREPARING_GAME                                              :{BLACK}Oyun hazirlaniyor
+STR_SE_FLAT_WORLD                                               :{WHITE}Düzlük alan
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Düzlük alan olustur
+STR_SE_RANDOM_LAND                                              :{WHITE}Rastgele alan
+STR_SE_NEW_WORLD                                                :{BLACK}Yeni senaryo olustur
+STR_SE_CAPTION                                                  :{WHITE}Senaryo türü
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Küçük

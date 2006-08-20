@@ -950,6 +950,7 @@ STR_TOWNNAME_SWISS                                              :Svájci
 STR_TOWNNAME_DANISH                                             :Dán
 STR_TOWNNAME_TURKISH                                            :Török
 STR_TOWNNAME_ITALIAN                                            :Olasz
+STR_TOWNNAME_CATALAN                                            :Katalán
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Font (£)
@@ -974,6 +975,7 @@ STR_CURR_NOK                                                    :Norvég Korona (
 STR_CURR_PLN                                                    :Legyel Zlotyi (PLN)
 STR_CURR_ROL                                                    :Román Lej (ROL)
 STR_CURR_RUR                                                    :Orosz Rubel (RUR)
+STR_CURR_SIT                                                    :Szlovén Tolár (SIT)
 STR_CURR_SEK                                                    :Svéd Korona (SEK)
 
 STR_CURR_CUSTOM                                                 :Saját...

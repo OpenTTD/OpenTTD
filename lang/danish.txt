@@ -1033,7 +1033,12 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Antal p
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Levetid for fejlmeddelser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis byens indbyggertal i bynavnet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlige træer (med gennemsigtige bygninger): {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snelinjehøjden: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ingen
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Forbedret
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landskabs værktøjsbaren til skinne/vej/vand/lufthavn værktøjsbaren: {ORANGE}{STRING}
@@ -1089,6 +1094,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Skift indstillingsværdi
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Nogle eller alle standard service intervaller nedenunder er uforenelige med den valgte opsætning! 5-90% og 30-800 dage er gyldige
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Brug YAPF for skibe: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Brug YAPF for busser: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Brug YAPF for tog: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Tempereret klima
 STR_SUB_ARCTIC_LANDSCAPE                                        :Arktisk klima
@@ -1424,6 +1432,11 @@ STR_NETWORK_SEND                                                :{BLACK}Send
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-størrelse af kort: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-størrelse af kort: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Pris: {CURRENCY}
@@ -2578,6 +2591,7 @@ STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gå til {TOWN} L
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN} Lastbilsdepot
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Ombyg vejkøretøj til at laste en anden type last
+STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Ombyg lastbil
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Ombyg vejkøretøjet til at laste den markede type last
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kan ikke ombygge vejkøretøj
 
@@ -2650,7 +2664,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapac
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(ombygning mulig)
 STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} Skip Depot
-SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} Skip Depot
+SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} Skib Depot
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Lufthavne
@@ -2848,6 +2862,26 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vægt: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Pris: {GOLD}{CURRENCY}{BLACK} Hastighed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Lasteevne: {GOLD}{COMMA} passagerer, {COMMA} sække post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserede Vogne: {GOLD}+{POWER}{BLACK} Vægt: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Generer
+STR_DATE                                                        :{BLACK}Dato:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Størrelse: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Generere verden...
+STR_GENERATION_ABORT                                            :{BLACK}Afbryd
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Afbryd Kort Genereringen
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil du virkelig afbryde kort genereringen?
+STR_PROGRESS                                                    :{WHITE}{NUM}% færdig
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Denne handling ændrere sværhedsgraden til speciel
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flyt højden af flat land en ned
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flyt højden af flat land en up
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ændre højden af flat land
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde af flat land:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Lille
