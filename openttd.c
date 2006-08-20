@@ -535,9 +535,9 @@ int ttd_main(int argc, char *argv[])
 
 /** Mutex so that only one thread can communicate with the main program
  * at any given time */
-static ThreadMsg _message = 0;
+static ThreadMsg _message = MSG_OTTD_NO_MESSAGE;
 
-static inline void OTTD_ReleaseMutex(void) {_message = 0;}
+static inline void OTTD_ReleaseMutex(void) {_message = MSG_OTTD_NO_MESSAGE;}
 static inline ThreadMsg OTTD_PollThreadEvent(void) {return _message;}
 
 /** Called by running thread to execute some action in the main game.
@@ -545,7 +545,7 @@ static inline ThreadMsg OTTD_PollThreadEvent(void) {return _message;}
 void OTTD_SendThreadMessage(ThreadMsg msg)
 {
 	if (_exit_game) return;
-	while (_message != 0) CSleep(10);
+	while (_message != MSG_OTTD_NO_MESSAGE) CSleep(10);
 
 	_message = msg;
 }
@@ -557,7 +557,6 @@ void OTTD_SendThreadMessage(ThreadMsg msg)
 static void ProcessSentMessage(ThreadMsg message)
 {
 	switch (message) {
-		case MSG_OTTD_SAVETHREAD_START: SaveFileStart(); break;
 		case MSG_OTTD_SAVETHREAD_DONE:  SaveFileDone(); break;
 		case MSG_OTTD_SAVETHREAD_ERROR: SaveFileError(); break;
 		default: NOT_REACHED();

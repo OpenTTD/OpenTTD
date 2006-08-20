@@ -1402,8 +1402,6 @@ static void* SaveFileToDisk(void *arg)
 	const SaveLoadFormat *fmt;
 	uint32 hdr[2];
 
-	if (arg != NULL) OTTD_SendThreadMessage(MSG_OTTD_SAVETHREAD_START);
-
 	/* XXX - Setup setjmp error handler if an error occurs anywhere deep during
 	 * loading/saving execute a longjmp() and continue execution here */
 	if (setjmp(_sl.excpt)) {
@@ -1536,10 +1534,12 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		SlSaveChunks();
 		SlWriteFill(); // flush the save buffer
 
+		SaveFileStart();
 		if (_network_server ||
 					(save_thread = OTTDCreateThread(&SaveFileToDisk, (void*)"")) == NULL) {
 			DEBUG(misc, 1) ("[Sl] Cannot create savegame thread, reverting to single-threaded mode...");
 			SaveFileToDisk(NULL);
+			SaveFileDone();
 		}
 
 	} else { /* LOAD game */

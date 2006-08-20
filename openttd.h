@@ -527,9 +527,9 @@ VARDEF byte _no_scroll;
  * the OTTD_SendThreadMessage() function. Actions to perform upon the message are handled
  * in the ProcessSentMessage() function */
 typedef enum ThreadMsgs {
-	MSG_OTTD_SAVETHREAD_START  = 1,
-	MSG_OTTD_SAVETHREAD_DONE   = 2,
-	MSG_OTTD_SAVETHREAD_ERROR  = 3,
+	MSG_OTTD_NO_MESSAGE,
+	MSG_OTTD_SAVETHREAD_DONE,
+	MSG_OTTD_SAVETHREAD_ERROR,
 } ThreadMsg;
 
 void OTTD_SendThreadMessage(ThreadMsg msg);
