@@ -1492,6 +1492,9 @@ static void SendChat(const char *buf)
 
 /**
  * Find the next item of the list of things that can be auto-completed.
+ * @param item The current indexed item to return. This function can, and most
+ *     likely will, alter item, to skip empty items in the arrays.
+ * @return Returns the char that matched to the index.
  */
 static const char *ChatTabCompletionNextItem(uint *item)
 {
@@ -1506,7 +1509,7 @@ static const char *ChatTabCompletionNextItem(uint *item)
 
 	/* Then, try townnames */
 	if (*item < (uint)MAX_CLIENT_INFO + GetTownPoolSize()) {
-		Town *t;
+		const Town *t;
 
 		FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {
 			int32 temp[1];
@@ -1536,19 +1539,11 @@ static char *ChatTabCompletionFindText(char *buf)
 {
 	char *p;
 
-	/* Scan from the right to the left */
-	p = &buf[strlen(buf)];
-	while (p != buf) {
-		/* If we find a space, we try to complete the thing right of it */
-		if (*p == ' ') {
-			*p = '\0';
-			return p + 1;
-		}
-		p--;
-	}
+	p = strrchr(buf, ' ');
+	if (p == NULL) return buf;
 
-	/* Not found, so complete the whole text */
-	return p;
+	*p = '\0';
+	return p + 1;
 }
 
 /**
