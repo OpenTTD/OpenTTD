@@ -753,6 +753,16 @@ void DeleteIndustry(Industry *i)
 		}
 	END_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
 
+	if (i->type == IT_FARM || i->type == IT_FARM_2) {
+		/* Remove the farmland and convert it to regular tiles over time. */
+		BEGIN_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiffXY(21, 21)) {
+			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
+					GetIndustryIndexOfField(tile_cur) == i->index) {
+				SetIndustryIndexOfField(tile_cur, INVALID_INDUSTRY);
+			}
+		} END_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiff(21, 21))
+	}
+
 	i->xy = 0;
 	_industry_sort_dirty = true;
 	DeleteSubsidyWithIndustry(i->index);
@@ -801,7 +811,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direct
 	} while (--size);
 }
 
-static void PlantFarmField(TileIndex tile)
+static void PlantFarmField(TileIndex tile, uint16 industry)
 {
 	uint size_x, size_y;
 	uint32 r;
@@ -841,7 +851,7 @@ static void PlantFarmField(TileIndex tile)
 	BEGIN_TILE_LOOP(cur_tile, size_x, size_y, tile)
 		cur_tile = TILE_MASK(cur_tile);
 		if (!IsBadFarmFieldTile2(cur_tile)) {
-			MakeField(cur_tile, field_type);
+			MakeField(cur_tile, field_type, industry);
 			SetClearCounter(cur_tile, counter);
 			MarkTileDirtyByTile(cur_tile);
 		}
@@ -858,14 +868,19 @@ static void PlantFarmField(TileIndex tile)
 	SetupFarmFieldFence(tile + TileDiffXY(0, size_y - 1), size_x, type, AXIS_X);
 }
 
+void PlantRandomFarmField(const Industry *i)
+{
+	int x = i->width  / 2 + Random() % 31 - 16;
+	int y = i->height / 2 + Random() % 31 - 16;
+
+	TileIndex tile = TileAddWrap(i->xy, x, y);
+
+	if (tile != INVALID_TILE) PlantFarmField(tile, i->index);
+}
+
 static void MaybePlantFarmField(const Industry *i)
 {
-	if (CHANCE16(1, 8)) {
-		int x = i->width  / 2 + Random() % 31 - 16;
-		int y = i->height / 2 + Random() % 31 - 16;
-		TileIndex tile = TileAddWrap(i->xy, x, y);
-		if (tile != INVALID_TILE) PlantFarmField(tile);
-	}
+	if (CHANCE16(1, 8)) PlantRandomFarmField(i);
 }
 
 static void ChopLumberMillTrees(Industry *i)
@@ -1474,14 +1489,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->height++;
 
 	if (i->type == IT_FARM || i->type == IT_FARM_2) {
-		tile = i->xy + TileDiffXY(i->width / 2, i->height / 2);
-		for (j = 0; j != 50; j++) {
-			int x = Random() % 31 - 16;
-			int y = Random() % 31 - 16;
-			TileIndex new_tile = TileAddWrap(tile, x, y);
-
-			if (new_tile != INVALID_TILE) PlantFarmField(new_tile);
-		}
+		for (j = 0; j != 50; j++) PlantRandomFarmField(i);
 	}
 	_industry_sort_dirty = true;
 	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);

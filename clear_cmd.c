@@ -16,6 +16,7 @@
 #include "table/sprites.h"
 #include "unmovable_map.h"
 #include "genworld.h"
+#include "industry.h"
 
 typedef struct TerraformerHeightMod {
 	TileIndex tile;
@@ -679,9 +680,14 @@ static void TileLoop_Clear(TileIndex tile)
 				SetClearCounter(tile, 0);
 			}
 
-			field_type = GetFieldType(tile);
-			field_type = (field_type < 8) ? field_type + 1 : 0;
-			SetFieldType(tile, field_type);
+			if (GetIndustryIndexOfField(tile) == INVALID_INDUSTRY) {
+				/* This farmfield is no longer farmfield, so make it grass again */
+				MakeClear(tile, CLEAR_GRASS, 0);
+			} else {
+				field_type = GetFieldType(tile);
+				field_type = (field_type < 8) ? field_type + 1 : 0;
+				SetFieldType(tile, field_type);
+			}
 			break;
 		}
 

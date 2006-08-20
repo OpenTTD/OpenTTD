@@ -50,6 +50,7 @@
 #include "settings.h"
 #include "genworld.h"
 #include "date.h"
+#include "clear_map.h"
 
 #include <stdarg.h>
 
@@ -1460,6 +1461,28 @@ bool AfterLoadGame(void)
 		FOR_ALL_VEHICLES(v) {
 			v->date_of_last_service += DAYS_TILL_ORIGINAL_BASE_YEAR;
 			v->build_year += ORIGINAL_BASE_YEAR;
+		}
+	}
+
+	/* From 32 on we save the industry who made the farmland.
+	 *  To give this prettyness to old savegames, we remove all farmfields and
+	 *  plant new ones. */
+	if (CheckSavegameVersion(32)) {
+		Industry *i;
+
+		BEGIN_TILE_LOOP(tile_cur, MapSizeX(), MapSizeY(), 0) {
+			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS)) {
+				MakeClear(tile_cur, CLEAR_GRASS, 3);
+			}
+		} END_TILE_LOOP(tile_cur, MapSizeX(), MapSizeY(), 0)
+
+		FOR_ALL_INDUSTRIES(i) {
+			uint j;
+
+			if (i->xy == 0) continue;
+			if (i->type == IT_FARM || i->type == IT_FARM_2) {
+				for (j = 0; j != 50; j++) PlantRandomFarmField(i);
+			}
 		}
 	}
 

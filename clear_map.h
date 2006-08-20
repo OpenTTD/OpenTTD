@@ -83,6 +83,17 @@ static inline void SetFieldType(TileIndex t, uint f)
 	SB(_m[t].m3, 0, 4, f);
 }
 
+static inline uint16 GetIndustryIndexOfField(TileIndex t)
+{
+	assert(GetClearGround(t) == CLEAR_FIELDS);
+	return _m[t].m2;
+}
+
+static inline void SetIndustryIndexOfField(TileIndex t, uint16 i)
+{
+	assert(GetClearGround(t) == CLEAR_FIELDS);
+	_m[t].m2 = i;
+}
 
 /* Is used by tree tiles, too */
 static inline uint GetFenceSE(TileIndex t)
@@ -121,11 +132,11 @@ static inline void MakeClear(TileIndex t, ClearGround g, uint density)
 }
 
 
-static inline void MakeField(TileIndex t, uint field_type)
+static inline void MakeField(TileIndex t, uint field_type, uint16 industry)
 {
 	SetTileType(t, MP_CLEAR);
 	SetTileOwner(t, OWNER_NONE);
-	_m[t].m2 = 0;
+	_m[t].m2 = industry;
 	_m[t].m3 = field_type;
 	_m[t].m4 = 0 << 5 | 0 << 2;
 	SetClearGroundDensity(t, CLEAR_FIELDS, 3);

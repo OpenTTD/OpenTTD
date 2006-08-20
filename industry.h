@@ -8,6 +8,10 @@
 typedef byte IndustryGfx;
 typedef uint8 IndustryType;
 
+enum {
+	INVALID_INDUSTRY = 0xFFFF,
+};
+
 struct Industry {
 	TileIndex xy;
 	byte width; /* swapped order of w/h with town */
@@ -101,6 +105,7 @@ VARDEF bool _industry_sort_dirty;
 
 
 void DeleteIndustry(Industry *is);
+void PlantRandomFarmField(const Industry *i);
 
 enum {
 	IT_COAL_MINE = 0,
