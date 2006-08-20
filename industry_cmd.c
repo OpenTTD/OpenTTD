@@ -1317,7 +1317,7 @@ static bool CheckIfCanLevelIndustryPlatform(TileIndex tile, uint32 flags, const 
 	size_y = max_y + 4;
 
 	/* Check if we don't leave the map */
-	if (TileX(cur_tile) == 0 || TileY(cur_tile) == 0 || GetTileType(cur_tile) == MP_VOID) return false;
+	if (TileX(cur_tile) == 0 || TileY(cur_tile) == 0 || TileX(cur_tile) + size_x >= MapMaxX() || TileY(cur_tile) + size_y >= MapMaxY()) return false;
 
 	BEGIN_TILE_LOOP(tile_walk, size_x, size_y, cur_tile) {
 		curh = TileHeight(tile_walk);
