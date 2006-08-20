@@ -490,7 +490,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = OWNER_SPECTATOR;
 
 	p->avail_railtypes = GetPlayerRailtypes(p->index);
-	p->inaugurated_year = _cur_year - BASE_YEAR;
+	p->inaugurated_year = _cur_year;
 	p->face = Random();
 
 	/* Engine renewal settings */
@@ -1132,7 +1132,8 @@ static const SaveLoad _player_desc[] = {
 	SLE_CONDVAR(Player, location_of_house,     SLE_UINT32, 6, SL_MAX_VERSION),
 	SLE_CONDVAR(Player, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
 	SLE_CONDVAR(Player, last_build_coordinate, SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_VAR(Player,inaugurated_year,SLE_UINT8),
+	SLE_CONDVAR(Player, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32, 0, 30),
+	SLE_CONDVAR(Player, inaugurated_year,      SLE_INT32, 31, SL_MAX_VERSION),
 
 	SLE_ARR(Player,share_owners,		SLE_UINT8, 4),
 

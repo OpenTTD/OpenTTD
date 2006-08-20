@@ -54,11 +54,11 @@ typedef byte WindowClass;
 
 enum {
 	INVALID_YEAR = -1,
-	INVALID_DATE = (uint16)-1,
+	INVALID_DATE = -1,
 };
 
-typedef int16  Year;
-typedef uint16 Date;
+typedef int32 Year;
+typedef int32 Date;
 
 
 enum GameModes {

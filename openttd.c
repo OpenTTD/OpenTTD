@@ -793,7 +793,7 @@ void SwitchMode(int new_mode)
 				}
 			}
 			_generating_world = false;
-			_patches_newgame.starting_year = BASE_YEAR + _cur_year;
+			_patches_newgame.starting_year = ORIGINAL_BASE_YEAR + _cur_year;
 			// delete all stations owned by a player
 			DeleteAllPlayerStations();
 		} else {
@@ -1438,6 +1438,30 @@ bool AfterLoadGame(void)
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 
 	if (!CheckSavegameVersion(27)) AfterLoadStations();
+
+	/* Time starts at 0 instead of 1920.
+	 * Account for this in older games by adding an offset */
+	if (CheckSavegameVersion(31)) {
+		Station *st;
+		Waypoint *wp;
+		Engine *e;
+		Player *player;
+		Industry *i;
+		Vehicle *v;
+
+		_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+
+		FOR_ALL_STATIONS(st)    st->build_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		FOR_ALL_WAYPOINTS(wp)   wp->build_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		FOR_ALL_ENGINES(e)      e->intro_date  += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		FOR_ALL_PLAYERS(player) player->inaugurated_year += ORIGINAL_BASE_YEAR;
+		FOR_ALL_INDUSTRIES(i)   i->last_prod_year        += ORIGINAL_BASE_YEAR;
+
+		FOR_ALL_VEHICLES(v) {
+			v->date_of_last_service += DAYS_TILL_ORIGINAL_BASE_YEAR;
+			v->build_year += ORIGINAL_BASE_YEAR;
+		}
+	}
 
 	return true;
 }

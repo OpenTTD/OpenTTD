@@ -2202,17 +2202,22 @@ const SaveLoad _common_veh_desc[] = {
 
 	SLE_REF(Vehicle,orders,						REF_ORDER),
 
-	SLE_VAR(Vehicle,age,							SLE_UINT16),
-	SLE_VAR(Vehicle,max_age,					SLE_UINT16),
-	SLE_VAR(Vehicle,date_of_last_service,SLE_UINT16),
-	SLE_VAR(Vehicle,service_interval,	SLE_UINT16),
+	SLE_CONDVAR(Vehicle,age,					SLE_FILE_U16 | SLE_VAR_I32, 0, 30),
+	SLE_CONDVAR(Vehicle,age,					SLE_INT32, 31, SL_MAX_VERSION),
+	SLE_CONDVAR(Vehicle,max_age,			SLE_FILE_U16 | SLE_VAR_I32, 0, 30),
+	SLE_CONDVAR(Vehicle,max_age,			SLE_INT32, 31, SL_MAX_VERSION),
+	SLE_CONDVAR(Vehicle,date_of_last_service,	SLE_FILE_U16 | SLE_VAR_I32, 0, 30),
+	SLE_CONDVAR(Vehicle,date_of_last_service,	SLE_INT32, 31, SL_MAX_VERSION),
+	SLE_CONDVAR(Vehicle,service_interval,			SLE_FILE_U16 | SLE_VAR_I32, 0, 30),
+	SLE_CONDVAR(Vehicle,service_interval,			SLE_INT32, 31, SL_MAX_VERSION),
 	SLE_VAR(Vehicle,reliability,			SLE_UINT16),
 	SLE_VAR(Vehicle,reliability_spd_dec,SLE_UINT16),
 	SLE_VAR(Vehicle,breakdown_ctr,		SLE_UINT8),
 	SLE_VAR(Vehicle,breakdown_delay,	SLE_UINT8),
 	SLE_VAR(Vehicle,breakdowns_since_last_service,	SLE_UINT8),
 	SLE_VAR(Vehicle,breakdown_chance,	SLE_UINT8),
-	SLE_VAR(Vehicle,build_year,				SLE_UINT8),
+	SLE_CONDVAR(Vehicle,build_year,		SLE_FILE_U8 | SLE_VAR_I32, 0, 30),
+	SLE_CONDVAR(Vehicle,build_year,		SLE_INT32, 31, SL_MAX_VERSION),
 
 	SLE_VAR(Vehicle,load_unload_time_rem,	SLE_UINT16),
 
@@ -2362,8 +2367,8 @@ static const SaveLoad _disaster_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, station), SLE_UINT16, 5, SL_MAX_VERSION),
 
 	SLE_VAR(Vehicle,cur_image,				SLE_UINT16),
-	SLE_VAR(Vehicle,age,							SLE_UINT16),
-
+	SLE_CONDVAR(Vehicle,age,					SLE_FILE_U16 | SLE_VAR_I32, 0, 30),
+	SLE_CONDVAR(Vehicle,age,					SLE_INT32, 31, SL_MAX_VERSION),
 	SLE_VAR(Vehicle,tick_counter,			SLE_UINT8),
 
 	SLE_VARX(offsetof(Vehicle,u)+offsetof(VehicleDisaster,image_override),	SLE_UINT16),

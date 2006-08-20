@@ -408,7 +408,8 @@ static const SaveLoad _waypoint_desc[] = {
 	SLE_VAR(Waypoint, string, SLE_UINT16),
 	SLE_VAR(Waypoint, deleted, SLE_UINT8),
 
-	SLE_CONDVAR(Waypoint, build_date, SLE_UINT16,  3, SL_MAX_VERSION),
+	SLE_CONDVAR(Waypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32, 3, 30),
+	SLE_CONDVAR(Waypoint, build_date, SLE_INT32,  31, SL_MAX_VERSION),
 	SLE_CONDVAR(Waypoint, localidx,   SLE_UINT8,   3, SL_MAX_VERSION),
 	SLE_CONDVAR(Waypoint, grfid,      SLE_UINT32, 17, SL_MAX_VERSION),
 

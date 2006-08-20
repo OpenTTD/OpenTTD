@@ -95,7 +95,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 		NetworkSend_uint8 (p, player->index);
 
 		NetworkSend_string(p, _network_player_info[player->index].company_name);
-		NetworkSend_uint8 (p, _network_player_info[player->index].inaugurated_year);
+		NetworkSend_uint32(p, _network_player_info[player->index].inaugurated_year);
 		NetworkSend_uint64(p, _network_player_info[player->index].company_value);
 		NetworkSend_uint64(p, _network_player_info[player->index].money);
 		NetworkSend_uint64(p, _network_player_info[player->index].income);

@@ -1207,7 +1207,7 @@ static const SettingDescGlobVarList _network_settings[] = {
 	SDTG_BOOL("autoclean_companies",             S, 0, _network_autoclean_companies,  false,       STR_NULL, NULL),
 	 SDTG_VAR("autoclean_unprotected",SLE_UINT8, S, 0, _network_autoclean_unprotected,12, 0,  60,  STR_NULL, NULL),
 	 SDTG_VAR("autoclean_protected",  SLE_UINT8, S, 0, _network_autoclean_protected,  36, 0, 180,  STR_NULL, NULL),
-	 SDTG_VAR("restart_game_year",    SLE_INT16, S,D0, _network_restart_game_year,    0, MIN_YEAR, MAX_YEAR, STR_NULL, NULL),
+	 SDTG_VAR("restart_game_year",    SLE_INT32, S,D0, _network_restart_game_year,    0, MIN_YEAR, MAX_YEAR, STR_NULL, NULL),
 	 SDTG_END()
 };
 #endif /* ENABLE_NETWORK */
@@ -1321,9 +1321,9 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, same_industry_close,        0, 0, false,            STR_CONFIG_PATCHES_SAMEINDCLOSE,     NULL),
 	SDT_BOOL(Patches, bribe,                      0, 0,  true,            STR_CONFIG_PATCHES_BRIBE,            NULL),
 	 SDT_VAR(Patches, snow_line_height,SLE_UINT8, 0, 0,     7,   2,   13, STR_CONFIG_PATCHES_SNOWLINE_HEIGHT,  NULL),
-	 SDT_VAR(Patches, colored_news_year,SLE_FILE_U32 | SLE_VAR_I16, 0,NC,  2000, MIN_YEAR, MAX_YEAR, STR_CONFIG_PATCHES_COLORED_NEWS_YEAR,NULL),
-	 SDT_VAR(Patches, starting_year,    SLE_FILE_U32 | SLE_VAR_I16, 0,NC,  1950, MIN_YEAR, MAX_YEAR, STR_CONFIG_PATCHES_STARTING_YEAR,NULL),
-	 SDT_VAR(Patches, ending_year,      SLE_FILE_U32 | SLE_VAR_I16,0,NC|NO,2051, MIN_YEAR, MAX_YEAR, STR_CONFIG_PATCHES_ENDING_YEAR,  NULL),
+	 SDT_VAR(Patches, colored_news_year,SLE_INT32, 0,NC,  2000, MIN_YEAR, MAX_YEAR, STR_CONFIG_PATCHES_COLORED_NEWS_YEAR,NULL),
+	 SDT_VAR(Patches, starting_year,    SLE_INT32, 0,NC,  1950, MIN_YEAR, MAX_YEAR, STR_CONFIG_PATCHES_STARTING_YEAR,NULL),
+	 SDT_VAR(Patches, ending_year,      SLE_INT32,0,NC|NO,2051, MIN_YEAR, MAX_YEAR, STR_CONFIG_PATCHES_ENDING_YEAR,  NULL),
 	SDT_BOOL(Patches, smooth_economy,             0, 0,  true,            STR_CONFIG_PATCHES_SMOOTH_ECONOMY,   NULL),
 	SDT_BOOL(Patches, allow_shares,               0, 0,  true,            STR_CONFIG_PATCHES_ALLOW_SHARES,     NULL),
 
@@ -1453,7 +1453,7 @@ const SettingDesc _patch_settings[] = {
 static const SettingDesc _currency_settings[] = {
 	SDT_VAR(CurrencySpec, rate,    SLE_UINT16, S, 0,  1, 0, 100, STR_NULL, NULL),
 	SDT_CHR(CurrencySpec, separator,           S, 0,        ".", STR_NULL, NULL),
-	SDT_VAR(CurrencySpec, to_euro, SLE_UINT16, S, 0,  0, 0,1000, STR_NULL, NULL),
+	SDT_VAR(CurrencySpec, to_euro,  SLE_INT32, S, 0,  0, 0,1000, STR_NULL, NULL),
 	SDT_STR(CurrencySpec, prefix,   SLE_STRBQ, S, 0,       NULL, STR_NULL, NULL),
 	SDT_STR(CurrencySpec, suffix,   SLE_STRBQ, S, 0, " credits", STR_NULL, NULL),
 	SDT_END()

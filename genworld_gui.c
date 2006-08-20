@@ -362,7 +362,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case 19: // Year text
 			WP(w, def_d).data_3 = START_DATE_QUERY;
 			SetDParam(0, _patches_newgame.starting_year);
-			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 5, 100, WC_GENERATE_LANDSCAPE, mode, CS_NUMERAL);
+			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, WC_GENERATE_LANDSCAPE, mode, CS_NUMERAL);
 			break;
 		case 21: case 23: // Snow line buttons
 			/* Don't allow too fast scrolling */
@@ -629,7 +629,7 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		case 15: // Year text
 			WP(w, def_d).data_3 = START_DATE_QUERY;
 			SetDParam(0, _patches_newgame.starting_year);
-			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 5, 100, WC_GENERATE_LANDSCAPE, GLWP_SCENARIO, CS_NUMERAL);
+			ShowQueryString(STR_CONFIG_PATCHES_INT32, STR_START_DATE_QUERY_CAPT, 8, 100, WC_GENERATE_LANDSCAPE, GLWP_SCENARIO, CS_NUMERAL);
 			break;
 		case 17: case 19: // Height level buttons
 			/* Don't allow too fast scrolling */

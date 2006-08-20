@@ -208,8 +208,8 @@ struct Vehicle {
 	VehicleID next_hash;
 
 	// Related to age and service time
-	uint16 age;				// Age in days
-	uint16 max_age;		// Maximum age
+	Date age;     // Age in days
+	Date max_age; // Maximum age
 	Date date_of_last_service;
 	Date service_interval;
 	uint16 reliability;
@@ -218,7 +218,7 @@ struct Vehicle {
 	byte breakdown_delay;
 	byte breakdowns_since_last_service;
 	byte breakdown_chance;
-	byte build_year;
+	Year build_year;
 
 	bool leave_depot_instantly;	// NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 

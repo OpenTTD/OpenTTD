@@ -28,7 +28,7 @@ struct Industry {
 	byte type;
 	byte owner;
 	byte color_map;
-	byte last_prod_year;
+	Year last_prod_year;
 	byte was_cargo_delivered;
 
 	uint16 index;

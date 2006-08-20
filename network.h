@@ -89,7 +89,7 @@ typedef struct NetworkGameInfo {
 typedef struct NetworkPlayerInfo {
 	char company_name[NETWORK_NAME_LENGTH];					// Company name
 	char password[NETWORK_PASSWORD_LENGTH];					// The password for the player
-	byte inaugurated_year;													// What year the company started in
+	Year inaugurated_year;													// What year the company started in
 	int64 company_value;														// The company value
 	int64 money;																		// The amount of money the company has
 	int64 income;																		// How much did the company earned last year

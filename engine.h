@@ -76,8 +76,8 @@ typedef struct RoadVehicleInfo {
 typedef struct EngineInfo {
 	Date base_intro;
 	byte unk2;              ///< Carriages have the highest bit set in this one
-	byte lifelength;
-	byte base_life;
+	Year lifelength;
+	Year base_life;
 	byte railtype:4;
 	byte climates:4;
 	uint32 refit_mask;

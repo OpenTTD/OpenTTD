@@ -1714,7 +1714,7 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,       0, STR_CHEAT_NO_JETCRASH,    &_cheats.no_jetcrash.value,     &_cheats.no_jetcrash.been_used,     NULL,                     0,  0},
 	{SLE_BOOL,       0, STR_CHEAT_SETUP_PROD,     &_cheats.setup_prod.value,      &_cheats.setup_prod.been_used,      NULL,                     0,  0},
 	{SLE_UINT8,      0, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape,                &_cheats.switch_climate.been_used,  &ClickChangeClimateCheat,-1,  4},
-	{SLE_UINT8,      0, STR_CHEAT_CHANGE_DATE,    &_cur_year,                     &_cheats.change_date.been_used,     &ClickChangeDateCheat,   -1,  1},
+	{SLE_INT32,      0, STR_CHEAT_CHANGE_DATE,    &_cur_year,                     &_cheats.change_date.been_used,     &ClickChangeDateCheat,   -1,  1},
 	{SLE_BOOL,       0, STR_CHEAT_ALLOW_CONVRAIL, &_cheats.elrail.value,          &_cheats.elrail.been_used,          &ClickAllowConvrail,      0,  0},
 };
 

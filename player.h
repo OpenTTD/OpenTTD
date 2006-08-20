@@ -173,7 +173,7 @@ typedef struct Player {
 
 	PlayerID share_owners[4];
 
-	byte inaugurated_year;
+	Year inaugurated_year;
 	byte num_valid_stat_ent;
 
 	byte quarters_of_bankrupcy;

@@ -63,6 +63,10 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 
 	NetworkSend_uint8 (packet, NETWORK_GAME_INFO_VERSION);
 
+	/* NETWORK_GAME_INFO_VERSION = 3 */
+	NetworkSend_uint32(packet, _network_game_info.game_date);
+	NetworkSend_uint32(packet, _network_game_info.start_date);
+
 	/* NETWORK_GAME_INFO_VERSION = 2 */
 	NetworkSend_uint8 (packet, _network_game_info.companies_max);
 	NetworkSend_uint8 (packet, ActivePlayerCount());
@@ -76,8 +80,6 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_FIND_SERVER)
 	NetworkSend_uint8 (packet, _network_game_info.clients_max);
 	NetworkSend_uint8 (packet, _network_game_info.clients_on);
 	NetworkSend_uint8 (packet, NetworkSpectatorCount());
-	NetworkSend_uint16(packet, _network_game_info.game_date);
-	NetworkSend_uint16(packet, _network_game_info.start_date);
 	NetworkSend_string(packet, _network_game_info.map_name);
 	NetworkSend_uint16(packet, _network_game_info.map_width);
 	NetworkSend_uint16(packet, _network_game_info.map_height);
@@ -114,6 +116,10 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 	/* Please observer the order. In the order in which packets are sent
 	 * they are to be received */
 	switch (game_info_version) {
+		case 3:
+			item->info.game_date     = NetworkRecv_uint32(&_udp_cs, p);
+			item->info.start_date    = NetworkRecv_uint32(&_udp_cs, p);
+			/* Fallthrough */
 		case 2:
 			item->info.companies_max = NetworkRecv_uint8(&_udp_cs, p);
 			item->info.companies_on = NetworkRecv_uint8(&_udp_cs, p);
@@ -127,8 +133,10 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 			item->info.clients_max   = NetworkRecv_uint8(&_udp_cs, p);
 			item->info.clients_on    = NetworkRecv_uint8(&_udp_cs, p);
 			item->info.spectators_on = NetworkRecv_uint8(&_udp_cs, p);
-			item->info.game_date     = NetworkRecv_uint16(&_udp_cs, p);
-			item->info.start_date    = NetworkRecv_uint16(&_udp_cs, p);
+			if (game_info_version < 3) { // 16 bits dates got scrapped and are read earlier
+				item->info.game_date     = NetworkRecv_uint16(&_udp_cs, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
+				item->info.start_date    = NetworkRecv_uint16(&_udp_cs, p) + DAYS_TILL_ORIGINAL_BASE_YEAR;
+			}
 			NetworkRecv_string(&_udp_cs, p, item->info.map_name, sizeof(item->info.map_name));
 			item->info.map_width     = NetworkRecv_uint16(&_udp_cs, p);
 			item->info.map_height    = NetworkRecv_uint16(&_udp_cs, p);
@@ -185,7 +193,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 		NetworkSend_uint8(packet, current);
 
 		NetworkSend_string(packet, _network_player_info[player->index].company_name);
-		NetworkSend_uint8 (packet, _network_player_info[player->index].inaugurated_year);
+		NetworkSend_uint32(packet, _network_player_info[player->index].inaugurated_year);
 		NetworkSend_uint64(packet, _network_player_info[player->index].company_value);
 		NetworkSend_uint64(packet, _network_player_info[player->index].money);
 		NetworkSend_uint64(packet, _network_player_info[player->index].income);
@@ -212,7 +220,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 				NetworkSend_uint8(packet, 1);
 				NetworkSend_string(packet, ci->client_name);
 				NetworkSend_string(packet, ci->unique_id);
-				NetworkSend_uint16(packet, ci->join_date);
+				NetworkSend_uint32(packet, ci->join_date);
 			}
 		}
 		/* Also check for the server itself */
@@ -222,7 +230,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 			NetworkSend_uint8(packet, 1);
 			NetworkSend_string(packet, ci->client_name);
 			NetworkSend_string(packet, ci->unique_id);
-			NetworkSend_uint16(packet, ci->join_date);
+			NetworkSend_uint32(packet, ci->join_date);
 		}
 
 		/* Indicates end of client list */
@@ -237,7 +245,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 			NetworkSend_uint8(packet, 1);
 			NetworkSend_string(packet, ci->client_name);
 			NetworkSend_string(packet, ci->unique_id);
-			NetworkSend_uint16(packet, ci->join_date);
+			NetworkSend_uint32(packet, ci->join_date);
 		}
 	}
 	/* Also check for the server itself */
@@ -247,7 +255,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 		NetworkSend_uint8(packet, 1);
 		NetworkSend_string(packet, ci->client_name);
 		NetworkSend_string(packet, ci->unique_id);
-		NetworkSend_uint16(packet, ci->join_date);
+		NetworkSend_uint32(packet, ci->join_date);
 	}
 
 	/* Indicates end of client list */

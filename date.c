@@ -70,25 +70,47 @@ static const uint16 _accum_days_for_month[] = {
 	ACCUM_SEP, ACCUM_OCT, ACCUM_NOV, ACCUM_DEC,
 };
 
+static inline bool IsLeapYear(Year yr)
+{
+	return yr % 4 == 0 && (yr % 100 != 0 || yr % 400 == 0);
+}
 
+/**
+ * Converts a Date to a Year, Month & Day.
+ * @param date the date to convert from
+ * @param ymd  the year, month and day to write to
+ */
 void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 {
-	uint yr  = date / (365 + 365 + 365 + 366);
-	uint rem = date % (365 + 365 + 365 + 366);
-	uint x;
+	/*
+	 * Year determination in multiple steps to account for leap
+	 * years. First do the large steps, then the smaller ones.
+	 */
 
-	yr *= 4;
+	/* There are 97 leap years in 400 years */
+	Year yr = 400 * (date / (365 * 400 + 97));
+	int rem = date % (365 * 400 + 97);
+	uint16 x;
 
-	if (rem >= 366) {
-		rem--;
-		do {
-			rem -= 365;
-			yr++;
-		} while (rem >= 365);
-		if (rem >= 31 + 28) rem++;
+	/* There are 24 leap years in 100 years */
+	yr += 100 * (rem / (365 * 100 + 24));
+	rem = rem % (365 * 100 + 24);
+
+	/* There is 1 leap year every 4 years */
+	yr += 4 * (rem / (365 * 4 + 1));
+	rem = rem % (365 * 4 + 1);
+
+	/* The last (max 3) years to account for; the first one
+	 * can be, but is not necessarily a leap year */
+	while (rem >= (IsLeapYear(yr) ? 366 : 365)) {
+		rem -= IsLeapYear(yr) ? 366 : 365;
+		yr++;
 	}
 
-	ymd->year = BASE_YEAR + yr;
+	/* Skip the 29th of February in non-leap years */
+	if (!IsLeapYear(yr) && rem >= ACCUM_MAR - 1) rem++;
+
+	ymd->year = yr;
 
 	x = _month_date_from_year_day[rem];
 	ymd->month = x >> 5;
@@ -97,23 +119,28 @@ void ConvertDateToYMD(Date date, YearMonthDay *ymd)
 
 /**
  * Converts a tupe of Year, Month and Day to a Date.
- * @param year  is a number between 0..?
+ * @param year  is a number between 0..MAX_YEAR
  * @param month is a number between 0..11
  * @param day   is a number between 1..31
  */
 Date ConvertYMDToDate(Year year, Month month, Day day)
 {
-	uint rem;
-	uint yr = year - BASE_YEAR;
+	/*
+	 * Each passed leap year adds one day to the 'day count'.
+	 *
+	 * A special case for the year 0 as no year has been passed,
+	 * but '(year - 1) / 4' does not yield '-1' to counteract the
+	 * '+1' at the end of the formula as divisions round to zero.
+	 */
+	int nr_of_leap_years = (year == 0) ? 0 : ((year - 1) / 4 - (year - 1) / 100 + (year - 1) / 400 + 1);
 
-	/* day in the year */
-	rem = _accum_days_for_month[month] + day - 1;
+	/* Day-offset in a leap year */
+	int days = _accum_days_for_month[month] + day - 1;
 
-	/* remove feb 29 from year 1,2,3 */
-	if (yr & 3) rem += (yr & 3) * 365 + (rem < 31 + 29);
+	/* Account for the missing of the 29th of February in non-leap years */
+	if (!IsLeapYear(year) && days >= ACCUM_MAR) days--;
 
-	/* base date. */
-	return (yr >> 2) * (365 + 365 + 365 + 366) + rem;
+	return year * 365 + nr_of_leap_years + days;
 }
 
 /** Functions used by the IncreaseDate function */
@@ -252,12 +279,12 @@ void IncreaseDate(void)
 	/* check if we reached the maximum year, decrement dates by a year */
 	} else if (_cur_year == MAX_YEAR + 1) {
 		Vehicle *v;
+		uint days_this_year;
 
 		_cur_year--;
-		_date -= 365;
-		FOR_ALL_VEHICLES(v) {
-			v->date_of_last_service -= 365;
-		}
+		days_this_year = IsLeapYear(_cur_year) ? 366 : 365;
+		_date -= days_this_year;
+		FOR_ALL_VEHICLES(v) v->date_of_last_service -= days_this_year;
 
 		/* Because the _date wraps here, and text-messages expire by game-days, we have to clean out
 		 *  all of them if the date is set back, else those messages will hang for ever */

@@ -702,7 +702,7 @@ static const OldChunks industry_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Industry, type ),
 	OCL_SVAR(  OC_UINT8, Industry, owner ),
 	OCL_SVAR(  OC_UINT8, Industry, color_map ),
-	OCL_SVAR(  OC_UINT8, Industry, last_prod_year ),
+	OCL_SVAR( OC_FILE_U8 | OC_VAR_I32, Industry, last_prod_year ),
 	OCL_SVAR( OC_UINT16, Industry, counter ),
 	OCL_SVAR(  OC_UINT8, Industry, was_cargo_delivered ),
 
@@ -995,7 +995,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 		p->money64 = p->player_money = p->current_loan = 100000;
 
 	_player_colors[num] = p->player_color;
-	p->inaugurated_year = _old_inaugurated_year - BASE_YEAR;
+	p->inaugurated_year = _old_inaugurated_year;
 	if (p->location_of_house == 0xFFFF)
 		p->location_of_house = 0;
 
@@ -1122,7 +1122,7 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR(  OC_UINT8, Vehicle, cur_order_index ),
 	OCL_SVAR(   OC_TILE, Vehicle, dest_tile ),
 	OCL_SVAR( OC_UINT16, Vehicle, load_unload_time_rem ),
-	OCL_SVAR( OC_UINT16, Vehicle, date_of_last_service ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, date_of_last_service ),
 	OCL_SVAR( OC_UINT16, Vehicle, service_interval ),
 	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Vehicle, last_station_visited ),
 	OCL_SVAR(  OC_UINT8, Vehicle, tick_counter ),
@@ -1156,9 +1156,9 @@ static const OldChunks vehicle_chunk[] = {
 	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Vehicle, cargo_source ),
 	OCL_SVAR(  OC_UINT8, Vehicle, cargo_days ),
 
-	OCL_SVAR( OC_UINT16, Vehicle, age ),
-	OCL_SVAR( OC_UINT16, Vehicle, max_age ),
-	OCL_SVAR(  OC_UINT8, Vehicle, build_year ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, age ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Vehicle, max_age ),
+	OCL_SVAR( OC_FILE_U8 | OC_VAR_I32, Vehicle, build_year ),
 	OCL_SVAR( OC_FILE_U8 | OC_VAR_U16, Vehicle, unitnumber ),
 
 	OCL_SVAR( OC_UINT16, Vehicle, engine_type ),
@@ -1259,8 +1259,8 @@ static bool LoadOldSign(LoadgameState *ls, int num)
 
 static const OldChunks engine_chunk[] = {
 	OCL_SVAR( OC_UINT16, Engine, player_avail ),
-	OCL_SVAR( OC_UINT16, Engine, intro_date ),
-	OCL_SVAR( OC_UINT16, Engine, age ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Engine, intro_date ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_U32, Engine, age ),
 	OCL_SVAR( OC_UINT16, Engine, reliability ),
 	OCL_SVAR( OC_UINT16, Engine, reliability_spd_dec ),
 	OCL_SVAR( OC_UINT16, Engine, reliability_start ),
@@ -1375,7 +1375,7 @@ static bool LoadOldMapPart2(LoadgameState *ls, int num)
 static uint32 _old_cur_town_ctr;
 static const OldChunks main_chunk[] = {
 	OCL_ASSERT( 0 ),
-	OCL_VAR ( OC_UINT16,   1, &_date ),
+	OCL_VAR ( OC_FILE_U16 | OC_VAR_U32, 1, &_date ),
 	OCL_VAR ( OC_UINT16,   1, &_date_fract ),
 	OCL_NULL( 600 ),            // TextEffects
 	OCL_VAR ( OC_UINT32,   2, &_random_seeds[0] ),

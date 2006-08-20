@@ -300,7 +300,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 			return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		NetworkRecv_string(MY_CLIENT, p, _network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
-		_network_player_info[current].inaugurated_year = NetworkRecv_uint8(MY_CLIENT, p);
+		_network_player_info[current].inaugurated_year = NetworkRecv_uint32(MY_CLIENT, p);
 		_network_player_info[current].company_value = NetworkRecv_uint64(MY_CLIENT, p);
 		_network_player_info[current].money = NetworkRecv_uint64(MY_CLIENT, p);
 		_network_player_info[current].income = NetworkRecv_uint64(MY_CLIENT, p);

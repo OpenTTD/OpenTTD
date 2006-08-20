@@ -606,8 +606,10 @@ static void Load_ERNW(void)
 }
 
 static const SaveLoad _engine_desc[] = {
-	SLE_VAR(Engine,intro_date,						SLE_UINT16),
-	SLE_VAR(Engine,age,										SLE_UINT16),
+	SLE_CONDVAR(Engine,intro_date,				SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	SLE_CONDVAR(Engine,intro_date,				SLE_INT32, 31, SL_MAX_VERSION),
+	SLE_CONDVAR(Engine,age,								SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	SLE_CONDVAR(Engine,age,								SLE_INT32, 31, SL_MAX_VERSION),
 	SLE_VAR(Engine,reliability,						SLE_UINT16),
 	SLE_VAR(Engine,reliability_spd_dec,		SLE_UINT16),
 	SLE_VAR(Engine,reliability_start,			SLE_UINT16),
