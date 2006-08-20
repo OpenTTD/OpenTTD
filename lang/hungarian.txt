@@ -1526,7 +1526,7 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}ÉNY-DK 
 
 ##### PNG-MAP-Loader
 
-STR_PNGMAP_ERROR                                                :{WHITE}NEm tudom a térképet betölteni a PNG-bõl...
+STR_PNGMAP_ERROR                                                :{WHITE}Nem tudom a térképet betölteni a PNG-bõl...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...fájl nem található.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nem tudtam konverálni a kép típusát. 8 vagy 24-bites PNG kép kell.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...valami nem igazán sikerült. Bocs. (talán sérült a fájl)

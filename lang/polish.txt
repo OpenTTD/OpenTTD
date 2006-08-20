@@ -477,7 +477,7 @@ STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Budowa t
 STR_0182_BUILD_ROADS                                            :{BLACK}Budowa drog
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Budowa portow
 STR_0184_BUILD_AIRPORTS                                         :{BLACK}Budowa lotnisk
-STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Roslinnosc, znaki komunikacyjne, itp.
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Umiesc drzewa, napisy, itp.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Informacje o terenie
 STR_0187_OPTIONS                                                :{BLACK}Opcje
 STR_0188                                                        :{BLACK}{SMALLUPARROW}
@@ -647,22 +647,24 @@ STR_021F                                                        :{BLUE}{COMMA}
 STR_0220_CREATE_SCENARIO                                        :{BLACK}Tworzenie Scenariusza
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Edytor Scenariuszy
-STR_0223_LAND_GENERATION                                        :{WHITE}Generowanie ladu
+STR_0223_LAND_GENERATION                                        :{WHITE}Tworzenie terenu
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
 STR_0226_RANDOM_LAND                                            :{BLACK}Przypadkowy lad
 STR_0227_RESET_LAND                                             :{BLACK}Kasowanie ladu
 STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zwieksz powierzchnie do podwyzszenia/obnizenia
 STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Zmniejsz powierzchnie do podwyzszenia/obnizenia
-STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Geneowanie przypadkowego ladu
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Tworzenie przypadkowego ladu
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Resetuj krajobraz
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetuj krajobraz
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Uzyj mapy wysokosci
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Uzyj mapy wysokosci
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Jestes pewien ze chcesz zrestetowac krajobraz?
-STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generacja krajobrazu
-STR_022F_TOWN_GENERATION                                        :{BLACK}Generacja miast
-STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generacja przedsiebiorstw
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Tworzenie krajobrazu
+STR_022F_TOWN_GENERATION                                        :{BLACK}Tworzenie miast
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Tworzenie przedsiebiorstw
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Konstrukcja drog
-STR_0233_TOWN_GENERATION                                        :{WHITE}Generacja miast
+STR_0233_TOWN_GENERATION                                        :{WHITE}Tworzenie miast
 STR_0234_NEW_TOWN                                               :{BLACK}Nowe miasto
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Zbuduj nowe miasto
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Nie mozna tutaj zbudowac miasta...
@@ -676,7 +678,7 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Zwieksz 
 STR_023C_EXPAND                                                 :{BLACK}Rozszerz
 STR_023D_RANDOM_TOWN                                            :{BLACK}Dowolne miasto
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Budowanie miasta w losowym miejsu
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generacja przedsiebiorstw
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Tworzenie przedsiebiorstw
 STR_0240_COAL_MINE                                              :{BLACK}{G=f}Kopalnia Wegla
 STR_0240_COAL_MINE.d                                            :{BLACK}{G=f}kopalni wegla
 STR_0241_POWER_STATION                                          :{BLACK}{G=f}Elektrownia
@@ -788,8 +790,8 @@ STR_0289_PLACE_SIGN                                             :{BLACK}Umiesc n
 STR_028A_RANDOM_TREES                                           :{BLACK}Dowolne drzewa
 STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Pokryj krajobraz losowymi drzewami
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Umiesc kamieniste tereny
-STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umiesc Latarnie morska
-STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiesc Antene
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Umiesc latarnie morska
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Umiesc nadajnik
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definuj obszar pustyni.{}Wcinij i trzymaj CTRL by usunac
 STR_CREATE_LAKE                                                 :{BLACK}Definuj akwen wodny.{}Okolice beda zalane jesli sa na poziomie morza
 STR_0290_DELETE                                                 :{BLACK}Skasuj
@@ -803,6 +805,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Zapis sc
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Wczytaj Scenariusz
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Zapisz scenariusz
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Zagraj Scenariusz
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Zagraj z mapy wysokosci
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Rozpocznij nowa gre uzywajac mapy wysokosci jako krajobrazu
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Jestes pewny ze chcesz opuscic scenariusz?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Wyjscie z edytora
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...mozna zbudowac jedynie w miastach o populacji przynajmniej 1200
@@ -1127,7 +1131,23 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Czas tr
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Pokaz populacje miasta w jego nazwie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Niewidoczne drzewa (i przezroczyste budynki): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generator krajobrazu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Oryginalny
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maksymalna odleglosc rafinerii od brzegu mapy  {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Wysokosc granicy wiecznych sniegow: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Bardzo lagodny
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lagodny
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Wyboisty
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Bardzo wyboisty
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algorytm rozmieszczenia drzew: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Brak
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Oryginalny
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Ulepszony
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Obrot mapy wysokosci: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Przec. do wsk. zegara
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Zg. ze wsk. zegara
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Wysokosc jaka dostaje plaska mapa: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. wielkosc stacji: {ORANGE}{STRING} {RED}Uwaga: Duze wartosci spowalniaja gre
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatycznie serwisuj helikoptery na ladowiskach: {ORANGE}{STRING}
@@ -1239,7 +1259,7 @@ STR_MANY_RANDOM_TOWNS                                           :{BLACK}Wiele lo
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Pokryj mape losowo polozonymi miastami
 STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Wiele losowych przedsiebiorstw
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Pokryj mape losowo polozonymi przesiebiorstwami
-STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nie mozna wygenerowac przesiebiorstw...
+STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Nie mozna stworzyc przesiebiorstw...
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Zmiana terenu, wywyzszanie/obnizanie ladu, sadzenie drzew, itp.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Krajobraz
@@ -1526,7 +1546,13 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Rozmiar
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Nie mozna wczytac krajobrazu z PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...nie znaleziono pliku.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nie mozna konwertowac typu obrazu. Wymagany 8- lub 24-bitowy PNG.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...cos poszlo nie tak. Przepraszam. (prawdopodobnie zepsuty plik)
 
+STR_BMPMAP_ERROR                                                :{WHITE}Nie mozna wczytac krajobrazu z BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nie mozna konwertowac typu obrazu.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Koszt: {CURRENCY}
@@ -1724,7 +1750,7 @@ STR_STATION                                                     :{STATION}
 ##id 0x2800
 STR_LANDSCAPING                                                 :Krajobraz
 STR_2800_PLANT_TREES                                            :Zasadz drzewa
-STR_2801_PLACE_SIGN                                             :Postaw napis
+STR_2801_PLACE_SIGN                                             :Umiesc napis
 STR_2802_TREES                                                  :{WHITE}Drzewa
 STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...drzewo juz tu jest
 STR_2804_SITE_UNSUITABLE                                        :{WHITE}...niewlasciwe miejsce
@@ -1850,7 +1876,8 @@ STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Skasuj z
 STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Zapisz bierzaca gre uzywajac wybranej nazwy
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Wybierz nowy typ gry
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Wybierz scenariusz (zielony), ustawiona gre (niebieski), lub przypadkowa dowolna
-STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generacja losowej nowej gry
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :Tworzenie losowej nowej gry
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Wczytaj mape wysokosci
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} na drodze
@@ -1997,7 +2024,7 @@ STR_5028_TUBULAR_ROAD_BRIDGE                                    :Cylindryczny mo
 
 ##id 0x5800
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Obiekt na drodze
-STR_5801_TRANSMITTER                                            :Antena
+STR_5801_TRANSMITTER                                            :Nadajnik
 STR_5802_LIGHTHOUSE                                             :Latarnia
 STR_5803_COMPANY_HEADQUARTERS                                   :Siedziba firmy
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...siedziba firmy na drodze
@@ -2198,7 +2225,7 @@ STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Anuluj w
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Zatwierdz wybor nowej twarzy
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Wybierz meska twarz
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Wybierz kobieca twarz
-STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Generuj losowa nowa twarz
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Stworz nowa losowa twarz
 STR_704C_KEY                                                    :{BLACK}Legenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Pokaz legende na wykresie
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legenda do wykresow firm
@@ -2956,14 +2983,14 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpoczn
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zatrzymaj zastepowanie
 STR_NOT_REPLACING                                               :{BLACK}Nie zastepowane
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Brak zaznaczonych pojazdow
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wybierz typ pojazdu jaki chcesz zamienic
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Wybierz typ pojazdu do zamiany
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Wybierz typ pojazdu jakim chcesz zastapic pojazd zaznaczony po lewej stronie
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Wcisnij ten klawisz jesli nie chcesz zmieniac pojazdu ktory zaznaczono po lewej stronie
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Wcisnij ten klawisz jesli chcesz zastapic pojazd zaznaczony po lewej stronie wybranym pojazdem po prawej stronie
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nacisnij jesli chcesz zastapic pojazd zaznaczony po lewej stronie wybranym pojazdem po prawej stronie
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Wybierz dla jakiego typu szyn chcesz zastapic pojazdy
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Wyswietla typ pojazdu na jaki bedzie zastapiony  pojazd zaznaczony po lewej stronie
 STR_REPLACE_HELP                                                :{BLACK}Ta funkcja pozwala zastapic pojazd innym. Bedzie sie to odbywac w momencie gdy pociag zjedzie do zajezdni
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usuniecie pojazdu: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Usuniecie wagonow: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autowymiana zachowuje dlugosc pociagu poprzez usuwanie wagonow (poczawszy od poczatku), jesli wymiana lokomotywy spowoduje wydluzenie pociagu.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Zastepowanie: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERYMENTALNE NARZEDZIE {}Przejdz pomiedzy oknami zamiany lokomotyw i wagonow.{}Wymiana wagonu nastapi tylko jesli nowy wagon moze byc przebudowany do przewozenia tego samego towaru co poprzedni. Kazdy wagon pociagu jest sprawdzany podczas procesu zamiany.
@@ -3001,6 +3028,56 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GO
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Tworz
+STR_RANDOM                                                      :{BLACK}Losuj
+STR_RANDOM_HELP                                                 :{BLACK}Zmien losowy numer uzywany przy tworzeniu terenu
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Tworzenie swiata
+STR_RANDOM_SEED                                                 :{BLACK}Losowy numer:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Kliknij aby wpisac losowy numer
+STR_LAND_GENERATOR                                              :{BLACK}Generator terenu:
+STR_TREE_PLACER                                                 :{BLACK}Algorytm drzew:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Obrot mapy wysokosci:
+STR_TERRAIN_TYPE                                                :{BLACK}Typ terenu:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Poziom wody:
+STR_SMOOTHNESS                                                  :{BLACK}Gladkosc:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Wysokosc sniegu:
+STR_DATE                                                        :{BLACK}Data:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Ilosc miast:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Ilosc przedsiebiorstw
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Podnies wysokosc sniegu o jeden w gore
+STR_SNOW_LINE_DOWN                                              :{BLACK}Obniz wysokosc sniegu o jeden w dol
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Zmien wysokosc sniegu
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Zmien date rozpoczecia
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Ostrzezenie o skali
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Nie zaleca sie zbyt duzej zmiany wielkosci mapy zrodlowej. Kontynuowac tworzenie?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Nazwa mapy wysokosci:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Rozmiar: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Tworzenie swiata...
+STR_GENERATION_ABORT                                            :{BLACK}Przerwij
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Przerwij tworzenie swiata
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Czy na pewno chcesz przerwac tworzenie?
+STR_PROGRESS                                                    :{WHITE}gotowe w {NUM} %
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Tworzenie swiata
+STR_TREE_GENERATION                                             :{BLACK}Tworzenie drzew
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Tworzenie obiektow
+STR_CLEARING_TILES                                              :{BLACK}Generowanie skal i nierownosci
+STR_SETTINGUP_GAME                                              :{BLACK}Ustawianie gry
+STR_PREPARING_TILELOOP                                          :{BLACK}Uaktywnienie pol
+STR_PREPARING_GAME                                              :{BLACK}Przygotowywanie gry
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Ta akcja zmienila poziom trudnosci na "wlasny"
+STR_SE_FLAT_WORLD                                               :{WHITE}Plaski teren
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Stworz plaski teren
+STR_SE_RANDOM_LAND                                              :{WHITE}Losowy teren
+STR_SE_NEW_WORLD                                                :{BLACK}Stworz nowy scenariusz
+STR_SE_CAPTION                                                  :{WHITE}Typ scenariusza
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Obniz wysokosc terenu o jeden w dol
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Podnies wysokosc terenu o jeden w gore
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Zmien wysokosc plaskiego terenu
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Wysokosc plaskiego terenu:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Male

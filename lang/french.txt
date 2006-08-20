@@ -605,7 +605,7 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Diminuer
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Générer une terre aléatoire
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Réinitialiser le terrain
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Réinitialiser le terrain
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Utiliser une carte d'altitude
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Carte d'altitude
 STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utiliser une carte d'altitude
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Voulez-vous vraiment réinitialiser le terrain?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Créer le terrain
@@ -2904,13 +2904,13 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons M
 
 STR_GENERATE                                                    :{WHITE}Générer
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Génération du terrain
-STR_LAND_GENERATOR                                              :{BLACK}Générateur de terrain :
-STR_TREE_PLACER                                                 :{BLACK}Algorithme de placement des arbres :
+STR_LAND_GENERATOR                                              :{BLACK}Générateur :
+STR_TREE_PLACER                                                 :{BLACK}Placement arbres :
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotation de la carte d'altitude :
 STR_TERRAIN_TYPE                                                :{BLACK}Type de terrain :
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Niveau de la mer :
-STR_SMOOTHNESS                                                  :{BLACK}Douceur :
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altitude d'enneigement :
+STR_SMOOTHNESS                                                  :{BLACK}Lissage :
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Alt. d'enneigement :
 STR_DATE                                                        :{BLACK}Date:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}No. de villes :
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. d'industries :
@@ -2938,9 +2938,9 @@ STR_SETTINGUP_GAME                                              :{BLACK}Configur
 STR_PREPARING_GAME                                              :{BLACK}Préparation du jeu
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Cette action a modifié le niveau de difficulté en personnalisé
 STR_SE_FLAT_WORLD                                               :{WHITE}Terrain plat
-STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Génére un terrain plat
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Générer un terrain plat
 STR_SE_RANDOM_LAND                                              :{WHITE}Terrain aléatoire
-STR_SE_NEW_WORLD                                                :{BLACK}Créer un nouveau scénario
+STR_SE_NEW_WORLD                                                :{BLACK}Nouveau scénario
 STR_SE_CAPTION                                                  :{WHITE}Type de scénario
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Diminuer l'altitude du terrain plat
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Augmenter l'altitude du terrain plat
