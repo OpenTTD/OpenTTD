@@ -885,6 +885,7 @@ STR_TOWNNAME_SWISS                                              :Swiss
 STR_TOWNNAME_DANISH                                             :Danish
 STR_TOWNNAME_TURKISH                                            :Turkish
 STR_TOWNNAME_ITALIAN                                            :Italian
+STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pounds (£)

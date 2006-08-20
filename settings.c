@@ -1225,7 +1225,7 @@ static const SettingDesc _gameopt_settings[] = {
 	    SDT_VAR(GameOptions, diff_level,SLE_UINT8, 0, 0, 9,0, 9, STR_NULL, NULL),
 	  SDT_OMANY(GameOptions, currency,  SLE_UINT8, N, 0, 0, CUSTOM_CURRENCY_ID, "GBP|USD|EUR|YEN|ATS|BEF|CHF|CZK|DEM|DKK|ESP|FIM|FRF|GRD|HUF|ISK|ITL|NLG|NOK|PLN|ROL|RUR|SIT|SEK|custom", STR_NULL, NULL),
 	  SDT_OMANY(GameOptions, units,     SLE_UINT8, N, 0, 1,   2, "imperial|metric|si", STR_NULL, NULL),
-	  SDT_OMANY(GameOptions, town_name, SLE_UINT8, 0, 0, 0,  19, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian", STR_NULL, NULL),
+	  SDT_OMANY(GameOptions, town_name, SLE_UINT8, 0, 0, 0,  20, "english|french|german|american|latin|silly|swedish|dutch|finnish|polish|slovakish|norwegian|hungarian|austrian|romanian|czech|swiss|danish|turkish|italian|catalan", STR_NULL, NULL),
 	  SDT_OMANY(GameOptions, landscape, SLE_UINT8, 0, 0, 0,   3, "normal|hilly|desert|candy", STR_NULL, NULL),
 	    SDT_VAR(GameOptions, snow_line, SLE_UINT8, 0, 0, 1,0,56, STR_NULL, NULL),
 	SDT_CONDOMANY(GameOptions,autosave, SLE_UINT8, 0, 22,             N, 0, 0, 0, "", STR_NULL, NULL),
