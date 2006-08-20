@@ -6,7 +6,6 @@
 #include "functions.h"
 #include "table/strings.h"
 #include "engine.h"
-#include "table/engines.h"
 #include "gfx.h"
 #include "player.h"
 #include "command.h"
@@ -17,6 +16,7 @@
 #include "train.h"
 #include "newgrf_cargo.h"
 #include "date.h"
+#include "table/engines.h"
 
 EngineInfo _engine_info[TOTAL_NUM_ENGINES];
 RailVehicleInfo _rail_vehicle_info[NUM_TRAIN_ENGINES];
@@ -140,7 +140,7 @@ void StartupEngines(void)
 	Engine *e;
 	const EngineInfo *ei;
 	/* Aging of vehicles stops, so account for that when starting late */
-	const uint16 aging_date = min(_date, ConvertYMDToDate(YEAR_ENGINE_AGING_STOPS, 0, 1));
+	const Date aging_date = min(_date, ConvertYMDToDate(YEAR_ENGINE_AGING_STOPS, 0, 1));
 
 	SetupEngineNames();
 

@@ -1007,7 +1007,7 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 
 	switch (prop) {
 		case 0x08: /* Year of availability */
-			FOR_EACH_OBJECT _bridge[brid + i].avail_year = BASE_YEAR + grf_load_byte(&buf);
+			FOR_EACH_OBJECT _bridge[brid + i].avail_year = ORIGINAL_BASE_YEAR + grf_load_byte(&buf);
 			break;
 
 		case 0x09: /* Minimum length */
@@ -1177,7 +1177,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 				/* Common properties for vehicles */
 				switch (prop) {
 					case 0x00: /* Introduction date */
-						FOR_EACH_OBJECT ei[i].base_intro = grf_load_word(&buf);
+						FOR_EACH_OBJECT ei[i].base_intro = grf_load_word(&buf) + DAYS_TILL_ORIGINAL_BASE_YEAR;
 						break;
 
 					case 0x02: /* Decay speed */

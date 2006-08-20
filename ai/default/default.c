@@ -1457,7 +1457,7 @@ static void AiWantAircraftRoute(Player *p)
 {
 	uint16 r = (uint16)Random();
 
-	if (r >= 0x2AAA || _date < 0x3912) {
+	if (r >= 0x2AAA || _date < 0x3912 + DAYS_TILL_ORIGINAL_BASE_YEAR) {
 		AiWantPassengerAircraftRoute(p);
 	} else {
 		AiWantOilRigAircraftRoute(p);

@@ -76,7 +76,7 @@ static inline uint32 GetVariable(const ResolverObject *object, byte variable, by
 	/* Return common variables */
 	switch (variable) {
 		case 0x00: return _date;
-		case 0x01: return clamp(_cur_year, BASE_YEAR, MAX_YEAR) - BASE_YEAR;
+		case 0x01: return clamp(_cur_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x02: return _cur_month;
 		case 0x03: return _opt.landscape;
 		case 0x09: return _date_fract;

@@ -8,7 +8,28 @@
  */
 #define DAY_TICKS 74
 
+/*
+ * ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR and DAYS_TILL_ORIGINAL_BASE_YEAR are
+ * primarily used for loading newgrf and savegame data and returning some
+ * newgrf (callback) functions that were in the original (TTD) inherited
+ * format, where '_date == 0' meant that it was 1920-01-01.
+ */
+
+/** The minimum starting year/base year of the original TTD */
+#define ORIGINAL_BASE_YEAR 1920
+/** The maximum year of the original TTD */
+#define ORIGINAL_MAX_YEAR 2090
+
+/**
+ * The offset in days from the '_date == 0' till
+ * 'ConvertYMDToDate(ORIGINAL_BASE_YEAR, 0, 1)'
+ */
+#define DAYS_TILL_ORIGINAL_BASE_YEAR 0
+
+/* Temporary value to make transition to full past 2090 easier/more clear */
 #define BASE_YEAR 1920
+
+/* The absolute minimum & maximum years in OTTD */
 #define MIN_YEAR 1920
 #define MAX_YEAR 2090
 
