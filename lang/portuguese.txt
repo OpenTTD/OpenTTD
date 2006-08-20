@@ -881,6 +881,7 @@ STR_TOWNNAME_SWISS                                              :Suiça
 STR_TOWNNAME_DANISH                                             :Dinamarquês
 STR_TOWNNAME_TURKISH                                            :Turco
 STR_TOWNNAME_ITALIAN                                            :Italiano
+STR_TOWNNAME_CATALAN                                            :Catalão
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)
@@ -2883,6 +2884,7 @@ STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de indústrias:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mudar ano de início
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}
 STR_PROGRESS                                                    :{WHITE}{NUM}% completo

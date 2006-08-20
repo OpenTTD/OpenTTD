@@ -397,7 +397,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Wykres obrotu
 STR_0155_INCOME_GRAPH                                           :Wykres przychodow
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Wykres przewozonego ladunku
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Historia dokonan
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Ocena dzialalnosci firmy
 STR_0158_COMPANY_VALUE_GRAPH                                    :Wykres wartosci firmy
 STR_0159_CARGO_PAYMENT_RATES                                    :Stawki za ladunek
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Wykres Ligi Firm
@@ -972,6 +972,7 @@ STR_TOWNNAME_SWISS                                              :Szwajcarskie
 STR_TOWNNAME_DANISH                                             :Dunskie
 STR_TOWNNAME_TURKISH                                            :Tureckie
 STR_TOWNNAME_ITALIAN                                            :Wloskie
+STR_TOWNNAME_CATALAN                                            :Katalonskie
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Funty (£)
@@ -996,6 +997,7 @@ STR_CURR_NOK                                                    :Korony norweski
 STR_CURR_PLN                                                    :Zloty (PLN)
 STR_CURR_ROL                                                    :Lewy rumunskie (ROL)
 STR_CURR_RUR                                                    :Ruble (RUR)
+STR_CURR_SIT                                                    :Tolary slowenskie (SIT)
 STR_CURR_SEK                                                    :Korony szweckie (SEK)
 
 STR_CURR_CUSTOM                                                 :Wlasna...
@@ -2916,7 +2918,7 @@ STR_BRIBE_FAILED                                                :{WHITE}Twoja la
 STR_BRIBE_FAILED_2                                              :{WHITE}wykryta przez lokalne wladze.
 STR_BUILD_DATE                                                  :{BLACK}Zbudowano: {LTBLUE}{DATE_LONG}
 
-STR_PERFORMANCE_DETAIL                                          :{WHITE}Szczegolowa tabela efektywnosci
+STR_PERFORMANCE_DETAIL                                          :{WHITE}Szczegoly oceny dzialalnosci
 STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Szczegoly
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})

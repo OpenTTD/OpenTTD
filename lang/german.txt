@@ -1040,7 +1040,10 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minimal
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Dauer der Fehlermeldungen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zeige die Einwohnerzahl der Stadt im Label: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Unsichtbare Bäume (bei transparenten Gebäuden): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Höhe der Schneegrenze: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}Achtung: Große Werte verlangsamen das Spiel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Landschaftsbau-Toolbar an Eisenbahn/Straßen/Hafen/Flughafen-Toolbar binden: {ORANGE}{STRING}
@@ -1434,6 +1437,11 @@ STR_NETWORK_SEND                                                :{BLACK}Senden
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-Abmessung der Karte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-Abmessung der Karte: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kosten: {CURRENCY}
@@ -2863,6 +2871,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht:
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Geschwindigk.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazität: {GOLD}{COMMA} Passagiere, {COMMA} Postsäcke
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}klein
