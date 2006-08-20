@@ -35,6 +35,7 @@ CurrencySpec _currency_specs[] = {
 	{    6, ' ', CF_NOEURO, "",     " zl"  }, // polish zloty
 	{    6, '.', CF_NOEURO, "",     " Lei" }, // romanian Lei
 	{    5, ' ', CF_NOEURO, "",     " p"   }, // russian rouble
+	{  350, '.', CF_NOEURO, "",     " SIT" }, // slovenian tolar
 	{   13, '.', CF_NOEURO, "",     " Kr"  }, // swedish krona
 	{    1, ' ', CF_NOEURO, "",     ""     }, // custom currency
 };
@@ -62,6 +63,7 @@ const StringID _currency_string_list[] = {
 	STR_CURR_PLN,
 	STR_CURR_ROL,
 	STR_CURR_RUR,
+	STR_CURR_SIT,
 	STR_CURR_SEK,
 	STR_CURR_CUSTOM,
 	INVALID_STRING_ID
