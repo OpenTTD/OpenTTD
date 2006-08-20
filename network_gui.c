@@ -26,6 +26,7 @@
 #include "network_udp.h"
 #include "settings.h"
 #include "string.h"
+#include "town.h"
 
 #define BGC 5
 #define BTC 15
@@ -55,6 +56,7 @@ typedef struct NetworkGameSorting {
 static NetworkGameSorting _ng_sorting;
 
 static char _edit_str_buf[64];
+static bool _chat_tab_completion_active;
 
 static void ShowNetworkStartServerWindow(void);
 static void ShowNetworkLobbyWindow(NetworkGameList *ngl);
@@ -1488,6 +1490,151 @@ static void SendChat(const char *buf)
 	}
 }
 
+/**
+ * Find the next item of the list of things that can be auto-completed.
+ */
+static const char *ChatTabCompletionNextItem(uint *item)
+{
+	static char chat_tab_temp_buffer[64];
+
+	/* First, try clients */
+	if (*item < MAX_CLIENT_INFO) {
+		/* Skip inactive clients */
+		while (_network_client_info[*item].client_index == NETWORK_EMPTY_INDEX && *item < MAX_CLIENT_INFO) (*item)++;
+		if (*item < MAX_CLIENT_INFO) return _network_client_info[*item].client_name;
+	}
+
+	/* Then, try townnames */
+	if (*item < (uint)MAX_CLIENT_INFO + GetTownPoolSize()) {
+		Town *t;
+
+		FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {
+			int32 temp[1];
+
+			/* Skip empty towns */
+			if (t->xy == 0) {
+				(*item)++;
+				continue;
+			}
+
+			/* Get the town-name via the string-system */
+			temp[0] = t->townnameparts;
+			GetStringWithArgs(chat_tab_temp_buffer, t->townnametype, temp);
+			return &chat_tab_temp_buffer[0];
+		}
+	}
+
+	return NULL;
+}
+
+/**
+ * Find what text to complete. It scans for a space from the left and marks
+ *  the word right from that as to complete. It also writes a \0 at the
+ *  position of the space (if any). If nothing found, buf is returned.
+ */
+static char *ChatTabCompletionFindText(char *buf)
+{
+	char *p;
+
+	/* Scan from the right to the left */
+	p = &buf[strlen(buf)];
+	while (p != buf) {
+		/* If we find a space, we try to complete the thing right of it */
+		if (*p == ' ') {
+			*p = '\0';
+			return p + 1;
+		}
+		p--;
+	}
+
+	/* Not found, so complete the whole text */
+	return p;
+}
+
+/**
+ * See if we can auto-complete the current text of the user.
+ */
+static void ChatTabCompletion(Window *w)
+{
+	static char _chat_tab_completion_buf[lengthof(_edit_str_buf)];
+	Textbuf *tb = &WP(w, querystr_d).text;
+	uint len, tb_len;
+	uint item;
+	char *tb_buf, *pre_buf;
+	const char *cur_name;
+	bool second_scan = false;
+
+	item = 0;
+
+	/* Copy the buffer so we can modify it without damaging the real data */
+	pre_buf = (_chat_tab_completion_active) ? strdup(_chat_tab_completion_buf) : strdup(tb->buf);
+
+	tb_buf  = ChatTabCompletionFindText(pre_buf);
+	tb_len  = strlen(tb_buf);
+
+	while ((cur_name = ChatTabCompletionNextItem(&item)) != NULL) {
+		item++;
+
+		if (_chat_tab_completion_active) {
+			/* We are pressing TAB again on the same name, is there an other name
+			 *  that starts with this? */
+			if (!second_scan) {
+				uint offset;
+				uint length;
+
+				/* If we are completing at the begin of the line, skip the ': ' we added */
+				if (tb_buf == pre_buf) {
+					offset = 0;
+					length = tb->length - 2;
+				} else {
+					/* Else, find the place we are completing at */
+					offset = strlen(pre_buf) + 1;
+					length = tb->length - offset;
+				}
+
+				/* Compare if we have a match */
+				if (strlen(cur_name) == length && strncmp(cur_name, tb->buf + offset, length) == 0) second_scan = true;
+
+				continue;
+			}
+
+			/* Now any match we make on _chat_tab_completion_buf after this, is perfect */
+		}
+
+		len = strlen(cur_name);
+		if (tb_len < len && strncasecmp(cur_name, tb_buf, tb_len) == 0) {
+			/* Save the data it was before completion */
+			if (!second_scan) snprintf(_chat_tab_completion_buf, lengthof(_chat_tab_completion_buf), "%s", tb->buf);
+			_chat_tab_completion_active = true;
+
+			/* Change to the found name. Add ': ' if we are at the start of the line (pretty) */
+			if (pre_buf == tb_buf) {
+				snprintf(tb->buf, lengthof(_edit_str_buf), "%s: ", cur_name);
+			} else {
+				snprintf(tb->buf, lengthof(_edit_str_buf), "%s %s", pre_buf, cur_name);
+			}
+
+			/* Update the textbuffer */
+			UpdateTextBufferSize(&WP(w, querystr_d).text);
+
+			SetWindowDirty(w);
+			free(pre_buf);
+			return;
+		}
+	}
+
+	if (second_scan) {
+		/* We walked all posibilities, and the user presses tab again.. revert to original text */
+		strcpy(tb->buf, _chat_tab_completion_buf);
+		_chat_tab_completion_active = false;
+
+		/* Update the textbuffer */
+		UpdateTextBufferSize(&WP(w, querystr_d).text);
+
+		SetWindowDirty(w);
+	}
+	free(pre_buf);
+}
 
 /* uses querystr_d WP macro */
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
@@ -1515,9 +1662,14 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 1, e, CS_ALPHANUMERAL)) {
-			case 1: /* Return */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
-			case 2: /* Escape */ DeleteWindow(w); break;
+		if (e->keypress.keycode == WKC_TAB) {
+			ChatTabCompletion(w);
+		} else {
+			_chat_tab_completion_active = false;
+			switch (HandleEditBoxKey(w, &WP(w, querystr_d), 1, e, CS_ALPHANUMERAL)) {
+				case 1: /* Return */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
+				case 2: /* Escape */ DeleteWindow(w); break;
+			}
 		}
 		break;
 
@@ -1555,6 +1707,7 @@ void ShowNetworkChatQueryWindow(byte desttype, byte dest)
 	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
 
 	_edit_str_buf[0] = '\0';
+	_chat_tab_completion_active = false;
 
 	w = AllocateWindowDesc(&_chat_window_desc);
 
