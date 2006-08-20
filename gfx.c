@@ -352,12 +352,16 @@ int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw)
 }
 
 
-void DrawStringRightAligned(int x, int y, StringID str, uint16 color)
+int DrawStringRightAligned(int x, int y, StringID str, uint16 color)
 {
 	char buffer[512];
+	int w;
 
 	GetString(buffer, str);
-	DoDrawString(buffer, x - GetStringWidth(buffer), y, color);
+	w = GetStringWidth(buffer);
+	DoDrawString(buffer, x - w, y, color);
+
+	return w;
 }
 
 void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, uint maxw)
@@ -366,6 +370,12 @@ void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, u
 
 	TruncateStringID(str, buffer, maxw);
 	DoDrawString(buffer, x - GetStringWidth(buffer), y, color);
+}
+
+void DrawStringRightAlignedUnderline(int x, int y, StringID str, uint16 color)
+{
+	int w = DrawStringRightAligned(x, y, str, color);
+	GfxFillRect(x - w, y + 10, x, y + 10, _string_colorremap[1]);
 }
 
 

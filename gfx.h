@@ -67,8 +67,9 @@ int DoDrawStringTruncated(const char *str, int x, int y, uint16 color, uint maxw
 void DrawStringCenterUnderline(int x, int y, StringID str, uint16 color);
 void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, uint16 color);
 
-void DrawStringRightAligned(int x, int y, StringID str, uint16 color);
+int DrawStringRightAligned(int x, int y, StringID str, uint16 color);
 void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, uint maxw);
+void DrawStringRightAlignedUnderline(int x, int y, StringID str, uint16 color);
 
 void GfxFillRect(int left, int top, int right, int bottom, int color);
 void GfxDrawLine(int left, int top, int right, int bottom, int color);

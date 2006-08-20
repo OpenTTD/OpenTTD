@@ -48,7 +48,7 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 		do {
 			if (year >= BASE_YEAR + p->inaugurated_year) {
 				SetDParam(0, year);
-				DrawStringCenterUnderline(x-17, 15, STR_7010, 0);
+				DrawStringRightAlignedUnderline(x, 15, STR_7010, 0);
 				sum = 0;
 				for (i = 0; i != 13; i++) {
 					/* draw one row in the price column */
