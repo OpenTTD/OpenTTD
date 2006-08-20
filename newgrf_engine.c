@@ -694,8 +694,8 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x0D: return v->cur_order_index;
 		case 0x10: return v->load_unload_time_rem;
 		case 0x11: return v->load_unload_time_rem & 0xFF;
-		case 0x12: return v->date_of_last_service;
-		case 0x13: return v->date_of_last_service & 0xFF;
+		case 0x12: return max(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
+		case 0x13: return max(v->date_of_last_service - DAYS_TILL_ORIGINAL_BASE_YEAR, 0) & 0xFF;
 		case 0x14: return v->service_interval;
 		case 0x15: return v->service_interval & 0xFF;
 		case 0x16: return v->last_station_visited;
@@ -727,7 +727,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x41: return v->age & 0xFF;
 		case 0x42: return v->max_age;
 		case 0x43: return v->max_age & 0xFF;
-		case 0x44: return v->build_year;
+		case 0x44: return clamp(v->build_year, ORIGINAL_BASE_YEAR, ORIGINAL_MAX_YEAR) - ORIGINAL_BASE_YEAR;
 		case 0x45: return v->unitnumber;
 		case 0x46: return v->engine_type;
 		case 0x47: return v->engine_type & 0xFF;

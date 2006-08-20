@@ -325,7 +325,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 			case 0x42: return 0;               /* Rail type (XXX Get current type from GUI?) */
 			case 0x43: return _current_player; /* Station owner */
 			case 0x44: return 2;               /* PBS status */
-			case 0xFA: return _date;           /* Build date */
+			case 0xFA: return max(_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0); /* Build date */
 		}
 
 		*available = false;
@@ -372,7 +372,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0xF3: return st->bus_stops->status;
 		case 0xF6: return st->airport_flags;
 		case 0xF7: return st->airport_flags & 0xFF;
-		case 0xFA: return st->build_date;
+		case 0xFA: return max(st->build_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
 	}
 
 	/* Handle cargo variables (deprecated) */
