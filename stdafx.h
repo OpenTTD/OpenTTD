@@ -155,6 +155,7 @@
 # endif
 
 # define strcasecmp stricmp
+# define strncasecmp strnicmp
 // suppress: warning C4005: 'offsetof' : macro redefinition (VC8)
 # include <stddef.h>
 #endif /* defined(_MSC_VER) */
