@@ -28,7 +28,7 @@ enum {
 	GFX_TOY_FACTORY       = 143
 };
 
-static inline uint GetIndustryIndex(TileIndex t)
+static inline IndustryID GetIndustryIndex(TileIndex t)
 {
 	assert(IsTileType(t, MP_INDUSTRY));
 	return _m[t].m2;
@@ -95,7 +95,7 @@ static inline void SetIndustryGfx(TileIndex t, IndustryGfx gfx)
 	_m[t].m5 = gfx;
 }
 
-static inline void MakeIndustry(TileIndex t, uint index, IndustryGfx gfx)
+static inline void MakeIndustry(TileIndex t, IndustryID index, IndustryGfx gfx)
 {
 	SetTileType(t, MP_INDUSTRY);
 	_m[t].m1 = 0;

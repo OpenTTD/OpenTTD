@@ -811,7 +811,7 @@ static void SetupFarmFieldFence(TileIndex tile, int size, byte type, Axis direct
 	} while (--size);
 }
 
-static void PlantFarmField(TileIndex tile, uint16 industry)
+static void PlantFarmField(TileIndex tile, IndustryID industry)
 {
 	uint size_x, size_y;
 	uint32 r;
@@ -1404,7 +1404,7 @@ static Industry *AllocateIndustry(void)
 
 	FOR_ALL_INDUSTRIES(i) {
 		if (i->xy == 0) {
-			uint index = i->index;
+			IndustryID index = i->index;
 
 			if (i->index > _total_industries) _total_industries = i->index;
 

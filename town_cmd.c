@@ -951,7 +951,7 @@ static Town *AllocateTown(void)
 	Town *t;
 	FOR_ALL_TOWNS(t) {
 		if (t->xy == 0) {
-			uint index = t->index;
+			TownID index = t->index;
 
 			if (t->index > _total_towns)
 				_total_towns = t->index;

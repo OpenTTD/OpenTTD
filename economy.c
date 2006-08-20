@@ -844,7 +844,7 @@ Pair SetupSubsidyDecodeParam(const Subsidy* s, bool mode)
 	return tp;
 }
 
-void DeleteSubsidyWithIndustry(uint16 index)
+void DeleteSubsidyWithIndustry(IndustryID index)
 {
 	Subsidy *s;
 
@@ -857,7 +857,7 @@ void DeleteSubsidyWithIndustry(uint16 index)
 	}
 }
 
-void DeleteSubsidyWithStation(uint16 index)
+void DeleteSubsidyWithStation(StationID index)
 {
 	Subsidy *s;
 	bool dirty = false;

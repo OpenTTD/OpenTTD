@@ -35,7 +35,7 @@ struct Industry {
 	Year last_prod_year;
 	byte was_cargo_delivered;
 
-	uint16 index;
+	IndustryID index;
 };
 
 typedef struct IndustryTileTable {
