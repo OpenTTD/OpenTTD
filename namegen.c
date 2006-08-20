@@ -475,7 +475,7 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 
 	if (do_prefix) {
 		CzechPattern pattern = name_czech_adj[prefix].pattern;
-		int endpos;
+		size_t endpos;
 
 		strcat(buf, name_czech_adj[prefix].name);
 		endpos = strlen(buf) - 1;
@@ -496,7 +496,7 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 		if (postfix < lengthof(name_czech_subst_postfix)) {
 			const char *poststr = name_czech_subst_postfix[postfix];
 			const char *endstr = name_czech_subst_ending[ending].name;
-			int postlen, endlen;
+			size_t postlen, endlen;
 
 			postlen = strlen(poststr);
 			endlen = strlen(endstr);
@@ -507,7 +507,7 @@ static byte MakeCzechTownName(char *buf, uint32 seed)
 						(poststr[1] != 'v' || poststr[1] != endstr[1]) &&
 						poststr[2] != endstr[1])
 					) {
-				uint buflen;
+				size_t buflen;
 				strcat(buf, poststr);
 				buflen = strlen(buf);
 

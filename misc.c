@@ -253,7 +253,7 @@ static void Save_NAME(void)
 	for (i = 0; i != lengthof(_name_array); ++i) {
 		if (_name_array[i][0] != '\0') {
 			SlSetArrayIndex(i);
-			SlArray(_name_array[i], strlen(_name_array[i]), SLE_UINT8);
+			SlArray(_name_array[i], (uint)strlen(_name_array[i]), SLE_UINT8);
 		}
 	}
 }

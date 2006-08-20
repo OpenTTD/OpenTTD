@@ -1876,7 +1876,7 @@ static void FeatureNewName(byte *buf, int len)
 			}
 		}
 		name += ofs;
-		len -= ofs;
+		len -= (int)ofs;
 	}
 }
 

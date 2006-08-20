@@ -265,7 +265,7 @@ static const char *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const c
 	http = _wininet.HttpOpenRequest(conn, "POST", buff, NULL, NULL, NULL, INTERNET_FLAG_NO_CACHE_WRITE , 0);
 	if (http == NULL) { err = "httpopenrequest failed"; goto error3; }
 
-	if (!_wininet.HttpSendRequest(http, "Content-type: application/binary", -1, msg, msglen)) { err = "httpsendrequest failed"; goto error4; }
+	if (!_wininet.HttpSendRequest(http, "Content-type: application/binary", -1, msg, (DWORD)msglen)) { err = "httpsendrequest failed"; goto error4; }
 
 	len = sizeof(code);
 	if (!_wininet.HttpQueryInfo(http, HTTP_QUERY_STATUS_CODE | HTTP_QUERY_FLAG_NUMBER, &code, &len, 0)) { err = "httpqueryinfo failed"; goto error4; }

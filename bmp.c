@@ -15,7 +15,7 @@ void BmpInitializeBuffer(BmpBuffer *buffer, FILE *file) {
 
 static inline void AdvanceBuffer(BmpBuffer *buffer)
 {
-	buffer->read = fread(buffer->data, 1, BMP_BUFFER_SIZE, buffer->file);
+	buffer->read = (int)fread(buffer->data, 1, BMP_BUFFER_SIZE, buffer->file);
 	buffer->pos  = 0;
 }
 

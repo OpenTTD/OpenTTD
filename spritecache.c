@@ -192,7 +192,7 @@ static inline MemBlock* NextBlock(MemBlock* block)
 
 static uint32 GetSpriteCacheUsage(void)
 {
-	size_t tot_size = 0;
+	uint32 tot_size = 0;
 	MemBlock* s;
 
 	for (s = _spritecache_ptr; s->size != 0; s = NextBlock(s))

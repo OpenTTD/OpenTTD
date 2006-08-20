@@ -313,7 +313,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		for (i = 0; i < sent_packets; i++) {
 			Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
 			NetworkSend_uint8(p, MAP_PACKET_NORMAL);
-			res = fread(p->buffer + p->size, 1, SEND_MTU - p->size, file_pointer);
+			res = (int)fread(p->buffer + p->size, 1, SEND_MTU - p->size, file_pointer);
 			if (ferror(file_pointer)) {
 				error("Error reading temporary network savegame!");
 			}

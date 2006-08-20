@@ -1065,7 +1065,7 @@ void SaveToHighScore(void)
 		for (i = 0; i < LAST_HS_ITEM; i++) { // don't save network highscores
 			for (hs = _highscore_table[i]; hs != endof(_highscore_table[i]); hs++) {
 				/* First character is a command character, so strlen will fail on that */
-				byte length = min(sizeof(hs->company), (hs->company[0] == '\0') ? 0 : strlen(&hs->company[1]) + 1);
+				byte length = min(sizeof(hs->company), (hs->company[0] == '\0') ? 0 : (int)strlen(&hs->company[1]) + 1);
 
 				fwrite(&length, sizeof(length), 1, fp); // write away string length
 				fwrite(hs->company, length, 1, fp);

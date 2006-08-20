@@ -1229,7 +1229,7 @@ void InitializeLanguagePacks(void)
 
 	// go through the language files and make sure that they are valid.
 	for (i = m = 0; i != n; i++) {
-		int j;
+		size_t j;
 
 		char *s = str_fmt("%s%s", _path.lang_dir, files[i]);
 		in = fopen(s, "rb");

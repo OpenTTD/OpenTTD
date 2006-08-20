@@ -120,7 +120,7 @@ static byte ReadByteFromFile(LoadgameState *ls)
 	and just return a byte per time */
 	if (ls->buffer_cur >= ls->buffer_count) {
 		/* Read some new bytes from the file */
-		int count = fread(ls->buffer, 1, BUFFER_SIZE, ls->file);
+		int count = (int)fread(ls->buffer, 1, BUFFER_SIZE, ls->file);
 
 		/* We tried to read, but there is nothing in the file anymore.. */
 		if (count == 0) {
@@ -376,7 +376,7 @@ static void FixOldVehicles(void)
  *  - OCL_CHUNK: load an other proc to load a part of the savegame, 'amount' times
  *  - OCL_ASSERT: to check if we are really at the place we expect to be.. because old savegames are too binary to be sure ;)
  */
-#define OCL_SVAR(type, base, offset)         { type,          1, NULL,    offsetof(base, offset), NULL }
+#define OCL_SVAR(type, base, offset)         { type,          1, NULL,    (uint)offsetof(base, offset), NULL }
 #define OCL_VAR(type, amount, pointer)       { type,     amount, pointer, 0,                      NULL }
 #define OCL_END()                                   { OC_END,        0, NULL,    0,                      NULL }
 #define OCL_NULL(amount)                            { OC_NULL,  amount, NULL,    0,                      NULL }
