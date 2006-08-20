@@ -770,9 +770,8 @@ static bool GrowTown(Town *t)
 	// clearing some land and then building a road there.
 	tile = t->xy;
 	for (ptr = _town_coord_mod; ptr != endof(_town_coord_mod); ++ptr) {
-		// Only work with plain land that not already has a house with GetHouseConstructionTick=0
-		if ((!IsTileType(tile, MP_HOUSE) || GetHouseConstructionTick(tile) != 0) &&
-				GetTileSlope(tile, NULL) == SLOPE_FLAT) {
+		/* Only work with plain land that not already has a house */
+		if (!IsTileType(tile, MP_HOUSE) && GetTileSlope(tile, NULL) == SLOPE_FLAT) {
 			if (!CmdFailed(DoCommand(tile, 0, 0, DC_AUTO, CMD_LANDSCAPE_CLEAR))) {
 				DoCommand(tile, GenRandomRoadBits(), t->index, DC_EXEC | DC_AUTO, CMD_BUILD_ROAD);
 				_current_player = old_player;
