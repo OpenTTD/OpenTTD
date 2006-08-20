@@ -212,7 +212,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 
 		DrawShipImage(v, 3, 57, INVALID_VEHICLE);
 
-		SetDParam(1, BASE_YEAR + v->build_year);
+		SetDParam(1, v->build_year);
 		SetDParam(0, GetCustomEngineName(v->engine_type));
 		SetDParam(2, v->value);
 		DrawString(74, 57, STR_9816_BUILT_VALUE, 0);

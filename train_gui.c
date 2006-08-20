@@ -1115,7 +1115,7 @@ static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
 
 	if (!(rvi->flags & RVI_WAGON)) {
 		SetDParam(0, GetCustomEngineName(v->engine_type));
-		SetDParam(1, BASE_YEAR + v->build_year);
+		SetDParam(1, v->build_year);
 		SetDParam(2, v->value);
 		DrawString(x, y, STR_882C_BUILT_VALUE, 0x10);
 	} else {

@@ -1209,7 +1209,7 @@ void NetworkPopulateCompanyInfo(void)
 		GetString(_network_player_info[p->index].company_name, STR_JUST_STRING);
 
 		// Check the income
-		if (_cur_year - 1 == BASE_YEAR + p->inaugurated_year) {
+		if (_cur_year - 1 == p->inaugurated_year) {
 			// The player is here just 1 year, so display [2], else display[1]
 			for (i = 0; i < 13; i++) {
 				_network_player_info[p->index].income -= p->yearly_expenses[2][i];

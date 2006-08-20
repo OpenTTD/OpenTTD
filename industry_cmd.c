@@ -1459,7 +1459,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->total_transported[0] = 0;
 	i->total_transported[1] = 0;
 	i->was_cargo_delivered = false;
-	i->last_prod_year = _cur_year - BASE_YEAR;
+	i->last_prod_year = _cur_year;
 	i->total_production[0] = i->production_rate[0] * 8;
 	i->total_production[1] = i->production_rate[1] * 8;
 
@@ -1661,7 +1661,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 			return;
 
 		case INDUSTRYLIFE_CLOSABLE:
-			if ((byte)((_cur_year - BASE_YEAR) - i->last_prod_year) < 5 || !CHANCE16(1, 180))
+			if ((byte)(_cur_year - i->last_prod_year) < 5 || !CHANCE16(1, 180))
 				closeit = false;
 			break;
 
@@ -1724,7 +1724,7 @@ static void UpdateIndustryStatistics(Industry *i)
 	if (i->produced_cargo[0] != CT_INVALID) {
 		pct = 0;
 		if (i->last_mo_production[0] != 0) {
-			i->last_prod_year = _cur_year - BASE_YEAR;
+			i->last_prod_year = _cur_year;
 			pct = min(i->last_mo_transported[0] * 256 / i->last_mo_production[0],255);
 		}
 		i->pct_transported[0] = pct;
@@ -1739,7 +1739,7 @@ static void UpdateIndustryStatistics(Industry *i)
 	if (i->produced_cargo[1] != CT_INVALID) {
 		pct = 0;
 		if (i->last_mo_production[1] != 0) {
-			i->last_prod_year = _cur_year - BASE_YEAR;
+			i->last_prod_year = _cur_year;
 			pct = min(i->last_mo_transported[1] * 256 / i->last_mo_production[1],255);
 		}
 		i->pct_transported[1] = pct;
@@ -1851,7 +1851,7 @@ static void ChangeIndustryProduction(Industry *i)
 
 		case INDUSTRYLIFE_CLOSABLE:
 			/* maybe close */
-			if ( (byte)((_cur_year - BASE_YEAR) - i->last_prod_year) >= 5 && CHANCE16(1,2)) {
+			if ( (byte)(_cur_year - i->last_prod_year) >= 5 && CHANCE16(1,2)) {
 				i->prod_level = 0;
 				str = indspec->closure_text;
 			}

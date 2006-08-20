@@ -402,7 +402,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 			do {
 				if (v->subtype <= 2) {
 					SetDParam(0, GetCustomEngineName(v->engine_type));
-					SetDParam(1, BASE_YEAR + v->build_year);
+					SetDParam(1, v->build_year);
 					SetDParam(2, v->value);
 					DrawString(60, y, STR_A011_BUILT_VALUE, 0);
 					y += 10;

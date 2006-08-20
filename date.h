@@ -26,9 +26,6 @@
  */
 #define DAYS_TILL_ORIGINAL_BASE_YEAR (365 * ORIGINAL_BASE_YEAR + ORIGINAL_BASE_YEAR / 4 - ORIGINAL_BASE_YEAR / 100 + ORIGINAL_BASE_YEAR / 400)
 
-/* Temporary value to make transition to full past 2090 easier/more clear */
-#define BASE_YEAR 0
-
 /* The absolute minimum & maximum years in OTTD */
 #define MIN_YEAR 0
 /* MAX_YEAR, nicely rounded value of the number of years that can

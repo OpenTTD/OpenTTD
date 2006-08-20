@@ -184,7 +184,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->service_interval = _patches.servint_roadveh;
 
 		v->date_of_last_service = _date;
-		v->build_year = _cur_year - BASE_YEAR;
+		v->build_year = _cur_year;
 
 		v->type = VEH_Road;
 		v->cur_image = 0xC15;

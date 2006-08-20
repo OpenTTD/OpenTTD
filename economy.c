@@ -1394,7 +1394,7 @@ int LoadUnloadVehicle(Vehicle *v)
 
 		// if last speed is 0, we treat that as if no vehicle has ever visited the station.
 		ge->last_speed = min(t, 255);
-		ge->last_age = (_cur_year - BASE_YEAR) - v->build_year;
+		ge->last_age = _cur_year - v->build_year;
 
 		// If there's goods waiting at the station, and the vehicle
 		//  has capacity for it, load it on the vehicle.
@@ -1546,7 +1546,7 @@ int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	p = GetPlayer(p1);
 
 	/* Protect new companies from hostile takeovers */
-	if ((_cur_year - BASE_YEAR) - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
+	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
 
 	/* Those lines are here for network-protection (clients can be slow) */
 	if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) return 0;

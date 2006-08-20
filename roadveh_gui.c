@@ -216,7 +216,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		DrawRoadVehImage(v, 3, 57, INVALID_VEHICLE);
 
 		SetDParam(0, GetCustomEngineName(v->engine_type));
-		SetDParam(1, BASE_YEAR + v->build_year);
+		SetDParam(1, v->build_year);
 		SetDParam(2, v->value);
 		DrawString(34, 57, STR_9011_BUILT_VALUE, 0);
 
