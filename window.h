@@ -386,7 +386,7 @@ typedef struct {
 	int32 scroll_y;
 	int32 subscroll;
 } smallmap_d;
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(traindetails_d));
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(smallmap_d));
 
 typedef struct {
 	uint32 face;
