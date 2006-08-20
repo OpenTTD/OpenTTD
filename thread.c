@@ -4,10 +4,10 @@
 #include "thread.h"
 #include <stdlib.h>
 
-#if defined(__AMIGA__) || defined(__MORPHOS__)
-OTTDThread* OTTDCreateThread(OTTDThreadFunc function, void* arg) { return NULL; }
-void* OTTDJoinThread(OTTDThread* t) { return NULL; }
-void OTTDExitThread() { NOT_REACHED(); };
+#if defined(__AMIGA__) || defined(__MORPHOS__) || defined(NO_THREADS)
+OTTDThread *OTTDCreateThread(OTTDThreadFunc function, void *arg) { return NULL; }
+void *OTTDJoinThread(OTTDThread *t) { return NULL; }
+void OTTDExitThread(void) { NOT_REACHED(); };
 
 #elif defined(__OS2__)
 

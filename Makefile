@@ -511,6 +511,10 @@ ifdef DISABLE_ASSERTS
 CFLAGS += -DNDEBUG
 endif
 
+ifdef NO_THREADS
+CFLAGS += -DNO_THREADS
+endif
+
 # automatically disables asserts for release
 ifdef RELEASE
 ifndef ENABLE_ASSERTS

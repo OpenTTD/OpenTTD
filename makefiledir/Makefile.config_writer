@@ -32,6 +32,8 @@ $(MAKE_CONFIG):
 
 	$(call CONFIG_LINE,\# Disable asserts. Leave them on for easier bug finding)
 	$(call CONFIG_LINE,DISABLE_ASSERTS:=$(DISABLE_ASSERTS))
+	$(call CONFIG_LINE,\# Disable threads. Useful if you do not like it and for testing)
+	$(call CONFIG_LINE,NO_THREADS:=$(NO_THREADS))
 	$(call CONFIG_LINE,)
 
 	$(call CONFIG_LINE,\# See Makefile for details on these paths)
