@@ -1043,6 +1043,7 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árvores
 
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da linha de neve: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nenhum
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Melhorado
 
@@ -2890,8 +2891,11 @@ STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho:
 STR_PROGRESS                                                    :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_PREPARING_GAME                                              :{BLACK}A preparar jogo
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acção mudou o nível de dificuldade para Personalizado
+STR_SE_RANDOM_LAND                                              :{WHITE}Terra aleatória
 STR_SE_CAPTION                                                  :{WHITE}Tipo de cenário
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeno

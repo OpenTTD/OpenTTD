@@ -605,6 +605,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landfläc
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Erzeuge Land durch Zufall
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landfläche wiederherstellen
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Nutzer Reliefkarte
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Nutzer Reliefkarte
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Bist du sicher, dass die Landschaft zurückgesetzt werden soll?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt errichten
@@ -717,6 +719,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Szenario
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Szenario laden
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Szenario speichern
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Szenario spielen
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Spiele Reliefkarte
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Ein neues Spiel mit Reliefkarte als Landschaft starten
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Bist du dir sicher, dass du das Szenario verlassen willst?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Bearbeitung beenden
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kann nur in Städten mit mehr als 1200 Einwohnern gebaut werden
@@ -906,6 +910,7 @@ STR_CURR_NOK                                                    :Norwegische Kro
 STR_CURR_PLN                                                    :Polnische Zloty (PLN)
 STR_CURR_ROL                                                    :Rumänische Lei (ROL)
 STR_CURR_RUR                                                    :Russische Rubel (RUR)
+STR_CURR_SIT                                                    :Slovenischer Tolar (SIT)
 STR_CURR_SEK                                                    :Schwedische Kronen (SEK)
 
 STR_CURR_CUSTOM                                                 :Eigene...
@@ -1042,7 +1047,23 @@ STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zeige d
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Unsichtbare Bäume (bei transparenten Gebäuden): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximaler Abstand der Ölraffinerien vom Kartenrand{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Höhe der Schneegrenze: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rauheit (nur TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr sanft
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sanft
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rau
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr rau
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Baumplazierungsalgorithmus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Keiner
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Verbessert
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Drehung der Reliefkarte: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Entgegen Uhrzeigersinn
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Im Uhrzeigersinn
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Intervall der Fortschrittsaktualisierung {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Höhenstufe der Karte eines flachen Szenarios: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}Achtung: Große Werte verlangsamen das Spiel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
@@ -1441,7 +1462,11 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-Abmes
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Kann Landschaft nicht aus PNG-Datei laden...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...Datei nicht gefunden.
 
+STR_BMPMAP_ERROR                                                :{WHITE}Kann Landschaft nicht aus BMP-Datei laden...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kann Bildtyp nicht umwandeln.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kosten: {CURRENCY}
@@ -1766,6 +1791,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Speicher
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Neues Spiel auswählen
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Wähle Szenario (grün), vorgegebens Spiel (blau), oder ein Spiel nach dem Zufallsprinzip
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Spiel nach Zufallsprinzip erstellen
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Lade Reliefkarte
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} im Weg
@@ -2873,6 +2899,30 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazitä
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
 
 ########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Erzeugen
+STR_LAND_GENERATOR                                              :{BLACK}Landgenerator:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Reliefkartendrehung:
+STR_DATE                                                        :{BLACK}Datum:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Städteanzahl:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Industriedichte:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalierungswarnung
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Zu starke Skalierung der Karte ist nicht empfohlen. Trotzdem Generierung fortsetzen?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Reliefkartenname:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Größe: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Generiere Welt...
+STR_GENERATION_ABORT                                            :{BLACK}Abbrechen
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Weltgenerierung abbrechen
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Soll die Weltgenerierung wirklich abgebrochen werden?
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Diese Aktion änderte den Schwierigkeitsgrad zu individuell
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Höhenstufe des flachen Landes um eins reduzieren
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Höhenstufe das flachen Landes um eins erhöhen
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ändere die Höhenstufe des flachen Landes
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Höhenstufe des flachen Landes:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 
 ########### String for new airports
