@@ -136,6 +136,11 @@ union WindowEvent {
 		uint wparam; // additional message-specific information
 		uint lparam; // additional message-specific information
 	} message;
+
+	struct {
+		byte event;
+		Point delta; // delta position against position of last call
+	} scroll;
 };
 
 enum WindowKeyCodes {
@@ -506,7 +511,8 @@ enum WindowEvents {
 	WE_MOUSEOVER = 20,
 	WE_ON_EDIT_TEXT_CANCEL = 21,
 	WE_RESIZE = 22,
-	WE_MESSAGE = 23
+	WE_MESSAGE = 23,
+	WE_SCROLL = 24,
 };
 
 

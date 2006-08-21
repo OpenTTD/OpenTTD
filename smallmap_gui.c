@@ -882,6 +882,67 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		/* update the window every now and then */
 		if ((++w->vscroll.pos & 0x1F) == 0) SetWindowDirty(w);
 		break;
+
+		case WE_SCROLL: {
+			int x;
+			int y;
+			int sub;
+			int hx;
+			int hy;
+			int hvx;
+			int hvy;
+
+			_cursor.fix_at = true;
+
+			x = WP(w, smallmap_d).scroll_x;
+			y = WP(w, smallmap_d).scroll_y;
+
+			sub = WP(w, smallmap_d).subscroll + e->scroll.delta.x;
+
+			x -= (sub >> 2) << 4;
+			y += (sub >> 2) << 4;
+			sub &= 3;
+
+			x += (e->scroll.delta.y >> 1) << 4;
+			y += (e->scroll.delta.y >> 1) << 4;
+
+			if (e->scroll.delta.y & 1) {
+				x += TILE_SIZE;
+				sub += 2;
+				if (sub > 3) {
+					sub -= 4;
+					x -= TILE_SIZE;
+					y += TILE_SIZE;
+				}
+			}
+
+			hx = (w->widget[4].right  - w->widget[4].left) / 2;
+			hy = (w->widget[4].bottom - w->widget[4].top ) / 2;
+			hvx = hx * -4 + hy * 8;
+			hvy = hx *  4 + hy * 8;
+			if (x < -hvx) {
+				x = -hvx;
+				sub = 0;
+			}
+			if (x > (int)MapMaxX() * TILE_SIZE - hvx) {
+				x = MapMaxX() * TILE_SIZE - hvx;
+				sub = 0;
+			}
+			if (y < -hvy) {
+				y = -hvy;
+				sub = 0;
+			}
+			if (y > (int)MapMaxY() * TILE_SIZE - hvy) {
+				y = MapMaxY() * TILE_SIZE - hvy;
+				sub = 0;
+			}
+
+			WP(w, smallmap_d).scroll_x = x;
+			WP(w, smallmap_d).scroll_y = y;
+			WP(w, smallmap_d).subscroll = sub;
+
+			SetWindowDirty(w);
+		} break;
 	}
 }
 
@@ -979,6 +1040,18 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 		w->viewport->virtual_width  += e->sizing.diff.x;
 		w->viewport->virtual_height += e->sizing.diff.y;
 		break;
+
+		case WE_SCROLL: {
+			ViewPort *vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
+
+			if (vp == NULL) {
+				_cursor.fix_at = false;
+				_scrolling_viewport = false;
+			}
+
+			WP(w, vp_d).scrollpos_x += e->scroll.delta.x << vp->zoom;
+			WP(w, vp_d).scrollpos_y += e->scroll.delta.y << vp->zoom;
+		} break;
 	}
 }
 

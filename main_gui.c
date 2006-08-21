@@ -2317,6 +2317,18 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 		}
 		e->keypress.cont = false;
 		break;
+
+		case WE_SCROLL: {
+			ViewPort *vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
+
+			if (vp == NULL) {
+				_cursor.fix_at = false;
+				_scrolling_viewport = false;
+			}
+
+			WP(w, vp_d).scrollpos_x += e->scroll.delta.x << vp->zoom;
+			WP(w, vp_d).scrollpos_y += e->scroll.delta.y << vp->zoom;
+		} break;
 	}
 }
 

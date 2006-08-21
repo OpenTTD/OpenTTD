@@ -1146,99 +1146,30 @@ static bool HandleScrollbarScrolling(void)
 
 static bool HandleViewportScroll(void)
 {
+	WindowEvent we;
 	Window *w;
-	int dx;
-	int dy;
 
 	if (!_scrolling_viewport) return true;
 
-	if (!_right_button_down) {
-stop_capt:;
+	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
+
+	if (!_right_button_down || w == NULL) {
 		_cursor.fix_at = false;
 		_scrolling_viewport = false;
 		return true;
 	}
 
-	w = FindWindowFromPt(_cursor.pos.x, _cursor.pos.y);
-	if (w == NULL) goto stop_capt;
-
 	if (_patches.reverse_scroll) {
-		dx = -_cursor.delta.x;
-		dy = -_cursor.delta.y;
+		we.scroll.delta.x = -_cursor.delta.x;
+		we.scroll.delta.y = -_cursor.delta.y;
 	} else {
-		dx = _cursor.delta.x;
-		dy = _cursor.delta.y;
+		we.scroll.delta.x = _cursor.delta.x;
+		we.scroll.delta.y = _cursor.delta.y;
 	}
 
-	if (w->window_class != WC_SMALLMAP) {
-		ViewPort *vp = IsPtInWindowViewport(w, _cursor.pos.x, _cursor.pos.y);
-
-		if (vp == NULL)
-			goto stop_capt;
-
-		WP(w,vp_d).scrollpos_x += dx << vp->zoom;
-		WP(w,vp_d).scrollpos_y += dy << vp->zoom;
-
-	} else {
-		int x;
-		int y;
-		int sub;
-		int hx;
-		int hy;
-		int hvx;
-		int hvy;
-
-		_cursor.fix_at = true;
-
-		x = WP(w,smallmap_d).scroll_x;
-		y = WP(w,smallmap_d).scroll_y;
-
-		sub = WP(w,smallmap_d).subscroll + dx;
-
-		x -= (sub >> 2) << 4;
-		y += (sub >> 2) << 4;
-		sub &= 3;
-
-		x += (dy >> 1) << 4;
-		y += (dy >> 1) << 4;
-
-		if (dy & 1) {
-			x += TILE_SIZE;
-			sub += 2;
-			if (sub > 3) {
-				sub -= 4;
-				x -= TILE_SIZE;
-				y += TILE_SIZE;
-			}
-		}
-
-		hx = (w->widget[4].right  - w->widget[4].left) / 2;
-		hy = (w->widget[4].bottom - w->widget[4].top ) / 2;
-		hvx = hx * -4 + hy * 8;
-		hvy = hx *  4 + hy * 8;
-		if (x < -hvx) {
-			x = -hvx;
-			sub = 0;
-		}
-		if (x > (int)MapMaxX() * TILE_SIZE - hvx) {
-			x = MapMaxX() * TILE_SIZE - hvx;
-			sub = 0;
-		}
-		if (y < -hvy) {
-			y = -hvy;
-			sub = 0;
-		}
-		if (y > (int)MapMaxY() * TILE_SIZE - hvy) {
-			y = MapMaxY() * TILE_SIZE - hvy;
-			sub = 0;
-		}
-
-		WP(w,smallmap_d).scroll_x = x;
-		WP(w,smallmap_d).scroll_y = y;
-		WP(w,smallmap_d).subscroll = sub;
-
-		SetWindowDirty(w);
-	}
+	/* Create a scroll-event and send it to the window */
+	we.event = WE_SCROLL;
+	w->wndproc(w, &we);
 
 	_cursor.delta.x = 0;
 	_cursor.delta.y = 0;
