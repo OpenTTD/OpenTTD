@@ -2954,6 +2954,8 @@ STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Change h
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Height of flat land:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Center the smallmap on the current position
+
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Small
 STR_CITY_AIRPORT                                                :{BLACK}City

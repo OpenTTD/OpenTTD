@@ -1788,7 +1788,21 @@ bool ScrollWindowTo(int x , int y, Window *w)
 
 bool ScrollMainWindowTo(int x, int y)
 {
-	return ScrollWindowTo(x, y, FindWindowById(WC_MAIN_WINDOW, 0));
+	Window *w;
+	bool res = ScrollWindowTo(x, y, FindWindowById(WC_MAIN_WINDOW, 0));
+
+	/* If a user scrolls to a tile (via what way what so ever) and already is on
+	 *  that tile (e.g.: pressed twice), move the smallmap to that location,
+	 *  so you directly see where you are on the smallmap. */
+
+	if (res) return res;
+
+	w = FindWindowById(WC_SMALLMAP, 0);
+	if (w == NULL) return res;
+
+	SmallMapCenterOnCurrentPos(w);
+
+	return res;
 }
 
 

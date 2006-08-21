@@ -36,7 +36,7 @@ static const Widget _smallmap_widgets[] = {
 {    WWT_IMGBTN,   RESIZE_LRTB,    13,   380,   401,   280,   301, SPR_IMG_SHOW_ROUTES,     STR_0194_SHOW_TRANSPORT_ROUTES_ON},
 {    WWT_IMGBTN,   RESIZE_LRTB,    13,   402,   423,   280,   301, SPR_IMG_PLANTTREES,      STR_0195_SHOW_VEGETATION_ON_MAP},
 {    WWT_IMGBTN,   RESIZE_LRTB,    13,   424,   445,   280,   301, SPR_IMG_COMPANY_GENERAL, STR_0196_SHOW_LAND_OWNERS_ON_MAP},
-{    WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   258,   279, 0x0,                     STR_NULL},
+{    WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   258,   279, SPR_IMG_SMALLMAP,        STR_SMALLMAP_CENTER},
 {    WWT_IMGBTN,   RESIZE_LRTB,    13,   358,   379,   280,   301, SPR_IMG_TOWN,            STR_0197_TOGGLE_TOWN_NAMES_ON_OFF},
 {    WWT_IMGBTN,    RESIZE_RTB,    13,     0,   357,   258,   301, 0x0,                     STR_NULL},
 {     WWT_PANEL,    RESIZE_RTB,    13,     0,   433,   302,   313, 0x0,                     STR_NULL},
@@ -792,6 +792,19 @@ skip_column:
 	_cur_dpi = old_dpi;
 }
 
+void SmallMapCenterOnCurrentPos(Window *w)
+{
+	int x, y;
+	ViewPort *vp;
+	vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+
+	x  = ((vp->virtual_width  - (w->widget[4].right  - w->widget[4].left) * TILE_SIZE) / 2 + vp->virtual_left) / 4;
+	y  = ((vp->virtual_height - (w->widget[4].bottom - w->widget[4].top ) * TILE_SIZE) / 2 + vp->virtual_top ) / 2 - TILE_SIZE * 2;
+	WP(w, smallmap_d).scroll_x = (y - x) & ~0xF;
+	WP(w, smallmap_d).scroll_y = (x + y) & ~0xF;
+	SetWindowDirty(w);
+}
+
 static void SmallMapWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -833,25 +846,32 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->click.widget) {
-		case 4: {/* Main wnd */
-			Window *w2;
+		case 4: { // Map window
+			Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 			Point pt;
-
-			_left_button_clicked = false;
-
-			w2 = FindWindowById(WC_MAIN_WINDOW, 0);
+			int x, y;
 
 			pt = RemapCoords(WP(w,smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
-			WP(w2,vp_d).scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
-			WP(w2,vp_d).scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
+			x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
+			y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
+
+			/* If you press twice on a place in the smallmap, center there */
+			if (WP(w2, vp_d).scrollpos_x == x && WP(w2, vp_d).scrollpos_y == y) {
+				SmallMapCenterOnCurrentPos(w);
+			} else {
+				WP(w2, vp_d).scrollpos_x = x;
+				WP(w2, vp_d).scrollpos_y = y;
+			}
+
+			SetWindowDirty(w);
 		} break;
 
-		case 5: /* Show land contours */
-		case 6: /* Show vehicles */
-		case 7: /* Show industries */
-		case 8: /* Show transport routes */
-		case 9: /* Show vegetation */
-		case 10: /* Show land owners */
+		case 5:  // Show land contours
+		case 6:  // Show vehicles
+		case 7:  // Show industries
+		case 8:  // Show transport routes
+		case 9:  // Show vegetation
+		case 10: // Show land owners
 			w->click_state &= ~(1<<5|1<<6|1<<7|1<<8|1<<9|1<<10);
 			w->click_state |= 1 << e->click.widget;
 			_smallmap_type = e->click.widget - 5;
@@ -860,9 +880,17 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			SndPlayFx(SND_15_BEEP);
 			break;
 
-		case 12: /* toggle town names */
+		case 11: // Center the smallmap again
+			SmallMapCenterOnCurrentPos(w);
+
+			SetWindowDirty(w);
+			SndPlayFx(SND_15_BEEP);
+			break;
+
+		case 12: // Toggle town names
 			w->click_state ^= (1 << 12);
 			_smallmap_show_towns = (w->click_state >> 12) & 1;
+
 			SetWindowDirty(w);
 			SndPlayFx(SND_15_BEEP);
 			break;
@@ -957,23 +985,15 @@ static const WindowDesc _smallmap_desc = {
 void ShowSmallMap(void)
 {
 	Window *w;
-	ViewPort *vp;
-	int x,y;
 
 	w = AllocateWindowDescFront(&_smallmap_desc, 0);
-	if (w != NULL) {
-		w->click_state = ((1<<5) << _smallmap_type) | (_smallmap_show_towns << 12);
-		w->resize.width = 350;
-		w->resize.height = 250;
+	if (w == NULL) return;
 
-		vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
+	w->click_state = ((1 << 5) << _smallmap_type) | (_smallmap_show_towns << 12);
+	w->resize.width = 350;
+	w->resize.height = 250;
 
-		x = ((vp->virtual_width  - 220 * 32) / 2 + vp->virtual_left) / 4;
-		y = ((vp->virtual_height - 120 * 32) / 2 + vp->virtual_top ) / 2 - 32;
-		WP(w,smallmap_d).scroll_x = (y - x) & ~0xF;
-		WP(w,smallmap_d).scroll_y = (x + y) & ~0xF;
-		WP(w,smallmap_d).subscroll = 0;
-	}
+	SmallMapCenterOnCurrentPos(w);
 }
 
 /* Extra ViewPort Window Stuff */
