@@ -141,6 +141,11 @@ union WindowEvent {
 		byte event;
 		Point delta; // delta position against position of last call
 	} scroll;
+
+	struct {
+		byte event;
+		int wheel;   // how much was 'wheel'd'
+	} wheel;
 };
 
 enum WindowKeyCodes {
@@ -513,6 +518,7 @@ enum WindowEvents {
 	WE_RESIZE = 22,
 	WE_MESSAGE = 23,
 	WE_SCROLL = 24,
+	WE_MOUSEWHEEL = 25,
 };
 
 

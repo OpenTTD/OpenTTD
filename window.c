@@ -1146,7 +1146,7 @@ static bool HandleScrollbarScrolling(void)
 
 static bool HandleViewportScroll(void)
 {
-	WindowEvent we;
+	WindowEvent e;
 	Window *w;
 
 	if (!_scrolling_viewport) return true;
@@ -1160,16 +1160,16 @@ static bool HandleViewportScroll(void)
 	}
 
 	if (_patches.reverse_scroll) {
-		we.scroll.delta.x = -_cursor.delta.x;
-		we.scroll.delta.y = -_cursor.delta.y;
+		e.scroll.delta.x = -_cursor.delta.x;
+		e.scroll.delta.y = -_cursor.delta.y;
 	} else {
-		we.scroll.delta.x = _cursor.delta.x;
-		we.scroll.delta.y = _cursor.delta.y;
+		e.scroll.delta.x = _cursor.delta.x;
+		e.scroll.delta.y = _cursor.delta.y;
 	}
 
 	/* Create a scroll-event and send it to the window */
-	we.event = WE_SCROLL;
-	w->wndproc(w, &we);
+	e.event = WE_SCROLL;
+	w->wndproc(w, &e);
 
 	_cursor.delta.x = 0;
 	_cursor.delta.y = 0;
@@ -1339,44 +1339,50 @@ static void MouseLoop(int click, int mousewheel)
 	if (w == NULL) return;
 	w = MaybeBringWindowToFront(w);
 	vp = IsPtInWindowViewport(w, x, y);
+
+	/* Don't allow any action in a viewport if either in menu of in generating world */
+	if (vp != NULL && (_game_mode == GM_MENU || IsGeneratingWorld())) return;
+
+	if (mousewheel != 0) {
+		WindowEvent e;
+
+		/* Send WE_MOUSEWHEEL event to window */
+		e.event = WE_MOUSEWHEEL;
+		e.wheel.wheel = mousewheel;
+		w->wndproc(w, &e);
+
+		/* Dispatch a MouseWheelEvent for widgets if it is not a viewport */
+		if (vp == NULL) DispatchMouseWheelEvent(w, GetWidgetFromPos(w, x - w->left, y - w->top), mousewheel);
+	}
+
 	if (vp != NULL) {
-		if (_game_mode == GM_MENU || IsGeneratingWorld()) return;
+		switch (click) {
+			case 1:
+				DEBUG(misc, 2) ("cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
+				if (_thd.place_mode != 0 &&
+						// query button and place sign button work in pause mode
+						_cursor.sprite != SPR_CURSOR_QUERY &&
+						_cursor.sprite != SPR_CURSOR_SIGN &&
+						_pause != 0 &&
+						!_cheats.build_in_pause.value) {
+					return;
+				}
 
-		// only allow zooming in-out in main window, or in viewports
-		if (mousewheel &&
-				!(w->flags4 & WF_DISABLE_VP_SCROLL) && (
-					w->window_class == WC_MAIN_WINDOW ||
-					w->window_class == WC_EXTRA_VIEW_PORT
-				)) {
-			ZoomInOrOutToCursorWindow(mousewheel < 0,w);
-		}
+				if (_thd.place_mode == 0) {
+					HandleViewportClicked(vp, x, y);
+				} else {
+					PlaceObject();
+				}
+				break;
 
-		if (click == 1) {
-			DEBUG(misc, 2) ("cursor: 0x%X (%d)", _cursor.sprite, _cursor.sprite);
-			if (_thd.place_mode != 0 &&
-					// query button and place sign button work in pause mode
-					_cursor.sprite != SPR_CURSOR_QUERY &&
-					_cursor.sprite != SPR_CURSOR_SIGN &&
-					_pause != 0 &&
-					!_cheats.build_in_pause.value) {
-				return;
-			}
-
-			if (_thd.place_mode == 0) {
-				HandleViewportClicked(vp, x, y);
-			} else {
-				PlaceObject();
-			}
-		} else if (click == 2) {
-			if (!(w->flags4 & WF_DISABLE_VP_SCROLL)) {
-				_scrolling_viewport = true;
-				_cursor.fix_at = true;
-			}
+			case 2:
+				if (!(w->flags4 & WF_DISABLE_VP_SCROLL)) {
+					_scrolling_viewport = true;
+					_cursor.fix_at = true;
+				}
+				break;
 		}
 	} else {
-		if (mousewheel)
-			DispatchMouseWheelEvent(w, GetWidgetFromPos(w, x - w->left, y - w->top), mousewheel);
-
 		switch (click) {
 			case 1: DispatchLeftClickEvent(w, x - w->left, y - w->top);  break;
 			case 2: DispatchRightClickEvent(w, x - w->left, y - w->top); break;

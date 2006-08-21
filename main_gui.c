@@ -2329,6 +2329,10 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 			WP(w, vp_d).scrollpos_x += e->scroll.delta.x << vp->zoom;
 			WP(w, vp_d).scrollpos_y += e->scroll.delta.y << vp->zoom;
 		} break;
+
+		case WE_MOUSEWHEEL:
+			ZoomInOrOutToCursorWindow(e->wheel.wheel < 0, w);
+			break;
 	}
 }
 
