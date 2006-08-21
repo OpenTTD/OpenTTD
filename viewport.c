@@ -109,6 +109,7 @@ static ViewportDrawer *_cur_vd;
 TileHighlightData _thd;
 static TileInfo *_cur_ti;
 
+extern void SmallMapCenterOnCurrentPos(Window *w);
 
 static Point MapXYZToViewport(const ViewPort *vp, uint x, uint y, uint z)
 {
