@@ -2227,7 +2227,7 @@ void SetObjectToPlace(CursorID icon, byte mode, WindowClass window_class, Window
 		VpStartPreSizing();
 
 	if ( (int)icon < 0)
-		SetAnimatedMouseCursor(_animcursors[~((int)icon)]);
+		SetAnimatedMouseCursor(_animcursors[~icon]);
 	else
 		SetMouseCursor(icon);
 }
