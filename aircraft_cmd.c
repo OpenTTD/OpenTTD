@@ -425,7 +425,6 @@ static void DoDeleteAircraft(Vehicle *v)
 int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	uint16 callback;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
@@ -435,14 +434,6 @@ int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (!IsAircraftInHangarStopped(v)) return_cmd_error(STR_A01B_AIRCRAFT_MUST_BE_STOPPED);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
-
-	/* Check if this aircraft can be started/stopped. The callback will fail or
-	 * return 0xFF if it can. */
-	callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
-	if (callback != CALLBACK_FAILED && callback != 0xFF) {
-		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
-		return_cmd_error(error);
-	}
 
 	if (flags & DC_EXEC) {
 		// Invalidate depot
@@ -463,6 +454,7 @@ int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
+	uint16 callback;
 
 	if (!IsVehicleIndex(p1)) return CMD_ERROR;
 
@@ -473,6 +465,14 @@ int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	// cannot stop airplane when in flight, or when taking off / landing
 	if (v->u.air.state >= STARTTAKEOFF && v->u.air.state < TERM7)
 		return_cmd_error(STR_A017_AIRCRAFT_IS_IN_FLIGHT);
+
+	/* Check if this aircraft can be started/stopped. The callback will fail or
+	 * return 0xFF if it can. */
+	callback = GetVehicleCallback(CBID_VEHICLE_START_STOP_CHECK, 0, 0, v->engine_type, v);
+	if (callback != CALLBACK_FAILED && callback != 0xFF) {
+		StringID error = GetGRFStringID(GetEngineGRFID(v->engine_type), 0xD000 + callback);
+		return_cmd_error(error);
+	}
 
 	if (flags & DC_EXEC) {
 		if (IsAircraftInHangarStopped(v)) {
