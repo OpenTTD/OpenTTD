@@ -301,6 +301,9 @@ static void LoadIntroGame(void)
 
 	_pause = 0;
 	_local_player = 0;
+	/* Make sure you can't scroll in the menu */
+	_scrolling_viewport = 0;
+	_cursor.fix_at = false;
 	MarkWholeScreenDirty();
 
 	// Play main theme
