@@ -247,13 +247,9 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /* Internal handler to delete a waypoint */
 static void DoDeleteWaypoint(Waypoint *wp)
 {
-	Order order;
-
 	wp->xy = 0;
 
-	order.type = OT_GOTO_WAYPOINT;
-	order.station = wp->index;
-	DeleteDestinationFromVehicleOrder(order);
+	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, wp->index);
 
 	if (wp->string != STR_NULL) DeleteName(wp->string);
 

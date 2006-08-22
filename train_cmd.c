@@ -2397,6 +2397,8 @@ static bool ProcessTrainOrder(Vehicle *v)
 		case OT_LOADING:
 		case OT_LEAVESTATION:
 			return false;
+
+		default: break;
 	}
 
 	// check if we've reached the waypoint?

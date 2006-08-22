@@ -953,13 +953,11 @@ void CheckOrders(const Vehicle* v)
 }
 
 /**
- *
- * Delete a destination (like station, waypoint, ..) from the orders of vehicles
- *
- * @param dest type and station has to be set. This order will be removed from all orders of vehicles
- *
+ * Removes an order from all vehicles. Triggers when, say, a station is removed.
+ * @param type The type of the order (OT_GOTO_[STATION|DEPOT|WAYPOINT]).
+ * @param destination The destination. Can be a StationID, DepotID or WaypointID.
  */
-void DeleteDestinationFromVehicleOrder(Order dest)
+void RemoveOrderFromAllVehicles(OrderType type, StationID destination)
 {
 	Vehicle *v;
 	Order *order;
@@ -970,12 +968,11 @@ void DeleteDestinationFromVehicleOrder(Order dest)
 		if (v->orders == NULL) continue;
 
 		/* Forget about this station if this station is removed */
-		if (v->last_station_visited == dest.station && dest.type == OT_GOTO_STATION)
+		if (v->last_station_visited == destination && type == OT_GOTO_STATION)
 			v->last_station_visited = INVALID_STATION;
 
 		/* Check the current order */
-		if (v->current_order.type    == dest.type &&
-				v->current_order.station == dest.station) {
+		if (v->current_order.type == type && v->current_order.station == destination) {
 			/* Mark the order as DUMMY */
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
@@ -985,7 +982,7 @@ void DeleteDestinationFromVehicleOrder(Order dest)
 		/* Clear the order from the order-list */
 		need_invalidate = false;
 		FOR_VEHICLE_ORDERS(v, order) {
-			if (order->type == dest.type && order->station == dest.station) {
+			if (order->type == type && order->station == destination) {
 				/* Mark the order as DUMMY */
 				order->type = OT_DUMMY;
 				order->flags = 0;

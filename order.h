@@ -10,7 +10,7 @@
 #include "pool.h"
 
 /* Order types */
-enum {
+typedef enum OrderTypes {
 	OT_NOTHING       = 0,
 	OT_GOTO_STATION  = 1,
 	OT_GOTO_DEPOT    = 2,
@@ -18,7 +18,7 @@ enum {
 	OT_LEAVESTATION  = 4,
 	OT_DUMMY         = 5,
 	OT_GOTO_WAYPOINT = 6
-};
+} OrderType;
 
 /* Order flags -- please use OFB instead OF and use HASBIT/SETBIT/CLEARBIT */
 
@@ -77,7 +77,7 @@ enum {
  * - REF_SHEDULE (all REFs are currently limited to 16 bits!!)
  */
 typedef struct Order {
-	uint8  type;
+	OrderType type;
 	uint8  flags;
 	StationID station;
 
@@ -162,7 +162,7 @@ static inline uint32 PackOrder(const Order *order)
 static inline Order UnpackOrder(uint32 packed)
 {
 	Order order;
-	order.type    = GB(packed,  0,  8);
+	order.type    = (OrderType)GB(packed,  0,  8);
 	order.flags   = GB(packed,  8,  8);
 	order.station = GB(packed, 16, 16);
 	order.next    = NULL;
@@ -173,7 +173,7 @@ static inline Order UnpackOrder(uint32 packed)
 /* Functions */
 void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *order);
 void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* order);
-void DeleteDestinationFromVehicleOrder(Order dest);
+void RemoveOrderFromAllVehicles(OrderType type, StationID destination);
 void InvalidateVehicleOrder(const Vehicle *v);
 bool VehicleHasDepotOrders(const Vehicle *v);
 void CheckOrders(const Vehicle*);

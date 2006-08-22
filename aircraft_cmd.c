@@ -1179,6 +1179,8 @@ static void ProcessAircraftOrder(Vehicle *v)
 			break;
 
 		case OT_LOADING: return;
+
+		default: break;
 	}
 
 	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;

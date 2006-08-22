@@ -212,6 +212,8 @@ static void ProcessShipOrder(Vehicle *v)
 		case OT_LOADING:
 		case OT_LEAVESTATION:
 			return;
+
+		default: break;
 	}
 
 	if (v->cur_order_index >= v->num_orders) v->cur_order_index = 0;

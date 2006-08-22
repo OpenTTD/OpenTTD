@@ -164,6 +164,8 @@ static void DrawOrdersWindow(Window *w)
 					SetDParam(1, (order->flags & OF_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
 					SetDParam(2, order->station);
 					break;
+
+				default: break;
 			}
 
 			color = (i == WP(w,order_d).sel) ? 0xC : 0x10;

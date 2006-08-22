@@ -79,7 +79,6 @@ Depot *AllocateDepot(void)
  */
 void DoDeleteDepot(TileIndex tile)
 {
-	Order order;
 	Depot *depot;
 
 	/* Get the depot */
@@ -92,9 +91,7 @@ void DoDeleteDepot(TileIndex tile)
 	depot->xy = 0;
 
 	/* Clear the depot from all order-lists */
-	order.type    = OT_GOTO_DEPOT;
-	order.station = depot->index;
-	DeleteDestinationFromVehicleOrder(order);
+	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, depot->index);
 
 	/* Delete the depot-window */
 	DeleteWindowById(WC_VEHICLE_DEPOT, tile);
