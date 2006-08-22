@@ -1091,9 +1091,9 @@ static void UpdateVoidTiles(void)
 // since savegame version 6.0 each sign has an "owner", signs without owner (from old games are set to 255)
 static void UpdateSignOwner(void)
 {
-	SignStruct *ss;
+	Sign *si;
 
-	FOR_ALL_SIGNS(ss) ss->owner = OWNER_NONE;
+	FOR_ALL_SIGNS(si) si->owner = OWNER_NONE;
 }
 
 extern void UpdateOldAircraft( void );

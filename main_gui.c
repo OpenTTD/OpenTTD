@@ -346,11 +346,11 @@ void ShowNetworkNeedCompanyPassword(void)
 
 #endif /* ENABLE_NETWORK */
 
-void ShowRenameSignWindow(const SignStruct *ss)
+void ShowRenameSignWindow(const Sign *si)
 {
-	_rename_id = ss->index;
+	_rename_id = si->index;
 	_rename_what = 0;
-	ShowQueryString(ss->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, 1, 0, CS_ALPHANUMERAL);
+	ShowQueryString(si->str, STR_280B_EDIT_SIGN_TEXT, 30, 180, 1, 0, CS_ALPHANUMERAL);
 }
 
 void ShowRenameWaypointWindow(const Waypoint *wp)

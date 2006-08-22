@@ -1103,17 +1103,17 @@ static uint16 _last_sign_idx;
 static int CDECL SignNameSorter(const void *a, const void *b)
 {
 	char buf1[64];
-	SignStruct *ss;
-	const uint16 cmp1 = *(const uint16 *)a;
-	const uint16 cmp2 = *(const uint16 *)b;
+	Sign *si;
+	const SignID cmp1 = *(const SignID *)a;
+	const SignID cmp2 = *(const SignID *)b;
 
-	ss = GetSign(cmp1);
-	GetString(buf1, ss->str);
+	si = GetSign(cmp1);
+	GetString(buf1, si->str);
 
 	if (cmp2 != _last_sign_idx) {
 		_last_sign_idx = cmp2;
-		ss = GetSign(cmp2);
-		GetString(_bufcache, ss->str);
+		si = GetSign(cmp2);
+		GetString(_bufcache, si->str);
 	}
 
 	return strcmp(buf1, _bufcache); // sort by name
@@ -1121,7 +1121,7 @@ static int CDECL SignNameSorter(const void *a, const void *b)
 
 static void GlobalSortSignList(void)
 {
-	const SignStruct *ss;
+	const Sign *si;
 	uint32 n = 0;
 
 	_num_sign_sort = 0;
@@ -1131,8 +1131,8 @@ static void GlobalSortSignList(void)
 	if (_sign_sort == NULL)
 		error("Could not allocate memory for the sign-sorting-list");
 
-	FOR_ALL_SIGNS(ss) {
-		_sign_sort[n++] = ss->index;
+	FOR_ALL_SIGNS(si) {
+		_sign_sort[n++] = si->index;
 		_num_sign_sort++;
 	}
 
@@ -1163,17 +1163,18 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 			return;
 		}
 
-		{	const SignStruct *ss;
+		{
+			const Sign *si;
 			uint16 i;
 
 			/* Start drawing the signs */
 			for (i = w->vscroll.pos; i < w->vscroll.cap + w->vscroll.pos && i < w->vscroll.count; i++) {
-				ss = GetSign(_sign_sort[i]);
+				si = GetSign(_sign_sort[i]);
 
-				if (ss->owner != OWNER_NONE)
-					DrawPlayerIcon(ss->owner, 4, y + 1);
+				if (si->owner != OWNER_NONE)
+					DrawPlayerIcon(si->owner, 4, y + 1);
 
-				DrawString(22, y, ss->str, 8);
+				DrawString(22, y, si->str, 8);
 				y += 10;
 			}
 		}
@@ -1183,7 +1184,7 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 		switch (e->click.widget) {
 		case 3: {
 			uint32 id_v = (e->click.pt.y - 15) / 10;
-			SignStruct *ss;
+			const Sign *si;
 
 			if (id_v >= w->vscroll.cap)
 				return;
@@ -1193,8 +1194,8 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 			if (id_v >= w->vscroll.count)
 				return;
 
-			ss = GetSign(_sign_sort[id_v]);
-			ScrollMainWindowToTile(TileVirtXY(ss->x, ss->y));
+			si = GetSign(_sign_sort[id_v]);
+			ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 		} break;
 		}
 	} break;

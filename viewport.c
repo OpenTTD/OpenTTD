@@ -883,7 +883,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 
 static void ViewportAddSigns(DrawPixelInfo *dpi)
 {
-	SignStruct *ss;
+	Sign *si;
 	int left, top, right, bottom;
 	StringSpriteToDraw *sstd;
 
@@ -896,32 +896,32 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 	bottom = top + dpi->height;
 
 	if (dpi->zoom < 1) {
-		FOR_ALL_SIGNS(ss) {
-			if (bottom > ss->sign.top &&
-					top < ss->sign.top + 12 &&
-					right > ss->sign.left &&
-					left < ss->sign.left + ss->sign.width_1) {
+		FOR_ALL_SIGNS(si) {
+			if (bottom > si->sign.top &&
+					top < si->sign.top + 12 &&
+					right > si->sign.left &&
+					left < si->sign.left + si->sign.width_1) {
 
-				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2806, ss->str, 0, 0);
+				sstd=AddStringToDraw(si->sign.left + 1, si->sign.top + 1, STR_2806, si->str, 0, 0);
 				if (sstd != NULL) {
-					sstd->width = ss->sign.width_1;
-					sstd->color = (ss->owner==OWNER_NONE)?14:_player_colors[ss->owner];
+					sstd->width = si->sign.width_1;
+					sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
 				}
 			}
 		}
 	} else if (dpi->zoom == 1) {
 		right += 2;
 		bottom += 2;
-		FOR_ALL_SIGNS(ss) {
-			if (bottom > ss->sign.top &&
-					top < ss->sign.top + 24 &&
-					right > ss->sign.left &&
-					left < ss->sign.left + ss->sign.width_1*2) {
+		FOR_ALL_SIGNS(si) {
+			if (bottom > si->sign.top &&
+					top < si->sign.top + 24 &&
+					right > si->sign.left &&
+					left < si->sign.left + si->sign.width_1 * 2) {
 
-				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2806, ss->str, 0, 0);
+				sstd=AddStringToDraw(si->sign.left + 1, si->sign.top + 1, STR_2806, si->str, 0, 0);
 				if (sstd != NULL) {
-					sstd->width = ss->sign.width_1;
-					sstd->color = (ss->owner==OWNER_NONE)?14:_player_colors[ss->owner];
+					sstd->width = si->sign.width_1;
+					sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
 				}
 			}
 		}
@@ -929,16 +929,16 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 		right += 4;
 		bottom += 5;
 
-		FOR_ALL_SIGNS(ss) {
-			if (bottom > ss->sign.top &&
-					top < ss->sign.top + 24 &&
-					right > ss->sign.left &&
-					left < ss->sign.left + ss->sign.width_2*4) {
+		FOR_ALL_SIGNS(si) {
+			if (bottom > si->sign.top &&
+					top < si->sign.top + 24 &&
+					right > si->sign.left &&
+					left < si->sign.left + si->sign.width_2 * 4) {
 
-				sstd=AddStringToDraw(ss->sign.left + 1, ss->sign.top + 1, STR_2002, ss->str, 0, 0);
+				sstd=AddStringToDraw(si->sign.left + 1, si->sign.top + 1, STR_2002, si->str, 0, 0);
 				if (sstd != NULL) {
-					sstd->width = ss->sign.width_2 | 0x8000;
-					sstd->color = (ss->owner==OWNER_NONE)?14:_player_colors[ss->owner];
+					sstd->width = si->sign.width_2 | 0x8000;
+					sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
 				}
 			}
 		}
@@ -1563,7 +1563,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 
 static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 {
-	const SignStruct *ss;
+	const Sign *si;
 
 	if (!(_display_opt & DO_SHOW_SIGNS)) return false;
 
@@ -1571,36 +1571,36 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 		x = x - vp->left + vp->virtual_left;
 		y = y - vp->top + vp->virtual_top;
 
-		FOR_ALL_SIGNS(ss) {
-			if (y >= ss->sign.top &&
-					y < ss->sign.top + 12 &&
-					x >= ss->sign.left &&
-					x < ss->sign.left + ss->sign.width_1) {
-				ShowRenameSignWindow(ss);
+		FOR_ALL_SIGNS(si) {
+			if (y >= si->sign.top &&
+					y < si->sign.top + 12 &&
+					x >= si->sign.left &&
+					x < si->sign.left + si->sign.width_1) {
+				ShowRenameSignWindow(si);
 				return true;
 			}
 		}
 	} else if (vp->zoom == 1) {
 		x = (x - vp->left + 1) * 2 + vp->virtual_left;
 		y = (y - vp->top + 1) * 2 + vp->virtual_top;
-		FOR_ALL_SIGNS(ss) {
-			if (y >= ss->sign.top &&
-					y < ss->sign.top + 24 &&
-					x >= ss->sign.left &&
-					x < ss->sign.left + ss->sign.width_1 * 2) {
-				ShowRenameSignWindow(ss);
+		FOR_ALL_SIGNS(si) {
+			if (y >= si->sign.top &&
+					y < si->sign.top + 24 &&
+					x >= si->sign.left &&
+					x < si->sign.left + si->sign.width_1 * 2) {
+				ShowRenameSignWindow(si);
 				return true;
 			}
 		}
 	} else {
 		x = (x - vp->left + 3) * 4 + vp->virtual_left;
 		y = (y - vp->top + 3) * 4 + vp->virtual_top;
-		FOR_ALL_SIGNS(ss) {
-			if (y >= ss->sign.top &&
-					y < ss->sign.top + 24 &&
-					x >= ss->sign.left &&
-					x < ss->sign.left + ss->sign.width_2 * 4) {
-				ShowRenameSignWindow(ss);
+		FOR_ALL_SIGNS(si) {
+			if (y >= si->sign.top &&
+					y < si->sign.top + 24 &&
+					x >= si->sign.left &&
+					x < si->sign.left + si->sign.width_2 * 4) {
+				ShowRenameSignWindow(si);
 				return true;
 			}
 		}

@@ -49,6 +49,7 @@ typedef uint32 PalSpriteID; ///< The number of a sprite plus all the mapping bit
 typedef uint32 CursorID;
 typedef uint16 EngineID; ///< All enginenumbers should be of this type
 typedef uint16 EngineRenewID;
+typedef uint16 SignID;
 typedef uint16 UnitID;   ///< All unitnumber stuff is of this type (or anyway, should be)
 
 typedef uint32 WindowNumber;

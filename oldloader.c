@@ -1233,10 +1233,10 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 }
 
 static const OldChunks sign_chunk[] = {
-	OCL_SVAR( OC_UINT16, SignStruct, str ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32,SignStruct, x ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32,SignStruct, y ),
-	OCL_SVAR( OC_FILE_U16 | OC_VAR_I8, SignStruct, z ),
+	OCL_SVAR( OC_UINT16, Sign, str ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32,Sign, x ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I32,Sign, y ),
+	OCL_SVAR( OC_FILE_U16 | OC_VAR_I8, Sign, z ),
 
 	OCL_NULL( 6 ),         // Width of sign, no longer in use
 

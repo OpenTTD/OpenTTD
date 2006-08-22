@@ -10,7 +10,7 @@
 #include "command.h"
 #include "variables.h"
 
-static SignStruct *_new_sign_struct;
+static Sign *_new_sign;
 
 enum {
 	/* Max signs: 64000 (4 * 16000) */
@@ -23,26 +23,26 @@ enum {
  */
 static void SignPoolNewBlock(uint start_item)
 {
-	SignStruct *ss;
+	Sign *si;
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (ss = GetSign(start_item); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL) ss->index = start_item++;
+	for (si = GetSign(start_item); si != NULL; si = (si->index + 1 < GetSignPoolSize()) ? GetSign(si->index + 1) : NULL) si->index = start_item++;
 }
 
 /* Initialize the sign-pool */
-MemoryPool _sign_pool = { "Signs", SIGN_POOL_MAX_BLOCKS, SIGN_POOL_BLOCK_SIZE_BITS, sizeof(SignStruct), &SignPoolNewBlock, NULL, 0, 0, NULL };
+MemoryPool _sign_pool = { "Signs", SIGN_POOL_MAX_BLOCKS, SIGN_POOL_BLOCK_SIZE_BITS, sizeof(Sign), &SignPoolNewBlock, NULL, 0, 0, NULL };
 
 /**
  *
  * Update the coordinate of one sign
  *
  */
-static void UpdateSignVirtCoords(SignStruct *ss)
+static void UpdateSignVirtCoords(Sign *si)
 {
-	Point pt = RemapCoords(ss->x, ss->y, ss->z);
-	SetDParam(0, ss->str);
-	UpdateViewportSignPos(&ss->sign, pt.x, pt.y - 6, STR_2806);
+	Point pt = RemapCoords(si->x, si->y, si->z);
+	SetDParam(0, si->str);
+	UpdateViewportSignPos(&si->sign, pt.x, pt.y - 6, STR_2806);
 }
 
 /**
@@ -52,9 +52,9 @@ static void UpdateSignVirtCoords(SignStruct *ss)
  */
 void UpdateAllSignVirtCoords(void)
 {
-	SignStruct *ss;
+	Sign *si;
 
-	FOR_ALL_SIGNS(ss) UpdateSignVirtCoords(ss);
+	FOR_ALL_SIGNS(si) UpdateSignVirtCoords(si);
 
 }
 
@@ -62,15 +62,15 @@ void UpdateAllSignVirtCoords(void)
  *
  * Marks the region of a sign as dirty
  *
- * @param ss Pointer to the SignStruct
+ * @param si Pointer to the Sign
  */
-static void MarkSignDirty(SignStruct *ss)
+static void MarkSignDirty(Sign *si)
 {
 	MarkAllViewportsDirty(
-		ss->sign.left - 6,
-		ss->sign.top  - 3,
-		ss->sign.left + ss->sign.width_1 * 4 + 12,
-		ss->sign.top  + 45);
+		si->sign.left - 6,
+		si->sign.top  - 3,
+		si->sign.left + si->sign.width_1 * 4 + 12,
+		si->sign.top  + 45);
 }
 
 /**
@@ -79,20 +79,20 @@ static void MarkSignDirty(SignStruct *ss)
  *
  * @return The pointer to the new sign, or NULL if there is no more free space
  */
-static SignStruct *AllocateSign(void)
+static Sign *AllocateSign(void)
 {
-	SignStruct *ss;
+	Sign *si;
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (ss = GetSign(0); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL) {
-		if (!IsValidSign(ss)) {
-			uint index = ss->index;
+	for (si = GetSign(0); si != NULL; si = (si->index + 1 < GetSignPoolSize()) ? GetSign(si->index + 1) : NULL) {
+		if (!IsValidSign(si)) {
+			uint index = si->index;
 
-			memset(ss, 0, sizeof(SignStruct));
-			ss->index = index;
+			memset(si, 0, sizeof(Sign));
+			si->index = index;
 
-			return ss;
+			return si;
 		}
 	}
 
@@ -112,27 +112,27 @@ static SignStruct *AllocateSign(void)
  */
 int32 CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	SignStruct *ss;
+	Sign *si;
 
 	/* Try to locate a new sign */
-	ss = AllocateSign();
-	if (ss == NULL) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
+	si = AllocateSign();
+	if (si == NULL) return_cmd_error(STR_2808_TOO_MANY_SIGNS);
 
 	/* When we execute, really make the sign */
 	if (flags & DC_EXEC) {
 		int x = TileX(tile) * TILE_SIZE;
 		int y = TileY(tile) * TILE_SIZE;
 
-		ss->str = STR_280A_SIGN;
-		ss->x = x;
-		ss->y = y;
-		ss->owner = _current_player; // owner of the sign; just eyecandy
-		ss->z = GetSlopeZ(x,y);
-		UpdateSignVirtCoords(ss);
-		MarkSignDirty(ss);
+		si->str = STR_280A_SIGN;
+		si->x = x;
+		si->y = y;
+		si->owner = _current_player; // owner of the sign; just eyecandy
+		si->z = GetSlopeZ(x,y);
+		UpdateSignVirtCoords(si);
+		MarkSignDirty(si);
 		InvalidateWindow(WC_SIGN_LIST, 0);
 		_sign_sort_dirty = true;
-		_new_sign_struct = ss;
+		_new_sign = si;
 	}
 
 	return 0;
@@ -157,18 +157,18 @@ int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (str == 0) return CMD_ERROR;
 
 		if (flags & DC_EXEC) {
-			SignStruct *ss = GetSign(p1);
+			Sign *si = GetSign(p1);
 
 			/* Delete the old name */
-			DeleteName(ss->str);
+			DeleteName(si->str);
 			/* Assign the new one */
-			ss->str = str;
-			ss->owner = _current_player;
+			si->str = str;
+			si->owner = _current_player;
 
 			/* Update; mark sign dirty twice, because it can either becom longer, or shorter */
-			MarkSignDirty(ss);
-			UpdateSignVirtCoords(ss);
-			MarkSignDirty(ss);
+			MarkSignDirty(si);
+			UpdateSignVirtCoords(si);
+			MarkSignDirty(si);
 			InvalidateWindow(WC_SIGN_LIST, 0);
 			_sign_sort_dirty = true;
 		} else {
@@ -177,13 +177,13 @@ int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 	} else { /* Delete sign */
 		if (flags & DC_EXEC) {
-			SignStruct *ss = GetSign(p1);
+			Sign *si = GetSign(p1);
 
 			/* Delete the name */
-			DeleteName(ss->str);
-			ss->str = 0;
+			DeleteName(si->str);
+			si->str = 0;
 
-			MarkSignDirty(ss);
+			MarkSignDirty(si);
 			InvalidateWindow(WC_SIGN_LIST, 0);
 			_sign_sort_dirty = true;
 		}
@@ -200,7 +200,7 @@ int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 void CcPlaceSign(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) {
-		ShowRenameSignWindow(_new_sign_struct);
+		ShowRenameSignWindow(_new_sign);
 		ResetObjectToPlace();
 	}
 }
@@ -228,13 +228,13 @@ void InitializeSigns(void)
 }
 
 static const SaveLoad _sign_desc[] = {
-      SLE_VAR(SignStruct, str,   SLE_UINT16),
-  SLE_CONDVAR(SignStruct, x,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
-  SLE_CONDVAR(SignStruct, y,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
-  SLE_CONDVAR(SignStruct, x,     SLE_INT32,                  5, SL_MAX_VERSION),
-  SLE_CONDVAR(SignStruct, y,     SLE_INT32,                  5, SL_MAX_VERSION),
-  SLE_CONDVAR(SignStruct, owner, SLE_UINT8,                  6, SL_MAX_VERSION),
-      SLE_VAR(SignStruct, z,     SLE_UINT8),
+      SLE_VAR(Sign, str,   SLE_UINT16),
+  SLE_CONDVAR(Sign, x,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
+  SLE_CONDVAR(Sign, y,     SLE_FILE_I16 | SLE_VAR_I32, 0, 4),
+  SLE_CONDVAR(Sign, x,     SLE_INT32,                  5, SL_MAX_VERSION),
+  SLE_CONDVAR(Sign, y,     SLE_INT32,                  5, SL_MAX_VERSION),
+  SLE_CONDVAR(Sign, owner, SLE_UINT8,                  6, SL_MAX_VERSION),
+      SLE_VAR(Sign, z,     SLE_UINT8),
 	SLE_END()
 };
 
@@ -245,11 +245,11 @@ static const SaveLoad _sign_desc[] = {
  */
 static void Save_SIGN(void)
 {
-	SignStruct *ss;
+	Sign *si;
 
-	FOR_ALL_SIGNS(ss) {
-		SlSetArrayIndex(ss->index);
-		SlObject(ss, _sign_desc);
+	FOR_ALL_SIGNS(si) {
+		SlSetArrayIndex(si->index);
+		SlObject(si, _sign_desc);
 	}
 }
 
@@ -262,13 +262,13 @@ static void Load_SIGN(void)
 {
 	int index;
 	while ((index = SlIterateArray()) != -1) {
-		SignStruct *ss;
+		Sign *si;
 
 		if (!AddBlockIfNeeded(&_sign_pool, index))
 			error("Signs: failed loading savegame: too many signs");
 
-		ss = GetSign(index);
-		SlObject(ss, _sign_desc);
+		si = GetSign(index);
+		SlObject(si, _sign_desc);
 	}
 
 	_sign_sort_dirty = true;
