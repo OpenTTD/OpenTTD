@@ -89,8 +89,6 @@ static void RoadVehRefitWndProc(Window *w, WindowEvent *e)
 			SetDParam(1, v->unitnumber);
 			DrawWindowWidgets(w);
 
-			DrawString(1, 15, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, 0);
-
 			WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w,refit_d).sel);
 
 			if (WP(w,refit_d).cargo != CT_INVALID) {
@@ -130,11 +128,12 @@ static void RoadVehRefitWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _road_veh_refit_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE, 14,  0,  10,   0,  13, STR_00C5,               STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION, RESIZE_NONE, 14, 11, 239,   0,  13, STR_983B_REFIT,         STR_018C_WINDOW_TITLE_DRAG_THIS },
-{     WWT_IMGBTN, RESIZE_NONE, 14,  0, 239,  14, 135, 0x0,                    STR_983D_SELECT_TYPE_OF_CARGO_FOR },
-{     WWT_IMGBTN, RESIZE_NONE, 14,  0, 239, 136, 157, 0x0,                    STR_NULL },
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 14,  0, 239, 158, 169, STR_REFIT_ROAD_VEHICLE, STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED },
+{   WWT_CLOSEBOX, RESIZE_NONE, 14,  0,  10,   0,  13, STR_00C5,                            STR_018B_CLOSE_WINDOW },
+{    WWT_CAPTION, RESIZE_NONE, 14, 11, 239,   0,  13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS },
+{     WWT_IMGBTN, RESIZE_NONE, 14,  0, 239,  14, 135, 0x0,                                 STR_983D_SELECT_TYPE_OF_CARGO_FOR },
+{     WWT_IMGBTN, RESIZE_NONE, 14,  0, 239, 136, 157, 0x0,                                 STR_NULL },
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 14,  0, 239, 158, 169, STR_REFIT_ROAD_VEHICLE,              STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED },
+{      WWT_LABEL, RESIZE_NONE,  0,  0, 239,  13,  26, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_NULL},
 {    WIDGETS_END },
 };
 

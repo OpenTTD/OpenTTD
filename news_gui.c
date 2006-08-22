@@ -731,7 +731,6 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 
 		if (_news_ticker_sound) SETBIT(w->click_state, 25);
 		DrawWindowWidgets(w);
-		DrawStringCentered(185, 15, STR_0205_MESSAGE_TYPES, 0);
 
 		/* XXX - Draw the fake widgets-buttons. Can't add these to the widget-desc since
 		 * openttd currently can only handle 32 widgets. So hack it *g* */
@@ -839,6 +838,7 @@ static const Widget _message_options_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   154,   165, STR_0225,                 STR_NULL},
 {          WWT_4,   RESIZE_NONE,     3,     4,   98,   166,   177, STR_02DB_OFF,             STR_NULL},
 
+{      WWT_LABEL,   RESIZE_NONE,    13,     0,  409,    13,    26, STR_0205_MESSAGE_TYPES,   STR_NULL},
 {   WIDGETS_END},
 };
 

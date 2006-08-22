@@ -273,7 +273,6 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 		SetDParam(1, v->unitnumber);
 		DrawWindowWidgets(w);
 
-		DrawString(1, 15, STR_A040_SELECT_CARGO_TYPE_TO_CARRY, 0);
 
 		/* TODO: Support for custom GRFSpecial-specified refitting! --pasky */
 		WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w, refit_d).sel);
@@ -311,11 +310,12 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _aircraft_refit_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_A03C_REFIT,          STR_018C_WINDOW_TITLE_DRAG_THIS },
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   145, 0x0,                     STR_A03E_SELECT_TYPE_OF_CARGO_FOR },
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   146,   167, 0x0,                     STR_NULL },
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   168,   179, STR_A03D_REFIT_AIRCRAFT, STR_A03F_REFIT_AIRCRAFT_TO_CARRY },
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW },
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_A03C_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS },
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   145, 0x0,                                 STR_A03E_SELECT_TYPE_OF_CARGO_FOR },
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   146,   167, 0x0,                                 STR_NULL },
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   168,   179, STR_A03D_REFIT_AIRCRAFT,             STR_A03F_REFIT_AIRCRAFT_TO_CARRY },
+{      WWT_LABEL,   RESIZE_NONE,     0,     0,   239,    13,    26, STR_A040_SELECT_CARGO_TYPE_TO_CARRY, STR_NULL},
 {   WIDGETS_END},
 };
 

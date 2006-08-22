@@ -197,7 +197,7 @@ void DrawWindowWidgets(const Window *w)
 			}
 		/* fall through */
 
-		case WWT_5: {
+		case WWT_LABEL: {
 			StringID str = wi->unkA;
 
 			if ((wi->type&WWT_MASK) == WWT_4 && clicked) str++;

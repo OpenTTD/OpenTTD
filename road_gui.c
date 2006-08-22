@@ -430,7 +430,6 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 		StationPickerDrawSprite(35, 85, 0, image+2);
 		StationPickerDrawSprite(35, 35, 0, image+3);
 
-		DrawStringCentered(70, 120, STR_3066_COVERAGE_AREA_HIGHLIGHT, 0);
 		DrawStationCoverageAreaText(2, 146,
 			((w->window_class == WC_BUS_STATION) ? (1<<CT_PASSENGERS) : ~(1<<CT_PASSENGERS)),
 			3);
@@ -477,6 +476,7 @@ static const Widget _bus_station_picker_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                              STR_3051_SELECT_BUS_STATION_ORIENTATION},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    10,    69,   133,   144, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    70,   129,   133,   144, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{       WWT_LABEL,  RESIZE_NONE,     7,     0,   139,   120,   133, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -494,15 +494,16 @@ static void ShowBusStationPicker(void)
 }
 
 static const Widget _truck_station_picker_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                      STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_3043_TRUCK_STATION_ORIENT, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   176, 0x0,                           STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                           STR_3052_SELECT_TRUCK_LOADING_BAY},
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                           STR_3052_SELECT_TRUCK_LOADING_BAY},
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                           STR_3052_SELECT_TRUCK_LOADING_BAY},
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                           STR_3052_SELECT_TRUCK_LOADING_BAY},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    10,    69,   133,   144, STR_02DB_OFF,                  STR_3065_DON_T_HIGHLIGHT_COVERAGE},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    70,   129,   133,   144, STR_02DA_ON,                   STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_3043_TRUCK_STATION_ORIENT,    STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   176, 0x0,                              STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                              STR_3052_SELECT_TRUCK_LOADING_BAY},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    10,    69,   133,   144, STR_02DB_OFF,                     STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    70,   129,   133,   144, STR_02DA_ON,                      STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{       WWT_LABEL,  RESIZE_NONE,     7,     0,   139,   120,   133, STR_3066_COVERAGE_AREA_HIGHLIGHT, STR_NULL},
 {   WIDGETS_END},
 };
 

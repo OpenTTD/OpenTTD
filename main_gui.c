@@ -1394,6 +1394,7 @@ static const Widget _scen_edit_town_gen_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,    53,    68,    79, STR_02A1_SMALL,           STR_02A4_SELECT_TOWN_SIZE},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    54,   105,    68,    79, STR_02A2_MEDIUM,          STR_02A4_SELECT_TOWN_SIZE},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   106,   157,    68,    79, STR_02A3_LARGE,           STR_02A4_SELECT_TOWN_SIZE},
+{      WWT_LABEL,   RESIZE_NONE,     7,     0,   147,    54,    67, STR_02A5_TOWN_SIZE,       STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -1402,7 +1403,6 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT:
 		DrawWindowWidgets(w);
-		DrawStringCentered(80, 56, STR_02A5_TOWN_SIZE, 0);
 		break;
 
 	case WE_CREATE:

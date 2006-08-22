@@ -538,7 +538,7 @@ enum WindowWidgetTypes {
 
 	WWT_TEXTBTN    =  3,         /* button with text */
 	WWT_4          =  4,         /* button with diff text when clicked */
-	WWT_5          =  5,         /* label */
+	WWT_LABEL       = 5,         /* centered label */
 	WWT_6          =  6,         /* combo box text area */
 	WWT_MATRIX     =  7,
 	WWT_SCROLLBAR  =  8,
