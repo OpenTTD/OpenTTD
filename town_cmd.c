@@ -952,8 +952,7 @@ static Town *AllocateTown(void)
 		if (!IsValidTown(t)) {
 			TownID index = t->index;
 
-			if (t->index > _total_towns)
-				_total_towns = t->index;
+			if (t->index >= _total_towns) _total_towns = t->index + 1;
 
 			memset(t, 0, sizeof(Town));
 			t->index = index;
@@ -1956,8 +1955,7 @@ static void Load_TOWN(void)
 		t = GetTown(index);
 		SlObject(t, _town_desc);
 
-		if ((uint)index > _total_towns)
-			_total_towns = index;
+		if ((uint)index >= _total_towns) _total_towns = index + 1;
 	}
 
 	/* This is to ensure all pointers are within the limits of

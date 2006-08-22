@@ -188,7 +188,7 @@ static inline TownID GetTownArraySize(void)
 	 *  _really_ returns the highest index + 1. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
-	return _total_towns + 1;
+	return _total_towns;
 }
 
 /**
