@@ -3,11 +3,11 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "clear_map.h"
+#include "functions.h"
 #include "industry_map.h"
 #include "station_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
-#include "functions.h"
 #include "map.h"
 #include "tile.h"
 #include "viewport.h"
@@ -1879,8 +1879,8 @@ void IndustryMonthlyLoop(void)
 	if (CHANCE16(3, 100)) {
 		MaybeNewIndustry(Random());
 	} else if (!_patches.smooth_economy && GetIndustryArraySize() > 0) {
-		i = GetIndustry(RandomRange(GetIndustryArraySize()));
-		if (IsValidIndustry(i)) ChangeIndustryProduction(i);
+		i = GetRandomIndustry();
+		if (i != NULL) ChangeIndustryProduction(i);
 	}
 
 	_current_player = old_player;

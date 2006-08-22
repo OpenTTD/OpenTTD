@@ -191,6 +191,28 @@ static inline TownID GetTownArraySize(void)
 	return _total_towns + 1;
 }
 
+/**
+ * Return a random valid town.
+ */
+static inline Town *GetRandomTown(void)
+{
+	uint num = RandomRange(GetTownArraySize());
+	uint index = 0;
+
+	while (num > 0) {
+		num--;
+
+		index++;
+		/* Make sure we have a valid industry */
+		while (GetTown(index) == NULL) {
+			index++;
+			if (index == GetTownArraySize()) index = 0;
+		}
+	}
+
+	return GetTown(index);
+}
+
 static inline bool IsValidTownID(uint index)
 {
 	return index < GetTownPoolSize() && IsValidTown(GetTown(index));

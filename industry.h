@@ -107,6 +107,30 @@ static inline IndustryID GetIndustryArraySize(void)
 	return _total_industries + 1;
 }
 
+/**
+ * Return a random valid town.
+ */
+static inline Industry *GetRandomIndustry(void)
+{
+	uint num = RandomRange(GetIndustryArraySize());
+	uint index = 0;
+
+	if (GetIndustryArraySize() == 0) return NULL;
+
+	while (num > 0) {
+		num--;
+
+		index++;
+		/* Make sure we have a valid industry */
+		while (GetIndustry(index) == NULL) {
+			index++;
+			if (index == GetIndustryArraySize()) index = 0;
+		}
+	}
+
+	return GetIndustry(index);
+}
+
 #define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL) if (IsValidIndustry(i))
 #define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
 
