@@ -2571,7 +2571,7 @@ void OnTick_Station(void)
 	if (_game_mode == GM_EDITOR) return;
 
 	i = _station_tick_ctr;
-	if (++_station_tick_ctr == GetStationPoolSize()) _station_tick_ctr = 0;
+	if (++_station_tick_ctr == GetStationArraySize()) _station_tick_ctr = 0;
 
 	if (IsValidStationID(i)) StationHandleBigTick(GetStation(i));
 
@@ -3120,7 +3120,7 @@ static void Load_STNS(void)
 	}
 
 	/* This is to ensure all pointers are within the limits of _stations_size */
-	if (_station_tick_ctr > GetStationPoolSize()) _station_tick_ctr = 0;
+	if (_station_tick_ctr > GetStationArraySize()) _station_tick_ctr = 0;
 }
 
 static void Save_ROADSTOP(void)

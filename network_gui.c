@@ -1508,7 +1508,7 @@ static const char *ChatTabCompletionNextItem(uint *item)
 	}
 
 	/* Then, try townnames */
-	if (*item < (uint)MAX_CLIENT_INFO + GetTownPoolSize()) {
+	if (*item < (uint)MAX_CLIENT_INFO + GetTownArraySize()) {
 		const Town *t;
 
 		FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {

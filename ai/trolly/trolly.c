@@ -379,9 +379,9 @@ static void AiNew_State_LocateRoute(Player *p)
 		if (p->ainew.temp == -1) {
 			// First, we pick a random spot to search from
 			if (p->ainew.from_type == AI_CITY) {
-				p->ainew.temp = AI_RandomRange(_total_towns);
+				p->ainew.temp = AI_RandomRange(GetTownArraySize());
 			} else {
-				p->ainew.temp = AI_RandomRange(_total_industries);
+				p->ainew.temp = AI_RandomRange(GetIndustryArraySize());
 			}
 		}
 
@@ -391,9 +391,9 @@ static void AiNew_State_LocateRoute(Player *p)
 			//  to try again
 			p->ainew.temp++;
 			if (p->ainew.from_type == AI_CITY) {
-				if (p->ainew.temp >= (int)_total_towns) p->ainew.temp = 0;
+				if (p->ainew.temp >= GetTownArraySize()) p->ainew.temp = 0;
 			} else {
-				if (p->ainew.temp >= _total_industries) p->ainew.temp = 0;
+				if (p->ainew.temp >= GetIndustryArraySize()) p->ainew.temp = 0;
 			}
 
 			// Don't do an attempt if we are trying the same id as the last time...
@@ -415,9 +415,9 @@ static void AiNew_State_LocateRoute(Player *p)
 	if (p->ainew.temp == -1) {
 		// First, we pick a random spot to search to
 		if (p->ainew.to_type == AI_CITY) {
-			p->ainew.temp = AI_RandomRange(_total_towns);
+			p->ainew.temp = AI_RandomRange(GetTownArraySize());
 		} else {
-			p->ainew.temp = AI_RandomRange(_total_industries);
+			p->ainew.temp = AI_RandomRange(GetIndustryArraySize());
 		}
 	}
 
@@ -531,9 +531,9 @@ static void AiNew_State_LocateRoute(Player *p)
 	//  to try again
 	p->ainew.temp++;
 	if (p->ainew.to_type == AI_CITY) {
-		if (p->ainew.temp >= (int)_total_towns) p->ainew.temp = 0;
+		if (p->ainew.temp >= GetTownArraySize()) p->ainew.temp = 0;
 	} else {
-		if (p->ainew.temp >= _total_industries) p->ainew.temp = 0;
+		if (p->ainew.temp >= GetIndustryArraySize()) p->ainew.temp = 0;
 	}
 
 	// Don't do an attempt if we are trying the same id as the last time...

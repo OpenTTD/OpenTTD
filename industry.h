@@ -95,10 +95,20 @@ static inline uint16 GetIndustryPoolSize(void)
 	return _industry_pool.total_items;
 }
 
+VARDEF int _total_industries;
+
+static inline IndustryID GetIndustryArraySize(void)
+{
+	/* TODO - This isn't the real content of the function, but
+	 *  with the new pool-system this will be replaced with one that
+	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  the next safe value we are sure about everything is below.
+	 */
+	return _total_industries + 1;
+}
+
 #define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL) if (IsValidIndustry(i))
 #define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
-
-VARDEF int _total_industries; // For the AI: the amount of industries active
 
 VARDEF const Industry** _industry_sort;
 VARDEF bool _industry_sort_dirty;

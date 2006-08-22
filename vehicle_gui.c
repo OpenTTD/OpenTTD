@@ -124,7 +124,7 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 
 	if (!(vl->flags & VL_REBUILD)) return;
 
-	sort_list = malloc(GetVehiclePoolSize() * sizeof(sort_list[0]));
+	sort_list = malloc(GetVehicleArraySize() * sizeof(sort_list[0]));
 	if (sort_list == NULL) {
 		error("Could not allocate memory for the vehicle-sorting-list");
 	}

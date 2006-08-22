@@ -34,6 +34,16 @@ static inline uint16 GetSignPoolSize(void)
 	return _sign_pool.total_items;
 }
 
+static inline SignID GetSignArraySize(void)
+{
+	/* TODO - This isn't the real content of the function, but
+	 *  with the new pool-system this will be replaced with one that
+	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  the next safe value we are sure about everything is below.
+	 */
+	return GetSignPoolSize();
+}
+
 /**
  * Check if a Sign really exists.
  */

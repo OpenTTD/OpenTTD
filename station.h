@@ -161,6 +161,16 @@ static inline uint16 GetStationPoolSize(void)
 	return _station_pool.total_items;
 }
 
+static inline StationID GetStationArraySize(void)
+{
+	/* TODO - This isn't the real content of the function, but
+	 *  with the new pool-system this will be replaced with one that
+	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  the next safe value we are sure about everything is below.
+	 */
+	return GetStationPoolSize();
+}
+
 /**
  * Check if a station really exists.
  */

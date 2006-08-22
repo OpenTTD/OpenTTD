@@ -882,11 +882,11 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 
 	fr->distance = (uint)-1;
 
-	fr->from = from = GetTown(RandomRange(_total_towns));
+	fr->from = from = GetTown(RandomRange(GetTownArraySize()));
 	if (!IsValidTown(from) || from->population < 400)
 		return;
 
-	fr->to = to = GetTown(RandomRange(_total_towns));
+	fr->to = to = GetTown(RandomRange(GetTownArraySize()));
 	if (from == to || !IsValidTown(to) || to->population < 400 || to->pct_pass_transported > 42)
 		return;
 
@@ -901,7 +901,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	fr->distance = (uint)-1;
 
-	fr->from = i = GetIndustry(RandomRange(_total_industries));
+	fr->from = i = GetIndustry(RandomRange(GetIndustryArraySize()));
 	if (!IsValidIndustry(i)) return;
 
 	// Randomize cargo type
@@ -925,7 +925,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 
 	if (cargo == CT_GOODS || cargo == CT_FOOD) {
 		// The destination is a town
-		Town *t = GetTown(RandomRange(_total_towns));
+		Town *t = GetTown(RandomRange(GetTownArraySize()));
 
 		// Only want big towns
 		if (!IsValidTown(t) || t->population < 900) return;
@@ -934,7 +934,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		fr->to = t;
 	} else {
 		// The destination is an industry
-		Industry *i2 = GetIndustry(RandomRange(_total_industries));
+		Industry *i2 = GetIndustry(RandomRange(GetIndustryArraySize()));
 
 		// The industry must accept the cargo
 		if (i == i2 || !IsValidIndustry(i2) ||

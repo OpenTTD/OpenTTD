@@ -405,12 +405,12 @@ void OnTick_Town(void)
 
 	/* Make sure each town's tickhandler invocation frequency is about the
 	 * same - TOWN_GROWTH_FREQUENCY - independent on the number of towns. */
-	for (_cur_town_iter += GetTownPoolSize();
+	for (_cur_town_iter += GetTownArraySize();
 	     _cur_town_iter >= TOWN_GROWTH_FREQUENCY;
 	     _cur_town_iter -= TOWN_GROWTH_FREQUENCY) {
 		uint32 i = _cur_town_ctr;
 
-		if (++_cur_town_ctr >= GetTownPoolSize())
+		if (++_cur_town_ctr >= GetTownArraySize())
 			_cur_town_ctr = 0;
 
 		if (IsValidTownID(i)) TownTickHandler(GetTown(i));
@@ -1964,7 +1964,7 @@ static void Load_TOWN(void)
 
 	/* This is to ensure all pointers are within the limits of
 	 *  the size of the TownPool */
-	if (_cur_town_ctr >= GetTownPoolSize())
+	if (_cur_town_ctr >= GetTownArraySize())
 		_cur_town_ctr = 0;
 }
 

@@ -441,13 +441,13 @@ typedef struct FoundRoute {
 
 static Town *AiFindRandomTown(void)
 {
-	Town *t = GetTown(RandomRange(_total_towns));
+	Town *t = GetTown(RandomRange(GetTownArraySize()));
 	return IsValidTown(t) ? t : NULL;
 }
 
 static Industry *AiFindRandomIndustry(void)
 {
-	Industry *i = GetIndustry(RandomRange(_total_industries));
+	Industry *i = GetIndustry(RandomRange(GetIndustryArraySize()));
 	return IsValidIndustry(i) ? i : NULL;
 }
 
@@ -3566,8 +3566,8 @@ static void AiStateRemoveStation(Player *p)
 	p->ai.state = AIS_1;
 
 	// Get a list of all stations that are in use by a vehicle
-	in_use = malloc(GetStationPoolSize());
-	memset(in_use, 0, GetStationPoolSize());
+	in_use = malloc(GetStationArraySize());
+	memset(in_use, 0, GetStationArraySize());
 	FOR_ALL_ORDERS(ord) {
 		if (ord->type == OT_GOTO_STATION) in_use[ord->station] = 1;
 	}

@@ -557,7 +557,7 @@ static void MakeSortedIndustryList(void)
 	int n = 0;
 
 	/* Create array for sorting */
-	_industry_sort = realloc((void*)_industry_sort, GetIndustryPoolSize() * sizeof(_industry_sort[0]));
+	_industry_sort = realloc((void *)_industry_sort, GetIndustryArraySize() * sizeof(_industry_sort[0]));
 	if (_industry_sort == NULL)
 		error("Could not allocate memory for the industry-sorting-list");
 

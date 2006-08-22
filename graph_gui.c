@@ -1123,7 +1123,7 @@ static void GlobalSortSignList(void)
 	uint n = 0;
 
 	/* Create array for sorting */
-	_sign_sort = realloc(_sign_sort, GetSignPoolSize() * sizeof(_sign_sort[0]));
+	_sign_sort = realloc(_sign_sort, GetSignArraySize() * sizeof(_sign_sort[0]));
 	if (_sign_sort == NULL) {
 		error("Could not allocate memory for the sign-sorting-list");
 	}

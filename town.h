@@ -179,6 +179,18 @@ static inline uint16 GetTownPoolSize(void)
 	return _town_pool.total_items;
 }
 
+VARDEF uint _total_towns;
+
+static inline TownID GetTownArraySize(void)
+{
+	/* TODO - This isn't the real content of the function, but
+	 *  with the new pool-system this will be replaced with one that
+	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  the next safe value we are sure about everything is below.
+	 */
+	return _total_towns + 1;
+}
+
 static inline bool IsValidTownID(uint index)
 {
 	return index < GetTownPoolSize() && IsValidTown(GetTown(index));
@@ -186,8 +198,6 @@ static inline bool IsValidTownID(uint index)
 
 #define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL) if (IsValidTown(t))
 #define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
-
-VARDEF uint _total_towns; // For the AI: the amount of towns active
 
 VARDEF bool _town_sort_dirty;
 VARDEF byte _town_sort_order;
