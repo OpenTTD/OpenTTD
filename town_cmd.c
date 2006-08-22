@@ -1063,9 +1063,7 @@ bool GenerateTowns(void)
 
 	// give it a last try, but now more aggressive
 	if (num == 0 && CreateRandomTown(10000, 0) == NULL) {
-		const Town* t;
-
-		FOR_ALL_TOWNS(t) return true;
+		if (GetTownArraySize() > 0) return true;
 
 		//XXX can we handle that more gracefully?
 		if (num == 0 && _game_mode != GM_EDITOR) {
