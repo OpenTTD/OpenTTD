@@ -1095,25 +1095,23 @@ void ShowPerformanceRatingDetail(void)
 }
 
 
-static uint16 _num_sign_sort;
+static const Sign **_sign_sort;
+static uint _num_sign_sort;
 
 static char _bufcache[64];
-static uint16 _last_sign_idx;
+static const Sign *_last_sign;
 
 static int CDECL SignNameSorter(const void *a, const void *b)
 {
+	const Sign *sign0 = *(const Sign**)a;
+	const Sign *sign1 = *(const Sign**)b;
 	char buf1[64];
-	Sign *si;
-	const SignID cmp1 = *(const SignID *)a;
-	const SignID cmp2 = *(const SignID *)b;
 
-	si = GetSign(cmp1);
-	GetString(buf1, si->str);
+	GetString(buf1, sign0->str);
 
-	if (cmp2 != _last_sign_idx) {
-		_last_sign_idx = cmp2;
-		si = GetSign(cmp2);
-		GetString(_bufcache, si->str);
+	if (sign1 != _last_sign) {
+		_last_sign = sign1;
+		GetString(_bufcache, sign1->str);
 	}
 
 	return strcmp(buf1, _bufcache); // sort by name
@@ -1122,21 +1120,18 @@ static int CDECL SignNameSorter(const void *a, const void *b)
 static void GlobalSortSignList(void)
 {
 	const Sign *si;
-	uint32 n = 0;
-
-	_num_sign_sort = 0;
+	uint n = 0;
 
 	/* Create array for sorting */
 	_sign_sort = realloc(_sign_sort, GetSignPoolSize() * sizeof(_sign_sort[0]));
-	if (_sign_sort == NULL)
+	if (_sign_sort == NULL) {
 		error("Could not allocate memory for the sign-sorting-list");
-
-	FOR_ALL_SIGNS(si) {
-		_sign_sort[n++] = si->index;
-		_num_sign_sort++;
 	}
 
-	qsort(_sign_sort, n, sizeof(_sign_sort[0]), SignNameSorter);
+	FOR_ALL_SIGNS(si) _sign_sort[n++] = si;
+	_num_sign_sort = n;
+
+	qsort((void*)_sign_sort, n, sizeof(_sign_sort[0]), SignNameSorter);
 
 	_sign_sort_dirty = false;
 
@@ -1164,12 +1159,11 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 		}
 
 		{
-			const Sign *si;
 			uint16 i;
 
 			/* Start drawing the signs */
 			for (i = w->vscroll.pos; i < w->vscroll.cap + w->vscroll.pos && i < w->vscroll.count; i++) {
-				si = GetSign(_sign_sort[i]);
+				const Sign *si = _sign_sort[i];
 
 				if (si->owner != OWNER_NONE)
 					DrawPlayerIcon(si->owner, 4, y + 1);
@@ -1194,7 +1188,7 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 			if (id_v >= w->vscroll.count)
 				return;
 
-			si = GetSign(_sign_sort[id_v]);
+			si = _sign_sort[id_v];
 			ScrollMainWindowToTile(TileVirtXY(si->x, si->y));
 		} break;
 		}

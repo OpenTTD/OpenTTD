@@ -51,7 +51,6 @@ static inline bool IsValidSignID(uint index)
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
 VARDEF bool _sign_sort_dirty;
-VARDEF SignID *_sign_sort;
 
 void UpdateAllSignVirtCoords(void);
 void PlaceProc_Sign(TileIndex tile);
