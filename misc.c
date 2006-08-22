@@ -74,7 +74,7 @@ uint InteractiveRandomRange(uint max)
 
 void InitializeVehicles(void);
 void InitializeWaypoints(void);
-void InitializeDepot(void);
+void InitializeDepots(void);
 void InitializeEngines(void);
 void InitializeOrders(void);
 void InitializeClearLand(void);
@@ -115,7 +115,7 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	InitializeEngines();
 	InitializeVehicles();
 	InitializeWaypoints();
-	InitializeDepot();
+	InitializeDepots();
 	InitializeOrders();
 
 	InitNewsItemStructs();

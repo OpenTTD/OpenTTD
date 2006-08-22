@@ -110,7 +110,7 @@ static inline bool CanBuildDepotByTileh(uint32 direction, Slope tileh)
 
 
 Depot *GetDepotByTile(TileIndex tile);
-void InitializeDepot(void);
+void InitializeDepots(void);
 Depot *AllocateDepot(void);
 void DoDeleteDepot(TileIndex tile);
 

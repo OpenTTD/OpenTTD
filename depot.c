@@ -100,7 +100,7 @@ void DoDeleteDepot(TileIndex tile)
 	DeleteWindowById(WC_VEHICLE_DEPOT, tile);
 }
 
-void InitializeDepot(void)
+void InitializeDepots(void)
 {
 	CleanPool(&_depot_pool);
 	AddBlockToPool(&_depot_pool);
