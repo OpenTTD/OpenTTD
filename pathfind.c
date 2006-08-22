@@ -115,13 +115,15 @@ static const byte _bits_mask[4] = {
 };
 
 static const byte _tpf_new_direction[14] = {
-	0,1,0,1,2,1, 0,0,
-	2,3,3,2,3,0,
+	0, 1, 0, 1, 2, 1,
+	0, 0,
+	2, 3, 3, 2, 3, 0,
 };
 
 static const byte _tpf_prev_direction[14] = {
-	0,1,1,0,1,2, 0,0,
-	2,3,2,3,0,3,
+	0, 1, 1, 0, 1, 2,
+	0, 0,
+	2, 3, 2, 3, 0, 3,
 };
 
 
@@ -230,23 +232,23 @@ static uint SkipToEndOfTunnel(TrackPathFinder* tpf, TileIndex tile, DiagDirectio
 }
 
 const byte _ffb_64[128] = {
-0,0,1,0,2,0,1,0,
-3,0,1,0,2,0,1,0,
-4,0,1,0,2,0,1,0,
-3,0,1,0,2,0,1,0,
-5,0,1,0,2,0,1,0,
-3,0,1,0,2,0,1,0,
-4,0,1,0,2,0,1,0,
-3,0,1,0,2,0,1,0,
+ 0,  0,  1,  0,  2,  0,  1,  0,
+ 3,  0,  1,  0,  2,  0,  1,  0,
+ 4,  0,  1,  0,  2,  0,  1,  0,
+ 3,  0,  1,  0,  2,  0,  1,  0,
+ 5,  0,  1,  0,  2,  0,  1,  0,
+ 3,  0,  1,  0,  2,  0,  1,  0,
+ 4,  0,  1,  0,  2,  0,  1,  0,
+ 3,  0,  1,  0,  2,  0,  1,  0,
 
-0,0,0,2,0,4,4,6,
-0,8,8,10,8,12,12,14,
-0,16,16,18,16,20,20,22,
-16,24,24,26,24,28,28,30,
-0,32,32,34,32,36,36,38,
-32,40,40,42,40,44,44,46,
-32,48,48,50,48,52,52,54,
-48,56,56,58,56,60,60,62,
+ 0,  0,  0,  2,  0,  4,  4,  6,
+ 0,  8,  8, 10,  8, 12, 12, 14,
+ 0, 16, 16, 18, 16, 20, 20, 22,
+16, 24, 24, 26, 24, 28, 28, 30,
+ 0, 32, 32, 34, 32, 36, 36, 38,
+32, 40, 40, 42, 40, 44, 44, 46,
+32, 48, 48, 50, 48, 52, 52, 54,
+48, 56, 56, 58, 56, 60, 60, 62,
 };
 
 static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection direction)
@@ -414,12 +416,12 @@ typedef struct {
 } StackedItem;
 
 static const byte _new_track[6][4] = {
-{0,0xff,8,0xff,},
-{0xff,1,0xff,9,},
-{0xff,2,10,0xff,},
-{3,0xff,0xff,11,},
-{12,4,0xff,0xff,},
-{0xff,0xff,5,13,},
+{0,    0xff, 8,    0xff,},
+{0xff, 1,    0xff, 9,},
+{0xff, 2,    10,   0xff,},
+{3,    0xff, 0xff, 11,},
+{12,   4,    0xff, 0xff,},
+{0xff, 0xff, 5,    13,},
 };
 
 typedef struct HashLink {
@@ -659,8 +661,8 @@ static uint DistanceMoo(TileIndex t0, TileIndex t1)
 // is currently limited to 16384
 
 static const byte _length_of_track[16] = {
-	DIAG_FACTOR,DIAG_FACTOR,STR_FACTOR,STR_FACTOR,STR_FACTOR,STR_FACTOR,0,0,
-	DIAG_FACTOR,DIAG_FACTOR,STR_FACTOR,STR_FACTOR,STR_FACTOR,STR_FACTOR,0,0
+	DIAG_FACTOR, DIAG_FACTOR, STR_FACTOR, STR_FACTOR, STR_FACTOR, STR_FACTOR, 0, 0,
+	DIAG_FACTOR, DIAG_FACTOR, STR_FACTOR, STR_FACTOR, STR_FACTOR, STR_FACTOR, 0, 0
 };
 
 // new more optimized pathfinder for trains...

@@ -1703,36 +1703,36 @@ static void AircraftEventHandler_HeliEndLanding(Vehicle *v, const AirportFTAClas
 
 typedef void AircraftStateHandler(Vehicle *v, const AirportFTAClass *Airport);
 static AircraftStateHandler * const _aircraft_state_handlers[] = {
-	AircraftEventHandler_General,				// TO_ALL         =  0
-	AircraftEventHandler_InHangar,			// HANGAR         =  1
-	AircraftEventHandler_AtTerminal,		// TERM1          =  2
-	AircraftEventHandler_AtTerminal,		// TERM2          =  3
-	AircraftEventHandler_AtTerminal,		// TERM3          =  4
-	AircraftEventHandler_AtTerminal,		// TERM4          =  5
-	AircraftEventHandler_AtTerminal,		// TERM5          =  6
-	AircraftEventHandler_AtTerminal,		// TERM6          =  7
-	AircraftEventHandler_AtTerminal,		// HELIPAD1       =  8
-	AircraftEventHandler_AtTerminal,		// HELIPAD2       =  9
-	AircraftEventHandler_TakeOff,				// TAKEOFF        = 10
-	AircraftEventHandler_StartTakeOff,	// STARTTAKEOFF   = 11
-	AircraftEventHandler_EndTakeOff,		// ENDTAKEOFF     = 12
-	AircraftEventHandler_HeliTakeOff,		// HELITAKEOFF    = 13
-	AircraftEventHandler_Flying,				// FLYING         = 14
-	AircraftEventHandler_Landing,				// LANDING        = 15
-	AircraftEventHandler_EndLanding,		// ENDLANDING     = 16
-	AircraftEventHandler_HeliLanding,		// HELILANDING    = 17
-	AircraftEventHandler_HeliEndLanding,// HELIENDLANDING = 18
-	AircraftEventHandler_AtTerminal,		// TERM7          =  19
-	AircraftEventHandler_AtTerminal,		// TERM8          =  20
-	AircraftEventHandler_AtTerminal,		// HELIPAD3       =  21
-	AircraftEventHandler_AtTerminal,		// HELIPAD4       =  22
+	AircraftEventHandler_General,        // TO_ALL         =  0
+	AircraftEventHandler_InHangar,       // HANGAR         =  1
+	AircraftEventHandler_AtTerminal,     // TERM1          =  2
+	AircraftEventHandler_AtTerminal,     // TERM2          =  3
+	AircraftEventHandler_AtTerminal,     // TERM3          =  4
+	AircraftEventHandler_AtTerminal,     // TERM4          =  5
+	AircraftEventHandler_AtTerminal,     // TERM5          =  6
+	AircraftEventHandler_AtTerminal,     // TERM6          =  7
+	AircraftEventHandler_AtTerminal,     // HELIPAD1       =  8
+	AircraftEventHandler_AtTerminal,     // HELIPAD2       =  9
+	AircraftEventHandler_TakeOff,        // TAKEOFF        = 10
+	AircraftEventHandler_StartTakeOff,   // STARTTAKEOFF   = 11
+	AircraftEventHandler_EndTakeOff,     // ENDTAKEOFF     = 12
+	AircraftEventHandler_HeliTakeOff,    // HELITAKEOFF    = 13
+	AircraftEventHandler_Flying,         // FLYING         = 14
+	AircraftEventHandler_Landing,        // LANDING        = 15
+	AircraftEventHandler_EndLanding,     // ENDLANDING     = 16
+	AircraftEventHandler_HeliLanding,    // HELILANDING    = 17
+	AircraftEventHandler_HeliEndLanding, // HELIENDLANDING = 18
+	AircraftEventHandler_AtTerminal,     // TERM7          = 19
+	AircraftEventHandler_AtTerminal,     // TERM8          = 20
+	AircraftEventHandler_AtTerminal,     // HELIPAD3       = 21
+	AircraftEventHandler_AtTerminal,     // HELIPAD4       = 22
 };
 
-static void AirportClearBlock(const Vehicle* v, const AirportFTAClass* Airport)
+static void AirportClearBlock(const Vehicle *v, const AirportFTAClass *Airport)
 {
 	// we have left the previous block, and entered the new one. Free the previous block
 	if (Airport->layout[v->u.air.previous_pos].block != Airport->layout[v->u.air.pos].block) {
-		Station* st = GetStation(v->u.air.targetairport);
+		Station *st = GetStation(v->u.air.targetairport);
 
 		CLRBITS(st->airport_flags, Airport->layout[v->u.air.previous_pos].block);
 	}

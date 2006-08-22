@@ -14,7 +14,7 @@ typedef enum RailTypes {
 	RAILTYPE_MONO     = 2,
 	RAILTYPE_MAGLEV   = 3,
 	RAILTYPE_END,
-	INVALID_RAILTYPE = 0xFF
+	INVALID_RAILTYPE  = 0xFF
 } RailType;
 
 typedef byte RailTypeMask;
@@ -47,22 +47,22 @@ static inline Track AxisToTrack(Axis a)
 
 /** Bitfield corresponding to Track */
 typedef enum TrackBits {
-	TRACK_BIT_NONE  = 0U,
-	TRACK_BIT_X     = 1U << TRACK_X,
-	TRACK_BIT_Y     = 1U << TRACK_Y,
-	TRACK_BIT_UPPER = 1U << TRACK_UPPER,
-	TRACK_BIT_LOWER = 1U << TRACK_LOWER,
-	TRACK_BIT_LEFT  = 1U << TRACK_LEFT,
-	TRACK_BIT_RIGHT = 1U << TRACK_RIGHT,
-	TRACK_BIT_CROSS = TRACK_BIT_X     | TRACK_BIT_Y,
-	TRACK_BIT_HORZ  = TRACK_BIT_UPPER | TRACK_BIT_LOWER,
-	TRACK_BIT_VERT  = TRACK_BIT_LEFT  | TRACK_BIT_RIGHT,
-	TRACK_BIT_3WAY_NE = TRACK_BIT_X | TRACK_BIT_UPPER | TRACK_BIT_RIGHT,
-	TRACK_BIT_3WAY_SE = TRACK_BIT_Y | TRACK_BIT_LOWER | TRACK_BIT_RIGHT,
-	TRACK_BIT_3WAY_SW = TRACK_BIT_X | TRACK_BIT_LOWER | TRACK_BIT_LEFT,
-	TRACK_BIT_3WAY_NW = TRACK_BIT_Y | TRACK_BIT_UPPER | TRACK_BIT_LEFT,
-	TRACK_BIT_ALL   = TRACK_BIT_CROSS | TRACK_BIT_HORZ | TRACK_BIT_VERT,
-	TRACK_BIT_MASK  = 0x3FU
+	TRACK_BIT_NONE    = 0U,
+	TRACK_BIT_X       = 1U << TRACK_X,
+	TRACK_BIT_Y       = 1U << TRACK_Y,
+	TRACK_BIT_UPPER   = 1U << TRACK_UPPER,
+	TRACK_BIT_LOWER   = 1U << TRACK_LOWER,
+	TRACK_BIT_LEFT    = 1U << TRACK_LEFT,
+	TRACK_BIT_RIGHT   = 1U << TRACK_RIGHT,
+	TRACK_BIT_CROSS   = TRACK_BIT_X     | TRACK_BIT_Y,
+	TRACK_BIT_HORZ    = TRACK_BIT_UPPER | TRACK_BIT_LOWER,
+	TRACK_BIT_VERT    = TRACK_BIT_LEFT  | TRACK_BIT_RIGHT,
+	TRACK_BIT_3WAY_NE = TRACK_BIT_X     | TRACK_BIT_UPPER | TRACK_BIT_RIGHT,
+	TRACK_BIT_3WAY_SE = TRACK_BIT_Y     | TRACK_BIT_LOWER | TRACK_BIT_RIGHT,
+	TRACK_BIT_3WAY_SW = TRACK_BIT_X     | TRACK_BIT_LOWER | TRACK_BIT_LEFT,
+	TRACK_BIT_3WAY_NW = TRACK_BIT_Y     | TRACK_BIT_UPPER | TRACK_BIT_LEFT,
+	TRACK_BIT_ALL     = TRACK_BIT_CROSS | TRACK_BIT_HORZ  | TRACK_BIT_VERT,
+	TRACK_BIT_MASK    = 0x3FU
 } TrackBits;
 
 
@@ -84,16 +84,16 @@ static inline TrackBits AxisToTrackBits(Axis a)
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum Trackdirs {
-	TRACKDIR_X_NE = 0,
-	TRACKDIR_Y_SE = 1,
-	TRACKDIR_UPPER_E  = 2,
-	TRACKDIR_LOWER_E  = 3,
-	TRACKDIR_LEFT_S   = 4,
-	TRACKDIR_RIGHT_S  = 5,
+	TRACKDIR_X_NE     =  0,
+	TRACKDIR_Y_SE     =  1,
+	TRACKDIR_UPPER_E  =  2,
+	TRACKDIR_LOWER_E  =  3,
+	TRACKDIR_LEFT_S   =  4,
+	TRACKDIR_RIGHT_S  =  5,
 	/* Note the two missing values here. This enables trackdir -> track
 	 * conversion by doing (trackdir & 7) */
-	TRACKDIR_X_SW = 8,
-	TRACKDIR_Y_NW = 9,
+	TRACKDIR_X_SW     =  8,
+	TRACKDIR_Y_NW     =  9,
 	TRACKDIR_UPPER_W  = 10,
 	TRACKDIR_LOWER_W  = 11,
 	TRACKDIR_LEFT_N   = 12,
@@ -105,13 +105,13 @@ typedef enum Trackdirs {
 /** These are a combination of tracks and directions. Values are 0-5 in one
 direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum TrackdirBits {
-	TRACKDIR_BIT_NONE     = 0x0,
-	TRACKDIR_BIT_X_NE     = 0x1,
-	TRACKDIR_BIT_Y_SE     = 0x2,
-	TRACKDIR_BIT_UPPER_E  = 0x4,
-	TRACKDIR_BIT_LOWER_E  = 0x8,
-	TRACKDIR_BIT_LEFT_S   = 0x10,
-	TRACKDIR_BIT_RIGHT_S  = 0x20,
+	TRACKDIR_BIT_NONE     = 0x0000,
+	TRACKDIR_BIT_X_NE     = 0x0001,
+	TRACKDIR_BIT_Y_SE     = 0x0002,
+	TRACKDIR_BIT_UPPER_E  = 0x0004,
+	TRACKDIR_BIT_LOWER_E  = 0x0008,
+	TRACKDIR_BIT_LEFT_S   = 0x0010,
+	TRACKDIR_BIT_RIGHT_S  = 0x0020,
 	/* Again, note the two missing values here. This enables trackdir -> track conversion by doing (trackdir & 0xFF) */
 	TRACKDIR_BIT_X_SW     = 0x0100,
 	TRACKDIR_BIT_Y_NW     = 0x0200,
@@ -205,7 +205,7 @@ extern RailtypeInfo _railtypes[RAILTYPE_END];
 // these are the maximums used for updating signal blocks, and checking if a depot is in a pbs block
 enum {
 	NUM_SSD_ENTRY = 256, // max amount of blocks
-	NUM_SSD_STACK = 32 ,// max amount of blocks to check recursively
+	NUM_SSD_STACK =  32, // max amount of blocks to check recursively
 };
 
 /**

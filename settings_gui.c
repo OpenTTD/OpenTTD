@@ -237,42 +237,42 @@ int32 CmdSetRoadDriveSide(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 static const Widget _game_options_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   369,     0,    13, STR_00B1_GAME_OPTIONS,		STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   369,    14,   238, 0x0,											STR_NULL},
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    20,    55, STR_02E0_CURRENCY_UNITS,	STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,    20,   169,    34,    45, STR_02E1,								STR_02E2_CURRENCY_UNITS_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,    35,    44, STR_0225,								STR_02E2_CURRENCY_UNITS_SELECTION},
-{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    20,    55, STR_MEASURING_UNITS,		STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,   200,   349,    34,    45, STR_02E4,								STR_MEASURING_UNITS_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,    35,    44, STR_0225,								STR_MEASURING_UNITS_SELECTION},
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    62,    97, STR_02E6_ROAD_VEHICLES,	STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,    20,   169,    76,    87, STR_02E7,								STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,    77,    86, STR_0225,								STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
-{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    62,    97, STR_02EB_TOWN_NAMES,			STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,   200,   349,    76,    87, STR_02EC,								STR_02ED_SELECT_STYLE_OF_TOWN_NAMES},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,    77,    86, STR_0225,								STR_02ED_SELECT_STYLE_OF_TOWN_NAMES},
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,   104,   139, STR_02F4_AUTOSAVE,				STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,    20,   169,   118,   129, STR_02F5,								STR_02F6_SELECT_INTERVAL_BETWEEN},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,   119,   128, STR_0225,								STR_02F6_SELECT_INTERVAL_BETWEEN},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   369,     0,    13, STR_00B1_GAME_OPTIONS,             STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   369,    14,   238, 0x0,                               STR_NULL},
+{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    20,    55, STR_02E0_CURRENCY_UNITS,           STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,    20,   169,    34,    45, STR_02E1,                          STR_02E2_CURRENCY_UNITS_SELECTION},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,    35,    44, STR_0225,                          STR_02E2_CURRENCY_UNITS_SELECTION},
+{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    20,    55, STR_MEASURING_UNITS,               STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,   200,   349,    34,    45, STR_02E4,                          STR_MEASURING_UNITS_SELECTION},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,    35,    44, STR_0225,                          STR_MEASURING_UNITS_SELECTION},
+{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,    62,    97, STR_02E6_ROAD_VEHICLES,            STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,    20,   169,    76,    87, STR_02E7,                          STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,    77,    86, STR_0225,                          STR_02E8_SELECT_SIDE_OF_ROAD_FOR},
+{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,    62,    97, STR_02EB_TOWN_NAMES,               STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,   200,   349,    76,    87, STR_02EC,                          STR_02ED_SELECT_STYLE_OF_TOWN_NAMES},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,    77,    86, STR_0225,                          STR_02ED_SELECT_STYLE_OF_TOWN_NAMES},
+{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,   104,   139, STR_02F4_AUTOSAVE,                 STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,    20,   169,   118,   129, STR_02F5,                          STR_02F6_SELECT_INTERVAL_BETWEEN},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,   119,   128, STR_0225,                          STR_02F6_SELECT_INTERVAL_BETWEEN},
 
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   359,   194,   228, STR_02BC_VEHICLE_DESIGN_NAMES,				STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,    20,   119,   207,   218, STR_02BD,								STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   108,   118,   208,   217, STR_0225,								STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   130,   349,   207,   218, STR_02C0_SAVE_CUSTOM_NAMES,	STR_02C2_SAVE_CUSTOMIZED_VEHICLE},
+{      WWT_FRAME,   RESIZE_NONE,    14,    10,   359,   194,   228, STR_02BC_VEHICLE_DESIGN_NAMES,     STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,    20,   119,   207,   218, STR_02BD,                          STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   108,   118,   208,   217, STR_0225,                          STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   130,   349,   207,   218, STR_02C0_SAVE_CUSTOM_NAMES,        STR_02C2_SAVE_CUSTOMIZED_VEHICLE},
 
-{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,   104,   139, STR_OPTIONS_LANG,				STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,		STR_OPTIONS_LANG_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,   119,   128, STR_0225,								STR_OPTIONS_LANG_TIP},
+{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,   104,   139, STR_OPTIONS_LANG,                  STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,   200,   349,   118,   129, STR_OPTIONS_LANG_CBO,              STR_OPTIONS_LANG_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,   119,   128, STR_0225,                          STR_OPTIONS_LANG_TIP},
 
-{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,   146,   190, STR_OPTIONS_RES,					STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,    20,   169,   160,   171, STR_OPTIONS_RES_CBO,			STR_OPTIONS_RES_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,   161,   170, STR_0225,								STR_OPTIONS_RES_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   149,   169,   176,   184, STR_EMPTY,								STR_OPTIONS_FULLSCREEN_TIP},
+{      WWT_FRAME,   RESIZE_NONE,    14,    10,   179,   146,   190, STR_OPTIONS_RES,                   STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,    20,   169,   160,   171, STR_OPTIONS_RES_CBO,               STR_OPTIONS_RES_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   158,   168,   161,   170, STR_0225,                          STR_OPTIONS_RES_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   149,   169,   176,   184, STR_EMPTY,                         STR_OPTIONS_FULLSCREEN_TIP},
 
-{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,				STR_NULL},
-{          WWT_6,   RESIZE_NONE,    14,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO,		STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,   161,   170, STR_0225,								STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
+{      WWT_FRAME,   RESIZE_NONE,    14,   190,   359,   146,   190, STR_OPTIONS_SCREENSHOT_FORMAT,     STR_NULL},
+{          WWT_6,   RESIZE_NONE,    14,   200,   349,   160,   171, STR_OPTIONS_SCREENSHOT_FORMAT_CBO, STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   338,   348,   161,   170, STR_0225,                          STR_OPTIONS_SCREENSHOT_FORMAT_TIP},
 
 {   WIDGETS_END},
 };
@@ -349,9 +349,9 @@ static inline bool GetBitAndShift(uint32 *b)
 */
 static const int16 _default_game_diff[3][GAME_DIFFICULTY_NUM] = { /*
 	 A, B, C, D,   E, F, G, H, I, J, K, L, M, N, O, P, Q, R*/
-	{2, 2, 1, 3, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0},	//easy
-	{4, 1, 1, 2, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1},	//medium
-	{7, 0, 2, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2},	//hard
+	{2, 2, 1, 3, 300, 2, 0, 2, 0, 1, 2, 0, 1, 0, 0, 0, 0, 0}, //easy
+	{4, 1, 1, 2, 150, 3, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 1, 1}, //medium
+	{7, 0, 2, 2, 100, 4, 1, 3, 2, 2, 0, 2, 3, 2, 1, 1, 1, 2}, //hard
 };
 
 void SetDifficultyLevel(int mode, GameOptions *gm_opt)
@@ -525,18 +525,18 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 #undef DIFF_INGAME_DISABLED_BUTTONS
 
 static const Widget _game_difficulty_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,									STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_6800_DIFFICULTY_LEVEL,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    29, 0x0,												STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_6801_EASY,							STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_6802_MEDIUM,						STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   184,   270,    16,    27, STR_6803_HARD,							STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   271,   357,    16,    27, STR_6804_CUSTOM,						STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    10,     0,   369,    30,    41, STR_6838_SHOW_HI_SCORE_CHART,STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   262, 0x0,												STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,   263,   278, 0x0,												STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   105,   185,   265,   276, STR_OPTIONS_SAVE_CHANGES,	STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   186,   266,   265,   276, STR_012E_CANCEL,						STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_6800_DIFFICULTY_LEVEL,    STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    29, 0x0,                          STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_6801_EASY,                STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_6802_MEDIUM,              STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   184,   270,    16,    27, STR_6803_HARD,                STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   271,   357,    16,    27, STR_6804_CUSTOM,              STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    10,     0,   369,    30,    41, STR_6838_SHOW_HI_SCORE_CHART, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   262, 0x0,                          STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,   263,   278, 0x0,                          STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   105,   185,   265,   276, STR_OPTIONS_SAVE_CHANGES,     STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   186,   266,   265,   276, STR_012E_CANCEL,              STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -882,17 +882,17 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _patches_selection_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,												STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_CONFIG_PATCHES_CAPTION,			STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    41, 0x0,															STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   360, 0x0,															STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    41, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   360, 0x0,                             STR_NULL},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_CONFIG_PATCHES_GUI,					STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION,	STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,   184,   270,    16,    27, STR_CONFIG_PATCHES_VEHICLES,			STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,   271,   357,    16,    27, STR_CONFIG_PATCHES_STATIONS,			STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    10,    96,    28,    39, STR_CONFIG_PATCHES_ECONOMY,			STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,     3,    97,   183,    28,    39, STR_CONFIG_PATCHES_AI,						STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_CONFIG_PATCHES_GUI,          STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION, STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     3,   184,   270,    16,    27, STR_CONFIG_PATCHES_VEHICLES,     STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     3,   271,   357,    16,    27, STR_CONFIG_PATCHES_STATIONS,     STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     3,    10,    96,    28,    39, STR_CONFIG_PATCHES_ECONOMY,      STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,     3,    97,   183,    28,    39, STR_CONFIG_PATCHES_AI,           STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -1006,19 +1006,19 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _newgrf_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   279,     0,    13, STR_NEWGRF_SETTINGS_CAPTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   279,   183,   276, 0x0,													STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   279,     0,    13, STR_NEWGRF_SETTINGS_CAPTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   279,   183,   276, 0x0,                         STR_NULL},
 
-{     WWT_MATRIX,   RESIZE_NONE,    14,     0,   267,    14,   182, 0xC01,/*small rows*/					STR_NEWGRF_TIP},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   268,   279,    14,   182, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_MATRIX,   RESIZE_NONE,    14,     0,   267,    14,   182, 0xC01, /*small rows*/        STR_NEWGRF_TIP},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   268,   279,    14,   182, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   147,   158,   244,   255, STR_0188,	STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   159,   170,   244,   255, STR_0189,	STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   175,   274,   244,   255, STR_NEWGRF_SET_PARAMETERS,		STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   147,   158,   244,   255, STR_0188,                    STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   159,   170,   244,   255, STR_0189,                    STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   175,   274,   244,   255, STR_NEWGRF_SET_PARAMETERS,   STR_NULL},
 
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,     5,   138,   261,   272, STR_NEWGRF_APPLY_CHANGES,		STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   142,   274,   261,   272, STR_012E_CANCEL,							STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,     5,   138,   261,   272, STR_NEWGRF_APPLY_CHANGES,    STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,     3,   142,   274,   261,   272, STR_012E_CANCEL,             STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -1261,9 +1261,9 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _cust_currency_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   229,     0,    13, STR_CURRENCY_WINDOW,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   229,    14,   119, 0x0,									STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   229,     0,    13, STR_CURRENCY_WINDOW, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   229,    14,   119, 0x0,                 STR_NULL},
 {   WIDGETS_END},
 };
 

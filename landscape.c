@@ -50,13 +50,13 @@ const TileTypeProcs * const _tile_type_procs[16] = {
 
 /* landscape slope => sprite */
 const byte _tileh_to_sprite[32] = {
-	0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,0,
-	0,0,0,0,0,0,0,16,0,0,0,17,0,15,18,0,
+	0, 1, 2, 3, 4, 5, 6,  7, 8, 9, 10, 11, 12, 13, 14, 0,
+	0, 0, 0, 0, 0, 0, 0, 16, 0, 0,  0, 17,  0, 15, 18, 0,
 };
 
 const byte _inclined_tileh[] = {
-	SLOPE_SW, SLOPE_NW, SLOPE_SW, SLOPE_SE, SLOPE_NE, SLOPE_SE, SLOPE_NE, SLOPE_NW,
-	SLOPE_E, SLOPE_N, SLOPE_W, SLOPE_S,
+	SLOPE_SW,  SLOPE_NW,  SLOPE_SW,  SLOPE_SE, SLOPE_NE, SLOPE_SE, SLOPE_NE, SLOPE_NW,
+	SLOPE_E,   SLOPE_N,   SLOPE_W,   SLOPE_S,
 	SLOPE_NWS, SLOPE_WSE, SLOPE_SEN, SLOPE_ENW
 };
 
@@ -445,8 +445,8 @@ void ConvertGroundTilesIntoWaterTiles(void)
 	}
 }
 
-static const byte _genterrain_tbl_1[5] = { 10, 22, 33, 37, 4 };
-static const byte _genterrain_tbl_2[5] = { 0, 0, 0, 0, 33 };
+static const byte _genterrain_tbl_1[5] = { 10, 22, 33, 37, 4  };
+static const byte _genterrain_tbl_2[5] = {  0,  0,  0,  0, 33 };
 
 static void GenerateTerrain(int type, int flag)
 {

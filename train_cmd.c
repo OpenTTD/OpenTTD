@@ -35,8 +35,8 @@
 static bool TrainCheckIfLineEnds(Vehicle *v);
 static void TrainController(Vehicle *v);
 
-static const byte _vehicle_initial_x_fract[4] = {10,8,4,8};
-static const byte _vehicle_initial_y_fract[4] = {8,4,8,10};
+static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
+static const byte _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
 static const byte _state_dir_table[4] = { 0x20, 8, 0x10, 4 };
 
 /**
@@ -2171,12 +2171,12 @@ static void FillWithStationData(TrainTrackFollowerData* fd, const Vehicle* v)
 }
 
 static const byte _initial_tile_subcoord[6][4][3] = {
-{{ 15, 8, 1 },{ 0, 0, 0 },{ 0, 8, 5 },{ 0, 0, 0 }},
-{{  0, 0, 0 },{ 8, 0, 3 },{ 0, 0, 0 },{ 8,15, 7 }},
-{{  0, 0, 0 },{ 7, 0, 2 },{ 0, 7, 6 },{ 0, 0, 0 }},
-{{ 15, 8, 2 },{ 0, 0, 0 },{ 0, 0, 0 },{ 8,15, 6 }},
-{{ 15, 7, 0 },{ 8, 0, 4 },{ 0, 0, 0 },{ 0, 0, 0 }},
-{{  0, 0, 0 },{ 0, 0, 0 },{ 0, 8, 4 },{ 7,15, 0 }},
+{{ 15, 8, 1 }, { 0, 0, 0 }, { 0, 8, 5 }, { 0,  0, 0 }},
+{{  0, 0, 0 }, { 8, 0, 3 }, { 0, 0, 0 }, { 8, 15, 7 }},
+{{  0, 0, 0 }, { 7, 0, 2 }, { 0, 7, 6 }, { 0,  0, 0 }},
+{{ 15, 8, 2 }, { 0, 0, 0 }, { 0, 0, 0 }, { 8, 15, 6 }},
+{{ 15, 7, 0 }, { 8, 0, 4 }, { 0, 0, 0 }, { 0,  0, 0 }},
+{{  0, 0, 0 }, { 0, 0, 0 }, { 0, 8, 4 }, { 7, 15, 0 }},
 };
 
 static const uint32 _reachable_tracks[4] = {
@@ -2712,10 +2712,10 @@ typedef struct {
 
 static const RailtypeSlowdownParams _railtype_slowdown[] = {
 	// normal accel
-	{256/4, 256/2, 256/4, 2}, // normal
-	{256/4, 256/2, 256/4, 2}, // electrified
-	{256/4, 256/2, 256/4, 2}, // monorail
-	{0,     256/2, 256/4, 2}, // maglev
+	{256 / 4, 256 / 2, 256 / 4, 2}, // normal
+	{256 / 4, 256 / 2, 256 / 4, 2}, // electrified
+	{256 / 4, 256 / 2, 256 / 4, 2}, // monorail
+	{0,       256 / 2, 256 / 4, 2}, // maglev
 };
 
 /* Modify the speed of the vehicle due to a turn */

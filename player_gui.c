@@ -103,46 +103,46 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 }
 
 static const Widget _player_finances_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,								STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,								STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   202,   204,   215, STR_7029_BORROW,		STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   203,   406,   204,   215, STR_702A_REPAY,		STR_7036_REPAY_PART_OF_LOAN},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, 0x2AA,             STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,               STR_STICKY_BUTTON},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,               STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,               STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   202,   204,   215, STR_7029_BORROW,   STR_7035_INCREASE_SIZE_OF_LOAN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   203,   406,   204,   215, STR_702A_REPAY,    STR_7036_REPAY_PART_OF_LOAN},
 {   WIDGETS_END},
 };
 
 static const Widget _other_player_finances_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,								STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,								STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,								STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, 0x2AA,             STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,               STR_STICKY_BUTTON},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,               STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,               STR_NULL},
 {   WIDGETS_END},
 };
 
 static const Widget _other_player_finances_small_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   254,   267,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   268,   279,     0,    13, 0x0,								STR_STICKY_BUTTON},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    47, 0x0,								STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   254,   267,     0,    13, 0x2AA,             STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   268,   279,     0,    13, 0x0,               STR_STICKY_BUTTON},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,               STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    47, 0x0,               STR_NULL},
 {   WIDGETS_END},
 };
 
 static const Widget _player_finances_small_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   254,   267,     0,    13, 0x2AA,							STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   268,   279,     0,    13, 0x0,								STR_STICKY_BUTTON},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    47, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   139,    48,    59, STR_7029_BORROW,		STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   140,   279,    48,    59, STR_702A_REPAY,		STR_7036_REPAY_PART_OF_LOAN},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   254,   267,     0,    13, 0x2AA,             STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   268,   279,     0,    13, 0x0,               STR_STICKY_BUTTON},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,               STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    47, 0x0,               STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   139,    48,    59, STR_7029_BORROW,   STR_7035_INCREASE_SIZE_OF_LOAN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   140,   279,    48,    59, STR_702A_REPAY,    STR_7036_REPAY_PART_OF_LOAN},
 {   WIDGETS_END},
 };
 
@@ -304,10 +304,10 @@ static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _select_player_color_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   149,     0,    13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   137,    14,   127, 0x0, STR_7034_CLICK_ON_SELECTED_NEW_COLOR},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   138,   149,    14,   127, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   137,    14,   127, 0x0,                       STR_7034_CLICK_ON_SELECTED_NEW_COLOR},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   138,   149,    14,   127, 0x0,                       STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 
@@ -352,14 +352,14 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _select_player_face_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   189,     0,    13, STR_7043_FACE_SELECTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   189,    14,   136, 0x0,											STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    94,   137,   148, STR_012E_CANCEL,					STR_7047_CANCEL_NEW_FACE_SELECTION},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   189,   137,   148, STR_012F_OK,							STR_7048_ACCEPT_NEW_FACE_SELECTION},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    25,    36, STR_7044_MALE,						STR_7049_SELECT_MALE_FACES},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    37,    48, STR_7045_FEMALE,					STR_704A_SELECT_FEMALE_FACES},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   187,    79,    90, STR_7046_NEW_FACE,				STR_704B_GENERATE_RANDOM_NEW_FACE},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   189,     0,    13, STR_7043_FACE_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   189,    14,   136, 0x0,                     STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    94,   137,   148, STR_012E_CANCEL,         STR_7047_CANCEL_NEW_FACE_SELECTION},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   189,   137,   148, STR_012F_OK,             STR_7048_ACCEPT_NEW_FACE_SELECTION},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    25,    36, STR_7044_MALE,           STR_7049_SELECT_MALE_FACES},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    95,   187,    37,    48, STR_7045_FEMALE,         STR_704A_SELECT_FEMALE_FACES},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    95,   187,    79,    90, STR_7046_NEW_FACE,       STR_704B_GENERATE_RANDOM_NEW_FACE},
 {   WIDGETS_END},
 };
 
@@ -388,17 +388,17 @@ static const Widget _my_player_company_widgets[] = {
 };
 
 static const Widget _other_player_company_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,					STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   359,     0,    13, STR_7001,					STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   359,    14,   157, 0x0,								STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,	STR_7070_BUILD_COMPANY_HEADQUARTERS},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,								STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   179,   158,   169, STR_7077_BUY_25_SHARE_IN_COMPANY,	STR_7079_BUY_25_SHARE_IN_THIS_COMPANY},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   180,   359,   158,   169, STR_7078_SELL_25_SHARE_IN_COMPANY,	STR_707A_SELL_25_SHARE_IN_THIS_COMPANY},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   359,     0,    13, STR_7001,                          STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   359,    14,   157, 0x0,                               STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                               STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                               STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                               STR_NULL},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                               STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,                  STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                               STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   179,   158,   169, STR_7077_BUY_25_SHARE_IN_COMPANY,  STR_7079_BUY_25_SHARE_IN_THIS_COMPANY},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   180,   359,   158,   169, STR_7078_SELL_25_SHARE_IN_COMPANY, STR_707A_SELL_25_SHARE_IN_THIS_COMPANY},
 {   WIDGETS_END},
 };
 

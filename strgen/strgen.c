@@ -34,13 +34,13 @@ typedef void (*ParseCmdProc)(char *buf, int value);
 
 typedef struct LanguagePackHeader {
 	uint32 ident;
-	uint32 version;			// 32-bits of auto generated version info which is basically a hash of strings.h
-	char name[32];			// the international name of this language
+	uint32 version;     // 32-bits of auto generated version info which is basically a hash of strings.h
+	char name[32];      // the international name of this language
 	char own_name[32];	// the localized name of this language
-	char isocode[16];	// the ISO code for the language (not country code)
-	uint16 offsets[32];	// the offsets
-	byte plural_form;		// plural form index
-	byte pad[3];				// pad header to be a multiple of 4
+	char isocode[16];   // the ISO code for the language (not country code)
+	uint16 offsets[32]; // the offsets
+	byte plural_form;   // plural form index
+	byte pad[3];        // pad header to be a multiple of 4
 } LanguagePackHeader;
 
 typedef struct CmdStruct {
@@ -53,7 +53,7 @@ typedef struct CmdStruct {
 
 enum {
 	C_DONTCOUNT = 1,
-	C_CASE = 2,
+	C_CASE      = 2,
 };
 
 
@@ -70,14 +70,14 @@ static int _cur_line;
 static int _errors, _warnings;
 
 typedef struct LangString {
-	char *name;							// Name of the string
-	char *english;					// English text
-	char *translated;				// Translated text
-	uint16 hash_next;				// next hash entry
+	char *name;            // Name of the string
+	char *english;         // English text
+	char *translated;      // Translated text
+	uint16 hash_next;      // next hash entry
 	uint16 index;
-	int line;               // line of string in source-file
-	Case *english_case;			// cases for english
-	Case *translated_case;	// cases for foreign
+	int line;              // line of string in source-file
+	Case *english_case;    // cases for english
+	Case *translated_case; // cases for foreign
 } LangString;
 
 static LangString *_strings[65536];
@@ -103,7 +103,7 @@ static char _cases[MAX_NUM_CASES][16];
 static int _numcases;
 
 // for each plural value, this is the number of plural forms.
-static const byte _plural_form_counts[] = { 2,1,2,3,3,3,3,3,4 };
+static const byte _plural_form_counts[] = { 2, 1, 2, 3, 3, 3, 3, 3, 4 };
 
 static const char *_cur_ident;
 

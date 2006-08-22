@@ -2023,17 +2023,17 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 
 
 const TileTypeProcs _tile_type_rail_procs = {
-	DrawTile_Track,						/* draw_tile_proc */
-	GetSlopeZ_Track,					/* get_slope_z_proc */
-	ClearTile_Track,					/* clear_tile_proc */
-	GetAcceptedCargo_Track,		/* get_accepted_cargo_proc */
-	GetTileDesc_Track,				/* get_tile_desc_proc */
-	GetTileTrackStatus_Track,	/* get_tile_track_status_proc */
-	ClickTile_Track,					/* click_tile_proc */
-	AnimateTile_Track,				/* animate_tile_proc */
-	TileLoop_Track,						/* tile_loop_clear */
-	ChangeTileOwner_Track,		/* change_tile_owner_clear */
-	NULL,											/* get_produced_cargo_proc */
-	VehicleEnter_Track,				/* vehicle_enter_tile_proc */
-	GetSlopeTileh_Track,			/* get_slope_tileh_proc */
+	DrawTile_Track,           /* draw_tile_proc */
+	GetSlopeZ_Track,          /* get_slope_z_proc */
+	ClearTile_Track,          /* clear_tile_proc */
+	GetAcceptedCargo_Track,   /* get_accepted_cargo_proc */
+	GetTileDesc_Track,        /* get_tile_desc_proc */
+	GetTileTrackStatus_Track, /* get_tile_track_status_proc */
+	ClickTile_Track,          /* click_tile_proc */
+	AnimateTile_Track,        /* animate_tile_proc */
+	TileLoop_Track,           /* tile_loop_clear */
+	ChangeTileOwner_Track,    /* change_tile_owner_clear */
+	NULL,                     /* get_produced_cargo_proc */
+	VehicleEnter_Track,       /* vehicle_enter_tile_proc */
+	GetSlopeTileh_Track,      /* get_slope_tileh_proc */
 };

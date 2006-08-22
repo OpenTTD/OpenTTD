@@ -1115,10 +1115,10 @@ void InitializeOrders(void)
 }
 
 static const SaveLoad _order_desc[] = {
-	SLE_VAR(Order,type,					SLE_UINT8),
-	SLE_VAR(Order,flags,				SLE_UINT8),
-	SLE_VAR(Order,station,			SLE_UINT16),
-	SLE_REF(Order,next,					REF_ORDER),
+	SLE_VAR(Order, type,    SLE_UINT8),
+	SLE_VAR(Order, flags,   SLE_UINT8),
+	SLE_VAR(Order, station, SLE_UINT16),
+	SLE_REF(Order, next,    REF_ORDER),
 
 	// reserve extra space in savegame here. (currently 10 bytes)
 	SLE_CONDNULL(10, 5, SL_MAX_VERSION),

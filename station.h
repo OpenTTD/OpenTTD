@@ -98,15 +98,15 @@ struct Station {
 };
 
 enum {
-	FACIL_TRAIN = 1,
-	FACIL_TRUCK_STOP = 2,
-	FACIL_BUS_STOP = 4,
-	FACIL_AIRPORT = 8,
-	FACIL_DOCK = 0x10,
+	FACIL_TRAIN      = 0x01,
+	FACIL_TRUCK_STOP = 0x02,
+	FACIL_BUS_STOP   = 0x04,
+	FACIL_AIRPORT    = 0x08,
+	FACIL_DOCK       = 0x10,
 };
 
 enum {
-//	HVOT_PENDING_DELETE = 1<<0, // not needed anymore
+//	HVOT_PENDING_DELETE = 1 << 0, // not needed anymore
 	HVOT_TRAIN    = 1 << 1,
 	HVOT_BUS      = 1 << 2,
 	HVOT_TRUCK    = 1 << 3,
@@ -118,20 +118,20 @@ enum {
 };
 
 enum {
-	CA_BUS = 3,
-	CA_TRUCK = 3,
-	CA_AIR_OILPAD = 3,
-	CA_TRAIN = 4,
-	CA_AIR_HELIPORT = 4,
-	CA_AIR_SMALL = 4,
-	CA_AIR_LARGE = 5,
-	CA_DOCK = 5,
-	CA_AIR_METRO = 6,
-	CA_AIR_INTER = 8,
-	CA_AIR_COMMUTER    = 4,
-	CA_AIR_HELIDEPOT   = 4,
+	CA_BUS             =  3,
+	CA_TRUCK           =  3,
+	CA_AIR_OILPAD      =  3,
+	CA_TRAIN           =  4,
+	CA_AIR_HELIPORT    =  4,
+	CA_AIR_SMALL       =  4,
+	CA_AIR_LARGE       =  5,
+	CA_DOCK            =  5,
+	CA_AIR_METRO       =  6,
+	CA_AIR_INTER       =  8,
+	CA_AIR_COMMUTER    =  4,
+	CA_AIR_HELIDEPOT   =  4,
 	CA_AIR_INTERCON    = 10,
-	CA_AIR_HELISTATION = 4,
+	CA_AIR_HELISTATION =  4,
 };
 
 void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint radius);

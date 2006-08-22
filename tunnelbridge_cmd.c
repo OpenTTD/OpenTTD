@@ -846,9 +846,9 @@ uint GetBridgeHeight(TileIndex t)
 }
 
 static const byte _bridge_foundations[][31] = {
-//  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15                      _S          _W    _N _E
-	{ 0,16,18, 3,20, 5, 0, 7,22, 0,10,11,12,13,14, 0, 0, 0, 0, 0, 0, 0, 0,18, 0, 0, 0,16, 0,22,20 },
-	{ 0,15,17, 0,19, 5, 6, 7,21, 9,10,11, 0,13,14, 0, 0, 0, 0, 0, 0, 0, 0,17, 0, 0, 0,15, 0,21,19 }
+	// 0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15                              _S              _W      _N  _E
+	{  0, 16, 18,  3, 20,  5,  0,  7, 22,  0, 10, 11, 12, 13, 14,  0,  0,  0,  0,  0,  0,  0,  0, 18,  0,  0,  0, 16,  0, 22, 20 },
+	{  0, 15, 17,  0, 19,  5,  6,  7, 21,  9, 10, 11,  0, 13, 14,  0,  0,  0,  0,  0,  0,  0,  0, 17,  0,  0,  0, 15,  0, 21, 19 }
 };
 
 extern const byte _road_sloped_sprites[14];
@@ -1218,7 +1218,7 @@ static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = 
 	STR_5027_TUBULAR_RAIL_BRIDGE,
 	STR_5027_TUBULAR_RAIL_BRIDGE,
 	STR_5027_TUBULAR_RAIL_BRIDGE,
-	0,0,0,
+	0, 0, 0,
 
 	STR_5025_WOODEN_ROAD_BRIDGE,
 	STR_5026_CONCRETE_ROAD_BRIDGE,
@@ -1233,7 +1233,7 @@ static const StringID _bridge_tile_str[(MAX_BRIDGES + 3) + (MAX_BRIDGES + 3)] = 
 	STR_5028_TUBULAR_ROAD_BRIDGE,
 	STR_5028_TUBULAR_ROAD_BRIDGE,
 	STR_5028_TUBULAR_ROAD_BRIDGE,
-	0,0,0,
+	0, 0, 0,
 };
 
 static void GetTileDesc_TunnelBridge(TileIndex tile, TileDesc *td)
@@ -1330,18 +1330,18 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 }
 
 
-static const byte _tunnel_fractcoord_1[4] = {0x8E,0x18,0x81,0xE8};
-static const byte _tunnel_fractcoord_2[4] = {0x81,0x98,0x87,0x38};
-static const byte _tunnel_fractcoord_3[4] = {0x82,0x88,0x86,0x48};
-static const byte _exit_tunnel_track[4] = {1,2,1,2};
+static const byte _tunnel_fractcoord_1[4]    = {0x8E, 0x18, 0x81, 0xE8};
+static const byte _tunnel_fractcoord_2[4]    = {0x81, 0x98, 0x87, 0x38};
+static const byte _tunnel_fractcoord_3[4]    = {0x82, 0x88, 0x86, 0x48};
+static const byte _exit_tunnel_track[4]      = {1, 2, 1, 2};
 
 static const byte _road_exit_tunnel_state[4] = {8, 9, 0, 1};
 static const byte _road_exit_tunnel_frame[4] = {2, 7, 9, 4};
 
-static const byte _tunnel_fractcoord_4[4] = {0x52, 0x85, 0x98, 0x29};
-static const byte _tunnel_fractcoord_5[4] = {0x92, 0x89, 0x58, 0x25};
-static const byte _tunnel_fractcoord_6[4] = {0x92, 0x89, 0x56, 0x45};
-static const byte _tunnel_fractcoord_7[4] = {0x52, 0x85, 0x96, 0x49};
+static const byte _tunnel_fractcoord_4[4]    = {0x52, 0x85, 0x98, 0x29};
+static const byte _tunnel_fractcoord_5[4]    = {0x92, 0x89, 0x58, 0x25};
+static const byte _tunnel_fractcoord_6[4]    = {0x92, 0x89, 0x56, 0x45};
+static const byte _tunnel_fractcoord_7[4]    = {0x52, 0x85, 0x96, 0x49};
 
 static uint32 VehicleEnter_TunnelBridge(Vehicle *v, TileIndex tile, int x, int y)
 {
@@ -1454,17 +1454,17 @@ TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 }
 
 const TileTypeProcs _tile_type_tunnelbridge_procs = {
-	DrawTile_TunnelBridge,					/* draw_tile_proc */
-	GetSlopeZ_TunnelBridge,					/* get_slope_z_proc */
-	ClearTile_TunnelBridge,					/* clear_tile_proc */
-	GetAcceptedCargo_TunnelBridge,	/* get_accepted_cargo_proc */
-	GetTileDesc_TunnelBridge,				/* get_tile_desc_proc */
-	GetTileTrackStatus_TunnelBridge,/* get_tile_track_status_proc */
-	ClickTile_TunnelBridge,					/* click_tile_proc */
-	AnimateTile_TunnelBridge,				/* animate_tile_proc */
-	TileLoop_TunnelBridge,					/* tile_loop_clear */
-	ChangeTileOwner_TunnelBridge,		/* change_tile_owner_clear */
-	NULL,														/* get_produced_cargo_proc */
-	VehicleEnter_TunnelBridge,			/* vehicle_enter_tile_proc */
-	GetSlopeTileh_TunnelBridge,			/* get_slope_tileh_proc */
+	DrawTile_TunnelBridge,           /* draw_tile_proc */
+	GetSlopeZ_TunnelBridge,          /* get_slope_z_proc */
+	ClearTile_TunnelBridge,          /* clear_tile_proc */
+	GetAcceptedCargo_TunnelBridge,   /* get_accepted_cargo_proc */
+	GetTileDesc_TunnelBridge,        /* get_tile_desc_proc */
+	GetTileTrackStatus_TunnelBridge, /* get_tile_track_status_proc */
+	ClickTile_TunnelBridge,          /* click_tile_proc */
+	AnimateTile_TunnelBridge,        /* animate_tile_proc */
+	TileLoop_TunnelBridge,           /* tile_loop_clear */
+	ChangeTileOwner_TunnelBridge,    /* change_tile_owner_clear */
+	NULL,                            /* get_produced_cargo_proc */
+	VehicleEnter_TunnelBridge,       /* vehicle_enter_tile_proc */
+	GetSlopeTileh_TunnelBridge,      /* get_slope_tileh_proc */
 };

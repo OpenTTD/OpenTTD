@@ -62,7 +62,7 @@ typedef SettingDesc SettingDescGlobVarList;
 
 typedef enum {
 	IGT_VARIABLES = 0, ///< values of the form "landscape = hilly"
-	IGT_LIST = 1,      ///< a list of values, seperated by \n and terminated by the next group block
+	IGT_LIST      = 1, ///< a list of values, seperated by \n and terminated by the next group block
 } IniGroupType;
 
 /** Get the address of the variable. Which one to pick depends on the object

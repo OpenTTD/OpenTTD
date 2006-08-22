@@ -12,17 +12,17 @@ typedef struct {
 } FiosItem;
 
 enum {
-	FIOS_TYPE_DRIVE = 0,
-	FIOS_TYPE_PARENT = 1,
-	FIOS_TYPE_DIR = 2,
-	FIOS_TYPE_FILE = 3,
-	FIOS_TYPE_OLDFILE = 4,
-	FIOS_TYPE_SCENARIO = 5,
-	FIOS_TYPE_OLD_SCENARIO = 6,
-	FIOS_TYPE_DIRECT = 7,
-	FIOS_TYPE_PNG = 8,
-	FIOS_TYPE_BMP = 9,
-	FIOS_TYPE_INVALID = 255,
+	FIOS_TYPE_DRIVE        =   0,
+	FIOS_TYPE_PARENT       =   1,
+	FIOS_TYPE_DIR          =   2,
+	FIOS_TYPE_FILE         =   3,
+	FIOS_TYPE_OLDFILE      =   4,
+	FIOS_TYPE_SCENARIO     =   5,
+	FIOS_TYPE_OLD_SCENARIO =   6,
+	FIOS_TYPE_DIRECT       =   7,
+	FIOS_TYPE_PNG          =   8,
+	FIOS_TYPE_BMP          =   9,
+	FIOS_TYPE_INVALID      = 255,
 };
 
 /* Variables to display file lists */

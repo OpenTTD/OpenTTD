@@ -22,8 +22,8 @@ typedef enum TileTypes {
 } TileType;
 
 typedef enum TropicZones {
-	TROPICZONE_INVALID = 0,
-	TROPICZONE_DESERT = 1,
+	TROPICZONE_INVALID    = 0,
+	TROPICZONE_DESERT     = 1,
 	TROPICZONE_RAINFOREST = 2,
 } TropicZone;
 

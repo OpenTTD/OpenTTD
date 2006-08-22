@@ -778,17 +778,17 @@ void InitializeClearLand(void)
 }
 
 const TileTypeProcs _tile_type_clear_procs = {
-	DrawTile_Clear,						/* draw_tile_proc */
-	GetSlopeZ_Clear,					/* get_slope_z_proc */
-	ClearTile_Clear,					/* clear_tile_proc */
-	GetAcceptedCargo_Clear,		/* get_accepted_cargo_proc */
-	GetTileDesc_Clear,				/* get_tile_desc_proc */
-	GetTileTrackStatus_Clear,	/* get_tile_track_status_proc */
-	ClickTile_Clear,					/* click_tile_proc */
-	AnimateTile_Clear,				/* animate_tile_proc */
-	TileLoop_Clear,						/* tile_loop_clear */
-	ChangeTileOwner_Clear,		/* change_tile_owner_clear */
-	NULL,											/* get_produced_cargo_proc */
-	NULL,											/* vehicle_enter_tile_proc */
-	GetSlopeTileh_Clear,			/* get_slope_tileh_proc */
+	DrawTile_Clear,           /* draw_tile_proc */
+	GetSlopeZ_Clear,          /* get_slope_z_proc */
+	ClearTile_Clear,          /* clear_tile_proc */
+	GetAcceptedCargo_Clear,   /* get_accepted_cargo_proc */
+	GetTileDesc_Clear,        /* get_tile_desc_proc */
+	GetTileTrackStatus_Clear, /* get_tile_track_status_proc */
+	ClickTile_Clear,          /* click_tile_proc */
+	AnimateTile_Clear,        /* animate_tile_proc */
+	TileLoop_Clear,           /* tile_loop_clear */
+	ChangeTileOwner_Clear,    /* change_tile_owner_clear */
+	NULL,                     /* get_produced_cargo_proc */
+	NULL,                     /* vehicle_enter_tile_proc */
+	GetSlopeTileh_Clear,      /* get_slope_tileh_proc */
 };

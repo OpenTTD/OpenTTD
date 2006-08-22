@@ -271,12 +271,12 @@ static inline SpriteID GetFontBase(FontSize size)
 
 
 enum {
-	ASCII_SETX = 1,
-	ASCII_SETXY = 2,
+	ASCII_SETX       =  1,
+	ASCII_SETXY      =  2,
 
-	ASCII_TINYFONT = 8,
-	ASCII_BIGFONT = 9,
-	ASCII_NL = 10,
+	ASCII_TINYFONT   =  8,
+	ASCII_BIGFONT    =  9,
+	ASCII_NL         = 10,
 
 	ASCII_COLORSTART = 15,
 };

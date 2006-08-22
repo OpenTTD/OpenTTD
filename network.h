@@ -46,15 +46,15 @@
 #define NETWORK_STATION_TYPES 5
 
 enum {
-	NETWORK_NAME_LENGTH        = 80,
-	NETWORK_HOSTNAME_LENGTH    = 80,
-	NETWORK_REVISION_LENGTH    = 15,
-	NETWORK_PASSWORD_LENGTH    = 20,
+	NETWORK_NAME_LENGTH        =  80,
+	NETWORK_HOSTNAME_LENGTH    =  80,
+	NETWORK_REVISION_LENGTH    =  15,
+	NETWORK_PASSWORD_LENGTH    =  20,
 	NETWORK_PLAYERS_LENGTH     = 200,
-	NETWORK_CLIENT_NAME_LENGTH = 25,
+	NETWORK_CLIENT_NAME_LENGTH =  25,
 	NETWORK_RCONCOMMAND_LENGTH = 500,
 
-	NETWORK_NUM_LANGUAGES      = 4,
+	NETWORK_NUM_LANGUAGES      =   4,
 };
 
 // This is the struct used by both client and server
@@ -87,36 +87,36 @@ typedef struct NetworkGameInfo {
 } NetworkGameInfo;
 
 typedef struct NetworkPlayerInfo {
-	char company_name[NETWORK_NAME_LENGTH];					// Company name
-	char password[NETWORK_PASSWORD_LENGTH];					// The password for the player
-	Year inaugurated_year;													// What year the company started in
-	int64 company_value;														// The company value
-	int64 money;																		// The amount of money the company has
-	int64 income;																		// How much did the company earned last year
-	uint16 performance;															// What was his performance last month?
-	byte use_password;													// 0: No password 1: There is a password
-	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];			// How many vehicles are there of this type?
-	uint16 num_station[NETWORK_STATION_TYPES];			// How many stations are there of this type?
-	char players[NETWORK_PLAYERS_LENGTH];						// The players that control this company (Name1, name2, ..)
-	uint16 months_empty;														// How many months the company is empty
+	char company_name[NETWORK_NAME_LENGTH];         // Company name
+	char password[NETWORK_PASSWORD_LENGTH];         // The password for the player
+	Year inaugurated_year;                          // What year the company started in
+	int64 company_value;                            // The company value
+	int64 money;                                    // The amount of money the company has
+	int64 income;                                   // How much did the company earned last year
+	uint16 performance;                             // What was his performance last month?
+	byte use_password;                              // 0: No password 1: There is a password
+	uint16 num_vehicle[NETWORK_VEHICLE_TYPES];      // How many vehicles are there of this type?
+	uint16 num_station[NETWORK_STATION_TYPES];      // How many stations are there of this type?
+	char players[NETWORK_PLAYERS_LENGTH];           // The players that control this company (Name1, name2, ..)
+	uint16 months_empty;                            // How many months the company is empty
 } NetworkPlayerInfo;
 
 typedef struct NetworkClientInfo {
-	uint16 client_index;                          /// Index of the client (same as ClientState->index)
-	char client_name[NETWORK_CLIENT_NAME_LENGTH]; /// Name of the client
-	byte client_lang;                             /// The language of the client
-	byte client_playas;                           /// As which player is this client playing (PlayerID)
-	uint32 client_ip;                             /// IP-address of the client (so he can be banned)
-	Date join_date;                               /// Gamedate the player has joined
-	char unique_id[NETWORK_NAME_LENGTH];          /// Every play sends an unique id so we can indentify him
+	uint16 client_index;                            // Index of the client (same as ClientState->index)
+	char client_name[NETWORK_CLIENT_NAME_LENGTH];   // Name of the client
+	byte client_lang;                               // The language of the client
+	byte client_playas;                             // As which player is this client playing (PlayerID)
+	uint32 client_ip;                               // IP-address of the client (so he can be banned)
+	Date join_date;                                 // Gamedate the player has joined
+	char unique_id[NETWORK_NAME_LENGTH];            // Every play sends an unique id so we can indentify him
 } NetworkClientInfo;
 
 typedef struct NetworkGameList {
 	NetworkGameInfo info;
 	uint32 ip;
 	uint16 port;
-	bool online;																		// False if the server did not respond (default status)
-	bool manually;																	// True if the server was added manually
+	bool online;                                    // False if the server did not respond (default status)
+	bool manually;                                  // True if the server was added manually
 	struct NetworkGameList *next;
 } NetworkGameList;
 
@@ -133,10 +133,10 @@ typedef enum {
 
 // language ids for server_lang and client_lang
 typedef enum {
-	NETLANG_ANY = 0,
+	NETLANG_ANY     = 0,
 	NETLANG_ENGLISH = 1,
-	NETLANG_GERMAN = 2,
-	NETLANG_FRENCH = 3,
+	NETLANG_GERMAN  = 2,
+	NETLANG_FRENCH  = 3,
 } NetworkLanguage;
 
 VARDEF NetworkGameList *_network_game_list;

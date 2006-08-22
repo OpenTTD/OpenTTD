@@ -26,19 +26,19 @@ typedef enum {
 	PACKET_UDP_CLIENT_FIND_SERVER,
 	PACKET_UDP_SERVER_RESPONSE,
 	PACKET_UDP_CLIENT_DETAIL_INFO,
-	PACKET_UDP_SERVER_DETAIL_INFO, // Is not used in OpenTTD itself, only for external querying
-	PACKET_UDP_SERVER_REGISTER, // Packet to register itself to the master server
-	PACKET_UDP_MASTER_ACK_REGISTER, // Packet indicating registration has succedeed
-	PACKET_UDP_CLIENT_GET_LIST, // Request for serverlist from master server
+	PACKET_UDP_SERVER_DETAIL_INFO,   // Is not used in OpenTTD itself, only for external querying
+	PACKET_UDP_SERVER_REGISTER,      // Packet to register itself to the master server
+	PACKET_UDP_MASTER_ACK_REGISTER,  // Packet indicating registration has succedeed
+	PACKET_UDP_CLIENT_GET_LIST,      // Request for serverlist from master server
 	PACKET_UDP_MASTER_RESPONSE_LIST, // Response from master server with server ip's + port's
-	PACKET_UDP_SERVER_UNREGISTER, // Request to be removed from the server-list
+	PACKET_UDP_SERVER_UNREGISTER,    // Request to be removed from the server-list
 	PACKET_UDP_END
 } PacketUDPType;
 
 enum {
 	ADVERTISE_NORMAL_INTERVAL = 30000, // interval between advertising in ticks (15 minutes)
-	ADVERTISE_RETRY_INTERVAL = 300,    // readvertise when no response after this many ticks (9 seconds)
-	ADVERTISE_RETRY_TIMES = 3          // give up readvertising after this much failed retries
+	ADVERTISE_RETRY_INTERVAL  =   300, // readvertise when no response after this many ticks (9 seconds)
+	ADVERTISE_RETRY_TIMES     =     3  // give up readvertising after this much failed retries
 };
 
 #define DEF_UDP_RECEIVE_COMMAND(type) void NetworkPacketReceive_ ## type ## _command(Packet *p, struct sockaddr_in *client_addr)

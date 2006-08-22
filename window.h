@@ -155,67 +155,67 @@ enum WindowKeyCodes {
 	WKC_META  = 0x1000,
 
 	// Special ones
-	WKC_NONE = 0,
-	WKC_ESC=1,
-	WKC_BACKSPACE = 2,
-	WKC_INSERT = 3,
-	WKC_DELETE = 4,
+	WKC_NONE        =  0,
+	WKC_ESC         =  1,
+	WKC_BACKSPACE   =  2,
+	WKC_INSERT      =  3,
+	WKC_DELETE      =  4,
 
-	WKC_PAGEUP = 5,
-	WKC_PAGEDOWN = 6,
-	WKC_END = 7,
-	WKC_HOME = 8,
+	WKC_PAGEUP      =  5,
+	WKC_PAGEDOWN    =  6,
+	WKC_END         =  7,
+	WKC_HOME        =  8,
 
 	// Arrow keys
-	WKC_LEFT = 9,
-	WKC_UP = 10,
-	WKC_RIGHT = 11,
-	WKC_DOWN = 12,
+	WKC_LEFT        =  9,
+	WKC_UP          = 10,
+	WKC_RIGHT       = 11,
+	WKC_DOWN        = 12,
 
 	// Return & tab
-	WKC_RETURN = 13,
-	WKC_TAB = 14,
+	WKC_RETURN      = 13,
+	WKC_TAB         = 14,
 
 	// Numerical keyboard
-	WKC_NUM_0 = 16,
-	WKC_NUM_1 = 17,
-	WKC_NUM_2 = 18,
-	WKC_NUM_3 = 19,
-	WKC_NUM_4 = 20,
-	WKC_NUM_5 = 21,
-	WKC_NUM_6 = 22,
-	WKC_NUM_7 = 23,
-	WKC_NUM_8 = 24,
-	WKC_NUM_9 = 25,
-	WKC_NUM_DIV = 26,
-	WKC_NUM_MUL = 27,
-	WKC_NUM_MINUS = 28,
-	WKC_NUM_PLUS = 29,
-	WKC_NUM_ENTER = 30,
+	WKC_NUM_0       = 16,
+	WKC_NUM_1       = 17,
+	WKC_NUM_2       = 18,
+	WKC_NUM_3       = 19,
+	WKC_NUM_4       = 20,
+	WKC_NUM_5       = 21,
+	WKC_NUM_6       = 22,
+	WKC_NUM_7       = 23,
+	WKC_NUM_8       = 24,
+	WKC_NUM_9       = 25,
+	WKC_NUM_DIV     = 26,
+	WKC_NUM_MUL     = 27,
+	WKC_NUM_MINUS   = 28,
+	WKC_NUM_PLUS    = 29,
+	WKC_NUM_ENTER   = 30,
 	WKC_NUM_DECIMAL = 31,
 
 	// Space
-	WKC_SPACE = 32,
+	WKC_SPACE       = 32,
 
 	// Function keys
-	WKC_F1 = 33,
-	WKC_F2 = 34,
-	WKC_F3 = 35,
-	WKC_F4 = 36,
-	WKC_F5 = 37,
-	WKC_F6 = 38,
-	WKC_F7 = 39,
-	WKC_F8 = 40,
-	WKC_F9 = 41,
-	WKC_F10 = 42,
-	WKC_F11 = 43,
-	WKC_F12 = 44,
+	WKC_F1          = 33,
+	WKC_F2          = 34,
+	WKC_F3          = 35,
+	WKC_F4          = 36,
+	WKC_F5          = 37,
+	WKC_F6          = 38,
+	WKC_F7          = 39,
+	WKC_F8          = 40,
+	WKC_F9          = 41,
+	WKC_F10         = 42,
+	WKC_F11         = 43,
+	WKC_F12         = 44,
 
 	// backquote is the key left of "1"
 	// we only store this key here, no matter what character is really mapped to it
 	// on a particular keyboard. (US keyboard: ` and ~ ; German keyboard: ^ and °)
-	WKC_BACKQUOTE = 45,
-	WKC_PAUSE     = 46,
+	WKC_BACKQUOTE   = 45,
+	WKC_PAUSE       = 46,
 
 	// 0-9 are mapped to 48-57
 	// A-Z are mapped to 65-90
@@ -232,18 +232,18 @@ typedef struct WindowDesc {
 } WindowDesc;
 
 enum {
-	WDF_STD_TOOLTIPS   = 1, /* use standard routine when displaying tooltips */
-	WDF_DEF_WIDGET     = 2,	/* default widget control for some widgets in the on click event */
-	WDF_STD_BTN        = 4,	/* default handling for close and drag widgets (widget no 0 and 1) */
+	WDF_STD_TOOLTIPS    =  1, /* use standard routine when displaying tooltips */
+	WDF_DEF_WIDGET      =  2, /* default widget control for some widgets in the on click event */
+	WDF_STD_BTN         =  4, /* default handling for close and drag widgets (widget no 0 and 1) */
 
-	WDF_UNCLICK_BUTTONS=16, /* Unclick buttons when the window event times out */
-	WDF_STICKY_BUTTON  =32, /* Set window to sticky mode; they are not closed unless closed with 'X' (widget 2) */
-	WDF_RESIZABLE      =64, /* A window can be resized */
+	WDF_UNCLICK_BUTTONS = 16, /* Unclick buttons when the window event times out */
+	WDF_STICKY_BUTTON   = 32, /* Set window to sticky mode; they are not closed unless closed with 'X' (widget 2) */
+	WDF_RESIZABLE       = 64, /* A window can be resized */
 };
 
 /* can be used as x or y coordinates to cause a specific placement */
 enum {
-	WDP_AUTO = -1,
+	WDP_AUTO   = -1,
 	WDP_CENTER = -2,
 };
 
@@ -493,38 +493,38 @@ typedef struct dropdown_d {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
 
 enum WindowEvents {
-	WE_CLICK = 0,
-	WE_PAINT = 1,
-	WE_MOUSELOOP = 2,
-	WE_TICK = 3,
-	WE_4 = 4,
-	WE_TIMEOUT = 5,
-	WE_PLACE_OBJ = 6,
-	WE_ABORT_PLACE_OBJ = 7,
-	WE_DESTROY = 8,
-	WE_ON_EDIT_TEXT = 9,
-	WE_POPUPMENU_SELECT = 10,
-	WE_POPUPMENU_OVER = 11,
-	WE_DRAGDROP = 12,
-	WE_PLACE_DRAG = 13,
-	WE_PLACE_MOUSEUP = 14,
-	WE_PLACE_PRESIZE = 15,
-	WE_DROPDOWN_SELECT = 16,
-	WE_RCLICK = 17,
-	WE_KEYPRESS = 18,
-	WE_CREATE = 19,
-	WE_MOUSEOVER = 20,
+	WE_CLICK               =  0,
+	WE_PAINT               =  1,
+	WE_MOUSELOOP           =  2,
+	WE_TICK                =  3,
+	WE_4                   =  4,
+	WE_TIMEOUT             =  5,
+	WE_PLACE_OBJ           =  6,
+	WE_ABORT_PLACE_OBJ     =  7,
+	WE_DESTROY             =  8,
+	WE_ON_EDIT_TEXT        =  9,
+	WE_POPUPMENU_SELECT    = 10,
+	WE_POPUPMENU_OVER      = 11,
+	WE_DRAGDROP            = 12,
+	WE_PLACE_DRAG          = 13,
+	WE_PLACE_MOUSEUP       = 14,
+	WE_PLACE_PRESIZE       = 15,
+	WE_DROPDOWN_SELECT     = 16,
+	WE_RCLICK              = 17,
+	WE_KEYPRESS            = 18,
+	WE_CREATE              = 19,
+	WE_MOUSEOVER           = 20,
 	WE_ON_EDIT_TEXT_CANCEL = 21,
-	WE_RESIZE = 22,
-	WE_MESSAGE = 23,
-	WE_SCROLL = 24,
-	WE_MOUSEWHEEL = 25,
+	WE_RESIZE              = 22,
+	WE_MESSAGE             = 23,
+	WE_SCROLL              = 24,
+	WE_MOUSEWHEEL          = 25,
 };
 
 
 /****************** THESE ARE NOT WIDGET TYPES!!!!! *******************/
 enum WindowWidgetBehaviours {
-	WWB_PUSHBUTTON = 1 << 5,
+	WWB_PUSHBUTTON  = 1 << 5,
 	WWB_NODISBUTTON = 2 << 5,
 };
 
@@ -532,27 +532,27 @@ enum WindowWidgetBehaviours {
 enum WindowWidgetTypes {
 	WWT_EMPTY = 0,
 
-	WWT_IMGBTN = 1,						/* button with image */
-	WWT_PANEL = WWT_IMGBTN,
-	WWT_PANEL_2 = 2,					/* button with diff image when clicked */
+	WWT_IMGBTN     =  1,         /* button with image */
+	WWT_PANEL      = WWT_IMGBTN,
+	WWT_PANEL_2    =  2,         /* button with diff image when clicked */
 
-	WWT_TEXTBTN = 3,					/* button with text */
-	WWT_4 = 4,								/* button with diff text when clicked */
-	WWT_5 = 5,								/* label */
-	WWT_6 = 6,								/* combo box text area */
-	WWT_MATRIX = 7,
-	WWT_SCROLLBAR = 8,
-	WWT_FRAME = 9,						/* frame */
-	WWT_CAPTION = 10,
+	WWT_TEXTBTN    =  3,         /* button with text */
+	WWT_4          =  4,         /* button with diff text when clicked */
+	WWT_5          =  5,         /* label */
+	WWT_6          =  6,         /* combo box text area */
+	WWT_MATRIX     =  7,
+	WWT_SCROLLBAR  =  8,
+	WWT_FRAME      =  9,         /* frame */
+	WWT_CAPTION    = 10,
 
 	WWT_HSCROLLBAR = 11,
-	WWT_STICKYBOX = 12,
-	WWT_SCROLL2BAR = 13,				/* 2nd vertical scrollbar*/
-	WWT_RESIZEBOX = 14,
-	WWT_CLOSEBOX = 15,
-	WWT_LAST = 16,						/* Last Item. use WIDGETS_END to fill up padding!! */
+	WWT_STICKYBOX  = 12,
+	WWT_SCROLL2BAR = 13,         /* 2nd vertical scrollbar*/
+	WWT_RESIZEBOX  = 14,
+	WWT_CLOSEBOX   = 15,
+	WWT_LAST       = 16,         /* Last Item. use WIDGETS_END to fill up padding!! */
 
-	WWT_MASK = 31,
+	WWT_MASK       = 31,
 
 	WWT_PUSHTXTBTN	= WWT_TEXTBTN	| WWB_PUSHBUTTON,
 	WWT_PUSHIMGBTN	= WWT_IMGBTN	| WWB_PUSHBUTTON,
@@ -562,21 +562,21 @@ enum WindowWidgetTypes {
 #define WIDGETS_END WWT_LAST,   RESIZE_NONE,     0,     0,     0,     0,     0, 0, STR_NULL
 
 enum WindowFlags {
-	WF_TIMEOUT_SHL = 0,
-	WF_TIMEOUT_MASK = 7,
-	WF_DRAGGING = 1 << 3,
-	WF_SCROLL_UP = 1 << 4,
-	WF_SCROLL_DOWN = 1 << 5,
-	WF_SCROLL_MIDDLE = 1 << 6,
-	WF_HSCROLL = 1 << 7,
-	WF_SIZING = 1 << 8,
-	WF_STICKY = 1 << 9,
+	WF_TIMEOUT_SHL       = 0,
+	WF_TIMEOUT_MASK      = 7,
+	WF_DRAGGING          = 1 <<  3,
+	WF_SCROLL_UP         = 1 <<  4,
+	WF_SCROLL_DOWN       = 1 <<  5,
+	WF_SCROLL_MIDDLE     = 1 <<  6,
+	WF_HSCROLL           = 1 <<  7,
+	WF_SIZING            = 1 <<  8,
+	WF_STICKY            = 1 <<  9,
 
 	WF_DISABLE_VP_SCROLL = 1 << 10,
 
-	WF_WHITE_BORDER_ONE = 1 << 11,
+	WF_WHITE_BORDER_ONE  = 1 << 11,
 	WF_WHITE_BORDER_MASK = 3 << 11,
-	WF_SCROLL2 = 1 << 13,
+	WF_SCROLL2           = 1 << 13,
 };
 
 /* window.c */
@@ -658,10 +658,10 @@ VARDEF bool _popup_menu_active;
 
 VARDEF byte _special_mouse_mode;
 enum SpecialMouseMode {
-	WSM_NONE = 0,
+	WSM_NONE     = 0,
 	WSM_DRAGDROP = 1,
-	WSM_SIZING = 2,
-	WSM_PRESIZE = 3,
+	WSM_SIZING   = 2,
+	WSM_PRESIZE  = 3,
 };
 
 void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y);

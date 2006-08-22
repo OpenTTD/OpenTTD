@@ -657,17 +657,17 @@ void InitializeTrees(void)
 
 
 const TileTypeProcs _tile_type_trees_procs = {
-	DrawTile_Trees,						/* draw_tile_proc */
-	GetSlopeZ_Trees,					/* get_slope_z_proc */
-	ClearTile_Trees,					/* clear_tile_proc */
-	GetAcceptedCargo_Trees,		/* get_accepted_cargo_proc */
-	GetTileDesc_Trees,				/* get_tile_desc_proc */
-	GetTileTrackStatus_Trees,	/* get_tile_track_status_proc */
-	ClickTile_Trees,					/* click_tile_proc */
-	AnimateTile_Trees,				/* animate_tile_proc */
-	TileLoop_Trees,						/* tile_loop_clear */
-	ChangeTileOwner_Trees,		/* change_tile_owner_clear */
-	NULL,											/* get_produced_cargo_proc */
-	NULL,											/* vehicle_enter_tile_proc */
-	GetSlopeTileh_Trees,			/* get_slope_tileh_proc */
+	DrawTile_Trees,           /* draw_tile_proc */
+	GetSlopeZ_Trees,          /* get_slope_z_proc */
+	ClearTile_Trees,          /* clear_tile_proc */
+	GetAcceptedCargo_Trees,   /* get_accepted_cargo_proc */
+	GetTileDesc_Trees,        /* get_tile_desc_proc */
+	GetTileTrackStatus_Trees, /* get_tile_track_status_proc */
+	ClickTile_Trees,          /* click_tile_proc */
+	AnimateTile_Trees,        /* animate_tile_proc */
+	TileLoop_Trees,           /* tile_loop_clear */
+	ChangeTileOwner_Trees,    /* change_tile_owner_clear */
+	NULL,                     /* get_produced_cargo_proc */
+	NULL,                     /* vehicle_enter_tile_proc */
+	GetSlopeTileh_Trees,      /* get_slope_tileh_proc */
 };

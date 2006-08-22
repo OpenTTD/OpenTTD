@@ -594,9 +594,9 @@ static void TileLoopIndustry_BubbleGenerator(TileIndex tile)
 	int dir;
 	Vehicle *v;
 	static const int8 _tileloop_ind_case_161[12] = {
-		11, 0, -4, -14,
-		-4, -10, -4, 1,
-		49, 59, 60, 65,
+		11,   0, -4, -14,
+		-4, -10, -4,   1,
+		49,  59, 60,  65,
 	};
 
 	SndPlayTileFx(SND_2E_EXTRACT_AND_POP, tile);
@@ -1160,11 +1160,11 @@ static const byte _industry_section_bits[] = {
 	16, 16, 16, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 16, 4, 2, 16, 16, 16, 16,
+	16, 16,  4,  2, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
-	16, 4, 2, 16, 16, 16, 16, 16,
+	16,  4,  2, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
 	16, 16, 16, 16, 16, 16, 16, 16,
@@ -1763,10 +1763,10 @@ static void UpdateIndustryStatistics(Industry *i)
 }
 
 static const byte _new_industry_rand[4][32] = {
-	{12,12,12,12,12,12,12, 0, 0, 6, 6, 9, 9, 3, 3, 3,18,18, 4, 4, 2, 2, 5, 5, 5, 5, 5, 5, 1, 1, 8, 8},
-	{16,16,16, 0, 0, 0, 9, 9, 9, 9,13,13, 3, 3, 3, 3,15,15,15, 4, 4,11,11,11,11,11,14,14, 1, 1, 7, 7},
-	{21,21,21,24,22,22,22,22,23,23,16,16,16, 4, 4,19,19,19,13,13,20,20,20,11,11,11,17,17,17,10,10,10},
-	{30,30,30,36,36,31,31,31,27,27,27,28,28,28,26,26,26,34,34,34,35,35,35,29,29,29,32,32,32,33,33,33},
+	{12, 12, 12, 12, 12, 12, 12,  0,  0,  6,  6,  9,  9,  3,  3,  3, 18, 18,  4,  4,  2,  2,  5,  5,  5,  5,  5,  5,  1,  1,  8,  8},
+	{16, 16, 16,  0,  0,  0,  9,  9,  9,  9, 13, 13,  3,  3,  3,  3, 15, 15, 15,  4,  4, 11, 11, 11, 11, 11, 14, 14,  1,  1,  7,  7},
+	{21, 21, 21, 24, 22, 22, 22, 22, 23, 23, 16, 16, 16,  4,  4, 19, 19, 19, 13, 13, 20, 20, 20, 11, 11, 11, 17, 17, 17, 10, 10, 10},
+	{30, 30, 30, 36, 36, 31, 31, 31, 27, 27, 27, 28, 28, 28, 26, 26, 26, 34, 34, 34, 35, 35, 35, 29, 29, 29, 32, 32, 32, 33, 33, 33},
 };
 
 static void MaybeNewIndustry(uint32 r)
@@ -1900,46 +1900,46 @@ void InitializeIndustries(void)
 }
 
 const TileTypeProcs _tile_type_industry_procs = {
-	DrawTile_Industry,					/* draw_tile_proc */
-	GetSlopeZ_Industry,					/* get_slope_z_proc */
-	ClearTile_Industry,					/* clear_tile_proc */
-	GetAcceptedCargo_Industry,	/* get_accepted_cargo_proc */
-	GetTileDesc_Industry,				/* get_tile_desc_proc */
-	GetTileTrackStatus_Industry,/* get_tile_track_status_proc */
-	ClickTile_Industry,					/* click_tile_proc */
-	AnimateTile_Industry,				/* animate_tile_proc */
-	TileLoop_Industry,					/* tile_loop_proc */
-	ChangeTileOwner_Industry,		/* change_tile_owner_proc */
-	GetProducedCargo_Industry,  /* get_produced_cargo_proc */
-	NULL,												/* vehicle_enter_tile_proc */
-	GetSlopeTileh_Industry,			/* get_slope_tileh_proc */
+	DrawTile_Industry,           /* draw_tile_proc */
+	GetSlopeZ_Industry,          /* get_slope_z_proc */
+	ClearTile_Industry,          /* clear_tile_proc */
+	GetAcceptedCargo_Industry,	 /* get_accepted_cargo_proc */
+	GetTileDesc_Industry,        /* get_tile_desc_proc */
+	GetTileTrackStatus_Industry, /* get_tile_track_status_proc */
+	ClickTile_Industry,          /* click_tile_proc */
+	AnimateTile_Industry,        /* animate_tile_proc */
+	TileLoop_Industry,           /* tile_loop_proc */
+	ChangeTileOwner_Industry,    /* change_tile_owner_proc */
+	GetProducedCargo_Industry,   /* get_produced_cargo_proc */
+	NULL,                        /* vehicle_enter_tile_proc */
+	GetSlopeTileh_Industry,      /* get_slope_tileh_proc */
 };
 
 static const SaveLoad _industry_desc[] = {
-	SLE_CONDVAR(Industry, xy,					SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Industry, xy,					SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_VAR(Industry,width,						SLE_UINT8),
-	SLE_VAR(Industry,height,					SLE_UINT8),
-	SLE_REF(Industry,town,						REF_TOWN),
-	SLE_ARR(Industry,produced_cargo,  SLE_UINT8, 2),
-	SLE_ARR(Industry,cargo_waiting,   SLE_UINT16, 2),
-	SLE_ARR(Industry,production_rate, SLE_UINT8, 2),
-	SLE_ARR(Industry,accepts_cargo,		SLE_UINT8, 3),
-	SLE_VAR(Industry,prod_level,			SLE_UINT8),
-	SLE_ARR(Industry,last_mo_production,SLE_UINT16, 2),
-	SLE_ARR(Industry,last_mo_transported,SLE_UINT16, 2),
-	SLE_ARR(Industry,pct_transported,SLE_UINT8, 2),
-	SLE_ARR(Industry,total_production,SLE_UINT16, 2),
-	SLE_ARR(Industry,total_transported,SLE_UINT16, 2),
+	SLE_CONDVAR(Industry, xy,                  SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDVAR(Industry, xy,                  SLE_UINT32,                  6, SL_MAX_VERSION),
+	    SLE_VAR(Industry, width,               SLE_UINT8),
+	    SLE_VAR(Industry, height,              SLE_UINT8),
+	    SLE_REF(Industry, town,                REF_TOWN),
+	    SLE_ARR(Industry, produced_cargo,      SLE_UINT8,  2),
+	    SLE_ARR(Industry, cargo_waiting,       SLE_UINT16, 2),
+	    SLE_ARR(Industry, production_rate,     SLE_UINT8,  2),
+	    SLE_ARR(Industry, accepts_cargo,       SLE_UINT8,  3),
+	    SLE_VAR(Industry, prod_level,          SLE_UINT8),
+	    SLE_ARR(Industry, last_mo_production,  SLE_UINT16, 2),
+	    SLE_ARR(Industry, last_mo_transported, SLE_UINT16, 2),
+	    SLE_ARR(Industry, pct_transported,     SLE_UINT8,  2),
+	    SLE_ARR(Industry, total_production,    SLE_UINT16, 2),
+	    SLE_ARR(Industry, total_transported,   SLE_UINT16, 2),
 
-	SLE_VAR(Industry,counter,					SLE_UINT16),
+	    SLE_VAR(Industry, counter,             SLE_UINT16),
 
-	SLE_VAR(Industry,type,						SLE_UINT8),
-	SLE_VAR(Industry,owner,						SLE_UINT8),
-	SLE_VAR(Industry,color_map,				SLE_UINT8),
-	SLE_CONDVAR(Industry, last_prod_year,	SLE_FILE_U8 | SLE_VAR_I32, 0, 30),
-	SLE_CONDVAR(Industry, last_prod_year,	SLE_INT32, 31, SL_MAX_VERSION),
-	SLE_VAR(Industry,was_cargo_delivered,SLE_UINT8),
+	    SLE_VAR(Industry, type,                SLE_UINT8),
+	    SLE_VAR(Industry, owner,               SLE_UINT8),
+	    SLE_VAR(Industry, color_map,           SLE_UINT8),
+	SLE_CONDVAR(Industry, last_prod_year,      SLE_FILE_U8 | SLE_VAR_I32,  0, 30),
+	SLE_CONDVAR(Industry, last_prod_year,      SLE_INT32,                 31, SL_MAX_VERSION),
+	    SLE_VAR(Industry, was_cargo_delivered, SLE_UINT8),
 
 	// reserve extra space in savegame here. (currently 32 bytes)
 	SLE_CONDNULL(32, 2, SL_MAX_VERSION),

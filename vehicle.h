@@ -8,24 +8,24 @@
 #include "rail.h"
 
 enum {
-	VEH_Invalid = 0,
-	VEH_Train = 0x10,
-	VEH_Road = 0x11,
-	VEH_Ship = 0x12,
+	VEH_Invalid  = 0x00,
+	VEH_Train    = 0x10,
+	VEH_Road     = 0x11,
+	VEH_Ship     = 0x12,
 	VEH_Aircraft = 0x13,
-	VEH_Special = 0x14,
+	VEH_Special  = 0x14,
 	VEH_Disaster = 0x15,
 } ;
 
 enum VehStatus {
-	VS_HIDDEN = 1,
-	VS_STOPPED = 2,
-	VS_UNCLICKABLE = 4,
-	VS_DEFPAL = 0x8,
-	VS_TRAIN_SLOWING = 0x10,
-	VS_SHADOW = 0x20,
+	VS_HIDDEN          = 0x01,
+	VS_STOPPED         = 0x02,
+	VS_UNCLICKABLE     = 0x04,
+	VS_DEFPAL          = 0x08,
+	VS_TRAIN_SLOWING   = 0x10,
+	VS_SHADOW          = 0x20,
 	VS_AIRCRAFT_BROKEN = 0x40,
-	VS_CRASHED = 0x80,
+	VS_CRASHED         = 0x80,
 };
 
 /* Effect vehicle types */
@@ -81,14 +81,14 @@ typedef struct VehicleRail {
 } VehicleRail;
 
 enum {
-	VRF_REVERSING = 0,
+	VRF_REVERSING         = 0,
 
 	// used to calculate if train is going up or down
-	VRF_GOINGUP   = 1,
-	VRF_GOINGDOWN = 2,
+	VRF_GOINGUP           = 1,
+	VRF_GOINGDOWN         = 2,
 
 	// used to store if a wagon is powered or not
-	VRF_POWEREDWAGON = 3,
+	VRF_POWEREDWAGON      = 3,
 
 	// used to reverse the visible direction of the vehicle
 	VRF_REVERSE_DIRECTION = 4,
@@ -130,63 +130,63 @@ typedef struct VehicleShip {
 
 
 struct Vehicle {
-	byte type;	// type, ie roadven,train,ship,aircraft,special
-	byte subtype;     // subtype (Filled with values from EffectVehicles or TrainSubTypes)
+	byte type;               // type, ie roadven,train,ship,aircraft,special
+	byte subtype;            // subtype (Filled with values from EffectVehicles or TrainSubTypes)
 
-	VehicleID index;	// NOSAVE: Index in vehicle array
+	VehicleID index;         // NOSAVE: Index in vehicle array
 
-	Vehicle *next;		// next
-	Vehicle *first;   // NOSAVE: pointer to the first vehicle in the chain
-	Vehicle *depot_list;	//NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
+	Vehicle *next;           // next
+	Vehicle *first;          // NOSAVE: pointer to the first vehicle in the chain
+	Vehicle *depot_list;     //NOSAVE: linked list to tell what vehicles entered a depot during the last tick. Used by autoreplace
 
-	StringID string_id; // Displayed string
+	StringID string_id;      // Displayed string
 
-	UnitID unitnumber;	// unit number, for display purposes only
-	PlayerID owner;				// which player owns the vehicle?
+	UnitID unitnumber;       // unit number, for display purposes only
+	PlayerID owner;          // which player owns the vehicle?
 
-	TileIndex tile;		// Current tile index
-	TileIndex dest_tile; // Heading for this tile
+	TileIndex tile;          // Current tile index
+	TileIndex dest_tile;     // Heading for this tile
 
-	int32 x_pos;			// coordinates
+	int32 x_pos;             // coordinates
 	int32 y_pos;
 	byte z_pos;
-	byte direction;		// facing
+	byte direction;          // facing
 
-	byte spritenum; // currently displayed sprite index
-	                // 0xfd == custom sprite, 0xfe == custom second head sprite
-	                // 0xff == reserved for another custom sprite
-	uint16 cur_image; // sprite number for this vehicle
-	byte sprite_width;// width of vehicle sprite
-	byte sprite_height;// height of vehicle sprite
-	byte z_height;		// z-height of vehicle sprite
-	int8 x_offs;			// x offset for vehicle sprite
-	int8 y_offs;			// y offset for vehicle sprite
+	byte spritenum;          // currently displayed sprite index
+	                         // 0xfd == custom sprite, 0xfe == custom second head sprite
+	                         // 0xff == reserved for another custom sprite
+	uint16 cur_image;        // sprite number for this vehicle
+	byte sprite_width;       // width of vehicle sprite
+	byte sprite_height;      // height of vehicle sprite
+	byte z_height;           // z-height of vehicle sprite
+	int8 x_offs;             // x offset for vehicle sprite
+	int8 y_offs;             // y offset for vehicle sprite
 	EngineID engine_type;
 
 	// for randomized variational spritegroups
 	// bitmask used to resolve them; parts of it get reseeded when triggers
 	// of corresponding spritegroups get matched
 	byte random_bits;
-	byte waiting_triggers; // triggers to be yet matched
+	byte waiting_triggers;   // triggers to be yet matched
 
-	uint16 max_speed;	// maximum speed
-	uint16 cur_speed;	// current speed
-	byte subspeed;		// fractional speed
-	byte acceleration; // used by train & aircraft
+	uint16 max_speed;        // maximum speed
+	uint16 cur_speed;        // current speed
+	byte subspeed;           // fractional speed
+	byte acceleration;       // used by train & aircraft
 	byte progress;
 
-	byte vehstatus;		// Status
+	byte vehstatus;          // Status
 	StationID last_station_visited;
 
-	CargoID cargo_type;	// type of cargo this vehicle is carrying
-	byte cargo_days; // how many days have the pieces been in transit
-	StationID cargo_source;// source of cargo
-	uint16 cargo_cap;	// total capacity
-	uint16 cargo_count;// how many pieces are used
+	CargoID cargo_type;      // type of cargo this vehicle is carrying
+	byte cargo_days;         // how many days have the pieces been in transit
+	StationID cargo_source;  // source of cargo
+	uint16 cargo_cap;        // total capacity
+	uint16 cargo_count;      // how many pieces are used
 	byte cargo_subtype;      ///< Used for livery refits (NewGRF variations)
 
-	byte day_counter; // increased by one for each day
-	byte tick_counter;// increased by one for each tick
+	byte day_counter;        // increased by one for each day
+	byte tick_counter;       // increased by one for each tick
 
 	/* Begin Order-stuff */
 	Order current_order;     ///< The current order (+ status, like: loading)
@@ -220,7 +220,7 @@ struct Vehicle {
 	byte breakdown_chance;
 	Year build_year;
 
-	bool leave_depot_instantly;	// NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
+	bool leave_depot_instantly; // NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 
 	uint16 load_unload_time_rem;
 

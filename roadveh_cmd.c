@@ -1204,7 +1204,7 @@ static const byte _road_veh_data_1[] = {
 	15, 15, 11, 11
 };
 
-static const byte _roadveh_data_2[4] = { 0,1,8,9 };
+static const byte _roadveh_data_2[4] = { 0, 1, 8, 9 };
 
 static void RoadVehController(Vehicle *v)
 {

@@ -3,22 +3,22 @@
 #ifndef AIRPORT_H
 #define AIRPORT_H
 
-enum {MAX_TERMINALS = 10};
-enum {MAX_HELIPADS  = 4};
+enum {MAX_TERMINALS =  10};
+enum {MAX_HELIPADS  =   4};
 enum {MAX_ELEMENTS  = 255};
-enum {MAX_HEADINGS  = 22};
+enum {MAX_HEADINGS  =  22};
 
 // Airport types
 enum {
-	AT_SMALL         = 0,
-	AT_LARGE         = 1,
-	AT_HELIPORT      = 2,
-	AT_METROPOLITAN  = 3,
-	AT_INTERNATIONAL = 4,
-	AT_COMMUTER      = 5,
-	AT_HELIDEPOT     = 6,
-	AT_INTERCON      = 7,
-	AT_HELISTATION   = 8,
+	AT_SMALL         =  0,
+	AT_LARGE         =  1,
+	AT_HELIPORT      =  2,
+	AT_METROPOLITAN  =  3,
+	AT_INTERNATIONAL =  4,
+	AT_COMMUTER      =  5,
+	AT_HELIDEPOT     =  6,
+	AT_INTERCON      =  7,
+	AT_HELISTATION   =  8,
 	AT_OILRIG        = 15
 };
 
@@ -30,28 +30,28 @@ enum {
 };
 
 enum {
-	AMED_NOSPDCLAMP = 1<<0,
-	AMED_TAKEOFF    = 1<<1,
-	AMED_SLOWTURN   = 1<<2,
-	AMED_LAND       = 1<<3,
-	AMED_EXACTPOS   = 1<<4,
-	AMED_BRAKE      = 1<<5,
-	AMED_HELI_RAISE = 1<<6,
-	AMED_HELI_LOWER = 1<<7,
+	AMED_NOSPDCLAMP = 1 << 0,
+	AMED_TAKEOFF    = 1 << 1,
+	AMED_SLOWTURN   = 1 << 2,
+	AMED_LAND       = 1 << 3,
+	AMED_EXACTPOS   = 1 << 4,
+	AMED_BRAKE      = 1 << 5,
+	AMED_HELI_RAISE = 1 << 6,
+	AMED_HELI_LOWER = 1 << 7,
 };
 
 /* Movement States on Airports (headings target) */
 enum {
-	TO_ALL         = 0,
-	HANGAR         = 1,
-	TERM1          = 2,
-	TERM2          = 3,
-	TERM3          = 4,
-	TERM4          = 5,
-	TERM5          = 6,
-	TERM6          = 7,
-	HELIPAD1       = 8,
-	HELIPAD2       = 9,
+	TO_ALL         =  0,
+	HANGAR         =  1,
+	TERM1          =  2,
+	TERM2          =  3,
+	TERM3          =  4,
+	TERM4          =  5,
+	TERM5          =  6,
+	TERM6          =  7,
+	HELIPAD1       =  8,
+	HELIPAD2       =  9,
 	TAKEOFF        = 10,
 	STARTTAKEOFF   = 11,
 	ENDTAKEOFF     = 12,
@@ -75,18 +75,18 @@ static const byte _airport_terminal_flag[] =  {0, 1, 2, 3, 4, 5, 22, 23, 0, 0, 6
 /* Movement Blocks on Airports */
 // blocks (eg_airport_flags)
 enum {
-	TERM1_block              = 1 << 0,
-	TERM2_block              = 1 << 1,
-	TERM3_block              = 1 << 2,
-	TERM4_block              = 1 << 3,
-	TERM5_block              = 1 << 4,
-	TERM6_block              = 1 << 5,
-	HELIPAD1_block           = 1 << 6,
-	HELIPAD2_block           = 1 << 7,
-	RUNWAY_IN_OUT_block      = 1 << 8,
-	RUNWAY_IN_block          = 1 << 8,
-	AIRPORT_BUSY_block       = 1 << 8,
-	RUNWAY_OUT_block         = 1 << 9,
+	TERM1_block              = 1 <<  0,
+	TERM2_block              = 1 <<  1,
+	TERM3_block              = 1 <<  2,
+	TERM4_block              = 1 <<  3,
+	TERM5_block              = 1 <<  4,
+	TERM6_block              = 1 <<  5,
+	HELIPAD1_block           = 1 <<  6,
+	HELIPAD2_block           = 1 <<  7,
+	RUNWAY_IN_OUT_block      = 1 <<  8,
+	RUNWAY_IN_block          = 1 <<  8,
+	AIRPORT_BUSY_block       = 1 <<  8,
+	RUNWAY_OUT_block         = 1 <<  9,
 	TAXIWAY_BUSY_block       = 1 << 10,
 	OUT_WAY_block            = 1 << 11,
 	IN_WAY_block             = 1 << 12,

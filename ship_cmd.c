@@ -287,14 +287,14 @@ static void UpdateShipDeltaXY(Vehicle *v, int dir)
 {
 #define MKIT(d,c,b,a) ((a&0xFF)<<24) | ((b&0xFF)<<16) | ((c&0xFF)<<8) | ((d&0xFF)<<0)
 	static const uint32 _delta_xy_table[8] = {
-		MKIT( -3, -3,  6,  6),
-		MKIT(-16, -3, 32,  6),
-		MKIT( -3, -3,  6,  6),
-		MKIT( -3,-16,  6, 32),
-		MKIT( -3, -3,  6,  6),
-		MKIT(-16, -3, 32,  6),
-		MKIT( -3, -3,  6,  6),
-		MKIT( -3,-16,  6, 32),
+		MKIT( -3,  -3,  6,  6),
+		MKIT(-16,  -3, 32,  6),
+		MKIT( -3,  -3,  6,  6),
+		MKIT( -3, -16,  6, 32),
+		MKIT( -3,  -3,  6,  6),
+		MKIT(-16,  -3, 32,  6),
+		MKIT( -3,  -3,  6,  6),
+		MKIT( -3, -16,  6, 32),
 	};
 #undef MKIT
 	uint32 x = _delta_xy_table[dir];

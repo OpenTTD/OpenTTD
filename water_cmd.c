@@ -649,7 +649,7 @@ static void FloodVehicle(Vehicle *v)
 void TileLoop_Water(TileIndex tile)
 {
 	static const TileIndexDiffC _tile_loop_offs_array[][5] = {
-		// tile to mod																shore?				shore?
+		// tile to mod              shore?    shore?
 		{{-1,  0}, {0, 0}, {0, 1}, {-1,  0}, {-1,  1}},
 		{{ 0,  1}, {0, 1}, {1, 1}, { 0,  2}, { 1,  2}},
 		{{ 1,  0}, {1, 0}, {1, 1}, { 2,  0}, { 2,  1}},
@@ -745,17 +745,17 @@ static uint32 VehicleEnter_Water(Vehicle *v, TileIndex tile, int x, int y)
 
 
 const TileTypeProcs _tile_type_water_procs = {
-	DrawTile_Water,						/* draw_tile_proc */
-	GetSlopeZ_Water,					/* get_slope_z_proc */
-	ClearTile_Water,					/* clear_tile_proc */
-	GetAcceptedCargo_Water,		/* get_accepted_cargo_proc */
-	GetTileDesc_Water,				/* get_tile_desc_proc */
-	GetTileTrackStatus_Water,/* get_tile_track_status_proc */
-	ClickTile_Water,					/* click_tile_proc */
-	AnimateTile_Water,				/* animate_tile_proc */
-	TileLoop_Water,						/* tile_loop_clear */
-	ChangeTileOwner_Water,		/* change_tile_owner_clear */
-	NULL,											/* get_produced_cargo_proc */
-	VehicleEnter_Water,				/* vehicle_enter_tile_proc */
-	GetSlopeTileh_Water,			/* get_slope_tileh_proc */
+	DrawTile_Water,           /* draw_tile_proc */
+	GetSlopeZ_Water,          /* get_slope_z_proc */
+	ClearTile_Water,          /* clear_tile_proc */
+	GetAcceptedCargo_Water,   /* get_accepted_cargo_proc */
+	GetTileDesc_Water,        /* get_tile_desc_proc */
+	GetTileTrackStatus_Water, /* get_tile_track_status_proc */
+	ClickTile_Water,          /* click_tile_proc */
+	AnimateTile_Water,        /* animate_tile_proc */
+	TileLoop_Water,           /* tile_loop_clear */
+	ChangeTileOwner_Water,    /* change_tile_owner_clear */
+	NULL,                     /* get_produced_cargo_proc */
+	VehicleEnter_Water,       /* vehicle_enter_tile_proc */
+	GetSlopeTileh_Water,      /* get_slope_tileh_proc */
 };

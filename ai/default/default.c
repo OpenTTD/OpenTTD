@@ -34,30 +34,30 @@ static uint _ai_service_interval;
 typedef void AiStateAction(Player *p);
 
 enum {
-	AIS_0 = 0,
-	AIS_1 = 1,
-	AIS_VEH_LOOP = 2,
-	AIS_VEH_CHECK_REPLACE_VEHICLE = 3,
-	AIS_VEH_DO_REPLACE_VEHICLE = 4,
-	AIS_WANT_NEW_ROUTE = 5,
-	AIS_BUILD_DEFAULT_RAIL_BLOCKS = 6,
-	AIS_BUILD_RAIL = 7,
-	AIS_BUILD_RAIL_VEH = 8,
-	AIS_DELETE_RAIL_BLOCKS = 9,
-	AIS_BUILD_DEFAULT_ROAD_BLOCKS = 10,
-	AIS_BUILD_ROAD = 11,
-	AIS_BUILD_ROAD_VEHICLES = 12,
-	AIS_DELETE_ROAD_BLOCKS = 13,
-	AIS_AIRPORT_STUFF = 14,
+	AIS_0                            =  0,
+	AIS_1                            =  1,
+	AIS_VEH_LOOP                     =  2,
+	AIS_VEH_CHECK_REPLACE_VEHICLE    =  3,
+	AIS_VEH_DO_REPLACE_VEHICLE       =  4,
+	AIS_WANT_NEW_ROUTE               =  5,
+	AIS_BUILD_DEFAULT_RAIL_BLOCKS    =  6,
+	AIS_BUILD_RAIL                   =  7,
+	AIS_BUILD_RAIL_VEH               =  8,
+	AIS_DELETE_RAIL_BLOCKS           =  9,
+	AIS_BUILD_DEFAULT_ROAD_BLOCKS    = 10,
+	AIS_BUILD_ROAD                   = 11,
+	AIS_BUILD_ROAD_VEHICLES          = 12,
+	AIS_DELETE_ROAD_BLOCKS           = 13,
+	AIS_AIRPORT_STUFF                = 14,
 	AIS_BUILD_DEFAULT_AIRPORT_BLOCKS = 15,
-	AIS_BUILD_AIRCRAFT_VEHICLES = 16,
-	AIS_CHECK_SHIP_STUFF = 17,
-	AIS_BUILD_DEFAULT_SHIP_BLOCKS = 18,
-	AIS_DO_SHIP_STUFF = 19,
-	AIS_SELL_VEHICLE = 20,
-	AIS_REMOVE_STATION = 21,
-	AIS_REMOVE_TRACK = 22,
-	AIS_REMOVE_SINGLE_RAIL_TILE = 23
+	AIS_BUILD_AIRCRAFT_VEHICLES      = 16,
+	AIS_CHECK_SHIP_STUFF             = 17,
+	AIS_BUILD_DEFAULT_SHIP_BLOCKS    = 18,
+	AIS_DO_SHIP_STUFF                = 19,
+	AIS_SELL_VEHICLE                 = 20,
+	AIS_REMOVE_STATION               = 21,
+	AIS_REMOVE_TRACK                 = 22,
+	AIS_REMOVE_SINGLE_RAIL_TILE      = 23
 };
 
 
@@ -1668,24 +1668,24 @@ static int AiBuildDefaultRailTrack(TileIndex tile, byte p0, byte p1, byte p2, by
 
 static const byte _terraform_up_flags[] = {
 	14, 13, 12, 11,
-	10, 9, 8, 7,
-	6, 5, 4, 3,
-	2, 1, 0, 1,
-	2, 1, 4, 1,
-	2, 1, 8, 1,
-	2, 1, 4, 2,
-	2, 1
+	10,  9,  8,  7,
+	 6,  5,  4,  3,
+	 2,  1,  0,  1,
+	 2,  1,  4,  1,
+	 2,  1,  8,  1,
+	 2,  1,  4,  2,
+	 2,  1
 };
 
 static const byte _terraform_down_flags[] = {
-	1, 2, 3, 4,
-	5, 6, 1, 8,
+	1,  2, 3,  4,
+	5,  6, 1,  8,
 	9, 10, 8, 12,
-	4, 2, 0, 0,
-	1, 2, 3, 4,
-	5, 6, 2, 8,
+	4,  2, 0,  0,
+	1,  2, 3,  4,
+	5,  6, 2,  8,
 	9, 10, 1, 12,
-	8, 4
+	8,  4
 };
 
 static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
@@ -1865,14 +1865,14 @@ typedef struct AiRailFinder {
 } AiRailFinder;
 
 static const byte _ai_table_15[4][8] = {
-	{0, 0, 4, 3, 3, 1, 128+0, 64},
-	{1, 1, 2, 0, 4, 2, 128+1, 65},
-	{0, 2, 2, 3, 5, 1, 128+2, 66},
-	{1, 3, 5, 0, 3, 2, 128+3, 67}
+	{0, 0, 4, 3, 3, 1, 128 + 0, 64},
+	{1, 1, 2, 0, 4, 2, 128 + 1, 65},
+	{0, 2, 2, 3, 5, 1, 128 + 2, 66},
+	{1, 3, 5, 0, 3, 2, 128 + 3, 67}
 };
 
-static const byte _dir_table_1[] = {3, 9, 12, 6};
-static const byte _dir_table_2[] = {12, 6, 3, 9};
+static const byte _dir_table_1[] = { 3, 9, 12, 6};
+static const byte _dir_table_2[] = {12, 6,  3, 9};
 
 
 static bool AiIsTileBanned(const Player* p, TileIndex tile, byte val)
@@ -2729,8 +2729,9 @@ typedef struct AiRoadEnum {
 } AiRoadEnum;
 
 static const byte _dir_by_track[] = {
-	0,1,0,1,2,1, 0,0,
-	2,3,3,2,3,0,
+	0, 1, 0, 1, 2, 1,
+	0, 0,
+	2, 3, 3, 2, 3, 0,
 };
 
 static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir);

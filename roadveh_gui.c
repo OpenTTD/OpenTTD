@@ -272,14 +272,14 @@ do_change_service_int:
 }
 
 static const Widget _roadveh_details_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   339,     0,    13, STR_900C_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   340,   379,     0,    13, STR_01AA_NAME,		STR_902E_NAME_ROAD_VEHICLE},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   379,    14,    55, 0x0,							STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   379,    56,    88, 0x0,							STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    89,    94, STR_0188,				STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    95,   100, STR_0189,				STR_884E_DECREASE_SERVICING_INTERVAL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    11,   379,    89,   100, 0x0,							STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   339,     0,    13, STR_900C_DETAILS, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   340,   379,     0,    13, STR_01AA_NAME,    STR_902E_NAME_ROAD_VEHICLE},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   379,    14,    55, 0x0,              STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   379,    56,    88, 0x0,              STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    89,    94, STR_0188,         STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    95,   100, STR_0189,         STR_884E_DECREASE_SERVICING_INTERVAL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,    11,   379,    89,   100, 0x0,              STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -427,21 +427,21 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _roadveh_view_widgets[] = {
-{ WWT_CLOSEBOX,   RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5, STR_018B_CLOSE_WINDOW },
-{ WWT_CAPTION,    RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_9002, STR_018C_WINDOW_TITLE_DRAG_THIS },
-{ WWT_STICKYBOX,  RESIZE_LR,    14, 238, 249,   0,  13, 0x0,      STR_STICKY_BUTTON },
-{ WWT_IMGBTN,     RESIZE_RB,    14,   0, 231,  14, 103, 0x0,      STR_NULL },
-{ WWT_6,          RESIZE_RB,    14,   2, 229,  16, 101, 0x0,      STR_NULL },
-{ WWT_PUSHIMGBTN, RESIZE_RTB,   14,   0, 237, 104, 115, 0x0,      STR_901C_CURRENT_VEHICLE_ACTION },
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  14,  31, 0x2AB,    STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE },
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, 0x2AE,    STR_901F_SEND_VEHICLE_TO_DEPOT },
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2CB,    STR_9020_FORCE_VEHICLE_TO_TURN_AROUND },
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B2,    STR_901D_SHOW_VEHICLE_S_ORDERS },
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B3,    STR_9021_SHOW_ROAD_VEHICLE_DETAILS },
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_ROADVEH,      STR_CLONE_ROAD_VEHICLE_INFO },
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2B4,    STR_REFIT_ROAD_VEHICLE_TO_CARRY },
-{ WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,      STR_NULL },
-{ WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,      STR_NULL },
+{ WWT_CLOSEBOX,   RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,          STR_018B_CLOSE_WINDOW },
+{ WWT_CAPTION,    RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_9002,          STR_018C_WINDOW_TITLE_DRAG_THIS },
+{ WWT_STICKYBOX,  RESIZE_LR,    14, 238, 249,   0,  13, 0x0,               STR_STICKY_BUTTON },
+{ WWT_IMGBTN,     RESIZE_RB,    14,   0, 231,  14, 103, 0x0,               STR_NULL },
+{ WWT_6,          RESIZE_RB,    14,   2, 229,  16, 101, 0x0,               STR_NULL },
+{ WWT_PUSHIMGBTN, RESIZE_RTB,   14,   0, 237, 104, 115, 0x0,               STR_901C_CURRENT_VEHICLE_ACTION },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  14,  31, 0x2AB,             STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, 0x2AE,             STR_901F_SEND_VEHICLE_TO_DEPOT },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2CB,             STR_9020_FORCE_VEHICLE_TO_TURN_AROUND },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B2,             STR_901D_SHOW_VEHICLE_S_ORDERS },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B3,             STR_9021_SHOW_ROAD_VEHICLE_DETAILS },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_ROADVEH, STR_CLONE_ROAD_VEHICLE_INFO },
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2B4,             STR_REFIT_ROAD_VEHICLE_TO_CARRY },
+{ WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,               STR_NULL },
+{ WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,               STR_NULL },
 { WIDGETS_END }
 };
 
@@ -580,14 +580,14 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _new_road_veh_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   247,     0,    13, STR_9006_NEW_ROAD_VEHICLES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   235,    14,   125, 0x801,									STR_9026_ROAD_VEHICLE_SELECTION},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   236,   247,    14,   125, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   247,   126,   197, 0x0,										STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   117,   198,   209, STR_9007_BUILD_VEHICLE,STR_9027_BUILD_THE_HIGHLIGHTED_ROAD},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   118,   235,   198,   209, STR_9034_RENAME,				STR_9035_RENAME_ROAD_VEHICLE_TYPE},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   236,   247,   198,   209, 0x0,										STR_RESIZE_BUTTON},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   235,    14,   125, 0x801,                      STR_9026_ROAD_VEHICLE_SELECTION},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   236,   247,    14,   125, 0x0,                        STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   247,   126,   197, 0x0,                        STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   117,   198,   209, STR_9007_BUILD_VEHICLE,     STR_9027_BUILD_THE_HIGHLIGHTED_ROAD},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   118,   235,   198,   209, STR_9034_RENAME,            STR_9035_RENAME_ROAD_VEHICLE_TYPE},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   236,   247,   198,   209, 0x0,                        STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -870,19 +870,19 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _road_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5, 										STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   302,     0,    13, STR_9003_ROAD_VEHICLE_DEPOT,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   303,   314,     0,    13, 0x0,													STR_STICKY_BUTTON},
-{      WWT_PANEL,    RESIZE_LRB,    14,   280,   302,    14,    13, 0x0,													STR_NULL},
-{     WWT_IMGBTN,   RESIZE_LRTB,    14,   280,   302,    14,    55, 0x2A9,												STR_9024_DRAG_ROAD_VEHICLE_TO_HERE},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   302,     0,    13, STR_9003_ROAD_VEHICLE_DEPOT, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   303,   314,     0,    13, 0x0,                         STR_STICKY_BUTTON},
+{      WWT_PANEL,    RESIZE_LRB,    14,   280,   302,    14,    13, 0x0,                         STR_NULL},
+{     WWT_IMGBTN,   RESIZE_LRTB,    14,   280,   302,    14,    55, 0x2A9,                       STR_9024_DRAG_ROAD_VEHICLE_TO_HERE},
 
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   279,    14,    55, 0x305,												STR_9022_VEHICLES_CLICK_ON_VEHICLE},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   303,   314,    14,    55, 0x0,													STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   100,    56,    67, STR_9004_NEW_VEHICLES,				STR_9023_BUILD_NEW_ROAD_VEHICLE},
-{WWT_NODISTXTBTN,     RESIZE_TB,    14,   101,   200,    56,    67, STR_CLONE_ROAD_VEHICLE,		STR_CLONE_ROAD_VEHICLE_DEPOT_INFO},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   201,   302,    56,    67, STR_00E4_LOCATION,						STR_9025_CENTER_MAIN_VIEW_ON_ROAD},
-{      WWT_PANEL,    RESIZE_RTB,    14,   303,   302,    56,    67, 0x0,													STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   303,   314,    56,    67, 0x0,													STR_RESIZE_BUTTON},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   279,    14,    55, 0x305,                       STR_9022_VEHICLES_CLICK_ON_VEHICLE},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   303,   314,    14,    55, 0x0,                         STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   100,    56,    67, STR_9004_NEW_VEHICLES,       STR_9023_BUILD_NEW_ROAD_VEHICLE},
+{WWT_NODISTXTBTN,     RESIZE_TB,    14,   101,   200,    56,    67, STR_CLONE_ROAD_VEHICLE,      STR_CLONE_ROAD_VEHICLE_DEPOT_INFO},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   201,   302,    56,    67, STR_00E4_LOCATION,           STR_9025_CENTER_MAIN_VIEW_ON_ROAD},
+{      WWT_PANEL,    RESIZE_RTB,    14,   303,   302,    56,    67, 0x0,                         STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   303,   314,    56,    67, 0x0,                         STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -910,35 +910,35 @@ void ShowRoadDepotWindow(TileIndex tile)
 }
 
 static const Widget _player_roadveh_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                     STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,							STR_SORT_ORDER_TIP},
-{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,											STR_SORT_CRITERIA_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,								STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,											STR_NULL},
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9001_ROAD_VEHICLES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                    STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,            STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,                    STR_SORT_CRITERIA_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,               STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,                    STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   207, 0x701,                  STR_901A_ROAD_VEHICLES_CLICK_ON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   207, 0x0,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
 /* only for our road list, a 'Build Vehicle' button that opens the depot of the last built depot */
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   208,   219, STR_8815_NEW_VEHICLES,		STR_901B_BUILD_NEW_ROAD_VEHICLES},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   247,   208,   219, STR_REPLACE_VEHICLES,    STR_REPLACE_HELP},
-{      WWT_PANEL,    RESIZE_RTB,    14,   248,   247,   208,   219, 0x0,											STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   208,   219, 0x0,											STR_RESIZE_BUTTON},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   208,   219, STR_8815_NEW_VEHICLES,  STR_901B_BUILD_NEW_ROAD_VEHICLES},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   247,   208,   219, STR_REPLACE_VEHICLES,   STR_REPLACE_HELP},
+{      WWT_PANEL,    RESIZE_RTB,    14,   248,   247,   208,   219, 0x0,                    STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   208,   219, 0x0,                    STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const Widget _other_player_roadveh_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9001_ROAD_VEHICLES,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                     STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,							STR_SORT_ORDER_TIP},
-{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,											STR_SORT_CRITERIA_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,								STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,											STR_NULL},
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   207, 0x701,										STR_901A_ROAD_VEHICLES_CLICK_ON},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   207, 0x0,											STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   208,   219, 0x0,											STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   208,   219, 0x0,											STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9001_ROAD_VEHICLES, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                    STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,            STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,                    STR_SORT_CRITERIA_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,               STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,                    STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   207, 0x701,                  STR_901A_ROAD_VEHICLES_CLICK_ON},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   207, 0x0,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   208,   219, 0x0,                    STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   208,   219, 0x0,                    STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 

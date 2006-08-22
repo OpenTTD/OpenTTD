@@ -58,94 +58,94 @@ static inline void SetNewLandscapeType(byte landscape)
 
 // no longer static to allow calling from outside module
 const Widget _generate_landscape_widgets[] = {
-{  WWT_CLOSEBOX,  RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION,STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 337,  14, 267, STR_NULL,                STR_NULL},
+{  WWT_CLOSEBOX,  RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 337,  14, 267, STR_NULL,                     STR_NULL},
 
-{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  86,  24,  78, 0x1312,                  STR_030E_SELECT_TEMPERATE_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 166,  24,  78, 0x1314,                  STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  24,  78, 0x1316,                  STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  24,  78, 0x1318,                  STR_0311_SELECT_TOYLAND_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  86,  24,  78, 0x1312,                       STR_030E_SELECT_TEMPERATE_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 166,  24,  78, 0x1314,                       STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  24,  78, 0x1316,                       STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  24,  78, 0x1318,                       STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 149,  90, 101, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 150, 161,  90, 101, STR_0225,                STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 180, 215,  90, 101, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 227,  90, 101, STR_0225,                STR_NULL}, // Mapsize Y
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 149,  90, 101, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 150, 161,  90, 101, STR_0225,                     STR_NULL}, // Mapsize X
+{      WWT_PANEL, RESIZE_NONE, 12, 180, 215,  90, 101, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 227,  90, 101, STR_0225,                     STR_NULL}, // Mapsize Y
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 112, 123, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 112, 123, STR_0225,                STR_NULL}, // Number of towns
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 130, 141, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 130, 141, STR_0225,                STR_NULL}, // Number of industries
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 112, 123, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 112, 123, STR_0225,                     STR_NULL}, // Number of towns
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 130, 141, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 130, 141, STR_0225,                     STR_NULL}, // Number of industries
 
-{     WWT_IMGBTN, RESIZE_NONE, 15, 114, 194, 152, 163, STR_NULL,                STR_RANDOM_SEED_HELP}, // Edit box for seed
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 203, 285, 152, 163, STR_RANDOM,              STR_RANDOM_HELP},
+{     WWT_IMGBTN, RESIZE_NONE, 15, 114, 194, 152, 163, STR_NULL,                     STR_RANDOM_SEED_HELP}, // Edit box for seed
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 203, 285, 152, 163, STR_RANDOM,                   STR_RANDOM_HELP},
 
-{    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 228, 257, STR_GENERATE,            STR_NULL}, // Generate button
+{    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 228, 257, STR_GENERATE,                 STR_NULL}, // Generate button
 
-{     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 112, 123, SPR_ARROW_DOWN,          STR_029E_MOVE_THE_STARTING_DATE},
-{      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 112, 123, 0x0,                     STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 112, 123, SPR_ARROW_UP,            STR_029F_MOVE_THE_STARTING_DATE},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 112, 123, SPR_ARROW_DOWN,               STR_029E_MOVE_THE_STARTING_DATE},
+{      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 112, 123, 0x0,                          STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 112, 123, SPR_ARROW_UP,                 STR_029F_MOVE_THE_STARTING_DATE},
 
-{     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 130, 141, SPR_ARROW_DOWN,          STR_SNOW_LINE_DOWN},
-{      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 130, 141, 0x0,                     STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 130, 141, SPR_ARROW_UP,            STR_SNOW_LINE_UP},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 130, 141, SPR_ARROW_DOWN,               STR_SNOW_LINE_DOWN},
+{      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 130, 141, 0x0,                          STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 130, 141, SPR_ARROW_UP,                 STR_SNOW_LINE_UP},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 192, 203, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 192, 203, STR_0225,                STR_NULL}, // Tree placer
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 192, 203, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 192, 203, STR_0225,                     STR_NULL}, // Tree placer
 
-{      WWT_EMPTY, RESIZE_NONE, 12, 114, 231, 174, 185, STR_NULL,                STR_NULL},
-//{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 174, 185, STR_NULL,                STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 231, 174, 185, STR_NULL,                STR_NULL},
-//{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 174, 185, STR_0225,                STR_NULL}, // Landscape generator
-//{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 210, 221, STR_NULL,                STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 231, 210, 221, STR_NULL,                STR_NULL},
-//{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 210, 221, STR_0225,                STR_NULL}, // Terrain type
-//{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 228, 239, STR_NULL,                STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 231, 228, 239, STR_NULL,                STR_NULL},
-//{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 228, 239, STR_0225,                STR_NULL}, // Water quantity
-{      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 246, 257, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 246, 257, STR_0225,                STR_NULL}, // Map smoothness
+{      WWT_EMPTY, RESIZE_NONE, 12, 114, 231, 174, 185, STR_NULL,                     STR_NULL},
+//{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 174, 185, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 231, 174, 185, STR_NULL,                     STR_NULL},
+//{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 174, 185, STR_0225,                     STR_NULL}, // Landscape generator
+//{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 210, 221, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 231, 210, 221, STR_NULL,                     STR_NULL},
+//{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 210, 221, STR_0225,                     STR_NULL}, // Terrain type
+//{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 228, 239, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 231, 228, 239, STR_NULL,                     STR_NULL},
+//{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 228, 239, STR_0225,                     STR_NULL}, // Water quantity
+{      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 246, 257, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 246, 257, STR_0225,                     STR_NULL}, // Map smoothness
 {   WIDGETS_END},
 };
 
 const Widget _heightmap_load_widgets[] = {
-{   WWT_CLOSEBOX, RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION,STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 337,  14, 235, STR_NULL,                STR_NULL},
+{   WWT_CLOSEBOX, RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 337,  14, 235, STR_NULL,                     STR_NULL},
 
-{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  86,  24,  78, 0x1312,                  STR_030E_SELECT_TEMPERATE_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 166,  24,  78, 0x1314,                  STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  24,  78, 0x1316,                  STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  24,  78, 0x1318,                  STR_0311_SELECT_TOYLAND_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  86,  24,  78, 0x1312,                       STR_030E_SELECT_TEMPERATE_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 166,  24,  78, 0x1314,                       STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  24,  78, 0x1316,                       STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
+{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  24,  78, 0x1318,                       STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 149, 112, 123, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 150, 161, 112, 123, STR_0225,                STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 180, 215, 112, 123, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 227, 112, 123, STR_0225,                STR_NULL}, // Mapsize Y
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 149, 112, 123, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 150, 161, 112, 123, STR_0225,                     STR_NULL}, // Mapsize X
+{      WWT_PANEL, RESIZE_NONE, 12, 180, 215, 112, 123, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 227, 112, 123, STR_0225,                     STR_NULL}, // Mapsize Y
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 134, 145, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 134, 145, STR_0225,                STR_NULL}, // Number of towns
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 152, 163, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 152, 163, STR_0225,                STR_NULL}, // Number of industries
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 134, 145, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 134, 145, STR_0225,                     STR_NULL}, // Number of towns
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 152, 163, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 152, 163, STR_0225,                     STR_NULL}, // Number of industries
 
-{     WWT_IMGBTN, RESIZE_NONE, 15, 114, 194, 174, 185, STR_NULL,                STR_RANDOM_SEED_HELP}, // Edit box for seed
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 203, 285, 174, 185, STR_RANDOM,              STR_RANDOM_HELP},
+{     WWT_IMGBTN, RESIZE_NONE, 15, 114, 194, 174, 185, STR_NULL,                     STR_RANDOM_SEED_HELP}, // Edit box for seed
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 203, 285, 174, 185, STR_RANDOM,                   STR_RANDOM_HELP},
 
-{    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 196, 225, STR_GENERATE,            STR_NULL}, // Generate button
+{    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 196, 225, STR_GENERATE,                 STR_NULL}, // Generate button
 
-{     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 134, 145, SPR_ARROW_DOWN,          STR_029E_MOVE_THE_STARTING_DATE},
-{      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 134, 145, 0x0,                     STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 134, 145, SPR_ARROW_UP,            STR_029F_MOVE_THE_STARTING_DATE},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 216, 227, 134, 145, SPR_ARROW_DOWN,               STR_029E_MOVE_THE_STARTING_DATE},
+{      WWT_PANEL, RESIZE_NONE, 12, 228, 314, 134, 145, 0x0,                          STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 134, 145, SPR_ARROW_UP,                 STR_029F_MOVE_THE_STARTING_DATE},
 
-{     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 152, 163, SPR_ARROW_DOWN,          STR_SNOW_LINE_DOWN},
-{      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 152, 163, 0x0,                     STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 152, 163, SPR_ARROW_UP,            STR_SNOW_LINE_UP},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 282, 293, 152, 163, SPR_ARROW_DOWN,               STR_SNOW_LINE_DOWN},
+{      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 152, 163, 0x0,                          STR_NULL},
+{     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 152, 163, SPR_ARROW_UP,                 STR_SNOW_LINE_UP},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 196, 207, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 196, 207, STR_0225,                STR_NULL}, // Tree placer
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 196, 207, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 196, 207, STR_0225,                     STR_NULL}, // Tree placer
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 214, 225, STR_NULL,                STR_NULL},
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 214, 225, STR_0225,                STR_NULL}, // Heightmap rotation
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 214, 225, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 214, 225, STR_0225,                     STR_NULL}, // Heightmap rotation
 {   WIDGETS_END},
 };
 

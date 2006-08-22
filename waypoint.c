@@ -401,17 +401,17 @@ void InitializeWaypoints(void)
 }
 
 static const SaveLoad _waypoint_desc[] = {
-	SLE_CONDVAR(Waypoint, xy, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Waypoint, xy, SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_CONDVAR(Waypoint, town_index, SLE_UINT16, 12, SL_MAX_VERSION),
-	SLE_CONDVAR(Waypoint, town_cn, SLE_UINT8, 12, SL_MAX_VERSION),
-	SLE_VAR(Waypoint, string, SLE_UINT16),
-	SLE_VAR(Waypoint, deleted, SLE_UINT8),
+	SLE_CONDVAR(Waypoint, xy,         SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLE_CONDVAR(Waypoint, xy,         SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(Waypoint, town_index, SLE_UINT16,                 12, SL_MAX_VERSION),
+	SLE_CONDVAR(Waypoint, town_cn,    SLE_UINT8,                  12, SL_MAX_VERSION),
+	    SLE_VAR(Waypoint, string,     SLE_UINT16),
+	    SLE_VAR(Waypoint, deleted,    SLE_UINT8),
 
-	SLE_CONDVAR(Waypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32, 3, 30),
-	SLE_CONDVAR(Waypoint, build_date, SLE_INT32,  31, SL_MAX_VERSION),
-	SLE_CONDVAR(Waypoint, localidx,   SLE_UINT8,   3, SL_MAX_VERSION),
-	SLE_CONDVAR(Waypoint, grfid,      SLE_UINT32, 17, SL_MAX_VERSION),
+	SLE_CONDVAR(Waypoint, build_date, SLE_FILE_U16 | SLE_VAR_I32,  3, 30),
+	SLE_CONDVAR(Waypoint, build_date, SLE_INT32,                  31, SL_MAX_VERSION),
+	SLE_CONDVAR(Waypoint, localidx,   SLE_UINT8,                   3, SL_MAX_VERSION),
+	SLE_CONDVAR(Waypoint, grfid,      SLE_UINT32,                 17, SL_MAX_VERSION),
 
 	SLE_END()
 };

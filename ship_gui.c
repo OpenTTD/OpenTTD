@@ -127,11 +127,11 @@ static void ShipRefitWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _ship_refit_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,			STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,									STR_983D_SELECT_TYPE_OF_CARGO_FOR},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,									STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   158,   169, STR_983C_REFIT_SHIP,	STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,                 STR_983D_SELECT_TYPE_OF_CARGO_FOR},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,                 STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   158,   169, STR_983C_REFIT_SHIP, STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED},
 {   WIDGETS_END},
 };
 
@@ -268,14 +268,14 @@ do_change_service_int:
 
 
 static const Widget _ship_details_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,				STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   364,     0,    13, STR_9811_DETAILS,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   365,   404,     0,    13, STR_01AA_NAME,		STR_982F_NAME_SHIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   404,    14,    55, 0x0,							STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   404,    56,    88, 0x0,							STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    89,    94, STR_0188,				STR_884D_INCREASE_SERVICING_INTERVAL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    95,   100, STR_0189,				STR_884E_DECREASE_SERVICING_INTERVAL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    11,   404,    89,   100, 0x0,							STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   364,     0,    13, STR_9811_DETAILS, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   365,   404,     0,    13, STR_01AA_NAME,    STR_982F_NAME_SHIP},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   404,    14,    55, 0x0,              STR_NULL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   404,    56,    88, 0x0,              STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    89,    94, STR_0188,         STR_884D_INCREASE_SERVICING_INTERVAL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,    95,   100, STR_0189,         STR_884E_DECREASE_SERVICING_INTERVAL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,    11,   404,    89,   100, 0x0,              STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -411,14 +411,14 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _new_ship_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,						STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   254,     0,    13, STR_9808_NEW_SHIPS,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   242,    14,   109, 0x401,								STR_9825_SHIP_SELECTION_LIST_CLICK},
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   243,   254,    14,   109, 0x0,									STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   254,   110,   161, 0x0,									STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   121,   162,   173, STR_9809_BUILD_SHIP,	STR_9826_BUILD_THE_HIGHLIGHTED_SHIP},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   122,   242,   162,   173, STR_9836_RENAME,			STR_9837_RENAME_SHIP_TYPE},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   243,   254,   162,   173, 0x0,											STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   254,     0,    13, STR_9808_NEW_SHIPS,  STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   242,    14,   109, 0x401,               STR_9825_SHIP_SELECTION_LIST_CLICK},
+{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   243,   254,    14,   109, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   254,   110,   161, 0x0,                 STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   121,   162,   173, STR_9809_BUILD_SHIP, STR_9826_BUILD_THE_HIGHLIGHTED_SHIP},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   122,   242,   162,   173, STR_9836_RENAME,     STR_9837_RENAME_SHIP_TYPE},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   243,   254,   162,   173, 0x0,                 STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -571,20 +571,20 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _ship_view_widgets[] = {
-{ WWT_CLOSEBOX,   RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{ WWT_CAPTION,    RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_980F, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_STICKYBOX,  RESIZE_LR,    14, 238, 249,   0,  13, 0x0,      STR_STICKY_BUTTON},
-{ WWT_IMGBTN,     RESIZE_RB,    14,   0, 231,  14, 103, 0x0,      STR_NULL},
-{ WWT_6,          RESIZE_RB,    14,   2, 229,  16, 101, 0x0,      STR_NULL},
-{ WWT_PUSHIMGBTN, RESIZE_RTB,   14,   0, 237, 104, 115, 0x0,      STR_9827_CURRENT_SHIP_ACTION_CLICK},
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  14,  31, 0x2AB,    STR_9829_CENTER_MAIN_VIEW_ON_SHIP},
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, 0x2B0,    STR_982A_SEND_SHIP_TO_DEPOT},
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2B4,    STR_983A_REFIT_CARGO_SHIP_TO_CARRY},
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B2,    STR_9828_SHOW_SHIP_S_ORDERS},
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B3,    STR_982B_SHOW_SHIP_DETAILS},
-{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_SHIP,      STR_CLONE_SHIP_INFO},
-{ WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,      STR_NULL },
-{ WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,      STR_NULL },
+{ WWT_CLOSEBOX,   RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,       STR_018B_CLOSE_WINDOW},
+{ WWT_CAPTION,    RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_980F,       STR_018C_WINDOW_TITLE_DRAG_THIS},
+{ WWT_STICKYBOX,  RESIZE_LR,    14, 238, 249,   0,  13, 0x0,            STR_STICKY_BUTTON},
+{ WWT_IMGBTN,     RESIZE_RB,    14,   0, 231,  14, 103, 0x0,            STR_NULL},
+{ WWT_6,          RESIZE_RB,    14,   2, 229,  16, 101, 0x0,            STR_NULL},
+{ WWT_PUSHIMGBTN, RESIZE_RTB,   14,   0, 237, 104, 115, 0x0,            STR_9827_CURRENT_SHIP_ACTION_CLICK},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  14,  31, 0x2AB,          STR_9829_CENTER_MAIN_VIEW_ON_SHIP},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, 0x2B0,          STR_982A_SEND_SHIP_TO_DEPOT},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, 0x2B4,          STR_983A_REFIT_CARGO_SHIP_TO_CARRY},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, 0x2B2,          STR_9828_SHOW_SHIP_S_ORDERS},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, 0x2B3,          STR_982B_SHOW_SHIP_DETAILS},
+{ WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_SHIP, STR_CLONE_SHIP_INFO},
+{ WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,            STR_NULL },
+{ WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,            STR_NULL },
 { WIDGETS_END }
 };
 
@@ -854,19 +854,19 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _ship_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,								STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, STR_9803_SHIP_DEPOT,		STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   293,   304,     0,    13, 0x0,										STR_STICKY_BUTTON},
-{      WWT_PANEL,    RESIZE_LRB,    14,   270,   292,    14,    13, 0x0,										STR_NULL},
-{     WWT_IMGBTN,   RESIZE_LRTB,    14,   270,   292,    14,    61, 0x2A9,									STR_9821_DRAG_SHIP_TO_HERE_TO_SELL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, STR_9803_SHIP_DEPOT, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   293,   304,     0,    13, 0x0,                 STR_STICKY_BUTTON},
+{      WWT_PANEL,    RESIZE_LRB,    14,   270,   292,    14,    13, 0x0,                 STR_NULL},
+{     WWT_IMGBTN,   RESIZE_LRTB,    14,   270,   292,    14,    61, 0x2A9,               STR_9821_DRAG_SHIP_TO_HERE_TO_SELL},
 
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    61, 0x203,									STR_981F_SHIPS_CLICK_ON_SHIP_FOR},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   293,   304,    14,    61, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    96,    62,    73, STR_9804_NEW_SHIPS,			STR_9820_BUILD_NEW_SHIP},
-{WWT_NODISTXTBTN,     RESIZE_TB,    14,    97,   194,    62,    73, STR_CLONE_SHIP,		STR_CLONE_SHIP_DEPOT_INFO},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   195,   292,    62,    73, STR_00E4_LOCATION,			STR_9822_CENTER_MAIN_VIEW_ON_SHIP},
-{      WWT_PANEL,    RESIZE_RTB,    14,   293,   292,    62,    73, 0x0,													STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   293,   304,    62,    73, 0x0,										STR_RESIZE_BUTTON},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    61, 0x203,               STR_981F_SHIPS_CLICK_ON_SHIP_FOR},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   293,   304,    14,    61, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    96,    62,    73, STR_9804_NEW_SHIPS,  STR_9820_BUILD_NEW_SHIP},
+{WWT_NODISTXTBTN,     RESIZE_TB,    14,    97,   194,    62,    73, STR_CLONE_SHIP,      STR_CLONE_SHIP_DEPOT_INFO},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   195,   292,    62,    73, STR_00E4_LOCATION,   STR_9822_CENTER_MAIN_VIEW_ON_SHIP},
+{      WWT_PANEL,    RESIZE_RTB,    14,   293,   292,    62,    73, 0x0,                 STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   293,   304,    62,    73, 0x0,                 STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
@@ -919,34 +919,34 @@ static void DrawSmallOrderList(const Vehicle *v, int x, int y)
 
 
 static const Widget _player_ships_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9805_SHIPS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                   STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,						STR_SORT_ORDER_TIP},
-{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,										STR_NULL},
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_9804_NEW_SHIPS,		STR_9824_BUILD_NEW_SHIPS_REQUIRES},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   247,   170,   181, STR_REPLACE_VEHICLES,					STR_REPLACE_HELP},
-{      WWT_PANEL,    RESIZE_RTB,    14,   248,   247,   170,   181, 0x0,											STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   170,   181, 0x0,											STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9805_SHIPS,       STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                  STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,             STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,                  STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x401,                STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_9804_NEW_SHIPS,   STR_9824_BUILD_NEW_SHIPS_REQUIRES},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   247,   170,   181, STR_REPLACE_VEHICLES, STR_REPLACE_HELP},
+{      WWT_PANEL,    RESIZE_RTB,    14,   248,   247,   170,   181, 0x0,                  STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   170,   181, 0x0,                  STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const Widget _other_player_ships_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,							STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9805_SHIPS,				STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                   STR_STICKY_BUTTON},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,						STR_SORT_ORDER_TIP},
-{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,										STR_SORT_CRITERIA_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,							STR_SORT_CRITERIA_TIP},
-{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,										STR_NULL},
-{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x401,									STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
-{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,										STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   170,   181, 0x0,											STR_NULL},
-{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   170,   181, 0x0,											STR_RESIZE_BUTTON},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9805_SHIPS,       STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                  STR_STICKY_BUTTON},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,             STR_SORT_CRITERIA_TIP},
+{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,                  STR_NULL},
+{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x401,                STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
+{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   170,   181, 0x0,                  STR_NULL},
+{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   170,   181, 0x0,                  STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 

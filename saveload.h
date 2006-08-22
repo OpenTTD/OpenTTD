@@ -37,12 +37,12 @@ typedef struct {
 } NullStruct;
 
 typedef enum SLRefType {
-	REF_ORDER       = 0,
-	REF_VEHICLE     = 1,
-	REF_STATION     = 2,
-	REF_TOWN        = 3,
-	REF_VEHICLE_OLD = 4,
-	REF_ROADSTOPS   = 5,
+	REF_ORDER         = 0,
+	REF_VEHICLE       = 1,
+	REF_STATION       = 2,
+	REF_TOWN          = 3,
+	REF_VEHICLE_OLD   = 4,
+	REF_ROADSTOPS     = 5,
 	REF_ENGINE_RENEWS = 6,
 } SLRefType;
 
@@ -53,11 +53,11 @@ enum {
 };
 
 enum {
-	CH_RIFF         = 0,
-	CH_ARRAY        = 1,
-	CH_SPARSE_ARRAY = 2,
-	CH_TYPE_MASK    = 3,
-	CH_LAST         = 8,
+	CH_RIFF         =  0,
+	CH_ARRAY        =  1,
+	CH_SPARSE_ARRAY =  2,
+	CH_TYPE_MASK    =  3,
+	CH_LAST         =  8,
 	CH_AUTO_LENGTH  = 16,
 
 	CH_PRI_0          = 0 << 4,
@@ -89,20 +89,20 @@ enum VarTypes {
 	/* 6 more possible file-primitives */
 
 	/* 4 bytes allocated a maximum of 16 types for NumberType */
-	SLE_VAR_BL   =  0 << 4,
-	SLE_VAR_I8   =  1 << 4,
-	SLE_VAR_U8   =  2 << 4,
-	SLE_VAR_I16  =  3 << 4,
-	SLE_VAR_U16  =  4 << 4,
-	SLE_VAR_I32  =  5 << 4,
-	SLE_VAR_U32  =  6 << 4,
-	SLE_VAR_I64  =  7 << 4,
-	SLE_VAR_U64  =  8 << 4,
-	SLE_VAR_NULL =  9 << 4, ///< useful to write zeros in savegame.
-	SLE_VAR_STRB = 10 << 4, ///< normal string (with pre-allocated buffer)
-	SLE_VAR_STRBQ= 11 << 4, ///< string enclosed in quotes (with pre-allocated buffer)
-	SLE_VAR_STR  = 12 << 4, ///< string pointer
-	SLE_VAR_STRQ = 13 << 4, ///< string enclosed in quotes
+	SLE_VAR_BL    =  0 << 4,
+	SLE_VAR_I8    =  1 << 4,
+	SLE_VAR_U8    =  2 << 4,
+	SLE_VAR_I16   =  3 << 4,
+	SLE_VAR_U16   =  4 << 4,
+	SLE_VAR_I32   =  5 << 4,
+	SLE_VAR_U32   =  6 << 4,
+	SLE_VAR_I64   =  7 << 4,
+	SLE_VAR_U64   =  8 << 4,
+	SLE_VAR_NULL  =  9 << 4, ///< useful to write zeros in savegame.
+	SLE_VAR_STRB  = 10 << 4, ///< normal string (with pre-allocated buffer)
+	SLE_VAR_STRBQ = 11 << 4, ///< string enclosed in quotes (with pre-allocated buffer)
+	SLE_VAR_STR   = 12 << 4, ///< string pointer
+	SLE_VAR_STRQ  = 13 << 4, ///< string enclosed in quotes
 	/* 2 more possible memory-primitives */
 
 	/* Shortcut values */
@@ -111,29 +111,29 @@ enum VarTypes {
 	/* Default combinations of variables. As savegames change, so can variables
 	 * and thus it is possible that the saved value and internal size do not
 	 * match and you need to specify custom combo. The defaults are listed here */
-	SLE_BOOL        = SLE_FILE_I8  | SLE_VAR_BL,
-	SLE_INT8        = SLE_FILE_I8  | SLE_VAR_I8,
-	SLE_UINT8       = SLE_FILE_U8  | SLE_VAR_U8,
-	SLE_INT16       = SLE_FILE_I16 | SLE_VAR_I16,
-	SLE_UINT16      = SLE_FILE_U16 | SLE_VAR_U16,
-	SLE_INT32       = SLE_FILE_I32 | SLE_VAR_I32,
-	SLE_UINT32      = SLE_FILE_U32 | SLE_VAR_U32,
-	SLE_INT64       = SLE_FILE_I64 | SLE_VAR_I64,
-	SLE_UINT64      = SLE_FILE_U64 | SLE_VAR_U64,
-	SLE_CHAR        = SLE_FILE_I8  | SLE_VAR_CHAR,
-	SLE_STRINGID    = SLE_FILE_STRINGID | SLE_VAR_U16,
-	SLE_STRINGBUF   = SLE_FILE_STRING   | SLE_VAR_STRB,
-	SLE_STRINGBQUOTE= SLE_FILE_STRING   | SLE_VAR_STRBQ,
-	SLE_STRING      = SLE_FILE_STRING   | SLE_VAR_STR,
-	SLE_STRINGQUOTE = SLE_FILE_STRING   | SLE_VAR_STRQ,
+	SLE_BOOL         = SLE_FILE_I8  | SLE_VAR_BL,
+	SLE_INT8         = SLE_FILE_I8  | SLE_VAR_I8,
+	SLE_UINT8        = SLE_FILE_U8  | SLE_VAR_U8,
+	SLE_INT16        = SLE_FILE_I16 | SLE_VAR_I16,
+	SLE_UINT16       = SLE_FILE_U16 | SLE_VAR_U16,
+	SLE_INT32        = SLE_FILE_I32 | SLE_VAR_I32,
+	SLE_UINT32       = SLE_FILE_U32 | SLE_VAR_U32,
+	SLE_INT64        = SLE_FILE_I64 | SLE_VAR_I64,
+	SLE_UINT64       = SLE_FILE_U64 | SLE_VAR_U64,
+	SLE_CHAR         = SLE_FILE_I8  | SLE_VAR_CHAR,
+	SLE_STRINGID     = SLE_FILE_STRINGID | SLE_VAR_U16,
+	SLE_STRINGBUF    = SLE_FILE_STRING   | SLE_VAR_STRB,
+	SLE_STRINGBQUOTE = SLE_FILE_STRING   | SLE_VAR_STRBQ,
+	SLE_STRING       = SLE_FILE_STRING   | SLE_VAR_STR,
+	SLE_STRINGQUOTE  = SLE_FILE_STRING   | SLE_VAR_STRQ,
 
 	/* Shortcut values */
-	SLE_UINT = SLE_UINT32,
-	SLE_INT  = SLE_INT32,
-	SLE_STRB = SLE_STRINGBUF,
-	SLE_STRBQ= SLE_STRINGBQUOTE,
-	SLE_STR  = SLE_STRING,
-	SLE_STRQ = SLE_STRINGQUOTE,
+	SLE_UINT  = SLE_UINT32,
+	SLE_INT   = SLE_INT32,
+	SLE_STRB  = SLE_STRINGBUF,
+	SLE_STRBQ = SLE_STRINGBQUOTE,
+	SLE_STR   = SLE_STRING,
+	SLE_STRQ  = SLE_STRINGQUOTE,
 
 	/* 8 bytes allocated for a maximum of 8 flags
 	 * Flags directing saving/loading of a variable */
@@ -146,13 +146,13 @@ enum VarTypes {
 typedef uint32 VarType;
 
 enum SaveLoadTypes {
-	SL_VAR       = 0,
-	SL_REF       = 1,
-	SL_ARR       = 2,
-	SL_STR       = 3,
+	SL_VAR       =  0,
+	SL_REF       =  1,
+	SL_ARR       =  2,
+	SL_STR       =  3,
 	// non-normal save-load types
-	SL_WRITEBYTE = 8,
-	SL_INCLUDE   = 9,
+	SL_WRITEBYTE =  8,
+	SL_INCLUDE   =  9,
 	SL_END       = 15
 };
 

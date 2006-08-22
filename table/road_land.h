@@ -38,7 +38,7 @@ static const DrawTileSprites _road_depot[] = {
 
 
 static const SpriteID _road_tile_sprites_1[16] = {
-	0, 0x546, 0x545, 0x53B, 0x544, 0x534, 0x53E, 0x539,
+	0,     0x546, 0x545, 0x53B, 0x544, 0x534, 0x53E, 0x539,
   0x543, 0x53C, 0x535, 0x538, 0x53D, 0x537, 0x53A, 0x536
 };
 
@@ -59,7 +59,7 @@ static const DrawRoadTileStruct _road_display_datas2_2[] = {
 };
 
 static const DrawRoadTileStruct _road_display_datas2_3[] = {
-	MAKELINE(0x57f,1,8)
+	MAKELINE(0x57f,  1,  8)
 	ENDLINE
 };
 
@@ -68,18 +68,18 @@ static const DrawRoadTileStruct _road_display_datas2_4[] = {
 };
 
 static const DrawRoadTileStruct _road_display_datas2_5[] = {
-	MAKELINE(0x57f,1,8)
-	MAKELINE(0x57e,14,8)
+	MAKELINE(0x57f,  1,  8)
+	MAKELINE(0x57e, 14,  8)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_6[] = {
-	MAKELINE(0x57e,8,1)
+	MAKELINE(0x57e,  8,  1)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_7[] = {
-	MAKELINE(0x57f,1,8)
+	MAKELINE(0x57f,  1,  8)
 	ENDLINE
 };
 
@@ -88,33 +88,33 @@ static const DrawRoadTileStruct _road_display_datas2_8[] = {
 };
 
 static const DrawRoadTileStruct _road_display_datas2_9[] = {
-	MAKELINE(0x57f,8,14)
+	MAKELINE(0x57f,  8, 14)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_10[] = {
-	MAKELINE(0x57f,8,14)
-	MAKELINE(0x57e,8,1)
+	MAKELINE(0x57f,  8, 14)
+	MAKELINE(0x57e,  8,  1)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_11[] = {
-	MAKELINE(0x57f,8,14)
+	MAKELINE(0x57f,  8, 14)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_12[] = {
-	MAKELINE(0x57e,8,1)
+	MAKELINE(0x57e,  8,  1)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_13[] = {
-	MAKELINE(0x57e,14,8)
+	MAKELINE(0x57e, 14,  8)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_14[] = {
-	MAKELINE(0x57e,8,1)
+	MAKELINE(0x57e,  8,  1)
 	ENDLINE
 };
 
@@ -135,9 +135,9 @@ static const DrawRoadTileStruct _road_display_datas2_18[] = {
 };
 
 static const DrawRoadTileStruct _road_display_datas2_19[] = {
-	MAKELINE(0x1212,0,2)
-	MAKELINE(0x1212,3,9)
-	MAKELINE(0x1212,10,12)
+	MAKELINE(0x1212,  0,  2)
+	MAKELINE(0x1212,  3,  9)
+	MAKELINE(0x1212, 10, 12)
 	ENDLINE
 };
 
@@ -146,23 +146,23 @@ static const DrawRoadTileStruct _road_display_datas2_20[] = {
 };
 
 static const DrawRoadTileStruct _road_display_datas2_21[] = {
-	MAKELINE(0x1212,0,2)
-	MAKELINE(0x1212,0,10)
-	MAKELINE(0x1212,12,2)
-	MAKELINE(0x1212,12,10)
+	MAKELINE(0x1212,  0,  2)
+	MAKELINE(0x1212,  0, 10)
+	MAKELINE(0x1212, 12,  2)
+	MAKELINE(0x1212, 12, 10)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_22[] = {
-	MAKELINE(0x1212,10,0)
-	MAKELINE(0x1212,3,3)
-	MAKELINE(0x1212,0,10)
+	MAKELINE(0x1212, 10,  0)
+	MAKELINE(0x1212,  3,  3)
+	MAKELINE(0x1212,  0, 10)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_23[] = {
-	MAKELINE(0x1212,0,2)
-	MAKELINE(0x1212,0,10)
+	MAKELINE(0x1212,  0,  2)
+	MAKELINE(0x1212,  0, 10)
 	ENDLINE
 };
 
@@ -171,42 +171,42 @@ static const DrawRoadTileStruct _road_display_datas2_24[] = {
 };
 
 static const DrawRoadTileStruct _road_display_datas2_25[] = {
-	MAKELINE(0x1212,12,2)
-	MAKELINE(0x1212,9,9)
-	MAKELINE(0x1212,2,12)
+	MAKELINE(0x1212, 12,  2)
+	MAKELINE(0x1212,  9,  9)
+	MAKELINE(0x1212,  2, 12)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_26[] = {
-	MAKELINE(0x1212,2,0)
-	MAKELINE(0x1212,10,0)
-	MAKELINE(0x1212,2,12)
-	MAKELINE(0x1212,10,12)
+	MAKELINE(0x1212,  2,  0)
+	MAKELINE(0x1212, 10,  0)
+	MAKELINE(0x1212,  2, 12)
+	MAKELINE(0x1212, 10, 12)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_27[] = {
-	MAKELINE(0x1212,2,12)
-	MAKELINE(0x1212,10,12)
+	MAKELINE(0x1212,  2, 12)
+	MAKELINE(0x1212, 10, 12)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_28[] = {
-	MAKELINE(0x1212,2,0)
-	MAKELINE(0x1212,9,3)
-	MAKELINE(0x1212,12,10)
+	MAKELINE(0x1212,  2,  0)
+	MAKELINE(0x1212,  9,  3)
+	MAKELINE(0x1212, 12, 10)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_29[] = {
-	MAKELINE(0x1212,12,2)
-	MAKELINE(0x1212,12,10)
+	MAKELINE(0x1212, 12,  2)
+	MAKELINE(0x1212, 12, 10)
 	ENDLINE
 };
 
 static const DrawRoadTileStruct _road_display_datas2_30[] = {
-	MAKELINE(0x1212,2,0)
-	MAKELINE(0x1212,10,0)
+	MAKELINE(0x1212,  2, 0)
+	MAKELINE(0x1212, 10, 0)
 	ENDLINE
 };
 

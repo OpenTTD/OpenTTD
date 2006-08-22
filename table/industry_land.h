@@ -879,13 +879,13 @@ static const DrawIndustrySpec4Struct _industry_anim_offs_3[] = {
 };
 
 static const byte _industry_anim_offs[] = {
-	255, 0, 0, 0, 2, 4, 6, 8, 10, 9,
-	7, 5, 3, 1, 255, 0, 0, 0, 2, 4,
-	6, 8, 10, 9, 7, 5, 3, 1, 255, 0,
-	0, 0, 2, 4, 6, 8, 10, 9, 7, 5,
-	3, 1, 255, 0, 0, 0, 2, 4, 6, 8,
-	10, 9, 7, 5, 3, 1, 255, 0, 0, 0,
-	2, 4, 6, 8, 10, 9, 7, 5, 3, 1
+	255,   0,   0,   0,   2,   4,   6,   8,  10,   9,
+	  7,   5,   3,   1, 255,   0,   0,   0,   2,   4,
+	  6,   8,  10,   9,   7,   5,   3,   1, 255,   0,
+	  0,   0,   2,   4,   6,   8,  10,   9,   7,   5,
+	  3,   1, 255,   0,   0,   0,   2,   4,   6,   8,
+	 10,   9,   7,   5,   3,   1, 255,   0,   0,   0,
+	  2,   4,   6,   8,  10,   9,   7,   5,   3,   1
 };
 
 static const byte _industry_anim_offs_2[] = {
@@ -896,59 +896,59 @@ static const byte _industry_anim_offs_2[] = {
 };
 
 static const byte _coal_plant_sparks_x[] = {11, 11, 14, 13, 18, 15};
-static const byte _coal_plant_sparks_y[] = {23, 11, 6, 3, 1, 0};
+static const byte _coal_plant_sparks_y[] = {23, 11,  6,  3,  1,  0};
 
 /* next frame in an animation */
 #define N 255
 static const byte _industry_section_animation_next[] = {
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, 16, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, 129, N, N, N, N, N,
-135, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   16,  N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   129, N,   N,   N,   N,   N,
+135, N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,
 };
 
 /* animation to start when goods is produced */
 static const byte _industry_produce_section[] = {
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-17, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, 130, N, N, N, N, N, 136,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N, N,
-N, N, N, N, N, N, N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+17,  N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   130, N,   N,   N,   N,   N,   136,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,   N,
+N,   N,   N,   N,   N,   N,   N,
 };
 
 #undef N

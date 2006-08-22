@@ -1108,56 +1108,56 @@ void LoadFromHighScore(void)
 
 // Save/load of players
 static const SaveLoad _player_desc[] = {
-	SLE_VAR(Player,name_2,					SLE_UINT32),
-	SLE_VAR(Player,name_1,					SLE_STRINGID),
+	    SLE_VAR(Player, name_2,          SLE_UINT32),
+	    SLE_VAR(Player, name_1,          SLE_STRINGID),
 
-	SLE_VAR(Player,president_name_1,SLE_UINT16),
-	SLE_VAR(Player,president_name_2,SLE_UINT32),
+	    SLE_VAR(Player, president_name_1,SLE_UINT16),
+	    SLE_VAR(Player, president_name_2,SLE_UINT32),
 
-	SLE_VAR(Player,face,						SLE_UINT32),
+	    SLE_VAR(Player, face,            SLE_UINT32),
 
 	// money was changed to a 64 bit field in savegame version 1.
-	SLE_CONDVAR(Player,money64,			SLE_VAR_I64 | SLE_FILE_I32, 0, 0),
-	SLE_CONDVAR(Player,money64,			SLE_INT64, 1, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, money64,               SLE_VAR_I64 | SLE_FILE_I32, 0, 0),
+	SLE_CONDVAR(Player, money64,               SLE_INT64, 1, SL_MAX_VERSION),
 
-	SLE_VAR(Player,current_loan,		SLE_INT32),
+	    SLE_VAR(Player, current_loan,          SLE_INT32),
 
-	SLE_VAR(Player,player_color,		SLE_UINT8),
-	SLE_VAR(Player,player_money_fraction,SLE_UINT8),
-	SLE_VAR(Player,avail_railtypes,		SLE_UINT8),
-	SLE_VAR(Player,block_preview,		SLE_UINT8),
+	    SLE_VAR(Player, player_color,          SLE_UINT8),
+	    SLE_VAR(Player, player_money_fraction, SLE_UINT8),
+	    SLE_VAR(Player, avail_railtypes,       SLE_UINT8),
+	    SLE_VAR(Player, block_preview,         SLE_UINT8),
 
-	SLE_VAR(Player,cargo_types,			SLE_UINT16),
-	SLE_CONDVAR(Player, location_of_house,     SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Player, location_of_house,     SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Player, last_build_coordinate, SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_CONDVAR(Player, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32, 0, 30),
-	SLE_CONDVAR(Player, inaugurated_year,      SLE_INT32, 31, SL_MAX_VERSION),
+	    SLE_VAR(Player, cargo_types,           SLE_UINT16),
+	SLE_CONDVAR(Player, location_of_house,     SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(Player, location_of_house,     SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, last_build_coordinate, SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(Player, last_build_coordinate, SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, inaugurated_year,      SLE_FILE_U8  | SLE_VAR_I32,  0, 30),
+	SLE_CONDVAR(Player, inaugurated_year,      SLE_INT32,                  31, SL_MAX_VERSION),
 
-	SLE_ARR(Player,share_owners,		SLE_UINT8, 4),
+	    SLE_ARR(Player, share_owners,          SLE_UINT8, 4),
 
-	SLE_VAR(Player,num_valid_stat_ent,SLE_UINT8),
+	    SLE_VAR(Player, num_valid_stat_ent,    SLE_UINT8),
 
-	SLE_VAR(Player,quarters_of_bankrupcy,SLE_UINT8),
-	SLE_VAR(Player,bankrupt_asked,	SLE_UINT8),
-	SLE_VAR(Player,bankrupt_timeout,SLE_INT16),
-	SLE_VAR(Player,bankrupt_value,	SLE_INT32),
+	    SLE_VAR(Player, quarters_of_bankrupcy, SLE_UINT8),
+	    SLE_VAR(Player, bankrupt_asked,        SLE_UINT8),
+	    SLE_VAR(Player, bankrupt_timeout,      SLE_INT16),
+	    SLE_VAR(Player, bankrupt_value,        SLE_INT32),
 
 	// yearly expenses was changed to 64-bit in savegame version 2.
-	SLE_CONDARR(Player,yearly_expenses,	SLE_FILE_I32|SLE_VAR_I64, 3*13, 0, 1),
-	SLE_CONDARR(Player,yearly_expenses,	SLE_INT64, 3*13, 2, SL_MAX_VERSION),
+	SLE_CONDARR(Player, yearly_expenses,       SLE_FILE_I32 | SLE_VAR_I64, 3 * 13, 0, 1),
+	SLE_CONDARR(Player, yearly_expenses,       SLE_INT64, 3 * 13,                  2, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Player,is_ai,			SLE_BOOL, 2, SL_MAX_VERSION),
-	SLE_CONDVAR(Player,is_active,	SLE_BOOL, 4, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, is_ai,                 SLE_BOOL, 2, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, is_active,             SLE_BOOL, 4, SL_MAX_VERSION),
 
 	// Engine renewal settings
 	SLE_CONDNULL(512, 16, 18),
-	SLE_CONDREF(Player,engine_renew_list, REF_ENGINE_RENEWS, 19, SL_MAX_VERSION),
-	SLE_CONDVAR(Player,engine_renew,         SLE_BOOL,       16, SL_MAX_VERSION),
-	SLE_CONDVAR(Player,engine_renew_months,  SLE_INT16,      16, SL_MAX_VERSION),
-	SLE_CONDVAR(Player,engine_renew_money,  SLE_UINT32,      16, SL_MAX_VERSION),
-	SLE_CONDVAR(Player,renew_keep_length,    SLE_BOOL,        2, SL_MAX_VERSION),	// added with 16.1, but was blank since 2
+	SLE_CONDREF(Player, engine_renew_list,     REF_ENGINE_RENEWS,          19, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, engine_renew,          SLE_BOOL,                   16, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, engine_renew_months,   SLE_INT16,                  16, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, engine_renew_money,    SLE_UINT32,                 16, SL_MAX_VERSION),
+	SLE_CONDVAR(Player, renew_keep_length,     SLE_BOOL,                    2, SL_MAX_VERSION), // added with 16.1, but was blank since 2
 
 	// reserve extra space in savegame here. (currently 63 bytes)
 	SLE_CONDNULL(63, 2, SL_MAX_VERSION),
@@ -1167,76 +1167,76 @@ static const SaveLoad _player_desc[] = {
 
 static const SaveLoad _player_economy_desc[] = {
 	// these were changed to 64-bit in savegame format 2
-	SLE_CONDVAR(PlayerEconomyEntry,income,							SLE_INT32, 0, 1),
-	SLE_CONDVAR(PlayerEconomyEntry,expenses,						SLE_INT32, 0, 1),
-	SLE_CONDVAR(PlayerEconomyEntry,company_value, SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
-	SLE_CONDVAR(PlayerEconomyEntry,income,	SLE_FILE_I64 | SLE_VAR_I32, 2, SL_MAX_VERSION),
-	SLE_CONDVAR(PlayerEconomyEntry,expenses,SLE_FILE_I64 | SLE_VAR_I32, 2, SL_MAX_VERSION),
-	SLE_CONDVAR(PlayerEconomyEntry,company_value, SLE_INT64, 2, SL_MAX_VERSION),
+	SLE_CONDVAR(PlayerEconomyEntry, income,              SLE_INT32,                  0, 1),
+	SLE_CONDVAR(PlayerEconomyEntry, expenses,            SLE_INT32,                  0, 1),
+	SLE_CONDVAR(PlayerEconomyEntry, company_value,       SLE_FILE_I32 | SLE_VAR_I64, 0, 1),
+	SLE_CONDVAR(PlayerEconomyEntry, income,              SLE_FILE_I64 | SLE_VAR_I32, 2, SL_MAX_VERSION),
+	SLE_CONDVAR(PlayerEconomyEntry, expenses,            SLE_FILE_I64 | SLE_VAR_I32, 2, SL_MAX_VERSION),
+	SLE_CONDVAR(PlayerEconomyEntry, company_value,       SLE_INT64,                  2, SL_MAX_VERSION),
 
-	SLE_VAR(PlayerEconomyEntry,delivered_cargo,			SLE_INT32),
-	SLE_VAR(PlayerEconomyEntry,performance_history,	SLE_INT32),
+	    SLE_VAR(PlayerEconomyEntry, delivered_cargo,     SLE_INT32),
+	    SLE_VAR(PlayerEconomyEntry, performance_history, SLE_INT32),
 
 	SLE_END()
 };
 
 static const SaveLoad _player_ai_desc[] = {
-	SLE_VAR(PlayerAI,state,							SLE_UINT8),
-	SLE_VAR(PlayerAI,tick,							SLE_UINT8),
-	SLE_CONDVAR(PlayerAI,state_counter, SLE_FILE_U16 | SLE_VAR_U32, 0, 12),
-	SLE_CONDVAR(PlayerAI,state_counter, SLE_UINT32, 13, SL_MAX_VERSION),
-	SLE_VAR(PlayerAI,timeout_counter,		SLE_UINT16),
+	    SLE_VAR(PlayerAI, state,             SLE_UINT8),
+	    SLE_VAR(PlayerAI, tick,              SLE_UINT8),
+	SLE_CONDVAR(PlayerAI, state_counter,     SLE_FILE_U16 | SLE_VAR_U32,  0, 12),
+	SLE_CONDVAR(PlayerAI, state_counter,     SLE_UINT32,                 13, SL_MAX_VERSION),
+	    SLE_VAR(PlayerAI, timeout_counter,   SLE_UINT16),
 
-	SLE_VAR(PlayerAI,state_mode,				SLE_UINT8),
-	SLE_VAR(PlayerAI,banned_tile_count,	SLE_UINT8),
-	SLE_VAR(PlayerAI,railtype_to_use,		SLE_UINT8),
+	    SLE_VAR(PlayerAI, state_mode,        SLE_UINT8),
+	    SLE_VAR(PlayerAI, banned_tile_count, SLE_UINT8),
+	    SLE_VAR(PlayerAI, railtype_to_use,   SLE_UINT8),
 
-	SLE_VAR(PlayerAI,cargo_type,				SLE_UINT8),
-	SLE_VAR(PlayerAI,num_wagons,				SLE_UINT8),
-	SLE_VAR(PlayerAI,build_kind,				SLE_UINT8),
-	SLE_VAR(PlayerAI,num_build_rec,			SLE_UINT8),
-	SLE_VAR(PlayerAI,num_loco_to_build,	SLE_UINT8),
-	SLE_VAR(PlayerAI,num_want_fullload,	SLE_UINT8),
+	    SLE_VAR(PlayerAI, cargo_type,        SLE_UINT8),
+	    SLE_VAR(PlayerAI, num_wagons,        SLE_UINT8),
+	    SLE_VAR(PlayerAI, build_kind,        SLE_UINT8),
+	    SLE_VAR(PlayerAI, num_build_rec,     SLE_UINT8),
+	    SLE_VAR(PlayerAI, num_loco_to_build, SLE_UINT8),
+	    SLE_VAR(PlayerAI, num_want_fullload, SLE_UINT8),
 
-	SLE_VAR(PlayerAI,route_type_mask,		SLE_UINT8),
+	    SLE_VAR(PlayerAI, route_type_mask,   SLE_UINT8),
 
-	SLE_CONDVAR(PlayerAI, start_tile_a, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(PlayerAI, start_tile_a, SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_CONDVAR(PlayerAI, cur_tile_a,   SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(PlayerAI, cur_tile_a,   SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_VAR(PlayerAI,start_dir_a,				SLE_UINT8),
-	SLE_VAR(PlayerAI,cur_dir_a,					SLE_UINT8),
+	SLE_CONDVAR(PlayerAI, start_tile_a,      SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(PlayerAI, start_tile_a,      SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(PlayerAI, cur_tile_a,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(PlayerAI, cur_tile_a,        SLE_UINT32,                  6, SL_MAX_VERSION),
+	    SLE_VAR(PlayerAI, start_dir_a,       SLE_UINT8),
+	    SLE_VAR(PlayerAI, cur_dir_a,         SLE_UINT8),
 
-	SLE_CONDVAR(PlayerAI, start_tile_b, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(PlayerAI, start_tile_b, SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_CONDVAR(PlayerAI, cur_tile_b,   SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(PlayerAI, cur_tile_b,   SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_VAR(PlayerAI,start_dir_b,				SLE_UINT8),
-	SLE_VAR(PlayerAI,cur_dir_b,					SLE_UINT8),
+	SLE_CONDVAR(PlayerAI, start_tile_b,      SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(PlayerAI, start_tile_b,      SLE_UINT32,                  6, SL_MAX_VERSION),
+	SLE_CONDVAR(PlayerAI, cur_tile_b,        SLE_FILE_U16 | SLE_VAR_U32,  0,  5),
+	SLE_CONDVAR(PlayerAI, cur_tile_b,        SLE_UINT32,                  6, SL_MAX_VERSION),
+	    SLE_VAR(PlayerAI, start_dir_b,       SLE_UINT8),
+	    SLE_VAR(PlayerAI, cur_dir_b,         SLE_UINT8),
 
-	SLE_REF(PlayerAI,cur_veh,						REF_VEHICLE),
+	    SLE_REF(PlayerAI, cur_veh,           REF_VEHICLE),
 
-	SLE_ARR(PlayerAI,wagon_list,				SLE_UINT16, 9),
-	SLE_ARR(PlayerAI,order_list_blocks,	SLE_UINT8, 20),
-	SLE_ARR(PlayerAI,banned_tiles,			SLE_UINT16, 16),
+	    SLE_ARR(PlayerAI, wagon_list,        SLE_UINT16, 9),
+	    SLE_ARR(PlayerAI, order_list_blocks, SLE_UINT8, 20),
+	    SLE_ARR(PlayerAI, banned_tiles,      SLE_UINT16, 16),
 
 	SLE_CONDNULL(64, 2, SL_MAX_VERSION),
 	SLE_END()
 };
 
 static const SaveLoad _player_ai_build_rec_desc[] = {
-	SLE_CONDVAR(AiBuildRec,spec_tile, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(AiBuildRec,spec_tile, SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_CONDVAR(AiBuildRec,use_tile,  SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(AiBuildRec,use_tile,  SLE_UINT32, 6, SL_MAX_VERSION),
-	SLE_VAR(AiBuildRec,rand_rng,			SLE_UINT8),
-	SLE_VAR(AiBuildRec,cur_building_rule,SLE_UINT8),
-	SLE_VAR(AiBuildRec,unk6,					SLE_UINT8),
-	SLE_VAR(AiBuildRec,unk7,					SLE_UINT8),
-	SLE_VAR(AiBuildRec,buildcmd_a,		SLE_UINT8),
-	SLE_VAR(AiBuildRec,buildcmd_b,		SLE_UINT8),
-	SLE_VAR(AiBuildRec,direction,			SLE_UINT8),
-	SLE_VAR(AiBuildRec,cargo,					SLE_UINT8),
+	SLE_CONDVAR(AiBuildRec, spec_tile,         SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(AiBuildRec, spec_tile,         SLE_UINT32,                 6, SL_MAX_VERSION),
+	SLE_CONDVAR(AiBuildRec, use_tile,          SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(AiBuildRec, use_tile,          SLE_UINT32,                 6, SL_MAX_VERSION),
+	    SLE_VAR(AiBuildRec, rand_rng,          SLE_UINT8),
+	    SLE_VAR(AiBuildRec, cur_building_rule, SLE_UINT8),
+	    SLE_VAR(AiBuildRec, unk6,              SLE_UINT8),
+	    SLE_VAR(AiBuildRec, unk7,              SLE_UINT8),
+	    SLE_VAR(AiBuildRec, buildcmd_a,        SLE_UINT8),
+	    SLE_VAR(AiBuildRec, buildcmd_b,        SLE_UINT8),
+	    SLE_VAR(AiBuildRec, direction,         SLE_UINT8),
+	    SLE_VAR(AiBuildRec, cargo,             SLE_UINT8),
 	SLE_END()
 };
 

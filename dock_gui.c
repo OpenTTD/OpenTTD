@@ -189,19 +189,19 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_docks_toolb_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,										STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   145,     0,    13, STR_9801_DOCK_CONSTRUCTION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   146,   157,     0,    13, 0x0,                         STR_STICKY_BUTTON},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,					STR_BUILD_CANALS_TIP},
-{      WWT_PANEL,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,					STR_BUILD_LOCKS_TIP},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                   STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   145,     0,    13, STR_9801_DOCK_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   146,   157,     0,    13, 0x0,                        STR_STICKY_BUTTON},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,    21,    14,    35, SPR_IMG_BUILD_CANAL,        STR_BUILD_CANALS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_BUILD_LOCK,         STR_BUILD_LOCKS_TIP},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,    44,    47,    14,    35, 0x0,													STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,    44,    47,    14,    35, 0x0,                        STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,    48,    69,    14,    35, 703,													STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,   RESIZE_NONE,     7,    70,    91,    14,    35, 748,													STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},
-{      WWT_PANEL,   RESIZE_NONE,     7,    92,   113,    14,    35, 746,													STR_981D_BUILD_SHIP_DOCK},
-{      WWT_PANEL,   RESIZE_NONE,     7,   114,   135,    14,    35, 693,													STR_9834_POSITION_BUOY_WHICH_CAN},
-{      WWT_PANEL,   RESIZE_NONE,     7,   136,   157,    14,    35, SPR_IMG_LANDSCAPING,				STR_LANDSCAPING_TOOLBAR_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,    48,    69,    14,    35, 703,                        STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,   RESIZE_NONE,     7,    70,    91,    14,    35, 748,                        STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,   RESIZE_NONE,     7,    92,   113,    14,    35, 746,                        STR_981D_BUILD_SHIP_DOCK},
+{      WWT_PANEL,   RESIZE_NONE,     7,   114,   135,    14,    35, 693,                        STR_9834_POSITION_BUOY_WHICH_CAN},
+{      WWT_PANEL,   RESIZE_NONE,     7,   136,   157,    14,    35, SPR_IMG_LANDSCAPING,        STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 
@@ -271,11 +271,11 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_dock_station_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,			STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3068_DOCK,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,    74, 0x0,						STR_NULL},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,    30,    40, STR_02DB_OFF,	STR_3065_DON_T_HIGHLIGHT_COVERAGE},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,    30,    40, STR_02DA_ON,		STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,      STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3068_DOCK, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,    74, 0x0,           STR_NULL},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,    30,    40, STR_02DB_OFF,  STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,    30,    40, STR_02DA_ON,   STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {   WIDGETS_END},
 };
 
@@ -337,11 +337,11 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_docks_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,												STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   203,     0,    13, STR_3800_SHIP_DEPOT_ORIENTATION,	STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   203,    14,    85, 0x0,															STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,   100,    17,    82, 0x0,															STR_3803_SELECT_SHIP_DEPOT_ORIENTATION},
-{      WWT_PANEL,   RESIZE_NONE,    14,   103,   200,    17,    82, 0x0,															STR_3803_SELECT_SHIP_DEPOT_ORIENTATION},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   203,     0,    13, STR_3800_SHIP_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   203,    14,    85, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,   100,    17,    82, 0x0,                             STR_3803_SELECT_SHIP_DEPOT_ORIENTATION},
+{      WWT_PANEL,   RESIZE_NONE,    14,   103,   200,    17,    82, 0x0,                             STR_3803_SELECT_SHIP_DEPOT_ORIENTATION},
 {   WIDGETS_END},
 };
 

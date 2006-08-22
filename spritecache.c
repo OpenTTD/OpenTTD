@@ -385,7 +385,7 @@ static void* AllocSprite(size_t mem_req)
 
 static uint RotateSprite(uint s)
 {
-	static const byte _rotate_tile_sprite[19] = { 0,2,4,6,8,10,12,14,1,3,5,7,9,11,13,17,18,16,15 };
+	static const byte _rotate_tile_sprite[19] = { 0, 2, 4, 6, 8, 10, 12, 14, 1, 3, 5, 7, 9, 11, 13, 17, 18, 16, 15 };
 	static const byte _coast_map[9] = {0, 4, 3, 1, 2, 6, 8, 5, 7};
 	static const byte _fence_map[6] = {1, 0, 5, 4, 3, 2};
 
@@ -399,7 +399,7 @@ static uint RotateSprite(uint s)
 	X19(4000)
 	X19(4023)
 	X19(4042)
-	MAP(4061,4069,_coast_map)
+	MAP(4061, 4069, _coast_map)
 	X19(4126)
 	X19(4145)
 	X19(4164)

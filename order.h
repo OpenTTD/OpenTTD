@@ -36,7 +36,7 @@ enum OrderFlagMasks {
 
 	//Flags for depots:
 	/** The current depot-order was initiated because it was in the vehicle's order list */
-	OF_PART_OF_ORDERS	  = 0x2,
+	OF_PART_OF_ORDERS     = 0x2,
 	/** if OF_PART_OF_ORDERS is not set, this will cause the vehicle to be stopped in the depot */
 	OF_HALT_IN_DEPOT      = 0x4,
 	/** if OF_PART_OF_ORDERS is set, this will cause the order only be come active if the vehicle needs servicing */

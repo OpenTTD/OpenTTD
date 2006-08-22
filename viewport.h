@@ -4,11 +4,11 @@
 #define VIEWPORT_H
 
 struct ViewPort {
-	int left,top;												// screen coordinates for the viewport
-	int width, height;									// screen width/height for the viewport
+	int left,top;                       // screen coordinates for the viewport
+	int width, height;                  // screen width/height for the viewport
 
-	int virtual_left, virtual_top;			// virtual coordinates
-	int virtual_width, virtual_height;	// these are just width << zoom, height << zoom
+	int virtual_left, virtual_top;      // virtual coordinates
+	int virtual_width, virtual_height;  // these are just width << zoom, height << zoom
 
 	byte zoom;
 };
@@ -49,41 +49,41 @@ void VpSetPlaceSizingLimit(int limit);
 Vehicle *CheckMouseOverVehicle(void);
 
 enum {
-	VPM_X_OR_Y = 0,
-	VPM_FIX_X = 1,
-	VPM_FIX_Y = 2,
-	VPM_RAILDIRS = 3,
-	VPM_X_AND_Y = 4,
+	VPM_X_OR_Y          = 0,
+	VPM_FIX_X           = 1,
+	VPM_FIX_Y           = 2,
+	VPM_RAILDIRS        = 3,
+	VPM_X_AND_Y         = 4,
 	VPM_X_AND_Y_LIMITED = 5,
-	VPM_SIGNALDIRS = 6
+	VPM_SIGNALDIRS      = 6
 };
 
 // viewport highlight mode (for highlighting tiles below cursor)
 enum {
-	VHM_NONE = 0,    // default
-	VHM_RECT = 1,    // rectangle (stations, depots, ...)
-	VHM_POINT = 2,   // point (lower land, raise land, level land, ...)
+	VHM_NONE    = 0, // default
+	VHM_RECT    = 1, // rectangle (stations, depots, ...)
+	VHM_POINT   = 2, // point (lower land, raise land, level land, ...)
 	VHM_SPECIAL = 3, // special mode used for highlighting while dragging (and for tunnels/docks)
-	VHM_DRAG = 4,    // dragging items in the depot windows
-	VHM_RAIL = 5,    // rail pieces
+	VHM_DRAG    = 4, // dragging items in the depot windows
+	VHM_RAIL    = 5, // rail pieces
 };
 
 void VpSelectTilesWithMethod(int x, int y, int method);
 
 // highlighting draw styles
 enum {
-	HT_NONE = 0,
-	HT_RECT = 0x80,
-	HT_POINT = 0x40,
-	HT_LINE = 0x20, /* used for autorail highlighting (longer streches)
-									 * (uses lower bits to indicate direction) */
-	HT_RAIL = 0x10, /* autorail (one piece)
-									 * (uses lower bits to indicate direction) */
+	HT_NONE   = 0x00,
+	HT_RECT   = 0x80,
+	HT_POINT  = 0x40,
+	HT_LINE   = 0x20, /* used for autorail highlighting (longer streches)
+	                   * (uses lower bits to indicate direction) */
+	HT_RAIL   = 0x10, /* autorail (one piece)
+	                  * (uses lower bits to indicate direction) */
 
 	/* lower bits (used with HT_LINE and HT_RAIL):
 	 * (see ASCII art in autorail.h for a visual interpretation) */
-	HT_DIR_X = 0,  // X direction
-	HT_DIR_Y = 1,  // Y direction
+	HT_DIR_X  = 0,  // X direction
+	HT_DIR_Y  = 1,  // Y direction
 	HT_DIR_HU = 2, // horizontal upper
 	HT_DIR_HL = 3, // horizontal lower
 	HT_DIR_VL = 4, // vertical left

@@ -909,22 +909,22 @@ static void ScrollMainViewport(int x, int y)
 }
 
 static const int8 scrollamt[16][2] = {
-	{ 0, 0},
-	{-2, 0}, // 1:left
-	{ 0,-2}, // 2:up
-	{-2,-1}, // 3:left + up
-	{ 2, 0}, // 4:right
-	{ 0, 0}, // 5:left + right
-	{ 2,-1}, // 6:right + up
-	{ 0,-2}, // 7:left + right + up = up
-	{ 0 ,2}, // 8:down
-	{-2 ,1}, // 9:down+left
-	{ 0, 0}, // 10:impossible
-	{-2, 0}, // 11:left + up + down = left
-	{ 2, 1}, // 12:down+right
-	{ 0, 2}, // 13:left + right + down = down
-	{ 0,-2}, // 14:left + right + up = up
-	{ 0, 0}, // 15:impossible
+	{ 0,  0},
+	{-2,  0}, //  1 : left
+	{ 0, -2}, //  2 : up
+	{-2, -1}, //  3 : left + up
+	{ 2,  0}, //  4 : right
+	{ 0,  0}, //  5 : left + right
+	{ 2, -1}, //  6 : right + up
+	{ 0, -2}, //  7 : left + right + up = up
+	{ 0  ,2}, //  8 : down
+	{-2  ,1}, //  9 : down+left
+	{ 0,  0}, // 10 : impossible
+	{-2,  0}, // 11 : left + up + down = left
+	{ 2,  1}, // 12 : down+right
+	{ 0,  2}, // 13 : left + right + down = down
+	{ 0, -2}, // 14 : left + right + up = up
+	{ 0,  0}, // 15 : impossible
 };
 
 static void HandleKeyScrolling(void)

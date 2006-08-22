@@ -133,8 +133,8 @@ void ShowNetworkGameWindow(void);
 void ShowBuildBridgeWindow(uint start, uint end, byte type);
 
 enum {
-	ZOOM_IN = 0,
-	ZOOM_OUT = 1,
+	ZOOM_IN   = 0,
+	ZOOM_OUT  = 1,
 	ZOOM_NONE = 2, // hack, used to update the button status
 };
 

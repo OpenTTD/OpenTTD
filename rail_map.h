@@ -217,7 +217,7 @@ static inline bool IsSignalPresent(TileIndex t, byte signalbit)
  * normal boolean evaluation, since that will make future additions easier.
  */
 typedef enum SignalStates {
-	SIGNAL_STATE_RED = 0,
+	SIGNAL_STATE_RED   = 0,
 	SIGNAL_STATE_GREEN = 1,
 } SignalState;
 
@@ -280,19 +280,19 @@ RailType GetTileRailType(TileIndex tile, Trackdir trackdir);
 
 
 typedef enum RailGroundType {
-	RAIL_GROUND_BARREN = 0,
-	RAIL_GROUND_GRASS = 1,
-	RAIL_GROUND_FENCE_NW = 2,
-	RAIL_GROUND_FENCE_SE = 3,
-	RAIL_GROUND_FENCE_SENW = 4,
-	RAIL_GROUND_FENCE_NE = 5,
-	RAIL_GROUND_FENCE_SW = 6,
-	RAIL_GROUND_FENCE_NESW = 7,
-	RAIL_GROUND_FENCE_VERT1 = 8,
-	RAIL_GROUND_FENCE_VERT2 = 9,
+	RAIL_GROUND_BARREN       =  0,
+	RAIL_GROUND_GRASS        =  1,
+	RAIL_GROUND_FENCE_NW     =  2,
+	RAIL_GROUND_FENCE_SE     =  3,
+	RAIL_GROUND_FENCE_SENW   =  4,
+	RAIL_GROUND_FENCE_NE     =  5,
+	RAIL_GROUND_FENCE_SW     =  6,
+	RAIL_GROUND_FENCE_NESW   =  7,
+	RAIL_GROUND_FENCE_VERT1  =  8,
+	RAIL_GROUND_FENCE_VERT2  =  9,
 	RAIL_GROUND_FENCE_HORIZ1 = 10,
 	RAIL_GROUND_FENCE_HORIZ2 = 11,
-	RAIL_GROUND_ICE_DESERT = 12,
+	RAIL_GROUND_ICE_DESERT   = 12,
 } RailGroundType;
 
 static inline void SetRailGroundType(TileIndex t, RailGroundType rgt)

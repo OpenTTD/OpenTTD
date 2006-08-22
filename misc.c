@@ -268,26 +268,26 @@ static void Load_NAME(void)
 }
 
 static const SaveLoadGlobVarList _date_desc[] = {
-	SLEG_CONDVAR(_date,                  SLE_FILE_U16 | SLE_VAR_U32,  0,  30),
-	SLEG_CONDVAR(_date,                  SLE_UINT32, 31, SL_MAX_VERSION),
-	    SLEG_VAR(_date_fract,            SLE_UINT16),
-	    SLEG_VAR(_tick_counter,          SLE_UINT16),
-	    SLEG_VAR(_vehicle_id_ctr_day,    SLE_UINT16),
-	    SLEG_VAR(_age_cargo_skip_counter,SLE_UINT8),
-	    SLEG_VAR(_avail_aircraft,        SLE_UINT8),
-	SLEG_CONDVAR(_cur_tileloop_tile,     SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLEG_CONDVAR(_cur_tileloop_tile,     SLE_UINT32,                 6, SL_MAX_VERSION),
-	    SLEG_VAR(_disaster_delay,        SLE_UINT16),
-	    SLEG_VAR(_station_tick_ctr,      SLE_UINT16),
-	    SLEG_VAR(_random_seeds[0][0],    SLE_UINT32),
-	    SLEG_VAR(_random_seeds[0][1],    SLE_UINT32),
-	SLEG_CONDVAR(_cur_town_ctr,          SLE_FILE_U8 | SLE_VAR_U32,  0, 9),
-	SLEG_CONDVAR(_cur_town_ctr,          SLE_UINT32,                10, SL_MAX_VERSION),
-	    SLEG_VAR(_cur_player_tick_index, SLE_FILE_U8  | SLE_VAR_U32),
-	    SLEG_VAR(_next_competitor_start, SLE_FILE_U16 | SLE_VAR_U32),
-	    SLEG_VAR(_trees_tick_ctr,        SLE_UINT8),
-	SLEG_CONDVAR(_pause,                 SLE_UINT8,   4, SL_MAX_VERSION),
-	SLEG_CONDVAR(_cur_town_iter,         SLE_UINT32, 11, SL_MAX_VERSION),
+	SLEG_CONDVAR(_date,                   SLE_FILE_U16 | SLE_VAR_U32,  0,  30),
+	SLEG_CONDVAR(_date,                   SLE_UINT32,                 31, SL_MAX_VERSION),
+	    SLEG_VAR(_date_fract,             SLE_UINT16),
+	    SLEG_VAR(_tick_counter,           SLE_UINT16),
+	    SLEG_VAR(_vehicle_id_ctr_day,     SLE_UINT16),
+	    SLEG_VAR(_age_cargo_skip_counter, SLE_UINT8),
+	    SLEG_VAR(_avail_aircraft,         SLE_UINT8),
+	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_FILE_U16 | SLE_VAR_U32,  0, 5),
+	SLEG_CONDVAR(_cur_tileloop_tile,      SLE_UINT32,                  6, SL_MAX_VERSION),
+	    SLEG_VAR(_disaster_delay,         SLE_UINT16),
+	    SLEG_VAR(_station_tick_ctr,       SLE_UINT16),
+	    SLEG_VAR(_random_seeds[0][0],     SLE_UINT32),
+	    SLEG_VAR(_random_seeds[0][1],     SLE_UINT32),
+	SLEG_CONDVAR(_cur_town_ctr,           SLE_FILE_U8  | SLE_VAR_U32,  0, 9),
+	SLEG_CONDVAR(_cur_town_ctr,           SLE_UINT32,                 10, SL_MAX_VERSION),
+	    SLEG_VAR(_cur_player_tick_index,  SLE_FILE_U8  | SLE_VAR_U32),
+	    SLEG_VAR(_next_competitor_start,  SLE_FILE_U16 | SLE_VAR_U32),
+	    SLEG_VAR(_trees_tick_ctr,         SLE_UINT8),
+	SLEG_CONDVAR(_pause,                  SLE_UINT8,                   4, SL_MAX_VERSION),
+	SLEG_CONDVAR(_cur_town_iter,          SLE_UINT32,                 11, SL_MAX_VERSION),
 	    SLEG_END()
 };
 
@@ -300,11 +300,11 @@ static void SaveLoad_DATE(void)
 
 
 static const SaveLoadGlobVarList _view_desc[] = {
-	SLEG_CONDVAR(_saved_scrollpos_x,   SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
-	SLEG_CONDVAR(_saved_scrollpos_x,   SLE_INT32,                  6, SL_MAX_VERSION),
-	SLEG_CONDVAR(_saved_scrollpos_y,   SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
-	SLEG_CONDVAR(_saved_scrollpos_y,   SLE_INT32,                  6, SL_MAX_VERSION),
-	    SLEG_VAR(_saved_scrollpos_zoom,SLE_UINT8),
+	SLEG_CONDVAR(_saved_scrollpos_x,    SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLEG_CONDVAR(_saved_scrollpos_x,    SLE_INT32,                  6, SL_MAX_VERSION),
+	SLEG_CONDVAR(_saved_scrollpos_y,    SLE_FILE_I16 | SLE_VAR_I32, 0, 5),
+	SLEG_CONDVAR(_saved_scrollpos_y,    SLE_INT32,                  6, SL_MAX_VERSION),
+	    SLEG_VAR(_saved_scrollpos_zoom, SLE_UINT8),
 	    SLEG_END()
 };
 
@@ -579,17 +579,17 @@ static void Load_CHTS(void)
 
 
 const ChunkHandler _misc_chunk_handlers[] = {
-	{ 'MAPS', Save_MAPS, Load_MAPS, CH_RIFF },
-	{ 'MAPT', Save_MAPT, Load_MAPT, CH_RIFF },
-	{ 'MAPO', Save_MAP1, Load_MAP1, CH_RIFF },
-	{ 'MAP2', Save_MAP2, Load_MAP2, CH_RIFF },
-	{ 'M3LO', Save_MAP3, Load_MAP3, CH_RIFF },
-	{ 'M3HI', Save_MAP4, Load_MAP4, CH_RIFF },
-	{ 'MAP5', Save_MAP5, Load_MAP5, CH_RIFF },
-	{ 'MAPE', Save_MAPE, Load_MAPE, CH_RIFF },
+	{ 'MAPS', Save_MAPS,     Load_MAPS,     CH_RIFF },
+	{ 'MAPT', Save_MAPT,     Load_MAPT,     CH_RIFF },
+	{ 'MAPO', Save_MAP1,     Load_MAP1,     CH_RIFF },
+	{ 'MAP2', Save_MAP2,     Load_MAP2,     CH_RIFF },
+	{ 'M3LO', Save_MAP3,     Load_MAP3,     CH_RIFF },
+	{ 'M3HI', Save_MAP4,     Load_MAP4,     CH_RIFF },
+	{ 'MAP5', Save_MAP5,     Load_MAP5,     CH_RIFF },
+	{ 'MAPE', Save_MAPE,     Load_MAPE,     CH_RIFF },
 
-	{ 'NAME', Save_NAME, Load_NAME, CH_ARRAY},
+	{ 'NAME', Save_NAME,     Load_NAME,     CH_ARRAY},
 	{ 'DATE', SaveLoad_DATE, SaveLoad_DATE, CH_RIFF},
 	{ 'VIEW', SaveLoad_VIEW, SaveLoad_VIEW, CH_RIFF},
-	{ 'CHTS', Save_CHTS, Load_CHTS, CH_RIFF | CH_LAST}
+	{ 'CHTS', Save_CHTS,     Load_CHTS,     CH_RIFF | CH_LAST}
 };

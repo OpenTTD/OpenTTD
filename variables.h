@@ -82,131 +82,131 @@ VARDEF byte _saved_scrollpos_zoom;
 // ********* END OF SAVE REGION
 
 typedef struct Patches {
-	bool modified_catchment;	//different-size catchment areas
-	bool vehicle_speed;			// show vehicle speed
-	bool build_on_slopes;		// allow building on slopes
-	bool mammoth_trains;		// allow very long trains
-	bool join_stations;			// allow joining of train stations
-	bool full_load_any;			// new full load calculation, any cargo must be full
-	bool improved_load;			// improved loading algorithm
-	byte station_spread;		// amount a station may spread
-	bool inflation;					// disable inflation
-	bool selectgoods;       // only send the goods to station if a train has been there
-	bool longbridges;				// allow 100 tile long bridges
-	bool gotodepot;					// allow goto depot in orders
-	bool build_rawmaterial_ind;	 // allow building raw material industries
-	bool multiple_industry_per_town;	// allow many industries of the same type per town
-	bool same_industry_close;	// allow same type industries to be built close to each other
-	uint16 lost_train_days;	// if a train doesn't switch order in this amount of days, a train is lost warning is shown
+	bool modified_catchment;            // different-size catchment areas
+	bool vehicle_speed;                 // show vehicle speed
+	bool build_on_slopes;               // allow building on slopes
+	bool mammoth_trains;                // allow very long trains
+	bool join_stations;                 // allow joining of train stations
+	bool full_load_any;                 // new full load calculation, any cargo must be full
+	bool improved_load;                 // improved loading algorithm
+	byte station_spread;                // amount a station may spread
+	bool inflation;                     // disable inflation
+	bool selectgoods;                   // only send the goods to station if a train has been there
+	bool longbridges;                   // allow 100 tile long bridges
+	bool gotodepot;                     // allow goto depot in orders
+	bool build_rawmaterial_ind;         // allow building raw material industries
+	bool multiple_industry_per_town;    // allow many industries of the same type per town
+	bool same_industry_close;           // allow same type industries to be built close to each other
+	uint16 lost_train_days;             // if a train doesn't switch order in this amount of days, a train is lost warning is shown
 	uint8 order_review_system;
-	bool train_income_warn; // if train is generating little income, show a warning
-	bool status_long_date;		// always show long date in status bar
-	bool signal_side;				// show signals on right side
-	bool show_finances;			// show finances at end of year
-	bool new_nonstop;				// ttdpatch compatible nonstop handling
-	bool roadveh_queue;			// buggy road vehicle queueing
-	bool autoscroll;				// scroll when moving mouse to the edge.
-	byte errmsg_duration;		// duration of error message
-	byte land_generator;		// the landscape generator
-	byte oil_refinery_limit;	// distance oil refineries allowed from map edge
-	byte snow_line_height;	// a number 0-15 that configured snow line height
-	byte tgen_smoothness;		// how rough is the terrain from 0-3
-	uint32 generation_seed;	// noise seed for world generation
-	byte tree_placer;				// the tree placer algorithm
-	byte heightmap_rotation;// rotation director for the heightmap
-	uint16 progress_update_interval;// interval between two updates of the progress in hundreds of milliseconds
-	byte se_flat_world_height;	// land height a flat world gets in SE
-	bool bribe;							// enable bribing the local authority
-	bool nonuniform_stations;// allow nonuniform train stations
-	bool always_small_airport; // always allow small airports
-	bool realistic_acceleration; // realistic acceleration for trains
-	bool wagon_speed_limits; // enable wagon speed limits
-	bool forbid_90_deg; // forbid trains to make 90 deg turns
-	bool invisible_trees; // don't show trees when buildings are transparent
+	bool train_income_warn;             // if train is generating little income, show a warning
+	bool status_long_date;              // always show long date in status bar
+	bool signal_side;                   // show signals on right side
+	bool show_finances;                 // show finances at end of year
+	bool new_nonstop;                   // ttdpatch compatible nonstop handling
+	bool roadveh_queue;                 // buggy road vehicle queueing
+	bool autoscroll;                    // scroll when moving mouse to the edge.
+	byte errmsg_duration;               // duration of error message
+	byte land_generator;                // the landscape generator
+	byte oil_refinery_limit;            // distance oil refineries allowed from map edge
+	byte snow_line_height;              // a number 0-15 that configured snow line height
+	byte tgen_smoothness;               // how rough is the terrain from 0-3
+	uint32 generation_seed;             // noise seed for world generation
+	byte tree_placer;                   // the tree placer algorithm
+	byte heightmap_rotation;            // rotation director for the heightmap
+	uint16 progress_update_interval;    // interval between two updates of the progress in hundreds of milliseconds
+	byte se_flat_world_height;          // land height a flat world gets in SE
+	bool bribe;                         // enable bribing the local authority
+	bool nonuniform_stations;           // allow nonuniform train stations
+	bool always_small_airport;          // always allow small airports
+	bool realistic_acceleration;        // realistic acceleration for trains
+	bool wagon_speed_limits;            // enable wagon speed limits
+	bool forbid_90_deg;                 // forbid trains to make 90 deg turns
+	bool invisible_trees;               // don't show trees when buildings are transparent
 	bool no_servicing_if_no_breakdowns; // dont send vehicles to depot when breakdowns are disabled
-	bool link_terraform_toolbar; // display terraform toolbar when displaying rail, road, water and airport toolbars
-	bool reverse_scroll; // Right-Click-Scrolling scrolls in the opposite direction
+	bool link_terraform_toolbar;        // display terraform toolbar when displaying rail, road, water and airport toolbars
+	bool reverse_scroll;                // Right-Click-Scrolling scrolls in the opposite direction
 
-	uint8 toolbar_pos;			// position of toolbars, 0=left, 1=center, 2=right
-	uint8 window_snap_radius; // Windows snap at each other if closer than this
+	uint8 toolbar_pos;                  // position of toolbars, 0=left, 1=center, 2=right
+	uint8 window_snap_radius;           // Windows snap at each other if closer than this
 
-	UnitID max_trains;				//max trains in game per player (these are 16bit because the unitnumber field can't hold more)
-	UnitID max_roadveh;				//max trucks in game per player
-	UnitID max_aircraft;			//max planes in game per player
-	UnitID max_ships;					//max ships in game per player
+	UnitID max_trains;                  // max trains in game per player (these are 16bit because the unitnumber field can't hold more)
+	UnitID max_roadveh;                 // max trucks in game per player
+	UnitID max_aircraft;                // max planes in game per player
+	UnitID max_ships;                   // max ships in game per player
 
-	bool servint_ispercent;	// service intervals are in percents
-	uint16 servint_trains;	// service interval for trains
-	uint16 servint_roadveh;	// service interval for road vehicles
-	uint16 servint_aircraft;// service interval for aircraft
-	uint16 servint_ships;		// service interval for ships
+	bool servint_ispercent;             // service intervals are in percents
+	uint16 servint_trains;              // service interval for trains
+	uint16 servint_roadveh;             // service interval for road vehicles
+	uint16 servint_aircraft;            // service interval for aircraft
+	uint16 servint_ships;               // service interval for ships
 
 	bool autorenew;
 	int16 autorenew_months;
 	int32 autorenew_money;
 
-	byte pf_maxdepth;				// maximum recursion depth when searching for a train route for new pathfinder
-	uint16 pf_maxlength;		// maximum length when searching for a train route for new pathfinder
+	byte pf_maxdepth;                   // maximum recursion depth when searching for a train route for new pathfinder
+	uint16 pf_maxlength;                // maximum length when searching for a train route for new pathfinder
 
 
-	bool bridge_pillars;		// show bridge pillars for high bridges
+	bool bridge_pillars;                // show bridge pillars for high bridges
 
-	bool ai_disable_veh_train;		// disable types for AI
-	bool ai_disable_veh_roadveh;		// disable types for AI
-	bool ai_disable_veh_aircraft;		// disable types for AI
-	bool ai_disable_veh_ship;		// disable types for AI
-	Year starting_year;				// starting date
-	Year ending_year;					// end of the game (just show highscore)
-	Year colored_news_year;		// when does newspaper become colored?
+	bool ai_disable_veh_train;          // disable types for AI
+	bool ai_disable_veh_roadveh;        // disable types for AI
+	bool ai_disable_veh_aircraft;       // disable types for AI
+	bool ai_disable_veh_ship;           // disable types for AI
+	Year starting_year;                 // starting date
+	Year ending_year;                   // end of the game (just show highscore)
+	Year colored_news_year;             // when does newspaper become colored?
 
-	bool keep_all_autosave;		// name the autosave in a different way.
-	bool autosave_on_exit;		// save an autosave when you quit the game, but do not ask "Do you really want to quit?"
-	byte max_num_autosaves;		// controls how many autosavegames are made before the game starts to overwrite (names them 0 to max_num_autosaves - 1)
-	bool extra_dynamite;			// extra dynamite
+	bool keep_all_autosave;             // name the autosave in a different way.
+	bool autosave_on_exit;              // save an autosave when you quit the game, but do not ask "Do you really want to quit?"
+	byte max_num_autosaves;             // controls how many autosavegames are made before the game starts to overwrite (names them 0 to max_num_autosaves - 1)
+	bool extra_dynamite;                // extra dynamite
 
-	bool never_expire_vehicles; // never expire vehicles
-	byte extend_vehicle_life;	// extend vehicle life by this many years
+	bool never_expire_vehicles;         // never expire vehicles
+	byte extend_vehicle_life;           // extend vehicle life by this many years
 
-	bool auto_euro;						// automatically switch to euro in 2002
-	bool serviceathelipad;	// service helicopters at helipads automatically (no need to send to depot)
-	bool smooth_economy;		// smooth economy
-	bool allow_shares;			// allow the buying/selling of shares
-	byte dist_local_authority;		// distance for town local authority, default 20
+	bool auto_euro;                     // automatically switch to euro in 2002
+	bool serviceathelipad;              // service helicopters at helipads automatically (no need to send to depot)
+	bool smooth_economy;                // smooth economy
+	bool allow_shares;                  // allow the buying/selling of shares
+	byte dist_local_authority;          // distance for town local authority, default 20
 
-	byte wait_oneway_signal;	//waitingtime in days before a oneway signal
-	byte wait_twoway_signal;	//waitingtime in days before a twoway signal
+	byte wait_oneway_signal;            // waitingtime in days before a oneway signal
+	byte wait_twoway_signal;            // waitingtime in days before a twoway signal
 
-	uint8 map_x; // Size of map
+	uint8 map_x;                        // Size of map
 	uint8 map_y;
 
-	byte drag_signals_density; // many signals density
-	bool ainew_active;  // Is the new AI active?
-	bool ai_in_multiplayer; // Do we allow AIs in multiplayer
+	byte drag_signals_density;          // many signals density
+	bool ainew_active;                  // Is the new AI active?
+	bool ai_in_multiplayer;             // Do we allow AIs in multiplayer
 
 	/*
-	 * New Path Finding
-	 */
+		* New Path Finding
+		*/
 	bool new_pathfinding_all; /* Use the newest pathfinding algorithm for all */
 
 	/**
-	 * The maximum amount of search nodes a single NPF run should take. This
-	 * limit should make sure performance stays at acceptable levels at the cost
-	 * of not being perfect anymore. This will probably be fixed in a more
-	 * sophisticated way sometime soon
-	 */
+		* The maximum amount of search nodes a single NPF run should take. This
+		* limit should make sure performance stays at acceptable levels at the cost
+		* of not being perfect anymore. This will probably be fixed in a more
+		* sophisticated way sometime soon
+		*/
 	uint32 npf_max_search_nodes;
 
-	uint32 npf_rail_firstred_penalty; /* The penalty for when the first signal is red (and it is not an exit or combo signal) */
+	uint32 npf_rail_firstred_penalty;      /* The penalty for when the first signal is red (and it is not an exit or combo signal) */
 	uint32 npf_rail_firstred_exit_penalty; /* The penalty for when the first signal is red (and it is an exit or combo signal) */
-	uint32 npf_rail_lastred_penalty; /* The penalty for when the last signal is red */
-	uint32 npf_rail_station_penalty; /* The penalty for station tiles */
-	uint32 npf_rail_slope_penalty; /* The penalty for sloping upwards */
-	uint32 npf_rail_curve_penalty; /* The penalty for curves */
+	uint32 npf_rail_lastred_penalty;       /* The penalty for when the last signal is red */
+	uint32 npf_rail_station_penalty;       /* The penalty for station tiles */
+	uint32 npf_rail_slope_penalty;         /* The penalty for sloping upwards */
+	uint32 npf_rail_curve_penalty;         /* The penalty for curves */
 	uint32 npf_rail_depot_reverse_penalty; /* The penalty for reversing in depots */
-	uint32 npf_buoy_penalty; /* The penalty for going over (through) a buoy */
-	uint32 npf_water_curve_penalty; /* The penalty for curves */
-	uint32 npf_road_curve_penalty; /* The penalty for curves */
-	uint32 npf_crossing_penalty; /* The penalty for level crossings */
+	uint32 npf_buoy_penalty;               /* The penalty for going over (through) a buoy */
+	uint32 npf_water_curve_penalty;        /* The penalty for curves */
+	uint32 npf_road_curve_penalty;         /* The penalty for curves */
+	uint32 npf_crossing_penalty;           /* The penalty for level crossings */
 
 	bool population_in_label; // Show the population of a town in his label?
 
@@ -229,16 +229,16 @@ typedef struct Cheat {
 // Only add new entries at the end of the struct!
 
 typedef struct Cheats {
-	Cheat magic_bulldozer;		// dynamite industries, unmovables
-	Cheat switch_player;			// change to another player
-	Cheat money;							// get rich
-	Cheat crossing_tunnels;		// allow tunnels that cross each other
-	Cheat build_in_pause;			// build while in pause mode
-	Cheat no_jetcrash;				// no jet will crash on small airports anymore
+	Cheat magic_bulldozer;  // dynamite industries, unmovables
+	Cheat switch_player;    // change to another player
+	Cheat money;            // get rich
+	Cheat crossing_tunnels; // allow tunnels that cross each other
+	Cheat build_in_pause;   // build while in pause mode
+	Cheat no_jetcrash;      // no jet will crash on small airports anymore
 	Cheat switch_climate;
-	Cheat change_date;				//changes date ingame
-	Cheat setup_prod;				//setup raw-material production in game
-	Cheat elrail;                   //allow electric engines to be powered on conventional rail
+	Cheat change_date;      // changes date ingame
+	Cheat setup_prod;       // setup raw-material production in game
+	Cheat elrail;           // allow electric engines to be powered on conventional rail
 } Cheats;
 
 VARDEF Cheats _cheats;
@@ -281,10 +281,10 @@ VARDEF int32 _additional_cash_required;
 
 VARDEF uint32 _decode_parameters[20];
 
-VARDEF uint32 _pressed_key; // Low 8 bits = ASCII, High 16 bits = keycode
-VARDEF bool _ctrl_pressed;  // Is Ctrl pressed?
+VARDEF uint32 _pressed_key;  // Low 8 bits = ASCII, High 16 bits = keycode
+VARDEF bool _ctrl_pressed;   // Is Ctrl pressed?
 VARDEF bool _shift_pressed;  // Is Alt pressed?
-VARDEF byte _dirkeys;				// 1=left, 2=up, 4=right, 8=down
+VARDEF byte _dirkeys;        // 1 = left, 2 = up, 4 = right, 8 = down
 
 VARDEF bool _fullscreen;
 VARDEF bool _fast_forward;

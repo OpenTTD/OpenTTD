@@ -25,9 +25,9 @@ AircraftVehicleInfo _aircraft_vehicle_info[NUM_AIRCRAFT_ENGINES];
 RoadVehicleInfo _road_vehicle_info[NUM_ROAD_ENGINES];
 
 enum {
-	ENGINE_AVAILABLE = 1,
+	ENGINE_AVAILABLE   = 1,
 	ENGINE_INTRODUCING = 2,
-	ENGINE_PREVIEWING = 4,
+	ENGINE_PREVIEWING  = 4,
 };
 
 enum {
@@ -40,18 +40,18 @@ enum {
 #define MC(cargo) (1 << cargo)
 const uint32 _default_refitmasks[NUM_VEHICLE_TYPES] = {
 	/* Trains */
-	MC(GC_PASSENGERS)|MC(GC_COAL)|MC(GC_MAIL)|MC(GC_LIVESTOCK)|MC(GC_GOODS)|MC(GC_GRAIN)|MC(GC_WOOD)|MC(GC_IRON_ORE)|
-	MC(GC_STEEL)|MC(GC_VALUABLES)|MC(GC_PAPER)|MC(GC_FOOD)|MC(GC_FRUIT)|MC(GC_COPPER_ORE)|MC(GC_WATER)|MC(GC_SUGAR)|
-	MC(GC_TOYS)|MC(GC_CANDY)|MC(GC_TOFFEE)|MC(GC_COLA)|MC(GC_COTTON_CANDY)|MC(GC_BUBBLES)|MC(GC_PLASTIC)|MC(GC_FIZZY_DRINKS),
+	MC(GC_PASSENGERS) | MC(GC_COAL)      | MC(GC_MAIL)   | MC(GC_LIVESTOCK) | MC(GC_GOODS)        | MC(GC_GRAIN)      | MC(GC_WOOD)    | MC(GC_IRON_ORE)    |
+	MC(GC_STEEL)      | MC(GC_VALUABLES) | MC(GC_PAPER)  | MC(GC_FOOD)      | MC(GC_FRUIT)        | MC(GC_COPPER_ORE) | MC(GC_WATER)   | MC(GC_SUGAR)       |
+	MC(GC_TOYS)       | MC(GC_CANDY)     | MC(GC_TOFFEE) | MC(GC_COLA)      | MC(GC_COTTON_CANDY) | MC(GC_BUBBLES)    | MC(GC_PLASTIC) | MC(GC_FIZZY_DRINKS),
 	/* Road vehicles (not refittable by default) */
 	0,
 	/* Ships */
-	MC(GC_COAL)|MC(GC_MAIL)|MC(GC_LIVESTOCK)|MC(GC_GOODS)|MC(GC_GRAIN)|MC(GC_WOOD)|MC(GC_IRON_ORE)|MC(GC_STEEL)|MC(GC_VALUABLES)|
-	MC(GC_PAPER)|MC(GC_FOOD)|MC(GC_FRUIT)|MC(GC_COPPER_ORE)|MC(GC_WATER)|MC(GC_RUBBER)|MC(GC_SUGAR)|MC(GC_TOYS)|MC(GC_BATTERIES)|
-	MC(GC_CANDY)|MC(GC_TOFFEE)|MC(GC_COLA)|MC(GC_COTTON_CANDY)|MC(GC_BUBBLES)|MC(GC_PLASTIC)|MC(GC_FIZZY_DRINKS),
+	MC(GC_COAL)  | MC(GC_MAIL)   | MC(GC_LIVESTOCK) | MC(GC_GOODS)        | MC(GC_GRAIN)   | MC(GC_WOOD)    | MC(GC_IRON_ORE) | MC(GC_STEEL) | MC(GC_VALUABLES) |
+	MC(GC_PAPER) | MC(GC_FOOD)   | MC(GC_FRUIT)     | MC(GC_COPPER_ORE)   | MC(GC_WATER)   | MC(GC_RUBBER)  | MC(GC_SUGAR)    | MC(GC_TOYS)  | MC(GC_BATTERIES) |
+	MC(GC_CANDY) | MC(GC_TOFFEE) | MC(GC_COLA)      | MC(GC_COTTON_CANDY) | MC(GC_BUBBLES) | MC(GC_PLASTIC) | MC(GC_FIZZY_DRINKS),
 	/* Aircraft */
-	MC(GC_PASSENGERS)|MC(GC_MAIL)|MC(GC_GOODS)|MC(GC_VALUABLES)|MC(GC_FOOD)|MC(GC_FRUIT)|MC(GC_SUGAR)|MC(GC_TOYS)|
-	MC(GC_BATTERIES)|MC(GC_CANDY)|MC(GC_TOFFEE)|MC(GC_COLA)|MC(GC_COTTON_CANDY)|MC(GC_BUBBLES)|MC(GC_PLASTIC)|MC(GC_FIZZY_DRINKS),
+	MC(GC_PASSENGERS) | MC(GC_MAIL)  | MC(GC_GOODS)  | MC(GC_VALUABLES) | MC(GC_FOOD)         | MC(GC_FRUIT)   | MC(GC_SUGAR)   | MC(GC_TOYS) |
+	MC(GC_BATTERIES)  | MC(GC_CANDY) | MC(GC_TOFFEE) | MC(GC_COLA)      | MC(GC_COTTON_CANDY) | MC(GC_BUBBLES) | MC(GC_PLASTIC) | MC(GC_FIZZY_DRINKS),
 	/* Special/Disaster */
 	0,0
 };
@@ -606,25 +606,25 @@ static void Load_ERNW(void)
 }
 
 static const SaveLoad _engine_desc[] = {
-	SLE_CONDVAR(Engine,intro_date,				SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
-	SLE_CONDVAR(Engine,intro_date,				SLE_INT32, 31, SL_MAX_VERSION),
-	SLE_CONDVAR(Engine,age,								SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
-	SLE_CONDVAR(Engine,age,								SLE_INT32, 31, SL_MAX_VERSION),
-	SLE_VAR(Engine,reliability,						SLE_UINT16),
-	SLE_VAR(Engine,reliability_spd_dec,		SLE_UINT16),
-	SLE_VAR(Engine,reliability_start,			SLE_UINT16),
-	SLE_VAR(Engine,reliability_max,				SLE_UINT16),
-	SLE_VAR(Engine,reliability_final,			SLE_UINT16),
-	SLE_VAR(Engine,duration_phase_1,			SLE_UINT16),
-	SLE_VAR(Engine,duration_phase_2,			SLE_UINT16),
-	SLE_VAR(Engine,duration_phase_3,			SLE_UINT16),
+	SLE_CONDVAR(Engine, intro_date,          SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	SLE_CONDVAR(Engine, intro_date,          SLE_INT32,                  31, SL_MAX_VERSION),
+	SLE_CONDVAR(Engine, age,                 SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	SLE_CONDVAR(Engine, age,                 SLE_INT32,                  31, SL_MAX_VERSION),
+	    SLE_VAR(Engine, reliability,         SLE_UINT16),
+	    SLE_VAR(Engine, reliability_spd_dec, SLE_UINT16),
+	    SLE_VAR(Engine, reliability_start,   SLE_UINT16),
+	    SLE_VAR(Engine, reliability_max,     SLE_UINT16),
+	    SLE_VAR(Engine, reliability_final,   SLE_UINT16),
+	    SLE_VAR(Engine, duration_phase_1,    SLE_UINT16),
+	    SLE_VAR(Engine, duration_phase_2,    SLE_UINT16),
+	    SLE_VAR(Engine, duration_phase_3,    SLE_UINT16),
 
-	SLE_VAR(Engine,lifelength,						SLE_UINT8),
-	SLE_VAR(Engine,flags,									SLE_UINT8),
-	SLE_VAR(Engine,preview_player,				SLE_UINT8),
-	SLE_VAR(Engine,preview_wait,					SLE_UINT8),
-	SLE_VAR(Engine,railtype,							SLE_UINT8),
-	SLE_VAR(Engine,player_avail,					SLE_UINT8),
+	    SLE_VAR(Engine, lifelength,          SLE_UINT8),
+	    SLE_VAR(Engine, flags,               SLE_UINT8),
+	    SLE_VAR(Engine, preview_player,      SLE_UINT8),
+	    SLE_VAR(Engine, preview_wait,        SLE_UINT8),
+	    SLE_VAR(Engine, railtype,            SLE_UINT8),
+	    SLE_VAR(Engine, player_avail,        SLE_UINT8),
 
 	// reserve extra space in savegame here. (currently 16 bytes)
 	SLE_CONDNULL(16, 2, SL_MAX_VERSION),

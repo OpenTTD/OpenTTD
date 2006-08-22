@@ -97,9 +97,9 @@ static void PlaceExtraDepotRail(TileIndex tile, uint16 extra)
 }
 
 static const uint16 _place_depot_extra[12] = {
-	0x604,		0x2102,		0x1202,		0x505,
-	0x2400,		0x2801,		0x1800,		0x1401,
-	0x2203,		0x904,		0x0A05,		0x1103,
+	0x0604, 0x2102, 0x1202, 0x0505,
+	0x2400, 0x2801, 0x1800, 0x1401,
+	0x2203, 0x0904, 0x0A05, 0x1103,
 };
 
 
@@ -501,30 +501,30 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 
 static const Widget _build_rail_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   359,     0,    13, STR_100A_RAILROAD_CONSTRUCTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{  WWT_STICKYBOX,   RESIZE_NONE,     7,   360,   371,     0,    13, 0x0,     STR_STICKY_BUTTON},
+{  WWT_STICKYBOX,   RESIZE_NONE,     7,   360,   371,     0,    13, 0x0,                            STR_STICKY_BUTTON},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,   110,   113,    14,    35, 0x0,			STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,   110,   113,    14,    35, 0x0,                            STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,    0,     21,    14,    35, 0x4E3,		STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,   RESIZE_NONE,     7,    22,    43,    14,    35, 0x4E4,		STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,   RESIZE_NONE,     7,    44,    65,    14,    35, 0x4E5,		STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,   RESIZE_NONE,     7,    66,    87,    14,    35, 0x4E6,		STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_AUTORAIL, STR_BUILD_AUTORAIL_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,    0,     21,    14,    35, 0x4E3,                          STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,   RESIZE_NONE,     7,    22,    43,    14,    35, 0x4E4,                          STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,   RESIZE_NONE,     7,    44,    65,    14,    35, 0x4E5,                          STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,   RESIZE_NONE,     7,    66,    87,    14,    35, 0x4E6,                          STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_AUTORAIL,               STR_BUILD_AUTORAIL_TIP},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,   114,   135,    14,    35, 0x2BF,		STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,   RESIZE_NONE,     7,   136,   157,    14,    35, 0x50E,		STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
-{      WWT_PANEL,   RESIZE_NONE,     7,   158,   179,    14,    35, SPR_IMG_WAYPOINT, STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,   114,   135,    14,    35, 0x2BF,                          STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,   RESIZE_NONE,     7,   136,   157,    14,    35, 0x50E,                          STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,   RESIZE_NONE,     7,   158,   179,    14,    35, SPR_IMG_WAYPOINT,               STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,   180,   221,    14,    35, 0x512,		STR_101A_BUILD_RAILROAD_STATION},
-{      WWT_PANEL,   RESIZE_NONE,     7,   222,   243,    14,    35, 0x50B,		STR_101B_BUILD_RAILROAD_SIGNALS},
-{      WWT_PANEL,   RESIZE_NONE,     7,   244,   285,    14,    35, 0xA22,		STR_101C_BUILD_RAILROAD_BRIDGE},
-{      WWT_PANEL,   RESIZE_NONE,     7,   286,   305,    14,    35, SPR_IMG_TUNNEL_RAIL, STR_101D_BUILD_RAILROAD_TUNNEL},
-{      WWT_PANEL,   RESIZE_NONE,     7,   306,   327,    14,    35, 0x2CA,		STR_101E_TOGGLE_BUILD_REMOVE_FOR},
-{      WWT_PANEL,   RESIZE_NONE,     7,   328,   349,    14,    35, SPR_IMG_CONVERT_RAIL, STR_CONVERT_RAIL_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,   180,   221,    14,    35, 0x512,                          STR_101A_BUILD_RAILROAD_STATION},
+{      WWT_PANEL,   RESIZE_NONE,     7,   222,   243,    14,    35, 0x50B,                          STR_101B_BUILD_RAILROAD_SIGNALS},
+{      WWT_PANEL,   RESIZE_NONE,     7,   244,   285,    14,    35, 0xA22,                          STR_101C_BUILD_RAILROAD_BRIDGE},
+{      WWT_PANEL,   RESIZE_NONE,     7,   286,   305,    14,    35, SPR_IMG_TUNNEL_RAIL,            STR_101D_BUILD_RAILROAD_TUNNEL},
+{      WWT_PANEL,   RESIZE_NONE,     7,   306,   327,    14,    35, 0x2CA,                          STR_101E_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,   RESIZE_NONE,     7,   328,   349,    14,    35, SPR_IMG_CONVERT_RAIL,           STR_CONVERT_RAIL_TIP},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,   350,   371,    14,    35, SPR_IMG_LANDSCAPING,	STR_LANDSCAPING_TOOLBAR_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,   350,   371,    14,    35, SPR_IMG_LANDSCAPING,            STR_LANDSCAPING_TOOLBAR_TIP},
 
 {   WIDGETS_END},
 };
@@ -826,66 +826,66 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _station_builder_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,		STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3000_RAIL_STATION_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,   199, 0x0,					STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     7,    72,    26,    73, 0x0,					STR_304E_SELECT_RAILROAD_STATION},
-{      WWT_PANEL,   RESIZE_NONE,    14,    75,   140,    26,    73, 0x0,					STR_304E_SELECT_RAILROAD_STATION},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,   199, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     7,    72,    26,    73, 0x0,                             STR_304E_SELECT_RAILROAD_STATION},
+{      WWT_PANEL,   RESIZE_NONE,    14,    75,   140,    26,    73, 0x0,                             STR_304E_SELECT_RAILROAD_STATION},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,    87,    98, STR_00CB_1,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,    87,    98, STR_00CC_2,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,    87,    98, STR_00CD_3,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,    87,    98, STR_00CE_4,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,    87,    98, STR_00CF_5,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,    87,    98, STR_0335_6,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,    87,    98, STR_0336_7,	STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,    87,    98, STR_00CB_1,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,    87,    98, STR_00CC_2,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,    87,    98, STR_00CD_3,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,    87,    98, STR_00CE_4,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,    87,    98, STR_00CF_5,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,    87,    98, STR_0335_6,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,    87,    98, STR_0336_7,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,   112,   123, STR_00CB_1,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,   112,   123, STR_00CC_2,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,   112,   123, STR_00CD_3,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,   112,   123, STR_00CE_4,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,   112,   123, STR_00CF_5,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,   112,   123, STR_0335_6,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,   112,   123, STR_0336_7,	STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,   112,   123, STR_00CB_1,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,   112,   123, STR_00CC_2,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,   112,   123, STR_00CD_3,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,   112,   123, STR_00CE_4,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,   112,   123, STR_00CF_5,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,   112,   123, STR_0335_6,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,   112,   123, STR_0336_7,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,   111,   126,   137, STR_DRAG_DROP, STR_STATION_DRAG_DROP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,   152,   163, STR_02DB_OFF, STR_3065_DON_T_HIGHLIGHT_COVERAGE},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,   152,   163, STR_02DA_ON, STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,   111,   126,   137, STR_DRAG_DROP,                   STR_STATION_DRAG_DROP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,   152,   163, STR_02DB_OFF,                    STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,   152,   163, STR_02DA_ON,                     STR_3064_HIGHLIGHT_COVERAGE_AREA},
 {   WIDGETS_END},
 };
 
 static const Widget _newstation_builder_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_3000_RAIL_STATION_SELECTION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,   289, 0x0, STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,     7,    72,   116,   163, 0x0, STR_304E_SELECT_RAILROAD_STATION},
-{      WWT_PANEL,   RESIZE_NONE,    14,    75,   140,   116,   163, 0x0, STR_304E_SELECT_RAILROAD_STATION},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   147,    14,   289, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     7,    72,   116,   163, 0x0,                             STR_304E_SELECT_RAILROAD_STATION},
+{      WWT_PANEL,   RESIZE_NONE,    14,    75,   140,   116,   163, 0x0,                             STR_304E_SELECT_RAILROAD_STATION},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,   177,   188, STR_00CB_1, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,   177,   188, STR_00CC_2, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,   177,   188, STR_00CD_3, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,   177,   188, STR_00CE_4, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,   177,   188, STR_00CF_5, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,   177,   188, STR_0335_6, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,   177,   188, STR_0336_7, STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,   177,   188, STR_00CB_1,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,   177,   188, STR_00CC_2,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,   177,   188, STR_00CD_3,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,   177,   188, STR_00CE_4,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,   177,   188, STR_00CF_5,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,   177,   188, STR_0335_6,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,   177,   188, STR_0336_7,                      STR_304F_SELECT_NUMBER_OF_PLATFORMS},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,   202,   213, STR_00CB_1, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,   202,   213, STR_00CC_2, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,   202,   213, STR_00CD_3, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,   202,   213, STR_00CE_4, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,   202,   213, STR_00CF_5, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,   202,   213, STR_0335_6, STR_3050_SELECT_LENGTH_OF_RAILROAD},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,   202,   213, STR_0336_7, STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    22,    36,   202,   213, STR_00CB_1,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,    51,   202,   213, STR_00CC_2,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    52,    66,   202,   213, STR_00CD_3,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    67,    81,   202,   213, STR_00CE_4,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    82,    96,   202,   213, STR_00CF_5,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    97,   111,   202,   213, STR_0335_6,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   112,   126,   202,   213, STR_0336_7,                      STR_3050_SELECT_LENGTH_OF_RAILROAD},
 
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,   111,   216,   227, STR_DRAG_DROP, STR_STATION_DRAG_DROP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,   242,   253, STR_02DB_OFF, STR_3065_DON_T_HIGHLIGHT_COVERAGE},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,   242,   253, STR_02DA_ON, STR_3064_HIGHLIGHT_COVERAGE_AREA},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    37,   111,   216,   227, STR_DRAG_DROP,                   STR_STATION_DRAG_DROP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    14,    73,   242,   253, STR_02DB_OFF,                    STR_3065_DON_T_HIGHLIGHT_COVERAGE},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,   242,   253, STR_02DA_ON,                     STR_3064_HIGHLIGHT_COVERAGE_AREA},
 
 /* newstations gui additions */
-{          WWT_6,   RESIZE_NONE,    14,     7,   140,    17,    28, STR_02BD, STR_SELECT_STATION_CLASS_TIP},
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   129,   139,    18,    27, STR_0225, STR_SELECT_STATION_CLASS_TIP},
-{     WWT_MATRIX,   RESIZE_NONE,    14,     7,   128,    32,   102, 0x501,    STR_SELECT_STATION_TYPE_TIP},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   129,   140,    32,   102, 0x0,      STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{          WWT_6,   RESIZE_NONE,    14,     7,   140,    17,    28, STR_02BD,                        STR_SELECT_STATION_CLASS_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   129,   139,    18,    27, STR_0225,                        STR_SELECT_STATION_CLASS_TIP},
+{     WWT_MATRIX,   RESIZE_NONE,    14,     7,   128,    32,   102, 0x501,                           STR_SELECT_STATION_TYPE_TIP},
+{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   129,   140,    32,   102, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 
@@ -963,13 +963,13 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_depot_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,STR_018B_CLOSE_WINDOW},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                         STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   139,     0,    13, STR_1014_TRAIN_DEPOT_ORIENTATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   121, 0x0,			STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,			STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
-{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,			STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,			STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
-{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,			STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   139,    14,   121, 0x0,                              STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    17,    66, 0x0,                              STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
+{      WWT_PANEL,   RESIZE_NONE,    14,    71,   136,    69,   118, 0x0,                              STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    69,   118, 0x0,                              STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
+{      WWT_PANEL,   RESIZE_NONE,    14,     3,    68,    17,    66, 0x0,                              STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO},
 {   WIDGETS_END},
 };
 
@@ -1042,17 +1042,17 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _build_waypoint_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5, STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   343,     0,    13, STR_WAYPOINT,STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,   343,    14,    91, 0x0, 0},
+{   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,     STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,     7,    11,   343,     0,    13, STR_WAYPOINT, STR_018C_WINDOW_TITLE_DRAG_THIS},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   343,    14,    91, 0x0,          0},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,     3,    68,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
-{      WWT_PANEL,   RESIZE_NONE,     7,    71,   136,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
-{      WWT_PANEL,   RESIZE_NONE,     7,   139,   204,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
-{      WWT_PANEL,   RESIZE_NONE,     7,   207,   272,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
-{      WWT_PANEL,   RESIZE_NONE,     7,   275,   340,    17,    76, 0x0, STR_WAYPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,     3,    68,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,    71,   136,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,   139,   204,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,   207,   272,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,     7,   275,   340,    17,    76, 0x0,          STR_WAYPOINT_GRAPHICS_TIP},
 
-{ WWT_HSCROLLBAR,   RESIZE_NONE,    7,     1,   343,     80,    91, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
+{ WWT_HSCROLLBAR,   RESIZE_NONE,    7,     1,   343,     80,    91, 0x0,          STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {    WIDGETS_END},
 };
 

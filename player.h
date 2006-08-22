@@ -12,7 +12,7 @@ typedef struct PlayerEconomyEntry {
 	int32 income;
 	int32 expenses;
 	int32 delivered_cargo;
-	int32 performance_history;	// player score (scale 0-1000)
+	int32 performance_history; // player score (scale 0-1000)
 	int64 company_value;
 } PlayerEconomyEntry;
 
@@ -31,7 +31,7 @@ typedef struct AiBuildRec {
 
 typedef struct PlayerAI {
 	byte state;
-	byte tick; // Used to determine how often to move
+	byte tick;            // Used to determine how often to move
 	uint32 state_counter; // Can hold tile index!
 	uint16 timeout_counter;
 
@@ -72,17 +72,17 @@ typedef struct PlayerAI {
 typedef struct Ai_PathFinderInfo {
 	TileIndex start_tile_tl; // tl = top-left
 	TileIndex start_tile_br; // br = bottom-right
-	TileIndex end_tile_tl; // tl = top-left
-	TileIndex end_tile_br; // br = bottom-right
-	byte start_direction; // 0 to 3 or AI_PATHFINDER_NO_DIRECTION
-	byte end_direction; // 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+	TileIndex end_tile_tl;   // tl = top-left
+	TileIndex end_tile_br;   // br = bottom-right
+	byte start_direction;    // 0 to 3 or AI_PATHFINDER_NO_DIRECTION
+	byte end_direction;      // 0 to 3 or AI_PATHFINDER_NO_DIRECTION
 
 	TileIndex route[500];
-	byte route_extra[500]; // Some extra information about the route like bridge/tunnel
+	byte route_extra[500];   // Some extra information about the route like bridge/tunnel
 	int route_length;
-	int position; // Current position in the build-path, needed to build the path
+	int position;            // Current position in the build-path, needed to build the path
 
-	bool rail_or_road; // true = rail, false = road
+	bool rail_or_road;       // true = rail, false = road
 } Ai_PathFinderInfo;
 
 // The amount of memory reserved for the AI-special-vehicles
@@ -98,12 +98,12 @@ typedef struct PlayerAiNew {
 	uint tick;
 	uint idle;
 
-	int temp; 	// A value used in more than one function, but it just temporary
-				// The use is pretty simple: with this we can 'think' about stuff
-				//   in more than one tick, and more than one AI. A static will not
-				//   do, because they are not saved. This way, the AI is almost human ;)
-	int counter; 	// For the same reason as temp, we have counter. It can count how
-					//  long we are trying something, and just abort if it takes too long
+	int temp;    // A value used in more than one function, but it just temporary
+	             // The use is pretty simple: with this we can 'think' about stuff
+	             //   in more than one tick, and more than one AI. A static will not
+	             //   do, because they are not saved. This way, the AI is almost human ;)
+	int counter; // For the same reason as temp, we have counter. It can count how
+	             //  long we are trying something, and just abort if it takes too long
 
 	// Pathfinder stuff
 	Ai_PathFinderInfo path_info;
@@ -133,13 +133,13 @@ typedef struct PlayerAiNew {
 	TileIndex depot_tile;
 	byte depot_direction;
 
-	byte amount_veh; // How many vehicles we are going to build in this route
-	byte cur_veh; // How many vehicles did we bought?
-	VehicleID veh_id; // Used when bought a vehicle
+	byte amount_veh;       // How many vehicles we are going to build in this route
+	byte cur_veh;          // How many vehicles did we bought?
+	VehicleID veh_id;      // Used when bought a vehicle
 	VehicleID veh_main_id; // The ID of the first vehicle, for shared copy
 
-	int from_ic; // ic = industry/city. This is the ID of them
-	byte from_type; // AI_NO_TYPE/AI_CITY/AI_INDUSTRY
+	int from_ic;           // ic = industry/city. This is the ID of them
+	byte from_type;        // AI_NO_TYPE/AI_CITY/AI_INDUSTRY
 	int to_ic;
 	byte to_type;
 

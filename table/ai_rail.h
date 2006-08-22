@@ -29,296 +29,296 @@ typedef struct {
 #define MKEND              {4, 0, {0, 0}}}
 
 static const AiDefaultRailBlock _raildata_ai_0 = {
-	MKHDR(1,2,1,0,1)
-	MKDEPOT(2, -1,1),
-	MKSTATION(0x15, 0,-1),
-	MKRAIL(0x26, 0,1),
-	MKCLRRAIL(1, 0,2),
+	MKHDR(1, 2, 1, 0, 1)
+	MKDEPOT(2, -1, 1),
+	MKSTATION(0x15, 0, -1),
+	MKRAIL(0x26, 0, 1),
+	MKCLRRAIL(1, 0, 2),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_1 = {
-	MKHDR(1,2,1,0,3)
-	MKDEPOT(2, -1,-1),
-	MKRAIL(0x26, 0,-1),
-	MKSTATION(0x15, 0,0),
-	MKCLRRAIL(3, 0,-2),
+	MKHDR(1, 2, 1, 0, 3)
+	MKDEPOT(2, -1, -1),
+	MKRAIL(0x26, 0, -1),
+	MKSTATION(0x15, 0, 0),
+	MKCLRRAIL(3, 0, -2),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_2 = {
-	MKHDR(1,2,1,0,0)
-	MKDEPOT(1, -1,-1),
-	MKRAIL(0x15, -1,0),
-	MKSTATION(0x14, 0,0),
-	MKCLRRAIL(0, -2,0),
+	MKHDR(1, 2, 1, 0, 0)
+	MKDEPOT(1, -1, -1),
+	MKRAIL(0x15, -1, 0),
+	MKSTATION(0x14, 0, 0),
+	MKCLRRAIL(0, -2, 0),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_3 = {
-	MKHDR(1,2,1,0,2)
-	MKDEPOT(1, 1,-1),
-	MKRAIL(0x15, 1,0),
-	MKSTATION(0x14, -1,0),
-	MKCLRRAIL(2, 2,0),
+	MKHDR(1, 2, 1, 0, 2)
+	MKDEPOT(1, 1, -1),
+	MKRAIL(0x15, 1, 0),
+	MKSTATION(0x14, -1, 0),
+	MKCLRRAIL(2, 2, 0),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_4 = {
-	MKHDR(1,2,2,0,255)
-	MKSTATION(0x15, 0,0),
-	MKCLRRAIL(3, 0,-1),
-	MKCLRRAIL(1, 0,2),
+	MKHDR(1, 2, 2, 0, 255)
+	MKSTATION(0x15, 0, 0),
+	MKCLRRAIL(3, 0, -1),
+	MKCLRRAIL(1, 0, 2),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_5 = {
-	MKHDR(1,2,2,0,255)
-	MKSTATION(0x14, 0,0),
-	MKCLRRAIL(0, -1,0),
-	MKCLRRAIL(2, 2,0),
+	MKHDR(1, 2, 2, 0, 255)
+	MKSTATION(0x14, 0, 0),
+	MKCLRRAIL(0, -1, 0),
+	MKCLRRAIL(2, 2, 0),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_6 = {
-	MKHDR(2,3,1,0,1)
-	MKSTATION(0x27, 0,-2),
-	MKRAIL(0xC2, 0,1),
-	MKRAIL(0xC2, 1,1),
-	MKRAIL(0x1A, 0,2),
-	MKRAIL(0x26, 1,2),
-	MKDEPOT(3, 1,3),
-	MKCLRRAIL(1, 0,3),
+	MKHDR(2, 3, 1, 0, 1)
+	MKSTATION(0x27, 0, -2),
+	MKRAIL(0xC2, 0, 1),
+	MKRAIL(0xC2, 1, 1),
+	MKRAIL(0x1A, 0, 2),
+	MKRAIL(0x26, 1, 2),
+	MKDEPOT(3, 1, 3),
+	MKCLRRAIL(1, 0, 3),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_7 = {
-	MKHDR(2,3,1,0,3)
-	MKDEPOT(1, 0,-3),
-	MKRAIL(0x1A, 0,-2),
-	MKRAIL(0x26, 1,-2),
-	MKRAIL(0xC2, 0,-1),
-	MKRAIL(0xC2, 1,-1),
-	MKSTATION(0x27, 0,0),
-	MKCLRRAIL(3, 1,-3),
+	MKHDR(2, 3, 1, 0, 3)
+	MKDEPOT(1, 0, -3),
+	MKRAIL(0x1A, 0, -2),
+	MKRAIL(0x26, 1, -2),
+	MKRAIL(0xC2, 0, -1),
+	MKRAIL(0xC2, 1, -1),
+	MKSTATION(0x27, 0, 0),
+	MKCLRRAIL(3, 1, -3),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_8 = {
-	MKHDR(2,3,1,0,2)
-	MKSTATION(0x26, -2,0),
-	MKRAIL(0xC1, 1,0),
-	MKRAIL(0xC1, 1,1),
-	MKRAIL(0x29, 2,0),
-	MKRAIL(0x15, 2,1),
-	MKDEPOT(0, 3,0),
-	MKCLRRAIL(2, 3,1),
+	MKHDR(2, 3, 1, 0, 2)
+	MKSTATION(0x26, -2, 0),
+	MKRAIL(0xC1, 1, 0),
+	MKRAIL(0xC1, 1, 1),
+	MKRAIL(0x29, 2, 0),
+	MKRAIL(0x15, 2, 1),
+	MKDEPOT(0, 3, 0),
+	MKCLRRAIL(2, 3, 1),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_9 = {
-	MKHDR(2,3,1,0,0)
-	MKDEPOT(2, -3,-1),
-	MKRAIL(0x29, -2,-1),
-	MKRAIL(0x15, -2,0),
-	MKRAIL(0xC1, -1,-1),
-	MKRAIL(0xC1, -1,0),
-	MKSTATION(0x26, 0,-1),
-	MKCLRRAIL(0, -3,0),
+	MKHDR(2, 3, 1, 0, 0)
+	MKDEPOT(2, -3, -1),
+	MKRAIL(0x29, -2, -1),
+	MKRAIL(0x15, -2, 0),
+	MKRAIL(0xC1, -1, -1),
+	MKRAIL(0xC1, -1, 0),
+	MKSTATION(0x26, 0, -1),
+	MKCLRRAIL(0, -3, 0),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_10 = {
-	MKHDR(2,3,2,0,255)
-	MKRAIL(0x1A, 0,-3),
-	MKRAIL(0x20, 1,-3),
-	MKRAIL(0xC2, 0,-2),
-	MKRAIL(0xC2, 1,-2),
-	MKSTATION(0x27, 0,-1),
-	MKRAIL(0xC2, 0,2),
-	MKRAIL(0xC2, 1,2),
-	MKRAIL(0x1A, 0,3),
-	MKRAIL(0x4, 1,3),
-	MKCLRRAIL(3, 0,-4),
-	MKCLRRAIL(1, 0,4),
+	MKHDR(2, 3, 2, 0, 255)
+	MKRAIL(0x1A, 0, -3),
+	MKRAIL(0x20, 1, -3),
+	MKRAIL(0xC2, 0, -2),
+	MKRAIL(0xC2, 1, -2),
+	MKSTATION(0x27, 0, -1),
+	MKRAIL(0xC2, 0, 2),
+	MKRAIL(0xC2, 1, 2),
+	MKRAIL(0x1A, 0, 3),
+	MKRAIL(0x4, 1, 3),
+	MKCLRRAIL(3, 0, -4),
+	MKCLRRAIL(1, 0, 4),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_11 = {
-	MKHDR(2,3,2,0,255)
-	MKRAIL(0x29, -3,0),
-	MKRAIL(0x10, -3,1),
-	MKRAIL(0xC1, -2,0),
-	MKRAIL(0xC1, -2,1),
-	MKSTATION(0x26, -1,0),
-	MKRAIL(0xC1, 2,0),
-	MKRAIL(0xC1, 2,1),
-	MKRAIL(0x29, 3,0),
-	MKRAIL(0x4, 3,1),
-	MKCLRRAIL(0, -4,0),
-	MKCLRRAIL(2, 4,0),
+	MKHDR(2, 3, 2, 0, 255)
+	MKRAIL(0x29, -3, 0),
+	MKRAIL(0x10, -3, 1),
+	MKRAIL(0xC1, -2, 0),
+	MKRAIL(0xC1, -2, 1),
+	MKSTATION(0x26, -1, 0),
+	MKRAIL(0xC1, 2, 0),
+	MKRAIL(0xC1, 2, 1),
+	MKRAIL(0x29, 3, 0),
+	MKRAIL(0x4, 3, 1),
+	MKCLRRAIL(0, -4, 0),
+	MKCLRRAIL(2, 4, 0),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_12 = {
-	MKHDR(2,3,2,1,3)
-	MKRAIL(0x88, -1,-3),
-	MKRAIL(0x6, 0,-3),
-	MKRAIL(0x2, -1,-2),
-	MKRAIL(0x42, 0,-2),
-	MKRAIL(0x2, -1,-1),
-	MKRAIL(0x2, 0,-1),
-	MKRAIL(0x2, -1,0),
-	MKRAIL(0x2, 0,0),
-	MKRAIL(0x82, -1,1),
-	MKRAIL(0x2, 0,1),
-	MKRAIL(0xA, -1,2),
-	MKRAIL(0x44, 0,2),
-	MKCLRRAIL(3, 0,-4),
-	MKCLRRAIL(1, -1,3),
+	MKHDR(2, 3, 2, 1, 3)
+	MKRAIL(0x88, -1, -3),
+	MKRAIL(0x6, 0, -3),
+	MKRAIL(0x2, -1, -2),
+	MKRAIL(0x42, 0, -2),
+	MKRAIL(0x2, -1, -1),
+	MKRAIL(0x2, 0, -1),
+	MKRAIL(0x2, -1, 0),
+	MKRAIL(0x2, 0, 0),
+	MKRAIL(0x82, -1, 1),
+	MKRAIL(0x2, 0, 1),
+	MKRAIL(0xA, -1, 2),
+	MKRAIL(0x44, 0, 2),
+	MKCLRRAIL(3, 0, -4),
+	MKCLRRAIL(1, -1, 3),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_13 = {
-	MKHDR(2,3,2,1,0)
-	MKRAIL(0x21, -3,0),
-	MKRAIL(0x50, -3,1),
-	MKRAIL(0x81, -2,0),
-	MKRAIL(0x1, -2,1),
-	MKRAIL(0x1, -1,0),
-	MKRAIL(0x1, -1,1),
-	MKRAIL(0x1, 0,0),
-	MKRAIL(0x1, 0,1),
-	MKRAIL(0x1, 1,0),
-	MKRAIL(0x41, 1,1),
-	MKRAIL(0xA0, 2,0),
-	MKRAIL(0x11, 2,1),
-	MKCLRRAIL(0, -4,0),
-	MKCLRRAIL(2, 3,1),
+	MKHDR(2, 3, 2, 1, 0)
+	MKRAIL(0x21, -3, 0),
+	MKRAIL(0x50, -3, 1),
+	MKRAIL(0x81, -2, 0),
+	MKRAIL(0x1, -2, 1),
+	MKRAIL(0x1, -1, 0),
+	MKRAIL(0x1, -1, 1),
+	MKRAIL(0x1, 0, 0),
+	MKRAIL(0x1, 0, 1),
+	MKRAIL(0x1, 1, 0),
+	MKRAIL(0x41, 1, 1),
+	MKRAIL(0xA0, 2, 0),
+	MKRAIL(0x11, 2, 1),
+	MKCLRRAIL(0, -4, 0),
+	MKCLRRAIL(2, 3, 1),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_14 = {
-	MKHDR(2,3,2,1,1)
-	MKRAIL(0x88, -1,-3),
-	MKRAIL(0x6, 0,-3),
-	MKRAIL(0x2, -1,-2),
-	MKRAIL(0x42, 0,-2),
-	MKRAIL(0x2, -1,-1),
-	MKRAIL(0x2, 0,-1),
-	MKRAIL(0x2, -1,0),
-	MKRAIL(0x2, 0,0),
-	MKRAIL(0x82, -1,1),
-	MKRAIL(0x2, 0,1),
-	MKRAIL(0xA, -1,2),
-	MKRAIL(0x44, 0,2),
-	MKCLRRAIL(1, -1,3),
-	MKCLRRAIL(3, 0,-4),
+	MKHDR(2, 3, 2, 1, 1)
+	MKRAIL(0x88, -1, -3),
+	MKRAIL(0x6, 0, -3),
+	MKRAIL(0x2, -1, -2),
+	MKRAIL(0x42, 0, -2),
+	MKRAIL(0x2, -1, -1),
+	MKRAIL(0x2, 0, -1),
+	MKRAIL(0x2, -1, 0),
+	MKRAIL(0x2, 0, 0),
+	MKRAIL(0x82, -1, 1),
+	MKRAIL(0x2, 0, 1),
+	MKRAIL(0xA, -1, 2),
+	MKRAIL(0x44, 0, 2),
+	MKCLRRAIL(1, -1, 3),
+	MKCLRRAIL(3, 0, -4),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_15 = {
-	MKHDR(2,3,2,1,2)
-	MKRAIL(0x21, -3,0),
-	MKRAIL(0x50, -3,1),
-	MKRAIL(0x81, -2,0),
-	MKRAIL(0x1, -2,1),
-	MKRAIL(0x1, -1,0),
-	MKRAIL(0x1, -1,1),
-	MKRAIL(0x1, 0,0),
-	MKRAIL(0x1, 0,1),
-	MKRAIL(0x1, 1,0),
-	MKRAIL(0x41, 1,1),
-	MKRAIL(0xA0, 2,0),
-	MKRAIL(0x11, 2,1),
-	MKCLRRAIL(2, 3,1),
-	MKCLRRAIL(0, -4,0),
+	MKHDR(2, 3, 2, 1, 2)
+	MKRAIL(0x21, -3, 0),
+	MKRAIL(0x50, -3, 1),
+	MKRAIL(0x81, -2, 0),
+	MKRAIL(0x1, -2, 1),
+	MKRAIL(0x1, -1, 0),
+	MKRAIL(0x1, -1, 1),
+	MKRAIL(0x1, 0, 0),
+	MKRAIL(0x1, 0, 1),
+	MKRAIL(0x1, 1, 0),
+	MKRAIL(0x41, 1, 1),
+	MKRAIL(0xA0, 2, 0),
+	MKRAIL(0x11, 2, 1),
+	MKCLRRAIL(2, 3, 1),
+	MKCLRRAIL(0, -4, 0),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_16 = {
-	MKHDR(1,3,1,0,1)
-	MKSTATION(0x17, 0,-2),
-	MKRAIL(0x1A, 0,1),
-	MKCLRRAIL(1, 0,2),
-	MKDEPOT(0, 1,1),
+	MKHDR(1, 3, 1, 0, 1)
+	MKSTATION(0x17, 0, -2),
+	MKRAIL(0x1A, 0, 1),
+	MKCLRRAIL(1, 0, 2),
+	MKDEPOT(0, 1, 1),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_17 = {
-	MKHDR(1,3,1,0,3)
-	MKCLRRAIL(3, 0,-2),
-	MKRAIL(0x26, 0,-1),
-	MKDEPOT(2, -1,-1),
-	MKSTATION(0x17, 0,0),
+	MKHDR(1, 3, 1, 0, 3)
+	MKCLRRAIL(3, 0, -2),
+	MKRAIL(0x26, 0, -1),
+	MKDEPOT(2, -1, -1),
+	MKSTATION(0x17, 0, 0),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_18 = {
-	MKHDR(1,3,1,0,0)
-	MKCLRRAIL(0, -2,0),
-	MKRAIL(0x29, -1,0),
-	MKDEPOT(3, -1,1),
-	MKSTATION(0x16, 0,0),
+	MKHDR(1, 3, 1, 0, 0)
+	MKCLRRAIL(0, -2, 0),
+	MKRAIL(0x29, -1, 0),
+	MKDEPOT(3, -1, 1),
+	MKSTATION(0x16, 0, 0),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_19 = {
-	MKHDR(1,3,1,0,2)
-	MKSTATION(0x16, -2,0),
-	MKDEPOT(2, 0,-1),
-	MKRAIL(0x20, 1,-1),
-	MKRAIL(0x15, 1,0),
-	MKCLRRAIL(2, 2,0),
+	MKHDR(1, 3, 1, 0, 2)
+	MKSTATION(0x16, -2, 0),
+	MKDEPOT(2, 0, -1),
+	MKRAIL(0x20, 1, -1),
+	MKRAIL(0x15, 1, 0),
+	MKCLRRAIL(2, 2, 0),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_20 = {
-	MKHDR(2,3,1,0,1)
-	MKSTATION(0x26, -2,0),
-	MKRAIL(0xC1, 1,0),
-	MKRAIL(0xC1, 1,1),
-	MKRAIL(0x26, 2,0),
-	MKRAIL(0x26, 2,1),
-	MKDEPOT(1, 2,-1),
-	MKCLRRAIL(1, 2,2),
+	MKHDR(2, 3, 1, 0, 1)
+	MKSTATION(0x26, -2, 0),
+	MKRAIL(0xC1, 1, 0),
+	MKRAIL(0xC1, 1, 1),
+	MKRAIL(0x26, 2, 0),
+	MKRAIL(0x26, 2, 1),
+	MKDEPOT(1, 2, -1),
+	MKCLRRAIL(1, 2, 2),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_21 = {
-	MKHDR(2,3,1,0,3)
-	MKDEPOT(2, -3,-1),
-	MKRAIL(0x3F, -2,-1),
-	MKRAIL(0x10, -2,0),
-	MKRAIL(0xC1, -1,-1),
-	MKRAIL(0xC1, -1,0),
-	MKSTATION(0x26, 0,-1),
-	MKCLRRAIL(3, -2,-2),
+	MKHDR(2, 3, 1, 0, 3)
+	MKDEPOT(2, -3, -1),
+	MKRAIL(0x3F, -2, -1),
+	MKRAIL(0x10, -2, 0),
+	MKRAIL(0xC1, -1, -1),
+	MKRAIL(0xC1, -1, 0),
+	MKSTATION(0x26, 0, -1),
+	MKCLRRAIL(3, -2, -2),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_22 = {
-	MKHDR(2,3,1,0,0)
-	MKSTATION(0x27, 0,-2),
-	MKRAIL(0xC2, 0,1),
-	MKRAIL(0xC2, 1,1),
-	MKRAIL(0x15, 0,2),
-	MKRAIL(0x4, 1,2),
-	MKRAIL(0x15, -1,2),
-	MKDEPOT(1, -1,1),
-	MKCLRRAIL(0, -2,2),
+	MKHDR(2, 3, 1, 0, 0)
+	MKSTATION(0x27, 0, -2),
+	MKRAIL(0xC2, 0, 1),
+	MKRAIL(0xC2, 1, 1),
+	MKRAIL(0x15, 0, 2),
+	MKRAIL(0x4, 1, 2),
+	MKRAIL(0x15, -1, 2),
+	MKDEPOT(1, -1, 1),
+	MKCLRRAIL(0, -2, 2),
 	MKEND
 };
 
 static const AiDefaultRailBlock _raildata_ai_23 = {
-	MKHDR(2,3,1,0,2)
-	MKDEPOT(1, 0,-3),
-	MKRAIL(0x1A, 0,-2),
-	MKRAIL(0x29, 1,-2),
-	MKRAIL(0xC2, 0,-1),
-	MKRAIL(0xC2, 1,-1),
-	MKSTATION(0x27, 0,0),
-	MKCLRRAIL(2, 2,-2),
+	MKHDR(2, 3, 1, 0, 2)
+	MKDEPOT(1, 0, -3),
+	MKRAIL(0x1A, 0, -2),
+	MKRAIL(0x29, 1, -2),
+	MKRAIL(0xC2, 0, -1),
+	MKRAIL(0xC2, 1, -1),
+	MKSTATION(0x27, 0, 0),
+	MKCLRRAIL(2, 2, -2),
 	MKEND
 };
 

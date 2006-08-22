@@ -1100,17 +1100,17 @@ static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID n
 
 
 const TileTypeProcs _tile_type_road_procs = {
-	DrawTile_Road,						/* draw_tile_proc */
-	GetSlopeZ_Road,						/* get_slope_z_proc */
-	ClearTile_Road,						/* clear_tile_proc */
-	GetAcceptedCargo_Road,		/* get_accepted_cargo_proc */
-	GetTileDesc_Road,					/* get_tile_desc_proc */
-	GetTileTrackStatus_Road,	/* get_tile_track_status_proc */
-	ClickTile_Road,						/* click_tile_proc */
-	AnimateTile_Road,					/* animate_tile_proc */
-	TileLoop_Road,						/* tile_loop_clear */
-	ChangeTileOwner_Road,			/* change_tile_owner_clear */
-	NULL,											/* get_produced_cargo_proc */
-	VehicleEnter_Road,				/* vehicle_enter_tile_proc */
-	GetSlopeTileh_Road,				/* get_slope_tileh_proc */
+	DrawTile_Road,           /* draw_tile_proc */
+	GetSlopeZ_Road,          /* get_slope_z_proc */
+	ClearTile_Road,          /* clear_tile_proc */
+	GetAcceptedCargo_Road,   /* get_accepted_cargo_proc */
+	GetTileDesc_Road,        /* get_tile_desc_proc */
+	GetTileTrackStatus_Road, /* get_tile_track_status_proc */
+	ClickTile_Road,          /* click_tile_proc */
+	AnimateTile_Road,        /* animate_tile_proc */
+	TileLoop_Road,           /* tile_loop_clear */
+	ChangeTileOwner_Road,    /* change_tile_owner_clear */
+	NULL,                    /* get_produced_cargo_proc */
+	VehicleEnter_Road,       /* vehicle_enter_tile_proc */
+	GetSlopeTileh_Road,      /* get_slope_tileh_proc */
 };

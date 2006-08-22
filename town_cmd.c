@@ -788,24 +788,24 @@ static bool GrowTown(Town *t)
 static void UpdateTownRadius(Town *t)
 {
 	static const uint16 _town_radius_data[23][5] = {
-		{ 4,  0,  0,  0,  0}, // 0
-		{16,  0,  0,  0,  0},
-		{25,  0,  0,  0,  0},
-		{36,  0,  0,  0,  0},
-		{49,  0,  4,  0,  0},
-		{64,  0,  4,  0,  0}, // 20
-		{64,  0,  9,  0,  1},
-		{64,  0,  9,  0,  4},
-		{64,  0, 16,  0,  4},
-		{81,  0, 16,  0,  4},
-		{81,  0, 16,  0,  4}, // 40
-		{81,  0, 25,  0,  9},
-		{81, 36, 25,  0,  9},
-		{81, 36, 25, 16,  9},
-		{81, 49,  0, 25,  9},
-		{81, 64,  0, 25,  9}, // 60
-		{81, 64,  0, 36,  9},
-		{81, 64,  0, 36, 16},
+		{  4,  0,  0,  0,  0}, // 0
+		{ 16,  0,  0,  0,  0},
+		{ 25,  0,  0,  0,  0},
+		{ 36,  0,  0,  0,  0},
+		{ 49,  0,  4,  0,  0},
+		{ 64,  0,  4,  0,  0}, // 20
+		{ 64,  0,  9,  0,  1},
+		{ 64,  0,  9,  0,  4},
+		{ 64,  0, 16,  0,  4},
+		{ 81,  0, 16,  0,  4},
+		{ 81,  0, 16,  0,  4}, // 40
+		{ 81,  0, 25,  0,  9},
+		{ 81, 36, 25,  0,  9},
+		{ 81, 36, 25, 16,  9},
+		{ 81, 49,  0, 25,  9},
+		{ 81, 64,  0, 25,  9}, // 60
+		{ 81, 64,  0, 36,  9},
+		{ 81, 64,  0, 36, 16},
 		{100, 81,  0, 49, 16},
 		{100, 81,  0, 49, 25},
 		{121, 81,  0, 49, 25}, // 80
@@ -1794,9 +1794,9 @@ void ChangeTownRating(Town *t, int add, int max)
 /*	penalty for removing town-owned stuff */
 static const int _default_rating_settings [3][3] = {
 	// ROAD_REMOVE, TUNNELBRIDGE_REMOVE, INDUSTRY_REMOVE
-	{  0, 128, 384},	// Permissive
-	{ 48, 192, 480},	// Neutral
-	{ 96, 384, 768},	// Hostile
+	{  0, 128, 384}, // Permissive
+	{ 48, 192, 480}, // Neutral
+	{ 96, 384, 768}, // Hostile
 };
 
 bool CheckforTownRating(uint32 flags, Town *t, byte type)
@@ -1857,80 +1857,80 @@ void InitializeTowns(void)
 }
 
 const TileTypeProcs _tile_type_town_procs = {
-	DrawTile_Town,						/* draw_tile_proc */
-	GetSlopeZ_Town,						/* get_slope_z_proc */
-	ClearTile_Town,						/* clear_tile_proc */
-	GetAcceptedCargo_Town,		/* get_accepted_cargo_proc */
-	GetTileDesc_Town,					/* get_tile_desc_proc */
-	GetTileTrackStatus_Town,	/* get_tile_track_status_proc */
-	ClickTile_Town,						/* click_tile_proc */
-	AnimateTile_Town,					/* animate_tile_proc */
-	TileLoop_Town,						/* tile_loop_clear */
-	ChangeTileOwner_Town,			/* change_tile_owner_clear */
-	NULL,											/* get_produced_cargo_proc */
-	NULL,											/* vehicle_enter_tile_proc */
-	GetSlopeTileh_Town,				/* get_slope_tileh_proc */
+	DrawTile_Town,           /* draw_tile_proc */
+	GetSlopeZ_Town,          /* get_slope_z_proc */
+	ClearTile_Town,          /* clear_tile_proc */
+	GetAcceptedCargo_Town,   /* get_accepted_cargo_proc */
+	GetTileDesc_Town,        /* get_tile_desc_proc */
+	GetTileTrackStatus_Town, /* get_tile_track_status_proc */
+	ClickTile_Town,          /* click_tile_proc */
+	AnimateTile_Town,        /* animate_tile_proc */
+	TileLoop_Town,           /* tile_loop_clear */
+	ChangeTileOwner_Town,    /* change_tile_owner_clear */
+	NULL,                    /* get_produced_cargo_proc */
+	NULL,                    /* vehicle_enter_tile_proc */
+	GetSlopeTileh_Town,      /* get_slope_tileh_proc */
 };
 
 
 // Save and load of towns.
 static const SaveLoad _town_desc[] = {
-	SLE_CONDVAR(Town, xy, SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
-	SLE_CONDVAR(Town, xy, SLE_UINT32, 6, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, xy,                    SLE_FILE_U16 | SLE_VAR_U32, 0, 5),
+	SLE_CONDVAR(Town, xy,                    SLE_UINT32,                 6, SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town,population,	SLE_FILE_U16 | SLE_VAR_U32, 0, 2),
-	SLE_CONDVAR(Town,population,	SLE_UINT32, 3, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, population,            SLE_FILE_U16 | SLE_VAR_U32, 0, 2),
+	SLE_CONDVAR(Town, population,            SLE_UINT32,                 3, SL_MAX_VERSION),
 
 
-	SLE_VAR(Town,num_houses,	SLE_UINT16),
-	SLE_VAR(Town,townnametype,SLE_UINT16),
-	SLE_VAR(Town,townnameparts,SLE_UINT32),
+	    SLE_VAR(Town, num_houses,            SLE_UINT16),
+	    SLE_VAR(Town, townnametype,          SLE_UINT16),
+	    SLE_VAR(Town, townnameparts,         SLE_UINT32),
 
-	SLE_VAR(Town,flags12,			SLE_UINT8),
-	SLE_VAR(Town,statues,			SLE_UINT8),
+	    SLE_VAR(Town, flags12,               SLE_UINT8),
+	    SLE_VAR(Town, statues,               SLE_UINT8),
 
 	// sort_index_obsolete was stored here in savegame format 0 - 1
 	SLE_CONDNULL(1, 0, 1),
 
-	SLE_VAR(Town,have_ratings,SLE_UINT8),
-	SLE_ARR(Town,ratings,			SLE_INT16, 8),
+	    SLE_VAR(Town, have_ratings,          SLE_UINT8),
+	    SLE_ARR(Town, ratings,               SLE_INT16, 8),
 	// failed bribe attempts are stored since savegame format 4
-	SLE_CONDARR(Town,unwanted,			SLE_INT8, 8, 4,SL_MAX_VERSION),
+	SLE_CONDARR(Town, unwanted,              SLE_INT8, 8, 4,SL_MAX_VERSION),
 
-	SLE_CONDVAR(Town,max_pass,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town,max_mail,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town,new_max_pass,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town,new_max_mail,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town,act_pass,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town,act_mail,		SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town,new_act_pass,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
-	SLE_CONDVAR(Town,new_act_mail,SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town, max_pass,              SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town, max_mail,              SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town, new_max_pass,          SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town, new_max_mail,          SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town, act_pass,              SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town, act_mail,              SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town, new_act_pass,          SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
+	SLE_CONDVAR(Town, new_act_mail,          SLE_FILE_U16 | SLE_VAR_U32, 0, 8),
 
-	SLE_CONDVAR(Town,max_pass,		SLE_UINT32, 9, SL_MAX_VERSION),
-	SLE_CONDVAR(Town,max_mail,		SLE_UINT32, 9, SL_MAX_VERSION),
-	SLE_CONDVAR(Town,new_max_pass,SLE_UINT32, 9, SL_MAX_VERSION),
-	SLE_CONDVAR(Town,new_max_mail,SLE_UINT32, 9, SL_MAX_VERSION),
-	SLE_CONDVAR(Town,act_pass,		SLE_UINT32, 9, SL_MAX_VERSION),
-	SLE_CONDVAR(Town,act_mail,		SLE_UINT32, 9, SL_MAX_VERSION),
-	SLE_CONDVAR(Town,new_act_pass,SLE_UINT32, 9, SL_MAX_VERSION),
-	SLE_CONDVAR(Town,new_act_mail,SLE_UINT32, 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, max_pass,              SLE_UINT32,                 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, max_mail,              SLE_UINT32,                 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, new_max_pass,          SLE_UINT32,                 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, new_max_mail,          SLE_UINT32,                 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, act_pass,              SLE_UINT32,                 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, act_mail,              SLE_UINT32,                 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, new_act_pass,          SLE_UINT32,                 9, SL_MAX_VERSION),
+	SLE_CONDVAR(Town, new_act_mail,          SLE_UINT32,                 9, SL_MAX_VERSION),
 
-	SLE_VAR(Town,pct_pass_transported,SLE_UINT8),
-	SLE_VAR(Town,pct_mail_transported,SLE_UINT8),
+	    SLE_VAR(Town, pct_pass_transported,  SLE_UINT8),
+	    SLE_VAR(Town, pct_mail_transported,  SLE_UINT8),
 
-	SLE_VAR(Town,act_food,		SLE_UINT16),
-	SLE_VAR(Town,act_water,		SLE_UINT16),
-	SLE_VAR(Town,new_act_food,SLE_UINT16),
-	SLE_VAR(Town,new_act_water,SLE_UINT16),
+	    SLE_VAR(Town, act_food,              SLE_UINT16),
+	    SLE_VAR(Town, act_water,             SLE_UINT16),
+	    SLE_VAR(Town, new_act_food,          SLE_UINT16),
+	    SLE_VAR(Town, new_act_water,         SLE_UINT16),
 
-	SLE_VAR(Town,time_until_rebuild,		SLE_UINT8),
-	SLE_VAR(Town,grow_counter,					SLE_UINT8),
-	SLE_VAR(Town,growth_rate,						SLE_UINT8),
-	SLE_VAR(Town,fund_buildings_months,	SLE_UINT8),
-	SLE_VAR(Town,road_build_months,			SLE_UINT8),
+	    SLE_VAR(Town, time_until_rebuild,    SLE_UINT8),
+	    SLE_VAR(Town, grow_counter,          SLE_UINT8),
+	    SLE_VAR(Town, growth_rate,           SLE_UINT8),
+	    SLE_VAR(Town, fund_buildings_months, SLE_UINT8),
+	    SLE_VAR(Town, road_build_months,     SLE_UINT8),
 
-	SLE_VAR(Town,exclusivity,						SLE_UINT8),
-	SLE_VAR(Town,exclusive_counter,			SLE_UINT8),
+	    SLE_VAR(Town, exclusivity,           SLE_UINT8),
+	    SLE_VAR(Town, exclusive_counter,     SLE_UINT8),
 	// reserve extra space in savegame here. (currently 30 bytes)
 	SLE_CONDNULL(30, 2, SL_MAX_VERSION),
 
