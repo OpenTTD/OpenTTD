@@ -453,19 +453,13 @@ enum {
 
 MemoryPool _engine_renew_pool = { "EngineRe", ENGINE_RENEW_POOL_MAX_BLOCKS, ENGINE_RENEW_POOL_BLOCK_SIZE_BITS, sizeof(EngineRenew), &EngineRenewPoolNewBlock, NULL, 0, 0, NULL };
 
-static inline uint16 GetEngineRenewPoolSize(void)
-{
-	return _engine_renew_pool.total_items;
-}
-
-#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) if (er->from != INVALID_ENGINE)
-#define FOR_ALL_ENGINE_RENEWS(er) FOR_ALL_ENGINE_RENEWS_FROM(er, 0)
-
 static void EngineRenewPoolNewBlock(uint start_item)
 {
 	EngineRenew *er;
 
-	FOR_ALL_ENGINE_RENEWS_FROM(er, start_item) {
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 *  TODO - This is just a temporary stage, this will be removed. */
+	for (er = GetEngineRenew(start_item); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) if (er->from != INVALID_ENGINE) {
 		er->index = start_item++;
 		er->from = INVALID_ENGINE;
 	}
@@ -476,12 +470,14 @@ static EngineRenew *AllocateEngineRenew(void)
 {
 	EngineRenew *er;
 
-	FOR_ALL_ENGINE_RENEWS(er) {
-		if (er->from == INVALID_ENGINE) {
-			er->to = INVALID_ENGINE;
-			er->next = NULL;
-			return er;
-		}
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 *  TODO - This is just a temporary stage, this will be removed. */
+	for (er = GetEngineRenew(0); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) if (er->from != INVALID_ENGINE) {
+		if (IsValidEngineRenew(er)) continue;
+
+		er->to = INVALID_ENGINE;
+		er->next = NULL;
+		return er;
 	}
 
 	/* Check if we can add a block to the pool */
@@ -495,7 +491,8 @@ static EngineRenew *AllocateEngineRenew(void)
  * engine type from the given renewlist */
 static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine)
 {
-	EngineRenew *er = (EngineRenew*)erl; /* Fetch first element */
+	EngineRenew *er = (EngineRenew *)erl;
+
 	while (er) {
 		if (er->from == engine) return er;
 		er = er->next;
@@ -505,12 +502,13 @@ static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine)
 
 void RemoveAllEngineReplacement(EngineRenewList *erl)
 {
-	EngineRenew *er = (EngineRenew*)(*erl); /* Fetch first element */
+	EngineRenew *er = (EngineRenew *)(*erl);
+
 	while (er) {
-		er->from = INVALID_ENGINE; /* "Deallocate" all elements */
+		er->from = INVALID_ENGINE; // "Deallocate" elements
 		er = er->next;
 	}
-	*erl = NULL; /* Empty list */
+	*erl = NULL; // Empty list
 }
 
 EngineID EngineReplacement(EngineRenewList erl, EngineID engine)
@@ -523,7 +521,7 @@ int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID n
 {
 	EngineRenew *er;
 
-	// Check if the old vehicle is already in the list
+	/* Check if the old vehicle is already in the list */
 	er = GetEngineReplacement(*erl, old_engine);
 	if (er != NULL) {
 		if (flags & DC_EXEC) er->to = new_engine;
@@ -536,9 +534,10 @@ int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID n
 	if (flags & DC_EXEC) {
 		er->from = old_engine;
 		er->to = new_engine;
-		er->next = (EngineRenew*)(*erl); /* Resolve the first element in the list */
 
-		*erl = (EngineRenewList)er; /* Insert before the first element */
+		/* Insert before the first element */
+		er->next = (EngineRenew *)(*erl);
+		*erl = (EngineRenewList)er;
 	}
 
 	return 0;
@@ -546,27 +545,29 @@ int32 AddEngineReplacement(EngineRenewList *erl, EngineID old_engine, EngineID n
 
 int32 RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, uint32 flags)
 {
-	EngineRenew *er = (EngineRenew*)(*erl); /* Start at the first element */
+	EngineRenew *er = (EngineRenew *)(*erl);
 	EngineRenew *prev = NULL;
 
 	while (er)
 	{
 		if (er->from == engine) {
 			if (flags & DC_EXEC) {
-				if (prev == NULL) { /* First element */
-					(*erl) = (EngineRenewList)er->next; /* The second becomes the new first element */
+				if (prev == NULL) { // First element
+					/* The second becomes the new first element */
+					*erl = (EngineRenewList)er->next;
 				} else {
-					prev->next = er->next; /* Cut this element out */
+					/* Cut this element out */
+					prev->next = er->next;
 				}
-				er->from = INVALID_ENGINE; /* Deallocate */
+				er->from = INVALID_ENGINE; // Deallocate
 			}
 			return 0;
 		}
 		prev = er;
-		er = er->next; /* Look at next element */
+		er = er->next;
 	}
 
-	return CMD_ERROR; /* Not found? */
+	return CMD_ERROR;
 }
 
 static const SaveLoad _engine_renew_desc[] = {
@@ -583,10 +584,8 @@ static void Save_ERNW(void)
 	EngineRenew *er;
 
 	FOR_ALL_ENGINE_RENEWS(er) {
-		if (er->from != INVALID_ENGINE) {
-			SlSetArrayIndex(er->index);
-			SlObject(er, _engine_renew_desc);
-		}
+		SlSetArrayIndex(er->index);
+		SlObject(er, _engine_renew_desc);
 	}
 }
 

@@ -52,7 +52,7 @@ static void StationPoolNewBlock(uint start_item)
 	Station *st;
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
-	 *  This is just a temporary stage, this will be removed. */
+	 *  TODO - This is just a temporary stage, this will be removed. */
 	for (st = GetStation(start_item); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL) st->index = start_item++;
 }
 

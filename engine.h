@@ -224,7 +224,7 @@ static inline const RoadVehicleInfo* RoadVehInfo(EngineID e)
  * it.
  */
 struct EngineRenew {
-	uint16 index;
+	EngineRenewID index;
 	EngineID from;
 	EngineID to;
 	struct EngineRenew *next;
@@ -238,6 +238,25 @@ typedef struct EngineRenew EngineRenew;
  * it.
  */
 extern MemoryPool _engine_renew_pool;
+
+/**
+ * Get the current size of the EngineRenewPool
+ */
+static inline uint16 GetEngineRenewPoolSize(void)
+{
+	return _engine_renew_pool.total_items;
+}
+
+/**
+ * Check if a EngineRenew really exists.
+ */
+static inline bool IsValidEngineRenew(const EngineRenew *er)
+{
+	return er->from != INVALID_ENGINE;
+}
+
+#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) if (er->from != INVALID_ENGINE) if (IsValidEngineRenew(er))
+#define FOR_ALL_ENGINE_RENEWS(er) FOR_ALL_ENGINE_RENEWS_FROM(er, 0)
 
 /**
  * DO NOT USE outside of engine.c. Is
