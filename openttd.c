@@ -1051,7 +1051,7 @@ static void UpdateExclusiveRights(void)
 	Town *t;
 
 	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0) t->exclusivity = (byte)-1;
+		t->exclusivity = (byte)-1;
 	}
 
 	/* FIXME old exclusive rights status is not being imported (stored in s->blocked_months_obsolete)
@@ -1356,7 +1356,7 @@ bool AfterLoadGame(void)
 		Waypoint *wp;
 
 		FOR_ALL_WAYPOINTS(wp) {
-			if (wp->xy != 0 && wp->deleted == 0) {
+			if (wp->deleted == 0) {
 				const StationSpec *statspec = NULL;
 
 				if (HASBIT(_m[wp->xy].m3, 4))
@@ -1482,7 +1482,6 @@ bool AfterLoadGame(void)
 		FOR_ALL_INDUSTRIES(i) {
 			uint j;
 
-			if (i->xy == 0) continue;
 			if (i->type == IT_FARM || i->type == IT_FARM_2) {
 				for (j = 0; j != 50; j++) PlantRandomFarmField(i);
 			}

@@ -1074,9 +1074,8 @@ static int32 PopulationInLabelActive(int32 p1)
 {
 	Town* t;
 
-	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0) UpdateTownVirtCoord(t);
-	}
+	FOR_ALL_TOWNS(t) UpdateTownVirtCoord(t);
+
 	return 0;
 }
 

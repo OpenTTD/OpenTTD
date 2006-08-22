@@ -414,9 +414,7 @@ static void MakeSortedTownList(void)
 	if (_town_sort == NULL)
 		error("Could not allocate memory for the town-sorting-list");
 
-	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0) _town_sort[n++] = t;
-	}
+	FOR_ALL_TOWNS(t) _town_sort[n++] = t;
 
 	_num_town_sort = n;
 

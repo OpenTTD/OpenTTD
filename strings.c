@@ -673,7 +673,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 				int32 args[2];
 
 				// industry not valid anymore?
-				if (i->xy == 0) break;
+				if (!IsValidIndustry(i)) break;
 
 				// First print the town name and the industry type name
 				// The string STR_INDUSTRY_PATTERN controls the formatting
@@ -829,7 +829,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			const Station* st = GetStation(GetInt32(&argv));
 			int32 temp[2];
 
-			if (st->xy == 0) { // station doesn't exist anymore
+			if (!IsValidStation(st)) { // station doesn't exist anymore
 				buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL);
 				break;
 			}
@@ -842,7 +842,7 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 			const Town* t = GetTown(GetInt32(&argv));
 			int32 temp[1];
 
-			assert(t->xy != 0);
+			assert(IsValidTown(t));
 
 			temp[0] = t->townnameparts;
 			buff = GetStringWithArgs(buff, t->townnametype, temp);

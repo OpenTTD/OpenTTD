@@ -47,7 +47,15 @@ static inline bool IsWaypointIndex(uint index)
 	return index < GetWaypointPoolSize();
 }
 
-#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL)
+/**
+ * Check if a Waypoint really exists.
+ */
+static inline bool IsValidWaypoint(const Waypoint *wp)
+{
+	return wp->xy != 0;
+}
+
+#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL) if (IsValidWaypoint(wp))
 #define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
 
 

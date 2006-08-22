@@ -652,7 +652,7 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 
 	st = GetStation(v->current_order.station);
 	// only goto depot if the target airport has terminals (eg. it is airport)
-	if (st->xy != 0 && st->airport_tile != 0 && GetAirport(st->airport_type)->terminals != NULL) {
+	if (IsValidStation(st) && st->airport_tile != 0 && GetAirport(st->airport_type)->terminals != NULL) {
 //		printf("targetairport = %d, st->index = %d\n", v->u.air.targetairport, st->index);
 //		v->u.air.targetairport = st->index;
 		v->current_order.type = OT_GOTO_DEPOT;

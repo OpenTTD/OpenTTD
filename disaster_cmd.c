@@ -724,7 +724,7 @@ static void Disaster0_Init(void)
 	x = TileX(Random()) * TILE_SIZE + TILE_SIZE / 2;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy && st->airport_tile != 0 &&
+		if (st->airport_tile != 0 &&
 				st->airport_type <= 1 &&
 				IS_HUMAN_PLAYER(st->owner)) {
 			x = (TileX(st->xy) + 2) * TILE_SIZE;
@@ -774,8 +774,7 @@ static void Disaster2_Init(void)
 	found = NULL;
 
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy != 0 &&
-				i->type == IT_OIL_REFINERY &&
+		if (i->type == IT_OIL_REFINERY &&
 				(found == NULL || CHANCE16(1, 2))) {
 			found = i;
 		}
@@ -808,8 +807,7 @@ static void Disaster3_Init(void)
 	found = NULL;
 
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy != 0 &&
-				i->type == IT_FACTORY &&
+		if (i->type == IT_FACTORY &&
 				(found==NULL || CHANCE16(1,2))) {
 			found = i;
 		}
@@ -919,7 +917,7 @@ static void Disaster7_Init(void)
 		const Industry* i;
 
 		FOR_ALL_INDUSTRIES(i) {
-			if (i->xy != 0 && i->type == IT_COAL_MINE && --index < 0) {
+			if (i->type == IT_COAL_MINE && --index < 0) {
 				SetDParam(0, i->town->index);
 				AddNewsItem(STR_B005_COAL_MINE_SUBSIDENCE_LEAVES,
 					NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy + TileDiffXY(1, 1), 0);

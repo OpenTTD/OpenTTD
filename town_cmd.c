@@ -43,8 +43,9 @@ static void TownPoolNewBlock(uint start_item)
 {
 	Town *t;
 
-	FOR_ALL_TOWNS_FROM(t, start_item)
-		t->index = start_item++;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (t = GetTown(start_item); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL) t->index = start_item++;
 }
 
 /* Initialize the town-pool */
@@ -168,7 +169,7 @@ static bool IsCloseToTown(TileIndex tile, uint dist)
 	const Town* t;
 
 	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0 && DistanceManhattan(tile, t->xy) < dist) return true;
+		if (DistanceManhattan(tile, t->xy) < dist) return true;
 	}
 	return false;
 }
@@ -415,7 +416,7 @@ void OnTick_Town(void)
 
 		t = GetTown(i);
 
-		if (t->xy != 0) TownTickHandler(t);
+		if (IsValidTown(t)) TownTickHandler(t);
 	}
 }
 
@@ -857,15 +858,13 @@ restart:
 		if (strlen(buf1) >= 31 || GetStringWidth(buf1) > 130) continue;
 
 		FOR_ALL_TOWNS(t2) {
-			if (t2->xy != 0) {
-				// We can't just compare the numbers since
-				// several numbers may map to a single name.
-				SetDParam(0, t2->index);
-				GetString(buf2, STR_TOWN);
-				if (strcmp(buf1, buf2) == 0) {
-					if (tries-- < 0) return false;
-					goto restart;
-				}
+			// We can't just compare the numbers since
+			// several numbers may map to a single name.
+			SetDParam(0, t2->index);
+			GetString(buf2, STR_TOWN);
+			if (strcmp(buf1, buf2) == 0) {
+				if (tries-- < 0) return false;
+				goto restart;
 			}
 		}
 		*townnameparts = r;
@@ -949,8 +948,11 @@ static void DoCreateTown(Town *t, TileIndex tile, uint32 townnameparts, uint siz
 static Town *AllocateTown(void)
 {
 	Town *t;
-	FOR_ALL_TOWNS(t) {
-		if (t->xy == 0) {
+
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (t = GetTown(0); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL) {
+		if (!IsValidTown(t)) {
 			TownID index = t->index;
 
 			if (t->index > _total_towns)
@@ -1066,7 +1068,7 @@ bool GenerateTowns(void)
 	if (num == 0 && CreateRandomTown(10000, 0) == NULL) {
 		const Town* t;
 
-		FOR_ALL_TOWNS(t) if (IsValidTown(t)) return true;
+		FOR_ALL_TOWNS(t) return true;
 
 		//XXX can we handle that more gracefully?
 		if (num == 0 && _game_mode != GM_EDITOR) {
@@ -1380,8 +1382,7 @@ void DeleteTown(Town *t)
 
 	// Delete all industries belonging to the town
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy && i->town == t)
-			DeleteIndustry(i);
+		if (i->town == t) DeleteIndustry(i);
 	}
 
 	// Go through all tiles and delete those belonging to the town
@@ -1736,12 +1737,10 @@ Town* CalcClosestTownFromTile(TileIndex tile, uint threshold)
 	Town *best_town = NULL;
 
 	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0) {
-			dist = DistanceManhattan(tile, t->xy);
-			if (dist < best) {
-				best = dist;
-				best_town = t;
-			}
+		dist = DistanceManhattan(tile, t->xy);
+		if (dist < best) {
+			best = dist;
+			best_town = t;
 		}
 	}
 
@@ -1826,7 +1825,7 @@ void TownsMonthlyLoop(void)
 {
 	Town *t;
 
-	FOR_ALL_TOWNS(t) if (t->xy != 0) {
+	FOR_ALL_TOWNS(t) {
 		if (t->road_build_months != 0) t->road_build_months--;
 
 		if (t->exclusive_counter != 0)
@@ -1942,10 +1941,8 @@ static void Save_TOWN(void)
 	Town *t;
 
 	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0) {
-			SlSetArrayIndex(t->index);
-			SlObject(t, _town_desc);
-		}
+		SlSetArrayIndex(t->index);
+		SlObject(t, _town_desc);
 	}
 }
 
@@ -1978,10 +1975,8 @@ void AfterLoadTown(void)
 {
 	Town *t;
 	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0) {
-			UpdateTownRadius(t);
-			UpdateTownVirtCoord(t);
-		}
+		UpdateTownRadius(t);
+		UpdateTownVirtCoord(t);
 	}
 	_town_sort_dirty = true;
 }

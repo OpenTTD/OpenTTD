@@ -51,7 +51,9 @@ static void StationPoolNewBlock(uint start_item)
 {
 	Station *st;
 
-	FOR_ALL_STATIONS_FROM(st, start_item) st->index = start_item++;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 *  This is just a temporary stage, this will be removed. */
+	for (st = GetStation(start_item); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL) st->index = start_item++;
 }
 
 static void StationPoolCleanBlock(uint start_item, uint end_item)
@@ -72,7 +74,9 @@ static void RoadStopPoolNewBlock(uint start_item)
 {
 	RoadStop *rs;
 
-	FOR_ALL_ROADSTOPS_FROM(rs, start_item) rs->index = start_item++;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL) rs->index = start_item++;
 }
 
 /* Initialize the station-pool and roadstop-pool */
@@ -145,8 +149,10 @@ RoadStop *AllocateRoadStop(void)
 {
 	RoadStop *rs;
 
-	FOR_ALL_ROADSTOPS(rs) {
-		if (!rs->used) {
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (rs = GetRoadStop(0); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL) {
+		if (!IsValidRoadStop(rs)) {
 			uint index = rs->index;
 
 			memset(rs, 0, sizeof(*rs));
@@ -252,8 +258,10 @@ static Station *AllocateStation(void)
 {
 	Station *st = NULL;
 
-	FOR_ALL_STATIONS(st) {
-		if (st->xy == 0) {
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (st = GetStation(0); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL) {
+		if (!IsValidStation(st)) {
 			StationID index = st->index;
 
 			memset(st, 0, sizeof(Station));
@@ -337,7 +345,7 @@ static bool GenerateStationName(Station *st, TileIndex tile, int flag)
 		Station *s;
 
 		FOR_ALL_STATIONS(s) {
-			if (s != st && s->xy != 0 && s->town==t) {
+			if (s != st && s->town==t) {
 				uint str = M(s->string_id);
 				if (str <= 0x20) {
 					if (str == M(STR_SV_STNAME_FOREST))
@@ -438,7 +446,7 @@ static Station* GetClosestStationFromTile(TileIndex tile, uint threshold, Player
 	Station* st;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0 && (owner == OWNER_SPECTATOR || st->owner == owner)) {
+		if ((owner == OWNER_SPECTATOR || st->owner == owner)) {
 			uint cur_dist = DistanceManhattan(tile, st->xy);
 
 			if (cur_dist < threshold) {
@@ -501,7 +509,7 @@ void UpdateAllStationVirtCoord(void)
 	Station* st;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0) UpdateStationVirtCoord(st);
+		UpdateStationVirtCoord(st);
 	}
 }
 
@@ -1664,7 +1672,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	{
 		uint num = 0;
 		FOR_ALL_STATIONS(st) {
-			if (st->xy != 0 && st->town == t && st->facilities&FACIL_AIRPORT && st->airport_type != AT_OILRIG)
+			if (st->town == t && st->facilities&FACIL_AIRPORT && st->airport_type != AT_OILRIG)
 				num++;
 		}
 		if (num >= 2) {
@@ -2435,7 +2443,7 @@ void DeleteAllPlayerStations(void)
 	Station *st;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0 && st->owner < MAX_PLAYERS) DeleteStation(st);
+		if (st->owner < MAX_PLAYERS) DeleteStation(st);
 	}
 }
 
@@ -2569,10 +2577,10 @@ void OnTick_Station(void)
 	if (++_station_tick_ctr == GetStationPoolSize()) _station_tick_ctr = 0;
 
 	st = GetStation(i);
-	if (st->xy != 0) StationHandleBigTick(st);
+	if (IsValidStation(st)) StationHandleBigTick(st);
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0) StationHandleSmallTick(st);
+		StationHandleSmallTick(st);
 	}
 }
 
@@ -2586,7 +2594,7 @@ void ModifyStationRatingAround(TileIndex tile, PlayerID owner, int amount, uint 
 	Station *st;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0 && st->owner == owner &&
+		if (st->owner == owner &&
 				DistanceManhattan(tile, st->xy) <= radius) {
 			uint i;
 
@@ -3068,10 +3076,8 @@ static void Save_STNS(void)
 	Station *st;
 	// Write the stations
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0) {
-			SlSetArrayIndex(st->index);
-			SlAutolength((AutolengthProc*)SaveLoad_STNS, st);
-		}
+		SlSetArrayIndex(st->index);
+		SlAutolength((AutolengthProc*)SaveLoad_STNS, st);
 	}
 }
 
@@ -3126,10 +3132,8 @@ static void Save_ROADSTOP(void)
 	RoadStop *rs;
 
 	FOR_ALL_ROADSTOPS(rs) {
-		if (rs->used) {
-			SlSetArrayIndex(rs->index);
-			SlObject(rs, _roadstop_desc);
-		}
+		SlSetArrayIndex(rs->index);
+		SlObject(rs, _roadstop_desc);
 	}
 }
 

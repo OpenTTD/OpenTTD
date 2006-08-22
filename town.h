@@ -160,7 +160,7 @@ extern MemoryPool _town_pool;
  */
 static inline bool IsValidTown(const Town* town)
 {
-	return town->xy != 0; /* XXX: Replace by INVALID_TILE someday */
+	return town->xy != 0;
 }
 
 /**
@@ -184,7 +184,7 @@ static inline bool IsTownIndex(uint index)
 	return index < GetTownPoolSize();
 }
 
-#define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL)
+#define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL) if (IsValidTown(t))
 #define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
 
 VARDEF uint _total_towns; // For the AI: the amount of towns active

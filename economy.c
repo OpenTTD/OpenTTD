@@ -57,7 +57,7 @@ int64 CalculateCompanyValue(const Player* p)
 		uint num = 0;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->xy != 0 && st->owner == owner) {
+			if (st->owner == owner) {
 				uint facil = st->facilities;
 				do num += (facil&1); while (facil >>= 1);
 			}
@@ -70,8 +70,8 @@ int64 CalculateCompanyValue(const Player* p)
 		Vehicle *v;
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->owner != owner)
-				continue;
+			if (v->owner != owner) continue;
+
 			if (v->type == VEH_Train ||
 					v->type == VEH_Road ||
 					(v->type == VEH_Aircraft && v->subtype<=2) ||
@@ -133,7 +133,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 		const Station* st;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->xy != 0 && st->owner == owner) {
+			if (st->owner == owner) {
 				int facil = st->facilities;
 				do num += facil&1; while (facil>>=1);
 			}
@@ -266,7 +266,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		Town *t;
 		FOR_ALL_TOWNS(t) {
 			/* If a player takes over, give the ratings to that player. */
-			if (IsValidTown(t) && HASBIT(t->have_ratings, old_player)) {
+			if (HASBIT(t->have_ratings, old_player)) {
 				if (HASBIT(t->have_ratings, new_player)) {
 					// use max of the two ratings.
 					t->ratings[new_player] = max(t->ratings[new_player], t->ratings[old_player]);
@@ -276,11 +276,8 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 				}
 			}
 
-			/* Reset ratings for the town */
-			if (IsValidTown(t)) {
-				t->ratings[old_player] = 500;
-				CLRBIT(t->have_ratings, old_player);
-			}
+			t->ratings[old_player] = 500;
+			CLRBIT(t->have_ratings, old_player);
 		}
 	}
 
@@ -573,11 +570,9 @@ static void PlayersGenStatistics(void)
 	Player *p;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0) {
-			_current_player = st->owner;
-			SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
-			SubtractMoneyFromPlayer(_price.station_value >> 1);
-		}
+		_current_player = st->owner;
+		SET_EXPENSES_TYPE(EXPENSES_PROPERTY);
+		SubtractMoneyFromPlayer(_price.station_value >> 1);
 	}
 
 	if (!HASBIT(1<<0|1<<3|1<<6|1<<9, _cur_month))
@@ -888,11 +883,11 @@ static void FindSubsidyPassengerRoute(FoundRoute *fr)
 	fr->distance = (uint)-1;
 
 	fr->from = from = GetTown(RandomRange(_total_towns));
-	if (from->xy == 0 || from->population < 400)
+	if (!IsValidTown(from) || from->population < 400)
 		return;
 
 	fr->to = to = GetTown(RandomRange(_total_towns));
-	if (from==to || to->xy == 0 || to->population < 400 || to->pct_pass_transported > 42)
+	if (from == to || !IsValidTown(to) || to->population < 400 || to->pct_pass_transported > 42)
 		return;
 
 	fr->distance = DistanceManhattan(from->xy, to->xy);
@@ -907,8 +902,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 	fr->distance = (uint)-1;
 
 	fr->from = i = GetIndustry(RandomRange(_total_industries));
-	if (i->xy == 0)
-		return;
+	if (!IsValidIndustry(i)) return;
 
 	// Randomize cargo type
 	if (Random()&1 && i->produced_cargo[1] != CT_INVALID) {
@@ -934,8 +928,8 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		Town *t = GetTown(RandomRange(_total_towns));
 
 		// Only want big towns
-		if (t->xy == 0 || t->population < 900)
-			return;
+		if (!IsValidTown(t) || t->population < 900) return;
+
 		fr->distance = DistanceManhattan(i->xy, t->xy);
 		fr->to = t;
 	} else {
@@ -943,7 +937,7 @@ static void FindSubsidyCargoRoute(FoundRoute *fr)
 		Industry *i2 = GetIndustry(RandomRange(_total_industries));
 
 		// The industry must accept the cargo
-		if (i == i2 || i2->xy == 0 ||
+		if (i == i2 || !IsValidIndustry(i2) ||
 				(cargo != i2->accepts_cargo[0] &&
 				cargo != i2->accepts_cargo[1] &&
 				cargo != i2->accepts_cargo[2]))
@@ -1113,8 +1107,7 @@ static void DeliverGoodsToIndustry(TileIndex xy, CargoID cargo_type, int num_pie
 	FOR_ALL_INDUSTRIES(ind) {
 		uint t;
 
-		if (ind->xy != 0 && (
-					cargo_type == ind->accepts_cargo[0] ||
+		if (( cargo_type == ind->accepts_cargo[0] ||
 					cargo_type == ind->accepts_cargo[1] ||
 					cargo_type == ind->accepts_cargo[2]
 				) &&

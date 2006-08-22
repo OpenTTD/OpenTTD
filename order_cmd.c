@@ -29,7 +29,9 @@ static void OrderPoolNewBlock(uint start_item)
 {
 	Order *order;
 
-	FOR_ALL_ORDERS_FROM(order, start_item) order->index = start_item++;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (order = GetOrder(start_item); order != NULL; order = (order->index + 1 < GetOrderPoolSize()) ? GetOrder(order->index + 1) : NULL) order->index = start_item++;
 }
 
 /* Initialize the order-pool */
@@ -112,8 +114,10 @@ static Order *AllocateOrder(void)
 {
 	Order *order;
 
-	FOR_ALL_ORDERS(order) {
-		if (order->type == OT_NOTHING) {
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (order = GetOrder(0); order != NULL; order = (order->index + 1 < GetOrderPoolSize()) ? GetOrder(order->index + 1) : NULL) {
+		if (!IsValidOrder(order)) {
 			uint index = order->index;
 
 			memset(order, 0, sizeof(*order));
@@ -177,7 +181,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsVehicleIndex(veh)) return CMD_ERROR;
 	v = GetVehicle(veh);
-	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Check if the inserted order is to the correct destination (owner, type),
 	 * and has the correct flags if any */
@@ -440,7 +444,7 @@ int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsVehicleIndex(veh_id)) return CMD_ERROR;
 	v = GetVehicle(veh_id);
-	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* If we did not select an order, we maybe want to de-clone the orders */
 	if (sel_ord >= v->num_orders)
@@ -512,7 +516,7 @@ int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!IsVehicleIndex(veh_id)) return CMD_ERROR;
 	v = GetVehicle(veh_id);
-	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Goto next order */
@@ -561,7 +565,7 @@ int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (p2 != OFB_FULL_LOAD && p2 != OFB_UNLOAD && p2 != OFB_NON_STOP && p2 != OFB_TRANSFER) return CMD_ERROR;
 
 	v = GetVehicle(veh);
-	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Is it a valid order? */
 	if (sel_ord >= v->num_orders) return CMD_ERROR;
@@ -628,7 +632,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	dst = GetVehicle(veh_dst);
 
-	if (dst->type == 0 || !CheckOwnership(dst->owner)) return CMD_ERROR;
+	if (IsValidVehicle(dst) || !CheckOwnership(dst->owner)) return CMD_ERROR;
 
 	switch (p2) {
 		case CO_SHARE: {
@@ -639,7 +643,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			src = GetVehicle(veh_src);
 
 			/* Sanity checks */
-			if (src->type == 0 || !CheckOwnership(src->owner) || dst->type != src->type || dst == src)
+			if (IsValidVehicle(src) || !CheckOwnership(src->owner) || dst->type != src->type || dst == src)
 				return CMD_ERROR;
 
 			/* Trucks can't share orders with busses (and visa versa) */
@@ -686,7 +690,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			src = GetVehicle(veh_src);
 
 			/* Sanity checks */
-			if (src->type == 0 || !CheckOwnership(src->owner) || dst->type != src->type || dst == src)
+			if (IsValidVehicle(src) || !CheckOwnership(src->owner) || dst->type != src->type || dst == src)
 				return CMD_ERROR;
 
 			/* Trucks can't copy all the orders from busses (and visa versa) */
@@ -844,7 +848,7 @@ int32 CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 	/* Check the vehicle type and ownership, and if the service interval and order are in range */
-	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
 	if (serv_int != GetServiceIntervalClamped(serv_int) || cur_ord >= v->num_orders) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
@@ -963,8 +967,7 @@ void DeleteDestinationFromVehicleOrder(Order dest)
 
 	/* Go through all vehicles */
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == 0 || v->orders == NULL)
-			continue;
+		if (v->orders == NULL) continue;
 
 		/* Forget about this station if this station is removed */
 		if (v->last_station_visited == dest.station && dest.type == OT_GOTO_STATION)
@@ -1130,10 +1133,8 @@ static void Save_ORDR(void)
 	Order *order;
 
 	FOR_ALL_ORDERS(order) {
-		if (order->type != OT_NOTHING) {
-			SlSetArrayIndex(order->index);
-			SlObject(order, _order_desc);
-		}
+		SlSetArrayIndex(order->index);
+		SlObject(order, _order_desc);
 	}
 }
 

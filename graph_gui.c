@@ -1132,10 +1132,8 @@ static void GlobalSortSignList(void)
 		error("Could not allocate memory for the sign-sorting-list");
 
 	FOR_ALL_SIGNS(ss) {
-		if (ss->str != STR_NULL) {
-			_sign_sort[n++] = ss->index;
-			_num_sign_sort++;
-		}
+		_sign_sort[n++] = ss->index;
+		_num_sign_sort++;
 	}
 
 	qsort(_sign_sort, n, sizeof(_sign_sort[0]), SignNameSorter);

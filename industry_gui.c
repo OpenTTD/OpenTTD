@@ -561,9 +561,8 @@ static void MakeSortedIndustryList(void)
 	if (_industry_sort == NULL)
 		error("Could not allocate memory for the industry-sorting-list");
 
-	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy != 0) _industry_sort[n++] = i;
-	}
+	FOR_ALL_INDUSTRIES(i) _industry_sort[n++] = i;
+
 	_num_industry_sort = n;
 	_last_industry = NULL; // used for "cache"
 

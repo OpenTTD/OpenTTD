@@ -90,7 +90,7 @@ static void AiStateVehLoop(Player *p)
 	index = (p->ai.cur_veh == NULL) ? 0 : p->ai.cur_veh->index + 1;
 
 	FOR_ALL_VEHICLES_FROM(v, index) {
-		if (v->type == 0 || v->owner != _current_player) continue;
+		if (v->owner != _current_player) continue;
 
 		if ((v->type == VEH_Train && v->subtype == 0) ||
 				v->type == VEH_Road ||
@@ -411,7 +411,7 @@ static void AiStateCheckReplaceVehicle(Player *p)
 {
 	const Vehicle* v = p->ai.cur_veh;
 
-	if (v->type == 0 ||
+	if (!IsValidVehicle(v) ||
 			v->owner != _current_player ||
 			v->type > VEH_Ship ||
 			_veh_check_replace_proc[v->type - VEH_Train](p, v) == INVALID_ENGINE) {
@@ -428,7 +428,7 @@ static void AiStateDoReplaceVehicle(Player *p)
 
 	p->ai.state = AIS_VEH_LOOP;
 	// vehicle is not owned by the player anymore, something went very wrong.
-	if (v->type == 0 || v->owner != _current_player) return;
+	if (!IsValidVehicle(v) || v->owner != _current_player) return;
 	_veh_do_replace_proc[v->type - VEH_Train](p);
 }
 
@@ -442,13 +442,13 @@ typedef struct FoundRoute {
 static Town *AiFindRandomTown(void)
 {
 	Town *t = GetTown(RandomRange(_total_towns));
-	return (t->xy != 0) ? t : NULL;
+	return IsValidTown(t) ? t : NULL;
 }
 
 static Industry *AiFindRandomIndustry(void)
 {
 	Industry *i = GetIndustry(RandomRange(_total_industries));
-	return (i->xy != 0) ? i : NULL;
+	return IsValidIndustry(i) ? i : NULL;
 }
 
 static void AiFindSubsidyIndustryRoute(FoundRoute *fr)
@@ -608,7 +608,7 @@ static bool AiCheckIfRouteIsGood(Player *p, FoundRoute *fr, byte bitmask)
 	FOR_ALL_STATIONS(st) {
 		int cur;
 
-		if (st->xy == 0 || st->owner != _current_player) continue;
+		if (st->owner != _current_player) continue;
 		cur = DistanceMax(from_tile, st->xy);
 		if (cur < dist) dist = cur;
 		cur = DistanceMax(to_tile, st->xy);
@@ -3243,9 +3243,6 @@ static void AiStateAirportStuff(Player *p)
 		aib = &p->ai.src + i;
 
 		FOR_ALL_STATIONS(st) {
-			// Dismiss ghost stations.
-			if (st->xy == 0) continue;
-
 			// Is this an airport?
 			if (!(st->facilities & FACIL_AIRPORT)) continue;
 
@@ -3578,7 +3575,7 @@ static void AiStateRemoveStation(Player *p)
 	// Go through all stations and delete those that aren't in use
 	used = in_use;
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0 && st->owner == _current_player && !*used &&
+		if (st->owner == _current_player && !*used &&
 				( (st->bus_stops != NULL && (tile = st->bus_stops->xy) != 0) ||
 					(st->truck_stops != NULL && (tile = st->truck_stops->xy)) != 0 ||
 					(tile = st->train_tile) != 0 ||

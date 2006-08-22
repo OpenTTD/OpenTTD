@@ -74,9 +74,9 @@ extern MemoryPool _industry_pool;
 /**
  * Check if an Industry really exists.
  */
-static inline bool IsValidIndustry(Industry* industry)
+static inline bool IsValidIndustry(const Industry *industry)
 {
-	return industry->xy != 0; /* XXX: Replace by INVALID_TILE someday */
+	return industry->xy != 0;
 }
 
 /**
@@ -95,7 +95,7 @@ static inline uint16 GetIndustryPoolSize(void)
 	return _industry_pool.total_items;
 }
 
-#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL)
+#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL) if (IsValidIndustry(i))
 #define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
 
 VARDEF int _total_industries; // For the AI: the amount of industries active

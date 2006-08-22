@@ -166,7 +166,15 @@ static inline bool IsStationIndex(StationID index)
 	return index < GetStationPoolSize();
 }
 
-#define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL)
+/**
+ * Check if a station really exists.
+ */
+static inline bool IsValidStation(const Station *st)
+{
+	return st->xy != 0;
+}
+
+#define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL) if (IsValidStation(st))
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 
 
@@ -190,7 +198,15 @@ static inline uint16 GetRoadStopPoolSize(void)
 	return _roadstop_pool.total_items;
 }
 
-#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL)
+/**
+ * Check if a RaodStop really exists.
+ */
+static inline bool IsValidRoadStop(const RoadStop *rs)
+{
+	return rs->used;
+}
+
+#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL) if (IsValidRoadStop(rs))
 #define FOR_ALL_ROADSTOPS(rs) FOR_ALL_ROADSTOPS_FROM(rs, 0)
 
 /* End of stuff for ROADSTOPS */
@@ -211,14 +227,6 @@ RoadStop * GetPrimaryRoadStop(const Station *st, RoadStopType type);
 uint GetNumRoadStops(const Station* st, RoadStopType type);
 RoadStop * AllocateRoadStop( void );
 void ClearSlot(Vehicle *v);
-
-/**
- * Check if a station really exists.
- */
-static inline bool IsValidStation(const Station *st)
-{
-	return st->xy != 0; /* XXX: Replace by INVALID_TILE someday */
-}
 
 static inline bool IsBuoy(const Station* st)
 {

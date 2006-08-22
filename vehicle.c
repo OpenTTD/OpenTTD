@@ -83,7 +83,9 @@ static void VehiclePoolNewBlock(uint start_item)
 {
 	Vehicle *v;
 
-	FOR_ALL_VEHICLES_FROM(v, start_item) v->index = start_item++;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (v = GetVehicle(start_item); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) v->index = start_item++;
 }
 
 /* Initialize the vehicle-pool */
@@ -225,23 +227,21 @@ void AfterLoadVehicles(void)
 	}
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type != 0) {
-			switch (v->type) {
-				case VEH_Train: v->cur_image = GetTrainImage(v, v->direction); break;
-				case VEH_Road: v->cur_image = GetRoadVehImage(v, v->direction); break;
-				case VEH_Ship: v->cur_image = GetShipImage(v, v->direction); break;
-				case VEH_Aircraft:
-					if (v->subtype == 0 || v->subtype == 2) {
-						v->cur_image = GetAircraftImage(v, v->direction);
-						if (v->next != NULL) v->next->cur_image = v->cur_image;
-					}
-					break;
-				default: break;
-			}
-
-			v->left_coord = INVALID_COORD;
-			VehiclePositionChanged(v);
+		switch (v->type) {
+			case VEH_Train: v->cur_image = GetTrainImage(v, v->direction); break;
+			case VEH_Road: v->cur_image = GetRoadVehImage(v, v->direction); break;
+			case VEH_Ship: v->cur_image = GetShipImage(v, v->direction); break;
+			case VEH_Aircraft:
+				if (v->subtype == 0 || v->subtype == 2) {
+					v->cur_image = GetAircraftImage(v, v->direction);
+					if (v->next != NULL) v->next->cur_image = v->cur_image;
+				}
+				break;
+			default: break;
 		}
+
+		v->left_coord = INVALID_COORD;
+		VehiclePositionChanged(v);
 	}
 }
 
@@ -284,13 +284,14 @@ Vehicle *ForceAllocateSpecialVehicle(void)
 
 	Vehicle *v;
 
-	FOR_ALL_VEHICLES(v) {
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (v = GetVehicle(0); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 		/* No more room for the special vehicles, return NULL */
 		if (v->index >= (1 << _vehicle_pool.block_size_bits) * BLOCKS_FOR_SPECIAL_VEHICLES)
 			return NULL;
 
-		if (v->type == 0)
-			return InitializeVehicle(v);
+		if (!IsValidVehicle(v)) return InitializeVehicle(v);
 	}
 
 	return NULL;
@@ -311,11 +312,12 @@ static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
 	Vehicle *v;
 	const int offset = (1 << VEHICLES_POOL_BLOCK_SIZE_BITS) * BLOCKS_FOR_SPECIAL_VEHICLES;
 
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
 	if (*skip_vehicles < (_vehicle_pool.total_items - offset)) {	// make sure the offset in the array is not larger than the array itself
-		FOR_ALL_VEHICLES_FROM(v, offset + *skip_vehicles) {
+		for (v = GetVehicle(offset + *skip_vehicles); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 			(*skip_vehicles)++;
-			if (v->type == 0)
-				return InitializeVehicle(v);
+			if (!IsValidVehicle(v)) return InitializeVehicle(v);
 		}
 	}
 
@@ -620,9 +622,7 @@ void CallVehicleTicks(void)
 	_first_veh_in_depot_list = NULL;	// now we are sure it's initialized at the start of each tick
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type != 0) {
-			_vehicle_tick_procs[v->type - 0x10](v);
-		}
+		_vehicle_tick_procs[v->type - 0x10](v);
 	}
 
 	// now we handle all the vehicles that entered a depot this tick
@@ -1395,7 +1395,7 @@ Vehicle *CheckClickOnVehicle(const ViewPort *vp, int x, int y)
 	y = (y << vp->zoom) + vp->virtual_top;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type != 0 && (v->vehstatus & (VS_HIDDEN|VS_UNCLICKABLE)) == 0 &&
+		if ((v->vehstatus & (VS_HIDDEN|VS_UNCLICKABLE)) == 0 &&
 				x >= v->left_coord && x <= v->right_coord &&
 				y >= v->top_coord && y <= v->bottom_coord) {
 
@@ -1944,7 +1944,7 @@ int32 CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	v = GetVehicle(p1);
 
-	if (v->type == 0 || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->service_interval = serv_int;
@@ -2396,10 +2396,8 @@ static void Save_VEHS(void)
 	Vehicle *v;
 	// Write the vehicles
 	FOR_ALL_VEHICLES(v) {
-		if (v->type != 0) {
-			SlSetArrayIndex(v->index);
-			SlObject(v, _veh_descs[v->type - 0x10]);
-		}
+		SlSetArrayIndex(v->index);
+		SlObject(v, _veh_descs[v->type - 0x10]);
 	}
 }
 
@@ -2435,13 +2433,7 @@ static void Load_VEHS(void)
 		FOR_ALL_VEHICLES(v) {
 			Vehicle *u;
 
-			if (v->type == 0)
-				continue;
-
 			FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
-				if (u->type == 0)
-					continue;
-
 				/* If a vehicle has the same orders, add the link to eachother
 				    in both vehicles */
 				if (v->orders == u->orders) {

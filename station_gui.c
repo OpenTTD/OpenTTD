@@ -187,7 +187,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 	DEBUG(misc, 1) ("Building station list for player %d...", owner);
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy && st->owner == owner) {
+		if (st->owner == owner) {
 			if (facilities & st->facilities) { //only stations with selected facilities
 				int num_waiting_cargo = 0;
 				for (j = 0; j < NUM_CARGO; j++) {

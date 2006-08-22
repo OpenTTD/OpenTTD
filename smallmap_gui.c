@@ -696,7 +696,7 @@ skip_column:
 		byte color;
 
 		FOR_ALL_VEHICLES(v) {
-			if (v->type != 0 && v->type != VEH_Special &&
+			if (v->type != VEH_Special &&
 					(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
 				// Remap into flat coordinates.
 				Point pt = RemapCoords(
@@ -742,24 +742,22 @@ skip_column:
 		const Town *t;
 
 		FOR_ALL_TOWNS(t) {
-			if (t->xy != 0) {
-				// Remap the town coordinate
-				Point pt = RemapCoords(
-					(int)(TileX(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_x) / TILE_SIZE,
-					(int)(TileY(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_y) / TILE_SIZE,
-					0);
-				x = pt.x - WP(w,smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
-				y = pt.y;
+			// Remap the town coordinate
+			Point pt = RemapCoords(
+				(int)(TileX(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_x) / TILE_SIZE,
+				(int)(TileY(t->xy) * TILE_SIZE - WP(w, smallmap_d).scroll_y) / TILE_SIZE,
+				0);
+			x = pt.x - WP(w,smallmap_d).subscroll + 3 - (t->sign.width_2 >> 1);
+			y = pt.y;
 
-				// Check if the town sign is within bounds
-				if (x + t->sign.width_2 > dpi->left &&
-						x < dpi->left + dpi->width &&
-						y + 6 > dpi->top &&
-						y < dpi->top + dpi->height) {
-					// And draw it.
-					SetDParam(0, t->index);
-					DrawString(x, y, STR_2056, 12);
-				}
+			// Check if the town sign is within bounds
+			if (x + t->sign.width_2 > dpi->left &&
+					x < dpi->left + dpi->width &&
+					y + 6 > dpi->top &&
+					y < dpi->top + dpi->height) {
+				// And draw it.
+				SetDParam(0, t->index);
+				DrawString(x, y, STR_2056, 12);
 			}
 		}
 	}

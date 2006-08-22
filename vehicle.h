@@ -359,9 +359,6 @@ static inline uint16 GetVehiclePoolSize(void)
 	return _vehicle_pool.total_items;
 }
 
-#define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL)
-#define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
-
 /**
  * Check if a Vehicle really exists.
  */
@@ -369,6 +366,9 @@ static inline bool IsValidVehicle(const Vehicle *v)
 {
 	return v->type != 0;
 }
+
+#define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))
+#define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
 
 /**
  * Check if an index is a vehicle-index (so between 0 and max-vehicles)

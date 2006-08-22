@@ -770,8 +770,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 
 	if (dpi->zoom < 1) {
 		FOR_ALL_TOWNS(t) {
-			if (t->xy &&
-			    bottom > t->sign.top &&
+			if (bottom > t->sign.top &&
 					top < t->sign.top + 12 &&
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_1) {
@@ -786,8 +785,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 		bottom += 2;
 
 		FOR_ALL_TOWNS(t) {
-			if (t->xy &&
-			    bottom > t->sign.top &&
+			if (bottom > t->sign.top &&
 					top < t->sign.top + 24 &&
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_1*2) {
@@ -803,8 +801,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 
 		assert(dpi->zoom == 2);
 		FOR_ALL_TOWNS(t) {
-			if (t->xy &&
-			    bottom > t->sign.top &&
+			if (bottom > t->sign.top &&
 					top < t->sign.top + 24 &&
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_2*4) {
@@ -832,8 +829,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 
 	if (dpi->zoom < 1) {
 		FOR_ALL_STATIONS(st) {
-			if (st->xy &&
-			    bottom > st->sign.top &&
+			if (bottom > st->sign.top &&
 					top < st->sign.top + 12 &&
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_1) {
@@ -850,8 +846,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 		bottom += 2;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->xy &&
-			    bottom > st->sign.top &&
+			if (bottom > st->sign.top &&
 					top < st->sign.top + 24 &&
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_1*2) {
@@ -871,8 +866,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 		bottom += 5;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->xy &&
-			    bottom > st->sign.top &&
+			if (bottom > st->sign.top &&
 					top < st->sign.top + 24 &&
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_2*4) {
@@ -903,8 +897,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 
 	if (dpi->zoom < 1) {
 		FOR_ALL_SIGNS(ss) {
-			if (ss->str &&
-					bottom > ss->sign.top &&
+			if (bottom > ss->sign.top &&
 					top < ss->sign.top + 12 &&
 					right > ss->sign.left &&
 					left < ss->sign.left + ss->sign.width_1) {
@@ -920,8 +913,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 		right += 2;
 		bottom += 2;
 		FOR_ALL_SIGNS(ss) {
-			if (ss->str &&
-					bottom > ss->sign.top &&
+			if (bottom > ss->sign.top &&
 					top < ss->sign.top + 24 &&
 					right > ss->sign.left &&
 					left < ss->sign.left + ss->sign.width_1*2) {
@@ -938,8 +930,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 		bottom += 5;
 
 		FOR_ALL_SIGNS(ss) {
-			if (ss->str &&
-					bottom > ss->sign.top &&
+			if (bottom > ss->sign.top &&
 					top < ss->sign.top + 24 &&
 					right > ss->sign.left &&
 					left < ss->sign.left + ss->sign.width_2*4) {
@@ -971,8 +962,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 
 	if (dpi->zoom < 1) {
 		FOR_ALL_WAYPOINTS(wp) {
-			if (wp->xy &&
-					bottom > wp->sign.top &&
+			if (bottom > wp->sign.top &&
 					top < wp->sign.top + 12 &&
 					right > wp->sign.left &&
 					left < wp->sign.left + wp->sign.width_1) {
@@ -988,8 +978,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 		right += 2;
 		bottom += 2;
 		FOR_ALL_WAYPOINTS(wp) {
-			if (wp->xy &&
-					bottom > wp->sign.top &&
+			if (bottom > wp->sign.top &&
 					top < wp->sign.top + 24 &&
 					right > wp->sign.left &&
 					left < wp->sign.left + wp->sign.width_1*2) {
@@ -1006,8 +995,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 		bottom += 5;
 
 		FOR_ALL_WAYPOINTS(wp) {
-			if (wp->xy &&
-					bottom > wp->sign.top &&
+			if (bottom > wp->sign.top &&
 					top < wp->sign.top + 24 &&
 					right > wp->sign.left &&
 					left < wp->sign.left + wp->sign.width_2*4) {
@@ -1488,8 +1476,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 		y = y - vp->top + vp->virtual_top;
 
 		FOR_ALL_TOWNS(t) {
-			if (t->xy &&
-			    y >= t->sign.top &&
+			if (y >= t->sign.top &&
 					y < t->sign.top + 12 &&
 					x >= t->sign.left &&
 					x < t->sign.left + t->sign.width_1) {
@@ -1501,8 +1488,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 		x = (x - vp->left + 1) * 2 + vp->virtual_left;
 		y = (y - vp->top + 1) * 2 + vp->virtual_top;
 		FOR_ALL_TOWNS(t) {
-			if (t->xy &&
-			    y >= t->sign.top &&
+			if (y >= t->sign.top &&
 					y < t->sign.top + 24 &&
 					x >= t->sign.left &&
 					x < t->sign.left + t->sign.width_1 * 2) {
@@ -1514,8 +1500,7 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 		x = (x - vp->left + 3) * 4 + vp->virtual_left;
 		y = (y - vp->top + 3) * 4 + vp->virtual_top;
 		FOR_ALL_TOWNS(t) {
-			if (t->xy &&
-			    y >= t->sign.top &&
+			if (y >= t->sign.top &&
 					y < t->sign.top + 24 &&
 					x >= t->sign.left &&
 					x < t->sign.left + t->sign.width_2 * 4) {
@@ -1539,8 +1524,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 		y = y - vp->top + vp->virtual_top;
 
 		FOR_ALL_STATIONS(st) {
-			if (st->xy &&
-			    y >= st->sign.top &&
+			if (y >= st->sign.top &&
 					y < st->sign.top + 12 &&
 					x >= st->sign.left &&
 					x < st->sign.left + st->sign.width_1) {
@@ -1552,8 +1536,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 		x = (x - vp->left + 1) * 2 + vp->virtual_left;
 		y = (y - vp->top + 1) * 2 + vp->virtual_top;
 		FOR_ALL_STATIONS(st) {
-			if (st->xy &&
-			    y >= st->sign.top &&
+			if (y >= st->sign.top &&
 					y < st->sign.top + 24 &&
 					x >= st->sign.left &&
 					x < st->sign.left + st->sign.width_1 * 2) {
@@ -1565,8 +1548,7 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 		x = (x - vp->left + 3) * 4 + vp->virtual_left;
 		y = (y - vp->top + 3) * 4 + vp->virtual_top;
 		FOR_ALL_STATIONS(st) {
-			if (st->xy &&
-			    y >= st->sign.top &&
+			if (y >= st->sign.top &&
 					y < st->sign.top + 24 &&
 					x >= st->sign.left &&
 					x < st->sign.left + st->sign.width_2 * 4) {
@@ -1590,8 +1572,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 		y = y - vp->top + vp->virtual_top;
 
 		FOR_ALL_SIGNS(ss) {
-			if (ss->str &&
-			    y >= ss->sign.top &&
+			if (y >= ss->sign.top &&
 					y < ss->sign.top + 12 &&
 					x >= ss->sign.left &&
 					x < ss->sign.left + ss->sign.width_1) {
@@ -1603,8 +1584,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 		x = (x - vp->left + 1) * 2 + vp->virtual_left;
 		y = (y - vp->top + 1) * 2 + vp->virtual_top;
 		FOR_ALL_SIGNS(ss) {
-			if (ss->str &&
-			    y >= ss->sign.top &&
+			if (y >= ss->sign.top &&
 					y < ss->sign.top + 24 &&
 					x >= ss->sign.left &&
 					x < ss->sign.left + ss->sign.width_1 * 2) {
@@ -1616,8 +1596,7 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 		x = (x - vp->left + 3) * 4 + vp->virtual_left;
 		y = (y - vp->top + 3) * 4 + vp->virtual_top;
 		FOR_ALL_SIGNS(ss) {
-			if (ss->str &&
-			    y >= ss->sign.top &&
+			if (y >= ss->sign.top &&
 					y < ss->sign.top + 24 &&
 					x >= ss->sign.left &&
 					x < ss->sign.left + ss->sign.width_2 * 4) {
@@ -1641,8 +1620,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 		y = y - vp->top + vp->virtual_top;
 
 		FOR_ALL_WAYPOINTS(wp) {
-			if (wp->xy &&
-			    y >= wp->sign.top &&
+			if (y >= wp->sign.top &&
 					y < wp->sign.top + 12 &&
 					x >= wp->sign.left &&
 					x < wp->sign.left + wp->sign.width_1) {
@@ -1654,8 +1632,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 		x = (x - vp->left + 1) * 2 + vp->virtual_left;
 		y = (y - vp->top + 1) * 2 + vp->virtual_top;
 		FOR_ALL_WAYPOINTS(wp) {
-			if (wp->xy &&
-			    y >= wp->sign.top &&
+			if (y >= wp->sign.top &&
 					y < wp->sign.top + 24 &&
 					x >= wp->sign.left &&
 					x < wp->sign.left + wp->sign.width_1 * 2) {
@@ -1667,8 +1644,7 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 		x = (x - vp->left + 3) * 4 + vp->virtual_left;
 		y = (y - vp->top + 3) * 4 + vp->virtual_top;
 		FOR_ALL_WAYPOINTS(wp) {
-			if (wp->xy &&
-			    y >= wp->sign.top &&
+			if (y >= wp->sign.top &&
 					y < wp->sign.top + 24 &&
 					x >= wp->sign.left &&
 					x < wp->sign.left + wp->sign.width_2 * 4) {

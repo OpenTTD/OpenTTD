@@ -86,7 +86,7 @@ static const Depot* FindClosestShipDepot(const Vehicle* v)
 	} else {
 		FOR_ALL_DEPOTS(depot) {
 			tile = depot->xy;
-			if (IsValidDepot(depot) && IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, v->owner)) {
+			if (IsTileDepotType(tile, TRANSPORT_WATER) && IsTileOwner(tile, v->owner)) {
 				dist = DistanceManhattan(tile, tile2);
 				if (dist < best_dist) {
 					best_dist = dist;

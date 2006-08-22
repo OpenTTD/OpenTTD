@@ -1569,9 +1569,8 @@ static bool AnyTownExists(void)
 {
 	const Town *t;
 
-	FOR_ALL_TOWNS(t) {
-		if (t->xy != 0) return true;
-	}
+	FOR_ALL_TOWNS(t) return true;
+
 	return false;
 }
 

@@ -294,8 +294,6 @@ static void FixOldTowns(void)
 
 	/* Convert town-names if needed */
 	FOR_ALL_TOWNS(town) {
-		if (town->xy == 0) continue;
-
 		if (IS_INT_INSIDE(town->townnametype, 0x20C1, 0x20C3)) {
 			town->townnametype = SPECSTR_TOWNNAME_ENGLISH + _opt.town_name;
 			town->townnameparts = GetOldTownName(town->townnameparts, _opt.town_name);
@@ -346,11 +344,7 @@ static void FixOldVehicles(void)
 	FOR_ALL_VEHICLES(v) {
 		Vehicle *u;
 
-		if (v->type == 0) continue;
-
 		FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
-			if (u->type == 0) continue;
-
 			/* If a vehicle has the same orders, add the link to eachother
 			 * in both vehicles */
 			if (v->orders == u->orders) {
@@ -532,7 +526,7 @@ static bool LoadOldDepot(LoadgameState *ls, int num)
 
 	if (!LoadChunk(ls, GetDepot(num), depot_chunk)) return false;
 
-	if (GetDepot(num)->xy != 0) {
+	if (IsValidDepot(GetDepot(num))) {
 		GetDepot(num)->town_index = REMAP_TOWN_IDX(_old_town_index);
 	}
 
@@ -650,7 +644,7 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 	if (!LoadChunk(ls, st, station_chunk))
 		return false;
 
-	if (st->xy != 0) {
+	if (IsValidStation(st)) {
 		if (st->train_tile) {
 			/* Calculate the trainst_w and trainst_h */
 			uint w = GB(_old_platforms, 3, 3);
@@ -721,7 +715,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 	i = GetIndustry(num);
 	if (!LoadChunk(ls, i, industry_chunk)) return false;
 
-	if (i->xy != 0) {
+	if (IsValidIndustry(i)) {
 		i->town = GetTown(REMAP_TOWN_IDX(_old_town_index));
 	}
 

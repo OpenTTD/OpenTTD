@@ -1514,12 +1514,6 @@ static const char *ChatTabCompletionNextItem(uint *item)
 		FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {
 			int32 temp[1];
 
-			/* Skip empty towns */
-			if (t->xy == 0) {
-				(*item)++;
-				continue;
-			}
-
 			/* Get the town-name via the string-system */
 			temp[0] = t->townnameparts;
 			GetStringWithArgs(chat_tab_temp_buffer, t->townnametype, temp);

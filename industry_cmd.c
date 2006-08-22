@@ -38,7 +38,9 @@ static void IndustryPoolNewBlock(uint start_item)
 {
 	Industry *i;
 
-	FOR_ALL_INDUSTRIES_FROM(i, start_item) i->index = start_item++;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (i = GetIndustry(start_item); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL) i->index = start_item++;
 }
 
 /* Initialize the industry-pool */
@@ -1018,7 +1020,7 @@ void OnTick_Industry(void)
 	if (_game_mode == GM_EDITOR) return;
 
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy != 0) ProduceIndustryGoods(i);
+		ProduceIndustryGoods(i);
 	}
 }
 
@@ -1141,8 +1143,7 @@ static const Town *CheckMultipleIndustryInTown(TileIndex tile, int type)
 	if (_patches.multiple_industry_per_town) return t;
 
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy != 0 &&
-				i->type == (byte)type &&
+		if (i->type == (byte)type &&
 				i->town == t) {
 			_error_message = STR_0287_ONLY_ONE_ALLOWED_PER_TOWN;
 			return NULL;
@@ -1375,8 +1376,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 
 	FOR_ALL_INDUSTRIES(i) {
 		// check if an industry that accepts the same goods is nearby
-		if (i->xy != 0 &&
-				DistanceMax(tile, i->xy) <= 14 &&
+		if (DistanceMax(tile, i->xy) <= 14 &&
 				indspec->accepts_cargo[0] != CT_INVALID &&
 				indspec->accepts_cargo[0] == i->accepts_cargo[0] && (
 					_game_mode != GM_EDITOR ||
@@ -1388,8 +1388,7 @@ static bool CheckIfTooCloseToIndustry(TileIndex tile, int type)
 		}
 
 		// check "not close to" field.
-		if (i->xy != 0 &&
-				(i->type == indspec->conflicting[0] || i->type == indspec->conflicting[1] || i->type == indspec->conflicting[2]) &&
+		if ((i->type == indspec->conflicting[0] || i->type == indspec->conflicting[1] || i->type == indspec->conflicting[2]) &&
 				DistanceMax(tile, i->xy) <= 14) {
 			_error_message = STR_INDUSTRY_TOO_CLOSE;
 			return false;
@@ -1402,17 +1401,19 @@ static Industry *AllocateIndustry(void)
 {
 	Industry *i;
 
-	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy == 0) {
-			IndustryID index = i->index;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (i = GetIndustry(0); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL) {
+		IndustryID index = i->index;
 
-			if (i->index > _total_industries) _total_industries = i->index;
+		if (IsValidIndustry(i)) continue;
 
-			memset(i, 0, sizeof(*i));
-			i->index = index;
+		if (i->index > _total_industries) _total_industries = i->index;
 
-			return i;
-		}
+		memset(i, 0, sizeof(*i));
+		i->index = index;
+
+		return i;
 	}
 
 	/* Check if we can add a block to the pool */
@@ -1871,7 +1872,7 @@ void IndustryMonthlyLoop(void)
 	_current_player = OWNER_NONE;
 
 	FOR_ALL_INDUSTRIES(i) {
-		if (i->xy != 0) UpdateIndustryStatistics(i);
+		UpdateIndustryStatistics(i);
 	}
 
 	/* 3% chance that we start a new industry */
@@ -1879,7 +1880,7 @@ void IndustryMonthlyLoop(void)
 		MaybeNewIndustry(Random());
 	} else if (!_patches.smooth_economy && _total_industries > 0) {
 		i = GetIndustry(RandomRange(_total_industries));
-		if (i->xy != 0) ChangeIndustryProduction(i);
+		if (IsValidIndustry(i)) ChangeIndustryProduction(i);
 	}
 
 	_current_player = old_player;
@@ -1953,10 +1954,8 @@ static void Save_INDY(void)
 
 	// Write the vehicles
 	FOR_ALL_INDUSTRIES(ind) {
-		if (ind->xy != 0) {
-			SlSetArrayIndex(ind->index);
-			SlObject(ind, _industry_desc);
-		}
+		SlSetArrayIndex(ind->index);
+		SlObject(ind, _industry_desc);
 	}
 }
 

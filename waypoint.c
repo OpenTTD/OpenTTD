@@ -35,7 +35,9 @@ static void WaypointPoolNewBlock(uint start_item)
 {
 	Waypoint *wp;
 
-	FOR_ALL_WAYPOINTS_FROM(wp, start_item) wp->index = start_item++;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (wp = GetWaypoint(start_item); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL) wp->index = start_item++;
 }
 
 /* Initialize the town-pool */
@@ -46,8 +48,10 @@ static Waypoint* AllocateWaypoint(void)
 {
 	Waypoint *wp;
 
-	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->xy == 0) {
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (wp = GetWaypoint(0); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL) {
+		if (!IsValidWaypoint(wp)) {
 			uint index = wp->index;
 
 			memset(wp, 0, sizeof(*wp));
@@ -87,7 +91,7 @@ void UpdateAllWaypointSigns(void)
 	Waypoint *wp;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->xy != 0) UpdateWaypointSign(wp);
+		UpdateWaypointSign(wp);
 	}
 }
 
@@ -124,7 +128,7 @@ static Waypoint *FindDeletedWaypointCloseTo(TileIndex tile)
 	uint thres = 8;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->deleted && wp->xy != 0) {
+		if (wp->deleted) {
 			uint cur_dist = DistanceManhattan(tile, wp->xy);
 
 			if (cur_dist < thres) {
@@ -383,8 +387,6 @@ void FixOldWaypoints(void)
 
 	/* Convert the old 'town_or_string', to 'string' / 'town' / 'town_cn' */
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->xy == 0) continue;
-
 		wp->town_index = ClosestTownFromTile(wp->xy, (uint)-1)->index;
 		wp->town_cn = 0;
 		if (wp->string & 0xC000) {
@@ -421,10 +423,8 @@ static void Save_WAYP(void)
 	Waypoint *wp;
 
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->xy != 0) {
-			SlSetArrayIndex(wp->index);
-			SlObject(wp, _waypoint_desc);
-		}
+		SlSetArrayIndex(wp->index);
+		SlObject(wp, _waypoint_desc);
 	}
 }
 

@@ -40,7 +40,15 @@ static inline bool IsDepotIndex(uint index)
 	return index < GetDepotPoolSize();
 }
 
-#define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL)
+/**
+ * Check if a depot really exists.
+ */
+static inline bool IsValidDepot(const Depot* depot)
+{
+	return depot->xy != 0;
+}
+
+#define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL) if (IsValidDepot(d))
 #define FOR_ALL_DEPOTS(d) FOR_ALL_DEPOTS_FROM(d, 0)
 
 #define MIN_SERVINT_PERCENT  5
@@ -56,15 +64,6 @@ static inline bool IsDepotIndex(uint index)
 static inline Date GetServiceIntervalClamped(uint index)
 {
 	return (_patches.servint_ispercent) ? clamp(index, MIN_SERVINT_PERCENT, MAX_SERVINT_PERCENT) : clamp(index, MIN_SERVINT_DAYS, MAX_SERVINT_DAYS);
-}
-
-
-/**
- * Check if a depot really exists.
- */
-static inline bool IsValidDepot(const Depot* depot)
-{
-	return depot->xy != 0; /* XXX: Replace by INVALID_TILE someday */
 }
 
 /**

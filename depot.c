@@ -21,10 +21,11 @@ enum {
  */
 static void DepotPoolNewBlock(uint start_item)
 {
-	Depot *depot;
+	Depot *d;
 
-	FOR_ALL_DEPOTS_FROM(depot, start_item)
-		depot->index = start_item++;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (d = GetDepot(start_item); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL) d->index = start_item++;
 }
 
 /* Initialize the town-pool */
@@ -52,16 +53,18 @@ Depot *GetDepotByTile(TileIndex tile)
  */
 Depot *AllocateDepot(void)
 {
-	Depot *depot;
+	Depot *d;
 
-	FOR_ALL_DEPOTS(depot) {
-		if (!IsValidDepot(depot)) {
-			uint index = depot->index;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (d = GetDepot(0); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL) {
+		if (!IsValidDepot(d)) {
+			uint index = d->index;
 
-			memset(depot, 0, sizeof(Depot));
-			depot->index = index;
+			memset(d, 0, sizeof(Depot));
+			d->index = index;
 
-			return depot;
+			return d;
 		}
 	}
 
@@ -116,10 +119,8 @@ static void Save_DEPT(void)
 	Depot *depot;
 
 	FOR_ALL_DEPOTS(depot) {
-		if (IsValidDepot(depot)) {
-			SlSetArrayIndex(depot->index);
-			SlObject(depot, _depot_desc);
-		}
+		SlSetArrayIndex(depot->index);
+		SlObject(depot, _depot_desc);
 	}
 }
 

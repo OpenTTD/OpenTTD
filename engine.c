@@ -458,7 +458,7 @@ static inline uint16 GetEngineRenewPoolSize(void)
 	return _engine_renew_pool.total_items;
 }
 
-#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL)
+#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) if (er->from != INVALID_ENGINE)
 #define FOR_ALL_ENGINE_RENEWS(er) FOR_ALL_ENGINE_RENEWS_FROM(er, 0)
 
 static void EngineRenewPoolNewBlock(uint start_item)

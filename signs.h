@@ -20,14 +20,6 @@ typedef struct SignStruct {
 extern MemoryPool _sign_pool;
 
 /**
- * Check if a Sign really exists.
- */
-static inline bool IsValidSign(const SignStruct* ss)
-{
-	return ss->str != 0;
-}
-
-/**
  * Get the pointer to the sign with index 'index'
  */
 static inline SignStruct *GetSign(uint index)
@@ -48,7 +40,15 @@ static inline bool IsSignIndex(uint index)
 	return index < GetSignPoolSize();
 }
 
-#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL)
+/**
+ * Check if a Sign really exists.
+ */
+static inline bool IsValidSign(const SignStruct* ss)
+{
+	return ss->str != STR_NULL;
+}
+
+#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL) if (IsValidSign(ss))
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
 VARDEF bool _sign_sort_dirty;

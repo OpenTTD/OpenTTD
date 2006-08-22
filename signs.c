@@ -25,8 +25,9 @@ static void SignPoolNewBlock(uint start_item)
 {
 	SignStruct *ss;
 
-	FOR_ALL_SIGNS_FROM(ss, start_item)
-		ss->index = start_item++;
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (ss = GetSign(start_item); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL) ss->index = start_item++;
 }
 
 /* Initialize the sign-pool */
@@ -53,9 +54,7 @@ void UpdateAllSignVirtCoords(void)
 {
 	SignStruct *ss;
 
-	FOR_ALL_SIGNS(ss)
-		if (ss->str != 0)
-			UpdateSignVirtCoords(ss);
+	FOR_ALL_SIGNS(ss) UpdateSignVirtCoords(ss);
 
 }
 
@@ -83,8 +82,11 @@ static void MarkSignDirty(SignStruct *ss)
 static SignStruct *AllocateSign(void)
 {
 	SignStruct *ss;
-	FOR_ALL_SIGNS(ss) {
-		if (ss->str == 0) {
+
+	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
+	 * TODO - This is just a temporary stage, this will be removed. */
+	for (ss = GetSign(0); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL) {
+		if (!IsValidSign(ss)) {
 			uint index = ss->index;
 
 			memset(ss, 0, sizeof(SignStruct));
@@ -246,11 +248,8 @@ static void Save_SIGN(void)
 	SignStruct *ss;
 
 	FOR_ALL_SIGNS(ss) {
-		/* Don't save empty signs */
-		if (ss->str != 0) {
-			SlSetArrayIndex(ss->index);
-			SlObject(ss, _sign_desc);
-		}
+		SlSetArrayIndex(ss->index);
+		SlObject(ss, _sign_desc);
 	}
 }
 

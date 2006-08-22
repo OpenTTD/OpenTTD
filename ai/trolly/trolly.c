@@ -231,8 +231,6 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 		//  and sometimes it takes up to 4 months before the stats are corectly.
 		//  This way we don't get 12 busstations in one city of 100 population ;)
 		FOR_ALL_STATIONS(st) {
-			// Is it an active station
-			if (st->xy == 0) continue;
 			// Do we own it?
 			if (st->owner == _current_player) {
 				// Are we talking busses?
@@ -291,9 +289,6 @@ static bool AiNew_Check_City_or_Industry(Player *p, int ic, byte type)
 		//  else we don't do it. This is done, because stat updates can be slow
 		//  and sometimes it takes up to 4 months before the stats are corectly.
 		FOR_ALL_STATIONS(st) {
-			// Is it an active station
-			if (st->xy == 0) continue;
-
 			// Do we own it?
 			if (st->owner == _current_player) {
 				// Are we talking trucks?
@@ -620,21 +615,19 @@ static void AiNew_State_FindStation(Player *p)
 	}
 
 	FOR_ALL_STATIONS(st) {
-		if (st->xy != 0) {
-			if (st->owner == _current_player) {
-				if (p->ainew.tbt == AI_BUS && (FACIL_BUS_STOP & st->facilities) == FACIL_BUS_STOP) {
-					if (st->town == town) {
-						// Check how much cargo there is left in the station
-						if ((st->goods[p->ainew.cargo].waiting_acceptance & 0xFFF) > RoadVehInfo(i)->capacity * AI_STATION_REUSE_MULTIPLER) {
-							if (AiNew_CheckVehicleStation(p, st)) {
-								// We did found a station that was good enough!
-								new_tile = st->xy;
-								direction = GetRoadStopDir(st->xy);
-								break;
-							}
+		if (st->owner == _current_player) {
+			if (p->ainew.tbt == AI_BUS && (FACIL_BUS_STOP & st->facilities) == FACIL_BUS_STOP) {
+				if (st->town == town) {
+					// Check how much cargo there is left in the station
+					if ((st->goods[p->ainew.cargo].waiting_acceptance & 0xFFF) > RoadVehInfo(i)->capacity * AI_STATION_REUSE_MULTIPLER) {
+						if (AiNew_CheckVehicleStation(p, st)) {
+							// We did found a station that was good enough!
+							new_tile = st->xy;
+							direction = GetRoadStopDir(st->xy);
+							break;
 						}
-						count++;
 					}
+					count++;
 				}
 			}
 		}
@@ -1302,7 +1295,6 @@ static void AiNew_State_CheckAllVehicles(Player *p)
 	Vehicle *v;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == 0) continue;
 		if (v->owner != p->index) continue;
 		// Currently, we only know how to handle road-vehicles
 		if (v->type != VEH_Road) continue;
