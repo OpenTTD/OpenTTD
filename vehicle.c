@@ -1526,7 +1526,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int cost, total_cost = 0;
 	uint32 build_argument = 2;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 	v = GetVehicle(p1);
 	v_front = v;
 	w = NULL;
@@ -1907,7 +1907,7 @@ int32 CmdNameVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	StringID str;
 
-	if (!IsVehicleIndex(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
+	if (!IsValidVehicleID(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -1940,11 +1940,11 @@ int32 CmdChangeServiceInt(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle* v;
 	uint16 serv_int = GetServiceIntervalClamped(p2); /* Double check the service interval from the user-input */
 
-	if (serv_int != p2 || !IsVehicleIndex(p1)) return CMD_ERROR;
+	if (serv_int != p2 || !IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (!IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		v->service_interval = serv_int;

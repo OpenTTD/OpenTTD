@@ -319,7 +319,7 @@ int32 CmdRenameWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Waypoint *wp;
 
-	if (!IsWaypointIndex(p1)) return CMD_ERROR;
+	if (!IsValidWaypointID(p1)) return CMD_ERROR;
 
 	if (_cmd_text[0] != '\0') {
 		StringID str = AllocateNameUnique(_cmd_text, 0);

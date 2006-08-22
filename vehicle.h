@@ -375,9 +375,9 @@ static inline bool IsValidVehicle(const Vehicle *v)
  *
  * @return Returns true if the vehicle-id is in range
  */
-static inline bool IsVehicleIndex(uint index)
+static inline bool IsValidVehicleID(uint index)
 {
-	return index < GetVehiclePoolSize();
+	return index < GetVehiclePoolSize() && IsValidVehicle(GetVehicle(index));
 }
 
 /* Returns order 'index' of a vehicle or NULL when it doesn't exists */

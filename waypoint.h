@@ -42,17 +42,17 @@ static inline uint16 GetWaypointPoolSize(void)
 	return _waypoint_pool.total_items;
 }
 
-static inline bool IsWaypointIndex(uint index)
-{
-	return index < GetWaypointPoolSize();
-}
-
 /**
  * Check if a Waypoint really exists.
  */
 static inline bool IsValidWaypoint(const Waypoint *wp)
 {
 	return wp->xy != 0;
+}
+
+static inline bool IsValidWaypointID(uint index)
+{
+	return index < GetWaypointPoolSize() && IsValidWaypoint(GetWaypoint(index));
 }
 
 #define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL) if (IsValidWaypoint(wp))

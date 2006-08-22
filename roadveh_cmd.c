@@ -212,7 +212,7 @@ int32 CmdStartStopRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	uint16 callback;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -262,7 +262,7 @@ int32 CmdSellRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -364,7 +364,7 @@ int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	const Depot *dep;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -411,7 +411,7 @@ int32 CmdTurnRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -1757,7 +1757,7 @@ int32 CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	byte new_subtype = GB(p2, 8, 8);
 	uint16 capacity = CALLBACK_FAILED;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 

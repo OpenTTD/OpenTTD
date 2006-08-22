@@ -426,7 +426,7 @@ int32 CmdSellAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -456,7 +456,7 @@ int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	uint16 callback;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -500,7 +500,7 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 {
 	Vehicle *v;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -568,7 +568,7 @@ int32 CmdRefitAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	const AircraftVehicleInfo *avi;
 	uint16 callback = CALLBACK_FAILED;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 

@@ -179,9 +179,11 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	OrderID sel_ord = GB(p1, 16, 16);
 	Order new_order = UnpackOrder(p2);
 
-	if (!IsVehicleIndex(veh)) return CMD_ERROR;
+	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+
 	v = GetVehicle(veh);
-	if (!IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
+
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Check if the inserted order is to the correct destination (owner, type),
 	 * and has the correct flags if any */
@@ -189,11 +191,10 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case OT_GOTO_STATION: {
 			const Station *st;
 
-			if (!IsStationIndex(new_order.station)) return CMD_ERROR;
+			if (!IsValidStationID(new_order.station)) return CMD_ERROR;
 			st = GetStation(new_order.station);
 
-			if (!IsValidStation(st) ||
-					(st->airport_type != AT_OILRIG && !IsBuoy(st) && !CheckOwnership(st->owner))) {
+			if (st->airport_type != AT_OILRIG && !IsBuoy(st) && !CheckOwnership(st->owner)) {
 				return CMD_ERROR;
 			}
 
@@ -251,11 +252,10 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (v->type == VEH_Aircraft) {
 				const Station* st;
 
-				if (!IsStationIndex(new_order.station)) return CMD_ERROR;
+				if (!IsValidStationID(new_order.station)) return CMD_ERROR;
 				st = GetStation(new_order.station);
 
-				if (!IsValidStation(st) ||
-						(st->airport_type != AT_OILRIG && !CheckOwnership(st->owner)) ||
+				if ((st->airport_type != AT_OILRIG && !CheckOwnership(st->owner)) ||
 						!(st->facilities & FACIL_AIRPORT) ||
 						GetAirport(st->airport_type)->nof_depots == 0) {
 					return CMD_ERROR;
@@ -263,11 +263,10 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			} else {
 				const Depot* dp;
 
-				if (!IsDepotIndex(new_order.station)) return CMD_ERROR;
+				if (!IsValidDepotID(new_order.station)) return CMD_ERROR;
 				dp = GetDepot(new_order.station);
 
-				if (!IsValidDepot(dp) || !CheckOwnership(GetTileOwner(dp->xy)))
-					return CMD_ERROR;
+				if (!CheckOwnership(GetTileOwner(dp->xy))) return CMD_ERROR;
 
 				switch (v->type) {
 					case VEH_Train:
@@ -309,7 +308,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			if (v->type != VEH_Train) return CMD_ERROR;
 
-			if (!IsWaypointIndex(new_order.station)) return CMD_ERROR;
+			if (!IsValidWaypointID(new_order.station)) return CMD_ERROR;
 			wp = GetWaypoint(new_order.station);
 
 			if (!CheckOwnership(GetTileOwner(wp->xy))) return CMD_ERROR;
@@ -442,9 +441,11 @@ int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	OrderID sel_ord = p2;
 	Order *order;
 
-	if (!IsVehicleIndex(veh_id)) return CMD_ERROR;
+	if (!IsValidVehicleID(veh_id)) return CMD_ERROR;
+
 	v = GetVehicle(veh_id);
-	if (!IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
+
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* If we did not select an order, we maybe want to de-clone the orders */
 	if (sel_ord >= v->num_orders)
@@ -514,9 +515,11 @@ int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	VehicleID veh_id = p1;
 
-	if (!IsVehicleIndex(veh_id)) return CMD_ERROR;
+	if (!IsValidVehicleID(veh_id)) return CMD_ERROR;
+
 	v = GetVehicle(veh_id);
-	if (!IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
+
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Goto next order */
@@ -561,11 +564,12 @@ int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	OrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
 	VehicleID veh   = GB(p1,  0, 16);
 
-	if (!IsVehicleIndex(veh)) return CMD_ERROR;
+	if (!IsValidVehicleID(veh)) return CMD_ERROR;
 	if (p2 != OFB_FULL_LOAD && p2 != OFB_UNLOAD && p2 != OFB_NON_STOP && p2 != OFB_TRANSFER) return CMD_ERROR;
 
 	v = GetVehicle(veh);
-	if (!IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
+
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 
 	/* Is it a valid order? */
 	if (sel_ord >= v->num_orders) return CMD_ERROR;
@@ -628,22 +632,22 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	VehicleID veh_src = GB(p1, 16, 16);
 	VehicleID veh_dst = GB(p1,  0, 16);
 
-	if (!IsVehicleIndex(veh_dst)) return CMD_ERROR;
+	if (!IsValidVehicleID(veh_dst)) return CMD_ERROR;
 
 	dst = GetVehicle(veh_dst);
 
-	if (!IsValidVehicle(dst) || !CheckOwnership(dst->owner)) return CMD_ERROR;
+	if (!CheckOwnership(dst->owner)) return CMD_ERROR;
 
 	switch (p2) {
 		case CO_SHARE: {
 			Vehicle *src;
 
-			if (!IsVehicleIndex(veh_src)) return CMD_ERROR;
+			if (!IsValidVehicleID(veh_src)) return CMD_ERROR;
 
 			src = GetVehicle(veh_src);
 
 			/* Sanity checks */
-			if (!IsValidVehicle(src) || !CheckOwnership(src->owner) || dst->type != src->type || dst == src)
+			if (!CheckOwnership(src->owner) || dst->type != src->type || dst == src)
 				return CMD_ERROR;
 
 			/* Trucks can't share orders with busses (and visa versa) */
@@ -685,12 +689,12 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			Vehicle *src;
 			int delta;
 
-			if (!IsVehicleIndex(veh_src)) return CMD_ERROR;
+			if (!IsValidVehicleID(veh_src)) return CMD_ERROR;
 
 			src = GetVehicle(veh_src);
 
 			/* Sanity checks */
-			if (!IsValidVehicle(src) || !CheckOwnership(src->owner) || dst->type != src->type || dst == src)
+			if (!CheckOwnership(src->owner) || dst->type != src->type || dst == src)
 				return CMD_ERROR;
 
 			/* Trucks can't copy all the orders from busses (and visa versa) */
@@ -844,11 +848,12 @@ int32 CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	OrderID cur_ord = GB(p2,  0, 16);
 	uint16 serv_int = GB(p2, 16, 16);
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
+
 	/* Check the vehicle type and ownership, and if the service interval and order are in range */
-	if (!IsValidVehicle(v) || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
 	if (serv_int != GetServiceIntervalClamped(serv_int) || cur_ord >= v->num_orders) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {

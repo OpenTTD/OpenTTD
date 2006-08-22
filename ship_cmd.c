@@ -929,7 +929,7 @@ int32 CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -964,7 +964,7 @@ int32 CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	uint16 callback;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -1002,7 +1002,7 @@ int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	const Depot *dep;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -1056,7 +1056,7 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	byte new_subtype = GB(p2, 8, 8);
 	uint16 capacity = CALLBACK_FAILED;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 

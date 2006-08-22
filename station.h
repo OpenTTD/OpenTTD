@@ -161,17 +161,17 @@ static inline uint16 GetStationPoolSize(void)
 	return _station_pool.total_items;
 }
 
-static inline bool IsStationIndex(StationID index)
-{
-	return index < GetStationPoolSize();
-}
-
 /**
  * Check if a station really exists.
  */
 static inline bool IsValidStation(const Station *st)
 {
 	return st->xy != 0;
+}
+
+static inline bool IsValidStationID(StationID index)
+{
+	return index < GetStationPoolSize() && IsValidStation(GetStation(index));
 }
 
 #define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL) if (IsValidStation(st))

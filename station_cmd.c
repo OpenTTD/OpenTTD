@@ -2573,8 +2573,7 @@ void OnTick_Station(void)
 	i = _station_tick_ctr;
 	if (++_station_tick_ctr == GetStationPoolSize()) _station_tick_ctr = 0;
 
-	st = GetStation(i);
-	if (IsValidStation(st)) StationHandleBigTick(st);
+	if (IsValidStationID(i)) StationHandleBigTick(GetStation(i));
 
 	FOR_ALL_STATIONS(st) {
 		StationHandleSmallTick(st);
@@ -2627,10 +2626,10 @@ int32 CmdRenameStation(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	StringID str;
 	Station *st;
 
-	if (!IsStationIndex(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
+	if (!IsValidStationID(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
 	st = GetStation(p1);
 
-	if (!IsValidStation(st) || !CheckOwnership(st->owner)) return CMD_ERROR;
+	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
 	str = AllocateNameUnique(_cmd_text, 6);
 	if (str == 0) return CMD_ERROR;

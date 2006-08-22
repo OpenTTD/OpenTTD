@@ -35,17 +35,17 @@ static inline uint16 GetDepotPoolSize(void)
 	return _depot_pool.total_items;
 }
 
-static inline bool IsDepotIndex(uint index)
-{
-	return index < GetDepotPoolSize();
-}
-
 /**
  * Check if a depot really exists.
  */
 static inline bool IsValidDepot(const Depot* depot)
 {
 	return depot->xy != 0;
+}
+
+static inline bool IsValidDepotID(uint index)
+{
+	return index < GetDepotPoolSize() && IsValidDepot(GetDepot(index));
 }
 
 #define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL) if (IsValidDepot(d))

@@ -147,7 +147,7 @@ int32 CmdPlaceSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  */
 int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
-	if (!IsSignIndex(p1)) return CMD_ERROR;
+	if (!IsValidSignID(p1)) return CMD_ERROR;
 
 	/* If _cmd_text 0 means the new text for the sign is non-empty.
 	 * So rename the sign. If it is empty, it has no name, so delete it */

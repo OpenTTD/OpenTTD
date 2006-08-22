@@ -951,7 +951,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	VehicleID d = GB(p1, 16, 16);
 	Vehicle *src, *dst, *src_head, *dst_head;
 
-	if (!IsVehicleIndex(s)) return CMD_ERROR;
+	if (!IsValidVehicleID(s)) return CMD_ERROR;
 
 	src = GetVehicle(s);
 
@@ -1230,7 +1230,7 @@ int32 CmdStartStopTrain(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	uint16 callback;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -1275,7 +1275,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *new_f = NULL;
 	int32 cost = 0;
 
-	if (!IsVehicleIndex(p1) || p2 > 2) return CMD_ERROR;
+	if (!IsValidVehicleID(p1) || p2 > 2) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -1671,7 +1671,7 @@ int32 CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 {
 	Vehicle *v;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -1720,7 +1720,7 @@ int32 CmdForceTrainProceed(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -1746,7 +1746,7 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	uint num;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
@@ -1930,7 +1930,7 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Vehicle *v;
 	TrainFindDepotData tfdd;
 
-	if (!IsVehicleIndex(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 

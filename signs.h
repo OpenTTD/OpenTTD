@@ -34,17 +34,17 @@ static inline uint16 GetSignPoolSize(void)
 	return _sign_pool.total_items;
 }
 
-static inline bool IsSignIndex(uint index)
-{
-	return index < GetSignPoolSize();
-}
-
 /**
  * Check if a Sign really exists.
  */
 static inline bool IsValidSign(const Sign *si)
 {
 	return si->str != STR_NULL;
+}
+
+static inline bool IsValidSignID(uint index)
+{
+	return index < GetSignPoolSize() && IsValidSign(GetSign(index));
 }
 
 #define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL) if (IsValidSign(ss))

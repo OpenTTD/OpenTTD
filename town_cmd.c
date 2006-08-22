@@ -409,14 +409,11 @@ void OnTick_Town(void)
 	     _cur_town_iter >= TOWN_GROWTH_FREQUENCY;
 	     _cur_town_iter -= TOWN_GROWTH_FREQUENCY) {
 		uint32 i = _cur_town_ctr;
-		Town *t;
 
 		if (++_cur_town_ctr >= GetTownPoolSize())
 			_cur_town_ctr = 0;
 
-		t = GetTown(i);
-
-		if (IsValidTown(t)) TownTickHandler(t);
+		if (IsValidTownID(i)) TownTickHandler(GetTown(i));
 	}
 }
 
@@ -1348,7 +1345,7 @@ int32 CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	StringID str;
 	Town *t;
 
-	if (!IsTownIndex(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
+	if (!IsValidTownID(p1) || _cmd_text[0] == '\0') return CMD_ERROR;
 
 	t = GetTown(p1);
 
@@ -1605,7 +1602,7 @@ int32 CmdDoTownAction(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int32 cost;
 	Town *t;
 
-	if (!IsTownIndex(p1) || p2 > lengthof(_town_action_proc)) return CMD_ERROR;
+	if (!IsValidTownID(p1) || p2 > lengthof(_town_action_proc)) return CMD_ERROR;
 
 	t = GetTown(p1);
 

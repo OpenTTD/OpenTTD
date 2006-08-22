@@ -179,9 +179,9 @@ static inline uint16 GetTownPoolSize(void)
 	return _town_pool.total_items;
 }
 
-static inline bool IsTownIndex(uint index)
+static inline bool IsValidTownID(uint index)
 {
-	return index < GetTownPoolSize();
+	return index < GetTownPoolSize() && IsValidTown(GetTown(index));
 }
 
 #define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL) if (IsValidTown(t))
