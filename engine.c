@@ -459,7 +459,7 @@ static void EngineRenewPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (er = GetEngineRenew(start_item); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) if (er->from != INVALID_ENGINE) {
+	for (er = GetEngineRenew(start_item); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) {
 		er->index = start_item++;
 		er->from = INVALID_ENGINE;
 	}
@@ -472,7 +472,7 @@ static EngineRenew *AllocateEngineRenew(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (er = GetEngineRenew(0); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) if (er->from != INVALID_ENGINE) {
+	for (er = GetEngineRenew(0); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) {
 		if (IsValidEngineRenew(er)) continue;
 
 		er->to = INVALID_ENGINE;
