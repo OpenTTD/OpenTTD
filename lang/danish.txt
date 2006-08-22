@@ -547,6 +547,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Select '
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Ryd det valgte program (Gælder kun Custom1/Custom2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Gem opsætning for musik
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik på et musiknummer for at tilføje det til programlisten (Kun for Custom1/Custom2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik på et musiknummer for at fjerne det fra programlisten (kun Custom1 eller Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Tilfældig afspilning til/fra
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Vis musiknummer valg vinduet
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen
@@ -899,6 +900,7 @@ STR_CURR_NOK                                                    :Norske Kroner (
 STR_CURR_PLN                                                    :Polske Zloty (PLN)
 STR_CURR_ROL                                                    :Rumænske Lei (ROL)
 STR_CURR_RUR                                                    :Russiske Rubel (RUR)
+STR_CURR_SIT                                                    :Slovenske Tolare (SIT)
 STR_CURR_SEK                                                    :Svenske Kroner (SEK)
 
 STR_CURR_CUSTOM                                                 :Brugerdefineret...
@@ -1034,10 +1036,15 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Levetid
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis byens indbyggertal i bynavnet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlige træer (med gennemsigtige bygninger): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Landskabs generator: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snelinjehøjden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ingen
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Forbedret
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotér højdekort: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mod uret
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med uret
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
@@ -1437,6 +1444,8 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-størr
 ##### PNG-MAP-Loader
 
 
+STR_BMPMAP_ERROR                                                :{WHITE}Kan ikke hente landskab fra BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kunne ikke konvertere billedtypen.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Pris: {CURRENCY}
@@ -1760,6 +1769,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Gem det 
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vælg Spiltype til Nyt Spil
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vælg scenarie (grøn), predefineret spil (blå), eller nyt tilfældigt spil
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generer nyt tilfældigt spil
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Hent højdekort
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} i vejen
@@ -2867,6 +2877,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorise
 
 STR_GENERATE                                                    :{WHITE}Generer
 STR_DATE                                                        :{BLACK}Dato:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Antal byer:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Størrelse: {ORANGE}{NUM} x {NUM}
@@ -2876,12 +2887,15 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Afbryd K
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil du virkelig afbryde kort genereringen?
 STR_PROGRESS                                                    :{WHITE}{NUM}% færdig
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_CLEARING_TILES                                              :{BLACK}Generer rå og stenet område
+STR_PREPARING_GAME                                              :{BLACK}Forbereder spil
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Denne handling ændrere sværhedsgraden til speciel
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flyt højden af flat land en ned
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flyt højden af flat land en up
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ændre højden af flat land
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde af flat land:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Lille

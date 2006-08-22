@@ -2950,6 +2950,7 @@ STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Modifier
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altitude du terrain plat :
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrer la carte sur la position actuelle
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Petit
