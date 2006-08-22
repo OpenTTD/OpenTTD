@@ -1408,7 +1408,7 @@ static void AiWantOilRigAircraftRoute(Player *p)
 		t = AiFindRandomTown();
 		if (t != NULL) {
 			// Find a random oil rig industry
-			in = GetIndustry(RandomRange(_total_industries));
+			in = AiFindRandomIndustry();
 			if (in != NULL && in->type == IT_OIL_RIG) {
 				if (DistanceManhattan(t->xy, in->xy) < 60)
 					break;
