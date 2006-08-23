@@ -77,8 +77,8 @@ const Widget _generate_landscape_widgets[] = {
 {      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 130, 141, STR_NULL,                     STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 130, 141, STR_0225,                     STR_NULL}, // Number of industries
 
-{     WWT_IMGBTN, RESIZE_NONE, 15, 114, 194, 152, 163, STR_NULL,                     STR_RANDOM_SEED_HELP}, // Edit box for seed
-{    WWT_TEXTBTN, RESIZE_NONE, 12, 203, 285, 152, 163, STR_RANDOM,                   STR_RANDOM_HELP},
+{     WWT_IMGBTN, RESIZE_NONE, 15, 114, 207, 152, 163, STR_NULL,                     STR_RANDOM_SEED_HELP}, // Edit box for seed
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 326, 152, 163, STR_RANDOM,                   STR_RANDOM_HELP},
 
 {    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 228, 257, STR_GENERATE,                 STR_NULL}, // Generate button
 
