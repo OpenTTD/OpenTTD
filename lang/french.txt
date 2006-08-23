@@ -2905,7 +2905,11 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons M
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Générer
+STR_RANDOM                                                      :{BLACK}Nouvelle Amorce
+STR_RANDOM_HELP                                                 :{BLACK}Change l'amorce utilisée pour la Génération de Terrain
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Génération du terrain
+STR_RANDOM_SEED                                                 :{BLACK}Amorce:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Cliquer pour saisir une amorce
 STR_LAND_GENERATOR                                              :{BLACK}Générateur :
 STR_TREE_PLACER                                                 :{BLACK}Placement arbres :
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotation de la carte d'altitude :
@@ -2937,6 +2941,7 @@ STR_TREE_GENERATION                                             :{BLACK}Générati
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Génération des non-déplacables
 STR_CLEARING_TILES                                              :{BLACK}Génération des zones rugueuses et pierreuses
 STR_SETTINGUP_GAME                                              :{BLACK}Configuration du jeu
+STR_PREPARING_TILELOOP                                          :{BLACK}Rafraîchissement du terrain
 STR_PREPARING_GAME                                              :{BLACK}Préparation du jeu
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Cette action a modifié le niveau de difficulté en personnalisé
 STR_SE_FLAT_WORLD                                               :{WHITE}Terrain plat

@@ -605,8 +605,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landfläc
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Erzeuge Land durch Zufall
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landfläche wiederherstellen
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Nutzer Reliefkarte
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Nutzer Reliefkarte
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Nutze Reliefkarte
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Nutze Reliefkarte
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Bist du sicher, dass die Landschaft zurückgesetzt werden soll?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt errichten
@@ -886,6 +886,7 @@ STR_TOWNNAME_SWISS                                              :Schweizerisch
 STR_TOWNNAME_DANISH                                             :Dänisch
 STR_TOWNNAME_TURKISH                                            :Türkisch
 STR_TOWNNAME_ITALIAN                                            :italienisch
+STR_TOWNNAME_CATALAN                                            :Katalanisch
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pfund (£)
@@ -1046,6 +1047,7 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Dauer d
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zeige die Einwohnerzahl der Stadt im Label: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Unsichtbare Bäume (bei transparenten Gebäuden): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land Generator: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximaler Abstand der Ölraffinerien vom Kartenrand{ORANGE}{STRING}
@@ -1060,8 +1062,8 @@ STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Keiner
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Verbessert
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Drehung der Reliefkarte: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Entgegen Uhrzeigersinn
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Im Uhrzeigersinn
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :links
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :rechts
 STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Intervall der Fortschrittsaktualisierung {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Höhenstufe der Karte eines flachen Szenarios: {ORANGE}{STRING}
 
@@ -1464,6 +1466,7 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-Abmes
 
 STR_PNGMAP_ERROR                                                :{WHITE}Kann Landschaft nicht aus PNG-Datei laden...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...Datei nicht gefunden.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kann Grafik-Typ nicht umwandeln. 8- oder 24-bit PNG Datei erforderlich.
 
 STR_BMPMAP_ERROR                                                :{WHITE}Kann Landschaft nicht aus BMP-Datei laden...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kann Bildtyp nicht umwandeln.
@@ -2901,12 +2904,24 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetrie
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Erzeugen
+STR_RANDOM                                                      :{BLACK}Zufällig
+STR_RANDOM_HELP                                                 :{BLACK}Ändere den Zufallsstartwert für die Landschaftsgenerierung
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Welterstellung
+STR_RANDOM_SEED                                                 :{BLACK}Zufallsstartwert:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Gib einen Zufallsstartwert ein
 STR_LAND_GENERATOR                                              :{BLACK}Landgenerator:
-STR_HEIGHTMAP_ROTATION                                          :{BLACK}Reliefkartendrehung:
+STR_TREE_PLACER                                                 :{BLACK}Baumalgorithmus
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Kartendrehung:
+STR_SMOOTHNESS                                                  :{BLACK}Weichheit:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Höhe der Schneegrenze
 STR_DATE                                                        :{BLACK}Datum:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Städteanzahl:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Industriedichte:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Höhenstufe der Schneegrenze um eins erhöhen
+STR_SNOW_LINE_DOWN                                              :{BLACK}Höhenstufe der Schneegrenze um eins reduzieren
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ändere die Höhe der Schneegrenze
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ändere Startjahr
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalierungswarnung
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Zu starke Skalierung der Karte ist nicht empfohlen. Trotzdem Generierung fortsetzen?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
@@ -2916,14 +2931,25 @@ STR_GENERATION_WORLD                                            :{WHITE}Generier
 STR_GENERATION_ABORT                                            :{BLACK}Abbrechen
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Weltgenerierung abbrechen
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Soll die Weltgenerierung wirklich abgebrochen werden?
+STR_PROGRESS                                                    :{WHITE}{NUM}% abgeschlossen
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Welterstellung
+STR_TREE_GENERATION                                             :{BLACK}Baumerzeugung
+STR_SETTINGUP_GAME                                              :{BLACK}Bereite Spiel vor
+STR_PREPARING_GAME                                              :{BLACK}Bereite Spiel vor
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Diese Aktion änderte den Schwierigkeitsgrad zu individuell
+STR_SE_FLAT_WORLD                                               :{WHITE}Flache Landschaft
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Erzeuge flache Landschaft
+STR_SE_RANDOM_LAND                                              :{WHITE}Zufällige Landschaft
+STR_SE_NEW_WORLD                                                :{BLACK}Erzeuge ein neues Szenario
+STR_SE_CAPTION                                                  :{WHITE}Szenariotyp
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Höhenstufe des flachen Landes um eins reduzieren
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Höhenstufe das flachen Landes um eins erhöhen
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ändere die Höhenstufe des flachen Landes
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Höhenstufe des flachen Landes:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Zentriere Zusatzansicht auf akutelle Position
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}klein
