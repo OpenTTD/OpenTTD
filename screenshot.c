@@ -416,10 +416,10 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 //************************************************
 
 static const ScreenshotFormat _screenshot_formats[] = {
-	{"BMP", "bmp", &MakeBmpImage},
 #if defined(WITH_PNG)
 	{"PNG", "png", &MakePNGImage},
 #endif
+	{"BMP", "bmp", &MakeBmpImage},
 	{"PCX", "pcx", &MakePCXImage},
 };
 
