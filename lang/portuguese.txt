@@ -605,9 +605,9 @@ STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Gerar te
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Repor terreno
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Repor Terreno
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Tem a certeza que deseja repor o terreno?
-STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Gerar terreno
-STR_022F_TOWN_GENERATION                                        :{BLACK}Gerar cidades
-STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Gerar indústrias
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}A gerar terreno
+STR_022F_TOWN_GENERATION                                        :{BLACK}A gerar cidades
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}A gerar indústrias
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Construir estradas
 STR_0233_TOWN_GENERATION                                        :{WHITE}Gerar Cidades
 STR_0234_NEW_TOWN                                               :{BLACK}Nova Cidade
@@ -906,6 +906,7 @@ STR_CURR_NOK                                                    :Coroa Noruegues
 STR_CURR_PLN                                                    :Zloty Polaco (PLN)
 STR_CURR_ROL                                                    :Lei Romeno (ROL)
 STR_CURR_RUR                                                    :Rublo Russo (RUR)
+STR_CURR_SIT                                                    :Tolar Esloveno (SIT)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
@@ -1042,10 +1043,15 @@ STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra 
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árvores invisíveis (com edifícios transparentes): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distância máxima dos limites do mapa para Refinarias {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da linha de neve: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito suave
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nenhum
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Melhorado
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido anti-horário
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horário
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
@@ -1445,7 +1451,9 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-taman
 ##### PNG-MAP-Loader
 
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...ficheiro não encontrado.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...alguma coisa correu mal. Desculpe. (provavelmente um ficheiro corrompido)
 
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...impossível converter tipo de imagem.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Custo: {CURRENCY}
@@ -2879,21 +2887,39 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões M
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Criar
+STR_RANDOM_SEED                                                 :{BLACK}Semente aleatória:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Clique para inserir uma semente aleatória
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nível do mar:
+STR_SMOOTHNESS                                                  :{BLACK}Suavidade:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altura linha neve:
 STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de indústrias:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Mover a linha de neve um nível acima
+STR_SNOW_LINE_DOWN                                              :{BLACK}Mover a linha de neve um nível abaixo
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Mudar a altura da linha de neve
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mudar ano de início
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}A gerar mundo...
+STR_GENERATION_ABORT                                            :{BLACK}Cancelar
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Quer mesmo cancelar a criação?
 STR_PROGRESS                                                    :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_PREPARING_GAME                                              :{BLACK}A preparar jogo
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acção mudou o nível de dificuldade para Personalizado
+STR_SE_FLAT_WORLD                                               :{WHITE}Terra plana
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Criar terra plana
 STR_SE_RANDOM_LAND                                              :{WHITE}Terra aleatória
+STR_SE_NEW_WORLD                                                :{BLACK}Criar novo cenário
 STR_SE_CAPTION                                                  :{WHITE}Tipo de cenário
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Mover altura da terra plana um nível abaixo
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Mover altura da terra plana um nível acima
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Mudar altura da terra plana
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altura da terra plana:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 

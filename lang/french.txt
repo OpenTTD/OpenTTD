@@ -2906,9 +2906,9 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons M
 
 STR_GENERATE                                                    :{WHITE}Générer
 STR_RANDOM                                                      :{BLACK}Nouvelle Amorce
-STR_RANDOM_HELP                                                 :{BLACK}Change l'amorce utilisée pour la Génération de Terrain
+STR_RANDOM_HELP                                                 :{BLACK}Modifer l'amorce utilisée pour la Génération du Terrain
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Génération du terrain
-STR_RANDOM_SEED                                                 :{BLACK}Amorce:
+STR_RANDOM_SEED                                                 :{BLACK}Amorce :
 STR_RANDOM_SEED_HELP                                            :{BLACK}Cliquer pour saisir une amorce
 STR_LAND_GENERATOR                                              :{BLACK}Générateur :
 STR_TREE_PLACER                                                 :{BLACK}Placement arbres :
