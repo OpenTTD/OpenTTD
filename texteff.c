@@ -31,7 +31,7 @@ typedef struct TextEffect {
 typedef struct TextMessage {
 	char message[MAX_TEXTMESSAGE_LENGTH];
 	uint16 color;
-	uint16 end_date;
+	Date end_date;
 } TextMessage;
 
 #define MAX_CHAT_MESSAGES 10
