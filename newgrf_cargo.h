@@ -3,9 +3,6 @@
 #ifndef NEWGRF_CARGO_H
 #define NEWGRF_CARGO_H
 
-#include "table/sprites.h"
-
-
 enum {
 	CC_NOAVAILABLE  = 0,
 	CC_PASSENGERS   = 1 << 0,
