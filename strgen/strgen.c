@@ -1,8 +1,6 @@
 /* $Id$ */
 
-#if defined(WIN32) || defined(WIN64) || defined(__CYGWIN__)
-#define WIN32
-#else
+#if !(defined(WIN32) || defined(WIN64) || defined(__CYGWIN__))
 #define UNIX
 #endif
 
