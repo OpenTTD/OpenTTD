@@ -1467,6 +1467,7 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-Abmes
 STR_PNGMAP_ERROR                                                :{WHITE}Kann Landschaft nicht aus PNG-Datei laden...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...Datei nicht gefunden.
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kann Grafik-Typ nicht umwandeln. 8- oder 24-bit PNG Datei erforderlich.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...irgend etwas ging schief. Sorry. (Vielleicht eine kaputte Datei)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Kann Landschaft nicht aus BMP-Datei laden...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kann Bildtyp nicht umwandeln.
@@ -2912,6 +2913,8 @@ STR_RANDOM_SEED_HELP                                            :{BLACK}Gib eine
 STR_LAND_GENERATOR                                              :{BLACK}Landgenerator:
 STR_TREE_PLACER                                                 :{BLACK}Baumalgorithmus
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Kartendrehung:
+STR_TERRAIN_TYPE                                                :{BLACK}Landschaftstyp:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Gewässermenge:
 STR_SMOOTHNESS                                                  :{BLACK}Weichheit:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Höhe der Schneegrenze
 STR_DATE                                                        :{BLACK}Datum:
@@ -2946,7 +2949,7 @@ STR_SE_CAPTION                                                  :{WHITE}Szenario
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Höhenstufe des flachen Landes um eins reduzieren
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Höhenstufe das flachen Landes um eins erhöhen
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ändere die Höhenstufe des flachen Landes
-STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Höhenstufe des flachen Landes:
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Höhe des Flachlands:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Zentriere Zusatzansicht auf akutelle Position

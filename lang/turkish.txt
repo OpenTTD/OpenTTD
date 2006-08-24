@@ -1048,7 +1048,9 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Görünme
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Arazi üretici: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Özgün
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Petrol Rafinerilerinin kenardan mak. uzakligi{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Kar kalinligi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Arazinin engebesi (sadece TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Dümdüz
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Düzgün
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Engebeli
@@ -1060,6 +1062,7 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Gelismis
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Yükseklik haritasini döndür: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Saat yönünün tersi
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Saat yönü
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Düzlük bir senaryonun yükseklik seviyesi: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}istasyon genisleme siniri: {ORANGE}{STRING} {RED}Uyari: Yüksek degerler oyunu yavaslatir
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}

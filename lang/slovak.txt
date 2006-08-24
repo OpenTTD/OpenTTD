@@ -668,6 +668,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pre zvys
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Vygenerovat nahodne uzemie
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Zresetovat uzemie
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Zresetovat Uzemie
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Pouzit vyskovu mapu
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Pouzit vyskovu mapu
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Si si isty ze chces zresetovat uzemie ?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Vytvorenie uzemia
 STR_022F_TOWN_GENERATION                                        :{BLACK}Vytvorenie mesta
@@ -780,6 +782,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Ulozit s
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Nahrat scenar
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Ulozit scenar
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Hrat scenar
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Hrat vyskovu mapu
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Zacat novu hru s pouzitim vyskovej mapy ako krajiny
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Si si isty ze chces ukoncit tento scenar ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Ukoncit Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...moze byt postavene v mestach z populaciou vacsou ako 1200
@@ -883,7 +887,7 @@ STR_02F8_EVERY_3_MONTHS                                         :Kazde 3 mesiace
 STR_02F9_EVERY_6_MONTHS                                         :Kazdych 6 mesiacov
 STR_02FA_EVERY_12_MONTHS                                        :Kazdych 12 mesiacov
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Spustit novu hru
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nacitat ulozenu hru
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrat ulozenu hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvorit vlastny svet / scenar
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vyberte hru pre 1 hraca
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vyberte hru pre 2-8 hracov
@@ -945,6 +949,7 @@ STR_TOWNNAME_SWISS                                              :Svajciarske
 STR_TOWNNAME_DANISH                                             :Danske
 STR_TOWNNAME_TURKISH                                            :Turecké
 STR_TOWNNAME_ITALIAN                                            :Talianske
+STR_TOWNNAME_CATALAN                                            :Katalanske
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libry (£)
@@ -969,6 +974,7 @@ STR_CURR_NOK                                                    :Norske Koruny (
 STR_CURR_PLN                                                    :Polske Zloty (PLN)
 STR_CURR_ROL                                                    :Rumunske Lei (ROL)
 STR_CURR_RUR                                                    :Ruske Ruble (RUR)
+STR_CURR_SIT                                                    :Slovinske Toliare (SIT)
 STR_CURR_SEK                                                    :Svedske Koruny (SEK)
 
 STR_CURR_CUSTOM                                                 :Vlastna ...
@@ -1103,7 +1109,27 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Min. mn
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Dlzka zobrazenia chybovej spravy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Zobrazit pocet obyvatelov mesta v jeho nazve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neviditelne stromy (pri priesvitnych budovach): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generator uzemia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Povodny
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max. vzdialenost ropnych rafinerii od okraja mapy {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Uroven ciary snehu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Clenitost terenu (len pre TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Velmi rovny
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Rovny
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Clenity
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Velmi clenity
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritmus umiestnovania stromov: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ziadny
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Povodny
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Vylepseny
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Orientacia vyskovej mapy: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Proti smeru hodinovych ruciciek
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :V smere hodinovych ruciciek
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Interval obnovy stavu pri vytvarani mapy: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Vyskova uroven pre rovinaty scenar: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoke hodnoty spomaluju hru
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvarat panel uprav terenu s panelom stavby trati, ciest, ... : {ORANGE}{STRING}
@@ -1374,7 +1400,7 @@ STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aby osta
 STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_START_GAME                                          :{BLACK}Spustit hru
 STR_NETWORK_START_GAME_TIP                                      :{BLACK}Zacat sietovu hru z nahodnej mapy alebo scenara
-STR_NETWORK_LOAD_GAME                                           :{BLACK}Nacitat hru
+STR_NETWORK_LOAD_GAME                                           :{BLACK}Nahrat hru
 STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Pokracovat v ulozenej hre (uistite sa, ze sa pripojite ako spravny hrac)
 
 ############ Leave those lines in this order!!
@@ -1497,6 +1523,17 @@ STR_NETWORK_SEND                                                :{BLACK}Poslat
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-rozmer mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-rozmer mapy: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERROR                                                :{WHITE}Nie je mozne nahrat povrch z PNG suboru ...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}... subor nenajdeny.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nie je mozne zkonvertovat format obrazku. Potrebne 8 alebo 24 bitove PNG.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}... neocakavana chyba (pravdepodobne poskodeny subor)
+
+STR_BMPMAP_ERROR                                                :{WHITE}Nie je mozne nahrat povrch z BMP suboru ...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nie je mozne zkonvertovat format obrazku.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Cena: {CURRENCY}
@@ -1821,6 +1858,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Ulozit a
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vyber typ novej hry
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vyber scenar (zeleny), prednastavenu hra (modra), alebo nahodnu hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vygenerovat nahodnu novu hru
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Nahrat vyskovu mapu
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} v ceste
@@ -2926,6 +2964,61 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestujucich, {COMMA} balikov posty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Generovat
+STR_RANDOM                                                      :{BLACK}Novy kod
+STR_RANDOM_HELP                                                 :{BLACK}Zmenit nahodny kod pre generovanie terenu
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generovanie krajiny
+STR_RANDOM_SEED                                                 :{BLACK}Nahodny kod:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Kliknite pre zadanie nahodneho kodu
+STR_LAND_GENERATOR                                              :{BLACK}Generator krajiny:
+STR_TREE_PLACER                                                 :{BLACK}Algoritmus pre stromy:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Orientacia vyskovej mapy:
+STR_TERRAIN_TYPE                                                :{BLACK}Typ terenu:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Rozsah vodnych ploch:
+STR_SMOOTHNESS                                                  :{BLACK}Clenitost:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Vyska snehovej ciary:
+STR_DATE                                                        :{BLACK}Datum:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Pocet miest:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Pocet priemyslu:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Zvysit vysku snehovej ciary o jedno
+STR_SNOW_LINE_DOWN                                              :{BLACK}Znizit vysku snehovej ciary o jedno
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Zmenit vysku snehovej ciary
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Zmenit rok zaciatku hry
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Upozornenie na stupnicu
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Prilis velka zmena velkosti zdrojovej mapy sa neodporuca. Pokracovat s generovanim?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Nazov vyskovej mapy:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Velkost: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Generujem  krajinu ...
+STR_GENERATION_ABORT                                            :{BLACK}Ukoncit
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Ukoncit generovanie krajiny
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Skutocne chcete ukoncit generovanie?
+STR_PROGRESS                                                    :{WHITE}{NUM}% complete
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Generovanie krajiny
+STR_TREE_GENERATION                                             :{BLACK}Generovanie stromov
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Nepohyblive generovanie
+STR_CLEARING_TILES                                              :{BLACK}Generovanie nerovnosti a skal
+STR_SETTINGUP_GAME                                              :{BLACK}Nastavovanie hry
+STR_PREPARING_TILELOOP                                          :{BLACK}Spustam tile-loop
+STR_PREPARING_GAME                                              :{BLACK}Priprava hry
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Obtiaznost sa zmenila na vlastnu
+STR_SE_FLAT_WORLD                                               :{WHITE}Rovna krajina
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generovat rovnu krajinu
+STR_SE_RANDOM_LAND                                              :{WHITE}Nahodna krajina
+STR_SE_NEW_WORLD                                                :{BLACK}Vytvorit novy scenar
+STR_SE_CAPTION                                                  :{WHITE}Typ scenara
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Znizit vysku rovnej krajiny o jedno
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Zvysit vysku rovnej krajiny o jedno
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Zmenit vysku rovnej krajiny
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Vyska rovnej krajiny:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
+
+STR_SMALLMAP_CENTER                                             :{BLACK}Vycentrovat malu mapu na aktualnu poziciu
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Male
