@@ -1313,7 +1313,7 @@ int CDECL main(int argc, char* argv[])
 		/* get the targetfile, strip any directories and append to destination path */
 #if defined(__MINGW32__) || defined (__CYGWIN__)
 		/* Under mingw32 and cygwin, we enter / via the Makefile, not the expected \ */
-		r = strrchr(argv[1], "/");
+		r = strrchr(argv[1], '/');
 #else
 		r = strrchr(argv[1], PATHSEPCHAR);
 #endif
