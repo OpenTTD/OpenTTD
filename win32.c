@@ -859,8 +859,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	_set_error_mode(_OUT_TO_MSGBOX); // force assertion output to messagebox
 
 	// setup random seed to something quite random
-	_random_seeds[0][0] = GetTickCount();
-	_random_seeds[0][1] = _random_seeds[0][0] * 0x1234567;
+	_random_seeds[1][0] = _random_seeds[0][0] = GetTickCount();
+	_random_seeds[1][1] = _random_seeds[0][1] = _random_seeds[0][0] * 0x1234567;
 	SeedMT(_random_seeds[0][0]);
 
 	argc = ParseCommandLine(GetCommandLine(), argv, lengthof(argv));

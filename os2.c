@@ -125,8 +125,7 @@ int CDECL main(int argc, char* argv[])
 	// change the working directory to enable doubleclicking in UIs
 	ChangeWorkingDirectory(argv[0]);
 
-	_random_seeds[0][1] = _random_seeds[0][0] = time(NULL);
-
+	_random_seeds[1][1] = _random_seeds[1][0] = _random_seeds[0][1] = _random_seeds[0][0] = time(NULL);
 
 	return ttd_main(argc, argv);
 }
