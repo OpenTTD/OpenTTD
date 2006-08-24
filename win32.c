@@ -917,27 +917,6 @@ void DeterminePaths(void)
 	CreateDirectory(_path.heightmap_dir, NULL);
 }
 
-int CDECL snprintf(char *str, size_t size, const char *format, ...)
-{
-	va_list ap;
-	int ret;
-
-	va_start(ap, format);
-	ret = vsnprintf(str, size, format, ap);
-	va_end(ap);
-	return ret;
-}
-
-#ifdef _MSC_VER
-int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
-{
-	int ret;
-	ret = _vsnprintf(str, size, format, ap);
-	if (ret < 0) str[size - 1] = '\0';
-	return ret;
-}
-#endif
-
 /**
  * Insert a chunk of text from the clipboard onto the textbuffer. Get TEXT clipboard
  * and append this up to the maximum length (either absolute or screenlength). If maxlength

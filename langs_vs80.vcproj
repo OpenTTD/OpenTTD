@@ -27,7 +27,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Generating strings.h"
-				CommandLine="strgen\debug\strgen.exe"
+				CommandLine="strgen\debug\strgen.exe -s lang -d table"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
@@ -54,7 +54,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating american language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\american.lng"
 				/>
 			</FileConfiguration>
@@ -68,7 +68,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating brazilian_portuguese language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\brazilian_portuguese.lng"
 				/>
 			</FileConfiguration>
@@ -82,7 +82,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating catalan language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\catalan.lng"
 				/>
 			</FileConfiguration>
@@ -96,7 +96,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating czech language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\czech.lng"
 				/>
 			</FileConfiguration>
@@ -110,7 +110,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating danish language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\danish.lng"
 				/>
 			</FileConfiguration>
@@ -124,7 +124,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating dutch language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\dutch.lng"
 				/>
 			</FileConfiguration>
@@ -138,7 +138,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating english language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\english.lng"
 				/>
 			</FileConfiguration>
@@ -152,7 +152,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating estonian language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\estonian.lng"
 				/>
 			</FileConfiguration>
@@ -166,7 +166,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating finnish language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\finnish.lng"
 				/>
 			</FileConfiguration>
@@ -180,7 +180,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating french language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\french.lng"
 				/>
 			</FileConfiguration>
@@ -194,7 +194,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating galician language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\galician.lng"
 				/>
 			</FileConfiguration>
@@ -208,7 +208,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating german language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\german.lng"
 				/>
 			</FileConfiguration>
@@ -222,7 +222,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating hungarian language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\hungarian.lng"
 				/>
 			</FileConfiguration>
@@ -236,7 +236,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating icelandic language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\icelandic.lng"
 				/>
 			</FileConfiguration>
@@ -250,7 +250,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating italian language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\italian.lng"
 				/>
 			</FileConfiguration>
@@ -265,7 +265,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating lithuanian language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\lithuanian.lng"
 				/>
 			</FileConfiguration>
@@ -279,7 +279,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating norwegian language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\norwegian.lng"
 				/>
 			</FileConfiguration>
@@ -293,7 +293,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating Original Vehicle names file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\origveh.lng"
 				/>
 			</FileConfiguration>
@@ -307,7 +307,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating polish language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\polish.lng"
 				/>
 			</FileConfiguration>
@@ -321,7 +321,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating portuguese language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\portuguese.lng"
 				/>
 			</FileConfiguration>
@@ -335,7 +335,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating romanian language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\romanian.lng"
 				/>
 			</FileConfiguration>
@@ -349,7 +349,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating slovak language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\slovak.lng"
 				/>
 			</FileConfiguration>
@@ -363,7 +363,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating spanish language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\spanish.lng"
 				/>
 			</FileConfiguration>
@@ -377,7 +377,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating swedish language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\swedish.lng"
 				/>
 			</FileConfiguration>
@@ -391,7 +391,7 @@
 				<Tool
 					Name="VCCustomBuildTool"
 					Description="Generating turkish language file"
-					CommandLine="strgen\debug\strgen.exe &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\turkish.lng"
 				/>
 			</FileConfiguration>

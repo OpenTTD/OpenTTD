@@ -1,9 +1,14 @@
 /* $Id$ */
 
-#define STRGEN
+#if defined(WIN32) || defined(WIN64) || defined(__CYGWIN__)
+#define WIN32
+#else
+#define UNIX
+#endif
 
 #include "../stdafx.h"
 #include "../macros.h"
+#include "../string.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -13,12 +18,16 @@
 #include <unistd.h>
 #endif
 
+#if defined WIN32 || defined __WATCOMC__
+#include <direct.h>
+#endif /* WIN32 || __WATCOMC__ */
+
 #ifdef __MORPHOS__
 #ifdef stderr
 #undef stderr
 #endif
 #define stderr stdout
-#endif // __MORPHOS__
+#endif /* __MORPHOS__ */
 
 #ifdef __WATCOMC__
 	uint _map_log_x;     // an unpleasant hack required because Watcom is insisting on
@@ -26,7 +35,7 @@
 	uint _map_size_y;
 	uint _map_tile_mask;
 	uint _map_size;
-#endif
+#endif /* __WATCOMC__ */
 
 /* Compiles a list of strings into a compiled string list */
 
@@ -160,7 +169,7 @@ static void CDECL Warning(const char *s, ...)
 	char buf[1024];
 	va_list va;
 	va_start(va, s);
-	vsprintf(buf, s, va);
+	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
 	fprintf(stderr, "%s" LINE_NUM_FMT ": Warning: %s\n", _file, _cur_line, buf);
 	_warnings++;
@@ -172,7 +181,7 @@ static void CDECL Error(const char *s, ...)
 	char buf[1024];
 	va_list va;
 	va_start(va, s);
-	vsprintf(buf, s, va);
+	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
 	fprintf(stderr, "%s" LINE_NUM_FMT ": Error: %s\n", _file, _cur_line, buf);
 	_errors++;
@@ -184,20 +193,11 @@ static void NORETURN CDECL Fatal(const char *s, ...)
 	char buf[1024];
 	va_list va;
 	va_start(va, s);
-	vsprintf(buf, s, va);
+	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
 	fprintf(stderr, "%s" LINE_NUM_FMT ": FATAL: %s\n", _file, _cur_line, buf);
 	exit(1);
 }
-
-
-static void ttd_strlcpy(char *dst, const char *src, size_t len)
-{
-	assert(len > 0);
-	while (--len > 0 && *src != '\0') *dst++ = *src++;
-	*dst = '\0';
-}
-
 
 static void PutByte(byte c)
 {
@@ -1205,9 +1205,36 @@ static void WriteLangfile(const char *filename, int show_todo)
 	fclose(f);
 }
 
+/** Multi-OS mkdirectory function */
+static inline void ottd_mkdir(const char *directory)
+{
+#if defined(WIN32) || defined(__WATCOMC__)
+		mkdir(directory);
+#else
+		mkdir(directory, 0755);
+#endif
+}
+
+/** Create a path consisting of an already existing path, a possible
+ * path seperator and the filename. The seperator is only appended if the path
+ * does not already end with a seperator */
+static inline char *mkpath(char *buf, size_t buflen, const char *path, const char *file)
+{
+	char *p;
+	ttd_strlcpy(buf, path, buflen); // copy directory into buffer
+
+	p = strchr(buf, '\0'); // add path seperator if necessary
+	if (p[-1] != PATHSEPCHAR && (size_t)(p - buf) + 1 < buflen) *p++ = PATHSEPCHAR;
+	ttd_strlcpy(p, file, buflen - (size_t)(p - buf)); // catenate filename at end of buffer
+	return buf;
+}
+
 
 int CDECL main(int argc, char* argv[])
 {
+	char pathbuf[256];
+	const char *src_dir, *dest_dir;
+
 	int show_todo = 0;
 
 	if (argc > 1 && (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0)) {
@@ -1215,14 +1242,12 @@ int CDECL main(int argc, char* argv[])
 		return 0;
 	}
 
-	if (argc > 1 &&
-			(strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--todo") == 0)) {
+	if (argc > 1 && (strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--todo") == 0)) {
 		show_todo = 1;
 		argc--, argv++;
 	}
 
-	if (argc > 1 &&
-			(strcmp(argv[1], "-w") == 0 || strcmp(argv[1], "--warning") == 0)) {
+	if (argc > 1 && (strcmp(argv[1], "-w") == 0 || strcmp(argv[1], "--warning") == 0)) {
 		show_todo = 2;
 		argc--, argv++;
 	}
@@ -1235,45 +1260,69 @@ int CDECL main(int argc, char* argv[])
 		puts(
 			"strgen - $Revision$\n"
 			" -v | --version    print version information and exit\n"
-			" -h | -? | --help  print this help message and exit\n"
 			" -t | --todo       replace any untranslated strings with '<TODO>'\n"
 			" -w | --warning    print a warning for any untranslated strings\n"
-			" Run without parameters strgen will search for lang/english.txt and\n"
-			" parse it. Passing an argument, strgen will translate that language\n"
-			" file with lang/english.txt as a reference."
+			" -h | -? | --help  print this help message and exit\n"
+			" -s | --source_dir search for english.txt in the specified directory\n"
+			" -d | --dest_dir   put output file in the specified directory, create if needed\n"
+			" Run without parameters and strgen will search for english.txt and parse it,\n"
+			" creating strings.h. Passing an argument, strgen will translate that language\n"
+			" file using english.txt as a reference and output <language>.lng."
 		);
 		return 0;
 	}
 
+	src_dir = dest_dir = ".";
+	if (argc > 2 && (strcmp(argv[1], "-s") == 0 || strcmp(argv[1], "--source_dir") == 0)) {
+		src_dir = dest_dir = argv[2]; // if dest_dir is not specified, it equals src_dir
+		argc -= 2, argv += 2;
+	}
+
+	if (argc > 2 && (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "--dest_dir") == 0)) {
+		dest_dir = argv[2];
+		argc -= 2, argv += 2;
+	}
+
+	/* strgen has two modes of operation. If no (free) arguments are passed
+	 * strgen generates strings.h to the destination directory. If it is supplied
+	 * with a (free) parameter the program will translate that language to destination
+	 * directory. As input english.txt is parsed from the source directory */
 	if (argc == 1) {
+		mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
+
+		/* parse master file */
 		_masterlang = true;
-		// parse master file
-		ParseFile("lang/english.txt", true);
+		ParseFile(pathbuf, true);
 		MakeHashOfStrings();
 		if (_errors) return 1;
 
-		// write english.lng and strings.h
-
-		WriteLangfile("lang/english.lng", 0);
-		WriteStringsH("table/strings.h");
+		/* write strings.h */
+		ottd_mkdir(dest_dir);
+		mkpath(pathbuf, lengthof(pathbuf), dest_dir, "strings.h");
+		WriteStringsH(pathbuf);
 	} else if (argc == 2) {
-		char buf[256];
-		char* r;
+		char *r;
 
+		mkpath(pathbuf, lengthof(pathbuf), src_dir, "english.txt");
+
+		/* parse master file and check if target file is correct */
 		_masterlang = false;
-		ParseFile("lang/english.txt", true);
+		ParseFile(pathbuf, true);
 		MakeHashOfStrings();
-		ParseFile(argv[1], false);
-
+		ParseFile(argv[1], false); // target file
 		if (_errors) return 1;
 
-		strcpy(buf, argv[1]);
-		r = strrchr(buf, '.');
-		if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(buf, 0);
-		strcpy(r, ".lng");
-		WriteLangfile(buf, show_todo);
+		/* get the targetfile, strip any directories and append to destination path */
+		r = strrchr(argv[1], PATHSEPCHAR);
+		mkpath(pathbuf, lengthof(pathbuf), dest_dir, (r != NULL) ? &r[1] : argv[1]);
+
+		/* rename the .txt (input-extension) to .lng */
+		r = strrchr(pathbuf, '.');
+		if (r == NULL || strcmp(r, ".txt") != 0) r = strchr(pathbuf, '\0');
+		ttd_strlcpy(r, ".lng", (size_t)(r - pathbuf));
+		WriteLangfile(pathbuf, show_todo);
 	} else {
-		fprintf(stderr, "invalid arguments\n");
+		fprintf(stderr, "Invalid arguments\n");
 	}
 
 	return 0;

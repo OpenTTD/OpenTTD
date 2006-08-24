@@ -879,17 +879,17 @@ $(TTD): $(OBJS) $(MAKE_CONFIG)
 	$(Q)$(CXX_TARGET) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
 endif
 
-$(STRGEN): strgen/strgen.c endian_host.h
+$(STRGEN): strgen/strgen.c string.c endian_host.h
 	@echo '===> Compiling and Linking $@'
-	$(Q)$(CC_HOST) $(CFLAGS_HOST) $(CDEFS) $< -o $@
+	$(Q)$(CC_HOST) $(CFLAGS_HOST) -DSTRGEN strgen/strgen.c string.c -o $@
 
 table/strings.h: lang/english.txt $(STRGEN)
 	@echo '===> Generating $@'
-	$(Q)$(STRGEN)
+	$(Q)$(STRGEN) -s lang -d table
 
 lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 	@echo '===> Compiling language $(*F)'
-	$(Q)$(STRGEN) $(STRGEN_FLAGS) $< $(LANG_ERRORS) || rm -f $@
+	$(Q)$(STRGEN) $(STRGEN_FLAGS) -s lang -d lang $< $(LANG_ERRORS) || rm -f $@
 
 # stupid KUDr doesn't know how to setup unittest dependencies (so rm,cp,rm)
 # please don't blame him and repair it:

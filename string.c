@@ -52,7 +52,7 @@ char* CDECL str_fmt(const char* str, ...)
 	char* p;
 
 	va_start(va, str);
-	len = vsprintf(buf, str, va);
+	len = vsnprintf(buf, lengthof(buf), str, va);
 	va_end(va);
 	p = malloc(len + 1);
 	if (p != NULL) memcpy(p, buf, len + 1);
@@ -101,3 +101,27 @@ void strtolower(char *str)
 {
 	for (; *str != '\0'; str++) *str = tolower(*str);
 }
+
+#ifdef WIN32
+int CDECL snprintf(char *str, size_t size, const char *format, ...)
+{
+	va_list ap;
+	int ret;
+
+	va_start(ap, format);
+	ret = vsnprintf(str, size, format, ap);
+	va_end(ap);
+	return ret;
+}
+
+#ifdef _MSC_VER
+int CDECL vsnprintf(char *str, size_t size, const char *format, va_list ap)
+{
+	int ret;
+	ret = _vsnprintf(str, size, format, ap);
+	if (ret < 0) str[size - 1] = '\0';
+	return ret;
+}
+#endif /* _MSC_VER */
+
+#endif /* WIN32 */
