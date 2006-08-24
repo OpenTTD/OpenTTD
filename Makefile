@@ -994,8 +994,10 @@ endif
 	           $(BINARY_DIR_INSTALL)
 ifndef USE_HOMEDIR
 	mkdir -p $(PERSONAL_DIR)/scenario
+	mkdir -p $(PERSONAL_DIR)/scenario/heightmap
 else
 	mkdir -p $(DATA_DIR_INSTALL)/scenario
+	mkdir -p $(DATA_DIR_INSTALL)/scenario/heightmap
 endif
 	install $(TTD) $(BINARY_DIR_INSTALL)
 	install -m 644 lang/*.lng $(DATA_DIR_INSTALL)/lang
@@ -1003,11 +1005,6 @@ endif
 	install -m 644 data/opntitle.dat $(DATA_DIR_INSTALL)/data
 	install -m 644 media/openttd.64.png $(ICON_DIR_INSTALL)
 	install -m 644 media/openttd.32.xpm $(ICON_DIR_INSTALL)
-ifndef USE_HOMEDIR
-	cp scenario/* $(PERSONAL_DIR)/scenario/
-else
-	cp scenario/* $(DATA_DIR_INSTALL)/scenario/
-endif
 else	#MorphOS
 install:
 	$(error make install is not supported on MorphOS)
