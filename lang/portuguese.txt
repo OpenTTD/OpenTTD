@@ -2887,6 +2887,7 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões M
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Criar
+STR_RANDOM                                                      :{BLACK}Gerar aleatório
 STR_RANDOM_SEED                                                 :{BLACK}Semente aleatória:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Clique para inserir uma semente aleatória
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno:
@@ -2909,6 +2910,7 @@ STR_GENERATION_ABORT                                            :{BLACK}Cancelar
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Quer mesmo cancelar a criação?
 STR_PROGRESS                                                    :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_SETTINGUP_GAME                                              :{BLACK}Definindo jogo
 STR_PREPARING_GAME                                              :{BLACK}A preparar jogo
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acção mudou o nível de dificuldade para Personalizado
 STR_SE_FLAT_WORLD                                               :{WHITE}Terra plana

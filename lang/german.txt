@@ -1051,7 +1051,7 @@ STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land Ge
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximaler Abstand der Ölraffinerien vom Kartenrand{ORANGE}{STRING}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Höhe der Schneegrenze: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Schneegrenze auf: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rauheit (nur TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr sanft
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sanft
@@ -2938,13 +2938,16 @@ STR_PROGRESS                                                    :{WHITE}{NUM}% a
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Welterstellung
 STR_TREE_GENERATION                                             :{BLACK}Baumerzeugung
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Erzeuge unbewegbare Objekte
+STR_CLEARING_TILES                                              :{BLACK}Erzeuge leere, felsige Landschaft
 STR_SETTINGUP_GAME                                              :{BLACK}Bereite Spiel vor
+STR_PREPARING_TILELOOP                                          :{BLACK}Belebe Welt
 STR_PREPARING_GAME                                              :{BLACK}Bereite Spiel vor
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Diese Aktion änderte den Schwierigkeitsgrad zu individuell
 STR_SE_FLAT_WORLD                                               :{WHITE}Flache Landschaft
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Erzeuge flache Landschaft
 STR_SE_RANDOM_LAND                                              :{WHITE}Zufällige Landschaft
-STR_SE_NEW_WORLD                                                :{BLACK}Erzeuge ein neues Szenario
+STR_SE_NEW_WORLD                                                :{BLACK}Erzeuge neues Szenario
 STR_SE_CAPTION                                                  :{WHITE}Szenariotyp
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Höhenstufe des flachen Landes um eins reduzieren
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Höhenstufe das flachen Landes um eins erhöhen

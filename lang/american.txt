@@ -604,6 +604,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Decrease
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generate random land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reset landscape
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Reset Landscape
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Use Heightmap
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Use Heightmap
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Are you sure you want to reset the landscape?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landscape generation
 STR_022F_TOWN_GENERATION                                        :{BLACK}Town generation
@@ -716,6 +718,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Save sce
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Load Scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Save Scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Play Scenario
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Play Heightmap
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start a new game, using a heightmap as landscape
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Are you sure you want to quit this scenario ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Quit Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...can only be built in towns with a population of at least 1200
@@ -881,6 +885,7 @@ STR_TOWNNAME_SWISS                                              :Swiss
 STR_TOWNNAME_DANISH                                             :Danish
 STR_TOWNNAME_TURKISH                                            :Turkish
 STR_TOWNNAME_ITALIAN                                            :Italian
+STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pounds (£)
@@ -905,6 +910,7 @@ STR_CURR_NOK                                                    :Norwegian Krone
 STR_CURR_PLN                                                    :Polish Zloty (PLN)
 STR_CURR_ROL                                                    :Romanian Leu (ROL)
 STR_CURR_RUR                                                    :Russian Rubel (RUR)
+STR_CURR_SIT                                                    :Slovenian Tolar (SIT)
 STR_CURR_SEK                                                    :Swedish Krona (SEK)
 
 STR_CURR_CUSTOM                                                 :Custom...
@@ -1039,7 +1045,27 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autoren
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duration of error message: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Show town population in the town name label: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Invisible trees (with transparent buildings): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Oil Refineries' max distance from edge of map {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snow line height: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Roughness of terrain (TerraGenesis only) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Very Smooth
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Smooth
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rough
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Very Rough
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Tree placer algorithm: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :None
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Improved
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap rotation: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-clockwise
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Progress update interval: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}The height level a flat scenario map gets: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING} {RED}Warning: High setting slows game
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING}
@@ -1434,6 +1460,17 @@ STR_NETWORK_SEND                                                :{BLACK}Send
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-size of map: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-size of map: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERROR                                                :{WHITE}Cannot load landscape from PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...file not found.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...could not convert image type. 8 or 24-bit PNG image needed.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...something just went wrong. Sorry. (probably corrupted file)
+
+STR_BMPMAP_ERROR                                                :{WHITE}Cannot load landscape from BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...could not convert image type.
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Cost: {CURRENCY}
 STR_0801_COST                                                   :{RED}Cost: {CURRENCY}
@@ -1757,6 +1794,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Save the
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Select New Game Type
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Select scenario (green), pre-set game (blue), or random new game
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generate random new game
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Load Heightmap
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} in the way
@@ -2529,6 +2567,8 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 STR_TRAIN_STOPPING                                              :{RED}Stopping
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopping, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Incompatible rail types
+STR_TRAIN_NO_POWER                                              :{RED}No power
+STR_TRAIN_START_NO_CATENARY                                     :This track lacks catenary, so the train can't start
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Road vehicle in the way
@@ -2860,6 +2900,61 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: 
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity: {GOLD}{COMMA} passengers, {COMMA} bags of mail
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Generate
+STR_RANDOM                                                      :{BLACK}Randomize
+STR_RANDOM_HELP                                                 :{BLACK}Change the random seed used for Terrain Generation
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}World generation
+STR_RANDOM_SEED                                                 :{BLACK}Random Seed:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Click to enter a random seed
+STR_LAND_GENERATOR                                              :{BLACK}Land generator:
+STR_TREE_PLACER                                                 :{BLACK}Tree algorithm:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Heightmap rotation:
+STR_TERRAIN_TYPE                                                :{BLACK}Terrain type:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Sea level:
+STR_SMOOTHNESS                                                  :{BLACK}Smoothness:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Snow line height:
+STR_DATE                                                        :{BLACK}Date:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}No. of towns:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. of industries:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Move the snow line height up one
+STR_SNOW_LINE_DOWN                                              :{BLACK}Move the snow line height down one
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Change snow line height
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Change starting year
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Scale warning
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Resizing source map too much is not recommended. Continue with the generation?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Heightmap name:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Size: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Generating world...
+STR_GENERATION_ABORT                                            :{BLACK}Cancel
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Cancel World Generation
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Do you really want to cancel the generation?
+STR_PROGRESS                                                    :{WHITE}{NUM}% complete
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}World generation
+STR_TREE_GENERATION                                             :{BLACK}Tree generation
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Unmovable generation
+STR_CLEARING_TILES                                              :{BLACK}Rough and rocky area generation
+STR_SETTINGUP_GAME                                              :{BLACK}Setting up game
+STR_PREPARING_TILELOOP                                          :{BLACK}Running tile-loop
+STR_PREPARING_GAME                                              :{BLACK}Preparing game
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}This action changed the difficulty level to custom
+STR_SE_FLAT_WORLD                                               :{WHITE}Flat land
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generate a flat land
+STR_SE_RANDOM_LAND                                              :{WHITE}Random land
+STR_SE_NEW_WORLD                                                :{BLACK}Create new scenario
+STR_SE_CAPTION                                                  :{WHITE}Scenario type
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Move the height of flat land down one
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Move the height of flat land up one
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Change height of flat land
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Height of flat land:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
+
+STR_SMALLMAP_CENTER                                             :{BLACK}Center the smallmap on the current position
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Small
