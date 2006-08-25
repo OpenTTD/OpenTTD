@@ -173,12 +173,12 @@
 # endif
 #endif /* WIN32 || __OS2__ || WIN64 */
 
-#if defined(UNIX)
-# define PATHSEP "/"
-# define PATHSEPCHAR '/'
-#else
+#if defined(WIN32) || defined(WIN64) || defined(__OS2__)
 # define PATHSEP "\\"
 # define PATHSEPCHAR '\\'
+#else
+# define PATHSEP "/"
+# define PATHSEPCHAR '/'
 #endif
 
 typedef unsigned char byte;

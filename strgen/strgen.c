@@ -1,9 +1,5 @@
 /* $Id$ */
 
-#if !(defined(WIN32) || defined(WIN64) || defined(__CYGWIN__))
-#define UNIX
-#endif
-
 #include "../stdafx.h"
 #include "../macros.h"
 #include "../string.h"
@@ -1227,6 +1223,22 @@ static inline char *mkpath(char *buf, size_t buflen, const char *path, const cha
 	return buf;
 }
 
+#if defined(__MINGW32__) || defined(__CYGWIN__)
+/**
+ * On MingW, it is common that both / as \ are accepted in the
+ * params. To go with those flow, we rewrite all incoming /
+ * simply to \, so internally we can safely assume \.
+ */
+static inline char *replace_pathsep(char *s)
+{
+	char *c;
+
+	for (c = s; *c != '\0'; c++) if (*c == '/') *c = '\\';
+	return s;
+}
+#else
+static inline char *replace_pathsep(char *s) { return s; }
+#endif
 
 int CDECL main(int argc, char* argv[])
 {
@@ -1272,12 +1284,12 @@ int CDECL main(int argc, char* argv[])
 
 	src_dir = dest_dir = ".";
 	if (argc > 2 && (strcmp(argv[1], "-s") == 0 || strcmp(argv[1], "--source_dir") == 0)) {
-		src_dir = dest_dir = argv[2]; // if dest_dir is not specified, it equals src_dir
+		src_dir = dest_dir = replace_pathsep(argv[2]); // if dest_dir is not specified, it equals src_dir
 		argc -= 2, argv += 2;
 	}
 
 	if (argc > 2 && (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "--dest_dir") == 0)) {
-		dest_dir = argv[2];
+		dest_dir = replace_pathsep(argv[2]);
 		argc -= 2, argv += 2;
 	}
 
@@ -1307,16 +1319,11 @@ int CDECL main(int argc, char* argv[])
 		_masterlang = false;
 		ParseFile(pathbuf, true);
 		MakeHashOfStrings();
-		ParseFile(argv[1], false); // target file
+		ParseFile(replace_pathsep(argv[1]), false); // target file
 		if (_errors) return 1;
 
 		/* get the targetfile, strip any directories and append to destination path */
-#if defined(__MINGW32__) || defined (__CYGWIN__)
-		/* Under mingw32 and cygwin, we enter / via the Makefile, not the expected \ */
-		r = strrchr(argv[1], '/');
-#else
 		r = strrchr(argv[1], PATHSEPCHAR);
-#endif
 		mkpath(pathbuf, lengthof(pathbuf), dest_dir, (r != NULL) ? &r[1] : argv[1]);
 
 		/* rename the .txt (input-extension) to .lng */
