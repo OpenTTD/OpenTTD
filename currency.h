@@ -7,7 +7,7 @@ enum {
 	CF_NOEURO = 0,
 	CF_ISEURO = 1,
 	NUM_CURRENCY = 25,
-	CUSTOM_CURRENCY_ID = NUM_CURRENCY + 1,
+	CUSTOM_CURRENCY_ID = NUM_CURRENCY - 1
 };
 
 typedef struct {
