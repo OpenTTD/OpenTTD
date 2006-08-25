@@ -97,7 +97,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		StringID str = STR_02BE_DEFAULT;
 		w->disabled_state = (_vehicle_design_names & 1) ? (++str, 0) : (1 << 21);
 		SetDParam(0, str);
-		SetDParam(1, _currency_string_list[_opt_ptr->currency]);
+		SetDParam(1, _currency_specs[_opt_ptr->currency].name);
 		SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
 		SetDParam(3, STR_02E9_DRIVE_ON_LEFT + _opt_ptr->road_side);
 		SetDParam(4, STR_TOWNNAME_ORIGINAL_ENGLISH + _opt_ptr->town_name);
@@ -115,7 +115,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->click.widget) {
 		case 4: case 5: /* Setup currencies dropdown */
-			ShowDropDownMenu(w, _currency_string_list, _opt_ptr->currency, 5, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);
+			ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, 5, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);;
 			return;
 		case 7: case 8: /* Setup distance unit dropdown */
 			ShowDropDownMenu(w, _units_dropdown, _opt_ptr->units, 8, 0, 0);

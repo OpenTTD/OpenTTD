@@ -24,7 +24,7 @@
 #include "newgrf_text.h"
 #include "table/sprites.h"
 #include "date.h"
-
+#include "currency.h"
 #include "newgrf_spritegroup.h"
 
 /* TTDPatch extended GRF format codec
@@ -1088,6 +1088,86 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 			}
 			break;
 
+		case 0x0A: // Currency display names
+			FOR_EACH_OBJECT {
+				StringID newone = GetGRFStringID(_cur_grffile->grfid,grf_load_word(&buf));
+
+				if (newone != STR_UNDEFINED) {
+					_currency_specs[gvid + i].name = newone;
+				}
+			}
+			break;
+
+		case 0x0B: // Currency multipliers
+			FOR_EACH_OBJECT {
+				uint curidx = gvid + i;
+				uint32 rate = grf_load_dword(&buf);
+
+				if (curidx < NUM_CURRENCY) {
+					_currency_specs[curidx].rate = rate;
+				} else {
+					grfmsg(GMS_WARN, "GlobalVarChangeInfo: Currency multipliers %d out of range, ignoring.", curidx);
+				}
+			}
+			break;
+
+		case 0x0C: // Currency options
+			FOR_EACH_OBJECT {
+				uint curidx = gvid +i;
+				uint16 options = grf_load_word(&buf);
+
+				if (curidx < NUM_CURRENCY) {
+					_currency_specs[curidx].separator = GB(options, 0, 8);
+					_currency_specs[curidx].symbol_pos = GB(options, 8, 8);
+				} else {
+					grfmsg(GMS_WARN, "GlobalVarChangeInfo: Currency option %d out of range, ignoring.", curidx);
+				}
+			}
+			break;
+
+		case 0x0D: // Currency symbols
+			FOR_EACH_OBJECT {
+				uint curidx = gvid +i;
+				uint32 tempfix = grf_load_dword(&buf);
+
+				if (curidx < NUM_CURRENCY) {
+					memcpy(_currency_specs[curidx].prefix,&tempfix,4);
+					_currency_specs[curidx].prefix[4] = 0;
+				} else {
+					grfmsg(GMS_WARN, "GlobalVarChangeInfo: Currency symbol %d out of range, ignoring.", curidx);
+				}
+			}
+			break;
+
+		case 0x0E: // Currency symbols
+			FOR_EACH_OBJECT {
+				uint curidx = gvid +i;
+				uint32 tempfix = grf_load_dword(&buf);
+
+				if (curidx < NUM_CURRENCY) {
+					memcpy(&_currency_specs[curidx].suffix,&tempfix,4);
+					_currency_specs[curidx].suffix[4] = 0;
+				} else {
+					grfmsg(GMS_WARN, "GlobalVarChangeInfo: Currency symbol %d out of range, ignoring.", curidx);
+				}
+			}
+			break;
+
+		case 0x0F: //  Euro introduction datess
+			FOR_EACH_OBJECT {
+				uint curidx = gvid +i;
+				Year year_euro = grf_load_word(&buf);
+
+				if (curidx < NUM_CURRENCY) {
+					_currency_specs[curidx].to_euro = year_euro;
+				} else {
+					grfmsg(GMS_WARN, "GlobalVarChangeInfo: Euro intro date %d out of range, ignoring.", curidx);
+				}
+			}
+			break;
+
+		case 0x09: // Cargo translation table
+		case 0x10: // 12 * 32 * B Snow line height table
 		default:
 			ret = true;
 	}
@@ -1817,6 +1897,11 @@ static void FeatureNewName(byte *buf, int len)
 					} else {
 						AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, id);
 					}
+					break;
+				}
+
+				case 0x48 : {  // this will allow things like currencies new strings, and everything else
+					AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, id);
 					break;
 				}
 
@@ -2726,6 +2811,9 @@ static void ResetNewGRFData(void)
 
 	// Reset price base data
 	ResetPriceBaseMultipliers();
+
+	/* Reset the curencies array */
+	ResetCurrencies();
 
 	// Reset station classes
 	ResetStationClasses();

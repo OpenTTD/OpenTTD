@@ -381,9 +381,11 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 		number = -number;
 	}
 
-	// add prefix part
-	s = spec->prefix;
-	while (s != spec->prefix + lengthof(spec->prefix) && (c = *s++) != '\0') *buff++ = c;
+	/* add prefix part, only if it is specified by symbol_pos */
+	if (spec->symbol_pos == 0) {
+		s = spec->prefix;
+		while (s != spec->prefix + lengthof(spec->prefix) && (c = *(s++)) != '\0') *(buff)++ = c;
+	}
 
 	// for huge numbers, compact the number into k or M
 	if (compact) {
@@ -411,9 +413,11 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 
 	if (compact) *buff++ = compact;
 
-	// add suffix part
-	s = spec->suffix;
-	while (s != spec->suffix + lengthof(spec->suffix) && (c = *s++) != '\0') *buff++ = c;
+	/* add suffix part, only if it is specified by symbol_pos */
+	if (spec->symbol_pos != 0) {
+		s = spec->suffix;
+		while (s != spec->suffix + lengthof(spec->suffix) && (c = *(s++)) != '\0') *(buff++) = c;
+	}
 
 	return buff;
 }

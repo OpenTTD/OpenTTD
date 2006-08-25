@@ -8,79 +8,48 @@
 #include "table/strings.h"
 #include "date.h"
 
-// exchange rate    prefix
-// |  separator        |     postfix
-// |   |    Euro year  |       |
-// |   |    |          |       |
-CurrencySpec _currency_specs[] = {
-	{    1, ',', CF_NOEURO, "\xA3", ""     }, // british pounds
-	{    2, ',', CF_NOEURO, "$",    ""     }, // us dollars
-	{    2, ',', CF_ISEURO, "¤",    ""     }, // Euro
-	{  200, ',', CF_NOEURO, "\xA5", ""     }, // yen
-	{   19, ',', 2002,      "",     " S."  }, // austrian schilling
-	{   57, ',', 2002,      "BEF ", ""     }, // belgian franc
-	{    2, ',', CF_NOEURO, "CHF ", ""     }, // swiss franc
-	{   50, ',', CF_NOEURO, "",     " Kc"  }, // czech koruna // TODO: Should use the "c" with an upside down "^"
-	{    4, '.', 2002,      "DM ",  ""     }, // deutsche mark
-	{   10, '.', CF_NOEURO, "",     " kr"  }, // danish krone
-	{  200, '.', 2002,      "Pts ", ""     }, // spanish pesetas
-	{    8, ',', 2002,      "",     " mk"  }, // finnish markka
-	{   10, '.', 2002,      "FF ",  ""     }, // french francs
-	{  480, ',', 2002,      "",     "Dr."  }, // greek drachma
-	{  376, ',', 2002,      "",     " Ft"  }, // hungarian forint
-	{  130, '.', CF_NOEURO, "",     " Kr"  }, // icelandic krona
-	{ 2730, ',', 2002,      "",     " L."  }, // italian lira
-	{    3, ',', 2002,      "NLG ", ""     }, // dutch gulden
-	{   11, '.', CF_NOEURO, "",     " Kr"  }, // norwegian krone
-	{    6, ' ', CF_NOEURO, "",     " zl"  }, // polish zloty
-	{    6, '.', CF_NOEURO, "",     " Lei" }, // romanian Lei
-	{    5, ' ', CF_NOEURO, "",     " p"   }, // russian rouble
-	{  350, '.', CF_NOEURO, "",     " SIT" }, // slovenian tolar
-	{   13, '.', CF_NOEURO, "",     " Kr"  }, // swedish krona
-	{    1, ' ', CF_NOEURO, "",     ""     }, // custom currency
+	//   exchange rate    prefix             symbol_pos
+	//   |  separator        |     postfix   |
+	//   |   |    Euro year  |       |       |    name
+	//   |   |    |          |       |       |    |
+const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
+	{    1, ',', CF_NOEURO, "\xA3", "",      0,  STR_CURR_GBP    }, // british pounds
+	{    2, ',', CF_NOEURO, "$",    "",      0,  STR_CURR_USD    }, // us dollars
+	{    2, ',', CF_ISEURO, "¤",    "",      0,  STR_CURR_EUR    }, // Euro
+	{  200, ',', CF_NOEURO, "\xA5", "",      0,  STR_CURR_YEN    }, // yen
+	{   19, ',', 2002,      "",     " S.",   1,  STR_CURR_ATS    }, // austrian schilling
+	{   57, ',', 2002,      "BEF ", "",      0,  STR_CURR_BEF    }, // belgian franc
+	{    2, ',', CF_NOEURO, "CHF ", "",      0,  STR_CURR_CHF    }, // swiss franc
+	{   50, ',', CF_NOEURO, "",     " Kc",   1,  STR_CURR_CZK    }, // czech koruna // TODO: Should use the "c" with an upside down "^"
+	{    4, '.', 2002,      "DM ",  "",      0,  STR_CURR_DEM    }, // deutsche mark
+	{   10, '.', CF_NOEURO, "",     " kr",   1,  STR_CURR_DKK    }, // danish krone
+	{  200, '.', 2002,      "Pts ", "",      0,  STR_CURR_ESP    }, // spanish pesetas
+	{    8, ',', 2002,      "",     " mk",   1,  STR_CURR_FIM    }, // finnish markka
+	{   10, '.', 2002,      "FF ",  "",      0,  STR_CURR_FRF    }, // french francs
+	{  480, ',', 2002,      "",     "Dr.",   1,  STR_CURR_GRD    }, // greek drachma
+	{  376, ',', 2002,      "",     " Ft",   1,  STR_CURR_HUF    }, // hungarian forint
+	{  130, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_ISK    }, // icelandic krona
+	{ 2730, ',', 2002,      "",     " L.",   1,  STR_CURR_ITL    }, // italian lira
+	{    3, ',', 2002,      "NLG ", "",      0,  STR_CURR_NLG    }, // dutch gulden
+	{   11, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_NOK    }, // norwegian krone
+	{    6, ' ', CF_NOEURO, "",     " zl",   1,  STR_CURR_PLN    }, // polish zloty
+	{    6, '.', CF_NOEURO, "",     " Lei",  1,  STR_CURR_ROL    }, // romanian Lei
+	{    5, ' ', CF_NOEURO, "",     " p",    1,  STR_CURR_RUR    }, // russian rouble
+	{  350, '.', CF_NOEURO, "",     " SIT",  1,  STR_CURR_SIT    }, // slovenian tolar
+	{   13, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_SEK    }, // swedish krona
+	{    1, ' ', CF_NOEURO, "",     "",      0,  STR_CURR_CUSTOM }, // custom currency
 };
 
-const StringID _currency_string_list[] = {
-	STR_CURR_GBP,
-	STR_CURR_USD,
-	STR_CURR_EUR,
-	STR_CURR_YEN,
-	STR_CURR_ATS,
-	STR_CURR_BEF,
-	STR_CURR_CHF,
-	STR_CURR_CZK,
-	STR_CURR_DEM,
-	STR_CURR_DKK,
-	STR_CURR_ESP,
-	STR_CURR_FIM,
-	STR_CURR_FRF,
-	STR_CURR_GRD,
-	STR_CURR_HUF,
-	STR_CURR_ISK,
-	STR_CURR_ITL,
-	STR_CURR_NLG,
-	STR_CURR_NOK,
-	STR_CURR_PLN,
-	STR_CURR_ROL,
-	STR_CURR_RUR,
-	STR_CURR_SIT,
-	STR_CURR_SEK,
-	STR_CURR_CUSTOM,
-	INVALID_STRING_ID
-};
+/* Array of currencies used by the system */
+CurrencySpec _currency_specs[NUM_CURRENCY];
 
-// NOTE: Make sure both lists are in the same order
-// + 1 string list terminator
-assert_compile(lengthof(_currency_specs) + 1 == lengthof(_currency_string_list));
-
-
-// get a mask of the allowed currencies depending on the year
+/* get a mask of the allowed currencies depending on the year */
 uint GetMaskOfAllowedCurrencies(void)
 {
 	uint mask = 0;
 	uint i;
 
-	for (i = 0; i != lengthof(_currency_specs); i++) {
+	for (i = 0; i < NUM_CURRENCY; i++) {
 		Year to_euro = _currency_specs[i].to_euro;
 
 		if (to_euro != CF_NOEURO && to_euro != CF_ISEURO && _cur_year >= to_euro) continue;
@@ -91,7 +60,9 @@ uint GetMaskOfAllowedCurrencies(void)
 	return mask;
 }
 
-
+/**
+ * Verify if the currency chosen by the user is about to be converted to Euro
+ **/
 void CheckSwitchToEuro(void)
 {
 	if (_currency_specs[_opt.currency].to_euro != CF_NOEURO &&
@@ -102,3 +73,31 @@ void CheckSwitchToEuro(void)
 	}
 }
 
+/**
+ * Called only from newgrf.c.  Will fill _currency_specs array with
+ * default values from origin_currency_specs
+ **/
+void ResetCurrencies(void)
+{
+	memcpy(&_currency_specs, &origin_currency_specs, sizeof(origin_currency_specs));
+}
+
+/**
+ * Build a list of currency names StringIDs to use in a dropdown list
+ * @return Pointer to a (static) array of StringIDs
+ */
+StringID* BuildCurrencyDropdown(void)
+{
+	/* Allow room for all currencies, plus a terminator entry */
+	static StringID names[CUSTOM_CURRENCY_ID];
+	uint i;
+
+	/* Add each name */
+	for (i = 0; i < NUM_CURRENCY; i++) {
+		names[i] = _currency_specs[i].name;
+	}
+	/* Terminate the list */
+	names[i] = INVALID_STRING_ID;
+
+	return names;
+}
