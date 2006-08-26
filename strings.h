@@ -12,7 +12,7 @@ static inline char* InlineString(char* buf, uint16 string)
 }
 
 char *GetString(char *buffr, uint16 string);
-char *GetStringWithArgs(char *buffr, uint string, const int32 *argv);
+char *GetStringWithArgs(char *buffr, uint16 string, const int32 *argv);
 
 extern char _userstring[128];
 

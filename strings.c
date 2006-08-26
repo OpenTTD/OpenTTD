@@ -168,7 +168,7 @@ static const char *GetStringPtr(StringID string)
 // These 8 bits will only be set when FormatString wants to print
 // the string in a different case. No one else except FormatString
 // should set those bits.
-char *GetStringWithArgs(char *buffr, uint string, const int32 *argv)
+char *GetStringWithArgs(char *buffr, StringID string, const int32 *argv)
 {
 	uint index = GB(string,  0, 11);
 	uint tab   = GB(string, 11,  5);
