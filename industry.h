@@ -131,6 +131,14 @@ static inline Industry *GetRandomIndustry(void)
 	return GetIndustry(index);
 }
 
+void DestroyIndustry(Industry *i);
+
+static inline void DeleteIndustry(Industry *i)
+{
+	DestroyIndustry(i);
+	i->xy = 0;
+}
+
 #define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL) if (IsValidIndustry(i))
 #define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
 

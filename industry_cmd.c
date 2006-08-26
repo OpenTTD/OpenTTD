@@ -25,6 +25,13 @@
 #include "genworld.h"
 #include "date.h"
 
+void ShowIndustryViewWindow(int industry);
+void BuildOilRig(TileIndex tile);
+void DeleteOilRig(TileIndex tile);
+
+static byte _industry_sound_ctr;
+static TileIndex _industry_sound_tile;
+
 enum {
 	/* Max industries: 64000 (8 * 8000) */
 	INDUSTRY_POOL_BLOCK_SIZE_BITS = 3,       /* In bits, so (1 << 3) == 8 */
@@ -45,13 +52,6 @@ static void IndustryPoolNewBlock(uint start_item)
 
 /* Initialize the industry-pool */
 MemoryPool _industry_pool = { "Industry", INDUSTRY_POOL_MAX_BLOCKS, INDUSTRY_POOL_BLOCK_SIZE_BITS, sizeof(Industry), &IndustryPoolNewBlock, NULL, 0, 0, NULL };
-
-static byte _industry_sound_ctr;
-static TileIndex _industry_sound_tile;
-
-void ShowIndustryViewWindow(int industry);
-void BuildOilRig(TileIndex tile);
-void DeleteOilRig(TileIndex tile);
 
 static const IndustryType _industry_close_mode[IT_END] = {
 	/* COAL_MINE */          INDUSTRYLIFE_PRODUCTION,
@@ -130,6 +130,34 @@ const IndustrySpec *GetIndustrySpec(IndustryType thistype)
 {
 	assert(thistype < IT_END);
 	return &_industry_specs[thistype];
+}
+
+void DestroyIndustry(Industry *i)
+{
+	BEGIN_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
+		if (IsTileType(tile_cur, MP_INDUSTRY)) {
+			if (GetIndustryIndex(tile_cur) == i->index) {
+				DoClearSquare(tile_cur);
+			}
+		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
+			DeleteOilRig(tile_cur);
+		}
+	END_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
+
+	if (i->type == IT_FARM || i->type == IT_FARM_2) {
+		/* Remove the farmland and convert it to regular tiles over time. */
+		BEGIN_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiffXY(21, 21)) {
+			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
+					GetIndustryIndexOfField(tile_cur) == i->index) {
+				SetIndustryIndexOfField(tile_cur, INVALID_INDUSTRY);
+			}
+		} END_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiff(21, 21))
+	}
+
+	_industry_sort_dirty = true;
+	DeleteSubsidyWithIndustry(i->index);
+	DeleteWindowById(WC_INDUSTRY_VIEW, i->index);
+	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
 }
 
 static void IndustryDrawSugarMine(const TileInfo *ti)
@@ -741,35 +769,6 @@ static void GetProducedCargo_Industry(TileIndex tile, CargoID *b)
 static void ChangeTileOwner_Industry(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	/* not used */
-}
-
-void DeleteIndustry(Industry *i)
-{
-	BEGIN_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
-		if (IsTileType(tile_cur, MP_INDUSTRY)) {
-			if (GetIndustryIndex(tile_cur) == i->index) {
-				DoClearSquare(tile_cur);
-			}
-		} else if (IsTileType(tile_cur, MP_STATION) && IsOilRig(tile_cur)) {
-			DeleteOilRig(tile_cur);
-		}
-	END_TILE_LOOP(tile_cur, i->width, i->height, i->xy);
-
-	if (i->type == IT_FARM || i->type == IT_FARM_2) {
-		/* Remove the farmland and convert it to regular tiles over time. */
-		BEGIN_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiffXY(21, 21)) {
-			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
-					GetIndustryIndexOfField(tile_cur) == i->index) {
-				SetIndustryIndexOfField(tile_cur, INVALID_INDUSTRY);
-			}
-		} END_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiff(21, 21))
-	}
-
-	i->xy = 0;
-	_industry_sort_dirty = true;
-	DeleteSubsidyWithIndustry(i->index);
-	DeleteWindowById(WC_INDUSTRY_VIEW, i->index);
-	InvalidateWindow(WC_INDUSTRY_DIRECTORY, 0);
 }
 
 static const byte _plantfarmfield_type[] = {1, 1, 1, 1, 1, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6};
