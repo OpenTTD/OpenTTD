@@ -88,7 +88,6 @@ static void RedrawWaypointSign(const Waypoint* wp)
 /* Update all signs */
 void UpdateAllWaypointSigns(void)
 {
-	DestinationID dest;
 	Waypoint *wp;
 
 	FOR_ALL_WAYPOINTS(wp) {
@@ -99,6 +98,8 @@ void UpdateAllWaypointSigns(void)
 /* Internal handler to delete a waypoint */
 void DestroyWaypoint(Waypoint *wp)
 {
+	DestinationID dest;
+
 	dest.waypoint = wp->index;
 	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, dest);
 
