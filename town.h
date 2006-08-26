@@ -81,7 +81,6 @@ uint32 GetWorldPopulation(void);
 void UpdateTownVirtCoord(Town *t);
 void InitializeTown(void);
 void ShowTownViewWindow(TownID town);
-void DeleteTown(Town *t);
 void ExpandTown(Town *t);
 Town *CreateRandomTown(uint attempts, uint size_mode);
 
@@ -216,6 +215,14 @@ static inline Town *GetRandomTown(void)
 static inline bool IsValidTownID(uint index)
 {
 	return index < GetTownPoolSize() && IsValidTown(GetTown(index));
+}
+
+void DestroyTown(Town *t);
+
+static inline void DeleteTown(Town *t)
+{
+	DestroyTown(t);
+	t->xy = 0;
 }
 
 #define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL) if (IsValidTown(t))

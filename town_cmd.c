@@ -51,6 +51,43 @@ static void TownPoolNewBlock(uint start_item)
 /* Initialize the town-pool */
 MemoryPool _town_pool = { "Towns", TOWN_POOL_MAX_BLOCKS, TOWN_POOL_BLOCK_SIZE_BITS, sizeof(Town), &TownPoolNewBlock, NULL, 0, 0, NULL };
 
+void DestroyTown(Town *t)
+{
+	Industry *i;
+	TileIndex tile;
+
+	/* Delete town authority window
+	 * and remove from list of sorted towns */
+	DeleteWindowById(WC_TOWN_VIEW, t->index);
+	_town_sort_dirty = true;
+
+	/* Delete all industries belonging to the town */
+	FOR_ALL_INDUSTRIES(i) if (i->town == t) DeleteIndustry(i);
+
+	/* Go through all tiles and delete those belonging to the town */
+	for (tile = 0; tile < MapSize(); ++tile) {
+		switch (GetTileType(tile)) {
+			case MP_HOUSE:
+				if (GetTownByTile(tile) == t) DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				break;
+
+			case MP_STREET:
+			case MP_TUNNELBRIDGE:
+				if (IsTileOwner(tile, OWNER_TOWN) &&
+						ClosestTownFromTile(tile, (uint)-1) == t)
+					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	DeleteName(t->townnametype);
+
+	MarkWholeScreenDirty();
+}
+
 // Local
 static int _grow_town_result;
 
@@ -1360,48 +1397,6 @@ int32 CmdRenameTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		DeleteName(str);
 	}
 	return 0;
-}
-
-// Called from GUI
-void DeleteTown(Town *t)
-{
-	Industry *i;
-	TileIndex tile;
-
-	// Delete town authority window
-	//  and remove from list of sorted towns
-	DeleteWindowById(WC_TOWN_VIEW, t->index);
-	_town_sort_dirty = true;
-
-	// Delete all industries belonging to the town
-	FOR_ALL_INDUSTRIES(i) {
-		if (i->town == t) DeleteIndustry(i);
-	}
-
-	// Go through all tiles and delete those belonging to the town
-	for (tile = 0; tile < MapSize(); ++tile) {
-		switch (GetTileType(tile)) {
-			case MP_HOUSE:
-				if (GetTownByTile(tile) == t)
-					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-				break;
-
-			case MP_STREET:
-			case MP_TUNNELBRIDGE:
-				if (IsTileOwner(tile, OWNER_TOWN) &&
-						ClosestTownFromTile(tile, (uint)-1) == t)
-					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-				break;
-
-			default:
-				break;
-		}
-	}
-
-	t->xy = 0;
-	DeleteName(t->townnametype);
-
-	MarkWholeScreenDirty();
 }
 
 // Called from GUI
