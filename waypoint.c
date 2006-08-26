@@ -95,6 +95,16 @@ void UpdateAllWaypointSigns(void)
 	}
 }
 
+/* Internal handler to delete a waypoint */
+void DestroyWaypoint(Waypoint *wp)
+{
+	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, (DestinationID)wp->index);
+
+	if (wp->string != STR_NULL) DeleteName(wp->string);
+
+	RedrawWaypointSign(wp);
+}
+
 /* Set the default name for a waypoint */
 static void MakeDefaultWaypointName(Waypoint* wp)
 {
@@ -244,18 +254,6 @@ int32 CmdBuildTrainWaypoint(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return _price.build_train_depot;
 }
 
-/* Internal handler to delete a waypoint */
-static void DoDeleteWaypoint(Waypoint *wp)
-{
-	wp->xy = 0;
-
-	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, (DestinationID)wp->index);
-
-	if (wp->string != STR_NULL) DeleteName(wp->string);
-
-	RedrawWaypointSign(wp);
-}
-
 /* Daily loop for waypoints */
 void WaypointsDailyLoop(void)
 {
@@ -263,7 +261,7 @@ void WaypointsDailyLoop(void)
 
 	/* Check if we need to delete a waypoint */
 	FOR_ALL_WAYPOINTS(wp) {
-		if (wp->deleted != 0 && --wp->deleted == 0) DoDeleteWaypoint(wp);
+		if (wp->deleted != 0 && --wp->deleted == 0) DestroyWaypoint(wp);
 	}
 }
 
