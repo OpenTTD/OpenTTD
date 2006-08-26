@@ -41,6 +41,7 @@ typedef uint16 TownID;
 typedef uint16 IndustryID;
 typedef uint16 DepotID;
 typedef uint16 WaypointID;
+typedef uint16 OrderID;
 typedef byte PlayerID;
 typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
 typedef byte CargoID;

@@ -118,7 +118,7 @@ static Order *AllocateOrder(void)
 	 * TODO - This is just a temporary stage, this will be removed. */
 	for (order = GetOrder(0); order != NULL; order = (order->index + 1 < GetOrderPoolSize()) ? GetOrder(order->index + 1) : NULL) {
 		if (!IsValidOrder(order)) {
-			uint index = order->index;
+			OrderID index = order->index;
 
 			memset(order, 0, sizeof(*order));
 			order->index = index;

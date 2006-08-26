@@ -82,7 +82,7 @@ typedef struct Order {
 
 	struct Order *next;   ///< Pointer to next order. If NULL, end of list
 
-	uint16 index;         ///< Index of the order, is not saved or anything, just for reference
+	OrderID index;         ///< Index of the order, is not saved or anything, just for reference
 } Order;
 
 #define MAX_BACKUP_ORDER_COUNT 40
@@ -103,7 +103,7 @@ extern MemoryPool _order_pool;
 /**
  * Get the pointer to the order with index 'index'
  */
-static inline Order *GetOrder(uint index)
+static inline Order *GetOrder(OrderID index)
 {
 	return (Order*)GetItemFromPool(&_order_pool, index);
 }
