@@ -134,7 +134,7 @@ RoadStop* GetRoadStopByTile(TileIndex tile, RoadStopType type)
 	return rs;
 }
 
-uint GetNumRoadStops(const Station* st, RoadStopType type)
+uint GetNumRoadStopsInStation(const Station* st, RoadStopType type)
 {
 	uint num = 0;
 	const RoadStop *rs;
@@ -1432,7 +1432,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	if (st != NULL &&
-			GetNumRoadStops(st, RS_BUS) + GetNumRoadStops(st, RS_TRUCK) >= ROAD_STOP_LIMIT) {
+			GetNumRoadStopsInStation(st, RS_BUS) + GetNumRoadStopsInStation(st, RS_TRUCK) >= ROAD_STOP_LIMIT) {
 		return_cmd_error(type ? STR_3008B_TOO_MANY_TRUCK_STOPS : STR_3008A_TOO_MANY_BUS_STOPS);
 	}
 
