@@ -89,7 +89,7 @@ typedef struct Order {
 
 typedef struct {
 	VehicleID clone;
-	OrderID orderindex;
+	VehicleOrderID orderindex;
 	Order order[MAX_BACKUP_ORDER_COUNT + 1];
 	uint16 service_interval;
 	char name[32];
@@ -116,7 +116,7 @@ static inline uint16 GetOrderPoolSize(void)
 	return _order_pool.total_items;
 }
 
-static inline OrderID GetOrderArraySize(void)
+static inline VehicleOrderID GetOrderArraySize(void)
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that

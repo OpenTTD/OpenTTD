@@ -176,7 +176,7 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	VehicleID veh   = GB(p1,  0, 16);
-	OrderID sel_ord = GB(p1, 16, 16);
+	VehicleOrderID sel_ord = GB(p1, 16, 16);
 	Order new_order = UnpackOrder(p2);
 
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
@@ -438,7 +438,7 @@ int32 CmdDeleteOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v, *u;
 	VehicleID veh_id = p1;
-	OrderID sel_ord = p2;
+	VehicleOrderID sel_ord = p2;
 	Order *order;
 
 	if (!IsValidVehicleID(veh_id)) return CMD_ERROR;
@@ -523,7 +523,7 @@ int32 CmdSkipOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		/* Goto next order */
-		OrderID b = v->cur_order_index + 1;
+		VehicleOrderID b = v->cur_order_index + 1;
 		if (b >= v->num_orders) b = 0;
 
 		v->cur_order_index = b;
@@ -561,7 +561,7 @@ int32 CmdModifyOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	Order *order;
-	OrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
+	VehicleOrderID sel_ord = GB(p1, 16, 16); // XXX - automatically truncated to 8 bits.
 	VehicleID veh   = GB(p1,  0, 16);
 
 	if (!IsValidVehicleID(veh)) return CMD_ERROR;
@@ -845,7 +845,7 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
 int32 CmdRestoreOrderIndex(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
-	OrderID cur_ord = GB(p2,  0, 16);
+	VehicleOrderID cur_ord = GB(p2,  0, 16);
 	uint16 serv_int = GB(p2, 16, 16);
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;

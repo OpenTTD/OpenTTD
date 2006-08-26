@@ -190,10 +190,10 @@ struct Vehicle {
 
 	/* Begin Order-stuff */
 	Order current_order;     ///< The current order (+ status, like: loading)
-	OrderID cur_order_index; ///< The index to the current order
+	VehicleOrderID cur_order_index; ///< The index to the current order
 
 	Order *orders;           ///< Pointer to the first order for this vehicle
-	OrderID num_orders;      ///< How many orders there are in the list
+	VehicleOrderID num_orders;      ///< How many orders there are in the list
 
 	Vehicle *next_shared;    ///< If not NULL, this points to the next vehicle that shared the order
 	Vehicle *prev_shared;    ///< If not NULL, this points to the prev vehicle that shared the order
