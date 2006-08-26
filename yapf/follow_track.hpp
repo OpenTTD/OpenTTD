@@ -138,6 +138,10 @@ protected:
 			DiagDirection exitdir = GetRoadDepotDirection(m_new_tile);
 			if (ReverseDiagDir(exitdir) != m_exitdir)
 				return false;
+			// don't try to enter other player's depots
+			if (GetTileOwner(m_new_tile) != m_veh->owner) {
+				return false;
+			}
 		}
 		if (IsRailTT() && IsTileDepotType(m_new_tile, TT())) {
 			DiagDirection exitdir = GetRailDepotDirection(m_new_tile);

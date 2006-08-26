@@ -83,7 +83,7 @@ public:
 			}
 
 			// if there are no reachable trackdirs on new tile, we have end of road
-			TrackFollower F;
+			TrackFollower F(Yapf().GetVehicle());
 			if (!F.Follow(tile, trackdir)) break;
 
 			// if there are more trackdirs available & reachable, we are at the end of segment
@@ -235,7 +235,7 @@ public:
 	*   and adds it to the open list by calling Yapf().AddNewNode(n) */
 	inline void PfFollowNode(Node& old_node)
 	{
-		TrackFollower F;
+		TrackFollower F(Yapf().GetVehicle());
 		if (F.Follow(old_node.m_segment_last_tile, old_node.m_segment_last_td))
 			Yapf().AddMultipleNodes(&old_node, F.m_new_tile, F.m_new_td_bits);
 	}
@@ -365,7 +365,6 @@ public:
 		Node& n = Yapf().GetBestNode();
 		TileIndex depot_tile = n.m_segment_last_tile;
 		assert(IsTileDepotType(depot_tile, TRANSPORT_ROAD));
-		if (!IsTileOwner(depot_tile, (Owner)v->owner)) return false;
 		Depot* ret = GetDepotByTile(depot_tile);
 		return ret;
 	}
