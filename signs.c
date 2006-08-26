@@ -103,7 +103,13 @@ static Sign *AllocateSign(void)
 	return NULL;
 }
 
-/** Place a sign at the given coordinates. Ownership of sign has
+void DestroySign(Sign *si)
+{
+	DeleteName(si->str);
+}
+
+/**
+ * Place a sign at the given coordinates. Ownership of sign has
  * no effect whatsoever except for the colour the sign gets for easy recognition,
  * but everybody is able to rename/remove it.
  * @param tile tile to place sign at

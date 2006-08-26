@@ -57,9 +57,11 @@ static inline bool IsValidSignID(uint index)
 	return index < GetSignPoolSize() && IsValidSign(GetSign(index));
 }
 
+void DestroySign(Sign *si);
+
 static inline void DeleteSign(Sign *si)
 {
-	DeleteName(si->str);
+	DestroySign(si);
 	si->str = STR_NULL;
 }
 
