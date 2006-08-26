@@ -62,9 +62,9 @@ typedef union DestinationID {
 	uint16 disaster;            ///< Please don't ask about it, but disasters uses orders to store stuff...
 } DestinationID;
 
-/* All items of DestionationID has to be of the same size, because some part
- *  of the code depends on the fact that DestionationID is the same for all
- *  items inside DestionationID. Check PackOrder() */
+/* All items of DestinationID has to be of the same size, because some part
+ *  of the code depends on the fact that DestinationID is the same for all
+ *  items inside DestinationID. Check PackOrder() */
 assert_compile(sizeof(StationID) == sizeof(DepotID));
 assert_compile(sizeof(StationID) == sizeof(WaypointID));
 assert_compile(sizeof(StationID) == sizeof(uint16));
