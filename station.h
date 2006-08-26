@@ -184,6 +184,14 @@ static inline bool IsValidStationID(StationID index)
 	return index < GetStationPoolSize() && IsValidStation(GetStation(index));
 }
 
+void DestroyStation(Station *st);
+
+static inline void DeleteStation(Station *st)
+{
+	DestroyStation(st);
+	st->xy = 0;
+}
+
 #define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL) if (IsValidStation(st))
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 
@@ -214,6 +222,14 @@ static inline uint16 GetRoadStopPoolSize(void)
 static inline bool IsValidRoadStop(const RoadStop *rs)
 {
 	return rs->used;
+}
+
+void DestroyRoadStop(RoadStop* rs);
+
+static inline void DeleteRoadStop(RoadStop *rs)
+{
+	DestroyRoadStop(rs);
+	rs->used = false;
 }
 
 #define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL) if (IsValidRoadStop(rs))

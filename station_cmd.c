@@ -1513,24 +1513,6 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
-		Vehicle* v;
-
-		/* Clear the slot assignment of all vehicles heading for this road stop */
-		if (cur_stop->num_vehicles != 0) {
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == VEH_Road && v->u.road.slot == cur_stop) {
-					ClearSlot(v);
-				}
-			}
-		}
-		assert(cur_stop->num_vehicles == 0);
-
-		DoClearSquare(tile);
-
-		cur_stop->used = false;
-		if (cur_stop->prev != NULL) cur_stop->prev->next = cur_stop->next;
-		if (cur_stop->next != NULL) cur_stop->next->prev = cur_stop->prev;
-
 		//we only had one stop left
 		if (cur_stop->next == NULL && cur_stop->prev == NULL) {
 			//so we remove ALL stops
@@ -1541,6 +1523,9 @@ static int32 RemoveRoadStop(Station *st, uint32 flags, TileIndex tile)
 			//need to set the primary element to the next stop
 			*primary_stop = (*primary_stop)->next;
 		}
+
+		DeleteRoadStop(cur_stop);
+		DoClearSquare(tile);
 
 		UpdateStationVirtCoordDirty(st);
 		DeleteStationIfEmpty(st);
@@ -2389,27 +2374,47 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 	return 0;
 }
 
-/** Removes a station from the list.
-  * This is done by setting the .xy property to 0,
-  * and doing some maintenance, especially clearing vehicle orders.
+/**
+ * Cleanup a RoadStop. Make sure no vehicles try to go to this roadstop.
+ */
+void DestroyRoadStop(RoadStop* rs)
+{
+	Vehicle *v;
+
+	/* Clear the slot assignment of all vehicles heading for this road stop */
+	if (rs->num_vehicles != 0) {
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Road && v->u.road.slot == rs) {
+				ClearSlot(v);
+			}
+		}
+	}
+	assert(rs->num_vehicles == 0);
+
+	if (rs->prev != NULL) rs->prev->next = rs->next;
+	if (rs->next != NULL) rs->next->prev = rs->prev;
+}
+
+/**
+  * Clean up a station by clearing vehicle orders and invalidating windows.
   * Aircraft-Hangar orders need special treatment here, as the hangars are
   * actually part of a station (tiletype is STATION), but the order type
   * is OT_GOTO_DEPOT.
   * @param st Station to be deleted
   */
-static void DeleteStation(Station *st)
+void DestroyStation(Station *st)
 {
 	DestinationID dest;
 	StationID index;
 	Vehicle *v;
-	st->xy = 0;
+
+	index = st->index;
 
 	DeleteName(st->string_id);
 	MarkStationDirty(st);
 	RebuildStationLists();
 	InvalidateWindowClasses(WC_STATION_LIST);
 
-	index = st->index;
 	DeleteWindowById(WC_STATION_VIEW, index);
 
 	/* Now delete all orders that go to the station */
@@ -2435,6 +2440,8 @@ static void DeleteStation(Station *st)
 
 	//Subsidies need removal as well
 	DeleteSubsidyWithStation(index);
+
+	free(st->speclist);
 }
 
 void DeleteAllPlayerStations(void)
