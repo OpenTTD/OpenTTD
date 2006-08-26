@@ -37,6 +37,7 @@ typedef struct Industry Industry;
 typedef struct DrawPixelInfo DrawPixelInfo;
 typedef uint16 VehicleID;
 typedef uint16 StationID;
+typedef uint16 RoadStopID;
 typedef uint16 TownID;
 typedef uint16 IndustryID;
 typedef uint16 DepotID;

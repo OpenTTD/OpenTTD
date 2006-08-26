@@ -35,7 +35,7 @@ typedef struct RoadStop {
 	TileIndex xy;
 	bool used;
 	byte status;
-	uint32 index;
+	RoadStopID index;
 	byte num_vehicles;
 	StationID station;
 	struct RoadStop *next;

@@ -153,7 +153,7 @@ RoadStop *AllocateRoadStop(void)
 	 * TODO - This is just a temporary stage, this will be removed. */
 	for (rs = GetRoadStop(0); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL) {
 		if (!IsValidRoadStop(rs)) {
-			uint index = rs->index;
+			RoadStopID index = rs->index;
 
 			memset(rs, 0, sizeof(*rs));
 			rs->index = index;
