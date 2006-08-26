@@ -268,8 +268,8 @@ static void Load_NAME(void)
 }
 
 static const SaveLoadGlobVarList _date_desc[] = {
-	SLEG_CONDVAR(_date,                   SLE_FILE_U16 | SLE_VAR_U32,  0,  30),
-	SLEG_CONDVAR(_date,                   SLE_UINT32,                 31, SL_MAX_VERSION),
+	SLEG_CONDVAR(_date,                   SLE_FILE_U16 | SLE_VAR_I32,  0,  30),
+	SLEG_CONDVAR(_date,                   SLE_INT32,                  31, SL_MAX_VERSION),
 	    SLEG_VAR(_date_fract,             SLE_UINT16),
 	    SLEG_VAR(_tick_counter,           SLE_UINT16),
 	    SLEG_VAR(_vehicle_id_ctr_day,     SLE_UINT16),

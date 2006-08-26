@@ -1454,6 +1454,7 @@ bool AfterLoadGame(void)
 		Vehicle *v;
 
 		_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
+		_cur_year += ORIGINAL_BASE_YEAR;
 
 		FOR_ALL_STATIONS(st)    st->build_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
 		FOR_ALL_WAYPOINTS(wp)   wp->build_date += DAYS_TILL_ORIGINAL_BASE_YEAR;
