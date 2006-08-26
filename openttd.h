@@ -35,6 +35,18 @@ typedef struct Town Town;
 typedef struct NewsItem NewsItem;
 typedef struct Industry Industry;
 typedef struct DrawPixelInfo DrawPixelInfo;
+typedef byte PlayerID;
+typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
+typedef byte CargoID;
+typedef byte LandscapeID;
+typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
+typedef uint32 PalSpriteID;   ///< The number of a sprite plus all the mapping bits and colortables
+typedef uint32 CursorID;
+typedef uint16 EngineID;
+typedef uint16 UnitID;
+typedef uint16 StringID;
+
+/* IDs used in Pools */
 typedef uint16 VehicleID;
 typedef uint16 StationID;
 typedef uint16 RoadStopID;
@@ -43,18 +55,8 @@ typedef uint16 IndustryID;
 typedef uint16 DepotID;
 typedef uint16 WaypointID;
 typedef uint16 OrderID;
-typedef byte PlayerID;
-typedef byte VehicleOrderID;  ///< The index of an order within its current vehicle (not pool related)
-typedef byte CargoID;
-typedef byte LandscapeID;
-typedef uint16 StringID;
-typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
-typedef uint32 PalSpriteID;   ///< The number of a sprite plus all the mapping bits and colortables
-typedef uint32 CursorID;
-typedef uint16 EngineID;
-typedef uint16 EngineRenewID;
 typedef uint16 SignID;
-typedef uint16 UnitID;
+typedef uint16 EngineRenewID;
 
 typedef union DestinationID {
 	StationID station;
