@@ -603,7 +603,7 @@ static int32 RemoveRoadDepot(TileIndex tile, uint32 flags)
 
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
-	if (flags & DC_EXEC) DoDeleteDepot(tile);
+	if (flags & DC_EXEC) DeleteDepot(GetDepotByTile(tile));
 
 	return _price.remove_road_depot;
 }

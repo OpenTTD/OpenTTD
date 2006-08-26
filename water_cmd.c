@@ -103,7 +103,7 @@ static int32 RemoveShipDepot(TileIndex tile, uint32 flags)
 
 	if (flags & DC_EXEC) {
 		/* Kill the depot, which is registered at the northernmost tile. Use that one */
-		DoDeleteDepot(tile2 < tile ? tile2 : tile);
+		DeleteDepot(GetDepotByTile(tile2 < tile ? tile2 : tile));
 
 		MakeWater(tile);
 		MakeWater(tile2);

@@ -975,7 +975,7 @@ static int32 RemoveTrainDepot(TileIndex tile, uint32 flags)
 	if (flags & DC_EXEC) {
 		DiagDirection dir = GetRailDepotDirection(tile);
 
-		DoDeleteDepot(tile);
+		DeleteDepot(GetDepotByTile(tile));
 		UpdateSignalsOnSegment(tile, dir);
 		YapfNotifyTrackLayoutChange(tile, TrackdirToTrack(DiagdirToDiagTrackdir(dir)));
 	}

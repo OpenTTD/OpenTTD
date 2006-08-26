@@ -14,7 +14,7 @@
 struct Depot {
 	TileIndex xy;
 	TownID town_index;
-	StationID index;
+	DepotID index;
 };
 
 extern MemoryPool _depot_pool;
@@ -22,7 +22,7 @@ extern MemoryPool _depot_pool;
 /**
  * Get the pointer to the depot with index 'index'
  */
-static inline Depot *GetDepot(uint index)
+static inline Depot *GetDepot(DepotID index)
 {
 	return (Depot*)GetItemFromPool(&_depot_pool, index);
 }
@@ -38,14 +38,22 @@ static inline uint16 GetDepotPoolSize(void)
 /**
  * Check if a depot really exists.
  */
-static inline bool IsValidDepot(const Depot* depot)
+static inline bool IsValidDepot(const Depot *depot)
 {
-	return depot->xy != 0;
+	return depot != NULL && depot->xy != 0;
 }
 
 static inline bool IsValidDepotID(uint index)
 {
 	return index < GetDepotPoolSize() && IsValidDepot(GetDepot(index));
+}
+
+void DestroyDepot(Depot *depot);
+
+static inline void DeleteDepot(Depot *depot)
+{
+	DestroyDepot(depot);
+	depot->xy = 0;
 }
 
 #define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL) if (IsValidDepot(d))
@@ -56,7 +64,8 @@ static inline bool IsValidDepotID(uint index)
 #define MIN_SERVINT_DAYS    30
 #define MAX_SERVINT_DAYS   800
 
-/** Get the service interval domain.
+/**
+ * Get the service interval domain.
  * Get the new proposed service interval for the vehicle is indeed, clamped
  * within the given bounds. @see MIN_SERVINT_PERCENT ,etc.
  * @param index proposed service interval
@@ -108,10 +117,8 @@ static inline bool CanBuildDepotByTileh(uint32 direction, Slope tileh)
 	return ((0x4C >> direction) & tileh) != 0;
 }
 
-
 Depot *GetDepotByTile(TileIndex tile);
 void InitializeDepots(void);
 Depot *AllocateDepot(void);
-void DoDeleteDepot(TileIndex tile);
 
 #endif /* DEPOT_H */

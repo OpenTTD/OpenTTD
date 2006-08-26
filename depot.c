@@ -59,7 +59,7 @@ Depot *AllocateDepot(void)
 	 * TODO - This is just a temporary stage, this will be removed. */
 	for (d = GetDepot(0); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL) {
 		if (!IsValidDepot(d)) {
-			uint index = d->index;
+			DepotID index = d->index;
 
 			memset(d, 0, sizeof(Depot));
 			d->index = index;
@@ -75,26 +75,18 @@ Depot *AllocateDepot(void)
 }
 
 /**
- * Delete a depot
+ * Clean up a depot
  */
-void DoDeleteDepot(TileIndex tile)
+void DestroyDepot(Depot *depot)
 {
-	Depot *depot;
-
-	/* Get the depot */
-	depot = GetDepotByTile(tile);
-
 	/* Clear the tile */
-	DoClearSquare(tile);
-
-	/* Clear the depot */
-	depot->xy = 0;
+	DoClearSquare(depot->xy);
 
 	/* Clear the depot from all order-lists */
 	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, depot->index);
 
 	/* Delete the depot-window */
-	DeleteWindowById(WC_VEHICLE_DEPOT, tile);
+	DeleteWindowById(WC_VEHICLE_DEPOT, depot->xy);
 }
 
 void InitializeDepots(void)
