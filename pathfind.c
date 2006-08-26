@@ -637,11 +637,6 @@ static const uint16 _is_upwards_slope[15] = {
 	0, //14
 };
 
-
-#define DIAG_FACTOR 3
-#define STR_FACTOR 2
-
-
 static uint DistanceMoo(TileIndex t0, TileIndex t1)
 {
 	const uint dx = abs(TileX(t0) - TileX(t1));

@@ -1847,7 +1847,8 @@ static bool NtpCallbFindDepot(TileIndex tile, TrainFindDepotData *tfdd, int trac
 	if (IsTileType(tile, MP_RAILWAY) &&
 			IsTileOwner(tile, tfdd->owner) &&
 			IsRailDepot(tile)) {
-		tfdd->best_length = length;
+		/* approximate number of tiles by dividing by DIAG_FACTOR */
+		tfdd->best_length = length / DIAG_FACTOR;
 		tfdd->tile = tile;
 		return true;
 	}

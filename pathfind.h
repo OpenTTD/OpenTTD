@@ -5,6 +5,11 @@
 
 #include "direction.h"
 
+enum {
+	STR_FACTOR  = 2,
+	DIAG_FACTOR = 3
+};
+
 //#define PF_BENCH // perform simple benchmarks on the train pathfinder (not
 //supported on all archs)
 
