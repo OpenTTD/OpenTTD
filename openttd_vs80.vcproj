@@ -749,10 +749,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\StdAfx.c"
-				>
-			</File>
-			<File
 				RelativePath=".\string.c"
 				>
 			</File>

@@ -376,9 +376,6 @@
 				RelativePath=".\spritecache.c">
 			</File>
 			<File
-				RelativePath=".\StdAfx.c">
-			</File>
-			<File
 				RelativePath=".\string.c">
 			</File>
 			<File
@@ -479,8 +476,7 @@
 				RelativePath=".\functions.h">
 			</File>
 			<File
-				RelativePath=".\genworld.h"
-				>
+				RelativePath=".\genworld.h">
 			</File>
 			<File
 				RelativePath=".\gfx.h">
