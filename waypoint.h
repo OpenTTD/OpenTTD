@@ -8,7 +8,7 @@
 
 struct Waypoint {
 	TileIndex xy;      ///< Tile of waypoint
-	StationID index;   ///< Index of waypoint
+	WaypointID index;  ///< Index of waypoint
 
 	TownID town_index; ///< Town associated with the waypoint
 	byte town_cn;      ///< The Nth waypoint for this town (consecutive number)
@@ -29,7 +29,7 @@ extern MemoryPool _waypoint_pool;
 /**
  * Get the pointer to the waypoint with index 'index'
  */
-static inline Waypoint *GetWaypoint(uint index)
+static inline Waypoint *GetWaypoint(WaypointID index)
 {
 	return (Waypoint*)GetItemFromPool(&_waypoint_pool, index);
 }
@@ -50,7 +50,7 @@ static inline bool IsValidWaypoint(const Waypoint *wp)
 	return wp->xy != 0;
 }
 
-static inline bool IsValidWaypointID(uint index)
+static inline bool IsValidWaypointID(WaypointID index)
 {
 	return index < GetWaypointPoolSize() && IsValidWaypoint(GetWaypoint(index));
 }

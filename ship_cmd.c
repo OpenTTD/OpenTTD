@@ -125,7 +125,7 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;
-	v->current_order.station = depot->index;
+	v->current_order.dest.depot = depot->index;
 	v->dest_tile = depot->xy;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
@@ -229,7 +229,7 @@ static void ProcessShipOrder(Vehicle *v)
 
 	if (order->type    == v->current_order.type &&
 			order->flags   == v->current_order.flags &&
-			order->station == v->current_order.station)
+			order->dest.station == v->current_order.dest.station)
 		return;
 
 	v->current_order = *order;
@@ -237,15 +237,15 @@ static void ProcessShipOrder(Vehicle *v)
 	if (order->type == OT_GOTO_STATION) {
 		const Station *st;
 
-		if (order->station == v->last_station_visited)
+		if (order->dest.station == v->last_station_visited)
 			v->last_station_visited = INVALID_STATION;
 
-		st = GetStation(order->station);
+		st = GetStation(order->dest.station);
 		if (st->dock_tile != 0) {
 			v->dest_tile = TILE_ADD(st->dock_tile, ToTileIndexDiff(GetDockOffset(st->dock_tile)));
 		}
 	} else if (order->type == OT_GOTO_DEPOT) {
-		v->dest_tile = GetDepot(order->station)->xy;
+		v->dest_tile = GetDepot(order->dest.depot)->xy;
 	} else {
 		v->dest_tile = 0;
 	}
@@ -722,10 +722,10 @@ static void ShipController(Vehicle *v)
 						} else if (v->current_order.type == OT_GOTO_STATION) {
 							Station *st;
 
-							v->last_station_visited = v->current_order.station;
+							v->last_station_visited = v->current_order.dest.station;
 
 							/* Process station in the orderlist. */
-							st = GetStation(v->current_order.station);
+							st = GetStation(v->current_order.dest.station);
 							if (st->facilities & FACIL_DOCK) { /* ugly, ugly workaround for problem with ships able to drop off cargo at wrong stations */
 								v->current_order.type = OT_LOADING;
 								v->current_order.flags &= OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER;
@@ -1033,7 +1033,7 @@ int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->dest_tile = dep->xy;
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP | OF_HALT_IN_DEPOT;
-		v->current_order.station = dep->index;
+		v->current_order.dest.depot = dep->index;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 

@@ -254,13 +254,13 @@ static bool TrainShouldStop(const Vehicle* v, TileIndex tile)
 	assert(v->type == VEH_Train);
 	//When does a train drive through a station
 	//first we deal with the "new nonstop handling"
-	if (_patches.new_nonstop && o->flags & OF_NON_STOP && sid == o->station) {
+	if (_patches.new_nonstop && o->flags & OF_NON_STOP && sid == o->dest.station) {
 		return false;
 	}
 
 	if (v->last_station_visited == sid) return false;
 
-	if (sid != o->station && (o->flags & OF_NON_STOP || _patches.new_nonstop)) {
+	if (sid != o->dest.station && (o->flags & OF_NON_STOP || _patches.new_nonstop)) {
 		return false;
 	}
 
@@ -1960,7 +1960,7 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->dest_tile = tfdd.tile;
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
-		v->current_order.station = GetDepotByTile(tfdd.tile)->index;
+		v->current_order.dest.depot = GetDepotByTile(tfdd.tile)->index;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		/* If there is no depot in front, reverse automatically */
 		if (tfdd.reverse)
@@ -2164,7 +2164,7 @@ static void FillWithStationData(TrainTrackFollowerData* fd, const Vehicle* v)
 {
 	fd->dest_coords = v->dest_tile;
 	if (v->current_order.type == OT_GOTO_STATION) {
-		fd->station_index = v->current_order.station;
+		fd->station_index = v->current_order.dest.station;
 	} else {
 		fd->station_index = INVALID_STATION;
 	}
@@ -2411,7 +2411,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 	if (_patches.new_nonstop &&
 			v->current_order.flags & OF_NON_STOP &&
 			IsTileType(v->tile, MP_STATION) &&
-			v->current_order.station == GetStationIndex(v->tile)) {
+			v->current_order.dest.station == GetStationIndex(v->tile)) {
 		v->cur_order_index++;
 	}
 
@@ -2431,7 +2431,7 @@ static bool ProcessTrainOrder(Vehicle *v)
 	// If it is unchanged, keep it.
 	if (order->type    == v->current_order.type &&
 			order->flags   == v->current_order.flags &&
-			order->station == v->current_order.station)
+			order->dest.station == v->current_order.dest.station)
 		return false;
 
 	// Otherwise set it, and determine the destination tile.
@@ -2443,17 +2443,17 @@ static bool ProcessTrainOrder(Vehicle *v)
 
 	switch (order->type) {
 		case OT_GOTO_STATION:
-			if (order->station == v->last_station_visited)
+			if (order->dest.station == v->last_station_visited)
 				v->last_station_visited = INVALID_STATION;
-			v->dest_tile = GetStation(order->station)->xy;
+			v->dest_tile = GetStation(order->dest.station)->xy;
 			break;
 
 		case OT_GOTO_DEPOT:
-			v->dest_tile = GetDepot(order->station)->xy;
+			v->dest_tile = GetDepot(order->dest.depot)->xy;
 			break;
 
 		case OT_GOTO_WAYPOINT:
-			v->dest_tile = GetWaypoint(order->station)->xy;
+			v->dest_tile = GetWaypoint(order->dest.waypoint)->xy;
 			break;
 
 		default:
@@ -2574,7 +2574,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 
 	// Did we reach the final destination?
 	if (v->current_order.type == OT_GOTO_STATION &&
-			v->current_order.station == station) {
+			v->current_order.dest.station == station) {
 		// Yeah, keep the load/unload flags
 		// Non Stop now means if the order should be increased.
 		v->current_order.type = OT_LOADING;
@@ -2585,7 +2585,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 		v->current_order.type = OT_LOADING;
 		v->current_order.flags = 0;
 	}
-	v->current_order.station = 0;
+	v->current_order.dest.station = 0;
 
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
 	if (LoadUnloadVehicle(v) != 0) {
@@ -3503,14 +3503,14 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	depot = GetDepotByTile(tfdd.tile);
 
 	if (v->current_order.type == OT_GOTO_DEPOT &&
-			v->current_order.station != depot->index &&
+			v->current_order.dest.depot != depot->index &&
 			!CHANCE16(3, 16)) {
 		return;
 	}
 
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;
-	v->current_order.station = depot->index;
+	v->current_order.dest.depot = depot->index;
 	v->dest_tile = tfdd.tile;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
@@ -3555,7 +3555,7 @@ void OnNewDay_Train(Vehicle *v)
 
 		/* update destination */
 		if (v->current_order.type == OT_GOTO_STATION &&
-				(tile = GetStation(v->current_order.station)->train_tile) != 0) {
+				(tile = GetStation(v->current_order.dest.station)->train_tile) != 0) {
 			v->dest_tile = tile;
 		}
 

@@ -548,13 +548,14 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 		} else {
 			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
-				SetDParam(0, v->current_order.station);
+				SetDParam(0, v->current_order.dest.station);
 				SetDParam(1, v->cur_speed * 128 / 10);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				SetDParam(0, v->current_order.station);
+				/* Aircrafts always go to a station, even if you say depot */
+				SetDParam(0, v->current_order.dest.station);
 				SetDParam(1, v->cur_speed * 128 / 10);
 				str = STR_HEADING_FOR_HANGAR + _patches.vehicle_speed;
 			} break;
@@ -960,7 +961,7 @@ static void DrawSmallOrderList(const Vehicle *v, int x, int y)
 		sel--;
 
 		if (order->type == OT_GOTO_STATION) {
-			SetDParam(0, order->station);
+			SetDParam(0, order->dest.station);
 			DrawString(x, y, STR_A036, 0);
 
 			y += 6;

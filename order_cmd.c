@@ -47,12 +47,12 @@ Order UnpackOldOrder(uint16 packed)
 	Order order;
 	order.type    = GB(packed, 0, 4);
 	order.flags   = GB(packed, 4, 4);
-	order.station = GB(packed, 8, 8);
+	order.dest.station = GB(packed, 8, 8);
 	order.next    = NULL;
 
 	// Sanity check
 	// TTD stores invalid orders as OT_NOTHING with non-zero flags/station
-	if (order.type == OT_NOTHING && (order.flags != 0 || order.station != 0)) {
+	if (order.type == OT_NOTHING && (order.flags != 0 || order.dest.station != 0)) {
 		order.type = OT_DUMMY;
 		order.flags = 0;
 	}
@@ -70,7 +70,7 @@ static Order UnpackVersion4Order(uint16 packed)
 	Order order;
 	order.type    = GB(packed, 0, 4);
 	order.flags   = GB(packed, 4, 4);
-	order.station = GB(packed, 8, 8);
+	order.dest.station = GB(packed, 8, 8);
 	order.next    = NULL;
 	order.index   = 0; // avoid compiler warning
 	return order;
@@ -144,7 +144,7 @@ void AssignOrder(Order *order, Order data)
 {
 	order->type    = data.type;
 	order->flags   = data.flags;
-	order->station = data.station;
+	order->dest.station = data.dest.station;
 }
 
 
@@ -191,8 +191,8 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		case OT_GOTO_STATION: {
 			const Station *st;
 
-			if (!IsValidStationID(new_order.station)) return CMD_ERROR;
-			st = GetStation(new_order.station);
+			if (!IsValidStationID(new_order.dest.station)) return CMD_ERROR;
+			st = GetStation(new_order.dest.station);
 
 			if (st->airport_type != AT_OILRIG && !IsBuoy(st) && !CheckOwnership(st->owner)) {
 				return CMD_ERROR;
@@ -252,8 +252,8 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (v->type == VEH_Aircraft) {
 				const Station* st;
 
-				if (!IsValidStationID(new_order.station)) return CMD_ERROR;
-				st = GetStation(new_order.station);
+				if (!IsValidStationID(new_order.dest.station)) return CMD_ERROR;
+				st = GetStation(new_order.dest.station);
 
 				if ((st->airport_type != AT_OILRIG && !CheckOwnership(st->owner)) ||
 						!(st->facilities & FACIL_AIRPORT) ||
@@ -263,8 +263,8 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			} else {
 				const Depot* dp;
 
-				if (!IsValidDepotID(new_order.station)) return CMD_ERROR;
-				dp = GetDepot(new_order.station);
+				if (!IsValidDepotID(new_order.dest.depot)) return CMD_ERROR;
+				dp = GetDepot(new_order.dest.depot);
 
 				if (!CheckOwnership(GetTileOwner(dp->xy))) return CMD_ERROR;
 
@@ -308,8 +308,8 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			if (v->type != VEH_Train) return CMD_ERROR;
 
-			if (!IsValidWaypointID(new_order.station)) return CMD_ERROR;
-			wp = GetWaypoint(new_order.station);
+			if (!IsValidWaypointID(new_order.dest.waypoint)) return CMD_ERROR;
+			wp = GetWaypoint(new_order.dest.waypoint);
 
 			if (!CheckOwnership(GetTileOwner(wp->xy))) return CMD_ERROR;
 
@@ -346,8 +346,8 @@ int32 CmdInsertOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		&& !_patches.new_pathfinding_all) {
 
 		int dist = DistanceManhattan(
-			GetStation(GetVehicleOrder(v, sel_ord - 1)->station)->xy,
-			GetStation(new_order.station)->xy // XXX type != OT_GOTO_STATION?
+			GetStation(GetVehicleOrder(v, sel_ord - 1)->dest.station)->xy,
+			GetStation(new_order.dest.station)->xy // XXX type != OT_GOTO_STATION?
 		);
 		if (dist >= 130)
 			return_cmd_error(STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO);
@@ -704,7 +704,7 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 				FOR_VEHICLE_ORDERS(src, order) {
 					if (order->type == OT_GOTO_STATION) {
-						const Station *st = GetStation(order->station);
+						const Station *st = GetStation(order->dest.station);
 						if (dst->cargo_type == CT_PASSENGERS) {
 							if (st->bus_stops != NULL) required_dst = st->bus_stops->xy;
 						} else {
@@ -919,7 +919,7 @@ void CheckOrders(const Vehicle* v)
 			}
 			/* Does station have a load-bay for this vehicle? */
 			if (order->type == OT_GOTO_STATION) {
-				const Station* st = GetStation(order->station);
+				const Station* st = GetStation(order->dest.station);
 				TileIndex required_tile = GetStationTileForVehicle(v, st);
 
 				n_st++;
@@ -933,7 +933,7 @@ void CheckOrders(const Vehicle* v)
 
 			if (v->orders->type    == last->type &&
 					v->orders->flags   == last->flags &&
-					v->orders->station == last->station) {
+					v->orders->dest.station == last->dest.station) {
 				problem_type = 2;
 			}
 		}
@@ -962,7 +962,7 @@ void CheckOrders(const Vehicle* v)
  * @param type The type of the order (OT_GOTO_[STATION|DEPOT|WAYPOINT]).
  * @param destination The destination. Can be a StationID, DepotID or WaypointID.
  */
-void RemoveOrderFromAllVehicles(OrderType type, StationID destination)
+void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 {
 	Vehicle *v;
 	Order *order;
@@ -973,11 +973,11 @@ void RemoveOrderFromAllVehicles(OrderType type, StationID destination)
 		if (v->orders == NULL) continue;
 
 		/* Forget about this station if this station is removed */
-		if (v->last_station_visited == destination && type == OT_GOTO_STATION)
+		if (v->last_station_visited == destination.station && type == OT_GOTO_STATION)
 			v->last_station_visited = INVALID_STATION;
 
 		/* Check the current order */
-		if (v->current_order.type == type && v->current_order.station == destination) {
+		if (v->current_order.type == type && v->current_order.dest.station == destination.station) {
 			/* Mark the order as DUMMY */
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
@@ -987,7 +987,7 @@ void RemoveOrderFromAllVehicles(OrderType type, StationID destination)
 		/* Clear the order from the order-list */
 		need_invalidate = false;
 		FOR_VEHICLE_ORDERS(v, order) {
-			if (order->type == type && order->station == destination) {
+			if (order->type == type && order->dest.station == destination.station) {
 				/* Mark the order as DUMMY */
 				order->type = OT_DUMMY;
 				order->flags = 0;
@@ -1112,7 +1112,7 @@ void InitializeOrders(void)
 static const SaveLoad _order_desc[] = {
 	SLE_VAR(Order, type,    SLE_UINT8),
 	SLE_VAR(Order, flags,   SLE_UINT8),
-	SLE_VAR(Order, station, SLE_UINT16),
+	SLE_VAR(Order, dest.station, SLE_UINT16), // Saving one of the union is enough, they all share the same memory
 	SLE_REF(Order, next,    REF_ORDER),
 
 	// reserve extra space in savegame here. (currently 10 bytes)

@@ -2453,7 +2453,7 @@ handle_nocash:
 
 		order.type = OT_GOTO_STATION;
 		order.flags = 0;
-		order.station = AiGetStationIdByDef(aib->use_tile, aib->cur_building_rule);
+		order.dest.station = AiGetStationIdByDef(aib->use_tile, aib->cur_building_rule);
 
 		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
 		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
@@ -3185,7 +3185,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 
 		order.type = OT_GOTO_STATION;
 		order.flags = 0;
-		order.station = AiGetStationIdFromRoadBlock(aib->use_tile, aib->cur_building_rule);
+		order.dest.station = AiGetStationIdFromRoadBlock(aib->use_tile, aib->cur_building_rule);
 
 		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
 		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
@@ -3464,7 +3464,7 @@ static void AiStateBuildAircraftVehicles(Player *p)
 
 		order.type = OT_GOTO_STATION;
 		order.flags = 0;
-		order.station = AiGetStationIdFromAircraftBlock(aib->use_tile, aib->cur_building_rule);
+		order.dest.station = AiGetStationIdFromAircraftBlock(aib->use_tile, aib->cur_building_rule);
 
 		if (!is_pass && i == 1) order.flags |= OF_UNLOAD;
 		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
@@ -3567,7 +3567,7 @@ static void AiStateRemoveStation(Player *p)
 	in_use = malloc(GetStationArraySize());
 	memset(in_use, 0, GetStationArraySize());
 	FOR_ALL_ORDERS(ord) {
-		if (ord->type == OT_GOTO_STATION) in_use[ord->station] = 1;
+		if (ord->type == OT_GOTO_STATION) in_use[ord->dest.station] = 1;
 	}
 
 	// Go through all stations and delete those that aren't in use

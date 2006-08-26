@@ -83,7 +83,7 @@ void DestroyDepot(Depot *depot)
 	DoClearSquare(depot->xy);
 
 	/* Clear the depot from all order-lists */
-	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, depot->index);
+	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, (DestinationID)depot->index);
 
 	/* Delete the depot-window */
 	DeleteWindowById(WC_VEHICLE_DEPOT, depot->xy);

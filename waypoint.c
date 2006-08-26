@@ -249,7 +249,7 @@ static void DoDeleteWaypoint(Waypoint *wp)
 {
 	wp->xy = 0;
 
-	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, wp->index);
+	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, (DestinationID)wp->index);
 
 	if (wp->string != STR_NULL) DeleteName(wp->string);
 

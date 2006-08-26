@@ -481,13 +481,13 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 			} else {
 				switch (v->current_order.type) {
 					case OT_GOTO_STATION: {
-						SetDParam(0, v->current_order.station);
+						SetDParam(0, v->current_order.dest.station);
 						SetDParam(1, v->cur_speed / 2);
 						str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 					} break;
 
 					case OT_GOTO_DEPOT: {
-						Depot *depot = GetDepot(v->current_order.station);
+						Depot *depot = GetDepot(v->current_order.dest.depot);
 						SetDParam(0, depot->town_index);
 						SetDParam(1, v->cur_speed / 2);
 						str = STR_HEADING_FOR_SHIP_DEPOT + _patches.vehicle_speed;
@@ -906,8 +906,8 @@ static void DrawSmallOrderList(const Vehicle *v, int x, int y)
 		sel--;
 
 		if (order->type == OT_GOTO_STATION) {
-			if (!IsBuoy(GetStation(order->station))){
-				SetDParam(0, order->station);
+			if (!IsBuoy(GetStation(order->dest.station))){
+				SetDParam(0, order->dest.station);
 				DrawString(x, y, STR_A036, 0);
 
 				y += 6;

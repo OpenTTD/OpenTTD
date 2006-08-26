@@ -334,13 +334,13 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		} else {
 			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
-				SetDParam(0, v->current_order.station);
+				SetDParam(0, v->current_order.dest.station);
 				SetDParam(1, v->cur_speed / 2);
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				Depot *depot = GetDepot(v->current_order.station);
+				Depot *depot = GetDepot(v->current_order.dest.depot);
 				SetDParam(0, depot->town_index);
 				SetDParam(1, v->cur_speed / 2);
 				str = STR_HEADING_FOR_ROAD_DEPOT + _patches.vehicle_speed;

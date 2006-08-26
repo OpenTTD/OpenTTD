@@ -85,8 +85,8 @@ public:
 	void SetDestination(Vehicle* v)
 	{
 		if (v->current_order.type == OT_GOTO_STATION) {
-			m_destTile = CalcStationCenterTile(v->current_order.station);
-			m_dest_station_id = v->current_order.station;
+			m_destTile = CalcStationCenterTile(v->current_order.dest.station);
+			m_dest_station_id = v->current_order.dest.station;
 			m_destTrackdirs = INVALID_TRACKDIR_BIT;
 		} else {
 			m_destTile = v->dest_tile;

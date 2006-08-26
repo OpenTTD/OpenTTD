@@ -142,7 +142,7 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 				const Order *order;
 
 				FOR_VEHICLE_ORDERS(v, order) {
-					if (order->type == OT_GOTO_STATION && order->station == station) {
+					if (order->type == OT_GOTO_STATION && order->dest.station == station) {
 						sort_list[n++] = v;
 						break;
 					}

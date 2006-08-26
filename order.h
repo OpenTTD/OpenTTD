@@ -70,7 +70,6 @@ enum {
 	CO_UNSHARE = 2
 };
 
-
 /* If you change this, keep in mind that it is saved on 3 places:
  * - Load_ORDR, all the global orders
  * - Vehicle -> current_order
@@ -79,7 +78,7 @@ enum {
 typedef struct Order {
 	OrderType type;
 	uint8  flags;
-	StationID station;
+	DestinationID dest;   ///< The destionation of the order.
 
 	struct Order *next;   ///< Pointer to next order. If NULL, end of list
 
@@ -172,7 +171,7 @@ static inline bool IsOrderPoolFull(void)
 
 static inline uint32 PackOrder(const Order *order)
 {
-	return order->station << 16 | order->flags << 8 | order->type;
+	return order->dest.station << 16 | order->flags << 8 | order->type;
 }
 
 static inline Order UnpackOrder(uint32 packed)
@@ -180,7 +179,7 @@ static inline Order UnpackOrder(uint32 packed)
 	Order order;
 	order.type    = (OrderType)GB(packed,  0,  8);
 	order.flags   = GB(packed,  8,  8);
-	order.station = GB(packed, 16, 16);
+	order.dest.station = GB(packed, 16, 16);
 	order.next    = NULL;
 	order.index   = 0; // avoid compiler warning
 	return order;
@@ -189,7 +188,7 @@ static inline Order UnpackOrder(uint32 packed)
 /* Functions */
 void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *order);
 void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* order);
-void RemoveOrderFromAllVehicles(OrderType type, StationID destination);
+void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination);
 void InvalidateVehicleOrder(const Vehicle *v);
 bool VehicleHasDepotOrders(const Vehicle *v);
 void CheckOrders(const Vehicle*);

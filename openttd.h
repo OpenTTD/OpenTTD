@@ -40,18 +40,33 @@ typedef uint16 StationID;
 typedef uint16 TownID;
 typedef uint16 IndustryID;
 typedef uint16 DepotID;
+typedef uint16 WaypointID;
 typedef byte PlayerID;
 typedef byte OrderID;
 typedef byte CargoID;
 typedef byte LandscapeID;
 typedef uint16 StringID;
-typedef uint32 SpriteID;    ///< The number of a sprite, without mapping bits and colortables
-typedef uint32 PalSpriteID; ///< The number of a sprite plus all the mapping bits and colortables
+typedef uint32 SpriteID;      ///< The number of a sprite, without mapping bits and colortables
+typedef uint32 PalSpriteID;   ///< The number of a sprite plus all the mapping bits and colortables
 typedef uint32 CursorID;
-typedef uint16 EngineID; ///< All enginenumbers should be of this type
+typedef uint16 EngineID;
 typedef uint16 EngineRenewID;
 typedef uint16 SignID;
-typedef uint16 UnitID;   ///< All unitnumber stuff is of this type (or anyway, should be)
+typedef uint16 UnitID;
+
+typedef union DestinationID {
+	StationID station;
+	DepotID depot;
+	WaypointID waypoint;
+	uint16 disaster;            ///< Please don't ask about it, but disasters uses orders to store stuff...
+} DestinationID;
+
+/* All items of DestionationID has to be of the same size, because some part
+ *  of the code depends on the fact that DestionationID is the same for all
+ *  items inside DestionationID. Check PackOrder() */
+assert_compile(sizeof(StationID) == sizeof(DepotID));
+assert_compile(sizeof(StationID) == sizeof(WaypointID));
+assert_compile(sizeof(StationID) == sizeof(uint16));
 
 typedef uint32 WindowNumber;
 typedef byte WindowClass;
