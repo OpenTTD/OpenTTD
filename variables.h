@@ -283,7 +283,7 @@ VARDEF uint32 _decode_parameters[20];
 
 VARDEF uint32 _pressed_key;  // Low 8 bits = ASCII, High 16 bits = keycode
 VARDEF bool _ctrl_pressed;   // Is Ctrl pressed?
-VARDEF bool _shift_pressed;  // Is Alt pressed?
+VARDEF bool _shift_pressed;  // Is Shift pressed?
 VARDEF byte _dirkeys;        // 1 = left, 2 = up, 4 = right, 8 = down
 
 VARDEF bool _fullscreen;
