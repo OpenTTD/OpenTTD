@@ -430,7 +430,9 @@ static inline Vehicle *GetFirstVehicleFromSharedList(Vehicle *v)
 VARDEF VehicleID _new_vehicle_id;
 VARDEF uint16 _returned_refit_capacity;
 
-#define INVALID_VEHICLE 0xFFFF
+enum {
+	INVALID_VEHICLE = 0xFFFF,
+};
 
 /**
  * Get the colour map for an engine. This used for unbuilt engines in the user interface.

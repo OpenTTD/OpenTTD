@@ -1062,13 +1062,12 @@ bool GenerateTowns(void)
 
 	// give it a last try, but now more aggressive
 	if (num == 0 && CreateRandomTown(10000, 0) == NULL) {
-		if (GetTownArraySize() > 0) return true;
+		if (GetTownArraySize() == 0) {
+			/* XXX - can we handle that more gracefully? */
+			if (_game_mode != GM_EDITOR) error("Could not generate any town");
 
-		//XXX can we handle that more gracefully?
-		if (num == 0 && _game_mode != GM_EDITOR) {
-			error("Could not generate any town");
+			return false;
 		}
-		return false;
 	}
 
 	return true;

@@ -173,19 +173,6 @@ static inline void ClearMultiheaded(Vehicle *v)
 	CLRBIT(v->subtype, Train_Multiheaded);
 }
 
-/** Get the next real (non-articulated part) vehicle in the consist.
- * @param v Vehicle.
- * @return Next vehicle in the consist.
- */
-static inline Vehicle *GetNextVehicle(const Vehicle *v)
-{
-	Vehicle *u = v->next;
-	while (u != NULL && IsArticulatedPart(u)) {
-		u = u->next;
-	}
-	return u;
-}
-
 /** Check if an engine has an articulated part.
  * @param v Vehicle.
  * @return True if the engine has an articulated part.
@@ -195,14 +182,37 @@ static inline bool EngineHasArticPart(const Vehicle *v)
 	return (v->next != NULL && IsArticulatedPart(v->next));
 }
 
+/**
+ * Get the next part of a multi-part engine.
+ * Will only work on a multi-part engine (EngineHasArticPart(v) == true),
+ * Result is undefined for normal engine.
+ */
+static inline Vehicle *GetNextArticPart(const Vehicle *v)
+{
+	assert(EngineHasArticPart(v));
+	return v->next;
+}
+
 /** Get the last part of a multi-part engine.
  * @param v Vehicle.
  * @return Last part of the engine.
  */
 static inline Vehicle *GetLastEnginePart(Vehicle *v)
 {
-	while (EngineHasArticPart(v)) v = v->next;
+	while (EngineHasArticPart(v)) v = GetNextArticPart(v);
 	return v;
+}
+
+/** Get the next real (non-articulated part) vehicle in the consist.
+ * @param v Vehicle.
+ * @return Next vehicle in the consist.
+ */
+static inline Vehicle *GetNextVehicle(const Vehicle *v)
+{
+	while (EngineHasArticPart(v)) v = GetNextArticPart(v);
+
+	/* v now contains the last artic part in the engine */
+	return v->next;
 }
 
 void ConvertOldMultiheadToNew(void);

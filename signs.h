@@ -57,6 +57,12 @@ static inline bool IsValidSignID(uint index)
 	return index < GetSignPoolSize() && IsValidSign(GetSign(index));
 }
 
+static inline void DeleteSign(Sign *si)
+{
+	DeleteName(si->str);
+	si->str = STR_NULL;
+}
+
 #define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL) if (IsValidSign(ss))
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 

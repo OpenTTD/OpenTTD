@@ -255,6 +255,11 @@ static inline bool IsValidEngineRenew(const EngineRenew *er)
 	return er->from != INVALID_ENGINE;
 }
 
+static inline void DeleteEngineRenew(EngineRenew *er)
+{
+	er->from = INVALID_ENGINE;
+}
+
 #define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) if (er->from != INVALID_ENGINE) if (IsValidEngineRenew(er))
 #define FOR_ALL_ENGINE_RENEWS(er) FOR_ALL_ENGINE_RENEWS_FROM(er, 0)
 

@@ -135,6 +135,12 @@ static inline bool IsValidOrder(const Order *o)
 	return o->type != OT_NOTHING;
 }
 
+static inline void DeleteOrder(Order *o)
+{
+	o->type = OT_NOTHING;
+	o->next = NULL;
+}
+
 #define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1 < GetOrderPoolSize()) ? GetOrder(order->index + 1) : NULL) if (IsValidOrder(order))
 #define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
 

@@ -179,11 +179,9 @@ int32 CmdRenameSign(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			Sign *si = GetSign(p1);
 
-			/* Delete the name */
-			DeleteName(si->str);
-			si->str = 0;
-
 			MarkSignDirty(si);
+			DeleteSign(si);
+
 			InvalidateWindow(WC_SIGN_LIST, 0);
 			_sign_sort_dirty = true;
 		}

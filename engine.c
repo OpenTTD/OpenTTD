@@ -503,10 +503,12 @@ static EngineRenew *GetEngineReplacement(EngineRenewList erl, EngineID engine)
 void RemoveAllEngineReplacement(EngineRenewList *erl)
 {
 	EngineRenew *er = (EngineRenew *)(*erl);
+	EngineRenew *next;
 
 	while (er) {
-		er->from = INVALID_ENGINE; // "Deallocate" elements
-		er = er->next;
+		next = er->next;
+		DeleteEngineRenew(er);
+		er = next;
 	}
 	*erl = NULL; // Empty list
 }
@@ -559,7 +561,7 @@ int32 RemoveEngineReplacement(EngineRenewList *erl, EngineID engine, uint32 flag
 					/* Cut this element out */
 					prev->next = er->next;
 				}
-				er->from = INVALID_ENGINE; // Deallocate
+				DeleteEngineRenew(er);
 			}
 			return 0;
 		}

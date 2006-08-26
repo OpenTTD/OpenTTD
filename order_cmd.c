@@ -1028,7 +1028,7 @@ bool VehicleHasDepotOrders(const Vehicle *v)
  */
 void DeleteVehicleOrders(Vehicle *v)
 {
-	Order *order, *cur;
+	Order *cur, *next;
 
 	DeleteOrderWarnings(v);
 
@@ -1066,20 +1066,10 @@ void DeleteVehicleOrders(Vehicle *v)
 	v->orders = NULL;
 	v->num_orders = 0;
 
-	order = NULL;
-	while (cur != NULL) {
-		if (order != NULL) {
-			order->type = OT_NOTHING;
-			order->next = NULL;
-		}
-
-		order = cur;
-		cur = cur->next;
-	}
-
-	if (order != NULL) {
-		order->type = OT_NOTHING;
-		order->next = NULL;
+		while (cur != NULL) {
+		next = cur->next;
+		DeleteOrder(cur);
+		cur = next;
 	}
 }
 
