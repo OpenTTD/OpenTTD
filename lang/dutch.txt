@@ -718,6 +718,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Sla scen
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Scenario openen
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Scenario opslaan
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Scenario spelen
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Speel Hoogtekaart
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start een nieuw spel, gebruik een hoogtekaart als landschap
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Weet je zeker dat je dit scenario wilt sluiten?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sluit editor
@@ -884,6 +885,7 @@ STR_TOWNNAME_SWISS                                              :Zwitsers
 STR_TOWNNAME_DANISH                                             :Deens
 STR_TOWNNAME_TURKISH                                            :Turks
 STR_TOWNNAME_ITALIAN                                            :Italiaans
+STR_TOWNNAME_CATALAN                                            :Catalaans
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pond (£)
@@ -908,6 +910,7 @@ STR_CURR_NOK                                                    :Noorweegse Kron
 STR_CURR_PLN                                                    :Poolse Zloty (PLN)
 STR_CURR_ROL                                                    :Roemeense Leu (ROL)
 STR_CURR_RUR                                                    :Russische Rubel (RUR)
+STR_CURR_SIT                                                    :Sloveense Tolar (SIT)
 STR_CURR_SEK                                                    :Zweedse Kronen (SEK)
 
 STR_CURR_CUSTOM                                                 :Aangepast...
@@ -1045,17 +1048,23 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Onzicht
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Origineel
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :Terra Genesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max afstand van de rand voor olierafinaderijen {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sneeuwhoogte: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Ruwheid van het terrein (alleen Terra Genesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erg vlak
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :vlak
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ruig
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erg ruig
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Boomplaatser alogeritme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Geen
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Origineel
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Verbeterd
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap draaiing: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tegen de klok
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Met de klok mee
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Aanpassingsinterval van de voortgang: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}De hoogte van een plat scenario wordt: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopters automatisch repareren op helipads: {ORANGE}{STRING}
@@ -1460,6 +1469,7 @@ STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kon p
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...er ging iets fout. Sorry. (waarschijnlijk corrupt bestand)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Kan het landschap uit de BMP niet laden...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kan dit type foto niet omzetten.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kosten: {CURRENCY}
@@ -2894,12 +2904,16 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedre
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Creeër
+STR_RANDOM                                                      :{BLACK}Willekeurig maken
 STR_RANDOM_HELP                                                 :{BLACK}Wijzig het willekeurige getal voor terrein creatie
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Wereld maken
 STR_RANDOM_SEED                                                 :{BLACK}Willekeurig getal
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klik voor een willekeurig getal
 STR_LAND_GENERATOR                                              :{BLACK}Land generator:
 STR_TREE_PLACER                                                 :{BLACK}Bos algoritme:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Aantal graden hoogtekaart:
 STR_TERRAIN_TYPE                                                :{BLACK}Terrein type:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Zee niveau:
 STR_SMOOTHNESS                                                  :{BLACK}Vlakte:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sneeuwlijn hoogte:
 STR_DATE                                                        :{BLACK}Datum:
@@ -2910,7 +2924,10 @@ STR_SNOW_LINE_UP                                                :{BLACK}Verschui
 STR_SNOW_LINE_DOWN                                              :{BLACK}Verschuif de sneeuwlijn één naar beneden
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander sneeuwlijn hoogte
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begin jaar
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Schaal waarschuwing
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Het aanpassen van de grootte van een bronkaar is niet aan te bevelen. Toch doorgaan?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Hoogtekaart naam:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Grootte: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Wereld creeren
 STR_GENERATION_ABORT                                            :{BLACK}Stop
@@ -2918,14 +2935,26 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Stop Wer
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Weet je zeker dat je de actie wilt stoppen?
 STR_PROGRESS                                                    :{WHITE}{NUM}% compleet
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Wereld maken
 STR_TREE_GENERATION                                             :{BLACK}Bos plaatsing
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Onverplaatsbare generatie
 STR_CLEARING_TILES                                              :{BLACK}Ruig en
+STR_SETTINGUP_GAME                                              :{BLACK}Spel aan het instellen
+STR_PREPARING_TILELOOP                                          :{BLACK}Bezig met vlakken
 STR_PREPARING_GAME                                              :{BLACK}Voorbereiden spel
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Deze aktie past de moeilijkheidsgraag aan naam custom
 STR_SE_FLAT_WORLD                                               :{WHITE}Vlak land
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereer een platte kaart
 STR_SE_RANDOM_LAND                                              :{WHITE}Willekeurig land
 STR_SE_NEW_WORLD                                                :{BLACK}Creeër nieuw scenario
+STR_SE_CAPTION                                                  :{WHITE}Scenario type
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Maak de hoogte van plat land een lager
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Maak de hoogte van plat land een hoger
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Verander hoogte van vlak land
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Hoogte van platte grond:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
+
+STR_SMALLMAP_CENTER                                             :{BLACK}Centreerd de kleine kaart op heidige positie
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Klein

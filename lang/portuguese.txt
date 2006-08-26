@@ -2910,7 +2910,9 @@ STR_GENERATION_ABORT                                            :{BLACK}Cancelar
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Quer mesmo cancelar a criação?
 STR_PROGRESS                                                    :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_TREE_GENERATION                                             :{BLACK}A gerar árvores
 STR_SETTINGUP_GAME                                              :{BLACK}Definindo jogo
+STR_PREPARING_TILELOOP                                          :{BLACK}A preparar o terreno
 STR_PREPARING_GAME                                              :{BLACK}A preparar jogo
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acção mudou o nível de dificuldade para Personalizado
 STR_SE_FLAT_WORLD                                               :{WHITE}Terra plana

@@ -605,8 +605,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Landfläc
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Erzeuge Land durch Zufall
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Landfläche wiederherstellen
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Landfläche wiederherstellen
-STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Nutze Reliefkarte
-STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Nutze Reliefkarte
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Reliefkarte nutzen
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Reliefkarte nutzen
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Bist du sicher, dass die Landschaft zurückgesetzt werden soll?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landfläche erzeugen
 STR_022F_TOWN_GENERATION                                        :{BLACK}Stadt errichten
@@ -719,7 +719,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Szenario
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Szenario laden
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Szenario speichern
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Szenario spielen
-STR_PLAY_HEIGHTMAP                                              :{BLACK}Spiele Reliefkarte
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Reliefkarte spielen
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Ein neues Spiel mit Reliefkarte als Landschaft starten
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Bist du dir sicher, dass du das Szenario verlassen willst?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Bearbeitung beenden
@@ -1795,7 +1795,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Speicher
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Neues Spiel auswählen
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Wähle Szenario (grün), vorgegebens Spiel (blau), oder ein Spiel nach dem Zufallsprinzip
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Spiel nach Zufallsprinzip erstellen
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Lade Reliefkarte
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Reliefkarte laden
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} im Weg
@@ -2916,7 +2916,7 @@ STR_HEIGHTMAP_ROTATION                                          :{BLACK}Kartendr
 STR_TERRAIN_TYPE                                                :{BLACK}Landschaftstyp:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Gewässermenge:
 STR_SMOOTHNESS                                                  :{BLACK}Weichheit:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}Höhe der Schneegrenze
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Schneegrenze
 STR_DATE                                                        :{BLACK}Datum:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Städteanzahl:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Industriedichte:
