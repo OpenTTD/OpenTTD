@@ -528,26 +528,21 @@ uint CountVehiclesInChain(const Vehicle* v)
 	return count;
 }
 
-void DeleteVehicle(Vehicle *v)
+void DestroyVehicle(Vehicle *v)
 {
-	Vehicle *u;
-	bool has_artic_part = false;
-
 	DeleteVehicleNews(v->index, INVALID_STRING_ID);
 
-	do {
-		u = v->next;
-		has_artic_part = EngineHasArticPart(v);
-		DeleteName(v->string_id);
-		if (v->type == VEH_Road) ClearSlot(v);
-		v->type = 0;
-		UpdateVehiclePosHash(v, INVALID_COORD, 0);
-		v->next_hash = INVALID_VEHICLE;
+	DeleteName(v->string_id);
+	if (v->type == VEH_Road) ClearSlot(v);
 
-		if (v->orders != NULL)
-			DeleteVehicleOrders(v);
-		v = u;
-	} while (v != NULL && has_artic_part);
+	UpdateVehiclePosHash(v, INVALID_COORD, 0);
+	v->next_hash = INVALID_VEHICLE;
+	if (v->orders != NULL) DeleteVehicleOrders(v);
+
+	/* Now remove any artic part. This will trigger an other
+	 *  destroy vehicle, which on his turn can remove any
+	 *  other artic parts. */
+	if (EngineHasArticPart(v)) DeleteVehicle(v->next);
 }
 
 void DeleteVehicleChain(Vehicle *v)

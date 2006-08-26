@@ -255,7 +255,6 @@ Vehicle *GetLastVehicleInChain(Vehicle *v);
 Vehicle *GetPrevVehicleInChain(const Vehicle *v);
 Vehicle *GetFirstVehicleInChain(const Vehicle *v);
 uint CountVehiclesInChain(const Vehicle* v);
-void DeleteVehicle(Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks(void);
@@ -375,6 +374,14 @@ static inline VehicleID GetVehicleArraySize(void)
 static inline bool IsValidVehicle(const Vehicle *v)
 {
 	return v->type != 0;
+}
+
+void DestroyVehicle(Vehicle *v);
+
+static inline void DeleteVehicle(Vehicle *v)
+{
+	DestroyVehicle(v);
+	v->type = 0;
 }
 
 #define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))
