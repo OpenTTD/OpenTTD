@@ -2399,6 +2399,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
   */
 static void DeleteStation(Station *st)
 {
+	DestinationID dest;
 	StationID index;
 	Vehicle *v;
 	st->xy = 0;
@@ -2412,7 +2413,8 @@ static void DeleteStation(Station *st)
 	DeleteWindowById(WC_STATION_VIEW, index);
 
 	/* Now delete all orders that go to the station */
-	RemoveOrderFromAllVehicles(OT_GOTO_STATION, (DestinationID)index);
+	dest.station = index;
+	RemoveOrderFromAllVehicles(OT_GOTO_STATION, dest);
 
 	//And do the same with aircraft that have the station as a hangar-stop
 	FOR_ALL_VEHICLES(v) {
