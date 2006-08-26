@@ -1402,7 +1402,10 @@ static const Widget _other_player_trains_widgets[] = {
 
 static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 {
-	StationID station = GB(w->window_number, 16, 16);
+	uint16 order = GB(w->window_number, 16, 16);
+	/* Sorting a shared order list relies on station being set to INVALID_STATION */
+	/* If station is not INVALID_STATION, then order is never used and we don't care what it contains */
+	StationID station = HASBIT(w->window_number, 8) ? INVALID_STATION : order;
 	PlayerID owner = GB(w->window_number, 0, 8);
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 
@@ -1413,9 +1416,8 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 		int max;
 		int i;
 
-		BuildVehicleList(vl, VEH_Train, owner, station);
+		BuildVehicleList(vl, VEH_Train, owner, station, order);
 		SortVehicleList(vl);
-
 		SetVScrollCount(w, vl->list_length);
 
 		// disable 'Sort By' tooltip on Unsorted sorting criteria
@@ -1423,8 +1425,16 @@ static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 
 		/* draw the widgets */
 		{
-			const Player *p = GetPlayer(owner);
-			if (station == INVALID_STATION) {
+			if (order != INVALID_ORDER) {
+				/* Shared Orders -- (###) Trains */
+				SetDParam(0, w->vscroll.count);
+				w->widget[1].unkA  = STR_VEH_WITH_SHARED_ORDERS_LIST;
+				w->widget[9].unkA  = STR_EMPTY;
+				w->widget[10].unkA = STR_EMPTY;
+				SETBIT(w->disabled_state, 9);
+				SETBIT(w->disabled_state, 10);
+			} else if (station == INVALID_STATION) {
+				const Player *p = GetPlayer(owner);
 				/* Company Name -- (###) Trains */
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
@@ -1577,14 +1587,18 @@ static const WindowDesc _other_player_trains_desc = {
 	PlayerTrainsWndProc
 };
 
-void ShowPlayerTrains(PlayerID player, StationID station)
+static void ShowPlayerTrainsLocal(PlayerID player, StationID station, uint16 order, bool show_shared)
 {
 	Window *w;
 
-	if (player == _local_player) {
-		w = AllocateWindowDescFront(&_player_trains_desc, (station << 16) | player);
+	if (show_shared) {
+		w = AllocateWindowDescFront(&_player_trains_desc, (order << 16) | (1 << 8));
 	} else {
-		w = AllocateWindowDescFront(&_other_player_trains_desc, (station << 16) | player);
+		if (player == _local_player) {
+			w = AllocateWindowDescFront(&_player_trains_desc, (station << 16) | player);
+		} else {
+			w = AllocateWindowDescFront(&_other_player_trains_desc, (station << 16) | player);
+		}
 	}
 	if (w != NULL) {
 		w->caption_color = player;
@@ -1595,4 +1609,16 @@ void ShowPlayerTrains(PlayerID player, StationID station)
 		w->resize.step_width = 1;
 		w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); /* Minimum of 4 vehicles */
 	}
+}
+
+void ShowPlayerTrains(PlayerID player, StationID station)
+{
+	ShowPlayerTrainsLocal(player, station, INVALID_ORDER, false);
+}
+
+void ShowVehWithSharedOrdersTrains(Vehicle *v)
+{
+	if (v->orders == NULL) return;	// no shared list to show
+
+	ShowPlayerTrainsLocal(v->owner, INVALID_STATION, v->orders->index, true);
 }

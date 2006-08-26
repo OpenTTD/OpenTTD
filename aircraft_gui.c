@@ -1005,7 +1005,10 @@ static const Widget _other_player_aircraft_widgets[] = {
 
 static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 {
-	StationID station = GB(w->window_number, 16, 16);
+	uint16 order = GB(w->window_number, 16, 16);
+	/* Sorting a shared order list relies on station being set to INVALID_STATION */
+	/* If station is not INVALID_STATION, then order is never used and we don't care what it contains */
+	StationID station = HASBIT(w->window_number, 8) ? INVALID_STATION : order;
 	PlayerID owner = GB(w->window_number, 0, 8);
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 
@@ -1016,9 +1019,8 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		int max;
 		int i;
 
-		BuildVehicleList(vl, VEH_Aircraft, owner, station);
+		BuildVehicleList(vl, VEH_Aircraft, owner, station, order);
 		SortVehicleList(vl);
-
 		SetVScrollCount(w, vl->list_length);
 
 		// disable 'Sort By' tooltip on Unsorted sorting criteria
@@ -1027,7 +1029,15 @@ static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 		/* draw the widgets */
 		{
 			const Player *p = GetPlayer(owner);
-			if (station == INVALID_STATION) {
+			if (order != INVALID_ORDER) {
+				/* Shared Orders -- (###) Aircraft */
+				SetDParam(0, w->vscroll.count);
+				w->widget[1].unkA  = STR_VEH_WITH_SHARED_ORDERS_LIST;
+				w->widget[9].unkA  = STR_EMPTY;
+				w->widget[10].unkA = STR_EMPTY;
+				SETBIT(w->disabled_state, 9);
+				SETBIT(w->disabled_state, 10);
+			} else if (station == INVALID_STATION) {
 				/* Company Name -- (###) Aircraft */
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
@@ -1180,20 +1190,35 @@ static const WindowDesc _other_player_aircraft_desc = {
 	PlayerAircraftWndProc
 };
 
-void ShowPlayerAircraft(PlayerID player, StationID station)
+void ShowPlayerAircraftLocal(PlayerID player, StationID station, uint16 order, bool show_shared)
 {
 	Window *w;
 
-	if (player == _local_player) {
-		w = AllocateWindowDescFront(&_player_aircraft_desc, (station << 16) | player);
-	} else  {
-		w = AllocateWindowDescFront(&_other_player_aircraft_desc, (station << 16) | player);
+	if (show_shared) {
+		w = AllocateWindowDescFront(&_player_aircraft_desc, (order << 16) | (1 << 8));
+	} else {
+		if (player == _local_player) {
+			w = AllocateWindowDescFront(&_player_aircraft_desc, (station << 16) | player);
+		} else  {
+			w = AllocateWindowDescFront(&_other_player_aircraft_desc, (station << 16) | player);
+		}
 	}
 
 	if (w != NULL) {
-		w->caption_color = w->window_number;
+		w->caption_color = player;
 		w->vscroll.cap = 4;
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
 		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
 	}
+}
+
+void ShowPlayerAircraft(PlayerID player, StationID station)
+{
+	ShowPlayerAircraftLocal(player, station, INVALID_ORDER, false);
+}
+
+void ShowVehWithSharedOrdersAircraft(Vehicle *v)
+{
+	if (v->orders == NULL) return;	// no shared list to show
+ShowPlayerAircraftLocal(v->owner, INVALID_STATION, v->orders->index, true);
 }

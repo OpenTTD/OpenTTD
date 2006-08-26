@@ -43,23 +43,25 @@ void PlaceProc_BuyLand(TileIndex tile);
 void ShowPlayerTrains(PlayerID player, StationID station);
 void ShowTrainViewWindow(const Vehicle *v);
 void ShowOrdersWindow(const Vehicle *v);
-
-void ShowRoadVehViewWindow(const Vehicle *v);
+void ShowVehWithSharedOrdersTrains(Vehicle *v);
 
 /* road_gui.c */
 void ShowBuildRoadToolbar(void);
 void ShowBuildRoadScenToolbar(void);
 void ShowPlayerRoadVehicles(PlayerID player, StationID station);
+void ShowVehWithSharedOrdersRoadVehicles(Vehicle *v);
+void ShowRoadVehViewWindow(const Vehicle *v);
 
 /* dock_gui.c */
 void ShowBuildDocksToolbar(void);
 void ShowPlayerShips(PlayerID player, StationID station);
-
+void ShowVehWithSharedOrdersShips(Vehicle *v);
 void ShowShipViewWindow(const Vehicle *v);
 
 /* aircraft_gui.c */
 void ShowBuildAirToolbar(void);
 void ShowPlayerAircraft(PlayerID player, StationID station);
+void ShowVehWithSharedOrdersAircraft(Vehicle *v);
 
 /* terraform_gui.c */
 void ShowTerraformToolbar(void);

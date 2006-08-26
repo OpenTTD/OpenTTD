@@ -2852,6 +2852,9 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Show all
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Show all aircraft which have this station on their schedule
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all ships which have this station on their schedule
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Replace Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Replacing Vehicles

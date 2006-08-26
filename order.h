@@ -9,6 +9,10 @@
 #include "macros.h"
 #include "pool.h"
 
+enum {
+	INVALID_ORDER = 0xFFFF,
+};
+
 /* Order types */
 typedef enum OrderTypes {
 	OT_NOTHING       = 0,

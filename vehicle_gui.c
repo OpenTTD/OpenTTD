@@ -115,7 +115,7 @@ void ResortVehicleLists(void)
 		}
 }
 
-void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station)
+void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station, uint16 order)
 {
 	const Vehicle** sort_list;
 	uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
@@ -150,13 +150,27 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 			}
 		}
 	} else {
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == type && v->owner == owner && (
-						(type == VEH_Train && IsFrontEngine(v)) ||
-						(type != VEH_Train && v->subtype <= subtype)
-					)) {
-				sort_list[n++] = v;
+		if (order != INVALID_ORDER) {
+			Vehicle *v;
+			FOR_ALL_VEHICLES(v) {
+				/* Find a vehicle with the order in question */
+				if (v != NULL && v->orders != NULL && v->orders->index == order) break;
+			}
+
+			if (v != NULL && v->orders != NULL && v->orders->index == order) {
+				/* Only try to make the list if we found a vehicle using the order in question */
+				for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
+					sort_list[n++] = v;
+				}
+			}
+		} else {
+			const Vehicle *v;
+			FOR_ALL_VEHICLES(v) {
+				if (v->type == type && v->owner == owner && (
+				    (type == VEH_Train && IsFrontEngine(v)) ||
+				    (type != VEH_Train && v->subtype <= subtype))) {
+					sort_list[n++] = v;
+				}
 			}
 		}
 	}

@@ -16,7 +16,7 @@ void InitializeVehiclesGuiList(void);
 void RebuildVehicleLists(void);
 void ResortVehicleLists(void);
 
-void BuildVehicleList(struct vehiclelist_d* vl, int type, PlayerID, StationID);
+void BuildVehicleList(struct vehiclelist_d* vl, int type, PlayerID, StationID, uint16 order);
 void SortVehicleList(struct vehiclelist_d *vl);
 
 #define PERIODIC_RESORT_DAYS 10
