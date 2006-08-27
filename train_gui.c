@@ -1623,6 +1623,5 @@ void ShowPlayerTrains(PlayerID player, StationID station)
 void ShowVehWithSharedOrdersTrains(Vehicle *v)
 {
 	if (v->orders == NULL) return;	// no shared list to show
-
 	ShowPlayerTrainsLocal(v->owner, INVALID_STATION, v->orders->index, true);
 }

@@ -1224,5 +1224,5 @@ void ShowPlayerAircraft(PlayerID player, StationID station)
 void ShowVehWithSharedOrdersAircraft(Vehicle *v)
 {
 	if (v->orders == NULL) return;	// no shared list to show
-ShowPlayerAircraftLocal(v->owner, INVALID_STATION, v->orders->index, true);
+	ShowPlayerAircraftLocal(v->owner, INVALID_STATION, v->orders->index, true);
 }
