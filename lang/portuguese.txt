@@ -2851,6 +2851,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar 
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar todos os aviões que têm esta estação nas ordens de serviço
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar todos os navios de cujo itinerário esta estação faz parte
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens partilhadas de {COMMA} veículo{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos que seguem o mesmo trajecto
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
@@ -2947,6 +2948,7 @@ STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Mudar al
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altura da terra plana:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrar o mapa na posição actual
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeno

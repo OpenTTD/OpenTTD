@@ -604,6 +604,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Decremen
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genera terreno casuale
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Resetta paesaggio
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetta Paesaggio
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usa Heightmap
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usa Heightmap
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Sei sicuro di voler resettare il paesaggio?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generazione paesaggio
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generazione città
@@ -716,6 +718,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Salva sc
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Carica Scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Salva Scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Gioca Scenario
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Play Heightmap
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sei sicuro di voler abbondonare questo scenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Esci dall'editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...può essere costruita solo in città con una popolazione di almeno 1200
@@ -905,6 +908,7 @@ STR_CURR_NOK                                                    :Corona Norveges
 STR_CURR_PLN                                                    :Zloty Polacco (PLN)
 STR_CURR_ROL                                                    :Leu rumeno (ROL)
 STR_CURR_RUR                                                    :Rupie Russe (RUR)
+STR_CURR_SIT                                                    :Slovenian Tolar (SIT)
 STR_CURR_SEK                                                    :Corona Svedese (SEK)
 
 STR_CURR_CUSTOM                                                 :Personalizza...
@@ -1039,7 +1043,26 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Rinnova
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durata visualizzazione messaggio di errore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra la popolazione di un paese nell'etichetta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Alberi invisibili (se edifici trasparenti): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generatore terreni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Originale
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Massima distanza dal bordo per le Raffinerie {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altezza limite delle nevi perenni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Ruvidità del terreno (solo TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molto Morbido
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Morbido
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ruvido
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molto Ruvido
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritmo per il piazzamento di alberi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nessuno
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Originale
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Aggiornato
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotazione heightmap: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antiorario
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Orario
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Intervallo aggiornamento: {ORANGE}{STRING} ms
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Dispersione max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valore alto rallenta il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenzione elicotteri direttamente all'eliporto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti terreno assieme a quelli di costruzione: {ORANGE}{STRING}
@@ -1434,6 +1457,15 @@ STR_NETWORK_SEND                                                :{BLACK}Invia
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X della mappa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y della mappa: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERROR                                                :{WHITE}Non posso caricare il terreno dal  PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...file non trovato.
+
+STR_BMPMAP_ERROR                                                :{WHITE}Non posso caricare il terreno da  BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...non posso convertire il tipo di immagine.
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Costo: {CURRENCY}
 STR_0801_COST                                                   :{RED}Costo: {CURRENCY}
@@ -1757,6 +1789,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}salva il
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Selezione il tipo di gioco
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Seleziona scenario (verde), Partita pre-impostata (blu),Scenario casuale
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Crea partita casuale
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Carica Heightmap
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} in mezzo
@@ -2418,8 +2451,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenzione a 
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vai non-stop a {TOWN} Deposito Ferroviario
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenzione non-stop a {TOWN} Deposito Ferroviario
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Direzione {TOWN} Deposito
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Direzione per {RED}{TOWN} Deposito Treni
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Direzione {TOWN} Deposito, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Treni
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Treni{LTBLUE}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ordine non Valido)
 
@@ -2483,7 +2518,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centra v
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista treni - fai clic sul veicolo per le informazioni
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Costruisci veicolo ferroviario evidenziato
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Rinomina tipo di veicolo
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Azione corrente del treno - Clicca qui per fermarlo/farlo partire
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Azione corrente del treno - Clicca qui per fermarlo/farlo partire{}{RED}Rosso nomi depositi{BLACK}: Rimani in deposito{}{GREEN}Verde nomi depositi{BLACK}: Solo servizio
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Mostra ordini del treno
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centra visuale sul treno
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Manda treno al deposito
@@ -2550,13 +2585,14 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Non puoi vendere veicolo
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Non puoi far fermare/avviare veicolo...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Veicolo stradale {COMMA} stà aspettando nel deposito
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Direzione {TOWN} Deposito
+STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Direzione per {RED}{TOWN} Deposito Veicoli
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Direzione {TOWN} Deposito, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Veicoli
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Non puoi mandare il veicolo al deposito...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Non riesce a trovare il deposito locale
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Veicoli stradali - clicca sul veicolo per le informazioni
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Costruisci nuovi veicoli stradali (richiesto deposito veicoli stradali)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Azione corrente del veicolo - fai clic qui per far fermare/ripartire il veicolo
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Azione corrente del veicolo - fai clic qui per far fermare/ripartire il veicolo{}{RED}Rosso nomi depositi{BLACK}: Rimani in deposito{}{GREEN}Verde nomi depositi{BLACK}: Solo servizio
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Mostra ordini del veicolo
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centra visuale sul veicolo
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Manda veicolo al deposito
@@ -2620,8 +2656,10 @@ STR_9817_CAPACITY                                               :{BLACK}Capienza
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Non puoi far fermare/ripartire la nave...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Non puoi mandare nave al deposito...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Non riesce a trovare il deposito locale
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Direzione {TOWN} Deposito
+STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Direzione per {RED}{TOWN} Deposito Navale
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Direzione {TOWN} Deposito, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Navale
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Navale{LTBLUE}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Nave {COMMA} stà aspettano nel deposito
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Costruisci molo
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Costruisci deposito navale (per costruzione e manutenzione)
@@ -2633,7 +2671,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Navi - f
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Costruisci nuove navi (richiede un deposito navale)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Lista navi - fai clic sulla nave per le informazioni
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Costruisci la nave evidenziata
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Azione della nave corrente - fai clic qui per farla fermare/ripartire
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Azione della nave corrente - fai clic qui per farla fermare/ripartire{}{RED}Rosso nomi depositi{BLACK}: Rimani in deposito{}{GREEN}Verde nomi depositi{BLACK}: Solo servizio
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostra gli ordini della nave
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra la visuale sulla nave
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Manda la nave al deposito
@@ -2685,8 +2723,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profitto
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenz.: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Costr. nel: {LTBLUE}{NUM}{BLACK} Valore: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non puoi mandare l'aereo nell'hangar...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Direzione {STATION} Hangar
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Direzione per {RED}{TOWN} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Direzione {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Direzione per {GREEN}{TOWN} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Direzione per {GREEN}{TOWN} Hangar{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aereo {COMMA} sta aspettano nell'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aereo in mezzo
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non puoi far fermare/ripartire l'aereo...
@@ -2705,7 +2745,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Trascina
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centra visuale sull'hangar
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lista aerei - fai clic sull'aereo per le informazioni
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Costruisci l'aereo evidenziato
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Azione corrente dell'aereo - fai clic qui per far fermare/ripartire l'aereo
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Azione corrente dell'aereo - fai clic qui per far fermare/ripartire l'aereo{}{RED}Rosso nomi hangar{BLACK}: Rimani in hangar{}{GREEN}Verde nomi hangar{BLACK}: Solo servizio
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostra ordini dell'aereo
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centra visuale sull'aereo
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Manda l'aereo all'hangar
@@ -2812,6 +2852,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra t
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra tutti gli aerei che hanno questa stazione tra gli ordini
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tutte le navi che hanno questo porto tra gli ordini
 
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inizia Rimpiazzo Veicoli
@@ -2860,6 +2901,33 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capienza: {GOLD}{COMMA} passeggeri, {COMMA} sacchi postali
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Potenza Vagone: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Genera
+STR_RANDOM                                                      :{BLACK}Randomizza
+STR_RANDOM_SEED                                                 :{BLACK}Random Seed:
+STR_LAND_GENERATOR                                              :{BLACK}Generatore terreno:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotazione Heightmap:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Livello mare:
+STR_DATE                                                        :{BLACK}Data:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. of  città:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. di industrie:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avviso scala
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Nome Heightmap:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Dim.: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Generazione del mondo..
+STR_GENERATION_ABORT                                            :{BLACK}Abortisci
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Abortisci Generazione Mondo
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vuoi veramente abortire la generazione?
+STR_PROGRESS                                                    :{WHITE}{NUM}% completo
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_CLEARING_TILES                                              :{BLACK}generazione aree brulle e rocciose
+STR_SE_CAPTION                                                  :{WHITE}Tipo Scenario
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Piccolo

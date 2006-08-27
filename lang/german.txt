@@ -2524,7 +2524,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Ansicht 
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Zugfahrzeugliste - Einzelheiten durch Anklicken des Fahrzeuges
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Baue das angewählte Fahrzeug
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Umbenennen der Waggontypen
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten{}{RED}Depotnamen in Rot{BLACK}: Verbleibt im Depot{}{GREEN}Depotname in Grün{BLACK}: Wartung
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Anzeige der Zugaufträge
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Ansicht auf den Zug zentrieren
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Zug ins Depot schicken
@@ -2601,7 +2601,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kann das
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann kein Fahrzeugdepot finden
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Baue neues Fahrzeug (setzt Fahrzeugdepot voraus)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Laufende Fahrzeugbewegung - Klicke hier, um das Fahrzeug anzuhalten / zu starten
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Laufende Fahrzeugbewegung - Klicke hier, um das Fahrzeug anzuhalten / zu starten{}{RED}Depotname in Rot{BLACK}: Verbleibt im Depot{}{GREEN}Depotname in Grün{BLACK}: Wartung
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Zeige Aufträge für das Fahrzeug
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Ansicht auf das Fahrzeug zentrieren
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Schicke das Fahrzeug ins Depot
@@ -2680,7 +2680,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schiffe 
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Baue neues Schiff (setzt Werft voraus)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Schiffauswahliste - für Einzelheiten auf das Schiff klicken
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Baue das ausgewählte Schiff
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Laufende Schiffsbewegung - Klicke hier, um das Schiff anzuhalten / zu starten
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Laufende Schiffsbewegung - Klicke hier, um das Schiff anzuhalten / zu starten{}{RED}Werftname in Rot{BLACK}: Verbleibt in der Werft{}{GREEN}Werftname in Grün{BLACK}: Wartung
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Aufträge des Schiffes
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Anzeige auf das Schiff zentrieren
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schicke das Schiff zur Werft
@@ -2754,7 +2754,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Zum Verk
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Ansicht auf den Hangar zentrieren
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Flugzeugauswahlliste - Klicke auf das Flugzeug für weitere Einzelheiten
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Baue das augewählte Flugzeug
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Laufende Flugzeugbewegung - Klicke hier, um das Flugzeug anzuhalten / zu starten
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Laufende Flugzeugbewegung - Klicke hier, um das Flugzeug anzuhalten / zu starten{}{RED}Hangarname in Rot{BLACK}: Verbleibt im Hangar{}{GREEN}Hangarname in Grün{BLACK}: Wartung
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Zeige Aufträge für das Flugzeug
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Ansicht auf das Flugzeug zentrieren
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Schicke das Flugzeug in den Hangar
