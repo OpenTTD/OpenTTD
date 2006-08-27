@@ -421,8 +421,7 @@ uint YapfRoadVehDistanceToTile(const Vehicle* v, TileIndex tile)
 	uint dist = pfnDistanceToTile(v, tile);
 	// convert distance to tiles
 	if (dist != UINT_MAX)
-		dist = (dist + 10 - 1) / 10; // TODO: change road YAPF unit from 10 to YAPF_TILE_LENGTH
-
+		dist = (dist + 10 - 1) / YAPF_TILE_LENGTH;
 	return dist;
 }
 
