@@ -780,7 +780,7 @@ NPFFoundTargetData NPFRouteToDepotTrialError(TileIndex tile, Trackdir trackdir, 
 	 */
 	Queue depots;
 	int r;
-	NPFFoundTargetData best_result;
+	NPFFoundTargetData best_result = {(uint)-1, (uint)-1, INVALID_TRACKDIR, {INVALID_TILE, 0, {0, 0}}};
 	NPFFoundTargetData result;
 	NPFFindStationOrTileData target;
 	AyStarNode start;
