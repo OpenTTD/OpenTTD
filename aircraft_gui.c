@@ -1009,10 +1009,10 @@ static const Widget _other_player_aircraft_widgets[] = {
 
 static void PlayerAircraftWndProc(Window *w, WindowEvent *e)
 {
-	uint16 order = GB(w->window_number, 16, 16);
+	OrderID order = GB(w->window_number, 16, 16);
 	/* Sorting a shared order list relies on station being set to INVALID_STATION */
 	/* If station is not INVALID_STATION, then order is never used and we don't care what it contains */
-	StationID station = HASBIT(w->window_number, 8) ? INVALID_STATION : order;
+	StationID station = (w->window_number & SHARE_FLAG) ? INVALID_STATION : order;
 	PlayerID owner = GB(w->window_number, 0, 8);
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 
@@ -1194,12 +1194,12 @@ static const WindowDesc _other_player_aircraft_desc = {
 	PlayerAircraftWndProc
 };
 
-void ShowPlayerAircraftLocal(PlayerID player, StationID station, uint16 order, bool show_shared)
+void ShowPlayerAircraftLocal(PlayerID player, StationID station, OrderID order, bool show_shared)
 {
 	Window *w;
 
 	if (show_shared) {
-		w = AllocateWindowDescFront(&_player_aircraft_desc, (order << 16) | (1 << 8));
+		w = AllocateWindowDescFront(&_player_aircraft_desc, (order << 16) | SHARE_FLAG);
 	} else {
 		if (player == _local_player) {
 			w = AllocateWindowDescFront(&_player_aircraft_desc, (station << 16) | player);

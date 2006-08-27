@@ -115,7 +115,7 @@ void ResortVehicleLists(void)
 		}
 }
 
-void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station, uint16 order)
+void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station, OrderID order)
 {
 	const Vehicle** sort_list;
 	uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;

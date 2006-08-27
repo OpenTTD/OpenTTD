@@ -956,10 +956,10 @@ static const Widget _other_player_ships_widgets[] = {
 
 static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 {
-	uint16 order = GB(w->window_number, 16, 16);
+	OrderID order = GB(w->window_number, 16, 16);
 	/* Sorting a shared order list relies on station being set to INVALID_STATION */
 	/* If station is not INVALID_STATION, then order is never used and we don't care what it contains */
-	StationID station = HASBIT(w->window_number, 8) ? INVALID_STATION : order;
+	StationID station = (w->window_number & SHARE_FLAG) ? INVALID_STATION : order;
 	PlayerID owner = GB(w->window_number, 0, 8);
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 
@@ -1142,7 +1142,7 @@ static const WindowDesc _other_player_ships_desc = {
 };
 
 
-static void ShowPlayerShipsLocal(PlayerID player, StationID station, uint16 order, bool show_shared)
+static void ShowPlayerShipsLocal(PlayerID player, StationID station, OrderID order, bool show_shared)
 {
 	Window *w;
 
