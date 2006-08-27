@@ -77,16 +77,15 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 	const Station* st1 = *(const Station**)a;
 	const Station* st2 = *(const Station**)b;
 	char buf1[64];
-	int32 argv[1];
 	int r;
 
-	argv[0] = st1->index;
-	GetStringWithArgs(buf1, STR_STATION, argv);
+	SetDParam(0, st1->index);
+	GetString(buf1, STR_STATION);
 
 	if (st2 != _last_station) {
 		_last_station = st2;
-		argv[0] = st2->index;
-		GetStringWithArgs(_bufcache, STR_STATION, argv);
+		SetDParam(0, st2->index);
+		GetString(_bufcache, STR_STATION);
 	}
 
 	r =  strcmp(buf1, _bufcache); // sort by name

@@ -105,10 +105,9 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 
 					// If the accepted value is less than 8, show it in 1/8:ths
 					if (lid->ac[i] < 8) {
-						int32 argv[2];
-						argv[0] = lid->ac[i];
-						argv[1] = _cargoc.names_s[i];
-						p = GetStringWithArgs(p, STR_01D1_8, argv);
+						SetDParam(0, lid->ac[i]);
+						SetDParam(1, _cargoc.names_s[i]);
+						p = GetString(p, STR_01D1_8);
 					} else {
 						p = GetString(p, _cargoc.names_s[i]);
 					}
