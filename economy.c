@@ -249,6 +249,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	* removing his/her property doesn't fail because of lack of money */
 	if (new_player == OWNER_SPECTATOR) {
 		GetPlayer(old_player)->money64 = ((uint64)-1)>>1; // jackpot ;p
+		UpdatePlayerMoney32(GetPlayer(old_player));
 	}
 
 	if (new_player == OWNER_SPECTATOR) {
