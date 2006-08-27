@@ -2861,6 +2861,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Zeige al
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Zeige alle Flugzeuge, die diesen Flughafen anfliegen
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zeige alle Schiffe, die diesen Hafen ansteuern
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gemeinsamer Fahrplan von {COMMA} Fahrzeug{P "" en}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zeige alle Fahrzeuge mit demselben Fahrplan
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Ersetze Fahrzeuge
