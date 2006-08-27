@@ -557,7 +557,11 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 				/* Aircrafts always go to a station, even if you say depot */
 				SetDParam(0, v->current_order.dest.station);
 				SetDParam(1, v->cur_speed * 128 / 10);
-				str = STR_HEADING_FOR_HANGAR + _patches.vehicle_speed;
+				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+					str = STR_HEADING_FOR_HANGAR + _patches.vehicle_speed;
+				} else {
+					str = STR_HEADING_FOR_HANGAR_SERVICE + _patches.vehicle_speed;
+				}
 			} break;
 
 			case OT_LOADING:
@@ -592,7 +596,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
 		case 7: /* goto hangar */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_A012_CAN_T_SEND_AIRCRAFT_TO));
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_A012_CAN_T_SEND_AIRCRAFT_TO));
 			break;
 		case 8: /* refit */
 			ShowAircraftRefitWindow(v);

@@ -975,7 +975,11 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			case OT_GOTO_DEPOT: {
 				Depot *dep = GetDepot(v->current_order.dest.depot);
 				SetDParam(0, dep->town_index);
-				str = STR_HEADING_FOR_TRAIN_DEPOT + _patches.vehicle_speed;
+				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+					str = STR_HEADING_FOR_TRAIN_DEPOT + _patches.vehicle_speed;
+				} else {
+					str = STR_HEADING_FOR_TRAIN_DEPOT_SERVICE + _patches.vehicle_speed;
+				}
 				SetDParam(1, v->u.rail.last_speed);
 			} break;
 
@@ -1021,7 +1025,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			break;
 		case 7:	/* goto depot */
 			/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_TRAIN_GOTO_DEPOT | CMD_NO_TEST_IF_IN_NETWORK | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT));
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_TRAIN_GOTO_DEPOT | CMD_NO_TEST_IF_IN_NETWORK | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT));
 			break;
 		case 8: /* force proceed */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL));

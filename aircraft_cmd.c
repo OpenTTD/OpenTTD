@@ -492,9 +492,8 @@ int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param tile unused
  * @param p1 vehicle ID to send to the hangar
  * @param p2 various bitmasked elements
- * - p2 = 0      - aircraft goes to the depot and stays there (user command)
- * - p2 (bit 16) - aircraft will try to goto a depot, but not stop there (eg autorenew or autoreplace)
- * - p2 (bit 17) - aircraft will try to goto a depot at the airport specified by low word of p2 XXX - Not Used
+ * - p2 bit 0 - aircraft will try to goto a hangar, but not stop there (service only)
+ * - p2 bit 1 - aircraft will try to locate another airport with a hangar if the target airport lacks one (used by helicopters for autorenew and autoreplace)
  */
 int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -516,14 +515,13 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	} else {
 		bool next_airport_has_hangar = true;
 		/* If bit 17 is set, next airport is specified by low word of p2, otherwise it's the target airport */
-		/* XXX - I don't think p2 is any valid station cause all calls use either 0, 1, or 1<<16!!!!!!!!! */
-		StationID next_airport_index = (HASBIT(p2, 17)) ? (StationID)p2 : v->u.air.targetairport;
+		StationID next_airport_index = v->u.air.targetairport;
 		const Station *st = GetStation(next_airport_index);
 		/* If the station is not a valid airport or if it has no hangars */
 		if (!IsValidStation(st) || st->airport_tile == 0 || GetAirport(st->airport_type)->nof_depots == 0) {
 			StationID station;
 
-			if (p2 != 0) return CMD_ERROR;
+			if (!HASBIT(p2, 1)) return CMD_ERROR;
 			// the aircraft has to search for a hangar on its own
 			station = FindNearestHangar(v);
 
@@ -536,7 +534,8 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 
 		if (flags & DC_EXEC) {
 			v->current_order.type = OT_GOTO_DEPOT;
-			v->current_order.flags = HASBIT(p2, 16) ? 0 : OF_NON_STOP | OF_FULL_LOAD;
+			v->current_order.flags = OF_NON_STOP;
+			if (!HASBIT(p2,0)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 			v->current_order.dest.station = next_airport_index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			if (HASBIT(p2, 17) || (p2 == 0 && v->u.air.state == FLYING && !next_airport_has_hangar)) {
@@ -1593,7 +1592,7 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 				HASBIT(GetEngine(v->engine_type)->player_avail, _local_player))
 			)) {
 		_current_player = _local_player;
-		DoCommandP(v->tile, v->index, 1 << 16, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
+		DoCommandP(v->tile, v->index, 3, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
 		_current_player = OWNER_NONE;
 	}
 }
@@ -1655,9 +1654,9 @@ static void AircraftEventHandler_Landing(Vehicle *v, const AirportFTAClass *Airp
 		// only the vehicle owner needs to calculate the rest (locally)
 		if (EngineHasReplacementForPlayer(p, v->engine_type) ||
 			(p->engine_renew && v->age - v->max_age > (p->engine_renew_months * 30))) {
-			// send the aircraft to the hangar at next airport (bit 17 set)
+			// send the aircraft to the hangar at next airport
 			_current_player = _local_player;
-			DoCommandP(v->tile, v->index, 1 << 16, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
+			DoCommandP(v->tile, v->index, 1, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
 			_current_player = OWNER_NONE;
 		}
 	}

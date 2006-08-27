@@ -1924,7 +1924,7 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 /** Send a train to a depot
  * @param tile unused
  * @param p1 train to send to the depot
- * @param p2 unused
+ * @param p2 if bit 0 is set, then the train will only service at the depot. 0 Makes it stop inside
  */
 int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1960,7 +1960,8 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		v->dest_tile = tfdd.tile;
 		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OF_NON_STOP | OF_FULL_LOAD;
+		v->current_order.flags = OF_NON_STOP;
+		if (!HASBIT(p2,0)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 		v->current_order.dest.depot = GetDepotByTile(tfdd.tile)->index;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 		/* If there is no depot in front, reverse automatically */

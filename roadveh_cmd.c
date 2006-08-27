@@ -357,7 +357,7 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
 /** Send a road vehicle to the depot.
  * @param tile unused
  * @param p1 vehicle ID to send to the depot
- * @param p2 unused
+ * @param p2 if bit 0 is set, then the road vehicle will only service at the depot. 0 Makes it stop inside
  */
 int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -393,7 +393,8 @@ int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		ClearSlot(v);
 		v->current_order.type = OT_GOTO_DEPOT;
-		v->current_order.flags = OF_NON_STOP | OF_HALT_IN_DEPOT;
+		v->current_order.flags = OF_NON_STOP;
+		if (!HASBIT(p2,0)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 		v->current_order.dest.depot = dep->index;
 		v->dest_tile = dep->xy;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);

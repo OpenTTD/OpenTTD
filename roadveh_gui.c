@@ -343,7 +343,11 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 				Depot *depot = GetDepot(v->current_order.dest.depot);
 				SetDParam(0, depot->town_index);
 				SetDParam(1, v->cur_speed / 2);
-				str = STR_HEADING_FOR_ROAD_DEPOT + _patches.vehicle_speed;
+				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+					str = STR_HEADING_FOR_ROAD_DEPOT + _patches.vehicle_speed;
+				} else {
+					str = STR_HEADING_FOR_ROAD_DEPOT_SERVICE + _patches.vehicle_speed;
+				}
 			} break;
 
 			case OT_LOADING:
@@ -379,7 +383,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
 		case 7: /* goto depot */
-			DoCommandP(v->tile, v->index, 0, NULL, CMD_SEND_ROADVEH_TO_DEPOT | CMD_MSG(STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT));
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_SEND_ROADVEH_TO_DEPOT | CMD_MSG(STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT));
 			break;
 		case 8: /* turn around */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_TURN_ROADVEH | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
