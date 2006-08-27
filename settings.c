@@ -1433,6 +1433,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDVAR (Patches, yapf.rail_shorter_platform_per_tile_penalty, SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   0 * YAPF_TILE_LENGTH,        0,   20000, STR_NULL, NULL),
 	// road vehicles - penalties
 	SDT_CONDVAR (Patches, yapf.road_slope_penalty                    , SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   2 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.road_curve_penalty                    , SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   1 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.road_crossing_penalty                 , SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   3 * YAPF_TILE_LENGTH,        0, 1000000, STR_NULL, NULL),
 
 	/***************************************************************************/

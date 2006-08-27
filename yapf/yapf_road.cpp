@@ -57,7 +57,7 @@ protected:
 			}
 		} else {
 			// non-diagonal trackdir
-			cost = YAPF_TILE_CORNER_LENGTH;
+			cost = YAPF_TILE_CORNER_LENGTH + Yapf().PfGetSettings().road_curve_penalty;
 		}
 		return cost;
 	}
