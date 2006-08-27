@@ -180,7 +180,14 @@ public:
 	FORCEINLINE void AddStartupNode(Node& n)
 	{
 		Yapf().PfNodeCacheFetch(n);
-		m_nodes.InsertOpenNode(n);
+		// insert the new node only if it is not there
+		if (&m_nodes.FindOpenNode(n.m_key) == NULL) {
+			m_nodes.InsertOpenNode(n);
+		} else {
+			// if we are here, it means that node is already there - how it is possible?
+			//   probably the train is in the position that both its ends point to the same tile/exit-dir
+			//   very unlikely, but it happened
+		}
 	}
 
 	/** add multiple nodes - direct children of the given node */
