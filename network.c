@@ -1392,10 +1392,16 @@ void NetworkStartUp(void)
 	/* Generate an unique id when there is none yet */
 	if (_network_unique_id[0] == '\0') NetworkGenerateUniqueId();
 
-	memset(&_network_game_info, 0, sizeof(_network_game_info));
-	_network_game_info.clients_max = 10; // XXX - hardcoded, string limiation -- TrueLight
-	_network_game_info.companies_max = MAX_PLAYERS; // 8
-	_network_game_info.spectators_max = _network_game_info.clients_max;
+	{
+		byte cl_max = _network_game_info.clients_max;
+		byte cp_max = _network_game_info.companies_max;
+		byte sp_max = _network_game_info.spectators_max;
+
+		memset(&_network_game_info, 0, sizeof(_network_game_info));
+		_network_game_info.clients_max = cl_max;
+		_network_game_info.companies_max = cp_max;
+		_network_game_info.spectators_max = sp_max;
+	}
 
 	// Let's load the network in windows
 	#if defined(WIN32)
