@@ -2850,6 +2850,8 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Komut li
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Komut listesinde bu durak olan uçaklari listele
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Komut listesinde bu durak olan gemileri listele
 
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ayni talimatlara sahip bütün araçlari göster
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Araçlari Degistir
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} Degistir
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Araçlari Degistirmeye Basla

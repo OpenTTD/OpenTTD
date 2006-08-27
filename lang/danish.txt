@@ -600,6 +600,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Forminds
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generer tilfældigt land
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nulstil landskab
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nulstil Landskab
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Brug højdekort
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Brug højdekort
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Er du sikker på, at du vil nulstille landskabet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskabsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
@@ -712,6 +714,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Gem scen
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Hent scenarie
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Gem scenarie
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spil et scenarie
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Spil højdekort
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start et nyt spil med et højdekort som landskab
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på, at du vil afslutte dette scenarie ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Afslut Editoren
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer med mindst 1200 indbyggere
@@ -1443,6 +1447,10 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-størr
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Kan ikke hente billedet fra PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...filen blev ikke fundet.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kan ikke konvertere billedtype. Der skal bruges 8 eller 24-bit PNG.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...noget gik galt. Undskyld (Måske en ødelagt fil)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Kan ikke hente landskab fra BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kunne ikke konvertere billedtypen.
@@ -2541,6 +2549,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Stopper
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {VELOCITY}
+STR_INCOMPATIBLE_RAIL_TYPES                                     :Skinnetyperne passer ikke sammen
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Lastbil i vejen
@@ -2824,6 +2833,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Vis alle fly, som har denne lufthavn i deres ruteplan
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle skibe, som har denne station i deres ruteplan
 
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Udskift Køretøjer
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Udskift {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start udskiftning
@@ -2876,10 +2886,26 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motorise
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Generer
+STR_RANDOM                                                      :{BLACK}Tilfældig
+STR_RANDOM_HELP                                                 :{BLACK}Ændre den tilfældige værdi ved brug i terrængeneratoren
+STR_RANDOM_SEED                                                 :{BLACK}Tilfældig
+STR_RANDOM_SEED_HELP                                            :{BLACK}Klik for at angive tilfældighed
+STR_LAND_GENERATOR                                              :{BLACK}Landskabsgenerator:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Højdekortets rotation:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Havniveau
+STR_SMOOTHNESS                                                  :{BLACK}Blødhed:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sneliniehøjde
 STR_DATE                                                        :{BLACK}Dato:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Antal byer:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Antal industrier:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Flyt sneliniehøjden een op
+STR_SNOW_LINE_DOWN                                              :{BLACK}Flyt sneliniehøjden een ned
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ændre sneliniehøjden
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalerings advarsel
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}At ændre størrelsen på kildebilledet anbefales ikke. Fortsæt genereringen?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Højdekortets navn:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Størrelse: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generere verden...
 STR_GENERATION_ABORT                                            :{BLACK}Afbryd
@@ -2888,18 +2914,27 @@ STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vil du 
 STR_PROGRESS                                                    :{WHITE}{NUM}% færdig
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_CLEARING_TILES                                              :{BLACK}Generer rå og stenet område
+STR_SETTINGUP_GAME                                              :{BLACK}Klargører spil
+STR_PREPARING_TILELOOP                                          :{BLACK}Kører flise-løkken
 STR_PREPARING_GAME                                              :{BLACK}Forbereder spil
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Denne handling ændrere sværhedsgraden til speciel
+STR_SE_FLAT_WORLD                                               :{WHITE}Flat land
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generér flat land
+STR_SE_RANDOM_LAND                                              :{WHITE}Tilfældigt land
+STR_SE_NEW_WORLD                                                :{BLACK}Opret nyt scenare
+STR_SE_CAPTION                                                  :{WHITE}Scenarietype
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flyt højden af flat land en ned
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flyt højden af flat land en up
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ændre højden af flat land
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Højde af flat land:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrer det lille kort ved den nuværende position
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Lille
 STR_CITY_AIRPORT                                                :{BLACK}By
+STR_METRO_AIRPORT                                               :{BLACK}Metropollufthavn
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}International lufthavn
 STR_COMMUTER_AIRPORT                                            :{BLACK}Pendler
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}International
@@ -2909,5 +2944,6 @@ STR_HELISTATION                                                 :{BLACK}Helikopt
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Små lufthavne
 STR_LARGE_AIRPORTS                                              :{BLACK}Store lufthavne
+STR_HUB_AIRPORTS                                                :{BLACK}Central lufthavn
 STR_HELIPORTS                                                   :{BLACK}Helikopter lufthavn
 ########
