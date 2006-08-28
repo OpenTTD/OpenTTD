@@ -796,8 +796,10 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				case SDT_BOOLX: value ^= 1; break;
 				case SDT_NUMX: {
 					/* Add a dynamic step-size to the scroller. In a maximum of
-					 * 50-steps you should be able to get from min to max */
-					uint32 step = ((sdb->max - sdb->min) / 50);
+					 * 50-steps you should be able to get from min to max,
+					 * unless specified otherwise in the 'interval' variable
+					 * of the current patch. */
+					uint32 step = (sdb->interval == 0) ? ((sdb->max - sdb->min) / 50) : sdb->interval;
 					if (step == 0) step = 1;
 
 					// don't allow too fast scrolling

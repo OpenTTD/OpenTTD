@@ -41,6 +41,7 @@ typedef struct SettingDescBase {
 	SettingDescType cmd;    ///< various flags for the variable
 	SettingGuiFlag flags;   ///< handles how a setting would show up in the GUI (text/currency, etc.)
 	int32 min, max;         ///< minimum and maximum values
+	int32 interval;         ///< the interval to use between settings in the 'patches' window. If interval is '0' the interval is dynamically determined
 	const char *many;       ///< ONE/MANY_OF_MANY: string of possible values for this type
 	StringID str;           ///< (translated) string with descriptive text; gui and console
 	OnChange *proc;         ///< callback procedure for when the value is changed
