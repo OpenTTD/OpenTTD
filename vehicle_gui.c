@@ -494,11 +494,13 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 				|| !(rvi->flags & RVI_WAGON) != is_engine ||
 				!HASBIT(e->player_avail, _local_player))
 				continue;
-		} /*else {
-		// TODO find a nice red colour for vehicles being replaced
+#if 0
+		} else {
+			// TODO find a nice red colour for vehicles being replaced
 			if ( _autoreplace_array[i] != i )
 				colour = *sel == 0 ? 0x44 : 0x45;
-		} */
+#endif
+		}
 
 		if (IS_INT_INSIDE(--*pos, -lines_drawn, 0)) {
 			DrawString(*x + 59, *y + 2, GetCustomEngineName(i),

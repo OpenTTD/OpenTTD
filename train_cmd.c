@@ -1593,7 +1593,7 @@ static void AdvanceWagons(Vehicle *v, bool before)
 		int i;
 
 		// find pairwise matching wagon
-		// start<>end, start+1<>end-1, ... */
+		// start<>end, start+1<>end-1, ...
 		last = first;
 		for (i = length - 3; i > 0; i--) last = last->next;
 

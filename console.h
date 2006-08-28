@@ -101,12 +101,12 @@ typedef struct IConsoleAlias {
 	char *cmdline;              // command(s) that is/are being aliased
 } IConsoleAlias;
 
-// ** console parser ** //
+/* console parser */
 VARDEF IConsoleCmd   *_iconsole_cmds;    // list of registred commands
 VARDEF IConsoleVar   *_iconsole_vars;    // list of registred vars
 VARDEF IConsoleAlias *_iconsole_aliases; // list of registred aliases
 
-// ** console colors/modes ** //
+/* console colors/modes */
 VARDEF byte _icolour_def;
 VARDEF byte _icolour_err;
 VARDEF byte _icolour_warn;
@@ -114,7 +114,7 @@ VARDEF byte _icolour_dbg;
 VARDEF byte _icolour_cmd;
 VARDEF IConsoleModes _iconsole_mode;
 
-// ** console functions ** //
+/* console functions */
 void IConsoleInit(void);
 void IConsoleFree(void);
 void IConsoleClearBuffer(void);
@@ -123,38 +123,38 @@ void IConsoleSwitch(void);
 void IConsoleClose(void);
 void IConsoleOpen(void);
 
-// ** console output ** //
+/* console output */
 void IConsolePrint(uint16 color_code, const char *string);
 void CDECL IConsolePrintF(uint16 color_code, const char *s, ...);
 void IConsoleDebug(const char *string);
 void IConsoleWarning(const char *string);
 void IConsoleError(const char *string);
 
-// *** Commands *** //
+/* Commands */
 void IConsoleCmdRegister(const char *name, IConsoleCmdProc *proc);
 void IConsoleAliasRegister(const char *name, const char *cmd);
 IConsoleCmd *IConsoleCmdGet(const char *name);
 IConsoleAlias *IConsoleAliasGet(const char *name);
 
-// *** Variables *** //
+/* Variables */
 void IConsoleVarRegister(const char *name, void *addr, IConsoleVarTypes type, const char *help);
 void IConsoleVarStringRegister(const char *name, void *addr, uint32 size, const char *help);
 IConsoleVar* IConsoleVarGet(const char *name);
 void IConsoleVarPrintGetValue(const IConsoleVar *var);
 void IConsoleVarPrintSetValue(const IConsoleVar *var);
 
-// *** Parser *** //
+/* Parser */
 void IConsoleCmdExec(const char *cmdstr);
 void IConsoleVarExec(const IConsoleVar *var, byte tokencount, char *token[]);
 
-// ** console std lib (register ingame commands/aliases/variables) ** //
+/* console std lib (register ingame commands/aliases/variables) */
 void IConsoleStdLibRegister(void);
 
-// ** Hooking code ** //
+/* Hooking code */
 void IConsoleCmdHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc);
 void IConsoleVarHookAdd(const char *name, IConsoleHookTypes type, IConsoleHook *proc);
 void IConsoleVarProcAdd(const char *name, IConsoleCmdProc *proc);
 
-// ** Supporting functions **//
+/* Supporting functions */
 bool GetArgumentInteger(uint32 *value, const char *arg);
 #endif /* CONSOLE_H */

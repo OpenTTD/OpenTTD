@@ -282,9 +282,11 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			SelectSongToPlay();
 			break;
 
-		//case 12: /* save */
-		//	ShowInfo("MusicTrackSelectionWndProc:save not implemented\n");
-		//	break;
+#if 0
+		case 12: /* save */
+			ShowInfo("MusicTrackSelectionWndProc:save not implemented\n");
+			break;
+#endif
 
 		case 5: case 6: case 7: case 8: case 9: case 10: /* set playlist */
 			msf.playlist = e->click.widget - 5;

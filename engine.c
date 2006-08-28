@@ -75,7 +75,7 @@ void DeleteCustomEngineNames(void)
 
 void LoadCustomEngineNames(void)
 {
-	// XXX: not done */
+	/* XXX: not done */
 	DEBUG(misc, 1) ("LoadCustomEngineNames: not done");
 }
 

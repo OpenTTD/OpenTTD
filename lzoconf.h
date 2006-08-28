@@ -53,8 +53,8 @@ extern "C" {
 
 
 /***********************************************************************
-// LZO requires a conforming <limits.h>
-************************************************************************/
+ * LZO requires a conforming <limits.h>
+ ***********************************************************************/
 
 #if !defined(CHAR_BIT) || (CHAR_BIT != 8)
 #  error "invalid CHAR_BIT"
@@ -79,8 +79,8 @@ extern "C" {
 
 
 /***********************************************************************
-// architecture defines
-************************************************************************/
+ * architecture defines
+ ***********************************************************************/
 
 #if !defined(__LZO_WIN) && !defined(__LZO_DOS) && !defined(__LZO_OS2)
 #  if defined(__WINDOWS__) || defined(_WINDOWS) || defined(_Windows)
@@ -146,8 +146,8 @@ extern "C" {
 
 
 /***********************************************************************
-// integral and pointer types
-************************************************************************/
+ * integral and pointer types
+ ***********************************************************************/
 
 /* Integral types with 32 bits or more */
 #if !defined(LZO_UINT32_MAX)
@@ -191,8 +191,8 @@ typedef int lzo_bool;
 
 
 /***********************************************************************
-// memory models
-************************************************************************/
+ * memory models
+ ***********************************************************************/
 
 /* Memory model for the public code segment. */
 #if !defined(__LZO_CMODEL)
@@ -250,8 +250,8 @@ typedef int lzo_bool;
 
 
 /***********************************************************************
-// calling conventions and function types
-************************************************************************/
+ * calling conventions and function types
+ ***********************************************************************/
 
 /* linkage */
 #if !defined(__LZO_EXTERN_C)
@@ -332,8 +332,8 @@ typedef void (__LZO_ENTRY *lzo_progress_callback_t) (lzo_uint, lzo_uint);
 
 
 /***********************************************************************
-// export information
-************************************************************************/
+ * export information
+ ***********************************************************************/
 
 /* DLL export information */
 #if !defined(__LZO_EXPORT1)
@@ -376,8 +376,8 @@ typedef void (__LZO_ENTRY *lzo_progress_callback_t) (lzo_uint, lzo_uint);
 
 
 /***********************************************************************
-// error codes and prototypes
-************************************************************************/
+ * error codes and prototypes
+ ***********************************************************************/
 
 /* Error codes for the compression/decompression functions. Negative
  * values are errors, positive values will be used for special but
