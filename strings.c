@@ -41,13 +41,13 @@ extern const char _openttd_revision[];
 
 typedef struct LanguagePack {
 	uint32 ident;
-	uint32 version;			// 32-bits of auto generated version info which is basically a hash of strings.h
-	char name[32];			// the international name of this language
-	char own_name[32];	// the localized name of this language
-	char isocode[16];	// the ISO code for the language (not country code)
-	uint16 offsets[32];	// the offsets
-	byte plural_form;		// how to compute plural forms
-	byte pad[3];				// pad header to be a multiple of 4
+	uint32 version;     // 32-bits of auto generated version info which is basically a hash of strings.h
+	char name[32];      // the international name of this language
+	char own_name[32];  // the localized name of this language
+	char isocode[16];   // the ISO code for the language (not country code)
+	uint16 offsets[32]; // the offsets
+	byte plural_form;   // how to compute plural forms
+	byte pad[3];        // pad header to be a multiple of 4
 	char data[VARARRAY_SIZE];
 } LanguagePack;
 

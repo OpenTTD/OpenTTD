@@ -281,9 +281,9 @@ int ShowAdditionalText(int x, int y, int w, EngineID engine)
 
 
 /* Variables you need to set before calling this function!
-* 1. (byte)_internal_sort_type:					sorting criteria to sort on
-* 2. (bool)_internal_sort_order:				sorting order, descending/ascending
-* 3. (uint32)_internal_name_sorter_id:	default StringID of the vehicle when no name is set. eg
+* 1. (byte)_internal_sort_type:        sorting criteria to sort on
+* 2. (bool)_internal_sort_order:       sorting order, descending/ascending
+* 3. (uint32)_internal_name_sorter_id: default StringID of the vehicle when no name is set. eg
 *    STR_SV_TRAIN_NAME for trains or STR_SV_AIRCRAFT_NAME for aircraft
 */
 static int CDECL VehicleUnsortedSorter(const void *a, const void *b)
@@ -325,7 +325,7 @@ static int CDECL VehicleNameSorter(const void *a, const void *b)
 		}
 	}
 
-	r =  strcmp(buf1, _bufcache);	// sort by name
+	r =  strcmp(buf1, _bufcache); // sort by name
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 
@@ -464,8 +464,9 @@ static int CDECL VehicleValueSorter(const void *a, const void *b)
 #define ENGINE_AVAILABLE ((e->flags & 1 && HASBIT(info->climates, _opt.landscape)) || HASBIT(e->player_avail, _local_player))
 
 /*  if show_outdated is selected, it do not sort psudo engines properly but it draws all engines
- *	if used compined with show_cars set to false, it will work as intended. Replace window do it like that
- *  this was a big hack even before show_outdated was added. Stupid newgrf :p										*/
+ * if used compined with show_cars set to false, it will work as intended. Replace window do it like that
+ *  this was a big hack even before show_outdated was added. Stupid newgrf :p
+ */
 static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, EngineID *selected_id, RailType railtype,
 	uint8 lines_drawn, bool is_engine, bool show_cars, bool show_outdated, bool show_compatible)
 {
@@ -535,8 +536,8 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 		case VEH_Train: {
 			RailType railtype = _railtype_selected_in_replace_gui;
 
-			w->widget[13].color = _player_colors[_local_player];	// sets the colour of that art thing
-			w->widget[16].color = _player_colors[_local_player];	// sets the colour of that art thing
+			w->widget[13].color = _player_colors[_local_player]; // sets the colour of that art thing
+			w->widget[16].color = _player_colors[_local_player]; // sets the colour of that art thing
 
 			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 				EngineID eid = GetRailVehAtPosition(i);
@@ -911,7 +912,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 				DrawString(145, 87 + w->resize.step_height * w->vscroll.cap, STR_02BD, 0x10);
 
-				/*	now we draw the two arrays according to what we just counted */
+				/* now we draw the two arrays according to what we just counted */
 				DrawEngineArrayInReplaceWindow(w, x, y, x2, y2, pos, pos2, sel[0], sel[1], selected_id[0], selected_id[1]);
 
 				WP(w,replaceveh_d).sel_engine[0] = selected_id[0];

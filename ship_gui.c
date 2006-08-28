@@ -383,7 +383,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 				DoCommandP(w->window_number, sel_eng, 0, CcBuildShip, CMD_BUILD_SHIP | CMD_MSG(STR_980D_CAN_T_BUILD_SHIP));
 		} break;
 
-		case 6:	{ /* rename */
+		case 6: { /* rename */
 			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
 			if (sel_eng != INVALID_ENGINE) {
 				WP(w,buildtrain_d).rename_engine = sel_eng;
@@ -828,7 +828,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e)
 
 		case 4:
 			if (!HASBIT(w->disabled_state, 4) &&
-					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
+					WP(w,traindepot_d).sel != INVALID_VEHICLE) {
 				Vehicle *v;
 
 				HandleButtonClick(w, 4);
@@ -1066,7 +1066,7 @@ static void PlayerShipsWndProc(Window *w, WindowEvent *e)
 
 			if (id_v >= vl->list_length) return; // click out of list bound
 
-			v	= vl->sort_list[id_v];
+			v = vl->sort_list[id_v];
 
 			assert(v->type == VEH_Ship);
 
@@ -1175,6 +1175,6 @@ void ShowPlayerShips(PlayerID player, StationID station)
 
 void ShowVehWithSharedOrdersShips(Vehicle *v)
 {
-	if (v->orders == NULL) return;	// no shared list to show
+	if (v->orders == NULL) return; // no shared list to show
 	ShowPlayerShipsLocal(v->owner, INVALID_STATION, v->orders->index, true);
 }

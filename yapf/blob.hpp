@@ -21,7 +21,7 @@ FORCEINLINE void MemCpyT(Titem_* d, const Titem_* s, int num_items = 1)
 			- no thread synchronization at all */
 class CBlobBaseSimple {
 protected:
-	struct CHdr	{
+	struct CHdr {
 		int    m_size;      // actual blob size in bytes
 		int    m_max_size;  // maximum (allocated) size in bytes
 	};
@@ -66,7 +66,7 @@ public:
 		assert(p != NULL);
 		if (num_bytes > 0) {
 			memcpy(GrowRawSize(num_bytes), p, num_bytes);
-		}	else {
+		} else {
 			assert(num_bytes >= 0);
 		}
 	}
@@ -116,7 +116,7 @@ public:
 		// ask allocation policy for some reasonable block size
 		int alloc_size = AllocPolicy(min_alloc_size);
 		// allocate new block
-		CHdr* pNewHdr =	RawAlloc(alloc_size);
+		CHdr* pNewHdr = RawAlloc(alloc_size);
 		// setup header
 		pNewHdr->m_size = RawSize();
 		pNewHdr->m_max_size = alloc_size - (sizeof(CHdr) + Ttail_reserve);

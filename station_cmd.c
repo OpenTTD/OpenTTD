@@ -799,7 +799,7 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 		if (tileh != SLOPE_FLAT) {
 			// need to check so the entrance to the station is not pointing at a slope.
 			if ((invalid_dirs&1 && !(tileh & SLOPE_NE) && (uint)w_cur == w) ||
-					(invalid_dirs&2 && !(tileh & SLOPE_SE) &&	h_cur == 1) ||
+					(invalid_dirs&2 && !(tileh & SLOPE_SE) && h_cur == 1) ||
 					(invalid_dirs&4 && !(tileh & SLOPE_SW) && w_cur == 1) ||
 					(invalid_dirs&8 && !(tileh & SLOPE_NW) && (uint)h_cur == h)) {
 				return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
@@ -1020,7 +1020,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 
 		//XXX can't we pack this in the "else" part of the if above?
 		if (!CheckStationSpreadOut(st, tile_org, w_org, h_org)) return CMD_ERROR;
-	}	else {
+	} else {
 		// Create a new station
 		st = AllocateStation();
 		if (st == NULL) return CMD_ERROR;

@@ -62,10 +62,6 @@ extern "C" {
 #endif
 
 
-/***********************************************************************
-//
-************************************************************************/
-
 /* Memory required for the wrkmem parameter.
  * When the required size is 0, you can also pass a NULL pointer.
  */

@@ -2419,7 +2419,7 @@ handle_nocash:
 				cost = DoCommand(tile, p->ai.wagon_list[i], 0, DC_EXEC, CMD_SELL_RAIL_WAGON);
 				assert(!CmdFailed(cost));
 			}
-			p->ai.state =	AIS_0;
+			p->ai.state = AIS_0;
 		}
 		return;
 	}
@@ -2459,7 +2459,7 @@ handle_nocash:
 		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
 			order.flags |= OF_FULL_LOAD;
 
-		DoCommand(0, loco_id + (i << 16),	PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_TRAIN);
@@ -2472,7 +2472,7 @@ handle_nocash:
 //		p->ai.loco_id = INVALID_VEHICLE;
 		p->ai.wagon_list[0] = INVALID_VEHICLE;
 	} else {
-		p->ai.state =	AIS_0;
+		p->ai.state = AIS_0;
 	}
 }
 
@@ -2499,8 +2499,8 @@ static bool AiCheckRoadResources(TileIndex tile, const AiDefaultBlockData *p, by
 	int rad;
 
 	if (_patches.modified_catchment) {
-		rad = CA_TRUCK;		//Same as CA_BUS at the moment?
-	} else {			//change that at some point?
+		rad = CA_TRUCK; // Same as CA_BUS at the moment?
+	} else { // change that at some point?
 		rad = 4;
 	}
 
@@ -3010,11 +3010,11 @@ do_some_terraform:
 		p->ai.cur_tile_a = arf.bridge_end_tile;
 		bridge_len = GetBridgeLength(tile, p->ai.cur_tile_a); // tile
 
-		/*	Figure out what (road)bridge type to build
-				start with best bridge, then go down to worse and worse bridges
-				unnecessary to check for worse bridge (i=0), since AI will always build that.
-				AI is so fucked up that fixing this small thing will probably not solve a thing
-		*/
+		/* Figure out what (road)bridge type to build
+		 * start with best bridge, then go down to worse and worse bridges
+		 * unnecessary to check for worse bridge (i=0), since AI will always build that.
+		 *AI is so fucked up that fixing this small thing will probably not solve a thing
+		 */
 		for (i = 10; i != 0; i--) {
 			if (CheckBridge_Stuff(i, bridge_len)) {
 				int32 cost = DoCommand(tile, p->ai.cur_tile_a, i + (0x80 << 8), DC_AUTO, CMD_BUILD_BRIDGE);
@@ -3191,7 +3191,7 @@ static void AiStateBuildRoadVehicles(Player *p)
 		if (p->ai.num_want_fullload != 0 && (is_pass || i == 0))
 			order.flags |= OF_FULL_LOAD;
 
-		DoCommand(0, loco_id + (i << 16),	PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
+		DoCommand(0, loco_id + (i << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	DoCommand(0, loco_id, 0, DC_EXEC, CMD_START_STOP_ROADVEH);
@@ -3320,8 +3320,8 @@ static bool AiCheckAirportResources(TileIndex tile, const AiDefaultBlockData *p,
 	int rad;
 
 	if (_patches.modified_catchment) {
-		rad = CA_AIR_LARGE;		//I Have NFI what airport the
-	} else {				//AI is going to build here
+		rad = CA_AIR_LARGE; // I Have NFI what airport the
+	} else { // AI is going to build here
 		rad = 4;
 	}
 

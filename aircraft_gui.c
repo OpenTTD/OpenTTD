@@ -197,7 +197,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 				DoCommandP(w->window_number, sel_eng, 0, CcBuildAircraft, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
 		} break;
 
-		case 6:	{ /* rename */
+		case 6: { /* rename */
 			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
 			if (sel_eng != INVALID_ENGINE) {
 				WP(w,buildtrain_d).rename_engine = sel_eng;
@@ -882,7 +882,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 
 		case 4:
 			if (!HASBIT(w->disabled_state, 4) &&
-					WP(w,traindepot_d).sel != INVALID_VEHICLE)	{
+					WP(w,traindepot_d).sel != INVALID_VEHICLE) {
 				Vehicle *v;
 
 				HandleButtonClick(w, 4);
@@ -1227,6 +1227,6 @@ void ShowPlayerAircraft(PlayerID player, StationID station)
 
 void ShowVehWithSharedOrdersAircraft(Vehicle *v)
 {
-	if (v->orders == NULL) return;	// no shared list to show
+	if (v->orders == NULL) return; // no shared list to show
 	ShowPlayerAircraftLocal(v->owner, INVALID_STATION, v->orders->index, true);
 }

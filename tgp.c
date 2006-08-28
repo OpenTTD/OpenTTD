@@ -198,7 +198,7 @@ static HeightMap _height_map = {NULL, 0, 0, 0, 0};
 #define FOR_ALL_TILES_IN_HEIGHT(h) for (h = _height_map.h; h < &_height_map.h[_height_map.total_size]; h++)
 
 /** Noise amplitudes (multiplied by 1024)
- *	- indexed by "smoothness setting" and log2(frequency) */
+ * - indexed by "smoothness setting" and log2(frequency) */
 static const amplitude_t _amplitudes_by_smoothness_and_frequency[4][12] = {
 	// Very smooth
 	{1000,  350,  123,   43,   15,    1,     1,    0,    0,    0,    0,    0},

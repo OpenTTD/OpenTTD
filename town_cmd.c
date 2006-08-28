@@ -676,7 +676,7 @@ build_road_and_exit:
 	tmptile = tile;
 
 	// Now it contains the direction of the slope
-	j = -11;	// max 11 tile long bridges
+	j = -11; // max 11 tile long bridges
 	do {
 		if (++j == 0)
 			goto build_road_and_exit;
@@ -1555,9 +1555,9 @@ static void TownActionBribe(Town* t)
 		// but this is special, because it can only 'fail' on a DC_EXEC
 		if (IsLocalPlayer()) ShowErrorMessage(STR_BRIBE_FAILED_2, STR_BRIBE_FAILED, 0, 0);
 
-		/*	decrease by a lot!
-		 *	ChangeTownRating is only for stuff in demolishing. Bribe failure should
-		 *	be independent of any cheat settings
+		/* decrease by a lot!
+		 * ChangeTownRating is only for stuff in demolishing. Bribe failure should
+		 * be independent of any cheat settings
 		 */
 		if (t->ratings[_current_player] > RATING_BRIBE_DOWN_TO) {
 			t->ratings[_current_player] = RATING_BRIBE_DOWN_TO;
@@ -1659,14 +1659,14 @@ static void UpdateTownGrowRate(Town *t)
 	}
 
 	if (_opt.landscape == LT_HILLY) {
- 		if (TilePixelHeight(t->xy) >= _opt.snow_line && t->act_food == 0 && t->population > 90)
+		if (TilePixelHeight(t->xy) >= _opt.snow_line && t->act_food == 0 && t->population > 90)
 			return;
 	} else if (_opt.landscape == LT_DESERT) {
- 		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food==0 || t->act_water==0) && t->population > 60)
+		if (GetTropicZone(t->xy) == TROPICZONE_DESERT && (t->act_food==0 || t->act_water==0) && t->population > 60)
 			return;
 	}
 
-  	t->growth_rate = m / (t->num_houses / 50 + 1);
+	t->growth_rate = m / (t->num_houses / 50 + 1);
 	if (m <= t->grow_counter)
 		t->grow_counter = m;
 
@@ -1753,7 +1753,7 @@ void ChangeTownRating(Town *t, int add, int max)
 {
 	int rating;
 
-	//	if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff
+	// if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff
 	if (t == NULL ||
 			_current_player >= MAX_PLAYERS ||
 			(_cheats.magic_bulldozer.value && add < 0)) {
@@ -1778,7 +1778,7 @@ void ChangeTownRating(Town *t, int add, int max)
 	t->ratings[_current_player] = rating;
 }
 
-/*	penalty for removing town-owned stuff */
+/* penalty for removing town-owned stuff */
 static const int _default_rating_settings [3][3] = {
 	// ROAD_REMOVE, TUNNELBRIDGE_REMOVE, INDUSTRY_REMOVE
 	{  0, 128, 384}, // Permissive
@@ -1790,13 +1790,13 @@ bool CheckforTownRating(uint32 flags, Town *t, byte type)
 {
 	int modemod;
 
-	//	if magic_bulldozer cheat is active, town doesn't restrict your destructive actions
+	// if magic_bulldozer cheat is active, town doesn't restrict your destructive actions
 	if (t == NULL || _current_player >= MAX_PLAYERS || _cheats.magic_bulldozer.value)
 		return true;
 
-	/*	check if you're allowed to remove the street/bridge/tunnel/industry
-	 *	owned by a town	no removal if rating is lower than ... depends now on
-	 *	difficulty setting. Minimum town rating selected by difficulty level
+	/* check if you're allowed to remove the street/bridge/tunnel/industry
+	 * owned by a town no removal if rating is lower than ... depends now on
+	 * difficulty setting. Minimum town rating selected by difficulty level
 	 */
 	modemod = _default_rating_settings[_opt.diff.town_council_tolerance][type];
 

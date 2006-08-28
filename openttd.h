@@ -129,7 +129,7 @@ typedef enum TransportTypes {
 	 */
 	TRANSPORT_RAIL = 0,
 	TRANSPORT_ROAD = 1,
-	TRANSPORT_WATER,	// = 2
+	TRANSPORT_WATER, // = 2
 	TRANSPORT_END,
 	INVALID_TRANSPORT = 0xff,
 } TransportType;
@@ -239,7 +239,7 @@ typedef struct GameDifficulty {
 	int economy;
 	int line_reverse_mode;
 	int disasters;
-	int town_council_tolerance;	// minimum required town ratings to be allowed to demolish stuff
+	int town_council_tolerance; // minimum required town ratings to be allowed to demolish stuff
 } GameDifficulty;
 
 enum {

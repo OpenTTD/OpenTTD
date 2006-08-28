@@ -63,10 +63,10 @@ static uint NTPHash(uint key1, uint key2)
 
 /**
  * Calculates a hash value for use in the NPF.
- * @param key1	The TileIndex of the tile to hash
- * @param key1	The Trackdir of the track on the tile.
+ * @param key1 The TileIndex of the tile to hash
+ * @param key2 The Trackdir of the track on the tile.
  *
- * @todo	Think of a better hash.
+ * @todo Think of a better hash.
  */
 static uint NPFHash(uint key1, uint key2)
 {

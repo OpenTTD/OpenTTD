@@ -1640,8 +1640,8 @@ static void NewSpriteGroup(byte *buf, int len)
 static void FeatureMapSpriteGroup(byte *buf, int len)
 {
 	/* <03> <feature> <n-id> <ids>... <num-cid> [<cargo-type> <cid>]... <def-cid>
-	 * id-list	:= [<id>] [id-list]
-	 * cargo-list	:= <cargo-type> <cid> [cargo-list]
+	 * id-list    := [<id>] [id-list]
+	 * cargo-list := <cargo-type> <cid> [cargo-list]
 	 *
 	 * B feature       see action 0
 	 * B n-id          bits 0-6: how many IDs this definition applies to

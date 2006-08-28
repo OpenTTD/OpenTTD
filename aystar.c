@@ -79,7 +79,7 @@ static void AyStarMain_OpenList_Add(AyStar *aystar, PathNode *parent, const AySt
 /*
  * Checks one tile and calculate his f-value
  *  return values:
- *	AYSTAR_DONE : indicates we are done
+ * AYSTAR_DONE : indicates we are done
  */
 int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *parent)
 {
@@ -140,12 +140,12 @@ int AyStarMain_CheckTile(AyStar *aystar, AyStarNode *current, OpenListNode *pare
  * This function is the core of AyStar. It handles one item and checks
  *  his neighbour items. If they are valid, they are added to be checked too.
  *  return values:
- *	AYSTAR_EMPTY_OPENLIST : indicates all items are tested, and no path
- *	has been found.
- *	AYSTAR_LIMIT_REACHED : Indicates that the max_nodes limit has been
- *	reached.
- *	AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
- *	AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
+ *   AYSTAR_EMPTY_OPENLIST : indicates all items are tested, and no path
+ *    has been found.
+ *   AYSTAR_LIMIT_REACHED : Indicates that the max_nodes limit has been
+ *    reached.
+ *   AYSTAR_FOUND_END_NODE : indicates we found the end. Path_found now is true, and in path is the path found.
+ *   AYSTAR_STILL_BUSY : indicates we have done this tile, did not found the path yet, and have items left to try.
  */
 int AyStarMain_Loop(AyStar *aystar)
 {
@@ -224,9 +224,9 @@ void AyStarMain_Clear(AyStar *aystar)
 /*
  * This is the function you call to run AyStar.
  *  return values:
- *	AYSTAR_FOUND_END_NODE : indicates we found an end node.
- *	AYSTAR_NO_PATH : indicates that there was no path found.
- *	AYSTAR_STILL_BUSY : indicates we have done some checked, that we did not found the path yet, and that we still have items left to try.
+ *   AYSTAR_FOUND_END_NODE : indicates we found an end node.
+ *   AYSTAR_NO_PATH : indicates that there was no path found.
+ *   AYSTAR_STILL_BUSY : indicates we have done some checked, that we did not found the path yet, and that we still have items left to try.
  * When the algorithm is done (when the return value is not AYSTAR_STILL_BUSY)
  * aystar->clear() is called. Note that when you stop the algorithm halfway,
  * you should still call clear() yourself!
@@ -287,10 +287,10 @@ void init_AyStar(AyStar *aystar, Hash_HashProc hash, uint num_buckets)
 	//  That is why it can stay this high
 	init_BinaryHeap(&aystar->OpenListQueue, 102400);
 
-	aystar->addstart	= AyStarMain_AddStartNode;
-	aystar->main		= AyStarMain_Main;
-	aystar->loop		= AyStarMain_Loop;
-	aystar->free		= AyStarMain_Free;
-	aystar->clear		= AyStarMain_Clear;
-	aystar->checktile	= AyStarMain_CheckTile;
+	aystar->addstart  = AyStarMain_AddStartNode;
+	aystar->main      = AyStarMain_Main;
+	aystar->loop      = AyStarMain_Loop;
+	aystar->free      = AyStarMain_Free;
+	aystar->clear     = AyStarMain_Clear;
+	aystar->checktile = AyStarMain_CheckTile;
 }

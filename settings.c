@@ -341,7 +341,7 @@ static bool ini_save(const char *filename, IniFile *ini)
 			assert(item->value != NULL);
 			if (item->comment != NULL) fputs(item->comment, f);
 
-			//*Don't give an equal sign to list items that don't have a parameter */
+			/* Don't give an equal sign to list items that don't have a parameter */
 			if (group->type == IGT_LIST && *item->value == '\0') {
 				fprintf(f, "%s\n", item->name);
 			} else {

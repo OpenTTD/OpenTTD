@@ -5,7 +5,7 @@
  *  AyStar is a fast pathfinding routine and is used for things like
  *  AI_pathfinding and Train_pathfinding.
  *  For more information about AyStar (A* Algorithm), you can look at
- *	  http://en.wikipedia.org/wiki/A-star_search_algorithm
+ *   http://en.wikipedia.org/wiki/A-star_search_algorithm
  */
 
 #ifndef AYSTAR_H
@@ -55,8 +55,8 @@ typedef struct AyStar AyStar;
 /*
  * This function is called to check if the end-tile is found
  *  return values can be:
- *	AYSTAR_FOUND_END_NODE : indicates this is the end tile
- *	AYSTAR_DONE : indicates this is not the end tile (or direction was wrong)
+ *   AYSTAR_FOUND_END_NODE : indicates this is the end tile
+ *   AYSTAR_DONE : indicates this is not the end tile (or direction was wrong)
  */
 /*
  * The 2nd parameter should be OpenListNode, and NOT AyStarNode. AyStarNode is
@@ -71,8 +71,8 @@ typedef int32 AyStar_EndNodeCheck(AyStar *aystar, OpenListNode *current);
 /*
  * This function is called to calculate the G-value for AyStar Algorithm.
  *  return values can be:
- *	AYSTAR_INVALID_NODE : indicates an item is not valid (e.g.: unwalkable)
- *	Any value >= 0 : the g-value for this tile
+ *   AYSTAR_INVALID_NODE : indicates an item is not valid (e.g.: unwalkable)
+ *   Any value >= 0 : the g-value for this tile
  */
 typedef int32 AyStar_CalculateG(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
 
@@ -81,7 +81,7 @@ typedef int32 AyStar_CalculateG(AyStar *aystar, AyStarNode *current, OpenListNod
  *  Mostly, this must result the distance (Manhattan way) between the
  *   current point and the end point
  *  return values can be:
- *	Any value >= 0 : the h-value for this tile
+ *   Any value >= 0 : the h-value for this tile
  */
 typedef int32 AyStar_CalculateH(AyStar *aystar, AyStarNode *current, OpenListNode *parent);
 

@@ -674,7 +674,7 @@ static const DrawTileSeqStruct _station_display_datas_0113[] = {
 // concrete underground
 static const DrawTileSeqStruct _station_display_datas_0114[] = {
 	{ 10,  6,  0,  0,  0,  0, SPR_AIRPORT_HELIPAD },
-	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR },	// fences bottom
+	{ 15,  0,  0,  1, 16,  6, SPR_AIRPORT_FENCE_Y | PALETTE_MODIFIER_COLOR }, // fences bottom
 	TILE_SEQ_END()
 };
 

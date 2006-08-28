@@ -656,7 +656,7 @@ static void DrawRoadDepotWindow(Window *w)
 
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Road && IsRoadVehInDepot(v) && v->tile == tile &&
-				--num < 0 && num >=	-w->vscroll.cap * w->hscroll.cap) {
+				--num < 0 && num >= -w->vscroll.cap * w->hscroll.cap) {
 			DrawRoadVehImage(v, x+24, y, WP(w,traindepot_d).sel);
 
 			SetDParam(0, v->unitnumber);
@@ -1053,7 +1053,7 @@ static void PlayerRoadVehWndProc(Window *w, WindowEvent *e)
 
 			if (id_v >= vl->list_length) return; // click out of list bound
 
-			v	= vl->sort_list[id_v];
+			v = vl->sort_list[id_v];
 
 			assert(v->type == VEH_Road && v->owner == owner);
 
@@ -1161,6 +1161,6 @@ void ShowPlayerRoadVehicles(PlayerID player, StationID station)
 
 void ShowVehWithSharedOrdersRoadVehicles(Vehicle *v)
 {
-	if (v->orders == NULL) return;	// no shared list to show
+	if (v->orders == NULL) return; // no shared list to show
 	ShowPlayerRoadVehiclesLocal(v->owner, INVALID_STATION, v->orders->index, true);
 }

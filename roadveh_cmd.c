@@ -1393,7 +1393,7 @@ again:
 	}
 
 	if (rd.x & 0x40) {
-		int dir = RoadFindPathToDest(v, v->tile,	rd.x & 3);
+		int dir = RoadFindPathToDest(v, v->tile, rd.x & 3);
 		uint32 r;
 		int tmp;
 		Direction newdir;

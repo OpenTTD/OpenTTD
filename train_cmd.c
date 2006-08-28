@@ -95,8 +95,8 @@ void TrainPowerChanged(Vehicle* v)
 			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeOnBridge(u->tile))) engine_has_power = false;
 			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeOnBridge(u->tile))) wagon_has_power = false;
 		} else if (IsLevelCrossingTile(u->tile)) {
-			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeCrossing(u->tile)))	engine_has_power = false;
-			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeCrossing(u->tile)))	wagon_has_power = false;
+			if (!HasPowerOnRail(u->u.rail.railtype, GetRailTypeCrossing(u->tile))) engine_has_power = false;
+			if (!HasPowerOnRail(v->u.rail.railtype, GetRailTypeCrossing(u->tile))) wagon_has_power = false;
 		} else {
 			if (!HasPowerOnRail(u->u.rail.railtype, GetRailType(u->tile))) engine_has_power = false;
 			if (!HasPowerOnRail(v->u.rail.railtype, GetRailType(u->tile))) wagon_has_power = false;
@@ -271,13 +271,13 @@ static bool TrainShouldStop(const Vehicle* v, TileIndex tile)
 static int GetTrainAcceleration(Vehicle *v, bool mode)
 {
 	const Vehicle *u;
-	int num = 0;	//number of vehicles, change this into the number of axles later
+	int num = 0; //number of vehicles, change this into the number of axles later
 	int power = 0;
 	int mass = 0;
 	int max_speed = 2000;
 	int area = 120;
 	int friction = 35; //[1e-3]
-	int drag_coeff = 20;	//[1e-4]
+	int drag_coeff = 20; //[1e-4]
 	int incl = 0;
 	int resistance;
 	int speed = v->cur_speed; //[mph]
@@ -358,7 +358,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		if (u->u.rail.track == 0x80) max_speed = min(max_speed, 61);
 
 		if (HASBIT(u->u.rail.flags, VRF_GOINGUP)) {
-			incl += u->u.rail.cached_veh_weight * 60;		//3% slope, quite a bit actually
+			incl += u->u.rail.cached_veh_weight * 60; //3% slope, quite a bit actually
 		} else if (HASBIT(u->u.rail.flags, VRF_GOINGDOWN)) {
 			incl -= u->u.rail.cached_veh_weight * 60;
 		}
@@ -810,7 +810,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			TrainConsistChanged(v);
 			UpdateTrainAcceleration(v);
 
-			if (!HASBIT(p2, 1)) {	// check if the cars should be added to the new vehicle
+			if (!HASBIT(p2, 1)) { // check if the cars should be added to the new vehicle
 				NormalizeTrainVehInDepot(v);
 			}
 
@@ -1183,7 +1183,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		 * we can't loop forever here because next time we reach this line we will have a front engine */
 		if (src_head != NULL && !IsFrontEngine(src_head) && IsTrainEngine(src_head)) {
 			CmdMoveRailVehicle(0, flags, src_head->index | (INVALID_VEHICLE << 16), 1);
-			src_head = NULL;	// don't do anything more to this train since the new call will do it
+			src_head = NULL; // don't do anything more to this train since the new call will do it
 		}
 
 		if (src_head != NULL) {
@@ -3670,7 +3670,7 @@ void ConvertOldMultiheadToNew(void)
 	Vehicle *v;
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Train) {
-			SETBIT(v->subtype, 7);	// indicates that it's the old format and needs to be converted in the next loop
+			SETBIT(v->subtype, 7); // indicates that it's the old format and needs to be converted in the next loop
 		}
 	}
 
@@ -3684,18 +3684,18 @@ void ConvertOldMultiheadToNew(void)
 
 					CLRBIT(u->subtype, 7);
 					switch (u->subtype) {
-						case 0:	/* TS_Front_Engine */
+						case 0: /* TS_Front_Engine */
 							if (rvi->flags & RVI_MULTIHEAD) SetMultiheaded(u);
 							SetFrontEngine(u);
 							SetTrainEngine(u);
 							break;
 
-						case 1:	/* TS_Artic_Part */
+						case 1: /* TS_Artic_Part */
 							u->subtype = 0;
 							SetArticulatedPart(u);
 							break;
 
-						case 2:	/* TS_Not_First */
+						case 2: /* TS_Not_First */
 							u->subtype = 0;
 							if (rvi->flags & RVI_WAGON) {
 								// normal wagon
@@ -3711,7 +3711,7 @@ void ConvertOldMultiheadToNew(void)
 							SetTrainEngine(u);
 							break;
 
-						case 4:	/* TS_Free_Car */
+						case 4: /* TS_Free_Car */
 							u->subtype = 0;
 							SetTrainWagon(u);
 							SetFreeWagon(u);

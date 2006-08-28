@@ -340,11 +340,11 @@ static int32 ClearTile_Industry(TileIndex tile, byte flags)
 {
 	Industry *i = GetIndustryByTile(tile);
 
-	/*	* water can destroy industries
-			* in editor you can bulldoze industries
-			* with magic_bulldozer cheat you can destroy industries
-			* (area around OILRIG is water, so water shouldn't flood it
-	*/
+	/* water can destroy industries
+	 * in editor you can bulldoze industries
+	 * with magic_bulldozer cheat you can destroy industries
+	 * (area around OILRIG is water, so water shouldn't flood it
+	 */
 	if ((_current_player != OWNER_WATER && _game_mode != GM_EDITOR &&
 			!_cheats.magic_bulldozer.value) ||
 			(_current_player == OWNER_WATER && i->type == IT_OIL_RIG)) {
@@ -409,7 +409,7 @@ static void AnimateTile_Industry(TileIndex tile)
 			m = _m[tile].m3 + 1;
 
 			switch (m & 7) {
-			case 2:	SndPlayTileFx(SND_2D_RIP_2, tile); break;
+			case 2: SndPlayTileFx(SND_2D_RIP_2, tile); break;
 			case 6: SndPlayTileFx(SND_29_RIP, tile); break;
 			}
 
@@ -1903,7 +1903,7 @@ const TileTypeProcs _tile_type_industry_procs = {
 	DrawTile_Industry,           /* draw_tile_proc */
 	GetSlopeZ_Industry,          /* get_slope_z_proc */
 	ClearTile_Industry,          /* clear_tile_proc */
-	GetAcceptedCargo_Industry,	 /* get_accepted_cargo_proc */
+	GetAcceptedCargo_Industry,   /* get_accepted_cargo_proc */
 	GetTileDesc_Industry,        /* get_tile_desc_proc */
 	GetTileTrackStatus_Industry, /* get_tile_track_status_proc */
 	ClickTile_Industry,          /* click_tile_proc */

@@ -454,7 +454,7 @@ static void DrawTrainDepotWindow(Window *w)
 
 			// Number of wagons relative to a standard length wagon (rounded up)
 			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
-			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0);	//Draw the counter
+			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
 
 			/* Draw the pretty flag */
 			DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x + 15, y);
@@ -474,9 +474,9 @@ static void DrawTrainDepotWindow(Window *w)
 			/*Draw the train counter */
 			i = 0;
 			u = v;
-			do i++; while ( (u=u->next) != NULL);		//Determine length of train
-			SetDParam(0, i);				//Set the counter
-			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0);	//Draw the counter
+			do i++; while ( (u=u->next) != NULL); // Determine length of train
+			SetDParam(0, i);                      // Set the counter
+			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
 			y += 14;
 		}
 	}
@@ -1020,10 +1020,10 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		case 5: /* start/stop train */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_TRAIN | CMD_MSG(STR_883B_CAN_T_STOP_START_TRAIN));
 			break;
-		case 6:	/* center main view */
+		case 6: /* center main view */
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
-		case 7:	/* goto depot */
+		case 7: /* goto depot */
 			/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
 			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_TRAIN_GOTO_DEPOT | CMD_NO_TEST_IF_IN_NETWORK | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT));
 			break;
@@ -1149,7 +1149,7 @@ static TrainDetailsDrawerProc * const _train_details_drawer_proc[3] = {
 static void DrawTrainDetailsWindow(Window *w)
 {
 	const Vehicle *v, *u;
-	uint16 tot_cargo[NUM_CARGO][2];	// count total cargo ([0]-actual cargo, [1]-total cargo)
+	uint16 tot_cargo[NUM_CARGO][2]; // count total cargo ([0]-actual cargo, [1]-total cargo)
 	int i,num,x,y,sel;
 	byte det_tab = WP(w, traindetails_d).tab;
 
@@ -1157,7 +1157,7 @@ static void DrawTrainDetailsWindow(Window *w)
 	num = 0;
 
 	// det_tab == 3 <-- Total Cargo tab
-	if (det_tab == 3)	// reset tot_cargo array to 0 values
+	if (det_tab == 3) // reset tot_cargo array to 0 values
 		memset(tot_cargo, 0, sizeof(tot_cargo));
 
 	u = v = GetVehicle(w->window_number);
@@ -1170,15 +1170,15 @@ static void DrawTrainDetailsWindow(Window *w)
 		}
 	} while ((u = GetNextVehicle(u)) != NULL);
 
-	/*	set scroll-amount seperately from counting, as to not
-			compute num double for more carriages of the same type
+	/* set scroll-amount seperately from counting, as to not
+	 * compute num double for more carriages of the same type
 	*/
 	if (det_tab == 3) {
 		for (i = 0; i != NUM_CARGO; i++) {
-			if (tot_cargo[i][1] > 0)	// only count carriages that the train has
+			if (tot_cargo[i][1] > 0) // only count carriages that the train has
 				num++;
 		}
-		num++;	// needs one more because first line is description string
+		num++; // needs one more because first line is description string
 	}
 
 	SetVScrollCount(w, num);
@@ -1249,11 +1249,11 @@ static void DrawTrainDetailsWindow(Window *w)
 		for (i = 0; i != NUM_CARGO; i++) {
 			if (tot_cargo[i][1] > 0 && --sel < 0 && sel > -w->vscroll.cap) {
 				y += 14;
-				// STR_013F_TOTAL_CAPACITY			:{LTBLUE}- {CARGO} ({SHORTCARGO})
-				SetDParam(0, i);								// {CARGO} #1
-				SetDParam(1, tot_cargo[i][0]);	// {CARGO} #2
-				SetDParam(2, i);								// {SHORTCARGO} #1
-				SetDParam(3, tot_cargo[i][1]);	// {SHORTCARGO} #2
+				// STR_013F_TOTAL_CAPACITY      :{LTBLUE}- {CARGO} ({SHORTCARGO})
+				SetDParam(0, i);                // {CARGO} #1
+				SetDParam(1, tot_cargo[i][0]);  // {CARGO} #2
+				SetDParam(2, i);                // {SHORTCARGO} #1
+				SetDParam(3, tot_cargo[i][1]);  // {SHORTCARGO} #2
 				DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY, 0);
 			}
 		}
@@ -1275,7 +1275,7 @@ static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, v->unitnumber);
 			ShowQueryString(v->string_id, STR_8865_NAME_TRAIN, 31, 150, w->window_class, w->window_number, CS_ALPHANUMERAL);
 			break;
-		case 6:	/* inc serv interval */
+		case 6: /* inc serv interval */
 			mod = _ctrl_pressed? 5 : 10;
 			goto do_change_service_int;
 
@@ -1290,10 +1290,10 @@ do_change_service_int:
 			DoCommandP(v->tile, v->index, mod, NULL, CMD_CHANGE_SERVICE_INT | CMD_MSG(STR_018A_CAN_T_CHANGE_SERVICING));
 			break;
 		/* details buttons*/
-		case 9:		// Cargo
-		case 10:	// Information
-		case 11:	// Capacities
-		case 12:	// Total cargo
+		case 9:  // Cargo
+		case 10: // Information
+		case 11: // Capacities
+		case 12: // Total cargo
 			CLRBIT(w->disabled_state, 9);
 			CLRBIT(w->disabled_state, 10);
 			CLRBIT(w->disabled_state, 11);
@@ -1626,6 +1626,6 @@ void ShowPlayerTrains(PlayerID player, StationID station)
 
 void ShowVehWithSharedOrdersTrains(Vehicle *v)
 {
-	if (v->orders == NULL) return;	// no shared list to show
+	if (v->orders == NULL) return; // no shared list to show
 	ShowPlayerTrainsLocal(v->owner, INVALID_STATION, v->orders->index, true);
 }

@@ -134,8 +134,8 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 		errmsg = _error_message;
 	} else {
 		// check which bridges can be built
-		int bridge_len;			// length of the middle parts of the bridge
-		int tot_bridgedata_len;	// total length of bridge
+		int bridge_len;         // length of the middle parts of the bridge
+		int tot_bridgedata_len; // total length of bridge
 
 		// get absolute bridge length
 		bridge_len = GetBridgeLength(start, end);
@@ -143,7 +143,7 @@ void ShowBuildBridgeWindow(TileIndex start, TileIndex end, byte bridge_type)
 
 		tot_bridgedata_len = CalcBridgeLenCostFactor(tot_bridgedata_len);
 
-		for (bridge_type = 0; bridge_type != MAX_BRIDGES; bridge_type++) {	// loop for all bridgetypes
+		for (bridge_type = 0; bridge_type != MAX_BRIDGES; bridge_type++) { // loop for all bridgetypes
 			if (CheckBridge_Stuff(bridge_type, bridge_len)) {
 				const Bridge *b = &_bridge[bridge_type];
 				// bridge is accepted, add to list

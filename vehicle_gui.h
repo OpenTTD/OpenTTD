@@ -24,8 +24,8 @@ void SortVehicleList(struct vehiclelist_d *vl);
 extern const StringID _vehicle_sort_listing[];
 
 typedef struct Listing {
-	bool order;	// Ascending/descending?
-	byte criteria;	// Sorting criteria
+	bool order;    // Ascending/descending?
+	byte criteria; // Sorting criteria
 } Listing;
 
 typedef struct Sorting {

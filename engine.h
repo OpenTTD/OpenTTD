@@ -27,7 +27,7 @@ typedef struct RailVehicleInfo {
 	                    //       for when the 'powered wagon' callback fails. But it should really also determine what
 	                    //       kind of visual effect to generate for a vehicle (default, steam, diesel, electric).
 	                    //       Same goes for the callback result, which atm is only used to check if a wagon is powered.
-	byte shorten_factor;	// length on main map for this type is 8 - shorten_factor
+	byte shorten_factor; // length on main map for this type is 8 - shorten_factor
 	byte user_def_data; ///! Property 0x25: "User-defined bit mask" Used only for (very few) NewGRF vehicles
 } RailVehicleInfo;
 
@@ -99,7 +99,7 @@ typedef struct Engine {
 	byte preview_wait;
 	byte railtype;
 	byte player_avail;
-	byte type;				// type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
+	byte type; // type, ie VEH_Road, VEH_Train, etc. Same as in vehicle.h
 } Engine;
 
 /**

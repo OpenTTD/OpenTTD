@@ -59,10 +59,10 @@ void ShowTrainDepotWindow(TileIndex tile);
 
 /* MAP2 byte:    abcd???? => Signal On? Same coding as map3lo
  * MAP3LO byte:  abcd???? => Signal Exists?
- *				 a and b are for diagonals, upper and left,
- *				 one for each direction. (ie a == NE->SW, b ==
- *				 SW->NE, or v.v., I don't know. b and c are
- *				 similar for lower and right.
+ *               a and b are for diagonals, upper and left,
+ *               one for each direction. (ie a == NE->SW, b ==
+ *               SW->NE, or v.v., I don't know. b and c are
+ *               similar for lower and right.
  * MAP2 byte:    ????abcd => Type of ground.
  * MAP3LO byte:  ????abcd => Type of rail.
  * MAP5:         00abcdef => rail
@@ -721,7 +721,7 @@ int32 CmdBuildSingleSignal(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return cost;
 }
 
-/**	Build many signals by dragging; AutoSignals
+/** Build many signals by dragging; AutoSignals
  * @param tile start tile of drag
  * @param p1  end tile of drag
  * @param p2 various bitstuffed elements
@@ -1956,7 +1956,7 @@ static void ChangeTileOwner_Track(TileIndex tile, PlayerID old_player, PlayerID 
 
 	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
-	}	else {
+	} else {
 		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 	}
 }
@@ -1986,9 +1986,9 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 	length = v->u.rail.cached_veh_length;
 
 	fract_coord_leave =
-		((_fractcoords_enter[dir] & 0x0F) +				// x
+		((_fractcoords_enter[dir] & 0x0F) + // x
 			(length + 1) * _deltacoord_leaveoffset[dir]) +
-		(((_fractcoords_enter[dir] >> 4) +				// y
+		(((_fractcoords_enter[dir] >> 4) +  // y
 			((length + 1) * _deltacoord_leaveoffset[dir+4])) << 4);
 
 	fract_coord = (x & 0xF) + ((y & 0xF) << 4);

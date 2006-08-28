@@ -412,7 +412,7 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 
 		if (WP(w,def_d).close) return;
 
-		w->click_state = ((1<<3) << _road_station_picker_orientation)	|
+		w->click_state = ((1<<3) << _road_station_picker_orientation) |
 										 ((1<<7) << _station_show_coverage);
 		DrawWindowWidgets(w);
 

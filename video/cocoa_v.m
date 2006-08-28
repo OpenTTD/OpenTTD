@@ -1849,7 +1849,7 @@ static void QZ_HideMouse(void)
 
 	QZ_AskQuit();
 
-	return NSTerminateCancel;		// NSTerminateLater ?
+	return NSTerminateCancel; // NSTerminateLater ?
 }
 @end
 

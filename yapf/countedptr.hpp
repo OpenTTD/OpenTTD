@@ -74,7 +74,7 @@ public:
 	FORCEINLINE bool operator == (const CCountedPtr& sp) const {return m_pT == sp.m_pT;}
 
 	/** yet another way how to test for NULL value */
-	FORCEINLINE bool operator != (const CCountedPtr& sp) const	{return m_pT != sp.m_pT;}
+	FORCEINLINE bool operator != (const CCountedPtr& sp) const {return m_pT != sp.m_pT;}
 
 	/** assign pointer w/o incrementing ref count */
 	FORCEINLINE void Attach(Tcls* pT) {Release(); m_pT = pT;}

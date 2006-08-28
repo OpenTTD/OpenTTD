@@ -372,7 +372,7 @@ typedef struct {
 	byte sel_index[2];
 	EngineID sel_engine[2];
 	uint16 count[2];
-	bool wagon_btnstate;	// true means engine is selected
+	bool wagon_btnstate; // true means engine is selected
 } replaceveh_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
 
@@ -554,9 +554,9 @@ enum WindowWidgetTypes {
 
 	WWT_MASK       = 31,
 
-	WWT_PUSHTXTBTN	= WWT_TEXTBTN	| WWB_PUSHBUTTON,
-	WWT_PUSHIMGBTN	= WWT_IMGBTN	| WWB_PUSHBUTTON,
-	WWT_NODISTXTBTN = WWT_TEXTBTN	| WWB_NODISBUTTON,
+	WWT_PUSHTXTBTN  = WWT_TEXTBTN | WWB_PUSHBUTTON,
+	WWT_PUSHIMGBTN  = WWT_IMGBTN  | WWB_PUSHBUTTON,
+	WWT_NODISTXTBTN = WWT_TEXTBTN | WWB_NODISBUTTON,
 };
 
 #define WIDGETS_END WWT_LAST,   RESIZE_NONE,     0,     0,     0,     0,     0, 0, STR_NULL

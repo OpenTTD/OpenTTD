@@ -37,15 +37,15 @@
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
 
 /*
- *	These command macros are used to call vehicle type specific commands with non type specific commands
- *	it should be used like: DoCommandP(x, y, p1, p2, flags, CMD_STARTSTOP_VEH(v->type))
- *	that line will start/stop a vehicle nomatter what type it is
- *	VEH_Train is used as an offset because the vehicle type values doesn't start with 0
+ * These command macros are used to call vehicle type specific commands with non type specific commands
+ * it should be used like: DoCommandP(x, y, p1, p2, flags, CMD_STARTSTOP_VEH(v->type))
+ * that line will start/stop a vehicle nomatter what type it is
+ * VEH_Train is used as an offset because the vehicle type values doesn't start with 0
  */
 
-#define CMD_BUILD_VEH(x)		   _veh_build_proc_table[ x - VEH_Train]
-#define CMD_SELL_VEH(x)				_veh_sell_proc_table[ x - VEH_Train]
-#define CMD_REFIT_VEH(x)		   _veh_refit_proc_table[ x - VEH_Train]
+#define CMD_BUILD_VEH(x) _veh_build_proc_table[ x - VEH_Train]
+#define CMD_SELL_VEH(x)  _veh_sell_proc_table [ x - VEH_Train]
+#define CMD_REFIT_VEH(x) _veh_refit_proc_table[ x - VEH_Train]
 
 static const uint32 _veh_build_proc_table[] = {
 	CMD_BUILD_RAIL_VEHICLE,
@@ -314,7 +314,7 @@ static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	if (*skip_vehicles < (_vehicle_pool.total_items - offset)) {	// make sure the offset in the array is not larger than the array itself
+	if (*skip_vehicles < (_vehicle_pool.total_items - offset)) { // make sure the offset in the array is not larger than the array itself
 		for (v = GetVehicle(offset + *skip_vehicles); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 			(*skip_vehicles)++;
 			if (!IsValidVehicle(v)) return InitializeVehicle(v);
@@ -339,7 +339,7 @@ Vehicle *AllocateVehicle(void)
 /** Allocates a lot of vehicles and frees them again
 * @param vl pointer to an array of vehicles to get allocated. Can be NULL if the vehicles aren't needed (makes it test only)
 * @param num number of vehicles to allocate room for
-*	returns true if there is room to allocate all the vehicles
+* @return true if there is room to allocate all the vehicles
 */
 bool AllocateVehicles(Vehicle **vl, int num)
 {
@@ -614,7 +614,7 @@ void CallVehicleTicks(void)
 	}
 #endif //ENABLE_NETWORK
 
-	_first_veh_in_depot_list = NULL;	// now we are sure it's initialized at the start of each tick
+	_first_veh_in_depot_list = NULL; // now we are sure it's initialized at the start of each tick
 
 	FOR_ALL_VEHICLES(v) {
 		_vehicle_tick_procs[v->type - 0x10](v);
@@ -624,7 +624,7 @@ void CallVehicleTicks(void)
 	v = _first_veh_in_depot_list;
 	while (v != NULL) {
 		Vehicle *w = v->depot_list;
-		v->depot_list = NULL;	// it should always be NULL at the end of each tick
+		v->depot_list = NULL; // it should always be NULL at the end of each tick
 		MaybeReplaceVehicle(v);
 		v = w;
 	}
@@ -1591,7 +1591,7 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				w->service_interval = v->service_interval;
 				DoCommand(0, (v->index << 16) | w->index, p2 & 1 ? CO_SHARE : CO_COPY, flags, CMD_CLONE_ORDER);
 			}
-			w_rear = w;	// trains needs to know the last car in the train, so they can add more in next loop
+			w_rear = w; // trains needs to know the last car in the train, so they can add more in next loop
 		}
 	} while (v->type == VEH_Train && (v = GetNextVehicle(v)) != NULL);
 
@@ -1613,10 +1613,10 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 	do {
 		do {
 			if (source->cargo_type != dest->cargo_type)
-				continue;	// cargo not compatible
+				continue; // cargo not compatible
 
 			if (dest->cargo_count == dest->cargo_cap)
-				continue;	// the destination vehicle is already full
+				continue; // the destination vehicle is already full
 
 			units_moved = min(source->cargo_count, dest->cargo_cap - dest->cargo_count);
 			source->cargo_count -= units_moved;
@@ -1660,7 +1660,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	if (flags & DC_EXEC) {
 		CargoID new_cargo_type = old_v->cargo_type;
 		new_v = GetVehicle(_new_vehicle_id);
-		*w = new_v;	//we changed the vehicle, so MaybeReplaceVehicle needs to work on the new one. Now we tell it what the new one is
+		*w = new_v; //we changed the vehicle, so MaybeReplaceVehicle needs to work on the new one. Now we tell it what the new one is
 
 		/* refit if needed */
 		if (old_v->type == VEH_Train && old_v->cargo_cap == 0 && new_v->cargo_cap != 0) {
@@ -1710,7 +1710,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 			new_v->profit_last_year = old_v->profit_last_year;
 			new_v->service_interval = old_v->service_interval;
 			new_front = true;
-			new_v->unitnumber = old_v->unitnumber;	// use the same unit number
+			new_v->unitnumber = old_v->unitnumber; // use the same unit number
 
 			new_v->current_order = old_v->current_order;
 			if (old_v->type == VEH_Train && GetNextVehicle(old_v) != NULL){
@@ -1758,8 +1758,8 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 /** replaces a vehicle if it's set for autoreplace or is too old
  * (used to be called autorenew)
  * @param v The vehicle to replace
- *	if the vehicle is a train, v needs to be the front engine
- *	return value is a pointer to the new vehicle, which is the same as the argument if nothing happened
+ * if the vehicle is a train, v needs to be the front engine
+ * @return pointer to the new vehicle, which is the same as the argument if nothing happened
  */
 static void MaybeReplaceVehicle(Vehicle *v)
 {
@@ -1783,7 +1783,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 
 	assert(v->type == VEH_Train || v->type == VEH_Road || v->type == VEH_Ship || v->type == VEH_Aircraft);
 
-	assert(v->vehstatus & VS_STOPPED);	// the vehicle should have been stopped in VehicleEnteredDepotThisTick() if needed
+	assert(v->vehstatus & VS_STOPPED); // the vehicle should have been stopped in VehicleEnteredDepotThisTick() if needed
 
 	if (v->leave_depot_instantly) {
 		// we stopped the vehicle to do this, so we have to remember to start it again when we are done
@@ -1855,7 +1855,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 		}
 
 		if (flags & DC_EXEC) {
-			break;	// we are done replacing since the loop ran once with DC_EXEC
+			break; // we are done replacing since the loop ran once with DC_EXEC
 		}
 		// now we redo the loop, but this time we actually do stuff since we know that we can do it
 		flags |= DC_EXEC;

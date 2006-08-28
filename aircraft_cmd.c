@@ -1897,8 +1897,8 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 		1. group 0 -- TERM_GROUP1_block (check block)
 		2. group 1 -- TERM_GROUP2_ENTER_block (check block)
 		First in line is checked first, group 0. If the block (TERM_GROUP1_block) is free, it
-		looks	at the corresponding terminals of that group. If no free ones are found, other
-		possible groups are checked	(in this case group 1, since that is after group 0). If that
+		looks at the corresponding terminals of that group. If no free ones are found, other
+		possible groups are checked (in this case group 1, since that is after group 0). If that
 		fails, then attempt fails and plane waits
 	*/
 	if (Airport->terminals[0] > 1) {
@@ -1992,7 +1992,7 @@ static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *Airport)
 		// The blocks for helipads start after the last terminal (MAX_TERMINALS)
 		return FreeTerminal(v, MAX_TERMINALS, GetNumHelipads(Airport) + MAX_TERMINALS);
 	}
-	return false;	// it shouldn't get here anytime, but just to be sure
+	return false; // it shouldn't get here anytime, but just to be sure
 }
 
 static void AircraftEventHandler(Vehicle *v, int loop)
@@ -2103,11 +2103,11 @@ void UpdateAirplanesOnNewStation(Station *st)
 	const AirportFTAClass *ap = GetAirport(st->airport_type);
 	FOR_ALL_VEHICLES(v) {
 		if (v->type == VEH_Aircraft && v->subtype <= 2) {
-			if (v->u.air.targetairport == st->index) {	// if heading to this airport
-				/*	update position of airplane. If plane is not flying, landing, or taking off
-						you cannot delete airport, so it doesn't matter
-				*/
-				if (v->u.air.state >= FLYING) {	// circle around
+			if (v->u.air.targetairport == st->index) { // if heading to this airport
+				/* update position of airplane. If plane is not flying, landing, or taking off
+				 *you cannot delete airport, so it doesn't matter
+				 */
+				if (v->u.air.state >= FLYING) { // circle around
 					v->u.air.pos = v->u.air.previous_pos = ap->entry_point;
 					v->u.air.state = FLYING;
 					// landing plane needs to be reset to flying height (only if in pause mode upgrade,

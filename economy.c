@@ -1517,7 +1517,7 @@ static void DoAcquireCompany(Player *p)
 	p->is_active = false;
 
 	DeletePlayerWindows(pi);
-	RebuildVehicleLists();	//Updates the open windows to add the newly acquired vehicles to the lists
+	RebuildVehicleLists(); //Updates the open windows to add the newly acquired vehicles to the lists
 }
 
 extern int GetAmountOwnedBy(Player *p, byte owner);

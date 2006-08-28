@@ -413,14 +413,14 @@ not_valid_below:;
 	SetSignalsOnBothDir(tile_start, AxisToTrack(direction));
 	YapfNotifyTrackLayoutChange(tile_start, AxisToTrack(direction));
 
-	/*	for human player that builds the bridge he gets a selection to choose from bridges (DC_QUERY_COST)
-			It's unnecessary to execute this command every time for every bridge. So it is done only
-			and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
-	*/
+	/* for human player that builds the bridge he gets a selection to choose from bridges (DC_QUERY_COST)
+	 * It's unnecessary to execute this command every time for every bridge. So it is done only
+	 * and cost is computed in "bridge_gui.c". For AI, Towns this has to be of course calculated
+	 */
 	if (!(flags & DC_QUERY_COST)) {
 		const Bridge *b = &_bridge[bridge_type];
 
-		bridge_len += 2;	// begin and end tiles/ramps
+		bridge_len += 2; // begin and end tiles/ramps
 
 		if (_current_player < MAX_PLAYERS && !_is_old_ai_player)
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
@@ -1315,7 +1315,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 
 	if (new_player != OWNER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
-	}	else {
+	} else {
 		if (IsBridge(tile) && IsBridgeMiddle(tile) && IsTransportUnderBridge(tile)) {
 			// the stuff BELOW the middle part is owned by the deleted player.
 			if (GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {

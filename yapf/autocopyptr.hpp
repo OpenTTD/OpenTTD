@@ -19,7 +19,7 @@ class CAutoCopyPtrT {
 protected:
 	typedef Tdata_ Tdata;
 
-	struct CItem	{
+	struct CItem {
 		int     m_ref_cnt;  ///< reference counter
 		Tdata   m_data;     ///< custom data itself
 

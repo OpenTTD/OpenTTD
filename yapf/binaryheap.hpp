@@ -142,7 +142,7 @@ FORCEINLINE void CBinaryHeapT<Titem_>::RemoveHead()
 		child = gap * 2;
 	}
 	// move last item to the proper place
-	if (m_size > 0)	m_items[gap] = &new_item;
+	if (m_size > 0) m_items[gap] = &new_item;
 	CheckConsistency();
 }
 

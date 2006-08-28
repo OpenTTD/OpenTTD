@@ -224,7 +224,7 @@ int32 CmdMoneyCheat(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 }
 
 /** Transfer funds (money) from one player to another.
- * To prevent abuse	in multiplayer games you can only send money to other
+ * To prevent abuse in multiplayer games you can only send money to other
  * players if you have paid off your loan (either explicitely, or implicitely
  * given the fact that you have more money than loan).
  * @param tile unused

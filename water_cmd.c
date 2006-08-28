@@ -604,13 +604,13 @@ static void FloodVehicle(Vehicle *v)
 	if (!(v->vehstatus & VS_CRASHED)) {
 		uint16 pass = 0;
 
-		if (v->type == VEH_Road) {	// flood bus/truck
-			pass = 1;	// driver
+		if (v->type == VEH_Road) { // flood bus/truck
+			pass = 1; // driver
 			if (v->cargo_type == CT_PASSENGERS)
 				pass += v->cargo_count;
 
 			v->vehstatus |= VS_CRASHED;
-			v->u.road.crashed_ctr = 2000;	// max 2220, disappear pretty fast
+			v->u.road.crashed_ctr = 2000; // max 2220, disappear pretty fast
 			RebuildVehicleLists();
 		} else if (v->type == VEH_Train) {
 			Vehicle *u;

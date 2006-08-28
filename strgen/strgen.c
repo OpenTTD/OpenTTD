@@ -39,7 +39,7 @@ typedef struct LanguagePackHeader {
 	uint32 ident;
 	uint32 version;     // 32-bits of auto generated version info which is basically a hash of strings.h
 	char name[32];      // the international name of this language
-	char own_name[32];	// the localized name of this language
+	char own_name[32];  // the localized name of this language
 	char isocode[16];   // the ISO code for the language (not country code)
 	uint16 offsets[32]; // the offsets
 	byte plural_form;   // plural form index
@@ -451,8 +451,8 @@ static const CmdStruct _cmd_structs[] = {
 	{"WEIGHT_S",        EmitEscapedByte, 19, 1, 0},
 	{"FORCE",           EmitEscapedByte, 20, 1, 0},
 
-	{"P", EmitPlural, 0, 0, C_DONTCOUNT},					// plural specifier
-	{"G", EmitGender, 0, 0, C_DONTCOUNT},					// gender specifier
+	{"P", EmitPlural, 0, 0, C_DONTCOUNT}, // plural specifier
+	{"G", EmitGender, 0, 0, C_DONTCOUNT}, // gender specifier
 
 	{"DATE_LONG",  EmitSingleByte, 0x82, 1, 0},
 	{"DATE_SHORT", EmitSingleByte, 0x83, 1, 0},

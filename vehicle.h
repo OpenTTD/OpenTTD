@@ -43,7 +43,7 @@ typedef enum EffectVehicle {
 } EffectVehicle;
 
 typedef struct VehicleRail {
-	uint16 last_speed;		// NOSAVE: only used in UI
+	uint16 last_speed; // NOSAVE: only used in UI
 	uint16 crash_anim_pos;
 	uint16 days_since_order_progr;
 

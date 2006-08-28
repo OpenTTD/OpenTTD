@@ -216,7 +216,7 @@ static void AirportFTAClass_Constructor(AirportFTAClass *Airport,
 		curr = terminals;
 		while (i-- > 0) {
 			curr++;
-			assert(*curr != 0);	//we don't want to have an empty group
+			assert(*curr != 0); //we don't want to have an empty group
 			nofterminals += *curr;
 		}
 
@@ -394,7 +394,7 @@ static const char* const _airport_heading_strings[] = {
 	"TERM8",
 	"HELIPAD3",
 	"HELIPAD4",
-	"DUMMY"	// extra heading for 255
+	"DUMMY" // extra heading for 255
 };
 
 

@@ -125,7 +125,7 @@ void UpdateTextBufferSize(Textbuf *tb);
 void BuildFileList(void);
 void SetFiosType(const byte fiostype);
 
-/*	FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
+/* FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
 extern const byte _fios_colors[];
 
 /* network gui */

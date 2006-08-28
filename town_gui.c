@@ -130,14 +130,14 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 					SetDParam(2, GetPlayerNameString(p->index, 3));
 
 					r = t->ratings[p->index];
-					(str = STR_3035_APPALLING, r <= RATING_APPALLING) ||	// Apalling
-					(str++, r <= RATING_VERYPOOR) ||											// Very Poor
-					(str++, r <= RATING_POOR) ||												// Poor
-					(str++, r <= RATING_MEDIOCRE) ||											// Mediocore
-					(str++, r <= RATING_GOOD) ||											// Good
-					(str++, r <= RATING_VERYGOOD) ||											// Very Good
-					(str++, r <= RATING_EXCELLENT) ||											// Excellent
-					(str++, true);														// Outstanding
+					(str = STR_3035_APPALLING, r <= RATING_APPALLING) || // Apalling
+					(str++,                    r <= RATING_VERYPOOR)  || // Very Poor
+					(str++,                    r <= RATING_POOR)      || // Poor
+					(str++,                    r <= RATING_MEDIOCRE)  || // Mediocore
+					(str++,                    r <= RATING_GOOD)      || // Good
+					(str++,                    r <= RATING_VERYGOOD)  || // Very Good
+					(str++,                    r <= RATING_EXCELLENT) || // Excellent
+					(str++,                    true);                    // Outstanding
 
 					SetDParam(4, str);
 					if (t->exclusivity == p->index) // red icon for player with exclusive rights
