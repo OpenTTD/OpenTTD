@@ -196,6 +196,8 @@ typedef struct Player {
 	uint32 engine_renew_money;
 } Player;
 
+uint16 GetDrawStringPlayerColor(PlayerID player);
+
 void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player);
 void GetNameOfOwner(PlayerID owner, TileIndex tile);
 int64 CalculateCompanyValue(const Player* p);

@@ -3,7 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
-#include "player.h"
+#include "macros.h"
 #include "spritecache.h"
 #include "strings.h"
 #include "string.h"
@@ -1997,12 +1997,4 @@ static int CDECL compare_res(const void *pa, const void *pb)
 void SortResolutions(int count)
 {
 	qsort(_resolutions, count, sizeof(_resolutions[0]), compare_res);
-}
-
-uint16 GetDrawStringPlayerColor(PlayerID player)
-{
-	// Get the color for DrawString-subroutines which matches the color
-	//  of the player
-	if (player == OWNER_SPECTATOR || player == OWNER_SPECTATOR - 1) return 1;
-	return (_color_list[_player_colors[player]].window_color_1b) | IS_PALETTE_COLOR;
 }

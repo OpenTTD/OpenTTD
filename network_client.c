@@ -15,7 +15,6 @@
 #include "network_gamelist.h"
 #include "saveload.h"
 #include "command.h"
-#include "gfx.h"
 #include "window.h"
 #include "console.h"
 #include "variables.h"

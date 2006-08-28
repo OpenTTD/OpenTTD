@@ -27,6 +27,17 @@
 #include "ai/ai.h"
 #include "date.h"
 
+
+uint16 GetDrawStringPlayerColor(PlayerID player)
+{
+	/* Get the color for DrawString-subroutines which matches the color of the
+	 * player
+	 */
+	if (player == OWNER_SPECTATOR || player == OWNER_SPECTATOR - 1) return 1;
+	return (_color_list[_player_colors[player]].window_color_1b) | IS_PALETTE_COLOR;
+}
+
+
 static const SpriteID cheeks_table[4] = {
 	0x325, 0x326,
 	0x390, 0x3B0,

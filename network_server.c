@@ -16,7 +16,6 @@
 #include "network_udp.h"
 #include "console.h"
 #include "command.h"
-#include "gfx.h"
 #include "saveload.h"
 #include "vehicle.h"
 #include "station.h"
