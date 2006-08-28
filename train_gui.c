@@ -1406,12 +1406,16 @@ static const Widget _other_player_trains_widgets[] = {
 
 static void PlayerTrainsWndProc(Window *w, WindowEvent *e)
 {
-	OrderID order = GB(w->window_number, 16, 16);
-	/* Sorting a shared order list relies on station being set to INVALID_STATION */
-	/* If station is not INVALID_STATION, then order is never used and we don't care what it contains */
-	StationID station = (w->window_number & SHARE_FLAG) ? INVALID_STATION : order;
+	OrderID order = INVALID_ORDER;
+	StationID station = INVALID_STATION;
 	PlayerID owner = GB(w->window_number, 0, 8);
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
+
+	if (w->window_number & SHARE_FLAG) {
+		order = GB(w->window_number, 16, 16);
+	} else {
+		station = GB(w->window_number, 16, 16);
+	}
 
 	switch (e->event) {
 	case WE_PAINT: {
