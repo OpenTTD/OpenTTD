@@ -1380,19 +1380,6 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode)
 	BlitterParams bp;
 	int zoom_mask = ~((1 << dpi->zoom) - 1);
 
-	static const BlitZoomFunc zf_tile[3] =
-	{
-		GfxBlitTileZoomIn,
-		GfxBlitTileZoomMedium,
-		GfxBlitTileZoomOut
-	};
-	static const BlitZoomFunc zf_uncomp[3] =
-	{
-		GfxBlitZoomInUncomp,
-		GfxBlitZoomMediumUncomp,
-		GfxBlitZoomOutUncomp
-	};
-
 	/* decode sprite header */
 	x += sprite->x_offs;
 	y += sprite->y_offs;
@@ -1450,7 +1437,12 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode)
 			if (bp.width <= 0) return;
 		}
 
-		zf_tile[dpi->zoom](&bp);
+		switch (dpi->zoom) {
+			default: NOT_REACHED();
+			case 0: GfxBlitTileZoomIn(&bp);     break;
+			case 1: GfxBlitTileZoomMedium(&bp); break;
+			case 2: GfxBlitTileZoomOut(&bp);    break;
+		}
 	} else {
 		bp.sprite += bp.width * (bp.height & ~zoom_mask);
 		bp.height &= zoom_mask;
@@ -1487,7 +1479,12 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode)
 			if (bp.width <= 0) return;
 		}
 
-		zf_uncomp[dpi->zoom](&bp);
+		switch (dpi->zoom) {
+			default: NOT_REACHED();
+			case 0: GfxBlitZoomInUncomp(&bp);     break;
+			case 1: GfxBlitZoomMediumUncomp(&bp); break;
+			case 2: GfxBlitZoomOutUncomp(&bp);    break;
+		}
 	}
 }
 
