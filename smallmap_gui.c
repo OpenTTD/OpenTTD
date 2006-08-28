@@ -836,7 +836,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			}
 		}
 
-		if (!FillDrawPixelInfo(&new_dpi, NULL, 3, 17, w->width - 28 + 22, w->height - 64 - 11))
+		if (!FillDrawPixelInfo(&new_dpi, 3, 17, w->width - 28 + 22, w->height - 64 - 11))
 			return;
 
 		DrawSmallMap(&new_dpi, w, _smallmap_type, _smallmap_show_towns);

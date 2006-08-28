@@ -1880,43 +1880,43 @@ void MarkWholeScreenDirty(void)
 	SetDirtyBlocks(0, 0, _screen.width, _screen.height);
 }
 
-bool FillDrawPixelInfo(DrawPixelInfo *n, const DrawPixelInfo *o, int left, int top, int width, int height)
+bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int height)
 {
-	int t;
-
-	if (o == NULL) o = _cur_dpi;
+	const DrawPixelInfo *o = _cur_dpi;
 
 	n->zoom = 0;
 
 	assert(width > 0);
 	assert(height > 0);
 
-	n->left = 0;
 	if ((left -= o->left) < 0) {
 		width += left;
 		if (width < 0) return false;
 		n->left = -left;
 		left = 0;
+	} else {
+		n->left = 0;
 	}
 
-	if ((t=width + left - o->width) > 0) {
-		width -= t;
+	if (width > o->width - left) {
+		width = o->width - left;
 		if (width < 0) return false;
 	}
 	n->width = width;
 
-	n->top = 0;
 	if ((top -= o->top) < 0) {
 		height += top;
 		if (height < 0) return false;
 		n->top = -top;
 		top = 0;
+	} else {
+		n->top = 0;
 	}
 
 	n->dst_ptr = o->dst_ptr + left + top * (n->pitch = o->pitch);
 
-	if ((t=height + top - o->height) > 0) {
-		height -= t;
+	if (height > o->height - top) {
+		height = o->height - top;
 		if (height < 0) return false;
 	}
 	n->height = height;

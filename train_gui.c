@@ -361,7 +361,7 @@ static void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, 
 	int highlight_l = 0;
 	int highlight_r = 0;
 
-	if (!FillDrawPixelInfo(&tmp_dpi, NULL, x - 2, y - 1, count + 1, 14)) return;
+	if (!FillDrawPixelInfo(&tmp_dpi, x - 2, y - 1, count + 1, 14)) return;
 
 	count = (count * 8) / _traininfo_vehicle_width;
 

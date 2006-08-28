@@ -674,7 +674,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		y_offset = newstations ? 90 : 0;
 
 		/* Set up a clipping area for the '/' station preview */
-		if (FillDrawPixelInfo(&tmp_dpi, NULL, 7, 26 + y_offset, 66, 48)) {
+		if (FillDrawPixelInfo(&tmp_dpi, 7, 26 + y_offset, 66, 48)) {
 			old_dpi = _cur_dpi;
 			_cur_dpi = &tmp_dpi;
 			if (!DrawStationTile(32, 16, _cur_railtype, AXIS_X, _railstation.station_class, _railstation.station_type)) {
@@ -684,7 +684,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		}
 
 		/* Set up a clipping area for the '\' station preview */
-		if (FillDrawPixelInfo(&tmp_dpi, NULL, 75, 26 + y_offset, 66, 48)) {
+		if (FillDrawPixelInfo(&tmp_dpi, 75, 26 + y_offset, 66, 48)) {
 			old_dpi = _cur_dpi;
 			_cur_dpi = &tmp_dpi;
 			if (!DrawStationTile(32, 16, _cur_railtype, AXIS_Y, _railstation.station_class, _railstation.station_type)) {

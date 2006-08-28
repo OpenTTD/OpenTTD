@@ -85,7 +85,7 @@ void MarkWholeScreenDirty(void);
 
 void GfxInitPalettes(void);
 
-bool FillDrawPixelInfo(DrawPixelInfo* n, const DrawPixelInfo* o, int left, int top, int width, int height);
+bool FillDrawPixelInfo(DrawPixelInfo* n, int left, int top, int width, int height);
 
 /* window.c */
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom);

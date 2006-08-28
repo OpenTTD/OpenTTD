@@ -2110,7 +2110,7 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos)
 		}
 	}
 
-	if (!FillDrawPixelInfo(&tmp_dpi, NULL, 141, 1, 358, 11)) return true;
+	if (!FillDrawPixelInfo(&tmp_dpi, 141, 1, 358, 11)) return true;
 
 	old_dpi = _cur_dpi;
 	_cur_dpi = &tmp_dpi;
