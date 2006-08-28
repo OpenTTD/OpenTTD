@@ -1151,7 +1151,7 @@ static void ShowPlayerShipsLocal(PlayerID player, StationID station, OrderID ord
 	Window *w;
 
 	if (show_shared) {
-		w = AllocateWindowDescFront(&_player_ships_desc, (order << 16) | (1 << 8));
+		w = AllocateWindowDescFront(&_player_ships_desc, (order << 16) | SHARE_FLAG);
 	} else {
 		if (player == _local_player) {
 			w = AllocateWindowDescFront(&_player_ships_desc, (station << 16) | player);
