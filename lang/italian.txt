@@ -719,6 +719,7 @@ STR_0298_LOAD_SCENARIO                                          :{WHITE}Carica S
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Salva Scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Gioca Scenario
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Play Heightmap
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Inizia un nuovo gioco usando la heightmap come terreno
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sei sicuro di voler abbondonare questo scenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Esci dall'editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...può essere costruita solo in città con una popolazione di almeno 1200
@@ -884,6 +885,7 @@ STR_TOWNNAME_SWISS                                              :Svizzero
 STR_TOWNNAME_DANISH                                             :Danese
 STR_TOWNNAME_TURKISH                                            :Turco
 STR_TOWNNAME_ITALIAN                                            :Italiano
+STR_TOWNNAME_CATALAN                                            :Catalano
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Sterlina (£)
@@ -1462,6 +1464,8 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y della
 
 STR_PNGMAP_ERROR                                                :{WHITE}Non posso caricare il terreno dal  PNG...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...file non trovato.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...non posso convertire il tipo di immagine. Richiede immagine PNG 8 o 24-bit.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...qualcosa è andato male. Spiacente. (probabilimente il file è corrotto)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Non posso caricare il terreno da  BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...non posso convertire il tipo di immagine.
@@ -2452,7 +2456,7 @@ STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vai non-stop a 
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenzione non-stop a {TOWN} Deposito Ferroviario
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Direzione per {RED}{TOWN} Deposito Treni
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Direzione {TOWN} Deposito, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Direzione per {RED}{TOWN} Deposito Treni{LTBLUE}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Treni
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Treni{LTBLUE}, {VELOCITY}
 
@@ -2564,6 +2568,8 @@ STR_886F_TRANSFER                                               :{BLACK}Trasferi
 STR_TRAIN_STOPPING                                              :{RED}In frenata
 STR_TRAIN_STOPPING_VEL                                          :{RED}In frenata, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo binario incompatibile
+STR_TRAIN_NO_POWER                                              :{RED}Nessuna potenza
+STR_TRAIN_START_NO_CATENARY                                     :Questo tratto manca la catenaria, per questo il treno non può partire
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Veicolo in mezzo
@@ -2586,8 +2592,9 @@ STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Non puoi
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Non puoi far fermare/avviare veicolo...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Veicolo stradale {COMMA} stà aspettando nel deposito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Direzione per {RED}{TOWN} Deposito Veicoli
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Direzione {TOWN} Deposito, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Direzione per {RED}{TOWN} Deposito Veicoli{LTBLUE}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Veicoli
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Veicoli{LTBLUE}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Non puoi mandare il veicolo al deposito...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Non riesce a trovare il deposito locale
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Veicoli stradali - clicca sul veicolo per le informazioni
@@ -2657,7 +2664,7 @@ STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Non puoi
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Non puoi mandare nave al deposito...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Non riesce a trovare il deposito locale
 STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Direzione per {RED}{TOWN} Deposito Navale
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Direzione {TOWN} Deposito, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Direzione per {RED}{TOWN} Deposito Navale{LTBLUE}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Navale
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Direzione per {GREEN}{TOWN} Deposito Navale{LTBLUE}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Nave {COMMA} stà aspettano nel deposito
@@ -2724,7 +2731,7 @@ STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Affidabi
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Costr. nel: {LTBLUE}{NUM}{BLACK} Valore: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non puoi mandare l'aereo nell'hangar...
 STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Direzione per {RED}{TOWN} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Direzione {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Direzione per {RED}{TOWN} Hangar{LTBLUE}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Direzione per {GREEN}{TOWN} Hangar
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Direzione per {GREEN}{TOWN} Hangar{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aereo {COMMA} sta aspettano nell'hangar
@@ -2852,6 +2859,8 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra t
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra tutti gli aerei che hanno questa stazione tra gli ordini
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tutte le navi che hanno questo porto tra gli ordini
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordini comuni di {COMMA} Veicol{P o i}
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tutti i veicoli con la stessa lista ordini
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
@@ -2906,15 +2915,26 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Potenza 
 
 STR_GENERATE                                                    :{WHITE}Genera
 STR_RANDOM                                                      :{BLACK}Randomizza
-STR_RANDOM_SEED                                                 :{BLACK}Random Seed:
+STR_RANDOM_HELP                                                 :{BLACK}Cambia il seme casuale usato per la generazione del terreno.
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generazione mondo
+STR_RANDOM_SEED                                                 :{BLACK}Seme Casuale:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Clicca per inserire un seme casuale
 STR_LAND_GENERATOR                                              :{BLACK}Generatore terreno:
+STR_TREE_PLACER                                                 :{BLACK}Algoritmo alberi:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotazione Heightmap:
+STR_TERRAIN_TYPE                                                :{BLACK}Tipo terreno:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Livello mare:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altezza nevi perenni:
 STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. of  città:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. di industrie:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Sposta su di uno l'altezza delle nevi perenni
+STR_SNOW_LINE_DOWN                                              :{BLACK}Sposta giù di uno l'altezza delle nevi perenni
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Cambia l'altezza delle nevi perenni
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambia l'anno di partenza
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avviso scala
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Ridimenzionare di molto la mappa sorgente non è consigliabile. Continuo con la generazione?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nome Heightmap:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Dim.: {ORANGE}{NUM} x {NUM}
@@ -2924,10 +2944,26 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Abortisc
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vuoi veramente abortire la generazione?
 STR_PROGRESS                                                    :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Generazione mondo
+STR_TREE_GENERATION                                             :{BLACK}Generazione alberi
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Generazione oggetti non spostabili
 STR_CLEARING_TILES                                              :{BLACK}generazione aree brulle e rocciose
+STR_SETTINGUP_GAME                                              :{BLACK}Settaggio del gioco
+STR_PREPARING_TILELOOP                                          :{BLACK}Loop generazione tile del terreno
+STR_PREPARING_GAME                                              :{BLACK}Preparazione del gioco
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Questa azione cambia il livello di difficolta a custom
+STR_SE_FLAT_WORLD                                               :{WHITE}Terreno piatto
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genera un terreno piatto
+STR_SE_RANDOM_LAND                                              :{WHITE}Terreno casuale
+STR_SE_NEW_WORLD                                                :{BLACK}Crea nuovo scenario
 STR_SE_CAPTION                                                  :{WHITE}Tipo Scenario
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Sposta giù di uno l'altezza del terreno
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Sposta su di uno l'altezza del terreno
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Cambia l'altezza del terreno
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altezza del terreno:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Centra la minimappa sulla posizione corrente
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Piccolo
