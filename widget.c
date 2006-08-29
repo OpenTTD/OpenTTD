@@ -150,6 +150,42 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 }
 
 
+void DrawFrameRect(int left, int top, int right, int bottom, int ctab, FrameFlags flags)
+{
+	uint dark         = _color_list[ctab].window_color_1a;
+	uint medium_dark  = _color_list[ctab].window_color_bga;
+	uint medium_light = _color_list[ctab].window_color_bgb;
+	uint light        = _color_list[ctab].window_color_2;
+
+	if (flags & FR_NOBORDER) {
+		if (flags & FR_TRANSPARENT) {
+			GfxFillRect(left, top, right, bottom, 0x322 | USE_COLORTABLE);
+		} else {
+			GfxFillRect(left, top, right, bottom, medium_dark);
+		}
+	} else {
+		uint interior;
+
+		if (flags & FR_LOWERED) {
+			GfxFillRect(left,     top,     left,  bottom,     dark);
+			GfxFillRect(left + 1, top,     right, top,        dark);
+			GfxFillRect(right,    top + 1, right, bottom - 1, light);
+			GfxFillRect(left + 1, bottom,  right, bottom,     light);
+			interior = (flags & FR_DARKENED ? medium_dark : medium_light);
+		} else {
+			GfxFillRect(left,     top,    left,      bottom - 1, light);
+			GfxFillRect(left + 1, top,    right - 1, top,        light);
+			GfxFillRect(right,    top,    right,     bottom - 1, dark);
+			GfxFillRect(left,     bottom, right,     bottom,     dark);
+			interior = medium_dark;
+		}
+		if (!(flags & FR_BORDERONLY)) {
+			GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, interior);
+		}
+	}
+}
+
+
 void DrawWindowWidgets(const Window *w)
 {
 	const Widget *wi;

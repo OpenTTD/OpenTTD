@@ -557,39 +557,6 @@ int GetStringWidth(const char *str)
 	return w;
 }
 
-void DrawFrameRect(int left, int top, int right, int bottom, int ctab, int flags)
-{
-	byte color_2 = _color_list[ctab].window_color_1a;
-	byte color_interior = _color_list[ctab].window_color_bga;
-	byte color_3 = _color_list[ctab].window_color_bgb;
-	byte color = _color_list[ctab].window_color_2;
-
-	if (!(flags & 0x8)) {
-		if (!(flags & 0x20)) {
-			GfxFillRect(left, top, left, bottom - 1, color);
-			GfxFillRect(left + 1, top, right - 1, top, color);
-			GfxFillRect(right, top, right, bottom - 1, color_2);
-			GfxFillRect(left, bottom, right, bottom, color_2);
-			if (!(flags & 0x10)) {
-				GfxFillRect(left + 1, top + 1, right - 1, bottom - 1, color_interior);
-			}
-		} else {
-			GfxFillRect(left, top, left, bottom, color_2);
-			GfxFillRect(left + 1, top, right, top, color_2);
-			GfxFillRect(right, top + 1, right, bottom - 1, color);
-			GfxFillRect(left + 1, bottom, right, bottom, color);
-			if (!(flags & 0x10)) {
-				GfxFillRect(left + 1, top + 1, right - 1, bottom - 1,
-					flags & 0x40 ? color_interior : color_3);
-			}
-		}
-	} else if (flags & 0x1) {
-		// transparency
-		GfxFillRect(left, top, right, bottom, 0x322 | USE_COLORTABLE);
-	} else {
-		GfxFillRect(left, top, right, bottom, color_interior);
-	}
-}
 
 int DoDrawString(const char *string, int x, int y, uint16 real_color)
 {

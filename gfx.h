@@ -73,7 +73,6 @@ void DrawStringRightAlignedUnderline(int x, int y, StringID str, uint16 color);
 
 void GfxFillRect(int left, int top, int right, int bottom, int color);
 void GfxDrawLine(int left, int top, int right, int bottom, int color);
-void DrawFrameRect(int left, int top, int right, int bottom, int color, int flags);
 
 int GetStringWidth(const char *str);
 void LoadStringWidthTable(void);

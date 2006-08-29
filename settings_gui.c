@@ -410,8 +410,8 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 
 		y = GAMEDIFF_WND_TOP_OFFSET;
 		for (i = 0; i != GAME_DIFFICULTY_NUM; i++) {
-			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, GetBitAndShift(&click_a) ? (1 << 5) : 0);
-			DrawFrameRect(15, y, 15 + 8, y + 8, 3, GetBitAndShift(&click_b) ? (1 << 5) : 0);
+			DrawFrameRect( 5, y,  5 + 8, y + 8, 3, GetBitAndShift(&click_a) ? FR_LOWERED : 0);
+			DrawFrameRect(15, y, 15 + 8, y + 8, 3, GetBitAndShift(&click_b) ? FR_LOWERED : 0);
 			if (GetBitAndShift(&disabled) || (_networking && !_network_server)) {
 				int color = PALETTE_MODIFIER_GREYOUT | _color_list[3].unk2;
 				GfxFillRect( 6, y + 1,  6 + 8, y + 8, color);
