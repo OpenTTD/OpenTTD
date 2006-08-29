@@ -970,12 +970,13 @@ static void ShowPlayerShipsLocal(PlayerID player, StationID station, OrderID ord
 	Window *w;
 
 	if (show_shared) {
-		w = AllocateWindowDescFront(&_player_ships_desc, (order << 16) | VEH_Ship << 11 | SHARE_FLAG);
+		w = AllocateWindowDescFront(&_player_ships_desc, (order << 16) | (VEH_Ship << 11) | VLW_SHARED_ORDERS);
 	} else {
+		uint16 VLW_flag = (station == INVALID_STATION) ? VLW_STANDARD : VLW_STATION_LIST;
 		if (player == _local_player) {
-			w = AllocateWindowDescFront(&_player_ships_desc, (station << 16) | VEH_Ship << 11 | player);
+			w = AllocateWindowDescFront(&_player_ships_desc, (station << 16) | (VEH_Ship << 11) | VLW_flag | player);
 		} else  {
-			w = AllocateWindowDescFront(&_other_player_ships_desc, (station << 16) | VEH_Ship << 11 | player);
+			w = AllocateWindowDescFront(&_other_player_ships_desc, (station << 16) | (VEH_Ship << 11) | VLW_flag | player);
 		}
 	}
 

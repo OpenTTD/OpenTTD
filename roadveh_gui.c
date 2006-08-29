@@ -967,14 +967,16 @@ static void ShowPlayerRoadVehiclesLocal(PlayerID player, StationID station, Orde
 	Window *w;
 
 	if (show_shared) {
-		w = AllocateWindowDescFront(&_player_roadveh_desc, (order << 16) | (VEH_Road << 11) | SHARE_FLAG);
+		w = AllocateWindowDescFront(&_player_roadveh_desc, (order << 16) | (VEH_Road << 11) | VLW_SHARED_ORDERS);
 	} else {
-		if ( player == _local_player) {
-			w = AllocateWindowDescFront(&_player_roadveh_desc, (station << 16) | (VEH_Road << 11) | player);
+		uint16 VLW_flag = (station == INVALID_STATION) ? VLW_STANDARD : VLW_STATION_LIST;
+		if (player == _local_player) {
+			w = AllocateWindowDescFront(&_player_roadveh_desc, (station << 16) | (VEH_Road << 11) | VLW_flag | player);
 		} else  {
-			w = AllocateWindowDescFront(&_other_player_roadveh_desc, (station << 16) | (VEH_Road << 11) | player);
+			w = AllocateWindowDescFront(&_other_player_roadveh_desc, (station << 16) | (VEH_Road << 11) | VLW_flag | player);
 		}
 	}
+
 	if (w != NULL) {
 		vehiclelist_d *vl = &WP(w, vehiclelist_d);
 		vl->flags = VL_REBUILD | (_sorting.roadveh.order << (VL_DESC - 1));

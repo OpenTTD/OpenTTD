@@ -11,7 +11,6 @@
 
 enum {
 	INVALID_ORDER = 0xFFFF,
-	SHARE_FLAG    = 1 << 8,
 };
 
 /* Order types */

@@ -1207,6 +1207,14 @@ extern const Widget _player_aircraft_widgets[];
 extern const Widget _player_roadveh_widgets[];
 extern const Widget _player_trains_widgets[];
 
+/*
+ * bitmask for w->window_number
+ * 0-7 PlayerID (owner)
+ * 8-10 window type (use flags in vehicle_gui.h)
+ * 11-15 vehicle type (using VEH_, but can be compressed to fewer bytes if needed)
+ * 16-31 StationID or OrderID depending on window type (bit 8-10)
+ **/
+
 void PlayerVehWndProc(Window *w, WindowEvent *e)
 {
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
@@ -1221,14 +1229,9 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			int i;
 			const PlayerID owner = GB(w->window_number, 0, 8);
 			const Player *p = GetPlayer(owner);
-			OrderID order     = INVALID_ORDER;
-			StationID station = INVALID_STATION;
-
-			if (w->window_number & SHARE_FLAG) {
-				order = GB(w->window_number, 16, 16);
-			} else {
-				station = GB(w->window_number, 16, 16);
-			}
+			const uint16 window_type = w->window_number & VLW_FLAGS;
+			const StationID station = (window_type == VLW_STATION_LIST)  ? GB(w->window_number, 16, 16) : INVALID_STATION;
+			const OrderID order     = (window_type == VLW_SHARED_ORDERS) ? GB(w->window_number, 16, 16) : INVALID_ORDER;
 
 			BuildVehicleList(vl, vehicle_type, owner, station, order);
 			SortVehicleList(vl);
@@ -1238,37 +1241,45 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			if (vl->sort_type == SORT_BY_UNSORTED) SETBIT(w->disabled_state, 3);
 
 			/* draw the widgets */
-			if (order != INVALID_ORDER) {
-				/* Shared Orders */
-				SetDParam(0, w->vscroll.count);
-				w->widget[1].unkA  = STR_VEH_WITH_SHARED_ORDERS_LIST;
-				w->widget[9].unkA  = STR_EMPTY;
-				w->widget[10].unkA = STR_EMPTY;
-				SETBIT(w->disabled_state, 9);
-				SETBIT(w->disabled_state, 10);
-			} else if (station == INVALID_STATION) {
-				/* Company Name */
-				SetDParam(0, p->name_1);
-				SetDParam(1, p->name_2);
-				SetDParam(2, w->vscroll.count);
-				switch (vehicle_type) {
-					case VEH_Train:    w->widget[1].unkA = STR_881B_TRAINS;        break;
-					case VEH_Road:     w->widget[1].unkA = STR_9001_ROAD_VEHICLES; break;
-					case VEH_Ship:     w->widget[1].unkA = STR_9805_SHIPS;         break;
-					case VEH_Aircraft: w->widget[1].unkA = STR_A009_AIRCRAFT;      break;
-					default: NOT_REACHED(); break;
-				}
-			} else {
-				/* Station Name */
-				SetDParam(0, station);
-				SetDParam(1, w->vscroll.count);
-				switch (vehicle_type) {
-					case VEH_Train:    w->widget[1].unkA = STR_SCHEDULED_TRAINS;        break;
-					case VEH_Road:     w->widget[1].unkA = STR_SCHEDULED_ROAD_VEHICLES; break;
-					case VEH_Ship:     w->widget[1].unkA = STR_SCHEDULED_SHIPS;         break;
-					case VEH_Aircraft: w->widget[1].unkA = STR_SCHEDULED_AIRCRAFT;      break;
-					default: NOT_REACHED(); break;
-				}
+			switch (window_type) {
+				case VLW_SHARED_ORDERS:
+					/* Shared Orders */
+					SetDParam(0, w->vscroll.count);
+					w->widget[1].unkA  = STR_VEH_WITH_SHARED_ORDERS_LIST;
+					w->widget[9].unkA  = STR_EMPTY;
+					w->widget[10].unkA = STR_EMPTY;
+					SETBIT(w->disabled_state, 9);
+					SETBIT(w->disabled_state, 10);
+					break;
+
+				case VLW_STANDARD:
+					/* Company Name */
+					SetDParam(0, p->name_1);
+					SetDParam(1, p->name_2);
+					SetDParam(2, w->vscroll.count);
+					switch (vehicle_type) {
+						case VEH_Train:    w->widget[1].unkA = STR_881B_TRAINS;        break;
+						case VEH_Road:     w->widget[1].unkA = STR_9001_ROAD_VEHICLES; break;
+						case VEH_Ship:     w->widget[1].unkA = STR_9805_SHIPS;         break;
+						case VEH_Aircraft: w->widget[1].unkA = STR_A009_AIRCRAFT;      break;
+						default: NOT_REACHED(); break;
+					}
+					break;
+
+				case VLW_STATION_LIST:
+					/* Station Name */
+					SetDParam(0, station);
+					SetDParam(1, w->vscroll.count);
+					switch (vehicle_type) {
+						case VEH_Train:    w->widget[1].unkA = STR_SCHEDULED_TRAINS;        break;
+						case VEH_Road:     w->widget[1].unkA = STR_SCHEDULED_ROAD_VEHICLES; break;
+						case VEH_Ship:     w->widget[1].unkA = STR_SCHEDULED_SHIPS;         break;
+						case VEH_Aircraft: w->widget[1].unkA = STR_SCHEDULED_AIRCRAFT;      break;
+						default: NOT_REACHED(); break;
+					}
+					break;
+
+				default: NOT_REACHED(); break;
 			}
 			DrawWindowWidgets(w);
 
@@ -1439,9 +1450,9 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 		case WE_TICK: /* resort the list every 20 seconds orso (10 days) */
 			if (--vl->resort_timer == 0) {
-				StationID station = (w->window_number & SHARE_FLAG) ? INVALID_STATION : GB(w->window_number, 16, 16);
+				StationID station = ((w->window_number & VLW_FLAGS) == VLW_STATION_LIST) ? GB(w->window_number, 16, 16) : INVALID_STATION;
 				PlayerID owner = GB(w->window_number, 0, 8);
-				DEBUG(misc, 1) ("Periodic resort ships list player %d station %d", 	owner, station);
+				DEBUG(misc, 1) ("Periodic resort %d list player %d station %d", vehicle_type, owner, station);
 				vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 				vl->flags |= VL_RESORT;
 				SetWindowDirty(w);

@@ -1425,14 +1425,16 @@ static void ShowPlayerTrainsLocal(PlayerID player, StationID station, OrderID or
 	Window *w;
 
 	if (show_shared) {
-		w = AllocateWindowDescFront(&_player_trains_desc, (order << 16) | (VEH_Train << 11) | SHARE_FLAG);
+		w = AllocateWindowDescFront(&_player_trains_desc, (order << 16) | (VEH_Train << 11) | VLW_SHARED_ORDERS);
 	} else {
+		uint16 VLW_flag = (station == INVALID_STATION) ? VLW_STANDARD : VLW_STATION_LIST;
 		if (player == _local_player) {
-			w = AllocateWindowDescFront(&_player_trains_desc, (station << 16) | (VEH_Train << 11) | player);
-		} else {
-			w = AllocateWindowDescFront(&_other_player_trains_desc, (station << 16) | (VEH_Train << 11) | player);
+			w = AllocateWindowDescFront(&_player_trains_desc, (station << 16) | (VEH_Train << 11) | VLW_flag | player);
+		} else  {
+			w = AllocateWindowDescFront(&_other_player_trains_desc, (station << 16) | (VEH_Train << 11) | VLW_flag | player);
 		}
 	}
+
 	if (w != NULL) {
 		vehiclelist_d *vl = &WP(w, vehiclelist_d);
 		vl->flags = VL_REBUILD | (_sorting.train.order << (VL_DESC - 1));
