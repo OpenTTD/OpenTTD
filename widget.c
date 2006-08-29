@@ -157,12 +157,8 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, FrameFlag
 	uint medium_light = _color_list[ctab].window_color_bgb;
 	uint light        = _color_list[ctab].window_color_2;
 
-	if (flags & FR_NOBORDER) {
-		if (flags & FR_TRANSPARENT) {
-			GfxFillRect(left, top, right, bottom, 0x322 | USE_COLORTABLE);
-		} else {
-			GfxFillRect(left, top, right, bottom, medium_dark);
-		}
+	if (flags & FR_TRANSPARENT) {
+		GfxFillRect(left, top, right, bottom, 0x322 | USE_COLORTABLE);
 	} else {
 		uint interior;
 
