@@ -700,26 +700,26 @@ static byte MakeCatalanTownName(char *buf, uint32 seed) {
 		strcat(buf, name_catalan_real[SeedModChance(4, lengthof(name_catalan_real), seed)]);
 	} else {
 		uint i;
+
 		if (SeedModChance(0, 2, seed) == 0) { // prefix
 			strcat(buf, name_catalan_pref[SeedModChance(11, lengthof(name_catalan_pref), seed)]);
 		}
-		else {
-			i = SeedChance(0, 2, seed);
-			if (i == 0) { // masculine form
-				strcat(buf, name_catalan_1m[SeedModChance(4, lengthof(name_catalan_1m), seed)]);
-				strcat(buf, name_catalan_2m[SeedModChance(11, lengthof(name_catalan_2m), seed)]);
-			} else { // feminine form
-				strcat(buf, name_catalan_1f[SeedModChance(4, lengthof(name_catalan_1f), seed)]);
-				strcat(buf, name_catalan_2f[SeedModChance(11, lengthof(name_catalan_2f), seed)]);
-			}
+
+		i = SeedChance(0, 2, seed);
+		if (i == 0) { // masculine form
+			strcat(buf, name_catalan_1m[SeedModChance(4, lengthof(name_catalan_1m), seed)]);
+			strcat(buf, name_catalan_2m[SeedModChance(11, lengthof(name_catalan_2m), seed)]);
+		} else { // feminine form
+			strcat(buf, name_catalan_1f[SeedModChance(4, lengthof(name_catalan_1f), seed)]);
+			strcat(buf, name_catalan_2f[SeedModChance(11, lengthof(name_catalan_2f), seed)]);
+		}
 
 
-			if (SeedModChance(15, 5, seed) == 0) {
-				if (SeedModChance(5, 2, seed) == 0) { // generic suffix
-					strcat(buf, name_catalan_3[SeedModChance(4, lengthof(name_catalan_3), seed)]);
-				} else { // river name suffix
-					strcat(buf, name_catalan_river1[SeedModChance(4, lengthof(name_catalan_river1), seed)]);
-				}
+		if (SeedModChance(15, 5, seed) == 0) {
+			if (SeedModChance(5, 2, seed) == 0) { // generic suffix
+				strcat(buf, name_catalan_3[SeedModChance(4, lengthof(name_catalan_3), seed)]);
+			} else { // river name suffix
+				strcat(buf, name_catalan_river1[SeedModChance(4, lengthof(name_catalan_river1), seed)]);
 			}
 		}
 	}
