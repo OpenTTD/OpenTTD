@@ -1166,7 +1166,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 			 * otherwise colors from _string_colormap are assumed. */
 			DrawString(
 				ss->x >> zoom, (ss->y >> zoom) - (ss->width & 0x8000 ? 2 : 0),
-				ss->string, (_color_list[ss->color].window_color_bgb | IS_PALETTE_COLOR)
+				ss->string, _colour_gradient[ss->color][6] | IS_PALETTE_COLOR
 			);
 		} else {
 			DrawString(

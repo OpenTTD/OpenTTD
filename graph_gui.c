@@ -65,7 +65,7 @@ static void DrawGraph(const GraphDrawer *gw)
 	 * both values for cargo and players. So if any are higher, quit */
 	assert(GRAPH_NUM >= NUM_CARGO && GRAPH_NUM >= MAX_PLAYERS);
 
-	color = _color_list[gw->bg_line_color].window_color_1b;
+	color = _colour_gradient[gw->bg_line_color][4];
 
 	/* draw the vertical lines */
 	i = gw->num_vert_lines; assert(i > 0);
@@ -344,7 +344,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		numd = 0;
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
-				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
+				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)(p->old_economy[j].income + p->old_economy[j].expenses);
 					i++;
@@ -417,7 +417,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 		numd = 0;
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
-				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
+				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].income;
 					i++;
@@ -490,7 +490,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 		numd = 0;
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
-				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
+				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].delivered_cargo;
 					i++;
@@ -563,7 +563,7 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 		numd = 0;
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
-				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
+				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].performance_history;
 					i++;
@@ -639,7 +639,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 		numd = 0;
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
-				gd.colors[numd] = _color_list[p->player_color].window_color_bgb;
+				gd.colors[numd] = _colour_gradient[p->player_color][6];
 				for (j = gd.num_on_x_axis, i = 0; --j >= 0;) {
 					gd.cost[numd][i] = (j >= p->num_valid_stat_ent) ? INVALID_VALUE : (uint64)p->old_economy[j].company_value;
 					i++;
@@ -923,8 +923,8 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			}
 
 			// The colors used to show how the progress is going
-			color_done = _color_list[6].window_color_1b;
-			color_notdone = _color_list[4].window_color_1b;
+			color_done = _colour_gradient[COLOUR_GREEN][4];
+			color_notdone = _colour_gradient[COLOUR_RED][4];
 
 			// Draw all the score parts
 			for (i = 0; i < NUM_SCORE; i++) {

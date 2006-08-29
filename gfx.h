@@ -5,13 +5,6 @@
 
 typedef byte Pixel;
 
-typedef struct ColorList {
-	byte unk0, unk1, unk2;
-	byte window_color_1a, window_color_1b;
-	byte window_color_bga, window_color_bgb;
-	byte window_color_2;
-} ColorList;
-
 struct DrawPixelInfo {
 	Pixel *dst_ptr;
 	int left, top, width, height;
@@ -122,8 +115,32 @@ static inline byte GetCharacterHeight(FontSize size)
 
 VARDEF DrawPixelInfo _screen;
 VARDEF DrawPixelInfo *_cur_dpi;
-VARDEF ColorList _color_list[16];
 VARDEF CursorVars _cursor;
+
+enum {
+	COLOUR_DARK_BLUE,
+	COLOUR_PALE_GREEN,
+	COLOUR_PINK,
+	COLOUR_YELLOW,
+	COLOUR_RED,
+	COLOUR_LIGHT_BLUE,
+	COLOUR_GREEN,
+	COLOUR_DARK_GREEN,
+	COLOUR_BLUE,
+	COLOUR_CREAM,
+	COLOUR_MAUVE,
+	COLOUR_PURPLE,
+	COLOUR_ORANGE,
+	COLOUR_BROWN,
+	COLOUR_GREY,
+	COLOUR_WHITE
+};
+
+/**
+ * All 16 colour gradients
+ * 8 colours per gradient from darkest (0) to lightest (7)
+ */
+VARDEF byte _colour_gradient[16][8];
 
 VARDEF int _pal_first_dirty;
 VARDEF int _pal_last_dirty;

@@ -152,10 +152,10 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 
 void DrawFrameRect(int left, int top, int right, int bottom, int ctab, FrameFlags flags)
 {
-	uint dark         = _color_list[ctab].window_color_1a;
-	uint medium_dark  = _color_list[ctab].window_color_bga;
-	uint medium_light = _color_list[ctab].window_color_bgb;
-	uint light        = _color_list[ctab].window_color_2;
+	uint dark         = _colour_gradient[ctab][3];
+	uint medium_dark  = _colour_gradient[ctab][5];
+	uint medium_light = _colour_gradient[ctab][6];
+	uint light        = _colour_gradient[ctab][7];
 
 	if (flags & FR_TRANSPARENT) {
 		GfxFillRect(left, top, right, bottom, 0x322 | USE_COLORTABLE);
@@ -261,7 +261,7 @@ void DrawWindowWidgets(const Window *w)
 			d = GB(wi->unkA, 8, 8);
 			amt2 = (wi->bottom - wi->top + 1) / d;
 
-			color = _color_list[wi->color & 0xF].window_color_bgb;
+			color = _colour_gradient[wi->color & 0xF][6];
 
 			x = r.left;
 			for (ctr = c; ctr > 1; ctr--) {
@@ -275,7 +275,7 @@ void DrawWindowWidgets(const Window *w)
 				GfxFillRect(r.left + 1, x, r.right - 1, x, color);
 			}
 
-			color = _color_list[wi->color&0xF].window_color_1b;
+			color = _colour_gradient[wi->color&0xF][4];
 
 			x = r.left - 1;
 			for (ctr = c; ctr > 1; ctr--) {
@@ -308,8 +308,8 @@ void DrawWindowWidgets(const Window *w)
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
 
-			c1 = _color_list[wi->color&0xF].window_color_1a;
-			c2 = _color_list[wi->color&0xF].window_color_2;
+			c1 = _colour_gradient[wi->color&0xF][3];
+			c2 = _colour_gradient[wi->color&0xF][7];
 
 			// draw "shaded" background
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
@@ -340,8 +340,8 @@ void DrawWindowWidgets(const Window *w)
 			DrawFrameRect(r.left, r.bottom - 9, r.right, r.bottom, wi->color,  (clicked) ? FR_LOWERED : 0);
 			DoDrawString(DOWNARROW, r.left + 2 + clicked, r.bottom - 9 + clicked, 0x10);
 
-			c1 = _color_list[wi->color&0xF].window_color_1a;
-			c2 = _color_list[wi->color&0xF].window_color_2;
+			c1 = _colour_gradient[wi->color&0xF][3];
+			c2 = _colour_gradient[wi->color&0xF][7];
 
 			// draw "shaded" background
 			GfxFillRect(r.left, r.top+10, r.right, r.bottom-10, c2);
@@ -373,8 +373,8 @@ void DrawWindowWidgets(const Window *w)
 			DrawFrameRect(r.right-9, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 			DrawSprite(SPR_ARROW_RIGHT, r.right - 8 + clicked, r.top + 1 + clicked);
 
-			c1 = _color_list[wi->color&0xF].window_color_1a;
-			c2 = _color_list[wi->color&0xF].window_color_2;
+			c1 = _colour_gradient[wi->color&0xF][3];
+			c2 = _colour_gradient[wi->color&0xF][7];
 
 			// draw "shaded" background
 			GfxFillRect(r.left+10, r.top, r.right-10, r.bottom, c2);
@@ -399,8 +399,8 @@ void DrawWindowWidgets(const Window *w)
 
 			if (wi->unkA != 0) x2 = DrawString(r.left + 6, r.top, wi->unkA, 0);
 
-			c1 = _color_list[wi->color].window_color_1a;
-			c2 = _color_list[wi->color].window_color_2;
+			c1 = _colour_gradient[wi->color][3];
+			c2 = _colour_gradient[wi->color][7];
 
 			//Line from upper left corner to start of text
 			GfxFillRect(r.left, r.top+4, r.left+4,r.top+4, c1);
@@ -456,13 +456,13 @@ void DrawWindowWidgets(const Window *w)
 			DrawFrameRect(r.left+1, r.top+1, r.right-1, r.bottom-1, wi->color, (w->caption_color == 0xFF) ? FR_LOWERED | FR_DARKENED : FR_LOWERED | FR_DARKENED | FR_BORDERONLY);
 
 			if (w->caption_color != 0xFF) {
-				GfxFillRect(r.left+2, r.top+2, r.right-2, r.bottom-2, _color_list[_player_colors[w->caption_color]].window_color_1b);
+				GfxFillRect(r.left+2, r.top+2, r.right-2, r.bottom-2, _colour_gradient[_player_colors[w->caption_color]][4]);
 			}
 
 			DrawStringCentered( (r.left+r.right+1)>>1, r.top+2, wi->unkA, 0x84);
 draw_default:;
 			if (cur_disabled & 1) {
-				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _color_list[wi->color&0xF].unk2 | PALETTE_MODIFIER_GREYOUT);
+				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _colour_gradient[wi->color&0xF][2] | PALETTE_MODIFIER_GREYOUT);
 			}
 		}
 		}
@@ -530,12 +530,12 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 
 					if (HASBIT(WP(w,dropdown_d).disabled_state, i)) {
 						GfxFillRect(x, y, x + w->width - 3, y + 9,
-							PALETTE_MODIFIER_GREYOUT | _color_list[_dropdown_menu_widgets[0].color].window_color_bga
+							PALETTE_MODIFIER_GREYOUT | _colour_gradient[_dropdown_menu_widgets[0].color][5]
 						);
 					}
 				} else {
-					int c1 = _color_list[_dropdown_menu_widgets[0].color].window_color_1a;
-					int c2 = _color_list[_dropdown_menu_widgets[0].color].window_color_2;
+					int c1 = _colour_gradient[_dropdown_menu_widgets[0].color][3];
+					int c2 = _colour_gradient[_dropdown_menu_widgets[0].color][7];
 
 					GfxFillRect(x + 1, y + 3, x + w->width - 5, y + 3, c1);
 					GfxFillRect(x + 1, y + 4, x + w->width - 5, y + 4, c2);

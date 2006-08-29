@@ -2349,7 +2349,7 @@ void SetupColorsAndInitialWindow(void)
 		const byte *b = GetNonSprite(PALETTE_RECOLOR_START + i);
 
 		assert(b);
-		_color_list[i] = *(const ColorList*)(b + 0xC6);
+		memcpy(_colour_gradient[i], b + 0xC6, sizeof(_colour_gradient[i]));
 	}
 
 	width = _screen.width;
