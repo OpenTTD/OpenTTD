@@ -324,7 +324,7 @@ STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
 STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" s}
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} ton{P "" en}
 STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} ton
 STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
@@ -2456,8 +2456,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Reparatie in {T
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ga zonder tussenstop naar {TOWN} Treindepot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Reparatie zonder tussentop in {TOWN} Treindepot
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Op weg naar {TOWN} Trein Depot
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Op weg naar {TOWN} Trein Depot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Op weg naar {RED}{TOWN} Trein Depot
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Op weg naar {RED}{TOWN} Trein Depot{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Opweg naar {GREEN}{TOWN} Trein Depot
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Op weg naar {GREEN}{TOWN} Trein Depot{LTBLUE}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ongeldige Order)
 
@@ -2521,7 +2523,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centreer
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Treinonderdeel selectie lijst - klik op een voertuig voor informatie
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Bouw de geselecteerde treinonderdeel
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Hernoem treinonderdeel
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Huidige trein actie - klik hier om de trein te starten/stoppen
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Huidige trein actie - klik hier om de trein te starten/stoppen{}{RED}Rode depot namen{BLACK}: Blijf in depot{}{GREEN}Groene depot namen{BLACK}: Alleen onderhoud
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Toon trein orders
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centreer het scherm op de locatie van de trein
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Stuur trein naar depot
@@ -2534,7 +2536,7 @@ STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Laat det
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Laat details zien van treinvoertuigen
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Laat de mogelijkheden van elk voertuig zien
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Laat totale capaiteit van trein zien, gescheiden door goederentype
-STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlijst - klik op een order om deze te selecteren
+STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlijst - klik op een order om deze te selecteren. CTRL + klikken gaat naar het station
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sla de huidige order over en begin met de volgende
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Verwijder de geselecteerde order
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Maak de geselecteerde order non-stop
@@ -2590,13 +2592,15 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...moet 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan dit wegvoertuig niet verkopen...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan wegvoertuig niet starten of stoppen...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Wegvoertuig {COMMA} wacht in depot
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Op weg naar {TOWN} Weg Depot
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Op weg naar {TOWN} Weg Depot, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Op weg naar {RED}{TOWN} Weg Depot
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Op weg naar {RED}{TOWN} Weg Depot{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Op weg naar {GREEN}{TOWN} Weg Depot
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Op weg naar {GREEN}{TOWN} Weg Depot{LTBLUE}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan voertuig niet naar depot sturen...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan geen lokaal depot vinden
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Wegvoertuigen - klik op een voertuig voor informatie
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Bouw nieuwe wegvoertuigen (heeft wegvoertuigdepot nodig)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Huidige actie van voertuig - klik hier om voertuig te starten of te stoppen
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Huidige actie van voertuig - klik hier om voertuig te starten of te stoppen{}{RED}Rode depot namen{BLACK}: Blijf in depot{}{GREEN}Groene depot namen{BLACK}: Alleen onderhoud
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Laat orders van voertuig zien
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centreer hoofdscherm op de lokatie van het voertuig
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Stuur voertuig naar depot
@@ -2660,8 +2664,10 @@ STR_9817_CAPACITY                                               :{BLACK}Capacite
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan schip niet starten of stoppen...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan schip niet naar depot sturen...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan lokaal depot niet vinden
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Op weg naar {TOWN} Scheepswerf
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Op weg naar {TOWN} Scheepswerf, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Op weg naar {RED}{TOWN} Scheepswerf
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Op weg naar {RED}{TOWN} Scheepswerf{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Op weg naar {GREEN}{TOWN} Sheepswerf
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Op weg naar {GREEN}{TOWN} Sheepswerf{LTBLUE}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Schip {COMMA} wacht in depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bouw haven
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bouw scheepswerf (om schepen te bouwen en te repareren)
@@ -2673,7 +2679,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Schepen 
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Bouw nieuwe schepen (heeft schipdepot nodig)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Schepenlijst - klik op een schip voor informatie
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Bouw het geselecteerde schip
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Actie van dit schip - klik hier om het te starten of te stoppen
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Actie van dit schip - klik hier om het te starten of te stoppen{}{RED}Rode depot namen{BLACK}: Blijf in depot{}{GREEN}Groene depot namen{BLACK}: Alleen onderhoud
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Laat orders van schip zien
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centreer hoofdbeeld op de lokatie van dit schip
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Stuur schip naar depot
@@ -2725,8 +2731,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Winst di
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bouwdatum: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan vliegtuig niet naar hangar sturen...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Op weg naar {STATION} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Op weg naar {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Op weg naar {RED}{TOWN} Hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Op weg naar {RED}{TOWN} Hangar{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Op weg naar {GREEN}{TOWN} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Op wg naar {GREEN}{TOWN} Hangar{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Vliegtuig {COMMA} wacht in de vliegtuig hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in de weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan vliegtuig niet stoppen/starten...
@@ -2745,7 +2753,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Sleep vl
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centreer hoofdbeeld op hangarlokatie
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Vliegtuiglijst - klik op een vliegtuig voor informatie
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Bouw het geselecteerde vliegtuig
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Actie van huidig vliegtuig - klik hier om het vliegtuig te stoppen of te starten
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Actie van huidig vliegtuig - klik hier om het vliegtuig te stoppen of te starten{}{RED}Rode hangar namen{BLACK}: Blijf in hangar{}{GREEN}Groene hangar namen{BLACK}: Alleen onderhoud
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Laat vliegtuigorders zien
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centreer hoofdbeeld op de vliegtuiglokatie
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Stuur vliegtuig naar hangar
@@ -2851,6 +2859,9 @@ STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Geef all
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Geef alle wegvoertuigen weer die dit station in hun opdrachtenlijst hebben
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Geef alle vliegtuigen weer die dit station in hun opdrachtenlijst hebben
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Geef alle schepen weer die dit station in hun opdrachtenlijst hebben
+
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gedeelde orders van {COMMA} voertuig{P "" en}
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon alle voertuigen met de zelfde orders
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vervang voertuigen
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}

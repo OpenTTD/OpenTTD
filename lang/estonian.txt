@@ -1039,7 +1039,9 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automaa
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Veateate kuvamise kestus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Näita linna nimeseildil populatsiooni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nähtamatud puud(läbipaistvate ehitistega): {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Lumepiiri kõrgus: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksmimaalne jaama ala: {ORANGE}{STRING} {RED}Hoiatus: Kõrged seaded aeglustavad mängu
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Kopteri jaamades helikopterite automaatne teenindus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Lingi maastiku riba raudtee/tee/vee/lennujaama tööriistaribaga: {ORANGE}{STRING}
@@ -1434,6 +1436,11 @@ STR_NETWORK_SEND                                                :{BLACK}Saada
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Kaardi X-telje suurus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Kaardi Y-telje suurus: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Hind: {CURRENCY}
 STR_0801_COST                                                   :{RED}Hind: {CURRENCY}
@@ -1757,6 +1764,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Salvesta
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vali Uue Mängu Tüüp
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vali valmis kaart (roheline), eelseadistatud mäng (sinine), või juhusliku kaardiga uus mäng
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Genereeri juhuslik kaart
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Lae kõrgustekaart
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} on ees
@@ -2483,7 +2491,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskenda
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Rongivagunite nimekiri - vajuta sõidukile info jaoks
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Ehita valitud rongi sõiduk
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Nimeta ümber rongisõiduki tüüp
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Praegune rongi tegevus - vajuta siia et peatada/käivitada rong
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Praegune rongi tegevus - vajuta siia et peatada/käivitada rong{}{RED}Punane Depoo nimi{BLACK}: Seisa Depoos{}{GREEN}Roheline depoo nimi{BLACK}: Teeninda ainult
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Näita rongi käske
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vaate viimine rongi asukohale
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Saada rong depoosse
@@ -2556,7 +2564,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ei saa s
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohalikku garaaþi
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Maanteeveoautod - vajuta veokile info jaoks
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Osta uus maanteeveoauto (vajab garaaþi)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Praegune sõiduki tegevus - vajuta siia et peatada/alustada sõidukit
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Praegune sõiduki tegevus - vajuta siia et peatada/alustada sõidukit{}{RED}Punane garaazi nimi{BLACK}: Seisa garaazis{}{GREEN}Roheline garaazi nimi{BLACK}: Teeninda ainult
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Näita sõiduki käske
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Vii vaade sõiduki asukohale
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Saada sõiduk garaaþi
@@ -2633,7 +2641,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laevad -
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Ehita uus laevu (vajad paadikuuri)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Laeva valimis nimekiri - vajuta laevale info jaoks
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Ehita valitud laev
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Praegune laeva tegevus - vajuta siia et peatada/käivitada laeva
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Praegune laeva tegevus - vajuta siia et peatada/käivitada laeva{}{RED}Punane paadikuuri nimi{BLACK}: Seisa paadikuuris{}{GREEN}Roheline paadikuuri nimi{BLACK}: Teeninda ainult
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Näita laeva sihtpunkte
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vii vaade laeva asukohale
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Saada laev paadikuuri
@@ -2812,6 +2820,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Näita kõ
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Näita kõiki lennukeid millel on see jaam nende sõiduplaanis
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näita kõiki laevu millel on see jaam nende sõiduplaanis
 
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Asenda sõidukeid
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Asenda {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusa sõidukite asendamist
@@ -2860,6 +2869,10 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Kaal: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Maksumus: {GOLD}{CURRENCY}{BLACK} Kiirus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Mahutuvusy: {GOLD}{COMMA} reisjat, {COMMA} kotti kirju
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirendavad vagunid: {GOLD}+{POWER}{BLACK} Kaal: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Väike

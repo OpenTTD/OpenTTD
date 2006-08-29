@@ -1786,6 +1786,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Guardar 
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Seleccionar Novo Tipo de Jogo
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Seleccionar cenário (verde), jogo pré-programado (azul), ou novo jogo aleatório
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Gerar novo jogo aleatório
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Carregar mapa de alturas
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} no caminho
@@ -2507,14 +2508,14 @@ STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Interval
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Intervalo de serviço: {LTBLUE}{COMMA}%{BLACK}   Último serviço: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Comboios - clique num comboio para informações
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Construir novos comboios (necessita de depósito de comboios)
-STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Comboios - clique num comboio para informações, arraste um veículo o adicionar ao comboio ou remover
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Comboios - clique num comboio para informações, arraste um veículo para o adicionar/remover ao comboio
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construir novo veículo ferroviário
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arraste o veículo ferroviário para aqui para o vender
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar visualização na localização de um depósito ferroviário
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir o veículo ferroviário seleccionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomear tipo de veículo ferroviário
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarefa actual do comboio - clique aqui para iniciar/parar comboio{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósito a verde{BLACK}: Apenas em serviço
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarefa actual do comboio - clique aqui para iniciar/parar comboio{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósitos a verde{BLACK}: Apenas em serviço
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Mostrar ordens do comboio
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar visualização na localização do comboio
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Mandar comboio para o depósito
@@ -2591,7 +2592,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Não é po
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Não é possível encontrar o depósito local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Veículos de estrada - clique num veículo para informações
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construir novos veículos de estrada (necessita de depósito de veículos de estrada)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Tarefa actual do veículo - clique aqui para iniciar/parar veículo{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósito a verde{BLACK}: Apenas em serviço
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Tarefa actual do veículo - clique aqui para iniciar/parar veículo{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósitos a verde{BLACK}: Apenas em serviço
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Mostrar ordens do veículo
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrar visualização na localização do veículo
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Mandar veículo para o depósito
@@ -2670,7 +2671,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Barcos -
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construir novos barcos (necessita de depósito naval)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Lista de barcos - clique num barco para informações
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construir barco seleccionado
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Tarefa actual do barco - clique aqui para iniciar/parar barco{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósito a verde{BLACK}: Apenas em serviço
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Tarefa actual do barco - clique aqui para iniciar/parar barco{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósitos a verde{BLACK}: Apenas em serviço
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostrar ordens do barco
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrar visualização na localização do barco
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Mandar barco para o depósito
@@ -2908,8 +2909,10 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões M
 STR_GENERATE                                                    :{WHITE}Criar
 STR_RANDOM                                                      :{BLACK}Gerar aleatório
 STR_RANDOM_HELP                                                 :{BLACK}Mudar a semente aleatória para a criação do terreno
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Geração do mundo
 STR_RANDOM_SEED                                                 :{BLACK}Semente aleatória:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Clique para inserir uma semente aleatória
+STR_TREE_PLACER                                                 :{BLACK}Colocação árvores:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nível do mar:
 STR_SMOOTHNESS                                                  :{BLACK}Suavidade:
@@ -2932,7 +2935,10 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Cancelar
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Quer mesmo cancelar a criação?
 STR_PROGRESS                                                    :{WHITE}{NUM}% completo
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}A gerar mundo
 STR_TREE_GENERATION                                             :{BLACK}A gerar árvores
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Geração inamovível
+STR_CLEARING_TILES                                              :{BLACK}A gerar zonas rochosas e montanhosas
 STR_SETTINGUP_GAME                                              :{BLACK}Definindo jogo
 STR_PREPARING_TILELOOP                                          :{BLACK}A preparar o terreno
 STR_PREPARING_GAME                                              :{BLACK}A preparar jogo
