@@ -3218,7 +3218,7 @@ static const char *name_catalan_pref[] = {
 	"Vilanova de ",
 	"Caldes de ",
 	"La Conca de ",
-	"Olesa de",
+	"Olesa de ",
 	"La Roca de ",
 	"Sant Esteve de ",
 	"Sant Andreu de ",
