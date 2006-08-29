@@ -321,52 +321,46 @@ void CcCloneShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void NewShipWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT:
-		if (w->window_number == 0) w->disabled_state = 1 << 5;
+		case WE_PAINT: {
+			EngineID selected_id;
+			EngineID eid;
+			int count;
+			int pos;
+			int sel;
+			int y;
 
-		// Setup scroll count
-		{
-			int count = 0;
-			int num = NUM_SHIP_ENGINES;
-			const Engine *eng = GetEngine(SHIP_ENGINES_INDEX);
+			if (w->window_number == 0) w->disabled_state = 1 << 5;
 
-			do {
-				if (HASBIT(eng->player_avail, _local_player)) count++;
-			} while (++eng,--num);
+			count = 0;
+			for (eid = SHIP_ENGINES_INDEX; eid < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; eid++) {
+				if (HASBIT(GetEngine(eid)->player_avail, _local_player)) count++;
+			}
 			SetVScrollCount(w, count);
-		}
 
-		DrawWindowWidgets(w);
+			DrawWindowWidgets(w);
 
-		{
-			int num = NUM_SHIP_ENGINES;
-			const Engine *eng = GetEngine(SHIP_ENGINES_INDEX);
-			int x = 2;
-			int y = 15;
-			int sel = WP(w,buildtrain_d).sel_index;
-			int pos = w->vscroll.pos;
-			EngineID engine_id = SHIP_ENGINES_INDEX;
-			EngineID selected_id = INVALID_ENGINE;
-
-			do {
-				if (HASBIT(eng->player_avail, _local_player)) {
-					if (sel==0) selected_id = engine_id;
-					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-						DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
-						DrawShipEngine(x+35, y+10, engine_id, GetEnginePalette(engine_id, _local_player));
-						y += 24;
-					}
-					sel--;
+			y = 15;
+			sel = WP(w,buildtrain_d).sel_index;
+			pos = w->vscroll.pos;
+			selected_id = INVALID_ENGINE;
+			for (eid = SHIP_ENGINES_INDEX; eid < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; eid++) {
+				if (!HASBIT(GetEngine(eid)->player_avail, _local_player)) continue;
+				if (sel == 0) selected_id = eid;
+				if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
+					DrawString(77, y + 7, GetCustomEngineName(eid), sel == 0 ? 0xC : 0x10);
+					DrawShipEngine(37, y + 10, eid, GetEnginePalette(eid, _local_player));
+					y += 24;
 				}
-			} while (++engine_id, ++eng,--num);
+				sel--;
+			}
 
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
 			if (selected_id != INVALID_ENGINE) {
 				DrawShipPurchaseInfo(2, w->widget[4].top + 1, selected_id);
 			}
+			break;
 		}
-		break;
 
 	case WE_CLICK:
 		switch (e->click.widget) {
