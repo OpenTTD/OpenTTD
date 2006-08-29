@@ -233,16 +233,24 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_DRAG: {
 		int sel_method;
-		if (e->place.userdata == 1) {
-			sel_method = VPM_FIX_X;
-			_place_road_flag = (_place_road_flag&~2) | ((e->place.pt.y&8)>>2);
-		} else if (e->place.userdata == 2) {
-			sel_method = VPM_FIX_Y;
-			_place_road_flag = (_place_road_flag&~2) | ((e->place.pt.x&8)>>2);
-		} else if (e->place.userdata == 4) {
-			sel_method = VPM_X_AND_Y;
-		} else {
-			sel_method = VPM_X_OR_Y;
+		switch (e->place.userdata) {
+			case 1:
+				sel_method = VPM_FIX_X;
+				_place_road_flag = (_place_road_flag & ~2) | ((e->place.pt.y & 8) >> 2);
+				break;
+
+			case 2:
+				sel_method = VPM_FIX_Y;
+				_place_road_flag = (_place_road_flag & ~2) | ((e->place.pt.x & 8) >> 2);
+				break;
+
+			case 4:
+				sel_method = VPM_X_AND_Y;
+				break;
+
+			default:
+				sel_method = VPM_X_OR_Y;
+				break;
 		}
 
 		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, sel_method);

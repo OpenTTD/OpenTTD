@@ -806,108 +806,108 @@ void SmallMapCenterOnCurrentPos(Window *w)
 static void SmallMapWindowProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		const uint16 *tbl;
-		int x,y,y_org;
-		DrawPixelInfo new_dpi;
+		case WE_PAINT: {
+			const uint16 *tbl;
+			int x, y, y_org;
+			DrawPixelInfo new_dpi;
 
-		/* draw the window */
-		SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
-		DrawWindowWidgets(w);
+			/* draw the window */
+			SetDParam(0, STR_00E5_CONTOURS + _smallmap_type);
+			DrawWindowWidgets(w);
 
-		/* draw the legend */
-		tbl = _legend_table[(_smallmap_type != 2) ? _smallmap_type : (_opt.landscape + IND_OFFS)];
-		x = 4;
-		y_org = w->height - 44 - 11;
-		y = y_org;
-		for (;;) {
-			GfxFillRect(x,     y + 1, x + 8, y + 5, 0);
-			GfxFillRect(x + 1, y + 2, x + 7, y + 4, (byte)tbl[0]);
-			DrawString(x + 11, y, tbl[1], 0);
+			/* draw the legend */
+			tbl = _legend_table[(_smallmap_type != 2) ? _smallmap_type : (_opt.landscape + IND_OFFS)];
+			x = 4;
+			y_org = w->height - 44 - 11;
+			y = y_org;
+			for (;;) {
+				GfxFillRect(x,     y + 1, x + 8, y + 5, 0);
+				GfxFillRect(x + 1, y + 2, x + 7, y + 4, (byte)tbl[0]);
+				DrawString(x + 11, y, tbl[1], 0);
 
-			tbl += 2;
-			y += 6;
+				tbl += 2;
+				y += 6;
 
-			if (tbl[0] == 0xFFFF) {
-				break;
-			} else if (tbl[0] & 0x100) {
-				x += 123;
-				y = y_org;
-			}
-		}
-
-		if (!FillDrawPixelInfo(&new_dpi, 3, 17, w->width - 28 + 22, w->height - 64 - 11))
-			return;
-
-		DrawSmallMap(&new_dpi, w, _smallmap_type, _smallmap_show_towns);
-	} break;
-
-	case WE_CLICK:
-		switch (e->click.widget) {
-		case 4: { // Map window
-			Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
-			Point pt;
-			int x, y;
-
-			pt = RemapCoords(WP(w,smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
-			x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
-			y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
-
-			/* If you press twice on a place in the smallmap, center there */
-			if (WP(w2, vp_d).scrollpos_x == x && WP(w2, vp_d).scrollpos_y == y) {
-				SmallMapCenterOnCurrentPos(w);
-			} else {
-				WP(w2, vp_d).scrollpos_x = x;
-				WP(w2, vp_d).scrollpos_y = y;
+				if (tbl[0] == 0xFFFF) {
+					break;
+				} else if (tbl[0] & 0x100) {
+					x += 123;
+					y = y_org;
+				}
 			}
 
-			SetWindowDirty(w);
+			if (!FillDrawPixelInfo(&new_dpi, 3, 17, w->width - 28 + 22, w->height - 64 - 11))
+				return;
+
+			DrawSmallMap(&new_dpi, w, _smallmap_type, _smallmap_show_towns);
 		} break;
 
-		case 5:  // Show land contours
-		case 6:  // Show vehicles
-		case 7:  // Show industries
-		case 8:  // Show transport routes
-		case 9:  // Show vegetation
-		case 10: // Show land owners
-			w->click_state &= ~(1<<5|1<<6|1<<7|1<<8|1<<9|1<<10);
-			w->click_state |= 1 << e->click.widget;
-			_smallmap_type = e->click.widget - 5;
+		case WE_CLICK:
+			switch (e->click.widget) {
+				case 4: { // Map window
+					Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
+					Point pt;
+					int x, y;
 
-			SetWindowDirty(w);
-			SndPlayFx(SND_15_BEEP);
+					pt = RemapCoords(WP(w,smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
+					x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
+					y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
+
+					/* If you press twice on a place in the smallmap, center there */
+					if (WP(w2, vp_d).scrollpos_x == x && WP(w2, vp_d).scrollpos_y == y) {
+						SmallMapCenterOnCurrentPos(w);
+					} else {
+						WP(w2, vp_d).scrollpos_x = x;
+						WP(w2, vp_d).scrollpos_y = y;
+					}
+
+					SetWindowDirty(w);
+				} break;
+
+				case 5:  // Show land contours
+				case 6:  // Show vehicles
+				case 7:  // Show industries
+				case 8:  // Show transport routes
+				case 9:  // Show vegetation
+				case 10: // Show land owners
+					w->click_state &= ~( 1 << 5 |  1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10);
+					w->click_state |= 1 << e->click.widget;
+					_smallmap_type = e->click.widget - 5;
+
+					SetWindowDirty(w);
+					SndPlayFx(SND_15_BEEP);
+					break;
+
+				case 11: // Center the smallmap again
+					SmallMapCenterOnCurrentPos(w);
+
+					SetWindowDirty(w);
+					SndPlayFx(SND_15_BEEP);
+					break;
+
+				case 12: // Toggle town names
+					w->click_state ^= (1 << 12);
+					_smallmap_show_towns = (w->click_state >> 12) & 1;
+
+					SetWindowDirty(w);
+					SndPlayFx(SND_15_BEEP);
+					break;
+				}
 			break;
 
-		case 11: // Center the smallmap again
-			SmallMapCenterOnCurrentPos(w);
-
-			SetWindowDirty(w);
-			SndPlayFx(SND_15_BEEP);
+		case WE_RCLICK:
+			if (e->click.widget == 4) {
+				if (_scrolling_viewport) return;
+				_scrolling_viewport = true;
+				_cursor.delta.x = 0;
+				_cursor.delta.y = 0;
+			}
 			break;
 
-		case 12: // Toggle town names
-			w->click_state ^= (1 << 12);
-			_smallmap_show_towns = (w->click_state >> 12) & 1;
-
-			SetWindowDirty(w);
-			SndPlayFx(SND_15_BEEP);
+		case WE_MOUSELOOP:
+			/* update the window every now and then */
+			if ((++w->vscroll.pos & 0x1F) == 0) SetWindowDirty(w);
 			break;
-		}
-		break;
-
-	case WE_RCLICK:
-		if (e->click.widget == 4) {
-			if (_scrolling_viewport) return;
-			_scrolling_viewport = true;
-			_cursor.delta.x = 0;
-			_cursor.delta.y = 0;
-		}
-		break;
-
-	case WE_MOUSELOOP:
-		/* update the window every now and then */
-		if ((++w->vscroll.pos & 0x1F) == 0) SetWindowDirty(w);
-		break;
 
 		case WE_SCROLL: {
 			int x;

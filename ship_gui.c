@@ -328,11 +328,11 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 		{
 			int count = 0;
 			int num = NUM_SHIP_ENGINES;
-			const Engine *e = GetEngine(SHIP_ENGINES_INDEX);
+			const Engine *eng = GetEngine(SHIP_ENGINES_INDEX);
 
 			do {
-				if (HASBIT(e->player_avail, _local_player)) count++;
-			} while (++e,--num);
+				if (HASBIT(eng->player_avail, _local_player)) count++;
+			} while (++eng,--num);
 			SetVScrollCount(w, count);
 		}
 
@@ -340,7 +340,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 
 		{
 			int num = NUM_SHIP_ENGINES;
-			const Engine *e = GetEngine(SHIP_ENGINES_INDEX);
+			const Engine *eng = GetEngine(SHIP_ENGINES_INDEX);
 			int x = 2;
 			int y = 15;
 			int sel = WP(w,buildtrain_d).sel_index;
@@ -349,7 +349,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 			EngineID selected_id = INVALID_ENGINE;
 
 			do {
-				if (HASBIT(e->player_avail, _local_player)) {
+				if (HASBIT(eng->player_avail, _local_player)) {
 					if (sel==0) selected_id = engine_id;
 					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 						DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
@@ -358,7 +358,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 					}
 					sel--;
 				}
-			} while (++engine_id, ++e,--num);
+			} while (++engine_id, ++eng,--num);
 
 			WP(w,buildtrain_d).sel_engine = selected_id;
 
