@@ -8,7 +8,6 @@
 #include "sprite.h"
 #include "tile.h"
 #include "newgrf_station.h"
-#include "window.h"
 
 typedef struct GoodsEntry {
 	uint16 waiting_acceptance;
