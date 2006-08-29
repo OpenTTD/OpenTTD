@@ -1149,7 +1149,7 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 			if (!(_display_opt & DO_TRANS_SIGNS) || ss->string == STR_2806)
 				DrawFrameRect(
 					x, y, x + w, bottom, ss->color,
-					(_display_opt & DO_TRANS_BUILDINGS) ? FR_TRANSPARENT | FR_NOBORDER : 0
+					(_display_opt & DO_TRANS_BUILDINGS) ? FR_TRANSPARENT : 0
 				);
 		}
 
