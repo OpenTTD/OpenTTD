@@ -5,6 +5,7 @@
 
 #include "station.h"
 #include "vehicle.h"
+#include "window.h"
 
 struct vehiclelist_d;
 
@@ -43,6 +44,8 @@ enum {
 	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 36,
 };
 
+void PlayerVehWndProc(Window *w, WindowEvent *e);
+
 void ShowReplaceVehicleWindow(byte vehicletype);
 
 void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number);
@@ -50,6 +53,19 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number);
 void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number);
 void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number);
 void DrawShipPurchaseInfo(int x, int y, EngineID engine_number);
+
+void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, VehicleID selection);
+void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection);
+void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection);
+void DrawSmallOrderListShip(const Vehicle *v, int x, int y);
+
+void ShowBuildTrainWindow(TileIndex tile);
+void ShowBuildRoadVehWindow(TileIndex tile);
+void ShowBuildShipWindow(TileIndex tile);
+void ShowBuildAircraftWindow(TileIndex tile);
+
+void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
+void DrawSmallOrderListAircraft(const Vehicle *v, int x, int y);
 
 void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v);
 
