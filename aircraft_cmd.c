@@ -493,20 +493,25 @@ int32 CmdStartStopAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * @param p1 vehicle ID to send to the hangar
  * @param p2 various bitmasked elements
  * - p2 bit 0 - aircraft will try to goto a hangar, but not stop there (service only)
- * - p2 bit 1 - aircraft will try to locate another airport with a hangar if the target airport lacks one (used by helicopters for autorenew and autoreplace)
+ * - p2 bit 1 - send all of shared orders to depot
+ * - p2 bit 2 - aircraft will try to locate another airport with a hangar if the target airport lacks one (used by helicopters for autorenew and autoreplace)
  */
 int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
+	const int32 return_value = HASBIT(p2, 1) ? 0 : CMD_ERROR;
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return return_value;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return return_value;
+
+	if (HASBIT(p2, 1) && v->next_shared != NULL) CmdSendAircraftToHangar(tile, flags, v->next_shared->index, p2);
 
 	if (v->current_order.type == OT_GOTO_DEPOT && p2 == 0) {
 		if (flags & DC_EXEC) {
+			if (HASBIT(p2, 1)) return 0;	// Mass ordering goto depot should not turn goto hangar orders off
 			if (v->current_order.flags & OF_UNLOAD) v->cur_order_index++;
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
@@ -521,12 +526,12 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		if (!IsValidStation(st) || st->airport_tile == 0 || GetAirport(st->airport_type)->nof_depots == 0) {
 			StationID station;
 
-			if (!HASBIT(p2, 1)) return CMD_ERROR;
+			if (!HASBIT(p2, 2)) return return_value;
 			// the aircraft has to search for a hangar on its own
 			station = FindNearestHangar(v);
 
 			next_airport_has_hangar = false;
-			if (station == INVALID_STATION) return CMD_ERROR;
+			if (station == INVALID_STATION) return return_value;
 			st = GetStation(station);
 			next_airport_index = station;
 
@@ -538,7 +543,7 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			if (!HASBIT(p2,0)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 			v->current_order.dest.station = next_airport_index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
-			if (HASBIT(p2, 17) || (p2 == 0 && v->u.air.state == FLYING && !next_airport_has_hangar)) {
+			if (HASBIT(p2, 2) || (p2 == 0 && v->u.air.state == FLYING && !next_airport_has_hangar)) {
 			// the aircraft is now heading for a different hangar than the next in the orders
 				AircraftNextAirportPos_and_Order(v);
 				v->u.air.targetairport = next_airport_index;
@@ -1592,7 +1597,7 @@ static void AircraftEventHandler_HeliTakeOff(Vehicle *v, const AirportFTAClass *
 				HASBIT(GetEngine(v->engine_type)->player_avail, _local_player))
 			)) {
 		_current_player = _local_player;
-		DoCommandP(v->tile, v->index, 3, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
+		DoCommandP(v->tile, v->index, (1|(1 << 2)), NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_SHOW_NO_ERROR);
 		_current_player = OWNER_NONE;
 	}
 }

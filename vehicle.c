@@ -67,6 +67,13 @@ static const uint32 _veh_refit_proc_table[] = {
 	CMD_REFIT_AIRCRAFT,
 };
 
+const uint32 _send_to_depot_proc_table[] = {
+	CMD_TRAIN_GOTO_DEPOT,
+	CMD_SEND_ROADVEH_TO_DEPOT,
+	CMD_SEND_SHIP_TO_DEPOT,
+	CMD_SEND_AIRCRAFT_TO_HANGAR,
+};
+
 
 enum {
 	/* Max vehicles: 64000 (512 * 125) */

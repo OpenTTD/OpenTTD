@@ -460,4 +460,8 @@ PalSpriteID GetVehiclePalette(const Vehicle *v);
  * Best is to have a virtual value for it when it needs to change again */
 #define STATUS_BAR 5
 
+#define CMD_SEND_TO_DEPOT(x) _send_to_depot_proc_table[ x - VEH_Train]
+
+extern const uint32 _send_to_depot_proc_table[];
+
 #endif /* VEHICLE_H */

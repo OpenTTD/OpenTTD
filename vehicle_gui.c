@@ -1258,10 +1258,16 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					}
 					SetDParam(0, w->vscroll.count);
 					w->widget[1].unkA  = STR_VEH_WITH_SHARED_ORDERS_LIST;
-					w->widget[9].unkA  = STR_EMPTY;
 					w->widget[10].unkA = STR_EMPTY;
-					SETBIT(w->disabled_state, 9);
 					SETBIT(w->disabled_state, 10);
+
+					if (vehicle_type == VEH_Aircraft) {
+						w->widget[9].unkA = STR_SEND_TO_HANGARS;
+						w->widget[9].tooltips = STR_SEND_TO_HANGARS_TIP;
+					} else {
+						w->widget[9].unkA = STR_SEND_TO_DEPOTS;
+						w->widget[9].tooltips = STR_SEND_TO_DEPOTS_TIP;
+					}
 					break;
 
 				case VLW_STANDARD:
@@ -1397,7 +1403,17 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					}
 				} break;
 
-				case 9: /* Build new Vehicle */
+				case 9: { /* Build new Vehicle */
+					const uint16 window_type = w->window_number & VLW_FLAGS;
+
+					if (window_type == VLW_SHARED_ORDERS) {
+						const Vehicle *v;
+						assert(vl->list_length != 0);
+						v = vl->sort_list[0];
+						DoCommandP(v->tile, v->index, _ctrl_pressed ? 3 : 2, NULL, CMD_SEND_TO_DEPOT(vehicle_type));
+						break;
+					}
+
 					switch (vehicle_type) {
 						case VEH_Train:
 							assert(IsWindowOfPrototype(w, _player_trains_widgets));
@@ -1418,6 +1434,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 						default: NOT_REACHED(); break;
 					}
 					break;
+				}
 
 				case 10: {
 					if (vehicle_type == VEH_Train    && !IsWindowOfPrototype(w, _player_trains_widgets))   break;

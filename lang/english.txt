@@ -2863,6 +2863,11 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
 
+STR_SEND_TO_DEPOTS                                               :{BLACK}Send to Depots
+STR_SEND_TO_DEPOTS_TIP                                           :{BLACK}Send all vehicles in the list to depots.{}Control-click will make them service only (instead of stopping)
+STR_SEND_TO_HANGARS                                              :{BLACK}Send to Hangars
+STR_SEND_TO_HANGARS_TIP                                          :{BLACK}Send all aircrafts in the list to hangars.{}Control-click will make them service only (instead of stopping)
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Replace Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Replacing Vehicles

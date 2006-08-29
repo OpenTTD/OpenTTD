@@ -995,24 +995,30 @@ int32 CmdStartStopShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 /** Send a ship to the depot.
  * @param tile unused
  * @param p1 vehicle ID to send to the depot
- * @param p2 p2 if bit 0 is set, then the ship will only service at the depot. 0 Makes it stop inside
+ * @param p2 various bitmasked elements
+ * - p2 bit 0 - if bit 0 is set, then the ship will only service at the depot. 0 Makes it stop inside
+ * - p2 bit 1 - send all of shared orders to depot
  */
 int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	const Depot *dep;
+	const int32 return_value = HASBIT(p2, 1) ? 0 : CMD_ERROR;
 
-	if (!IsValidVehicleID(p1)) return CMD_ERROR;
+	if (!IsValidVehicleID(p1)) return return_value;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return CMD_ERROR;
+	if (v->type != VEH_Ship || !CheckOwnership(v->owner)) return return_value;
 
-	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
+	if (HASBIT(p2, 1) && v->next_shared != NULL) CmdSendShipToDepot(tile, flags, v->next_shared->index, p2);
+
+	if (v->vehstatus & VS_CRASHED) return return_value;
 
 	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (flags & DC_EXEC) {
+			if (HASBIT(p2, 1)) return 0;	// Mass ordering goto depot should not turn goto depot orders off
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
 			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS))
@@ -1026,8 +1032,10 @@ int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	dep = FindClosestShipDepot(v);
-	if (dep == NULL)
+	if (dep == NULL) {
+		if (HASBIT(p2, 1)) return 0;	// Mass ordering goto depot should not return error
 		return_cmd_error(STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT);
+	}
 
 	if (flags & DC_EXEC) {
 		v->dest_tile = dep->xy;
