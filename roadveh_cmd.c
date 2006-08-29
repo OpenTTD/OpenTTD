@@ -1035,13 +1035,13 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 	}
 
 	if (IsTileType(tile, MP_STREET)) {
-		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && !IsTileOwner(tile, v->owner)) {
-			/* Road depot owned by another player */
+		if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && (!IsTileOwner(tile, v->owner) || GetRoadDepotDirection(tile) == enterdir)) {
+			/* Road depot owned by another player or with the wrong orientation */
 			bitmask = 0;
 		}
 	} else if (IsTileType(tile, MP_STATION) && IsRoadStopTile(tile)) {
-		if (!IsTileOwner(tile, v->owner)) {
-			// different station owner
+		if (!IsTileOwner(tile, v->owner) || GetRoadStopDir(tile) == enterdir) {
+			/* different station owner or wrong orientation */
 			bitmask = 0;
 		} else {
 			/* Our station */
