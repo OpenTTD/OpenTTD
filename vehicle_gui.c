@@ -1244,6 +1244,18 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			switch (window_type) {
 				case VLW_SHARED_ORDERS:
 					/* Shared Orders */
+					if (vl->list_length == 0) {
+						/* The list is empty, so the last vehicle is sold or crashed */
+						/* Delete the window because the order is now not in use anymore */
+						switch (vehicle_type) {
+							case VEH_Train:    DeleteWindowById(WC_TRAINS_LIST,   w->window_number); break;
+							case VEH_Road:     DeleteWindowById(WC_ROADVEH_LIST,  w->window_number); break;
+							case VEH_Ship:     DeleteWindowById(WC_SHIPS_LIST,    w->window_number); break;
+							case VEH_Aircraft: DeleteWindowById(WC_AIRCRAFT_LIST, w->window_number); break;
+							default: NOT_REACHED(); break;
+						}
+						return;
+					}
 					SetDParam(0, w->vscroll.count);
 					w->widget[1].unkA  = STR_VEH_WITH_SHARED_ORDERS_LIST;
 					w->widget[9].unkA  = STR_EMPTY;
