@@ -165,7 +165,7 @@ static void CDECL Warning(const char *s, ...)
 	va_start(va, s);
 	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
-	fprintf(stderr, "%s" LINE_NUM_FMT ": Warning: %s\n", _file, _cur_line, buf);
+	fprintf(stderr, "%s" LINE_NUM_FMT ": warning: %s\n", _file, _cur_line, buf);
 	_warnings++;
 }
 
@@ -177,7 +177,7 @@ static void CDECL Error(const char *s, ...)
 	va_start(va, s);
 	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
-	fprintf(stderr, "%s" LINE_NUM_FMT ": Error: %s\n", _file, _cur_line, buf);
+	fprintf(stderr, "%s" LINE_NUM_FMT ": error: %s\n", _file, _cur_line, buf);
 	_errors++;
 }
 
