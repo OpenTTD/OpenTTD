@@ -916,7 +916,7 @@ void DrawSmallOrderListShip(const Vehicle *v, int x, int y)
 }
 
 
-const Widget _player_ships_widgets[] = {
+static const Widget _player_ships_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, STR_9805_SHIPS,       STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                  STR_STICKY_BUTTON},
@@ -970,7 +970,7 @@ static void ShowPlayerShipsLocal(PlayerID player, StationID station, OrderID ord
 	Window *w;
 
 	if (show_shared) {
-		w = AllocateWindowDescFront(&_player_ships_desc, (order << 16) | (VEH_Ship << 11) | VLW_SHARED_ORDERS);
+		w = AllocateWindowDescFront(&_player_ships_desc, (order << 16) | (VEH_Ship << 11) | VLW_SHARED_ORDERS | player);
 	} else {
 		uint16 VLW_flag = (station == INVALID_STATION) ? VLW_STANDARD : VLW_STATION_LIST;
 		if (player == _local_player) {

@@ -1202,11 +1202,6 @@ void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v)
 	}
 }
 
-extern const Widget _player_ships_widgets[];
-extern const Widget _player_aircraft_widgets[];
-extern const Widget _player_roadveh_widgets[];
-extern const Widget _player_trains_widgets[];
-
 /*
  * bitmask for w->window_number
  * 0-7 PlayerID (owner)
@@ -1247,13 +1242,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					if (vl->list_length == 0) {
 						/* The list is empty, so the last vehicle is sold or crashed */
 						/* Delete the window because the order is now not in use anymore */
-						switch (vehicle_type) {
-							case VEH_Train:    DeleteWindowById(WC_TRAINS_LIST,   w->window_number); break;
-							case VEH_Road:     DeleteWindowById(WC_ROADVEH_LIST,  w->window_number); break;
-							case VEH_Ship:     DeleteWindowById(WC_SHIPS_LIST,    w->window_number); break;
-							case VEH_Aircraft: DeleteWindowById(WC_AIRCRAFT_LIST, w->window_number); break;
-							default: NOT_REACHED(); break;
-						}
+						DeleteWindow(w);
 						return;
 					}
 					SetDParam(0, w->vscroll.count);
@@ -1403,48 +1392,36 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					}
 				} break;
 
-				case 9: { /* Build new Vehicle */
-					const uint16 window_type = w->window_number & VLW_FLAGS;
+				case 9: /* Left button */
+					if (GB(w->window_number, 0, 8) /* OwnerID */ != _local_player) break;
 
-					if (window_type == VLW_SHARED_ORDERS) {
-						const Vehicle *v;
-						assert(vl->list_length != 0);
-						v = vl->sort_list[0];
-						DoCommandP(v->tile, v->index, _ctrl_pressed ? 3 : 2, NULL, CMD_SEND_TO_DEPOT(vehicle_type));
+					switch (w->window_number & VLW_FLAGS) {
+						case VLW_SHARED_ORDERS: {
+							/* Send to depot */
+							const Vehicle *v;
+							assert(vl->list_length != 0);
+							v = vl->sort_list[0];
+							DoCommandP(v->tile, v->index, _ctrl_pressed ? 3 : 2, NULL, CMD_SEND_TO_DEPOT(vehicle_type));
+							break;
+						}
+						case VLW_STANDARD:
+						case VLW_STATION_LIST:
+							/* Build new Vehicle */
+							switch (vehicle_type) {
+								case VEH_Train:	   ShowBuildTrainWindow(0);    break;
+								case VEH_Road:     ShowBuildRoadVehWindow(0);  break;
+								case VEH_Ship:     ShowBuildShipWindow(0);     break;
+								case VEH_Aircraft: ShowBuildAircraftWindow(0); break;
+								default: NOT_REACHED(); break;
+							}
 						break;
-					}
-
-					switch (vehicle_type) {
-						case VEH_Train:
-							assert(IsWindowOfPrototype(w, _player_trains_widgets));
-							ShowBuildTrainWindow(0);
-							break;
-						case VEH_Road:
-							assert(IsWindowOfPrototype(w, _player_roadveh_widgets));
-							ShowBuildRoadVehWindow(0);
-							break;
-						case VEH_Ship:
-							assert(IsWindowOfPrototype(w, _player_ships_widgets));
-							ShowBuildShipWindow(0);
-							break;
-						case VEH_Aircraft:
-							assert(IsWindowOfPrototype(w, _player_aircraft_widgets));
-							ShowBuildAircraftWindow(0);
-							break;
 						default: NOT_REACHED(); break;
 					}
 					break;
-				}
 
-				case 10: {
-					if (vehicle_type == VEH_Train    && !IsWindowOfPrototype(w, _player_trains_widgets))   break;
-					if (vehicle_type == VEH_Road     && !IsWindowOfPrototype(w, _player_roadveh_widgets))  break;
-					if (vehicle_type == VEH_Ship     && !IsWindowOfPrototype(w, _player_ships_widgets))    break;
-					if (vehicle_type == VEH_Aircraft && !IsWindowOfPrototype(w, _player_aircraft_widgets)) break;
-
+				case 10: /* Right button */
 					ShowReplaceVehicleWindow(vehicle_type);
 					break;
-				}
 			}
 		}	break;
 
