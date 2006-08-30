@@ -1348,7 +1348,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 				DrawVehicleProfitButton(v, x, y + 13);
 
-				y += size_of_row;
+				y += w->resize.step_height;
 			}
 		}	break;
 
