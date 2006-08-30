@@ -1214,7 +1214,6 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 {
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 	const byte vehicle_type = GB(w->window_number, 11, 5);
-	const byte size_of_row = (vehicle_type == VEH_Aircraft || vehicle_type == VEH_Ship) ? PLY_WND_PRC__SIZE_OF_ROW_BIG : PLY_WND_PRC__SIZE_OF_ROW_SMALL;
 
 	switch (e->event) {
 		case WE_PAINT: {
@@ -1372,7 +1371,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					ShowDropDownMenu(w, _vehicle_sort_listing, vl->sort_type, 5, 0, 0);
 					return;
 				case 7: { /* Matrix to show vehicles */
-					uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / size_of_row;
+					uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / w->resize.step_height;
 					const Vehicle *v;
 
 					if (id_v >= w->vscroll.cap) return; // click out of bounds
@@ -1468,7 +1467,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 		case WE_RESIZE:
 			/* Update the scroll + matrix */
 			if (vehicle_type == VEH_Train) w->hscroll.cap += e->sizing.diff.x;
-			w->vscroll.cap += e->sizing.diff.y / size_of_row;
+			w->vscroll.cap += e->sizing.diff.y / w->resize.step_height;
 			w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
 			break;
 	}
