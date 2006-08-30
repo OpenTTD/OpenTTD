@@ -4,6 +4,12 @@
 #include "yapf.hpp"
 #include "follow_track.hpp"
 
+void FollowTrackInit(FollowTrack_t *This, const Vehicle* v)
+{
+	CFollowTrackWater& F = *(CFollowTrackWater*) This;
+	F.Init(v, NULL);
+}
+
 bool FollowTrackWater(FollowTrack_t *This, TileIndex old_tile, Trackdir old_td)
 {
 	CFollowTrackWater& F = *(CFollowTrackWater*) This;
