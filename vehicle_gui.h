@@ -17,8 +17,6 @@ void InitializeVehiclesGuiList(void);
 void RebuildVehicleLists(void);
 void ResortVehicleLists(void);
 
-void SortVehicleList(struct vehiclelist_d *vl);
-
 #define PERIODIC_RESORT_DAYS 10
 #define SORT_BY_UNSORTED 0
 extern const StringID _vehicle_sort_listing[];

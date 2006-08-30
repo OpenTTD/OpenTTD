@@ -198,7 +198,7 @@ static void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, Statio
 	vl->flags |= VL_RESORT;
 }
 
-void SortVehicleList(vehiclelist_d *vl)
+static void SortVehicleList(vehiclelist_d *vl)
 {
 	if (!(vl->flags & VL_RESORT)) return;
 
