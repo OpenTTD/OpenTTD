@@ -1243,55 +1243,57 @@ static inline char *replace_pathsep(char *s) { return s; }
 int CDECL main(int argc, char* argv[])
 {
 	char pathbuf[256];
-	const char *src_dir, *dest_dir;
+	const char *src_dir = ".";
+	const char *dest_dir = NULL;
 
 	int show_todo = 0;
 
-	if (argc > 1 && (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0)) {
-		puts("$Revision$");
-		return 0;
+	while (argc > 1 && *argv[1] == '-') {
+		if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
+			puts("$Revision$");
+			return 0;
+		}
+
+		if (strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--todo") == 0) {
+			show_todo = 1;
+			argc--, argv++;
+			continue;
+		}
+
+		if (strcmp(argv[1], "-w") == 0 || strcmp(argv[1], "--warning") == 0) {
+			show_todo = 2;
+			argc--, argv++;
+			continue;
+		}
+
+		if (strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-?") == 0) {
+			puts(
+				"strgen - $Revision$\n"
+				" -v | --version    print version information and exit\n"
+				" -t | --todo       replace any untranslated strings with '<TODO>'\n"
+				" -w | --warning    print a warning for any untranslated strings\n"
+				" -h | -? | --help  print this help message and exit\n"
+				" -s | --source_dir search for english.txt in the specified directory\n"
+				" -d | --dest_dir   put output file in the specified directory, create if needed\n"
+				" Run without parameters and strgen will search for english.txt and parse it,\n"
+				" creating strings.h. Passing an argument, strgen will translate that language\n"
+				" file using english.txt as a reference and output <language>.lng."
+			);
+			return 0;
+		}
+
+		if (argc > 2 && (strcmp(argv[1], "-s") == 0 || strcmp(argv[1], "--source_dir") == 0)) {
+			src_dir = replace_pathsep(argv[2]);
+			argc -= 2, argv += 2;
+		}
+
+		if (argc > 2 && (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "--dest_dir") == 0)) {
+			dest_dir = replace_pathsep(argv[2]);
+			argc -= 2, argv += 2;
+		}
 	}
 
-	if (argc > 1 && (strcmp(argv[1], "-t") == 0 || strcmp(argv[1], "--todo") == 0)) {
-		show_todo = 1;
-		argc--, argv++;
-	}
-
-	if (argc > 1 && (strcmp(argv[1], "-w") == 0 || strcmp(argv[1], "--warning") == 0)) {
-		show_todo = 2;
-		argc--, argv++;
-	}
-
-	if (argc > 1 && (
-				strcmp(argv[1], "-h") == 0 ||
-				strcmp(argv[1], "--help") == 0 ||
-				strcmp(argv[1], "-?") == 0
-			)) {
-		puts(
-			"strgen - $Revision$\n"
-			" -v | --version    print version information and exit\n"
-			" -t | --todo       replace any untranslated strings with '<TODO>'\n"
-			" -w | --warning    print a warning for any untranslated strings\n"
-			" -h | -? | --help  print this help message and exit\n"
-			" -s | --source_dir search for english.txt in the specified directory\n"
-			" -d | --dest_dir   put output file in the specified directory, create if needed\n"
-			" Run without parameters and strgen will search for english.txt and parse it,\n"
-			" creating strings.h. Passing an argument, strgen will translate that language\n"
-			" file using english.txt as a reference and output <language>.lng."
-		);
-		return 0;
-	}
-
-	src_dir = dest_dir = ".";
-	if (argc > 2 && (strcmp(argv[1], "-s") == 0 || strcmp(argv[1], "--source_dir") == 0)) {
-		src_dir = dest_dir = replace_pathsep(argv[2]); // if dest_dir is not specified, it equals src_dir
-		argc -= 2, argv += 2;
-	}
-
-	if (argc > 2 && (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "--dest_dir") == 0)) {
-		dest_dir = replace_pathsep(argv[2]);
-		argc -= 2, argv += 2;
-	}
+	if (dest_dir == NULL) dest_dir = src_dir; // if dest_dir is not specified, it equals src_dir
 
 	/* strgen has two modes of operation. If no (free) arguments are passed
 	 * strgen generates strings.h to the destination directory. If it is supplied
