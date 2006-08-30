@@ -1285,12 +1285,17 @@ int CDECL main(int argc, char* argv[])
 		if (argc > 2 && (strcmp(argv[1], "-s") == 0 || strcmp(argv[1], "--source_dir") == 0)) {
 			src_dir = replace_pathsep(argv[2]);
 			argc -= 2, argv += 2;
+			continue;
 		}
 
 		if (argc > 2 && (strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "--dest_dir") == 0)) {
 			dest_dir = replace_pathsep(argv[2]);
 			argc -= 2, argv += 2;
+			continue;
 		}
+
+		fprintf(stderr, "Invalid arguments\n");
+		return 0;
 	}
 
 	if (dest_dir == NULL) dest_dir = src_dir; // if dest_dir is not specified, it equals src_dir
