@@ -6,7 +6,6 @@
 #include "bridge_map.h"
 #include "clear_map.h"
 #include "industry_map.h"
-#include "spritecache.h"
 #include "station_map.h"
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -558,9 +557,6 @@ static const byte _vehicle_type_colors[6] = {
 	184, 191, 152, 15, 215, 184
 };
 
-static inline uint32 dup_byte32(byte b) {
-	return b + (b << 8) + (b << 16) + (b << 24);
-}
 
 static void DrawVertMapIndicator(int x, int y, int x2, int y2)
 {
@@ -617,7 +613,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		FOR_ALL_PLAYERS(p) {
 			if (p->is_active) {
 				_owner_colors[p->index] =
-					dup_byte32(GetNonSprite(PALETTE_RECOLOR_START + p->player_color)[0xCB]); // XXX - magic pixel
+					_colour_gradient[p->player_color][5] * 0x01010101;
 			}
 		}
 	}
