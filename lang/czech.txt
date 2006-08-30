@@ -2782,10 +2782,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Prijem t
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nelze poslat letadlo do hangáru...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Jedu do hangáru {RED}{TOWN}
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Jedu do hangáru {RED}{TOWN}{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Jedu do hangáru {GREEN}{TOWN}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Jedu do hangáru {GREEN}{TOWN}{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Jedu do hangáru {RED}{STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Jedu do hangáru {RED}{STATION}{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Jedu do hangáru {GREEN}{STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Jedu do hangáru {GREEN}{STATION}{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Letadlo {COMMA} ceka v hangáru
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemohu rozjet/zastavit letadlo...

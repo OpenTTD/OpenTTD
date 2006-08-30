@@ -2730,10 +2730,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profitto
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenz.: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Costr. nel: {LTBLUE}{NUM}{BLACK} Valore: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non puoi mandare l'aereo nell'hangar...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Direzione per {RED}{TOWN} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Direzione per {RED}{TOWN} Hangar{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Direzione per {GREEN}{TOWN} Hangar
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Direzione per {GREEN}{TOWN} Hangar{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Direzione per {RED}{STATION} Hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Direzione per {RED}{STATION} Hangar{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Direzione per {GREEN}{STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Direzione per {GREEN}{STATION} Hangar{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aereo {COMMA} sta aspettano nell'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aereo in mezzo
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non puoi far fermare/ripartire l'aereo...

@@ -2731,10 +2731,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Winst di
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Betrouwbaarheid: {LTBLUE}{COMMA}%  {BLACK}Pechgevallen sinds laatste reparatie: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bouwdatum: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan vliegtuig niet naar hangar sturen...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Op weg naar {RED}{TOWN} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Op weg naar {RED}{TOWN} Hangar{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Op weg naar {GREEN}{TOWN} Hangar
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Op wg naar {GREEN}{TOWN} Hangar{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Op weg naar {RED}{STATION} Hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Op weg naar {RED}{STATION} Hangar{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Op weg naar {GREEN}{STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Op weg naar {GREEN}{STATION} Hangar{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Vliegtuig {COMMA} wacht in de vliegtuig hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in de weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan vliegtuig niet stoppen/starten...

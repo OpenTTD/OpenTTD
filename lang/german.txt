@@ -2732,10 +2732,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit l
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Pannen seit letzter Wartung: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK} Gebaut: {LTBLUE}{NUM}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kann das Flugzeug nicht in den Hangar schicken...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Unterwegs zu {RED}{TOWN} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Unterwegs zu {RED}{TOWN} Hangar{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Unterwegs zu {GREEN}{TOWN} Hangar
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Unterwegs zu {GREEN}{TOWN} Hangar{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Unterwegs zu {RED}{STATION} Hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Unterwegs zu {RED}{STATION} Hangar{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Unterwegs zu {GREEN}{STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Unterwegs zu {GREEN}{STATION} Hangar{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugzeug {COMMA} wartet im Hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugzeug ist auf dem Weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kann das Flugzeug nicht anhalten/starten...

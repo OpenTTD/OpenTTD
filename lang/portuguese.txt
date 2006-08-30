@@ -2723,10 +2723,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros d
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Avarias desde a última manutenção: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Não é possível mandar aeronave para o hangar...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Dirige-se ao hangar de {RED}{TOWN}
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Dirige-se ao hangar de {RED}{TOWN}{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Dirige-se ao hangar de {GREEN}{TOWN}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Dirige-se ao hangar de {GREEN}{TOWN}{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Dirige-se ao hangar de {RED}{STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Dirige-se ao hangar de {RED}{STATION}{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Dirige-se ao hangar de {GREEN}{STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Dirige-se ao hangar de {GREEN}{STATION}{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronave {COMMA} está a aguardar no hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave no caminho
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Não é possível iniciar/parar aeronave...

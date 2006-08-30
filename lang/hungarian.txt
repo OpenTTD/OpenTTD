@@ -2833,10 +2833,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei has
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nem küldheted a repülõgépet a hangárba...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Úton {RED}{TOWN} hangárjába
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Úton {RED}{TOWN} hangárjába{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Úton {GREEN}{TOWN} hangárjába
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Úton {GREEN}{TOWN} hangárjába{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Úton {RED}{STATION} hangárjába
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Úton {RED}{STATION} hangárjába{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Úton {GREEN}{STATION} hangárjába
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Úton {GREEN}{STATION} hangárjába{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{COMMA}. repülõgép a hangárban várakozik
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Repülõgép van az útban
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nem indíthatod el/ állíthatod meg a repülõgépet...

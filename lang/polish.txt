@@ -2860,10 +2860,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zysk w t
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Niezawodnosc: {LTBLUE}{COMMA}%  {BLACK}Awarie od ostatniego serwisowania: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Zbudowany: {LTBLUE}{NUM}{BLACK} Wartosc: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nie mozna wyslac samolotu do hangaru...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Zmierza do {RED}hangaru w {TOWN}
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Zmierza do {RED}hangaru w {TOWN}{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Zmierza do {GREEN}hangaru w {TOWN}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Zmierza do {GREEN}hangaru w {TOWN}{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Zmierza do {RED}hangaru w {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Zmierza do {RED}hangaru w {STATION}{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Zmierza do {GREEN}hangaru w {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Zmierza do {GREEN}hangaru w {STATION}{LTBLUE}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Samolot  {COMMA} czeka w hangarze
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Samolot jest na drodze
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nie mozna zatrzymac/ruszyc samolotu
