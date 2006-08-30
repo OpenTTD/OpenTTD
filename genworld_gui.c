@@ -420,7 +420,12 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		HandleEditBoxKey(w, &WP(w, querystr_d), SEED_EDIT, e, CS_NUMERAL);
-		_patches_newgame.generation_seed = atoi(_edit_str_buf);
+		/* the seed is unsigned, therefore atoi cannot be used.
+		 * As 2^32 - 1 (MAX_UVALUE(uint32)) is a 'magic' value
+		 * (use random seed) it should not be possible to be
+		 * entered into the input field; the generate seed
+		 * button can be used instead. */
+		_patches_newgame.generation_seed = minu(strtoul(_edit_str_buf, NULL, 10), MAX_UVALUE(uint32) - 1);
 		break;
 
 	case WE_DROPDOWN_SELECT:
