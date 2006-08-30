@@ -1908,31 +1908,22 @@ static void MaybeReplaceVehicle(Vehicle *v)
 int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner)
 {
 	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
-	if (flags & DC_EXEC) {
-	/* Send all the vehicles to a depot */
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == type && v->owner == owner && (
-				(type == VEH_Train && IsFrontEngine(v)) ||
-				(type != VEH_Train && v->subtype <= subtype))) {
-				DoCommand(v->tile, v->index, service, flags, CMD_SEND_TO_DEPOT(type));
-			}
-		}
-	} else {
-	/* See if we can find a vehicle to send to a depot */
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == type && v->owner == owner && (
-				(type == VEH_Train && IsFrontEngine(v)) ||
-				(type != VEH_Train && v->subtype <= subtype))) {
-				/* We found one vehicle to send to a depot. No need to search for more. The command is valid */
-				if (!DoCommand(v->tile, v->index, service, flags, CMD_SEND_TO_DEPOT(type))) return 0;
-			}
-		}
+	const Vehicle *v;
 
-		return CMD_ERROR;
+	/* Send all the vehicles to a depot */
+	FOR_ALL_VEHICLES(v) {
+		if (v->type == type && v->owner == owner && (
+			(type == VEH_Train && IsFrontEngine(v)) ||
+			(type != VEH_Train && v->subtype <= subtype))) {
+			/* Return 0 if DC_EXEC is not set and a DoCommand() returns 0 (valid goto depot command) */
+			/* In this case we know that at least one vehicle can be send to a depot and we will issue the command */
+			/* Since we will issue the command nomatter how many vehicles more than one it's valid for, we skip checking the rest */
+			/* When DC_EXEC is set, we need to run this loop for all vehicles nomatter return values from each vehicle */
+			if (!DoCommand(v->tile, v->index, service, flags, CMD_SEND_TO_DEPOT(type)) && !(flags & DC_EXEC)) return 0;
+		}
 	}
-	return 0;
+
+	return (flags & DC_EXEC) ? 0 : CMD_ERROR;
 }
 
 
