@@ -119,7 +119,7 @@ void ResortVehicleLists(void)
 		}
 }
 
-void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station, OrderID order)
+static void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
 {
 	const Vehicle** sort_list;
 	uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
@@ -136,25 +136,26 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...",
 		owner, station);
 
-	if (station != INVALID_STATION) {
-		const Vehicle *v;
-		FOR_ALL_VEHICLES(v) {
-			if (v->type == type && (
-						(type == VEH_Train && IsFrontEngine(v)) ||
-						(type != VEH_Train && v->subtype <= subtype)
-					)) {
-				const Order *order;
+	switch (window_type) {
+		case VLW_STATION_LIST: {
+			const Vehicle *v;
+			FOR_ALL_VEHICLES(v) {
+				if (v->type == type && (
+					(type == VEH_Train && IsFrontEngine(v)) ||
+					(type != VEH_Train && v->subtype <= subtype))) {
+					const Order *order;
 
-				FOR_VEHICLE_ORDERS(v, order) {
-					if (order->type == OT_GOTO_STATION && order->dest.station == station) {
-						sort_list[n++] = v;
-						break;
+					FOR_VEHICLE_ORDERS(v, order) {
+						if (order->type == OT_GOTO_STATION && order->dest.station == station) {
+							sort_list[n++] = v;
+							break;
+						}
 					}
 				}
 			}
-		}
-	} else {
-		if (order != INVALID_ORDER) {
+		} break;
+
+		case VLW_SHARED_ORDERS: {
 			Vehicle *v;
 			FOR_ALL_VEHICLES(v) {
 				/* Find a vehicle with the order in question */
@@ -167,16 +168,20 @@ void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID sta
 					sort_list[n++] = v;
 				}
 			}
-		} else {
+		} break;
+
+		case VLW_STANDARD: {
 			const Vehicle *v;
 			FOR_ALL_VEHICLES(v) {
 				if (v->type == type && v->owner == owner && (
-				    (type == VEH_Train && IsFrontEngine(v)) ||
-				    (type != VEH_Train && v->subtype <= subtype))) {
+					(type == VEH_Train && IsFrontEngine(v)) ||
+					(type != VEH_Train && v->subtype <= subtype))) {
 					sort_list[n++] = v;
 				}
 			}
-		}
+		} break;
+
+		default: NOT_REACHED(); break;
 	}
 
 	free((void*)vl->sort_list);
@@ -1227,7 +1232,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			const StationID station = (window_type == VLW_STATION_LIST)  ? GB(w->window_number, 16, 16) : INVALID_STATION;
 			const OrderID order     = (window_type == VLW_SHARED_ORDERS) ? GB(w->window_number, 16, 16) : INVALID_ORDER;
 
-			BuildVehicleList(vl, vehicle_type, owner, station, order);
+			BuildVehicleList(vl, vehicle_type, owner, station, order, window_type);
 			SortVehicleList(vl);
 			SetVScrollCount(w, vl->list_length);
 
