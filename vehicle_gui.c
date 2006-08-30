@@ -1268,6 +1268,14 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					SetDParam(0, p->name_1);
 					SetDParam(1, p->name_2);
 					SetDParam(2, w->vscroll.count);
+					if (vehicle_type == VEH_Aircraft) {
+						w->widget[9].unkA = STR_SEND_TO_HANGARS;
+						w->widget[9].tooltips = STR_SEND_TO_HANGARS_TIP;
+					} else {
+						w->widget[9].unkA = STR_SEND_TO_DEPOTS;
+						w->widget[9].tooltips = STR_SEND_TO_DEPOTS_TIP;
+					}
+
 					switch (vehicle_type) {
 						case VEH_Train:    w->widget[1].unkA = STR_881B_TRAINS;        break;
 						case VEH_Road:     w->widget[1].unkA = STR_9001_ROAD_VEHICLES; break;
@@ -1398,30 +1406,33 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 				case 9: /* Left button */
 					if (GB(w->window_number, 0, 8) /* OwnerID */ != _local_player) break;
-
-					switch (w->window_number & VLW_FLAGS) {
-						case VLW_SHARED_ORDERS: {
-							/* Send to depot */
-							const Vehicle *v;
-							assert(vl->list_length != 0);
-							v = vl->sort_list[0];
-							DoCommandP(v->tile, v->index, _ctrl_pressed ? 3 : 2, NULL, CMD_SEND_TO_DEPOT(vehicle_type));
-							break;
-						}
-						case VLW_STANDARD:
-						case VLW_STATION_LIST:
-							/* Build new Vehicle */
-							switch (vehicle_type) {
-								case VEH_Train:	   ShowBuildTrainWindow(0);    break;
-								case VEH_Road:     ShowBuildRoadVehWindow(0);  break;
-								case VEH_Ship:     ShowBuildShipWindow(0);     break;
-								case VEH_Aircraft: ShowBuildAircraftWindow(0); break;
-								default: NOT_REACHED(); break;
+					{
+						uint16 window_type = w->window_number & VLW_FLAGS;
+						switch (window_type) {
+							case VLW_STANDARD:
+							case VLW_SHARED_ORDERS: {
+								/* Send to depot */
+								const Vehicle *v;
+								assert(vl->list_length != 0);
+								v = vl->sort_list[0];
+								DoCommandP(v->tile, v->index, window_type | _ctrl_pressed ? 3 : 2, NULL, CMD_SEND_TO_DEPOT(vehicle_type));
+								break;
 							}
+
+							case VLW_STATION_LIST:
+								/* Build new Vehicle */
+								switch (vehicle_type) {
+									case VEH_Train:	   ShowBuildTrainWindow(0);    break;
+									case VEH_Road:     ShowBuildRoadVehWindow(0);  break;
+									case VEH_Ship:     ShowBuildShipWindow(0);     break;
+									case VEH_Aircraft: ShowBuildAircraftWindow(0); break;
+									default: NOT_REACHED(); break;
+								}
+								break;
+							default: NOT_REACHED(); break;
+						}
 						break;
-						default: NOT_REACHED(); break;
 					}
-					break;
 
 				case 10: /* Right button */
 					ShowReplaceVehicleWindow(vehicle_type);

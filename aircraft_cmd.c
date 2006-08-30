@@ -501,6 +501,10 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	Vehicle *v;
 	const int32 return_value = HASBIT(p2, 1) ? 0 : CMD_ERROR;
 
+	if (HASBIT(p2, 1) && (p2 & VLW_FLAGS) == VLW_STANDARD) {
+		return SendAllVehiclesToDepot(VEH_Aircraft, flags, HASBIT(p2, 0), _current_player);
+	}
+
 	if (!IsValidVehicleID(p1)) return return_value;
 
 	v = GetVehicle(p1);

@@ -1898,6 +1898,43 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	_current_player = OWNER_NONE;
 }
 
+/** send all vehicles of type to depots
+* @param type type of vehicle
+* @param flags the flags used for DoCommand()
+* @param service should the vehicles only get service in the depots
+* @param owner PlayerID of owner of the vehicles to send
+* @return o for success and CMD_ERROR if no vehicle is able to go to depot
+*/
+int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner)
+{
+	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
+	if (flags & DC_EXEC) {
+	/* Send all the vehicles to a depot */
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == type && v->owner == owner && (
+				(type == VEH_Train && IsFrontEngine(v)) ||
+				(type != VEH_Train && v->subtype <= subtype))) {
+				DoCommand(v->tile, v->index, service, flags, CMD_SEND_TO_DEPOT(type));
+			}
+		}
+	} else {
+	/* See if we can find a vehicle to send to a depot */
+		const Vehicle *v;
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == type && v->owner == owner && (
+				(type == VEH_Train && IsFrontEngine(v)) ||
+				(type != VEH_Train && v->subtype <= subtype))) {
+				/* We found one vehicle to send to a depot. No need to search for more. The command is valid */
+				if (!DoCommand(v->tile, v->index, service, flags, CMD_SEND_TO_DEPOT(type))) return 0;
+			}
+		}
+
+		return CMD_ERROR;
+	}
+	return 0;
+}
+
 
 /** Give a custom name to your vehicle
  * @param tile unused

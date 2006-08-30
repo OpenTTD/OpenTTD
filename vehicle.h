@@ -314,6 +314,8 @@ int CheckTrainStoppedInDepot(const Vehicle *v);
 
 bool VehicleNeedsService(const Vehicle *v);
 
+int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner);
+
 typedef struct GetNewVehiclePosResult {
 	int x,y;
 	TileIndex old_tile;
