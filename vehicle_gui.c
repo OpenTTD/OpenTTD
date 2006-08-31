@@ -1279,21 +1279,21 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 						DrawShipImage(v, x + 19, y + 6, INVALID_VEHICLE);
 						DrawString(x + 12, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 						if (IsShipInDepot(v)) str = STR_021F;
-							if (v->string_id != STR_SV_SHIP_NAME) {
-								SetDParam(0, v->string_id);
-								DrawString(x + 12, y, STR_01AB, 0);
-							}
-								DrawSmallOrderListShip(v, x + 138, y);
+						if (v->string_id != STR_SV_SHIP_NAME) {
+							SetDParam(0, v->string_id);
+							DrawString(x + 12, y, STR_01AB, 0);
+						}
+						DrawSmallOrderListShip(v, x + 138, y);
 						break;
 					case VEH_Aircraft:
 						DrawAircraftImage(v, x + 19, y + 6, INVALID_VEHICLE);
 						DrawString(x + 19, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 						if (IsAircraftInHangar(v)) str = STR_021F;
-							if (v->string_id != STR_SV_AIRCRAFT_NAME) {
-								SetDParam(0, v->string_id);
-								DrawString(x + 19, y, STR_01AB, 0);
-							}
-								DrawSmallOrderListAircraft(v, x + 136, y);
+						if (v->string_id != STR_SV_AIRCRAFT_NAME) {
+							SetDParam(0, v->string_id);
+							DrawString(x + 19, y, STR_01AB, 0);
+						}
+						DrawSmallOrderListAircraft(v, x + 136, y);
 						break;
 					default: NOT_REACHED(); break;
 				}
