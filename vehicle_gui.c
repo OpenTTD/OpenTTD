@@ -1251,6 +1251,8 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					}
 					SetDParam(0, w->vscroll.count);
 					w->widget[1].unkA  = STR_VEH_WITH_SHARED_ORDERS_LIST;
+
+					if (owner != _local_player) break;	// only set up buttons for local player
 					w->widget[10].unkA = STR_EMPTY;
 					SETBIT(w->disabled_state, 10);
 
@@ -1268,14 +1270,6 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					SetDParam(0, p->name_1);
 					SetDParam(1, p->name_2);
 					SetDParam(2, w->vscroll.count);
-					if (vl->list_length == 0) SETBIT(w->disabled_state, 9);
-					if (vehicle_type == VEH_Aircraft) {
-						w->widget[9].unkA = STR_SEND_TO_HANGARS;
-						w->widget[9].tooltips = STR_SEND_TO_HANGARS_TIP;
-					} else {
-						w->widget[9].unkA = STR_SEND_TO_DEPOTS;
-						w->widget[9].tooltips = STR_SEND_TO_DEPOTS_TIP;
-					}
 
 					switch (vehicle_type) {
 						case VEH_Train:    w->widget[1].unkA = STR_881B_TRAINS;        break;
@@ -1284,6 +1278,16 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 						case VEH_Aircraft: w->widget[1].unkA = STR_A009_AIRCRAFT;      break;
 						default: NOT_REACHED(); break;
 					}
+
+					if (owner != _local_player) break;	// only set up buttons for local player
+					if (vl->list_length == 0) SETBIT(w->disabled_state, 9);
+						if (vehicle_type == VEH_Aircraft) {
+							w->widget[9].unkA = STR_SEND_TO_HANGARS;
+							w->widget[9].tooltips = STR_SEND_TO_HANGARS_TIP;
+						} else {
+							w->widget[9].unkA = STR_SEND_TO_DEPOTS;
+							w->widget[9].tooltips = STR_SEND_TO_DEPOTS_TIP;
+						}
 					break;
 
 				case VLW_STATION_LIST:
