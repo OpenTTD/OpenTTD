@@ -20,8 +20,10 @@ static struct {
 	Pixel *buffer_bits;
 	Pixel *alloced_bits;
 	HPALETTE gdi_palette;
-	int width,height;
-	int width_org, height_org;
+	int width;
+	int height;
+	int width_org;
+	int height_org;
 	bool fullscreen;
 	bool double_size;
 	bool has_focus;
@@ -52,8 +54,7 @@ static void MakePalette(void)
 
 	}
 	_wnd.gdi_palette = CreatePalette(pal);
-	if (_wnd.gdi_palette == NULL)
-		error("CreatePalette failed!\n");
+	if (_wnd.gdi_palette == NULL) error("CreatePalette failed!\n");
 }
 
 static void UpdatePalette(HDC dc, uint start, uint count)
@@ -211,279 +212,294 @@ static void CALLBACK TrackMouseTimerProc(HWND hwnd, UINT msg, UINT event, DWORD 
 static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	switch (msg) {
-	case WM_CREATE:
-		SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
-		break;
-
-	case WM_PAINT: {
-		PAINTSTRUCT ps;
-		HDC dc,dc2;
-		HBITMAP old_bmp;
-		HPALETTE old_palette;
-		BeginPaint(hwnd, &ps);
-		dc = ps.hdc;
-		dc2 = CreateCompatibleDC(dc);
-		old_bmp = SelectObject(dc2, _wnd.dib_sect);
-		old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
-
-		if (_pal_last_dirty != -1) {
-			UpdatePalette(dc2, _pal_first_dirty, _pal_last_dirty - _pal_first_dirty + 1);
-			_pal_last_dirty = -1;
-		}
-
-		BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
-		SelectPalette(dc, old_palette, TRUE);
-		SelectObject(dc2, old_bmp);
-		DeleteDC(dc2);
-		EndPaint(hwnd, &ps);
-		}
-		return 0;
-
-	case WM_PALETTECHANGED:
-		if ((HWND)wParam == hwnd)
-			return 0;
-		// FALL THROUGH
-	case WM_QUERYNEWPALETTE: {
-		HDC hDC = GetWindowDC(hwnd);
-		HPALETTE hOldPalette = SelectPalette(hDC, _wnd.gdi_palette, FALSE);
-		UINT nChanged = RealizePalette(hDC);
-		SelectPalette(hDC, hOldPalette, TRUE);
-		ReleaseDC(hwnd, hDC);
-		if (nChanged) InvalidateRect(hwnd, NULL, FALSE);
-		return 0;
-	}
-
-	case WM_CLOSE:
-		if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
-			_exit_game = true;
-		} else if (_patches.autosave_on_exit) {
-			DoExitSave();
-			_exit_game = true;
-		} else {
-			AskExitGame();
-		}
-		_window_maximize = IsZoomed(_wnd.main_wnd);
-		return 0;
-
-	case WM_LBUTTONDOWN:
-		SetCapture(hwnd);
-		_left_button_down = true;
-		return 0;
-
-	case WM_LBUTTONUP:
-		ReleaseCapture();
-		_left_button_down = false;
-		_left_button_clicked = false;
-		return 0;
-
-	case WM_RBUTTONDOWN:
-		SetCapture(hwnd);
-		_right_button_down = true;
-		_right_button_clicked = true;
-		return 0;
-
-	case WM_RBUTTONUP:
-		ReleaseCapture();
-		_right_button_down = false;
-		return 0;
-
-	case WM_MOUSEENTER:
-		_cursor.in_window = true;
-		DrawMouseCursor();
-		break;
-
-	case WM_MOUSELEAVE:
-		UndrawMouseCursor();
-		_cursor.in_window = false;
-		break;
-
-	case WM_MOUSEMOVE: {
-		int x = (int16)LOWORD(lParam);
-		int y = (int16)HIWORD(lParam);
-		POINT pt;
-
-		/* If the mouse was not in the window and it has moved it means it has
-		 * come into the window, so send a WM_MOUSEENTER message. Also start
-		 * tracking the mouse for exiting the window */
-		if (!_cursor.in_window) {
-			_cursor.in_window = true;
+		case WM_CREATE:
 			SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+			break;
 
-			if (hwnd != GetCapture()) PostMessage(hwnd, WM_MOUSEENTER, 0, 0L);
-		}
+		case WM_PAINT: {
+			PAINTSTRUCT ps;
+			HDC dc,dc2;
+			HBITMAP old_bmp;
+			HPALETTE old_palette;
 
-		if (_wnd.double_size) {
-			x /= 2;
-			y /= 2;
-		}
+			BeginPaint(hwnd, &ps);
+			dc = ps.hdc;
+			dc2 = CreateCompatibleDC(dc);
+			old_bmp = SelectObject(dc2, _wnd.dib_sect);
+			old_palette = SelectPalette(dc, _wnd.gdi_palette, FALSE);
 
-		if (_cursor.fix_at) {
-			int dx = x - _cursor.pos.x;
-			int dy = y - _cursor.pos.y;
-			if (dx != 0 || dy != 0) {
-				_cursor.delta.x += dx;
-				_cursor.delta.y += dy;
-
-				pt.x = _cursor.pos.x;
-				pt.y = _cursor.pos.y;
-
-				if (_wnd.double_size) {
-					pt.x *= 2;
-					pt.y *= 2;
-				}
-				ClientToScreen(hwnd, &pt);
-				SetCursorPos(pt.x, pt.y);
+			if (_pal_last_dirty != -1) {
+				UpdatePalette(dc2, _pal_first_dirty, _pal_last_dirty - _pal_first_dirty + 1);
+				_pal_last_dirty = -1;
 			}
-		} else {
-			_cursor.delta.x += x - _cursor.pos.x;
-			_cursor.delta.y += y - _cursor.pos.y;
-			_cursor.pos.x = x;
-			_cursor.pos.y = y;
-			_cursor.dirty = true;
-		}
-		MyShowCursor(false);
-		return 0;
-	}
 
-	case WM_KEYDOWN: {
-		// this is the rewritten ascii input function
-		// it disables windows deadkey handling --> more linux like :D
-		unsigned short w = 0;
-		int r = 0;
-		byte ks[256];
-		unsigned int scan = 0;
-		uint16 scancode = (( lParam & 0xFF0000 ) >> 16 );
-
-		GetKeyboardState(ks);
-		r = ToAscii(wParam, scan, ks, &w, 0);
-		if (r == 0) w = 0; // no translation was possible
-
-		_pressed_key = w | MapWindowsKey(wParam) << 16;
-
-		if (scancode == 41)
-			_pressed_key = w | WKC_BACKQUOTE << 16;
-
-		if ((_pressed_key >> 16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
-			_double_size ^= 1;
-			_wnd.double_size = _double_size;
-			ClientSizeChanged(_wnd.width, _wnd.height);
-			MarkWholeScreenDirty();
-		}
-	} break;
-
-	case WM_SYSKEYDOWN: /* user presses F10 or Alt, both activating the title-menu */
-		switch (wParam) {
-		case VK_RETURN: case 0x46: /* Full Screen on ALT + ENTER/F(VK_F) */
-			ToggleFullScreen(!_wnd.fullscreen);
+			BitBlt(dc, 0, 0, _wnd.width, _wnd.height, dc2, 0, 0, SRCCOPY);
+			SelectPalette(dc, old_palette, TRUE);
+			SelectObject(dc2, old_bmp);
+			DeleteDC(dc2);
+			EndPaint(hwnd, &ps);
 			return 0;
-		case VK_MENU: /* Just ALT */
-			return 0; // do nothing
-		case VK_F10: /* F10, ignore activation of menu */
-			_pressed_key = MapWindowsKey(wParam) << 16;
+		}
+
+		case WM_PALETTECHANGED:
+			if ((HWND)wParam == hwnd) return 0;
+			/* FALLTHROUGH */
+
+		case WM_QUERYNEWPALETTE: {
+			HDC hDC = GetWindowDC(hwnd);
+			HPALETTE hOldPalette = SelectPalette(hDC, _wnd.gdi_palette, FALSE);
+			UINT nChanged = RealizePalette(hDC);
+
+			SelectPalette(hDC, hOldPalette, TRUE);
+			ReleaseDC(hwnd, hDC);
+			if (nChanged) InvalidateRect(hwnd, NULL, FALSE);
 			return 0;
-		default: /* ALT in combination with something else */
-			_pressed_key = MapWindowsKey(wParam) << 16;
+		}
+
+		case WM_CLOSE:
+			if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
+				_exit_game = true;
+			} else if (_patches.autosave_on_exit) {
+				DoExitSave();
+				_exit_game = true;
+			} else {
+				AskExitGame();
+			}
+			_window_maximize = IsZoomed(_wnd.main_wnd);
+			return 0;
+
+		case WM_LBUTTONDOWN:
+			SetCapture(hwnd);
+			_left_button_down = true;
+			return 0;
+
+		case WM_LBUTTONUP:
+			ReleaseCapture();
+			_left_button_down = false;
+			_left_button_clicked = false;
+			return 0;
+
+		case WM_RBUTTONDOWN:
+			SetCapture(hwnd);
+			_right_button_down = true;
+			_right_button_clicked = true;
+			return 0;
+
+		case WM_RBUTTONUP:
+			ReleaseCapture();
+			_right_button_down = false;
+			return 0;
+
+		case WM_MOUSEENTER:
+			_cursor.in_window = true;
+			DrawMouseCursor();
+			break;
+
+		case WM_MOUSELEAVE:
+			UndrawMouseCursor();
+			_cursor.in_window = false;
+			break;
+
+		case WM_MOUSEMOVE: {
+			int x = (int16)LOWORD(lParam);
+			int y = (int16)HIWORD(lParam);
+			POINT pt;
+
+			/* If the mouse was not in the window and it has moved it means it has
+			 * come into the window, so send a WM_MOUSEENTER message. Also start
+			 * tracking the mouse for exiting the window */
+			if (!_cursor.in_window) {
+				_cursor.in_window = true;
+				SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
+
+				if (hwnd != GetCapture()) PostMessage(hwnd, WM_MOUSEENTER, 0, 0L);
+			}
+
+			if (_wnd.double_size) {
+				x /= 2;
+				y /= 2;
+			}
+
+			if (_cursor.fix_at) {
+				int dx = x - _cursor.pos.x;
+				int dy = y - _cursor.pos.y;
+				if (dx != 0 || dy != 0) {
+					_cursor.delta.x += dx;
+					_cursor.delta.y += dy;
+
+					pt.x = _cursor.pos.x;
+					pt.y = _cursor.pos.y;
+
+					if (_wnd.double_size) {
+						pt.x *= 2;
+						pt.y *= 2;
+					}
+					ClientToScreen(hwnd, &pt);
+					SetCursorPos(pt.x, pt.y);
+				}
+			} else {
+				_cursor.delta.x += x - _cursor.pos.x;
+				_cursor.delta.y += y - _cursor.pos.y;
+				_cursor.pos.x = x;
+				_cursor.pos.y = y;
+				_cursor.dirty = true;
+			}
+			MyShowCursor(false);
+			return 0;
+		}
+
+		case WM_KEYDOWN: {
+			// this is the rewritten ascii input function
+			// it disables windows deadkey handling --> more linux like :D
+			WORD w = 0;
+			byte ks[256];
+			uint scancode;
+
+			GetKeyboardState(ks);
+			if (ToAscii(wParam, 0, ks, &w, 0) == 0) {
+				w = 0; // no translation was possible
+			}
+
+			_pressed_key = w | MapWindowsKey(wParam) << 16;
+
+			scancode = GB(lParam, 16, 8);
+			if (scancode == 41) _pressed_key = w | WKC_BACKQUOTE << 16;
+
+			if ((_pressed_key >> 16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
+				_double_size ^= 1;
+				_wnd.double_size = _double_size;
+				ClientSizeChanged(_wnd.width, _wnd.height);
+				MarkWholeScreenDirty();
+			}
 			break;
 		}
-		break;
-	case WM_NCMOUSEMOVE:
-		MyShowCursor(true);
-		return 0;
 
-	case WM_SIZE: {
-		if (wParam != SIZE_MINIMIZED) {
-			ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
+		case WM_SYSKEYDOWN: /* user presses F10 or Alt, both activating the title-menu */
+			switch (wParam) {
+				case VK_RETURN:
+				case 'F': /* Full Screen on ALT + ENTER/F */
+					ToggleFullScreen(!_wnd.fullscreen);
+					return 0;
+
+				case VK_MENU: /* Just ALT */
+					return 0; // do nothing
+
+				case VK_F10: /* F10, ignore activation of menu */
+					_pressed_key = MapWindowsKey(wParam) << 16;
+					return 0;
+
+				default: /* ALT in combination with something else */
+					_pressed_key = MapWindowsKey(wParam) << 16;
+					break;
+			}
+			break;
+
+		case WM_NCMOUSEMOVE:
+			MyShowCursor(true);
+			return 0;
+
+		case WM_SIZE:
+			if (wParam != SIZE_MINIMIZED) {
+				ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
+			}
+			return 0;
+
+		case WM_SIZING: {
+			RECT* r = (RECT*)lParam;
+			RECT r2;
+			int w, h;
+
+			SetRect(&r2, 0, 0, 0, 0);
+			AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
+
+			w = r->right - r->left - (r2.right - r2.left);
+			h = r->bottom - r->top - (r2.bottom - r2.top);
+			if (_wnd.double_size) {
+				w /= 2;
+				h /= 2;
+			}
+			w = clamp(w, 64, MAX_SCREEN_WIDTH);
+			h = clamp(h, 64, MAX_SCREEN_HEIGHT);
+			if (_wnd.double_size) {
+				w *= 2;
+				h *= 2;
+			}
+			SetRect(&r2, 0, 0, w, h);
+
+			AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
+			w = r2.right - r2.left;
+			h = r2.bottom - r2.top;
+
+			switch (wParam) {
+				case WMSZ_BOTTOM:
+					r->bottom = r->top + h;
+					break;
+
+				case WMSZ_BOTTOMLEFT:
+					r->bottom = r->top + h;
+					r->left = r->right - w;
+					break;
+
+				case WMSZ_BOTTOMRIGHT:
+					r->bottom = r->top + h;
+					r->right = r->left + w;
+					break;
+
+				case WMSZ_LEFT:
+					r->left = r->right - w;
+					break;
+
+				case WMSZ_RIGHT:
+					r->right = r->left + w;
+					break;
+
+				case WMSZ_TOP:
+					r->top = r->bottom - h;
+					break;
+
+				case WMSZ_TOPLEFT:
+					r->top = r->bottom - h;
+					r->left = r->right - w;
+					break;
+
+				case WMSZ_TOPRIGHT:
+					r->top = r->bottom - h;
+					r->right = r->left + w;
+					break;
+			}
+			return TRUE;
 		}
-		return 0;
-	}
-	case WM_SIZING: {
-		RECT* r = (RECT*)lParam;
-		RECT r2;
-		int w, h;
-
-		SetRect(&r2, 0, 0, 0, 0);
-		AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
-
-		w = r->right - r->left - (r2.right - r2.left);
-		h = r->bottom - r->top - (r2.bottom - r2.top);
-		if (_wnd.double_size) {
-			w /= 2;
-			h /= 2;
-		}
-		w = clamp(w, 64, MAX_SCREEN_WIDTH);
-		h = clamp(h, 64, MAX_SCREEN_HEIGHT);
-		if (_wnd.double_size) {
-			w *= 2;
-			h *= 2;
-		}
-		SetRect(&r2, 0, 0, w, h);
-
-		AdjustWindowRect(&r2, GetWindowLong(hwnd, GWL_STYLE), FALSE);
-		w = r2.right - r2.left;
-		h = r2.bottom - r2.top;
-
-		switch (wParam) {
-		case WMSZ_BOTTOM:
-			r->bottom = r->top + h;
-			break;
-		case WMSZ_BOTTOMLEFT:
-			r->bottom = r->top + h;
-			r->left = r->right - w;
-			break;
-		case WMSZ_BOTTOMRIGHT:
-			r->bottom = r->top + h;
-			r->right = r->left + w;
-			break;
-		case WMSZ_LEFT:
-			r->left = r->right - w;
-			break;
-		case WMSZ_RIGHT:
-			r->right = r->left + w;
-			break;
-		case WMSZ_TOP:
-			r->top = r->bottom - h;
-			break;
-		case WMSZ_TOPLEFT:
-			r->top = r->bottom - h;
-			r->left = r->right - w;
-			break;
-		case WMSZ_TOPRIGHT:
-			r->top = r->bottom - h;
-			r->right = r->left + w;
-			break;
-		}
-		return TRUE;
-	}
 
 // needed for wheel
 #if !defined(WM_MOUSEWHEEL)
-# define WM_MOUSEWHEEL                   0x020A
+# define WM_MOUSEWHEEL 0x020A
 #endif  //WM_MOUSEWHEEL
 #if !defined(GET_WHEEL_DELTA_WPARAM)
 # define GET_WHEEL_DELTA_WPARAM(wparam) ((short)HIWORD(wparam))
 #endif  //GET_WHEEL_DELTA_WPARAM
 
-	case WM_MOUSEWHEEL: {
-		int delta = GET_WHEEL_DELTA_WPARAM(wParam);
+		case WM_MOUSEWHEEL: {
+			int delta = GET_WHEEL_DELTA_WPARAM(wParam);
 
-		if (delta < 0) {
-			_cursor.wheel++;
-		} else if (delta > 0) {
-			_cursor.wheel--;
+			if (delta < 0) {
+				_cursor.wheel++;
+			} else if (delta > 0) {
+				_cursor.wheel--;
+			}
+			return 0;
 		}
-		return 0;
-	}
 
-	case WM_ACTIVATEAPP:
-		_wnd.has_focus = (bool)wParam;
-		break;
+		case WM_ACTIVATEAPP:
+			_wnd.has_focus = (bool)wParam;
+			break;
 	}
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
 static void RegisterWndClass(void)
 {
-	static bool registered;
+	static bool registered = false;
+
 	if (!registered) {
 		HINSTANCE hinst = GetModuleHandle(NULL);
 		WNDCLASS wnd = {
@@ -498,9 +514,9 @@ static void RegisterWndClass(void)
 			0,
 			"OTTD"
 		};
+
 		registered = true;
-		if (!RegisterClass(&wnd))
-			error("RegisterClass failed");
+		if (!RegisterClass(&wnd)) error("RegisterClass failed");
 	}
 }
 
@@ -520,19 +536,19 @@ static void MakeWindow(bool full_screen)
 
 	if (full_screen) {
 		DEVMODE settings;
-		memset(&settings, 0, sizeof(DEVMODE));
-		settings.dmSize = sizeof(DEVMODE);
-		settings.dmFields = DM_PELSWIDTH | DM_PELSHEIGHT;
 
-		if (_fullscreen_bpp) {
-			settings.dmBitsPerPel = _fullscreen_bpp;
-			settings.dmFields |= DM_BITSPERPEL;
-		}
-		settings.dmPelsWidth = _wnd.width_org;
+		memset(&settings, 0, sizeof(settings));
+		settings.dmSize = sizeof(settings);
+		settings.dmFields =
+			(_fullscreen_bpp != 0 ? DM_BITSPERPEL : 0) |
+			DM_PELSWIDTH |
+			DM_PELSHEIGHT |
+			(_display_hz != 0 ? DM_DISPLAYFREQUENCY : 0);
+		settings.dmBitsPerPel = _fullscreen_bpp;
+		settings.dmPelsWidth  = _wnd.width_org;
 		settings.dmPelsHeight = _wnd.height_org;
 		settings.dmDisplayFrequency = _display_hz;
-		if (settings.dmDisplayFrequency != 0)
-			settings.dmFields |= DM_DISPLAYFREQUENCY;
+
 		if (ChangeDisplaySettings(&settings, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL) {
 			MakeWindow(false);
 			return;
@@ -621,33 +637,30 @@ static bool AllocateDibSection(int w, int h)
 	bi->bmiHeader.biBitCount = 8;
 	bi->bmiHeader.biCompression = BI_RGB;
 
-	if (_wnd.dib_sect)
-		DeleteObject(_wnd.dib_sect);
+	if (_wnd.dib_sect) DeleteObject(_wnd.dib_sect);
 
 	dc = GetDC(0);
-	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (void**)&_wnd.bitmap_bits, NULL, 0);
-	if (_wnd.dib_sect == NULL)
-		error("CreateDIBSection failed");
+	_wnd.dib_sect = CreateDIBSection(dc, bi, DIB_RGB_COLORS, (VOID**)&_wnd.bitmap_bits, NULL, 0);
+	if (_wnd.dib_sect == NULL) error("CreateDIBSection failed");
 	ReleaseDC(0, dc);
 
-	if (!_wnd.double_size)
-		_wnd.buffer_bits = _wnd.bitmap_bits;
+	if (!_wnd.double_size) _wnd.buffer_bits = _wnd.bitmap_bits;
 
 	return true;
 }
 
 static const uint16 default_resolutions[][2] = {
-	{ 640,  480},
-	{ 800,  600},
-	{1024,  768},
-	{1152,  864},
-	{1280,  800},
-	{1280,  960},
-	{1280, 1024},
-	{1400, 1050},
-	{1600, 1200},
-	{1680, 1050},
-	{1920, 1200}
+	{  640,  480 },
+	{  800,  600 },
+	{ 1024,  768 },
+	{ 1152,  864 },
+	{ 1280,  800 },
+	{ 1280,  960 },
+	{ 1280, 1024 },
+	{ 1400, 1050 },
+	{ 1600, 1200 },
+	{ 1680, 1050 },
+	{ 1920, 1200 }
 };
 
 static void FindResolutions(void)
@@ -846,7 +859,10 @@ static bool Win32GdiChangeRes(int w, int h)
 	return true;
 }
 
-static void Win32GdiFullScreen(bool full_screen) {MakeWindow(full_screen);}
+static void Win32GdiFullScreen(bool full_screen)
+{
+	MakeWindow(full_screen);
+}
 
 const HalVideoDriver _win32_video_driver = {
 	Win32GdiStart,
