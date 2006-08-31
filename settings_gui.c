@@ -1080,185 +1080,177 @@ static char _str_separator[2];
 static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		int x=35, y=20, i=0;
-		int clk = WP(w,def_d).data_1;
-		DrawWindowWidgets(w);
+		case WE_PAINT: {
+			int x;
+			int y = 20;
+			int clk = WP(w,def_d).data_1;
+			DrawWindowWidgets(w);
 
-		// exchange rate
-		DrawArrowButtons(10, y, 3, (clk >> (i*2)) & 0x03, true, true);
-		SetDParam(0, 1);
-		SetDParam(1, 1);
-		DrawString(x, y + 1, STR_CURRENCY_EXCHANGE_RATE, 0);
-		x = 35;
-		y+=12;
-		i++;
+			// exchange rate
+			DrawArrowButtons(10, y, 3, GB(clk, 0, 2), true, true);
+			SetDParam(0, 1);
+			SetDParam(1, 1);
+			DrawString(35, y + 1, STR_CURRENCY_EXCHANGE_RATE, 0);
+			y += 12;
 
-		// separator
-		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03) ? FR_LOWERED : 0);
-		x = DrawString(x, y + 1, STR_CURRENCY_SEPARATOR, 0);
-		DoDrawString(_str_separator, x + 4, y + 1, 6);
-		x = 35;
-		y+=12;
-		i++;
+			// separator
+			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 2, 2) ? FR_LOWERED : 0);
+			x = DrawString(35, y + 1, STR_CURRENCY_SEPARATOR, 0);
+			DoDrawString(_str_separator, x + 4, y + 1, 6);
+			y += 12;
 
-		// prefix
-		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03) ? FR_LOWERED : 0);
-		x = DrawString(x, y + 1, STR_CURRENCY_PREFIX, 0);
-		DoDrawString(_custom_currency.prefix, x + 4, y + 1, 6);
-		x = 35;
-		y+=12;
-		i++;
+			// prefix
+			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 4, 2) ? FR_LOWERED : 0);
+			x = DrawString(35, y + 1, STR_CURRENCY_PREFIX, 0);
+			DoDrawString(_custom_currency.prefix, x + 4, y + 1, 6);
+			y += 12;
 
-		// suffix
-		DrawFrameRect(10, y+1, 29, y+9, 0, ((clk >> (i*2)) & 0x03) ? FR_LOWERED : 0);
-		x = DrawString(x, y + 1, STR_CURRENCY_SUFFIX, 0);
-		DoDrawString(_custom_currency.suffix, x + 4, y + 1, 6);
-		x = 35;
-		y+=12;
-		i++;
+			// suffix
+			DrawFrameRect(10, y + 1, 29, y + 9, 0, GB(clk, 6, 2) ? FR_LOWERED : 0);
+			x = DrawString(35, y + 1, STR_CURRENCY_SUFFIX, 0);
+			DoDrawString(_custom_currency.suffix, x + 4, y + 1, 6);
+			y += 12;
 
-		// switch to euro
-		DrawArrowButtons(10, y, 3, (clk >> (i*2)) & 0x03, true, true);
-		SetDParam(0, _custom_currency.to_euro);
-		DrawString(x, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, 0);
-		x = 35;
-		y+=12;
-		i++;
+			// switch to euro
+			DrawArrowButtons(10, y, 3, GB(clk, 8, 2), true, true);
+			SetDParam(0, _custom_currency.to_euro);
+			DrawString(35, y + 1, (_custom_currency.to_euro != CF_NOEURO) ? STR_CURRENCY_SWITCH_TO_EURO : STR_CURRENCY_SWITCH_TO_EURO_NEVER, 0);
+			y += 12;
 
-		// Preview
-		y+=12;
-		SetDParam(0, 10000);
-		DrawString(x, y + 1, STR_CURRENCY_PREVIEW, 0);
-	} break;
-
-	case WE_CLICK: {
-		bool edittext = false;
-		int line = (e->click.pt.y - 20)/12;
-		int len = 0;
-		int x = e->click.pt.x;
-		StringID str = 0;
-		CharSetFilter afilter = CS_ALPHANUMERAL;
-
-		switch ( line ) {
-			case 0: // rate
-				if ( IS_INT_INSIDE(x, 10, 30) ) { // clicked buttons
-					if (x < 20) {
-						if (_custom_currency.rate > 1) _custom_currency.rate--;
-						WP(w,def_d).data_1 =  (1 << (line * 2 + 0));
-					} else {
-						if (_custom_currency.rate < 5000) _custom_currency.rate++;
-						WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-					}
-				} else { // enter text
-					SetDParam(0, _custom_currency.rate);
-					str = STR_CONFIG_PATCHES_INT32;
-					len = 4;
-					edittext = true;
-					afilter = CS_NUMERAL;
-				}
-			break;
-			case 1: // separator
-				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
-					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-				str = BindCString(_str_separator);
-				len = 1;
-				edittext = true;
-			break;
-			case 2: // prefix
-				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
-					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-				str = BindCString(_custom_currency.prefix);
-				len = 12;
-				edittext = true;
-			break;
-			case 3: // suffix
-				if ( IS_INT_INSIDE(x, 10, 30) )  // clicked button
-					WP(w,def_d).data_1 =  (1 << (line * 2 + 1));
-				str = BindCString(_custom_currency.suffix);
-				len = 12;
-				edittext = true;
-			break;
-			case 4: // to euro
-				if ( IS_INT_INSIDE(x, 10, 30) ) { // clicked buttons
-					if (x < 20) {
-						_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ?
-							CF_NOEURO : _custom_currency.to_euro - 1;
-						WP(w,def_d).data_1 = (1 << (line * 2 + 0));
-					} else {
-						_custom_currency.to_euro =
-							clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
-						WP(w,def_d).data_1 = (1 << (line * 2 + 1));
-					}
-				} else { // enter text
-					SetDParam(0, _custom_currency.to_euro);
-					str = STR_CONFIG_PATCHES_INT32;
-					len = 4;
-					edittext = true;
-					afilter = CS_NUMERAL;
-				}
+			// Preview
+			y += 12;
+			SetDParam(0, 10000);
+			DrawString(35, y + 1, STR_CURRENCY_PREVIEW, 0);
 			break;
 		}
 
-		if (edittext) {
-			WP(w,def_d).data_2 = line;
-			ShowQueryString(
-			str,
-			STR_CURRENCY_CHANGE_PARAMETER,
-			len + 1, // maximum number of characters OR
-			250, // characters up to this width pixels, whichever is satisfied first
-			w->window_class,
-			w->window_number, afilter);
-		}
+		case WE_CLICK: {
+			int line = (e->click.pt.y - 20) / 12;
+			int len = 0;
+			int x = e->click.pt.x;
+			StringID str = 0;
+			CharSetFilter afilter = CS_ALPHANUMERAL;
 
-		w->flags4 |= 5 << WF_TIMEOUT_SHL;
-		SetWindowDirty(w);
-	} break;
-
-	case WE_ON_EDIT_TEXT: {
-			int val;
-			const char *b = e->edittext.str;
-			switch (WP(w,def_d).data_2) {
-				case 0: /* Exchange rate */
-					val = atoi(b);
-					val = clamp(val, 1, 5000);
-					_custom_currency.rate = val;
+			switch (line) {
+				case 0: // rate
+					if (IS_INT_INSIDE(x, 10, 30)) { // clicked buttons
+						if (x < 20) {
+							if (_custom_currency.rate > 1) _custom_currency.rate--;
+							WP(w,def_d).data_1 = 1 << (line * 2 + 0);
+						} else {
+							if (_custom_currency.rate < 5000) _custom_currency.rate++;
+							WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+						}
+					} else { // enter text
+						SetDParam(0, _custom_currency.rate);
+						str = STR_CONFIG_PATCHES_INT32;
+						len = 4;
+						afilter = CS_NUMERAL;
+					}
 					break;
 
-				case 1: /* Thousands seperator */
-					_custom_currency.separator = (b[0] == '\0') ? ' ' : b[0];
-					ttd_strlcpy(_str_separator, b, lengthof(_str_separator));
+				case 1: // separator
+					if (IS_INT_INSIDE(x, 10, 30)) { // clicked button
+						WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+					}
+					str = BindCString(_str_separator);
+					len = 1;
 					break;
 
-				case 2: /* Currency prefix */
-					ttd_strlcpy(_custom_currency.prefix, b, lengthof(_custom_currency.prefix));
+				case 2: // prefix
+					if (IS_INT_INSIDE(x, 10, 30)) { // clicked button
+						WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+					}
+					str = BindCString(_custom_currency.prefix);
+					len = 12;
 					break;
 
-				case 3: /* Currency suffix */
-					ttd_strlcpy(_custom_currency.suffix, b, lengthof(_custom_currency.suffix));
+				case 3: // suffix
+					if (IS_INT_INSIDE(x, 10, 30)) { // clicked button
+						WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+					}
+					str = BindCString(_custom_currency.suffix);
+					len = 12;
 					break;
 
-				case 4: /* Year to switch to euro */
-					val = atoi(b);
-					val = clamp(val, 1999, MAX_YEAR);
-					if (val == 1999) val = 0;
-					_custom_currency.to_euro = val;
+				case 4: // to euro
+					if (IS_INT_INSIDE(x, 10, 30)) { // clicked buttons
+						if (x < 20) {
+							_custom_currency.to_euro = (_custom_currency.to_euro <= 2000) ?
+								CF_NOEURO : _custom_currency.to_euro - 1;
+							WP(w,def_d).data_1 = 1 << (line * 2 + 0);
+						} else {
+							_custom_currency.to_euro =
+								clamp(_custom_currency.to_euro + 1, 2000, MAX_YEAR);
+							WP(w,def_d).data_1 = 1 << (line * 2 + 1);
+						}
+					} else { // enter text
+						SetDParam(0, _custom_currency.to_euro);
+						str = STR_CONFIG_PATCHES_INT32;
+						len = 4;
+						afilter = CS_NUMERAL;
+					}
 					break;
 			}
-		MarkWholeScreenDirty();
 
+			if (len != 0) {
+				WP(w,def_d).data_2 = line;
+				ShowQueryString(
+				str,
+				STR_CURRENCY_CHANGE_PARAMETER,
+				len + 1, // maximum number of characters OR
+				250, // characters up to this width pixels, whichever is satisfied first
+				w->window_class,
+				w->window_number, afilter);
+			}
 
-	} break;
+			w->flags4 |= 5 << WF_TIMEOUT_SHL;
+			SetWindowDirty(w);
+			break;
+		}
 
-	case WE_TIMEOUT:
-		WP(w,def_d).data_1 = 0;
-		SetWindowDirty(w);
-		break;
+		case WE_ON_EDIT_TEXT: {
+				const char *b = e->edittext.str;
 
-	case WE_DESTROY:
-		DeleteWindowById(WC_QUERY_STRING, 0);
-		MarkWholeScreenDirty();
-		break;
+				switch (WP(w,def_d).data_2) {
+					case 0: /* Exchange rate */
+						_custom_currency.rate = clamp(atoi(b), 1, 5000);
+						break;
+
+					case 1: /* Thousands seperator */
+						_custom_currency.separator = (b[0] == '\0') ? ' ' : b[0];
+						ttd_strlcpy(_str_separator, b, lengthof(_str_separator));
+						break;
+
+					case 2: /* Currency prefix */
+						ttd_strlcpy(_custom_currency.prefix, b, lengthof(_custom_currency.prefix));
+						break;
+
+					case 3: /* Currency suffix */
+						ttd_strlcpy(_custom_currency.suffix, b, lengthof(_custom_currency.suffix));
+						break;
+
+					case 4: { /* Year to switch to euro */
+						int val = atoi(b);
+
+						_custom_currency.to_euro =
+							(val < 2000 ? CF_NOEURO : min(val, MAX_YEAR));
+						break;
+					}
+				}
+			MarkWholeScreenDirty();
+			break;
+		}
+
+		case WE_TIMEOUT:
+			WP(w,def_d).data_1 = 0;
+			SetWindowDirty(w);
+			break;
+
+		case WE_DESTROY:
+			DeleteWindowById(WC_QUERY_STRING, 0);
+			MarkWholeScreenDirty();
+			break;
 	}
 }
 
