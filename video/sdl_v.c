@@ -129,20 +129,18 @@ static void GetVideoModes(void)
 	}
 }
 
-static int GetAvailableVideoMode(int *w, int *h)
+static void GetAvailableVideoMode(int *w, int *h)
 {
 	int i;
 	int best;
 	uint delta;
 
 	// all modes available?
-	if (_all_modes)
-		return 1;
+	if (_all_modes) return;
 
 	// is the wanted mode among the available modes?
 	for (i = 0; i != _num_resolutions; i++) {
-		if (*w == _resolutions[i][0] && *h == _resolutions[i][1])
-			return 1;
+		if (*w == _resolutions[i][0] && *h == _resolutions[i][1]) return;
 	}
 
 	// use the closest possible resolution
@@ -157,7 +155,6 @@ static int GetAvailableVideoMode(int *w, int *h)
 	}
 	*w = _resolutions[best][0];
 	*h = _resolutions[best][1];
-	return 2;
 }
 
 extern const char _openttd_revision[];
