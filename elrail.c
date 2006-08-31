@@ -280,6 +280,14 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		}
 	}
 
+	/* Don't draw a wire under a low bridge */
+	if (IsBridgeTile(ti->tile) &&
+			IsBridgeMiddle(ti->tile) &&
+			!(_display_opt & DO_TRANS_BUILDINGS) &&
+			GetBridgeHeight(ti->tile) <= TilePixelHeight(ti->tile) + TILE_HEIGHT) {
+		return;
+	}
+
 	/* Drawing of pylons is finished, now draw the wires */
 	for (t = 0; t < TRACK_END; t++) {
 		if (HASBIT(trackconfig[TS_HOME], t)) {
@@ -289,13 +297,6 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 
 			const SortableSpriteStruct *sss;
 			int tileh_selector = !(tileh[TS_HOME] % 3) * tileh[TS_HOME] / 3; /* tileh for the slopes, 0 otherwise */
-
-			if ( /* We are not drawing a wire under a low bridge */
-					IsBridgeTile(ti->tile) &&
-					IsBridgeMiddle(ti->tile) &&
-					!(_display_opt & DO_TRANS_BUILDINGS) &&
-					GetBridgeHeight(ti->tile) <= TilePixelHeight(ti->tile) + TILE_HEIGHT
-			   ) return;
 
 			assert(PCPconfig != 0); /* We have a pylon on neither end of the wire, that doesn't work (since we have no sprites for that) */
 			assert(!IsSteepSlope(tileh[TS_HOME]));
