@@ -330,13 +330,14 @@ static const SortableSpriteStruct CatenarySpriteData[] = {
 	{ SPR_WIRE_EW_W,         16,  8,  8,  8,  1, ELRAIL_ELEVATION }, //!29: LOWER trackbit wire, pylon on both ends
 
 	{ SPR_WIRE_EW_E,          8,  0,  8,  8,  1, ELRAIL_ELEVATION }, //!32: UPPER trackbit wire, pylon on both ends
-	{ SPR_WIRE_EW_E,         16,  8,  8,  8,  1, ELRAIL_ELEVATION }, //!33: LOWER trackbit wire, pylon on both ends
+	{ SPR_WIRE_EW_E,         16,  8,  8,  8,  1, ELRAIL_ELEVATION }  //!33: LOWER trackbit wire, pylon on both ends
+};
 
-/* Depots */
-	{ SPR_WIRE_DEPOT_SW,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //!36: Wire for SW depot exit
-	{ SPR_WIRE_DEPOT_NW,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }, //!37: Wire for NW depot exit
-	{ SPR_WIRE_DEPOT_NE,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //!38: Wire for NE depot exit
-	{ SPR_WIRE_DEPOT_SE,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }, //!39: Wire for SE depot exit
+static const SortableSpriteStruct CatenarySpriteData_Depot[] = {
+	{ SPR_WIRE_DEPOT_NE,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //! Wire for NE depot exit
+	{ SPR_WIRE_DEPOT_SE,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }, //! Wire for SE depot exit
+	{ SPR_WIRE_DEPOT_SW,      0,  8,  8,  1,  1, ELRAIL_ELEVATION }, //! Wire for SW depot exit
+	{ SPR_WIRE_DEPOT_NW,      8,  0,  1,  8,  1, ELRAIL_ELEVATION }  //! Wire for NW depot exit
 };
 
 /** Refers to a certain element of the catenary.
@@ -392,11 +393,6 @@ typedef enum {
 
 	WIRE_EW_N_E,
 	WIRE_EW_S_E,
-
-	WIRE_DEPOT_SW,
-	WIRE_DEPOT_NW,
-	WIRE_DEPOT_NE,
-	WIRE_DEPOT_SE,
 
 	INVALID_CATENARY = 0xFF
 } CatenarySprite;
