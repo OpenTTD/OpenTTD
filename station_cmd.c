@@ -2238,61 +2238,32 @@ static void TileLoop_Station(TileIndex tile)
 
 static void AnimateTile_Station(TileIndex tile)
 {
+	typedef struct AnimData {
+		StationGfx from; // first sprite
+		StationGfx to;   // last sprite
+		byte delay;
+	} AnimData;
+
+	static const AnimData data[] = {
+		{ GFX_RADAR_LARGE_FIRST,         GFX_RADAR_LARGE_LAST,         3 },
+		{ GFX_WINDSACK_FIRST,            GFX_WINDSACK_LAST,            1 },
+		{ GFX_RADAR_INTERNATIONAL_FIRST, GFX_RADAR_INTERNATIONAL_LAST, 3 },
+		{ GFX_RADAR_METROPOLITAN_FIRST,  GFX_RADAR_METROPOLITAN_LAST,  3 },
+		{ GFX_RADAR_DISTRICTWE_FIRST,    GFX_RADAR_DISTRICTWE_LAST,    3 },
+		{ GFX_WINDSACK_INTERCON_FIRST,   GFX_WINDSACK_INTERCON_LAST,   1 }
+	};
+
 	StationGfx gfx = GetStationGfx(tile);
-	//FIXME -- AnimateTile_Station -> not nice code, lots of things double
-	// again hardcoded...was a quick hack
+	const AnimData* i;
 
-	// turning radar / windsack on airport
-	if (IS_BYTE_INSIDE(gfx, GFX_RADAR_LARGE_FIRST, GFX_RADAR_LARGE_LAST+1)) {
-		if (_tick_counter & 3)
-			return;
-
-		if (++gfx == GFX_RADAR_LARGE_LAST+1)
-			gfx = GFX_RADAR_LARGE_FIRST;
-
-		SetStationGfx(tile, gfx);
-		MarkTileDirtyByTile(tile);
-	//added - begin
-	} else if (IS_BYTE_INSIDE(gfx, GFX_RADAR_INTERNATIONAL_FIRST, GFX_RADAR_METROPOLITAN_LAST + 1) || IS_BYTE_INSIDE(gfx, GFX_RADAR_DISTRICTWE_FIRST, GFX_RADAR_DISTRICTWE_LAST + 1) ) {
-		if (_tick_counter & 3)
-			return;
-
-		gfx++;
-
-		if (gfx == GFX_RADAR_INTERNATIONAL_LAST+1) {
-			gfx = GFX_RADAR_INTERNATIONAL_FIRST;
+	for (i = data; i != endof(data); i++) {
+		if (i->from <= gfx && gfx <= i->to) {
+			if ((_tick_counter & i->delay) == 0) {
+				SetStationGfx(tile, gfx < i->to ? gfx + 1 : i->from);
+				MarkTileDirtyByTile(tile);
+			}
+			break;
 		}
-		else if (gfx == GFX_RADAR_METROPOLITAN_LAST+1) {
-			gfx = GFX_RADAR_METROPOLITAN_FIRST;
-		}
-		else if (gfx == GFX_RADAR_DISTRICTWE_LAST + 1) {
-			gfx = GFX_RADAR_DISTRICTWE_FIRST;
-		}
-
-		SetStationGfx(tile, gfx);
-		MarkTileDirtyByTile(tile);
-	//added - end
-	} else if (IS_BYTE_INSIDE(gfx, GFX_WINDSACK_FIRST, GFX_WINDSACK_LAST+1)) {
-		if (_tick_counter & 1)
-			return;
-
-		if (++gfx == GFX_WINDSACK_LAST+1) {
-			gfx = GFX_WINDSACK_FIRST;
-		}
-
-		SetStationGfx(tile, gfx);
-		MarkTileDirtyByTile(tile);
-	// handle intercontinental windsock
-	} else if (IS_BYTE_INSIDE(gfx, GFX_WINDSACK_INTERCON_FIRST, GFX_WINDSACK_INTERCON_LAST+1)) {
-		if (_tick_counter & 1)
-			return;
-
-		if (++gfx == GFX_WINDSACK_INTERCON_LAST+1) {
-			gfx = GFX_WINDSACK_INTERCON_FIRST;
-		}
-
-		SetStationGfx(tile, gfx);
-		MarkTileDirtyByTile(tile);
 	}
 }
 
