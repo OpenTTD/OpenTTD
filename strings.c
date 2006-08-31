@@ -1250,7 +1250,7 @@ void InitializeLanguagePacks(void)
 		dl->ent[m].name = strdup(hdr.name);
 
 		if (strcmp(hdr.name, "English") == 0) fallback = m;
-		if (strcmp(hdr.isocode, lang) == 0) def = m;
+		if (strncmp(hdr.isocode, lang, 2) == 0) def = m;
 
 		m++;
 	}
