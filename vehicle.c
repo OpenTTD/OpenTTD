@@ -1898,31 +1898,101 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	_current_player = OWNER_NONE;
 }
 
+/**
+* @param sort_list list to store the list in. Note: it's presumed that it is big enough to store all vehicles in the game (worst case) and it will not check size
+* @param type type of vehicle
+* @param owner PlayerID of owner to generate a list for
+* @param station index of station to generate a list for. INVALID_STATION when not used
+* @param order index of oder to generate a list for. INVALID_ORDER when not used
+* @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
+* @return the number of vehicles added to the list
+*/
+uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
+{
+	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
+	uint16 n = 0;
+	const Vehicle *v;
+
+	switch (window_type) {
+		case VLW_STATION_LIST: {
+			FOR_ALL_VEHICLES(v) {
+				if (v->type == type && (
+					(type == VEH_Train && IsFrontEngine(v)) ||
+					(type != VEH_Train && v->subtype <= subtype))) {
+					const Order *order;
+
+					FOR_VEHICLE_ORDERS(v, order) {
+						if (order->type == OT_GOTO_STATION && order->dest.station == station) {
+							sort_list[n++] = v;
+							break;
+						}
+					}
+				}
+			}
+			break;
+		}
+
+		case VLW_SHARED_ORDERS: {
+			FOR_ALL_VEHICLES(v) {
+				/* Find a vehicle with the order in question */
+				if (v->orders != NULL && v->orders->index == order) break;
+			}
+
+			if (v != NULL && v->orders != NULL && v->orders->index == order) {
+				/* Only try to make the list if we found a vehicle using the order in question */
+				for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
+					sort_list[n++] = v;
+				}
+			}
+			break;
+		}
+
+		case VLW_STANDARD: {
+			FOR_ALL_VEHICLES(v) {
+				if (v->type == type && v->owner == owner && (
+					(type == VEH_Train && IsFrontEngine(v)) ||
+					(type != VEH_Train && v->subtype <= subtype))) {
+					sort_list[n++] = v;
+				}
+			}
+			break;
+		}
+
+		default: NOT_REACHED(); break;
+	}
+
+	return n;
+}
+
 /** send all vehicles of type to depots
 * @param type type of vehicle
 * @param flags the flags used for DoCommand()
 * @param service should the vehicles only get service in the depots
 * @param owner PlayerID of owner of the vehicles to send
-* @return o for success and CMD_ERROR if no vehicle is able to go to depot
+* @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
 */
 int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner)
 {
-	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
-	const Vehicle *v;
+	const Vehicle** sort_list;
+	uint n, i;
+
+	sort_list = malloc(GetVehicleArraySize() * sizeof(sort_list[0]));
+	if (sort_list == NULL) {
+		error("Could not allocate memory for the vehicle-sorting-list");
+	}
+
+	n = GenerateVehicleSortList(sort_list, type, owner, INVALID_STATION, INVALID_ORDER, VLW_STANDARD);
 
 	/* Send all the vehicles to a depot */
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == type && v->owner == owner && (
-			(type == VEH_Train && IsFrontEngine(v)) ||
-			(type != VEH_Train && v->subtype <= subtype))) {
-			/* Return 0 if DC_EXEC is not set and a DoCommand() returns 0 (valid goto depot command) */
-			/* In this case we know that at least one vehicle can be send to a depot and we will issue the command */
-			/* Since we will issue the command nomatter how many vehicles more than one it's valid for, we skip checking the rest */
-			/* When DC_EXEC is set, we need to run this loop for all vehicles nomatter return values from each vehicle */
-			if (!DoCommand(v->tile, v->index, service, flags, CMD_SEND_TO_DEPOT(type)) && !(flags & DC_EXEC)) return 0;
+	for (i=0; i < n; i++) {
+		const Vehicle *v = sort_list[i];
+		if (!DoCommand(v->tile, v->index, service, flags, CMD_SEND_TO_DEPOT(type)) && !(flags & DC_EXEC)) {
+			free((void*)sort_list);
+			return 0;
 		}
 	}
 
+	free((void*)sort_list);
 	return (flags & DC_EXEC) ? 0 : CMD_ERROR;
 }
 

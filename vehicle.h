@@ -314,6 +314,7 @@ int CheckTrainStoppedInDepot(const Vehicle *v);
 
 bool VehicleNeedsService(const Vehicle *v);
 
+uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type);
 int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner);
 
 typedef struct GetNewVehiclePosResult {

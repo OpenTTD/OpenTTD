@@ -119,7 +119,6 @@ void ResortVehicleLists(void)
 static void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
 {
 	const Vehicle** sort_list;
-	uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
 	uint n = 0;
 	uint i;
 
@@ -133,53 +132,7 @@ static void BuildVehicleList(vehiclelist_d* vl, int type, PlayerID owner, Statio
 	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...",
 		owner, station);
 
-	switch (window_type) {
-		case VLW_STATION_LIST: {
-			const Vehicle *v;
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && (
-					(type == VEH_Train && IsFrontEngine(v)) ||
-					(type != VEH_Train && v->subtype <= subtype))) {
-					const Order *order;
-
-					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->type == OT_GOTO_STATION && order->dest.station == station) {
-							sort_list[n++] = v;
-							break;
-						}
-					}
-				}
-			}
-		} break;
-
-		case VLW_SHARED_ORDERS: {
-			Vehicle *v;
-			FOR_ALL_VEHICLES(v) {
-				/* Find a vehicle with the order in question */
-				if (v != NULL && v->orders != NULL && v->orders->index == order) break;
-			}
-
-			if (v != NULL && v->orders != NULL && v->orders->index == order) {
-				/* Only try to make the list if we found a vehicle using the order in question */
-				for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
-					sort_list[n++] = v;
-				}
-			}
-		} break;
-
-		case VLW_STANDARD: {
-			const Vehicle *v;
-			FOR_ALL_VEHICLES(v) {
-				if (v->type == type && v->owner == owner && (
-					(type == VEH_Train && IsFrontEngine(v)) ||
-					(type != VEH_Train && v->subtype <= subtype))) {
-					sort_list[n++] = v;
-				}
-			}
-		} break;
-
-		default: NOT_REACHED(); break;
-	}
+	n = GenerateVehicleSortList(sort_list, type, owner, station, order, window_type);
 
 	free((void*)vl->sort_list);
 	vl->sort_list = malloc(n * sizeof(vl->sort_list[0]));
