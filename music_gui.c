@@ -223,7 +223,9 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 		}
 
 		DrawStringCentered(216, 45+8*6+16, STR_01F0_CLEAR, 0);
-		//DrawStringCentered(216, 45+8*6+16*2, STR_01F1_SAVE, 0);
+#if 0
+		DrawStringCentered(216, 45 + 8 * 6 + 16 * 2, STR_01F1_SAVE, 0);
+#endif
 
 		y = 23;
 		for (p = _playlists[msf.playlist], i = 0; (i = *p) != 0; p++) {
@@ -313,7 +315,9 @@ static const Widget _music_track_selection_widgets[] = {
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,    76,    83, 0x0,                              STR_01F6_SELECT_CUSTOM_1_USER_DEFINED},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,    84,    91, 0x0,                              STR_01F7_SELECT_CUSTOM_2_USER_DEFINED},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,   108,   115, 0x0,                              STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1},
-//{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,   124,   131, 0x0,                              STR_01F9_SAVE_MUSIC_SETTINGS},
+#if 0
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   186,   245,   124,   131, 0x0,                              STR_01F9_SAVE_MUSIC_SETTINGS},
+#endif
 {   WIDGETS_END},
 };
 
@@ -388,19 +392,13 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 		DrawFrameRect(108, 23, 174, 26, 14, FR_LOWERED);
 		DrawFrameRect(214, 23, 280, 26, 14, FR_LOWERED);
 
-		DrawFrameRect(108 + (msf.music_vol>>1),
-									22,
-									111 + (msf.music_vol>>1),
-									28,
-									14,
-									0);
+		DrawFrameRect(
+			108 + msf.music_vol / 2, 22, 111 + msf.music_vol / 2, 28, 14, 0
+		);
 
-		DrawFrameRect(214 + (msf.effect_vol>>1),
-									22,
-									217 + (msf.effect_vol>>1),
-									28,
-									14,
-									0);
+		DrawFrameRect(
+			214 + msf.effect_vol / 2, 22, 217 + msf.effect_vol / 2, 28, 14, 0
+		);
 	} break;
 
 	case WE_CLICK:
