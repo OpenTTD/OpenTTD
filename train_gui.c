@@ -1097,12 +1097,10 @@ void ShowTrainViewWindow(const Vehicle *v)
 
 static void TrainDetailsCargoTab(const Vehicle *v, int x, int y)
 {
-	int num;
-	StringID str;
-
 	if (v->cargo_cap != 0) {
-		num = v->cargo_count;
-		str = STR_8812_EMPTY;
+		uint num = v->cargo_count;
+		StringID str = STR_8812_EMPTY;
+
 		if (num != 0) {
 			SetDParam(0, v->cargo_type);
 			SetDParam(1, num);
@@ -1115,17 +1113,15 @@ static void TrainDetailsCargoTab(const Vehicle *v, int x, int y)
 
 static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
 {
-	const RailVehicleInfo *rvi = RailVehInfo(v->engine_type);
-
-	if (!(rvi->flags & RVI_WAGON)) {
+	if (RailVehInfo(v->engine_type)->flags & RVI_WAGON) {
+		SetDParam(0, GetCustomEngineName(v->engine_type));
+		SetDParam(1, v->value);
+		DrawString(x, y, STR_882D_VALUE, 0x10);
+	} else {
 		SetDParam(0, GetCustomEngineName(v->engine_type));
 		SetDParam(1, v->build_year);
 		SetDParam(2, v->value);
 		DrawString(x, y, STR_882C_BUILT_VALUE, 0x10);
-	} else {
-		SetDParam(0, GetCustomEngineName(v->engine_type));
-		SetDParam(1, v->value);
-		DrawString(x, y, STR_882D_VALUE, 0x10);
 	}
 }
 
@@ -1138,64 +1134,59 @@ static void TrainDetailsCapacityTab(const Vehicle *v, int x, int y)
 	}
 }
 
-typedef void TrainDetailsDrawerProc(const Vehicle *v, int x, int y);
-
-static TrainDetailsDrawerProc * const _train_details_drawer_proc[3] = {
-	TrainDetailsCargoTab,
-	TrainDetailsInfoTab,
-	TrainDetailsCapacityTab,
-};
 
 static void DrawTrainDetailsWindow(Window *w)
 {
-	const Vehicle *v, *u;
-	uint16 tot_cargo[NUM_CARGO][2]; // count total cargo ([0]-actual cargo, [1]-total cargo)
-	int i,num,x,y,sel;
 	byte det_tab = WP(w, traindetails_d).tab;
+	const Vehicle* v;
+	const Vehicle* u;
+	AcceptedCargo act_cargo;
+	AcceptedCargo max_cargo;
+	uint i;
+	int num;
+	int x;
+	int y;
+	int sel;
 
-	/* Count number of vehicles */
 	num = 0;
-
-	// det_tab == 3 <-- Total Cargo tab
-	if (det_tab == 3) // reset tot_cargo array to 0 values
-		memset(tot_cargo, 0, sizeof(tot_cargo));
-
 	u = v = GetVehicle(w->window_number);
-	do {
-		if (det_tab != 3)
-			num++;
-		else {
-			tot_cargo[u->cargo_type][0] += u->cargo_count;
-			tot_cargo[u->cargo_type][1] += u->cargo_cap;
+	if (det_tab == 3) { // Total cargo tab
+		for (i = 0; i < lengthof(act_cargo); i++) {
+			act_cargo[i] = 0;
+			max_cargo[i] = 0;
 		}
-	} while ((u = GetNextVehicle(u)) != NULL);
 
-	/* set scroll-amount seperately from counting, as to not
-	 * compute num double for more carriages of the same type
-	*/
-	if (det_tab == 3) {
+		do {
+			act_cargo[u->cargo_type] += u->cargo_count;
+			max_cargo[u->cargo_type] += u->cargo_cap;
+		} while ((u = GetNextVehicle(u)) != NULL);
+
+		/* Set scroll-amount seperately from counting, as to not compute num double
+		 * for more carriages of the same type
+		 */
 		for (i = 0; i != NUM_CARGO; i++) {
-			if (tot_cargo[i][1] > 0) // only count carriages that the train has
-				num++;
+			if (max_cargo[i] > 0) num++; // only count carriages that the train has
 		}
 		num++; // needs one more because first line is description string
+	} else {
+		do {
+			num++;
+		} while ((u = GetNextVehicle(u)) != NULL);
 	}
 
 	SetVScrollCount(w, num);
 
 	w->disabled_state = 1 << (det_tab + 9);
-	if (v->owner != _local_player)
-		w->disabled_state |= (1 << 2);
+	if (v->owner != _local_player) w->disabled_state |= (1 << 2);
 
-	if (!_patches.servint_trains) // disable service-scroller when interval is set to disabled
-		w->disabled_state |= (1 << 6) | (1 << 7);
+	// disable service-scroller when interval is set to disabled
+	if (!_patches.servint_trains) w->disabled_state |= (1 << 6) | (1 << 7);
 
 	SetDParam(0, v->string_id);
 	SetDParam(1, v->unitnumber);
 	DrawWindowWidgets(w);
 
-	num = v->age / 366;
-	SetDParam(1, num);
+	SetDParam(1, v->age / 366);
 
 	x = 2;
 
@@ -1230,6 +1221,9 @@ static void DrawTrainDetailsWindow(Window *w)
 		for (;;) {
 			if (--sel < 0 && sel >= -w->vscroll.cap) {
 				int dx = 0;
+				int px;
+				int py;
+
 				u = v;
 				do {
 					PalSpriteID pal = (v->vehstatus & VS_CRASHED) ? PALETTE_CRASH : GetVehiclePalette(v);
@@ -1237,23 +1231,30 @@ static void DrawTrainDetailsWindow(Window *w)
 					dx += u->u.rail.cached_veh_length;
 					u = u->next;
 				} while (u != NULL && IsArticulatedPart(u));
-				_train_details_drawer_proc[WP(w,traindetails_d).tab](v, x + WagonLengthToPixels(dx) + 2, y + 2);
+
+				px = x + WagonLengthToPixels(dx) + 2;
+				py = y + 2;
+				switch (det_tab) {
+					default: NOT_REACHED();
+					case 0: TrainDetailsCargoTab(   v, px, py); break;
+					case 1: TrainDetailsInfoTab(    v, px, py); break;
+					case 2: TrainDetailsCapacityTab(v, px, py); break;
+				}
 				y += 14;
 			}
-			if ((v = GetNextVehicle(v)) == NULL)
-				return;
+			v = GetNextVehicle(v);
+			if (v == NULL) return;
 		}
 	} else {
 		// draw total cargo tab
 		DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY_TEXT, 0);
 		for (i = 0; i != NUM_CARGO; i++) {
-			if (tot_cargo[i][1] > 0 && --sel < 0 && sel > -w->vscroll.cap) {
+			if (max_cargo[i] > 0 && --sel < 0 && sel > -w->vscroll.cap) {
 				y += 14;
-				// STR_013F_TOTAL_CAPACITY      :{LTBLUE}- {CARGO} ({SHORTCARGO})
-				SetDParam(0, i);                // {CARGO} #1
-				SetDParam(1, tot_cargo[i][0]);  // {CARGO} #2
-				SetDParam(2, i);                // {SHORTCARGO} #1
-				SetDParam(3, tot_cargo[i][1]);  // {SHORTCARGO} #2
+				SetDParam(0, i);            // {CARGO} #1
+				SetDParam(1, act_cargo[i]); // {CARGO} #2
+				SetDParam(2, i);            // {SHORTCARGO} #1
+				SetDParam(3, max_cargo[i]); // {SHORTCARGO} #2
 				DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY, 0);
 			}
 		}
