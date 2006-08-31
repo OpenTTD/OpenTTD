@@ -1757,7 +1757,7 @@ static void AnimateTile_Track(TileIndex tile)
 static void TileLoop_Track(TileIndex tile)
 {
 	RailGroundType old_ground = GetRailGroundType(tile);
-	RailGroundType new_ground = old_ground;
+	RailGroundType new_ground;
 
 	switch (_opt.landscape) {
 		case LT_HILLY:
