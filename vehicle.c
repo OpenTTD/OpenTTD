@@ -1910,7 +1910,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
 {
 	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
-	uint16 n = 0;
+	uint n = 0;
 	const Vehicle *v;
 
 	switch (window_type) {
@@ -1984,7 +1984,7 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 	n = GenerateVehicleSortList(sort_list, type, owner, INVALID_STATION, INVALID_ORDER, VLW_STANDARD);
 
 	/* Send all the vehicles to a depot */
-	for (i=0; i < n; i++) {
+	for (i = 0; i < n; i++) {
 		const Vehicle *v = sort_list[i];
 		if (!DoCommand(v->tile, v->index, service, flags, CMD_SEND_TO_DEPOT(type)) && !(flags & DC_EXEC)) {
 			free((void*)sort_list);
