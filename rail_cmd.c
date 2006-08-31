@@ -1210,8 +1210,6 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 	const RailtypeInfo *rti = GetRailTypeInfo(GetRailType(ti->tile));
 	PalSpriteID image;
 	bool junction = false;
-	bool earth = IsBarrenRailGround(ti->tile);
-	bool snow = IsSnowRailGround(ti->tile);
 
 	// Select the sprite to use.
 	(image = rti->base_sprites.track_y, track == TRACK_BIT_Y) ||
@@ -1243,10 +1241,10 @@ static void DrawTrackBits(TileInfo* ti, TrackBits track)
 			image = _track_sloped_sprites[ti->tileh - 1] + rti->base_sprites.track_y;
 	}
 
-	if (earth) {
-		image = (image & SPRITE_MASK) | PALETTE_TO_BARE_LAND; // Use brown palette
-	} else if (snow) {
-		image += rti->snow_offset;
+	switch (GetRailGroundType(ti->tile)) {
+		case RAIL_GROUND_BARREN:     image |= PALETTE_TO_BARE_LAND; break;
+		case RAIL_GROUND_ICE_DESERT: image += rti->snow_offset; break;
+		default: break;
 	}
 
 	DrawGroundSprite(image);
