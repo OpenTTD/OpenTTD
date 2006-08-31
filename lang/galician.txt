@@ -366,7 +366,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transpor
 STR_SORT_BY_NAME                                                :{BLACK}Nome
 STR_SORT_BY_DROPDOWN_NAME                                       :Nome
 STR_SORT_BY_DATE                                                :{BLACK}Data
-STR_SORT_BY_UNSORTED                                            :Sen ordear
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Beneficio último ano
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Beneficio este ano

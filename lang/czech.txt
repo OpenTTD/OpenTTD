@@ -426,7 +426,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Preprave
 STR_SORT_BY_NAME                                                :{BLACK}Podle jména
 STR_SORT_BY_DROPDOWN_NAME                                       :jména
 STR_SORT_BY_DATE                                                :{BLACK}Podle data
-STR_SORT_BY_UNSORTED                                            :(neradit)
 STR_SORT_BY_NUMBER                                              :cisla
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :hrubého zisku vloni
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :hrubého zisku letos

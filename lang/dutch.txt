@@ -369,7 +369,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Vervoerd
 STR_SORT_BY_NAME                                                :{BLACK}Naam
 STR_SORT_BY_DROPDOWN_NAME                                       :Naam
 STR_SORT_BY_DATE                                                :{BLACK}Datum
-STR_SORT_BY_UNSORTED                                            :Ongesorteerd
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Winst vorig jaar
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Winst dit jaar

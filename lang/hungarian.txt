@@ -434,7 +434,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Elszállí
 STR_SORT_BY_NAME                                                :{BLACK}Név
 STR_SORT_BY_DROPDOWN_NAME                                       :Név
 STR_SORT_BY_DATE                                                :{BLACK}Dátum
-STR_SORT_BY_UNSORTED                                            :Rendezetlen
 STR_SORT_BY_NUMBER                                              :Szám
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Tavalyi profit
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Idei profit

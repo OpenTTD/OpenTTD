@@ -433,7 +433,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Preprave
 STR_SORT_BY_NAME                                                :{BLACK}Nazov
 STR_SORT_BY_DROPDOWN_NAME                                       :Nazov
 STR_SORT_BY_DATE                                                :{BLACK}Datum
-STR_SORT_BY_UNSORTED                                            :Neusporiadane
 STR_SORT_BY_NUMBER                                              :Cislo
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zisk v poslednom roku
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zisk v tomto roku

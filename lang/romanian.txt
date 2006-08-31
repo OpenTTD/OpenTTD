@@ -369,7 +369,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transpor
 STR_SORT_BY_NAME                                                :{BLACK}Nume
 STR_SORT_BY_DROPDOWN_NAME                                       :Nume
 STR_SORT_BY_DATE                                                :{BLACK}Datã
-STR_SORT_BY_UNSORTED                                            :Neordonat
 STR_SORT_BY_NUMBER                                              :Numar
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit anul trecut
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit anul acesta

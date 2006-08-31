@@ -370,7 +370,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transpor
 STR_SORT_BY_NAME                                                :{BLACK}Nom
 STR_SORT_BY_DROPDOWN_NAME                                       :Nom
 STR_SORT_BY_DATE                                                :{BLACK}Date
-STR_SORT_BY_UNSORTED                                            :Non trié
 STR_SORT_BY_NUMBER                                              :Numéro
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit l'an dernier
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit cette année

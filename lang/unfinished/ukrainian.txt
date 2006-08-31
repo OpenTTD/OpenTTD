@@ -370,7 +370,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}за п�
 STR_SORT_BY_NAME                                                :{BLACK}за назвою
 STR_SORT_BY_DROPDOWN_NAME                                       :Назва
 STR_SORT_BY_DATE                                                :{BLACK}за датою
-STR_SORT_BY_UNSORTED                                            :не треба
 STR_SORT_BY_NUMBER                                              :за номером
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :за прибутком минулого року
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :за прибутком цього року

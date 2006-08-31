@@ -369,7 +369,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transpor
 STR_SORT_BY_NAME                                                :{BLACK}Nom
 STR_SORT_BY_DROPDOWN_NAME                                       :Nom
 STR_SORT_BY_DATE                                                :{BLACK}Data
-STR_SORT_BY_UNSORTED                                            :Sense ordre
 STR_SORT_BY_NUMBER                                              :Número
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Benef. darrer any
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Benef. aquest any

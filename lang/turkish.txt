@@ -369,7 +369,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Tasinan
 STR_SORT_BY_NAME                                                :{BLACK}isim
 STR_SORT_BY_DROPDOWN_NAME                                       :isim
 STR_SORT_BY_DATE                                                :{BLACK}Tarih
-STR_SORT_BY_UNSORTED                                            :Siralanmamis
 STR_SORT_BY_NUMBER                                              :Numara
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Geçen seneki kar
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Bu seneki kar

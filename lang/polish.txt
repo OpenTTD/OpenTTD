@@ -422,7 +422,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Przetran
 STR_SORT_BY_NAME                                                :{BLACK}Nazwa
 STR_SORT_BY_DROPDOWN_NAME                                       :Nazwa
 STR_SORT_BY_DATE                                                :{BLACK}Data
-STR_SORT_BY_UNSORTED                                            :Nieposortowane
 STR_SORT_BY_NUMBER                                              :Numer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Zysk w ostatnim roku
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Zysk w tym roku

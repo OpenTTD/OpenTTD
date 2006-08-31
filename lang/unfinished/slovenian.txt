@@ -363,7 +363,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Prenesen
 STR_SORT_BY_NAME                                                :{BLACK}Ime
 STR_SORT_BY_DROPDOWN_NAME                                       :Ime
 STR_SORT_BY_DATE                                                :{BLACK}Datum
-STR_SORT_BY_UNSORTED                                            :Nesortirano
 STR_SORT_BY_NUMBER                                              :Stevilo
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit zadnje leto
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit to leto

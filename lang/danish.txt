@@ -369,7 +369,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transpor
 STR_SORT_BY_NAME                                                :{BLACK}Navn
 STR_SORT_BY_DROPDOWN_NAME                                       :Navn
 STR_SORT_BY_DATE                                                :{BLACK}Dato
-STR_SORT_BY_UNSORTED                                            :Usorteret
 STR_SORT_BY_NUMBER                                              :Nummer
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Profit sidste år
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit dette år

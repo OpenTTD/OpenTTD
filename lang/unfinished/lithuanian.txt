@@ -358,7 +358,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Pervezim
 STR_SORT_BY_NAME                                                :{BLACK}Varda
 STR_SORT_BY_DROPDOWN_NAME                                       :Varda
 STR_SORT_BY_DATE                                                :{BLACK}Data
-STR_SORT_BY_UNSORTED                                            :Nerikiuota
 STR_SORT_BY_NUMBER                                              :Kieki
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Praeitu metu pelna
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Siu metu pelna

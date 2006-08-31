@@ -337,7 +337,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transpor
 STR_SORT_BY_NAME                                                :{BLACK}Va'rda
 STR_SORT_BY_DROPDOWN_NAME                                       :Va'rds
 STR_SORT_BY_DATE                                                :{BLACK}Datums
-STR_SORT_BY_UNSORTED                                            :Nesaka'rtots
 STR_SORT_BY_NUMBER                                              :Nummurs
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Paga'jus'a' gada iena'kums
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :S'i' gada iena'kums

@@ -369,7 +369,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Transpor
 STR_SORT_BY_NAME                                                :{BLACK}Nimi
 STR_SORT_BY_DROPDOWN_NAME                                       :Nimi
 STR_SORT_BY_DATE                                                :{BLACK}Kuupäev
-STR_SORT_BY_UNSORTED                                            :Sorteerimata
 STR_SORT_BY_NUMBER                                              :Number
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Eelmise aasta kasum
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Selle aasta kasum

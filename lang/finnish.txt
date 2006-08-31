@@ -369,7 +369,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Kuljetet
 STR_SORT_BY_NAME                                                :{BLACK}Nimi
 STR_SORT_BY_DROPDOWN_NAME                                       :Nimi
 STR_SORT_BY_DATE                                                :{BLACK}Päiväys
-STR_SORT_BY_UNSORTED                                            :Ei lajittelua
 STR_SORT_BY_NUMBER                                              :Numero
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Tuottoa viime vuonna
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Tuottoa tänä vuonna

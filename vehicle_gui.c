@@ -40,7 +40,6 @@ static RailType _railtype_selected_in_replace_gui;
 
 typedef int CDECL VehicleSortListingTypeFunction(const void*, const void*);
 
-static VehicleSortListingTypeFunction VehicleUnsortedSorter;
 static VehicleSortListingTypeFunction VehicleNumberSorter;
 static VehicleSortListingTypeFunction VehicleNameSorter;
 static VehicleSortListingTypeFunction VehicleAgeSorter;
@@ -53,7 +52,6 @@ static VehicleSortListingTypeFunction VehicleModelSorter;
 static VehicleSortListingTypeFunction VehicleValueSorter;
 
 static VehicleSortListingTypeFunction* const _vehicle_sorter[] = {
-	&VehicleUnsortedSorter,
 	&VehicleNumberSorter,
 	&VehicleNameSorter,
 	&VehicleAgeSorter,
@@ -66,8 +64,7 @@ static VehicleSortListingTypeFunction* const _vehicle_sorter[] = {
 	&VehicleValueSorter,
 };
 
-const StringID _vehicle_sort_listing[] = {
-	STR_SORT_BY_UNSORTED,
+static const StringID _vehicle_sort_listing[] = {
 	STR_SORT_BY_NUMBER,
 	STR_SORT_BY_DROPDOWN_NAME,
 	STR_SORT_BY_AGE,
@@ -295,10 +292,6 @@ int ShowAdditionalText(int x, int y, int w, EngineID engine)
 * 3. (uint32)_internal_name_sorter_id: default StringID of the vehicle when no name is set. eg
 *    STR_SV_TRAIN_NAME for trains or STR_SV_AIRCRAFT_NAME for aircraft
 */
-static int CDECL VehicleUnsortedSorter(const void *a, const void *b)
-{
-	return (*(const Vehicle**)a)->index - (*(const Vehicle**)b)->index;
-}
 
 // if the sorting criteria had the same value, sort vehicle by unitnumber
 #define VEHICLEUNITNUMBERSORTER(r, a, b) {if (r == 0) {r = a->unitnumber - b->unitnumber;}}
@@ -1236,9 +1229,6 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			SortVehicleList(vl);
 			SetVScrollCount(w, vl->list_length);
 
-			// disable 'Sort By' tooltip on Unsorted sorting criteria
-			if (vl->sort_type == SORT_BY_UNSORTED) SETBIT(w->disabled_state, 3);
-
 			/* draw the widgets */
 			switch (window_type) {
 				case VLW_SHARED_ORDERS:
@@ -1456,8 +1446,6 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					case VEH_Aircraft: _sorting.aircraft.criteria = vl->sort_type; break;
 					default: NOT_REACHED(); break;
 				}
-				// enable 'Sort By' if a sorter criteria is chosen
-				if (vl->sort_type != SORT_BY_UNSORTED) CLRBIT(w->disabled_state, 3);
 			}
 			SetWindowDirty(w);
 			break;

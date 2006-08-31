@@ -18,8 +18,6 @@ void RebuildVehicleLists(void);
 void ResortVehicleLists(void);
 
 #define PERIODIC_RESORT_DAYS 10
-#define SORT_BY_UNSORTED 0
-extern const StringID _vehicle_sort_listing[];
 
 typedef struct Listing {
 	bool order;    // Ascending/descending?
