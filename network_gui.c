@@ -1392,8 +1392,7 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 
 void ShowClientList(void)
 {
-	Window *w = AllocateWindowDescFront(&_client_list_desc, 0);
-	if (w != NULL) w->window_number = 0;
+	AllocateWindowDescFront(&_client_list_desc, 0);
 }
 
 static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
