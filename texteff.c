@@ -286,35 +286,32 @@ void InitTextEffects(void)
 
 void DrawTextEffects(DrawPixelInfo *dpi)
 {
-	TextEffect *te;
+	const TextEffect* te;
 
-	if (dpi->zoom < 1) {
-		for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
-			if (te->string_id == INVALID_STRING_ID)
-				continue;
+	switch (dpi->zoom) {
+		case 0:
+			for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
+				if (te->string_id != INVALID_STRING_ID &&
+						dpi->left <= te->right &&
+						dpi->top  <= te->bottom &&
+						dpi->left + dpi->width  > te->x &&
+						dpi->top  + dpi->height > te->y) {
+					AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2, 0);
+				}
+			}
+			break;
 
-			/* intersection? */
-			if (dpi->left > te->right ||
-					dpi->top > te->bottom ||
-					dpi->left + dpi->width <= te->x ||
-					dpi->top + dpi->height <= te->y)
-						continue;
-			AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2, 0);
-		}
-	} else if (dpi->zoom == 1) {
-		for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
-			if (te->string_id == INVALID_STRING_ID)
-				continue;
-
-			/* intersection? */
-			if (dpi->left > te->right*2 -  te->x ||
-					dpi->top > te->bottom*2 - te->y ||
-					(dpi->left + dpi->width) <= te->x ||
-					(dpi->top + dpi->height) <= te->y)
-						continue;
-			AddStringToDraw(te->x, te->y, (StringID)(te->string_id-1), te->params_1, te->params_2, 0);
-		}
-
+		case 1:
+			for (te = _text_effect_list; te != endof(_text_effect_list); te++) {
+				if (te->string_id != INVALID_STRING_ID &&
+						dpi->left <= te->right  * 2 - te->x &&
+						dpi->top  <= te->bottom * 2 - te->y &&
+						dpi->left + dpi->width  > te->x &&
+						dpi->top  + dpi->height > te->y) {
+					AddStringToDraw(te->x, te->y, (StringID)(te->string_id-1), te->params_1, te->params_2, 0);
+				}
+			}
+			break;
 	}
 }
 
