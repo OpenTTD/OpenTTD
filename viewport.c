@@ -1471,47 +1471,53 @@ static bool CheckClickOnTown(const ViewPort *vp, int x, int y)
 
 	if (!(_display_opt & DO_SHOW_TOWN_NAMES)) return false;
 
-	if (vp->zoom < 1) {
-		x = x - vp->left + vp->virtual_left;
-		y = y - vp->top + vp->virtual_top;
+	switch (vp->zoom) {
+		case 0:
+			x = x - vp->left + vp->virtual_left;
+			y = y - vp->top  + vp->virtual_top;
+			FOR_ALL_TOWNS(t) {
+				if (y >= t->sign.top &&
+						y < t->sign.top + 12 &&
+						x >= t->sign.left &&
+						x < t->sign.left + t->sign.width_1) {
+					ShowTownViewWindow(t->index);
+					return true;
+				}
+			}
+			break;
 
-		FOR_ALL_TOWNS(t) {
-			if (y >= t->sign.top &&
-					y < t->sign.top + 12 &&
-					x >= t->sign.left &&
-					x < t->sign.left + t->sign.width_1) {
-				ShowTownViewWindow(t->index);
-				return true;
+		case 1:
+			x = (x - vp->left + 1) * 2 + vp->virtual_left;
+			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
+			FOR_ALL_TOWNS(t) {
+				if (y >= t->sign.top &&
+						y < t->sign.top + 24 &&
+						x >= t->sign.left &&
+						x < t->sign.left + t->sign.width_1 * 2) {
+					ShowTownViewWindow(t->index);
+					return true;
+				}
 			}
-		}
-	} else if (vp->zoom == 1) {
-		x = (x - vp->left + 1) * 2 + vp->virtual_left;
-		y = (y - vp->top + 1) * 2 + vp->virtual_top;
-		FOR_ALL_TOWNS(t) {
-			if (y >= t->sign.top &&
-					y < t->sign.top + 24 &&
-					x >= t->sign.left &&
-					x < t->sign.left + t->sign.width_1 * 2) {
-				ShowTownViewWindow(t->index);
-				return true;
+			break;
+
+		default:
+			x = (x - vp->left + 3) * 4 + vp->virtual_left;
+			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
+			FOR_ALL_TOWNS(t) {
+				if (y >= t->sign.top &&
+						y < t->sign.top + 24 &&
+						x >= t->sign.left &&
+						x < t->sign.left + t->sign.width_2 * 4) {
+					ShowTownViewWindow(t->index);
+					return true;
+				}
 			}
-		}
-	} else {
-		x = (x - vp->left + 3) * 4 + vp->virtual_left;
-		y = (y - vp->top + 3) * 4 + vp->virtual_top;
-		FOR_ALL_TOWNS(t) {
-			if (y >= t->sign.top &&
-					y < t->sign.top + 24 &&
-					x >= t->sign.left &&
-					x < t->sign.left + t->sign.width_2 * 4) {
-				ShowTownViewWindow(t->index);
-				return true;
-			}
-		}
+			break;
 	}
 
 	return false;
 }
+
 
 static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 {
@@ -1519,47 +1525,53 @@ static bool CheckClickOnStation(const ViewPort *vp, int x, int y)
 
 	if (!(_display_opt & DO_SHOW_STATION_NAMES)) return false;
 
-	if (vp->zoom < 1) {
-		x = x - vp->left + vp->virtual_left;
-		y = y - vp->top + vp->virtual_top;
+	switch (vp->zoom) {
+		case 0:
+			x = x - vp->left + vp->virtual_left;
+			y = y - vp->top  + vp->virtual_top;
+			FOR_ALL_STATIONS(st) {
+				if (y >= st->sign.top &&
+						y < st->sign.top + 12 &&
+						x >= st->sign.left &&
+						x < st->sign.left + st->sign.width_1) {
+					ShowStationViewWindow(st->index);
+					return true;
+				}
+			}
+			break;
 
-		FOR_ALL_STATIONS(st) {
-			if (y >= st->sign.top &&
-					y < st->sign.top + 12 &&
-					x >= st->sign.left &&
-					x < st->sign.left + st->sign.width_1) {
-				ShowStationViewWindow(st->index);
-				return true;
+		case 1:
+			x = (x - vp->left + 1) * 2 + vp->virtual_left;
+			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
+			FOR_ALL_STATIONS(st) {
+				if (y >= st->sign.top &&
+						y < st->sign.top + 24 &&
+						x >= st->sign.left &&
+						x < st->sign.left + st->sign.width_1 * 2) {
+					ShowStationViewWindow(st->index);
+					return true;
+				}
 			}
-		}
-	} else if (vp->zoom == 1) {
-		x = (x - vp->left + 1) * 2 + vp->virtual_left;
-		y = (y - vp->top + 1) * 2 + vp->virtual_top;
-		FOR_ALL_STATIONS(st) {
-			if (y >= st->sign.top &&
-					y < st->sign.top + 24 &&
-					x >= st->sign.left &&
-					x < st->sign.left + st->sign.width_1 * 2) {
-				ShowStationViewWindow(st->index);
-				return true;
+			break;
+
+		default:
+			x = (x - vp->left + 3) * 4 + vp->virtual_left;
+			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
+			FOR_ALL_STATIONS(st) {
+				if (y >= st->sign.top &&
+						y < st->sign.top + 24 &&
+						x >= st->sign.left &&
+						x < st->sign.left + st->sign.width_2 * 4) {
+					ShowStationViewWindow(st->index);
+					return true;
+				}
 			}
-		}
-	} else {
-		x = (x - vp->left + 3) * 4 + vp->virtual_left;
-		y = (y - vp->top + 3) * 4 + vp->virtual_top;
-		FOR_ALL_STATIONS(st) {
-			if (y >= st->sign.top &&
-					y < st->sign.top + 24 &&
-					x >= st->sign.left &&
-					x < st->sign.left + st->sign.width_2 * 4) {
-				ShowStationViewWindow(st->index);
-				return true;
-			}
-		}
+			break;
 	}
 
 	return false;
 }
+
 
 static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 {
@@ -1567,47 +1579,53 @@ static bool CheckClickOnSign(const ViewPort *vp, int x, int y)
 
 	if (!(_display_opt & DO_SHOW_SIGNS)) return false;
 
-	if (vp->zoom < 1) {
-		x = x - vp->left + vp->virtual_left;
-		y = y - vp->top + vp->virtual_top;
+	switch (vp->zoom) {
+		case 0:
+			x = x - vp->left + vp->virtual_left;
+			y = y - vp->top  + vp->virtual_top;
+			FOR_ALL_SIGNS(si) {
+				if (y >= si->sign.top &&
+						y <  si->sign.top + 12 &&
+						x >= si->sign.left &&
+						x <  si->sign.left + si->sign.width_1) {
+					ShowRenameSignWindow(si);
+					return true;
+				}
+			}
+			break;
 
-		FOR_ALL_SIGNS(si) {
-			if (y >= si->sign.top &&
-					y < si->sign.top + 12 &&
-					x >= si->sign.left &&
-					x < si->sign.left + si->sign.width_1) {
-				ShowRenameSignWindow(si);
-				return true;
+		case 1:
+			x = (x - vp->left + 1) * 2 + vp->virtual_left;
+			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
+			FOR_ALL_SIGNS(si) {
+				if (y >= si->sign.top &&
+						y <  si->sign.top + 24 &&
+						x >= si->sign.left &&
+						x <  si->sign.left + si->sign.width_1 * 2) {
+					ShowRenameSignWindow(si);
+					return true;
+				}
 			}
-		}
-	} else if (vp->zoom == 1) {
-		x = (x - vp->left + 1) * 2 + vp->virtual_left;
-		y = (y - vp->top + 1) * 2 + vp->virtual_top;
-		FOR_ALL_SIGNS(si) {
-			if (y >= si->sign.top &&
-					y < si->sign.top + 24 &&
-					x >= si->sign.left &&
-					x < si->sign.left + si->sign.width_1 * 2) {
-				ShowRenameSignWindow(si);
-				return true;
+			break;
+
+		default:
+			x = (x - vp->left + 3) * 4 + vp->virtual_left;
+			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
+			FOR_ALL_SIGNS(si) {
+				if (y >= si->sign.top &&
+						y <  si->sign.top + 24 &&
+						x >= si->sign.left &&
+						x <  si->sign.left + si->sign.width_2 * 4) {
+					ShowRenameSignWindow(si);
+					return true;
+				}
 			}
-		}
-	} else {
-		x = (x - vp->left + 3) * 4 + vp->virtual_left;
-		y = (y - vp->top + 3) * 4 + vp->virtual_top;
-		FOR_ALL_SIGNS(si) {
-			if (y >= si->sign.top &&
-					y < si->sign.top + 24 &&
-					x >= si->sign.left &&
-					x < si->sign.left + si->sign.width_2 * 4) {
-				ShowRenameSignWindow(si);
-				return true;
-			}
-		}
+			break;
 	}
 
 	return false;
 }
+
 
 static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 {
@@ -1615,43 +1633,48 @@ static bool CheckClickOnWaypoint(const ViewPort *vp, int x, int y)
 
 	if (!(_display_opt & DO_WAYPOINTS)) return false;
 
-	if (vp->zoom < 1) {
-		x = x - vp->left + vp->virtual_left;
-		y = y - vp->top + vp->virtual_top;
+	switch (vp->zoom) {
+		case 0:
+			x = x - vp->left + vp->virtual_left;
+			y = y - vp->top  + vp->virtual_top;
+			FOR_ALL_WAYPOINTS(wp) {
+				if (y >= wp->sign.top &&
+						y < wp->sign.top + 12 &&
+						x >= wp->sign.left &&
+						x < wp->sign.left + wp->sign.width_1) {
+					ShowRenameWaypointWindow(wp);
+					return true;
+				}
+			}
+			break;
 
-		FOR_ALL_WAYPOINTS(wp) {
-			if (y >= wp->sign.top &&
-					y < wp->sign.top + 12 &&
-					x >= wp->sign.left &&
-					x < wp->sign.left + wp->sign.width_1) {
-				ShowRenameWaypointWindow(wp);
-				return true;
+		case 1:
+			x = (x - vp->left + 1) * 2 + vp->virtual_left;
+			y = (y - vp->top  + 1) * 2 + vp->virtual_top;
+			FOR_ALL_WAYPOINTS(wp) {
+				if (y >= wp->sign.top &&
+						y < wp->sign.top + 24 &&
+						x >= wp->sign.left &&
+						x < wp->sign.left + wp->sign.width_1 * 2) {
+					ShowRenameWaypointWindow(wp);
+					return true;
+				}
 			}
-		}
-	} else if (vp->zoom == 1) {
-		x = (x - vp->left + 1) * 2 + vp->virtual_left;
-		y = (y - vp->top + 1) * 2 + vp->virtual_top;
-		FOR_ALL_WAYPOINTS(wp) {
-			if (y >= wp->sign.top &&
-					y < wp->sign.top + 24 &&
-					x >= wp->sign.left &&
-					x < wp->sign.left + wp->sign.width_1 * 2) {
-				ShowRenameWaypointWindow(wp);
-				return true;
+			break;
+
+		default:
+			x = (x - vp->left + 3) * 4 + vp->virtual_left;
+			y = (y - vp->top  + 3) * 4 + vp->virtual_top;
+			FOR_ALL_WAYPOINTS(wp) {
+				if (y >= wp->sign.top &&
+						y < wp->sign.top + 24 &&
+						x >= wp->sign.left &&
+						x < wp->sign.left + wp->sign.width_2 * 4) {
+					ShowRenameWaypointWindow(wp);
+					return true;
+				}
 			}
-		}
-	} else {
-		x = (x - vp->left + 3) * 4 + vp->virtual_left;
-		y = (y - vp->top + 3) * 4 + vp->virtual_top;
-		FOR_ALL_WAYPOINTS(wp) {
-			if (y >= wp->sign.top &&
-					y < wp->sign.top + 24 &&
-					x >= wp->sign.left &&
-					x < wp->sign.left + wp->sign.width_2 * 4) {
-				ShowRenameWaypointWindow(wp);
-				return true;
-			}
-		}
+			break;
 	}
 
 	return false;
