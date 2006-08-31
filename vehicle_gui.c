@@ -1487,7 +1487,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 		case WE_RESIZE:
 			/* Update the scroll + matrix */
 			if (vehicle_type == VEH_Train) w->hscroll.cap += e->sizing.diff.x;
-			w->vscroll.cap += e->sizing.diff.y / w->resize.step_height;
+			w->vscroll.cap += e->sizing.diff.y / (int)w->resize.step_height;
 			w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
 			break;
 	}
