@@ -427,8 +427,7 @@ static inline uint32 GetSmallMapIndustriesPixels(TileIndex tile)
 	TileType t = GetEffectiveTileType(tile);
 
 	if (t == MP_INDUSTRY) {
-		byte color = _industry_smallmap_colors[GetIndustryGfx(tile)];
-		return color + (color << 8) + (color << 16) + (color << 24);
+		return _industry_smallmap_colors[GetIndustryGfx(tile)] * 0x01010101;
 	}
 
 	return ApplyMask(MKCOLOR(0x54545454), &_smallmap_vehicles_andor[t]);
