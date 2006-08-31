@@ -2455,10 +2455,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Service at {TOW
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Go non-stop to {TOWN} Train Depot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service non-stop at {TOWN} Train Depot
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Heading for {RED}{TOWN} Train Depot
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Heading for {RED}{TOWN} Train Depot{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Heading for {GREEN}{TOWN} Train Depot
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Heading for {GREEN}{TOWN} Train Depot{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Heading for {TOWN} Train Depot
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Heading for {TOWN} Train Depot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Heading for {TOWN} Train Depot
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Heading for {TOWN} Train Depot, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Invalid Order)
 
@@ -2522,10 +2522,10 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centre m
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Train vehicle selection list - click on vehicle for information
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Build the highlighted train vehicle
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Rename train vehicle type
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Current train action - click here to stop/start train{}{RED}Red depot names{BLACK}: Stay in depot{}{GREEN}Green depot names{BLACK}: Service only
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Current train action - click here to stop/start train
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Show train's orders
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centre main view on train's location
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Send train to depot and stop it there{}Control click will make the train get service only and leave right away
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Send train to depot. CTRL+click will only service
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Force train to proceed without waiting for signal to clear it
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Reverse direction of train
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Show train details
@@ -2599,10 +2599,10 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Can't se
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Unable to find local depot
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Road vehicles - click on vehicle for information
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Build new road vehicles (requires road vehicle depot)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Current vehicle action - click here to stop/start vehicle{}{RED}Red depot names{BLACK}: Stay in depot{}{GREEN}Green depot names{BLACK}: Service only
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Current vehicle action - click here to stop/start vehicle
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Show vehicle's orders
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centre main view on vehicle's location
-STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Send vehicle to depot and stop it there{}Control click will make the vehicle get service only and leave right away
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Send vehicle to depot. CTRL+click will only service
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Force vehicle to turn around
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Show road vehicle details
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vehicles - click on vehicle for information
@@ -2678,10 +2678,10 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Ships - 
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Build new ships (requires ship depot)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Ship selection list - click on ship for information
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Build the highlighted ship
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Current ship action - click here to stop/start ship{}{RED}Red depot names{BLACK}: Stay in depot{}{GREEN}Green depot names{BLACK}: Service only
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Current ship action - click here to stop/start ship
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Show ship's orders
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centre main view on ship's location
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send ship to depot and stop it there{}Control click will make the ship get service only and leave right away
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send ship to depot. CTRL+click will only service
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Show ship details
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}New ship now available!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2752,10 +2752,10 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Drag air
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centre main view on hangar location
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Aircraft selection list - click on aircraft for information
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Build the highlighted aircraft
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Current aircraft action - click here to stop/start aircraft{}{RED}Red hangar names{BLACK}: Stay in depot{}{GREEN}Green hangar names{BLACK}: Service only
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Current aircraft action - click here to stop/start aircraft
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Show aircraft's orders
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centre main view on aircraft's location
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send aircraft to hangar and stop it there{}Control click will make the aircraft get service only and leave right away
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send aircraft to hangar. CTRL+click will only service
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Show aircraft details
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}New aircraft now available!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2863,9 +2863,9 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared o
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
 
 STR_SEND_TO_DEPOTS                                               :{BLACK}Send to Depots
-STR_SEND_TO_DEPOTS_TIP                                           :{BLACK}Send all vehicles in the list to depots.{}Control-click will make them service only (instead of stopping)
+STR_SEND_TO_DEPOTS_TIP                                           :{BLACK}Send all vehicles in list to depot. CTRL+click will only service
 STR_SEND_TO_HANGARS                                              :{BLACK}Send to Hangars
-STR_SEND_TO_HANGARS_TIP                                          :{BLACK}Send all aircrafts in the list to hangars.{}Control-click will make them service only (instead of stopping)
+STR_SEND_TO_HANGARS_TIP                                          :{BLACK}Send all aircraft in list to hangar. CTRL+click will only service
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Replace Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}

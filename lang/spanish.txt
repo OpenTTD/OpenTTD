@@ -2418,8 +2418,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Ir al depósito 
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN} para mantenimiento
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Hacia el depósito de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Hacia el depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Hacia el depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Hacia el depósito de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Orden inválida)
 

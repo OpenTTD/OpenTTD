@@ -2506,10 +2506,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Údr¸ba v zelezn
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Jet bez zastavení do zeleznicniho depa {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Údr¸ba bez zastavení v zeleznicnim depu {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Jedu do zeleznicniho depa {RED}{TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Jedu do zeleznicniho depa {RED}{TOWN}{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Jedu do zeleznicniho depa {GREEN}{TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Jedu do zeleznicniho depa {GREEN}{TOWN}{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Jedu do zeleznicniho depa {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Jedu do zeleznicniho depa {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Jedu do zeleznicniho depa {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Jedu do zeleznicniho depa {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (neplatný prikaz)
 
@@ -2573,7 +2573,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Nastav p
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Seznam vlaku - stiskni na vlaku pro informace
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kup oznaceny vagon/lokomotivu
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Prejmenovat typ vlaku
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Momentalni akce vlaku - stiskni pro zastaveni/rozjeti vlaku{}{RED}Název depa cervene{BLACK}: Zastaveno v depu{}{GREEN}Zelene{BLACK}: Pouze údr¸ba
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Momentalni akce vlaku - stiskni pro zastaveni/rozjeti vlaku
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Uka¸ prikazy vlaku
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Nastav pohled na vlak
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Po¨li vlak do depa
@@ -2650,7 +2650,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemohu p
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní gará¸
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Silnicni vozidla - stiskni vozidlo pro informace
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Koupit nová silnicni vozidla (vy¸aduje gará¸e)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Momentální cinnost silnicniho vozidla - stiskni pro zastaveni/rozjeti vozidla{}{RED}Název depa cervene{BLACK}: Zastaveno v depu{}{GREEN}Zelene{BLACK}: Pouze údr¸ba
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Momentální cinnost silnicniho vozidla - stiskni pro zastaveni/rozjeti vozidla
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Uka¸ prikazy vozidla
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Nastav pohled na vozidlo
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Po¨li vozidlo do gará¸e
@@ -2729,7 +2729,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Lode - i
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Koupit nové lode (vy¸aduje lodní depo)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Seznam lodí - informace získá¨ klepnutím na jméno lodi
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Koupit oznacenou lod
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Cinnost lodi - na rozjetí nebo zastavení lodi klepni sem{}{RED}Název depa cervene{BLACK}: Zastaveno v depu{}{GREEN}Zelene{BLACK}: Pouze údr¸ba
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Cinnost lodi - na rozjetí nebo zastavení lodi klepni sem
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Ukázat prikazy lodi
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Nastavit pohled na lod
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Poslat lod do doku
@@ -2803,7 +2803,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Presun s
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Nastavit pohled na hangár
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Seznam letadel - klepni na letadlo pro informace
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Koupit oznacene letadlo
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Cinnost letadla - stiskni pro rozjetí/zastavení letadla{}{RED}Název hangáru cervene{BLACK}: Zastaveno v hangáru{}{GREEN}Zelene{BLACK}: Pouze údr¸ba
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Cinnost letadla - stiskni pro rozjetí/zastavení letadla
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Ukázat prikazy letadla
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Nastavit pohled na letadlo
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Poslat letadlo do hangáru

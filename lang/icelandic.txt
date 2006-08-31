@@ -2418,8 +2418,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Viðgerð í {TOWN
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Fer viðstöðulaust til {TOWN} Lestar Byggingar
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Viðgerð viðstöðulaust í {TOWN} Lestar Byggingu
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Á leið í {TOWN} Lestar Byggingu
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Á leið í {TOWN} Lestar Byggingu, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Á leið í {TOWN} Lestar Byggingu
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Á leið í {TOWN} Lestar Byggingu, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ógild Skipun)
 

@@ -2415,8 +2415,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Service la Depo
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mergi non-stop la Depoul {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Non-stop pt. service la Depoul {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Merge la Depoul {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Merge la Depoul {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Merge la Depoul {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Merge la Depoul {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Comenzi eronate)
 

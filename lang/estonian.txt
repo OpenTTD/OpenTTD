@@ -2425,8 +2425,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Hooldus {TOWN} 
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Sõida läbi {TOWN} Rongidepoo
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Hooldus Läbisõidul läbi {TOWN} Rongidepoo
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Suundub {TOWN} Rongidepoosse
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Suundub {TOWN} Rongidepoosse, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Suundub {TOWN} Rongidepoosse
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Suundub {TOWN} Rongidepoosse, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ebasobiv järjekord)
 
@@ -2490,7 +2490,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskenda
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Rongivagunite nimekiri - vajuta sõidukile info jaoks
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Ehita valitud rongi sõiduk
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Nimeta ümber rongisõiduki tüüp
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Praegune rongi tegevus - vajuta siia et peatada/käivitada rong{}{RED}Punane Depoo nimi{BLACK}: Seisa Depoos{}{GREEN}Roheline depoo nimi{BLACK}: Teeninda ainult
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Praegune rongi tegevus - vajuta siia et peatada/käivitada rong
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Näita rongi käske
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vaate viimine rongi asukohale
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Saada rong depoosse
@@ -2563,7 +2563,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ei saa s
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohalikku garaaþi
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Maanteeveoautod - vajuta veokile info jaoks
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Osta uus maanteeveoauto (vajab garaaþi)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Praegune sõiduki tegevus - vajuta siia et peatada/alustada sõidukit{}{RED}Punane garaazi nimi{BLACK}: Seisa garaazis{}{GREEN}Roheline garaazi nimi{BLACK}: Teeninda ainult
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Praegune sõiduki tegevus - vajuta siia et peatada/alustada sõidukit
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Näita sõiduki käske
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Vii vaade sõiduki asukohale
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Saada sõiduk garaaþi
@@ -2640,7 +2640,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Laevad -
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Ehita uus laevu (vajad paadikuuri)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Laeva valimis nimekiri - vajuta laevale info jaoks
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Ehita valitud laev
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Praegune laeva tegevus - vajuta siia et peatada/käivitada laeva{}{RED}Punane paadikuuri nimi{BLACK}: Seisa paadikuuris{}{GREEN}Roheline paadikuuri nimi{BLACK}: Teeninda ainult
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Praegune laeva tegevus - vajuta siia et peatada/käivitada laeva
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Näita laeva sihtpunkte
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vii vaade laeva asukohale
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Saada laev paadikuuri

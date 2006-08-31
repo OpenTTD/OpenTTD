@@ -2415,8 +2415,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Huolto veturita
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mene pysähtymättä veturitalliin ({TOWN})
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Huolto pysähtymättä veturitallilla ({TOWN})
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Suuntana veturitalli ({TOWN})
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Suuntana veturitalli ({TOWN}), {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Suuntana veturitalli ({TOWN})
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Suuntana veturitalli ({TOWN}), {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (virheellinen käsky)
 

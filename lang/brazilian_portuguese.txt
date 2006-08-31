@@ -2416,8 +2416,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenção no d
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sem parar para o depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenção no depósito de {TOWN} sem parar
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Dirige-se ao depósito de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Dirige-se ao depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Dirige-se ao depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Dirige-se ao depósito de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ordem Inválida)
 

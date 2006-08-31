@@ -2417,8 +2417,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Servning vid {T
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Åk non-stop till {TOWN} depå
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Servning non-stop {TOWN} tågdepå
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}På väg mot {TOWN} depå
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}På väg mot {TOWN} depå, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}På väg mot {TOWN} depå
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}På väg mot {TOWN} depå, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ogiltig order)
 

@@ -2584,10 +2584,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Serwisuj w zaje
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idz bez przystankow do  {TOWN} zajezdni
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idz bez przystankow do serwisu w zajezdni {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Zmierza do {RED}zajezdni w {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Zmierza do {RED}zajezdni w {TOWN}{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Zmierza do {GREEN}zajezdni w {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Zmierza do {GREEN}zajezdni w {TOWN}{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Zmierza do zajezdni w {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Zmierza do zajezdni w {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Zmierza do zajezdni w {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Zmierza do zajezdni w {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Bledne polecenie)
 
@@ -2651,7 +2651,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrowa
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista wyboru pociagow - klik na pojezdzie aby uzyskac inforamcje
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Zbuduj wybrany pojazd
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Zmiana nazwy typu pociagu
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Obecny stan pociagu - klik tutaj aby zatrzymac/ruszyc pociag{}{RED}Czerwone nazwy zajezdni{BLACK}: Pozostan w zajezdni{}{GREEN}Zielone nazwy zajezdni{BLACK}: Tylko serwisuj
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Obecny stan pociagu - klik tutaj aby zatrzymac/ruszyc pociag
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Pokaz polecenia dla pociagu
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrowanie glownego okna na pozycji pociagu
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Wyslij pociag do zajezdni
@@ -2728,7 +2728,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nie mozn
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nie mozna znalezc zajezdni
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Samochody - klik na pojezdzie po wiecej info
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Zbuduj nowe samochody (wymaga zajezdni)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Obecny stan pojazdu - klik tutaj aby zatrzymac/ruszyc pojazd{}{RED}Czerwone nazwy zajezdni{BLACK}: Pozostan w zajezdni{}{GREEN}Zielone nazwy zajezdni{BLACK}: Tylko serwisuj
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Obecny stan pojazdu - klik tutaj aby zatrzymac/ruszyc pojazd
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Pokaz polecenia pojazdu
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centruj widok na lokacji pojazdu
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Wyslij pojazd do zajezdni
@@ -2807,7 +2807,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Statki -
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Budowa nowych statkow (wymaga stoczni)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Lista wyboru statkow - klik na statku aby uzyskac informacje
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Zbuduj wybrany statek
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Obecny stan statku - klik aby zatrzymac/ruszyc statek{}{RED}Czerwone nazwy stoczni{BLACK}: Pozostan w stoczni{}{GREEN}Zielone nazwy stoczni{BLACK}: Tylko serwisuj
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Obecny stan statku - klik aby zatrzymac/ruszyc statek
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Pokaz polecenia statku
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centruj glowne okno na pozycji statku
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Wyslij statek do stoczni
@@ -2881,7 +2881,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Przeciag
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centruj glowne okno na pozycji hangaru
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lista wyboru samolotow - klik na samolocie aby uzyskac informacje
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Zbuduj wybrany samolot
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Obecny stan samolotu - klik aby zatrzymac/ruszyc samolot{}{RED}Czerwone nazwy hangarow{BLACK}: Pozostan w hangarze{}{GREEN}Zielone nazwy hangarow{BLACK}: Tylko serwisuj
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Obecny stan samolotu - klik aby zatrzymac/ruszyc samolot
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Pokaz polecenia samolotu
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centruj glowne okno na pozycji samolotu
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Wyslij samolot do hangaru
@@ -2992,9 +2992,9 @@ STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Wspoldzi
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaz wszystkie pojazdy z takim samym rozkladem
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Wyslij do zajezdni
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Wyslij wszystkie pojazdy z listy do zajezdni.{}Ctrl-klik wysle je na tylko do serwisu (zamiast zatrzymywania sie)
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Wyslij wszystkie pojazdy z listy do zajezdni.
 STR_SEND_TO_HANGARS                                             :{BLACK}Wyslij do hangarow
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Wyslij wszystkie samoloty z listy do hangarow.{}Ctrl-klik wysle je na tylko do serwisu (zamiast zatrzymywania sie)
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Wyslij wszystkie samoloty z listy do hangarow.
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Zastap pojazdy
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastap {STRING}

@@ -2519,8 +2519,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Opravit v {TOWN
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Chod bez zastavenia do depa {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Opravovat bez zastavenia v depe {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Smeruje do {TOWN} depa
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Smeruje do {TOWN} depa, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Smeruje do {TOWN} depa
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Smeruje do {TOWN} depa, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Neplatny prikaz)
 

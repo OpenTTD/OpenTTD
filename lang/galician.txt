@@ -2387,8 +2387,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Face-lo servici
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sen paradas o Depósito de Trens de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Face-lo servicio sen paradas no Depósito de Trens de {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}En camiño ó Depósito de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}En camiño ó Depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}En camiño ó Depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}En camiño ó Depósito de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Orde Inválida)
 

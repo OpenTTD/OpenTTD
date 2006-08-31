@@ -2455,10 +2455,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenção no d
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sem parar para o depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenção no depósito de {TOWN} sem parar
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Dirige-se ao depósito de {RED}{TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Dirige-se ao depósito de {RED}{TOWN}{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Dirige-se ao depósito de {GREEN}{TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Dirige-se ao depósito de {GREEN}{TOWN}{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Dirige-se ao depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Dirige-se ao depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Dirige-se ao depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Dirige-se ao depósito de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ordem Inválida)
 
@@ -2522,7 +2522,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar 
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir o veículo ferroviário seleccionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomear tipo de veículo ferroviário
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarefa actual do comboio - clique aqui para iniciar/parar comboio{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósitos a verde{BLACK}: Apenas em serviço
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarefa actual do comboio - clique aqui para iniciar/parar comboio
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Mostrar ordens do comboio
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar visualização na localização do comboio
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Mandar comboio para o depósito
@@ -2599,7 +2599,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Não é po
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Não é possível encontrar o depósito local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Veículos de estrada - clique num veículo para informações
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construir novos veículos de estrada (necessita de depósito de veículos de estrada)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Tarefa actual do veículo - clique aqui para iniciar/parar veículo{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósitos a verde{BLACK}: Apenas em serviço
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Tarefa actual do veículo - clique aqui para iniciar/parar veículo
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Mostrar ordens do veículo
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrar visualização na localização do veículo
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Mandar veículo para o depósito
@@ -2678,7 +2678,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Barcos -
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construir novos barcos (necessita de depósito naval)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Lista de barcos - clique num barco para informações
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construir barco seleccionado
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Tarefa actual do barco - clique aqui para iniciar/parar barco{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósitos a verde{BLACK}: Apenas em serviço
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Tarefa actual do barco - clique aqui para iniciar/parar barco
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostrar ordens do barco
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrar visualização na localização do barco
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Mandar barco para o depósito
@@ -2752,7 +2752,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arraste 
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar visualização na localização do hangar
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Lista de aeronaves - clique na aeronave para informações
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construir aeronave seleccionada
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Tarefa actual da aeronave - clique aqui para iniciar/parar a aeronave{}{RED}Depósitos a vermelho{BLACK}:Paragem no depósito{}{GREEN}Depósito a verde{BLACK}: Apenas em serviço
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Tarefa actual da aeronave - clique aqui para iniciar/parar a aeronave
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Mostrar ordens da aeronave
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrar visualização na localização da aeronave
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Mandar aeronave para o hangar

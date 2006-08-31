@@ -2453,9 +2453,9 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Bakima git: {TO
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Durmadan git: {TOWN} Tren Gari
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Durmadan bakima git: {TOWN} Tren Gari
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}{RED}{TOWN} Tren Garina gidiyor
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}{TOWN} Tren Garina gidiyor, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{GREEN}{TOWN} Tren Garina gidiyor
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}{TOWN} Tren Garina gidiyor
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}{TOWN} Tren Garina gidiyor, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} Tren Garina gidiyor
 
 STR_INVALID_ORDER                                               :{RED} (Hatali talimat)
 
@@ -2519,7 +2519,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Tren gar
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Tren seçim listesi - daha fazla bilgi için araca tiklayin
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Seçili treni satin al
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Treni yeniden adlandir
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tren durumu - treni durdurmak/baslatmak için buraya tiklayin{}{RED}Kirmizi gar isimleri{BLACK}: garda bekle{}{GREEN}Yesil gar isimleri{BLACK}: Sadece bakim
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tren durumu - treni durdurmak/baslatmak için buraya tiklayin
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Trenin talimatlarini göster
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Treni göster
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Treni gara gönder
@@ -2596,7 +2596,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Araç gar
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel garaj bulunamadi
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Arabalar - bilgi için arabaya tiklayin
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Yeni araba al (araba garaji gerekir)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Aracin durumu - durdurmak/baslatmak için tiklayin{}{RED}Kirmizi garaj isimleri{BLACK}: garajda bekle{}{GREEN}Yesil garaj isimleri{BLACK}: Sadece bakim
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Aracin durumu - durdurmak/baslatmak için tiklayin
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Aracin komutlarini görmek için tiklayin
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Arabayi göster
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Araci garaja gönder
@@ -2675,7 +2675,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Gemiler 
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Gemi yap (tershane gerektirir)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Gemi seçim listesi - bilgi için gemiye tikla
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Seçili gemiyi yap
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Geminin durumu - durdurmak/baslatmak için buraya tikla{}{RED}Kirmizi tersane isimleri{BLACK}: tersanede bekle{}{GREEN}Yesil tersane isimleri{BLACK}: Sadece bakim
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Geminin durumu - durdurmak/baslatmak için buraya tikla
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Geminin talimatlarini göster
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Gemiyi göster
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Tershaneye gönder
@@ -2749,7 +2749,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Satmak i
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Hangari göster
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Uçak listesi - bilgi için uçaga tiklayin
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Seçili uçaktan al
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Uçagin durumu - uçagi durdurmak/baslatmak için tikla{}{RED}Kirmizi hangar isimleri{BLACK}: hangarda bekle{}{GREEN}Yesil hangar isimleri{BLACK}: Sadece bakim
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Uçagin durumu - uçagi durdurmak/baslatmak için tikla
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Uçagin talimatlarini göster
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Uçagi göster
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Uçagi hangara gönder

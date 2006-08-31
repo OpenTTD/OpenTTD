@@ -2412,8 +2412,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manteniment a c
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Anar sense parades a cotxeres de {TOWN}.
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manteniment sense parades a cotxeres de {TOWN}.
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Cap a cotxeres de {TOWN}.
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Cap a cotxeres de {TOWN}, a {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Cap a cotxeres de {TOWN}.
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Cap a cotxeres de {TOWN}, a {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ordre incorrecte)
 

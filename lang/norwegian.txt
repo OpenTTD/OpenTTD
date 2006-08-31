@@ -2424,8 +2424,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Service ved {TO
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Kjør uten å stoppe til {TOWN} togstall
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service (uten å stoppe) ved {TOWN} togstall
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Er på vei til {TOWN} togstall
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Er på vei til {TOWN} togstall, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Er på vei til {TOWN} togstall
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Er på vei til {TOWN} togstall, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ugyldig ordre)
 

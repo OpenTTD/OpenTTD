@@ -2557,10 +2557,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Javítsd a vonat
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Menj megállás nélkül {TOWN}i jármûtelepre
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Mindig javítsd a vonatot a {TOWN}i jármûtelepen
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Úton {RED}{TOWN} jármûtelepére
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Úton {RED}{TOWN} jármûtelepére{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Úton {GREEN}{TOWN} jármûtelepére
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Úton {GREEN}{TOWN} jármûtelepére{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Úton {TOWN} jármûtelepére
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Úton {TOWN} jármûtelepére, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Úton {TOWN} jármûtelepére
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Úton {TOWN} jármûtelepére, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Hibás menetrend)
 
@@ -2624,7 +2624,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}A fõ néz
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Vasúti jármû kiválasztása - kattints egy jármûre az adataihoz
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}A kijelölt vasúti jármû megvétele
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}A vasúti jármû márkanevének megváltoztatása
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aktuális vonatesemény - kattints ide a vonat elindításához/megállításához{}{RED}Piros depó nevek{BLACK}: Maradj a depóban{}{GREEN}Zöld depó nevek{BLACK}: Csak javítás
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aktuális vonatesemény - kattints ide a vonat elindításához/megállításához
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}A vonat menetrendjének megmutatása
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}A fõ nézetet a vonatra állítja
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}A jármûtelepre küldi a vonatot
@@ -2701,7 +2701,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nem küld
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi garázst
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Közúti jármûvek - kattints egy jármûre az adataihoz
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Új közúti jármûvek vásárlása (garázs kell hozzá)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Aktuális jármûesemény - kattints ide a jármû elindításához/ megállításához{}{RED}Piros depó nevek{BLACK}: Maradj a depóban{}{GREEN}Zöld depó nevek{BLACK}: Csak javítás
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Aktuális jármûesemény - kattints ide a jármû elindításához/ megállításához
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}A jármû menetrendjének megmutatása
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}A fõ nézetet a jármûre állítja
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Garázsba küldi a jármûvet
@@ -2780,7 +2780,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Hajók - 
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Új hajók vásárlása (dokk szükséges hozzá)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Hajó kiválasztása - kattints egy hajóra az adataihoz
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}A kijelölt hajó megvétele
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Aktuális hajóesemény - kattints ide a hajó elindításhoz/megállításhoz{}{RED}Piros depó nevek{BLACK}: Maradj a depóban{}{GREEN}Zöld depó nevek{BLACK}: Csak javítás
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Aktuális hajóesemény - kattints ide a hajó elindításhoz/megállításhoz
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}A hajó menetrendjének megmutatása
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}A fõ nézetet a hajóra állítja
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Dokkba küldi a hajót
@@ -2854,7 +2854,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Dobj ide
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}A fõ nézetet a hangárra állítja
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Repülõgép kiválasztása - kattints egy repülõgépre az adataihoz
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}A kijelölt repülõgép megvétele
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Aktuális repülõgépesemény - kattints ide a repülõgép elindításához/megállításához{}{RED}Piros hangár nevek{BLACK}: Maradj a hangárban{}{GREEN}Zöld hangár nevek{BLACK}: Csak javítás
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Aktuális repülõgépesemény - kattints ide a repülõgép elindításához/megállításához
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}A repülõgép menetrendjének megmutatása
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}A fõ nézetet a repülõgépre állítja
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Hangárba küldi a repülõgépet

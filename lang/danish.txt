@@ -2455,10 +2455,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} depot
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden stop i {TOWN} depot
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Kører til {RED}{TOWN} togdepot
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Kører til {RED}{TOWN} depot{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Kører til {GREEN}{TOWN} togdepot
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Kører mod {GREEN}{TOWN} togdepot{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Kører til {TOWN} togdepot
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Kører til {TOWN} depot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Kører til {TOWN} togdepot
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Kører mod {TOWN} togdepot, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ugyldig Order)
 
@@ -2522,7 +2522,7 @@ STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer 
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Tog valgsliste - klik på et køretøj for mere information
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Byg det markerede lokomotiv/togvogn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Omdøb tog-/togvognstypen
-STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Nuværende opførsel - klik her for at starte/stoppe toget{}{RED}Røde depotnavne{BLACK}: Bliv i depotet{}{GREEN}Grønne depotnavne{BLACK}: Kun service
+STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Nuværende opførsel - klik her for at starte/stoppe toget
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Vis togets ordre
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer skærmen over togets placering
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Send toget til depot
@@ -2599,7 +2599,7 @@ STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan ikke
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt depot
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Lastlastbiler - klik på et køretøj for information
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Byg nye lastbiler (kræver et lastbilsdepot)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nuværende opførsel - klik her for at stoppe/starte lastbilen{}{RED}Røde depotnavne{BLACK}: Bliv i depotet{}{GREEN}Grønne depotnavne{BLACK}: Kun service
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nuværende opførsel - klik her for at stoppe/starte lastbilen
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Vis køretøjets ordrer
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrer skærmen over placeringen af køretøjet
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Send køretøjet i depot
@@ -2678,7 +2678,7 @@ STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skibe - 
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Byg nye skibe (kræver et skibsdepot)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Skibstypeliste - klik på skibstype for information
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Byg det markerede skib
-STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Nuværende opførsel - klik her for at starte/stoppe skibet{}{RED}Røde depotnavne{BLACK}: Bliv i depotet{}{GREEN}Grønne depotnavne{BLACK}: Kun service
+STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Nuværende opførsel - klik her for at starte/stoppe skibet
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Vis skibets ordrer
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer skærmen over skibets placering
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send skibet til depot
@@ -2752,7 +2752,7 @@ STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Træk fly
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrer skærmen over placeringen af hangaren
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Flytypeliste - klik på en flytype for mere information
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Byg det markerede fly
-STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Nuværende opførsel - klik her for at starte/stoppe flyet{}{RED}Røde hangarnavne{BLACK}: bliv i depotet{}{GREEN}Grønne hangarnavne{BLACK}: Kun service
+STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Nuværende opførsel - klik her for at starte/stoppe flyet
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Vis flyets ordre
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer skærmen over placeringen af flyet
 STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Send flyet til en hangar
