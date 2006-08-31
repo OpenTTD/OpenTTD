@@ -80,10 +80,6 @@ typedef struct {
 #define AS(x, z) {x, 0, z}
 #define AM(x, y, z, w) {x, y - x, z}
 
-#ifndef VK_OEM_3
-#define VK_OEM_3 0xC0
-#endif
-
 static const VkMapping _vk_mapping[] = {
 	// Pageup stuff + up/down
 	AM(VK_PRIOR,VK_DOWN, WKC_PAGEUP, WKC_DOWN),
@@ -131,7 +127,6 @@ static uint MapWindowsKey(uint sym)
 	return key;
 }
 
-static void MakeWindow(bool full_screen);
 static bool AllocateDibSection(int w, int h);
 
 static void ClientSizeChanged(int w, int h)
