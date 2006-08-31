@@ -1455,8 +1455,10 @@ typedef struct SetSignalsData {
 
 } SetSignalsData;
 
-static bool SetSignalsEnumProc(TileIndex tile, SetSignalsData *ssd, int track, uint length, byte *state)
+static bool SetSignalsEnumProc(TileIndex tile, void* data, int track, uint length, byte* state)
 {
+	SetSignalsData* ssd = data;
+
 	if (!IsTileType(tile, MP_RAILWAY)) return false;
 
 	// the tile has signals?
@@ -1672,7 +1674,7 @@ bool UpdateSignalsOnSegment(TileIndex tile, DiagDirection direction)
 		ssd.cur = ssd.presignal_exits = ssd.presignal_exits_free = 0;
 		ssd.has_presignal = false;
 
-		FollowTrack(tile, 0xC000 | TRANSPORT_RAIL, direction, (TPFEnumProc*)SetSignalsEnumProc, SetSignalsAfterProc, &ssd);
+		FollowTrack(tile, 0xC000 | TRANSPORT_RAIL, direction, SetSignalsEnumProc, SetSignalsAfterProc, &ssd);
 		ChangeSignalStates(&ssd);
 
 		// remember the result only for the first iteration.
