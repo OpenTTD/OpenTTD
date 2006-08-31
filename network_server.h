@@ -22,7 +22,10 @@ void NetworkServerYearlyLoop(void);
 
 static inline const char* GetPlayerIP(const NetworkClientInfo* ci)
 {
-	return inet_ntoa(*(const struct in_addr*)&ci->client_ip);
+	struct in_addr addr;
+
+	addr.s_addr = ci->client_ip;
+	return inet_ntoa(addr);
 }
 
 #endif /* ENABLE_NETWORK */
