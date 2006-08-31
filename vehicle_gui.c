@@ -286,13 +286,6 @@ int ShowAdditionalText(int x, int y, int w, EngineID engine)
 }
 
 
-/* Variables you need to set before calling this function!
-* 1. (byte)_internal_sort_type:        sorting criteria to sort on
-* 2. (bool)_internal_sort_order:       sorting order, descending/ascending
-* 3. (uint32)_internal_name_sorter_id: default StringID of the vehicle when no name is set. eg
-*    STR_SV_TRAIN_NAME for trains or STR_SV_AIRCRAFT_NAME for aircraft
-*/
-
 // if the sorting criteria had the same value, sort vehicle by unitnumber
 #define VEHICLEUNITNUMBERSORTER(r, a, b) {if (r == 0) {r = a->unitnumber - b->unitnumber;}}
 
