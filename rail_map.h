@@ -137,7 +137,7 @@ static inline DiagDirection GetRailDepotDirection(TileIndex t)
 
 static inline Axis GetWaypointAxis(TileIndex t)
 {
-	return HASBIT(_m[t].m5, 0) ? AXIS_Y : AXIS_X;
+	return (Axis)GB(_m[t].m5, 0, 1);
 }
 
 static inline Track GetRailWaypointTrack(TileIndex t)
