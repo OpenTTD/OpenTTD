@@ -305,7 +305,7 @@ static void AiHandleReplaceTrain(Player *p)
 
 	// wait until the vehicle reaches the depot.
 	if (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
-		AiHandleGotoDepot(p, CMD_TRAIN_GOTO_DEPOT);
+		AiHandleGotoDepot(p, CMD_SEND_TRAIN_TO_DEPOT);
 		return;
 	}
 
@@ -3509,7 +3509,7 @@ static void AiStateSellVeh(Player *p)
 
 			if (!IsTileDepotType(v->tile, TRANSPORT_RAIL) || v->u.rail.track != 0x80 || !(v->vehstatus&VS_STOPPED)) {
 				if (v->current_order.type != OT_GOTO_DEPOT)
-					DoCommand(0, v->index, 0, DC_EXEC, CMD_TRAIN_GOTO_DEPOT);
+					DoCommand(0, v->index, 0, DC_EXEC, CMD_SEND_TRAIN_TO_DEPOT);
 				goto going_to_depot;
 			}
 

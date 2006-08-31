@@ -68,7 +68,7 @@ static const uint32 _veh_refit_proc_table[] = {
 };
 
 const uint32 _send_to_depot_proc_table[] = {
-	CMD_TRAIN_GOTO_DEPOT,
+	CMD_SEND_TRAIN_TO_DEPOT,
 	CMD_SEND_ROADVEH_TO_DEPOT,
 	CMD_SEND_SHIP_TO_DEPOT,
 	CMD_SEND_AIRCRAFT_TO_HANGAR,

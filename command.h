@@ -49,7 +49,7 @@ enum {
 
 	CMD_SELL_RAIL_WAGON              =  38,
 
-	CMD_TRAIN_GOTO_DEPOT             =  39,
+	CMD_SEND_TRAIN_TO_DEPOT          =  39,
 	CMD_FORCE_TRAIN_PROCEED          =  40,
 	CMD_REVERSE_TRAIN_DIRECTION      =  41,
 
