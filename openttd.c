@@ -949,7 +949,7 @@ void GameLoop(void)
 	}
 
 	// handle scrolling of the main window
-	if (_dirkeys) HandleKeyScrolling();
+	HandleKeyScrolling();
 
 	// make a screenshot?
 	if (IsScreenshotRequested()) ShowScreenshotResult(MakeScreenshot());
