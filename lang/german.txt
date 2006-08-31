@@ -2592,10 +2592,10 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...muss 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kann das Fahrzeug nicht verkaufen...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kann das Fahrzeug nicht anhalten/starten...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Fahrzeug {COMMA} wartet im Depot
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Unterwegs zu {RED}{TOWN} Fahrzeugdepot
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Unterwegs zu {RED}{TOWN} Fahrzeugdepot{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Unterwegs zu {GREEN}{TOWN} Fahrzeugdepot
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Unterwegs zu {GREEN}{TOWN} Fahrzeugdepot{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{RED}Unterwegs zu {TOWN} Fahrzeugdepot
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{RED}Unterwegs zu {TOWN} Fahrzeugdepot, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Unterwegs zu {TOWN} Fahrzeugdepot
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Unterwegs zu {TOWN} Fahrzeugdepot, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kann das Fahrzeug nicht zum Depot schicken...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann kein Fahrzeugdepot finden
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
@@ -2664,10 +2664,10 @@ STR_9817_CAPACITY                                               :{BLACK}Kapazitä
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kann das Schiff nicht anhalten/starten...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kann das Schiff nicht in die Werft schicken...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann keine Werft finden
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Unterwegs zu {RED}{TOWN} Werft
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Unterwegs zu {RED}{TOWN} Werft{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Unterwegs zu {GREEN}{TOWN} Werft
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Unterwegs zu {GREEN}{TOWN} Werft{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{RED}Unterwegs zu {TOWN} Werft
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{RED}Unterwegs zu {TOWN} Werft, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Unterwegs zu {TOWN} Werft
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Unterwegs zu {TOWN} Werft, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Schiff {COMMA} wartet in der Werft
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Hafen bauen
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Werft bauen (für den Bau und die Wartung von Schiffen)
@@ -2731,10 +2731,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit l
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Pannen seit letzter Wartung: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK} Gebaut: {LTBLUE}{NUM}{BLACK}   Wert: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kann das Flugzeug nicht in den Hangar schicken...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Unterwegs zu {RED}{STATION} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Unterwegs zu {RED}{STATION} Hangar{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Unterwegs zu {GREEN}{STATION} Hangar
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Unterwegs zu {GREEN}{STATION} Hangar{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{RED}Unterwegs zu {STATION} Hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{RED}Unterwegs zu {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Unterwegs zu {STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Unterwegs zu {STATION} Hangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugzeug {COMMA} wartet im Hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugzeug ist auf dem Weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kann das Flugzeug nicht anhalten/starten...

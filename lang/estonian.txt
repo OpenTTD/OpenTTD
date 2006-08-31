@@ -2557,8 +2557,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...peab 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ei saa müüa maanteeveokit...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ei saa peatada/startida maanteeveokit...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Maanteeveoauto {COMMA} ootab garaaþi
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Suundub {TOWN} garaaþi
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Suundub {TOWN} garaaþi, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{RED}Suundub {TOWN} garaaþi
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{RED}Suundub {TOWN} garaaþi, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ei saa saata maanteeveoautot garaaþi
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohalikku garaaþi
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Maanteeveoautod - vajuta veokile info jaoks
@@ -2627,8 +2627,8 @@ STR_9817_CAPACITY                                               :{BLACK}Mahutavu
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Ei saa peatada/startida laeva...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ei saa saata laeva paadikuuri...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohaliku paadikuuri
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Suundub {TOWN}a paadikuuri
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Suundub {TOWN}a paadikuuri, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{RED}Suundub {TOWN}a paadikuuri
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{RED}Suundub {TOWN}a paadikuuri, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laev {COMMA} ootab paadikuuris
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Ehita laevakuur
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Ehita laevakuur (et ehitada ja hooldada laevu)
@@ -2692,8 +2692,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Kasum se
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Vastupidavus: {LTBLUE}{COMMA}%  {BLACK}Katkiminemisi viimasest hooldusest: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Ei saa saata lennukit angaari...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Suundub {STATION} Angaari
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Suundub {STATION} angaari, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{RED}Suundub {STATION} Angaari
+STR_HEADING_FOR_HANGAR_VEL                                      :{RED}Suundub {STATION} angaari, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lennuk {COMMA} ootab angaaris
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lennuk on teel
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ei saa peatada/startida lennukit...

@@ -2591,10 +2591,10 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...skal 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke sælge lastbil...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke stoppe/starte lastbil...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Lastbil {COMMA} venter i depot
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Kører til {RED}{TOWN} Lastbilsdepot
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Kører til {RED}{TOWN} Lastbilsdepot{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Kører til {GREEN}{TOWN} Vejdepot
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Kører til {GREEN}{TOWN} vejdepot{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{RED}Kører til {TOWN} Lastbilsdepot
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{RED}Kører til {TOWN} Lastbilsdepot, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Kører til {TOWN} Vejdepot
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Kører til {TOWN} vejdepot, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan ikke sende køretøj i depot...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt depot
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Lastlastbiler - klik på et køretøj for information
@@ -2663,10 +2663,10 @@ STR_9817_CAPACITY                                               :{BLACK}Kapacite
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke stoppe/starte skibet...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skibet til depot...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt depot
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Sejler til {RED}{TOWN} Skibsdepot
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Sejler til {RED}{TOWN} Skibsdepot{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Sejler til {GREEN}{TOWN} skipsdepot
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Sejler til {GREEN}{TOWN} skipsdepot{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{RED}Sejler til {TOWN} Skibsdepot
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{RED}Sejler til {TOWN} Skibsdepot, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Sejler til {TOWN} skipsdepot
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Sejler til {TOWN} skipsdepot, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skib {COMMA} venter i depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Byg havn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Byg skibsdepot (til bygning og servicering af skibe)
@@ -2730,10 +2730,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dette år
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan ikke sende flyet til en hangar...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Flyver til {RED}{STATION} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Flyver til {RED}{STATION} Hangar{LTBLUE}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Flyver til {GREEN}{STATION} Hangar
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Flyver til {GREEN}{STATION} Hangar{LTBLUE}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{RED}Flyver til {STATION} Hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{RED}Flyver til {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Flyver til {STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Flyver til {STATION} Hangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Fly {COMMA} venter i flyhangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Fly i vejen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte fly...

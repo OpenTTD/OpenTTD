@@ -2515,8 +2515,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...debe 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Non se pode vende-lo vehículo de estrada...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No se pode parar/arrincar o vehículo de estrada...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}O vehículo de estrada {COMMA} está a esperar no depósito
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Diríxese o depósito de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Diríxese o depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{RED}Diríxese o depósito de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{RED}Diríxese o depósito de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Non se pode envia-lo vehículo ó depósito de estrada...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se pode atopar unha ruta o depósito local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vehículos de estrada - pincha nun vehículo para máis información
@@ -2582,8 +2582,8 @@ STR_9817_CAPACITY                                               :{BLACK}Capacida
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Non se pode parar/arrincar o barco...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Non se pode envia-lo barco o depósito...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se pode atopar unha ruta ó depósito local
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Diríxese o Depósito de Barcos de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Diríxese o Depósito de Barcos de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{RED}Diríxese o Depósito de Barcos de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{RED}Diríxese o Depósito de Barcos de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}O barco {COMMA} esta a esperar no depósito
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construír peirao para barcos
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construír depósito para barcos (para construír e dar servicio os barcos)
@@ -2646,8 +2646,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Roturas dende o último serivicio: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non se pode envia-la aeronave ó hangar...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Diríxese ó hangar de {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Diríxese ó hangar de {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{RED}Diríxese ó hangar de {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{RED}Diríxese ó hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}A aeronave {COMMA} está a esperar no hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave no camiño
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non se pode parar/arrincar a aeronave...
