@@ -1455,50 +1455,43 @@ static void QZ_WaitForVerticalBlank(void)
 	CSleep((uint32)(adjustment * 1000));
 }
 
+
 static void QZ_DrawScreen(void)
 {
-	const uint8* src;
-	uint8* dst;
-	uint height;
-	uint width;
-	uint pitch;
-	uint y;
-	uint num_dirty_rects;
-	uint length_drawn;
-	uint left;
+	const uint8* src = _cocoa_video_data.pixels;
+	uint8* dst       = (uint8*)_cocoa_video_data.realpixels;
+	uint pitch       = _cocoa_video_data.pitch;
+	uint width       = _cocoa_video_data.width;
+	uint num_dirty   = _cocoa_video_data.num_dirty_rects;
 	uint i;
 
-	src = _cocoa_video_data.pixels;
-	dst = (uint8*)_cocoa_video_data.realpixels;
-	width  = _cocoa_video_data.width;
-	pitch  = _cocoa_video_data.pitch;
-	num_dirty_rects = _cocoa_video_data.num_dirty_rects;
-
 	/* Check if we need to do anything */
-	if (num_dirty_rects == 0 ) return;
+	if (num_dirty == 0) return;
 
-	if (num_dirty_rects >= MAX_DIRTY_RECTS) {
-		num_dirty_rects = 1;
-		_cocoa_video_data.dirty_rects[0].left = 0;
-		_cocoa_video_data.dirty_rects[0].top = 0;
-		_cocoa_video_data.dirty_rects[0].right = _cocoa_video_data.width;
+	if (num_dirty >= MAX_DIRTY_RECTS) {
+		num_dirty = 1;
+		_cocoa_video_data.dirty_rects[0].left   = 0;
+		_cocoa_video_data.dirty_rects[0].top    = 0;
+		_cocoa_video_data.dirty_rects[0].right  = _cocoa_video_data.width;
 		_cocoa_video_data.dirty_rects[0].bottom = _cocoa_video_data.height;
 	}
 
 	QZ_WaitForVerticalBlank();
 	/* Build the region of dirty rectangles */
-	for (i = 0; i < num_dirty_rects; i++) {
+	for (i = 0; i < num_dirty; i++) {
+		uint y      = _cocoa_video_data.dirty_rects[i].top;
+		uint left   = _cocoa_video_data.dirty_rects[i].left;
+		uint length = _cocoa_video_data.dirty_rects[i].right - left;
+		uint bottom = _cocoa_video_data.dirty_rects[i].bottom;
 
-		y = _cocoa_video_data.dirty_rects[i].top;
-		left = _cocoa_video_data.dirty_rects[i].left;
-		length_drawn = _cocoa_video_data.dirty_rects[i].right - left;
-		height = _cocoa_video_data.dirty_rects[i].bottom;
-		for (; y < height; y++) memcpy(dst + y * pitch + left, src + y * width +left, length_drawn);
+		for (; y < bottom; y++) {
+			memcpy(dst + y * pitch + left, src + y * width + left, length);
+		}
 	}
 
 	_cocoa_video_data.num_dirty_rects = 0;
-
 }
+
 
 static int QZ_ListFullscreenModes(OTTDPoint* mode_list, int max_modes)
 {
