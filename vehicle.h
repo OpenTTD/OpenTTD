@@ -426,11 +426,10 @@ static inline Order *GetLastVehicleOrder(const Vehicle *v)
 }
 
 /* Get the first vehicle of a shared-list, so we only have to walk forwards */
-static inline Vehicle *GetFirstVehicleFromSharedList(Vehicle *v)
+static inline Vehicle *GetFirstVehicleFromSharedList(const Vehicle *v)
 {
-	Vehicle *u = v;
-	while (u->prev_shared != NULL)
-		u = u->prev_shared;
+	Vehicle *u = (Vehicle *)v;
+	while (u->prev_shared != NULL) u = u->prev_shared;
 
 	return u;
 }
@@ -462,8 +461,7 @@ PalSpriteID GetVehiclePalette(const Vehicle *v);
  * Best is to have a virtual value for it when it needs to change again */
 #define STATUS_BAR 5
 
-#define CMD_SEND_TO_DEPOT(x) _send_to_depot_proc_table[ x - VEH_Train]
-
 extern const uint32 _send_to_depot_proc_table[];
+#define CMD_SEND_TO_DEPOT(x) _send_to_depot_proc_table[ x - VEH_Train]
 
 #endif /* VEHICLE_H */
