@@ -13,6 +13,7 @@
 #include "newgrf.h"
 #include "md5.h"
 #include "variables.h"
+#include <string.h>
 
 typedef struct MD5File {
 	const char * const filename;     // filename
@@ -96,18 +97,9 @@ static void LoadGrfIndexed(const char* filename, const SpriteID* index_tbl, int 
 /* Check that the supplied MD5 hash matches that stored for the supplied filename */
 static bool CheckMD5Digest(const MD5File file, md5_byte_t *digest, bool warn)
 {
-	uint i;
-
-	/* Loop through each byte of the file MD5 and the stored MD5... */
-	for (i = 0; i < 16; i++) if (file.hash[i] != digest[i]) break;
-
-		/* If all bytes of the MD5's match (i.e. the MD5's match)... */
-	if (i == 16) {
-		return true;
-	} else {
-		if (warn) fprintf(stderr, "MD5 of %s is ****INCORRECT**** - File Corrupt.\n", file.filename);
-		return false;
-	};
+	if (memcmp(file.hash, digest, sizeof(file.hash)) == 0) return true;
+	if (warn) fprintf(stderr, "MD5 of %s is ****INCORRECT**** - File Corrupt.\n", file.filename);
+	return false;
 }
 
 /* Calculate and check the MD5 hash of the supplied filename.
