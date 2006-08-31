@@ -469,50 +469,41 @@ void ShowRoadVehViewWindow(const Vehicle *v)
 
 static void DrawNewRoadVehWindow(Window *w)
 {
-	if (w->window_number == 0)
-		w->disabled_state = 1 << 5;
+	EngineID selected_id;
+	EngineID e;
+	uint count;
+	int pos;
+	int sel;
+	int y;
 
-	// setup scroller
-	{
-		int count = 0;
-		int num = NUM_ROAD_ENGINES;
-		const Engine *e = GetEngine(ROAD_ENGINES_INDEX);
+	if (w->window_number == 0) w->disabled_state = 1 << 5;
 
-		do {
-			if (HASBIT(e->player_avail, _local_player))
-				count++;
-		} while (++e,--num);
-		SetVScrollCount(w, count);
+	count = 0;
+	for (e = ROAD_ENGINES_INDEX; e < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; e++) {
+		if (HASBIT(GetEngine(e)->player_avail, _local_player)) count++;
 	}
+	SetVScrollCount(w, count);
 
 	DrawWindowWidgets(w);
 
-	{
-		int num = NUM_ROAD_ENGINES;
-		const Engine *e = GetEngine(ROAD_ENGINES_INDEX);
-		int x = 1;
-		int y = 15;
-		int sel = WP(w,buildtrain_d).sel_index;
-		int pos = w->vscroll.pos;
-		EngineID engine_id = ROAD_ENGINES_INDEX;
-		EngineID selected_id = INVALID_ENGINE;
-
-		do {
-			if (HASBIT(e->player_avail, _local_player)) {
-				if (sel==0) selected_id = engine_id;
-				if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-					DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel==0 ? 0xC : 0x10);
-					DrawRoadVehEngine(x+29, y+6, engine_id, GetEnginePalette(engine_id, _local_player));
-					y += 14;
-				}
-				sel--;
-			}
-		} while (++engine_id, ++e,--num);
-
-		WP(w,buildtrain_d).sel_engine = selected_id;
-		if (selected_id != INVALID_ENGINE) {
-			DrawRoadVehPurchaseInfo(2, w->widget[4].top + 1, selected_id);
+	y = 15;
+	sel = WP(w,buildtrain_d).sel_index;
+	pos = w->vscroll.pos;
+	selected_id = INVALID_ENGINE;
+	for (e = ROAD_ENGINES_INDEX; e < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; e++) {
+		if (!HASBIT(GetEngine(e)->player_avail, _local_player)) continue;
+		if (sel == 0) selected_id = e;
+		if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
+			DrawString(60, y + 2, GetCustomEngineName(e), sel == 0 ? 0xC : 0x10);
+			DrawRoadVehEngine(30, y + 6, e, GetEnginePalette(e, _local_player));
+			y += 14;
 		}
+		sel--;
+	}
+
+	WP(w,buildtrain_d).sel_engine = selected_id;
+	if (selected_id != INVALID_ENGINE) {
+		DrawRoadVehPurchaseInfo(2, w->widget[4].top + 1, selected_id);
 	}
 }
 
