@@ -551,7 +551,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Seleccio
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Limpar programa actual (somente Personaliz. 1 ou Personaliz. 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Gravar configuração de música
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Clique na faixa de música para a adicionar ao programa actual (somente Personaliz. 1 ou Personaliz. 2)
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Clique na música para a remover da lista actual (Apenas para Custom1 ou Custom2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Faça clique numa faixa para a remover da lista (Personaliz. 1 ou Personaliz. 2 apenas)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Ligar/Desligar programa aleatório
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Mostrar janela de selecção de faixas de música
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Clique num serviço para centrar a visualização numa indústria/cidade
@@ -604,6 +604,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Diminuir
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Gerar terreno aleatório
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Repor terreno
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Repor Terreno
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usar mapa de alturas
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usar mapa de alturas
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Tem a certeza que deseja repor o terreno?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}A gerar terreno
 STR_022F_TOWN_GENERATION                                        :{BLACK}A gerar cidades
@@ -716,6 +718,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Guardar 
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Abrir Cenário
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Guardar Cenário
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Jogar Cenário
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Jogar mapa de alturas
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Iniciar novo jogo, usando um mapa de alturas como paisagem
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Tem a certeza que deseja abandonar este cenário ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sair do Editor
@@ -1001,13 +1004,13 @@ STR_CONFIG_PATCHES_OFF                                          :Desligado
 STR_CONFIG_PATCHES_ON                                           :Ligado
 STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Mostrar velocidade do veículo na barra de estado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Permitir a construção em declives e encostas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permitir dimensionamento mais realista das áreas de abrangência: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir a remoção de mais estradas, pontes, etc. das cidades: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Dimensionamento mais realista de áreas de abrangência: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permitir remoção de mais estradas, pontes, etc: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permitir a construção de comboios muito longos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Activar aceleração realista para comboios: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir comboios e barcos de virar angulos de 90 graus: {ORANGE}{STRING} {LTBLUE} (requires NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir comboios e barcos de virar a 90 graus: {ORANGE}{STRING} {LTBLUE} (req. NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Juntar estações ferroviárias construídas pegadas: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Deixar a estação quando uma das cargas estiver completa: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Deixar estação quando uma das cargas esteja completa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflação: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Entregar carga a uma estação só quando houver procura: {ORANGE}{STRING}
@@ -1043,16 +1046,21 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duração
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra população da cidade na janela da cidade: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árvores invisíveis (com edifícios transparentes): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Gerador de terra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distância máxima dos limites do mapa para Refinarias {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da linha de neve: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rudeza do terreno (apenas TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muito suave
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Acidentado
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito acidentado
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritmo de colocação de árvores: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nenhum
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Melhorado
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotação mapa de alt.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido anti-horário
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horário
 STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Intervalo actualização progresso: {ORANGE}{STRING} ms
@@ -1060,7 +1068,7 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Altura 
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar barra de ferramentas de paisagem às barras de ferramentas de carris/estradas/vias aquáticas/aeroportos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
@@ -1084,7 +1092,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de serviço predefinido para aeronaves: {ORANGE}desactivado
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}{STRING} dias
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}desactivado
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactivar manutenção quando as avarias estão em nenhuma: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Não fazer manutenção se avarias desactivadas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activar limites de velocidade para vagões: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Noticias a cores aparecem em: {ORANGE}{STRING}
@@ -1115,7 +1123,7 @@ STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Alterar 
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguns ou todos os intervalo(s) de serviço predefinidos abaixo são incompatíveis com o valor escolhido! São válidos 5-90% e 30-800 dias
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Usar YAPF para navios: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Usar YAPF para veículos de estrada: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usar YAPF para combóios: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usar YAPF para comboios: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :Terreno temperado
 STR_SUB_ARCTIC_LANDSCAPE                                        :terreno subárctico
@@ -1280,7 +1288,7 @@ STR_NETWORK_TILESET                                             :{SILVER}Conjunt
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamanho do Mapa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versão do servidor:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Endereço do servidor:  {WHITE}{STRING} : {NUM}
-STR_NETWORK_START_DATE                                          :{SILVER}Data de inicio:  {WHITE}{DATE_SHORT}
+STR_NETWORK_START_DATE                                          :{SILVER}Data de início:  {WHITE}{DATE_SHORT}
 STR_NETWORK_CURRENT_DATE                                        :{SILVER}Data actual:  {WHITE}{DATE_SHORT}
 STR_NETWORK_PASSWORD                                            :{SILVER}Protegido por password!
 STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVIDOR DESLIGADO
@@ -1853,8 +1861,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Produção de {INDUSTRY} reduzida em 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Praga de insectos em {INDUSTRY}!{}Produção diminui 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só pode ser colocado perto das bordas do mapa
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produção em {INDUSTRY} aumenta {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produção em {INDUSTRY} diminui {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}Produção de {STRING} em {INDUSTRY} aumenta {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}Produção de {STRING} em {INDUSTRY} diminui {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Há um comboio no túnel
@@ -2465,16 +2473,16 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Comboio 
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Os comboios só podem ser alterados quando parados num depósito
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Comboios
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novos Veículos Ferroviários
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Novos combóios para carris electrificados
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Novos comboios para carris electrificados
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Veículos Monocarril
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Veículos Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Veículo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar Veículo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esta acção criará uma cópia do veículo. Pressione Ctrl enquanto clica, para partilhar as ordens
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Esta acção criará uma cópia de um veículo. Clique neste botão e, de seguida, num veículo que se encontre dentro ou fora do depósito. Pressione Ctrl enquanto clica para partilhar as ordens
-STR_CLONE_TRAIN                                                 :{BLACK}Clonar Combóio
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Esta acção criará uma cópia do combóio, incluindo as carruagens. Pressione Ctrl enquanto clica, para partilhar as ordens
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esta acção criará uma cópia de um combóio, incluindo as carruagens. Clique neste botão e, de seguida, num combóio que se encontre dentro ou fora do depósito. Pressione Ctrl enquanto clica para partilhar as ordens
+STR_CLONE_TRAIN                                                 :{BLACK}Clonar Comboio
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Esta acção criará uma cópia do comboio, incluindo as carruagens. Pressione Ctrl enquanto clica, para partilhar as ordens
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Esta acção criará uma cópia de um comboio, incluindo as carruagens. Clique neste botão e, de seguida, num comboio que se encontre dentro ou fora do depósito. Pressione Ctrl enquanto clica para partilhar as ordens
 STR_8820_RENAME                                                 :{BLACK}Renomear
 STR_8823_SKIP                                                   :{BLACK}Saltar
 STR_8824_DELETE                                                 :{BLACK}Eliminar
@@ -2616,7 +2624,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Acidente de Veículo de Estrada!{}Condutor morre na explosão após a colisão com um comboio
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Acidente de Veículo de Estrada!{}{COMMA} morrem na explosão após a colisão com um comboio
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Não é possível fazer o veículo dar a volta...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Não é possível virar combóios compostos por unidades múltiplas
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Não é possível virar comboios compostos por unidades múltiplas
 STR_9034_RENAME                                                 :{BLACK}Renomear
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Renomear tipo de veículo de estrada
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Renomear tipo de veículo de estrada
@@ -2855,6 +2863,7 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens partilhadas de {COMMA} veículo{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos que seguem o mesmo trajecto
 
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Substituição de Veículos
@@ -2869,7 +2878,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleccio
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Exibe o tipo de motor que substituirá o que está seleccionado à esquerda, se algum
 STR_REPLACE_HELP                                                :{BLACK}Permite a substiuição de um tipo de motor por outro, quando comboios do tipo original entram num depósito
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Remover vagões: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do combóio, removendo vagões (do início), nas situações em que a substituição da locomotiva resultar num combóio maior.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Forçar a substituição automática a manter o comprimento do comboio, removendo vagões (do início), nas situações em que a substituição da locomotiva resultar num comboio maior.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Trocando: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FUNCIONALIDADE EXPERIMENTAL{}Alternar entre a janela de substituição de locomotivas e a janela de substituição de vagões.{}A substituição de vagões só ocorrerá se o novo vagão puder ser reconvertido para o mesmo tipo de carga que o vagão antigo. Esta verificação ocorre para cada vagão, durante a substituição.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomotiva não construível
@@ -2912,7 +2921,9 @@ STR_RANDOM_HELP                                                 :{BLACK}Mudar a 
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Geração do mundo
 STR_RANDOM_SEED                                                 :{BLACK}Semente aleatória:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Clique para inserir uma semente aleatória
+STR_LAND_GENERATOR                                              :{BLACK}Criação do terreno:
 STR_TREE_PLACER                                                 :{BLACK}Colocação árvores:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotação do mapa de alt.:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nível do mar:
 STR_SMOOTHNESS                                                  :{BLACK}Suavidade:
@@ -2928,6 +2939,7 @@ STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mudar an
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Aviso de redimensionamento
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Nome do mapa de alt.:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}A gerar mundo...
 STR_GENERATION_ABORT                                            :{BLACK}Cancelar

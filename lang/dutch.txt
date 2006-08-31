@@ -2863,6 +2863,11 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Geef all
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gedeelde orders van {COMMA} voertuig{P "" en}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon alle voertuigen met de zelfde orders
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Stuur naar Depots
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Stuur alle voertuigen in de lijst naar depots.{}CTRL + klik  voor alleen onderhoud (ipv stoppen)
+STR_SEND_TO_HANGARS                                             :{BLACK}Stuur naar Hangars
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Stuur alle voertuigen in de lijst naar hangars.{}CTRL + klik  voor alleen onderhoud (ipv stoppen)
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Vervang voertuigen
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start het Vervangen

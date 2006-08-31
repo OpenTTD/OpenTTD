@@ -2864,6 +2864,11 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zeige al
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gemeinsamer Fahrplan von {COMMA} Fahrzeug{P "" en}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zeige alle Fahrzeuge mit demselben Fahrplan
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Ins Depot schicken
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Schickt alle Fahrzeuge in der Liste ins Depot.{}Strg+Klick schickt alle Züge zur Wartung ins Depot (ohne dort zu enden)
+STR_SEND_TO_HANGARS                                             :{BLACK}In den Hangar schicken
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Schickt alle Flugzeuge in der Liste in den Hangar.{}Strg+Klick schickt alle Flugzeuge zur Wartung in den Hangar (ohne dort zu enden)
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Ersetze Fahrzeuge
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ersetze {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung aktivieren

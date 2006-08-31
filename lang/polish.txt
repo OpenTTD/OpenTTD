@@ -2992,6 +2992,11 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Pokazuje
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Wspoldzielone polecenia {COMMA} pojazd{P u ow ow}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaz wszystkie pojazdy z takim samym rozkladem
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Wyslij do zajezdni
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Wyslij wszystkie pojazdy z listy do zajezdni.{}Ctrl-klik wysle je na tylko do serwisu (zamiast zatrzymywania sie)
+STR_SEND_TO_HANGARS                                             :{BLACK}Wyslij do hangarow
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Wyslij wszystkie samoloty z listy do hangarow.{}Ctrl-klik wysle je na tylko do serwisu (zamiast zatrzymywania sie)
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Zastap pojazdy
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastap {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpocznij zastepowanie
