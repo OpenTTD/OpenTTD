@@ -1758,30 +1758,22 @@ static void TileLoop_Track(TileIndex tile)
 {
 	RailGroundType old_ground = GetRailGroundType(tile);
 	RailGroundType new_ground = old_ground;
-	bool quick_return = false;
 
 	switch (_opt.landscape) {
 		case LT_HILLY:
 			if (GetTileZ(tile) > _opt.snow_line) {
 				new_ground = RAIL_GROUND_ICE_DESERT;
-				quick_return = true;
+				goto set_ground;
 			}
 			break;
 
 		case LT_DESERT:
 			if (GetTropicZone(tile) == TROPICZONE_DESERT) {
 				new_ground = RAIL_GROUND_ICE_DESERT;
-				quick_return = true;
+				goto set_ground;
 			}
 			break;
 	}
-
-	if (new_ground != old_ground) {
-		SetRailGroundType(tile, new_ground);
-		MarkTileDirtyByTile(tile);
-	}
-
-	if (quick_return) return;
 
 	if (!IsPlainRailTile(tile)) return;
 
@@ -1866,6 +1858,7 @@ static void TileLoop_Track(TileIndex tile)
 		}
 	}
 
+set_ground:
 	if (old_ground != new_ground) {
 		SetRailGroundType(tile, new_ground);
 		MarkTileDirtyByTile(tile);
