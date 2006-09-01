@@ -422,7 +422,8 @@ static void QZ_MouseMovedEvent(int x, int y)
 	}
 }
 
-void QZ_MouseButtonEvent(int button, BOOL down)
+
+static void QZ_MouseButtonEvent(int button, BOOL down)
 {
 	switch (button) {
 		case 0:
