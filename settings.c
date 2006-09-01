@@ -1430,13 +1430,14 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p1  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,  -100                   , -1000000, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p2  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,     5                   , -1000000, 1000000, 0, STR_NULL, NULL),
 	// penalties for too long or too short station platforms (TODO: NS flag or higher revision?)
-	SDT_CONDVAR (Patches, yapf.rail_longer_platform_penalty,           SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   8 * YAPF_TILE_LENGTH,        0,   20000, 0, STR_NULL, NULL),
-	SDT_CONDVAR (Patches, yapf.rail_longer_platform_per_tile_penalty,  SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   0 * YAPF_TILE_LENGTH,        0,   20000, 0, STR_NULL, NULL),
-	SDT_CONDVAR (Patches, yapf.rail_shorter_platform_penalty,          SLE_UINT, 28, SL_MAX_VERSION,NS, 0,  40 * YAPF_TILE_LENGTH,        0,   20000, 0, STR_NULL, NULL),
-	SDT_CONDVAR (Patches, yapf.rail_shorter_platform_per_tile_penalty, SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   0 * YAPF_TILE_LENGTH,        0,   20000, 0, STR_NULL, NULL),
+	SDT_VAR     (Patches, yapf.rail_longer_platform_penalty,           SLE_UINT,         NS, 0,     8 * YAPF_TILE_LENGTH,        0,   20000, 0, STR_NULL, NULL),
+	SDT_VAR     (Patches, yapf.rail_longer_platform_per_tile_penalty,  SLE_UINT,         NS, 0,     0 * YAPF_TILE_LENGTH,        0,   20000, 0, STR_NULL, NULL),
+	SDT_VAR     (Patches, yapf.rail_shorter_platform_penalty,          SLE_UINT,         NS, 0,    40 * YAPF_TILE_LENGTH,        0,   20000, 0, STR_NULL, NULL),
+	SDT_VAR     (Patches, yapf.rail_shorter_platform_per_tile_penalty, SLE_UINT,         NS, 0,     0 * YAPF_TILE_LENGTH,        0,   20000, 0, STR_NULL, NULL),
 	// road vehicles - penalties
-	SDT_CONDVAR (Patches, yapf.road_slope_penalty                    , SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   2 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
-	SDT_CONDVAR (Patches, yapf.road_crossing_penalty                 , SLE_UINT, 28, SL_MAX_VERSION,NS, 0,   3 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
+	SDT_VAR     (Patches, yapf.road_slope_penalty                    , SLE_UINT,         NS, 0,     2 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
+	SDT_VAR     (Patches, yapf.road_curve_penalty                    , SLE_UINT,         NS, 0,     1 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
+	SDT_VAR     (Patches, yapf.road_crossing_penalty                 , SLE_UINT,         NS, 0,     3 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
 
 	/***************************************************************************/
 	/* Terrain genation related patch options */
