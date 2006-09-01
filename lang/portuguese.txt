@@ -1058,7 +1058,7 @@ STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muito acidentad
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritmo de colocação de árvores: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Nenhum
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
-STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Melhorado
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Melhorada
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotação mapa de alt.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido anti-horário
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horário
@@ -2862,6 +2862,10 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens partilhadas de {COMMA} veículo{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos que seguem o mesmo trajecto
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar para depósitos
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Enviar todos os veículos da lista para depósitos.{}Control-click para irem apenas em serviço (em vez de paragem)
+STR_SEND_TO_HANGARS                                             :{BLACK}Enviar para hangares
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Enviar todas as aeronaves da lista para depósitos.{}Control-click para irem apenas em serviço (em vez de paragem)
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
@@ -2922,7 +2926,7 @@ STR_RANDOM_SEED                                                 :{BLACK}Semente 
 STR_RANDOM_SEED_HELP                                            :{BLACK}Clique para inserir uma semente aleatória
 STR_LAND_GENERATOR                                              :{BLACK}Criação do terreno:
 STR_TREE_PLACER                                                 :{BLACK}Colocação árvores:
-STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotação do mapa de alt.:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotação mapa alt.:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nível do mar:
 STR_SMOOTHNESS                                                  :{BLACK}Suavidade:
@@ -2938,7 +2942,7 @@ STR_START_DATE_QUERY_CAPT                                       :{WHITE}Mudar an
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Aviso de redimensionamento
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Redimensionar muito o mapa não é recomendado. Continuar com a criação?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
-STR_HEIGHTMAP_NAME                                              :{BLACK}Nome do mapa de alt.:
+STR_HEIGHTMAP_NAME                                              :{BLACK}Nome mapa de alt.:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamanho: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}A gerar mundo...
 STR_GENERATION_ABORT                                            :{BLACK}Cancelar

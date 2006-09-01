@@ -2964,6 +2964,11 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Kilistáz
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} jármû megosztott menetrendje
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Megmutatja az összes jármûvet, aminek ugyanaz a menetrendje
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Depóba küldés
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}A listán szereplô összes jármû depóba küldése. CTRL+kattintásra csak javításra küld.
+STR_SEND_TO_HANGARS                                             :{BLACK}Hangárba küldés
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}A listán szereplô összes repülô hangárba küldése. CTRL+kattintásra csak javításra küld.
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Jármûvek lecserélése
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Jármûcsere elkezdése
