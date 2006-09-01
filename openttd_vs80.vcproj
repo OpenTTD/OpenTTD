@@ -996,6 +996,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\network_gui.h"
+				>
+			</File>
+			<File
 				RelativePath=".\network_server.h"
 				>
 			</File>
