@@ -524,7 +524,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 					ScrollMainWindowTo(v->x_pos, v->y_pos);
 					break;
 				case 7: /* goto hangar */
-					DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT));
+					DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, NULL, CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT));
 					break;
 				case 8: /* refit */
 					ShowShipRefitWindow(v);
@@ -926,7 +926,7 @@ static const Widget _player_ships_widgets[] = {
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,                  STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x401,                STR_9823_SHIPS_CLICK_ON_SHIP_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_9804_NEW_SHIPS,   STR_9824_BUILD_NEW_SHIPS_REQUIRES},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_SEND_TO_DEPOTS,   STR_SEND_TO_DEPOTS_TIP},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   247,   170,   181, STR_REPLACE_VEHICLES, STR_REPLACE_HELP},
 {      WWT_PANEL,    RESIZE_RTB,    14,   248,   247,   170,   181, 0x0,                  STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   170,   181, 0x0,                  STR_RESIZE_BUTTON},

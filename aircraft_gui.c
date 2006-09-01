@@ -596,7 +596,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			ScrollMainWindowTo(v->x_pos, v->y_pos);
 			break;
 		case 7: /* goto hangar */
-			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_A012_CAN_T_SEND_AIRCRAFT_TO));
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_A012_CAN_T_SEND_AIRCRAFT_TO));
 			break;
 		case 8: /* refit */
 			ShowAircraftRefitWindow(v);
@@ -985,7 +985,7 @@ static const Widget _player_aircraft_widgets[] = {
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,                   STR_NULL },
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x401,                 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT },
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                   STR_0190_SCROLL_BAR_SCROLLS_LIST },
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_A003_NEW_AIRCRAFT, STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES },
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_SEND_TO_HANGARS,   STR_SEND_TO_HANGARS_TIP },
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   247,   170,   181, STR_REPLACE_VEHICLES,  STR_REPLACE_HELP },
 {      WWT_PANEL,    RESIZE_RTB,    14,   248,   247,   170,   181, 0x0,                   STR_NULL },
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   170,   181, 0x0,                   STR_RESIZE_BUTTON },

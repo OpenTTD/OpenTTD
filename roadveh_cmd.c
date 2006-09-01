@@ -358,33 +358,32 @@ static const Depot* FindClosestRoadDepot(const Vehicle* v)
  * @param tile unused
  * @param p1 vehicle ID to send to the depot
  * @param p2 various bitmasked elements
- * - p2 bit 0 - if bit 0 is set, then the road vehicle will only service at the depot. 0 Makes it stop inside
- * - p2 bit 1 - send all of shared orders to depot
+ * - p2 bit 0-3 - DEPOT_ flags (see vehicle.h)
+ * - p2 bit 8-10 - VLW flag (for mass goto depot)
  */
 int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v;
 	const Depot *dep;
-	const int32 return_value = HASBIT(p2, 1) ? 0 : CMD_ERROR;
 
-	if (HASBIT(p2, 1) && (p2 & VLW_FLAGS) == VLW_STANDARD) {
-		return SendAllVehiclesToDepot(VEH_Road, flags, HASBIT(p2, 0), _current_player);
+	if (p2 & DEPOT_MASS_SEND) {
+		/* Mass goto depot requested */
+		if (!ValidVLWFlags(p2 & VLW_FLAGS)) return CMD_ERROR;
+		return SendAllVehiclesToDepot(VEH_Road, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_FLAGS), p1);
 	}
 
-	if (!IsValidVehicleID(p1)) return return_value;
+	if (!IsValidVehicleID(p1)) return CMD_ERROR;
 
 	v = GetVehicle(p1);
 
-	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return return_value;
+	if (v->type != VEH_Road || !CheckOwnership(v->owner)) return CMD_ERROR;
 
-	if (HASBIT(p2, 1) && v->next_shared != NULL) CmdSendRoadVehToDepot(tile, flags, v->next_shared->index, p2);
-
-	if (v->vehstatus & VS_CRASHED) return return_value;
+	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
 	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
+		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
 		if (flags & DC_EXEC) {
-			if (HASBIT(p2, 1)) return 0;	// Mass ordering goto depot should not turn goto depot orders off
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
 			 * then skip to the next order; effectively cancelling this forced service */
 			if (HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS))
@@ -398,16 +397,13 @@ int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	}
 
 	dep = FindClosestRoadDepot(v);
-	if (dep == NULL) {
-		if (HASBIT(p2, 1)) return 0;	// Mass ordering goto depot should not return error
-		return_cmd_error(STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT);
-	}
+	if (dep == NULL) return_cmd_error(STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT);
 
 	if (flags & DC_EXEC) {
 		ClearSlot(v);
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP;
-		if (!HASBIT(p2,0)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
+		if (!(p2 & DEPOT_SERVICE)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 		v->current_order.dest.depot = dep->index;
 		v->dest_tile = dep->xy;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);

@@ -315,7 +315,16 @@ int CheckTrainStoppedInDepot(const Vehicle *v);
 bool VehicleNeedsService(const Vehicle *v);
 
 uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type);
-int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner);
+int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
+
+/* Flags to add to p2 for goto depot commands */
+/* Note: bits 8-10 are used for VLW flags */
+enum {
+	DEPOT_SERVICE       = (1 << 0),	// The vehicle will leave the depot right after arrival (serivce only)
+	DEPOT_MASS_SEND     = (1 << 1), // Tells that it's a mass send to depot command (type in VLW flag)
+	DEPOT_DONT_CANCEL   = (1 << 2), // Don't cancel current goto depot command if any
+	DEPOT_LOCATE_HANGAR = (1 << 3), // Find another airport if the target one lacks a hangar
+};
 
 typedef struct GetNewVehiclePosResult {
 	int x,y;

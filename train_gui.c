@@ -1025,7 +1025,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			break;
 		case 7: /* goto depot */
 			/* TrainGotoDepot has a nice randomizer in the pathfinder, which causes desyncs... */
-			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_SEND_TRAIN_TO_DEPOT | CMD_NO_TEST_IF_IN_NETWORK | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT));
+			DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, NULL, CMD_SEND_TRAIN_TO_DEPOT | CMD_NO_TEST_IF_IN_NETWORK | CMD_MSG(STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT));
 			break;
 		case 8: /* force proceed */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_FORCE_TRAIN_PROCEED | CMD_MSG(STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL));
@@ -1383,7 +1383,7 @@ static const Widget _player_trains_widgets[] = {
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   324,    14,    25, 0x0,                   STR_NULL},
 {     WWT_MATRIX,     RESIZE_RB,    14,     0,   312,    26,   207, 0x701,                 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    14,   313,   324,    26,   207, 0x0,                   STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   156,   208,   219, STR_8815_NEW_VEHICLES, STR_883E_BUILD_NEW_TRAINS_REQUIRES},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   156,   208,   219, STR_SEND_TO_DEPOTS,    STR_SEND_TO_DEPOTS_TIP},
 { WWT_PUSHTXTBTN,     RESIZE_TB,    14,   157,   312,   208,   219, STR_REPLACE_VEHICLES,  STR_REPLACE_HELP},
 {      WWT_PANEL,    RESIZE_RTB,    14,   313,   312,   208,   219, 0x0,                   STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   313,   324,   208,   219, 0x0,                   STR_RESIZE_BUTTON},

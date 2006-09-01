@@ -1969,24 +1969,26 @@ uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owne
 * @param flags the flags used for DoCommand()
 * @param service should the vehicles only get service in the depots
 * @param owner PlayerID of owner of the vehicles to send
+* @param VLW_flag tells what kind of list requested the goto depot
 * @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
 */
-int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner)
+int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
 {
 	const Vehicle** sort_list;
 	uint n, i;
 
 	sort_list = malloc(GetVehicleArraySize() * sizeof(sort_list[0]));
 	if (sort_list == NULL) {
-		error("Could not allocate memory for the vehicle-sorting-list");
+		error("Could not allocate memory for the vehicle-goto-depot-list");
 	}
 
-	n = GenerateVehicleSortList(sort_list, type, owner, INVALID_STATION, INVALID_ORDER, VLW_STANDARD);
+	n = GenerateVehicleSortList(sort_list, type, owner, (vlw_flag == VLW_STATION_LIST) ? id : INVALID_STATION, (vlw_flag == VLW_SHARED_ORDERS) ? id : INVALID_ORDER, vlw_flag);
 
 	/* Send all the vehicles to a depot */
 	for (i = 0; i < n; i++) {
 		const Vehicle *v = sort_list[i];
-		if (!DoCommand(v->tile, v->index, service, flags, CMD_SEND_TO_DEPOT(type)) && !(flags & DC_EXEC)) {
+		if (!DoCommand(v->tile, v->index, service | DEPOT_DONT_CANCEL, flags, CMD_SEND_TO_DEPOT(type)) && !(flags & DC_EXEC)) {
+			/* At least one vehicle is valid to send the command to, so the mass goto depot is valid. No need to check the rest */
 			free((void*)sort_list);
 			return 0;
 		}

@@ -47,6 +47,11 @@ enum {
 	VLW_STATION_LIST  = 2 << 8,
 };
 
+static inline bool ValidVLWFlags(uint16 flags)
+{
+	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST);
+}
+
 void PlayerVehWndProc(Window *w, WindowEvent *e);
 
 void ShowReplaceVehicleWindow(byte vehicletype);

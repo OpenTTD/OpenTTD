@@ -1188,17 +1188,9 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					SetDParam(0, w->vscroll.count);
 					w->widget[1].unkA  = STR_VEH_WITH_SHARED_ORDERS_LIST;
 
-					if (owner != _local_player) break;	// only set up buttons for local player
+					if (owner != _local_player) break; // only set up buttons for local player
 					w->widget[10].unkA = STR_EMPTY;
 					SETBIT(w->disabled_state, 10);
-
-					if (vehicle_type == VEH_Aircraft) {
-						w->widget[9].unkA = STR_SEND_TO_HANGARS;
-						w->widget[9].tooltips = STR_SEND_TO_HANGARS_TIP;
-					} else {
-						w->widget[9].unkA = STR_SEND_TO_DEPOTS;
-						w->widget[9].tooltips = STR_SEND_TO_DEPOTS_TIP;
-					}
 					break;
 
 				case VLW_STANDARD:
@@ -1215,15 +1207,8 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 						default: NOT_REACHED(); break;
 					}
 
-					if (owner != _local_player) break;	// only set up buttons for local player
+					if (owner != _local_player) break; // only set up buttons for local player
 					if (vl->list_length == 0) SETBIT(w->disabled_state, 9);
-						if (vehicle_type == VEH_Aircraft) {
-							w->widget[9].unkA = STR_SEND_TO_HANGARS;
-							w->widget[9].tooltips = STR_SEND_TO_HANGARS_TIP;
-						} else {
-							w->widget[9].unkA = STR_SEND_TO_DEPOTS;
-							w->widget[9].tooltips = STR_SEND_TO_DEPOTS_TIP;
-						}
 					break;
 
 				case VLW_STATION_LIST:
@@ -1237,6 +1222,8 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 						case VEH_Aircraft: w->widget[1].unkA = STR_SCHEDULED_AIRCRAFT;      break;
 						default: NOT_REACHED(); break;
 					}
+					if (owner != _local_player) break; // only set up buttons for local player
+					if (vl->list_length == 0) SETBIT(w->disabled_state, 9);
 					break;
 
 				default: NOT_REACHED(); break;
@@ -1345,36 +1332,14 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					}
 				} break;
 
-				case 9: { /* Left button */
-					uint16 window_type = w->window_number & VLW_FLAGS;
+				case 9: // Left button
 					if (GB(w->window_number, 0, 8) /* OwnerID */ != _local_player) break;
-					switch (window_type) {
-						case VLW_STANDARD:
-						case VLW_SHARED_ORDERS: {
-							/* Send to depot */
-							const Vehicle *v;
-							assert(vl->list_length != 0);
-							v = vl->sort_list[0];
-							DoCommandP(v->tile, v->index, window_type | _ctrl_pressed ? 3 : 2, NULL, CMD_SEND_TO_DEPOT(vehicle_type));
-							break;
-						}
-
-						case VLW_STATION_LIST:
-							/* Build new Vehicle */
-							switch (vehicle_type) {
-								case VEH_Train:	   ShowBuildTrainWindow(0);    break;
-								case VEH_Road:     ShowBuildRoadVehWindow(0);  break;
-								case VEH_Ship:     ShowBuildShipWindow(0);     break;
-								case VEH_Aircraft: ShowBuildAircraftWindow(0); break;
-								default: NOT_REACHED(); break;
-							}
-							break;
-						default: NOT_REACHED(); break;
-					}
+					assert(vl->list_length != 0);
+					DoCommandP(0, GB(w->window_number, 16, 16) /* StationID or OrderID (depending on VLW). Nomatter which one it is, it's needed here */,
+						(w->window_number & VLW_FLAGS) | DEPOT_MASS_SEND | (_ctrl_pressed ? DEPOT_SERVICE : 0), NULL, CMD_SEND_TO_DEPOT(vehicle_type));
 					break;
-				}
 
-				case 10: /* Right button */
+				case 10: // Right button
 					ShowReplaceVehicleWindow(vehicle_type);
 					break;
 			}
