@@ -1217,18 +1217,20 @@ void InitializeLanguagePacks(void)
 	int n;
 	int m;
 	int def;
+	int def2;
 	int fallback;
 	LanguagePack hdr;
 	FILE *in;
 	char *files[32];
+	const char* lang;
 
-	char lang[] = "en";
-	const char *env = GetCurrentLocale("LC_MESSAGES");
+	lang = GetCurrentLocale("LC_MESSAGES");
+	if (lang == NULL) lang = "en_GB";
 
-	if (env != NULL) snprintf(lang, lengthof(lang), "%.2s", env);
 	n = GetLanguageList(files, lengthof(files));
 
 	def = -1;
+	def2 = -1;
 	fallback = 0;
 
 	// go through the language files and make sure that they are valid.
@@ -1249,12 +1251,13 @@ void InitializeLanguagePacks(void)
 		dl->ent[m].file = files[i];
 		dl->ent[m].name = strdup(hdr.name);
 
-		if (strcmp(hdr.name, "English") == 0) fallback = m;
-		if (strncmp(hdr.isocode, lang, 2) == 0) def = m;
+		if (strcmp(hdr.isocode, "en_GB")  == 0) fallback = m;
+		if (strncmp(hdr.isocode, lang, 2) == 0) def2 = m;
+		if (strncmp(hdr.isocode, lang, 5) == 0) def = m;
 
 		m++;
 	}
-	if (def == -1) def = fallback;
+	if (def == -1) def = (def2 != -1 ? def2 : fallback);
 
 	if (m == 0)
 		error(n == 0 ? "No available language packs" : "Invalid version of language packs");
