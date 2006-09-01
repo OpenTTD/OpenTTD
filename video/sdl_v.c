@@ -184,6 +184,7 @@ static bool CreateMainSurface(int w, int h)
 	if (icon != NULL) {
 		/* Get the colourkey, which will be magenta */
 		uint32 rgbmap = SDL_CALL SDL_MapRGB(icon->format, 255, 0, 255);
+
 		SDL_CALL SDL_SetColorKey(icon, SDL_SRCCOLORKEY, rgbmap);
 		SDL_CALL SDL_WM_SetIcon(icon, NULL);
 		SDL_CALL SDL_FreeSurface(icon);
@@ -263,6 +264,7 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 {
 	const VkMapping *map;
 	uint key = 0;
+
 	for (map = _vk_mapping; map != endof(_vk_mapping); ++map) {
 		if ((uint)(sym->sym - map->vk_from) <= map->vk_count) {
 			key = sym->sym - map->vk_from + map->map_to;
@@ -290,13 +292,15 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 #endif
 
 	// META are the command keys on mac
-	if (sym->mod & KMOD_META) key |= WKC_META;
+	if (sym->mod & KMOD_META)  key |= WKC_META;
 	if (sym->mod & KMOD_SHIFT) key |= WKC_SHIFT;
-	if (sym->mod & KMOD_CTRL) key |= WKC_CTRL;
-	if (sym->mod & KMOD_ALT) key |= WKC_ALT;
+	if (sym->mod & KMOD_CTRL)  key |= WKC_CTRL;
+	if (sym->mod & KMOD_ALT)   key |= WKC_ALT;
 	// these two lines really help porting hotkey combos. Uncomment to use -- Bjarni
-	//printf("scancode character pressed %d\n", sym->scancode);
-	//printf("unicode character pressed %d\n", sym->unicode);
+#if 0
+	printf("scancode character pressed %d\n", sym->scancode);
+	printf("unicode character pressed %d\n", sym->unicode);
+#endif
 	return (key << 16) + sym->unicode;
 }
 
@@ -306,105 +310,103 @@ static int PollEvent(void)
 {
 	SDL_Event ev;
 
-	if (!SDL_CALL SDL_PollEvent(&ev))
-		return -2;
+	if (!SDL_CALL SDL_PollEvent(&ev)) return -2;
 
 	switch (ev.type) {
-	case SDL_MOUSEMOTION:
-		if (_cursor.fix_at) {
-			int dx = ev.motion.x - _cursor.pos.x;
-			int dy = ev.motion.y - _cursor.pos.y;
-			if (dx != 0 || dy != 0) {
-				_cursor.delta.x += dx;
-				_cursor.delta.y += dy;
-				SDL_CALL SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
-			}
-		} else {
-			_cursor.delta.x = ev.motion.x - _cursor.pos.x;
-			_cursor.delta.y = ev.motion.y - _cursor.pos.y;
-			_cursor.pos.x = ev.motion.x;
-			_cursor.pos.y = ev.motion.y;
-			_cursor.dirty = true;
-		}
-		break;
-
-	case SDL_MOUSEBUTTONDOWN:
-		if (_rightclick_emulate && (SDL_CALL SDL_GetModState() & (KMOD_LCTRL | KMOD_RCTRL)))
-			ev.button.button = SDL_BUTTON_RIGHT;
-
-		switch (ev.button.button) {
-			case SDL_BUTTON_LEFT:
-				_left_button_down = true;
-				break;
-			case SDL_BUTTON_RIGHT:
-				_right_button_down = true;
-				_right_button_clicked = true;
-				break;
-			case SDL_BUTTON_WHEELUP:
-				_cursor.wheel--;
-				break;
-			case SDL_BUTTON_WHEELDOWN:
-				_cursor.wheel++;
-				break;
-			default:
-				break;
-		}
-		break;
-
-	case SDL_MOUSEBUTTONUP:
-		if (_rightclick_emulate) {
-			_right_button_down = false;
-			_left_button_down = false;
-			_left_button_clicked = false;
-		} else if (ev.button.button == SDL_BUTTON_LEFT) {
-			_left_button_down = false;
-			_left_button_clicked = false;
-		} else if (ev.button.button == SDL_BUTTON_RIGHT) {
-			_right_button_down = false;
-		}
-		break;
-
-	case SDL_ACTIVEEVENT:
-		if (!(ev.active.state & SDL_APPMOUSEFOCUS)) break;
-
-		if (ev.active.gain) { // mouse entered the window, enable cursor
-			_cursor.in_window = true;
-		} else {
-			UndrawMouseCursor(); // mouse left the window, undraw cursor
-			_cursor.in_window = false;
-		}
-		break;
-
-	case SDL_QUIT:
-		// do not ask to quit on the main screen
-		if (_game_mode != GM_MENU) {
-			if (_patches.autosave_on_exit) {
-				DoExitSave();
-				return 0;
+		case SDL_MOUSEMOTION:
+			if (_cursor.fix_at) {
+				int dx = ev.motion.x - _cursor.pos.x;
+				int dy = ev.motion.y - _cursor.pos.y;
+				if (dx != 0 || dy != 0) {
+					_cursor.delta.x += dx;
+					_cursor.delta.y += dy;
+					SDL_CALL SDL_WarpMouse(_cursor.pos.x, _cursor.pos.y);
+				}
 			} else {
-				AskExitGame();
+				_cursor.delta.x = ev.motion.x - _cursor.pos.x;
+				_cursor.delta.y = ev.motion.y - _cursor.pos.y;
+				_cursor.pos.x = ev.motion.x;
+				_cursor.pos.y = ev.motion.y;
+				_cursor.dirty = true;
 			}
-		} else {
-			return 0;
+			break;
+
+		case SDL_MOUSEBUTTONDOWN:
+			if (_rightclick_emulate && (SDL_CALL SDL_GetModState() & (KMOD_LCTRL | KMOD_RCTRL))) {
+				ev.button.button = SDL_BUTTON_RIGHT;
+			}
+
+			switch (ev.button.button) {
+				case SDL_BUTTON_LEFT:
+					_left_button_down = true;
+					break;
+
+				case SDL_BUTTON_RIGHT:
+					_right_button_down = true;
+					_right_button_clicked = true;
+					break;
+
+				case SDL_BUTTON_WHEELUP:   _cursor.wheel--; break;
+				case SDL_BUTTON_WHEELDOWN: _cursor.wheel++; break;
+
+				default: break;
+			}
+			break;
+
+		case SDL_MOUSEBUTTONUP:
+			if (_rightclick_emulate) {
+				_right_button_down = false;
+				_left_button_down = false;
+				_left_button_clicked = false;
+			} else if (ev.button.button == SDL_BUTTON_LEFT) {
+				_left_button_down = false;
+				_left_button_clicked = false;
+			} else if (ev.button.button == SDL_BUTTON_RIGHT) {
+				_right_button_down = false;
+			}
+			break;
+
+		case SDL_ACTIVEEVENT:
+			if (!(ev.active.state & SDL_APPMOUSEFOCUS)) break;
+
+			if (ev.active.gain) { // mouse entered the window, enable cursor
+				_cursor.in_window = true;
+			} else {
+				UndrawMouseCursor(); // mouse left the window, undraw cursor
+				_cursor.in_window = false;
+			}
+			break;
+
+		case SDL_QUIT:
+			// do not ask to quit on the main screen
+			if (_game_mode != GM_MENU) {
+				if (_patches.autosave_on_exit) {
+					DoExitSave();
+					return 0;
+				} else {
+					AskExitGame();
+				}
+			} else {
+				return 0;
+			}
+			break;
+
+			case SDL_KEYDOWN: /* Toggle full-screen on ALT + ENTER/F */
+			if ((ev.key.keysym.mod & (KMOD_ALT | KMOD_META)) &&
+					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
+				ToggleFullScreen(!_fullscreen);
+			} else {
+				_pressed_key = ConvertSdlKeyIntoMy(&ev.key.keysym);
+			}
+
+			break;
+
+		case SDL_VIDEORESIZE: {
+			int w = clamp(ev.resize.w, 64, MAX_SCREEN_WIDTH);
+			int h = clamp(ev.resize.h, 64, MAX_SCREEN_HEIGHT);
+			ChangeResInGame(w, h);
+			break;
 		}
-		break;
-
-		case SDL_KEYDOWN: /* Toggle full-screen on ALT + ENTER/F */
-		if ((ev.key.keysym.mod & (KMOD_ALT | KMOD_META)) &&
-				(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
-			ToggleFullScreen(!_fullscreen);
-		} else {
-			_pressed_key = ConvertSdlKeyIntoMy(&ev.key.keysym);
-		}
-
-		break;
-
-	case SDL_VIDEORESIZE: {
-		int w = clamp(ev.resize.w, 64, MAX_SCREEN_WIDTH);
-		int h = clamp(ev.resize.h, 64, MAX_SCREEN_HEIGHT);
-		ChangeResInGame(w, h);
-		break;
-	}
 	}
 	return -1;
 }
@@ -511,8 +513,10 @@ static void SdlVideoFullScreen(bool full_screen)
 {
 	_fullscreen = full_screen;
 	GetVideoModes(); // get the list of available video modes
-	if (!_video_driver->change_resolution(_cur_resolution[0], _cur_resolution[1]))
-		_fullscreen ^= true; // switching resolution failed, put back full_screen to original status
+	if (!_video_driver->change_resolution(_cur_resolution[0], _cur_resolution[1])) {
+		// switching resolution failed, put back full_screen to original status
+		_fullscreen ^= true;
+	}
 }
 
 const HalVideoDriver _sdl_video_driver = {
