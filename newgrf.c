@@ -1090,10 +1090,11 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 
 		case 0x0A: // Currency display names
 			FOR_EACH_OBJECT {
+				uint curidx = gvid + i;
 				StringID newone = GetGRFStringID(_cur_grffile->grfid,grf_load_word(&buf));
 
-				if (newone != STR_UNDEFINED) {
-					_currency_specs[gvid + i].name = newone;
+				if ((newone != STR_UNDEFINED) && (curidx < NUM_CURRENCY)) {
+					_currency_specs[curidx].name = newone;
 				}
 			}
 			break;
@@ -1153,7 +1154,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 			}
 			break;
 
-		case 0x0F: //  Euro introduction datess
+		case 0x0F: //  Euro introduction dates
 			FOR_EACH_OBJECT {
 				uint curidx = gvid +i;
 				Year year_euro = grf_load_word(&buf);
@@ -1900,11 +1901,6 @@ static void FeatureNewName(byte *buf, int len)
 					break;
 				}
 
-				case 0x48 : {  // this will allow things like currencies new strings, and everything else
-					AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, id);
-					break;
-				}
-
 				default:
 					switch (GB(id, 8, 8)) {
 						case 0xC4: /* Station class name */
@@ -1922,6 +1918,12 @@ static void FeatureNewName(byte *buf, int len)
 							} else {
 								_cur_grffile->stations[GB(id, 0, 8)]->name = AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 							}
+							break;
+
+						case 0xC9:
+						case 0xD0:
+						case 0xDC:
+							AddGRFString(_cur_grffile->grfid, id, lang, new_scheme, name, STR_UNDEFINED);
 							break;
 
 						default:
