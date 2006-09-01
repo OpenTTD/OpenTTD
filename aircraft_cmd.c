@@ -512,6 +512,17 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (v->type != VEH_Aircraft || !CheckOwnership(v->owner)) return CMD_ERROR;
 
 	if (v->current_order.type == OT_GOTO_DEPOT && !(p2 & DEPOT_LOCATE_HANGAR)) {
+		if ((p2 & DEPOT_SERVICE) == (bool)HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+			/* We called with a different DEPOT_SERVICE setting.
+			 * Now we change the setting to apply the new one and let the vehicle head for the same hangar.
+			 * Note: the if is (true for requesting service == true for ordered to stop in hangar)          */
+			if (flags & DC_EXEC) {
+				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			}
+			return 0;
+		}
+
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of hangar orders
 		if (flags & DC_EXEC) {
 			if (v->current_order.flags & OF_UNLOAD) v->cur_order_index++;

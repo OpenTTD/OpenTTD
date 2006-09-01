@@ -382,6 +382,17 @@ int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
+		if ((p2 & DEPOT_SERVICE) == (bool)HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+			/* We called with a different DEPOT_SERVICE setting.
+			* Now we change the setting to apply the new one and let the vehicle head for the same depot.
+			* Note: the if is (true for requesting service == true for ordered to stop in depot)          */
+			if (flags & DC_EXEC) {
+				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
+				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
+			}
+			return 0;
+		}
+
 		if (p2 & DEPOT_DONT_CANCEL) return CMD_ERROR; // Requested no cancelation of depot orders
 		if (flags & DC_EXEC) {
 			/* If the orders to 'goto depot' are in the orders list (forced servicing),
