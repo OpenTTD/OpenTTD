@@ -332,7 +332,7 @@ static int PollEvent(void)
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
-			if (_rightclick_emulate && (SDL_CALL SDL_GetModState() & (KMOD_LCTRL | KMOD_RCTRL))) {
+			if (_rightclick_emulate && SDL_CALL SDL_GetModState() & KMOD_CTRL) {
 				ev.button.button = SDL_BUTTON_RIGHT;
 			}
 
@@ -473,8 +473,8 @@ static void SdlVideoMainLoop(void)
 		if (cur_ticks == next_tick) {
 			next_tick += 30;
 
-			_ctrl_pressed = !!(mod & (KMOD_LCTRL | KMOD_RCTRL));
-			_shift_pressed = !!(mod & (KMOD_LSHIFT | KMOD_RSHIFT));
+			_ctrl_pressed  = !!(mod & KMOD_CTRL);
+			_shift_pressed = !!(mod & KMOD_SHIFT);
 #ifdef _DEBUG
 			_dbg_screen_rect = !!(mod & KMOD_CAPS);
 #endif
