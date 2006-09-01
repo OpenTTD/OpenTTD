@@ -37,7 +37,6 @@ static const Widget _select_game_widgets[] = {
 };
 
 extern void HandleOnEditText(WindowEvent *e);
-extern void HandleOnEditTextCancel(void);
 
 static inline void SetNewLandscapeType(byte landscape)
 {
@@ -83,7 +82,6 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		break;
 
 		case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
-		case WE_ON_EDIT_TEXT_CANCEL: HandleOnEditTextCancel(); break;
 	}
 }
 

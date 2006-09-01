@@ -13,6 +13,7 @@
 #include "functions.h"
 #include "network_client.h"
 #include "network_gamelist.h"
+#include "network_gui.h"
 #include "saveload.h"
 #include "command.h"
 #include "window.h"
@@ -423,18 +424,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEED_PASSWORD)
 {
-	NetworkPasswordType type;
-	type = NetworkRecv_uint8(MY_CLIENT, p);
+	NetworkPasswordType type = NetworkRecv_uint8(MY_CLIENT, p);
 
-	if (type == NETWORK_GAME_PASSWORD) {
-		ShowNetworkNeedGamePassword();
-		return NETWORK_RECV_STATUS_OKAY;
-	} else if (type == NETWORK_COMPANY_PASSWORD) {
-		ShowNetworkNeedCompanyPassword();
-		return NETWORK_RECV_STATUS_OKAY;
+	switch (type) {
+		case NETWORK_GAME_PASSWORD:
+		case NETWORK_COMPANY_PASSWORD:
+			ShowNetworkNeedPassword(type);
+			return NETWORK_RECV_STATUS_OKAY;
+
+		default: return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 	}
-
-	return NETWORK_RECV_STATUS_MALFORMED_PACKET;
 }
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_WELCOME)

@@ -1395,6 +1395,24 @@ void ShowClientList(void)
 	AllocateWindowDescFront(&_client_list_desc, 0);
 }
 
+
+static NetworkPasswordType pw_type;
+
+
+void ShowNetworkNeedPassword(NetworkPasswordType npt)
+{
+	StringID caption;
+
+	pw_type = npt;
+	switch (npt) {
+		default: NOT_REACHED();
+		case NETWORK_GAME_PASSWORD:    caption = STR_NETWORK_NEED_GAME_PASSWORD_CAPTION;
+		case NETWORK_COMPANY_PASSWORD: caption = STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION;
+	}
+	ShowQueryString(STR_EMPTY, caption, 20, 180, WC_NETWORK_STATUS_WINDOW, 0, CS_ALPHANUMERAL);
+}
+
+
 static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -1438,6 +1456,14 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
+		case WE_ON_EDIT_TEXT_CANCEL:
+			NetworkDisconnect();
+			ShowNetworkGameWindow();
+			break;
+
+		case WE_ON_EDIT_TEXT:
+			SEND_COMMAND(PACKET_CLIENT_PASSWORD)(pw_type, e->edittext.str);
+			break;
 	}
 }
 

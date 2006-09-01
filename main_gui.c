@@ -47,17 +47,6 @@ static RailType _last_built_railtype;
 extern void GenerateIndustries(void);
 extern bool GenerateTowns(void);
 
-void HandleOnEditTextCancel(void)
-{
-	switch (_rename_what) {
-#ifdef ENABLE_NETWORK
-	case 4:
-		NetworkDisconnect();
-		ShowNetworkGameWindow();
-		break;
-#endif /* ENABLE_NETWORK */
-	}
-}
 
 void HandleOnEditText(WindowEvent *e)
 {
@@ -97,9 +86,6 @@ void HandleOnEditText(WindowEvent *e)
 		}
 		break;
 	}
-	case 4: /* Game-Password and Company-Password */
-		SEND_COMMAND(PACKET_CLIENT_PASSWORD)(id, e->edittext.str);
-		break;
 #endif /* ENABLE_NETWORK */
 	}
 }
@@ -330,19 +316,6 @@ void ShowNetworkGiveMoneyWindow(byte player)
 	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, 1, 0, CS_NUMERAL);
 }
 
-void ShowNetworkNeedGamePassword(void)
-{
-	_rename_id = NETWORK_GAME_PASSWORD;
-	_rename_what = 4;
-	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_GAME_PASSWORD_CAPTION, 20, 180, WC_SELECT_GAME, 0, CS_ALPHANUMERAL);
-}
-
-void ShowNetworkNeedCompanyPassword(void)
-{
-	_rename_id = NETWORK_COMPANY_PASSWORD;
-	_rename_what = 4;
-	ShowQueryString(STR_EMPTY, STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION, 20, 180, WC_SELECT_GAME, 0, CS_ALPHANUMERAL);
-}
 
 #endif /* ENABLE_NETWORK */
 
