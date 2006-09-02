@@ -1862,7 +1862,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 
 	if ((left -= o->left) < 0) {
 		width += left;
-		if (width < 0) return false;
+		if (width <= 0) return false;
 		n->left = -left;
 		left = 0;
 	} else {
@@ -1871,13 +1871,13 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 
 	if (width > o->width - left) {
 		width = o->width - left;
-		if (width < 0) return false;
+		if (width <= 0) return false;
 	}
 	n->width = width;
 
 	if ((top -= o->top) < 0) {
 		height += top;
-		if (height < 0) return false;
+		if (height <= 0) return false;
 		n->top = -top;
 		top = 0;
 	} else {
@@ -1888,7 +1888,7 @@ bool FillDrawPixelInfo(DrawPixelInfo *n, int left, int top, int width, int heigh
 
 	if (height > o->height - top) {
 		height = o->height - top;
-		if (height < 0) return false;
+		if (height <= 0) return false;
 	}
 	n->height = height;
 
