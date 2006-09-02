@@ -603,7 +603,7 @@ Window *AllocateWindow(
 							const Widget *widget);
 
 Window *AllocateWindowDesc(const WindowDesc *desc);
-Window *AllocateWindowDescFront(const WindowDesc *desc, int value);
+Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number);
 
 void DrawWindowViewport(Window *w);
 

@@ -402,22 +402,15 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 	}
 }
 
-/** Open a new window. If there is no space for a new window, close an open
- * window. Try to avoid stickied windows, but if there is no else, close one of
- * those as well. Then make sure all created windows are below some always-on-top
- * ones. Finally set all variables and call the WE_CREATE event
- * @param x offset in pixels from the left of the screen
- * @param y offset in pixels from the top of the screen
- * @param width width in pixels of the window
- * @param height height in pixels of the window
- * @param *proc @see WindowProc function to call when any messages/updates happen to the window
- * @param cls @see WindowClass class of the window, used for identification and grouping
- * @param *widget @see Widget pointer to the window layout and various elements
- * @return @see Window pointer of the newly created window
+/* Open a new window.
+ * This function is called from AllocateWindow() or AllocateWindowDesc()
+ * See descriptions for those functions for usage
+ * See AllocateWindow() for description of arguments.
+ * Only addition here is window_number, which is the window_number being assigned to the new window
  */
-Window *AllocateWindow(
+static Window *LocalAllocateWindow(
 							int x, int y, int width, int height,
-							WindowProc *proc, WindowClass cls, const Widget *widget)
+							WindowProc *proc, WindowClass cls, const Widget *widget, int window_number)
 {
 	Window *w = _last_window; // last window keeps track of the highest open window
 
@@ -477,6 +470,7 @@ Window *AllocateWindow(
 	w->resize.height = height;
 	w->resize.step_width = 1;
 	w->resize.step_height = 1;
+	w->window_number = window_number;
 
 	_last_window++;
 
@@ -487,6 +481,26 @@ Window *AllocateWindow(
 	return w;
 }
 
+/**
+ * Open a new window. If there is no space for a new window, close an open
+ * window. Try to avoid stickied windows, but if there is no else, close one of
+ * those as well. Then make sure all created windows are below some always-on-top
+ * ones. Finally set all variables and call the WE_CREATE event
+ * @param x offset in pixels from the left of the screen
+ * @param y offset in pixels from the top of the screen
+ * @param width width in pixels of the window
+ * @param height height in pixels of the window
+ * @param *proc @see WindowProc function to call when any messages/updates happen to the window
+ * @param cls @see WindowClass class of the window, used for identification and grouping
+ * @param *widget @see Widget pointer to the window layout and various elements
+ * @return @see Window pointer of the newly created window
+ */
+Window *AllocateWindow(
+							int x, int y, int width, int height,
+							WindowProc *proc, WindowClass cls, const Widget *widget)
+{
+	return LocalAllocateWindow(x, y, width, height, proc, cls, widget, 0);
+}
 
 typedef struct SizeRect {
 	int left,top,width,height;
@@ -608,18 +622,7 @@ ok_pos:;
 	return pt;
 }
 
-
-Window *AllocateWindowDescFront(const WindowDesc *desc, int value)
-{
-	Window *w;
-
-	if (BringWindowToFrontById(desc->cls, value)) return NULL;
-	w = AllocateWindowDesc(desc);
-	w->window_number = value;
-	return w;
-}
-
-Window *AllocateWindowDesc(const WindowDesc *desc)
+static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number)
 {
 	Point pt;
 	Window *w;
@@ -655,8 +658,33 @@ Window *AllocateWindowDesc(const WindowDesc *desc)
 		}
 	}
 
-	w = AllocateWindow(pt.x, pt.y, desc->width, desc->height, desc->proc, desc->cls, desc->widgets);
+	w = LocalAllocateWindow(pt.x, pt.y, desc->width, desc->height, desc->proc, desc->cls, desc->widgets, window_number);
 	w->desc_flags = desc->flags;
+	return w;
+}
+
+/**
+ * Open a new window.
+ * @param *desc The pointer to the WindowDesc to be created
+ * @return @see Window pointer of the newly created window
+ */
+Window *AllocateWindowDesc(const WindowDesc *desc)
+{
+	return LocalAllocateWindowDesc(desc, 0);
+}
+
+/**
+ * Open a new window.
+ * @param *desc The pointer to the WindowDesc to be created
+ * @param window_number the window number of the new window
+ * @return @see Window pointer of the newly created window
+ */
+Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
+{
+	Window *w;
+
+	if (BringWindowToFrontById(desc->cls, window_number)) return NULL;
+	w = LocalAllocateWindowDesc(desc, window_number);
 	return w;
 }
 
