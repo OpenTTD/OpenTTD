@@ -190,7 +190,7 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 
 	// Check clipping first
 	{
-		DrawPixelInfo *dpi = _cur_dpi;
+		const DrawPixelInfo *dpi = _cur_dpi;
 		int t;
 
 		if (x < dpi->left && x2 < dpi->left) return;
@@ -560,7 +560,7 @@ int GetStringWidth(const char *str)
 
 int DoDrawString(const char *string, int x, int y, uint16 real_color)
 {
-	DrawPixelInfo *dpi = _cur_dpi;
+	const DrawPixelInfo *dpi = _cur_dpi;
 	FontSize size = _cur_fontsize;
 	byte c;
 	byte color;
@@ -753,6 +753,47 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 			break;
 
 		default:
+#if 0
+			src = src_o;
+			do {
+				int offs = bp->start_x;
+
+				dst = bp->dst;
+				for (src = src_o;; src += num + 2) {
+					skip = src[1];
+					if (skip >= offs) {
+						dst += skip;
+						break;
+					}
+					offs -= skip;
+
+					done = src[0];
+					num = done & 0x7F;
+					if (num > offs) {
+						src += offs;
+						dst += offs;
+						num -= offs;
+						break;
+					}
+				}
+
+				src += 2;
+
+				for (;;) {
+					do {
+						*dst++ = *src++;
+					} while (--num != 0);
+
+					if (done & 0x80) break;
+
+					done = *src++;
+					num = done & 0x7F;
+					dst += *src++;
+				}
+
+				bp->dst += bp->pitch;
+			} while (--bp->height != 0);
+#else
 			do {
 				do {
 					done = src_o[0];
@@ -794,6 +835,7 @@ static void GfxBlitTileZoomIn(BlitterParams *bp)
 
 				bp->dst += bp->pitch;
 			} while (--bp->height != 0);
+#endif
 			break;
 	}
 }

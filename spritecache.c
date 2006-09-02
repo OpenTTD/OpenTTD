@@ -138,6 +138,30 @@ static void* ReadSprite(SpriteID id)
 			}
 		}
 
+#if 1
+		if (sprite->info & 8) {
+			byte* src = sprite->data + sprite->height * 2;
+			uint height = sprite->height;
+
+			do {
+				uint offset;
+				uint len;
+
+				offset = 0;
+				do {
+					uint skip;
+
+					skip = src[1];
+					src[1] = skip - offset;
+					offset = skip;
+
+					len = src[0];
+					src += (len & 0x7F) + 2;
+				} while (!(len & 0x80));
+			} while (--height != 0);
+		}
+#endif
+
 		return sprite;
 	}
 }
