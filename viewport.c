@@ -1177,6 +1177,8 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 
 		ss = ss->next;
 	} while (ss != NULL);
+
+	_cur_dpi = dpi;
 }
 
 void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom)

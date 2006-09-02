@@ -460,7 +460,7 @@ static void CurrentScreenCallback(void *userdata, Pixel *buf, uint y, uint pitch
 // generate a large piece of the world
 static void LargeWorldCallback(void *userdata, Pixel *buf, uint y, uint pitch, uint n)
 {
-	const ViewPort* vp = (const ViewPort*)userdata;
+	ViewPort *vp = (ViewPort *)userdata;
 	DrawPixelInfo dpi, *old_dpi;
 	int wx, left;
 
