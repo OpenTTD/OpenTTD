@@ -656,12 +656,10 @@ void DrawSprite(uint32 img, int x, int y)
 typedef struct BlitterParams {
 	int start_x, start_y;
 	const byte *sprite;
-	const byte *sprite_org;
 	Pixel *dst;
 	int mode;
 	int width, height;
 	int width_org;
-	int height_org;
 	int pitch;
 } BlitterParams;
 
@@ -1359,8 +1357,8 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode)
 	x += sprite->x_offs;
 	y += sprite->y_offs;
 	bp.width_org = bp.width = sprite->width;
-	bp.height_org = bp.height = sprite->height;
-	bp.sprite_org = bp.sprite = sprite->data;
+	bp.height = sprite->height;
+	bp.sprite = sprite->data;
 	bp.dst = dpi->dst_ptr;
 	bp.mode = mode;
 	bp.pitch = dpi->pitch;
