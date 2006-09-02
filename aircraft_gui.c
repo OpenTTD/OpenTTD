@@ -1039,11 +1039,6 @@ void ShowPlayerAircraftLocal(PlayerID player, StationID station, OrderID order, 
 	}
 
 	if (w != NULL) {
-		vehiclelist_d *vl = &WP(w, vehiclelist_d);
-		vl->flags = VL_REBUILD | (_sorting.aircraft.order << (VL_DESC - 1));
-		vl->sort_type = _sorting.aircraft.criteria;
-
-		w->caption_color = player;
 		w->vscroll.cap = 4;
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
 		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;

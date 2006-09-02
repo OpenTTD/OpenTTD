@@ -1362,8 +1362,26 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_CREATE:
-			/* IMPORTANT: order and criteria needs to be set after the window is created, but before it's used */
-			/* w->window_number is not yet set at this point, so we lack info on what kind of vehicle we are dealing with */
+			w->caption_color = GB(w->window_number, 0, 8); // OwnerID is stored in the last 8 bits of the window number
+			switch (vehicle_type) {
+				case VEH_Train:
+					vl->flags = VL_REBUILD | (_sorting.train.order << (VL_DESC - 1));
+					vl->sort_type = _sorting.train.criteria;
+					break;
+				case VEH_Road:
+					vl->flags = VL_REBUILD | (_sorting.roadveh.order << (VL_DESC - 1));
+					vl->sort_type = _sorting.roadveh.criteria;
+					break;
+				case VEH_Ship:
+					vl->flags = VL_REBUILD | (_sorting.ship.order << (VL_DESC - 1));
+					vl->sort_type = _sorting.ship.criteria;
+					break;
+				case VEH_Aircraft:
+					vl->flags = VL_REBUILD | (_sorting.aircraft.order << (VL_DESC - 1));
+					vl->sort_type = _sorting.aircraft.criteria;
+					break;
+				default: NOT_REACHED(); break;
+			}
 			vl->sort_list = NULL;
 			vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
 			break;

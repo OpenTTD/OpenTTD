@@ -1437,11 +1437,6 @@ static void ShowPlayerTrainsLocal(PlayerID player, StationID station, OrderID or
 	}
 
 	if (w != NULL) {
-		vehiclelist_d *vl = &WP(w, vehiclelist_d);
-		vl->flags = VL_REBUILD | (_sorting.train.order << (VL_DESC - 1));
-		vl->sort_type = _sorting.train.criteria;
-
-		w->caption_color = player;
 		w->hscroll.cap = 10 * 29;
 		w->vscroll.cap = 7; // maximum number of vehicles shown
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;

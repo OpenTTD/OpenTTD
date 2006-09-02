@@ -968,11 +968,6 @@ static void ShowPlayerRoadVehiclesLocal(PlayerID player, StationID station, Orde
 	}
 
 	if (w != NULL) {
-		vehiclelist_d *vl = &WP(w, vehiclelist_d);
-		vl->flags = VL_REBUILD | (_sorting.roadveh.order << (VL_DESC - 1));
-		vl->sort_type = _sorting.roadveh.criteria;
-
-		w->caption_color = player;
 		w->vscroll.cap = 7; // maximum number of vehicles shown
 		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
 		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
