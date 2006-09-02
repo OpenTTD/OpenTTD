@@ -663,7 +663,6 @@ typedef struct BlitterParams {
 	int width_org;
 	int height_org;
 	int pitch;
-	byte info;
 } BlitterParams;
 
 static void GfxBlitTileZoomIn(BlitterParams *bp)
@@ -813,66 +812,56 @@ static void GfxBlitZoomInUncomp(BlitterParams *bp)
 	assert(width > 0);
 
 	switch (bp->mode) {
-		case 1:
-			if (bp->info & 1) {
-				const byte *ctab = _color_remap_ptr;
+		case 1: {
+			const byte *ctab = _color_remap_ptr;
 
-				do {
-					for (i = 0; i != width; i++) {
-						byte b = ctab[src[i]];
+			do {
+				for (i = 0; i != width; i++) {
+					byte b = ctab[src[i]];
 
-						if (b != 0) dst[i] = b;
-					}
-					src += bp->width_org;
-					dst += bp->pitch;
-				} while (--height != 0);
-			}
+					if (b != 0) dst[i] = b;
+				}
+				src += bp->width_org;
+				dst += bp->pitch;
+			} while (--height != 0);
 			break;
+		}
 
-		case 2:
-			if (bp->info & 1) {
-				const byte *ctab = _color_remap_ptr;
+		case 2: {
+			const byte *ctab = _color_remap_ptr;
 
-				do {
-					for (i = 0; i != width; i++)
-						if (src[i] != 0) dst[i] = ctab[dst[i]];
-					src += bp->width_org;
-					dst += bp->pitch;
-				} while (--height != 0);
-			}
+			do {
+				for (i = 0; i != width; i++)
+					if (src[i] != 0) dst[i] = ctab[dst[i]];
+				src += bp->width_org;
+				dst += bp->pitch;
+			} while (--height != 0);
 			break;
+		}
 
 		default:
-			if (!(bp->info & 1)) {
-				do {
-					memcpy(dst, src, width);
-					src += bp->width_org;
-					dst += bp->pitch;
-				} while (--height != 0);
-			} else {
-				do {
-					int n = width;
+			do {
+				int n = width;
 
-					for (; n >= 4; n -= 4) {
-						if (src[0] != 0) dst[0] = src[0];
-						if (src[1] != 0) dst[1] = src[1];
-						if (src[2] != 0) dst[2] = src[2];
-						if (src[3] != 0) dst[3] = src[3];
+				for (; n >= 4; n -= 4) {
+					if (src[0] != 0) dst[0] = src[0];
+					if (src[1] != 0) dst[1] = src[1];
+					if (src[2] != 0) dst[2] = src[2];
+					if (src[3] != 0) dst[3] = src[3];
 
-						dst += 4;
-						src += 4;
-					}
+					dst += 4;
+					src += 4;
+				}
 
-					for (; n != 0; n--) {
-						if (src[0] != 0) dst[0] = src[0];
-						src++;
-						dst++;
-					}
+				for (; n != 0; n--) {
+					if (src[0] != 0) dst[0] = src[0];
+					src++;
+					dst++;
+				}
 
-					src += bp->width_org - width;
-					dst += bp->pitch - width;
-				} while (--height != 0);
-			}
+				src += bp->width_org - width;
+				dst += bp->pitch - width;
+			} while (--height != 0);
 			break;
 	}
 }
@@ -1050,43 +1039,39 @@ static void GfxBlitZoomMediumUncomp(BlitterParams *bp)
 	assert(width > 0);
 
 	switch (bp->mode) {
-		case 1:
-			if (bp->info & 1) {
-				const byte *ctab = _color_remap_ptr;
+		case 1: {
+			const byte *ctab = _color_remap_ptr;
 
-				for (height >>= 1; height != 0; height--) {
-					for (i = 0; i != width >> 1; i++) {
-						byte b = ctab[src[i * 2]];
+			for (height >>= 1; height != 0; height--) {
+				for (i = 0; i != width >> 1; i++) {
+					byte b = ctab[src[i * 2]];
 
-						if (b != 0) dst[i] = b;
-					}
-					src += bp->width_org * 2;
-					dst += bp->pitch;
+					if (b != 0) dst[i] = b;
 				}
+				src += bp->width_org * 2;
+				dst += bp->pitch;
 			}
 			break;
+		}
 
-		case 2:
-			if (bp->info & 1) {
-				const byte *ctab = _color_remap_ptr;
+		case 2: {
+			const byte *ctab = _color_remap_ptr;
 
-				for (height >>= 1; height != 0; height--) {
-					for (i = 0; i != width >> 1; i++)
-						if (src[i * 2] != 0) dst[i] = ctab[dst[i]];
-					src += bp->width_org * 2;
-					dst += bp->pitch;
-				}
+			for (height >>= 1; height != 0; height--) {
+				for (i = 0; i != width >> 1; i++)
+					if (src[i * 2] != 0) dst[i] = ctab[dst[i]];
+				src += bp->width_org * 2;
+				dst += bp->pitch;
 			}
 			break;
+		}
 
 		default:
-			if (bp->info & 1) {
-				for (height >>= 1; height != 0; height--) {
-					for (i = 0; i != width >> 1; i++)
-						if (src[i * 2] != 0) dst[i] = src[i * 2];
-					src += bp->width_org * 2;
-					dst += bp->pitch;
-				}
+			for (height >>= 1; height != 0; height--) {
+				for (i = 0; i != width >> 1; i++)
+					if (src[i * 2] != 0) dst[i] = src[i * 2];
+				src += bp->width_org * 2;
+				dst += bp->pitch;
 			}
 			break;
 	}
@@ -1324,43 +1309,39 @@ static void GfxBlitZoomOutUncomp(BlitterParams *bp)
 	assert(width > 0);
 
 	switch (bp->mode) {
-		case 1:
-			if (bp->info & 1) {
-				const byte *ctab = _color_remap_ptr;
+		case 1: {
+			const byte *ctab = _color_remap_ptr;
 
-				for (height >>= 2; height != 0; height--) {
-					for (i = 0; i != width >> 2; i++) {
-						byte b = ctab[src[i * 4]];
+			for (height >>= 2; height != 0; height--) {
+				for (i = 0; i != width >> 2; i++) {
+					byte b = ctab[src[i * 4]];
 
-						if (b != 0) dst[i] = b;
-					}
-					src += bp->width_org * 4;
-					dst += bp->pitch;
+					if (b != 0) dst[i] = b;
 				}
+				src += bp->width_org * 4;
+				dst += bp->pitch;
 			}
 			break;
+		}
 
-		case 2:
-			if (bp->info & 1) {
-				const byte *ctab = _color_remap_ptr;
+		case 2: {
+			const byte *ctab = _color_remap_ptr;
 
-				for (height >>= 2; height != 0; height--) {
-					for (i = 0; i != width >> 2; i++)
-						if (src[i * 4] != 0) dst[i] = ctab[dst[i]];
-					src += bp->width_org * 4;
-					dst += bp->pitch;
-				}
+			for (height >>= 2; height != 0; height--) {
+				for (i = 0; i != width >> 2; i++)
+					if (src[i * 4] != 0) dst[i] = ctab[dst[i]];
+				src += bp->width_org * 4;
+				dst += bp->pitch;
 			}
 			break;
+		}
 
 		default:
-			if (bp->info & 1) {
-				for (height >>= 2; height != 0; height--) {
-					for (i = 0; i != width >> 2; i++)
-						if (src[i * 4] != 0) dst[i] = src[i * 4];
-					src += bp->width_org * 4;
-					dst += bp->pitch;
-				}
+			for (height >>= 2; height != 0; height--) {
+				for (i = 0; i != width >> 2; i++)
+					if (src[i * 4] != 0) dst[i] = src[i * 4];
+				src += bp->width_org * 4;
+				dst += bp->pitch;
 			}
 			break;
 	}
@@ -1371,7 +1352,6 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode)
 {
 	const DrawPixelInfo *dpi = _cur_dpi;
 	int start_x, start_y;
-	byte info;
 	BlitterParams bp;
 	int zoom_mask = ~((1 << dpi->zoom) - 1);
 
@@ -1380,8 +1360,6 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode)
 	y += sprite->y_offs;
 	bp.width_org = bp.width = sprite->width;
 	bp.height_org = bp.height = sprite->height;
-	info = sprite->info;
-	bp.info = info;
 	bp.sprite_org = bp.sprite = sprite->data;
 	bp.dst = dpi->dst_ptr;
 	bp.mode = mode;
@@ -1390,7 +1368,7 @@ static void GfxMainBlitter(const Sprite *sprite, int x, int y, int mode)
 	assert(bp.height > 0);
 	assert(bp.width > 0);
 
-	if (info & 8) {
+	if (sprite->info & 8) {
 		/* tile blit */
 		start_y = 0;
 
