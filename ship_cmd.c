@@ -1018,6 +1018,8 @@ int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (v->vehstatus & VS_CRASHED) return CMD_ERROR;
 
+	if (IsShipInDepot(v)) return CMD_ERROR;
+
 	/* If the current orders are already goto-depot */
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (!!(p2 & DEPOT_SERVICE) == HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {

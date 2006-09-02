@@ -1973,6 +1973,10 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		return 0;
 	}
 
+	/* check if at a standstill (not stopped only) in a depot
+	 * the check is down here to make it possible to alter stop/service for trains entering the depot */
+	if (IsTileDepotType(v->tile, TRANSPORT_RAIL) && v->cur_speed == 0) return CMD_ERROR;
+
 	tfdd = FindClosestTrainDepot(v, 0);
 	if (tfdd.best_length == (uint)-1) return_cmd_error(STR_883A_UNABLE_TO_FIND_ROUTE_TO);
 
