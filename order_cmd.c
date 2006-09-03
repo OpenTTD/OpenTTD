@@ -965,8 +965,6 @@ void CheckOrders(const Vehicle* v)
 void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 {
 	Vehicle *v;
-	Order *order;
-	bool need_invalidate;
 
 	/* Aircraft have StationIDs for depot orders and never use DepotIDs
 	 * This fact is handled specially below
@@ -974,37 +972,37 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 
 	/* Go through all vehicles */
 	FOR_ALL_VEHICLES(v) {
+		Order *order;
+		bool invalidate;
+
 		if (v->orders == NULL) continue;
 
 		/* Forget about this station if this station is removed */
-		if (v->last_station_visited == destination && type == OT_GOTO_STATION)
+		if (v->last_station_visited == destination && type == OT_GOTO_STATION) {
 			v->last_station_visited = INVALID_STATION;
+		}
 
-		/* Check the current order */
-		if ((v->type == VEH_Aircraft && v->current_order.type == OT_GOTO_DEPOT ? OT_GOTO_STATION : v->current_order.type) == type &&
+		order = &v->current_order;
+		if ((v->type == VEH_Aircraft && order->type == OT_GOTO_DEPOT ? OT_GOTO_STATION : order->type) == type &&
 				v->current_order.dest == destination) {
-			/* Mark the order as DUMMY */
-			v->current_order.type = OT_DUMMY;
-			v->current_order.flags = 0;
+			order->type = OT_DUMMY;
+			order->flags = 0;
 			InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		}
 
 		/* Clear the order from the order-list */
-		need_invalidate = false;
+		invalidate = false;
 		FOR_VEHICLE_ORDERS(v, order) {
 			if ((v->type == VEH_Aircraft && order->type == OT_GOTO_DEPOT ? OT_GOTO_STATION : order->type) == type &&
 					order->dest == destination) {
-				/* Mark the order as DUMMY */
 				order->type = OT_DUMMY;
 				order->flags = 0;
-
-				need_invalidate = true;
+				invalidate = true;
 			}
 		}
 
 		/* Only invalidate once, and if needed */
-		if (need_invalidate)
-			InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
+		if (invalidate) InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
 	}
 }
 
