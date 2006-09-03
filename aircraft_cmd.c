@@ -667,6 +667,11 @@ static void CheckIfAircraftNeedsService(Vehicle *v)
 
 	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
 
+	if (IsAircraftInHangar(v)) {
+		VehicleServiceInDepot(v);
+		return;
+	}
+
 	st = GetStation(v->current_order.dest);
 	// only goto depot if the target airport has terminals (eg. it is airport)
 	if (IsValidStation(st) && st->airport_tile != 0 && GetAirport(st->airport_type)->terminals != NULL) {

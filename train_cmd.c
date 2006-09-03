@@ -829,7 +829,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /* Check if all the wagons of the given train are in a depot, returns the
  * number of cars (including loco) then. If not it returns -1 */
-int CheckTrainStoppedInDepot(const Vehicle *v)
+static int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped)
 {
 	int count;
 	TileIndex tile = v->tile;
@@ -846,12 +846,24 @@ int CheckTrainStoppedInDepot(const Vehicle *v)
 		 * Also skip counting rear ends of multiheaded engines */
 		if (!IsArticulatedPart(v) && !(!IsTrainEngine(v) && IsMultiheaded(v))) count++;
 		if (v->u.rail.track != 0x80 || v->tile != tile ||
-				(IsFrontEngine(v) && !(v->vehstatus & VS_STOPPED))) {
+				(IsFrontEngine(v) && needs_to_be_stopped && !(v->vehstatus & VS_STOPPED))) {
 			return -1;
 		}
 	}
 
 	return count;
+}
+
+/* Used to check if the train is inside the depot and verifying that the VS_STOPPED flag is set */
+inline int CheckTrainStoppedInDepot(const Vehicle *v)
+{
+	return CheckTrainInDepot(v, true);
+}
+
+/* Used to check if the train is inside the depot, but not checking the VS_STOPPED flag */
+inline bool CheckTrainIsInsideDepot(const Vehicle *v)
+{
+	return (CheckTrainInDepot(v, false) > 0);
 }
 
 /**
@@ -3510,6 +3522,11 @@ static void CheckIfTrainNeedsService(Vehicle *v)
 	if (v->current_order.type == OT_GOTO_DEPOT &&
 			(v->current_order.flags & (OF_HALT_IN_DEPOT | OF_PART_OF_ORDERS)) != 0)
 		return;
+
+	if (CheckTrainIsInsideDepot(v)) {
+		VehicleServiceInDepot(v);
+		return;
+	}
 
 	tfdd = FindClosestTrainDepot(v, MAX_ACCEPTABLE_DEPOT_DIST);
 	/* Only go to the depot if it is not too far out of our way. */

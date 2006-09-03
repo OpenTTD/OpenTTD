@@ -112,6 +112,11 @@ static void CheckIfShipNeedsService(Vehicle *v)
 
 	if (_patches.gotodepot && VehicleHasDepotOrders(v)) return;
 
+	if (IsShipInDepot(v)) {
+		VehicleServiceInDepot(v);
+		return;
+	}
+
 	depot = FindClosestShipDepot(v);
 
 	if (depot == NULL || DistanceManhattan(v->tile, depot->xy) > 12) {
