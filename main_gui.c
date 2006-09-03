@@ -1024,7 +1024,7 @@ void ZoomInOrOutToCursorWindow(bool in, Window *w)
 
 	vp = w->viewport;
 
-	if (_game_mode != GM_MENU && !IsGeneratingWorld()) {
+	if (_game_mode != GM_MENU) {
 		if ((in && vp->zoom == 0) || (!in && vp->zoom == 2))
 			return;
 
@@ -1777,8 +1777,6 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_KEYPRESS: {
 		PlayerID local = (_local_player != OWNER_SPECTATOR) ? _local_player : 0;
 
-		if (IsGeneratingWorld()) break;
-
 		switch (e->keypress.keycode) {
 		case WKC_F1: case WKC_PAUSE:
 			ToolbarPauseClick(w);
@@ -2106,7 +2104,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			70, 1, (_pause || _patches.status_long_date) ? STR_00AF : STR_00AE, 0
 		);
 
-		if (p != NULL && !IsGeneratingWorld()) {
+		if (p != NULL) {
 			// Draw player money
 			SetDParam64(0, p->money64);
 			DrawStringCentered(570, 1, p->player_money >= 0 ? STR_0004 : STR_0005, 0);
@@ -2124,7 +2122,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 			if (!DrawScrollingStatusText(&_statusbar_news_item, WP(w,def_d).data_1))
 				WP(w,def_d).data_1 = -1280;
 		} else {
-			if (p != NULL && !IsGeneratingWorld()) {
+			if (p != NULL) {
 				// This is the default text
 				SetDParam(0, p->name_1);
 				SetDParam(1, p->name_2);
@@ -2225,12 +2223,6 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		if (e->keypress.keycode == WKC_BACKQUOTE) {
-			if (!IsGeneratingWorld()) IConsoleSwitch();
-			e->keypress.cont = false;
-			break;
-		}
-
 		switch (e->keypress.keycode) {
 			case 'Q' | WKC_CTRL:
 			case 'Q' | WKC_META:
@@ -2238,7 +2230,19 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				break;
 		}
 
-		if (_game_mode == GM_MENU || IsGeneratingWorld()) break;
+		/* Disable all key shortcuts, except quit shortcuts when
+		 * generating the world, otherwise they create threading
+		 * problem during the generating, resulting in random
+		 * assertions that are hard to trigger and debug */
+		if (IsGeneratingWorld()) break;
+
+		if (e->keypress.keycode == WKC_BACKQUOTE) {
+			IConsoleSwitch();
+			e->keypress.cont = false;
+			break;
+		}
+
+		if (_game_mode == GM_MENU) break;
 
 		switch (e->keypress.keycode) {
 			case 'C':
@@ -2363,14 +2367,10 @@ void ShowVitalWindows(void)
 
 	if (_game_mode != GM_EDITOR) {
 		w = AllocateWindowDesc(&_toolb_normal_desc);
-		/* Disable zoom-in for normal things, and zoom-out if we come
-		 *  from world-generating. */
-		w->disabled_state = IsGeneratingWorld() ? (1 << 18) : (1 << 17);
+		w->disabled_state = 1 << 18;
 	} else {
 		w = AllocateWindowDesc(&_toolb_scen_desc);
-		/* Disable zoom-in for normal things, and zoom-out if we come
-		 *  from world-generating. */
-		w->disabled_state = IsGeneratingWorld() ? (1 << 10) : (1 << 9);
+		w->disabled_state = 1 << 10;
 	}
 	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
 

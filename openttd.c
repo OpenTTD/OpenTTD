@@ -899,7 +899,7 @@ static void DoAutosave(void)
 
 static void ScrollMainViewport(int x, int y)
 {
-	if (_game_mode != GM_MENU && !IsGeneratingWorld()) {
+	if (_game_mode != GM_MENU) {
 		Window *w = FindWindowById(WC_MAIN_WINDOW, 0);
 		assert(w);
 
