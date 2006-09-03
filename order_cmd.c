@@ -975,8 +975,6 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		Order *order;
 		bool invalidate;
 
-		if (v->orders == NULL) continue;
-
 		/* Forget about this station if this station is removed */
 		if (v->last_station_visited == destination && type == OT_GOTO_STATION) {
 			v->last_station_visited = INVALID_STATION;
