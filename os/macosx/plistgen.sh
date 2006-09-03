@@ -23,11 +23,11 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <key>CFBundleExecutable</key>
         <string>openttd</string>
         <key>CFBundleGetInfoString</key>
-        <string>$VERSION, Copyright 2004-$date The Open Transport Tycoon team</string>
+        <string>$VERSION, Copyright 2004-$date The OpenTTD team</string>
         <key>CFBundleIconFile</key>
         <string>openttd.icns</string>
         <key>CFBundleIdentifier</key>
-        <string>org.ludde-ottd.ludde-ottd</string>
+        <string>org.openttd.openttd</string>
         <key>CFBundleInfoDictionaryVersion</key>
         <string>6.0</string>
         <key>CFBundleName</key>
@@ -39,7 +39,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
         <key>CFBundleVersion</key>
         <string>$VERSION</string>
         <key>NSHumanReadableCopyright</key>
-        <string>Copyright 2004-$date The Open Transport Tycoon team</string>
+        <string>Copyright 2004-$date The OpenTTD team</string>
         <key>NSPrincipalClass</key>
         <string>NSApplication</string>
 </dict>
