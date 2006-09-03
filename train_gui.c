@@ -1434,15 +1434,6 @@ static void ShowPlayerTrainsLocal(PlayerID player, StationID station, OrderID or
 			w = AllocateWindowDescFront(&_other_player_trains_desc, (station << 16) | (VEH_Train << 11) | VLW_flag | player);
 		}
 	}
-
-	if (w != NULL) {
-		w->hscroll.cap = 10 * 29;
-		w->vscroll.cap = 7; // maximum number of vehicles shown
-		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
-		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-		w->resize.step_width = 1;
-		w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); /* Minimum of 4 vehicles */
-	}
 }
 
 void ShowPlayerTrains(PlayerID player, StationID station)

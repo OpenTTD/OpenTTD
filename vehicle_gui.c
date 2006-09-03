@@ -1365,6 +1365,8 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			w->caption_color = GB(w->window_number, 0, 8); // OwnerID is stored in the last 8 bits of the window number
 			switch (vehicle_type) {
 				case VEH_Train:
+					w->hscroll.cap = 10 * 29;
+					w->resize.step_width = 1;
 					vl->flags = VL_REBUILD | (_sorting.train.order << (VL_DESC - 1));
 					vl->sort_type = _sorting.train.criteria;
 					break;
@@ -1382,6 +1384,17 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					break;
 				default: NOT_REACHED(); break;
 			}
+
+			if (vehicle_type == VEH_Ship || vehicle_type == VEH_Aircraft) {
+				w->vscroll.cap = 4;
+				w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
+			} else {
+				w->vscroll.cap = 7;
+				w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+				w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); // Minimum of 4 vehicles
+			}
+
+			w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
 			vl->sort_list = NULL;
 			vl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
 			break;

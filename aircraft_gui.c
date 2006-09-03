@@ -1034,12 +1034,6 @@ void ShowPlayerAircraftLocal(PlayerID player, StationID station, OrderID order, 
 			w = AllocateWindowDescFront(&_other_player_aircraft_desc, (station << 16) | (VEH_Aircraft << 11) | VLW_flag | player);
 		}
 	}
-
-	if (w != NULL) {
-		w->vscroll.cap = 4;
-		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
-		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
-	}
 }
 
 void ShowPlayerAircraft(PlayerID player, StationID station)

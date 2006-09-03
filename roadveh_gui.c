@@ -963,13 +963,6 @@ static void ShowPlayerRoadVehiclesLocal(PlayerID player, StationID station, Orde
 			w = AllocateWindowDescFront(&_other_player_roadveh_desc, (station << 16) | (VEH_Road << 11) | VLW_flag | player);
 		}
 	}
-
-	if (w != NULL) {
-		w->vscroll.cap = 7; // maximum number of vehicles shown
-		w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
-		w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-		w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); /* Minimum of 4 vehicles */
-	}
 }
 
 void ShowPlayerRoadVehicles(PlayerID player, StationID station)
