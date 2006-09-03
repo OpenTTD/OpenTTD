@@ -658,10 +658,9 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 			ResetObjectToPlace();
 			ShowBuildTrainWindow(w->window_number);
 			break;
-		case 10:
-			ResetObjectToPlace();
-			ScrollMainWindowToTile(w->window_number);
-			break;
+
+			case 10: ScrollMainWindowToTile(w->window_number); break;
+
 		case 6:
 			TrainDepotClickTrain(w, e->click.pt.x, e->click.pt.y);
 			break;

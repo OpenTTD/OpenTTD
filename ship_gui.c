@@ -773,10 +773,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e)
 				}
 					break;
 
-		case 9: /* scroll to tile */
-			ResetObjectToPlace();
-			ScrollMainWindowToTile(w->window_number);
-			break;
+			case 9: ScrollMainWindowToTile(w->window_number); break;
 		}
 		break;
 
