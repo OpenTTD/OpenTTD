@@ -233,11 +233,7 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 
 		rad = (_patches.modified_catchment) ? CA_DOCK : 4;
 
-		if (_station_show_coverage) {
-			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
-		} else {
-			SetTileSelectBigSize(0, 0, 0, 0);
-		}
+		if (_station_show_coverage) SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		DrawStationCoverageAreaText(4, 50, (uint)-1, rad);
 		break;

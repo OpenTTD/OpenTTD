@@ -1894,7 +1894,9 @@ void UpdateTileSelection(void)
 	// redraw selection
 	if (_thd.drawstyle != _thd.new_drawstyle ||
 			_thd.pos.x != _thd.new_pos.x || _thd.pos.y != _thd.new_pos.y ||
-			_thd.size.x != _thd.new_size.x || _thd.size.y != _thd.new_size.y) {
+			_thd.size.x != _thd.new_size.x || _thd.size.y != _thd.new_size.y ||
+	    _thd.outersize.x != _thd.new_outersize.x ||
+	    _thd.outersize.y != _thd.new_outersize.y) {
 		// clear the old selection?
 		if (_thd.drawstyle) SetSelectionTilesDirty();
 
