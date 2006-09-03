@@ -968,6 +968,10 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 	Order *order;
 	bool need_invalidate;
 
+	/* Aircraft have StationIDs for depot orders and never use DepotIDs
+	 * This fact is handled specially below
+	 */
+
 	/* Go through all vehicles */
 	FOR_ALL_VEHICLES(v) {
 		if (v->orders == NULL) continue;
@@ -977,7 +981,8 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 			v->last_station_visited = INVALID_STATION;
 
 		/* Check the current order */
-		if (v->current_order.type == type && v->current_order.dest == destination) {
+		if ((v->type == VEH_Aircraft && v->current_order.type == OT_GOTO_DEPOT ? OT_GOTO_STATION : v->current_order.type) == type &&
+				v->current_order.dest == destination) {
 			/* Mark the order as DUMMY */
 			v->current_order.type = OT_DUMMY;
 			v->current_order.flags = 0;
@@ -987,7 +992,8 @@ void RemoveOrderFromAllVehicles(OrderType type, DestinationID destination)
 		/* Clear the order from the order-list */
 		need_invalidate = false;
 		FOR_VEHICLE_ORDERS(v, order) {
-			if (order->type == type && order->dest == destination) {
+			if ((v->type == VEH_Aircraft && order->type == OT_GOTO_DEPOT ? OT_GOTO_STATION : order->type) == type &&
+					order->dest == destination) {
 				/* Mark the order as DUMMY */
 				order->type = OT_DUMMY;
 				order->flags = 0;

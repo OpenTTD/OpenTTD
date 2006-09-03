@@ -2376,7 +2376,6 @@ void DestroyRoadStop(RoadStop* rs)
 void DestroyStation(Station *st)
 {
 	StationID index;
-	Vehicle *v;
 
 	index = st->index;
 
@@ -2389,23 +2388,6 @@ void DestroyStation(Station *st)
 
 	/* Now delete all orders that go to the station */
 	RemoveOrderFromAllVehicles(OT_GOTO_STATION, index);
-
-	//And do the same with aircraft that have the station as a hangar-stop
-	FOR_ALL_VEHICLES(v) {
-		bool invalidate = false;
-		if (v->type == VEH_Aircraft) {
-			Order *order;
-			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->type == OT_GOTO_DEPOT && order->dest == index) {
-					order->type = OT_DUMMY;
-					order->flags = 0;
-					invalidate = true;
-				}
-			}
-		}
-		//Orders for the vehicle have been changed, invalidate the window
-		if (invalidate) InvalidateWindow(WC_VEHICLE_ORDERS, v->index);
-	}
 
 	//Subsidies need removal as well
 	DeleteSubsidyWithStation(index);
