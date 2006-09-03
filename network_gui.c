@@ -47,13 +47,8 @@ typedef struct network_ql_d {
 } network_ql_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_ql_d));
 
-typedef struct NetworkGameSorting {
-	bool order;    // Ascending / Descending
-	byte criteria; // Sorted by name/clients/connectivity
-} NetworkGameSorting;
-
 /* Global to remember sorting after window has been closed */
-static NetworkGameSorting _ng_sorting;
+static Listing _ng_sorting;
 
 static char _edit_str_buf[64];
 static bool _chat_tab_completion_active;

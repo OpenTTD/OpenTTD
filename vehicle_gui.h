@@ -3,11 +3,7 @@
 #ifndef VEHICLE_GUI_H
 #define VEHICLE_GUI_H
 
-#include "station.h"
-#include "vehicle.h"
 #include "window.h"
-
-struct vehiclelist_d;
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
 CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel);
@@ -18,20 +14,6 @@ void RebuildVehicleLists(void);
 void ResortVehicleLists(void);
 
 #define PERIODIC_RESORT_DAYS 10
-
-typedef struct Listing {
-	bool order;    // Ascending/descending?
-	byte criteria; // Sorting criteria
-} Listing;
-
-typedef struct Sorting {
-	Listing aircraft;
-	Listing roadveh;
-	Listing ship;
-	Listing train;
-} Sorting;
-
-extern Sorting _sorting;
 
 enum {
 	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
@@ -54,8 +36,6 @@ static inline bool ValidVLWFlags(uint16 flags)
 
 void PlayerVehWndProc(Window *w, WindowEvent *e);
 
-void ShowReplaceVehicleWindow(byte vehicletype);
-
 void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number);
 void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number);
 void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number);
@@ -66,17 +46,16 @@ void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, Vehicle
 void DrawRoadVehImage(const Vehicle *v, int x, int y, VehicleID selection);
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection);
 void DrawSmallOrderListShip(const Vehicle *v, int x, int y);
+void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
+void DrawSmallOrderListAircraft(const Vehicle *v, int x, int y);
 
 void ShowBuildTrainWindow(TileIndex tile);
 void ShowBuildRoadVehWindow(TileIndex tile);
 void ShowBuildShipWindow(TileIndex tile);
 void ShowBuildAircraftWindow(TileIndex tile);
 
-void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
-void DrawSmallOrderListAircraft(const Vehicle *v, int x, int y);
-
 void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v);
 
-int ShowAdditionalText(int x, int y, int w, EngineID engine_number);
+int ShowAdditionalText(int x, int y, int w, EngineID engine);
 
 #endif /* VEHICLE_GUI_H */

@@ -28,7 +28,23 @@
 #include "roadveh.h"
 #include "depot.h"
 
-Sorting _sorting;
+typedef struct Sorting {
+	Listing aircraft;
+	Listing roadveh;
+	Listing ship;
+	Listing train;
+} Sorting;
+
+static Sorting _sorting;
+
+typedef struct vehiclelist_d {
+	const Vehicle** sort_list; // list of vehicles (sorted)
+	uint16 list_length;
+	byte sort_type;
+	SortListFlags flags;
+	uint16 resort_timer;
+} vehiclelist_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
 
 static uint32 _internal_name_sorter_id; // internal StringID for default vehicle-names
 static const Vehicle* _last_vehicle; // cached vehicle to hopefully speed up name-sorting
@@ -1074,7 +1090,7 @@ static const WindowDesc _replace_ship_aircraft_vehicle_desc = {
 };
 
 
-void ShowReplaceVehicleWindow(byte vehicletype)
+static void ShowReplaceVehicleWindow(byte vehicletype)
 {
 	Window *w;
 
@@ -1100,8 +1116,9 @@ void ShowReplaceVehicleWindow(byte vehicletype)
 			break;
 		default: return;
 	}
+
 	w->caption_color = _local_player;
-	WP(w,replaceveh_d).vehicletype = vehicletype;
+	WP(w, replaceveh_d).vehicletype = vehicletype;
 	w->vscroll2.cap = w->vscroll.cap;   // these two are always the same
 }
 
@@ -1153,7 +1170,6 @@ void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v)
  * 11-15 vehicle type (using VEH_, but can be compressed to fewer bytes if needed)
  * 16-31 StationID or OrderID depending on window type (bit 8-10)
  **/
-
 void PlayerVehWndProc(Window *w, WindowEvent *e)
 {
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
@@ -1237,10 +1253,9 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 			max = min(w->vscroll.pos + w->vscroll.cap, vl->list_length);
 			for (i = w->vscroll.pos; i < max; ++i) {
-				const Vehicle* v = vl->sort_list[i];
-				StringID str;
+				const Vehicle *v = vl->sort_list[i];
+				StringID str = (v->age > v->max_age - 366) ? STR_00E3 : STR_00E2;
 
-				str = v->age > v->max_age - 366 ? STR_00E3 : STR_00E2;
 				SetDParam(0, v->profit_this_year);
 				SetDParam(1, v->profit_last_year);
 				switch (vehicle_type) {
@@ -1248,6 +1263,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 						DrawTrainImage(v, x + 21, y + 6, w->hscroll.cap, 0, INVALID_VEHICLE);
 						DrawString(x + 21, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 						if (IsTileDepotType(v->tile, TRANSPORT_RAIL) && (v->vehstatus & VS_HIDDEN)) str = STR_021F;
+
 						if (v->string_id != STR_SV_TRAIN_NAME) {
 							SetDParam(0, v->string_id);
 							DrawString(x + 21, y, STR_01AB, 0);
@@ -1257,6 +1273,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 						DrawRoadVehImage(v, x + 22, y + 6, INVALID_VEHICLE);
 						DrawString(x + 24, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 						if (IsRoadVehInDepot(v)) str = STR_021F;
+
 						if (v->string_id != STR_SV_ROADVEH_NAME) {
 							SetDParam(0, v->string_id);
 							DrawString(x + 24, y, STR_01AB, 0);
@@ -1266,21 +1283,25 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 						DrawShipImage(v, x + 19, y + 6, INVALID_VEHICLE);
 						DrawString(x + 12, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 						if (IsShipInDepot(v)) str = STR_021F;
+
 						if (v->string_id != STR_SV_SHIP_NAME) {
 							SetDParam(0, v->string_id);
 							DrawString(x + 12, y, STR_01AB, 0);
 						}
 						DrawSmallOrderListShip(v, x + 138, y);
+
 						break;
 					case VEH_Aircraft:
 						DrawAircraftImage(v, x + 19, y + 6, INVALID_VEHICLE);
 						DrawString(x + 19, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 						if (IsAircraftInHangar(v)) str = STR_021F;
+
 						if (v->string_id != STR_SV_AIRCRAFT_NAME) {
 							SetDParam(0, v->string_id);
 							DrawString(x + 19, y, STR_01AB, 0);
 						}
 						DrawSmallOrderListAircraft(v, x + 136, y);
+
 						break;
 					default: NOT_REACHED(); break;
 				}
@@ -1414,8 +1435,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 
-		case WE_RESIZE:
-			/* Update the scroll + matrix */
+		case WE_RESIZE: /* Update the scroll + matrix */
 			if (vehicle_type == VEH_Train) w->hscroll.cap += e->sizing.diff.x;
 			w->vscroll.cap += e->sizing.diff.y / (int)w->resize.step_height;
 			w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
