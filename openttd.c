@@ -797,7 +797,7 @@ void SwitchMode(int new_mode)
 				}
 			}
 			_generating_world = false;
-			_patches_newgame.starting_year = ORIGINAL_BASE_YEAR + _cur_year;
+			_patches_newgame.starting_year = _cur_year;
 			// delete all stations owned by a player
 			DeleteAllPlayerStations();
 		} else {
