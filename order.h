@@ -177,7 +177,7 @@ static inline bool IsOrderPoolFull(void)
 
 static inline uint32 PackOrder(const Order *order)
 {
-	return order->dest.station << 16 | order->flags << 8 | order->type;
+	return order->dest << 16 | order->flags << 8 | order->type;
 }
 
 static inline Order UnpackOrder(uint32 packed)
@@ -185,7 +185,7 @@ static inline Order UnpackOrder(uint32 packed)
 	Order order;
 	order.type    = (OrderType)GB(packed,  0,  8);
 	order.flags   = GB(packed,  8,  8);
-	order.dest.station = GB(packed, 16, 16);
+	order.dest    = GB(packed, 16, 16);
 	order.next    = NULL;
 	order.index   = 0; // avoid compiler warning
 	return order;

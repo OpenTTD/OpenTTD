@@ -57,20 +57,14 @@ typedef uint16 WaypointID;
 typedef uint16 OrderID;
 typedef uint16 SignID;
 typedef uint16 EngineRenewID;
+typedef uint16 DestinationID;
 
-typedef union DestinationID {
-	StationID station;
-	DepotID depot;
-	WaypointID waypoint;
-	uint16 disaster;            ///< Please don't ask about it, but disasters uses orders to store stuff...
-} DestinationID;
-
-/* All items of DestinationID has to be of the same size, because some part
- *  of the code depends on the fact that DestinationID is the same for all
- *  items inside DestinationID. Check PackOrder() */
-assert_compile(sizeof(StationID) == sizeof(DepotID));
-assert_compile(sizeof(StationID) == sizeof(WaypointID));
-assert_compile(sizeof(StationID) == sizeof(uint16));
+/* DestinationID must be at least as large as every these below, because it can
+ * be any of them
+ */
+assert_compile(sizeof(DestinationID) == sizeof(DepotID));
+assert_compile(sizeof(DestinationID) == sizeof(WaypointID));
+assert_compile(sizeof(DestinationID) == sizeof(StationID));
 
 typedef uint32 WindowNumber;
 typedef byte WindowClass;

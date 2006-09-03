@@ -145,7 +145,7 @@ static void DrawOrdersWindow(Window *w)
 			switch (order->type) {
 				case OT_GOTO_STATION:
 					SetDParam(1, StationOrderStrings[order->flags]);
-					SetDParam(2, order->dest.station);
+					SetDParam(2, order->dest);
 					break;
 
 				case OT_GOTO_DEPOT: {
@@ -153,9 +153,9 @@ static void DrawOrdersWindow(Window *w)
 
 					if (v->type == VEH_Aircraft) {
 						s = STR_GO_TO_AIRPORT_HANGAR;
-						SetDParam(2, order->dest.depot);
+						SetDParam(2, order->dest);
 					} else {
-						SetDParam(2, GetDepot(order->dest.depot)->town_index);
+						SetDParam(2, GetDepot(order->dest)->town_index);
 
 						switch (v->type) {
 							case VEH_Train: s = (order->flags & OF_NON_STOP) ? STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT : STR_GO_TO_TRAIN_DEPOT; break;
@@ -173,7 +173,7 @@ static void DrawOrdersWindow(Window *w)
 
 				case OT_GOTO_WAYPOINT:
 					SetDParam(1, (order->flags & OF_NON_STOP) ? STR_GO_NON_STOP_TO_WAYPOINT : STR_GO_TO_WAYPOINT);
-					SetDParam(2, order->dest.waypoint);
+					SetDParam(2, order->dest);
 					break;
 
 				default: break;
@@ -185,7 +185,7 @@ static void DrawOrdersWindow(Window *w)
 				DrawString(2, y, str, color);
 			} else {
 				SetDParam(1, STR_INVALID_ORDER);
-				SetDParam(2, order->dest.station);
+				SetDParam(2, order->dest);
 				DrawString(2, y, str, color);
 			}
 			y += 10;
@@ -216,7 +216,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 				if (IsRailDepot(tile)) {
 					order.type = OT_GOTO_DEPOT;
 					order.flags = OF_PART_OF_ORDERS;
-					order.dest.depot = GetDepotByTile(tile)->index;
+					order.dest = GetDepotByTile(tile)->index;
 					return order;
 				}
 			}
@@ -226,7 +226,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			if (GetRoadTileType(tile) == ROAD_TILE_DEPOT && v->type == VEH_Road && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
-				order.dest.depot = GetDepotByTile(tile)->index;
+				order.dest = GetDepotByTile(tile)->index;
 				return order;
 			}
 			break;
@@ -236,7 +236,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			if (IsHangar(tile) && IsTileOwner(tile, _local_player)) {
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
-				order.dest.station = GetStationIndex(tile);
+				order.dest = GetStationIndex(tile);
 				return order;
 			}
 			break;
@@ -249,7 +249,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 
 				order.type = OT_GOTO_DEPOT;
 				order.flags = OF_PART_OF_ORDERS;
-				order.dest.depot = GetDepotByTile(tile < tile2 ? tile : tile2)->index;
+				order.dest = GetDepotByTile(tile < tile2 ? tile : tile2)->index;
 				return order;
 			}
 
@@ -265,7 +265,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			IsRailWaypoint(tile)) {
 		order.type = OT_GOTO_WAYPOINT;
 		order.flags = 0;
-		order.dest.waypoint = GetWaypointByTile(tile)->index;
+		order.dest = GetWaypointByTile(tile)->index;
 		return order;
 	}
 
@@ -283,7 +283,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 			if (st->facilities & facil) {
 				order.type = OT_GOTO_STATION;
 				order.flags = 0;
-				order.dest.station = st_index;
+				order.dest = st_index;
 				return order;
 			}
 		}
@@ -292,7 +292,7 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	// not found
 	order.type = OT_NOTHING;
 	order.flags = 0;
-	order.dest.station = INVALID_STATION;
+	order.dest = INVALID_STATION;
 	return order;
 }
 
@@ -421,9 +421,9 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 				TileIndex xy;
 
 				switch (ord->type) {
-					case OT_GOTO_STATION:  xy = GetStation(ord->dest.station)->xy ; break;
-					case OT_GOTO_DEPOT:    xy = GetDepot(ord->dest.depot)->xy;    break;
-					case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->dest.waypoint)->xy; break;
+					case OT_GOTO_STATION:  xy = GetStation(ord->dest)->xy ; break;
+					case OT_GOTO_DEPOT:    xy = GetDepot(ord->dest)->xy;    break;
+					case OT_GOTO_WAYPOINT: xy = GetWaypoint(ord->dest)->xy; break;
 					default:               xy = 0; break;
 				}
 

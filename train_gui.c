@@ -968,12 +968,12 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			switch (v->current_order.type) {
 			case OT_GOTO_STATION: {
 				str = STR_HEADING_FOR_STATION + _patches.vehicle_speed;
-				SetDParam(0, v->current_order.dest.station);
+				SetDParam(0, v->current_order.dest);
 				SetDParam(1, v->u.rail.last_speed);
 			} break;
 
 			case OT_GOTO_DEPOT: {
-				Depot *dep = GetDepot(v->current_order.dest.depot);
+				Depot *dep = GetDepot(v->current_order.dest);
 				SetDParam(0, dep->town_index);
 				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
 					str = STR_HEADING_FOR_TRAIN_DEPOT + _patches.vehicle_speed;
@@ -989,7 +989,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 				break;
 
 			case OT_GOTO_WAYPOINT: {
-				SetDParam(0, v->current_order.dest.waypoint);
+				SetDParam(0, v->current_order.dest);
 				str = STR_HEADING_FOR_WAYPOINT + _patches.vehicle_speed;
 				SetDParam(1, v->u.rail.last_speed);
 				break;

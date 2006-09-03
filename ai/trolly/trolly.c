@@ -555,7 +555,7 @@ static bool AiNew_CheckVehicleStation(Player *p, Station *st)
 			const Order *order;
 
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->type == OT_GOTO_STATION && GetStation(order->dest.station) == st) {
+				if (order->type == OT_GOTO_STATION && GetStation(order->dest) == st) {
 					// This vehicle has this city in its list
 					count++;
 				}
@@ -1192,14 +1192,14 @@ static void AiNew_State_GiveOrders(Player *p)
 		idx = 0;
 		order.type = OT_GOTO_DEPOT;
 		order.flags = OF_UNLOAD;
-		order.dest.depot = GetDepotByTile(p->ainew.depot_tile)->index;
+		order.dest = GetDepotByTile(p->ainew.depot_tile)->index;
 		AI_DoCommand(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
 	}
 
 	idx = 0;
 	order.type = OT_GOTO_STATION;
 	order.flags = 0;
-	order.dest.station = GetStationIndex(p->ainew.to_tile);
+	order.dest = GetStationIndex(p->ainew.to_tile);
 	if (p->ainew.tbt == AI_TRUCK && p->ainew.to_deliver)
 		order.flags |= OF_FULL_LOAD;
 	AI_DoCommand(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);
@@ -1207,7 +1207,7 @@ static void AiNew_State_GiveOrders(Player *p)
 	idx = 0;
 	order.type = OT_GOTO_STATION;
 	order.flags = 0;
-	order.dest.station = GetStationIndex(p->ainew.from_tile);
+	order.dest = GetStationIndex(p->ainew.from_tile);
 	if (p->ainew.tbt == AI_TRUCK && p->ainew.from_deliver)
 		order.flags |= OF_FULL_LOAD;
 	AI_DoCommand(0, p->ainew.veh_id + (idx << 16), PackOrder(&order), DC_EXEC, CMD_INSERT_ORDER);

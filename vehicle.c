@@ -1922,7 +1922,7 @@ uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owne
 					const Order *order;
 
 					FOR_VEHICLE_ORDERS(v, order) {
-						if (order->type == OT_GOTO_STATION && order->dest.station == station) {
+						if (order->type == OT_GOTO_STATION && order->dest == station) {
 							sort_list[n++] = v;
 							break;
 						}
@@ -2294,13 +2294,13 @@ const SaveLoad _common_veh_desc[] = {
 	/* This next line is for version 4 and prior compatibility.. it temporarily reads
 	    type and flags (which were both 4 bits) into type. Later on this is
 	    converted correctly */
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type),    SLE_UINT8,                 0, 4),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest.station), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type), SLE_UINT8,                 0, 4),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
 
 	/* Orders for version 5 and on */
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type),    SLE_UINT8,                 5, SL_MAX_VERSION),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, flags),   SLE_UINT8,                 5, SL_MAX_VERSION),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest.station), SLE_UINT16,                5, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, type),  SLE_UINT8,  5, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, flags), SLE_UINT8,  5, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest),  SLE_UINT16, 5, SL_MAX_VERSION),
 
 	    SLE_REF(Vehicle, orders,               REF_ORDER),
 
@@ -2465,8 +2465,8 @@ static const SaveLoad _disaster_desc[] = {
 	    SLE_VAR(Vehicle, z_height,      SLE_UINT8),
 	    SLE_VAR(Vehicle, owner,         SLE_UINT8),
 	    SLE_VAR(Vehicle, vehstatus,     SLE_UINT8),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest.station),     SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
-	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest.station),     SLE_UINT16,                5, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest), SLE_FILE_U8 | SLE_VAR_U16, 0, 4),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest), SLE_UINT16,                5, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, cur_image,     SLE_UINT16),
 	SLE_CONDVAR(Vehicle, age,           SLE_FILE_U16 | SLE_VAR_I32,  0, 30),

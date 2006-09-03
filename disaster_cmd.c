@@ -101,7 +101,7 @@ static void InitializeDisasterVehicle(Vehicle* v, int x, int y, byte z, Directio
 	v->u.disaster.image_override = 0;
 	v->current_order.type = OT_NOTHING;
 	v->current_order.flags = 0;
-	v->current_order.dest.station = 0;
+	v->current_order.dest = 0;
 
 	DisasterVehicleUpdateImage(v);
 	VehiclePositionChanged(v);
@@ -165,7 +165,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 	++v->tick_counter;
 
-	if (v->current_order.dest.disaster < 2) {
+	if (v->current_order.dest < 2) {
 		if (v->tick_counter&1)
 			return;
 
@@ -173,23 +173,23 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 
 		SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
 
-		if (v->current_order.dest.disaster == 1) {
+		if (v->current_order.dest == 1) {
 			if (++v->age == 38) {
-				v->current_order.dest.disaster = 2;
+				v->current_order.dest = 2;
 				v->age = 0;
 			}
 
 			if ((v->tick_counter&7)==0) {
 				CreateEffectVehicleRel(v, 0, -17, 2, EV_SMOKE);
 			}
-		} else if (v->current_order.dest.disaster == 0) {
+		} else if (v->current_order.dest == 0) {
 			tile = v->tile; /**/
 
 			if (IsValidTile(tile) &&
 					IsTileType(tile, MP_STATION) &&
 					IsAirport(tile) &&
 					IS_HUMAN_PLAYER(GetTileOwner(tile))) {
-				v->current_order.dest.disaster = 1;
+				v->current_order.dest = 1;
 				v->age = 0;
 
 				SetDParam(0, GetStationIndex(tile));
@@ -204,7 +204,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		return;
 	}
 
-	if (v->current_order.dest.disaster > 2) {
+	if (v->current_order.dest > 2) {
 		if (++v->age <= 13320)
 			return;
 
@@ -247,7 +247,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 				EV_EXPLOSION_SMALL);
 		}
 	} else if (v->age == 350) {
-		v->current_order.dest.disaster = 3;
+		v->current_order.dest = 3;
 		v->age = 0;
 	}
 
@@ -272,7 +272,7 @@ static void DisasterTick_UFO(Vehicle *v)
 
 	v->u.disaster.image_override = (++v->tick_counter & 8) ? SPR_UFO_SMALL_SCOUT_DARKER : SPR_UFO_SMALL_SCOUT;
 
-	if (v->current_order.dest.disaster == 0) {
+	if (v->current_order.dest == 0) {
 // fly around randomly
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
@@ -286,7 +286,7 @@ static void DisasterTick_UFO(Vehicle *v)
 			v->dest_tile = RandomTile();
 			return;
 		}
-		v->current_order.dest.disaster = 1;
+		v->current_order.dest = 1;
 
 		FOR_ALL_VEHICLES(u) {
 			if (u->type == VEH_Road && IS_HUMAN_PLAYER(u->owner)) {
@@ -360,7 +360,7 @@ static void DisasterTick_2(Vehicle *v)
 
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.dest.disaster == 1 && v->tick_counter & 4) ? SPR_F_15_FIRING : 0;
+		(v->current_order.dest == 1 && v->tick_counter & 4) ? SPR_F_15_FIRING : 0;
 
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -370,7 +370,7 @@ static void DisasterTick_2(Vehicle *v)
 		return;
 	}
 
-	if (v->current_order.dest.disaster == 2) {
+	if (v->current_order.dest == 2) {
 		if (!(v->tick_counter&3)) {
 			Industry *i = GetIndustry(v->dest_tile);
 			int x = TileX(i->xy) * TILE_SIZE;
@@ -384,13 +384,13 @@ static void DisasterTick_2(Vehicle *v)
 				EV_EXPLOSION_SMALL);
 
 			if (++v->age >= 55)
-				v->current_order.dest.disaster = 3;
+				v->current_order.dest = 3;
 		}
-	} else if (v->current_order.dest.disaster == 1) {
+	} else if (v->current_order.dest == 1) {
 		if (++v->age == 112) {
 			Industry *i;
 
-			v->current_order.dest.disaster = 2;
+			v->current_order.dest = 2;
 			v->age = 0;
 
 			i = GetIndustry(v->dest_tile);
@@ -400,7 +400,7 @@ static void DisasterTick_2(Vehicle *v)
 			AddNewsItem(STR_B002_OIL_REFINERY_EXPLOSION, NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
-	} else if (v->current_order.dest.disaster == 0) {
+	} else if (v->current_order.dest == 0) {
 		int x,y;
 		TileIndex tile;
 		uint ind;
@@ -419,7 +419,7 @@ static void DisasterTick_2(Vehicle *v)
 		v->dest_tile = ind;
 
 		if (GetIndustry(ind)->type == IT_OIL_REFINERY) {
-			v->current_order.dest.disaster = 1;
+			v->current_order.dest = 1;
 			v->age = 0;
 		}
 	}
@@ -432,7 +432,7 @@ static void DisasterTick_3(Vehicle *v)
 
 	v->tick_counter++;
 	v->u.disaster.image_override =
-		(v->current_order.dest.disaster == 1 && v->tick_counter & 4) ? SPR_AH_64A_FIRING : 0;
+		(v->current_order.dest == 1 && v->tick_counter & 4) ? SPR_AH_64A_FIRING : 0;
 
 	GetNewVehiclePos(v, &gp);
 	SetDisasterVehiclePos(v, gp.x, gp.y, v->z_pos);
@@ -442,7 +442,7 @@ static void DisasterTick_3(Vehicle *v)
 		return;
 	}
 
-	if (v->current_order.dest.disaster == 2) {
+	if (v->current_order.dest == 2) {
 		if (!(v->tick_counter&3)) {
 			Industry *i = GetIndustry(v->dest_tile);
 			int x = TileX(i->xy) * TILE_SIZE;
@@ -456,13 +456,13 @@ static void DisasterTick_3(Vehicle *v)
 				EV_EXPLOSION_SMALL);
 
 			if (++v->age >= 55)
-				v->current_order.dest.disaster = 3;
+				v->current_order.dest = 3;
 		}
-	} else if (v->current_order.dest.disaster == 1) {
+	} else if (v->current_order.dest == 1) {
 		if (++v->age == 112) {
 			Industry *i;
 
-			v->current_order.dest.disaster = 2;
+			v->current_order.dest = 2;
 			v->age = 0;
 
 			i = GetIndustry(v->dest_tile);
@@ -472,7 +472,7 @@ static void DisasterTick_3(Vehicle *v)
 			AddNewsItem(STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS, NEWS_FLAGS(NM_THIN,NF_VIEWPORT|NF_TILE,NT_ACCIDENT,0), i->xy, 0);
 			SndPlayTileFx(SND_12_EXPLOSION, i->xy);
 		}
-	} else if (v->current_order.dest.disaster == 0) {
+	} else if (v->current_order.dest == 0) {
 		int x,y;
 		TileIndex tile;
 		uint ind;
@@ -491,7 +491,7 @@ static void DisasterTick_3(Vehicle *v)
 		v->dest_tile = ind;
 
 		if (GetIndustry(ind)->type == IT_FACTORY) {
-			v->current_order.dest.disaster = 1;
+			v->current_order.dest = 1;
 			v->age = 0;
 		}
 	}
@@ -523,7 +523,7 @@ static void DisasterTick_4(Vehicle *v)
 
 	v->tick_counter++;
 
-	if (v->current_order.dest.disaster == 1) {
+	if (v->current_order.dest == 1) {
 		int x = TileX(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
 		int y = TileY(v->dest_tile) * TILE_SIZE + TILE_SIZE / 2;
 		if (abs(v->x_pos - x) + abs(v->y_pos - y) >= 8) {
@@ -540,7 +540,7 @@ static void DisasterTick_4(Vehicle *v)
 			return;
 		}
 
-		v->current_order.dest.disaster = 2;
+		v->current_order.dest = 2;
 
 		FOR_ALL_VEHICLES(u) {
 			if (u->type == VEH_Train || u->type == VEH_Road) {
@@ -574,7 +574,7 @@ static void DisasterTick_4(Vehicle *v)
 		u->next = w;
 		InitializeDisasterVehicle(w, -6 * TILE_SIZE, v->y_pos, 0, DIR_SW, 12);
 		w->vehstatus |= VS_SHADOW;
-	} else if (v->current_order.dest.disaster < 1) {
+	} else if (v->current_order.dest < 1) {
 
 		int x = TileX(v->dest_tile) * TILE_SIZE;
 		int y = TileY(v->dest_tile) * TILE_SIZE;
@@ -589,7 +589,7 @@ static void DisasterTick_4(Vehicle *v)
 			v->dest_tile = RandomTile();
 			return;
 		}
-		v->current_order.dest.disaster = 1;
+		v->current_order.dest = 1;
 
 		tile_org = tile = RandomTile();
 		do {
@@ -624,11 +624,11 @@ static void DisasterTick_4b(Vehicle *v)
 		return;
 	}
 
-	if (v->current_order.dest.disaster == 0) {
+	if (v->current_order.dest == 0) {
 		u = GetVehicle(v->u.disaster.unk2);
 		if (abs(v->x_pos - u->x_pos) > TILE_SIZE)
 			return;
-		v->current_order.dest.disaster = 1;
+		v->current_order.dest = 1;
 
 		CreateEffectVehicleRel(u, 0, 7, 8, EV_EXPLOSION_LARGE);
 		SndPlayVehicleFx(SND_12_EXPLOSION, u);

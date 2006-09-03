@@ -1848,7 +1848,7 @@ static bool CheckShipsOnBuoy(Station *st)
 		if (v->type == VEH_Ship) {
 			const Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->type == OT_GOTO_STATION && order->dest.station == st->index) {
+				if (order->type == OT_GOTO_STATION && order->dest == st->index) {
 					return true;
 				}
 			}
@@ -2289,7 +2289,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 			StationID station_id = GetStationIndex(tile);
 
 			if ((!(v->current_order.flags & OF_NON_STOP) && !_patches.new_nonstop) ||
-					(v->current_order.type == OT_GOTO_STATION && v->current_order.dest.station == station_id)) {
+					(v->current_order.type == OT_GOTO_STATION && v->current_order.dest == station_id)) {
 				if (!(_patches.new_nonstop && v->current_order.flags & OF_NON_STOP) &&
 						v->current_order.type != OT_LEAVESTATION &&
 						v->last_station_visited != station_id) {
@@ -2375,7 +2375,6 @@ void DestroyRoadStop(RoadStop* rs)
   */
 void DestroyStation(Station *st)
 {
-	DestinationID dest;
 	StationID index;
 	Vehicle *v;
 
@@ -2389,8 +2388,7 @@ void DestroyStation(Station *st)
 	DeleteWindowById(WC_STATION_VIEW, index);
 
 	/* Now delete all orders that go to the station */
-	dest.station = index;
-	RemoveOrderFromAllVehicles(OT_GOTO_STATION, dest);
+	RemoveOrderFromAllVehicles(OT_GOTO_STATION, index);
 
 	//And do the same with aircraft that have the station as a hangar-stop
 	FOR_ALL_VEHICLES(v) {
@@ -2398,7 +2396,7 @@ void DestroyStation(Station *st)
 		if (v->type == VEH_Aircraft) {
 			Order *order;
 			FOR_VEHICLE_ORDERS(v, order) {
-				if (order->type == OT_GOTO_DEPOT && order->dest.station == index) {
+				if (order->type == OT_GOTO_DEPOT && order->dest == index) {
 					order->type = OT_DUMMY;
 					order->flags = 0;
 					invalidate = true;

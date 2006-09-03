@@ -79,14 +79,11 @@ Depot *AllocateDepot(void)
  */
 void DestroyDepot(Depot *depot)
 {
-	DestinationID dest;
-
 	/* Clear the tile */
 	DoClearSquare(depot->xy);
 
 	/* Clear the depot from all order-lists */
-	dest.depot = depot->index;
-	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, dest);
+	RemoveOrderFromAllVehicles(OT_GOTO_DEPOT, depot->index);
 
 	/* Delete the depot-window */
 	DeleteWindowById(WC_VEHICLE_DEPOT, depot->xy);

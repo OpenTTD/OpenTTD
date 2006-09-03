@@ -417,7 +417,7 @@ int32 CmdSendRoadVehToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		v->current_order.type = OT_GOTO_DEPOT;
 		v->current_order.flags = OF_NON_STOP;
 		if (!(p2 & DEPOT_SERVICE)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
-		v->current_order.dest.depot = dep->index;
+		v->current_order.dest = dep->index;
 		v->dest_tile = dep->xy;
 		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
@@ -670,9 +670,9 @@ static void ProcessRoadVehOrder(Vehicle *v)
 		return;
 	}
 
-	if (order->type    == v->current_order.type &&
-			order->flags   == v->current_order.flags &&
-			order->dest.station == v->current_order.dest.station) {
+	if (order->type  == v->current_order.type &&
+			order->flags == v->current_order.flags &&
+			order->dest  == v->current_order.dest) {
 		return;
 	}
 
@@ -682,12 +682,12 @@ static void ProcessRoadVehOrder(Vehicle *v)
 		case OT_GOTO_STATION: {
 			const RoadStop* rs;
 
-			if (order->dest.station == v->last_station_visited) {
+			if (order->dest == v->last_station_visited) {
 				v->last_station_visited = INVALID_STATION;
 			}
 
 			rs = GetPrimaryRoadStop(
-				GetStation(order->dest.station),
+				GetStation(order->dest),
 				v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK
 			);
 
@@ -713,7 +713,7 @@ static void ProcessRoadVehOrder(Vehicle *v)
 		}
 
 		case OT_GOTO_DEPOT:
-			v->dest_tile = GetDepot(order->dest.depot)->xy;
+			v->dest_tile = GetDepot(order->dest)->xy;
 			break;
 
 		default:
@@ -1501,7 +1501,7 @@ again:
 			v->current_order.flags = 0;
 
 			if (old_order.type == OT_GOTO_STATION &&
-					v->current_order.dest.station == v->last_station_visited) {
+					v->current_order.dest == v->last_station_visited) {
 				v->current_order.flags =
 					(old_order.flags & (OF_FULL_LOAD | OF_UNLOAD | OF_TRANSFER)) | OF_NON_STOP;
 			}
@@ -1543,9 +1543,9 @@ again:
 			if (v->current_order.type != OT_GOTO_STATION) {
 				DEBUG(ms, 0) ("Multistop: -- Current order type (%d) is not OT_GOTO_STATION.", v->current_order.type);
 			} else {
-				if (v->current_order.dest.station != st->index)
+				if (v->current_order.dest != st->index)
 					DEBUG(ms, 0) ("Multistop: -- Current station %d is not target station in current_order.station (%d).",
-							st->index, v->current_order.dest.station);
+							st->index, v->current_order.dest);
 			}
 
 			DEBUG(ms, 0) ("           -- Force a slot clearing.");
@@ -1660,7 +1660,7 @@ static void CheckIfRoadVehNeedsService(Vehicle *v)
 
 	v->current_order.type = OT_GOTO_DEPOT;
 	v->current_order.flags = OF_NON_STOP;
-	v->current_order.dest.depot = depot->index;
+	v->current_order.dest = depot->index;
 	v->dest_tile = depot->xy;
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 }
@@ -1688,7 +1688,7 @@ void OnNewDay_RoadVeh(Vehicle *v)
 
 	/* update destination */
 	if (v->current_order.type == OT_GOTO_STATION && v->u.road.slot == NULL && !(v->vehstatus & VS_CRASHED)) {
-		Station* st = GetStation(v->current_order.dest.station);
+		Station* st = GetStation(v->current_order.dest);
 		RoadStop* rs = GetPrimaryRoadStop(st, v->cargo_type == CT_PASSENGERS ? RS_BUS : RS_TRUCK);
 		RoadStop* best = NULL;
 

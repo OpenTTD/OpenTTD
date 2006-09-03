@@ -98,10 +98,7 @@ void UpdateAllWaypointSigns(void)
 /* Internal handler to delete a waypoint */
 void DestroyWaypoint(Waypoint *wp)
 {
-	DestinationID dest;
-
-	dest.waypoint = wp->index;
-	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, dest);
+	RemoveOrderFromAllVehicles(OT_GOTO_WAYPOINT, wp->index);
 
 	if (wp->string != STR_NULL) DeleteName(wp->string);
 
