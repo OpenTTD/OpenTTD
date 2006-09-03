@@ -246,9 +246,10 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	_current_player = old_player;
 
 	/* Temporarily increase the player's money, to be sure that
-	* removing his/her property doesn't fail because of lack of money */
+	* removing his/her property doesn't fail because of lack of money.
+	* Not too drastically though, because it could overflow */
 	if (new_player == OWNER_SPECTATOR) {
-		GetPlayer(old_player)->money64 = ((uint64)-1)>>1; // jackpot ;p
+		GetPlayer(old_player)->money64 = MAX_UVALUE(uint64) >>2; // jackpot ;p
 		UpdatePlayerMoney32(GetPlayer(old_player));
 	}
 
