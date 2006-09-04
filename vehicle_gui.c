@@ -625,10 +625,10 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			/* draw sorting criteria string */
 
 			/* Ensure that custom engines which substituted wagons
-			* are sorted correctly.
-			* XXX - DO NOT EVER DO THIS EVER AGAIN! GRRR hacking in wagons as
-			* engines to get more types.. Stays here until we have our own format
-			* then it is exit!!! */
+			 * are sorted correctly.
+			 * XXX - DO NOT EVER DO THIS EVER AGAIN! GRRR hacking in wagons as
+			 * engines to get more types.. Stays here until we have our own format
+			 * then it is exit!!! */
 			if (WP(w,replaceveh_d).wagon_btnstate) {
 				train_engine_drawing_loop(&x, &y, &pos, &sel[0], &selected_id[0], railtype, w->vscroll.cap, true, false, true, true); // True engines
 				train_engine_drawing_loop(&x2, &y2, &pos2, &sel[1], &selected_id[1], railtype, w->vscroll.cap, true, false, false, false); // True engines

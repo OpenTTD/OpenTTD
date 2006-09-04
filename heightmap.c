@@ -121,7 +121,7 @@ static bool ReadHeightmapPNG(char *filename, uint *x, uint *y, byte **map)
 	png_init_io(png_ptr, fp);
 
 	/* Allocate memory and read image, without alpha or 16-bit samples
-	* (result is either 8-bit indexed/grayscale or 24-bit RGB) */
+	 * (result is either 8-bit indexed/grayscale or 24-bit RGB) */
 	png_set_packing(png_ptr);
 	png_read_png(png_ptr, info_ptr, PNG_TRANSFORM_PACKING | PNG_TRANSFORM_STRIP_ALPHA | PNG_TRANSFORM_STRIP_16, NULL);
 

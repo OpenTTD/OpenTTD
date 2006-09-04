@@ -1,12 +1,12 @@
 /* $Id */
 /** @file elrail_data.h Stores all the data for overhead wire and pylon drawing.
-  @see elrail.c */
+ *  @see elrail.c */
 
 #ifndef ELRAIL_DATA_H
 #define ELRAIL_DATA_H
 
 /** Tile Location group.
-  This defines whether the X and or Y coordinate of a tile is even */
+ * This defines whether the X and or Y coordinate of a tile is even */
 typedef enum TLG {
 	XEVEN_YEVEN = 0,
 	XEVEN_YODD  = 1,
@@ -16,8 +16,8 @@ typedef enum TLG {
 } TLG;
 
 /** When determining the pylon configuration on the edge, two tiles are taken
-  into account: the tile being drawn itself (the home tile, the one in
-  ti->tile), and the neighbouring tile */
+ * into account: the tile being drawn itself (the home tile, the one in
+ * ti->tile), and the neighbouring tile */
 typedef enum {
 	TS_HOME      = 0,
 	TS_NEIGHBOUR = 1,
@@ -38,8 +38,8 @@ static byte AllowedPPPonPCP[DIAGDIR_END] = {
 };
 
 /** Which of the PPPs are inside the tile. For the two PPPs on the tile border
-  the following system is used: if you rotate the PCP so that it is in the
-  north, the eastern PPP belongs to the tile. */
+ * the following system is used: if you rotate the PCP so that it is in the
+ * north, the eastern PPP belongs to the tile. */
 static byte OwnedPPPonPCP[DIAGDIR_END] = {
 	1 << DIR_SE | 1 << DIR_S  | 1 << DIR_SW | 1 << DIR_W,
 	1 << DIR_N  | 1 << DIR_SW | 1 << DIR_W  | 1 << DIR_NW,
@@ -59,9 +59,9 @@ static const DiagDirection PCPpositions[TRACK_END][2] = {
 
 #define PCP_NOT_ON_TRACK 0xFF
 /** Preferred points of each trackbit. Those are the ones perpendicular to the
-  track, plus the point in extension of the track (to mark end-of-track). PCPs
-  which are not on either end of the track are fully preferred.
-  @see PCPpositions */
+ * track, plus the point in extension of the track (to mark end-of-track). PCPs
+ * which are not on either end of the track are fully preferred.
+ * @see PCPpositions */
 static byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 	{    /* X */
 		1 << DIR_NE | 1 << DIR_SE | 1 << DIR_NW, /* NE */
@@ -101,8 +101,8 @@ static byte PreferredPPPofTrackAtPCP[TRACK_END][DIAGDIR_END] = {
 #define NUM_IGNORE_GROUPS 3
 #define IGNORE_NONE 0xFF
 /** In case we have a staight line, we place pylon only every two tiles,
-  so there are certain tiles which we ignore. A straight line is found if
-  we have exactly two PPPs. */
+ * so there are certain tiles which we ignore. A straight line is found if
+ * we have exactly two PPPs. */
 static byte IgnoredPCP[NUM_IGNORE_GROUPS][TLG_END][DIAGDIR_END] = {
 	{   /* Ignore group 1, X and Y tracks */
 		{     /* X even, Y even */
@@ -196,7 +196,7 @@ static const Track TracksAtPCP[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 };
 
 /* takes each of the 6 track bits from the array above and
-   assigns it to the home tile or neighbour tile */
+ * assigns it to the home tile or neighbour tile */
 static const TileSource TrackSourceTile[DIAGDIR_END][NUM_TRACKS_AT_PCP] = {
 	{TS_HOME, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     },
 	{TS_HOME, TS_NEIGHBOUR, TS_NEIGHBOUR, TS_HOME     , TS_NEIGHBOUR, TS_HOME     },
@@ -232,8 +232,8 @@ static const Direction PPPorder[DIAGDIR_END][TLG_END][DIR_END] = {    /*  X  -  
 static const int8 x_pcp_offsets[DIAGDIR_END] = {0,  8, 15, 8};
 static const int8 y_pcp_offsets[DIAGDIR_END] = {8, 15,  8, 0};
 /* Geometric placement of the PPP relative to the PCP*/
-static const int8 x_ppp_offsets[DIR_END] = {-3, -4, -3,  0, +3, +4, +3,  0};
-static const int8 y_ppp_offsets[DIR_END] = {-3,  0, +3, +4, +3,  0, -3, -4};
+static const int8 x_ppp_offsets[DIR_END] = {-3, -4, -3,  0,  3,  4,  3,  0};
+static const int8 y_ppp_offsets[DIR_END] = {-3,  0,  3,  4,  3,  0, -3, -4};
 /* The type of pylon to draw at each PPP */
 static const SpriteID pylons_normal[] = {
 	SPR_PYLON_EW_N,
@@ -341,16 +341,16 @@ static const SortableSpriteStruct CatenarySpriteData_Depot[] = {
 };
 
 /** Refers to a certain element of the catenary.
-  * Identifiers for Wires:
-  * <ol><li>Direction of the wire</li>
-  * <li>Slope of the tile for diagonals, placement inside the track for horiz/vertical pieces</li>
-  * <li>Place where a pylon shoule be</li></ol>
-  * Identifiers for Pylons:
-  * <ol><li>Direction of the wire</li>
-  * <li>Slope of the tile</li>
-  * <li>Position of the Pylon relative to the track</li>
-  * <li>Position of the Pylon inside the tile</li></ol>
-  */
+ * Identifiers for Wires:
+ * <ol><li>Direction of the wire</li>
+ * <li>Slope of the tile for diagonals, placement inside the track for horiz/vertical pieces</li>
+ * <li>Place where a pylon shoule be</li></ol>
+ * Identifiers for Pylons:
+ * <ol><li>Direction of the wire</li>
+ * <li>Slope of the tile</li>
+ * <li>Position of the Pylon relative to the track</li>
+ * <li>Position of the Pylon inside the tile</li></ol>
+ */
 typedef enum {
 	WIRE_X_FLAT_SW,
 	WIRE_X_FLAT_NE,
@@ -398,11 +398,11 @@ typedef enum {
 } CatenarySprite;
 
 /* Selects a Wire (with white and grey ends) depending on whether:
-   a) none (should never happen)
-   b) the first
-   c) the second
-   d) both
-   PCP exists.*/
+ * a) none (should never happen)
+ * b) the first
+ * c) the second
+ * d) both
+ * PCP exists.*/
 static const CatenarySprite Wires[5][TRACK_END][4] = {
 	{ /* Tileh == 0 */
 		{INVALID_CATENARY, WIRE_X_FLAT_NE,   WIRE_X_FLAT_SW,   WIRE_X_FLAT_BOTH},

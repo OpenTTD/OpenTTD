@@ -6,15 +6,15 @@
 /** @file CCountedPtr - smart pointer implementation */
 
 /** CCountedPtr - simple reference counting smart pointer.
-*
-*     One of the standard ways how to maintain object's lifetime.
-*
-*     See http://ootips.org/yonat/4dev/smart-pointers.html for more
-*   general info about smart pointers.
-*
-*     This class implements ref-counted pointer for objects/interfaces that
-*   support AddRef() and Release() methods.
-*/
+ *
+ *     One of the standard ways how to maintain object's lifetime.
+ *
+ *     See http://ootips.org/yonat/4dev/smart-pointers.html for more
+ *   general info about smart pointers.
+ *
+ *     This class implements ref-counted pointer for objects/interfaces that
+ *   support AddRef() and Release() methods.
+ */
 template <class Tcls_>
 class CCountedPtr {
 	/** redefine the template argument to make it visible for derived classes */

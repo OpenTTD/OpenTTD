@@ -82,7 +82,7 @@ static inline TrackBits AxisToTrackBits(Axis a)
 
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
-direction (corresponding to the Track enum) and 8-13 in the other direction. */
+ * direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum Trackdirs {
 	TRACKDIR_X_NE     =  0,
 	TRACKDIR_Y_SE     =  1,
@@ -103,7 +103,7 @@ typedef enum Trackdirs {
 } Trackdir;
 
 /** These are a combination of tracks and directions. Values are 0-5 in one
-direction (corresponding to the Track enum) and 8-13 in the other direction. */
+ * direction (corresponding to the Track enum) and 8-13 in the other direction. */
 typedef enum TrackdirBits {
 	TRACKDIR_BIT_NONE     = 0x0000,
 	TRACKDIR_BIT_X_NE     = 0x0001,

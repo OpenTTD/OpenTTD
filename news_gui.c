@@ -17,18 +17,18 @@
 #include "date.h"
 
 /* News system
-News system is realized as a FIFO queue (in an array)
-The positions in the queue can't be rearranged, we only access
-the array elements through pointers to the elements. Once the
-array is full, the oldest entry (_oldest_news) is being overwritten
-by the newest (_latest news).
-
-oldest                   current   lastest
- |                          |         |
-[O------------F-------------C---------L           ]
-              |
-           forced
-*/
+ * News system is realized as a FIFO queue (in an array)
+ * The positions in the queue can't be rearranged, we only access
+ * the array elements through pointers to the elements. Once the
+ * array is full, the oldest entry (_oldest_news) is being overwritten
+ * by the newest (_latest news).
+ *
+ * oldest                   current   lastest
+ *  |                          |         |
+ * [O------------F-------------C---------L           ]
+ *               |
+ *            forced
+ */
 
 #define MAX_NEWS 30
 
@@ -524,7 +524,7 @@ void ShowLastNewsMessage(void)
 
 
 /* return news by number, with 0 being the most
-recent news. Returns INVALID_NEWS if end of queue reached. */
+ * recent news. Returns INVALID_NEWS if end of queue reached. */
 static byte getNews(byte i)
 {
 	if (i >= _total_news) return INVALID_NEWS;

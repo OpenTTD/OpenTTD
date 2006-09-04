@@ -160,8 +160,8 @@ public:
 	FORCEINLINE void SetMaxCost(int max_cost) {m_max_cost = max_cost;}
 
 	/** Called by YAPF to calculate the cost from the origin to the given node.
-	*   Calculates only the cost of given node, adds it to the parent node cost
-	*   and stores the result into Node::m_cost member */
+	 *  Calculates only the cost of given node, adds it to the parent node cost
+	 *  and stores the result into Node::m_cost member */
 	FORCEINLINE bool PfCalcCost(Node& n)
 	{
 		assert(!n.flags_u.flags_s.m_targed_seen);

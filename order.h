@@ -1,7 +1,6 @@
 /* $Id$ */
 
-/** @file order.h
-  */
+/** @file order.h */
 
 #ifndef ORDER_H
 #define ORDER_H

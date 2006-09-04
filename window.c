@@ -1271,9 +1271,9 @@ static void HandleKeypress(uint32 key)
 {
 	Window *w;
 	WindowEvent we;
- /* Stores if a window with a textfield for typing is open
-  * If this is the case, keypress events are only passed to windows with text fields and
-	* to thein this main toolbar. */
+	/* Stores if a window with a textfield for typing is open
+	 * If this is the case, keypress events are only passed to windows with text fields and
+	 * to thein this main toolbar. */
 	bool query_open = false;
 
 	// Setup event

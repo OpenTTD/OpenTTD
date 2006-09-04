@@ -4,9 +4,9 @@
 
 
 /** CYapfSegmentCostCacheNoneT - the formal only yapf cost cache provider that implements
-PfNodeCacheFetch() and PfNodeCacheFlush() callbacks. Used when nodes don't have CachedData
-defined (they don't count with any segment cost caching).
-*/
+ * PfNodeCacheFetch() and PfNodeCacheFlush() callbacks. Used when nodes don't have CachedData
+ * defined (they don't count with any segment cost caching).
+ */
 template <class Types>
 class CYapfSegmentCostCacheNoneT
 {
@@ -15,14 +15,14 @@ public:
 	typedef typename Types::NodeList::Titem Node; ///< this will be our node type
 
 	/** Called by YAPF to attach cached or local segment cost data to the given node.
-	*   @return true if globally cached data were used or false if local data was used */
+	 *  @return true if globally cached data were used or false if local data was used */
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		return false;
 	};
 
 	/** Called by YAPF to flush the cached segment cost data back into cache storage.
-	*   Current cache implementation doesn't use that. */
+	 *  Current cache implementation doesn't use that. */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
 	};
@@ -30,9 +30,9 @@ public:
 
 
 /** CYapfSegmentCostCacheLocalT - the yapf cost cache provider that implements fake segment
-cost caching functionality for yapf. Used when node needs caching, but you don't want to
-cache the segment costs.
-*/
+ * cost caching functionality for yapf. Used when node needs caching, but you don't want to
+ * cache the segment costs.
+ */
 template <class Types>
 class CYapfSegmentCostCacheLocalT
 {
@@ -52,7 +52,7 @@ protected:
 
 public:
 	/** Called by YAPF to attach cached or local segment cost data to the given node.
-	*   @return true if globally cached data were used or false if local data was used */
+	 *  @return true if globally cached data were used or false if local data was used */
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		CacheKey key(n.GetKey());
@@ -61,7 +61,7 @@ public:
 	};
 
 	/** Called by YAPF to flush the cached segment cost data back into cache storage.
-	*   Current cache implementation doesn't use that. */
+	 *  Current cache implementation doesn't use that. */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
 	};
@@ -69,10 +69,10 @@ public:
 
 
 /** Base class for segment cost cache providers. Contains global counter
-*   of track layout changes and static notification function called whenever
-*   the track layout changes. It is implemented as base class because it needs
-*   to be shared between all rail YAPF types (one shared counter, one notification
-*   function. */
+ *  of track layout changes and static notification function called whenever
+ *  the track layout changes. It is implemented as base class because it needs
+ *  to be shared between all rail YAPF types (one shared counter, one notification
+ *  function. */
 struct CSegmentCostCacheBase
 {
 	static int   s_rail_change_counter;
@@ -82,13 +82,13 @@ struct CSegmentCostCacheBase
 
 
 /** CSegmentCostCacheT - template class providing hash-map and storage (heap)
-    of Tsegment structures. Each rail node contains pointer to the segment
-    that contains cached (or non-cached) segment cost information. Nodes can
-    differ by key type, but they use the same segment type. Segment key should
-    be always the same (TileIndex + DiagDirection) that represent the beginning
-    of the segment (origin tile and exit-dir from this tile).
-    Different CYapfCachedCostT types can share the same type of CSegmentCostCacheT.
-    Look at CYapfRailSegment (yapf_node_rail.hpp) for the segment example */
+ *  of Tsegment structures. Each rail node contains pointer to the segment
+ *  that contains cached (or non-cached) segment cost information. Nodes can
+ *  differ by key type, but they use the same segment type. Segment key should
+ *  be always the same (TileIndex + DiagDirection) that represent the beginning
+ *  of the segment (origin tile and exit-dir from this tile).
+ *  Different CYapfCachedCostT types can share the same type of CSegmentCostCacheT.
+ *  Look at CYapfRailSegment (yapf_node_rail.hpp) for the segment example */
 template <class Tsegment>
 struct CSegmentCostCacheT
 	: public CSegmentCostCacheBase
@@ -119,8 +119,8 @@ struct CSegmentCostCacheT
 };
 
 /** CYapfSegmentCostCacheGlobalT - the yapf cost cache provider that adds the segment cost
-    caching functionality to yapf. Using this class as base of your will provide the global
-		segment cost caching services for your Nodes.
+ *  caching functionality to yapf. Using this class as base of your will provide the global
+ *  segment cost caching services for your Nodes.
 */
 template <class Types>
 class CYapfSegmentCostCacheGlobalT
@@ -173,7 +173,7 @@ protected:
 
 public:
 	/** Called by YAPF to attach cached or local segment cost data to the given node.
-	*   @return true if globally cached data were used or false if local data was used */
+	 *  @return true if globally cached data were used or false if local data was used */
 	FORCEINLINE bool PfNodeCacheFetch(Node& n)
 	{
 		if (!Yapf().CanUseGlobalCache(n)) {
@@ -187,7 +187,7 @@ public:
 	};
 
 	/** Called by YAPF to flush the cached segment cost data back into cache storage.
-	*   Current cache implementation doesn't use that. */
+	 *  Current cache implementation doesn't use that. */
 	FORCEINLINE void PfNodeCacheFlush(Node& n)
 	{
 	};

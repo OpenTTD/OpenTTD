@@ -817,9 +817,9 @@ void RestoreVehicleOrders(const Vehicle* v, const BackuppedOrders* bak)
 	}
 
 	/* CMD_NO_TEST_IF_IN_NETWORK is used here, because CMD_INSERT_ORDER checks if the
-	    order number is one more than the current amount of orders, and because
-	    in network the commands are queued before send, the second insert always
-	    fails in test mode. By bypassing the test-mode, that no longer is a problem. */
+	 *  order number is one more than the current amount of orders, and because
+	 *  in network the commands are queued before send, the second insert always
+	 *  fails in test mode. By bypassing the test-mode, that no longer is a problem. */
 	for (i = 0; bak->order[i].type != OT_NOTHING; i++) {
 		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
@@ -1055,10 +1055,10 @@ void DeleteVehicleOrders(Vehicle *v)
 		v->next_shared = NULL;
 
 		/* We only need to update this-one, because if there is a third
-		    vehicle which shares the same order-list, nothing will change. If
-		    this is the last vehicle, the last line of the order-window
-		    will change from Shared order list, to Order list, so it needs
-		    an update */
+		 *  vehicle which shares the same order-list, nothing will change. If
+		 *  this is the last vehicle, the last line of the order-window
+		 *  will change from Shared order list, to Order list, so it needs
+		 *  an update */
 		InvalidateVehicleOrder(u);
 		return;
 	}
@@ -1175,8 +1175,8 @@ static void Load_ORDR(void)
 		/* Update all the next pointer */
 		for (i = 1; i < len; ++i) {
 			/* The orders were built like this:
-			     Vehicle one had order[0], and as long as order++.type was not
-			     OT_NOTHING, it was part of the order-list of that vehicle */
+			 *   Vehicle one had order[0], and as long as order++.type was not
+			 *   OT_NOTHING, it was part of the order-list of that vehicle */
 			if (GetOrder(i)->type != OT_NOTHING)
 				GetOrder(i - 1)->next = GetOrder(i);
 		}

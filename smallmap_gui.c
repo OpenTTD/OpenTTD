@@ -230,8 +230,8 @@ static const uint16 * const _legend_table[] = {
 #	endif
 	}
 #else
-#	define WRITE_PIXELS(dst, val)		*(uint32*)(dst) = (val);
-#	define WRITE_PIXELS_OR(dst,val)	*(uint32*)(dst) |= (val);
+#	define WRITE_PIXELS(dst, val)   *(uint32*)(dst) = (val);
+#	define WRITE_PIXELS_OR(dst,val) *(uint32*)(dst) |= (val);
 #endif
 
 #define MKCOLOR(x) TO_LE32X(x)

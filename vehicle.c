@@ -344,10 +344,10 @@ Vehicle *AllocateVehicle(void)
 
 
 /** Allocates a lot of vehicles and frees them again
-* @param vl pointer to an array of vehicles to get allocated. Can be NULL if the vehicles aren't needed (makes it test only)
-* @param num number of vehicles to allocate room for
-* @return true if there is room to allocate all the vehicles
-*/
+ * @param vl pointer to an array of vehicles to get allocated. Can be NULL if the vehicles aren't needed (makes it test only)
+ * @param num number of vehicles to allocate room for
+ * @return true if there is room to allocate all the vehicles
+ */
 bool AllocateVehicles(Vehicle **vl, int num)
 {
 	int i;
@@ -514,9 +514,9 @@ Vehicle *GetFirstVehicleInChain(const Vehicle *v)
 	}
 
 	/* It is the fact (currently) that newly built vehicles do not have
-	* their ->first pointer set. When this is the case, go up to the
-	* first engine and set the pointers correctly. Also the first pointer
-	* is not saved in a savegame, so this has to be fixed up after loading */
+	 * their ->first pointer set. When this is the case, go up to the
+	 * first engine and set the pointers correctly. Also the first pointer
+	 * is not saved in a savegame, so this has to be fixed up after loading */
 
 	/* Find the 'locomotive' or the first wagon in a chain */
 	while ((u = GetPrevVehicleInChain_bruteforce(v)) != NULL) v = u;
@@ -574,8 +574,8 @@ static void MaybeReplaceVehicle(Vehicle *v);
 static Vehicle* _first_veh_in_depot_list;
 
 /** Adds a vehicle to the list of vehicles, that visited a depot this tick
-* @param *v vehicle to add
-*/
+ * @param *v vehicle to add
+ */
 void VehicleEnteredDepotThisTick(Vehicle *v)
 {
 	// we need to set v->leave_depot_instantly as we have no control of it's contents at this time
@@ -1537,10 +1537,10 @@ void AgeVehicle(Vehicle *v)
 }
 
 /** Clone a vehicle. If it is a train, it will clone all the cars too
-* @param tile tile of the depot where the cloned vehicle is build
-* @param p1 the original vehicle's index
-* @param p2 1 = shared orders, else copied orders
-*/
+ * @param tile tile of the depot where the cloned vehicle is build
+ * @param p1 the original vehicle's index
+ * @param p2 1 = shared orders, else copied orders
+ */
 int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Vehicle *v_front, *v;
@@ -1919,14 +1919,14 @@ static void MaybeReplaceVehicle(Vehicle *v)
 }
 
 /**
-* @param sort_list list to store the list in. Note: it's presumed that it is big enough to store all vehicles in the game (worst case) and it will not check size
-* @param type type of vehicle
-* @param owner PlayerID of owner to generate a list for
-* @param station index of station to generate a list for. INVALID_STATION when not used
-* @param order index of oder to generate a list for. INVALID_ORDER when not used
-* @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
-* @return the number of vehicles added to the list
-*/
+ * @param sort_list list to store the list in. Note: it's presumed that it is big enough to store all vehicles in the game (worst case) and it will not check size
+ * @param type type of vehicle
+ * @param owner PlayerID of owner to generate a list for
+ * @param station index of station to generate a list for. INVALID_STATION when not used
+ * @param order index of oder to generate a list for. INVALID_ORDER when not used
+ * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
+ * @return the number of vehicles added to the list
+ */
 uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
 {
 	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
@@ -1985,13 +1985,13 @@ uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owne
 }
 
 /** send all vehicles of type to depots
-* @param type type of vehicle
-* @param flags the flags used for DoCommand()
-* @param service should the vehicles only get service in the depots
-* @param owner PlayerID of owner of the vehicles to send
-* @param VLW_flag tells what kind of list requested the goto depot
-* @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
-*/
+ * @param type type of vehicle
+ * @param flags the flags used for DoCommand()
+ * @param service should the vehicles only get service in the depots
+ * @param owner PlayerID of owner of the vehicles to send
+ * @param VLW_flag tells what kind of list requested the goto depot
+ * @return 0 for success and CMD_ERROR if no vehicle is able to go to depot
+ */
 int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
 {
 	const Vehicle** sort_list;
@@ -2544,7 +2544,7 @@ static void Load_VEHS(void)
 
 		if (CheckSavegameVersion(5)) {
 			/* Convert the current_order.type (which is a mix of type and flags, because
-			    in those versions, they both were 4 bits big) to type and flags */
+			 *  in those versions, they both were 4 bits big) to type and flags */
 			v->current_order.flags = (v->current_order.type & 0xF0) >> 4;
 			v->current_order.type  =  v->current_order.type & 0x0F;
 		}
@@ -2557,7 +2557,7 @@ static void Load_VEHS(void)
 
 			FOR_ALL_VEHICLES_FROM(u, v->index + 1) {
 				/* If a vehicle has the same orders, add the link to eachother
-				    in both vehicles */
+				 *  in both vehicles */
 				if (v->orders == u->orders) {
 					v->next_shared = u;
 					u->prev_shared = v;

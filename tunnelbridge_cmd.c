@@ -918,22 +918,22 @@ uint GetBridgeFoundation(Slope tileh, Axis axis)
 }
 
 /**
-  * Draws a tunnel of bridge tile.
-  * For tunnels, this is rather simple, as you only needa draw the entrance.
-  * Bridges are a bit more complex. base_offset is where the sprite selection comes into play
-  * and it works a bit like a bitmask.<p> For bridge heads:
-  * <ul><li>Bit 0: direction</li>
-  * <li>Bit 1: northern or southern heads</li>
-  * <li>Bit 2: Set if the bridge head is sloped</li>
-  * <li>Bit 3 and more: Railtype Specific subset</li>
-  * </ul>
-  * For middle parts:
-  * <ul><li>Bits 0-1: need to be 0</li>
-  * <li>Bit 2: direction</li>
-  * <li>Bit 3 and above: Railtype Specific subset</li>
-  * </ul>
-  * Please note that in this code, "roads" are treated as railtype 1, whilst the real railtypes are 0, 2 and 3
-  */
+ * Draws a tunnel of bridge tile.
+ * For tunnels, this is rather simple, as you only needa draw the entrance.
+ * Bridges are a bit more complex. base_offset is where the sprite selection comes into play
+ * and it works a bit like a bitmask.<p> For bridge heads:
+ * <ul><li>Bit 0: direction</li>
+ * <li>Bit 1: northern or southern heads</li>
+ * <li>Bit 2: Set if the bridge head is sloped</li>
+ * <li>Bit 3 and more: Railtype Specific subset</li>
+ * </ul>
+ * For middle parts:
+ * <ul><li>Bits 0-1: need to be 0</li>
+ * <li>Bit 2: direction</li>
+ * <li>Bit 3 and above: Railtype Specific subset</li>
+ * </ul>
+ * Please note that in this code, "roads" are treated as railtype 1, whilst the real railtypes are 0, 2 and 3
+ */
 static void DrawTile_TunnelBridge(TileInfo *ti)
 {
 	uint32 image;

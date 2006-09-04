@@ -46,7 +46,7 @@ public:
 	}
 
 	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
-	*   adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
+	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
 		n.m_estimate = n.m_cost;
@@ -118,7 +118,7 @@ public:
 	}
 
 	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
-	*   adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
+	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
 		static int dg_dir_to_x_offs[] = {-1, 0, 1, 0};

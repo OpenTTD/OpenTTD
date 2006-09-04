@@ -3,8 +3,7 @@
 #ifndef ENGINE_H
 #define ENGINE_H
 
-/** @file engine.h
-  */
+/** @file engine.h */
 
 #include "pool.h"
 
@@ -71,8 +70,8 @@ typedef struct RoadVehicleInfo {
 } RoadVehicleInfo;
 
 /** Information about a vehicle
-  * @see table/engines.h
-  */
+ *  @see table/engines.h
+ */
 typedef struct EngineInfo {
 	Date base_intro;
 	byte unk2;              ///< Carriages have the highest bit set in this one

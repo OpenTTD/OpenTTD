@@ -515,7 +515,7 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		if (!!(p2 & DEPOT_SERVICE) == HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
 			 * Now we change the setting to apply the new one and let the vehicle head for the same hangar.
-			 * Note: the if is (true for requesting service == true for ordered to stop in hangar)          */
+			 * Note: the if is (true for requesting service == true for ordered to stop in hangar) */
 			if (flags & DC_EXEC) {
 				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
@@ -1915,15 +1915,15 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *Airport)
 	Station *st;
 
 	/* example of more terminalgroups
-		{0,HANGAR,NOTHING_block,1}, {0,255,TERM_GROUP1_block,0}, {0,255,TERM_GROUP2_ENTER_block,1}, {0,0,N,1},
-		Heading 255 denotes a group. We see 2 groups here:
-		1. group 0 -- TERM_GROUP1_block (check block)
-		2. group 1 -- TERM_GROUP2_ENTER_block (check block)
-		First in line is checked first, group 0. If the block (TERM_GROUP1_block) is free, it
-		looks at the corresponding terminals of that group. If no free ones are found, other
-		possible groups are checked (in this case group 1, since that is after group 0). If that
-		fails, then attempt fails and plane waits
-	*/
+	 * {0,HANGAR,NOTHING_block,1}, {0,255,TERM_GROUP1_block,0}, {0,255,TERM_GROUP2_ENTER_block,1}, {0,0,N,1},
+	 * Heading 255 denotes a group. We see 2 groups here:
+	 * 1. group 0 -- TERM_GROUP1_block (check block)
+	 * 2. group 1 -- TERM_GROUP2_ENTER_block (check block)
+	 * First in line is checked first, group 0. If the block (TERM_GROUP1_block) is free, it
+	 * looks at the corresponding terminals of that group. If no free ones are found, other
+	 * possible groups are checked (in this case group 1, since that is after group 0). If that
+	 * fails, then attempt fails and plane waits
+	 */
 	if (Airport->terminals[0] > 1) {
 		st = GetStation(v->u.air.targetairport);
 		temp = Airport->layout[v->u.air.pos].next_in_chain;

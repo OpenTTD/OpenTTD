@@ -8,8 +8,8 @@
 #include "binaryheap.hpp"
 
 /** Hash table based node list multi-container class.
-    Implements open list, closed list and priority queue for A-star
-    path finder. */
+ *  Implements open list, closed list and priority queue for A-star
+ *  path finder. */
 template <class Titem_, int Thash_bits_open_, int Thash_bits_closed_>
 class CNodeList_HashTableT {
 public:

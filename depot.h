@@ -4,7 +4,7 @@
 #define DEPOT_H
 
 /** @file depot.h Header files for depots (not hangars)
-  * @see depot.c */
+ *  @see depot.c */
 
 #include "direction.h"
 #include "pool.h"

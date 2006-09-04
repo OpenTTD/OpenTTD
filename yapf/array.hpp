@@ -6,7 +6,7 @@
 #include "fixedsizearray.hpp"
 
 /** Flexible array with size limit. Implemented as fixed size
-    array of fixed size arrays */
+ *  array of fixed size arrays */
 template <class Titem_, int Tblock_size_ = 1024, int Tnum_blocks_ = Tblock_size_>
 class CArrayT {
 public:

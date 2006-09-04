@@ -1177,7 +1177,7 @@ static const char* QZ_SetVideoWindowed(uint width, uint height)
 
 	/* _cocoa_video_data.realpixels now points to the window's pixels
 	 * We want it to point to the *view's* pixels
-	*/
+	 */
 	{
 		int vOffset = [ _cocoa_video_data.window frame ].size.height - [ _cocoa_video_data.qdview frame ].size.height - [ _cocoa_video_data.qdview frame ].origin.y;
 		int hOffset = [ _cocoa_video_data.qdview frame ].origin.x;

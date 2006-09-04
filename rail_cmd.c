@@ -586,13 +586,12 @@ int32 CmdBuildTrainDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	tileh = GetTileSlope(tile, NULL);
 
 	/* Prohibit construction if
-		The tile is non-flat AND
-		1) The AI is "old-school"
-		2) build-on-slopes is disabled
-		3) the tile is steep i.e. spans two height levels
-		4) the exit points in the wrong direction
-
-	*/
+	 * The tile is non-flat AND
+	 * 1) The AI is "old-school"
+	 * 2) build-on-slopes is disabled
+	 * 3) the tile is steep i.e. spans two height levels
+	 * 4) the exit points in the wrong direction
+	 */
 
 	if (tileh != SLOPE_FLAT && (
 				_is_old_ai_player ||
@@ -753,7 +752,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
 	/* for vertical/horizontal tracks, double the given signals density
-	* since the original amount will be too dense (shorter tracks) */
+	 * since the original amount will be too dense (shorter tracks) */
 	if (!IsDiagonalTrack(track)) signal_density *= 2;
 
 	if (CmdFailed(ValidateAutoDrag(&trackdir, tile, end_tile))) return CMD_ERROR;
@@ -777,7 +776,7 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 	 * trackdir   - trackdir to build with autorail
 	 * semaphores - semaphores or signals
 	 * signals    - is there a signal/semaphore on the first tile, copy its style (two-way/single-way)
-	                and convert all others to semaphore/signal
+	 *              and convert all others to semaphore/signal
 	 * mode       - 1 remove signals, 0 build signals */
 	signal_ctr = total_cost = 0;
 	for (;;) {

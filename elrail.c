@@ -1,49 +1,49 @@
 /* $Id$ */
 /** @file elrail.c
-  This file deals with displaying wires and pylons for electric railways.
-<h2>Basics</h2>
-
-<h3>Tile Types</h3>
-
-We have two different types of tiles in the drawing code:
-Normal Railway Tiles (NRTs) which can have more than one track on it, and
-Special Railways tiles (SRTs) which have only one track (like crossings, depots
-stations, etc).
-
-<h3>Location Categories</h3>
-
-All tiles are categorized into three location groups (TLG):
-Group 0: Tiles with both an even X coordinate and an even Y coordinate
-Group 1: Tiles with an even X and an odd Y coordinate
-Group 2: Tiles with an odd X and an even Y coordinate
-Group 3: Tiles with both an odd X and Y coordnate.
-
-<h3>Pylon Points</h3>
-<h4>Control Points</h4>
-A Pylon Control Point (PCP) is a position where a wire (or rather two)
-is mounted onto a pylon.
-Each NRT does contain 4 PCPs which are bitmapped to a byte
-variable and are represented by the DiagDirection enum
-
-Each track ends on two PCPs and thus requires one pylon on each end. However,
-there is one exception: Straight-and-level tracks only have one pylon every
-other tile.
-
-Now on each edge there are two PCPs: One from each adjacent tile. Both PCPs
-are merged using an OR operation (i. e. if one tile needs a PCP at the postion
-in question, both tiles get it).
-
-<h4>Position Points</h4>
-A Pylon Position Point (PPP) is a position where a pylon is located on the
-ground.  Each PCP owns 8 in (45 degree steps) PPPs that are located around
-it. PPPs are represented using the Direction enum. Each track bit has PPPs
-that are impossible (because the pylon would be situated on the track) and
-some that are preferred (because the pylon would be rectangular to the track).
-
-<img src="../../elrail_tile.png">
-<img src="../../elrail_track.png">
-
-  */
+ * This file deals with displaying wires and pylons for electric railways.
+ * <h2>Basics</h2>
+ *
+ * <h3>Tile Types</h3>
+ *
+ * We have two different types of tiles in the drawing code:
+ * Normal Railway Tiles (NRTs) which can have more than one track on it, and
+ * Special Railways tiles (SRTs) which have only one track (like crossings, depots
+ * stations, etc).
+ *
+ * <h3>Location Categories</h3>
+ *
+ * All tiles are categorized into three location groups (TLG):
+ * Group 0: Tiles with both an even X coordinate and an even Y coordinate
+ * Group 1: Tiles with an even X and an odd Y coordinate
+ * Group 2: Tiles with an odd X and an even Y coordinate
+ * Group 3: Tiles with both an odd X and Y coordnate.
+ *
+ * <h3>Pylon Points</h3>
+ * <h4>Control Points</h4>
+ * A Pylon Control Point (PCP) is a position where a wire (or rather two)
+ * is mounted onto a pylon.
+ * Each NRT does contain 4 PCPs which are bitmapped to a byte
+ * variable and are represented by the DiagDirection enum
+ *
+ * Each track ends on two PCPs and thus requires one pylon on each end. However,
+ * there is one exception: Straight-and-level tracks only have one pylon every
+ * other tile.
+ *
+ * Now on each edge there are two PCPs: One from each adjacent tile. Both PCPs
+ * are merged using an OR operation (i. e. if one tile needs a PCP at the postion
+ * in question, both tiles get it).
+ *
+ * <h4>Position Points</h4>
+ * A Pylon Position Point (PPP) is a position where a pylon is located on the
+ * ground.  Each PCP owns 8 in (45 degree steps) PPPs that are located around
+ * it. PPPs are represented using the Direction enum. Each track bit has PPPs
+ * that are impossible (because the pylon would be situated on the track) and
+ * some that are preferred (because the pylon would be rectangular to the track).
+ *
+ * <img src="../../elrail_tile.png">
+ * <img src="../../elrail_track.png">
+ *
+ */
 
 #include "stdafx.h"
 #include "openttd.h"
@@ -68,8 +68,8 @@ static inline TLG GetTLG(TileIndex t)
 }
 
 /** Finds which Rail Bits are present on a given tile. For bridge tiles,
-  * returns track bits under the bridge
-  */
+ * returns track bits under the bridge
+ */
 static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 {
 	switch (GetTileType(t)) {
@@ -123,9 +123,9 @@ static TrackBits GetRailTrackBitsUniversal(TileIndex t, byte *override)
 }
 
 /** Corrects the tileh for certain tile types. Returns an effective tileh for the track on the tile.
-  * @param tile The tile to analyse
-  * @param *tileh the tileh
-  */
+ * @param tile The tile to analyse
+ * @param *tileh the tileh
+ */
 static void AdjustTileh(TileIndex tile, Slope *tileh)
 {
 	if (IsTileType(tile, MP_TUNNELBRIDGE)) {
@@ -150,13 +150,13 @@ static void AdjustTileh(TileIndex tile, Slope *tileh)
 }
 
 /** Draws wires and, if required, pylons on a given tile
-  * @param ti The Tileinfo to draw the tile for
-  */
+ * @param ti The Tileinfo to draw the tile for
+ */
 static void DrawCatenaryRailway(const TileInfo *ti)
 {
 	/* Pylons are placed on a tile edge, so we need to take into account
-	   the track configuration of 2 adjacent tiles. trackconfig[0] stores the
-	   current tile (home tile) while [1] holds the neighbour */
+	 * the track configuration of 2 adjacent tiles. trackconfig[0] stores the
+	 * current tile (home tile) while [1] holds the neighbour */
 	TrackBits trackconfig[TS_END];
 	bool isflat[TS_END];
 	/* Note that ti->tileh has already been adjusted for Foundations */
@@ -171,11 +171,11 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	Track t;
 
 	/* Find which rail bits are present, and select the override points.
-	   We don't draw a pylon:
-	   1) INSIDE a tunnel (we wouldn't see it anyway)
-	   2) on the "far" end of a bridge head (the one that connects to bridge middle),
-	      because that one is drawn on the bridge. Exception is for length 0 bridges
-	      which have no middle tiles */
+	 * We don't draw a pylon:
+	 * 1) INSIDE a tunnel (we wouldn't see it anyway)
+	 * 2) on the "far" end of a bridge head (the one that connects to bridge middle),
+	 *    because that one is drawn on the bridge. Exception is for length 0 bridges
+	 *    which have no middle tiles */
 	trackconfig[TS_HOME] = GetRailTrackBitsUniversal(ti->tile, &OverridePCP);
 	/* If a track bit is present that is not in the main direction, the track is level */
 	isflat[TS_HOME] = trackconfig[TS_HOME] & (TRACK_BIT_HORZ | TRACK_BIT_VERT);
@@ -188,7 +188,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		int k;
 
 		/* Here's one of the main headaches. GetTileSlope does not correct for possibly
-		   existing foundataions, so we do have to do that manually later on.*/
+		 * existing foundataions, so we do have to do that manually later on.*/
 		tileh[TS_NEIGHBOUR] = GetTileSlope(neighbour, NULL);
 		trackconfig[TS_NEIGHBOUR] = GetRailTrackBitsUniversal(neighbour, NULL);
 		if (IsTunnelTile(neighbour) && i != GetTunnelDirection(neighbour)) trackconfig[TS_NEIGHBOUR] = 0;
@@ -198,7 +198,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		PPPallowed[i] = AllowedPPPonPCP[i];
 
 		/* We cycle through all the existing tracks at a PCP and see what
-		   PPPs we want to have, or may not have at all */
+		 * PPPs we want to have, or may not have at all */
 		for (k = 0; k < NUM_TRACKS_AT_PCP; k++) {
 			/* Next to us, we have a bridge head, don't worry about that one, if it shows away from us */
 			if (TrackSourceTile[i][k] == TS_NEIGHBOUR &&
@@ -208,10 +208,10 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 			}
 
 			/* We check whether the track in question (k) is present in the tile
-			   (TrackSourceTile) */
+			 * (TrackSourceTile) */
 			if (HASBIT(trackconfig[TrackSourceTile[i][k]], TracksAtPCP[i][k])) {
 				/* track found, if track is in the neighbour tile, adjust the number
-				   of the PCP for preferred/allowed determination*/
+				 * of the PCP for preferred/allowed determination*/
 				DiagDirection PCPpos = (TrackSourceTile[i][k] == TS_HOME) ? i : ReverseDiagDir(i);
 				SETBIT(PCPstatus, i); /* This PCP is in use */
 
@@ -244,7 +244,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		AdjustTileh(neighbour, &tileh[TS_NEIGHBOUR]);
 
 		/* If we have a straight (and level) track, we want a pylon only every 2 tiles
-		   Delete the PCP if this is the case. */
+		 * Delete the PCP if this is the case. */
 		/* Level means that the slope is the same, or the track is flat */
 		if (tileh[TS_HOME] == tileh[TS_NEIGHBOUR] || (isflat[TS_HOME] && isflat[TS_NEIGHBOUR])) {
 			for (k = 0; k < NUM_IGNORE_GROUPS; k++)
@@ -252,9 +252,9 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 		}
 
 		/* Now decide where we draw our pylons. First try the preferred PPPs, but they may not exist.
-		   In that case, we try the any of the allowed ones. if they don't exist either, don't draw
-		   anything. Note that the preferred PPPs still contain the end-of-line markers.
-		   Remove those (simply by ANDing with allowed, since these markers are never allowed) */
+		 * In that case, we try the any of the allowed ones. if they don't exist either, don't draw
+		 * anything. Note that the preferred PPPs still contain the end-of-line markers.
+		 * Remove those (simply by ANDing with allowed, since these markers are never allowed) */
 		if ((PPPallowed[i] & PPPpreferred[i]) != 0) PPPallowed[i] &= PPPpreferred[i];
 
 		if (PPPallowed[i] != 0 && HASBIT(PCPstatus, i) && !HASBIT(OverridePCP, i)) {

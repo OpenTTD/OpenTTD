@@ -1,7 +1,6 @@
 /* $Id$ */
 
-/** @file town_land.h
- */
+/** @file town_land.h */
 
 enum {
 	HOUSE_TEMP_CHURCH    = 0x03,
@@ -16,16 +15,16 @@ enum {
 };
 
 /** Writes the data into the Town Tile Drawing Struct
-  * @param s1 The first sprite of the building, mostly the ground sprite
-  * @param s2 The second sprite of the building.
-  * @param sx The x-position of the sprite within the tile
-  * @param xy the y-position of the sprite within the tile
-  * @param w the width of the sprite
-  * @param h the height of the sprite
-  * @param dz the virtual height of the sprite
-  * @param p set to 1 if a lift is present
-  * @see DrawTownTileStruct
-  */
+ * @param s1 The first sprite of the building, mostly the ground sprite
+ * @param s2 The second sprite of the building.
+ * @param sx The x-position of the sprite within the tile
+ * @param xy the y-position of the sprite within the tile
+ * @param w the width of the sprite
+ * @param h the height of the sprite
+ * @param dz the virtual height of the sprite
+ * @param p set to 1 if a lift is present
+ * @see DrawTownTileStruct
+ */
 #define M(s1, s2, sx, sy, w, h, dz, p) {s1, s2, sx, sy, w - 1, h - 1, dz, p}
 
 static const DrawBuildingsTileStruct _town_draw_tile_data[] = {
@@ -1928,20 +1927,20 @@ static const uint16 _housetype_flags[] = {
 assert_compile(lengthof(_housetype_flags) == HOUSE_MAX);
 
 static const byte _housetype_extra_flags[] = {
-	 0, 0, 0, 0,32,32, 0, 8,
-	 0, 0, 0, 0, 0, 0, 0, 0,
-	 0, 0, 0, 0,16, 0, 0, 0,
-	 0, 0, 0, 0, 0, 0, 0, 0,
-	16, 0, 0, 0, 0, 0, 0, 0,
-	16, 0, 0, 0, 0, 0, 0, 0,
-	 0, 0, 0, 0, 0, 0, 0, 0,
-	 0, 0, 0, 0, 0, 0, 0, 0,
-	 0, 0, 8, 0, 8, 0, 0, 0,
-	 0, 0, 4, 0, 4, 0, 0, 0,
-	 0, 0, 0, 0, 0, 0, 0, 4,
-	 0, 0, 0, 0, 0, 0, 0, 0,
-	 0, 0, 0, 8, 0, 0, 0, 0,
-	 0, 0, 0, 0, 0, 0,
+	 0,  0,  0,  0, 32, 32,  0,  8,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0, 16,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	16,  0,  0,  0,  0,  0,  0,  0,
+	16,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  8,  0,  8,  0,  0,  0,
+	 0,  0,  4,  0,  4,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,  0,  4,
+	 0,  0,  0,  0,  0,  0,  0,  0,
+	 0,  0,  0,  8,  0,  0,  0,  0,
+	 0,  0,  0,  0,  0,  0,
 };
 assert_compile(lengthof(_housetype_extra_flags) == HOUSE_MAX);
 
@@ -2137,20 +2136,20 @@ static const HousetypeYear _housetype_years[] = {
 assert_compile(lengthof(_housetype_years) == HOUSE_MAX);
 
 static const byte _housetype_cargo_passengers[] = {
-	8, 8, 8, 2, 10,10,4, 6,
-	6, 2, 2, 2, 2, 8, 6, 6,
-	6, 10,6, 6, 4, 4, 4, 4,
-	3, 3, 3, 7, 8, 6, 8, 8,
-	4, 4, 4, 4, 8, 3, 3, 8,
-	8, 8, 8, 8, 5, 5, 3, 3,
-	3, 3, 8, 8, 9, 9,10, 10,
-	2, 2, 3, 3, 2, 2, 3, 3,
-	6, 6, 6, 6, 6, 6, 7, 7,
-	9, 9, 7, 7, 7, 7, 3, 3,
-	3, 3, 6, 2, 3, 6, 6, 8,
-	8, 6, 8, 2, 6, 3, 3, 3,
-	3, 3, 8, 4, 4, 8, 3, 3,
-	8, 8, 8, 4, 3, 3,
+	8,  8,  8,  2, 10, 10,  4,  6,
+	6,  2,  2,  2,  2,  8,  6,  6,
+	6, 10,  6,  6,  4,  4,  4,  4,
+	3,  3,  3,  7,  8,  6,  8,  8,
+	4,  4,  4,  4,  8,  3,  3,  8,
+	8,  8,  8,  8,  5,  5,  3,  3,
+	3,  3,  8,  8,  9,  9, 10, 10,
+	2,  2,  3,  3,  2,  2,  3,  3,
+	6,  6,  6,  6,  6,  6,  7,  7,
+	9,  9,  7,  7,  7,  7,  3,  3,
+	3,  3,  6,  2,  3,  6,  6,  8,
+	8,  6,  8,  2,  6,  3,  3,  3,
+	3,  3,  8,  4,  4,  8,  3,  3,
+	8,  8,  8,  4,  3,  3,
 };
 assert_compile(lengthof(_housetype_cargo_passengers) == HOUSE_MAX);
 

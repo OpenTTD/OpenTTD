@@ -184,16 +184,16 @@ typedef struct Patches {
 	bool ai_in_multiplayer;             // Do we allow AIs in multiplayer
 
 	/*
-		* New Path Finding
-		*/
+	 * New Path Finding
+	 */
 	bool new_pathfinding_all; /* Use the newest pathfinding algorithm for all */
 
 	/**
-		* The maximum amount of search nodes a single NPF run should take. This
-		* limit should make sure performance stays at acceptable levels at the cost
-		* of not being perfect anymore. This will probably be fixed in a more
-		* sophisticated way sometime soon
-		*/
+	 * The maximum amount of search nodes a single NPF run should take. This
+	 * limit should make sure performance stays at acceptable levels at the cost
+	 * of not being perfect anymore. This will probably be fixed in a more
+	 * sophisticated way sometime soon
+	 */
 	uint32 npf_max_search_nodes;
 
 	uint32 npf_rail_firstred_penalty;      /* The penalty for when the first signal is red (and it is not an exit or combo signal) */

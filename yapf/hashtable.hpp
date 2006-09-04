@@ -95,26 +95,26 @@ struct CHashTableSlotT
 };
 
 /** @class CHashTableT<Titem, Thash_bits> - simple hash table
-    of pointers allocated elsewhere.
-
-    Supports: Add/Find/Remove of Titems.
-
-    Your Titem must meet some extra requirements to be CHashTableT
-    compliant:
-      - its constructor/destructor (if any) must be public
-      - if the copying of item requires an extra resource management,
-          you must define also copy constructor
-      - must support nested type (struct, class or typedef) Titem::Key
-          that defines the type of key class for that item
-      - must support public method:
-          const Key& GetKey() const; // return the item's key object
-
-		In addition, the Titem::Key class must support:
-      - public method that calculates key's hash:
-          int CalcHash() const;
-			- public 'equality' operator to compare the key with another one
-					bool operator == (const Key& other) const;
-*/
+ *  of pointers allocated elsewhere.
+ *
+ *  Supports: Add/Find/Remove of Titems.
+ *
+ *  Your Titem must meet some extra requirements to be CHashTableT
+ *  compliant:
+ *    - its constructor/destructor (if any) must be public
+ *    - if the copying of item requires an extra resource management,
+ *        you must define also copy constructor
+ *    - must support nested type (struct, class or typedef) Titem::Key
+ *        that defines the type of key class for that item
+ *    - must support public method:
+ *        const Key& GetKey() const; // return the item's key object
+ *
+ *  In addition, the Titem::Key class must support:
+ *    - public method that calculates key's hash:
+ *        int CalcHash() const;
+ *    - public 'equality' operator to compare the key with another one
+ *        bool operator == (const Key& other) const;
+ */
 template <class Titem_, int Thash_bits_>
 class CHashTableT {
 public:
@@ -125,7 +125,7 @@ public:
 
 protected:
 	/** each slot contains pointer to the first item in the list,
-	    Titem contains pointer to the next item - GetHashNext(), SetHashNext() */
+	 *  Titem contains pointer to the next item - GetHashNext(), SetHashNext() */
 	typedef CHashTableSlotT<Titem_> Slot;
 
 	Slot*  m_slots;     // here we store our data (array of blobs)

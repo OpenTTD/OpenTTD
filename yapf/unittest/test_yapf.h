@@ -160,8 +160,8 @@ struct CYapfTestBaseT
 	FORCEINLINE char TransportTypeChar() const {return 'T';}
 
 	/** Called by YAPF to move from the given node to the next tile. For each
-	*   reachable trackdir on the new tile creates new node, initializes it
-	*   and adds it to the open list by calling Yapf().AddNewNode(n) */
+	 *  reachable trackdir on the new tile creates new node, initializes it
+	 *  and adds it to the open list by calling Yapf().AddNewNode(n) */
 	FORCEINLINE void PfFollowNode(Node& org)
 	{
 		int x_org = org.m_key.m_x;
@@ -207,8 +207,8 @@ struct CYapfTestBaseT
 	}
 
 	/** Called by YAPF to calculate the cost from the origin to the given node.
-	*   Calculates only the cost of given node, adds it to the parent node cost
-	*   and stores the result into Node::m_cost member */
+	 *  Calculates only the cost of given node, adds it to the parent node cost
+	 *  and stores the result into Node::m_cost member */
 	FORCEINLINE bool PfCalcCost(Node& n)
 	{
 		// base tile cost depending on distance
@@ -225,7 +225,7 @@ struct CYapfTestBaseT
 	}
 
 	/** Called by YAPF to calculate cost estimate. Calculates distance to the destination
-	*   adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
+	 *  adds it to the actual cost from origin and stores the sum to the Node::m_estimate */
 	FORCEINLINE bool PfCalcEstimate(Node& n)
 	{
 		int dx = abs(n.m_key.m_x - m_x2);

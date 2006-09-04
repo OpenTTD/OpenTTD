@@ -1343,8 +1343,8 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				for (tmp = first; tmp != NULL; tmp = tmp->next) tmp->first = NULL;
 
 				/* 2.2 If there are wagons present after the deleted front engine, check
-					* if the second wagon (which will be first) is an engine. If it is one,
-					* promote it as a new train, retaining the unitnumber, orders */
+         * if the second wagon (which will be first) is an engine. If it is one,
+         * promote it as a new train, retaining the unitnumber, orders */
 				if (new_f != NULL) {
 					if (IsTrainEngine(new_f)) {
 						switch_engine = true;
@@ -1902,9 +1902,9 @@ static TrainFindDepotData FindClosestTrainDepot(Vehicle *v, int max_distance)
 			/* Found target */
 			tfdd.tile = ftd.node.tile;
 			/* Our caller expects a number of tiles, so we just approximate that
-			* number by this. It might not be completely what we want, but it will
-			* work for now :-) We can possibly change this when the old pathfinder
-			* is removed. */
+			 * number by this. It might not be completely what we want, but it will
+			 * work for now :-) We can possibly change this when the old pathfinder
+			 * is removed. */
 			tfdd.best_length = ftd.best_path_dist / NPF_TILE_LENGTH;
 			if (NPFGetFlag(&ftd.node, NPF_FLAG_REVERSE)) tfdd.reverse = true;
 		}
@@ -1960,8 +1960,8 @@ int32 CmdSendTrainToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (v->current_order.type == OT_GOTO_DEPOT) {
 		if (!!(p2 & DEPOT_SERVICE) == HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
 			/* We called with a different DEPOT_SERVICE setting.
-			* Now we change the setting to apply the new one and let the vehicle head for the same depot.
-			* Note: the if is (true for requesting service == true for ordered to stop in depot)          */
+			 * Now we change the setting to apply the new one and let the vehicle head for the same depot.
+			 * Note: the if is (true for requesting service == true for ordered to stop in depot)          */
 			if (flags & DC_EXEC) {
 				TOGGLEBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 				InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);

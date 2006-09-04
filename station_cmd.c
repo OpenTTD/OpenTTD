@@ -1,7 +1,6 @@
 /* $Id$ */
 
-/** @file station_cmd.c
-  */
+/** @file station_cmd.c */
 
 #include "stdafx.h"
 #include "openttd.h"
@@ -169,7 +168,7 @@ RoadStop *AllocateRoadStop(void)
 }
 
 /* Calculate the radius of the station. Basicly it is the biggest
-    radius that is available within the station */
+ *  radius that is available within the station */
 static uint FindCatchmentRadius(const Station* st)
 {
 	uint ret = 0;
@@ -783,13 +782,13 @@ int32 CheckFlatLandBelow(TileIndex tile, uint w, uint h, uint flags, uint invali
 		tileh = GetTileSlope(tile_cur, &z);
 
 		/* Prohibit building if
-			1) The tile is "steep" (i.e. stretches two height levels)
-			-OR-
-			2) The tile is non-flat if
-				a) the player building is an "old-school" AI
-				-OR-
-				b) the build_on_slopes switch is disabled
-		*/
+		 *   1) The tile is "steep" (i.e. stretches two height levels)
+		 * -OR-
+		 *   2) The tile is non-flat if
+		 *     a) the player building is an "old-school" AI
+		 *   -OR-
+		 *     b) the build_on_slopes switch is disabled
+		 */
 		if (IsSteepSlope(tileh) ||
 				((_is_old_ai_player || !_patches.build_on_slopes) && tileh != SLOPE_FLAT)) {
 			return_cmd_error(STR_0007_FLAT_LAND_REQUIRED);
@@ -1252,11 +1251,11 @@ uint GetStationPlatforms(const Station *st, TileIndex tile)
 }
 
 /** Determines the REMAINING length of a platform, starting at (and including)
-  * the given tile.
-  * @param tile the tile from which to start searching. Must be a railway station tile
-  * @param dir The direction in which to search.
-  * @return The platform length
-  */
+ * the given tile.
+ * @param tile the tile from which to start searching. Must be a railway station tile
+ * @param dir The direction in which to search.
+ * @return The platform length
+ */
 uint GetPlatformLength(TileIndex tile, DiagDirection dir)
 {
 	TileIndex start_tile = tile;
@@ -1353,23 +1352,23 @@ int32 DoConvertStationRail(TileIndex tile, RailType totype, bool exec)
 }
 
 /** Heavy wizardry used to add a roadstop to a station.
-  * To understand the function, lets first look at what is passed around,
-  * especially the last two parameters. CmdBuildRoadStop allocates a road
-  * stop and needs to put that stop into the linked list of road stops.
-  * It (CmdBuildRoadStop) has a **currstop pointer which points to element
-  * in the linked list of stops (each element in this list being a pointer
-  * in itself, hence the double pointer). We (FindRoadStopSpot) need to
-  * modify this pointer (**currstop) thus we need to pass by reference,
-  * obtaining a triple pointer (***currstop). When finished, **currstop
-  * in CmdBuildRoadStop will contain the address of the pointer which will
-  * then point into the global roadstop array. *prev (in CmdBuildRoadStop)
-  * is the pointer tino the global roadstop array which has *currstop in
-  * its ->next element.
-  * @param[in] truck_station Determines whether a stop is RS_BUS or RS_TRUCK
-  * @param[in] station The station to do the whole procedure for
-  * @param[out] currstop See the detailed function description
-  * @param prev See the detailed function description
-  */
+ * To understand the function, lets first look at what is passed around,
+ * especially the last two parameters. CmdBuildRoadStop allocates a road
+ * stop and needs to put that stop into the linked list of road stops.
+ * It (CmdBuildRoadStop) has a **currstop pointer which points to element
+ * in the linked list of stops (each element in this list being a pointer
+ * in itself, hence the double pointer). We (FindRoadStopSpot) need to
+ * modify this pointer (**currstop) thus we need to pass by reference,
+ * obtaining a triple pointer (***currstop). When finished, **currstop
+ * in CmdBuildRoadStop will contain the address of the pointer which will
+ * then point into the global roadstop array. *prev (in CmdBuildRoadStop)
+ * is the pointer tino the global roadstop array which has *currstop in
+ * its ->next element.
+ * @param[in] truck_station Determines whether a stop is RS_BUS or RS_TRUCK
+ * @param[in] station The station to do the whole procedure for
+ * @param[out] currstop See the detailed function description
+ * @param prev See the detailed function description
+ */
 static void FindRoadStopSpot(bool truck_station, Station* st, RoadStop*** currstop, RoadStop** prev)
 {
 	RoadStop **primary_stop = (truck_station) ? &st->truck_stops : &st->bus_stops;
@@ -2367,12 +2366,12 @@ void DestroyRoadStop(RoadStop* rs)
 }
 
 /**
-  * Clean up a station by clearing vehicle orders and invalidating windows.
-  * Aircraft-Hangar orders need special treatment here, as the hangars are
-  * actually part of a station (tiletype is STATION), but the order type
-  * is OT_GOTO_DEPOT.
-  * @param st Station to be deleted
-  */
+ * Clean up a station by clearing vehicle orders and invalidating windows.
+ * Aircraft-Hangar orders need special treatment here, as the hangars are
+ * actually part of a station (tiletype is STATION), but the order type
+ * is OT_GOTO_DEPOT.
+ * @param st Station to be deleted
+ */
 void DestroyStation(Station *st)
 {
 	StationID index;

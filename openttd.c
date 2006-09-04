@@ -1068,13 +1068,13 @@ static void UpdateExclusiveRights(void)
 	}
 
 	/* FIXME old exclusive rights status is not being imported (stored in s->blocked_months_obsolete)
-			could be implemented this way:
-			1.) Go through all stations
-					Build an array town_blocked[ town_id ][ player_id ]
-				 that stores if at least one station in that town is blocked for a player
-			2.) Go through that array, if you find a town that is not blocked for
-					one player, but for all others, then give him exclusivity.
-	*/
+	 *   could be implemented this way:
+	 * 1.) Go through all stations
+	 *     Build an array town_blocked[ town_id ][ player_id ]
+	 *     that stores if at least one station in that town is blocked for a player
+	 * 2.) Go through that array, if you find a town that is not blocked for
+	 *     one player, but for all others, then give him exclusivity.
+	 */
 }
 
 static const byte convert_currency[] = {

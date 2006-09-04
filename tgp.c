@@ -505,25 +505,25 @@ static void HeightMapAdjustWaterLevel(amplitude_t water_percent, height_t h_max_
 static double perlin_coast_noise_2D(const double x, const double y, const double p, const int prime);
 
 /**
-* This routine sculpts in from the edge a random amount, again a Perlin
-* sequence, to avoid the rigid flat-edge slopes that were present before. The
-* Perlin noise map doesnt know where we are going to slice across, and so we
-* often cut straight through high terrain. the smoothing routine makes it
-* legal, gradually increasing up from the edge to the original terrain height.
-* By cutting parts of this away, it gives a far more irregular edge to the
-* map-edge. Sometimes it works beautifully with the existing sea & lakes, and
-* creates a very realistic coastline. Other times the variation is less, and
-* the map-edge shows its cliff-like roots.
-*
-* This routine may be extended to randomly sculpt the height of the terrain
-* near the edge. This will have the coast edge at low level (1-3), rising in
-* smoothed steps inland to about 15 tiles in. This should make it look as
-* though the map has been built for the map size, rather than a slice through
-* a larger map.
-*
-* Please note that all the small numbers; 53, 101, 167, etc. are small primes
-* to help give the perlin noise a bit more of a random feel.
-*/
+ * This routine sculpts in from the edge a random amount, again a Perlin
+ * sequence, to avoid the rigid flat-edge slopes that were present before. The
+ * Perlin noise map doesnt know where we are going to slice across, and so we
+ * often cut straight through high terrain. the smoothing routine makes it
+ * legal, gradually increasing up from the edge to the original terrain height.
+ * By cutting parts of this away, it gives a far more irregular edge to the
+ * map-edge. Sometimes it works beautifully with the existing sea & lakes, and
+ * creates a very realistic coastline. Other times the variation is less, and
+ * the map-edge shows its cliff-like roots.
+ *
+ * This routine may be extended to randomly sculpt the height of the terrain
+ * near the edge. This will have the coast edge at low level (1-3), rising in
+ * smoothed steps inland to about 15 tiles in. This should make it look as
+ * though the map has been built for the map size, rather than a slice through
+ * a larger map.
+ *
+ * Please note that all the small numbers; 53, 101, 167, etc. are small primes
+ * to help give the perlin noise a bit more of a random feel.
+ */
 static void HeightMapCoastLines(void)
 {
 	int smallest_size = min(_patches.map_x, _patches.map_y);
@@ -626,12 +626,12 @@ static void HeightMapSmoothCoasts(void)
 }
 
 /**
-* This routine provides the essential cleanup necessary before OTTD can
-* display the terrain. When generated, the terrain heights can jump more than
-* one level between tiles. This routine smooths out those differences so that
-* the most it can change is one level. When OTTD can support cliffs, this
-* routine may not be necessary.
-*/
+ * This routine provides the essential cleanup necessary before OTTD can
+ * display the terrain. When generated, the terrain heights can jump more than
+ * one level between tiles. This routine smooths out those differences so that
+ * the most it can change is one level. When OTTD can support cliffs, this
+ * routine may not be necessary.
+ */
 static void HeightMapSmoothSlopes(height_t dh_max)
 {
 	int x, y;

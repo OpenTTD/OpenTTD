@@ -4,16 +4,16 @@
 #define  AUTOCOPYPTR_HPP
 
 /** CAutoCopyPtrT - kind of CoW (Copy on Write) pointer.
-		It is non-invasive smart pointer (reference counter is held outside
-		of Tdata).
-		When copied, its new copy shares the same underlaying structure Tdata.
-		When dereferenced, its behavior depends on 2 factors:
-		   - whether the data is shared (used by more than one pointer)
-		   - type of access (read/write)
-		  When shared pointer is dereferenced for write, new clone of Tdata
-		is made first.
-		Can't be used for polymorphic data types (interfaces).
-*/
+ *  It is non-invasive smart pointer (reference counter is held outside
+ *  of Tdata).
+ *  When copied, its new copy shares the same underlaying structure Tdata.
+ *  When dereferenced, its behavior depends on 2 factors:
+ *     - whether the data is shared (used by more than one pointer)
+ *     - type of access (read/write)
+ *    When shared pointer is dereferenced for write, new clone of Tdata
+ *  is made first.
+ *  Can't be used for polymorphic data types (interfaces).
+ */
 template <class Tdata_>
 class CAutoCopyPtrT {
 protected:

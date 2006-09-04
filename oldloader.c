@@ -1519,7 +1519,7 @@ static bool LoadOldMain(LoadgameState *ls)
 					_m[i].m4 = (_m[i].m4 >> 1) & 7;
 			}
 			/* TTDPatch stores PBS things in L6 and all elsewhere; so we'll just
-			* clear it for ourselves and let OTTD's rebuild PBS itself */
+			 * clear it for ourselves and let OTTD's rebuild PBS itself */
 			_m[i].m4 &= 0xF; /* Only keep the lower four bits; upper four is PBS */
 		}
 	}

@@ -6,8 +6,8 @@
 #include "yapf.hpp"
 
 /** Track follower helper template class (can serve pathfinders and vehicle
-    controllers). See 6 different typedefs below for 3 different transport
-    types w/ of w/o 90-deg turns allowed */
+ *  controllers). See 6 different typedefs below for 3 different transport
+ *  types w/ of w/o 90-deg turns allowed */
 template <TransportType Ttr_type_, bool T90deg_turns_allowed_ = true>
 struct CFollowTrackT : public FollowTrack_t
 {
@@ -38,7 +38,7 @@ struct CFollowTrackT : public FollowTrack_t
 	FORCEINLINE static bool Allow90degTurns() {return T90deg_turns_allowed_;}
 
 	/** main follower routine. Fills all members and return true on success.
-	    Otherwise returns false if track can't be followed. */
+	 *  Otherwise returns false if track can't be followed. */
 	FORCEINLINE bool Follow(TileIndex old_tile, Trackdir old_td)
 	{
 		m_old_tile = old_tile;

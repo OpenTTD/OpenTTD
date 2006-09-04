@@ -11,14 +11,14 @@ FORCEINLINE void MemCpyT(Titem_* d, const Titem_* s, int num_items = 1)
 
 
 /** Base class for simple binary blobs.
-    Item is byte.
-		The word 'simple' means:
-		  - no configurable allocator type (always made from heap)
-			- no smart deallocation - deallocation must be called from the same
-			    module (DLL) where the blob was allocated
-			- no configurable allocation policy (how big blocks should be allocated)
-			- no extra ownership policy (i.e. 'copy on write') when blob is copied
-			- no thread synchronization at all */
+ *  Item is byte.
+ *  The word 'simple' means:
+ *    - no configurable allocator type (always made from heap)
+ *    - no smart deallocation - deallocation must be called from the same
+ *        module (DLL) where the blob was allocated
+ *    - no configurable allocation policy (how big blocks should be allocated)
+ *    - no extra ownership policy (i.e. 'copy on write') when blob is copied
+ *    - no thread synchronization at all */
 class CBlobBaseSimple {
 protected:
 	struct CHdr {
@@ -78,7 +78,7 @@ public:
 	}
 
 	/** Reallocate if there is no free space for num_bytes bytes.
-	    @return pointer to the new data to be added */
+	 *  @return pointer to the new data to be added */
 	FORCEINLINE int8* MakeRawFreeSpace(int num_bytes)
 	{
 		assert(num_bytes >= 0);
@@ -89,7 +89,7 @@ public:
 	}
 
 	/** Increase RawSize() by num_bytes.
-	@return pointer to the new data added */
+	 *  @return pointer to the new data added */
 	FORCEINLINE int8* GrowRawSize(int num_bytes)
 	{
 		int8* pNewData = MakeRawFreeSpace(num_bytes);

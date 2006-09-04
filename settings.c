@@ -768,7 +768,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			const void *p = string_to_val(sdb, item->value);
 
 			/* The main type of a variable/setting is in bytes 8-15
-			* The subtype (what kind of numbers do we have there) is in 0-7 */
+			 * The subtype (what kind of numbers do we have there) is in 0-7 */
 			switch (sdb->cmd) {
 			case SDT_BOOLX:
 			case SDT_NUMX:

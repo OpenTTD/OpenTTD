@@ -247,7 +247,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		/* Set up cargo click-states. Toggle the all-vehicle and all-cargo types button
-		* depending on if all types are clicked or not */
+		 * depending on if all types are clicked or not */
 		SB(w->click_state, 6, 5, facilities);
 		SB(w->click_state, 26, 1, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
 		SB(w->click_state, 12, NUM_CARGO + 1, cargo_filter);

@@ -4,36 +4,36 @@
 #define SPRITES_H
 
 /** @file sprites.h
-	This file contails all sprite-related enums and defines. These consist mainly of
-	the sprite numbers and a bunch of masks and macros to handle sprites and to get
-	rid of all the magic numbers in the code.
-
-@NOTE:
-	ALL SPRITE NUMBERS BELOW 5126 are in the main files
-	SPR_CANALS_BASE is in canalsw.grf
-	SPR_SLOPES_BASE is in trkfoundw.grf
-	SPR_OPENTTD_BASE is in openttd.grf
-
-	All elements which consist of two elements should
-	have the same name and then suffixes
-		_GROUND and _BUILD for building-type sprites
-		_REAR and _FRONT for transport-type sprites (tiles where vehicles are on)
-	These sprites are split because of the Z order of the elements
-		(like some parts of a bridge are behind the vehicle, while others are before)
-
-
-	All sprites which are described here are referenced only one to a handful of times
-	throughout the code. When introducing new sprite enums, use meaningful names.
-	Don't be lazy and typing, and only use abbrevations when their meaning is clear or
-	the length of the enum would get out of hand. In that case EXPLAIN THE ABBREVATION
-	IN THIS FILE, and perhaps add some comments in the code where it is used.
-	Now, don't whine about this being too much typing work if the enums are like
-	30 characters in length. If your editor doen't help you simplifying your work,
-	get a proper editor. If your Operating Systems don't have any decent editors,
-	get a proper Operating System.
-
-	@todo Split the "Sprites" enum into smaller chunks and document them
-*/
+ * This file contails all sprite-related enums and defines. These consist mainly of
+ * the sprite numbers and a bunch of masks and macros to handle sprites and to get
+ * rid of all the magic numbers in the code.
+ *
+ * @NOTE:
+ * ALL SPRITE NUMBERS BELOW 5126 are in the main files
+ * SPR_CANALS_BASE is in canalsw.grf
+ * SPR_SLOPES_BASE is in trkfoundw.grf
+ * SPR_OPENTTD_BASE is in openttd.grf
+ *
+ * All elements which consist of two elements should
+ * have the same name and then suffixes
+ *   _GROUND and _BUILD for building-type sprites
+ *   _REAR and _FRONT for transport-type sprites (tiles where vehicles are on)
+ * These sprites are split because of the Z order of the elements
+ *  (like some parts of a bridge are behind the vehicle, while others are before)
+ *
+ *
+ * All sprites which are described here are referenced only one to a handful of times
+ * throughout the code. When introducing new sprite enums, use meaningful names.
+ * Don't be lazy and typing, and only use abbrevations when their meaning is clear or
+ * the length of the enum would get out of hand. In that case EXPLAIN THE ABBREVATION
+ * IN THIS FILE, and perhaps add some comments in the code where it is used.
+ * Now, don't whine about this being too much typing work if the enums are like
+ * 30 characters in length. If your editor doen't help you simplifying your work,
+ * get a proper editor. If your Operating Systems don't have any decent editors,
+ * get a proper Operating System.
+ *
+ * @todo Split the "Sprites" enum into smaller chunks and document them
+ */
 
 
 enum Sprites {
@@ -226,8 +226,8 @@ enum Sprites {
 
 	/* Elrail stuff */
 	/* Wires. First identifier is the direction of the track, second is the required placement of the pylon.
-	   "short" denotes a wire that requires a pylon on each end. Third identifier is the direction of the slope
-	   (in positive coordinate direction) */
+	 * "short" denotes a wire that requires a pylon on each end. Third identifier is the direction of the slope
+	 * (in positive coordinate direction) */
 	SPR_WIRE_X_SHORT = SPR_ELRAIL_BASE + 3,
 	SPR_WIRE_Y_SHORT = SPR_ELRAIL_BASE + 4,
 	SPR_WIRE_EW_SHORT = SPR_ELRAIL_BASE + 5,
@@ -561,19 +561,18 @@ enum Sprites {
 
 	/* BTSUS == Suspension bridge */
 	/* TILE_* denotes the different tiles a suspension bridge
-		can have
-		TILE_A and TILE_B are the "beginnings" and "ends" of the
-			suspension system. they have small rectangluar endcaps
-		TILE_C and TILE_D look almost identical to TILE_A and
-			TILE_B, but they do not have the "endcaps". They form the
-			middle part
-		TILE_E is a condensed configuration of two pillars. while they
-			are usually 2 pillars apart, they only have 1 pillar separation
-			here
-		TILE_F is an extended configuration of pillars. they are
-			plugged in when pillars should be 3 tiles apart
-
-	*/
+	 * can have
+	 * TILE_A and TILE_B are the "beginnings" and "ends" of the
+	 *   suspension system. they have small rectangluar endcaps
+	 * TILE_C and TILE_D look almost identical to TILE_A and
+	 *   TILE_B, but they do not have the "endcaps". They form the
+	 *   middle part
+	 * TILE_E is a condensed configuration of two pillars. while they
+	 *   are usually 2 pillars apart, they only have 1 pillar separation
+	 *   here
+	 * TILE_F is an extended configuration of pillars. they are
+	 *   plugged in when pillars should be 3 tiles apart
+	 */
 	SPR_BTSUS_ROAD_Y_REAR_TILE_A  = 2453,
 	SPR_BTSUS_ROAD_Y_REAR_TILE_B  = 2454,
 	SPR_BTSUS_Y_FRONT_TILE_A      = 2455,
@@ -713,10 +712,10 @@ enum Sprites {
 
 	/* tubular bridges */
 	/* tubular bridges have 3 kinds of tiles:
-			a start tile (with only half a tube on the far side, marked _BEG
-			a middle tile (full tunnel), marked _MID
-			and an end tile (half a tube on the near side, maked _END
-	*/
+	 *  a start tile (with only half a tube on the far side, marked _BEG
+	 *  a middle tile (full tunnel), marked _MID
+	 *  and an end tile (half a tube on the near side, maked _END
+	 */
 	SPR_BTTUB_X_FRONT_BEG       = 2559,
 	SPR_BTTUB_X_FRONT_MID       = 2660,
 	SPR_BTTUB_X_FRONT_END       = 2561,

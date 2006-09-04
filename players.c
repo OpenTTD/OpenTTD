@@ -1,8 +1,8 @@
 /* $Id$ */
 
 /** @file players.c
-  * @todo Cleanup the messy DrawPlayerFace function asap
-  */
+ * @todo Cleanup the messy DrawPlayerFace function asap
+ */
 #include "stdafx.h"
 #include "openttd.h"
 #include "engine.h"

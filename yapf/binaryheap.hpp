@@ -10,22 +10,22 @@
 
 
 /**
-* Binary Heap as C++ template.
-*
-* For information about Binary Heap algotithm,
-*   see: http://www.policyalmanac.org/games/binaryHeaps.htm
-*
-* Implementation specific notes:
-*
-* 1) It allocates space for item pointers (array). Items are allocated elsewhere.
-*
-* 2) ItemPtr [0] is never used. Total array size is max_items + 1, because we
-*    use indices 1..max_items instead of zero based C indexing.
-*
-* 3) Item of the binary heap should support these public members:
-*    - 'lower-then' operator '<' - used for comparing items before moving
-*
-*/
+ * Binary Heap as C++ template.
+ *
+ * For information about Binary Heap algotithm,
+ *   see: http://www.policyalmanac.org/games/binaryHeaps.htm
+ *
+ * Implementation specific notes:
+ *
+ * 1) It allocates space for item pointers (array). Items are allocated elsewhere.
+ *
+ * 2) ItemPtr [0] is never used. Total array size is max_items + 1, because we
+ *    use indices 1..max_items instead of zero based C indexing.
+ *
+ * 3) Item of the binary heap should support these public members:
+ *    - 'lower-then' operator '<' - used for comparing items before moving
+ *
+ */
 
 template <class Titem_>
 class CBinaryHeapT {
@@ -53,23 +53,23 @@ public:
 
 public:
 	/** Return the number of items stored in the priority queue.
-	*   @return number of items in the queue */
+	 *  @return number of items in the queue */
 	FORCEINLINE int Size() const {return m_size;};
 
 	/** Test if the priority queue is empty.
-	*   @return true if empty */
+	 *  @return true if empty */
 	FORCEINLINE bool IsEmpty() const {return (m_size == 0);};
 
 	/** Test if the priority queue is full.
-	*   @return true if full. */
+	 *  @return true if full. */
 	FORCEINLINE bool IsFull() const {return (m_size >= m_max_size);};
 
 	/** Find the smallest item in the priority queue.
-	*   Return the smallest item, or throw assert if empty. */
+	 *  Return the smallest item, or throw assert if empty. */
 	FORCEINLINE Titem_& GetHead() {assert(!IsEmpty()); return *m_items[1];}
 
 	/** Insert new item into the priority queue, maintaining heap order.
-	* @return false if the queue is full. */
+	 *  @return false if the queue is full. */
 	bool Push(Titem_& new_item);
 
 	/** Remove and return the smallest item from the priority queue. */
@@ -85,7 +85,7 @@ public:
 	int FindLinear(const Titem_& item) const;
 
 	/** Make the priority queue empty.
-	* All remaining items will remain untouched. */
+	 * All remaining items will remain untouched. */
 	void Clear() {m_size = 0;};
 
 	/** verifies the heap consistency (added during first YAPF debug phase) */

@@ -28,8 +28,8 @@ protected:
 
 public:
 	/** Called by YAPF to move from the given node to the next tile. For each
-	*   reachable trackdir on the new tile creates new node, initializes it
-	*   and adds it to the open list by calling Yapf().AddNewNode(n) */
+	 *  reachable trackdir on the new tile creates new node, initializes it
+	 *  and adds it to the open list by calling Yapf().AddNewNode(n) */
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());
@@ -91,8 +91,8 @@ protected:
 
 public:
 	/** Called by YAPF to move from the given node to the next tile. For each
-	*   reachable trackdir on the new tile creates new node, initializes it
-	*   and adds it to the open list by calling Yapf().AddNewNode(n) */
+	 *  reachable trackdir on the new tile creates new node, initializes it
+	 *  and adds it to the open list by calling Yapf().AddNewNode(n) */
 	inline void PfFollowNode(Node& old_node)
 	{
 		TrackFollower F(Yapf().GetVehicle());

@@ -14,34 +14,34 @@ EXTERN_C_END
 extern int _total_pf_time_us;
 
 /** CYapfBaseT - A-star type path finder base class.
-		Derive your own pathfinder from it. You must provide the following template argument:
-			Types      - used as collection of local types used in pathfinder
-
-		Requirements for the Types struct:
-		----------------------------------
-		The following types must be defined in the 'Types' argument:
-			- Types::Tpf - your pathfinder derived from CYapfBaseT
-			- Types::NodeList - open/closed node list (look at CNodeList_HashTableT)
-		NodeList needs to have defined local type Titem - defines the pathfinder node type.
-		Node needs to define local type Key - the node key in the collection ()
-
-		For node list you can use template class CNodeList_HashTableT, for which
-		you need to declare only your node type. Look at test_yapf.h for an example.
-
-
-		Requrements to your pathfinder class derived from CYapfBaseT:
-		-------------------------------------------------------------
-		Your pathfinder derived class needs to implement following methods:
-			FORCEINLINE void PfSetStartupNodes()
-			FORCEINLINE void PfFollowNode(Node& org)
-			FORCEINLINE bool PfCalcCost(Node& n)
-			FORCEINLINE bool PfCalcEstimate(Node& n)
-			FORCEINLINE bool PfDetectDestination(Node& n)
-
-		For more details about those methods, look at the end of CYapfBaseT
-		declaration. There are some examples. For another example look at
-		test_yapf.h (part or unittest project).
-*/
+ *  Derive your own pathfinder from it. You must provide the following template argument:
+ *    Types      - used as collection of local types used in pathfinder
+ *
+ * Requirements for the Types struct:
+ *  ----------------------------------
+ *  The following types must be defined in the 'Types' argument:
+ *    - Types::Tpf - your pathfinder derived from CYapfBaseT
+ *    - Types::NodeList - open/closed node list (look at CNodeList_HashTableT)
+ *  NodeList needs to have defined local type Titem - defines the pathfinder node type.
+ *  Node needs to define local type Key - the node key in the collection ()
+ *
+ *  For node list you can use template class CNodeList_HashTableT, for which
+ *  you need to declare only your node type. Look at test_yapf.h for an example.
+ *
+ *
+ *  Requrements to your pathfinder class derived from CYapfBaseT:
+ *  -------------------------------------------------------------
+ *  Your pathfinder derived class needs to implement following methods:
+ *    FORCEINLINE void PfSetStartupNodes()
+ *    FORCEINLINE void PfFollowNode(Node& org)
+ *    FORCEINLINE bool PfCalcCost(Node& n)
+ *    FORCEINLINE bool PfCalcEstimate(Node& n)
+ *    FORCEINLINE bool PfDetectDestination(Node& n)
+ *
+ *  For more details about those methods, look at the end of CYapfBaseT
+ *  declaration. There are some examples. For another example look at
+ *  test_yapf.h (part or unittest project).
+ */
 template <class Types>
 class CYapfBaseT {
 public:
@@ -105,12 +105,12 @@ public:
 	}
 
 	/** Main pathfinder routine:
-			 - set startup node(s)
-			 - main loop that stops if:
-					- the destination was found
-					- or the open list is empty (no route to destination).
-					- or the maximum amount of loops reached - m_max_search_nodes (default = 10000)
-			@return true if the path was found */
+	 *   - set startup node(s)
+	 *   - main loop that stops if:
+	 *      - the destination was found
+	 *      - or the open list is empty (no route to destination).
+	 *      - or the maximum amount of loops reached - m_max_search_nodes (default = 10000)
+	 * @return true if the path was found */
 	inline bool FindPath(const Vehicle* v)
 	{
 		m_veh = v;
@@ -160,16 +160,16 @@ public:
 	}
 
 	/** If path was found return the best node that has reached the destination. Otherwise
-			return the best visited node (which was nearest to the destination).
-	*/
+	 *  return the best visited node (which was nearest to the destination).
+	 */
 	FORCEINLINE Node& GetBestNode()
 	{
 		return (m_pBestDestNode != NULL) ? *m_pBestDestNode : *m_pBestIntermediateNode;
 	}
 
 	/** Calls NodeList::CreateNewNode() - allocates new node that can be filled and used
-			as argument for AddStartupNode() or AddNewNode()
-	*/
+	 *  as argument for AddStartupNode() or AddNewNode()
+	 */
 	FORCEINLINE Node& CreateNewNode()
 	{
 		Node& node = *m_nodes.CreateNewNode();
@@ -203,7 +203,7 @@ public:
 	}
 
 	/** AddNewNode() - called by Tderived::PfFollowNode() for each child node.
-	    Nodes are evaluated here and added into open list */
+	 *  Nodes are evaluated here and added into open list */
 	void AddNewNode(Node& n)
 	{
 		// evaluate the node

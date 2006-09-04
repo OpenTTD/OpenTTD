@@ -7,15 +7,15 @@
 
 # ifndef YS_DEF
 /*
-*  if YS_DEF is not defined, we will only do following declaration:
-*  typedef struct YapfSettings {
-*    bool   disable_node_optimization;
-*    uint32 max_search_nodes;
-*    .... all other yapf related settings ...
-*  } YapfSettings;
-*
-*  otherwise we will just expand YS_DEF_xx macros and then #undef them
-*/
+ *  if YS_DEF is not defined, we will only do following declaration:
+ *  typedef struct YapfSettings {
+ *    bool   disable_node_optimization;
+ *    uint32 max_search_nodes;
+ *    .... all other yapf related settings ...
+ *  } YapfSettings;
+ *
+ *  otherwise we will just expand YS_DEF_xx macros and then #undef them
+ */
 #  define YS_DEF_BEGIN typedef struct YapfSettings {
 #  define YS_DEF(type, name) type name;
 #  define YS_DEF_END } YapfSettings;

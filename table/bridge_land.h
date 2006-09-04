@@ -1,27 +1,27 @@
 /* $Id$ */
 
 /** @file bridge_land.h This file contains all the sprites for bridges
-  * It consists of a number of arrays.
-  * <ul><li>_bridge_sprite_table_n_m. Defines all the sprites of a bridge besides the pylons.
-  * n defines the number of the bridge type, m the number of the section. the highest m for
-  * each bridge set defines the heads.<br>
-  * Sprites for middle secionts are arranged in groups of four, the elements are:
-  * <ol><li>Element containing the track. This element is logically behind the vehicle.</li>
-  * <li>Element containing the structure that is logically between the vehicle and the camera</li>
-  * <li>Element containing the pylons.</li></ol>
-  * First group is for railway in X direction, second for railway in Y direction, two groups each follow for road, monorail and maglev<p>
-  * <br>Elements for heads are arranged in groups of eight:
-  * <ol><li>X direction, north end, flat</li>
-  * <li>Y direction, north end, flat</li>
-  * <li>X direction, south end, flat</li>
-  * <li>Y direction, south end, flat</li>
-  * <li>X direction, north end, sloped</li>
-  * <li>Y direction, north end, sloped</li>
-  * <li>X direction, south end, sloped</li>
-  * <li>Y direction, south end, sloped</li></ol>
-  * This is repeated 4 times, for rail, road, monorail, maglev</li>
-  * </ul>
-  */
+ * It consists of a number of arrays.
+ * <ul><li>_bridge_sprite_table_n_m. Defines all the sprites of a bridge besides the pylons.
+ * n defines the number of the bridge type, m the number of the section. the highest m for
+ * each bridge set defines the heads.<br>
+ * Sprites for middle secionts are arranged in groups of four, the elements are:
+ * <ol><li>Element containing the track. This element is logically behind the vehicle.</li>
+ * <li>Element containing the structure that is logically between the vehicle and the camera</li>
+ * <li>Element containing the pylons.</li></ol>
+ * First group is for railway in X direction, second for railway in Y direction, two groups each follow for road, monorail and maglev<p>
+ * <br>Elements for heads are arranged in groups of eight:
+ * <ol><li>X direction, north end, flat</li>
+ * <li>Y direction, north end, flat</li>
+ * <li>X direction, south end, flat</li>
+ * <li>Y direction, south end, flat</li>
+ * <li>X direction, north end, sloped</li>
+ * <li>Y direction, north end, sloped</li>
+ * <li>X direction, south end, sloped</li>
+ * <li>Y direction, south end, sloped</li></ol>
+ * This is repeated 4 times, for rail, road, monorail, maglev</li>
+ * </ul>
+ */
 
 static const PalSpriteID _bridge_sprite_table_2_0[] = {
 	    0x9C3,     0x9C7,     0x9C9,       0x0,     0x9C4,     0x9C8,     0x9CA,       0x0,

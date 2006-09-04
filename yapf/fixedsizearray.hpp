@@ -5,13 +5,13 @@
 
 
 /** fixed size array
-    Upon construction it preallocates fixed size block of memory
-		for all items, but doesn't construct them. Item's construction
-		is delayed. */
+ *  Upon construction it preallocates fixed size block of memory
+ *  for all items, but doesn't construct them. Item's construction
+ *  is delayed. */
 template <class Titem_, int Tcapacity_>
 struct CFixedSizeArrayT {
 	/** the only member of fixed size array is pointer to the block
-	    of C array of items. Header can be found on the offset -sizeof(CHdr). */
+	 *  of C array of items. Header can be found on the offset -sizeof(CHdr). */
 	Titem_ *m_items;
 
 	/** header for fixed size array */

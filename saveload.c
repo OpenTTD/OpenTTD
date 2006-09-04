@@ -688,10 +688,10 @@ bool SlObjectMember(void *ptr, const SaveLoad *sld)
 		break;
 
 	/* SL_WRITEBYTE translates a value of a variable to another one upon
-		* saving or loading.
-		* XXX - variable renaming abuse
-		* game_value: the value of the variable ingame is abused by sld->version_from
-		* file_value: the value of the variable in the savegame is abused by sld->version_to */
+   * saving or loading.
+   * XXX - variable renaming abuse
+   * game_value: the value of the variable ingame is abused by sld->version_from
+   * file_value: the value of the variable in the savegame is abused by sld->version_to */
 	case SL_WRITEBYTE:
 		if (_sl.save) {
 			SlWriteByte(sld->version_to);
@@ -1606,7 +1606,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		fclose(_sl.fh);
 
 		/* After loading fix up savegame for any internal changes that
-		* might've occured since then. If it fails, load back the old game */
+		 * might've occured since then. If it fails, load back the old game */
 		if (!AfterLoadGame()) return SL_REINIT;
 	}
 

@@ -229,8 +229,7 @@ static inline bool IsLocalPlayer(void)
 void DeletePlayerWindows(PlayerID pi);
 byte GetPlayerRailtypes(PlayerID p);
 
-/** Finds out if a Player has a certain railtype available
-  */
+/** Finds out if a Player has a certain railtype available */
 static inline bool HasRailtypeAvail(const Player *p, RailType Railtype)
 {
 	return HASBIT(p->avail_railtypes, Railtype);
