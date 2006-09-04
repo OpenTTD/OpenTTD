@@ -151,8 +151,6 @@ static void ClientSizeChanged(int w, int h)
 	}
 }
 
-extern void DoExitSave(void);
-
 #ifdef _DEBUG
 // Keep this function here..
 // It allows you to redraw the screen from within the MSVC debugger
@@ -256,14 +254,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		}
 
 		case WM_CLOSE:
-			if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
-				_exit_game = true;
-			} else if (_patches.autosave_on_exit) {
-				DoExitSave();
-				_exit_game = true;
-			} else {
-				AskExitGame();
-			}
+			HandleExitGameRequest();
 			_window_maximize = IsZoomed(_wnd.main_wnd);
 			return 0;
 

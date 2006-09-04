@@ -77,7 +77,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		case 12: ShowGameOptions(); break;
 		case 13: ShowGameDifficulty(); break;
 		case 14: ShowPatchesSelection(); break;
-		case 15: AskExitGame(); break;
+		case 15: HandleExitGameRequest(); break;
 		}
 		break;
 

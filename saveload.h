@@ -20,6 +20,7 @@ typedef enum SaveOrLoadMode {
 
 SaveOrLoadResult SaveOrLoad(const char *filename, int mode);
 void WaitTillSaved(void);
+void DoExitSave(void);
 
 
 typedef void ChunkSaveLoadProc(void);

@@ -233,6 +233,7 @@ void LoadFromConfig(void);
 void SaveToConfig(void);
 void CheckConfig(void);
 int ttd_main(int argc, char* argv[]);
+void HandleExitGameRequest(void);
 
 void DeterminePaths(void);
 

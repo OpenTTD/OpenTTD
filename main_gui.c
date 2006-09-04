@@ -170,14 +170,14 @@ static void MenuClickSaveLoad(int index)
 			case 0: ShowSaveLoadDialog(SLD_SAVE_SCENARIO); break;
 			case 1: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
 			case 2: AskExitToGameMenu();                   break;
-			case 4: AskExitGame();                         break;
+			case 4: HandleExitGameRequest();               break;
 		}
 	} else {
 		switch (index) {
 			case 0: ShowSaveLoadDialog(SLD_SAVE_GAME); break;
 			case 1: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
 			case 2: AskExitToGameMenu();               break;
-			case 3: AskExitGame();                     break;
+			case 3: HandleExitGameRequest();           break;
 		}
 	}
 }
@@ -2226,7 +2226,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 		switch (e->keypress.keycode) {
 			case 'Q' | WKC_CTRL:
 			case 'Q' | WKC_META:
-				AskExitGame();
+				HandleExitGameRequest();
 				break;
 		}
 

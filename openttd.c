@@ -537,6 +537,19 @@ int ttd_main(int argc, char *argv[])
 	return 0;
 }
 
+void HandleExitGameRequest(void)
+{
+	if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
+		_exit_game = true;
+	} else if (_patches.autosave_on_exit) {
+		DoExitSave();
+		_exit_game = true;
+	} else {
+		AskExitGame();
+	}
+}
+
+
 /** Mutex so that only one thread can communicate with the main program
  * at any given time */
 static ThreadMsg _message = MSG_OTTD_NO_MESSAGE;

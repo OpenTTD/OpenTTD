@@ -303,8 +303,6 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	return (key << 16) + sym->unicode;
 }
 
-extern void DoExitSave(void);
-
 static int PollEvent(void)
 {
 	SDL_Event ev;
@@ -376,21 +374,9 @@ static int PollEvent(void)
 			}
 			break;
 
-		case SDL_QUIT:
-			// do not ask to quit on the main screen
-			if (_game_mode != GM_MENU) {
-				if (_patches.autosave_on_exit) {
-					DoExitSave();
-					return 0;
-				} else {
-					AskExitGame();
-				}
-			} else {
-				return 0;
-			}
-			break;
+		case SDL_QUIT: HandleExitGameRequest(); break;
 
-			case SDL_KEYDOWN: /* Toggle full-screen on ALT + ENTER/F */
+		case SDL_KEYDOWN: /* Toggle full-screen on ALT + ENTER/F */
 			if ((ev.key.keysym.mod & (KMOD_ALT | KMOD_META)) &&
 					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
 				ToggleFullScreen(!_fullscreen);
@@ -448,8 +434,6 @@ static void SdlVideoMainLoop(void)
 		InteractiveRandom(); // randomness
 
 		while ((i = PollEvent()) == -1) {}
-		if (i >= 0) return;
-
 		if (_exit_game) return;
 
 		mod = SDL_CALL SDL_GetModState();

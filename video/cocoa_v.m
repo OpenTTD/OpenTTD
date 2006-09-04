@@ -197,22 +197,6 @@ static void QZ_CheckPaletteAnim(void)
 
 
 
-extern void DoExitSave(void);
-
-static void QZ_AskQuit(void)
-{
-	if (_game_mode == GM_MENU) { // do not ask to quit on the main screen
-		_exit_game = true;
-	} else if (_patches.autosave_on_exit) {
-		DoExitSave();
-		_exit_game = true;
-	} else {
-		AskExitGame();
-	}
-}
-
-
-
 typedef struct VkMapping {
 	unsigned short vk_from;
 	byte map_to;
@@ -921,7 +905,7 @@ static void QZ_SetPortAlphaOpaque(void)
 @implementation OTTD_QuartzWindowDelegate
 - (BOOL)windowShouldClose:(id)sender
 {
-	QZ_AskQuit();
+	HandleExitGameRequest();
 
 	return NO;
 }
