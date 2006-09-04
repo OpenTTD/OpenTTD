@@ -999,8 +999,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			w->vscroll.cap  += e->sizing.diff.y / (int)w->resize.step_height;
 			w->vscroll2.cap += e->sizing.diff.y / (int)w->resize.step_height;
 
-			w->widget[7].unkA = (w->vscroll.cap  << 8) + 1;
-			w->widget[9].unkA = (w->vscroll2.cap << 8) + 1;
+			w->widget[7].data = (w->vscroll.cap  << 8) + 1;
+			w->widget[9].data = (w->vscroll2.cap << 8) + 1;
 			break;
 	}
 }
@@ -1188,16 +1188,16 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			/* Set up the window widgets */
 			switch (window_type) {
 				case VLW_SHARED_ORDERS:
-					w->widget[1].unkA  = STR_VEH_WITH_SHARED_ORDERS_LIST;
+					w->widget[1].data  = STR_VEH_WITH_SHARED_ORDERS_LIST;
 					break;
 				case VLW_STANDARD: /* Company Name - standard widget setup */
 					break;
 				case VLW_STATION_LIST: /* Station Name */
 					switch (vl->vehicle_type) {
-						case VEH_Train:    w->widget[1].unkA = STR_SCHEDULED_TRAINS; break;
-						case VEH_Road:     w->widget[1].unkA = STR_SCHEDULED_ROAD_VEHICLES; break;
-						case VEH_Ship:     w->widget[1].unkA = STR_SCHEDULED_SHIPS; break;
-						case VEH_Aircraft: w->widget[1].unkA = STR_SCHEDULED_AIRCRAFT; break;
+						case VEH_Train:    w->widget[1].data = STR_SCHEDULED_TRAINS; break;
+						case VEH_Road:     w->widget[1].data = STR_SCHEDULED_ROAD_VEHICLES; break;
+						case VEH_Ship:     w->widget[1].data = STR_SCHEDULED_SHIPS; break;
+						case VEH_Aircraft: w->widget[1].data = STR_SCHEDULED_AIRCRAFT; break;
 						default: NOT_REACHED(); break;
 					}
 					break;
@@ -1222,7 +1222,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 				default: NOT_REACHED();
 			}
 
-			w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
+			w->widget[7].data = (w->vscroll.cap << 8) + 1;
 
 			/* Set up sorting. Make the window-specific _sorting variable
 			 * point to the correct global _sorting struct so we are freed
@@ -1430,7 +1430,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 		case WE_RESIZE: /* Update the scroll + matrix */
 			if (vl->vehicle_type == VEH_Train) w->hscroll.cap += e->sizing.diff.x;
 			w->vscroll.cap += e->sizing.diff.y / (int)w->resize.step_height;
-			w->widget[7].unkA = (w->vscroll.cap << 8) + 1;
+			w->widget[7].data = (w->vscroll.cap << 8) + 1;
 			break;
 	}
 }

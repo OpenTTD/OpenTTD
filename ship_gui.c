@@ -398,7 +398,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 
 	case WE_RESIZE:
 		w->vscroll.cap += e->sizing.diff.y / 24;
-		w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+		w->widget[2].data = (w->vscroll.cap << 8) + 1;
 		break;
 
 	}
@@ -434,7 +434,7 @@ void ShowBuildShipWindow(TileIndex tile)
 	w = AllocateWindowDesc(&_new_ship_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 4;
-	w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+	w->widget[2].data = (w->vscroll.cap << 8) + 1;
 
 	w->resize.step_height = 24;
 
@@ -843,7 +843,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e)
 	case WE_RESIZE:
 		w->vscroll.cap += e->sizing.diff.y / 24;
 		w->hscroll.cap += e->sizing.diff.x / 90;
-		w->widget[5].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
+		w->widget[5].data = (w->vscroll.cap << 8) + w->hscroll.cap;
 		break;
 	}
 }

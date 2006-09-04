@@ -296,7 +296,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		w->vscroll.cap += e->sizing.diff.y / 14;
-		w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+		w->widget[2].data = (w->vscroll.cap << 8) + 1;
 	} break;
 	}
 }
@@ -330,7 +330,7 @@ void ShowBuildTrainWindow(TileIndex tile)
 	w = AllocateWindowDesc(&_new_rail_vehicle_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 8;
-	w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+	w->widget[2].data = (w->vscroll.cap << 8) + 1;
 
 	w->resize.step_height = 14;
 	w->resize.height = w->height - 14 * 4; // Minimum of 4 vehicles in the display
@@ -765,7 +765,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 		/* Update the scroll + matrix */
 		w->vscroll.cap += e->sizing.diff.y / 14;
 		w->hscroll.cap += e->sizing.diff.x;
-		w->widget[6].unkA = (w->vscroll.cap << 8) + 1;
+		w->widget[6].data = (w->vscroll.cap << 8) + 1;
 	} break;
 	}
 }
@@ -1317,7 +1317,7 @@ do_change_service_int:
 		if (e->sizing.diff.y == 0) break;
 
 		w->vscroll.cap += e->sizing.diff.y / 14;
-		w->widget[4].unkA = (w->vscroll.cap << 8) + 1;
+		w->widget[4].data = (w->vscroll.cap << 8) + 1;
 		break;
 	}
 }
@@ -1364,7 +1364,7 @@ static void ShowTrainDetailsWindow(const Vehicle *v)
 	w->window_number = veh;
 	w->caption_color = v->owner;
 	w->vscroll.cap = 6;
-	w->widget[4].unkA = (w->vscroll.cap << 8) + 1;
+	w->widget[4].data = (w->vscroll.cap << 8) + 1;
 
 	w->resize.step_height = 14;
 	w->resize.height = w->height - 14 * 2; /* Minimum of 4 wagons in the display */

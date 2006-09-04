@@ -209,11 +209,10 @@ void DrawWindowWidgets(const Window *w)
 		switch (wi->type & WWT_MASK) {
 		case WWT_PANEL: /* WWT_IMGBTN */
 		case WWT_PANEL_2: {
-			int img;
+			int img = wi->data;
 
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 
-			img = wi->unkA;
 			if (img != 0) { // has an image
 				// show diff image when clicked
 				if ((wi->type & WWT_MASK) == WWT_PANEL_2 && clicked) img++;
@@ -230,7 +229,7 @@ void DrawWindowWidgets(const Window *w)
 		/* fall through */
 
 		case WWT_LABEL: {
-			StringID str = wi->unkA;
+			StringID str = wi->data;
 
 			if ((wi->type&WWT_MASK) == WWT_4 && clicked) str++;
 
@@ -240,11 +239,10 @@ void DrawWindowWidgets(const Window *w)
 		}
 
 		case WWT_6: {
-			StringID str;
+			StringID str = wi->data;
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
 
-			str = wi->unkA;
-			if (str != 0) DrawStringTruncated(r.left + 2, r.top + 1, str, 0, r.right - r.left - 10);
+			if (str != STR_NULL) DrawStringTruncated(r.left + 2, r.top + 1, str, 0, r.right - r.left - 10);
 			goto draw_default;
 		}
 
@@ -255,10 +253,10 @@ void DrawWindowWidgets(const Window *w)
 
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 
-			c = GB(wi->unkA, 0, 8);
+			c = GB(wi->data, 0, 8);
 			amt1 = (wi->right - wi->left + 1) / c;
 
-			d = GB(wi->unkA, 8, 8);
+			d = GB(wi->data, 8, 8);
 			amt2 = (wi->bottom - wi->top + 1) / d;
 
 			color = _colour_gradient[wi->color & 0xF][6];
@@ -397,7 +395,7 @@ void DrawWindowWidgets(const Window *w)
 			int c1,c2;
 			int x2 = r.left; // by default the left side is the left side of the widget
 
-			if (wi->unkA != 0) x2 = DrawString(r.left + 6, r.top, wi->unkA, 0);
+			if (wi->data != 0) x2 = DrawString(r.left + 6, r.top, wi->data, 0);
 
 			c1 = _colour_gradient[wi->color][3];
 			c2 = _colour_gradient[wi->color][7];
@@ -459,7 +457,7 @@ void DrawWindowWidgets(const Window *w)
 				GfxFillRect(r.left+2, r.top+2, r.right-2, r.bottom-2, _colour_gradient[_player_colors[w->caption_color]][4]);
 			}
 
-			DrawStringCentered( (r.left+r.right+1)>>1, r.top+2, wi->unkA, 0x84);
+			DrawStringCentered( (r.left+r.right+1)>>1, r.top+2, wi->data, 0x84);
 draw_default:;
 			if (cur_disabled & 1) {
 				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _colour_gradient[wi->color&0xF][2] | PALETTE_MODIFIER_GREYOUT);

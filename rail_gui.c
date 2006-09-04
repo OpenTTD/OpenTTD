@@ -560,15 +560,15 @@ static void SetupRailToolbar(RailType railtype, Window *w)
 	const RailtypeInfo *rti = GetRailTypeInfo(railtype);
 
 	assert(railtype < RAILTYPE_END);
-	w->widget[RTW_CAPTION].unkA = rti->strings.toolbar_caption;
-	w->widget[RTW_BUILD_NS].unkA = rti->gui_sprites.build_ns_rail;
-	w->widget[RTW_BUILD_X].unkA = rti->gui_sprites.build_x_rail;
-	w->widget[RTW_BUILD_EW].unkA = rti->gui_sprites.build_ew_rail;
-	w->widget[RTW_BUILD_Y].unkA = rti->gui_sprites.build_y_rail;
-	w->widget[RTW_AUTORAIL].unkA = rti->gui_sprites.auto_rail;
-	w->widget[RTW_BUILD_DEPOT].unkA = rti->gui_sprites.build_depot;
-	w->widget[RTW_CONVERT_RAIL].unkA = rti->gui_sprites.convert_rail;
-	w->widget[RTW_BUILD_TUNNEL].unkA = rti->gui_sprites.build_tunnel;
+	w->widget[RTW_CAPTION].data = rti->strings.toolbar_caption;
+	w->widget[RTW_BUILD_NS].data = rti->gui_sprites.build_ns_rail;
+	w->widget[RTW_BUILD_X].data = rti->gui_sprites.build_x_rail;
+	w->widget[RTW_BUILD_EW].data = rti->gui_sprites.build_ew_rail;
+	w->widget[RTW_BUILD_Y].data = rti->gui_sprites.build_y_rail;
+	w->widget[RTW_AUTORAIL].data = rti->gui_sprites.auto_rail;
+	w->widget[RTW_BUILD_DEPOT].data = rti->gui_sprites.build_depot;
+	w->widget[RTW_CONVERT_RAIL].data = rti->gui_sprites.convert_rail;
+	w->widget[RTW_BUILD_TUNNEL].data = rti->gui_sprites.build_tunnel;
 }
 
 void ShowBuildRailToolbar(RailType railtype, int button)

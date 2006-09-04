@@ -36,7 +36,7 @@ typedef void WindowProc(Window *w, WindowEvent *e);
      w->resize.width or w->resize.height.
    That was all.. good luck, and enjoy :) -- TrueLight */
 
-enum {
+enum ResizeFlags {
 	RESIZE_NONE   = 0,
 
 	RESIZE_LEFT   = 1,
@@ -50,15 +50,15 @@ enum {
 	RESIZE_LRB    = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_BOTTOM,
 	RESIZE_LRTB   = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_TOP | RESIZE_BOTTOM,
 	RESIZE_RTB    = RESIZE_RIGHT | RESIZE_TOP    | RESIZE_BOTTOM,
-};
+} ResizeFlag;
 
 typedef struct Widget {
-	byte type;
-	byte resize_flag;
-	byte color;
-	uint16 left, right, top, bottom;
-	uint16 unkA;
-	StringID tooltips;
+	byte type;                        ///< Widget type, see @WindowWidgetTypes
+	byte resize_flag;                 ///< Resize direction, alignment, etc. during resizing, see @ResizeFlags
+	byte color;                       ///< Widget colour, see docs/ottd-colourtext-palette.png
+	uint16 left, right, top, bottom;  ///< The position offsets inside the window
+	uint16 data;                      ///< The String/Image or special code (list-matrixes) of a widget
+	StringID tooltips;                ///< Tooltips that are shown when rightclicking on a widget
 } Widget;
 
 typedef enum FrameFlags {

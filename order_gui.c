@@ -73,9 +73,9 @@ static void DrawOrdersWindow(Window *w)
 	if (v->type != VEH_Train) {
 		SETBIT(w->disabled_state, 6); // Disable non-stop for non-trains
 		switch (v->type) {
-			case VEH_Road:     w->widget[11].unkA = STR_LORRY; break;
-			case VEH_Ship:     w->widget[11].unkA = STR_SHIP;  break;
-			case VEH_Aircraft: w->widget[11].unkA = STR_PLANE; break;
+			case VEH_Road:     w->widget[11].data = STR_LORRY; break;
+			case VEH_Ship:     w->widget[11].data = STR_SHIP;  break;
+			case VEH_Aircraft: w->widget[11].data = STR_PLANE; break;
 			default: NOT_REACHED(); break;
 		}
 	}

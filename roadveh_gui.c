@@ -567,7 +567,7 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		if (e->sizing.diff.y == 0) break;
 
 		w->vscroll.cap += e->sizing.diff.y / 14;
-		w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+		w->widget[2].data = (w->vscroll.cap << 8) + 1;
 	} break;
 
 	}
@@ -602,7 +602,7 @@ void ShowBuildRoadVehWindow(TileIndex tile)
 	w = AllocateWindowDesc(&_new_road_veh_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 8;
-	w->widget[2].unkA = (w->vscroll.cap << 8) + 1;
+	w->widget[2].data = (w->vscroll.cap << 8) + 1;
 
 	w->resize.step_height = 14;
 	w->resize.height = w->height - 14 * 4; /* Minimum of 4 vehicles in the display */
@@ -854,7 +854,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 		/* Update the scroll + matrix */
 		w->vscroll.cap += e->sizing.diff.y / 14;
 		w->hscroll.cap += e->sizing.diff.x / 56;
-		w->widget[5].unkA = (w->vscroll.cap << 8) + w->hscroll.cap;
+		w->widget[5].data = (w->vscroll.cap << 8) + w->hscroll.cap;
 		break;
 
 	}
