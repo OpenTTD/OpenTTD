@@ -15,12 +15,6 @@ void ResortVehicleLists(void);
 
 #define PERIODIC_RESORT_DAYS 10
 
-enum {
-	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
-	PLY_WND_PRC__SIZE_OF_ROW_SMALL = 26,
-	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 36,
-};
-
 /* Vehicle List Window type flags */
 enum {
 	VLW_FLAGS         = (1 << 8)|(1 << 9)|(1 << 10),
