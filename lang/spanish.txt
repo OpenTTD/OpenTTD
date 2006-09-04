@@ -604,6 +604,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Reducir 
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generar terreno al azar
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Hacer reset del paisaje
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Hacer reset del paisaje
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Usar Mapa de alturas
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Usar Mapa de alturas
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}¿Está seguro que desea realizar un reset al paisaje?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generación de paisaje
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generación de poblaciones
@@ -716,6 +718,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Guardar 
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Cargar Escenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Guardar Escenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Jugar Escenario
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Jugar Mapa de alturas
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Empezar juego nuevo, usando mapa de altura como terreno
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}¿Está seguro de que desea salir de este escenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Salir del Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...solo puede ser construido en poblaciones con una población superior a 1200
@@ -881,6 +885,7 @@ STR_TOWNNAME_SWISS                                              :Suizo
 STR_TOWNNAME_DANISH                                             :Danes
 STR_TOWNNAME_TURKISH                                            :Turco
 STR_TOWNNAME_ITALIAN                                            :Italiano
+STR_TOWNNAME_CATALAN                                            :Catalán
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)
@@ -905,6 +910,7 @@ STR_CURR_NOK                                                    :Corona Noruega(
 STR_CURR_PLN                                                    :Zloty Polaco (PLN)
 STR_CURR_ROL                                                    :Leu Rumano (ROL)
 STR_CURR_RUR                                                    :Rublo Ruso (RUR)
+STR_CURR_SIT                                                    :Tolar Eslovenio (SIT)
 STR_CURR_SEK                                                    :Corona Sueca (SEK)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
@@ -1039,7 +1045,27 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Renovar
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duración del mensaje de error: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Muestra la población de esta población en esta etiqueta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árboles invisibles (con edificios transparentes): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generador de terrenos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distancia desde los bordes para las Refinerías de Petroleo {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura de la línea de nieve: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Aspereza del terreno  (Solo TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Áspero
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Muy Áspero
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritmo de colocación de árboles: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ninguno
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Mejorado
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotación de Mapa de altura: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :A la izquierda
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horario
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Intervalo de actualización: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}El nivel de la altura del mapa plano tiene: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Expansión máxima de est.: {ORANGE}{STRING} {RED}Atención: Valores altos relantizan
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Une la caja de paisaje a la barra de rail/carretera...: {ORANGE}{STRING}
@@ -1434,6 +1460,17 @@ STR_NETWORK_SEND                                                :{BLACK}Enviar
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Tamaño X del mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Tamaño Y del mapa: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERROR                                                :{WHITE}No se pudo cargar mapa de altura desde el PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...fichero no encontrado.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...no se pudo convertir tipo de imagen. Se requiere imagenes PNG de 8 o 24-bits.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...algo ha salido mal. Lo siento (posiblemente el fichero esté corrupto)
+
+STR_BMPMAP_ERROR                                                :{WHITE}No se puede cargar el paisaje desde el BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...no se puede convertir el tipo de imagen.
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Coste: {CURRENCY}
 STR_0801_COST                                                   :{RED}Coste: {CURRENCY}
@@ -1757,6 +1794,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Guarda e
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Seleccione Nuevo Tipo de Juego
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Seleccione escenario (verde), juegos preestablecidos-set (azul), o juego al azar
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generar juego nuevo al azar
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Cargar Mapas de altura
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} en medio
@@ -2529,6 +2567,8 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 STR_TRAIN_STOPPING                                              :{RED}Parándose
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parándose, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipo de vía incompatible
+STR_TRAIN_NO_POWER                                              :{RED}Sin potencia
+STR_TRAIN_START_NO_CATENARY                                     :Esta vía carece la catenaria, así que el tren no puede comenzar
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vehículo de carretera en camino
@@ -2552,6 +2592,7 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No se pu
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehículo de carretera {COMMA} espera en depósito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{RED}Hacia el depósito de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{RED}Hacia el depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Dirigiendose al Depósito de {TOWN}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No se puede enviar vehículo al depósito...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al depósito
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vehículos de carretera - click en vehículo para información
@@ -2687,6 +2728,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No se puede enviar la aeronave al hangar
 STR_HEADING_FOR_HANGAR                                          :{RED}Ir al hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{RED}Ir al hangar de {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Dirigiendose al Hangar de {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Dirigiendose al Hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}La aeronave {COMMA} está esperando en el hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave en camino
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No se puede detener/arrancar aeronave...
@@ -2812,6 +2855,14 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar 
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar todos las aeronaves que tienen esta estación en su horario
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar todos los barcos que tienen esta estación en su horario
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordenes compartidas de  {COMMA} Vehículo{P "" s}
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ver todos los vehículos que tienen el mismo calendario
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a los depósitos
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Enviar todos los vehículos de la lista al depósito. CTRL+click solo para servicio
+STR_SEND_TO_HANGARS                                             :{BLACK}Enviar a los Hangares
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Enviar todos las aeronaves de la lista al hangar. CTRL+click solo para servicio
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplazar vehículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Empezar a reemplazar vehículos
@@ -2860,6 +2911,55 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{COMMA} pasajeros, {COMMA} sacas de correo
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Generar
+STR_RANDOM                                                      :{BLACK}Aleatorio
+STR_RANDOM_HELP                                                 :{BLACK}Cambiar la semilla aleatoria usada por el Generador de Terrenos
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generación de mundo
+STR_RANDOM_SEED                                                 :{BLACK}Semilla Aleatoria:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Pulsa para introducir la semilla aleatoria
+STR_LAND_GENERATOR                                              :{BLACK}Generador de terrenos:
+STR_TREE_PLACER                                                 :{BLACK}Algoritmo de árboles:
+STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivel del mar:
+STR_SMOOTHNESS                                                  :{BLACK}Suavidad:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altura de la línea de nieve
+STR_DATE                                                        :{BLACK}Fecha:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}No. de ciudades:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. de industrias:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Mover la línea de nieve una arriba
+STR_SNOW_LINE_DOWN                                              :{BLACK}Mover la línea de nieve una abajo
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Cambiar altura de la línea de nieve
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambiar año de inicio
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Generando mundo...
+STR_GENERATION_ABORT                                            :{BLACK}Abortar
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Abortar Generación del Mundo
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}¿Desea realmente abortar la generación?
+STR_PROGRESS                                                    :{WHITE}{NUM}% completado
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Generación de mundo
+STR_TREE_GENERATION                                             :{BLACK}Generación de árboles
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Generación inamovible
+STR_CLEARING_TILES                                              :{BLACK}Generación de area áspera y rocosa
+STR_SETTINGUP_GAME                                              :{BLACK}Setting up game
+STR_PREPARING_GAME                                              :{BLACK}Preparando juego
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acción cambia el nivel de dificultad a personalizado
+STR_SE_FLAT_WORLD                                               :{WHITE}Tierra llana
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generar una tierra llana
+STR_SE_RANDOM_LAND                                              :{WHITE}Tierra aleatoria
+STR_SE_NEW_WORLD                                                :{BLACK}Crear nuevo escenario
+STR_SE_CAPTION                                                  :{WHITE}Tipo de escenario
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Mueve la altura de la tierra llana uno abajo
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Mueve la altura de la tierra llana uno arriba
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Cambia la altura de la tierra llana
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altura de la tierra llana:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
+
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrar el mapa pequeño a la posición actual
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeño

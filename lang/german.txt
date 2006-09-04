@@ -2424,7 +2424,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Hubsch
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Hubschrauber
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Hubschrauber
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Nachricht vom Fahrzeughersteller
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben gerade ein{G en e ""} neue{G n "" s} {STRING} erstellt - sind Sie daran interessiert, das Fahrzeug ein Jahr lang exklusiv zu testen, so dass wir die Funktionen testen können, bevor es allgemein zur Verfügung gestellt wird?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Wir haben ein{G en e ""} neue{G n "" s} {STRING} entwickelt. {}Sind Sie daran interessiert, das Fahrzeug ein Jahr lang exklusiv zu nutzen, so dass wir die Funktionen testen können, bevor es allgemein zur Verfügung gestellt wird?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :{G=w}Lokomotive
 STR_8103_ROAD_VEHICLE                                           :{G=n}Fahrzeug
 STR_8104_AIRCRAFT                                               :{G=n}Flugzeug

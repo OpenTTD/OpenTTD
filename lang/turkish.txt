@@ -2456,6 +2456,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Durmadan bakima
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}{TOWN} Tren Garina gidiyor
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}{TOWN} Tren Garina gidiyor, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} Tren Garina gidiyor
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} Tren garina idiyor, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Hatali talimat)
 
@@ -2856,10 +2857,13 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Komut li
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Komut listesinde bu durak olan uçaklari listele
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Komut listesinde bu durak olan gemileri listele
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} Aracin paylasilan talimatlari
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ayni talimatlara sahip bütün araçlari göster
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Garlara Gönder
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Listedeki tüm araçlari garaja gönder. CTRL+tiklama sadece bakim içindir
 STR_SEND_TO_HANGARS                                             :{BLACK}Hangarlara gönder
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Listedeki tüm uçaklari hangara gönder. CTRL+tiklama sadece bakim içindir
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Araçlari Degistir
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} Degistir
