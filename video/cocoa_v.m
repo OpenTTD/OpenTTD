@@ -1824,7 +1824,7 @@ static void QZ_HideMouse(void)
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication*) sender
 {
 
-	QZ_AskQuit();
+	HandleExitGameRequest();
 
 	return NSTerminateCancel; // NSTerminateLater ?
 }
