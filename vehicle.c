@@ -729,7 +729,7 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 */
 int32 GetRefitCost(EngineID engine_type)
 {
-	int32 base_cost;
+	int32 base_cost = 0;
 
 	switch (GetEngine(engine_type)->type) {
 		case VEH_Ship: base_cost = _price.ship_base; break;
