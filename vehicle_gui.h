@@ -17,10 +17,10 @@ void ResortVehicleLists(void);
 
 /* Vehicle List Window type flags */
 enum {
-	VLW_FLAGS         = (1 << 8)|(1 << 9)|(1 << 10),
-	VLW_STANDARD      = 0,
+	VLW_STANDARD      = 0 << 8,
 	VLW_SHARED_ORDERS = 1 << 8,
 	VLW_STATION_LIST  = 2 << 8,
+	VLW_MASK          = 0x700,
 };
 
 static inline bool ValidVLWFlags(uint16 flags)

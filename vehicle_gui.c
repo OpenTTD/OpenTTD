@@ -1181,7 +1181,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 		case WE_CREATE: {
-			uint16 window_type = w->window_number & VLW_FLAGS;
+			uint16 window_type = w->window_number & VLW_MASK;
 			vl->vehicle_type = GB(w->window_number, 11, 5);
 			w->caption_color = GB(w->window_number, 0, 8); // PlayerID
 
@@ -1248,7 +1248,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			int i;
 			const PlayerID owner = (PlayerID)w->caption_color;
 			const Player *p = GetPlayer(owner);
-			const uint16 window_type = w->window_number & VLW_FLAGS;
+			const uint16 window_type = w->window_number & VLW_MASK;
 			const StationID station = (window_type == VLW_STATION_LIST)  ? GB(w->window_number, 16, 16) : INVALID_STATION;
 			const OrderID order     = (window_type == VLW_SHARED_ORDERS) ? GB(w->window_number, 16, 16) : INVALID_ORDER;
 
@@ -1392,7 +1392,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 					assert(vl->l.list_length != 0);
 					DoCommandP(0, GB(w->window_number, 16, 16) /* StationID or OrderID (depending on VLW). Nomatter which one it is, it's needed here */,
-						(w->window_number & VLW_FLAGS) | DEPOT_MASS_SEND | (_ctrl_pressed ? DEPOT_SERVICE : 0), NULL, CMD_SEND_TO_DEPOT(vl->vehicle_type));
+						(w->window_number & VLW_MASK) | DEPOT_MASS_SEND | (_ctrl_pressed ? DEPOT_SERVICE : 0), NULL, CMD_SEND_TO_DEPOT(vl->vehicle_type));
 					break;
 
 				case 10: // Right button
@@ -1417,7 +1417,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 		case WE_TICK: /* resort the list every 20 seconds orso (10 days) */
 			if (--vl->l.resort_timer == 0) {
-				StationID station = ((w->window_number & VLW_FLAGS) == VLW_STATION_LIST) ? GB(w->window_number, 16, 16) : INVALID_STATION;
+				StationID station = ((w->window_number & VLW_MASK) == VLW_STATION_LIST) ? GB(w->window_number, 16, 16) : INVALID_STATION;
 				PlayerID owner = (PlayerID)w->caption_color;
 
 				DEBUG(misc, 1) ("Periodic resort %d list player %d station %d", vl->vehicle_type, owner, station);

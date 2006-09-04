@@ -1011,8 +1011,8 @@ int32 CmdSendShipToDepot(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (p2 & DEPOT_MASS_SEND) {
 		/* Mass goto depot requested */
-		if (!ValidVLWFlags(p2 & VLW_FLAGS)) return CMD_ERROR;
-		return SendAllVehiclesToDepot(VEH_Ship, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_FLAGS), p1);
+		if (!ValidVLWFlags(p2 & VLW_MASK)) return CMD_ERROR;
+		return SendAllVehiclesToDepot(VEH_Ship, flags, p2 & DEPOT_SERVICE, _current_player, (p2 & VLW_MASK), p1);
 	}
 
 	if (!IsValidVehicleID(p1)) return CMD_ERROR;
