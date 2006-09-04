@@ -266,6 +266,7 @@ byte VehicleRandomBits(void);
 bool CanFillVehicle(Vehicle *v);
 bool CanRefitTo(EngineID engine_type, CargoID cid_to);
 CargoID FindFirstRefittableCargo(EngineID engine_type);
+int32 GetRefitCost(EngineID engine_type);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 

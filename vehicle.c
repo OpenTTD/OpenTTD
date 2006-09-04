@@ -723,6 +723,26 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 	return CT_INVALID;
 }
 
+/** Learn the price of refitting a certain engine
+* @param engine Which engine to refit
+* @return Price for refitting
+*/
+int32 GetRefitCost(EngineID engine_type)
+{
+	int32 base_cost;
+
+	switch (GetEngine(engine_type)->type) {
+		case VEH_Ship: base_cost = _price.ship_base; break;
+		case VEH_Road: base_cost = _price.roadveh_base; break;
+		case VEH_Aircraft: base_cost = _price.aircraft_base; break;
+		case VEH_Train:
+			base_cost = 2 * ((RailVehInfo(engine_type)->flags & RVI_WAGON) ?
+							 _price.build_railwagon : _price.build_railvehicle);
+			break;
+		default: NOT_REACHED(); break;
+	}
+	return (EngInfo(engine_type)->refit_cost * base_cost) >> 10;
+}
 
 static void DoDrawVehicle(const Vehicle *v)
 {

@@ -1838,7 +1838,7 @@ int32 CmdRefitRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	cost = 0;
 	if (IS_HUMAN_PLAYER(v->owner) && new_cid != v->cargo_type) {
-		cost = (EngInfo(v->engine_type)->refit_cost * _price.roadveh_base) >> 10;
+		cost = GetRefitCost(v->engine_type);
 	}
 
 	if (flags & DC_EXEC) {
