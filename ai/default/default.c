@@ -292,7 +292,7 @@ static void AiRestoreVehicleOrders(Vehicle *v, BackuppedOrders *bak)
 	uint i;
 
 	for (i = 0; bak->order[i].type != OT_NOTHING; i++) {
-		if (CmdFailed(DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK)))
+		if (!DoCommandP(0, v->index + (i << 16), PackOrder(&bak->order[i]), NULL, CMD_INSERT_ORDER | CMD_NO_TEST_IF_IN_NETWORK))
 			break;
 	}
 }

@@ -138,7 +138,7 @@ static int TerraformProc(TerraformerState *ts, TileIndex tile, int mode)
 
 	ret = DoCommand(tile, 0,0, ts->flags & ~DC_EXEC, CMD_LANDSCAPE_CLEAR);
 
-	if (ret == CMD_ERROR) {
+	if (CmdFailed(ret)) {
 		_terraform_err_tile = tile;
 		return -1;
 	}

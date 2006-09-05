@@ -2047,8 +2047,13 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 	/* Send all the vehicles to a depot */
 	for (i = 0; i < n; i++) {
 		const Vehicle *v = sort_list[i];
-		if (!DoCommand(v->tile, v->index, service | DEPOT_DONT_CANCEL, flags, CMD_SEND_TO_DEPOT(type)) && !(flags & DC_EXEC)) {
-			/* At least one vehicle is valid to send the command to, so the mass goto depot is valid. No need to check the rest */
+		int32 ret = DoCommand(v->tile, v->index, service | DEPOT_DONT_CANCEL, flags, CMD_SEND_TO_DEPOT(type));
+
+		/* Return 0 if DC_EXEC is not set this is a valid goto depot command)
+			* In this case we know that at least one vehicle can be sent to a depot
+			* and we will issue the command. We can now safely quit the loop, knowing
+			* it will succeed at least once. With DC_EXEC we really need to send them to the depot */
+		if (!CmdFailed(ret) && !(flags & DC_EXEC)) {
 			free((void*)sort_list);
 			return 0;
 		}
