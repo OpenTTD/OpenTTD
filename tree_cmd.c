@@ -509,17 +509,6 @@ static void TileLoopTreesAlps(TileIndex tile)
 
 static void TileLoop_Trees(TileIndex tile)
 {
-	static const TileIndexDiffC _tileloop_trees_dir[] = {
-		{-1, -1},
-		{ 0, -1},
-		{ 1, -1},
-		{-1,  0},
-		{ 1,  0},
-		{-1,  1},
-		{ 0,  1},
-		{ 1,  1}
-	};
-
 	switch (_opt.landscape) {
 		case LT_DESERT: TileLoopTreesDesert(tile); break;
 		case LT_HILLY:  TileLoopTreesAlps(tile);   break;
@@ -556,7 +545,7 @@ static void TileLoop_Trees(TileIndex tile)
 					case 2: { /* add a neighbouring tree */
 						TreeType treetype = GetTreeType(tile);
 
-						tile += ToTileIndexDiff(_tileloop_trees_dir[Random() & 7]);
+						tile += TileOffsByDir(Random() & 7);
 
 						if (!IsTileType(tile, MP_CLEAR)) return;
 

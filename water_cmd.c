@@ -124,7 +124,7 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 	ret = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
 
-	delta = TileOffsByDir(dir);
+	delta = TileOffsByDiagDir(dir);
 	// lower tile
 	ret = DoCommand(tile - delta, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(ret)) return CMD_ERROR;
@@ -151,7 +151,7 @@ static int32 DoBuildShiplift(TileIndex tile, DiagDirection dir, uint32 flags)
 
 static int32 RemoveShiplift(TileIndex tile, uint32 flags)
 {
-	TileIndexDiff delta = TileOffsByDir(GetLockDirection(tile));
+	TileIndexDiff delta = TileOffsByDiagDir(GetLockDirection(tile));
 
 	if (!CheckTileOwnership(tile)) return CMD_ERROR;
 

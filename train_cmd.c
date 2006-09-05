@@ -1650,7 +1650,7 @@ static void ReverseTrainDirection(Vehicle *v)
 			dir = ChangeDiagDir(dir, DIAGDIRDIFF_90LEFT);
 		}
 		/* Calculate next tile */
-		tile += TileOffsByDir(dir);
+		tile += TileOffsByDiagDir(dir);
 
 		/* Check if the train left a rail/road-crossing */
 		DisableTrainCrossing(tile);
@@ -2267,7 +2267,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 		trackdir = GetVehicleTrackdir(v);
 		assert(trackdir != 0xff);
 
-		ftd = NPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes);
+		ftd = NPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_RAIL, v->owner, v->u.rail.compatible_railtypes);
 
 		if (ftd.best_trackdir == 0xff) {
 			/* We are already at our target. Just do something */
@@ -2296,7 +2296,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 		fd.best_track_dist = (uint)-1;
 		fd.best_track = 0xFF;
 
-		NewTrainPathfind(tile - TileOffsByDir(enterdir), v->dest_tile,
+		NewTrainPathfind(tile - TileOffsByDiagDir(enterdir), v->dest_tile,
 			v->u.rail.compatible_railtypes, enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
 		if (fd.best_track == 0xff) {
@@ -3115,7 +3115,7 @@ red_light: {
 			v->subspeed = 0;
 			v->progress = 255-10;
 			if (++v->load_unload_time_rem < _patches.wait_twoway_signal * 73) {
-				TileIndex o_tile = gp.new_tile + TileOffsByDir(enterdir);
+				TileIndex o_tile = gp.new_tile + TileOffsByDiagDir(enterdir);
 				VehicleAtSignalData vasd;
 				vasd.tile = o_tile;
 				vasd.direction = ReverseDir(dir);
@@ -3323,7 +3323,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 		dir = ChangeDiagDir(dir, DIAGDIRDIFF_90LEFT);
 	}
 	/* Calculate next tile */
-	tile += TileOffsByDir(dir);
+	tile += TileOffsByDiagDir(dir);
 	// determine the track status on the next tile.
 	ts = GetTileTrackStatus(tile, TRANSPORT_RAIL) & _reachable_tracks[dir];
 

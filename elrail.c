@@ -183,7 +183,7 @@ static void DrawCatenaryRailway(const TileInfo *ti)
 	AdjustTileh(ti->tile, &tileh[TS_HOME]);
 
 	for (i = DIAGDIR_NE; i < DIAGDIR_END; i++) {
-		TileIndex neighbour = ti->tile + TileOffsByDir(i);
+		TileIndex neighbour = ti->tile + TileOffsByDiagDir(i);
 		uint foundation = 0;
 		int k;
 

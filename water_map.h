@@ -132,7 +132,7 @@ static inline void MakeLockTile(TileIndex t, Owner o, byte section)
 
 static inline void MakeLock(TileIndex t, Owner o, DiagDirection d)
 {
-	TileIndexDiff delta = TileOffsByDir(d);
+	TileIndexDiff delta = TileOffsByDiagDir(d);
 
 	MakeLockTile(t, o, LOCK_MIDDLE + d);
 	MakeLockTile(t - delta, o, LOCK_LOWER + d);

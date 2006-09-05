@@ -374,7 +374,7 @@ restart:
 		j = 20;
 		do {
 			if (--j == 0) goto restart;
-			tile = TILE_MASK(tile + TileOffsByDir(dir));
+			tile = TILE_MASK(tile + TileOffsByDiagDir(dir));
 		} while (!(IsTileType(tile, MP_CLEAR) && GetTileSlope(tile, &h) == SLOPE_FLAT && h <= TILE_HEIGHT * 2));
 
 		assert(tile == TILE_MASK(tile));

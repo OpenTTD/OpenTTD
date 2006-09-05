@@ -292,7 +292,7 @@ int AiNew_Build_Depot(Player* p, TileIndex tile, DiagDirection direction, byte f
 		ret = AI_DoCommand(tile, direction, 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD_DEPOT);
 		if (CmdFailed(ret)) return ret;
 		// Try to build the road from the depot
-		ret2 = AI_DoCommand(tile + TileOffsByDir(direction), DiagDirToRoadBits(ReverseDiagDir(direction)), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
+		ret2 = AI_DoCommand(tile + TileOffsByDiagDir(direction), DiagDirToRoadBits(ReverseDiagDir(direction)), 0, flag | DC_AUTO | DC_NO_WATER, CMD_BUILD_ROAD);
 		// If it fails, ignore it..
 		if (CmdFailed(ret2)) return ret;
 		return ret + ret2;

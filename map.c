@@ -120,11 +120,22 @@ uint TileAddWrap(TileIndex tile, int addx, int addy)
 	return INVALID_TILE;
 }
 
+const TileIndexDiffC _tileoffs_by_diagdir[] = {
+	{-1,  0}, // DIAGDIR_NE
+	{ 0,  1}, // DIAGDIR_SE
+	{ 1,  0}, // DIAGDIR_SW
+	{ 0, -1}  // DIAGDIR_NW
+};
+
 const TileIndexDiffC _tileoffs_by_dir[] = {
-	{-1,  0},
-	{ 0,  1},
-	{ 1,  0},
-	{ 0, -1}
+	{-1, -1}, // DIR_N
+	{-1,  0}, // DIR_NE
+	{-1,  1}, // DIR_E
+	{ 0,  1}, // DIR_SE
+	{ 1,  1}, // DIR_S
+	{ 1,  0}, // DIR_SW
+	{ 1, -1}, // DIR_W
+	{ 0, -1}  // DIR_NW
 };
 
 uint DistanceManhattan(TileIndex t0, TileIndex t1)

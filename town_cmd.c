@@ -680,7 +680,7 @@ build_road_and_exit:
 	do {
 		if (++j == 0)
 			goto build_road_and_exit;
-		tmptile = TILE_MASK(tmptile + TileOffsByDir(i));
+		tmptile = TILE_MASK(tmptile + TileOffsByDiagDir(i));
 	} while (IsClearWaterTile(tmptile));
 
 	// no water tiles in between?

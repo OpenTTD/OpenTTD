@@ -1701,7 +1701,7 @@ static void AiDoTerraformLand(TileIndex tile, int dir, int unk, int mode)
 	unk &= (int)r;
 
 	do {
-		tile = TILE_MASK(tile + TileOffsByDir(dir));
+		tile = TILE_MASK(tile + TileOffsByDiagDir(dir));
 
 		r >>= 2;
 		if (r & 2) {
@@ -1808,7 +1808,7 @@ static TileIndex AiGetEdgeOfDefaultRailBlock(byte rule, TileIndex tile, byte cmd
 
 	while (p->mode != 3 || !((--cmd) & 0x80)) p++;
 
-	return tile + ToTileIndexDiff(p->tileoffs) - TileOffsByDir(*dir = p->attr);
+	return tile + ToTileIndexDiff(p->tileoffs) - TileOffsByDiagDir(*dir = p->attr);
 }
 
 typedef struct AiRailPathFindData {
@@ -1840,7 +1840,7 @@ static bool AiDoFollowTrack(const Player* p)
 	arpfd.tile2 = p->ai.cur_tile_a;
 	arpfd.flag = false;
 	arpfd.count = 0;
-	FollowTrack(p->ai.cur_tile_a + TileOffsByDir(p->ai.cur_dir_a), 0x2000 | TRANSPORT_RAIL, p->ai.cur_dir_a^2,
+	FollowTrack(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a), 0x2000 | TRANSPORT_RAIL, p->ai.cur_dir_a^2,
 		(TPFEnumProc*)AiEnumFollowTrack, NULL, &arpfd);
 	return arpfd.count > 8;
 }
@@ -1952,8 +1952,8 @@ static inline void AiCheckBuildRailBridgeHere(AiRailFinder *arf, TileIndex tile,
 		for (;;) {
 			TileType type;
 
-			if ((TileIndexDiff)tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
-			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
+			if ((TileIndexDiff)tile_new < -TileOffsByDiagDir(dir2)) return; // Wraping around map, no bridge possible!
+			tile_new = TILE_MASK(tile_new + TileOffsByDiagDir(dir2));
 			type = GetTileType(tile_new);
 
 			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile_new, NULL) != SLOPE_FLAT) {
@@ -1996,7 +1996,7 @@ static void AiBuildRailRecursive(AiRailFinder *arf, TileIndex tile, int dir)
 {
 	const byte *p;
 
-	tile = TILE_MASK(tile + TileOffsByDir(dir));
+	tile = TILE_MASK(tile + TileOffsByDiagDir(dir));
 
 	// Reached destination?
 	if (tile == arf->final_tile) {
@@ -2111,7 +2111,7 @@ static void AiBuildRailConstruct(Player *p)
 		return;
 	}
 
-	p->ai.cur_tile_a += TileOffsByDir(p->ai.cur_dir_a);
+	p->ai.cur_tile_a += TileOffsByDiagDir(p->ai.cur_dir_a);
 
 	if (arf.best_ptr[0] & 0x80) {
 		int i;
@@ -2168,7 +2168,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 			// Clear the tunnel and continue at the other side of it.
 			if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR)))
 				return false;
-			p->ai.cur_tile_a = TILE_MASK(_build_tunnel_endtile - TileOffsByDir(p->ai.cur_dir_a));
+			p->ai.cur_tile_a = TILE_MASK(_build_tunnel_endtile - TileOffsByDiagDir(p->ai.cur_dir_a));
 			return true;
 		}
 
@@ -2179,7 +2179,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 
 			tile = GetOtherBridgeEnd(tile);
 
-			tilenew = TILE_MASK(tile - TileOffsByDir(p->ai.cur_dir_a));
+			tilenew = TILE_MASK(tile - TileOffsByDiagDir(p->ai.cur_dir_a));
 			// And clear the bridge.
 			if (CmdFailed(DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR)))
 				return false;
@@ -2211,7 +2211,7 @@ static bool AiRemoveTileAndGoForward(Player *p)
 	p->ai.cur_dir_a = ptr[1] ^ 2;
 
 	// And then also switch tile.
-	p->ai.cur_tile_a = TILE_MASK(p->ai.cur_tile_a - TileOffsByDir(p->ai.cur_dir_a));
+	p->ai.cur_tile_a = TILE_MASK(p->ai.cur_tile_a - TileOffsByDiagDir(p->ai.cur_dir_a));
 
 	return true;
 }
@@ -2314,7 +2314,7 @@ static void AiStateBuildRail(Player *p)
 	p->ai.cur_tile_a = tile;
 	p->ai.start_dir_a = dir;
 	p->ai.cur_dir_a = dir;
-	DoCommand(TILE_MASK(tile + TileOffsByDir(dir)), 0, (dir&1)?1:0, DC_EXEC, CMD_REMOVE_SINGLE_RAIL);
+	DoCommand(TILE_MASK(tile + TileOffsByDiagDir(dir)), 0, (dir&1)?1:0, DC_EXEC, CMD_REMOVE_SINGLE_RAIL);
 
 	assert(TILE_MASK(tile) != 0xFF00);
 
@@ -2325,7 +2325,7 @@ static void AiStateBuildRail(Player *p)
 	p->ai.cur_tile_b = tile;
 	p->ai.start_dir_b = dir;
 	p->ai.cur_dir_b = dir;
-	DoCommand(TILE_MASK(tile + TileOffsByDir(dir)), 0, (dir&1)?1:0, DC_EXEC, CMD_REMOVE_SINGLE_RAIL);
+	DoCommand(TILE_MASK(tile + TileOffsByDiagDir(dir)), 0, (dir&1)?1:0, DC_EXEC, CMD_REMOVE_SINGLE_RAIL);
 
 	assert(TILE_MASK(tile) != 0xFF00);
 
@@ -2773,7 +2773,7 @@ static bool AiEnumFollowRoad(TileIndex tile, AiRoadEnum *a, int track, uint leng
 	uint dist = DistanceManhattan(tile, a->dest);
 
 	if (dist <= a->best_dist) {
-		TileIndex tile2 = TILE_MASK(tile + TileOffsByDir(_dir_by_track[track]));
+		TileIndex tile2 = TILE_MASK(tile + TileOffsByDiagDir(_dir_by_track[track]));
 
 		if (IsTileType(tile2, MP_STREET) && GetRoadTileType(tile2) == ROAD_TILE_NORMAL) {
 			a->best_dist = dist;
@@ -2801,7 +2801,7 @@ static bool AiCheckRoadFinished(Player *p)
 	int i;
 
 	are.dest = p->ai.cur_tile_b;
-	tile = TILE_MASK(p->ai.cur_tile_a + TileOffsByDir(dir));
+	tile = TILE_MASK(p->ai.cur_tile_a + TileOffsByDiagDir(dir));
 
 	bits = GetTileTrackStatus(tile, TRANSPORT_ROAD) & _ai_road_table_and[dir];
 	if (bits == 0) return false;
@@ -2852,8 +2852,8 @@ static inline void AiCheckBuildRoadBridgeHere(AiRoadFinder *arf, TileIndex tile,
 		for (;;) {
 			TileType type;
 
-			if ((TileIndexDiff)tile_new < -TileOffsByDir(dir2)) return; // Wraping around map, no bridge possible!
-			tile_new = TILE_MASK(tile_new + TileOffsByDir(dir2));
+			if ((TileIndexDiff)tile_new < -TileOffsByDiagDir(dir2)) return; // Wraping around map, no bridge possible!
+			tile_new = TILE_MASK(tile_new + TileOffsByDiagDir(dir2));
 			type = GetTileType(tile_new);
 
 			if (type == MP_CLEAR || type == MP_TREES || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
@@ -2898,7 +2898,7 @@ static void AiBuildRoadRecursive(AiRoadFinder *arf, TileIndex tile, int dir)
 {
 	const byte *p;
 
-	tile = TILE_MASK(tile + TileOffsByDir(dir));
+	tile = TILE_MASK(tile + TileOffsByDiagDir(dir));
 
 	// Reached destination?
 	if (tile == arf->final_tile) {
@@ -2995,14 +2995,14 @@ do_some_terraform:
 		if (++p->ai.state_counter == 21) {
 			p->ai.state_mode = 1;
 
-			p->ai.cur_tile_a = TILE_MASK(p->ai.cur_tile_a + TileOffsByDir(p->ai.cur_dir_a));
+			p->ai.cur_tile_a = TILE_MASK(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a));
 			p->ai.cur_dir_a ^= 2;
 			p->ai.state_counter = 0;
 		}
 		return;
 	}
 
-	tile = TILE_MASK(p->ai.cur_tile_a + TileOffsByDir(p->ai.cur_dir_a));
+	tile = TILE_MASK(p->ai.cur_tile_a + TileOffsByDiagDir(p->ai.cur_dir_a));
 
 	if (arf.best_ptr[0]&0x80) {
 		int i;
@@ -3644,7 +3644,7 @@ pos_3:
 
 			DiagDirection dir = GetRailDepotDirection(tile);
 
-			if (GetRailTrackStatus(tile + TileOffsByDir(dir)) & _depot_bits[dir])
+			if (GetRailTrackStatus(tile + TileOffsByDiagDir(dir)) & _depot_bits[dir])
 				return;
 
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
@@ -3675,7 +3675,7 @@ pos_3:
 
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 			DoCommand(
-				TILE_MASK(tile + TileOffsByDir(dir)),
+				TILE_MASK(tile + TileOffsByDiagDir(dir)),
 				DiagDirToRoadBits(ReverseDiagDir(dir)),
 				0,
 				DC_EXEC,

@@ -670,7 +670,7 @@ static void DisasterTick_5_and_6(Vehicle *v)
 
 	if (!(v->tick_counter & 1)) return;
 
-	tile = v->tile + TileOffsByDir(DirToDiagDir(v->direction));
+	tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (IsValidTile(tile) &&
 			(r=GetTileTrackStatus(tile,TRANSPORT_WATER),(byte)(r+(r >> 8)) == 0x3F) &&
 			!CHANCE16(1,90)) {
@@ -924,7 +924,7 @@ static void Disaster7_Init(void)
 
 				{
 					TileIndex tile = i->xy;
-					TileIndexDiff step = TileOffsByDir(GB(Random(), 0, 2));
+					TileIndexDiff step = TileOffsByDiagDir(GB(Random(), 0, 2));
 					uint n;
 
 					for (n = 0; n < 30; n++) {

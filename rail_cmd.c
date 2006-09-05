@@ -1558,7 +1558,7 @@ static bool SignalVehicleCheck(TileIndex tile, uint track)
 		// now check all tiles from start to end for a "hidden" vehicle
 		// NOTE: the hashes for tiles may overlap, so this could maybe be optimised a bit by not checking every tile?
 		dest.track = 0x40; // trackbit for vehicles "hidden" inside a tunnel
-		for (; tile != end; tile += TileOffsByDir(direction)) {
+		for (; tile != end; tile += TileOffsByDiagDir(direction)) {
 			if (VehicleFromPos(tile, &dest, SignalVehicleCheckProc) != NULL)
 				return true;
 		}

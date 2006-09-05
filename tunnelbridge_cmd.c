@@ -471,7 +471,7 @@ int32 CmdBuildTunnel(TileIndex start_tile, uint32 flags, uint32 p1, uint32 p2)
 	 * cost before the loop will yield different costs depending on start-
 	 * position, because of increased-cost-by-length: 'cost += cost >> 3' */
 	cost = 0;
-	delta = TileOffsByDir(direction);
+	delta = TileOffsByDiagDir(direction);
 	end_tile = start_tile;
 	for (;;) {
 		end_tile += delta;
@@ -523,7 +523,7 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 {
 	uint z = GetTileZ(tile);
 	DiagDirection dir = GetTunnelDirection(tile);
-	TileIndexDiff delta = TileOffsByDir(dir);
+	TileIndexDiff delta = TileOffsByDiagDir(dir);
 	uint len = 0;
 	TileIndex starttile = tile;
 	Vehicle *v;
@@ -670,7 +670,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	if (!EnsureNoVehicle(tile) || !EnsureNoVehicle(endtile)) return CMD_ERROR;
 
 	direction = GetBridgeRampDirection(tile);
-	delta = TileOffsByDir(direction);
+	delta = TileOffsByDiagDir(direction);
 
 	/* Make sure there's no vehicle on the bridge
 	 * Omit tile and endtile, since these are already checked, thus solving the
@@ -823,7 +823,7 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 			YapfNotifyTrackLayoutChange(endtile, track);
 		}
 		cost = 2 * (_price.build_rail >> 1);
-		delta = TileOffsByDir(GetBridgeRampDirection(tile));
+		delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
 		for (tile += delta; tile != endtile; tile += delta) {
 			if (exec) {
 				SetRailTypeOnBridge(tile, totype);
@@ -1437,7 +1437,7 @@ TileIndex GetVehicleOutOfTunnelTile(const Vehicle *v)
 #else
 	TileIndex tile = v->tile;
 	DiagDirection dir = DirToDiagDir(v->direction);
-	TileIndexDiff delta = TileOffsByDir(dir);
+	TileIndexDiff delta = TileOffsByDiagDir(dir);
 	byte z = v->z_pos;
 
 	dir = ReverseDiagDir(dir);

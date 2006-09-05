@@ -145,7 +145,7 @@ static void TPFMode2(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 	// This addition will sometimes overflow by a single tile.
 	// The use of TILE_MASK here makes sure that we still point at a valid
 	// tile, and then this tile will be in the sentinel row/col, so GetTileTrackStatus will fail.
-	tile = TILE_MASK(tile + TileOffsByDir(direction));
+	tile = TILE_MASK(tile + TileOffsByDiagDir(direction));
 
 	if (++tpf->rd.cur_length > 50)
 		return;
@@ -199,7 +199,7 @@ continue_here:;
  */
 FindLengthOfTunnelResult FindLengthOfTunnel(TileIndex tile, DiagDirection dir)
 {
-	TileIndexDiff delta = TileOffsByDir(dir);
+	TileIndexDiff delta = TileOffsByDiagDir(dir);
 	uint z = GetTileZ(tile);
 	FindLengthOfTunnelResult flotr;
 
@@ -274,7 +274,7 @@ static void TPFMode1(TrackPathFinder* tpf, TileIndex tile, DiagDirection directi
 		}
 		tile = SkipToEndOfTunnel(tpf, tile, direction);
 	}
-	tile += TileOffsByDir(direction);
+	tile += TileOffsByDiagDir(direction);
 
 	/* Check in case of rail if the owner is the same */
 	if (tpf->tracktype == TRANSPORT_RAIL) {
@@ -731,7 +731,7 @@ start_at:
 		tile_org = tile;
 		for (;;) {
 			assert(direction <= 3);
-			tile += TileOffsByDir(direction);
+			tile += TileOffsByDiagDir(direction);
 
 			// too long search length? bail out.
 			if (si.cur_length >= tpf->maxlength) {

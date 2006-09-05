@@ -183,7 +183,7 @@ static uint NPFTunnelCost(AyStarNode* current)
 
 static uint NPFSlopeCost(AyStarNode* current)
 {
-	TileIndex next = current->tile + TileOffsByDir(TrackdirToExitdir(current->direction));
+	TileIndex next = current->tile + TileOffsByDiagDir(TrackdirToExitdir(current->direction));
 	int x,y;
 	int8 z1,z2;
 

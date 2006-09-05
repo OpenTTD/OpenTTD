@@ -7,7 +7,7 @@
 
 TileIndex GetBridgeEnd(TileIndex tile, DiagDirection dir)
 {
-	TileIndexDiff delta = TileOffsByDir(dir);
+	TileIndexDiff delta = TileOffsByDiagDir(dir);
 
 	assert(DiagDirToAxis(dir) == GetBridgeAxis(tile));
 
@@ -27,7 +27,7 @@ TileIndex GetSouthernBridgeEnd(TileIndex t)
 
 TileIndex GetOtherBridgeEnd(TileIndex tile)
 {
-	TileIndexDiff delta = TileOffsByDir(GetBridgeRampDirection(tile));
+	TileIndexDiff delta = TileOffsByDiagDir(GetBridgeRampDirection(tile));
 
 	do {
 		tile += delta;

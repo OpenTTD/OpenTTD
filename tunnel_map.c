@@ -8,7 +8,7 @@
 TileIndex GetOtherTunnelEnd(TileIndex tile)
 {
 	DiagDirection dir = GetTunnelDirection(tile);
-	TileIndexDiff delta = TileOffsByDir(dir);
+	TileIndexDiff delta = TileOffsByDiagDir(dir);
 	uint z = GetTileZ(tile);
 
 	dir = ReverseDiagDir(dir);
@@ -26,7 +26,7 @@ TileIndex GetOtherTunnelEnd(TileIndex tile)
 
 static bool IsTunnelInWayDir(TileIndex tile, uint z, DiagDirection dir)
 {
-	TileIndexDiff delta = TileOffsByDir(dir);
+	TileIndexDiff delta = TileOffsByDiagDir(dir);
 	uint height;
 
 	do {

@@ -1265,7 +1265,7 @@ uint GetPlatformLength(TileIndex tile, DiagDirection dir)
 
 	do {
 		length ++;
-		tile += TileOffsByDir(dir);
+		tile += TileOffsByDiagDir(dir);
 	} while (IsCompatibleTrainStationTile(tile, start_tile));
 
 	return length;
@@ -1923,7 +1923,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
-	tile_cur = tile + TileOffsByDir(direction);
+	tile_cur = tile + TileOffsByDiagDir(direction);
 
 	if (!EnsureNoVehicle(tile_cur)) return CMD_ERROR;
 
@@ -1934,7 +1934,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	cost = DoCommand(tile_cur, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 	if (CmdFailed(cost)) return CMD_ERROR;
 
-	tile_cur += TileOffsByDir(direction);
+	tile_cur += TileOffsByDiagDir(direction);
 	if (!IsTileType(tile_cur, MP_WATER) || GetTileSlope(tile_cur, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	}
@@ -2002,7 +2002,7 @@ static int32 RemoveDock(Station *st, uint32 flags)
 	if (!CheckOwnership(st->owner)) return CMD_ERROR;
 
 	tile1 = st->dock_tile;
-	tile2 = tile1 + TileOffsByDir(GetDockDirection(tile1));
+	tile2 = tile1 + TileOffsByDiagDir(GetDockDirection(tile1));
 
 	if (!EnsureNoVehicle(tile1)) return CMD_ERROR;
 	if (!EnsureNoVehicle(tile2)) return CMD_ERROR;
@@ -2284,7 +2284,7 @@ static uint32 VehicleEnter_Station(Vehicle *v, TileIndex tile, int x, int y)
 {
 	if (v->type == VEH_Train) {
 		if (IsRailwayStation(tile) && IsFrontEngine(v) &&
-				!IsCompatibleTrainStationTile(tile + TileOffsByDir(DirToDiagDir(v->direction)), tile)) {
+				!IsCompatibleTrainStationTile(tile + TileOffsByDiagDir(DirToDiagDir(v->direction)), tile)) {
 			StationID station_id = GetStationIndex(tile);
 
 			if ((!(v->current_order.flags & OF_NON_STOP) && !_patches.new_nonstop) ||

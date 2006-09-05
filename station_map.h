@@ -293,7 +293,7 @@ static inline void MakeBuoy(TileIndex t, StationID sid)
 static inline void MakeDock(TileIndex t, Owner o, StationID sid, DiagDirection d)
 {
 	MakeStation(t, o, sid, GFX_DOCK_BASE + d);
-	MakeStation(t + TileOffsByDir(d), o, sid, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d));
+	MakeStation(t + TileOffsByDiagDir(d), o, sid, GFX_DOCK_BASE_WATER_PART + DiagDirToAxis(d));
 }
 
 static inline void MakeOilrig(TileIndex t, StationID sid)

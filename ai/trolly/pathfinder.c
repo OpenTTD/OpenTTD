@@ -175,8 +175,8 @@ static int32 AyStar_AiPathFinder_CalculateH(AyStar *aystar, AyStarNode *current,
 
 	if (PathFinderInfo->end_direction != AI_PATHFINDER_NO_DIRECTION) {
 		// The station is pointing to a direction, add a tile towards that direction, so the H-value is more accurate
-		r = DistanceManhattan(current->tile, PathFinderInfo->end_tile_tl + TileOffsByDir(PathFinderInfo->end_direction));
-		r2 = DistanceManhattan(current->tile, PathFinderInfo->end_tile_br + TileOffsByDir(PathFinderInfo->end_direction));
+		r = DistanceManhattan(current->tile, PathFinderInfo->end_tile_tl + TileOffsByDiagDir(PathFinderInfo->end_direction));
+		r2 = DistanceManhattan(current->tile, PathFinderInfo->end_tile_br + TileOffsByDiagDir(PathFinderInfo->end_direction));
 	} else {
 		// No direction, so just get the fastest route to the station
 		r = DistanceManhattan(current->tile, PathFinderInfo->end_tile_tl);
@@ -225,7 +225,7 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 	// Go through all surrounding tiles and check if they are within the limits
 	for (i = 0; i < 4; i++) {
 		TileIndex ctile = current->path.node.tile; // Current tile
-		TileIndex atile = ctile + TileOffsByDir(i); // Adjacent tile
+		TileIndex atile = ctile + TileOffsByDiagDir(i); // Adjacent tile
 
 		if (TileX(atile) > 1 && TileX(atile) < MapMaxX() - 1 &&
 				TileY(atile) > 1 && TileY(atile) < MapMaxY() - 1) {
@@ -327,10 +327,10 @@ static void AyStar_AiPathFinder_GetNeighbours(AyStar *aystar, OpenListNode *curr
 		// Bridges can only be build on land that is not flat
 		//  And if there is a road or rail blocking
 		if (tileh != SLOPE_FLAT ||
-				(PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDir(dir), MP_STREET)) ||
-				(!PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDir(dir), MP_RAILWAY))) {
+				(PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDiagDir(dir), MP_STREET)) ||
+				(!PathFinderInfo->rail_or_road && IsTileType(tile + TileOffsByDiagDir(dir), MP_RAILWAY))) {
 			for (;;) {
-				new_tile += TileOffsByDir(dir);
+				new_tile += TileOffsByDiagDir(dir);
 
 				// Precheck, is the length allowed?
 				if (!CheckBridge_Stuff(0, GetBridgeLength(tile, new_tile))) break;

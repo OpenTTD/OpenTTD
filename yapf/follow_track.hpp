@@ -78,7 +78,7 @@ protected:
 		m_tiles_skipped = 0;
 
 		// normal or station tile
-		TileIndexDiff diff = TileOffsByDir(m_exitdir);
+		TileIndexDiff diff = TileOffsByDiagDir(m_exitdir);
 		m_new_tile = TILE_ADD(m_old_tile, diff);
 
 		// special handling for stations
@@ -194,7 +194,7 @@ protected:
 			// how big step we must do to get to the last platform tile;
 			m_tiles_skipped = length - 1;
 			// move to the platform end
-			TileIndexDiff diff = TileOffsByDir(m_exitdir);
+			TileIndexDiff diff = TileOffsByDiagDir(m_exitdir);
 			diff *= m_tiles_skipped;
 			m_new_tile = TILE_ADD(m_new_tile, diff);
 			return true;

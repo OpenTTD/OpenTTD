@@ -303,7 +303,7 @@ static bool EnumRoadSignalFindDepot(TileIndex tile, void* data, int track, uint 
 {
 	RoadFindDepotData* rfdd = data;
 
-	tile += TileOffsByDir(_road_pf_directions[track]);
+	tile += TileOffsByDiagDir(_road_pf_directions[track]);
 
 	if (IsTileType(tile, MP_STREET) &&
 			GetRoadTileType(tile) == ROAD_TILE_DEPOT &&
@@ -965,7 +965,7 @@ static void RoadVehCheckOvertake(Vehicle *v, Vehicle *u)
 	od.tile = v->tile;
 	if (FindRoadVehToOvertake(&od)) return;
 
-	od.tile = v->tile + TileOffsByDir(DirToDiagDir(v->direction));
+	od.tile = v->tile + TileOffsByDiagDir(DirToDiagDir(v->direction));
 	if (FindRoadVehToOvertake(&od)) return;
 
 	if (od.u->cur_speed == 0 || od.u->vehstatus& VS_STOPPED) {
@@ -1126,7 +1126,7 @@ static int RoadFindPathToDest(Vehicle* v, TileIndex tile, DiagDirection enterdir
 		trackdir = DiagdirToDiagTrackdir(enterdir);
 		//debug("Finding path. Enterdir: %d, Trackdir: %d", enterdir, trackdir);
 
-		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
+		ftd = PerfNPFRouteToStationOrTile(tile - TileOffsByDiagDir(enterdir), trackdir, &fstd, TRANSPORT_ROAD, v->owner, INVALID_RAILTYPE);
 		if (ftd.best_trackdir == 0xff) {
 			/* We are already at our target. Just do something */
 			//TODO: maybe display error?
@@ -1154,7 +1154,7 @@ do_it:;
 				/* When we are heading for a depot or station, we just
 				 * pretend we are heading for the tile in front, we'll
 				 * see from there */
-				desttile += TileOffsByDir(dir);
+				desttile += TileOffsByDiagDir(dir);
 				if (desttile == tile && bitmask & _road_pf_table_3[dir]) {
 					/* If we are already in front of the
 					 * station/depot and we can get in from here,
@@ -1349,7 +1349,7 @@ static void RoadVehController(Vehicle *v)
 
 // switch to another tile
 	if (rd.x & 0x80) {
-		TileIndex tile = v->tile + TileOffsByDir(rd.x & 3);
+		TileIndex tile = v->tile + TileOffsByDiagDir(rd.x & 3);
 		int dir = RoadFindPathToDest(v, tile, rd.x & 3);
 		uint32 r;
 		Direction newdir;

@@ -157,10 +157,19 @@ uint DistanceFromEdge(TileIndex); // shortest distance from any edge of the map
 		} while (var += TileDiffXY(0, 1) - (w), --h_cur != 0); \
 	}
 
-
-static inline TileIndexDiff TileOffsByDir(uint dir)
+typedef enum DiagDirection DiagDirection;
+static inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
 {
-	extern const TileIndexDiffC _tileoffs_by_dir[4];
+	extern const TileIndexDiffC _tileoffs_by_diagdir[4];
+
+	assert(dir < lengthof(_tileoffs_by_diagdir));
+	return ToTileIndexDiff(_tileoffs_by_diagdir[dir]);
+}
+
+typedef enum Direction Direction;
+static inline TileIndexDiff TileOffsByDir(Direction dir)
+{
+	extern const TileIndexDiffC _tileoffs_by_dir[8];
 
 	assert(dir < lengthof(_tileoffs_by_dir));
 	return ToTileIndexDiff(_tileoffs_by_dir[dir]);
