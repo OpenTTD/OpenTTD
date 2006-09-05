@@ -729,7 +729,7 @@ CargoID FindFirstRefittableCargo(EngineID engine_type)
 */
 int32 GetRefitCost(EngineID engine_type)
 {
-	int32 base_cost = 0;
+	int32 base_cost;
 
 	switch (GetEngine(engine_type)->type) {
 		case VEH_Ship: base_cost = _price.ship_base; break;
@@ -1660,6 +1660,65 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 	} while ((source = source->next) != NULL);
 }
 
+/**
+ * Function to find what type of cargo to refit to when autoreplacing
+ * @param *v Original vehicle, that is being replaced
+ * @param engine_type The EngineID of the vehicle that is being replaced to
+ * @return The cargo type to replace to
+ *    CT_NO_REFIT is returned if no refit is needed
+ *    CT_INVALID is returned when both old and new vehicle got cargo capacity and refitting the new one to the old one's cargo type isn't possible
+ */
+static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
+{
+	bool new_cargo_capacity = true;
+	CargoID new_cargo_type = CT_INVALID;
+
+	switch (v->type) {
+		case VEH_Train:
+			new_cargo_capacity = (RailVehInfo(engine_type)->capacity > 0);
+			new_cargo_type     = RailVehInfo(engine_type)->cargo_type;
+			break;
+
+		case VEH_Road:
+			new_cargo_capacity = (RoadVehInfo(engine_type)->capacity > 0);
+			new_cargo_type     = RoadVehInfo(engine_type)->cargo_type;
+			break;
+		case VEH_Ship:
+			new_cargo_capacity = (ShipVehInfo(engine_type)->capacity > 0);
+			new_cargo_type     = ShipVehInfo(engine_type)->cargo_type;
+			break;
+
+		case VEH_Aircraft:
+			/* all aircraft starts as passenger planes with cargo capacity
+			 * new_cargo_capacity is always true for aircraft, which is the init value. No need to set it here */
+			new_cargo_type     = CT_PASSENGERS;
+			break;
+
+		default: NOT_REACHED(); break;
+	}
+
+	if (!new_cargo_capacity) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity
+
+	if (v->cargo_type == new_cargo_type) return CT_NO_REFIT;
+	if (CanRefitTo(engine_type, v->cargo_type)) return v->cargo_type;
+	if (v->type != VEH_Train) return CT_INVALID; // We can't refit the vehicle to carry the cargo we want
+
+	/* Below this line it's safe to assume that the vehicle in question is a train */
+
+	if (v->cargo_cap != 0) return CT_INVALID; // trying to replace a vehicle with cargo capacity into another one with incompatible cargo type
+
+	/* the old engine didn't have cargo capacity, but the new one does
+	 * now we will figure out what cargo the train is carrying and refit to fit this */
+	v = GetFirstVehicleInChain(v);
+	do {
+		if (v->cargo_cap == 0) continue;
+		/* Now we found a cargo type being carried on the train and we will see if it is possible to carry to this one */
+		if (v->cargo_type == new_cargo_type) return CT_NO_REFIT;
+		if (CanRefitTo(engine_type, v->cargo_type)) return v->cargo_type;
+	} while ((v=v->next) != NULL);
+	return CT_NO_REFIT; // We failed to find a cargo type on the old vehicle and we will not refit the new one
+}
+
 /* Replaces a vehicle (used to be called autorenew)
  * This function is only called from MaybeReplaceVehicle()
  * Must be called with _current_player set to the owner of the vehicle
@@ -1667,7 +1726,7 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
  * @param flags is the flags to use when calling DoCommand(). Mainly DC_EXEC counts
  * @return value is cost of the replacement or CMD_ERROR
  */
-static int32 ReplaceVehicle(Vehicle **w, byte flags)
+static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 {
 	int32 cost;
 	Vehicle *old_v = *w;
@@ -1677,43 +1736,29 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 	bool new_front = false;
 	Vehicle *new_v = NULL;
 	char vehicle_name[32];
+	CargoID replacement_cargo_type;
 
 	new_engine_type = EngineReplacementForPlayer(p, old_v->engine_type);
 	if (new_engine_type == INVALID_ENGINE) new_engine_type = old_v->engine_type;
 
+	replacement_cargo_type = GetNewCargoTypeForReplace(old_v, new_engine_type);
+
+	/* check if we can't refit to the needed type, so no replace takes place to prevent the vehicle from altering cargo type */
+	if (replacement_cargo_type == CT_INVALID) return 0;
+
 	cost = DoCommand(old_v->tile, new_engine_type, 3, flags, CMD_BUILD_VEH(old_v->type));
 	if (CmdFailed(cost)) return cost;
 
+	if (replacement_cargo_type != CT_NO_REFIT) cost += GetRefitCost(new_engine_type); // add refit cost
+
 	if (flags & DC_EXEC) {
-		CargoID new_cargo_type = old_v->cargo_type;
 		new_v = GetVehicle(_new_vehicle_id);
 		*w = new_v; //we changed the vehicle, so MaybeReplaceVehicle needs to work on the new one. Now we tell it what the new one is
 
 		/* refit if needed */
-		if (old_v->type == VEH_Train && old_v->cargo_cap == 0 && new_v->cargo_cap != 0) {
-			// the old engine didn't have cargo capacity, but the new one does
-			// now we will figure out what cargo the train is carrying and refit to fit this
-			Vehicle *v = old_v;
-			CargoID cargo_type_buffer = new_v->cargo_type;
-			do {
-				if (v->cargo_cap == 0) continue;
-				if (v->cargo_type == new_v->cargo_type) {
-					// the default type is already being carried on the train. No need to refit
-					cargo_type_buffer = new_v->cargo_type;
-					break;
-				}
-				// now we know that the vehicle is carrying cargo and that it's not the same as
-				cargo_type_buffer = v->cargo_type;
-			} while ((v=v->next) != NULL);
-			new_cargo_type = cargo_type_buffer;
-		}
-
-		if (new_cargo_type != new_v->cargo_type && new_v->cargo_cap != 0) {
-			// we add the refit cost to cost, so it's added to the cost animation
-			// it's not in the calculation of having enough money to actually do the replace since it's rather hard to do by design, but since
-			// we pay for it, it's nice to make the cost animation include it
-			int32 temp_cost = DoCommand(0, new_v->index, new_cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
-			if (!CmdFailed(temp_cost)) cost += temp_cost;
+		if (replacement_cargo_type != CT_NO_REFIT) {
+			int32 temp_cost = DoCommand(0, new_v->index, replacement_cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
+			assert(!CmdFailed(temp_cost)); // assert failure here indicates a bug in GetNewCargoTypeForReplace()
 		}
 		if (new_v->type == VEH_Train && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->next != NULL && IsArticulatedPart(new_v->next))) {
 			// we are autorenewing to a single engine, so we will turn it as the old one was turned as well
@@ -1763,17 +1808,21 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags)
 		} else {
 			GetName(old_v->string_id & 0x7FF, vehicle_name);
 		}
+	} else { // flags & DC_EXEC not set
+		/* Ensure that the player will not end up having negative money while autoreplacing
+		 * This is needed because the only other check is done after the income from selling the old vehicle is substracted from the cost */
+		if (p->money64 < (cost + total_cost)) return CMD_ERROR;
 	}
 
-	// sell the engine/ find out how much you get for the old engine
+	/* sell the engine/ find out how much you get for the old engine (income is returned as negative cost) */
 	cost += DoCommand(0, old_v->index, 0, flags, CMD_SELL_VEH(old_v->type));
 
 	if (new_front) {
-		// now we assign the old unitnumber to the new vehicle
+		/* now we assign the old unitnumber to the new vehicle */
 		new_v->unitnumber = cached_unitnumber;
 	}
 
-	// Transfer the name of the old vehicle.
+	/* Transfer the name of the old vehicle */
 	if ((flags & DC_EXEC) && vehicle_name[0] != '\0') {
 		_cmd_text = vehicle_name;
 		DoCommand(0, new_v->index, 0, DC_EXEC, CMD_NAME_VEHICLE);
@@ -1835,17 +1884,8 @@ static void MaybeReplaceVehicle(Vehicle *v)
 					continue;
 			}
 
-			if (w->type == VEH_Train && IsTrainWagon(w)) {
-				EngineID e = EngineReplacementForPlayer(p, w->engine_type);
-
-				if (w->cargo_type != RailVehInfo(e)->cargo_type && !CanRefitTo(e, w->cargo_type)) {
-					// we can't replace this wagon since the cargo type is incorrent, and we can't refit it
-					continue;
-				}
-			}
-
 			/* Now replace the vehicle */
-			temp_cost = ReplaceVehicle(&w, flags);
+			temp_cost = ReplaceVehicle(&w, flags, cost);
 
 			if (flags & DC_EXEC &&
 					(w->type != VEH_Train || w->u.rail.first_engine == INVALID_ENGINE)) {
@@ -1919,14 +1959,14 @@ static void MaybeReplaceVehicle(Vehicle *v)
 }
 
 /**
- * @param sort_list list to store the list in. Note: it's presumed that it is big enough to store all vehicles in the game (worst case) and it will not check size
- * @param type type of vehicle
- * @param owner PlayerID of owner to generate a list for
- * @param station index of station to generate a list for. INVALID_STATION when not used
- * @param order index of oder to generate a list for. INVALID_ORDER when not used
- * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
- * @return the number of vehicles added to the list
- */
+* @param sort_list list to store the list in. Note: it's presumed that it is big enough to store all vehicles in the game (worst case) and it will not check size
+* @param type type of vehicle
+* @param owner PlayerID of owner to generate a list for
+* @param station index of station to generate a list for. INVALID_STATION when not used
+* @param order index of oder to generate a list for. INVALID_ORDER when not used
+* @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
+* @return the number of vehicles added to the list
+*/
 uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
 {
 	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;

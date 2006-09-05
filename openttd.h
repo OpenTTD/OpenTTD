@@ -279,6 +279,7 @@ enum {
 
 	NUM_CARGO       = 12,
 
+	CT_NO_REFIT     = 0xFE,
 	CT_INVALID      = 0xFF
 };
 
