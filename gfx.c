@@ -542,8 +542,10 @@ void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 int GetStringWidth(const char *str)
 {
 	FontSize size = _cur_fontsize;
-	int w = 0;
+	int w, max_w;
 	byte c;
+
+	w = max_w = 0;
 	for (c = *str; c != '\0'; c = *(++str)) {
 		if (c >= ASCII_LETTERSTART) {
 			w += GetCharacterWidth(size, c);
@@ -552,9 +554,11 @@ int GetStringWidth(const char *str)
 			else if (c == ASCII_SETXY) str += 2;
 			else if (c == ASCII_TINYFONT) size = FS_SMALL;
 			else if (c == ASCII_BIGFONT) size = FS_LARGE;
+			else if (c == ASCII_NL && w > max_w) {max_w = w; w = 0;}
 		}
 	}
-	return w;
+
+	return max(w, max_w);
 }
 
 
