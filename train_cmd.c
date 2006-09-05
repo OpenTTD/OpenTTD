@@ -113,6 +113,7 @@ void TrainPowerChanged(Vehicle* v)
 	if (v->u.rail.cached_power != power) {
 		v->u.rail.cached_power = power;
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
+		InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	}
 }
 

@@ -31,6 +31,7 @@
 #include "yapf/yapf.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
+#include "train.h"
 
 const byte _track_sloped_sprites[14] = {
 	14, 15, 22, 13,
@@ -886,12 +887,22 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 		for (tracks = GetTrackBits(tile); tracks != TRACK_BIT_NONE; tracks = KILL_FIRST_BIT(tracks))
 			YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(tracks));
 
-		/* Update build vehicle window related to this depot */
 		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
-			Window *w = FindWindowById(WC_BUILD_VEHICLE, tile);
+			Vehicle *v;
+			Window *w;
+
+			/* Update build vehicle window related to this depot */
+			w = FindWindowById(WC_BUILD_VEHICLE, tile);
 			if (w != NULL) {
 				WP(w,buildtrain_d).railtype = totype;
 				SetWindowDirty(w);
+			}
+
+			/* update power of trains in this depot */
+			FOR_ALL_VEHICLES(v) {
+				if (v->type == VEH_Train && IsFrontEngine(v) && v->tile == tile && v->u.rail.track == 0x80) {
+					TrainPowerChanged(v);
+				}
 			}
 		}
 	}
