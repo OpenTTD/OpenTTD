@@ -666,27 +666,25 @@ void GuiShowTooltips(StringID string_id)
 
 	GetString(buffer, string_id);
 
-	right = GetStringWidth(buffer) + 4;
+	right = GetStringWidth(buffer) + 6;
 
+	/* Cut tooltip length to 200 pixels max, wrap to new line if longer */
 	bottom = 14;
 	if (right > 200) {
 		bottom += ((right - 4) / 176) * 10;
 		right = 200;
 	}
 
-	y = _cursor.pos.y + 30;
-	if (y < 22) y = 22;
-
-	if (y > (_screen.height - 44) && (y-=52) > (_screen.height - 44))
-		y = (_screen.height - 44);
-
-	x = _cursor.pos.x - (right >> 1);
-	if (x < 0) x = 0;
-	if (x > (_screen.width - right)) x = _screen.width - right;
+	/* Correctly position the tooltip position, watch out for window and cursor size
+	 * Clamp value to below main toolbar and above statusbar. If tooltip would
+	 * go below window, flip it so it is shown above the cursor */
+	y = clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
+	if (y + bottom > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - bottom - 5;
+	x = clamp(_cursor.pos.x - (right >> 1), 0, _screen.width - right);
 
 	w = AllocateWindow(x, y, right, bottom, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
 	WP(w,tooltips_d).string_id = string_id;
-	w->flags4 &= ~WF_WHITE_BORDER_MASK;
+	w->flags4 &= ~WF_WHITE_BORDER_MASK; // remove white-border from tooltip
 	w->widget[0].right = right;
 	w->widget[0].bottom = bottom;
 }
