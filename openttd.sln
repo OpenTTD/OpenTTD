@@ -32,10 +32,6 @@ Global
 		{0F066B23-18DF-4284-8265-F4A5E7E3B966}.Debug.Build.0 = Debug|Win32
 		{0F066B23-18DF-4284-8265-F4A5E7E3B966}.Release.ActiveCfg = Debug|Win32
 		{0F066B23-18DF-4284-8265-F4A5E7E3B966}.Release.Build.0 = Debug|Win32
-		{4AECBDC3-D57E-4AFB-90BD-DDF10707588C}.Debug.ActiveCfg = Debug|Win32
-		{4AECBDC3-D57E-4AFB-90BD-DDF10707588C}.Debug.Build.0 = Debug|Win32
-		{4AECBDC3-D57E-4AFB-90BD-DDF10707588C}.Release.ActiveCfg = Release|Win32
-		{4AECBDC3-D57E-4AFB-90BD-DDF10707588C}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
