@@ -2453,8 +2453,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Bakima git: {TO
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Durmadan git: {TOWN} Tren Gari
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Durmadan bakima git: {TOWN} Tren Gari
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}{TOWN} Tren Garina gidiyor
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}{TOWN} Tren Garina gidiyor, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} Tren Garina gidiyor
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN} Tren Garina gidiyor, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Hatali talimat)
 
@@ -2587,8 +2587,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...bir a
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Araba satilamiyor...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Araba kalkamiyor/duramiyor...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Araba {COMMA} garajda bekliyor
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}{TOWN} Garajina gidiyor
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}{TOWN} Garajina gidiyor, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} Garajina gidiyor
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} Garajina gidiyor, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Araç garaja gidemiyor...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel garaj bulunamadi
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Arabalar - bilgi için arabaya tiklayin
@@ -2657,8 +2657,8 @@ STR_9817_CAPACITY                                               :{BLACK}Kapasite
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Gemi durdurulamaz/baslatilamaz...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Gemi tershaneye gönderilemez...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel tershane bulunamadi
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Gidiyor: {TOWN} Tershanesi
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Gidiyor: {TOWN} Tershanesi, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Gidiyor: {TOWN} Tershanesi
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Gidiyor: {TOWN} Tershanesi, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Gemi {COMMA} tershanede bekliyor
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}iskele yap
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Tershane yap (gemi yapmak ve bakimlari için)
@@ -2722,8 +2722,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu senek
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Son servisten beri bozulmalar: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Yapim: {LTBLUE}{NUM}{BLACK} Degeri: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Hangara gönderilemiyor...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}{STATION} Hangarina gidiyor
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}{STATION} Hangarina gidiyor, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION} Hangarina gidiyor
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION} Hangarina gidiyor, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Uçak {COMMA} hangarda bekliyor
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Yolda uçak var
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Uçak durdurulamaz/baslatilamaz...

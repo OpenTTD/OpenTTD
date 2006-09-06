@@ -2557,8 +2557,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Javítsd a vonat
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Menj megállás nélkül {TOWN}i jármûtelepre
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Mindig javítsd a vonatot a {TOWN}i jármûtelepen
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Úton {TOWN} jármûtelepére
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Úton {TOWN} jármûtelepére, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Úton {TOWN} jármûtelepére
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Úton {TOWN} jármûtelepére, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Hibás menetrend)
 
@@ -2691,8 +2691,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...garáz
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nem adhatod el a közúti jármûvet...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nem indíthatod el/ állíthatod meg a közúti jármûvet...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{COMMA}. közúti jármû a garázsban várakozik
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Úton {TOWN} garázsába
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Úton {TOWN} garázsába, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Úton {TOWN} garázsába
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Úton {TOWN} garázsába, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nem küldheted a jármûvet a garázsba...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi garázst
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Közúti jármûvek - kattints egy jármûre az adataihoz
@@ -2761,8 +2761,8 @@ STR_9817_CAPACITY                                               :{BLACK}Kapacitá
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nem indíthatod el/ állíthatod meg a hajót...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nem küldheted a hajót a dokkba...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi dokkot
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Úton {TOWN} dokkjába
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Úton {TOWN} dokkjába, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Úton {TOWN} dokkjába
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Úton {TOWN} dokkjába, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{COMMA}. hajó a dokkban várakozik
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Kikötõ építése
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Dokk építése (hajók vételére és karbantartására)
@@ -2826,8 +2826,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei has
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nem küldheted a repülõgépet a hangárba...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Úton {STATION} hangárjába
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Úton {STATION} hangárjába, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Úton {STATION} hangárjába
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Úton {STATION} hangárjába, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{COMMA}. repülõgép a hangárban várakozik
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Repülõgép van az útban
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nem indíthatod el/ állíthatod meg a repülõgépet...

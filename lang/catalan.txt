@@ -2412,8 +2412,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manteniment a c
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Anar sense parades a cotxeres de {TOWN}.
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manteniment sense parades a cotxeres de {TOWN}.
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Cap a cotxeres de {TOWN}.
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Cap a cotxeres de {TOWN}, a {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Cap a cotxeres de {TOWN}.
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Cap a cotxeres de {TOWN}, a {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ordre incorrecte)
 
@@ -2544,8 +2544,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...s'ha 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No pots vendre el vehicle rodat...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No es pot parar/arrencar el vehicle rodat...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehicle Rodat {COMMA} esperant en cotxera
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Cap a la cotxera de {TOWN}.
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Cap a la cotxera de {TOWN}, a {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Cap a la cotxera de {TOWN}.
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No es pot enviar el vehicle a cotxera...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Incapaç de trobar la cotxera local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vehicles rodats - clica en un vehicle per informació
@@ -2614,8 +2614,8 @@ STR_9817_CAPACITY                                               :{BLACK}Capacita
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}No es pot parar/arrencar el vaixell...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No es pot enviar vaixell a la drassana...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Incapaç de trobar drassana local
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Cap a la drassana de {TOWN}.
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Cap a la drassana de{TOWN}, a {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Cap a la drassana de {TOWN}.
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Cap a la drassana de{TOWN}, a {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Vaixell {COMMA} esperant en drassana
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construir port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir drassana (per construir i mantindre vaixells)
@@ -2679,8 +2679,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Averíes des de l'últim manteniment: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No es pot enviar l'aronau a l'hangar...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Cap a l'hangar de {STATION}.
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Cap a l'hangar de {STATION}, a {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Cap a l'hangar de {STATION}.
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Cap a l'hangar de {STATION}, a {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}L' aeronau {COMMA} esperant a l'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronau en el camí
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No es pot parar/arrencar l' aeronau...

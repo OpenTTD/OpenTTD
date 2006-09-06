@@ -2415,8 +2415,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Huolto veturita
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Mene pys‰htym‰tt‰ veturitalliin ({TOWN})
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Huolto pys‰htym‰tt‰ veturitallilla ({TOWN})
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Suuntana veturitalli ({TOWN})
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Suuntana veturitalli ({TOWN}), {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Suuntana veturitalli ({TOWN})
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Suuntana veturitalli ({TOWN}), {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (virheellinen k‰sky)
 
@@ -2547,8 +2547,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...sen p
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ajoneuvoa ei voi myyd‰...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ajoneuvoa ei voi pys‰ytt‰‰/laitta liikkeelle...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Ajoneuvo {COMMA} odottaa huoltoasemalla.
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Suuntana huoltoasema, {TOWN}.
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Suuntana huoltoasema, {TOWN}, {VELOCITY}.
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Suuntana huoltoasema, {TOWN}.
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Suuntana huoltoasema, {TOWN}, {VELOCITY}.
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ajoneuvon l‰hett‰minen huoltoasemalle ei onnistu...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Paikallista huoltoasemaa ei lˆydy.
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Ajoneuvot - napsauta ajoneuvoja saadaksesi tietoja.
@@ -2617,8 +2617,8 @@ STR_9817_CAPACITY                                               :{BLACK}Kapasite
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Laivaa ei voi pys‰ytt‰‰/laittaa liikkeelle...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Laivaa ei voi l‰hett‰‰ telakalle...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Paikallista telakkaa ei lˆydy
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Suuntana telakka, {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Suuntana telakka, {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Suuntana telakka, {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Suuntana telakka, {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laiva {COMMA} odottaa telakalla.
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Rakenna satama
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Rakenna telakka (laivojen rakentamista ja huoltamista varten).
@@ -2682,8 +2682,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Tuotto t
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Luotettavuus: {LTBLUE}{COMMA}%  {BLACK}Hajoamisia viime huollon j‰lkeen: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Lentokonetta ei voi l‰hett‰‰ lentokonehalliin...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Suuntana lentokonehalli, {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Suuntana lentokonehalli, {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suuntana lentokonehalli, {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suuntana lentokonehalli, {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lentokone {COMMA} odottaa lentokonehallissa.
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lentokone on tiell‰.
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Lentokonetta ei voi pys‰ytt‰‰/laittaa liikkeelle...
