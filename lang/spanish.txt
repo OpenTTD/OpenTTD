@@ -2456,8 +2456,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Ir al depósito 
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ir sin parar al depósito de {TOWN} para mantenimiento
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Hacia el depósito de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Hacia el depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Hacia el depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Hacia el depósito de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Orden inválida)
 
@@ -2590,9 +2590,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...debe 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No se puede vender vehículo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No se puede detener/arrancar vehículo...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehículo de carretera {COMMA} espera en depósito
-STR_HEADING_FOR_ROAD_DEPOT                                      :{RED}Hacia el depósito de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{RED}Hacia el depósito de {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Dirigiendose al Depósito de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Hacia el depósito de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Hacia el depósito de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No se puede enviar vehículo al depósito...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al depósito
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vehículos de carretera - click en vehículo para información
@@ -2661,8 +2660,8 @@ STR_9817_CAPACITY                                               :{BLACK}Capacida
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}No se puede detener/arrancar barco...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No se puede mandar barco a astillero...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al astillero
-STR_HEADING_FOR_SHIP_DEPOT                                      :{RED}Hacia el astillero de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{RED}Hacia el astillero de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Hacia el astillero de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Hacia el astillero de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Barco {COMMA} esperando en astilleros
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construir muelles
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir astillero (para construir y despachar barcos)
@@ -2726,10 +2725,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidad: {LTBLUE}{COMMA}%  {BLACK}Averías desde último despacho: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Const.: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No se puede enviar la aeronave al hangar
-STR_HEADING_FOR_HANGAR                                          :{RED}Ir al hangar de {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{RED}Ir al hangar de {STATION}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Dirigiendose al Hangar de {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Dirigiendose al Hangar de {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Ir al hangar de {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Ir al hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}La aeronave {COMMA} está esperando en el hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave en camino
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No se puede detener/arrancar aeronave...

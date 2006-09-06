@@ -2456,10 +2456,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Entretien au dé
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Aller sans s'arrêter au dépôt de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Aller faire l'entretien sans s'arrêter au dépôt de {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Roule vers le dépôt de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Roule vers le dépôt de {TOWN}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Roule vers le dépôt de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Roule vers le dépôt de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Roule vers le dépôt de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Roule vers le dépôt de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ordre invalide)
 
@@ -2592,10 +2590,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...doit 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossible de vendre le véhicule...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossible de démarrer/stopper le véhicule...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Le véhicule {COMMA} attend au dépôt
-STR_HEADING_FOR_ROAD_DEPOT                                      :{RED}Roule vers le dépôt de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{RED}Roule vers le dépôt de {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Roule vers le dépôt de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Roule vers le dépôt de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Roule vers le dépôt de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Roule vers le dépôt de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Impossible d'envoyer le véhicule au dépôt...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossible de trouver le dépôt
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Véhicules - Cliquer sur un véhicule pour obtenir des informations
@@ -2664,10 +2660,8 @@ STR_9817_CAPACITY                                               :{BLACK}Capacité
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Impossible d'arrêter/démarrer le navire...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Impossible d'envoyer le navire au dépôt...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossible de trouver dépôt local
-STR_HEADING_FOR_SHIP_DEPOT                                      :{RED}En route pour le dépôt naval de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{RED}En route pour le dépôt naval de {TOWN}, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}En route pour le dépôt naval de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}En route pour le dépôt naval de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}En route pour le dépôt naval de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}En route pour le dépôt naval de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Navire {COMMA} est en attente au dépôt
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construire un port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construire un dépôt naval (pour construire et entretenir les navires)
@@ -2731,10 +2725,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profits 
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilité: {LTBLUE}{COMMA}%   {BLACK}Cafouillages depuis le dernier service: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valeur: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Impossible d'envoyer l'aéronef au hangar...
-STR_HEADING_FOR_HANGAR                                          :{RED}En route pour le hangar de {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{RED}En route pour le hangar de {STATION}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}En route pour le hangar de {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}En route pour le hangar de {STATION} , {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}En route pour le hangar de {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}En route pour le hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aéronef {COMMA} est en attente au hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aéronef présent
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Impossible d'arrêter/démarrer aéronef...

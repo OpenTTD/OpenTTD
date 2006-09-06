@@ -2519,10 +2519,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Opravit v {TOWN
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Chod bez zastavenia do depa {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Opravovat bez zastavenia v depe {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Smeruje do {TOWN} depa
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Smeruje do {TOWN} depa, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Smeruje do depa {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Smeruje do depa {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Smeruje do {TOWN} depa
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Smeruje do {TOWN} depa, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Neplatny prikaz)
 
@@ -2655,10 +2653,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musi
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemozno predat automobil ...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemozno zastavit/spustit automobil ...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobil {COMMA} caka v garazi
-STR_HEADING_FOR_ROAD_DEPOT                                      :{RED}Smeruje do {TOWN} garaze
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{RED}smeruje do {TOWN} garaze, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Smeruje do garaze {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Smeruje do garaze {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Smeruje do {TOWN} garaze
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}smeruje do {TOWN} garaze, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemozno poslat automobil do garaze ...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu garaz
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automobily - kliknut pre detaily
@@ -2727,10 +2723,8 @@ STR_9817_CAPACITY                                               :{BLACK}Kapacita
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nemozno zastavit/spustit lod ...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nemozno poslat lod do lodenice ...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu lodenicu
-STR_HEADING_FOR_SHIP_DEPOT                                      :{RED}Smeruje do {TOWN} lodenice
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{RED}Smeruje do {TOWN} lodenice, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Smeruje do lodenice {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Smeruje do lodenicer {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Smeruje do {TOWN} lodenice
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Smeruje do {TOWN} lodenice, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Lod {COMMA} caka v lodenici
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit lodenicu
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodenicu (pre vyrobu a opravy lodi)
@@ -2794,10 +2788,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Zisk ten
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolahlivost: {LTBLUE}{COMMA}%  {BLACK}Pocet poruch od posledneho servisu: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vyrobene: {LTBLUE}{NUM}{BLACK} Hodnota: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nemozno poslat lietadlo do hangaru ...
-STR_HEADING_FOR_HANGAR                                          :{RED}Smeruje do {STATION} hangaru
-STR_HEADING_FOR_HANGAR_VEL                                      :{RED}Smeruje do {STATION} hangaru, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Smeruje do hangaru na {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Smeruje do hangaru na {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Smeruje do {STATION} hangaru
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Smeruje do {STATION} hangaru, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lietadlo {COMMA} caka v hangare
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lietadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemozno zastavit/spustit lietadlo ...

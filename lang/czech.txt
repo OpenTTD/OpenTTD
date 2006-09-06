@@ -2506,10 +2506,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Údr¸ba v zelezn
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Jet bez zastavení do zeleznicniho depa {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Údr¸ba bez zastavení v zeleznicnim depu {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{RED}Jedu do zeleznicniho depa {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{RED}Jedu do zeleznicniho depa {TOWN}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Jedu do zeleznicniho depa {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Jedu do zeleznicniho depa {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Jedu do zeleznicniho depa {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Jedu do zeleznicniho depa {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (neplatný prikaz)
 
@@ -2642,10 +2640,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musí
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemohu prodat silnicni vozidlo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemohu zastavit/rozjet silnicni vozidlo...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Silnicni vozidlo {COMMA} ceka v gará¸i
-STR_HEADING_FOR_ROAD_DEPOT                                      :{RED}Mirim do gará¸e {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{RED}Mirim do gará¸e {TOWN}, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Mirim do gará¸e {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Mirim do gará¸e {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Mirim do gará¸e {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Mirim do gará¸e {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemohu poslat silnicni vozidlo do gará¸e...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní gará¸
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Silnicni vozidla - stiskni vozidlo pro informace
@@ -2714,10 +2710,8 @@ STR_9817_CAPACITY                                               :{BLACK}Kapacita
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nelze rozjet/zastavit lod...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nelze poslat lod do depa...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní depo
-STR_HEADING_FOR_SHIP_DEPOT                                      :{RED}Jedu do depa {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{RED}Mirim do depa {TOWN}, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Mirim do depa {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Mirim do depa {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Jedu do depa {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Mirim do depa {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Lod {COMMA} ceka v depu
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit pristavní molo
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodní depo (na nákup a servis lodí)
@@ -2781,10 +2775,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Prijem t
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nelze poslat letadlo do hangáru...
-STR_HEADING_FOR_HANGAR                                          :{RED}Jedu do hangáru {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{RED}Jedu do hangáru {STATION}, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Jedu do hangáru {STATION}
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Jedu do hangáru {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Jedu do hangáru {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Jedu do hangáru {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Letadlo {COMMA} ceka v hangáru
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemohu rozjet/zastavit letadlo...
