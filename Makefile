@@ -28,7 +28,6 @@
 # upgradeconf: add new options to old Makefile.config
 # osx: OS X application
 # release: used by OSX to make a dmg file ready to release
-# unittest: compile and link ./yapf/unittest/unittest - test for some yapf related classes, and run it
 
 # Options:
 #
@@ -253,7 +252,6 @@ TTD=openttd$(EXE)
 ENDIAN_CHECK=endian_check$(EXE)
 STRGEN=strgen/strgen$(EXE)
 OSXAPP="OpenTTD.app"
-UNITTEST=unit_test$(EXE)
 
 ifdef RELEASE
 REV:=$(RELEASE)
@@ -891,21 +889,6 @@ lang/%.lng: lang/%.txt $(STRGEN) lang/english.txt
 	@echo '===> Compiling language $(*F)'
 	$(Q)$(STRGEN) $(STRGEN_FLAGS) -s lang -d lang $< $(LANG_ERRORS) || rm -f $@
 
-# stupid KUDr doesn't know how to setup unittest dependencies (so rm,cp,rm)
-# please don't blame him and repair it:
-unittest: endian_host.h $(UPDATECONFIG) $(UNITTEST) rununittest
-$(UNITTEST): yapf/unittest/unittest.cpp
-	@echo '===> Compiling and Linking $@'
-	$(Q)rm -f $(UNITTEST)
-	$(Q)$(CXX_HOST) $(CFLAGS_HOST) $(CDEFS) $< $(LIBS) $(LRT) -o $@
-
-.PHONY: unittest
-
-rununittest:
-	@echo '===> Starting unittest'
-	$(Q)./$(UNITTEST)
-.PHONY: rununittest
-
 ifdef MORPHOS
 
 release: all
@@ -960,7 +943,7 @@ FORCE:
 clean:
 	@echo '===> Cleaning up'
 # endian.h is out-dated and no longer in use, so it can be removed soon
-	$(Q)rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) $(OSX_MIDI_PLAYER_FILE) endian.h endian_host.h endian_target.h $(ENDIAN_CHECK) .OSX $(UNITTEST)
+	$(Q)rm -rf .deps *~ $(TTD) $(STRGEN) core table/strings.h $(LANGS) $(OBJS) $(OSX_MIDI_PLAYER_FILE) endian.h endian_host.h endian_target.h $(ENDIAN_CHECK) .OSX
 
 mrproper: clean
 	$(Q)rm -rf $(MAKE_CONFIG)
@@ -1043,7 +1026,7 @@ depend:
 	@true # The include handles this automagically
 
 # Introduce the dependencies
-ifeq ($(findstring $(MAKECMDGOALS), clean info mrproper upgradeconf unittest $(MAKE_CONFIG)),)
+ifeq ($(findstring $(MAKECMDGOALS), clean info mrproper upgradeconf $(MAKE_CONFIG)),)
 -include $(DEPS)
 endif
 
