@@ -563,16 +563,16 @@ static void NPFFollowTrack(AyStar* aystar, OpenListNode* current)
 				 * outside of the depot. But, because the code layout is cleaner this
 				 * way, we will just pretend we are reversed already */
 				src_trackdir = ReverseTrackdir(src_trackdir);
-				dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDir(exitdir));
+				dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDiagDir(exitdir));
 			} else {
 				dst_tile = INVALID_TILE; /* Road vehicle heading inwards: dead end */
 			}
 		} else {
-			dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDir(exitdir));
+			dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDiagDir(exitdir));
 		}
 	} else {
 		/* This a normal tile, a bridge, a tunnel exit, etc. */
-		dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDir(TrackdirToExitdir(src_trackdir)));
+		dst_tile = AddTileIndexDiffCWrap(src_tile, TileIndexDiffCByDiagDir(TrackdirToExitdir(src_trackdir)));
 	}
 	if (dst_tile == INVALID_TILE) {
 		/* We reached the border of the map */

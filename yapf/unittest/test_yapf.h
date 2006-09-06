@@ -169,7 +169,7 @@ struct CYapfTestBaseT
 		int z_org = Map::MapZ(x_org, y_org);
 		DiagDirection exitdir = TrackdirToExitdir(org.m_key.m_td);
 
-		TileIndexDiffC diff = TileIndexDiffCByDir(exitdir);
+		TileIndexDiffC diff = TileIndexDiffCByDiagDir(exitdir);
 		int x_new = x_org + diff.x;
 		int y_new = y_org + diff.y;
 		int z_new = Map::MapZ(x_new, y_new);

@@ -119,9 +119,11 @@ static inline TileIndexDiff ToTileIndexDiff(TileIndexDiffC tidc)
 
 uint TileAddWrap(TileIndex tile, int addx, int addy);
 
-static inline TileIndexDiffC TileIndexDiffCByDir(uint dir) {
-	extern const TileIndexDiffC _tileoffs_by_dir[4];
-	return _tileoffs_by_dir[dir];
+static inline TileIndexDiffC TileIndexDiffCByDiagDir(uint dir) {
+	extern const TileIndexDiffC _tileoffs_by_diagdir[4];
+
+	assert(dir < lengthof(_tileoffs_by_diagdir));
+	return _tileoffs_by_diagdir[dir];
 }
 
 /* Returns tile + the diff given in diff. If the result tile would end up
@@ -157,8 +159,7 @@ uint DistanceFromEdge(TileIndex); // shortest distance from any edge of the map
 		} while (var += TileDiffXY(0, 1) - (w), --h_cur != 0); \
 	}
 
-typedef enum DiagDirection DiagDirection;
-static inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
+static inline TileIndexDiff TileOffsByDiagDir(uint dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_diagdir[4];
 
@@ -166,8 +167,7 @@ static inline TileIndexDiff TileOffsByDiagDir(DiagDirection dir)
 	return ToTileIndexDiff(_tileoffs_by_diagdir[dir]);
 }
 
-typedef enum Direction Direction;
-static inline TileIndexDiff TileOffsByDir(Direction dir)
+static inline TileIndexDiff TileOffsByDir(uint dir)
 {
 	extern const TileIndexDiffC _tileoffs_by_dir[8];
 
