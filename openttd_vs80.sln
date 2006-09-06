@@ -13,8 +13,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "langs", "langs_vs80.vcproj"
 		{A133A442-BD0A-4ADE-B117-AD7545E4BDD1} = {A133A442-BD0A-4ADE-B117-AD7545E4BDD1}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unittest", "yapf\unittest\unittest_vs80.vcproj", "{4AECBDC3-D57E-4AFB-90BD-DDF10707588C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
