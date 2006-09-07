@@ -2386,8 +2386,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Remontas {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Vaziuoti nestojant i {TOWN} traukiniu depa
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Remontas nestojant {TOWN} traukiniu depe
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Kursas i {TOWN} depa
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Kursas i {TOWN} depa, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kursas i {TOWN} depa
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kursas i {TOWN} depa, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Neteisinga tvarka)
 
@@ -2509,8 +2509,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...autom
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Automobilio parduoti negalima...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Automobilio sustabdyti/paleisti negalima...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobilis {COMMA} laukia garaze
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Uzduotis: {TOWN} garazas
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Uzduotis: {TOWN} garazas, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Uzduotis: {TOWN} garazas
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Uzduotis: {TOWN} garazas, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Negalima rasti automobilio garazo...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negalima rasti garazo
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
@@ -2576,8 +2576,8 @@ STR_9817_CAPACITY                                               :{BLACK}Talpa: {
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Sustabdyti/paleisti laivo negalima...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nusiusti i laivu depa negalima...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negali rasti artimiausio laivu depo
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Kursas: {TOWN} laivu depas
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Kursas: {TOWN} laivu depas, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Kursas: {TOWN} laivu depas
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Kursas: {TOWN} laivu depas, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laivas laukia depe: {COMMA}
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Statyti laivu doka
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Statyti laivu depa (nauju laivu isigijimui, remontui)
@@ -2640,8 +2640,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas s
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Pastatytas: {LTBLUE}{NUM}{BLACK} Verte: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Negalima lektuvo nusiusti i angara...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Kursas: {STATION} angaras
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Kursas: {STATION} angarasangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Kursas: {STATION} angaras
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Kursas: {STATION} angarasangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lektuvas {COMMA} laukia angare
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Oro uostai
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Negalima cia statyti oro uosto...

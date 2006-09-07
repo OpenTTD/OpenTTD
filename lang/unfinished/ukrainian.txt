@@ -2418,8 +2418,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Ремонту�
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Прямувати без зупинок до {TOWN} депо
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонтуватись без зупинок в {TOWN} депо
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Прямує до {TOWN} депо
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Прямує до {TOWN} депо, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Прямує до {TOWN} депо
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Прямує до {TOWN} депо, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Невірний наказ)
 
@@ -2551,8 +2551,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...ав�
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Неможливо продати авто...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Неможливо зупинити авто...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Авто {COMMA} чекає в депо
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Прямує до {TOWN} депо
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Прямує до {TOWN} депо, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Прямує до {TOWN} депо
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} депо, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Неможливо направити авто в депо...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Неможливо знайти місцеве депо
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Авто - натисніть на авто для інформації
@@ -2621,8 +2621,8 @@ STR_9817_CAPACITY                                               :{BLACK}Міст
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Неможливо зупинити корабель...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Неможливо направити корабель в депо...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Неможливо знайти місцеве депо
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Прямує до {TOWN} депо
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Прямує до {TOWN} депо, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Прямує до {TOWN} депо
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} депо, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Корабель {COMMA} чекає в депо
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Будувати корабель
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Будувати корабельне депо
@@ -2686,8 +2686,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Приб
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Неможливо направити літак до ангару...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Литить до {STATION} ангару
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Летить до {STATION} ангару, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Литить до {STATION} ангару
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Літак {COMMA} чекає в ангарі
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Літак на шляху
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Неможливо зупинити літак...

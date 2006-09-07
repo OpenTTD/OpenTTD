@@ -2166,8 +2166,8 @@ STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Gaan deurgaande
 STR_GO_TO_TRAIN_DEPOT                                           :Gaan na {TOWN} Trein Depot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gaan deurgaande na {TOWN} Trein Depot
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Op pad na {TOWN} Trein Depot
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Op pad na {TOWN} Trein Depot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Op pad na {TOWN} Trein Depot
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Op pad na {TOWN} Trein Depot, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Swak Opdrag)
 
@@ -2288,8 +2288,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...moet 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan nie pad voertuig verkoop nie
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kani nie pad voertuig stop/ry nie...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Pad voertuig {COMMA} wag in depot
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Op pad na {TOWN} Pad Depot
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Op pad na {TOWN} Pad Depot, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Op pad na {TOWN} Pad Depot
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Op pad na {TOWN} Pad Depot, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan nie voertuig na depot stuur nie...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan nie plaaslike depot vind nie
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Pad voertuie - kliek op voertuig vir inligting
@@ -2353,8 +2353,8 @@ STR_9817_CAPACITY                                               :{BLACK}Kapasiti
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan nie skip stop/ry nie
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan nie skip na depot sttur nie...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan nie plaaslike depot vind nie
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Op pad na {TOWN} Skip Depot
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Op pad na {TOWN} Skip Depot, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Op pad na {TOWN} Skip Depot
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Op pad na {TOWN} Skip Depot, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skip {COMMA} wag in depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bou skip werf
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bou skip depot (vir opbou en diens van skepe)
@@ -2418,8 +2418,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profyt d
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Deeglikheid: {LTBLUE}{COMMA}%  {BLACK}Oponthoude sedert laaste diens: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Gebou: {LTBLUE}{NUM}{BLACK} Waarde: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan nie vlietuig na hangar stuur nie...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Op pad na {STATION} Hangar
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Op pad na {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Op pad na {STATION} Hangar
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Op pad na {STATION} Hangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Vliegtuig {COMMA} wag in die vliegtuig hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Vliegtuig in die pad
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan nie vliegtuig staak/aanvang nie...
