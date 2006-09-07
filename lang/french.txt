@@ -2456,10 +2456,10 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Entretien au dé
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Aller sans s'arrêter au dépôt de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Aller faire l'entretien sans s'arrêter au dépôt de {TOWN}
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Roule vers le dépôt de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Roule vers le dépôt de {TOWN}, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Entretien au  dépôt de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Entretien au  dépôt de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}En route pour le dépôt de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}En route pour le dépôt de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Entretien au dépôt de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Entretien au dépôt de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ordre invalide)
 
@@ -2592,8 +2592,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...doit 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Impossible de vendre le véhicule...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Impossible de démarrer/stopper le véhicule...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Le véhicule {COMMA} attend au dépôt
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Roule vers le dépôt de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Roule vers le dépôt de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}En route pour le dépôt de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}En route pour le dépôt de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Entretien au dépôt de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Entretien au dépôt de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Impossible d'envoyer le véhicule au dépôt...
@@ -2667,7 +2667,7 @@ STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossib
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}En route pour le dépôt naval de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}En route pour le dépôt naval de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Entretien au dépôt naval de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Entretien au  dépôt naval de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Entretien au dépôt naval de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Navire {COMMA} est en attente au dépôt
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construire un port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construire un dépôt naval (pour construire et entretenir les navires)

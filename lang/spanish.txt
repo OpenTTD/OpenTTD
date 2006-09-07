@@ -2458,6 +2458,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ir sin parar al
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Hacia el depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Hacia el depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servicio en el depósito de trenes de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servicio en el depósito de trenes de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Orden inválida)
 
@@ -2592,6 +2594,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No se pu
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehículo de carretera {COMMA} espera en depósito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Hacia el depósito de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Hacia el depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Dirigiendose al Depósito de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servicio en el depósito de  {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No se puede enviar vehículo al depósito...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al depósito
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vehículos de carretera - click en vehículo para información
@@ -2662,6 +2666,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No se pu
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se puede encontrar ruta al astillero
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Hacia el astillero de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Hacia el astillero de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servicio en el embarcadero de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servicio en el embarcadero de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Barco {COMMA} esperando en astilleros
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construir muelles
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir astillero (para construir y despachar barcos)
@@ -2727,6 +2733,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No se puede enviar la aeronave al hangar
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Ir al hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Ir al hangar de {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Dirigiendose al Hangar de {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Dirigiendose al Hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}La aeronave {COMMA} está esperando en el hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave en camino
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No se puede detener/arrancar aeronave...
@@ -2919,6 +2927,7 @@ STR_RANDOM_SEED                                                 :{BLACK}Semilla 
 STR_RANDOM_SEED_HELP                                            :{BLACK}Pulsa para introducir la semilla aleatoria
 STR_LAND_GENERATOR                                              :{BLACK}Generador de terrenos:
 STR_TREE_PLACER                                                 :{BLACK}Algoritmo de árboles:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotación mapa de alturas:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivel del mar:
 STR_SMOOTHNESS                                                  :{BLACK}Suavidad:
@@ -2931,7 +2940,11 @@ STR_SNOW_LINE_UP                                                :{BLACK}Mover la
 STR_SNOW_LINE_DOWN                                              :{BLACK}Mover la línea de nieve una abajo
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Cambiar altura de la línea de nieve
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambiar año de inicio
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Alerta de escala
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Cambiar demasiado el tamaño del mapa de origen no está recomendado. ¿Desea continuar con la generación?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Nombre del mapa de alturas:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamaño: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generando mundo...
 STR_GENERATION_ABORT                                            :{BLACK}Abortar
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Abortar Generación del Mundo
@@ -2943,6 +2956,7 @@ STR_TREE_GENERATION                                             :{BLACK}Generaci
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Generación inamovible
 STR_CLEARING_TILES                                              :{BLACK}Generación de area áspera y rocosa
 STR_SETTINGUP_GAME                                              :{BLACK}Setting up game
+STR_PREPARING_TILELOOP                                          :{BLACK}Ejecutar tile-loop
 STR_PREPARING_GAME                                              :{BLACK}Preparando juego
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Esta acción cambia el nivel de dificultad a personalizado
 STR_SE_FLAT_WORLD                                               :{WHITE}Tierra llana
