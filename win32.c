@@ -786,16 +786,27 @@ static int ParseCommandLine(char *line, char **argv, int max_argc)
 	return n;
 }
 
+#ifndef ATTACH_PARENT_PROCESS
+#define ATTACH_PARENT_PROCESS ((DWORD)-1)
+#endif
+
 void CreateConsole(void)
 {
 	HANDLE hand;
 	CONSOLE_SCREEN_BUFFER_INFO coninfo;
+	BOOL (WINAPI *AttachConsole)(DWORD);
 
 	if (_has_console) return;
 
 	_has_console = true;
 
-	AllocConsole();
+	/* Attach to an existing console if one exists. Unfortunately this function
+	 * only exists on WindowsXP or higher, so for all other users out there:
+	 * you're stuck with an additional console even if you started openttd from
+	 * the command line */
+	if (!LoadLibraryList((Function*)&AttachConsole, "kernel32.dll\0AttachConsole\0") ||
+		  !AttachConsole(ATTACH_PARENT_PROCESS))
+		AllocConsole();
 
 	hand = GetStdHandle(STD_OUTPUT_HANDLE);
 	GetConsoleScreenBufferInfo(hand, &coninfo);
