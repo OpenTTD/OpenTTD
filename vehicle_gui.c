@@ -773,19 +773,20 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				{
 					uint i;
 					const Vehicle *vehicle;
+					/* compiler optimisation tend to prefer to keep local variables in the registers instead of global ones,
+					 * so we cache often used and unchanging variables in local variables to increase the loop speed */
+					const byte vehicle_type = w->window_number;
+					const PlayerID player = _local_player;
 
 					for (i = 0; i < lengthof(_player_num_engines); i++) {
 						_player_num_engines[i] = 0;
 					}
 					FOR_ALL_VEHICLES(vehicle) {
-						if (vehicle->owner == _local_player) {
-							if (vehicle->type == VEH_Aircraft && vehicle->subtype > 2) continue;
-
-							// do not count the vehicles, that contains only 0 in all var
-							if (vehicle->engine_type == 0 && vehicle->spritenum == 0) continue;
-
-							if (vehicle->type != GetEngine(vehicle->engine_type)->type) continue;
-
+						if (vehicle->owner == player && vehicle->type == vehicle_type) {
+							if (vehicle_type == VEH_Aircraft && vehicle->subtype > 2) continue; // plane shadows and helicopter rotors
+							if (vehicle_type == VEH_Train && (
+								IsArticulatedPart(vehicle) || // tenders and other articulated parts
+								(IsMultiheaded(vehicle) && !IsTrainEngine(vehicle)))) continue; // rear parts of multiheaded engines
 							_player_num_engines[vehicle->engine_type]++;
 						}
 					}
