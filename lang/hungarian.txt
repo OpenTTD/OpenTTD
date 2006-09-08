@@ -373,33 +373,33 @@ STR_0151_MAP_OF_WORLD                                           :Világtérkép
 STR_0152_TOWN_DIRECTORY                                         :Városlista
 STR_0153_SUBSIDIES                                              :Támogatások
 
-STR_UNITS_IMPERIAL                                              :Brit
-STR_UNITS_METRIC                                                :Metrikus
-STR_UNITS_SI                                                    :SI
+STR_UNITS_IMPERIAL                                              :
+STR_UNITS_METRIC                                                :
+STR_UNITS_SI                                                    :
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} mf/h
-STR_UNITS_VELOCITY_METRIC                                       :{COMMA} km/h
-STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
+STR_UNITS_VELOCITY_METRIC                                       :
+STR_UNITS_VELOCITY_SI                                           :
 
-STR_UNITS_POWER_IMPERIAL                                        :{COMMA}lóerõ
-STR_UNITS_POWER_METRIC                                          :{COMMA}lóerõ
-STR_UNITS_POWER_SI                                              :{COMMA}kW
+STR_UNITS_POWER_IMPERIAL                                        :
+STR_UNITS_POWER_METRIC                                          :
+STR_UNITS_POWER_SI                                              :
 
-STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_METRIC                                   :{COMMA}t
-STR_UNITS_WEIGHT_SHORT_SI                                       :{COMMA}kg
+STR_UNITS_WEIGHT_SHORT_IMPERIAL                                 :
+STR_UNITS_WEIGHT_SHORT_METRIC                                   :
+STR_UNITS_WEIGHT_SHORT_SI                                       :
 
-STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :{COMMA} tonna
-STR_UNITS_WEIGHT_LONG_METRIC                                    :{COMMA} tonna
-STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
+STR_UNITS_WEIGHT_LONG_IMPERIAL                                  :
+STR_UNITS_WEIGHT_LONG_METRIC                                    :
+STR_UNITS_WEIGHT_LONG_SI                                        :
 
-STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
-STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
+STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :
+STR_UNITS_VOLUME_SHORT_METRIC                                   :
 STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
 
-STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon
-STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} köbméter
+STR_UNITS_VOLUME_LONG_IMPERIAL                                  :
+STR_UNITS_VOLUME_LONG_METRIC                                    :
+STR_UNITS_VOLUME_LONG_SI                                        :
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} 9.81*10³ N
@@ -441,8 +441,8 @@ STR_SORT_BY_AGE                                                 :Életkor
 STR_SORT_BY_RELIABILITY                                         :Megbízhatóság
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Rakomány szerinti összkapacitás
 STR_SORT_BY_MAX_SPEED                                           :Maximum sebesség
-STR_SORT_BY_MODEL                                               :Modell
-STR_SORT_BY_VALUE                                               :Érték
+STR_SORT_BY_MODEL                                               :
+STR_SORT_BY_VALUE                                               :
 STR_SORT_BY_FACILITY                                            :Állomás típus
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
 STR_SORT_BY_RATING_MAX                                          :Várakozó rakomány
@@ -867,9 +867,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}A látkép
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Pénznem
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}A használt pénznem kiválasztása
-STR_MEASURING_UNITS                                             :{BLACK}Mértékegységek
+STR_MEASURING_UNITS                                             :
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Mértékegység választás
+STR_MEASURING_UNITS_SELECTION                                   :
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Közúti jármûvek
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Válaszd ki,az út melyik oldalán haladjanak a közúti jármûvek
@@ -1566,7 +1566,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nincs me
 STR_1007_ALREADY_BUILT                                          :{WHITE}...már van itt
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Elõbb le kell rombolnod a sínt
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Vasútépítés
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektromos-vasút építés
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Egysínû vasút építése
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev vasút építése
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Válassz egy vasúti hidat
@@ -1578,7 +1578,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Nem szed
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Nem veheted le innen a szemafort...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Jármûtelep helyzete
 STR_1015_RAILROAD_CONSTRUCTION                                  :Vasútépítés
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektromos-vasút építés
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :
 STR_1016_MONORAIL_CONSTRUCTION                                  :Egysínû vasút építése
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLev vasút építése
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Sín lerakása
@@ -2559,6 +2559,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Mindig javítsd 
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Úton {TOWN} jármûtelepére
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Úton {TOWN} jármûtelepére, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Javítás {TOWN} depójában
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Javítás {TOWN} depójában, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Hibás menetrend)
 
@@ -2572,7 +2574,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Túl hoss
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Csak a jármûtelepen álló vonatokat lehet megváltoztatni
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} vonatai - {COMMA}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Új vasúti jármûvek
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Új elektromos vasúti jármûvek
+STR_NEW_ELRAIL_VEHICLES                                         :
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Új egysínû jármûvek
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Új MagLev jármûvek
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Megvesz
@@ -2693,6 +2695,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nem indí
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}{COMMA}. közúti jármû a garázsban várakozik
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Úton {TOWN} garázsába
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Úton {TOWN} garázsába, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Javítás {TOWN} autószervízében
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Javítás {TOWN} autószervízében, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nem küldheted a jármûvet a garázsba...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi garázst
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Közúti jármûvek - kattints egy jármûre az adataihoz
@@ -2721,7 +2725,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Közúti baleset!{}A vezetõ meghalt a vonattal való ütközéskor
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Közúti baleset!{}{COMMA} ember meghalt a vonattal való ütközéskor
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nem fordíthatod vissza a jármûvet...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Több részbõl álló jármûvet nem lehet megfordítani
+STR_ONLY_TURN_SINGLE_UNIT                                       :
 STR_9034_RENAME                                                 :{BLACK}Átnevez
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}A közúti jármû márkanevének megváltoztatása
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Márkanév megváltoztatása
@@ -2763,6 +2767,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nem küld
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi dokkot
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Úton {TOWN} dokkjába
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Úton {TOWN} dokkjába, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Javítás {TOWN} hajódepójában
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Javítás {TOWN} hajódepójában, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}{COMMA}. hajó a dokkban várakozik
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Kikötõ építése
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Dokk építése (hajók vételére és karbantartására)
@@ -2828,6 +2834,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nem küldheted a repülõgépet a hangárba...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Úton {STATION} hangárjába
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Úton {STATION} hangárjába, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Javítás {STATION} hangárjában
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Javítás {STATION} hangárjában, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{COMMA}. repülõgép a hangárban várakozik
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Repülõgép van az útban
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nem indíthatod el/ állíthatod meg a repülõgépet...
@@ -2976,12 +2984,12 @@ STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutat
 STR_REPLACE_HELP                                                :{BLACK}Ez az opció lehetõve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármû karbantartásra a depóba megy
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automata cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (elõröl kezdve), ha a csere után a mozdony hosszabb.
-STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Lecserél: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} KISÉRLETI TULAJDONSÁG {}Váltás a mozdony és a vasúti-kocsi cserélõ ablak között.{}A vagonok cseréje csak akkor történik meg, ha az új vagon átalakítható ugyanolyan típusú teher szállítására. Ez minden vagoncserénél ellenõrzõdik.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A mozdony így nem építhetõ meg
 
-STR_ENGINES                                                     :Mozdonyok
-STR_WAGONS                                                      :Vagonok
+STR_ENGINES                                                     :
+STR_WAGONS                                                      :
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
@@ -2989,7 +2997,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Felirato
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Normál Vasutak
-STR_ELRAIL_VEHICLES                                             :Elektromos-vasúti jármûvek
+STR_ELRAIL_VEHICLES                                             :
 STR_MONORAIL_VEHICLES                                           :Egysínû Vasutak
 STR_MAGLEV_VEHICLES                                             :Maglev Vasutak
 
