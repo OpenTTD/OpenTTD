@@ -783,9 +783,9 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				int x2 = 1 + 228;
 				int y2 = 15;
 				int sel[2];
+				byte i;
 				sel[0] = WP(w,replaceveh_d).sel_index[0];
 				sel[1] = WP(w,replaceveh_d).sel_index[1];
-				byte i;
 
 				SetupScrollStuffForReplaceWindow(w);
 
