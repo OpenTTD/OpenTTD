@@ -745,6 +745,23 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 	}
 }
 
+static void DrawVehiclePurchaseInfo(const int x, const int y, const EngineID engine_number, const bool draw_locomotive)
+{
+	switch (GetEngine(engine_number)->type) {
+		case VEH_Train:
+			if (draw_locomotive) {
+				DrawTrainEnginePurchaseInfo(x, y, engine_number);
+			} else {
+				DrawTrainWagonPurchaseInfo(x, y, engine_number);
+			}
+			break;
+
+		case VEH_Road: DrawRoadVehPurchaseInfo(x, y, engine_number);      break;
+		case VEH_Ship: DrawShipPurchaseInfo(x, y, engine_number);         break;
+		case VEH_Aircraft: DrawAircraftPurchaseInfo(x, y, engine_number); break;
+		default: NOT_REACHED();
+	}
+}
 
 static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 {
@@ -768,6 +785,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				int sel[2];
 				sel[0] = WP(w,replaceveh_d).sel_index[0];
 				sel[1] = WP(w,replaceveh_d).sel_index[1];
+				byte i;
 
 				SetupScrollStuffForReplaceWindow(w);
 
@@ -859,55 +877,10 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				WP(w,replaceveh_d).sel_engine[0] = selected_id[0];
 				WP(w,replaceveh_d).sel_engine[1] = selected_id[1];
 				/* now we draw the info about the vehicles we selected */
-				switch (WP(w,replaceveh_d).vehicletype) {
-					case VEH_Train: {
-						byte i = 0;
-						int offset = 0;
-
-						for (i = 0 ; i < 2 ; i++) {
-							if (i > 0) offset = 228;
-							if (selected_id[i] != INVALID_ENGINE) {
-								if (WP(w, replaceveh_d).wagon_btnstate) {
-									/* it's an engine */
-									DrawTrainEnginePurchaseInfo(2 + offset, 15 + (14 * w->vscroll.cap), selected_id[i]);
-								} else {
-									/* it's a wagon. Train cars are not replaced with the current GUI, but this code is ready for newgrf if anybody adds that*/
-									DrawTrainWagonPurchaseInfo(2 + offset, 15 + (14 * w->vscroll.cap), selected_id[i]);
-								}
-							}
-						}
-						break;
-					}   //end if case  VEH_Train
-
-					case VEH_Road: {
-						if (selected_id[0] != INVALID_ENGINE) {
-							DrawRoadVehPurchaseInfo(2, 15 + (14 * w->vscroll.cap), selected_id[0]);
-							if (selected_id[1] != INVALID_ENGINE) {
-								DrawRoadVehPurchaseInfo(2 + 228, 15 + (14 * w->vscroll.cap), selected_id[1]);
-							}
-						}
-						break;
-					}   // end of VEH_Road
-
-					case VEH_Ship: {
-						if (selected_id[0] != INVALID_ENGINE) {
-							DrawShipPurchaseInfo(2, 15 + (24 * w->vscroll.cap), selected_id[0]);
-							if (selected_id[1] != INVALID_ENGINE) {
-								DrawShipPurchaseInfo(2 + 228, 15 + (24 * w->vscroll.cap), selected_id[1]);
-							}
-						}
-						break;
-					}   // end of VEH_Ship
-
-					case VEH_Aircraft: {
-						if (selected_id[0] != INVALID_ENGINE) {
-							DrawAircraftPurchaseInfo(2, 15 + (24 * w->vscroll.cap), selected_id[0]);
-							if (selected_id[1] != INVALID_ENGINE) {
-								DrawAircraftPurchaseInfo(2 + 228, 15 + (24 * w->vscroll.cap), selected_id[1]);
-							}
-						}
-						break;
-					}   // end of VEH_Aircraft
+				for (i = 0 ; i < 2 ; i++) {
+					if (selected_id[i] != INVALID_ENGINE) {
+						DrawVehiclePurchaseInfo((i == 1) ? 230 : 2 , 15 + (w->resize.step_height * w->vscroll.cap), selected_id[i], WP(w, replaceveh_d).wagon_btnstate);
+					}
 				}
 			} break;   // end of paint
 
