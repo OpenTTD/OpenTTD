@@ -522,7 +522,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 					sel--;
 					continue;
 				}
-				if (WP(w,dropdown_d).items[i] != 0) {
+				if (WP(w,dropdown_d).items[i] != STR_NULL) {
 					if (sel == 0) GfxFillRect(x + 1, y, x + w->width - 4, y + 9, 0);
 					DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16, w->width - 4);
 
@@ -634,7 +634,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 		wi->right - wi[-1].left + 1,
 		i * 10 + 4,
 		DropdownMenuWndProc,
-		0x3F,
+		WC_DROPDOWN_MENU,
 		_dropdown_menu_widgets);
 
 	w2->widget[0].color = wi->color;
