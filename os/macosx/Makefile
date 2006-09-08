@@ -66,7 +66,7 @@ $(OTTD_PPC970): $(MAKE_CONFIG) $(OBJS_ppc970)
 # targets to compile each c, m and cpp file
 .OSX/%.o.ppc: %.c      .deps/%.d
 	@echo '[PowerPC] Compiling $<'
-	$(Q)$(CC_PPC) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC_PPC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.ppc: %.cpp    .deps/%.d
 	@echo '[PowerPC] Compiling $<'
@@ -74,11 +74,11 @@ $(OTTD_PPC970): $(MAKE_CONFIG) $(OBJS_ppc970)
 
 .OSX/%.o.ppc: %.m      .deps/%.d
 	@echo '[PowerPC] Compiling $<'
-	$(Q)$(CC_PPC) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC_PPC) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.i386: %.c     .deps/%.d
 	@echo '[i386] Compiling $<'
-	$(Q)$(CC_I386) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC_I386) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.i386: %.cpp   .deps/%.d
 	@echo '[i386] Compiling $<'
@@ -86,11 +86,11 @@ $(OTTD_PPC970): $(MAKE_CONFIG) $(OBJS_ppc970)
 
 .OSX/%.o.i386: %.m     .deps/%.d
 	@echo '[i386] Compiling $<'
-	$(Q)$(CC_I386) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC_I386) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_i386) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.ppc970: %.c   .deps/%.d
 	@echo '[PowerPC G5] Compiling $<'
-	$(Q)$(CC_PPC970) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC_PPC970) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -c -o $@ $<
 
 .OSX/%.o.ppc970: %.cpp .deps/%.d
 	@echo '[PowerPC G5] Compiling $<'
@@ -98,7 +98,7 @@ $(OTTD_PPC970): $(MAKE_CONFIG) $(OBJS_ppc970)
 
 .OSX/%.o.ppc970: %.m   .deps/%.d
 	@echo '[PowerPC G5] Compiling $<'
-	$(Q)$(CC_PPC970) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -c -o $@ $<
+	$(Q)$(CC_PPC970) $(CC_CFLAGS) $(CFLAGS) $(CFLAGS_PPC) $(G5_FLAGS) $(CDEFS) -c -o $@ $<
 
 endif
 
