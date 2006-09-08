@@ -635,6 +635,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 
 			VehiclePositionChanged(v);
 			TrainConsistChanged(GetFirstVehicleInChain(v));
+			GetPlayer(_current_player)->num_engines[engine]++;
 
 			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 			if (IsLocalPlayer()) {
@@ -815,6 +816,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				NormalizeTrainVehInDepot(v);
 			}
 
+			GetPlayer(_current_player)->num_engines[p1]++;
 			InvalidateWindow(WC_VEHICLE_DEPOT, tile);
 			RebuildVehicleLists();
 			InvalidateWindow(WC_COMPANY, v->owner);

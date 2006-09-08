@@ -255,6 +255,7 @@ Vehicle *GetLastVehicleInChain(Vehicle *v);
 Vehicle *GetPrevVehicleInChain(const Vehicle *v);
 Vehicle *GetFirstVehicleInChain(const Vehicle *v);
 uint CountVehiclesInChain(const Vehicle* v);
+bool IsEngineCountable(const Vehicle *v);
 void DeleteVehicleChain(Vehicle *v);
 void *VehicleFromPos(TileIndex tile, void *data, VehicleFromPosProc *proc);
 void CallVehicleTicks(void);

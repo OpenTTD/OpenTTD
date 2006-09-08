@@ -49,7 +49,6 @@ static uint32 _internal_name_sorter_id; // internal StringID for default vehicle
 static const Vehicle* _last_vehicle; // cached vehicle to hopefully speed up name-sorting
 static bool   _internal_sort_order;     // descending/ascending
 
-static uint16 _player_num_engines[TOTAL_NUM_ENGINES];
 static RailType _railtype_selected_in_replace_gui;
 
 
@@ -443,7 +442,7 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 		const EngineInfo *info = EngInfo(i);
 
-		if (!EngineHasReplacementForPlayer(p, i) && _player_num_engines[i] == 0 && show_outdated) continue;
+		if (!EngineHasReplacementForPlayer(p, i) && p->num_engines[i] == 0 && show_outdated) continue;
 
 		if ((rvi->power == 0 && !show_cars) || (rvi->power != 0 && show_cars))  // show wagons or engines (works since wagons do not have power)
 			continue;
@@ -470,10 +469,10 @@ static void train_engine_drawing_loop(int *x, int *y, int *pos, int *sel, Engine
 			DrawString(*x + 59, *y + 2, GetCustomEngineName(i),
 				colour);
 			// show_outdated is true only for left side, which is where we show old replacements
-			DrawTrainEngine(*x + 29, *y + 6, i, (_player_num_engines[i] == 0 && show_outdated) ?
+			DrawTrainEngine(*x + 29, *y + 6, i, (p->num_engines[i] == 0 && show_outdated) ?
 				PALETTE_CRASH : GetEnginePalette(i, _local_player));
 			if ( show_outdated ) {
-				SetDParam(0, _player_num_engines[i]);
+				SetDParam(0, p->num_engines[i]);
 				DrawStringRightAligned(213, *y+5, STR_TINY_BLACK, 0);
 			}
 			*y += 14;
@@ -510,7 +509,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 				// left window contains compatible engines while right window only contains engines of the selected type
 				if (ENGINE_AVAILABLE &&
 						(RailVehInfo(eid)->power != 0) == (WP(w, replaceveh_d).wagon_btnstate != 0)) {
-					if (IsCompatibleRail(e->railtype, railtype) && (_player_num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid))) {
+					if (IsCompatibleRail(e->railtype, railtype) && (p->num_engines[eid] > 0 || EngineHasReplacementForPlayer(p, eid))) {
 						if (sel[0] == count) selected_id[0] = eid;
 						count++;
 					}
@@ -525,7 +524,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 		case VEH_Road: {
 			for (i = ROAD_ENGINES_INDEX; i < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; i++) {
-				if (_player_num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
+				if (p->num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
 					if (sel[0] == count) selected_id[0] = i;
 					count++;
 				}
@@ -547,7 +546,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 		case VEH_Ship: {
 			for (i = SHIP_ENGINES_INDEX; i < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; i++) {
-				if (_player_num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
+				if (p->num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
 					if (sel[0] == count) selected_id[0] = i;
 					count++;
 				}
@@ -573,7 +572,7 @@ static void SetupScrollStuffForReplaceWindow(Window *w)
 
 		case VEH_Aircraft: {
 			for (i = AIRCRAFT_ENGINES_INDEX; i < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; i++) {
-				if (_player_num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
+				if (p->num_engines[i] > 0 || EngineHasReplacementForPlayer(p, i)) {
 					if (sel[0] == count) selected_id[0] = i;
 					count++;
 				}
@@ -650,11 +649,11 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 				cargo = RoadVehInfo(selected_id[0])->cargo_type;
 
 				do {
-					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
+					if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-							DrawRoadVehEngine(x+29, y+6, engine_id, _player_num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
-							SetDParam(0, _player_num_engines[engine_id]);
+							DrawRoadVehEngine(x+29, y+6, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
+							SetDParam(0, p->num_engines[engine_id]);
 							DrawStringRightAligned(213, y+5, STR_TINY_BLACK, 0);
 							y += 14;
 						}
@@ -685,11 +684,11 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 				refittable = ShipVehInfo(selected_id[0])->refittable;
 
 				do {
-					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
+					if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-							DrawShipEngine(x+35, y+10, engine_id, _player_num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
-							SetDParam(0, _player_num_engines[engine_id]);
+							DrawShipEngine(x+35, y+10, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
+							SetDParam(0, p->num_engines[engine_id]);
 							DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
 							y += 24;
 						}
@@ -718,12 +717,12 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 				byte subtype = AircraftVehInfo(selected_id[0])->subtype;
 
 				do {
-					if (_player_num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
+					if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
 						if (sel[0] == 0) selected_id[0] = engine_id;
 						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
 							DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-							DrawAircraftEngine(x+29, y+10, engine_id, _player_num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
-							SetDParam(0, _player_num_engines[engine_id]);
+							DrawAircraftEngine(x+29, y+10, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
+							SetDParam(0, p->num_engines[engine_id]);
 							DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
 							y += 24;
 						}
@@ -758,7 +757,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 		case WE_PAINT: {
-				const Player *p = GetPlayer(_local_player);
+				Player *p = GetPlayer(_local_player);
 				int pos = w->vscroll.pos;
 				EngineID selected_id[2] = { INVALID_ENGINE, INVALID_ENGINE };
 				int x = 1;
@@ -769,28 +768,6 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				int sel[2];
 				sel[0] = WP(w,replaceveh_d).sel_index[0];
 				sel[1] = WP(w,replaceveh_d).sel_index[1];
-
-				{
-					uint i;
-					const Vehicle *vehicle;
-					/* compiler optimisation tend to prefer to keep local variables in the registers instead of global ones,
-					 * so we cache often used and unchanging variables in local variables to increase the loop speed */
-					const byte vehicle_type = w->window_number;
-					const PlayerID player = _local_player;
-
-					for (i = 0; i < lengthof(_player_num_engines); i++) {
-						_player_num_engines[i] = 0;
-					}
-					FOR_ALL_VEHICLES(vehicle) {
-						if (vehicle->owner == player && vehicle->type == vehicle_type) {
-							if (vehicle_type == VEH_Aircraft && vehicle->subtype > 2) continue; // plane shadows and helicopter rotors
-							if (vehicle_type == VEH_Train && (
-								IsArticulatedPart(vehicle) || // tenders and other articulated parts
-								(IsMultiheaded(vehicle) && !IsTrainEngine(vehicle)))) continue; // rear parts of multiheaded engines
-							_player_num_engines[vehicle->engine_type]++;
-						}
-					}
-				}
 
 				SetupScrollStuffForReplaceWindow(w);
 

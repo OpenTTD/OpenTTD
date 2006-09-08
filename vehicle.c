@@ -535,8 +535,28 @@ uint CountVehiclesInChain(const Vehicle* v)
 	return count;
 }
 
+/** Check if a vehicle is counted in num_engines in each player struct
+ * @param *v Vehicle to test
+ * @return true if the vehicle is counted in num_engines
+ */
+bool IsEngineCountable(const Vehicle *v)
+{
+	switch (v->type) {
+		case VEH_Aircraft: return (v->subtype <= 2); // don't count plane shadows and helicopter rotors
+		case VEH_Train:
+			return !IsArticulatedPart(v) && // tenders and other articulated parts
+			(!IsMultiheaded(v) || IsTrainEngine(v)); // rear parts of multiheaded engines
+		case VEH_Road:
+		case VEH_Ship:
+			return true;
+		default: return false; // Only count player buildable vehicles
+	}
+}
+
 void DestroyVehicle(Vehicle *v)
 {
+	if (IsEngineCountable(v)) GetPlayer(v->owner)->num_engines[v->engine_type]--;
+
 	DeleteVehicleNews(v->index, INVALID_STRING_ID);
 
 	DeleteName(v->string_id);

@@ -1456,6 +1456,20 @@ bool AfterLoadGame(void)
 
 	if (!CheckSavegameVersion(27)) AfterLoadStations();
 
+	{
+		/* Set up the engine count for all players */
+		Player *players[MAX_PLAYERS];
+		int i;
+		const Vehicle *v;
+
+		for (i = 0; i < MAX_PLAYERS; i++) players[i] = GetPlayer(i);
+
+		FOR_ALL_VEHICLES(v) {
+			if (!IsEngineCountable(v)) continue;
+			players[v->owner]->num_engines[v->engine_type]++;
+		}
+	}
+
 	/* Time starts at 0 instead of 1920.
 	 * Account for this in older games by adding an offset */
 	if (CheckSavegameVersion(31)) {

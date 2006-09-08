@@ -396,6 +396,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			w->u.air.state = HRS_ROTOR_STOPPED;
 			VehiclePositionChanged(w);
 		}
+		GetPlayer(_current_player)->num_engines[p1]++;
 
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
