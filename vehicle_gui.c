@@ -792,34 +792,6 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				selected_id[0] = WP(w,replaceveh_d).sel_engine[0];
 				selected_id[1] = WP(w,replaceveh_d).sel_engine[1];
 
-			// sets the selected left item to the top one if it's greater than the number of vehicles in the left side
-
-				if (WP(w,replaceveh_d).count[0] <= sel[0]) {
-					if (WP(w,replaceveh_d).count[0]) {
-						sel[0] = 0;
-						WP(w,replaceveh_d).sel_index[0] = 0;
-						w->vscroll.pos = 0;
-						// now we go back to set selected_id[1] properly
-						SetWindowDirty(w);
-						return;
-					} else { //there are no vehicles in the left window
-						selected_id[1] = INVALID_ENGINE;
-					}
-				}
-
-				if (WP(w,replaceveh_d).count[1] <= sel[1]) {
-					if (WP(w,replaceveh_d).count[1]) {
-						sel[1] = 0;
-						WP(w,replaceveh_d).sel_index[1] = 0;
-						w->vscroll2.pos = 0;
-						// now we go back to set selected_id[1] properly
-						SetWindowDirty(w);
-						return;
-					} else { //there are no vehicles in the right window
-						selected_id[1] = INVALID_ENGINE;
-					}
-				}
-
 				// Disable the "Start Replacing" button if:
 				//    Either list is empty
 				// or Both lists have the same vehicle selected
