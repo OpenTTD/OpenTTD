@@ -520,7 +520,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 	if (is_ai && (!_networking || _network_server) && _ai.enabled)
 		AI_StartNewAI(p->index);
 
-	memset(p->num_engines, 0, TOTAL_NUM_ENGINES);
+	memset(p->num_engines, 0, sizeof(p->num_engines));
 
 	return p;
 }
