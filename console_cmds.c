@@ -164,6 +164,10 @@ DEF_CONSOLE_CMD(ConScrollToTile)
 	if (argc == 2) {
 		uint32 result;
 		if (GetArgumentInteger(&result, argv[1])) {
+			if (result >= MapSize()) {
+				IConsolePrint(_icolour_err, "Tile does not exist");
+				return true;
+			}
 			ScrollMainWindowToTile((TileIndex)result);
 			return true;
 		}
