@@ -2586,6 +2586,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Idz bez przysta
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Zmierza do zajezdni w {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Zmierza do zajezdni w {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Serwisuj w Zajezdni w {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Serwisuj w Zajezdni w {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Bledne polecenie)
 
@@ -2720,6 +2722,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nie mozn
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Samochod {COMMA} czeka w zjezdni
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Zmierza do zajezdni sam. w {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Zmierza do zajezdni sam. w {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Serwisuj w Zajezdni w {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Serwisuj w Zajezdni w {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nie mozna wyslac samochodu do zajezdni...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nie mozna znalezc zajezdni
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Samochody - klik na pojezdzie po wiecej info
@@ -2790,6 +2794,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nie mozn
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nie mozna znalezc stoczni
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Zmierza do stoczni w {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Zmierza do stoczni w {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Serwisuj w Stoczni w {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Serwisuj w Stoczni w {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Statek {COMMA} czeka w stoczni
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Budowa portu
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Budowa stoczni (do budowy i serwisowania statkow)
@@ -2855,6 +2861,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Nie mozna wyslac samolotu do hangaru...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Zmierza do hangaru w {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Zmierza do hangaru w {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Serwisuj w Hangarze na {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Serwisuj w Hangarze na {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Samolot  {COMMA} czeka w hangarze
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Samolot jest na drodze
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nie mozna zatrzymac/ruszyc samolotu

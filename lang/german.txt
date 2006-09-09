@@ -2458,6 +2458,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Wartung (ohne H
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Unterwegs zu {TOWN} Zugdepot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Unterwegs zu {TOWN} Zugdepot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Wartung in {TOWN} Zugdepot
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Wartung in {TOWN} Zugdepot, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ungültiger Auftrag)
 
@@ -2592,6 +2594,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kann das
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Fahrzeug {COMMA} wartet im Depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Unterwegs zu {TOWN} Fahrzeugdepot
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Unterwegs zu {TOWN} Fahrzeugdepot, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Wartung in {TOWN} Fahrzeugdepot
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Wartung in {TOWN} Fahrzeugdepot, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kann das Fahrzeug nicht zum Depot schicken...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann kein Fahrzeugdepot finden
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Straßenfahrzeuge - für Einzelheiten auf das Fahrzeug klicken
@@ -2662,6 +2666,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kann das
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann keine Werft finden
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Unterwegs zu {TOWN} Werft
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Unterwegs zu {TOWN} Werft, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Wartung in {TOWN} Werft
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Wartung in {TOWN} Werft, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Schiff {COMMA} wartet in der Werft
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Hafen bauen
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Werft bauen (für den Bau und die Wartung von Schiffen)
@@ -2727,6 +2733,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kann das Flugzeug nicht in den Hangar schicken...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Unterwegs zu {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Unterwegs zu {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Wartung in {STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Wartung in {STATION} Hangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugzeug {COMMA} wartet im Hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugzeug ist auf dem Weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kann das Flugzeug nicht anhalten/starten...
