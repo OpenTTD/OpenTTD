@@ -1903,6 +1903,7 @@ void InitializeIndustries(void)
 
 	_total_industries = 0;
 	_industry_sort_dirty = true;
+	_industry_sound_tile = 0;
 }
 
 const TileTypeProcs _tile_type_industry_procs = {
