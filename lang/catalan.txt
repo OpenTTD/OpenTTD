@@ -24,7 +24,7 @@ STR_0010_COAL                                                   :Carbó
 STR_0011_MAIL                                                   :Correu
 STR_0012_OIL                                                    :Petroli
 STR_0013_LIVESTOCK                                              :Bestiar
-STR_0014_GOODS                                                  :Mercaderíes
+STR_0014_GOODS                                                  :Mercaderies
 STR_0015_GRAIN                                                  :Gra
 STR_0016_WOOD                                                   :Fusta
 STR_0017_IRON_ORE                                               :Mineral de Ferro
@@ -47,7 +47,7 @@ STR_0027_COLA                                                   :Refrescs
 STR_0028_COTTON_CANDY                                           :Cotó de Sucre
 STR_0029_BUBBLES                                                :Bombolles
 STR_002A_TOFFEE                                                 :Caramels
-STR_002B_BATTERIES                                              :Bateríes
+STR_002B_BATTERIES                                              :Bateries
 STR_002C_PLASTIC                                                :Plàstic
 STR_002D_FIZZY_DRINKS                                           :Begudes Gasoses
 STR_002E                                                        :
@@ -56,7 +56,7 @@ STR_0030_COAL                                                   :Carbó
 STR_0031_MAIL                                                   :Correu
 STR_0032_OIL                                                    :Petroli
 STR_0033_LIVESTOCK                                              :Bestiar
-STR_0034_GOODS                                                  :Mercadería
+STR_0034_GOODS                                                  :Mercaderia
 STR_0035_GRAIN                                                  :Gra
 STR_0036_WOOD                                                   :Fusta
 STR_0037_IRON_ORE                                               :Mineral de Ferro
@@ -550,6 +550,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Seleccio
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Esborra el programa actual (només Opcional 1 o Opcional 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Desar paràmetres de la música
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Clica a la pista de música per afegir-la al programa actual (només Opcional 1 o Opcional 2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Click en la pista de musica per treure-la del programa actual (Custom1 o Custom2 només)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Control de programa aleatori actiu/inactiu
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Mostra la finestra de selecció de pistes de música
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Clica al servei per centrar la vista a l'indústria/població
@@ -602,6 +603,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Disminui
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generar terreny aleatori
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Restablir paisatge
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Restablir Paisatge
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Utilitzar mapa d'alçades
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utilitzar mapa d'alçades
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Estàs segur de voler restablir el paisatge?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generació de Paisatges
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generació de Poblacions
@@ -714,6 +717,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Desar es
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Carregar Escenari
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Desar Escenari
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Jugar Escenari
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Jugar mapa d'alçades
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Començar un nou joc, utilitzant un mapa d'alçades com a terreny
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Estàs segur de voler deixar aquest escenari ?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sortir del Editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...només es pot construir en poblacions de més de 1200 hab.
@@ -803,8 +808,8 @@ STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Mesurant
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Trànsit rodat
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Selecciona el sentit de circulació del trànsit rodat
-STR_02E9_DRIVE_ON_LEFT                                          :Conduïr per la dreta
-STR_02EA_DRIVE_ON_RIGHT                                         :Conduïr per l'esquerre
+STR_02E9_DRIVE_ON_LEFT                                          :Conduïr per l'esquerra
+STR_02EA_DRIVE_ON_RIGHT                                         :Conduïr per la dreta
 STR_02EB_TOWN_NAMES                                             :{BLACK}Noms de Poblacions
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Selecciona l'estil des noms de poblacions
@@ -878,6 +883,8 @@ STR_TOWNNAME_CZECH                                              :Txec
 STR_TOWNNAME_SWISS                                              :Suís
 STR_TOWNNAME_DANISH                                             :Danès
 STR_TOWNNAME_TURKISH                                            :Turc
+STR_TOWNNAME_ITALIAN                                            :Italià
+STR_TOWNNAME_CATALAN                                            :Català
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Lliures (£)
@@ -902,6 +909,7 @@ STR_CURR_NOK                                                    :Corones Noruegu
 STR_CURR_PLN                                                    :Zloty Polac (PLN)
 STR_CURR_ROL                                                    :Leu Romanès (ROL)
 STR_CURR_RUR                                                    :Rubles Russos (RUR)
+STR_CURR_SIT                                                    :Eslovè Tolar (SIT)
 STR_CURR_SEK                                                    :Corones Sueques (SEK)
 
 STR_CURR_CUSTOM                                                 :Personalitzat...
@@ -1036,7 +1044,26 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Autoren
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duració del missatge d'error: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra els habitants a la etiqueta del nom de població: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Arbres invisibles (amb edificis transparents): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generador de terrenys: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distància des del vertex per Refineries de Petroli{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Alçada de la cota de neu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Geografia del terreny (TerraGenesis només) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Molt suau
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suau
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Escarpat
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Molt escarpat
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritme per situar arbres: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Cap
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Millorat
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antihorari
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Interval d'actualització del progrés: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Alçada que un escenari pla pren: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max extensió de estacions: {ORANGE}{STRING}{RED}Avís: Un valor alt enlenteix el joc
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manteniment dels helicopters als heliports automàticament: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de víes/carreteres/aigua/aeroports {ORANGE}{STRING}
@@ -1081,7 +1108,7 @@ STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radi de
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interficie
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcció
-STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vehicles
+STR_CONFIG_PATCHES_VEHICLES                                     :
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Estacions
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economía
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Competidors
@@ -1092,6 +1119,9 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Canviar valor de l'adjustament
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Alguns o tots els intervals de manteniment següents són incompatibles amb el valor triat! 5-90% i 30-800 díes són els vàlids
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Utilitzar YAPF pels vaixells: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Utilitzar YAPF pels automòvils: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Utilitzar YAPF pels trens: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :paisatge temperat
 STR_SUB_ARCTIC_LANDSCAPE                                        :paisatge subàrtic
@@ -1412,7 +1442,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} El serv
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Client
 
-STR_NETWORK_CLIENTLIST_NONE                                     :(none)
+STR_NETWORK_CLIENTLIST_NONE                                     :
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu
 STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Entregar diners
 STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parlar a tothom
@@ -1427,6 +1457,17 @@ STR_NETWORK_SEND                                                :{BLACK}Enviar
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Tamany-X del mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Tamany-Y del mapa: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERROR                                                :{WHITE}Impossible carregar un terreny des del PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...fitxer no trobat.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...impossible convertir l'imatge. Es necessita una imatge PNG de 8 o 24-bit.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...alguna cosa ha anat malament. Perdó. (probablement un fitxer corrupte)
+
+STR_BMPMAP_ERROR                                                :{WHITE}Impossible carregar el terreny des del BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...no s'ha pogut convertir la imatge.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Cost: {CURRENCY}
@@ -1751,6 +1792,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Desa el 
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Seleccionar el Tipus per un Nou Joc
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Selecciona l'escenari (verd), joc pre-programat (blau), o nou joc aleatori
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Generar un nou joc aleatori
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Carregar Mapa d'alçades
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} en el camí
@@ -2414,6 +2456,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manteniment sen
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Cap a cotxeres de {TOWN}.
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Cap a cotxeres de {TOWN}, a {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Revisió a la cotxera de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ordre incorrecte)
 
@@ -2440,10 +2484,10 @@ STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Fer una 
 STR_8820_RENAME                                                 :{BLACK}Reanomenar
 STR_8823_SKIP                                                   :{BLACK}Saltar
 STR_8824_DELETE                                                 :{BLACK}Esborrar
-STR_8825_NON_STOP                                               :{BLACK}Sense parades
+STR_8825_NON_STOP                                               :{BLACK}No parar
 STR_8826_GO_TO                                                  :{BLACK}Anar a
-STR_8827_FULL_LOAD                                              :{BLACK}Càrrega completa
-STR_8828_UNLOAD                                                 :{BLACK}Descarregar
+STR_8827_FULL_LOAD                                              :{BLACK}Carrega
+STR_8828_UNLOAD                                                 :{BLACK}Descarrega
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordres)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fí d'Ordres - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2523,6 +2567,8 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 STR_TRAIN_STOPPING                                              :{RED}Parant
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parant, a {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipus de rail incompatible
+STR_TRAIN_NO_POWER                                              :{RED}Sense energia
+STR_TRAIN_START_NO_CATENARY                                     :Aquesta via no té catenària, el tren no pot arrencar
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vehicle rodat en el camí
@@ -2546,6 +2592,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No es po
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vehicle Rodat {COMMA} esperant en cotxera
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Cap a la cotxera de {TOWN}.
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Cap a la cotxera de {TOWN}, a {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisió a la cotxera de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No es pot enviar el vehicle a cotxera...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Incapaç de trobar la cotxera local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vehicles rodats - clica en un vehicle per informació
@@ -2616,6 +2664,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No es po
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Incapaç de trobar drassana local
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Cap a la drassana de {TOWN}.
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Cap a la drassana de{TOWN}, a {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Revisió a la drassana de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la drassana de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Vaixell {COMMA} esperant en drassana
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construir port
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir drassana (per construir i mantindre vaixells)
@@ -2677,10 +2727,12 @@ STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {L
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. velocitat: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Averíes des de l'últim manteniment: {LTBLUE}{COMMA}
-STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No es pot enviar l'aronau a l'hangar...
+STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construït: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
+STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No es pot enviar l'aeronau a l'hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Cap a l'hangar de {STATION}.
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Cap a l'hangar de {STATION}, a {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Revisió a l'hangar de {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Revisió a l'hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}L' aeronau {COMMA} esperant a l'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronau en el camí
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No es pot parar/arrencar l' aeronau...
@@ -2750,7 +2802,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehicles:
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estacions:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. benefici:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. ingrès:
@@ -2806,6 +2858,14 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostra t
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostra totes les aeronaus que tinguin aquest aeroport al seu itinerari
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra tots els vaixells que tinguin aquest port al seu itinerari
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres compartides de {COMMA} Vehicle{P "" s}
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tots els vehicles que tenen les mateixes ordres
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a les cotxeres
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Enviar tots els vehicles de la llista a les cotxeres. CTRL+click per només revisió
+STR_SEND_TO_HANGARS                                             :{BLACK}Enviar als Hangars
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Enviar totes les aeronaus de la llista als hangars. CTRL+click per només revisió
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplaçar Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inici de reemplaçament de Vehicles
@@ -2854,6 +2914,61 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pes: {GO
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Velocitat: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitat: {GOLD}{COMMA} passatgers, {COMMA} saques de correu
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagons Automotrius: {GOLD}+{POWER}{BLACK} Pes: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Generar
+STR_RANDOM                                                      :{BLACK}Randomise
+STR_RANDOM_HELP                                                 :{BLACK}Canviar el nombre aleatori utilitzat pel Generador de Terrenys
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generació del món
+STR_RANDOM_SEED                                                 :{BLACK}Nombre aleatori:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Click per introduïr un nombre aleatori
+STR_LAND_GENERATOR                                              :{BLACK}Generador de terrenys:
+STR_TREE_PLACER                                                 :{BLACK}Algoritme d'arbres:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotació del mapa d'alçades:
+STR_TERRAIN_TYPE                                                :{BLACK}Tipus de terreny:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivell del mar:
+STR_SMOOTHNESS                                                  :{BLACK}Planitut:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Alçada de la linia de neu:
+STR_DATE                                                        :{BLACK}Data:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}No. de pobles:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. d'indústries:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Moure la linia de neu un pas amunt
+STR_SNOW_LINE_DOWN                                              :{BLACK}Moure la linia de neu un pas avall
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Canviar alçada de la linia de neu
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Canviar l'any inicial
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Alerta d'escala
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}No es recomanar redimensionar massa el mapa d'origen. Continuar amb la generació?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Nom del mapa d'alçades:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Mida: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Generant món...
+STR_GENERATION_ABORT                                            :{BLACK}Abortar
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Abortar Generació del Món
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Realment vols abortar la generació?
+STR_PROGRESS                                                    :{WHITE}{NUM}% complet
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Generació del món
+STR_TREE_GENERATION                                             :{BLACK}Generació d'arbres
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Generació innamovible
+STR_CLEARING_TILES                                              :{BLACK}Generar area escarpada i rocosa
+STR_SETTINGUP_GAME                                              :{BLACK}Configurant el joc
+STR_PREPARING_TILELOOP                                          :{BLACK}Passant el bucle de cel·les
+STR_PREPARING_GAME                                              :{BLACK}Preparant el joc
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Aquesta acció canviarà el nivell de dificultat a personalitzat
+STR_SE_FLAT_WORLD                                               :{WHITE}Terreny pla
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generar un terreny pla
+STR_SE_RANDOM_LAND                                              :{WHITE}Terreny aleatori
+STR_SE_NEW_WORLD                                                :{BLACK}Crear nou escenari
+STR_SE_CAPTION                                                  :{WHITE}Tipus d'escenari
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Moure l'alçada del terreny pla un pas avall
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Moure l'alçada del terreny pla un pas amunt
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Canviar alçada del terreny pla
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Alçada del terreny pla:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
+
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrar el mapa petit a la posició actual
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Petit
