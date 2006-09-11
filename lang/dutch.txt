@@ -146,8 +146,8 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FR
-STR_ABBREV_NONE                                                 :
-STR_ABBREV_ALL                                                  :
+STR_ABBREV_NONE                                                 :{TINYFONT}NEE
+STR_ABBREV_ALL                                                  :{TINYFONT}ALLES
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Kaart - {STRING}
@@ -381,9 +381,9 @@ STR_SORT_BY_VALUE                                               :Waarde
 STR_SORT_BY_FACILITY                                            :
 STR_SORT_BY_WAITING                                             :
 STR_SORT_BY_RATING_MAX                                          :
-STR_NO_WAITING_CARGO                                            :
-STR_SELECT_ALL_FACILITIES                                       :
-STR_SELECT_ALL_TYPES                                            :
+STR_NO_WAITING_CARGO                                            :{BLACK}Er wacht geen vracht van enig type
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Kies alle faciliteiten
+STR_SELECT_ALL_TYPES                                            :{BLACK}Kies alle vracht typen (inclusief niet wachtende vracht)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -1759,7 +1759,7 @@ STR_3069_BUOY                                                   :Boei
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boei in de weg
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...station te verspreid
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...niet uniforme stations uit
-STR_USE_CTRL_TO_SELECT_MORE                                     :
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Houd CTRL ingedrukt om meer items te kiezen
 
 STR_UNDEFINED                                                   :(ongedefinieerde string)
 STR_STAT_CLASS_DFLT                                             :Standaard station
@@ -2844,7 +2844,7 @@ STR_CURRENCY_PREVIEW                                            :{LTBLUE}Voorbee
 STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Verander aangepaste valuta optie
 
 STR_TRAIN                                                       :{BLACK}{TRAIN}
-STR_BUS                                                         :
+STR_BUS                                                         :{BLACK}{BUS}
 STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
