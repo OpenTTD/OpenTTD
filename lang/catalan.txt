@@ -1059,7 +1059,7 @@ STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algorit
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Cap
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Millorat
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antihorari
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-horari
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
 STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Interval d'actualització del progrés: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Alçada que un escenari pla pren: {ORANGE}{STRING}
@@ -1108,7 +1108,7 @@ STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Radi de
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interficie
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Construcció
-STR_CONFIG_PATCHES_VEHICLES                                     :
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Vehicles
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Estacions
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Economía
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Competidors
@@ -1847,7 +1847,7 @@ STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrar 
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nou/nova {STRING} en construcció a prop de {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nou/nova {STRING} s'està plantant a prop de {TOWN}!
 STR_482F_COST                                                   :{BLACK}Cost: {YELLOW}{CURRENCY}
-STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}No es pot construir aquest tipus d'indústria aqui...
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Aquí no es pot construir aquest tipus d'indústria...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...els boscos només es poden plantar sota la cota de neu
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}{INDUSTRY} anuncia el seu inminent tancament!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemes de subministrament fan que {INDUSTRY} anuncïi el seu inminent tancament!
@@ -1863,16 +1863,16 @@ STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT
 STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} la producció a {INDUSTRY} es redueix d'un {COMMA}%!
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren dins del tunel
-STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Vehicle dins del tunel
-STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Un altre tunel en el camí
-STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Imposible excavar la terra a l'altre extrem del tunel
-STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Primer has d'enderrocar el tunel
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren dins del túnel
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Vehicle dins del túnel
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Un altre túnel en el camí
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Impossible excavar la terra a l'altre extrem del túnel
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Primer has d'enderrocar el túnel
 STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Primer has d'enderrocar el pont
 STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}No es pot començar i acabar a la mateixa posició
 STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Es necessita una certa elevació sobre el terreny o aigua sota el pont
 STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Inici i final han d'estar en línia recta
-STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Lloc inadequat per l'entrada del tunel
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Lloc inadequat per l'entrada del túnel
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Suspensió, Acer
 STR_500F_GIRDER_STEEL                                           :Biga, Acer
@@ -1882,10 +1882,10 @@ STR_5012_WOODEN                                                 :De Fusta
 STR_5013_CONCRETE                                               :Formigó
 STR_5014_TUBULAR_STEEL                                          :Tubular, Acer
 STR_BRIDGE_TUBULAR_SILICON                                      :Tubular, Silicona
-STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}No es pot construir el pont aqui...
-STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}No es pot construir el tunel aqui...
-STR_5017_RAILROAD_TUNNEL                                        :Tunel ferroviari
-STR_5018_ROAD_TUNNEL                                            :Tunel de carretera
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Aquí no es pot construir el pont...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Aquí no es pot construir el túnel...
+STR_5017_RAILROAD_TUNNEL                                        :Túnel ferroviari
+STR_5018_ROAD_TUNNEL                                            :Túnel de carretera
 STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Pont ferroviari en suspensió d'acer
 STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Pont ferroviari de biga d'acer
 STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Pont ferroviari de volada d'acer
@@ -1909,7 +1909,7 @@ STR_5803_COMPANY_HEADQUARTERS                                   :Seu de l'Empres
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...seu en el camí
 STR_5805_COMPANY_OWNED_LAND                                     :terreny propietat de l'Empresa
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}No pots comprar aquest àrea de terreny...
-STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ya és propietat teva!
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...ja és propietat teva!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1965,26 +1965,26 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Desa
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Fàcil
 STR_6802_MEDIUM                                                 :{BLACK}Mitjà
-STR_6803_HARD                                                   :{BLACK}Dur
-STR_6804_CUSTOM                                                 :{BLACK}Parametritzable
+STR_6803_HARD                                                   :{BLACK}Difícil
+STR_6804_CUSTOM                                                 :{BLACK}Personalitzable
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
-STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Màxim num. competidors: {ORANGE}{COMMA}
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Màxim no. de competidors: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Moment inici Competidors: {ORANGE}{STRING}
-STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Num. de poblacions: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Num. d'indústries: {ORANGE}{STRING}
-STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Màxim prèstec inicial: {ORANGE}{CURRENCY}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}No. de poblacions: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}No. d'indústries: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Màxim préstec inicial: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Interès inicial: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cost de circulació de Vehicles: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Velocitat de Construcció dels competidors: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intel.ligència dels competidors: {ORANGE}{STRING}
-STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Averíes dels Vehicles: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Averies dels Vehicles: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Multiplicador de Subvencions: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Cost de construcció: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Tipus de Terreny: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Quantitat de mar/estanys: {ORANGE}{STRING}
-STR_6813_ECONOMY                                                :{LTBLUE}Economía: {ORANGE}{STRING}
+STR_6813_ECONOMY                                                :{LTBLUE}Economia: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Canvi de sentit dels trens: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Desastres: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}Actitud de l'Ajuntament sobre reestructuracions d'àrees: {ORANGE}{STRING}
@@ -2802,7 +2802,7 @@ STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
-STR_PERFORMANCE_DETAIL_VEHICLES                                 :
+STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Vehicles:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Estacions:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. benefici:
 STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. ingrès:
@@ -2923,13 +2923,13 @@ STR_RANDOM_HELP                                                 :{BLACK}Canviar 
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generació del món
 STR_RANDOM_SEED                                                 :{BLACK}Nombre aleatori:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Click per introduïr un nombre aleatori
-STR_LAND_GENERATOR                                              :{BLACK}Generador de terrenys:
+STR_LAND_GENERATOR                                              :{BLACK}Gen. de terrenys:
 STR_TREE_PLACER                                                 :{BLACK}Algoritme d'arbres:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotació del mapa d'alçades:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipus de terreny:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivell del mar:
 STR_SMOOTHNESS                                                  :{BLACK}Planitut:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}Alçada de la linia de neu:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Alçada de la neu:
 STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}No. de pobles:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. d'indústries:
