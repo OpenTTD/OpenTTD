@@ -620,7 +620,7 @@ static void DrawShipDepotWindow(Window *w)
 	/* determine amount of items for scroller */
 	num = 0;
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship && (v) && v->tile == tile) num++;
+		if (v->type == VEH_Ship && IsShipInDepot(v) && v->tile == tile) num++;
 	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
@@ -636,7 +636,7 @@ static void DrawShipDepotWindow(Window *w)
 	num = w->vscroll.pos * w->hscroll.cap;
 
 	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship && (v) && v->tile == tile &&
+		if (v->type == VEH_Ship && IsShipInDepot(v) && v->tile == tile &&
 				--num < 0 && num >= -w->vscroll.cap * w->hscroll.cap) {
 			DrawShipImage(v, x+19, y, WP(w,traindepot_d).sel);
 
