@@ -1059,6 +1059,7 @@ STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algorit
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Cap
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Millorat
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotació del mapa d'alçades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-horari
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
 STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Interval d'actualització del progrés: {ORANGE}{STRING} ms
@@ -1202,8 +1203,8 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Converti
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Arrastra la màquina de tren aqui per vendre el tren sencer
 
-STR_DRAG_DROP                                                   :{BLACK}Arrastrar i Deixar
-STR_STATION_DRAG_DROP                                           :{BLACK}Construir una estació arrastrant i deixant
+STR_DRAG_DROP                                                   :{BLACK}Arrossegar i Deixar
+STR_STATION_DRAG_DROP                                           :{BLACK}Construir una estació arrossegant i deixant
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecciona un tipus de estació a mostrar
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecciona el tipus de estació a construir
 
@@ -1363,7 +1364,7 @@ STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nom d'e
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguració:  {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Valor de l'empresa:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanç actual:  {WHITE}{CURRENCY64}
-STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingresos de l'ultim any:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Ingressos de l'últim any:  {WHITE}{CURRENCY64}
 STR_NETWORK_PERFORMANCE                                         :{SILVER}Rendiment:  {WHITE}{NUM}
 
 STR_NETWORK_VEHICLES                                            :{SILVER}Vehicles:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
@@ -1752,7 +1753,7 @@ STR_3062_BUS_STATION                                            :Parada d'autobu
 STR_3063_SHIP_DOCK                                              :Moll per vaixells
 STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Marcar àrea de cobertura del lloc proposat
 STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}No marcar àrea de cobertura del lloc proposat
-STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Marca de l'Ârea de cobertura
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Marca àrea de cobertura
 STR_3068_DOCK                                                   :{WHITE}Moll
 STR_3069_BUOY                                                   :Boia
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...boia en el camí
@@ -2046,7 +2047,7 @@ STR_700B_PRESIDENT_S_NAME                                       :Nom President
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}No es pot canviar el nom d'empresa...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}No es pot canviar el nom de president...
 STR_700E_FINANCES                                               :{WHITE}{COMPANY} Economía {BLACK}{PLAYERNAME}
-STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Despeses/Ingresos
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Despeses/Ingressos
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Construcció
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nous Vehicles
@@ -2055,39 +2056,39 @@ STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Desp. de 
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Desp. de Circ. d'Aeronaus
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Desp. de Circ. de Vaixells
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Manteniment de Propietats
-STR_7018_TRAIN_INCOME                                           :{GOLD}Ingresos de Tren
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ingresos de Vehicles Rodats
-STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ingresos d'Aeronaus
-STR_701B_SHIP_INCOME                                            :{GOLD}Ingresos de Vaixells
+STR_7018_TRAIN_INCOME                                           :{GOLD}Ingressos de Tren
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Ingressos de Vehicles Rodats
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Ingressos d'Aeronaus
+STR_701B_SHIP_INCOME                                            :{GOLD}Ingressos de Vaixells
 STR_701C_LOAN_INTEREST                                          :{GOLD}Interessos del Prèstec
 STR_701D_OTHER                                                  :{GOLD}Altres
 STR_701E                                                        :{BLACK}-{CURRENCY64}
 STR_701F                                                        :{BLACK}+{CURRENCY64}
 STR_7020_TOTAL                                                  :{WHITE}Total:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
-STR_7022_INCOME_GRAPH                                           :{WHITE}Gràfic d'Ingresos
+STR_7022_INCOME_GRAPH                                           :{WHITE}Gràfic d'Ingressos
 STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Gràfic de Rendiment d'Operacions
 STR_7026_BANK_BALANCE                                           :{WHITE}Balanç del Banc
-STR_7027_LOAN                                                   :{WHITE}Prèstec
+STR_7027_LOAN                                                   :{WHITE}Préstec
 STR_MAX_LOAN                                                    :{WHITE}Max. Prèstec:  {BLACK}{CURRENCY64}
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Demanar {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Amortitzar {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...màxim import permès del prèstec és {CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...màxim import permès del préstec és {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}No pots demanar més diners...
-STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...No hi ha prèstec per amortitzar
-STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} necesari
-STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}No es pot amortitzar prèstec...
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...No queda préstec per amortitzar
+STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} necessari
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}No es pot amortitzar préstec...
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}No es poden regalar els diners prestats pel banc...
-STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Selecciona nova cara per el president
-STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Canvía l'aspecte dels vehicles de l'empresa
-STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Canvía el nom del president
-STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Canvía el nom de l'empresa
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Selecciona una nova cara pel president
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Canvia l'aspecte dels vehicles de l'empresa
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Canvia el nom del president
+STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Canvia el nom de l'empresa
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Clica al nou esquema de color triat
-STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Augmentar l'import del prèstec
-STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Amortitzar part del prèstec
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Augmentar l'import del préstec
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Amortitzar part del préstec
 STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(President)
 STR_7038_INAUGURATED                                            :{GOLD}Inaugurat: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Vehicles:
@@ -2108,7 +2109,7 @@ STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Genera u
 STR_704C_KEY                                                    :{BLACK}Clau
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Mostrar la clau als gràfics
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Clau dels gràfics de l'empresa
-STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Clica aqui per activar/desactivar l'entrada als gràfics de l'empresa
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Clica aquí per activar/desactivar l'entrada als gràfics de l'empresa
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Unitats de càrrega entregada
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ratis de rendiment de l'empresa (màxim rati=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Valors de l'empresa
@@ -2127,7 +2128,7 @@ STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} comença la construcció prop de {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}No pots comprar l'empresa...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Tarifes de Pagament de Càrrega
-STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Díes en transit
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dies en trànsit
 STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Pagament per entregar 10 unitats (o 10,000 litres) de càrrega a una distància de 20 quadres
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Activa/desactiva gràfic de tipus de càrrega
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
@@ -2139,7 +2140,7 @@ STR_706A_DIRECTOR                                               :Director
 STR_706B_CHIEF_EXECUTIVE                                        :Cap Executiu
 STR_706C_CHAIRMAN                                               :Conseller Delegat
 STR_706D_PRESIDENT                                              :President
-STR_706E_TYCOON                                                 :Magnate
+STR_706E_TYCOON                                                 :Magnat
 STR_706F_BUILD_HQ                                               :{BLACK}Construir Seu
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Construir seu de l'empresa / veure seu de l'empresa
 STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Traslladar la seu de l'empresa a un altre lloc amb el cost de l'1% del seu valor
@@ -2149,9 +2150,9 @@ STR_RELOCATE_HQ                                                 :{BLACK}Trasllad
 STR_COMPANY_PASSWORD                                            :{BLACK}Contrasenya
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Protegeix la teva Empresa amb contrasenya per tal d'evitar que la utilitzin usuaris no autoritzats.
 STR_SET_COMPANY_PASSWORD                                        :Estableix la contrasenya de l'Empresa
-STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recesió Mundial!{}{}Economistes experts temen que l'economía es desplomi!
-STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recesió Terminada!{}{}La millora als negocis dona confiança a les indústries tant com l'economía es consolidi!
-STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Intercanvía mida gran/petita de finestra
+STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Recessió Mundial!{}{}Economistes experts temen que l'economia es desplomi!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessió Acabada!{}{}La millora als negocis dóna confiança a les indústries a la vegada que l'economia s'enforteix!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Intercanvia mida gran/petita de finestra
 STR_7076_COMPANY_VALUE                                          :{GOLD}Valor de l'Empresa: {WHITE}{CURRENCY64}
 STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Comprar el 25% de participació en l'Empresa
 STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vendre el 25% de participació en l'Empresa
@@ -2162,7 +2163,7 @@ STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}No pots 
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propietat de {COMPANY})
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% propietat de {COMPANY}{}   {COMMA}% propietat de {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} ha estat absorbida per {COMPANY}!
-STR_7080_PROTECTED                                              :{WHITE}Aquesta Empresa ja no negocía participacions...
+STR_7080_PROTECTED                                              :{WHITE}Aquesta empresa ja no negocia participacions...
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
@@ -2514,9 +2515,9 @@ STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Interval
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Interval de manteniment: {LTBLUE}{COMMA}%{BLACK}   Darrer manteniment: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per informació
 STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Construir nous trens (es necessita cotxera)
-STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per info., arrastra el vehicle per afegir/treure del tren
+STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trens - clica al tren per info., arrossegar el vehicle per afegir/treure del tren
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construir nou element de tren
-STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrastra l'element de tren fins aqui per vendre'l
+STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar la vista de la pantalla principal en la situació de la cotxera
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Llista de selecció d'elements de tren - clica a l'element per informació
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir l'element de tren seleccionat
@@ -2606,7 +2607,7 @@ STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Obliga a
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Mostrar detalls del vehicle
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vehicles - clica en un vehicle per informació
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construir nou vehicle rodat
-STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arrastra el vehicle fins aqui per vendre'l
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arrossega el vehicle fins aquí per vendre'l
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrar la pantalla principal en la situació de la cotxera
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista de selecció de Vehicles Rodats - clica en un vehicle per informació
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construeix el vehicle rodat seleccionat
@@ -2671,7 +2672,7 @@ STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construi
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construir drassana (per construir i mantindre vaixells)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per informació
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Construir nou vaixell
-STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrastra el vaixell fins aqui per vendre'l
+STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrossega el vaixell fins aquí per vendre'l
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrar pantalla principal en la situació de la drassana
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per informació
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construir nous vaixells (necessites una drassana)
@@ -2747,7 +2748,7 @@ STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau 
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir noves aeronaus (necessites un aeroport amb hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l' aeronau per informació
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir noves aeronaus
-STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrastra l'aeronau fins aqui per vendre-la
+STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrossega l'aeronau fins aquí per vendre-la
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar pantalla principal en la situació de l'hangar
 STR_A025_AIRCRAFT_SELECTION_LIST                                :{BLACK}Llista de selecció d'Aeronaus - clica en una aeronau per informació
 STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construir l'aeronau seleccionada
@@ -2972,9 +2973,9 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Centrar 
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Petit
-STR_CITY_AIRPORT                                                :{BLACK}Ciutat
-STR_METRO_AIRPORT                                               :{BLACK}Aeroport metropolità
-STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroport internacional
+STR_CITY_AIRPORT                                                :{BLACK}Ciutadà
+STR_METRO_AIRPORT                                               :{BLACK}Metropolità
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internacional
 STR_COMMUTER_AIRPORT                                            :{BLACK}Viatjer
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
 STR_HELIPORT                                                    :{BLACK}Heliport
@@ -2983,6 +2984,6 @@ STR_HELISTATION                                                 :{BLACK}Helistac
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Aeroports petits
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroports grans
-STR_HUB_AIRPORTS                                                :{BLACK}Hub airports
+STR_HUB_AIRPORTS                                                :{BLACK}Aeroports d'enllaç
 STR_HELIPORTS                                                   :{BLACK}Aeroports d'helicòpters
 ########

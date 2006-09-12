@@ -2593,7 +2593,7 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Araba ka
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Araba {COMMA} garajda bekliyor
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} Garajina gidiyor
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} Garajina gidiyor, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Garajinda Bakima Gir
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} Yol Istasyonunda Hizmet, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Araç garaja gidemiyor...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel garaj bulunamadi
