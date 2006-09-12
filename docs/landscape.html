@@ -40,7 +40,9 @@ OTTD's class-specific periodic tile processing routine is called once every +256
 <tr><td nowrap valign=top><tt>03</tt>&nbsp; </td><td align=left>full grass</td></tr>
 <tr><td nowrap valign=top><tt>07</tt>&nbsp; </td><td align=left>rough land</td></tr>
 <tr><td nowrap valign=top><tt>0B</tt>&nbsp; </td><td align=left>rocks</td></tr>
-<tr><td nowrap valign=top><tt>0F</tt>&nbsp; </td><td align=left>fields; type of fields in m3 bits 3..0 (legal values: 0 through 9)</td></tr>
+<tr><td nowrap valign=top><tt>0F</tt>&nbsp; </td><td align=left>fields; type of fields in m3 bits 3..0 (legal values: 0 through 9)<br>
+  m2: Index into the array of industries (farms), INVALID_INDUSTRY (0xFFFF) if farm has been removed </td>
+</tr>
 <tr><td nowrap valign=top><tt>10</tt>&nbsp; </td><td align=left>1/4 snow</td></tr>
 <tr><td nowrap valign=top><tt>11</tt>&nbsp; </td><td align=left>2/4 snow</td></tr>
 <tr><td nowrap valign=top><tt>12</tt>&nbsp; </td><td align=left>3/4 snow</td></tr>
