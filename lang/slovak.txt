@@ -2521,8 +2521,6 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Opravovat bez z
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Smeruje do {TOWN} depa
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Smeruje do {TOWN} depa, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :
 
 STR_INVALID_ORDER                                               :{RED} (Neplatny prikaz)
 
@@ -2657,8 +2655,6 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemozno 
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobil {COMMA} caka v garazi
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Smeruje do {TOWN} garaze
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}smeruje do {TOWN} garaze, {VELOCITY}
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemozno poslat automobil do garaze ...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu garaz
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automobily - kliknut pre detaily
@@ -2729,8 +2725,6 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nemozno 
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu lodenicu
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Smeruje do {TOWN} lodenice
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Smeruje do {TOWN} lodenice, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Lod {COMMA} caka v lodenici
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit lodenicu
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodenicu (pre vyrobu a opravy lodi)
