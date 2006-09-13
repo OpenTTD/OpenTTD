@@ -603,6 +603,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Minska s
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generera slumpmässig mark
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Återställ landskapet
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Återställ landskapet
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Använd höjdkarta
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Använd höjdkarta
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Vill du verkligen återställa landskapet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Skapa landskap
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygg städer
@@ -715,6 +717,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Spara sc
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Öppna scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Spara scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spela scenario
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Spela höjdkarta
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Starta ett nytt spel, och använd en höjdkarta som landskap
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Vill du verkligen avsluta detta scenario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avsluta editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan bara byggas i städer med minst 1200 invånare
@@ -1038,7 +1042,9 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minst m
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Visa befolkningsmängd i stadsnamnet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Osynliga träd (när genomskinliga byggnader är valt): {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snölinjeshöjd: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximal spridning av en station: {ORANGE}{STRING} {RED}Varning: Hög inställning slöar ner spelet
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Serva helikoptrar vid landningplattor automatiskt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koppla landskapsverktygsfältet till järnväg/väg/vatten/flygplats-verktygsfältet: {ORANGE}{STRING}
@@ -1432,6 +1438,15 @@ STR_NETWORK_SEND                                                :{BLACK}Skicka
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-storleken på kartan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-storleken på kartan: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERROR                                                :{WHITE}Kan inte ladda landskap från PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...hittar inte filen.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kunde inte konvertera bildtyp. 8 eller 24-bitars PNG-bild krävs.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...nånting gick fel. Ursäkta. (förmodligen korumperad fil)
+
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kostnad: {CURRENCY}
@@ -2419,6 +2434,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Servning non-st
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}På väg mot {TOWN} depå
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}På väg mot {TOWN} depå, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Service vid {TOWN} tågdepå
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Service vid {TOWN} tågdepå, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ogiltig order)
 
@@ -2551,6 +2568,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan inte
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Vägfordon {COMMA} väntar i depån
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}På väg mot {TOWN} Vägdepå
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN} Vägdepå, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Service vid {TOWN} vägdepå
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Service vid {TOWN} vägdepå, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan inte skicka fordon till depå...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan inte hitta till lokal depå
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vägfordon - klicka på fordon för information
@@ -2621,6 +2640,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan inte
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan inte finna lokal depå
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}På väg mot {TOWN} Skeppsdepå
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN} Skeppsdepå, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service vid {TOWN} skeppsdepå
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Service vid {TOWN} skeppsdepå, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skepp {COMMA} väntar i depå
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Bygg hamn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Bygg skeppsdepå (för byggnad och lagning av skepp)
@@ -2652,7 +2673,7 @@ STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Byt namn
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Byt namn på skeppstyp
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Kan inte byta namn på skeppstyp...
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Anpassa godsskepp att frakta en annan godstyp
-STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
+STR_983B_REFIT                                                  :
 STR_983C_REFIT_SHIP                                             :{BLACK}Anpassa skepp
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj typ av gods för skepp att frakta
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Anpassa skepp att frakta markerad godstyp
@@ -2686,6 +2707,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan inte skicka flygplan till hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}På väg mot {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}På väg mot {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Service vid {STATION} hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Service vid {STATION} hangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flygplan {COMMA} väntar i flygplanshangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flygplan i vägen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan inte stoppa/starta flygplan...
@@ -2725,7 +2748,7 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Byt namn
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Byt namn på flygplanstyp
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Kan inte byta namn på flygplanstyp...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta en annan godstyp
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
+STR_A03C_REFIT                                                  :
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Anpassa flygplan
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj godstyp för flygplan att frakta
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta markerad godstyp
@@ -2811,6 +2834,12 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Visa all
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Visa alla flygplan där denna station finns med i rutten
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Visa alla skepp där denna station finns med i rutten
 
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Skicka till depåer
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Skicka alla fordon i listan till depå. CTRL+klick för endast service
+STR_SEND_TO_HANGARS                                             :{BLACK}Skicka till hangarer
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Skicka alla flyplan i listan till hangar. CTRL+klick för service endast
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Byt ut fordon
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Byt ut {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Börja byta ut fordon
@@ -2859,6 +2888,40 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vikt: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{COMMA} passagerare, {COMMA} säckar post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserade vagnar: {GOLD}+{POWER}{BLACK} Vikt: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Generera
+STR_RANDOM                                                      :{BLACK}Slumpa
+STR_RANDOM_HELP                                                 :{BLACK}Ändra slump-nummer som används för teräng-generering
+STR_RANDOM_SEED                                                 :{BLACK}Slump-nummer:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Klicka för att mata in ett slump-nummer
+STR_LAND_GENERATOR                                              :{BLACK}Landgenerator:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotation på höjdkarta:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Havsnivå
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Antal städer:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Antal industrier:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skala-varning
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}För stora storleksändringar av källkarta är inte rekomenderat. Fortsätt med generering?
+STR_HEIGHTMAP_NAME                                              :{BLACK}Namn på höjdkarta:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Storlek: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Genererar värld...
+STR_GENERATION_ABORT                                            :{BLACK}Avbryt
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Avbryt generering av världen
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vill du verkligen avbryta genereringen?
+STR_PROGRESS                                                    :{WHITE}{NUM}% färdigt
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_SETTINGUP_GAME                                              :{BLACK}Ställer in spel
+STR_PREPARING_TILELOOP                                          :{BLACK}Kör tile-loop
+STR_PREPARING_GAME                                              :{BLACK}Förbereder spel
+STR_SE_FLAT_WORLD                                               :{WHITE}Plant land
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generera ett plant land
+STR_SE_RANDOM_LAND                                              :{WHITE}Slumpat land
+STR_SE_NEW_WORLD                                                :{BLACK}Skapa ett nytt scenario
+STR_SE_CAPTION                                                  :{WHITE}Scenarotyp
+
+STR_SMALLMAP_CENTER                                             :{BLACK}Centrera den lilla kartan på den nuvarande positionen
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Liten
