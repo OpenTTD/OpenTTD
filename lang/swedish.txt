@@ -2673,7 +2673,7 @@ STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Byt namn
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Byt namn på skeppstyp
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Kan inte byta namn på skeppstyp...
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Anpassa godsskepp att frakta en annan godstyp
-STR_983B_REFIT                                                  :
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
 STR_983C_REFIT_SHIP                                             :{BLACK}Anpassa skepp
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj typ av gods för skepp att frakta
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Anpassa skepp att frakta markerad godstyp
@@ -2748,7 +2748,7 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Byt namn
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Byt namn på flygplanstyp
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Kan inte byta namn på flygplanstyp...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta en annan godstyp
-STR_A03C_REFIT                                                  :
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Anpassa flygplan
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj godstyp för flygplan att frakta
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta markerad godstyp
