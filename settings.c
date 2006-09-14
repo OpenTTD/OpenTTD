@@ -1579,7 +1579,7 @@ int32 CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
  * This only affects patch-members that are not needed to be the same on all
  * clients in a network game.
  * @param value new value of the patch */
-void SetPatchValue(uint index, const Patches *object, int32 value)
+bool SetPatchValue(uint index, const Patches *object, int32 value)
 {
 	const SettingDesc *sd = &_patch_settings[index];
 	/* If an item is player-based, we do not send it over the network
@@ -1591,12 +1591,18 @@ void SetPatchValue(uint index, const Patches *object, int32 value)
 		Write_ValidateSetting(var, sd, value);
 
 		if (_game_mode != GM_MENU) {
-			void* var2 = ini_get_variable(&sd->save, &_patches_newgame);
+			void *var2 = ini_get_variable(&sd->save, &_patches_newgame);
 			Write_ValidateSetting(var2, sd, value);
 		}
-	} else {
-		DoCommandP(0, index, value, NULL, CMD_CHANGE_PATCH_SETTING);
+		InvalidateWindow(WC_GAME_OPTIONS, 0);
+		return true;
 	}
+
+	/* send non-player-based settings over the network */
+	if (!_networking || (_networking && _network_server)) {
+		return DoCommandP(0, index, value, NULL, CMD_CHANGE_PATCH_SETTING);
+	}
+	return false;
 }
 
 const SettingDesc *GetPatchFromName(const char *name, uint *i)
@@ -1613,8 +1619,9 @@ const SettingDesc *GetPatchFromName(const char *name, uint *i)
 
 /* Those 2 functions need to be here, else we have to make some stuff non-static
  * and besides, it is also better to keep stuff like this at the same place */
-void IConsoleSetPatchSetting(const char *name, int32 value)
+bool IConsoleSetPatchSetting(const char *name, int32 value)
 {
+	bool success;
 	uint index;
 	const SettingDesc *sd = GetPatchFromName(name, &index);
 	const Patches *patches_ptr;
@@ -1622,14 +1629,15 @@ void IConsoleSetPatchSetting(const char *name, int32 value)
 
 	if (sd == NULL) {
 		IConsolePrintF(_icolour_warn, "'%s' is an unknown patch setting.", name);
-		return;
+		return true;
 	}
 
 	patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
 	ptr = ini_get_variable(&sd->save, patches_ptr);
 
-	SetPatchValue(index, patches_ptr, value);
-	if (sd->desc.proc != NULL) sd->desc.proc(value);
+	success = SetPatchValue(index, patches_ptr, value);
+	if (success && sd->desc.proc != NULL) sd->desc.proc(value);
+	return success;
 }
 
 void IConsoleGetPatchSetting(const char *name)

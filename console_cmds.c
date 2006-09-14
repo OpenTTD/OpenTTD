@@ -1373,7 +1373,12 @@ DEF_CONSOLE_CMD(ConPatch)
 		IConsoleGetPatchSetting(argv[1]);
 	} else {
 		uint32 val;
-		if (GetArgumentInteger(&val, argv[2])) IConsoleSetPatchSetting(argv[1], val);
+
+		if (GetArgumentInteger(&val, argv[2])) {
+			if (!IConsoleSetPatchSetting(argv[1], val)) {
+				IConsoleError("This command/variable is only available to a network server.");
+			}
+		}
 	}
 
 	return true;
@@ -1459,6 +1464,7 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdRegister("cd",           ConChangeDirectory);
 	IConsoleCmdRegister("pwd",          ConPrintWorkingDirectory);
 	IConsoleCmdRegister("clear",        ConClearBuffer);
+	IConsoleCmdRegister("patch",        ConPatch);
 
 	IConsoleAliasRegister("dir",      "ls");
 	IConsoleAliasRegister("del",      "rm %+");
@@ -1513,8 +1519,6 @@ void IConsoleStdLibRegister(void)
 	IConsoleCmdHookAdd("pause",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleCmdRegister("unpause",         ConUnPauseGame);
 	IConsoleCmdHookAdd("unpause",          ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
-
-	IConsoleCmdRegister("patch",           ConPatch);
 
 	/*** Networking variables ***/
 	IConsoleVarRegister("net_frame_freq",        &_network_frame_freq, ICONSOLE_VAR_BYTE, "The amount of frames before a command will be (visibly) executed. Default value: 1");
