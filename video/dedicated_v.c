@@ -64,8 +64,8 @@ static void DedicatedSignalHandler(int sig)
 #include <windows.h> /* GetTickCount */
 #include <conio.h>
 #include <time.h>
-static HANDLE hEvent;
-static HANDLE hThread; // Thread to close
+static HANDLE _hInputReady, _hWaitForInputHandling;
+static HANDLE _hThread; // Thread to close
 static char _win_console_thread_buffer[200];
 
 /* Windows Console thread. Just loop and signal when input has been received */
@@ -73,30 +73,32 @@ static void WINAPI CheckForConsoleInput(void)
 {
 	while (true) {
 		fgets(_win_console_thread_buffer, lengthof(_win_console_thread_buffer), stdin);
-		SetEvent(hEvent); // signal input waiting that the line is ready
+		/* Signal input waiting that input is read and wait for it being handled
+		 * SignalObjectAndWait() should be used here, but it's unsupported in Win98< */
+		SetEvent(_hInputReady);
+		WaitForSingleObject(_hWaitForInputHandling, INFINITE);
 	}
 }
 
 static void CreateWindowsConsoleThread(void)
 {
-	static char tbuffer[9];
 	DWORD dwThreadId;
 	/* Create event to signal when console input is ready */
-	hEvent = CreateEvent(NULL, false, false, _strtime(tbuffer));
-	if (hEvent == NULL)
-		error("Cannot create console event!");
+	_hInputReady = CreateEvent(NULL, false, false, NULL);
+	_hWaitForInputHandling = CreateEvent(NULL, false, false, NULL);
+	if (_hInputReady == NULL || _hWaitForInputHandling == NULL) error("Cannot create console event!");
 
-	hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, NULL, 0, &dwThreadId);
-	if (hThread == NULL)
-		error("Cannot create console thread!");
+	_hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)CheckForConsoleInput, NULL, 0, &dwThreadId);
+	if (_hThread == NULL) error("Cannot create console thread!");
 
 	DEBUG(driver, 1) ("Windows console thread started...");
 }
 
 static void CloseWindowsConsoleThread(void)
 {
-	CloseHandle(hThread);
-	CloseHandle(hEvent);
+	CloseHandle(_hThread);
+	CloseHandle(_hInputReady);
+	CloseHandle(_hWaitForInputHandling);
 	DEBUG(driver, 1) ("Windows console thread shut down...");
 }
 
@@ -174,7 +176,7 @@ static uint32 GetTime(void)
 
 static bool InputWaiting(void)
 {
-	return WaitForSingleObject(hEvent, 1) == WAIT_OBJECT_0;
+	return WaitForSingleObject(_hInputReady, 1) == WAIT_OBJECT_0;
 }
 
 static uint32 GetTime(void)
@@ -188,16 +190,16 @@ static void DedicatedHandleKeyInput(void)
 {
 	static char input_line[200] = "";
 
-	if (!InputWaiting())
-		return;
+	if (!InputWaiting()) return;
 
-	if (_exit_game)
-		return;
+	if (_exit_game) return;
 
 #if defined(UNIX) || defined(__OS2__)
-		fgets(input_line, lengthof(input_line), stdin);
+	fgets(input_line, lengthof(input_line), stdin);
 #else
-		strncpy(input_line, _win_console_thread_buffer, lengthof(input_line));
+	/* Handle console input, and singal console thread, it can accept input again */
+	strncpy(input_line, _win_console_thread_buffer, lengthof(input_line));
+	SetEvent(_hWaitForInputHandling);
 #endif
 
 	/* XXX - strtok() does not 'forget' \n\r if it is the first character! */
