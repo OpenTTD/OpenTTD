@@ -37,6 +37,7 @@ const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    5, ' ', CF_NOEURO, "",     " p",    1,  STR_CURR_RUR    }, // russian rouble
 	{  350, '.', CF_NOEURO, "",     " SIT",  1,  STR_CURR_SIT    }, // slovenian tolar
 	{   13, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_SEK    }, // swedish krona
+	{    2, '.', CF_NOEURO, "",     " YTL",  1,  STR_CURR_YTL    }, // turkish lira
 	{    1, ' ', CF_NOEURO, "",     "",      0,  STR_CURR_CUSTOM }, // custom currency
 };
 
