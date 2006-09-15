@@ -269,7 +269,7 @@ static const StringID _colour_dropdown[] = {
 /* Association of liveries to livery classes */
 static const LiveryClass livery_class[LS_END] = {
 	LC_OTHER,
-	LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL,
+	LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL,
 	LC_ROAD, LC_ROAD,
 	LC_SHIP, LC_SHIP,
 	LC_AIRCRAFT, LC_AIRCRAFT, LC_AIRCRAFT,
@@ -278,7 +278,7 @@ static const LiveryClass livery_class[LS_END] = {
 /* Number of liveries in each class, used to determine the height of the livery window */
 static const byte livery_height[] = {
 	1,
-	9,
+	11,
 	2,
 	2,
 	3,

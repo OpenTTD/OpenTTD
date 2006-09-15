@@ -2322,8 +2322,19 @@ static PalSpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Eng
 
 						if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
 						if (rvi->flags & RVI_WAGON) {
-							scheme = (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_VALUABLES) ?
-								LS_PASSENGER_WAGON : LS_FREIGHT_WAGON;
+							if (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_VALUABLES) {
+								if (parent_engine_type == INVALID_ENGINE) {
+									scheme = LS_PASSENGER_WAGON_STEAM;
+								} else {
+									switch (RailVehInfo(parent_engine_type)->engclass) {
+										case 0: scheme = LS_PASSENGER_WAGON_STEAM; break;
+										case 1: scheme = LS_PASSENGER_WAGON_DIESEL; break;
+										case 2: scheme = LS_PASSENGER_WAGON_ELECTRIC; break;
+									}
+								}
+							} else {
+								scheme = LS_FREIGHT_WAGON;
+							}
 						} else {
 							bool is_mu = HASBIT(_engine_info[engine_type].misc_flags, EF_RAIL_IS_MU);
 

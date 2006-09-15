@@ -2174,7 +2174,9 @@ STR_LIVERY_MONORAIL                                             :Monorail Engine
 STR_LIVERY_MAGLEV                                               :Maglev Engine
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON                                      :Passenger Coach
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passenger Coach (Steam)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passenger Coach (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passenger Coach (Electric)
 STR_LIVERY_FREIGHT_WAGON                                        :Freight Wagon
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Lorry
