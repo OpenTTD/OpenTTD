@@ -1452,6 +1452,8 @@ bool AfterLoadGame(void)
 
 	YapfNotifyTrackLayoutChange(INVALID_TILE, INVALID_TRACK);
 
+	if (CheckSavegameVersion(34)) FOR_ALL_PLAYERS(p) ResetPlayerLivery(p);
+
 	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
 
 	if (!CheckSavegameVersion(27)) AfterLoadStations();

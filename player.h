@@ -7,6 +7,7 @@
 #include "aystar.h"
 #include "rail.h"
 #include "engine.h"
+#include "livery.h"
 
 typedef struct PlayerEconomyEntry {
 	int32 income;
@@ -161,6 +162,7 @@ typedef struct Player {
 	int64 money64; // internal 64-bit version of the money. the 32-bit field will be clamped to plus minus 2 billion
 
 	byte player_color;
+	Livery livery[LS_END];
 	byte player_money_fraction;
 	byte avail_railtypes;
 	byte block_preview;
@@ -311,5 +313,12 @@ static inline int32 AddEngineReplacementForPlayer(Player *p, EngineID old_engine
  * @return 0 on success, CMD_ERROR on failure.
  */
 static inline int32 RemoveEngineReplacementForPlayer(Player *p, EngineID engine, uint32 flags) {return RemoveEngineReplacement(&p->engine_renew_list, engine, flags); }
+
+/**
+ * Reset the livery schemes to the player's primary colour.
+ * This is used on loading games without livery information and on new player start up.
+ * @param p Player to reset.
+ */
+void ResetPlayerLivery(Player *p);
 
 #endif /* PLAYER_H */

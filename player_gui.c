@@ -245,78 +245,223 @@ void ShowPlayerFinances(PlayerID player)
 	DoShowPlayerFinances(player, false, false);
 }
 
-static void SelectPlayerColorWndProc(Window *w, WindowEvent *e)
+/* List of colours for the livery window */
+static const StringID _colour_dropdown[] = {
+	STR_00D1_DARK_BLUE,
+	STR_00D2_PALE_GREEN,
+	STR_00D3_PINK,
+	STR_00D4_YELLOW,
+	STR_00D5_RED,
+	STR_00D6_LIGHT_BLUE,
+	STR_00D7_GREEN,
+	STR_00D8_DARK_GREEN,
+	STR_00D9_BLUE,
+	STR_00DA_CREAM,
+	STR_00DB_MAUVE,
+	STR_00DC_PURPLE,
+	STR_00DD_ORANGE,
+	STR_00DE_BROWN,
+	STR_00DF_GREY,
+	STR_00E0_WHITE,
+	INVALID_STRING_ID
+};
+
+/* Association of liveries to livery classes */
+static const LiveryClass livery_class[LS_END] = {
+	LC_OTHER,
+	LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL, LC_RAIL,
+	LC_ROAD, LC_ROAD,
+	LC_SHIP, LC_SHIP,
+	LC_AIRCRAFT, LC_AIRCRAFT, LC_AIRCRAFT,
+};
+
+/* Number of liveries in each class, used to determine the height of the livery window */
+static const byte livery_height[] = {
+	1,
+	9,
+	2,
+	2,
+	3,
+};
+
+typedef struct livery_d {
+	uint32 sel;
+	LiveryClass livery_class;
+} livery_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(livery_d));
+
+static void ShowColourDropDownMenu(Window *w, uint32 widget)
+{
+	uint32 used_colours = 0;
+	const Livery *livery;
+	LiveryScheme scheme;
+
+	/* Disallow other player colours for the primary colour */
+	if (HASBIT(WP(w, livery_d).sel, LS_DEFAULT) && widget == 10) {
+		const Player *p;
+		FOR_ALL_PLAYERS(p) {
+			if (p->is_active && p->index != _local_player) SETBIT(used_colours, p->player_color);
+		}
+	}
+
+	/* Get the first selected livery to use as the default dropdown item */
+	for (scheme = 0; scheme < LS_END; scheme++) {
+		if (HASBIT(WP(w, livery_d).sel, scheme)) break;
+	}
+	if (scheme == LS_END) scheme = LS_DEFAULT;
+	livery = &GetPlayer(w->window_number)->livery[scheme];
+
+	ShowDropDownMenu(w, _colour_dropdown, widget == 10 ? livery->colour1 : livery->colour2, widget, used_colours, 0);
+}
+
+static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		const Player *p;
-		uint used_colors = 0;
-		int num_free = 16;
-		int x,y,pos;
-		int i;
+		case WE_PAINT: {
+			const Player *p = GetPlayer(w->window_number);
+			LiveryScheme scheme = LS_DEFAULT;
+			int y = 51;
 
-		FOR_ALL_PLAYERS(p) {
-			if (p->is_active) {
-				SETBIT(used_colors, p->player_color);
-				num_free--;
+			if ((WP(w, livery_d).sel == 0)) {
+				/* Disable dropdown controls if no scheme is selected */
+				w->disabled_state = 1 << 9 | 1 << 10 | 1 << 11 | 1 << 12;
+			} else {
+				w->disabled_state = 0;
+				for (scheme = 0; scheme < LS_END; scheme++) {
+					if (HASBIT(WP(w, livery_d).sel, scheme)) break;
+				}
+				if (scheme == LS_END) scheme = LS_DEFAULT;
 			}
-		}
-		WP(w,def_d).data_1 = used_colors;
-		SetVScrollCount(w, num_free);
-		DrawWindowWidgets(w);
 
-		x = 2;
-		y = 17;
-		pos = w->vscroll.pos;
+			SetDParam(0, STR_00D1_DARK_BLUE + p->livery[scheme].colour1);
+			SetDParam(1, STR_00D1_DARK_BLUE + p->livery[scheme].colour2);
 
-		for (i = 0; i != 16; i++) {
-			if (!(used_colors & 1) && --pos < 0 && pos >= -8) {
-				DrawString(x + 30, y, STR_00D1_DARK_BLUE + i, 2);
-				DrawSprite(GENERAL_SPRITE_COLOR(i) | PALETTE_MODIFIER_COLOR | SPR_VEH_BUS_SIDE_VIEW, x + 14, y + 4);
-				y += 14;
+			DrawWindowWidgets(w);
+
+			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+				if (livery_class[scheme] == WP(w, livery_d).livery_class) {
+					bool sel = HASBIT(WP(w, livery_d).sel, scheme) != 0;
+
+					if (scheme != LS_DEFAULT) {
+						DrawSprite(p->livery[scheme].in_use ? SPR_BOX_CHECKED : SPR_BOX_EMPTY, 2, y);
+					}
+
+					DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? 0xC : 0x10);
+
+					DrawSprite(SPR_SQUARE | GENERAL_SPRITE_COLOR(p->livery[scheme].colour1) | PALETTE_MODIFIER_COLOR, 152, y);
+					DrawSprite(SPR_SQUARE | GENERAL_SPRITE_COLOR(p->livery[scheme].colour2) | PALETTE_MODIFIER_COLOR, 277, y);
+
+					DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? 0xC : 2);
+					DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? 0xC : 2);
+
+					y += 14;
+				}
 			}
-			used_colors >>= 1;
+			break;
 		}
-	} break;
 
-	case WE_CLICK:
-		if (e->click.widget == 2) {
-			int item = (e->click.pt.y - 13) / 14;
-			uint used_colors;
-			int i;
+		case WE_CLICK: {
+			switch (e->click.widget) {
+				/* Livery Class buttons */
+				case 2:
+				case 3:
+				case 4:
+				case 5:
+				case 6: {
+					LiveryScheme scheme;
 
-			if ((uint)item >= 8)
-				return;
-			item += w->vscroll.pos;
-			used_colors = WP(w,def_d).data_1;
+					WP(w, livery_d).livery_class = e->click.widget - 2;
+					WP(w, livery_d).sel = 0;
 
-			for (i = 0; i != 16; i++) {
-				if (!(used_colors & 1) && --item < 0) {
-					DoCommandP(0, 0, i, NULL, CMD_SET_PLAYER_COLOR);
-					DeleteWindow(w);
+					/* Select the first item in the list */
+					for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+						if (livery_class[scheme] == WP(w, livery_d).livery_class) {
+							WP(w, livery_d).sel = 1 << scheme;
+							break;
+						}
+					}
+					w->click_state = 1 << e->click.widget;
+					w->height = 49 + livery_height[WP(w, livery_d).livery_class] * 14;
+					w->widget[13].bottom = w->height - 1;
+					w->widget[13].data = livery_height[WP(w, livery_d).livery_class] << 8 | 1;
+					MarkWholeScreenDirty();
 					break;
 				}
-				used_colors >>= 1;
+
+				case 9:
+				case 10: // First colour dropdown
+					ShowColourDropDownMenu(w, 10);
+					break;
+
+				case 11:
+				case 12: // Second colour dropdown
+					ShowColourDropDownMenu(w, 12);
+					break;
+
+				case 13: {
+					LiveryScheme scheme;
+					LiveryScheme j = (e->click.pt.y - 48) / 14;
+
+					for (scheme = 0; scheme <= j; scheme++) {
+						if (livery_class[scheme] != WP(w, livery_d).livery_class) j++;
+						if (scheme >= LS_END) return;
+					}
+					if (j >= LS_END) return;
+
+					/* If clicking on the left edge, toggle using the livery */
+					if (e->click.pt.x < 10) {
+						DoCommandP(0, j | (2 << 8), !GetPlayer(w->window_number)->livery[j].in_use, NULL, CMD_SET_PLAYER_COLOR);
+					}
+
+					if (_ctrl_pressed) {
+						TOGGLEBIT(WP(w, livery_d).sel, j);
+					} else {
+						WP(w, livery_d).sel = 1 << j;
+					}
+					SetWindowDirty(w);
+					break;
+				}
 			}
+			break;
 		}
-		break;
+
+		case WE_DROPDOWN_SELECT: {
+			LiveryScheme scheme;
+
+			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+				if (HASBIT(WP(w, livery_d).sel, scheme)) {
+					DoCommandP(0, scheme | (e->dropdown.button == 10 ? 0 : 256), e->dropdown.index, NULL, CMD_SET_PLAYER_COLOR);
+				}
+			}
+			break;
+		}
 	}
 }
 
-static const Widget _select_player_color_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   149,     0,    13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   137,    14,   127, 0x0,                       STR_7034_CLICK_ON_SELECTED_NEW_COLOR},
-{  WWT_SCROLLBAR,   RESIZE_NONE,    14,   138,   149,    14,   127, 0x0,                       STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{   WIDGETS_END},
+static const Widget _select_player_livery_widgets[] = {
+{ WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,   0,  13, STR_00C5,                  STR_018B_CLOSE_WINDOW },
+{  WWT_CAPTION, RESIZE_NONE, 14,  11, 399,   0,  13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS },
+{   WWT_IMGBTN, RESIZE_NONE, 14,   0,  21,  14,  35, SPR_IMG_COMPANY_GENERAL,   STR_NULL },
+{   WWT_IMGBTN, RESIZE_NONE, 14,  22,  43,  14,  35, SPR_IMG_TRAINLIST,         STR_NULL },
+{   WWT_IMGBTN, RESIZE_NONE, 14,  44,  65,  14,  35, SPR_IMG_TRUCKLIST,         STR_NULL },
+{   WWT_IMGBTN, RESIZE_NONE, 14,  66,  87,  14,  35, SPR_IMG_SHIPLIST,          STR_NULL },
+{   WWT_IMGBTN, RESIZE_NONE, 14,  88, 109,  14,  35, SPR_IMG_AIRPLANESLIST,     STR_NULL },
+{    WWT_PANEL, RESIZE_NONE, 14, 110, 399,  14,  35, 0x0,                       STR_NULL },
+{    WWT_PANEL, RESIZE_NONE, 14,   0, 149,  36,  47, 0x0,                       STR_NULL },
+{  WWT_TEXTBTN, RESIZE_NONE, 14, 150, 262,  36,  47, STR_02BD,                  STR_7007_NEW_COLOR_SCHEME },
+{  WWT_TEXTBTN, RESIZE_NONE, 14, 263, 274,  36,  47, STR_0225,                  STR_7007_NEW_COLOR_SCHEME },
+{  WWT_TEXTBTN, RESIZE_NONE, 14, 275, 387,  36,  47, STR_02E1,                  STR_7007_NEW_COLOR_SCHEME },
+{  WWT_TEXTBTN, RESIZE_NONE, 14, 388, 399,  36,  47, STR_0225,                  STR_7007_NEW_COLOR_SCHEME },
+{   WWT_MATRIX, RESIZE_NONE, 14,   0, 399,  48,  48 + 1 * 14, (1 << 8) | 1,     STR_NULL },
+{ WIDGETS_END },
 };
 
-static const WindowDesc _select_player_color_desc = {
-	-1,-1, 150, 128,
-	WC_PLAYER_COLOR,0,
+static const WindowDesc _select_player_livery_desc = {
+	-1,-1, 400, 49 + 1 * 14,
+	WC_PLAYER_COLOR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
-	_select_player_color_widgets,
-	SelectPlayerColorWndProc
+	_select_player_livery_widgets,
+	SelectPlayerLiveryWndProc
 };
 
 static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
@@ -570,10 +715,12 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 4: {/* change color */
-			Window *wf = AllocateWindowDescFront(&_select_player_color_desc,w->window_number);
+			Window *wf = AllocateWindowDescFront(&_select_player_livery_desc, w->window_number);
 			if (wf != NULL) {
 				wf->caption_color = wf->window_number;
-				wf->vscroll.cap = 8;
+				WP(wf,livery_d).livery_class = LC_OTHER;
+				WP(wf,livery_d).sel = 1;
+				wf->click_state = 1 << 2;
 			}
 		} break;
 

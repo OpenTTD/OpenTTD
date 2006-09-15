@@ -32,6 +32,7 @@
 #include "network.h"
 #include "yapf/yapf.h"
 #include "date.h"
+#include "newgrf_engine.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
@@ -2301,26 +2302,100 @@ UnitID GetFreeUnitNumber(byte type)
 	return unit;
 }
 
-static PalSpriteID GetEngineColourMap(EngineID engine_type, PlayerID player)
+static PalSpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, EngineID parent_engine_type, CargoID cargo_type)
 {
 	SpriteID map;
-	byte colour = _player_colors[player];
+	const Player *p = GetPlayer(player);
+	LiveryScheme scheme = LS_DEFAULT;
 
-	/* XXX Magic 0x307 is the first company colour remap sprite */
+	/* The default livery is always available for use, but its in_use flag determines
+	 * whether any _other_ liveries are in use. */
+	if (p->livery[LS_DEFAULT].in_use) {
+		/* Determine the livery scheme to use */
+		switch (GetEngine(engine_type)->type) {
+			case VEH_Train: {
+				switch (_engine_info[engine_type].railtype) {
+					case RAILTYPE_RAIL:
+					case RAILTYPE_ELECTRIC:
+					{
+						const RailVehicleInfo *rvi = RailVehInfo(engine_type);
+
+						if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
+						if (rvi->flags & RVI_WAGON) {
+							scheme = (cargo_type == CT_PASSENGERS || cargo_type == CT_MAIL || cargo_type == CT_VALUABLES) ?
+								LS_PASSENGER_WAGON : LS_FREIGHT_WAGON;
+						} else {
+							bool is_mu = HASBIT(_engine_info[engine_type].misc_flags, EF_RAIL_IS_MU);
+
+							switch (rvi->engclass) {
+								case 0: scheme = LS_STEAM; break;
+								case 1: scheme = is_mu ? LS_DMU : LS_DIESEL; break;
+								case 2: scheme = is_mu ? LS_EMU : LS_ELECTRIC; break;
+							}
+						}
+						break;
+					}
+
+					case RAILTYPE_MONO: scheme = LS_MONORAIL; break;
+					case RAILTYPE_MAGLEV: scheme = LS_MAGLEV; break;
+				}
+				break;
+			}
+
+			case VEH_Road: {
+				const RoadVehicleInfo *rvi = RoadVehInfo(engine_type);
+				if (cargo_type == CT_INVALID) cargo_type = rvi->cargo_type;
+				scheme = (cargo_type == CT_PASSENGERS) ? LS_BUS : LS_TRUCK;
+				break;
+			}
+
+			case VEH_Ship: {
+				const ShipVehicleInfo *svi = ShipVehInfo(engine_type);
+				if (cargo_type == CT_INVALID) cargo_type = svi->cargo_type;
+				scheme = (cargo_type == CT_PASSENGERS) ? LS_PASSENGER_SHIP : LS_FREIGHT_SHIP;
+				break;
+			}
+
+			case VEH_Aircraft: {
+				const AircraftVehicleInfo *avi = AircraftVehInfo(engine_type);
+				if (cargo_type == CT_INVALID) cargo_type = CT_PASSENGERS;
+				switch (avi->subtype) {
+					case 0: scheme = LS_HELICOPTER; break;
+					case 1: scheme = LS_SMALL_PLANE; break;
+					case 3: scheme = LS_LARGE_PLANE; break;
+				}
+				break;
+			}
+		}
+
+		/* Switch back to the default scheme if the resolved scheme is not in use */
+		if (!p->livery[scheme].in_use) scheme = LS_DEFAULT;
+	}
+
 	map = HASBIT(EngInfo(engine_type)->misc_flags, EF_USES_2CC) ?
-		(SPR_2CCMAP_BASE + colour + colour * 16) : (PALETTE_RECOLOR_START + colour);
+		(SPR_2CCMAP_BASE + p->livery[scheme].colour1 + p->livery[scheme].colour2 * 16) :
+		(PALETTE_RECOLOR_START + p->livery[scheme].colour1);
 
 	return SPRITE_PALETTE(map << PALETTE_SPRITE_START);
 }
 
 PalSpriteID GetEnginePalette(EngineID engine_type, PlayerID player)
 {
-	return GetEngineColourMap(engine_type, player);
+	return GetEngineColourMap(engine_type, player, INVALID_ENGINE, CT_INVALID);
 }
 
 PalSpriteID GetVehiclePalette(const Vehicle *v)
 {
-	return GetEngineColourMap(v->engine_type, v->owner);
+	if (v->type == VEH_Train) {
+		return GetEngineColourMap(
+			(v->u.rail.first_engine != INVALID_ENGINE && (IsArticulatedPart(v) || UsesWagonOverride(v))) ?
+				v->u.rail.first_engine : v->engine_type,
+			v->owner,
+			v->u.rail.first_engine,
+			v->cargo_type);
+	}
+
+	return GetEngineColourMap(v->engine_type, v->owner, INVALID_ENGINE, v->cargo_type);
 }
 
 // Save and load of vehicles

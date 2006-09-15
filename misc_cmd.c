@@ -13,6 +13,7 @@
 #include "economy.h"
 #include "network.h"
 #include "variables.h"
+#include "livery.h"
 
 /** Change the player's face.
  * @param tile unused
@@ -30,28 +31,78 @@ int32 CmdSetPlayerFace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /** Change the player's company-colour
  * @param tile unused
- * @param p1 unused
+ * @param p1 bitstuffed:
+ * p1 bits 0-7 scheme to set
+ * p1 bits 8-9 set in use state or first/second colour
  * @param p2 new colour for vehicles, property, etc.
  */
 int32 CmdSetPlayerColor(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p, *pp;
 	byte colour;
+	LiveryScheme scheme = GB(p1, 0, 8);
+	byte state = GB(p1, 8, 2);
 
 	if (p2 >= 16) return CMD_ERROR; // max 16 colours
 	colour = p2;
 
+	if (scheme >= LS_END || state >= 3) return CMD_ERROR;
+
 	p = GetPlayer(_current_player);
 
-	/* Ensure no two companies have the same colour */
-	FOR_ALL_PLAYERS(pp) {
-		if (pp->is_active && pp != p && pp->player_color == colour)
-			return CMD_ERROR;
+	/* Ensure no two companies have the same primary colour */
+	if (scheme == LS_DEFAULT && state == 0) {
+		FOR_ALL_PLAYERS(pp) {
+			if (pp->is_active && pp != p && pp->player_color == colour) return CMD_ERROR;
+		}
 	}
 
 	if (flags & DC_EXEC) {
-		_player_colors[_current_player] = colour;
-		p->player_color = colour;
+		switch (state) {
+			case 0:
+				p->livery[scheme].colour1 = colour;
+
+				/* If setting the first colour of the default scheme, adjust the
+				 * original and cached player colours too. */
+				if (scheme == LS_DEFAULT) {
+					_player_colors[_current_player] = colour;
+					p->player_color = colour;
+				}
+				break;
+
+			case 1:
+				p->livery[scheme].colour2 = colour;
+				break;
+
+			case 2:
+				p->livery[scheme].in_use = colour != 0;
+
+				/* Now handle setting the default scheme's in_use flag.
+				 * This is different to the other schemes, as it signifies if any
+				 * scheme is active at all. If this flag is not set, then no
+				 * processing of vehicle types occurs at all, and only the default
+				 * colours will be used. */
+
+				/* If enabling a scheme, set the default scheme to be in use too */
+				if (colour != 0) {
+					p->livery[LS_DEFAULT].in_use = true;
+					break;
+				}
+
+				/* Else loop through all schemes to see if any are left enabled.
+				 * If not, disable the default scheme too. */
+				p->livery[LS_DEFAULT].in_use = false;
+				for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
+					if (p->livery[scheme].in_use) {
+						p->livery[LS_DEFAULT].in_use = true;
+						break;
+					}
+				}
+				break;
+
+			default:
+				break;
+		}
 		MarkWholeScreenDirty();
 	}
 	return 0;

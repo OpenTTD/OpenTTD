@@ -481,6 +481,17 @@ static Player *AllocatePlayer(void)
 	return NULL;
 }
 
+void ResetPlayerLivery(Player *p)
+{
+	LiveryScheme scheme;
+
+	for (scheme = 0; scheme < LS_END; scheme++) {
+		p->livery[scheme].in_use  = false;
+		p->livery[scheme].colour1 = p->player_color;
+		p->livery[scheme].colour2 = p->player_color;
+	}
+}
+
 Player *DoStartupNewPlayer(bool is_ai)
 {
 	Player *p;
@@ -490,6 +501,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 
 	// Make a color
 	p->player_color = GeneratePlayerColor();
+	ResetPlayerLivery(p);
 	_player_colors[p->index] = p->player_color;
 	p->name_1 = STR_SV_UNNAMED;
 	p->is_active = true;
@@ -1253,6 +1265,13 @@ static const SaveLoad _player_ai_build_rec_desc[] = {
 	SLE_END()
 };
 
+static const SaveLoad _player_livery_desc[] = {
+	SLE_CONDVAR(Livery, in_use,  SLE_BOOL,  34, SL_MAX_VERSION),
+	SLE_CONDVAR(Livery, colour1, SLE_UINT8, 34, SL_MAX_VERSION),
+	SLE_CONDVAR(Livery, colour2, SLE_UINT8, 34, SL_MAX_VERSION),
+	SLE_END()
+};
+
 static void SaveLoad_PLYR(Player* p)
 {
 	int i;
@@ -1273,6 +1292,11 @@ static void SaveLoad_PLYR(Player* p)
 	// Write old economy entries.
 	for (i = 0; i < p->num_valid_stat_ent; i++) {
 		SlObject(&p->old_economy[i], _player_economy_desc);
+	}
+
+	// Write each livery entry.
+	for (i = 0; i < LS_END; i++) {
+		SlObject(&p->livery[i], _player_livery_desc);
 	}
 }
 

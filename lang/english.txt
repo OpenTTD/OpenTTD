@@ -2166,6 +2166,24 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} has been taken over by {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}This company is not old enough to trade shares yet...
 
+STR_LIVERY_DEFAULT                                              :Standard Livery
+STR_LIVERY_STEAM                                                :Steam Engine
+STR_LIVERY_DIESEL                                               :Diesel Engine
+STR_LIVERY_ELECTRIC                                             :Electric Engine
+STR_LIVERY_MONORAIL                                             :Monorail Engine
+STR_LIVERY_MAGLEV                                               :Maglev Engine
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON                                      :Passenger Coach
+STR_LIVERY_FREIGHT_WAGON                                        :Freight Wagon
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Lorry
+STR_LIVERY_PASSENGER_SHIP                                       :Passenger Ferry
+STR_LIVERY_FREIGHT_SHIP                                         :Freight Ship
+STR_LIVERY_HELICOPTER                                           :Helicopter
+STR_LIVERY_SMALL_PLANE                                          :Small Aeroplane
+STR_LIVERY_LARGE_PLANE                                          :Large Aeroplane
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Steam)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
