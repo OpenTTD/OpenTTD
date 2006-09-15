@@ -600,8 +600,8 @@ static void MakeIndustryTileBigger(TileIndex tile)
 		CreateIndustryEffectSmoke(tile);
 		break;
 
-	case GFX_OILRIG_BASE:
-		if (GetIndustryGfx(tile + TileDiffXY(0, 1)) == GFX_OILRIG_BASE) BuildOilRig(tile);
+	case GFX_OILRIG_1:
+		if (GetIndustryGfx(tile + TileDiffXY(0, 1)) == GFX_OILRIG_1) BuildOilRig(tile);
 		break;
 
 	case GFX_TOY_FACTORY:
