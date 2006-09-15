@@ -632,6 +632,7 @@ void PlayersYearlyLoop(void)
 void DeletePlayerWindows(PlayerID pi)
 {
 	DeleteWindowById(WC_COMPANY, pi);
+	DeleteWindowById(WC_PLAYER_COLOR, pi);
 	DeleteWindowById(WC_FINANCES, pi);
 	DeleteWindowById(WC_STATION_LIST, pi);
 	DeleteWindowById(WC_TRAINS_LIST,   (INVALID_STATION << 16) | pi);
