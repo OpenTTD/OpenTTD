@@ -1105,7 +1105,10 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 				uint32 rate = grf_load_dword(&buf);
 
 				if (curidx < NUM_CURRENCY) {
-					_currency_specs[curidx].rate = rate;
+					/* TTDPatch uses a multiple of 1000 for its conversion calculations,
+					 * which OTTD does not. For this reason, divide grf value by 1000,
+					 * to be compatible */
+					_currency_specs[curidx].rate = rate / 1000;
 				} else {
 					grfmsg(GMS_WARN, "GlobalVarChangeInfo: Currency multipliers %d out of range, ignoring.", curidx);
 				}
@@ -1119,14 +1122,16 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 
 				if (curidx < NUM_CURRENCY) {
 					_currency_specs[curidx].separator = GB(options, 0, 8);
-					_currency_specs[curidx].symbol_pos = GB(options, 8, 8);
+					/* By specifying only one bit, we prevent errors,
+					 * since newgrf specs said that only 0 and 1 can be set for symbol_pos */
+					_currency_specs[curidx].symbol_pos = GB(options, 8, 1);
 				} else {
 					grfmsg(GMS_WARN, "GlobalVarChangeInfo: Currency option %d out of range, ignoring.", curidx);
 				}
 			}
 			break;
 
-		case 0x0D: // Currency symbols
+		case 0x0D: // Currency prefix symbol
 			FOR_EACH_OBJECT {
 				uint curidx = gvid +i;
 				uint32 tempfix = grf_load_dword(&buf);
@@ -1140,7 +1145,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 			}
 			break;
 
-		case 0x0E: // Currency symbols
+		case 0x0E: // Currency suffix symbol
 			FOR_EACH_OBJECT {
 				uint curidx = gvid +i;
 				uint32 tempfix = grf_load_dword(&buf);

@@ -381,8 +381,10 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 		number = -number;
 	}
 
-	/* add prefix part, only if it is specified by symbol_pos */
-	if (spec->symbol_pos == 0) {
+	/* Add prefix part, folowing symbol_pos specification.
+	 * Here, it can can be either 0 (prefix) or 2 (both prefix anf suffix).
+	 * The only remaining value is 1 (suffix), so everything that is not 1 */
+	if (spec->symbol_pos != 1){
 		s = spec->prefix;
 		while (s != spec->prefix + lengthof(spec->prefix) && (c = *(s++)) != '\0') *(buff)++ = c;
 	}
@@ -413,7 +415,9 @@ static char *FormatGenericCurrency(char *buff, const CurrencySpec *spec, int64 n
 
 	if (compact) *buff++ = compact;
 
-	/* add suffix part, only if it is specified by symbol_pos */
+	/* Add suffix part, folowing symbol_pos specification.
+	 * Here, it can can be either 1 (suffix) or 2 (both prefix anf suffix).
+	 * The only remaining value is 1 (prefix), so everything that is not 0 */
 	if (spec->symbol_pos != 0) {
 		s = spec->suffix;
 		while (s != spec->suffix + lengthof(spec->suffix) && (c = *(s++)) != '\0') *(buff++) = c;

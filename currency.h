@@ -17,8 +17,13 @@ typedef struct {
 	char prefix[16];
 	char suffix[16];
 	/**
-	 * Position of the currency symbol on the amount string.
-	 * 0 = placed before, 1 = placed after
+	 * The currency symbol is represented by two possible values, prefix and suffix
+	 * Usage of one or the other is determined by symbol_pos.
+	 * 0 = prefix
+	 * 1 = suffix
+	 * 2 = both : Special case only for custom currency.
+	 *            It is not a spec from Newgrf,
+	 *            rather a way to let users do what they want with custom curency
 	 */
 	byte symbol_pos;
 	StringID name;
