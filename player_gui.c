@@ -786,7 +786,6 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 
 	case WE_DESTROY:
-		DeleteWindowById(WC_PLAYER_COLOR, w->window_number);
 		DeleteWindowById(WC_PLAYER_FACE, w->window_number);
 		break;
 
