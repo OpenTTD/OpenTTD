@@ -911,6 +911,7 @@ STR_CURR_ROL                                                    :Romanya Leusu (
 STR_CURR_RUR                                                    :Rus Rublesi (RUR)
 STR_CURR_SIT                                                    :Slovenya Tolari (SIT)
 STR_CURR_SEK                                                    :isveç Kronasi (SEK)
+STR_CURR_YTL                                                    :Türk Lirasi (YTL)
 
 STR_CURR_CUSTOM                                                 :Özel...
 
@@ -2164,6 +2165,26 @@ STR_707D_OWNED_BY                                               :{WHITE}(%{COMMA
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}(%{COMMA} ortagi {COMPANY}{}   %{COMMA} ortagi {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY}, {COMPANY} tarafindan alindi!
 STR_7080_PROTECTED                                              :{WHITE}Bu sirket hisselerini satacak kadar eski degil...
+
+STR_LIVERY_DEFAULT                                              :Standart Araç
+STR_LIVERY_STEAM                                                :Buharli Lokomotif
+STR_LIVERY_DIESEL                                               :Dizel Lokomotif
+STR_LIVERY_ELECTRIC                                             :Elektrikli Lokomotif
+STR_LIVERY_MONORAIL                                             :Monoray Lokomotifi
+STR_LIVERY_MAGLEV                                               :Maglev Lokomotifi
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Tramvay (Buhar)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Tramvay (Dizel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Tramvay (Elektrik)
+STR_LIVERY_FREIGHT_WAGON                                        :Yük Vagonu
+STR_LIVERY_BUS                                                  :Otobüs
+STR_LIVERY_TRUCK                                                :Kamyon
+STR_LIVERY_PASSENGER_SHIP                                       :Yolcu Vapuru
+STR_LIVERY_FREIGHT_SHIP                                         :Yük Gemisi
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Küçük Uçak
+STR_LIVERY_LARGE_PLANE                                          :Büyük Uçak
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Buhar)

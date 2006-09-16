@@ -912,6 +912,7 @@ STR_CURR_ROL                                                    :Rumänische Lei 
 STR_CURR_RUR                                                    :Russische Rubel (RUR)
 STR_CURR_SIT                                                    :Slovenischer Tolar (SIT)
 STR_CURR_SEK                                                    :Schwedische Kronen (SEK)
+STR_CURR_YTL                                                    :türkische Lira (YTL)
 
 STR_CURR_CUSTOM                                                 :Eigene...
 
@@ -2166,6 +2167,18 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} wurde von {COMPANY} übernommen!
 STR_7080_PROTECTED                                              :{WHITE}Dieses Unternehmen handelt noch nicht mit Anteilen...
 
+STR_LIVERY_STEAM                                                :Dampflok
+STR_LIVERY_DIESEL                                               :Diesellok
+STR_LIVERY_ELECTRIC                                             :E-Lok
+STR_LIVERY_FREIGHT_WAGON                                        :Güterwagen
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Lastwagen
+STR_LIVERY_PASSENGER_SHIP                                       :Passagierfähre
+STR_LIVERY_FREIGHT_SHIP                                         :Frachter
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Kleines Flugzeug
+STR_LIVERY_LARGE_PLANE                                          :Großraumflugzeug
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Dampf)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2807,8 +2820,8 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 STR_PERFORMANCE_DETAIL_VEHICLES                                 :{BLACK}Fahrzeuge:
 STR_PERFORMANCE_DETAIL_STATIONS                                 :{BLACK}Stationen:
 STR_PERFORMANCE_DETAIL_MIN_PROFIT                               :{BLACK}Min. Profit:
-STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Einkommen:
-STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. Einkommen:
+STR_PERFORMANCE_DETAIL_MIN_INCOME                               :{BLACK}Min. Einkom.:
+STR_PERFORMANCE_DETAIL_MAX_INCOME                               :{BLACK}Max. Einkom.:
 STR_PERFORMANCE_DETAIL_DELIVERED                                :{BLACK}Geliefert:
 STR_PERFORMANCE_DETAIL_CARGO                                    :{BLACK}Fracht:
 STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Geld:

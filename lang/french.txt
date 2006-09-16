@@ -912,6 +912,7 @@ STR_CURR_ROL                                                    :Leu Roumain (RO
 STR_CURR_RUR                                                    :Rouble Russe (RUR)
 STR_CURR_SIT                                                    :Tolar Slovénien (SIT)
 STR_CURR_SEK                                                    :Couronne Suédoise (SEK)
+STR_CURR_YTL                                                    :Lire Turque (YTL)
 
 STR_CURR_CUSTOM                                                 :Personnalisée...
 
@@ -2165,6 +2166,26 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% détenus par {COMPANY}{}   {COMMA}% détenus par {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} a été rachetée par {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Cette compagnie ne vend pas d'actions pour le moment...
+
+STR_LIVERY_DEFAULT                                              :Livrée standard
+STR_LIVERY_STEAM                                                :Locomotive à vapeur
+STR_LIVERY_DIESEL                                               :Locomotive Diesel
+STR_LIVERY_ELECTRIC                                             :Locomotive électrique
+STR_LIVERY_MONORAIL                                             :Locomotive Monorail
+STR_LIVERY_MAGLEV                                               :Locomotive Maglev
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Voiture (Vapeur)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Voiture (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Voiture (Electrique)
+STR_LIVERY_FREIGHT_WAGON                                        :Wagon
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Camion
+STR_LIVERY_PASSENGER_SHIP                                       :Ferry
+STR_LIVERY_FREIGHT_SHIP                                         :Navire de fret
+STR_LIVERY_HELICOPTER                                           :Hélicoptère
+STR_LIVERY_SMALL_PLANE                                          :Petit porteur
+STR_LIVERY_LARGE_PLANE                                          :Gros porteur
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapeur)

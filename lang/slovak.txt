@@ -1087,7 +1087,7 @@ STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Zobrazi
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Zobrazit rozpocet na konci roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch kompatibilna interpretacia prikazu nonstop: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Radenie cestnych vozidiel (podla mnozstva tovaru): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posuvat okna ked je kurzor mysi na jeho okraji: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posuvat okno ked je kurzor mysi na jeho okraji: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy globalny algoritmus hladania cesty (NPF namiesto NTP): {ORANGE}{STRING}
@@ -1909,8 +1909,8 @@ STR_4829_REQUIRES                                               :{BLACK}Potrebuj
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkcia za posledny mesiac:
 STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% prepravenych)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Vycentrovanie pohladu na poziciu tovarne
-STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}{STRING} sa zacina stavat nedaleko {TOWN}!
-STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}{STRING} sa vysadza nedaleko {TOWN}!
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}{STRING} sa zacina stavat nedaleko mesta {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}{STRING} sa vysadza nedaleko mesta {TOWN}!
 STR_482F_COST                                                   :{BLACK}Cena: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tento typ priemyslu sa tu neda postavit ...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... les sa moze sadit len pod ciarou snehu
@@ -2189,7 +2189,7 @@ STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Hladame 
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrot!
 STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} bola zavreta veritelmi a cely majetok bol rozpredany!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Zalozena nova dopravna spolocnost!
-STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} zacina stavat nedaleko {TOWN}!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} zacina stavat nedaleko mesta {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Spolocnost nie je mozne kupit ...
 STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ceny prepravy
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Pocet dni transportu
@@ -2228,6 +2228,7 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% vlastnene {COMPANY}{}   {COMMA}% vlastnene {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} bola kupena spolocnostou {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}S akciami tejto spolocnosti nie je zatial mozne obchodovat ...
+
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Parny)
@@ -2521,6 +2522,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Opravovat bez z
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Smeruje do {TOWN} depa
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Smeruje do {TOWN} depa, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servis v depe {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servis v depe {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Neplatny prikaz)
 
@@ -2655,6 +2658,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemozno 
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobil {COMMA} caka v garazi
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Smeruje do {TOWN} garaze
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}smeruje do {TOWN} garaze, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servis v garazi {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis v garazi {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Nemozno poslat automobil do garaze ...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu garaz
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automobily - kliknut pre detaily
@@ -2725,6 +2730,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nemozno 
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemozno najst miestnu lodenicu
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Smeruje do {TOWN} lodenice
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Smeruje do {TOWN} lodenice, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servis v lodenici {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servis v lodenici {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Lod {COMMA} caka v lodenici
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Postavit lodenicu
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Postavit lodenicu (pre vyrobu a opravy lodi)
@@ -2844,10 +2851,10 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Opravit v {STAT
 ##id 0xB000
 STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Zeppelin zniceny pri nehode na {STATION}!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Automobil bol zniceny pri kolizii s 'UFO'
-STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Ropna rafineria explodovala nedaleko {TOWN}!
-STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Za nejasnych okolnost bola znicena tovaren nedaleko {TOWN}!
-STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' pristalo nedaleko {TOWN}!
-STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Zaval v uholnej bani nedaleko {TOWN}!
+STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Ropna rafineria explodovala nedaleko mesta {TOWN}!
+STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Za nejasnych okolnost bola znicena tovaren nedaleko mesta {TOWN}!
+STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}'UFO' pristalo nedaleko mesta {TOWN}!
+STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Zaval v uholnej bani nedaleko mesta {TOWN}!
 STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Povoden!{}Najmenej {COMMA} ludi je nezvestnych alebo mrtvych po obrovskych zaplavach!
 
 STR_BRIBE_FAILED                                                :{WHITE}Vas pokus o uplatok bol odhaleny

@@ -2165,6 +2165,9 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} foi comprada por {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Esta empresa ainda não troca acções...
 
+STR_LIVERY_BUS                                                  :Autocarro
+STR_LIVERY_HELICOPTER                                           :Helicóptero
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)

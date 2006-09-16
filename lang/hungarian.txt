@@ -976,6 +976,7 @@ STR_CURR_ROL                                                    :Román Lej (ROL)
 STR_CURR_RUR                                                    :Orosz Rubel (RUR)
 STR_CURR_SIT                                                    :Szlovén Tolár (SIT)
 STR_CURR_SEK                                                    :Svéd Korona (SEK)
+STR_CURR_YTL                                                    :Török Lira (YTL)
 
 STR_CURR_CUSTOM                                                 :Saját...
 
@@ -2266,6 +2267,26 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% {COMPANY} tulajdona{}   {COMMA}% {COMPANY} tulajdona)
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} céget felvásárolta {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Ez a cég egyelõre még nem rendelkezik részvényekkel...
+
+STR_LIVERY_DEFAULT                                              :Alapértelmezett
+STR_LIVERY_STEAM                                                :Gõzmozdony
+STR_LIVERY_DIESEL                                               :Dízel mozdony
+STR_LIVERY_ELECTRIC                                             :Elektromos mozdony
+STR_LIVERY_MONORAIL                                             :Egysínû mozdony
+STR_LIVERY_MAGLEV                                               :Maglev mozdony
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Utasszállító kocsi (gõz)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Utasszállító kocsi (dízeles)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Utasszállító kocsi (elektromos)
+STR_LIVERY_FREIGHT_WAGON                                        :Tehervagon
+STR_LIVERY_BUS                                                  :Busz
+STR_LIVERY_TRUCK                                                :Teherautó
+STR_LIVERY_PASSENGER_SHIP                                       :Utasszállító komp
+STR_LIVERY_FREIGHT_SHIP                                         :Teherhajó
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Kis repülõgép
+STR_LIVERY_LARGE_PLANE                                          :Nagy repülõgép
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Gõz)

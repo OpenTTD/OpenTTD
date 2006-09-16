@@ -998,6 +998,7 @@ STR_CURR_ROL                                                    :Lewy rumunskie 
 STR_CURR_RUR                                                    :Ruble (RUR)
 STR_CURR_SIT                                                    :Tolary slowenskie (SIT)
 STR_CURR_SEK                                                    :Korony szweckie (SEK)
+STR_CURR_YTL                                                    :Lira Turecka (YTL)
 
 STR_CURR_CUSTOM                                                 :Wlasna...
 
@@ -2287,6 +2288,26 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% w posiadaniu przez {COMPANY}{}   {COMMA}% w posiadaniu przez {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} zostalo przejete przez {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Ta firma nie sprzedaje jeszcze akcji...
+
+STR_LIVERY_DEFAULT                                              :Standarowy wyglad
+STR_LIVERY_STEAM                                                :Parowoz
+STR_LIVERY_DIESEL                                               :Lokomotywa spalinowa
+STR_LIVERY_ELECTRIC                                             :Lokomotywa elektryczna
+STR_LIVERY_MONORAIL                                             :Lokomotywa jednoszynowa
+STR_LIVERY_MAGLEV                                               :Lokomotywa maglev
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Wagon pasazerski (parowoz)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Wagon pasazerski (spalinowy)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Wagon pasazerski (elektryczny)
+STR_LIVERY_FREIGHT_WAGON                                        :Wagon towarowy
+STR_LIVERY_BUS                                                  :Autobus
+STR_LIVERY_TRUCK                                                :Ciezarowka
+STR_LIVERY_PASSENGER_SHIP                                       :Prom pasazerski
+STR_LIVERY_FREIGHT_SHIP                                         :Statek towarowy
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Maly samolot
+STR_LIVERY_LARGE_PLANE                                          :Duzy samolot
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Parowoz)
