@@ -1778,9 +1778,18 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 
 		/* refit if needed */
 		if (replacement_cargo_type != CT_NO_REFIT) {
-			int32 temp_cost = DoCommand(0, new_v->index, replacement_cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type));
-			assert(!CmdFailed(temp_cost)); // assert failure here indicates a bug in GetNewCargoTypeForReplace()
+			if (CmdFailed(DoCommand(0, new_v->index, replacement_cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type)))) {
+				/* We should not be here
+				 * being here shows a failure indicates a bug in GetNewCargoTypeForReplace() or incorrect estimation costs */
+				SetDParam(0, GetCustomEngineName(old_v->engine_type));
+				SetDParam(1, GetCustomEngineName(new_v->engine_type));
+				SetDParam(2, _cargoc.names_s[replacement_cargo_type]);
+				ShowInfo("Error: Autoreplace failed to refit (bug)");
+				ShowErrorMessage(STR_AUTOREPLACE_REFIT_FAILURE, STR_AUTOREPLACE_FAILED, 0 ,0);
+				NOT_REACHED(); // stop debug builds at this error for easier debugging
+			}
 		}
+
 		if (new_v->type == VEH_Train && HASBIT(old_v->u.rail.flags, VRF_REVERSE_DIRECTION) && !IsMultiheaded(new_v) && !(new_v->next != NULL && IsArticulatedPart(new_v->next))) {
 			// we are autorenewing to a single engine, so we will turn it as the old one was turned as well
 			SETBIT(new_v->u.rail.flags, VRF_REVERSE_DIRECTION);
