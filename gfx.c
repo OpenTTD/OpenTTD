@@ -568,10 +568,8 @@ BoundingRect GetStringBoundingBox(const char *str)
 				case ASCII_BIGFONT:  size = FS_LARGE; break;
 				case ASCII_NL:
 					br.height += GetCharacterHeight(size);
-					if (br.width > max_width) {
-						max_width = br.width;
-						br.width = 0;
-					}
+					if (br.width > max_width) max_width = br.width;
+					br.width = 0;
 					break;
 			}
 		}
