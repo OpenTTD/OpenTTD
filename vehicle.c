@@ -1779,14 +1779,8 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 		/* refit if needed */
 		if (replacement_cargo_type != CT_NO_REFIT) {
 			if (CmdFailed(DoCommand(0, new_v->index, replacement_cargo_type, DC_EXEC, CMD_REFIT_VEH(new_v->type)))) {
-				/* We should not be here
-				 * being here shows a failure indicates a bug in GetNewCargoTypeForReplace() or incorrect estimation costs */
-				SetDParam(0, GetCustomEngineName(old_v->engine_type));
-				SetDParam(1, GetCustomEngineName(new_v->engine_type));
-				SetDParam(2, _cargoc.names_s[replacement_cargo_type]);
-				ShowInfo("Error: Autoreplace failed to refit (bug)");
-				ShowErrorMessage(STR_AUTOREPLACE_REFIT_FAILURE, STR_AUTOREPLACE_FAILED, 0 ,0);
-				NOT_REACHED(); // stop debug builds at this error for easier debugging
+				/* Being here shows a failure, which most likely is in GetNewCargoTypeForReplace() or incorrect estimation costs */
+				error("Autoreplace failed to refit. Replace engine %d to %d and refit to cargo %d", old_v->engine_type, new_v->engine_type, replacement_cargo_type);
 			}
 		}
 
