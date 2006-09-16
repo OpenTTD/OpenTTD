@@ -358,7 +358,7 @@ int DrawStringRightAligned(int x, int y, StringID str, uint16 color)
 	int w;
 
 	GetString(buffer, str);
-	w = GetStringWidth(buffer);
+	w = GetStringBoundingBox(buffer).width;
 	DoDrawString(buffer, x - w, y, color);
 
 	return w;
@@ -369,7 +369,7 @@ void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, u
 	char buffer[512];
 
 	TruncateStringID(str, buffer, maxw);
-	DoDrawString(buffer, x - GetStringWidth(buffer), y, color);
+	DoDrawString(buffer, x - GetStringBoundingBox(buffer).width, y, color);
 }
 
 void DrawStringRightAlignedUnderline(int x, int y, StringID str, uint16 color)
@@ -386,7 +386,7 @@ int DrawStringCentered(int x, int y, StringID str, uint16 color)
 
 	GetString(buffer, str);
 
-	w = GetStringWidth(buffer);
+	w = GetStringBoundingBox(buffer).width;
 	DoDrawString(buffer, x - w / 2, y, color);
 
 	return w;
@@ -401,7 +401,7 @@ int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 colo
 
 int DoDrawStringCentered(int x, int y, const char *str, uint16 color)
 {
-	int w = GetStringWidth(str);
+	int w = GetStringBoundingBox(str).width;
 	DoDrawString(str, x - w / 2, y, color);
 	return w;
 }
@@ -478,7 +478,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 	src = buffer;
 
 	for (;;) {
-		w = GetStringWidth(src);
+		w = GetStringBoundingBox(src).width;
 		DoDrawString(src, x - (w>>1), y, 0xFE);
 		_cur_fontsize = _last_fontsize;
 
@@ -539,26 +539,47 @@ void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 	}
 }
 
-int GetStringWidth(const char *str)
+/** Return the string dimension in pixels. The height and width are returned
+ * in a single BoundingRect value. TINYFONT, BIGFONT modifiers are only
+ * supported as the first character of the string. The returned dimensions
+ * are therefore a rough estimation correct for all the current strings
+ * but not every possible combination
+ * @param str string to calculate pixel-width
+ * @return string width and height in pixels */
+BoundingRect GetStringBoundingBox(const char *str)
 {
 	FontSize size = _cur_fontsize;
-	int w, max_w;
+	BoundingRect br;
+	int max_width;
 	byte c;
 
-	w = max_w = 0;
+	br.width = br.height = max_width = 0;
 	for (c = *str; c != '\0'; c = *(++str)) {
 		if (c >= ASCII_LETTERSTART) {
-			w += GetCharacterWidth(size, c);
+			br.width += GetCharacterWidth(size, c);
 		} else {
-			if (c == ASCII_SETX) str++;
-			else if (c == ASCII_SETXY) str += 2;
-			else if (c == ASCII_TINYFONT) size = FS_SMALL;
-			else if (c == ASCII_BIGFONT) size = FS_LARGE;
-			else if (c == ASCII_NL && w > max_w) {max_w = w; w = 0;}
+			switch (c) {
+				case ASCII_SETX: br.width += (byte)*str++; break;
+				case ASCII_SETXY:
+					br.width += (byte)*str++;
+					br.height += (byte)*str++;
+					break;
+				case ASCII_TINYFONT: size = FS_SMALL; break;
+				case ASCII_BIGFONT:  size = FS_LARGE; break;
+				case ASCII_NL:
+					br.height += GetCharacterHeight(size);
+					if (br.width > max_width) {
+						max_width = br.width;
+						br.width = 0;
+					}
+					break;
+			}
 		}
 	}
+	br.height += GetCharacterHeight(size);
 
-	return max(w, max_w);
+	br.width  = max(br.width, max_width);
+	return br;
 }
 
 

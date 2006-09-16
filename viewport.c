@@ -1018,13 +1018,13 @@ void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
 	sign->top = top;
 
 	GetString(buffer, str);
-	w = GetStringWidth(buffer) + 3;
+	w = GetStringBoundingBox(buffer).width + 3;
 	sign->width_1 = w;
 	sign->left = left - w / 2;
 
-	// zoomed out version
+	/* zoomed out version */
 	_cur_fontsize = FS_SMALL;
-	w = GetStringWidth(buffer) + 3;
+	w = GetStringBoundingBox(buffer).width + 3;
 	_cur_fontsize = FS_NORMAL;
 	sign->width_2 = w;
 }

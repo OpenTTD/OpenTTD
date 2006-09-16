@@ -70,7 +70,7 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 
 	/* Cut the message till it fits inside the chatbox */
 	length = strlen(buf);
-	while (GetStringWidth(buf) > _textmessage_width - 9) buf[--length] = '\0';
+	while (GetStringBoundingBox(buf).width > _textmessage_width - 9) buf[--length] = '\0';
 
 	/* Find an empty spot and put the message there */
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
@@ -247,7 +247,7 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration)
 	te->params_2 = GetDParam(4);
 
 	GetString(buffer, msg);
-	w = GetStringWidth(buffer);
+	w = GetStringBoundingBox(buffer).width;
 
 	te->x = x - (w >> 1);
 	te->right = x + (w >> 1) - 1;

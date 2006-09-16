@@ -304,7 +304,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 			DrawString( 12,  91, STR_HEIGHTMAP_NAME, 0x10);
 			SetDParam(0, _heightmap_str);
-			DrawStringTruncated(114,  91, STR_ORANGE, 0x10, 326 - 114 - GetStringWidth(buffer) - 5);
+			DrawStringTruncated(114,  91, STR_ORANGE, 0x10, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
 
 			/* TODO -- Remove next 2 lines if 32 widget limit is removed */
 			DrawFrameRect(114, 196, 219, 207, 12, 0);

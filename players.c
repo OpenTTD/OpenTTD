@@ -344,7 +344,7 @@ verify_name:;
 		}
 
 		GetString(buffer, str);
-		if (strlen(buffer) >= 32 || GetStringWidth(buffer) >= 150)
+		if (strlen(buffer) >= 32 || GetStringBoundingBox(buffer).width >= 150)
 			goto bad_town_name;
 
 set_name:;
@@ -451,7 +451,7 @@ restart:;
 
 		SetDParam(0, p->president_name_2);
 		GetString(buffer, p->president_name_1);
-		if (strlen(buffer) >= 32 || GetStringWidth(buffer) >= 94)
+		if (strlen(buffer) >= 32 || GetStringBoundingBox(buffer).width >= 94)
 			continue;
 
 		FOR_ALL_PLAYERS(pp) {

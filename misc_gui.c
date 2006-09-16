@@ -666,7 +666,7 @@ void GuiShowTooltips(StringID string_id)
 
 	GetString(buffer, string_id);
 
-	right = GetStringWidth(buffer) + 6;
+	right = GetStringBoundingBox(buffer).width + 6;
 
 	/* Cut tooltip length to 200 pixels max, wrap to new line if longer */
 	bottom = 14;
@@ -1776,7 +1776,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				case STR_CHEAT_CHANGE_PLAYER:
 					SetDParam(0, val);
 					GetString(buf, STR_CHEAT_CHANGE_PLAYER);
-					DrawPlayerIcon(_current_player, 60 + GetStringWidth(buf), y + 2);
+					DrawPlayerIcon(_current_player, 60 + GetStringBoundingBox(buf).width, y + 2);
 					break;
 				/* Set correct string for switch climate cheat */
 				case STR_CHEAT_SWITCH_CLIMATE: val += STR_TEMPERATE_LANDSCAPE;

@@ -67,7 +67,7 @@ void DrawStringRightAlignedUnderline(int x, int y, StringID str, uint16 color);
 void GfxFillRect(int left, int top, int right, int bottom, int color);
 void GfxDrawLine(int left, int top, int right, int bottom, int color);
 
-int GetStringWidth(const char *str);
+BoundingRect GetStringBoundingBox(const char *str);
 void LoadStringWidthTable(void);
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw);
 void DrawStringMultiLine(int x, int y, StringID str, int maxw);

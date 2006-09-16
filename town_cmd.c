@@ -889,7 +889,7 @@ restart:
 		GetString(buf1, townnametype);
 
 		// Check size and width
-		if (strlen(buf1) >= 31 || GetStringWidth(buf1) > 130) continue;
+		if (strlen(buf1) >= 31 || GetStringBoundingBox(buf1).width > 130) continue;
 
 		FOR_ALL_TOWNS(t2) {
 			// We can't just compare the numbers since
