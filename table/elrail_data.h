@@ -1,4 +1,4 @@
-/* $Id */
+/* $Id$ */
 /** @file elrail_data.h Stores all the data for overhead wire and pylon drawing.
  *  @see elrail.c */
 
