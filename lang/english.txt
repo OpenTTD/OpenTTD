@@ -1070,6 +1070,10 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max sta
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Show company liveries: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :None
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Own company
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :All companies
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING1}

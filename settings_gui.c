@@ -570,6 +570,7 @@ static const char *_patches_ui[] = {
 	"population_in_label",
 	"link_terraform_toolbar",
 	"progress_update_interval",
+	"liveries",
 };
 
 static const char *_patches_construction[] = {

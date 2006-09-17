@@ -2313,7 +2313,7 @@ static PalSpriteID GetEngineColourMap(EngineID engine_type, PlayerID player, Eng
 
 	/* The default livery is always available for use, but its in_use flag determines
 	 * whether any _other_ liveries are in use. */
-	if (p->livery[LS_DEFAULT].in_use) {
+	if (p->livery[LS_DEFAULT].in_use && (_patches.liveries == 2 || (_patches.liveries == 1 && player == _local_player))) {
 		/* Determine the livery scheme to use */
 		switch (GetEngine(engine_type)->type) {
 			case VEH_Train: {
