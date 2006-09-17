@@ -1358,6 +1358,7 @@ DEF_CONSOLE_CMD(ConProcServerIP)
 	IConsolePrintF(_icolour_warn, "'server_ip' changed to:  %s", inet_ntoa(*(struct in_addr *)&_network_server_bind_ip));
 	return true;
 }
+#endif /* ENABLE_NETWORK */
 
 DEF_CONSOLE_CMD(ConPatch)
 {
@@ -1383,7 +1384,6 @@ DEF_CONSOLE_CMD(ConPatch)
 
 	return true;
 }
-#endif /* ENABLE_NETWORK */
 
 DEF_CONSOLE_CMD(ConListDumpVariables)
 {
