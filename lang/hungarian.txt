@@ -4,6 +4,7 @@
 ##plural 1
 ##case t
 
+
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Kilóg a térképrõl
