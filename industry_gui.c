@@ -556,6 +556,9 @@ static void MakeSortedIndustryList(void)
 	const Industry* i;
 	int n = 0;
 
+	/* Don't attempt a sort if there are no industries */
+	if (GetIndustryArraySize() == 0) return;
+
 	/* Create array for sorting */
 	_industry_sort = realloc((void *)_industry_sort, GetIndustryArraySize() * sizeof(_industry_sort[0]));
 	if (_industry_sort == NULL)
