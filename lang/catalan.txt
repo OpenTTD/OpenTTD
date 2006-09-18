@@ -808,8 +808,8 @@ STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Unitats 
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Automòbils
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Selecciona el sentit de circulació dels automòbils
-STR_02E9_DRIVE_ON_LEFT                                          :Conduïr per l'esquerra
-STR_02EA_DRIVE_ON_RIGHT                                         :Conduïr per la dreta
+STR_02E9_DRIVE_ON_LEFT                                          :Conduir per l'esquerra
+STR_02EA_DRIVE_ON_RIGHT                                         :Conduir per la dreta
 STR_02EB_TOWN_NAMES                                             :{BLACK}Noms de Poblacions
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Selecciona l'estil des noms de poblacions
@@ -1070,6 +1070,10 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max ext
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manteniment dels helicopters als heliports automàticament: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar decoració de la companyia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Cap
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Pròpia companyia
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Totes les companyies
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trens per jugador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max automòbils per jugador: {ORANGE}{STRING}

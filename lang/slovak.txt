@@ -975,6 +975,7 @@ STR_CURR_ROL                                                    :Rumunske Lei (R
 STR_CURR_RUR                                                    :Ruske Ruble (RUR)
 STR_CURR_SIT                                                    :Slovinske Toliare (SIT)
 STR_CURR_SEK                                                    :Svedske Koruny (SEK)
+STR_CURR_YTL                                                    :Turecke Liry (YTL)
 
 STR_CURR_CUSTOM                                                 :Vlastna ...
 
@@ -1133,6 +1134,9 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. ro
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvarat panel uprav terenu s panelom stavby trati, ciest, ... : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pri posuvani mapy mysou posuvat opacnym smerom: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ziadne
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Vlastna spolocnost
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Vsetky spolocnosti
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
@@ -2229,6 +2233,18 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} bola kupena spolocnostou {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}S akciami tejto spolocnosti nie je zatial mozne obchodovat ...
 
+STR_LIVERY_DIESEL                                               :Dieslovy rusen
+STR_LIVERY_ELECTRIC                                             :Elektricky rusen
+STR_LIVERY_MONORAIL                                             :Rusen pre jednokolajku
+STR_LIVERY_MAGLEV                                               :Rusen pre magneticku drahu
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_FREIGHT_WAGON                                        :Nakladny vagon
+STR_LIVERY_BUS                                                  :Autobus
+STR_LIVERY_PASSENGER_SHIP                                       :Trajekt pre cestujucich
+STR_LIVERY_FREIGHT_SHIP                                         :Nakladna lod
+STR_LIVERY_HELICOPTER                                           :Helikoptera
+STR_LIVERY_LARGE_PLANE                                          :Velke lietadlo
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Parny)

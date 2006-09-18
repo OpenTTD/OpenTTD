@@ -911,6 +911,7 @@ STR_CURR_ROL                                                    :Romanian Leu (R
 STR_CURR_RUR                                                    :Russian Rubel (RUR)
 STR_CURR_SIT                                                    :Slovenian Tolar (SIT)
 STR_CURR_SEK                                                    :Swedish Krona (SEK)
+STR_CURR_YTL                                                    :Turkish Lira (YTL)
 
 STR_CURR_CUSTOM                                                 :Custom...
 
@@ -1069,6 +1070,10 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max sta
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Show company liveries: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :None
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Own company
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :All companies
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING}
@@ -2164,6 +2169,26 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% owned by {COMPANY}{}   {COMMA}% owned by {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} has been taken over by {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}This company is not old enough to trade shares yet...
+
+STR_LIVERY_DEFAULT                                              :Standard Livery
+STR_LIVERY_STEAM                                                :Steam Engine
+STR_LIVERY_DIESEL                                               :Diesel Engine
+STR_LIVERY_ELECTRIC                                             :Electric Engine
+STR_LIVERY_MONORAIL                                             :Monorail Engine
+STR_LIVERY_MAGLEV                                               :Maglev Engine
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passenger/Mail Car (Steam)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passenger/Mail Car (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passenger/Mail Car (Electric)
+STR_LIVERY_FREIGHT_WAGON                                        :Freight Car
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Truck
+STR_LIVERY_PASSENGER_SHIP                                       :Passenger Ship
+STR_LIVERY_FREIGHT_SHIP                                         :Freight Ship
+STR_LIVERY_HELICOPTER                                           :Helicopter
+STR_LIVERY_SMALL_PLANE                                          :Small Airplane
+STR_LIVERY_LARGE_PLANE                                          :Large Airplane
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Steam)

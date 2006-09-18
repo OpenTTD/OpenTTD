@@ -1070,7 +1070,11 @@ STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Le terr
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Etendue max. des stations: {ORANGE}{STRING} {RED}Attention: Valeur élevée = jeu lent
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'heliport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils Paysage avec celle des rails/routes/eau et aéroport: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Lors d'un défilement avec souris, déplacer la vue dans la direction opposée: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverser la direction lors du défilement avec la souris : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Affichage des livrées de compagnie : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Aucune
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propre compagnie
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Toutes les compagnies
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING}

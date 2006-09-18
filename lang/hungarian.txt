@@ -4,7 +4,6 @@
 ##plural 1
 ##case t
 
-
 ##id 0x0000
 STR_NULL                                                        :
 STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Kilóg a térképrõl
@@ -1136,6 +1135,10 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Állomás
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendezõ eszköztár megnyitása a közúti/vasúti/vízi/légi eszköztárakkal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Egeres mozgáskor a táj a másik irányba mozdul el: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Cégek jármûveinek mutatása: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Egyikét sem
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Csak a sajátét
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Minden cégét
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármû játékosonként: {ORANGE}{STRING}

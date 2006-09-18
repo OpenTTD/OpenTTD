@@ -1070,6 +1070,9 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}istasyo
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubugunu diger araç çubuklarina bagla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Fareyle kaydirma hareketini ters çevir: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Hiçbiri
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Sirketi al
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tüm sirketler
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Her oyuncu için en fazla tren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Her oyuncu için en fazla araba: {ORANGE}{STRING}

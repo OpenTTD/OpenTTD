@@ -1071,6 +1071,10 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximal
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Landschaftsbau-Toolbar an Eisenbahn/Straßen/Hafen/Flughafen-Toolbar binden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Beim Verschieben mit der Maus die Ansicht in die Gegenrichtung verschieben: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Anzeigen der Firmenlackierungen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Keine
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eigene Firma
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle Firmen
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximale Anzahl der Straßenfahrzeuge pro Spieler: {ORANGE}{STRING}
@@ -2167,9 +2171,17 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} wurde von {COMPANY} übernommen!
 STR_7080_PROTECTED                                              :{WHITE}Dieses Unternehmen handelt noch nicht mit Anteilen...
 
+STR_LIVERY_DEFAULT                                              :Standard Lackierung
 STR_LIVERY_STEAM                                                :Dampflok
 STR_LIVERY_DIESEL                                               :Diesellok
 STR_LIVERY_ELECTRIC                                             :E-Lok
+STR_LIVERY_MONORAIL                                             :Einschienenbahn
+STR_LIVERY_MAGLEV                                               :Magnetschwebebahn
+STR_LIVERY_DMU                                                  :VT
+STR_LIVERY_EMU                                                  :ET
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagierwagen (Dampf)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagierwagen (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagierwagen (elektrisch)
 STR_LIVERY_FREIGHT_WAGON                                        :Güterwagen
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Lastwagen
@@ -2191,7 +2203,7 @@ STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Da
 STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (Dampf)
 STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (Dampf)
 STR_800A_SH_8P_STEAM                                            :SH '8P' (Dampf)
-STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Diesel)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel VT (Diesel)
 STR_800C_DASH_DIESEL                                            :'Dash' (Diesel)
 STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Diesel)
 STR_800E_UU_37_DIESEL                                           :UU '37' (Diesel)
