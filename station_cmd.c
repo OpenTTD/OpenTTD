@@ -1918,6 +1918,8 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		default: return_cmd_error(STR_304B_SITE_UNSUITABLE);
 	}
 
+	if (!(flags & DC_NO_TOWN_RATING) && !CheckIfAuthorityAllows(tile)) return CMD_ERROR;
+
 	if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 	cost = DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
