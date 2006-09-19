@@ -911,6 +911,7 @@ STR_CURR_ROL                                                    :Leu rumeno (ROL
 STR_CURR_RUR                                                    :Rupie Russe (RUR)
 STR_CURR_SIT                                                    :Slovenian Tolar (SIT)
 STR_CURR_SEK                                                    :Corona Svedese (SEK)
+STR_CURR_YTL                                                    :Lira Turca (YTL)
 
 STR_CURR_CUSTOM                                                 :Personalizza...
 
@@ -1063,11 +1064,16 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotazio
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Antiorario
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Orario
 STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Intervallo aggiornamento: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}La curva di livello della mappa di uno scenario piano ha : {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Dispersione max. stazione: {ORANGE}{STRING} {RED}Attenzione: Valore alto rallenta il gioco
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenzione elicotteri direttamente all'eliporto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Apri strumenti terreno assieme a quelli di costruzione: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Scorri mappa nella direzione opposta a quella del mouse: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostra le livree della società: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nessuna
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propria società
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tutte le società
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max veicoli stradali per giocatore: {ORANGE}{STRING}
@@ -2164,6 +2170,26 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} è stata rilevata da {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Questa compagnia non è abbastanza vecchia per scambiare azioni...
 
+STR_LIVERY_DEFAULT                                              :Livrea Standard
+STR_LIVERY_STEAM                                                :Locomotiva a Vapore
+STR_LIVERY_DIESEL                                               :Locomotiva Diesel
+STR_LIVERY_ELECTRIC                                             :Locomotore Elettrico
+STR_LIVERY_MONORAIL                                             :Locomotore Monorail
+STR_LIVERY_MAGLEV                                               :Locomotore Maglev
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carozza Passeggeri (Vapore)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Carozza Passeggeri (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Carozza Passeggeri (Elettrico)
+STR_LIVERY_FREIGHT_WAGON                                        :Vagone Merci
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Autocarro
+STR_LIVERY_PASSENGER_SHIP                                       :Traghetto
+STR_LIVERY_FREIGHT_SHIP                                         :Nave Mercantile
+STR_LIVERY_HELICOPTER                                           :Elicottero
+STR_LIVERY_SMALL_PLANE                                          :Aeroplano (S)
+STR_LIVERY_LARGE_PLANE                                          :Aeroplano (L)
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapore)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2456,6 +2482,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenzione no
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Direzione per {TOWN} Deposito Treni
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Direzione per {TOWN} Deposito Treni, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servizio a {TOWN} Deposito Treni
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servizio a {TOWN} Deposito Treni, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ordine non Valido)
 
@@ -2590,6 +2618,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Non puoi
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Veicolo stradale {COMMA} stà aspettando nel deposito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Direzione per {TOWN} Deposito Veicoli
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Direzione per {TOWN} Deposito Veicoli, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servizio a {TOWN} Deposito Veicoli
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servizio a {TOWN} Deposito Veicoli, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Non puoi mandare il veicolo al deposito...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Non riesce a trovare il deposito locale
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Veicoli stradali - clicca sul veicolo per le informazioni
@@ -2660,6 +2690,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Non puoi
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Non riesce a trovare il deposito locale
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Direzione per {TOWN} Deposito Navale
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Direzione per {TOWN} Deposito Navale, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servizio a {TOWN} Deposito Navale
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servizio a {TOWN} Deposito Navale, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Nave {COMMA} stà aspettano nel deposito
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Costruisci molo
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Costruisci deposito navale (per costruzione e manutenzione)
@@ -2725,6 +2757,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non puoi mandare l'aereo nell'hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Direzione per {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Direzione per {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Servizio a {STATION} Hangar
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servizio a {STATION} Hangar, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aereo {COMMA} sta aspettano nell'hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aereo in mezzo
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non puoi far fermare/ripartire l'aereo...
@@ -2853,6 +2887,11 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra t
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordini comuni di {COMMA} Veicol{P o i}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tutti i veicoli con la stessa lista ordini
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Manda ai Depositi
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Manda tutti i veicoli in lista al deposito. CTRL+click solo servizio
+STR_SEND_TO_HANGARS                                             :{BLACK}Manda agli Hangar
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Manda tutti gli aerei in lista all'hangar. CTRL+click solo servizio
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inizia Rimpiazzo Veicoli
@@ -2915,6 +2954,7 @@ STR_TREE_PLACER                                                 :{BLACK}Algoritm
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotazione Heightmap:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo terreno:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Livello mare:
+STR_SMOOTHNESS                                                  :{BLACK}Levigatezza:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altezza nevi perenni:
 STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. of  città:
