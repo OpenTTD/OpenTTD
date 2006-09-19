@@ -312,6 +312,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 					DeleteVehicle(v);
 				} else {
 					v->owner = new_player;
+					if (IsEngineCountable(v)) GetPlayer(new_player)->num_engines[v->engine_type]++;
 					switch (v->type) {
 						case VEH_Train:    if (IsFrontEngine(v)) v->unitnumber = ++num_train; break;
 						case VEH_Road:     v->unitnumber = ++num_road; break;
