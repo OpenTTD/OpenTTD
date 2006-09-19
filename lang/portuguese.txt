@@ -911,6 +911,7 @@ STR_CURR_ROL                                                    :Lei Romeno (ROL
 STR_CURR_RUR                                                    :Rublo Russo (RUR)
 STR_CURR_SIT                                                    :Tolar Esloveno (SIT)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)
+STR_CURR_YTL                                                    :Lira Turca (YTL)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
 
@@ -1069,6 +1070,10 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar estampagens da companhia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas as companhias
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -2165,8 +2170,25 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} foi comprada por {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Esta empresa ainda não troca acções...
 
+STR_LIVERY_DEFAULT                                              :Estampagem Padrão
+STR_LIVERY_STEAM                                                :Motor a Vapor
+STR_LIVERY_DIESEL                                               :Motor Diesel
+STR_LIVERY_ELECTRIC                                             :Motor Eléctrico
+STR_LIVERY_MONORAIL                                             :Motor Monocarril
+STR_LIVERY_MAGLEV                                               :Motor de Levitação Magnética
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carruagem de Passageiros (Vapor)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Carruagem de Passageiros (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Carruagem de Passageiros (Eléctrica)
+STR_LIVERY_FREIGHT_WAGON                                        :Vagão de Carga
 STR_LIVERY_BUS                                                  :Autocarro
+STR_LIVERY_TRUCK                                                :Veículo de Mercadorias
+STR_LIVERY_PASSENGER_SHIP                                       :Navio de Passageiros
+STR_LIVERY_FREIGHT_SHIP                                         :Navio Cargueiro
 STR_LIVERY_HELICOPTER                                           :Helicóptero
+STR_LIVERY_SMALL_PLANE                                          :Aeronave de Pequenas Dimensões
+STR_LIVERY_LARGE_PLANE                                          :Aeronave de Grandes Dimensões
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)

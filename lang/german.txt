@@ -2469,7 +2469,7 @@ STR_8807_GO_TO_TRANSFER                                         :Fahre nach {STA
 STR_8808_GO_TO_UNLOAD                                           :Fahre nach {STATION} (Entladen)
 STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Fahre nach {STATION} (Umladen und leer verlassen)
 STR_880A_GO_TO_LOAD                                             :Fahre nach {STATION} (Beladen)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Fahre nach{STATION} (Umladen und voll beladen)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Fahre nach {STATION} (Umladen und voll beladen)
 STR_880C_GO_NON_STOP_TO                                         :Fahre ohne Halt nach {STATION}
 STR_880D_GO_TO_NON_STOP_TRANSFER                                :Fahre ohne Halt nach {STATION} (Umladen und beladen)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Fahre ohne Halt nach {STATION} (Entladen)

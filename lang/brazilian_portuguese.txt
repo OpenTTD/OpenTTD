@@ -911,6 +911,7 @@ STR_CURR_ROL                                                    :Lei Romeno (ROL
 STR_CURR_RUR                                                    :Rublo Russo (RUR)
 STR_CURR_SIT                                                    :Tolar Eslovênio (SIT)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)
+STR_CURR_YTL                                                    :Lira Turca (YTL)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
 
@@ -1069,6 +1070,9 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de ferrovia/rodovia/hidrovia/aeroportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Minha empresa
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas as empresas
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -2164,6 +2168,16 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% propriedade de {COMPANY}{}   {COMMA}% propriedade de {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} foi comprada por {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Esta empresa ainda não troca ações...
+
+STR_LIVERY_DIESEL                                               :Motor a Diesel
+STR_LIVERY_ELECTRIC                                             :Motor Elétrico
+STR_LIVERY_MONORAIL                                             :Motor Monotrilho
+STR_LIVERY_MAGLEV                                               :Motor Maglev
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_BUS                                                  :Ônibus
+STR_LIVERY_HELICOPTER                                           :Helicóptero
+STR_LIVERY_LARGE_PLANE                                          :Aeronave  Grande
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
