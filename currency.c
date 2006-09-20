@@ -117,7 +117,7 @@ const byte TTDPatch_To_OTTDIndex[] =
  **/
 byte GetNewgrfCurrencyIdConverted(byte grfcurr_id)
 {
-	return (grf_id >= lengthof(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
+	return (grfcurr_id >= lengthof(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
 }
 
 /* get a mask of the allowed currencies depending on the year */
