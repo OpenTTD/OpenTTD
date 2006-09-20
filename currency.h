@@ -40,5 +40,6 @@ uint GetMaskOfAllowedCurrencies(void);
 void CheckSwitchToEuro(void);
 void ResetCurrencies(void);
 StringID* BuildCurrencyDropdown(void);
+byte GetNewgrfCurrencyIdConverted(byte grfcurr_id);
 
 #endif /* CURRENCY_H */

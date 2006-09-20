@@ -1090,8 +1090,8 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 
 		case 0x0A: // Currency display names
 			FOR_EACH_OBJECT {
-				uint curidx = gvid + i;
-				StringID newone = GetGRFStringID(_cur_grffile->grfid,grf_load_word(&buf));
+				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
+				StringID newone = GetGRFStringID(_cur_grffile->grfid, grf_load_word(&buf));
 
 				if ((newone != STR_UNDEFINED) && (curidx < NUM_CURRENCY)) {
 					_currency_specs[curidx].name = newone;
@@ -1101,7 +1101,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 
 		case 0x0B: // Currency multipliers
 			FOR_EACH_OBJECT {
-				uint curidx = gvid + i;
+				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				uint32 rate = grf_load_dword(&buf);
 
 				if (curidx < NUM_CURRENCY) {
@@ -1117,7 +1117,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 
 		case 0x0C: // Currency options
 			FOR_EACH_OBJECT {
-				uint curidx = gvid +i;
+				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				uint16 options = grf_load_word(&buf);
 
 				if (curidx < NUM_CURRENCY) {
@@ -1133,7 +1133,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 
 		case 0x0D: // Currency prefix symbol
 			FOR_EACH_OBJECT {
-				uint curidx = gvid +i;
+				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				uint32 tempfix = grf_load_dword(&buf);
 
 				if (curidx < NUM_CURRENCY) {
@@ -1147,7 +1147,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 
 		case 0x0E: // Currency suffix symbol
 			FOR_EACH_OBJECT {
-				uint curidx = gvid +i;
+				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				uint32 tempfix = grf_load_dword(&buf);
 
 				if (curidx < NUM_CURRENCY) {
@@ -1161,7 +1161,7 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 
 		case 0x0F: //  Euro introduction dates
 			FOR_EACH_OBJECT {
-				uint curidx = gvid +i;
+				uint curidx = GetNewgrfCurrencyIdConverted(gvid + i);
 				Year year_euro = grf_load_word(&buf);
 
 				if (curidx < NUM_CURRENCY) {

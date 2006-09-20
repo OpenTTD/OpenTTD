@@ -44,6 +44,82 @@ const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 /* Array of currencies used by the system */
 CurrencySpec _currency_specs[NUM_CURRENCY];
 
+/**
+ * These enums are only declared in order to make sens
+ * out of the TTDPatch_To_OTTDIndex array that will follow
+ * Every currency used by Ottd is there, just in case TTDPatch will
+ * add those missing in its code
+ **/
+enum {
+	CURR_GBP,
+	CURR_USD,
+	CURR_EUR,
+	CURR_YEN,
+	CURR_ATS,
+	CURR_BEF,
+	CURR_CHF,
+	CURR_CZK,
+	CURR_DEM,
+	CURR_DKK,
+	CURR_ESP,
+	CURR_FIM,
+	CURR_FRF,
+	CURR_GRD,
+	CURR_HUF,
+	CURR_ISK,
+	CURR_ITL,
+	CURR_NLG,
+	CURR_NOK,
+	CURR_PLN,
+	CURR_ROL,
+	CURR_RUR,
+	CURR_SIT,
+	CURR_SEK,
+	CURR_YTL,
+};
+
+/**
+ * This array represent the position of OpenTTD's currencies,
+ * compared to TTDPatch's ones.
+ * When a grf sends currencies, they are based on the order defined by TTDPatch.
+ * So, we must reindex them to our own order.
+ **/
+const byte TTDPatch_To_OTTDIndex[] =
+{
+	CURR_GBP,
+	CURR_USD,
+	CURR_FRF,
+	CURR_DEM,
+	CURR_YEN,
+	CURR_ESP,
+	CURR_HUF,
+	CURR_PLN,
+	CURR_ATS,
+	CURR_BEF,
+	CURR_DKK,
+	CURR_FIM,
+	CURR_GRD,
+	CURR_CHF,
+	CURR_NLG,
+	CURR_ITL,
+	CURR_SEK,
+	CURR_RUR,
+	CURR_EUR,
+};
+
+/**
+ * Will return the ottd's index correspondance to
+ * the ttdpatch's id.  If the id is bigger then the array,
+ * it is  a grf written for ottd, thus returning the same id.
+ * Only called from newgrf.c
+ * @param grfcurr_id currency id coming from newgrf
+ * @return the corrected index
+ **/
+byte GetNewgrfCurrencyIdConverted(byte grfcurr_id)
+{
+	return (grf_id >= lengthof(TTDPatch_To_OTTDIndex)) ? grfcurr_id : TTDPatch_To_OTTDIndex[grfcurr_id];
+}
+
 /* get a mask of the allowed currencies depending on the year */
 uint GetMaskOfAllowedCurrencies(void)
 {
