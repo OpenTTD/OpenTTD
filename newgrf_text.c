@@ -204,9 +204,6 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	GRFText *newtext;
 	uint id;
 
-	/* We do not allow strings of only one char or even fewer*/
-	if (strlen(text_to_add) <= 1) return STR_EMPTY;
-
 	/* When working with the old language scheme (grf_version is less than 7) and
 	 * English or American is among the set bits, simply add it as English in
 	 * the new scheme, i.e. as langid = 1.
