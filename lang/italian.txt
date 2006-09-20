@@ -888,7 +888,7 @@ STR_TOWNNAME_CATALAN                                            :Catalano
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Sterlina (£)
-STR_CURR_USD                                                    :Dollaro ($)
+STR_CURR_USD                                                    :Dollaro USA ($)
 STR_CURR_EUR                                                    :Euro (¤)
 STR_CURR_YEN                                                    :Yen (¥)
 STR_CURR_ATS                                                    :Scellino Austriano (ATS)
@@ -897,9 +897,9 @@ STR_CURR_CHF                                                    :Franco Svizzero
 STR_CURR_CZK                                                    :Corona Ceca (CZK)
 STR_CURR_DEM                                                    :Marco Tedesco (DEM)
 STR_CURR_DKK                                                    :Corona Danese (DKK)
-STR_CURR_ESP                                                    :Peseta (ESP)
+STR_CURR_ESP                                                    :Peseta Spagnola (ESP)
 STR_CURR_FIM                                                    :Marco Finlandese(FIM)
-STR_CURR_FRF                                                    :Franco (FRF)
+STR_CURR_FRF                                                    :Franco Francese(FRF)
 STR_CURR_GRD                                                    :Drachma Greca (GRD)
 STR_CURR_HUF                                                    :Forint Ungherese (HUF)
 STR_CURR_ISK                                                    :Corona Islandese (ISK)
@@ -907,9 +907,9 @@ STR_CURR_ITL                                                    :Lira Italiana (
 STR_CURR_NLG                                                    :Fiorino olandese (NLG)
 STR_CURR_NOK                                                    :Corona Norvegese (NOK)
 STR_CURR_PLN                                                    :Zloty Polacco (PLN)
-STR_CURR_ROL                                                    :Leu rumeno (ROL)
-STR_CURR_RUR                                                    :Rupie Russe (RUR)
-STR_CURR_SIT                                                    :Slovenian Tolar (SIT)
+STR_CURR_ROL                                                    :Leu Rumeno (ROL)
+STR_CURR_RUR                                                    :Rublo Russo (RUR)
+STR_CURR_SIT                                                    :Tolar Sloveno (SIT)
 STR_CURR_SEK                                                    :Corona Svedese (SEK)
 STR_CURR_YTL                                                    :Lira Turca (YTL)
 
@@ -2174,15 +2174,15 @@ STR_LIVERY_DEFAULT                                              :Livrea Standard
 STR_LIVERY_STEAM                                                :Locomotiva a Vapore
 STR_LIVERY_DIESEL                                               :Locomotiva Diesel
 STR_LIVERY_ELECTRIC                                             :Locomotore Elettrico
-STR_LIVERY_MONORAIL                                             :Locomotore Monorail
-STR_LIVERY_MAGLEV                                               :Locomotore Maglev
+STR_LIVERY_MONORAIL                                             :Monorotaia
+STR_LIVERY_MAGLEV                                               :Maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carozza Passeggeri (Vapore)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Carozza Passeggeri (Diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Carozza Passeggeri (Elettrico)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Carrozza Passeggeri (Vapore)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Carrozza Passeggeri (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Carrozza Passeggeri (Elettrico)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagone Merci
-STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_BUS                                                  :Autobus
 STR_LIVERY_TRUCK                                                :Autocarro
 STR_LIVERY_PASSENGER_SHIP                                       :Traghetto
 STR_LIVERY_FREIGHT_SHIP                                         :Nave Mercantile
