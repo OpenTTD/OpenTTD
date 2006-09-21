@@ -352,10 +352,10 @@ STR_013E_TOTAL_CARGO                                            :{BLACK}Celkovy 
 STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Celkovy naklad (kapacita) tohoto vlaku:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_0140_NEW_GAME                                               :{BLACK}Nova hra
+STR_0140_NEW_GAME                                               :{BLACK}Nová hra
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrat hru
 STR_SINGLE_PLAYER                                               :{BLACK}Jeden hrac
-STR_MULTIPLAYER                                                 :{BLACK}Viacero hracov
+STR_MULTIPLAYER                                                 :{BLACK}Viacero hrácov
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -618,7 +618,7 @@ STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kliknite
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Zapnut / Vypnut nahodny vyber
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Zobrazit okno pre vyber hudobnych stop
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Kliknut na trasu pre centrovanie pohladu na tovaren/mesto
-STR_01FE_DIFFICULTY                                             :{BLACK}Obtiaznost ({STRING})
+STR_01FE_DIFFICULTY                                             :{BLACK}Obtia¸nost ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Zobrazit poslednu spravu
 STR_0201_MESSAGE_SETTINGS                                       :Nastavenia sprav
@@ -773,12 +773,12 @@ STR_CREATE_LAKE                                                 :{BLACK}Vytvorit
 STR_0290_DELETE                                                 :{BLACK}Vymazat
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Kompletne vymazat toto mesto
 STR_0292_SAVE_SCENARIO                                          :Ulozit scenar
-STR_0293_LOAD_SCENARIO                                          :Nahrat scenar
+STR_0293_LOAD_SCENARIO                                          :Nahrat scenár
 STR_0294_QUIT_EDITOR                                            :Ukoncit editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Ukoncit program
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Ulozit scenar, nahrat scenar, ukoncit editor scenara, ukoncit program
-STR_0298_LOAD_SCENARIO                                          :{WHITE}Nahrat scenar
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Nahrat scenár
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Ulozit scenar
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Hrat scenar
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Hrat vyskovu mapu
@@ -886,7 +886,7 @@ STR_02F8_EVERY_3_MONTHS                                         :Kazde 3 mesiace
 STR_02F9_EVERY_6_MONTHS                                         :Kazdych 6 mesiacov
 STR_02FA_EVERY_12_MONTHS                                        :Kazdych 12 mesiacov
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Spustit novu hru
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrat ulozenu hru
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrat ulozenú hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvorit vlastny svet / scenar
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vyberte hru pre 1 hraca
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vyberte hru pre 2-8 hracov
@@ -1324,7 +1324,7 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Varovani
 
 ############ network gui strings
 
-STR_NETWORK_MULTIPLAYER                                         :{WHITE}Hra pre viac hracov
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Hra pre viac hrácov
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Meno hraca:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Toto je meno podla ktoreho vas ostatny identifikuju
@@ -1418,7 +1418,7 @@ STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sietova 
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Pripravuje sa k vstupu:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Aktualny zoznam spolocnosti v tejto hre. Bud mozes do jednej vstupit, alebo zalozit novu spolocnost.
-STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nova spolocnost
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nová spolocnost
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Zalozit novu spolocnost
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Sledovat hru
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Sledovat hru len ako divak
@@ -1536,7 +1536,7 @@ STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}... subo
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nie je mozne zkonvertovat format obrazku. Potrebne 8 alebo 24 bitove PNG.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}... neocakavana chyba (pravdepodobne poskodeny subor)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Nie je mozne nahrat povrch z BMP suboru ...
+STR_BMPMAP_ERROR                                                :{WHITE}Nie je mo¸né nahrat povrch z BMP suboru ...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nie je mozne zkonvertovat format obrazku.
 
 ##id 0x0800
@@ -1862,7 +1862,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Ulozit a
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vyber typ novej hry
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vyber scenar (zeleny), prednastavenu hra (modra), alebo nahodnu hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vygenerovat nahodnu novu hru
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Nahrat vyskovu mapu
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Nahrat vý¨kovú mapu
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} v ceste
@@ -2105,10 +2105,10 @@ STR_683B_HOSTILE                                                :Odmietavy
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Hrac {COMMA})
-STR_7004_NEW_FACE                                               :{BLACK}Nova tvar
+STR_7004_NEW_FACE                                               :{BLACK}Nová tvár
 STR_7005_COLOR_SCHEME                                           :{BLACK}Farebna schema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Farebna schema:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nova farebna schema
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nová farebná schéma
 STR_7008_COMPANY_NAME                                           :{BLACK}Nazov spolocnosti
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Meno prezidenta
 STR_700A_COMPANY_NAME                                           :Nazov spolocnosti
@@ -2169,7 +2169,7 @@ STR_7042_NONE                                                   :{WHITE}Ziadne
 STR_7043_FACE_SELECTION                                         :{WHITE}Vyber tvare
 STR_7044_MALE                                                   :{BLACK}Muz
 STR_7045_FEMALE                                                 :{BLACK}Zena
-STR_7046_NEW_FACE                                               :{BLACK}Nova tvar
+STR_7046_NEW_FACE                                               :{BLACK}Nová tvár
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Zrusit vyber novej tvare
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Potvrdit vyber tvare
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Vyber muzskych tvari
@@ -2772,7 +2772,7 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Zobrazit
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vycentrovat pohlad na lod
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Poslat lod do lodenice
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zobrazit detaily o lodi
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nova lod je dostupna!
+STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nová lod je dostupná!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {STRING}{}Naklady na prevadzku: {CURRENCY}/rok
 STR_982F_NAME_SHIP                                              :{BLACK}Pomenovat lod
@@ -2792,7 +2792,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Prestava
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vybrat typ nakladu pre lod
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Prestavat lod na vybrany typ nakladu
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vyber typ nakladu:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapacita: {GOLD}{STRING}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{STRING}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nemozno prestavat lod...
 STR_9842_REFITTABLE                                             :(mozna prestavba)
 STR_GO_TO_SHIP_DEPOT                                            :Chod do {TOWN} Lodenice
@@ -2867,7 +2867,7 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Prestava
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyber novy typ nakladu
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prestavat lietadlo na novy typ nakladu
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vybrat typ noveho nakladu:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova kapacita: {GOLD}{STRING}{}{BLACK}Naklady na prestavbu: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{STRING}{}{BLACK}Náklady na prestavbu: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie je mozne prestavat na novy typ nakladu ...
 STR_GO_TO_AIRPORT_HANGAR                                        :Chod do {STATION} Hangaru
 SERVICE_AT_AIRPORT_HANGAR                                       :Opravit v {STATION} Hangare
@@ -3014,7 +3014,7 @@ STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generova
 STR_RANDOM_SEED                                                 :{BLACK}Nahodny kod:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Kliknite pre zadanie nahodneho kodu
 STR_LAND_GENERATOR                                              :{BLACK}Generator krajiny:
-STR_TREE_PLACER                                                 :{BLACK}Algoritmus stromov:
+STR_TREE_PLACER                                                 :{BLACK}Generator stromov:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Orientacia vyskovej mapy:
 STR_TERRAIN_TYPE                                                :{BLACK}Typ terenu:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Mnozstvo jazier:
@@ -3046,7 +3046,7 @@ STR_CLEARING_TILES                                              :{BLACK}Generova
 STR_SETTINGUP_GAME                                              :{BLACK}Nastavovanie hry
 STR_PREPARING_TILELOOP                                          :{BLACK}Spustam tile-loop
 STR_PREPARING_GAME                                              :{BLACK}Priprava hry
-STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Obtiaznost sa zmenila na vlastnu
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Obtia¸nost sa zmenila na vlastnú
 STR_SE_FLAT_WORLD                                               :{WHITE}Rovna krajina
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generovat rovnu krajinu
 STR_SE_RANDOM_LAND                                              :{WHITE}Nahodna krajina
