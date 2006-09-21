@@ -61,12 +61,7 @@ endif
 # END BYPASS_OS_DETECT
 endif
 
-# FreeBSD uses sdl11 instead of sdl
-ifdef FREEBSD
-SDL_CONFIG:=sdl11-config
-else
 SDL_CONFIG:=sdl-config
-endif
 
 # set libpng-config to the default value
 LIBPNG_CONFIG :=libpng-config
