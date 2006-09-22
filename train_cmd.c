@@ -3107,12 +3107,12 @@ red_light: {
 		 * FIND_FIRST_BIT only handles 6 bits at a time. */
 		i = FindFirstBit2x64(ts);
 
-		if (!(_m[gp.new_tile].m3 & SignalAgainstTrackdir(i))) {
+		if (!HasSignalOnTrackdir(gp.new_tile, ReverseTrackdir(i))) {
 			v->cur_speed = 0;
 			v->subspeed = 0;
 			v->progress = 255 - 100;
 			if (++v->load_unload_time_rem < _patches.wait_oneway_signal * 20) return;
-		} else if (_m[gp.new_tile].m3 & SignalAlongTrackdir(i)){
+		} else if (HasSignalOnTrackdir(gp.new_tile, i)){
 			v->cur_speed = 0;
 			v->subspeed = 0;
 			v->progress = 255-10;
@@ -3316,7 +3316,7 @@ static bool TrainCheckIfLineEnds(Vehicle *v)
 	// depot?
 	/* XXX -- When enabled, this makes it possible to crash trains of others
 	     (by building a depot right against a station) */
-/*	if (IsTileType(tile, MP_RAILWAY) && (_m[tile].m5 & 0xFC) == 0xC0)
+/*	if (IsTileType(tile, MP_RAILWAY) && GetRailTileType(tile) == RAIL_TILE_DEPOT_WAYPOINT)
 		return true;*/
 
 	/* Determine the non-diagonal direction in which we will exit this tile */
