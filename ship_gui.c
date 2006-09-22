@@ -484,7 +484,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 						Depot *depot = GetDepot(v->current_order.dest);
 						SetDParam(0, depot->town_index);
 						SetDParam(1, v->cur_speed / 2);
-						if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+						if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
 							str = STR_HEADING_FOR_SHIP_DEPOT + _patches.vehicle_speed;
 						} else {
 							str = STR_HEADING_FOR_SHIP_DEPOT_SERVICE + _patches.vehicle_speed;

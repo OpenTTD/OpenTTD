@@ -974,7 +974,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			case OT_GOTO_DEPOT: {
 				Depot *dep = GetDepot(v->current_order.dest);
 				SetDParam(0, dep->town_index);
-				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
 					str = STR_HEADING_FOR_TRAIN_DEPOT + _patches.vehicle_speed;
 				} else {
 					str = STR_HEADING_FOR_TRAIN_DEPOT_SERVICE + _patches.vehicle_speed;

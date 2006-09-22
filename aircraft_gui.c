@@ -557,7 +557,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 				/* Aircrafts always go to a station, even if you say depot */
 				SetDParam(0, v->current_order.dest);
 				SetDParam(1, v->cur_speed * 128 / 10);
-				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT)) {
+				if (HASBIT(v->current_order.flags, OFB_HALT_IN_DEPOT) && !HASBIT(v->current_order.flags, OFB_PART_OF_ORDERS)) {
 					str = STR_HEADING_FOR_HANGAR + _patches.vehicle_speed;
 				} else {
 					str = STR_HEADING_FOR_HANGAR_SERVICE + _patches.vehicle_speed;
