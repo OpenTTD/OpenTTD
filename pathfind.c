@@ -802,21 +802,18 @@ start_at:
 
 			// railway tile with signals..?
 			if (HasSignals(tile)) {
-				byte m3;
-
-				m3 = _m[tile].m3;
-				if (!(m3 & SignalAlongTrackdir(track))) {
+				if (!HasSignalOnTrackdir(tile, track)) {
 					// if one way signal not pointing towards us, stop going in this direction => End of rail segment.
-					if (m3 & SignalAgainstTrackdir(track)) {
+					if (HasSignalOnTrackdir(tile, ReverseTrackdir(track))) {
 						bits = 0;
 						break;
 					}
-				} else if (_m[tile].m2 & SignalAlongTrackdir(track)) {
+				} else if (GetSignalStateByTrackdir(tile, track) == SIGNAL_STATE_GREEN) {
 					// green signal in our direction. either one way or two way.
 					si.state |= 3;
 				} else {
 					// reached a red signal.
-					if (m3 & SignalAgainstTrackdir(track)) {
+					if (HasSignalOnTrackdir(tile, ReverseTrackdir(track))) {
 						// two way red signal. unless we passed another green signal on the way,
 						// stop going in this direction => End of rail segment.
 						// this is to prevent us from going into a full platform.
