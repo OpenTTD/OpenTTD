@@ -181,10 +181,10 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: { /* listbox */
 			const Town *t = GetTown(w->window_number);
-			int y = (e->click.pt.y - 0x6B) / 10;
+			int y = (e->we.click.pt.y - 0x6B) / 10;
 
 			if (!IS_INT_INSIDE(y, 0, 5)) return;
 
@@ -255,7 +255,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 6: /* scroll to location */
 				ScrollMainWindowToTile(t->xy);
 				break;
@@ -280,8 +280,8 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT:
-		if (e->edittext.str[0] != '\0') {
-			_cmd_text = e->edittext.str;
+		if (e->we.edittext.str[0] != '\0') {
+			_cmd_text = e->we.edittext.str;
 			DoCommandP(0, w->window_number, 0, NULL,
 				CMD_RENAME_TOWN | CMD_MSG(STR_2008_CAN_T_RENAME_TOWN));
 		}
@@ -462,7 +462,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: { /* Sort by Name ascending/descending */
 			_town_sort_order = (_town_sort_order == 0) ? 1 : 0;
 			_town_sort_dirty = true;
@@ -478,7 +478,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		case 5: { /* Click on Town Matrix */
 			const Town* t;
 
-			uint16 id_v = (e->click.pt.y - 28) / 10;
+			uint16 id_v = (e->we.click.pt.y - 28) / 10;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
@@ -499,7 +499,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_RESIZE:
-		w->vscroll.cap += e->sizing.diff.y / 10;
+		w->vscroll.cap += e->we.sizing.diff.y / 10;
 		break;
 	}
 }

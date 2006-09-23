@@ -1760,8 +1760,8 @@ void PlaceObject(void)
 		WindowEvent e;
 
 		e.event = WE_PLACE_OBJ;
-		e.place.pt = pt;
-		e.place.tile = TileVirtXY(pt.x, pt.y);
+		e.we.place.pt = pt;
+		e.we.place.tile = TileVirtXY(pt.x, pt.y);
 		w->wndproc(w, &e);
 	}
 }
@@ -2161,7 +2161,7 @@ bool VpHandlePlaceSizingDrag(void)
 
 	if (_special_mouse_mode != WSM_SIZING) return true;
 
-	e.place.userdata = _thd.userdata;
+	e.we.place.userdata = _thd.userdata;
 
 	// stop drag mode if the window has been closed
 	w = FindWindowById(_thd.window_class,_thd.window_number);
@@ -2173,7 +2173,7 @@ bool VpHandlePlaceSizingDrag(void)
 	// while dragging execute the drag procedure of the corresponding window (mostly VpSelectTilesWithMethod() )
 	if (_left_button_down) {
 		e.event = WE_PLACE_DRAG;
-		e.place.pt = GetTileBelowCursor();
+		e.we.place.pt = GetTileBelowCursor();
 		w->wndproc(w, &e);
 		return false;
 	}
@@ -2183,7 +2183,7 @@ bool VpHandlePlaceSizingDrag(void)
 	_special_mouse_mode = WSM_NONE;
 	if (_thd.next_drawstyle == HT_RECT) {
 		_thd.place_mode = VHM_RECT;
-	} else if ((e.place.userdata & 0xF) == VPM_SIGNALDIRS) { // some might call this a hack... -- Dominik
+	} else if ((e.we.place.userdata & 0xF) == VPM_SIGNALDIRS) { // some might call this a hack... -- Dominik
 		_thd.place_mode = VHM_RECT;
 	} else if (_thd.next_drawstyle & HT_LINE) {
 		_thd.place_mode = VHM_RAIL;
@@ -2196,9 +2196,9 @@ bool VpHandlePlaceSizingDrag(void)
 
 	// and call the mouseup event.
 	e.event = WE_PLACE_MOUSEUP;
-	e.place.pt = _thd.selend;
-	e.place.tile = TileVirtXY(e.place.pt.x, e.place.pt.y);
-	e.place.starttile = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
+	e.we.place.pt = _thd.selend;
+	e.we.place.tile = TileVirtXY(e.we.place.pt.x, e.we.place.pt.y);
+	e.we.place.starttile = TileVirtXY(_thd.selstart.x, _thd.selstart.y);
 	w->wndproc(w, &e);
 
 	return false;

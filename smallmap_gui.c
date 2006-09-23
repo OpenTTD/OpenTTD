@@ -838,7 +838,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_CLICK:
-			switch (e->click.widget) {
+			switch (e->we.click.widget) {
 				case 4: { // Map window
 					Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 					Point pt;
@@ -866,8 +866,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 				case 9:  // Show vegetation
 				case 10: // Show land owners
 					w->click_state &= ~( 1 << 5 |  1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10);
-					w->click_state |= 1 << e->click.widget;
-					_smallmap_type = e->click.widget - 5;
+					w->click_state |= 1 << e->we.click.widget;
+					_smallmap_type = e->we.click.widget - 5;
 
 					SetWindowDirty(w);
 					SndPlayFx(SND_15_BEEP);
@@ -891,7 +891,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_RCLICK:
-			if (e->click.widget == 4) {
+			if (e->we.click.widget == 4) {
 				if (_scrolling_viewport) return;
 				_scrolling_viewport = true;
 				_cursor.delta.x = 0;
@@ -918,16 +918,16 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 			x = WP(w, smallmap_d).scroll_x;
 			y = WP(w, smallmap_d).scroll_y;
 
-			sub = WP(w, smallmap_d).subscroll + e->scroll.delta.x;
+			sub = WP(w, smallmap_d).subscroll + e->we.scroll.delta.x;
 
 			x -= (sub >> 2) << 4;
 			y += (sub >> 2) << 4;
 			sub &= 3;
 
-			x += (e->scroll.delta.y >> 1) << 4;
-			y += (e->scroll.delta.y >> 1) << 4;
+			x += (e->we.scroll.delta.y >> 1) << 4;
+			y += (e->we.scroll.delta.y >> 1) << 4;
 
-			if (e->scroll.delta.y & 1) {
+			if (e->we.scroll.delta.y & 1) {
 				x += TILE_SIZE;
 				sub += 2;
 				if (sub > 3) {
@@ -1022,7 +1022,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 5: DoZoomInOutWindow(ZOOM_IN,  w); break;
 			case 6: DoZoomInOutWindow(ZOOM_OUT, w); break;
 
@@ -1048,10 +1048,10 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_RESIZE:
-		w->viewport->width  += e->sizing.diff.x;
-		w->viewport->height += e->sizing.diff.y;
-		w->viewport->virtual_width  += e->sizing.diff.x;
-		w->viewport->virtual_height += e->sizing.diff.y;
+		w->viewport->width          += e->we.sizing.diff.x;
+		w->viewport->height         += e->we.sizing.diff.y;
+		w->viewport->virtual_width  += e->we.sizing.diff.x;
+		w->viewport->virtual_height += e->we.sizing.diff.y;
 		break;
 
 		case WE_SCROLL: {
@@ -1062,12 +1062,12 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 				_scrolling_viewport = false;
 			}
 
-			WP(w, vp_d).scrollpos_x += e->scroll.delta.x << vp->zoom;
-			WP(w, vp_d).scrollpos_y += e->scroll.delta.y << vp->zoom;
+			WP(w, vp_d).scrollpos_x += e->we.scroll.delta.x << vp->zoom;
+			WP(w, vp_d).scrollpos_y += e->we.scroll.delta.y << vp->zoom;
 		} break;
 
 		case WE_MOUSEWHEEL:
-			ZoomInOrOutToCursorWindow(e->wheel.wheel < 0, w);
+			ZoomInOrOutToCursorWindow(e->we.wheel.wheel < 0, w);
 			break;
 	}
 }

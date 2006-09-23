@@ -50,7 +50,7 @@ extern bool GenerateTowns(void);
 
 void HandleOnEditText(WindowEvent *e)
 {
-	const char *b = e->edittext.str;
+	const char *b = e->we.edittext.str;
 	int id;
 
 	_cmd_text = b;
@@ -68,7 +68,7 @@ void HandleOnEditText(WindowEvent *e)
 #ifdef ENABLE_NETWORK
 	case 3: { /* Give money, you can only give money in excess of loan */
 		const Player *p = GetPlayer(_current_player);
-		int32 money = min(p->money64 - p->current_loan, atoi(e->edittext.str) / _currency->rate);
+		int32 money = min(p->money64 - p->current_loan, atoi(e->we.edittext.str) / _currency->rate);
 		char msg[20];
 
 		money = clamp(money, 0, 20000000); // Clamp between 20 million and 0
@@ -475,13 +475,13 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		}
 
 	case WE_POPUPMENU_SELECT: {
-		int index = GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y);
+		int index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
 		int action_id;
 
 
 		if (index < 0) {
 			Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
-			if (GetWidgetFromPos(w2, e->popupmenu.pt.x - w2->left, e->popupmenu.pt.y - w2->top) == WP(w,menu_d).main_button)
+			if (GetWidgetFromPos(w2, e->we.popupmenu.pt.x - w2->left, e->we.popupmenu.pt.y - w2->top) == WP(w,menu_d).main_button)
 				index = WP(w,menu_d).sel_index;
 		}
 
@@ -494,7 +494,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		}
 
 	case WE_POPUPMENU_OVER: {
-		int index = GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y);
+		int index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
 
 		if (index == -1 || index == WP(w,menu_d).sel_index) return;
 
@@ -612,7 +612,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 		}
 
 	case WE_POPUPMENU_SELECT: {
-		int index = GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y);
+		int index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
 		int action_id = WP(w,menu_d).action_id;
 
 		// We have a new entry at the top of the list of menu 9 when networking
@@ -625,7 +625,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 		if (index < 0) {
 			Window *w2 = FindWindowById(WC_MAIN_TOOLBAR,0);
-			if (GetWidgetFromPos(w2, e->popupmenu.pt.x - w2->left, e->popupmenu.pt.y - w2->top) == WP(w,menu_d).main_button)
+			if (GetWidgetFromPos(w2, e->we.popupmenu.pt.x - w2->left, e->we.popupmenu.pt.y - w2->top) == WP(w,menu_d).main_button)
 				index = WP(w,menu_d).sel_index;
 		}
 
@@ -640,7 +640,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 	case WE_POPUPMENU_OVER: {
 		int index;
 		UpdatePlayerMenuHeight(w);
-		index = GetMenuItemIndex(w, e->popupmenu.pt.x, e->popupmenu.pt.y);
+		index = GetMenuItemIndex(w, e->we.popupmenu.pt.x, e->we.popupmenu.pt.y);
 
 		// We have a new entry at the top of the list of menu 9 when networking
 		//  so keep that in count
@@ -1265,8 +1265,8 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		uint i;
 
 		for (i = 0; i != lengthof(_editor_terraform_keycodes); i++) {
-			if (e->keypress.keycode == _editor_terraform_keycodes[i]) {
-				e->keypress.cont = false;
+			if (e->we.keypress.keycode == _editor_terraform_keycodes[i]) {
+				e->we.keypress.cont = false;
 				_editor_terraform_button_proc[i](w);
 				break;
 			}
@@ -1274,13 +1274,13 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11:
-			_editor_terraform_button_proc[e->click.widget - 4](w);
+			_editor_terraform_button_proc[e->we.click.widget - 4](w);
 			break;
 		case 12: case 13: { /* Increase/Decrease terraform size */
-			int size = (e->click.widget == 12) ? 1 : -1;
-			HandleButtonClick(w, e->click.widget);
+			int size = (e->we.click.widget == 12) ? 1 : -1;
+			HandleButtonClick(w, e->we.click.widget);
 			size += _terraform_size;
 
 			if (!IS_INT_INSIDE(size, 1, 8 + 1)) return;
@@ -1300,15 +1300,15 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		UnclickSomeWindowButtons(w, ~(1<<4 | 1<<5 | 1<<6 | 1<<7 | 1<<8 | 1<<9 | 1<<10 | 1<<11));
 		break;
 	case WE_PLACE_OBJ:
-		_place_proc(e->place.tile);
+		_place_proc(e->we.place.tile);
 		break;
 	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata & 0xF);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata & 0xF);
 		break;
 
 	case WE_PLACE_MOUSEUP:
-		if (e->click.pt.x != -1) {
-			if ((e->place.userdata & 0xF) == VPM_X_AND_Y) // dragged actions
+		if (e->we.click.pt.x != -1) {
+			if ((e->we.place.userdata & 0xF) == VPM_X_AND_Y) // dragged actions
 				GUIPlaceProcDragXY(e);
 		}
 		break;
@@ -1383,7 +1383,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 4: /* new town */
 			HandlePlacePushButton(w, 4, SPR_CURSOR_TOWN, 1, PlaceProc_Town);
 			break;
@@ -1413,7 +1413,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		}
 
 		case 7: case 8: case 9:
-			w->click_state = 1 << e->click.widget;
+			w->click_state = 1 << e->we.click.widget;
 			SetWindowDirty(w);
 			break;
 		}
@@ -1423,7 +1423,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		UnclickSomeWindowButtons(w, 1<<5 | 1<<6);
 		break;
 	case WE_PLACE_OBJ:
-		_place_proc(e->place.tile);
+		_place_proc(e->we.place.tile);
 		break;
 	case WE_ABORT_PLACE_OBJ:
 		w->click_state &= (1 << 7 | 1 << 8 | 1 << 9);
@@ -1594,7 +1594,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		if (e->click.widget == 3) {
+		if (e->we.click.widget == 3) {
 			HandleButtonClick(w, 3);
 
 			if (!AnyTownExists()) {
@@ -1607,7 +1607,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 			_generating_world = false;
 		}
 
-		if ((button=e->click.widget) >= 4) {
+		if ((button=e->we.click.widget) >= 4) {
 			if (HandlePlacePushButton(w, button, SPR_CURSOR_INDUSTRY, 1, NULL))
 				_industry_type_to_place = _industry_type_list[_opt.landscape][button - 4];
 		}
@@ -1619,16 +1619,16 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		type = _industry_type_to_place;
 		if (!AnyTownExists()) {
 			SetDParam(0, type + STR_4802_COAL_MINE);
-			ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST,STR_0285_CAN_T_BUILD_HERE,e->place.pt.x, e->place.pt.y);
+			ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
 			return;
 		}
 
 		_current_player = OWNER_NONE;
 		_generating_world = true;
 		_ignore_restrictions = true;
-		if (!TryBuildIndustry(e->place.tile,type)) {
+		if (!TryBuildIndustry(e->we.place.tile,type)) {
 			SetDParam(0, type + STR_4802_COAL_MINE);
-			ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->place.pt.x, e->place.pt.y);
+			ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
 		}
 		_ignore_restrictions = false;
 		_generating_world = false;
@@ -1770,14 +1770,14 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK: {
-		if (_game_mode != GM_MENU && !HASBIT(w->disabled_state, e->click.widget))
-			_toolbar_button_procs[e->click.widget](w);
+		if (_game_mode != GM_MENU && !HASBIT(w->disabled_state, e->we.click.widget))
+			_toolbar_button_procs[e->we.click.widget](w);
 	} break;
 
 	case WE_KEYPRESS: {
 		PlayerID local = (_local_player != OWNER_SPECTATOR) ? _local_player : 0;
 
-		switch (e->keypress.keycode) {
+		switch (e->we.keypress.keycode) {
 		case WKC_F1: case WKC_PAUSE:
 			ToolbarPauseClick(w);
 			break;
@@ -1811,11 +1811,11 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case 'L': ShowTerraformToolbar(); break;
 		default: return;
 		}
-		e->keypress.cont = false;
+		e->we.keypress.cont = false;
 	} break;
 
 	case WE_PLACE_OBJ: {
-		_place_proc(e->place.tile);
+		_place_proc(e->we.place.tile);
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
@@ -1988,11 +1988,11 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		if (_game_mode == GM_MENU) return;
-		_scen_toolbar_button_procs[e->click.widget](w);
+		_scen_toolbar_button_procs[e->we.click.widget](w);
 	} break;
 
 	case WE_KEYPRESS:
-		switch (e->keypress.keycode) {
+		switch (e->we.keypress.keycode) {
 		case WKC_F1: ToolbarPauseClick(w); break;
 		case WKC_F2: ShowGameOptions(); break;
 		case WKC_F3: MenuClickSaveLoad(0); break;
@@ -2011,7 +2011,7 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_OBJ: {
-		_place_proc(e->place.tile);
+		_place_proc(e->we.place.tile);
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
@@ -2134,12 +2134,12 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_MESSAGE:
-		w->message.msg = e->message.msg;
+		w->message.msg = e->we.message.msg;
 		SetWindowDirty(w);
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 1: ShowLastNewsMessage(); break;
 			case 2: if (_local_player != OWNER_SPECTATOR) ShowPlayerFinances(_local_player); break;
 			default: ResetObjectToPlace();
@@ -2223,7 +2223,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		switch (e->keypress.keycode) {
+		switch (e->we.keypress.keycode) {
 			case 'Q' | WKC_CTRL:
 			case 'Q' | WKC_META:
 				HandleExitGameRequest();
@@ -2236,21 +2236,21 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 		 * assertions that are hard to trigger and debug */
 		if (IsGeneratingWorld()) break;
 
-		if (e->keypress.keycode == WKC_BACKQUOTE) {
+		if (e->we.keypress.keycode == WKC_BACKQUOTE) {
 			IConsoleSwitch();
-			e->keypress.cont = false;
+			e->we.keypress.cont = false;
 			break;
 		}
 
 		if (_game_mode == GM_MENU) break;
 
-		switch (e->keypress.keycode) {
+		switch (e->we.keypress.keycode) {
 			case 'C':
 			case 'Z': {
 				Point pt = GetTileBelowCursor();
 				if (pt.x != -1) {
 					ScrollMainWindowTo(pt.x, pt.y);
-					if (e->keypress.keycode == 'Z') MaxZoomIn();
+					if (e->we.keypress.keycode == 'Z') MaxZoomIn();
 				}
 				break;
 			}
@@ -2291,7 +2291,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 
 			default: return;
 		}
-		e->keypress.cont = false;
+		e->we.keypress.cont = false;
 		break;
 
 		case WE_SCROLL: {
@@ -2302,12 +2302,12 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				_scrolling_viewport = false;
 			}
 
-			WP(w, vp_d).scrollpos_x += e->scroll.delta.x << vp->zoom;
-			WP(w, vp_d).scrollpos_y += e->scroll.delta.y << vp->zoom;
+			WP(w, vp_d).scrollpos_x += e->we.scroll.delta.x << vp->zoom;
+			WP(w, vp_d).scrollpos_y += e->we.scroll.delta.y << vp->zoom;
 		} break;
 
 		case WE_MOUSEWHEEL:
-			ZoomInOrOutToCursorWindow(e->wheel.wheel < 0, w);
+			ZoomInOrOutToCursorWindow(e->we.wheel.wheel < 0, w);
 			break;
 	}
 }

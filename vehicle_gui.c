@@ -862,7 +862,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			uint16 click_scroll_cap = w->vscroll2.cap;
 			byte click_side = 1;
 
-			switch (e->click.widget) {
+			switch (e->we.click.widget) {
 				case 12:
 					WP(w, replaceveh_d).wagon_btnstate = !(WP(w, replaceveh_d).wagon_btnstate);
 					SetWindowDirty(w);
@@ -899,7 +899,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					/* FALL THROUGH */
 
 				case 9: {
-					uint i = (e->click.pt.y - 14) / w->resize.step_height;
+					uint i = (e->we.click.pt.y - 14) / w->resize.step_height;
 					if (i < click_scroll_cap) {
 						WP(w,replaceveh_d).sel_index[click_side] = i + click_scroll_pos;
 						SetWindowDirty(w);
@@ -911,7 +911,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-			_railtype_selected_in_replace_gui = e->dropdown.index;
+			_railtype_selected_in_replace_gui = e->we.dropdown.index;
 			/* Reset scrollbar positions */
 			w->vscroll.pos  = 0;
 			w->vscroll2.pos = 0;
@@ -919,8 +919,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_RESIZE:
-			w->vscroll.cap  += e->sizing.diff.y / (int)w->resize.step_height;
-			w->vscroll2.cap += e->sizing.diff.y / (int)w->resize.step_height;
+			w->vscroll.cap  += e->we.sizing.diff.y / (int)w->resize.step_height;
+			w->vscroll2.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
 
 			w->widget[7].data = (w->vscroll.cap  << 8) + 1;
 			w->widget[9].data = (w->vscroll2.cap << 8) + 1;
@@ -1278,7 +1278,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 		}	break;
 
 		case WE_CLICK: {
-			switch (e->click.widget) {
+			switch (e->we.click.widget) {
 				case 3: /* Flip sorting method ascending/descending */
 					vl->l.flags ^= VL_DESC;
 					vl->l.flags |= VL_RESORT;
@@ -1290,7 +1290,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					ShowDropDownMenu(w, _vehicle_sort_listing, vl->l.sort_type, 5, 0, 0);
 					return;
 				case 7: { /* Matrix to show vehicles */
-					uint32 id_v = (e->click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / w->resize.step_height;
+					uint32 id_v = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / w->resize.step_height;
 					const Vehicle *v;
 
 					if (id_v >= w->vscroll.cap) return; // click out of bounds
@@ -1325,10 +1325,10 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 		}	break;
 
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-			if (vl->l.sort_type != e->dropdown.index) {
+			if (vl->l.sort_type != e->we.dropdown.index) {
 				// value has changed -> resort
 				vl->l.flags |= VL_RESORT;
-				vl->l.sort_type = e->dropdown.index;
+				vl->l.sort_type = e->we.dropdown.index;
 				vl->_sorting->criteria = vl->l.sort_type;
 			}
 			SetWindowDirty(w);
@@ -1351,8 +1351,8 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_RESIZE: /* Update the scroll + matrix */
-			if (vl->vehicle_type == VEH_Train) w->hscroll.cap += e->sizing.diff.x;
-			w->vscroll.cap += e->sizing.diff.y / (int)w->resize.step_height;
+			if (vl->vehicle_type == VEH_Train) w->hscroll.cap += e->we.sizing.diff.x;
+			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
 			w->widget[7].data = (w->vscroll.cap << 8) + 1;
 			break;
 	}

@@ -92,7 +92,7 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 3:
 				DeleteWindow(w);
 				break;

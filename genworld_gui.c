@@ -318,10 +318,10 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 		break;
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 0: DeleteWindow(w); break;
 		case 3: case 4: case 5: case 6:
-			SetNewLandscapeType(e->click.widget - 3);
+			SetNewLandscapeType(e->we.click.widget - 3);
 			break;
 		case 7: case 8: // Mapsize X
 			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, 8, 0, 0);
@@ -353,10 +353,10 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case 18: case 20: // Year buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-				HandleButtonClick(w, e->click.widget);
+				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + e->click.widget - 19, MIN_YEAR, MAX_YEAR);
+				_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + e->we.click.widget - 19, MIN_YEAR, MAX_YEAR);
 			}
 			_left_button_clicked = false;
 			break;
@@ -368,10 +368,10 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case 21: case 23: // Snow line buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-				HandleButtonClick(w, e->click.widget);
+				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.snow_line_height = clamp(_patches_newgame.snow_line_height + e->click.widget - 22, 2, 13);
+				_patches_newgame.snow_line_height = clamp(_patches_newgame.snow_line_height + e->we.click.widget - 22, 2, 13);
 			}
 			_left_button_clicked = false;
 			break;
@@ -429,52 +429,52 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DROPDOWN_SELECT:
-		switch (e->dropdown.button) {
-			case 8:  _patches_newgame.map_x = e->dropdown.index + 6; break;
-			case 10: _patches_newgame.map_y = e->dropdown.index + 6; break;
+		switch (e->we.dropdown.button) {
+			case 8:  _patches_newgame.map_x = e->we.dropdown.index + 6; break;
+			case 10: _patches_newgame.map_y = e->we.dropdown.index + 6; break;
 			case 12:
-				_opt_newgame.diff.number_towns = e->dropdown.index;
+				_opt_newgame.diff.number_towns = e->we.dropdown.index;
 				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
 				DoCommandP(0, 2, _opt_newgame.diff.number_towns, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 				break;
 			case 14:
-				_opt_newgame.diff.number_industries = e->dropdown.index;
+				_opt_newgame.diff.number_industries = e->we.dropdown.index;
 				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
 				DoCommandP(0, 3, _opt_newgame.diff.number_industries, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 				break;
 			case 25:
-				_patches_newgame.tree_placer = e->dropdown.index;
+				_patches_newgame.tree_placer = e->we.dropdown.index;
 				break;
 			case 27:
 				if (mode == GLWP_HEIGHTMAP) {
-					_patches_newgame.heightmap_rotation = e->dropdown.index;
+					_patches_newgame.heightmap_rotation = e->we.dropdown.index;
 				} else {
-					_patches_newgame.land_generator = e->dropdown.index;
+					_patches_newgame.land_generator = e->we.dropdown.index;
 				}
 				break;
 //			case 29:
 			case 28:
-				_opt_newgame.diff.terrain_type = e->dropdown.index;
+				_opt_newgame.diff.terrain_type = e->we.dropdown.index;
 				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
 				DoCommandP(0, 12, _opt_newgame.diff.terrain_type, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 				break;
 //			case 31:
 			case 29:
-				_opt_newgame.diff.quantity_sea_lakes = e->dropdown.index;
+				_opt_newgame.diff.quantity_sea_lakes = e->we.dropdown.index;
 				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
 				DoCommandP(0, 13, _opt_newgame.diff.quantity_sea_lakes, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 				break;
 //			case 33:
 			case 31:
-				_patches_newgame.tgen_smoothness = e->dropdown.index;
+				_patches_newgame.tgen_smoothness = e->we.dropdown.index;
 				break;
 		}
 		SetWindowDirty(w);
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		if (e->edittext.str != NULL) {
-			int32 value = atoi(e->edittext.str);
+		if (e->we.edittext.str != NULL) {
+			int32 value = atoi(e->we.edittext.str);
 
 			switch (WP(w, def_d).data_3) {
 			case START_DATE_QUERY:
@@ -600,10 +600,10 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 
 		break;
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 0: DeleteWindow(w); break;
 		case 3: case 4: case 5: case 6:
-			SetNewLandscapeType(e->click.widget - 3);
+			SetNewLandscapeType(e->we.click.widget - 3);
 			break;
 		case 7: case 8: // Mapsize X
 			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, 8, 0, 0);
@@ -625,10 +625,10 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		case 14: case 16: // Year buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-				HandleButtonClick(w, e->click.widget);
+				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + e->click.widget - 15, MIN_YEAR, MAX_YEAR);
+				_patches_newgame.starting_year = clamp(_patches_newgame.starting_year + e->we.click.widget - 15, MIN_YEAR, MAX_YEAR);
 			}
 			_left_button_clicked = false;
 			break;
@@ -640,10 +640,10 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		case 17: case 19: // Height level buttons
 			/* Don't allow too fast scrolling */
 			if ((w->flags4 & WF_TIMEOUT_MASK) <= 2 << WF_TIMEOUT_SHL) {
-				HandleButtonClick(w, e->click.widget);
+				HandleButtonClick(w, e->we.click.widget);
 				SetWindowDirty(w);
 
-				_patches_newgame.se_flat_world_height = clamp(_patches_newgame.se_flat_world_height + e->click.widget - 18, 0, 15);
+				_patches_newgame.se_flat_world_height = clamp(_patches_newgame.se_flat_world_height + e->we.click.widget - 18, 0, 15);
 			}
 			_left_button_clicked = false;
 			break;
@@ -656,9 +656,9 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DROPDOWN_SELECT:
-		switch (e->dropdown.button) {
-			case 8:  _patches_newgame.map_x = e->dropdown.index + 6; break;
-			case 10: _patches_newgame.map_y = e->dropdown.index + 6; break;
+		switch (e->we.dropdown.button) {
+			case 8:  _patches_newgame.map_x = e->we.dropdown.index + 6; break;
+			case 10: _patches_newgame.map_y = e->we.dropdown.index + 6; break;
 		}
 		SetWindowDirty(w);
 		break;
@@ -668,8 +668,8 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		if (e->edittext.str != NULL) {
-			int32 value = atoi(e->edittext.str);
+		if (e->we.edittext.str != NULL) {
+			int32 value = atoi(e->we.edittext.str);
 
 			switch (WP(w, def_d).data_3) {
 			case START_DATE_QUERY:
@@ -760,7 +760,7 @@ static void ShowTerrainProgressProc(Window* w, WindowEvent* e)
 {
 	switch (e->event) {
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2:
 			if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
 			ShowQuery(STR_GENERATION_ABORT_CAPTION, STR_GENERATION_ABORT_MESSAGE, AbortGeneratingWorldCallback, WC_GENERATE_PROGRESS_WINDOW, 0);

@@ -98,8 +98,8 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 			_iconsole_mode = ICONSOLE_CLOSED;
 			break;
 		case WE_KEYPRESS:
-			e->keypress.cont = false;
-			switch (e->keypress.keycode) {
+			e->we.keypress.cont = false;
+			switch (e->we.keypress.keycode) {
 				case WKC_UP:
 					IConsoleHistoryNavigate(+1);
 					SetWindowDirty(w);
@@ -169,25 +169,25 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 					break;
 				case WKC_BACKSPACE: case WKC_DELETE:
-					if (DeleteTextBufferChar(&_iconsole_cmdline, e->keypress.keycode)) {
+					if (DeleteTextBufferChar(&_iconsole_cmdline, e->we.keypress.keycode)) {
 						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
 					}
 					break;
 				case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-					if (MoveTextBufferPos(&_iconsole_cmdline, e->keypress.keycode)) {
+					if (MoveTextBufferPos(&_iconsole_cmdline, e->we.keypress.keycode)) {
 						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
 					}
 					break;
 				default:
-					if (IsValidAsciiChar(e->keypress.ascii, CS_ALPHANUMERAL)) {
+					if (IsValidAsciiChar(e->we.keypress.ascii, CS_ALPHANUMERAL)) {
 						_iconsole_scroll = ICON_BUFFER;
-						InsertTextBufferChar(&_iconsole_cmdline, e->keypress.ascii);
+						InsertTextBufferChar(&_iconsole_cmdline, e->we.keypress.ascii);
 						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
 					} else {
-						e->keypress.cont = true;
+						e->we.keypress.cont = true;
 					}
 			break;
 		}

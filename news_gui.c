@@ -167,7 +167,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 1: {
 			NewsItem *ni = WP(w, news_d).ni;
 			DeleteWindow(w);
@@ -188,16 +188,16 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_KEYPRESS:
-		if (e->keypress.keycode == WKC_SPACE) {
+		if (e->we.keypress.keycode == WKC_SPACE) {
 			// Don't continue.
-			e->keypress.cont = false;
+			e->we.keypress.cont = false;
 			DeleteWindow(w);
 		}
 		break;
 
 	case WE_MESSAGE: /* The chatbar has notified us that is was either created or closed */
-		switch (e->message.msg) {
-			case WE_CREATE: w->message.msg = e->message.wparam; break;
+		switch (e->we.message.msg) {
+			case WE_CREATE: w->message.msg = e->we.message.wparam; break;
 			case WE_DESTROY: w->message.msg = 0; break;
 		}
 		break;
@@ -604,9 +604,9 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: {
-			int y = (e->click.pt.y - 19) / 12;
+			int y = (e->we.click.pt.y - 19) / 12;
 			byte p, q;
 
 			#if 0 // === DEBUG code only
@@ -636,7 +636,7 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_RESIZE:
-		w->vscroll.cap += e->sizing.diff.y / 12;
+		w->vscroll.cap += e->we.sizing.diff.y / 12;
 		break;
 	}
 }
@@ -749,10 +749,10 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: /* Clicked on any of the fake widgets */
-			if (e->click.pt.x > 13 && e->click.pt.x < 89 && e->click.pt.y > 26 && e->click.pt.y < 146) {
-				int element = (e->click.pt.y - 26) / 12;
+			if (e->we.click.pt.x > 13 && e->we.click.pt.x < 89 && e->we.click.pt.y > 26 && e->we.click.pt.y < 146) {
+				int element = (e->we.click.pt.y - 26) / 12;
 				byte val = (GetNewsDisplayValue(element) + 1) % 3;
 
 				SetMessageButtonStates(w, val, element);
@@ -768,11 +768,11 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			break;
 		case 25: /* Change ticker sound on/off */
 			_news_ticker_sound ^= 1;
-			TOGGLEBIT(w->click_state, e->click.widget);
-			InvalidateWidget(w, e->click.widget);
+			TOGGLEBIT(w->click_state, e->we.click.widget);
+			InvalidateWidget(w, e->we.click.widget);
 			break;
 		default: { /* Clicked on the [<] .. [>] widgets */
-			int wid = e->click.widget;
+			int wid = e->we.click.widget;
 			if (wid > 2 && wid < 23) {
 				int element = (wid - 3) / 2;
 				byte val = (GetNewsDisplayValue(element) + ((wid & 1) ? -1 : 1)) % 3;
@@ -785,7 +785,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 		} break;
 
 	case WE_DROPDOWN_SELECT: /* Select all settings for newsmessages */
-		WP(w, def_d).data_2 = e->dropdown.index;
+		WP(w, def_d).data_2 = e->we.dropdown.index;
 		_news_display_opt = message_val[WP(w, def_d).data_2];
 		w->disabled_state = message_dis[WP(w, def_d).data_2];
 		SetWindowDirty(w);

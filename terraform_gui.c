@@ -85,18 +85,18 @@ static void GenerateRockyArea(TileIndex end, TileIndex start)
 
 /**
  * A central place to handle all X_AND_Y dragged GUI functions.
- * @param we @WindowEvent variable holding in its higher bits (excluding the lower
+ * @param e @WindowEvent variable holding in its higher bits (excluding the lower
  * 4, since that defined the X_Y drag) the type of action to be performed
  * @return Returns true if the action was found and handled, and false otherwise. This
  * allows for additional implements that are more local. For example X_Y drag
  * of convertrail which belongs in rail_gui.c and not terraform_gui.c
  **/
-bool GUIPlaceProcDragXY(const WindowEvent *we)
+bool GUIPlaceProcDragXY(const WindowEvent *e)
 {
-	TileIndex start_tile = we->place.starttile;
-	TileIndex end_tile = we->place.tile;
+	TileIndex start_tile = e->we.place.starttile;
+	TileIndex end_tile = e->we.place.tile;
 
-	switch (we->place.userdata >> 4) {
+	switch (e->we.place.userdata >> 4) {
 	case GUI_PlaceProc_DemolishArea >> 4:
 		DoCommandP(end_tile, start_tile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 		break;
@@ -210,15 +210,15 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		if (e->click.widget >= 4) _terraform_button_proc[e->click.widget - 4](w);
+		if (e->we.click.widget >= 4) _terraform_button_proc[e->we.click.widget - 4](w);
 		break;
 
 	case WE_KEYPRESS: {
 		uint i;
 
 		for (i = 0; i != lengthof(_terraform_keycodes); i++) {
-			if (e->keypress.keycode == _terraform_keycodes[i]) {
-				e->keypress.cont = false;
+			if (e->we.keypress.keycode == _terraform_keycodes[i]) {
+				e->we.keypress.cont = false;
 				_terraform_button_proc[i](w);
 				break;
 			}
@@ -227,16 +227,16 @@ static void TerraformToolbWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_PLACE_OBJ:
-		_place_proc(e->place.tile);
+		_place_proc(e->we.place.tile);
 		return;
 
 	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata & 0xF);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata & 0xF);
 		break;
 
 	case WE_PLACE_MOUSEUP:
-		if (e->click.pt.x != -1 &&
-				(e->place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
+		if (e->we.click.pt.x != -1 &&
+				(e->we.place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
 			GUIPlaceProcDragXY(e);
 		}
 		break;

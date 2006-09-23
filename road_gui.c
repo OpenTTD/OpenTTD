@@ -193,11 +193,11 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		if (e->click.widget >= 3) _build_road_button_proc[e->click.widget - 3](w);
+		if (e->we.click.widget >= 3) _build_road_button_proc[e->we.click.widget - 3](w);
 	}	break;
 
 	case WE_KEYPRESS:
-		switch (e->keypress.keycode) {
+		switch (e->we.keypress.keycode) {
 			case '1': BuildRoadClick_NE(w);           break;
 			case '2': BuildRoadClick_NW(w);           break;
 			case '3': BuildRoadClick_Demolish(w);     break;
@@ -211,12 +211,12 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 			default: return;
 		}
 		MarkTileDirty(_thd.pos.x, _thd.pos.y); // redraw tile selection
-		e->keypress.cont = false;
+		e->we.keypress.cont = false;
 		break;
 
 	case WE_PLACE_OBJ:
 		_remove_button_clicked = (w->click_state & (1 << 11)) != 0;
-		_place_proc(e->place.tile);
+		_place_proc(e->we.place.tile);
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
@@ -233,15 +233,15 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_PLACE_DRAG: {
 		int sel_method;
-		switch (e->place.userdata) {
+		switch (e->we.place.userdata) {
 			case 1:
 				sel_method = VPM_FIX_X;
-				_place_road_flag = (_place_road_flag & ~2) | ((e->place.pt.y & 8) >> 2);
+				_place_road_flag = (_place_road_flag & ~2) | ((e->we.place.pt.y & 8) >> 2);
 				break;
 
 			case 2:
 				sel_method = VPM_FIX_Y;
-				_place_road_flag = (_place_road_flag & ~2) | ((e->place.pt.x & 8) >> 2);
+				_place_road_flag = (_place_road_flag & ~2) | ((e->we.place.pt.x & 8) >> 2);
 				break;
 
 			case 4:
@@ -253,19 +253,19 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 				break;
 		}
 
-		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, sel_method);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, sel_method);
 		return;
 	}
 
 	case WE_PLACE_MOUSEUP:
-		if (e->place.pt.x != -1) {
-			TileIndex start_tile = e->place.starttile;
-			TileIndex end_tile = e->place.tile;
+		if (e->we.place.pt.x != -1) {
+			TileIndex start_tile = e->we.place.starttile;
+			TileIndex end_tile = e->we.place.tile;
 
-			if (e->place.userdata == 0) {
+			if (e->we.place.userdata == 0) {
 				ResetObjectToPlace();
 				ShowBuildBridgeWindow(start_tile, end_tile, 0x80);
-			} else if (e->place.userdata != 4) {
+			} else if (e->we.place.userdata != 4) {
 				DoCommandP(end_tile, start_tile, _place_road_flag, CcPlaySound1D,
 					_remove_button_clicked ?
 					CMD_REMOVE_LONG_ROAD | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_1805_CAN_T_REMOVE_ROAD_FROM) :
@@ -277,7 +277,7 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_PRESIZE: {
-		TileIndex tile = e->place.tile;
+		TileIndex tile = e->we.place.tile;
 
 		DoCommand(tile, 0x200, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
@@ -369,9 +369,9 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: case 4: case 5: case 6:
-			_road_depot_orientation = e->click.widget - 3;
+			_road_depot_orientation = e->we.click.widget - 3;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -445,14 +445,14 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: case 4: case 5: case 6:
-			_road_station_picker_orientation = e->click.widget - 3;
+			_road_station_picker_orientation = e->we.click.widget - 3;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		case 7: case 8:
-			_station_show_coverage = e->click.widget - 7;
+			_station_show_coverage = e->we.click.widget - 7;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;

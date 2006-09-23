@@ -37,7 +37,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		int wid = e->click.widget;
+		int wid = e->we.click.widget;
 		if (wid >= 3) {
 			if (HandlePlacePushButton(w, wid, SPR_CURSOR_INDUSTRY, 1, NULL))
 				WP(w,def_d).data_1 = wid - 3;
@@ -45,7 +45,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_PLACE_OBJ:
-		if (DoCommandP(e->place.tile, _build_industry_types[_opt_ptr->landscape][WP(w,def_d).data_1], 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY)))
+		if (DoCommandP(e->we.place.tile, _build_industry_types[_opt_ptr->landscape][WP(w,def_d).data_1], 0, NULL, CMD_BUILD_INDUSTRY | CMD_MSG(STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY)))
 			ResetObjectToPlace();
 		break;
 
@@ -347,7 +347,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		Industry *i;
 
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 5: {
 			int line, x;
 
@@ -356,9 +356,9 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			// We should work if needed..
 			if (!IsProductionAlterable(i)) return;
 
-			x = e->click.pt.x;
-			line = (e->click.pt.y - 127) / 10;
-			if (e->click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
+			x = e->we.click.pt.x;
+			line = (e->we.click.pt.y - 127) / 10;
+			if (e->we.click.pt.y >= 127 && IS_INT_INSIDE(line, 0, 2) && i->produced_cargo[line] != CT_INVALID) {
 				if (IS_INT_INSIDE(x, 5, 25) ) {
 					/* Clicked buttons, decrease or increase production */
 					if (x < 15) {
@@ -399,11 +399,11 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT:
-		if (e->edittext.str[0] != '\0') {
+		if (e->we.edittext.str[0] != '\0') {
 			Industry* i = GetIndustry(w->window_number);
 			int line = WP(w,vp2_d).data_1;
 
-			i->production_rate[line] = clampu(atoi(e->edittext.str), 0, 255);
+			i->production_rate[line] = clampu(atoi(e->we.edittext.str), 0, 255);
 			UpdateIndustryProduction(i);
 			SetWindowDirty(w);
 		}
@@ -623,7 +623,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: {
 			_industry_sort_order = _industry_sort_order==0 ? 1 : 0;
 			_industry_sort_dirty = true;
@@ -649,7 +649,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 8: {
-			int y = (e->click.pt.y - 28) / 10;
+			int y = (e->we.click.pt.y - 28) / 10;
 			uint16 p;
 
 			if (!IS_INT_INSIDE(y, 0, w->vscroll.cap)) return;
@@ -666,7 +666,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_RESIZE:
-		w->vscroll.cap += e->sizing.diff.y / 10;
+		w->vscroll.cap += e->we.sizing.diff.y / 10;
 		break;
 	}
 }

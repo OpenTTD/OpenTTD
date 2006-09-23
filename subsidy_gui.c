@@ -144,8 +144,10 @@ static void SubsidiesListWndProc(Window *w, WindowEvent *e)
 		case WE_PAINT: DrawSubsidiesWindow(w); break;
 
 		case WE_CLICK:
-			switch (e->click.widget) {
-				case 3: HandleSubsidyClick(e->click.pt.y - 25); break;
+			switch (e->we.click.widget) {
+				case 3:
+					HandleSubsidyClick(e->we.click.pt.y - 25);
+					break;
 			}
 		break;
 	}

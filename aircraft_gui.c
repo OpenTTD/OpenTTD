@@ -182,9 +182,9 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: { /* listbox */
-			uint i = (e->click.pt.y - 14) / 24;
+			uint i = (e->we.click.pt.y - 14) / 24;
 			if (i < w->vscroll.cap) {
 				WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
 				SetWindowDirty(w);
@@ -209,15 +209,15 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		if (e->edittext.str[0] != '\0') {
-			_cmd_text = e->edittext.str;
+		if (e->we.edittext.str[0] != '\0') {
+			_cmd_text = e->we.edittext.str;
 			DoCommandP(0, WP(w, buildtrain_d).rename_engine, 0, NULL,
 				CMD_RENAME_ENGINE | CMD_MSG(STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE));
 		}
 	} break;
 
 	case WE_RESIZE:
-		w->vscroll.cap += e->sizing.diff.y / 24;
+		w->vscroll.cap += e->we.sizing.diff.y / 24;
 		w->widget[2].data = (w->vscroll.cap << 8) + 1;
 		break;
 	}
@@ -289,9 +289,9 @@ static void AircraftRefitWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: { /* listbox */
-			int y = e->click.pt.y - 25;
+			int y = e->we.click.pt.y - 25;
 			if (y >= 0) {
 				WP(w,refit_d).sel = y / 10;
 				SetWindowDirty(w);
@@ -433,7 +433,7 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		int mod;
 		const Vehicle *v;
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: /* rename */
 			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
@@ -456,8 +456,8 @@ do_change_service_int:
 	} break;
 
 	case WE_ON_EDIT_TEXT:
-		if (e->edittext.str[0] != '\0') {
-			_cmd_text = e->edittext.str;
+		if (e->we.edittext.str[0] != '\0') {
+			_cmd_text = e->we.edittext.str;
 			DoCommandP(0, w->window_number, 0, NULL,
 				CMD_NAME_VEHICLE | CMD_MSG(STR_A031_CAN_T_NAME_AIRCRAFT));
 		}
@@ -588,7 +588,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		const Vehicle *v = GetVehicle(w->window_number);
 
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 5: /* start stop */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_AIRCRAFT | CMD_MSG(STR_A016_CAN_T_STOP_START_AIRCRAFT));
 			break;
@@ -615,10 +615,10 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_RESIZE:
-		w->viewport->width  += e->sizing.diff.x;
-		w->viewport->height += e->sizing.diff.y;
-		w->viewport->virtual_width  += e->sizing.diff.x;
-		w->viewport->virtual_height += e->sizing.diff.y;
+		w->viewport->width          += e->we.sizing.diff.x;
+		w->viewport->height         += e->we.sizing.diff.y;
+		w->viewport->virtual_width  += e->we.sizing.diff.x;
+		w->viewport->virtual_height += e->we.sizing.diff.y;
 		break;
 
 	case WE_DESTROY:
@@ -661,11 +661,10 @@ void ShowAircraftViewWindow(const Vehicle *v)
 
 static void DrawAircraftDepotWindow(Window *w)
 {
-	TileIndex tile;
+	TileIndex tile = w->window_number;
 	Vehicle *v;
 	int num,x,y;
 
-	tile = w->window_number;
 
 	/* setup disabled buttons */
 	w->disabled_state =
@@ -811,9 +810,9 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 5: /* click aircraft */
-				AircraftDepotClickAircraft(w, e->click.pt.x, e->click.pt.y);
+				AircraftDepotClickAircraft(w, e->we.click.pt.x, e->we.click.pt.y);
 				break;
 
 			case 7: /* show build aircraft window */
@@ -862,7 +861,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DRAGDROP:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 5: {
 			Vehicle *v;
 			VehicleID sel = WP(w,traindepot_d).sel;
@@ -870,7 +869,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 			WP(w,traindepot_d).sel = INVALID_VEHICLE;
 			SetWindowDirty(w);
 
-			if (GetVehicleFromAircraftDepotWndPt(w, e->dragdrop.pt.x, e->dragdrop.pt.y, &v) == 0 &&
+			if (GetVehicleFromAircraftDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &v) == 0 &&
 					v != NULL &&
 					sel == v->index) {
 				ShowAircraftViewWindow(v);
@@ -901,8 +900,8 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_RESIZE:
-		w->vscroll.cap += e->sizing.diff.y / 24;
-		w->hscroll.cap += e->sizing.diff.x / 74;
+		w->vscroll.cap += e->we.sizing.diff.y / 24;
+		w->hscroll.cap += e->we.sizing.diff.x / 74;
 		w->widget[5].data = (w->vscroll.cap << 8) + w->hscroll.cap;
 		break;
 	}

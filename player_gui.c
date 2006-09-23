@@ -166,7 +166,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: {/* toggle size */
 			byte mode = (byte)WP(w,def_d).data_1;
 			bool stickied = !!(w->flags4 & WF_STICKY);
@@ -361,7 +361,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_CLICK: {
-			switch (e->click.widget) {
+			switch (e->we.click.widget) {
 				/* Livery Class buttons */
 				case 2:
 				case 3:
@@ -370,7 +370,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 				case 6: {
 					LiveryScheme scheme;
 
-					WP(w, livery_d).livery_class = e->click.widget - 2;
+					WP(w, livery_d).livery_class = e->we.click.widget - 2;
 					WP(w, livery_d).sel = 0;
 
 					/* Select the first item in the list */
@@ -380,7 +380,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 							break;
 						}
 					}
-					w->click_state = 1 << e->click.widget;
+					w->click_state = 1 << e->we.click.widget;
 					w->height = 49 + livery_height[WP(w, livery_d).livery_class] * 14;
 					w->widget[13].bottom = w->height - 1;
 					w->widget[13].data = livery_height[WP(w, livery_d).livery_class] << 8 | 1;
@@ -400,7 +400,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 
 				case 13: {
 					LiveryScheme scheme;
-					LiveryScheme j = (e->click.pt.y - 48) / 14;
+					LiveryScheme j = (e->we.click.pt.y - 48) / 14;
 
 					for (scheme = 0; scheme <= j; scheme++) {
 						if (livery_class[scheme] != WP(w, livery_d).livery_class) j++;
@@ -409,7 +409,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 					if (j >= LS_END) return;
 
 					/* If clicking on the left edge, toggle using the livery */
-					if (e->click.pt.x < 10) {
+					if (e->we.click.pt.x < 10) {
 						DoCommandP(0, j | (2 << 8), !GetPlayer(w->window_number)->livery[j].in_use, NULL, CMD_SET_PLAYER_COLOR);
 					}
 
@@ -430,7 +430,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 
 			for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
 				if (HASBIT(WP(w, livery_d).sel, scheme)) {
-					DoCommandP(0, scheme | (e->dropdown.button == 10 ? 0 : 256), e->dropdown.index, NULL, CMD_SET_PLAYER_COLOR);
+					DoCommandP(0, scheme | (e->we.dropdown.button == 10 ? 0 : 256), e->we.dropdown.index, NULL, CMD_SET_PLAYER_COLOR);
 				}
 			}
 			break;
@@ -476,7 +476,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: DeleteWindow(w); break;
 		case 4: /* ok click */
 			DoCommandP(0, 0, WP(w,facesel_d).face, NULL, CMD_SET_PLAYER_FACE);
@@ -484,7 +484,7 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 			break;
 		case 5: /* male click */
 		case 6: /* female click */
-			WP(w,facesel_d).gender = e->click.widget - 5;
+			WP(w,facesel_d).gender = e->we.click.widget - 5;
 			SetWindowDirty(w);
 			break;
 		case 7:
@@ -704,7 +704,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: { /* select face */
 			Window *wf = AllocateWindowDescFront(&_select_player_face_desc, w->window_number);
 			if (wf != NULL) {
@@ -779,7 +779,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_OBJ: {
-		if (DoCommandP(e->place.tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
+		if (DoCommandP(e->we.place.tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
 			ResetObjectToPlace();
 		break;
 	}
@@ -790,7 +790,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		char *b = e->edittext.str;
+		char *b = e->we.edittext.str;
 
 		// empty string is allowed for password
 		if (*b == '\0' && WP(w,def_d).byte_1 != 2) return;
@@ -860,7 +860,7 @@ static void BuyCompanyWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3:
 			DeleteWindow(w);
 			break;

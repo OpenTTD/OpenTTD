@@ -327,11 +327,11 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		}
 	} break;
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: {
 			const Station* st;
 
-			uint32 id_v = (e->click.pt.y - 41) / 10;
+			uint32 id_v = (e->we.click.pt.y - 41) / 10;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 
@@ -351,10 +351,10 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		case 9: /* airport */
 		case 10: /* dock */
 			if (_ctrl_pressed) {
-				TOGGLEBIT(facilities, e->click.widget - 6);
+				TOGGLEBIT(facilities, e->we.click.widget - 6);
 			} else {
 				facilities = 0;
-				SETBIT(facilities, e->click.widget - 6);
+				SETBIT(facilities, e->we.click.widget - 6);
 			}
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
@@ -378,12 +378,12 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, _station_sort_listing, sl->sort_type, 30, 0, 0);
 		break;
 		default:
-			if (e->click.widget >= 12 && e->click.widget <= 24) { //change cargo_filter
+			if (e->we.click.widget >= 12 && e->we.click.widget <= 24) { //change cargo_filter
 				if (_ctrl_pressed) {
-					TOGGLEBIT(cargo_filter, e->click.widget - 12);
+					TOGGLEBIT(cargo_filter, e->we.click.widget - 12);
 				} else {
 					cargo_filter = 0;
-					SETBIT(cargo_filter, e->click.widget - 12);
+					SETBIT(cargo_filter, e->we.click.widget - 12);
 				}
 				sl->flags |= SL_REBUILD;
 				SetWindowDirty(w);
@@ -391,9 +391,9 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		}
 	} break;
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-		if (sl->sort_type != e->dropdown.index) {
+		if (sl->sort_type != e->we.dropdown.index) {
 			// value has changed -> resort
-			sl->sort_type = e->dropdown.index;
+			sl->sort_type = e->we.dropdown.index;
 			sl->flags |= SL_RESORT;
 		}
 		SetWindowDirty(w);
@@ -416,7 +416,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_RESIZE:
-		w->vscroll.cap += e->sizing.diff.y / 10;
+		w->vscroll.cap += e->we.sizing.diff.y / 10;
 		break;
 	}
 }
@@ -652,7 +652,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 7:
 			ScrollMainWindowToTile(GetStation(w->window_number)->xy);
 			break;
@@ -708,8 +708,8 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT:
-		if (e->edittext.str[0] != '\0') {
-			_cmd_text = e->edittext.str;
+		if (e->we.edittext.str[0] != '\0') {
+			_cmd_text = e->we.edittext.str;
 			DoCommandP(0, w->window_number, 0, NULL,
 				CMD_RENAME_STATION | CMD_MSG(STR_3031_CAN_T_RENAME_STATION));
 		}

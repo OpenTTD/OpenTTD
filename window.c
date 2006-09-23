@@ -33,40 +33,40 @@ static void DispatchLeftClickEvent(Window *w, int x, int y)
 	WindowEvent e;
 	const Widget *wi;
 
-	e.click.pt.x = x;
-	e.click.pt.y = y;
+	e.we.click.pt.x = x;
+	e.we.click.pt.y = y;
 	e.event = WE_CLICK;
 
 	if (w->desc_flags & WDF_DEF_WIDGET) {
-		e.click.widget = GetWidgetFromPos(w, x, y);
-		if (e.click.widget < 0) return; /* exit if clicked outside of widgets */
+		e.we.click.widget = GetWidgetFromPos(w, x, y);
+		if (e.we.click.widget < 0) return; /* exit if clicked outside of widgets */
 
-		wi = &w->widget[e.click.widget];
+		wi = &w->widget[e.we.click.widget];
 
 		/* don't allow any interaction if the button has been disabled */
-		if (HASBIT(w->disabled_state, e.click.widget)) return;
+		if (HASBIT(w->disabled_state, e.we.click.widget)) return;
 
 		if (wi->type & 0xE0) {
 			/* special widget handling for buttons*/
 			switch (wi->type) {
 			case WWT_IMGBTN  | WWB_PUSHBUTTON: /* WWT_PUSHIMGBTN */
 			case WWT_TEXTBTN | WWB_PUSHBUTTON: /* WWT_PUSHTXTBTN */
-				HandleButtonClick(w, e.click.widget);
+				HandleButtonClick(w, e.we.click.widget);
 				break;
 			case WWT_NODISTXTBTN:
 				break;
 			}
 		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_SCROLL2BAR || wi->type == WWT_HSCROLLBAR) {
-			ScrollbarClickHandler(w, wi, e.click.pt.x, e.click.pt.y);
+			ScrollbarClickHandler(w, wi, e.we.click.pt.x, e.we.click.pt.y);
 		}
 
 		if (w->desc_flags & WDF_STD_BTN) {
-			if (e.click.widget == 0) { /* 'X' */
+			if (e.we.click.widget == 0) { /* 'X' */
 				DeleteWindow(w);
 				return;
 			}
 
-			if (e.click.widget == 1) { /* 'Title bar' */
+			if (e.we.click.widget == 1) { /* 'Title bar' */
 				StartWindowDrag(w); // if not return then w = StartWindowDrag(w); to get correct pointer
 				return;
 			}
@@ -79,7 +79,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y)
 
 		if (w->desc_flags & WDF_STICKY_BUTTON && wi->type == WWT_STICKYBOX) {
 			w->flags4 ^= WF_STICKY;
-			InvalidateWidget(w, e.click.widget);
+			InvalidateWidget(w, e.we.click.widget);
 			return;
 		}
 	}
@@ -93,19 +93,19 @@ static void DispatchRightClickEvent(Window *w, int x, int y)
 
 	/* default tooltips handler? */
 	if (w->desc_flags & WDF_STD_TOOLTIPS) {
-		e.click.widget = GetWidgetFromPos(w, x, y);
-		if (e.click.widget < 0)
+		e.we.click.widget = GetWidgetFromPos(w, x, y);
+		if (e.we.click.widget < 0)
 			return; /* exit if clicked outside of widgets */
 
-		if (w->widget[e.click.widget].tooltips != 0) {
-			GuiShowTooltips(w->widget[e.click.widget].tooltips);
+		if (w->widget[e.we.click.widget].tooltips != 0) {
+			GuiShowTooltips(w->widget[e.we.click.widget].tooltips);
 			return;
 		}
 	}
 
 	e.event = WE_RCLICK;
-	e.click.pt.x = x;
-	e.click.pt.y = y;
+	e.we.click.pt.x = x;
+	e.we.click.pt.y = y;
 	w->wndproc(w, &e);
 }
 
@@ -774,12 +774,12 @@ static void HandlePlacePresize(void)
 	w = GetCallbackWnd();
 	if (w == NULL) return;
 
-	e.place.pt = GetTileBelowCursor();
-	if (e.place.pt.x == -1) {
+	e.we.place.pt = GetTileBelowCursor();
+	if (e.we.place.pt.x == -1) {
 		_thd.selend.x = -1;
 		return;
 	}
-	e.place.tile = TileVirtXY(e.place.pt.x, e.place.pt.y);
+	e.we.place.tile = TileVirtXY(e.we.place.pt.x, e.we.place.pt.y);
 	e.event = WE_PLACE_PRESIZE;
 	w->wndproc(w, &e);
 }
@@ -800,9 +800,9 @@ static bool HandleDragDrop(void)
 	if (w != NULL) {
 		// send an event in client coordinates.
 		e.event = WE_DRAGDROP;
-		e.dragdrop.pt.x = _cursor.pos.x - w->left;
-		e.dragdrop.pt.y = _cursor.pos.y - w->top;
-		e.dragdrop.widget = GetWidgetFromPos(w, e.dragdrop.pt.x, e.dragdrop.pt.y);
+		e.we.dragdrop.pt.x = _cursor.pos.x - w->left;
+		e.we.dragdrop.pt.y = _cursor.pos.y - w->top;
+		e.we.dragdrop.widget = GetWidgetFromPos(w, e.we.dragdrop.pt.x, e.we.dragdrop.pt.y);
 		w->wndproc(w, &e);
 	}
 	return false;
@@ -823,11 +823,11 @@ static bool HandlePopupMenu(void)
 
 	if (_left_button_down) {
 		e.event = WE_POPUPMENU_OVER;
-		e.popupmenu.pt = _cursor.pos;
+		e.we.popupmenu.pt = _cursor.pos;
 	} else {
 		_popup_menu_active = false;
 		e.event = WE_POPUPMENU_SELECT;
-		e.popupmenu.pt = _cursor.pos;
+		e.we.popupmenu.pt = _cursor.pos;
 	}
 
 	w->wndproc(w, &e);
@@ -846,8 +846,8 @@ static bool HandleMouseOver(void)
 	// We changed window, put a MOUSEOVER event to the last window
 	if (last_w != NULL && last_w != w) {
 		e.event = WE_MOUSEOVER;
-		e.mouseover.pt.x = -1;
-		e.mouseover.pt.y = -1;
+		e.we.mouseover.pt.x = -1;
+		e.we.mouseover.pt.y = -1;
 		if (last_w->wndproc) last_w->wndproc(last_w, &e);
 	}
 	last_w = w;
@@ -855,10 +855,10 @@ static bool HandleMouseOver(void)
 	if (w != NULL) {
 		// send an event in client coordinates.
 		e.event = WE_MOUSEOVER;
-		e.mouseover.pt.x = _cursor.pos.x - w->left;
-		e.mouseover.pt.y = _cursor.pos.y - w->top;
+		e.we.mouseover.pt.x = _cursor.pos.x - w->left;
+		e.we.mouseover.pt.y = _cursor.pos.y - w->top;
 		if (w->widget != NULL) {
-			e.mouseover.widget = GetWidgetFromPos(w, e.mouseover.pt.x, e.mouseover.pt.y);
+			e.we.mouseover.widget = GetWidgetFromPos(w, e.we.mouseover.pt.x, e.we.mouseover.pt.y);
 		}
 		w->wndproc(w, &e);
 	}
@@ -1084,10 +1084,10 @@ static bool HandleWindowDragging(void)
 			}
 
 			e.event = WE_RESIZE;
-			e.sizing.size.x = x + w->width;
-			e.sizing.size.y = y + w->height;
-			e.sizing.diff.x = x;
-			e.sizing.diff.y = y;
+			e.we.sizing.size.x = x + w->width;
+			e.we.sizing.size.y = y + w->height;
+			e.we.sizing.diff.x = x;
+			e.we.sizing.diff.y = y;
 			w->wndproc(w, &e);
 
 			SetWindowDirty(w);
@@ -1188,11 +1188,11 @@ static bool HandleViewportScroll(void)
 	}
 
 	if (_patches.reverse_scroll) {
-		e.scroll.delta.x = -_cursor.delta.x;
-		e.scroll.delta.y = -_cursor.delta.y;
+		e.we.scroll.delta.x = -_cursor.delta.x;
+		e.we.scroll.delta.y = -_cursor.delta.y;
 	} else {
-		e.scroll.delta.x = _cursor.delta.x;
-		e.scroll.delta.y = _cursor.delta.y;
+		e.we.scroll.delta.x = _cursor.delta.x;
+		e.we.scroll.delta.y = _cursor.delta.y;
 	}
 
 	/* Create a scroll-event and send it to the window */
@@ -1246,10 +1246,10 @@ static void SendWindowMessageW(Window *w, uint msg, uint wparam, uint lparam)
 {
 	WindowEvent e;
 
-	e.message.event  = WE_MESSAGE;
-	e.message.msg    = msg;
-	e.message.wparam = wparam;
-	e.message.lparam = lparam;
+	e.event             = WE_MESSAGE;
+	e.we.message.msg    = msg;
+	e.we.message.wparam = wparam;
+	e.we.message.lparam = lparam;
 
 	w->wndproc(w, &e);
 }
@@ -1270,17 +1270,17 @@ void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, ui
 static void HandleKeypress(uint32 key)
 {
 	Window *w;
-	WindowEvent we;
+	WindowEvent e;
 	/* Stores if a window with a textfield for typing is open
 	 * If this is the case, keypress events are only passed to windows with text fields and
 	 * to thein this main toolbar. */
 	bool query_open = false;
 
 	// Setup event
-	we.keypress.event = WE_KEYPRESS;
-	we.keypress.ascii = key & 0xFF;
-	we.keypress.keycode = key >> 16;
-	we.keypress.cont = true;
+	e.event = WE_KEYPRESS;
+	e.we.keypress.ascii = key & 0xFF;
+	e.we.keypress.keycode = key >> 16;
+	e.we.keypress.cont = true;
 
 	// check if we have a query string window open before allowing hotkeys
 	if (FindWindowById(WC_QUERY_STRING,       0) != NULL ||
@@ -1303,14 +1303,14 @@ static void HandleKeypress(uint32 key)
 				w->window_class != WC_SAVELOAD) {
 			continue;
 		}
-		w->wndproc(w, &we);
-		if (!we.keypress.cont) break;
+		w->wndproc(w, &e);
+		if (!e.we.keypress.cont) break;
 	}
 
-	if (we.keypress.cont) {
+	if (e.we.keypress.cont) {
 		w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 		// When there is no toolbar w is null, check for that
-		if (w != NULL) w->wndproc(w, &we);
+		if (w != NULL) w->wndproc(w, &e);
 	}
 }
 
@@ -1376,7 +1376,7 @@ static void MouseLoop(int click, int mousewheel)
 
 		/* Send WE_MOUSEWHEEL event to window */
 		e.event = WE_MOUSEWHEEL;
-		e.wheel.wheel = mousewheel;
+		e.we.wheel.wheel = mousewheel;
 		w->wndproc(w, &e);
 
 		/* Dispatch a MouseWheelEvent for widgets if it is not a viewport */

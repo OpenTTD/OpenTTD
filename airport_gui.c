@@ -71,12 +71,12 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		if (e->click.widget - 3 >= 0)
-			_build_air_button_proc[e->click.widget - 3](w);
+		if (e->we.click.widget - 3 >= 0)
+			_build_air_button_proc[e->we.click.widget - 3](w);
 		break;
 
 	case WE_KEYPRESS: {
-		switch (e->keypress.keycode) {
+		switch (e->we.keypress.keycode) {
 			case '1': BuildAirClick_Airport(w); break;
 			case '2': BuildAirClick_Demolish(w); break;
 			case 'l': BuildAirClick_Landscaping(w); break;
@@ -85,16 +85,16 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_PLACE_OBJ:
-		_place_proc(e->place.tile);
+		_place_proc(e->we.place.tile);
 		break;
 
 	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata);
 		break;
 
 	case WE_PLACE_MOUSEUP:
-		if (e->place.pt.x != -1) {
-			DoCommandP(e->place.tile, e->place.starttile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
+		if (e->we.place.pt.x != -1) {
+			DoCommandP(e->we.place.tile, e->we.place.starttile, 0, CcPlaySound10, CMD_CLEAR_AREA | CMD_MSG(STR_00B5_CAN_T_CLEAR_THIS_AREA));
 		}
 		break;
 
@@ -192,14 +192,14 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15:
-			_selected_airport_type = e->click.widget - 7;
+			_selected_airport_type = e->we.click.widget - 7;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		case 16: case 17:
-			_station_show_coverage = e->click.widget - 16;
+			_station_show_coverage = e->we.click.widget - 16;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;

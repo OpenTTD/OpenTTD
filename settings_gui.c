@@ -113,7 +113,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 4: case 5: /* Setup currencies dropdown */
 			ShowDropDownMenu(w, BuildCurrencyDropdown(), _opt_ptr->currency, 5, _game_mode == GM_MENU ? 0 : ~GetMaskOfAllowedCurrencies(), 0);;
 			return;
@@ -161,9 +161,9 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DROPDOWN_SELECT:
-		switch (e->dropdown.button) {
+		switch (e->we.dropdown.button) {
 		case 20: /* Vehicle design names */
-			if (e->dropdown.index == 0) {
+			if (e->we.dropdown.index == 0) {
 				DeleteCustomEngineNames();
 				MarkWholeScreenDirty();
 			} else if (!(_vehicle_design_names & 1)) {
@@ -172,40 +172,40 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 5: /* Currency */
-			if (e->dropdown.index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
-			_opt_ptr->currency = e->dropdown.index;
+			if (e->we.dropdown.index == CUSTOM_CURRENCY_ID) ShowCustCurrency();
+			_opt_ptr->currency = e->we.dropdown.index;
 			MarkWholeScreenDirty();
 			break;
 		case 8: /* Measuring units */
-			_opt_ptr->units = e->dropdown.index;
+			_opt_ptr->units = e->we.dropdown.index;
 			MarkWholeScreenDirty();
 			break;
 		case 11: /* Road side */
-			if (_opt_ptr->road_side != e->dropdown.index) { // only change if setting changed
-				DoCommandP(0, e->dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
+			if (_opt_ptr->road_side != e->we.dropdown.index) { // only change if setting changed
+				DoCommandP(0, e->we.dropdown.index, 0, NULL, CMD_SET_ROAD_DRIVE_SIDE | CMD_MSG(STR_00B4_CAN_T_DO_THIS));
 				MarkWholeScreenDirty();
 			}
 			break;
 		case 14: /* Town names */
 			if (_game_mode == GM_MENU) {
-				_opt_ptr->town_name = e->dropdown.index;
+				_opt_ptr->town_name = e->we.dropdown.index;
 				InvalidateWindow(WC_GAME_OPTIONS, 0);
 			}
 			break;
 		case 17: /* Autosave options */
-			_opt.autosave = _opt_newgame.autosave = e->dropdown.index;
+			_opt.autosave = _opt_newgame.autosave = e->we.dropdown.index;
 			SetWindowDirty(w);
 			break;
 		case 24: /* Change interface language */
-			ReadLanguagePack(e->dropdown.index);
+			ReadLanguagePack(e->we.dropdown.index);
 			MarkWholeScreenDirty();
 			break;
 		case 27: /* Change resolution */
-			if (e->dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->dropdown.index][0],_resolutions[e->dropdown.index][1]))
+			if (e->we.dropdown.index < _num_resolutions && ChangeResInGame(_resolutions[e->we.dropdown.index][0],_resolutions[e->we.dropdown.index][1]))
 				SetWindowDirty(w);
 			break;
 		case 31: /* Change screenshot format */
-			SetScreenshotFormat(e->dropdown.index);
+			SetScreenshotFormat(e->we.dropdown.index);
 			SetWindowDirty(w);
 			break;
 		}
@@ -432,7 +432,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 8: { /* Difficulty settings widget, decode click */
 			const GameSettingData *info;
 			int x, y;
@@ -443,11 +443,11 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 			if  (_networking && !_network_server)
 				return;
 
-			x = e->click.pt.x - 5;
+			x = e->we.click.pt.x - 5;
 			if (!IS_INT_INSIDE(x, 0, 21)) // Button area
 				return;
 
-			y = e->click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
+			y = e->we.click.pt.y - GAMEDIFF_WND_TOP_OFFSET;
 			if (y < 0)
 				return;
 
@@ -484,7 +484,7 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		}	break;
 		case 3: case 4: case 5: case 6: /* Easy / Medium / Hard / Custom */
 			// temporarily change difficulty level
-			SetDifficultyLevel(e->click.widget - 3, &_opt_mod_temp);
+			SetDifficultyLevel(e->we.click.widget - 3, &_opt_mod_temp);
 			SetWindowDirty(w);
 			break;
 		case 7: /* Highscore Table */
@@ -760,7 +760,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: {
 			const PatchPage *page = &_patches_page[WP(w,def_d).data_1];
 			const SettingDesc *sd;
@@ -769,10 +769,10 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			int x, y;
 			byte btn;
 
-			y = e->click.pt.y - 46 - 1;
+			y = e->we.click.pt.y - 46 - 1;
 			if (y < 0) return;
 
-			x = e->click.pt.x - 5;
+			x = e->we.click.pt.x - 5;
 			if (x < 0) return;
 
 			btn = y / 11;
@@ -848,7 +848,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		case 4: case 5: case 6: case 7: case 8: case 9:
-			WP(w,def_d).data_1 = e->click.widget - 4;
+			WP(w,def_d).data_1 = e->we.click.widget - 4;
 			DeleteWindowById(WC_QUERY_STRING, 0);
 			SetWindowDirty(w);
 			break;
@@ -861,11 +861,11 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		if (e->edittext.str != NULL) {
+		if (e->we.edittext.str != NULL) {
 			const PatchEntry *pe = &_patches_page[WP(w,def_d).data_1].entries[WP(w,def_d).data_3];
 			const SettingDesc *sd = pe->setting;
 			void *var = ini_get_variable(&sd->save, patches_ptr);
-			int32 value = atoi(e->edittext.str);
+			int32 value = atoi(e->we.edittext.str);
 
 			/* Save the correct currency-translated value */
 			if (sd->desc.flags & SGF_CURRENCY) value /= _currency->rate;
@@ -967,9 +967,9 @@ static void NewgrfWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: { // select a grf file
-			int y = (e->click.pt.y - NEWGRF_WND_PROC_OFFSET_TOP_WIDGET) / NEWGRF_WND_PROC_ROWSIZE;
+			int y = (e->we.click.pt.y - NEWGRF_WND_PROC_OFFSET_TOP_WIDGET) / NEWGRF_WND_PROC_ROWSIZE;
 
 			if (y >= w->vscroll.cap) return; // click out of bounds
 
@@ -1127,9 +1127,9 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_CLICK: {
-			int line = (e->click.pt.y - 20) / 12;
+			int line = (e->we.click.pt.y - 20) / 12;
 			int len = 0;
-			int x = e->click.pt.x;
+			int x = e->we.click.pt.x;
 			StringID str = 0;
 			CharSetFilter afilter = CS_ALPHANUMERAL;
 
@@ -1212,7 +1212,7 @@ static void CustCurrencyWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_ON_EDIT_TEXT: {
-				const char *b = e->edittext.str;
+				const char *b = e->we.edittext.str;
 
 				switch (WP(w,def_d).data_2) {
 					case 0: /* Exchange rate */

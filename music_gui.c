@@ -239,9 +239,9 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: { /* add to playlist */
-			int y = (e->click.pt.y - 23) / 6;
+			int y = (e->we.click.pt.y - 23) / 6;
 			uint i;
 			byte *p;
 
@@ -261,7 +261,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 4: { /* remove from playlist */
-			int y = (e->click.pt.y - 23) / 6;
+			int y = (e->we.click.pt.y - 23) / 6;
 			uint i;
 			byte *p;
 
@@ -291,7 +291,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 #endif
 
 		case 5: case 6: case 7: case 8: case 9: case 10: /* set playlist */
-			msf.playlist = e->click.widget - 5;
+			msf.playlist = e->we.click.widget - 5;
 			SetWindowDirty(w);
 			InvalidateWindow(WC_MUSIC_WINDOW, 0);
 			StopMusic();
@@ -402,7 +402,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: // skip to prev
 			if (!_song_is_active)
 				return;
@@ -421,7 +421,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 6:{ // volume sliders
 			byte *vol,new_vol;
-			int x = e->click.pt.x - 88;
+			int x = e->we.click.pt.x - 88;
 
 			if (x < 0)
 				return;
@@ -451,7 +451,7 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 			ShowMusicTrackSelection();
 			break;
 		case 12: case 13: case 14: case 15: case 16: case 17: // playlist
-			msf.playlist = e->click.widget - 12;
+			msf.playlist = e->we.click.widget - 12;
 			SetWindowDirty(w);
 			InvalidateWindow(WC_MUSIC_TRACK_SELECTION, 0);
 			StopMusic();

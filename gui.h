@@ -72,7 +72,7 @@ void ShowHeightmapLoad(void);
 
 void PlaceProc_DemolishArea(TileIndex tile);
 void PlaceProc_LevelLand(TileIndex tile);
-bool GUIPlaceProcDragXY(const WindowEvent *we);
+bool GUIPlaceProcDragXY(const WindowEvent *e);
 
 enum { // max 32 - 4 = 28 types
 	GUI_PlaceProc_DemolishArea    = 0 << 4,

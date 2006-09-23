@@ -259,9 +259,9 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 	break;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: {
-			uint i = (e->click.pt.y - 14) / 14;
+			uint i = (e->we.click.pt.y - 14) / 14;
 			if (i < w->vscroll.cap) {
 				WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
 				SetWindowDirty(w);
@@ -284,18 +284,18 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_ON_EDIT_TEXT: {
-		if (e->edittext.str[0] != '\0') {
-			_cmd_text = e->edittext.str;
+		if (e->we.edittext.str[0] != '\0') {
+			_cmd_text = e->we.edittext.str;
 			DoCommandP(0, WP(w,buildtrain_d).rename_engine, 0, NULL,
 				CMD_RENAME_ENGINE | CMD_MSG(STR_886B_CAN_T_RENAME_TRAIN_VEHICLE));
 		}
 	} break;
 
 	case WE_RESIZE: {
-		if (e->sizing.diff.y == 0)
+		if (e->we.sizing.diff.y == 0)
 			break;
 
-		w->vscroll.cap += e->sizing.diff.y / 14;
+		w->vscroll.cap += e->we.sizing.diff.y / 14;
 		w->widget[2].data = (w->vscroll.cap << 8) + 1;
 	} break;
 	}
@@ -653,7 +653,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 8:
 			ResetObjectToPlace();
 			ShowBuildTrainWindow(w->window_number);
@@ -662,7 +662,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 			case 10: ScrollMainWindowToTile(w->window_number); break;
 
 		case 6:
-			TrainDepotClickTrain(w, e->click.pt.x, e->click.pt.y);
+			TrainDepotClickTrain(w, e->we.click.pt.x, e->we.click.pt.y);
 			break;
 		case 9: /* clone button */
 			InvalidateWidget(w, 9);
@@ -705,13 +705,13 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DRAGDROP: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 4: case 5: {
 			Vehicle *v;
 			int sell_cmd;
 
 			/* sell vehicle */
-			if (w->disabled_state & (1 << e->click.widget))
+			if (w->disabled_state & (1 << e->we.click.widget))
 				return;
 
 			if (WP(w,traindepot_d).sel == INVALID_VEHICLE)
@@ -722,9 +722,9 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 			WP(w,traindepot_d).sel = INVALID_VEHICLE;
 			SetWindowDirty(w);
 
-			HandleButtonClick(w, e->click.widget);
+			HandleButtonClick(w, e->we.click.widget);
 
-			sell_cmd = (e->click.widget == 5 || _ctrl_pressed) ? 1 : 0;
+			sell_cmd = (e->we.click.widget == 5 || _ctrl_pressed) ? 1 : 0;
 
 			if (!IsFrontEngine(v)) {
 				DoCommandP(v->tile, v->index, sell_cmd, NULL, CMD_SELL_RAIL_WAGON | CMD_MSG(STR_8839_CAN_T_SELL_RAILROAD_VEHICLE));
@@ -743,7 +743,7 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 				WP(w,traindepot_d).sel = INVALID_VEHICLE;
 				SetWindowDirty(w);
 
-				if (GetVehicleFromTrainDepotWndPt(w, e->dragdrop.pt.x, e->dragdrop.pt.y, &gdvp) == 0 &&
+				if (GetVehicleFromTrainDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &gdvp) == 0 &&
 						sel != INVALID_VEHICLE) {
 					if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
 						DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, NULL, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
@@ -763,8 +763,8 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 		} break;
 	case WE_RESIZE: {
 		/* Update the scroll + matrix */
-		w->vscroll.cap += e->sizing.diff.y / 14;
-		w->hscroll.cap += e->sizing.diff.x;
+		w->vscroll.cap += e->we.sizing.diff.y / 14;
+		w->hscroll.cap += e->we.sizing.diff.x;
 		w->widget[6].data = (w->vscroll.cap << 8) + 1;
 	} break;
 	}
@@ -844,9 +844,9 @@ static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: { /* listbox */
-			int y = e->click.pt.y - 25;
+			int y = e->we.click.pt.y - 25;
 			if (y >= 0) {
 				WP(w,refit_d).sel = y / 10;
 				SetWindowDirty(w);
@@ -1012,7 +1012,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK: {
-		int wid = e->click.widget;
+		int wid = e->we.click.widget;
 		Vehicle *v = GetVehicle(w->window_number);
 
 		switch (wid) {
@@ -1048,10 +1048,10 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_RESIZE:
-		w->viewport->width  += e->sizing.diff.x;
-		w->viewport->height += e->sizing.diff.y;
-		w->viewport->virtual_width  += e->sizing.diff.x;
-		w->viewport->virtual_height += e->sizing.diff.y;
+		w->viewport->width          += e->we.sizing.diff.x;
+		w->viewport->height         += e->we.sizing.diff.y;
+		w->viewport->virtual_width  += e->we.sizing.diff.x;
+		w->viewport->virtual_height += e->we.sizing.diff.y;
 		break;
 
 	case WE_DESTROY:
@@ -1269,7 +1269,7 @@ static void TrainDetailsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		int mod;
 		const Vehicle *v;
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: /* name train */
 			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
@@ -1298,25 +1298,25 @@ do_change_service_int:
 			CLRBIT(w->disabled_state, 10);
 			CLRBIT(w->disabled_state, 11);
 			CLRBIT(w->disabled_state, 12);
-			SETBIT(w->disabled_state, e->click.widget);
-			WP(w,traindetails_d).tab = e->click.widget - 9;
+			SETBIT(w->disabled_state, e->we.click.widget);
+			WP(w,traindetails_d).tab = e->we.click.widget - 9;
 			SetWindowDirty(w);
 			break;
 		}
 	} break;
 
 	case WE_ON_EDIT_TEXT:
-		if (e->edittext.str[0] != '\0') {
-			_cmd_text = e->edittext.str;
+		if (e->we.edittext.str[0] != '\0') {
+			_cmd_text = e->we.edittext.str;
 			DoCommandP(0, w->window_number, 0, NULL,
 				CMD_NAME_VEHICLE | CMD_MSG(STR_8866_CAN_T_NAME_TRAIN));
 		}
 		break;
 
 	case WE_RESIZE:
-		if (e->sizing.diff.y == 0) break;
+		if (e->we.sizing.diff.y == 0) break;
 
-		w->vscroll.cap += e->sizing.diff.y / 14;
+		w->vscroll.cap += e->we.sizing.diff.y / 14;
 		w->widget[4].data = (w->vscroll.cap << 8) + 1;
 		break;
 	}

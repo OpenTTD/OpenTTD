@@ -105,9 +105,9 @@ static void RoadVehRefitWndProc(Window *w, WindowEvent *e)
 		}
 
 		case WE_CLICK:
-			switch (e->click.widget) {
+			switch (e->we.click.widget) {
 				case 2: { /* List box */
-					int y = e->click.pt.y - 25;
+					int y = e->we.click.pt.y - 25;
 					if (y >= 0) {
 						WP(w,refit_d).sel = y / 10;
 						SetWindowDirty(w);
@@ -236,7 +236,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		int mod;
 		const Vehicle *v;
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: /* rename */
 			v = GetVehicle(w->window_number);
 			SetDParam(0, v->unitnumber);
@@ -260,8 +260,8 @@ do_change_service_int:
 	} break;
 
 	case WE_ON_EDIT_TEXT: {
-		if (e->edittext.str[0] != '\0') {
-			_cmd_text = e->edittext.str;
+		if (e->we.edittext.str[0] != '\0') {
+			_cmd_text = e->we.edittext.str;
 			DoCommandP(0, w->window_number, 0, NULL,
 				CMD_NAME_VEHICLE | CMD_MSG(STR_902D_CAN_T_NAME_ROAD_VEHICLE));
 		}
@@ -375,7 +375,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		const Vehicle *v = GetVehicle(w->window_number);
 
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 5: /* start stop */
 			DoCommandP(v->tile, v->index, 0, NULL, CMD_START_STOP_ROADVEH | CMD_MSG(STR_9015_CAN_T_STOP_START_ROAD_VEHICLE));
 			break;
@@ -404,10 +404,10 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_RESIZE:
-		w->viewport->width  += e->sizing.diff.x;
-		w->viewport->height += e->sizing.diff.y;
-		w->viewport->virtual_width  += e->sizing.diff.x;
-		w->viewport->virtual_height += e->sizing.diff.y;
+		w->viewport->width          += e->we.sizing.diff.x;
+		w->viewport->height         += e->we.sizing.diff.y;
+		w->viewport->virtual_width  += e->we.sizing.diff.x;
+		w->viewport->virtual_height += e->we.sizing.diff.y;
 		break;
 
 	case WE_DESTROY:
@@ -529,9 +529,9 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: { /* listbox */
-			uint i = (e->click.pt.y - 14) / 14;
+			uint i = (e->we.click.pt.y - 14) / 14;
 			if (i < w->vscroll.cap) {
 				WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
 				SetWindowDirty(w);
@@ -556,17 +556,17 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT:
-		if (e->edittext.str[0] != '\0') {
-			_cmd_text = e->edittext.str;
+		if (e->we.edittext.str[0] != '\0') {
+			_cmd_text = e->we.edittext.str;
 			DoCommandP(0, WP(w, buildtrain_d).rename_engine, 0, NULL,
 				CMD_RENAME_ENGINE | CMD_MSG(STR_9037_CAN_T_RENAME_ROAD_VEHICLE));
 		}
 		break;
 
 	case WE_RESIZE: {
-		if (e->sizing.diff.y == 0) break;
+		if (e->we.sizing.diff.y == 0) break;
 
-		w->vscroll.cap += e->sizing.diff.y / 14;
+		w->vscroll.cap += e->we.sizing.diff.y / 14;
 		w->widget[2].data = (w->vscroll.cap << 8) + 1;
 	} break;
 
@@ -760,9 +760,9 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 5:
-			RoadDepotClickVeh(w, e->click.pt.x, e->click.pt.y);
+			RoadDepotClickVeh(w, e->we.click.pt.x, e->we.click.pt.y);
 			break;
 
 		case 7:
@@ -811,7 +811,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DRAGDROP:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 5: {
 			Vehicle *v;
 			VehicleID sel = WP(w,traindepot_d).sel;
@@ -819,7 +819,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 			WP(w,traindepot_d).sel = INVALID_VEHICLE;
 			SetWindowDirty(w);
 
-			if (GetVehicleFromRoadDepotWndPt(w, e->dragdrop.pt.x, e->dragdrop.pt.y, &v) == 0 &&
+			if (GetVehicleFromRoadDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &v) == 0 &&
 					v != NULL &&
 					sel == v->index) {
 				ShowRoadVehViewWindow(v);
@@ -852,8 +852,8 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_RESIZE:
 		/* Update the scroll + matrix */
-		w->vscroll.cap += e->sizing.diff.y / 14;
-		w->hscroll.cap += e->sizing.diff.x / 56;
+		w->vscroll.cap += e->we.sizing.diff.y / 14;
+		w->hscroll.cap += e->we.sizing.diff.x / 56;
 		w->widget[5].data = (w->vscroll.cap << 8) + w->hscroll.cap;
 		break;
 

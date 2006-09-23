@@ -418,9 +418,9 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		if (e->click.widget >= 4) {
+		if (e->we.click.widget >= 4) {
 			_remove_button_clicked = false;
-			_build_railroad_button_proc[e->click.widget - 4](w);
+			_build_railroad_button_proc[e->we.click.widget - 4](w);
 		}
 	break;
 
@@ -428,8 +428,8 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		uint i;
 
 		for (i = 0; i != lengthof(_rail_keycodes); i++) {
-			if (e->keypress.keycode == _rail_keycodes[i]) {
-				e->keypress.cont = false;
+			if (e->we.keypress.keycode == _rail_keycodes[i]) {
+				e->we.keypress.cont = false;
 				_remove_button_clicked = false;
 				_build_railroad_button_proc[i](w);
 				break;
@@ -440,38 +440,38 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_PLACE_OBJ:
-		_place_proc(e->place.tile);
+		_place_proc(e->we.place.tile);
 		return;
 
 	case WE_PLACE_DRAG: {
-		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata & 0xF);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata & 0xF);
 		return;
 	}
 
 	case WE_PLACE_MOUSEUP:
-		if (e->click.pt.x != -1) {
-			TileIndex start_tile = e->place.starttile;
-			TileIndex end_tile = e->place.tile;
+		if (e->we.click.pt.x != -1) {
+			TileIndex start_tile = e->we.place.starttile;
+			TileIndex end_tile = e->we.place.tile;
 
-			if (e->place.userdata == VPM_X_OR_Y) {
+			if (e->we.place.userdata == VPM_X_OR_Y) {
 				ResetObjectToPlace();
 				ShowBuildBridgeWindow(start_tile, end_tile, _cur_railtype);
-			} else if (e->place.userdata == VPM_RAILDIRS) {
+			} else if (e->we.place.userdata == VPM_RAILDIRS) {
 				bool old = _remove_button_clicked;
 				if (_ctrl_pressed) _remove_button_clicked = true;
 				HandleAutodirPlacement();
 				_remove_button_clicked = old;
-			} else if (e->place.userdata == VPM_SIGNALDIRS) {
+			} else if (e->we.place.userdata == VPM_SIGNALDIRS) {
 				HandleAutoSignalPlacement();
-			} else if ((e->place.userdata & 0xF) == VPM_X_AND_Y) {
+			} else if ((e->we.place.userdata & 0xF) == VPM_X_AND_Y) {
 				if (GUIPlaceProcDragXY(e)) break;
 
-				if ((e->place.userdata >> 4) == GUI_PlaceProc_ConvertRailArea >> 4)
+				if ((e->we.place.userdata >> 4) == GUI_PlaceProc_ConvertRailArea >> 4)
 					DoCommandP(end_tile, start_tile, _cur_railtype, CcPlaySound10, CMD_CONVERT_RAIL | CMD_MSG(STR_CANT_CONVERT_RAIL));
-			} else if (e->place.userdata == VPM_X_AND_Y_LIMITED) {
+			} else if (e->we.place.userdata == VPM_X_AND_Y_LIMITED) {
 				HandleStationPlacement(start_tile, end_tile);
 			} else {
-				DoRailroadTrack(e->place.userdata & 1);
+				DoRailroadTrack(e->we.place.userdata & 1);
 			}
 		}
 		break;
@@ -487,7 +487,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_PRESIZE: {
-		TileIndex tile = e->place.tile;
+		TileIndex tile = e->we.place.tile;
 
 		DoCommand(tile, 0, 0, DC_AUTO, CMD_BUILD_TUNNEL);
 		VpSetPresizeRange(tile, _build_tunnel_endtile == 0 ? tile : _build_tunnel_endtile);
@@ -723,10 +723,10 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3:
 		case 4:
-			_railstation.orientation = e->click.widget - 3;
+			_railstation.orientation = e->we.click.widget - 3;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -738,7 +738,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case 9:
 		case 10:
 		case 11:
-			_railstation.numtracks = (e->click.widget - 5) + 1;
+			_railstation.numtracks = (e->we.click.widget - 5) + 1;
 			_railstation.dragdrop = false;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
@@ -751,7 +751,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case 16:
 		case 17:
 		case 18:
-			_railstation.platlength = (e->click.widget - 12) + 1;
+			_railstation.platlength = (e->we.click.widget - 12) + 1;
 			_railstation.dragdrop = false;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
@@ -765,7 +765,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 		case 20:
 		case 21:
-			_station_show_coverage = e->click.widget - 20;
+			_station_show_coverage = e->we.click.widget - 20;
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -777,7 +777,7 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 		case 24: {
 			const StationSpec *statspec;
-			int y = (e->click.pt.y - 32) / 14;
+			int y = (e->we.click.pt.y - 32) / 14;
 
 			if (y >= w->vscroll.cap) return;
 			y += w->vscroll.pos;
@@ -798,8 +798,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_DROPDOWN_SELECT:
-		if (_railstation.station_class != e->dropdown.index) {
-			_railstation.station_class = e->dropdown.index;
+		if (_railstation.station_class != e->we.dropdown.index) {
+			_railstation.station_class = e->we.dropdown.index;
 			_railstation.station_type  = 0;
 			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
 
@@ -940,12 +940,12 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 		}
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 3:
 			case 4:
 			case 5:
 			case 6:
-				_build_depot_direction = e->click.widget - 3;
+				_build_depot_direction = e->we.click.widget - 3;
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
 				break;
@@ -1012,9 +1012,9 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 		break;
 	}
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: case 4: case 5: case 6: case 7: {
-			byte type = e->click.widget - 3 + w->hscroll.pos;
+			byte type = e->we.click.widget - 3 + w->hscroll.pos;
 
 			/* Check station availability callback */
 			const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, type);

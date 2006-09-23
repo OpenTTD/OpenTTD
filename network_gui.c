@@ -385,8 +385,8 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		nd->field = e->click.widget;
-		switch (e->click.widget) {
+		nd->field = e->we.click.widget;
+		switch (e->we.click.widget) {
 		case 0: case 14: /* Close 'X' | Cancel button */
 			DeleteWindowById(WC_NETWORK_WINDOW, 0);
 			break;
@@ -396,9 +396,9 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		case 6: /* Sort by name */
 		case 7: /* Sort by connected clients */
 		case 8: /* Connectivity (green dot) */
-			if (ld->sort_type == e->click.widget - 6) ld->flags ^= VL_DESC;
+			if (ld->sort_type == e->we.click.widget - 6) ld->flags ^= VL_DESC;
 			ld->flags |= VL_RESORT;
-			ld->sort_type = e->click.widget - 6;
+			ld->sort_type = e->we.click.widget - 6;
 
 			_ng_sorting.order = !!(ld->flags & VL_DESC);
 			_ng_sorting.criteria = ld->sort_type;
@@ -406,7 +406,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		case 9: { /* Matrix to show networkgames */
 			NetworkGameList *cur_item;
-			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
+			uint32 id_v = (e->we.click.pt.y - NET_PRC__OFFSET_TOP_WIDGET) / NET_PRC__SIZE_OF_ROW;
 
 			if (id_v >= w->vscroll.cap) return; // click out of bounds
 			id_v += w->vscroll.pos;
@@ -450,9 +450,9 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-		switch (e->dropdown.button) {
+		switch (e->we.dropdown.button) {
 			case 5:
-				_network_lan_internet = e->dropdown.index;
+				_network_lan_internet = e->we.dropdown.index;
 				break;
 		}
 
@@ -471,7 +471,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 	case WE_KEYPRESS:
 		if (nd->field != 3) {
 			if (nd->server != NULL) {
-				if (e->keypress.keycode == WKC_DELETE) { /* Press 'delete' to remove servers */
+				if (e->we.keypress.keycode == WKC_DELETE) { /* Press 'delete' to remove servers */
 					NetworkGameListRemoveItem(nd->server);
 					NetworkRebuildHostList();
 					nd->server = NULL;
@@ -492,7 +492,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT:
-		NetworkAddServer(e->edittext.str);
+		NetworkAddServer(e->we.edittext.str);
 		NetworkRebuildHostList();
 		break;
 
@@ -642,8 +642,8 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		nd->field = e->click.widget;
-		switch (e->click.widget) {
+		nd->field = e->we.click.widget;
+		switch (e->we.click.widget) {
 		case 0: /* Close 'X' */
 		case 19: /* Cancel button */
 			ShowNetworkGameWindow();
@@ -655,7 +655,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 5: { /* Select map */
-			int y = (e->click.pt.y - NSSWND_START) / NSSWND_ROWSIZE;
+			int y = (e->we.click.pt.y - NSSWND_START) / NSSWND_ROWSIZE;
 
 			y += w->vscroll.pos;
 			if (y >= w->vscroll.count) return;
@@ -706,12 +706,12 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-		switch (e->dropdown.button) {
-			case  8: _network_advertise = (e->dropdown.index != 0); break;
-			case 10: _network_game_info.clients_max = e->dropdown.index; break;
-			case 12: _network_game_info.companies_max = e->dropdown.index; break;
-			case 14: _network_game_info.spectators_max = e->dropdown.index; break;
-			case 16: _network_game_info.server_lang = e->dropdown.index; break;
+		switch (e->we.dropdown.button) {
+			case  8: _network_advertise                = (e->we.dropdown.index != 0); break;
+			case 10: _network_game_info.clients_max    = e->we.dropdown.index;        break;
+			case 12: _network_game_info.companies_max  = e->we.dropdown.index;        break;
+			case 14: _network_game_info.spectators_max = e->we.dropdown.index;        break;
+			case 16: _network_game_info.server_lang    = e->we.dropdown.index;        break;
 		}
 
 		SetWindowDirty(w);
@@ -731,7 +731,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ON_EDIT_TEXT: {
-		ttd_strlcpy(_network_server_password, e->edittext.str, lengthof(_network_server_password));
+		ttd_strlcpy(_network_server_password, e->we.edittext.str, lengthof(_network_server_password));
 		_network_game_info.use_password = (_network_server_password[0] != '\0');
 		SetWindowDirty(w);
 	} break;
@@ -918,12 +918,12 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 0: case 11: /* Close 'X' | Cancel button */
 			ShowNetworkGameWindow();
 			break;
 		case 4: { /* Company list */
-			uint32 id_v = (e->click.pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / NET_PRC__SIZE_OF_ROW;
+			uint32 id_v = (e->we.click.pt.y - NET_PRC__OFFSET_TOP_WIDGET_COMPANY) / NET_PRC__SIZE_OF_ROW;
 
 			if (id_v >= w->vscroll.cap) return;
 
@@ -1276,9 +1276,9 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 
 	case WE_POPUPMENU_SELECT: {
 		// We selected an action
-		int index = (e->popupmenu.pt.y - w->top) / CLNWND_ROWSIZE;
+		int index = (e->we.popupmenu.pt.y - w->top) / CLNWND_ROWSIZE;
 
-		if (index >= 0 && e->popupmenu.pt.y >= w->top)
+		if (index >= 0 && e->we.popupmenu.pt.y >= w->top)
 			HandleClientListPopupClick(index, WP(w,menu_d).main_button);
 
 		// Sometimes, because of the bad DeleteWindow-proc, the 'w' pointer is
@@ -1291,7 +1291,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 
 	case WE_POPUPMENU_OVER: {
 		// Our mouse hoovers over an action? Select it!
-		int index = (e->popupmenu.pt.y - w->top) / CLNWND_ROWSIZE;
+		int index = (e->we.popupmenu.pt.y - w->top) / CLNWND_ROWSIZE;
 
 		if (index == -1 || index == WP(w,menu_d).sel_index)
 			return;
@@ -1349,26 +1349,26 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		// Show the popup with option
 		if (_selected_clientlist_item != 255) {
-			PopupClientList(w, _selected_clientlist_item, e->click.pt.x + w->left, e->click.pt.y + w->top);
+			PopupClientList(w, _selected_clientlist_item, e->we.click.pt.x + w->left, e->we.click.pt.y + w->top);
 		}
 
 		break;
 
 	case WE_MOUSEOVER:
 		// -1 means we left the current window
-		if (e->mouseover.pt.y == -1) {
+		if (e->we.mouseover.pt.y == -1) {
 			_selected_clientlist_y = 0;
 			_selected_clientlist_item = 255;
 			SetWindowDirty(w);
 			break;
 		}
 		// It did not change.. no update!
-		if (e->mouseover.pt.y == _selected_clientlist_y) break;
+		if (e->we.mouseover.pt.y == _selected_clientlist_y) break;
 
 		// Find the new selected item (if any)
-		_selected_clientlist_y = e->mouseover.pt.y;
-		if (e->mouseover.pt.y > CLNWND_OFFSET) {
-			_selected_clientlist_item = (e->mouseover.pt.y - CLNWND_OFFSET) / CLNWND_ROWSIZE;
+		_selected_clientlist_y = e->we.mouseover.pt.y;
+		if (e->we.mouseover.pt.y > CLNWND_OFFSET) {
+			_selected_clientlist_item = (e->we.mouseover.pt.y - CLNWND_OFFSET) / CLNWND_ROWSIZE;
 		} else {
 			_selected_clientlist_item = 255;
 		}
@@ -1440,7 +1440,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 	}	break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 0: /* Close 'X' */
 			case 3: /* Disconnect button */
 				NetworkDisconnect();
@@ -1457,7 +1457,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_ON_EDIT_TEXT:
-			SEND_COMMAND(PACKET_CLIENT_PASSWORD)(pw_type, e->edittext.str);
+			SEND_COMMAND(PACKET_CLIENT_PASSWORD)(pw_type, e->we.edittext.str);
 			break;
 	}
 }
@@ -1658,7 +1658,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 2: /* Send */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
 			case 3: /* Cancel */ DeleteWindow(w); break;
 		}
@@ -1669,7 +1669,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		if (e->keypress.keycode == WKC_TAB) {
+		if (e->we.keypress.keycode == WKC_TAB) {
 			ChatTabCompletion(w);
 		} else {
 			_chat_tab_completion_active = false;

@@ -59,9 +59,9 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_KEYPRESS: {
-		uint i = e->keypress.keycode - '1';
+		uint i = e->we.keypress.keycode - '1';
 		if (i < 9 && i < _bridgedata.count) {
-			e->keypress.cont = false;
+			e->we.keypress.cont = false;
 			BuildBridge(w, i);
 		}
 
@@ -69,8 +69,8 @@ static void BuildBridgeWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		if (e->click.widget == 2) {
-			uint ind = ((int)e->click.pt.y - 14) / 22;
+		if (e->we.click.widget == 2) {
+			uint ind = ((int)e->we.click.pt.y - 14) / 22;
 			if (ind < 4 && (ind += w->vscroll.pos) < _bridgedata.count)
 				BuildBridge(w, ind);
 		}

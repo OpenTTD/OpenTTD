@@ -243,8 +243,8 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		if (IS_INT_INSIDE(e->click.widget, 3, 11)) {
-			_legend_excludebits ^= (1 << (e->click.widget - 3));
+		if (IS_INT_INSIDE(e->we.click.widget, 3, 11)) {
+			_legend_excludebits ^= (1 << (e->we.click.widget - 3));
 			SetWindowDirty(w);
 			InvalidateWindow(WC_INCOME_GRAPH, 0);
 			InvalidateWindow(WC_OPERATING_PROFIT, 0);
@@ -358,7 +358,7 @@ static void OperatingProfitWndProc(Window *w, WindowEvent *e)
 		DrawGraph(&gd);
 	}	break;
 	case WE_CLICK:
-		if (e->click.widget == 2) /* Clicked on Legend */
+		if (e->we.click.widget == 2) /* Clicked on Legend */
 			ShowGraphLegend();
 		break;
 	}
@@ -433,7 +433,7 @@ static void IncomeGraphWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		if (e->click.widget == 2)
+		if (e->we.click.widget == 2)
 			ShowGraphLegend();
 		break;
 	}
@@ -506,7 +506,7 @@ static void DeliveredCargoGraphWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		if (e->click.widget == 2)
+		if (e->we.click.widget == 2)
 			ShowGraphLegend();
 		break;
 	}
@@ -579,9 +579,9 @@ static void PerformanceHistoryWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		if (e->click.widget == 2)
+		if (e->we.click.widget == 2)
 			ShowGraphLegend();
-		if (e->click.widget == 3)
+		if (e->we.click.widget == 3)
 			ShowPerformanceRatingDetail();
 		break;
 	}
@@ -655,7 +655,7 @@ static void CompanyValueGraphWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		if (e->click.widget == 2)
+		if (e->we.click.widget == 2)
 			ShowGraphLegend();
 		break;
 	}
@@ -739,11 +739,11 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: case 4: case 5: case 6:
 		case 7: case 8: case 9: case 10:
 		case 11: case 12: case 13: case 14:
-			_legend_cargobits ^= 1 << (e->click.widget - 3);
+			_legend_cargobits ^= 1 << (e->we.click.widget - 3);
 			SetWindowDirty(w);
 			break;
 		}
@@ -998,10 +998,10 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK:
 			// Check which button is clicked
-			if (IS_INT_INSIDE(e->click.widget, 13, 21)) {
+			if (IS_INT_INSIDE(e->we.click.widget, 13, 21)) {
 				// Is it no on disable?
-				if ((w->disabled_state & (1 << e->click.widget)) == 0) {
-					w->click_state = 1 << e->click.widget;
+				if ((w->disabled_state & (1 << e->we.click.widget)) == 0) {
+					w->click_state = 1 << e->we.click.widget;
 					SetWindowDirty(w);
 				}
 			}
@@ -1175,9 +1175,9 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: {
-			uint32 id_v = (e->click.pt.y - 15) / 10;
+			uint32 id_v = (e->we.click.pt.y - 15) / 10;
 			const Sign *si;
 
 			if (id_v >= w->vscroll.cap)
@@ -1195,7 +1195,7 @@ static void SignListWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_RESIZE:
-		w->vscroll.cap += e->sizing.diff.y / 10;
+		w->vscroll.cap += e->we.sizing.diff.y / 10;
 		break;
 	}
 }

@@ -5,7 +5,7 @@
 
 #include "string.h"
 
-typedef union WindowEvent WindowEvent;
+typedef struct WindowEvent WindowEvent;
 
 typedef void WindowProc(Window *w, WindowEvent *e);
 
@@ -70,83 +70,98 @@ typedef enum FrameFlags {
 
 void DrawFrameRect(int left, int top, int right, int bottom, int color, FrameFlags flags);
 
-/* XXX - outside "byte event" so you can set event directly without going into
- * the union elements at first. Because of this every first element of the union
- * MUST BE 'byte event'. Whoever did this must get shot! Scheduled for immediate
- * rewrite after 0.4.0 */
-union WindowEvent {
+enum WindowEventCodes {
+	WE_CLICK               =  0,
+	WE_PAINT               =  1,
+	WE_MOUSELOOP           =  2,
+	WE_TICK                =  3,
+	WE_4                   =  4,
+	WE_TIMEOUT             =  5,
+	WE_PLACE_OBJ           =  6,
+	WE_ABORT_PLACE_OBJ     =  7,
+	WE_DESTROY             =  8,
+	WE_ON_EDIT_TEXT        =  9,
+	WE_POPUPMENU_SELECT    = 10,
+	WE_POPUPMENU_OVER      = 11,
+	WE_DRAGDROP            = 12,
+	WE_PLACE_DRAG          = 13,
+	WE_PLACE_MOUSEUP       = 14,
+	WE_PLACE_PRESIZE       = 15,
+	WE_DROPDOWN_SELECT     = 16,
+	WE_RCLICK              = 17,
+	WE_KEYPRESS            = 18,
+	WE_CREATE              = 19,
+	WE_MOUSEOVER           = 20,
+	WE_ON_EDIT_TEXT_CANCEL = 21,
+	WE_RESIZE              = 22,
+	WE_MESSAGE             = 23,
+	WE_SCROLL              = 24,
+	WE_MOUSEWHEEL          = 25,
+};
+
+struct WindowEvent {
 	byte event;
-	struct {
-		byte event;
-		Point pt;
-		int widget;
-	} click;
+	union {
+		struct{
+			Point pt;
+			int widget;
+		} click;
 
-	struct {
-		byte event;
-		Point pt;
-		TileIndex tile;
-		TileIndex starttile;
-		int userdata;
-	} place;
+		struct {
+			Point pt;
+			TileIndex tile;
+			TileIndex starttile;
+			int userdata;
+		} place;
 
-	struct {
-		byte event;
-		Point pt;
-		int widget;
-	} dragdrop;
+		struct {
+			Point pt;
+			int widget;
+		} dragdrop;
 
-	struct {
-		byte event;
-		Point size;
-		Point diff;
-	} sizing;
+		struct {
+			Point size;
+			Point diff;
+		} sizing;
 
-	struct {
-		byte event;
-		char *str;
-	} edittext;
+		struct {
+			char *str;
+		} edittext;
 
-	struct {
-		byte event;
-		Point pt;
-	} popupmenu;
+		struct {
+			Point pt;
+		} popupmenu;
 
-	struct {
-		byte event;
-		int button;
-		int index;
-	} dropdown;
+		struct {
+			int button;
+			int index;
+		} dropdown;
 
-	struct {
-		byte event;
-		Point pt;
-		int widget;
-	} mouseover;
+		struct {
+			Point pt;
+			int widget;
+		} mouseover;
 
-	struct {
-		byte event;
-		bool cont;   // continue the search? (default true)
-		byte ascii;  // 8-bit ASCII-value of the key
-		uint16 keycode;// untranslated key (including shift-state)
-	} keypress;
+		struct {
+			bool cont;     // continue the search? (default true)
+			byte ascii;    // 8-bit ASCII-value of the key
+			uint16 keycode;// untranslated key (including shift-state)
+		} keypress;
 
-	struct {
-		byte event;
-		uint msg;    // message to be sent
-		uint wparam; // additional message-specific information
-		uint lparam; // additional message-specific information
-	} message;
+		struct {
+			uint msg;      // message to be sent
+			uint wparam;   // additional message-specific information
+			uint lparam;   // additional message-specific information
+		} message;
 
-	struct {
-		byte event;
-		Point delta; // delta position against position of last call
-	} scroll;
+		struct {
+			Point delta;   // delta position against position of last call
+		} scroll;
 
-	struct {
-		byte event;
-		int wheel;   // how much was 'wheel'd'
-	} wheel;
+		struct {
+			int wheel;     // how much was 'wheel'd'
+		} wheel;
+	} we;
 };
 
 enum WindowKeyCodes {
@@ -488,35 +503,6 @@ typedef struct dropdown_d {
 	bool drag_mode;
 } dropdown_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
-
-enum WindowEvents {
-	WE_CLICK               =  0,
-	WE_PAINT               =  1,
-	WE_MOUSELOOP           =  2,
-	WE_TICK                =  3,
-	WE_4                   =  4,
-	WE_TIMEOUT             =  5,
-	WE_PLACE_OBJ           =  6,
-	WE_ABORT_PLACE_OBJ     =  7,
-	WE_DESTROY             =  8,
-	WE_ON_EDIT_TEXT        =  9,
-	WE_POPUPMENU_SELECT    = 10,
-	WE_POPUPMENU_OVER      = 11,
-	WE_DRAGDROP            = 12,
-	WE_PLACE_DRAG          = 13,
-	WE_PLACE_MOUSEUP       = 14,
-	WE_PLACE_PRESIZE       = 15,
-	WE_DROPDOWN_SELECT     = 16,
-	WE_RCLICK              = 17,
-	WE_KEYPRESS            = 18,
-	WE_CREATE              = 19,
-	WE_MOUSEOVER           = 20,
-	WE_ON_EDIT_TEXT_CANCEL = 21,
-	WE_RESIZE              = 22,
-	WE_MESSAGE             = 23,
-	WE_SCROLL              = 24,
-	WE_MOUSEWHEEL          = 25,
-};
 
 
 /****************** THESE ARE NOT WIDGET TYPES!!!!! *******************/

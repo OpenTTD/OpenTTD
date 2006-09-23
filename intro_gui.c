@@ -54,7 +54,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: ShowGenerateLandscape(); break;
 		case 3: ShowSaveLoadDialog(SLD_LOAD_GAME); break;
 		case 4: ShowSaveLoadDialog(SLD_LOAD_SCENARIO); break;
@@ -72,7 +72,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 #endif
 			break;
 		case 8: case 9: case 10: case 11:
-			SetNewLandscapeType(e->click.widget - 8);
+			SetNewLandscapeType(e->we.click.widget - 8);
 			break;
 		case 12: ShowGameOptions(); break;
 		case 13: ShowGameDifficulty(); break;
@@ -131,14 +131,14 @@ static void AskAbandonGameWndProc(Window *w, WindowEvent *e)
 		return;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 3: DeleteWindow(w);   break;
 			case 4: _exit_game = true; break;
 		}
 		break;
 
 	case WE_KEYPRESS: /* Exit game on pressing 'Enter' */
-		switch (e->keypress.keycode) {
+		switch (e->we.keypress.keycode) {
 			case WKC_RETURN:
 			case WKC_NUM_ENTER:
 				_exit_game = true;
@@ -185,14 +185,14 @@ static void AskQuitGameWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_CLICK:
-			switch (e->click.widget) {
+			switch (e->we.click.widget) {
 				case 3: DeleteWindow(w);        break;
 				case 4: _switch_mode = SM_MENU; break;
 			}
 			break;
 
 		case WE_KEYPRESS: /* Return to main menu on pressing 'Enter' */
-			if (e->keypress.keycode == WKC_RETURN) _switch_mode = SM_MENU;
+			if (e->we.keypress.keycode == WKC_RETURN) _switch_mode = SM_MENU;
 			break;
 	}
 }

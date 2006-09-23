@@ -332,7 +332,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_CLICK: {
-		int wid = e->click.widget;
+		int wid = e->we.click.widget;
 
 		switch (wid) {
 		case 0:
@@ -364,17 +364,17 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_PLACE_OBJ:
-		VpStartPlaceSizing(e->place.tile, VPM_X_AND_Y_LIMITED);
+		VpStartPlaceSizing(e->we.place.tile, VPM_X_AND_Y_LIMITED);
 		VpSetPlaceSizingLimit(20);
 		break;
 
 	case WE_PLACE_DRAG:
-		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata);
 		return;
 
 	case WE_PLACE_MOUSEUP:
-		if (e->click.pt.x != -1) {
-			DoCommandP(e->place.tile, _tree_to_plant, e->place.starttile, NULL,
+		if (e->we.click.pt.x != -1) {
+			DoCommandP(e->we.place.tile, _tree_to_plant, e->we.place.starttile, NULL,
 				CMD_PLANT_TREE | CMD_AUTO | CMD_MSG(STR_2805_CAN_T_PLANT_TREE_HERE));
 		}
 		break;
@@ -528,9 +528,9 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		if (e->keypress.keycode == WKC_SPACE) {
+		if (e->we.keypress.keycode == WKC_SPACE) {
 			// Don't continue.
-			e->keypress.cont = false;
+			e->we.keypress.cont = false;
 			DeleteWindow(w);
 		}
 		break;
@@ -900,11 +900,11 @@ void UpdateTextBufferSize(Textbuf *tb)
 	tb->caretxoffs = tb->width;
 }
 
-int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we, CharSetFilter afilter)
+int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *e, CharSetFilter afilter)
 {
-	we->keypress.cont = false;
+	e->we.keypress.cont = false;
 
-	switch (we->keypress.keycode) {
+	switch (e->we.keypress.keycode) {
 	case WKC_ESC: return 2;
 	case WKC_RETURN: case WKC_NUM_ENTER: return 1;
 	case (WKC_CTRL | 'V'):
@@ -916,19 +916,19 @@ int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we, Ch
 		InvalidateWidget(w, wid);
 		break;
 	case WKC_BACKSPACE: case WKC_DELETE:
-		if (DeleteTextBufferChar(&string->text, we->keypress.keycode))
+		if (DeleteTextBufferChar(&string->text, e->we.keypress.keycode))
 			InvalidateWidget(w, wid);
 		break;
 	case WKC_LEFT: case WKC_RIGHT: case WKC_END: case WKC_HOME:
-		if (MoveTextBufferPos(&string->text, we->keypress.keycode))
+		if (MoveTextBufferPos(&string->text, e->we.keypress.keycode))
 			InvalidateWidget(w, wid);
 		break;
 	default:
-		if (IsValidAsciiChar(we->keypress.ascii, afilter)) {
-			if (InsertTextBufferChar(&string->text, we->keypress.ascii))
+		if (IsValidAsciiChar(e->we.keypress.ascii, afilter)) {
+			if (InsertTextBufferChar(&string->text, e->we.keypress.ascii))
 				InvalidateWidget(w, wid);
 		} else { // key wasn't caught. Continue only if standard entry specified
-			we->keypress.cont = (afilter == CS_ALPHANUMERAL);
+			e->we.keypress.cont = (afilter == CS_ALPHANUMERAL);
 		}
 	}
 
@@ -979,7 +979,7 @@ static void QueryStringWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3: DeleteWindow(w); break;
 		case 4:
 press_ok:;
@@ -1001,7 +1001,7 @@ press_ok:;
 				if (parent != NULL) {
 					WindowEvent e;
 					e.event = WE_ON_EDIT_TEXT;
-					e.edittext.str = buf;
+					e.we.edittext.str = buf;
 					parent->wndproc(parent, &e);
 				}
 			}
@@ -1108,11 +1108,11 @@ static void QueryWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3:
 		case 4:
 			WP(w, query_d).calledback = true;
-			if (WP(w, query_d).ok_cancel_callback != NULL) WP(w, query_d).ok_cancel_callback(e->click.widget == 4);
+			if (WP(w, query_d).ok_cancel_callback != NULL) WP(w, query_d).ok_cancel_callback(e->we.click.widget == 4);
 			DeleteWindow(w);
 			break;
 		}
@@ -1379,7 +1379,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: /* Sort save names by name */
 			_savegame_sort_order = (_savegame_sort_order == SORT_BY_NAME) ?
 				SORT_BY_NAME | SORT_DESCENDING : SORT_BY_NAME;
@@ -1401,7 +1401,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 7: { /* Click the listbox */
-			int y = (e->click.pt.y - w->widget[e->click.widget].top - 1) / 10;
+			int y = (e->we.click.pt.y - w->widget[e->we.click.widget].top - 1) / 10;
 			char *name;
 			const FiosItem *file;
 
@@ -1448,7 +1448,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		HandleEditBox(w, &WP(w, querystr_d), 10);
 		break;
 	case WE_KEYPRESS:
-		if (e->keypress.keycode == WKC_ESC) {
+		if (e->we.keypress.keycode == WKC_ESC) {
 			DeleteWindow(w);
 			return;
 		}
@@ -1488,19 +1488,19 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		break;
 	case WE_RESIZE: {
 		/* Widget 2 and 3 have to go with halve speed, make it so obiwan */
-		uint diff = e->sizing.diff.x / 2;
+		uint diff = e->we.sizing.diff.x / 2;
 		w->widget[2].right += diff;
 		w->widget[3].left  += diff;
-		w->widget[3].right += e->sizing.diff.x;
+		w->widget[3].right += e->we.sizing.diff.x;
 
 		/* Same for widget 11 and 12 in save-dialog */
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
 			w->widget[11].right += diff;
 			w->widget[12].left  += diff;
-			w->widget[12].right += e->sizing.diff.x;
+			w->widget[12].right += e->we.sizing.diff.x;
 		}
 
-		w->vscroll.cap += e->sizing.diff.y / 10;
+		w->vscroll.cap += e->we.sizing.diff.y / 10;
 		} break;
 	}
 }
@@ -1795,9 +1795,9 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 			const CheatEntry *ce;
-			uint btn = (e->click.pt.y - 46) / 12;
+			uint btn = (e->we.click.pt.y - 46) / 12;
 			int32 value, oldvalue;
-			uint x = e->click.pt.x;
+			uint x = e->we.click.pt.x;
 
 			// not clicking a button?
 			if (!IS_INT_INSIDE(x, 20, 40) || btn >= lengthof(_cheats_ui)) break;

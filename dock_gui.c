@@ -121,11 +121,11 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CLICK:
-		if (e->click.widget - 3 >= 0 && e->click.widget != 5) _build_docks_button_proc[e->click.widget - 3](w);
+		if (e->we.click.widget - 3 >= 0 && e->we.click.widget != 5) _build_docks_button_proc[e->we.click.widget - 3](w);
 		break;
 
 	case WE_KEYPRESS:
-		switch (e->keypress.keycode) {
+		switch (e->we.keypress.keycode) {
 			case '1': BuildDocksClick_Canal(w); break;
 			case '2': BuildDocksClick_Lock(w); break;
 			case '3': BuildDocksClick_Demolish(w); break;
@@ -138,20 +138,20 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_OBJ:
-		_place_proc(e->place.tile);
+		_place_proc(e->we.place.tile);
 		break;
 
 	case WE_PLACE_DRAG: {
-		VpSelectTilesWithMethod(e->place.pt.x, e->place.pt.y, e->place.userdata);
+		VpSelectTilesWithMethod(e->we.place.pt.x, e->we.place.pt.y, e->we.place.userdata);
 		return;
 	}
 
 	case WE_PLACE_MOUSEUP:
-		if (e->click.pt.x != -1) {
-			if ((e->place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
+		if (e->we.click.pt.x != -1) {
+			if ((e->we.place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
 				GUIPlaceProcDragXY(e);
-			} else if (e->place.userdata == VPM_X_OR_Y) {
-				DoCommandP(e->place.tile, e->place.starttile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
+			} else if (e->we.place.userdata == VPM_X_OR_Y) {
+				DoCommandP(e->we.place.tile, e->we.place.starttile, _ctrl_pressed, CcBuildCanal, CMD_BUILD_CANAL | CMD_AUTO | CMD_MSG(STR_CANT_BUILD_CANALS));
 			}
 		}
 		break;
@@ -171,7 +171,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		TileIndex tile_from;
 		TileIndex tile_to;
 
-		tile_from = tile_to = e->place.tile;
+		tile_from = tile_to = e->we.place.tile;
 		switch (GetTileSlope(tile_from, NULL)) {
 			case SLOPE_SW: tile_to += TileDiffXY(-1,  0); break;
 			case SLOPE_SE: tile_to += TileDiffXY( 0, -1); break;
@@ -240,10 +240,10 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_CLICK:
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 			case 3:
 			case 4:
-				_station_show_coverage = e->click.widget - 3;
+				_station_show_coverage = e->we.click.widget - 3;
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
 				break;
@@ -311,10 +311,10 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 		return;
 
 	case WE_CLICK: {
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 3:
 		case 4:
-			_ship_depot_direction = e->click.widget - 3;
+			_ship_depot_direction = e->we.click.widget - 3;
 			SndPlayFx(SND_15_BEEP);
 			UpdateDocksDirection();
 			SetWindowDirty(w);

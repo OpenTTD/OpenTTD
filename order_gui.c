@@ -408,9 +408,9 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK: {
 		Vehicle *v = GetVehicle(w->window_number);
-		switch (e->click.widget) {
+		switch (e->we.click.widget) {
 		case 2: { /* orders list */
-			int sel = (e->click.pt.y - 15) / 10;
+			int sel = (e->we.click.pt.y - 15) / 10;
 
 			if ((uint)sel >= w->vscroll.cap) return;
 
@@ -479,8 +479,8 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		uint i;
 
 		for (i = 0; i < lengthof(_order_keycodes); i++) {
-			if (e->keypress.keycode == _order_keycodes[i]) {
-				e->keypress.cont = false;
+			if (e->we.keypress.keycode == _order_keycodes[i]) {
+				e->we.keypress.cont = false;
 				//see if the button is disabled
 				if (!HASBIT(w->disabled_state, i + 4)) _order_button_proc[i](w, v);
 				break;
@@ -493,7 +493,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		const Vehicle *v = GetVehicle(w->window_number);
 		int s = OrderGetSel(w);
 
-		if (e->click.widget != 8) break;
+		if (e->we.click.widget != 8) break;
 		if (s == v->num_orders || GetVehicleOrder(v, s)->type != OT_GOTO_DEPOT) {
 			GuiShowTooltips(STR_8857_MAKE_THE_HIGHLIGHTED_ORDER);
 		} else {
@@ -502,7 +502,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_PLACE_OBJ: {
-		OrdersPlaceObj(GetVehicle(w->window_number), e->place.tile, w);
+		OrdersPlaceObj(GetVehicle(w->window_number), e->we.place.tile, w);
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
