@@ -661,9 +661,10 @@ void ShowAircraftViewWindow(const Vehicle *v)
 
 static void DrawAircraftDepotWindow(Window *w)
 {
+	Vehicle **vl = WP(w, traindepot_d).vehicle_list;
 	TileIndex tile = w->window_number;
-	Vehicle *v;
-	int num,x,y;
+	int x, y, max;
+	uint16 num = WP(w, traindepot_d).engine_count;
 
 
 	/* setup disabled buttons */
@@ -671,15 +672,6 @@ static void DrawAircraftDepotWindow(Window *w)
 		IsTileOwner(tile, _local_player) ? 0 : ((1<<4) | (1<<7) | (1<<8));
 
 	/* determine amount of items for scroller */
-	num = 0;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft &&
-				v->subtype <= 2 &&
-				v->vehstatus & VS_HIDDEN &&
-				v->tile == tile) {
-			num++;
-		}
-	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
 	SetDParam(0, GetStationIndex(tile));
@@ -688,33 +680,29 @@ static void DrawAircraftDepotWindow(Window *w)
 	x = 2;
 	y = 15;
 	num = w->vscroll.pos * w->hscroll.cap;
+	max = min(WP(w, traindepot_d).engine_count, num + (w->vscroll.cap * w->hscroll.cap));
 
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft &&
-				v->subtype <= 2 &&
-				v->vehstatus&VS_HIDDEN &&
-				v->tile == tile &&
-				--num < 0 && num >= -w->vscroll.cap * w->hscroll.cap) {
+	for (; num < max; num++) {
+		const Vehicle *v = vl[num];
 
-			DrawAircraftImage(v, x+12, y, WP(w,traindepot_d).sel);
+		DrawAircraftImage(v, x + 12, y, WP(w,traindepot_d).sel);
 
-			SetDParam(0, v->unitnumber);
-			DrawString(x, y+2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
+		SetDParam(0, v->unitnumber);
+		DrawString(x, y + 2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
 
-			DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x, y + 12);
+		DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x, y + 12);
 
-			if ((x+=74) == 2 + 74 * w->hscroll.cap) {
-				x = 2;
-				y += 24;
-			}
+		if ((x += 74) == 2 + 74 * w->hscroll.cap) {
+			x = 2;
+			y += 24;
 		}
 	}
 }
 
-static int GetVehicleFromAircraftDepotWndPt(const Window *w, int x, int y, Vehicle **veh) {
+static int GetVehicleFromAircraftDepotWndPt(const Window *w, int x, int y, Vehicle **veh)
+{
+	Vehicle **vl = WP(w, traindepot_d).vehicle_list;
 	uint xt,row,xm,ym;
-	Vehicle *v;
-	TileIndex tile;
 	int pos;
 
 	xt = x / 74;
@@ -728,23 +716,17 @@ static int GetVehicleFromAircraftDepotWndPt(const Window *w, int x, int y, Vehic
 
 	pos = (row + w->vscroll.pos) * w->hscroll.cap + xt;
 
-	tile = w->window_number;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Aircraft && v->subtype <= 2 &&
-				v->vehstatus & VS_HIDDEN && v->tile == tile &&
-				--pos < 0) {
-			*veh = v;
-			if (xm >= 12) return 0;
-			if (ym <= 12) return -1; /* show window */
-			return -2; /* start stop */
-		}
-	}
-	return 1; /* outside */
+	if (WP(w, traindepot_d).engine_count <= pos) return 1; // empty block, so no vehicle is selected
+	*veh = vl[pos];
+
+	if (xm >= 12) return 0; // drag vehicle
+	if (ym <= 12) return -1; // show window
+	return -2; // start stop
 }
 
 static void AircraftDepotClickAircraft(Window *w, int x, int y)
 {
-	Vehicle *v;
+	Vehicle *v = NULL;
 	int mode = GetVehicleFromAircraftDepotWndPt(w, x, y, &v);
 
 	// share / copy orders
@@ -805,7 +787,13 @@ static void ClonePlaceObj(const Window *w)
 static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE:
+		WP(w, traindepot_d).vehicle_list = NULL;
+		WP(w, traindepot_d).engine_list_length = 0;
+		break;
+
 	case WE_PAINT:
+		BuildDepotVehicleList(VEH_Aircraft, w->window_number, &WP(w, traindepot_d).vehicle_list, &WP(w, traindepot_d).engine_list_length, &WP(w, traindepot_d).engine_count, NULL, NULL, NULL);
 		DrawAircraftDepotWindow(w);
 		break;
 
@@ -858,6 +846,7 @@ static void AircraftDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY:
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
+		free((void*)WP(w, traindepot_d).vehicle_list);
 		break;
 
 	case WE_DRAGDROP:

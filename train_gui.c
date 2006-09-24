@@ -398,10 +398,11 @@ void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, Vehicle
 
 static void DrawTrainDepotWindow(Window *w)
 {
+	Vehicle **vl = WP(w, traindepot_d).vehicle_list;
 	TileIndex tile;
-	Vehicle *v, *u;
-	int num,x,y,i, hnum;
+	int x, y, i, hnum, max;
 	Depot *depot;
+	uint16 num;
 
 	tile = w->window_number;
 
@@ -410,25 +411,14 @@ static void DrawTrainDepotWindow(Window *w)
 		IsTileOwner(tile, _local_player) ? 0 : ((1 << 4) | (1 << 5) | (1 << 8) | (1<<9));
 
 	/* determine amount of items for scroller */
-	num = 0;
 	hnum = 8;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train &&
-				(IsFrontEngine(v) || IsFreeWagon(v)) &&
-				v->tile == tile &&
-				v->u.rail.track == 0x80) {
-			num++;
-			// determine number of items in the X direction.
-			if (IsFrontEngine(v)) {
-				hnum = max(hnum, v->u.rail.cached_total_length);
-			}
-		}
+	for (num = 0; num < WP(w, traindepot_d).engine_count; num++) {
+		const Vehicle *v = vl[num];
+		hnum = maxu(hnum, v->u.rail.cached_total_length);
 	}
 
 	/* Always have 1 empty row, so people can change the setting of the train */
-	num++;
-
-	SetVScrollCount(w, num);
+	SetVScrollCount(w, WP(w, traindepot_d).engine_count + WP(w, traindepot_d).wagon_count + 1);
 	SetHScrollCount(w, WagonLengthToPixels(hnum));
 
 	/* locate the depot struct */
@@ -441,44 +431,45 @@ static void DrawTrainDepotWindow(Window *w)
 	x = 2;
 	y = 15;
 	num = w->vscroll.pos;
+	max = min(WP(w, traindepot_d).engine_count, w->vscroll.pos + w->vscroll.cap);
 
-	// draw all trains
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && IsFrontEngine(v) &&
-				v->tile == tile && v->u.rail.track == 0x80 &&
-				--num < 0 && num >= -w->vscroll.cap) {
-			DrawTrainImage(v, x+21, y, w->hscroll.cap + 4, w->hscroll.pos, WP(w,traindepot_d).sel);
-			/* Draw the train number */
-			SetDParam(0, v->unitnumber);
-			DrawString(x, y, (v->max_age - 366 < v->age) ? STR_00E3 : STR_00E2, 0);
 
-			// Number of wagons relative to a standard length wagon (rounded up)
-			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
-			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
+	/* draw all trains */
+	for (; num < max; num++) {
+		const Vehicle *v = vl[num];
 
-			/* Draw the pretty flag */
-			DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x + 15, y);
+		DrawTrainImage(v, x + 21, y, w->hscroll.cap + 4, w->hscroll.pos, WP(w,traindepot_d).sel);
+		/* Draw the train number */
+		SetDParam(0, v->unitnumber);
+		DrawString(x, y, (v->max_age - 366 < v->age) ? STR_00E3 : STR_00E2, 0);
 
-			y += 14;
-		}
+		/* Number of wagons relative to a standard length wagon (rounded up) */
+		SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
+		DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
+
+		/* Draw the pretty flag */
+		DrawSprite(v->vehstatus & VS_STOPPED ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x + 15, y);
+
+		y += 14;
 	}
 
-	// draw all remaining vehicles
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && IsFreeWagon(v) &&
-				v->tile == tile && v->u.rail.track == 0x80 &&
-				--num < 0 && num >= -w->vscroll.cap) {
-			DrawTrainImage(v, x+50, y, w->hscroll.cap - 29, 0, WP(w,traindepot_d).sel);
-			DrawString(x, y+2, STR_8816, 0);
+	max = min(WP(w, traindepot_d).engine_count + WP(w, traindepot_d).wagon_count, w->vscroll.pos + w->vscroll.cap);
 
-			/*Draw the train counter */
-			i = 0;
-			u = v;
-			do i++; while ( (u=u->next) != NULL); // Determine length of train
-			SetDParam(0, i);                      // Set the counter
-			DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
-			y += 14;
-		}
+	/* draw all remaining vehicles */
+	for (; num < max; num++) {
+		const Vehicle *v = WP(w, traindepot_d).wagon_list[num - WP(w, traindepot_d).engine_count];
+		const Vehicle *u;
+
+		DrawTrainImage(v, x + 50, y, w->hscroll.cap - 29, 0, WP(w,traindepot_d).sel);
+		DrawString(x, y + 2, STR_8816, 0);
+
+		/*Draw the train counter */
+		i = 0;
+		u = v;
+		do i++; while ( (u=u->next) != NULL); // Determine length of train
+		SetDParam(0, i);                      // Set the counter
+		DrawStringRightAligned(w->widget[6].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
+		y += 14;
 	}
 }
 
@@ -489,6 +480,7 @@ typedef struct GetDepotVehiclePtData {
 
 static int GetVehicleFromTrainDepotWndPt(const Window *w, int x, int y, GetDepotVehiclePtData *d)
 {
+	Vehicle **vl = WP(w, traindepot_d).vehicle_list;
 	int row;
 	int skip = 0;
 	Vehicle *v;
@@ -500,38 +492,23 @@ static int GetVehicleFromTrainDepotWndPt(const Window *w, int x, int y, GetDepot
 
 	row += w->vscroll.pos;
 
-	/* go through all the locomotives */
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train &&
-				IsFrontEngine(v) &&
-				v->tile == w->window_number &&
-				v->u.rail.track == 0x80 &&
-				--row < 0) {
-			skip = w->hscroll.pos;
-			goto found_it;
-		}
+	if (WP(w, traindepot_d).engine_count + WP(w, traindepot_d).wagon_count <= row) {
+		/* empty row, so no vehicle is selected */
+		d->head = NULL;
+		d->wagon = NULL;
+		return 0;
 	}
 
-	x -= _traininfo_vehicle_width; /* free wagons don't have an initial loco. */
-
-	/* and then the list of free wagons */
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train &&
-				IsFreeWagon(v) &&
-				v->tile == w->window_number &&
-				v->u.rail.track == 0x80 &&
-				--row < 0) {
-			goto found_it;
-		}
+	if (WP(w, traindepot_d).engine_count > row) {
+		v = vl[row];
+		skip = w->hscroll.pos;
+	} else {
+		vl = WP(w, traindepot_d).wagon_list;
+		v = vl[row - WP(w, traindepot_d).engine_count];
+		/* free wagons don't have an initial loco. */
+		x -= _traininfo_vehicle_width;
 	}
 
-	d->head = NULL;
-	d->wagon = NULL;
-
-	/* didn't find anything, get out */
-	return 0;
-
-found_it:
 	d->head = d->wagon = v;
 
 	/* either pressed the flag or the number, but only when it's a loco */
@@ -648,7 +625,16 @@ static void ClonePlaceObj(const Window *w)
 static void TrainDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE:
+		WP(w, traindepot_d).vehicle_list = NULL;
+		WP(w, traindepot_d).wagon_list = NULL;
+		WP(w, traindepot_d).engine_count = 0;
+		WP(w, traindepot_d).wagon_count = 0;
+		break;
+
 	case WE_PAINT:
+		BuildDepotVehicleList(VEH_Train, w->window_number, &WP(w, traindepot_d).vehicle_list, &WP(w, traindepot_d).engine_list_length, &WP(w, traindepot_d).engine_count,
+															&WP(w, traindepot_d).wagon_list, &WP(w, traindepot_d).wagon_list_length, &WP(w, traindepot_d).wagon_count);
 		DrawTrainDepotWindow(w);
 		break;
 
@@ -702,6 +688,8 @@ static void TrainDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY:
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
+		free((void*)WP(w, traindepot_d).vehicle_list);
+		free((void*)WP(w, traindepot_d).wagon_list);
 		break;
 
 	case WE_DRAGDROP: {

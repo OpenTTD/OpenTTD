@@ -1982,6 +1982,94 @@ static void MaybeReplaceVehicle(Vehicle *v)
 	_current_player = OWNER_NONE;
 }
 
+/* Extend the list size for BuildDepotVehicleList() */
+static inline void ExtendDepotListSize(Vehicle ***engine_list, uint16 *engine_list_length)
+{
+	*engine_list_length += 25; // which number is best here?
+	*engine_list = realloc(*engine_list, (*engine_list_length) * sizeof((*engine_list)[0]));
+}
+
+/** Generates a list of vehicles inside a depot
+ * Will enlarge allocated space for the list if they are too small, so it's ok to call with (pointer to NULL array, pointer to uninitised uint16, pointer to 0)
+ * If one of the lists is not needed (say wagons when finding ships), all the pointers regarding that list should be set to NULL
+ * @param Type type of vehicle
+ * @param tile The tile the depot is located in
+ * @param ***engine_list Pointer to a pointer to an array of vehicles in the depot (old list is freed and a new one is malloced)
+ * @param *engine_list_length Allocated size of engine_list. Needs to be set to 0 when engine_list points to a NULL array
+ * @param *engine_count The number of engines stored in the list
+ * @param ***wagon_list Pointer to a pointer to an array of free wagons in the depot (old list is freed and a new one is malloced)
+ * @param *wagon_list_length Allocated size of wagon_list. Needs to be set to 0 when wagon_list points to a NULL array
+ * @param *wagon_count The number of engines stored in the list
+ */
+void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count)
+{
+	Vehicle *v;
+
+	/* This function should never be called without an array to store results */
+	assert(!(engine_list == NULL && type != VEH_Train));
+	assert(!(type == VEH_Train && engine_list == NULL && wagon_list == NULL));
+
+	/* Both array and the length should either be NULL to disable the list or both should not be NULL */
+	assert((engine_list == NULL && engine_list_length == NULL) || (engine_list != NULL && engine_list_length != NULL));
+	assert((wagon_list == NULL && wagon_list_length == NULL) || (wagon_list != NULL && wagon_list_length != NULL));
+
+	assert(!(engine_list != NULL && engine_count == NULL));
+	assert(!(wagon_list != NULL && wagon_count == NULL));
+
+	if (engine_count != NULL) *engine_count = 0;
+	if (wagon_count != NULL) *wagon_count = 0;
+
+	switch (type) {
+		case VEH_Train:
+			FOR_ALL_VEHICLES(v) {
+				if (v->tile == tile && v->type == VEH_Train && v->u.rail.track == 0x80) {
+					if (IsFrontEngine(v)) {
+						if (engine_list == NULL) continue;
+						if (*engine_count == *engine_list_length) ExtendDepotListSize(engine_list, engine_list_length);
+						(*engine_list)[(*engine_count)++] = v;
+					} else if (IsFreeWagon(v)) {
+						if (wagon_list == NULL) continue;
+						if (*wagon_count == *wagon_list_length) ExtendDepotListSize(wagon_list, wagon_list_length);
+						(*wagon_list)[(*wagon_count)++] = v;
+					}
+				}
+			}
+			break;
+
+		case VEH_Road:
+			FOR_ALL_VEHICLES(v) {
+				if (v->tile == tile && v->type == VEH_Road && IsRoadVehInDepot(v)) {
+					if (*engine_count == *engine_list_length) ExtendDepotListSize(engine_list, engine_list_length);
+					(*engine_list)[(*engine_count)++] = v;
+				}
+			}
+			break;
+
+		case VEH_Ship:
+			FOR_ALL_VEHICLES(v) {
+				if (v->tile == tile && v->type == VEH_Ship && IsShipInDepot(v)) {
+					if (*engine_count == *engine_list_length) ExtendDepotListSize(engine_list, engine_list_length);
+					(*engine_list)[(*engine_count)++] = v;
+				}
+			}
+			break;
+
+		case VEH_Aircraft:
+			FOR_ALL_VEHICLES(v) {
+				if (v->tile == tile &&
+						v->type == VEH_Aircraft &&
+						v->subtype <= 2 &&
+						v->vehstatus & VS_HIDDEN) {
+					if (*engine_count == *engine_list_length) ExtendDepotListSize(engine_list, engine_list_length);
+					(*engine_list)[(*engine_count)++] = v;
+				}
+			}
+			break;
+
+		default: NOT_REACHED();
+	}
+}
+
 /**
 * @param sort_list list to store the list in. Note: it's presumed that it is big enough to store all vehicles in the game (worst case) and it will not check size
 * @param type type of vehicle
@@ -1991,7 +2079,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
 * @return the number of vehicles added to the list
 */
-uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
+uint GenerateVehicleSortList(const Vehicle **sort_list, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
 {
 	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
 	uint n = 0;
@@ -2058,7 +2146,7 @@ uint GenerateVehicleSortList(const Vehicle** sort_list, byte type, PlayerID owne
  */
 int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
 {
-	const Vehicle** sort_list;
+	const Vehicle **sort_list;
 	uint n, i;
 
 	sort_list = malloc(GetVehicleArraySize() * sizeof(sort_list[0]));

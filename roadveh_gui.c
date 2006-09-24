@@ -616,9 +616,10 @@ void ShowBuildRoadVehWindow(TileIndex tile)
 
 static void DrawRoadDepotWindow(Window *w)
 {
+	Vehicle **vl = WP(w, traindepot_d).vehicle_list;
 	TileIndex tile;
-	Vehicle *v;
-	int num,x,y;
+	int x, y, max;
+	uint16 num = WP(w, traindepot_d).engine_count;
 	Depot *depot;
 
 	tile = w->window_number;
@@ -628,10 +629,6 @@ static void DrawRoadDepotWindow(Window *w)
 		IsTileOwner(tile, _local_player) ? 0 : ((1<<4) | (1<<7) | (1<<8));
 
 	/* determine amount of items for scroller */
-	num = 0;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road && IsRoadVehInDepot(v) && v->tile == tile) num++;
-	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
 	/* locate the depot struct */
@@ -644,30 +641,28 @@ static void DrawRoadDepotWindow(Window *w)
 	x = 2;
 	y = 15;
 	num = w->vscroll.pos * w->hscroll.cap;
+	max = min(WP(w, traindepot_d).engine_count, num + (w->vscroll.cap * w->hscroll.cap));
 
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road && IsRoadVehInDepot(v) && v->tile == tile &&
-				--num < 0 && num >= -w->vscroll.cap * w->hscroll.cap) {
-			DrawRoadVehImage(v, x+24, y, WP(w,traindepot_d).sel);
+	for (; num < max; num++) {
+		const Vehicle *v = vl[num];
+		DrawRoadVehImage(v, x + 24, y, WP(w,traindepot_d).sel);
 
-			SetDParam(0, v->unitnumber);
-			DrawString(x, y+2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
+		SetDParam(0, v->unitnumber);
+		DrawString(x, y + 2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
 
-			DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x + 16, y);
+		DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x + 16, y);
 
-			if ((x+=56) == 2 + 56 * w->hscroll.cap) {
-				x = 2;
-				y += 14;
-			}
+		if ((x += 56) == 2 + 56 * w->hscroll.cap) {
+			x = 2;
+			y += 14;
 		}
 	}
 }
 
 static int GetVehicleFromRoadDepotWndPt(const Window *w, int x, int y, Vehicle **veh)
 {
+	Vehicle **vl = WP(w, traindepot_d).vehicle_list;
 	uint xt,row,xm;
-	TileIndex tile;
-	Vehicle *v;
 	int pos;
 
 	xt = x / 56;
@@ -679,18 +674,12 @@ static int GetVehicleFromRoadDepotWndPt(const Window *w, int x, int y, Vehicle *
 
 	pos = (row + w->vscroll.pos) * w->hscroll.cap + xt;
 
-	tile = w->window_number;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Road && IsRoadVehInDepot(v) && v->tile == tile &&
-				--pos < 0) {
-			*veh = v;
-			if (xm >= 24) return 0;
-			if (xm <= 16) return -1; /* show window */
-			return -2; /* start stop */
-		}
-	}
+	if (WP(w, traindepot_d).engine_count <= pos) return 1; // empty block, so no vehicle is selected
+	*veh = vl[pos];
 
-	return 1; /* outside */
+	if (xm >= 24) return 0; // drag vehicle
+	if (xm <= 16) return -1; // show window
+	return -2; // start stop
 }
 
 static void RoadDepotClickVeh(Window *w, int x, int y)
@@ -755,7 +744,13 @@ static void ClonePlaceObj(const Window *w)
 static void RoadDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE:
+		WP(w, traindepot_d).vehicle_list = NULL;
+		WP(w, traindepot_d).engine_list_length = 0;
+		break;
+
 	case WE_PAINT:
+		BuildDepotVehicleList(VEH_Road, w->window_number, &WP(w, traindepot_d).vehicle_list, &WP(w, traindepot_d).engine_list_length, &WP(w, traindepot_d).engine_count, NULL, NULL, NULL);
 		DrawRoadDepotWindow(w);
 		break;
 
@@ -808,6 +803,7 @@ static void RoadDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY:
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
+		free((void*)WP(w, traindepot_d).vehicle_list);
 		break;
 
 	case WE_DRAGDROP:

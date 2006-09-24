@@ -606,9 +606,10 @@ void ShowShipViewWindow(const Vehicle *v)
 
 static void DrawShipDepotWindow(Window *w)
 {
+	Vehicle **vl = WP(w, traindepot_d).vehicle_list;
 	TileIndex tile;
-	Vehicle *v;
-	int num,x,y;
+	int x, y, max;
+	uint16 num = WP(w, traindepot_d).engine_count;
 	Depot *depot;
 
 	tile = w->window_number;
@@ -618,10 +619,6 @@ static void DrawShipDepotWindow(Window *w)
 		IsTileOwner(tile, _local_player) ? 0 : ((1 << 4) | (1 << 7));
 
 	/* determine amount of items for scroller */
-	num = 0;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship && IsShipInDepot(v) && v->tile == tile) num++;
-	}
 	SetVScrollCount(w, (num + w->hscroll.cap - 1) / w->hscroll.cap);
 
 	/* locate the depot struct */
@@ -634,30 +631,28 @@ static void DrawShipDepotWindow(Window *w)
 	x = 2;
 	y = 15;
 	num = w->vscroll.pos * w->hscroll.cap;
+	max = min(WP(w, traindepot_d).engine_count, num + (w->vscroll.cap * w->hscroll.cap));
 
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship && IsShipInDepot(v) && v->tile == tile &&
-				--num < 0 && num >= -w->vscroll.cap * w->hscroll.cap) {
-			DrawShipImage(v, x+19, y, WP(w,traindepot_d).sel);
+	for (; num < max; num++) {
+		const Vehicle *v = vl[num];
+		DrawShipImage(v, x + 19, y, WP(w,traindepot_d).sel);
 
-			SetDParam(0, v->unitnumber);
-			DrawString(x, y+2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
+		SetDParam(0, v->unitnumber);
+		DrawString(x, y + 2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
 
-			DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x, y + 9);
+		DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x, y + 9);
 
-			if ((x+=90) == 2 + 90 * w->hscroll.cap) {
-				x = 2;
-				y += 24;
-			}
+		if ((x += 90) == 2 + 90 * w->hscroll.cap) {
+			x = 2;
+			y += 24;
 		}
 	}
 }
 
 static int GetVehicleFromShipDepotWndPt(const Window *w, int x, int y, Vehicle **veh)
 {
+	Vehicle **vl = WP(w, traindepot_d).vehicle_list;
 	uint xt,row,xm,ym;
-	TileIndex tile;
-	Vehicle *v;
 	int pos;
 
 	xt = x / 90;
@@ -670,23 +665,16 @@ static int GetVehicleFromShipDepotWndPt(const Window *w, int x, int y, Vehicle *
 
 	pos = (row + w->vscroll.pos) * w->hscroll.cap + xt;
 
-	tile = w->window_number;
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Ship && v->vehstatus & VS_HIDDEN && v->tile == tile &&
-				--pos < 0) {
-			*veh = v;
-			if (xm >= 19) return 0;
-			if (ym <= 10) return -1; /* show window */
-			return -2; /* start stop */
-		}
-	}
-
-	return 1; /* outside */
+	if (WP(w, traindepot_d).engine_count <= pos) return 1; // empty block, so no vehicle is selected
+	*veh = vl[pos];
+	if (xm >= 19) return 0; // drag vehicle
+	if (ym <= 10) return -1; // show window
+	return -2; // start stop
 }
 
 static void ShipDepotClick(Window *w, int x, int y)
 {
-	Vehicle *v;
+	Vehicle *v = NULL;
 	int mode = GetVehicleFromShipDepotWndPt(w, x, y, &v);
 
 	// share / copy orders
@@ -746,34 +734,40 @@ static void ClonePlaceObj(const Window *w)
 static void ShipDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE:
+		WP(w, traindepot_d).vehicle_list = NULL;
+		WP(w, traindepot_d).engine_count = 0;
+		break;
+
 	case WE_PAINT:
+		BuildDepotVehicleList(VEH_Ship, w->window_number, &WP(w, traindepot_d).vehicle_list, &WP(w, traindepot_d).engine_list_length, &WP(w, traindepot_d).engine_count, NULL, NULL, NULL);
 		DrawShipDepotWindow(w);
 		break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 5:
+		case 5: // List
 			ShipDepotClick(w, e->we.click.pt.x, e->we.click.pt.y);
 			break;
 
-		case 7:
+		case 7: // Build vehicle
 			ResetObjectToPlace();
 			ShowBuildShipWindow(w->window_number);
 			break;
 
-			case 8: /* clone button */
+		case 8: // Clone button
 			InvalidateWidget(w, 8);
-				TOGGLEBIT(w->click_state, 8);
+			TOGGLEBIT(w->click_state, 8);
 
-				if (HASBIT(w->click_state, 8)) {
-					_place_clicked_vehicle = NULL;
-					SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
-				} else {
-					ResetObjectToPlace();
-				}
-					break;
+			if (HASBIT(w->click_state, 8)) {
+				_place_clicked_vehicle = NULL;
+				SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
+			} else {
+				ResetObjectToPlace();
+			}
+			break;
 
-			case 9: ScrollMainWindowToTile(w->window_number); break;
+		case 9: ScrollMainWindowToTile(w->window_number); break;
 		}
 		break;
 
@@ -799,6 +793,7 @@ static void ShipDepotWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY:
 		DeleteWindowById(WC_BUILD_VEHICLE, w->window_number);
+		free((void*)WP(w, traindepot_d).vehicle_list);
 		break;
 
 	case WE_DRAGDROP:

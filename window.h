@@ -394,6 +394,12 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
 
 typedef struct {
 	VehicleID sel;
+	uint16 engine_list_length;
+	uint16 wagon_list_length;
+	uint16 engine_count;
+	uint16 wagon_count;
+	Vehicle **vehicle_list;
+	Vehicle **wagon_list;
 } traindepot_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(traindepot_d));
 
