@@ -603,6 +603,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Mink stø
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generer tilfeldig landskap
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Tilbakestill landskap
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Tilbakestill landskap
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Bruk høydekart
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Bruk høydekart
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Er du sikkert på du vil tilbakestille landskapet?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landskapsgenerering
 STR_022F_TOWN_GENERATION                                        :{BLACK}Bygenerering
@@ -715,6 +717,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Lagre sc
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Last inn scenario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Lagre scenario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Spill scenario
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Spill høydekart
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Start et nytt spill, bruk et høydekart som landskap
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på du vil forlate dette scenariet?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Avslutt redigeringsprogrammet
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan bare bygges i byer med mer en 1200 innbyggere
@@ -880,6 +884,7 @@ STR_TOWNNAME_SWISS                                              :Sveitsisk
 STR_TOWNNAME_DANISH                                             :Dansk
 STR_TOWNNAME_TURKISH                                            :Tyrkisk
 STR_TOWNNAME_ITALIAN                                            :Italiensk
+STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
@@ -1438,6 +1443,10 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-størr
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Kan ikke laste landskapet fra PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...fant ingen fil.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kunne ikke konvertere bildetypen. Et 8- eller 24-bits bilde trengs.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...noe gikk akkurat galt. Beklager. (Mest sannsynlig en ødelagt fil)
 
 
 ##id 0x0800
@@ -2134,6 +2143,12 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} har blitt kjøpt opp av {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Dette selskapet selger ikke aksjer enda...
 
+STR_LIVERY_STEAM                                                :Damplokomotiv
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passasjervogn (Damp)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passasjervogn (Elektrisk)
+STR_LIVERY_TRUCK                                                :Lastebil
+STR_LIVERY_SMALL_PLANE                                          :Lite fly
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Damp)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2820,6 +2835,13 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Vis alle fly som har denne stasjonen på deres timeplan
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle skip som har denne stasjonen på deres timeplan
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordre av {COMMA} Kjøretøy{P "" s}
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle kjøretøy som har samme ruteplan
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Send til depoet
+STR_SEND_TO_HANGARS                                             :{BLACK}Send til hangarer
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Send alle luftfartøy i listen til en hangar. CTRL+klikk vil bare reparere luftfartøyet
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Bytt ut kjøretøy
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatte {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Begynn å bytte ut kjøretøy
@@ -2871,6 +2893,37 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomoti
 
 ########### String for New Landscape Generator
 
+STR_RANDOM                                                      :{BLACK}Tilfeldigjør
+STR_RANDOM_HELP                                                 :{BLACK}Endre tilfeldig-nummer som brukes for terreng-generering
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generer en verden
+STR_RANDOM_SEED                                                 :{BLACK}Tilfeldig nummer:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Trykk her for å taste inn et tilfeldig nummer
+STR_TREE_PLACER                                                 :{BLACK}Treealgoritme:
+STR_TERRAIN_TYPE                                                :{BLACK}Terrengtype
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Havflate:
+STR_SMOOTHNESS                                                  :{BLACK}Glatthet:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Høyde på snøgrensen:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Antall byer:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Antall industrier:
+STR_SNOW_LINE_UP                                                :{BLACK}Flytt høyden på snøgrensen ett hakk opp
+STR_SNOW_LINE_DOWN                                              :{BLACK}Flytt høyden på snøgrensen ett hakk ned
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Skift høyden på snøgrensen
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Endre startår
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_PROGRESS                                                    :{WHITE}{NUM}% ferdig
+STR_WORLD_GENERATION                                            :{BLACK}Generer en verden
+STR_TREE_GENERATION                                             :{BLACK}Tregenerering
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Ikke-flyttbar generering
+STR_SETTINGUP_GAME                                              :{BLACK}Klargjør spillet
+STR_PREPARING_TILELOOP                                          :{BLACK}Kjører tile-loop
+STR_PREPARING_GAME                                              :{BLACK}Gjør klart spillet
+STR_SE_FLAT_WORLD                                               :{WHITE}Flatt land
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generer et flatt landskap
+STR_SE_RANDOM_LAND                                              :{WHITE}Tilfeldig landskap
+STR_SE_NEW_WORLD                                                :{BLACK}Generer et nytt scenario
+STR_SE_CAPTION                                                  :{WHITE}Scenario type
+
+STR_SMALLMAP_CENTER                                             :{BLACK}Midstill oversiktskartet på den gjeldende posisjonen
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Liten

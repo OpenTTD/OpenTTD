@@ -3007,7 +3007,7 @@ STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Tvorba k
 STR_RANDOM_SEED                                                 :{BLACK}Náhodné cislo:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Zde muzete zadat náhodné cislo
 STR_LAND_GENERATOR                                              :{BLACK}Generátor krajiny:
-STR_TREE_PLACER                                                 :{BLACK} Algoritmus výsadby stromu:
+STR_TREE_PLACER                                                 :{BLACK}Algoritmus výsadby stromu:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Otoceni vý¨kové mapy:
 STR_TERRAIN_TYPE                                                :{BLACK}Typ krajiny:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Mno¸ství jezer:

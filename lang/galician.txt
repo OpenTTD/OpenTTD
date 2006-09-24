@@ -867,6 +867,8 @@ STR_TOWNNAME_CZECH                                              :Checo
 STR_TOWNNAME_SWISS                                              :Suízo
 STR_TOWNNAME_DANISH                                             :Danés
 STR_TOWNNAME_TURKISH                                            :Turco
+STR_TOWNNAME_ITALIAN                                            :Italiano
+STR_TOWNNAME_CATALAN                                            :Catalán
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Libras (£)
@@ -1025,7 +1027,9 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Diñeiro
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duración das mensaxes de error: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra-la poboación da cidade na etiqueta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árbores invisibles (con edificios transparentes): {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da liña de neve: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Extensión Max. Estación: {ORANGE}{STRING} {RED}Aviso: Valores altos reducen rendemento
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Face-lo servicio os helicópteros no heliporto automáticam.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverti-la dirección de desplazamento: {ORANGE}{STRING}
@@ -1407,6 +1411,11 @@ STR_NETWORK_SEND                                                :{BLACK}Enviar
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Tamaño X do mapa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Tamaño Y do mapa: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Coste: {CURRENCY}
@@ -2098,6 +2107,13 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} comprada por  {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Esta compañía todavía non comercia con accións...
 
+STR_LIVERY_STEAM                                                :Máquina de Vapor
+STR_LIVERY_DIESEL                                               :Máquina Diésel
+STR_LIVERY_ELECTRIC                                             :Máquina Eléctrica
+STR_LIVERY_MONORAIL                                             :Máquina Monorraíl
+STR_LIVERY_MAGLEV                                               :Máquina Maglev
+STR_LIVERY_HELICOPTER                                           :Helicóptero
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2770,6 +2786,8 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar 
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar tódolas aeronaves que teñen esta estación nas súas ordes
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
 
+
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplazar Vehículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar a Reemplazar Vehículos
@@ -2806,6 +2824,16 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} pasaxeiros, {COMMA} sacos de correo
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns tractores: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreo:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de industrias:
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_SE_NEW_WORLD                                                :{BLACK}Crear novo escenario
+STR_SE_CAPTION                                                  :{WHITE}Tipo de escenario
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeno

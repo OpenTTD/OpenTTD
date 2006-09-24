@@ -2166,6 +2166,21 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} ha sido comprada por {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Esta empresa todavía no dispone acciones a la venta...
 
+STR_LIVERY_STEAM                                                :Locomotora a Vapor
+STR_LIVERY_MONORAIL                                             :Locomotora Monorail
+STR_LIVERY_MAGLEV                                               :Locomotora Maglev
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Autobus Pasajeros (Vapor)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Autobus Pasajeros (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Autobus Pasajeros (Electrico)
+STR_LIVERY_FREIGHT_WAGON                                        :Vagón de Carga
+STR_LIVERY_TRUCK                                                :Camión
+STR_LIVERY_PASSENGER_SHIP                                       :Ferry de Pasajeros
+STR_LIVERY_FREIGHT_SHIP                                         :Barco de Carga
+STR_LIVERY_HELICOPTER                                           :Helicoptero
+STR_LIVERY_SMALL_PLANE                                          :Aeroplano Pequeño
+STR_LIVERY_LARGE_PLANE                                          :Aeroplano Grande
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
