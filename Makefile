@@ -654,6 +654,7 @@ SRCS += date.c
 SRCS += debug.c
 SRCS += dedicated.c
 SRCS += depot.c
+SRCS += depot_gui.c
 SRCS += disaster_cmd.c
 SRCS += dock_gui.c
 SRCS += driver.c

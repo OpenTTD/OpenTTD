@@ -202,6 +202,9 @@
 				RelativePath=".\depot.c">
 			</File>
 			<File
+				RelativePath=".\depot_gui.c">
+			</File>
+			<File
 				RelativePath=".\music\dmusic.cpp">
 				<FileConfiguration
 					Name="Release|Win32">

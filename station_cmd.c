@@ -83,7 +83,6 @@ MemoryPool _station_pool = { "Stations", STATION_POOL_MAX_BLOCKS, STATION_POOL_B
 MemoryPool _roadstop_pool = { "RoadStop", ROADSTOP_POOL_MAX_BLOCKS, ROADSTOP_POOL_BLOCK_SIZE_BITS, sizeof(RoadStop), &RoadStopPoolNewBlock, NULL, 0, 0, NULL };
 
 
-void ShowAircraftDepotWindow(TileIndex tile);
 extern void UpdateAirplanesOnNewStation(Station *st);
 
 static void MarkStationDirty(const Station* st)
@@ -2272,7 +2271,7 @@ static void AnimateTile_Station(TileIndex tile)
 static void ClickTile_Station(TileIndex tile)
 {
 	if (IsHangar(tile)) {
-		ShowAircraftDepotWindow(tile);
+		ShowDepotWindow(tile, VEH_Aircraft);
 	} else {
 		ShowStationViewWindow(GetStationIndex(tile));
 	}

@@ -977,11 +977,9 @@ static void TileLoop_Road(TileIndex tile)
 	}
 }
 
-void ShowRoadDepotWindow(TileIndex tile);
-
 static void ClickTile_Road(TileIndex tile)
 {
-	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) ShowRoadDepotWindow(tile);
+	if (GetRoadTileType(tile) == ROAD_TILE_DEPOT) ShowDepotWindow(tile, VEH_Road);
 }
 
 static const byte _road_trackbits[16] = {

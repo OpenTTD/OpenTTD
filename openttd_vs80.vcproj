@@ -501,6 +501,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\depot_gui.c"
+				>
+			</File>
+			<File
 				RelativePath=".\music\dmusic.cpp"
 				>
 				<FileConfiguration

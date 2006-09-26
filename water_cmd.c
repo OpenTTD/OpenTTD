@@ -716,14 +716,12 @@ static uint32 GetTileTrackStatus_Water(TileIndex tile, TransportType mode)
 	return ts * 0x101;
 }
 
-extern void ShowShipDepotWindow(TileIndex tile);
-
 static void ClickTile_Water(TileIndex tile)
 {
 	if (GetWaterTileType(tile) == WATER_DEPOT) {
 		TileIndex tile2 = GetOtherShipDepotTile(tile);
 
-		ShowShipDepotWindow(tile < tile2 ? tile : tile2);
+		ShowDepotWindow(tile < tile2 ? tile : tile2, VEH_Ship);
 	}
 }
 

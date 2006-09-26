@@ -40,7 +40,6 @@ const byte _track_sloped_sprites[14] = {
 	19, 16
 };
 
-void ShowTrainDepotWindow(TileIndex tile);
 
 /*         4
  *     ---------
@@ -1920,7 +1919,7 @@ static uint32 GetTileTrackStatus_Track(TileIndex tile, TransportType mode)
 static void ClickTile_Track(TileIndex tile)
 {
 	if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
-		ShowTrainDepotWindow(tile);
+		ShowDepotWindow(tile, VEH_Train);
 	} else if (IsRailWaypoint(tile)) {
 		ShowRenameWaypointWindow(GetWaypointByTile(tile));
 	}
