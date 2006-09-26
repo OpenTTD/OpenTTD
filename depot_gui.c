@@ -18,20 +18,22 @@
 #include "train.h"
 
 enum {
-	DEPOT_WIDGET_CLOSEBOX =  0,
-	DEPOT_WIDGET_CAPTION  =  1,
-	DEPOT_WIDGET_STICKY   =  2,
-	DEPOT_WIDGET_V_RESIZE =  3, // blank widget, that fills the gab at the sell button when resizing vertically
-	DEPOT_WIDGET_SELL     =  4,
-	DEPOT_WIDGET_SELL_ALL =  5,
-	DEPOT_WIDGET_MATRIX   =  6,
-	DEPOT_WIDGET_V_SCROLL =  7, // Vertical scrollbar
-	DEPOT_WIDGET_H_SCROLL =  8, // Horizontal scrollbar
-	DEPOT_WIDGET_BUILD    =  9,
-	DEPOT_WIDGET_CLONE    = 10,
-	DEPOT_WIDGET_LOCATION = 11,
-	DEPOT_WIDGET_H_RESIZE = 12, // blank widget, that fills the gab at the build and clone buttons when resizing horizontally
-	DEPOT_WIDGET_RESIZE   = 13,
+	DEPOT_WIDGET_CLOSEBOX  =  0,
+	DEPOT_WIDGET_CAPTION   =  1,
+	DEPOT_WIDGET_STICKY    =  2,
+	DEPOT_WIDGET_STOP_ALL  =  3,
+	DEPOT_WIDGET_START_ALL =  4,
+	DEPOT_WIDGET_V_RESIZE  =  5, // blank widget, that fills the gab at the sell button when resizing vertically
+	DEPOT_WIDGET_SELL      =  6,
+	DEPOT_WIDGET_SELL_ALL  =  7,
+	DEPOT_WIDGET_MATRIX    =  8,
+	DEPOT_WIDGET_V_SCROLL  =  9, // Vertical scrollbar
+	DEPOT_WIDGET_H_SCROLL  = 10, // Horizontal scrollbar
+	DEPOT_WIDGET_BUILD     = 11,
+	DEPOT_WIDGET_CLONE     = 12,
+	DEPOT_WIDGET_LOCATION  = 13,
+	DEPOT_WIDGET_H_RESIZE  = 14, // blank widget, that fills the gab at the build and clone buttons when resizing horizontally
+	DEPOT_WIDGET_RESIZE    = 15,
 };
 
 /* Widget array for all depot windows.
@@ -42,8 +44,11 @@ static const Widget _depot_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},            // DEPOT_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, 0x0,                 STR_018C_WINDOW_TITLE_DRAG_THIS},  // DEPOT_WIDGET_CAPTION
 	{  WWT_STICKYBOX,     RESIZE_LR,    14,   293,   304,     0,    13, 0x0,                 STR_STICKY_BUTTON},                // DEPOT_WIDGET_STICKY
-	{      WWT_PANEL,    RESIZE_LRB,    14,   270,   292,    14,    13, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_V_RESIZE
-	{     WWT_IMGBTN,   RESIZE_LRTB,    14,   270,   292,    14,    61, 0x2A9,               STR_NULL},                         // DEPOT_WIDGET_SELL
+
+	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   270,   280,    14,    25, SPR_FLAG_VEH_STOPPED,STR_MASS_STOP_DEPOT_TOOLTIP},      // DEPOT_WIDGET_STOP_ALL
+	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   281,   292,    14,    25, SPR_FLAG_VEH_RUNNING,STR_MASS_START_DEPOT_TOOLTIP},     // DEPOT_WIDGET_START_ALL
+	{      WWT_PANEL,    RESIZE_LRB,    14,   270,   292,    26,    25, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_V_RESIZE
+	{     WWT_IMGBTN,   RESIZE_LRTB,    14,   270,   292,    26,    61, 0x2A9,               STR_NULL},                         // DEPOT_WIDGET_SELL
 	{      WWT_PANEL,   RESIZE_LRTB,    14,   326,   348,     0,     0, 0x2BF,               STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_ALL, trains only
 
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    61, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_MATRIX
@@ -72,6 +77,8 @@ static const Widget _depot_widgets[] = {
 static const byte left[] = {
 	DEPOT_WIDGET_STICKY,
 	DEPOT_WIDGET_V_RESIZE,
+	DEPOT_WIDGET_STOP_ALL,
+	DEPOT_WIDGET_START_ALL,
 	DEPOT_WIDGET_SELL,
 	DEPOT_WIDGET_V_SCROLL,
 	DEPOT_WIDGET_H_RESIZE,
@@ -83,6 +90,8 @@ static const byte right[] = {
 	DEPOT_WIDGET_CAPTION,
 	DEPOT_WIDGET_STICKY,
 	DEPOT_WIDGET_V_RESIZE,
+	DEPOT_WIDGET_STOP_ALL,
+	DEPOT_WIDGET_START_ALL,
 	DEPOT_WIDGET_SELL,
 	DEPOT_WIDGET_MATRIX,
 	DEPOT_WIDGET_V_SCROLL,
@@ -542,6 +551,12 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 						break;
 
 				case DEPOT_WIDGET_LOCATION: ScrollMainWindowToTile(w->window_number); break;
+
+				case DEPOT_WIDGET_STOP_ALL:
+				case DEPOT_WIDGET_START_ALL:
+					DoCommandP(w->window_number, WP(w, depot_d).type, e->we.click.widget == DEPOT_WIDGET_START_ALL ? 1 : 0, NULL, CMD_MASS_START_STOP);
+					break;
+
 			}
 			break;
 
@@ -696,6 +711,10 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_AIRCRAFT;
 			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW;
 			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_A024_CENTER_MAIN_VIEW_ON_HANGAR;
+
+			/* Special strings only for hangars (using hangar instead of depot and so on) */
+			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_HANGAR_TOOLTIP;
+			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_HANGAR_TOOLTIP;
 			break;
 	}
 }

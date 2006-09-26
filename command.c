@@ -159,6 +159,7 @@ DEF_COMMAND(CmdRemoveSignalTrack);
 DEF_COMMAND(CmdReplaceVehicle);
 
 DEF_COMMAND(CmdCloneVehicle);
+DEF_COMMAND(CmdMassStartStopVehicle);
 
 
 /* The master command table */
@@ -303,6 +304,7 @@ static const Command _command_proc_table[] = {
 	{CmdChangePatchSetting,         CMD_SERVER}, /* 114 */
 	{CmdReplaceVehicle,                      0}, /* 115 */
 	{CmdCloneVehicle,                        0}, /* 116 */
+	{CmdMassStartStopVehicle,                0}, /* 117 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */

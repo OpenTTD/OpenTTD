@@ -218,4 +218,12 @@ static inline Vehicle *GetNextVehicle(const Vehicle *v)
 void ConvertOldMultiheadToNew(void);
 void ConnectMultiheadedTrains(void);
 
+static inline bool IsWholeTrainInDepot(const Vehicle *v)
+{
+	for (; v != NULL; v = v->next) {
+		if (!(v->vehstatus & VS_HIDDEN)) return false;
+	}
+	return true;
+}
+
 #endif /* TRAIN_H */

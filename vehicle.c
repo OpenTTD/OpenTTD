@@ -1557,6 +1557,54 @@ void AgeVehicle(Vehicle *v)
 	}
 }
 
+/** Starts or stops a lot of vehicles
+ * @param tile Tile of the depot where the vehicles are started/stopped
+ * @param p1 Vehicle type
+ * @param p2 0 = start vehicles, 1 = stop vehicles
+ */
+int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	Vehicle **vl = NULL;
+	uint16 engine_list_length = 0;
+	uint16 engine_count = 0;
+	int32 return_value = CMD_ERROR;
+	uint i;
+	uint stop_command;
+	byte vehicle_type = p1;
+	byte start_stop = p2;
+
+	switch (vehicle_type) {
+		case VEH_Train:    stop_command = CMD_START_STOP_TRAIN;    break;
+		case VEH_Road:     stop_command = CMD_START_STOP_ROADVEH;  break;
+		case VEH_Ship:     stop_command = CMD_START_STOP_SHIP;     break;
+		case VEH_Aircraft: stop_command = CMD_START_STOP_AIRCRAFT; break;
+		default: return CMD_ERROR;
+	}
+
+	/* Get the list of vehicles in the depot */
+	BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
+
+	for (i = 0; i < engine_count; i++) {
+		const Vehicle *v = vl[i];
+		int32 ret;
+
+		if (!!(v->vehstatus & VS_STOPPED) != start_stop) continue;
+		if (!(v->vehstatus & VS_HIDDEN)) continue;
+		if (p1 == VEH_Train && !IsWholeTrainInDepot(v)) continue;
+		ret = DoCommand(tile, v->index, 0, flags, stop_command);
+
+		if (!CmdFailed(ret)) {
+			return_value = 0;
+			/* We know that the command is valid for at least one vehicle.
+			 * If we haven't set DC_EXEC, then there is no point in continueing because it will be valid */
+			if (!(flags & DC_EXEC)) break;
+		}
+	}
+
+	free((void*)vl);
+	return return_value;
+}
+
 /** Clone a vehicle. If it is a train, it will clone all the cars too
  * @param tile tile of the depot where the cloned vehicle is build
  * @param p1 the original vehicle's index

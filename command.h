@@ -136,6 +136,7 @@ enum {
 	CMD_REPLACE_VEHICLE              = 115,
 
 	CMD_CLONE_VEHICLE                = 116,
+	CMD_MASS_START_STOP              = 117,
 
 };
 
