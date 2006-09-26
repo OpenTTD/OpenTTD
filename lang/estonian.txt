@@ -904,7 +904,9 @@ STR_CURR_NOK                                                    :Norra kroon (NO
 STR_CURR_PLN                                                    :Poola Zlott (PLN)
 STR_CURR_ROL                                                    :Rumeenia Leu (ROL)
 STR_CURR_RUR                                                    :Vene rubla (RUR)
+STR_CURR_SIT                                                    :Sloveenia Talaar (SIT)
 STR_CURR_SEK                                                    :Rootsi kroon (SEK)
+STR_CURR_YTL                                                    :Türgi Liir (YTL)
 
 STR_CURR_CUSTOM                                                 :Omatehtud...
 
@@ -1039,12 +1041,34 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Veateat
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Näita linna nimeseildil populatsiooni: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nähtamatud puud(läbipaistvate ehitistega): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Maaala Generaator: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Orginaalne
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maks. distants kaardi äärest Õli puurkaevudele {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Lumepiiri kõrgus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Maa mägisus (TerraGenesis ainult) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väga sile
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sile
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Mägine
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Väga mägine
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Puude panemis süsteem: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Pole
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Orginaalne
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Täiustatud
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Kõrgustekaardi pööramine: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastu-päevapidi
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Päevapidi
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Progressi uuendamise ajavage: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Kõrguse level kui kõrgele lapik kaart läheb: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksmimaalne jaama ala: {ORANGE}{STRING} {RED}Hoiatus: Kõrged seaded aeglustavad mängu
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Kopteri jaamades helikopterite automaatne teenindus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Lingi maastiku riba raudtee/tee/vee/lennujaama tööriistaribaga: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Kui kerid hiirega liiguta vaade vastassuunda: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Näita firma livree: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Mitte ükski
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Enda firma
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Kõik Firmad
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maksimaalne rongide arv mängija kohta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maksimaalne maanteesõidukite arv mängija kohta: {ORANGE}{STRING}
@@ -1439,6 +1463,8 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Kaardi 
 ##### PNG-MAP-Loader
 
 
+STR_BMPMAP_ERROR                                                :{WHITE}Ei suuda laadida maad BMP failist...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ei suutnud muuta pildi tüüpi.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Hind: {CURRENCY}
@@ -2135,6 +2161,7 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} võeti üle ettevõtte {COMPANY} poolt!
 STR_7080_PROTECTED                                              :{WHITE}See kompanii pole veel piisavalt vana, et aktsiaid vahetada...
 
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Auruvedur)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diisel)
@@ -2820,6 +2847,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Näita kõ
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näita kõiki laevu millel on see jaam nende sõiduplaanis
 
 
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Asenda sõidukeid
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Asenda {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusa sõidukite asendamist
@@ -2871,6 +2899,20 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirenda
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Genereeri
+STR_DATE                                                        :{BLACK}Kuupäev:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_GENERATION_ABORT                                            :{BLACK}Loobu
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Loobu Maailma Genereerimisest
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Kas sa tõesti tahad loobuda genereerimisest?
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_CLEARING_TILES                                              :{BLACK}Mägise ja kivise maaala tegemine
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}See tegevus muutis raskusastme erilise peale
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Liiguta lameda maa kõrgus ühe võrra alla
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Liiguta lameda maa kõrgus ühe võrra üles
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Muuda maa kõrgust lamedal maal
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Lameda maa kõrgus:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 
 ########### String for new airports
