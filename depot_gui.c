@@ -301,7 +301,7 @@ enum {
 static int GetVehicleFromDepotWndPt(const Window *w, int x, int y, Vehicle **veh, GetDepotVehiclePtData *d)
 {
 	Vehicle **vl = WP(w, depot_d).vehicle_list;
-	uint xt, row, xm, ym;
+	uint xt, row, xm = 0, ym = 0;
 	int pos, skip = 0;
 
 	if (WP(w, depot_d).type == VEH_Train) {
