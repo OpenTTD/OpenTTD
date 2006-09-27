@@ -17,6 +17,29 @@
 #include "newgrf_engine.h"
 #include "train.h"
 
+enum {
+	WIDGET_DEPOT_MOVE_NONE   = 0 << 0,
+	WIDGET_DEPOT_MOVE_RIGHT  = 1 << 0,
+	WIDGET_DEPOT_MOVE_LEFT   = 1 << 1,
+	WIDGET_DEPOT_MOVE_TOP    = 1 << 2,
+	WIDGET_DEPOT_MOVE_BOTTOM = 1 << 3,
+
+	DEPOT_MOVE_NONE               = WIDGET_DEPOT_MOVE_NONE,
+	DEPOT_STRETCH_RIGHT           = WIDGET_DEPOT_MOVE_RIGHT,
+	DEPOT_MOVE_RIGHT              = WIDGET_DEPOT_MOVE_RIGHT | WIDGET_DEPOT_MOVE_LEFT,
+	DEPOT_STRETCH_DOWN            = WIDGET_DEPOT_MOVE_BOTTOM,
+	DEPOT_MOVE_DOWN               = WIDGET_DEPOT_MOVE_BOTTOM | WIDGET_DEPOT_MOVE_TOP,
+	DEPOT_STRETCH_DOWN_RIGHT      = DEPOT_STRETCH_DOWN | DEPOT_STRETCH_RIGHT,
+	DEPOT_MOVE_DOWN_RIGHT         = DEPOT_MOVE_RIGHT | DEPOT_MOVE_DOWN,
+	DEPOT_MOVE_RIGHT_STRETCH_DOWN = DEPOT_MOVE_RIGHT | DEPOT_STRETCH_DOWN,
+};
+
+/*
+ * Since all depot window sizes aren't the same, we need to modify sizes a little.
+ * It's done with the following arrays of widget indexes. Each of them tells if a widget side should be moved and in what direction.
+ * How long they should be moved and for what window types are controlled in ShowDepotWindow()
+ */
+
 /* Names of the widgets. Keep them in the same order as in the widget array */
 typedef enum DepotWindowWidgets {
 	DEPOT_WIDGET_CLOSEBOX = 0,
@@ -35,10 +58,31 @@ typedef enum DepotWindowWidgets {
 	DEPOT_WIDGET_RESIZE,
 } DepotWindowWidget;
 
+/* Define how to move each widget. The order is important */
+static const byte widget_moves[] = {
+	DEPOT_MOVE_NONE,               // DEPOT_WIDGET_CLOSEBOX
+	DEPOT_STRETCH_RIGHT,           // DEPOT_WIDGET_CAPTION
+	DEPOT_MOVE_RIGHT,              // DEPOT_WIDGET_STICKY
+	DEPOT_MOVE_RIGHT,              // DEPOT_WIDGET_STOP_ALL
+	DEPOT_MOVE_RIGHT,              // DEPOT_WIDGET_START_ALL
+	DEPOT_MOVE_RIGHT,              // DEPOT_WIDGET_SELL
+	DEPOT_MOVE_NONE,               // DEPOT_WIDGET_SELL_ALL
+	DEPOT_STRETCH_DOWN_RIGHT,      // DEPOT_WIDGET_MATRIX
+	DEPOT_MOVE_RIGHT_STRETCH_DOWN, // DEPOT_WIDGET_V_SCROLL
+	DEPOT_MOVE_NONE,               // DEPOT_WIDGET_H_SCROLL
+	DEPOT_MOVE_DOWN,               // DEPOT_WIDGET_BUILD
+	DEPOT_MOVE_DOWN,               // DEPOT_WIDGET_CLONE
+	DEPOT_MOVE_DOWN,               // DEPOT_WIDGET_LOCATION
+	DEPOT_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_RESIZE
+};
+
 /* Widget array for all depot windows.
  * If a widget is needed in some windows only (like train specific), add it for all windows
  * and use w->hidden_state in ShowDepotWindow() to remove it in the windows where it should not be
  * Keep the widget numbers in sync with the enum or really bad stuff will happen!!! */
+
+/* When adding widgets, place them as you would place them for the ship depot and define how you want it to move in widget_moves[]
+ * If you want a widget for one window only, set it to be hidden in ShowDepotWindow() for the windows where you don't want it */
 static const Widget _depot_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},            // DEPOT_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, 0x0,                 STR_018C_WINDOW_TITLE_DRAG_THIS},  // DEPOT_WIDGET_CAPTION
@@ -61,54 +105,6 @@ static const Widget _depot_widgets[] = {
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   195,   292,    62,    73, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
 	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   293,   304,    62,    73, 0x0,                 STR_RESIZE_BUTTON},                // DEPOT_WIDGET_RESIZE
 	{   WIDGETS_END},
-};
-
-/*
- * Since all depot window sizes aren't the same, we need to modify sizes a little.
- * It's done with the following arrays of widget indexes. Each of them tells if a widget side should be moved and in what direction.
- * How long they should be moved and for what window types are controlled in ShowDepotWindow()
- */
-
-/* List of widgets where the left side should be moved to the right */
-static const byte left[] = {
-	DEPOT_WIDGET_STICKY,
-	DEPOT_WIDGET_STOP_ALL,
-	DEPOT_WIDGET_START_ALL,
-	DEPOT_WIDGET_SELL,
-	DEPOT_WIDGET_V_SCROLL,
-	DEPOT_WIDGET_RESIZE,
-};
-
-/* List of widgets where the right side should be moved to the right */
-static const byte right[] = {
-	DEPOT_WIDGET_CAPTION,
-	DEPOT_WIDGET_STICKY,
-	DEPOT_WIDGET_STOP_ALL,
-	DEPOT_WIDGET_START_ALL,
-	DEPOT_WIDGET_SELL,
-	DEPOT_WIDGET_MATRIX,
-	DEPOT_WIDGET_V_SCROLL,
-	DEPOT_WIDGET_LOCATION,
-	DEPOT_WIDGET_RESIZE,
-};
-
-/* List of widgets where the top side should be moved down */
-static const byte top[] = {
-	DEPOT_WIDGET_BUILD,
-	DEPOT_WIDGET_CLONE,
-	DEPOT_WIDGET_LOCATION,
-	DEPOT_WIDGET_RESIZE,
-};
-
-/* List of widgets where the bottom side should be moved down */
-static const byte bottom[] = {
-	DEPOT_WIDGET_SELL,
-	DEPOT_WIDGET_MATRIX,
-	DEPOT_WIDGET_V_SCROLL,
-	DEPOT_WIDGET_BUILD,
-	DEPOT_WIDGET_CLONE,
-	DEPOT_WIDGET_LOCATION,
-	DEPOT_WIDGET_RESIZE,
 };
 
 static void DepotWndProc(Window *w, WindowEvent *e);
@@ -806,20 +802,16 @@ void ShowDepotWindow(TileIndex tile, byte type)
 
 		/* Move the widgets to their right locations
 		 * Note: it's signed values so negative will make the widget move left and not right, or up instead of down */
-		if (horizontal != 0) {
+		{
 			byte i;
 
-			for (i = 0; i < lengthof(left); i++)  w->widget[left[i]].left   += horizontal;
-			for (i = 0; i < lengthof(right); i++) w->widget[right[i]].right += horizontal;
+			for (i = 0; i < lengthof(widget_moves); i++) {
+				if (widget_moves[i] & WIDGET_DEPOT_MOVE_LEFT)   w->widget[i].left   += horizontal;
+				if (widget_moves[i] & WIDGET_DEPOT_MOVE_RIGHT)  w->widget[i].right  += horizontal;
+				if (widget_moves[i] & WIDGET_DEPOT_MOVE_TOP)    w->widget[i].top    += vertical;
+				if (widget_moves[i] & WIDGET_DEPOT_MOVE_BOTTOM) w->widget[i].bottom += vertical;
+			}
 		}
-
-		if (vertical != 0) {
-			byte i;
-
-			for (i = 0; i < lengthof(top); i++)    w->widget[top[i]].top       += vertical;
-			for (i = 0; i < lengthof(bottom); i++) w->widget[bottom[i]].bottom += vertical;
-		}
-
 		ResizeDepotButtons(w);
 	}
 }
