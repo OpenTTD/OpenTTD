@@ -304,6 +304,9 @@
 				RelativePath=".\newgrf_engine.c">
 			</File>
 			<File
+				RelativePath=".\newgrf_sound.c">
+			</File>
+			<File
 				RelativePath=".\newgrf_spritegroup.c">
 			</File>
 			<File
@@ -549,6 +552,9 @@
 			</File>
 			<File
 				RelativePath=".\newgrf_engine.h">
+			</File>
+			<File
+				RelativePath=".\newgrf_sound.h">
 			</File>
 			<File
 				RelativePath=".\newgrf_spritegroup.h">

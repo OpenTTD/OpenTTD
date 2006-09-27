@@ -23,6 +23,7 @@
 #include "newgrf_engine.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_text.h"
+#include "newgrf_sound.h"
 #include "date.h"
 
 static bool AirportMove(Vehicle *v, const AirportFTAClass *Airport);
@@ -858,7 +859,9 @@ static void ServiceAircraft(Vehicle *v)
 
 static void PlayAircraftSound(const Vehicle* v)
 {
-	SndPlayVehicleFx(AircraftVehInfo(v->engine_type)->sfx, v);
+	if (!PlayVehicleSound(v, VSE_START)) {
+		SndPlayVehicleFx(AircraftVehInfo(v->engine_type)->sfx, v);
+	}
 }
 
 static bool UpdateAircraftSpeed(Vehicle *v)
@@ -1426,7 +1429,9 @@ static void AircraftLand(Vehicle *v)
 static void AircraftLandAirplane(Vehicle *v)
 {
 	AircraftLand(v);
-	SndPlayVehicleFx(SND_17_SKID_PLANE, v);
+	if (!PlayVehicleSound(v, VSE_TOUCHDOWN)) {
+		SndPlayVehicleFx(SND_17_SKID_PLANE, v);
+	}
 	MaybeCrashAirplane(v);
 }
 

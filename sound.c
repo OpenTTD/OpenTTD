@@ -10,14 +10,7 @@
 #include "window.h"
 #include "viewport.h"
 #include "fileio.h"
-
-typedef struct FileEntry {
-	uint32 file_offset;
-	uint32 file_size;
-	uint16 rate;
-	uint8 bits_per_sample;
-	uint8 channels;
-} FileEntry;
+#include "newgrf_sound.h"
 
 static uint _file_count;
 static FileEntry *_files;
@@ -100,14 +93,19 @@ static void OpenBankFile(const char *filename)
 	}
 }
 
+uint GetNumOriginalSounds(void)
+{
+	return _file_count;
+}
+
 static bool SetBankSource(MixerChannel *mc, uint bank)
 {
 	const FileEntry *fe;
 	int8 *mem;
 	uint i;
 
-	if (bank >= _file_count) return false;
-	fe = &_files[bank];
+	if (bank >= GetNumSounds()) return false;
+	fe = GetSound(bank);
 
 	if (fe->file_size == 0) return false;
 
@@ -180,6 +178,20 @@ static const byte _sound_idx[] = {
 	72,
 };
 
+void SndCopyToPool(void)
+{
+	uint i;
+
+	for (i = 0; i < _file_count; i++) {
+		FileEntry *orig = &_files[_sound_idx[i]];
+		FileEntry *fe = AllocateFileEntry();
+
+		memcpy(fe, orig, sizeof(*orig));
+		fe->volume = _sound_base_vol[i];
+		fe->priority = 0;
+	}
+}
+
 static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 {
 	const Window *w;
@@ -195,9 +207,9 @@ static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 			int left = (x - vp->virtual_left);
 
 			StartSound(
-				_sound_idx[sound],
+				sound,
 				left / (vp->virtual_width / ((PANNING_LEVELS << 1) + 1)) - PANNING_LEVELS,
-				(_sound_base_vol[sound] * msf.effect_vol * _vol_factor_by_zoom[vp->zoom]) >> 15
+				(GetSound(sound)->volume * msf.effect_vol * _vol_factor_by_zoom[vp->zoom]) >> 15
 			);
 			return;
 		}
@@ -225,8 +237,8 @@ void SndPlayVehicleFx(SoundFx sound, const Vehicle *v)
 void SndPlayFx(SoundFx sound)
 {
 	StartSound(
-		_sound_idx[sound],
+		sound,
 		0,
-		(_sound_base_vol[sound] * msf.effect_vol) >> 7
+		(GetSound(sound)->volume * msf.effect_vol) >> 7
 	);
 }

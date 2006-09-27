@@ -45,6 +45,9 @@ enum CallbackID {
 	/* Called when the player (or AI) tries to start or stop a vehicle. Mainly
 	 * used for preventing a vehicle from leaving the depot. */
 	CBID_VEHICLE_START_STOP_CHECK   = 0x31,
+
+	/* Called to play a special sound effect */
+	CBID_VEHICLE_SOUND_EFFECT       = 0x33,
 };
 
 /**

@@ -33,6 +33,7 @@
 #include "yapf/yapf.h"
 #include "date.h"
 #include "newgrf_engine.h"
+#include "newgrf_sound.h"
 
 #define INVALID_COORD (-0x8000)
 #define GEN_HASH(x, y) ((GB((y), 6, 6) << 6) + GB((x), 7, 6))
@@ -646,6 +647,22 @@ void CallVehicleTicks(void)
 
 	FOR_ALL_VEHICLES(v) {
 		_vehicle_tick_procs[v->type - 0x10](v);
+
+		switch (v->type) {
+			case VEH_Train:
+			case VEH_Road:
+			case VEH_Aircraft:
+			case VEH_Ship:
+				if (v->type == VEH_Train && IsTrainWagon(v)) continue;
+				if (v->type == VEH_Aircraft && v->subtype > 0) continue;
+
+				v->motion_counter += (v->direction & 1) ? (v->cur_speed * 3) / 4 : v->cur_speed;
+				/* Play a running sound if the motion counter passes 256 (Do we not skip sounds?) */
+				if (GB(v->motion_counter, 0, 8) < v->cur_speed) PlayVehicleSound(v, VSE_RUNNING);
+
+				/* Play an alterate running sound every 16 ticks */
+				if (GB(v->tick_counter, 0, 4) == 0) PlayVehicleSound(v, v->cur_speed > 0 ? VSE_RUNNING_16 : VSE_STOPPED_16);
+		}
 	}
 
 	// now we handle all the vehicles that entered a depot this tick

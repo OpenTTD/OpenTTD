@@ -25,6 +25,7 @@
 #include "debug.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_text.h"
+#include "newgrf_sound.h"
 #include "date.h"
 
 static const uint16 _ship_sprites[] = {0x0E5D, 0x0E55, 0x0E65, 0x0E6D};
@@ -173,8 +174,10 @@ static void HandleBrokenShip(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
-			SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
+		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
+			SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
+				SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
+		}
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
@@ -198,7 +201,9 @@ static void MarkShipDirty(Vehicle *v)
 
 static void PlayShipSound(Vehicle *v)
 {
-	SndPlayVehicleFx(ShipVehInfo(v->engine_type)->sfx, v);
+	if (!PlayVehicleSound(v, VSE_START)) {
+		SndPlayVehicleFx(ShipVehInfo(v->engine_type)->sfx, v);
+	}
 }
 
 static void ProcessShipOrder(Vehicle *v)

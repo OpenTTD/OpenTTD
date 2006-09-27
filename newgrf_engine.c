@@ -651,7 +651,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 			}
 
 		case 0x46: /* Motion counter */
-			return 0;
+			return v->motion_counter;
 
 		case 0x47: { /* Vehicle cargo info */
 			/* Format: ccccwwtt

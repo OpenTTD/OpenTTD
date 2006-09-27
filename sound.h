@@ -16,7 +16,18 @@ typedef struct MusicFileSettings {
 
 VARDEF MusicFileSettings msf;
 
+typedef struct FileEntry {
+	uint32 file_offset;
+	uint32 file_size;
+	uint16 rate;
+	uint8 bits_per_sample;
+	uint8 channels;
+	uint8 volume;
+	uint8 priority;
+} FileEntry;
+
 bool SoundInitialize(const char *filename);
+uint GetNumOriginalSounds(void);
 
 typedef enum SoundFx {
 	SND_02_SPLAT,                          //  0 == 0x00 !
@@ -97,5 +108,6 @@ typedef enum SoundFx {
 void SndPlayTileFx(SoundFx sound, TileIndex tile);
 void SndPlayVehicleFx(SoundFx sound, const Vehicle *v);
 void SndPlayFx(SoundFx sound);
+void SndCopyToPool(void);
 
 #endif /* SOUND_H */

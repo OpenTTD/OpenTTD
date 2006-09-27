@@ -26,6 +26,7 @@
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
 #include "newgrf_text.h"
+#include "newgrf_sound.h"
 #include "yapf/yapf.h"
 #include "date.h"
 
@@ -621,8 +622,10 @@ static void HandleBrokenRoadVeh(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
-			SND_0F_VEHICLE_BREAKDOWN : SND_35_COMEDY_BREAKDOWN, v);
+		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
+			SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
+				SND_0F_VEHICLE_BREAKDOWN : SND_35_COMEDY_BREAKDOWN, v);
+		}
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);
@@ -760,10 +763,12 @@ static void HandleRoadVehLoading(Vehicle *v)
 
 static void StartRoadVehSound(const Vehicle* v)
 {
-	SoundFx s = RoadVehInfo(v->engine_type)->sfx;
-	if (s == SND_19_BUS_START_PULL_AWAY && (v->tick_counter & 3) == 0)
-		s = SND_1A_BUS_START_PULL_AWAY_WITH_HORN;
-	SndPlayVehicleFx(s, v);
+	if (!PlayVehicleSound(v, VSE_START)) {
+		SoundFx s = RoadVehInfo(v->engine_type)->sfx;
+		if (s == SND_19_BUS_START_PULL_AWAY && (v->tick_counter & 3) == 0)
+			s = SND_1A_BUS_START_PULL_AWAY_WITH_HORN;
+		SndPlayVehicleFx(s, v);
+	}
 }
 
 typedef struct RoadVehFindData {

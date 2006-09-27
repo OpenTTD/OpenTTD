@@ -25,6 +25,8 @@
 #include "table/sprites.h"
 #include "date.h"
 #include "currency.h"
+#include "sound.h"
+#include "newgrf_sound.h"
 #include "newgrf_spritegroup.h"
 
 /* TTDPatch extended GRF format codec
@@ -56,6 +58,14 @@ static uint32 _ttdpatch_flags[8];
 
 /* Used by Action 0x06 to preload a pseudo sprite and modify its content */
 static byte *_preload_sprite = NULL;
+
+
+typedef enum GrfDataType {
+	GDT_SOUND,
+} GrfDataType;
+
+static byte _grf_data_blocks;
+static GrfDataType _grf_data_type;
 
 
 typedef enum grfspec_feature {
@@ -1182,6 +1192,67 @@ static bool GlobalVarChangeInfo(uint gvid, int numinfo, int prop, byte **bufp, i
 	return ret;
 }
 
+static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, int len)
+{
+	byte *buf = *bufp;
+	int i;
+	bool ret = false;
+
+	if (_cur_grffile->sound_offset == 0) {
+		grfmsg(GMS_WARN, "SoundEffectChangeInfo: No effects defined, skipping.");
+		return false;
+	}
+
+	switch (prop) {
+		case 0x08: /* Relative volume */
+			FOR_EACH_OBJECT {
+				uint sound = sid + i + _cur_grffile->sound_offset - GetNumOriginalSounds();
+
+				if (sound >= GetNumSounds()) {
+					grfmsg(GMS_WARN, "SoundEffectChangeInfo: Sound %d not defined (max %d)", sound, GetNumSounds());
+				} else {
+					GetSound(sound)->volume = grf_load_byte(&buf);
+				}
+			}
+			break;
+
+		case 0x09: /* Priority */
+			FOR_EACH_OBJECT {
+				uint sound = sid + i + _cur_grffile->sound_offset - GetNumOriginalSounds();
+
+				if (sound >= GetNumSounds()) {
+					grfmsg(GMS_WARN, "SoundEffectChangeInfo: Sound %d not defined (max %d)", sound, GetNumSounds());
+				} else {
+					GetSound(sound)->priority = grf_load_byte(&buf);
+				}
+			}
+			break;
+
+		case 0x0A: /* Override old sound */
+			FOR_EACH_OBJECT {
+				uint sound = sid + i + _cur_grffile->sound_offset - GetNumOriginalSounds();
+				uint orig_sound = grf_load_byte(&buf);
+
+				if (sound >= GetNumSounds() || orig_sound >= GetNumSounds()) {
+					grfmsg(GMS_WARN, "SoundEffectChangeInfo: Sound %d or %d not defined (max %d)", sound, orig_sound, GetNumSounds());
+				} else {
+					FileEntry *newfe = GetSound(sound);
+					FileEntry *oldfe = GetSound(orig_sound);
+
+					/* Literally copy the data of the new sound over the original */
+					memcpy(oldfe, newfe, sizeof(*oldfe));
+				}
+			}
+			break;
+
+		default:
+			ret = true;
+	}
+
+	*bufp = buf;
+	return ret;
+}
+
 /* Action 0x00 */
 static void FeatureChangeInfo(byte *buf, int len)
 {
@@ -1214,7 +1285,7 @@ static void FeatureChangeInfo(byte *buf, int len)
 		/* GSF_INDUSTRYTILES */NULL,
 		/* GSF_INDUSTRIES */   NULL,
 		/* GSF_CARGOS */       NULL,
-		/* GSF_SOUNDFX */      NULL,
+		/* GSF_SOUNDFX */      SoundEffectChangeInfo,
 	};
 
 	uint8 feature;
@@ -2708,6 +2779,113 @@ static void DefineGotoLabel(byte *buf, int len)
 	grfmsg(GMS_NOTICE, "DefineGotoLabel: GOTO target with label 0x%02X", label->label);
 }
 
+/* Action 0x11 */
+static void GRFSound(byte *buf, int len)
+{
+	/* <11> <num>
+	 *
+	 * W num      Number of sound files that follow */
+
+	uint16 num;
+
+	check_length(len, 1, "GRFSound");
+	buf++;
+	num = grf_load_word(&buf);
+
+	_grf_data_blocks = num;
+	_grf_data_type   = GDT_SOUND;
+
+	if (_cur_grffile->sound_offset == 0) _cur_grffile->sound_offset = GetNumSounds();
+}
+
+static void LoadGRFSound(byte *buf, int len)
+{
+	byte *buf_start = buf;
+	FileEntry *se;
+
+	/* Allocate a sound entry. This is done even if the data is not loaded
+	 * so that the indices used elsewhere are still correct. */
+	se = AllocateFileEntry();
+
+	if (grf_load_dword(&buf) != 'FFIR') {
+		grfmsg(GMS_WARN, "LoadGRFSound: Missing RIFF header");
+		return;
+	}
+
+	/* Size of file -- we ignore this */
+	grf_load_dword(&buf);
+
+	if (grf_load_dword(&buf) != 'EVAW') {
+		grfmsg(GMS_WARN, "LoadGRFSound: Invalid RIFF type");
+		return;
+	}
+
+	for (;;) {
+		uint32 tag  = grf_load_dword(&buf);
+		uint32 size = grf_load_dword(&buf);
+
+		switch (tag) {
+			case ' tmf': /* 'fmt ' */
+				/* Audio format, must be 1 (PCM) */
+				if (grf_load_word(&buf) != 1) {
+					grfmsg(GMS_WARN, "LoadGRFSound: Invalid audio format");
+					return;
+				}
+				se->channels = grf_load_word(&buf);
+				se->rate = grf_load_dword(&buf);
+				grf_load_dword(&buf);
+				grf_load_word(&buf);
+				se->bits_per_sample = grf_load_word(&buf);
+
+				/* Consume any extra bytes */
+				for (; size > 16; size--) grf_load_byte(&buf);
+				break;
+
+			case 'atad': /* 'data' */
+				se->file_size    = size;
+				se->file_offset  = FioGetPos() - (len - (buf - buf_start)) + 1;
+				se->file_offset |= _file_index << 24;
+
+				/* Set default volume and priority */
+				se->volume = 0x80;
+				se->priority = 0;
+
+				grfmsg(GMS_NOTICE, "LoadGRFSound: channels %u, sample rate %u, bits per sample %u, length %u", se->channels, se->rate, se->bits_per_sample, size);
+				return;
+
+			default:
+				se->file_size = 0;
+				return;
+		}
+	}
+}
+
+/* 'Action 0xFF' */
+static void GRFDataBlock(byte *buf, int len)
+{
+	byte name_len;
+	const char *name;
+
+	if (_grf_data_blocks == 0) {
+		grfmsg(GMS_WARN, "GRFDataBlock: unexpected data block, skipping.");
+		return;
+	}
+
+	buf++;
+	name_len = grf_load_byte(&buf);
+	name = (const char *)buf;
+	buf += name_len + 1;
+
+	grfmsg(GMS_NOTICE, "GRFDataBlock: block name '%s'...", name);
+
+	_grf_data_blocks--;
+
+	switch (_grf_data_type) {
+		case GDT_SOUND: LoadGRFSound(buf, len - name_len - 2); break;
+		default: NOT_REACHED(); break;
+	}
+}
+
 static void InitializeGRFSpecial(void)
 {
 	_ttdpatch_flags[0] =  ((_patches.always_small_airport ? 1 : 0) << 0x0C)  // keepsmallairport
@@ -2878,6 +3056,7 @@ static void ResetNewGRFData(void)
 	_traininfo_vehicle_pitch = 0;
 	_traininfo_vehicle_width = 29;
 
+	InitializeSoundPool();
 	InitializeSpriteGroupPool();
 }
 
@@ -2986,7 +3165,7 @@ static void DecodeSpecialSprite(uint num, uint stage)
 	/* We need a pre-stage to set up GOTO labels of Action 0x10 because the grf
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
-	static const uint32 action_mask[] = {0x10000, 0x0000FB40, 0x0000FFFF};
+	static const uint32 action_mask[] = {0x10000, 0x0002FB40, 0x0000FFFF};
 
 	static const SpecialSpriteHandler handlers[] = {
 		/* 0x00 */ FeatureChangeInfo,
@@ -3006,6 +3185,7 @@ static void DecodeSpecialSprite(uint num, uint stage)
 		/* 0x0E */ GRFInhibit,
 		/* 0x0F */ NULL, // TODO implement
 		/* 0x10 */ DefineGotoLabel,
+		/* 0x11 */ GRFSound,
 	};
 
 	byte* buf;
@@ -3029,7 +3209,10 @@ static void DecodeSpecialSprite(uint num, uint stage)
 
 	action = buf[0];
 
-	if (action >= lengthof(handlers)) {
+	if (action == 0xFF) {
+		DEBUG(grf, 7) ("Handling data block in stage %d", stage);
+		GRFDataBlock(buf, num);
+	} else if (action >= lengthof(handlers)) {
 		DEBUG(grf, 7) ("Skipping unknown action 0x%02X", action);
 	} else if (!HASBIT(action_mask[stage], action)) {
 		DEBUG(grf, 7) ("Skipping action 0x%02X in stage %d", action, stage);

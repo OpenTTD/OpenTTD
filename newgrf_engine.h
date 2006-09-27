@@ -3,6 +3,7 @@
 #ifndef NEWGRF_ENGINE_H
 #define NEWGRF_ENGINE_H
 
+#include "newgrf.h"
 #include "direction.h"
 #include "newgrf_cargo.h"
 

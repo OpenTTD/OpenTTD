@@ -27,6 +27,7 @@
 #include "train.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_engine.h"
+#include "newgrf_sound.h"
 #include "newgrf_text.h"
 #include "direction.h"
 #include "yapf/yapf.h"
@@ -2021,6 +2022,7 @@ static const int8 _vehicle_smoke_pos[8] = {
 static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 {
 	const Vehicle* u;
+	bool sound = false;
 
 	if (v->vehstatus & VS_TRAIN_SLOWING || v->load_unload_time_rem != 0 || v->cur_speed < 2)
 		return;
@@ -2068,6 +2070,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 			// steam smoke.
 			if (GB(v->tick_counter, 0, 4) == 0) {
 				CreateEffectVehicleRel(v, x, y, 10, EV_STEAM_SMOKE);
+				sound = true;
 			}
 			break;
 
@@ -2075,6 +2078,7 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 			// diesel smoke
 			if (u->cur_speed <= 40 && CHANCE16(15, 128)) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_DIESEL_SMOKE);
+				sound = true;
 			}
 			break;
 
@@ -2082,10 +2086,13 @@ static void HandleLocomotiveSmokeCloud(const Vehicle* v)
 			// blue spark
 			if (GB(v->tick_counter, 0, 2) == 0 && CHANCE16(1, 45)) {
 				CreateEffectVehicleRel(v, 0, 0, 10, EV_ELECTRIC_SPARK);
+				sound = true;
 			}
 			break;
 		}
 	} while ((v = v->next) != NULL);
+
+	if (sound) PlayVehicleSound(u, VSE_TRAIN_EFFECT);
 }
 
 static void TrainPlayLeaveStationSound(const Vehicle* v)
@@ -2097,6 +2104,8 @@ static void TrainPlayLeaveStationSound(const Vehicle* v)
 	};
 
 	EngineID engtype = v->engine_type;
+
+	if (PlayVehicleSound(v, VSE_START)) return;
 
 	switch (GetEngine(engtype)->railtype) {
 		case RAILTYPE_RAIL:
@@ -3262,8 +3271,10 @@ static void HandleBrokenTrain(Vehicle *v)
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 		InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 
-		SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
-			SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
+		if (!PlayVehicleSound(v, VSE_BREAKDOWN)) {
+			SndPlayVehicleFx((_opt.landscape != LT_CANDY) ?
+				SND_10_TRAIN_BREAKDOWN : SND_3A_COMEDY_BREAKDOWN_2, v);
+		}
 
 		if (!(v->vehstatus & VS_HIDDEN)) {
 			Vehicle *u = CreateEffectVehicleRel(v, 4, 4, 5, EV_BREAKDOWN_SMOKE);

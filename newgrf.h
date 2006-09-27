@@ -39,6 +39,8 @@ typedef struct GRFFile {
 	int spritegroups_count;
 	struct SpriteGroup **spritegroups;
 
+	uint sound_offset;
+
 	StationSpec **stations;
 
 	uint32 param[0x80];

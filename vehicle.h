@@ -174,6 +174,7 @@ struct Vehicle {
 	byte subspeed;           // fractional speed
 	byte acceleration;       // used by train & aircraft
 	byte progress;
+	uint32 motion_counter;
 
 	byte vehstatus;          // Status
 	StationID last_station_visited;
