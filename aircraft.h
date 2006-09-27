@@ -20,4 +20,6 @@ static inline bool IsAircraftInHangarStopped(const Vehicle* v)
 
 uint16 AircraftDefaultCargoCapacity(CargoID cid, EngineID engine_type);
 
+void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2);
+
 #endif /* AIRCRAFT_H */

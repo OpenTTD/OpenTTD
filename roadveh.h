@@ -13,3 +13,5 @@ static inline bool IsRoadVehInDepotStopped(const Vehicle* v)
 {
 	return IsRoadVehInDepot(v) && v->vehstatus & VS_STOPPED;
 }
+
+void CcCloneRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2);

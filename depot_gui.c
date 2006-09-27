@@ -4,6 +4,7 @@
 #include "openttd.h"
 #include "functions.h"
 #include "ship.h"
+#include "aircraft.h"
 #include "table/strings.h"
 #include "table/sprites.h"
 #include "gui.h"
@@ -150,7 +151,12 @@ extern int WagonLengthToPixels(int len);
 void CcCloneVehicle(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (!success) return;
-	CcCloneShip(true, tile, p1, p2);
+	switch(GetVehicle(p1)->type) {
+		case VEH_Train:    CcCloneTrain(   true, tile, p1, p2); break;
+		case VEH_Road:     CcCloneRoadVeh( true, tile, p1, p2); break;
+		case VEH_Ship:     CcCloneShip(    true, tile, p1, p2); break;
+		case VEH_Aircraft: CcCloneAircraft(true, tile, p1, p2); break;
+	}
 }
 
 static inline void ShowVehicleViewWindow(const Vehicle *v)

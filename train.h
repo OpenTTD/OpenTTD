@@ -219,5 +219,6 @@ void ConvertOldMultiheadToNew(void);
 void ConnectMultiheadedTrains(void);
 
 int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped);
+void CcCloneTrain(bool success, TileIndex tile, uint32 p1, uint32 p2);
 
 #endif /* TRAIN_H */
