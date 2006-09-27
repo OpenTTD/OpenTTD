@@ -17,24 +17,23 @@
 #include "newgrf_engine.h"
 #include "train.h"
 
-enum {
-	DEPOT_WIDGET_CLOSEBOX  =  0,
-	DEPOT_WIDGET_CAPTION   =  1,
-	DEPOT_WIDGET_STICKY    =  2,
-	DEPOT_WIDGET_STOP_ALL  =  3,
-	DEPOT_WIDGET_START_ALL =  4,
-	DEPOT_WIDGET_V_RESIZE  =  5, // blank widget, that fills the gab at the sell button when resizing vertically
-	DEPOT_WIDGET_SELL      =  6,
-	DEPOT_WIDGET_SELL_ALL  =  7,
-	DEPOT_WIDGET_MATRIX    =  8,
-	DEPOT_WIDGET_V_SCROLL  =  9, // Vertical scrollbar
-	DEPOT_WIDGET_H_SCROLL  = 10, // Horizontal scrollbar
-	DEPOT_WIDGET_BUILD     = 11,
-	DEPOT_WIDGET_CLONE     = 12,
-	DEPOT_WIDGET_LOCATION  = 13,
-	DEPOT_WIDGET_H_RESIZE  = 14, // blank widget, that fills the gab at the build and clone buttons when resizing horizontally
-	DEPOT_WIDGET_RESIZE    = 15,
-};
+/* Names of the widgets. Keep them in the same order as in the widget array */
+typedef enum DepotWindowWidgets {
+	DEPOT_WIDGET_CLOSEBOX = 0,
+	DEPOT_WIDGET_CAPTION,
+	DEPOT_WIDGET_STICKY,
+	DEPOT_WIDGET_STOP_ALL,
+	DEPOT_WIDGET_START_ALL,
+	DEPOT_WIDGET_SELL,
+	DEPOT_WIDGET_SELL_ALL,
+	DEPOT_WIDGET_MATRIX,
+	DEPOT_WIDGET_V_SCROLL, // Vertical scrollbar
+	DEPOT_WIDGET_H_SCROLL, // Horizontal scrollbar
+	DEPOT_WIDGET_BUILD,
+	DEPOT_WIDGET_CLONE,
+	DEPOT_WIDGET_LOCATION,
+	DEPOT_WIDGET_RESIZE,
+} DepotWindowWidget;
 
 /* Widget array for all depot windows.
  * If a widget is needed in some windows only (like train specific), add it for all windows
@@ -47,8 +46,7 @@ static const Widget _depot_widgets[] = {
 
 	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   270,   280,    14,    25, SPR_FLAG_VEH_STOPPED,STR_MASS_STOP_DEPOT_TOOLTIP},      // DEPOT_WIDGET_STOP_ALL
 	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   281,   292,    14,    25, SPR_FLAG_VEH_RUNNING,STR_MASS_START_DEPOT_TOOLTIP},     // DEPOT_WIDGET_START_ALL
-	{      WWT_PANEL,    RESIZE_LRB,    14,   270,   292,    26,    25, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_V_RESIZE
-	{     WWT_IMGBTN,   RESIZE_LRTB,    14,   270,   292,    26,    61, 0x2A9,               STR_NULL},                         // DEPOT_WIDGET_SELL
+	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    26,    61, 0x2A9,               STR_NULL},                         // DEPOT_WIDGET_SELL
 	{      WWT_PANEL,   RESIZE_LRTB,    14,   326,   348,     0,     0, 0x2BF,               STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_ALL, trains only
 
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    61, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_MATRIX
@@ -61,8 +59,6 @@ static const Widget _depot_widgets[] = {
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    96,    62,    73, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_BUILD
 	{WWT_NODISTXTBTN,     RESIZE_TB,    14,    97,   194,    62,    73, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   195,   292,    62,    73, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
-
-	{      WWT_PANEL,    RESIZE_RTB,    14,   293,   292,    62,    73, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_H_RESIZE
 	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   293,   304,    62,    73, 0x0,                 STR_RESIZE_BUTTON},                // DEPOT_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
@@ -76,12 +72,10 @@ static const Widget _depot_widgets[] = {
 /* List of widgets where the left side should be moved to the right */
 static const byte left[] = {
 	DEPOT_WIDGET_STICKY,
-	DEPOT_WIDGET_V_RESIZE,
 	DEPOT_WIDGET_STOP_ALL,
 	DEPOT_WIDGET_START_ALL,
 	DEPOT_WIDGET_SELL,
 	DEPOT_WIDGET_V_SCROLL,
-	DEPOT_WIDGET_H_RESIZE,
 	DEPOT_WIDGET_RESIZE,
 };
 
@@ -89,14 +83,12 @@ static const byte left[] = {
 static const byte right[] = {
 	DEPOT_WIDGET_CAPTION,
 	DEPOT_WIDGET_STICKY,
-	DEPOT_WIDGET_V_RESIZE,
 	DEPOT_WIDGET_STOP_ALL,
 	DEPOT_WIDGET_START_ALL,
 	DEPOT_WIDGET_SELL,
 	DEPOT_WIDGET_MATRIX,
 	DEPOT_WIDGET_V_SCROLL,
 	DEPOT_WIDGET_LOCATION,
-	DEPOT_WIDGET_H_RESIZE,
 	DEPOT_WIDGET_RESIZE,
 };
 
@@ -105,7 +97,6 @@ static const byte top[] = {
 	DEPOT_WIDGET_BUILD,
 	DEPOT_WIDGET_CLONE,
 	DEPOT_WIDGET_LOCATION,
-	DEPOT_WIDGET_H_RESIZE,
 	DEPOT_WIDGET_RESIZE,
 };
 
@@ -117,7 +108,6 @@ static const byte bottom[] = {
 	DEPOT_WIDGET_BUILD,
 	DEPOT_WIDGET_CLONE,
 	DEPOT_WIDGET_LOCATION,
-	DEPOT_WIDGET_H_RESIZE,
 	DEPOT_WIDGET_RESIZE,
 };
 
@@ -503,6 +493,26 @@ static void ClonePlaceObj(const Window *w)
 	if (v != NULL) HandleCloneVehClick(v, w);
 }
 
+static void ResizeDepotButtons(Window *w)
+{
+	/* We got the widget moved around. Now we will make some widgets to fill the gab between some widgets in equal sizes */
+
+	/* Make the buttons in the bottom equal in size */
+	w->widget[DEPOT_WIDGET_LOCATION].right = w->widget[DEPOT_WIDGET_RESIZE].left - 1;
+	w->widget[DEPOT_WIDGET_BUILD].right    = w->widget[DEPOT_WIDGET_LOCATION].right / 3;
+	w->widget[DEPOT_WIDGET_LOCATION].left  = w->widget[DEPOT_WIDGET_BUILD].right * 2;
+	w->widget[DEPOT_WIDGET_CLONE].left     = w->widget[DEPOT_WIDGET_BUILD].right + 1;
+	w->widget[DEPOT_WIDGET_CLONE].right    = w->widget[DEPOT_WIDGET_LOCATION].left - 1;
+
+	if (WP(w, depot_d).type == VEH_Train) {
+		/* Divide the size of DEPOT_WIDGET_SELL into two equally big buttons so DEPOT_WIDGET_SELL and DEPOT_WIDGET_SELL_ALL will get the same size.
+		* This way it will stay the same even if DEPOT_WIDGET_SELL_ALL is resized for some reason                                                  */
+		w->widget[DEPOT_WIDGET_SELL_ALL].bottom = w->widget[DEPOT_WIDGET_RESIZE].top - 1;
+		w->widget[DEPOT_WIDGET_SELL_ALL].top    = ((w->widget[DEPOT_WIDGET_SELL_ALL].bottom - w->widget[DEPOT_WIDGET_SELL].top) / 2) + w->widget[DEPOT_WIDGET_SELL].top;
+		w->widget[DEPOT_WIDGET_SELL].bottom     = w->widget[DEPOT_WIDGET_SELL_ALL].top - 1;
+	}
+}
+
 static void DepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -663,6 +673,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
 			w->hscroll.cap += e->we.sizing.diff.x / (int)w->resize.step_width;
 			w->widget[DEPOT_WIDGET_MATRIX].data = (w->vscroll.cap << 8) + (WP(w, depot_d).type == VEH_Train ? 1 : w->hscroll.cap);
+			ResizeDepotButtons(w);
 			break;
 	}
 }
@@ -809,20 +820,6 @@ void ShowDepotWindow(TileIndex tile, byte type)
 			for (i = 0; i < lengthof(bottom); i++) w->widget[bottom[i]].bottom += vertical;
 		}
 
-		/* We got the widget moved around. Now we will make some widgets to fill the gab between some widgets in equal sizes */
-
-		/* Make the buttons in the bottom equal in size */
-		w->widget[DEPOT_WIDGET_BUILD].right   = w->widget[DEPOT_WIDGET_LOCATION].right / 3;
-		w->widget[DEPOT_WIDGET_LOCATION].left = w->widget[DEPOT_WIDGET_BUILD].right * 2;
-		w->widget[DEPOT_WIDGET_CLONE].left    = w->widget[DEPOT_WIDGET_BUILD].right + 1;
-		w->widget[DEPOT_WIDGET_CLONE].right   = w->widget[DEPOT_WIDGET_LOCATION].left - 1;
-
-		if (type == VEH_Train) {
-			/* Divide the size of DEPOT_WIDGET_SELL into two equally big buttons so DEPOT_WIDGET_SELL and DEPOT_WIDGET_SELL_ALL will get the same size.
-			 * This way it will stay the same even if DEPOT_WIDGET_SELL_ALL is resized for some reason                                                  */
-			w->widget[DEPOT_WIDGET_SELL_ALL].bottom = w->widget[DEPOT_WIDGET_SELL].bottom;
-			w->widget[DEPOT_WIDGET_SELL_ALL].top    = ((w->widget[DEPOT_WIDGET_SELL_ALL].bottom - w->widget[DEPOT_WIDGET_SELL].top) / 2) + w->widget[DEPOT_WIDGET_SELL].top;
-			w->widget[DEPOT_WIDGET_SELL].bottom     = w->widget[DEPOT_WIDGET_SELL_ALL].top - 1;
-		}
+		ResizeDepotButtons(w);
 	}
 }
