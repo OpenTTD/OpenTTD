@@ -1,4 +1,985 @@
 ##name Greek
 ##ownname Ελληνικά
-##plural 0
 ##isocode el_GR.UTF-8
+##plural 0
+##gender m f n
+
+##id 0x0000
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Από την άκρη του χάρτη
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολύ κοντά στην άκρη του χάρτη
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτούνται {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY64}
+STR_0005                                                        :{RED}{CURRENCY64}
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο έδαφος
+STR_0008_WAITING                                                :{BLACK}Αναμονή: {WHITE}{STRING}
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (καθ'οδόν από
+STR_000B                                                        :{YELLOW}{STATION})
+STR_000C_ACCEPTS                                                :{BLACK}Δέχεται: {WHITE}
+STR_000D_ACCEPTS                                                :{BLACK}Δέχεται: {GOLD}
+STR_000F_PASSENGERS                                             :Επιβάτες
+STR_0010_COAL                                                   :Κάρβουνο
+STR_0011_MAIL                                                   :Αλληλογραφία
+STR_0012_OIL                                                    :Πετρέλαιο
+STR_0013_LIVESTOCK                                              :Ζώα
+STR_0014_GOODS                                                  :Αγαθά
+STR_0015_GRAIN                                                  :Σιτάρι
+STR_0016_WOOD                                                   :Ξύλα
+STR_0017_IRON_ORE                                               :Μετάλλευματα Σιδήρου
+STR_0018_STEEL                                                  :Ατσάλι
+STR_0019_VALUABLES                                              :Τιμαλφή
+STR_001A_COPPER_ORE                                             :Μετάλλευματα Χαλκού
+STR_001B_MAIZE                                                  :Αραβόσιτος
+STR_001C_FRUIT                                                  :Φρούτα
+STR_001D_DIAMONDS                                               :Διαμάντια
+STR_001E_FOOD                                                   :Φαγητό
+STR_001F_PAPER                                                  :Χαρτί
+STR_0020_GOLD                                                   :Χρυσός
+STR_0021_WATER                                                  :Νερό
+STR_0022_WHEAT                                                  :Σίτος
+STR_0023_RUBBER                                                 :Λάστιχο
+STR_0024_SUGAR                                                  :Ζάχαρη
+STR_0025_TOYS                                                   :Παιχνίδια
+STR_0026_CANDY                                                  :Γλυκά
+STR_0027_COLA                                                   :Κόλα
+STR_0028_COTTON_CANDY                                           :Μαλλί της Γριάς
+STR_0029_BUBBLES                                                :Φυσαλίδες
+STR_002A_TOFFEE                                                 :Τόφυ
+STR_002B_BATTERIES                                              :Μπαταρίες
+STR_002C_PLASTIC                                                :Πλαστικά
+STR_002D_FIZZY_DRINKS                                           :Αναψυκτικά
+STR_002F_PASSENGER                                              :Επιβάτης
+STR_0030_COAL                                                   :Κάρβουνο
+STR_0031_MAIL                                                   :Αλληλογραφία
+STR_0032_OIL                                                    :Πετρέλαιο
+STR_0033_LIVESTOCK                                              :Ζώο
+STR_0034_GOODS                                                  :Αγαθό
+STR_0035_GRAIN                                                  :Σιτάρι
+STR_0036_WOOD                                                   :Ξύλο
+STR_0037_IRON_ORE                                               :Μετάλλευμα Σιδήρου
+STR_0038_STEEL                                                  :Ατσάλι
+STR_0039_VALUABLES                                              :Τιμαλφή
+STR_003A_COPPER_ORE                                             :Μετάλλευμα Χαλκού
+STR_003B_MAIZE                                                  :Αραβόσιτος
+STR_003C_FRUIT                                                  :Φρούτο
+STR_003D_DIAMOND                                                :Διαμάντι
+STR_003E_FOOD                                                   :Φαγητό
+STR_003F_PAPER                                                  :Χαρτί
+STR_0040_GOLD                                                   :Χρυσός
+STR_0041_WATER                                                  :Νερό
+STR_0042_WHEAT                                                  :Σίτος
+STR_0043_RUBBER                                                 :Λάστιχο
+STR_0044_SUGAR                                                  :Ζάχαρη
+STR_0045_TOY                                                    :Παιχνίδι
+STR_0046_CANDY                                                  :Γλυκό
+STR_0047_COLA                                                   :Κόλα
+STR_0048_COTTON_CANDY                                           :Μαλλί της Γριάς
+STR_0049_BUBBLE                                                 :Φυσαλίδα
+STR_004A_TOFFEE                                                 :Τόφυ
+STR_004B_BATTERY                                                :Μπαταρία
+STR_004C_PLASTIC                                                :Πλαστικό
+STR_004D_FIZZY_DRINK                                            :Αναψυκτικό
+STR_00AE                                                        :{WHITE}{DATE_SHORT}
+STR_00AF                                                        :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                    :{WHITE}Χάρτης - {STRING}
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Επιλογές του Παιχνιδιού
+STR_00B2_MESSAGE                                                :{YELLOW}Μήνυμα
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Μήνυμα από {STRING}
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Δεν μπορεί να γίνει αυτό....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Αυτή η περιοχή είναι αδύνατο να καθαριστεί
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Αρχικά Πνευματικά Δικαιώματα {COPYRIGHT} 1995 Chris Sawyer, Όλα τα δικαιώματα διατηρούνται
+STR_00B7_VERSION                                                :{BLACK}OpenTTD έκδοση {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Η ομάδα του OpenTTD
+
+STR_00C5                                                        :{BLACK}{CROSS}
+STR_00C6                                                        :{SILVER}{CROSS}
+STR_00C7_QUIT                                                   :{WHITE}Έξοδος
+STR_00C8_YES                                                    :{BLACK}Ναί
+STR_00C9_NO                                                     :{BLACK}Όχι
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Είστε σίγουρος/η ότι θέλετε να παρατήσετε το παιχνίδι και να επιστρέψετε στο {STRING};
+STR_00CB_1                                                      :{BLACK}1
+STR_00CC_2                                                      :{BLACK}2
+STR_00CD_3                                                      :{BLACK}3
+STR_00CE_4                                                      :{BLACK}4
+STR_00CF_5                                                      :{BLACK}5
+STR_00D0_NOTHING                                                :Τίποτα
+STR_00D1_DARK_BLUE                                              :Σκούρο Μπλέ
+STR_00D2_PALE_GREEN                                             :Χλωμό Πράσινο
+STR_00D3_PINK                                                   :Ροζ
+STR_00D4_YELLOW                                                 :Κίτρινο
+STR_00D5_RED                                                    :Κόκκινο
+STR_00D6_LIGHT_BLUE                                             :Ανοιχτό μπλέ
+STR_00D7_GREEN                                                  :Πράσινο
+STR_00D8_DARK_GREEN                                             :Σκούρο Πράσινο
+STR_00D9_BLUE                                                   :Μπλέ
+STR_00DA_CREAM                                                  :Κρεμ
+STR_00DB_MAUVE                                                  :Μωβ
+STR_00DC_PURPLE                                                 :Πορφυρό
+STR_00DD_ORANGE                                                 :Πορτοκαλί
+STR_00DE_BROWN                                                  :Καφέ
+STR_00DF_GREY                                                   :Γκρι
+STR_00E0_WHITE                                                  :Λευκό
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                              :{WHITE}Πάρα πολλά οχήματα στο παιχνίδι
+STR_00E2                                                        :{BLACK}{COMMA}
+STR_00E3                                                        :{RED}{COMMA}
+STR_00E4_LOCATION                                               :{BLACK}Τοποθεσία
+STR_00E5_CONTOURS                                               :Περιγράμματα
+STR_00E6_VEHICLES                                               :Οχήματα
+STR_00E7_INDUSTRIES                                             :Βιομηχανίες
+STR_00E8_ROUTES                                                 :Διαδρομές
+STR_00E9_VEGETATION                                             :Βλάστηση
+STR_00EA_OWNERS                                                 :Ιδιοκτήτες
+STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Δρόμοι
+STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Σιδηρόδρομοι
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Σταθμοί/Αεροδρόμια/Λιμάνια
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Κτήρια/Βιομηχανίες
+STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Οχήματα
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 μ
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 μ
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300 μ
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 μ
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 μ
+STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Τραίνα
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Οδικά Οχήματα
+STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Πλοία
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Αεροσκάφη
+STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Διαδρομές Μεταφορών
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Ορυχείο Χαλκού
+STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Σταθμός Παραγωγής Ηλεκτρικού Ρεύματος
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Δάσος
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Πριονιστήριο
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Εγκαταστάσεις Καθαρισμού Πετρελαίου
+STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Φάρμα
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Εργοστάσιο
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Εργασίες Εκτύπωσης
+STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Πετρελαιοπηγές
+STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Ορυχείο Μεταλλεύματος Σιδήρου
+STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Μύλος Χάλυβα
+STR_0105_BANK                                                   :{BLACK}{TINYFONT}Τράπεζα
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Μύλος Χαλκού
+STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Ορυχείο Χρυσού
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Εγκαταστάσεις Επεξεργασίας Τροφίμων
+STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Ορυχείο Διαμαντιών
+STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Ορυχείο Μεταλλεύματος Χαλκού
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Φυτεία Φρούτων
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Φυτεία Λάστιχου
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Παροχή Νερού
+STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Πύργος Ύδατος
+STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Μύλος Ξυλείας
+STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Δάσος του Μαλιού της Γριάς
+STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Εργοστάσιο Γλυκών
+STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Φάρμα Μπαταριών
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Φρεάτια Κόλας
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Κατάστημα Παιχνιδιών
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Εργοστάσιο Παιχνιδιών
+STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Πλαστικές Πηγές
+STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Εργοστάσιο Παραγωγής Αναψυκτικών
+STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Γεννήτρια Φυσαλίδων
+STR_0119_TOFFEE_QUARRY                                          :{BLACK}{TINYFONT}Λατομείο Τόφυ
+STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFONT}Ορυχείο Ζάχαρης
+STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Σιδηροδρομικός Σταθμός
+STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Περιοχή Φόρτωσης Φορτηγών
+STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Στάση Λεωφορείου
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Αερολιμένας/ελικοδρόμιο
+STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Λιμάνι
+STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Τραχύ Έδαφος
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Γρασίδι
+STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Γυμνό Έδαφος
+STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Χωράφια
+STR_0124_TREES                                                  :{BLACK}{TINYFONT}Δέντρα
+STR_0125_ROCKS                                                  :{BLACK}{TINYFONT}Βράχοι
+STR_0126_WATER                                                  :{BLACK}{TINYFONT}Νερό
+STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Χωρίς Ιδιοκτήτη
+STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Πόλεις
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Βιομηχανίες
+STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Έρημος
+STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Χιόνι
+STR_012C_MESSAGE                                                :{WHITE}Μήνυμα
+STR_012D                                                        :{WHITE}{STRING}
+STR_012E_CANCEL                                                 :{BLACK}Άκυρο
+STR_012F_OK                                                     :{BLACK}OK
+STR_0130_RENAME                                                 :{BLACK}Μετονομασία
+STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Καθορίστηκαν πάρα πολλά ονόματα
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Το όνομα που διαλέξατε υπάρχει ήδη
+
+STR_0133_WINDOWS                                                :Windows
+STR_0134_UNIX                                                   :Unix
+STR_0135_OSX                                                    :OS X
+
+STR_013B_OWNED_BY                                               :{WHITE}...ιδιοκτησία του {STRING}
+STR_013C_CARGO                                                  :{BLACK}Φορτίο
+STR_013D_INFORMATION                                            :{BLACK}Πληροφορίες
+STR_013E_CAPACITIES                                             :{BLACK}Χωρητικότητα
+STR_013E_TOTAL_CARGO                                            :{BLACK}Συνολικό Φορτίο
+STR_013F_CAPACITY                                               :{BLACK}Χωρητικότητα: {LTBLUE}{STRING}
+STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Συνολική χωρητικότητα φορτίου του τραίνου:
+STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_0140_NEW_GAME                                               :{BLACK}Νέο Παιχνίδι
+STR_0141_LOAD_GAME                                              :{BLACK}Φώρτωση Παιχνιδιού
+
+STR_128                                                         :128
+STR_1024                                                        :1024
+STR_0148_GAME_OPTIONS                                           :{BLACK}Επιλογές Παιχνιδιού
+
+STR_0150_SOMEONE                                                :κάποιος{SKIP}{SKIP}
+STR_0151_MAP_OF_WORLD                                           :Χάρτης του Κόσμου
+STR_0152_TOWN_DIRECTORY                                         :Κατάλογος Πόλεων
+STR_0153_SUBSIDIES                                              :Επιχορηγήσεις
+
+
+
+
+
+
+
+
+
+############ range for menu	starts
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Γραφική παράσταση ειτουργούντος κέρδους
+STR_0155_INCOME_GRAPH                                           :Εισοδηματική γραφική παράσταση
+STR_0156_DELIVERED_CARGO_GRAPH                                  :Παραδοθείσα γραφική παράσταση φορτίου
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Γραφική παράσταση ιστορικού απόδοσης
+STR_0158_COMPANY_VALUE_GRAPH                                    :Γραφική παράσταση αξίας επιχείρησης
+STR_0159_CARGO_PAYMENT_RATES                                    :Ποσοστά πληρωμής φορτίου
+STR_015A_COMPANY_LEAGUE_TABLE                                   :Πίνακας κατάταξης επιχείρησης
+############ range for menu	ends
+
+STR_015B_OPENTTD                                                :{WHITE}Πληροφορίες για το OpenTTD
+STR_015C_SAVE_GAME                                              :Αποθήκευση παιχνιδιού
+STR_015D_LOAD_GAME                                              :Φόρτωση παιχνιδιού
+STR_015E_QUIT_GAME                                              :Παρατήστε το παιχνίδι
+STR_015F_QUIT                                                   :Έξοδος
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Είστε βέβαιοι εσείς θέλετε να παρατήσετε αυτό το παιχνίδι;
+STR_0161_QUIT_GAME                                              :{WHITE}Παρατήστε το Παιχνίδι
+
+
+############ range for months starts
+STR_0162_JAN                                                    :Ιαν
+STR_0163_FEB                                                    :Φεβ
+STR_0164_MAR                                                    :Μαρ
+STR_0165_APR                                                    :Απρ
+STR_0166_MAY                                                    :Μαη
+STR_0167_JUN                                                    :Ιουν
+STR_0168_JUL                                                    :Ιουλ
+STR_0169_AUG                                                    :Αυγ
+STR_016A_SEP                                                    :Σεπ
+STR_016B_OCT                                                    :Οκτ
+STR_016C_NOV                                                    :Νοε
+STR_016D_DEC                                                    :Δεκ
+############ range for months ends
+
+STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
+STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_0170                                                        :{TINYFONT}{STRING}-
+STR_0171_PAUSE_GAME                                             :{BLACK}Παύση του παιχνιδιού
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Αποθήκευση του παιχνιδιού, Παρατήστε το παιχνίδι. Έξοδος
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση του καταλόγου σταθμών της επιχείρησης
+STR_0174_DISPLAY_MAP                                            :{BLACK}Εμφάνιση του χάρτη
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Εμφάνιση του χάρτη, καταλόγου των πόλεων
+STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Εμφάνιση του καταλόγου των πόλεων
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Εμφάνιση πληροφοριών των πόρων χρηματοδότησης της επιχείρησης
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Εμφάνιση γενικών πληροφοριών της επιχείρησης
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Εμφάνιση γραφικών παραστάσεων
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Εμφάνιση του πίκανα κατάταξης των επιχειρήσεων
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση της λίστας με τα τραίνα της επιχείρησης
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση της λίστας με τα οδικά οχήματα της επιχείρησης
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση της λίστας με τα πλοία της επιχείρησης
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση της λίστας με τα αεροσκάφη της επιχείρησης
+STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Μεγέθυνση της εικόνας
+STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Σμίκρυνση της εικόνας
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Κατασκευή σιδηροδρομικής διαδρομής
+STR_0182_BUILD_ROADS                                            :{BLACK}Κατασκευή δρόμων
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Κατασκευή αποβάθρας λιμανιού
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Κατασκευή αεροδρομίου
+STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Τοποθέτηση δεντρων, πινακίδων κλπ
+STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Πληροφορίες εδάφους
+STR_0187_OPTIONS                                                :{BLACK}Επιλογές
+STR_0188                                                        :{BLACK}{SMALLUPARROW}
+STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
+STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Δεν μπορεί να αλλάξει το διάστημα της συντήρησης...
+STR_018B_CLOSE_WINDOW                                           :{BLACK}Κλείσιμο παραθύρου
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Τίτλος παραθύρου - κάντε drag για να το μετακινήσετε
+STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Κατεδάφιση των κτηρίων κ.λπ. σε ένα τετράγωνο εδάφους
+STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Χαμηλώστε μια γωνία του εδάφους
+STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Ανυψώστε μια γωνία του εδάφους
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Μπάρα Κύλισης - κάνει scroll την λίστα πάνω/κάτω
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Εμφάνιση περιγραμμάτων εδάφους στο χάρτη
+STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Εμφάνιση οχημάτων στο χάρτη
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Εμφάνιση βιομηχανιών στο χάρτη
+STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Εμφάνιση μεταφορικών οδών στο χάρτη
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Εμφάνιση βλάστησης στο χάρτη
+STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Εμφάνιση ιδιοκτητών γης στο χάρτη
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Εναλλαγή ονομάτων πόλεων στο χάρτη
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Κέρδος αυτό το έτος: {CURRENCY} (προηγούμενο έτος: {CURRENCY})
+
+############ range for service numbers starts
+############ range for service numbers ends
+
+STR_019C_ROAD_VEHICLE                                           :Όχημα δρόμου
+STR_019D_AIRCRAFT                                               :Αεροσκάφος
+STR_019E_SHIP                                                   :Πλοίο
+STR_019F_TRAIN                                                  :Τρένο
+STR_01A0_IS_GETTING_OLD                                         :{WHITE}{STRING} {COMMA} παλιώνει
+STR_01A1_IS_GETTING_VERY_OLD                                    :{WHITE}{STRING} {COMMA} παλιώνει πολύ
+STR_01A2_IS_GETTING_VERY_OLD_AND                                :{WHITE}{STRING} {COMMA} παλιώνει πολύ και χρειάζεται αντικατάσταση
+STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Πληροφορίες Περιοχής Εδάφους
+STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Κόστος καθαρισμού: {LTBLUE}Μ/Δ
+STR_01A5_COST_TO_CLEAR                                          :{BLACK}Κόστος καθαρισμού: {LTBLUE}{CURRENCY}
+STR_01A6_N_A                                                    :Μ/Δ
+STR_01A7_OWNER                                                  :{BLACK}Ιδιοκτήτης: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Τοπική αρχή: {LTBLUE}{STRING}
+STR_01A9_NONE                                                   :Κανένα
+STR_01AA_NAME                                                   :{BLACK}'Ονομα
+STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
+
+############ range for days	starts
+STR_01AC_1ST                                                    :1ος
+STR_01AD_2ND                                                    :2ος
+STR_01AE_3RD                                                    :3ος
+STR_01AF_4TH                                                    :4ος
+STR_01B0_5TH                                                    :5ος
+STR_01B1_6TH                                                    :6ος
+STR_01B2_7TH                                                    :7ος
+STR_01B3_8TH                                                    :8ος
+STR_01B4_9TH                                                    :9ος
+STR_01B5_10TH                                                   :10ος
+STR_01B6_11TH                                                   :11ος
+STR_01B7_12TH                                                   :12ος
+STR_01B8_13TH                                                   :13ος
+STR_01B9_14TH                                                   :14ος
+STR_01BA_15TH                                                   :15ος
+STR_01BB_16TH                                                   :16ος
+STR_01BC_17TH                                                   :17ος
+STR_01BD_18TH                                                   :18ος
+STR_01BE_19TH                                                   :19ος
+STR_01BF_20TH                                                   :20ος
+STR_01C0_21ST                                                   :21ος
+STR_01C1_22ND                                                   :22ος
+STR_01C2_23RD                                                   :23ος
+STR_01C3_24TH                                                   :24ος
+STR_01C4_25TH                                                   :25ος
+STR_01C5_26TH                                                   :26ος
+STR_01C6_27TH                                                   :27ος
+STR_01C7_28TH                                                   :28ος
+STR_01C8_29TH                                                   :29ος
+STR_01C9_30TH                                                   :30ος
+STR_01CA_31ST                                                   :31ος
+############ range for days	ends
+
+STR_01CB                                                        :{TINYFONT}{COMMA}
+
+STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Αποδεκτό Εμπόρευμα: {LTBLUE}
+
+STR_01D1_8                                                      :({COMMA}/8 {STRING})
+STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
+STR_01D3_SOUND_MUSIC                                            :Ήχος/Μουσική
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Εμφάνιση παραθύρου ήχου/μουσικής
+STR_01D5_ALL                                                    :{TINYFONT}Όλα
+STR_01D6_OLD_STYLE                                              :{TINYFONT}Παλιό Στυλ
+STR_01D7_NEW_STYLE                                              :{TINYFONT}Νέο Στυλ
+STR_01D8_EZY_STREET                                             :{TINYFONT}Ezy Street
+STR_01D9_CUSTOM_1                                               :{TINYFONT}Προσαρμοσμένο 1
+STR_01DA_CUSTOM_2                                               :{TINYFONT}Προσαρμοσμένο 2
+STR_01DB_MUSIC_VOLUME                                           :{BLACK}{TINYFONT}Ένταση Μουσικής
+STR_01DC_EFFECTS_VOLUME                                         :{BLACK}{TINYFONT}Ένταση Εφφέ
+STR_01DD_MIN_MAX                                                :{BLACK}{TINYFONT}ΕΛ  '  '  ' '  '  '  ΜΕΓ
+STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Πλοήγηση στο προηγούμενο κομμάτι της συλλογής
+STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Πλοήγηση στο επόμενο κομμάτι στη συλλογή
+STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Σταμάτημα αναπαραγωγής
+STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Έναρξη αναπαραγωγής
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Μετακινήστε τις γραμμές κύλισης για ρύθμιση έντασης
+STR_01E3                                                        :{DKGREEN}{TINYFONT}--
+STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
+STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
+STR_01E6                                                        :{DKGREEN}{TINYFONT}------
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
+STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Κομμάτι{SETX 88}Τίτλος
+STR_01E9_SHUFFLE                                                :{TINYFONT}Shuffle
+STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Πρόγραμμα
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Επιλογή Μουσικού Προγράμματος
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
+STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Λίστα Κομματιών
+STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Πρόγραμμα - '{STRING}'
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Καθαρισμός
+STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Αποθήκευση
+STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Τρέχον πρόγραμμα μουσικών κομματιών
+STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Επιλογή προγράμματος 'όλα τα κομμάτια'
+STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Επιλογή προγράμματος 'παλιό στυλ'
+STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Επιλογή προγράμματος 'νέο στυλ'
+STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Επιλογή προγράμματος 'προσαρμοσμένο 1'
+STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Επιλογή προγράμματος 'προσαρμοσμένο 2'
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Καθαρισμός τρέχοντος προγράμματος (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
+STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Αποθήκευση επιλογών μουσικής
+STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Κάντε κλίκ στο μουσικό κομμάτι για προσθήκη στο τρέχον πρόγραμμα (Προσαρμοσμένο1 ή Προσαρμοσμένο2 μόνο)
+STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Εναλλαγή shuffle on/off στο πρόγραμμα
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Εμφάνιση παραθύρου επιλογής μουσικού κομματιού
+STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Κάντε κλίκ στην υπηρεσία για κεντράρισμα στην βιομηχανία/πόλη
+STR_01FE_DIFFICULTY                                             :{BLACK}Δυσκολία ({STRING})
+STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
+STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Τελευταίο μήνυμα/αναφορά νέων
+STR_0201_MESSAGE_SETTINGS                                       :Ρυθμίσεις μηνυμάτων
+STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Εμφάνιση τελευταίου μηνύματος/αναφοράς νέων, επιλογές μηνυμάτων
+STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Επιλογές Μηνυμάτων
+STR_0205_MESSAGE_TYPES                                          :{BLACK}Τύποι μηνυμάτων:
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφιξη πρώτου οχήματος στο σταθμό του παίκτη
+STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Άφιξη του πρώτου οχήματος το σταθμό του αντιπάλου
+STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Ατυχήματα / καταστροφές
+STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Πληροφορίες εταιρείας
+STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Οικονομικές αλλαγές
+STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Συμβουλές / πληροφορίες για τα οχήματα του παίκτη
+STR_020C_NEW_VEHICLES                                           :{YELLOW}Νέα οχήματα
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Αλλαγές στην αποδοχή φορτίου
+STR_020E_SUBSIDIES                                              :{YELLOW}Επιχορηγήσεις
+STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Γενικές πληροφορίες
+STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...πολύ μακριά από τον προηγούμενο προορισμό
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Οι καλύτερες εταιρείες που έφτασαν {NUM}{}({STRING} Επίπεδο)
+STR_0212                                                        :{BIGFONT}{COMMA},
+STR_0213_BUSINESSMAN                                            :Επαγγελματίας
+STR_0214_ENTREPRENEUR                                           :Επιχειρηματίας
+STR_0215_INDUSTRIALIST                                          :Βιομήχανος
+STR_0216_CAPITALIST                                             :Κεφαλαιούχος
+STR_0217_MAGNATE                                                :Μεγιστάνας
+STR_0218_MOGUL                                                  :Τυχοδιώκτης
+STR_0219_TYCOON_OF_THE_CENTURY                                  :Μεγιστάνας του Αιώνα
+STR_021B_ACHIEVES_STATUS                                        :{BLACK}{BIGFONT}{COMPANY} έφτασε  στο επίπεδο '{STRING}'
+STR_021C_OF_ACHIEVES_STATUS                                     :{WHITE}{BIGFONT}{PLAYERNAME} της εταιρείας {COMPANY} έφτασε στο επίπεδο '{STRING}'!
+STR_021F                                                        :{BLUE}{COMMA}
+STR_0220_CREATE_SCENARIO                                        :{BLACK}Δημιουργία Σεναρίου
+STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
+STR_0222_SCENARIO_EDITOR                                        :{YELLOW}Συντάκτης Σεναρίου
+STR_0223_LAND_GENERATION                                        :{WHITE}Γεννήτρια Γης
+STR_0224                                                        :{BLACK}{UPARROW}
+STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_0226_RANDOM_LAND                                            :{BLACK}Τυχαία Γη
+STR_0227_RESET_LAND                                             :{BLACK}Επαναφορά Γης
+STR_0228_INCREASE_SIZE_OF_LAND_AREA                             :{BLACK}Αύξηση περιοχής για χαμήλωμα/ανύψωση γης
+STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Μείωση περιοχής για χαμήλωμα/ανύψωση γης
+STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Δημιουργία τυχαίου εδάφους
+STR_022B_RESET_LANDSCAPE                                        :{BLACK}Επαναφορά τοπίου
+STR_022C_RESET_LANDSCAPE                                        :{WHITE}Επαναφορά Τοπίου
+STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Είστε σίγουρος ότι θέλετε να επαναφέρετε το τοπίο;
+STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Δημιουργία τοπίου
+STR_022F_TOWN_GENERATION                                        :{BLACK}Δημιουργία πόλης
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Δημιουργία Βιομηχανίας
+STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Κατασκευή δρόμου
+STR_0233_TOWN_GENERATION                                        :{WHITE}Δημιουργία Πόλης
+STR_0234_NEW_TOWN                                               :{BLACK}Νέα Πόλη
+STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Κατασκευή νέας πόλης
+STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Αδύνατο να χτιστεί πόλη εδώ...
+STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...πολύ κοντά στην άκρη του χάρτη
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...πολύ κοντά σε άλλη πόλη
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...ακατάλληλη περιοχή
+STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...πάρα πολλές πόλεις
+STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Αύξηση μεγέθους πόλεως
+STR_023C_EXPAND                                                 :{BLACK}Επέκταση
+STR_023D_RANDOM_TOWN                                            :{BLACK}Τυχαία Πόλη
+STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Χτίσιμο πόλης σε τυχαία τοποθεσία
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Δημιουργία Βιομηχανίας
+STR_0240_COAL_MINE                                              :{BLACK}Ορυχείο Άνθρακα
+STR_0241_POWER_STATION                                          :{BLACK}Σταθμός Παραγωγής Ηλεκτρισμού
+STR_0242_SAWMILL                                                :{BLACK}Πριονιστήριο
+STR_0243_FOREST                                                 :{BLACK}Δάσος
+STR_0244_OIL_REFINERY                                           :{BLACK}Διυλιστήριο
+STR_0245_OIL_RIG                                                :{BLACK}Πλατφόρμα Πετρελαίου
+STR_0246_FACTORY                                                :{BLACK}Εργοστάσιο
+STR_0247_STEEL_MILL                                             :{BLACK}Μύλος Χάλυβα
+STR_0248_FARM                                                   :{BLACK}Φάρμα
+STR_0249_IRON_ORE_MINE                                          :{BLACK}Ορυχείο Μεταλλεύματος Σιδήρου
+STR_024A_OIL_WELLS                                              :{BLACK}Πηγάδια Πετρελαίου
+STR_024B_BANK                                                   :{BLACK}Τράπεζα
+STR_024C_PAPER_MILL                                             :{BLACK}Μύλος Χαρτιού
+STR_024D_FOOD_PROCESSING_PLANT                                  :{BLACK}Εργοστάσιο Επεξεργασίας Τροφίμων
+STR_024E_PRINTING_WORKS                                         :{BLACK}Εργασίες Εκτύπωσης
+STR_024F_GOLD_MINE                                              :{BLACK}Ορυχείο Χρυσού
+STR_0250_LUMBER_MILL                                            :{BLACK}Μύλος Ξυλείας
+STR_0251_FRUIT_PLANTATION                                       :{BLACK}Φυτείες Φρούτων
+STR_0252_RUBBER_PLANTATION                                      :{BLACK}Φυτείες Λάστιχου
+STR_0253_WATER_SUPPLY                                           :{BLACK}Προμήθεια Νερού
+STR_0254_WATER_TOWER                                            :{BLACK}Πύργος Νερού
+STR_0255_DIAMOND_MINE                                           :{BLACK}Αδαμαντορυχείο
+STR_0256_COPPER_ORE_MINE                                        :{BLACK}Ορυχείο Μεταλλεύματος Χαλκού
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Δάσος Μαλλιού της Γριάς
+STR_0258_CANDY_FACTORY                                          :{BLACK}Εργοστάσιο Γλυκών
+STR_0259_BATTERY_FARM                                           :{BLACK}Φάρμα Μπαταρίας
+STR_025A_COLA_WELLS                                             :{BLACK}Πηγάδια Κόλα
+STR_025B_TOY_SHOP                                               :{BLACK}Μαγαζί Παιχνιδιών
+STR_025C_TOY_FACTORY                                            :{BLACK}Εργοστάσιο Παιχνιδιών
+STR_025D_PLASTIC_FOUNTAINS                                      :{BLACK}Πηγές Πλαστικού
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Εργοστάσιο Ανθρακούχων
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Γεννήτρια Φυσαλίδων
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}Λατομείο Τόφυ
+STR_0261_SUGAR_MINE                                             :{BLACK}Ορυχείο Ζάχαρης
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Κατασκευή Ορυχείου Άνθρακα
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Κατασκευή Σταθμού Παραγωγής Ηλεκτρισμού
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Κατασκευή Πριονιστηρίου
+STR_0265_PLANT_FOREST                                           :{BLACK}Φύτευση Δάσους
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Κατασκευή Διυλιστηρίου
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Κατασκευή Πλατφόρμας Πετρελαίου (Μπορεί να χτιστεί μόνο στα άκρα του χάρτη)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Κατασκευή Εργοστασίου
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Κατασκευή Μύλου Χάλυβα
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Κατασκευή Φάρμας
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Κατασκευή Ορυχείου Μεταλλεύματος Σιδήρου
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Κατασκευή Πηγαδιών Πετρελαίου
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Κατασκευή Τράπεζας (Μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Κατασκευή Μύλου Χαρτιού
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Κατασκευή Εργοστασίου Επεξεργασίας Τροφίμων
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Κατασκευή Εργαστηρίου Εκτύπωσης
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Κατασκευή Χρυσορυχείου
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Κατασκευή Τράπεζας (Μπορεί να χτιστεί μόνο σε πόλεις)
+STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Κατασκευή Μύλου Ξυλείας (για καθαρισμό δασών και παραγωγή Ξυλείας)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Φύτευση Φυτείας Φρούτων
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Φύτευση Φυτείας Λάστιχου
+STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Κατασκευή Προμήθειας Νερού
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Κατασκευή Πύργου Νερού (Μπορεί να χτιστεί μόνο σε πόλεις)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Κατασκευή Αδαμαντορυχείου
+STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Κατασκευή Ορυχείου Μεταλλεύματος Χαλκού
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Φύτευση Δάσους Μαλλιού της Γριάς
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Κατασκευή Εργοστασίου Γλυκών
+STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Κατασκευή Φάρμας Μπαταριών
+STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Κατασκευή Πηγαδιών Κόλα
+STR_027E_CONSTRUCT_TOY_SHOP                                     :{BLACK}Κατασκευή Καταστήματος Παιχνιδιών
+STR_027F_CONSTRUCT_TOY_FACTORY                                  :{BLACK}Κατασκευή Εργοστασίου Παιχνιδιών
+STR_0280_CONSTRUCT_PLASTIC_FOUNTAINS                            :{BLACK}Κατασκευή Πηγών Πλαστικού
+STR_0281_CONSTRUCT_FIZZY_DRINK_FACTORY                          :{BLACK}Κατασκευή Εργοστασίου Αναψυκτικών
+STR_0282_CONSTRUCT_BUBBLE_GENERATOR                             :{BLACK}Κατασκευή Γεννήτριας Φυσαλίδων
+STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Κατασκευή Λατομείου Τόφυ
+STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Κατασκευή Ορυχείου Ζάχαρης
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Αδύνατο να χτιστεί {STRING} εδώ...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...πρέπει να χτιστεί πόλη πρώτα
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...επιτρέπεται μόνο μία ανά πόλη
+STR_0288_PLANT_TREES                                            :{BLACK}Φύτευση Δέντρων
+STR_0289_PLACE_SIGN                                             :{BLACK}Τοποθέτηση πινακίδας
+STR_028A_RANDOM_TREES                                           :{BLACK}Τυχαία Δέντρα
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Φύτευση δέντρων τυχαία στο τοπίο
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Τοποθέτηση πετρωδών επιφανειών στο τοπίο
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Τοποθέτηση φάρου
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Τοποθέτηση αναμεταδότη
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Ορίστε περιοχή ερήμου.{}Πατήστε και κρατήστε το CTRL για αφαίρεση
+STR_0290_DELETE                                                 :{BLACK}Διαγραφή
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Πλήρης διαγραφή πόλεως
+STR_0292_SAVE_SCENARIO                                          :Απποθήκευση σεναρίου
+STR_0293_LOAD_SCENARIO                                          :Φόρτωση σεναρίου
+STR_0294_QUIT_EDITOR                                            :Έξοδος από το Συντάκτη
+STR_0296_QUIT                                                   :Έξοδος
+STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Αποθήκευση σεναρίου, φόρτωση, παραίτηση συντάκτη, έξοδος
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Φόρτωση Σεναρίου
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Αποθήκευση Σεναρίου
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Παιξτε το Σενάριο
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Είστε σίγουρος ότι θέλετε να κάνετε έξοδο;
+STR_029C_QUIT_EDITOR                                            :{WHITE}Έξοδος από Συντάκτη
+STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις με πληθυσμό άνω των 1200
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο πίσω
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Μετακίνηση ημ/νίας εκκίνησης 1 χρόνο μπροστά
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...και τα δύο άκρα της γέφυρας πρέπει να είναι σε έδαφος
+STR_02A1_SMALL                                                  :{BLACK}Μικρό
+STR_02A2_MEDIUM                                                 :{BLACK}Μεσαίο
+STR_02A3_LARGE                                                  :{BLACK}Μεγάλο
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Επιλογή μεγέθους πόλης
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Μέγεθος πόλης:
+
+STR_02B6                                                        :{STRING}  -  {STRING}
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Εμφάνιση τελευταίου μηνύματος ή αναφοράς νέων
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :Καταλογος πόλεων
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Ονόματα σχεδίων οχημάτων
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :Προεπιλεγμένο
+STR_02BF_CUSTOM                                                 :Προσαρμοσμένο
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Αποθήκευση προσαρμοσμένων ονομάτων
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Επιλογή ονομάτων σχεδίασης οχημάτων
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Αποθήκευση προσαρμοσμένων ονομάτων σχεδίασης οχημάτων
+
+############ range for menu	starts
+STR_02C3_GAME_OPTIONS                                           :Επιλογές παιχνιδιού
+STR_02C4_GAME_OPTIONS                                           :Επιλογές παιχνιδιού
+STR_02C5_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
+STR_02C6_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
+STR_02C7_CONFIG_PATCHES                                         :Ρύθμιση διορθώσεων
+STR_02C8_CONFIG_PATCHES                                         :Ρύθμιση διορθώσεων
+STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Ονόματα πόλεων που εμφανίζονται
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ονόματα πόλεων που εμφανίζονται
+STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Ονόματα σταθμών που εμφανίζονται
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Ονόματα σταθμών που εμφανίζονται
+STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Πινακίδες που εμφανίζονται
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Πινακίδες που εμφανίζονται
+STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Πλήρες animation
+STR_02D0_FULL_ANIMATION                                         :{SETX 12}Πλήρες animation
+STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Πλήρης λεπτομέρεια
+STR_02D2_FULL_DETAIL                                            :{SETX 12}Πλήρης λεπτομέρεια
+STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Διαφανή κτίρια
+STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Διαφανή κτίρια
+############ range ends	here
+
+############ range for menu	starts
+STR_02D5_LAND_BLOCK_INFO                                        :Πληροφορίες περιοχής εδάφους
+STR_02D7_SCREENSHOT_CTRL_S                                      :Φωτογραφία εικόνας (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Γιγαντιαία Φωτογραφία Εικόνας (Ctrl-G)
+STR_02D9_ABOUT_OPENTTD                                          :Σχετικά με το 'OpenTTD'
+############ range ends	here
+
+STR_02DB_OFF                                                    :{BLACK}Ανενεργό
+STR_02DA_ON                                                     :{BLACK}Ενεργό
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Εμφάνιση χρηματοδοτήσεων
+STR_02DD_SUBSIDIES                                              :Χρηματοδοτήσεις
+STR_02DE_MAP_OF_WORLD                                           :Χάρτης του κόσμου
+STR_02DF_TOWN_DIRECTORY                                         :Κατάλογος πόλεων
+
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Νομισματικές μονάδες
+STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Επιλογή νομισματικών μονάδων
+STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Οχήματα δρόμου
+STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Επιλογή πλευράς δρόμου όπου τα οχήματα οδηγούν
+STR_02E9_DRIVE_ON_LEFT                                          :Οδήγηση στα αριστερά
+STR_02EA_DRIVE_ON_RIGHT                                         :Οδήγηση στα δεξιά
+STR_02EB_TOWN_NAMES                                             :{BLACK}Ονόματα πόλεων
+STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Επιλογή στυλ ονομάτων πόλεων
+
+STR_02F4_AUTOSAVE                                               :{BLACK}Αυτόματη αποθήκευση
+STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Επιλογή διάκενου ανάμεσα στις αυτόματες αποθηκεύσεις
+STR_02F7_OFF                                                    :Ανενεργό
+STR_02F8_EVERY_3_MONTHS                                         :Κάθε 3 μήνες
+STR_02F9_EVERY_6_MONTHS                                         :Κάθε 6 μήνες
+STR_02FA_EVERY_12_MONTHS                                        :Κάθε 12 μήνες
+STR_02FB_START_A_NEW_GAME                                       :{BLACK}Έναρξη νέου παιχνιδιού
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Φόρτωση αποθηκευμένου παιχνιδιού
+STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Δημιουργία προσαρμοσμένου κόσμου/σεναρίου
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Επιλογή παιχνιδιού ενός παίκτη
+STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Επιλογή παιχνιδιού πολλών παικτών (2-8)
+STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Εμφάνιση επιλογών παιχνιδιού
+STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Εμφάνιση επιλογών δυσκολίας
+STR_0303_START_A_NEW_GAME_USING                                 :{BLACK}Έναρξη νέου παιχνιδιού, χρησιμοποιώντας ένα προσαρμοσμένο σενάριο
+STR_0304_QUIT                                                   :{BLACK}Έξοδος
+STR_0305_QUIT_OPENTTD                                           :{BLACK}Έξοδος από το 'OpenTTD'
+STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
+STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Επιλογή 'ασταθούς' στυλ τοπίου
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Επιλογή 'υπό-αρκτικού' στυλ τοπίου
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Επιλογή 'υπό-τροπικού' στυλ τοπίου
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Επιλογή 'παιχνιδούπολης' στυλ τοπίου
+STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Χρηματοδοτήστε την κατασκευή νέας βιομηχανίας
+
+############ range for menu	starts
+STR_0313_FUND_NEW_INDUSTRY                                      :Χρηματοδότηση νέας βιομηχανίας
+############ range ends here
+
+STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Χρηματοδότηση νέας βιομηχανίας
+STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...μπορεί να χτιστεί μόνο σε πόλεις
+STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...μπορεί να χτιστεί μόνο σε δασώδεις περιοχές
+STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...μπορεί να χτιστεί μόνο σε περιοχές με έρημο
+STR_0319_PAUSED                                                 :{YELLOW}* *  ΠΑΥΣΗ  *  *
+
+STR_031B_SCREENSHOT_SUCCESSFULLY                                :{WHITE}Φωτογραφία εικόνας αποθηκεύθηκε επιτυχώς ώς '{STRING}'
+STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Φωτογραφία εικόνας απέτυχε!
+
+STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Αγορά γης για μελλοντική χρήση
+STR_032F_AUTOSAVE                                               :{RED}ΑΥΤΟΜΑΤΗ ΑΠΟΘΗΚΕΥΣΗ
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Επιλογή προγράμματος 'Ezy Street στυλ μουσικής'
+
+STR_0335_6                                                      :{BLACK}6
+STR_0336_7                                                      :{BLACK}7
+
+############ start of townname region
+############ end of	townname region
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Start of order review system.
+# DON'T ADD OR REMOVE LINES HERE
+# end of order system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+############ network gui strings
+
+
+
+
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+
+
+############ Leave those lines in this order!!
+
+############ End of leave-in-this-order
+
+
+
+
+############ Leave those lines in this order!!
+############ End of leave-in-this-order
+
+
+
+
+
+############ end network gui strings
+
+
+
+
+##### PNG-MAP-Loader
+
+
+
+##id 0x0800
+STR_0800_COST                                                   :{TINYFONT}{RED}Κόστος: {CURRENCY}
+STR_0801_COST                                                   :{RED}Κόστος: {CURRENCY}
+STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Έσοδα: {CURRENCY}
+STR_0803_INCOME                                                 :{GREEN}Έσοδα: {CURRENCY}
+STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Υπολογιζόμενο Κόστος: {CURRENCY}
+STR_0805_ESTIMATED_COST                                         :{WHITE}Υπολογιζόμενο Κόστος: {CURRENCY}
+STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Υπολογιζόμενα Έσοδα: {CURRENCY}
+STR_0807_ESTIMATED_INCOME                                       :{WHITE}Υπολογιζόμενα Έσοδα: {CURRENCY}
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Αδύνατο να υψωθεί η γη εδώ...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Αδύνατο να χαμηλώσει η γη εδώ...
+STR_080A_ROCKS                                                  :Πέτρες
+STR_080B_ROUGH_LAND                                             :Σκληρό έδαφος
+STR_080C_BARE_LAND                                              :Γυμνό έδαφος
+STR_080D_GRASS                                                  :Γρασίδι
+STR_080E_FIELDS                                                 :Χωράφια
+STR_080F_SNOW_COVERED_LAND                                      :Χιονισμένο έδαφος
+STR_0810_DESERT                                                 :Έρημος
+
+##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Το έδαφος έχει λάθος κλίση
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Αδύνατος συνδυασμός σιδηροδρόμου
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Η εκσκαφή θα κατέστρεφε το τούνελ
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Ήδη στο επίπεδο της θάλασσας
+STR_1004_TOO_HIGH                                               :{WHITE}Πολύ ψηλά
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Μη ταιριαστός σιδηρόδρομος
+STR_1007_ALREADY_BUILT                                          :{WHITE}...ήδη χτισμένο
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Πρέπει να αφαιρεθεί ο σιδηρόδρομος πρώτα
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Κατασκευή Σιδηρόδρομου
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Κατασκευή Οδοντοτού
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Κατασκευή MagLev
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Επιλογή Γέφυρας
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Αδύνατο να χτιστεί αμαξοστάσιο εδώ...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Αδύνατο να χτιστεί σταθμός τρένων εδώ...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Αδύνατο να χτιστούν σηματοδότες εδώ...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Αδύνατο να χτιστεί σιδηρόδρομος εδώ...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Αδύνατο να αφαιρεθεί σιδηρόδρομος από εδώ...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Αδύνατο να αφαιρεθούν σηματοδότες από εδώ...
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Προσανατολισμός Αμαξοστασίου
+STR_1015_RAILROAD_CONSTRUCTION                                  :Κατασκευή Σιδηρόδρομου
+STR_1016_MONORAIL_CONSTRUCTION                                  :Κατασκευή οδοντοτού
+STR_1017_MAGLEV_CONSTRUCTION                                    :Κατασκευή MagLev
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Κατασκευή σιδηρόδρομου
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Κατασκευή αμαξοστασίου (για κατασκευή και επισκευή τρένων)
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Κατασκευή σταθμού τρένων
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Κατασκευή σηματοδοτών
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Κατασκευή γέφυρας σιδηρόδρομου
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Κατασκευή τούνελ σιδηρόδρομου
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για σιδηρόδρομους και σηματοδότες
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Επιλογή γέφυρας - κάντε κλικ στην γέφυρα της προτίμησής σας για κατασκευή
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Επιλογή προσανατολισμού αμαξοστασίου
+STR_1021_RAILROAD_TRACK                                         :Σιδηρόδρομος
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Αμαξοστάσιο
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...αυτή η περιοχή είναι ιδιοκτησία άλλης εταιρείας
+
+
+
+##id 0x1800
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Πρέπει πρώτα να αφαιρεθεί ο δρόμος
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Κατασκευή Δρόμου
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Επιλογή Γέφυρας Δρόμου
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Αδύνατο να χτιστεί δρόμος εδώ...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Αδύνατο να αφαιρεθεί δρόμος από εδώ...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Προσανατοισμός Σταθμού Οχημάτων
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Αδύνατο να χτιστεί σταθμός οχημάτων εδώ...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Αδύνατο να χτιστεί στάση λεωφορείων...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Αδύνατο να χτιστεί στάση φορτηγών...
+STR_180A_ROAD_CONSTRUCTION                                      :Κατασκευή δρόμου
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Κατασκευή κομματιού δρόμου
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Κατασκευή σταθμού οχημάτων (για κατασκευή και επισκευή οχημάτων)
+STR_180D_BUILD_BUS_STATION                                      :{BLACK}Κατασκευή σταθμού λεωφορείων
+STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Κατασκευή σταθμού φόρτωσης φορτηγών
+STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Κατασκευή γέφυρας δρόμου
+STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Κατασκευή τούνελ δρόμου
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Εναλλαγή κατασκευής/αφαίρεσης για αυτοκινητόδρομους
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Επιλογή προσανατολισμού σταθμού οχημάτων
+STR_1814_ROAD                                                   :Δρόμος
+STR_1815_ROAD_WITH_STREETLIGHTS                                 :Δρόμος με φωτισμό
+STR_1816_TREE_LINED_ROAD                                        :Δρόμος με δέντρα
+STR_1817_ROAD_VEHICLE_DEPOT                                     :Σταθμός Οχημάτων
+STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Διασταύρωση δρόμου/σιδηρόδρομου
+
+##id 0x2000
+STR_2000_TOWNS                                                  :{WHITE}Πόλεις
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
+STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Το κτίριο πρέπει πρώτα να κατεδαφιστεί
+STR_2005                                                        :{WHITE}{TOWN}
+STR_2006_POPULATION                                             :{BLACK}Πληθυσμός: {ORANGE}{COMMA}{BLACK}  Σπίτια: {ORANGE}{COMMA}
+STR_2007_RENAME_TOWN                                            :Μετονομασία Πόλης
+STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Αδύνατο να μετονομαστεί η πόλη...
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} οι τοπικές αρχές δεν το επιτρέπουν
+STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Ονόματα πόλεων - πατήστε στο όνομα για να κεντράρετε την εικόνα στην πόλη
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης
+
+
+##id 0x2800
+
+##id 0x3000
+
+
+############ range for rating starts
+############ range for rating ends
+
+
+
+##id 0x3800
+
+##id 0x4000
+
+##id 0x4800
+
+############ range for requires	starts
+############ range for requires	ends
+
+
+##id 0x5000
+
+##id 0x5800
+
+
+############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
+############ These strings may never get a new id, or savegames	will break!
+##id 0x6000
+
+
+############ end of	savegame specific region!
+
+##id 0x6800
+
+############ range for difficulty levels starts
+############ range for difficulty levels ends
+
+############ range for difficulty settings starts
+STR_16816_CITY_APPROVAL                                         :{LTBLUE}Θέση δημαρχιακού συμβουλίου σχετικά με την αναδόμηση της πόλης: {ORANGE}{STRING}
+############ range for difficulty settings ends
+
+
+##id 0x7000
+
+
+
+##id 0x8000
+
+##id 0x8800
+
+
+
+
+
+
+##id 0x9000
+
+
+
+##id 0x9800
+
+SERVICE_AT_SHIP_DEPOT                                           :Επισκευή στη Λιμεναποθήκη στη(ν) {TOWN}
+
+##id 0xA000
+
+SERVICE_AT_AIRPORT_HANGAR                                       :Επισκευή στο Υπόστεγο {STATION}
+
+##id 0xB000
+
+
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+############ Those following lines need to be in this order!!
+############ End of order list
+
+
+
+
+
+
+
+
+
+
+
+
+############ Lists rail types
+
+
+############ End of list of rail types
+
+
+
+########### String for New Landscape Generator
+
+
+
+########### String for new airports
+
+########

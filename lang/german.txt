@@ -2191,6 +2191,15 @@ STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Kleines Flugzeug
 STR_LIVERY_LARGE_PLANE                                          :Großraumflugzeug
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Allgemeines Farbschema anzeigen
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Zugfarbschema anzeigen
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Fahrzeugfarbschema anzeigen
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Schiffsfarbschema anzeigen
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Flugzeugfarbschema anzeigen
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Wähle die Hauptfarbe für das gewählte Schema aus.
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Wähle die Nebenfarbe für das ausgewählte Schema.
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemen(mit STRG+Klick) aus, um diese zu ändern. Klicke in das Kästchen um ein Schema auszuwählen.
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Dampf)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2914,6 +2923,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoti
 
 STR_ENGINES                                                     :Loks
 STR_WAGONS                                                      :Waggons
+
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Klicke hier um alle Fahrzeuge im Depot anzuhalten.
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Klicke hier um alle Fahrzeuge im Depot starten zu lassen.
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Klicke hier um alle Flugzeuge im Hangar anzuhalten.
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Klicke hier um alle Flugzeuge im Hangar starten zu lassen.
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste - {COMMA} Schild{P "" er}

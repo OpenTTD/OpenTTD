@@ -2190,6 +2190,15 @@ STR_LIVERY_HELICOPTER                                           :Helicòpter
 STR_LIVERY_SMALL_PLANE                                          :Avió petit
 STR_LIVERY_LARGE_PLANE                                          :Avió gran
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Mostrar esquemes de colors generals
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Mostrar esquemes de colors dels trens
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mostrar esquemes de colors dels automòbils
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Mostrar esquemes de colors dels vaixells
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostrar esquemes de colors dels avions
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Escolleix el color primari per l'esquema triat
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Escolleix el color secundari per l'esquema triat
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecciona un esquema de colors per canviar-lo, o diversos esquemes amb CTRL+click. Click a la caixa per canviar l'esquema
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
