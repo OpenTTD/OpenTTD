@@ -160,6 +160,7 @@ DEF_COMMAND(CmdReplaceVehicle);
 
 DEF_COMMAND(CmdCloneVehicle);
 DEF_COMMAND(CmdMassStartStopVehicle);
+DEF_COMMAND(CmdDepotSellAllVehicles);
 
 
 /* The master command table */
@@ -305,6 +306,7 @@ static const Command _command_proc_table[] = {
 	{CmdReplaceVehicle,                      0}, /* 115 */
 	{CmdCloneVehicle,                        0}, /* 116 */
 	{CmdMassStartStopVehicle,                0}, /* 117 */
+	{CmdDepotSellAllVehicles,                0}, /* 118 */
 };
 
 /* This function range-checks a cmd, and checks if the cmd is not NULL */

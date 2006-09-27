@@ -2901,6 +2901,16 @@ STR_SEND_TO_DEPOTS_TIP                                           :{BLACK}Send al
 STR_SEND_TO_HANGARS                                              :{BLACK}Send to Hangars
 STR_SEND_TO_HANGARS_TIP                                          :{BLACK}Send all aircraft in list to hangar. CTRL+click will only service
 
+STR_SELL                                                        :{BLACK}Sell
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}You are about to sell all the vehicles in the depot.
+STR_ARE_YOU_SURE                                                :{BLACK}Are you sure?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Confirm that you want to sell all the vehicles in the depot
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Confirm that you want to sell all the aircraft in the hangar
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Do not sell all vehicles in the depot
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Do not sell all aircraft in the hangar
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sell all vehicles in the depot
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sell all aircraft in the hangar
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Replace Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start Replacing Vehicles

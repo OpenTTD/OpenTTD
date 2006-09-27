@@ -439,6 +439,7 @@ enum {
 	WC_GENERATE_LANDSCAPE       = 0x50,
 	WC_GENERATE_PROGRESS_WINDOW = 0x51,
 	WC_OK_CANCEL_QUERY          = 0x52,
+	WC_DEPOT_SELL_ALL           = 0x53,
 };
 
 

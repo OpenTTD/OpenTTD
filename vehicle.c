@@ -1626,6 +1626,58 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	return return_value;
 }
 
+/** Sells all vehicles in a depot
+* @param tile Tile of the depot where the depot is
+* @param p1 Vehicle type
+* @param p2 unused
+*/
+int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	Vehicle **engines = NULL;
+	Vehicle **wagons = NULL;
+	uint16 engine_list_length = 0;
+	uint16 engine_count = 0;
+	uint16 wagon_list_length = 0;
+	uint16 wagon_count = 0;
+
+	int32 cost = 0;
+	uint i, sell_command, total_number_vehicles;
+	byte vehicle_type = GB(p1, 0, 8);
+
+	switch (vehicle_type) {
+		case VEH_Train:    sell_command = CMD_SELL_RAIL_WAGON; break;
+		case VEH_Road:     sell_command = CMD_SELL_ROAD_VEH;   break;
+		case VEH_Ship:     sell_command = CMD_SELL_SHIP;       break;
+		case VEH_Aircraft: sell_command = CMD_SELL_AIRCRAFT;   break;
+		default: return CMD_ERROR;
+	}
+
+	/* Get the list of vehicles in the depot */
+	BuildDepotVehicleList(vehicle_type, tile, &engines, &engine_list_length, &engine_count,
+						                      &wagons,  &wagon_list_length,  &wagon_count);
+
+	total_number_vehicles = engine_count + wagon_count;
+	for (i = 0; i < total_number_vehicles; i++) {
+		const Vehicle *v;
+		int32 ret;
+
+		if (i < engine_count) {
+			v = engines[i];
+		} else {
+			v = wagons[i - engine_count];
+		}
+
+		ret = DoCommand(tile, v->index, 1, flags, sell_command);
+
+		if (!CmdFailed(ret)) cost += ret;
+	}
+
+	free(engines);
+	free(wagons);
+	if (cost == 0) return CMD_ERROR; // no vehicles to sell
+	return cost;
+}
+
 /** Clone a vehicle. If it is a train, it will clone all the cars too
  * @param tile tile of the depot where the cloned vehicle is build
  * @param p1 the original vehicle's index
