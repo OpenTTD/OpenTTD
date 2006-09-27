@@ -1570,8 +1570,8 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	int32 return_value = CMD_ERROR;
 	uint i;
 	uint stop_command;
-	byte vehicle_type = p1;
-	byte start_stop = p2;
+	byte vehicle_type = GB(p1, 0, 8);
+	bool start_stop = HASBIT(p2, 0);
 
 	switch (vehicle_type) {
 		case VEH_Train:    stop_command = CMD_START_STOP_TRAIN;    break;
@@ -1589,8 +1589,12 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		int32 ret;
 
 		if (!!(v->vehstatus & VS_STOPPED) != start_stop) continue;
-		if (!(v->vehstatus & VS_HIDDEN)) continue;
-		if (p1 == VEH_Train && !IsWholeTrainInDepot(v)) continue;
+		if (vehicle_type == VEH_Train) {
+			if (CheckTrainInDepot(v, false) == -1) continue;
+		} else {
+			if (!(v->vehstatus & VS_HIDDEN)) continue;
+		}
+
 		ret = DoCommand(tile, v->index, 0, flags, stop_command);
 
 		if (!CmdFailed(ret)) {
@@ -1601,7 +1605,7 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		}
 	}
 
-	free((void*)vl);
+	free(vl);
 	return return_value;
 }
 

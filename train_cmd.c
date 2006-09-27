@@ -832,7 +832,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /* Check if all the wagons of the given train are in a depot, returns the
  * number of cars (including loco) then. If not it returns -1 */
-static int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped)
+int CheckTrainInDepot(const Vehicle *v, bool needs_to_be_stopped)
 {
 	int count;
 	TileIndex tile = v->tile;
