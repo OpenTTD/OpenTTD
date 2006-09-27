@@ -294,8 +294,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 							case VEH_Ship:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
 							case VEH_Aircraft: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
 						}
-						if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, command))
-							DeleteWindow(w);
+						if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, command)) DeleteWindow(w);
 					}
 					break;
 			}
