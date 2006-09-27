@@ -2971,6 +2971,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj ne
 STR_ENGINES                                                     :lokomotivy
 STR_WAGONS                                                      :vagony
 
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Stiskni pro hromadné zastavení v¨ech vozidel nacházejících se v depu
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Stiskni pro hromadný odjezd v¨ech vozidel nacházejících se v depu
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Stiskni pro hromadné zastavení v¨ech letadel a helikoptér nacházejících se v hangáru
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Stiskni pro hromadný odlet v¨ech letadel a helikoptér nacházejících se v hangáru
+
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popis{P ek ky ku}
 

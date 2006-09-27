@@ -2915,6 +2915,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}No es po
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagones
 
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click para parar todos los vehículos dentro del depósito
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click para empezar todos los vehículos dentro del depósito
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Click para parar todas las aeronaves dentro del hangar
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Click para empezar todas las aeronaves dentro del hangar
+
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de señales - {COMMA} Señales
 

@@ -2914,6 +2914,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomoti
 STR_ENGINES                                                     :Motoren
 STR_WAGONS                                                      :Wagons
 
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Klik om alle voertuigen te stoppen in het depot
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Klik om alle voertuigen te starten die in een depot staan
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Klik om alle vliegtuigen te stoppen in de hangar
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Klik om alle vliegtuigen te startan die in een hangar staan
+
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}
 

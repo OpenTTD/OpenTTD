@@ -2914,6 +2914,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi
 STR_ENGINES                                                     :Motrici
 STR_WAGONS                                                      :Vagoni
 
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Clicca per fermare tutti i veicoli dentro il deposito
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Clicca per far partire tutti i veicoli dentro il deposito
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Clicca per fermare tutti gli aerei dentro l'hangar
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Clicca per far partire gli aerei dentro l'hangar
+
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista dei Cartelli - {COMMA} Cartelli
 

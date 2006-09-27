@@ -465,7 +465,7 @@ STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Kostnad 
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Kostnad att röja: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :Otillgänglig
 STR_01A7_OWNER                                                  :{BLACK}Ägare: {LTBLUE}{STRING}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Kommun: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Lokala myndigheter: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ingen
 STR_01AA_NAME                                                   :{BLACK}Namn
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
@@ -648,7 +648,7 @@ STR_0253_WATER_SUPPLY                                           :{BLACK}Vattenti
 STR_0254_WATER_TOWER                                            :{BLACK}Vattentorn
 STR_0255_DIAMOND_MINE                                           :{BLACK}Diamantgruva
 STR_0256_COPPER_ORE_MINE                                        :{BLACK}Koppargruva
-STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Sockervadd-skog
+STR_0257_COTTON_CANDY_FOREST                                    :{BLACK}Sockervaddskog
 STR_0258_CANDY_FACTORY                                          :{BLACK}Godisfabrik
 STR_0259_BATTERY_FARM                                           :{BLACK}Batteribondgård
 STR_025A_COLA_WELLS                                             :{BLACK}Kolakälla
@@ -683,7 +683,7 @@ STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Bygg vat
 STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Bygg vattentorn (Kan bara byggas i städer)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Bygg diamantgruva
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Bygg koppargruva
-STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plantera Sockervadd-skog
+STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plantera Sockervaddskog
 STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Bygg godisfabrik
 STR_027C_CONSTRUCT_BATTERY_FARM                                 :{BLACK}Bygg batteribondgård
 STR_027D_CONSTRUCT_COLA_WELLS                                   :{BLACK}Bygg kolakälla
@@ -834,8 +834,8 @@ STR_0305_QUIT_OPENTTD                                           :{BLACK}Avsluta 
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan bara byggas i städer
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Välj 'tempererad' typ av landskap
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Välj 'arktisk' typ av landskap
-STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Välj 'tropisk' typ av landskap
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Välj 'sub-arktiskt' typ av landskap
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Välj 'sub-tropiskt' typ av landskap
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Välj 'leksaksland' som typ av landskap
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Bekosta byggnation av ny industri
 
@@ -909,7 +909,9 @@ STR_CURR_NOK                                                    :Norska kronor (
 STR_CURR_PLN                                                    :Polska Zloty (PLN)
 STR_CURR_ROL                                                    :Rumänsk Leu (ROL)
 STR_CURR_RUR                                                    :Ryska rubel (RUR)
+STR_CURR_SIT                                                    :Slovenska Tolar (SIT)
 STR_CURR_SEK                                                    :Svenska kronor (SEK)
+STR_CURR_YTL                                                    :Turkisk Lire (YTL)
 
 STR_CURR_CUSTOM                                                 :Egen...
 
@@ -1021,16 +1023,16 @@ STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Visa al
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Visa signaler på körsidan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Visa finansfönstret vid slutet av året: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch-kompatibel nonstop-hantering: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Vägfordonsköing (med kvanteffekter): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Vägfordonsköer (med kvanteffekter): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Scrolla vyn när musen är vid kanten: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillåt mutning av den lokala kommunen: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillåt mutning av de lokala myndigheterna: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-rektangulära stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny globalt sätt att hitta rutt (NPF, åsidosätter NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Ett tåg är vilse om ingen vidare framgång är nådd under: {ORANGE}{STRING} dagar
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Ett tåg är vilse om ingen vidare framgång är nådd under: {ORANGE}disabled
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Ett tåg är vilse om ingen vidare framgång är nådd under: {ORANGE}av
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Granska fordonens destinationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nej
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon
@@ -1044,12 +1046,33 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hur län
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Visa befolkningsmängd i stadsnamnet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Osynliga träd (när genomskinliga byggnader är valt): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Land generator: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max avstånd ifrån kanten för oljeraffinaderier {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snölinjeshöjd: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Terrängens svårhetsgrad (TerraGenesis endast) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Väldigt lätt
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Lätt
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Svår
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Väldigt svår
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Trädplacerings-algoritm: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Inget
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Förbättrad
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Höjkartans rotation: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Motsols
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Medsols
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Uppdaterings intervall: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Vilken nivåhöjd en platt scenario-karta får: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximal spridning av en station: {ORANGE}{STRING} {RED}Varning: Hög inställning slöar ner spelet
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Serva helikoptrar vid landningplattor automatiskt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koppla landskapsverktygsfältet till järnväg/väg/vatten/flygplats-verktygsfältet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Omvänd scrollriktning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Inga
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Egna företaget
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alla företag
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max antal vägfordon per spelare: {ORANGE}{STRING}
@@ -1064,16 +1087,16 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Förbjud
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Dator med ny AI (alpha): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Tillåt AI i multiplayer (expermientellt): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard serviceintervall för tåg: {ORANGE}{STRING} dagar
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Standard serviceintervall för tåg: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Standard serviceintervall för tåg: {ORANGE}av
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Standard serviceintervall för vägfordon: {ORANGE}{STRING} dagar
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Standard serviceintervall för vägfordon: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Standard serviceintervall för vägfordon: {ORANGE}av
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}{STRING} dagar
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Standard serviceintervall för flygplan: {ORANGE}av
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard serviceintervall för skepp: {ORANGE}{STRING} dagar
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standard serviceintervall för skepp: {ORANGE}{STRING} dagar/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard serviceintervall för skepp: {ORANGE}av
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Avaktivera service när motorstopp är av: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Använd hastighetsbegränsningar för tågvagnat: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Använd hastighetsbegränsningar för tågvagnar: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
@@ -1112,7 +1135,7 @@ STR_TOYLAND_LANDSCAPE                                           :Leksakslandskap
 
 STR_CHEATS                                                      :{WHITE}Fusk
 STR_CHEATS_TIP                                                  :{BLACK}Checkboxar indikerar om du använt det här fusket förut
-STR_CHEATS_WARNING                                              :{BLACK}Varning! Du är på väg att förråda dina motståndare. Kom ihåg att sådant aldrig glöms bort.
+STR_CHEATS_WARNING                                              :{BLACK}Varning! Du är på väg att förråda dina motståndare. Kom ihåg att en sådan förkasstlig handling aldrig glöms bort.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Öka pengar genom att {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spelar som: {ORANGE}{COMMA}
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}trimmad bulldozer (ta bort industrier, fyrar etc.): {ORANGE}{STRING}
@@ -1166,11 +1189,11 @@ STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Utjämna 
 STR_TREES_RANDOM_TYPE                                           :{BLACK}Träd av olika typ
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Placera träd av olika typ
 
-STR_CANT_BUILD_CANALS                                           :{WHITE}Kan ej bygga kanaler här...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Bygg kanaler
+STR_CANT_BUILD_CANALS                                           :{WHITE}Kan inte bygga kanaler här...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Bygg kanaler. Håll ner CTRL för att bygga vid angränsande vatten.
 STR_LANDINFO_CANAL                                              :Kanal
 
-STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan ej bygga slussar här...
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Kan inte bygga slussar här...
 STR_BUILD_LOCKS_TIP                                             :{BLACK}Bygg slussar
 STR_LANDINFO_LOCK                                               :Sluss
 
@@ -1179,7 +1202,7 @@ STR_BUOY_IS_IN_USE                                              :{WHITE}... boje
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan ej ta bort del av station...
-STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan ej konvertera spårtyp här...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan inte konvertera spårtyp här...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Konvertera/Uppgradera spårtyp
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Drag loket här för att sälja hela tåget
@@ -1207,7 +1230,7 @@ STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Bygg jär
 STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Plantera fruktplantage
 STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Plantera gummiplantage
 STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Bygg vattentillgång
-STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plantera Spunnet socker-skog
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plantera sockervaddskog
 STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Bygg batteribondgård
 STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Bygg kolakälla
 STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Bygg plastfontäner
@@ -1448,6 +1471,8 @@ STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...hitta
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kunde inte konvertera bildtyp. 8 eller 24-bitars PNG-bild krävs.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...nånting gick fel. Ursäkta. (förmodligen korumperad fil)
 
+STR_BMPMAP_ERROR                                                :{WHITE}Kan inte ladda landskap ifrån BMP...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kunde inte konvertera bildformat.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kostnad: {CURRENCY}
@@ -1552,7 +1577,7 @@ STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Invånare: {ORANGE}{COMMA}{BLACK}  Hus: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Byt namn på stad
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan inte byta namn på stad...
-STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} kommunen tillåter inte detta
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} de lokala myndigheterna tillåter inte detta
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Stadsnamn - klicka på ett namn för att centrera vyn på staden
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrera vyn på staden
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Byt namn på staden
@@ -1575,9 +1600,9 @@ STR_201C_WAREHOUSE                                              :Varuhus
 STR_201D_OFFICE_BLOCK                                           :Kontor
 STR_201E_STADIUM                                                :Stadium
 STR_201F_OLD_HOUSES                                             :Gamla hus
-STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Kommun
-STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Visa kommuninformation
-STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} kommun
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Lokala myndigheter
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Visa information om de lokala myndigheterna
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} lokala myndigheter
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Transportföretags värderingar:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subventioner
@@ -1595,7 +1620,7 @@ STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvention tilldelad {COMPANY}!{}{}{STRING} från {STATION} till {STATION} ger dubbelt så mycket nästa år!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvention tilldelad {COMPANY}!{}{}{STRING} från {STATION} till {STATION} ger tre gånger så mycket nästa år!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Subvention tilldelad {COMPANY}!{}{}{STRING} från {STATION} till {STATION} ger fyra gånger så mycket nästa år!
-STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} kommunen tillåter inte att en ny flygplats byggs i staden
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} de lokala myndigheterna tillåter inte att en ny flygplats byggs i staden
 STR_2036_COTTAGES                                               :Stuga
 STR_2037_HOUSES                                                 :Hus
 STR_2038_FLATS                                                  :Lägenheter
@@ -1626,7 +1651,7 @@ STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Bekosta ombyggnad av stadens vägnätverk. Orsakar ansenlig splittring för vägtrafik upp till 6 månader.{}  Kostnad: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Bygg en staty i ditt företags ära.{} Kostnad: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Bekosta uppbyggnad av nya kommersiella byggnader i staden.{}  Kostnad: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Köp 1 års exklusiv transporträttighet i staden. Stadens kommun kommer bara tillåta passagerare och gods till användning för ditt företags stationer.{} Kostnad: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Köp 1 års exklusiv transporträttighet i staden. Stadens myndigheter kommer bara tillåta passagerare och gods till användning för ditt företags stationer.{} Kostnad: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Muta de lokala myndigheterna för att öka din värdering, på risken av att få höga böter om du blir upptäckt.{}  Kostnad: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i {TOWN}!{}{}Vägombyggnadsprogram bekostat av {COMPANY} medför 6 månader av elände för bilister!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -1705,7 +1730,7 @@ STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Busshåll
 STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Lastbilsbryggsriktning
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Måste riva busshållplats först
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Måste riva lastbilsbrygga först
-STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stationer
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Station{P "" er}
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_304A_NONE                                                   :{YELLOW}- Inga -
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...plats olämplig
@@ -1760,9 +1785,9 @@ STR_4001_LOAD_GAME                                              :{WHITE}Öppna sp
 STR_4002_SAVE                                                   :{BLACK}Spara
 STR_4003_DELETE                                                 :{BLACK}Ta bort
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
-STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabytes ledigt
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} ledigt
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Kan inte läsa från disk
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Sparningen av spelet misslyckades
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Sparandet av spelet misslyckades
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Kan inte ta bort filen
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Läsningen av spelet misslyckades
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Listar enheter, kataloger och sparade spel
@@ -1772,6 +1797,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Spara sp
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Välj typ av nytt spel
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Välj scenario (grön), förbestämt spel (blå), eller slumpmässigt nytt spel
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Skapa slumpmässigt nytt spel
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Läs höjdkarta
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} i vägen
@@ -1802,7 +1828,7 @@ STR_4818_WATER_TOWER                                            :Vattentorn
 STR_4819_FACTORY                                                :Fabrik
 STR_481A_FARM                                                   :Bondgård
 STR_481B_LUMBER_MILL                                            :Sågverk
-STR_481C_COTTON_CANDY_FOREST                                    :Spunnet socker-skog
+STR_481C_COTTON_CANDY_FOREST                                    :Sockervaddskog
 STR_481D_CANDY_FACTORY                                          :Godisfabrik
 STR_481E_BATTERY_FARM                                           :Batteribondgård
 STR_481F_COLA_WELLS                                             :Kolakälla
@@ -1871,7 +1897,7 @@ STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Järnvägsbro med
 STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Järnvägsbro med förstärkt betongupphängning
 STR_501F_WOODEN_RAIL_BRIDGE                                     :Järnvägsbro av trä
 STR_5020_CONCRETE_RAIL_BRIDGE                                   :Järnvägsbro av betong
-STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Vägbro med betongupphängning
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Vägbro med stålupphängning
 STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Vägbro med stålbalkar
 STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Vägbro med utskjutande stålstöd
 STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Vägbro med förstärkt betongupphängning
@@ -2001,7 +2027,7 @@ STR_6830_IMMEDIATE                                              :Omedelbart
 STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 månader efter spelaren
 STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 månader efter spelaren
 STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 månader efter spelaren
-STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Vid slut på linjen, vid stationer
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Vid slut på linjen och vid stationer
 STR_6835_AT_END_OF_LINE_ONLY                                    :Enbart vid slut på linjen
 STR_6836_OFF                                                    :Av
 STR_6837_ON                                                     :På
@@ -2067,7 +2093,7 @@ STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Byt före
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Fälj ny färg
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Öka lånets storlek
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Återbetala en del av lånet
-STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(President)
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(VD)
 STR_7038_INAUGURATED                                            :{GOLD}Etablerades: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Fordon:
 STR_TRAINS                                                      :{WHITE}{COMMA} tåg
@@ -2096,12 +2122,12 @@ STR_7054                                                        :{WHITE}{STRING}
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportföretag har problem!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} kommer att säljas eller gå bankrutt om det inte går bättre snart!
-STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(President)
+STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(VD)
 STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Transportföretag slås ihop!
 STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} har sålts till {COMPANY} för {CURRENCY}!
 STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Vi letar efter någon som vill köpa och ta över vårt företag{}{}Vill du köpa {COMPANY} för {CURRENCY}?
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrutt!
-STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} has been closed ned med creditors and all assets sold off!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}{COMPANY} har avvecklats av investerarna och tillgångarna har sålts ut!
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Nytt transportföretag startat!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} börjar bygga nära {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Kan inte köpa företag...
@@ -2117,7 +2143,7 @@ STR_7069_ROUTE_SUPERVISOR                                       :Ruttkontrollant
 STR_706A_DIRECTOR                                               :Direktör
 STR_706B_CHIEF_EXECUTIVE                                        :Versktällande chef
 STR_706C_CHAIRMAN                                               :Ordförande
-STR_706D_PRESIDENT                                              :President
+STR_706D_PRESIDENT                                              :Verkställande direktör
 STR_706E_TYCOON                                                 :Tycoon
 STR_706F_BUILD_HQ                                               :{BLACK}Bygg Högkvarter
 STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Bygg huvudkontor / visa företagets huvudkontor
@@ -2132,14 +2158,14 @@ STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Lågkonjuktur Över!{}{}Uppsving i byteshandeln ger tillförsikt till industrier när ekonomin stärks!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Växla stor/liten fönsterstorlek
 STR_7076_COMPANY_VALUE                                          :{GOLD}Företagets värde: {WHITE}{CURRENCY64}
-STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Köp 25% andel i företag
-STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Sälj 25% andel i företag
-STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Köp 25% andel i detta företag
-STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Sälj 25% andel i detta företag
-STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan inte köpa 25% andel i detta företag...
-STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan inte sälja 25% andel i detta företag...
-STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% ägd av {COMPANY})
-STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% ägd av {COMPANY}{}   {COMMA}% ägd av {COMPANY})
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Köp 25% andelar i företaget
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Sälj 25% andelar i företaget
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Köp 25% andelar i detta företag
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Sälj 25% andelar i detta företag
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Kan inte köpa 25% andelar i detta företag...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Kan inte sälja 25% andelar i detta företag...
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% ägs av {COMPANY})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% ägs av {COMPANY}{}   {COMMA}% ägs av {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} har tagits över av {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Det här företaget bedriver inte aktiehandel ännu....
 
@@ -2206,7 +2232,7 @@ STR_8029_WATER_TANKER                                           :Vattentank
 STR_802A_FRUIT_TRUCK                                            :Fruktvagn
 STR_802B_RUBBER_TRUCK                                           :Gummivagn
 STR_802C_SUGAR_TRUCK                                            :Sockervagn
-STR_802D_COTTON_CANDY_HOPPER                                    :Spunnet Sockervagn
+STR_802D_COTTON_CANDY_HOPPER                                    :Sockervaddsvagn
 STR_802E_TOFFEE_HOPPER                                          :Knäckvagn
 STR_802F_BUBBLE_VAN                                             :Bubbelvagn
 STR_8030_COLA_TANKER                                            :Kolatank
@@ -2236,7 +2262,7 @@ STR_8047_WATER_TANKER                                           :Vattentank
 STR_8048_FRUIT_TRUCK                                            :Frukvagn
 STR_8049_RUBBER_TRUCK                                           :Gummivagn
 STR_804A_SUGAR_TRUCK                                            :Sockervagn
-STR_804B_COTTON_CANDY_HOPPER                                    :Spunnet Sockervagn
+STR_804B_COTTON_CANDY_HOPPER                                    :Sockervaddsvagn
 STR_804C_TOFFEE_HOPPER                                          :Knäckvagn
 STR_804D_BUBBLE_VAN                                             :Bubblevagn
 STR_804E_COLA_TANKER                                            :Kolatank
@@ -2268,7 +2294,7 @@ STR_8067_WATER_TANKER                                           :Vattentank
 STR_8068_FRUIT_TRUCK                                            :Fruktvagn
 STR_8069_RUBBER_TRUCK                                           :Gummilastvagn
 STR_806A_SUGAR_TRUCK                                            :Sockerlastvagn
-STR_806B_COTTON_CANDY_HOPPER                                    :Spunnet Sockervagn
+STR_806B_COTTON_CANDY_HOPPER                                    :Sockervaddsvagn
 STR_806C_TOFFEE_HOPPER                                          :Knäckvagn
 STR_806D_BUBBLE_VAN                                             :Bubbelvagn
 STR_806E_COLA_TANKER                                            :Kolatank
@@ -2341,9 +2367,9 @@ STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Socker
 STR_80B1_MIGHTYMOVER_COLA_TRUCK                                 :MightyMover Kolalastare
 STR_80B2_POWERNAUGHT_COLA_TRUCK                                 :Powernaught Kolalastare
 STR_80B3_WIZZOWOW_COLA_TRUCK                                    :Wizzowow Kolalastare
-STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Spunnet Sockerlastare
-STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Spunnet Sockerlastare
-STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Spunnet Sockerlastare
+STR_80B4_MIGHTYMOVER_COTTON_CANDY                               :MightyMover Sockervaddslastare
+STR_80B5_POWERNAUGHT_COTTON_CANDY                               :Powernaught Sockervaddslastare
+STR_80B6_WIZZOWOW_COTTON_CANDY_TRUCK                            :Wizzowow Sockervaddslastare
 STR_80B7_MIGHTYMOVER_TOFFEE_TRUCK                               :MightyMover Knäcklastare
 STR_80B8_POWERNAUGHT_TOFFEE_TRUCK                               :Powernaught Knäcklastare
 STR_80B9_WIZZOWOW_TOFFEE_TRUCK                                  :Wizzowow Knäcklastare
@@ -2362,9 +2388,9 @@ STR_80C5_WIZZOWOW_FIZZY_DRINK_TRUCK                             :Wizzowow Läskla
 STR_80C6_MIGHTYMOVER_PLASTIC_TRUCK                              :MightyMover Plastlastare
 STR_80C7_POWERNAUGHT_PLASTIC_TRUCK                              :Powernaught Plastlastare
 STR_80C8_WIZZOWOW_PLASTIC_TRUCK                                 :Wizzowow Plastlastbil
-STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover Bubblelastbil
-STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught Bubblelastbil
-STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow Bubblelastbil
+STR_80C9_MIGHTYMOVER_BUBBLE_TRUCK                               :MightyMover Bubbellastbil
+STR_80CA_POWERNAUGHT_BUBBLE_TRUCK                               :Powernaught Bubbellastbil
+STR_80CB_WIZZOWOW_BUBBLE_TRUCK                                  :Wizzowow Bubbellastbil
 STR_80CC_MPS_OIL_TANKER                                         :MPS Oljetanker
 STR_80CD_CS_INC_OIL_TANKER                                      :CS-Inc. Oljetanker
 STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Passagerarfärja
@@ -2427,7 +2453,7 @@ STR_8106_MONORAIL_LOCOMOTIVE                                    :monorail-lokomo
 STR_8107_MAGLEV_LOCOMOTIVE                                      :maglev-lokomotiv
 
 ##id 0x8800
-STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} depå
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} tågdepå
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Invånarna firar . . .{}Första tåget ankommer till {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tåg i vägen
@@ -2447,7 +2473,7 @@ STR_8810_GO_NON_STOP_TO_LOAD                                    :Åk nonstop till
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Åk nonstop till {STATION} (Lasta om och vänta på full last)
 STR_GO_TO_TRAIN_DEPOT                                           :Åk till {TOWN}s tågdepå
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Servning vid {TOWN} tågdepå
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Åk non-stop till {TOWN} depå
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Åk non-stop till {TOWN}s tågdepå
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Servning non-stop {TOWN} tågdepå
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}På väg mot {TOWN}s tågdepå
@@ -2469,7 +2495,7 @@ STR_881B_TRAINS                                                 :{WHITE}{COMPANY
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nytt tågfordon
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nya elektriska järnvägsfordon
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nytt monorail-fordon
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nytt maglev-Fordon
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nytt maglevfordon
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bygg fordon
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klona fordon
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Det här bygger en kopia av fordonet. Control-klickning gör så att de delar order
@@ -2484,7 +2510,7 @@ STR_8825_NON_STOP                                               :{BLACK}Non-stop
 STR_8826_GO_TO                                                  :{BLACK}Gå Till
 STR_8827_FULL_LOAD                                              :{BLACK}Lasta
 STR_8828_UNLOAD                                                 :{BLACK}Lasta av
-STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Orders)
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Order)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slut på order - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Servning
@@ -2504,7 +2530,7 @@ STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Kan inte
 STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Det bakre loket kommer alltid följa med det tillhörande främre loket
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Kan inte sälja järnvägfordon...
-STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan inte hitta rutt till närmaste depå
+STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Kan inte hitta vägen till närmaste depå
 STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan inte stoppa/starta tåg...
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Serviceintervall: {LTBLUE}{COMMA}dagar{BLACK}   Senaste service: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Serviceintervall: {LTBLUE}{COMMA}%{BLACK}   Senaste service: {LTBLUE}{DATE_LONG}
@@ -2522,7 +2548,7 @@ STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Visa tåg
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrera vyn ovanför tåget
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Skicka tåg till depå
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Tvinga tåg att fortsätta utan att vänta på signal
-STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Kasta om tågets riktning
+STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Byt tågets riktning
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Visa tågdetaljer
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Öka serviceintervall
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Minska serviceintervall
@@ -2531,7 +2557,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Visa det
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Visa kapaciteter för varje fordon
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Visa tågets totala kapacitet, separera för typ av gods
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Orderlista - klicka på order för att markera det
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Skippa nuvararande order, och börja med nästa
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Skippa nuvararande order och börja med nästa
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Ta bort markerad order
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör markerad order non-stop
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Infoga ny order före markerad order, eller lägg till i slutet av listan
@@ -2542,10 +2568,10 @@ STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vikt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Effekt: {POWER}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Motorstopp
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/yr
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vikt: {LTBLUE}{WEIGHT_S}  {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Tophastighet: {LTBLUE}{VELOCITY}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra år: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan förra service: {LTBLUE}{COMMA}
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra året: {CURRENCY})
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Stoppat
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Kan inte tillåta tåg att passera signal under fara...
 STR_8863_CRASHED                                                :{RED}Kraschad!
@@ -2554,7 +2580,7 @@ STR_8865_NAME_TRAIN                                             :{WHITE}Byt namn
 STR_8866_CAN_T_NAME_TRAIN                                       :{WHITE}Kan inte byta namn på tåg...
 STR_8867_NAME_TRAIN                                             :{BLACK}Byt namn på tåg
 STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}Tågkrash!{}{COMMA} dog i eldklot efter kollision
-STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan inte kasta om tågets riktning...
+STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Kan inte byta tågets riktning...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Byt namn på tågets fordonstyp
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Kan inte byta namn på tågets fordonstyp...
 STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör så att den markerade ordern tvingar fordonet att lasta av
@@ -2575,10 +2601,10 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nytt Väg
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Bygg Fordon
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan inte bygga vägfordon...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/yr
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/år
 STR_900E_MAX_SPEED                                              :{BLACK}Tophastighet: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra år: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan förra service: {LTBLUE}{COMMA}
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra året: {CURRENCY})
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...måste stoppas inuti ett bussgarage
@@ -2596,7 +2622,7 @@ STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Bygg nyt
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nuvarande fordonsaktivitet - Klicka här till stoppa/starta fordon
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Visa fordonets order
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrera vyn ovanför fordonet
-STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Skicka fordon till depå
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Skicka fordon till depå. CTRL + klick servar endast
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Tvinga fordonet att vända om
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Visa vägfordonsdetaljer
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Fordon - klicka på fordon för information
@@ -2648,15 +2674,15 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan inte
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Skepp i vägen
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/yr
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/år
 STR_9813_MAX_SPEED                                              :{BLACK}Tophastighet: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra år: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan förra service: {LTBLUE}{COMMA}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan inte stoppa/starta skepp...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan inte skicka skepp till depå...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan inte finna lokal depå
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan inte finna en lokal depå
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}På väg mot {TOWN}s Skeppsdepå
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}På väg mot {TOWN}s Skeppsdepå, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Service vid {TOWN}s skeppsdepå
@@ -2675,7 +2701,7 @@ STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Bygg mar
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Nuvarande skeppsaktion - Klicka här till stoppa/starta skepp
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Visa skeppets order
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrera vyn ovanför skeppet
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Skicka skepp till depå
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Skicka skepp till depå. CTRL + klick servar endast
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Visa skeppdetaljer
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nytt skepp tillgängligt!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2692,12 +2718,12 @@ STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Byt namn
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Byt namn på skeppstyp
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Kan inte byta namn på skeppstyp...
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Anpassa godsskepp att frakta en annan godstyp
-STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
+STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Anpassa)
 STR_983C_REFIT_SHIP                                             :{BLACK}Anpassa skepp
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj typ av gods för skepp att frakta
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Anpassa skepp att frakta markerad godstyp
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Välj godstyp att frakta:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Kostnad av anpassning: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Anpassningens kostnad: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan inte anpassa skepp...
 STR_9842_REFITTABLE                                             :(anpassningsbart)
 STR_GO_TO_SHIP_DEPOT                                            :Åk till {TOWN}s båtdepå
@@ -2718,10 +2744,10 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Order)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/yr
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/år
 STR_A00E_MAX_SPEED                                              :{BLACK}Tophastighet: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra år: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan förra service: {LTBLUE}{COMMA}
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra året: {CURRENCY})
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan inte skicka flygplan till hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}På väg mot {STATION}s hangar
@@ -2749,7 +2775,7 @@ STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Bygg mar
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Nuvarande flygplansaktion - Klicka här till stoppa/starta flygplan
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Visa flygplanets order
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrera vyn ovanför flygplanet
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Skicka flygplan till hangar
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Skicka flygplan till hangar. CTRL + klick servar endast
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Visa flygplan detaljer
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nytt flygplan tillgängligt!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2767,7 +2793,7 @@ STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Byt namn
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Byt namn på flygplanstyp
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Kan inte byta namn på flygplanstyp...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta en annan godstyp
-STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Refit)
+STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Anpassa)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Anpassa flygplan
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj godstyp för flygplan att frakta
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Anpassa flygplan att frakta markerad godstyp
@@ -2880,8 +2906,13 @@ STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Ersätter
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTIELL FEATURE {}Välj mellan lok och vagn ersättnings-fönster.{}Vagns-ersättning kommer endast ske om den nya vagnen kan bli omrustad till att bära samma typ av last som den gamla. Detta kollas för varje vagn när den faktiska ersättningen sker
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Loket går inte att bygga
 
-STR_ENGINES                                                     :
+STR_ENGINES                                                     :Lok
 STR_WAGONS                                                      :Vagnar
+
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Klicka för att stoppa alla fordon i depån
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Klicka för att starta alla fordon i depån
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Klicka för att stanna alla flygplan i hangaren
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Klicka för att starta alla flygplan i hangaren
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
@@ -2925,6 +2956,7 @@ STR_TERRAIN_TYPE                                                :{BLACK}Typ av t
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Havsnivå
 STR_SMOOTHNESS                                                  :{BLACK}Mjukhet:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Snölinjens höjd:
+STR_DATE                                                        :{BLACK}Datum:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Antal städer:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Antal industrier:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
@@ -2943,17 +2975,23 @@ STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Avbryt g
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Vill du verkligen avbryta genereringen?
 STR_PROGRESS                                                    :{WHITE}{NUM}% färdigt
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Världsgenerering
 STR_TREE_GENERATION                                             :{BLACK}Träd generering
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Icke flyttbar generering
+STR_CLEARING_TILES                                              :{BLACK}Svår och stenig markgenerering
 STR_SETTINGUP_GAME                                              :{BLACK}Ställer in spel
 STR_PREPARING_TILELOOP                                          :{BLACK}Kör tile-loop
 STR_PREPARING_GAME                                              :{BLACK}Förbereder spel
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Denna åtgärd ändrade svårighetsgraden till egen-inställd
 STR_SE_FLAT_WORLD                                               :{WHITE}Plant land
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generera ett plant land
 STR_SE_RANDOM_LAND                                              :{WHITE}Slumpat land
 STR_SE_NEW_WORLD                                                :{BLACK}Skapa ett nytt scenario
 STR_SE_CAPTION                                                  :{WHITE}Scenarotyp
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flytta den platta landytan ner ett steg
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flytta den platta landytan upp ett steg
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ändra höjden på den platta landytan
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Den platta landytans höjd:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrera den lilla kartan på den nuvarande positionen

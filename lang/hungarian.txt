@@ -3016,6 +3016,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A mozdon
 STR_ENGINES                                                     :Mozdonyok
 STR_WAGONS                                                      :Vagonok
 
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Kattints a depóban lévõ összes jármû leállításához
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Kattints a depóban lévõ összes jármû elindításához
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Kattins a hangárban lévõ összes repülõ leállításához
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Kattins a hangárban lévõ összes repülõ elindításához
+
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
 

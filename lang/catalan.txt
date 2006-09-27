@@ -2914,6 +2914,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor
 STR_ENGINES                                                     :Motors
 STR_WAGONS                                                      :Vagons
 
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click per parar tots els vehicles de dintre del dipòsit
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click per engegar tots els vehicles de dintre del dipòsit
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Click per parar tots els avions de dintre de l'hangar
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Click per engegar tots els avions de dintre de l'hangar
+
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals
 

@@ -2915,6 +2915,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ce véhic
 STR_ENGINES                                                     :Locomotives
 STR_WAGONS                                                      :Wagons
 
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Cliquer pour arrêter tous les véhicules du dépot
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Cliquer pour démarrer tous les véhicules du dépot
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Cliquer pour arrêter tous les aéronefs du hangar
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Cliquer pour démarrer tous les aéronefs du hangar
+
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}
 
