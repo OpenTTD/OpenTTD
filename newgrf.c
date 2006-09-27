@@ -2955,7 +2955,7 @@ static void InitializeGRFSpecial(void)
 	                   |                                        (1 << 0x0D)  // onewayroads
 	                   |   ((_patches.nonuniform_stations ? 1 : 0) << 0x0E)  // irregularstations
 	                   |                                        (1 << 0x0F)  // statistics
-	                   |                                        (0 << 0x10)  // newsounds
+	                   |                                        (1 << 0x10)  // newsounds
 	                   |                                        (1 << 0x11)  // autoreplace
 	                   |                                        (1 << 0x12)  // autoslope
 	                   |                                        (0 << 0x13)  // followvehicle
