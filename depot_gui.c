@@ -185,7 +185,8 @@ static void DrawDepotWindow(Window *w)
 
 	/* setup disabled buttons */
 	w->disabled_state =
-		IsTileOwner(tile, _local_player) ? 0 : ((1 << DEPOT_WIDGET_SELL) | (1 << DEPOT_WIDGET_SELL_ALL) | (1 << DEPOT_WIDGET_BUILD) | (1 << DEPOT_WIDGET_CLONE));
+		IsTileOwner(tile, _local_player) ? 0 : ( (1 << DEPOT_WIDGET_STOP_ALL) | (1 << DEPOT_WIDGET_START_ALL) |
+		(1 << DEPOT_WIDGET_SELL) | (1 << DEPOT_WIDGET_SELL_ALL) | (1 << DEPOT_WIDGET_BUILD) | (1 << DEPOT_WIDGET_CLONE));
 
 	/* determine amount of items for scroller */
 	if (WP(w, depot_d).type == VEH_Train) {
