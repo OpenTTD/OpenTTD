@@ -3,6 +3,8 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
+#include "train.h"
+#include "roadveh.h"
 #include "ship.h"
 #include "aircraft.h"
 #include "table/strings.h"
@@ -16,7 +18,6 @@
 #include "vehicle_gui.h"
 #include "station_map.h"
 #include "newgrf_engine.h"
-#include "train.h"
 
 enum {
 	WIDGET_DEPOT_MOVE_NONE   = 0 << 0,
