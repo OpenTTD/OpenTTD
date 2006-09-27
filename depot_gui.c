@@ -82,7 +82,10 @@ static const byte widget_moves[] = {
  * Keep the widget numbers in sync with the enum or really bad stuff will happen!!! */
 
 /* When adding widgets, place them as you would place them for the ship depot and define how you want it to move in widget_moves[]
- * If you want a widget for one window only, set it to be hidden in ShowDepotWindow() for the windows where you don't want it */
+ * If you want a widget for one window only, set it to be hidden in ShowDepotWindow() for the windows where you don't want it
+ * NOTE: the train only widgets are moved/resized in ShowDepotWindow() so they follow certain other widgets if they are moved to ensure that they stick together.
+ *    Changing the size of those here will not have an effect at all. It should be done in ShowDepotWindow()
+ */
 static const Widget _depot_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},            // DEPOT_WIDGET_CLOSEBOX
 	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, 0x0,                 STR_018C_WINDOW_TITLE_DRAG_THIS},  // DEPOT_WIDGET_CAPTION
@@ -759,7 +762,6 @@ void ShowDepotWindow(TileIndex tile, byte type)
 				w->hscroll.cap = 10 * 29;
 				w->resize.step_width = 1;
 				w->resize.step_height = 14;
-				w->widget[DEPOT_WIDGET_MATRIX].bottom -= 12; // Make room for the horizontal scrollbar
 				break;
 
 			case VEH_Road:
@@ -811,6 +813,22 @@ void ShowDepotWindow(TileIndex tile, byte type)
 				if (widget_moves[i] & WIDGET_DEPOT_MOVE_TOP)    w->widget[i].top    += vertical;
 				if (widget_moves[i] & WIDGET_DEPOT_MOVE_BOTTOM) w->widget[i].bottom += vertical;
 			}
+		}
+
+		if (type == VEH_Train) {
+			/* Now we move the train only widgets so they are placed correctly
+			 * Doing it here will ensure that they move if the widget they are placed on top of/aligned to are moved */
+
+			/* DEPOT_WIDGET_H_SCROLL is placed in the lowest part of DEPOT_WIDGET_MATRIX */
+			w->widget[DEPOT_WIDGET_H_SCROLL].left = w->widget[DEPOT_WIDGET_MATRIX].left;
+			w->widget[DEPOT_WIDGET_H_SCROLL].right = w->widget[DEPOT_WIDGET_MATRIX].right;
+			w->widget[DEPOT_WIDGET_H_SCROLL].bottom = w->widget[DEPOT_WIDGET_MATRIX].bottom;
+			w->widget[DEPOT_WIDGET_H_SCROLL].top = w->widget[DEPOT_WIDGET_MATRIX].bottom - 11;
+			w->widget[DEPOT_WIDGET_MATRIX].bottom -= 12;
+
+			/* DEPOT_WIDGET_SELL_ALL is under DEPOT_WIDGET_SELL. They got the same left and right and height is controlled in ResizeDepotButtons() */
+			w->widget[DEPOT_WIDGET_SELL_ALL].left = w->widget[DEPOT_WIDGET_SELL].left;
+			w->widget[DEPOT_WIDGET_SELL_ALL].right = w->widget[DEPOT_WIDGET_SELL].right;
 		}
 		ResizeDepotButtons(w);
 	}
