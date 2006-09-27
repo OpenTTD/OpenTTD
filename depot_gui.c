@@ -740,7 +740,7 @@ void ShowDepotWindow(TileIndex tile, byte type)
 	Window *w;
 
 	/* First we ensure that the widget counts are equal in all 3 lists to prevent bad stuff from happening */
-	assert(lengthof(widget_moves) == lengthof(_depot_widgets));
+	assert(lengthof(widget_moves) == lengthof(_depot_widgets) - 1); // we should not count WIDGETS_END
 	assert(lengthof(widget_moves) == DEPOT_WIDGET_LAST);
 
 	switch (type) {
