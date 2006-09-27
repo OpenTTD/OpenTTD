@@ -56,6 +56,7 @@ typedef enum DepotWindowWidgets {
 	DEPOT_WIDGET_CLONE,
 	DEPOT_WIDGET_LOCATION,
 	DEPOT_WIDGET_RESIZE,
+	DEPOT_WIDGET_LAST, // used to assert if DepotWindowWidgets and widget_moves got different lengths. Due to this usage, it needs to be last
 } DepotWindowWidget;
 
 /* Define how to move each widget. The order is important */
@@ -737,6 +738,10 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 void ShowDepotWindow(TileIndex tile, byte type)
 {
 	Window *w;
+
+	/* First we ensure that the widget counts are equal in all 3 lists to prevent bad stuff from happening */
+	assert(lengthof(widget_moves) == lengthof(_depot_widgets));
+	assert(lengthof(widget_moves) == DEPOT_WIDGET_LAST);
 
 	switch (type) {
 		case VEH_Train:    w = AllocateWindowDescFront(&_train_depot_desc, tile);    break;
