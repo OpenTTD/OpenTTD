@@ -2161,6 +2161,21 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} võeti üle ettevõtte {COMPANY} poolt!
 STR_7080_PROTECTED                                              :{WHITE}See kompanii pole veel piisavalt vana, et aktsiaid vahetada...
 
+STR_LIVERY_STEAM                                                :Aurumootor
+STR_LIVERY_DIESEL                                               :Diiselmootor
+STR_LIVERY_ELECTRIC                                             :Elektrimootor
+STR_LIVERY_MONORAIL                                             :Monorelsi Mootor
+STR_LIVERY_MAGLEV                                               :Maglev'i Mootor
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Reisijate Vagun (Aur)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Reisijate Vagun (Diisel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Reisijate Vagun(Elektriline)
+STR_LIVERY_BUS                                                  :Buss
+STR_LIVERY_TRUCK                                                :Veoauto
+STR_LIVERY_PASSENGER_SHIP                                       :Reisijate Praam
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Väike Lennuk
+STR_LIVERY_LARGE_PLANE                                          :Suur Lennuk
+
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Auruvedur)
@@ -2454,6 +2469,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Hooldus Läbisõi
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Suundub {TOWN} Rongidepoosse
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Suundub {TOWN} Rongidepoosse, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Parandus{TOWN} Rongijaamas
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Parandus {TOWN} Rongijaamas, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ebasobiv järjekord)
 
@@ -2586,6 +2603,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ei saa p
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Maanteeveoauto {COMMA} ootab garaaþi
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Suundub {TOWN} garaaþi
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Suundub {TOWN} garaaþi, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Parandus{TOWN} Depoos
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Parandus{TOWN} Depoos, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ei saa saata maanteeveoautot garaaþi
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohalikku garaaþi
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Maanteeveoautod - vajuta veokile info jaoks
@@ -2656,6 +2675,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Ei saa s
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Ei leia kohaliku paadikuuri
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Suundub {TOWN}a paadikuuri
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Suundub {TOWN}a paadikuuri, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Parandus{TOWN} Sadamas
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Parandus{TOWN} Sadamas, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laev {COMMA} ootab paadikuuris
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Ehita laevakuur
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Ehita laevakuur (et ehitada ja hooldada laevu)
@@ -2721,6 +2742,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Ei saa saata lennukit angaari...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suundub {STATION} Angaari
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suundub {STATION} angaari, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE} Parandus{STATION} Angaaris
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Parandus{STATION} Angaaris, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lennuk {COMMA} ootab angaaris
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lennuk on teel
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ei saa peatada/startida lennukit...
@@ -2870,6 +2893,7 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Mootorit
 STR_ENGINES                                                     :Mootorid
 STR_WAGONS                                                      :Vaguneid
 
+
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
 
@@ -2900,14 +2924,23 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirenda
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Genereeri
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Maailma genereerimine
 STR_DATE                                                        :{BLACK}Kuupäev:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Muuda algusaastat
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Maailma genereerimine...
 STR_GENERATION_ABORT                                            :{BLACK}Loobu
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Loobu Maailma Genereerimisest
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Kas sa tõesti tahad loobuda genereerimisest?
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Maailma genereerimine
+STR_TREE_GENERATION                                             :{BLACK}Puude genereerimine
 STR_CLEARING_TILES                                              :{BLACK}Mägise ja kivise maaala tegemine
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}See tegevus muutis raskusastme erilise peale
+STR_SE_FLAT_WORLD                                               :{WHITE}Tasane maa
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereeri tasast maad
+STR_SE_RANDOM_LAND                                              :{WHITE}Suvaline maa
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Liiguta lameda maa kõrgus ühe võrra alla
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Liiguta lameda maa kõrgus ühe võrra üles
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Muuda maa kõrgust lamedal maal

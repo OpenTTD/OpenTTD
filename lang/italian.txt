@@ -2190,6 +2190,15 @@ STR_LIVERY_HELICOPTER                                           :Elicottero
 STR_LIVERY_SMALL_PLANE                                          :Aeroplano (S)
 STR_LIVERY_LARGE_PLANE                                          :Aeroplano (L)
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Mostra schemi colore generale
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Mostra schemi colore treni
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mostra schemi colore veicoli
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Mostra schemi colore navi
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostra schemi colore aerei
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Scegli il colore primario per lo schema selezionato
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Scegli il colore secondario per lo schema selezionato
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Scegli uno schema colori per cambiare, o schemi multipli con CTRL + click. Clicca sul box per attivare/disattivare lo schema
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapore)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)

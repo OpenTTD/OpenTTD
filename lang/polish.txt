@@ -2313,6 +2313,15 @@ STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Maly samolot
 STR_LIVERY_LARGE_PLANE                                          :Duzy samolot
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Pokaz ogolne schematy koloru
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Pokaz schematy koloru pociagow
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Pokaz schematy koloru samochodow
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Pokaz schematy koloru statkow
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Pokaz schematy koloru samolotow
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Wybierz pierwszy kolor dla wybranego schematu
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Wybierz drugi kolor dla wybranego schematu
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Wybierz schemat kolorow do zmiany, albo wiele schematow z CTRL+klik. Kliknij na okienku aby wl./wyl. uzywanie schematu.
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Parowoz)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -3042,6 +3051,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoty
 
 STR_ENGINES                                                     :Lokomotywy
 STR_WAGONS                                                      :Wagonow
+
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Kliknij aby zatrzymac wszystkie pojazdy w zajezdniach
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Kliknij aby wystartowac wszystkie pojazdy z zajezdni
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Kliknij aby zatrzymac wszystkie samoloty w hangarach
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Kliknij aby wystartowac wszystkie samoloty z hangarow
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice

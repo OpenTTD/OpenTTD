@@ -2190,6 +2190,15 @@ STR_LIVERY_HELICOPTER                                           :Helicopter
 STR_LIVERY_SMALL_PLANE                                          :Small Airplane
 STR_LIVERY_LARGE_PLANE                                          :Large Airplane
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Show general color schemes
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Show train color schemes
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Show road vehicle color schemes
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Show ship color schemes
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Show aircraft color schemes
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Choose the primary color for the selected scheme
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Choose the secondary color for the selected scheme
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Select a color scheme to change, or multiple schemes with CTRL+click. Click on the box to toggle use of the scheme
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Steam)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2913,6 +2922,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine i
 
 STR_ENGINES                                                     :Engines
 STR_WAGONS                                                      :Cars
+
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click to stop all the vehicles inside the depot
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click to start all the vehicles inside the depot
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Click to stop all the aircraft inside the hangar
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Click to start all the aircraft inside the hangar
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}

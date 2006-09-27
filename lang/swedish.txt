@@ -1070,6 +1070,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximal
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Serva helikoptrar vid landningplattor automatiskt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koppla landskapsverktygsfältet till järnväg/väg/vatten/flygplats-verktygsfältet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Omvänd scrollriktning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Visa färgschema för företag: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Inga
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Egna företaget
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alla företag
@@ -2174,6 +2175,8 @@ STR_LIVERY_DIESEL                                               :Disellok
 STR_LIVERY_ELECTRIC                                             :Elektriskt lok
 STR_LIVERY_MONORAIL                                             :Monoraillok
 STR_LIVERY_MAGLEV                                               :Maglevlok
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passenger Coach (Ånglok)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagerarvagn (Disel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagerarvagn (Elektrisk)
@@ -2185,6 +2188,15 @@ STR_LIVERY_FREIGHT_SHIP                                         :Fraktskepp
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Litet flygplan
 STR_LIVERY_LARGE_PLANE                                          :Stort flygplan
+
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Visa generellt färgschema
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Visa färgscheman för tåg
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Visa färgscheman för vägfordon
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Visa färgscheman för skepp
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Visa färgschema för flygplan
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Välj huvudfärg för det aktuella schemat
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Välj andravalsfärgen för det aktuella schemat
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Välj en färg att ändra eller välj flera genom CTRL+klick. Bocka för rutan för att använda scheman
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Ånga)

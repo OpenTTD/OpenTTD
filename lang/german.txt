@@ -2198,7 +2198,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Schiffsf
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Flugzeugfarbschema anzeigen
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Wähle die Hauptfarbe für das gewählte Schema aus.
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Wähle die Nebenfarbe für das ausgewählte Schema.
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemen(mit STRG+Klick) aus, um diese zu ändern. Klicke in das Kästchen um ein Schema auszuwählen.
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Wähle ein Farbschema oder mehrere Farbschemen(mit STRG+Klick) aus, um diese zu ändern. Klicke in das Kästchen um ein Schema zu aktivieren.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Dampf)

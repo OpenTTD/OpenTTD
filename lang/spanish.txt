@@ -2191,6 +2191,15 @@ STR_LIVERY_HELICOPTER                                           :Helicoptero
 STR_LIVERY_SMALL_PLANE                                          :Aeroplano Pequeño
 STR_LIVERY_LARGE_PLANE                                          :Aeroplano Grande
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Mostrar esquema de colores general
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Ver esquema de color de los trenes
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Ver esquema de color de los vehículos de carretera
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Ver esquema de color de los barcos
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostrar esquema de color de aeronaves
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Selecciona el color primario para el esquema seleccionado
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Selecciona el color secundario para el esquema seleccionado
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecciona un esquema de color para cambiarlo, o selecciona varios pulsandoh CTRL+click. Pulsa en la caja para cambiar el uso del esquema
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)

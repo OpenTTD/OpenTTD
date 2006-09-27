@@ -5,30 +5,31 @@
 ##gender m f n
 
 ##id 0x0000
-STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Από την άκρη του χάρτη
-STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολύ κοντά στην άκρη του χάρτη
-STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτούνται {CURRENCY}
-STR_0004                                                        :{WHITE}{CURRENCY64}
-STR_0005                                                        :{RED}{CURRENCY64}
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο έδαφος
-STR_0008_WAITING                                                :{BLACK}Αναμονή: {WHITE}{STRING}
+STR_0001_OFF_EDGE_OF_MAP                                        :{WHITE}Απο την άκρη του χάρτη
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Πολυ κοντά στην άκρη του χάρτη
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Δεν υπάρχουν αρκετά χρήματα - απαιτεί {CURRENCY}
+STR_0004                                                        :{WHITE}{CURRENCY64}.
+STR_0005                                                        :{RED}{CURRENCY64}.
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο εδαφος
+STR_0008_WAITING                                                :{BLACK}Αναμονη: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (καθ'οδόν από
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Δέχεται: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Δέχεται: {GOLD}
+STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Επιβάτες
-STR_0010_COAL                                                   :Κάρβουνο
+STR_0010_COAL                                                   :Άνθρακας
 STR_0011_MAIL                                                   :Αλληλογραφία
 STR_0012_OIL                                                    :Πετρέλαιο
 STR_0013_LIVESTOCK                                              :Ζώα
 STR_0014_GOODS                                                  :Αγαθά
 STR_0015_GRAIN                                                  :Σιτάρι
 STR_0016_WOOD                                                   :Ξύλα
-STR_0017_IRON_ORE                                               :Μετάλλευματα Σιδήρου
-STR_0018_STEEL                                                  :Ατσάλι
+STR_0017_IRON_ORE                                               :Μεταλλεύματα Σιδήρου
+STR_0018_STEEL                                                  :Χάλυβας
 STR_0019_VALUABLES                                              :Τιμαλφή
-STR_001A_COPPER_ORE                                             :Μετάλλευματα Χαλκού
+STR_001A_COPPER_ORE                                             :Μεταλλεύματα Χαλκού
 STR_001B_MAIZE                                                  :Αραβόσιτος
 STR_001C_FRUIT                                                  :Φρούτα
 STR_001D_DIAMONDS                                               :Διαμάντια
@@ -49,7 +50,7 @@ STR_002B_BATTERIES                                              :Μπαταρί�
 STR_002C_PLASTIC                                                :Πλαστικά
 STR_002D_FIZZY_DRINKS                                           :Αναψυκτικά
 STR_002F_PASSENGER                                              :Επιβάτης
-STR_0030_COAL                                                   :Κάρβουνο
+STR_0030_COAL                                                   :Άνθρακας
 STR_0031_MAIL                                                   :Αλληλογραφία
 STR_0032_OIL                                                    :Πετρέλαιο
 STR_0033_LIVESTOCK                                              :Ζώο
@@ -57,7 +58,7 @@ STR_0034_GOODS                                                  :Αγαθό
 STR_0035_GRAIN                                                  :Σιτάρι
 STR_0036_WOOD                                                   :Ξύλο
 STR_0037_IRON_ORE                                               :Μετάλλευμα Σιδήρου
-STR_0038_STEEL                                                  :Ατσάλι
+STR_0038_STEEL                                                  :Χάλυβας
 STR_0039_VALUABLES                                              :Τιμαλφή
 STR_003A_COPPER_ORE                                             :Μετάλλευμα Χαλκού
 STR_003B_MAIZE                                                  :Αραβόσιτος
@@ -82,7 +83,7 @@ STR_004D_FIZZY_DRINK                                            :Αναψυκτ�
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Χάρτης - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Επιλογές του Παιχνιδιού
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Επιλογές Παιχνιδιού
 STR_00B2_MESSAGE                                                :{YELLOW}Μήνυμα
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Μήνυμα από {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Δεν μπορεί να γίνει αυτό....
@@ -142,13 +143,13 @@ STR_00F4_500M                                                   :{BLACK}{TINYFON
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Τραίνα
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Οδικά Οχήματα
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Πλοία
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Αεροσκάφη
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Αεροσκάφος
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Διαδρομές Μεταφορών
-STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Ορυχείο Χαλκού
+STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Ορυχείο Άνθρακα
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Σταθμός Παραγωγής Ηλεκτρικού Ρεύματος
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Δάσος
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Πριονιστήριο
-STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Εγκαταστάσεις Καθαρισμού Πετρελαίου
+STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Διυλιστήριο
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Φάρμα
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Εργοστάσιο
 STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Εργασίες Εκτύπωσης
@@ -156,9 +157,9 @@ STR_0102_OIL_WELLS                                              :{BLACK}{TINYFON
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Ορυχείο Μεταλλεύματος Σιδήρου
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Μύλος Χάλυβα
 STR_0105_BANK                                                   :{BLACK}{TINYFONT}Τράπεζα
-STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Μύλος Χαλκού
+STR_0106_PAPER_MILL                                             :{BLACK}{TINYFONT}Μύλος Χαρτιού
 STR_0107_GOLD_MINE                                              :{BLACK}{TINYFONT}Ορυχείο Χρυσού
-STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Εγκαταστάσεις Επεξεργασίας Τροφίμων
+STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Εργοστάσιο Επεξεργασίας Τροφίμων
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Ορυχείο Διαμαντιών
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Ορυχείο Μεταλλεύματος Χαλκού
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Φυτεία Φρούτων
@@ -169,7 +170,7 @@ STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFON
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Δάσος του Μαλιού της Γριάς
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Εργοστάσιο Γλυκών
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Φάρμα Μπαταριών
-STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Φρεάτια Κόλας
+STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Πηγάδια Κόλας
 STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Κατάστημα Παιχνιδιών
 STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Εργοστάσιο Παιχνιδιών
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Πλαστικές Πηγές
@@ -180,7 +181,7 @@ STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFON
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Σιδηροδρομικός Σταθμός
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Περιοχή Φόρτωσης Φορτηγών
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Στάση Λεωφορείου
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Αερολιμένας/ελικοδρόμιο
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Αεροδρόμιο/Ελικοδρόμιο
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Λιμάνι
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Τραχύ Έδαφος
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Γρασίδι
@@ -209,16 +210,17 @@ STR_0135_OSX                                                    :OS X
 STR_013B_OWNED_BY                                               :{WHITE}...ιδιοκτησία του {STRING}
 STR_013C_CARGO                                                  :{BLACK}Φορτίο
 STR_013D_INFORMATION                                            :{BLACK}Πληροφορίες
-STR_013E_CAPACITIES                                             :{BLACK}Χωρητικότητα
+STR_013E_CAPACITIES                                             :{BLACK}Χωρητικότητες
 STR_013E_TOTAL_CARGO                                            :{BLACK}Συνολικό Φορτίο
 STR_013F_CAPACITY                                               :{BLACK}Χωρητικότητα: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Συνολική χωρητικότητα φορτίου του τραίνου:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Νέο Παιχνίδι
-STR_0141_LOAD_GAME                                              :{BLACK}Φώρτωση Παιχνιδιού
+STR_0141_LOAD_GAME                                              :{BLACK}Φόρτωση Παιχνιδιού
 
 STR_128                                                         :128
 STR_1024                                                        :1024
+STR_2048                                                        :2048
 STR_0148_GAME_OPTIONS                                           :{BLACK}Επιλογές Παιχνιδιού
 
 STR_0150_SOMEONE                                                :κάποιος{SKIP}{SKIP}
@@ -235,22 +237,22 @@ STR_0153_SUBSIDIES                                              :Επιχορη�
 
 
 ############ range for menu	starts
-STR_0154_OPERATING_PROFIT_GRAPH                                 :Γραφική παράσταση ειτουργούντος κέρδους
-STR_0155_INCOME_GRAPH                                           :Εισοδηματική γραφική παράσταση
-STR_0156_DELIVERED_CARGO_GRAPH                                  :Παραδοθείσα γραφική παράσταση φορτίου
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Γραφική παράσταση ιστορικού απόδοσης
-STR_0158_COMPANY_VALUE_GRAPH                                    :Γραφική παράσταση αξίας επιχείρησης
+STR_0154_OPERATING_PROFIT_GRAPH                                 :Γράφημα λειτουργικού κέρδους
+STR_0155_INCOME_GRAPH                                           :Γράφημα εισοδήματος
+STR_0156_DELIVERED_CARGO_GRAPH                                  :Γράφημα παραδοθέντος φορτίου
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Γράφημα ιστορικού απόδοσης
+STR_0158_COMPANY_VALUE_GRAPH                                    :Γράφημα εταιρικής αξίας
 STR_0159_CARGO_PAYMENT_RATES                                    :Ποσοστά πληρωμής φορτίου
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Πίνακας κατάταξης επιχείρησης
 ############ range for menu	ends
 
-STR_015B_OPENTTD                                                :{WHITE}Πληροφορίες για το OpenTTD
+STR_015B_OPENTTD                                                :{WHITE}Σχετικά με το OpenTTD
 STR_015C_SAVE_GAME                                              :Αποθήκευση παιχνιδιού
 STR_015D_LOAD_GAME                                              :Φόρτωση παιχνιδιού
-STR_015E_QUIT_GAME                                              :Παρατήστε το παιχνίδι
+STR_015E_QUIT_GAME                                              :Παραίτηση από το παιχνίδι
 STR_015F_QUIT                                                   :Έξοδος
-STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Είστε βέβαιοι εσείς θέλετε να παρατήσετε αυτό το παιχνίδι;
-STR_0161_QUIT_GAME                                              :{WHITE}Παρατήστε το Παιχνίδι
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Είστε βέβαιοι ότι θέλετε να παραιτηθείτε από το παιχνίδι;
+STR_0161_QUIT_GAME                                              :{WHITE}Παραίτηση από το Παιχνίδι
 
 
 ############ range for months starts
@@ -258,7 +260,7 @@ STR_0162_JAN                                                    :Ιαν
 STR_0163_FEB                                                    :Φεβ
 STR_0164_MAR                                                    :Μαρ
 STR_0165_APR                                                    :Απρ
-STR_0166_MAY                                                    :Μαη
+STR_0166_MAY                                                    :Μαι
 STR_0167_JUN                                                    :Ιουν
 STR_0168_JUL                                                    :Ιουλ
 STR_0169_AUG                                                    :Αυγ
@@ -272,25 +274,25 @@ STR_016E                                                        :{TINYFONT}{STRI
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
 STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Παύση του παιχνιδιού
-STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Αποθήκευση του παιχνιδιού, Παρατήστε το παιχνίδι. Έξοδος
-STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση του καταλόγου σταθμών της επιχείρησης
-STR_0174_DISPLAY_MAP                                            :{BLACK}Εμφάνιση του χάρτη
-STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Εμφάνιση του χάρτη, καταλόγου των πόλεων
+STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Αποθήκευση, παραίτηση, έξοδος
+STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση λίστας σταθμών της εταιρείας
+STR_0174_DISPLAY_MAP                                            :{BLACK}Εμφάνιση χάρτη
+STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Εμφάνιση χάρτη, καταλόγου πόλεων
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Εμφάνιση του καταλόγου των πόλεων
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Εμφάνιση πληροφοριών των πόρων χρηματοδότησης της επιχείρησης
-STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Εμφάνιση γενικών πληροφοριών της επιχείρησης
-STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Εμφάνιση γραφικών παραστάσεων
-STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Εμφάνιση του πίκανα κατάταξης των επιχειρήσεων
-STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση της λίστας με τα τραίνα της επιχείρησης
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση της λίστας με τα οδικά οχήματα της επιχείρησης
-STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση της λίστας με τα πλοία της επιχείρησης
-STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση της λίστας με τα αεροσκάφη της επιχείρησης
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Εμφάνιση οικονομικών πληροφοριών της εταιρείας
+STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Εμφάνιση γενικών πληροφοριών της εταιρείας
+STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Εμφάνιση γραφημάτων
+STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Εμφάνιση του πίνακα κατάταξης των εταιρειών
+STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση λίστας τραίνων της εταιρείας
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση λίστας με τα οδικά οχήματα της εταιρείας
+STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση λίστας με τα πλοία της εταιρείας
+STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Εμφάνιση λίστας με τα αεροσκάφη της εταιρείας
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Μεγέθυνση της εικόνας
 STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Σμίκρυνση της εικόνας
-STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Κατασκευή σιδηροδρομικής διαδρομής
+STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Κατασκευή σιδηρόδρομου
 STR_0182_BUILD_ROADS                                            :{BLACK}Κατασκευή δρόμων
-STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Κατασκευή αποβάθρας λιμανιού
-STR_0184_BUILD_AIRPORTS                                         :{BLACK}Κατασκευή αεροδρομίου
+STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Κατασκευή αποβάθρας
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Κατασκευή αεροδρομίων
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Τοποθέτηση δεντρων, πινακίδων κλπ
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Πληροφορίες εδάφους
 STR_0187_OPTIONS                                                :{BLACK}Επιλογές
@@ -298,11 +300,11 @@ STR_0188                                                        :{BLACK}{SMALLUP
 STR_0189                                                        :{BLACK}{SMALLDOWNARROW}
 STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Δεν μπορεί να αλλάξει το διάστημα της συντήρησης...
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Κλείσιμο παραθύρου
-STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Τίτλος παραθύρου - κάντε drag για να το μετακινήσετε
+STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Τίτλος παραθύρου - σύρετε για να το μετακινήσετε
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Κατεδάφιση των κτηρίων κ.λπ. σε ένα τετράγωνο εδάφους
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Χαμηλώστε μια γωνία του εδάφους
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Ανυψώστε μια γωνία του εδάφους
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Μπάρα Κύλισης - κάνει scroll την λίστα πάνω/κάτω
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Μπάρα Κύλισης - μετακινεί την λίστα πάνω/κάτω
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Εμφάνιση περιγραμμάτων εδάφους στο χάρτη
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Εμφάνιση οχημάτων στο χάρτη
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Εμφάνιση βιομηχανιών στο χάρτη
@@ -882,6 +884,74 @@ STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Αδύν
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} οι τοπικές αρχές δεν το επιτρέπουν
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Ονόματα πόλεων - πατήστε στο όνομα για να κεντράρετε την εικόνα στην πόλη
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Κεντράρισμα της εικόνας στην τοποθεσία της πόλης
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Αλλαγή ονόματος πόλεως
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Επιβάτες τον προηγούμενο μήνα: {ORANGE}{COMMA}{BLACK}  μεγ: {ORANGE}{COMMA}
+STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Αλληλογραφία τον προηγούμενο μήνα: {ORANGE}{COMMA}{BLACK}  μεγ: {ORANGE}{COMMA}
+STR_200F_TALL_OFFICE_BLOCK                                      :Ψηλό συγκρότημα γραφείων
+STR_2010_OFFICE_BLOCK                                           :Συγκρότημα γραφείων
+STR_2011_SMALL_BLOCK_OF_FLATS                                   :Μικρό συγκρότημα διαμερισμάτων
+STR_2012_CHURCH                                                 :Εκκλησία
+STR_2013_LARGE_OFFICE_BLOCK                                     :Μεγάλο συγκρότημα γραφείων
+STR_2014_TOWN_HOUSES                                            :Σπίτια πόλης
+STR_2015_HOTEL                                                  :Ξενοδοχείο
+STR_2016_STATUE                                                 :Άγαλμα
+STR_2017_FOUNTAIN                                               :Συντριβάνι
+STR_2018_PARK                                                   :Πάρκο
+STR_2019_OFFICE_BLOCK                                           :Συγκρότημα Γραφείων
+STR_201A_SHOPS_AND_OFFICES                                      :Καταστήματα και γραφεία
+STR_201B_MODERN_OFFICE_BUILDING                                 :Μοντέρνο κτίριο γραφείων
+STR_201C_WAREHOUSE                                              :Αποθήκη
+STR_201D_OFFICE_BLOCK                                           :Τετράγωνο γραφείων
+STR_201E_STADIUM                                                :Γήπεδο
+STR_201F_OLD_HOUSES                                             :Παλιά σπίτια
+STR_2020_LOCAL_AUTHORITY                                        :{BLACK}Τοπική αρχή
+STR_2021_SHOW_INFORMATION_ON_LOCAL                              :{BLACK}Εμφάνιση πληροφοριών για την τοπική αρχή
+STR_2022_LOCAL_AUTHORITY                                        :{WHITE}Τοπική αρχή της πόλης {TOWN}
+STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ποσοστά εταιρείας μεταφορών:
+STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
+STR_2025_SUBSIDIES                                              :{WHITE}Χρηματοδοτήσεις
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Τρέχουσες χρηματοδοτήσεις για υπηρεσίες παίρνοντας:
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} από {STRING} πρός {STRING}
+STR_2028_BY                                                     :{YELLOW} (έως {DATE_SHORT})
+STR_202A_NONE                                                   :{ORANGE}Κανένα
+STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Υπηρεσίες που έχουν χρηματοδοτηθεί:
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} από το σταθμό {STATION} προς το σταθμό {STATION}{YELLOW} ({COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW}, έως {DATE_SHORT})
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Έληξε προσφορά χρηματοδότησης:{}{}{STRING} από {STRING} πρός {STRING} δεν θα προσελκύουν χρηματοδότηση πια.
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Η χρηματοδότηση αποσύρθηκε:{}{}{STRING} υπηρεσία {STATION} προς {STATION} δεν χρηματοδοτείται πια.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Προσφορά χρηματοδότησης υπηρεσίας:{}{}Η πρώτη υπηρεσία για {STRING} από {STRING} προς {STRING} επιχορηγείται για ένα έτος από την τοπική αρχή!
+STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {COMPANY}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται 50% παραπάνω για ένα έτος!
+STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {COMPANY}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται διπλά για το επόμενο έτος!
+STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {COMPANY}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τριπλά για το επόμενο έτος!
+STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {COMPANY}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τετραπλά για το επόμενο έτος!
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Η τοπική αρχή της πόλης {TOWN} αρνείται να επιτρέψει τη δημιουργία νέου αεροδρομίου
+STR_2037_HOUSES                                                 :Σπίτια
+STR_2038_FLATS                                                  :Διαμερίσματα
+STR_2039_TALL_OFFICE_BLOCK                                      :Ψηλό συγκρότημα γραφείων
+STR_203A_SHOPS_AND_OFFICES                                      :Καταστήματα και γραφεία
+STR_203B_SHOPS_AND_OFFICES                                      :Καταστήματα και γραφεία
+STR_203C_THEATER                                                :Θέατρο
+STR_203D_STADIUM                                                :Στάδιο
+STR_203E_OFFICES                                                :Γραφεία
+STR_203F_HOUSES                                                 :Σπίτια
+STR_2040_CINEMA                                                 :Κινηματογράφος
+STR_2041_SHOPPING_MALL                                          :Εμπορικό κέντρο
+STR_2042_DO_IT                                                  :{BLACK}Κάνε το
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Λίστα πραγμάτων που πρέπει να γίνουν σε αυτή την πόλη - κάντε κλικ στο αντικείμενο για πληροφορίες
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Διενέργεια της επιλεγμένης πράξης στην παραπάνω λίστα
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Διαθέσιμες πράξεις:
+STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Μικρή διαφημιστική καμπάνια
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Μεσαία διαφημιστική καμπάνια
+STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Μεγάλη διαφημιστική καμπάνια
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Επιχορήγηση ανακατασκευής τοπικού οδικού δικτύου
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Χτίσιμο αγάλματος ιδιοκτήτη εταιρείας
+STR_204B_FUND_NEW_BUILDINGS                                     :Επιχορήγηση νέων κτιρίων
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Αγορά αποκλειστικών δικαιωμάτων μεταφοράς
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Έναρξη μικρής τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{}  Κόστος: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Έναρξη μεσαίας τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{}  Κόστος: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{}  Κόστος: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Επιχορηγήστε την ανακατασκευή του τοπικού οδικού δικτύου. Προκαλεί σοβαρή ενόχληση στην τοπικό οδικό δίκτυο για έως 6 μήνες.{}  Κόστος: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Χτίστε ένα άγαλμα προς τιμήν της εταιρείας σας.{} Κόστος: {CURRENCY}
 
 
 ##id 0x2800
@@ -945,16 +1015,16 @@ STR_16816_CITY_APPROVAL                                         :{LTBLUE}Θέσ�
 
 ##id 0x9800
 
-SERVICE_AT_SHIP_DEPOT                                           :Επισκευή στη Λιμεναποθήκη στη(ν) {TOWN}
+SERVICE_AT_SHIP_DEPOT                                           :Επισκευή στη Λιμεναποθήκη της πόλης {TOWN}
 
 ##id 0xA000
 
-SERVICE_AT_AIRPORT_HANGAR                                       :Επισκευή στο Υπόστεγο {STATION}
+SERVICE_AT_AIRPORT_HANGAR                                       :Επισκευή στο υπόστεγο {STATION}
 
 ##id 0xB000
 
 
-SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
+SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
 ############ End of order list
 

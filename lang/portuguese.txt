@@ -2190,6 +2190,7 @@ STR_LIVERY_HELICOPTER                                           :Helicóptero
 STR_LIVERY_SMALL_PLANE                                          :Aeronave de Pequenas Dimensões
 STR_LIVERY_LARGE_PLANE                                          :Aeronave de Grandes Dimensões
 
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2913,6 +2914,9 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomoti
 
 STR_ENGINES                                                     :Locomotivas
 STR_WAGONS                                                      :Vagões
+
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Clique para parar todos os veículos dentro do depósito
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Clique para parar todos os aviões dentro do hangar
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
