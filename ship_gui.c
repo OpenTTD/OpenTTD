@@ -78,84 +78,6 @@ void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
 	}
 }
 
-static void ShipRefitWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT: {
-		const Vehicle *v = GetVehicle(w->window_number);
-
-		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
-		DrawWindowWidgets(w);
-
-
-		/* TODO: Support for custom GRFSpecial-specified refitting! --pasky */
-		WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w, refit_d).sel);;
-
-		if (WP(w,refit_d).cargo != CT_INVALID) {
-			int32 cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_SHIP);
-			if (!CmdFailed(cost)) {
-				SetDParam(2, cost);
-				SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
-				SetDParam(1, _returned_refit_capacity);
-				DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
-			}
-		}
-	}	break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 2: { /* listbox */
-			int y = e->we.click.pt.y - 25;
-			if (y >= 0) {
-				WP(w,refit_d).sel = y / 10;
-				SetWindowDirty(w);
-			}
-		} break;
-		case 4: /* refit button */
-			if (WP(w,refit_d).cargo != CT_INVALID) {
-				const Vehicle *v = GetVehicle(w->window_number);
-				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_SHIP | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP)))
-					DeleteWindow(w);
-			}
-			break;
-		}
-		break;
-	}
-}
-
-
-static const Widget _ship_refit_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,                                 STR_983D_SELECT_TYPE_OF_CARGO_FOR},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,                                 STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   158,   169, STR_983C_REFIT_SHIP,                 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED},
-{      WWT_LABEL,   RESIZE_NONE,     0,     0,   239,    13,    26, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_NULL},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _ship_refit_desc = {
-	-1,-1, 240, 170,
-	WC_VEHICLE_REFIT,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_ship_refit_widgets,
-	ShipRefitWndProc,
-};
-
-static void ShowShipRefitWindow(const Vehicle *v)
-{
-	Window *w;
-
-	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
-
-	_alloc_wnd_parent_num = v->index;
-	w = AllocateWindowDesc(&_ship_refit_desc);
-	w->window_number = v->index;
-	w->caption_color = v->owner;
-	WP(w,refit_d).sel = -1;
-}
-
 static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -527,7 +449,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 					DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, NULL, CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT));
 					break;
 				case 8: /* refit */
-					ShowShipRefitWindow(v);
+					ShowVehicleRefitWindow(v);
 					break;
 				case 9: /* show orders */
 					ShowOrdersWindow(v);

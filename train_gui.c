@@ -396,82 +396,6 @@ void DrawTrainImage(const Vehicle *v, int x, int y, int count, int skip, Vehicle
 	_cur_dpi = old_dpi;
 }
 
-static void RailVehicleRefitWndProc(Window *w, WindowEvent *e)
-{
-	switch (e->event) {
-	case WE_PAINT: {
-		const Vehicle *v = GetVehicle(w->window_number);
-
-		SetDParam(0, v->string_id);
-		SetDParam(1, v->unitnumber);
-		DrawWindowWidgets(w);
-
-
-		/* TODO: Support for custom GRFSpecial-specified refitting! --pasky */
-		WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w, refit_d).sel);
-
-		if (WP(w,refit_d).cargo != CT_INVALID) {
-			int32 cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, CMD_REFIT_RAIL_VEHICLE);
-			if (!CmdFailed(cost)) {
-				SetDParam(2, cost);
-				SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
-				SetDParam(1, _returned_refit_capacity);
-				DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
-			}
-		}
-	}	break;
-
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 2: { /* listbox */
-			int y = e->we.click.pt.y - 25;
-			if (y >= 0) {
-				WP(w,refit_d).sel = y / 10;
-				SetWindowDirty(w);
-			}
-		} break;
-		case 4: /* refit button */
-			if (WP(w,refit_d).cargo != CT_INVALID) {
-				const Vehicle *v = GetVehicle(w->window_number);
-				if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE)))
-					DeleteWindow(w);
-			}
-			break;
-		}
-		break;
-	}
-}
-
-
-static const Widget _rail_vehicle_refit_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,                                 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,                                 STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   158,   169, STR_RAIL_REFIT_VEHICLE,              STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED},
-{      WWT_LABEL,   RESIZE_NONE,     0,     0,   239,    13,    26, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_NULL},
-{   WIDGETS_END},
-};
-
-static const WindowDesc _rail_vehicle_refit_desc = {
-	-1,-1, 240, 170,
-	WC_VEHICLE_REFIT,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
-	_rail_vehicle_refit_widgets,
-	RailVehicleRefitWndProc,
-};
-
-static void ShowRailVehicleRefitWindow(Vehicle *v)
-{
-	Window *w;
-	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
-	_alloc_wnd_parent_num = v->index;
-	w = AllocateWindowDesc(&_rail_vehicle_refit_desc);
-	w->window_number = v->index;
-	w->caption_color = v->owner;
-	WP(w,refit_d).sel = -1;
-}
-
 static const Widget _train_view_widgets[] = {
 {   WWT_CLOSEBOX,  RESIZE_NONE, 14,   0,  10,   0,  13, STR_00C5,        STR_018B_CLOSE_WINDOW },
 {    WWT_CAPTION, RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_882E,        STR_018C_WINDOW_TITLE_DRAG_THIS },
@@ -617,7 +541,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			ShowTrainDetailsWindow(v);
 			break;
 		case 12:
-			ShowRailVehicleRefitWindow(v);
+			ShowVehicleRefitWindow(v);
 			break;
 		case 13:
 			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));

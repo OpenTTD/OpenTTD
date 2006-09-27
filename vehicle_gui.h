@@ -6,7 +6,7 @@
 #include "window.h"
 
 void DrawVehicleProfitButton(const Vehicle *v, int x, int y);
-CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel);
+void ShowVehicleRefitWindow(const Vehicle *v);
 void InitializeVehiclesGuiList(void);
 
 /* sorter stuff */

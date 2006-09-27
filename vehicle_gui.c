@@ -207,7 +207,7 @@ void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
  * @param sel selected refit cargo-type in the window
  * @return the cargo type that is hightlighted, CT_INVALID if none
  */
-CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel)
+static CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel)
 {
 	uint32 cmask = 0;
 	CargoID cid, cargo = CT_INVALID;
@@ -240,6 +240,122 @@ CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel)
 	}
 
 	return cargo;
+}
+
+static void VehicleRefitWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+		case WE_PAINT: {
+			const Vehicle *v = GetVehicle(w->window_number);
+
+			SetDParam(0, v->string_id);
+			SetDParam(1, v->unitnumber);
+			DrawWindowWidgets(w);
+
+
+			WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w, refit_d).sel);
+
+			if (WP(w,refit_d).cargo != CT_INVALID) {
+				int32 cost = 0;
+				switch (GetVehicle(w->window_number)->type) {
+					case VEH_Train:    cost = CMD_REFIT_RAIL_VEHICLE; break;
+					case VEH_Road:     cost = CMD_REFIT_ROAD_VEH;     break;
+					case VEH_Ship:     cost = CMD_REFIT_SHIP;         break;
+					case VEH_Aircraft: cost = CMD_REFIT_AIRCRAFT;     break;
+				}
+
+				cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, cost);
+				if (!CmdFailed(cost)) {
+					SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
+					SetDParam(1, _returned_refit_capacity);
+					SetDParam(2, cost);
+					DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
+				}
+			}
+		}	break;
+
+		case WE_CLICK:
+			switch (e->we.click.widget) {
+				case 2: { // listbox
+					int y = e->we.click.pt.y - 25;
+					if (y >= 0) {
+						WP(w,refit_d).sel = y / 10;
+						SetWindowDirty(w);
+					}
+				} break;
+				case 4: // refit button
+					if (WP(w,refit_d).cargo != CT_INVALID) {
+						const Vehicle *v = GetVehicle(w->window_number);
+						int command = 0;
+
+						switch (v->type) {
+							case VEH_Train:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE);  break;
+							case VEH_Road:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_REFIT_ROAD_VEHICLE_CAN_T);  break;
+							case VEH_Ship:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
+							case VEH_Aircraft: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
+						}
+						if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, command))
+							DeleteWindow(w);
+					}
+					break;
+			}
+			break;
+	}
+}
+
+
+static const Widget _vehicle_refit_widgets[] = {
+	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
+	{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
+	{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,                                 STR_983D_SELECT_TYPE_OF_CARGO_FOR},
+	{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,                                 STR_NULL},
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   158,   169, 0x0,                                 STR_NULL},
+	{      WWT_LABEL,   RESIZE_NONE,     0,     0,   239,    13,    26, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_NULL},
+	{   WIDGETS_END},
+};
+
+static const WindowDesc _vehicle_refit_desc = {
+	-1,-1, 240, 170,
+	WC_VEHICLE_REFIT,WC_VEHICLE_VIEW,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	_vehicle_refit_widgets,
+	VehicleRefitWndProc,
+};
+
+/** Show the refit window for a vehicle
+* @param *v The vehicle to show the refit window for
+*/
+void ShowVehicleRefitWindow(const Vehicle *v)
+{
+	Window *w;
+
+	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
+
+	_alloc_wnd_parent_num = v->index;
+	w = AllocateWindowDesc(&_vehicle_refit_desc);
+	w->window_number = v->index;
+	w->caption_color = v->owner;
+	WP(w,refit_d).sel = -1;
+
+	switch (v->type) {
+		case VEH_Train:
+			w->widget[4].data     = STR_RAIL_REFIT_VEHICLE;
+			w->widget[4].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
+			break;
+		case VEH_Road:
+			w->widget[4].data     = STR_REFIT_ROAD_VEHICLE;
+			w->widget[4].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
+			break;
+		case VEH_Ship:
+			w->widget[4].data     = STR_983C_REFIT_SHIP;
+			w->widget[4].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
+			break;
+		case VEH_Aircraft:
+			w->widget[4].data     = STR_A03D_REFIT_AIRCRAFT;
+			w->widget[4].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
+			break;
+		default: NOT_REACHED();
+	}
 }
 
 /* Display additional text from NewGRF in the purchase information window */
