@@ -1200,11 +1200,194 @@ void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v)
 	}
 }
 
+/*
+ * Start of functions regarding vehicle list windows
+ */
+
 enum {
 	PLY_WND_PRC__OFFSET_TOP_WIDGET = 26,
 	PLY_WND_PRC__SIZE_OF_ROW_SMALL = 26,
 	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 36,
 };
+
+static void CreateVehicleListWindow(Window *w)
+{
+	vehiclelist_d *vl = &WP(w, vehiclelist_d);
+	uint16 window_type = w->window_number & VLW_MASK;
+	vl->vehicle_type = GB(w->window_number, 11, 5);
+	w->caption_color = GB(w->window_number, 0, 8); // PlayerID
+
+	/* Set up the window widgets */
+	switch (window_type) {
+		case VLW_SHARED_ORDERS:
+			w->widget[1].data  = STR_VEH_WITH_SHARED_ORDERS_LIST;
+			break;
+		case VLW_STANDARD: /* Company Name - standard widget setup */
+			break;
+		case VLW_STATION_LIST: /* Station Name */
+			switch (vl->vehicle_type) {
+				case VEH_Train:    w->widget[1].data = STR_SCHEDULED_TRAINS; break;
+				case VEH_Road:     w->widget[1].data = STR_SCHEDULED_ROAD_VEHICLES; break;
+				case VEH_Ship:     w->widget[1].data = STR_SCHEDULED_SHIPS; break;
+				case VEH_Aircraft: w->widget[1].data = STR_SCHEDULED_AIRCRAFT; break;
+				default: NOT_REACHED(); break;
+			}
+			break;
+		default: NOT_REACHED(); break;
+	}
+
+	switch (vl->vehicle_type) {
+		case VEH_Train:
+			w->hscroll.cap = 10 * 29;
+			w->resize.step_width = 1;
+			/* Fallthrough */
+		case VEH_Road:
+			w->vscroll.cap = 7;
+			w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
+			w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); // Minimum of 4 vehicles
+			break;
+		case VEH_Ship:
+		case VEH_Aircraft:
+			w->vscroll.cap = 4;
+			w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
+			break;
+		default: NOT_REACHED();
+	}
+
+	w->widget[7].data = (w->vscroll.cap << 8) + 1;
+
+	/* Set up sorting. Make the window-specific _sorting variable
+		* point to the correct global _sorting struct so we are freed
+		* from having conditionals during window operation */
+	switch (vl->vehicle_type) {
+		case VEH_Train:    vl->_sorting = &_sorting.train; break;
+		case VEH_Road:     vl->_sorting = &_sorting.roadveh; break;
+		case VEH_Ship:     vl->_sorting = &_sorting.ship; break;
+		case VEH_Aircraft: vl->_sorting = &_sorting.aircraft; break;
+		default: NOT_REACHED(); break;
+	}
+
+	vl->l.flags = VL_REBUILD | (vl->_sorting->order << (VL_DESC - 1));
+	vl->l.sort_type = vl->_sorting->criteria;
+	vl->sort_list = NULL;
+	vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
+
+}
+
+static void DrawVehicleListWindow(Window *w)
+{
+	vehiclelist_d *vl = &WP(w, vehiclelist_d);
+	int x = 2;
+	int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
+	int max;
+	int i;
+	const PlayerID owner = (PlayerID)w->caption_color;
+	const Player *p = GetPlayer(owner);
+	const uint16 window_type = w->window_number & VLW_MASK;
+	const StationID station = (window_type == VLW_STATION_LIST)  ? GB(w->window_number, 16, 16) : INVALID_STATION;
+	const OrderID order     = (window_type == VLW_SHARED_ORDERS) ? GB(w->window_number, 16, 16) : INVALID_ORDER;
+
+	BuildVehicleList(vl, owner, station, order, window_type);
+	SortVehicleList(vl);
+	SetVScrollCount(w, vl->l.list_length);
+
+	/* draw the widgets */
+	switch (window_type) {
+		case VLW_SHARED_ORDERS: /* Shared Orders */
+			if (vl->l.list_length == 0) {
+				/* The list is empty, so the last vehicle is sold or crashed */
+				/* Delete the window because the order is now not in use anymore */
+				DeleteWindow(w);
+				return;
+			}
+			SetDParam(0, w->vscroll.count);
+			break;
+
+		case VLW_STANDARD: /* Company Name */
+			SetDParam(0, p->name_1);
+				SetDParam(1, p->name_2);
+				SetDParam(2, w->vscroll.count);
+				break;
+
+			case VLW_STATION_LIST: /* Station Name */
+				SetDParam(0, station);
+					SetDParam(1, w->vscroll.count);
+					break;
+				default: NOT_REACHED(); break;
+	}
+
+	DrawWindowWidgets(w);
+
+	if (owner == _local_player && vl->l.list_length == 0) SETBIT(w->disabled_state, 9);
+
+	/* draw sorting criteria string */
+	DrawString(85, 15, _vehicle_sort_listing[vl->l.sort_type], 0x10);
+	/* draw arrow pointing up/down for ascending/descending sorting */
+	DoDrawString(vl->l.flags & VL_DESC ? DOWNARROW : UPARROW, 69, 15, 0x10);
+
+	max = min(w->vscroll.pos + w->vscroll.cap, vl->l.list_length);
+	for (i = w->vscroll.pos; i < max; ++i) {
+		const Vehicle *v = vl->sort_list[i];
+		StringID str = (v->age > v->max_age - 366) ? STR_00E3 : STR_00E2;
+
+		SetDParam(0, v->profit_this_year);
+		SetDParam(1, v->profit_last_year);
+
+		switch (vl->vehicle_type) {
+			case VEH_Train:
+				DrawTrainImage(v, x + 21, y + 6, w->hscroll.cap, 0, INVALID_VEHICLE);
+				DrawString(x + 21, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
+				if (IsTileDepotType(v->tile, TRANSPORT_RAIL) && (v->vehstatus & VS_HIDDEN)) str = STR_021F;
+
+					if (v->string_id != STR_SV_TRAIN_NAME) {
+						SetDParam(0, v->string_id);
+						DrawString(x + 21, y, STR_01AB, 0);
+					}
+						break;
+			case VEH_Road:
+				DrawRoadVehImage(v, x + 22, y + 6, INVALID_VEHICLE);
+				DrawString(x + 24, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
+				if (IsRoadVehInDepot(v)) str = STR_021F;
+
+					if (v->string_id != STR_SV_ROADVEH_NAME) {
+						SetDParam(0, v->string_id);
+						DrawString(x + 24, y, STR_01AB, 0);
+					}
+						break;
+			case VEH_Ship:
+				DrawShipImage(v, x + 19, y + 6, INVALID_VEHICLE);
+				DrawString(x + 12, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
+				if (IsShipInDepot(v)) str = STR_021F;
+
+					if (v->string_id != STR_SV_SHIP_NAME) {
+						SetDParam(0, v->string_id);
+						DrawString(x + 12, y, STR_01AB, 0);
+					}
+						DrawSmallOrderListShip(v, x + 138, y);
+
+				break;
+			case VEH_Aircraft:
+				DrawAircraftImage(v, x + 19, y + 6, INVALID_VEHICLE);
+				DrawString(x + 19, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
+				if (IsAircraftInHangar(v)) str = STR_021F;
+
+					if (v->string_id != STR_SV_AIRCRAFT_NAME) {
+						SetDParam(0, v->string_id);
+						DrawString(x + 19, y, STR_01AB, 0);
+					}
+						DrawSmallOrderListAircraft(v, x + 136, y);
+
+				break;
+			default: NOT_REACHED(); break;
+		}
+		SetDParam(0, v->unitnumber);
+		DrawString(x, y + 2, str, 0);
+
+		DrawVehicleProfitButton(v, x, y + 13);
+
+		y += w->resize.step_height;
+	}
+}
 
 /*
  * bitmask for w->window_number
@@ -1218,179 +1401,13 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 
 	switch (e->event) {
-		case WE_CREATE: {
-			uint16 window_type = w->window_number & VLW_MASK;
-			vl->vehicle_type = GB(w->window_number, 11, 5);
-			w->caption_color = GB(w->window_number, 0, 8); // PlayerID
+		case WE_CREATE:
+			CreateVehicleListWindow(w);
+			break;
 
-			/* Set up the window widgets */
-			switch (window_type) {
-				case VLW_SHARED_ORDERS:
-					w->widget[1].data  = STR_VEH_WITH_SHARED_ORDERS_LIST;
-					break;
-				case VLW_STANDARD: /* Company Name - standard widget setup */
-					break;
-				case VLW_STATION_LIST: /* Station Name */
-					switch (vl->vehicle_type) {
-						case VEH_Train:    w->widget[1].data = STR_SCHEDULED_TRAINS; break;
-						case VEH_Road:     w->widget[1].data = STR_SCHEDULED_ROAD_VEHICLES; break;
-						case VEH_Ship:     w->widget[1].data = STR_SCHEDULED_SHIPS; break;
-						case VEH_Aircraft: w->widget[1].data = STR_SCHEDULED_AIRCRAFT; break;
-						default: NOT_REACHED(); break;
-					}
-					break;
-				default: NOT_REACHED(); break;
-			}
-
-			switch (vl->vehicle_type) {
-				case VEH_Train:
-					w->hscroll.cap = 10 * 29;
-					w->resize.step_width = 1;
-					/* Fallthrough */
-				case VEH_Road:
-					w->vscroll.cap = 7;
-					w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_SMALL;
-					w->resize.height = 220 - (PLY_WND_PRC__SIZE_OF_ROW_SMALL * 3); // Minimum of 4 vehicles
-					break;
-				case VEH_Ship:
-				case VEH_Aircraft:
-					w->vscroll.cap = 4;
-					w->resize.step_height = PLY_WND_PRC__SIZE_OF_ROW_BIG;
-					break;
-				default: NOT_REACHED();
-			}
-
-			w->widget[7].data = (w->vscroll.cap << 8) + 1;
-
-			/* Set up sorting. Make the window-specific _sorting variable
-			 * point to the correct global _sorting struct so we are freed
-			 * from having conditionals during window operation */
-			switch (vl->vehicle_type) {
-				case VEH_Train:    vl->_sorting = &_sorting.train; break;
-				case VEH_Road:     vl->_sorting = &_sorting.roadveh; break;
-				case VEH_Ship:     vl->_sorting = &_sorting.ship; break;
-				case VEH_Aircraft: vl->_sorting = &_sorting.aircraft; break;
-				default: NOT_REACHED(); break;
-			}
-
-			vl->l.flags = VL_REBUILD | (vl->_sorting->order << (VL_DESC - 1));
-			vl->l.sort_type = vl->_sorting->criteria;
-			vl->sort_list = NULL;
-			vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
-		} break;
-
-		case WE_PAINT: {
-			int x = 2;
-			int y = PLY_WND_PRC__OFFSET_TOP_WIDGET;
-			int max;
-			int i;
-			const PlayerID owner = (PlayerID)w->caption_color;
-			const Player *p = GetPlayer(owner);
-			const uint16 window_type = w->window_number & VLW_MASK;
-			const StationID station = (window_type == VLW_STATION_LIST)  ? GB(w->window_number, 16, 16) : INVALID_STATION;
-			const OrderID order     = (window_type == VLW_SHARED_ORDERS) ? GB(w->window_number, 16, 16) : INVALID_ORDER;
-
-			BuildVehicleList(vl, owner, station, order, window_type);
-			SortVehicleList(vl);
-			SetVScrollCount(w, vl->l.list_length);
-
-			/* draw the widgets */
-			switch (window_type) {
-				case VLW_SHARED_ORDERS: /* Shared Orders */
-					if (vl->l.list_length == 0) {
-						/* The list is empty, so the last vehicle is sold or crashed */
-						/* Delete the window because the order is now not in use anymore */
-						DeleteWindow(w);
-						return;
-					}
-					SetDParam(0, w->vscroll.count);
-					break;
-
-				case VLW_STANDARD: /* Company Name */
-					SetDParam(0, p->name_1);
-					SetDParam(1, p->name_2);
-					SetDParam(2, w->vscroll.count);
-					break;
-
-				case VLW_STATION_LIST: /* Station Name */
-					SetDParam(0, station);
-					SetDParam(1, w->vscroll.count);
-					break;
-				default: NOT_REACHED(); break;
-			}
-
-			DrawWindowWidgets(w);
-
-			if (owner == _local_player && vl->l.list_length == 0) SETBIT(w->disabled_state, 9);
-
-			/* draw sorting criteria string */
-			DrawString(85, 15, _vehicle_sort_listing[vl->l.sort_type], 0x10);
-			/* draw arrow pointing up/down for ascending/descending sorting */
-			DoDrawString(vl->l.flags & VL_DESC ? DOWNARROW : UPARROW, 69, 15, 0x10);
-
-			max = min(w->vscroll.pos + w->vscroll.cap, vl->l.list_length);
-			for (i = w->vscroll.pos; i < max; ++i) {
-				const Vehicle *v = vl->sort_list[i];
-				StringID str = (v->age > v->max_age - 366) ? STR_00E3 : STR_00E2;
-
-				SetDParam(0, v->profit_this_year);
-				SetDParam(1, v->profit_last_year);
-
-				switch (vl->vehicle_type) {
-					case VEH_Train:
-						DrawTrainImage(v, x + 21, y + 6, w->hscroll.cap, 0, INVALID_VEHICLE);
-						DrawString(x + 21, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-						if (IsTileDepotType(v->tile, TRANSPORT_RAIL) && (v->vehstatus & VS_HIDDEN)) str = STR_021F;
-
-						if (v->string_id != STR_SV_TRAIN_NAME) {
-							SetDParam(0, v->string_id);
-							DrawString(x + 21, y, STR_01AB, 0);
-						}
-						break;
-					case VEH_Road:
-						DrawRoadVehImage(v, x + 22, y + 6, INVALID_VEHICLE);
-						DrawString(x + 24, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-						if (IsRoadVehInDepot(v)) str = STR_021F;
-
-						if (v->string_id != STR_SV_ROADVEH_NAME) {
-							SetDParam(0, v->string_id);
-							DrawString(x + 24, y, STR_01AB, 0);
-						}
-						break;
-					case VEH_Ship:
-						DrawShipImage(v, x + 19, y + 6, INVALID_VEHICLE);
-						DrawString(x + 12, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-						if (IsShipInDepot(v)) str = STR_021F;
-
-						if (v->string_id != STR_SV_SHIP_NAME) {
-							SetDParam(0, v->string_id);
-							DrawString(x + 12, y, STR_01AB, 0);
-						}
-						DrawSmallOrderListShip(v, x + 138, y);
-
-						break;
-					case VEH_Aircraft:
-						DrawAircraftImage(v, x + 19, y + 6, INVALID_VEHICLE);
-						DrawString(x + 19, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-						if (IsAircraftInHangar(v)) str = STR_021F;
-
-						if (v->string_id != STR_SV_AIRCRAFT_NAME) {
-							SetDParam(0, v->string_id);
-							DrawString(x + 19, y, STR_01AB, 0);
-						}
-						DrawSmallOrderListAircraft(v, x + 136, y);
-
-						break;
-					default: NOT_REACHED(); break;
-				}
-				SetDParam(0, v->unitnumber);
-				DrawString(x, y + 2, str, 0);
-
-				DrawVehicleProfitButton(v, x, y + 13);
-
-				y += w->resize.step_height;
-			}
-		}	break;
+		case WE_PAINT:
+			DrawVehicleListWindow(w);
+			break;
 
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
