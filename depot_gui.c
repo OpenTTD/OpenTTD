@@ -392,11 +392,17 @@ static int GetVehicleFromDepotWndPt(const Window *w, int x, int y, Vehicle **veh
 	row = (y - 14) / w->resize.step_height;
 	if (row >= w->vscroll.cap) return MODE_ERROR;
 
-	pos = (row + w->vscroll.pos) * w->hscroll.cap + xt;
+	pos = (row + w->vscroll.pos) * (WP(w, depot_d).type == VEH_Train ? 1 : w->hscroll.cap) + xt;
 
-	if (WP(w, depot_d).type == VEH_Train) pos = row + w->vscroll.pos;
-
-	if (WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count <= pos) return MODE_ERROR; // empty block, so no vehicle is selected
+	if (WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count <= pos) {
+		if (WP(w, depot_d).type == VEH_Train) {
+			d->head  = NULL;
+			d->wagon = NULL;
+			return MODE_DRAG_VEHICLE;
+		} else {
+			return MODE_ERROR; // empty block, so no vehicle is selected
+		}
+	}
 
 	if (WP(w, depot_d).engine_count > pos) {
 		*veh = vl[pos];
@@ -700,7 +706,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					if (WP(w, depot_d).type == VEH_Train) {
 						GetDepotVehiclePtData gdvp;
 
-						if (GetVehicleFromDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &v, &gdvp) == 0 &&
+						if (GetVehicleFromDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &v, &gdvp) == MODE_DRAG_VEHICLE &&
 							sel != INVALID_VEHICLE) {
 							if (gdvp.wagon != NULL && gdvp.wagon->index == sel && _ctrl_pressed) {
 								DoCommandP(GetVehicle(sel)->tile, GetVehicle(sel)->index, true, NULL, CMD_REVERSE_TRAIN_DIRECTION | CMD_MSG(STR_9033_CAN_T_MAKE_VEHICLE_TURN));
@@ -710,7 +716,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 								ShowTrainViewWindow(gdvp.head);
 							}
 						}
-					} else if (GetVehicleFromDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &v, NULL) == 0 &&
+					} else if (GetVehicleFromDepotWndPt(w, e->we.dragdrop.pt.x, e->we.dragdrop.pt.y, &v, NULL) == MODE_DRAG_VEHICLE &&
 						v != NULL &&
 						sel == v->index) {
 						ShowVehicleViewWindow(v);
