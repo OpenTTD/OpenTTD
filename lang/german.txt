@@ -2902,6 +2902,16 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Schickt 
 STR_SEND_TO_HANGARS                                             :{BLACK}In den Hangar schicken
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Schickt alle Flugzeuge in der Liste in den Hangar.
 
+STR_SELL                                                        :{BLACK}Verkaufen
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du bist dabei alle Fahrzeuge im Depot zu verkaufen
+STR_ARE_YOU_SURE                                                :{BLACK}Bist du sicher?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Bitte bestätige dass du alle Fahrzeuge im Depot verkaufen willst
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Bitte bestätige dass du alle Flugzeuge im Hangar verkaufen willst
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Verkaufe nicht alle Fahrzeuge im Depot
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Verkaufe nicht alle Flugzeuge im Hangar
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Verkaufe alle Fahrzeuge im Depot
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Verkaufe alle Flugzeuge im Hangar
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Ersetze Fahrzeuge
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ersetze {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Fahrzeugersetzung aktivieren

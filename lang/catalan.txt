@@ -11,7 +11,7 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}No tens 
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Es necessita terreny pla
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Es necessita un terreny pla
 STR_0008_WAITING                                                :{BLACK}Esperant: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (en ruta des de
@@ -2630,7 +2630,7 @@ STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Cap a l
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Revisió a la cotxera de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Revisió a la cotxera de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}No es pot enviar el vehicle a cotxera...
-STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Incapaç de trobar la cotxera local
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossible trobar la cotxera local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automòbils - clica en un vehicle per informació
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construir nous automòbils (necessita una cotxera)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Acció sobre el vehicle actual - clica aqui per parar/arrencar el vehicle
@@ -2901,6 +2901,16 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Enviar t
 STR_SEND_TO_HANGARS                                             :{BLACK}Enviar als Hangars
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Enviar totes les aeronaus de la llista als hangars. CTRL+click per només revisió
 
+STR_SELL                                                        :{BLACK}Vendre
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Estàs a punt de vendre tots els vehicles de la cotxera
+STR_ARE_YOU_SURE                                                :{BLACK}N'estàs segur?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Confirmar venda de tots els vehicles de la cotxera
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Confirmar venda de tots els avions de l'hangar
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}No vendre tots els vehicles de la cotxera
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}No vendre tots els avions de l'hangar
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vendre tots els vehicles de la cotxera
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vendre tots els avions de l'hangar
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplaçar Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inici de reemplaçament de Vehicles
@@ -2923,8 +2933,8 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor
 STR_ENGINES                                                     :Motors
 STR_WAGONS                                                      :Vagons
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click per parar tots els vehicles de dintre del dipòsit
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click per engegar tots els vehicles de dintre del dipòsit
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click per parar tots els vehicles de dintre de la cotxera
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click per engegar tots els vehicles de dintre de la cotxera
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Click per parar tots els avions de dintre de l'hangar
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Click per engegar tots els avions de dintre de l'hangar
 
@@ -3018,7 +3028,7 @@ STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internac
 STR_COMMUTER_AIRPORT                                            :{BLACK}Viatjer
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
 STR_HELIPORT                                                    :{BLACK}Heliport
-STR_HELIDEPOT                                                   :{BLACK}Helidipòsit
+STR_HELIDEPOT                                                   :{BLACK}Helihangar
 STR_HELISTATION                                                 :{BLACK}Helistació
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Aeroports petits

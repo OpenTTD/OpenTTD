@@ -2292,6 +2292,12 @@ STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Kis repülõgép
 STR_LIVERY_LARGE_PLANE                                          :Nagy repülõgép
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Általános szinsémák mutatása
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mutasd a közúti jármûvek szinsémáit
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Repülõgép szinsémák mutatása
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Válassz egy elsõdleges szint a kiválasztott sémához
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Válassz egy másodlagos szint a kiválasztott sémához
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Gõz)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Dízel)
@@ -2993,6 +2999,15 @@ STR_SEND_TO_DEPOTS                                              :{BLACK}Depóba k
 STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}A listán szereplô összes jármû depóba küldése. CTRL+kattintásra csak javításra küld.
 STR_SEND_TO_HANGARS                                             :{BLACK}Hangárba küldés
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}A listán szereplô összes repülô hangárba küldése. CTRL+kattintásra csak javításra küld.
+
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Te éppen a depotban lévõ jármûveket készülsz eladni
+STR_ARE_YOU_SURE                                                :{BLACK}Biztos vagy benne?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Erõsítsd meg a jármûvek eladásáról szóló szándékodat
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Erõsítsd meg a repülõgépek eladásáról szóló szándékodat
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Ne adjuk el a jármûveket a depotból
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Ne adjuk el a repülõgépeket a hangárból
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Depotban lévõ jármûvek eladása
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Hangárban lévõ repülõgépek eladása
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Jármûvek lecserélése
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}

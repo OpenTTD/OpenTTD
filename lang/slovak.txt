@@ -2254,6 +2254,15 @@ STR_LIVERY_HELICOPTER                                           :Helikoptera
 STR_LIVERY_SMALL_PLANE                                          :Male lietadlo
 STR_LIVERY_LARGE_PLANE                                          :Velke lietadlo
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Zobrazit v¨eobecné farebné schémy
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Zobrazit farebné schémy pre vlaky
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Zobrazit farebné schémy pre cestné vozidlá
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Zobrazit farebné schémy pre lode
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Zobrazit farebné schémy pre lietadlá
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Vyberte primárnu farbu pre vybranú farebnú schému
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Vybrat sekundárnu farbu pre vybranú farebnú schému
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Vybrat farebnú schému na zmenenie (pre viacero schém pou¸ite CTRL+klik). Kliknite na ¨tvorec pre prepnutie pou¸ívania schémy
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Parny)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2956,6 +2965,16 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Poslat v
 STR_SEND_TO_HANGARS                                             :{BLACK}Poslat do hangarov
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Poslat vsetky lietadla v zozname do hangarov. CTRL+klik na vykonanie servisu
 
+STR_SELL                                                        :{BLACK}Predat
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}V¨etky vozidlá budú poslané do depa
+STR_ARE_YOU_SURE                                                :{BLACK}Ste si istí?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Potvrdit predaj v¨etkých vozidiel v depe
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Potvrdit predaj v¨etkých lietadiel v hangári
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Nepredat v¨etky vozidlá v depe
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Nepredat v¨etky lietadlá v hangári
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Predat v¨etky vozidlá v depe
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Predat v¨etky lietadlá v hangári
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymena vozidiel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zacat vymenu vozidiel
@@ -2977,6 +2996,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoti
 
 STR_ENGINES                                                     :Lokomotívy
 STR_WAGONS                                                      :Vagonov
+
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Kliknite pre zastavenie v¨etkých vozidiel v depe
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Kliknite pre spustenie v¨etkých vozidiel v depe
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Kliknite pre zastavenie v¨etkých lietadiel v hangári
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Kliknite pre spustenie v¨etkých lietadiel v hangári
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
