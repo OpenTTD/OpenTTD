@@ -881,7 +881,7 @@ void ShowDepotWindow(TileIndex tile, byte type)
 				w->vscroll.cap = 3;
 				w->hscroll.cap = 3;
 				w->resize.step_width = 90;
-				w->resize.step_height = 24;
+				w->resize.step_height = 23;
 				break;
 
 			case VEH_Aircraft:
@@ -889,7 +889,7 @@ void ShowDepotWindow(TileIndex tile, byte type)
 				w->vscroll.cap = 3;
 				w->hscroll.cap = 4;
 				w->resize.step_width = 74;
-				w->resize.step_height = 24;
+				w->resize.step_height = 23;
 				break;
 
 			default: NOT_REACHED();
