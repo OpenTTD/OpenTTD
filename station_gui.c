@@ -17,6 +17,7 @@
 #include "variables.h"
 #include "vehicle_gui.h"
 #include "date.h"
+#include "vehicle.h"
 
 typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
 
@@ -679,13 +680,13 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 		case 10: { /* Show a list of scheduled trains to this station */
 			const Station *st = GetStation(w->window_number);
-			ShowPlayerTrains(st->owner, w->window_number);
+			ShowVehicleListWindow(st->owner, w->window_number, VEH_Train);
 			break;
 		}
 
 		case 11: { /* Show a list of scheduled road-vehicles to this station */
 			const Station *st = GetStation(w->window_number);
-			ShowPlayerRoadVehicles(st->owner, w->window_number);
+			ShowVehicleListWindow(st->owner, w->window_number, VEH_Road);
 			break;
 		}
 
@@ -693,7 +694,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			const Station *st = GetStation(w->window_number);
 			/* Since oilrigs have no owners, show the scheduled aircraft of current player */
 			PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
-			ShowPlayerAircraft(owner, w->window_number);
+			ShowVehicleListWindow(owner, w->window_number, VEH_Aircraft);
 			break;
 		}
 
@@ -701,7 +702,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 			const Station *st = GetStation(w->window_number);
 			/* Since oilrigs/bouys have no owners, show the scheduled ships of current player */
 			PlayerID owner = (st->owner == OWNER_NONE) ? _current_player : st->owner;
-			ShowPlayerShips(owner, w->window_number);
+			ShowVehicleListWindow(owner, w->window_number, VEH_Ship);
 			break;
 		}
 		}

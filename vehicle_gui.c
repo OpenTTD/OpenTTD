@@ -27,6 +27,7 @@
 #include "aircraft.h"
 #include "roadveh.h"
 #include "depot.h"
+#include "resize_window_widgets.h"
 
 typedef struct Sorting {
 	Listing aircraft;
@@ -1210,26 +1211,125 @@ enum {
 	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 36,
 };
 
+typedef enum VehicleListWindowWidgets {
+	VLW_WIDGET_CLOSEBOX = 0,
+	VLW_WIDGET_CAPTION,
+	VLW_WIDGET_STICKY,
+	VLW_WIDGET_SORT_ORDER,
+	VLW_WIDGET_SORT_BY_TEXT,
+	VLW_WIDGET_SORT_BY_PULLDOWN,
+	VLW_WIDGET_EMPTY_SPACE_TOP_RIGHT,
+	VLW_WIDGET_LIST,
+	VLW_WIDGET_SCROLLBAR,
+	VLW_WIDGET_OTHER_PLAYER_FILLER,
+	VLW_WIDGET_SEND_TO_DEPOT,
+	VLW_WIDGET_AUTOREPLACE,
+	VLW_WIDGET_RESIZE,
+} VehicleListWindowWidget;
+
+static const byte vehicle_list_widget_moves[] = {
+	WIDGET_MOVE_NONE,               // VLW_WIDGET_CLOSEBOX
+	WIDGET_STRETCH_RIGHT,           // VLW_WIDGET_CAPTION
+	WIDGET_MOVE_RIGHT,              // VLW_WIDGET_STICKY
+	WIDGET_MOVE_NONE,               // VLW_WIDGET_SORT_ORDER
+	WIDGET_MOVE_NONE,               // VLW_WIDGET_SORT_BY_TEXT
+	WIDGET_MOVE_NONE,               // VLW_WIDGET_SORT_BY_PULLDOWN
+	WIDGET_STRETCH_RIGHT,           // VLW_WIDGET_EMPTY_SPACE_TOP_RIGHT
+	WIDGET_STRETCH_DOWN_RIGHT,      // VLW_WIDGET_LIST
+	WIDGET_MOVE_RIGHT_STRETCH_DOWN, // VLW_WIDGET_SCROLLBAR
+	WIDGET_MOVE_DOWN_STRETCH_RIGHT, // VLW_WIDGET_OTHER_PLAYER_FILLER
+	WIDGET_MOVE_DOWN,               // VLW_WIDGET_SEND_TO_DEPOT
+	WIDGET_MOVE_DOWN,               // VLW_WIDGET_AUTOREPLACE
+	WIDGET_MOVE_DOWN_RIGHT,         // VLW_WIDGET_RESIZE
+};
+
+static const Widget _vehicle_list_widgets[] = {
+	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,             STR_018B_CLOSE_WINDOW},
+	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   247,     0,    13, 0x0,                  STR_018C_WINDOW_TITLE_DRAG_THIS},
+	{  WWT_STICKYBOX,     RESIZE_LR,    14,   248,   259,     0,    13, 0x0,                  STR_STICKY_BUTTON},
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,          STR_SORT_ORDER_TIP},
+	{      WWT_PANEL,   RESIZE_NONE,    14,    81,   235,    14,    25, 0x0,                  STR_SORT_CRITERIA_TIP},
+	{    WWT_TEXTBTN,   RESIZE_NONE,    14,   236,   247,    14,    25, STR_0225,             STR_SORT_CRITERIA_TIP},
+	{      WWT_PANEL,  RESIZE_RIGHT,    14,   248,   259,    14,    25, 0x0,                  STR_NULL},
+	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x0,                  STR_NULL},
+	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
+	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   170,   181, 0x0,                  STR_NULL},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_SEND_TO_DEPOTS,   STR_SEND_TO_DEPOTS_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   247,   170,   181, STR_REPLACE_VEHICLES, STR_REPLACE_HELP},
+	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   170,   181, 0x0,                  STR_RESIZE_BUTTON},
+	{   WIDGETS_END},
+};
+
+/* Resize the bottom row of buttons to make them equal in size when resizing */
+static void ResizeVehicleListWidgets(Window *w)
+{
+	w->widget[VLW_WIDGET_AUTOREPLACE].right   = w->widget[VLW_WIDGET_RESIZE].left - 1;
+	w->widget[VLW_WIDGET_SEND_TO_DEPOT].right = w->widget[VLW_WIDGET_AUTOREPLACE].right / 2;
+	w->widget[VLW_WIDGET_AUTOREPLACE].left    = w->widget[VLW_WIDGET_SEND_TO_DEPOT].right;
+}
+
 static void CreateVehicleListWindow(Window *w)
 {
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
 	uint16 window_type = w->window_number & VLW_MASK;
+	PlayerID player = GB(w->window_number, 0, 8);
+
 	vl->vehicle_type = GB(w->window_number, 11, 5);
-	w->caption_color = GB(w->window_number, 0, 8); // PlayerID
+	w->caption_color = player;
+
+	/* Hide the widgets that we will not use in this window
+	 * Some windows contains actions only fit for the owner */
+	if (player == _local_player) {
+		SETBIT(w->hidden_state, VLW_WIDGET_OTHER_PLAYER_FILLER);
+	} else {
+		SETBIT(w->hidden_state, VLW_WIDGET_SEND_TO_DEPOT);
+		SETBIT(w->hidden_state, VLW_WIDGET_AUTOREPLACE);
+	}
 
 	/* Set up the window widgets */
+	switch (vl->vehicle_type) {
+		case VEH_Train:
+			w->widget[VLW_WIDGET_LIST].tooltips = STR_883D_TRAINS_CLICK_ON_TRAIN_FOR;
+			break;
+
+		case VEH_Road:
+			w->widget[VLW_WIDGET_LIST].tooltips = STR_901A_ROAD_VEHICLES_CLICK_ON;
+			break;
+
+		case VEH_Ship:
+			w->widget[VLW_WIDGET_LIST].tooltips = STR_9823_SHIPS_CLICK_ON_SHIP_FOR;
+			break;
+
+		case VEH_Aircraft:
+			w->widget[VLW_WIDGET_CAPTION].data  = STR_A009_AIRCRAFT;
+			w->widget[VLW_WIDGET_LIST].tooltips = STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT;
+			/* Aircraft uses hangars, not depots, so we will apply the hangar strings */
+			w->widget[VLW_WIDGET_SEND_TO_DEPOT].data     = STR_SEND_TO_HANGARS;
+			w->widget[VLW_WIDGET_SEND_TO_DEPOT].tooltips = STR_SEND_TO_HANGARS_TIP;
+			break;
+
+		default: NOT_REACHED(); break;
+	}
+
 	switch (window_type) {
 		case VLW_SHARED_ORDERS:
-			w->widget[1].data  = STR_VEH_WITH_SHARED_ORDERS_LIST;
+			w->widget[VLW_WIDGET_CAPTION].data  = STR_VEH_WITH_SHARED_ORDERS_LIST;
 			break;
 		case VLW_STANDARD: /* Company Name - standard widget setup */
+			switch (vl->vehicle_type) {
+				case VEH_Train:    w->widget[VLW_WIDGET_CAPTION].data = STR_881B_TRAINS;        break;
+				case VEH_Road:     w->widget[VLW_WIDGET_CAPTION].data = STR_9001_ROAD_VEHICLES; break;
+				case VEH_Ship:     w->widget[VLW_WIDGET_CAPTION].data = STR_9805_SHIPS;         break;
+				case VEH_Aircraft: w->widget[VLW_WIDGET_CAPTION].data = STR_A009_AIRCRAFT;      break;
+				default: NOT_REACHED(); break;
+			}
 			break;
 		case VLW_STATION_LIST: /* Station Name */
 			switch (vl->vehicle_type) {
-				case VEH_Train:    w->widget[1].data = STR_SCHEDULED_TRAINS; break;
-				case VEH_Road:     w->widget[1].data = STR_SCHEDULED_ROAD_VEHICLES; break;
-				case VEH_Ship:     w->widget[1].data = STR_SCHEDULED_SHIPS; break;
-				case VEH_Aircraft: w->widget[1].data = STR_SCHEDULED_AIRCRAFT; break;
+				case VEH_Train:    w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_TRAINS;        break;
+				case VEH_Road:     w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_ROAD_VEHICLES; break;
+				case VEH_Ship:     w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_SHIPS;         break;
+				case VEH_Aircraft: w->widget[VLW_WIDGET_CAPTION].data = STR_SCHEDULED_AIRCRAFT;      break;
 				default: NOT_REACHED(); break;
 			}
 			break;
@@ -1254,7 +1354,7 @@ static void CreateVehicleListWindow(Window *w)
 		default: NOT_REACHED();
 	}
 
-	w->widget[7].data = (w->vscroll.cap << 8) + 1;
+	w->widget[VLW_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
 
 	/* Set up sorting. Make the window-specific _sorting variable
 		* point to the correct global _sorting struct so we are freed
@@ -1272,6 +1372,12 @@ static void CreateVehicleListWindow(Window *w)
 	vl->sort_list = NULL;
 	vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
 
+	/* Resize the widgets to fit the window size.
+	 * Aircraft and ships already got the right size widgets */
+	if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_SMALL) {
+		ResizeWindowWidgets(w, vehicle_list_widget_moves, lengthof(vehicle_list_widget_moves), vl->vehicle_type == VEH_Train ? 65 : 0, 38);
+		ResizeVehicleListWidgets(w);
+	}
 }
 
 static void DrawVehicleListWindow(Window *w)
@@ -1305,15 +1411,15 @@ static void DrawVehicleListWindow(Window *w)
 
 		case VLW_STANDARD: /* Company Name */
 			SetDParam(0, p->name_1);
-				SetDParam(1, p->name_2);
-				SetDParam(2, w->vscroll.count);
-				break;
+			SetDParam(1, p->name_2);
+			SetDParam(2, w->vscroll.count);
+			break;
 
-			case VLW_STATION_LIST: /* Station Name */
-				SetDParam(0, station);
-					SetDParam(1, w->vscroll.count);
-					break;
-				default: NOT_REACHED(); break;
+		case VLW_STATION_LIST: /* Station Name */
+			SetDParam(0, station);
+			SetDParam(1, w->vscroll.count);
+			break;
+		default: NOT_REACHED(); break;
 	}
 
 	DrawWindowWidgets(w);
@@ -1411,17 +1517,17 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
-				case 3: /* Flip sorting method ascending/descending */
+				case VLW_WIDGET_SORT_ORDER: /* Flip sorting method ascending/descending */
 					vl->l.flags ^= VL_DESC;
 					vl->l.flags |= VL_RESORT;
 
 					vl->_sorting->order = !!(vl->l.flags & VL_DESC);
 					SetWindowDirty(w);
 					break;
-				case 4: case 5:/* Select sorting criteria dropdown menu */
-					ShowDropDownMenu(w, _vehicle_sort_listing, vl->l.sort_type, 5, 0, 0);
+				case VLW_WIDGET_SORT_BY_TEXT: case VLW_WIDGET_SORT_BY_PULLDOWN:/* Select sorting criteria dropdown menu */
+					ShowDropDownMenu(w, _vehicle_sort_listing, vl->l.sort_type, VLW_WIDGET_SORT_BY_PULLDOWN, 0, 0);
 					return;
-				case 7: { /* Matrix to show vehicles */
+				case VLW_WIDGET_LIST: { /* Matrix to show vehicles */
 					uint32 id_v = (e->we.click.pt.y - PLY_WND_PRC__OFFSET_TOP_WIDGET) / w->resize.step_height;
 					const Vehicle *v;
 
@@ -1442,15 +1548,13 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 					}
 				} break;
 
-				case 9: // Left button
-					if ((PlayerID)w->caption_color != _local_player) break;
-
+				case VLW_WIDGET_SEND_TO_DEPOT: // Left button
 					assert(vl->l.list_length != 0);
 					DoCommandP(0, GB(w->window_number, 16, 16) /* StationID or OrderID (depending on VLW). Nomatter which one it is, it's needed here */,
 						(w->window_number & VLW_MASK) | DEPOT_MASS_SEND | (_ctrl_pressed ? DEPOT_SERVICE : 0), NULL, CMD_SEND_TO_DEPOT(vl->vehicle_type));
 					break;
 
-				case 10: // Right button
+				case VLW_WIDGET_AUTOREPLACE: // Right button
 					ShowReplaceVehicleWindow(vl->vehicle_type);
 					break;
 			}
@@ -1485,7 +1589,65 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 		case WE_RESIZE: /* Update the scroll + matrix */
 			if (vl->vehicle_type == VEH_Train) w->hscroll.cap += e->we.sizing.diff.x;
 			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
-			w->widget[7].data = (w->vscroll.cap << 8) + 1;
+			w->widget[VLW_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
+			ResizeVehicleListWidgets(w);
 			break;
 	}
+}
+
+static const WindowDesc _player_vehicle_list_large_desc = {
+	-1, -1, 260, 182,
+	WC_SHIPS_LIST,0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	_vehicle_list_widgets,
+	PlayerVehWndProc
+};
+
+static const WindowDesc _player_vehicle_list_train_desc = {
+	-1, -1, 325, 220,
+    WC_TRAINS_LIST,0,
+    WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+    _vehicle_list_widgets,
+    PlayerVehWndProc
+};
+
+static const WindowDesc _player_vehicle_list_road_veh_desc = {
+	-1, -1, 260, 220,
+	WC_TRAINS_LIST,0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	_vehicle_list_widgets,
+	PlayerVehWndProc
+};
+
+static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, StationID station, OrderID order, bool show_shared)
+{
+	Window *w;
+	WindowNumber num = (vehicle_type << 11) | player;
+
+	if (show_shared) {
+		num |= (order << 16) | VLW_SHARED_ORDERS;
+	} else if (station == INVALID_STATION) {
+		num |= VLW_STANDARD;
+	} else {
+		num |= (station << 16) | VLW_STATION_LIST;
+	}
+
+	if (vehicle_type == VEH_Train) {
+		w = AllocateWindowDescFront(&_player_vehicle_list_train_desc, num);
+	} else if (vehicle_type == VEH_Road) {
+		w = AllocateWindowDescFront(&_player_vehicle_list_road_veh_desc, num);
+	} else {
+		w = AllocateWindowDescFront(&_player_vehicle_list_large_desc, num);
+	}
+}
+
+void ShowVehicleListWindow(PlayerID player, StationID station, byte vehicle_type)
+{
+	ShowVehicleListWindowLocal(player, vehicle_type, station, INVALID_ORDER, false);
+}
+
+void ShowVehWithSharedOrders(Vehicle *v, byte vehicle_type)
+{
+	if (v->orders == NULL) return; // no shared list to show
+	ShowVehicleListWindowLocal(v->owner, vehicle_type, INVALID_STATION, v->orders->index, true);
 }

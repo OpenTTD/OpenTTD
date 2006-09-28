@@ -52,4 +52,7 @@ void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v);
 
 int ShowAdditionalText(int x, int y, int w, EngineID engine);
 
+void ShowVehicleListWindow(PlayerID player, StationID station, byte vehicle_type);
+void ShowVehWithSharedOrders(Vehicle *v, byte vehicle_type);
+
 #endif /* VEHICLE_GUI_H */

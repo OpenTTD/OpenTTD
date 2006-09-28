@@ -21,6 +21,7 @@
 #include "waypoint.h"
 #include "train.h"
 #include "water_map.h"
+#include "vehicle_gui.h"
 
 static int OrderGetSel(const Window *w)
 {
@@ -463,13 +464,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			OrderClick_Transfer(w, v);
 			break;
 		case 11: /* Vehicle with same shared Orders button */
-			switch (v->type) {
-				case VEH_Train:    ShowVehWithSharedOrdersTrains(v);       break;
-				case VEH_Road:     ShowVehWithSharedOrdersRoadVehicles(v); break;
-				case VEH_Ship:     ShowVehWithSharedOrdersShips(v);        break;
-				case VEH_Aircraft: ShowVehWithSharedOrdersAircraft(v);     break;
-				default: NOT_REACHED(); break;
-			}
+			ShowVehWithSharedOrders(v, v->type);
 			break;
 		}
 	} break;

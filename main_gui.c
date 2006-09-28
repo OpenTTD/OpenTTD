@@ -33,6 +33,7 @@
 #include "genworld.h"
 #include "settings.h"
 #include "date.h"
+#include "vehicle_gui.h"
 
 #include "network_data.h"
 #include "network_client.h"
@@ -268,22 +269,22 @@ static void MenuClickIndustry(int index)
 
 static void MenuClickShowTrains(int index)
 {
-	ShowPlayerTrains(index, INVALID_STATION);
+	ShowVehicleListWindow(index, INVALID_STATION, VEH_Train);
 }
 
 static void MenuClickShowRoad(int index)
 {
-	ShowPlayerRoadVehicles(index, INVALID_STATION);
+	ShowVehicleListWindow(index, INVALID_STATION, VEH_Road);
 }
 
 static void MenuClickShowShips(int index)
 {
-	ShowPlayerShips(index, INVALID_STATION);
+	ShowVehicleListWindow(index, INVALID_STATION, VEH_Ship);
 }
 
 static void MenuClickShowAir(int index)
 {
-	ShowPlayerAircraft(index, INVALID_STATION);
+	ShowVehicleListWindow(index, INVALID_STATION, VEH_Aircraft);
 }
 
 static void MenuClickBuildRail(int index)
@@ -1792,10 +1793,10 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		case WKC_F10:ShowOperatingProfitGraph(); break;
 		case WKC_F11: ShowCompanyLeagueTable(); break;
 		case WKC_F12: ShowBuildIndustryWindow(); break;
-		case WKC_SHIFT | WKC_F1: ShowPlayerTrains(local, INVALID_STATION); break;
-		case WKC_SHIFT | WKC_F2: ShowPlayerRoadVehicles(local, INVALID_STATION); break;
-		case WKC_SHIFT | WKC_F3: ShowPlayerShips(local, INVALID_STATION); break;
-		case WKC_SHIFT | WKC_F4: ShowPlayerAircraft(local, INVALID_STATION); break;
+		case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(local, INVALID_STATION, VEH_Train); break;
+		case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(local, INVALID_STATION, VEH_Road); break;
+		case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(local, INVALID_STATION, VEH_Ship); break;
+		case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(local, INVALID_STATION, VEH_Aircraft); break;
 		case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
 		case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
 		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype,-1); break;
