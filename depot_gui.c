@@ -58,6 +58,7 @@ typedef enum DepotWindowWidgets {
 	DEPOT_WIDGET_BUILD,
 	DEPOT_WIDGET_CLONE,
 	DEPOT_WIDGET_LOCATION,
+	DEPOT_WIDGET_AUTOREPLACE,
 	DEPOT_WIDGET_RESIZE,
 	DEPOT_WIDGET_LAST, // used to assert if DepotWindowWidgets and widget_moves got different lengths. Due to this usage, it needs to be last
 } DepotWindowWidget;
@@ -78,6 +79,7 @@ static const byte widget_moves[] = {
 	DEPOT_MOVE_DOWN,               // DEPOT_WIDGET_BUILD
 	DEPOT_MOVE_DOWN,               // DEPOT_WIDGET_CLONE
 	DEPOT_MOVE_DOWN,               // DEPOT_WIDGET_LOCATION
+	DEPOT_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_AUTOREPLACE
 	DEPOT_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_RESIZE
 };
 
@@ -112,6 +114,7 @@ static const Widget _depot_widgets[] = {
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    96,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_BUILD
 	{WWT_NODISTXTBTN,     RESIZE_TB,    14,    97,   194,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   195,   292,    84,    95, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   281,   292,    84,    95, 0x0,                 STR_DEPOT_AUTOREPLACE_TIP},        // DEPOT_WIDGET_AUTOREPLACE
 	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   293,   304,    84,    95, 0x0,                 STR_RESIZE_BUTTON},                // DEPOT_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
@@ -256,7 +259,7 @@ static void DrawDepotWindow(Window *w)
 	w->disabled_state =
 		IsTileOwner(tile, _local_player) ? 0 : ( (1 << DEPOT_WIDGET_STOP_ALL) | (1 << DEPOT_WIDGET_START_ALL) |
 			(1 << DEPOT_WIDGET_SELL) | (1 << DEPOT_WIDGET_SELL_CHAIN) | (1 << DEPOT_WIDGET_SELL_ALL) |
-			(1 << DEPOT_WIDGET_BUILD) | (1 << DEPOT_WIDGET_CLONE));
+			(1 << DEPOT_WIDGET_BUILD) | (1 << DEPOT_WIDGET_CLONE) | (1 << DEPOT_WIDGET_AUTOREPLACE));
 
 	/* determine amount of items for scroller */
 	if (WP(w, depot_d).type == VEH_Train) {
@@ -578,7 +581,7 @@ static void ResizeDepotButtons(Window *w)
 	/* We got the widget moved around. Now we will make some widgets to fill the gab between some widgets in equal sizes */
 
 	/* Make the buttons in the bottom equal in size */
-	w->widget[DEPOT_WIDGET_LOCATION].right = w->widget[DEPOT_WIDGET_RESIZE].left - 1;
+	w->widget[DEPOT_WIDGET_LOCATION].right = w->widget[DEPOT_WIDGET_AUTOREPLACE].left - 1;
 	w->widget[DEPOT_WIDGET_BUILD].right    = w->widget[DEPOT_WIDGET_LOCATION].right / 3;
 	w->widget[DEPOT_WIDGET_LOCATION].left  = w->widget[DEPOT_WIDGET_BUILD].right * 2;
 	w->widget[DEPOT_WIDGET_CLONE].left     = w->widget[DEPOT_WIDGET_BUILD].right + 1;
@@ -650,6 +653,10 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 				case DEPOT_WIDGET_SELL_ALL:
 					ShowDepotSellAllWindow(w->window_number, WP(w, depot_d).type);
+					break;
+
+				case DEPOT_WIDGET_AUTOREPLACE:
+					DoCommandP(w->window_number, WP(w, depot_d).type, 0, NULL, CMD_DEPOT_MASS_AUTOREPLACE);
 					break;
 
 			}
@@ -812,6 +819,7 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_HANGAR_TOOLTIP;
 			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_HANGAR_TOOLTIP;
 			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_HANGAR_TIP;
 			break;
 	}
 }

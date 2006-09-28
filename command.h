@@ -138,7 +138,7 @@ enum {
 	CMD_CLONE_VEHICLE                = 116,
 	CMD_MASS_START_STOP              = 117,
 	CMD_DEPOT_SELL_ALL_VEHICLES      = 118,
-
+	CMD_DEPOT_MASS_AUTOREPLACE       = 119,
 };
 
 enum {

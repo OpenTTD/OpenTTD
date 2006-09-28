@@ -26,6 +26,7 @@
 #include "station.h"
 #include "rail.h"
 #include "train.h"
+#include "aircraft.h"
 #include "industry_map.h"
 #include "station_map.h"
 #include "water_map.h"
@@ -590,7 +591,7 @@ void Ship_Tick(Vehicle *v);
 void Train_Tick(Vehicle *v);
 static void EffectVehicle_Tick(Vehicle *v);
 void DisasterVehicle_Tick(Vehicle *v);
-static void MaybeReplaceVehicle(Vehicle *v);
+static int32 MaybeReplaceVehicle(Vehicle **original_vehicle, bool check, bool display_costs);
 
 // head of the linked list to tell what vehicles that visited a depot in a tick
 static Vehicle* _first_veh_in_depot_list;
@@ -670,7 +671,7 @@ void CallVehicleTicks(void)
 	while (v != NULL) {
 		Vehicle *w = v->depot_list;
 		v->depot_list = NULL; // it should always be NULL at the end of each tick
-		MaybeReplaceVehicle(v);
+		MaybeReplaceVehicle(&v, false, true);
 		v = w;
 	}
 }
@@ -1678,6 +1679,72 @@ int32 CmdDepotSellAllVehicles(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	return cost;
 }
 
+/** Autoreplace all vehicles in the depot
+* @param tile Tile of the depot where the vehicles are
+* @param p1 Type of vehicle
+* @param p2 Unused
+*/
+int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	Vehicle **vl = NULL;
+	uint16 engine_list_length = 0;
+	uint16 engine_count = 0;
+	uint i, x = 0, y = 0, z = 0;
+	int32 cost = 0;
+	byte vehicle_type = GB(p1, 0, 8);
+
+
+	if (!IsTileOwner(tile, _current_player)) return CMD_ERROR;
+
+	/* Get the list of vehicles in the depot */
+	BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
+
+
+	for (i = 0; i < engine_count; i++) {
+		Vehicle *v = vl[i];
+		bool stopped = !(v->vehstatus & VS_STOPPED);
+		int32 ret;
+
+		/* Ensure that the vehicle completely in the depot */
+		if ((vehicle_type == VEH_Train    && !CheckTrainInDepot(v, false)) ||
+			(vehicle_type == VEH_Road     && !IsRoadVehInDepot(v)        ) ||
+			(vehicle_type == VEH_Ship     && !IsShipInDepot(v)           ) ||
+			(vehicle_type == VEH_Aircraft && !IsAircraftInHangar(v))     ) continue;
+
+		if (stopped) v->vehstatus &= ~VS_STOPPED; // Stop the vehicle
+		ret = MaybeReplaceVehicle(&v, !(flags & DC_EXEC), false);
+		if (stopped) v->vehstatus |= VS_STOPPED; // restart the vehicle if we stopped it for being replaced
+
+		if (!CmdFailed(ret)) {
+			cost += ret;
+			if (!(flags & DC_EXEC)) break;
+			x = v->x_pos;
+			y = v->y_pos;
+			z = v->z_pos;
+			/* There is a problem with autoreplace and newgrf
+			 * It's impossible to tell the length of a train after it's being replaced before it's actually done
+			 * Because of this, we can't estimate costs due to wagon removal and we will have to always return 0 and pay manually
+			 * Since we pay after each vehicle is replaced and MaybeReplaceVehicle() check if the player got enough money
+			 * we should never reach a condition where the player will end up with negative money from doing this */
+			SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+			SubtractMoneyFromPlayer(ret);
+		}
+	}
+
+	if (cost == 0) {
+		cost = CMD_ERROR;
+	} else {
+		if (flags & DC_EXEC) {
+			/* Display the cost animation now that DoCommandP() can't do it for us (see previous comments) */
+			if (IsLocalPlayer()) ShowCostOrIncomeAnimation(x, y, z, cost);
+		}
+		cost = 0;
+	}
+
+	free(vl);
+	return cost;
+}
+
 /** Clone a vehicle. If it is a train, it will clone all the cars too
  * @param tile tile of the depot where the cloned vehicle is build
  * @param p1 the original vehicle's index
@@ -1980,10 +2047,13 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
  * (used to be called autorenew)
  * @param v The vehicle to replace
  * if the vehicle is a train, v needs to be the front engine
- * @return pointer to the new vehicle, which is the same as the argument if nothing happened
+ * @param check Checks if the replace is valid. No action is done at all
+ * @param display_costs If set, a cost animation is shown (only if check is false)
+ * @return CMD_ERROR if something went wrong. Otherwise the price of the replace
  */
-static void MaybeReplaceVehicle(Vehicle *v)
+static int32 MaybeReplaceVehicle(Vehicle **original_vehicle, bool check, bool display_costs)
 {
+	Vehicle *v = *original_vehicle;
 	Vehicle *w;
 	const Player *p = GetPlayer(v->owner);
 	byte flags = 0;
@@ -2047,7 +2117,7 @@ static void MaybeReplaceVehicle(Vehicle *v)
 		} while (w->type == VEH_Train && (w = GetNextVehicle(w)) != NULL);
 
 		if (!(flags & DC_EXEC) && (p->money64 < (int32)(cost + p->engine_renew_money) || cost == 0)) {
-			if (p->money64 < (int32)(cost + p->engine_renew_money) && ( _local_player == v->owner ) && cost != 0) {
+			if (!check && p->money64 < (int32)(cost + p->engine_renew_money) && ( _local_player == v->owner ) && cost != 0) {
 				StringID message;
 				SetDParam(0, v->unitnumber);
 				switch (v->type) {
@@ -2063,11 +2133,15 @@ static void MaybeReplaceVehicle(Vehicle *v)
 			}
 			if (stopped) v->vehstatus &= ~VS_STOPPED;
 			_current_player = OWNER_NONE;
-			return;
+			return CMD_ERROR;
 		}
 
 		if (flags & DC_EXEC) {
 			break; // we are done replacing since the loop ran once with DC_EXEC
+		} else if (check) {
+			/* It's a test only and we know that we can do this
+			 * NOTE: payment for wagon removal is NOT included in this price */
+			return cost;
 		}
 		// now we redo the loop, but this time we actually do stuff since we know that we can do it
 		flags |= DC_EXEC;
@@ -2093,14 +2167,18 @@ static void MaybeReplaceVehicle(Vehicle *v)
 			w = GetNextVehicle(w);
 			DoCommand(0, (INVALID_VEHICLE << 16) | temp->index, 0, DC_EXEC, CMD_MOVE_RAIL_VEHICLE);
 			MoveVehicleCargo(v, temp);
-			cost += DoCommand(0, temp->index, 0, flags, CMD_SELL_VEH(temp->type));
+			cost += DoCommand(0, temp->index, 0, DC_EXEC, CMD_SELL_RAIL_WAGON);
 		}
 	}
 
-	if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
+	original_vehicle = &v;
 
 	if (stopped) v->vehstatus &= ~VS_STOPPED;
-	_current_player = OWNER_NONE;
+	if (display_costs) {
+		if (IsLocalPlayer()) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
+		_current_player = OWNER_NONE;
+	}
+	return cost;
 }
 
 /* Extend the list size for BuildDepotVehicleList() */
