@@ -5,4 +5,4 @@
 
 void GenerateTerrainPerlin(void);
 
-#endif
+#endif /* TGP_H */

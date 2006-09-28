@@ -349,4 +349,4 @@ static inline void MakeRailWaypoint(TileIndex t, Owner o, Axis a, RailType r, ui
 	_m[t].m5 = RAIL_TILE_DEPOT_WAYPOINT | RAIL_SUBTYPE_WAYPOINT | a;
 }
 
-#endif
+#endif /* RAIL_MAP_H */

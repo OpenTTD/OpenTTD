@@ -1,5 +1,8 @@
 /* $Id$ */
 
+#ifndef UNMOVABLE_MAP_H
+#define UNMOVABLE_MAP_H
+
 enum {
 	HQ_NUM_TILE = 4,
 	HQ_NUM_SIZE = 5
@@ -114,3 +117,5 @@ static inline void MakeCompanyHQ(TileIndex t, Owner o)
 	MakeUnmovable(t + TileDiffXY(1, 0), UNMOVABLE_HQ_EAST, o);
 	MakeUnmovable(t + TileDiffXY(1, 1), UNMOVABLE_HQ_SOUTH, o);
 }
+
+#endif /* UNMOVABLE_MAP_H */

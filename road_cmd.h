@@ -7,4 +7,4 @@
 
 void DrawRoadDepotSprite(int x, int y, DiagDirection dir);
 
-#endif
+#endif /* ROAD_CMD_H */

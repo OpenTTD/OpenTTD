@@ -1,5 +1,8 @@
 /* $Id$ */
 
+#ifndef SHIP_H
+#define SHIP_H
+
 #include "vehicle.h"
 
 void CcCloneShip(bool success, TileIndex tile, uint32 p1, uint32 p2);
@@ -14,3 +17,5 @@ static inline bool IsShipInDepotStopped(const Vehicle* v)
 {
 	return IsShipInDepot(v) && v->vehstatus & VS_STOPPED;
 }
+
+#endif /* SHIP_H */

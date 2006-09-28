@@ -15,4 +15,4 @@ static inline void MakeVoid(TileIndex t)
 	_m[t].extra = 0;
 }
 
-#endif
+#endif /* VOID_MAP_H */

@@ -1,5 +1,8 @@
 /* $Id$ */
 
+#ifndef DATE_H
+#define DATE_H
+
 /**
  * 1 day is 74 ticks; _date_fract used to be uint16 and incremented by 885. On
  *                    an overflow the new day begun and 65535 / 885 = 74.
@@ -52,3 +55,5 @@ extern DateFract _date_fract;
 void SetDate(Date date);
 void ConvertDateToYMD(Date date, YearMonthDay *ymd);
 Date ConvertYMDToDate(Year year, Month month, Day day);
+
+#endif /* DATE_H */

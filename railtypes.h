@@ -1,5 +1,8 @@
 /* $Id$ */
 
+#ifndef RAILTYPES_H
+#define RAILTYPES_H
+
 /** @file railtypes.h
  * All the railtype-specific information is stored here.
  */
@@ -207,3 +210,5 @@ RailtypeInfo _railtypes[] = {
 		2,
 	},
 };
+
+#endif /* RAILTYPES_H */

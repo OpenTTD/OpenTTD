@@ -301,4 +301,4 @@ static inline void MakeOilrig(TileIndex t, StationID sid)
 	MakeStation(t, OWNER_NONE, sid, GFX_OILRIG_BASE);
 }
 
-#endif
+#endif /* STATION_MAP_H */

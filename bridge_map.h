@@ -232,4 +232,4 @@ static inline void MakeRailBridgeMiddle(TileIndex t, uint bridgetype, uint piece
 }
 
 
-#endif
+#endif /* BRIDGE_MAP_H */

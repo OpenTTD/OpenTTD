@@ -60,4 +60,4 @@ static inline void MakeRailTunnel(TileIndex t, Owner o, DiagDirection d, RailTyp
 	_m[t].m5 = TRANSPORT_RAIL << 2 | d;
 }
 
-#endif
+#endif /* TUNNEL_MAP_H */

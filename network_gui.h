@@ -5,4 +5,4 @@
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
 
-#endif
+#endif /* NETWORK_GUI_H */

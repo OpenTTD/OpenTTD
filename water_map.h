@@ -139,4 +139,4 @@ static inline void MakeLock(TileIndex t, Owner o, DiagDirection d)
 	MakeLockTile(t + delta, o, LOCK_UPPER + d);
 }
 
-#endif
+#endif /* WATER_MAP_H */

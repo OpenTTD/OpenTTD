@@ -38,4 +38,4 @@ static inline Slope ComplementSlope(Slope s)
 	return (Slope)(0xF ^ s);
 }
 
-#endif
+#endif /* SLOPE_H */

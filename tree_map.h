@@ -128,4 +128,4 @@ static inline void MakeTree(TileIndex t, TreeType type, uint count, uint growth,
 	_m[t].m5 = count << 6 | growth;
 }
 
-#endif
+#endif /* TREE_MAP_H */

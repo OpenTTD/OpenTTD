@@ -56,4 +56,3 @@ typedef struct Livery {
 } Livery;
 
 #endif /* LIVERY_H */
-

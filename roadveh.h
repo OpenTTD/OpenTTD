@@ -1,5 +1,8 @@
 /* $Id$ */
 
+#ifndef ROADVEH_H
+#define ROADVEH_H
+
 #include "vehicle.h"
 
 
@@ -15,3 +18,5 @@ static inline bool IsRoadVehInDepotStopped(const Vehicle* v)
 }
 
 void CcCloneRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2);
+
+#endif /* ROADVEH_H */

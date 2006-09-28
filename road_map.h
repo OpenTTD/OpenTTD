@@ -210,4 +210,4 @@ static inline void MakeRoadDepot(TileIndex t, Owner owner, DiagDirection dir)
 	_m[t].m5 = ROAD_TILE_DEPOT << 4 | dir;
 }
 
-#endif
+#endif /* ROAD_MAP_H */

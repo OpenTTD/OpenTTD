@@ -5,4 +5,4 @@
 
 void UpdateCompanyHQ(Player *p, uint score);
 
-#endif
+#endif /* UNMOVABLE_H */

@@ -23,4 +23,4 @@ static inline RoadBits DiagDirToRoadBits(DiagDirection d)
 	return (RoadBits)(1U << (3 ^ d));
 }
 
-#endif
+#endif /* ROAD_H */

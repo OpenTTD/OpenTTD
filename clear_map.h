@@ -142,4 +142,4 @@ static inline void MakeField(TileIndex t, uint field_type, uint16 industry)
 	SetClearGroundDensity(t, CLEAR_FIELDS, 3);
 }
 
-#endif
+#endif /* CLEAR_MAP_H */
