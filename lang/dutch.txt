@@ -2190,6 +2190,15 @@ STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Klein Vliegtuig
 STR_LIVERY_LARGE_PLANE                                          :Groot Vliegtuig
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Laat de algemene kleurschema's zien
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Laat trein kleurschema's zien
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Laat wegvoertuig kleurschema's zien
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Laat schip kleurschema's zien
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Laat de vliegtuig kleurschema's zien
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Kies de oofdkleur voor het geselecteerde schema
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Kies de tweede kleur voor het geselecteerde schema
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Kies een kleurschema om te wijzigen, of meerdere schema's met CTRL+klik. Klik in het venster het gebruik van het kleurschema te kiezen
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Stoom)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2891,6 +2900,16 @@ STR_SEND_TO_DEPOTS                                              :{BLACK}Stuur na
 STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Stuur alle voertuigen in de lijst naar depots.
 STR_SEND_TO_HANGARS                                             :{BLACK}Stuur naar Hangars
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Stuur alle voertuigen in de lijst naar hangars.
+
+STR_SELL                                                        :{BLACK}Verkoop
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Je staat op het punt alle voertuigen in het depot te verkopen.
+STR_ARE_YOU_SURE                                                :{BLACK}Weet je het zeker?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Bevestig dat je alle voertuigen in het depot wilt verkopen
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Bevestig dat je alle vliegtuigen in de hangar wilt verkopen
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Verkoop niet alle voertuigen in het depot
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Verkoop niet alle vliegtuigen in de hangar
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Verkoop alle voertuigen in het depot
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Verkoop alle vliegtuigen in de hangar
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vervang voertuigen
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}

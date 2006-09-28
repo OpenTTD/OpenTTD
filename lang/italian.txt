@@ -2901,6 +2901,16 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Manda tu
 STR_SEND_TO_HANGARS                                             :{BLACK}Manda agli Hangar
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Manda tutti gli aerei in lista all'hangar. CTRL+click solo servizio
 
+STR_SELL                                                        :{BLACK}Vendi
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Stai per vendere tutti i veicoli nel deposito
+STR_ARE_YOU_SURE                                                :{BLACK}Sei sicuro?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Conferma che vuoi vendere tutti i veicoli nel deposito
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Conferma che vuoi vendere tutti gli aerei nell'hangar
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Non vendere tutti i veicoli nel deposito
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Non vendere tutti gli aerei nell'hangar
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vendi tutti i veicoli nel deposito
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vendi tutti gli aerei nell'hangar
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inizia Rimpiazzo Veicoli

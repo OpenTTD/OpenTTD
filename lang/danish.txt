@@ -1014,7 +1014,7 @@ STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Brug fo
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillad bygning af meget lange broer: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillad go til depot ordrer: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Tillad gå til depot ordrer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Tillad opførslen af råmateriale industrier: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Tillad flere af samme slags industri per by: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Tillad at flere af samme slags industri kan være tæt på hinanden: {ORANGE}{STRING}
@@ -1069,6 +1069,9 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max sta
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landskabs værktøjsbaren til skinne/vej/vand/lufthavn værktøjsbaren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Når der scrolles med musen, flyt viewet i den modsatte retning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis firmafarver: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eget firma
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle firmaer
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal lastbiler per spiller: {ORANGE}{STRING}
@@ -2165,6 +2168,23 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} er blevet overtaget af {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Dette selskab sælger ikke aktier endnu...
 
+STR_LIVERY_STEAM                                                :Damplokomotiv
+STR_LIVERY_DIESEL                                               :Diesellokomotiv
+STR_LIVERY_ELECTRIC                                             :Elektrisk lokomotiv
+STR_LIVERY_MONORAIL                                             :Monorail-lokomotiv
+STR_LIVERY_FREIGHT_WAGON                                        :Godsvogn
+STR_LIVERY_BUS                                                  :Bus
+STR_LIVERY_TRUCK                                                :Lastbil
+STR_LIVERY_PASSENGER_SHIP                                       :Passagerfærge
+STR_LIVERY_FREIGHT_SHIP                                         :Fragtskib
+STR_LIVERY_HELICOPTER                                           :Helikopter
+STR_LIVERY_SMALL_PLANE                                          :Lille fly
+STR_LIVERY_LARGE_PLANE                                          :Stort fly
+
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Vis farveskemaer for tog
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Vis farveskemaer for fly
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Vælg et farveskema, som skal ændres, eller flere farveskemaer vha. CTRL+klik. Klik på boksen for at slå brug af farveskemaet til/fra
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Damp)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2451,12 +2471,14 @@ STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Gå uden stop ti
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Gå uden stop til {STATION} (Fuld Last)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Gå uden stop til {STATION} (Overfør og vent på fuld last)
 STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} Togdepot
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} depot
+STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} Togdepot
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} depot
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden stop i {TOWN} depot
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden stop i {TOWN} Togdepot
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} togdepot
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kører til {TOWN} depot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} Togdepot
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kører til {TOWN} Togdepot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :
 
 STR_INVALID_ORDER                                               :{RED} (Ugyldig Order)
 
@@ -2591,6 +2613,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Lastbil {COMMA} venter i depot
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Kører til {TOWN} Lastbilsdepot
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Kører til {TOWN} Lastbilsdepot, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan ikke sende køretøj i depot...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt depot
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Lastlastbiler - klik på et køretøj for information
@@ -2661,6 +2685,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt depot
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Sejler til {TOWN} Skibsdepot
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Sejler til {TOWN} Skibsdepot, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skib {COMMA} venter i depot
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Byg havn
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Byg skibsdepot (til bygning og servicering af skibe)
@@ -2726,6 +2752,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Kan ikke sende flyet til en hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Flyver til {STATION} Hangar
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Flyver til {STATION} Hangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Fly {COMMA} venter i flyhangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Fly i vejen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte fly...
@@ -2854,6 +2882,21 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordre af {COMMA} transportmiddel{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, som har den samme rute
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Send til garage
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Send alle køretøjer på listen til garage. CTRL+klik sender dem kun til eftersyn
+STR_SEND_TO_HANGARS                                             :{BLACK}Send til hangar
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Send alle fly på listen til hangar. CTRL+klik sender dem kun til eftersyn
+
+STR_SELL                                                        :{BLACK}Sælg
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du er ved at sælge alle køretøjer i depotet
+STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Bekræft at du vil sælge alle køretøjer i depotet
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Bekræft at du vil sælge alle fly i hangaren
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Sælg ikke alle køretøjer i depotet
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Sælg ikke alle fly i hangaren
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sælg alle køretøjer i depotet
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sælg alle fly i hangaren
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Udskift Køretøjer
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Udskift {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start udskiftning
@@ -2875,6 +2918,11 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Køretøje
 
 STR_ENGINES                                                     :Lokomotiver
 STR_WAGONS                                                      :Vogne
+
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Klik for at stoppe alle køretøjer i garagen
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Klik for at starte alle køretøjer i garagen
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Klik for at stoppe alle fly i hangaren
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Klik for at starte alle fly i hangaren
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste of skilte - {COMMA} Skilte

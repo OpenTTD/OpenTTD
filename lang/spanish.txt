@@ -2902,6 +2902,16 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Enviar t
 STR_SEND_TO_HANGARS                                             :{BLACK}Enviar a los Hangares
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Enviar todos las aeronaves de la lista al hangar. CTRL+click solo para servicio
 
+STR_SELL                                                        :{BLACK}Vender
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Estás a punto de vender todos los vehículos del depósito
+STR_ARE_YOU_SURE                                                :{BLACK}¿Estás seguro?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Confirma si deseas vender todos los vehículos del depósito
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Confirma si quieres vender todas las aeronaves del hangar
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}No vender todos los vehículos del depósito
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}No vender todas las aeronaves del hangar
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vender todos los vehículos del depósito
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vender todas las aeronaves del hangar
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplazar vehículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Empezar a reemplazar vehículos

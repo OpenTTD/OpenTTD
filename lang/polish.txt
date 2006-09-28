@@ -3030,6 +3030,18 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Wyslij w
 STR_SEND_TO_HANGARS                                             :{BLACK}Wyslij do hangarow
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Wyslij wszystkie samoloty z listy do hangarow.
 
+STR_SELL                                                        :{BLACK}Sprzedaj
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Sprzedasz wszystkie pojazdy z zajezdni
+STR_ARE_YOU_SURE                                                :{BLACK}Jestes pewien?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Potwierdz chec sprzedania wszystkich pojazdow z zajezdni
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Potwierdz chec sprzedania wszystkich samolotow z hangaru
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Nie sprzedawaj wszystkich pojazdow z zajezdni
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Nie sprzedawaj wszystkich samolotow z hangaru
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sprzedaj wszystkie pojazdy z zajezdni
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sprzedaj wszystkie samoloty z hangaru
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Zamien wszystkie pojazdy w zajezdni
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Zamien wszystkie samoloty w hangarze
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Zastap pojazdy
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastap {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpocznij zastepowanie

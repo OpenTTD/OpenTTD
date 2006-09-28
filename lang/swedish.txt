@@ -802,9 +802,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Flytta k
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valutaenheter
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Välj valutaenhet
-STR_MEASURING_UNITS                                             :{BLACK}Uppmäter enheter
+STR_MEASURING_UNITS                                             :{BLACK}Mätenheter
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Uppmäter markerade enheter
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Val av mätenheter
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Vägfordon
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Välj sida av vägen som fordonen kör på
@@ -1008,7 +1008,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Tillåt 
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Tillåt borttagning av mera stadsägda vägar etc.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Tillåt väldigt långa tåg: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Aktivera realistisk acceleration för tåg: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Förbjud tåg och skepp att göra 90 graders svängar: {ORANGE}{STRING} {LTBLUE} (kräver NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Förbjud tåg och skepp att göra 90° svängar: {ORANGE}{STRING} {LTBLUE} (kräver NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Kombinera tågstationer som byggs bredvid varandra: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Lämna stationen när något gods är fullt, om 'full load': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Använd förbättrad algoritm: {ORANGE}{STRING}
@@ -1041,7 +1041,7 @@ STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Varna o
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Fordon blir aldrig gamla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Förnya fordon automatiskt när dom blir gamla
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Förnya automatiskt fordon {ORANGE}{STRING}{LTBLUE} månader före/efter maximal ålder
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minst mängd pengar i kassan för automatisk förnyelse av fordon: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Minst mängd pengar för auto-förnyelse av fordon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Hur länge felmeddelanden visas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Visa befolkningsmängd i stadsnamnet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Osynliga träd (när genomskinliga byggnader är valt): {ORANGE}{STRING}
@@ -1066,9 +1066,9 @@ STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Medsols
 STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Uppdaterings intervall: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Vilken nivåhöjd en platt scenario-karta får: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximal spridning av en station: {ORANGE}{STRING} {RED}Varning: Hög inställning slöar ner spelet
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max spridning av station: {ORANGE}{STRING} {RED}Varning: Hög inställning slöar ner spelet
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Serva helikoptrar vid landningplattor automatiskt: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koppla landskapsverktygsfältet till järnväg/väg/vatten/flygplats-verktygsfältet: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koppla landskapsverktyget till övriga verktygsfält: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Omvänd scrollriktning: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Visa färgschema för företag: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Inga
@@ -2170,6 +2170,7 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} har tagits över av {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Det här företaget bedriver inte aktiehandel ännu....
 
+STR_LIVERY_DEFAULT                                              :Standard färger
 STR_LIVERY_STEAM                                                :Ånglok
 STR_LIVERY_DIESEL                                               :Disellok
 STR_LIVERY_ELECTRIC                                             :Elektriskt lok
@@ -2177,7 +2178,7 @@ STR_LIVERY_MONORAIL                                             :Monoraillok
 STR_LIVERY_MAGLEV                                               :Maglevlok
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passenger Coach (Ånglok)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagerarvagn (Ånglok)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagerarvagn (Disel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagerarvagn (Elektrisk)
 STR_LIVERY_FREIGHT_WAGON                                        :Godsvagn
@@ -2899,6 +2900,16 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Skicka a
 STR_SEND_TO_HANGARS                                             :{BLACK}Skicka till hangarer
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Skicka alla flyplan i listan till hangar. CTRL+klick för service endast
 
+STR_SELL                                                        :{BLACK}Sälj
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du är på väg att sälja alla fordon i depån.
+STR_ARE_YOU_SURE                                                :{BLACK}Är du säker?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Bekräfta att du vill sälja alla fordon i depån
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Bekräfta att du vill sälja alla flygplan i hangaren
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Sälj inte alla fordon i depån
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Sälj inte alla flygplan i hangaren
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sälj alla fordon i depån
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sälj alla flygplan i hangaren
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Byt ut fordon
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Byt ut {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Börja byta ut fordon
@@ -2966,7 +2977,7 @@ STR_TREE_PLACER                                                 :{BLACK}Träd alg
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotation på höjdkarta:
 STR_TERRAIN_TYPE                                                :{BLACK}Typ av terräng:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Havsnivå
-STR_SMOOTHNESS                                                  :{BLACK}Mjukhet:
+STR_SMOOTHNESS                                                  :{BLACK}Framkomlighet:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Snölinjens höjd:
 STR_DATE                                                        :{BLACK}Datum:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Antal städer:
@@ -3003,7 +3014,7 @@ STR_SE_CAPTION                                                  :{WHITE}Scenarot
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flytta den platta landytan ner ett steg
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flytta den platta landytan upp ett steg
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Ändra höjden på den platta landytan
-STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Den platta landytans höjd:
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Landhöjd (endast platt):
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrera den lilla kartan på den nuvarande positionen

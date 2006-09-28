@@ -2293,7 +2293,9 @@ STR_LIVERY_SMALL_PLANE                                          :Kis repülõgép
 STR_LIVERY_LARGE_PLANE                                          :Nagy repülõgép
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Általános szinsémák mutatása
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Vonat szinsémák mutatása
 STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mutasd a közúti jármûvek szinsémáit
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Hajó szinsémák mutatása
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Repülõgép szinsémák mutatása
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Válassz egy elsõdleges szint a kiválasztott sémához
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Válassz egy másodlagos szint a kiválasztott sémához
@@ -3000,6 +3002,7 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}A listán
 STR_SEND_TO_HANGARS                                             :{BLACK}Hangárba küldés
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}A listán szereplô összes repülô hangárba küldése. CTRL+kattintásra csak javításra küld.
 
+STR_SELL                                                        :{BLACK}Elad
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Te éppen a depotban lévõ jármûveket készülsz eladni
 STR_ARE_YOU_SURE                                                :{BLACK}Biztos vagy benne?
 STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Erõsítsd meg a jármûvek eladásáról szóló szándékodat

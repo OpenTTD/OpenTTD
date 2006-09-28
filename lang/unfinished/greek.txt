@@ -49,6 +49,7 @@ STR_002A_TOFFEE                                                 :Τόφυ
 STR_002B_BATTERIES                                              :Μπαταρίες
 STR_002C_PLASTIC                                                :Πλαστικά
 STR_002D_FIZZY_DRINKS                                           :Αναψυκτικά
+STR_002E                                                        :
 STR_002F_PASSENGER                                              :Επιβάτης
 STR_0030_COAL                                                   :Άνθρακας
 STR_0031_MAIL                                                   :Αλληλογραφία
@@ -219,6 +220,7 @@ STR_0140_NEW_GAME                                               :{BLACK}Νέο �
 STR_0141_LOAD_GAME                                              :{BLACK}Φόρτωση Παιχνιδιού
 
 STR_128                                                         :128
+STR_256                                                         :256
 STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_0148_GAME_OPTIONS                                           :{BLACK}Επιλογές Παιχνιδιού
@@ -563,6 +565,7 @@ STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Πλήρ
 STR_0292_SAVE_SCENARIO                                          :Απποθήκευση σεναρίου
 STR_0293_LOAD_SCENARIO                                          :Φόρτωση σεναρίου
 STR_0294_QUIT_EDITOR                                            :Έξοδος από το Συντάκτη
+STR_0295                                                        :
 STR_0296_QUIT                                                   :Έξοδος
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Αποθήκευση σεναρίου, φόρτωση, παραίτηση συντάκτη, έξοδος
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Φόρτωση Σεναρίου
@@ -615,6 +618,7 @@ STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Δια
 
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Πληροφορίες περιοχής εδάφους
+STR_02D6                                                        :
 STR_02D7_SCREENSHOT_CTRL_S                                      :Φωτογραφία εικόνας (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Γιγαντιαία Φωτογραφία Εικόνας (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :Σχετικά με το 'OpenTTD'
@@ -925,6 +929,7 @@ STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {COMPANY}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τριπλά για το επόμενο έτος!
 STR_2034_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Η επιχορήγηση υπηρεσίας απονεμήθη στην εταιρεία {COMPANY}!{}{}Η υπηρεσία για {STRING} από το σταθμό {STATION} προς το σταθμό {STATION} θα χρεώνεται τετραπλά για το επόμενο έτος!
 STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Η τοπική αρχή της πόλης {TOWN} αρνείται να επιτρέψει τη δημιουργία νέου αεροδρομίου
+STR_2036_COTTAGES                                               :Χωράφια
 STR_2037_HOUSES                                                 :Σπίτια
 STR_2038_FLATS                                                  :Διαμερίσματα
 STR_2039_TALL_OFFICE_BLOCK                                      :Ψηλό συγκρότημα γραφείων
@@ -952,29 +957,223 @@ STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Έναρξη μεγάλης τοπικής διαφημιστικής καμπάνιας, για να προσελκύσετε περισσότερους επιβάτες και εμπορεύματα στις μεταφορικές σας υπηρεσίες.{}  Κόστος: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Επιχορηγήστε την ανακατασκευή του τοπικού οδικού δικτύου. Προκαλεί σοβαρή ενόχληση στην τοπικό οδικό δίκτυο για έως 6 μήνες.{}  Κόστος: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Χτίστε ένα άγαλμα προς τιμήν της εταιρείας σας.{} Κόστος: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Χρηματοδοτήστε την κατασκευή νέων εμπορικών κτιρίων στην πόλη.{}  Κόστος: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Αγορά αποκλειστικών δικαιωμάτων διάρκειας 1 χρόνου για την πόλη. Η τοπική αρχή θα επιτρέπει στους επιβάτες και τα φορτία να χρησιμοποιούν μόνο τους σταθμούς της εταιρείας σας.{} Κόστος: {CURRENCY}
+STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Χαώδης κίνηση στην πόλη {TOWN}!{}{}Χρηματοδοτήθηκε πρόγραμμα επανακατασκευής των δρόμων από την εταιρεία {COMPANY} και προκαλεί 6 μήνες μιζέριας στους οδηγούς!
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
+STR_2058_UNDER_CONSTRUCTION                                     :{STRING} (υπό κατασκευή)
+STR_2059_IGLOO                                                  :Ιγκλού
+STR_205A_TEPEES                                                 :Σκηνές ινδιάνων
+STR_205B_TEAPOT_HOUSE                                           :Σπίτι-Καφετιέρα
+STR_205C_PIGGY_BANK                                             :Τράπεζα-κουμπαράς
 
 
 ##id 0x2800
+STR_2800_PLANT_TREES                                            :Φύτευση δέντρων
+STR_2801_PLACE_SIGN                                             :Τοποθέτηση σηματοδότη
+STR_2802_TREES                                                  :{WHITE}Δέντρα
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...υπάρχει ήδη δέντρο εδώ
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...ακατάλληλη τοποθεσία
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Δεν γίνεται να φυτευθεί δέντρο εδώ...
+STR_2806                                                        :{WHITE}{STRING}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...πάρα πολλοί σηματοδότες
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Δεν γίνεται να τοποθετηθεί σηματοδότης εδώ...
+STR_280A_SIGN                                                   :Πινακίδα
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Αλλαγή κειμένου πινακίδας
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Δεν γίνεται να αλλαχθεί το κείμενο της πινακίδας...
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Επιλέξτε τύπο δέντρου για φύτευση
+STR_280E_TREES                                                  :Δέντρα
+STR_280F_RAINFOREST                                             :Δάσος
+STR_2810_CACTUS_PLANTS                                          :Κάκτοι
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Επιλογή Σιδηροδρομικού Σταθμού
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Επιλογή Αεροδρομίου
+STR_3002_ORIENTATION                                            :{BLACK}Προσανατολισμός
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Αριθμός γραμμών
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}Μήκος Πλατφόρμας
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Πολύ κοντά σε άλλο σιδηροδρομικό σταθμό
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Γειτονεύει με περισσότερες από μια υπάρχουσες περιοχές σταθμών/φόρτωσης
+STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Πάρα πολλές περιοχές σταθμών/φόρτωσης σε αυτή την πόλη
+STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Πάρα πολλές περιοχές σταθμών/φόρτωσης
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Πάρα πολλές στάσεις λεωφορείου
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Πάρα πολλοί σταθμοί φορτηγών
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Πολύ κοντά σε μιά άλλη περιοχή σταθμού/φόρτωσης
+STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Πρέπει να κατεδαφιστεί ο σιδηροδρομικός σταθμός πρώτα
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Πολύ κοντά σε άλλο αεροδρόμιο
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Πρέπει να κατεδαφιστεί το αεροδρόμιο πρώτα
 
+STR_3030_RENAME_STATION_LOADING                                 :Μετονομασία περιοχής σταθμού/φόρτωσης
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Αδύνατο να μετονομαστεί ο σταθμός...
+STR_3032_RATINGS                                                :{BLACK}Βαθμολογίες
+STR_3033_ACCEPTS                                                :{BLACK}Δέχεται
+STR_3034_LOCAL_RATING_OF_TRANSPORT                              :{BLACK}Τοπική βαθμολογία υπηρεσίας μεταφοράς:
 
 ############ range for rating starts
+STR_3035_APPALLING                                              :Απαίσια
+STR_3036_VERY_POOR                                              :Πολύ Κακή
+STR_3037_POOR                                                   :Κακή
+STR_3038_MEDIOCRE                                               :Μέτρια
+STR_3039_GOOD                                                   :Καλή
+STR_303A_VERY_GOOD                                              :Πολύ Καλή
+STR_303B_EXCELLENT                                              :Εξαιρετική
+STR_303C_OUTSTANDING                                            :Καταπληκτική
 ############ range for rating ends
 
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}Ο σταθμός {STATION} δεν δέχεται πια {STRING} ούτε {STRING}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}Ο σταθμός {STATION} τώρα δέχεται {STRING} και {STRING}
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Προσανατολισμός Στάσης Λεωφορείου
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Προς. Στάσης Λεωφορείου
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Πρέπει να κατεδαφιστεί η στάσης λεωφορείου πρώτα
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Πρέπει να κατεδαφιστεί ο σταθμός φορτηγών πρώτα
+STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Σταθμός{P "" s}
+STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_304A_NONE                                                   :{YELLOW}- Κανένα -
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}...ακατάλληλη τοποθεσία
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Πολύ κοντά σε άλλη αποβάθρα
+STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Πρέπει να κατεδαφιστεί η αποβάθρα πρώτα
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Επιλογή προσανατολισμού σιδηροδρομικού σταθμού
+STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Επιλέξτε τον αριθμό πλατφορμών για το σιδηροδρομικό σταθμό
+STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Επιλέξτε το μήκος του σιδηροδρομικού σταθμού
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Επιλέξτε τον προσανατολισμό της στάσης των λεωφορείων
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Επιλέξτε τον προσανατολισμό του χώρου φόρτωσης φορτηγών
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Κεντράρισμα εικόνας στην τοποθεσία του σταθμού
+STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Εμφάνιση στατιστικών σταθμού
+STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Αλλαγή ονόματος του σταθμού
+STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Εμφάνιση λίστας αποδεκτών φορτίων
+STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Ονόματα σταθμών - Κλικ στο όνομα για κεντράρισμα εικόνας
+STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Επιλογή μεγέθους/τύπου αεροδρομίου
+STR_305C_0                                                      :{STATION} {STATIONFEATURES}
+STR_305E_RAILROAD_STATION                                       :Σιδηροδρομικός σταθμός
+STR_305F_AIRCRAFT_HANGAR                                        :Υπόστεγο Αεροσκαφών
+STR_3060_AIRPORT                                                :Αεροδρόμιο
+STR_3061_TRUCK_LOADING_AREA                                     :Χώρος φόρτωσης φορτηγών
+STR_3062_BUS_STATION                                            :Στάση λεωφορείων
+STR_3063_SHIP_DOCK                                              :Αποβάθρα πλοίων
+STR_3064_HIGHLIGHT_COVERAGE_AREA                                :{BLACK}Εμφάνιση κάλυψης του προτεινούμενου τόπου
+STR_3065_DON_T_HIGHLIGHT_COVERAGE                               :{BLACK}Μη εμφάνιση κάλυψης του προτεινούμενου τόπου
+STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Κάλυψη περιοχής
+STR_3068_DOCK                                                   :{WHITE}Λιμάνι
+STR_3069_BUOY                                                   :Σημαδούρα
+STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...σημαδούρα στη μέση
+STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...ο σταθμός είναι υπερβολικά απλωμένος
+STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...ανομοιόμορφοι σταθμοί απενεργοποιημένοι
 
 
 ##id 0x3800
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Προσανατολισμός Αποθήκης Πλοίων
+STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...πρέπει να χτιστεί στο νερό
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Αδύνατο να χτιστεί αποθήκη πλοίων εδώ...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Επιλέξτε τον προσανατολισμό της αποθήκης πλοίων
+STR_3804_WATER                                                  :Νερό
+STR_3805_COAST_OR_RIVERBANK                                     :Ακτή ή όχθη ποταμού
+STR_3806_SHIP_DEPOT                                             :Αποθήκη πλοίων
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...Αδύνατο να χτιστεί στο νερό
 
 ##id 0x4000
+STR_4000_SAVE_GAME                                              :{WHITE}Αποθήκευση Παιχνιδιού
+STR_4001_LOAD_GAME                                              :{WHITE}Φόρτωση Παιχνιδιού
+STR_4002_SAVE                                                   :{BLACK}Αποθήκευση
+STR_4003_DELETE                                                 :{BLACK}Διαγραφή
+STR_4004                                                        :{COMPANY}, {DATE_LONG}
+STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabyte{P "" s} ελεύθερα
+STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Αδύνατη η ανάγνωση του δίσκου
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Αποθήκευση Παιχνιδιού Απέτυχε
+STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Αδύνατη η διαγραφή του αρχείου
+STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Φόρτωση Παιχνιδιού Απέτυχε
+STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Λίστα δίσκων, φακέλλων και αποθηκευμένων παιχνιδιών
+STR_400B_CURRENTLY_SELECTED_NAME                                :{BLACK}Τρέχον όνομα για το αποθηκευμένο παιχνίδι
+STR_400C_DELETE_THE_CURRENTLY_SELECTED                          :{BLACK}Διαγραφή του επιλεγμένου αποθηκευμένου παιχνιδιού
+STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Αποθήκευση παιχνιδιού, χρησιμοποιώντας το επιλεγμένο όνομα
+STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Επιλογή Τύπου Νέου Παιχνιδιού
+STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Επιλογή σεναρίου (πράσινο), προεπιλεγμένου παιχνιδιού (μπλε), ή τυχαίου νέου παιχνιδιού
+STR_4010_GENERATE_RANDOM_NEW_GAME                               :Δημιουργία τυχαίου νέου παιχνιδιού
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Φόρτωση Heightmap
 
 ##id 0x4800
+STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} στη μέση
+STR_4801                                                        :{WHITE}{INDUSTRY}
+STR_4802_COAL_MINE                                              :Ορυχείο Άνθρακα
+STR_4803_POWER_STATION                                          :Σταθμός Ηλεκτρισμού
+STR_4804_SAWMILL                                                :Πριονιστήριο
+STR_4805_FOREST                                                 :Δάσος
+STR_4806_OIL_REFINERY                                           :Διυλιστήριο
+STR_4807_OIL_RIG                                                :Πετρελαιοπηγή
+STR_4808_FACTORY                                                :Εργοστάσιο
+STR_4809_PRINTING_WORKS                                         :Εργασίες Εκτύπωσης
+STR_480A_STEEL_MILL                                             :Χαλυβουργείο
+STR_480B_FARM                                                   :Φάρμα
+STR_480C_COPPER_ORE_MINE                                        :Ορυχείο Μεταλλεύματος Χαλκού
+STR_480D_OIL_WELLS                                              :Πετρελαιοπηγές
+STR_480E_BANK                                                   :Τράπεζα
+STR_480F_FOOD_PROCESSING_PLANT                                  :Εργοστάσιο Επεξεργασίας Τροφών
+STR_4810_PAPER_MILL                                             :Μύλος Χαρτιού
+STR_4811_GOLD_MINE                                              :Χρυσορυχείο
+STR_4812_BANK                                                   :Τράπεζα
+STR_4813_DIAMOND_MINE                                           :Αδαμαντορυχείο
+STR_4814_IRON_ORE_MINE                                          :Ορυχείο Μεταλλεύματος Σιδήρου
+STR_4815_FRUIT_PLANTATION                                       :Φυτεία Φρούτων
+STR_4816_RUBBER_PLANTATION                                      :Φυτεία Λάστιχου
+STR_4817_WATER_SUPPLY                                           :Προμήθεια Νερού
+STR_4818_WATER_TOWER                                            :Πύργος Νερού
+STR_4819_FACTORY                                                :Εργοστάσιο
+STR_481A_FARM                                                   :Φάρμα
+STR_481B_LUMBER_MILL                                            :Υλοτομείο
+STR_481C_COTTON_CANDY_FOREST                                    :Δάσος Μαλλιού της Γριάς
+STR_481D_CANDY_FACTORY                                          :Εργοστάσιο Γλυκών
+STR_481E_BATTERY_FARM                                           :Φάρμα Μπαταριών
+STR_481F_COLA_WELLS                                             :Πηγές Κόλα
+STR_4820_TOY_SHOP                                               :Κατάστημα Παιχνιδιών
+STR_4821_TOY_FACTORY                                            :Εργοστάσιο Παιχνιδιών
+STR_4822_PLASTIC_FOUNTAINS                                      :Πηγές Πλαστικού
+STR_4823_FIZZY_DRINK_FACTORY                                    :Εργοστάσιο Αναψυκτικών
+STR_4824_BUBBLE_GENERATOR                                       :Γεννήτρια Φυσαλίδων
+STR_4825_TOFFEE_QUARRY                                          :Λατομείο Τόφυ
+STR_4826_SUGAR_MINE                                             :Ορυχείο Ζάχαρης
 
 ############ range for requires	starts
+STR_4827_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}
+STR_4828_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}, {STRING}
+STR_4829_REQUIRES                                               :{BLACK}Απαιτεί: {YELLOW}{STRING}, {STRING}, {STRING}
 ############ range for requires	ends
 
+STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Παραγωγή προηγούμενου μήνα:
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
+STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας
+STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Νέο {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
+STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Νέα {STRING} φυτεύεται κοντά στην πόλη {TOWN}!
+STR_482F_COST                                                   :{BLACK}Κόστος: {YELLOW}{CURRENCY}
+STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Αδύνατο να χτιστεί αυτός ο τύπος βιομηχανίας εδώ...
+STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...το δάσος μπορεί να φυτευτεί μόνο πάνω από την γραμμή χιονιού
+STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}Η βιομηχανία {INDUSTRY} ανακοίνωσε άμεσο κλείσιμο!
+STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Προβλήματα στην προμήθεια αναγκάζουν την εταιρεία {INDUSTRY} να κλείσει αμέσως!
+STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Η έλλειψη δέντρων αναγκάζει την βιομηχανία {INDUSTRY} να κλείσει αμέσως!
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Η βιομηχανία {INDUSTRY} ανεβάζει την παραγωγή!
+STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Νέα φλέβα άνθρακα βρέθηκε στο {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
+STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Νέα αποθέματα πετρελαίου βρέθηκαν στην {INDUSTRY}!{}Η παραγωγή αναμένεται να διπλασιαστεί!
+STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Βελτιωμένες μέθοδοι καλλιέργειας στην {INDUSTRY} αναμένεται να διπλασιάσουν την παραγωγή!
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Η παραγωγή στο/στη {INDUSTRY} μειώθηκε κατά 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Μόλυνση από έντομα προκαλεί καταστροφή στη {INDUSTRY}!{}Η παραγωγή μειώθηκε κατά 50%
+STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...μπορούν να τοποθετηθούν μόνο στις άκρες του χάρτη
 
 ##id 0x5000
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Τρένο στο τούνελ
+STR_5001_ROAD_VEHICLE_IN_TUNNEL                                 :{WHITE}Όχημα στο τούνελ
+STR_5003_ANOTHER_TUNNEL_IN_THE_WAY                              :{WHITE}Άλλο τουνελ στη μέση
+STR_5005_UNABLE_TO_EXCAVATE_LAND                                :{WHITE}Αδύνατο να γίνει εκσκαφή γης στην άλλη άκρη του τούνελ
+STR_5006_MUST_DEMOLISH_TUNNEL_FIRST                             :{WHITE}Πρέπει πρώτα να καταστραφεί το τούνελ
+STR_5007_MUST_DEMOLISH_BRIDGE_FIRST                             :{WHITE}Πρέπει πρώτα να καταστραφεί η γέφυρα
+STR_5008_CANNOT_START_AND_END_ON                                :{WHITE}Δεν γίνεται να ξεκινάει και να τελειώνει στο ίδιο σημείο
+STR_5009_LEVEL_LAND_OR_WATER_REQUIRED                           :{WHITE}Απαιτείται επίπεδο έδαφος ή νερό κάτω από τη γέφυρα
+STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Η αρχή και το τέλος πρέπει να είναι σε ευθεία
+STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
+STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
+STR_500E_SUSPENSION_STEEL                                       :Ατσάλινη, με Αναρτήσεις
 
 ##id 0x5800
 
@@ -995,6 +1194,7 @@ STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}Θέση δημαρχιακού συμβουλίου σχετικά με την αναδόμηση της πόλης: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
+STR_26816_NONE                                                  :Κανένα
 
 ##id 0x7000
 
@@ -1027,6 +1227,7 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Επισκευ�
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
 
 
 
