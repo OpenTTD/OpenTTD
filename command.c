@@ -156,7 +156,7 @@ DEF_COMMAND(CmdRefitRailVehicle);
 DEF_COMMAND(CmdBuildSignalTrack);
 DEF_COMMAND(CmdRemoveSignalTrack);
 
-DEF_COMMAND(CmdReplaceVehicle);
+DEF_COMMAND(CmdSetAutoReplace);
 
 DEF_COMMAND(CmdCloneVehicle);
 DEF_COMMAND(CmdMassStartStopVehicle);
@@ -303,7 +303,7 @@ static const Command _command_proc_table[] = {
 	{NULL,                                   0}, /* 112 */
 	{CmdGiveMoney,                           0}, /* 113 */
 	{CmdChangePatchSetting,         CMD_SERVER}, /* 114 */
-	{CmdReplaceVehicle,                      0}, /* 115 */
+	{CmdSetAutoReplace,                      0}, /* 115 */
 	{CmdCloneVehicle,                        0}, /* 116 */
 	{CmdMassStartStopVehicle,                0}, /* 117 */
 	{CmdDepotSellAllVehicles,                0}, /* 118 */

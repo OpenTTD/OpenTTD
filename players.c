@@ -700,7 +700,7 @@ static void DeletePlayerStuff(PlayerID pi)
  * if p1 = 5, then
  * - p2 = enable renew_keep_length
  */
-int32 CmdReplaceVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
 	if (!(_current_player < MAX_PLAYERS))
@@ -869,7 +869,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					MarkWholeScreenDirty();
 				}
 			} else if (p->index == _local_player) {
-				DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
+				DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 			}
 #ifdef ENABLE_NETWORK
 			if (_network_server) {

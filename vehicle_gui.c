@@ -989,19 +989,19 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case 17: /* toggle renew_keep_length */
-					DoCommandP(0, 5, GetPlayer(_local_player)->renew_keep_length ? 0 : 1, NULL, CMD_REPLACE_VEHICLE);
+					DoCommandP(0, 5, GetPlayer(_local_player)->renew_keep_length ? 0 : 1, NULL, CMD_SET_AUTOREPLACE);
 					break;
 
 				case 4: { /* Start replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
 					EngineID veh_to = WP(w, replaceveh_d).sel_engine[1];
-					DoCommandP(0, 3, veh_from + (veh_to << 16), NULL, CMD_REPLACE_VEHICLE);
+					DoCommandP(0, 3, veh_from + (veh_to << 16), NULL, CMD_SET_AUTOREPLACE);
 					break;
 				}
 
 				case 6: { /* Stop replacing */
 					EngineID veh_from = WP(w, replaceveh_d).sel_engine[0];
-					DoCommandP(0, 3, veh_from + (INVALID_ENGINE << 16), NULL, CMD_REPLACE_VEHICLE);
+					DoCommandP(0, 3, veh_from + (INVALID_ENGINE << 16), NULL, CMD_SET_AUTOREPLACE);
 					break;
 				}
 

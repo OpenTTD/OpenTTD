@@ -1123,19 +1123,19 @@ static int32 CheckInterval(int32 p1)
 
 static int32 EngineRenewUpdate(int32 p1)
 {
-	DoCommandP(0, 0, _patches.autorenew, NULL, CMD_REPLACE_VEHICLE);
+	DoCommandP(0, 0, _patches.autorenew, NULL, CMD_SET_AUTOREPLACE);
 	return 0;
 }
 
 static int32 EngineRenewMonthsUpdate(int32 p1)
 {
-	DoCommandP(0, 1, _patches.autorenew_months, NULL, CMD_REPLACE_VEHICLE);
+	DoCommandP(0, 1, _patches.autorenew_months, NULL, CMD_SET_AUTOREPLACE);
 	return 0;
 }
 
 static int32 EngineRenewMoneyUpdate(int32 p1)
 {
-	DoCommandP(0, 2, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
+	DoCommandP(0, 2, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 	return 0;
 }
 /* End - Callback Functions */

@@ -133,7 +133,7 @@ enum {
 	CMD_GIVE_MONEY                   = 113,
 	CMD_CHANGE_PATCH_SETTING         = 114,
 
-	CMD_REPLACE_VEHICLE              = 115,
+	CMD_SET_AUTOREPLACE              = 115,
 
 	CMD_CLONE_VEHICLE                = 116,
 	CMD_MASS_START_STOP              = 117,

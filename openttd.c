@@ -606,7 +606,7 @@ static void MakeNewGameDone(void)
 
 	_local_player = 0;
 	_current_player = _local_player;
-	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
+	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
 	MarkWholeScreenDirty();
 }
@@ -681,7 +681,7 @@ static void StartScenario(void)
 
 	_local_player = 0;
 	_current_player = _local_player;
-	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_REPLACE_VEHICLE);
+	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
 	MarkWholeScreenDirty();
 }
