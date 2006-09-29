@@ -1729,9 +1729,9 @@ int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			(vehicle_type == VEH_Ship     && !IsShipInDepot(v)           ) ||
 			(vehicle_type == VEH_Aircraft && !IsAircraftInHangar(v))     ) continue;
 
-		if (stopped) v->vehstatus &= ~VS_STOPPED; // Stop the vehicle
+		if (stopped) v->vehstatus |= VS_STOPPED; // Stop the vehicle
 		ret = MaybeReplaceVehicle(&v, !(flags & DC_EXEC), false);
-		if (stopped) v->vehstatus |= VS_STOPPED; // restart the vehicle if we stopped it for being replaced
+		if (stopped) v->vehstatus &= ~VS_STOPPED; // restart the vehicle if we stopped it for being replaced
 
 		if (!CmdFailed(ret)) {
 			cost += ret;
