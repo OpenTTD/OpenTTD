@@ -501,10 +501,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\depot_gui.c"
-				>
-			</File>
-			<File
 				RelativePath=".\music\dmusic.cpp"
 				>
 				<FileConfiguration
@@ -1217,6 +1213,10 @@
 			</File>
 			<File
 				RelativePath=".\bridge_gui.c"
+				>
+			</File>
+			<File
+				RelativePath=".\depot_gui.c"
 				>
 			</File>
 			<File
