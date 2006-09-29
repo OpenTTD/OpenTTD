@@ -2603,6 +2603,7 @@ STR_TRAIN_STOPPING                                              :{RED}Stannar
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stannar, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Fel järnvägstyp
 STR_TRAIN_NO_POWER                                              :{RED}Ingen ström
+STR_TRAIN_START_NO_CATENARY                                     :Loket kan inte starta för att detta spår saknar elledningar
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Vägfordon i vägen
@@ -2909,6 +2910,8 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Sälj int
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Sälj inte alla flygplan i hangaren
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sälj alla fordon i depån
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sälj alla flygplan i hangaren
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Förnya alla fordon i depån
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Förnya alla flygplan i hangaren
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Byt ut fordon
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Byt ut {STRING}

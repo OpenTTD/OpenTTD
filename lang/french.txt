@@ -2192,7 +2192,13 @@ STR_LIVERY_SMALL_PLANE                                          :Petit porteur
 STR_LIVERY_LARGE_PLANE                                          :Gros porteur
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Montrer les livrées générales
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Montrer les livrées de trains
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Montrer les livrées de véhicules routiers
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Montrer les livrées de navires
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Montrer les livrées des aéronefs
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Choisir la couleur primaire de la  livrée sélectionnée
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Montrer la couleur seconde de la livrée sélectionnée
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Sélectionner la livrée à modifier, ou plusieurs par CTRL+click. Cliquer sur la case pour en intervertir l'utilisation
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapeur)
@@ -2896,6 +2902,7 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Envoyer 
 STR_SEND_TO_HANGARS                                             :{BLACK}Envoyer au hangar
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Envoyer tous les aéronefs de la liste au hangar. CTRL+clic pour entretien seul
 
+STR_SELL                                                        :{BLACK}Vendre
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Vous êtes sur le point de vendre tous les véhicules du dépot
 STR_ARE_YOU_SURE                                                :{BLACK}Etes-vous sûr?
 STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Confirmer la vente de tous les véhiclues du dépôt
@@ -2904,6 +2911,8 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Ne vendr
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Ne vendre aucun des aéronefs du hangar
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vendre tous les véhicules du dépôt
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vendre tous les aéronefs du hangar
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Autoremplacer les véhicles du hangar
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Autoremplacer les aéronefs du hangar
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Remplacement véhicules
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}

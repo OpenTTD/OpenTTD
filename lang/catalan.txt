@@ -3006,7 +3006,7 @@ STR_TREE_GENERATION                                             :{BLACK}Generaci
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Generació innamovible
 STR_CLEARING_TILES                                              :{BLACK}Generar area escarpada i rocosa
 STR_SETTINGUP_GAME                                              :{BLACK}Configurant el joc
-STR_PREPARING_TILELOOP                                          :{BLACK}Passant el bucle de cel·les
+STR_PREPARING_TILELOOP                                          :{BLACK}Passant el bucle de cel.les
 STR_PREPARING_GAME                                              :{BLACK}Preparant el joc
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Aquesta acció canviarà el nivell de dificultat a personalitzat
 STR_SE_FLAT_WORLD                                               :{WHITE}Terreny pla

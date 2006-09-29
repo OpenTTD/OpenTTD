@@ -2974,6 +2974,8 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Nepredat
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Nepredat v¨etky lietadlá v hangári
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Predat v¨etky vozidlá v depe
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Predat v¨etky lietadlá v hangári
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Automaticky vymenit v¨etky vozidlá v depe
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Automaticky vymenit v¨etky lietadlá v hangári
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymena vozidiel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena {STRING}

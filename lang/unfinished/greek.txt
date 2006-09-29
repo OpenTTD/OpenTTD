@@ -219,8 +219,10 @@ STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARG
 STR_0140_NEW_GAME                                               :{BLACK}Νέο Παιχνίδι
 STR_0141_LOAD_GAME                                              :{BLACK}Φόρτωση Παιχνιδιού
 
+STR_64                                                          :64
 STR_128                                                         :128
 STR_256                                                         :256
+STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
 STR_0148_GAME_OPTIONS                                           :{BLACK}Επιλογές Παιχνιδιού
@@ -1174,8 +1176,40 @@ STR_500A_START_AND_END_MUST_BE_IN                               :{WHITE}Η αρ�
 STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Ακατάλληλη τοποθεσία για είσοδο τούνελ
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Ατσάλινη, με Αναρτήσεις
+STR_500F_GIRDER_STEEL                                           :Με Δοκούς, Ατσάλινη
+STR_5010_CANTILEVER_STEEL                                       :Κρεμαστή, Ατσάλινη
+STR_5011_SUSPENSION_CONCRETE                                    :Με αναρτήσεις, Τσιμεντένια
+STR_5012_WOODEN                                                 :Ξύλινη
+STR_5013_CONCRETE                                               :Τσιμεντένια
+STR_5014_TUBULAR_STEEL                                          :Φυσούνα, Ατσάλινη
+STR_5015_CAN_T_BUILD_BRIDGE_HERE                                :{WHITE}Αδύνατο να χτιστεί γέφυρα εδώ...
+STR_5016_CAN_T_BUILD_TUNNEL_HERE                                :{WHITE}Αδύνατο να χτιστεί τούνελ εδώ...
+STR_5017_RAILROAD_TUNNEL                                        :Τούνελ σιδηρόδρομου
+STR_5018_ROAD_TUNNEL                                            :Τούνελ δρόμου
+STR_501B_STEEL_SUSPENSION_RAIL_BRIDGE                           :Ατσάλινη σιδηροδρομική γέφυρα με αναρτήσεις
+STR_501C_STEEL_GIRDER_RAIL_BRIDGE                               :Ατσάλινη σιδηροδρομική γέφυρα με δοκούς
+STR_501D_STEEL_CANTILEVER_RAIL_BRIDGE                           :Ατσάλινη κρεμαστή σιδηροδρομική γέφυρα
+STR_501E_REINFORCED_CONCRETE_SUSPENSION                         :Σιδηροδρομική γέφυρα από ενισχυμένο τσιμέντο
+STR_501F_WOODEN_RAIL_BRIDGE                                     :Ξύλινη σιδηροδρομική γέφυρα
+STR_5020_CONCRETE_RAIL_BRIDGE                                   :Τσιμεντένια σιδηροδρομική γέφυρα
+STR_5021_STEEL_SUSPENSION_ROAD_BRIDGE                           :Ατσάλινη γέφυρα δρόμου με αναρτήσεις
+STR_5022_STEEL_GIRDER_ROAD_BRIDGE                               :Ατσάλινη γέφυρα δρόμου με δοκούς
+STR_5023_STEEL_CANTILEVER_ROAD_BRIDGE                           :Ατσάλινη κρεμαστή γέφυρα δρόμου
+STR_5024_REINFORCED_CONCRETE_SUSPENSION                         :Γέφυρα δρόμου από ενισχυμένο τσιμέντο
+STR_5025_WOODEN_ROAD_BRIDGE                                     :Ξύλινη γέφυρα δρόμου
+STR_5026_CONCRETE_ROAD_BRIDGE                                   :Τσιμεντένια γέφυρα δρόμου
+STR_5027_TUBULAR_RAIL_BRIDGE                                    :Κυλινδρική σιδηροδρομική γέφυρα
+STR_5028_TUBULAR_ROAD_BRIDGE                                    :Κυλινδρική γέφυρα δρόμου
 
 ##id 0x5800
+STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Αντικείμενο στη μέση
+STR_5801_TRANSMITTER                                            :Αναμεταδότης
+STR_5802_LIGHTHOUSE                                             :Φάρος
+STR_5803_COMPANY_HEADQUARTERS                                   :Κεντρικά Γραφεία Εταιρείας
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...κεντρικά γραφεία εταιρείας στη μέση
+STR_5805_COMPANY_OWNED_LAND                                     :Ιδιόκτητη γή από εταιρεία
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Αδύνατο να αγοραστεί το έδαφος...
+STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...είστε ήδη ιδιοκτήτης!
 
 
 ############ WARNING, using	range 0x6000 for strings that are stored in	the	savegame
@@ -1186,21 +1220,257 @@ STR_500E_SUSPENSION_STEEL                                       :Ατσάλιν�
 ############ end of	savegame specific region!
 
 ##id 0x6800
+STR_6800_DIFFICULTY_LEVEL                                       :{WHITE}Βαθμός Δυσκολίας
 
 ############ range for difficulty levels starts
+STR_6801_EASY                                                   :{BLACK}Εύκολο
+STR_6802_MEDIUM                                                 :{BLACK}Μέτριο
+STR_6803_HARD                                                   :{BLACK}Δύσκολο
+STR_6804_CUSTOM                                                 :{BLACK}Παραμετροποιήσιμο
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
+STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Μέγιστος αρ. αντιπάλων: {ORANGE}{COMMA}
+STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Έναρξη αντιπάλου: {ORANGE}{STRING}
+STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Αρ. πόλεων: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Αρ. βιομηχανιών: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Μέγιστο αρχικό δάνειο: {ORANGE}{CURRENCY}
+STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Αρχικό επιτόκιο: {ORANGE}{COMMA}%
+STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Έξοδα συντήρησης οχημάτων: {ORANGE}{STRING}
+STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Ταχύτητα κατασκευής αντιπάλων: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Νοημοσύνη αντιπάλων: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Βλάβες οχημάτων: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Πολλαπλασιαστής χρηματοδότησης: {ORANGE}{STRING}
+STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Κόστος κατασκευής: {ORANGE}{STRING}
+STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Τύπος εδάφους: {ORANGE}{STRING}
+STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Ποσότητα θάλασσας/λιμνών: {ORANGE}{STRING}
+STR_6813_ECONOMY                                                :{LTBLUE}Οικονομικά: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Περιστροφή τρένων: {ORANGE}{STRING}
+STR_6815_DISASTERS                                              :{LTBLUE}Καταστροφές: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}Θέση δημαρχιακού συμβουλίου σχετικά με την αναδόμηση της πόλης: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Κανένα
+STR_6816_LOW                                                    :Χαμηλό
+STR_6817_NORMAL                                                 :Κανονικό
+STR_6818_HIGH                                                   :Υψηλό
+STR_6819                                                        :{BLACK}<
+STR_681A                                                        :{BLACK}>
+STR_681B_VERY_SLOW                                              :Πολύ αργό
+STR_681C_SLOW                                                   :Αργό
+STR_681D_MEDIUM                                                 :Μέτριο
+STR_681E_FAST                                                   :Γρήγορο
+STR_681F_VERY_FAST                                              :Πολύ Γρήγορο
+STR_6820_LOW                                                    :Χαμηλό
+STR_6821_MEDIUM                                                 :Μέτριο
+STR_6822_HIGH                                                   :Υψηλό
+STR_6823_NONE                                                   :Κανένα
+STR_6824_REDUCED                                                :Μειωμένο
+STR_6825_NORMAL                                                 :Κανονικό
+STR_6826_X1_5                                                   :x1.5
+STR_6827_X2                                                     :x2
+STR_6828_X3                                                     :x3
+STR_6829_X4                                                     :x4
+STR_682A_VERY_FLAT                                              :Πολύ επίπεδη
+STR_682B_FLAT                                                   :Επίπεδη
+STR_682C_HILLY                                                  :Με λόφους
+STR_682D_MOUNTAINOUS                                            :Με βουνά
+STR_682E_STEADY                                                 :Σταθερή
+STR_682F_FLUCTUATING                                            :Κυμαινόμενη
+STR_6830_IMMEDIATE                                              :Αμέσως
+STR_6831_3_MONTHS_AFTER_PLAYER                                  :3 μήνες μετά τον παίκτη
+STR_6832_6_MONTHS_AFTER_PLAYER                                  :6 μήνες μετά τον παίκτη
+STR_6833_9_MONTHS_AFTER_PLAYER                                  :9 μήνες μετά τον παίκτη
+STR_6834_AT_END_OF_LINE_AND_AT_STATIONS                         :Στο τέλος της γραμμής και στους σταθμούς
+STR_6835_AT_END_OF_LINE_ONLY                                    :Στο τέλος της γραμμής μόνο
+STR_6836_OFF                                                    :Ανενεργό
+STR_6837_ON                                                     :Ενεργό
+STR_6838_SHOW_HI_SCORE_CHART                                    :{BLACK}Εμφάνιση γραφήματος καλύτεων βαθμολογιών
+STR_6839_PERMISSIVE                                             :Ανεκτικό
+STR_683A_TOLERANT                                               :Υπομονετικό
+STR_683B_HOSTILE                                                :Εχθρικό
 
 ##id 0x7000
+STR_7000                                                        :
+STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
+STR_7002_PLAYER                                                 :(Παίκτης {COMMA})
+STR_7004_NEW_FACE                                               :{BLACK}Νέο Πρόσωπο
+STR_7005_COLOR_SCHEME                                           :{BLACK}Χρωματισμός
+STR_7006_COLOR_SCHEME                                           :{GOLD}Χρωματισμός:
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Νέος Χρωματισμός
+STR_7008_COMPANY_NAME                                           :{BLACK}Όνομα Εταιρείας
+STR_7009_PRESIDENT_NAME                                         :{BLACK}Όνομα Διευθυντή
+STR_700A_COMPANY_NAME                                           :Όνομα Εταιρείας
+STR_700B_PRESIDENT_S_NAME                                       :Όνομα Διευθυντή
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Αδύνατο να αλλάξει το όνομα της εταιρείας...
+STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Αδύνατο να αλλάξει το όνομα του διευθυντή...
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Οικονομικά {BLACK}{PLAYERNAME}
+STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Έξοδα/Έσοδα
+STR_7010                                                        :{WHITE}{NUM}
+STR_7011_CONSTRUCTION                                           :{GOLD}Κατασκευή
+STR_7012_NEW_VEHICLES                                           :{GOLD}Νέα Οχήματα
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Τρεχούμενα Έξοδα Τρέν.
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Τρεχούμενα Έξοδα Οχημ.
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Τρεχούμενα Έξοδα Αεροπ.
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Τρεχούμενα Έξοδα Πλοίων
+STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Συντήρηση Ιδιοκτησίας
+STR_7018_TRAIN_INCOME                                           :{GOLD}Έσοδα Τρένων
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Έσοδα Οχημάτων
+STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Έσοδα Αεροπλάνων
+STR_701B_SHIP_INCOME                                            :{GOLD}Έσοδα Πλοίων
+STR_701C_LOAN_INTEREST                                          :{GOLD}Τόκος Δανείου
+STR_701D_OTHER                                                  :{GOLD}Άλλα
+STR_701E                                                        :{BLACK}-{CURRENCY64}
+STR_701F                                                        :{BLACK}+{CURRENCY64}
+STR_7020_TOTAL                                                  :{WHITE}Σύνολο:
+STR_7021                                                        :{COMPANY}{PLAYERNAME}
+STR_7022_INCOME_GRAPH                                           :{WHITE}Γράφημα Εισοδήματος
+STR_7024                                                        :{COMMA}
+STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Γράφημα Ενεργών Εσόδων
+STR_7026_BANK_BALANCE                                           :{WHITE}Ισολογισμός Τραπέζης
+STR_7027_LOAN                                                   :{WHITE}Δάνειο
+STR_7028                                                        :{BLACK}{CURRENCY64}
+STR_7029_BORROW                                                 :{BLACK}Δανεισμός {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702A_REPAY                                                  :{BLACK}Πληρωμή {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...το μέγιστο επιτρεπόμενο δάνειο είναι {CURRENCY}
+STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Αδύνατος ο δανεισμός περισσοτέρων χρημάτων...
+STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...δεν υπάρχει δάνειο προς αποπληρωμή
+STR_702E_REQUIRED                                               :{WHITE}...Απαιτούνται {CURRENCY}
+STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Αδύνατη η αποπληρωμή του δανείου...
+STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Επιλογή νέου προσώπου διευθυντή
+STR_7031_CHANGE_THE_COMPANY_VEHICLE                             :{BLACK}Αλλαγή της εμφάνισης των οχημάτων της εταιρείας
+STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Αλλαγή του ονόματος του διευθυντή
+STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Αλλαγή του ονόματος της εταιρείας
+STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Κάντε κλικ στο χρωματισμό της επιλογής σας
+STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Αύξηση του μεγέθους του δανείου
+STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Αποπληρωμή μέρους του δανείου
+STR_7037_PRESIDENT                                              :{WHITE}{PLAYERNAME}{}{GOLD}(Manager)
+STR_7038_INAUGURATED                                            :{GOLD}Εγκαινιασμένος: {WHITE}{NUM}
+STR_7039_VEHICLES                                               :{GOLD}Οχήματα:
+STR_7042_NONE                                                   :{WHITE}Κανένα
+STR_7043_FACE_SELECTION                                         :{WHITE}Επιλογή Προσώπου
+STR_7044_MALE                                                   :{BLACK}Αρσενικό
+STR_7045_FEMALE                                                 :{BLACK}Θηλυκό
+STR_7046_NEW_FACE                                               :{BLACK}Νέο Πρόσωπο
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Ακύρωση επιλογής νέου προσώπου
+STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Αποδοχή νέου προσώπου
+STR_7049_SELECT_MALE_FACES                                      :{BLACK}Επιλογή αρσενικών προσώπων
+STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Επιλογή θηλυκών προσώπων
+STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Δημιουργία τυχαίου προσώπου
+STR_704C_KEY                                                    :{BLACK}Κλειδί
+STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Εμφάνιση κλειδιού στα γραφήματα
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Γραφήματα κλειδιού εταιρείας
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Κάντε κλικ εδώ για ενναλαγή εμφάνισης της εταιρείας στο γράφημα
+STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Μονάδες φορτίου που παραδόθηκαν
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ποσοστά απόδοσης εταιρείας (μέγιστη τιμή=1000)
+STR_7052_COMPANY_VALUES                                         :{WHITE}Αξία εταιρείας
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Πίνακας Πρωταθλήματος Εταιρειών
+STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
+STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Εταιρεία μεταφορών σε μπελάδες!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}Η εταιρεία {COMPANY} θα πωληθεί ή θα κυρήξει πτώχευση αν δεν αυξηθεί η απόδοσή της!
+STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Διευθυντής)
+STR_7059_TRANSPORT_COMPANY_MERGER                               :{BLACK}{BIGFONT}Συγχώνευση εταιρειών μεταφοράς!
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}Η εταιρεία {COMPANY} πουλήθηκε στην {COMPANY} για το ποσό των {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Ψάχνουμε μία εταιρεία μεταφορών για να αναλάβει την εταιρεία μας.{}{}Θέλετε να αγοράσετε την {COMPANY} για {CURRENCY}?
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Χρεωκοπία!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}Η {COMPANY} έκλεισε από τους επενδυτές και όλα εκποιήθηκαν!
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Ίδρυση νέας εταιρείας μεταφορών!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}Η {COMPANY} ξεκινά τις κατασκευές κοντά στην πόλη {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Αδύνατη η εξαγορά της εταιρείας...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Ποσοστά Πληρωμής Φορτίων
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Μέρες σε μεταφορά
+STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Πληρωμή για την παράδοση 10 μονάδων (ή 10.000 λίτρων) φορτίου σε απόσταση 20 τετραγώνων
+STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Ενναλαγή γραφήματος τύπου φορτίου
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :Μηχανικός
+STR_7067_TRAFFIC_MANAGER                                        :Διαχειριστής Κυκλοφορίας
+STR_7068_TRANSPORT_COORDINATOR                                  :Συντονιστής Μεταφορών
+STR_7069_ROUTE_SUPERVISOR                                       :Επόπτης Διαδρομών
+STR_706A_DIRECTOR                                               :Διευθυντής
+STR_706B_CHIEF_EXECUTIVE                                        :Ανώτερος Υπάλληλος
+STR_706C_CHAIRMAN                                               :Διαχειριστής
+STR_706D_PRESIDENT                                              :Πρόεδρος
+STR_706E_TYCOON                                                 :Μεγιστάνας
+STR_706F_BUILD_HQ                                               :{BLACK}Χτίσιμο Αρχηγείου
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Χτίστιμο αρχηγείου εταιρείας / προβολή αρχηγείου
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Αδύνατο να χτιστεί αρχηγείο εταιρείας...
+STR_7072_VIEW_HQ                                                :{BLACK}Προβολή Αρχηγείου
+STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Παγκόσμια Υποχώρηση!{}{}Οι οικονομολόγοι φοβούνται τα χειρότερα καθώς η οικονομία πιάνει πάτο!
+STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Υποχώρηση Τέλος!{}{}Κέρδη στο εμπόριο δίνει σιγουριά στις βιομηχανίες καθώς η οικονομία δυναμώνει!
+STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Εναλλαγή μεγάλου/μικρού παραθύρου
+STR_7076_COMPANY_VALUE                                          :{GOLD}Αξία εταιρείας: {WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Αγορά μεριδίου 25% στην εταιρεία
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Πώληση μεριδίου 25% της εταιρείας
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Αγορά μεριδίου 25% της εταιρείας
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Πώληση μεριδίου 25% της εταιρείας
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Αδύνατη η αγορά μεριδίου 25% της εταιρείας...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Αδύνατη η πώληση μεριδίου 25% της εταιρείας...
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% είναι ιδιοκτησία της {COMPANY})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% είναι ιδιοκτησία της εταιρείας {COMPANY}{}   {COMMA}% ιδιοκτησία της {COMPANY})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Η {COMPANY} εξαγοράστηκε από την {COMPANY}!
+STR_7080_PROTECTED                                              :{WHITE}Αυτή η εταιρεία δεν είναι αρκετά ώριμη για συναλλαγή μετοχών ακόμα...
 
 
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Ατμοκίνητο)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (Πετρελαίου)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Πετρελαίου
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut Πετρελαίου
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Ατμοκίνητο)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (Ατμοκίνητο)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (Ατμοκίνητο)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (Ατμοκίνητο)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Πετρελαίου)
+STR_800C_DASH_DIESEL                                            :'Dash' (Πετρελαίου)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Πετρελαίου)
+STR_800E_UU_37_DIESEL                                           :UU '37' (Πετρελαίου)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (Πετρελαίου)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (Πετρελαίου)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (Πετρελαίου)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Πετρελαίου)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Πετρελαίου)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Πετρελαίου)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Πετρελαίου)
+STR_8016_SH_125_DIESEL                                          :SH '125' (Πετρελαίου)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (Ηλεκτρικό)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (Ηλεκτρικό)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Ηλεκτρικό)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Ηλεκτρικό)
+STR_801B_PASSENGER_CAR                                          :Βαγόνι επιβατών
+STR_801C_MAIL_VAN                                               :Βαγόνι Αλληλογραφίας
+STR_801D_COAL_CAR                                               :Φορτηγίδα Άνθρακα
+STR_801E_OIL_TANKER                                             :Βυτίο Πετρελαίου
+STR_801F_LIVESTOCK_VAN                                          :Βαγόνι Ζώων
+STR_8020_GOODS_VAN                                              :Βαγόνι Αγαθών
+STR_8021_GRAIN_HOPPER                                           :Φορτηγίδα Σιταριού
+STR_8022_WOOD_TRUCK                                             :Φορτηγίδα Ξυλείας
+STR_8023_IRON_ORE_HOPPER                                        :Φορτηγίδα Σιδήρου
+STR_8024_STEEL_TRUCK                                            :Φορτηγίδα Χάλυβα
+STR_8025_ARMORED_VAN                                            :Τεθωρακισμένο Βαγόνι
+STR_8026_FOOD_VAN                                               :Βαγόνι Τροφίμων
+STR_8027_PAPER_TRUCK                                            :Φορτηγίδα Χαρτιού
+STR_8028_COPPER_ORE_HOPPER                                      :Φορτηγίδα Χαλκού
+STR_8029_WATER_TANKER                                           :Βυτίο Νερού
+STR_802A_FRUIT_TRUCK                                            :Φορτηγίδα Φρούτων
+STR_802B_RUBBER_TRUCK                                           :Φορτηγίδα Λάστιχου
+STR_802C_SUGAR_TRUCK                                            :Φορτηγίδα Ζάχαρης
+STR_802D_COTTON_CANDY_HOPPER                                    :Φορτηγίδα Μαλλιού της Γριάς
+STR_802E_TOFFEE_HOPPER                                          :Φορτηγίδα Τόφυ
+STR_802F_BUBBLE_VAN                                             :Βαγόνι Φυσαλίδων
+STR_8030_COLA_TANKER                                            :Βυτίο Κόλα
+STR_8031_CANDY_VAN                                              :Βαγόνι Γλυκών
+STR_8032_TOY_VAN                                                :Βαγόνι Παιχνιδιών
+STR_8033_BATTERY_TRUCK                                          :Φορτηγίδα Μπαταριών
+STR_8034_FIZZY_DRINK_TRUCK                                      :Φορτηγίδα Αναψυκτικών
+STR_8035_PLASTIC_TRUCK                                          :Φορτηγίδα Πλαστικού
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Ηλεκτρικό)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Ηλεκτρικό)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
 
 ##id 0x8800
 

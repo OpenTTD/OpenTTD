@@ -2911,6 +2911,8 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Verkaufe
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Verkaufe nicht alle Flugzeuge im Hangar
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Verkaufe alle Fahrzeuge im Depot
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Verkaufe alle Flugzeuge im Hangar
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Automatisches Ersetzen aller Fahrzeuge im Depot
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Automatisches Ersetzen aller Flugzeuge im Hangar
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Ersetze Fahrzeuge
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ersetze {STRING}
