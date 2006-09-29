@@ -1876,7 +1876,7 @@ void ShowCheatWindow(void)
  * @param horizontal Tells how far to the right the widgets should be moved (note: negative moves left)
  * @param vertical Tells how far down the widgets should be moved (note: negative moves up)
 */
-void ResizeWindowWidgets(Window *w, const byte *resizearray, byte length, byte horizontal, byte vertical)
+void ResizeWindowWidgets(Window *w, const byte *resizearray, int16 length, byte horizontal, int16 vertical)
 {
 	byte i;
 

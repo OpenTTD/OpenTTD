@@ -26,6 +26,6 @@ enum {
 	WIDGET_MOVE_DOWN_STRETCH_RIGHT = WIDGET_MOVE_DOWN  | WIDGET_STRETCH_RIGHT,
 };
 
-void ResizeWindowWidgets(Window *w, const byte *resizearray, byte length, byte horizontal, byte vertical);
+void ResizeWindowWidgets(Window *w, const byte *resizearray, int16 length, byte horizontal, int16 vertical);
 
 #endif
