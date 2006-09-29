@@ -163,12 +163,15 @@ static inline void ShowVehicleViewWindow(const Vehicle *v)
 
 static void DepotSellAllWndProc(Window *w, WindowEvent *e)
 {
+	TileIndex tile = w->window_number;
+	byte vehicle_type = WP(w, depot_d).type;
+
 	switch (e->event) {
 		case WE_PAINT:
-			if (WP(w, depot_d).type == VEH_Aircraft) {
-				SetDParam(0, GetStationIndex(w->window_number)); // Airport name
+			if (vehicle_type == VEH_Aircraft) {
+				SetDParam(0, GetStationIndex(tile)); // Airport name
 			} else {
-				Depot *depot = GetDepotByTile(w->window_number);
+				Depot *depot = GetDepotByTile(tile);
 				assert(depot != NULL);
 
 				SetDParam(0, depot->town_index);
@@ -182,8 +185,11 @@ static void DepotSellAllWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case 4:
-					DoCommandP(w->window_number, WP(w, depot_d).type, 0, NULL, CMD_DEPOT_SELL_ALL_VEHICLES);
-					/* Fallthought */
+					/* Weird issue here. If We execute the DoCommandP first, then the window is not closed */
+					DeleteWindow(w);
+					DoCommandP(tile, vehicle_type, 0, NULL, CMD_DEPOT_SELL_ALL_VEHICLES);
+					break;
+
 				case 3:
 					DeleteWindow(w);
 					break;
@@ -193,11 +199,11 @@ static void DepotSellAllWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _depot_sell_all_widgets[] = {
-	{   WWT_CLOSEBOX,   RESIZE_NONE,     5,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
-	{    WWT_CAPTION,   RESIZE_NONE,     5,    11,   299,     0,    13, 0x0,             STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{      WWT_PANEL,   RESIZE_NONE,     5,     0,   299,    14,    71, 0x0,             STR_NULL},
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,     5,    85,   144,    52,    63, STR_012E_CANCEL, STR_DEPOT_SELL_ALL_CANCEL_TIP},
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,     4,   155,   214,    52,    63, STR_SELL,        STR_DEPOT_SELL_ALL_TIP},
+	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,        STR_018B_CLOSE_WINDOW},
+	{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   299,     0,    13, 0x0,             STR_018C_WINDOW_TITLE_DRAG_THIS},
+	{      WWT_PANEL,   RESIZE_NONE,    14,     0,   299,    14,    71, 0x0,             STR_NULL},
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    85,   144,    52,    63, STR_012E_CANCEL, STR_DEPOT_SELL_ALL_CANCEL_TIP},
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   155,   214,    52,    63, STR_SELL,        STR_DEPOT_SELL_ALL_TIP},
 	{   WIDGETS_END},
 };
 
@@ -216,6 +222,7 @@ static void ShowDepotSellAllWindow(TileIndex tile, byte type)
 	w = AllocateWindowDescFront(&_depot_sell_all_desc, tile);
 
 	if (w != NULL) {
+		w->caption_color = GetTileOwner(tile);
 		WP(w, depot_d).type = type;
 		switch (type) {
 			case VEH_Train:	   w->widget[1].data = STR_8800_TRAIN_DEPOT;        break;
