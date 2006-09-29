@@ -591,7 +591,7 @@ void Ship_Tick(Vehicle *v);
 void Train_Tick(Vehicle *v);
 static void EffectVehicle_Tick(Vehicle *v);
 void DisasterVehicle_Tick(Vehicle *v);
-static int32 MaybeReplaceVehicle(Vehicle **original_vehicle, bool check, bool display_costs);
+static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs);
 
 // head of the linked list to tell what vehicles that visited a depot in a tick
 static Vehicle* _first_veh_in_depot_list;
@@ -671,7 +671,7 @@ void CallVehicleTicks(void)
 	while (v != NULL) {
 		Vehicle *w = v->depot_list;
 		v->depot_list = NULL; // it should always be NULL at the end of each tick
-		MaybeReplaceVehicle(&v, false, true);
+		MaybeReplaceVehicle(v, false, true);
 		v = w;
 	}
 }
@@ -1729,16 +1729,19 @@ int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 			(vehicle_type == VEH_Ship     && !IsShipInDepot(v)           ) ||
 			(vehicle_type == VEH_Aircraft && !IsAircraftInHangar(v))     ) continue;
 
-		if (stopped) v->vehstatus |= VS_STOPPED; // Stop the vehicle
-		ret = MaybeReplaceVehicle(&v, !(flags & DC_EXEC), false);
-		if (stopped) v->vehstatus &= ~VS_STOPPED; // restart the vehicle if we stopped it for being replaced
+		x = v->x_pos;
+		y = v->y_pos;
+		z = v->z_pos;
+
+		if (stopped) {
+			v->vehstatus |= VS_STOPPED; // Stop the vehicle
+			v->leave_depot_instantly = true;
+		}
+		ret = MaybeReplaceVehicle(v, !(flags & DC_EXEC), false);
 
 		if (!CmdFailed(ret)) {
 			cost += ret;
 			if (!(flags & DC_EXEC)) break;
-			x = v->x_pos;
-			y = v->y_pos;
-			z = v->z_pos;
 			/* There is a problem with autoreplace and newgrf
 			 * It's impossible to tell the length of a train after it's being replaced before it's actually done
 			 * Because of this, we can't estimate costs due to wagon removal and we will have to always return 0 and pay manually
@@ -2069,9 +2072,8 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
  * @param display_costs If set, a cost animation is shown (only if check is false)
  * @return CMD_ERROR if something went wrong. Otherwise the price of the replace
  */
-static int32 MaybeReplaceVehicle(Vehicle **original_vehicle, bool check, bool display_costs)
+static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 {
-	Vehicle *v = *original_vehicle;
 	Vehicle *w;
 	const Player *p = GetPlayer(v->owner);
 	byte flags = 0;
@@ -2150,7 +2152,7 @@ static int32 MaybeReplaceVehicle(Vehicle **original_vehicle, bool check, bool di
 				AddNewsItem(message, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 			}
 			if (stopped) v->vehstatus &= ~VS_STOPPED;
-			_current_player = OWNER_NONE;
+			if (display_costs) _current_player = OWNER_NONE;
 			return CMD_ERROR;
 		}
 
@@ -2188,8 +2190,6 @@ static int32 MaybeReplaceVehicle(Vehicle **original_vehicle, bool check, bool di
 			cost += DoCommand(0, temp->index, 0, DC_EXEC, CMD_SELL_RAIL_WAGON);
 		}
 	}
-
-	original_vehicle = &v;
 
 	if (stopped) v->vehstatus &= ~VS_STOPPED;
 	if (display_costs) {
