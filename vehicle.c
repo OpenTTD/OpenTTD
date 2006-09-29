@@ -1606,12 +1606,7 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (vehicle_list_window) {
 		uint16 window_type = p2 & VLW_MASK;
 
-		vl = malloc(GetVehicleArraySize() * sizeof(vl[0]));
-		if (vl == NULL) {
-			error("Could not allocate memory for the vehicle-goto-depot-list");
-		}
-
-		engine_count = GenerateVehicleSortList((const Vehicle**)vl, vehicle_type, _current_player, INVALID_STATION, INVALID_ORDER, window_type);
+		engine_count = GenerateVehicleSortList((const Vehicle***)&vl, &engine_list_length, vehicle_type, _current_player, INVALID_STATION, INVALID_ORDER, window_type);
 	} else {
 		/* Get the list of vehicles in the depot */
 		BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
@@ -2200,9 +2195,9 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 }
 
 /* Extend the list size for BuildDepotVehicleList() */
-static inline void ExtendDepotListSize(Vehicle ***engine_list, uint16 *engine_list_length)
+static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *engine_list_length, uint16 step_size)
 {
-	*engine_list_length += 25; // which number is best here?
+	*engine_list_length = min(*engine_list_length + step_size, GetVehicleArraySize());
 	*engine_list = realloc(*engine_list, (*engine_list_length) * sizeof((*engine_list)[0]));
 }
 
@@ -2242,11 +2237,11 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 				if (v->tile == tile && v->type == VEH_Train && v->u.rail.track == 0x80) {
 					if (IsFrontEngine(v)) {
 						if (engine_list == NULL) continue;
-						if (*engine_count == *engine_list_length) ExtendDepotListSize(engine_list, engine_list_length);
+						if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 						(*engine_list)[(*engine_count)++] = v;
 					} else if (IsFreeWagon(v)) {
 						if (wagon_list == NULL) continue;
-						if (*wagon_count == *wagon_list_length) ExtendDepotListSize(wagon_list, wagon_list_length);
+						if (*wagon_count == *wagon_list_length) ExtendVehicleListSize((const Vehicle***)wagon_list, wagon_list_length, 25);
 						(*wagon_list)[(*wagon_count)++] = v;
 					}
 				}
@@ -2256,7 +2251,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 		case VEH_Road:
 			FOR_ALL_VEHICLES(v) {
 				if (v->tile == tile && v->type == VEH_Road && IsRoadVehInDepot(v)) {
-					if (*engine_count == *engine_list_length) ExtendDepotListSize(engine_list, engine_list_length);
+					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
 				}
 			}
@@ -2265,7 +2260,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 		case VEH_Ship:
 			FOR_ALL_VEHICLES(v) {
 				if (v->tile == tile && v->type == VEH_Ship && IsShipInDepot(v)) {
-					if (*engine_count == *engine_list_length) ExtendDepotListSize(engine_list, engine_list_length);
+					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
 				}
 			}
@@ -2277,7 +2272,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 						v->type == VEH_Aircraft &&
 						v->subtype <= 2 &&
 						v->vehstatus & VS_HIDDEN) {
-					if (*engine_count == *engine_list_length) ExtendDepotListSize(engine_list, engine_list_length);
+					if (*engine_count == *engine_list_length) ExtendVehicleListSize((const Vehicle***)engine_list, engine_list_length, 25);
 					(*engine_list)[(*engine_count)++] = v;
 				}
 			}
@@ -2288,7 +2283,8 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 }
 
 /**
-* @param sort_list list to store the list in. Note: it's presumed that it is big enough to store all vehicles in the game (worst case) and it will not check size
+* @param sort_list list to store the list in. Either NULL or the length length_of_array tells
+* @param length_of_array informs the length allocated for sort_list. This is not the same as the number of vehicles in the list. Needs to be 0 when sort_list is NULL
 * @param type type of vehicle
 * @param owner PlayerID of owner to generate a list for
 * @param station index of station to generate a list for. INVALID_STATION when not used
@@ -2296,7 +2292,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
 * @return the number of vehicles added to the list
 */
-uint GenerateVehicleSortList(const Vehicle **sort_list, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
+uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
 {
 	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
 	uint n = 0;
@@ -2312,7 +2308,8 @@ uint GenerateVehicleSortList(const Vehicle **sort_list, byte type, PlayerID owne
 
 					FOR_VEHICLE_ORDERS(v, order) {
 						if (order->type == OT_GOTO_STATION && order->dest == station) {
-							sort_list[n++] = v;
+							if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 50);
+							(*sort_list)[n++] = v;
 							break;
 						}
 					}
@@ -2330,7 +2327,8 @@ uint GenerateVehicleSortList(const Vehicle **sort_list, byte type, PlayerID owne
 			if (v != NULL && v->orders != NULL && v->orders->index == order) {
 				/* Only try to make the list if we found a vehicle using the order in question */
 				for (v = GetFirstVehicleFromSharedList(v); v != NULL; v = v->next_shared) {
-					sort_list[n++] = v;
+					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 25);
+					(*sort_list)[n++] = v;
 				}
 			}
 			break;
@@ -2341,13 +2339,24 @@ uint GenerateVehicleSortList(const Vehicle **sort_list, byte type, PlayerID owne
 				if (v->type == type && v->owner == owner && (
 					(type == VEH_Train && IsFrontEngine(v)) ||
 					(type != VEH_Train && v->subtype <= subtype))) {
-					sort_list[n++] = v;
+					/* TODO find a better estimate on the total number of vehicles for current player */
+					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetVehicleArraySize()/4);
+					(*sort_list)[n++] = v;
 				}
 			}
 			break;
 		}
 
 		default: NOT_REACHED(); break;
+	}
+
+	if ((n + 100) < *length_of_array) {
+		/* We allocated way too much for sort_list.
+		 * Now we will reduce how much we allocated.
+		 * We will still make it have room for 50 extra vehicles to prevent having
+		 * to move the whole array if just one vehicle is added later */
+		*length_of_array = n + 50;
+		*sort_list = realloc(*sort_list, (*length_of_array) * sizeof((*sort_list)[0]));
 	}
 
 	return n;
@@ -2363,15 +2372,11 @@ uint GenerateVehicleSortList(const Vehicle **sort_list, byte type, PlayerID owne
  */
 int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id)
 {
-	const Vehicle **sort_list;
+	const Vehicle **sort_list = NULL;
 	uint n, i;
+	uint16 array_length = 0;
 
-	sort_list = malloc(GetVehicleArraySize() * sizeof(sort_list[0]));
-	if (sort_list == NULL) {
-		error("Could not allocate memory for the vehicle-goto-depot-list");
-	}
-
-	n = GenerateVehicleSortList(sort_list, type, owner, (vlw_flag == VLW_STATION_LIST) ? id : INVALID_STATION, (vlw_flag == VLW_SHARED_ORDERS) ? id : INVALID_ORDER, vlw_flag);
+	n = GenerateVehicleSortList(&sort_list, &array_length, type, owner, (vlw_flag == VLW_STATION_LIST) ? id : INVALID_STATION, (vlw_flag == VLW_SHARED_ORDERS) ? id : INVALID_ORDER, vlw_flag);
 
 	/* Send all the vehicles to a depot */
 	for (i = 0; i < n; i++) {
@@ -2383,12 +2388,12 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 			* and we will issue the command. We can now safely quit the loop, knowing
 			* it will succeed at least once. With DC_EXEC we really need to send them to the depot */
 		if (!CmdFailed(ret) && !(flags & DC_EXEC)) {
-			free((void*)sort_list);
+			free(sort_list);
 			return 0;
 		}
 	}
 
-	free((void*)sort_list);
+	free(sort_list);
 	return (flags & DC_EXEC) ? 0 : CMD_ERROR;
 }
 

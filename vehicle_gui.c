@@ -39,10 +39,11 @@ typedef struct Sorting {
 static Sorting _sorting;
 
 typedef struct vehiclelist_d {
-	const Vehicle** sort_list; // list of vehicles (sorted)
-	Listing *_sorting;         // pointer to the appropiate subcategory of _sorting
-	byte vehicle_type;         // the vehicle type that is sorted
-	list_d l;                  // general list struct
+	const Vehicle** sort_list;  // List of vehicles (sorted)
+	Listing *_sorting;          // pointer to the appropiate subcategory of _sorting
+	uint16 length_of_sort_list; // Keeps track of how many vehicle pointers sort list got space for
+	byte vehicle_type;          // The vehicle type that is sorted
+	list_d l;                   // General list struct
 } vehiclelist_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
 
@@ -133,31 +134,11 @@ void ResortVehicleLists(void)
 
 static void BuildVehicleList(vehiclelist_d* vl, PlayerID owner, StationID station, OrderID order, uint16 window_type)
 {
-	const Vehicle** sort_list;
-	uint n = 0;
-	uint i;
-
 	if (!(vl->l.flags & VL_REBUILD)) return;
 
-	sort_list = malloc(GetVehicleArraySize() * sizeof(sort_list[0]));
-	if (sort_list == NULL) {
-		error("Could not allocate memory for the vehicle-sorting-list");
-	}
+	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...", owner, station);
 
-	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...",
-		owner, station);
-
-	n = GenerateVehicleSortList(sort_list, vl->vehicle_type, owner, station, order, window_type);
-
-	free((void*)vl->sort_list);
-	vl->sort_list = malloc(n * sizeof(vl->sort_list[0]));
-	if (n != 0 && vl->sort_list == NULL) {
-		error("Could not allocate memory for the vehicle-sorting-list");
-	}
-	vl->l.list_length = n;
-
-	for (i = 0; i < n; ++i) vl->sort_list[i] = sort_list[i];
-	free((void*)sort_list);
+	vl->l.list_length = GenerateVehicleSortList(&vl->sort_list, &vl->length_of_sort_list, vl->vehicle_type, owner, station, order, window_type);
 
 	vl->l.flags &= ~VL_REBUILD;
 	vl->l.flags |= VL_RESORT;
@@ -1281,6 +1262,8 @@ static void CreateVehicleListWindow(Window *w)
 	PlayerID player = GB(w->window_number, 0, 8);
 
 	vl->vehicle_type = GB(w->window_number, 11, 5);
+	vl->length_of_sort_list = 0;
+	vl->sort_list = NULL;
 	w->caption_color = player;
 
 	/* Hide the widgets that we will not use in this window
