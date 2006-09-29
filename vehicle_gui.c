@@ -1271,7 +1271,7 @@ static void ResizeVehicleListWidgets(Window *w)
 {
 	w->widget[VLW_WIDGET_AUTOREPLACE].right   = w->widget[VLW_WIDGET_STOP_ALL].left - 1;
 	w->widget[VLW_WIDGET_SEND_TO_DEPOT].right = w->widget[VLW_WIDGET_AUTOREPLACE].right / 2;
-	w->widget[VLW_WIDGET_AUTOREPLACE].left    = w->widget[VLW_WIDGET_SEND_TO_DEPOT].right;
+	w->widget[VLW_WIDGET_AUTOREPLACE].left    = w->widget[VLW_WIDGET_SEND_TO_DEPOT].right + 1;
 }
 
 static void CreateVehicleListWindow(Window *w)
