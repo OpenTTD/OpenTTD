@@ -1576,9 +1576,12 @@ void AgeVehicle(Vehicle *v)
 }
 
 /** Starts or stops a lot of vehicles
- * @param tile Tile of the depot where the vehicles are started/stopped
+ * @param tile Tile of the depot where the vehicles are started/stopped (only used for depots)
  * @param p1 Vehicle type
- * @param p2 0 = start vehicles, 1 = stop vehicles
+ * @param p2 bitmask
+ *   - bit 0 false = start vehicles, true = stop vehicles
+ *   - bit 1 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
+ *   - bit 8-11 Vehicle List Window type (ignored unless bit 1 is set)
  */
 int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
@@ -1590,6 +1593,7 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	uint stop_command;
 	byte vehicle_type = GB(p1, 0, 8);
 	bool start_stop = HASBIT(p2, 0);
+	bool vehicle_list_window = HASBIT(p2, 1);
 
 	switch (vehicle_type) {
 		case VEH_Train:    stop_command = CMD_START_STOP_TRAIN;    break;
@@ -1599,18 +1603,32 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		default: return CMD_ERROR;
 	}
 
-	/* Get the list of vehicles in the depot */
-	BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
+	if (vehicle_list_window) {
+		uint16 window_type = p2 & VLW_MASK;
+
+		vl = malloc(GetVehicleArraySize() * sizeof(vl[0]));
+		if (vl == NULL) {
+			error("Could not allocate memory for the vehicle-goto-depot-list");
+		}
+
+		engine_count = GenerateVehicleSortList((const Vehicle**)vl, vehicle_type, _current_player, INVALID_STATION, INVALID_ORDER, window_type);
+	} else {
+		/* Get the list of vehicles in the depot */
+		BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
+	}
 
 	for (i = 0; i < engine_count; i++) {
 		const Vehicle *v = vl[i];
 		int32 ret;
 
 		if (!!(v->vehstatus & VS_STOPPED) != start_stop) continue;
-		if (vehicle_type == VEH_Train) {
-			if (CheckTrainInDepot(v, false) == -1) continue;
-		} else {
-			if (!(v->vehstatus & VS_HIDDEN)) continue;
+
+		if (!vehicle_list_window) {
+			if (vehicle_type == VEH_Train) {
+				if (CheckTrainInDepot(v, false) == -1) continue;
+			} else {
+				if (!(v->vehstatus & VS_HIDDEN)) continue;
+			}
 		}
 
 		ret = DoCommand(tile, v->index, 0, flags, stop_command);

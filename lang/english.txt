@@ -2939,6 +2939,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click to
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click to start all the vehicles inside the depot
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Click to stop all the aircraft inside the hangar
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Click to start all the aircraft inside the hangar
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Click to stop all the vehicles in the list
+STR_MASS_START_LIST_TIP                                         :{BLACK}Click to start all the vehicles in the list
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
