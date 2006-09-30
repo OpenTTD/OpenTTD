@@ -1239,7 +1239,7 @@ static const Widget _vehicle_list_widgets[] = {
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x0,                  STR_NULL},
 	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   170,   181, 0x0,                  STR_NULL},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_SEND_TO_DEPOTS,   STR_SEND_TO_DEPOTS_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_SEND_TO_DEPOTS,   STR_NULL},
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   247,   170,   181, STR_REPLACE_VEHICLES, STR_REPLACE_HELP},
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   224,   235,   170,   181, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   236,   247,   170,   181, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
@@ -1280,23 +1280,24 @@ static void CreateVehicleListWindow(Window *w)
 	/* Set up the window widgets */
 	switch (vl->vehicle_type) {
 		case VEH_Train:
-			w->widget[VLW_WIDGET_LIST].tooltips = STR_883D_TRAINS_CLICK_ON_TRAIN_FOR;
+			w->widget[VLW_WIDGET_LIST].tooltips          = STR_883D_TRAINS_CLICK_ON_TRAIN_FOR;
+			w->widget[VLW_WIDGET_SEND_TO_DEPOT].tooltips = STR_SEND_TO_DEPOTS_TRAIN_TIP;
 			break;
 
 		case VEH_Road:
-			w->widget[VLW_WIDGET_LIST].tooltips = STR_901A_ROAD_VEHICLES_CLICK_ON;
+			w->widget[VLW_WIDGET_LIST].tooltips          = STR_901A_ROAD_VEHICLES_CLICK_ON;
+			w->widget[VLW_WIDGET_SEND_TO_DEPOT].tooltips = STR_SEND_TO_DEPOTS_ROADVEH_TIP;
 			break;
 
 		case VEH_Ship:
-			w->widget[VLW_WIDGET_LIST].tooltips = STR_9823_SHIPS_CLICK_ON_SHIP_FOR;
+			w->widget[VLW_WIDGET_LIST].tooltips          = STR_9823_SHIPS_CLICK_ON_SHIP_FOR;
+			w->widget[VLW_WIDGET_SEND_TO_DEPOT].tooltips = STR_SEND_TO_DEPOTS_SHIP_TIP;
 			break;
 
 		case VEH_Aircraft:
-			w->widget[VLW_WIDGET_CAPTION].data  = STR_A009_AIRCRAFT;
-			w->widget[VLW_WIDGET_LIST].tooltips = STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT;
-			/* Aircraft uses hangars, not depots, so we will apply the hangar strings */
-			w->widget[VLW_WIDGET_SEND_TO_DEPOT].data     = STR_SEND_TO_HANGARS;
-			w->widget[VLW_WIDGET_SEND_TO_DEPOT].tooltips = STR_SEND_TO_HANGARS_TIP;
+			w->widget[VLW_WIDGET_CAPTION].data           = STR_A009_AIRCRAFT;
+			w->widget[VLW_WIDGET_LIST].tooltips          = STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT;
+			w->widget[VLW_WIDGET_SEND_TO_DEPOT].tooltips = STR_SEND_TO_DEPOTS_AIRCRAFT_TIP;
 			break;
 
 		default: NOT_REACHED(); break;
@@ -1438,6 +1439,14 @@ static void DrawVehicleListWindow(Window *w)
 			SetDParam(2, w->vscroll.count);
 			break;
 		default: NOT_REACHED(); break;
+	}
+
+	switch (vl->vehicle_type) {
+		case VEH_Train:    SetDParam(3, STR_TRAIN_DEPOTS__DEPOT_ONLY);        break;
+		case VEH_Road:     SetDParam(3, STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY); break;
+		case VEH_Ship:     SetDParam(3, STR_SHIP_DEPOTS__DEPOT_ONLY);         break;
+		case VEH_Aircraft: SetDParam(3, STR_AIRCRAFT_HANGARS__DEPOT_ONLY);    break;
+		default: NOT_REACHED();
 	}
 
 	DrawWindowWidgets(w);
