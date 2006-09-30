@@ -2198,7 +2198,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *engine_list_length, uint16 step_size)
 {
 	*engine_list_length = min(*engine_list_length + step_size, GetVehicleArraySize());
-	*engine_list = realloc(*engine_list, (*engine_list_length) * sizeof((*engine_list)[0]));
+	*engine_list = (const Vehicle**)realloc(*engine_list, (*engine_list_length) * sizeof((*engine_list)[0]));
 }
 
 /** Generates a list of vehicles inside a depot
@@ -2375,7 +2375,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 		 * We will still make it have room for 50 extra vehicles to prevent having
 		 * to move the whole array if just one vehicle is added later */
 		*length_of_array = n + 50;
-		*sort_list = realloc(*sort_list, (*length_of_array) * sizeof((*sort_list)[0]));
+		*sort_list = (const Vehicle**)realloc(*sort_list, (*length_of_array) * sizeof((*sort_list)[0]));
 	}
 
 	return n;
@@ -2407,12 +2407,12 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 			* and we will issue the command. We can now safely quit the loop, knowing
 			* it will succeed at least once. With DC_EXEC we really need to send them to the depot */
 		if (!CmdFailed(ret) && !(flags & DC_EXEC)) {
-			free(sort_list);
+			free((void*)sort_list);
 			return 0;
 		}
 	}
 
-	free(sort_list);
+	free((void*)sort_list);
 	return (flags & DC_EXEC) ? 0 : CMD_ERROR;
 }
 
