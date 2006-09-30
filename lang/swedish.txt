@@ -2939,6 +2939,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Klicka f
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Klicka för att starta alla fordon i depån
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Klicka för att stanna alla flygplan i hangaren
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Klicka för att starta alla flygplan i hangaren
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klicka för att stoppa alla fordon i listan
+STR_MASS_START_LIST_TIP                                         :{BLACK}Klicka för att starta alla fordon i listan
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}

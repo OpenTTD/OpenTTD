@@ -2247,6 +2247,15 @@ STR_LIVERY_HELICOPTER                                           :Helikoptéra
 STR_LIVERY_SMALL_PLANE                                          :Malé letadlo
 STR_LIVERY_LARGE_PLANE                                          :Velké letadlo
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Zobrazit v¨eobecná barevná schémata
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Zobrazit barevná schémata pro vlaky
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Zobrazit barevná schémata pro silnicni vozidla
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Zobrazit barevná schémata pro lode
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Zobrazit barevná schémata pro letadla
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Vybrat primární barvu oznaceneho schématu
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Vybrat sekundární barvu oznaceneho schématu
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Vyber, které barevné schéma chce¨ zmenit (více oznacis s CTRL). Schéma zmenis kliknutím na tlacitko
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (parní)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (dieselová)
@@ -2949,6 +2958,18 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Poslat v
 STR_SEND_TO_HANGARS                                             :{BLACK}Poslat do hangaru
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Poslat v¨echna letadla a helikoptéry v tomto seznamu do hangaru. Pri CTRL+kliknutí se pouze provede údr¸ba
 
+STR_SELL                                                        :{BLACK}Prodat
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Chce¨ prodat v¨echna vozidla v depu.
+STR_ARE_YOU_SURE                                                :{BLACK}Jsi si jistý?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Potvrd, ¸e chce¨ prodat v¨echna vozidla v hangáru
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Potvrd, ¸e chce¨ prodat v¨echna letadla a vrtulníky v hangáru
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Neprodávat vozidla v hangáru
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Neprodávat letadla a vrtulníky v hangáru
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Prodat v¨echna vozidla v hangáru
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Prodat v¨echna letadla a vrtulníky v hangáru
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Nechat automaticky vymenovat v¨echna vozidla v hangáru
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Nechat automaticky vymenovat v¨echna letadla a vrtulníky v hangáru
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymenovani vozidel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymenovani {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zapnout vymenovani
@@ -2975,6 +2996,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Stiskni 
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Stiskni pro hromadný odjezd v¨ech vozidel nacházejících se v depu
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Stiskni pro hromadné zastavení v¨ech letadel a helikoptér nacházejících se v hangáru
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Stiskni pro hromadný odlet v¨ech letadel a helikoptér nacházejících se v hangáru
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliknutím sem se zastaví v¨echna vozidla v seznamu
+STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknutím sem se rozjedou v¨echna vozidla v seznamu
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Seznam popisku - {COMMA} popis{P ek ky ku}

@@ -2910,6 +2910,8 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Non vend
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Non vendere tutti gli aerei nell'hangar
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vendi tutti i veicoli nel deposito
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vendi tutti gli aerei nell'hangar
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Sostituisci automaticamente tutti i veicoli nel deposito
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Sostituisci automaticamente tutti gli aerei nell'hangar
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
@@ -2937,6 +2939,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Clicca p
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Clicca per far partire tutti i veicoli dentro il deposito
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Clicca per fermare tutti gli aerei dentro l'hangar
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Clicca per far partire gli aerei dentro l'hangar
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Clicca per fermare tutti i veicoli nella lista
+STR_MASS_START_LIST_TIP                                         :{BLACK}Clicca per far partire i veicoli nella lista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista dei Cartelli - {COMMA} Cartelli

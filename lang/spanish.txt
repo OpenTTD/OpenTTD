@@ -772,8 +772,8 @@ STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SET
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalle completo
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Edificios transparentes
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificios transparentes
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Señales de estaciones transparentes
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Señales de estaciones transparentes
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Señales transparentes
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Señales transparentes
 ############ range ends	here
 
 ############ range for menu	starts
@@ -958,7 +958,7 @@ STR_TONS                                                        :toneladas
 STR_LITERS                                                      :litros
 STR_ITEMS                                                       :artículos
 STR_CRATES                                                      :cajones
-STR_RES_OTHER                                                   :otros
+STR_RES_OTHER                                                   :Otras
 STR_NOTHING                                                     :
 
 STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
@@ -1047,11 +1047,11 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duració
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Muestra la población de esta población en esta etiqueta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árboles invisibles (con edificios transparentes): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generador de terrenos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generador terreno: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Max distancia desde los bordes para las Refinerías de Petroleo {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura de la línea de nieve: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura línea nieve: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Aspereza del terreno  (Solo TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Muy Suave
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Suave
@@ -1649,7 +1649,7 @@ STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Comprar la excl
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Sobornar la autoridad local
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar una pequeña campaña publicitaria local, para atraer más pasajeros y carga a sus servicios de transporte.{}  Coste: {CURRENCY}
 STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniciar una mediana campaña publicitaria local, para atraer más pasajeros y carga a sus servicios de transporte.{}  Coste: {CURRENCY}
-STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar una gran campaña publicitaria local, para atraer más pasajeros y carga a sus servicios de transporte..{}  Coste: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar una gran campaña publicitaria local, para atraer más pasajeros y carga a sus servicios de transporte.{}  Coste: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Pagar la reconstrucción de las carreteras locales. Causa una considerable complicación del tráfico durante 6 meses.{}  Coste: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construye una estatua en honor a su empresa.{} Coste: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Pagar la construcción de nuevos edificios comerciales en la población.{}  Coste: {CURRENCY}
@@ -2173,15 +2173,15 @@ STR_7080_PROTECTED                                              :{WHITE}Esta emp
 
 STR_LIVERY_DEFAULT                                              :Estación normal
 STR_LIVERY_STEAM                                                :Locomotora a Vapor
-STR_LIVERY_DIESEL                                               :Motor Diesel
-STR_LIVERY_ELECTRIC                                             :Motor Eléctrico
+STR_LIVERY_DIESEL                                               :Locomotora Diesel
+STR_LIVERY_ELECTRIC                                             :Locomotora Eléctrica
 STR_LIVERY_MONORAIL                                             :Locomotora Monorail
 STR_LIVERY_MAGLEV                                               :Locomotora Maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
-STR_LIVERY_PASSENGER_WAGON_STEAM                                :Autobus Pasajeros (Vapor)
-STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Autobus Pasajeros (Diesel)
-STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Autobus Pasajeros (Electrico)
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagón Pasajeros (Vapor)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagón Pasajeros (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagón Pasajeros (Electrico)
 STR_LIVERY_FREIGHT_WAGON                                        :Vagón de Carga
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Camión
@@ -2940,6 +2940,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click pa
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click para empezar todos los vehículos dentro del depósito
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Click para parar todas las aeronaves dentro del hangar
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Click para empezar todas las aeronaves dentro del hangar
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Pulsa para parar todos los vehículos de la lista
+STR_MASS_START_LIST_TIP                                         :{BLACK}Pulsa para arrancar todos los vehículos de la lista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de señales - {COMMA} Señales
@@ -2976,13 +2978,13 @@ STR_RANDOM_HELP                                                 :{BLACK}Cambiar 
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generación de mundo
 STR_RANDOM_SEED                                                 :{BLACK}Semilla Aleatoria:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Pulsa para introducir la semilla aleatoria
-STR_LAND_GENERATOR                                              :{BLACK}Generador de terrenos:
-STR_TREE_PLACER                                                 :{BLACK}Algoritmo de árboles:
+STR_LAND_GENERATOR                                              :{BLACK}Generador terreno:
+STR_TREE_PLACER                                                 :{BLACK}Algoritmo árboles:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotación mapa de alturas:
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreno
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivel del mar:
 STR_SMOOTHNESS                                                  :{BLACK}Suavidad:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altura de la línea de nieve
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Altura línea nieve
 STR_DATE                                                        :{BLACK}Fecha:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}No. de ciudades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}No. de industrias:
@@ -3018,7 +3020,7 @@ STR_SE_CAPTION                                                  :{WHITE}Tipo de 
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Mueve la altura de la tierra llana uno abajo
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Mueve la altura de la tierra llana uno arriba
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Cambia la altura de la tierra llana
-STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altura de la tierra llana:
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Altura tierra llana:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centrar el mapa pequeño a la posición actual

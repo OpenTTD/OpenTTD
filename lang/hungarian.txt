@@ -2299,6 +2299,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Hajó szi
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Repülõgép szinsémák mutatása
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Válassz egy elsõdleges szint a kiválasztott sémához
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Válassz egy másodlagos szint a kiválasztott sémához
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Válassz megváltoztatandó szinsémát, vagy szinsémákat a CTRL+kattintással. Kattints a dobozra a szinséma használat váltásához.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Gõz)
@@ -3011,6 +3012,8 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Ne adjuk
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Ne adjuk el a repülõgépeket a hangárból
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Depotban lévõ jármûvek eladása
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Hangárban lévõ repülõgépek eladása
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Depotban lévõ összes jármû automata cseréje
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Hangárban lévõ összes repülõ automata cseréje
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Jármûvek lecserélése
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}
@@ -3038,6 +3041,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Kattints
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Kattints a depóban lévõ összes jármû elindításához
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Kattins a hangárban lévõ összes repülõ leállításához
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Kattins a hangárban lévõ összes repülõ elindításához
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kattints ide a listán lévõ összes jármû leállításához
+STR_MASS_START_LIST_TIP                                         :{BLACK}Kattints ide a listán lévõ összes jármû elindításához
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)

@@ -680,7 +680,7 @@ STR_0273_CONSTRUCT_LUMBER_MILL_TO                               :{BLACK}Construi
 STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Crear Plantació de Fruita
 STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Crear Plantació de Cautxú
 STR_0276_CONSTRUCT_WATER_SUPPLY                                 :{BLACK}Construir Surtidor d'Aigua
-STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construir Torre d'Aigua (Només es pot construir en poblacions)
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Construir Torre d'aigua (Només es pot construir en poblacions)
 STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Construir Mina de Diamants
 STR_0279_CONSTRUCT_COPPER_ORE_MINE                              :{BLACK}Construir Mina de Coure
 STR_027A_PLANT_COTTON_CANDY_FOREST                              :{BLACK}Plantar Bosc de Cotó de Sucre
@@ -1365,7 +1365,7 @@ STR_NETWORK_REFRESH_TIP                                         :{BLACK}Actualit
 
 STR_NETWORK_COMPANY_INFO                                        :{SILVER}INFORMACIÓ DE L'EMPRESA
 
-STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nom d'empresa:  {WHITE}{STRING}
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Nom empresa:  {WHITE}{STRING}
 STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Inauguració:  {WHITE}{NUM}
 STR_NETWORK_VALUE                                               :{SILVER}Valor de l'empresa:  {WHITE}{CURRENCY64}
 STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Balanç actual:  {WHITE}{CURRENCY64}
@@ -1862,11 +1862,11 @@ STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova veta de carbó trobada a {INDUSTRY}!{}Es preveu doblar la producció!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Noves reserves de petroli trobades a {INDUSTRY}!{}Es preveu doblar la producció!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Sistemes de conreu millorats a {INDUSTRY} fan preveure doblar la producció!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} la producció es redueix d'un 50%
-STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Una plaga d'insectes provoca el caos a {INDUSTRY}!{}La producció es redueix d'un 50%
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} la producció es redueix un 50%
+STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Una plaga d'insectes provoca el caos a {INDUSTRY}!{}La producció es redueix un 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...només es pot situar a prop dels límits del mapa
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} la producció a {INDUSTRY} creix d'un {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} la producció a {INDUSTRY} es redueix d'un {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}La producció de {STRING} a {INDUSTRY} creix un {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}La producció de {STRING} a {INDUSTRY} es redueix un {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Tren dins del túnel
@@ -2042,11 +2042,11 @@ STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Jugador {COMMA})
 STR_7004_NEW_FACE                                               :{BLACK}Nova Cara
-STR_7005_COLOR_SCHEME                                           :{BLACK}Esquema de Colors
-STR_7006_COLOR_SCHEME                                           :{GOLD}Esquema de Colors:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nou Esquema de Colors
-STR_7008_COMPANY_NAME                                           :{BLACK}Nom de l'Empresa
-STR_7009_PRESIDENT_NAME                                         :{BLACK}Nom del President
+STR_7005_COLOR_SCHEME                                           :{BLACK}Esquema de color
+STR_7006_COLOR_SCHEME                                           :{GOLD}Esquema de color:
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nou esquema de color
+STR_7008_COMPANY_NAME                                           :{BLACK}Nom Empresa
+STR_7009_PRESIDENT_NAME                                         :{BLACK}Nom President
 STR_700A_COMPANY_NAME                                           :Nom Empresa
 STR_700B_PRESIDENT_S_NAME                                       :Nom President
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}No es pot canviar el nom d'empresa...
@@ -2197,7 +2197,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Mostrar 
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostrar esquemes de colors dels avions
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Escolleix el color primari per l'esquema triat
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Escolleix el color secundari per l'esquema triat
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecciona un esquema de colors per canviar-lo, o diversos esquemes amb CTRL+click. Click a la caixa per canviar l'esquema
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecciona un esquema de colors per canviar-lo, o diversos esquemes amb CTRL+click. Click a la casella per canviar l'esquema
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
@@ -2913,19 +2913,19 @@ STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vendre t
 STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Autosubstituir tots els vehicles de la cotxera
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Autosubstituir tots els avions de l'hangar
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Reemplaçar Vehicles
+STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Inici de reemplaçament de Vehicles
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Fi de reemplaçament de Vehicles
-STR_NOT_REPLACING                                               :{BLACK}No reemplaçar
-STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}No hi ha cap vehicle seleccionat
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecciona el tipus de motor a reemplaçar
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar substitució de Vehicles
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar substitució de Vehicles
+STR_NOT_REPLACING                                               :{BLACK}No substituint
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Cap vehicle seleccionat
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecciona el tipus de motor a substituir
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Selecciona el nou tipus de motor que vols fer servir en lloc del seleccionat
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Prem per aturar el reemplaçament del tipus de motor seleccionat a l'esquerra
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Prem per iniciar el reemplaçament del tipus de motor seleccionat a l'esquerra pel seleccionat a la dreta
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el tipus de via pel que vols reemplaçar motors
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Tria el tipus de via pel que vols substituir motors
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mosyta quin motor dels seleccionats a l'esquerra es reemplaça, si hi ha
-STR_REPLACE_HELP                                                :{BLACK}Et permet reemplaçar un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
+STR_REPLACE_HELP                                                :{BLACK}Et permet substituir un tipus de motor amb un altre, quan els trens del tipus original entrin a cotxeres
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Treure vagons: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Fer que la sustitució automàtica mantinga la llargaria del tren eliminant vagons (començant pel front), si sustituira la màquina faria el tren més llarg
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sustituint: {ORANGE}{SKIP}{SKIP}{STRING}
@@ -2939,6 +2939,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click pe
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click per engegar tots els vehicles de dintre de la cotxera
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Click per parar tots els avions de dintre de l'hangar
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Click per engegar tots els avions de dintre de l'hangar
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Click per parar tots els vehicles de la llista
+STR_MASS_START_LIST_TIP                                         :{BLACK}Click per engegar tots els vehicles de la llista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals

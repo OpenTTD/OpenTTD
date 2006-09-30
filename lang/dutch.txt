@@ -2910,6 +2910,8 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Verkoop 
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Verkoop niet alle vliegtuigen in de hangar
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Verkoop alle voertuigen in het depot
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Verkoop alle vliegtuigen in de hangar
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Automatisch vervangen van alle voertuigen in het depot
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Automatisch vervangen van alle vliegtuigen in de hangar
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vervang voertuigen
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
@@ -2937,6 +2939,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Klik om 
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Klik om alle voertuigen te starten die in een depot staan
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Klik om alle vliegtuigen te stoppen in de hangar
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Klik om alle vliegtuigen te startan die in een hangar staan
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klik om alle voertuigen te stoppen in de lijst
+STR_MASS_START_LIST_TIP                                         :{BLACK}Klik om alle voertuigen te starten in de lijst
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Bordenlijst - {COMMA} bord{P "" en}

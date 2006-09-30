@@ -3068,6 +3068,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Kliknij 
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Kliknij aby wystartowac wszystkie pojazdy z zajezdni
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Kliknij aby zatrzymac wszystkie samoloty w hangarach
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Kliknij aby wystartowac wszystkie samoloty z hangarow
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliknij aby zatrzymac wszystkie pojazdy na liscie
+STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknij aby wystartowac wszystkie pojazdy na liscie
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice
