@@ -2969,9 +2969,17 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Neprodáv
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Neprodávat letadla a vrtulníky v hangáru
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Prodat v¨echna vozidla v hangáru
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Prodat v¨echna letadla a vrtulníky v hangáru
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Ukázat seznam v¨ech vlaku, které mají toto depo v jízdním radu
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Ukázat seznam v¨ech silnicnich vozidel, které mají toto depo v jízdním radu
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Ukázat seznam v¨ech lodí, které mají toto depo v jízdním radu
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Ukázat seznam v¨ech letadel a helikoptér, které mají jakýkoliv z hangaru na tomto letisti v letovém plánu
 STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Nechat automaticky vymenovat v¨echna vozidla v hangáru
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Nechat automaticky vymenovat v¨echna letadla a vrtulníky v hangáru
 
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} -  {COMMA} vlak{P "" y u}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} silnicni{P "" "" ch} vozid{P lo la el}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} lod{P "" e i}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} letad{P lo la el}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymenovani vozidel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymenovani {STRING}

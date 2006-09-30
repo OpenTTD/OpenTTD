@@ -2902,6 +2902,8 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Envoyer 
 STR_SEND_TO_HANGARS                                             :{BLACK}Envoyer au hangar
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Envoyer tous les aéronefs de la liste au hangar. CTRL+clic pour entretien seul
 
+### depot strings
+
 STR_SELL                                                        :{BLACK}Vendre
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Vous êtes sur le point de vendre tous les véhicules du dépot
 STR_ARE_YOU_SURE                                                :{BLACK}Etes-vous sûr?
@@ -2911,8 +2913,9 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Ne vendr
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Ne vendre aucun des aéronefs du hangar
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vendre tous les véhicules du dépôt
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vendre tous les aéronefs du hangar
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Autoremplacer tous les véhicles du dépôt
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Autoremplacer tous les véhicules du dépôt
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Autoremplacer tous les aéronefs du hangar
+
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Remplacement véhicules
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}

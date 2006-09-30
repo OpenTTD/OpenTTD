@@ -2902,6 +2902,8 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Schickt 
 STR_SEND_TO_HANGARS                                             :{BLACK}In den Hangar schicken
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Schickt alle Flugzeuge in der Liste in den Hangar.
 
+### depot strings
+
 STR_SELL                                                        :{BLACK}Verkaufen
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du bist dabei alle Fahrzeuge im Depot zu verkaufen
 STR_ARE_YOU_SURE                                                :{BLACK}Bist du sicher?
@@ -2913,6 +2915,11 @@ STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Verkaufe
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Verkaufe alle Flugzeuge im Hangar
 STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Automatisches Ersetzen aller Fahrzeuge im Depot
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Automatisches Ersetzen aller Flugzeuge im Hangar
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} {P Zug Züge}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Fahrzeug{P "" e}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Schiff{P "" e}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flugzeug
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Ersetze Fahrzeuge
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Ersetze {STRING}

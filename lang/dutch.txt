@@ -2901,6 +2901,8 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Stuur al
 STR_SEND_TO_HANGARS                                             :{BLACK}Stuur naar Hangars
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Stuur alle voertuigen in de lijst naar hangars.
 
+### depot strings
+
 STR_SELL                                                        :{BLACK}Verkoop
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Je staat op het punt alle voertuigen in het depot te verkopen.
 STR_ARE_YOU_SURE                                                :{BLACK}Weet je het zeker?
@@ -2910,8 +2912,17 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Verkoop 
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Verkoop niet alle vliegtuigen in de hangar
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Verkoop alle voertuigen in het depot
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Verkoop alle vliegtuigen in de hangar
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Geef een lijst van alle treinen met huidig depot in hun orders
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Geef een lijst van alle wegvoertuigen met huidig depot in hun orders
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Geef een lijst van alle schepen met huidig schepswerf in hun orders
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Geef een lijst van alle vliegtuigen met een hangar van dit vliegveld in hun orders
 STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Automatisch vervangen van alle voertuigen in het depot
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Automatisch vervangen van alle vliegtuigen in de hangar
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trein{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Weg Voertuigen{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Schip{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Vliegtuig
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vervang voertuigen
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
