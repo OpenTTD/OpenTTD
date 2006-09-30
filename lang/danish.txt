@@ -2882,20 +2882,10 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordre af {COMMA} transportmiddel{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, som har den samme rute
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Send til garage
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Send alle køretøjer på listen til garage. CTRL+klik sender dem kun til eftersyn
-STR_SEND_TO_HANGARS                                             :{BLACK}Send til hangar
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Send alle fly på listen til hangar. CTRL+klik sender dem kun til eftersyn
 
 STR_SELL                                                        :{BLACK}Sælg
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du er ved at sælge alle køretøjer i depotet
 STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Bekræft at du vil sælge alle køretøjer i depotet
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Bekræft at du vil sælge alle fly i hangaren
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Sælg ikke alle køretøjer i depotet
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Sælg ikke alle fly i hangaren
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sælg alle køretøjer i depotet
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sælg alle fly i hangaren
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Udskift Køretøjer
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Udskift {STRING}
@@ -2919,10 +2909,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Køretøje
 STR_ENGINES                                                     :Lokomotiver
 STR_WAGONS                                                      :Vogne
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Klik for at stoppe alle køretøjer i garagen
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Klik for at starte alle køretøjer i garagen
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Klik for at stoppe alle fly i hangaren
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Klik for at starte alle fly i hangaren
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste of skilte - {COMMA} Skilte

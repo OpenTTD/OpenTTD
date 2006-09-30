@@ -2888,10 +2888,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens partilhadas de {COMMA} veículo{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos que seguem o mesmo trajecto
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar para depósitos
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Enviar todos os veículos da lista para depósitos.{}Control-click para irem apenas em serviço (em vez de paragem)
-STR_SEND_TO_HANGARS                                             :{BLACK}Enviar para hangares
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Enviar todas as aeronaves da lista para depósitos.{}Control-click para irem apenas em serviço (em vez de paragem)
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
@@ -2915,8 +2911,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomoti
 STR_ENGINES                                                     :Locomotivas
 STR_WAGONS                                                      :Vagões
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Clique para parar todos os veículos dentro do depósito
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Clique para parar todos os aviões dentro do hangar
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais

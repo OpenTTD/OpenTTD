@@ -2889,22 +2889,10 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Komut li
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} Aracin paylasilan talimatlari
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ayni talimatlara sahip bütün araçlari göster
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Garlara Gönder
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Listedeki tüm araçlari garaja gönder. CTRL+tiklama sadece bakim içindir
-STR_SEND_TO_HANGARS                                             :{BLACK}Hangarlara gönder
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Listedeki tüm uçaklari hangara gönder. CTRL+tiklama sadece bakim içindir
 
 STR_SELL                                                        :{BLACK}Sat
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Garajdaki tüm araçlari satmak üzeresiniz.
 STR_ARE_YOU_SURE                                                :{BLACK}Emin misiniz?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Garajdaki tüm araçlari satmayi onayla
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Hangardaki tüm uçaklari satmayi onayla
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Garajdaki tüm araçlari satma
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Hangardaki tüm uçaklari satma
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Garajdaki tüm araçlara bak
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Hangardaki tüm uçaklara bak
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Garajdaki tüm araçlari yenile
-STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Hangardaki tüm uçaklari yenile
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Araçlari Degistir
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} Degistir
@@ -2928,10 +2916,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoti
 STR_ENGINES                                                     :Lokomotifler
 STR_WAGONS                                                      :Vagon
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Duraktaki tüm araçlari durdurmak için tiklayin
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Garajdaki tüm araçlari baslatmak için tikla
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Hangardaki tüm uçaklari durdurmak için tiklayin
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Hangardaki tüm uçaklari harekete geçirmek için bas
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Listedeki tüm araçlari durdurmak için bas
 STR_MASS_START_LIST_TIP                                         :{BLACK}Listedeki tüm araçlari baslatmak için bas
 

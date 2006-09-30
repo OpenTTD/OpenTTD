@@ -3025,28 +3025,16 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Pokazuje
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Wspoldzielone polecenia {COMMA} pojazd{P u ow ow}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaz wszystkie pojazdy z takim samym rozkladem
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Wyslij do zajezdni
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Wyslij wszystkie pojazdy z listy do zajezdni.
-STR_SEND_TO_HANGARS                                             :{BLACK}Wyslij do hangarow
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Wyslij wszystkie samoloty z listy do hangarow.
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Sprzedaj
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Sprzedasz wszystkie pojazdy z zajezdni
 STR_ARE_YOU_SURE                                                :{BLACK}Jestes pewien?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Potwierdz chec sprzedania wszystkich pojazdow z zajezdni
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Potwierdz chec sprzedania wszystkich samolotow z hangaru
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Nie sprzedawaj wszystkich pojazdow z zajezdni
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Nie sprzedawaj wszystkich samolotow z hangaru
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sprzedaj wszystkie pojazdy z zajezdni
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sprzedaj wszystkie samoloty z hangaru
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Pokaz liste wszystkich pociagow z ta zajezdnia w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Pokaz liste wszystkich samochodow z ta zajezdnia w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Pokaz liste wszystkich statkow z ta stocznia w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Pokaz liste wszystkich samolotow z hangarem na tym lotnisku w swoich poleceniach
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Zamien wszystkie pojazdy w zajezdni
-STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Zamien wszystkie samoloty w hangarze
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Pociag{P "" i ow}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Samochod{P "" y ow}
@@ -3075,10 +3063,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoty
 STR_ENGINES                                                     :Lokomotywy
 STR_WAGONS                                                      :Wagonow
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Kliknij aby zatrzymac wszystkie pojazdy w zajezdniach
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Kliknij aby wystartowac wszystkie pojazdy z zajezdni
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Kliknij aby zatrzymac wszystkie samoloty w hangarach
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Kliknij aby wystartowac wszystkie samoloty z hangarow
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliknij aby zatrzymac wszystkie pojazdy na liscie
 STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknij aby wystartowac wszystkie pojazdy na liscie
 

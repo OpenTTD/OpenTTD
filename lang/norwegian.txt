@@ -2838,9 +2838,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordre av {COMMA} Kjøretøy{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle kjøretøy som har samme ruteplan
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Send til depoet
-STR_SEND_TO_HANGARS                                             :{BLACK}Send til hangarer
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Send alle luftfartøy i listen til en hangar. CTRL+klikk vil bare reparere luftfartøyet
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Bytt ut kjøretøy
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatte {STRING}

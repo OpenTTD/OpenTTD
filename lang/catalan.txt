@@ -2896,22 +2896,10 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra t
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres compartides de {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tots els vehicles que tenen les mateixes ordres
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a les cotxeres
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Enviar tots els vehicles de la llista a les cotxeres. CTRL+click per només revisió
-STR_SEND_TO_HANGARS                                             :{BLACK}Enviar als Hangars
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Enviar totes les aeronaus de la llista als hangars. CTRL+click per només revisió
 
 STR_SELL                                                        :{BLACK}Vendre
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Estàs a punt de vendre tots els vehicles de la cotxera
 STR_ARE_YOU_SURE                                                :{BLACK}N'estàs segur?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Confirmar venda de tots els vehicles de la cotxera
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Confirmar venda de tots els avions de l'hangar
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}No vendre tots els vehicles de la cotxera
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}No vendre tots els avions de l'hangar
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vendre tots els vehicles de la cotxera
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vendre tots els avions de l'hangar
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Autosubstituir tots els vehicles de la cotxera
-STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Autosubstituir tots els avions de l'hangar
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
@@ -2935,10 +2923,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor
 STR_ENGINES                                                     :Motors
 STR_WAGONS                                                      :Vagons
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click per parar tots els vehicles de dintre de la cotxera
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click per engegar tots els vehicles de dintre de la cotxera
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Click per parar tots els avions de dintre de l'hangar
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Click per engegar tots els avions de dintre de l'hangar
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Click per parar tots els vehicles de la llista
 STR_MASS_START_LIST_TIP                                         :{BLACK}Click per engegar tots els vehicles de la llista
 

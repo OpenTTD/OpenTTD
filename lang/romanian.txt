@@ -2886,9 +2886,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motorul 
 STR_ENGINES                                                     :Motoare
 STR_WAGONS                                                      :Vagoane
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Apasa pentru oprirea tuturor vehiculelor din depou
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Apasa pentru pornirea tuturor vehiculelor din depou
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Apasa pentru pornirea tuturor aeronavelor din hangar
 STR_MASS_START_LIST_TIP                                         :{BLACK}Apasa pentru pornirea tuturor vehiclulelor din lista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}

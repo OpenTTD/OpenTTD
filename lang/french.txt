@@ -2897,24 +2897,12 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afficher
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres partagés de {COMMA} véhicule{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Afficher tous les véhicules ayant le même planning
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Envoyer au dépôt
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Envoyer tous les véhicules de la liste au dépôt. CTRL+clic pour entretien seul
-STR_SEND_TO_HANGARS                                             :{BLACK}Envoyer au hangar
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Envoyer tous les aéronefs de la liste au hangar. CTRL+clic pour entretien seul
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Vendre
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Vous êtes sur le point de vendre tous les véhicules du dépot
 STR_ARE_YOU_SURE                                                :{BLACK}Etes-vous sûr?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Confirmer la vente de tous les véhiclues du dépôt
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Confirmer la vente de tous les aéronefs du hangar
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Ne vendre aucun des véhicules du dépôt
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Ne vendre aucun des aéronefs du hangar
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vendre tous les véhicules du dépôt
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vendre tous les aéronefs du hangar
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Autoremplacer tous les véhicules du dépôt
-STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Autoremplacer tous les aéronefs du hangar
 
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Remplacement véhicules
@@ -2939,10 +2927,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ce véhic
 STR_ENGINES                                                     :Locomotives
 STR_WAGONS                                                      :Wagons
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Cliquer pour arrêter tous les véhicules du dépot
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Cliquer pour démarrer tous les véhicules du dépot
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Cliquer pour arrêter tous les aéronefs du hangar
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Cliquer pour démarrer tous les aéronefs du hangar
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Cliquer pour arrêter tous les véhicules de la liste
 STR_MASS_START_LIST_TIP                                         :{BLACK}Cliquer pour démarrer tous les véhicules de la liste
 

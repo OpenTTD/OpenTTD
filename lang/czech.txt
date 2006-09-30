@@ -2953,28 +2953,16 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Sdílené prikazy {COMMA} vozid{P lo la el}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit v¨echny prostredky se stejným jízdním radem
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Poslat do dep
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Poslat v¨echny prostredky v tomto seznamu do dep. Pri CTRL+kliknutí se pouze provede údr¸ba
-STR_SEND_TO_HANGARS                                             :{BLACK}Poslat do hangaru
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Poslat v¨echna letadla a helikoptéry v tomto seznamu do hangaru. Pri CTRL+kliknutí se pouze provede údr¸ba
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Prodat
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Chce¨ prodat v¨echna vozidla v depu.
 STR_ARE_YOU_SURE                                                :{BLACK}Jsi si jistý?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Potvrd, ¸e chce¨ prodat v¨echna vozidla v hangáru
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Potvrd, ¸e chce¨ prodat v¨echna letadla a vrtulníky v hangáru
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Neprodávat vozidla v hangáru
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Neprodávat letadla a vrtulníky v hangáru
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Prodat v¨echna vozidla v hangáru
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Prodat v¨echna letadla a vrtulníky v hangáru
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Ukázat seznam v¨ech vlaku, které mají toto depo v jízdním radu
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Ukázat seznam v¨ech silnicnich vozidel, které mají toto depo v jízdním radu
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Ukázat seznam v¨ech lodí, které mají toto depo v jízdním radu
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Ukázat seznam v¨ech letadel a helikoptér, které mají jakýkoliv z hangaru na tomto letisti v letovém plánu
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Nechat automaticky vymenovat v¨echna vozidla v hangáru
-STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Nechat automaticky vymenovat v¨echna letadla a vrtulníky v hangáru
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} -  {COMMA} vlak{P "" y u}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} silnicni{P "" "" ch} vozid{P lo la el}
@@ -3003,10 +2991,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj ne
 STR_ENGINES                                                     :lokomotivy
 STR_WAGONS                                                      :vagony
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Stiskni pro hromadné zastavení v¨ech vozidel nacházejících se v depu
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Stiskni pro hromadný odjezd v¨ech vozidel nacházejících se v depu
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Stiskni pro hromadné zastavení v¨ech letadel a helikoptér nacházejících se v hangáru
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Stiskni pro hromadný odlet v¨ech letadel a helikoptér nacházejících se v hangáru
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliknutím sem se zastaví v¨echna vozidla v seznamu
 STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknutím sem se rozjedou v¨echna vozidla v seznamu
 

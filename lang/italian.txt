@@ -2896,22 +2896,10 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra t
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordini comuni di {COMMA} Veicol{P o i}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tutti i veicoli con la stessa lista ordini
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Manda ai Depositi
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Manda tutti i veicoli in lista al deposito. CTRL+click solo servizio
-STR_SEND_TO_HANGARS                                             :{BLACK}Manda agli Hangar
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Manda tutti gli aerei in lista all'hangar. CTRL+click solo servizio
 
 STR_SELL                                                        :{BLACK}Vendi
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Stai per vendere tutti i veicoli nel deposito
 STR_ARE_YOU_SURE                                                :{BLACK}Sei sicuro?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Conferma che vuoi vendere tutti i veicoli nel deposito
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Conferma che vuoi vendere tutti gli aerei nell'hangar
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Non vendere tutti i veicoli nel deposito
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Non vendere tutti gli aerei nell'hangar
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vendi tutti i veicoli nel deposito
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vendi tutti gli aerei nell'hangar
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Sostituisci automaticamente tutti i veicoli nel deposito
-STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Sostituisci automaticamente tutti gli aerei nell'hangar
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
@@ -2935,10 +2923,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi
 STR_ENGINES                                                     :Motrici
 STR_WAGONS                                                      :Vagoni
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Clicca per fermare tutti i veicoli dentro il deposito
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Clicca per far partire tutti i veicoli dentro il deposito
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Clicca per fermare tutti gli aerei dentro l'hangar
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Clicca per far partire gli aerei dentro l'hangar
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Clicca per fermare tutti i veicoli nella lista
 STR_MASS_START_LIST_TIP                                         :{BLACK}Clicca per far partire i veicoli nella lista
 

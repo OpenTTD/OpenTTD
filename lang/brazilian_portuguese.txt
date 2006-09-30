@@ -2896,28 +2896,16 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens compartilhadas do veículo {COMMA} {P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos com a mesma rota
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar para Depósitos
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Envia todos os veículos na lista para o depósito. CTRL+clique para so fazer manutenção.
-STR_SEND_TO_HANGARS                                             :{BLACK}Mandar para Hangares
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Envia todos os aeroplanos na lista para o depósito. CTRL+clique para so fazer manutenção.
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Vender
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Você estará vendendo todos os veículos do depósito
 STR_ARE_YOU_SURE                                                :{BLACK}Tem certeza?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Confirma a venda de todas os veículos do hangar
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Confirma a venda de todas as aeronaves do hangar
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Cancelar venda de veículos
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Cancelar venda de aeronaves
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vender todas os veículos do depósito
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vender todas as aeronaves do hangar
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obtém uma lista de trens com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obtém uma lista de veículos com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obtém uma lista de navios com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obtém uma lista de aeronaves com este hangar em suas ordens
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Autosubstituir todos os veículos no depósito
-STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Autosubstituir todas as areonaves no hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trem{P "" s}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Automóvel{P "" s}
@@ -2946,10 +2934,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A locomo
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagões
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Clique para mandar todos os veículos pararem
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Clique para mandar todos os veículos para o trabalho
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Clique para mandar todos os aeroplanos pararem
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Clique para mandar todos os aeroplanos para o trabalho
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Clique para mandar todos os veículos pararem
 STR_MASS_START_LIST_TIP                                         :{BLACK}Clique para mandar todos os veículos para o trabalho
 

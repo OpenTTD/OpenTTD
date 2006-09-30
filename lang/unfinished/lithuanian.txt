@@ -2831,10 +2831,6 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Rodyti v
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Rodyti visus laivus, kuriu uzduotyse yra pamineta si stotele
 
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Nusiusti i depus
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Nusiusti visus automobilius sarase i depa. CTRL+click tik servisus
-STR_SEND_TO_HANGARS                                             :{BLACK}Siusti i Angarus
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Nusiusti visus orlaivius sarase i angara. CTRL+click tik servisus
 
 STR_SELL                                                        :{BLACK}Parduoti
 
@@ -2857,10 +2853,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Variklio
 
 STR_ENGINES                                                     :Varikliai
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Paspauskite noredami sustabdyti automobilius viduje depo
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Paspauskite noredami paleisti automobilius viduje depo
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Paspauskite noredami sustabdyti orlaivius viduje depo
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Paspauskite noredami paleisti orlaivius viduje depo
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Paspauskite noredami sustabdyti automobilius is saraso
 STR_MASS_START_LIST_TIP                                         :{BLACK}Paspauskite noredami paleisti automobilius is saraso
 

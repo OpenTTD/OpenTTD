@@ -2897,24 +2897,12 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zeige al
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gemeinsamer Fahrplan von {COMMA} Fahrzeug{P "" en}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zeige alle Fahrzeuge mit demselben Fahrplan
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Ins Depot schicken
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Schickt alle Fahrzeuge in der Liste ins Depot.
-STR_SEND_TO_HANGARS                                             :{BLACK}In den Hangar schicken
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Schickt alle Flugzeuge in der Liste in den Hangar.
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Verkaufen
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du bist dabei alle Fahrzeuge im Depot zu verkaufen
 STR_ARE_YOU_SURE                                                :{BLACK}Bist du sicher?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Bitte bestätige dass du alle Fahrzeuge im Depot verkaufen willst
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Bitte bestätige dass du alle Flugzeuge im Hangar verkaufen willst
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Verkaufe nicht alle Fahrzeuge im Depot
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Verkaufe nicht alle Flugzeuge im Hangar
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Verkaufe alle Fahrzeuge im Depot
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Verkaufe alle Flugzeuge im Hangar
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Automatisches Ersetzen aller Fahrzeuge im Depot
-STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Automatisches Ersetzen aller Flugzeuge im Hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} {P Zug Züge}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Fahrzeug{P "" e}
@@ -2943,10 +2931,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoti
 STR_ENGINES                                                     :Loks
 STR_WAGONS                                                      :Waggons
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Klicke hier um alle Fahrzeuge im Depot anzuhalten.
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Klicke hier um alle Fahrzeuge im Depot starten zu lassen.
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Klicke hier um alle Flugzeuge im Hangar anzuhalten.
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Klicke hier um alle Flugzeuge im Hangar starten zu lassen.
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Hier klicken um alle Fahrzeuge in der Liste anzuhalten
 STR_MASS_START_LIST_TIP                                         :{BLACK}Hier klicken um alle Fahrzeuge in der Liste zu starten
 

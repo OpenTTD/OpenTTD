@@ -2960,22 +2960,10 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Zdielane prikazy  {COMMA} vozid{P la iel iel}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit vsetky vozidla s rovnakym zoznamom prikazov
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Poslat do depa
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Poslat vsetky vozidla v zozname do depa. CTRL+klik na vykonanie servisu
-STR_SEND_TO_HANGARS                                             :{BLACK}Poslat do hangarov
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Poslat vsetky lietadla v zozname do hangarov. CTRL+klik na vykonanie servisu
 
 STR_SELL                                                        :{BLACK}Predat
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}V¨etky vozidlá budú poslané do depa
 STR_ARE_YOU_SURE                                                :{BLACK}Ste si istí?
-STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Potvrdit predaj v¨etkých vozidiel v depe
-STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Potvrdit predaj v¨etkých lietadiel v hangári
-STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Nepredat v¨etky vozidlá v depe
-STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Nepredat v¨etky lietadlá v hangári
-STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Predat v¨etky vozidlá v depe
-STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Predat v¨etky lietadlá v hangári
-STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Automaticky vymenit v¨etky vozidlá v depe
-STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Automaticky vymenit v¨etky lietadlá v hangári
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymena vozidiel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena {STRING}
@@ -2999,10 +2987,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoti
 STR_ENGINES                                                     :Lokomotívy
 STR_WAGONS                                                      :Vagonov
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Kliknite pre zastavenie v¨etkých vozidiel v depe
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Kliknite pre spustenie v¨etkých vozidiel v depe
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Kliknite pre zastavenie v¨etkých lietadiel v hangári
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Kliknite pre spustenie v¨etkých lietadiel v hangári
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}

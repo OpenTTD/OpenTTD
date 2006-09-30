@@ -2896,10 +2896,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Send to Depots
-STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Send all vehicles in list to depot. CTRL+click will only service
-STR_SEND_TO_HANGARS                                             :{BLACK}Send to Hangars
-STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Send all aircraft in list to hangar. CTRL+click will only service
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Replace Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
@@ -2923,10 +2919,6 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine i
 STR_ENGINES                                                     :Engines
 STR_WAGONS                                                      :Cars
 
-STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Click to stop all the vehicles inside the depot
-STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Click to start all the vehicles inside the depot
-STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Click to stop all the aircraft inside the hangar
-STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Click to start all the aircraft inside the hangar
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
