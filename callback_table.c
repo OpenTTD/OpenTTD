@@ -23,6 +23,9 @@ CommandCallback CcBuildBridge;
 CommandCallback CcBuildDocks;
 CommandCallback CcBuildCanal;
 
+/* depot_gui.c */
+CommandCallback CcCloneVehicle;
+
 /* main_gui.c */
 CommandCallback CcPlaySound10;
 CommandCallback CcPlaceSign;
@@ -81,7 +84,8 @@ CommandCallback *_callback_table[] = {
 	/* 0x16 */ CcCloneRoadVeh,
 	/* 0x17 */ CcCloneShip,
 	/* 0x18 */ CcCloneTrain,
-	/* 0x19 */ CcAI
+	/* 0x19 */ CcAI,
+	/* 0x1A */ CcCloneVehicle
 };
 
 const int _callback_table_count = lengthof(_callback_table);
