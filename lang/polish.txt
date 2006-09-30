@@ -1667,7 +1667,7 @@ STR_2007_RENAME_TOWN                                            :Zmien nazwe mia
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Nie mozna zmienic nazwy miasta...
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Lokalne wladze {TOWN} nie pozwalaja na to
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Nazwy miast - klik na nazwie aby wycentrowac widok na miescie
-STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Wycentruj glowny widok na miescie
+STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centruj glowny widok na miescie
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Zmien nazwe miasta
 STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Pasazerow w zeszlym miesiacu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Poczta w zeszlym miesiacu: {ORANGE}{COMMA}{BLACK}  maks: {ORANGE}{COMMA}
@@ -1829,7 +1829,7 @@ STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Wybierz 
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Wybierz dlugosc stacji
 STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Wybierz orientacje przystanku
 STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Orientacja zajezdni ladowania ciezarowek
-STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centruj widok na stacji
+STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centruj glowny widok na stacji
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Pokaz ocene stacji
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Zmien nazwe stacji/przystanku
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Pokaz liste akceptowanych towarow
@@ -2764,14 +2764,14 @@ STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Samochod
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Zbuduj nowe samochody (wymaga zajezdni)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Obecny stan pojazdu - klik tutaj aby zatrzymac/ruszyc pojazd
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Pokaz polecenia pojazdu
-STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centruj widok na lokacji pojazdu
+STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centruj glowne okno na pozycji pojazdu
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Wyslij pojazd do zajezdni
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Zmus pojazd do zawrocenia
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Pokaz detale samochodu
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Pojazdy - klik na pojezdzie po wiecej info
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Zbuduj nowy samochod
 STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Przecianij samochod tutaj aby go sprzedac
-STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centruj widok na lokacji zajezdni samochodowej
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centruj glowne okno na pozycji zajezdni samochodowej
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista wyboru samochodow - klik na pojezdzie po wiecej info
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Zbuduj wybrany samochod
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Dostepny nowy samochod!
@@ -3030,6 +3030,8 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Wyslij w
 STR_SEND_TO_HANGARS                                             :{BLACK}Wyslij do hangarow
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Wyslij wszystkie samoloty z listy do hangarow.
 
+### depot strings
+
 STR_SELL                                                        :{BLACK}Sprzedaj
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Sprzedasz wszystkie pojazdy z zajezdni
 STR_ARE_YOU_SURE                                                :{BLACK}Jestes pewien?
@@ -3039,8 +3041,17 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Nie sprz
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Nie sprzedawaj wszystkich samolotow z hangaru
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sprzedaj wszystkie pojazdy z zajezdni
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sprzedaj wszystkie samoloty z hangaru
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Pokaz liste wszystkich pociagow z ta zajezdnia w swoich poleceniach
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Pokaz liste wszystkich samochodow z ta zajezdnia w swoich poleceniach
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Pokaz liste wszystkich statkow z ta stocznia w swoich poleceniach
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Pokaz liste wszystkich samolotow z hangarem na tym lotnisku w swoich poleceniach
 STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Zamien wszystkie pojazdy w zajezdni
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Zamien wszystkie samoloty w hangarze
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Pociag{P "" i ow}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Samochod{P "" y ow}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Stat{P ek ki kow}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Samolot{P "" y ow}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Zastap pojazdy
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastap {STRING}

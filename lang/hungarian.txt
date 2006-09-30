@@ -3003,6 +3003,8 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}A listán
 STR_SEND_TO_HANGARS                                             :{BLACK}Hangárba küldés
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}A listán szereplô összes repülô hangárba küldése. CTRL+kattintásra csak javításra küld.
 
+### depot strings
+
 STR_SELL                                                        :{BLACK}Elad
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Te éppen a depotban lévõ jármûveket készülsz eladni
 STR_ARE_YOU_SURE                                                :{BLACK}Biztos vagy benne?
@@ -3012,8 +3014,17 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Ne adjuk
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Ne adjuk el a repülõgépeket a hangárból
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Depotban lévõ jármûvek eladása
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Hangárban lévõ repülõgépek eladása
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Az összes, ezen depotot menetrendszerüen látogató vonat listájának összeállítása
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Az összes, ezen hangárt menetrendszerüen látogató jármû listájának összeállítása
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Az összes, ezen dokkot menetrendszerüen látogató hajó listájának összeállítása
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Az összes, itteni hangárt menetrendszerüen látogató repülõgép listájának összeállítása
 STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Depotban lévõ összes jármû automata cseréje
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Hangárban lévõ összes repülõ automata cseréje
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} vonat
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} közúti jármû
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} hajó
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} repülõgép
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Jármûvek lecserélése
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}

@@ -1070,6 +1070,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de ferrovia/rodovia/hidrovia/aeroportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar cores de companhias: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Minha empresa
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas as empresas
@@ -2169,15 +2170,34 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} foi comprada por {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Esta empresa ainda não troca ações...
 
+STR_LIVERY_DEFAULT                                              :Cores padrão
+STR_LIVERY_STEAM                                                :Máquina a Vapor
 STR_LIVERY_DIESEL                                               :Motor a Diesel
 STR_LIVERY_ELECTRIC                                             :Motor Elétrico
 STR_LIVERY_MONORAIL                                             :Motor Monotrilho
 STR_LIVERY_MAGLEV                                               :Motor Maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Vagão de Passageiro (Vapor)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Vagão de Passageiro (Diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Vagão de Passageiro (Elétrico)
+STR_LIVERY_FREIGHT_WAGON                                        :Vagão de carga
 STR_LIVERY_BUS                                                  :Ônibus
+STR_LIVERY_TRUCK                                                :Caminhão
+STR_LIVERY_PASSENGER_SHIP                                       :Navio Passageiro
+STR_LIVERY_FREIGHT_SHIP                                         :Cargueiro
 STR_LIVERY_HELICOPTER                                           :Helicóptero
+STR_LIVERY_SMALL_PLANE                                          :Pequeno Avião
 STR_LIVERY_LARGE_PLANE                                          :Aeronave  Grande
+
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Mostrar esquemas de cor gerais
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Mostra esquemas de cor de trens
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Mostra os esquemas de cor de automóveis
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Mostra esquemas de cor de navios
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Mostrar esquemas de cor de aviões
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Seleciona a cor principal para o esquema selecionado
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Seleciona a cor secundária para o esquema selecionado
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Selecione um esquema a mudar, ou múltiplos esquemas com CTRL+clique. Marque a opção para utilizar o esquema
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
@@ -2881,6 +2901,29 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Envia to
 STR_SEND_TO_HANGARS                                             :{BLACK}Mandar para Hangares
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Envia todos os aeroplanos na lista para o depósito. CTRL+clique para so fazer manutenção.
 
+### depot strings
+
+STR_SELL                                                        :{BLACK}Vender
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Você estará vendendo todos os veículos do depósito
+STR_ARE_YOU_SURE                                                :{BLACK}Tem certeza?
+STR_DEPOT_SELL_ALL_TIP                                          :{BLACK}Confirma a venda de todas os veículos do hangar
+STR_DEPOT_SELL_ALL_HANGAR_TIP                                   :{BLACK}Confirma a venda de todas as aeronaves do hangar
+STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Cancelar venda de veículos
+STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Cancelar venda de aeronaves
+STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Vender todas os veículos do depósito
+STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Vender todas as aeronaves do hangar
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obtém uma lista de trens com este depósito em suas ordens
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obtém uma lista de veículos com este depósito em suas ordens
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obtém uma lista de navios com este depósito em suas ordens
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obtém uma lista de aeronaves com este hangar em suas ordens
+STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Autosubstituir todos os veículos no depósito
+STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Autosubstituir todas as areonaves no hangar
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trem{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Automóvel{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Navio{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar Substituição de Veículos
@@ -2902,6 +2945,13 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A locomo
 
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagões
+
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Clique para mandar todos os veículos pararem
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Clique para mandar todos os veículos para o trabalho
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Clique para mandar todos os aeroplanos pararem
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Clique para mandar todos os aeroplanos para o trabalho
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Clique para mandar todos os veículos pararem
+STR_MASS_START_LIST_TIP                                         :{BLACK}Clique para mandar todos os veículos para o trabalho
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais

@@ -1114,9 +1114,9 @@ STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :rovná
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :clenita
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :velmi clenita
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritmus sázení stromového porostu: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :¸ádný
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :¸ádné
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :puvodni
-STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :vylep¨ený
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :vylep¨ené
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Otoceni vý¨kové mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Doleva
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Doprava
@@ -2958,6 +2958,8 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Poslat v
 STR_SEND_TO_HANGARS                                             :{BLACK}Poslat do hangaru
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Poslat v¨echna letadla a helikoptéry v tomto seznamu do hangaru. Pri CTRL+kliknutí se pouze provede údr¸ba
 
+### depot strings
+
 STR_SELL                                                        :{BLACK}Prodat
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Chce¨ prodat v¨echna vozidla v depu.
 STR_ARE_YOU_SURE                                                :{BLACK}Jsi si jistý?
@@ -2969,6 +2971,7 @@ STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Prodat v
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Prodat v¨echna letadla a vrtulníky v hangáru
 STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Nechat automaticky vymenovat v¨echna vozidla v hangáru
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Nechat automaticky vymenovat v¨echna letadla a vrtulníky v hangáru
+
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymenovani vozidel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymenovani {STRING}
@@ -3035,7 +3038,7 @@ STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Tvorba k
 STR_RANDOM_SEED                                                 :{BLACK}Náhodné cislo:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Zde muzete zadat náhodné cislo
 STR_LAND_GENERATOR                                              :{BLACK}Generátor krajiny:
-STR_TREE_PLACER                                                 :{BLACK}Algoritmus výsadby stromu:
+STR_TREE_PLACER                                                 :{BLACK}Sázení stromu:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Otoceni vý¨kové mapy:
 STR_TERRAIN_TYPE                                                :{BLACK}Typ krajiny:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Mno¸ství jezer:

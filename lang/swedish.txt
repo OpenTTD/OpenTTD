@@ -2901,6 +2901,8 @@ STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Skicka a
 STR_SEND_TO_HANGARS                                             :{BLACK}Skicka till hangarer
 STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Skicka alla flyplan i listan till hangar. CTRL+klick för service endast
 
+### depot strings
+
 STR_SELL                                                        :{BLACK}Sälj
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du är på väg att sälja alla fordon i depån.
 STR_ARE_YOU_SURE                                                :{BLACK}Är du säker?
@@ -2910,8 +2912,17 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Sälj int
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Sälj inte alla flygplan i hangaren
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sälj alla fordon i depån
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sälj alla flygplan i hangaren
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Ge en lista av alla tåg som har denna depå i dess körschema
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Ge en lista av alla fordon som har denna depå i dess körschema
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Ge en lista av alla fartyg som har denna depå i dess körschema
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Ge en lista av alla flygplan som har denna flygplats-hangar i dess körschema
 STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Förnya alla fordon i depån
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Förnya alla flygplan i hangaren
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tåg
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vägfordon
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Skepp
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flygplan
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Byt ut fordon
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Byt ut {STRING}
