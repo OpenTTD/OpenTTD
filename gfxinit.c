@@ -265,7 +265,7 @@ static const SpriteID trg1idx[] = {
  * the old sprite-count offset from SPR_OPENTTD_BASE. With this there is no
  * correspondence of any kind with the ID's in the grf file, but results in
  * a maximum use of sprite slots. */
-#define OPENTTD_SPRITES_COUNT 95
+#define OPENTTD_SPRITES_COUNT 109
 static const SpriteID _openttd_grf_indexes[] = {
 	SPR_IMG_AUTORAIL, SPR_CURSOR_WAYPOINT, // icons etc
 	134, 134,  // euro symbol medium size
@@ -309,6 +309,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	594, 597, // ° ± ² ³ large
 	633, 633, // × large
 	665, 665, // ÷ large
+	SPR_SELL_TRAIN, SPR_SELL_CHAIN_TRAIN,
 	END
 };
 

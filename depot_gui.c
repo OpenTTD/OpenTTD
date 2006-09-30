@@ -86,8 +86,8 @@ static const Widget _depot_widgets[] = {
 
 	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   270,   280,    14,    25, SPR_FLAG_VEH_STOPPED,STR_NULL},                         // DEPOT_WIDGET_STOP_ALL
 	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   281,   292,    14,    25, SPR_FLAG_VEH_RUNNING,STR_NULL},                         // DEPOT_WIDGET_START_ALL
-	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    26,    49, 0x2A9,               STR_NULL},                         // DEPOT_WIDGET_SELL
-	{      WWT_PANEL,   RESIZE_LRTB,    14,   326,   348,     0,     0, 0x2BF,               STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
+	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    26,    49, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL
+	{      WWT_PANEL,   RESIZE_LRTB,    14,   326,   348,     0,     0, SPR_SELL_CHAIN_TRAIN,STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    50,    72, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL_ALL
 
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    83, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_MATRIX
@@ -788,6 +788,10 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 	}
 }
 
+/* Function to set up vehicle specific sprites and strings
+ * Only use this if it's the same widget, that's used for more than one vehicle type and it needs different text/sprites
+ * Vehicle specific text/sprites, that's in a widget, that's only shown for one vehicle type (like sell whole train) is set in the widget array
+ */
 static void SetupStringsForDepotWindow(Window *w, byte type)
 {
 	switch (type) {
@@ -808,6 +812,11 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_TRAIN;
 			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP;
 			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_TRAIN_TIP;
+
+			/* Sprites */
+			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_TRAIN;
+			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_TRAIN;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_TRAIN;
 			break;
 
 		case VEH_Road:
@@ -827,6 +836,11 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_LORRY;
 			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP;
 			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_ROADVEH_TIP;
+
+			/* Sprites */
+			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_ROADVEH;
+			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_ROADVEH;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_ROADVEH;
 			break;
 
 		case VEH_Ship:
@@ -846,6 +860,11 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_SHIP;
 			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP;
 			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_SHIP_TIP;
+
+			/* Sprites */
+			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_SHIP;
+			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_SHIP;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_SHIP;
 			break;
 
 		case VEH_Aircraft:
@@ -865,6 +884,11 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_PLANE;
 			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP;
 			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP;
+
+			/* Sprites */
+			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_AIRCRAFT;
+			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_AIRCRAFT;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_AIRCRAFT;
 			break;
 	}
 }
