@@ -2577,7 +2577,7 @@ STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Afegir u
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que en l'ordre seleccionada s'esperi a que l'element tingui càrrega total
 STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obligar en l'ordre seleccionada a descarregar l'element
 STR_SERVICE_HINT                                                :{BLACK}Saltar l'ordre a menys que es necessiti manteniment
-STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nou {STRING} disponible!
+STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} disponible!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Pes: {WEIGHT_S}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Averiat
@@ -2645,7 +2645,7 @@ STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Arrosseg
 STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrar la pantalla principal en la situació de la cotxera
 STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista de selecció de Vehicles Rodats - clica en un vehicle per informació
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construeix l'automòbil seleccionat
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nou l'automòbil disponible!
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nou automòbil disponible!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Velocitat: {VELOCITY}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {STRING}
 

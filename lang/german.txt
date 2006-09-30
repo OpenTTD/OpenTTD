@@ -2940,6 +2940,8 @@ STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Klicke h
 STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Klicke hier um alle Fahrzeuge im Depot starten zu lassen.
 STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Klicke hier um alle Flugzeuge im Hangar anzuhalten.
 STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Klicke hier um alle Flugzeuge im Hangar starten zu lassen.
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Hier klicken um alle Fahrzeuge in der Liste anzuhalten
+STR_MASS_START_LIST_TIP                                         :{BLACK}Hier klicken um alle Fahrzeuge in der Liste zu starten
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste - {COMMA} Schild{P "" er}

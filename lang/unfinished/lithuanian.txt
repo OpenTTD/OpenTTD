@@ -372,6 +372,7 @@ STR_SORT_BY_WAITING                                             :Laukiancio krov
 STR_SORT_BY_RATING_MAX                                          :Kroviniu reitingavimas
 STR_NO_WAITING_CARGO                                            :{BLACK}Jokiu kroviniu nera pakrovimui
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Pazymeti visus pastatus
+STR_SELECT_ALL_TYPES                                            :{BLACK}Pazymeti visus krovinio tipus (iskaitant nelaukiancius kroviniu)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Sau
@@ -590,6 +591,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Sumazink
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Generuoti atsitiktine sausuma
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Perkrauti landsafta
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Perkrauti landsafta
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Naudoti Papildoma Zemelapi
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Naudoti Papildoma Zemelapi
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Ar tikrai nori perkrauti landsafta?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Landsafto generavimas
 STR_022F_TOWN_GENERATION                                        :{BLACK}Miestu generavimas
@@ -702,6 +705,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Issaugot
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Atverti scenariju
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Issaugoti scenariju
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Isbandyti scenariju (zaisti)
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Zaisti Papildomam zemelapyje
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Pradeti zaidima naudojant papildoma zemelapi ir zemtvraka
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Ar tikrai nori iseiti is sio scenarijaus?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Iseiti is Redaktoriaus
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...gali buti pastatyta tik miestuose, kuriuose yra bent 1200 gyventoju
@@ -785,7 +790,9 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Ikelti e
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Valiuta
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Valiutos pasirinkimas
+STR_MEASURING_UNITS                                             :{BLACK}Suvienodinti vienetus
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Suvienodinti pazymetus vienetus
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Automobiliai
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Pasirink, kuria kelio puse vaziuos masinos
@@ -924,6 +931,7 @@ STR_MONTH_NOV                                                   :Lapkritis
 STR_MONTH_DEC                                                   :Gruodis
 
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Laukiama {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Vaziuojama i {STATION}, {VELOCITY}
 STR_NO_ORDERS                                                   :{LTBLUE}Neturi uzduociu
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Neturi uzduociu, {VELOCITY}
 
@@ -1021,7 +1029,9 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automat
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Klaidos pranesimu rodymo trukme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Rodyti miestu gyventoju skaiciu salia pavadinimo: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Nematomi medziai (kai ijungti permatomi pastatai): {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sniego linijos aukstis: {ORANGE}{STRING}
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. soties plotis: {ORANGE}{STRING} {RED}Demesio: Auksti parametrai letina zaidima
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Remontuoti malunsparnius automatiskai: {ORANGE}{STRING}
 
@@ -1235,6 +1245,7 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}Zaidimo
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Zaidejai:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Kalba:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Pavadinimas:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Zemelapio dydis:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Serverio versija:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Serverio adresas:  {WHITE}{STRING} : {NUM}
@@ -1332,6 +1343,8 @@ STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Si
 STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Dumenu apdorojimas...
 STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registruojamasi..
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Gaunama zaidimo informacija..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Gaunama kompanijos informacija..
 ############ End of leave-in-this-order
 STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} Kb parsiusta
 
@@ -1407,6 +1420,15 @@ STR_NETWORK_SEND                                                :{BLACK}Siusti
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Zemelapio X-koord. dydis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Zemelapio Y-koord. dydis: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+STR_PNGMAP_ERROR                                                :{WHITE}Neina pakrauti zemetvarkos is  PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...byla nerasta.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...Negali perversti paveiklselio. 8 arba 24-bit PNG paveikslelis reikalingas.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...kazkas buvo ne taip. Atsiprasome. (greiciausiai pazeistas failas)
+
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kainuoja: {CURRENCY}
 STR_0801_COST                                                   :{RED}Kainuoja: {CURRENCY}
@@ -1474,6 +1496,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Gelezinkelio be
 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Pirmiausia pasalink kelia
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vyksta kelio darbai
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Kelio tiesimas
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Pasirink tilto tipa
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Asfaltuoti kelio cia negalima...
@@ -1599,6 +1622,7 @@ STR_INDUSTRY_FORMAT                                             :{TOWN} {STRING}
 STR_STATION                                                     :{STATION}
 
 ##id 0x2800
+STR_LANDSCAPING                                                 :Reljefinimas
 STR_2800_PLANT_TREES                                            :Sodinti medzius
 STR_2801_PLACE_SIGN                                             :Statyti zenkla
 STR_2802_TREES                                                  :{WHITE}Medziai
@@ -2096,6 +2120,35 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} buvo perimta {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Si kompanija dar pernelyg jauna, kad galetu pardavineti savo akcijas...
 
+STR_LIVERY_DEFAULT                                              :Standartinis Livery
+STR_LIVERY_STEAM                                                :Garo Variklis
+STR_LIVERY_DIESEL                                               :Dyzelinis Variklis
+STR_LIVERY_ELECTRIC                                             :Elektrinis Variklis
+STR_LIVERY_MONORAIL                                             :Vienbegis Variklis
+STR_LIVERY_MAGLEV                                               :Maglev Variklis
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Keleivinis Vagonas (Garinis)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Keleivinis Vagonas (Dyzelinis)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Keleivinis Vagonas (Elektrinis)
+STR_LIVERY_FREIGHT_WAGON                                        :Vagonas
+STR_LIVERY_BUS                                                  :Autobusas
+STR_LIVERY_TRUCK                                                :Krovininis
+STR_LIVERY_PASSENGER_SHIP                                       :Keleivinis laivas
+STR_LIVERY_FREIGHT_SHIP                                         :Freight Laivas
+STR_LIVERY_HELICOPTER                                           :Sraigtasparnis
+STR_LIVERY_SMALL_PLANE                                          :Mazas orlaivis
+STR_LIVERY_LARGE_PLANE                                          :Didelis Orlaivis
+
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Rodyti pagrinidines spalvu parinktis
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Rodyti traukiniu spalvas
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Rodyti masinu spalvas
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Rodyti laivu spalvas
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Rodyti lektuvu parinktas spalvas
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Pasirinkite pirmine spalva
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Pasirinikite antrine spalva
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Pazymekite spalva pazymejimui arba multispalvas CTRL+click. Paspauskite spalvos naudojimui
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Garai)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Dyzelis)
@@ -2388,6 +2441,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Remontas nestoj
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kursas i {TOWN} depa
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kursas i {TOWN} depa, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servisas {TOWN} Traukiniu Depe
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servisas {TOWN} Traukiniu Depe, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Neteisinga tvarka)
 
@@ -2431,6 +2486,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Negali i
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Sios uzduoties negalima istrinti...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Sios uzduoties negalima keisti...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Transporto priemones perkelti negalima...
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Galinis variklis visada seks is paskos priekio
 STR_8838_N_A                                                    :N/A{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Priemones negalima parduoti...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Neranda kelio iki artimiausio garazo
@@ -2511,6 +2567,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Automobi
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Automobilis {COMMA} laukia garaze
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Uzduotis: {TOWN} garazas
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Uzduotis: {TOWN} garazas, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servisas{TOWN} Masinu Depe
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisas {TOWN} Masinu Depe, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Negalima rasti automobilio garazo...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negalima rasti garazo
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Automobiliai - paspausk ant automobilio, jei nori detalesnes informacijos
@@ -2539,6 +2597,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Automobilio avarija!{}Automobilio vairuotojas zuvo po susidurimo su traukiniu
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Automobilio avarija!{}{COMMA} sudege po susidurimo su traukiniu
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Automobilis negali apsisukti...
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}negalima pajudinti automobiliu sudarytu is keliu vienetu
 STR_9034_RENAME                                                 :{BLACK}Pervardinti
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Pervardinti automobiliu tipa
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Pervardinti automobiliu tipa
@@ -2578,6 +2637,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nusiusti
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negali rasti artimiausio laivu depo
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Kursas: {TOWN} laivu depas
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Kursas: {TOWN} laivu depas, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servisas{TOWN} Laivu Depe
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servisas {TOWN} Laivu Depe, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laivas laukia depe: {COMMA}
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Statyti laivu doka
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Statyti laivu depa (nauju laivu isigijimui, remontui)
@@ -2642,6 +2703,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Negalima lektuvo nusiusti i angara...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Kursas: {STATION} angaras
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Kursas: {STATION} angarasangar, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Sevisas {STATION} Angare
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servisas{STATION} Angare, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lektuvas {COMMA} laukia angare
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Oro uostai
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Negalima cia statyti oro uosto...
@@ -2767,6 +2830,14 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Rodyti v
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Rodyti visus lektuvus, kuriu uzduotyse yra pamineta si stotele
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Rodyti visus laivus, kuriu uzduotyse yra pamineta si stotele
 
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Nusiusti i depus
+STR_SEND_TO_DEPOTS_TIP                                          :{BLACK}Nusiusti visus automobilius sarase i depa. CTRL+click tik servisus
+STR_SEND_TO_HANGARS                                             :{BLACK}Siusti i Angarus
+STR_SEND_TO_HANGARS_TIP                                         :{BLACK}Nusiusti visus orlaivius sarase i angara. CTRL+click tik servisus
+
+STR_SELL                                                        :{BLACK}Parduoti
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Keisti tr. priemones
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Keisti tr. priemones {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Pradeti keitima
@@ -2785,6 +2856,13 @@ STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Keicima:
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Variklio neimanoma pagaminti
 
 STR_ENGINES                                                     :Varikliai
+
+STR_MASS_STOP_DEPOT_TOOLTIP                                     :{BLACK}Paspauskite noredami sustabdyti automobilius viduje depo
+STR_MASS_START_DEPOT_TOOLTIP                                    :{BLACK}Paspauskite noredami paleisti automobilius viduje depo
+STR_MASS_STOP_HANGAR_TOOLTIP                                    :{BLACK}Paspauskite noredami sustabdyti orlaivius viduje depo
+STR_MASS_START_HANGAR_TOOLTIP                                   :{BLACK}Paspauskite noredami paleisti orlaivius viduje depo
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Paspauskite noredami sustabdyti automobilius is saraso
+STR_MASS_START_LIST_TIP                                         :{BLACK}Paspauskite noredami paleisti automobilius is saraso
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zenklu sarasas - {COMMA} Zenklai
@@ -2811,7 +2889,60 @@ STR_PURCHASE_INFO_COST                                          :{BLACK}Kaina: {
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svoris: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kaina: {GOLD}{CURRENCY}{BLACK} Greitis: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Talpa: {GOLD}{COMMA} keleiviu, {COMMA} pasto maisu
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pajungta vagonu: {GOLD}+{POWER}{BLACK} Svoris: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_GENERATE                                                    :{WHITE}Generuoti
+STR_RANDOM                                                      :{BLACK}Bet kaip
+STR_RANDOM_HELP                                                 :{BLACK}Pakeisti i bet koki Pasaulio Generavima
+STR_RANDOM_SEED                                                 :{BLACK}Bet koks:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Paspauskite noredami ivesti bet koki seed
+STR_LAND_GENERATOR                                              :{BLACK}Pasaulio generatorius:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Zemelapio rotacija:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Juros lygis:
+STR_SMOOTHNESS                                                  :{BLACK}Jautrumas:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sniego linijos aukstis:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Miestu kiekis:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Industriju kiekis:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Pakeisti sniego linijos auksti vienu auksciau
+STR_SNOW_LINE_DOWN                                              :{BLACK}Pakeisti sniego linija viena zemiau
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Pakeisti sniego linijos auksti
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skales ispejimas
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Perdaryti pagrindini zemelapi per daug nerekomenduojama. Testi generavima?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Zemelapio vardas:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Dydis: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Pasaulis generuojamas...
+STR_GENERATION_ABORT                                            :{BLACK}Nutraukti
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Nutraukti pasaulio generavima
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ar jus tikrai norite nutraukti generavima?
+STR_PROGRESS                                                    :{WHITE}{NUM}% pabaigta
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_SETTINGUP_GAME                                              :{BLACK}Sukurti zaidima
+STR_PREPARING_TILELOOP                                          :{BLACK}Paleidziamas tile-loop
+STR_PREPARING_GAME                                              :{BLACK}Ruosiamas zaidimas
+STR_SE_FLAT_WORLD                                               :{WHITE}Lygi zeme
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generuoti lygia zeme
+STR_SE_RANDOM_LAND                                              :{WHITE}Bet kokia zeme
+STR_SE_NEW_WORLD                                                :{BLACK}Sukurti nauja scenariju
+STR_SE_CAPTION                                                  :{WHITE}Scenarijaus tipas
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Pakelti lygios zemes lygi vienu lygiu
+
+STR_SMALLMAP_CENTER                                             :{BLACK}Centruoti maza zemelapi i sita vieta
 
 ########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Mazas
+STR_METRO_AIRPORT                                               :{BLACK}Metropoliteno orouostas
+STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Internacionalinis orouostas
+STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Tarpkontinentinis
+STR_HELIPORT                                                    :{BLACK}Heliportas
+STR_HELIDEPOT                                                   :{BLACK}Helidepas
+STR_HELISTATION                                                 :{BLACK}Helistotis
 
+STR_SMALL_AIRPORTS                                              :{BLACK}Mazi orouostai
+STR_LARGE_AIRPORTS                                              :{BLACK}Dideli orouostai
+STR_HUB_AIRPORTS                                                :{BLACK}Issisakojantys orouostai
+STR_HELIPORTS                                                   :{BLACK}Heliportai
 ########
