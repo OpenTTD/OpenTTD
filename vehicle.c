@@ -1606,7 +1606,7 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	if (vehicle_list_window) {
 		uint16 window_type = p2 & VLW_MASK;
 
-		engine_count = GenerateVehicleSortList((const Vehicle***)&vl, &engine_list_length, vehicle_type, _current_player, INVALID_STATION, INVALID_ORDER, window_type);
+		engine_count = GenerateVehicleSortList((const Vehicle***)&vl, &engine_list_length, vehicle_type, _current_player, INVALID_STATION, INVALID_ORDER, INVALID_STATION, window_type);
 	} else {
 		/* Get the list of vehicles in the depot */
 		BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
@@ -2292,7 +2292,7 @@ void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, ui
 * @param window_type tells what kind of window the list is for. Use the VLW flags in vehicle_gui.h
 * @return the number of vehicles added to the list
 */
-uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, byte type, PlayerID owner, StationID station, OrderID order, uint16 window_type)
+uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array, byte type, PlayerID owner, StationID station, OrderID order, uint16 depot_airport_index, uint16 window_type)
 {
 	const uint subtype = (type != VEH_Aircraft) ? Train_Front : 2;
 	uint n = 0;
@@ -2347,6 +2347,25 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 			break;
 		}
 
+		case VLW_DEPOT_LIST: {
+			FOR_ALL_VEHICLES(v) {
+				if (v->type == type && (
+					(type == VEH_Train && IsFrontEngine(v)) ||
+					(type != VEH_Train && v->subtype <= subtype))) {
+					const Order *order;
+
+					FOR_VEHICLE_ORDERS(v, order) {
+						if (order->type == OT_GOTO_DEPOT && order->dest == depot_airport_index) {
+							if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, 25);
+							(*sort_list)[n++] = v;
+							break;
+						}
+					}
+				}
+			}
+			break;
+		}
+
 		default: NOT_REACHED(); break;
 	}
 
@@ -2376,7 +2395,7 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 	uint n, i;
 	uint16 array_length = 0;
 
-	n = GenerateVehicleSortList(&sort_list, &array_length, type, owner, (vlw_flag == VLW_STATION_LIST) ? id : INVALID_STATION, (vlw_flag == VLW_SHARED_ORDERS) ? id : INVALID_ORDER, vlw_flag);
+	n = GenerateVehicleSortList(&sort_list, &array_length, type, owner, id, id, id, vlw_flag);
 
 	/* Send all the vehicles to a depot */
 	for (i = 0; i < n; i++) {

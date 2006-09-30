@@ -42,6 +42,7 @@ typedef enum DepotWindowWidgets {
 	DEPOT_WIDGET_BUILD,
 	DEPOT_WIDGET_CLONE,
 	DEPOT_WIDGET_LOCATION,
+	DEPOT_WIDGET_VEHICLE_LIST,
 	DEPOT_WIDGET_AUTOREPLACE,
 	DEPOT_WIDGET_RESIZE,
 	DEPOT_WIDGET_LAST, // used to assert if DepotWindowWidgets and widget_moves got different lengths. Due to this usage, it needs to be last
@@ -63,6 +64,7 @@ static const byte widget_moves[] = {
 	WIDGET_MOVE_DOWN,               // DEPOT_WIDGET_BUILD
 	WIDGET_MOVE_DOWN,               // DEPOT_WIDGET_CLONE
 	WIDGET_MOVE_DOWN,               // DEPOT_WIDGET_LOCATION
+	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_VEHICLE_LIST
 	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_AUTOREPLACE
 	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_RESIZE
 };
@@ -84,9 +86,9 @@ static const Widget _depot_widgets[] = {
 
 	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   270,   280,    14,    25, SPR_FLAG_VEH_STOPPED,STR_MASS_STOP_DEPOT_TOOLTIP},      // DEPOT_WIDGET_STOP_ALL
 	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   281,   292,    14,    25, SPR_FLAG_VEH_RUNNING,STR_MASS_START_DEPOT_TOOLTIP},     // DEPOT_WIDGET_START_ALL
-	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    26,    60, 0x2A9,               STR_NULL},                         // DEPOT_WIDGET_SELL
+	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    26,    49, 0x2A9,               STR_NULL},                         // DEPOT_WIDGET_SELL
 	{      WWT_PANEL,   RESIZE_LRTB,    14,   326,   348,     0,     0, 0x2BF,               STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    61,    83, 0x0,                 STR_DEPOT_SELL_ALL_BUTTON_TIP},    // DEPOT_WIDGET_SELL_ALL
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    50,    72, 0x0,                 STR_DEPOT_SELL_ALL_BUTTON_TIP},    // DEPOT_WIDGET_SELL_ALL
 
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    83, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_MATRIX
 	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   293,   304,    14,    83, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST}, // DEPOT_WIDGET_V_SCROLL
@@ -98,7 +100,8 @@ static const Widget _depot_widgets[] = {
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    96,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_BUILD
 	{WWT_NODISTXTBTN,     RESIZE_TB,    14,    97,   194,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   195,   292,    84,    95, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   281,   292,    84,    95, 0x0,                 STR_DEPOT_AUTOREPLACE_TIP},        // DEPOT_WIDGET_AUTOREPLACE
+	{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   258,   269,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_VEHICLE_LIST
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    73,    95, 0x0,                 STR_DEPOT_AUTOREPLACE_TIP},        // DEPOT_WIDGET_AUTOREPLACE
 	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   293,   304,    84,    95, 0x0,                 STR_RESIZE_BUTTON},                // DEPOT_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
@@ -114,7 +117,7 @@ static const WindowDesc _train_depot_desc = {
 };
 
 static const WindowDesc _road_depot_desc = {
-	-1, -1, 315, 82,
+	-1, -1, 315, 96,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -578,7 +581,7 @@ static void ResizeDepotButtons(Window *w)
 	/* We got the widget moved around. Now we will make some widgets to fill the gab between some widgets in equal sizes */
 
 	/* Make the buttons in the bottom equal in size */
-	w->widget[DEPOT_WIDGET_LOCATION].right = w->widget[DEPOT_WIDGET_AUTOREPLACE].left - 1;
+	w->widget[DEPOT_WIDGET_LOCATION].right = w->widget[DEPOT_WIDGET_VEHICLE_LIST].left - 1;
 	w->widget[DEPOT_WIDGET_BUILD].right    = w->widget[DEPOT_WIDGET_LOCATION].right / 3;
 	w->widget[DEPOT_WIDGET_LOCATION].left  = w->widget[DEPOT_WIDGET_BUILD].right * 2;
 	w->widget[DEPOT_WIDGET_CLONE].left     = w->widget[DEPOT_WIDGET_BUILD].right + 1;
@@ -650,6 +653,10 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 				case DEPOT_WIDGET_SELL_ALL:
 					ShowDepotSellAllWindow(w->window_number, WP(w, depot_d).type);
+					break;
+
+				case DEPOT_WIDGET_VEHICLE_LIST:
+					ShowVehDepotOrders(GetTileOwner(w->window_number), WP(w, depot_d).type, w->window_number);
 					break;
 
 				case DEPOT_WIDGET_AUTOREPLACE:
@@ -778,6 +785,8 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_TRAIN;
 			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_TRAIN_DEPOT_INFO;
 			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_8842_CENTER_MAIN_VIEW_ON_TRAIN;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_TRAIN;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP;
 			break;
 
 		case VEH_Road:
@@ -789,6 +798,8 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_ROAD_VEHICLE;
 			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_ROAD_VEHICLE_DEPOT_INFO;
 			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9025_CENTER_MAIN_VIEW_ON_ROAD;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_LORRY;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP;
 			break;
 
 		case VEH_Ship:
@@ -800,6 +811,8 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_SHIP;
 			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_SHIP_DEPOT_INFO;
 			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9822_CENTER_MAIN_VIEW_ON_SHIP;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_SHIP;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP;
 			break;
 
 		case VEH_Aircraft:
@@ -811,6 +824,8 @@ static void SetupStringsForDepotWindow(Window *w, byte type)
 			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_AIRCRAFT;
 			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW;
 			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_A024_CENTER_MAIN_VIEW_ON_HANGAR;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_PLANE;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP;
 
 			/* Special strings only for hangars (using hangar instead of depot and so on) */
 			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_HANGAR_TOOLTIP;
@@ -861,8 +876,8 @@ void ShowDepotWindow(TileIndex tile, byte type)
 
 			case VEH_Road:
 				horizontal = 10;
-				vertical = - 14;
-				w->vscroll.cap = 4;
+				vertical = - 14 + 14;
+				w->vscroll.cap = 5;
 				w->hscroll.cap = 5;
 				w->resize.step_width = 56;
 				w->resize.step_height = 14;

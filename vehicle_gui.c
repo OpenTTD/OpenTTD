@@ -132,13 +132,13 @@ void ResortVehicleLists(void)
 		}
 }
 
-static void BuildVehicleList(vehiclelist_d* vl, PlayerID owner, StationID station, OrderID order, uint16 window_type)
+static void BuildVehicleList(vehiclelist_d* vl, PlayerID owner, StationID station, OrderID order, uint16 depot_airport_index, uint16 window_type)
 {
 	if (!(vl->l.flags & VL_REBUILD)) return;
 
 	DEBUG(misc, 1) ("Building vehicle list for player %d station %d...", owner, station);
 
-	vl->l.list_length = GenerateVehicleSortList(&vl->sort_list, &vl->length_of_sort_list, vl->vehicle_type, owner, station, order, window_type);
+	vl->l.list_length = GenerateVehicleSortList(&vl->sort_list, &vl->length_of_sort_list, vl->vehicle_type, owner, station, order, depot_airport_index, window_type);
 
 	vl->l.flags &= ~VL_REBUILD;
 	vl->l.flags |= VL_RESORT;
@@ -1324,6 +1324,16 @@ static void CreateVehicleListWindow(Window *w)
 				default: NOT_REACHED(); break;
 			}
 			break;
+
+		case VLW_DEPOT_LIST:
+			switch (vl->vehicle_type) {
+				case VEH_Train:    w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_TRAIN_DEPOT;    break;
+				case VEH_Road:     w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_ROADVEH_DEPOT;  break;
+				case VEH_Ship:     w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_SHIP_DEPOT;     break;
+				case VEH_Aircraft: w->widget[VLW_WIDGET_CAPTION].data = STR_VEHICLE_LIST_AIRCRAFT_DEPOT; break;
+				default: NOT_REACHED(); break;
+			}
+			break;
 		default: NOT_REACHED(); break;
 	}
 
@@ -1381,10 +1391,11 @@ static void DrawVehicleListWindow(Window *w)
 	const PlayerID owner = (PlayerID)w->caption_color;
 	const Player *p = GetPlayer(owner);
 	const uint16 window_type = w->window_number & VLW_MASK;
-	const StationID station = (window_type == VLW_STATION_LIST)  ? GB(w->window_number, 16, 16) : INVALID_STATION;
-	const OrderID order     = (window_type == VLW_SHARED_ORDERS) ? GB(w->window_number, 16, 16) : INVALID_ORDER;
+	const StationID station          = (window_type == VLW_STATION_LIST)  ? GB(w->window_number, 16, 16) : INVALID_STATION;
+	const OrderID order              = (window_type == VLW_SHARED_ORDERS) ? GB(w->window_number, 16, 16) : INVALID_ORDER;
+	const uint16 depot_airport_index = (window_type == VLW_DEPOT_LIST)    ? GB(w->window_number, 16, 16) : INVALID_STATION;
 
-	BuildVehicleList(vl, owner, station, order, window_type);
+	BuildVehicleList(vl, owner, station, order, depot_airport_index, window_type);
 	SortVehicleList(vl);
 	SetVScrollCount(w, vl->l.list_length);
 
@@ -1409,6 +1420,22 @@ static void DrawVehicleListWindow(Window *w)
 		case VLW_STATION_LIST: /* Station Name */
 			SetDParam(0, station);
 			SetDParam(1, w->vscroll.count);
+			break;
+
+		case VLW_DEPOT_LIST:
+			switch (vl->vehicle_type) {
+				case VEH_Train:    SetDParam(0, STR_8800_TRAIN_DEPOT);        break;
+				case VEH_Road:     SetDParam(0, STR_9003_ROAD_VEHICLE_DEPOT); break;
+				case VEH_Ship:     SetDParam(0, STR_9803_SHIP_DEPOT);         break;
+				case VEH_Aircraft: SetDParam(0, STR_A002_AIRCRAFT_HANGAR);    break;
+				default: NOT_REACHED(); break;
+			}
+			if (vl->vehicle_type == VEH_Aircraft) {
+				SetDParam(1, depot_airport_index); // Airport name
+			} else {
+				SetDParam(1, GetDepot(depot_airport_index)->town_index);
+			}
+			SetDParam(2, w->vscroll.count);
 			break;
 		default: NOT_REACHED(); break;
 	}
@@ -1615,13 +1642,15 @@ static const WindowDesc _player_vehicle_list_road_veh_desc = {
 	PlayerVehWndProc
 };
 
-static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, StationID station, OrderID order, bool show_shared)
+static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, StationID station, OrderID order, uint16 depot_airport_index)
 {
 	Window *w;
 	WindowNumber num = (vehicle_type << 11) | player;
 
-	if (show_shared) {
+	if (order != INVALID_ORDER) {
 		num |= (order << 16) | VLW_SHARED_ORDERS;
+	} else if (depot_airport_index != INVALID_STATION) {
+		num |= (depot_airport_index << 16) | VLW_DEPOT_LIST;
 	} else if (station == INVALID_STATION) {
 		num |= VLW_STANDARD;
 	} else {
@@ -1639,11 +1668,25 @@ static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, Stati
 
 void ShowVehicleListWindow(PlayerID player, StationID station, byte vehicle_type)
 {
-	ShowVehicleListWindowLocal(player, vehicle_type, station, INVALID_ORDER, false);
+	ShowVehicleListWindowLocal(player, vehicle_type, station, INVALID_ORDER, INVALID_STATION);
 }
 
 void ShowVehWithSharedOrders(Vehicle *v, byte vehicle_type)
 {
 	if (v->orders == NULL) return; // no shared list to show
-	ShowVehicleListWindowLocal(v->owner, vehicle_type, INVALID_STATION, v->orders->index, true);
+	ShowVehicleListWindowLocal(v->owner, vehicle_type, INVALID_STATION, v->orders->index, INVALID_STATION);
+}
+
+void ShowVehDepotOrders(PlayerID player, byte vehicle_type, TileIndex depot_tile)
+{
+	uint16 depot_airport_index;
+
+	if (vehicle_type == VEH_Aircraft) {
+		depot_airport_index = GetStationIndex(depot_tile);
+	} else {
+		Depot *depot = GetDepotByTile(depot_tile);
+		if (depot == NULL) return; // no depot to show
+		depot_airport_index = depot->index;
+	}
+	ShowVehicleListWindowLocal(player, vehicle_type, INVALID_STATION, INVALID_ORDER, depot_airport_index);
 }

@@ -2901,6 +2901,8 @@ STR_SEND_TO_DEPOTS_TIP                                           :{BLACK}Send al
 STR_SEND_TO_HANGARS                                              :{BLACK}Send to Hangars
 STR_SEND_TO_HANGARS_TIP                                          :{BLACK}Send all aircraft in list to hangar. CTRL+click will only service
 
+### depot strings
+
 STR_SELL                                                        :{BLACK}Sell
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}You are about to sell all the vehicles in the depot.
 STR_ARE_YOU_SURE                                                :{BLACK}Are you sure?
@@ -2910,8 +2912,17 @@ STR_DEPOT_SELL_ALL_CANCEL_TIP                                   :{BLACK}Do not s
 STR_DEPOT_SELL_ALL_CANCEL_HANGAR_TIP                            :{BLACK}Do not sell all aircraft in the hangar
 STR_DEPOT_SELL_ALL_BUTTON_TIP                                   :{BLACK}Sell all vehicles in the depot
 STR_DEPOT_SELL_ALL_BUTTON_HANGAR_TIP                            :{BLACK}Sell all aircraft in the hangar
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Get a list of all trains with the current depot in their orders
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Get a list of all road vehicles with the current depot in their orders
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Get a list of all ships with the current depot in their orders
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Get a list of all aircraft with any hangar at this airport in their orders
 STR_DEPOT_AUTOREPLACE_TIP                                       :{BLACK}Autoreplace all vehicles in the depot
 STR_DEPOT_AUTOREPLACE_HANGAR_TIP                                :{BLACK}Autoreplace all aircraft in the hangar
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING1} - {COMMA} Train{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING1} - {COMMA} Road Vehicle{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING1} - {COMMA} Ship{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING1} - {COMMA} Aircraft
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Replace Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}

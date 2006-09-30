@@ -20,12 +20,13 @@ enum {
 	VLW_STANDARD      = 0 << 8,
 	VLW_SHARED_ORDERS = 1 << 8,
 	VLW_STATION_LIST  = 2 << 8,
+	VLW_DEPOT_LIST    = 3 << 8,
 	VLW_MASK          = 0x700,
 };
 
 static inline bool ValidVLWFlags(uint16 flags)
 {
-	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST);
+	return (flags == VLW_STANDARD || flags == VLW_SHARED_ORDERS || flags == VLW_STATION_LIST || flags == VLW_DEPOT_LIST);
 }
 
 void PlayerVehWndProc(Window *w, WindowEvent *e);
@@ -54,5 +55,6 @@ int ShowAdditionalText(int x, int y, int w, EngineID engine);
 
 void ShowVehicleListWindow(PlayerID player, StationID station, byte vehicle_type);
 void ShowVehWithSharedOrders(Vehicle *v, byte vehicle_type);
+void ShowVehDepotOrders(PlayerID player, byte vehicle_type, TileIndex depot_tile);
 
 #endif /* VEHICLE_GUI_H */
