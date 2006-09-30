@@ -667,7 +667,10 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					break;
 
 				case DEPOT_WIDGET_SELL_ALL:
-					ShowDepotSellAllWindow(w->window_number, WP(w, depot_d).type);
+					/* Only open the confimation window if there are anything to sell */
+					if (WP(w, depot_d).engine_count != 0 || WP(w, depot_d).wagon_count != 0) {
+						ShowDepotSellAllWindow(w->window_number, WP(w, depot_d).type);
+					}
 					break;
 
 				case DEPOT_WIDGET_VEHICLE_LIST:
