@@ -28,6 +28,7 @@
 #include "ai/ai.h"
 #include "train.h"
 #include "newgrf_engine.h"
+#include "newgrf_sound.h"
 #include "unmovable.h"
 #include "date.h"
 
@@ -1464,7 +1465,9 @@ int LoadUnloadVehicle(Vehicle *v)
 			v->profit_this_year += profit;
 			SubtractMoneyFromPlayer(-profit);
 
-			if (IsLocalPlayer()) SndPlayVehicleFx(SND_14_CASHTILL, v);
+			if (IsLocalPlayer() && !PlayVehicleSound(v, VSE_LOAD_UNLOAD)) {
+				SndPlayVehicleFx(SND_14_CASHTILL, v);
+			}
 
 			ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, -profit);
 		}
