@@ -2998,16 +2998,51 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Kilistáz
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} jármû megosztott menetrendje
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Megmutatja az összes jármûvet, aminek ugyanaz a menetrendje
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :depó
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :depó
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :dokk
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :hangár
+
+STR_SEND_TO_DEPOTS                                              :
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}A listán lévõ összes vonat depóba küldése. CTRL+kattintásra csak javításra küld
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}A listán lévõ összes közúti jármû depóba küldése. CTRL+kattintásra csak javításra küld.
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}A listán lévõ összes hajó dokkba küldése. CTRL+kattintásra csak javításra küld.
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}A listán lévõ összes repülõ hangárba küldése. CTRL+kattintásra csak javításra küld.
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Elad
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Te éppen a depotban lévõ jármûveket készülsz eladni
 STR_ARE_YOU_SURE                                                :{BLACK}Biztos vagy benne?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Erõsítsd meg, hogy el akarod adni az összes depóbeli vonatot
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Erõsítsd meg, hogy el akarod adni az összes depóbeli közúti jármûvet
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Erõsítsd meg, hogy el akarod adni az összes dokkbeli hajót
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Erõsítsd meg, hogy a hangárban lévõ összes repülõt el akarod adni
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ne add el az összes depóbeli vonatot
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ne add el a depóbeli összes közúti jármûvet
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ne add el az összes dokkbeli hajót
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ne add el a hangárbeli összes repülõt
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Összes depóbeli vonat eladása
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Összes depóbeli jármû eladása
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Összes dokkbeli hajó eladása
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Összes hangárbéli repülõ eladása
+
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Az összes, ezen depotot menetrendszerüen látogató vonat listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Az összes, ezen hangárt menetrendszerüen látogató jármû listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Az összes, ezen dokkot menetrendszerüen látogató hajó listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Az összes, itteni hangárt menetrendszerüen látogató repülõgép listájának összeállítása
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}A depóban lévõ összes vonat automata cseréje
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}A depóben lévõ összes jármû automata cseréje
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}A dokkban lévõ összes hajó automata cseréje
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}A hangárban lévõ összes repülõ automata cseréje
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} vonat
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} közúti jármû
@@ -3035,6 +3070,16 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A mozdon
 
 STR_ENGINES                                                     :Mozdonyok
 STR_WAGONS                                                      :Vagonok
+
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kattints ide az összes depóbeli vonat leállításához
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kattints ide az összes depóbeli közúti jármû leállításához
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kattints ide az összes dokkbeli hajó leállításához
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kattints ide az összes hangárbeli repülõ leállításához
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kattints ide az összes depóbeli vonat elindításához
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kattints ide az összes depóbeli közúti jármû elindításához
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kattints ide az összes dokkbeli hajó elindításához
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kattints ide az összes hangárbeli repülõ elindításához
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kattints ide a listán lévõ összes jármû leállításához
 STR_MASS_START_LIST_TIP                                         :{BLACK}Kattints ide a listán lévõ összes jármû elindításához

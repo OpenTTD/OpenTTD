@@ -2889,10 +2889,26 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Komut li
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} Aracin paylasilan talimatlari
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ayni talimatlara sahip bütün araçlari göster
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarlar
+
+STR_SEND_TO_DEPOTS                                              :
+
+
+### depot strings
 
 STR_SELL                                                        :{BLACK}Sat
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Garajdaki tüm araçlari satmak üzeresiniz.
 STR_ARE_YOU_SURE                                                :{BLACK}Emin misiniz?
+
+
+
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Hangardaki butun hava araclarini sat
+
+
+
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Araçlari Degistir
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}{STRING} Degistir
@@ -2915,6 +2931,8 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoti
 
 STR_ENGINES                                                     :Lokomotifler
 STR_WAGONS                                                      :Vagon
+
+
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Listedeki tüm araçlari durdurmak için bas
 STR_MASS_START_LIST_TIP                                         :{BLACK}Listedeki tüm araçlari baslatmak için bas

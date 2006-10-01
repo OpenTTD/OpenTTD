@@ -705,7 +705,7 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Semer de
 STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placer des endroits rocheux sur le terrain
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placer un Phare
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placer un Transmetteur
-STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Définir une zone désertique.{}Garder CTRL enfoncé pour retrait
+STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Définir une zone désertique.{}Garder Ctrl enfoncé pour retrait
 STR_CREATE_LAKE                                                 :{BLACK}Définir une zone d'eau.{}Inondera ses abords si au niveau de la mer
 STR_0290_DELETE                                                 :{BLACK}Supprimer
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Supprimer complètement cette ville
@@ -1192,7 +1192,7 @@ STR_TREES_RANDOM_TYPE                                           :{BLACK}Au hasar
 STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Planter des arbres de types choisis au hasard
 
 STR_CANT_BUILD_CANALS                                           :{WHITE}Impossible de construire un canal ici...
-STR_BUILD_CANALS_TIP                                            :{BLACK}Construire des canaux. Appuyer sur CTRL pour placer de l'eau non canalisée (seulement au niveau de la mer).
+STR_BUILD_CANALS_TIP                                            :{BLACK}Construire des canaux. Appuyer sur Ctrl pour placer de l'eau non canalisée (seulement au niveau de la mer).
 STR_LANDINFO_CANAL                                              :Canal
 
 STR_CANT_BUILD_LOCKS                                            :{WHITE}Impossible de construire un écluse ici...
@@ -1765,7 +1765,7 @@ STR_3069_BUOY                                                   :Bouée
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...bouée présente
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...gare trop étendue
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...stations non-uniformes désactivées
-STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Cliquer avec CTRL pour sélectionner plus d'un élément
+STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Cliquer avec Ctrl pour sélectionner plus d'un élément
 
 STR_UNDEFINED                                                   :(chaîne non définie)
 STR_STAT_CLASS_DFLT                                             :Station par défaut
@@ -2198,7 +2198,7 @@ STR_LIVERY_SHIP_TIP                                             :{BLACK}Montrer 
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Montrer les livrées des aéronefs
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Choisir la couleur primaire de la  livrée sélectionnée
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Montrer la couleur seconde de la livrée sélectionnée
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Sélectionner la livrée à modifier, ou plusieurs par CTRL+click. Cliquer sur la case pour en intervertir l'utilisation
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Sélectionner la livrée à modifier, ou plusieurs par Ctrl-clic. Cliquer sur la case pour en intervertir l'utilisation
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapeur)
@@ -2512,10 +2512,10 @@ STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nouveaux
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nouveaux véhicules magnétiques
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construire
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Copier Véhicule
-STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Effectuer la copie d'un véhicule routier. Ctrl-Click partagera les ordres
+STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Effectuer la copie d'un véhicule routier. Ctrl-clic partagera les ordres
 STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Effectuer la copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors un dépot. Ctrl-Click partagera les ordres
 STR_CLONE_TRAIN                                                 :{BLACK}Copier Train
-STR_CLONE_TRAIN_INFO                                            :{BLACK}Effectuer la copie d'un train et ses wagons. Ctrl-Click partagera les ordres
+STR_CLONE_TRAIN_INFO                                            :{BLACK}Effectuer la copie d'un train et ses wagons. Ctrl-clic partagera les ordres
 STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Effectuer la copie d'un train et ses wagons. Cliquer ici puis sur un train dans ou hors un dépot. Ctrl-Click partagera les ordres
 STR_8820_RENAME                                                 :{BLACK}Renommer
 STR_8823_SKIP                                                   :{BLACK}Suivant
@@ -2560,7 +2560,7 @@ STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renommer
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Action courante du train - cliquer pour le démarrer/l'arrêter
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Afficher les ordres du train
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer la vue sur le train
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Envoyer le train au dépôt. CTRL+clic pour entretien seul
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Envoyer le train au dépôt. Ctrl-clic pour entretien seul
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Forcer le train à continuer sans tenir compte des feux
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Faire faire demi-tour au train
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Afficher les détails
@@ -2637,7 +2637,7 @@ STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construi
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Comportement courant du véhicule - cliquer pour le démarrer/l'arrêter
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Affiche les ordres
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centre la vue sur le véhicule
-STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Envoie le véhicule au dépôt. CTRL+clic pour entretien seul
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Envoie le véhicule au dépôt. Ctrl-clic pour entretien seul
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Force le véhicule à faire demi-tour
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Affiche les détails
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Véhicules - cliquer pour obtenir des informations
@@ -2681,7 +2681,7 @@ STR_9805_SHIPS                                                  :{WHITE}{COMPANY
 STR_9808_NEW_SHIPS                                              :{WHITE}Nouveaux navires
 STR_9809_BUILD_SHIP                                             :{BLACK}Construire navire
 STR_CLONE_SHIP                                                  :{BLACK}Copier Navire
-STR_CLONE_SHIP_INFO                                             :{BLACK}Effectuer la copie d'un navire. Ctrl-Click partagera les ordres
+STR_CLONE_SHIP_INFO                                             :{BLACK}Effectuer la copie d'un navire. Ctrl-clic partagera les ordres
 STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Effectuer la copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépot naval. Ctrl-Click partagera les ordres
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Navire doit être arrêté au dépôt
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Impossible de vendre navire...
@@ -2716,7 +2716,7 @@ STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construi
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Action courante du navire - cliquer pour le démarrer/l'arrêter
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Afficher les ordres du navire
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer la vue sur l'emplacement du navire
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envoyer navire au dépôt. CTRL+clic pour entretien seul
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envoyer le navire au dépôt. Ctrl-clic pour entretien seul
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Afficher détails du navire
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nouveau navire maintenant disponible!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2750,7 +2750,7 @@ STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Impossib
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Hangar à {STATION}
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nouvel aéronef
 STR_CLONE_AIRCRAFT                                              :{BLACK}Copier aéronef
-STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Effectuer une copie de l'aéronef. Ctrl-Click partagera les ordres
+STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Effectuer une copie de l'aéronef. Ctrl-clic partagera les ordres
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Effectuer la copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors un hangar. Ctrl-Click partagera les ordres
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nouvel Aéronef
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construire aéronef
@@ -2790,7 +2790,7 @@ STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT                         :{BLACK}Construi
 STR_A027_CURRENT_AIRCRAFT_ACTION                                :{BLACK}Action courante de l'aéronef - cliquer pour le démarrer/l'arrêter
 STR_A028_SHOW_AIRCRAFT_S_ORDERS                                 :{BLACK}Afficher les ordres de l'aéronef
 STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT                           :{BLACK}Centrer la vue principale sur l'emplacement de l'aéronef
-STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envoyer l'aéronef au hangar. CTRL+clic pour entretien seul
+STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envoyer l'aéronef au hangar. Ctrl-clic pour entretien seul
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Afficher détails de l'aéronef
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nouvel aéronef maintenant disponible!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2889,14 +2889,28 @@ STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aéronef{P "" s}
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Navire{P "" s}
 
-STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Afficher les trains ayant cette station dans leurs cédules
-STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Afficher les véhicules routiers ayant cette station dans leurs cédules
-STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Afficher les aéronefs ayant cette station dans leurs cédules
-STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afficher les navires ayant cette station dans leurs cédules
+STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Afficher les trains ayant cette station dans leurs ordres
+STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Afficher les véhicules routiers ayant cette station dans leurs ordres
+STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Afficher les aéronefs ayant cette station dans leurs ordres
+STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afficher les navires ayant cette station dans leurs ordres
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres partagés de {COMMA} véhicule{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Afficher tous les véhicules ayant le même planning
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Dépôts
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Dépôts
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Dépôts
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Envoyer vers {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Envoyer tous les trains de la liste aux dépôts. Ctrl-clic pour entretien seul
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Envoyer tous les véhicules routiers de la liste aux dépôts. Ctrl-clic pour entretien seul
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Envoyer tous les navires de la liste aux dépôts. Ctrl-clic pour entretien seul
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Envoyer tous les aéronefs de la liste aux hangars. Ctrl-clic pour entretien seul
 
 ### depot strings
 
@@ -2904,6 +2918,35 @@ STR_SELL                                                        :{BLACK}Vendre
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Vous êtes sur le point de vendre tous les véhicules du dépot
 STR_ARE_YOU_SURE                                                :{BLACK}Etes-vous sûr?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirmer la vente de tous les trains du dépôt
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirmer la vente de tous les véhicules routiers du dépôt
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirmer la vente de tous les navires du dépôt
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirmer la vente de tous les aéronefs du hangar
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ne pas vendre tous les trains du dépôt
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ne pas vendre tous les véhicules routiers du dépôt
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ne pas vendre tous les navires du dépôt
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ne pas vendre tous les aéronefs du hangar
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendre tous les trains du dépôt
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendre tous les véhicules routiers du dépôt
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendre tous les navires du dépôt
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vendre tous les aéronefs du hangar
+
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Afficher les trains ayant ce dépôt dans leurs ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Afficher les véhicules routiers ayant ce dépôt dans leurs ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Afficher les navires ayant ce dépôt dans leurs ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Afficher les aéronefs ayant ce dépôt dans leurs ordres
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autoremplacer tous les trains du dépôt
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autoremplacer tous les véhicules routiers du dépôt
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autoremplacer tous les navires du dépôt
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autoremplacer tous les aéronefs du hangar
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Train{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Véhicule{P "" s} Routier{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Navire{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aéronef{P "" s}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Remplacement véhicules
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}
@@ -2926,6 +2969,16 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ce véhic
 
 STR_ENGINES                                                     :Locomotives
 STR_WAGONS                                                      :Wagons
+
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Cliquer pour arrêter tous les trains du dépôt
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Cliquer pour arrêter tous les véhicules routiers du dépôt
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Cliquer pour arrêter tous les navires du dépôt
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Cliquer pour arrêter tous les aéronefs du hangar
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Cliquer pour démarrer tous les trains du dépôt
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Cliquer pour démarrer tous les véhicules routiers du dépôt
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Cliquer pour démarrer tous les navires du dépôt
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Cliquer pour démarrer tous les aéronefs du hangar
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Cliquer pour arrêter tous les véhicules de la liste
 STR_MASS_START_LIST_TIP                                         :{BLACK}Cliquer pour démarrer tous les véhicules de la liste

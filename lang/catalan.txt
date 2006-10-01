@@ -2896,10 +2896,56 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra t
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres compartides de {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tots els vehicles que tenen les mateixes ordres
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Cotxeres
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Cotxeres
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Drassanes
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Enviar tots els trens de la llista a les cotxeres. CTRL+click farà només revisió
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Enviar tots els vehicles de la llista a les cotxeres. CTRL+click farà només revisió
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Enviar tots els vaixells de la llista a les drassanes. CTRL+click farà només revisió
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Enviar tots els avions de la llista als hangars. CTRL+click farà només revisió
+
+### depot strings
 
 STR_SELL                                                        :{BLACK}Vendre
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Estàs a punt de vendre tots els vehicles de la cotxera
 STR_ARE_YOU_SURE                                                :{BLACK}N'estàs segur?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirma que vols vendre tots els trens de la cotxera
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirma que vols vendre tots els vehicles de la cotxera
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirma que vols vendre tots els vaixells de la drassana
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirma que vols vendre tots els avions de l'hangar
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}No vendre tots els trens de la cotxera
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}No vendre tots els vehicles de la cotxera
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}No vendre tots els vaixells de la drassana
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}No vendre tots els avions de l'hangar
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendre tots els trens de la cotxera
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendre tots els vehicles de la cotxera
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendre tots els vaixells de la drassana
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vendre tots els avions de l'hangar
+
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Treure una llista de tots els trens amb aquesta cotxera en les seves ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Treure una llista de tots els vehicles amb aquesta cotxera en les seves ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Treure una llista de tots els vaixells amb aquesta drassana en les seves ordres
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Treure una llista de tots els avions amb algun hangar en aquest aeroport en les seves ordres
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubstituir tots els trens de la cotxera
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstituir tots els vehicles de la cotxera
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autosubstituir tots els vaixells de la drassana
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autosubstituir tots els avions de l'hangar
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vehicle{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Vaixell{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Avió
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
@@ -2922,6 +2968,16 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}El motor
 
 STR_ENGINES                                                     :Motors
 STR_WAGONS                                                      :Vagons
+
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Click per parar tots els trens de dintre la cotxera
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Click per parar tots els vehicles de dintre la cotxera
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Click per parar tots els vaixells de dintre la drassana
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Click per parar tots els avions de dintre l'hangar
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Click per engegar tots els trens de dintre la cotxera
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Click per engegar tots els vehicles de dintre la cotxera
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Click per engegar tots els vaixells de dintre la drassana
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Click per engegar tots els avions de dintre l'hangar
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Click per parar tots els vehicles de la llista
 STR_MASS_START_LIST_TIP                                         :{BLACK}Click per engegar tots els vehicles de la llista

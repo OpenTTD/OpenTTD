@@ -24,7 +24,7 @@ STR_0010_COAL                                                   :Carvão
 STR_0011_MAIL                                                   :Correspondências
 STR_0012_OIL                                                    :Petróleo
 STR_0013_LIVESTOCK                                              :Gado
-STR_0014_GOODS                                                  :Mercadorias
+STR_0014_GOODS                                                  :Bens
 STR_0015_GRAIN                                                  :Grão
 STR_0016_WOOD                                                   :Madeira
 STR_0017_IRON_ORE                                               :Minério de Ferro
@@ -2411,10 +2411,10 @@ STR_80CF_FFP_PASSENGER_FERRY                                    :Navio de Passag
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Hovercraft Bakewell 300
 STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Navio de Passageiros Chugger-Chug
 STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Navio de Passageiros Shivershake
-STR_80D3_YATE_CARGO_SHIP                                        :Navio de Mercadorias Yate
-STR_80D4_BAKEWELL_CARGO_SHIP                                    :Navio de Mercadorias Bakewell
-STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Navio de Mercadorias Mightymover
-STR_80D6_POWERNAUT_CARGO_SHIP                                   :Navio de Mercadorias Powernaut
+STR_80D3_YATE_CARGO_SHIP                                        :Navio de Bens Yate
+STR_80D4_BAKEWELL_CARGO_SHIP                                    :Navio de Bens Bakewell
+STR_80D5_MIGHTYMOVER_CARGO_SHIP                                 :Navio de Bens Mightymover
+STR_80D6_POWERNAUT_CARGO_SHIP                                   :Navio de Bens Powernaut
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
 STR_80D9_FFP_DART                                               :FFP Dart
@@ -2896,16 +2896,27 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens compartilhadas do veículo {COMMA} {P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos com a mesma rota
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+
+STR_SEND_TO_DEPOTS                                              :
+
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Vender
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Você estará vendendo todos os veículos do depósito
 STR_ARE_YOU_SURE                                                :{BLACK}Tem certeza?
+
+
+
+
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obtém uma lista de trens com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obtém uma lista de veículos com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obtém uma lista de navios com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obtém uma lista de aeronaves com este hangar em suas ordens
+
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trem{P "" s}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Automóvel{P "" s}
@@ -2933,6 +2944,8 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A locomo
 
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagões
+
+
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Clique para mandar todos os veículos pararem
 STR_MASS_START_LIST_TIP                                         :{BLACK}Clique para mandar todos os veículos para o trabalho

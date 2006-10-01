@@ -3025,16 +3025,51 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Pokazuje
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Wspoldzielone polecenia {COMMA} pojazd{P u ow ow}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaz wszystkie pojazdy z takim samym rozkladem
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Zajezdnie
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Zajezdnie
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Stocznie
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangary
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Wyslij do {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Wyslij do zajezdni wszystkie pociagi. CTRL+klik tylko serwisuje
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Wyslij do zajezdni wszystkie samochody na liscie. CTRL+klik tylko serwisuje
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Wyslij do stoczni wszystkie statkina liscie. CTRL+klik tylko serwisuje
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Wyslij do hangarow wszystkie samoloty na liscie. CTRL+klik tylko serwisuje
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Sprzedaj
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Sprzedasz wszystkie pojazdy z zajezdni
 STR_ARE_YOU_SURE                                                :{BLACK}Jestes pewien?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Potwierdz chec sprzedazy wszystkich pociagow z zajezdni
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Potwierdz chec sprzedazy wszystkich samochodow z zajezdni
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Potwierdz chec sprzedazy wszystkich statkow ze stoczni
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Potwierdz chec sprzedazy wszystkich samolotow z hangaru
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Nie sprzedawaj wszystkich pociagow z zajezdni
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Nie sprzedawaj wszystkich samochodow z zajezdni
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Nie sprzedawaj wszystkich statkow ze stoczni
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Nie sprzedawaj wszystkich samolotow z hangaru
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sprzedaj wszystkie pociagi z zajezdni
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sprzedaj wszystkie samochody z zajezdni
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sprzedaj wszystkie statki ze stoczni
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Sprzedaj wszystkie samoloty z hangaru
+
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Pokaz liste wszystkich pociagow z ta zajezdnia w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Pokaz liste wszystkich samochodow z ta zajezdnia w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Pokaz liste wszystkich statkow z ta stocznia w swoich poleceniach
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Pokaz liste wszystkich samolotow z hangarem na tym lotnisku w swoich poleceniach
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Zamien wszystkie pociagi w zajezdni
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Zamien wszystkie samochody w zajezdni
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Zamien wszystkie statki w stoczni
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Zamien wszystkie samoloty w hagarze
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Pociag{P "" i ow}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Samochod{P "" y ow}
@@ -3062,6 +3097,16 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoty
 
 STR_ENGINES                                                     :Lokomotywy
 STR_WAGONS                                                      :Wagonow
+
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kliknij aby zatrzymac wszystkie pociagi w zajezdni
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kliknij aby zatrzymac wszystkie samochody w zajezdni
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kliknij aby zatrzymac wszystkie statki w stoczni
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kliknij aby zatrzymac wszystkie samoloty w hangarze
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kliknij aby wystartowac wszystkie pociagi w zajezdni
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kliknij aby wystartowac wszystkie samochody w zajezdni
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kliknij aby wystartowac wszystkie statki w stoczni
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kliknij aby wystartowac wszystkie samoloty w hangarze
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliknij aby zatrzymac wszystkie pojazdy na liscie
 STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknij aby wystartowac wszystkie pojazdy na liscie

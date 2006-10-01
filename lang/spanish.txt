@@ -2897,10 +2897,55 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordenes compartidas de  {COMMA} Vehículo{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ver todos los vehículos que tienen el mismo calendario
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depósitos
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depósitos
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depósitos
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangares
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Envía todos los trenes de la lista a los depósitos. CTRL+click para solo servicio
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Envía todos los vehículos de la lista a los depósitos. CTRL+click para solo servicio
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Envía todos los barcos de la lista a los depósitos. CTRL+click para solo servicio
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Envía todas las aeronaves de la lista a los hangares. CTRL+click para solo servicio
+
+### depot strings
 
 STR_SELL                                                        :{BLACK}Vender
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Estás a punto de vender todos los vehículos del depósito
 STR_ARE_YOU_SURE                                                :{BLACK}¿Estás seguro?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirmar que quiero vender todos los tenes del depósito
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirmar que quiero vender todos los vehículos del depósito
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirmar que quiero vender todos los barcos del depósito
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}No vender todos los trenes del depósito
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}No vender todos los vehículos del depósito
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}No vender todos los barcos del depósito
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}No vender todas las aeronaves del hangar
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos los trenes del depósito
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos los vehículos del depósito
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender todos los barcos del depósito
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender todas las aeronaves del hangar
+
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obtener lista de todos los trenes de este depósito y sus ordenes
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obtener lista de todos los vehículos del depósito actual y sus ordenes
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obtener lista de todos los barcos de este depósito y sus ordenes
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obtener lista de todas las aeronaves de cualquier hangar de este aeropuerto y sus ordenes
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Cambia automáticamente todos los trenes del depósito
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Cambia automáticamente todos los vehículos del depósito
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Cambia automáticamente todos los barcos del depósito
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Cambia automáticamente todas las aeronaves del hangar
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vehículo Carretera{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Barco{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplazar vehículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING}
@@ -2923,6 +2968,16 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}No es po
 
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagones
+
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pulsa para parar todos los trenes dentro del depósito
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Pulsa para parar todos los vehículos dentro del depósito
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Pulsa para parar todos los barcos dentro del depósito
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pulsa para parar todas las aeronaves dentro del hangar
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Pulsa para arrancar todos los trenes dentro del depósito
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Pulsa para arrancar todos los vehículos dentro del depósito
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Pulsa para arrancar todos los barcos dentro del depósito
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Pulsa para arrancar todas las aeronaves dentro del hangar
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Pulsa para parar todos los vehículos de la lista
 STR_MASS_START_LIST_TIP                                         :{BLACK}Pulsa para arrancar todos los vehículos de la lista
