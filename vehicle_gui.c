@@ -294,14 +294,14 @@ static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint 
 	uint i;
 
 	/* Draw the list, and find the selected cargo (by its position in list) */
-	for (i = pos; i < num_lines && i < pos + rows; i++) {
+	for (i = 0; i < num_lines; i++) {
 		byte colour = 16;
 		if (sel == 0) {
 			selected = &refit[i];
 			colour = 12;
 		}
 
-		if (i >= pos && y < rows * 10) {
+		if (i >= pos && i < pos + rows) {
 			/* Draw the cargo name */
 			int last_x = DrawString(2, y, _cargoc.names_s[_local_cargo_id_ctype[refit[i].cargo]], colour);
 
@@ -367,7 +367,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 				case 3: { // listbox
 					int y = e->we.click.pt.y - w->widget[3].top;
 					if (y >= 0) {
-						WP(w,refit_d).sel = y / (int)w->resize.step_height;
+						WP(w,refit_d).sel = (y / (int)w->resize.step_height) + w->vscroll.pos;
 						SetWindowDirty(w);
 					}
 				} break;
