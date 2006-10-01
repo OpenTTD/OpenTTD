@@ -195,7 +195,7 @@ typedef struct RefitList {
 	RefitOption *items;
 } RefitList;
 
-RefitList *BuildRefitList(const Vehicle *v)
+static RefitList *BuildRefitList(const Vehicle *v)
 {
 	uint max_lines = 256;
 	RefitOption *refit = calloc(max_lines, sizeof(*refit));
@@ -283,12 +283,12 @@ RefitList *BuildRefitList(const Vehicle *v)
  * Draw the list and highlight the selected refit option (if any)
  * @param *v first vehicle in consist to get the refit-options of
  * @param sel selected refit cargo-type in the window
- * @return the cargo type that is hightlighted, CT_INVALID if none
+ * @return the refit option that is hightlighted, NULL if none
  */
-static CargoID DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta)
+static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta)
 {
-	CargoID cargo = CT_INVALID;
 	RefitOption *refit = list->items;
+	RefitOption *selected = NULL;
 	uint num_lines = list->num_lines;
 	uint y = 31;
 	uint i;
@@ -297,7 +297,7 @@ static CargoID DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, 
 	for (i = pos; i < num_lines && i < pos + rows; i++) {
 		byte colour = 16;
 		if (sel == 0) {
-			cargo = _local_cargo_id_ctype[refit[i].cargo];
+			selected = &refit[i];
 			colour = 12;
 		}
 
@@ -315,7 +315,7 @@ static CargoID DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, 
 		sel--;
 	}
 
-	return cargo;
+	return selected;
 }
 
 static void VehicleRefitWndProc(Window *w, WindowEvent *e)
@@ -343,7 +343,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 
 			WP(w,refit_d).cargo = DrawVehicleRefitWindow(WP(w, refit_d).list, WP(w, refit_d).sel, w->vscroll.pos, w->vscroll.cap, w->resize.step_height);
 
-			if (WP(w,refit_d).cargo != CT_INVALID) {
+			if (WP(w,refit_d).cargo != NULL) {
 				int32 cost = 0;
 				switch (GetVehicle(w->window_number)->type) {
 					case VEH_Train:    cost = CMD_REFIT_RAIL_VEHICLE; break;
@@ -352,9 +352,9 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 					case VEH_Aircraft: cost = CMD_REFIT_AIRCRAFT;     break;
 				}
 
-				cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo, DC_QUERY_COST, cost);
+				cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8, DC_QUERY_COST, cost);
 				if (!CmdFailed(cost)) {
-					SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
+					SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo->cargo]);
 					SetDParam(1, _returned_refit_capacity);
 					SetDParam(2, cost);
 					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
@@ -372,7 +372,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 					}
 				} break;
 				case 6: // refit button
-					if (WP(w,refit_d).cargo != CT_INVALID) {
+					if (WP(w,refit_d).cargo != NULL) {
 						const Vehicle *v = GetVehicle(w->window_number);
 						int command = 0;
 
@@ -382,7 +382,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 							case VEH_Ship:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
 							case VEH_Aircraft: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
 						}
-						if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo, NULL, command)) DeleteWindow(w);
+						if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8, NULL, command)) DeleteWindow(w);
 					}
 					break;
 			}

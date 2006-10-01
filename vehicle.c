@@ -2782,6 +2782,7 @@ const SaveLoad _common_veh_desc[] = {
 	SLE_CONDVAR(Vehicle, last_station_visited, SLE_UINT16,                  5, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, cargo_type,           SLE_UINT8),
+	SLE_CONDVAR(Vehicle, cargo_subtype,        SLE_UINT8,                  35, SL_MAX_VERSION),
 	    SLE_VAR(Vehicle, cargo_days,           SLE_UINT8),
 	SLE_CONDVAR(Vehicle, cargo_source,         SLE_FILE_U8  | SLE_VAR_U16,  0, 6),
 	SLE_CONDVAR(Vehicle, cargo_source,         SLE_UINT16,                  7, SL_MAX_VERSION),

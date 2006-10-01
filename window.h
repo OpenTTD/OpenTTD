@@ -430,7 +430,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 
 typedef struct {
 	int sel;
-	CargoID cargo;
+	struct RefitOption *cargo;
 	struct RefitList *list;
 	uint length;
 } refit_d;
