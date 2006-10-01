@@ -2896,16 +2896,51 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Visa all
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delade order med {COMMA} Fordon{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Visa alla fordon med samma körschema
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depåer
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depåer
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depåer
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarer
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Skicka till {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Skicka alla tåg i listan till depåer. CTRL+klick servar endast
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Skicka alla fordon i listan till depåer. CTRL+klick servar endast
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Skicka alla skepp i listan till depåer. CTRL+klick servar endast
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Skicka alla flygplan i listan till hangarer. CTRL+klick servar endast
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Sälj
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du är på väg att sälja alla fordon i depån.
 STR_ARE_YOU_SURE                                                :{BLACK}Är du säker?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bekräfta att du vill sälja alla tåg i depån
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bekräfta att du vill sälja alla fordon i depån
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bekräfta att du vill sälja alla skepp i depån
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bekräfta att du vill sälja alla flygplan i hangaren
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Sälj inte alla tåg i depån
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Sälj inte alla fordon i depån
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Sälj inte alla skepp i depån
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Sälj inte alla flygplan i hangaren
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sälj alla tåg i depån
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sälj alla fordon i depån
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sälj alla skepp i depån
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Sälj alla flygplan i hangaren
+
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Ge en lista av alla tåg som har denna depå i dess körschema
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Ge en lista av alla fordon som har denna depå i dess körschema
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Ge en lista av alla fartyg som har denna depå i dess körschema
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Ge en lista av alla flygplan som har denna flygplats-hangar i dess körschema
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Ersätt alla tåg i depån
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Ersätt alla fordon i depån
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Ersätt alla skepp i depån
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Ersätt alla flygplan i hangaren
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tåg
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vägfordon
@@ -2933,6 +2968,16 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Loket gå
 
 STR_ENGINES                                                     :Lok
 STR_WAGONS                                                      :Vagnar
+
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klicka för att stanna alla tåg i depån
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klicka för att stanna alla fordon i depån
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klicka för att stanna alla skepp i depån
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klicka för att stanna alla flygplan i hangaren
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klicka för att starta alla tåg i depån
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klicka för att starta alla fordon i depån
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klicka för att starta alla skepp i depån
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klicka för att starta alla skepp i depån
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klicka för att stoppa alla fordon i listan
 STR_MASS_START_LIST_TIP                                         :{BLACK}Klicka för att starta alla fordon i listan

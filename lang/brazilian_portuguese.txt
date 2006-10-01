@@ -2227,7 +2227,7 @@ STR_8017_SH_30_ELECTRIC                                         :SH '30' (Elétri
 STR_8018_SH_40_ELECTRIC                                         :SH '40' (Elétrico)
 STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Elétrico)
 STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Elétrico)
-STR_801B_PASSENGER_CAR                                          :Carro de Passageiros
+STR_801B_PASSENGER_CAR                                          :Vagão de Passageiros
 STR_801C_MAIL_VAN                                               :Vagão de Correspondências
 STR_801D_COAL_CAR                                               :Vagão de Carvão
 STR_801E_OIL_TANKER                                             :Tanque de Petróleo
@@ -2257,7 +2257,7 @@ STR_8035_PLASTIC_TRUCK                                          :Vagão de Plásti
 STR_8036_X2001_ELECTRIC                                         :'X2001' (Elétrico)
 STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Elétrico)
 STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
-STR_8039_PASSENGER_CAR                                          :Carro de Passageiros
+STR_8039_PASSENGER_CAR                                          :Vagão de Passageiros
 STR_803A_MAIL_VAN                                               :Vagão de Correspondências
 STR_803B_COAL_CAR                                               :Vagão de Carvão
 STR_803C_OIL_TANKER                                             :Tanque de Petróleo
@@ -2289,7 +2289,7 @@ STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' 
 STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Elétrico)
 STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Elétrico)
 STR_8058_WIZZOWOW_ROCKETEER                                     :Wizzowow Rocketeer
-STR_8059_PASSENGER_CAR                                          :Carro de Passageiros
+STR_8059_PASSENGER_CAR                                          :Vagão de Passageiros
 STR_805A_MAIL_VAN                                               :Vagão de Correspondências
 STR_805B_COAL_CAR                                               :Vagão de Carvão
 STR_805C_OIL_TANKER                                             :Tanque de Petróleo
@@ -2469,7 +2469,7 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :locomotiva trem
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Depósito Ferroviário
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Cidadãos celebram . . .{}Primeiro comboio chega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalhes)
-STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Comboio no caminho
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Trem no caminho
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
 STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Ir para {STATION}
@@ -2499,7 +2499,7 @@ STR_INVALID_ORDER                                               :{RED} (Ordem In
 STR_UNKNOWN_DESTINATION                                         :destino desconhecido
 STR_8812_EMPTY                                                  :{LTBLUE}Vazio
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Comboio {COMMA} está aguardando no depósito
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trem {COMMA} está aguardando no depósito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Novos Veículos
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trem muito longo
@@ -2849,7 +2849,7 @@ STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Emprésti
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Número de veículos. Incluindo veículos de estrada, comboios, barcos e aeronaves.
-STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Número de segmentos de estação. Cada parte de uma estação (ex. estação ferroviária, paragem de autocarro, aeroporto) é contabilizado, mesmo se eles estiverem ligados a uma estação.
+STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Número de segmentos de estação. Cada parte de uma estação (ex. estação ferroviária, ponto de ônibus, aeroporto) é contado, mesmo se eles estiverem ligados a uma estação.
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}O lucro do veículo com o rendimento menor (de todos os veículos com mais de 2 anos)
 STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Dinheiro conseguido no mês com os lucros mais baixos dos últimos 12 trimestres
 STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Dinheiro conseguido no mês com os lucros mais altos dos últimos 12 trimestres
@@ -2883,7 +2883,7 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Comboios
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Trem{P "" s}
 STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Veiculos de Estrada
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Aviões
 STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Navio
@@ -2899,9 +2899,17 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra t
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depósitos
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depósitos
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depósitos
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangares
 
-STR_SEND_TO_DEPOTS                                              :
+STR_SEND_TO_DEPOTS                                              :{BLACK}Mandar para {SKIP}{SKIP}{SKIP}{STRING}
 
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Manda os trens para o depósito. CTL+clique para manutenção apenas
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Manda os veículos para os depósitos. CTRL+clique para manutenção apenas
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Manda os navios para os depósitos. CTRL+clique para manutenção apenas
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Manda as aeronaves para os hangares. CTRL+clique para manutenção apenas
 
 ### depot strings
 
@@ -2909,14 +2917,30 @@ STR_SELL                                                        :{BLACK}Vender
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Você estará vendendo todos os veículos do depósito
 STR_ARE_YOU_SURE                                                :{BLACK}Tem certeza?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirma a venda de todos os trens
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirma a venda de todos os veículos
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirma a venda de todos os navios
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirma a venda de todas as aeronaves
 
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Cancela a venda de todos os trens
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Cancela a venda de todos os veículos
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Cancela a venda de todos os navios
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Cencela a venda das aeronaves
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os trens no depósito
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos os veículos no depósito
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender todos os navios no depósito
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender todas as aeronaves no hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obtém uma lista de trens com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obtém uma lista de veículos com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obtém uma lista de navios com este depósito em suas ordens
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obtém uma lista de aeronaves com este hangar em suas ordens
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubstituir todas os trens no depósito
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstituir todas os veículos no depósito
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autosubstituir todas os navios no depósito
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autosubstituir todas as aeronaves no hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trem{P "" s}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Automóvel{P "" s}
@@ -2945,7 +2969,15 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A locomo
 STR_ENGINES                                                     :Motores
 STR_WAGONS                                                      :Vagões
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Clique para parar todos os trens
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Clique para parar todos os veículos
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Clique para parar todos os navios
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Clique para parar todos as aeronaves
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Clique para mandar todos os trens para o trabalho
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Clique para mandar todos os veículos para o trabalho
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Clique para mandar todos os navios para o trabalho
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Clique para mandar todos as aeronaves para o trabalho
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Clique para mandar todos os veículos pararem
 STR_MASS_START_LIST_TIP                                         :{BLACK}Clique para mandar todos os veículos para o trabalho
@@ -2955,7 +2987,7 @@ STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de
 
 ############ Lists rail types
 
-STR_RAIL_VEHICLES                                               :Comboios
+STR_RAIL_VEHICLES                                               :Trens
 STR_ELRAIL_VEHICLES                                             :Máquinas Elétricas
 STR_MONORAIL_VEHICLES                                           :Monocarris
 STR_MAGLEV_VEHICLES                                             :Maglevs
