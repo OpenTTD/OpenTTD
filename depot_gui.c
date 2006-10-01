@@ -31,11 +31,10 @@ typedef enum DepotWindowWidgets {
 	DEPOT_WIDGET_CLOSEBOX = 0,
 	DEPOT_WIDGET_CAPTION,
 	DEPOT_WIDGET_STICKY,
-	DEPOT_WIDGET_STOP_ALL,
-	DEPOT_WIDGET_START_ALL,
 	DEPOT_WIDGET_SELL,
 	DEPOT_WIDGET_SELL_CHAIN,
 	DEPOT_WIDGET_SELL_ALL,
+	DEPOT_WIDGET_AUTOREPLACE,
 	DEPOT_WIDGET_MATRIX,
 	DEPOT_WIDGET_V_SCROLL, // Vertical scrollbar
 	DEPOT_WIDGET_H_SCROLL, // Horizontal scrollbar
@@ -43,7 +42,8 @@ typedef enum DepotWindowWidgets {
 	DEPOT_WIDGET_CLONE,
 	DEPOT_WIDGET_LOCATION,
 	DEPOT_WIDGET_VEHICLE_LIST,
-	DEPOT_WIDGET_AUTOREPLACE,
+	DEPOT_WIDGET_STOP_ALL,
+	DEPOT_WIDGET_START_ALL,
 	DEPOT_WIDGET_RESIZE,
 	DEPOT_WIDGET_LAST, // used to assert if DepotWindowWidgets and widget_moves got different lengths. Due to this usage, it needs to be last
 } DepotWindowWidget;
@@ -53,11 +53,10 @@ static const byte widget_moves[] = {
 	WIDGET_MOVE_NONE,               // DEPOT_WIDGET_CLOSEBOX
 	WIDGET_STRETCH_RIGHT,           // DEPOT_WIDGET_CAPTION
 	WIDGET_MOVE_RIGHT,              // DEPOT_WIDGET_STICKY
-	WIDGET_MOVE_RIGHT,              // DEPOT_WIDGET_STOP_ALL
-	WIDGET_MOVE_RIGHT,              // DEPOT_WIDGET_START_ALL
 	WIDGET_MOVE_RIGHT,              // DEPOT_WIDGET_SELL
 	WIDGET_MOVE_NONE,               // DEPOT_WIDGET_SELL_CHAIN
 	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_SELL_ALL
+	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_AUTOREPLACE
 	WIDGET_STRETCH_DOWN_RIGHT,      // DEPOT_WIDGET_MATRIX
 	WIDGET_MOVE_RIGHT_STRETCH_DOWN, // DEPOT_WIDGET_V_SCROLL
 	WIDGET_MOVE_NONE,               // DEPOT_WIDGET_H_SCROLL
@@ -65,7 +64,8 @@ static const byte widget_moves[] = {
 	WIDGET_MOVE_DOWN,               // DEPOT_WIDGET_CLONE
 	WIDGET_MOVE_DOWN,               // DEPOT_WIDGET_LOCATION
 	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_VEHICLE_LIST
-	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_AUTOREPLACE
+	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_STOP_ALL
+	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_START_ALL
 	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_RESIZE
 };
 
@@ -84,11 +84,10 @@ static const Widget _depot_widgets[] = {
 	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, 0x0,                 STR_018C_WINDOW_TITLE_DRAG_THIS},  // DEPOT_WIDGET_CAPTION
 	{  WWT_STICKYBOX,     RESIZE_LR,    14,   293,   304,     0,    13, 0x0,                 STR_STICKY_BUTTON},                // DEPOT_WIDGET_STICKY
 
-	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   270,   280,    14,    25, SPR_FLAG_VEH_STOPPED,STR_NULL},                         // DEPOT_WIDGET_STOP_ALL
-	{ WWT_PUSHIMGBTN,     RESIZE_LR,    14,   281,   292,    14,    25, SPR_FLAG_VEH_RUNNING,STR_NULL},                         // DEPOT_WIDGET_START_ALL
-	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    26,    49, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL
+	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    14,    37, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL
 	{      WWT_PANEL,   RESIZE_LRTB,    14,   326,   348,     0,     0, SPR_SELL_CHAIN_TRAIN,STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    50,    72, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL_ALL
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    38,    60, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL_ALL
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    61,    83, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_AUTOREPLACE
 
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    83, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_MATRIX
 	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   293,   304,    14,    83, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST}, // DEPOT_WIDGET_V_SCROLL
@@ -97,11 +96,12 @@ static const Widget _depot_widgets[] = {
 
 	/* The buttons in the bottom of the window. left and right is not important as they are later resized to be equal in size
 	 * This calculation is based on right in DEPOT_WIDGET_LOCATION and it presumes left of DEPOT_WIDGET_BUILD is 0            */
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    96,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_BUILD
-	{WWT_NODISTXTBTN,     RESIZE_TB,    14,    97,   194,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   195,   292,    84,    95, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    85,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_BUILD
+	{WWT_NODISTXTBTN,     RESIZE_TB,    14,    86,   170,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   171,   257,    84,    95, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
 	{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   258,   269,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_VEHICLE_LIST
-	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    73,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_AUTOREPLACE
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   280,    84,    95, SPR_FLAG_VEH_STOPPED,STR_NULL},                         // DEPOT_WIDGET_STOP_ALL
+	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   281,   292,    84,    95, SPR_FLAG_VEH_RUNNING,STR_NULL},                         // DEPOT_WIDGET_START_ALL
 	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   293,   304,    84,    95, 0x0,                 STR_RESIZE_BUTTON},                // DEPOT_WIDGET_RESIZE
 	{   WIDGETS_END},
 };
