@@ -434,7 +434,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Fermer l
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titre de fenêtre - Faire Glisser pour déplacer la fenêtre
 STR_STICKY_BUTTON                                               :{BLACK}Marquer cette fenêtre comme ineffaçable pour la touche 'Fermer toutes les fenêtres'
 STR_RESIZE_BUTTON                                               :{BLACK}Cliquer et faire glisse pour redimensionner la fenêtre
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Clicker ici pour passer au répertoire par défaut courant de charge/sauvegarde
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Cliquer ici pour passer au répertoire par défaut courant de charge/sauvegarde
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Démolir les constructions sur un carré de terrain
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Abaisser le terrain
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Élever le terrain
@@ -2197,7 +2197,7 @@ STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Montrer 
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Montrer les livrées de navires
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Montrer les livrées des aéronefs
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Choisir la couleur primaire de la  livrée sélectionnée
-STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Montrer la couleur seconde de la livrée sélectionnée
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Choisir la couleur secondaire de la livrée sélectionnée
 STR_LIVERY_PANEL_TIP                                            :{BLACK}Sélectionner la livrée à modifier, ou plusieurs par Ctrl-clic. Cliquer sur la case pour en intervertir l'utilisation
 
 ##id 0x8000
@@ -2513,10 +2513,10 @@ STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nouveaux
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construire
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Copier Véhicule
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Effectuer la copie d'un véhicule routier. Ctrl-clic partagera les ordres
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Effectuer la copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors un dépot. Ctrl-Click partagera les ordres
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Effectuer la copie d'un véhicule routier. Cliquer ici puis sur un véhicule routier dans ou hors d'un dépôt. Ctrl-clic partagera les ordres
 STR_CLONE_TRAIN                                                 :{BLACK}Copier Train
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Effectuer la copie d'un train et ses wagons. Ctrl-clic partagera les ordres
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Effectuer la copie d'un train et ses wagons. Cliquer ici puis sur un train dans ou hors un dépot. Ctrl-Click partagera les ordres
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Effectuer la copie d'un train et ses wagons. Cliquer ici puis sur un train dans ou hors d'un dépôt. Ctrl-clic partagera les ordres
 STR_8820_RENAME                                                 :{BLACK}Renommer
 STR_8823_SKIP                                                   :{BLACK}Suivant
 STR_8824_DELETE                                                 :{BLACK}Supprimer
@@ -2682,7 +2682,7 @@ STR_9808_NEW_SHIPS                                              :{WHITE}Nouveaux
 STR_9809_BUILD_SHIP                                             :{BLACK}Construire navire
 STR_CLONE_SHIP                                                  :{BLACK}Copier Navire
 STR_CLONE_SHIP_INFO                                             :{BLACK}Effectuer la copie d'un navire. Ctrl-clic partagera les ordres
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Effectuer la copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépot naval. Ctrl-Click partagera les ordres
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Effectuer la copie d'un navire. Cliquer ici puis sur un navire dans ou hors d'un dépôt. Ctrl-clic partagera les ordres
 STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Navire doit être arrêté au dépôt
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Impossible de vendre navire...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Impossible de construire navire...
@@ -2751,7 +2751,7 @@ STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Hangar à
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nouvel aéronef
 STR_CLONE_AIRCRAFT                                              :{BLACK}Copier aéronef
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Effectuer une copie de l'aéronef. Ctrl-clic partagera les ordres
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Effectuer la copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors un hangar. Ctrl-Click partagera les ordres
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Effectuer la copie d'un aéronef. Cliquer ici puis sur un aéronef dans ou hors d'un hangar. Ctrl-clic partagera les ordres
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nouvel Aéronef
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construire aéronef
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Impossible de construire l'aéronef...

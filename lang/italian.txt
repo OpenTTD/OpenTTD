@@ -2896,10 +2896,40 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra t
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordini comuni di {COMMA} Veicol{P o i}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tutti i veicoli con la stessa lista ordini
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depositi
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depositi
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depositi
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangar
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Manda a {SKIP}{SKIP}{SKIP}{STRING}
+
+
+### depot strings
 
 STR_SELL                                                        :{BLACK}Vendi
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Stai per vendere tutti i veicoli nel deposito
 STR_ARE_YOU_SURE                                                :{BLACK}Sei sicuro?
+
+
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendi tutti i treni nel deposito
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendi tutti i veicoli nel deposito
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendi tute le navi nel deposito
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vendi tutti gli aerei nell'hangar
+
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Sostituisci automaticamente tutti i treni nel deposito
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Sostituisci automaticamente tutti i veicoli nel deposito
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Sostituisci automaticamente tutte le navi nel deposito
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Sostituisci automaticamente tutti gli aerei nell'hangar
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P o i}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Veicol{P o i} stradal{P e i}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Nav{P e i}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aere{P o i}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
@@ -2922,6 +2952,8 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi
 
 STR_ENGINES                                                     :Motrici
 STR_WAGONS                                                      :Vagoni
+
+
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Clicca per fermare tutti i veicoli nella lista
 STR_MASS_START_LIST_TIP                                         :{BLACK}Clicca per far partire i veicoli nella lista

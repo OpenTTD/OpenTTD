@@ -2896,6 +2896,56 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depots
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depots
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depots
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Send to {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Send all trains in list to depots. CTRL+click will only service
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Send all road vehicles in list to depots. CTRL+click will only service
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Send all ships in list to depots. CTRL+click will only service
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Send all aircraft in list to hangars. CTRL+click will only service
+
+### depot strings
+
+STR_SELL                                                        :{BLACK}Sell
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}You are about to sell all vehicles in the depot.
+STR_ARE_YOU_SURE                                                :{BLACK}Are you sure?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirm that you want to sell all trains in the depot
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirm that you want to sell all road vehicles in the depot
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirm that you want to sell all ships in the depot
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirm that you want to sell all aircraft in the hangar
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Do not sell all trains in the depot
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Do not sell all road vehicles in the depot
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Do not sell all ships in the depot
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Do not sell all aircraft in the hangar
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sell all trains in the depot
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sell all road vehicles in the depot
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sell all ships in the depot
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Sell all aircraft in the hangar
+
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Get a list of all trains with the current depot in their orders
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Get a list of all road vehicles with the current depot in their orders
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Get a list of all ships with the current depot in their orders
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Get a list of all aircraft with any hangar at this airport in their orders
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autoreplace all trains in the depot
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autoreplace all road vehicles in the depot
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autoreplace all ships in the depot
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autoreplace all aircraft in the hangar
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Train{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Road Vehicle{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Ship{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aircraft
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Replace Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Replace {STRING}
@@ -2919,6 +2969,18 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Engine i
 STR_ENGINES                                                     :Engines
 STR_WAGONS                                                      :Cars
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Click to stop all trains inside the depot
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Click to stop all road vehicles inside the depot
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Click to stop all ships inside the depot
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Click to stop all aircraft inside the hangar
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Click to start all trains inside the depot
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Click to start all the road vehicles inside the depot
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Click to start all ships inside the depot
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Click to start all aircraft inside the hangar
+
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Click to stop all vehicles in the list
+STR_MASS_START_LIST_TIP                                         :{BLACK}Click to start all listed vehicles
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}

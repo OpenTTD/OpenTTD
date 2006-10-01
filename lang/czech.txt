@@ -2953,16 +2953,51 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Sdílené prikazy {COMMA} vozid{P lo la el}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit v¨echny prostredky se stejným jízdním radem
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depa
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depa
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depa
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangáry
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Poslat do {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Poslat v¨echny vlaky v tomto seznamu do dep. Pri CTRL+kliknutí se pouze provede údr¸ba
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Poslat v¨echna silnicni vozidla v tomto seznamu do dep. Pri CTRL+kliknutí se pouze provede údr¸ba
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Poslat v¨echny lode v tomto seznamu do dep. Pri CTRL+kliknutí se pouze provede údr¸ba
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Poslat v¨echna letadla a helikoptéry v tomto seznamu seznamu do dep. Pri CTRL+kliknutí se pouze provede údr¸ba
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Prodat
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Chce¨ prodat v¨echna vozidla v depu.
 STR_ARE_YOU_SURE                                                :{BLACK}Jsi si jistý?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Potvrd, ¸e chce¨ prodat v¨echny lode v depu
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Potvrd, ¸e chce¨ prodat v¨echna silnicni vozidla v depu
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Potvrd, ¸e chce¨ prodat v¨echny lode v depu
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Potvrd, ¸e chce¨ prodat v¨echna letadla a helikoptéry v hangáru
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Neprodávat vlaky nacházející se v depu
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Neprodávat silnicni vozidla nacházející se v depu
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Neprodávat lode nacházející se v depu
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Neprodávat letadla a vrtulníky nacházející se v hangáru
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Prodat v¨echny vlaky v depu
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Prodat v¨echna silnicni vozidla v depu
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Prodat v¨echny lode v depu
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Prodat v¨echna letadla a helikoptéry v hangáru
+
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Ukázat seznam v¨ech vlaku, které mají toto depo v jízdním radu
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Ukázat seznam v¨ech silnicnich vozidel, které mají toto depo v jízdním radu
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Ukázat seznam v¨ech lodí, které mají toto depo v jízdním radu
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Ukázat seznam v¨ech letadel a helikoptér, které mají jakýkoliv z hangaru na tomto letisti v letovém plánu
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Nechat automaticky vymenovat v¨echny vlaky pritomne v depu
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Nechat automaticky vymenovat v¨echna silnicni vozidla pritomne v depu
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Nechat automaticky vymenovat v¨echny lode pritomne v depu
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Nechat automaticky vymenovat v¨echna letadla a vrtulníky pritomne v hangáru
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} -  {COMMA} vlak{P "" y u}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} silnicni{P "" "" ch} vozid{P lo la el}
@@ -2990,6 +3025,16 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Stroj ne
 
 STR_ENGINES                                                     :lokomotivy
 STR_WAGONS                                                      :vagony
+
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Stiskni pro zastavení vlaku v depu
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Stiskni pro zastavení silnicnich vozidel v depu
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Stiskni pro zastavení lodí v depu
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Stiskni pro zastavení letadel a helikoptér v hangáru
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Stiskni pro hromadný odjezd v¨ech vlaku v depu
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Stiskni pro hromadný odjezd v¨ech silnicnich vozidel v depu
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Stiskni pro hromadný odjezd v¨ech lodí v depu
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Stiskni pro hromadný odlet v¨ech letadel a helikoptér v hangáru
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliknutím sem se zastaví v¨echna vozidla v seznamu
 STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknutím sem se rozjedou v¨echna vozidla v seznamu

@@ -2896,16 +2896,48 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Geef all
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gedeelde orders van {COMMA} voertuig{P "" en}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon alle voertuigen met de zelfde orders
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depots
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Stuur naar {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Stuur alle weg voertuigen in de lijst naar de hangars. CTRL+Klik zorgt alleen voor onderhoudsbeurt
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Stuur alle schepen in de lijst naar de hangars. CTRL+Klik zorgt alleen voor onderhoudsbeurt
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Stuur alle vliegtuigen in de lijst naar de hangars. CTRL+Klik zorgt alleen voor onderhoudsbeurt
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Verkoop
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Je staat op het punt alle voertuigen in het depot te verkopen.
 STR_ARE_YOU_SURE                                                :{BLACK}Weet je het zeker?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bevestig dat je alle treinen in het depot wilt verkopen
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bevestig dat je alle weg voertuigen in het depot wilt verkopen
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bevestig dat je alle schepen in het depot wilt verkopen
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bevestig dat je alle vliegtuigen in de hangar wilt verkopen
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Verkoop niet alle treinen in het depot
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Verkoop niet alle weg voertuigen in het depot
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Verkoop niet alle schepen in het depot
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Verkoop niet alle vliegtuigen in de hangar
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Verkoop alle treinen in het depot
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Verkoop alle weg voertuigen in het depot
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Verkoop alle schepen in het depot
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Verkoop alle vliegtuigen in de hangar
+
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Geef een lijst van alle treinen met huidig depot in hun orders
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Geef een lijst van alle wegvoertuigen met huidig depot in hun orders
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Geef een lijst van alle schepen met huidig schepswerf in hun orders
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Geef een lijst van alle vliegtuigen met een hangar van dit vliegveld in hun orders
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Vervang automatisch alle treinen in het depot
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Vervang automatisch alle weg voertuigen in het depot
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Vervang automatisch alle schepen in  het depot
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Vervang automatisch alle vliegtuigen in de hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Trein{P "" s}
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Weg Voertuigen{P "" s}
@@ -2933,6 +2965,16 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomoti
 
 STR_ENGINES                                                     :Motoren
 STR_WAGONS                                                      :Wagons
+
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klik om alle treinen in het depot te stoppen
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klik om alle weg voertuigen in het depot te stoppen
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klik om alle schepen in het depot te stoppen
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klik om alle vliegtuigen in het depot te stoppen
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klik om alle treinen in het depot te starten
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klik om alle weg voertuigen in het depot te starten
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klik om alle schepen in het depot te starten
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klik om alle vliegtuigen in het depot te starten
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klik om alle voertuigen te stoppen in de lijst
 STR_MASS_START_LIST_TIP                                         :{BLACK}Klik om alle voertuigen te starten in de lijst
