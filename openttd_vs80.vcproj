@@ -1088,6 +1088,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\resize_window_widgets.h"
+				>
+			</File>
+			<File
 				RelativePath=".\road.h"
 				>
 			</File>
