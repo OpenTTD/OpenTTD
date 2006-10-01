@@ -333,9 +333,10 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 					free(WP(w, refit_d).list);
 					WP(w, refit_d).list = BuildRefitList(v);
 					WP(w, refit_d).length = length;
-					SetVScrollCount(w, WP(w, refit_d).list->num_lines);
 				}
 			}
+
+			SetVScrollCount(w, WP(w, refit_d).list->num_lines);
 
 			SetDParam(0, v->string_id);
 			SetDParam(1, v->unitnumber);
