@@ -183,42 +183,136 @@ void DrawVehicleProfitButton(const Vehicle *v, int x, int y)
 	DrawSprite(SPR_BLOT | ormod, x, y);
 }
 
+typedef struct RefitOption {
+	CargoID cargo;
+	byte subtype;
+	uint16 value;
+	EngineID engine;
+} RefitOption;
+
+typedef struct RefitList {
+	uint num_lines;
+	RefitOption *items;
+} RefitList;
+
+RefitList *BuildRefitList(const Vehicle *v)
+{
+	uint max_lines = 256;
+	RefitOption *refit = calloc(max_lines, sizeof(*refit));
+	RefitList *list = calloc(1, sizeof(*list));
+	Vehicle *u = (Vehicle*)v;
+	uint num_lines = 0;
+	uint i;
+
+	do {
+		CargoID cid;
+		uint32 cmask = EngInfo(u->engine_type)->refit_mask;
+		byte callbackmask = EngInfo(u->engine_type)->callbackmask;
+
+		/* Loop through all cargos in the refit mask */
+		for (cid = 0; cmask != 0 && num_lines < max_lines; cmask >>= 1, cid++) {
+			/* Skip cargo type if it's not listed */
+			if (!HASBIT(cmask, 0)) continue;
+
+			/* Check the vehicle's callback mask for cargo suffixes */
+			if (HASBIT(callbackmask, CBM_CARGO_SUFFIX)) {
+				/* Make a note of the original cargo type. It has to be
+				 * changed to test the cargo & subtype... */
+				CargoID temp_cargo = u->cargo_type;
+				byte temp_subtype  = u->cargo_subtype;
+				byte refit_cyc;
+
+				u->cargo_type = cid;
+
+				for (refit_cyc = 0; refit_cyc < 16 && num_lines < max_lines; refit_cyc++) {
+					bool duplicate = false;
+					uint16 callback;
+
+					u->cargo_subtype = refit_cyc;
+					callback = GetVehicleCallback(CBID_VEHICLE_CARGO_SUFFIX, 0, 0, u->engine_type, u);
+
+					if (callback == 0xFF) callback = CALLBACK_FAILED;
+					if (refit_cyc != 0 && callback == CALLBACK_FAILED) break;
+
+					/* Check if this cargo and subtype combination are listed */
+					for (i = 0; i < num_lines && !duplicate; i++) {
+						if (refit[i].cargo == cid && refit[i].value == callback) duplicate = true;
+					}
+
+					if (duplicate) continue;
+
+					refit[num_lines].cargo   = cid;
+					refit[num_lines].subtype = refit_cyc;
+					refit[num_lines].value   = callback;
+					refit[num_lines].engine  = u->engine_type;
+					num_lines++;
+
+					if (callback == CALLBACK_FAILED) break;
+				}
+
+				/* Reset the vehicle's cargo type */
+				u->cargo_type    = temp_cargo;
+				u->cargo_subtype = temp_subtype;
+			} else {
+				/* No cargo suffix callback -- use no subtype */
+				bool duplicate = false;
+
+				for (i = 0; i < num_lines && !duplicate; i++) {
+					if (refit[i].cargo == cid && refit[i].value == CALLBACK_FAILED) duplicate = true;
+				}
+
+				if (!duplicate) {
+					refit[num_lines].cargo   = cid;
+					refit[num_lines].subtype = 0;
+					refit[num_lines].value   = CALLBACK_FAILED;
+					refit[num_lines].engine  = INVALID_ENGINE;
+					num_lines++;
+				}
+			}
+		}
+		u = u->next;
+	} while (v->type == VEH_Train && u != NULL && num_lines < max_lines);
+
+	list->num_lines = num_lines;
+	list->items = refit;
+
+	return list;
+}
+
 /** Draw the list of available refit options for a consist.
  * Draw the list and highlight the selected refit option (if any)
  * @param *v first vehicle in consist to get the refit-options of
  * @param sel selected refit cargo-type in the window
  * @return the cargo type that is hightlighted, CT_INVALID if none
  */
-static CargoID DrawVehicleRefitWindow(const Vehicle *v, int sel)
+static CargoID DrawVehicleRefitWindow(const RefitList *list, int sel, uint pos, uint rows, uint delta)
 {
-	uint32 cmask = 0;
-	CargoID cid, cargo = CT_INVALID;
-	int y = 25;
-	const Vehicle* u = v;
+	CargoID cargo = CT_INVALID;
+	RefitOption *refit = list->items;
+	uint num_lines = list->num_lines;
+	uint y = 31;
+	uint i;
 
-	/* Check if vehicle has custom refit or normal ones, and get its bitmasked value.
-	 * If its a train, 'or' this with the refit masks of the wagons. Now just 'and'
-	 * it with the bitmask of available cargo on the current landscape, and
-	 * where the bits are set: those are available */
-	do {
-		cmask |= EngInfo(u->engine_type)->refit_mask;
-		u = u->next;
-	} while (v->type == VEH_Train && u != NULL);
-
-	/* Check which cargo has been selected from the refit window and draw list */
-	for (cid = 0; cmask != 0; cmask >>= 1, cid++) {
-		if (HASBIT(cmask, 0)) {
-			// vehicle is refittable to this cargo
-			byte colour = 16;
-			if (sel == 0) {
-				cargo = _local_cargo_id_ctype[cid];
-				colour = 12;
-			}
-
-			sel--;
-			DrawString(6, y, _cargoc.names_s[_local_cargo_id_ctype[cid]], colour);
-			y += 10;
+	/* Draw the list, and find the selected cargo (by its position in list) */
+	for (i = pos; i < num_lines && i < pos + rows; i++) {
+		byte colour = 16;
+		if (sel == 0) {
+			cargo = _local_cargo_id_ctype[refit[i].cargo];
+			colour = 12;
 		}
+
+		if (i >= pos && y < rows * 10) {
+			/* Draw the cargo name */
+			int last_x = DrawString(2, y, _cargoc.names_s[_local_cargo_id_ctype[refit[i].cargo]], colour);
+
+			/* If the callback succeeded, draw the cargo suffix */
+			if (refit[i].value != CALLBACK_FAILED) {
+				DrawString(last_x + 1, y, GetGRFStringID(GetEngineGRFID(refit[i].engine), 0xD000 + refit[i].value), colour);
+			}
+			y += delta;
+		}
+
+		sel--;
 	}
 
 	return cargo;
@@ -228,14 +322,26 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_PAINT: {
-			const Vehicle *v = GetVehicle(w->window_number);
+			Vehicle *v = GetVehicle(w->window_number);
+
+			if (v->type == VEH_Train) {
+				uint length = CountVehiclesInChain(v);
+
+				if (length != WP(w, refit_d).length) {
+					/* Consist length has changed, so rebuild the refit list */
+					free(WP(w, refit_d).list->items);
+					free(WP(w, refit_d).list);
+					WP(w, refit_d).list = BuildRefitList(v);
+					WP(w, refit_d).length = length;
+					SetVScrollCount(w, WP(w, refit_d).list->num_lines);
+				}
+			}
 
 			SetDParam(0, v->string_id);
 			SetDParam(1, v->unitnumber);
 			DrawWindowWidgets(w);
 
-
-			WP(w,refit_d).cargo = DrawVehicleRefitWindow(v, WP(w, refit_d).sel);
+			WP(w,refit_d).cargo = DrawVehicleRefitWindow(WP(w, refit_d).list, WP(w, refit_d).sel, w->vscroll.pos, w->vscroll.cap, w->resize.step_height);
 
 			if (WP(w,refit_d).cargo != CT_INVALID) {
 				int32 cost = 0;
@@ -251,21 +357,21 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 					SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo]);
 					SetDParam(1, _returned_refit_capacity);
 					SetDParam(2, cost);
-					DrawString(1, 137, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
+					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);
 				}
 			}
 		}	break;
 
 		case WE_CLICK:
 			switch (e->we.click.widget) {
-				case 2: { // listbox
-					int y = e->we.click.pt.y - 25;
+				case 3: { // listbox
+					int y = e->we.click.pt.y - w->widget[3].top;
 					if (y >= 0) {
-						WP(w,refit_d).sel = y / 10;
+						WP(w,refit_d).sel = y / (int)w->resize.step_height;
 						SetWindowDirty(w);
 					}
 				} break;
-				case 4: // refit button
+				case 6: // refit button
 					if (WP(w,refit_d).cargo != CT_INVALID) {
 						const Vehicle *v = GetVehicle(w->window_number);
 						int command = 0;
@@ -281,6 +387,16 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 					break;
 			}
 			break;
+
+		case WE_RESIZE:
+			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
+			w->widget[3].data = (w->vscroll.cap << 8) + 1;
+			break;
+
+		case WE_DESTROY:
+			free(WP(w, refit_d).list->items);
+			free(WP(w, refit_d).list);
+			break;
 	}
 }
 
@@ -288,17 +404,19 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 static const Widget _vehicle_refit_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
 	{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,   135, 0x0,                                 STR_983D_SELECT_TYPE_OF_CARGO_FOR},
-	{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,   136,   157, 0x0,                                 STR_NULL},
-	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   239,   158,   169, 0x0,                                 STR_NULL},
-	{      WWT_LABEL,   RESIZE_NONE,     0,     0,   239,    13,    26, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_NULL},
+	{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_983D_SELECT_TYPE_OF_CARGO_FOR},
+	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   227,    28,   139, 0x801,                               STR_983D_SELECT_TYPE_OF_CARGO_FOR},
+	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   228,   239,    28,   139, 0x0,                                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
+	{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   239,   140,   161, 0x0,                                 STR_NULL},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   227,   162,   173, 0x0,                                 STR_NULL},
+	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   228,   239,   162,   173, 0x0,                                 STR_RESIZE_BUTTON},
 	{   WIDGETS_END},
 };
 
 static const WindowDesc _vehicle_refit_desc = {
-	-1,-1, 240, 170,
+	-1,-1, 240, 174,
 	WC_VEHICLE_REFIT,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_vehicle_refit_widgets,
 	VehicleRefitWndProc,
 };
@@ -316,24 +434,29 @@ void ShowVehicleRefitWindow(const Vehicle *v)
 	w = AllocateWindowDesc(&_vehicle_refit_desc);
 	w->window_number = v->index;
 	w->caption_color = v->owner;
-	WP(w,refit_d).sel = -1;
+	w->vscroll.cap = 8;
+	w->resize.step_height = 14;
+	WP(w, refit_d).sel  = -1;
+	WP(w, refit_d).list = BuildRefitList(v);
+	if (v->type == VEH_Train) WP(w, refit_d).length = CountVehiclesInChain(v);
+	SetVScrollCount(w, WP(w, refit_d).list->num_lines);
 
 	switch (v->type) {
 		case VEH_Train:
-			w->widget[4].data     = STR_RAIL_REFIT_VEHICLE;
-			w->widget[4].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
+			w->widget[6].data     = STR_RAIL_REFIT_VEHICLE;
+			w->widget[6].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
 			break;
 		case VEH_Road:
-			w->widget[4].data     = STR_REFIT_ROAD_VEHICLE;
-			w->widget[4].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
+			w->widget[6].data     = STR_REFIT_ROAD_VEHICLE;
+			w->widget[6].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
 			break;
 		case VEH_Ship:
-			w->widget[4].data     = STR_983C_REFIT_SHIP;
-			w->widget[4].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
+			w->widget[6].data     = STR_983C_REFIT_SHIP;
+			w->widget[6].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
 			break;
 		case VEH_Aircraft:
-			w->widget[4].data     = STR_A03D_REFIT_AIRCRAFT;
-			w->widget[4].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
+			w->widget[6].data     = STR_A03D_REFIT_AIRCRAFT;
+			w->widget[6].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
 			break;
 		default: NOT_REACHED();
 	}

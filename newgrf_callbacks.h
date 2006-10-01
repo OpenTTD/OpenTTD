@@ -33,6 +33,8 @@ enum CallbackID {
 
 	CBID_TRAIN_ARTIC_ENGINE         = 0x16,
 
+	CBID_VEHICLE_CARGO_SUFFIX       = 0x19,
+
 	CBID_TRAIN_ALLOW_WAGON_ATTACH   = 0x1D,
 
 	/* This callback is called from vehicle purchase lists. It returns a value to be

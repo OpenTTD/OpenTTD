@@ -431,6 +431,8 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(facesel_d));
 typedef struct {
 	int sel;
 	CargoID cargo;
+	struct RefitList *list;
+	uint length;
 } refit_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(refit_d));
 
