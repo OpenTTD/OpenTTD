@@ -246,8 +246,6 @@ static RefitList *BuildRefitList(const Vehicle *v)
 					refit[num_lines].value   = callback;
 					refit[num_lines].engine  = u->engine_type;
 					num_lines++;
-
-					if (callback == CALLBACK_FAILED) break;
 				}
 
 				/* Reset the vehicle's cargo type */
