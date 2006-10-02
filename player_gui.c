@@ -654,7 +654,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
 			AssignWidgetToWindow(w, (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets);
 
-			if (!_networking) SETBIT(w->hidden_state, 11); // hide company-password widget
+			SetWindowWidgetHiddenState(w, 11, !_networking); // Hide company-password widget
 		} else {
 			if (p->location_of_house == 0) SETBIT(dis, 7);
 

@@ -71,7 +71,7 @@ static const byte widget_moves[] = {
 
 /* Widget array for all depot windows.
  * If a widget is needed in some windows only (like train specific), add it for all windows
- * and use w->hidden_state in ShowDepotWindow() to remove it in the windows where it should not be
+ * and use HideWindowWidget in ShowDepotWindow() to remove it in the windows where it should not be
  * Keep the widget numbers in sync with the enum or really bad stuff will happen!!! */
 
 /* When adding widgets, place them as you would place them for the ship depot and define how you want it to move in widget_moves[]
@@ -968,8 +968,8 @@ void ShowDepotWindow(TileIndex tile, byte type)
 			+ (type == VEH_Train ? 1 : w->hscroll.cap); // number of boxes in each row. Trains always have just one
 
 		if (type != VEH_Train) {
-			SETBIT(w->hidden_state, DEPOT_WIDGET_H_SCROLL);
-			SETBIT(w->hidden_state, DEPOT_WIDGET_SELL_CHAIN);
+			HideWindowWidget(w, DEPOT_WIDGET_H_SCROLL);
+			HideWindowWidget(w, DEPOT_WIDGET_SELL_CHAIN);
 		}
 
 		/* Move the widgets to their right locations */

@@ -1393,12 +1393,12 @@ static void CreateVehicleListWindow(Window *w)
 	/* Hide the widgets that we will not use in this window
 	 * Some windows contains actions only fit for the owner */
 	if (player == _local_player) {
-		SETBIT(w->hidden_state, VLW_WIDGET_OTHER_PLAYER_FILLER);
+		HideWindowWidget(w, VLW_WIDGET_OTHER_PLAYER_FILLER);
 	} else {
-		SETBIT(w->hidden_state, VLW_WIDGET_SEND_TO_DEPOT);
-		SETBIT(w->hidden_state, VLW_WIDGET_AUTOREPLACE);
-		SETBIT(w->hidden_state, VLW_WIDGET_STOP_ALL);
-		SETBIT(w->hidden_state, VLW_WIDGET_START_ALL);
+		HideWindowWidget(w, VLW_WIDGET_SEND_TO_DEPOT);
+		HideWindowWidget(w, VLW_WIDGET_AUTOREPLACE);
+		HideWindowWidget(w, VLW_WIDGET_STOP_ALL);
+		HideWindowWidget(w, VLW_WIDGET_START_ALL);
 	}
 
 	/* Set up the window widgets */

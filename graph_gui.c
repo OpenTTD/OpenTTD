@@ -1010,7 +1010,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 		case WE_CREATE: {
 			int i;
 			Player *p2;
-			w->hidden_state = 0;
+
 			w->disabled_state = 0;
 
 			// Hide the player who are not active

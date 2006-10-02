@@ -337,13 +337,19 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
 		break;
 
-	case WE_MOUSELOOP:
-		{
+	case WE_MOUSELOOP: {
 			const Vehicle *v = GetVehicle(w->window_number);
-			uint32 h = IsRoadVehInDepotStopped(v) ? 1 << 7 | 1 << 8 : 1 << 11 | 1 << 12;
+			bool rv_stopped = IsRoadVehInDepotStopped(v);
 
-			if (h != w->hidden_state) {
-				w->hidden_state = h;
+			/* Widget 7 (send to depot) must be hidden if the truck/bus is already stopped in depot.
+			 * Widget 11 (clone) should then be shown, since cloning is allowed only while in depot and stopped.
+			 * This sytem allows to have two buttons, on top of each other.
+			 * The same system applies to widget 8 and 12, force turn around and refit. */
+			if (rv_stopped != IsWindowWidgetHidden(w, 7) || rv_stopped == IsWindowWidgetHidden(w, 11)) {
+				SetWindowWidgetHiddenState(w,  7, rv_stopped);  // send to depot
+				SetWindowWidgetHiddenState(w,  8, rv_stopped);  // force turn around
+				SetWindowWidgetHiddenState(w, 11, !rv_stopped); // clone
+				SetWindowWidgetHiddenState(w, 12, !rv_stopped); // refit
 				SetWindowDirty(w);
 			}
 		}

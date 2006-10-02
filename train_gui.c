@@ -564,12 +564,17 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_MOUSELOOP: {
 		const Vehicle *v = GetVehicle(w->window_number);
-		uint32 h;
+		bool train_stopped = CheckTrainStoppedInDepot(v)  >= 0;
 
-		assert(v->type == VEH_Train);
-		h = CheckTrainStoppedInDepot(v) >= 0 ? (1 << 9)| (1 << 7) : (1 << 12) | (1 << 13);
-		if (h != w->hidden_state) {
-			w->hidden_state = h;
+		/* Widget 7 (send to depot) must be hidden if the train is already stopped in hangar.
+		 * Widget 13 (clone) should then be shown, since cloning is allowed only while in depot and stopped.
+		 * This sytem allows to have two buttons, on top of each other.
+		 * The same system applies to widget 9 and 12, reverse direction and refit*/
+		if (train_stopped != IsWindowWidgetHidden(w, 7) || train_stopped == IsWindowWidgetHidden(w, 13)) {
+			SetWindowWidgetHiddenState(w,  7, train_stopped);  // send to depot
+			SetWindowWidgetHiddenState(w,  9, train_stopped);  // reverse direction
+			SetWindowWidgetHiddenState(w, 12, !train_stopped); // refit
+			SetWindowWidgetHiddenState(w, 13, !train_stopped); // clone
 			SetWindowDirty(w);
 		}
 		break;

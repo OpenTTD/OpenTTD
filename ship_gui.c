@@ -477,13 +477,16 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 			DeleteWindowById(WC_VEHICLE_DETAILS, w->window_number);
 			break;
 
-		case WE_MOUSELOOP:
-		{
+		case WE_MOUSELOOP: {
 			const Vehicle *v = GetVehicle(w->window_number);
-			uint32 h = IsShipInDepotStopped(v) ? 1 << 7 : 1 << 11;
+			bool ship_stopped = IsShipInDepotStopped(v);
 
-			if (h != w->hidden_state) {
-				w->hidden_state = h;
+			/* Widget 7 (send to depot) must be hidden if the ship is already stopped in depot.
+			 * Widget 11 (clone) should then be shown, since cloning is allowed only while in depot and stopped.
+			 * This sytem allows to have two buttons, on top of each otherother*/
+			if (ship_stopped != IsWindowWidgetHidden(w, 7) || ship_stopped == IsWindowWidgetHidden(w, 11)) {
+				SetWindowWidgetHiddenState(w,  7, ship_stopped);  // send to depot
+				SetWindowWidgetHiddenState(w, 11, !ship_stopped); // clone
 				SetWindowDirty(w);
 			}
 		}

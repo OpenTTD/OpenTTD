@@ -552,10 +552,14 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 
 	case WE_MOUSELOOP: {
 		const Vehicle *v = GetVehicle(w->window_number);
-		uint32 h = IsAircraftInHangarStopped(v) ? 1 << 7 : 1 << 11;
+		bool plane_stopped = IsAircraftInHangarStopped(v);
 
-		if (h != w->hidden_state) {
-			w->hidden_state = h;
+		/* Widget 7 (send to hangar) must be hidden if the plane is already stopped in hangar.
+		 * Widget 11 (clone) should then be shown, since cloning is allowed only while in hangar and stopped.
+		 * This sytem allows to have two buttons, on top of each other*/
+		if (plane_stopped != IsWindowWidgetHidden(w, 7) || plane_stopped == IsWindowWidgetHidden(w, 11)) {
+			SetWindowWidgetHiddenState(w,  7, plane_stopped);  // send to hangar
+			SetWindowWidgetHiddenState(w, 11, !plane_stopped); // clone
 			SetWindowDirty(w);
 		}
 	} break;
