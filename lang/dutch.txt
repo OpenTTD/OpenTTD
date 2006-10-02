@@ -2899,11 +2899,14 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon all
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depots
 STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depots
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depots
 STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Stuur naar {SKIP}{SKIP}{SKIP}{STRING}
 
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Stuur alle treinen in de lijst naar depots CTRL+Klik voor alleen onderhoud
 STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Stuur alle weg voertuigen in de lijst naar de hangars. CTRL+Klik zorgt alleen voor onderhoudsbeurt
 STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Stuur alle schepen in de lijst naar de hangars. CTRL+Klik zorgt alleen voor onderhoudsbeurt
 STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Stuur alle vliegtuigen in de lijst naar de hangars. CTRL+Klik zorgt alleen voor onderhoudsbeurt

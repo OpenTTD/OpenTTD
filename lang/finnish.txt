@@ -550,6 +550,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Valitse 
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Tyhjää nykyinen soittolista (vain Oma1 tai Oma2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Tallenna musiikkiasetukset
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Napsauta musiikkiraitaa lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikkaa kappaletta poistaaksesi sen soittolistalta. (Vain Oma1 ja Oma2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Sekoittaminen päälle/pois
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Näytä musiikkiraitojen valintaikkuna
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Napsauta palvelussa keskittääksesi näkymän teollisuuteen/kaupunkiin.
@@ -902,6 +903,7 @@ STR_CURR_NOK                                                    :Norjan kruunu (
 STR_CURR_PLN                                                    :Puolan zloty (PLN)
 STR_CURR_ROL                                                    :Romanian leu (ROL)
 STR_CURR_RUR                                                    :Venjän rupla (RUR)
+STR_CURR_SIT                                                    :Slovenian tolar (SIT)
 STR_CURR_SEK                                                    :Ruotsin kruunu (SEK)
 
 STR_CURR_CUSTOM                                                 :Oma...
@@ -1036,11 +1038,31 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Pienin 
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Virheilmoituksen kesto: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Näytä kaupungin asukasluku kaupungin nimessä: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Näkymättömät puut (näkymättömillä rakennuksilla): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Maasto generaattori{ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Tavallinen
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Suurin etäisyys reunasta öljyjalostamolle{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Lumirajan korkeus: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Maaston epätasaisuus (Vain TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Hyvin tasainen
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Tasainen
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Epätasainen
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Hyvin epätasainen
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Puiden sijainti algoritmi: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ei mitään.
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Tavallinen
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Kehitetty
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Korkeuskartan pyöritys:{ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastapäivään
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivään
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurin aseman levittäytyminen: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Käänteinen vierityssuunta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ei yhtään
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Oma yhtiö
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Kaikki yhtiöt
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Junia/pelaajaa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Ajoneuvoja/pelaajaa: {ORANGE}{STRING}
@@ -1431,6 +1453,13 @@ STR_NETWORK_SEND                                                :{BLACK}Lähetä
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Kartan x-koko: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Kartan y-koko: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+
+STR_BMPMAP_ERROR                                                :{WHITE}Ei voi luda maastoa BMP:sta
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}Voitko muuttaa tiedostomuotoa?
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kustannus: {CURRENCY}
 STR_0801_COST                                                   :{RED}Kustannus: {CURRENCY}
@@ -1754,6 +1783,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Tallenna
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Valitse uusi pelityyppi
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Valitse skenaario (vihreä), alkuasetettu peli (sininen) tai satunnainen peli.
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Luo uusi satunnainen peli
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Lataa korkeuskartta
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} on tiellä.
@@ -2124,6 +2154,8 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}{NBSP}%:n omistus: {COMPANY}{}   {COMMA}{NBSP}%:n omistus {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Yhtiön {COMPANY} on ottanut haltuun {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
+
+
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (höyry)
@@ -2809,6 +2841,24 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Näytä ka
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Näytä kaikki lentokoneet, joilla on asema aikataulussaan.
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näytä kaikki laivat, joilla on asema aikataulussaan.
 
+
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Talli
+
+
+
+### depot strings
+
+STR_ARE_YOU_SURE                                                :{BLACK}Oletko varma?
+
+
+
+
+
+
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Korvaa liikennevälineitä
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Aloita ajoneuvojen korvaaminen
@@ -2830,6 +2880,9 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Veturi e
 
 STR_ENGINES                                                     :Veturit
 STR_WAGONS                                                      :Vaunut
+
+
+
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä
@@ -2857,6 +2910,11 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Paino: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteetti: {GOLD}{COMMA} matkustajaa, {COMMA} säkkiä postia
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoroidut vaunut: {GOLD}+{POWER}{BLACK} Paino: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_CLEARING_TILES                                              :{BLACK}Louhikko generaattori
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pieni

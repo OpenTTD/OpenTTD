@@ -608,7 +608,7 @@ STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Utilitza
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Estàs segur de voler restablir el paisatge?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generació de Paisatges
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generació de Poblacions
-STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generació d'Indústries
+STR_0230_INDUSTRY_GENERATION                                    :{BLACK}Generació d'indústries
 STR_0231_ROAD_CONSTRUCTION                                      :{BLACK}Construcció de carreteres
 STR_0233_TOWN_GENERATION                                        :{WHITE}Generació de Poblacions
 STR_0234_NEW_TOWN                                               :{BLACK}Nova Població
@@ -624,7 +624,7 @@ STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Incremen
 STR_023C_EXPAND                                                 :{BLACK}Expandir
 STR_023D_RANDOM_TOWN                                            :{BLACK}Localitat Aleatòria
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construir població en un lloc aleatori
-STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generació d'Indústries
+STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Generació d'indústries
 STR_0240_COAL_MINE                                              :{BLACK}Mina de Carbó
 STR_0241_POWER_STATION                                          :{BLACK}Central Tèrmica
 STR_0242_SAWMILL                                                :{BLACK}Asserradora
@@ -789,15 +789,15 @@ STR_02DA_ON                                                     :{BLACK}Actiu
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Mostrar subvencions
 STR_02DD_SUBSIDIES                                              :Subvencions
 STR_02DE_MAP_OF_WORLD                                           :Mapa del món
-STR_EXTRA_VIEW_PORT                                             :Extra viewport
+STR_EXTRA_VIEW_PORT                                             :Vista extra
 STR_SIGN_LIST                                                   :Llista de senyals
 STR_02DF_TOWN_DIRECTORY                                         :Directori de Poblacions
 STR_TOWN_POPULATION                                             :{BLACK}Població mundial: {COMMA}
-STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Viewport {COMMA}
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar a viewport
-STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar l'ubicació de la vista global a aquest viewport
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Enganxar des de viewport
-STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Enganxar l'ubicació d'aquest viewport a la vista global
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Vista {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Copiar a la vista
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Copiar l'ubicació de la vista global a aquesta vista
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Anar a la vista
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Anar a l'ubicació d'aquesta vista a la vista global
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Unitats de moneda
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -840,7 +840,7 @@ STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Seleccio
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Aportar a la construcció d'una nova indústria
 
 ############ range for menu	starts
-STR_INDUSTRY_DIR                                                :Directori d'Indústries
+STR_INDUSTRY_DIR                                                :Directori d'indústries
 STR_0313_FUND_NEW_INDUSTRY                                      :Fundar nova indústria
 ############ range ends here
 

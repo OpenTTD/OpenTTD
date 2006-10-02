@@ -911,6 +911,7 @@ STR_CURR_ROL                                                    :Rumænske Lei (R
 STR_CURR_RUR                                                    :Russiske Rubel (RUR)
 STR_CURR_SIT                                                    :Slovenske Tolare (SIT)
 STR_CURR_SEK                                                    :Svenske Kroner (SEK)
+STR_CURR_YTL                                                    :Tyrkiske lira (TRY)
 
 STR_CURR_CUSTOM                                                 :Brugerdefineret...
 
@@ -1070,6 +1071,7 @@ STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automat
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landskabs værktøjsbaren til skinne/vej/vand/lufthavn værktøjsbaren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Når der scrolles med musen, flyt viewet i den modsatte retning: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis firmafarver: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eget firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle firmaer
 
@@ -2168,10 +2170,14 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} er blevet overtaget af {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Dette selskab sælger ikke aktier endnu...
 
+STR_LIVERY_DEFAULT                                              :Standardfarver
 STR_LIVERY_STEAM                                                :Damplokomotiv
 STR_LIVERY_DIESEL                                               :Diesellokomotiv
 STR_LIVERY_ELECTRIC                                             :Elektrisk lokomotiv
 STR_LIVERY_MONORAIL                                             :Monorail-lokomotiv
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagervogn (damp)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagervogn (diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagervogn (elektrisk)
 STR_LIVERY_FREIGHT_WAGON                                        :Godsvogn
 STR_LIVERY_BUS                                                  :Bus
 STR_LIVERY_TRUCK                                                :Lastbil
@@ -2181,8 +2187,13 @@ STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Lille fly
 STR_LIVERY_LARGE_PLANE                                          :Stort fly
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Vis generelle farveskemaer
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Vis farveskemaer for tog
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Vis farveskemaer for køretøjer
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Vis farveskemaer for skibe
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Vis farveskemaer for fly
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Vælg den primære farve for det valgte farveskema
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Vælg den sekundære farve for det valgte farveskema
 STR_LIVERY_PANEL_TIP                                            :{BLACK}Vælg et farveskema, som skal ændres, eller flere farveskemaer vha. CTRL+klik. Klik på boksen for at slå brug af farveskemaet til/fra
 
 ##id 0x8000
@@ -2882,10 +2893,56 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordre af {COMMA} transportmiddel{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, som har den samme rute
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depoter
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depoter
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depoter
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarer
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Send til {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Send alle toge i listen til depot. CTRL+klik for kun eftersyn
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Send alle køretøjer i listen til depot. CTRL+klik for kun eftersyn
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Send alle skibe i listen til depot. CTRL+klik for kun eftersyn
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Send alle fly i listen til hangar. CTRL+klik for kun eftersyn
+
+### depot strings
 
 STR_SELL                                                        :{BLACK}Sælg
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du er ved at sælge alle køretøjer i depotet
 STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bekræft at du ønsker at sælge alle toge i depotet
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bekræft at du ønsker at sælge alle køretøjer i depotet
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bekræft at du ønsker at sælge alle skibe i depotet
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bekræft at du ønsker at sælge alle fly i hangaren
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Sælg ikke togene i depotet
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Sælg ikke køretøjerne i depotet
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Sælg ikke skibene i depotet
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Sælg ikke flyene i hangaren
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sælg alle toge i depotet
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sælg alle køretøjer i depotet
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sælg alle skibe i depotet
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Sælg alle fly i hangaren
+
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Få vist en liste over alle toge med dette depot i deres ordreliste
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Få vist en liste over alle køretøjer med dette depot i deres ordreliste
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Få vist en liste over alle skibe med dette depot i deres ordreliste
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Få vist en liste over alle fly med en hangar ved denne lufthavn i deres ordreliste
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Udskift automatisk all toge i depotet
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Udskift automatisk alle køretøjer i depotet
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Udskift automatisk alle skibe i depotet
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Udskift automatisk alle fly i hangaren
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tog{P "" e}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Køretøj{P "" er}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Skib{P "" e}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Fly
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Udskift Køretøjer
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Udskift {STRING}
@@ -2909,6 +2966,18 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Køretøje
 STR_ENGINES                                                     :Lokomotiver
 STR_WAGONS                                                      :Vogne
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klik for at stoppe alle toge i depotet
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klik for at stoppe alle køretøjer i depotet
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klik for at stoppe alle skibe i depotet
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klik for at stoppe alle fly i hangaren
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klik for at starte alle toge i depotet
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klik for at starte alle køretøjer i depotet
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klik for at starte alle skibe i depotet
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klik for at starte alle fly i hangaren
+
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klik for at stoppe alle køretøjer i listen
+STR_MASS_START_LIST_TIP                                         :{BLACK}Klik for at starte alle køretøjer i listen
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste of skilte - {COMMA} Skilte

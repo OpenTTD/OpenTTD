@@ -884,6 +884,7 @@ STR_TOWNNAME_SWISS                                              :Швейцар�
 STR_TOWNNAME_DANISH                                             :Датські
 STR_TOWNNAME_TURKISH                                            :Турецький
 STR_TOWNNAME_ITALIAN                                            :Італійські
+STR_TOWNNAME_CATALAN                                            :Каталанські
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Фунт
@@ -908,7 +909,9 @@ STR_CURR_NOK                                                    :Норвежс�
 STR_CURR_PLN                                                    :Польський злотий
 STR_CURR_ROL                                                    :Румунський лей
 STR_CURR_RUR                                                    :Російський рубль
+STR_CURR_SIT                                                    :Словенський Талер (SIT)
 STR_CURR_SEK                                                    :Шведська крона
+STR_CURR_YTL                                                    :Турецька ліра (YTL)
 
 STR_CURR_CUSTOM                                                 :Вибрана...
 
@@ -1049,11 +1052,16 @@ STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубий
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Дуже грубий
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Покращений
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Проти годинниковї
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :За годинниковою
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. довжина станції: {ORANGE}{STRING} {RED}Велике значення гальмує гру
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматичний техогляд гелікоптерів на площадках: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Включити меню рельєфу до меню будування: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Протилежний напрямок прокрутки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Жодна
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Моя компанія
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Всі компанії
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. поїздів у гравця: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. авто у гравця: {ORANGE}{STRING}
@@ -2446,6 +2454,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонту�
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Прямує до {TOWN} депо
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Прямує до {TOWN} депо, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Техогляд в {TOWN} депо
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Техогляд в {TOWN} депо, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Невірний наказ)
 
@@ -2579,6 +2589,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Немо
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Авто {COMMA} чекає в депо
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Прямує до {TOWN} депо
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} депо, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Техогляд в  {TOWN} дорожне депо
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Техогляд в  {TOWN} дорожне депо, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Неможливо направити авто в депо...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Неможливо знайти місцеве депо
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Авто - натисніть на авто для інформації
@@ -2649,6 +2661,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Немо
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Неможливо знайти місцеве депо
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Прямує до {TOWN} депо
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Прямує до {TOWN} депо, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Техогляд в {TOWN} корабельне депо
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Техогляд в {TOWN} корабельне депо, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Корабель {COMMA} чекає в депо
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Будувати корабель
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Будувати корабельне депо
@@ -2714,6 +2728,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Неможливо направити літак до ангару...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Литить до {STATION} ангару
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Летить до {STATION} ангару, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Техогляд в {STATION} депо
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Техогляд в {STATION} ангарі, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Літак {COMMA} чекає в ангарі
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Літак на шляху
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Неможливо зупинити літак...
@@ -2848,7 +2864,9 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Пока
 STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Депо
 STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Депо
 STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Депо
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Ангари
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Відправити до {SKIP}{SKIP}{SKIP}{STRING}
 
 STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Відправити всі поїзди зі списку до депо. CTRL+клік лише техогляд
 STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Відправити всі авто зі списку до депо. CTRL+клік лише техогляд
@@ -2858,9 +2876,18 @@ STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Відп
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Продати
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Ви збираєтеся продати всі авто з депо
+STR_ARE_YOU_SURE                                                :{BLACK}Ви впевнені?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Підтвердіть, що ви хочете продати всі поїди з депо
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Підтвердіть, що Ви хочете продати всі авто з депо
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Підтвердіть, що Ви хочете продати всі кораблі з депо
 STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Підтвердіть, що хочете продати всі літаки з ангару
 
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Не продавати всі поїзди з депо
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Не продавати всі авто з депо
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Не продавати всі кораблі з депо
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Не продавати всі літаки з ангару
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продати всі поїзди з депо
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продати всі автомобілі з депо
@@ -2873,6 +2900,10 @@ STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Онов
 STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Оновити всі кораблі в депо
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Оновити всі літаки в депо
 
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Поїзд{P "" и ів}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Авто {P "" "" ""}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Кораб{P ель лі лів}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Аеропорт
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Оновлення
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Оновити {STRING}
@@ -2938,19 +2969,28 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Поту
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Генерувати
 STR_RANDOM_HELP                                                 :{BLACK}Змінити початкове значення для генератора
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Створеня світу
 STR_RANDOM_SEED                                                 :{BLACK}Початкове значення:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Клік для вводу значення
+STR_TREE_PLACER                                                 :{BLACK}Насадження дерев:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Рівень моря:
 STR_DATE                                                        :{BLACK}Дата:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}К-ть міст:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}К-ть промисловостей:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Змінити рік початку гри
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Розмір: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Генерація світу...
+STR_GENERATION_ABORT                                            :{BLACK}Перервати
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Перервати генерацію світу
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Ви дійсно хочете перервати генерацію світу
 STR_PROGRESS                                                    :{WHITE}{NUM}% завершено
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Створеня світу
+STR_TREE_GENERATION                                             :{BLACK}Насадження дерев
 STR_PREPARING_GAME                                              :{BLACK}Генерується гра
 STR_SE_FLAT_WORLD                                               :{WHITE}Рівнина
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Генерувати рівнину
