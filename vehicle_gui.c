@@ -432,34 +432,38 @@ void ShowVehicleRefitWindow(const Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
 
 	_alloc_wnd_parent_num = v->index;
-	w = AllocateWindowDesc(&_vehicle_refit_desc);
-	w->window_number = v->index;
-	w->caption_color = v->owner;
-	w->vscroll.cap = 8;
-	w->resize.step_height = 14;
-	WP(w, refit_d).sel  = -1;
-	WP(w, refit_d).list = BuildRefitList(v);
-	if (v->type == VEH_Train) WP(w, refit_d).length = CountVehiclesInChain(v);
-	SetVScrollCount(w, WP(w, refit_d).list->num_lines);
 
-	switch (v->type) {
-		case VEH_Train:
-			w->widget[6].data     = STR_RAIL_REFIT_VEHICLE;
-			w->widget[6].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
-			break;
-		case VEH_Road:
-			w->widget[6].data     = STR_REFIT_ROAD_VEHICLE;
-			w->widget[6].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
-			break;
-		case VEH_Ship:
-			w->widget[6].data     = STR_983C_REFIT_SHIP;
-			w->widget[6].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
-			break;
-		case VEH_Aircraft:
-			w->widget[6].data     = STR_A03D_REFIT_AIRCRAFT;
-			w->widget[6].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
-			break;
-		default: NOT_REACHED();
+	w = AllocateWindowDesc(&_vehicle_refit_desc);
+
+	if (w != NULL) {
+		w->window_number = v->index;
+		w->caption_color = v->owner;
+		w->vscroll.cap = 8;
+		w->resize.step_height = 14;
+		WP(w, refit_d).sel  = -1;
+		WP(w, refit_d).list = BuildRefitList(v);
+		if (v->type == VEH_Train) WP(w, refit_d).length = CountVehiclesInChain(v);
+		SetVScrollCount(w, WP(w, refit_d).list->num_lines);
+
+		switch (v->type) {
+			case VEH_Train:
+				w->widget[6].data     = STR_RAIL_REFIT_VEHICLE;
+				w->widget[6].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
+				break;
+			case VEH_Road:
+				w->widget[6].data     = STR_REFIT_ROAD_VEHICLE;
+				w->widget[6].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
+				break;
+			case VEH_Ship:
+				w->widget[6].data     = STR_983C_REFIT_SHIP;
+				w->widget[6].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
+				break;
+			case VEH_Aircraft:
+				w->widget[6].data     = STR_A03D_REFIT_AIRCRAFT;
+				w->widget[6].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
+				break;
+			default: NOT_REACHED();
+		}
 	}
 }
 
