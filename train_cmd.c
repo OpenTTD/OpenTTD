@@ -1842,6 +1842,9 @@ int32 CmdRefitRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	_returned_refit_capacity = num;
 
+	/* Update the train's cached variables */
+	if (flags & DC_EXEC) TrainConsistChanged(GetVehicle(p1));
+
 	return cost;
 }
 
