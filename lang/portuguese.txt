@@ -2190,6 +2190,14 @@ STR_LIVERY_HELICOPTER                                           :Helicóptero
 STR_LIVERY_SMALL_PLANE                                          :Aeronave de Pequenas Dimensões
 STR_LIVERY_LARGE_PLANE                                          :Aeronave de Grandes Dimensões
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Exibir esquema de cores geral
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Exibir esquemas de cores dos combóios
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Exibir esquemas de cores dos veículos de estrada
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Exibir esquemas de cores dos navios
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Exibir esquema de cores da aeronave
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Seleccione a cor primária para o veículo seleccionado
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Seleccione a cor secundária para o esquema seleccionado
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Seleccione o esquema de cores a alterar (ou esquemas múltiplos utilzando a tecla CTRL e botão esquerdo do rato). Marque a caixa para comutar a utilização do esquema de cores
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
@@ -2888,6 +2896,42 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordens partilhadas de {COMMA} veículo{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra todos os veículos que seguem o mesmo trajecto
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depósitos
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depósitos
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depósitos
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar para {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Enviar todos os combóios na lista para os depósitos. CTRL+botão esquerdo do rato só despoletará manutenção
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Enviar todos os veículos na lista para os depósitos. CTRL+botão esquerdo do rato só despoletará manutenção
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Enviar todos os navios na lista para os depósitos. CTRL+botão esquerdo do rato só despoletará manutenção
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Enviar todas as aeronaves na lista para os hangares. CTRL+botão esquerdo do rato só despoletará manutenção
+
+### depot strings
+
+STR_SELL                                                        :{BLACK}Vender
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Está prestes a vender todos os veículos no depósito
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirme que deseja vender todos os combóios no depósito
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirme que deseja vender todos os veículos de estrada no depósito
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirme que deseja vender todos os navios no depósito
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Não vender os combóios no depósito
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Não vender os veículos de estrada no depósito
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Não vender os navios no depósito
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Não vender as aeronaves no hangar
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os combóios no depósito
+
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter uma lista de todos os combóios em cujas ordens conste este depósito
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obter uma lista de todos os veículos em cujas ordens conste este depósito
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obter uma lista de todos os navios em cujas ordens conste este depósito
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obter uma lista de todas as aeronaves em cujas ordens conste um hangar deste aeroporto
+
+
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
@@ -2911,6 +2955,18 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Locomoti
 STR_ENGINES                                                     :Locomotivas
 STR_WAGONS                                                      :Vagões
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os combóios no depósito
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os veículos no depósito
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os navios no depósito
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pressione botão esquerdo do rato para imobilizar todas as aeronaves no hangar
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Pressione botão esquerdo do rato para iniciar todos os combóios no depósito
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos de estrada no depósito
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Pressione botão esquerdo do rato para iniciar todos os navios no depósito
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Pressione botão esquerdo do rato para iniciar todas as aeronaves no hangar
+
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Pressione botão esquerdo do rato para imobilizar todos os veículos na lista
+STR_MASS_START_LIST_TIP                                         :{BLACK}Pressione botão esquerdo do rato para iniciar todos os veículos na lista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
