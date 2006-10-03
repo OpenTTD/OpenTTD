@@ -57,6 +57,9 @@ Order UnpackOldOrder(uint16 packed)
 		order.flags = 0;
 	}
 
+	order.refit_cargo   = CT_INVALID;
+	order.refit_subtype = 0;
+
 	return order;
 }
 
@@ -73,6 +76,8 @@ static Order UnpackVersion4Order(uint16 packed)
 	order.dest  = GB(packed, 8, 8);
 	order.next  = NULL;
 	order.index = 0; // avoid compiler warning
+	order.refit_cargo   = CT_INVALID;
+	order.refit_subtype = 0;
 	return order;
 }
 

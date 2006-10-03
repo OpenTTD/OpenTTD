@@ -215,6 +215,8 @@ static Order GetOrderCmdFromTile(const Vehicle *v, TileIndex tile)
 	Order order;
 	order.next  = NULL;
 	order.index = 0;
+	order.refit_cargo   = CT_INVALID;
+	order.refit_subtype = 0;
 
 	// check depot first
 	if (_patches.gotodepot) {
