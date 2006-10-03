@@ -954,6 +954,9 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 			NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game unpaused (client connected)", NETWORK_SERVER_INDEX);
 		}
+
+		/* Execute script for, e.g. MOTD */
+		IConsoleCmdExec("exec scripts/on_server_connect.scr 0");
 	}
 
 	// The client received the frame, make note of it
