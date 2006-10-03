@@ -138,6 +138,7 @@ DEF_COMMAND(CmdBuildShip);
 DEF_COMMAND(CmdSendShipToDepot);
 DEF_COMMAND(CmdRefitShip);
 
+DEF_COMMAND(CmdOrderRefit);
 DEF_COMMAND(CmdCloneOrder);
 
 DEF_COMMAND(CmdClearArea);
@@ -162,7 +163,6 @@ DEF_COMMAND(CmdCloneVehicle);
 DEF_COMMAND(CmdMassStartStopVehicle);
 DEF_COMMAND(CmdDepotSellAllVehicles);
 DEF_COMMAND(CmdDepotMassAutoReplace);
-
 
 /* The master command table */
 static const Command _command_proc_table[] = {
@@ -282,8 +282,8 @@ static const Command _command_proc_table[] = {
 	{NULL,                                   0}, /*  95 */
 	{NULL,                                   0}, /*  96 */
 	{NULL,                                   0}, /*  97 */
-	{NULL,                                   0}, /*  98 */
 
+	{CmdOrderRefit,                          0}, /*  98 */
 	{CmdCloneOrder,                          0}, /*  99 */
 
 	{CmdClearArea,                           0}, /* 100 */

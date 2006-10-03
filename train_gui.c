@@ -543,7 +543,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 			ShowTrainDetailsWindow(v);
 			break;
 		case 12:
-			ShowVehicleRefitWindow(v);
+			ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);
 			break;
 		case 13:
 			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, NULL, CMD_CLONE_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));

@@ -373,15 +373,20 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 				case 6: // refit button
 					if (WP(w,refit_d).cargo != NULL) {
 						const Vehicle *v = GetVehicle(w->window_number);
-						int command = 0;
 
-						switch (v->type) {
-							case VEH_Train:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE);  break;
-							case VEH_Road:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_REFIT_ROAD_VEHICLE_CAN_T);  break;
-							case VEH_Ship:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
-							case VEH_Aircraft: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
+						if (WP(w, refit_d).order == INVALID_VEH_ORDER_ID) {
+							int command = 0;
+
+							switch (v->type) {
+								case VEH_Train:    command = CMD_REFIT_RAIL_VEHICLE | CMD_MSG(STR_RAIL_CAN_T_REFIT_VEHICLE);  break;
+								case VEH_Road:     command = CMD_REFIT_ROAD_VEH     | CMD_MSG(STR_REFIT_ROAD_VEHICLE_CAN_T);  break;
+								case VEH_Ship:     command = CMD_REFIT_SHIP         | CMD_MSG(STR_9841_CAN_T_REFIT_SHIP);     break;
+								case VEH_Aircraft: command = CMD_REFIT_AIRCRAFT     | CMD_MSG(STR_A042_CAN_T_REFIT_AIRCRAFT); break;
+							}
+							if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8, NULL, command)) DeleteWindow(w);
+						} else {
+							if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8 | WP(w, refit_d).order << 16, NULL, CMD_ORDER_REFIT)) DeleteWindow(w);
 						}
-						if (DoCommandP(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8, NULL, command)) DeleteWindow(w);
 					}
 					break;
 			}
@@ -423,7 +428,7 @@ static const WindowDesc _vehicle_refit_desc = {
 /** Show the refit window for a vehicle
 * @param *v The vehicle to show the refit window for
 */
-void ShowVehicleRefitWindow(const Vehicle *v)
+void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 {
 	Window *w;
 
@@ -432,6 +437,7 @@ void ShowVehicleRefitWindow(const Vehicle *v)
 	_alloc_wnd_parent_num = v->index;
 
 	w = AllocateWindowDesc(&_vehicle_refit_desc);
+	WP(w, refit_d).order = order;
 
 	if (w != NULL) {
 		w->window_number = v->index;

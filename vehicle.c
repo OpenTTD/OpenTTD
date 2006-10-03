@@ -2806,6 +2806,10 @@ const SaveLoad _common_veh_desc[] = {
 	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, flags), SLE_UINT8,  5, SL_MAX_VERSION),
 	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, dest),  SLE_UINT16, 5, SL_MAX_VERSION),
 
+	/* Refit in current order */
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, refit_cargo),    SLE_UINT8, 36, SL_MAX_VERSION),
+	SLE_CONDVARX(offsetof(Vehicle, current_order) + offsetof(Order, refit_subtype),  SLE_UINT8, 36, SL_MAX_VERSION),
+
 	    SLE_REF(Vehicle, orders,               REF_ORDER),
 
 	SLE_CONDVAR(Vehicle, age,                  SLE_FILE_U16 | SLE_VAR_I32,  0, 30),

@@ -9,7 +9,8 @@
 #include "pool.h"
 
 enum {
-	INVALID_ORDER = 0xFFFF,
+	INVALID_VEH_ORDER_ID = 0xFF,
+	INVALID_ORDER        = 0xFFFF,
 };
 
 /* Order types */
@@ -88,6 +89,9 @@ typedef struct Order {
 	struct Order *next;   ///< Pointer to next order. If NULL, end of list
 
 	OrderID index;         ///< Index of the order, is not saved or anything, just for reference
+
+	CargoID refit_cargo; // Refit CargoID
+	byte refit_subtype; // Refit subtype
 } Order;
 
 #define MAX_BACKUP_ORDER_COUNT 40

@@ -450,7 +450,7 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 					DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, NULL, CMD_SEND_SHIP_TO_DEPOT | CMD_MSG(STR_9819_CAN_T_SEND_SHIP_TO_DEPOT));
 					break;
 				case 8: /* refit */
-					ShowVehicleRefitWindow(v);
+					ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);
 					break;
 				case 9: /* show orders */
 					ShowOrdersWindow(v);

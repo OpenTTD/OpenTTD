@@ -145,6 +145,9 @@ void AssignOrder(Order *order, Order data)
 	order->type  = data.type;
 	order->flags = data.flags;
 	order->dest  = data.dest;
+
+	order->refit_cargo   = CT_NO_REFIT;
+	order->refit_subtype = CT_NO_REFIT;
 }
 
 
@@ -751,6 +754,54 @@ int32 CmdCloneOrder(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	return 0;
 }
 
+/** Add/remove refit orders from an order
+ * @param tile Not used
+ * @param p1 VehicleIndex of the vehicle having the order
+ * @param p2 bitmask
+ *   - bit 0-7 CargoID
+ *   - bit 8-15 Cargo subtype
+ *   - bit 16-23 number of order to modify
+ */
+int32 CmdOrderRefit(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
+{
+	const Vehicle *v;
+	Order *order;
+	VehicleID veh = GB(p1, 0, 16);
+	VehicleOrderID order_number  = GB(p2, 16, 8);
+	CargoID cargo = GB(p2, 0, 8);
+	byte subtype  = GB(p2, 8, 8);
+
+	if (!IsValidVehicleID(veh)) return CMD_ERROR;
+
+	v = GetVehicle(veh);
+
+	if (!CheckOwnership(v->owner)) return CMD_ERROR;
+
+	order = GetVehicleOrder(v, order_number);
+	if (order == NULL) return CMD_ERROR;
+
+	if (flags & DC_EXEC) {
+		Vehicle *u;
+
+		order->refit_cargo = cargo;
+		order->refit_subtype = subtype;
+
+		u = GetFirstVehicleFromSharedList(v);
+		for (; u != NULL; u = u->next_shared) {
+			/* Update any possible open window of the vehicle */
+			InvalidateVehicleOrder(u);
+
+			/* If the vehicle already got the current depot set as current order, then update current order as well */
+			if (u->cur_order_index == order_number && HASBIT(u->current_order.flags, OFB_PART_OF_ORDERS)) {
+				u->current_order.refit_cargo = cargo;
+				u->current_order.refit_subtype = subtype;
+			}
+		}
+	}
+
+	return 0;
+}
+
 /**
  *
  * Backup a vehicle order-list, so you can replace a vehicle
@@ -1116,9 +1167,12 @@ static const SaveLoad _order_desc[] = {
 	SLE_VAR(Order, flags, SLE_UINT8),
 	SLE_VAR(Order, dest,  SLE_UINT16),
 	SLE_REF(Order, next,  REF_ORDER),
+	SLE_CONDVAR(Order, refit_cargo,    SLE_UINT8, 36, SL_MAX_VERSION),
+	SLE_CONDVAR(Order, refit_subtype,  SLE_UINT8, 36, SL_MAX_VERSION),
 
-	// reserve extra space in savegame here. (currently 10 bytes)
-	SLE_CONDNULL(10, 5, SL_MAX_VERSION),
+	/* Leftover from the minor savegame version stuff
+	 * We will never use those free bytes, but we have to keep this line to allow loading of old savegames */
+	SLE_CONDNULL(10, 5, 35),
 	SLE_END()
 };
 

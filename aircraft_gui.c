@@ -522,7 +522,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 			DoCommandP(v->tile, v->index, _ctrl_pressed ? DEPOT_SERVICE : 0, NULL, CMD_SEND_AIRCRAFT_TO_HANGAR | CMD_MSG(STR_A012_CAN_T_SEND_AIRCRAFT_TO));
 			break;
 		case 8: /* refit */
-			ShowVehicleRefitWindow(v);
+			ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);
 			break;
 		case 9: /* show orders */
 			ShowOrdersWindow(v);

@@ -114,6 +114,7 @@ enum {
 	CMD_SEND_SHIP_TO_DEPOT           =  89,
 	CMD_REFIT_SHIP                   =  91,
 
+	CMD_ORDER_REFIT                  =  98,
 	CMD_CLONE_ORDER                  =  99,
 	CMD_CLEAR_AREA                   = 100,
 

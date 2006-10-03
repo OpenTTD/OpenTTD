@@ -5,6 +5,7 @@
 
 #include "macros.h"
 #include "string.h"
+#include "order.h"
 
 typedef struct WindowEvent WindowEvent;
 
@@ -433,6 +434,7 @@ typedef struct {
 	struct RefitOption *cargo;
 	struct RefitList *list;
 	uint length;
+	VehicleOrderID order;
 } refit_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(refit_d));
 

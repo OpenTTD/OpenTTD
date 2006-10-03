@@ -1396,11 +1396,17 @@ static void AircraftEnterHangar(Vehicle *v)
 	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
 
 	if (v->current_order.type == OT_GOTO_DEPOT) {
+		int32 cost;
+
 		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
 
 		old_order = v->current_order;
 		v->current_order.type = OT_NOTHING;
 		v->current_order.flags = 0;
+
+		_current_player = v->owner;
+		cost = DoCommand(v->tile, v->index, old_order.refit_cargo | old_order.refit_subtype << 8, DC_EXEC, CMD_REFIT_AIRCRAFT);
+		if (!CmdFailed(cost) && v->owner == _local_player && cost != 0) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
 
 		if (HASBIT(old_order.flags, OFB_PART_OF_ORDERS)) {
 			v->cur_order_index++;

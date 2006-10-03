@@ -1518,5 +1518,21 @@ bool AfterLoadGame(void)
 		}
 	}
 
+	/* Setting no refit flags to all orders in savegames from before refit in orders were added */
+	if (CheckSavegameVersion(36)) {
+		Order *order;
+		Vehicle *v;
+
+		FOR_ALL_ORDERS(order) {
+			order->refit_cargo   = CT_NO_REFIT;
+			order->refit_subtype = CT_NO_REFIT;
+		}
+
+		FOR_ALL_VEHICLES(v) {
+			v->current_order.refit_cargo   = CT_NO_REFIT;
+			v->current_order.refit_subtype = CT_NO_REFIT;
+		}
+	}
+
 	return true;
 }

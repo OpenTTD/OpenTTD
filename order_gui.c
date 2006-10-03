@@ -96,6 +96,11 @@ static void DrawOrdersWindow(Window *w)
 	SetWindowWidgetDisabledState(w,  9, not_localplayer || order == NULL); // unload
 	SetWindowWidgetDisabledState(w, 10, not_localplayer || order == NULL); // transfer
 	SetWindowWidgetDisabledState(w, 11, !shared_orders || v->orders == NULL); // Disable list of vehicles with the same shared orders if there are no list
+	SetWindowWidgetDisabledState(w, 12, not_localplayer || order == NULL); // Refit
+
+
+	ShowWindowWidget(w, 9); // Unload
+	HideWindowWidget(w, 12); // Refit
 
 	if (order != NULL) {
 		switch (order->type) {
@@ -103,8 +108,11 @@ static void DrawOrdersWindow(Window *w)
 				break;
 
 			case OT_GOTO_DEPOT:
-				DisableWindowWidget(w,  9);
 				DisableWindowWidget(w, 10);
+
+				/* Remove unload and replace it with refit */
+				HideWindowWidget(w,  9);
+				ShowWindowWidget(w, 12);
 				SetDParam(2,STR_SERVICE);
 				break;
 
@@ -131,6 +139,7 @@ static void DrawOrdersWindow(Window *w)
 	order = GetVehicleOrder(v, i);
 	while (order != NULL) {
 		str = (v->cur_order_index == i) ? STR_8805 : STR_8804;
+		SetDParam(3, STR_EMPTY);
 
 		if (i - w->vscroll.pos < w->vscroll.cap) {
 			SetDParam(1, 6);
@@ -161,6 +170,12 @@ static void DrawOrdersWindow(Window *w)
 					if (order->flags & OF_FULL_LOAD) s++; /* service at */
 
 					SetDParam(1, s);
+					if (order->refit_cargo == CT_NO_REFIT) {
+						SetDParam(3, STR_EMPTY);
+					} else {
+						SetDParam(3, STR_REFIT_ORDER);
+						SetDParam(4, _cargoc.names_s[order->refit_cargo]);
+					}
 					break;
 				}
 
@@ -371,6 +386,16 @@ static void OrderClick_Delete(Window *w, const Vehicle *v)
 	DoCommandP(v->tile, v->index, OrderGetSel(w), NULL, CMD_DELETE_ORDER | CMD_MSG(STR_8834_CAN_T_DELETE_THIS_ORDER));
 }
 
+static void OrderClick_Refit(Window *w, const Vehicle *v)
+{
+	if (_ctrl_pressed) {
+		/* Cancel refitting */
+		DoCommandP(v->tile, v->index, (WP(w,order_d).sel << 16) | (CT_NO_REFIT << 8) | CT_NO_REFIT, NULL, CMD_ORDER_REFIT);
+	} else {
+		ShowVehicleRefitWindow(v, WP(w,order_d).sel);
+	}
+}
+
 typedef void OnButtonVehClick(Window *w, const Vehicle *v);
 
 static OnButtonVehClick* const _order_button_proc[] = {
@@ -395,6 +420,15 @@ static const uint16 _order_keycodes[] = {
 static void OrdersWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+		case WE_CREATE:
+			/* Move Refit to the same location as Unload
+			 * This will ensure that they always stay at the same location even if Unload is moved in a later commit */
+			w->widget[12].left   = w->widget[9].left;
+			w->widget[12].right  = w->widget[9].right;
+			w->widget[12].top    = w->widget[9].top;
+			w->widget[12].bottom = w->widget[9].bottom;
+			break;
+
 	case WE_PAINT:
 		DrawOrdersWindow(w);
 		break;
@@ -457,6 +491,9 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			break;
 		case 11: /* Vehicle with same shared Orders button */
 			ShowVehWithSharedOrders(v, v->type);
+			break;
+		case 12:
+			OrderClick_Refit(w, v);
 			break;
 		}
 	} break;
@@ -534,6 +571,7 @@ static const Widget _orders_train_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   265,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   373,   386,    76,    87, STR_TRAIN,               STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_REFIT,               STR_REFIT_TIP},
 {      WWT_PANEL,   RESIZE_RTB,     14,   387,   386,    76,    87, 0x0,                     STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   387,   398,    76,    87, 0x0,                     STR_RESIZE_BUTTON},
 {   WIDGETS_END},
@@ -560,6 +598,7 @@ static const Widget _orders_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   257,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   384,   397,    76,    87, STR_EMPTY,               STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
+{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_REFIT,               STR_REFIT_TIP},
 {      WWT_PANEL,   RESIZE_RTB,     14,   397,   396,    76,    87, 0x0,                     STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   398,   409,    76,    87, 0x0,                     STR_RESIZE_BUTTON},
 {   WIDGETS_END},

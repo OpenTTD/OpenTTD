@@ -321,7 +321,7 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 			DoCommandP(v->tile, v->index, _ctrl_pressed ? 1 : 0, CcCloneRoadVeh, CMD_CLONE_VEHICLE | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
 			break;
 		case 12: /* Refit vehicle */
-			ShowVehicleRefitWindow(v);
+			ShowVehicleRefitWindow(v, INVALID_VEH_ORDER_ID);
 			break;
 		}
 	} break;
