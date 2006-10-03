@@ -2,7 +2,7 @@
 ##ownname Magyar
 ##isocode hu_HU
 ##plural 1
-##case t
+##case t ba
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -3003,11 +3003,15 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Megmutat
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
 STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :depó
+STR_TRAIN_DEPOTS__DEPOT_ONLY.ba                                 :depóba
 STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :depó
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY.ba                          :depóba
 STR_SHIP_DEPOTS__DEPOT_ONLY                                     :dokk
+STR_SHIP_DEPOTS__DEPOT_ONLY.ba                                  :dokkba
 STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :hangár
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY.ba                             :hangárba
 
-STR_SEND_TO_DEPOTS                                              :
+STR_SEND_TO_DEPOTS                                              :{BLACK}Elküldi {SKIP}{SKIP}{SKIP}{STRING.ba}
 
 STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}A listán lévõ összes vonat depóba küldése. CTRL+kattintásra csak javításra küld
 STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}A listán lévõ összes közúti jármû depóba küldése. CTRL+kattintásra csak javításra küld.

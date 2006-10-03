@@ -735,13 +735,13 @@ STR_SUMMARY                                                     :Úrtak
 STR_FULL                                                        :Allt
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Bæjarmappa
-STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Hönnunarnöfn farartækja
+STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Tegundanöfn farartækja
 STR_02BD                                                        :{BLACK}{STRING}
-STR_02BE_DEFAULT                                                :Sjálfgefið
-STR_02BF_CUSTOM                                                 :Sérval
-STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Vista sérvalin nöfn
+STR_02BE_DEFAULT                                                :Upphafleg
+STR_02BF_CUSTOM                                                 :Breytt
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Geyma breytt nöfn
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Nöfn farartækja
-STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Vista sérvalin hönnunarnöfn farartækja á disk
+STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Vista breytt tegundanöfn farartækja
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Stillingar
@@ -796,24 +796,24 @@ STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Afrita a
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Afrita frá sjónarhorni
 STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Afrita sjónarhornið í rammanum í aðalsjónarhornið
 
-STR_02E0_CURRENCY_UNITS                                         :{BLACK}Gjaldeyriseining
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Gjaldmiðill
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
-STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Val á gjaldeyriseiningu
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Val á gjaldmiðli
 STR_MEASURING_UNITS                                             :{BLACK}Mælieiningar
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Veldu mælieiningu
-STR_02E6_ROAD_VEHICLES                                          :{BLACK}Bifreiðar
+STR_02E6_ROAD_VEHICLES                                          :{BLACK}Aksturstefna
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Veldu vegarhelming fyrir bifreiðir
-STR_02E9_DRIVE_ON_LEFT                                          :Keyra vinstra megin
-STR_02EA_DRIVE_ON_RIGHT                                         :Keyra hægra megin
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Aksturstefna bifreiða
+STR_02E9_DRIVE_ON_LEFT                                          :Vinstristefna
+STR_02EA_DRIVE_ON_RIGHT                                         :Hægristefna
 STR_02EB_TOWN_NAMES                                             :{BLACK}Bæjarnöfn
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Veldu stíl bæjarnafna
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Sjálfvirk vistun
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Veldu millibil fyrir sjálfvirkar vistanir
+STR_02F6_SELECT_INTERVAL_BETWEEN                                :{BLACK}Tíðni sjálfvirkra vistana
 STR_02F7_OFF                                                    :Aldrei
 STR_02F8_EVERY_3_MONTHS                                         :Ársfjórðungslega
 STR_02F9_EVERY_6_MONTHS                                         :Hálfsárslega
@@ -911,18 +911,18 @@ STR_CURR_CUSTOM                                                 :Sérvalið...
 
 STR_OPTIONS_LANG                                                :{BLACK}Tungumál
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Veldu tungumál viðmótsins
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Tungumál viðmóts
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Fylla út í skjá
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Smelltu hér til að OpenTTD fylli út í skjáinn
 
 STR_OPTIONS_RES                                                 :{BLACK}Skjáupplausn
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Veldu skjáupplausn
+STR_OPTIONS_RES_TIP                                             :{BLACK}Stilla skjáupplausn
 
-STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Form skjámynda
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Snið skjámynda
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Veldu form skjámynda
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Snið á skjámyndaskrám
 
 STR_AUTOSAVE_1_MONTH                                            :Mánaðarlega
 STR_AUTOSAVE_FAILED                                             :{WHITE}Sjálfvirk vistun mistókst
@@ -1039,7 +1039,15 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Lægsta 
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Birtingartími villuskilaboða: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Sýna íbúafjölda í bæjarmerki: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Ósýnileg tré (með gagnsæjum byggingum): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Landslagsmótun: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Upphafleg
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Hæð snjólínu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Snúningur hæðakorts: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Rangsælis
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Réttsælis
+
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Dreyfing stöðva mest: {ORANGE}{STRING} {RED}Ath.: Há stilling hægir á leiknum
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Skoða þyrlur sjálfvirkt á þyrlupalli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Opna landmótunarglugga samhliða lestar-, vegar-, hafnar- og flugvallarframkvæmdarglugga: {ORANGE}{STRING}
@@ -1434,6 +1442,13 @@ STR_NETWORK_SEND                                                :{BLACK}Senda
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}Lengd korts: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Breidd korts: {ORANGE}{STRING}
 
+
+##### PNG-MAP-Loader
+
+
+STR_BMPMAP_ERROR                                                :{WHITE}Get ekki hlaðið landslagi úr BMP skrá...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}... gat ekki breytt myndsniði.
+
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kostnaður: {CURRENCY}
 STR_0801_COST                                                   :{RED}Kostnaður: {CURRENCY}
@@ -1757,6 +1772,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Vista le
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Velja tegund leiks
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Velja landslag (grænt), forstilltan leik (blátt) eða handahófskenndan leik
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Búa til nýjan leik
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Hlaða hæðakorti
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} er fyrir
@@ -2127,6 +2143,8 @@ STR_707D_OWNED_BY                                               :{WHITE}({COMMA}
 STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% í eigu {COMPANY}{}   {COMMA}% í eigu {COMPANY})
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} hefur verið yfirtekið af {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Þetta fyrirtæki er ekki nógu gamalt til að versla með hluti ...
+
+
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Gufu)
@@ -2537,7 +2555,7 @@ STR_9002                                                        :{WHITE}{VEHICLE
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Bílastöð
 STR_9004_NEW_VEHICLES                                           :{BLACK}Kaupa bifreiðar
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nýjir bílar
-STR_9007_BUILD_VEHICLE                                          :{BLACK}Byggja bíl
+STR_9007_BUILD_VEHICLE                                          :{BLACK}Kaupa bifreið
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Get ekki byggt bíl...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Upplýsingar)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
@@ -2812,6 +2830,22 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Sýna all
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Sýna allar flugvélar sem hafa þessa stöð á áætlun
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Sýna öll skip sem hafa þessa stöð á áætlun
 
+
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+
+
+
+### depot strings
+
+
+
+
+
+
+
+
 STR_REPLACE_VEHICLES                                            :{BLACK}Skipta út vögnum
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Hefja skipti
@@ -2833,6 +2867,9 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ekki hæg
 
 STR_ENGINES                                                     :Dráttarvagnar
 STR_WAGONS                                                      :Vagnar
+
+
+
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Merkjalisti - {COMMA} merki
@@ -2860,6 +2897,11 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Þyngd: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Verð: {GOLD}{CURRENCY}{BLACK} Hámarkshraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Burðargeta: {GOLD}{COMMA} farþegar, {COMMA} pokar af pósti
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Drifvagnar: {GOLD}+{POWER}{BLACK} Þyngd: {GOLD}+{WEIGHT_S}
+
+########### String for New Landscape Generator
+
+STR_CLEARING_TILES                                              :{BLACK}Hrjúft og grýtt landslag
+
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Lítill flugvöllur

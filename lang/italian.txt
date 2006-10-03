@@ -2470,8 +2470,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} D
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}I cittadini festeggiano . . .{}Primo treno arrivato a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Details)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Treno in mezzo
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Vai a {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Vai a {STATION} (Trasferisci e carica)
 STR_8808_GO_TO_UNLOAD                                           :Vai a {STATION} (Scarica)
@@ -2523,6 +2523,9 @@ STR_8825_NON_STOP                                               :{BLACK}Non-Stop
 STR_8826_GO_TO                                                  :{BLACK}Vai a
 STR_8827_FULL_LOAD                                              :{BLACK}Carica
 STR_8828_UNLOAD                                                 :{BLACK}Scarica
+STR_REFIT                                                       :{BLACK}Modifica
+STR_REFIT_TIP                                                   :{BLACK}Scegli iltipo di merce da modificare in questo ordine. CTRL+click per togliere l'istruzione di modifica
+STR_REFIT_ORDER                                                 :(Modifica a {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordini)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fine degli Ordini - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2906,6 +2909,10 @@ STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangar
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Manda a {SKIP}{SKIP}{SKIP}{STRING}
 
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Manda tutti i treni in lista al deposito. CTRL+click per solo servizio
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Manda tutti i veicoli stradali in lista al deposito. CTRL+click per solo servizio
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Manda tutte le navi in lista al deposito. CTRL+click per solo servizio
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Manda tutti gli aerei in lista all'hangar. CTRL+click per solo servizio
 
 ### depot strings
 
@@ -2913,13 +2920,22 @@ STR_SELL                                                        :{BLACK}Vendi
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Stai per vendere tutti i veicoli nel deposito
 STR_ARE_YOU_SURE                                                :{BLACK}Sei sicuro?
 
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Conferma la vendita di tutti gli aerei nell'hangar
 
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Non vendere tutti i treni nel deposito
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Non vendere tutti i veicoli stradali nel deposito
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Non vendere tutte le navi nel deposito
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Non vendere tutti gli aerei nell'hangar
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vendi tutti i treni nel deposito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vendi tutti i veicoli nel deposito
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vendi tute le navi nel deposito
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vendi tutti gli aerei nell'hangar
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Lista tutti i treni che hanno questo deposito negli ordini
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Lista tutti i veicoli stradali che hanno questo deposito negli ordini
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Lista tutte le navi che hanno questo deposito negli ordini
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Lista tutti gli aerei che usano gli hangar di questo aeroporto negli ordini
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Sostituisci automaticamente tutti i treni nel deposito
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Sostituisci automaticamente tutti i veicoli nel deposito
@@ -2953,7 +2969,15 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi
 STR_ENGINES                                                     :Motrici
 STR_WAGONS                                                      :Vagoni
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Clicca per fermare tutti i treni dentro il deposito
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Clicca per fermare tutti i veicoli stradali dentro il deposito
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Clicca per fermare tutte le navi dentro il deposito
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Clicca per fermare tutti gli aerei dentro l'hangar
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Clicca per avviare tutti i treni dentro il deposito
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Clicca per avviare tutti i veicoli stradali dentro il deposito
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Clicca per avviare tutte le navi dentro il deposito
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Clicca per avviare tutti gli aerei dentro l'hangar
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Clicca per fermare tutti i veicoli nella lista
 STR_MASS_START_LIST_TIP                                         :{BLACK}Clicca per far partire i veicoli nella lista
