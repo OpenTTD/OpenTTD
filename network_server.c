@@ -932,8 +932,6 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		if (new_cs->status > STATUS_AUTH) {
 			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->index, str);
 		}
-
-		CheckMinPlayers();
 	}
 
 	cs->quited = true;
@@ -956,6 +954,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
 			NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game unpaused (client connected)", NETWORK_SERVER_INDEX);
 		}
+
+		CheckMinPlayers();
 
 		/* Execute script for, e.g. MOTD */
 		IConsoleCmdExec("exec scripts/on_server_connect.scr 0");
