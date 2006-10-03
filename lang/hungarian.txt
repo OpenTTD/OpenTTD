@@ -2572,8 +2572,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}i 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Az emberek ünnepelnek . . .{}Megérkezett az elsõ vonat {STATION} állomásra!
 STR_8802_DETAILS                                                :{WHITE}{STRING} adatai
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vonat van az útban
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}{STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
 STR_8806_GO_TO                                                  :Menj {STATION} állomásra
 STR_8807_GO_TO_TRANSFER                                         :Menj {STATION} (odaszállít és felvesz rakományt)
 STR_8808_GO_TO_UNLOAD                                           :Menj {STATION} (lepakol)
@@ -2625,6 +2625,7 @@ STR_8825_NON_STOP                                               :{BLACK}Non-stop
 STR_8826_GO_TO                                                  :{BLACK}Új cél
 STR_8827_FULL_LOAD                                              :{BLACK}Telepakol
 STR_8828_UNLOAD                                                 :{BLACK}Lepakol
+STR_REFIT                                                       :{BLACK}Átalakít
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} menetrendje
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Menetrend vége - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}

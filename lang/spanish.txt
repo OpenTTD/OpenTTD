@@ -2921,6 +2921,7 @@ STR_ARE_YOU_SURE                                                :{BLACK}¿Estás s
 STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirmar que quiero vender todos los tenes del depósito
 STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirmar que quiero vender todos los vehículos del depósito
 STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirmar que quiero vender todos los barcos del depósito
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirma que deseas vender todas las aeronaves del hangar
 
 STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}No vender todos los trenes del depósito
 STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}No vender todos los vehículos del depósito

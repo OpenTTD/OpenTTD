@@ -2892,9 +2892,10 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Ayni tal
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Garajlar
 STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarlar
 
-STR_SEND_TO_DEPOTS                                              :
+STR_SEND_TO_DEPOTS                                              :{BLACK}Gönder {SKIP}{SKIP}{SKIP}{STRING}
 
 
 ### depot strings
@@ -2903,8 +2904,16 @@ STR_SELL                                                        :{BLACK}Sat
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Garajdaki tüm araçlari satmak üzeresiniz.
 STR_ARE_YOU_SURE                                                :{BLACK}Emin misiniz?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Gardaki tüm trenleri satmayi onaylayin
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Garajdaki tüm arabalari satmayi onaylayin
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Tersanedeki tüm gemileri satmayi onaylayin
 
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Gardaki tüm trenlari satma
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Garajdaki tüm arabalari satma
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Tersanedeki tüm gemileri satma
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Hangardaki bütün uçaklari satma
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Gardaki bütün trenleri sat
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Hangardaki butun hava araclarini sat
 
 
@@ -2932,6 +2941,9 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoti
 STR_ENGINES                                                     :Lokomotifler
 STR_WAGONS                                                      :Vagon
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Gardaki tüm trenleri durdurmak için tikla
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Tersanedeki tüm gemileri durdurmak için tikla
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Hangardaki tüm uçaklari durdurmak için tikla
 
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Listedeki tüm araçlari durdurmak için bas

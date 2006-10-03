@@ -1056,7 +1056,7 @@ STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rauheit
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr sanft
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sanft
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rau
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr rau
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr rauh
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Baumplazierungsalgorithmus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Keiner
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
@@ -2903,9 +2903,14 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zeige al
 STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depots
 STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depots
 STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depots
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Sende nach {SKIP}{SKIP}{SKIP}{STRING}
 
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Schicke alle Züge in die Depots. STRG+Klick nur zur Wartung
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Schicke alle Straßenfahrzeuge der Liste in die Depots. STRG+Klick nur zur Wartung
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Schicke alle Schiffe in die Werften. STRG+Klick nur zur Wartung
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Schicke alle Flugzeuge der Liste in die Hangars. STRG+Klick nur zur Wartung
 
 ### depot strings
 
@@ -2931,6 +2936,7 @@ STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Verkaufe
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Zeige eine Liste mit allen Zügen, die dieses Depot anfahren
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Zeige eine Liste mit allen Fahrzeugen, die dieses Depot anfahren
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Zeige eine Liste mit allen Schiffen, die diese Werft anfahren
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Zeige alle Flugzeuge mit irgendeinem Hangar dieses Flughafens in ihrem Flugplan
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Ersetze alle Züge im Depot automatisch
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Ersetze alle Fahrzeuge im Depot automatisch
