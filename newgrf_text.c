@@ -257,6 +257,8 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	return (GRFTAB << TABSIZE) + id;
 }
 
+/* Used to remember the grfid that the last retrieved string came from */
+static uint32 _last_grfid = 0;
 
 /**
  * Returns the index for this stringid associated with its grfID
@@ -264,6 +266,10 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 StringID GetGRFStringID(uint32 grfid, uint16 stringid)
 {
 	uint id;
+
+	/* grfid is zero when we're being called via an include */
+	if (grfid == 0) grfid = _last_grfid;
+
 	for (id = 0; id < _num_grf_texts; id++) {
 		if (_grf_text[id].grfid == grfid && _grf_text[id].stringid == stringid) {
 			return (GRFTAB << TABSIZE) + id;
@@ -280,6 +286,10 @@ char *GetGRFString(char *buff, uint16 stringid)
 	const GRFText *search_text;
 
 	assert(_grf_text[stringid].grfid != 0);
+
+	/* Remember this grfid in case the string has included text */
+	_last_grfid = _grf_text[stringid].grfid;
+
 	/*Search the list of lang-strings of this stringid for current lang */
 	for (search_text = _grf_text[stringid].textholder; search_text != NULL; search_text = search_text->next) {
 		if (search_text->langid == _currentLangID) {

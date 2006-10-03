@@ -172,6 +172,7 @@ static char *GetStringWithArgs(char *buffr, uint string, const int32 *argv)
 {
 	uint index = GB(string,  0, 11);
 	uint tab   = GB(string, 11,  5);
+	char buff[512];
 
 	if (GB(string, 0, 16) == 0) error("!invalid string id 0 in GetString");
 
@@ -190,14 +191,25 @@ static char *GetStringWithArgs(char *buffr, uint string, const int32 *argv)
 		case 15:
 			return GetName(index, buffr);
 
+		case 26:
+			/* Include string within newgrf text (format code 81) */
+			if (HASBIT(index, 10)) {
+				StringID string = GetGRFStringID(0, 0xD000 + GB(index, 0, 10));
+				return GetStringWithArgs(buffr, string, argv);
+			}
+			break;
+
 		case 28:
-			return GetGRFString(buffr, index);
+			GetGRFString(buff, index);
+			return FormatString(buffr, buff, argv, 0);
 
 		case 29:
-			return GetGRFString(buffr, index + 0x800);
+			GetGRFString(buff, index + 0x800);
+			return FormatString(buffr, buff, argv, 0);
 
 		case 30:
-			return GetGRFString(buffr, index + 0x1000);
+			GetGRFString(buff, index + 0x1000);
+			return FormatString(buffr, buff, argv, 0);
 
 		case 31:
 			// dynamic strings. These are NOT to be passed through the formatter,
