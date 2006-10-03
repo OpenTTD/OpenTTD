@@ -286,6 +286,42 @@ char *GetNetworkErrorMsg(char *buf, NetworkErrorCode err)
 	return GetString(buf, network_error_strings[err]);
 }
 
+/* Count the number of active clients connected */
+static uint NetworkCountPlayers(void)
+{
+	NetworkClientState *cs;
+	uint count = 0;
+
+	FOR_ALL_CLIENTS(cs) {
+		NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+		if (ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS) count++;
+	}
+
+	return count;
+}
+
+static bool _min_players_paused = false;
+
+/* Check if the minimum number of players has been reached and pause or unpause the game as appropriate */
+void CheckMinPlayers(void)
+{
+	if (!_network_dedicated) return;
+
+	if (NetworkCountPlayers() < _network_min_players) {
+		if (_min_players_paused) return;
+
+		_min_players_paused = true;
+		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
+		NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", NETWORK_SERVER_INDEX);
+	} else {
+		if (!_min_players_paused) return;
+
+		_min_players_paused = false;
+		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
+		NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", NETWORK_SERVER_INDEX);
+	}
+}
+
 // Find all IP-aliases for this host
 static void NetworkFindIPs(void)
 {
@@ -626,6 +662,8 @@ void NetworkCloseClient(NetworkClientState *cs)
 	cs->status = STATUS_INACTIVE;
 	cs->index = NETWORK_EMPTY_INDEX;
 	ci->client_index = NETWORK_EMPTY_INDEX;
+
+	CheckMinPlayers();
 }
 
 // A client wants to connect to a server
@@ -1040,6 +1078,9 @@ bool NetworkServerStart(void)
 	IConsoleCmdExec("exec scripts/on_server.scr 0");
 	// if the server is dedicated ... add some other script
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/on_dedicated.scr 0");
+
+	_min_players_paused = false;
+	CheckMinPlayers();
 
 	/* Try to register us to the master server */
 	_network_last_advertise_frame = 0;

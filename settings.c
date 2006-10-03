@@ -1210,6 +1210,7 @@ static const SettingDescGlobVarList _network_settings[] = {
 	 SDTG_VAR("max_clients",          SLE_UINT8, S, 0, _network_game_info.clients_max,    10, 0, 10,   0, STR_NULL, NULL),
 	 SDTG_VAR("max_spectators",       SLE_UINT8, S, 0, _network_game_info.spectators_max, 10, 0, 10,   0, STR_NULL, NULL),
 	 SDTG_VAR("restart_game_year",    SLE_INT32, S,D0, _network_restart_game_year,    0, MIN_YEAR, MAX_YEAR, 1, STR_NULL, NULL),
+	 SDTG_VAR("min_players",          SLE_UINT8, S, 0, _network_min_players,               0, 0, 10,   0, STR_NULL, NULL),
 	 SDTG_END()
 };
 #endif /* ENABLE_NETWORK */

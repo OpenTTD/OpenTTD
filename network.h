@@ -207,6 +207,7 @@ VARDEF uint8 _network_autoclean_unprotected; // Remove a company after X months
 VARDEF uint8 _network_autoclean_protected;   // Unprotect a company after X months
 
 VARDEF Year _network_restart_game_year;      // If this year is reached, the server automaticly restarts
+VARDEF uint8 _network_min_players;           // Minimum number of players for game to unpause
 
 NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool game_info);
 
@@ -221,6 +222,7 @@ void NetworkAddServer(const char *b);
 void NetworkRebuildHostList(void);
 bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
 void NetworkPopulateCompanyInfo(void);
+void CheckMinPlayers(void);
 
 #endif /* ENABLE_NETWORK */
 

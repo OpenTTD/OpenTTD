@@ -932,6 +932,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		if (new_cs->status > STATUS_AUTH) {
 			SEND_COMMAND(PACKET_SERVER_QUIT)(new_cs, cs->index, str);
 		}
+
+		CheckMinPlayers();
 	}
 
 	cs->quited = true;

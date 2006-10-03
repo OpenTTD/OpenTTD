@@ -612,6 +612,12 @@ DEF_CONSOLE_HOOK(ConHookValidateMaxSpectatorsCount)
 	return true;
 }
 
+DEF_CONSOLE_HOOK(ConHookCheckMinPlayers)
+{
+	CheckMinPlayers();
+	return true;
+}
+
 DEF_CONSOLE_CMD(ConKick)
 {
 	NetworkClientInfo *ci;
@@ -1579,6 +1585,10 @@ void IConsoleStdLibRegister(void)
 	IConsoleVarHookAdd("autoclean_unprotected",  ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
 	IConsoleVarRegister("restart_game_year",     &_network_restart_game_year, ICONSOLE_VAR_UINT16, "Auto-restart the server when Jan 1st of the set year is reached. Use '0' to disable this");
 	IConsoleVarHookAdd("restart_game_year",      ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+
+	IConsoleVarRegister("min_players",           &_network_min_players, ICONSOLE_VAR_BYTE, "Automatically pause the game when the number of active players passes below the given amount");
+	IConsoleVarHookAdd("min_players",            ICONSOLE_HOOK_ACCESS, ConHookServerOnly);
+	IConsoleVarHookAdd("min_players",            ICONSOLE_HOOK_POST_ACTION, ConHookCheckMinPlayers);
 
 #endif /* ENABLE_NETWORK */
 
