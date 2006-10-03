@@ -107,7 +107,7 @@ bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, Pla
 {
 	uint32 mask = 1 << widget;
 
-	if (w->disabled_state & mask) return false;
+	if (IsWindowWidgetDisabled(w, widget)) return false;
 
 	SndPlayFx(SND_15_BEEP);
 	SetWindowDirty(w);
@@ -869,12 +869,9 @@ bool DoZoomInOutWindow(int how, Window *w)
 		assert(wt);
 
 		// update the toolbar button too
-		CLRBIT(wt->disabled_state, button);
-		CLRBIT(wt->disabled_state, button + 1);
-		switch (vp->zoom) {
-			case 0: SETBIT(wt->disabled_state, button); break;
-			case 2: SETBIT(wt->disabled_state, button + 1); break;
-		}
+		SetWindowWidgetDisabledState(wt, button, vp->zoom == 0);
+		SetWindowWidgetDisabledState(wt, button + 1, vp->zoom == 2);
+
 		SetWindowDirty(wt);
 	}
 
@@ -1754,24 +1751,27 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
+		bool is_spectator = _current_player == OWNER_SPECTATOR;
 
 		// Draw brown-red toolbar bg.
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | PALETTE_MODIFIER_GREYOUT);
 
-		// if spectator, disable things
-		if (_current_player == OWNER_SPECTATOR){
-			w->disabled_state |= (1 << 19) | (1<<20) | (1<<21) | (1<<22) | (1<<23);
-		} else {
-			w->disabled_state &= ~((1 << 19) | (1<<20) | (1<<21) | (1<<22) | (1<<23));
-		}
+		/* If spectator, disable all construction buttons
+		 * ie : Build road, rail, ships, airports and landscaping
+		 * Since enabled state is the default, just disable when needed */
+		SetWindowWidgetDisabledState(w, 19, is_spectator);
+		SetWindowWidgetDisabledState(w, 20, is_spectator);
+		SetWindowWidgetDisabledState(w, 21, is_spectator);
+		SetWindowWidgetDisabledState(w, 22, is_spectator);
+		SetWindowWidgetDisabledState(w, 23, is_spectator);
 
 		DrawWindowWidgets(w);
 		break;
 	}
 
 	case WE_CLICK: {
-		if (_game_mode != GM_MENU && !HASBIT(w->disabled_state, e->we.click.widget))
+		if (_game_mode != GM_MENU && !IsWindowWidgetDisabled(w, e->we.click.widget))
 			_toolbar_button_procs[e->we.click.widget](w);
 	} break;
 
@@ -1961,16 +1961,8 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		if (_patches_newgame.starting_year <= MIN_YEAR) {
-			SETBIT(w->disabled_state, 6);
-		} else {
-			CLRBIT(w->disabled_state, 6);
-		}
-		if (_patches_newgame.starting_year >= MAX_YEAR) {
-			SETBIT(w->disabled_state, 7);
-		} else {
-			CLRBIT(w->disabled_state, 7);
-		}
+		SetWindowWidgetDisabledState(w, 6, _patches_newgame.starting_year <= MIN_YEAR);
+		SetWindowWidgetDisabledState(w, 7, _patches_newgame.starting_year >= MAX_YEAR);
 
 		// Draw brown-red toolbar bg.
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
@@ -2368,19 +2360,15 @@ void ShowVitalWindows(void)
 
 	if (_game_mode != GM_EDITOR) {
 		w = AllocateWindowDesc(&_toolb_normal_desc);
-		w->disabled_state = 1 << 18;
+		DisableWindowWidget(w, 18);
 	} else {
 		w = AllocateWindowDesc(&_toolb_scen_desc);
-		w->disabled_state = 1 << 10;
+		DisableWindowWidget(w, 10);
 	}
 	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
 
-	if (_networking) {
-		/* If networking, disable fast-forward button */
-		SETBIT(w->disabled_state, 1);
-		/* If not server, disable pause button */
-		if (!_network_server) SETBIT(w->disabled_state, 0);
-	}
+	SetWindowWidgetDisabledState(w, 0, _networking && !_network_server); // if not server, disable pause button
+	SetWindowWidgetDisabledState(w, 1, _networking); // if networking, disable fast-forward button
 
 	/* 'w' is for sure a WC_MAIN_TOOLBAR */
 	PositionMainToolbar(w);

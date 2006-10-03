@@ -258,17 +258,20 @@ static void ShowDepotSellAllWindow(TileIndex tile, byte type)
 static void DrawDepotWindow(Window *w)
 {
 	Vehicle **vl = WP(w, depot_d).vehicle_list;
-	TileIndex tile;
+	TileIndex tile = w->window_number;
 	int x, y, i, hnum, max;
 	uint16 num = WP(w, depot_d).engine_count;
-
-	tile = w->window_number;
+	bool is_localplayer = IsTileOwner(tile, _local_player);
 
 	/* setup disabled buttons */
-	w->disabled_state =
-		IsTileOwner(tile, _local_player) ? 0 : ( (1 << DEPOT_WIDGET_STOP_ALL) | (1 << DEPOT_WIDGET_START_ALL) |
-			(1 << DEPOT_WIDGET_SELL) | (1 << DEPOT_WIDGET_SELL_CHAIN) | (1 << DEPOT_WIDGET_SELL_ALL) |
-			(1 << DEPOT_WIDGET_BUILD) | (1 << DEPOT_WIDGET_CLONE) | (1 << DEPOT_WIDGET_AUTOREPLACE));
+	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_STOP_ALL,    !is_localplayer);
+	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_START_ALL,   !is_localplayer);
+	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_SELL,        !is_localplayer);
+	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_SELL_CHAIN,  !is_localplayer);
+	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_SELL_ALL,    !is_localplayer);
+	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_BUILD,       !is_localplayer);
+	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_CLONE,       !is_localplayer);
+	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_AUTOREPLACE, !is_localplayer);
 
 	/* determine amount of items for scroller */
 	if (WP(w, depot_d).type == VEH_Train) {
@@ -740,14 +743,14 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 				} break;
 
 				case DEPOT_WIDGET_SELL: case DEPOT_WIDGET_SELL_CHAIN:
-					if (!HASBIT(w->disabled_state, DEPOT_WIDGET_SELL) &&
+					if (!IsWindowWidgetDisabled(w, DEPOT_WIDGET_SELL) &&
 						WP(w, depot_d).sel != INVALID_VEHICLE) {
 						Vehicle *v;
 						uint command;
 						int sell_cmd;
 						bool is_engine;
 
-						if (HASBIT(w->disabled_state, e->we.click.widget)) return;
+						if (IsWindowWidgetDisabled(w, e->we.click.widget)) return;
 						if (WP(w, depot_d).sel == INVALID_VEHICLE) return;
 
 						HandleButtonClick(w, e->we.click.widget);

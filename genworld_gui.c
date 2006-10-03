@@ -209,7 +209,6 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_PAINT:
-		w->disabled_state = 0;
 		/* TODO -- Above and below you see some lines commented out with '//' in
 		 *  front of it. This is because currently the widget system can't handle
 		 *  more than 32 widgets per window, and we need 34. Therefor we draw
@@ -223,18 +222,23 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 		/* You can't select smoothness if not terragenesis */
 //		if (_patches_newgame.land_generator == 0) w->disabled_state |= (1 << 32 | 1 << 33);
-		if (_patches_newgame.land_generator == 0) w->disabled_state |= (1 << 30 | 1 << 31);
+		SetWindowWidgetDisabledState(w, 30, _patches_newgame.land_generator == 0);
+		SetWindowWidgetDisabledState(w, 31, _patches_newgame.land_generator == 0);
 		/* Disable snowline if not hilly */
-		if (_opt_newgame.landscape != LT_HILLY)   w->disabled_state |= (1 << 21 | 1 << 22 | 1 << 23);
+		SetWindowWidgetDisabledState(w, 22, _opt_newgame.landscape != LT_HILLY);
 		/* Disable town and industry in SE */
-		if (_game_mode == GM_EDITOR)              w->disabled_state |= (1 << 11 | 1 << 12 | 1 << 13 | 1 << 14 | 1 << 24 | 1 << 25);
+		SetWindowWidgetDisabledState(w, 11, _game_mode == GM_EDITOR);
+		SetWindowWidgetDisabledState(w, 12, _game_mode == GM_EDITOR);
+		SetWindowWidgetDisabledState(w, 13, _game_mode == GM_EDITOR);
+		SetWindowWidgetDisabledState(w, 14, _game_mode == GM_EDITOR);
+		SetWindowWidgetDisabledState(w, 24, _game_mode == GM_EDITOR);
+		SetWindowWidgetDisabledState(w, 25, _game_mode == GM_EDITOR);
 
-		if (_patches_newgame.starting_year <= MIN_YEAR) SETBIT(w->disabled_state, 18);
-		if (_patches_newgame.starting_year >= MAX_YEAR) SETBIT(w->disabled_state, 20);
-		if (_patches_newgame.snow_line_height <= 2 )    SETBIT(w->disabled_state, 21);
-		if (_patches_newgame.snow_line_height >= 13)    SETBIT(w->disabled_state, 23);
+		SetWindowWidgetDisabledState(w, 18, _patches_newgame.starting_year <= MIN_YEAR);
+		SetWindowWidgetDisabledState(w, 20, _patches_newgame.starting_year >= MAX_YEAR);
+		SetWindowWidgetDisabledState(w, 21, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_HILLY);
+		SetWindowWidgetDisabledState(w, 23, _patches_newgame.snow_line_height >= 13 || _opt_newgame.landscape != LT_HILLY);
 
-		w->click_state = (w->click_state & ~(0xF << 3)) | (1 << (_opt_newgame.landscape + 3));
 		DrawWindowWidgets(w);
 
 		y = (mode == GLWP_HEIGHTMAP) ? 22 : 0;
@@ -576,11 +580,10 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_PAINT:
-		w->disabled_state = 0;
-		if (_patches_newgame.starting_year <= MIN_YEAR)  SETBIT(w->disabled_state, 14);
-		if (_patches_newgame.starting_year >= MAX_YEAR)  SETBIT(w->disabled_state, 16);
-		if (_patches_newgame.se_flat_world_height <= 0)  SETBIT(w->disabled_state, 17);
-		if (_patches_newgame.se_flat_world_height >= 15) SETBIT(w->disabled_state, 19);
+		SetWindowWidgetDisabledState(w, 14, _patches_newgame.starting_year <= MIN_YEAR);
+		SetWindowWidgetDisabledState(w, 16, _patches_newgame.starting_year >= MAX_YEAR);
+		SetWindowWidgetDisabledState(w, 17, _patches_newgame.se_flat_world_height <= 0);
+		SetWindowWidgetDisabledState(w, 19, _patches_newgame.se_flat_world_height >= 15);
 
 		w->click_state = (w->click_state & ~(0xF << 3)) | (1 << (_opt_newgame.landscape + 3));
 		DrawWindowWidgets(w);

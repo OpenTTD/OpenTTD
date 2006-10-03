@@ -685,32 +685,14 @@ void ShowMessageHistory(void)
 static void SetMessageButtonStates(Window *w, byte value, int element)
 {
 	element *= 2;
-	switch (value) {
-	case 0: /* Off */
-		SETBIT(w->disabled_state, element + 3);
-		CLRBIT(w->disabled_state, element + 3 + 1);
-		break;
-	case 1: /* Summary */
-		CLRBIT(w->disabled_state, element + 3);
-		CLRBIT(w->disabled_state, element + 3 + 1);
-		break;
-	case 2: /* Full */
-		SETBIT(w->disabled_state, element + 3 + 1);
-		CLRBIT(w->disabled_state, element + 3);
-		break;
-	default: NOT_REACHED();
-	}
+
+	SetWindowWidgetDisabledState(w, element + 3, value == 0);
+	SetWindowWidgetDisabledState(w, element + 3 + 1, value == 2);
 }
 
 static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 {
 	static const StringID message_opt[] = {STR_OFF, STR_SUMMARY, STR_FULL, INVALID_STRING_ID};
-	static const uint32 message_val[] = {0x0, 0x55555555, 0xAAAAAAAA}; // 0x555.. = 01010101010101010101 (all summary), 286.. 1010... (full)
-	static const uint32 message_dis[] = {
-		(1 << 3) | (1 << 5) | (1 << 7) | (1 << 9)  | (1 << 11) | (1 << 13) | (1 << 15) | (1 << 17) | (1 << 19) | (1 << 21),
-		0,
-		(1 << 4) | (1 << 6) | (1 << 8) | (1 << 10) | (1 << 12) | (1 << 14) | (1 << 16) | (1 << 18) | (1 << 20) | (1 << 22),
-	};
 
 	/* WP(w, def_d).data_1 are stores the clicked state of the fake widgets
 	 * WP(w, def_d).data_2 stores state of the ALL on/off/summary button */
@@ -784,18 +766,23 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 		} break;
 		} break;
 
-	case WE_DROPDOWN_SELECT: /* Select all settings for newsmessages */
+	case WE_DROPDOWN_SELECT: {/* Select all settings for newsmessages */
+		int i;
+
 		WP(w, def_d).data_2 = e->we.dropdown.index;
-		_news_display_opt = message_val[WP(w, def_d).data_2];
-		w->disabled_state = message_dis[WP(w, def_d).data_2];
+
+		for (i = 0; i != 10; i++) {
+			SB(_news_display_opt, i*2, 2, e->we.dropdown.index);
+			SetMessageButtonStates(w, e->we.dropdown.index, i);
+		}
 		SetWindowDirty(w);
 		break;
+		}
 
 	case WE_TIMEOUT: /* XXX - Hack to animate 'fake' buttons */
 		WP(w, def_d).data_1 = 0;
 		SetWindowDirty(w);
 		break;
-
 	}
 }
 

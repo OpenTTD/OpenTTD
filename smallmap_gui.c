@@ -1010,7 +1010,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE: /* Disable zoom in button */
-		w->disabled_state = (1 << 5);
+		DisableWindowWidget(w, 5);
 		break;
 
 	case WE_PAINT:

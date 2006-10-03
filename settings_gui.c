@@ -95,7 +95,9 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		int i;
 		StringID str = STR_02BE_DEFAULT;
-		w->disabled_state = (_vehicle_design_names & 1) ? (++str, 0) : (1 << 21);
+
+		SetWindowWidgetDisabledState(w, 21, !(_vehicle_design_names & 1));
+		if (!IsWindowWidgetDisabled(w, 21)) str = STR_02BF_CUSTOM;
 		SetDParam(0, str);
 		SetDParam(1, _currency_specs[_opt_ptr->currency].name);
 		SetDParam(2, STR_UNITS_IMPERIAL + _opt_ptr->units);
@@ -381,17 +383,15 @@ static GameOptions _opt_mod_temp;
 static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-		case WE_CREATE: /* Setup disabled buttons when creating window */
-		// disable all other difficulty buttons during gameplay except for 'custom'
-		w->disabled_state = (_game_mode != GM_NORMAL) ? 0 : (1 << 3) | (1 << 4) | (1 << 5) | (1 << 6);
+	case WE_CREATE: // Setup disabled buttons when creating window
+		/* disable all other difficulty buttons during gameplay except for 'custom' */
+		SetWindowWidgetDisabledState(w,  3, _game_mode == GM_NORMAL);
+		SetWindowWidgetDisabledState(w,  4, _game_mode == GM_NORMAL);
+		SetWindowWidgetDisabledState(w,  5, _game_mode == GM_NORMAL);
+		SetWindowWidgetDisabledState(w,  6, _game_mode == GM_NORMAL);
+		SetWindowWidgetDisabledState(w,  7, _game_mode == GM_EDITOR || _networking); // highscore chart in multiplayer
+		SetWindowWidgetDisabledState(w, 10, _networking && !_network_server); // Save-button in multiplayer (and if client)
 
-		if (_game_mode == GM_EDITOR) SETBIT(w->disabled_state, 7);
-
-		if (_networking) {
-			SETBIT(w->disabled_state, 7); // disable highscore chart in multiplayer
-			if (!_network_server)
-				SETBIT(w->disabled_state, 10); // Disable save-button in multiplayer (and if client)
-		}
 		break;
 	case WE_PAINT: {
 		uint32 click_a, click_b, disabled;
@@ -1049,7 +1049,9 @@ void ShowNewgrf(void)
 	w->vscroll.cap = 12;
 	w->vscroll.count = count;
 	w->vscroll.pos = 0;
-	w->disabled_state = (1 << 5) | (1 << 6) | (1 << 7);
+	DisableWindowWidget(w, 5);  // Small up arrow
+	DisableWindowWidget(w, 6);  // Small sown arrow
+	DisableWindowWidget(w, 7);  // Set parameter button
 }
 
 /**

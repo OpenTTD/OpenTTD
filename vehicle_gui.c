@@ -1020,25 +1020,19 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				// or Both lists have the same vehicle selected
 				// or The selected replacement engine has a replacement (to prevent loops)
 				// or The right list (new replacement) has the existing replacement vehicle selected
-				if (selected_id[0] == INVALID_ENGINE ||
+				SetWindowWidgetDisabledState(w, 4,
+						selected_id[0] == INVALID_ENGINE ||
 						selected_id[1] == INVALID_ENGINE ||
 						selected_id[0] == selected_id[1] ||
 						EngineReplacementForPlayer(p, selected_id[1]) != INVALID_ENGINE ||
-						EngineReplacementForPlayer(p, selected_id[0]) == selected_id[1]) {
-					SETBIT(w->disabled_state, 4);
-				} else {
-					CLRBIT(w->disabled_state, 4);
-				}
+						EngineReplacementForPlayer(p, selected_id[0]) == selected_id[1]);
 
 				// Disable the "Stop Replacing" button if:
 				//    The left list (existing vehicle) is empty
 				// or The selected vehicle has no replacement set up
-				if (selected_id[0] == INVALID_ENGINE ||
-						!EngineHasReplacementForPlayer(p, selected_id[0])) {
-					SETBIT(w->disabled_state, 6);
-				} else {
-					CLRBIT(w->disabled_state, 6);
-				}
+				SetWindowWidgetDisabledState(w, 6,
+						selected_id[0] == INVALID_ENGINE ||
+						!EngineHasReplacementForPlayer(p, selected_id[0]));
 
 				// now the actual drawing of the window itself takes place
 				SetDParam(0, _vehicle_type_names[WP(w, replaceveh_d).vehicletype - VEH_Train]);
@@ -1577,7 +1571,7 @@ static void DrawVehicleListWindow(Window *w)
 
 	DrawWindowWidgets(w);
 
-	if (owner == _local_player && vl->l.list_length == 0) SETBIT(w->disabled_state, 9);
+	if (owner == _local_player && vl->l.list_length == 0) DisableWindowWidget(w, 9);
 
 	/* draw sorting criteria string */
 	DrawString(85, 15, _vehicle_sort_listing[vl->l.sort_type], 0x10);

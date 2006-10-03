@@ -292,7 +292,7 @@ static void BuildRailClick_Tunnel(Window *w)
 
 static void BuildRailClick_Remove(Window *w)
 {
-	if (HASBIT(w->disabled_state, 16)) return;
+	if (IsWindowWidgetDisabled(w, 16)) return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 
@@ -405,24 +405,25 @@ static const uint16 _rail_keycodes[] = {
 };
 
 
+static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
+{
+	switch (clicked_widget) {
+		case 4: case 5: case 6: case 7: case 8: case 11: case 12: case 13: EnableWindowWidget(w, 16); break;
+		default: DisableWindowWidget(w, 16); w->click_state &= ~(1 << 16); break;
+	}
+}
+
 static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT:
-		w->disabled_state &= ~(1 << 16);
-		if (!(w->click_state & ((1<<4)|(1<<5)|(1<<6)|(1<<7)|(1<<8)|(1<<11)|(1<<12)|(1<<13)))) {
-			w->disabled_state |= (1 << 16);
-			w->click_state &= ~(1<<16);
-		}
-		DrawWindowWidgets(w);
-		break;
-
+	case WE_PAINT: DrawWindowWidgets(w); break;
 	case WE_CLICK:
 		if (e->we.click.widget >= 4) {
 			_remove_button_clicked = false;
 			_build_railroad_button_proc[e->we.click.widget - 4](w);
 		}
-	break;
+		UpdateRemoveWidgetStatus(w, e->we.click.widget);
+		break;
 
 	case WE_KEYPRESS: {
 		uint i;
@@ -432,6 +433,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 				e->we.keypress.cont = false;
 				_remove_button_clicked = false;
 				_build_railroad_button_proc[i](w);
+				UpdateRemoveWidgetStatus(w, i);
 				break;
 			}
 		}
@@ -651,10 +653,9 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			SetTileSelectBigSize(-rad, -rad, 2 * rad, 2 * rad);
 
 		/* Update buttons for correct spread value */
-		w->disabled_state = 0;
 		for (bits = _patches.station_spread; bits < 7; bits++) {
-			SETBIT(w->disabled_state, bits + 5);
-			SETBIT(w->disabled_state, bits + 12);
+			DisableWindowWidget(w, bits + 5);
+			DisableWindowWidget(w, bits + 12);
 		}
 
 		if (newstations) {
@@ -662,8 +663,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 
 			if (statspec != NULL) {
 				for (bits = 0; bits < 7; bits++) {
-					if (HASBIT(statspec->disallowed_platforms, bits)) SETBIT(w->disabled_state, bits +  5);
-					if (HASBIT(statspec->disallowed_lengths,   bits)) SETBIT(w->disabled_state, bits + 12);
+					SetWindowWidgetDisabledState(w, bits +  5, HASBIT(statspec->disallowed_platforms, bits));
+					SetWindowWidgetDisabledState(w, bits + 12, HASBIT(statspec->disallowed_lengths,   bits));
 				}
 			}
 		}

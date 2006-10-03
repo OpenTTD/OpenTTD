@@ -155,7 +155,7 @@ static void BuildRoadClick_Tunnel(Window *w)
 
 static void BuildRoadClick_Remove(Window *w)
 {
-	if (HASBIT(w->disabled_state, 11)) return;
+	if (IsWindowWidgetDisabled(w, 11)) return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 	TOGGLEBIT(w->click_state, 11);
@@ -184,10 +184,11 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		w->disabled_state &= ~(1 << 11);
 		if (!(w->click_state & ((1<<3)|(1<<4)))) {
-			w->disabled_state |= (1 << 11);
+			DisableWindowWidget(w, 11);
 			w->click_state &= ~(1<<11);
+		} else {
+			EnableWindowWidget(w, 11);
 		}
 		DrawWindowWidgets(w);
 		break;

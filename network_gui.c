@@ -238,18 +238,12 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		}
 		if (ld->flags & VL_RESORT) SortNetworkGameList(&WP(w, network_ql_d));
 
-		w->disabled_state = 0;
-
-		if (sel == NULL) {
-			SETBIT(w->disabled_state, 16); SETBIT(w->disabled_state, 17);
-		} else if (!sel->online) {
-			SETBIT(w->disabled_state, 16); // Server offline, join button disabled
-		} else if (sel->info.clients_on >= sel->info.clients_max) {
-			SETBIT(w->disabled_state, 16); // Server full, join button disabled
-		} else if (!sel->info.compatible) {
-			// revisions don't match, check if server has no revision; then allow connection
-			SETBIT(w->disabled_state, 16); // Revision mismatch, join button disabled
-		}
+		SetWindowWidgetDisabledState(w, 17, sel == NULL);
+		/* Join Button disabling conditions */
+		SetWindowWidgetDisabledState(w, 16, sel == NULL || // no Selected Server
+				!sel->online || // Server offline
+				sel->info.clients_on >= sel->info.clients_max || // Server full
+				!sel->info.compatible); // Revision mismatch
 
 		SetDParam(0, 0x00);
 		SetDParam(7, _lan_internet_types_dropdown[_network_lan_internet]);
@@ -823,14 +817,12 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		const NetworkGameInfo *gi = &nd->server->info;
 		int y = NET_PRC__OFFSET_TOP_WIDGET_COMPANY, pos;
 
-		w->disabled_state = 0;
-
-		if (nd->company == (byte)-1) SETBIT(w->disabled_state, 7);
-		if (gi->companies_on >= gi->companies_max) SETBIT(w->disabled_state, 8);
-		if (gi->spectators_on >= gi->spectators_max) SETBIT(w->disabled_state, 9);
+		SetWindowWidgetDisabledState(w, 7, nd->company == (byte)-1);
+		SetWindowWidgetDisabledState(w, 8, gi->companies_on >= gi->companies_max);
 		/* You can not join a server as spectator when it has no companies active..
 		 * it causes some nasty crashes */
-		if (gi->companies_on == 0) SETBIT(w->disabled_state, 9);
+		SetWindowWidgetDisabledState(w, 9, gi->spectators_on >= gi->spectators_max ||
+				gi->companies_on == 0);
 
 		DrawWindowWidgets(w);
 

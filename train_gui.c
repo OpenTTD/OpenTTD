@@ -206,7 +206,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT:
 
-		if (w->window_number == 0) SETBIT(w->disabled_state, 5);
+		SetWindowWidgetDisabledState(w, 5, w->window_number == 0);
 
 		{
 			int count = 0;
@@ -424,21 +424,23 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		const Vehicle *v, *u;
 		StringID str;
+		bool is_localplayer;
 
 		v = GetVehicle(w->window_number);
 
-		if (v->owner != _local_player) {
-			w->disabled_state = 0x3380;
-		} else {
-			w->disabled_state = 0;
+		is_localplayer = v->owner == _local_player;
+		SetWindowWidgetDisabledState(w,  7, !is_localplayer);
+		SetWindowWidgetDisabledState(w,  8, !is_localplayer);
+		SetWindowWidgetDisabledState(w,  9, !is_localplayer);
+		SetWindowWidgetDisabledState(w, 12, !is_localplayer);
+		SetWindowWidgetDisabledState(w, 13, !is_localplayer);
 
-			SETBIT(w->disabled_state, 12);
-
+		if (is_localplayer) {
 			/* See if any vehicle can be refitted */
 			for (u = v; u != NULL; u = u->next) {
 				if (EngInfo(u->engine_type)->refit_mask != 0 ||
 						(!(RailVehInfo(v->engine_type)->flags & RVI_WAGON) && v->cargo_cap != 0)) {
-					CLRBIT(w->disabled_state, 12);
+					EnableWindowWidget(w, 12);
 					/* We have a refittable carriage, bail out */
 					break;
 				}
@@ -682,11 +684,12 @@ static void DrawTrainDetailsWindow(Window *w)
 
 	SetVScrollCount(w, num);
 
-	w->disabled_state = 1 << (det_tab + 9);
-	if (v->owner != _local_player) w->disabled_state |= (1 << 2);
+	DisableWindowWidget(w, det_tab + 9);
+	SetWindowWidgetDisabledState(w, 2, v->owner != _local_player);
 
-	// disable service-scroller when interval is set to disabled
-	if (!_patches.servint_trains) w->disabled_state |= (1 << 6) | (1 << 7);
+	/* disable service-scroller when interval is set to disabled */
+	SetWindowWidgetDisabledState(w, 6, !_patches.servint_trains);
+	SetWindowWidgetDisabledState(w, 7, !_patches.servint_trains);
 
 	SetDParam(0, v->string_id);
 	SetDParam(1, v->unitnumber);
@@ -801,11 +804,11 @@ do_change_service_int:
 		case 10: // Information
 		case 11: // Capacities
 		case 12: // Total cargo
-			CLRBIT(w->disabled_state, 9);
-			CLRBIT(w->disabled_state, 10);
-			CLRBIT(w->disabled_state, 11);
-			CLRBIT(w->disabled_state, 12);
-			SETBIT(w->disabled_state, e->we.click.widget);
+			EnableWindowWidget(w,  9);
+			EnableWindowWidget(w, 10);
+			EnableWindowWidget(w, 11);
+			EnableWindowWidget(w, 12);
+			EnableWindowWidget(w, e->we.click.widget);
 			WP(w,traindetails_d).tab = e->we.click.widget - 9;
 			SetWindowDirty(w);
 			break;

@@ -143,6 +143,7 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
+		int i; // airport enabling loop
 		int sel;
 		int rad = 4; // default catchment radious
 		uint32 avail_airports;
@@ -156,10 +157,13 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		if (!HASBIT(avail_airports, 0) && sel == AT_SMALL) sel = AT_LARGE;
 		if (!HASBIT(avail_airports, 1) && sel == AT_LARGE) sel = AT_SMALL;
 
-		/* 'Country Airport' starts at widget 3, and if its bit is set, it is
-		 * available, so take its opposite value to set the disabled_state. There
-		 * are 9 buildable airports, so XOR with 0x01FF (1 1111 1111) */
-		w->disabled_state = (avail_airports ^ 0x01FF) << 7;
+		/* 'Country Airport' starts at widget 7, and if its bit is set, it is
+		 * available, so take its opposite value to set the disabled state.
+		 * There are 9 buildable airports
+		 * XXX TODO : all airports should be held in arrays, with all relevant data.
+		 * This should be part of newgrf-airports, i suppose
+		 */
+		for (i = 0; i < 9; i++) SetWindowWidgetDisabledState(w, i + 7, !HASBIT(avail_airports, i));
 
 		_selected_airport_type = sel;
 		// select default the coverage area to 'Off' (16)

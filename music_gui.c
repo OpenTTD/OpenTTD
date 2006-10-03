@@ -199,7 +199,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 		uint i;
 		int y;
 
-		w->disabled_state = (msf.playlist  <= 3) ? (1 << 11) : 0;
+		SetWindowWidgetDisabledState(w, 11, msf.playlist <= 3);
 		w->click_state |= 0x18;
 		DrawWindowWidgets(w);
 

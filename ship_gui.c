@@ -85,9 +85,10 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		const Vehicle *v = GetVehicle(w->window_number);
 		StringID str;
 
-		w->disabled_state = v->owner == _local_player ? 0 : (1 << 2);
+		SetWindowWidgetDisabledState(w, 2, v->owner != _local_player);
 		// disable service-scroller when interval is set to disabled
-		if (!_patches.servint_ships) w->disabled_state |= (1 << 5) | (1 << 6);
+		SetWindowWidgetDisabledState(w, 5, !_patches.servint_ships);
+		SetWindowWidgetDisabledState(w, 6, !_patches.servint_ships);
 
 		SetDParam(0, v->string_id);
 		SetDParam(1, v->unitnumber);
@@ -251,7 +252,7 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 			int sel;
 			int y;
 
-			if (w->window_number == 0) w->disabled_state = 1 << 5;
+			SetWindowWidgetDisabledState(w, 5, w->window_number == 0);
 
 			count = 0;
 			for (eid = SHIP_ENGINES_INDEX; eid < SHIP_ENGINES_INDEX + NUM_SHIP_ENGINES; eid++) {
@@ -374,16 +375,16 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_PAINT: {
 			Vehicle *v = GetVehicle(w->window_number);
-			uint32 disabled = 1<<8;
 			StringID str;
 
-			// Possible to refit?
+			/* Possible to refit? */
 			if (ShipVehInfo(v->engine_type)->refittable && IsShipInDepotStopped(v)) {
-				disabled = 0;
+				EnableWindowWidget(w, 7);
+				EnableWindowWidget(w, 8);
 			}
 
-			if (v->owner != _local_player) disabled |= 1<<8 | 1<<7;
-			w->disabled_state = disabled;
+			SetWindowWidgetDisabledState(w, 7, v->owner != _local_player);
+			SetWindowWidgetDisabledState(w, 8, v->owner != _local_player);
 
 			/* draw widgets & caption */
 			SetDParam(0, v->string_id);

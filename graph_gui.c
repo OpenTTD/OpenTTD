@@ -899,9 +899,9 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			for (i = 0; i < MAX_PLAYERS; i++) {
 				if (!GetPlayer(i)->is_active) {
 					// Check if we have the player as an active player
-					if (!(w->disabled_state & (1 << (i + 13)))) {
+					if (!IsWindowWidgetDisabled(w, i + 13)) {
 						// Bah, player gone :(
-						w->disabled_state += 1 << (i + 13);
+						DisableWindowWidget(w, i + 13);
 						// Is this player selected? If so, select first player (always save? :s)
 						if (w->click_state == 1U << (i + 13)) w->click_state = 1 << 13;
 						// We need a repaint
@@ -911,9 +911,9 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 				}
 
 				// Check if we have the player marked as inactive
-				if (w->disabled_state & (1 << (i + 13))) {
+				if (IsWindowWidgetDisabled(w, i + 13)) {
 					// New player! Yippie :p
-					w->disabled_state -= 1 << (i + 13);
+					EnableWindowWidget(w, i + 13);
 					// We need a repaint
 					SetWindowDirty(w);
 				}
@@ -1000,7 +1000,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			// Check which button is clicked
 			if (IS_INT_INSIDE(e->we.click.widget, 13, 21)) {
 				// Is it no on disable?
-				if ((w->disabled_state & (1 << e->we.click.widget)) == 0) {
+				if (!IsWindowWidgetDisabled(w, e->we.click.widget)) {
 					w->click_state = 1 << e->we.click.widget;
 					SetWindowDirty(w);
 				}
@@ -1011,11 +1011,9 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			int i;
 			Player *p2;
 
-			w->disabled_state = 0;
-
-			// Hide the player who are not active
+			/* Disable the players who are not active */
 			for (i = 0; i < MAX_PLAYERS; i++) {
-				if (!GetPlayer(i)->is_active) w->disabled_state += 1 << (i + 13);
+				SetWindowWidgetDisabledState(w, i + 13, !GetPlayer(i)->is_active);
 			}
 			// Update all player stats with the current data
 			//  (this is because _score_info is not saved to a savegame)

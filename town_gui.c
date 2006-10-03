@@ -106,7 +106,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 		if (WP(w,def_d).data_1 != -1 && !HASBIT(buttons, WP(w,def_d).data_1))
 			WP(w,def_d).data_1 = -1;
 
-		w->disabled_state = (WP(w,def_d).data_1 == -1) ? (1 << 6) : 0;
+		SetWindowWidgetDisabledState(w, 6, WP(w, def_d).data_1 == -1);
 
 		{
 			int y;
@@ -234,7 +234,7 @@ static void TownViewWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT:
 		// disable renaming town in network games if you are not the server
-		if (_networking && !_network_server) SETBIT(w->disabled_state, 8);
+		SetWindowWidgetDisabledState(w, 8, _networking && !_network_server);
 
 		SetDParam(0, t->index);
 		DrawWindowWidgets(w);

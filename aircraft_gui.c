@@ -121,7 +121,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 		byte acc_planes;
 
 		if (tile == 0) {
-			SETBIT(w->disabled_state, 5);
+			DisableWindowWidget(w, 5);
 			acc_planes = ALL;
 		} else {
 			acc_planes = GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
@@ -269,9 +269,11 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		const Vehicle *v = GetVehicle(w->window_number);
 
-		w->disabled_state = v->owner == _local_player ? 0 : (1 << 2);
-		if (!_patches.servint_aircraft) // disable service-scroller when interval is set to disabled
-			w->disabled_state |= (1 << 5) | (1 << 6);
+		SetWindowWidgetDisabledState(w, 2, v->owner != _local_player);
+
+		/* Disable service-scroller when interval is set to disabled */
+		SetWindowWidgetDisabledState(w, 5, !_patches.servint_aircraft);
+		SetWindowWidgetDisabledState(w, 6, !_patches.servint_aircraft);
 
 		SetDParam(0, v->string_id);
 		SetDParam(1, v->unitnumber);
@@ -451,13 +453,11 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		const Vehicle *v = GetVehicle(w->window_number);
-		uint32 disabled = 1 << 8;
 		StringID str;
 
-		if (IsAircraftInHangarStopped(v)) disabled = 0;
+		SetWindowWidgetDisabledState(w, 7, v->owner != _local_player);
+		SetWindowWidgetDisabledState(w, 8, !IsAircraftInHangarStopped(v) || v->owner != _local_player);
 
-		if (v->owner != _local_player) disabled |= 1 << 8 | 1 << 7;
-		w->disabled_state = disabled;
 
 		/* draw widgets & caption */
 		SetDParam(0, v->string_id);

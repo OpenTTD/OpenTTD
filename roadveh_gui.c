@@ -86,9 +86,10 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		const Vehicle *v = GetVehicle(w->window_number);
 		StringID str;
 
-		w->disabled_state = v->owner == _local_player ? 0 : (1 << 2);
+		SetWindowWidgetDisabledState(w, 2, v->owner != _local_player);
 		// disable service-scroller when interval is set to disabled
-		if (!_patches.servint_roadveh) w->disabled_state |= (1 << 5) | (1 << 6);
+		SetWindowWidgetDisabledState(w, 5, !_patches.servint_roadveh);
+		SetWindowWidgetDisabledState(w, 6, !_patches.servint_roadveh);
 
 		SetDParam(0, v->string_id);
 		SetDParam(1, v->unitnumber);
@@ -236,10 +237,11 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = GetVehicle(w->window_number);
 		StringID str;
 
-		w->disabled_state = (v->owner != _local_player) ? (1 << 8 | 1 << 7 | 1 << 12) : 0;
-
+		SetWindowWidgetDisabledState(w, 7, v->owner != _local_player);
+		SetWindowWidgetDisabledState(w, 8, v->owner != _local_player);
 		/* Disable refit button if vehicle not refittable */
-		if (_engine_info[v->engine_type].refit_mask == 0) SETBIT(w->disabled_state, 12);
+		SetWindowWidgetDisabledState(w, 12, v->owner != _local_player ||
+				_engine_info[v->engine_type].refit_mask == 0);
 
 		/* draw widgets & caption */
 		SetDParam(0, v->string_id);
@@ -403,7 +405,7 @@ static void DrawNewRoadVehWindow(Window *w)
 	int sel;
 	int y;
 
-	if (w->window_number == 0) w->disabled_state = 1 << 5;
+	SetWindowWidgetDisabledState(w, 5, w->window_number == 0);
 
 	count = 0;
 	for (e = ROAD_ENGINES_INDEX; e < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; e++) {
@@ -540,4 +542,5 @@ void ShowBuildRoadVehWindow(TileIndex tile)
 		w->caption_color = _local_player;
 	}
 }
+
 

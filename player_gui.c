@@ -154,7 +154,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 		PlayerID player = w->window_number;
 		const Player *p = GetPlayer(player);
 
-		w->disabled_state = p->current_loan != 0 ? 0 : (1 << 7);
+		SetWindowWidgetDisabledState(w, 7, p->current_loan == 0);
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
@@ -322,11 +322,13 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 			LiveryScheme scheme = LS_DEFAULT;
 			int y = 51;
 
-			if ((WP(w, livery_d).sel == 0)) {
-				/* Disable dropdown controls if no scheme is selected */
-				w->disabled_state = 1 << 9 | 1 << 10 | 1 << 11 | 1 << 12;
-			} else {
-				w->disabled_state = 0;
+			/* Disable dropdown controls if no scheme is selected */
+			SetWindowWidgetDisabledState(w,  9, (WP(w, livery_d).sel == 0));
+			SetWindowWidgetDisabledState(w, 10, (WP(w, livery_d).sel == 0));
+			SetWindowWidgetDisabledState(w, 11, (WP(w, livery_d).sel == 0));
+			SetWindowWidgetDisabledState(w, 12, (WP(w, livery_d).sel == 0));
+
+			if (!(WP(w, livery_d).sel == 0)) {
 				for (scheme = 0; scheme < LS_END; scheme++) {
 					if (HASBIT(WP(w, livery_d).sel, scheme)) break;
 				}
@@ -649,29 +651,29 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		const Player *p = GetPlayer(w->window_number);
-		uint32 dis = 0;
 
 		if (!IsWindowOfPrototype(w, _other_player_company_widgets)) {
 			AssignWidgetToWindow(w, (p->location_of_house != 0) ? _my_player_company_bh_widgets : _my_player_company_widgets);
 
 			SetWindowWidgetHiddenState(w, 11, !_networking); // Hide company-password widget
 		} else {
-			if (p->location_of_house == 0) SETBIT(dis, 7);
+			SetWindowWidgetDisabledState(w, 7, p->location_of_house == 0);
 
-			if (_patches.allow_shares) { /* shares are allowed */
+			if (_patches.allow_shares) { // Shares are allowed
 				/* If all shares are owned by someone (none by nobody), disable buy button */
-				if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) SETBIT(dis, 9);
-
-				/* Only 25% left to buy. If the player is human, disable buying it up.. TODO issues! */
-				if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) SETBIT(dis, 9);
+				SetWindowWidgetDisabledState(w, 9, GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0 ||
+						/* Only 25% left to buy. If the player is human, disable buying it up.. TODO issues! */
+						(GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) ||
+						/* Spectators cannot do anything of course */
+						_local_player == OWNER_SPECTATOR);
 
 				/* If the player doesn't own any shares, disable sell button */
-				if (GetAmountOwnedBy(p, _local_player) == 0) SETBIT(dis, 10);
-
-				/* Spectators cannot do anything of course */
-				if (_local_player == OWNER_SPECTATOR) dis |= (1 << 9) | (1 << 10);
-			} else { /* shares are not allowed, disable buy/sell buttons */
-				dis |= (1 << 9) | (1 << 10);
+				SetWindowWidgetDisabledState(w, 10, (GetAmountOwnedBy(p, _local_player) == 0) ||
+						/* Spectators cannot do anything of course */
+						_local_player == OWNER_SPECTATOR);
+			} else { // Shares are not allowed, disable buy/sell buttons
+				DisableWindowWidget(w,  9);
+				DisableWindowWidget(w, 10);
 			}
 		}
 
@@ -679,7 +681,6 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		SetDParam(1, p->name_2);
 		SetDParam(2, GetPlayerNameString((byte)w->window_number, 3));
 
-		w->disabled_state = dis;
 		DrawWindowWidgets(w);
 
 		SetDParam(0, p->inaugurated_year);

@@ -541,13 +541,11 @@ static void DrawStationViewWindow(Window *w)
 	}
 	SetVScrollCount(w, num);
 
-	w->disabled_state = st->owner == _local_player ? 0 : (1 << 9);
-
-	if (!(st->facilities & FACIL_TRAIN)) SETBIT(w->disabled_state,  10);
-	if (!(st->facilities & FACIL_TRUCK_STOP) &&
-			!(st->facilities & FACIL_BUS_STOP)) SETBIT(w->disabled_state, 11);
-	if (!(st->facilities & FACIL_AIRPORT)) SETBIT(w->disabled_state, 12);
-	if (!(st->facilities & FACIL_DOCK)) SETBIT(w->disabled_state, 13);
+	SetWindowWidgetDisabledState(w,  9, st->owner != _local_player);
+	SetWindowWidgetDisabledState(w, 10, !(st->facilities & FACIL_TRAIN));
+	SetWindowWidgetDisabledState(w, 11, !(st->facilities & FACIL_TRUCK_STOP) && !(st->facilities & FACIL_BUS_STOP));
+	SetWindowWidgetDisabledState(w, 12, !(st->facilities & FACIL_AIRPORT));
+	SetWindowWidgetDisabledState(w, 13, !(st->facilities & FACIL_DOCK));
 
 	SetDParam(0, st->index);
 	SetDParam(1, st->facilities);

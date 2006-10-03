@@ -57,22 +57,13 @@ static void DrawOrdersWindow(Window *w)
 	int sel;
 	int y, i;
 	bool shared_orders;
+	bool not_localplayer;
 	byte color;
 
 	v = GetVehicle(w->window_number);
-
-	w->disabled_state = (v->owner == _local_player) ? 0 : (
-		1 << 4 |   //skip
-		1 << 5 |   //delete
-		1 << 6 |   //non-stop
-		1 << 7 |   //go-to
-		1 << 8 |   //full load
-		1 << 9 |   //unload
-		1 << 10    //transfer
-		);
+	not_localplayer = v->owner != _local_player;
 
 	if (v->type != VEH_Train) {
-		SETBIT(w->disabled_state, 6); // Disable non-stop for non-trains
 		switch (v->type) {
 			case VEH_Road:     w->widget[11].data = STR_LORRY; break;
 			case VEH_Ship:     w->widget[11].data = STR_SHIP;  break;
@@ -83,16 +74,6 @@ static void DrawOrdersWindow(Window *w)
 
 	shared_orders = IsOrderListShared(v);
 
-	if (!shared_orders || v->orders == NULL) {
-		SETBIT(w->disabled_state, 11); // Disable list of vehicles with the same shared orders if there are no list
-	}
-
-	if ((uint)v->num_orders + (shared_orders?1:0) <= (uint)WP(w,order_d).sel)
-		SETBIT(w->disabled_state, 5); /* delete */
-
-	if (v->num_orders == 0)
-		SETBIT(w->disabled_state, 4); /* skip */
-
 	SetVScrollCount(w, v->num_orders + 1);
 
 	sel = OrderGetSel(w);
@@ -100,33 +81,44 @@ static void DrawOrdersWindow(Window *w)
 
 	order = GetVehicleOrder(v, sel);
 
+	/* skip */
+	SetWindowWidgetDisabledState(w,  4, not_localplayer || v->num_orders == 0);
+
+	/* delete */
+	SetWindowWidgetDisabledState(w,  5, not_localplayer ||
+			(uint)v->num_orders + (shared_orders ? 1 : 0) <= (uint)WP(w, order_d).sel);
+
+	/* non-stop only for trains */
+	SetWindowWidgetDisabledState(w,  6, not_localplayer || v->type != VEH_Train
+			|| order == NULL);
+	SetWindowWidgetDisabledState(w,  7, not_localplayer); // go-to
+	SetWindowWidgetDisabledState(w,  8, not_localplayer || order == NULL); // full load
+	SetWindowWidgetDisabledState(w,  9, not_localplayer || order == NULL); // unload
+	SetWindowWidgetDisabledState(w, 10, not_localplayer || order == NULL); // transfer
+	SetWindowWidgetDisabledState(w, 11, !shared_orders || v->orders == NULL); // Disable list of vehicles with the same shared orders if there are no list
+
 	if (order != NULL) {
 		switch (order->type) {
 			case OT_GOTO_STATION:
 				break;
 
 			case OT_GOTO_DEPOT:
-				SETBIT(w->disabled_state, 9);  /* unload */
-				SETBIT(w->disabled_state, 10); /* transfer */
+				DisableWindowWidget(w,  9);
+				DisableWindowWidget(w, 10);
 				SetDParam(2,STR_SERVICE);
 				break;
 
 			case OT_GOTO_WAYPOINT:
-				SETBIT(w->disabled_state, 8);  /* full load */
-				SETBIT(w->disabled_state, 9);  /* unload */
-				SETBIT(w->disabled_state, 10); /* transfer */
+				DisableWindowWidget(w,  8);
+				DisableWindowWidget(w,  9);
+				DisableWindowWidget(w, 10);
 				break;
 
-			default:
-				SETBIT(w->disabled_state, 6);  /* nonstop */
-				SETBIT(w->disabled_state, 8);  /* full load */
-				SETBIT(w->disabled_state, 9);  /* unload */
+			default: // every other orders
+				DisableWindowWidget(w, 6);
+				DisableWindowWidget(w, 8);
+				DisableWindowWidget(w, 9);
 		}
-	} else {
-		SETBIT(w->disabled_state, 6);          /* nonstop */
-		SETBIT(w->disabled_state, 8);          /* full load */
-		SETBIT(w->disabled_state, 9);          /* unload */
-		SETBIT(w->disabled_state, 10);         /* transfer */
 	}
 
 	SetDParam(0, v->string_id);
@@ -477,7 +469,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 			if (e->we.keypress.keycode == _order_keycodes[i]) {
 				e->we.keypress.cont = false;
 				//see if the button is disabled
-				if (!HASBIT(w->disabled_state, i + 4)) _order_button_proc[i](w, v);
+				if (!IsWindowWidgetDisabled(w, i + 4)) _order_button_proc[i](w, v);
 				break;
 			}
 		}
