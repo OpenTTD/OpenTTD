@@ -711,7 +711,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 		int click_state = WP(w, def_d).data_1;
 		int i, y;
 
-		if (_news_ticker_sound) SETBIT(w->click_state, 25);
+		if (_news_ticker_sound) LowerWindowWidget(w, 25);
 		DrawWindowWidgets(w);
 
 		/* XXX - Draw the fake widgets-buttons. Can't add these to the widget-desc since
@@ -750,7 +750,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 			break;
 		case 25: /* Change ticker sound on/off */
 			_news_ticker_sound ^= 1;
-			TOGGLEBIT(w->click_state, e->we.click.widget);
+			ToggleWidgetLoweredState(w, e->we.click.widget);
 			InvalidateWidget(w, e->we.click.widget);
 			break;
 		default: { /* Clicked on the [<] .. [>] widgets */

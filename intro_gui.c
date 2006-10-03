@@ -47,8 +47,10 @@ static inline void SetNewLandscapeType(byte landscape)
 static void SelectGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + 8); break;
+
 	case WE_PAINT:
-		w->click_state = (w->click_state & ~(0xF << 8)) | (1 << (_opt_newgame.landscape + 8));
+		LowerWindowWidget(w, _opt_newgame.landscape + 8); // All buttons get automagically unclicked
 		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
 		DrawWindowWidgets(w);
 		break;
@@ -72,6 +74,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 #endif
 			break;
 		case 8: case 9: case 10: case 11:
+			RaiseWindowWidget(w, _opt_newgame.landscape + 8);
 			SetNewLandscapeType(e->we.click.widget - 8);
 			break;
 		case 12: ShowGameOptions(); break;

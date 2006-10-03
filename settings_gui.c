@@ -108,7 +108,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		i = GetCurRes();
 		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
 		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
-		(_fullscreen) ? SETBIT(w->click_state, 28) : CLRBIT(w->click_state, 28); // fullscreen button
+		SetWidgetLoweredState(w, 28, _fullscreen);
 
 		DrawWindowWidgets(w);
 		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, 0); // fullscreen
@@ -152,7 +152,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), 27, 0, 0);
 			return;
 		case 28: /* Click fullscreen on/off */
-			(_fullscreen) ? CLRBIT(w->click_state, 28) : SETBIT(w->click_state, 28);
+			SetWidgetLoweredState(w, 28, !_fullscreen);
 			ToggleFullScreen(!_fullscreen); // toggle full-screen on/off
 			SetWindowDirty(w);
 			return;
@@ -398,7 +398,6 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		int i;
 		int y, value;
 
-		w->click_state = (1 << 3) << _opt_mod_temp.diff_level; // have current difficulty button clicked
 		DrawWindowWidgets(w);
 
 		click_a = _difficulty_click_a;
@@ -484,7 +483,9 @@ static void GameDifficultyWndProc(Window *w, WindowEvent *e)
 		}	break;
 		case 3: case 4: case 5: case 6: /* Easy / Medium / Hard / Custom */
 			// temporarily change difficulty level
+			RaiseWindowWidget(w, _opt_mod_temp.diff_level + 3);
 			SetDifficultyLevel(e->we.click.widget - 3, &_opt_mod_temp);
+			LowerWindowWidget(w, _opt_mod_temp.diff_level + 3);
 			SetWindowDirty(w);
 			break;
 		case 7: /* Highscore Table */
@@ -700,6 +701,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			}
 			first_time = false;
 		}
+		LowerWindowWidget(w, 4);
 	} break;
 
 	case WE_PAINT: {
@@ -708,7 +710,6 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		uint i;
 
 		/* Set up selected category */
-		w->click_state = 1 << (WP(w, def_d).data_1 + 4);
 		DrawWindowWidgets(w);
 
 		x = 5;
@@ -848,7 +849,9 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 		case 4: case 5: case 6: case 7: case 8: case 9:
-			WP(w,def_d).data_1 = e->we.click.widget - 4;
+			RaiseWindowWidget(w, WP(w, def_d).data_1 + 4);
+			WP(w, def_d).data_1 = e->we.click.widget - 4;
+			LowerWindowWidget(w, WP(w, def_d).data_1 + 4);
 			DeleteWindowById(WC_QUERY_STRING, 0);
 			SetWindowDirty(w);
 			break;

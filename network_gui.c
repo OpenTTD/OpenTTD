@@ -1710,7 +1710,7 @@ void ShowNetworkChatQueryWindow(byte desttype, byte dest)
 
 	w = AllocateWindowDesc(&_chat_window_desc);
 
-	w->click_state = 1 << 1;
+	LowerWindowWidget(w, 1);
 	WP(w,querystr_d).caption = STR_NULL;
 	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
 	WP(w,querystr_d).wnd_num = 0;

@@ -157,8 +157,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		UnclickWindowButtons(w);
-		SetWindowDirty(w);
+		RaiseWindowButtons(w);
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
 		if (w != NULL) WP(w,def_d).close = true;
@@ -224,11 +223,12 @@ void ShowBuildDocksToolbar(void)
 static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: LowerWindowWidget(w, _station_show_coverage + 3); break;
+
 	case WE_PAINT: {
 		int rad;
 
 		if (WP(w,def_d).close) return;
-		w->click_state = (1<<3) << _station_show_coverage;
 		DrawWindowWidgets(w);
 
 		rad = (_patches.modified_catchment) ? CA_DOCK : 4;
@@ -243,7 +243,9 @@ static void BuildDockStationWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 			case 3:
 			case 4:
+				RaiseWindowWidget(w, _station_show_coverage + 3);
 				_station_show_coverage = e->we.click.widget - 3;
+				LowerWindowWidget(w, _station_show_coverage + 3);
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
 				break;
@@ -300,8 +302,9 @@ static void UpdateDocksDirection(void)
 static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: LowerWindowWidget(w, _ship_depot_direction + 3); break;
+
 	case WE_PAINT:
-		w->click_state = (1<<3) << _ship_depot_direction;
 		DrawWindowWidgets(w);
 
 		DrawShipDepotSprite(67, 35, 0);
@@ -314,7 +317,9 @@ static void BuildDocksDepotWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 3:
 		case 4:
+			RaiseWindowWidget(w, _ship_depot_direction + 3);
 			_ship_depot_direction = e->we.click.widget - 3;
+			LowerWindowWidget(w, _ship_depot_direction + 3);
 			SndPlayFx(SND_15_BEEP);
 			UpdateDocksDirection();
 			SetWindowDirty(w);

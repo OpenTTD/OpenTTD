@@ -223,11 +223,22 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 	const Player* p;
 
 	switch (e->event) {
+	case WE_CREATE: {
+		uint include_bits = ~_legend_excludebits;
+		int i;
+		for (i = 0; include_bits != 0; i++, include_bits >>= 1) {
+			if (HASBIT(include_bits, 0)) LowerWindowWidget(w, i + 3);
+		}
+		break;
+	}
+
 	case WE_PAINT:
 		FOR_ALL_PLAYERS(p) {
-			if (!p->is_active) SETBIT(_legend_excludebits, p->index);
+			if (!p->is_active) {
+				SETBIT(_legend_excludebits, p->index);
+				RaiseWindowWidget(w, p->index + 3);
+			}
 		}
-		w->click_state = (~_legend_excludebits) << 3;
 		DrawWindowWidgets(w);
 
 		FOR_ALL_PLAYERS(p) {
@@ -245,6 +256,7 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		if (IS_INT_INSIDE(e->we.click.widget, 3, 11)) {
 			_legend_excludebits ^= (1 << (e->we.click.widget - 3));
+			ToggleWidgetLoweredState(w, e->we.click.widget);
 			SetWindowDirty(w);
 			InvalidateWindow(WC_INCOME_GRAPH, 0);
 			InvalidateWindow(WC_OPERATING_PROFIT, 0);
@@ -693,18 +705,26 @@ static const byte _cargo_legend_colors[12] = {152, 32, 15, 174, 208, 194, 191, 8
 static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: {
+		uint to_select = ~_legend_cargobits;
+		int i;
+		for (i = 0; to_select != 0; i++, to_select >>= 1) {
+			if (HASBIT(to_select, 0)) LowerWindowWidget(w, i + 3);
+		}
+		break;
+	}
+
 	case WE_PAINT: {
 		int j, x, y;
 		CargoID i;
 		GraphDrawer gd;
 
-		gd.sel = _legend_cargobits;
-		w->click_state = (~_legend_cargobits) << 3;
 		DrawWindowWidgets(w);
 
 		x = 495;
 		y = 25;
 
+		gd.sel = _legend_cargobits;
 		gd.left = 2;
 		gd.top = 24;
 		gd.height = 104;
@@ -743,7 +763,8 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		case 3: case 4: case 5: case 6:
 		case 7: case 8: case 9: case 10:
 		case 11: case 12: case 13: case 14:
-			_legend_cargobits ^= 1 << (e->we.click.widget - 3);
+			TOGGLEBIT(_legend_cargobits, e->we.click.widget - 3);
+			ToggleWidgetLoweredState(w, e->we.click.widget);
 			SetWindowDirty(w);
 			break;
 		}
@@ -881,19 +902,18 @@ void ShowCompanyLeagueTable(void)
 
 static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 {
+	static PlayerID _performance_rating_detail_player = 0;
+
 	switch (e->event) {
 		case WE_PAINT: {
 			int i;
-			byte owner, x;
+			byte x;
 			uint16 y = 14;
 			int total_score = 0;
 			int color_done, color_notdone;
 
 			// Draw standard stuff
 			DrawWindowWidgets(w);
-
-			// The player of which we check the detail performance rating
-			owner = FindFirstBit(w->click_state) - 13;
 
 			// Paint the player icons
 			for (i = 0; i < MAX_PLAYERS; i++) {
@@ -903,7 +923,11 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 						// Bah, player gone :(
 						DisableWindowWidget(w, i + 13);
 						// Is this player selected? If so, select first player (always save? :s)
-						if (w->click_state == 1U << (i + 13)) w->click_state = 1 << 13;
+						if (IsWindowWidgetLowered(w, i + 13)) {
+							RaiseWindowWidget(w, i + 13);
+							LowerWindowWidget(w, 13);
+							_performance_rating_detail_player = 0;
+						}
 						// We need a repaint
 						SetWindowDirty(w);
 					}
@@ -918,7 +942,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 				}
 
-				x = (i == owner) ? 1 : 0;
+				x = (i == _performance_rating_detail_player) ? 1 : 0;
 				DrawPlayerIcon(i, i * 37 + 13 + x, 16 + x);
 			}
 
@@ -928,7 +952,7 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 
 			// Draw all the score parts
 			for (i = 0; i < NUM_SCORE; i++) {
-				int val    = _score_part[owner][i];
+				int val    = _score_part[_performance_rating_detail_player][i];
 				int needed = _score_info[i].needed;
 				int score  = _score_info[i].score;
 
@@ -1001,7 +1025,9 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			if (IS_INT_INSIDE(e->we.click.widget, 13, 21)) {
 				// Is it no on disable?
 				if (!IsWindowWidgetDisabled(w, e->we.click.widget)) {
-					w->click_state = 1 << e->we.click.widget;
+					RaiseWindowWidget(w, _performance_rating_detail_player + 13);
+					_performance_rating_detail_player = e->we.click.widget - 13;
+					LowerWindowWidget(w, _performance_rating_detail_player + 13);
 					SetWindowDirty(w);
 				}
 			}
@@ -1015,8 +1041,8 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			for (i = 0; i < MAX_PLAYERS; i++) {
 				SetWindowWidgetDisabledState(w, i + 13, !GetPlayer(i)->is_active);
 			}
-			// Update all player stats with the current data
-			//  (this is because _score_info is not saved to a savegame)
+			/* Update all player stats with the current data
+			 * (this is because _score_info is not saved to a savegame) */
 			FOR_ALL_PLAYERS(p2) {
 				if (p2->is_active) UpdateCompanyRatingAndValue(p2, false);
 			}
@@ -1024,8 +1050,8 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 			w->custom[0] = DAY_TICKS;
 			w->custom[1] = 5;
 
-			w->click_state = 1 << 13;
-
+			_performance_rating_detail_player = 0;
+			LowerWindowWidget(w, _performance_rating_detail_player + 13);
 			SetWindowDirty(w);
 
 			break;

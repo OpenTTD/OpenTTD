@@ -44,6 +44,7 @@ static int _rename_what;
 
 static byte _terraform_size = 1;
 static RailType _last_built_railtype;
+static int _scengen_town_size = 1;
 
 extern void GenerateIndustries(void);
 extern bool GenerateTowns(void);
@@ -105,20 +106,18 @@ void HandleOnEditText(WindowEvent *e)
  */
 bool HandlePlacePushButton(Window *w, int widget, CursorID cursor, int mode, PlaceProc *placeproc)
 {
-	uint32 mask = 1 << widget;
-
 	if (IsWindowWidgetDisabled(w, widget)) return false;
 
 	SndPlayFx(SND_15_BEEP);
 	SetWindowDirty(w);
 
-	if (w->click_state & mask) {
+	if (IsWindowWidgetLowered(w, widget)) {
 		ResetObjectToPlace();
 		return false;
 	}
 
 	SetObjectToPlace(cursor, mode, w->window_class, w->window_number);
-	w->click_state |= mask;
+	LowerWindowWidget(w, widget);
 	_place_proc = placeproc;
 	return true;
 }
@@ -470,7 +469,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY: {
 			Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-			v->click_state &= ~(1 << WP(w,menu_d).main_button);
+			RaiseWindowWidget(v, WP(w,menu_d).main_button);
 			SetWindowDirty(v);
 			return;
 		}
@@ -607,7 +606,7 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 
 	case WE_DESTROY: {
 		Window *v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		v->click_state &= ~(1 << WP(w,menu_d).main_button);
+		RaiseWindowWidget(v, WP(w,menu_d).main_button);
 		SetWindowDirty(v);
 		return;
 		}
@@ -664,8 +663,8 @@ static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID ba
 {
 	x += w->left;
 
-	SETBIT(w->click_state, (byte)main_button);
-	InvalidateWidget(w, (byte)main_button);
+	LowerWindowWidget(w, main_button);
+	InvalidateWidget(w, main_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
@@ -692,7 +691,7 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 {
 	x += w->left;
 
-	SETBIT(w->click_state, main_button);
+	LowerWindowWidget(w, main_button);
 	InvalidateWidget(w, main_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
@@ -1254,7 +1253,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 			} while (--n);
 		}
 
-		if (w->click_state & ( 1 << 5 | 1 << 6)) // change area-size if raise/lower corner is selected
+		if (IsWindowWidgetLowered(w, 5) || IsWindowWidgetLowered(w, 6)) // change area-size if raise/lower corner is selected
 			SetTileSelectSize(_terraform_size, _terraform_size);
 
 		break;
@@ -1294,9 +1293,17 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_TIMEOUT:
-		UnclickSomeWindowButtons(w, ~(1<<4 | 1<<5 | 1<<6 | 1<<7 | 1<<8 | 1<<9 | 1<<10 | 1<<11));
+	case WE_TIMEOUT: {
+		int i;
+		for (i = 0; w->widget[i].type != WWT_LAST; i++) {
+			if (IsWindowWidgetLowered(w, i)) {
+				RaiseWindowWidget(w, i);
+				InvalidateWidget(w, i);
+			}
+			if (i == 3) i = 11;
+		}
 		break;
+	}
 	case WE_PLACE_OBJ:
 		_place_proc(e->we.place.tile);
 		break;
@@ -1312,7 +1319,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
+		RaiseWindowButtons(w);
 		SetWindowDirty(w);
 		break;
 	}
@@ -1349,8 +1356,7 @@ void CcBuildTown(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void PlaceProc_Town(TileIndex tile)
 {
-	Window *w = FindWindowById(WC_SCEN_TOWN_GEN, 0);
-	DoCommandP(tile, 1 + FIND_FIRST_BIT(w->click_state >> 7), 0, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
+	DoCommandP(tile, _scengen_town_size, 0, CcBuildTown, CMD_BUILD_TOWN | CMD_MSG(STR_0236_CAN_T_BUILD_TOWN_HERE));
 }
 
 
@@ -1377,7 +1383,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CREATE:
-		w->click_state = 1 << 8; /* medium town size selected */
+		LowerWindowWidget(w, _scengen_town_size + 7);
 		break;
 
 	case WE_CLICK:
@@ -1390,7 +1396,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 
 			HandleButtonClick(w, 5);
 			_generating_world = true;
-			t = CreateRandomTown(20, 1 + FIND_FIRST_BIT(w->click_state >> 7));
+			t = CreateRandomTown(20, _scengen_town_size);
 			_generating_world = false;
 
 			if (t == NULL) {
@@ -1411,20 +1417,25 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		}
 
 		case 7: case 8: case 9:
-			w->click_state = 1 << e->we.click.widget;
+			RaiseWindowWidget(w, _scengen_town_size + 7);
+			_scengen_town_size = e->we.click.widget - 7;
+			LowerWindowWidget(w, _scengen_town_size + 7);
 			SetWindowDirty(w);
 			break;
 		}
 		break;
 
 	case WE_TIMEOUT:
-		UnclickSomeWindowButtons(w, 1<<5 | 1<<6);
+		RaiseWindowWidget(w, 5);
+		RaiseWindowWidget(w, 6);
+		SetWindowDirty(w);
 		break;
 	case WE_PLACE_OBJ:
 		_place_proc(e->we.place.tile);
 		break;
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state &= (1 << 7 | 1 << 8 | 1 << 9);
+		RaiseWindowButtons(w);
+		LowerWindowWidget(w, _scengen_town_size + 7);
 		SetWindowDirty(w);
 		break;
 	}
@@ -1633,11 +1644,11 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		break;
 	}
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
+		RaiseWindowButtons(w);
 		SetWindowDirty(w);
 		break;
 	case WE_TIMEOUT:
-		UnclickSomeWindowButtons(w, 1<<3);
+		RaiseWindowWidget(w, 3);
 		break;
 	}
 }
@@ -1820,27 +1831,34 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
-		w->click_state &= ~(1<<25);
+		RaiseWindowWidget(w, 25);
 		SetWindowDirty(w);
 	} break;
 
 	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
 
 	case WE_MOUSELOOP:
-		if (((w->click_state) & 1) != (uint)!!_pause) {
-			w->click_state ^= (1 << 0);
+		if (IsWindowWidgetLowered(w, 0) != _pause) {
+			ToggleWidgetLoweredState(w, 0);
 			SetWindowDirty(w);
 		}
 
-		if (((w->click_state >> 1) & 1) != (uint)!!_fast_forward) {
-			w->click_state ^= (1 << 1);
+		if (IsWindowWidgetLowered(w, 1) != _fast_forward) {
+			ToggleWidgetLoweredState(w, 1);
 			SetWindowDirty(w);
 		}
 		break;
 
-	case WE_TIMEOUT:
-		UnclickSomeWindowButtons(w, ~(1<<0 | 1<<1));
+	case WE_TIMEOUT: {
+		int i;
+		for (i = 2; w->widget[i].type != WWT_LAST; i++) {
+			if (IsWindowWidgetLowered(w, i)) {
+				RaiseWindowWidget(w, i);
+				InvalidateWidget(w, i);
+			}
+		}
 		break;
+	}
 	}
 }
 
@@ -2008,20 +2026,20 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
-		w->click_state &= ~(1<<25);
+		RaiseWindowWidget(w, 25);
 		SetWindowDirty(w);
 	} break;
 
 	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
 
 	case WE_MOUSELOOP:
-		if (((w->click_state) & 1) != (uint)!!_pause) {
-			w->click_state ^= (1 << 0);
+		if (IsWindowWidgetLowered(w, 0) != _pause) {
+			ToggleWidgetLoweredState(w, 0);
 			SetWindowDirty(w);
 		}
 
-		if (((w->click_state >> 1) & 1) != (uint)!!_fast_forward) {
-			w->click_state ^= (1 << 1);
+		if (IsWindowWidgetLowered(w, 1) != _fast_forward) {
+			ToggleWidgetLoweredState(w, 1);
 			SetWindowDirty(w);
 		}
 		break;

@@ -50,8 +50,7 @@ static void BuildIndustryWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
-		SetWindowDirty(w);
+		RaiseWindowButtons(w);
 		break;
 	}
 }

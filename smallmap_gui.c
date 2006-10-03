@@ -865,9 +865,9 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 				case 8:  // Show transport routes
 				case 9:  // Show vegetation
 				case 10: // Show land owners
-					w->click_state &= ~( 1 << 5 |  1 << 6 | 1 << 7 | 1 << 8 | 1 << 9 | 1 << 10);
-					w->click_state |= 1 << e->we.click.widget;
+					RaiseWindowWidget(w, _smallmap_type + 5);
 					_smallmap_type = e->we.click.widget - 5;
+					LowerWindowWidget(w, _smallmap_type + 5);
 
 					SetWindowDirty(w);
 					SndPlayFx(SND_15_BEEP);
@@ -881,8 +881,8 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 					break;
 
 				case 12: // Toggle town names
-					w->click_state ^= (1 << 12);
-					_smallmap_show_towns = (w->click_state >> 12) & 1;
+					ToggleWidgetLoweredState(w, 12);
+					_smallmap_show_towns = IsWindowWidgetLowered(w, 12);
 
 					SetWindowDirty(w);
 					SndPlayFx(SND_15_BEEP);
@@ -982,7 +982,8 @@ void ShowSmallMap(void)
 	w = AllocateWindowDescFront(&_smallmap_desc, 0);
 	if (w == NULL) return;
 
-	w->click_state = ((1 << 5) << _smallmap_type) | (_smallmap_show_towns << 12);
+	LowerWindowWidget(w, _smallmap_type + 5);
+	SetWidgetLoweredState(w, 12, _smallmap_show_towns);
 	w->resize.width = 350;
 	w->resize.height = 250;
 

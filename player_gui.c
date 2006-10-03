@@ -317,6 +317,8 @@ static void ShowColourDropDownMenu(Window *w, uint32 widget)
 static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+		case WE_CREATE: LowerWindowWidget(w, WP(w, livery_d).livery_class + 2); break;
+
 		case WE_PAINT: {
 			const Player *p = GetPlayer(w->window_number);
 			LiveryScheme scheme = LS_DEFAULT;
@@ -372,8 +374,10 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 				case 6: {
 					LiveryScheme scheme;
 
+					RaiseWindowWidget(w, WP(w, livery_d).livery_class + 2);
 					WP(w, livery_d).livery_class = e->we.click.widget - 2;
 					WP(w, livery_d).sel = 0;
+					LowerWindowWidget(w, WP(w, livery_d).livery_class + 2);
 
 					/* Select the first item in the list */
 					for (scheme = LS_DEFAULT; scheme < LS_END; scheme++) {
@@ -382,7 +386,6 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 							break;
 						}
 					}
-					w->click_state = 1 << e->we.click.widget;
 					w->height = 49 + livery_height[WP(w, livery_d).livery_class] * 14;
 					w->widget[13].bottom = w->height - 1;
 					w->widget[13].data = livery_height[WP(w, livery_d).livery_class] << 8 | 1;
@@ -469,9 +472,10 @@ static const WindowDesc _select_player_livery_desc = {
 static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: LowerWindowWidget(w, WP(w, facesel_d).gender + 5); break;
+
 	case WE_PAINT: {
 		Player *p;
-		w->click_state = (w->click_state & ~(1<<5|1<<6)) | ((1<<5) << WP(w,facesel_d).gender);
 		DrawWindowWidgets(w);
 		p = GetPlayer(w->window_number);
 		DrawPlayerFace(WP(w,facesel_d).face, p->player_color, 2, 16);
@@ -486,7 +490,9 @@ static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 			break;
 		case 5: /* male click */
 		case 6: /* female click */
-			WP(w,facesel_d).gender = e->we.click.widget - 5;
+			RaiseWindowWidget(w, WP(w, facesel_d).gender + 5);
+			WP(w, facesel_d).gender = e->we.click.widget - 5;
+			LowerWindowWidget(w, WP(w, facesel_d).gender + 5);
 			SetWindowDirty(w);
 			break;
 		case 7:
@@ -721,7 +727,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				wf->caption_color = wf->window_number;
 				WP(wf,livery_d).livery_class = LC_OTHER;
 				WP(wf,livery_d).sel = 1;
-				wf->click_state = 1 << 2;
+				LowerWindowWidget(wf, 2);
 			}
 		} break;
 

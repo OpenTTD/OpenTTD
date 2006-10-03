@@ -188,6 +188,7 @@ void DrawWindowWidgets(const Window *w)
 	const DrawPixelInfo* dpi = _cur_dpi;
 	Rect r;
 	uint32 cur_click, cur_disabled, cur_hidden;
+	int i = 0;
 
 	wi = w->widget;
 
@@ -196,7 +197,7 @@ void DrawWindowWidgets(const Window *w)
 	cur_hidden = w->hidden_state;
 
 	do {
-		bool clicked = (cur_click & 1);
+		bool clicked = IsWindowWidgetLowered((Window*)w, i);
 
 		if (dpi->left > (r.right=/*w->left + */wi->right) ||
 				dpi->left + dpi->width <= (r.left=wi->left/* + w->left*/) ||
@@ -464,7 +465,7 @@ draw_default:;
 			}
 		}
 		}
-	} while (cur_click>>=1, cur_disabled>>=1, cur_hidden >>= 1, (++wi)->type != WWT_LAST);
+	} while (i++, cur_click>>=1, cur_disabled>>=1, cur_hidden >>= 1, (++wi)->type != WWT_LAST);
 
 
 	if (w->flags4 & WF_WHITE_BORDER_MASK) {
@@ -588,7 +589,7 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 		case WE_DESTROY: {
 			Window *w2 = FindWindowById(WP(w,dropdown_d).parent_wnd_class, WP(w,dropdown_d).parent_wnd_num);
 			if (w2 != NULL) {
-				CLRBIT(w2->click_state, WP(w,dropdown_d).parent_button);
+				RaiseWindowWidget(w2, WP(w,dropdown_d).parent_button);
 				InvalidateWidget(w2, WP(w,dropdown_d).parent_button);
 			}
 		} break;
@@ -602,16 +603,16 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	int i;
 	const Widget *wi;
 	Window *w2;
-	uint32 old_click_state = w->click_state;
+	bool is_dropdown_menu_shown = IsWindowWidgetLowered(w, button);
 
 	cls = w->window_class;
 	num = w->window_number;
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
 	w = FindWindowById(cls, num);
 
-	if (HASBIT(old_click_state, button)) return;
+	if (is_dropdown_menu_shown) return;
 
-	SETBIT(w->click_state, button);
+	LowerWindowWidget(w, button);
 
 	InvalidateWidget(w, button);
 

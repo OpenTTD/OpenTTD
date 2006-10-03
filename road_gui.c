@@ -158,8 +158,8 @@ static void BuildRoadClick_Remove(Window *w)
 	if (IsWindowWidgetDisabled(w, 11)) return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
-	TOGGLEBIT(w->click_state, 11);
-	SetSelectionRed(HASBIT(w->click_state, 11));
+	ToggleWidgetLoweredState(w, 11);
+	SetSelectionRed(IsWindowWidgetLowered(w, 11));
 }
 
 static void BuildRoadClick_Landscaping(Window *w)
@@ -184,11 +184,11 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT:
-		if (!(w->click_state & ((1<<3)|(1<<4)))) {
-			DisableWindowWidget(w, 11);
-			w->click_state &= ~(1<<11);
-		} else {
+		if (IsWindowWidgetLowered(w, 3) || IsWindowWidgetLowered(w, 4)) {
 			EnableWindowWidget(w, 11);
+		} else {
+			DisableWindowWidget(w, 11);
+			RaiseWindowWidget(w, 11);
 		}
 		DrawWindowWidgets(w);
 		break;
@@ -216,13 +216,12 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_OBJ:
-		_remove_button_clicked = (w->click_state & (1 << 11)) != 0;
+		_remove_button_clicked = IsWindowWidgetLowered(w, 11);
 		_place_proc(e->we.place.tile);
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		UnclickWindowButtons(w);
-		SetWindowDirty(w);
+		RaiseWindowButtons(w);
 
 		w = FindWindowById(WC_BUS_STATION, 0);
 		if (w != NULL) WP(w,def_d).close = true;
@@ -359,8 +358,9 @@ void ShowBuildRoadScenToolbar(void)
 static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: LowerWindowWidget(w, _road_depot_orientation + 3); break;
+
 	case WE_PAINT:
-		w->click_state = (1<<3) << _road_depot_orientation;
 		DrawWindowWidgets(w);
 
 		DrawRoadDepotSprite(70, 17, DIAGDIR_NE);
@@ -372,7 +372,9 @@ static void BuildRoadDepotWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		switch (e->we.click.widget) {
 		case 3: case 4: case 5: case 6:
+			RaiseWindowWidget(w, _road_depot_orientation + 3);
 			_road_depot_orientation = e->we.click.widget - 3;
+			LowerWindowWidget(w, _road_depot_orientation + 3);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -416,13 +418,16 @@ static void ShowRoadDepotPicker(void)
 static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE:
+		LowerWindowWidget(w, _road_station_picker_orientation + 3);
+		LowerWindowWidget(w, _station_show_coverage + 7);
+		break;
+
 	case WE_PAINT: {
 		int image;
 
 		if (WP(w,def_d).close) return;
 
-		w->click_state = ((1<<3) << _road_station_picker_orientation) |
-										 ((1<<7) << _station_show_coverage);
 		DrawWindowWidgets(w);
 
 		if (_station_show_coverage) {
@@ -448,12 +453,16 @@ static void RoadStationPickerWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		switch (e->we.click.widget) {
 		case 3: case 4: case 5: case 6:
+			RaiseWindowWidget(w, _road_station_picker_orientation + 3);
 			_road_station_picker_orientation = e->we.click.widget - 3;
+			LowerWindowWidget(w, _road_station_picker_orientation + 3);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		case 7: case 8:
+			RaiseWindowWidget(w, _station_show_coverage + 7);
 			_station_show_coverage = e->we.click.widget - 7;
+			LowerWindowWidget(w, _station_show_coverage + 7);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;

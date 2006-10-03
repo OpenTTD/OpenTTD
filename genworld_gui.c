@@ -208,6 +208,8 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 	uint y;
 
 	switch (e->event) {
+	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + 3); break;
+
 	case WE_PAINT:
 		/* TODO -- Above and below you see some lines commented out with '//' in
 		 *  front of it. This is because currently the widget system can't handle
@@ -239,6 +241,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, 21, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_HILLY);
 		SetWindowWidgetDisabledState(w, 23, _patches_newgame.snow_line_height >= 13 || _opt_newgame.landscape != LT_HILLY);
 
+		LowerWindowWidget(w, _opt_newgame.landscape + 3); // All buttons get automagically unclicked
 		DrawWindowWidgets(w);
 
 		y = (mode == GLWP_HEIGHTMAP) ? 22 : 0;
@@ -325,7 +328,9 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 0: DeleteWindow(w); break;
 		case 3: case 4: case 5: case 6:
+			RaiseWindowWidget(w, _opt_newgame.landscape + 3);
 			SetNewLandscapeType(e->we.click.widget - 3);
+			LowerWindowWidget(w, _opt_newgame.landscape + 3);
 			break;
 		case 7: case 8: // Mapsize X
 			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, 8, 0, 0);
@@ -579,13 +584,15 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 	static const StringID mapsizes[] = {STR_64, STR_128, STR_256, STR_512, STR_1024, STR_2048, INVALID_STRING_ID};
 
 	switch (e->event) {
+	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + 3); break;
+
 	case WE_PAINT:
 		SetWindowWidgetDisabledState(w, 14, _patches_newgame.starting_year <= MIN_YEAR);
 		SetWindowWidgetDisabledState(w, 16, _patches_newgame.starting_year >= MAX_YEAR);
 		SetWindowWidgetDisabledState(w, 17, _patches_newgame.se_flat_world_height <= 0);
 		SetWindowWidgetDisabledState(w, 19, _patches_newgame.se_flat_world_height >= 15);
 
-		w->click_state = (w->click_state & ~(0xF << 3)) | (1 << (_opt_newgame.landscape + 3));
+		LowerWindowWidget(w, _opt_newgame.landscape + 3); // All buttons get automagically unclicked
 		DrawWindowWidgets(w);
 
 		DrawString( 12,  96, STR_MAPSIZE, 0);
@@ -606,7 +613,9 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 0: DeleteWindow(w); break;
 		case 3: case 4: case 5: case 6:
+			RaiseWindowWidget(w, _opt_newgame.landscape + 3);
 			SetNewLandscapeType(e->we.click.widget - 3);
+			LowerWindowWidget(w, _opt_newgame.landscape + 3);
 			break;
 		case 7: case 8: // Mapsize X
 			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, 8, 0, 0);

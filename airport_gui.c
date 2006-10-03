@@ -99,8 +99,8 @@ static void BuildAirToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		UnclickWindowButtons(w);
-		SetWindowDirty(w);
+		RaiseWindowButtons(w);
+
 		w = FindWindowById(WC_BUILD_STATION, 0);
 		if (w != 0)
 			WP(w,def_d).close = true;
@@ -142,20 +142,26 @@ void ShowBuildAirToolbar(void)
 static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE:
+		SetWidgetLoweredState(w, 16, !_station_show_coverage);
+		SetWidgetLoweredState(w, 17, _station_show_coverage);
+		LowerWindowWidget(w, _selected_airport_type + 7);
+		break;
+
 	case WE_PAINT: {
 		int i; // airport enabling loop
-		int sel;
 		int rad = 4; // default catchment radious
 		uint32 avail_airports;
 		const AirportFTAClass *airport;
 
 		if (WP(w,def_d).close) return;
 
-		sel = _selected_airport_type;
 		avail_airports = GetValidAirports();
 
-		if (!HASBIT(avail_airports, 0) && sel == AT_SMALL) sel = AT_LARGE;
-		if (!HASBIT(avail_airports, 1) && sel == AT_LARGE) sel = AT_SMALL;
+		RaiseWindowWidget(w, _selected_airport_type + 7);
+		if (!HASBIT(avail_airports, 0) && _selected_airport_type == AT_SMALL) _selected_airport_type = AT_LARGE;
+		if (!HASBIT(avail_airports, 1) && _selected_airport_type == AT_LARGE) _selected_airport_type = AT_SMALL;
+		LowerWindowWidget(w, _selected_airport_type + 7);
 
 		/* 'Country Airport' starts at widget 7, and if its bit is set, it is
 		 * available, so take its opposite value to set the disabled state.
@@ -165,14 +171,12 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 		 */
 		for (i = 0; i < 9; i++) SetWindowWidgetDisabledState(w, i + 7, !HASBIT(avail_airports, i));
 
-		_selected_airport_type = sel;
 		// select default the coverage area to 'Off' (16)
-		w->click_state = ((1<<7) << sel) | ((1<<16) << _station_show_coverage);
-		airport = GetAirport(sel);
+		airport = GetAirport(_selected_airport_type);
 		SetTileSelectSize(airport->size_x, airport->size_y);
 
 		if (_patches.modified_catchment) {
-			switch (sel) {
+			switch (_selected_airport_type) {
 				case AT_OILRIG:        rad = CA_AIR_OILPAD;   break;
 				case AT_HELIPORT:      rad = CA_AIR_HELIPORT; break;
 				case AT_SMALL:         rad = CA_AIR_SMALL;    break;
@@ -198,12 +202,16 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK: {
 		switch (e->we.click.widget) {
 		case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15:
+			RaiseWindowWidget(w, _selected_airport_type + 7);
 			_selected_airport_type = e->we.click.widget - 7;
+			LowerWindowWidget(w, _selected_airport_type + 7);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 		case 16: case 17:
 			_station_show_coverage = e->we.click.widget - 16;
+			SetWidgetLoweredState(w, 16, !_station_show_coverage);
+			SetWidgetLoweredState(w, 17, _station_show_coverage);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;

@@ -692,7 +692,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case WE_ABORT_PLACE_OBJ: {
-			CLRBIT(w->click_state, DEPOT_WIDGET_CLONE);
+			RaiseWindowWidget(w, DEPOT_WIDGET_CLONE);
 			InvalidateWidget(w, DEPOT_WIDGET_CLONE);
 		} break;
 
@@ -701,7 +701,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 			const Vehicle *v = _place_clicked_vehicle;
 
 			/* since OTTD checks all open depot windows, we will make sure that it triggers the one with a clicked clone button */
-			if (v != NULL && HASBIT(w->click_state, DEPOT_WIDGET_CLONE)) {
+			if (v != NULL && IsWindowWidgetLowered(w, DEPOT_WIDGET_CLONE)) {
 				_place_clicked_vehicle = NULL;
 				HandleCloneVehClick(v, w);
 			}

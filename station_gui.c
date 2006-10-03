@@ -247,13 +247,6 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_PAINT: {
-		/* Set up cargo click-states. Toggle the all-vehicle and all-cargo types button
-		 * depending on if all types are clicked or not */
-		SB(w->click_state, 6, 5, facilities);
-		SB(w->click_state, 26, 1, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-		SB(w->click_state, 12, NUM_CARGO + 1, cargo_filter);
-		SB(w->click_state, 27, 1, cargo_filter == 0x1FFF);
-
 		BuildStationsList(sl, owner, facilities, cargo_filter);
 		SortStationsList(sl);
 
@@ -353,23 +346,43 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		case 10: /* dock */
 			if (_ctrl_pressed) {
 				TOGGLEBIT(facilities, e->we.click.widget - 6);
+				ToggleWidgetLoweredState(w, e->we.click.widget);
 			} else {
-				facilities = 0;
+				int i;
+				for (i = 0; facilities != 0; i++, facilities >>= 1) {
+					if (HASBIT(facilities, 0)) RaiseWindowWidget(w, i + 6);
+				}
 				SETBIT(facilities, e->we.click.widget - 6);
+				LowerWindowWidget(w, e->we.click.widget);
 			}
+			SetWidgetLoweredState(w, 26, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 		break;
-		case 26:
+		case 26: {
+			int i;
+			for (i = 0; i < 5; i++) {
+				LowerWindowWidget(w, i + 6);
+			}
+			LowerWindowWidget(w, 26);
+
 			facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 			break;
-		case 27:
+		}
+		case 27: {
+			int i;
+			for (i = 0; i < NUM_CARGO; i++) {
+				LowerWindowWidget(w, i + 12);
+			}
+			LowerWindowWidget(w, 27);
+
 			cargo_filter = 0x1FFF; /* select everything */
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 			break;
+		}
 		case 28: /*flip sorting method asc/desc*/
 			TOGGLEBIT(sl->flags, 0); //DESC-flag
 			sl->flags |= SL_RESORT;
@@ -382,11 +395,17 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			if (e->we.click.widget >= 12 && e->we.click.widget <= 24) { //change cargo_filter
 				if (_ctrl_pressed) {
 					TOGGLEBIT(cargo_filter, e->we.click.widget - 12);
+					ToggleWidgetLoweredState(w, e->we.click.widget);
 				} else {
-					cargo_filter = 0;
+					int i;
+					for (i = 0; cargo_filter != 0; i++, cargo_filter >>= 1) {
+						if (HASBIT(cargo_filter, 0)) RaiseWindowWidget(w, i + 12);
+					}
 					SETBIT(cargo_filter, e->we.click.widget - 12);
+					LowerWindowWidget(w, e->we.click.widget);
 				}
 				sl->flags |= SL_REBUILD;
+				SetWidgetLoweredState(w, 27, cargo_filter == 0x1FFF);
 				SetWindowDirty(w);
 			}
 		}
@@ -409,12 +428,22 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_CREATE: /* set up resort timer */
+	case WE_CREATE: { /* set up resort timer */
+		int i;
+		for (i = 0; i < 5; i++) {
+			if (HASBIT(facilities, i)) LowerWindowWidget(w, i + 6);
+		}
+		for (i = 0; i < NUM_CARGO; i++) {
+			if (HASBIT(cargo_filter, i)) LowerWindowWidget(w, i + 12);
+		}
+		SetWidgetLoweredState(w, 26, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+		SetWidgetLoweredState(w, 27, cargo_filter == 0x1FFF);
 		sl->sort_list = NULL;
 		sl->flags = SL_REBUILD;
 		sl->sort_type = 0;
 		sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
 		break;
+	}
 
 	case WE_RESIZE:
 		w->vscroll.cap += e->we.sizing.diff.y / 10;

@@ -748,13 +748,12 @@ int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop(void);
 void UpdateWindows(void);
 void InvalidateWidget(const Window *w, byte widget_index);
-
-void GuiShowTooltips(StringID string_id);
-
-void UnclickWindowButtons(Window *w);
-void UnclickSomeWindowButtons(Window *w, uint32 mask);
+void RaiseWindowButtons(Window *w);
 void RelocateAllWindows(int neww, int newh);
 int PositionMainToolbar(Window *w);
+
+/* misc_gui.c*/
+void GuiShowTooltips(StringID string_id);
 
 /* widget.c */
 int GetWidgetFromPos(const Window *w, int x, int y);

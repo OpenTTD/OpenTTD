@@ -17,9 +17,22 @@
 // delta between mouse cursor and upper left corner of dragged window
 static Point _drag_delta;
 
+void RaiseWindowButtons(Window *w)
+{
+	const Widget *wi = w->widget;
+	uint i = 0;
+
+	for (i = 0; wi->type != WWT_LAST; i++, wi++) {
+		if (IsWindowWidgetLowered(w, i)) {
+			RaiseWindowWidget(w, i);
+			InvalidateWidget(w, i);
+		}
+	}
+}
+
 void HandleButtonClick(Window *w, byte widget)
 {
-	w->click_state |= (1 << widget);
+	LowerWindowWidget(w, widget);
 	w->flags4 |= 5 << WF_TIMEOUT_SHL;
 	InvalidateWidget(w, widget);
 }
@@ -754,7 +767,7 @@ static void DecreaseWindowCounters(void)
 
 		if (w->flags4&WF_TIMEOUT_MASK && !(--w->flags4&WF_TIMEOUT_MASK)) {
 			CallWindowEventNP(w, WE_TIMEOUT);
-			if (w->desc_flags & WDF_UNCLICK_BUTTONS) UnclickWindowButtons(w);
+			if (w->desc_flags & WDF_UNCLICK_BUTTONS) RaiseWindowButtons(w);
 		}
 	}
 }

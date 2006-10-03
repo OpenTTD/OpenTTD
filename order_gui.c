@@ -349,8 +349,8 @@ static void OrdersPlaceObj(const Vehicle *v, TileIndex tile, Window *w)
 static void OrderClick_Goto(Window *w, const Vehicle *v)
 {
 	InvalidateWidget(w, 7);
-	TOGGLEBIT(w->click_state, 7);
-	if (HASBIT(w->click_state, 7)) {
+	ToggleWidgetLoweredState(w, 7);
+	if (IsWindowWidgetLowered(w, 7)) {
 		_place_clicked_vehicle = NULL;
 		SetObjectToPlaceWnd(ANIMCURSOR_PICKSTATION, 1, w);
 	} else {
@@ -532,7 +532,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_ABORT_PLACE_OBJ: {
-		CLRBIT(w->click_state, 7);
+		RaiseWindowWidget(w, 7);
 		InvalidateWidget(w, 7);
 	} break;
 
@@ -547,7 +547,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		 * the order is copied to the last open window instead of the
 		 * one where GOTO is enalbed
 		 */
-		if (v != NULL && HASBIT(w->click_state, 7)) {
+		if (v != NULL && IsWindowWidgetLowered(w, 7)) {
 			_place_clicked_vehicle = NULL;
 			HandleOrderVehClick(GetVehicle(w->window_number), v, w);
 		}

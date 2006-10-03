@@ -355,7 +355,7 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case 16: /* place trees randomly over the landscape*/
-			w->click_state |= 1 << 16;
+			LowerWindowWidget(w, 16);
 			w->flags4 |= 5 << WF_TIMEOUT_SHL;
 			SndPlayFx(SND_15_BEEP);
 			PlaceTreesRandomly();
@@ -381,12 +381,11 @@ static void BuildTreesWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_TIMEOUT:
-		UnclickSomeWindowButtons(w, 1<<16);
+		RaiseWindowWidget(w, 16);
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		w->click_state = 0;
-		SetWindowDirty(w);
+		RaiseWindowButtons(w);
 		break;
 	}
 }
@@ -734,25 +733,6 @@ void CheckRedrawStationCoverage(const Window *w)
 	}
 }
 
-
-void UnclickSomeWindowButtons(Window *w, uint32 mask)
-{
-	uint32 x = w->click_state & mask;
-	uint i = 0;
-
-	w->click_state ^= x;
-	do {
-		if (x & 1) InvalidateWidget(w, i);
-	} while (i++, x >>= 1);
-}
-
-
-void UnclickWindowButtons(Window *w)
-{
-	UnclickSomeWindowButtons(w, (uint32)-1);
-}
-
-
 void SetVScrollCount(Window *w, int num)
 {
 	w->vscroll.count = num;
@@ -1086,7 +1066,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 		WP(w, querystr_d).orig = _orig_str_buf;
 	}
 
-	w->click_state = 1 << 5;
+	LowerWindowWidget(w, 5);
 	WP(w, querystr_d).caption = caption;
 	WP(w, querystr_d).wnd_class = window_class;
 	WP(w, querystr_d).wnd_num = window_number;
@@ -1154,7 +1134,7 @@ void ShowQuery(StringID caption, StringID message, void (*ok_cancel_callback)(bo
 
 	w = AllocateWindowDesc(&_query_desc);
 
-	w->click_state = 1 << 5;
+	LowerWindowWidget(w, 5);
 	WP(w, query_d).caption            = caption;
 	WP(w, query_d).message            = message;
 	WP(w, query_d).wnd_class          = window_class;
@@ -1460,7 +1440,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_TIMEOUT:
-		if (HASBIT(w->click_state, 11)) { /* Delete button clicked */
+		if (IsWindowWidgetLowered(w, 11)) { /* Delete button clicked */
 			if (!FiosDelete(OTTD2FS(WP(w,querystr_d).text.buf))) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
 			} else {
@@ -1471,7 +1451,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 
 			UpdateTextBufferSize(&WP(w, querystr_d).text);
 			SetWindowDirty(w);
-		} else if (HASBIT(w->click_state, 12)) { /* Save button clicked */
+		} else if (IsWindowWidgetLowered(w, 12)) { /* Save button clicked */
 			_switch_mode = SM_SAVE;
 			FiosMakeSavegameName(_file_to_saveload.name, WP(w,querystr_d).text.buf, sizeof(_file_to_saveload.name));
 
@@ -1575,7 +1555,7 @@ void ShowSaveLoadDialog(int mode)
 	w->resize.step_width = 2;
 	w->resize.step_height = 10;
 	w->resize.height = w->height - 14 * 10; // Minimum of 10 items
-	SETBIT(w->click_state, 7);
+	LowerWindowWidget(w, 7);
 	WP(w,querystr_d).text.caret = false;
 	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf);
 	WP(w,querystr_d).text.maxwidth = 240;

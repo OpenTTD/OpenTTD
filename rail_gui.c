@@ -296,17 +296,13 @@ static void BuildRailClick_Remove(Window *w)
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 
-	TOGGLEBIT(w->click_state, 16);
-	_remove_button_clicked = HASBIT(w->click_state, 16);
-	SetSelectionRed(HASBIT(w->click_state, 16));
+	ToggleWidgetLoweredState(w, 16);
+	_remove_button_clicked = IsWindowWidgetLowered(w, 16);
+	SetSelectionRed(_remove_button_clicked);
 
 	// handle station builder
-	if (HASBIT(w->click_state, 16)) {
-		if (_remove_button_clicked) {
-			SetTileSelectSize(1, 1);
-		} else {
-			BringWindowToFrontById(WC_BUILD_STATION, 0);
-		}
+	if (_remove_button_clicked) {
+		SetTileSelectSize(1, 1);
 	}
 }
 
@@ -409,7 +405,7 @@ static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
 {
 	switch (clicked_widget) {
 		case 4: case 5: case 6: case 7: case 8: case 11: case 12: case 13: EnableWindowWidget(w, 16); break;
-		default: DisableWindowWidget(w, 16); w->click_state &= ~(1 << 16); break;
+		default: DisableWindowWidget(w, 16); LowerWindowWidget(w, 16); break;
 	}
 }
 
@@ -479,8 +475,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
-		UnclickWindowButtons(w);
-		SetWindowDirty(w);
+		RaiseWindowButtons(w);
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
 		if (w != NULL) WP(w,def_d).close = true;
@@ -618,6 +613,18 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 static void StationBuildWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE:
+		LowerWindowWidget(w, _railstation.orientation + 3);
+		if (_railstation.dragdrop) {
+			LowerWindowWidget(w, 19);
+		} else {
+			LowerWindowWidget(w, _railstation.numtracks + 4);
+			LowerWindowWidget(w, _railstation.platlength + 11);
+		}
+		SetWidgetLoweredState(w, 20, !_station_show_coverage);
+		SetWidgetLoweredState(w, 21, _station_show_coverage);
+		break;
+
 	case WE_PAINT: {
 		int rad;
 		uint bits;
@@ -626,16 +633,6 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		DrawPixelInfo tmp_dpi, *old_dpi;
 
 		if (WP(w,def_d).close) return;
-
-		bits = (1<<3) << ( _railstation.orientation);
-		if (_railstation.dragdrop) {
-			bits |= (1<<19);
-		} else {
-			bits |= (1<<(5-1)) << (_railstation.numtracks);
-			bits |= (1<<(12-1)) << (_railstation.platlength);
-		}
-		bits |= (1<<20) << (_station_show_coverage);
-		w->click_state = bits;
 
 		if (_railstation.dragdrop) {
 			SetTileSelectSize(1, 1);
@@ -727,7 +724,9 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 3:
 		case 4:
+			RaiseWindowWidget(w, _railstation.orientation + 3);
 			_railstation.orientation = e->we.click.widget - 3;
+			LowerWindowWidget(w, _railstation.orientation + 3);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -739,8 +738,12 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case 9:
 		case 10:
 		case 11:
+			RaiseWindowWidget(w, _railstation.numtracks + 4);
+			RaiseWindowWidget(w, 19);
 			_railstation.numtracks = (e->we.click.widget - 5) + 1;
 			_railstation.dragdrop = false;
+			LowerWindowWidget(w, _railstation.platlength + 11);
+			LowerWindowWidget(w, _railstation.numtracks + 4);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -752,14 +755,21 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case 16:
 		case 17:
 		case 18:
+			RaiseWindowWidget(w, _railstation.platlength + 11);
+			RaiseWindowWidget(w, 19);
 			_railstation.platlength = (e->we.click.widget - 12) + 1;
 			_railstation.dragdrop = false;
+			LowerWindowWidget(w, _railstation.platlength + 11);
+			LowerWindowWidget(w, _railstation.numtracks + 4);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
 
 		case 19:
 			_railstation.dragdrop ^= true;
+			ToggleWidgetLoweredState(w, 19);
+			SetWidgetLoweredState(w, _railstation.numtracks + 4, !_railstation.dragdrop);
+			SetWidgetLoweredState(w, _railstation.platlength + 11, !_railstation.dragdrop);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -767,6 +777,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case 20:
 		case 21:
 			_station_show_coverage = e->we.click.widget - 20;
+			SetWidgetLoweredState(w, 20, !_station_show_coverage);
+			SetWidgetLoweredState(w, 21, _station_show_coverage);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -926,10 +938,11 @@ static void ShowStationBuilder(void)
 static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: LowerWindowWidget(w, _build_depot_direction + 3); break;
+
 	case WE_PAINT: {
 		RailType r;
 
-		w->click_state = (1 << 3) << _build_depot_direction;
 		DrawWindowWidgets(w);
 
 		r = _cur_railtype;
@@ -946,7 +959,9 @@ static void BuildTrainDepotWndProc(Window *w, WindowEvent *e)
 			case 4:
 			case 5:
 			case 6:
+				RaiseWindowWidget(w, _build_depot_direction + 3);
 				_build_depot_direction = e->we.click.widget - 3;
+				LowerWindowWidget(w, _build_depot_direction + 3);
 				SndPlayFx(SND_15_BEEP);
 				SetWindowDirty(w);
 				break;
@@ -991,10 +1006,11 @@ static void ShowBuildTrainDepotPicker(void)
 static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: LowerWindowWidget(w, _cur_waypoint_type - w->hscroll.pos); break;
+
 	case WE_PAINT: {
 		uint i;
 
-		w->click_state = (1 << 3) << (_cur_waypoint_type - w->hscroll.pos);
 		DrawWindowWidgets(w);
 
 		for (i = 0; i < 5; i++) {
@@ -1023,7 +1039,9 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 					HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) &&
 					GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) return;
 
+			RaiseWindowWidget(w, _cur_waypoint_type - w->hscroll.pos);
 			_cur_waypoint_type = type;
+			LowerWindowWidget(w, _cur_waypoint_type - w->hscroll.pos);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
