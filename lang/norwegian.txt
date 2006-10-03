@@ -910,6 +910,7 @@ STR_CURR_PLN                                                    :Polsk Zloty (PL
 STR_CURR_ROL                                                    :Rumensk Leu (ROL)
 STR_CURR_RUR                                                    :Russisk Rubel (RUR)
 STR_CURR_SEK                                                    :Söta Brors Krona (SEK)
+STR_CURR_YTL                                                    :Tyrkiske Lire (YTL)
 
 STR_CURR_CUSTOM                                                 :Custom...
 
@@ -1044,12 +1045,22 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Varighe
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Vis byers befolkning i tittel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Usynlige trær (med gjennomsiktige bygninger): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Landskapsgenerator: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Orginal
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Snøhøyde: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Veldig Jevnt
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Jevnt
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ingen
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Orginal
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Forbedret
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks stasjonspedning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir treger spill
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Utfør service på helikopter automatisk på helikopterlandingsteder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Koble landskap verktøylinjen til tog/vei/vann/flyplass verktøylinjene: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ved rulling med musen, flytt synsvinkelen i den motsatte retning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle firmaer
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antall tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antall kjøretøy per spiller: {ORANGE}{STRING}
@@ -1448,6 +1459,7 @@ STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...fant 
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kunne ikke konvertere bildetypen. Et 8- eller 24-bits bilde trengs.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...noe gikk akkurat galt. Beklager. (Mest sannsynlig en ødelagt fil)
 
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kan ikke konvertere bildetype.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kostnad: {CURRENCY}
@@ -2144,10 +2156,18 @@ STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT
 STR_7080_PROTECTED                                              :{WHITE}Dette selskapet selger ikke aksjer enda...
 
 STR_LIVERY_STEAM                                                :Damplokomotiv
+STR_LIVERY_DIESEL                                               :Diesel Motor
+STR_LIVERY_ELECTRIC                                             :Elektrisk Motor
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passasjervogn (Damp)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passasjervogn (Elektrisk)
+STR_LIVERY_BUS                                                  :Buss
 STR_LIVERY_TRUCK                                                :Lastebil
+STR_LIVERY_PASSENGER_SHIP                                       :Passasjerferje
+STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Lite fly
+
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Damp)
@@ -2471,6 +2491,8 @@ STR_8825_NON_STOP                                               :{BLACK}Uten sto
 STR_8826_GO_TO                                                  :{BLACK}Kjør til
 STR_8827_FULL_LOAD                                              :{BLACK}Last fullt
 STR_8828_UNLOAD                                                 :{BLACK}Last av
+STR_REFIT                                                       :{BLACK}Bygg om
+STR_REFIT_ORDER                                                 :(Bygg om til {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordre)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Slutt på ordre - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2838,6 +2860,32 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordre av {COMMA} Kjøretøy{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle kjøretøy som har samme ruteplan
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depoder
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Send til {SKIP}{SKIP}{SKIP}{STRING}
+
+
+### depot strings
+
+STR_SELL                                                        :{BLACK}Sell
+STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker?
+
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ikke sell alle skip i depodet
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ikke sell alle skip i depodet
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sell alle tog i depodet
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sell alle skip i depodet
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Sell alle fly i hangaren
+
+
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tog{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Skip{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Fly
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Bytt ut kjøretøy
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Erstatte {STRING}
@@ -2860,6 +2908,17 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motoren 
 
 STR_ENGINES                                                     :Motorer
 STR_WAGONS                                                      :Vogner
+
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klikk for å stoppe alle togene i depodet
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klikk for å stoppe alle skipene i depodet
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klikk for å stoppe alle flyene i hangaren
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klikk for å starte alle togene i depodet
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klikk for å starte alle skipene i depodet
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klikk for å starte alle flyene i hangaren
+
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klikk for å stoppe alle kjøretøyene i listen
+STR_MASS_START_LIST_TIP                                         :{BLACK}Klikk for å starte alle kjøretøyene i listen
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} Skilt
@@ -2890,24 +2949,31 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Lokomoti
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Generer
 STR_RANDOM                                                      :{BLACK}Tilfeldigjør
 STR_RANDOM_HELP                                                 :{BLACK}Endre tilfeldig-nummer som brukes for terreng-generering
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generer en verden
 STR_RANDOM_SEED                                                 :{BLACK}Tilfeldig nummer:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Trykk her for å taste inn et tilfeldig nummer
+STR_LAND_GENERATOR                                              :{BLACK}Landskapsgenerator
 STR_TREE_PLACER                                                 :{BLACK}Treealgoritme:
 STR_TERRAIN_TYPE                                                :{BLACK}Terrengtype
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Havflate:
 STR_SMOOTHNESS                                                  :{BLACK}Glatthet:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Høyde på snøgrensen:
+STR_DATE                                                        :{BLACK}Dato:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Antall byer:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Antall industrier:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_SNOW_LINE_UP                                                :{BLACK}Flytt høyden på snøgrensen ett hakk opp
 STR_SNOW_LINE_DOWN                                              :{BLACK}Flytt høyden på snøgrensen ett hakk ned
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Skift høyden på snøgrensen
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Endre startår
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Genererer verden...
+STR_GENERATION_ABORT                                            :{BLACK}Avbryt
 STR_PROGRESS                                                    :{WHITE}{NUM}% ferdig
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Generer en verden
 STR_TREE_GENERATION                                             :{BLACK}Tregenerering
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Ikke-flyttbar generering
@@ -2919,6 +2985,8 @@ STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generer 
 STR_SE_RANDOM_LAND                                              :{WHITE}Tilfeldig landskap
 STR_SE_NEW_WORLD                                                :{BLACK}Generer et nytt scenario
 STR_SE_CAPTION                                                  :{WHITE}Scenario type
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Høyde av flatt land:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Midstill oversiktskartet på den gjeldende posisjonen
 
