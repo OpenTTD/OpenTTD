@@ -1960,7 +1960,7 @@ static void FeatureNewName(byte *buf, int len)
 	for (; id < endid && len > 0; id++) {
 		size_t ofs = strlen(name) + 1;
 
-		if (ofs > 1 && ofs < 128) {
+		if (ofs < 128) {
 			DEBUG(grf, 8) ("FeatureNewName: %d <- %s", id, name);
 
 			switch (feature) {

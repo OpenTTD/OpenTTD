@@ -247,9 +247,21 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 		_grf_text[id].def_string = def_string;
 		_grf_text[id].textholder = newtext;
 	} else {
-		GRFText *textptr = _grf_text[id].textholder;
-		while (textptr->next != NULL) textptr = textptr->next;
-		textptr->next = newtext;
+		GRFText **ptext, *text;
+		bool replaced = false;
+
+		/* Loop through all languages and see if we can replace a string */
+		for (ptext = &_grf_text[id].textholder; (text = *ptext) != NULL; ptext = &text->next) {
+			if (text->langid != GB(langid_to_add, 0, 6)) continue;
+			newtext->next = text->next;
+			*ptext = newtext;
+			free(text);
+			replaced = true;
+			break;
+		}
+
+		/* If a string wasn't replaced, then we must append the new string */
+		if (!replaced) *ptext = newtext;
 	}
 
 	DEBUG(grf, 2)("Added 0x%X: grfid 0x%X string 0x%X lang 0x%X string %s", id, grfid, stringid, newtext->langid, newtext->text);
