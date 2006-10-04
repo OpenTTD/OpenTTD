@@ -1955,6 +1955,7 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 {
 	int32 cost;
+	int32 sell_value;
 	Vehicle *old_v = *w;
 	const Player *p = GetPlayer(old_v->owner);
 	EngineID new_engine_type;
@@ -1972,8 +1973,20 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 	/* check if we can't refit to the needed type, so no replace takes place to prevent the vehicle from altering cargo type */
 	if (replacement_cargo_type == CT_INVALID) return 0;
 
+	sell_value = DoCommand(0, old_v->index, 0, DC_QUERY_COST, CMD_SELL_VEH(old_v->type));
+
+	/* We give the player a loan of the same amount as the sell value.
+	 * This is needed in case he needs the income from the sale to build the new vehicle.
+	 * We take it back if building fails or when we really sell the old engine */
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	SubtractMoneyFromPlayer(sell_value);
+
 	cost = DoCommand(old_v->tile, new_engine_type, 3, flags, CMD_BUILD_VEH(old_v->type));
-	if (CmdFailed(cost)) return cost;
+	if (CmdFailed(cost)) {
+		SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+		SubtractMoneyFromPlayer(-sell_value); // Take back the money we just gave the player
+		return cost;
+	}
 
 	if (replacement_cargo_type != CT_NO_REFIT) cost += GetRefitCost(new_engine_type); // add refit cost
 
@@ -2040,8 +2053,17 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 	} else { // flags & DC_EXEC not set
 		/* Ensure that the player will not end up having negative money while autoreplacing
 		 * This is needed because the only other check is done after the income from selling the old vehicle is substracted from the cost */
-		if (p->money64 < (cost + total_cost)) return CMD_ERROR;
+		if (p->money64 < (cost + total_cost)) {
+			SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+			SubtractMoneyFromPlayer(-sell_value); // Pay back the loan
+			return CMD_ERROR;
+		}
 	}
+
+	/* Take back the money we just gave the player just before building the vehicle
+	 * The player will get the same amount now that the sale actually takes place */
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
+	SubtractMoneyFromPlayer(-sell_value);
 
 	/* sell the engine/ find out how much you get for the old engine (income is returned as negative cost) */
 	cost += DoCommand(0, old_v->index, 0, flags, CMD_SELL_VEH(old_v->type));
