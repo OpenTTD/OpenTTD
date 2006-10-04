@@ -1576,7 +1576,7 @@ static void DrawVehicleListWindow(Window *w)
 	}
 
 	if (owner == _local_player) {
-		bool list_isempty vl->l.list_length == 0;
+		bool list_isempty = vl->l.list_length == 0;
 
 		SetWindowWidgetDisabledState(w, VLW_WIDGET_SEND_TO_DEPOT, list_isempty);
 		SetWindowWidgetDisabledState(w, VLW_WIDGET_AUTOREPLACE, list_isempty);
