@@ -50,7 +50,10 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + 8); break;
 
 	case WE_PAINT:
-		LowerWindowWidget(w, _opt_newgame.landscape + 8); // All buttons get automagically unclicked
+		SetWidgetLoweredState(w, 8,  _opt_newgame.landscape == LT_NORMAL);
+		SetWidgetLoweredState(w, 9,  _opt_newgame.landscape == LT_HILLY);
+		SetWidgetLoweredState(w, 10, _opt_newgame.landscape == LT_DESERT);
+		SetWidgetLoweredState(w, 11, _opt_newgame.landscape == LT_CANDY);
 		SetDParam(0, STR_6801_EASY + _opt_newgame.diff_level);
 		DrawWindowWidgets(w);
 		break;

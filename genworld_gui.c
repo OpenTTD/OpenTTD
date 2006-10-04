@@ -241,7 +241,10 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, 21, _patches_newgame.snow_line_height <= 2 || _opt_newgame.landscape != LT_HILLY);
 		SetWindowWidgetDisabledState(w, 23, _patches_newgame.snow_line_height >= 13 || _opt_newgame.landscape != LT_HILLY);
 
-		LowerWindowWidget(w, _opt_newgame.landscape + 3); // All buttons get automagically unclicked
+		SetWidgetLoweredState(w, 3, _opt_newgame.landscape == LT_NORMAL);
+		SetWidgetLoweredState(w, 4, _opt_newgame.landscape == LT_HILLY);
+		SetWidgetLoweredState(w, 5, _opt_newgame.landscape == LT_DESERT);
+		SetWidgetLoweredState(w, 6, _opt_newgame.landscape == LT_CANDY);
 		DrawWindowWidgets(w);
 
 		y = (mode == GLWP_HEIGHTMAP) ? 22 : 0;
@@ -330,7 +333,6 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case 3: case 4: case 5: case 6:
 			RaiseWindowWidget(w, _opt_newgame.landscape + 3);
 			SetNewLandscapeType(e->we.click.widget - 3);
-			LowerWindowWidget(w, _opt_newgame.landscape + 3);
 			break;
 		case 7: case 8: // Mapsize X
 			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, 8, 0, 0);
@@ -592,7 +594,10 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w, 17, _patches_newgame.se_flat_world_height <= 0);
 		SetWindowWidgetDisabledState(w, 19, _patches_newgame.se_flat_world_height >= 15);
 
-		LowerWindowWidget(w, _opt_newgame.landscape + 3); // All buttons get automagically unclicked
+		SetWidgetLoweredState(w, 3, _opt_newgame.landscape == LT_NORMAL);
+		SetWidgetLoweredState(w, 4, _opt_newgame.landscape == LT_HILLY);
+		SetWidgetLoweredState(w, 5, _opt_newgame.landscape == LT_DESERT);
+		SetWidgetLoweredState(w, 6, _opt_newgame.landscape == LT_CANDY);
 		DrawWindowWidgets(w);
 
 		DrawString( 12,  96, STR_MAPSIZE, 0);
@@ -615,7 +620,6 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 		case 3: case 4: case 5: case 6:
 			RaiseWindowWidget(w, _opt_newgame.landscape + 3);
 			SetNewLandscapeType(e->we.click.widget - 3);
-			LowerWindowWidget(w, _opt_newgame.landscape + 3);
 			break;
 		case 7: case 8: // Mapsize X
 			ShowDropDownMenu(w, mapsizes, _patches_newgame.map_x - 6, 8, 0, 0);
