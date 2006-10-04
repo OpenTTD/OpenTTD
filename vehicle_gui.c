@@ -1575,9 +1575,16 @@ static void DrawVehicleListWindow(Window *w)
 		default: NOT_REACHED();
 	}
 
-	DrawWindowWidgets(w);
+	if (owner == _local_player) {
+		bool list_isempty vl->l.list_length == 0;
 
-	if (owner == _local_player && vl->l.list_length == 0) DisableWindowWidget(w, 9);
+		SetWindowWidgetDisabledState(w, VLW_WIDGET_SEND_TO_DEPOT, list_isempty);
+		SetWindowWidgetDisabledState(w, VLW_WIDGET_AUTOREPLACE, list_isempty);
+		SetWindowWidgetDisabledState(w, VLW_WIDGET_STOP_ALL, list_isempty);
+		SetWindowWidgetDisabledState(w, VLW_WIDGET_START_ALL, list_isempty);
+	}
+
+	DrawWindowWidgets(w);
 
 	/* draw sorting criteria string */
 	DrawString(85, 15, _vehicle_sort_listing[vl->l.sort_type], 0x10);
