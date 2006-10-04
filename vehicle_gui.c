@@ -1760,14 +1760,6 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-static const WindowDesc _player_vehicle_list_large_desc = {
-	-1, -1, 260, 182,
-	WC_SHIPS_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-	_vehicle_list_widgets,
-	PlayerVehWndProc
-};
-
 static const WindowDesc _player_vehicle_list_train_desc = {
 	-1, -1, 325, 220,
     WC_TRAINS_LIST,0,
@@ -1778,7 +1770,23 @@ static const WindowDesc _player_vehicle_list_train_desc = {
 
 static const WindowDesc _player_vehicle_list_road_veh_desc = {
 	-1, -1, 260, 220,
-	WC_TRAINS_LIST,0,
+	WC_ROADVEH_LIST,0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	_vehicle_list_widgets,
+	PlayerVehWndProc
+};
+
+static const WindowDesc _player_vehicle_list_ship_desc = {
+	-1, -1, 260, 182,
+	WC_SHIPS_LIST,0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	_vehicle_list_widgets,
+	PlayerVehWndProc
+};
+
+static const WindowDesc _player_vehicle_list_aircraft_desc = {
+	-1, -1, 260, 182,
+	WC_AIRCRAFT_LIST,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
 	PlayerVehWndProc
@@ -1799,12 +1807,12 @@ static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, Stati
 		num |= (station << 16) | VLW_STATION_LIST;
 	}
 
-	if (vehicle_type == VEH_Train) {
-		w = AllocateWindowDescFront(&_player_vehicle_list_train_desc, num);
-	} else if (vehicle_type == VEH_Road) {
-		w = AllocateWindowDescFront(&_player_vehicle_list_road_veh_desc, num);
-	} else {
-		w = AllocateWindowDescFront(&_player_vehicle_list_large_desc, num);
+	switch (vehicle_type) {
+		case VEH_Train:    w = AllocateWindowDescFront(&_player_vehicle_list_train_desc, num);    break;
+		case VEH_Road:     w = AllocateWindowDescFront(&_player_vehicle_list_road_veh_desc, num); break;
+		case VEH_Ship:     w = AllocateWindowDescFront(&_player_vehicle_list_ship_desc, num);     break;
+		case VEH_Aircraft: w = AllocateWindowDescFront(&_player_vehicle_list_aircraft_desc, num); break;
+		default: NOT_REACHED();
 	}
 }
 
