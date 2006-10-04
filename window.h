@@ -717,7 +717,7 @@ static inline void ToggleWidgetLoweredState(Window *w, byte widget_index)
  */
 static inline void LowerWindowWidget(Window *w, byte widget_index)
 {
-	SetWidgetLoweredState(w, widget_index, true);
+	SetWindowWidgetLoweredState(w, widget_index, true);
 }
 
 /**
@@ -727,7 +727,7 @@ static inline void LowerWindowWidget(Window *w, byte widget_index)
  */
 static inline void RaiseWindowWidget(Window *w, byte widget_index)
 {
-	SetWidgetLoweredState(w, widget_index, false);
+	SetWindowWidgetLoweredState(w, widget_index, false);
 }
 
 /**
