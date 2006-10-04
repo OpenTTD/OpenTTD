@@ -22,8 +22,6 @@
 #include "yapf/yapf.h"
 #include "depot.h"
 
-void RoadVehEnterDepot(Vehicle *v);
-
 
 static uint CountRoadBits(RoadBits r)
 {
@@ -1057,7 +1055,7 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 			if (v->type == VEH_Road &&
 					v->u.road.frame == 11 &&
 					_roadveh_enter_depot_unk0[GetRoadDepotDirection(tile)] == v->u.road.state) {
-				RoadVehEnterDepot(v);
+				VehicleEnterDepot(v);
 				return 4;
 			}
 			break;

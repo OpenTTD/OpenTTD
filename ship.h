@@ -6,6 +6,7 @@
 #include "vehicle.h"
 
 void CcCloneShip(bool success, TileIndex tile, uint32 p1, uint32 p2);
+void RecalcShipStuff(Vehicle *v);
 
 static inline bool IsShipInDepot(const Vehicle* v)
 {

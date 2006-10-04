@@ -3476,55 +3476,6 @@ void Train_Tick(Vehicle *v)
 	}
 }
 
-
-void TrainEnterDepot(Vehicle *v, TileIndex tile)
-{
-	UpdateSignalsOnSegment(tile, GetRailDepotDirection(tile));
-
-	if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
-
-	VehicleServiceInDepot(v);
-
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-
-	v->load_unload_time_rem = 0;
-	v->cur_speed = 0;
-
-	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
-
-	if (v->current_order.type == OT_GOTO_DEPOT) {
-		Order t;
-		int32 cost;
-
-		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-
-		t = v->current_order;
-		v->current_order.type = OT_DUMMY;
-		v->current_order.flags = 0;
-
-		_current_player = v->owner;
-		cost = DoCommand(v->tile, v->index, t.refit_cargo | t.refit_subtype << 8, DC_EXEC, CMD_REFIT_RAIL_VEHICLE);
-		if (!CmdFailed(cost) && v->owner == _local_player && cost != 0) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
-
-		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) { // Part of the orderlist?
-			v->u.rail.days_since_order_progr = 0;
-			v->cur_order_index++;
-		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) { // User initiated?
-			v->vehstatus |= VS_STOPPED;
-			if (v->owner == _local_player) {
-				SetDParam(0, v->unitnumber);
-				AddNewsItem(
-					STR_8814_TRAIN_IS_WAITING_IN_DEPOT,
-					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
-					v->index,
-					0
-				);
-			}
-		}
-	}
-	InvalidateWindowClasses(WC_TRAINS_LIST);
-}
-
 #define MAX_ACCEPTABLE_DEPOT_DIST 16
 
 static void CheckIfTrainNeedsService(Vehicle *v)

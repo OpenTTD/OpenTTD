@@ -833,14 +833,17 @@ static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 	}
 }
 
-static void ServiceAircraft(Vehicle *v)
+/** Handle Aircraft specific tasks when a an Aircraft enters a hangar
+ * Made inline because it's only called from one location (VehicleEnterDepot)
+ * Can't be moved to vehicle.c because it calls static Aircraft specific functions
+ * @param *v Vehicle that enters the hangar
+ */
+inline void HandleAircraftEnterHangar(Vehicle *v)
 {
 	Vehicle *u;
 
-	v->cur_speed = 0;
 	v->subspeed = 0;
 	v->progress = 0;
-	v->vehstatus |= VS_HIDDEN;
 
 	u = v->next;
 	u->vehstatus |= VS_HIDDEN;
@@ -851,10 +854,6 @@ static void ServiceAircraft(Vehicle *v)
 	}
 
 	SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
-	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-
-	VehicleServiceInDepot(v);
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 }
 
 static void PlayAircraftSound(const Vehicle* v)
@@ -1385,48 +1384,6 @@ static void AircraftEntersTerminal(Vehicle *v)
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 
-
-static void AircraftEnterHangar(Vehicle *v)
-{
-	Order old_order;
-
-	ServiceAircraft(v);
-	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
-
-	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
-
-	if (v->current_order.type == OT_GOTO_DEPOT) {
-		int32 cost;
-
-		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-
-		old_order = v->current_order;
-		v->current_order.type = OT_NOTHING;
-		v->current_order.flags = 0;
-
-		_current_player = v->owner;
-		cost = DoCommand(v->tile, v->index, old_order.refit_cargo | old_order.refit_subtype << 8, DC_EXEC, CMD_REFIT_AIRCRAFT);
-		if (!CmdFailed(cost) && v->owner == _local_player && cost != 0) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
-
-		if (HASBIT(old_order.flags, OFB_PART_OF_ORDERS)) {
-			v->cur_order_index++;
-		} else if (HASBIT(old_order.flags, OFB_HALT_IN_DEPOT)) { // force depot visit
-			v->vehstatus |= VS_STOPPED;
-			InvalidateWindowClasses(WC_AIRCRAFT_LIST);
-
-			if (v->owner == _local_player) {
-				SetDParam(0, v->unitnumber);
-				AddNewsItem(
-					STR_A014_AIRCRAFT_IS_WAITING_IN,
-					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
-					v->index,
-					0
-				);
-			}
-		}
-	}
-}
-
 static void AircraftLand(Vehicle *v)
 {
 	v->sprite_width = v->sprite_height = 2;
@@ -1493,7 +1450,7 @@ static void AircraftEventHandler_EnterTerminal(Vehicle *v, const AirportFTAClass
 
 static void AircraftEventHandler_EnterHangar(Vehicle *v, const AirportFTAClass *Airport)
 {
-	AircraftEnterHangar(v);
+	VehicleEnterDepot(v);
 	v->u.air.state = Airport->layout[v->u.air.pos].heading;
 }
 

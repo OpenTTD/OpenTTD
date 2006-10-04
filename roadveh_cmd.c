@@ -1575,52 +1575,6 @@ again:
 	RoadZPosAffectSpeed(v, SetRoadVehPosition(v, x, y));
 }
 
-void RoadVehEnterDepot(Vehicle *v)
-{
-	v->u.road.state = 254;
-	v->vehstatus |= VS_HIDDEN;
-
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-
-	VehicleServiceInDepot(v);
-
-	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
-
-	if (v->current_order.type == OT_GOTO_DEPOT) {
-		Order t;
-		int32 cost;
-
-		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-
-		t = v->current_order;
-		v->current_order.type = OT_DUMMY;
-		v->current_order.flags = 0;
-
-		_current_player = v->owner;
-		cost = DoCommand(v->tile, v->index, t.refit_cargo | t.refit_subtype << 8, DC_EXEC, CMD_REFIT_ROAD_VEH);
-		if (!CmdFailed(cost) && v->owner == _local_player && cost != 0) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
-
-		// Part of the orderlist?
-		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
-			v->cur_order_index++;
-		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
-			v->vehstatus |= VS_STOPPED;
-			if (v->owner == _local_player) {
-				SetDParam(0, v->unitnumber);
-				AddNewsItem(
-					STR_9016_ROAD_VEHICLE_IS_WAITING,
-					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
-					v->index,
-					0
-				);
-			}
-		}
-	}
-
-	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
-	InvalidateWindowClasses(WC_ROADVEH_LIST);
-}
-
 static void AgeRoadVehCargo(Vehicle *v)
 {
 	if (_age_cargo_skip_counter != 0) return;

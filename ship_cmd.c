@@ -316,7 +316,7 @@ static void UpdateShipDeltaXY(Vehicle *v, int dir)
 	v->sprite_height = GB(x, 24, 8);
 }
 
-static void RecalcShipStuff(Vehicle *v)
+void RecalcShipStuff(Vehicle *v)
 {
 	UpdateShipDeltaXY(v, v->direction);
 	v->cur_image = GetShipImage(v, v->direction);
@@ -389,50 +389,6 @@ static bool ShipAccelerate(Vehicle *v)
 static int32 EstimateShipCost(EngineID engine_type)
 {
 	return ShipVehInfo(engine_type)->base_cost * (_price.ship_base>>3)>>5;
-}
-
-static void ShipEnterDepot(Vehicle *v)
-{
-	v->u.ship.state = 0x80;
-	v->vehstatus |= VS_HIDDEN;
-	v->cur_speed = 0;
-	RecalcShipStuff(v);
-
-	VehicleServiceInDepot(v);
-
-	InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
-
-	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
-
-	if (v->current_order.type == OT_GOTO_DEPOT) {
-		Order t;
-		int32 cost;
-
-		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
-
-		t = v->current_order;
-		v->current_order.type = OT_DUMMY;
-		v->current_order.flags = 0;
-
-		_current_player = v->owner;
-		cost = DoCommand(v->tile, v->index, t.refit_cargo | t.refit_subtype << 8, DC_EXEC, CMD_REFIT_SHIP);
-		if (!CmdFailed(cost) && v->owner == _local_player && cost != 0) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
-
-		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
-			v->cur_order_index++;
-		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
-			v->vehstatus |= VS_STOPPED;
-			if (v->owner == _local_player) {
-				SetDParam(0, v->unitnumber);
-				AddNewsItem(
-					STR_981C_SHIP_IS_WAITING_IN_DEPOT,
-					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
-					v->index,
-					0);
-			}
-		}
-	}
-	InvalidateWindowClasses(WC_SHIPS_LIST);
 }
 
 static void ShipArrivesAt(const Vehicle* v, Station* st)
@@ -731,7 +687,7 @@ static void ShipController(Vehicle *v)
 					if (v->dest_tile == gp.new_tile) {
 						if (v->current_order.type == OT_GOTO_DEPOT) {
 							if ((gp.x&0xF)==8 && (gp.y&0xF)==8) {
-								ShipEnterDepot(v);
+								VehicleEnterDepot(v);
 								return;
 							}
 						} else if (v->current_order.type == OT_GOTO_STATION) {

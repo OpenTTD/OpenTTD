@@ -272,8 +272,6 @@ int32 GetRefitCost(EngineID engine_type);
 
 void ViewportAddVehicles(DrawPixelInfo *dpi);
 
-void TrainEnterDepot(Vehicle *v, TileIndex tile);
-
 /* train_cmd.h */
 int GetTrainImage(const Vehicle* v, Direction direction);
 int GetAircraftImage(const Vehicle* v, Direction direction);
@@ -320,6 +318,7 @@ bool VehicleNeedsService(const Vehicle *v);
 uint GenerateVehicleSortList(const Vehicle*** sort_list, uint16 *length_of_array, byte type, PlayerID owner, StationID station, OrderID order, uint16 depot_airport_index, uint16 window_type);
 void BuildDepotVehicleList(byte type, TileIndex tile, Vehicle ***engine_list, uint16 *engine_list_length, uint16 *engine_count, Vehicle ***wagon_list, uint16 *wagon_list_length, uint16 *wagon_count);
 int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID owner, uint16 vlw_flag, uint32 id);
+void VehicleEnterDepot(Vehicle *v);
 
 /* Flags to add to p2 for goto depot commands */
 /* Note: bits 8-10 are used for VLW flags */

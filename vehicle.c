@@ -106,6 +106,7 @@ void VehicleServiceInDepot(Vehicle *v)
 	v->date_of_last_service = _date;
 	v->breakdowns_since_last_service = 0;
 	v->reliability = GetEngine(v->engine_type)->reliability;
+	InvalidateWindow(WC_VEHICLE_DETAILS, v->index); // ensure that last service date and reliability are updated
 }
 
 bool VehicleNeedsService(const Vehicle *v)
@@ -2416,6 +2417,84 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 	return (flags & DC_EXEC) ? 0 : CMD_ERROR;
 }
 
+void VehicleEnterDepot(Vehicle *v)
+{
+	switch (v->type) {
+		case VEH_Train:
+			InvalidateWindowClasses(WC_TRAINS_LIST);
+			if (!IsFrontEngine(v)) v = GetFirstVehicleInChain(v);
+			UpdateSignalsOnSegment(v->tile, GetRailDepotDirection(v->tile));
+			v->load_unload_time_rem = 0;
+			break;
+
+		case VEH_Road:
+			InvalidateWindowClasses(WC_ROADVEH_LIST);
+			v->u.road.state = 254;
+			break;
+
+		case VEH_Ship:
+			InvalidateWindowClasses(WC_SHIPS_LIST);
+			v->u.ship.state = 0x80;
+			RecalcShipStuff(v);
+			break;
+
+		case VEH_Aircraft:
+			InvalidateWindowClasses(WC_AIRCRAFT_LIST);
+			HandleAircraftEnterHangar(v);
+			break;
+		default: NOT_REACHED();
+	}
+
+	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+
+	v->vehstatus |= VS_HIDDEN;
+	v->cur_speed = 0;
+
+	VehicleServiceInDepot(v);
+
+	TriggerVehicle(v, VEHICLE_TRIGGER_DEPOT);
+
+	if (v->current_order.type == OT_GOTO_DEPOT) {
+		Order t;
+
+		InvalidateWindow(WC_VEHICLE_VIEW, v->index);
+
+		t = v->current_order;
+		v->current_order.type = OT_DUMMY;
+		v->current_order.flags = 0;
+
+		if (t.refit_cargo != CT_NO_REFIT) {
+			int32 cost;
+
+			_current_player = v->owner;
+			cost = DoCommand(v->tile, v->index, t.refit_cargo | t.refit_subtype << 8, DC_EXEC, CMD_REFIT_VEH(v->type));
+			if (!CmdFailed(cost) && v->owner == _local_player && cost != 0) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
+		}
+
+		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {
+			/* Part of orders */
+			if (v->type == VEH_Train) v->u.rail.days_since_order_progr = 0;
+			v->cur_order_index++;
+		} else if (HASBIT(t.flags, OFB_HALT_IN_DEPOT)) {
+			/* Force depot visit */
+			v->vehstatus |= VS_STOPPED;
+			if (v->owner == _local_player) {
+				StringID string;
+
+				switch (v->type) {
+					case VEH_Train:    string = STR_8814_TRAIN_IS_WAITING_IN_DEPOT; break;
+					case VEH_Road:     string = STR_9016_ROAD_VEHICLE_IS_WAITING;   break;
+					case VEH_Ship:     string = STR_981C_SHIP_IS_WAITING_IN_DEPOT;  break;
+					case VEH_Aircraft: string = STR_A014_AIRCRAFT_IS_WAITING_IN;    break;
+					default: NOT_REACHED(); string = STR_EMPTY; // Set the string to something to avoid a compiler warning
+				}
+
+				SetDParam(0, v->unitnumber);
+				AddNewsItem(string, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),	v->index, 0);
+			}
+		}
+	}
+}
 
 /** Give a custom name to your vehicle
  * @param tile unused
