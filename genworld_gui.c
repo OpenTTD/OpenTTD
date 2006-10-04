@@ -243,7 +243,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 		SetWindowWidgetLoweredState(w, 3, _opt_newgame.landscape == LT_NORMAL);
 		SetWindowWidgetLoweredState(w, 4, _opt_newgame.landscape == LT_HILLY);
-		SetvWidgetLoweredState(w, 5, _opt_newgame.landscape == LT_DESERT);
+		SetWindowWidgetLoweredState(w, 5, _opt_newgame.landscape == LT_DESERT);
 		SetWindowWidgetLoweredState(w, 6, _opt_newgame.landscape == LT_CANDY);
 		DrawWindowWidgets(w);
 
