@@ -983,7 +983,7 @@ void ShowSmallMap(void)
 	if (w == NULL) return;
 
 	LowerWindowWidget(w, _smallmap_type + 5);
-	SetWidgetLoweredState(w, 12, _smallmap_show_towns);
+	SetWindowWidgetLoweredState(w, 12, _smallmap_show_towns);
 	w->resize.width = 350;
 	w->resize.height = 250;
 

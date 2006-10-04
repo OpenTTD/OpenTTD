@@ -143,8 +143,8 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE:
-		SetWidgetLoweredState(w, 16, !_station_show_coverage);
-		SetWidgetLoweredState(w, 17, _station_show_coverage);
+		SetWindowWidgetLoweredState(w, 16, !_station_show_coverage);
+		SetWindowWidgetLoweredState(w, 17, _station_show_coverage);
 		LowerWindowWidget(w, _selected_airport_type + 7);
 		break;
 
@@ -210,8 +210,8 @@ static void BuildAirportPickerWndProc(Window *w, WindowEvent *e)
 			break;
 		case 16: case 17:
 			_station_show_coverage = e->we.click.widget - 16;
-			SetWidgetLoweredState(w, 16, !_station_show_coverage);
-			SetWidgetLoweredState(w, 17, _station_show_coverage);
+			SetWindowWidgetLoweredState(w, 16, !_station_show_coverage);
+			SetWindowWidgetLoweredState(w, 17, _station_show_coverage);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;

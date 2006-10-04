@@ -108,7 +108,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 		i = GetCurRes();
 		SetDParam(7, i == _num_resolutions ? STR_RES_OTHER : SPECSTR_RESOLUTION_START + i);
 		SetDParam(8, SPECSTR_SCREENSHOT_START + _cur_screenshot_format);
-		SetWidgetLoweredState(w, 28, _fullscreen);
+		SetWindowWidgetLoweredState(w, 28, _fullscreen);
 
 		DrawWindowWidgets(w);
 		DrawString(20, 175, STR_OPTIONS_FULLSCREEN, 0); // fullscreen
@@ -152,7 +152,7 @@ static void GameOptionsWndProc(Window *w, WindowEvent *e)
 			ShowDropDownMenu(w, BuildDynamicDropdown(SPECSTR_RESOLUTION_START, _num_resolutions), GetCurRes(), 27, 0, 0);
 			return;
 		case 28: /* Click fullscreen on/off */
-			SetWidgetLoweredState(w, 28, !_fullscreen);
+			SetWindowWidgetLoweredState(w, 28, !_fullscreen);
 			ToggleFullScreen(!_fullscreen); // toggle full-screen on/off
 			SetWindowDirty(w);
 			return;

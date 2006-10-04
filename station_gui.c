@@ -355,7 +355,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				SETBIT(facilities, e->we.click.widget - 6);
 				LowerWindowWidget(w, e->we.click.widget);
 			}
-			SetWidgetLoweredState(w, 26, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+			SetWindowWidgetLoweredState(w, 26, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 		break;
@@ -405,7 +405,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 					LowerWindowWidget(w, e->we.click.widget);
 				}
 				sl->flags |= SL_REBUILD;
-				SetWidgetLoweredState(w, 27, cargo_filter == 0x1FFF);
+				SetWindowWidgetLoweredState(w, 27, cargo_filter == 0x1FFF);
 				SetWindowDirty(w);
 			}
 		}
@@ -436,8 +436,8 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		for (i = 0; i < NUM_CARGO; i++) {
 			if (HASBIT(cargo_filter, i)) LowerWindowWidget(w, i + 12);
 		}
-		SetWidgetLoweredState(w, 26, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-		SetWidgetLoweredState(w, 27, cargo_filter == 0x1FFF);
+		SetWindowWidgetLoweredState(w, 26, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+		SetWindowWidgetLoweredState(w, 27, cargo_filter == 0x1FFF);
 		sl->sort_list = NULL;
 		sl->flags = SL_REBUILD;
 		sl->sort_type = 0;

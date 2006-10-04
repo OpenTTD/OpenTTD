@@ -621,8 +621,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			LowerWindowWidget(w, _railstation.numtracks + 4);
 			LowerWindowWidget(w, _railstation.platlength + 11);
 		}
-		SetWidgetLoweredState(w, 20, !_station_show_coverage);
-		SetWidgetLoweredState(w, 21, _station_show_coverage);
+		SetWindowWidgetLoweredState(w, 20, !_station_show_coverage);
+		SetWindowWidgetLoweredState(w, 21, _station_show_coverage);
 		break;
 
 	case WE_PAINT: {
@@ -768,8 +768,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case 19:
 			_railstation.dragdrop ^= true;
 			ToggleWidgetLoweredState(w, 19);
-			SetWidgetLoweredState(w, _railstation.numtracks + 4, !_railstation.dragdrop);
-			SetWidgetLoweredState(w, _railstation.platlength + 11, !_railstation.dragdrop);
+			SetWindowWidgetLoweredState(w, _railstation.numtracks + 4, !_railstation.dragdrop);
+			SetWindowWidgetLoweredState(w, _railstation.platlength + 11, !_railstation.dragdrop);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -777,8 +777,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		case 20:
 		case 21:
 			_station_show_coverage = e->we.click.widget - 20;
-			SetWidgetLoweredState(w, 20, !_station_show_coverage);
-			SetWidgetLoweredState(w, 21, _station_show_coverage);
+			SetWindowWidgetLoweredState(w, 20, !_station_show_coverage);
+			SetWindowWidgetLoweredState(w, 21, _station_show_coverage);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;

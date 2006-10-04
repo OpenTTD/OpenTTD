@@ -695,7 +695,7 @@ static inline bool IsWindowWidgetHidden(Window *w, byte widget_index)
  * @param widget_index : index of this widget in the window
  * @param hidden_stat : status to use ie: lowered = true, raised = false
  */
-static inline void SetWidgetLoweredState(Window *w, byte widget_index, bool lowered_stat)
+static inline void SetWindowWidgetLoweredState(Window *w, byte widget_index, bool lowered_stat)
 {
 	SB(w->click_state, widget_index, 1, !!lowered_stat);
 }
