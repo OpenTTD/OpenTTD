@@ -347,7 +347,7 @@ STR_0155_INCOME_GRAPH                                           :Revenu
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Cargaison livrée
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Historique de performance
 STR_0158_COMPANY_VALUE_GRAPH                                    :Valeur de la compagnie
-STR_0159_CARGO_PAYMENT_RATES                                    :Valeur des cargaisons
+STR_0159_CARGO_PAYMENT_RATES                                    :Valeur des marchandises
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Classement des compagnies
 STR_PERFORMANCE_DETAIL_MENU                                     :Détail des performances
 ############ range for menu	ends
@@ -570,7 +570,7 @@ STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informa
 STR_020A_ECONOMY_CHANGES                                        :{YELLOW}Changements économiques
 STR_020B_ADVICE_INFORMATION_ON_PLAYER                           :{YELLOW}Conseils / information sur les véhicules du joueur
 STR_020C_NEW_VEHICLES                                           :{YELLOW}Nouveaux véhicules
-STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changements d'acceptation de cargaison
+STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Changements d'acceptation de marchandises
 STR_020E_SUBSIDIES                                              :{YELLOW}Subventions
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Information génerale
 STR_MESSAGES_ALL                                                :{YELLOW}Pour tout types de messages (aucun/sommaire/complet)
@@ -1247,10 +1247,10 @@ STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUST
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...trop proche d'une autre industrie
 
-STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Réaménager le train pour d'autres marchandises
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Réaménager le train pour transporter une cargaison différente
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Réaménager le train
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choix du type de marchandises à transporter
-STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Réaménager le train pour les marchandises sélectionnées
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaison à transporter
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Réaménager le train pour transporter la cargaison sélectionnée
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Impossible de réaménager le train...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Les intervalles de service sont en pourcentage: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Changer la production
@@ -2133,7 +2133,7 @@ STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT
 STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Fondation d'une nouvelle compagnie de transport!
 STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} commence à construire près de {TOWN}!
 STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Impossible d'acheter la compagnie...
-STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Valeur des cargaisons
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Valeur des marchandises
 STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Jours de transit
 STR_7063_PAYMENT_FOR_DELIVERING                                 :{BLACK}{TINYFONT}Prix payé pour livrer 10 unités (ou 10000 litres) à 20 carrés de distance
 STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Afficher/cacher le type de marchandise
@@ -2525,8 +2525,8 @@ STR_8826_GO_TO                                                  :{BLACK}Aller à
 STR_8827_FULL_LOAD                                              :{BLACK}Charger
 STR_8828_UNLOAD                                                 :{BLACK}Décharger
 STR_REFIT                                                       :{BLACK}Réaménager
-STR_REFIT_TIP                                                   :{BLACK}Choisir quel type de cargaison sera réaménagé pour cet ordre. Ctrl-clic  pour retirer l'instruction de réaménagement
-STR_REFIT_ORDER                                                 :(Réaménager en {STRING})
+STR_REFIT_TIP                                                   :{BLACK}Choisir pour quelle cargaison réaménager pour cet ordre. Ctrl-clic  pour retirer l'instruction de réaménagement
+STR_REFIT_ORDER                                                 :(Réaménager pour {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordres)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fin des ordres - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2569,10 +2569,10 @@ STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Faire fa
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Afficher les détails
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Augmenter l'intervalle d'entretien
 STR_884E_DECREASE_SERVICING_INTERVAL                            :{BLACK}Diminuer l'intervalle d'entretien
-STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Afficher des informations les marchandises
+STR_884F_SHOW_DETAILS_OF_CARGO_CARRIED                          :{BLACK}Afficher des informations sur les marchandises transportées
 STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afficher des informations sur les wagons
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Afficher la capacité de chaque wagon
-STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Afficher la capacité totale du train, par type de marchandise
+STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Afficher la capacité totale du train, par type de cargaison
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Liste des ordres - Cliquer sur un ordre pour le sélectionner.  Cliquer avec Ctrl déplace la vue sur la station
 STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saute l'ordre courant, et enchaîne sur le suivant
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Supprime l'ordre sélectionné
@@ -2600,7 +2600,7 @@ STR_8868_TRAIN_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT
 STR_8869_CAN_T_REVERSE_DIRECTION                                :{WHITE}Impossible de faire faire demi-tour...
 STR_886A_RENAME_TRAIN_VEHICLE_TYPE                              :{WHITE}Renommer le type de train
 STR_886B_CAN_T_RENAME_TRAIN_VEHICLE                             :{WHITE}Impossible de renommer le type de train...
-STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à vider sa marchandise pour l'ordre sélectionné
+STR_886D_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forcer le véhicule à vider sa cargaison pour l'ordre sélectionné
 STR_886F_TRANSFER                                               :{BLACK}Transfert
 
 STR_TRAIN_STOPPING                                              :{RED}Ralentit
@@ -2669,9 +2669,9 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Impossib
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Aller à {TOWN} Dépôt Routier
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Entretien au dépôt de {TOWN}
 
-STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Réaménager le véhicule routier pour d'autres marchandises
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Réaménager le véhicule routier pour transporter une cargaison différente
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Réaménager le véhicule routier
-STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Réaménager le véhicule routier pour les marchandises sélectionnées
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Réaménager le véhicule routier pour transporter la cargaison sélectionnée
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossible de réaménager le véhicule routier...
 
 ##id 0x9800
@@ -2735,12 +2735,12 @@ STR_9836_RENAME                                                 :{BLACK}Renommer
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Renommer type de navire
 STR_9838_RENAME_SHIP_TYPE                                       :{WHITE}Renommer type de navire
 STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Impossbile de renommer type de navire...
-STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Réaménager navire pour transporter une cargaison différente
+STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Réaménager le navire pour transporter une cargaison différente
 STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Réaménager)
 STR_983C_REFIT_SHIP                                             :{BLACK}Réaménager navire
-STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaisons à transporter
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaison à transporter
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Réaménager le navire pour transporter la cargaison sélectionnée
-STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selectionner cargaison à transporter:
+STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Choisir le type de cargaison à transporter:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nouvelle capacité: {GOLD}{STRING}{}{BLACK}Prix du réaménagement: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Impossible de réaménager le navire...
 STR_9842_REFITTABLE                                             :(réaménageable)
@@ -2810,12 +2810,12 @@ STR_A037_RENAME                                                 :{BLACK}Renommer
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Renommer type d'aéronef
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Renommer type d'aéronef
 STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Impossible de renommer type d'aéronef...
-STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Réaménager aéronef pour transporter un différent type de cargaison
+STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Réaménager l'aéronef pour transporter une cargaison différente
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Réaménager)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Réaménager aéronef
-STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir type de cargaison à transporter
-STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Réaménager aéronef pour transporter type de cargaison sélectionné
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selectionner type de cargaison à transporter:
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaison à transporter
+STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Réaménager l'aéronef pour transporter la cargaison sélectionnée
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Choisir le type de cargaison à transporter:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nouvelle capacité: {GOLD}{STRING}{}{BLACK}Prix du réaménagement: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Impossible de réaménager l'aéronef...
 STR_GO_TO_AIRPORT_HANGAR                                        :Aller au hangar {STATION}
@@ -2908,7 +2908,7 @@ STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Dépôts
 STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Dépôts
 STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
 
-STR_SEND_TO_DEPOTS                                              :{BLACK}Envoyer vers {SKIP}{SKIP}{SKIP}{STRING}
+STR_SEND_TO_DEPOTS                                              :{BLACK}Envoyer aux {SKIP}{SKIP}{SKIP}{STRING}
 
 STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Envoyer tous les trains de la liste aux dépôts. Ctrl-clic pour entretien seul
 STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Envoyer tous les véhicules routiers de la liste aux dépôts. Ctrl-clic pour entretien seul
@@ -2951,9 +2951,9 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Navire{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aéronef{P "" s}
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Remplacement véhicules
+STR_REPLACE_VEHICLES                                            :{BLACK}Remplacer véhicules
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Commencer le remplacement
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Démarrer le remplacement
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopper le remplacement
 STR_NOT_REPLACING                                               :{BLACK}Pas en cours de remplacement
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Aucun véhicule sélectionné
@@ -2967,7 +2967,7 @@ STR_REPLACE_HELP                                                :{BLACK}Cette ca
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Retrait de wagon: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}L'autoremplacement conserve la même longueur du train en retirant des wagons (d'abord par la tête), si le remplacement fait en sorte que le train ne devienne plus long.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}En Remplacement: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FONCTION EXPERIMENTALE {}Passer à la fenêtre de remplacement de locomotives/wagons.{}Le remplacement de wagon ne se fera que si le nouveau wagon peut être réaménagé pour le même type de marchandises que l'ancien. Ceci est vérifié pour chaque wagon lors du remplacement.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FONCTION EXPERIMENTALE {}Passer à la fenêtre de remplacement de locomotives/wagons.{}Le remplacement de wagon ne se fera que si le nouveau wagon peut être réaménagé pour le même type de cargaison que l'ancien. Ceci est vérifié pour chaque wagon lors du remplacement.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Ce véhicule ne peut pas être construit
 
 STR_ENGINES                                                     :Locomotives

@@ -801,7 +801,7 @@ STR_02E1                                                        :{BLACK}{SKIP}{S
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Val á gjaldmiðli
 STR_MEASURING_UNITS                                             :{BLACK}Mælieiningar
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Veldu mælieiningu
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Kerfi mælieininga
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Aksturstefna
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Aksturstefna bifreiða
@@ -809,7 +809,7 @@ STR_02E9_DRIVE_ON_LEFT                                          :Vinstristefna
 STR_02EA_DRIVE_ON_RIGHT                                         :Hægristefna
 STR_02EB_TOWN_NAMES                                             :{BLACK}Bæjarnöfn
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Veldu stíl bæjarnafna
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Tungumál bæjarnafna
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Sjálfvirk vistun
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -830,10 +830,10 @@ STR_0304_QUIT                                                   :{BLACK}Hætta
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Hætta í OpenTTD
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...aðeins hægt að byggja í bæjum
-STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Velja temprað landslag
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Velja heimskautalandslag
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Temprað landslag
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Heimskautalandslag
 STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Velja eyðimerkurlandslag
-STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Velja leikfangalandslag
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Leikfangalandslag
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Fjármagna byggingu nýs iðnaðars
 
 ############ range for menu	starts
@@ -1967,7 +1967,7 @@ STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Magn sj
 STR_6813_ECONOMY                                                :{LTBLUE}Efnahagur: {ORANGE}{STRING}
 STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Snúningur lestar: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Hrakföll: {ORANGE}{STRING}
-STR_16816_CITY_APPROVAL                                         :{LTBLUE}Afstaða borgaryfirvalda gagnvart svæðisbreytingum: {ORANGE}{STRING}
+STR_16816_CITY_APPROVAL                                         :{LTBLUE}Afstaða borgaryfirvalda til landmótunar: {ORANGE}{STRING}
 ############ range for difficulty settings ends
 
 STR_26816_NONE                                                  :Engin
