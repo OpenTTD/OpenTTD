@@ -1887,6 +1887,26 @@ static void MoveVehicleCargo(Vehicle *dest, Vehicle *source)
 	} while ((source = source->next) != NULL);
 }
 
+static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID engine_type)
+{
+	const Order *o;
+	const Vehicle *u;
+
+	if (v->type == VEH_Train) {
+		u = GetFirstVehicleInChain(v);
+	} else {
+		u = v;
+	}
+
+	FOR_VEHICLE_ORDERS(u, o) {
+		if (o->refit_cargo == CT_NO_REFIT) continue;
+		if (!CanRefitTo(v->engine_type, o->refit_cargo)) continue;
+		if (!CanRefitTo(engine_type, o->refit_cargo)) return false;
+	}
+
+	return true;
+}
+
 /**
  * Function to find what type of cargo to refit to when autoreplacing
  * @param *v Original vehicle, that is being replaced
@@ -1926,8 +1946,13 @@ static CargoID GetNewCargoTypeForReplace(Vehicle *v, EngineID engine_type)
 
 	if (!new_cargo_capacity) return CT_NO_REFIT; // Don't try to refit an engine with no cargo capacity
 
-	if (v->cargo_type == new_cargo_type) return CT_NO_REFIT;
-	if (CanRefitTo(engine_type, v->cargo_type)) return v->cargo_type;
+	if (v->cargo_type == new_cargo_type || CanRefitTo(engine_type, v->cargo_type)) {
+		if (VerifyAutoreplaceRefitForOrders(v, engine_type)) {
+			return v->cargo_type == new_cargo_type ? CT_NO_REFIT : v->cargo_type;
+		} else {
+			return CT_INVALID;
+		}
+	}
 	if (v->type != VEH_Train) return CT_INVALID; // We can't refit the vehicle to carry the cargo we want
 
 	/* Below this line it's safe to assume that the vehicle in question is a train */
