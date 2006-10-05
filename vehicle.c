@@ -1720,10 +1720,7 @@ int32 CmdDepotMassAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		int32 ret;
 
 		/* Ensure that the vehicle completely in the depot */
-		if ((vehicle_type == VEH_Train    && !CheckTrainInDepot(v, false)) ||
-			(vehicle_type == VEH_Road     && !IsRoadVehInDepot(v)        ) ||
-			(vehicle_type == VEH_Ship     && !IsShipInDepot(v)           ) ||
-			(vehicle_type == VEH_Aircraft && !IsAircraftInHangar(v))     ) continue;
+		if (!IsVehicleInDepot(v)) continue;
 
 		x = v->x_pos;
 		y = v->y_pos;
