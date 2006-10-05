@@ -508,10 +508,9 @@ static const WindowDesc _select_player_livery_desc = {
 static void SelectPlayerFaceWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, WP(w, facesel_d).gender + 5); break;
-
 	case WE_PAINT: {
 		Player *p;
+		LowerWindowWidget(w, WP(w, facesel_d).gender + 5);
 		DrawWindowWidgets(w);
 		p = GetPlayer(w->window_number);
 		DrawPlayerFace(WP(w,facesel_d).face, p->player_color, 2, 16);
