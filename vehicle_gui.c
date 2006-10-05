@@ -1553,10 +1553,9 @@ static void DrawVehicleListWindow(Window *w)
 	switch (window_type) {
 		case VLW_SHARED_ORDERS: /* Shared Orders */
 			if (vl->l.list_length == 0) {
-				/* The list is empty, so the last vehicle is sold or crashed */
-				/* Delete the window because the order is now not in use anymore */
-				DeleteWindow(w);
-				return;
+				/* We can't open this window without vehicles using this order
+				 * and we should close the window when deleting the order      */
+				NOT_REACHED();
 			}
 			SetDParam(0, w->vscroll.count);
 			break;
