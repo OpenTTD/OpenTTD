@@ -652,9 +652,9 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 				case DEPOT_WIDGET_CLONE: // Clone button
 					InvalidateWidget(w, DEPOT_WIDGET_CLONE);
-					TOGGLEBIT(w->click_state, DEPOT_WIDGET_CLONE);
+					ToggleWidgetLoweredState(w, DEPOT_WIDGET_CLONE);
 
-					if (HASBIT(w->click_state, DEPOT_WIDGET_CLONE)) {
+					if (IsWindowWidgetLowered(w, DEPOT_WIDGET_CLONE)) {
 						_place_clicked_vehicle = NULL;
 						SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
 					} else {
