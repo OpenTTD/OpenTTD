@@ -212,7 +212,7 @@ static const Widget _depot_sell_all_widgets[] = {
 
 static const WindowDesc _depot_sell_all_desc = {
 	WDP_CENTER, WDP_CENTER, 300, 72,
-	WC_DEPOT_SELL_ALL,0,
+	WC_DEPOT_SELL_ALL, WC_VEHICLE_DEPOT,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_depot_sell_all_widgets,
 	DepotSellAllWndProc
@@ -222,6 +222,7 @@ static void ShowDepotSellAllWindow(TileIndex tile, byte type)
 {
 	Window *w;
 
+	_alloc_wnd_parent_num = tile;
 	w = AllocateWindowDescFront(&_depot_sell_all_desc, tile);
 
 	if (w != NULL) {
