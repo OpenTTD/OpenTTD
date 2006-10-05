@@ -480,7 +480,7 @@ void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod)
 	DrawSprite(image | image_ormod, x, y);
 }
 
-static uint CountArticulatedParts(EngineID engine_type)
+uint CountArticulatedParts(EngineID engine_type)
 {
 	uint16 callback;
 	uint i;
