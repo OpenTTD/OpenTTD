@@ -614,6 +614,8 @@ static void ResizeDepotButtons(Window *w)
 	}
 }
 
+void DepotSortList(Vehicle **v, uint16 length);
+
 static void DepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -637,6 +639,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					&WP(w, depot_d).vehicle_list, &WP(w, depot_d).engine_list_length, &WP(w, depot_d).engine_count,
 					&WP(w, depot_d).wagon_list,   &WP(w, depot_d).wagon_list_length,  &WP(w, depot_d).wagon_count);
 				WP(w, depot_d).generate_list = false;
+				DepotSortList(WP(w, depot_d).vehicle_list, WP(w, depot_d).engine_count);
 #ifndef NDEBUG
 			} else {
 				/* Here we got a piece of code, that only checks if we got a different number of vehicles in the depot list and the number of vehicles actually being in the depot.

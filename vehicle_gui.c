@@ -158,6 +158,11 @@ static void SortVehicleList(vehiclelist_d *vl)
 	vl->l.flags &= ~VL_RESORT;
 }
 
+void DepotSortList(Vehicle **v, uint16 length)
+{
+	_internal_sort_order = 0;
+	qsort((void*)v, length, sizeof(v[0]), _vehicle_sorter[0]);
+}
 
 /* General Vehicle GUI based procedures that are independent of vehicle types */
 void InitializeVehiclesGuiList(void)
