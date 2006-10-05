@@ -17,6 +17,7 @@
 #include "variables.h"
 #include "train.h"
 #include "date.h"
+#include "newgrf.h"
 
 #ifdef ENABLE_NETWORK
 #include "network_data.h"
@@ -317,7 +318,13 @@ static void ShowColourDropDownMenu(Window *w, uint32 widget)
 static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-		case WE_CREATE: LowerWindowWidget(w, WP(w, livery_d).livery_class + 2); break;
+		case WE_CREATE:
+			LowerWindowWidget(w, WP(w, livery_d).livery_class + 2);
+			if (!_have_2cc) {
+				HideWindowWidget(w, 11);
+				HideWindowWidget(w, 12);
+			}
+			break;
 
 		case WE_PAINT: {
 			const Player *p = GetPlayer(w->window_number);
@@ -353,10 +360,12 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 					DrawString(15, y, STR_LIVERY_DEFAULT + scheme, sel ? 0xC : 0x10);
 
 					DrawSprite(SPR_SQUARE | GENERAL_SPRITE_COLOR(p->livery[scheme].colour1) | PALETTE_MODIFIER_COLOR, 152, y);
-					DrawSprite(SPR_SQUARE | GENERAL_SPRITE_COLOR(p->livery[scheme].colour2) | PALETTE_MODIFIER_COLOR, 277, y);
-
 					DrawString(165, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour1, sel ? 0xC : 2);
-					DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? 0xC : 2);
+
+					if (_have_2cc) {
+						DrawSprite(SPR_SQUARE | GENERAL_SPRITE_COLOR(p->livery[scheme].colour2) | PALETTE_MODIFIER_COLOR, 277, y);
+						DrawString(290, y, STR_00D1_DARK_BLUE + p->livery[scheme].colour2, sel ? 0xC : 2);
+					}
 
 					y += 14;
 				}
@@ -443,7 +452,7 @@ static void SelectPlayerLiveryWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-static const Widget _select_player_livery_widgets[] = {
+static const Widget _select_player_livery_2cc_widgets[] = {
 { WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,   0,  13, STR_00C5,                  STR_018B_CLOSE_WINDOW },
 {  WWT_CAPTION, RESIZE_NONE, 14,  11, 399,   0,  13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS },
 {   WWT_IMGBTN, RESIZE_NONE, 14,   0,  21,  14,  35, SPR_IMG_COMPANY_GENERAL,   STR_LIVERY_GENERAL_TIP },
@@ -461,8 +470,35 @@ static const Widget _select_player_livery_widgets[] = {
 { WIDGETS_END },
 };
 
-static const WindowDesc _select_player_livery_desc = {
+static const WindowDesc _select_player_livery_2cc_desc = {
 	-1,-1, 400, 49 + 1 * 14,
+	WC_PLAYER_COLOR, 0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
+	_select_player_livery_2cc_widgets,
+	SelectPlayerLiveryWndProc
+};
+
+
+static const Widget _select_player_livery_widgets[] = {
+{ WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,   0,  13, STR_00C5,                  STR_018B_CLOSE_WINDOW },
+{  WWT_CAPTION, RESIZE_NONE, 14,  11, 274,   0,  13, STR_7007_NEW_COLOR_SCHEME, STR_018C_WINDOW_TITLE_DRAG_THIS },
+{   WWT_IMGBTN, RESIZE_NONE, 14,   0,  21,  14,  35, SPR_IMG_COMPANY_GENERAL,   STR_LIVERY_GENERAL_TIP },
+{   WWT_IMGBTN, RESIZE_NONE, 14,  22,  43,  14,  35, SPR_IMG_TRAINLIST,         STR_LIVERY_TRAIN_TIP },
+{   WWT_IMGBTN, RESIZE_NONE, 14,  44,  65,  14,  35, SPR_IMG_TRUCKLIST,         STR_LIVERY_ROADVEH_TIP },
+{   WWT_IMGBTN, RESIZE_NONE, 14,  66,  87,  14,  35, SPR_IMG_SHIPLIST,          STR_LIVERY_SHIP_TIP },
+{   WWT_IMGBTN, RESIZE_NONE, 14,  88, 109,  14,  35, SPR_IMG_AIRPLANESLIST,     STR_LIVERY_AIRCRAFT_TIP },
+{    WWT_PANEL, RESIZE_NONE, 14, 110, 274,  14,  35, 0x0,                       STR_NULL },
+{    WWT_PANEL, RESIZE_NONE, 14,   0, 149,  36,  47, 0x0,                       STR_NULL },
+{  WWT_TEXTBTN, RESIZE_NONE, 14, 150, 262,  36,  47, STR_02BD,                  STR_LIVERY_PRIMARY_TIP },
+{  WWT_TEXTBTN, RESIZE_NONE, 14, 263, 274,  36,  47, STR_0225,                  STR_LIVERY_PRIMARY_TIP },
+{  WWT_TEXTBTN, RESIZE_NONE, 14, 275, 275,  36,  47, STR_02E1,                  STR_LIVERY_SECONDARY_TIP },
+{  WWT_TEXTBTN, RESIZE_NONE, 14, 275, 275,  36,  47, STR_0225,                  STR_LIVERY_SECONDARY_TIP },
+{   WWT_MATRIX, RESIZE_NONE, 14,   0, 274,  48,  48 + 1 * 14, (1 << 8) | 1,     STR_LIVERY_PANEL_TIP },
+{ WIDGETS_END },
+};
+
+static const WindowDesc _select_player_livery_desc = {
+	-1, -1, 275, 49 + 1 * 14,
 	WC_PLAYER_COLOR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_player_livery_widgets,
@@ -722,7 +758,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		} break;
 
 		case 4: {/* change color */
-			Window *wf = AllocateWindowDescFront(&_select_player_livery_desc, w->window_number);
+			Window *wf = AllocateWindowDescFront(_have_2cc ? &_select_player_livery_2cc_desc : &_select_player_livery_desc, w->window_number);
 			if (wf != NULL) {
 				wf->caption_color = wf->window_number;
 				WP(wf,livery_d).livery_class = LC_OTHER;

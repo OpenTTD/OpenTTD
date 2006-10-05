@@ -59,6 +59,9 @@ static uint32 _ttdpatch_flags[8];
 /* Used by Action 0x06 to preload a pseudo sprite and modify its content */
 static byte *_preload_sprite = NULL;
 
+/* Set if any vehicle is loaded which uses 2cc (two company colours) */
+bool _have_2cc = false;
+
 
 typedef enum GrfDataType {
 	GDT_SOUND,
@@ -459,7 +462,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x27: /* Miscellaneous flags */
-			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
+			FOR_EACH_OBJECT {
+				ei[i].misc_flags = grf_load_byte(&buf);
+				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
+			}
 			break;
 
 		case 0x28: /* Cargo classes allowed */
@@ -3055,6 +3061,7 @@ static void ResetNewGRFData(void)
 	_misc_grf_features = 0;
 	_traininfo_vehicle_pitch = 0;
 	_traininfo_vehicle_width = 29;
+	_have_2cc = false;
 
 	InitializeSoundPool();
 	InitializeSpriteGroupPool();
