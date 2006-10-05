@@ -834,11 +834,9 @@ static void SetAircraftPosition(Vehicle *v, int x, int y, int z)
 }
 
 /** Handle Aircraft specific tasks when a an Aircraft enters a hangar
- * Made inline because it's only called from one location (VehicleEnterDepot)
- * Can't be moved to vehicle.c because it calls static Aircraft specific functions
  * @param *v Vehicle that enters the hangar
  */
-inline void HandleAircraftEnterHangar(Vehicle *v)
+void HandleAircraftEnterHangar(Vehicle *v)
 {
 	Vehicle *u;
 

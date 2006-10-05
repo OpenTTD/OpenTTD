@@ -856,6 +856,10 @@
 			Filter="h;hpp;hxx;hm;inl"
 			>
 			<File
+				RelativePath=".\aircraft.h"
+				>
+			</File>
+			<File
 				RelativePath=".\airport.h"
 				>
 			</File>
