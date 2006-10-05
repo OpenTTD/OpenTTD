@@ -2439,6 +2439,18 @@ int32 SendAllVehiclesToDepot(byte type, uint32 flags, bool service, PlayerID own
 	return (flags & DC_EXEC) ? 0 : CMD_ERROR;
 }
 
+bool IsVehicleInDepot(const Vehicle *v)
+{
+	switch (v->type) {
+		case VEH_Train:    return CheckTrainInDepot(v, false) != -1;
+		case VEH_Road:     return IsRoadVehInDepot(v);
+		case VEH_Ship:     return IsShipInDepot(v);
+		case VEH_Aircraft: return IsAircraftInHangar(v);
+		default: NOT_REACHED();
+	}
+	return false;
+}
+
 void VehicleEnterDepot(Vehicle *v)
 {
 	switch (v->type) {

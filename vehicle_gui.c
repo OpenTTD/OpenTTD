@@ -1508,6 +1508,29 @@ static void CreateVehicleListWindow(Window *w)
 	ResizeVehicleListWidgets(w);
 }
 
+static void DrawSmallOrderList(const Vehicle *v, int x, int y)
+{
+	const Order *order;
+	int sel, i = 0;
+
+	sel = v->cur_order_index;
+
+	FOR_VEHICLE_ORDERS(v, order) {
+		if (sel == 0) DrawString(x - 6, y, STR_SMALL_RIGHT_ARROW, 16);
+		sel--;
+
+		if (order->type == OT_GOTO_STATION) {
+			if (v->type == VEH_Ship && IsBuoy(GetStation(order->dest))) continue;
+
+			SetDParam(0, order->dest);
+			DrawString(x, y, STR_A036, 0);
+
+			y += 6;
+			if (++i == 4) break;
+		}
+	}
+}
+
 static void DrawVehicleListWindow(Window *w)
 {
 	vehiclelist_d *vl = &WP(w, vehiclelist_d);
@@ -1594,58 +1617,32 @@ static void DrawVehicleListWindow(Window *w)
 	max = min(w->vscroll.pos + w->vscroll.cap, vl->l.list_length);
 	for (i = w->vscroll.pos; i < max; ++i) {
 		const Vehicle *v = vl->sort_list[i];
-		StringID str = (v->age > v->max_age - 366) ? STR_00E3 : STR_00E2;
+		StringID str;
 
 		SetDParam(0, v->profit_this_year);
 		SetDParam(1, v->profit_last_year);
 
-		switch (vl->vehicle_type) {
-			case VEH_Train:
-				DrawTrainImage(v, x + 21, y + 6, w->hscroll.cap, 0, INVALID_VEHICLE);
-				DrawString(x + 21, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-				if (IsTileDepotType(v->tile, TRANSPORT_RAIL) && (v->vehstatus & VS_HIDDEN)) str = STR_021F;
+		DrawVehicleImage(v, x + 19, y + 6, w->hscroll.cap + 2, 0, INVALID_VEHICLE);
+		DrawString(x + 19, y + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
-					if (v->string_id != STR_SV_TRAIN_NAME) {
-						SetDParam(0, v->string_id);
-						DrawString(x + 21, y, STR_01AB, 0);
-					}
-						break;
-			case VEH_Road:
-				DrawRoadVehImage(v, x + 22, y + 6, INVALID_VEHICLE);
-				DrawString(x + 24, y + 18, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-				if (IsRoadVehInDepot(v)) str = STR_021F;
+		if ((v->type == VEH_Train    && v->string_id != STR_SV_TRAIN_NAME)   ||
+			(v->type == VEH_Road     && v->string_id != STR_SV_ROADVEH_NAME) ||
+			(v->type == VEH_Ship     && v->string_id != STR_SV_SHIP_NAME)    ||
+			(v->type == VEH_Aircraft && v->string_id != STR_SV_AIRCRAFT_NAME)) {
 
-					if (v->string_id != STR_SV_ROADVEH_NAME) {
-						SetDParam(0, v->string_id);
-						DrawString(x + 24, y, STR_01AB, 0);
-					}
-						break;
-			case VEH_Ship:
-				DrawShipImage(v, x + 19, y + 6, INVALID_VEHICLE);
-				DrawString(x + 12, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-				if (IsShipInDepot(v)) str = STR_021F;
-
-					if (v->string_id != STR_SV_SHIP_NAME) {
-						SetDParam(0, v->string_id);
-						DrawString(x + 12, y, STR_01AB, 0);
-					}
-						DrawSmallOrderListShip(v, x + 138, y);
-
-				break;
-			case VEH_Aircraft:
-				DrawAircraftImage(v, x + 19, y + 6, INVALID_VEHICLE);
-				DrawString(x + 19, y + 28, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
-				if (IsAircraftInHangar(v)) str = STR_021F;
-
-					if (v->string_id != STR_SV_AIRCRAFT_NAME) {
-						SetDParam(0, v->string_id);
-						DrawString(x + 19, y, STR_01AB, 0);
-					}
-						DrawSmallOrderListAircraft(v, x + 136, y);
-
-				break;
-			default: NOT_REACHED(); break;
+			/* The vehicle got a name so we will print it */
+			SetDParam(0, v->string_id);
+			DrawString(x + 19, y, STR_01AB, 0);
 		}
+
+		if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_BIG) DrawSmallOrderList(v, x + 138, y);
+
+		if (IsVehicleInDepot(v)) {
+			str = STR_021F;
+		} else {
+			str = (v->age > v->max_age - 366) ? STR_00E3 : STR_00E2;
+		}
+
 		SetDParam(0, v->unitnumber);
 		DrawString(x, y + 2, str, 0);
 

@@ -529,26 +529,3 @@ void ShowShipViewWindow(const Vehicle *v)
 		AssignWindowViewport(w, 3, 17, 0xE2, 0x54, w->window_number | (1 << 31), 0);
 	}
 }
-
-void DrawSmallOrderListShip(const Vehicle *v, int x, int y)
-{
-	const Order *order;
-	int sel, i = 0;
-
-	sel = v->cur_order_index;
-
-	FOR_VEHICLE_ORDERS(v, order) {
-		if (sel == 0) DrawString(x - 6, y, STR_SMALL_RIGHT_ARROW, 16);
-		sel--;
-
-		if (order->type == OT_GOTO_STATION) {
-			if (!IsBuoy(GetStation(order->dest))) {
-				SetDParam(0, order->dest);
-				DrawString(x, y, STR_A036, 0);
-
-				y += 6;
-				if (++i == 4) break;
-			}
-		}
-	}
-}
