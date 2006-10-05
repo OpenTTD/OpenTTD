@@ -615,6 +615,7 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 				u->next = v;
 			} else {
 				SetFreeWagon(v);
+				InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 			}
 
 			v->cargo_type = rvi->cargo_type;
@@ -818,6 +819,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			}
 
 			GetPlayer(_current_player)->num_engines[p1]++;
+			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 			InvalidateWindow(WC_VEHICLE_DEPOT, tile);
 			RebuildVehicleLists();
 			InvalidateWindow(WC_COMPANY, v->owner);
@@ -1122,6 +1124,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				while (GetNextVehicle(v) != src) v = GetNextVehicle(v);
 				GetLastEnginePart(v)->next = NULL;
 			} else {
+				InvalidateWindowData(WC_VEHICLE_DEPOT, src_head->tile); // We removed a line
 				src_head = NULL;
 			}
 		} else {
@@ -1133,6 +1136,9 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		}
 
 		if (dst == NULL) {
+			/* We make a new line in the depot, so we know already that we invalidate the window data */
+			InvalidateWindowData(WC_VEHICLE_DEPOT, src_head->tile);
+
 			// move the train to an empty line. for locomotives, we set the type to TS_Front. for wagons, 4.
 			if (IsTrainEngine(src)) {
 				if (!IsFrontEngine(src)) {
@@ -1152,9 +1158,12 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				DeleteVehicleOrders(src);
 			}
 
-			ClearFrontEngine(src);
-			ClearFreeWagon(src);
-			src->unitnumber = 0; // doesn't occupy a unitnumber anymore.
+			if (IsFrontEngine(src) || IsFreeWagon(src)) {
+				InvalidateWindowData(WC_VEHICLE_DEPOT, src->tile);
+				ClearFrontEngine(src);
+				ClearFreeWagon(src);
+				src->unitnumber = 0; // doesn't occupy a unitnumber anymore.
+			}
 
 			// link in the wagon(s) in the chain.
 			{
@@ -1640,8 +1649,10 @@ static void ReverseTrainDirection(Vehicle *v)
 	int l = 0, r = -1;
 	Vehicle *u;
 
-	if (IsTileDepotType(v->tile, TRANSPORT_RAIL))
+	if (IsTileDepotType(v->tile, TRANSPORT_RAIL)) {
+		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+	}
 
 	/* Check if we were approaching a rail/road-crossing */
 	{
@@ -1672,8 +1683,10 @@ static void ReverseTrainDirection(Vehicle *v)
 
 	AdvanceWagons(v, false);
 
-	if (IsTileDepotType(v->tile, TRANSPORT_RAIL))
+	if (IsTileDepotType(v->tile, TRANSPORT_RAIL)) {
+		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+	}
 
 	CLRBIT(v->u.rail.flags, VRF_REVERSING);
 }
@@ -2166,6 +2179,7 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	VehiclePositionChanged(v);
 	UpdateSignalsOnSegment(v->tile, DirToDiagDir(v->direction));
 	UpdateTrainAcceleration(v);
+	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
 	return false;

@@ -618,18 +618,43 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE:
-			WP(w, depot_d).vehicle_list = NULL;
-			WP(w, depot_d).wagon_list   = NULL;
-			WP(w, depot_d).engine_count = 0;
-			WP(w, depot_d).wagon_count  = 0;
+			WP(w, depot_d).vehicle_list  = NULL;
+			WP(w, depot_d).wagon_list    = NULL;
+			WP(w, depot_d).engine_count  = 0;
+			WP(w, depot_d).wagon_count   = 0;
+			WP(w, depot_d).generate_list = true;
+			break;
+
+		case WE_INVALIDATE_DATA:
+			WP(w, depot_d).generate_list = true;
 			break;
 
 		case WE_PAINT:
-			/* Generate the vehicle list
-			 * It's ok to use the wagon pointers for non-trains as they will be ignored */
-			BuildDepotVehicleList(WP(w, depot_d).type, w->window_number,
-				&WP(w, depot_d).vehicle_list, &WP(w, depot_d).engine_list_length, &WP(w, depot_d).engine_count,
-			    &WP(w, depot_d).wagon_list,   &WP(w, depot_d).wagon_list_length,  &WP(w, depot_d).wagon_count);
+			if (WP(w, depot_d).generate_list) {
+				/* Generate the vehicle list
+				 * It's ok to use the wagon pointers for non-trains as they will be ignored */
+				BuildDepotVehicleList(WP(w, depot_d).type, w->window_number,
+					&WP(w, depot_d).vehicle_list, &WP(w, depot_d).engine_list_length, &WP(w, depot_d).engine_count,
+					&WP(w, depot_d).wagon_list,   &WP(w, depot_d).wagon_list_length,  &WP(w, depot_d).wagon_count);
+				WP(w, depot_d).generate_list = false;
+#ifndef NDEBUG
+			} else {
+				/* Here we got a piece of code, that only checks if we got a different number of vehicles in the depot list and the number of vehicles actually being in the depot.
+				 * IF they aren't the same, then WE_INVALIDATE_DATA should have been called somewhere, but it wasn't and we got a bug
+				 * Since this is a time consuming check and not nice to memory fragmentation, it may not stay for long, but it's a good way to check this
+				 * We can turn it on/off by switching between #ifndef NDEBUG and #if 0 */
+				Vehicle **engines = NULL, **wagons = NULL;
+				uint16 engine_count = 0, engine_length = 0;
+				uint16 wagon_count  = 0, wagon_length  = 0;
+				BuildDepotVehicleList(WP(w, depot_d).type, w->window_number, &engines, &engine_length, &engine_count,
+									  &wagons,  &wagon_length,  &wagon_count);
+
+				assert(engine_count == WP(w, depot_d).engine_count);
+				assert(wagon_count == WP(w, depot_d).wagon_count);
+				free((void*)engines);
+				free((void*)wagons);
+#endif
+			}
 			DrawDepotWindow(w);
 			break;
 

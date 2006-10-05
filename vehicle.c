@@ -566,6 +566,10 @@ void DestroyVehicle(Vehicle *v)
 	DeleteName(v->string_id);
 	if (v->type == VEH_Road) ClearSlot(v);
 
+	if (v->type != VEH_Train || (v->type == VEH_Train && (IsFrontEngine(v) || IsFreeWagon(v)))) {
+		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+	}
+
 	UpdateVehiclePosHash(v, INVALID_COORD, 0);
 	v->next_hash = INVALID_VEHICLE;
 	if (v->orders != NULL) DeleteVehicleOrders(v);
@@ -2476,6 +2480,11 @@ void VehicleEnterDepot(Vehicle *v)
 		default: NOT_REACHED();
 	}
 
+	if (v->type != VEH_Train) {
+		/* Trains update the vehicle list when the first unit enters the depot and calls VehicleEnterDepot() when the last unit enters.
+		 * We only increase the number of vehicles when the first one enters, so we will not need to search for more vehicles in the depot */
+		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
+	}
 	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
 	v->vehstatus |= VS_HIDDEN;

@@ -1563,6 +1563,14 @@ void InvalidateWindowClasses(WindowClass cls)
 	}
 }
 
+void InvalidateWindowData(WindowClass cls, WindowNumber number)
+{
+	Window *w;
+
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == cls && w->window_number == number) CallWindowEventNP(w, WE_INVALIDATE_DATA);
+	}
+}
 
 void CallWindowTickEvent(void)
 {

@@ -2005,6 +2005,7 @@ static uint32 VehicleEnter_Track(Vehicle *v, TileIndex tile, int x, int y)
 			v->u.rail.track = 0x80,
 			v->vehstatus |= VS_HIDDEN; /* hide it */
 			v->direction = ReverseDir(v->direction);
+			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 			if (v->next == NULL)
 				VehicleEnterDepot(v);
 			v->tile = tile;

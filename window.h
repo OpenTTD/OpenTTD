@@ -99,6 +99,7 @@ enum WindowEventCodes {
 	WE_MESSAGE             = 23,
 	WE_SCROLL              = 24,
 	WE_MOUSEWHEEL          = 25,
+	WE_INVALIDATE_DATA     = 26,
 };
 
 struct WindowEvent {
@@ -397,6 +398,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(replaceveh_d));
 typedef struct {
 	VehicleID sel;
 	byte type;
+	bool generate_list;
 	uint16 engine_list_length;
 	uint16 wagon_list_length;
 	uint16 engine_count;
@@ -748,6 +750,7 @@ int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop(void);
 void UpdateWindows(void);
 void InvalidateWidget(const Window *w, byte widget_index);
+void InvalidateWindowData(WindowClass cls, WindowNumber number);
 void RaiseWindowButtons(Window *w);
 void RelocateAllWindows(int neww, int newh);
 int PositionMainToolbar(Window *w);

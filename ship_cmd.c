@@ -358,6 +358,7 @@ static void CheckShipLeaveDepot(Vehicle *v)
 
 	PlayShipSound(v);
 	VehicleServiceInDepot(v);
+	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	InvalidateWindowClasses(WC_SHIPS_LIST);
 }
 
@@ -882,6 +883,7 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		VehiclePositionChanged(v);
 		GetPlayer(_current_player)->num_engines[p1]++;
 
+		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
