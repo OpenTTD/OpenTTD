@@ -2161,6 +2161,14 @@ STR_LIVERY_HELICOPTER                                           :Гелікоп�
 STR_LIVERY_SMALL_PLANE                                          :Малий літак
 STR_LIVERY_LARGE_PLANE                                          :Великий літак
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Показати основні кольорові схеми
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Показати кольорову схему поїздів
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Показати кольорові схеми для авто
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Показати кольорову схему кораблів
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Показати кольорові схеми літаків
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Виберіть основний колір для обраної схеми
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Оберіть другий колір для схеми
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Оберіть кольорові схеми для зміни, чи декілька з CTRL+клік. Клікніть ліворуч щоб ввімкнути/вимкнути використання схем
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (паровий)
@@ -2433,8 +2441,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Жителі святкують . . .{}Перший поїзд з'явився на {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Детально)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поїзд на шляху
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}{STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
 STR_8806_GO_TO                                                  :Прямувати до {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Прямувати до {STATION} (Пересадити і забрати вантаж)
 STR_8808_GO_TO_UNLOAD                                           :Прямувати до {STATION} (Не завантажувати)
@@ -2486,6 +2494,8 @@ STR_8825_NON_STOP                                               :{BLACK}Без �
 STR_8826_GO_TO                                                  :{BLACK}Прямувати
 STR_8827_FULL_LOAD                                              :{BLACK}Повне завантаження
 STR_8828_UNLOAD                                                 :{BLACK}Не завантажувати
+STR_REFIT_TIP                                                   :{BLACK}Оберіть на який тип вантажу переобладнати це завдання. Control+клік видалити команду переобладнання
+STR_REFIT_ORDER                                                 :(Переобладнати до {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Накази)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Кінець наказів - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2894,6 +2904,10 @@ STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Прод
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Продати всі кораблі з депо
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Продати всі літаки з ангару
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Отримати список всих поїздів, що заходять до ангарів
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Отримати список всих авто, що заходять до ангарів
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Отримати список всих кораблів, що заходять до ангарів
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Отримати список всих літаків, що заходять до ангарів
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Оновити всі поїзди в депо
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Оновити всі автомобілі в депо
@@ -2974,6 +2988,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Змін
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Створеня світу
 STR_RANDOM_SEED                                                 :{BLACK}Початкове значення:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Клік для вводу значення
+STR_LAND_GENERATOR                                              :{BLACK}Генерація ландшафту:
 STR_TREE_PLACER                                                 :{BLACK}Насадження дерев:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Рівень моря:
 STR_DATE                                                        :{BLACK}Дата:
@@ -2981,6 +2996,7 @@ STR_NUMBER_OF_TOWNS                                             :{BLACK}К-ть 
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}К-ть промисловостей:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Змінити рік початку гри
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Розміри дуже великі. Продовжити генерацію?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Розмір: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Генерація світу...
@@ -2996,6 +3012,7 @@ STR_SE_FLAT_WORLD                                               :{WHITE}Рівн
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Генерувати рівнину
 STR_SE_RANDOM_LAND                                              :{WHITE}Випадково
 STR_SE_NEW_WORLD                                                :{BLACK}Створити новий сценарій
+STR_SE_CAPTION                                                  :{WHITE}Тип сценарію
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 

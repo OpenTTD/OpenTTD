@@ -2920,6 +2920,9 @@ STR_SELL                                                        :{BLACK}Vendi
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Stai per vendere tutti i veicoli nel deposito
 STR_ARE_YOU_SURE                                                :{BLACK}Sei sicuro?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Conferma la vendita di tutti i treni nel deposito
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Conferma la vendita di tutti gli veicoli stradali nel deposito
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Conferma la vendita di tutte le navi nel deposito
 STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Conferma la vendita di tutti gli aerei nell'hangar
 
 STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Non vendere tutti i treni nel deposito
