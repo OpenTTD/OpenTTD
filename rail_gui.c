@@ -600,7 +600,10 @@ void ShowBuildRailToolbar(RailType railtype, int button)
 	}
 
 	_remove_button_clicked = false;
-	if (w != NULL && button >= 0) _build_railroad_button_proc[button](w);
+	if (w != NULL && button >= 0) {
+		_build_railroad_button_proc[button](w);
+		UpdateRemoveWidgetStatus(w, button + 4);
+	}
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();
 }
 
