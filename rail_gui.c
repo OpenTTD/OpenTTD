@@ -403,16 +403,33 @@ static const uint16 _rail_keycodes[] = {
 
 static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
 {
+	/* If it is the removal button that has been clicked, do nothing,
+	 * as it is up to the other buttons to drive removal status */
+	if (clicked_widget == 16) return;
+
 	switch (clicked_widget) {
-		case 4: case 5: case 6: case 7: case 8: case 11: case 12: case 13: EnableWindowWidget(w, 16); break;
-		default: DisableWindowWidget(w, 16); LowerWindowWidget(w, 16); break;
+		case 4: case 5: case 6: case 7: case 8: case 11: case 12: case 13:
+			/* Removal button is enabled only if the rail/signal/waypoint/station
+			 * button is still lowered.  Once raised, it has to be disabled */
+			SetWindowWidgetDisabledState(w, 16, !IsWindowWidgetLowered(w, clicked_widget));
+			break;
+
+		default:
+			/* When any other buttons than rail/signal/waypoint/station, raise and
+			 * disable the removal button*/
+			DisableWindowWidget(w, 16);
+			RaiseWindowWidget(w, 16);
+			break;
 	}
 }
 
 static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: DisableWindowWidget(w, 16); break;
+
 	case WE_PAINT: DrawWindowWidgets(w); break;
+
 	case WE_CLICK:
 		if (e->we.click.widget >= 4) {
 			_remove_button_clicked = false;
