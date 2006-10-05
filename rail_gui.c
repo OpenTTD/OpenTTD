@@ -446,7 +446,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 				e->we.keypress.cont = false;
 				_remove_button_clicked = false;
 				_build_railroad_button_proc[i](w);
-				UpdateRemoveWidgetStatus(w, i);
+				UpdateRemoveWidgetStatus(w, i + 4);
 				break;
 			}
 		}
