@@ -393,6 +393,7 @@ static int GetVehicleFromDepotWndPt(const Window *w, int x, int y, Vehicle **veh
 	Vehicle **vl = WP(w, depot_d).vehicle_list;
 	uint xt, row, xm = 0, ym = 0;
 	int pos, skip = 0;
+	uint16 boxes_in_each_row = w->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
 
 	if (WP(w, depot_d).type == VEH_Train) {
 		xt = 0;
@@ -408,7 +409,7 @@ static int GetVehicleFromDepotWndPt(const Window *w, int x, int y, Vehicle **veh
 	row = (y - 14) / w->resize.step_height;
 	if (row >= w->vscroll.cap) return MODE_ERROR;
 
-	pos = (row + w->vscroll.pos) * (WP(w, depot_d).type == VEH_Train ? 1 : w->hscroll.cap) + xt;
+	pos = ((row + w->vscroll.pos) * boxes_in_each_row) + xt;
 
 	if (WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count <= pos) {
 		if (WP(w, depot_d).type == VEH_Train) {
