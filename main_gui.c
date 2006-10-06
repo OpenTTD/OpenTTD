@@ -1838,12 +1838,12 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
 
 	case WE_MOUSELOOP:
-		if (IsWindowWidgetLowered(w, 0) != _pause) {
+		if (IsWindowWidgetLowered(w, 0) != !!_pause) {
 			ToggleWidgetLoweredState(w, 0);
 			SetWindowDirty(w);
 		}
 
-		if (IsWindowWidgetLowered(w, 1) != _fast_forward) {
+		if (IsWindowWidgetLowered(w, 1) != !!_fast_forward) {
 			ToggleWidgetLoweredState(w, 1);
 			SetWindowDirty(w);
 		}
@@ -2033,12 +2033,12 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT: HandleOnEditText(e); break;
 
 	case WE_MOUSELOOP:
-		if (IsWindowWidgetLowered(w, 0) != _pause) {
+		if (IsWindowWidgetLowered(w, 0) != !!_pause) {
 			ToggleWidgetLoweredState(w, 0);
 			SetWindowDirty(w);
 		}
 
-		if (IsWindowWidgetLowered(w, 1) != _fast_forward) {
+		if (IsWindowWidgetLowered(w, 1) != !!_fast_forward) {
 			ToggleWidgetLoweredState(w, 1);
 			SetWindowDirty(w);
 		}
