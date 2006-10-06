@@ -94,16 +94,12 @@ const Widget _generate_landscape_widgets[] = {
 {      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 192, 203, STR_NULL,                     STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 192, 203, STR_0225,                     STR_NULL}, // Tree placer
 
-{      WWT_EMPTY, RESIZE_NONE, 12, 114, 231, 174, 185, STR_NULL,                     STR_NULL},
-//{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 174, 185, STR_NULL,                     STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 231, 174, 185, STR_NULL,                     STR_NULL},
-//{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 174, 185, STR_0225,                     STR_NULL}, // Landscape generator
-//{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 210, 221, STR_NULL,                     STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 231, 210, 221, STR_NULL,                     STR_NULL},
-//{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 210, 221, STR_0225,                     STR_NULL}, // Terrain type
-//{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 228, 239, STR_NULL,                     STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 231, 228, 239, STR_NULL,                     STR_NULL},
-//{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 228, 239, STR_0225,                     STR_NULL}, // Water quantity
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 174, 185, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 174, 185, STR_0225,                     STR_NULL}, // Landscape generator
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 210, 221, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 210, 221, STR_0225,                     STR_NULL}, // Terrain type
+{      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 228, 239, STR_NULL,                     STR_NULL},
+{    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 228, 239, STR_0225,                     STR_NULL}, // Water quantity
 {      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 246, 257, STR_NULL,                     STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 246, 257, STR_0225,                     STR_NULL}, // Map smoothness
 {   WIDGETS_END},
@@ -211,21 +207,9 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 	case WE_CREATE: LowerWindowWidget(w, _opt_newgame.landscape + 3); break;
 
 	case WE_PAINT:
-		/* TODO -- Above and below you see some lines commented out with '//' in
-		 *  front of it. This is because currently the widget system can't handle
-		 *  more than 32 widgets per window, and we need 34. Therefor we draw
-		 *  parts of the widgets manually below, reducing the number to 32.
-		 *  Of course someone is already hard working to replace the system with
-		 *  one that can scale past the 32 limit. When this is done you should
-		 *  re-enable the lines and remove the ones that came instead. Better,
-		 *  revert revision 5817 (from TGP branch), and you should be just fine.
-		 * If you have any questions about it, bug TrueLight.
-		 */
-
 		/* You can't select smoothness if not terragenesis */
-//		if (_patches_newgame.land_generator == 0) w->disabled_state |= (1 << 32 | 1 << 33);
-		SetWindowWidgetDisabledState(w, 30, _patches_newgame.land_generator == 0);
-		SetWindowWidgetDisabledState(w, 31, _patches_newgame.land_generator == 0);
+		SetWindowWidgetDisabledState(w, 32, _patches_newgame.land_generator == 0);
+		SetWindowWidgetDisabledState(w, 33, _patches_newgame.land_generator == 0);
 		/* Disable snowline if not hilly */
 		SetWindowWidgetDisabledState(w, 22, _opt_newgame.landscape != LT_HILLY);
 		/* Disable town and industry in SE */
@@ -276,24 +260,15 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		DrawStringCentered(303, 131 + y, STR_SNOW_LINE_HEIGHT_NUM, 0x10);
 
 		if (mode == GLWP_GENERATE) {
-			/* TODO -- Remove next 2 lines if 32 widget limit is removed */
-			DrawFrameRect(114, 174, 219, 185, 12, 0);
-			DrawString(222, 175, STR_0225, 0x10);
 			DrawString( 12, 175, STR_LAND_GENERATOR, 0);
 			DrawString(118, 175, landscape[_patches_newgame.land_generator], 0x10);
 
 			DrawString( 12, 193, STR_TREE_PLACER, 0);
 			DrawString(118, 193, tree_placer[_patches_newgame.tree_placer], 0x10);
 
-			/* TODO -- Remove next 2 lines if 32 widget limit is removed */
-			DrawFrameRect(114, 210, 219, 221, 12, 0);
-			DrawString(222, 211, STR_0225, 0x10);
 			DrawString( 12, 211, STR_TERRAIN_TYPE, 0);
 			DrawString(118, 211, elevations[_opt_newgame.diff.terrain_type], 0x10);
 
-			/* TODO -- Remove next 2 lines if 32 widget limit is removed */
-			DrawFrameRect(114, 228, 219, 239, 12, 0);
-			DrawString(222, 229, STR_0225, 0x10);
 			DrawString( 12, 229, STR_QUANTITY_OF_SEA_LAKES, 0);
 			DrawString(118, 229, sea_lakes[_opt_newgame.diff.quantity_sea_lakes], 0x10);
 
@@ -316,9 +291,6 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			SetDParam(0, _heightmap_str);
 			DrawStringTruncated(114,  91, STR_ORANGE, 0x10, 326 - 114 - GetStringBoundingBox(buffer).width - 5);
 
-			/* TODO -- Remove next 2 lines if 32 widget limit is removed */
-			DrawFrameRect(114, 196, 219, 207, 12, 0);
-			DrawString(222, 197, STR_0225, 0x10);
 			DrawString( 12, 197, STR_TREE_PLACER, 0);
 			DrawString(118, 197, tree_placer[_patches_newgame.tree_placer], 0x10);
 
@@ -394,28 +366,21 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case 24: case 25: // Tree placer
 			ShowDropDownMenu(w, tree_placer, _patches_newgame.tree_placer, 25, 0, 0);
 			break;
-//		case 26: case 27: // Landscape generator OR Heightmap rotation
-		case 27:
+		case 26: case 27: // Landscape generator OR Heightmap rotation
 			if (mode == GLWP_HEIGHTMAP) {
 				ShowDropDownMenu(w, rotation, _patches_newgame.heightmap_rotation, 27, 0, 0);
 			} else {
 				ShowDropDownMenu(w, landscape, _patches_newgame.land_generator, 27, 0, 0);
 			}
 			break;
-//		case 28: case 29: // Terrain type
-		case 28:
-//			ShowDropDownMenu(w, elevations, _opt_newgame.diff.terrain_type, 29, 0, 0);
-			ShowDropDownMenu(w, elevations, _opt_newgame.diff.terrain_type, 28, 0, 0);
+		case 28: case 29: // Terrain type
+			ShowDropDownMenu(w, elevations, _opt_newgame.diff.terrain_type, 29, 0, 0);
 			break;
-//		case 30: case 31: // Water quantity
-		case 29:
-//			ShowDropDownMenu(w, sea_lakes, _opt_newgame.diff.quantity_sea_lakes, 31, 0, 0);
-			ShowDropDownMenu(w, sea_lakes, _opt_newgame.diff.quantity_sea_lakes, 29, 0, 0);
+		case 30: case 31: // Water quantity
+			ShowDropDownMenu(w, sea_lakes, _opt_newgame.diff.quantity_sea_lakes, 31, 0, 0);
 			break;
-//		case 32: case 33: // Map smoothness
-		case 30: case 31:
-//			ShowDropDownMenu(w, smoothness, _patches_newgame.tgen_smoothness, 33, 0, 0);
-			ShowDropDownMenu(w, smoothness, _patches_newgame.tgen_smoothness, 31, 0, 0);
+		case 32: case 33: // Map smoothness
+			ShowDropDownMenu(w, smoothness, _patches_newgame.tgen_smoothness, 33, 0, 0);
 			break;
 		}
 		break;
@@ -463,20 +428,17 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 					_patches_newgame.land_generator = e->we.dropdown.index;
 				}
 				break;
-//			case 29:
-			case 28:
+			case 29:
 				_opt_newgame.diff.terrain_type = e->we.dropdown.index;
 				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
 				DoCommandP(0, 12, _opt_newgame.diff.terrain_type, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 				break;
-//			case 31:
-			case 29:
+			case 31:
 				_opt_newgame.diff.quantity_sea_lakes = e->we.dropdown.index;
 				if (_opt_newgame.diff_level != 3) ShowErrorMessage(INVALID_STRING_ID, STR_DIFFICULTY_TO_CUSTOM, 0, 0);
 				DoCommandP(0, 13, _opt_newgame.diff.quantity_sea_lakes, NULL, CMD_CHANGE_DIFFICULTY_LEVEL);
 				break;
-//			case 33:
-			case 31:
+			case 33:
 				_patches_newgame.tgen_smoothness = e->we.dropdown.index;
 				break;
 		}
