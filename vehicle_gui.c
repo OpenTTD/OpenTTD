@@ -1471,7 +1471,6 @@ static void CreateVehicleListWindow(Window *w)
 
 	switch (vl->vehicle_type) {
 		case VEH_Train:
-			w->hscroll.cap = 10 * 29;
 			w->resize.step_width = 1;
 			/* Fallthrough */
 		case VEH_Road:
@@ -1626,7 +1625,7 @@ static void DrawVehicleListWindow(Window *w)
 		SetDParam(0, v->profit_this_year);
 		SetDParam(1, v->profit_last_year);
 
-		DrawVehicleImage(v, x + 19, y + 6, w->hscroll.cap + 2, 0, INVALID_VEHICLE);
+		DrawVehicleImage(v, x + 19, y + 6, w->widget[VLW_WIDGET_LIST].right - w->widget[VLW_WIDGET_LIST].left - 20, 0, INVALID_VEHICLE);
 		DrawString(x + 19, y + w->resize.step_height - 8, STR_0198_PROFIT_THIS_YEAR_LAST_YEAR, 0);
 
 		if ((v->type == VEH_Train    && v->string_id != STR_SV_TRAIN_NAME)   ||
@@ -1753,7 +1752,6 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_RESIZE: /* Update the scroll + matrix */
-			if (vl->vehicle_type == VEH_Train) w->hscroll.cap += e->we.sizing.diff.x;
 			w->vscroll.cap += e->we.sizing.diff.y / (int)w->resize.step_height;
 			w->widget[VLW_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
 			ResizeVehicleListWidgets(w);
