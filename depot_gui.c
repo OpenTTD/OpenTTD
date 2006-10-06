@@ -256,13 +256,56 @@ static void ShowDepotSellAllWindow(TileIndex tile, byte type)
 	}
 }
 
+/** Draw a vehicle in the depot window in the box with the top left corner at x,y
+ * @param *w Window to draw in
+ * @param *v Vehicle to draw
+ * @param x Left side of the box to draw in
+ * @param y Top of the box to draw in
+ */
+static void DrawVehicleInDepot(Window *w, const Vehicle *v, int x, int y)
+{
+	byte diff_x = 0, diff_y = 0;
+
+	switch (v->type) {
+		case VEH_Train:
+			DrawTrainImage(v, x + 21, y, w->hscroll.cap + 4, w->hscroll.pos, WP(w,depot_d).sel);
+
+			/* Number of wagons relative to a standard length wagon (rounded up) */
+			SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
+			DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
+			break;
+
+		case VEH_Road:     DrawRoadVehImage( v, x + 24, y, WP(w, depot_d).sel); break;
+		case VEH_Ship:     DrawShipImage(    v, x + 19, y, WP(w, depot_d).sel); break;
+		case VEH_Aircraft: DrawAircraftImage(v, x + 12, y, WP(w, depot_d).sel); break;
+		default: NOT_REACHED();
+	}
+
+	if (w->resize.step_height == 14) {
+		/* VEH_Train and VEH_Road, which are low */
+		diff_x = 15;
+	} else {
+		/* VEH_Ship and VEH_Aircraft, which are tall */
+		diff_y = 12;
+	}
+
+	DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x + diff_x, y + diff_y);
+
+	SetDParam(0, v->unitnumber);
+	DrawString(x, y + 2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
+}
+
 static void DrawDepotWindow(Window *w)
 {
 	Vehicle **vl = WP(w, depot_d).vehicle_list;
 	TileIndex tile = w->window_number;
 	int x, y, i, hnum, max;
 	uint16 num = WP(w, depot_d).engine_count;
-	bool is_localplayer = IsTileOwner(tile, _local_player);
+	bool is_localplayer      = IsTileOwner(tile, _local_player);
+
+	/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
+	uint16 rows_in_display   = w->widget[DEPOT_WIDGET_MATRIX].data >> 8;
+	uint16 boxes_in_each_row = w->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
 
 	/* setup disabled buttons */
 	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_STOP_ALL,    !is_localplayer);
@@ -300,63 +343,23 @@ static void DrawDepotWindow(Window *w)
 
 	DrawWindowWidgets(w);
 
-	x = 2;
-	y = 15;
-	num = w->vscroll.pos * w->hscroll.cap;
-	if (WP(w, depot_d).type == VEH_Train) {
-		max = min(WP(w, depot_d).engine_count, w->vscroll.pos + w->vscroll.cap);
-		num = w->vscroll.pos;
-	} else {
-		max = min(WP(w, depot_d).engine_count, num + (w->vscroll.cap * w->hscroll.cap));
-		num = w->vscroll.pos * w->hscroll.cap;
-	}
+	num = w->vscroll.pos * boxes_in_each_row;
+	max = min(WP(w, depot_d).engine_count, num + (rows_in_display * boxes_in_each_row));
 
-	for (; num < max; num++) {
-		const Vehicle *v = vl[num];
-		byte diff_x = 0, diff_y = 0;
+	for (x = 2, y = 15; num < max; y += w->resize.step_height, x = 2) { // Draw the rows
+		byte i;
 
-		switch (WP(w, depot_d).type) {
-			case VEH_Train:
-				DrawTrainImage(v, x + 21, y, w->hscroll.cap + 4, w->hscroll.pos, WP(w,depot_d).sel);
-
-				/* Number of wagons relative to a standard length wagon (rounded up) */
-				SetDParam(0, (v->u.rail.cached_total_length + 7) / 8);
-				DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
-				break;
-
-			case VEH_Road:     DrawRoadVehImage( v, x + 24, y, WP(w, depot_d).sel); break;
-			case VEH_Ship:     DrawShipImage(    v, x + 19, y, WP(w, depot_d).sel); break;
-			case VEH_Aircraft: DrawAircraftImage(v, x + 12, y, WP(w, depot_d).sel); break;
-			default: NOT_REACHED();
-		}
-
-		if (w->resize.step_height == 14) {
-			/* VEH_Train and VEH_Road, which are low */
-			diff_x = 15;
-		} else {
-			/* VEH_Ship and VEH_Aircraft, which are tall */
-			diff_y = 12;
-		}
-
-		DrawSprite((v->vehstatus & VS_STOPPED) ? SPR_FLAG_VEH_STOPPED : SPR_FLAG_VEH_RUNNING, x + diff_x, y + diff_y);
-
-		SetDParam(0, v->unitnumber);
-		DrawString(x, y + 2, (uint16)(v->max_age-366) >= v->age ? STR_00E2 : STR_00E3, 0);
-
-		if (WP(w, depot_d).type == VEH_Train) {
-			y += w->resize.step_height;
-		} else {
-			if ((x += w->resize.step_width) == 2 + (int)w->resize.step_width * w->hscroll.cap) {
-				x = 2;
-				y += w->resize.step_height;
-			}
+		for (i = 0; i < boxes_in_each_row && num < max; i++, num++, x += w->resize.step_width) {
+			/* Draw all vehicles in the current row */
+			const Vehicle *v = vl[num];
+			DrawVehicleInDepot(w, v, x, y);
 		}
 	}
 
-	max = min(WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count, w->vscroll.pos + w->vscroll.cap);
+	max = min(WP(w, depot_d).engine_count + WP(w, depot_d).wagon_count, (w->vscroll.pos * boxes_in_each_row) + (rows_in_display * boxes_in_each_row));
 
 	/* draw the train wagons, that do not have an engine in front */
-	for (; num < max; num++) {
+	for (; num < max; num++, y += 14) {
 		const Vehicle *v = WP(w, depot_d).wagon_list[num - WP(w, depot_d).engine_count];
 		const Vehicle *u;
 
@@ -369,7 +372,6 @@ static void DrawDepotWindow(Window *w)
 		do i++; while ( (u=u->next) != NULL); // Determine length of train
 		SetDParam(0, i);                      // Set the counter
 		DrawStringRightAligned(w->widget[DEPOT_WIDGET_MATRIX].right - 1, y + 4, STR_TINY_BLACK, 0); // Draw the counter
-		y += 14;
 	}
 }
 
