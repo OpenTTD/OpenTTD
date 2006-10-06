@@ -1402,10 +1402,12 @@ static void CreateVehicleListWindow(Window *w)
 	if (player == _local_player) {
 		HideWindowWidget(w, VLW_WIDGET_OTHER_PLAYER_FILLER);
 	} else {
-		HideWindowWidget(w, VLW_WIDGET_SEND_TO_DEPOT);
-		HideWindowWidget(w, VLW_WIDGET_AUTOREPLACE);
-		HideWindowWidget(w, VLW_WIDGET_STOP_ALL);
-		HideWindowWidget(w, VLW_WIDGET_START_ALL);
+		SetWindowWidgetsHiddenState(w, true,
+			VLW_WIDGET_SEND_TO_DEPOT,
+			VLW_WIDGET_AUTOREPLACE,
+			VLW_WIDGET_STOP_ALL,
+			VLW_WIDGET_START_ALL,
+			WIDGET_LIST_END);
 	}
 
 	/* Set up the window widgets */
@@ -1601,14 +1603,12 @@ static void DrawVehicleListWindow(Window *w)
 		default: NOT_REACHED();
 	}
 
-	if (owner == _local_player) {
-		bool list_isempty = vl->l.list_length == 0;
-
-		SetWindowWidgetDisabledState(w, VLW_WIDGET_SEND_TO_DEPOT, list_isempty);
-		SetWindowWidgetDisabledState(w, VLW_WIDGET_AUTOREPLACE, list_isempty);
-		SetWindowWidgetDisabledState(w, VLW_WIDGET_STOP_ALL, list_isempty);
-		SetWindowWidgetDisabledState(w, VLW_WIDGET_START_ALL, list_isempty);
-	}
+	SetWindowWidgetsDisabledState(w, vl->l.list_length == 0,
+		VLW_WIDGET_SEND_TO_DEPOT,
+		VLW_WIDGET_AUTOREPLACE,
+		VLW_WIDGET_STOP_ALL,
+		VLW_WIDGET_START_ALL,
+		WIDGET_LIST_END);
 
 	DrawWindowWidgets(w);
 

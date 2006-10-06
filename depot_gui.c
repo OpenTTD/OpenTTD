@@ -301,21 +301,22 @@ static void DrawDepotWindow(Window *w)
 	TileIndex tile = w->window_number;
 	int x, y, i, hnum, max;
 	uint16 num = WP(w, depot_d).engine_count;
-	bool is_localplayer      = IsTileOwner(tile, _local_player);
 
 	/* Set the row and number of boxes in each row based on the number of boxes drawn in the matrix */
 	uint16 rows_in_display   = w->widget[DEPOT_WIDGET_MATRIX].data >> 8;
 	uint16 boxes_in_each_row = w->widget[DEPOT_WIDGET_MATRIX].data & 0xFF;
 
 	/* setup disabled buttons */
-	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_STOP_ALL,    !is_localplayer);
-	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_START_ALL,   !is_localplayer);
-	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_SELL,        !is_localplayer);
-	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_SELL_CHAIN,  !is_localplayer);
-	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_SELL_ALL,    !is_localplayer);
-	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_BUILD,       !is_localplayer);
-	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_CLONE,       !is_localplayer);
-	SetWindowWidgetDisabledState(w, DEPOT_WIDGET_AUTOREPLACE, !is_localplayer);
+	SetWindowWidgetsDisabledState(w, !IsTileOwner(tile, _local_player),
+		DEPOT_WIDGET_STOP_ALL,
+		DEPOT_WIDGET_START_ALL,
+		DEPOT_WIDGET_SELL,
+		DEPOT_WIDGET_SELL_CHAIN,
+		DEPOT_WIDGET_SELL_ALL,
+		DEPOT_WIDGET_BUILD,
+		DEPOT_WIDGET_CLONE,
+		DEPOT_WIDGET_AUTOREPLACE,
+		WIDGET_LIST_END);
 
 	/* determine amount of items for scroller */
 	if (WP(w, depot_d).type == VEH_Train) {
@@ -1001,10 +1002,11 @@ void ShowDepotWindow(TileIndex tile, byte type)
 			(w->vscroll.cap * 0x100) // number of rows to draw on the background
 			+ (type == VEH_Train ? 1 : w->hscroll.cap); // number of boxes in each row. Trains always have just one
 
-		if (type != VEH_Train) {
-			HideWindowWidget(w, DEPOT_WIDGET_H_SCROLL);
-			HideWindowWidget(w, DEPOT_WIDGET_SELL_CHAIN);
-		}
+
+		SetWindowWidgetsHiddenState(w, type != VEH_Train,
+			DEPOT_WIDGET_H_SCROLL,
+			DEPOT_WIDGET_H_SCROLL,
+			WIDGET_LIST_END);
 
 		/* Move the widgets to their right locations */
 		ResizeWindowWidgets(w, widget_moves, lengthof(widget_moves), horizontal, vertical);
