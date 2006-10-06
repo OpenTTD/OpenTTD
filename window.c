@@ -1,6 +1,7 @@
 /* $Id$ */
 
 #include "stdafx.h"
+#include <stdarg.h>
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
@@ -16,6 +17,48 @@
 
 // delta between mouse cursor and upper left corner of dragged window
 static Point _drag_delta;
+
+void CDECL SetWindowWidgetsDisabledState(Window *w, bool disab_stat, int widgets, ...)
+{
+	va_list wdg_list;
+
+	va_start(wdg_list, widgets);
+
+	while (widgets != WIDGET_LIST_END) {
+		SetWindowWidgetHiddenState(w, widgets, disab_stat);
+		widgets = va_arg(wdg_list, int);
+	}
+
+	va_end(wdg_list);
+}
+
+void CDECL SetWindowWidgetsHiddenState(Window *w, bool hidden_stat, int widgets, ...)
+{
+	va_list wdg_list;
+
+	va_start(wdg_list, widgets);
+
+	while (widgets != WIDGET_LIST_END) {
+		SetWindowWidgetHiddenState(w, widgets, hidden_stat);
+		widgets = va_arg(wdg_list, int);
+	}
+
+	va_end(wdg_list);
+}
+
+void CDECL SetWindowWidgetsLoweredState(Window *w, bool lowered_stat, int widgets, ...)
+{
+	va_list wdg_list;
+
+	va_start(wdg_list, widgets);
+
+	while (widgets != WIDGET_LIST_END) {
+		SetWindowWidgetLoweredState(w, widgets, lowered_stat);
+		widgets = va_arg(wdg_list, int);
+	}
+
+	va_end(wdg_list);
+}
 
 void RaiseWindowButtons(Window *w)
 {

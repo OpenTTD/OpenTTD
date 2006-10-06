@@ -62,6 +62,11 @@ enum ResizeFlags {
 	WIDG_LOWERED  = 6,  // widget is paint lowered, a pressed button in fact
 } ResizeFlag;
 
+/* used to indicate the end of widgets' list for vararg functions */
+enum {
+	WIDGET_LIST_END = -1,
+};
+
 typedef struct Widget {
 	byte type;                        ///< Widget type, see @WindowWidgetTypes
 	byte display_flags;               ///< Resize direction, alignment, etc. during resizing, see @ResizeFlags
@@ -783,6 +788,9 @@ void InvalidateWindowData(WindowClass cls, WindowNumber number);
 void RaiseWindowButtons(Window *w);
 void RelocateAllWindows(int neww, int newh);
 int PositionMainToolbar(Window *w);
+void CDECL SetWindowWidgetsDisabledState(Window *w, bool disab_stat, int widgets, ...);
+void CDECL SetWindowWidgetsHiddenState(Window *w, bool hidden_stat, int widgets, ...);
+void CDECL SetWindowWidgetsLoweredState(Window *w, bool lowered_stat, int widgets, ...);
 
 /* misc_gui.c*/
 void GuiShowTooltips(StringID string_id);
