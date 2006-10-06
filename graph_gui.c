@@ -224,10 +224,9 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 	case WE_CREATE: {
-		uint include_bits = ~_legend_excludebits;
 		int i;
-		for (i = 0; include_bits != 0; i++, include_bits >>= 1) {
-			if (HASBIT(include_bits, 0)) LowerWindowWidget(w, i + 3);
+		for (i = 0; w->widget[i + 3].type != WWT_LAST; i++) {
+			if (!HASBIT(_legend_excludebits, i)) LowerWindowWidget(w, i + 3);
 		}
 		break;
 	}
@@ -706,10 +705,9 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_CREATE: {
-		uint to_select = ~_legend_cargobits;
 		int i;
-		for (i = 0; to_select != 0; i++, to_select >>= 1) {
-			if (HASBIT(to_select, 0)) LowerWindowWidget(w, i + 3);
+		for (i = 0; w->widget[i + 3].type != WWT_LAST; i++) {
+			if (!HASBIT(_legend_cargobits, i)) LowerWindowWidget(w, i + 3);
 		}
 		break;
 	}
