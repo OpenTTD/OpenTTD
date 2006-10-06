@@ -52,11 +52,19 @@ enum ResizeFlags {
 	RESIZE_LRB    = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_BOTTOM,
 	RESIZE_LRTB   = RESIZE_LEFT  | RESIZE_RIGHT  | RESIZE_TOP | RESIZE_BOTTOM,
 	RESIZE_RTB    = RESIZE_RIGHT | RESIZE_TOP    | RESIZE_BOTTOM,
+
+	/* The following flags are used by the system to specify what is disabled, hidden, or clicked
+	 * They are used in the same place as the above RESIZE_x flags, Widget visual_flags.
+	 * These states are used in exceptions. If nothing is specified, they will indicate
+	 * Enabled, visible or unclicked widgets*/
+	WIDG_DISABLED = 4,  // widget is greyed out, not available
+	WIDG_HIDDEN   = 5,  // widget is made invisible
+	WIDG_LOWERED  = 6,  // widget is paint lowered, a pressed button in fact
 } ResizeFlag;
 
 typedef struct Widget {
 	byte type;                        ///< Widget type, see @WindowWidgetTypes
-	byte resize_flag;                 ///< Resize direction, alignment, etc. during resizing, see @ResizeFlags
+	byte display_flags;               ///< Resize direction, alignment, etc. during resizing, see @ResizeFlags
 	byte color;                       ///< Widget colour, see docs/ottd-colourtext-palette.png
 	uint16 left, right, top, bottom;  ///< The position offsets inside the window
 	uint16 data;                      ///< The String/Image or special code (list-matrixes) of a widget
@@ -312,7 +320,6 @@ struct Window {
 
 	byte caption_color;
 
-	uint32 click_state, disabled_state, hidden_state;
 	WindowProc *wndproc;
 	ViewPort *viewport;
 	const Widget *original_widget;
@@ -613,7 +620,7 @@ void DrawWindowViewport(Window *w);
  */
 static inline void SetWindowWidgetDisabledState(Window *w, byte widget_index, bool disab_stat)
 {
-	SB(w->disabled_state, widget_index, 1, !!disab_stat);
+	SB(w->widget[widget_index].display_flags, WIDG_DISABLED, 1, !!disab_stat);
 }
 
 /**
@@ -638,13 +645,24 @@ static inline void EnableWindowWidget(Window *w, byte widget_index)
 
 /**
  * Gets the enabled/disabled status of a widget.
+ * This is the same as IsWindowWidgetDisabled, only working on direct widget, instead of an index
+ * @param wi : Widget to get the status from
+ * @return status of the widget ie: disabled = true, enabled = false
+ */
+static inline bool IsWidgetDisabled(const Widget *wi)
+{
+	return HASBIT(wi->display_flags, WIDG_DISABLED);
+}
+
+/**
+ * Gets the enabled/disabled status of a widget.
  * @param w : Window on which the widget is located
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: disabled = true, enabled = false
  */
 static inline bool IsWindowWidgetDisabled(Window *w, byte widget_index)
 {
-	return HASBIT(w->disabled_state, widget_index);
+	return IsWidgetDisabled(&w->widget[widget_index]);
 }
 
 /**
@@ -657,7 +675,7 @@ static inline bool IsWindowWidgetDisabled(Window *w, byte widget_index)
  */
 static inline void SetWindowWidgetHiddenState(Window *w, byte widget_index, bool hidden_stat)
 {
-	SB(w->hidden_state, widget_index, 1, !!hidden_stat);
+	SB(w->widget[widget_index].display_flags, WIDG_HIDDEN, 1, !!hidden_stat);
 }
 
 /**
@@ -682,13 +700,24 @@ static inline void ShowWindowWidget(Window *w, byte widget_index)
 
 /**
  * Gets the visibility of a widget.
+ * Works directly on a widget, instead of an index
+ * @param wi Widget to get the status from
+ * @return status of the widget ie. hidden = true, visible = false
+ */
+static inline bool IsWidgetHidden(const Widget *wi)
+{
+	return HASBIT(wi->display_flags, WIDG_HIDDEN);
+}
+
+/**
+ * Gets the visibility of a widget.
  * @param w : Window on which the widget is located
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: hidden = true, visible = false
  */
 static inline bool IsWindowWidgetHidden(Window *w, byte widget_index)
 {
-	return HASBIT(w->hidden_state, widget_index);
+	return IsWidgetHidden(&w->widget[widget_index]);
 }
 
 /**
@@ -699,7 +728,7 @@ static inline bool IsWindowWidgetHidden(Window *w, byte widget_index)
  */
 static inline void SetWindowWidgetLoweredState(Window *w, byte widget_index, bool lowered_stat)
 {
-	SB(w->click_state, widget_index, 1, !!lowered_stat);
+	SB(w->widget[widget_index].display_flags, WIDG_LOWERED, 1, !!lowered_stat);
 }
 
 /**
@@ -709,7 +738,7 @@ static inline void SetWindowWidgetLoweredState(Window *w, byte widget_index, boo
  */
 static inline void ToggleWidgetLoweredState(Window *w, byte widget_index)
 {
-	TOGGLEBIT(w->click_state, widget_index);
+	TOGGLEBIT(w->widget[widget_index].display_flags, WIDG_LOWERED);
 }
 
 /**
@@ -740,7 +769,7 @@ static inline void RaiseWindowWidget(Window *w, byte widget_index)
  */
 static inline bool IsWindowWidgetLowered(Window *w, byte widget_index)
 {
-	return HASBIT(w->click_state, widget_index);
+	return HASBIT(w->widget[widget_index].display_flags, WIDG_LOWERED);
 }
 
 void InitWindowSystem(void);

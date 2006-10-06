@@ -57,7 +57,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y)
 		wi = &w->widget[e.we.click.widget];
 
 		/* don't allow any interaction if the button has been disabled */
-		if (HASBIT(w->disabled_state, e.we.click.widget)) return;
+		if (IsWidgetDisabled(wi)) return;
 
 		if (wi->type & 0xE0) {
 			/* special widget handling for buttons*/
@@ -1068,22 +1068,25 @@ static bool HandleWindowDragging(void)
 				bool resize_width = false;
 
 				while (wi->type != WWT_LAST) {
-					if (wi->resize_flag != RESIZE_NONE) {
+					/* Isolate the resizing flags */
+					byte rsizeflag = GB(wi->display_flags, 0, 4);
+
+					if (rsizeflag != RESIZE_NONE) {
 						/* Resize this widget */
-						if (wi->resize_flag & RESIZE_LEFT) {
+						if (rsizeflag & RESIZE_LEFT) {
 							wi->left += x;
 							resize_width = true;
 						}
-						if (wi->resize_flag & RESIZE_RIGHT) {
+						if (rsizeflag & RESIZE_RIGHT) {
 							wi->right += x;
 							resize_width = true;
 						}
 
-						if (wi->resize_flag & RESIZE_TOP) {
+						if (rsizeflag & RESIZE_TOP) {
 							wi->top += y;
 							resize_height = true;
 						}
-						if (wi->resize_flag & RESIZE_BOTTOM) {
+						if (rsizeflag & RESIZE_BOTTOM) {
 							wi->bottom += y;
 							resize_height = true;
 						}
@@ -1538,7 +1541,7 @@ void InvalidateWidget(const Window *w, byte widget_index)
 	const Widget *wi = &w->widget[widget_index];
 
 	/* Don't redraw the window if the widget is invisible or of no-type */
-	if (wi->type == WWT_EMPTY || HASBIT(w->hidden_state, widget_index)) return;
+	if (wi->type == WWT_EMPTY || IsWidgetHidden(wi)) return;
 
 	SetDirtyBlocks(w->left + wi->left, w->top + wi->top, w->left + wi->right + 1, w->top + wi->bottom + 1);
 }

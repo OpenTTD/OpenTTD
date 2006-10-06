@@ -141,7 +141,7 @@ int GetWidgetFromPos(const Window *w, int x, int y)
 		if (wi->type == WWT_EMPTY || wi->type == WWT_FRAME) continue;
 
 		if (x >= wi->left && x <= wi->right && y >= wi->top &&  y <= wi->bottom &&
-				!HASBIT(w->hidden_state,index)) {
+				!IsWidgetHidden(wi)) {
 			found_index = index;
 		}
 	}
@@ -187,14 +187,9 @@ void DrawWindowWidgets(const Window *w)
 	const Widget *wi;
 	const DrawPixelInfo* dpi = _cur_dpi;
 	Rect r;
-	uint32 cur_click, cur_disabled, cur_hidden;
 	int i = 0;
 
 	wi = w->widget;
-
-	cur_click = w->click_state;
-	cur_disabled = w->disabled_state;
-	cur_hidden = w->hidden_state;
 
 	do {
 		bool clicked = IsWindowWidgetLowered((Window*)w, i);
@@ -203,7 +198,7 @@ void DrawWindowWidgets(const Window *w)
 				dpi->left + dpi->width <= (r.left=wi->left/* + w->left*/) ||
 				dpi->top > (r.bottom=/*w->top +*/ wi->bottom) ||
 				dpi->top + dpi->height <= (r.top = /*w->top +*/ wi->top) ||
-				cur_hidden & 1) {
+				IsWidgetHidden(wi)) {
 			continue;
 		}
 
@@ -460,12 +455,12 @@ void DrawWindowWidgets(const Window *w)
 
 			DrawStringCentered( (r.left+r.right+1)>>1, r.top+2, wi->data, 0x84);
 draw_default:;
-			if (cur_disabled & 1) {
+			if (IsWidgetDisabled(wi)) {
 				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _colour_gradient[wi->color&0xF][2] | PALETTE_MODIFIER_GREYOUT);
 			}
 		}
 		}
-	} while (i++, cur_click>>=1, cur_disabled>>=1, cur_hidden >>= 1, (++wi)->type != WWT_LAST);
+	} while (i++, (++wi)->type != WWT_LAST);
 
 
 	if (w->flags4 & WF_WHITE_BORDER_MASK) {
