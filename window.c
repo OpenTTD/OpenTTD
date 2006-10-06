@@ -25,7 +25,7 @@ void CDECL SetWindowWidgetsDisabledState(Window *w, bool disab_stat, int widgets
 	va_start(wdg_list, widgets);
 
 	while (widgets != WIDGET_LIST_END) {
-		SetWindowWidgetHiddenState(w, widgets, disab_stat);
+		SetWindowWidgetDisableState(w, widgets, disab_stat);
 		widgets = va_arg(wdg_list, int);
 	}
 
