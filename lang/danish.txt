@@ -61,7 +61,7 @@ STR_0035_GRAIN                                                  :Korn
 STR_0036_WOOD                                                   :Træ
 STR_0037_IRON_ORE                                               :Jernmalm
 STR_0038_STEEL                                                  :Stål
-STR_0039_VALUABLES                                              :Værdigendstand
+STR_0039_VALUABLES                                              :Værdigenstande
 STR_003A_COPPER_ORE                                             :Kobbermalm
 STR_003B_MAIZE                                                  :Majs
 STR_003C_FRUIT                                                  :Frugt
@@ -156,7 +156,7 @@ STR_00B2_MESSAGE                                                :{YELLOW}Besked
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Besked fra {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Det kan du ikke....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Kan ikke rydde området....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle retigheder reserveret
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Original copyright {COPYRIGHT} 1995 Chris Sawyer, Alle rettigheder reserveret
 STR_00B7_VERSION                                                :{BLACK}OpenTTD version {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD teamet
 STR_TRANSLATED_BY                                               :{BLACK}  Oversætter(e) -
@@ -172,7 +172,7 @@ STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
 STR_00CE_4                                                      :{BLACK}4
 STR_00CF_5                                                      :{BLACK}5
-STR_00D0_NOTHING                                                :Ingenting
+STR_00D0_NOTHING                                                :Intet
 STR_00D1_DARK_BLUE                                              :Mørk Blå
 STR_00D2_PALE_GREEN                                             :Lys Grøn
 STR_00D3_PINK                                                   :Lyserød
@@ -183,7 +183,7 @@ STR_00D7_GREEN                                                  :Grøn
 STR_00D8_DARK_GREEN                                             :Mørk Grøn
 STR_00D9_BLUE                                                   :Blå
 STR_00DA_CREAM                                                  :Lys Brun
-STR_00DB_MAUVE                                                  :Mauve
+STR_00DB_MAUVE                                                  :Grålilla
 STR_00DC_PURPLE                                                 :Lilla
 STR_00DD_ORANGE                                                 :Orange
 STR_00DE_BROWN                                                  :Brun
@@ -253,7 +253,7 @@ STR_011D_BUS_STATION                                            :{BLACK}{TINYFON
 STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Lufthavn/Helikopterplads
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Havn
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Hårdt terræn
-STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Grass
+STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Græs
 STR_0122_BARE_LAND                                              :{BLACK}{TINYFONT}Bart terræn
 STR_0123_FIELDS                                                 :{BLACK}{TINYFONT}Marker
 STR_0124_TREES                                                  :{BLACK}{TINYFONT}Træer
@@ -414,7 +414,7 @@ STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Vis gene
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Vis grafer
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Vis selskabsoversigten
 STR_017B_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over selskabets tog
-STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over selskabets lastbiler
+STR_017C_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over selskabets køretøjer
 STR_017D_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over selskabets skibe
 STR_017E_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Vis liste over selskabets fly
 STR_017F_ZOOM_THE_VIEW_IN                                       :{BLACK}Zoom skærmen ind
@@ -439,7 +439,7 @@ STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Sænk et 
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Hæv et hjørne af landet
 STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scroll bar - scroller listen op/ned
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Scroll bar - flytter listen mod venstre/højre
-STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis land-konturer på kortet
+STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Vis landskabskonturer på kortet
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Vis køretøjer på kortet
 STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Vis industrier på kortet
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Vis transportruter på kortet
@@ -552,7 +552,7 @@ STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Gem opsæ
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klik på et musiknummer for at tilføje det til programlisten (Kun for Custom1/Custom2)
 STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klik på et musiknummer for at fjerne det fra programlisten (kun Custom1 eller Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Tilfældig afspilning til/fra
-STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Vis musiknummer valg vinduet
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Vis vinduet med musiknummervalg
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klik på servicen for at centrere skærmen over industrien/byen
 STR_01FE_DIFFICULTY                                             :{BLACK}Sværhedsgrad ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
@@ -616,7 +616,7 @@ STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Byg en n
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}Kan ikke bygge en by her...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...for tæt på kanten af kortet
 STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...for tæt på en anden by
-STR_0239_SITE_UNSUITABLE                                        :{WHITE}...ikke brugbar placering
+STR_0239_SITE_UNSUITABLE                                        :{WHITE}...upassende placering
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...for mange byer
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Kan ikke bygge nogen byer
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...der er ikke mere plads på kortet
@@ -700,8 +700,8 @@ STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...kun e
 STR_0288_PLANT_TREES                                            :{BLACK}Plant træer
 STR_0289_PLACE_SIGN                                             :{BLACK}Placér skilt
 STR_028A_RANDOM_TREES                                           :{BLACK}Tilfældige Træer
-STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plant træer tilfældigt på landskabet
-STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placér klippeområder på landskabet
+STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Plant træer tilfældigt i landskabet
+STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Placér klippeområder i landskabet
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Placér fyrtårn
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Placér sender
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Definer ørkenområde.{}Hold CTRL inde for at fjerne
@@ -743,7 +743,7 @@ STR_02BD                                                        :{BLACK}{STRING}
 STR_02BE_DEFAULT                                                :Standard
 STR_02BF_CUSTOM                                                 :Brugerdefineret
 STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Gem ikke brugerdefinerede navne
-STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Køretøjsdesignnavne valg
+STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Valg af køretøjsdesignnavne
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Gem brugerdefinerede køretøjsdesignnavne
 
 ############ range for menu	starts
@@ -751,8 +751,8 @@ STR_02C3_GAME_OPTIONS                                           :Spilindstilling
 STR_02C4_GAME_OPTIONS                                           :Spilindstillinger
 STR_02C5_DIFFICULTY_SETTINGS                                    :Sværhedsgrad
 STR_02C6_DIFFICULTY_SETTINGS                                    :Sværhedsgrad
-STR_02C7_CONFIG_PATCHES                                         :Indstil patches
-STR_02C8_CONFIG_PATCHES                                         :Indstil patches
+STR_02C7_CONFIG_PATCHES                                         :Konfigurér patches
+STR_02C8_CONFIG_PATCHES                                         :Konfigurér patches
 STR_NEWGRF_SETTINGS                                             :Newgrf indstillinger
 STR_NEWGRF_SETTINGS2                                            :Newgrf indstillinger
 STR_GAMEOPTMENU_0A                                              :
@@ -807,12 +807,12 @@ STR_02E4                                                        :{BLACK}{SKIP}{S
 STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Vælg måleenheder
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Vejkøretøjer
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Vælg den sideaf vejen, vejkøretøjer skal køre i
+STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Vælg den side af vejen, køretøjer skal køre i
 STR_02E9_DRIVE_ON_LEFT                                          :Kør i venstre side
 STR_02EA_DRIVE_ON_RIGHT                                         :Kør i højre side
 STR_02EB_TOWN_NAMES                                             :{BLACK}Bynavne
 STR_02EC                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Vælg bynavne stil
+STR_02ED_SELECT_STYLE_OF_TOWN_NAMES                             :{BLACK}Vælg stil for bynavne
 
 STR_02F4_AUTOSAVE                                               :{BLACK}Autogem
 STR_02F5                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -834,8 +834,8 @@ STR_0305_QUIT_OPENTTD                                           :{BLACK}Afslut '
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...kan kun bygges i byer
 STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Vælg 'tempereret' landskab
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Vælg 'sub-arktisk' landskab
-STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Vælg 'sub-tropisk' landskab
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Vælg 'subarktisk' landskab
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Vælg 'subtropisk' landskab
 STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Vælg 'legetøjsland' landskab
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Betal for bygning af nye industrier
 
@@ -1505,10 +1505,10 @@ STR_1004_TOO_HIGH                                               :{WHITE}For højt
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Ingen brugbar jernbane
 STR_1007_ALREADY_BUILT                                          :{WHITE}...allerede bygget
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Det er nødvendigt at fjerne jernbaneskinnerne først
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Jernbane Konstruktion
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Jernbanekonstruktion
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrisk jernbane konstruktion
-STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorail Konstruktion
-STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnetskinne Konstruktion
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorailkonstruktion
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnetskinnekonstruktion
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Vælg togbro
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Kan ikke bygge et depot her...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Kan ikke bygge en banegård her...
@@ -1517,17 +1517,17 @@ STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Kan ikke
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Kan ikke fjerne jernbane herfra...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kan ikke fjerne signaler herfra...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Retning for remise
-STR_1015_RAILROAD_CONSTRUCTION                                  :Jernbane konstruktion
+STR_1015_RAILROAD_CONSTRUCTION                                  :Jernbanekonstruktion
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrisk jernbane konstruktion
-STR_1016_MONORAIL_CONSTRUCTION                                  :Monorail Konstruktion
-STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetskinne konstruktion
+STR_1016_MONORAIL_CONSTRUCTION                                  :Monorailkonstruktion
+STR_1017_MAGLEV_CONSTRUCTION                                    :Magnetskinnekonstruktion
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Byg jernbane
 STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Byg en remise (til at bygge og servicere tog)
 STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Byg banegård
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Byg signaler
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Byg bro
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Byg tunnel
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Skift mellem bygning/fjerning af jernbaneskinner og signaler
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Skift mellem bygning/fjernelse af jernbaneskinner og signaler
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Valg af bro - klik på den valgte bro for at bygge den
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Vælg orientering af remise
 STR_1021_RAILROAD_TRACK                                         :Jernbaneskinner
@@ -1543,7 +1543,7 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Togskinner med 
 ##id 0x1800
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Det er nødvendigt at fjerne vejen først
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Vejarbejde er i gang
-STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vej Konstruktion
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vejkonstruktion
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Vælg vejbro
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Kan ikke bygge vej her...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Kan ikke fjerne vej herfra...
@@ -1551,18 +1551,18 @@ STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Retning 
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge garage her...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan ikke bygge rutebilstation...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan ikke bygge fragtcentral...
-STR_180A_ROAD_CONSTRUCTION                                      :Vej konstruktion
+STR_180A_ROAD_CONSTRUCTION                                      :Vejkonstruktion
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Byg en sektion vej
 STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Byg garage (til servicering og bygning af lastbiler)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Byg rutebilstation
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Byg fragtcentral
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Byg bro
 STR_1810_BUILD_ROAD_TUNNEL                                      :{BLACK}Byg tunnel
-STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Skift mellem bygning/fjerning af veje
-STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vælg orientering af garage
+STR_1811_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Skift mellem bygning/fjernelse af veje
+STR_1813_SELECT_ROAD_VEHICLE_DEPOT                              :{BLACK}Vælg retning af garage
 STR_1814_ROAD                                                   :Vej
 STR_1815_ROAD_WITH_STREETLIGHTS                                 :Vej med gadelygter
-STR_1816_TREE_LINED_ROAD                                        :Alle
+STR_1816_TREE_LINED_ROAD                                        :Vej med vejtræer
 STR_1817_ROAD_VEHICLE_DEPOT                                     :Garage
 STR_1818_ROAD_RAIL_LEVEL_CROSSING                               :Jernbaneoverskæring
 
@@ -1581,8 +1581,8 @@ STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}Kan ikke
 STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} de lokale myndigheder nægter at tillade dette
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Bynavne - klik på et navn for at centrere skærmen over byen
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer skærmen over byens placering
-STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Ændrer navnet på byen
-STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagere sidste måned: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
+STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Ændre navnet på byen
+STR_200D_PASSENGERS_LAST_MONTH_MAX                              :{BLACK}Passagerer sidste måned: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200E_MAIL_LAST_MONTH_MAX                                    :{BLACK}Post sidste måned: {ORANGE}{COMMA}{BLACK}  max: {ORANGE}{COMMA}
 STR_200F_TALL_OFFICE_BLOCK                                      :Høj kontorbygning
 STR_2010_OFFICE_BLOCK                                           :Kontorbygning
@@ -1615,8 +1615,8 @@ STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Statsstø
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, indtil {DATE_SHORT})
 STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Statsstøttet aftale udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse en bonus.
-STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Tilbud om statsstøttet aftale tilbagetrukket:{}{}{STRING} fragt fra {STATION} til {STATION} er ikke længere i licitation.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Tilbud om statsstøttet aftale:{}{}Første {STRING} fragt fra {STRING} til {STRING} vil udløse et års bonuskontrakt med de lokale myndigheder!
+STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Licitation af statsstøttet aftale tilbagetrukket:{}{}{STRING} fragt fra {STATION} til {STATION} er ikke længere i licitation.
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Statsstøttet aftale i licitation:{}{}Første {STRING} fragt fra {STRING} til {STRING} vil udløse et års bonuskontrakt med de lokale myndigheder!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give 50% mere i de næste 12 måneder!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give dobbelt udbytte i de næste 12 måneder!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
@@ -1643,7 +1643,7 @@ STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Mellem reklamek
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Stor reklamekampagne
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Betal for lokal vejfornyelse
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Byg en statue af selskabets ejer
-STR_204B_FUND_NEW_BUILDINGS                                     :Betal for opførslen af nye bygninger
+STR_204B_FUND_NEW_BUILDINGS                                     :Betal for opførsel af nye bygninger
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Køb eksklusive transportrettigheder i byen
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Bestik de lokale myndigheder
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Start en lille reklamekampagne for at tiltrække flere passagerer og last til dine stationer.{}  Pris: {CURRENCY}
@@ -1690,7 +1690,7 @@ STR_2810_CACTUS_PLANTS                                          :Kaktusplanter
 ##id 0x3000
 STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Valg af banegård
 STR_3001_AIRPORT_SELECTION                                      :{WHITE}Valg af lufthavn
-STR_3002_ORIENTATION                                            :{BLACK}Orientering
+STR_3002_ORIENTATION                                            :{BLACK}Retning
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Antal spor
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Længde af perron
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}For tæt på en anden banegård
@@ -1727,8 +1727,8 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} accepterer ikke længere {STRING} eller {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} accepterer nu {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} accepterer nu {STRING} og {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Rutebilstation Orientering
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Fragtcentral Orientering.
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Retning af rutebilstation
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Retning af fragtcentral
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Det er nødvendigt at rive rutebilstationen ned først
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Det er nødvendigt at rive fragtcentralen ned først
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Stationer
@@ -1737,11 +1737,11 @@ STR_304A_NONE                                                   :{YELLOW}- Ingen
 STR_304B_SITE_UNSUITABLE                                        :{WHITE}...placeringen er uegnet
 STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}For tæt på en anden havn
 STR_304D_MUST_DEMOLISH_DOCK_FIRST                               :{WHITE}Det er nødvendigt at rive havnen ned først
-STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Vælg orientering af banegård
+STR_304E_SELECT_RAILROAD_STATION                                :{BLACK}Vælg retning af banegård
 STR_304F_SELECT_NUMBER_OF_PLATFORMS                             :{BLACK}Vælg antal perroner på banegård
 STR_3050_SELECT_LENGTH_OF_RAILROAD                              :{BLACK}Vælg længde af banegård
-STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vælg orientering af rutebilstation
-STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vælg orientering af fragtcentral
+STR_3051_SELECT_BUS_STATION_ORIENTATION                         :{BLACK}Vælg retning af rutebilstation
+STR_3052_SELECT_TRUCK_LOADING_BAY                               :{BLACK}Vælg retning af fragtcentral
 STR_3053_CENTER_MAIN_VIEW_ON_STATION                            :{BLACK}Centrer skærmen over stationens placering
 STR_3054_SHOW_STATION_RATINGS                                   :{BLACK}Vis stationens bedømmelse
 STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Ændre stationens navn
@@ -1914,7 +1914,7 @@ STR_5802_LIGHTHOUSE                                             :Fyrtårn
 STR_5803_COMPANY_HEADQUARTERS                                   :Selskabets hovedkontor
 STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...selskabets hovedkontor i vejen
 STR_5805_COMPANY_OWNED_LAND                                     :Land ejet af selskabet
-STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Kan ikke købe dette stykke land...
+STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Kan ikke købe dette landområde...
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...du ejer det allerede!
 
 
@@ -2467,8 +2467,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} d
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerene fester . . .{}Første tog ankommer til {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vejen
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Gå til {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Gå til {STATION} (Overfør og tag gods)
 STR_8808_GO_TO_UNLOAD                                           :Gå til {STATION} (Aflæs)
@@ -2488,7 +2488,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden st
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} Togdepot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kører til {TOWN} Togdepot, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Eftersyn på {TOWN} Depot
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :
 
 STR_INVALID_ORDER                                               :{RED} (Ugyldig Order)
@@ -2551,6 +2551,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Byg nyt 
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Træk tog/togvogn her hend for at sælge
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer skærmen over placeringen af depot
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Tog valgsliste - klik på et køretøj for mere information
+STR_BLACK_ENGINES                                               :{BLACK}Lokomotiver
+STR_BLACK_WAGONS                                                :{BLACK}Vogne
+STR_BLACK_BOTH                                                  :{BLACK}Begge
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klik for kun at se lokomotiver
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klik for kun at se vogne
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klik for at se både lokomotiver og vogne
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Byg det markerede lokomotiv/togvogn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Omdøb tog-/togvognstypen
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Nuværende opførsel - klik her for at starte/stoppe toget
