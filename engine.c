@@ -110,18 +110,21 @@ static void CalcEngineReliability(Engine *e)
 	if (age < e->duration_phase_1) {
 		uint start = e->reliability_start;
 		e->reliability = age * (e->reliability_max - start) / e->duration_phase_1 + start;
-	} else if ((age -= e->duration_phase_1) < e->duration_phase_2) {
+	} else if ((age -= e->duration_phase_1) < e->duration_phase_2 || _patches.never_expire_vehicles) {
+		/* We are at the peak of this engines life. It will have max reliability.
+		 * This is also true if the engines never expire. They will not go bad over time */
 		e->reliability = e->reliability_max;
 	} else if ((age -= e->duration_phase_2) < e->duration_phase_3) {
 		uint max = e->reliability_max;
 		e->reliability = (int)age * (int)(e->reliability_final - max) / e->duration_phase_3 + max;
 	} else {
-		// time's up for this engine
-		// make it either available to all players (if never_expire_vehicles is enabled and if it was available earlier)
-		// or disable this engine completely
-		e->player_avail = (_patches.never_expire_vehicles && e->player_avail)? -1 : 0;
+		/* time's up for this engine.
+		 * We will now completely retire this design */
+		e->player_avail = 0;
 		e->reliability = e->reliability_final;
+		InvalidateWindowClassesData(WC_BUILD_VEHICLE); // Kick this engine out of the lists
 	}
+	InvalidateWindowClasses(WC_BUILD_VEHICLE); // Update to show the new reliability
 }
 
 void AddTypeToEngines(void)

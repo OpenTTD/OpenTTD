@@ -276,6 +276,27 @@ static void DrawTrainBuildWindow(Window *w)
 	if (WP(w,buildtrain_d).data_invalidated) {
 		GenerateBuildList(&WP(w,buildtrain_d).engines, &WP(w,buildtrain_d).num_engines, &WP(w,buildtrain_d).wagons, &WP(w,buildtrain_d).num_wagons, WP(w,buildtrain_d).railtype);
 		WP(w,buildtrain_d).data_invalidated = false;
+
+		/* Make sure that the selected engine is still in the list*/
+		if (WP(w,buildtrain_d).sel_engine != INVALID_ENGINE) {
+			int i;
+			bool found = false;
+			if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0)) {
+				for (i = 0; i < WP(w,buildtrain_d).num_engines; i++) {
+					if (WP(w,buildtrain_d).sel_engine != WP(w,buildtrain_d).engines[i]) continue;
+					found = true;
+					break;
+				}
+			}
+			if (!found && HASBIT(WP(w,buildtrain_d).show_engine_wagon, 1)) {
+				for (i = 0; i < WP(w,buildtrain_d).num_wagons; i++) {
+					if (WP(w,buildtrain_d).sel_engine != WP(w,buildtrain_d).wagons[i]) continue;
+					found = true;
+					break;
+				}
+			}
+			if (!found) WP(w,buildtrain_d).sel_engine = INVALID_ENGINE;
+		}
 	}
 
 	if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0)) scrollcount += WP(w,buildtrain_d).num_engines;
@@ -330,6 +351,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).wagons  = NULL;
 			WP(w,buildtrain_d).show_engine_wagon = 3;
 			WP(w,buildtrain_d).data_invalidated  = true;
+			WP(w,buildtrain_d).sel_engine        = INVALID_ENGINE;
 			break;
 
 		case WE_INVALIDATE_DATA:
