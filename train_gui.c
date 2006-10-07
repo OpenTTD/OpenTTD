@@ -372,7 +372,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			switch (e->we.click.widget) {
 				case BUILD_TRAIN_WIDGET_LIST: {
 					uint i = ((e->we.click.pt.y - 14) / 14) + w->vscroll.pos;
-					if (i < WP(w,buildtrain_d).num_engines + WP(w,buildtrain_d).num_wagons) {
+					if (i < (uint)(WP(w,buildtrain_d).num_engines + WP(w,buildtrain_d).num_wagons)) {
 						if (i < WP(w,buildtrain_d).num_engines && HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0)) {
 							WP(w,buildtrain_d).sel_engine = WP(w,buildtrain_d).engines[i];
 						} else {
