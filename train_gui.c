@@ -23,6 +23,18 @@
 #include "newgrf_engine.h"
 #include "date.h"
 
+typedef enum BuildTrainWidgets {
+	BUILD_TRAIN_WIDGET_CLOSEBOX = 0,
+	BUILD_TRAIN_WIDGET_CAPTION,
+	BUILD_TRAIN_WIDGET_LIST,
+	BUILD_TRAIN_WIDGET_SCROLLBAR,
+	BUILD_TRAIN_WIDGET_PANEL,
+	BUILD_TRAIN_WIDGET_BUILD,
+	BUILD_TRAIN_WIDGET_RENAME,
+	BUILD_TRAIN_WIDGET_RESIZE,
+} BuildTrainWidget;
+
+
 /**
  * Draw the purchase info details of train engine at a given location.
  * @param x,y location where to draw the info
@@ -204,100 +216,101 @@ static void engine_drawing_loop(int *x, int *y, int *pos, int *sel,
 static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT:
+		case WE_PAINT:
 
-		SetWindowWidgetDisabledState(w, 5, w->window_number == 0);
+			SetWindowWidgetDisabledState(w, BUILD_TRAIN_WIDGET_BUILD, w->window_number == 0);
 
-		{
-			int count = 0;
-			RailType railtype = WP(w,buildtrain_d).railtype;
-			EngineID i;
+			{
+				int count = 0;
+				RailType railtype = WP(w,buildtrain_d).railtype;
+				EngineID i;
 
-			for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
-				const Engine *e = GetEngine(i);
-				if (HasPowerOnRail(e->railtype, railtype) &&
-						HASBIT(e->player_avail, _local_player)) {
-					count++;
+				for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+					const Engine *e = GetEngine(i);
+					if (HasPowerOnRail(e->railtype, railtype) &&
+							HASBIT(e->player_avail, _local_player)) {
+						count++;
+					}
+				}
+				SetVScrollCount(w, count);
+			}
+
+			SetDParam(0, WP(w,buildtrain_d).railtype + STR_881C_NEW_RAIL_VEHICLES);
+			DrawWindowWidgets(w);
+
+			{
+				RailType railtype = WP(w,buildtrain_d).railtype;
+				int sel = WP(w,buildtrain_d).sel_index;
+				int pos = w->vscroll.pos;
+				int x = 1;
+				int y = 15;
+				EngineID selected_id = INVALID_ENGINE;
+
+				/* Ensure that custom engines which substituted wagons
+				 * are sorted correctly.
+				 * XXX - DO NOT EVER DO THIS EVER AGAIN! GRRR hacking in wagons as
+				 * engines to get more types.. Stays here until we have our own format
+				 * then it is exit!!! */
+				engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, w->vscroll.cap, true); // True engines
+				engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, w->vscroll.cap, false); // Feeble wagons
+
+				WP(w,buildtrain_d).sel_engine = selected_id;
+
+				if (selected_id != INVALID_ENGINE) {
+					const RailVehicleInfo *rvi = RailVehInfo(selected_id);
+
+					if (!(rvi->flags & RVI_WAGON)) {
+						/* it's an engine */
+						DrawTrainEnginePurchaseInfo(2, w->widget[BUILD_TRAIN_WIDGET_PANEL].top + 1,selected_id);
+					} else {
+						/* it's a wagon */
+						DrawTrainWagonPurchaseInfo(2, w->widget[BUILD_TRAIN_WIDGET_PANEL].top + 1, selected_id);
+					}
 				}
 			}
-			SetVScrollCount(w, count);
-		}
+		break;
 
-		SetDParam(0, WP(w,buildtrain_d).railtype + STR_881C_NEW_RAIL_VEHICLES);
-		DrawWindowWidgets(w);
+		case WE_CLICK: {
+			switch (e->we.click.widget) {
+				case BUILD_TRAIN_WIDGET_LIST: {
+					uint i = (e->we.click.pt.y - 14) / 14;
+					if (i < w->vscroll.cap) {
+						WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
+						SetWindowDirty(w);
+					}
+				} break;
 
-		{
-			RailType railtype = WP(w,buildtrain_d).railtype;
-			int sel = WP(w,buildtrain_d).sel_index;
-			int pos = w->vscroll.pos;
-			int x = 1;
-			int y = 15;
-			EngineID selected_id = INVALID_ENGINE;
+				case BUILD_TRAIN_WIDGET_BUILD: {
+					EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
+					if (sel_eng != INVALID_ENGINE)
+						DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->flags & RVI_WAGON) ? CcBuildWagon : CcBuildLoco, CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
+				}	break;
 
-			/* Ensure that custom engines which substituted wagons
-			 * are sorted correctly.
-			 * XXX - DO NOT EVER DO THIS EVER AGAIN! GRRR hacking in wagons as
-			 * engines to get more types.. Stays here until we have our own format
-			 * then it is exit!!! */
-			engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, w->vscroll.cap, true); // True engines
-			engine_drawing_loop(&x, &y, &pos, &sel, &selected_id, railtype, w->vscroll.cap, false); // Feeble wagons
-
-			WP(w,buildtrain_d).sel_engine = selected_id;
-
-			if (selected_id != INVALID_ENGINE) {
-				const RailVehicleInfo *rvi = RailVehInfo(selected_id);
-
-				if (!(rvi->flags & RVI_WAGON)) {
-					/* it's an engine */
-					DrawTrainEnginePurchaseInfo(2, w->widget[4].top + 1,selected_id);
-				} else {
-					/* it's a wagon */
-					DrawTrainWagonPurchaseInfo(2, w->widget[4].top + 1, selected_id);
-				}
-			}
-		}
-	break;
-
-	case WE_CLICK: {
-		switch (e->we.click.widget) {
-		case 2: {
-			uint i = (e->we.click.pt.y - 14) / 14;
-			if (i < w->vscroll.cap) {
-				WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
-				SetWindowDirty(w);
+				case BUILD_TRAIN_WIDGET_RENAME: {
+					EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
+					if (sel_eng != INVALID_ENGINE) {
+						WP(w,buildtrain_d).rename_engine = sel_eng;
+						ShowQueryString(GetCustomEngineName(sel_eng),
+										STR_886A_RENAME_TRAIN_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
+					}
+				} break;
 			}
 		} break;
-		case 5: {
-			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
-			if (sel_eng != INVALID_ENGINE)
-				DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->flags & RVI_WAGON) ? CcBuildWagon : CcBuildLoco, CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
-		}	break;
-		case 6: { /* rename */
-			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
-			if (sel_eng != INVALID_ENGINE) {
-				WP(w,buildtrain_d).rename_engine = sel_eng;
-				ShowQueryString(GetCustomEngineName(sel_eng),
-					STR_886A_RENAME_TRAIN_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
+
+		case WE_ON_EDIT_TEXT: {
+			if (e->we.edittext.str[0] != '\0') {
+				_cmd_text = e->we.edittext.str;
+				DoCommandP(0, WP(w,buildtrain_d).rename_engine, 0, NULL,
+					CMD_RENAME_ENGINE | CMD_MSG(STR_886B_CAN_T_RENAME_TRAIN_VEHICLE));
 			}
 		} break;
-		}
-	} break;
 
-	case WE_ON_EDIT_TEXT: {
-		if (e->we.edittext.str[0] != '\0') {
-			_cmd_text = e->we.edittext.str;
-			DoCommandP(0, WP(w,buildtrain_d).rename_engine, 0, NULL,
-				CMD_RENAME_ENGINE | CMD_MSG(STR_886B_CAN_T_RENAME_TRAIN_VEHICLE));
-		}
-	} break;
+		case WE_RESIZE: {
+			if (e->we.sizing.diff.y == 0) break;
 
-	case WE_RESIZE: {
-		if (e->we.sizing.diff.y == 0)
-			break;
-
-		w->vscroll.cap += e->we.sizing.diff.y / 14;
-		w->widget[2].data = (w->vscroll.cap << 8) + 1;
-	} break;
+			w->vscroll.cap += e->we.sizing.diff.y / 14;
+			w->widget[BUILD_TRAIN_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
+		} break;
 	}
 }
 
@@ -330,7 +343,7 @@ void ShowBuildTrainWindow(TileIndex tile)
 	w = AllocateWindowDesc(&_new_rail_vehicle_desc);
 	w->window_number = tile;
 	w->vscroll.cap = 8;
-	w->widget[2].data = (w->vscroll.cap << 8) + 1;
+	w->widget[BUILD_TRAIN_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
 
 	w->resize.step_height = 14;
 	w->resize.height = w->height - 14 * 4; // Minimum of 4 vehicles in the display
