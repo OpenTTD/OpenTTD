@@ -209,8 +209,11 @@ static void AcceptEnginePreview(Engine *e, PlayerID player)
 	SETBIT(p->avail_railtypes, e->railtype);
 
 	e->preview_player = 0xFF;
-	InvalidateWindowClasses(WC_BUILD_VEHICLE);
-	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
+	if (player == _local_player) {
+		InvalidateWindowClassesData(WC_BUILD_VEHICLE);
+		InvalidateWindowClasses(WC_BUILD_VEHICLE);
+		InvalidateWindowClasses(WC_REPLACE_VEHICLE);
+	}
 }
 
 static PlayerID GetBestPlayer(PlayerID pp)
@@ -332,6 +335,7 @@ static void NewVehicleAvailable(Engine *e)
 	}
 
 	e->flags = (e->flags & ~ENGINE_INTRODUCING) | ENGINE_AVAILABLE;
+	InvalidateWindowClassesData(WC_BUILD_VEHICLE);
 	InvalidateWindowClasses(WC_BUILD_VEHICLE);
 	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 

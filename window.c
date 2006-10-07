@@ -1609,12 +1609,26 @@ void InvalidateWindowClasses(WindowClass cls)
 	}
 }
 
+void InvalidateThisWindowData(Window *w)
+{
+	CallWindowEventNP(w, WE_INVALIDATE_DATA);
+}
+
 void InvalidateWindowData(WindowClass cls, WindowNumber number)
 {
 	Window *w;
 
 	for (w = _windows; w != _last_window; w++) {
-		if (w->window_class == cls && w->window_number == number) CallWindowEventNP(w, WE_INVALIDATE_DATA);
+		if (w->window_class == cls && w->window_number == number) InvalidateThisWindowData(w);
+	}
+}
+
+void InvalidateWindowClassesData(WindowClass cls)
+{
+	Window *w;
+
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == cls) InvalidateThisWindowData(w);
 	}
 }
 

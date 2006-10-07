@@ -273,7 +273,10 @@ static void DrawTrainBuildWindow(Window *w)
 	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_WAGONS,  WP(w,buildtrain_d).show_engine_wagon == 2);
 	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_BOTH,    WP(w,buildtrain_d).show_engine_wagon == 3);
 
-	GenerateBuildList(&WP(w,buildtrain_d).engines, &WP(w,buildtrain_d).num_engines, &WP(w,buildtrain_d).wagons, &WP(w,buildtrain_d).num_wagons, WP(w,buildtrain_d).railtype);
+	if (WP(w,buildtrain_d).data_invalidated) {
+		GenerateBuildList(&WP(w,buildtrain_d).engines, &WP(w,buildtrain_d).num_engines, &WP(w,buildtrain_d).wagons, &WP(w,buildtrain_d).num_wagons, WP(w,buildtrain_d).railtype);
+		WP(w,buildtrain_d).data_invalidated = false;
+	}
 
 	if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0)) scrollcount += WP(w,buildtrain_d).num_engines;
 	if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 1)) scrollcount += WP(w,buildtrain_d).num_wagons;
@@ -326,6 +329,11 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).engines = NULL;
 			WP(w,buildtrain_d).wagons  = NULL;
 			WP(w,buildtrain_d).show_engine_wagon = 3;
+			WP(w,buildtrain_d).data_invalidated  = true;
+			break;
+
+		case WE_INVALIDATE_DATA:
+			WP(w,buildtrain_d).data_invalidated = true;
 			break;
 
 		case WE_DESTROY:

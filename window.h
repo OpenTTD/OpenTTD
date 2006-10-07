@@ -394,6 +394,7 @@ typedef struct {
 	byte railtype;
 	byte sel_index;
 	byte show_engine_wagon;
+	bool data_invalidated;
 	EngineID sel_engine;
 	EngineID rename_engine;
 	EngineID *engines;
@@ -789,6 +790,7 @@ int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop(void);
 void UpdateWindows(void);
 void InvalidateWidget(const Window *w, byte widget_index);
+void InvalidateThisWindowData(Window *w);
 void InvalidateWindowData(WindowClass cls, WindowNumber number);
 void RaiseWindowButtons(Window *w);
 void RelocateAllWindows(int neww, int newh);
