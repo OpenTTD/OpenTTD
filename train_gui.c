@@ -22,10 +22,14 @@
 #include "train.h"
 #include "newgrf_engine.h"
 #include "date.h"
+#include "strings.h"
 
 typedef enum BuildTrainWidgets {
 	BUILD_TRAIN_WIDGET_CLOSEBOX = 0,
 	BUILD_TRAIN_WIDGET_CAPTION,
+	BUILD_TRAIN_WIDGET_SORT_ASSENDING_DESENTING,
+	BUILD_TRAIN_WIDGET_SORT_TEXT,
+	BUILD_TRAIN_WIDGET_SORT_DROPDOWN,
 	BUILD_TRAIN_WIDGET_LIST,
 	BUILD_TRAIN_WIDGET_SCROLLBAR,
 	BUILD_TRAIN_WIDGET_PANEL,
@@ -40,18 +44,193 @@ typedef enum BuildTrainWidgets {
 static const Widget _new_rail_vehicle_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 	{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   227,     0,    13, STR_JUST_STRING,        STR_018C_WINDOW_TITLE_DRAG_THIS},
-	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    14,   125, 0x801,                  STR_8843_TRAIN_VEHICLE_SELECTION},
-	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    14,   125, 0x0,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
-	{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   126,   197, 0x0,                    STR_NULL},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    76,   198,   209, STR_BLACK_ENGINES,      STR_BUILD_TRAIN_ENGINES_TIP},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    77,   151,   198,   209, STR_BLACK_WAGONS,       STR_BUILD_TRAIN_WAGONS_TIP},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   152,   227,   198,   209, STR_BLACK_BOTH,         STR_BUILD_TRAIN_BOTH_TIP},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   107,   210,   221, STR_881F_BUILD_VEHICLE, STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   108,   215,   210,   221, STR_8820_RENAME,        STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
-	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   216,   227,   210,   221, 0x0,                    STR_RESIZE_BUTTON},
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,            STR_SORT_ORDER_TIP},
+	{      WWT_PANEL,   RESIZE_NONE,    14,    81,   215,    14,    25, 0x0,                    STR_SORT_CRITERIA_TIP},
+	{    WWT_TEXTBTN,   RESIZE_NONE,    14,   216,   227,    14,    25, STR_0225,               STR_SORT_CRITERIA_TIP},
+	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    26,   137, 0x801,                  STR_8843_TRAIN_VEHICLE_SELECTION},
+	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    26,   137, 0x0,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
+	{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   138,   209, 0x0,                    STR_NULL},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    76,   210,   221, STR_BLACK_ENGINES,      STR_BUILD_TRAIN_ENGINES_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    77,   151,   210,   221, STR_BLACK_WAGONS,       STR_BUILD_TRAIN_WAGONS_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   152,   227,   210,   221, STR_BLACK_BOTH,         STR_BUILD_TRAIN_BOTH_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   107,   222,   233, STR_881F_BUILD_VEHICLE, STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   108,   215,   222,   233, STR_8820_RENAME,        STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
+	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   216,   227,   222,   233, 0x0,                    STR_RESIZE_BUTTON},
 	{   WIDGETS_END},
 };
 
+static bool _internal_sort_order; // descending/ascending
+static byte _last_sort_criteria = 0;
+static bool _last_sort_order = false;
+
+typedef int CDECL VehicleSortListingTypeFunction(const void*, const void*);
+
+static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
+{
+	const EngineID va = *(const EngineID*)a;
+	const EngineID vb = *(const EngineID*)b;
+	int r = va - vb;
+
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL TrainEngineCostSorter(const void *a, const void *b)
+{
+	const int va = RailVehInfo(*(const EngineID*)a)->base_cost;
+	const int vb = RailVehInfo(*(const EngineID*)b)->base_cost;
+	int r = va - vb;
+
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL TrainEngineSpeedSorter(const void *a, const void *b)
+{
+	const int va = RailVehInfo(*(const EngineID*)a)->max_speed;
+	const int vb = RailVehInfo(*(const EngineID*)b)->max_speed;
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return TrainEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL TrainEnginePowerSorter(const void *a, const void *b)
+{
+	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
+	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
+
+	const int va = rvi_a->power << (rvi_a->flags & RVI_MULTIHEAD ? 1 : 0);
+	const int vb = rvi_b->power << (rvi_b->flags & RVI_MULTIHEAD ? 1 : 0);
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return TrainEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL TrainEngineIntroDateSorter(const void *a, const void *b)
+{
+	const int va = GetEngine(*(const EngineID*)a)->intro_date;
+	const int vb = GetEngine(*(const EngineID*)b)->intro_date;
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return TrainEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static EngineID _last_engine; // cached vehicle to hopefully speed up name-sorting
+
+static char _bufcache[64]; // used together with _last_vehicle to hopefully speed up stringsorting
+static int CDECL TrainEngineNameSorter(const void *a, const void *b)
+{
+	const EngineID va = *(const EngineID*)a;
+	const EngineID vb = *(const EngineID*)b;
+	char buf1[64] = "\0";
+	int r;
+
+	SetDParam(0, GetCustomEngineName(va));
+	GetString(buf1, STR_JUST_STRING);
+
+	if (vb != _last_engine) {
+		_last_engine = vb;
+		_bufcache[0] = '\0';
+
+		SetDParam(0, GetCustomEngineName(vb));
+		GetString(_bufcache, STR_JUST_STRING);
+	}
+
+	r =  strcmp(buf1, _bufcache); // sort by name
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return TrainEngineNumberSorter(a, b);
+	}
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+static int CDECL TrainEngineRunningCostSorter(const void *a, const void *b)
+{
+	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
+	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
+
+	const int va = rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class] * (rvi_a->flags & RVI_MULTIHEAD ? 2 : 1);
+	const int vb = rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class] * (rvi_b->flags & RVI_MULTIHEAD ? 2 : 1);
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return TrainEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *b)
+{
+	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
+	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
+
+	/* Here we are using a few tricks to get the right sort.
+	 * We want power/running cost, but since we usually got higher running cost than power and we store the result in an int,
+	 * we will actually calculate cunning cost/power (to make it more than 1).
+	 * Because of this, the return value have to be reversed as well and we return b - a instead of a - b.
+	 * Another thing is that both power and running costs should be doubled for multiheaded engines.
+	 * Since it would be multipling with 2 in both numerator and denumerator, it will even themselves out and we skip checking for multiheaded. */
+	const int va = (rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class]) / rvi_a->power;
+	const int vb = (rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class]) / rvi_b->power;
+	const int r = vb - va;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return TrainEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL TrainEngineReliabilitySorter(const void *a, const void *b)
+{
+	const int va = GetEngine(*(const EngineID*)a)->reliability;
+	const int vb = GetEngine(*(const EngineID*)b)->reliability;
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return TrainEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static VehicleSortListingTypeFunction* const _engine_sorter[] = {
+	&TrainEngineNumberSorter,
+	&TrainEngineCostSorter,
+	&TrainEngineSpeedSorter,
+	&TrainEnginePowerSorter,
+	&TrainEngineIntroDateSorter,
+	&TrainEngineNameSorter,
+	&TrainEngineRunningCostSorter,
+	&TrainEnginePowerVsRunningCostSorter,
+	&TrainEngineReliabilitySorter,
+};
+
+static const StringID _engine_sort_listing[] = {
+	STR_ENGINE_SORT_ENGINE_ID,
+	STR_ENGINE_SORT_COST,
+	STR_SORT_BY_MAX_SPEED,
+	STR_ENGINE_SORT_POWER,
+	STR_ENGINE_SORT_INTRO_DATE,
+	STR_SORT_BY_DROPDOWN_NAME,
+	STR_ENGINE_SORT_RUNNING_COST,
+	STR_ENGINE_SORT_POWER_VS_RUNNING_COST,
+	STR_SORT_BY_RELIABILITY,
+	INVALID_STRING_ID
+};
 
 /**
  * Draw the purchase info details of train engine at a given location.
@@ -257,10 +436,17 @@ static void GenerateBuildList(EngineID **engines, uint16 *num_engines, EngineID 
 	if (*num_wagons == wagon_length) *wagons = realloc((void*)*wagons, (*num_wagons) * sizeof((*wagons)[0]));
 }
 
+static void SortTrainBuildList(Window *w)
+{
+	_internal_sort_order = WP(w,buildtrain_d).decenting_sort_order;
+	qsort((void*)WP(w,buildtrain_d).engines, WP(w,buildtrain_d).num_engines, sizeof(WP(w,buildtrain_d).engines[0]),
+		  _engine_sorter[WP(w,buildtrain_d).sort_criteria]);
+}
+
 static void DrawTrainBuildWindow(Window *w)
 {
 	int x = 1;
-	int y = 15;
+	int y = 27;
 	EngineID position = w->vscroll.pos;
 	EngineID selected_id = WP(w,buildtrain_d).sel_engine;
 	int max = w->vscroll.pos + w->vscroll.cap;
@@ -276,6 +462,7 @@ static void DrawTrainBuildWindow(Window *w)
 	if (WP(w,buildtrain_d).data_invalidated) {
 		GenerateBuildList(&WP(w,buildtrain_d).engines, &WP(w,buildtrain_d).num_engines, &WP(w,buildtrain_d).wagons, &WP(w,buildtrain_d).num_wagons, WP(w,buildtrain_d).railtype);
 		WP(w,buildtrain_d).data_invalidated = false;
+		SortTrainBuildList(w);
 
 		/* Make sure that the selected engine is still in the list*/
 		if (WP(w,buildtrain_d).sel_engine != INVALID_ENGINE) {
@@ -339,6 +526,8 @@ static void DrawTrainBuildWindow(Window *w)
 			DrawTrainEnginePurchaseInfo(2, w->widget[BUILD_TRAIN_WIDGET_PANEL].top + 1, selected_id);
 		}
 	}
+	DrawString(85, 15, _engine_sort_listing[WP(w,buildtrain_d).sort_criteria], 0x10);
+	DoDrawString(WP(w,buildtrain_d).decenting_sort_order ? DOWNARROW : UPARROW, 69, 15, 0x10);
 }
 
 static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
@@ -352,6 +541,8 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).show_engine_wagon = 3;
 			WP(w,buildtrain_d).data_invalidated  = true;
 			WP(w,buildtrain_d).sel_engine        = INVALID_ENGINE;
+			WP(w,buildtrain_d).sort_criteria     = _last_sort_criteria;
+			WP(w,buildtrain_d).decenting_sort_order = _last_sort_order;
 			break;
 
 		case WE_INVALIDATE_DATA:
@@ -370,8 +561,19 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
+				case BUILD_TRAIN_WIDGET_SORT_ASSENDING_DESENTING:
+					WP(w,buildtrain_d).decenting_sort_order = !WP(w,buildtrain_d).decenting_sort_order;
+					_last_sort_order = WP(w,buildtrain_d).decenting_sort_order;
+					SortTrainBuildList(w);
+					SetWindowDirty(w);
+					break;
+
+				case BUILD_TRAIN_WIDGET_SORT_TEXT: case BUILD_TRAIN_WIDGET_SORT_DROPDOWN:/* Select sorting criteria dropdown menu */
+					ShowDropDownMenu(w, _engine_sort_listing, WP(w,buildtrain_d).sort_criteria, BUILD_TRAIN_WIDGET_SORT_DROPDOWN, 0, 0);
+					return;
+
 				case BUILD_TRAIN_WIDGET_LIST: {
-					uint i = ((e->we.click.pt.y - 14) / 14) + w->vscroll.pos;
+					uint i = ((e->we.click.pt.y - 26) / 14) + w->vscroll.pos;
 					if (i < (uint)(WP(w,buildtrain_d).num_engines + WP(w,buildtrain_d).num_wagons)) {
 						if (i < WP(w,buildtrain_d).num_engines && HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0)) {
 							WP(w,buildtrain_d).sel_engine = WP(w,buildtrain_d).engines[i];
@@ -424,6 +626,15 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
+		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+			if (WP(w,buildtrain_d).sort_criteria != e->we.dropdown.index) {
+				WP(w,buildtrain_d).sort_criteria = e->we.dropdown.index;
+				_last_sort_criteria = e->we.dropdown.index;
+				SortTrainBuildList(w);
+			}
+			SetWindowDirty(w);
+			break;
+
 		case WE_RESIZE: {
 			if (e->we.sizing.diff.y == 0) break;
 
@@ -434,7 +645,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _new_rail_vehicle_desc = {
-	-1, -1, 228, 222,
+	-1, -1, 228, 234,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_rail_vehicle_widgets,

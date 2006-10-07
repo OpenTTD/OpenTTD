@@ -395,6 +395,8 @@ typedef struct {
 	byte sel_index;
 	byte show_engine_wagon;
 	bool data_invalidated;
+	bool decenting_sort_order;
+	byte sort_criteria;
 	EngineID sel_engine;
 	EngineID rename_engine;
 	EngineID *engines;
