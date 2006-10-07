@@ -2587,6 +2587,9 @@ STR_8825_NON_STOP                                               :{BLACK}Non-Stop
 STR_8826_GO_TO                                                  :{BLACK}Chod do
 STR_8827_FULL_LOAD                                              :{BLACK}Plne naloz
 STR_8828_UNLOAD                                                 :{BLACK}Vylozit
+STR_REFIT                                                       :{BLACK}Prestavba
+STR_REFIT_TIP                                                   :{BLACK}Vyberte typ nákladu na prestavbu v tomto poradí. CTRL+klik na odstránenie príkazu prestavby
+STR_REFIT_ORDER                                                 :(Prestavba na {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec prikazov - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2960,10 +2963,56 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Zdielane prikazy  {COMMA} vozid{P la iel iel}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit vsetky vozidla s rovnakym zoznamom prikazov
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depá
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Gará¸e
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Lodenice
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangáre
+
+STR_SEND_TO_DEPOTS                                              :{BLACK}Poslat do {SKIP}{SKIP}{SKIP}{STRING}
+
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Poslat v¨etky vlaky v zozname do depa. CTRL+klik pre vykonanie servisu
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Poslat v¨etky vozidlá do gará¸e. CTRL+klik pre vykonanie servisu
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Poslat v¨etky lode v zozname do lodenice. CTRL+klik pre vykonanie servisu
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Poslat v¨etky lietadlá do hangáru. CTRL+klik pre vykonanie servisu
+
+### depot strings
 
 STR_SELL                                                        :{BLACK}Predat
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}V¨etky vozidlá budú poslané do depa
 STR_ARE_YOU_SURE                                                :{BLACK}Ste si istí?
+
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Potvrdte predaj vlakov v depe
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Potvrdte predaj v¨etkých vozidiel v gará¸i
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Potvrdte predaj v¨etkých lodí v lodenici
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Potvrdte predaj v¨etkých lietadiel v hangári
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Nepredavat v¨etky vlaky v depe
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Nepredavat v¨etky vozidlá v gará¸i
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Nepredavat v¨etky lode v lodenici
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Nepredavat v¨etky lietadlá v hangári
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Predat v¨etky vlaky v depe
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Predat v¨etky vozidlá v gará¸i
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Predat v¨etky lode v lodenici
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Predat v¨etky lietadlá v hangári
+
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Zobrazit zoznam v¨etkých vlakov, ktoré majú toto depo v zozname príkazov
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Zobrazit zoznam v¨etkých vozidiel, ktoré majú túto gará¸ v zozname príkazov
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Zobrazit zoznam v¨etkých lodí, ktoré majú túto lodenicu v zozname príkazov
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Zobrazit zoznam v¨etkých lietadiel, ktoré majú toto letisko v zozname príkazov
+
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Automaticky nahradit v¨etky vlaky v depe
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Automaticky nahradit v¨etky vozidlá v gará¸i
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automaticky nahradit v¨etky lode v lodenici
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automaticky nahradit v¨etky lietadlá v hangári
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Vlak{P "" y ov}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vozid{P lo lá iel}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Lod{P "" e í}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lietad{P lo lá iel}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymena vozidiel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena {STRING}
@@ -2987,6 +3036,18 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomoti
 STR_ENGINES                                                     :Lokomotívy
 STR_WAGONS                                                      :Vagonov
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kliknite pre zastavenie v¨etkých vlakov v depe
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kliknite pre zastavenie v¨etkých vozidiel v gará¸i
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kliknite pre zastavenie v¨etkých lodí v lodenici
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kliknite pre zastavenie v¨etkých lietadiel v hangári
+
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kliknite pre spustenie v¨etkých vlakov v depe
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kliknite pre spustenie v¨etkých vozidiel v gará¸i
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kliknite pre spustenie v¨etkých lodí v lodenici
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kliknite pre spustenie v¨etkých lietadiel v hangári
+
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliknite pre zastavenie v¨etkých vozidiel v zozname
+STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknite pre spustenie v¨etkých vozidiel v zozname
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}

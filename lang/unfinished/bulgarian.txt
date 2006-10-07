@@ -842,9 +842,23 @@ STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Авт�
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Продължителност на съобщенията за грешки: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Населението на града в етикета с името на града: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Невидими дървета (с невидими сгради): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Генератор на земя: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Оригинал
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :ТераГенезис
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Максимално разстояние на Нефтените рафинерии от краищата на картата {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Завъртане на картата: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Обратрно на часовниковата стрелка
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовниковата стрелка
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Интервал на ъпдейтване на развитието : {ORANGE}{STRING} ms
+
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматичен сервиз на хеликоптерите при кацане на хелипад: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Връзване на инструментите за терен с инструментите за жп/път/вода/летище: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обърната посока на преместване???: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Покажи цветовете на компанията: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Нито една
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Твоята компания
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Всички компании
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. влакове на играч: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. брой коли на играч: {ORANGE}{STRING}
@@ -975,6 +989,13 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Вним
 
 STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-размер на карта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-размер на карта: {ORANGE}{STRING}
+
+
+##### PNG-MAP-Loader
+
+
+STR_BMPMAP_ERROR                                                :{WHITE}Не може да отвориш пейзаж от BMP..
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...не може да се промени бида на снимката.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Цена: {CURRENCY}
@@ -1597,6 +1618,8 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} бе закупена от {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Тази компания все още не е достатъчно стара да предлага акции...
 
+
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Цистерна (Парен)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Дизелов)
@@ -2205,7 +2228,28 @@ STR_BUS                                                         :{BLACK}{BUS}
 
 
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Хангари
+
+
+
+### depot strings
+
+STR_ARE_YOU_SURE                                                :{BLACK}Сигурен ли си?
+
+
+
+
+
+
+
+
 STR_WAGONS                                                      :Вагони
+
+
+
 
 
 ############ Lists rail types
@@ -2213,6 +2257,11 @@ STR_WAGONS                                                      :Вагони
 
 ############ End of list of rail types
 
+
+
+########### String for New Landscape Generator
+
+STR_CLEARING_TILES                                              :{BLACK}Създаване на твърда и скална повърност
 
 
 ########### String for new airports
