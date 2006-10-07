@@ -699,7 +699,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 
 				case DEPOT_WIDGET_STOP_ALL:
 				case DEPOT_WIDGET_START_ALL:
-					DoCommandP(w->window_number, WP(w, depot_d).type, e->we.click.widget == DEPOT_WIDGET_START_ALL ? 1 : 0, NULL, CMD_MASS_START_STOP);
+					DoCommandP(w->window_number, 0, WP(w, depot_d).type | (e->we.click.widget == DEPOT_WIDGET_START_ALL ? (1 << 5) : 0), NULL, CMD_MASS_START_STOP);
 					break;
 
 				case DEPOT_WIDGET_SELL_ALL:

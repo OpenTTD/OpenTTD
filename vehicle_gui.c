@@ -1720,7 +1720,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 
 				case VLW_WIDGET_STOP_ALL:
 				case VLW_WIDGET_START_ALL:
-					DoCommandP(0, vl->vehicle_type, (w->window_number & VLW_MASK) | (1 << 1) | (e->we.click.widget == VLW_WIDGET_START_ALL ? 1 : 0), NULL, CMD_MASS_START_STOP);
+					DoCommandP(0, GB(w->window_number, 16, 16), (w->window_number & VLW_MASK) | (1 << 6) | (e->we.click.widget == VLW_WIDGET_START_ALL ? (1 << 5) : 0) | vl->vehicle_type, NULL, CMD_MASS_START_STOP);
 					break;
 			}
 		}	break;

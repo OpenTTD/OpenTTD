@@ -1582,10 +1582,11 @@ void AgeVehicle(Vehicle *v)
 
 /** Starts or stops a lot of vehicles
  * @param tile Tile of the depot where the vehicles are started/stopped (only used for depots)
- * @param p1 Vehicle type
+ * @param p1 Station/Order/Depot ID (only used for vehicle list windows)
  * @param p2 bitmask
- *   - bit 0 false = start vehicles, true = stop vehicles
- *   - bit 1 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
+ *   - bit 0-4 Vehicle type
+ *   - bit 5 false = start vehicles, true = stop vehicles
+ *   - bit 6 if set, then it's a vehicle list window, not a depot and Tile is ignored in this case
  *   - bit 8-11 Vehicle List Window type (ignored unless bit 1 is set)
  */
 int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
@@ -1596,9 +1597,9 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	int32 return_value = CMD_ERROR;
 	uint i;
 	uint stop_command;
-	byte vehicle_type = GB(p1, 0, 8);
-	bool start_stop = HASBIT(p2, 0);
-	bool vehicle_list_window = HASBIT(p2, 1);
+	byte vehicle_type = GB(p2, 0, 5);
+	bool start_stop = HASBIT(p2, 5);
+	bool vehicle_list_window = HASBIT(p2, 6);
 
 	switch (vehicle_type) {
 		case VEH_Train:    stop_command = CMD_START_STOP_TRAIN;    break;
@@ -1609,9 +1610,10 @@ int32 CmdMassStartStopVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 	}
 
 	if (vehicle_list_window) {
+		uint16 id = GB(p1, 0, 16);
 		uint16 window_type = p2 & VLW_MASK;
 
-		engine_count = GenerateVehicleSortList((const Vehicle***)&vl, &engine_list_length, vehicle_type, _current_player, INVALID_STATION, INVALID_ORDER, INVALID_STATION, window_type);
+		engine_count = GenerateVehicleSortList((const Vehicle***)&vl, &engine_list_length, vehicle_type, _current_player, id, id, id, window_type);
 	} else {
 		/* Get the list of vehicles in the depot */
 		BuildDepotVehicleList(vehicle_type, tile, &vl, &engine_list_length, &engine_count, NULL, NULL, NULL);
