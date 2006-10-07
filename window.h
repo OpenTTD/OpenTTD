@@ -393,8 +393,13 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 typedef struct {
 	byte railtype;
 	byte sel_index;
+	byte show_engine_wagon;
 	EngineID sel_engine;
 	EngineID rename_engine;
+	EngineID *engines;
+	EngineID *wagons;
+	uint16 num_engines;
+	uint16 num_wagons;
 } buildtrain_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildtrain_d));
 
