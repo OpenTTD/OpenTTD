@@ -645,7 +645,9 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					&WP(w, depot_d).wagon_list,   &WP(w, depot_d).wagon_list_length,  &WP(w, depot_d).wagon_count);
 				WP(w, depot_d).generate_list = false;
 				DepotSortList(WP(w, depot_d).vehicle_list, WP(w, depot_d).engine_count);
-#ifndef NDEBUG
+//#ifndef NDEBUG
+#if 0
+/* We disabled this check for now, but will keep it to quickly make this test again later (if we change some code) */
 			} else {
 				/* Here we got a piece of code, that only checks if we got a different number of vehicles in the depot list and the number of vehicles actually being in the depot.
 				 * IF they aren't the same, then WE_INVALIDATE_DATA should have been called somewhere, but it wasn't and we got a bug
