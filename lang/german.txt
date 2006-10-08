@@ -2558,6 +2558,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Baue neu
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Schienenfahrzeug hierher ziehen, um es zu verkaufen
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Ansicht auf das Zugdepot zentrieren
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Zugfahrzeugliste - Einzelheiten durch Anklicken des Fahrzeuges
+STR_BLACK_ENGINES                                               :{BLACK}Loks
+STR_BLACK_WAGONS                                                :{BLACK}Waggons
+STR_BLACK_BOTH                                                  :{BLACK}Beides
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klicken, um nur Loks zu sehen
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klicken, um nur Waggons zu sehen
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klicken, um Loks und Waggons zu sehen
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Baue das angewählte Fahrzeug
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Umbenennen der Waggontypen
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten

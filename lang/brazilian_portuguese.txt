@@ -2557,6 +2557,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construi
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arraste o veículo ferroviário para aqui para o vender
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar visualização na localização de um depósito ferroviário
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
+STR_BLACK_ENGINES                                               :{BLACK}Máquinas
+STR_BLACK_WAGONS                                                :{BLACK}Vagões
+STR_BLACK_BOTH                                                  :{BLACK}Ambos
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Clique para ver máquinsa apenas
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Clique para ver vagões apenas
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Clique para ver máquinas e vagões
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir o veículo ferroviário seleccionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomear tipo de veículo ferroviário
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarefa actual do comboio - clique aqui para iniciar/parar comboio

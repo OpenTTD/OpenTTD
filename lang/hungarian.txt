@@ -446,6 +446,12 @@ STR_SORT_BY_VALUE                                               :Érték
 STR_SORT_BY_FACILITY                                            :Állomás típus
 STR_SORT_BY_WAITING                                             :Várakozó rakomány értéke
 STR_SORT_BY_RATING_MAX                                          :Várakozó rakomány
+STR_ENGINE_SORT_ENGINE_ID                                       :MozdonyID
+STR_ENGINE_SORT_COST                                            :Ár
+STR_ENGINE_SORT_POWER                                           :Telj.
+STR_ENGINE_SORT_INTRO_DATE                                      :Bevezetési dátum
+STR_ENGINE_SORT_RUNNING_COST                                    :Üzemeltetési k.
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Telj./Üzemeltetési k.
 STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
 STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)

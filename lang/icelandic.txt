@@ -781,8 +781,8 @@ STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Risa skjámynd (
 STR_02D9_ABOUT_OPENTTD                                          :Um 'OpenTTD'
 ############ range ends	here
 
-STR_02DB_OFF                                                    :{BLACK}Af
-STR_02DA_ON                                                     :{BLACK}Á
+STR_02DB_OFF                                                    :{BLACK}Fela
+STR_02DA_ON                                                     :{BLACK}Sýna
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Sýna samstarfssamninga
 STR_02DD_SUBSIDIES                                              :Samstarfssamningar
 STR_02DE_MAP_OF_WORLD                                           :Heimskort

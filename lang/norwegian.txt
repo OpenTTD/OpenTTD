@@ -1798,6 +1798,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Lagre gj
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Velg ny spilltype
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Velg scenario (grønn), forhåndsatte spill (blått), eller nytt tilfeldig spill
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Lag et tilfeldig spill
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Last høydekart
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} er i veien
@@ -2556,6 +2557,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Bygg nyt
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Dra tog (vogn) her for å selge
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vis stedet togstallen ligger på
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Liste over tog/vogner - trykk på tog/vogn for mer informasjon
+STR_BLACK_ENGINES                                               :{BLACK}Motorer
+STR_BLACK_WAGONS                                                :{BLACK}Vogner
+STR_BLACK_BOTH                                                  :{BLACK}Begge
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klikk for kun å se motorer
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klikk for kun å se vogner
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klikk for å se både motorer og vogner
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Bygg den valgte enheten
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Endre navnet til den valgte enheten
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Gjeldende togstatus - trykk her for å stoppe/starte tog

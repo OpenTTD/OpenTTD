@@ -2558,6 +2558,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construi
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrastrar aquí vehículo para venderlo
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar vista en posición del depósito
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de selección de vehículo - click en vehículo para información
+STR_BLACK_ENGINES                                               :{BLACK}Locomotoras
+STR_BLACK_WAGONS                                                :{BLACK}Vagones
+STR_BLACK_BOTH                                                  :{BLACK}Ambos
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Pulsa para ver solo las locomotoras
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Pulsa para ver solo los vagones
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Pulsa para ver locomotoras y vagones
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir el vehículo resaltado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renombrar tipo de vehículo
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Acción actual del tren - click aquí para detener/arrancar el tren
