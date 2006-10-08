@@ -2535,7 +2535,24 @@ void VehicleEnterDepot(Vehicle *v)
 
 			_current_player = v->owner;
 			cost = DoCommand(v->tile, v->index, t.refit_cargo | t.refit_subtype << 8, DC_EXEC, CMD_REFIT_VEH(v->type));
-			if (!CmdFailed(cost) && v->owner == _local_player && cost != 0) ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
+
+			if (CmdFailed(cost)) {
+				v->leave_depot_instantly = false; // We ensure that the vehicle stays in the depot
+				if (v->owner == _local_player) {
+					/* Notify the user that we stopped the vehicle */
+					switch (v->type) {
+						case VEH_Train:    SetDParam(0, STR_019F_TRAIN);        break;
+						case VEH_Road:     SetDParam(0, STR_019C_ROAD_VEHICLE); break;
+						case VEH_Ship:     SetDParam(0, STR_019E_SHIP);         break;
+						case VEH_Aircraft: SetDParam(0, STR_019D_AIRCRAFT);     break;
+						default: NOT_REACHED();
+					}
+					SetDParam(1, v->unitnumber);
+					AddNewsItem(STR_ORDER_REFIT_FAILED, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
+				}
+			} else if (v->owner == _local_player && cost != 0) {
+				ShowCostOrIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, cost);
+			}
 		}
 
 		if (HASBIT(t.flags, OFB_PART_OF_ORDERS)) {

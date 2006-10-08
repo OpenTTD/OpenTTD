@@ -3001,6 +3001,8 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Click to
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Sign List - {COMMA} Sign{P "" s}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Order refit failure stopped {STRING} {COMMA}
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Rail Vehicles
