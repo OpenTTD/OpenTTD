@@ -376,15 +376,12 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 		case WE_PAINT: {
 			Vehicle *v = GetVehicle(w->window_number);
 			StringID str;
-
-			/* Possible to refit? */
-			if (ShipVehInfo(v->engine_type)->refittable && IsShipInDepotStopped(v)) {
-				EnableWindowWidget(w, 7);
-				EnableWindowWidget(w, 8);
-			}
+			bool refitable_and_stopped_in_depot = ShipVehInfo(v->engine_type)->refittable && IsShipInDepotStopped(v);
 
 			SetWindowWidgetDisabledState(w, 7, v->owner != _local_player);
-			SetWindowWidgetDisabledState(w, 8, v->owner != _local_player);
+			SetWindowWidgetDisabledState(w, 8,
+			                             v->owner != _local_player ||      // Disable if owner is not local player
+			                             !refitable_and_stopped_in_depot); // Disable if the ship is not refitable or stopped in a depot
 
 			/* draw widgets & caption */
 			SetDParam(0, v->string_id);
