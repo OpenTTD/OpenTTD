@@ -30,7 +30,7 @@ RoadBits GetAnyRoadBits(TileIndex tile)
 			if (IsBridge(tile)) {
 				if (IsBridgeMiddle(tile)) {
 					if (!IsTransportUnderBridge(tile) ||
-							GetBridgeTransportType(tile) != TRANSPORT_ROAD) {
+							GetTransportTypeUnderBridge(tile) != TRANSPORT_ROAD) {
 						return 0;
 					}
 					return GetRoadBitsUnderBridge(tile);
