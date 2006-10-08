@@ -2540,13 +2540,7 @@ void VehicleEnterDepot(Vehicle *v)
 				v->leave_depot_instantly = false; // We ensure that the vehicle stays in the depot
 				if (v->owner == _local_player) {
 					/* Notify the user that we stopped the vehicle */
-					switch (v->type) {
-						case VEH_Train:    SetDParam(0, STR_019F_TRAIN);        break;
-						case VEH_Road:     SetDParam(0, STR_019C_ROAD_VEHICLE); break;
-						case VEH_Ship:     SetDParam(0, STR_019E_SHIP);         break;
-						case VEH_Aircraft: SetDParam(0, STR_019D_AIRCRAFT);     break;
-						default: NOT_REACHED();
-					}
+					SetDParam(0, _vehicle_type_names[v->type - 0x10]);
 					SetDParam(1, v->unitnumber);
 					AddNewsItem(STR_ORDER_REFIT_FAILED, NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0), v->index, 0);
 				}
