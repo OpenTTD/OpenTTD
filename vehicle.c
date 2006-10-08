@@ -1901,7 +1901,7 @@ static bool VerifyAutoreplaceRefitForOrders(const Vehicle *v, const EngineID eng
 	}
 
 	FOR_VEHICLE_ORDERS(u, o) {
-		if (o->refit_cargo == CT_NO_REFIT) continue;
+		if (!(o->refit_cargo < NUM_CARGO)) continue;
 		if (!CanRefitTo(v->engine_type, o->refit_cargo)) continue;
 		if (!CanRefitTo(engine_type, o->refit_cargo)) return false;
 	}
@@ -2530,7 +2530,7 @@ void VehicleEnterDepot(Vehicle *v)
 		v->current_order.type = OT_DUMMY;
 		v->current_order.flags = 0;
 
-		if (t.refit_cargo != CT_NO_REFIT) {
+		if (t.refit_cargo < NUM_CARGO) {
 			int32 cost;
 
 			_current_player = v->owner;

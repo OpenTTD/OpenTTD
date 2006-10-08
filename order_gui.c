@@ -170,11 +170,11 @@ static void DrawOrdersWindow(Window *w)
 					if (order->flags & OF_FULL_LOAD) s++; /* service at */
 
 					SetDParam(1, s);
-					if (order->refit_cargo == CT_NO_REFIT) {
-						SetDParam(3, STR_EMPTY);
-					} else {
+					if (order->refit_cargo < NUM_CARGO) {
 						SetDParam(3, STR_REFIT_ORDER);
 						SetDParam(4, _cargoc.names_s[order->refit_cargo]);
+					} else {
+						SetDParam(3, STR_EMPTY);
 					}
 					break;
 				}
