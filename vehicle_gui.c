@@ -216,8 +216,13 @@ static RefitList *BuildRefitList(const Vehicle *v)
 
 		/* Loop through all cargos in the refit mask */
 		for (cid = 0; cmask != 0 && num_lines < max_lines; cmask >>= 1, cid++) {
+			CargoID lcid;
+
 			/* Skip cargo type if it's not listed */
 			if (!HASBIT(cmask, 0)) continue;
+
+			lcid = _local_cargo_id_ctype[cid];
+			if (lcid == CT_INVALID) continue;
 
 			/* Check the vehicle's callback mask for cargo suffixes */
 			if (HASBIT(callbackmask, CBM_CARGO_SUFFIX)) {
@@ -227,7 +232,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				byte temp_subtype  = u->cargo_subtype;
 				byte refit_cyc;
 
-				u->cargo_type = cid;
+				u->cargo_type = lcid;
 
 				for (refit_cyc = 0; refit_cyc < 16 && num_lines < max_lines; refit_cyc++) {
 					bool duplicate = false;
@@ -241,12 +246,12 @@ static RefitList *BuildRefitList(const Vehicle *v)
 
 					/* Check if this cargo and subtype combination are listed */
 					for (i = 0; i < num_lines && !duplicate; i++) {
-						if (refit[i].cargo == cid && refit[i].value == callback) duplicate = true;
+						if (refit[i].cargo == lcid && refit[i].value == callback) duplicate = true;
 					}
 
 					if (duplicate) continue;
 
-					refit[num_lines].cargo   = cid;
+					refit[num_lines].cargo   = lcid;
 					refit[num_lines].subtype = refit_cyc;
 					refit[num_lines].value   = callback;
 					refit[num_lines].engine  = u->engine_type;
@@ -261,11 +266,11 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				bool duplicate = false;
 
 				for (i = 0; i < num_lines && !duplicate; i++) {
-					if (refit[i].cargo == cid && refit[i].value == CALLBACK_FAILED) duplicate = true;
+					if (refit[i].cargo == lcid && refit[i].value == CALLBACK_FAILED) duplicate = true;
 				}
 
 				if (!duplicate) {
-					refit[num_lines].cargo   = cid;
+					refit[num_lines].cargo   = lcid;
 					refit[num_lines].subtype = 0;
 					refit[num_lines].value   = CALLBACK_FAILED;
 					refit[num_lines].engine  = INVALID_ENGINE;
@@ -306,7 +311,7 @@ static RefitOption *DrawVehicleRefitWindow(const RefitList *list, int sel, uint 
 
 		if (i >= pos && i < pos + rows) {
 			/* Draw the cargo name */
-			int last_x = DrawString(2, y, _cargoc.names_s[_local_cargo_id_ctype[refit[i].cargo]], colour);
+			int last_x = DrawString(2, y, _cargoc.names_s[refit[i].cargo], colour);
 
 			/* If the callback succeeded, draw the cargo suffix */
 			if (refit[i].value != CALLBACK_FAILED) {
