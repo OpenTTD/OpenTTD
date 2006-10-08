@@ -1008,7 +1008,7 @@ void ShowDepotWindow(TileIndex tile, byte type)
 
 		SetWindowWidgetsHiddenState(w, type != VEH_Train,
 			DEPOT_WIDGET_H_SCROLL,
-			DEPOT_WIDGET_H_SCROLL,
+			DEPOT_WIDGET_SELL_CHAIN,
 			WIDGET_LIST_END);
 
 		/* Move the widgets to their right locations */
