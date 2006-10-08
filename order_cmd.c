@@ -50,15 +50,16 @@ Order UnpackOldOrder(uint16 packed)
 	order.dest    = GB(packed, 8, 8);
 	order.next    = NULL;
 
+	order.refit_cargo   = CT_NO_REFIT;
+	order.refit_subtype = 0;
+	order.index = 0; // avoid compiler warning
+
 	// Sanity check
 	// TTD stores invalid orders as OT_NOTHING with non-zero flags/station
 	if (order.type == OT_NOTHING && (order.flags != 0 || order.dest != 0)) {
 		order.type = OT_DUMMY;
 		order.flags = 0;
 	}
-
-	order.refit_cargo   = CT_INVALID;
-	order.refit_subtype = 0;
 
 	return order;
 }
@@ -76,7 +77,7 @@ static Order UnpackVersion4Order(uint16 packed)
 	order.dest  = GB(packed, 8, 8);
 	order.next  = NULL;
 	order.index = 0; // avoid compiler warning
-	order.refit_cargo   = CT_INVALID;
+	order.refit_cargo   = CT_NO_REFIT;
 	order.refit_subtype = 0;
 	return order;
 }
@@ -128,6 +129,8 @@ static Order *AllocateOrder(void)
 			memset(order, 0, sizeof(*order));
 			order->index = index;
 			order->next = NULL;
+			order->refit_cargo   = CT_NO_REFIT;
+			order->refit_subtype = 0;
 
 			return order;
 		}
@@ -151,8 +154,8 @@ void AssignOrder(Order *order, Order data)
 	order->flags = data.flags;
 	order->dest  = data.dest;
 
-	order->refit_cargo   = CT_NO_REFIT;
-	order->refit_subtype = CT_NO_REFIT;
+	order->refit_cargo   = data.refit_cargo;
+	order->refit_subtype = data.refit_subtype;
 }
 
 

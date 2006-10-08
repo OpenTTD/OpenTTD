@@ -191,7 +191,7 @@ static inline Order UnpackOrder(uint32 packed)
 	order.dest    = GB(packed, 16, 16);
 	order.next    = NULL;
 	order.index   = 0; // avoid compiler warning
-	order.refit_cargo   = CT_INVALID;
+	order.refit_cargo   = CT_NO_REFIT;
 	order.refit_subtype = 0;
 	return order;
 }
