@@ -880,6 +880,7 @@ STR_TOWNNAME_SWISS                                              :¦veitsi
 STR_TOWNNAME_DANISH                                             :Taani
 STR_TOWNNAME_TURKISH                                            :Türgi
 STR_TOWNNAME_ITALIAN                                            :Itaalia
+STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Naelad (£)
@@ -1462,6 +1463,7 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Kaardi 
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...faili ei leitud.
 
 STR_BMPMAP_ERROR                                                :{WHITE}Ei suuda laadida maad BMP failist...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ei suutnud muuta pildi tüüpi.
@@ -2448,8 +2450,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} R
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Rahvas rõõmustab. . .{}Esimene rong saabus {STATION}i!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detailid)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Rong on ees
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Mine {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Mine {STATION} (Vea ja võta laadung)
 STR_8808_GO_TO_UNLOAD                                           :Mine {STATION} (Laadi maha)
@@ -2580,6 +2582,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transpor
 STR_TRAIN_STOPPING                                              :{RED}Peatub
 STR_TRAIN_STOPPING_VEL                                          :{RED}Peatub, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Ühildamatud raudtee tüübid
+STR_TRAIN_NO_POWER                                              :{RED}Voolu pole
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Maanteesõiduk on ees
@@ -2870,6 +2873,23 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Näita kõ
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näita kõiki laevu millel on see jaam nende sõiduplaanis
 
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Rongijaamad
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Jaamad
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Sadamad
+
+
+
+### depot strings
+
+
+
+
+
+
+
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Asenda sõidukeid
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Asenda {STRING}
@@ -2892,6 +2912,8 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Mootorit
 
 STR_ENGINES                                                     :Mootorid
 STR_WAGONS                                                      :Vaguneid
+
+
 
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
@@ -2924,8 +2946,13 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Kiirenda
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Genereeri
+STR_RANDOM                                                      :{BLACK}Randomiseeri
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Maailma genereerimine
+STR_RANDOM_SEED                                                 :{BLACK}Suvaline Seeme:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Merevee tase:
 STR_DATE                                                        :{BLACK}Kuupäev:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Linnade arv:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Tehaste arv
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Muuda algusaastat
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
@@ -2933,10 +2960,12 @@ STR_GENERATION_WORLD                                            :{WHITE}Maailma 
 STR_GENERATION_ABORT                                            :{BLACK}Loobu
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Loobu Maailma Genereerimisest
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Kas sa tõesti tahad loobuda genereerimisest?
+STR_PROGRESS                                                    :{WHITE}{NUM}% valmis
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Maailma genereerimine
 STR_TREE_GENERATION                                             :{BLACK}Puude genereerimine
 STR_CLEARING_TILES                                              :{BLACK}Mägise ja kivise maaala tegemine
+STR_PREPARING_GAME                                              :{BLACK}Mängu valmistamine
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}See tegevus muutis raskusastme erilise peale
 STR_SE_FLAT_WORLD                                               :{WHITE}Tasane maa
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereeri tasast maad

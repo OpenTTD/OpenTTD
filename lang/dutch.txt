@@ -381,6 +381,12 @@ STR_SORT_BY_VALUE                                               :Waarde
 STR_SORT_BY_FACILITY                                            :
 STR_SORT_BY_WAITING                                             :
 STR_SORT_BY_RATING_MAX                                          :
+STR_ENGINE_SORT_ENGINE_ID                                       :Motor ID (klassieke soort)
+STR_ENGINE_SORT_COST                                            :Kosten
+STR_ENGINE_SORT_POWER                                           :Kracht
+STR_ENGINE_SORT_INTRO_DATE                                      :Introductie Datum
+STR_ENGINE_SORT_RUNNING_COST                                    :Operatie kosten
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Kracht/Operatie kosten
 STR_NO_WAITING_CARGO                                            :{BLACK}Er wacht geen vracht van enig type
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Kies alle faciliteiten
 STR_SELECT_ALL_TYPES                                            :{BLACK}Kies alle vracht typen (inclusief niet wachtende vracht)
@@ -2557,6 +2563,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Bouw nie
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Sleep treinonderdeel hier om het te verkopen
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centreer het scherm op de locatie van de trein depot
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Treinonderdeel selectie lijst - klik op een voertuig voor informatie
+STR_BLACK_ENGINES                                               :{BLACK}Motor
+STR_BLACK_WAGONS                                                :{BLACK}Wagons
+STR_BLACK_BOTH                                                  :{BLACK}Beide
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klik om alleen motoren te zien
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klik om alleen wagons te zien
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klik om motoren en wagons te bekijken
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Bouw de geselecteerde treinonderdeel
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Hernoem treinonderdeel
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Huidige trein actie - klik hier om de trein te starten/stoppen

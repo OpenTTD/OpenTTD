@@ -382,6 +382,12 @@ STR_SORT_BY_VALUE                                               :Wert
 STR_SORT_BY_FACILITY                                            :Stationsart
 STR_SORT_BY_WAITING                                             :Menge der wartenden Fracht
 STR_SORT_BY_RATING_MAX                                          :Frachtbewertung
+STR_ENGINE_SORT_ENGINE_ID                                       :Baureihe
+STR_ENGINE_SORT_COST                                            :Kosten
+STR_ENGINE_SORT_POWER                                           :Energie
+STR_ENGINE_SORT_INTRO_DATE                                      :Einführungsdatum
+STR_ENGINE_SORT_RUNNING_COST                                    :Betriebskosten
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Energie-/Betriebskosten
 STR_NO_WAITING_CARGO                                            :{BLACK}Keine Fracht wartet
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Wähle alle Anlagen
 STR_SELECT_ALL_TYPES                                            :{BLACK}Wähle alle Frachtarten (einschließlich ohne wartender Fracht)

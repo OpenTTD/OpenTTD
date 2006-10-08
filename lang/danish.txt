@@ -381,6 +381,12 @@ STR_SORT_BY_VALUE                                               :Værdi
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Værdi af ventende fragt
 STR_SORT_BY_RATING_MAX                                          :Fragts rangering
+STR_ENGINE_SORT_ENGINE_ID                                       :LokomotivID (klassisk sortering)
+STR_ENGINE_SORT_COST                                            :Omkostning
+STR_ENGINE_SORT_POWER                                           :Drivmiddel
+STR_ENGINE_SORT_INTRO_DATE                                      :Introduktionsdato
+STR_ENGINE_SORT_RUNNING_COST                                    :Driftsomkostning
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Drivmiddel/driftsomkostning
 STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle last typer (inklusiv fragttyper, der ikke venter)
@@ -2489,7 +2495,7 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden st
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} Togdepot
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kører til {TOWN} Togdepot, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Eftersyn på {TOWN} Depot
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Eftersyn i {TOWN} Depot, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ugyldig Order)
 

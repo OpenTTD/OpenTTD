@@ -382,6 +382,12 @@ STR_SORT_BY_VALUE                                               :Valeur
 STR_SORT_BY_FACILITY                                            :Type de station
 STR_SORT_BY_WAITING                                             :Marchandise en attente
 STR_SORT_BY_RATING_MAX                                          :Notation
+STR_ENGINE_SORT_ENGINE_ID                                       :ID Engin (tri classique)
+STR_ENGINE_SORT_COST                                            :Coûts
+STR_ENGINE_SORT_POWER                                           :Force
+STR_ENGINE_SORT_INTRO_DATE                                      :Date d'introduction
+STR_ENGINE_SORT_RUNNING_COST                                    :Coûts d'utilisation
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Force/Coûts d'utilisation
 STR_NO_WAITING_CARGO                                            :{BLACK}Pas de marchandises en attente
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tous les types de station
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tous les types de marchandise (y compris pas en attente)

@@ -382,6 +382,12 @@ STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipo de estación
 STR_SORT_BY_WAITING                                             :Esperando valor de la carga
 STR_SORT_BY_RATING_MAX                                          :Clasificación de la carga
+STR_ENGINE_SORT_ENGINE_ID                                       :ID Locomotora (ordenación clásia)
+STR_ENGINE_SORT_COST                                            :Coste
+STR_ENGINE_SORT_POWER                                           :Potencia
+STR_ENGINE_SORT_INTRO_DATE                                      :Fecha Introducción
+STR_ENGINE_SORT_RUNNING_COST                                    :Coste Operación
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potencia/Coste Operación
 STR_NO_WAITING_CARGO                                            :{BLACK}Ningún tipo de carga está esperando
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas las facilidades
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar todos los tipos de carga (incluidas las que no están en espera)

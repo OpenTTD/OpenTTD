@@ -434,6 +434,12 @@ STR_SORT_BY_VALUE                                               :Wartosc
 STR_SORT_BY_FACILITY                                            :Typ stacji
 STR_SORT_BY_WAITING                                             :Wartosc czekajacego towaru
 STR_SORT_BY_RATING_MAX                                          :Ocena towaru
+STR_ENGINE_SORT_ENGINE_ID                                       :ID pojazdu
+STR_ENGINE_SORT_COST                                            :Cena
+STR_ENGINE_SORT_POWER                                           :Moc
+STR_ENGINE_SORT_INTRO_DATE                                      :Data wprowadzenia
+STR_ENGINE_SORT_RUNNING_COST                                    :Koszty uzytkowania
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Moc/Koszty uzytkowania
 STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma zadnego czekajacego towaru
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Zaznacz wszystkie typy stacji
 STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy towaru (oraz brak czekajacego towaru)
@@ -490,7 +496,7 @@ STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Kliknij 
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Niszczenie budynkow itp. w danym kwadracie terenu
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Obnizenie naroznika terenu
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Wywyzszenie naroznika terenu
-STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Pasek przesuwu - przesuwa liste gora/dol
+STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Suwak - przesuwa liste w gore i w dol
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Pasek przewijania - przewija liste prawo/lewo
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Pokaz zarysy ladu na mapie
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Pokaz pojazdy na mapie
@@ -498,7 +504,7 @@ STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Pokaz pr
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Pokaz drogi na mapie
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Pokaz roslinnosc na mapie
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Pokaz teren majacy wlasciciela
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Przelacz wyswietlanie nazw miast na mapie
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Pokaz nazwy miast na mapie
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Zysk w tym roku: {CURRENCY} (ostatni rok: {CURRENCY})
 
 ############ range for service numbers starts
@@ -1335,7 +1341,7 @@ STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zbyt 
 
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Przebudowa pociagu do przewozu innego typu towaru
 STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Przebudowa pociagu
-STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ ladunku jaki ma przewozic pociag
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz jaki ladunek ma przewozic pociag
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Przebuduj pociag do przewozu zaznaczonego typu towaru
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Nie mozna przebudowac pociagu...
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Okres miedzy serwisowaniami w procentach: {ORANGE}{STRING}
@@ -2237,7 +2243,7 @@ STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Stworz n
 STR_704C_KEY                                                    :{BLACK}Legenda
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Pokaz legende na wykresie
 STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Legenda do wykresow firm
-STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Kliknij tutaj aby przelaczyc wyswietlanie firmy na wykresie wla/wyl
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Kliknij tutaj aby wla/wyl wyswietlanie danych firmy na wykresie
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Dostarczonych jednostek ladunku
 STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ocena dzialalnosci firmy (max. ocena=1000)
 STR_7052_COMPANY_VALUES                                         :{WHITE}Wartosci firm
@@ -2807,6 +2813,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Przebudo
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Przebudowa samochodu
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Przebuduj samochod do przewozu zaznaczonego typu towaru
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nie mozna przebudowac samochodu...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz ladunek jaki ma przewozic ten samochod
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Konstrukcje portowe
@@ -2872,7 +2879,7 @@ STR_9839_CAN_T_RENAME_SHIP_TYPE                                 :{WHITE}Nie mozn
 STR_983A_REFIT_CARGO_SHIP_TO_CARRY                              :{BLACK}Przebudowa statku do przewozu innego typu towaru
 STR_983B_REFIT                                                  :{WHITE}{VEHICLE} (Przebudowa)
 STR_983C_REFIT_SHIP                                             :{BLACK}Przebudowa statku
-STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ ladunku jaki ma przewozic statek
+STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz jaki ladunek ma przewozic statek
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Przebuduj statek do przewozu zaznaczonego typu towaru
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ ladunku do przewozu:
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
@@ -2947,7 +2954,7 @@ STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Nie mozn
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebudowa samolotu do przewozu innego typu towaru
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Przebudowa)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Przebudowa samolotu
-STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz typ towaru jaki ma przenosic samolot
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wybierz jaki ladunek ma przenosic samolot
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Przebuduj samolot do przewozu zaznaczonego typu towaru
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wybierz typ towaru do przewozu:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nowa pojemnosc: {GOLD}{STRING}{}{BLACK}Koszt przebudowy: {GOLD}{CURRENCY}
@@ -3037,10 +3044,10 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaz ws
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Zajezdnie
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Zajezdnie
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Stocznie
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangary
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :zajezdni
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :zajezdni
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :stoczni
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :hangarow
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Wyslij do {SKIP}{SKIP}{SKIP}{STRING}
 

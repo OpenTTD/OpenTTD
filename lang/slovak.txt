@@ -445,6 +445,12 @@ STR_SORT_BY_VALUE                                               :Hodnota
 STR_SORT_BY_FACILITY                                            :Typ stanice
 STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
 STR_SORT_BY_RATING_MAX                                          :Hodnotenie prepravy
+STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (netriedené)
+STR_ENGINE_SORT_COST                                            :Cena
+STR_ENGINE_SORT_POWER                                           :Výkon
+STR_ENGINE_SORT_INTRO_DATE                                      :Uvedenie na trh
+STR_ENGINE_SORT_RUNNING_COST                                    :Náklady na prevádzku
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Výkon/Náklady na prevádzku
 STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
@@ -2534,8 +2540,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} D
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Mesto oslavuje . . .{}Prvy vlak dorazil do stanice {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak v ceste
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Chod do {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Chod do {STATION} (prelozit a nalozit iny naklad)
 STR_8808_GO_TO_UNLOAD                                           :Chod do {STATION} (vylozit)
@@ -2621,6 +2627,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Kupit no
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Pre predaj vlaku ho potiahni sem
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vycentrovat pohlad na poziciu depa
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Vyber vlakov - kliknut na vlak pre informacie
+STR_BLACK_ENGINES                                               :{BLACK}Ru¨ne
+STR_BLACK_WAGONS                                                :{BLACK}Vagóny
+STR_BLACK_BOTH                                                  :{BLACK}Obidva
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Kliknite pre zobrazenie ru¨nov
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Kliknite pre zobrazenie vagónov
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Kliknite pre zobrazenie ru¨nov aj vagónov
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kupit vybrany vlak
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Premenovat vlak
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aktualna cinnost vlaku - kliknut pre zastavenie/spustenie
