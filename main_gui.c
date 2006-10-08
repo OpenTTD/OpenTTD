@@ -1761,9 +1761,7 @@ static ToolbarButtonProc * const _toolbar_button_procs[] = {
 static void MainToolbarWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_PAINT: {
-		bool is_spectator = _current_player == OWNER_SPECTATOR;
-
+	case WE_PAINT:
 		// Draw brown-red toolbar bg.
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB2);
 		GfxFillRect(0, 0, w->width-1, w->height-1, 0xB4 | PALETTE_MODIFIER_GREYOUT);
@@ -1771,15 +1769,12 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		/* If spectator, disable all construction buttons
 		 * ie : Build road, rail, ships, airports and landscaping
 		 * Since enabled state is the default, just disable when needed */
-		SetWindowWidgetDisabledState(w, 19, is_spectator);
-		SetWindowWidgetDisabledState(w, 20, is_spectator);
-		SetWindowWidgetDisabledState(w, 21, is_spectator);
-		SetWindowWidgetDisabledState(w, 22, is_spectator);
-		SetWindowWidgetDisabledState(w, 23, is_spectator);
+		SetWindowWidgetsDisabledState(w, _current_player == OWNER_SPECTATOR, 19, 20, 21, 22, 23, WIDGET_LIST_END);
+		/* disable company list drop downs, if there are no companies */
+		SetWindowWidgetsDisabledState(w, ActivePlayerCount() == 0, 7, 8, 13, 14, 15, 16, WIDGET_LIST_END);
 
 		DrawWindowWidgets(w);
 		break;
-	}
 
 	case WE_CLICK: {
 		if (_game_mode != GM_MENU && !IsWindowWidgetDisabled(w, e->we.click.widget))
