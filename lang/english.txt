@@ -384,7 +384,7 @@ STR_SORT_BY_RATING_MAX                                          :Cargo rating
 STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (classic sort)
 STR_ENGINE_SORT_COST                                            :Cost
 STR_ENGINE_SORT_POWER                                           :Power
-STR_ENGINE_SORT_INTRO_DATE                                      :Intro Date
+STR_ENGINE_SORT_INTRO_DATE                                      :Introduction Date
 STR_ENGINE_SORT_RUNNING_COST                                    :Running Cost
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Power/Running Cost
 STR_NO_WAITING_CARGO                                            :{BLACK}No cargo of any type is waiting
