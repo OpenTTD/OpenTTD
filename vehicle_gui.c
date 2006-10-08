@@ -414,7 +414,7 @@ static const Widget _vehicle_refit_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                            STR_018B_CLOSE_WINDOW},
 	{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_983B_REFIT,                      STR_018C_WINDOW_TITLE_DRAG_THIS},
 	{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,   239,    14,    27, STR_983F_SELECT_CARGO_TYPE_TO_CARRY, STR_983D_SELECT_TYPE_OF_CARGO_FOR},
-	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   227,    28,   139, 0x801,                               STR_983D_SELECT_TYPE_OF_CARGO_FOR},
+	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   227,    28,   139, 0x801,                               STR_EMPTY},
 	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   228,   239,    28,   139, 0x0,                                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
 	{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   239,   140,   161, 0x0,                                 STR_NULL},
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   227,   162,   173, 0x0,                                 STR_NULL},
@@ -456,18 +456,22 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 
 		switch (v->type) {
 			case VEH_Train:
+				w->widget[3].tooltips = STR_RAIL_SELECT_TYPE_OF_CARGO_FOR;
 				w->widget[6].data     = STR_RAIL_REFIT_VEHICLE;
 				w->widget[6].tooltips = STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED;
 				break;
 			case VEH_Road:
+				w->widget[3].tooltips = STR_ROAD_SELECT_TYPE_OF_CARGO_FOR;
 				w->widget[6].data     = STR_REFIT_ROAD_VEHICLE;
 				w->widget[6].tooltips = STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED;
 				break;
 			case VEH_Ship:
+				w->widget[3].tooltips = STR_983D_SELECT_TYPE_OF_CARGO_FOR;
 				w->widget[6].data     = STR_983C_REFIT_SHIP;
 				w->widget[6].tooltips = STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED;
 				break;
 			case VEH_Aircraft:
+				w->widget[3].tooltips = STR_A03E_SELECT_TYPE_OF_CARGO_FOR;
 				w->widget[6].data     = STR_A03D_REFIT_AIRCRAFT;
 				w->widget[6].tooltips = STR_A03F_REFIT_AIRCRAFT_TO_CARRY;
 				break;
