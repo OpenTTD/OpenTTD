@@ -432,8 +432,8 @@ static void GenerateBuildList(EngineID **engines, uint16 *num_engines, EngineID 
 	}
 
 	/* Reduce array sizes if they are too big */
-	if (*num_engines == engine_length) *engines = realloc((void*)*engines, (*num_engines) * sizeof((*engines)[0]));
-	if (*num_wagons == wagon_length) *wagons = realloc((void*)*wagons, (*num_wagons) * sizeof((*wagons)[0]));
+	if (*num_engines != engine_length) *engines = realloc((void*)*engines, (*num_engines) * sizeof((*engines)[0]));
+	if (*num_wagons  != wagon_length)  *wagons  = realloc((void*)*wagons,  (*num_wagons)  * sizeof((*wagons)[0]));
 }
 
 static void SortTrainBuildList(Window *w)
