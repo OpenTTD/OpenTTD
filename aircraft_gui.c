@@ -24,14 +24,14 @@
 #include "vehicle_gui.h"
 #include "newgrf_engine.h"
 #include "date.h"
+#include "strings.h"
 
 typedef enum BuildAircraftWidgets {
 	BUILD_AIRCRAFT_WIDGET_CLOSEBOX = 0,
 	BUILD_AIRCRAFT_WIDGET_CAPTION,
-	BUILD_AIRCRAFT_WIDGET_SORT_PLACEHOLDER,
-//	BUILD_AIRCRAFT_WIDGET_SORT_ASSENDING_DESENTING,
-//	BUILD_AIRCRAFT_WIDGET_SORT_TEXT,
-//	BUILD_AIRCRAFT_WIDGET_SORT_DROPDOWN,
+	BUILD_AIRCRAFT_WIDGET_SORT_ASSENDING_DESENTING,
+	BUILD_AIRCRAFT_WIDGET_SORT_TEXT,
+	BUILD_AIRCRAFT_WIDGET_SORT_DROPDOWN,
 	BUILD_AIRCRAFT_WIDGET_LIST,
 	BUILD_AIRCRAFT_WIDGET_SCROLLBAR,
 	BUILD_AIRCRAFT_WIDGET_PANEL,
@@ -46,7 +46,9 @@ typedef enum BuildAircraftWidgets {
 static const Widget _new_aircraft_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW },
 	{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_A005_NEW_AIRCRAFT,   STR_018C_WINDOW_TITLE_DRAG_THIS },
-	{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,    25, 0x0,                     STR_NULL },
+	{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    14,    25, STR_SORT_BY,             STR_SORT_ORDER_TIP},
+	{      WWT_PANEL,   RESIZE_NONE,    14,    81,   227,    14,    25, 0x0,                     STR_SORT_CRITERIA_TIP},
+	{    WWT_TEXTBTN,   RESIZE_NONE,    14,   228,   239,    14,    25, STR_0225,                STR_SORT_CRITERIA_TIP},
 	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   227,    26,   121, 0x401,                   STR_A025_AIRCRAFT_SELECTION_LIST },
 	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   228,   239,    26,   121, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
 	{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   239,   122,   193, 0x0,                     STR_NULL },
@@ -60,6 +62,150 @@ static const Widget _new_aircraft_widgets[] = {
 	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   228,   239,   206,   217, 0x0,                     STR_RESIZE_BUTTON },
 	{   WIDGETS_END},
 };
+
+static bool _internal_sort_order; // descending/ascending
+static byte _last_sort_criteria = 0;
+static bool _last_sort_order = false;
+
+typedef int CDECL VehicleSortListingTypeFunction(const void*, const void*);
+
+static int CDECL AircraftEngineNumberSorter(const void *a, const void *b)
+{
+	const EngineID va = *(const EngineID*)a;
+	const EngineID vb = *(const EngineID*)b;
+	int r = va - vb;
+
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL AircraftEngineCostSorter(const void *a, const void *b)
+{
+	const int va = AircraftVehInfo(*(const EngineID*)a)->base_cost;
+	const int vb = AircraftVehInfo(*(const EngineID*)b)->base_cost;
+	int r = va - vb;
+
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL AircraftEngineSpeedSorter(const void *a, const void *b)
+{
+	const int va = AircraftVehInfo(*(const EngineID*)a)->max_speed;
+	const int vb = AircraftVehInfo(*(const EngineID*)b)->max_speed;
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return AircraftEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL AircraftEngineIntroDateSorter(const void *a, const void *b)
+{
+	const int va = GetEngine(*(const EngineID*)a)->intro_date;
+	const int vb = GetEngine(*(const EngineID*)b)->intro_date;
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return AircraftEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static EngineID _last_engine; // cached vehicle to hopefully speed up name-sorting
+
+static char _bufcache[64]; // used together with _last_vehicle to hopefully speed up stringsorting
+static int CDECL AircraftEngineNameSorter(const void *a, const void *b)
+{
+	const EngineID va = *(const EngineID*)a;
+	const EngineID vb = *(const EngineID*)b;
+	char buf1[64] = "\0";
+	int r;
+
+	SetDParam(0, GetCustomEngineName(va));
+	GetString(buf1, STR_JUST_STRING);
+
+	if (vb != _last_engine) {
+		_last_engine = vb;
+		_bufcache[0] = '\0';
+
+		SetDParam(0, GetCustomEngineName(vb));
+		GetString(_bufcache, STR_JUST_STRING);
+	}
+
+	r =  strcmp(buf1, _bufcache); // sort by name
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return AircraftEngineNumberSorter(a, b);
+	}
+
+	return (_internal_sort_order & 1) ? -r : r;
+}
+
+static int CDECL AircraftEngineRunningCostSorter(const void *a, const void *b)
+{
+	const int va = AircraftVehInfo(*(const EngineID*)a)->running_cost;
+	const int vb = AircraftVehInfo(*(const EngineID*)b)->running_cost;
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return AircraftEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL AircraftEngineReliabilitySorter(const void *a, const void *b)
+{
+	const int va = GetEngine(*(const EngineID*)a)->reliability;
+	const int vb = GetEngine(*(const EngineID*)b)->reliability;
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return AircraftEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static int CDECL AircraftEngineCargoSorter(const void *a, const void *b)
+{
+	const int va = AircraftVehInfo(*(const EngineID*)a)->passenger_capacity;
+	const int vb = AircraftVehInfo(*(const EngineID*)b)->passenger_capacity;
+	const int r = va - vb;
+
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return AircraftEngineNumberSorter(a, b);
+	}
+	return _internal_sort_order ? -r : r;
+}
+
+static VehicleSortListingTypeFunction* const _engine_sorter[] = {
+	&AircraftEngineNumberSorter,
+	&AircraftEngineCostSorter,
+	&AircraftEngineSpeedSorter,
+	&AircraftEngineIntroDateSorter,
+	&AircraftEngineNameSorter,
+	&AircraftEngineRunningCostSorter,
+	&AircraftEngineReliabilitySorter,
+	&AircraftEngineCargoSorter,
+};
+
+static const StringID _engine_sort_listing[] = {
+	STR_ENGINE_SORT_ENGINE_ID,
+	STR_ENGINE_SORT_COST,
+	STR_SORT_BY_MAX_SPEED,
+	STR_ENGINE_SORT_INTRO_DATE,
+	STR_SORT_BY_DROPDOWN_NAME,
+	STR_ENGINE_SORT_RUNNING_COST,
+	STR_SORT_BY_RELIABILITY,
+	STR_ENGINE_SORT_CARGO_CAPACITY,
+	INVALID_STRING_ID
+};
+
 
 /**
  * Draw the purchase info details of an aircraft at a given location.
@@ -219,10 +365,15 @@ static inline uint16 GetEngineArrayLength(Window *w)
 	return 0;
 }
 
+static void SortAircraftBuildList(Window *w)
+{
+	_internal_sort_order = WP(w,buildtrain_d).decenting_sort_order;
+	qsort((void*)GetEngineArray(w), GetEngineArrayLength(w), sizeof(GetEngineArray(w)[0]),
+		  _engine_sorter[WP(w,buildtrain_d).sort_criteria]);
+}
+
 static void DrawBuildAircraftWindow(Window *w)
 {
-	int count = 0;
-
 	SetWindowWidgetLoweredState(w, BUILD_AIRCRAFT_WIDGET_PLANES,      WP(w,buildtrain_d).show_engine_button == 1);
 	SetWindowWidgetLoweredState(w, BUILD_AIRCRAFT_WIDGET_JETS,        WP(w,buildtrain_d).show_engine_button == 2);
 	SetWindowWidgetLoweredState(w, BUILD_AIRCRAFT_WIDGET_HELICOPTERS, WP(w,buildtrain_d).show_engine_button == 3);
@@ -247,17 +398,9 @@ static void DrawBuildAircraftWindow(Window *w)
 			}
 			if (!found) WP(w,buildtrain_d).sel_engine = INVALID_ENGINE;
 		}
-
-
-		switch (WP(w,buildtrain_d).show_engine_button) {
-			case 1: count = WP(w, buildtrain_d).list_a_length; break;
-			case 2: count = WP(w, buildtrain_d).list_b_length; break;
-			case 3: count = WP(w, buildtrain_d).list_c_length; break;
-		}
-
-		SetVScrollCount(w, count);
 	}
 
+	SetVScrollCount(w, GetEngineArrayLength(w));
 	DrawWindowWidgets(w);
 
 	if (WP(w,buildtrain_d).sel_engine == INVALID_ENGINE && GetEngineArrayLength(w) != 0) {
@@ -285,6 +428,8 @@ static void DrawBuildAircraftWindow(Window *w)
 			DrawAircraftPurchaseInfo(x, w->widget[BUILD_AIRCRAFT_WIDGET_PANEL].top + 1, selected_id);
 		}
 	}
+	DrawString(85, 15, _engine_sort_listing[WP(w,buildtrain_d).sort_criteria], 0x10);
+	DoDrawString(WP(w,buildtrain_d).decenting_sort_order ? DOWNARROW : UPARROW, 69, 15, 0x10);
 }
 
 static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
@@ -292,6 +437,13 @@ static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
 	byte click_state = 0;
 
 	switch (e->we.click.widget) {
+		case BUILD_AIRCRAFT_WIDGET_SORT_ASSENDING_DESENTING:
+			WP(w,buildtrain_d).decenting_sort_order = !WP(w,buildtrain_d).decenting_sort_order;
+			_last_sort_order = WP(w,buildtrain_d).decenting_sort_order;
+			SortAircraftBuildList(w);
+			SetWindowDirty(w);
+			break;
+
 		case BUILD_AIRCRAFT_WIDGET_LIST: {
 			uint i = (e->we.click.pt.y - 26) / 24;
 			if (i < w->vscroll.cap) {
@@ -304,6 +456,10 @@ static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
 			}
 		} break;
 
+		case BUILD_AIRCRAFT_WIDGET_SORT_TEXT: case BUILD_AIRCRAFT_WIDGET_SORT_DROPDOWN:/* Select sorting criteria dropdown menu */
+			ShowDropDownMenu(w, _engine_sort_listing, WP(w,buildtrain_d).sort_criteria, BUILD_AIRCRAFT_WIDGET_SORT_DROPDOWN, 0, 0);
+			return;
+
 		case BUILD_AIRCRAFT_WIDGET_HELICOPTERS: click_state++;
 		case BUILD_AIRCRAFT_WIDGET_JETS:        click_state++;
 		case BUILD_AIRCRAFT_WIDGET_PLANES:      click_state++;
@@ -313,6 +469,7 @@ static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
 			WP(w,buildtrain_d).sel_engine = INVALID_ENGINE;
 			WP(w,buildtrain_d).show_engine_button = click_state;
 			w->vscroll.pos = 0;
+			SortAircraftBuildList(w);
 			SetWindowDirty(w);
 			break;
 
@@ -343,8 +500,10 @@ static void BuildAircraftWindowCreate(Window *w)
 	WP(w, buildtrain_d).list_a        = NULL;
 	WP(w, buildtrain_d).list_b        = NULL;
 	WP(w, buildtrain_d).list_c        = NULL;
-	WP(w, buildtrain_d).data_invalidated   = false;
-	WP(w, buildtrain_d).sel_engine         = INVALID_ENGINE;
+	WP(w, buildtrain_d).data_invalidated     = false;
+	WP(w, buildtrain_d).sel_engine           = INVALID_ENGINE;
+	WP(w, buildtrain_d).sort_criteria        = _last_sort_criteria;
+	WP(w, buildtrain_d).decenting_sort_order = _last_sort_order;
 
 	GenerateBuildList(&WP(w, buildtrain_d).list_a, &WP(w, buildtrain_d).list_a_length,
 					  &WP(w, buildtrain_d).list_b, &WP(w, buildtrain_d).list_b_length,
@@ -377,6 +536,7 @@ static void BuildAircraftWindowCreate(Window *w)
 			WP(w, buildtrain_d).show_engine_button = 1;
 		}
 	}
+	SortAircraftBuildList(w);
 }
 
 static void NewAircraftWndProc(Window *w, WindowEvent *e)
@@ -411,6 +571,15 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 						   CMD_RENAME_ENGINE | CMD_MSG(STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE));
 			}
 		} break;
+
+		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
+			if (WP(w,buildtrain_d).sort_criteria != e->we.dropdown.index) {
+				WP(w,buildtrain_d).sort_criteria = e->we.dropdown.index;
+				_last_sort_criteria = e->we.dropdown.index;
+				SortAircraftBuildList(w);
+			}
+			SetWindowDirty(w);
+			break;
 
 		case WE_RESIZE:
 			w->vscroll.cap += e->we.sizing.diff.y / 24;
