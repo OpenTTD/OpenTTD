@@ -180,7 +180,7 @@ OS/2:
 See http://www.openttd.org/translating.php for up-to-date information.
 
 The use of the online Translator service, located at
-http://translator.openttd.org/, is highly encouraged. For a username/password
+http://translator2.openttd.org/, is highly encouraged. For a username/password
 combo you should contact the development team, either by mail, IRC or the
 forums. The system is straightforward to use, and if you have any problems,
 read the online help located there.
