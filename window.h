@@ -393,16 +393,18 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 typedef struct {
 	byte railtype;
 	byte sel_index;
-	byte show_engine_wagon;
+	byte show_engine_button;
 	bool data_invalidated;
 	bool decenting_sort_order;
 	byte sort_criteria;
 	EngineID sel_engine;
 	EngineID rename_engine;
-	EngineID *engines;
-	EngineID *wagons;
-	uint16 num_engines;
-	uint16 num_wagons;
+	EngineID *list_a;
+	EngineID *list_b;
+	EngineID *list_c;
+	uint16 list_a_length;
+	uint16 list_b_length;
+	uint16 list_c_length;
 } buildtrain_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildtrain_d));
 

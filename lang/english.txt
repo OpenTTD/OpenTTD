@@ -2797,6 +2797,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Build ai
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aircraft - click on aircraft for information
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Build new aircraft (requires airport with hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aircraft - click on aircraft for information
+STR_BLACK_PLANES                                                :{BLACK}Propellers
+STR_BLACK_JETS                                                  :{BLACK}Jets
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helicopters
+STR_BUILD_PLANES_TIP                                            :{BLACK}Click to see propeller planes
+STR_BUILD_JETS_TIP                                              :{BLACK}Click to see jet planes
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Click to see helicopters
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Build new aircraft
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Drag aircraft to here to sell it
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centre main view on hangar location

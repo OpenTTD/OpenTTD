@@ -439,7 +439,7 @@ static void GenerateBuildList(EngineID **engines, uint16 *num_engines, EngineID 
 static void SortTrainBuildList(Window *w)
 {
 	_internal_sort_order = WP(w,buildtrain_d).decenting_sort_order;
-	qsort((void*)WP(w,buildtrain_d).engines, WP(w,buildtrain_d).num_engines, sizeof(WP(w,buildtrain_d).engines[0]),
+	qsort((void*)WP(w, buildtrain_d).list_a, WP(w, buildtrain_d).list_a_length, sizeof(WP(w, buildtrain_d).list_a[0]),
 		  _engine_sorter[WP(w,buildtrain_d).sort_criteria]);
 }
 
@@ -455,12 +455,12 @@ static void DrawTrainBuildWindow(Window *w)
 	SetWindowWidgetDisabledState(w, BUILD_TRAIN_WIDGET_BUILD, w->window_number == 0); // Disable unless we got a depot to build in
 
 	/* Draw the clicked engine/wagon/both button pressed and unpress the other two */
-	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_ENGINES, WP(w,buildtrain_d).show_engine_wagon == 1);
-	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_WAGONS,  WP(w,buildtrain_d).show_engine_wagon == 2);
-	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_BOTH,    WP(w,buildtrain_d).show_engine_wagon == 3);
+	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_ENGINES, WP(w,buildtrain_d).show_engine_button == 1);
+	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_WAGONS,  WP(w,buildtrain_d).show_engine_button == 2);
+	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_BOTH,    WP(w,buildtrain_d).show_engine_button == 3);
 
 	if (WP(w,buildtrain_d).data_invalidated) {
-		GenerateBuildList(&WP(w,buildtrain_d).engines, &WP(w,buildtrain_d).num_engines, &WP(w,buildtrain_d).wagons, &WP(w,buildtrain_d).num_wagons, WP(w,buildtrain_d).railtype);
+		GenerateBuildList(&WP(w, buildtrain_d).list_a, &WP(w, buildtrain_d).list_a_length, &WP(w, buildtrain_d).list_b, &WP(w, buildtrain_d).list_b_length, WP(w,buildtrain_d).railtype);
 		WP(w,buildtrain_d).data_invalidated = false;
 		SortTrainBuildList(w);
 
@@ -468,16 +468,16 @@ static void DrawTrainBuildWindow(Window *w)
 		if (WP(w,buildtrain_d).sel_engine != INVALID_ENGINE) {
 			int i;
 			bool found = false;
-			if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0)) {
-				for (i = 0; i < WP(w,buildtrain_d).num_engines; i++) {
-					if (WP(w,buildtrain_d).sel_engine != WP(w,buildtrain_d).engines[i]) continue;
+			if (HASBIT(WP(w,buildtrain_d).show_engine_button, 0)) {
+				for (i = 0; i < WP(w, buildtrain_d).list_a_length; i++) {
+					if (WP(w,buildtrain_d).sel_engine != WP(w, buildtrain_d).list_a[i]) continue;
 					found = true;
 					break;
 				}
 			}
-			if (!found && HASBIT(WP(w,buildtrain_d).show_engine_wagon, 1)) {
-				for (i = 0; i < WP(w,buildtrain_d).num_wagons; i++) {
-					if (WP(w,buildtrain_d).sel_engine != WP(w,buildtrain_d).wagons[i]) continue;
+			if (!found && HASBIT(WP(w,buildtrain_d).show_engine_button, 1)) {
+				for (i = 0; i < WP(w, buildtrain_d).list_b_length; i++) {
+					if (WP(w,buildtrain_d).sel_engine != WP(w, buildtrain_d).list_b[i]) continue;
 					found = true;
 					break;
 				}
@@ -486,35 +486,35 @@ static void DrawTrainBuildWindow(Window *w)
 		}
 	}
 
-	if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0)) scrollcount += WP(w,buildtrain_d).num_engines;
-	if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 1)) scrollcount += WP(w,buildtrain_d).num_wagons;
+	if (HASBIT(WP(w,buildtrain_d).show_engine_button, 0)) scrollcount += WP(w, buildtrain_d).list_a_length;
+	if (HASBIT(WP(w,buildtrain_d).show_engine_button, 1)) scrollcount += WP(w, buildtrain_d).list_b_length;
 
 	SetVScrollCount(w, scrollcount);
 	SetDParam(0, WP(w,buildtrain_d).railtype + STR_881C_NEW_RAIL_VEHICLES);
 	DrawWindowWidgets(w);
 
 	if (selected_id == INVALID_ENGINE && scrollcount != 0) {
-		if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0) && WP(w,buildtrain_d).num_engines != 0) {
-			selected_id = WP(w,buildtrain_d).engines[0];
+		if (HASBIT(WP(w,buildtrain_d).show_engine_button, 0) && WP(w, buildtrain_d).list_a_length != 0) {
+			selected_id = WP(w, buildtrain_d).list_a[0];
 		} else {
-			selected_id = WP(w,buildtrain_d).wagons[0];
+			selected_id = WP(w, buildtrain_d).list_b[0];
 		}
 		WP(w,buildtrain_d).sel_engine = selected_id;
 	}
 
 	/* Draw the engines */
-	if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0)) {
-		engine_drawing_loop(WP(w,buildtrain_d).engines, WP(w,buildtrain_d).num_engines, x, &y, selected_id, &position, max);
+	if (HASBIT(WP(w,buildtrain_d).show_engine_button, 0)) {
+		engine_drawing_loop(WP(w, buildtrain_d).list_a, WP(w, buildtrain_d).list_a_length, x, &y, selected_id, &position, max);
 
 		/* Magically set the number 0 line to the one right after the last engine
 		* This way the line numbers fit the indexes in the wagon array */
-		position -= WP(w,buildtrain_d).num_engines;
-		max      -= WP(w,buildtrain_d).num_engines;
+		position -= WP(w, buildtrain_d).list_a_length;
+		max      -= WP(w, buildtrain_d).list_a_length;
 	}
 
 	/* Draw the wagons */
-	if (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 1)) {
-		engine_drawing_loop(WP(w,buildtrain_d).wagons,  WP(w,buildtrain_d).num_wagons,  x, &y, selected_id, &position, max);
+	if (HASBIT(WP(w,buildtrain_d).show_engine_button, 1)) {
+		engine_drawing_loop(WP(w, buildtrain_d).list_b,  WP(w, buildtrain_d).list_b_length,  x, &y, selected_id, &position, max);
 	}
 
 	if (selected_id != INVALID_ENGINE) {
@@ -534,15 +534,15 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE:
-			WP(w,buildtrain_d).num_engines = 0;
-			WP(w,buildtrain_d).num_wagons  = 0;
-			WP(w,buildtrain_d).engines = NULL;
-			WP(w,buildtrain_d).wagons  = NULL;
-			WP(w,buildtrain_d).show_engine_wagon = 3;
-			WP(w,buildtrain_d).data_invalidated  = true;
-			WP(w,buildtrain_d).sel_engine        = INVALID_ENGINE;
-			WP(w,buildtrain_d).sort_criteria     = _last_sort_criteria;
-			WP(w,buildtrain_d).decenting_sort_order = _last_sort_order;
+			WP(w, buildtrain_d).list_a_length = 0;
+			WP(w, buildtrain_d).list_b_length = 0;
+			WP(w, buildtrain_d).list_a        = NULL;
+			WP(w, buildtrain_d).list_b        = NULL;
+			WP(w, buildtrain_d).show_engine_button   = 3;
+			WP(w, buildtrain_d).data_invalidated     = true;
+			WP(w, buildtrain_d).sel_engine           = INVALID_ENGINE;
+			WP(w, buildtrain_d).sort_criteria        = _last_sort_criteria;
+			WP(w, buildtrain_d).decenting_sort_order = _last_sort_order;
 			break;
 
 		case WE_INVALIDATE_DATA:
@@ -550,8 +550,8 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_DESTROY:
-			free((void*)WP(w,buildtrain_d).engines);
-			free((void*)WP(w,buildtrain_d).wagons);
+			free((void*)WP(w, buildtrain_d).list_a);
+			free((void*)WP(w, buildtrain_d).list_b);
 			break;
 
 		case WE_PAINT:
@@ -574,11 +574,11 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 				case BUILD_TRAIN_WIDGET_LIST: {
 					uint i = ((e->we.click.pt.y - 26) / 14) + w->vscroll.pos;
-					if (i < (uint)(WP(w,buildtrain_d).num_engines + WP(w,buildtrain_d).num_wagons)) {
-						if (i < WP(w,buildtrain_d).num_engines && HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0)) {
-							WP(w,buildtrain_d).sel_engine = WP(w,buildtrain_d).engines[i];
+					if (i < (uint)(WP(w, buildtrain_d).list_a_length + WP(w, buildtrain_d).list_b_length)) {
+						if (i < WP(w, buildtrain_d).list_a_length && HASBIT(WP(w,buildtrain_d).show_engine_button, 0)) {
+							WP(w,buildtrain_d).sel_engine = WP(w, buildtrain_d).list_a[i];
 						} else {
-							WP(w,buildtrain_d).sel_engine = WP(w,buildtrain_d).wagons[i - (HASBIT(WP(w,buildtrain_d).show_engine_wagon, 0) ? WP(w,buildtrain_d).num_engines : 0)];
+							WP(w,buildtrain_d).sel_engine = WP(w, buildtrain_d).list_b[i - (HASBIT(WP(w,buildtrain_d).show_engine_button, 0) ? WP(w, buildtrain_d).list_a_length : 0)];
 						}
 						SetWindowDirty(w);
 					}
@@ -593,9 +593,9 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 					 * Those numbers are the same as the clicked button - BUILD_TRAIN_WIDGET_ENGINES + 1 */
 
 					byte click_state = e->we.click.widget - BUILD_TRAIN_WIDGET_ENGINES + 1;
-					if (WP(w,buildtrain_d).show_engine_wagon == click_state) break; // We clicked the pressed button
+					if (WP(w,buildtrain_d).show_engine_button == click_state) break; // We clicked the pressed button
 					WP(w,buildtrain_d).sel_engine = INVALID_ENGINE;
-					WP(w,buildtrain_d).show_engine_wagon = click_state;
+					WP(w,buildtrain_d).show_engine_button = click_state;
 					w->vscroll.pos = 0;
 					SetWindowDirty(w);
 					}

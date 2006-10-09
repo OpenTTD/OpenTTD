@@ -25,6 +25,42 @@
 #include "newgrf_engine.h"
 #include "date.h"
 
+typedef enum BuildAircraftWidgets {
+	BUILD_AIRCRAFT_WIDGET_CLOSEBOX = 0,
+	BUILD_AIRCRAFT_WIDGET_CAPTION,
+	BUILD_AIRCRAFT_WIDGET_SORT_PLACEHOLDER,
+//	BUILD_AIRCRAFT_WIDGET_SORT_ASSENDING_DESENTING,
+//	BUILD_AIRCRAFT_WIDGET_SORT_TEXT,
+//	BUILD_AIRCRAFT_WIDGET_SORT_DROPDOWN,
+	BUILD_AIRCRAFT_WIDGET_LIST,
+	BUILD_AIRCRAFT_WIDGET_SCROLLBAR,
+	BUILD_AIRCRAFT_WIDGET_PANEL,
+	BUILD_AIRCRAFT_WIDGET_PLANES,
+	BUILD_AIRCRAFT_WIDGET_JETS,
+	BUILD_AIRCRAFT_WIDGET_HELICOPTERS,
+	BUILD_AIRCRAFT_WIDGET_BUILD,
+	BUILD_AIRCRAFT_WIDGET_RENAME,
+	BUILD_AIRCRAFT_WIDGET_RESIZE,
+} BuildAircraftWidget;
+
+static const Widget _new_aircraft_widgets[] = {
+	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW },
+	{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_A005_NEW_AIRCRAFT,   STR_018C_WINDOW_TITLE_DRAG_THIS },
+	{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   239,    14,    25, 0x0,                     STR_NULL },
+	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   227,    26,   121, 0x401,                   STR_A025_AIRCRAFT_SELECTION_LIST },
+	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   228,   239,    26,   121, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
+	{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   239,   122,   193, 0x0,                     STR_NULL },
+
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    79,   194,   205, STR_BLACK_PLANES,        STR_BUILD_PLANES_TIP },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    80,   159,   194,   205, STR_BLACK_JETS,          STR_BUILD_JETS_TIP },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   160,   239,   194,   205, STR_BLACK_HELICOPTERS,   STR_BUILD_HELICOPTERS_TIP },
+
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   206,   217, STR_A006_BUILD_AIRCRAFT, STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   115,   227,   206,   217, STR_A037_RENAME,         STR_A038_RENAME_AIRCRAFT_TYPE },
+	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   228,   239,   206,   217, 0x0,                     STR_RESIZE_BUTTON },
+	{   WIDGETS_END},
+};
+
 /**
  * Draw the purchase info details of an aircraft at a given location.
  * @param x,y location where to draw the info
@@ -113,130 +149,278 @@ void CcCloneAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (success) ShowAircraftViewWindow(GetVehicle(_new_vehicle_id));
 }
 
-static void NewAircraftWndProc(Window *w, WindowEvent *e)
+static inline void ExtendEngineListSize(const EngineID **engine_list, uint16 *engine_list_length, uint16 step_size)
 {
-	switch (e->event) {
-	case WE_PAINT: {
-		TileIndex tile = w->window_number;
-		byte acc_planes;
+	*engine_list_length = min(*engine_list_length + step_size, NUM_TRAIN_ENGINES);
+	*engine_list = realloc((void*)*engine_list, (*engine_list_length) * sizeof((*engine_list)[0]));
+}
 
-		if (tile == 0) {
-			DisableWindowWidget(w, 5);
-			acc_planes = ALL;
-		} else {
-			acc_planes = GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
-		}
+static void GenerateBuildList(EngineID **planes, uint16 *num_planes, EngineID **jets, uint16 *num_jets, EngineID **helicopters, uint16 *num_helicopters)
+{
+	uint16 plane_length      = *num_planes;
+	uint16 jet_length        = *num_jets;
+	uint16 helicopter_length = *num_helicopters;
+	EngineID eid;
 
-		{
-			int count = 0;
-			EngineID eid;
+	(*num_planes)      = 0;
+	(*num_jets)        = 0;
+	(*num_helicopters) = 0;
 
-			for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
-				const AircraftVehicleInfo *avi;
+	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
 
-				if (!HASBIT(GetEngine(eid)->player_avail, _local_player)) continue;
+		if (IsEngineBuildable(eid, VEH_Aircraft)) {
+			const AircraftVehicleInfo *avi = AircraftVehInfo(eid);
 
-				avi = AircraftVehInfo(eid);
-				if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == acc_planes) continue;
+			switch (avi->subtype) {
+				case AIR_CTOL: // Propeller planes
+					if (*num_planes == plane_length) ExtendEngineListSize((const EngineID**)planes, &plane_length, 5);
+					(*planes)[(*num_planes)++] = eid;
+					break;
 
-				count++;
+				case (AIR_CTOL | AIR_FAST): // Jet planes
+					if (*num_jets == jet_length) ExtendEngineListSize((const EngineID**)jets, &jet_length, 5);
+					(*jets)[(*num_jets)++] = eid;
+					break;
+
+				case 0: // Helicopters
+					if (*num_helicopters == helicopter_length) ExtendEngineListSize((const EngineID**)helicopters, &plane_length, 5);
+					(*helicopters)[(*num_helicopters)++] = eid;
+					break;
 			}
-			SetVScrollCount(w, count);
 		}
 
-		DrawWindowWidgets(w);
+	}
 
-		{
-			int x = 2;
-			int y = 15;
-			int sel = WP(w,buildtrain_d).sel_index;
-			int pos = w->vscroll.pos;
-			EngineID selected_id = INVALID_ENGINE;
-			EngineID eid;
+	/* Reduce array sizes if they are too big */
+	if (*num_planes      != plane_length)      *planes      = realloc((void*)*planes,      (*num_planes)      * sizeof((*planes)[0]));
+	if (*num_jets        != jet_length)        *jets        = realloc((void*)*jets,        (*num_jets)        * sizeof((*jets)[0]));
+	if (*num_helicopters != helicopter_length) *helicopters = realloc((void*)*helicopters, (*num_helicopters) * sizeof((*helicopters)[0]));
+}
 
-			for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
-				const AircraftVehicleInfo *avi;
+static inline EngineID *GetEngineArray(Window *w)
+{
+	switch (WP(w,buildtrain_d).show_engine_button) {
+		case 1: return WP(w, buildtrain_d).list_a;
+		case 2: return WP(w, buildtrain_d).list_b;
+		case 3: return WP(w, buildtrain_d).list_c;
+		default: NOT_REACHED();
+	}
+	return NULL;
+}
 
-				if (!HASBIT(GetEngine(eid)->player_avail, _local_player)) continue;
+static inline uint16 GetEngineArrayLength(Window *w)
+{
+	switch (WP(w,buildtrain_d).show_engine_button) {
+		case 1: return WP(w, buildtrain_d).list_a_length;
+		case 2: return WP(w, buildtrain_d).list_b_length;
+		case 3: return WP(w, buildtrain_d).list_c_length;
+		default: NOT_REACHED();
+	}
+	return 0;
+}
 
-				avi = AircraftVehInfo(eid);
-				if ((avi->subtype & AIR_CTOL ? HELICOPTERS_ONLY : AIRCRAFT_ONLY) == acc_planes) continue;
+static void DrawBuildAircraftWindow(Window *w)
+{
+	int count = 0;
 
-				if (sel == 0) selected_id = eid;
+	SetWindowWidgetLoweredState(w, BUILD_AIRCRAFT_WIDGET_PLANES,      WP(w,buildtrain_d).show_engine_button == 1);
+	SetWindowWidgetLoweredState(w, BUILD_AIRCRAFT_WIDGET_JETS,        WP(w,buildtrain_d).show_engine_button == 2);
+	SetWindowWidgetLoweredState(w, BUILD_AIRCRAFT_WIDGET_HELICOPTERS, WP(w,buildtrain_d).show_engine_button == 3);
 
-				if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-					DrawString(x + 62, y + 7, GetCustomEngineName(eid), sel == 0 ? 0xC : 0x10);
-					DrawAircraftEngine(x + 29, y + 10, eid, GetEnginePalette(eid, _local_player));
-					y += 24;
+	SetWindowWidgetDisabledState(w, BUILD_AIRCRAFT_WIDGET_BUILD, w->window_number == 0);
+
+	if (WP(w, buildtrain_d).data_invalidated) {
+		GenerateBuildList(&WP(w, buildtrain_d).list_a, &WP(w, buildtrain_d).list_a_length,
+						  &WP(w, buildtrain_d).list_b, &WP(w, buildtrain_d).list_b_length,
+						  &WP(w, buildtrain_d).list_c, &WP(w, buildtrain_d).list_c_length);
+		WP(w, buildtrain_d).data_invalidated = false;
+
+		if (WP(w,buildtrain_d).sel_engine != INVALID_ENGINE) {
+			int i;
+			bool found = false;
+			if (HASBIT(WP(w,buildtrain_d).show_engine_button, 0)) {
+				for (i = 0; i < GetEngineArrayLength(w); i++) {
+					if (WP(w,buildtrain_d).sel_engine != GetEngineArray(w)[i]) continue;
+					found = true;
+					break;
 				}
-
-				sel--;
 			}
-
-			WP(w,buildtrain_d).sel_engine = selected_id;
-
-			if (selected_id != INVALID_ENGINE) {
-				DrawAircraftPurchaseInfo(2, w->widget[4].top + 1, selected_id);
-			}
+			if (!found) WP(w,buildtrain_d).sel_engine = INVALID_ENGINE;
 		}
-	} break;
 
-	case WE_CLICK:
-		switch (e->we.click.widget) {
-		case 2: { /* listbox */
-			uint i = (e->we.click.pt.y - 14) / 24;
+
+		switch (WP(w,buildtrain_d).show_engine_button) {
+			case 1: count = WP(w, buildtrain_d).list_a_length; break;
+			case 2: count = WP(w, buildtrain_d).list_b_length; break;
+			case 3: count = WP(w, buildtrain_d).list_c_length; break;
+		}
+
+		SetVScrollCount(w, count);
+	}
+
+	DrawWindowWidgets(w);
+
+	if (WP(w,buildtrain_d).sel_engine == INVALID_ENGINE && GetEngineArrayLength(w) != 0) {
+		WP(w,buildtrain_d).sel_engine = GetEngineArray(w)[0];
+	}
+
+	{
+		int x = 2;
+		int y = 27;
+		EngineID selected_id = WP(w,buildtrain_d).sel_engine;
+		EngineID eid = w->vscroll.pos;
+		EngineID *list = GetEngineArray(w);
+		uint16 list_length = GetEngineArrayLength(w);
+		uint16 max = min(w->vscroll.pos + w->vscroll.cap, list_length);
+
+		for(; eid < max; eid++) {
+			const EngineID engine = list[eid];
+
+			DrawString(x + 62, y + 7, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
+			DrawAircraftEngine(x + 29, y + 10, engine, GetEnginePalette(engine, _local_player));
+			y += 24;
+		}
+
+		if (selected_id != INVALID_ENGINE) {
+			DrawAircraftPurchaseInfo(x, w->widget[BUILD_AIRCRAFT_WIDGET_PANEL].top + 1, selected_id);
+		}
+	}
+}
+
+static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
+{
+	byte click_state = 0;
+
+	switch (e->we.click.widget) {
+		case BUILD_AIRCRAFT_WIDGET_LIST: {
+			uint i = (e->we.click.pt.y - 26) / 24;
 			if (i < w->vscroll.cap) {
-				WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
-				SetWindowDirty(w);
+				i += w->vscroll.pos;
+
+				if (i < GetEngineArrayLength(w)) {
+					WP(w,buildtrain_d).sel_engine = GetEngineArray(w)[i];
+					SetWindowDirty(w);
+				}
 			}
 		} break;
 
-		case 5: { /* build */
+		case BUILD_AIRCRAFT_WIDGET_HELICOPTERS: click_state++;
+		case BUILD_AIRCRAFT_WIDGET_JETS:        click_state++;
+		case BUILD_AIRCRAFT_WIDGET_PLANES:      click_state++;
+
+			if (WP(w,buildtrain_d).show_engine_button == click_state) break; // We clicked the pressed button
+
+			WP(w,buildtrain_d).sel_engine = INVALID_ENGINE;
+			WP(w,buildtrain_d).show_engine_button = click_state;
+			w->vscroll.pos = 0;
+			SetWindowDirty(w);
+			break;
+
+		case BUILD_AIRCRAFT_WIDGET_BUILD: {
 			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
 			if (sel_eng != INVALID_ENGINE)
 				DoCommandP(w->window_number, sel_eng, 0, CcBuildAircraft, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
 		} break;
 
-		case 6: { /* rename */
+		case BUILD_AIRCRAFT_WIDGET_RENAME: {
 			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
 			if (sel_eng != INVALID_ENGINE) {
 				WP(w,buildtrain_d).rename_engine = sel_eng;
 				ShowQueryString(GetCustomEngineName(sel_eng),
-					STR_A039_RENAME_AIRCRAFT_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
+								STR_A039_RENAME_AIRCRAFT_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
 			}
 		} break;
-		}
-		break;
-
-	case WE_ON_EDIT_TEXT: {
-		if (e->we.edittext.str[0] != '\0') {
-			_cmd_text = e->we.edittext.str;
-			DoCommandP(0, WP(w, buildtrain_d).rename_engine, 0, NULL,
-				CMD_RENAME_ENGINE | CMD_MSG(STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE));
-		}
-	} break;
-
-	case WE_RESIZE:
-		w->vscroll.cap += e->we.sizing.diff.y / 24;
-		w->widget[2].data = (w->vscroll.cap << 8) + 1;
-		break;
 	}
 }
 
-static const Widget _new_aircraft_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW },
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   239,     0,    13, STR_A005_NEW_AIRCRAFT,   STR_018C_WINDOW_TITLE_DRAG_THIS },
-{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   227,    14,   109, 0x401,                   STR_A025_AIRCRAFT_SELECTION_LIST },
-{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   228,   239,    14,   109, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
-{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   239,   110,   181, 0x0,                     STR_NULL },
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   182,   193, STR_A006_BUILD_AIRCRAFT, STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT },
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   115,   227,   182,   193, STR_A037_RENAME,         STR_A038_RENAME_AIRCRAFT_TYPE },
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   228,   239,   182,   193, 0x0,                     STR_RESIZE_BUTTON },
-{   WIDGETS_END},
-};
+static void BuildAircraftWindowCreate(Window *w)
+{
+	TileIndex tile = w->window_number;
+
+	WP(w, buildtrain_d).list_a_length = 0;
+	WP(w, buildtrain_d).list_b_length = 0;
+	WP(w, buildtrain_d).list_c_length = 0;
+	WP(w, buildtrain_d).list_a        = NULL;
+	WP(w, buildtrain_d).list_b        = NULL;
+	WP(w, buildtrain_d).list_c        = NULL;
+	WP(w, buildtrain_d).data_invalidated   = false;
+	WP(w, buildtrain_d).sel_engine         = INVALID_ENGINE;
+
+	GenerateBuildList(&WP(w, buildtrain_d).list_a, &WP(w, buildtrain_d).list_a_length,
+					  &WP(w, buildtrain_d).list_b, &WP(w, buildtrain_d).list_b_length,
+					  &WP(w, buildtrain_d).list_c, &WP(w, buildtrain_d).list_c_length);
+
+	/* Disable the aircraft subtype buttons for the types, that can't be build at the current airport */
+	if (tile == 0) {
+		WP(w, buildtrain_d).show_engine_button = 1;
+	} else {
+		byte acc_planes = GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
+
+		WP(w, buildtrain_d).show_engine_button = 0;
+		if (acc_planes == HELICOPTERS_ONLY || acc_planes == ALL) {
+			WP(w, buildtrain_d).show_engine_button = 3;
+		} else {
+			DisableWindowWidget(w, BUILD_AIRCRAFT_WIDGET_HELICOPTERS);
+		}
+
+		if (acc_planes == AIRCRAFT_ONLY || acc_planes == ALL) {
+			/* Set the start clicked button to jets if the list isn't empty. If not, then show propeller planes */
+			WP(w, buildtrain_d).show_engine_button = WP(w, buildtrain_d).list_b_length == 0 ? 1 : 2;
+		} else {
+			DisableWindowWidget(w, BUILD_AIRCRAFT_WIDGET_JETS);
+			DisableWindowWidget(w, BUILD_AIRCRAFT_WIDGET_PLANES);
+		}
+
+		if (WP(w, buildtrain_d).show_engine_button == 0) {
+			/* No plane type are buildable here */
+			NOT_REACHED();
+			WP(w, buildtrain_d).show_engine_button = 1;
+		}
+	}
+}
+
+static void NewAircraftWndProc(Window *w, WindowEvent *e)
+{
+	switch (e->event) {
+		case WE_CREATE:
+			BuildAircraftWindowCreate(w);
+			break;
+
+		case WE_INVALIDATE_DATA:
+			WP(w,buildtrain_d).data_invalidated = true;
+			break;
+
+		case WE_DESTROY:
+			free((void*)WP(w, buildtrain_d).list_a);
+			free((void*)WP(w, buildtrain_d).list_b);
+			free((void*)WP(w, buildtrain_d).list_c);
+			break;
+
+		case WE_PAINT:
+			DrawBuildAircraftWindow(w);
+			break;
+
+		case WE_CLICK:
+			BuildAircraftClickEvent(w, e);
+			break;
+
+		case WE_ON_EDIT_TEXT: {
+			if (e->we.edittext.str[0] != '\0') {
+				_cmd_text = e->we.edittext.str;
+				DoCommandP(0, WP(w, buildtrain_d).rename_engine, 0, NULL,
+						   CMD_RENAME_ENGINE | CMD_MSG(STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE));
+			}
+		} break;
+
+		case WE_RESIZE:
+			w->vscroll.cap += e->we.sizing.diff.y / 24;
+			w->widget[BUILD_AIRCRAFT_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
+			break;
+	}
+}
 
 static const WindowDesc _new_aircraft_desc = {
-	-1, -1, 240, 194,
+	-1, -1, 240, 218,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_aircraft_widgets,
@@ -249,10 +433,9 @@ void ShowBuildAircraftWindow(TileIndex tile)
 
 	DeleteWindowById(WC_BUILD_VEHICLE, tile);
 
-	w = AllocateWindowDesc(&_new_aircraft_desc);
-	w->window_number = tile;
+	w = AllocateWindowDescFront(&_new_aircraft_desc, tile);
 	w->vscroll.cap = 4;
-	w->widget[2].data = (w->vscroll.cap << 8) + 1;
+	w->widget[BUILD_AIRCRAFT_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
 
 	w->resize.step_height = 24;
 
