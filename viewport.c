@@ -1990,12 +1990,11 @@ static byte Check2x1AutoRail(int mode)
 // while dragging
 static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int method)
 {
-	int d;
-	byte b=6;
-	uint w,h;
+	HighLightStyle b;
+	uint w, h;
 
-	int dx = thd->selstart.x - (thd->selend.x&~0xF);
-	int dy = thd->selstart.y - (thd->selend.y&~0xF);
+	int dx = thd->selstart.x - (thd->selend.x & ~0xF);
+	int dy = thd->selstart.y - (thd->selend.y & ~0xF);
 	w = myabs(dx) + 16;
 	h = myabs(dy) + 16;
 
@@ -2030,7 +2029,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 		b = HT_LINE | HT_DIR_Y;
 		x = thd->selstart.x;
 	} else { // complicated direction
-		d = w - h;
+		int d = w - h;
 		thd->selend.x = thd->selend.x & ~0xF;
 		thd->selend.y = thd->selend.y & ~0xF;
 
@@ -2093,18 +2092,22 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 	thd->next_drawstyle = b;
 }
 
-// while dragging
+/**
+ * Selects tiles while dragging
+ * @param x X coordinate of end of selection
+ * @param y Y coordinate of end of selection
+ * @param method modifies the way tiles are selected. Possible
+ * methods are VPM_* in viewport.h */
 void VpSelectTilesWithMethod(int x, int y, int method)
 {
-	int sx;
-	int sy;
+	int sx, sy;
 
 	if (x == -1) {
 		_thd.selend.x = -1;
 		return;
 	}
 
-	// allow drag in any rail direction
+	/* Special handling of drag in any (8-way) direction */
 	if (method == VPM_RAILDIRS || method == VPM_SIGNALDIRS) {
 		_thd.selend.x = x;
 		_thd.selend.y = y;
@@ -2113,8 +2116,8 @@ void VpSelectTilesWithMethod(int x, int y, int method)
 	}
 
 	if (_thd.next_drawstyle == HT_POINT) {
-		x += 8;
-		y += 8;
+		x += TILE_SIZE / 2;
+		y += TILE_SIZE / 2;
 	}
 
 	sx = _thd.selstart.x;
