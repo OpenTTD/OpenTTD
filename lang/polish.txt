@@ -2194,7 +2194,7 @@ STR_7018_TRAIN_INCOME                                           :{GOLD}Przychod 
 STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Przychod z samochodow
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Przychod z samolotow
 STR_701B_SHIP_INCOME                                            :{GOLD}Przychod ze statkow
-STR_701C_LOAN_INTEREST                                          :{GOLD}Obsluga pozyczki
+STR_701C_LOAN_INTEREST                                          :{GOLD}Odsetki od pozyczki
 STR_701D_OTHER                                                  :{GOLD}Inne
 STR_701E                                                        :{BLACK}-{CURRENCY64}
 STR_701F                                                        :{BLACK}+{CURRENCY64}
@@ -3039,7 +3039,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Pokazuje
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Pokazuje wszystkie statki ktore maja ta stacje w swoim rozkladzie
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Wspoldzielone polecenia {COMMA} pojazd{P u ow ow}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaz wszystkie pojazdy z takim samym rozkladem
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaz wszystkie pojazdy wspoldzielace te polecenia
 
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
@@ -3129,6 +3129,8 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknij 
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista tablic - {COMMA} Tablice
+
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Niepowodzenie zadania przebudowy zatrzymalo {STRING} {COMMA}
 
 ############ Lists rail types
 

@@ -2114,6 +2114,7 @@ STR_LIVERY_MONORAIL                                             :Máquina Monorra
 STR_LIVERY_MAGLEV                                               :Máquina Maglev
 STR_LIVERY_HELICOPTER                                           :Helicóptero
 
+
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Vapor)
 STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
@@ -2787,6 +2788,23 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar 
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
 
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depósitos
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depósitos
+
+
+
+### depot strings
+
+
+
+
+
+
+
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplazar Vehículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING}
@@ -2799,8 +2817,12 @@ STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reempraz
 STR_ENGINES                                                     :Máquinas
 STR_WAGONS                                                      :Vagóns
 
+
+
+
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA} Sinais
+
 
 ############ Lists rail types
 

@@ -381,6 +381,7 @@ STR_SORT_BY_VALUE                                               :Väärtus
 STR_SORT_BY_FACILITY                                            :Jaama tüüp
 STR_SORT_BY_WAITING                                             :Ootava kauba väärtus
 STR_SORT_BY_RATING_MAX                                          :Kauba reiting
+STR_ENGINE_SORT_COST                                            :Maksumus
 STR_NO_WAITING_CARGO                                            :{BLACK}Kaupa pole ootamas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vali kõik tööstused
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vali kõik kauba tüübod (Ka kaup, mis ei oota)
@@ -2534,6 +2535,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Osta uus
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Tiri rongi veok siia et müüa
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskenda põhivaade rongidepoo kohale
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Rongivagunite nimekiri - vajuta sõidukile info jaoks
+STR_BLACK_ENGINES                                               :{BLACK}Mootorid
+STR_BLACK_WAGONS                                                :{BLACK}Vagunid
+STR_BLACK_BOTH                                                  :{BLACK}Mõlemad
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Vajuta, et näha ainult vedureid
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Vajuta, et näha ainult vaguneid
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Vajuta, et näha nii vedureid kui vaguneid
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Ehita valitud rongi sõiduk
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Nimeta ümber rongisõiduki tüüp
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Praegune rongi tegevus - vajuta siia et peatada/käivitada rong
@@ -2872,6 +2879,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Näita kõ
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Näita kõiki lennukeid millel on see jaam nende sõiduplaanis
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näita kõiki laevu millel on see jaam nende sõiduplaanis
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Auto{P "" d}
 
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
@@ -2879,17 +2887,46 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näita kõ
 STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Rongijaamad
 STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Jaamad
 STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Sadamad
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Angaarid
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Saada {SKIP}{SKIP}{SKIP}{STRING}
 
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Müü
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Sa müüd hetkel kõik oma autod garaa¸ist
+STR_ARE_YOU_SURE                                                :{BLACK}Kas sa oled kindel?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Kinnita, et sa tahad müüa kõiki ronge jaamast
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Kinnita, et sa tahad müüa kõiki autosi garaa¸ist
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Kinnita, et sa tahad müüa kõiki laevu sadamast
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Kinnita, et sa tahad müüa kõiki lennukeid angaaris
 
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ära müü kõiki ronge jaamast
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Ära müü kõiki autosi garaa¸ist
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Ära müü kõiki laevu sadamast
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Ära müü kõiki lennukeid angaarist
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Müü kõik rongid jaamast
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Müü kõik autod garaa¸ist
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Müü kõik laevad sadamast
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Müü kõik lennukid angaarist
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Võta nimekiri kõikidest rongidest selles jaamas nende käskude järgi
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Võta nimekiri kõikidest autodest selles garaa¸is nende käskude järgi
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Võta nimekiri kõikidest laevadest selles sadamas nende käskude järgi
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Võta nimekiri kõikidest lennukitest suvalistest angaaridest selles lennujaamas nende käskude järgi
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Asenda automaatselt kõik rongid jaamas
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Asenda automaatselt kõik sõidukid garaa¸is
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Asenda automaatselt kõik laevad sadamas
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Asenda automaatselt kõik lennumasinad angaaris
 
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Rong{P "" id}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Auto{P "" d}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Laev{P "" ad}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lennumasin
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Asenda sõidukeid
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Asenda {STRING}
@@ -2918,6 +2955,7 @@ STR_WAGONS                                                      :Vaguneid
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
+
 
 ############ Lists rail types
 
@@ -2949,11 +2987,17 @@ STR_GENERATE                                                    :{WHITE}Genereer
 STR_RANDOM                                                      :{BLACK}Randomiseeri
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Maailma genereerimine
 STR_RANDOM_SEED                                                 :{BLACK}Suvaline Seeme:
+STR_TREE_PLACER                                                 :{BLACK}Puu algoritm:
+STR_TERRAIN_TYPE                                                :{BLACK}Maapinna tüüp:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Merevee tase:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Lumepiiri kõrgus:
 STR_DATE                                                        :{BLACK}Kuupäev:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Linnade arv:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Tehaste arv
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Liiguta lumepiiri kõrgust üks ülespoole
+STR_SNOW_LINE_DOWN                                              :{BLACK}Liiguta lumepiiri kõrgust üks allapoole
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Muuda lumepiiri kõrgust
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Muuda algusaastat
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Maailma genereerimine...
@@ -2965,11 +3009,13 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Maailma genereerimine
 STR_TREE_GENERATION                                             :{BLACK}Puude genereerimine
 STR_CLEARING_TILES                                              :{BLACK}Mägise ja kivise maaala tegemine
+STR_SETTINGUP_GAME                                              :{BLACK}Mängu sättimine
 STR_PREPARING_GAME                                              :{BLACK}Mängu valmistamine
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}See tegevus muutis raskusastme erilise peale
 STR_SE_FLAT_WORLD                                               :{WHITE}Tasane maa
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereeri tasast maad
 STR_SE_RANDOM_LAND                                              :{WHITE}Suvaline maa
+STR_SE_NEW_WORLD                                                :{BLACK}Loo uus stsenaarium
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Liiguta lameda maa kõrgus ühe võrra alla
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Liiguta lameda maa kõrgus ühe võrra üles
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Muuda maa kõrgust lamedal maal

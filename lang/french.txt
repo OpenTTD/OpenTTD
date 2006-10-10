@@ -383,11 +383,12 @@ STR_SORT_BY_FACILITY                                            :Type de station
 STR_SORT_BY_WAITING                                             :Marchandise en attente
 STR_SORT_BY_RATING_MAX                                          :Notation
 STR_ENGINE_SORT_ENGINE_ID                                       :ID Engin (tri classique)
-STR_ENGINE_SORT_COST                                            :Coûts
-STR_ENGINE_SORT_POWER                                           :Force
+STR_ENGINE_SORT_COST                                            :Prix
+STR_ENGINE_SORT_POWER                                           :Puissance
 STR_ENGINE_SORT_INTRO_DATE                                      :Date d'introduction
-STR_ENGINE_SORT_RUNNING_COST                                    :Coûts d'utilisation
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Force/Coûts d'utilisation
+STR_ENGINE_SORT_RUNNING_COST                                    :Coût d'entretien
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Puissance/Coût d'entretien
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacité
 STR_NO_WAITING_CARGO                                            :{BLACK}Pas de marchandises en attente
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tous les types de station
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tous les types de marchandise (y compris pas en attente)
@@ -2685,6 +2686,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Réaménag
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Réaménager le véhicule routier
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Réaménager le véhicule routier pour transporter la cargaison sélectionnée
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossible de réaménager le véhicule routier...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Choisir le type de cargaison à transporter
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construction Portuaire
@@ -2704,7 +2706,7 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Impossib
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Navire présent
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Détails)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'Opération: {LTBLUE}{CURRENCY}/an
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
 STR_9813_MAX_SPEED                                              :{BLACK}Vitesse max.: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit cette année: {LTBLUE}{CURRENCY}  (l'an dernier: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilité: {LTBLUE}{COMMA}%  {BLACK}Pannes depuis le dernier entretien: {LTBLUE}{COMMA}
@@ -2735,7 +2737,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Envoyer 
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Afficher détails du navire
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nouveau navire maintenant disponible!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coût: {CURRENCY} Vitesse max.: {VELOCITY}{}Capacité: {STRING}{}Coût d'Opération: {CURRENCY}/an
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Prix: {CURRENCY} Vitesse max.: {VELOCITY}{}Capacité: {STRING}{}Coût d'entretien: {CURRENCY}/an
 STR_982F_NAME_SHIP                                              :{BLACK}Nommer navire
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nommer navire
@@ -2774,7 +2776,7 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Ordres)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Détails)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'opération: {LTBLUE}{CURRENCY}/an
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Âge: {LTBLUE}{STRING}{BLACK}   Coût d'entretien: {LTBLUE}{CURRENCY}/an
 STR_A00E_MAX_SPEED                                              :{BLACK}Vitesse max.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profits cette année: {LTBLUE}{CURRENCY} (l'an dernier: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilité: {LTBLUE}{COMMA}%   {BLACK}Cafouillages depuis le dernier service: {LTBLUE}{COMMA}
@@ -2797,6 +2799,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construi
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aéronef - cliquer sur l'aéronef pour informations
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construire un nouvel aéronef (nécessite un aéroport avec hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aéronef - cliquer sur l'aéronef pour informations
+STR_BLACK_PLANES                                                :{BLACK}Hélices
+STR_BLACK_JETS                                                  :{BLACK}Réacteurs
+STR_BLACK_HELICOPTERS                                           :{BLACK}Hélicoptères
+STR_BUILD_PLANES_TIP                                            :{BLACK}Cliquer pour voir les avions à hélices
+STR_BUILD_JETS_TIP                                              :{BLACK}Cliquer pour voir les avions à réaction
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Cliquer pour voir les hélicoptères
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construire nouvel aéronef
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Glisser l'aéronef jusqu'ici ici pour le vendre
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrer la vue principale sur l'emplacement du hangar
@@ -2809,7 +2817,7 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Envoyer 
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Afficher détails de l'aéronef
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nouvel aéronef maintenant disponible!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coût: {CURRENCY}    Vitesse max.: {VELOCITY}{}Capacité: {COMMA} passagers, {COMMA} sacs de courrier{}Coût d'opération: {CURRENCY}/an
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Prix: {CURRENCY}    Vitesse max.: {VELOCITY}{}Capacité: {COMMA} passagers, {COMMA} sacs de courrier{}Coût d'entretien: {CURRENCY}/an
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Nommer l'aéronef
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Impossible de nommer l'aéronef...
@@ -3001,6 +3009,8 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Cliquer 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste des panneaux - {COMMA} panneau{P "" x}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}L'échec du réaménagement a stoppé {STRING} {COMMA}
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Véhicules sur rail
@@ -3015,7 +3025,7 @@ STR_TINY_BLACK                                                  :{BLACK}{TINYFON
 STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Poids: {GOLD}{WEIGHT_S}
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Vitesse: {GOLD}{VELOCITY}{BLACK}   Puissance: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Vitesse: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coûts d'entretien: {GOLD}{CURRENCY}/an
+STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Coût d'entretien: {GOLD}{CURRENCY}/an
 STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacité: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Concu en: {GOLD}{NUM}{BLACK}Durée de vie: {GOLD}{COMMA} ans
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Fiabilité Max.: {GOLD}{COMMA}%

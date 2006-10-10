@@ -381,6 +381,12 @@ STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipus de estació
 STR_SORT_BY_WAITING                                             :Valor de espera de càrrega
 STR_SORT_BY_RATING_MAX                                          :Rati de càrrega
+STR_ENGINE_SORT_ENGINE_ID                                       :IDMotor (ordre clàssic)
+STR_ENGINE_SORT_COST                                            :Cost
+STR_ENGINE_SORT_POWER                                           :Potència
+STR_ENGINE_SORT_INTRO_DATE                                      :Data de llançament
+STR_ENGINE_SORT_RUNNING_COST                                    :Cost d'utilització
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potència/Cost d'utilització
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha carrega de aquest tipus esperant
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal.lacions
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (inloent carga sense espera)
@@ -2557,6 +2563,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construi
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar la vista de la pantalla principal en la situació de la cotxera
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Llista de selecció d'elements de tren - clica a l'element per informació
+STR_BLACK_ENGINES                                               :{BLACK}Motors
+STR_BLACK_WAGONS                                                :{BLACK}Vagons
+STR_BLACK_BOTH                                                  :{BLACK}Ambdós
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Clica per veure només els motors
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Clica per veure només els vagons
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Clica per veure els motors i els vagons
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir l'element de tren seleccionat
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Reanomenar el tipus d'element de tren
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Acció de tren actual - clica aquí per parar/arrencar el tren
@@ -2672,6 +2684,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reformar
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reformar vehicle de carretera
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reformar vehicle de carretera per a dur el tipus de carrega senyalat
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}No es pot reformar el vehicle de carretera...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona el tipus de càrrega a transportar pel vehicle
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construcció de Port
@@ -2987,6 +3000,8 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clica pe
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Llista de senyals - {COMMA} Senyals
+
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Ordre de remodelar fallida ha parat {STRING} {COMMA}
 
 ############ Lists rail types
 
