@@ -286,7 +286,7 @@ void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	}
 }
 
-static inline void ExtendEngineListSize(const EngineID **engine_list, uint16 *engine_list_length, uint16 step_size, uint16 max)
+static inline void ExtendEngineListSize(EngineID **engine_list, uint16 *engine_list_length, uint16 step_size, uint16 max)
 {
 	*engine_list_length = min(*engine_list_length + step_size, max);
 	*engine_list = realloc((void*)*engine_list, (*engine_list_length) * sizeof((*engine_list)[0]));
@@ -310,17 +310,17 @@ static void GenerateBuildAircraftList(EngineID **planes, uint16 *num_planes, Eng
 
 			switch (avi->subtype) {
 				case AIR_CTOL: // Propeller planes
-					if (*num_planes == plane_length) ExtendEngineListSize((const EngineID**)planes, &plane_length, 5, NUM_AIRCRAFT_ENGINES);
+					if (*num_planes == plane_length) ExtendEngineListSize(planes, &plane_length, 5, NUM_AIRCRAFT_ENGINES);
 					(*planes)[(*num_planes)++] = eid;
 					break;
 
 				case (AIR_CTOL | AIR_FAST): // Jet planes
-					if (*num_jets == jet_length) ExtendEngineListSize((const EngineID**)jets, &jet_length, 5, NUM_AIRCRAFT_ENGINES);
+					if (*num_jets == jet_length) ExtendEngineListSize(jets, &jet_length, 5, NUM_AIRCRAFT_ENGINES);
 					(*jets)[(*num_jets)++] = eid;
 					break;
 
 				case 0: // Helicopters
-					if (*num_helicopters == helicopter_length) ExtendEngineListSize((const EngineID**)helicopters, &plane_length, 5, NUM_AIRCRAFT_ENGINES);
+					if (*num_helicopters == helicopter_length) ExtendEngineListSize(helicopters, &helicopter_length, 5, NUM_AIRCRAFT_ENGINES);
 					(*helicopters)[(*num_helicopters)++] = eid;
 					break;
 			}
