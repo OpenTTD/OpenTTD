@@ -48,6 +48,7 @@ enum Sprites {
 	SPR_ASCII_SPACE_BIG   = 450,
 
 	/* Extra graphic spritenumbers */
+	OPENTTD_SPRITES_COUNT = 109, // number of gfx-sprites in openttd.grf
 	SPR_CANALS_BASE   = 5382,
 	SPR_SLOPES_BASE   = SPR_CANALS_BASE + 70,
 	SPR_AUTORAIL_BASE = SPR_SLOPES_BASE + 78,
@@ -94,7 +95,7 @@ enum Sprites {
 	SPR_LOCK = SPR_OPENTTD_BASE + 19,       // lock icon (for password protected servers)
 	SPR_FLAGS_BASE = SPR_OPENTTD_BASE + 83, // start of the flags block (in same order as enum NetworkLanguage)
 
-	SPR_AIRPORTX_BASE = SPR_OPENTTD_BASE + 109, // The sprites used for other airport angles
+	SPR_AIRPORTX_BASE = SPR_OPENTTD_BASE + OPENTTD_SPRITES_COUNT, // The sprites used for other airport angles
 	SPR_NEWAIRPORT_TARMAC = SPR_AIRPORTX_BASE,
 	SPR_NSRUNWAY1 = SPR_AIRPORTX_BASE + 1,
 	SPR_NSRUNWAY2 = SPR_AIRPORTX_BASE + 2,
