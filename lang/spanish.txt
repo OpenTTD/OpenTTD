@@ -388,6 +388,7 @@ STR_ENGINE_SORT_POWER                                           :Potencia
 STR_ENGINE_SORT_INTRO_DATE                                      :Fecha Introducción
 STR_ENGINE_SORT_RUNNING_COST                                    :Coste Operación
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potencia/Coste Operación
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidad de carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Ningún tipo de carga está esperando
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas las facilidades
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar todos los tipos de carga (incluidas las que no están en espera)
@@ -2477,8 +2478,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN}, 
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Los ciudadanos celebran . . .{}¡Primer tren llega a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalles)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tren en camino
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}{STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}{STRING}
 STR_8806_GO_TO                                                  :Ir a {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Ir a {STATION} (Transferir y cargar)
 STR_8808_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
@@ -2798,6 +2799,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construi
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}La aeronave - click en la aeronave para información
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir nueva aeronave (requiere aeropuerto con hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - click en la aeronave para información
+STR_BLACK_PLANES                                                :{BLACK}Aviones a Hélices
+STR_BLACK_JETS                                                  :{BLACK}Jets
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helicopteros
+STR_BUILD_PLANES_TIP                                            :{BLACK}Pulsa para ver los aviones a hélices
+STR_BUILD_JETS_TIP                                              :{BLACK}Pulsa para ver los Jets
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Pulsa para ver helicopteros
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrastra aeronave aquí para venderla
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar vista en posición del hangar
@@ -3002,6 +3009,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Pulsa pa
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de señales - {COMMA} Señales
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}La orden de recarga ha fallado {STRING} {COMMA}
 
 ############ Lists rail types
 

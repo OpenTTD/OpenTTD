@@ -335,6 +335,7 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galóns{
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litro{P "" s}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
@@ -2793,11 +2794,14 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 
 STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depósitos
 STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depósitos
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depósitos
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a {SKIP}{SKIP}{SKIP}{STRING}
 
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Vender
 
 
 
@@ -2805,6 +2809,8 @@ STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depósitos
 
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Barco{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Reemplazar Vehículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING}
@@ -2849,13 +2855,18 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns t
 
 ########### String for New Landscape Generator
 
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Xeración do mundo
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreo:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de industrias:
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambia-lo ano de inicio
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Xeración do mundo
+STR_SETTINGUP_GAME                                              :{BLACK}Configurando partida
 STR_SE_NEW_WORLD                                                :{BLACK}Crear novo escenario
 STR_SE_CAPTION                                                  :{WHITE}Tipo de escenario
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Centra-lo mapa pequeno na posición actual
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeno

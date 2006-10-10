@@ -1149,7 +1149,7 @@ STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Jugar c
 STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Eruga màgica (treu indústries, inamovibles): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Els tunels es poden creuar: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Construir mentre el joc està en pausa: {ORANGE}{STRING}
-STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avions a reacció no tenen (frecuents) accidents en els aeroports petits: {ORANGE} {STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avions a reacció no tindran (freqüents) accidents en els aeroports petits: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Canviar clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canviar data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificació de valors de producció: {ORANGE}{STRING}
@@ -2798,10 +2798,10 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construi
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l'aeronau per informació
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir noves aeronaus (necessites un aeroport amb hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l' aeronau per informació
-STR_BLACK_PLANES                                                :{BLACK}Avions amb hèlix
+STR_BLACK_PLANES                                                :{BLACK}Avions d'hèlix
 STR_BLACK_JETS                                                  :{BLACK}Avions a reacció
 STR_BLACK_HELICOPTERS                                           :{BLACK}Helicòpters
-STR_BUILD_PLANES_TIP                                            :{BLACK}Clica per veure avions amb hèlix
+STR_BUILD_PLANES_TIP                                            :{BLACK}Clica per veure avions d'hèlix
 STR_BUILD_JETS_TIP                                              :{BLACK}Clica per veure avions a reacció
 STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Clica per veure els helicòpters
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir noves aeronaus

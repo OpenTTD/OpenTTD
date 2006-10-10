@@ -1872,8 +1872,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} produktion er faldet med 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Insekter foresager kaos ved {INDUSTRY}!{}Produktionen er faldet med 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...kan kun placeres nær kanten af kortet
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} produktionen på {INDUSTRY} vokser med {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} produktionen på {INDUSTRY} sænkes med {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING}produktionen på {INDUSTRY} vokser med {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING}produktionen på {INDUSTRY} sænkes med {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Der er et tog i tunnelen
@@ -1993,7 +1993,7 @@ STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Køretøj
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Byggehastighed for modstandere: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Modstandernes inteligens: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Nedbrud af køretøjer: {ORANGE}{STRING}
-STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Specialaftale bonus: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Statsstøtte-bonus: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Konstruktionspris: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Terræntype: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Antal søer/floder: {ORANGE}{STRING}
@@ -2183,6 +2183,8 @@ STR_LIVERY_DIESEL                                               :Diesellokomotiv
 STR_LIVERY_ELECTRIC                                             :Elektrisk lokomotiv
 STR_LIVERY_MONORAIL                                             :Monorail-lokomotiv
 STR_LIVERY_MAGLEV                                               :Magnetskinnelokomotiv
+STR_LIVERY_DMU                                                  :Dieseltogsæt
+STR_LIVERY_EMU                                                  :Eltogsæt
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Passagervogn (damp)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Passagervogn (diesel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Passagervogn (elektrisk)
@@ -2471,7 +2473,7 @@ STR_8106_MONORAIL_LOCOMOTIVE                                    :monoraillokomot
 STR_8107_MAGLEV_LOCOMOTIVE                                      :magnetskinnelokomotiv
 
 ##id 0x8800
-STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} depot
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Remise
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerene fester . . .{}Første tog ankommer til {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaljer)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Tog i vejen
@@ -2489,26 +2491,26 @@ STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Gå uden stop ti
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Gå uden stop til {STATION} (Overfør og efterlad tom)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Gå uden stop til {STATION} (Fuld Last)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Gå uden stop til {STATION} (Overfør og vent på fuld last)
-STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} Togdepot
-STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} Togdepot
-STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} depot
-STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden stop i {TOWN} Togdepot
+STR_GO_TO_TRAIN_DEPOT                                           :Gå til {TOWN} Remise
+STR_SERVICE_AT_TRAIN_DEPOT                                      :Service i {TOWN} Remise
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Gå uden stop til {TOWN} Remise
+STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Service uden stop i {TOWN} Remise
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} Togdepot
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kører til {TOWN} Togdepot, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Eftersyn på {TOWN} Depot
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Eftersyn i {TOWN} Depot, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Kører til {TOWN} Remise
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Kører til {TOWN} Remise, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Eftersyn på {TOWN} Remise
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Eftersyn i {TOWN} Remise, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Ugyldig Order)
 
 STR_UNKNOWN_DESTINATION                                         :ukendt destination
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} fra {STATION}
-STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA} Venter i depot
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA} venter i remise
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye køretøjer
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
-STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan kun ændres når de er stoppet i et depot
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan kun ændres når de er stoppet i en remise
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tog
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye Jernbanekøretøjer
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nyt Elektrisk lokomotiv
@@ -2517,10 +2519,10 @@ STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye Magn
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Byg Køretøj
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klon Køretøj
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Dette vil bygge en kopi af køretøjet. Control-click vil dele ordre
-STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Dette vil bygge en kopi af køretøjet. Klik på denne knap så på et køretøj indeni eller udenfor depotet. Control-click vil dele ordre
+STR_CLONE_ROAD_VEHICLE_DEPOT_INFO                               :{BLACK}Dette vil bygge en kopi af køretøjet. Klik på denne knap, så på et køretøj indeni eller udenfor værkstedet. Control-click vil dele ordre
 STR_CLONE_TRAIN                                                 :{BLACK}Klon Tog
 STR_CLONE_TRAIN_INFO                                            :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. Control-click vil dele ordre
-STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. Klik på denne knap så på et tog indeni eller udenfor depotet. Control-click vil dele ordre
+STR_CLONE_TRAIN_DEPOT_INFO                                      :{BLACK}Dette vil bygge en kopi af toget inklusiv alle vogne. Klik på denne knap, så på et tog indeni eller udenfor remisen. Control-click vil dele ordre
 STR_8820_RENAME                                                 :{BLACK}Omdøb
 STR_8823_SKIP                                                   :{BLACK}Spring over
 STR_8824_DELETE                                                 :{BLACK}Slet
@@ -2541,7 +2543,7 @@ STR_882D_VALUE                                                  :{LTBLUE}{STRING
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Læsser / Aflæsser
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Toget skal være stoppet inde i en remise
-STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kan ikke sende toget til depot...
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Kan ikke sende toget til remise...
 STR_8831_NO_MORE_SPACE_FOR_ORDERS                               :{WHITE}Ikke mere plads til flere ordre
 STR_8832_TOO_MANY_ORDERS                                        :{WHITE}For mange ordre
 STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Kan ikke indsætte ny ordre...
@@ -2556,11 +2558,11 @@ STR_883B_CAN_T_STOP_START_TRAIN                                 :{WHITE}Kan ikke
 STR_883C_SERVICING_INTERVAL_DAYS                                :{BLACK}Serviceinterval: {LTBLUE}{COMMA}dage{BLACK}   Sidste Service: {LTBLUE}{DATE_LONG}
 STR_SERVICING_INTERVAL_PERCENT                                  :{BLACK}Serviceinterval: {LTBLUE}{COMMA}%{BLACK}   Sidste Service: {LTBLUE}{DATE_LONG}
 STR_883D_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Tog - klik på et tog for information
-STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Byg nye tog (kræver et depot)
+STR_883E_BUILD_NEW_TRAINS_REQUIRES                              :{BLACK}Byg nye tog (kræver en remise)
 STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Tog - klik på et tog for information., træk vogn/lokomotiv for at fjerne/tilføje det til toget
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Byg nyt tog/togvogn
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Træk tog/togvogn her hend for at sælge
-STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer skærmen over placeringen af depot
+STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer skærmen over placeringen af remisen
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Tog valgsliste - klik på et køretøj for mere information
 STR_BLACK_ENGINES                                               :{BLACK}Lokomotiver
 STR_BLACK_WAGONS                                                :{BLACK}Vogne
@@ -2573,7 +2575,7 @@ STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Omdøb to
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Nuværende opførsel - klik her for at starte/stoppe toget
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Vis togets ordre
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer skærmen over togets placering
-STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Send toget til depot
+STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Send toget til remise. CTRL+klik for kun eftersyn
 STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Tving toget til at fortsætte uden at vente på at signalet skifter til grønt
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Vend retningen af toget
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Vis detaljer om toget
@@ -2623,7 +2625,7 @@ STR_TRAIN_START_NO_CATENARY                                     :Toget kan ikke 
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Lastbil i vejen
 STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Lastbiler
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Lastbilsdepot
+STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Værksted
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nye køretøjer
 STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye lastbiler
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Byg køretøj
@@ -2635,37 +2637,37 @@ STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dette år
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
-STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...skal være stoppet inde i et depot først
+STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...skal være stoppet inde i et værksted først
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke sælge lastbil...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke stoppe/starte lastbil...
-STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Lastbil {COMMA} venter i depot
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Kører til {TOWN} Lastbilsdepot
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Kører til {TOWN} Lastbilsdepot, {VELOCITY}
+STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Køretøj {COMMA} venter i værksted
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Kører til {TOWN} Værksted
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Kører til {TOWN} Værksted, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Eftersyn på {TOWN} Værksted
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Eftersyn på {TOWN} Værksted, {VELOCITY}
-STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan ikke sende køretøj i depot...
-STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt depot
-STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Lastlastbiler - klik på et køretøj for information
-STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Byg nye lastbiler (kræver et lastbilsdepot)
-STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nuværende opførsel - klik her for at stoppe/starte lastbilen
+STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Kan ikke sende køretøj til værksted...
+STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt værksted
+STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Køretøjer - klik på et køretøj for information
+STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Byg nye køretøjer (kræver et værktøj)
+STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Nuværende opførsel - klik her for at stoppe/starte køretøjet
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Vis køretøjets ordrer
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrer skærmen over placeringen af køretøjet
-STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Send køretøjet i depot
+STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Send køretøjet til værksted
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Tving køretøjet til at vende
-STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Vis lastbilens detaljer
+STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Vis køretøjets detaljer
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Køretøjer - klik på et køretøj for mere information
-STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Byg ny lastbil
-STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Træk lastbilen herhend for at sælge
-STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrer skærmen over placeringen af lastbilsdepotet
-STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Liste over lastbilstyper - klik på køretøj for information
-STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Byg den markerede lastbil
-STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Ny lastbil er tilgængelig!
+STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Byg nyt køretøj
+STR_9024_DRAG_ROAD_VEHICLE_TO_HERE                              :{BLACK}Træk køretøjet herhen for at sælge
+STR_9025_CENTER_MAIN_VIEW_ON_ROAD                               :{BLACK}Centrer skærmen over placeringen af værkstedet
+STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Liste over køretøjstyper - klik på køretøj for information
+STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Byg det markerede køretøj
+STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nyt køretøj er tilgængeligt!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {STRING}
 
-STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Giv lastbilen et navn
-STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan ikke give lastbilen et navn...
-STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Giv lastbilen et navn
+STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Giv køretøjet et navn
+STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan ikke give køretøjet et navn...
+STR_902E_NAME_ROAD_VEHICLE                                      :{BLACK}Giv køretøjet et navn
 STR_902F_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første bus ankommer til {STATION}!
 STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggerne fester . . .{}Første lastbil ankommer til {STATION}!
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Lastbil forulykket!{}Chaufføren død i flammerne efter at være kollideret med et tog!
@@ -2673,11 +2675,11 @@ STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Kan ikke få køretøjet til at vende...
 STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Kan ikke vende et køretøg, der består af flere enheder
 STR_9034_RENAME                                                 :{BLACK}Omdøb
-STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Omdøb lastbilstypen
-STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Omdøb lastbilstypen
-STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke omdøbe lastbilstypen...
-STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gå til {TOWN} Lastbilsdepot
-STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN} Lastbilsdepot
+STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Omdøb køretøjstypen
+STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Omdøb køretøjstypen
+STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Kan ikke omdøbe køretøjstypen...
+STR_9038_GO_TO_ROADVEH_DEPOT                                    :Gå til {TOWN} Værksted
+STR_SERVICE_AT_ROADVEH_DEPOT                                    :Service i {TOWN} Værksted
 
 STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Ombyg vejkøretøj til at laste en anden type last
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Ombyg lastbil
@@ -2689,15 +2691,15 @@ STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg las
 STR_9800_DOCK_CONSTRUCTION                                      :Havnekonstruktion
 STR_9801_DOCK_CONSTRUCTION                                      :{WHITE}Havnekonstruktion
 STR_9802_CAN_T_BUILD_DOCK_HERE                                  :{WHITE}Kan ikke bygge en havn her...
-STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Skibsdepot
+STR_9803_SHIP_DEPOT                                             :{WHITE}{TOWN} Dok
 STR_9804_NEW_SHIPS                                              :{BLACK}Nye skibe
 STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Skibe
 STR_9808_NEW_SHIPS                                              :{WHITE}Nye skibe
 STR_9809_BUILD_SHIP                                             :{BLACK}Byg skib
 STR_CLONE_SHIP                                                  :{BLACK}Klon Skib
 STR_CLONE_SHIP_INFO                                             :{BLACK}Dette vil bygge en kopi af skibet. Control-click vil dele ordre
-STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Dette vil bygge en kopi af skibet. Klik på denne knap så på et skib indeni eller udenfor depotet. Control-click vil dele ordre
-STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Skibet skal være stoppet i et depot
+STR_CLONE_SHIP_DEPOT_INFO                                       :{BLACK}Dette vil bygge en kopi af skibet. Klik på denne knap så, på et skib indeni eller udenfor dokken. Control-click vil dele ordre
+STR_980B_SHIP_MUST_BE_STOPPED_IN                                :{WHITE}Skibet skal være stoppet i dok
 STR_980C_CAN_T_SELL_SHIP                                        :{WHITE}Kan ikke sælge skibet...
 STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Kan ikke bygge skibet...
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Der er et skib i vejen
@@ -2710,27 +2712,27 @@ STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålideli
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke stoppe/starte skibet...
-STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skibet til depot...
-STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokalt depot
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Sejler til {TOWN} Skibsdepot
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Sejler til {TOWN} Skibsdepot, {VELOCITY}
+STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skibet til dok...
+STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokal dok
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Sejler til {TOWN} Dok
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Sejler til {TOWN} Dok, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Eftersyn i {TOWN} Dok
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Eftersyn i {TOWN} Dok, {VELOCITY}
-STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skib {COMMA} venter i depot
+STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Skib {COMMA} venter i dok
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Byg havn
-STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Byg skibsdepot (til bygning og servicering af skibe)
+STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Byg skibsdok (til bygning og servicering af skibe)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skibe - klik på et skib for information
 STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Byg nyt skib
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Træk det her for at sælge det
-STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer skærmen over placeringen af skibsdepotet
+STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer skærmen over placeringen af skibsdokken
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Skibe - klik på et skib for information
-STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Byg nye skibe (kræver et skibsdepot)
+STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Byg nye skibe (kræver en dok)
 STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Skibstypeliste - klik på skibstype for information
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Byg det markerede skib
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Nuværende opførsel - klik her for at starte/stoppe skibet
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Vis skibets ordrer
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrer skærmen over skibets placering
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send skibet til depot
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send skibet til dok. CTRL+klik for kun eftersyn
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Vis detaljer omkring skibet
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nyt skib er tilgængeligt!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2755,7 +2757,7 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den 
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(ombygning mulig)
-STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} Skip Depot
+STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} Dok
 SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} Skib Depot
 
 ##id 0xA000
@@ -2765,7 +2767,7 @@ STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nyt fly
 STR_CLONE_AIRCRAFT                                              :{BLACK}Klon Fly
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dette vil bygge en kopi af et fly. Control-click vil dele ordre
-STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vil bygge en kopi af et fly. Klik på denne knap så på et fly indeni eller udenfor depotet. Control-click vil dele ordre
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vil bygge en kopi af et fly. Klik på denne knap, så på et fly indeni eller udenfor hangaren. Control-click vil dele ordre
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nyt fly
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Byg et fly
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Kan ikke bygge fly...
@@ -2835,7 +2837,7 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Ombyg fl
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den type last der skal flyves med:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Ombygningspris: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Kan ikke ombygge fly...
-STR_GO_TO_AIRPORT_HANGAR                                        :Flyv til {STATION} hangar
+STR_GO_TO_AIRPORT_HANGAR                                        :Flyv til {STATION} Hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Service i {STATION} Hangar
 
 ##id 0xB000
@@ -2927,9 +2929,9 @@ STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarer
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Send til {SKIP}{SKIP}{SKIP}{STRING}
 
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Send alle toge i listen til depot. CTRL+klik for kun eftersyn
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Send alle køretøjer i listen til depot. CTRL+klik for kun eftersyn
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Send alle skibe i listen til depot. CTRL+klik for kun eftersyn
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Send alle toge i listen i remise. CTRL+klik for kun eftersyn
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Send alle køretøjer i listen til værksted. CTRL+klik for kun eftersyn
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Send alle skibe i listen til dok. CTRL+klik for kun eftersyn
 STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Send alle fly i listen til hangar. CTRL+klik for kun eftersyn
 
 ### depot strings
@@ -3093,12 +3095,12 @@ STR_METRO_AIRPORT                                               :{BLACK}Metropol
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}International lufthavn
 STR_COMMUTER_AIRPORT                                            :{BLACK}Pendler
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}International
-STR_HELIPORT                                                    :{BLACK}Helijopter landingsplads
-STR_HELIDEPOT                                                   :{BLACK}Helikopter værksted
+STR_HELIPORT                                                    :{BLACK}Helikopterlandingsplads
+STR_HELIDEPOT                                                   :{BLACK}Helikopterværksted
 STR_HELISTATION                                                 :{BLACK}Helikopterplads
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Små lufthavne
 STR_LARGE_AIRPORTS                                              :{BLACK}Store lufthavne
 STR_HUB_AIRPORTS                                                :{BLACK}Central lufthavn
-STR_HELIPORTS                                                   :{BLACK}Helikopter lufthavn
+STR_HELIPORTS                                                   :{BLACK}Helikopterlufthavn
 ########

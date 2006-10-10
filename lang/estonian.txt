@@ -381,7 +381,13 @@ STR_SORT_BY_VALUE                                               :Väärtus
 STR_SORT_BY_FACILITY                                            :Jaama tüüp
 STR_SORT_BY_WAITING                                             :Ootava kauba väärtus
 STR_SORT_BY_RATING_MAX                                          :Kauba reiting
+STR_ENGINE_SORT_ENGINE_ID                                       :MootoriID (klassikaline)
 STR_ENGINE_SORT_COST                                            :Maksumus
+STR_ENGINE_SORT_POWER                                           :Võimsus
+STR_ENGINE_SORT_INTRO_DATE                                      :Teatamis Kuupäev
+STR_ENGINE_SORT_RUNNING_COST                                    :Teenindusmaks
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Jõud/Teenindusmaks
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kaubaruumi suurus Capacity
 STR_NO_WAITING_CARGO                                            :{BLACK}Kaupa pole ootamas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vali kõik tööstused
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vali kõik kauba tüübod (Ka kaup, mis ei oota)
@@ -2172,13 +2178,22 @@ STR_LIVERY_MAGLEV                                               :Maglev'i Mootor
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Reisijate Vagun (Aur)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Reisijate Vagun (Diisel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Reisijate Vagun(Elektriline)
+STR_LIVERY_FREIGHT_WAGON                                        :Kaubavagun
 STR_LIVERY_BUS                                                  :Buss
 STR_LIVERY_TRUCK                                                :Veoauto
 STR_LIVERY_PASSENGER_SHIP                                       :Reisijate Praam
+STR_LIVERY_FREIGHT_SHIP                                         :Kaubalaev
 STR_LIVERY_HELICOPTER                                           :Helikopter
 STR_LIVERY_SMALL_PLANE                                          :Väike Lennuk
 STR_LIVERY_LARGE_PLANE                                          :Suur Lennuk
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Näita üldist värviskeemi
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Näita maanteesõidukite värviskeeme
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Näita laeva värviskeeme
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Näita lennuki värviskeemi
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Vali põhivärv valitud skeemile
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Vali teine värv valitud skeemile
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Vali värviskeem  mida muuta, või mitu tükki vajutades CTRL+Kõps. Vajuta kastil et valida värviskeemi kaustamise vahel.
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Auruvedur)
@@ -2767,6 +2782,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Ehita le
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lennuk - vajuta lennukile info jaoks
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Ehita uus lennuk (vajab lennujaama angariga)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lennuk - vajuta lennukil info jaoks
+STR_BLACK_PLANES                                                :{BLACK}Propellerid
+STR_BLACK_JETS                                                  :{BLACK}Reaktiivmootoriga
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterid
+STR_BUILD_PLANES_TIP                                            :{BLACK}Vajuta siia et näha propelleritega lennukeid
+STR_BUILD_JETS_TIP                                              :{BLACK}Vajuta siia et näha reaktiivmootoritega lennukeid
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Vajuta et vaadata helikoptereid
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Ehita uus lennuk
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Tiri lennuk siia et seda müüa
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Vii vaade angaari asukohale
@@ -2987,7 +3008,9 @@ STR_GENERATE                                                    :{WHITE}Genereer
 STR_RANDOM                                                      :{BLACK}Randomiseeri
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Maailma genereerimine
 STR_RANDOM_SEED                                                 :{BLACK}Suvaline Seeme:
+STR_LAND_GENERATOR                                              :{BLACK}Maa generaator:
 STR_TREE_PLACER                                                 :{BLACK}Puu algoritm:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Kõrgustekaardi pööre:
 STR_TERRAIN_TYPE                                                :{BLACK}Maapinna tüüp:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Merevee tase:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Lumepiiri kõrgus:
@@ -2999,7 +3022,11 @@ STR_SNOW_LINE_UP                                                :{BLACK}Liiguta 
 STR_SNOW_LINE_DOWN                                              :{BLACK}Liiguta lumepiiri kõrgust üks allapoole
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Muuda lumepiiri kõrgust
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Muuda algusaastat
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skaala hoiatus
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Kaardi suuruse muutmine pole soovitatav. Jätka?
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Kõrgusekaardi nimi:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Suurus: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Maailma genereerimine...
 STR_GENERATION_ABORT                                            :{BLACK}Loobu
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Loobu Maailma Genereerimisest
