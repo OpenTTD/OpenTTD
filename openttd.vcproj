@@ -693,10 +693,10 @@
 				RelativePath=".\bridge_gui.c">
 			</File>
 			<File
-				RelativePath=".\depot_gui.c">
+				RelativePath=".\build_vehicle_gui.c">
 			</File>
 			<File
-				RelativePath=".\build_vehicle_gui.c">
+				RelativePath=".\depot_gui.c">
 			</File>
 			<File
 				RelativePath=".\dock_gui.c">
