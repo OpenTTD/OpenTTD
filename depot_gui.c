@@ -973,7 +973,6 @@ void ShowDepotWindow(TileIndex tile, byte type)
 
 			case VEH_Road:
 				horizontal = 10;
-				vertical = - 14 + 14;
 				w->vscroll.cap = 5;
 				w->hscroll.cap = 5;
 				w->resize.step_width = 56;
