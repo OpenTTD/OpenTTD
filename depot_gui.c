@@ -680,7 +680,9 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 						case VEH_Train:    ShowBuildTrainWindow(w->window_number);    break;
 						case VEH_Road:     ShowBuildRoadVehWindow(w->window_number);  break;
 						case VEH_Ship:     ShowBuildShipWindow(w->window_number);     break;
-						case VEH_Aircraft: ShowBuildAircraftWindow(w->window_number); break;
+						case VEH_Aircraft:
+							ShowBuildVehicleWindow(w->window_number, WP(w, depot_d).type);
+							break;
 					default: NOT_REACHED();
 					}
 					break;

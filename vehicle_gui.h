@@ -46,7 +46,7 @@ void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection);
 void ShowBuildTrainWindow(TileIndex tile);
 void ShowBuildRoadVehWindow(TileIndex tile);
 void ShowBuildShipWindow(TileIndex tile);
-void ShowBuildAircraftWindow(TileIndex tile);
+void ShowBuildVehicleWindow(TileIndex tile, byte type);
 
 void ChangeVehicleViewWindow(const Vehicle *from_v, const Vehicle *to_v);
 

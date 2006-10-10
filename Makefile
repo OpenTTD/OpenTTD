@@ -644,6 +644,7 @@ SRCS += aystar.c
 SRCS += bmp.c
 SRCS += bridge_gui.c
 SRCS += bridge_map.c
+SRCS += build_vehicle_gui.c
 SRCS += callback_table.c
 SRCS += clear_cmd.c
 SRCS += command.c

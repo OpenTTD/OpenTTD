@@ -391,6 +391,7 @@ typedef struct {
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 
 typedef struct {
+	byte vehicle_type;
 	byte railtype;
 	byte sel_index;
 	byte show_engine_button;

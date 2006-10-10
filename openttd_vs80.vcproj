@@ -1224,6 +1224,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\build_vehicle_gui.c"
+				>
+			</File>
+			<File
 				RelativePath=".\depot_gui.c"
 				>
 			</File>
