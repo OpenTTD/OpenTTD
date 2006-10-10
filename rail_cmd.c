@@ -893,7 +893,7 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 			/* Update build vehicle window related to this depot */
 			w = FindWindowById(WC_BUILD_VEHICLE, tile);
 			if (w != NULL) {
-				WP(w,buildtrain_d).railtype = totype;
+				WP(w,buildvehicle_d).railtype = totype;
 				SetWindowDirty(w);
 			}
 

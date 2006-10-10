@@ -416,7 +416,7 @@ static void DrawNewRoadVehWindow(Window *w)
 	DrawWindowWidgets(w);
 
 	y = 15;
-	sel = WP(w,buildtrain_d).sel_index;
+	sel = WP(w,buildvehicle_d).sel_index;
 	pos = w->vscroll.pos;
 	selected_id = INVALID_ENGINE;
 	for (e = ROAD_ENGINES_INDEX; e < ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES; e++) {
@@ -430,7 +430,7 @@ static void DrawNewRoadVehWindow(Window *w)
 		sel--;
 	}
 
-	WP(w,buildtrain_d).sel_engine = selected_id;
+	WP(w,buildvehicle_d).sel_engine = selected_id;
 	if (selected_id != INVALID_ENGINE) {
 		DrawRoadVehPurchaseInfo(2, w->widget[4].top + 1, selected_id);
 	}
@@ -462,21 +462,21 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 		case 2: { /* listbox */
 			uint i = (e->we.click.pt.y - 14) / 14;
 			if (i < w->vscroll.cap) {
-				WP(w,buildtrain_d).sel_index = i + w->vscroll.pos;
+				WP(w,buildvehicle_d).sel_index = i + w->vscroll.pos;
 				SetWindowDirty(w);
 			}
 		} break;
 
 		case 5: { /* build */
-			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
+			EngineID sel_eng = WP(w,buildvehicle_d).sel_engine;
 			if (sel_eng != INVALID_ENGINE)
 				DoCommandP(w->window_number, sel_eng, 0, CcBuildRoadVeh, CMD_BUILD_ROAD_VEH | CMD_MSG(STR_9009_CAN_T_BUILD_ROAD_VEHICLE));
 		} break;
 
 		case 6: { /* rename */
-			EngineID sel_eng = WP(w,buildtrain_d).sel_engine;
+			EngineID sel_eng = WP(w,buildvehicle_d).sel_engine;
 			if (sel_eng != INVALID_ENGINE) {
-				WP(w,buildtrain_d).rename_engine = sel_eng;
+				WP(w,buildvehicle_d).rename_engine = sel_eng;
 				ShowQueryString(GetCustomEngineName(sel_eng),
 					STR_9036_RENAME_ROAD_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
 			}
@@ -487,7 +487,7 @@ static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 	case WE_ON_EDIT_TEXT:
 		if (e->we.edittext.str[0] != '\0') {
 			_cmd_text = e->we.edittext.str;
-			DoCommandP(0, WP(w, buildtrain_d).rename_engine, 0, NULL,
+			DoCommandP(0, WP(w, buildvehicle_d).rename_engine, 0, NULL,
 				CMD_RENAME_ENGINE | CMD_MSG(STR_9037_CAN_T_RENAME_ROAD_VEHICLE));
 		}
 		break;

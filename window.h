@@ -405,8 +405,8 @@ typedef struct {
 	uint16 list_a_length;
 	uint16 list_b_length;
 	uint16 list_c_length;
-} buildtrain_d;
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildtrain_d));
+} buildvehicle_d;
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildvehicle_d));
 
 typedef struct {
 	byte vehicletype;
