@@ -546,7 +546,9 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			break;
 
 		case WE_INVALIDATE_DATA:
+			if (w->window_number != 0) WP(w,buildvehicle_d).railtype = GetRailType(w->window_number);
 			WP(w,buildvehicle_d).data_invalidated = true;
+			SetWindowDirty(w);
 			break;
 
 		case WE_DESTROY:

@@ -214,7 +214,6 @@ static void AcceptEnginePreview(Engine *e, PlayerID player)
 	e->preview_player = 0xFF;
 	if (player == _local_player) {
 		InvalidateWindowClassesData(WC_BUILD_VEHICLE);
-		InvalidateWindowClasses(WC_BUILD_VEHICLE);
 		InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 	}
 }
@@ -339,7 +338,6 @@ static void NewVehicleAvailable(Engine *e)
 
 	e->flags = (e->flags & ~ENGINE_INTRODUCING) | ENGINE_AVAILABLE;
 	InvalidateWindowClassesData(WC_BUILD_VEHICLE);
-	InvalidateWindowClasses(WC_BUILD_VEHICLE);
 	InvalidateWindowClasses(WC_REPLACE_VEHICLE);
 
 	// Now available for all players

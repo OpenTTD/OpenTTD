@@ -548,6 +548,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 
 		case WE_INVALIDATE_DATA:
 			WP(w,buildvehicle_d).data_invalidated = true;
+			SetWindowDirty(w);
 			break;
 
 		case WE_DESTROY:

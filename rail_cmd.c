@@ -888,14 +888,9 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 
 		if (IsTileDepotType(tile, TRANSPORT_RAIL)) {
 			Vehicle *v;
-			Window *w;
 
 			/* Update build vehicle window related to this depot */
-			w = FindWindowById(WC_BUILD_VEHICLE, tile);
-			if (w != NULL) {
-				WP(w,buildvehicle_d).railtype = totype;
-				SetWindowDirty(w);
-			}
+			InvalidateWindowData(WC_BUILD_VEHICLE, tile);
 
 			/* update power of trains in this depot */
 			FOR_ALL_VEHICLES(v) {
