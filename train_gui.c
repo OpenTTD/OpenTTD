@@ -27,7 +27,7 @@
 typedef enum BuildTrainWidgets {
 	BUILD_TRAIN_WIDGET_CLOSEBOX = 0,
 	BUILD_TRAIN_WIDGET_CAPTION,
-	BUILD_TRAIN_WIDGET_SORT_ASSENDING_DESENTING,
+	BUILD_TRAIN_WIDGET_SORT_ASSENDING_DESCENDING,
 	BUILD_TRAIN_WIDGET_SORT_TEXT,
 	BUILD_TRAIN_WIDGET_SORT_DROPDOWN,
 	BUILD_TRAIN_WIDGET_LIST,
@@ -563,7 +563,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
-				case BUILD_TRAIN_WIDGET_SORT_ASSENDING_DESENTING:
+				case BUILD_TRAIN_WIDGET_SORT_ASSENDING_DESCENDING:
 					WP(w,buildvehicle_d).decenting_sort_order = !WP(w,buildvehicle_d).decenting_sort_order;
 					_last_sort_order = WP(w,buildvehicle_d).decenting_sort_order;
 					SortTrainBuildList(w);

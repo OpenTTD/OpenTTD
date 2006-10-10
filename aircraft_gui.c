@@ -29,7 +29,7 @@
 typedef enum BuildAircraftWidgets {
 	BUILD_AIRCRAFT_WIDGET_CLOSEBOX = 0,
 	BUILD_AIRCRAFT_WIDGET_CAPTION,
-	BUILD_AIRCRAFT_WIDGET_SORT_ASSENDING_DESENTING,
+	BUILD_AIRCRAFT_WIDGET_SORT_ASSENDING_DESCENDING,
 	BUILD_AIRCRAFT_WIDGET_SORT_TEXT,
 	BUILD_AIRCRAFT_WIDGET_SORT_DROPDOWN,
 	BUILD_AIRCRAFT_WIDGET_LIST,
@@ -437,7 +437,7 @@ static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
 	byte click_state = 0;
 
 	switch (e->we.click.widget) {
-		case BUILD_AIRCRAFT_WIDGET_SORT_ASSENDING_DESENTING:
+		case BUILD_AIRCRAFT_WIDGET_SORT_ASSENDING_DESCENDING:
 			WP(w,buildvehicle_d).decenting_sort_order = !WP(w,buildvehicle_d).decenting_sort_order;
 			_last_sort_order = WP(w,buildvehicle_d).decenting_sort_order;
 			SortAircraftBuildList(w);
