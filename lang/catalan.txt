@@ -387,6 +387,7 @@ STR_ENGINE_SORT_POWER                                           :Potència
 STR_ENGINE_SORT_INTRO_DATE                                      :Data de llançament
 STR_ENGINE_SORT_RUNNING_COST                                    :Cost d'utilització
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potència/Cost d'utilització
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitat de càrrega
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha carrega de aquest tipus esperant
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal.lacions
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (inloent carga sense espera)
@@ -2797,6 +2798,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construi
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l'aeronau per informació
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir noves aeronaus (necessites un aeroport amb hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l' aeronau per informació
+STR_BLACK_PLANES                                                :{BLACK}Avions amb hèlix
+STR_BLACK_JETS                                                  :{BLACK}Avions a reacció
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helicòpters
+STR_BUILD_PLANES_TIP                                            :{BLACK}Clica per veure avions amb hèlix
+STR_BUILD_JETS_TIP                                              :{BLACK}Clica per veure avions a reacció
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Clica per veure els helicòpters
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir noves aeronaus
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrossega l'aeronau fins aquí per vendre-la
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar pantalla principal en la situació de l'hangar

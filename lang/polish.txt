@@ -440,6 +440,7 @@ STR_ENGINE_SORT_POWER                                           :Moc
 STR_ENGINE_SORT_INTRO_DATE                                      :Data wprowadzenia
 STR_ENGINE_SORT_RUNNING_COST                                    :Koszty uzytkowania
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Moc/Koszty uzytkowania
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Pojemnosc
 STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma zadnego czekajacego towaru
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Zaznacz wszystkie typy stacji
 STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy towaru (oraz brak czekajacego towaru)
@@ -2926,6 +2927,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Budowa l
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Samolot - klik na samolocie aby uzyskac informacje
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Budowa samolotu (wymaga lotniska z hangarem)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Samolot - klik na samolocie aby uzyskac informacje
+STR_BLACK_PLANES                                                :{BLACK}Smiglowce
+STR_BLACK_JETS                                                  :{BLACK}Odrzutowce
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helikoptery
+STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknij aby widziec smiglowce
+STR_BUILD_JETS_TIP                                              :{BLACK}Kliknij aby widziec odrzutowce
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kliknij aby widziec helikoptery
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Budowa nowego samolotu
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Przeciagnij tutaj samolot aby go sprzedac
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centruj glowne okno na pozycji hangaru

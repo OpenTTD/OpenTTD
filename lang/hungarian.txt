@@ -452,6 +452,7 @@ STR_ENGINE_SORT_POWER                                           :Telj.
 STR_ENGINE_SORT_INTRO_DATE                                      :Bevezetési dátum
 STR_ENGINE_SORT_RUNNING_COST                                    :Üzemeltetési k.
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Telj./Üzemeltetési k.
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Teherkapacitás
 STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
 STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)
@@ -2784,6 +2785,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Teheraut
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Teherautó átalakítása
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Teherautó átalakítása a kijelölt áru szállíthatóságáért
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nem lehet átalakítani a teherautót...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Válaszd ki a közúti jármû által szállítandó rakományt
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Kikötõépítés
@@ -2896,6 +2898,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Repülõté
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Repülõgépek - kattints egy repülõgépre az adataihoz
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Új repülõgépek vásárlása (hangár szükséges hozzá)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Repülõgépek - kattints egy repülõgépre az adataihoz
+STR_BLACK_PLANES                                                :{BLACK}Propelleres gépek
+STR_BLACK_JETS                                                  :{BLACK}Jetek
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterek
+STR_BUILD_PLANES_TIP                                            :{BLACK}Kattints ide csak a propelleres repülõgépek mutatásához
+STR_BUILD_JETS_TIP                                              :{BLACK}Kattints ide csak a jetrepülõgépek mutatásához
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kattints ide csak a helikopterek mutatásához
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Új repülõgépek vásárlása
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Dobj ide egy repülõgépet az eladásához
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}A fõ nézetet a hangárra állítja
@@ -3103,6 +3111,8 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kattints
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Feliratok listája ({COMMA} db)
+
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Átalakítási hiba miatt megállt: {STRING} {COMMA}
 
 ############ Lists rail types
 
