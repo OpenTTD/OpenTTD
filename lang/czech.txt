@@ -2527,8 +2527,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Zeleznic
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Obyvatelé oslavují...{}První vlak dorazil do {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detaily)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}V ceste je vlak
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Jet do {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Jet do {STATION} (prelozit a nalo¸it jiný náklad)
 STR_8808_GO_TO_UNLOAD                                           :Jet do {STATION} (vylo¸it)

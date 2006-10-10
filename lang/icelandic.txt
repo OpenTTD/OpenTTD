@@ -2417,8 +2417,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} L
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Bæjarbúar fagna . . .{}Fyrsta lest kemur við á {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Upplýsingar)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Lest fyrir
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Fer til {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Fer til {STATION} (Yfirfæra og ferma)
 STR_8808_GO_TO_UNLOAD                                           :Fer til {STATION} (Afferma)

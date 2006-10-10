@@ -2387,8 +2387,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}Depósito
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebración cidadá . . .{}Chega o primeiro tren a {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalles)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Hai un tren no camiño
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Ir a {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Ir a {STATION} (Transferir e coller carga)
 STR_8808_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
