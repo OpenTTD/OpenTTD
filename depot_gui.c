@@ -53,7 +53,7 @@ static const byte widget_moves[] = {
 	WIDGET_MOVE_NONE,               // DEPOT_WIDGET_CLOSEBOX
 	WIDGET_STRETCH_RIGHT,           // DEPOT_WIDGET_CAPTION
 	WIDGET_MOVE_RIGHT,              // DEPOT_WIDGET_STICKY
-	WIDGET_MOVE_RIGHT,              // DEPOT_WIDGET_SELL
+	WIDGET_MOVE_RIGHT_STRETCH_DOWN, // DEPOT_WIDGET_SELL
 	WIDGET_MOVE_NONE,               // DEPOT_WIDGET_SELL_CHAIN
 	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_SELL_ALL
 	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_AUTOREPLACE
@@ -125,7 +125,7 @@ static const WindowDesc _road_depot_desc = {
 };
 
 static const WindowDesc _ship_depot_desc = {
-	-1, -1, 305, 96,
+	-1, -1, 305, 98,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -133,7 +133,7 @@ static const WindowDesc _ship_depot_desc = {
 };
 
 static const WindowDesc _aircraft_depot_desc = {
-	-1, -1, 331, 96,
+	-1, -1, 331, 98,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -969,7 +969,6 @@ void ShowDepotWindow(TileIndex tile, byte type)
 				w->vscroll.cap = 6;
 				w->hscroll.cap = 10 * 29;
 				w->resize.step_width = 1;
-				w->resize.step_height = 14;
 				break;
 
 			case VEH_Road:
@@ -978,26 +977,27 @@ void ShowDepotWindow(TileIndex tile, byte type)
 				w->vscroll.cap = 5;
 				w->hscroll.cap = 5;
 				w->resize.step_width = 56;
-				w->resize.step_height = 14;
 				break;
 
 			case VEH_Ship:
+				vertical = 2;
 				w->vscroll.cap = 3;
 				w->hscroll.cap = 3;
 				w->resize.step_width = 90;
-				w->resize.step_height = 23;
 				break;
 
 			case VEH_Aircraft:
 				horizontal = 26;
+				vertical = 2;
 				w->vscroll.cap = 3;
 				w->hscroll.cap = 4;
 				w->resize.step_width = 74;
-				w->resize.step_height = 23;
 				break;
 
 			default: NOT_REACHED();
 		}
+
+		w->resize.step_height = GetVehicleListHeight(type);
 
 		SetupStringsForDepotWindow(w, type);
 
