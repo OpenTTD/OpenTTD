@@ -1137,7 +1137,7 @@ int32 CmdMoveRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		if (dst == NULL) {
 			/* We make a new line in the depot, so we know already that we invalidate the window data */
-			InvalidateWindowData(WC_VEHICLE_DEPOT, src_head->tile);
+			InvalidateWindowData(WC_VEHICLE_DEPOT, src->tile);
 
 			// move the train to an empty line. for locomotives, we set the type to TS_Front. for wagons, 4.
 			if (IsTrainEngine(src)) {
