@@ -88,35 +88,32 @@ static int CDECL EngineIntroDateSorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static EngineID _last_engine; // cached vehicle to hopefully speed up name-sorting
-
-static char _bufcache[64]; // used together with _last_vehicle to hopefully speed up stringsorting
 static int CDECL EngineNameSorter(const void *a, const void *b)
 {
+	static EngineID last_engine[2] = { INVALID_ENGINE, INVALID_ENGINE };
+	static char     last_name[2][64] = { "\0", "\0" };
+
 	const EngineID va = *(const EngineID*)a;
 	const EngineID vb = *(const EngineID*)b;
-	char buf1[64] = "\0";
 	int r;
 
-	SetDParam(0, GetCustomEngineName(va));
-	GetString(buf1, STR_JUST_STRING);
-
-	if (vb != _last_engine) {
-		_last_engine = vb;
-		_bufcache[0] = '\0';
-
-		SetDParam(0, GetCustomEngineName(vb));
-		GetString(_bufcache, STR_JUST_STRING);
+	if (va != last_engine[0]) {
+		last_engine[0] = va;
+		GetString(last_name[0], GetCustomEngineName(va));
 	}
 
-	r =  strcmp(buf1, _bufcache); // sort by name
+	if (vb != last_engine[1]) {
+		last_engine[1] = vb;
+		GetString(last_name[1], GetCustomEngineName(vb));
+	}
+
+	r = strcmp(last_name[0], last_name[1]); // sort by name
 
 	if (r == 0) {
 		/* Use EngineID to sort instead since we want consistent sorting */
 		return EngineNumberSorter(a, b);
 	}
-
-	return (_internal_sort_order & 1) ? -r : r;
+	return _internal_sort_order ? -r : r;
 }
 
 static int CDECL EngineReliabilitySorter(const void *a, const void *b)
