@@ -155,7 +155,10 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 		PlayerID player = w->window_number;
 		const Player *p = GetPlayer(player);
 
-		SetWindowWidgetDisabledState(w, 7, p->current_loan == 0);
+		if (player == _local_player) {
+			/* borrow/repay buttons only exist for local player */
+			SetWindowWidgetDisabledState(w, 7, p->current_loan == 0);
+		}
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
