@@ -108,8 +108,7 @@ static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, byte overri
 		int j;
 
 		for (j = 0; j < wo->trains; j++) {
-			if (wo->train_id[j] == overriding_engine)
-				return wo->group;
+			if (wo->train_id[j] == overriding_engine) return wo->group;
 		}
 	}
 	return NULL;
@@ -968,8 +967,7 @@ uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineI
 		group = Resolve(engine_custom_sprites[engine][GC_DEFAULT], &object);
 	}
 
-	if (group == NULL || group->type != SGT_CALLBACK)
-		return CALLBACK_FAILED;
+	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
 }
@@ -1015,8 +1013,7 @@ uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, E
 		group = Resolve(engine_custom_sprites[engine][GC_DEFAULT], &object);
 	}
 
-	if (group == NULL || group->type != SGT_CALLBACK)
-		return CALLBACK_FAILED;
+	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
 }
@@ -1126,19 +1123,20 @@ StringID GetCustomEngineName(EngineID engine)
 
 // Functions for changing the order of vehicle purchase lists
 // This is currently only implemented for rail vehicles.
-static EngineID engine_list_order[NUM_TRAIN_ENGINES];
+static EngineID _engine_list_order[NUM_TRAIN_ENGINES];
 
 void ResetEngineListOrder(void)
 {
 	EngineID i;
 
-	for (i = 0; i < NUM_TRAIN_ENGINES; i++)
-		engine_list_order[i] = i;
+	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+		_engine_list_order[i] = i;
+	}
 }
 
 EngineID GetRailVehAtPosition(EngineID pos)
 {
-	return engine_list_order[pos];
+	return _engine_list_order[pos];
 }
 
 void AlterRailVehListOrder(EngineID engine, EngineID target)
@@ -1150,17 +1148,15 @@ void AlterRailVehListOrder(EngineID engine, EngineID target)
 
 	// First, remove our ID from the list.
 	for (i = 0; i < NUM_TRAIN_ENGINES - 1; i++) {
-		if (engine_list_order[i] == engine)
-			moving = true;
-		if (moving)
-			engine_list_order[i] = engine_list_order[i + 1];
+		if (_engine_list_order[i] == engine) moving = true;
+		if (moving) _engine_list_order[i] = _engine_list_order[i + 1];
 	}
 
 	// Now, insert it again, before the target engine.
 	for (i = NUM_TRAIN_ENGINES - 1; i > 0; i--) {
-		engine_list_order[i] = engine_list_order[i - 1];
-		if (engine_list_order[i] == target) {
-			engine_list_order[i - 1] = engine;
+		_engine_list_order[i] = _engine_list_order[i - 1];
+		if (_engine_list_order[i] == target) {
+			_engine_list_order[i - 1] = engine;
 			break;
 		}
 	}
