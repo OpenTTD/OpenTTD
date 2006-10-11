@@ -682,7 +682,7 @@ static void TileLoop_Clear(TileIndex tile)
 
 			if (GetIndustryIndexOfField(tile) == INVALID_INDUSTRY && GetFieldType(tile) >= 7) {
 				/* This farmfield is no longer farmfield, so make it grass again */
-				MakeClear(tile, CLEAR_GRASS, 0);
+				MakeClear(tile, CLEAR_GRASS, 2);
 			} else {
 				field_type = GetFieldType(tile);
 				field_type = (field_type < 8) ? field_type + 1 : 0;

@@ -147,6 +147,7 @@ void DestroyIndustry(Industry *i)
 	if (i->type == IT_FARM || i->type == IT_FARM_2) {
 		/* Remove the farmland and convert it to regular tiles over time. */
 		BEGIN_TILE_LOOP(tile_cur, 42, 42, i->xy - TileDiffXY(21, 21)) {
+			tile_cur = TILE_MASK(tile_cur);
 			if (IsTileType(tile_cur, MP_CLEAR) && IsClearGround(tile_cur, CLEAR_FIELDS) &&
 					GetIndustryIndexOfField(tile_cur) == i->index) {
 				SetIndustryIndexOfField(tile_cur, INVALID_INDUSTRY);
