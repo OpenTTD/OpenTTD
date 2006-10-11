@@ -1124,6 +1124,7 @@ StringID GetCustomEngineName(EngineID engine)
 // Functions for changing the order of vehicle purchase lists
 // This is currently only implemented for rail vehicles.
 static EngineID _engine_list_order[NUM_TRAIN_ENGINES];
+static byte _engine_list_position[NUM_TRAIN_ENGINES];
 
 void ResetEngineListOrder(void)
 {
@@ -1131,12 +1132,32 @@ void ResetEngineListOrder(void)
 
 	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
 		_engine_list_order[i] = i;
+		_engine_list_position[i] = i;
 	}
 }
 
+/**
+ * Get the EngineID at position pos.
+ * Used when drawing a(n unsorted) list of engines.
+ * @param pos List position/
+ * @return The EngineID at the requested position.
+ */
 EngineID GetRailVehAtPosition(EngineID pos)
 {
-	return _engine_list_order[pos];
+	if (pos < NUM_TRAIN_ENGINES) return _engine_list_order[pos];
+	return pos;
+}
+
+/**
+ * Get the list position of an engine.
+ * Used when sorting a list of engines.
+ * @param engine ID of the engine.
+ * @return The list position of the engine.
+ */
+uint16 ListPositionOfEngine(EngineID engine)
+{
+	if (engine < NUM_TRAIN_ENGINES) return _engine_list_position[engine];
+	return engine;
 }
 
 void AlterRailVehListOrder(EngineID engine, EngineID target)
@@ -1159,5 +1180,10 @@ void AlterRailVehListOrder(EngineID engine, EngineID target)
 			_engine_list_order[i - 1] = engine;
 			break;
 		}
+	}
+
+	// Update the engine list position (a reverse of engine list order)
+	for (i = 0; i < NUM_TRAIN_ENGINES; i++) {
+		_engine_list_position[_engine_list_order[i]] = i;
 	}
 }

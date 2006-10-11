@@ -62,6 +62,7 @@ void UnloadCustomEngineNames(void);
 
 void ResetEngineListOrder(void);
 EngineID GetRailVehAtPosition(EngineID pos);
+uint16 ListPositionOfEngine(EngineID engine);
 void AlterRailVehListOrder(EngineID engine, EngineID target);
 
 #endif /* NEWGRF_ENGINE_H */
