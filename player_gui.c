@@ -586,8 +586,8 @@ static const Widget _player_company_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,    90,   179,   158,   169, STR_7005_COLOR_SCHEME,             STR_7031_CHANGE_THE_COMPANY_VEHICLE},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   180,   269,   158,   169, STR_7009_PRESIDENT_NAME,           STR_7032_CHANGE_THE_PRESIDENT_S},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   270,   359,   158,   169, STR_7008_COMPANY_NAME,             STR_7033_CHANGE_THE_COMPANY_NAME},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,                  STR_7070_BUILD_COMPANY_HEADQUARTERS},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,    32,    43, STR_RELOCATE_HQ,                   STR_RELOCATE_COMPANY_HEADQUARTERS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   266,   355,    18,    29, STR_7072_VIEW_HQ,                  STR_7070_BUILD_COMPANY_HEADQUARTERS},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,   266,   355,    32,    43, STR_RELOCATE_HQ,                   STR_RELOCATE_COMPANY_HEADQUARTERS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   179,   158,   169, STR_7077_BUY_25_SHARE_IN_COMPANY,  STR_7079_BUY_25_SHARE_IN_THIS_COMPANY},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   180,   359,   158,   169, STR_7078_SELL_25_SHARE_IN_COMPANY, STR_707A_SELL_25_SHARE_IN_THIS_COMPANY},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   266,   355,   138,   149, STR_COMPANY_PASSWORD,              STR_COMPANY_PASSWORD_TOOLTIP},
@@ -687,6 +687,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			SetWindowWidgetHiddenState(w, PCW_WIDGET_PRESIDENT_NAME, !local);
 			SetWindowWidgetHiddenState(w, PCW_WIDGET_COMPANY_NAME,   !local);
 			w->widget[PCW_WIDGET_BUILD_VIEW_HQ].data = (local && p->location_of_house == 0) ? STR_706F_BUILD_HQ : STR_7072_VIEW_HQ;
+			if (local && p->location_of_house != 0) w->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; //HQ is already built.
 			SetWindowWidgetDisabledState(w, PCW_WIDGET_BUILD_VIEW_HQ, !local && p->location_of_house == 0);
 			SetWindowWidgetHiddenState(w, PCW_WIDGET_RELOCATE_HQ,      !local || p->location_of_house == 0);
 			SetWindowWidgetHiddenState(w, PCW_WIDGET_BUY_SHARE,        local);
@@ -787,6 +788,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 							return;
 						SetObjectToPlaceWnd(SPR_CURSOR_HQ, 1, w);
 						SetTileSelectSize(2, 2);
+						LowerWindowWidget(w, PCW_WIDGET_BUILD_VIEW_HQ);
+						InvalidateWidget(w, PCW_WIDGET_BUILD_VIEW_HQ);
 					} else {
 						ScrollMainWindowToTile(tile);
 					}
@@ -796,6 +799,8 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				case PCW_WIDGET_RELOCATE_HQ:
 					SetObjectToPlaceWnd(SPR_CURSOR_HQ, 1, w);
 					SetTileSelectSize(2, 2);
+					LowerWindowWidget(w, PCW_WIDGET_RELOCATE_HQ);
+					InvalidateWidget(w, PCW_WIDGET_RELOCATE_HQ);
 					break;
 
 				case PCW_WIDGET_BUY_SHARE:
@@ -826,6 +831,12 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 		case WE_PLACE_OBJ:
 			if (DoCommandP(e->we.place.tile, 0, 0, NULL, CMD_BUILD_COMPANY_HQ | CMD_AUTO | CMD_NO_WATER | CMD_MSG(STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS)))
 				ResetObjectToPlace();
+				w->widget[PCW_WIDGET_BUILD_VIEW_HQ].type = WWT_PUSHTXTBTN; // this button can now behave as a normal push button
+				RaiseWindowButtons(w);
+			break;
+
+		case WE_ABORT_PLACE_OBJ:
+			RaiseWindowButtons(w);
 			break;
 
 		case WE_DESTROY:
