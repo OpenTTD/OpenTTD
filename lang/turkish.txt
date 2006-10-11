@@ -2516,6 +2516,7 @@ STR_8825_NON_STOP                                               :{BLACK}Durmadan
 STR_8826_GO_TO                                                  :{BLACK}Git
 STR_8827_FULL_LOAD                                              :{BLACK}Doldur
 STR_8828_UNLOAD                                                 :{BLACK}Bosalt
+STR_REFIT                                                       :{BLACK}Modifiye
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Komutlar)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Komutlarin Sonu - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2547,6 +2548,9 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Yeni tre
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Satmak için araci buraya sürükleyin
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Tren garini göster
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Tren seçim listesi - daha fazla bilgi için araca tiklayin
+STR_BLACK_ENGINES                                               :{BLACK}Lokomotifler
+STR_BLACK_WAGONS                                                :{BLACK}Vagonlar
+STR_BLACK_BOTH                                                  :{BLACK}ikisi de
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Seçili treni satin al
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Treni yeniden adlandir
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tren durumu - treni durdurmak/baslatmak için buraya tiklayin
@@ -2774,6 +2778,8 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Havalima
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Uçak - click ayrintili bilgi için uçagi tikla
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Yeni uçak al (requires airport with hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Uçak - bilgi için uçaga tikla
+STR_BLACK_JETS                                                  :{BLACK}Jetler
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterler
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Yeni uçak al
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Satmak için uçagi buraya sürükleyin
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Hangari göster
@@ -2957,6 +2963,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Listedek
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Tabela Listesi - {COMMA} Tabela
+
 
 ############ Lists rail types
 

@@ -59,7 +59,7 @@ STR_0034_GOODS                                                  :Αγαθό
 STR_0035_GRAIN                                                  :Σιτάρι
 STR_0036_WOOD                                                   :Ξύλο
 STR_0037_IRON_ORE                                               :Μετάλλευμα Σιδήρου
-STR_0038_STEEL                                                  :Χάλυβας
+STR_0038_STEEL                                                  :
 STR_0039_VALUABLES                                              :Τιμαλφή
 STR_003A_COPPER_ORE                                             :Μετάλλευμα Χαλκού
 STR_003B_MAIZE                                                  :Αραβόσιτος
@@ -88,7 +88,7 @@ STR_00B1_GAME_OPTIONS                                           :{WHITE}Επιλ
 STR_00B2_MESSAGE                                                :{YELLOW}Μήνυμα
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Μήνυμα από {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Δεν μπορεί να γίνει αυτό....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Αυτή η περιοχή είναι αδύνατο να καθαριστεί
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Αυτή η περιοχή είναι αδύνατο να καθαριστεί...
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Αρχικά Πνευματικά Δικαιώματα {COPYRIGHT} 1995 Chris Sawyer, Όλα τα δικαιώματα διατηρούνται
 STR_00B7_VERSION                                                :{BLACK}OpenTTD έκδοση {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 Η ομάδα του OpenTTD
@@ -1497,6 +1497,22 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Επισκευ�
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}.
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
+
+
+
+
+
+
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+
+
+
+### depot strings
+
+
 
 
 

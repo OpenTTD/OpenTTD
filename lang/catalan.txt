@@ -764,22 +764,22 @@ STR_NEWGRF_SETTINGS                                             :Configuracions 
 STR_NEWGRF_SETTINGS2                                            :Configuracions de Newgrf
 STR_GAMEOPTMENU_0A                                              :
 STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Mostrats noms de poblacions
-STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostrats noms de poblacions
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Mostrats noms d'estacions
-STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostrats noms d'estacions
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Mostrades senyals
-STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Mostrades senyals
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Mostrats punts de control
-STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Mostrats punts de control
+STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Mostrar noms de poblacions
+STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostrar noms de poblacions
+STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Mostrar noms d'estacions
+STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostrar noms d'estacions
+STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Mostrar senyals
+STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Mostrar senyals
+STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Mostrar punts de control
+STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Mostrar punts de control
 STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Animació completa
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animació completa
 STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Detall complet
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detall complet
 STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Edificis Transparents
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificis Transparents
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Signes d'esració transparents
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Signes d'esració transparents
+STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Signes d'estació transparents
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Signes d'estació transparents
 ############ range ends	here
 
 ############ range for menu	starts
@@ -1103,7 +1103,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Interval de manteniment per defecte de les aeronaus: {ORANGE}desactivat
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}{STRING} dies/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Interval de manteniment per defecte dels vaixells: {ORANGE}desactivat
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactivar manteniment quan les averies s'estableixen a cap: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desactivar manteniment quan les avaries s'estableixen a cap: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activa limit de velocitat per al vagó: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Les noticies en color apareixen en: {ORANGE}{STRING}
@@ -1992,7 +1992,7 @@ STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Interès
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cost de circulació de Vehicles: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Velocitat de Construcció dels competidors: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intel.ligència dels competidors: {ORANGE}{STRING}
-STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Averies dels Vehicles: {ORANGE}{STRING}
+STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Avaries dels Vehicles: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Multiplicador de Subvencions: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Cost de construcció: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Tipus de Terreny: {ORANGE}{STRING}
@@ -2596,11 +2596,11 @@ STR_SERVICE_HINT                                                :{BLACK}Saltar l
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} disponible!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
 STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Pes: {WEIGHT_S}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {STRING}
-STR_885C_BROKEN_DOWN                                            :{RED}Averiat
+STR_885C_BROKEN_DOWN                                            :{RED}Avariat
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost de Circulació: {LTBLUE}{CURRENCY}/any
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pes: {LTBLUE}{WEIGHT_S}  {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. Max.: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
-STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Averies des de l'últim manteniment: {LTBLUE}{COMMA}
+STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de l'últim manteniment: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Parat
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}No pots fer que un tren passi d'una senyal amb perill...
 STR_8863_CRASHED                                                :{RED}Accident!
@@ -2634,7 +2634,7 @@ STR_900C_DETAILS                                                :{WHITE}{VEHICLE
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost de circulació: {LTBLUE}{CURRENCY}/any
 STR_900E_MAX_SPEED                                              :{BLACK}Vel. Max.: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
-STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Averies des del darrer manteniment: {LTBLUE}{COMMA}
+STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des del darrer manteniment: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...s'ha de parar dintre d'una cotxera
@@ -2708,7 +2708,7 @@ STR_9811_DETAILS                                                :{WHITE}{VEHICLE
 STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost de Circulació: {LTBLUE}{CURRENCY}/any
 STR_9813_MAX_SPEED                                              :{BLACK}Max. velocitat: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
-STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Averies des de l'últim manteniment: {LTBLUE}{COMMA}
+STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de l'últim manteniment: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_9817_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}No es pot parar/arrencar el vaixell...
@@ -2778,7 +2778,7 @@ STR_A00C_DETAILS                                                :{WHITE}{VEHICLE
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost de Circulació: {LTBLUE}{CURRENCY}/any
 STR_A00E_MAX_SPEED                                              :{BLACK}Max. velocitat: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Averies des de l'últim manteniment: {LTBLUE}{COMMA}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de l'últim manteniment: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construït: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}No es pot enviar l'aeronau a l'hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Cap a l'hangar de {STATION}.

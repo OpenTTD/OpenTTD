@@ -146,6 +146,7 @@ STR_ABBREV_TOFFEE                                               :{TINYFONT}TF
 STR_ABBREV_BATTERIES                                            :{TINYFONT}BA
 STR_ABBREV_PLASTIC                                              :{TINYFONT}PL
 STR_ABBREV_FIZZY_DRINKS                                         :{TINYFONT}FZ
+STR_ABBREV_NONE                                                 :{TINYFONT}NON
 STR_ABBREV_ALL                                                  :{TINYFONT}TODO
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
@@ -611,7 +612,7 @@ STR_CANNOT_GENERATE_TOWN                                        :{WHITE}Non se p
 STR_NO_SPACE_FOR_TOWN                                           :{WHITE}...non queda máis espacio no mapa
 STR_023B_INCREASE_SIZE_OF_TOWN                                  :{BLACK}Incrementa-lo tamaño da cidade
 STR_023C_EXPAND                                                 :{BLACK}Expandir
-STR_023D_RANDOM_TOWN                                            :{BLACK}Cidade aleatoria
+STR_023D_RANDOM_TOWN                                            :{BLACK}Cidade Aleatoria
 STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION                          :{BLACK}Construír cidade en emprazamento aleatorio
 STR_023F_INDUSTRY_GENERATION                                    :{WHITE}Xeración de Industrias
 STR_0240_COAL_MINE                                              :{BLACK}Mina de Carbón
@@ -1029,11 +1030,15 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duració
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra-la poboación da cidade na etiqueta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árbores invisibles (con edificios transparentes): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Orixinal
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da liña de neve: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Extensión Max. Estación: {ORANGE}{STRING} {RED}Aviso: Valores altos reducen rendemento
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Face-lo servicio os helicópteros no heliporto automáticam.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverti-la dirección de desplazamento: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ningunha
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tódalas compañías
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nº máximo de trens por xogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nº máximo de vehículos de estrada por xogador: {ORANGE}{STRING}
@@ -1128,7 +1133,7 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construí
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...non hai cidades neste escenario
 
-STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}¿Estás seguro de querer crear unha paizsaxe aleatoria?
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}¿Estás seguro de querer crear unha paisaxe aleatoria?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Varias cidades aleatorias
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Cubri-lo mapa con cidades colocadas aleatoriamente
 STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Varias industrias aleatorias
@@ -2398,6 +2403,7 @@ STR_880B_GO_TO_TRANSFER_LOAD                                    :Ir a {STATION} 
 STR_880C_GO_NON_STOP_TO                                         :Ir sen parar a {STATION}
 STR_880D_GO_TO_NON_STOP_TRANSFER                                :Ir sen parar a {STATION} (Transferir e coller carga)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Ir sen parar a {STATION} (Descargar)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Ir sen parar a {STATION} (Descargar e saír baleiro)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Ir sen parar a {STATION} (Cargar)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Ir sen parar a {STATION} (Transferir e esperar a encher)
 STR_GO_TO_TRAIN_DEPOT                                           :Ir o Depósito De Trens de {TOWN}
@@ -2466,6 +2472,7 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construí
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrastra un vehículo do tren aquí para vendelo
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centra-la vista principal na situación do depósito de trens
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de selección de vehículos para trens - pincha nun vehículo para máis información
+STR_BLACK_BOTH                                                  :{BLACK}Ambos
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construílo vehículo de ferrocarril seleccionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomea-lo tipo de vehículo de ferrocarril
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarea actual do tren - pincha aquí para parar/arrincar o tren
@@ -2606,7 +2613,7 @@ STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}O barco 
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construír peirao para barcos
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construír depósito para barcos (para construír e dar servicio os barcos)
 STR_981F_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Barcos - pincha nun barco para máis información
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Costruír noveo barco
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Costruír novo barco
 STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrastra o barco aquí para vendelo
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centra-la vista principal na situación do depósito de barcos
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Barcos - pincha no barco para máis información
@@ -2661,7 +2668,7 @@ STR_A00C_DETAILS                                                :{WHITE}{VEHICLE
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Idade: {LTBLUE}{STRING}{BLACK}   Coste de Mantemento: {LTBLUE}{CURRENCY}/ano
 STR_A00E_MAX_SPEED                                              :{BLACK}Velocidade Máx.: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Beneficio este ano: {LTBLUE}{CURRENCY}  (último ano: {CURRENCY})
-STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Roturas dende o último serivicio: {LTBLUE}{COMMA}
+STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Fiabilidade: {LTBLUE}{COMMA}%  {BLACK}Roturas dende o último servicio: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non se pode envia-la aeronave ó hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Diríxese ó hangar de {STATION}
@@ -2679,6 +2686,7 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construí
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronaves - pincha na aeronave para máis información
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construír nova aeronave (necesitas un aeroporto con hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronaves - pincha na aeronave para máis información
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helicópteros
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construír nova aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrastra a aeronave aquí para vendela
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}centra-la vista principal na situación do hangar
@@ -2693,9 +2701,9 @@ STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Coste: {CURRENCY} Velocidade Máx.: {VELOCITY}{}Capacidade: {COMMA} pasaxeiros, {COMMA} sacos de correo{}Coste de Mantemento: {CURRENCY}/ano
 
-STR_A030_NAME_AIRCRAFT                                          :{WHITE}Renomear aeronave
+STR_A030_NAME_AIRCRAFT                                          :{WHITE}Cambia-lo nome da aeronave
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}Non se pode renomea-la aeronave...
-STR_A032_NAME_AIRCRAFT                                          :{BLACK}Renomear aeronave
+STR_A032_NAME_AIRCRAFT                                          :{BLACK}Cambia-lo nome da aeronave
 STR_A033_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Celebración cidadá . . .{}¡Chega a primeira aeronave a {STATION}!
 STR_A034_PLANE_CRASH_DIE_IN_FIREBALL                            :{BLACK}{BIGFONT}¡Accidente Aéreo!{}{COMMA} morren na bola de lume en {STATION}
 STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}¡Accidente de Aeronave!¡A aeronave {} quedou sen combustible, hai {COMMA} mortos na explosión!
@@ -2746,7 +2754,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Diñeiro:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Crédito:
 STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Total:
 ############ End of order list
-STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Número de vehículos; inclúe camións/buses, trens, navíos e aeronaves
+STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Número de vehículos; inclúe camións/buses, trens, barcos e aeronaves
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Beneficio do vehículo con menos ingresos (de tódolos vehículos de máis de 2 anos)
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Unidades de carga levadas nos últimos catro quartos
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Número de tipos de carga levados no último cuarto
@@ -2795,6 +2803,7 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depósitos
 STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depósitos
 STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depósitos
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangares
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a {SKIP}{SKIP}{SKIP}{STRING}
 
@@ -2802,6 +2811,7 @@ STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Vender
+STR_ARE_YOU_SURE                                                :{BLACK}¿Estás seguro?
 
 
 
@@ -2870,6 +2880,7 @@ STR_SMALLMAP_CENTER                                             :{BLACK}Centra-l
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pequeno
+STR_CITY_AIRPORT                                                :{BLACK}Cidade
 STR_METRO_AIRPORT                                               :{BLACK}Aeroporto metropolitano
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroporto Internacional
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
