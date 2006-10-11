@@ -74,7 +74,6 @@ typedef struct StationSpec {
 	 * evaluating callbacks.
 	 */
 	struct SpriteGroup *spritegroup[NUM_GLOBAL_CID];
-	struct SpriteGroup *groundgroup;
 } StationSpec;
 
 /**

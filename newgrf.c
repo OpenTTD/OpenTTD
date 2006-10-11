@@ -1812,7 +1812,6 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 				StationSpec *statspec = _cur_grffile->stations[stid];
 
 				statspec->spritegroup[GC_DEFAULT] = _cur_grffile->spritegroups[groupid];
-				statspec->groundgroup = _cur_grffile->spritegroups[0];
 				statspec->grfid = _cur_grffile->grfid;
 				statspec->localidx = stid;
 				SetCustomStationSpec(statspec);

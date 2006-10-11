@@ -404,18 +404,28 @@ static const SpriteGroup *StationResolveReal(const ResolverObject *object, const
 	uint set;
 
 	uint cargo = 0;
-	CargoID cargo_type = CT_INVALID; /* XXX Pick the correct cargo type */
+	CargoID cargo_type = object->u.station.cargo_type;
 
 	if (st == NULL || statspec->sclass == STAT_CLASS_WAYP) {
 		return group->g.real.loading[0];
 	}
 
-	if (cargo_type == CT_INVALID) {
-		for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
-			cargo += GB(st->goods[cargo_type].waiting_acceptance, 0, 12);
-		}
-	} else {
-		cargo = GB(st->goods[cargo_type].waiting_acceptance, 0, 12);
+	switch (cargo_type) {
+		case GC_INVALID:
+		case GC_DEFAULT_NA:
+		case GC_PURCHASE:
+			cargo = 0;
+			break;
+
+		case GC_DEFAULT:
+			for (cargo_type = 0; cargo_type < NUM_CARGO; cargo_type++) {
+				cargo += GB(st->goods[cargo_type].waiting_acceptance, 0, 12);
+			}
+			break;
+
+		default:
+			cargo = GB(st->goods[_local_cargo_id_ctype[cargo_type]].waiting_acceptance, 0, 12);
+			break;
 	}
 
 	if (HASBIT(statspec->flags, 1)) cargo /= (st->trainst_w + st->trainst_h);
@@ -457,25 +467,50 @@ static void NewStationResolver(ResolverObject *res, const StationSpec *statspec,
 	res->reseed          = 0;
 }
 
+static const SpriteGroup *ResolveStation(const StationSpec *statspec, const Station *st, ResolverObject *object)
+{
+	const SpriteGroup *group;
+	CargoID ctype = GC_DEFAULT_NA;
+
+	if (st == NULL) {
+		/* No station, so we are in a purchase list */
+		ctype = GC_PURCHASE;
+	} else {
+		CargoID cargo;
+
+		/* Pick the first cargo that we have waiting */
+		for (cargo = 0; cargo < NUM_GLOBAL_CID; cargo++) {
+			CargoID lcid = _local_cargo_id_ctype[cargo];
+			if (lcid != CT_INVALID && statspec->spritegroup[cargo] != NULL && GB(st->goods[lcid].waiting_acceptance, 0, 12) != 0) {
+				ctype = cargo;
+				break;
+			}
+		}
+	}
+
+	group = statspec->spritegroup[ctype];
+	if (group == NULL) {
+		ctype = GC_DEFAULT;
+		group = statspec->spritegroup[ctype];
+	}
+
+	if (group == NULL) return NULL;
+
+	/* Remember the cargo type we've picked */
+	object->u.station.cargo_type = ctype;
+
+	return Resolve(group, object);
+}
 
 SpriteID GetCustomStationRelocation(const StationSpec *statspec, const Station *st, TileIndex tile)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
-	CargoID ctype = (st == NULL) ? GC_PURCHASE : GC_DEFAULT_NA;
 
 	NewStationResolver(&object, statspec, st, tile);
 
-	group = Resolve(statspec->spritegroup[ctype], &object);
-	if ((group == NULL || group->type != SGT_RESULT) && ctype != GC_DEFAULT_NA) {
-		group = Resolve(statspec->spritegroup[GC_DEFAULT_NA], &object);
-	}
-	if ((group == NULL || group->type != SGT_RESULT) && ctype != GC_DEFAULT) {
-		group = Resolve(statspec->spritegroup[GC_DEFAULT], &object);
-	}
-
+	group = ResolveStation(statspec, st, &object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
-
 	return group->g.result.sprite - 0x42D;
 }
 
@@ -484,24 +519,12 @@ SpriteID GetCustomStationGroundRelocation(const StationSpec *statspec, const Sta
 {
 	const SpriteGroup *group;
 	ResolverObject object;
-	CargoID ctype = (st == NULL) ? GC_PURCHASE : GC_DEFAULT_NA;
 
 	NewStationResolver(&object, statspec, st, tile);
 	object.callback_param1 = 1; /* Indicate we are resolving the ground sprite */
 
-	group = Resolve(statspec->spritegroup[ctype], &object);
-	if ((group == NULL || group->type != SGT_RESULT) && ctype != GC_DEFAULT_NA) {
-		group = Resolve(statspec->spritegroup[GC_DEFAULT_NA], &object);
-	}
-	if ((group == NULL || group->type != SGT_RESULT) && ctype != GC_DEFAULT) {
-		group = Resolve(statspec->spritegroup[GC_DEFAULT], &object);
-	}
-	if ((group == NULL || group->type != SGT_RESULT)) {
-		group = Resolve(statspec->groundgroup, &object);
-	}
-
+	group = ResolveStation(statspec, st, &object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
-
 	return group->g.result.sprite - 0x42D;
 }
 
@@ -510,7 +533,6 @@ uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const S
 {
 	const SpriteGroup *group;
 	ResolverObject object;
-	CargoID ctype = (st == NULL) ? GC_PURCHASE : GC_DEFAULT_NA;
 
 	NewStationResolver(&object, statspec, st, tile);
 
@@ -518,16 +540,8 @@ uint16 GetStationCallback(uint16 callback, uint32 param1, uint32 param2, const S
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	group = Resolve(statspec->spritegroup[ctype], &object);
-	if ((group == NULL || group->type != SGT_CALLBACK) && ctype != GC_DEFAULT_NA) {
-		group = Resolve(statspec->spritegroup[GC_DEFAULT_NA], &object);
-	}
-	if ((group == NULL || group->type != SGT_CALLBACK) && ctype != GC_DEFAULT) {
-		group = Resolve(statspec->spritegroup[GC_DEFAULT], &object);
-	}
-
+	group = ResolveStation(statspec, st, &object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
-
 	return group->g.callback.result;
 }
 
