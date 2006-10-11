@@ -69,7 +69,7 @@ static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
 {
 	const EngineID va = *(const EngineID*)a;
 	const EngineID vb = *(const EngineID*)b;
-	int r = va - vb;
+	int r = ListPositionOfEngine(va) - ListPositionOfEngine(vb);
 
 	return _internal_sort_order ? -r : r;
 }
@@ -415,7 +415,7 @@ static void GenerateBuildList(EngineID **engines, uint16 *num_engines, EngineID 
 	if (wagons  == NULL) ExtendEngineListSize((const EngineID**)wagons,  &wagon_length,  25);
 
 	for (j = 0; j < NUM_TRAIN_ENGINES; j++) {
-		EngineID i = GetRailVehAtPosition(j);
+		EngineID i = GetRailVehAtPosition(j); // XXX Can be removed when the wagon list is also sorted.
 		const Engine *e = GetEngine(i);
 		const RailVehicleInfo *rvi = RailVehInfo(i);
 
