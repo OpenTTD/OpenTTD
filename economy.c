@@ -1302,7 +1302,7 @@ static bool LoadWait(const Vehicle* v, const Vehicle* u)
 int LoadUnloadVehicle(Vehicle *v)
 {
 	int profit = 0;
-	int v_profit; //virtual profit for feeder systems
+	int v_profit = 0; //virtual profit for feeder systems
 	int v_profit_total = 0;
 	int unloading_time = 20;
 	Vehicle *u = v;
@@ -1345,13 +1345,15 @@ int LoadUnloadVehicle(Vehicle *v)
 				/* unload goods and let it wait at the station */
 				st->time_since_unload = 0;
 
-				v_profit = GetTransportedGoodsIncome(
-					v->cargo_count,
-					DistanceManhattan(GetStation(v->cargo_source)->xy, GetStation(last_visited)->xy),
-					v->cargo_days,
-					v->cargo_type) * 3 / 2;
+				if (u->current_order.flags & OF_TRANSFER) {
+					v_profit = GetTransportedGoodsIncome(
+						v->cargo_count,
+						DistanceManhattan(GetStation(v->cargo_source)->xy, GetStation(last_visited)->xy),
+						v->cargo_days,
+						v->cargo_type) * 3 / 2;
 
-				v_profit_total += v_profit;
+					v_profit_total += v_profit;
+				}
 
 				unloading_time += v->cargo_count;
 				t = GB(ge->waiting_acceptance, 0, 12);
@@ -1368,8 +1370,11 @@ int LoadUnloadVehicle(Vehicle *v)
 				}
 				// Update amount of waiting cargo
 				SB(ge->waiting_acceptance, 0, 12, min(v->cargo_count + t, 0xFFF));
-				ge->feeder_profit += v_profit;
-				u->profit_this_year += v_profit;
+
+				if (u->current_order.flags & OF_TRANSFER) {
+					ge->feeder_profit += v_profit;
+					u->profit_this_year += v_profit;
+				}
 				result |= 2;
 				v->cargo_count = 0;
 			}
