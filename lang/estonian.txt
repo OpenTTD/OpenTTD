@@ -1470,6 +1470,7 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Kaardi 
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Ei saa maapinda PNG failist laadida...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...faili ei leitud.
 
 STR_BMPMAP_ERROR                                                :{WHITE}Ei suuda laadida maad BMP failist...
@@ -2519,6 +2520,8 @@ STR_8825_NON_STOP                                               :{BLACK}Peatuset
 STR_8826_GO_TO                                                  :{BLACK}Mine
 STR_8827_FULL_LOAD                                              :{BLACK}Täis laadung
 STR_8828_UNLOAD                                                 :{BLACK}Lae maha
+STR_REFIT                                                       :{BLACK}Taasseadista
+STR_REFIT_ORDER                                                 :(Taasseadista {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Käsud)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Käskude Lõpp - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2605,6 +2608,7 @@ STR_TRAIN_STOPPING                                              :{RED}Peatub
 STR_TRAIN_STOPPING_VEL                                          :{RED}Peatub, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Ühildamatud raudtee tüübid
 STR_TRAIN_NO_POWER                                              :{RED}Voolu pole
+STR_TRAIN_START_NO_CATENARY                                     :Selle raja ahel puudub, rong ei saa sõitmist alustada
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Maanteesõiduk on ees
@@ -2670,6 +2674,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Seadista
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Seadista maantee sõiduk ümber
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Seadista maanteesõiduk kandma valitud kauba tüüpi
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ei saa seadistada maantee sõidukit ümber
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali millist tüüpi kaupa auto vedama peab
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Sadama ehitus
@@ -2901,6 +2906,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Näita kõ
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näita kõiki laevu millel on see jaam nende sõiduplaanis
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Auto{P "" d}
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Näita kõiki sama sõidukavaga sõidukeid
 
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
@@ -2912,6 +2918,7 @@ STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Angaarid
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Saada {SKIP}{SKIP}{SKIP}{STRING}
 
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Saada kõik lennukid angaari. CTRL+vajutus ainult teenindab
 
 ### depot strings
 
@@ -2971,8 +2978,13 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Mootorit
 STR_ENGINES                                                     :Mootorid
 STR_WAGONS                                                      :Vaguneid
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Vajuta, kui tahad seisata kõiki ronge jaamas
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Vajuta, kui tahad seisata kõiki masinaid garaa¸is
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Vajuta, kui tahad seisata kõiki laevu sadamas
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Vajuta, kui tahad seisata kõiki lennukeid angaaris
 
 
+STR_MASS_START_LIST_TIP                                         :{BLACK}Vajuta, kui tahad käivitada kõiki masinaid nimekirjas
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Siltide nimekiri - {COMMA} Silt{P "" i}
@@ -3043,6 +3055,7 @@ STR_SE_FLAT_WORLD                                               :{WHITE}Tasane m
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereeri tasast maad
 STR_SE_RANDOM_LAND                                              :{WHITE}Suvaline maa
 STR_SE_NEW_WORLD                                                :{BLACK}Loo uus stsenaarium
+STR_SE_CAPTION                                                  :{WHITE}Stsenaariumi tüüp
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Liiguta lameda maa kõrgus ühe võrra alla
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Liiguta lameda maa kõrgus ühe võrra üles
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Muuda maa kõrgust lamedal maal

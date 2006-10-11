@@ -381,6 +381,13 @@ STR_SORT_BY_VALUE                                               :Arvo
 STR_SORT_BY_FACILITY                                            :Asematyyppi
 STR_SORT_BY_WAITING                                             :Odottavan lastin arvo
 STR_SORT_BY_RATING_MAX                                          :Rahtauksen arvosana
+STR_ENGINE_SORT_ENGINE_ID                                       :MoottoriID (perinteinen lajittelu)
+STR_ENGINE_SORT_COST                                            :Hinta
+STR_ENGINE_SORT_POWER                                           :Teho
+STR_ENGINE_SORT_INTRO_DATE                                      :Julkaisupäivä
+STR_ENGINE_SORT_RUNNING_COST                                    :Käyttökustannukset
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Teho-hyötysuhde
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Rahtikapasiteetti
 STR_NO_WAITING_CARGO                                            :{BLACK}Minkäänlaista lastia ei ole odottamassa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Valitse kaikki laitteet
 STR_SELECT_ALL_TYPES                                            :{BLACK}Valitse kaikki lastityypit (myös odottava lasti)
@@ -550,7 +557,7 @@ STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Valitse 
 STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Tyhjää nykyinen soittolista (vain Oma1 tai Oma2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Tallenna musiikkiasetukset
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Napsauta musiikkiraitaa lisätäksesi sen nykyiseen soittolistaan (vain Oma1 tai Oma2).
-STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikkaa kappaletta poistaaksesi sen soittolistalta. (Vain Oma1 ja Oma2)
+STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Klikkaa raitaa poistaaksesi se nykyisestä ohjelmasta (ainoastaan Custom1 tai Custom2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Sekoittaminen päälle/pois
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Näytä musiikkiraitojen valintaikkuna
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Napsauta palvelussa keskittääksesi näkymän teollisuuteen/kaupunkiin.
@@ -603,6 +610,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Pienennä
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Luo satunnainen maa.
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Nollaa maasto
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Nollaa maasto
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Käytä korkeuskarttaa
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Käytä korkeuskarttaa
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Nollataanko maasto?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Luo maasto
 STR_022F_TOWN_GENERATION                                        :{BLACK}Luo kaupunkeja
@@ -715,6 +724,8 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Tallenna
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Lataa skenaario
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Tallenna skenaario
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Pelaa skenaariota
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Pelaa korkeuskartta
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Aloita uusi peli, käyttäen korkeuskarttaa maastona
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Lopetetaanko skenaario?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Sulje muokkain
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...voidaan rakentaa vain kaupunkeihin, joissa on yli 1200 asukasta.
@@ -879,6 +890,8 @@ STR_TOWNNAME_CZECH                                              :Tsekkiläinen
 STR_TOWNNAME_SWISS                                              :Sveitsiläinen
 STR_TOWNNAME_DANISH                                             :Tanskalainen
 STR_TOWNNAME_TURKISH                                            :turkkilainen
+STR_TOWNNAME_ITALIAN                                            :Italialainen
+STR_TOWNNAME_CATALAN                                            :Katalonialainen
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Punta (£)
@@ -903,8 +916,9 @@ STR_CURR_NOK                                                    :Norjan kruunu (
 STR_CURR_PLN                                                    :Puolan zloty (PLN)
 STR_CURR_ROL                                                    :Romanian leu (ROL)
 STR_CURR_RUR                                                    :Venjän rupla (RUR)
-STR_CURR_SIT                                                    :Slovenian tolar (SIT)
+STR_CURR_SIT                                                    :Slovenian tolari (SIT)
 STR_CURR_SEK                                                    :Ruotsin kruunu (SEK)
+STR_CURR_YTL                                                    :Turkin liira (YTL)
 
 STR_CURR_CUSTOM                                                 :Oma...
 
@@ -1039,29 +1053,33 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Virheil
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Näytä kaupungin asukasluku kaupungin nimessä: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Näkymättömät puut (näkymättömillä rakennuksilla): {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Maasto generaattori{ORANGE}{STRING}
-STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Tavallinen
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Maa generaattori: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Alkuperäinen
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Suurin etäisyys reunasta öljyjalostamolle{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Lumirajan korkeus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Maaston epätasaisuus (Vain TerraGenesis) : {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Hyvin tasainen
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Erittäin tasainen
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Tasainen
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Epätasainen
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Hyvin epätasainen
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Kuoppainen
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Erittäin kuoppainen
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Puiden sijainti algoritmi: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ei mitään.
-STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Tavallinen
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ei mitään
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Alkuperäinen
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Kehitetty
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Korkeuskartan pyöritys:{ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastapäivään
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivään
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Edistymisen päivitysväli: {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Litteälle maisemalle annettava korkeus: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurin aseman levittäytyminen: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Käänteinen vierityssuunta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Näytä yrityksen tunnukset: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ei yhtään
-STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Oma yhtiö
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Oma yritys
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Kaikki yhtiöt
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Junia/pelaajaa: {ORANGE}{STRING}
@@ -1456,9 +1474,13 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Kartan 
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Maastoa ei voida ladata PNG-tiedostosta...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...tiedostoa ei löydy.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kuvan tyyppiä ei voida muuttaa. Tarvitaan 8- tai 24-bittinen PNG-kuva.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...tapahtui tunnistamaton virhe. (todennäköisesti viallinen tiedosto)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Ei voi luda maastoa BMP:sta
-STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}Voitko muuttaa tiedostomuotoa?
+STR_BMPMAP_ERROR                                                :{WHITE}Maastoa ei voida ladata BMP:stä...
+STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kuvan tyyppiä ei voida muuntaa.
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Kustannus: {CURRENCY}
@@ -2155,7 +2177,34 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}Yhtiön {COMPANY} on ottanut haltuun {COMPANY}!
 STR_7080_PROTECTED                                              :{WHITE}Tällä yhtiöllä ei ole vielä osakkeita...
 
+STR_LIVERY_DEFAULT                                              :
+STR_LIVERY_STEAM                                                :Höyrykone
+STR_LIVERY_DIESEL                                               :Dieselmoottori
+STR_LIVERY_ELECTRIC                                             :Sähkömoottori
+STR_LIVERY_MONORAIL                                             :Yksiraitesen moottori
+STR_LIVERY_MAGLEV                                               :Maglev-moottori
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_WAGON_STEAM                                :Matkustajavaunu (höyry)
+STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Matkustajavaunu (diesel)
+STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Matkustajavaunu (sähkö)
+STR_LIVERY_FREIGHT_WAGON                                        :Rahtivaunu
+STR_LIVERY_BUS                                                  :Linja-auto
+STR_LIVERY_TRUCK                                                :Kuorma-auto
+STR_LIVERY_PASSENGER_SHIP                                       :Matkustajalautta
+STR_LIVERY_FREIGHT_SHIP                                         :Rahtilaiva
+STR_LIVERY_HELICOPTER                                           :Helikopteri
+STR_LIVERY_SMALL_PLANE                                          :Pieni lentokone
+STR_LIVERY_LARGE_PLANE                                          :Suuri lentokone
 
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Näytä yleiset väriteemat
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Näytä junan väriteemat
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Näytä tieajoneuvojen väriteemat
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Näytä laivojen väriteemat
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Näytä lentokoneiden väriteemat
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Valitse valitulle teemalle ensisijainen väri
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Valitse valitulle teemalle toissijainen väri
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Valitse muutettava väriteema, tai valitse useita CTRL+klikkaus. Klikkaa valintalaatikkoa valitaksesi teeman
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (höyry)
@@ -2449,6 +2498,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Huolto pysähtym
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Suuntana veturitalli ({TOWN})
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Suuntana veturitalli ({TOWN}), {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Huolto {TOWN} Varikko
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Huolto{TOWN} Varikko, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (virheellinen käsky)
 
@@ -2479,6 +2530,9 @@ STR_8825_NON_STOP                                               :{BLACK}Tauotta
 STR_8826_GO_TO                                                  :{BLACK}Mene
 STR_8827_FULL_LOAD                                              :{BLACK}Täysi lasti
 STR_8828_UNLOAD                                                 :{BLACK}Pura lasti
+STR_REFIT                                                       :{BLACK}Sovita uudelleen
+STR_REFIT_TIP                                                   :{BLACK}Valitse rahdin tyyppi jolla tämä käsky uudistetaan. CTRL+klikkaus poistaa uudistuksen
+STR_REFIT_ORDER                                                 :(Sovita {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (aikataulu)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - aikataulun loppu - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2510,6 +2564,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Rakenna 
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Vedä yksikkö tähän myydäksesi sen.
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskitä näkymä veturitallin sijaintiin.
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Yksikön valintalista - napsauta kohteita saadaksesi tietoja.
+STR_BLACK_ENGINES                                               :{BLACK}Veturit
+STR_BLACK_WAGONS                                                :{BLACK}Vaunut
+STR_BLACK_BOTH                                                  :{BLACK}Molemmat
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klikkaa nähdäksesi vain moottorit
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klikkaa nähdäksesi vain vaunut
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klikkaa nähdäksesi veturit ja vaunut
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Rakenna valittu yksikkö.
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Nimeä yksikön tyyppi uudelleen.
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Valitun junan toiminnot - napsauta tässä pysäyttääksesi/lähettääksesi.
@@ -2558,6 +2618,8 @@ STR_886F_TRANSFER                                               :{BLACK}Siirrä
 STR_TRAIN_STOPPING                                              :{RED}Pysäytetään
 STR_TRAIN_STOPPING_VEL                                          :{RED}Pysäytetään, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Raiteet eivät ole yhteensopivia
+STR_TRAIN_NO_POWER                                              :{RED}Ei virtaa
+STR_TRAIN_START_NO_CATENARY                                     :Radasta puuttuu "catenary"; junaa ei voi käynnistää
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Ajoneuvo tiellä.
@@ -2581,6 +2643,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ajoneuvo
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Ajoneuvo {COMMA} odottaa huoltoasemalla.
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Suuntana huoltoasema, {TOWN}.
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Suuntana huoltoasema, {TOWN}, {VELOCITY}.
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Huolto {TOWN} Varikko
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Huolto {TOWN} Varikko, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Ajoneuvon lähettäminen huoltoasemalle ei onnistu...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Paikallista huoltoasemaa ei löydy.
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Ajoneuvot - napsauta ajoneuvoja saadaksesi tietoja.
@@ -2621,6 +2685,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Muuta aj
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Korjaa ajoneuvo.
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Muuta ajoneuvo rahtaamaan korostettua rahtityyppiä.
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Ajoneuvoa ei voida korjata.
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse ajoneuvolla ajettava rahti
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Sataman rakentaminen
@@ -2651,6 +2716,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Laivaa e
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Paikallista telakkaa ei löydy
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Suuntana telakka, {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Suuntana telakka, {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Huolto{TOWN} Telakka
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Huolto {TOWN} Telakka, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Laiva {COMMA} odottaa telakalla.
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Rakenna satama
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Rakenna telakka (laivojen rakentamista ja huoltamista varten).
@@ -2716,6 +2783,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Lentokonetta ei voi lähettää lentokonehalliin...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Suuntana lentokonehalli, {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Suuntana lentokonehalli, {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Huolto {STATION} Halli
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Huolto {STATION} Halli, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lentokone {COMMA} odottaa lentokonehallissa.
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lentokone on tiellä.
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Lentokonetta ei voi pysäyttää/laittaa liikkeelle...
@@ -2729,6 +2798,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Rakenna 
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lentokoneet - napsauta lentokonetta saadaksesi tietoja.
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Rakenna uusi lentokone (tarvitaan lentokenttä lentokonehallilla).
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lentokoneet - napsauta lentokonetta saadaksesi tietoja.
+STR_BLACK_PLANES                                                :{BLACK}Potkurikoneet
+STR_BLACK_JETS                                                  :{BLACK}Suihkukoneet
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterit
+STR_BUILD_PLANES_TIP                                            :{BLACK}Klikkaa nähdäksesi potkurikoneet
+STR_BUILD_JETS_TIP                                              :{BLACK}Klikkaa nähdäksesi suihkukoneet
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Klikkaa nähdäksesi helikopterit
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Rakenna uusi lentokone
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Vedä lentokone tähän myydäksesi sen.
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Keskitä näkymä lentokonehallin sijaintiin.
@@ -2841,23 +2916,59 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Näytä ka
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Näytä kaikki lentokoneet, joilla on asema aikataulussaan.
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näytä kaikki laivat, joilla on asema aikataulussaan.
 
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Ajoneuvo{P "" s}
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Näytä kaikki ajoneuvot, joilla on sama aikataulu
 
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Varikot
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Terminaalit
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Telakat
 STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Talli
 
+STR_SEND_TO_DEPOTS                                              :{BLACK}Lähetä {SKIP}{SKIP}{SKIP}{STRING}
 
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Lähetä kaikki listalla olevat junat varikolle. Tee vain huolto painamalla CTRL+klikkaus
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Lähetä kaikki listan ajoneuvot varikolle. Tee vain huolto painamalla CTRL+klikkaus
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Lähetä kaikki listan laivat telakalle. Tee vain huolto painamalla CTRL+klikkaus
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Lähetä kaikki listan ilma-alukset halleihin. Tee vain huolto painamalla CTRL+klikkaus
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Myy
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Olet myymässä kaikki varikolla olevat ajoneuvot.
 STR_ARE_YOU_SURE                                                :{BLACK}Oletko varma?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Vahvista kaikkien varikolla olevien junien myyminen
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Vahvista kaikkien varikolla olevien ajoneuvojen myyminen
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Vahvista kaikkien telakalla olevien laivojen myyminen
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Vahvista että haluat myydä kaikki hallissa olevat ilma-alukset
 
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Älä myy kaikkia varikolla olevia junia
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Älä myy varikolla olevia ajoneuvoja
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Älä myy telakalla olevia laivoja
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Älä myy hallissa olevia ilma-aluksia
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Myy kaikki varikolla olevat junat
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Myy kaikki varikolla olevat ajoneuvot
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Myy kaikki telakalla olevat laivat
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Myy kaikki hallissa olevat ilma-alukset
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Näytä tällä asemalla olevien junien käskyt
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Näytä tässä terminaalissa olevien ajoneuvojen käskyt
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Näytä tässä terminaalissa olevien laivojen käskyt
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Näytä tämän lentokentän ilma-alusten käskyistä hallista riippumatta
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Korvaa kaikki varikolla olevat junat automaattisesti
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Korvaa kaikki varikolla olevat ajoneuvot automaattisesti
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Korvaa kaikki telakalla olevat laivat automaattisesti
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Korvaa kaikki hallissa olevat lento-alukset automaattisesti
 
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Juna{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Maa-ajoneuvo{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Laiva{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Ilma-alus
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Korvaa liikennevälineitä
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Korvaa {STRING}
@@ -2881,11 +2992,23 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Veturi e
 STR_ENGINES                                                     :Veturit
 STR_WAGONS                                                      :Vaunut
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pysäytä kaikki varikolla olevat junat klikkaamalla
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Pysäytä kaikki varikolla olevat ajoneuvot klikkaamalla
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Pysäytä kaikki telakalla olevat laivat klikkaamalla
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pysäytä kaikki hallissa olevat ilma-alukset klikkaamalla
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Käynnistä kaikki varikolla olevat junat klikkaamalla
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Käynnistä kaikki varikolla olevat ajoneuvot klikkaamalla
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Käynnistä kaikki telakalla olevat laivat klikkaamalla
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Käynnistä kaikki hallissa olevat ilma-alukset klikkaamalla
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Pysäytä kaikki listalla olevat kulkuneuvot klikkaamalla
+STR_MASS_START_LIST_TIP                                         :{BLACK}Käynnistä kaikki listalla olevat ajoneuvot klikkaamalla
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Kylttilista - {COMMA} kylttiä
+
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Käskyn uudelleensovitus pysähtyi virheeseen {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -2913,8 +3036,58 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoro
 
 ########### String for New Landscape Generator
 
-STR_CLEARING_TILES                                              :{BLACK}Louhikko generaattori
+STR_GENERATE                                                    :{WHITE}Generoi
+STR_RANDOM                                                      :{BLACK}Satunnainen
+STR_RANDOM_HELP                                                 :{BLACK}Vaihda maaston luomisessa käytettävä satunnaisluku-siemen
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Maailman luominen
+STR_RANDOM_SEED                                                 :{BLACK}Satunnaisluku-siemen:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Klikkaa antaaksesi satunnaisluku-siemen
+STR_LAND_GENERATOR                                              :{BLACK}Maageneraattori:
+STR_TREE_PLACER                                                 :{BLACK}Puiden algoritmi:
+STR_HEIGHTMAP_ROTATION                                          :{BLACK}Korkeuskartan kierto:
+STR_TERRAIN_TYPE                                                :{BLACK}Maaston tyyppi:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Merenpinta:
+STR_SMOOTHNESS                                                  :{BLACK}Tasaisuus:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Lumilinjan korkeus:
+STR_DATE                                                        :{BLACK}Päivämäärä:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Kaupungit:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Teollisuus:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Siirrä lumilinjaa yksi ylöspäin
+STR_SNOW_LINE_DOWN                                              :{BLACK}Siirrä lumilinjan korkeutta yksi alaspäin
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Vaihda lumilinjan korkeutta
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Vaihda aloitusvuosi
+STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Mittakaava-varoitus
+STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Lähdekartan koon liiallinen muuttaminen ei ole suositeltavaa. Haluatko jatkaa?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_NAME                                              :{BLACK}Korkeuskartan nimi:
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Koko: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Maailmaa luodaan...
+STR_GENERATION_ABORT                                            :{BLACK}Peruuta
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Keskeytä maan luominen
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Haluatko varmasti keskeyttää maan luomisen?
+STR_PROGRESS                                                    :{WHITE}{NUM}% valmiina
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Maailman luominen
+STR_TREE_GENERATION                                             :{BLACK}Puiden luominen
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Siirtämättömän luominen
+STR_CLEARING_TILES                                              :{BLACK}Karun ja kivisen alueen luominen
+STR_SETTINGUP_GAME                                              :{BLACK}Valmistellaan peliä
+STR_PREPARING_TILELOOP                                          :{BLACK}Ajetaan tile-loop
+STR_PREPARING_GAME                                              :{BLACK}Valmistellaan peliä
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Tehty toiminto vaihtoi vaikeustason mukautetuksi
+STR_SE_FLAT_WORLD                                               :{WHITE}Tasainen maa
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Luo tasainen maa
+STR_SE_RANDOM_LAND                                              :{WHITE}Satunnainen maa
+STR_SE_NEW_WORLD                                                :{BLACK}Luo uusi skenaario
+STR_SE_CAPTION                                                  :{WHITE}Skenaarion tyyppi
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Siirrä tasaista maata yksi alaspäin
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Siirrä tasaista maata yksi ylöspäin
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Vaihda tasaisen maan korkeutta
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Tasaisen maan korkeus:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Keskitä pieni kartta tähän paikkaan
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Pieni

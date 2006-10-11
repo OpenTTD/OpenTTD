@@ -712,7 +712,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Situar à
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Situar far
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Situar repetidor
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Defineix àrea de desert.{}Prem i mantingues la tecla CTRL per treure'l
-STR_CREATE_LAKE                                                 :{BLACK}Defineix àrea d'aigua.{}Inundarà els voltants si està a nivell del mar
+STR_CREATE_LAKE                                                 :{BLACK}Defineix àrea d'aigua.{}Inundarà els voltants si és a nivell del mar
 STR_0290_DELETE                                                 :{BLACK}Esborrar
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Esborrar aquesta població completament
 STR_0292_SAVE_SCENARIO                                          :Desar escenari
@@ -959,7 +959,7 @@ STR_NO_ORDERS                                                   :{LTBLUE}Sense o
 STR_NO_ORDERS_VEL                                               :{LTBLUE}Sense ordres, a {VELOCITY}
 
 STR_PASSENGERS                                                  :passatgers
-STR_BAGS                                                        :saques
+STR_BAGS                                                        :sacs
 STR_TONS                                                        :tones
 STR_LITERS                                                      :litres
 STR_ITEMS                                                       :caps
@@ -1183,9 +1183,9 @@ STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Construi
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...no hi ha poblacions en aquest escenari
 
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Estàs segur de voler crear un paisatge aleatori?
-STR_MANY_RANDOM_TOWNS                                           :{BLACK}Massa poblacions aleatòries
+STR_MANY_RANDOM_TOWNS                                           :{BLACK}Moltes poblacions aleatòries
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Omplir el mapa amb poblacions situades aleatòriament
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Massa indústries aleatòries
+STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Moltes indústries aleatòries
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Omplir el mapa amb indústries situades aleatòriament
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}No es poden generar indústries...
 
@@ -1646,7 +1646,7 @@ STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Llista d
 STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Treure l'acció marcada de la llista anterior
 STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Accions disponibles:
 STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Petita campanya de publicitat
-STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Important campanya de publicitat
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Mitjana campanya de publicitat
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Gran campanya de publicitat
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Patrocinar la reconstrucció dels carrers de la població
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Construir estatua del propietari de l'empresa
@@ -1654,7 +1654,7 @@ STR_204B_FUND_NEW_BUILDINGS                                     :Patrocinar nous
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Comprar drets de transport en exclusiva
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Subornar les autoritats locals
 STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar una petita campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
-STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniciar una important campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniciar una mitjana campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
 STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciar una gran campanya de publicitat, per atraure més passatgers i càrregues als teus serveis de transport.{}  Cost: {CURRENCY}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Patrocinar la reconstrucció de la xarxa local de carrers. Causa una notable distorsió del trànsit durant 6 mesos.{}  Cost: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construir una estatua en honor a la teva empresa.{} Cost: {CURRENCY}
@@ -1700,13 +1700,13 @@ STR_3001_AIRPORT_SELECTION                                      :{WHITE}Selecció
 STR_3002_ORIENTATION                                            :{BLACK}Orientació
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Nombre de vies
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Mida de les andanes
-STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Massa a prop d'un altre estació de tren
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Massa a prop d'una altra estació de tren
 STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Fusionar més d'una estació/àrea de càrrega existent
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Massa estacions/àrees de càrrega en aquesta població
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Massa estacions/àrees de càrrega
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Masses parades d'autobús
 STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Masses estacions de càrrega
-STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Massa a prop d'un altre estació/àrea de càrrega
+STR_3009_TOO_CLOSE_TO_ANOTHER_STATION                           :{WHITE}Massa a prop d'una altra estació/àrea de càrrega
 STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
 STR_300B_MUST_DEMOLISH_RAILROAD                                 :{WHITE}Primer has d'enderrocar l'estació de tren
 STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Massa a prop d'un altre aeroport
@@ -2816,7 +2816,7 @@ STR_A02A_SEND_AIRCRAFT_TO_HANGAR                                :{BLACK}Enviar a
 STR_A02B_SHOW_AIRCRAFT_DETAILS                                  :{BLACK}Mostrar detalls de l'aeronau
 STR_A02C_NEW_AIRCRAFT_NOW_AVAILABLE                             :{BLACK}{BIGFONT}Nova aeronau disponible!
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Max. Velocitat: {VELOCITY}{}Capacitat: {COMMA} passatgers, {COMMA} saques de correu{}Cost de Circulació: {CURRENCY}/any
+STR_A02E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Max. Velocitat: {VELOCITY}{}Capacitat: {COMMA} passatgers, {COMMA} sacs de correu{}Cost de Circulació: {CURRENCY}/any
 
 STR_A030_NAME_AIRCRAFT                                          :{WHITE}Anomenar aeronaus
 STR_A031_CAN_T_NAME_AIRCRAFT                                    :{WHITE}No es pot anomenar aeronaus...
@@ -2972,8 +2972,8 @@ STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
-STR_REPLACE_VEHICLES_START                                      :{BLACK}Iniciar substitució de Vehicles
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar substitució de Vehicles
+STR_REPLACE_VEHICLES_START                                      :{BLACK}Començar a substituir
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de substituir
 STR_NOT_REPLACING                                               :{BLACK}No substituint
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Cap vehicle seleccionat
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Selecciona el tipus de motor a substituir
@@ -3031,7 +3031,7 @@ STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Ren
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}
 STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Pes: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Velocitat: {GOLD}{VELOCITY}
-STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitat: {GOLD}{COMMA} passatgers, {COMMA} saques de correu
+STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitat: {GOLD}{COMMA} passatgers, {COMMA} sacs de correu
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagons Automotrius: {GOLD}+{POWER}{BLACK} Pes: {GOLD}+{WEIGHT_S}
 
 ########### String for New Landscape Generator
