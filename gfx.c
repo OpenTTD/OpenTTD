@@ -559,10 +559,10 @@ BoundingRect GetStringBoundingBox(const char *str)
 			br.width += GetCharacterWidth(size, c);
 		} else {
 			switch (c) {
-				case ASCII_SETX: br.width += (byte)*str++; break;
+				case ASCII_SETX: br.width += (byte)*++str; break;
 				case ASCII_SETXY:
-					br.width += (byte)*str++;
-					br.height += (byte)*str++;
+					br.width += (byte)*++str;
+					br.height += (byte)*++str;
 					break;
 				case ASCII_TINYFONT: size = FS_SMALL; break;
 				case ASCII_BIGFONT:  size = FS_LARGE; break;
