@@ -1254,6 +1254,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, show_finances,                 S, 0,  true,        STR_CONFIG_PATCHES_SHOWFINANCES,          NULL),
 	SDT_BOOL(Patches, autoscroll,                    S, 0, false,        STR_CONFIG_PATCHES_AUTOSCROLL,            NULL),
 	SDT_BOOL(Patches, reverse_scroll,                S, 0, false,        STR_CONFIG_PATCHES_REVERSE_SCROLLING,     NULL),
+	SDT_BOOL(Patches, measure_tooltip,               S, 0, false,        STR_CONFIG_PATCHES_MEASURE_TOOLTIP,       NULL),
 	 SDT_VAR(Patches, errmsg_duration,    SLE_UINT8, S, 0,  5, 0, 20, 0, STR_CONFIG_PATCHES_ERRMSG_DURATION,       NULL),
 	 SDT_VAR(Patches, toolbar_pos,        SLE_UINT8, S,MS,  0, 0,  2, 0, STR_CONFIG_PATCHES_TOOLBAR_POS,           v_PositionMainToolbar),
 	 SDT_VAR(Patches, window_snap_radius, SLE_UINT8, S,D0, 10, 1, 32, 0, STR_CONFIG_PATCHES_SNAP_RADIUS,           NULL),

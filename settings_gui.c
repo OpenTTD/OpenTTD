@@ -566,6 +566,7 @@ static const char *_patches_ui[] = {
 	"reverse_scroll",
 	"errmsg_duration",
 	"toolbar_pos",
+	"measure_tooltip",
 	"window_snap_radius",
 	"invisible_trees",
 	"population_in_label",

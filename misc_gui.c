@@ -636,57 +636,77 @@ static const Widget _tooltips_widgets[] = {
 static void TooltipsWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-		case WE_PAINT:
+		case WE_PAINT: {
+			uint arg;
 			GfxFillRect(0, 0, w->width - 1, w->height - 1, 0);
 			GfxFillRect(1, 1, w->width - 2, w->height - 2, 0x44);
-			DrawStringMultiCenter((w->width >> 1), (w->height >> 1) - 5, WP(w,tooltips_d).string_id, 197);
+
+			for (arg = 0; arg < WP(w, tooltips_d).paramcount; arg++) {
+				SetDParam(arg, WP(w, tooltips_d).params[arg]);
+			}
+			DrawStringMultiCenter((w->width >> 1), (w->height >> 1) - 5, WP(w, tooltips_d).string_id, 197);
 			break;
+		}
 
 		case WE_MOUSELOOP:
-			if (!_right_button_down) DeleteWindow(w);
+			/* We can show tooltips while dragging tools. These are shown as long as
+			 * we are dragging the tool. Normal tooltips work with rmb */
+			if (WP(w, tooltips_d).paramcount == 0 ) {
+				if (!_right_button_down) DeleteWindow(w);
+			} else {
+				if (!_left_button_down) DeleteWindow(w);
+			}
+
 			break;
 	}
 }
 
-void GuiShowTooltips(StringID string_id)
+/** Shows a tooltip
+* @param str String to be displayed
+* @param params (optional) up to 5 pieces of additional information that may be
+* added to a tooltip; currently only supports parameters of {NUM} (integer) */
+void GuiShowTooltipsWithArgs(StringID str, uint paramcount, uint32 params[])
 {
 	char buffer[512];
-	Window *w;
-	int right,bottom;
-	int x,y;
+	BoundingRect br;
+	uint i;
+	int x, y;
 
-	if (string_id == 0) return;
+	Window *w = FindWindowById(WC_TOOLTIPS, 0);
+	if (w != NULL) DeleteWindow(w);
 
-	w = FindWindowById(WC_TOOLTIPS, 0);
-	if (w != NULL) {
-		if (WP(w,tooltips_d).string_id == string_id)
-			return;
-		DeleteWindow(w);
-	}
+	/* We only show measurement tooltips with shift pressed down */
+	if (paramcount != 0 && !_patches.measure_tooltip) return;
 
-	GetString(buffer, string_id);
+	for (i = 0; i != paramcount; i++) SetDParam(i, params[i]);
+	GetString(buffer, str);
 
-	right = GetStringBoundingBox(buffer).width + 6;
+	br = GetStringBoundingBox(buffer);
+	br.width += 6; br.height += 4; // increase slightly to have some space around the box
 
 	/* Cut tooltip length to 200 pixels max, wrap to new line if longer */
-	bottom = 14;
-	if (right > 200) {
-		bottom += ((right - 4) / 176) * 10;
-		right = 200;
+	if (br.width > 200) {
+		br.height += ((br.width - 4) / 176) * 10;
+		br.width = 200;
 	}
 
 	/* Correctly position the tooltip position, watch out for window and cursor size
 	 * Clamp value to below main toolbar and above statusbar. If tooltip would
 	 * go below window, flip it so it is shown above the cursor */
 	y = clamp(_cursor.pos.y + _cursor.size.y + _cursor.offs.y + 5, 22, _screen.height - 12);
-	if (y + bottom > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - bottom - 5;
-	x = clamp(_cursor.pos.x - (right >> 1), 0, _screen.width - right);
+	if (y + br.height > _screen.height - 12) y = _cursor.pos.y + _cursor.offs.y - br.height - 5;
+	x = clamp(_cursor.pos.x - (br.width >> 1), 0, _screen.width - br.width);
 
-	w = AllocateWindow(x, y, right, bottom, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
-	WP(w,tooltips_d).string_id = string_id;
+	w = AllocateWindow(x, y, br.width, br.height, TooltipsWndProc, WC_TOOLTIPS, _tooltips_widgets);
+
+	WP(w, tooltips_d).string_id = str;
+	assert(sizeof(WP(w, tooltips_d).params[0]) == sizeof(params[0]));
+	memcpy(WP(w, tooltips_d).params, params, sizeof(WP(w, tooltips_d).params[0]) * paramcount);
+	WP(w, tooltips_d).paramcount = paramcount;
+
 	w->flags4 &= ~WF_WHITE_BORDER_MASK; // remove white-border from tooltip
-	w->widget[0].right = right;
-	w->widget[0].bottom = bottom;
+	w->widget[0].right = br.width;
+	w->widget[0].bottom = br.height;
 }
 
 

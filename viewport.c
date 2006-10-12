@@ -1937,13 +1937,22 @@ void VpSetPlaceSizingLimit(int limit)
 	_thd.sizelimit = limit;
 }
 
-void VpSetPresizeRange(uint from, uint to)
+/**
+* Highlights all tiles between a set of two tiles. Used in dock and tunnel placement
+* @param from TileIndex of the first tile to highlight
+* @param to TileIndex of the last tile to highlight */
+void VpSetPresizeRange(TileIndex from, TileIndex to)
 {
+	uint distance = DistanceManhattan(from, to) + 1;
+
 	_thd.selend.x = TileX(to) * TILE_SIZE;
 	_thd.selend.y = TileY(to) * TILE_SIZE;
 	_thd.selstart.x = TileX(from) * TILE_SIZE;
 	_thd.selstart.y = TileY(from) * TILE_SIZE;
 	_thd.next_drawstyle = HT_RECT;
+
+	/* show measurement only if there is any length to speak of */
+	if (distance > 1) GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH, 1, &distance);
 }
 
 static void VpStartPreSizing(void)
@@ -1986,6 +1995,120 @@ static byte Check2x1AutoRail(int mode)
 	return 0; // avoids compiler warnings
 }
 
+/** Check if the direction of start and end tile should be swapped based on
+ * the dragging-style. Default directions are:
+ * in the case of a line (HT_RAIL, HT_LINE):  DIR_NE, DIR_NW, DIR_N, DIR_E
+ * in the case of a rect (HT_RECT, HT_POINT): DIR_S, DIR_E
+ * For example dragging a rectangle area from south to north should be swapped to
+ * north-south (DIR_S) to obtain the same results with less code. This is what
+ * the return value signifies.
+ * @param style HighLightStyle dragging style
+ * @param start_tile, end_tile start and end tile of drag
+ * @param boolean value which when true means start/end should be swapped */
+static bool SwapDirection(HighLightStyle style, TileIndex start_tile, TileIndex end_tile)
+{
+	uint start_x = TileX(start_tile);
+	uint start_y = TileY(start_tile);
+	uint end_x = TileX(end_tile);
+	uint end_y = TileY(end_tile);
+
+	switch (style & HT_DRAG_MASK) {
+		case HT_RAIL:
+		case HT_LINE: return (end_x > start_x || (end_x == start_x && end_y > start_y));
+
+		case HT_RECT:
+		case HT_POINT: return (end_x != start_x && end_y < start_y);
+		default: NOT_REACHED();
+	}
+
+	return false;
+}
+
+/** Calculates height difference between one tile and another
+* Multiplies the result to suit the standard given by minimap - 50 meters high
+* To correctly get the height difference we need the direction we are dragging
+* in, as well as with what kind of tool we are dragging. For example a horizontal
+* autorail tool that starts in bottom and ends at the top of a tile will need the
+* maximum of SW,S and SE,N corners respectively. This is handled by the lookup table below
+* See _tileoffs_by_dir in map.c for the direction enums if you can't figure out
+* the values yourself.
+* @param style HightlightStyle of drag. This includes direction and style (autorail, rect, etc.)
+* @param distance amount of tiles dragged, important for horizontal/vertical drags
+*        ignored for others
+* @param start_tile, end_tile start and end tile of drag operation
+* @return height difference between two tiles. Tile measurement tool utilizes
+* this value in its tooltips */
+static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_tile, TileIndex end_tile)
+{
+	bool swap = SwapDirection(style, start_tile, end_tile);
+	byte style_t;
+	uint h0, h1, ht; // start heigth, end height, and temp variable
+
+	if (start_tile == end_tile) return 0;
+	if (swap) swap_tile(&start_tile, &end_tile);
+
+	switch (style & HT_DRAG_MASK) {
+		case HT_RECT: {
+			static const TileIndexDiffC heightdiff_area_by_dir[] = {
+				/* Start */ {1, 0}, /* Dragging east */ {0, 0}, /* Dragging south */
+				/* End   */ {0, 1}, /* Dragging east */ {1, 1}  /* Dragging south */
+			};
+
+			/* In the case of an area we can determine whether we were dragging south or
+			 * east by checking the X-coordinates of the tiles */
+			style_t = (byte)(TileX(end_tile) > TileX(start_tile));
+			start_tile = TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_area_by_dir[style_t]));
+			end_tile   = TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_area_by_dir[2 + style_t]));
+		}
+		/* Fallthrough */
+		case HT_POINT:
+			h0 = TileHeight(start_tile);
+			h1 = TileHeight(end_tile);
+			break;
+		default: { /* All other types, this is mostly only line/autorail */
+			static const HighLightStyle flip_style_direction[] = {
+				HT_DIR_X, HT_DIR_Y, HT_DIR_HL, HT_DIR_HU, HT_DIR_VR, HT_DIR_VL
+			};
+			static const TileIndexDiffC heightdiff_line_by_dir[] = {
+				/* Start */ {1, 0}, {1, 1}, /* HT_DIR_X  */ {0, 1}, {1, 1}, /* HT_DIR_Y  */
+				/* Start */ {1, 0}, {0, 0}, /* HT_DIR_HU */ {1, 0}, {1, 1}, /* HT_DIR_HL */
+				/* Start */ {1, 0}, {1, 1}, /* HT_DIR_VL */ {0, 1}, {1, 1}, /* HT_DIR_VR */
+
+				/* Start */ {0, 1}, {0, 0}, /* HT_DIR_X  */ {1, 0}, {0, 0}, /* HT_DIR_Y  */
+				/* End   */ {0, 1}, {0, 0}, /* HT_DIR_HU */ {1, 1}, {0, 1}, /* HT_DIR_HL */
+				/* End   */ {1, 0}, {0, 0}, /* HT_DIR_VL */ {0, 0}, {0, 1}, /* HT_DIR_VR */
+			};
+
+			distance %= 2; // we're only interested if the distance is even or uneven
+			style &= HT_DIR_MASK;
+
+			/* To handle autorail, we do some magic to be able to use a lookup table.
+			 * Firstly if we drag the other way around, we switch start&end, and if needed
+			 * also flip the drag-position. Eg if it was on the left, and the distance is even
+			 * that means the end, which is now the start is on the right */
+			if (swap && distance == 0) style = flip_style_direction[style];
+
+			/* Use lookup table for start-tile based on HighLightStyle direction */
+			style_t = style * 2;
+			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
+			h0 = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t])));
+			ht = TileHeight(TILE_ADD(start_tile, ToTileIndexDiff(heightdiff_line_by_dir[style_t + 1])));
+			h0 = maxu(h0, ht);
+
+			/* Use lookup table for end-tile based on HighLightStyle direction
+			 * flip around side (lower/upper, left/right) based on distance */
+			if (distance == 0) style_t = flip_style_direction[style] * 2;
+			assert(style_t < lengthof(heightdiff_line_by_dir) - 13);
+			h1 = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t])));
+			ht = TileHeight(TILE_ADD(end_tile, ToTileIndexDiff(heightdiff_line_by_dir[12 + style_t + 1])));
+			h1 = maxu(h1, ht);
+		} break;
+	}
+
+	if (swap) swap_uint32(&h0, &h1);
+	/* Minimap shows height in intervals of 50 meters, let's do the same */
+	return (int)(h1 - h0) * 50;
+}
 
 // while dragging
 static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int method)
@@ -2087,6 +2210,30 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 			}
 		}
 	}
+
+	if (_patches.measure_tooltip) {
+		TileIndex t0 = TileVirtXY(thd->selstart.x, thd->selstart.y);
+		TileIndex t1 = TileVirtXY(x, y);
+		uint distance = DistanceManhattan(t0, t1) + 1;
+		int heightdiff = CalcHeightdiff(b, distance, t0, t1);
+		uint params[2];
+
+		/* If we are showing a tooltip for horizontal or vertical drags,
+		 * 2 tiles have a length of 1. To bias towards the ceiling we add
+		 * one before division. It feels more natural to count 3 lengths as 2 */
+		if ((b & HT_DIR_MASK) != HT_DIR_X && (b & HT_DIR_MASK) != HT_DIR_Y) {
+			distance = (distance + 1) / 2;
+		}
+
+		params[0] = distance;
+		if (heightdiff == 0) {
+			GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH, 1, params);
+		} else {
+			params[1] = heightdiff;
+			GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH_HEIGHTDIFF, 2, params);
+		}
+	}
+
 	thd->selend.x = x;
 	thd->selend.y = y;
 	thd->next_drawstyle = b;
@@ -2101,6 +2248,7 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 void VpSelectTilesWithMethod(int x, int y, int method)
 {
 	int sx, sy;
+	HighLightStyle style;
 
 	if (x == -1) {
 		_thd.selend.x = -1;
@@ -2124,32 +2272,80 @@ void VpSelectTilesWithMethod(int x, int y, int method)
 	sy = _thd.selstart.y;
 
 	switch (method) {
-		case VPM_FIX_X:
-			x = sx;
-			break;
-
-		case VPM_FIX_Y:
-			y = sy;
-			break;
-
-		case VPM_X_OR_Y:
+		case VPM_X_OR_Y: /* drag in X or Y direction */
 			if (myabs(sy - y) < myabs(sx - x)) {
 				y = sy;
+				style = HT_DIR_X;
 			} else {
 				x = sx;
+				style = HT_DIR_Y;
 			}
-			break;
+			goto calc_heightdiff_single_direction;
+		case VPM_FIX_X: /* drag in Y direction */
+			x = sx;
+			style = HT_DIR_Y;
+			goto calc_heightdiff_single_direction;
+		case VPM_FIX_Y: /* drag in X direction */
+			y = sy;
+			style = HT_DIR_X;
 
-		case VPM_X_AND_Y:
-			break;
+calc_heightdiff_single_direction:;
+			if (_patches.measure_tooltip) {
+				TileIndex t0 = TileVirtXY(sx, sy);
+				TileIndex t1 = TileVirtXY(x, y);
+				uint distance = DistanceManhattan(t0, t1) + 1;
+				int heightdiff = CalcHeightdiff((_thd.next_drawstyle & HT_DRAG_MASK) | style, 0, t0, t1);
+				uint params[2];
 
-		// limit the selected area to a 10x10 rect.
-		case VPM_X_AND_Y_LIMITED: {
-			int limit = (_thd.sizelimit - 1) * 16;
+				params[0] = distance;
+				if (heightdiff == 0) {
+					GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH, 1, params);
+				} else {
+					params[1] = heightdiff;
+					GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH_HEIGHTDIFF, 2, params);
+				}
+			} break;
+
+		case VPM_X_AND_Y_LIMITED: { /* drag an X by Y constrained rect area */
+			int limit = (_thd.sizelimit - 1) * TILE_SIZE;
 			x = sx + clamp(x - sx, -limit, limit);
 			y = sy + clamp(y - sy, -limit, limit);
-			break;
+			/* Fallthrough */
+		case VPM_X_AND_Y: { /* drag an X by Y area */
+			if (_patches.measure_tooltip) {
+				TileIndex t0 = TileVirtXY(sx, sy);
+				TileIndex t1 = TileVirtXY(x, y);
+				uint dx = abs(TileX(t0) - TileX(t1)) + 1;
+				uint dy = abs(TileY(t0) - TileY(t1)) + 1;
+				HighLightStyle style = _thd.next_drawstyle;
+				int heightdiff;
+				uint params[3];
+
+				/* If dragging an area (eg dynamite tool) and it is actually a single
+				 * row/column, change the type to 'line' to get proper calculation for height */
+				if (style & HT_RECT) {
+					if (dx == 1) {
+						style = HT_LINE | HT_DIR_Y;
+					} else if (dy == 1) {
+						style = HT_LINE | HT_DIR_X;
+					}
+				}
+
+				heightdiff = CalcHeightdiff(style, 0, t0, t1);
+
+				params[0] = dx;
+				params[1] = dy;
+				if (heightdiff == 0) {
+					GuiShowTooltipsWithArgs(STR_MEASURE_AREA, 2, params);
+				} else {
+					params[2] = heightdiff;
+					GuiShowTooltipsWithArgs(STR_MEASURE_AREA_HEIGHTDIFF, 3, params);
+				}
+			}
+		} break;
+
 		}
+		default: NOT_REACHED();
 	}
 
 	_thd.selend.x = x;
