@@ -2294,7 +2294,12 @@ calc_heightdiff_single_direction:;
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
 				uint distance = DistanceManhattan(t0, t1) + 1;
-				int heightdiff = CalcHeightdiff((_thd.next_drawstyle & HT_DRAG_MASK) | style, 0, t0, t1);
+				/* With current code passing a HT_LINE style to calculate the height
+				 * difference is enough. However if/when a point-tool is created
+				 * with this method, function should be called with new_style (below)
+				 * instead of HT_LINE | style case HT_POINT is handled specially
+				 * new_style := (_thd.next_drawstyle & HT_RECT) ? HT_LINE | style : _thd.next_drawstyle; */
+				int heightdiff = CalcHeightdiff(HT_LINE | style, 0, t0, t1);
 				uint params[2];
 
 				params[0] = distance;
@@ -2317,12 +2322,12 @@ calc_heightdiff_single_direction:;
 				TileIndex t1 = TileVirtXY(x, y);
 				uint dx = abs(TileX(t0) - TileX(t1)) + 1;
 				uint dy = abs(TileY(t0) - TileY(t1)) + 1;
-				HighLightStyle style = _thd.next_drawstyle;
 				int heightdiff;
 				uint params[3];
 
 				/* If dragging an area (eg dynamite tool) and it is actually a single
 				 * row/column, change the type to 'line' to get proper calculation for height */
+				style = _thd.next_drawstyle;
 				if (style & HT_RECT) {
 					if (dx == 1) {
 						style = HT_LINE | HT_DIR_Y;
