@@ -1,12 +1,10 @@
 /* $Id$ */
 
+#ifdef ENABLE_NETWORK
+
 #include "stdafx.h"
 #include "debug.h"
 #include "network_data.h"
-
-// Is the network enabled?
-#ifdef ENABLE_NETWORK
-
 #include "functions.h"
 #include "string.h"
 #include "table/strings.h"

@@ -1,13 +1,12 @@
 /* $Id$ */
 
+#ifdef ENABLE_NETWORK
+
 #include "stdafx.h"
 #include "debug.h"
 #include "string.h"
 #include "network_data.h"
 #include "date.h"
-
-#ifdef ENABLE_NETWORK
-
 #include "map.h"
 #include "network_gamelist.h"
 #include "network_udp.h"

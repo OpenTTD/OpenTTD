@@ -22,11 +22,7 @@
 #include "screenshot.h"
 #include "genworld.h"
 #include "date.h"
-
-#ifdef ENABLE_NETWORK
-	#include "table/strings.h"
-	#include "network.h"
-#endif /*ENABLE_NETWORK*/
+#include "network.h"
 
 // ** scriptfile handling ** //
 static FILE *_script_file;
@@ -1192,6 +1188,10 @@ DEF_CONSOLE_CMD(ConSay)
 
 	return true;
 }
+
+#ifdef ENABLE_NETWORK
+	#include "table/strings.h"
+#endif /* ENABLE_NETWORK */
 
 DEF_CONSOLE_CMD(ConPlayers)
 {

@@ -1,5 +1,7 @@
 /* $Id$ */
 
+#ifdef ENABLE_NETWORK
+
 #include "stdafx.h"
 #include "debug.h"
 #include "string.h"
@@ -7,9 +9,6 @@
 #include "network_data.h"
 #include "train.h"
 #include "date.h"
-
-#ifdef ENABLE_NETWORK
-
 #include "table/strings.h"
 #include "functions.h"
 #include "network_server.h"

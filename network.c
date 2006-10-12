@@ -1,16 +1,7 @@
 /* $Id$ */
 
 #include "stdafx.h"
-#include "openttd.h"
-#include "debug.h"
-#include "functions.h"
-#include "string.h"
-#include "strings.h"
-#include "map.h"
 #include "network_data.h"
-#include "command.h"
-#include "variables.h"
-#include "date.h"
 
 #if defined(WITH_REV)
 	extern const char _openttd_revision[];
@@ -24,6 +15,15 @@
 
 #ifdef ENABLE_NETWORK
 
+#include "openttd.h"
+#include "debug.h"
+#include "functions.h"
+#include "string.h"
+#include "strings.h"
+#include "map.h"
+#include "command.h"
+#include "variables.h"
+#include "date.h"
 #include "table/strings.h"
 #include "network_client.h"
 #include "network_server.h"

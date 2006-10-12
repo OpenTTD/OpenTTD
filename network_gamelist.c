@@ -1,10 +1,10 @@
 /* $Id$ */
 
+#ifdef ENABLE_NETWORK
+
 #include "stdafx.h"
 #include "debug.h"
 #include "network_data.h"
-
-#ifdef ENABLE_NETWORK
 
 // This file handles the GameList
 // Also, it handles the request to a server for data about the server

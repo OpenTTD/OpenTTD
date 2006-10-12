@@ -1,5 +1,6 @@
 /* $Id$ */
 
+#ifdef ENABLE_NETWORK
 #include "stdafx.h"
 #include "openttd.h"
 #include "string.h"
@@ -9,13 +10,11 @@
 #include "date.h"
 
 #include "fios.h"
-
-#ifdef ENABLE_NETWORK
-
 #include "table/strings.h"
 #include "functions.h"
 #include "network_data.h"
 #include "network_client.h"
+#include "network_gui.h"
 #include "network_gamelist.h"
 #include "window.h"
 #include "gui.h"
