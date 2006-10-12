@@ -132,9 +132,6 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len);
 uint32 GetBridgeLength(TileIndex begin, TileIndex end);
 int CalcBridgeLenCostFactor(int x);
 
-typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);
-bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd);
-
 /* network.c */
 void NetworkUDPClose(void);
 void NetworkStartUp(void);
@@ -145,8 +142,6 @@ bool NetworkServerStart(void);
 bool NetworkClientConnectGame(const char* host, unsigned short port);
 void NetworkReboot(void);
 void NetworkDisconnect(void);
-void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
-
 /* misc_cmd.c */
 void PlaceTreesRandomly(void);
 

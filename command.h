@@ -195,7 +195,14 @@ static inline bool CmdFailed(int32 res)
 }
 
 /* command.c */
+typedef void CommandCallback(bool success, TileIndex tile, uint32 p1, uint32 p2);
 int32 DoCommand(TileIndex tile, uint32 p1, uint32 p2, uint32 flags, uint procc);
+bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback, uint32 cmd);
+
+#ifdef ENABLE_NETWORK
+
+void NetworkSend_Command(TileIndex tile, uint32 p1, uint32 p2, uint32 cmd, CommandCallback *callback);
+#endif /* ENABLE_NETWORK */
 
 extern const char* _cmd_text; // Text, which gets sent with a command
 

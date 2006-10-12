@@ -4,6 +4,7 @@
 #include "../functions.h"
 #include "../network.h"
 #include "../player.h"
+#include "../command.h"
 
 /* How DoCommands look like for an AI */
 typedef struct AICommand {
