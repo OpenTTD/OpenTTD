@@ -433,6 +433,8 @@ static MenuClickedProc * const _menu_clicked_procs[] = {
 static void MenuWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+		case WE_CREATE: w->widget[0].right = w->width - 1; break;
+
 	case WE_PAINT: {
 		int count,sel;
 		int x,y;
@@ -452,7 +454,7 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		x = 1;
 		y = 1;
 
-		eo = 157;
+		eo = w->width - 3;
 
 		inc = (chk != 0) ? 2 : 1;
 
@@ -505,9 +507,11 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 	}
 }
 
+/* Dynamic widget length determined by toolbar-string length.
+ * See PopupMainToolbMenu en MenuWndProc */
 static const Widget _menu_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   159,     0, 65535,     0, STR_NULL},
-{   WIDGETS_END},
+{    WWT_PANEL, RESIZE_NONE, 14, 0,  0, 0, 0, STR_NULL, STR_NULL},
+{ WIDGETS_END},
 };
 
 
@@ -659,23 +663,49 @@ static void PlayerMenuWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID base_string, int item_count, byte disabled_mask)
+/** Get the maximum length of a given string in a string-list. This is an
+ * implicit string-list where the ID's are consecutive
+ * @param base_string StringID of the first string in the list
+ * @param count amount of StringID's in the list
+ * @return the length of the longest string */
+static int GetStringListMaxWidth(StringID base_string, byte count)
 {
+	char buffer[512];
+	int width, max_width;
+	byte i;
+
+	max_width = 0;
+	for (i = 0; i != count; i++) {
+		GetString(buffer, base_string + i);
+		width = GetStringBoundingBox(buffer).width;
+		if (width > max_width) max_width = width;
+	}
+
+	return max_width;
+}
+
+static Window *PopupMainToolbMenu(Window *w, int x, uint16 main_button, StringID base_string, byte item_count, byte disabled_mask)
+{
+	int width;
 	x += w->left;
 
+	assert(disabled_mask == 0 || item_count <= 8);
 	LowerWindowWidget(w, main_button);
 	InvalidateWidget(w, main_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
-	w = AllocateWindow(x, 0x16, 0xA0, item_count * 10 + 2, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
+	/* Extend the dropdown toolbar to the longest string in the list */
+	width = max(GetStringListMaxWidth(base_string, item_count) + 6, 160);
+
+	w = AllocateWindow(x, 22, width, item_count * 10 + 2, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
 	w->widget[0].bottom = item_count * 10 + 1;
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 
 	WP(w,menu_d).item_count = item_count;
 	WP(w,menu_d).sel_index = 0;
-	WP(w,menu_d).main_button = main_button;
-	WP(w,menu_d).action_id = (main_button >> 8) ? (main_button >> 8) : main_button;
+	WP(w,menu_d).main_button = GB(main_button, 0, 8);
+	WP(w,menu_d).action_id = (GB(main_button, 8, 8) != 0) ? GB(main_button, 8, 8) : main_button;
 	WP(w,menu_d).string_id = base_string;
 	WP(w,menu_d).checked_items = 0;
 	WP(w,menu_d).disabled_items = disabled_mask;
@@ -683,7 +713,6 @@ static Window *PopupMainToolbMenu(Window *w, int x, int main_button, StringID ba
 	_popup_menu_active = true;
 
 	SndPlayFx(SND_15_BEEP);
-
 	return w;
 }
 
