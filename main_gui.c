@@ -684,19 +684,46 @@ static int GetStringListMaxWidth(StringID base_string, byte count)
 	return max_width;
 }
 
-static Window *PopupMainToolbMenu(Window *w, int x, uint16 main_button, StringID base_string, byte item_count, byte disabled_mask)
+/** Show a general dropdown menu. The positioning of the dropdown menu
+ * defaults to the left side of the parent_button, eg the button that caused
+ * this window to appear. The only exceptions are when the right side of this
+ * dropdown would fall outside the main toolbar window, in that case it is
+ * aligned with the toolbar's right side.
+ * Since the disable-mask is only 8 bits right now, these dropdowns are
+ * restricted to 8 items max if any bits of disabled_mask are active.
+ * @param w Pointer to a window this dropdown menu belongs to. Has no effect
+ * whatsoever, only graphically for positioning.
+ * @param parent_button The widget identifier of the button that was clicked for
+ * this dropdown. The created dropdown then knows what button to raise (button) on
+ * action and whose function to execute (action).
+ * It is possible to appoint another button for an action event by setting the
+ * upper 8 bits of this parameter. If non is set, action is presumed to be the same
+ * as button. So<br>
+ * button bits 0 -  7 - widget clicked to get dropdown
+ * action bits 8 - 15 - function of widget to execute on select (defaults to bits 0 - 7)
+ * @param base_string The first StringID shown in the dropdown list. All others are
+ * consecutive indeces from the language file. XXX - fix? Use ingame-string tables?
+ * @param item_count Number of strings in the list, see previous parameter
+ * @param disabled_mask Bitmask of disabled strings in the list
+ * @return Return a pointer to the newly created dropdown window */
+static Window *PopupMainToolbMenu(Window *w, uint16 parent_button, StringID base_string, byte item_count, byte disabled_mask)
 {
 	int width;
-	x += w->left;
+	int x = w->widget[GB(parent_button, 0, 8)].left;
 
 	assert(disabled_mask == 0 || item_count <= 8);
-	LowerWindowWidget(w, main_button);
-	InvalidateWidget(w, main_button);
+	LowerWindowWidget(w, parent_button);
+	InvalidateWidget(w, parent_button);
 
 	DeleteWindowById(WC_TOOLBAR_MENU, 0);
 
-	/* Extend the dropdown toolbar to the longest string in the list */
-	width = max(GetStringListMaxWidth(base_string, item_count) + 6, 160);
+	/* Extend the dropdown toolbar to the longest string in the list and
+	 * also make sure the dropdown is fully visible within the window.
+	 * x + w->left because x is supposed to be the offset of the toolbar-button
+	 * we clicked on and w->left the toolbar window itself. So meaning that
+	 * the default position is aligned with the left side of the clicked button */
+	width = max(GetStringListMaxWidth(base_string, item_count) + 6, 140);
+	x = w->left + clamp(x, 0, w->width - width); // or alternatively '_screen.width - width'
 
 	w = AllocateWindow(x, 22, width, item_count * 10 + 2, MenuWndProc, WC_TOOLBAR_MENU, _menu_widgets);
 	w->widget[0].bottom = item_count * 10 + 1;
@@ -704,8 +731,8 @@ static Window *PopupMainToolbMenu(Window *w, int x, uint16 main_button, StringID
 
 	WP(w,menu_d).item_count = item_count;
 	WP(w,menu_d).sel_index = 0;
-	WP(w,menu_d).main_button = GB(main_button, 0, 8);
-	WP(w,menu_d).action_id = (GB(main_button, 8, 8) != 0) ? GB(main_button, 8, 8) : main_button;
+	WP(w,menu_d).main_button = GB(parent_button, 0, 8);
+	WP(w,menu_d).action_id = (GB(parent_button, 8, 8) != 0) ? GB(parent_button, 8, 8) : parent_button;
 	WP(w,menu_d).string_id = base_string;
 	WP(w,menu_d).checked_items = 0;
 	WP(w,menu_d).disabled_items = disabled_mask;
@@ -747,22 +774,22 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 
 static void ToolbarSaveClick(Window *w)
 {
-	PopupMainToolbMenu(w, 66, 3, STR_015C_SAVE_GAME, 4, 0);
+	PopupMainToolbMenu(w, 3, STR_015C_SAVE_GAME, 4, 0);
 }
 
 static void ToolbarMapClick(Window *w)
 {
-	PopupMainToolbMenu(w, 96, 4, STR_02DE_MAP_OF_WORLD, 3, 0);
+	PopupMainToolbMenu(w, 4, STR_02DE_MAP_OF_WORLD, 3, 0);
 }
 
 static void ToolbarTownClick(Window *w)
 {
-	PopupMainToolbMenu(w, 118, 5, STR_02BB_TOWN_DIRECTORY, 1, 0);
+	PopupMainToolbMenu(w, 5, STR_02BB_TOWN_DIRECTORY, 1, 0);
 }
 
 static void ToolbarSubsidiesClick(Window *w)
 {
-	PopupMainToolbMenu(w, 140, 6, STR_02DD_SUBSIDIES, 1, 0);
+	PopupMainToolbMenu(w, 6, STR_02DD_SUBSIDIES, 1, 0);
 }
 
 static void ToolbarStationsClick(Window *w)
@@ -782,18 +809,18 @@ static void ToolbarPlayersClick(Window *w)
 
 static void ToolbarGraphsClick(Window *w)
 {
-	PopupMainToolbMenu(w, 236, 10, STR_0154_OPERATING_PROFIT_GRAPH, 6, 0);
+	PopupMainToolbMenu(w, 10, STR_0154_OPERATING_PROFIT_GRAPH, 6, 0);
 }
 
 static void ToolbarLeagueClick(Window *w)
 {
-	PopupMainToolbMenu(w, 258, 11, STR_015A_COMPANY_LEAGUE_TABLE, 2, 0);
+	PopupMainToolbMenu(w, 11, STR_015A_COMPANY_LEAGUE_TABLE, 2, 0);
 }
 
 static void ToolbarIndustryClick(Window *w)
 {
-	int dis = _current_player == OWNER_SPECTATOR ? 2 : 0;
-	PopupMainToolbMenu(w, 280, 12, STR_INDUSTRY_DIR, 2, dis);
+	/* Disable build-industry menu if we are a spectator */
+	PopupMainToolbMenu(w, 12, STR_INDUSTRY_DIR, 2, (_current_player == OWNER_SPECTATOR) ? (1 << 1) : 0);
 }
 
 static void ToolbarTrainClick(Window *w)
@@ -931,50 +958,50 @@ static void ToolbarBuildRailClick(Window *w)
 {
 	const Player *p = GetPlayer(_local_player);
 	Window *w2;
-	w2 = PopupMainToolbMenu(w, 457, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes);
+	w2 = PopupMainToolbMenu(w, 19, STR_1015_RAILROAD_CONSTRUCTION, RAILTYPE_END, ~p->avail_railtypes);
 	WP(w2,menu_d).sel_index = _last_built_railtype;
 }
 
 static void ToolbarBuildRoadClick(Window *w)
 {
-	PopupMainToolbMenu(w, 479, 20, STR_180A_ROAD_CONSTRUCTION, 1, 0);
+	PopupMainToolbMenu(w, 20, STR_180A_ROAD_CONSTRUCTION, 1, 0);
 }
 
 static void ToolbarBuildWaterClick(Window *w)
 {
-	PopupMainToolbMenu(w, 501, 21, STR_9800_DOCK_CONSTRUCTION, 1, 0);
+	PopupMainToolbMenu(w, 21, STR_9800_DOCK_CONSTRUCTION, 1, 0);
 }
 
 static void ToolbarBuildAirClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 22, STR_A01D_AIRPORT_CONSTRUCTION, 1, 0);
+	PopupMainToolbMenu(w, 22, STR_A01D_AIRPORT_CONSTRUCTION, 1, 0);
 }
 
 static void ToolbarForestClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 23, STR_LANDSCAPING, 3, 0);
+	PopupMainToolbMenu(w, 23, STR_LANDSCAPING, 3, 0);
 }
 
 static void ToolbarMusicClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 24, STR_01D3_SOUND_MUSIC, 1, 0);
+	PopupMainToolbMenu(w, 24, STR_01D3_SOUND_MUSIC, 1, 0);
 }
 
 static void ToolbarNewspaperClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 25, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3, 0);
+	PopupMainToolbMenu(w, 25, STR_0200_LAST_MESSAGE_NEWS_REPORT, 3, 0);
 }
 
 static void ToolbarHelpClick(Window *w)
 {
-	PopupMainToolbMenu(w, 0x1E0, 26, STR_02D5_LAND_BLOCK_INFO, 6, 0);
+	PopupMainToolbMenu(w, 26, STR_02D5_LAND_BLOCK_INFO, 6, 0);
 }
 
 static void ToolbarOptionsClick(Window *w)
 {
 	uint16 x;
 
-	w = PopupMainToolbMenu(w,  43, 2, STR_02C3_GAME_OPTIONS, 13, 0);
+	w = PopupMainToolbMenu(w, 2, STR_02C3_GAME_OPTIONS, 13, 0);
 
 	x = (uint16)-1;
 	if (_display_opt & DO_SHOW_TOWN_NAMES)    CLRBIT(x,  5);
@@ -991,7 +1018,7 @@ static void ToolbarOptionsClick(Window *w)
 
 static void ToolbarScenSaveOrLoad(Window *w)
 {
-	PopupMainToolbMenu(w, 0x2C, 3, STR_0292_SAVE_SCENARIO, 5, 0);
+	PopupMainToolbMenu(w, 3, STR_0292_SAVE_SCENARIO, 5, 0);
 }
 
 static void ToolbarScenDateBackward(Window *w)
@@ -1022,7 +1049,8 @@ static void ToolbarScenDateForward(Window *w)
 
 static void ToolbarScenMapTownDir(Window *w)
 {
-	PopupMainToolbMenu(w, 0x16A, 8 | (17<<8), STR_02DE_MAP_OF_WORLD, 4, 0);
+	/* Scenario editor button, *hack*hack* use different button to activate */
+	PopupMainToolbMenu(w, 8 | (17 << 8), STR_02DE_MAP_OF_WORLD, 4, 0);
 }
 
 static void ToolbarScenZoomIn(Window *w)
