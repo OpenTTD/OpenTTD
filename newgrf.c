@@ -2803,6 +2803,57 @@ static void GRFSound(byte *buf, int len)
 	if (_cur_grffile->sound_offset == 0) _cur_grffile->sound_offset = GetNumSounds();
 }
 
+static void ImportGRFSound(byte *buf, int len)
+{
+	const GRFFile *file;
+	FileEntry *se = AllocateFileEntry();
+	uint32 grfid = grf_load_dword(&buf);
+	uint16 sound = grf_load_word(&buf);
+
+	file = GetFileByGRFID(grfid);
+	if (file == NULL || file->sound_offset == 0) {
+		grfmsg(GMS_WARN, "ImportGRFSound: Source file not available.");
+		return;
+	}
+
+	if (file->sound_offset + sound >= GetNumSounds()) {
+		grfmsg(GMS_WARN, "ImportGRFSound: Sound effect %d is invalid.", sound);
+		return;
+	}
+
+	grfmsg(GMS_NOTICE, "ImportGRFSound: Copying sound %d (%d) from file %X", sound, file->sound_offset + sound, grfid);
+
+	memcpy(se, GetSound(file->sound_offset + sound), sizeof(*se));
+
+	/* Reset volume and priority, which TTDPatch doesn't copy */
+	se->volume   = 128;
+	se->priority = 0;
+}
+
+/* 'Action 0xFE' */
+static void GRFImportBlock(byte *buf, int len)
+{
+	if (_grf_data_blocks == 0) {
+		grfmsg(GMS_WARN, "GRFImportBlock: Unexpected import block, skipping.");
+		return;
+	}
+
+	buf++;
+
+	_grf_data_blocks--;
+
+	/* XXX 'Action 0xFE' isn't really specified. It is only mentioned for
+	 * importing sounds, so this is probably all wrong... */
+	if (grf_load_byte(&buf) != _grf_data_type) {
+		grfmsg(GMS_WARN, "GRFImportBlock: Import type mismatch.");
+	}
+
+	switch (_grf_data_type) {
+		case GDT_SOUND: ImportGRFSound(buf, len - 1); break;
+		default: NOT_REACHED(); break;
+	}
+}
+
 static void LoadGRFSound(byte *buf, int len)
 {
 	byte *buf_start = buf;
@@ -3218,6 +3269,9 @@ static void DecodeSpecialSprite(uint num, uint stage)
 	if (action == 0xFF) {
 		DEBUG(grf, 7) ("Handling data block in stage %d", stage);
 		GRFDataBlock(buf, num);
+	} else if (action == 0xFE) {
+		DEBUG(grf, 7) ("Handling import block in stage %d", stage);
+		GRFImportBlock(buf, num);
 	} else if (action >= lengthof(handlers)) {
 		DEBUG(grf, 7) ("Skipping unknown action 0x%02X", action);
 	} else if (!HASBIT(action_mask[stage], action)) {
