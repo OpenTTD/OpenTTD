@@ -862,14 +862,12 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 {
 	const SpriteGroup *group;
 	ResolverObject object;
-	CargoID cargo = GC_PURCHASE;
+	CargoID cargo;
 
 	NewVehicleResolver(&object, engine, v);
 
-	if (v != NULL) {
-		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
-		assert(cargo != GC_INVALID);
-	}
+	cargo = (v == NULL) ? GC_PURCHASE : _global_cargo_id[_opt.landscape][v->cargo_type];
+	assert(cargo != GC_INVALID);
 
 	group = engine_custom_sprites[engine][cargo];
 
@@ -879,13 +877,8 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 		if (overset != NULL) group = overset;
 	}
 
+	if (group == NULL) group = engine_custom_sprites[engine][GC_DEFAULT];
 	group = Resolve(group, &object);
-
-	if ((group == NULL || group->type != SGT_RESULT) && cargo != GC_DEFAULT) {
-		// This group is empty but perhaps there'll be a default one.
-		group = Resolve(engine_custom_sprites[engine][GC_DEFAULT], &object);
-	}
-
 	if (group == NULL || group->type != SGT_RESULT) return 0;
 
 	return group->g.result.sprite + (direction % group->g.result.num_sprites);
@@ -951,6 +944,7 @@ uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineI
 	object.callback_param2 = param2;
 
 	cargo = (v == NULL) ? GC_PURCHASE : _global_cargo_id[_opt.landscape][v->cargo_type];
+	assert(cargo != GC_INVALID);
 
 	group = engine_custom_sprites[engine][cargo];
 
@@ -960,13 +954,8 @@ uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineI
 		if (overset != NULL) group = overset;
 	}
 
+	if (group == NULL) group = engine_custom_sprites[engine][GC_DEFAULT];
 	group = Resolve(group, &object);
-
-	if ((group == NULL || group->type != SGT_CALLBACK) && cargo != GC_DEFAULT) {
-		// This group is empty but perhaps there'll be a default one.
-		group = Resolve(engine_custom_sprites[engine][GC_DEFAULT], &object);
-	}
-
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
@@ -997,6 +986,7 @@ uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, E
 	object.u.vehicle.parent = parent;
 
 	cargo = (v == NULL) ? GC_PURCHASE : _global_cargo_id[_opt.landscape][v->cargo_type];
+	assert(cargo != GC_INVALID);
 
 	group = engine_custom_sprites[engine][cargo];
 
@@ -1006,13 +996,8 @@ uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, E
 		if (overset != NULL) group = overset;
 	}
 
+	if (group == NULL) group = engine_custom_sprites[engine][GC_DEFAULT];
 	group = Resolve(group, &object);
-
-	if ((group == NULL || group->type != SGT_CALLBACK) && cargo != GC_DEFAULT) {
-		// This group is empty but perhaps there'll be a default one.
-		group = Resolve(engine_custom_sprites[engine][GC_DEFAULT], &object);
-	}
-
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
@@ -1033,6 +1018,8 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	object.trigger = trigger;
 
 	cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+	assert(cargo != GC_INVALID);
+
 	group = engine_custom_sprites[v->engine_type][cargo];
 
 	if (v->type == VEH_Train) {
@@ -1040,14 +1027,8 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 		if (overset != NULL) group = overset;
 	}
 
+	if (group == NULL) group = engine_custom_sprites[v->engine_type][GC_DEFAULT];
 	group = Resolve(group, &object);
-	if (group == NULL && v->cargo_type != GC_DEFAULT) {
-		// This group is empty but perhaps there'll be a default one.
-		group = Resolve(engine_custom_sprites[v->engine_type][GC_DEFAULT], &object);
-	}
-
-	/* Really return? */
-	if (group == NULL) return;
 
 	new_random_bits = Random();
 	v->random_bits &= ~object.reseed;
