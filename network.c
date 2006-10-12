@@ -1465,6 +1465,9 @@ void NetworkStartUp(void)
 // This shuts the network down
 void NetworkShutDown(void)
 {
+	NetworkDisconnect();
+	NetworkUDPClose();
+
 	DEBUG(net, 3) ("[NET][Core] Shutting down the network.");
 
 	_network_available = false;

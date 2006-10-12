@@ -509,8 +509,6 @@ int ttd_main(int argc, char *argv[])
 	if (_network_available) {
 		// Shut down the network and close any open connections
 		NetworkDisconnect();
-		NetworkUDPClose();
-		NetworkShutDown();
 	}
 #endif /* ENABLE_NETWORK */
 

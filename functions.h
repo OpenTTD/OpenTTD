@@ -132,16 +132,6 @@ bool CheckBridge_Stuff(byte bridge_type, uint bridge_len);
 uint32 GetBridgeLength(TileIndex begin, TileIndex end);
 int CalcBridgeLenCostFactor(int x);
 
-/* network.c */
-void NetworkUDPClose(void);
-void NetworkStartUp(void);
-void NetworkShutDown(void);
-void NetworkGameLoop(void);
-void NetworkUDPGameLoop(void);
-bool NetworkServerStart(void);
-bool NetworkClientConnectGame(const char* host, unsigned short port);
-void NetworkReboot(void);
-void NetworkDisconnect(void);
 /* misc_cmd.c */
 void PlaceTreesRandomly(void);
 

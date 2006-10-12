@@ -224,6 +224,15 @@ bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
 void NetworkPopulateCompanyInfo(void);
 void CheckMinPlayers(void);
 
+void NetworkStartUp(void);
+void NetworkUDPClose(void);
+void NetworkShutDown(void);
+void NetworkGameLoop(void);
+void NetworkUDPGameLoop(void);
+bool NetworkServerStart(void);
+bool NetworkClientConnectGame(const char* host, unsigned short port);
+void NetworkReboot(void);
+void NetworkDisconnect(void);
 #endif /* ENABLE_NETWORK */
 
 // Those variables must always be registered!
