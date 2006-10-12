@@ -33,6 +33,7 @@ function showhelp() {
 	echo " sdl                Do you want SDL-support?            [yes]"
 	echo " png                Do you want PNG-support?            [yes]"
 	echo " iconv              Do you want iconv-support?          [no]"
+	echo " network            Do you want network-support?        [yes]"
 	echo " cocoa              Do you want cocoa-support? (MacOSX) [no]"
 	echo ""
 	echo "Params used to configure external libs:"
@@ -170,6 +171,12 @@ do
 			;;
 		--with-cocoa)
 			PARAM="$PARAM WITH_COCOA=1"
+			;;
+		--with-network)
+			PARAM="$PARAM WITH_NETWORK=1"
+			;;
+		--without-network)
+			PARAM="$PARAM WITH_NETWORK="
 			;;
 		--without-cocoa)
 			PARAM="$PARAM WITH_COCOA="
