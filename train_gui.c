@@ -132,18 +132,16 @@ static int CDECL TrainEngineNameSorter(const void *a, const void *b)
 {
 	const EngineID va = *(const EngineID*)a;
 	const EngineID vb = *(const EngineID*)b;
-	char buf1[64] = "\0";
+	char buf1[64];
 	int r;
 
-	SetDParam(0, GetCustomEngineName(va));
-	GetString(buf1, STR_JUST_STRING);
+	GetString(buf1, GetCustomEngineName(va));
 
 	if (vb != _last_engine) {
 		_last_engine = vb;
 		_bufcache[0] = '\0';
 
-		SetDParam(0, GetCustomEngineName(vb));
-		GetString(_bufcache, STR_JUST_STRING);
+		GetString(_bufcache, GetCustomEngineName(vb));
 	}
 
 	r =  strcmp(buf1, _bufcache); // sort by name

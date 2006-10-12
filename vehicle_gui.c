@@ -516,17 +516,13 @@ static int CDECL VehicleNameSorter(const void *a, const void *b)
 	char buf1[64] = "\0";
 	int r;
 
-	if (va->string_id != _internal_name_sorter_id) {
-		SetDParam(0, va->string_id);
-		GetString(buf1, STR_JUST_STRING);
-	}
+	if (va->string_id != _internal_name_sorter_id) GetString(buf1, va->string_id);
 
 	if (vb != _last_vehicle) {
 		_last_vehicle = vb;
 		_bufcache[0] = '\0';
 		if (vb->string_id != _internal_name_sorter_id) {
-			SetDParam(0, vb->string_id);
-			GetString(_bufcache, STR_JUST_STRING);
+			GetString(_bufcache, vb->string_id);
 		}
 	}
 
