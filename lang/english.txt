@@ -1065,7 +1065,6 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max sta
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Show a measurement tooltip when using various build-tools: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Show company liveries: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :None
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Own company
@@ -3093,12 +3092,5 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Small ai
 STR_LARGE_AIRPORTS                                              :{BLACK}Large airports
 STR_HUB_AIRPORTS                                                :{BLACK}Hub airports
 STR_HELIPORTS                                                   :{BLACK}Helicopter airports
-
-############ Tooltip measurment
-
-STR_MEASURE_LENGTH                                              :{BLACK}Length: {NUM}
-STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Length: {NUM}{}Height difference: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Height difference: {NUM} m
 
 ########
