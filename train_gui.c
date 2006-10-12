@@ -144,14 +144,14 @@ static int CDECL TrainEngineNameSorter(const void *a, const void *b)
 		GetString(_bufcache, GetCustomEngineName(vb));
 	}
 
-	r =  strcmp(buf1, _bufcache); // sort by name
+	r =  strcasecmp(buf1, _bufcache); // sort by name
 
 	if (r == 0) {
 		/* Use EngineID to sort instead since we want consistent sorting */
 		return TrainEngineNumberSorter(a, b);
 	}
 
-	return (_internal_sort_order & 1) ? -r : r;
+	return _internal_sort_order ? -r : r;
 }
 
 static int CDECL TrainEngineRunningCostSorter(const void *a, const void *b)
