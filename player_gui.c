@@ -18,14 +18,10 @@
 #include "train.h"
 #include "date.h"
 #include "newgrf.h"
-
-#ifdef ENABLE_NETWORK
 #include "network_data.h"
 #include "network_client.h"
-#endif
 
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied);
-
 
 static void DrawPlayerEconomyStats(const Player *p, byte mode)
 {
@@ -811,15 +807,15 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 					DoCommandP(0, w->window_number, 0, NULL, CMD_SELL_SHARE_IN_COMPANY | CMD_MSG(STR_707C_CAN_T_SELL_25_SHARE_IN));
 					break;
 
+				#ifdef ENABLE_NETWORK
 				case PCW_WIDGET_COMPANY_PASSWORD:
-					#ifdef ENABLE_NETWORK
 					if (w->window_number == _local_player) {
 						WP(w,def_d).byte_1 = 2;
 						ShowQueryString(BindCString(_network_player_info[_local_player].password),
 							STR_SET_COMPANY_PASSWORD, sizeof(_network_player_info[_local_player].password), 250, w->window_class, w->window_number, CS_ALPHANUMERAL);
 					}
-					#endif
 					break;
+				#endif /* ENABLE_NETWORK */
 			}
 			break;
 
@@ -857,12 +853,12 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 				case 1: /* Change company name */
 					DoCommandP(0, 0, 0, NULL, CMD_CHANGE_COMPANY_NAME | CMD_MSG(STR_700C_CAN_T_CHANGE_COMPANY_NAME));
 					break;
+				#ifdef ENABLE_NETWORK
 				case 2: /* Change company password */
-					#ifdef ENABLE_NETWORK
 					if (*b == '\0') *b = '*'; // empty password is a '*' because of console argument
 					NetworkChangeCompanyPassword(1, &b);
-					#endif
 					break;
+				#endif /* ENABLE_NETWORK */
 			}
 			break;
 		}

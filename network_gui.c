@@ -1720,6 +1720,4 @@ void ShowNetworkChatQueryWindow(byte desttype, byte dest)
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
 }
 
-#else
-void ShowJoinStatusWindowAfterJoin(void) {}
 #endif /* ENABLE_NETWORK */

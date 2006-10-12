@@ -453,10 +453,7 @@ int ttd_main(int argc, char *argv[])
 	// restore saved music volume
 	_music_driver->set_volume(msf.music_vol);
 
-#ifdef ENABLE_NETWORK
-	// initialize network-core
-	NetworkStartUp();
-#endif /* ENABLE_NETWORK */
+	NetworkStartUp(); // initialize network-core
 
 	_opt_ptr = &_opt_newgame;
 
@@ -505,12 +502,7 @@ int ttd_main(int argc, char *argv[])
 	WaitTillSaved();
 	IConsoleFree();
 
-#ifdef ENABLE_NETWORK
-	if (_network_available) {
-		// Shut down the network and close any open connections
-		NetworkDisconnect();
-	}
-#endif /* ENABLE_NETWORK */
+	if (_network_available) NetworkShutDown(); // Shut down the network and close any open connections
 
 	_video_driver->stop();
 	_music_driver->stop();
@@ -986,8 +978,7 @@ void GameLoop(void)
 
 #ifdef ENABLE_NETWORK
 	// Check for UDP stuff
-	if (_network_available)
-		NetworkUDPGameLoop();
+	if (_network_available) NetworkUDPGameLoop();
 
 	if (_networking && !IsGeneratingWorld()) {
 		// Multiplayer

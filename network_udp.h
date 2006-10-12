@@ -14,6 +14,6 @@ NetworkGameList *NetworkUDPQueryServer(const char* host, unsigned short port);
 void NetworkUDPAdvertise(void);
 void NetworkUDPRemoveAdvertise(void);
 
-#endif
+#endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_UDP_H */

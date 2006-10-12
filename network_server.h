@@ -28,6 +28,12 @@ static inline const char* GetPlayerIP(const NetworkClientInfo* ci)
 	return inet_ntoa(addr);
 }
 
+#else /* ENABLE_NETWORK */
+/* Network function stubs when networking is disabled */
+
+static inline void NetworkServerMonthlyLoop(void) {}
+static inline void NetworkServerYearlyLoop(void) {}
+
 #endif /* ENABLE_NETWORK */
 
 #endif /* NETWORK_SERVER_H */

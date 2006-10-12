@@ -254,9 +254,7 @@ void IncreaseDate(void)
 		TownsMonthlyLoop();
 		IndustryMonthlyLoop();
 		StationMonthlyLoop();
-#ifdef ENABLE_NETWORK
 		if (_network_server) NetworkServerMonthlyLoop();
-#endif /* ENABLE_NETWORK */
 	}
 
 	/* check if we entered a new year? */
@@ -269,9 +267,7 @@ void IncreaseDate(void)
 	RoadVehiclesYearlyLoop();
 	AircraftYearlyLoop();
 	ShipsYearlyLoop();
-#ifdef ENABLE_NETWORK
 	if (_network_server) NetworkServerYearlyLoop();
-#endif /* ENABLE_NETWORK */
 
 	/* check if we reached end of the game */
 	if (_cur_year == _patches.ending_year) {

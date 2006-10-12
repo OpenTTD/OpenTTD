@@ -13,6 +13,7 @@
 #include "settings.h"
 #include "heightmap.h"
 #include "genworld.h"
+#include "network_gui.h"
 
 static const Widget _select_game_widgets[] = {
 {    WWT_CAPTION, RESIZE_NONE, 13,   0, 335,   0,  13, STR_0307_OPENTTD,         STR_NULL},
@@ -66,15 +67,11 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		case 5: ShowSaveLoadDialog(SLD_LOAD_HEIGHTMAP); break;
 		case 6: ShowCreateScenario(); break;
 		case 7:
-#ifdef ENABLE_NETWORK
 			if (!_network_available) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
 			} else {
 				ShowNetworkGameWindow();
 			}
-#else
-			ShowErrorMessage(INVALID_STRING_ID ,STR_NETWORK_ERR_NOTAVAILABLE, 0, 0);
-#endif
 			break;
 		case 8: case 9: case 10: case 11:
 			RaiseWindowWidget(w, _opt_newgame.landscape + 8);

@@ -120,9 +120,6 @@ void SetFiosType(const byte fiostype);
 /* FIOS_TYPE_FILE, FIOS_TYPE_OLDFILE etc. different colours */
 extern const byte _fios_colors[];
 
-/* network gui */
-void ShowNetworkGameWindow(void);
-
 /* bridge_gui.c */
 void ShowBuildBridgeWindow(uint start, uint end, byte type);
 

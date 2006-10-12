@@ -38,6 +38,7 @@
 #include "network_data.h"
 #include "network_client.h"
 #include "network_server.h"
+#include "network_gui.h"
 
 static int _rename_id;
 static int _rename_what;
@@ -221,22 +222,15 @@ static void MenuClickFinances(int index)
 	ShowPlayerFinances(index);
 }
 
-#ifdef ENABLE_NETWORK
-extern void ShowClientList(void);
-#endif /* ENABLE_NETWORK */
-
 static void MenuClickCompany(int index)
 {
 	if (_networking && index == 0) {
-#ifdef ENABLE_NETWORK
 		ShowClientList();
-#endif /* ENABLE_NETWORK */
 	} else {
 		if (_networking) index--;
 		ShowPlayerCompany(index);
 	}
 }
-
 
 static void MenuClickGraphs(int index)
 {
@@ -308,15 +302,12 @@ static void MenuClickBuildAir(int index)
 }
 
 #ifdef ENABLE_NETWORK
-
-void ShowNetworkGiveMoneyWindow(byte player)
+void ShowNetworkGiveMoneyWindow(PlayerID player)
 {
 	_rename_id = player;
 	_rename_what = 3;
 	ShowQueryString(STR_EMPTY, STR_NETWORK_GIVE_MONEY_CAPTION, 30, 180, 1, 0, CS_NUMERAL);
 }
-
-
 #endif /* ENABLE_NETWORK */
 
 void ShowRenameSignWindow(const Sign *si)
@@ -2320,9 +2311,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 
 			case '1' | WKC_ALT: /* Gimme money */
 				/* Server can not cheat in advertise mode either! */
-#ifdef ENABLE_NETWORK
 				if (!_networking || !_network_server || !_network_advertise)
-#endif
 					DoCommandP(0, -10000000, 0, NULL, CMD_MONEY_CHEAT);
 				break;
 

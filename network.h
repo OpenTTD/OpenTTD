@@ -197,7 +197,6 @@ VARDEF uint16 _network_udp_broadcast;
 
 VARDEF byte _network_lan_internet;
 
-VARDEF bool _network_advertise;
 VARDEF bool _network_need_advertise;
 VARDEF uint32 _network_last_advertise_frame;
 VARDEF uint8 _network_advertise_retries;
@@ -233,13 +232,26 @@ bool NetworkServerStart(void);
 bool NetworkClientConnectGame(const char* host, unsigned short port);
 void NetworkReboot(void);
 void NetworkDisconnect(void);
+
+VARDEF bool _networking;         ///< are we in networking mode?
+VARDEF bool _network_server;     ///< network-server is active
+VARDEF bool _network_available;  ///< is network mode available?
+
+#else /* ENABLE_NETWORK */
+/* Network function stubs when networking is disabled */
+
+static inline void NetworkStartUp(void) {}
+static inline void NetworkShutDown(void) {}
+
+#define _networking 0
+#define _network_server 0
+#define _network_available 0
+
 #endif /* ENABLE_NETWORK */
 
-// Those variables must always be registered!
-VARDEF bool _networking;
-VARDEF bool _network_available;  // is network mode available?
-VARDEF bool _network_server; // network-server is active
-VARDEF bool _network_dedicated; // are we a dedicated server?
-VARDEF PlayerID _network_playas; // an id to play as..
+/* These variables must always be registered! */
+VARDEF bool _network_dedicated;  ///< are we a dedicated server?
+VARDEF bool _network_advertise;  ///< is the server advertising to the master server?
+VARDEF PlayerID _network_playas; ///< an id to play as..
 
 #endif /* NETWORK_H */
