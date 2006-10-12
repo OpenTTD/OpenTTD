@@ -734,32 +734,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Graba-lo
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selección de nomes dos deseños dos vehículos
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Graba-los nomes dos deseños dos vehículos persoalizados no disco
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Opcións da Partida
-STR_02C4_GAME_OPTIONS                                           :Opcións da Partida
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configuración de Dificultade
-STR_02C6_DIFFICULTY_SETTINGS                                    :Configuración de Dificultade
 STR_02C7_CONFIG_PATCHES                                         :Configuración dos Parches
-STR_02C8_CONFIG_PATCHES                                         :Configurar parches
 STR_NEWGRF_SETTINGS                                             :Configuración de Newgrf
-STR_NEWGRF_SETTINGS2                                            :Configuración de Newgrf
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Amosar nomes de cidades
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Amosar nomes de cidades
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Amosar nomes de estacións
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Amosae nomes de estacións
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Amosa-los sinais
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Amosa-los sinais
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Amosar puntos de control
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Amosar puntos de control
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Animacións completas
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animación completa
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Detalle completo
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalle completo
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Edificios transparentes
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificios transparentes
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Sinais de estación transparentes
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Sinais de estación transparentes
 ############ range ends	here
 

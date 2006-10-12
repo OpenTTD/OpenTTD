@@ -743,32 +743,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Salveaza
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selecteazã numele modelelor
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salveazã pe disc numele personalizate de mãrci si modele
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Optiunile jocului (F2)
-STR_02C4_GAME_OPTIONS                                           :Optiunile jocului (F2)
 STR_02C5_DIFFICULTY_SETTINGS                                    :Setãri dificultate
-STR_02C6_DIFFICULTY_SETTINGS                                    :Setãri dificultate
 STR_02C7_CONFIG_PATCHES                                         :Configurare patch
-STR_02C8_CONFIG_PATCHES                                         :Configurare patch
 STR_NEWGRF_SETTINGS                                             :Setari Newgrf
-STR_NEWGRF_SETTINGS2                                            :Setari Newgrf
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Afiseazã numele oraselor
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Afiseazã numele oraselor
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Afiseazã numele statiilor
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Afiseazã numele statiilor
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Afiseazã semnele de pe hartã
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Afiseazã semnele de pe hartã
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Afisare puncte de tranzit
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Afisare puncte de tranzit
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Animatie completã
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animatie completã
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Detalii grafice complete
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detalii grafice complete
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Clãdiri transparente (X)
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Peisaj transparent (X)
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Numele statiilor transparente
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Numele statiilor transparente
 ############ range ends	here
 

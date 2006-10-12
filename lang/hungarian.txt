@@ -818,32 +818,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Saját ne
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}A jármûvek márkanevének kiválasztása
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}A saját jármû-márkanevek elmentése lemezre
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Beállítások
-STR_02C4_GAME_OPTIONS                                           :Beállítások
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nehézségi beállítások
-STR_02C6_DIFFICULTY_SETTINGS                                    :Nehézségi beállítások
 STR_02C7_CONFIG_PATCHES                                         :Foltok beállítása
-STR_02C8_CONFIG_PATCHES                                         :Foltok beállítása
 STR_NEWGRF_SETTINGS                                             :Newgrf beállítások
-STR_NEWGRF_SETTINGS2                                            :Newgrf beállítások
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Városnevek mutatása
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Városnevek mutatása
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Állomásnevek mutatása
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Állomásnevek mutatása
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Feliratok mutatása
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Feliratok mutatása
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Ellenõrzõ pontok mutatása
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Ellenõrzõ pontok mutatása
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Teljes animáció
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Teljes animáció
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Minden részlet
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Minden részlet
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Átlátszó épületek
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Átlátszó épületek
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Állomásnevek keret nélkül
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Állomásnevek keret nélkül
 ############ range ends	here
 

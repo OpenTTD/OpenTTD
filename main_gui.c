@@ -436,37 +436,30 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		case WE_CREATE: w->widget[0].right = w->width - 1; break;
 
 	case WE_PAINT: {
-		int count,sel;
-		int x,y;
-		uint16 chk;
-		StringID string;
-		int eo;
-		int inc;
-		byte color;
+		int x, y;
+
+		byte count = WP(w, menu_d).item_count;
+		byte sel = WP(w, menu_d).sel_index;
+		uint16 chk = WP(w, menu_d).checked_items;
+		StringID string = WP(w, menu_d).string_id;
+		byte dis = WP(w, menu_d).disabled_items;
 
 		DrawWindowWidgets(w);
-
-		count = WP(w,menu_d).item_count;
-		sel = WP(w,menu_d).sel_index;
-		chk = WP(w,menu_d).checked_items;
-		string = WP(w,menu_d).string_id;
 
 		x = 1;
 		y = 1;
 
-		eo = w->width - 3;
+		for (; count != 0; count--, string++, sel--) {
+			byte color = HASBIT(dis, 0) ? 14 : (sel == 0) ? 12 : 16;
+			if (sel == 0) GfxFillRect(x, y, x + w->width - 3, y + 9, 0);
 
-		inc = (chk != 0) ? 2 : 1;
+			if (HASBIT(chk, 0)) DrawString(x + 2, y, STR_CHECKMARK, color);
+			DrawString(x + 2, y, string, color);
 
-		do {
-			if (sel== 0) GfxFillRect(x, y, x + eo, y+9, 0);
-			color = sel == 0 ? 0xC : 0x10;
-			if (HASBIT(WP(w,menu_d).disabled_items, (string - WP(w, menu_d).string_id))) color = 0xE;
-			DrawString(x + 2, y, string + (chk & 1), color);
 			y += 10;
-			string += inc;
 			chk >>= 1;
-		} while (--sel,--count);
+			dis >>= 1;
+		}
 	} break;
 
 	case WE_DESTROY: {
@@ -490,7 +483,10 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 		action_id = WP(w,menu_d).action_id;
 		DeleteWindow(w);
 
-		if (index >= 0) _menu_clicked_procs[action_id](index);
+		if (index >= 0) {
+			assert((uint)index <= lengthof(_menu_clicked_procs));
+			_menu_clicked_procs[action_id](index);
+		}
 
 		break;
 		}
@@ -999,19 +995,18 @@ static void ToolbarHelpClick(Window *w)
 
 static void ToolbarOptionsClick(Window *w)
 {
-	uint16 x;
+	uint16 x = 0;
 
 	w = PopupMainToolbMenu(w, 2, STR_02C3_GAME_OPTIONS, 13, 0);
 
-	x = (uint16)-1;
-	if (_display_opt & DO_SHOW_TOWN_NAMES)    CLRBIT(x,  5);
-	if (_display_opt & DO_SHOW_STATION_NAMES) CLRBIT(x,  6);
-	if (_display_opt & DO_SHOW_SIGNS)         CLRBIT(x,  7);
-	if (_display_opt & DO_WAYPOINTS)          CLRBIT(x,  8);
-	if (_display_opt & DO_FULL_ANIMATION)     CLRBIT(x,  9);
-	if (_display_opt & DO_FULL_DETAIL)        CLRBIT(x, 10);
-	if (_display_opt & DO_TRANS_BUILDINGS)    CLRBIT(x, 11);
-	if (_display_opt & DO_TRANS_SIGNS)        CLRBIT(x, 12);
+	if (_display_opt & DO_SHOW_TOWN_NAMES)    SETBIT(x,  5);
+	if (_display_opt & DO_SHOW_STATION_NAMES) SETBIT(x,  6);
+	if (_display_opt & DO_SHOW_SIGNS)         SETBIT(x,  7);
+	if (_display_opt & DO_WAYPOINTS)          SETBIT(x,  8);
+	if (_display_opt & DO_FULL_ANIMATION)     SETBIT(x,  9);
+	if (_display_opt & DO_FULL_DETAIL)        SETBIT(x, 10);
+	if (_display_opt & DO_TRANS_BUILDINGS)    SETBIT(x, 11);
+	if (_display_opt & DO_TRANS_SIGNS)        SETBIT(x, 12);
 	WP(w,menu_d).checked_items = x;
 }
 

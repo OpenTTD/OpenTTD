@@ -803,32 +803,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Ulo¸it v
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vyber nazvu dopravních prostredku
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Ulo¸it u¸ivatelské názvy dopravních prostredku na disk
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Mo¸nosti hry
-STR_02C4_GAME_OPTIONS                                           :Mo¸nosti hry
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavení obtí¸nosti
-STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavení obtí¸nosti
 STR_02C7_CONFIG_PATCHES                                         :Nastavení patchu
-STR_02C8_CONFIG_PATCHES                                         :Nastavení patchu
 STR_NEWGRF_SETTINGS                                             :Nastavení newgrf
-STR_NEWGRF_SETTINGS2                                            :Nastavení newgrf
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Zobrazení jmen mest
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Zobrazení jmen mest
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Zobrazení jmen stanic
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Zobrazení jmen stanic
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Zobrazení popisku
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Zobrazení popisku
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Zobrazení kontrolních bodu
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Zobrazení kontrolních bodu
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Plné animace
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plné animace
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Plné detaily
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plné detaily
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Pruhledne budovy
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Pruhledne budovy
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Pruhledna jména stanic
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Pruhledna jména stanic
 ############ range ends	here
 

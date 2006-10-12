@@ -746,32 +746,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Gravar n
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Seleção de nomes dos veículos
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salvar nomes dos veículos personalizados no disco
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Opções do Jogo
-STR_02C4_GAME_OPTIONS                                           :Opções do Jogo
 STR_02C5_DIFFICULTY_SETTINGS                                    :Configurações de dificuldade
-STR_02C6_DIFFICULTY_SETTINGS                                    :Configurações de dificuldade
 STR_02C7_CONFIG_PATCHES                                         :Configurar correções
-STR_02C8_CONFIG_PATCHES                                         :Configurar correções
 STR_NEWGRF_SETTINGS                                             :Definições Newgrf
-STR_NEWGRF_SETTINGS2                                            :Definições Newgrf
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Mostrar nomes de cidades
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostrar nomes de cidades
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Mostrar nomes de estações
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostrar nomes de estações
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Mostrar indicações
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Mostrar indicações
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Mostrar pontos de controle
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Mostrar pontos de controle
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Animação completa
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animação completa
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Máximo de detalhes
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Máximo de detalhes
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Edifícios transparentes
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edifícios transparentes
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Nomes de estações transparentes
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Nomes de estações transparentes
 ############ range ends	here
 

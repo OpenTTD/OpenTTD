@@ -749,32 +749,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Salvesta
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Sõidukite disaininimede valik
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Salvesta omatehtud disaininimed
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Mängu seaded
-STR_02C4_GAME_OPTIONS                                           :Mängu seaded
 STR_02C5_DIFFICULTY_SETTINGS                                    :Raskusastme seaded
-STR_02C6_DIFFICULTY_SETTINGS                                    :Raskusastme seaded
 STR_02C7_CONFIG_PATCHES                                         :Paranduste seaded
-STR_02C8_CONFIG_PATCHES                                         :Paranduste seaded
 STR_NEWGRF_SETTINGS                                             :Newgrf seaded
-STR_NEWGRF_SETTINGS2                                            :Newgrf seaded
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Linnade nimede näitamine
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Linnade nimede näitamine
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Jaamade nimede näitamine
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Jaamade nimede näitamine
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Siltide näitamine
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Siltide näitamine
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Näidatud kontrollpunktid
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Näidatud kontrollpunktid
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Täielik animeerimine
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Täielik animeerimine
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Kõik detailid
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Kõik detailid
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Läbipaistvad hooned
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Läbipaistvad hooned
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Läbinähtavad jaama nimesildid
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Läbinähtavad jaama nimesildid
 ############ range ends	here
 

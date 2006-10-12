@@ -753,32 +753,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Spara eg
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Fordonens modellnamnssortiment
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Spara egna modellnamn för fordon till disk
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Spelinställningar
-STR_02C4_GAME_OPTIONS                                           :Spelinställningar
 STR_02C5_DIFFICULTY_SETTINGS                                    :Svårighetsgrad
-STR_02C6_DIFFICULTY_SETTINGS                                    :Svårighetsgrad
 STR_02C7_CONFIG_PATCHES                                         :Konfigurera patchar
-STR_02C8_CONFIG_PATCHES                                         :Konfigurera patchar
 STR_NEWGRF_SETTINGS                                             :Newgrf inställningar
-STR_NEWGRF_SETTINGS2                                            :Newgrf inställningar
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Stadsnamn visas
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Stadsnamn visas
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Stationsnamn visas
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stationsnamn visas
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Skyltar visas
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Skyltar visas
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Kontrollstationer visas
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Kontrollstationer visas
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Full animation
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Full animation
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Full detaljnivå
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Full detaljnivå
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Genomskinliga byggnader
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Genomskinliga byggnader
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Genomskinliga stationsskyltar
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Genomskinliga stationsskyltar
 ############ range ends	here
 

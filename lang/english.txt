@@ -753,32 +753,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Save cus
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vehicle design names selection
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Save customised vehicle design names
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Game options
-STR_02C4_GAME_OPTIONS                                           :Game options
 STR_02C5_DIFFICULTY_SETTINGS                                    :Difficulty settings
-STR_02C6_DIFFICULTY_SETTINGS                                    :Difficulty settings
 STR_02C7_CONFIG_PATCHES                                         :Configure patches
-STR_02C8_CONFIG_PATCHES                                         :Configure patches
 STR_NEWGRF_SETTINGS                                             :Newgrf settings
-STR_NEWGRF_SETTINGS2                                            :Newgrf settings
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Town names displayed
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Town names displayed
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Station names displayed
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Station names displayed
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Signs displayed
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Signs displayed
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Waypoints displayed
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Waypoints displayed
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Full animation
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Full animation
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Full detail
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Full detail
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Transparent buildings
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparent buildings
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Transparent station signs
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparent station signs
 ############ range ends	here
 
@@ -1077,6 +1065,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max sta
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service helicopters at helipads automatically: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landscape toolbar to rail/road/water/airport toolbars: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Reverse scroll direction: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Show a measurement tooltip when using various build-tools: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Show company liveries: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :None
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Own company
@@ -3104,4 +3093,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Small ai
 STR_LARGE_AIRPORTS                                              :{BLACK}Large airports
 STR_HUB_AIRPORTS                                                :{BLACK}Hub airports
 STR_HELIPORTS                                                   :{BLACK}Helicopter airports
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Length: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Length: {NUM}{}Height difference: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Height difference: {NUM} m
+
 ########

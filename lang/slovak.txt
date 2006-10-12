@@ -816,32 +816,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Ulozit v
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Vyber nazvu vozidiel
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Ulozit vlastne nazvy vozidiel na disk
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Nastavenia hry
-STR_02C4_GAME_OPTIONS                                           :Nastavenia hry
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavenia obtiaznosti
-STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavenia obtiaznosti
 STR_02C7_CONFIG_PATCHES                                         :Nastavenia patchov
-STR_02C8_CONFIG_PATCHES                                         :Nastavenia patchov
 STR_NEWGRF_SETTINGS                                             :Nastavenie newgrf
-STR_NEWGRF_SETTINGS2                                            :Nastavenie newgrf
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Zobrazit nazvy miest
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Zobrazit nazvy miest
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Zobrazit nazvy stanic
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Zobrazit nazvy stanic
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Zobrazit popisy
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Zobrazit popisy
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Zobrazit navigacne body
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Zobrazit navigacne body
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Plna animacia
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Plna animacia
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Plne detaily
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Plne detaily
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Priesvitne budovy
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Priesvitne budovy
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Transparentne nazvy stanic
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparentne nazvy stanic
 ############ range ends	here
 

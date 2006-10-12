@@ -746,32 +746,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Özel isi
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Araç isimleri seçimi
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Özellestirilmis araç isimlerini kaydet
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Seçenekler
-STR_02C4_GAME_OPTIONS                                           :Seçenekler
 STR_02C5_DIFFICULTY_SETTINGS                                    :Zorluk Ayarlari
-STR_02C6_DIFFICULTY_SETTINGS                                    :Zorluk Ayarlari
 STR_02C7_CONFIG_PATCHES                                         :Yamalari Düzenle
-STR_02C8_CONFIG_PATCHES                                         :Yamalari Düzenle
 STR_NEWGRF_SETTINGS                                             :Newgrf ayarlari
-STR_NEWGRF_SETTINGS2                                            :Newgrf ayarlari
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Sehir isimlerini göster
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Sehir isimlerini göster
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}istasyon isimlerini göster
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}istasyon isimlerini göster
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Tabelalari göster
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Tabelalari göster
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Yolimlerini göster
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Yolimlerini göster
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Tam hareketli
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Tam hareketli
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Tam detay
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Tam detay
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Transparan binalar
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Transparan binalar
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Transparan istasyon tabelalari
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Transparan istasyon tabelalari
 ############ range ends	here
 

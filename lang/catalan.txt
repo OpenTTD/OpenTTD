@@ -753,32 +753,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Desar el
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Selecció de noms de disseny de vehicles
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Desar noms de disseny de vehicles personalitzats al disc
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Opcions del Joc
-STR_02C4_GAME_OPTIONS                                           :Opcions del Joc
 STR_02C5_DIFFICULTY_SETTINGS                                    :Paràmetres de dificultat
-STR_02C6_DIFFICULTY_SETTINGS                                    :Paràmetres de dificultat
 STR_02C7_CONFIG_PATCHES                                         :Configurar pegats
-STR_02C8_CONFIG_PATCHES                                         :Configurar pegats
 STR_NEWGRF_SETTINGS                                             :Configuracions de Newgrf
-STR_NEWGRF_SETTINGS2                                            :Configuracions de Newgrf
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Mostrar noms de poblacions
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Mostrar noms de poblacions
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Mostrar noms d'estacions
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Mostrar noms d'estacions
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Mostrar senyals
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Mostrar senyals
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Mostrar punts de control
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Mostrar punts de control
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Animació completa
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Animació completa
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Detall complet
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Detall complet
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Edificis Transparents
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Edificis Transparents
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Signes d'estació transparents
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Signes d'estació transparents
 ############ range ends	here
 

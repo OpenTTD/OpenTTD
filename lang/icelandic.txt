@@ -743,32 +743,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Geyma br
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Nöfn farartækja
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Vista breytt tegundanöfn farartækja
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Stillingar
-STR_02C4_GAME_OPTIONS                                           :Stillingar
 STR_02C5_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
-STR_02C6_DIFFICULTY_SETTINGS                                    :Erfiðleikastig
 STR_02C7_CONFIG_PATCHES                                         :Viðbætur
-STR_02C8_CONFIG_PATCHES                                         :Viðbætur
 STR_NEWGRF_SETTINGS                                             :Nýgrf stillingar
-STR_NEWGRF_SETTINGS2                                            :Nýgrf stillingar
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Bæjarnöfn sýnd
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Bæjarnöfn sýnd
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Stöðvarnöfn sýnd
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stöðvarnöfn sýnd
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Skilti sýnd
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Skilti sýnd
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Millistöðvar sýndar
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Millistöðvar sýndar
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Fullar myndhreyfingar
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Fullar myndhreyfingar
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Full nákvæmni
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Full nákvæmni
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Gegnsæjar byggingar
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Gegnsæjar byggingar
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Gegnsæ stöðvanöfn
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gegnsæ stöðvanöfn
 ############ range ends	here
 

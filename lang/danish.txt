@@ -753,32 +753,20 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Gem ikke
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Valg af køretøjsdesignnavne
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Gem brugerdefinerede køretøjsdesignnavne
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Spilindstillinger
-STR_02C4_GAME_OPTIONS                                           :Spilindstillinger
 STR_02C5_DIFFICULTY_SETTINGS                                    :Sværhedsgrad
-STR_02C6_DIFFICULTY_SETTINGS                                    :Sværhedsgrad
 STR_02C7_CONFIG_PATCHES                                         :Konfigurér patches
-STR_02C8_CONFIG_PATCHES                                         :Konfigurér patches
 STR_NEWGRF_SETTINGS                                             :Newgrf indstillinger
-STR_NEWGRF_SETTINGS2                                            :Newgrf indstillinger
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Bynavne vist
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Bynavne vist
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Stationsnavne vist
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Stationsnavne vist
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Skilte vist
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Skilte vist
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Kontrolsteder vist
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Kontrolsteder vist
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Fuld animation
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Fuld animation
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Fuld detalje
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Fuld detalje
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Gennemsigtige bygninger
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Gennemsigtige bygninger
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Gennemsigtige station skilte
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gennemsigtige station skilte
 ############ range ends	here
 
