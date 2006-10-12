@@ -531,12 +531,7 @@ static int GetPlayerIndexFromMenu(int index)
 
 static void UpdatePlayerMenuHeight(Window *w)
 {
-	uint num = 0;
-	const Player *p;
-
-	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) num++;
-	}
+	byte num = ActivePlayerCount();
 
 	// Increase one to fit in PlayerList in the menu when in network
 	if (_networking && WP(w,menu_d).main_button == 9) num++;

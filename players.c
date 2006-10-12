@@ -192,18 +192,6 @@ void DrawPlayerFace(uint32 face, int color, int x, int y)
 	}
 }
 
-byte ActivePlayerCount(void)
-{
-	const Player *p;
-	byte count = 0;
-
-	FOR_ALL_PLAYERS(p) {
-		if (p->is_active) count++;
-	}
-
-	return count;
-}
-
 void InvalidatePlayerWindows(const Player *p)
 {
 	PlayerID pid = p->index;

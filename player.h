@@ -216,7 +216,17 @@ VARDEF Player _players[MAX_PLAYERS];
 // NOSAVE: can be determined from player structs
 VARDEF byte _player_colors[MAX_PLAYERS];
 
-byte ActivePlayerCount(void);
+static inline byte ActivePlayerCount(void)
+{
+	const Player *p;
+	byte count = 0;
+
+	FOR_ALL_PLAYERS(p) {
+		if (p->is_active) count++;
+	}
+
+	return count;
+}
 
 static inline Player* GetPlayer(PlayerID i)
 {
