@@ -508,10 +508,15 @@ static void AddArticulatedParts(Vehicle **vl)
 	if (!HASBIT(EngInfo(v->engine_type)->callbackmask, CBM_ARTIC_ENGINE)) return;
 
 	for (i = 1; i < 10; i++) {
-		callback = GetVehicleCallback(CBID_TRAIN_ARTIC_ENGINE, i, 0, v->engine_type, NULL);
+		callback = GetVehicleCallback(CBID_TRAIN_ARTIC_ENGINE, i, 0, v->engine_type, v);
 		if (callback == CALLBACK_FAILED || callback == 0xFF) return;
 
+		/* Attempt to use pre-allocated vehicles until they run out. This can happen
+		 * if the callback returns different values depending on the cargo type. */
 		u->next = vl[i];
+		if (u->next == NULL) u->next = AllocateVehicle();
+		if (u->next == NULL) return;
+
 		u = u->next;
 
 		engine_type = GB(callback, 0, 7);
@@ -570,6 +575,8 @@ static int32 CmdBuildRailWagon(EngineID engine, TileIndex tile, uint32 flags)
 		Vehicle* v;
 		int x;
 		int y;
+
+		memset(&vl, 0, sizeof(vl));
 
 		if (!AllocateVehicles(vl, num_vehicles))
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
@@ -742,6 +749,9 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (!(flags & DC_QUERY_COST)) {
 		Vehicle *vl[12]; // Allow for upto 10 artic parts and dual-heads
+
+		memset(&vl, 0, sizeof(vl));
+
 		if (!AllocateVehicles(vl, num_vehicles) || IsOrderPoolFull())
 			return_cmd_error(STR_00E1_TOO_MANY_VEHICLES_IN_GAME);
 
