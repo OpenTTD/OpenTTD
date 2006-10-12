@@ -656,26 +656,15 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Запи
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Игрови опции
-STR_02C4_GAME_OPTIONS                                           :Игрови опции
 STR_02C5_DIFFICULTY_SETTINGS                                    :Опции за трудност
-STR_02C6_DIFFICULTY_SETTINGS                                    :Опции за трудност
 STR_02C7_CONFIG_PATCHES                                         :Конфигурирай патчове
-STR_02C8_CONFIG_PATCHES                                         :Настройка на кръпките
 STR_NEWGRF_SETTINGS                                             :Newgrf настройки
-STR_NEWGRF_SETTINGS2                                            :Newgrf настройки
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Показване имената на градовете
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Показване имената на градовете
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Показване имената на станциите
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Показване имената на станциите
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Показване на табелите
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Показване на табелите
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Пълна анимация
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Пълна анимация
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Всички детайли
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Пълни подробности
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Прозрачни сгради
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Прозрачни сгради
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Невидими гарови знаци
 ############ range ends	here
 
 ############ range for menu	starts
@@ -1891,8 +1880,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Хората празнуват . . .{}Първи влак пристигна на {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Подробности)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Влак на пътя
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Отиди на {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Отиди на {STATION} (Обмени и вземи товар)
 STR_8808_GO_TO_UNLOAD                                           :Отиди на {STATION} (Разтовари)
@@ -2252,6 +2241,7 @@ STR_WAGONS                                                      :Вагони
 
 
 
+
 ############ Lists rail types
 
 
@@ -2267,5 +2257,6 @@ STR_CLEARING_TILES                                              :{BLACK}Създ
 ########### String for new airports
 STR_CITY_AIRPORT                                                :{BLACK}Град
 STR_COMMUTER_AIRPORT                                            :{BLACK}Комютър
+
 
 ########

@@ -85,7 +85,7 @@ STR_004D_FIZZY_DRINK                                            :Beguda Gasosa
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passatger{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} de carbó
-STR_QUANTITY_MAIL                                               :{COMMA} sa{P ca ques} de correu
+STR_QUANTITY_MAIL                                               :{COMMA} sa{P c cs} de correu
 STR_QUANTITY_OIL                                                :{VOLUME} de petroli
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P "" s} de bestiar
 STR_QUANTITY_GOODS                                              :{COMMA} palet{P "" s} de mercaderies
@@ -156,7 +156,7 @@ STR_00B2_MESSAGE                                                :{YELLOW}Missatg
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Missatge de {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}No es pot fer aixó....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}No es pot netejar l'àrea....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright Original {COPYRIGHT} 1995 Chris Sawyer, Tots els Drets reservats
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Tots els drets reservats
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versió {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 L'equip d'OpenTTD
 STR_TRANSLATED_BY                                               :{BLACK}  Traductor(s) -
@@ -3092,4 +3092,5 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Aeroport
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroports grans
 STR_HUB_AIRPORTS                                                :{BLACK}Aeroports d'enllaç
 STR_HELIPORTS                                                   :{BLACK}Aeroports d'helicòpters
+
 ########

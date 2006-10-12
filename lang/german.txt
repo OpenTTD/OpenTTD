@@ -388,6 +388,7 @@ STR_ENGINE_SORT_POWER                                           :Energie
 STR_ENGINE_SORT_INTRO_DATE                                      :Einführungsdatum
 STR_ENGINE_SORT_RUNNING_COST                                    :Betriebskosten
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Energie-/Betriebskosten
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Frachtkapazität
 STR_NO_WAITING_CARGO                                            :{BLACK}Keine Fracht wartet
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Wähle alle Anlagen
 STR_SELECT_ALL_TYPES                                            :{BLACK}Wähle alle Frachtarten (einschließlich ohne wartender Fracht)
@@ -2786,6 +2787,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Baue Flu
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Baue neues Flugzeug (setzt Flughafen mit Hangar voraus)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
+STR_BLACK_PLANES                                                :{BLACK}Propellermaschinen
+STR_BLACK_JETS                                                  :{BLACK}Düsenflugzeuge
+STR_BLACK_HELICOPTERS                                           :{BLACK}Hubschrauber
+STR_BUILD_PLANES_TIP                                            :{BLACK}Klicke hier um die Propellermaschinen zu sehen
+STR_BUILD_JETS_TIP                                              :{BLACK}Klicke hier um die Düsenflugzeuge zu sehen
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Klicke hier um die Helikopter zu sehen
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Baue neues Flugzeug
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Zum Verkauf des Flugzeuges hierher ziehen
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Ansicht auf den Hangar zentrieren
@@ -3085,4 +3092,5 @@ STR_SMALL_AIRPORTS                                              :{BLACK}kleine F
 STR_LARGE_AIRPORTS                                              :{BLACK}große Flughäfen
 STR_HUB_AIRPORTS                                                :{BLACK}Großflughäfen
 STR_HELIPORTS                                                   :{BLACK}Flughäfen für Hubschrauber
+
 ########

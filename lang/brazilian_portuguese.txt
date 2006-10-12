@@ -381,6 +381,13 @@ STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipo de estação
 STR_SORT_BY_WAITING                                             :Valor da carga aguardando
 STR_SORT_BY_RATING_MAX                                          :Taxa de Carga
+STR_ENGINE_SORT_ENGINE_ID                                       :No de Reg (padrão)
+STR_ENGINE_SORT_COST                                            :Custo
+STR_ENGINE_SORT_POWER                                           :Potência
+STR_ENGINE_SORT_INTRO_DATE                                      :Data de Introdução
+STR_ENGINE_SORT_RUNNING_COST                                    :Custo de Manutenção
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potência por Custo
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade de Carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Não há carga de nenhum tipo aguardando
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleicionar todas as instalações
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecionar todos os tipos de carga (inclusive as que não tem espera)
@@ -2666,6 +2673,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reacondi
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reacondicionar automóvel
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reacondicionar veículo para carregar o tipo de carga selecionado
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Impossível reacondicionar
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecione o tipo de carga para o veículo
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construir docas
@@ -2778,6 +2786,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construi
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - clique na aeronave para informações
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir nova aeronave (necessita de aeroporto com hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - clique na aeronave para informações
+STR_BLACK_PLANES                                                :{BLACK}Aviões
+STR_BLACK_JETS                                                  :{BLACK}Jatos
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helicótperos
+STR_BUILD_PLANES_TIP                                            :{BLACK}Clique para ver os aviões
+STR_BUILD_JETS_TIP                                              :{BLACK}Clique para ver os jatos
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Clique para ver os helicótperos
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir nova aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arraste a aeronave para aqui para a vender
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar visualização na localização do hangar
@@ -2982,6 +2996,8 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Clique p
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Erro na ordem de readaptação {STRING} {COMMA}
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Trens
@@ -3076,4 +3092,5 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Aeroport
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroportos Grandes
 STR_HUB_AIRPORTS                                                :{BLACK}Aeroportos modulares
 STR_HELIPORTS                                                   :{BLACK}Aeroportos de helicópteros
+
 ########

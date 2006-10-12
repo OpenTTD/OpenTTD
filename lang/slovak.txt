@@ -451,6 +451,7 @@ STR_ENGINE_SORT_POWER                                           :Výkon
 STR_ENGINE_SORT_INTRO_DATE                                      :Uvedenie na trh
 STR_ENGINE_SORT_RUNNING_COST                                    :Náklady na prevádzku
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Výkon/Náklady na prevádzku
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacita nákladu
 STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
@@ -2736,6 +2737,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prestava
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Prestavat vozidlo
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Prestavat vozidlo na prepravu vyznaceneho druhu nakladu
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Prestavba vozidla nie je mozna ...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyberte po¸adovaný typ nákladu pre cestné vozidlo
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Stavba pristavu
@@ -2848,6 +2850,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Postavit
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lietadlo - kliknut pre informacie
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Vyrobit nove lietadlo (potrebne letisko z hangarom)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lietadlo - kliknut pre informacie
+STR_BLACK_PLANES                                                :{BLACK}Vrtulové
+STR_BLACK_JETS                                                  :{BLACK}Prúdové
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helikoptéry
+STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknite pre zobrazenie vrtulových lietadiel
+STR_BUILD_JETS_TIP                                              :{BLACK}Kliknite pre zobrazenie prúdových lietadiel
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kliknite pre zobrazenie helikoptér
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Vyrobit nove lietadlo
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Potiahni lietadlo sem pre predaj
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Vycentrovat pohlad na hangar
@@ -3052,6 +3060,8 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknite
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Zlyhala prestavba {STRING} {COMMA}
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Lokomotiva pre zeleznicu
@@ -3146,4 +3156,5 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Male let
 STR_LARGE_AIRPORTS                                              :{BLACK}Velke letiska
 STR_HUB_AIRPORTS                                                :{BLACK}Najvacsie letiska
 STR_HELIPORTS                                                   :{BLACK}Heliporty
+
 ########
