@@ -180,8 +180,6 @@ Town *ClosestTownFromTile(TileIndex tile, uint threshold);
 void ChangeTownRating(Town *t, int add, int max);
 
 uint GetTownRadiusGroup(const Town* t, TileIndex tile);
-void ShowNetworkChatQueryWindow(byte desttype, byte dest);
-void ShowNetworkGiveMoneyWindow(byte player);
 int FindFirstBit(uint32 x);
 void ShowHighscoreTable(int difficulty, int8 rank);
 TileIndex AdjustTileCoordRandomly(TileIndex a, byte rng);
