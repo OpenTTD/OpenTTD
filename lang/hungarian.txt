@@ -1130,6 +1130,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Állomás
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterek automatikus javítása a helikopter-leszállókon: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Tájrendezõ eszköztár megnyitása a közúti/vasúti/vízi/légi eszköztárakkal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Egeres mozgáskor a táj a másik irányba mozdul el: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Építési eszközök használata esetén területinformációk mutatása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Cégek jármûveinek mutatása: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Egyikét sem
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Csak a sajátét
@@ -3196,4 +3197,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Kis rept
 STR_LARGE_AIRPORTS                                              :{BLACK}Nagy repterek
 STR_HUB_AIRPORTS                                                :{BLACK}Hub repterek
 STR_HELIPORTS                                                   :{BLACK}Helikopter repterek
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Távolság: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Terület: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Távolság: {NUM}{}Magasságkülönbség: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Terület: {NUM} x {NUM}{}Magasságkülönbség: {NUM} m
+
 ########

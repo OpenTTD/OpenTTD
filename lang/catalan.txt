@@ -85,7 +85,7 @@ STR_004D_FIZZY_DRINK                                            :Beguda Gasosa
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passatger{P "" s}
 STR_QUANTITY_COAL                                               :{WEIGHT} de carbó
-STR_QUANTITY_MAIL                                               :{COMMA} sa{P c cs} de correu
+STR_QUANTITY_MAIL                                               :{COMMA} sac{P "" s} de correu
 STR_QUANTITY_OIL                                                :{VOLUME} de petroli
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} cap{P "" s} de bestiar
 STR_QUANTITY_GOODS                                              :{COMMA} palet{P "" s} de mercaderies
@@ -93,7 +93,7 @@ STR_QUANTITY_GRAIN                                              :{WEIGHT} de gra
 STR_QUANTITY_WOOD                                               :{WEIGHT} de fusta
 STR_QUANTITY_IRON_ORE                                           :{WEIGHT} de mineral de ferro
 STR_QUANTITY_STEEL                                              :{WEIGHT} d'acer
-STR_QUANTITY_VALUABLES                                          :{COMMA} sa{P ca ques} de valors
+STR_QUANTITY_VALUABLES                                          :{COMMA} sac{P "" s} de valors
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} de mineral de coure
 STR_QUANTITY_MAIZE                                              :{WEIGHT} de blat de moro
 STR_QUANTITY_FRUIT                                              :{WEIGHT} de fruita
@@ -622,7 +622,7 @@ STR_0234_NEW_TOWN                                               :{BLACK}Nova Pob
 STR_0235_CONSTRUCT_NEW_TOWN                                     :{BLACK}Construcció de nova població
 STR_0236_CAN_T_BUILD_TOWN_HERE                                  :{WHITE}No es pot construir una població aquí...
 STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}...massa aprop del límit del mapa
-STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...massa aprop d'un altre població
+STR_0238_TOO_CLOSE_TO_ANOTHER_TOWN                              :{WHITE}...massa aprop d'una altra població
 STR_0239_SITE_UNSUITABLE                                        :{WHITE}...lloc inadequat
 STR_023A_TOO_MANY_TOWNS                                         :{WHITE}...massa poblacions
 STR_CANNOT_GENERATE_TOWN                                        :{WHITE}No puc construir poblacions
@@ -926,7 +926,7 @@ STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{S
 STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Selecciona el format per les captures de pantalla
 
 STR_AUTOSAVE_1_MONTH                                            :Cada mes
-STR_AUTOSAVE_FAILED                                             :{WHITE}Desat automàtic errat
+STR_AUTOSAVE_FAILED                                             :{WHITE}Ha fallat el desat automàtic
 
 STR_MONTH_JAN                                                   :Gener
 STR_MONTH_FEB                                                   :Febrer
@@ -1065,6 +1065,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max ext
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manteniment dels helicopters als heliports automàticament: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Enllaça la barra d'eines del paisatge a les barres d'eines de vies/carreteres/aigua/aeroports {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}En desplaçar la pantalla amb el ratolí mou la vista en la direcció contrària: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar un cartell de mesura quan estiguis utilitzant vàries eines de construcció: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar decoració de la companyia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Cap
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Pròpia companyia
@@ -1511,7 +1512,7 @@ STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}No es po
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}No es pot construir via de tren aquí...
 STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}No es pot treure via de tren d'aquí...
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}No es poden treure senyals d'aquí...
-STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientació de les Cotxeres de Tren
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Cotxeres de Tren
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construcció de Ferrocarril
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Contrucció de rail elèctric
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construcció de Monorail
@@ -1527,7 +1528,7 @@ STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Selecció
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Selecciona la orientació de les Cotxeres de tren
 STR_1021_RAILROAD_TRACK                                         :Via de tren
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Cotxeres de tren
-STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...l'àrea és propietat d'un altre empresa
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...l'àrea és propietat d'una altra empresa
 STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Via de tren amb senyals normals
 STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Via de tren amb pre-senyals
 STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Via de tren amb senyals de sortida
@@ -1542,7 +1543,7 @@ STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Construc
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Selecciona Pont per Carretera
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}No es pot construir carretera aquí...
 STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}No es pot treure carretera d'aquí...
-STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientació de Cotxeres
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Cotxeres
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}No es pot construir cotxeres aquí...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}No es pot construir parada d'autobús...
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}No es pot construir estació de mercaderies...
@@ -1637,7 +1638,7 @@ STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Petita campanya
 STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Mitjana campanya de publicitat
 STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Gran campanya de publicitat
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Patrocinar la reconstrucció dels carrers de la població
-STR_204A_BUILD_STATUE_OF_COMPANY                                :Construir estatua del propietari de l'empresa
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Construir estàtua del propietari de l'empresa
 STR_204B_FUND_NEW_BUILDINGS                                     :Patrocinar nous edificis
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Comprar drets de transport en exclusiva
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY                              :Subornar les autoritats locals
@@ -1722,8 +1723,8 @@ STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION
 STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} ja no accepta més {STRING} o {STRING}
 STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} ara accepta {STRING}
 STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} ara accepta {STRING} i {STRING}
-STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Orientació de la parada d'autobús
-STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Orientació de l'Estació de Mercaderies
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Parada d'autobús
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Estació de Mercaderies
 STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Primer has d'enderrocar la parada d'autobús
 STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Primer has d'enderrocar l'estació de mercaderies
 STR_3048_STATIONS                                               :{WHITE}{COMPANY} - {COMMA} Estacions/Parades
@@ -1766,7 +1767,7 @@ STR_STAT_CLASS_DFLT                                             :Estació per def
 STR_STAT_CLASS_WAYP                                             :Punt de pas
 
 ##id 0x3800
-STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Orientació de les Drassanes
+STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Drassanes
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...s'han de construir dins l'aigua
 STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}No es pot construir una drassana aquí...
 STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Selecciona l'orientació de la drassana
@@ -2452,7 +2453,7 @@ STR_80FD_TRICARIO_HELICOPTER                                    :Helicopter Tric
 STR_80FE_GURU_X2_HELICOPTER                                     :Helicopter Guru X2
 STR_80FF_POWERNAUT_HELICOPTER                                   :Helicopter Powernaut
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Missatge del fabricant de vehicles
-STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Acabem de dissenyar el nou {STRING} - estàs interessat en fer ús exclusiu d'aquest vehicle durant un any, per veure cóm va, abans del seu llençament mundial ?
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Acabem de dissenyar el nou {STRING} - estàs interessat en fer ús exclusiu d'aquest vehicle durant un any, per veure com va, abans del seu llençament mundial ?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :locomotora de tren
 STR_8103_ROAD_VEHICLE                                           :automòbil
 STR_8104_AIRCRAFT                                               :aeronau
@@ -2493,7 +2494,7 @@ STR_INVALID_ORDER                                               :{RED} (Ordre in
 
 STR_UNKNOWN_DESTINATION                                         :destí desconegut
 STR_8812_EMPTY                                                  :{LTBLUE}Buit
-STR_8813_FROM                                                   :{LTBLUE}{CARGO} procedent de {STATION}
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} procedent{P "" s} de {STATION}
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tren {COMMA} en espera en cotxeres
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nous Vehicles
 STR_8816                                                        :{BLACK}-
@@ -2720,7 +2721,7 @@ STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construi
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Accions del vaixell actual - clica aquí per parar/arrencar el vaixell
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostrar les ordres del vaixell
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrar pantalla principal en la situació del vaixell
-STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Enviar el vaixell a la drassana
+STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Enviar el vaixell a la drassana. CTRL+click per només revisió
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Mostrar els detalls del vaixell
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nou vaixell disponible!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2829,7 +2830,7 @@ STR_GO_TO_AIRPORT_HANGAR                                        :Anar a l'hangar
 SERVICE_AT_AIRPORT_HANGAR                                       :Manteniment en l'hangar de {STATION}.
 
 ##id 0xB000
-STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Desastre de Zeppelin en {STATION}!
+STR_B000_ZEPPELIN_DISASTER_AT                                   :{BLACK}{BIGFONT}Desastre de Zeppelin a {STATION}!
 STR_B001_ROAD_VEHICLE_DESTROYED                                 :{BLACK}{BIGFONT}Automòbil destruit en colisiar amb un 'OVNI'!
 STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT}Explosió de refineria de petroli prop de {TOWN}!
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fàbrica destruida en extranyes circunstàncies prop de {TOWN}!
@@ -3092,5 +3093,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Aeroport
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroports grans
 STR_HUB_AIRPORTS                                                :{BLACK}Aeroports d'enllaç
 STR_HELIPORTS                                                   :{BLACK}Aeroports d'helicòpters
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Llargada: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Àrea: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Llargada: {NUM}{}Diferència d'alçada: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Àrea: {NUM} x {NUM}{}Diferència d'alçada: {NUM} m
 
 ########
