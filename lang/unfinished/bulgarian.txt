@@ -372,8 +372,8 @@ STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Пока
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Печалба тази година: {CURRENCY} (минала година: {CURRENCY})
 
 ############ range for service numbers starts
-STR_AGE                                                         :{COMMA} годин{P "а" и} ({COMMA})
-STR_AGE_RED                                                     :{RED}{COMMA} годин{P "а" и} ({COMMA})
+STR_AGE                                                         :{COMMA} годин{P а и} ({COMMA})
+STR_AGE_RED                                                     :{RED}{COMMA} годин{P а и} ({COMMA})
 ############ range for service numbers ends
 
 STR_019C_ROAD_VEHICLE                                           :Автобус/камион
@@ -619,6 +619,7 @@ STR_028C_PLACE_ROCKY_AREAS_ON_LANDSCAPE                         :{BLACK}Пост
 STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Поставяне фар
 STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Постави предавател
 STR_028F_DEFINE_DESERT_AREA                                     :{BLACK}Избери пустинен терен.{}Задръж CTRL за да го премахнеш.
+STR_CREATE_LAKE                                                 :{BLACK}Посочване на водна зона.{}Ще наводни съседните ако са на морското ниво
 STR_0290_DELETE                                                 :{BLACK}Изтрий
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Премахни този град
 STR_0292_SAVE_SCENARIO                                          :
@@ -654,6 +655,7 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Запи
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Избор на имена на превозни средства
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Запис на имена на превозни средства
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Игрови опции
 STR_02C5_DIFFICULTY_SETTINGS                                    :Опции за трудност
@@ -670,6 +672,7 @@ STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Про
 ############ range for menu	starts
 STR_02D5_LAND_BLOCK_INFO                                        :Информация за терена
 STR_02D6                                                        :
+STR_CONSOLE_SETTING                                             :Показване/скриване на конзола
 STR_02D7_SCREENSHOT_CTRL_S                                      :Screenshot (Ctrl-S)
 STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Огромен Screenshot (Ctrl-G)
 STR_02D9_ABOUT_OPENTTD                                          :За 'OpenTTD'
@@ -760,7 +763,33 @@ STR_TOWNNAME_DANISH                                             :Датски
 STR_TOWNNAME_TURKISH                                            :Турски
 ############ end of	townname region
 
+STR_CURR_GBP                                                    :Паунд (£)
+STR_CURR_USD                                                    :Долар ($)
+STR_CURR_EUR                                                    :Евро (€)
+STR_CURR_YEN                                                    :Йена (¥)
+STR_CURR_ATS                                                    :Австрийски шилинг (ATS)
+STR_CURR_BEF                                                    :Белгийски франк (BEF)
+STR_CURR_CHF                                                    :Швейцарски франк (CHF)
+STR_CURR_CZK                                                    :Чешка крона (CZK)
+STR_CURR_DEM                                                    :Немска марка (DEM)
+STR_CURR_DKK                                                    :Данска крона (DKK)
+STR_CURR_ESP                                                    :Песета (ESP)
+STR_CURR_FIM                                                    :Финландска марка
+STR_CURR_FRF                                                    :Франк (FRF)
+STR_CURR_GRD                                                    :Гръцка драхма (GRD)
+STR_CURR_HUF                                                    :Унгарски форинт (HUF)
+STR_CURR_ISK                                                    :Исландска крона (ISK)
+STR_CURR_ITL                                                    :Италианска лира (ITL)
+STR_CURR_NLG                                                    :Немски гилдер (NLG)
+STR_CURR_NOK                                                    :Норвежка крона (NOK)
+STR_CURR_PLN                                                    :Полска злота (PLN)
+STR_CURR_ROL                                                    :Ромънска лея (ROL)
+STR_CURR_RUR                                                    :Руска рубла (RUR)
+STR_CURR_SIT                                                    :Словенски толар (SIT)
+STR_CURR_SEK                                                    :Шведска крона (SEK)
+STR_CURR_YTL                                                    :Турска лира (YTL)
 
+STR_CURR_CUSTOM                                                 :Поръчкова...
 
 
 
@@ -772,6 +801,7 @@ STR_AUTOSAVE_FAILED                                             :{WHITE}Авто
 
 
 STR_BAGS                                                        :торби
+STR_CRATES                                                      :кратери
 
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Не може да се споделя списъка със задачи...
@@ -786,13 +816,15 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Само
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Самолет {COMMA} има невалидно летище в своите заповеди
 # end of order system
 
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Автообновяването на самолето е неуспешно {COMMA} (ограничени средства)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Автообновяването на самолет е неуспешно {COMMA} (ограничени средства)
 
 STR_CONFIG_PATCHES                                              :{BLACK}Конфигурация на кръпки
+STR_CONFIG_PATCHES_TIP                                          :{BLACK}Настройки на кръпките
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Настройка на кръпките
 
 STR_CONFIG_PATCHES_OFF                                          :Изключено
 STR_CONFIG_PATCHES_ON                                           :Включено
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Показване скоростта на автомобилите в лента за състоянието: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Позволяване строенето на склонове и брегове: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}По-реалистична зона за обслужване: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Премахване на повече неща собственост на град: {ORANGE}{STRING}
@@ -810,20 +842,24 @@ STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Поз�
 STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Няколко еднакви индустрии на град: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Индустрии от еднакъв тип могат да бъдат строени близо една до друга: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Показване на дълга дата в статус бара: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Показване на семафорите спрямо пътното движение: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показване на финансовия прозорец в края на годината: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch съвместима обработка на "без спиране": {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Опашка на колите (с квантов ефект): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Опашка на колите (със сумарен ефект): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Преместване на прозореца когато мишката е в края: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Подкупване на местната власт: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Нестандартни станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Нов глобален навигатор (NPF, отменя NTP): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Малки летища са винаги разрешени: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Влак се е загубил, ако няма прогрес за: {ORANGE}{STRING} дни
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Влак се е загубил, ако няма прогрес за: {ORANGE}изключено
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Преглед на маршрута: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :не
-STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :да, но прескочи спрените превозни средства
+STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :да, но пропусни спрените превозни средства
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :от всички превозни средства
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждение ако печалбата на влак е негативна: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Превозните средства никога не губят валидност: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автоматично подновяване на превозно средство когато то остарее
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Автоматично подновяване когато превозното средство е {ORANGE}{STRING}{LTBLUE} месеца преди/след максималната възраст
@@ -835,15 +871,28 @@ STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Нев�
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Генератор на земя: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Оригинал
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :ТераГенезис
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Максимално разстояние на Нефтените рафинерии от краищата на картата {ORANGE}{STRING}
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Максимално разстояние на нефтените рафинерии от краищата на картата {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Височина на снежната ивица: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Ръбавост на терен (само за TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Много гладък
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладен
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Ръбав
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Много ръбав
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Алгоритъм за поставяне на дървета: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Без
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Оригинален
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Подобрен
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Завъртане на картата: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Обратрно на часовниковата стрелка
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовниковата стрелка
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Интервал на ъпдейтване на развитието : {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Интервал на обновяване на развитието : {ORANGE}{STRING} ms
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Височина на картата за плосък сценарий: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. разпръснатост на станция: {ORANGE}{STRING} {RED}Внимание: Високите стойности забавят играта
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Автоматичен сервиз на хеликоптерите при кацане на хелипад: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Връзване на инструментите за терен с инструментите за жп/път/вода/летище: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обърната посока на преместване???: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обърната посока на преместване: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Показване на измервателна подсказка при използване на инструментите за строене: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Покажи цветовете на компанията: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Нито една
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Твоята компания
@@ -862,15 +911,34 @@ STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Пре�
 STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Включване на нов АИ (алфа): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Позволяване на компютърни играчи в мултиплейър (експериментално): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}{STRING} дни/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Интервал на сервиз за влакове: {ORANGE}изключен
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Интервал на сервиз за автомобили: {ORANGE}{STRING} дни/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Интервал на сервиз за автомобили: {ORANGE}изключен
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал на сервиз за самолети: {ORANGE}{STRING} дни/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Интервал на сервиз за самолети: {ORANGE}изключен
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Интервал на сервиз за кораби: {ORANGE}{STRING} дни/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Интервал на сервиз за кораби: {ORANGE}изключен
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Изключване на сервиза когато повредите са изключени: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Вагоните имат ограничение на скоростта: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Цветни нови се появяват през: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Начална година: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Край на играта през: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Плавна икономика (повече, по-малки промени)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Позволяване покупката на акции от други компании
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При влачене, поставяне на семафори всеки: {ORANGE}{STRING} плочка(и)
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Позиция на лента за инструменти: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Лево
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Център
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Дясно
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Прилепване на прозорците: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Прилепване на прозорците: {ORANGE}изключено
 
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Интерфейс
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Строене
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Автомобили
+STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Станции
 STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Икономика
 STR_CONFIG_PATCHES_AI                                           :{BLACK}Съперници
 
@@ -879,6 +947,10 @@ STR_CONFIG_PATCHES_INT32                                        :{NUM}
 STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Промяна стойноста на настройка
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Някои от стойностите за интервал(и) на сервиз са несъвместими с избраните настройки! 5-90% и 30-800 са валидни стойности
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}YAPF за кораби: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}YAPF за автомобили: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}YAPF за влакове: {ORANGE}{STRING}
 
 
 STR_CHEATS                                                      :{WHITE}Кодове
@@ -901,6 +973,7 @@ STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Поз�
 
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Не може да се променя името на пункта...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Промяна ЖП линия на пункт
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Тук не може да се строи влаков пункт...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Оттук не може да се премахва влаковия пункт...
 
@@ -925,13 +998,34 @@ STR_BUOY_IS_IN_USE                                              :{WHITE}...ша�
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Не може да се премахва част от гарата...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Тук не може да се променя типа на жп линията...
+STR_CONVERT_RAIL_TIP                                            :{BLACK}Промяна/обновяване на ЖП линия
 
 
 
 
+STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Строене мина за въглища
+STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Засаждане на гора
+STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Строене на нефтен кладенец
+STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Създаване на ферма
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Строене мина за мед
+STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Копаене за нефт
+STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Строене на мина за злато
+STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Строене мина за диаманти
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Строене на мина за желязо
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Създаване на плодова плантация
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Основаване каукукова плантация
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Основаване воден източник
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Засаждане гора от захарен памук
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Инвестиране във ферма за батерии
+STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Копаене за кола
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Основаване пластмасови фонтани
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Строене генератор на балони
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Основаване карамеломна
+STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Строене захарна мина
 
 
 
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Интервал на сервиз е в проценти: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Промяна на производство
 
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Добре дошли в новия АИ, който е още в процес на разработване. Ако срещнете проблеми, направете screenshot и го пуснете във форума.
@@ -1286,6 +1380,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Запа
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Избери нов тип игра
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Избери на сценарии (зелено), предварително настроена игра (синьо), или произволна нова игра
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Генерирай произволна нова игра
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Зареди височинна карта
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} пречи
@@ -1518,6 +1613,7 @@ STR_701F                                                        :{BLACK}+{CURREN
 STR_7020_TOTAL                                                  :{WHITE}Всичко:
 STR_7021                                                        :{COMPANY}{PLAYERNAME}
 STR_7022_INCOME_GRAPH                                           :{WHITE}Графика на приходите
+STR_CURRCOMPACT                                                 :{CURRCOMPACT64}
 STR_7024                                                        :{COMMA}
 STR_7025_OPERATING_PROFIT_GRAPH                                 :{WHITE}Графика на оперативните приходи
 STR_7026_BANK_BALANCE                                           :{WHITE}Баланс на банковата сметка
@@ -1951,6 +2047,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Купи
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Домъкни ЖП машина тук, за да я продадеш
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Фокусирай върху мястото на влаковото депо
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Списък с влакове - натисни върху влак за информация
+STR_BLACK_ENGINES                                               :{BLACK}Двигатели
+STR_BLACK_WAGONS                                                :{BLACK}Вагони
+STR_BLACK_BOTH                                                  :{BLACK}Двете
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Показване само на двигатели
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Показване само на вагони
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Показване на двигатели и вагони
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Строене на избрания влак
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Преименуване на влак
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Текущо същояние на влака - натиснете за спиране/пускане
@@ -2152,6 +2254,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Стро
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Самолет - натиснете върху самолет за информация
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Строене на самолет (необходимо е летище с хангар)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Самолет - натиснете върху самолет за информация
+STR_BLACK_PLANES                                                :{BLACK}Витлови самолети
+STR_BLACK_JETS                                                  :{BLACK}Реактивни самолети
+STR_BLACK_HELICOPTERS                                           :{BLACK}Хелокоптери
+STR_BUILD_PLANES_TIP                                            :{BLACK}Показване на витлови самолети
+STR_BUILD_JETS_TIP                                              :{BLACK}Показване на реактивни самолети
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Показване на хеликоптери
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Строене на самолет
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Преместете самолет тук за да го продадете
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Центриране на главния прозорец върху хангара
@@ -2175,15 +2283,15 @@ STR_A036                                                        :{TINYFONT}{BLAC
 STR_A037_RENAME                                                 :{BLACK}Смяна на името
 STR_A038_RENAME_AIRCRAFT_TYPE                                   :{BLACK}Смяна името на самолета
 STR_A039_RENAME_AIRCRAFT_TYPE                                   :{WHITE}Сняна името на самолета
-STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Не може да смени името на самолета...
+STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE                             :{WHITE}Не може да се смени името на самолета...
 STR_A03B_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Преустройване на самолета за превоз на друг товар
 STR_A03C_REFIT                                                  :{WHITE}{VEHICLE} (Преустрой)
 STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Преустрой самолета
-STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Избери какъв тип товар да превозва самолета
+STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Избор какъв тип товар да превозва самолета
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Преустрой самолета да превозва посочения тип товар
-STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Избери тип товар за превозване:
+STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Избор тип товар за превозване:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нова вместимост: {GOLD}{STRING}{}{BLACK}Цена на преустройството: {GOLD}{CURRENCY}
-STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не може да преустроиш самолета...
+STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не може да се преустрои самолета...
 SERVICE_AT_AIRPORT_HANGAR                                       :Сервиз в {STATION} хангар
 
 ##id 0xB000
@@ -2211,6 +2319,15 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}В мо�
 STR_NEWGRF_FILENAME                                             :{BLACK}Име на файл:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
+STR_CURRENCY_WINDOW                                             :{WHITE}Поръчкова валута
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Обменен курс: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Разделител:
+STR_CURRENCY_PREFIX                                             :{LTBLUE}Представка:
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Надставка:
+STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Преобразуване в евро: {ORANGE}{NUM}
+STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Преобразуване в евро: {ORANGE}никога
+STR_CURRENCY_PREVIEW                                            :{LTBLUE}Преглед: {ORANGE}{CURRENCY}
+STR_CURRENCY_CHANGE_PARAMETER                                   :{BLACK}Промяна параметрите на поръчкова валута
 
 STR_BUS                                                         :{BLACK}{BUS}
 
@@ -2226,12 +2343,29 @@ STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Хангари
 
 ### depot strings
 
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Ще продадете всичко в депото
 STR_ARE_YOU_SURE                                                :{BLACK}Сигурен ли си?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Потвърдете продажбата всички влакове в депото
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Потвърдете продажбата всички автомобили в гаража
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Потвърдете продажбата всички кораби в депото
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Потвърдете продажбата на всички самолети в хангара
+
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Отказ продажбата всички влакове в депото
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Отказ продажбата всички автомобили в гаража
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Отказ продажбата всички кораби в депото
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Отказ продажбата всички самолети в хангара
+
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Продажба всички влакове в депото
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Продажба всички автомобили в гаража
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Продажба всички кораби в депото
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Продажба всички самолети в хангара
 
 
-
-
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Автоматична замяна на всички влакове в депото
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Автоматична замяна на всички автомобили в депото
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Автоматична замяна на всички кораби в депото
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Автоматична замяна на всички самолети в хангара
 
 
 
@@ -2251,12 +2385,16 @@ STR_WAGONS                                                      :Вагони
 
 ########### String for New Landscape Generator
 
+STR_DATE                                                        :{BLACK}Дата:
 STR_CLEARING_TILES                                              :{BLACK}Създаване на твърда и скална повърност
 
 
 ########### String for new airports
 STR_CITY_AIRPORT                                                :{BLACK}Град
 STR_COMMUTER_AIRPORT                                            :{BLACK}Комютър
+
+
+############ Tooltip measurment
 
 
 ########

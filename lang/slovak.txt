@@ -1129,6 +1129,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. ro
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automaticke opravy vrtulnikov v heliporte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otvarat panel uprav terenu s panelom stavby trati, ciest, ... : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Pri posuvani mapy mysou posuvat opacnym smerom: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Zobrazit info o rozmerom pri vystavbe: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Zobrazit farebne schemy spolocnosti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ziadne
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Vlastna spolocnost
@@ -3156,5 +3157,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Male let
 STR_LARGE_AIRPORTS                                              :{BLACK}Velke letiska
 STR_HUB_AIRPORTS                                                :{BLACK}Najvacsie letiska
 STR_HELIPORTS                                                   :{BLACK}Heliporty
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Dl¸ka: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Plocha: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dl¸ka: {NUM}{}Vý¨kový rozdiel: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plocha: {NUM} x {NUM}{}Vý¨kový rozdiel: {NUM} m
 
 ########

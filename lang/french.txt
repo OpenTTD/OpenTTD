@@ -1066,6 +1066,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Etendue
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Entretenir automatiquement les hélicoptères à l'heliport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Relier la barre d'outils Paysage avec celle des rails/routes/eau et aéroport: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Inverser la direction lors du défilement avec la souris : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Montrer une infobulle de mesure lors de l'utilisation de divers outils de construction: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Affichage des livrées de compagnie : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Aucune
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propre compagnie
@@ -3093,4 +3094,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Petits a
 STR_LARGE_AIRPORTS                                              :{BLACK}Grands aéroports
 STR_HUB_AIRPORTS                                                :{BLACK}Aéroports Internodaux
 STR_HELIPORTS                                                   :{BLACK}Héli-ports
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Longueur: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Région: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longueur: {NUM}{}Ecart d'altitude: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Région: {NUM} x {NUM}{}Ecart d'altitude: {NUM} m
+
 ########

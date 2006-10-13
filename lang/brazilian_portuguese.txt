@@ -1065,6 +1065,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de terreno às ferramentas de ferrovia/rodovia/hidrovia/aeroportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Rolar a tela no sentido oposto ao movimento do mouse: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar distâncias quando usar ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar cores de companhias: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Minha empresa
@@ -2484,8 +2485,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Manutenção no d
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sem parar para o depósito de {TOWN}
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Manutenção no depósito de {TOWN} sem parar
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Dirige-se ao depósito de {TOWN}
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Dirige-se ao depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Dirigindo-se ao depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Dirigindo-se ao depósito de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Manutenção no Depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Manutenção no Depósito de {TOWN}, {VELOCITY}
 
@@ -2629,8 +2630,8 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve 
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Não é possível vender veículo de estrada...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Não é possível iniciar/parar veículo de estrada...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Veículo de Estrada {COMMA} está aguardando no depósito
-STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Dirige-se ao depósito de {TOWN}
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Dirige-se ao depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Dirigindo-se ao depósito de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Dirigindo-se ao depósito de {TOWN}, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Manutenção no Depósito de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenção do Depósito de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Não é possível mandar o veículo para o depósito...
@@ -2702,8 +2703,8 @@ STR_9817_CAPACITY                                               :{BLACK}Capacida
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Não é possível iniciar/parar barco...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Não é possível mandar barco para o depósito...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Não é possível encontrar depósito local
-STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Dirige-se ao depósito de {TOWN}
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Dirige-se ao depósito {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Dirigindo-se ao depósito de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Dirigindo-se ao depósito {TOWN}, {VELOCITY}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Manutenção no Depósito de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Manutenção no Depósito de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Navio {COMMA} está aguardando no depósito
@@ -2769,8 +2770,8 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Lucros d
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Confiabilidade: {LTBLUE}{COMMA}%  {BLACK}Quebras desde a última manutenção: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construído: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Não é possível mandar aeronave para o hangar...
-STR_HEADING_FOR_HANGAR                                          :{ORANGE}Dirige-se ao hangar de {STATION}
-STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Dirige-se ao hangar de {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Dirigindo-se ao hangar de {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Dirigindo-se ao hangar de {STATION}, {VELOCITY}
 STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Manutenção no Hangar de {STATION}
 STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Manutenção no Hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronave {COMMA} está aguardando no hangar
@@ -3092,5 +3093,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Aeroport
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroportos Grandes
 STR_HUB_AIRPORTS                                                :{BLACK}Aeroportos modulares
 STR_HELIPORTS                                                   :{BLACK}Aeroportos de helicópteros
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Comprimento: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Area: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Comprimento: {NUM}{}Diferença de Altura: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Area: {NUM} x {NUM}{}Diferença de altura: {NUM} m
 
 ########
