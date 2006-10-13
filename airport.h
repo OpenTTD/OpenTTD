@@ -141,11 +141,11 @@ typedef struct AirportFTAClass {
 
 // internal structure used in openttd - Finite sTate mAchine --> FTA
 typedef struct AirportFTA {
-	byte position;                    // the position that an airplane is at
-	byte next_position;               // next position from this position
-	uint32 block;                     // 32 bit blocks (st->airport_flags), should be enough for the most complex airports
-	byte heading;                     // heading (current orders), guiding an airplane to its target on an airport
-	struct AirportFTA *next_in_chain; // possible extra movement choices from this position
+	byte position;           // the position that an airplane is at
+	byte next_position;      // next position from this position
+	uint32 block;            // 32 bit blocks (st->airport_flags), should be enough for the most complex airports
+	byte heading;            // heading (current orders), guiding an airplane to its target on an airport
+	struct AirportFTA *next; // possible extra movement choices from this position
 } AirportFTA;
 
 void InitializeAirports(void);
