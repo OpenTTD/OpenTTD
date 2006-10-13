@@ -510,8 +510,6 @@ static void RegisterWndClass(void)
 	}
 }
 
-extern const char _openttd_revision[];
-
 static void MakeWindow(bool full_screen)
 {
 	_fullscreen = full_screen;
@@ -572,6 +570,7 @@ static void MakeWindow(bool full_screen)
 			ShowWindow(_wnd.main_wnd, SW_SHOWNORMAL); // remove maximize-flag
 			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 		} else {
+			extern const char _openttd_revision[];
 			char Windowtitle[50];
 
 			snprintf(Windowtitle, lengthof(Windowtitle), "OpenTTD %s", _openttd_revision);

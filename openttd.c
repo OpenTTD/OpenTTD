@@ -125,10 +125,9 @@ void *ReadFileToMem(const char *filename, size_t *lenp, size_t maxsize)
 	return mem;
 }
 
-extern const char _openttd_revision[];
-
 static void showhelp(void)
 {
+	extern const char _openttd_revision[];
 	char buf[4096], *p;
 
 	p    = buf;

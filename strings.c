@@ -37,8 +37,6 @@ static char *GetSpecialPlayerNameString(char *buff, int ind, const int32 *argv);
 
 static char *FormatString(char *buff, const char *str, const int32 *argv, uint casei);
 
-extern const char _openttd_revision[];
-
 typedef struct LanguagePack {
 	uint32 ident;
 	uint32 version;     // 32-bits of auto generated version info which is basically a hash of strings.h
@@ -568,6 +566,7 @@ static const Units units[] = {
 
 static char *FormatString(char *buff, const char *str, const int32 *argv, uint casei)
 {
+	extern const char _openttd_revision[];
 	byte b;
 	const int32 *argv_orig = argv;
 	uint modifier = 0;

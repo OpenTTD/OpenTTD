@@ -156,8 +156,6 @@ static void GetAvailableVideoMode(int *w, int *h)
 	*h = _resolutions[best][1];
 }
 
-extern const char _openttd_revision[];
-
 #ifndef ICON_DIR
 #define ICON_DIR "media"
 #endif
@@ -171,6 +169,7 @@ extern const char _openttd_revision[];
 
 static bool CreateMainSurface(int w, int h)
 {
+	extern const char _openttd_revision[];
 	SDL_Surface *newscreen, *icon;
 	char caption[50];
 

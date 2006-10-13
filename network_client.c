@@ -24,8 +24,6 @@
 // This file handles all the client-commands
 
 
-extern const char _openttd_revision[];
-
 // So we don't make too much typos ;)
 #define MY_CLIENT DEREF_CLIENT(0)
 
@@ -65,6 +63,7 @@ DEF_CLIENT_SEND_COMMAND(PACKET_CLIENT_JOIN)
 	//    String: Unique id to find the player back in server-listing
 	//
 
+	extern const char _openttd_revision[];
 	Packet *p;
 	_network_join_status = NETWORK_JOIN_STATUS_AUTHORIZING;
 	InvalidateWindow(WC_NETWORK_STATUS_WINDOW, 0);
