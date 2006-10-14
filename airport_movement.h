@@ -369,9 +369,9 @@ static const AirportMovingData _airport_moving_data_oilrig[9] = {
 
 ///////////////////////////////////////////////////////////////////////
 /////**********Movement Machine on Airports*********************///////
-// first element of depots array tells us how many depots there are (to know size of array)
-// this may be changed later when airports are moved to external file
-
+/* First element of depots array tells us how many depots there are (to know size of array)
+ * this may be changed later when airports are moved to external file
+ * First element of terminals array tells us how many terminal-groups there are */
 static const TileIndexDiffC _airport_depots_country[] = {{3, 0}};
 static const byte _airport_terminal_country[] = {1, 2};
 static const AirportFTAbuildup _airport_fta_country[] = {

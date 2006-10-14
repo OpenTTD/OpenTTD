@@ -28,7 +28,7 @@
 
 static bool AirportMove(Vehicle *v, const AirportFTAClass *apc);
 static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *apc);
-static bool AirportHasBlock(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *apc);
+static bool AirportHasBlock(Vehicle *v, const AirportFTA *current_pos, const AirportFTAClass *apc);
 static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *apc);
 static bool AirportFindFreeHelipad(Vehicle *v, const AirportFTAClass *apc);
 static void AirportGoToNextPosition(Vehicle *v, const AirportFTAClass *apc);
@@ -1517,9 +1517,7 @@ static void AircraftEventHandler_AtTerminal(Vehicle *v, const AirportFTAClass *a
 	if (v->current_order.type == OT_NOTHING) return;
 
 	// if the block of the next position is busy, stay put
-	if (AirportHasBlock(v, &apc->layout[v->u.air.pos], apc)) {
-		return;
-	}
+	if (AirportHasBlock(v, &apc->layout[v->u.air.pos], apc)) return;
 
 	// airport-road is free. We either have to go to another airport, or to the hangar
 	// ---> start moving
@@ -1790,14 +1788,14 @@ static bool AirportMove(Vehicle *v, const AirportFTAClass *apc)
 }
 
 // returns true if the road ahead is busy, eg. you must wait before proceeding
-static bool AirportHasBlock(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *apc)
+static bool AirportHasBlock(Vehicle *v, const AirportFTA *current_pos, const AirportFTAClass *apc)
 {
-	const AirportFTA* reference = &apc->layout[v->u.air.pos];
-	const AirportFTA* next = &apc->layout[current_pos->next_position];
+	const AirportFTA *reference = &apc->layout[v->u.air.pos];
+	const AirportFTA *next = &apc->layout[current_pos->next_position];
 
 	// same block, then of course we can move
 	if (apc->layout[current_pos->position].block != next->block) {
-		const Station* st = GetStation(v->u.air.targetairport);
+		const Station *st = GetStation(v->u.air.targetairport);
 		uint32 airport_flags = next->block;
 
 		// check additional possible extra blocks
@@ -1817,9 +1815,8 @@ static bool AirportHasBlock(Vehicle *v, AirportFTA *current_pos, const AirportFT
 // returns true on success. Eg, next block was free and we have occupied it
 static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportFTAClass *apc)
 {
-	AirportFTA* next = &apc->layout[current_pos->next_position];
-	AirportFTA* reference = &apc->layout[v->u.air.pos];
-	AirportFTA* current;
+	AirportFTA *next = &apc->layout[current_pos->next_position];
+	AirportFTA *reference = &apc->layout[v->u.air.pos];
 
 	// if the next position is in another block, check it and wait until it is free
 	if ((apc->layout[current_pos->position].block & next->block) != next->block) {
@@ -1827,7 +1824,7 @@ static bool AirportSetBlocks(Vehicle *v, AirportFTA *current_pos, const AirportF
 		Station* st = GetStation(v->u.air.targetairport);
 		//search for all all elements in the list with the same state, and blocks != N
 		// this means more blocks should be checked/set
-		current = current_pos;
+			AirportFTA *current = current_pos;
 		if (current == reference) current = current->next;
 		while (current != NULL) {
 			if (current->heading == current_pos->heading && current->block != 0) {
@@ -1880,9 +1877,6 @@ static uint GetNumTerminals(const AirportFTAClass *apc)
 
 static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *apc)
 {
-	AirportFTA *temp;
-	Station *st;
-
 	/* example of more terminalgroups
 	 * {0,HANGAR,NOTHING_block,1}, {0,255,TERM_GROUP1_block,0}, {0,255,TERM_GROUP2_ENTER_block,1}, {0,0,N,1},
 	 * Heading 255 denotes a group. We see 2 groups here:
@@ -1894,8 +1888,9 @@ static bool AirportFindFreeTerminal(Vehicle *v, const AirportFTAClass *apc)
 	 * fails, then attempt fails and plane waits
 	 */
 	if (apc->terminals[0] > 1) {
-		st = GetStation(v->u.air.targetairport);
-		temp = apc->layout[v->u.air.pos].next;
+		Station *st = GetStation(v->u.air.targetairport);
+		AirportFTA *temp = apc->layout[v->u.air.pos].next;
+
 		while (temp != NULL) {
 			if (temp->heading == 255) {
 				if (!HASBITS(st->airport_flags, temp->block)) {
