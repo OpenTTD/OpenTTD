@@ -369,9 +369,8 @@ static const AirportMovingData _airport_moving_data_oilrig[9] = {
 
 ///////////////////////////////////////////////////////////////////////
 /////**********Movement Machine on Airports*********************///////
-/* First element of depots array tells us how many depots there are (to know size of array)
- * this may be changed later when airports are moved to external file
- * First element of terminals array tells us how many terminal-groups there are */
+/* First element of terminals array tells us how many depots there are (to know size of array)
+ * this may be changed later when airports are moved to external file  */
 static const TileIndexDiffC _airport_depots_country[] = {{3, 0}};
 static const byte _airport_terminal_country[] = {1, 2};
 static const AirportFTAbuildup _airport_fta_country[] = {
@@ -429,7 +428,7 @@ static const AirportFTAbuildup _airport_fta_commuter[] = {
 	{ 17, LANDING, RUNWAY_IN_OUT_block, 18 },
 	{ 18, 0, RUNWAY_IN_OUT_block, 19 },
 	{ 19, 0, RUNWAY_IN_OUT_block, 20 },
-	{ 20, ENDLANDING, IN_WAY_block, 20 }, { 20, 255, IN_WAY_block, 2 }, { 20, TERM1, 0, 2 }, { 20, TERM2, 0, 2 }, { 20, TERM3, 0, 2 }, { 20, HANGAR, 0, 2 }, { 20, 0, 0, 2 },
+	{ 20, ENDLANDING, IN_WAY_block, 2 },
 	// In Air
 	{ 21, 0, NOTHING_block, 22 },
 	{ 22, 0, NOTHING_block, 23 },
@@ -617,15 +616,15 @@ static const AirportFTAbuildup _airport_fta_intercontinental[] = {
 	{ 20, 255, TERM_GROUP2_block, 0 }, { 20, TERM7, TERM7_block, 10 }, { 20, TERM5, 0, 19 }, { 20, TERM6, 0, 19 }, { 20, HANGAR, HANGAR2_AREA_block, 3 }, { 20, TAKEOFF, 0, 19 }, { 20, 0, TERM_GROUP2_EXIT1_block, 21 },
 	{ 21, 255, TERM_GROUP2_block, 0 }, { 21, TERM8, TERM8_block, 11 }, { 21, HANGAR, HANGAR2_AREA_block, 20 }, { 21, TERM5, 0, 20 }, { 21, TERM6, 0, 20 }, { 21, TERM7, 0, 20 }, { 21, TAKEOFF, 0, 20 }, { 21, 0, TERM_GROUP2_EXIT1_block, 22 },
 	{ 22, 255, TERM_GROUP2_block, 0 }, { 22, HANGAR, 0, 21 }, { 22, TERM5, 0, 21 }, { 22, TERM6, 0, 21 }, { 22, TERM7, 0, 21 }, { 22, TERM8, 0, 21 }, { 22, TAKEOFF, 0, 21 }, { 22, 0, 0, 23 },
-	{ 23, 255, TERM_GROUP2_EXIT1_block, 0 }, { 23, 0, 0, 70 },
+	{ 23, 0, TERM_GROUP2_EXIT1_block, 70 },
 	{ 24, 0, TERM_GROUP2_EXIT2_block, 25 },
 	{ 25, 255, TERM_GROUP2_EXIT2_block, 0 }, { 25, HANGAR, HANGAR1_AREA_block | TERM_GROUP1_block, 29 }, { 25, 0, 0, 29 },
 	{ 26, 255, TERM_GROUP1_block, 0 }, { 26, TERM1, TERM1_block, 4 }, { 26, HANGAR, HANGAR1_AREA_block, 27 }, { 26, TERM5, TERM_GROUP2_ENTER1_block, 14 }, { 26, TERM6, TERM_GROUP2_ENTER1_block, 14 }, { 26, TERM7, TERM_GROUP2_ENTER1_block, 14 }, { 26, TERM8, TERM_GROUP2_ENTER1_block, 14 }, { 26, HELIPAD1, TERM_GROUP2_ENTER1_block, 14 }, { 26, HELIPAD2, TERM_GROUP2_ENTER1_block, 14 }, { 26, HELITAKEOFF, TERM_GROUP2_ENTER1_block, 14 }, { 26, 0, 0, 27 },
 	{ 27, 255, TERM_GROUP1_block, 0 }, { 27, TERM2, TERM2_block, 5 }, { 27, HANGAR, HANGAR1_AREA_block, 2 }, { 27, TERM1, 0, 26 }, { 27, TERM5, 0, 26 }, { 27, TERM6, 0, 26 }, { 27, TERM7, 0, 26 }, { 27, TERM8, 0, 26 }, { 27, HELIPAD1, 0, 14 }, { 27, HELIPAD2, 0, 14 }, { 27, 0, 0, 28 },
 	{ 28, 255, TERM_GROUP1_block, 0 }, { 28, TERM3, TERM3_block, 6 }, { 28, HANGAR, HANGAR1_AREA_block, 27 }, { 28, TERM1, 0, 27 }, { 28, TERM2, 0, 27 }, { 28, TERM4, 0, 29 }, { 28, TERM5, 0, 14 }, { 28, TERM6, 0, 14 }, { 28, TERM7, 0, 14 }, { 28, TERM8, 0, 14 }, { 28, HELIPAD1, 0, 14 }, { 28, HELIPAD2, 0, 14 }, { 28, 0, 0, 29 },
 	{ 29, 255, TERM_GROUP1_block, 0 }, { 29, TERM4, TERM4_block, 7 }, { 29, HANGAR, HANGAR1_AREA_block, 27 }, { 29, TAKEOFF, 0, 30 }, { 29, 0, 0, 28 },
-	{ 30, 255, OUT_WAY_block2, 0 }, { 30, 0, 0, 31 },
-	{ 31, 255, OUT_WAY_block, 32 },
+	{ 30, 0, OUT_WAY_block2, 31 },
+	{ 31, 0, OUT_WAY_block, 32 },
 	// takeoff
 	{ 32, TAKEOFF, RUNWAY_OUT_block, 33 },
 	{ 33, 0, RUNWAY_OUT_block, 34 },

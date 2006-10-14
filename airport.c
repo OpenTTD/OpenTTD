@@ -356,21 +356,31 @@ static void AirportBuildAutomata(AirportFTAClass *apc, const AirportFTAbuildup *
 static byte AirportTestFTA(const AirportFTAClass *apc)
 {
 	byte position, i, next_position;
-	AirportFTA *current;
+	AirportFTA *current, *first;
 	next_position = 0;
 
 	for (i = 0; i < apc->nofelements; i++) {
 		position = apc->layout[i].position;
 		if (position != next_position) return i;
-		current = &apc->layout[i];
+		current = first = &apc->layout[i];
 
-		do {
-			if (current->heading > MAX_HEADINGS && current->heading != 255) return i;
-			if (current->heading == 0 && current->next != 0) return i;
+		for (; current != NULL; current = current->next) {
+			/* A heading must always be valid. The only exceptions are
+			 * - multiple choices as start, identified by a special value of 255
+			 * - terminal group which is identified by a special value of 255 */
+			if (current->heading > MAX_HEADINGS) {
+				if (current->heading != 255) return i;
+				if (current == first && current->next == NULL) return i;
+				if (current != first && current->next_position > apc->terminals[0]) return i;
+			}
+
+			/* If there is only one choice, it must be at the end */
+			if (current->heading == 0 && current->next != NULL) return i;
+			/* Obviously the elements of the linked list must have the same identifier */
 			if (position != current->position) return i;
+			/* A next position must be within bounds */
 			if (current->next_position >= apc->nofelements) return i;
-			current = current->next;
-		} while (current != NULL);
+		}
 		next_position++;
 	}
 	return MAX_ELEMENTS;
