@@ -268,13 +268,13 @@ void EnginesDailyLoop(void)
 					continue;
 				}
 
-				if (!IS_HUMAN_PLAYER(best_player)) {
+				if (!IsHumanPlayer(best_player)) {
 					/* XXX - TTDBUG: TTD has a bug here ???? */
 					AcceptEnginePreview(e, best_player);
 				} else {
 					e->flags |= ENGINE_PREVIEWING;
 					e->preview_wait = 20;
-					if (IS_INTERACTIVE_PLAYER(best_player)) ShowEnginePreviewWindow(i);
+					if (IsInteractivePlayer(best_player)) ShowEnginePreviewWindow(i);
 				}
 			}
 		}

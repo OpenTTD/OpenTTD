@@ -997,7 +997,7 @@ static bool LoadOldPlayer(LoadgameState *ls, int num)
 	 * really figured out as of now, p->ai.cur_veh; needed for 'sell vehicle'
 	 * is NULL and the function will crash. To fix this, just change the state
 	 * to some harmless state, like 'loop vehicle'; 1 */
-	if (!IS_HUMAN_PLAYER(num) && p->ai.state == 20) p->ai.state = 1;
+	if (!IsHumanPlayer(num) && p->ai.state == 20) p->ai.state = 1;
 
 	if (p->is_ai && (!_networking || _network_server) && _ai.enabled)
 		AI_StartNewAI(p->index);

@@ -126,7 +126,7 @@ int32 CmdIncreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		/* Loan the maximum amount or not? */
-		int32 loan = (p2) ? _economy.max_loan - p->current_loan : (IS_HUMAN_PLAYER(_current_player) || _patches.ainew_active) ? 10000 : 50000;
+		int32 loan = (p2) ? _economy.max_loan - p->current_loan : (IsHumanPlayer(_current_player) || _patches.ainew_active) ? 10000 : 50000;
 
 		p->money64 += loan;
 		p->current_loan += loan;
@@ -160,7 +160,7 @@ int32 CmdDecreaseLoan(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		loan = max(loan, 10000);
 		loan -= loan % 10000;
 	} else {
-		loan = min(loan, (IS_HUMAN_PLAYER(_current_player) || _patches.ainew_active) ? 10000 : 50000);
+		loan = min(loan, (IsHumanPlayer(_current_player) || _patches.ainew_active) ? 10000 : 50000);
 	}
 
 	if (p->player_money < loan) {

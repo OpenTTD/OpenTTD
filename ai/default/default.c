@@ -3773,7 +3773,7 @@ static void AiHandleTakeover(Player *p)
 			AskExitToGameMenu();
 			return;
 		}
-		if (IS_HUMAN_PLAYER(_current_player)) return;
+		if (IsHumanPlayer(_current_player)) return;
 	}
 
 	if (p->bankrupt_asked == 255) return;
@@ -3809,7 +3809,7 @@ static void AiHandleTakeover(Player *p)
 			ShowBuyCompanyDialog(_current_player);
 			return;
 		}
-		if (IS_HUMAN_PLAYER(best_pl->index)) return;
+		if (IsHumanPlayer(best_pl->index)) return;
 
 		// Too little money for computer to buy it?
 		if (best_pl->player_money >> 1 >= p->bankrupt_value) {
@@ -3866,7 +3866,7 @@ void AiDoGameLoop(Player *p)
 	//  or in %
 	_ai_service_interval = _patches.servint_ispercent?80:180;
 
-	if (IS_HUMAN_PLAYER(_current_player)) return;
+	if (IsHumanPlayer(_current_player)) return;
 
 	AiAdjustLoan(p);
 	AiBuildCompanyHQ(p);

@@ -1089,7 +1089,7 @@ int32 CmdRefitShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	_returned_refit_capacity = capacity;
 
 	cost = 0;
-	if (IS_HUMAN_PLAYER(v->owner) && new_cid != v->cargo_type) {
+	if (IsHumanPlayer(v->owner) && new_cid != v->cargo_type) {
 		cost = GetRefitCost(v->engine_type);
 	}
 

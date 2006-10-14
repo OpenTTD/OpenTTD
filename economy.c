@@ -388,7 +388,7 @@ static void PlayersCheckBankrupt(Player *p)
 		case 3: {
 			/* XXX - In multiplayer, should we ask other players if it wants to take
 		          over when it is a human company? -- TrueLight */
-			if (IS_HUMAN_PLAYER(owner)) {
+			if (IsHumanPlayer(owner)) {
 				AddNewsItem( (StringID)(owner + 16),
 					NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 				break;
@@ -415,12 +415,12 @@ static void PlayersCheckBankrupt(Player *p)
 			AddNewsItem( (StringID)(owner + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 			// If the player is human, and it is no network play, leave the player playing
-			if (IS_HUMAN_PLAYER(owner) && !_networking) {
+			if (IsHumanPlayer(owner) && !_networking) {
 				p->bankrupt_asked = 255;
 				p->bankrupt_timeout = 0x456;
 			} else {
 #ifdef ENABLE_NETWORK
-				if (IS_HUMAN_PLAYER(owner) && _network_server) {
+				if (IsHumanPlayer(owner) && _network_server) {
 					// If we are the server, make sure it is clear that his player is no
 					//  longer with us!
 					NetworkClientInfo *ci;
@@ -436,7 +436,7 @@ static void PlayersCheckBankrupt(Player *p)
 					}
 				}
 				// Make sure the player no longer controls the company
-				if (IS_HUMAN_PLAYER(owner) && owner == _local_player) {
+				if (IsHumanPlayer(owner) && owner == _local_player) {
 					// Switch the player to spectator..
 					_local_player = OWNER_SPECTATOR;
 				}
@@ -447,9 +447,9 @@ static void PlayersCheckBankrupt(Player *p)
 				// Register the player as not-active
 				p->is_active = false;
 
-				if (!IS_HUMAN_PLAYER(owner) && (!_networking || _network_server) && _ai.enabled)
+				if (!IsHumanPlayer(owner) && (!_networking || _network_server) && _ai.enabled)
 					AI_PlayerDied(owner);
-				if (IS_HUMAN_PLAYER(owner) && owner == _local_player && _ai.network_client)
+				if (IsHumanPlayer(owner) && owner == _local_player && _ai.network_client)
 					AI_PlayerDied(owner);
 			}
 		}

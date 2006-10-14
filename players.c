@@ -341,7 +341,7 @@ set_name:;
 
 		MarkWholeScreenDirty();
 
-		if (!IS_HUMAN_PLAYER(p->index)) {
+		if (!IsHumanPlayer(p->index)) {
 			SetDParam(0, t->index);
 			AddNewsItem(p->index + (4 << 4), NEWS_FLAGS(NM_CALLBACK, NF_TILE, NT_COMPANY_INFO, DNC_BANKRUPCY), p->last_build_coordinate, 0);
 		}
@@ -584,7 +584,7 @@ void OnTick_Players(void)
 // index is the next parameter in _decode_parameters to set up
 StringID GetPlayerNameString(PlayerID player, uint index)
 {
-	if (IS_HUMAN_PLAYER(player) && player < MAX_PLAYERS) {
+	if (IsHumanPlayer(player) && player < MAX_PLAYERS) {
 		SetDParam(index, player+1);
 		return STR_7002_PLAYER;
 	}
@@ -917,7 +917,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		p = GetPlayer(p2);
 
 		/* Only allow removal of HUMAN companies */
-		if (IS_HUMAN_PLAYER(p->index)) {
+		if (IsHumanPlayer(p->index)) {
 			/* Delete any open window of the company */
 			DeletePlayerWindows(p->index);
 
@@ -1268,7 +1268,7 @@ static void SaveLoad_PLYR(Player* p)
 	SlObject(p, _player_desc);
 
 	// Write AI?
-	if (!IS_HUMAN_PLAYER(p->index)) {
+	if (!IsHumanPlayer(p->index)) {
 		SlObject(&p->ai, _player_ai_desc);
 		for (i = 0; i != p->ai.num_build_rec; i++) {
 			SlObject(&p->ai.src + i, _player_ai_build_rec_desc);

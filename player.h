@@ -248,6 +248,16 @@ static inline bool HasRailtypeAvail(const Player *p, RailType Railtype)
 	return HASBIT(p->avail_railtypes, Railtype);
 }
 
+static inline bool IsHumanPlayer(PlayerID pi)
+{
+	return !GetPlayer(pi)->is_ai;
+}
+
+static inline bool IsInteractivePlayer(PlayerID pi)
+{
+	return pi == _local_player;
+}
+
 /* Validate functions for rail building */
 static inline bool ValParamRailtype(uint32 rail) { return HASBIT(GetPlayer(_current_player)->avail_railtypes, rail);}
 
@@ -264,9 +274,6 @@ static inline RailType GetBestRailtype(const Player* p)
 	if (HasRailtypeAvail(p, RAILTYPE_ELECTRIC)) return RAILTYPE_ELECTRIC;
 	return RAILTYPE_RAIL;
 }
-
-#define IS_HUMAN_PLAYER(p) (!GetPlayer(p)->is_ai)
-#define IS_INTERACTIVE_PLAYER(p) ((p) == _local_player)
 
 typedef struct HighScore {
 	char company[100];

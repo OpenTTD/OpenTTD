@@ -28,7 +28,7 @@ static void DisasterClearSquare(TileIndex tile)
 
 	switch (GetTileType(tile)) {
 		case MP_RAILWAY:
-			if (IS_HUMAN_PLAYER(GetTileOwner(tile)) && !IsRailWaypoint(tile)) {
+			if (IsHumanPlayer(GetTileOwner(tile)) && !IsRailWaypoint(tile)) {
 				PlayerID p = _current_player;
 				_current_player = OWNER_WATER;
 				DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
@@ -188,7 +188,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 			if (IsValidTile(tile) &&
 					IsTileType(tile, MP_STATION) &&
 					IsAirport(tile) &&
-					IS_HUMAN_PLAYER(GetTileOwner(tile))) {
+					IsHumanPlayer(GetTileOwner(tile))) {
 				v->current_order.dest = 1;
 				v->age = 0;
 
@@ -213,7 +213,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 		if (IsValidTile(tile) &&
 				IsTileType(tile, MP_STATION) &&
 				IsAirport(tile) &&
-				IS_HUMAN_PLAYER(GetTileOwner(tile))) {
+				IsHumanPlayer(GetTileOwner(tile))) {
 			st = GetStationByTile(tile);
 			CLRBITS(st->airport_flags, RUNWAY_IN_block);
 		}
@@ -255,7 +255,7 @@ static void DisasterTick_Zeppeliner(Vehicle *v)
 	if (IsValidTile(tile) &&
 			IsTileType(tile, MP_STATION) &&
 			IsAirport(tile) &&
-			IS_HUMAN_PLAYER(GetTileOwner(tile))) {
+			IsHumanPlayer(GetTileOwner(tile))) {
 		st = GetStationByTile(tile);
 		SETBITS(st->airport_flags, RUNWAY_IN_block);
 	}
@@ -289,7 +289,7 @@ static void DisasterTick_UFO(Vehicle *v)
 		v->current_order.dest = 1;
 
 		FOR_ALL_VEHICLES(u) {
-			if (u->type == VEH_Road && IS_HUMAN_PLAYER(u->owner)) {
+			if (u->type == VEH_Road && IsHumanPlayer(u->owner)) {
 				v->dest_tile = u->index;
 				v->age = 0;
 				return;
@@ -595,7 +595,7 @@ static void DisasterTick_4(Vehicle *v)
 		do {
 			if (IsTileType(tile, MP_RAILWAY) &&
 					IsPlainRailTile(tile) &&
-					IS_HUMAN_PLAYER(GetTileOwner(tile))) {
+					IsHumanPlayer(GetTileOwner(tile))) {
 				break;
 			}
 			tile = TILE_MASK(tile+1);
@@ -726,7 +726,7 @@ static void Disaster0_Init(void)
 	FOR_ALL_STATIONS(st) {
 		if (st->airport_tile != 0 &&
 				st->airport_type <= 1 &&
-				IS_HUMAN_PLAYER(st->owner)) {
+				IsHumanPlayer(st->owner)) {
 			x = (TileX(st->xy) + 2) * TILE_SIZE;
 			break;
 		}
