@@ -292,7 +292,7 @@ typedef uint AcceptedCargo[NUM_CARGO];
 
 typedef struct TileDesc {
 	StringID str;
-	byte owner;
+	Owner owner;
 	Date build_date;
 	uint32 dparam[2];
 } TileDesc;

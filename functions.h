@@ -52,7 +52,7 @@ void TileLoop_Water(TileIndex tile);
 bool CheckPlayerHasMoney(int32 cost);
 void SubtractMoneyFromPlayer(int32 cost);
 void SubtractMoneyFromPlayerFract(PlayerID player, int32 cost);
-bool CheckOwnership(PlayerID owner);
+bool CheckOwnership(Owner owner);
 bool CheckTileOwnership(TileIndex tile);
 StringID GetPlayerNameString(PlayerID player, uint index);
 

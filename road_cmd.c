@@ -39,7 +39,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool* edge_roa
 {
 	RoadBits present;
 	RoadBits n;
-	byte owner;
+	Owner owner;
 	*edge_road = true;
 
 	if (_game_mode == GM_EDITOR) return true;
@@ -51,9 +51,7 @@ static bool CheckAllowRemoveRoad(TileIndex tile, RoadBits remove, bool* edge_roa
 
 	// Only do the special processing if the road is owned
 	// by a town
-	if (owner != OWNER_TOWN) {
-		return owner == OWNER_NONE || CheckOwnership(owner);
-	}
+	if (owner != OWNER_TOWN) return (owner == OWNER_NONE) || CheckOwnership(owner);
 
 	if (_cheats.magic_bulldozer.value) return true;
 
@@ -94,7 +92,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	// cost for removing inner/edge -roads
 	static const uint16 road_remove_cost[2] = {50, 18};
 
-	PlayerID owner;
+	Owner owner;
 	Town *t;
 	/* true if the roadpiece was always removeable,
 	 * false if it was a center piece. Affects town ratings drop */

@@ -259,7 +259,7 @@ void UpdatePlayerMoney32(Player *p)
 	}
 }
 
-void GetNameOfOwner(PlayerID owner, TileIndex tile)
+void GetNameOfOwner(Owner owner, TileIndex tile)
 {
 	SetDParam(2, owner);
 
@@ -283,7 +283,7 @@ void GetNameOfOwner(PlayerID owner, TileIndex tile)
 
 bool CheckOwnership(PlayerID owner)
 {
-	assert(owner <= OWNER_WATER);
+	assert(owner < OWNER_END);
 
 	if (owner == _current_player) return true;
 	_error_message = STR_013B_OWNED_BY;
@@ -293,9 +293,9 @@ bool CheckOwnership(PlayerID owner)
 
 bool CheckTileOwnership(TileIndex tile)
 {
-	PlayerID owner = GetTileOwner(tile);
+	Owner owner = GetTileOwner(tile);
 
-	assert(owner <= OWNER_WATER);
+	assert(owner < OWNER_END);
 
 	if (owner == _current_player) return true;
 	_error_message = STR_013B_OWNED_BY;

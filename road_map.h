@@ -178,7 +178,7 @@ RoadBits GetAnyRoadBits(TileIndex);
 TrackBits GetAnyRoadTrackBits(TileIndex tile);
 
 
-static inline void MakeRoadNormal(TileIndex t, Owner owner, RoadBits bits, uint town)
+static inline void MakeRoadNormal(TileIndex t, Owner owner, RoadBits bits, TownID town)
 {
 	SetTileType(t, MP_STREET);
 	SetTileOwner(t, owner);

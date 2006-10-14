@@ -708,7 +708,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 				if (GetTransportTypeUnderBridge(c) == TRANSPORT_RAIL) {
 					MakeRailNormal(c, GetTileOwner(c), GetRailBitsUnderBridge(c), GetRailType(c));
 				} else {
-					uint town = IsTileOwner(c, OWNER_TOWN) ? ClosestTownFromTile(c, (uint)-1)->index : 0;
+					TownID town = IsTileOwner(c, OWNER_TOWN) ? ClosestTownFromTile(c, (uint)-1)->index : 0;
 					MakeRoadNormal(c, GetTileOwner(c), GetRoadBitsUnderBridge(c), town);
 				}
 				MarkTileDirtyByTile(c);
