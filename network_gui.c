@@ -933,7 +933,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			NetworkClientConnectGame(_network_last_host, _network_last_port);
 			break;
 		case 9: /* Spectate game */
-			_network_playas = OWNER_SPECTATOR;
+			_network_playas = PLAYER_SPECTATOR;
 			NetworkClientConnectGame(_network_last_host, _network_last_port);
 			break;
 		case 10: /* Refresh */

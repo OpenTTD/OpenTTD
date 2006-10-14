@@ -44,7 +44,7 @@ uint GetMaskOfTownActions(int *nump, PlayerID pid, const Town *t)
 	uint avail_buttons = 0x7F; // by default all buttons except bribe are enabled.
 	uint buttons = 0;
 
-	if (pid != OWNER_SPECTATOR) {
+	if (pid != PLAYER_SPECTATOR) {
 		uint i;
 
 		// bribe option enabled?

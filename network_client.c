@@ -342,7 +342,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 
 		/* Are we a ai-network-client? Are we not joining as a SPECTATOR (playas == 0, means SPECTATOR) */
 		if (_ai.network_client && playas != 0) {
-			if (_ai.network_playas == OWNER_SPECTATOR)
+			if (_ai.network_playas == PLAYER_SPECTATOR)
 				AI_StartNewAI(playas - 1);
 
 			_ai.network_playas = playas - 1;
@@ -521,16 +521,16 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		if (_network_playas == 0 || _network_playas > MAX_PLAYERS ||
 				!GetPlayer(_network_playas - 1)->is_active) {
 
-			if (_network_playas == OWNER_SPECTATOR) {
+			if (_network_playas == PLAYER_SPECTATOR) {
 				// The client wants to be a spectator..
-				_local_player = OWNER_SPECTATOR;
+				_local_player = PLAYER_SPECTATOR;
 				DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 			} else {
 				/* We have arrived and ready to start playing; send a command to make a new player;
 				 * the server will give us a client-id and let us in */
 				_local_player = 0;
 				NetworkSend_Command(0, 0, 0, CMD_PLAYER_CTRL, NULL);
-				_local_player = OWNER_SPECTATOR;
+				_local_player = PLAYER_SPECTATOR;
 			}
 		} else {
 			// take control over an existing company
@@ -544,9 +544,9 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		/* Check if we are an ai-network-client, and if so, disable GUI */
 		if (_ai.network_client) {
 			_ai.network_playas = _local_player;
-			_local_player      = OWNER_SPECTATOR;
+			_local_player      = PLAYER_SPECTATOR;
 
-			if (_ai.network_playas != OWNER_SPECTATOR) {
+			if (_ai.network_playas != PLAYER_SPECTATOR) {
 				/* If we didn't join the game as a spectator, activate the AI */
 				AI_StartNewAI(_ai.network_playas);
 			}
@@ -745,7 +745,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_NEWGAME)
 {
 	// To trottle the reconnects a bit, every clients waits
 	//  his _local_player value before reconnecting
-	// OWNER_SPECTATOR is currently 255, so to avoid long wait periods
+	// PLAYER_SPECTATOR is currently 255, so to avoid long wait periods
 	//  set the max to 10.
 	_network_reconnect = min(_local_player + 1, 10);
 	_switch_mode_errorstr = STR_NETWORK_SERVER_REBOOT;

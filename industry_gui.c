@@ -265,7 +265,7 @@ static const WindowDesc * const _industry_window_desc[2][4] = {
 
 void ShowBuildIndustryWindow(void)
 {
-	if (_current_player == OWNER_SPECTATOR) return;
+	if (_current_player == PLAYER_SPECTATOR) return;
 	AllocateWindowDescFront(_industry_window_desc[_patches.build_rawmaterial_ind][_opt_ptr->landscape],0);
 }
 

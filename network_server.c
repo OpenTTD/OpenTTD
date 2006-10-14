@@ -602,7 +602,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 				return;
 			}
 			break;
-		case OWNER_SPECTATOR: /* Spectator */
+		case PLAYER_SPECTATOR: /* Spectator */
 			if (NetworkSpectatorCount() >= _network_game_info.spectators_max) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;

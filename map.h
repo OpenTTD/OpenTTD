@@ -72,8 +72,6 @@ typedef enum Owner {
 	OWNER_NONE      = 0x10, // nobody owns the tile
 	OWNER_WATER     = 0x11, // "water" owns the tile
 	OWNER_END       = 0x12,
-
-	OWNER_SPECTATOR = 0xFF, // spectator in MP or in scenario editor
 } Owner;
 
 enum {

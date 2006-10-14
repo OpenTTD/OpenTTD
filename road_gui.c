@@ -318,7 +318,7 @@ static const WindowDesc _build_road_desc = {
 
 void ShowBuildRoadToolbar(void)
 {
-	if (_current_player == OWNER_SPECTATOR) return;
+	if (_current_player == PLAYER_SPECTATOR) return;
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 	AllocateWindowDesc(&_build_road_desc);
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();

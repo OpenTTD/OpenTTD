@@ -497,7 +497,7 @@ static char *MakeScreenshotName(const char *ext)
 	char *base;
 	int serial;
 
-	if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_player == OWNER_SPECTATOR) {
+	if (_game_mode == GM_EDITOR || _game_mode == GM_MENU || _local_player == PLAYER_SPECTATOR) {
 		sprintf(_screenshot_name, "screenshot");
 	} else {
 		const Player* p = GetPlayer(_local_player);

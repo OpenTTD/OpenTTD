@@ -235,7 +235,7 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	_gw.threaded      = true;
 
 	/* This disables some commands and stuff */
-	_local_player   = OWNER_SPECTATOR;
+	_local_player   = PLAYER_SPECTATOR;
 	/* Make sure everything is done via OWNER_NONE */
 	_current_player = OWNER_NONE;
 

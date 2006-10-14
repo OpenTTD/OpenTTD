@@ -33,7 +33,7 @@ uint16 GetDrawStringPlayerColor(PlayerID player)
 	/* Get the color for DrawString-subroutines which matches the color of the
 	 * player
 	 */
-	if (player == OWNER_SPECTATOR || player == OWNER_SPECTATOR - 1) return 1;
+	if (player == PLAYER_SPECTATOR || player == PLAYER_SPECTATOR - 1) return 1;
 	return (_colour_gradient[_player_colors[player]][4]) | IS_PALETTE_COLOR;
 }
 
@@ -498,7 +498,7 @@ Player *DoStartupNewPlayer(bool is_ai)
 
 	p->is_ai = is_ai;
 	p->ai.state = 5; /* AIS_WANT_NEW_ROUTE */
-	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = OWNER_SPECTATOR;
+	p->share_owners[0] = p->share_owners[1] = p->share_owners[2] = p->share_owners[3] = PLAYER_SPECTATOR;
 
 	p->avail_railtypes = GetPlayerRailtypes(p->index);
 	p->inaugurated_year = _cur_year;
@@ -606,7 +606,7 @@ void PlayersYearlyLoop(void)
 		}
 	}
 
-	if (_patches.show_finances && _local_player != OWNER_SPECTATOR) {
+	if (_patches.show_finances && _local_player != PLAYER_SPECTATOR) {
 		ShowPlayerFinances(_local_player);
 		p = GetPlayer(_local_player);
 		if (p->num_valid_stat_ent > 5 && p->old_economy[0].performance_history < p->old_economy[4].performance_history) {
@@ -829,25 +829,25 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		p = DoStartupNewPlayer(false);
 
 #ifdef ENABLE_NETWORK
-		if (_networking && !_network_server && _local_player == OWNER_SPECTATOR) {
+		if (_networking && !_network_server && _local_player == PLAYER_SPECTATOR) {
 			/* In case we are a client joining a server... */
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 		}
 #endif /* ENABLE_NETWORK */
 
 		if (p != NULL) {
-			if (_local_player == OWNER_SPECTATOR &&
-					(!_ai.network_client || _ai.network_playas == OWNER_SPECTATOR)) {
+			if (_local_player == PLAYER_SPECTATOR &&
+					(!_ai.network_client || _ai.network_playas == PLAYER_SPECTATOR)) {
 				/* Check if we do not want to be a spectator in network */
 				if (!_networking ||
 						(_network_server && !_network_dedicated) ||
-						_network_playas != OWNER_SPECTATOR ||
+						_network_playas != PLAYER_SPECTATOR ||
 						_ai.network_client) {
 					if (_ai.network_client) {
 						/* As ai-network-client, we have our own rulez (disable GUI and stuff) */
 						_ai.network_playas = p->index;
-						_local_player      = OWNER_SPECTATOR;
-						if (_ai.network_playas != OWNER_SPECTATOR) {
+						_local_player      = PLAYER_SPECTATOR;
+						if (_ai.network_playas != PLAYER_SPECTATOR) {
 							/* If we didn't join the game as a spectator, activate the AI */
 							AI_StartNewAI(_ai.network_playas);
 						}
@@ -895,7 +895,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			 * server-side in network_server.c:838, function
 			 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 			NetworkClientInfo *ci = &_network_client_info[pid];
-			ci->client_playas = OWNER_SPECTATOR;
+			ci->client_playas = PLAYER_SPECTATOR;
 			NetworkUpdateClientInfo(ci->client_index);
 #endif /* ENABLE_NETWORK */
 		}
@@ -927,7 +927,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			AddNewsItem( (StringID)(p->index + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 			/* Remove the company */
-			ChangeOwnershipOfPlayerItems(p->index, OWNER_SPECTATOR);
+			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
 			p->is_active = false;
 		}
 		RemoveAllEngineReplacementForPlayer(p);

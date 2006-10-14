@@ -274,6 +274,6 @@ static const WindowDesc _terraform_desc = {
 
 void ShowTerraformToolbar(void)
 {
-	if (_current_player == OWNER_SPECTATOR) return;
+	if (_current_player == PLAYER_SPECTATOR) return;
 	AllocateWindowDescFront(&_terraform_desc, 0);
 }

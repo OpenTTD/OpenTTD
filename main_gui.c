@@ -736,9 +736,9 @@ static Window *PopupMainPlayerToolbMenu(Window *w, int x, int main_button, int g
 	w = AllocateWindow(x, 0x16, 0xF1, 0x52, PlayerMenuWndProc, WC_TOOLBAR_MENU, _player_menu_widgets);
 	w->flags4 &= ~WF_WHITE_BORDER_MASK;
 	WP(w,menu_d).item_count = 0;
-	WP(w,menu_d).sel_index = (_local_player != OWNER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
+	WP(w,menu_d).sel_index = (_local_player != PLAYER_SPECTATOR) ? _local_player : GetPlayerIndexFromMenu(0);
 	if (_networking && main_button == 9) {
-		if (_local_player != OWNER_SPECTATOR) {
+		if (_local_player != PLAYER_SPECTATOR) {
 			WP(w,menu_d).sel_index++;
 		} else {
 			/* Select client list by default for spectators */
@@ -802,7 +802,7 @@ static void ToolbarLeagueClick(Window *w)
 static void ToolbarIndustryClick(Window *w)
 {
 	/* Disable build-industry menu if we are a spectator */
-	PopupMainToolbMenu(w, 12, STR_INDUSTRY_DIR, 2, (_current_player == OWNER_SPECTATOR) ? (1 << 1) : 0);
+	PopupMainToolbMenu(w, 12, STR_INDUSTRY_DIR, 2, (_current_player == PLAYER_SPECTATOR) ? (1 << 1) : 0);
 }
 
 static void ToolbarTrainClick(Window *w)
@@ -1807,7 +1807,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		/* If spectator, disable all construction buttons
 		 * ie : Build road, rail, ships, airports and landscaping
 		 * Since enabled state is the default, just disable when needed */
-		SetWindowWidgetsDisabledState(w, _current_player == OWNER_SPECTATOR, 19, 20, 21, 22, 23, WIDGET_LIST_END);
+		SetWindowWidgetsDisabledState(w, _current_player == PLAYER_SPECTATOR, 19, 20, 21, 22, 23, WIDGET_LIST_END);
 		/* disable company list drop downs, if there are no companies */
 		SetWindowWidgetsDisabledState(w, ActivePlayerCount() == 0, 7, 8, 13, 14, 15, 16, WIDGET_LIST_END);
 
@@ -1820,7 +1820,7 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_KEYPRESS: {
-		PlayerID local = (_local_player != OWNER_SPECTATOR) ? _local_player : 0;
+		PlayerID local = (_local_player != PLAYER_SPECTATOR) ? _local_player : 0;
 
 		switch (e->we.keypress.keycode) {
 		case WKC_F1: case WKC_PAUSE:
@@ -2140,7 +2140,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		const Player *p = (_local_player == OWNER_SPECTATOR) ? NULL : GetPlayer(_local_player);
+		const Player *p = (_local_player == PLAYER_SPECTATOR) ? NULL : GetPlayer(_local_player);
 
 		DrawWindowWidgets(w);
 		SetDParam(0, _date);
@@ -2185,7 +2185,7 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 	case WE_CLICK:
 		switch (e->we.click.widget) {
 			case 1: ShowLastNewsMessage(); break;
-			case 2: if (_local_player != OWNER_SPECTATOR) ShowPlayerFinances(_local_player); break;
+			case 2: if (_local_player != PLAYER_SPECTATOR) ShowPlayerFinances(_local_player); break;
 			default: ResetObjectToPlace();
 		}
 		break;

@@ -225,7 +225,7 @@ void AI_StartNewAI(PlayerID player)
 void AI_PlayerDied(PlayerID player)
 {
 	if (_ai.network_client && _ai.network_playas == player) {
-		_ai.network_playas = OWNER_SPECTATOR;
+		_ai.network_playas = PLAYER_SPECTATOR;
 	}
 
 	/* Called if this AI died */
@@ -246,7 +246,7 @@ void AI_Initialize(void)
 	memset(&_ai_player, 0, sizeof(_ai_player));
 
 	_ai.network_client = ai_network_client;
-	_ai.network_playas = OWNER_SPECTATOR;
+	_ai.network_playas = PLAYER_SPECTATOR;
 	_ai.enabled = true;
 }
 

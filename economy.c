@@ -240,7 +240,7 @@ int UpdateCompanyRatingAndValue(Player *p, bool update)
 	return score;
 }
 
-// use OWNER_SPECTATOR as new_player to delete the player.
+// use PLAYER_SPECTATOR as new_player to delete the player.
 void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 {
 	PlayerID old = _current_player;
@@ -249,12 +249,12 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	/* Temporarily increase the player's money, to be sure that
 	 * removing his/her property doesn't fail because of lack of money.
 	 * Not too drastically though, because it could overflow */
-	if (new_player == OWNER_SPECTATOR) {
+	if (new_player == PLAYER_SPECTATOR) {
 		GetPlayer(old_player)->money64 = MAX_UVALUE(uint64) >>2; // jackpot ;p
 		UpdatePlayerMoney32(GetPlayer(old_player));
 	}
 
-	if (new_player == OWNER_SPECTATOR) {
+	if (new_player == PLAYER_SPECTATOR) {
 		Subsidy *s;
 
 		for (s = _subsidies; s != endof(_subsidies); s++) {
@@ -265,7 +265,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	}
 
 	/* Take care of rating in towns */
-	if (new_player != OWNER_SPECTATOR) {
+	if (new_player != PLAYER_SPECTATOR) {
 		Town *t;
 		FOR_ALL_TOWNS(t) {
 			/* If a player takes over, give the ratings to that player. */
@@ -306,7 +306,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 
 		FOR_ALL_VEHICLES(v) {
 			if (v->owner == old_player && IS_BYTE_INSIDE(v->type, VEH_Train, VEH_Aircraft + 1)) {
-				if (new_player == OWNER_SPECTATOR) {
+				if (new_player == PLAYER_SPECTATOR) {
 					DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 					DeleteWindowById(WC_VEHICLE_DETAILS, v->index);
 					DeleteWindowById(WC_VEHICLE_ORDERS, v->index);
@@ -334,7 +334,7 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 	}
 
 	// Change color of existing windows
-	if (new_player != OWNER_SPECTATOR) {
+	if (new_player != PLAYER_SPECTATOR) {
 		Window *w;
 		for (w = _windows; w != _last_window; w++) {
 			if (w->caption_color == old_player) w->caption_color = new_player;
@@ -350,14 +350,14 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 			for (i = 0; i < 4; i++) {
 				/* 'Sell' the share if this player has any */
 				if (p->share_owners[i] == _current_player) {
-					p->share_owners[i] = OWNER_SPECTATOR;
+					p->share_owners[i] = PLAYER_SPECTATOR;
 				}
 			}
 		}
 		p = GetPlayer(_current_player);
 		/* Sell all the shares that people have on this company */
 		for (i = 0; i < 4; i++)
-			p->share_owners[i] = OWNER_SPECTATOR;
+			p->share_owners[i] = PLAYER_SPECTATOR;
 	}
 
 	_current_player = old;
@@ -429,7 +429,7 @@ static void PlayersCheckBankrupt(Player *p)
 					FOR_ALL_CLIENTS(cs) {
 						ci = DEREF_CLIENT_INFO(cs);
 						if ((ci->client_playas-1) == owner) {
-							ci->client_playas = OWNER_SPECTATOR;
+							ci->client_playas = PLAYER_SPECTATOR;
 							// Send the new info to all the clients
 							NetworkUpdateClientInfo(_network_own_client_index);
 						}
@@ -438,12 +438,12 @@ static void PlayersCheckBankrupt(Player *p)
 				// Make sure the player no longer controls the company
 				if (IsHumanPlayer(owner) && owner == _local_player) {
 					// Switch the player to spectator..
-					_local_player = OWNER_SPECTATOR;
+					_local_player = PLAYER_SPECTATOR;
 				}
 #endif /* ENABLE_NETWORK */
 
 				/* Remove the player */
-				ChangeOwnershipOfPlayerItems(owner, OWNER_SPECTATOR);
+				ChangeOwnershipOfPlayerItems(owner, PLAYER_SPECTATOR);
 				// Register the player as not-active
 				p->is_active = false;
 
@@ -1516,7 +1516,7 @@ static void DoAcquireCompany(Player *p)
 
 	value = CalculateCompanyValue(p) >> 2;
 	for (i = 0; i != 4; i++) {
-		if (p->share_owners[i] != OWNER_SPECTATOR) {
+		if (p->share_owners[i] != PLAYER_SPECTATOR) {
 			owner = GetPlayer(p->share_owners[i]);
 			owner->money64 += value;
 			owner->yearly_expenses[0][EXPENSES_OTHER] += value;
@@ -1552,17 +1552,17 @@ int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (_cur_year - p->inaugurated_year < 6) return_cmd_error(STR_7080_PROTECTED);
 
 	/* Those lines are here for network-protection (clients can be slow) */
-	if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0) return 0;
+	if (GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0) return 0;
 
 	/* We can not buy out a real player (temporarily). TODO: well, enable it obviously */
-	if (GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) return 0;
+	if (GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 1 && !p->is_ai) return 0;
 
 	cost = CalculateCompanyValue(p) >> 2;
 	if (flags & DC_EXEC) {
 		PlayerID* b = p->share_owners;
 		int i;
 
-		while (*b != OWNER_SPECTATOR) b++; /* share owners is guaranteed to contain at least one OWNER_SPECTATOR */
+		while (*b != PLAYER_SPECTATOR) b++; /* share owners is guaranteed to contain at least one PLAYER_SPECTATOR */
 		*b = _current_player;
 
 		for (i = 0; p->share_owners[i] == _current_player;) {
@@ -1603,7 +1603,7 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (flags & DC_EXEC) {
 		PlayerID* b = p->share_owners;
 		while (*b != _current_player) b++; /* share owners is guaranteed to contain player */
-		*b = OWNER_SPECTATOR;
+		*b = PLAYER_SPECTATOR;
 		InvalidateWindow(WC_COMPANY, p1);
 	}
 	return cost;

@@ -108,7 +108,7 @@ byte NetworkSpectatorCount(void)
 	byte count = 0;
 
 	FOR_ALL_CLIENTS(cs) {
-		if (DEREF_CLIENT_INFO(cs)->client_playas == OWNER_SPECTATOR) count++;
+		if (DEREF_CLIENT_INFO(cs)->client_playas == PLAYER_SPECTATOR) count++;
 	}
 
 	return count;
@@ -1035,7 +1035,7 @@ static void NetworkInitGameInfo(void)
 
 	ci->client_index = NETWORK_SERVER_INDEX;
 	if (_network_dedicated) {
-		ci->client_playas = OWNER_SPECTATOR;
+		ci->client_playas = PLAYER_SPECTATOR;
 	} else {
 		ci->client_playas = _local_player + 1;
 	}

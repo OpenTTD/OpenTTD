@@ -693,16 +693,16 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 			if (!local) {
 				if (_patches.allow_shares) { // Shares are allowed
 					/* If all shares are owned by someone (none by nobody), disable buy button */
-					SetWindowWidgetDisabledState(w, PCW_WIDGET_BUY_SHARE, GetAmountOwnedBy(p, OWNER_SPECTATOR) == 0 ||
+					SetWindowWidgetDisabledState(w, PCW_WIDGET_BUY_SHARE, GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 0 ||
 							/* Only 25% left to buy. If the player is human, disable buying it up.. TODO issues! */
-							(GetAmountOwnedBy(p, OWNER_SPECTATOR) == 1 && !p->is_ai) ||
+							(GetAmountOwnedBy(p, PLAYER_SPECTATOR) == 1 && !p->is_ai) ||
 							/* Spectators cannot do anything of course */
-							_local_player == OWNER_SPECTATOR);
+							_local_player == PLAYER_SPECTATOR);
 
 					/* If the player doesn't own any shares, disable sell button */
 					SetWindowWidgetDisabledState(w, PCW_WIDGET_SELL_SHARE, (GetAmountOwnedBy(p, _local_player) == 0) ||
 							/* Spectators cannot do anything of course */
-							_local_player == OWNER_SPECTATOR);
+							_local_player == PLAYER_SPECTATOR);
 				} else { // Shares are not allowed, disable buy/sell buttons
 					DisableWindowWidget(w, PCW_WIDGET_BUY_SHARE);
 					DisableWindowWidget(w, PCW_WIDGET_SELL_SHARE);
@@ -1105,7 +1105,7 @@ void ShowEndGameChart(void)
 
 		WP(w, highscore_d).background_img = SPR_TYCOON_IMG1_BEGIN;
 
-		if (_local_player != OWNER_SPECTATOR) {
+		if (_local_player != PLAYER_SPECTATOR) {
 			const Player *p = GetPlayer(_local_player);
 			if (p->old_economy[0].performance_history == SCORE_MAX)
 				WP(w, highscore_d).background_img = SPR_TYCOON_IMG2_BEGIN;

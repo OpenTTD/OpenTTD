@@ -586,7 +586,7 @@ static void MakeNewGameDone(void)
 {
 	/* In a dedicated server, the server does not play */
 	if (_network_dedicated) {
-		_local_player = OWNER_SPECTATOR;
+		_local_player = PLAYER_SPECTATOR;
 		return;
 	}
 
@@ -794,7 +794,7 @@ void SwitchMode(int new_mode)
 			/* Delete all players */
 			FOR_ALL_PLAYERS(p) {
 				if (p->is_active) {
-					ChangeOwnershipOfPlayerItems(p->index, OWNER_SPECTATOR);
+					ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);
 					p->is_active = false;
 				}
 			}
@@ -874,7 +874,7 @@ static void DoAutosave(void)
 {
 	char buf[200];
 
-	if (_patches.keep_all_autosave && _local_player != OWNER_SPECTATOR) {
+	if (_patches.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
 		const Player *p = GetPlayer(_local_player);
 		char *s;
 		sprintf(buf, "%s%s", _path.autosave_dir, PATHSEP);

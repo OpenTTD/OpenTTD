@@ -1952,7 +1952,7 @@ static void ChangeTileOwner_Track(TileIndex tile, PlayerID old_player, PlayerID 
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
-	if (new_player != OWNER_SPECTATOR) {
+	if (new_player != PLAYER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	} else {
 		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);

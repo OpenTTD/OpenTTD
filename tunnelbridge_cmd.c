@@ -1314,7 +1314,7 @@ static void ChangeTileOwner_TunnelBridge(TileIndex tile, PlayerID old_player, Pl
 {
 	if (!IsTileOwner(tile, old_player)) return;
 
-	if (new_player != OWNER_SPECTATOR) {
+	if (new_player != PLAYER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	} else {
 		if (IsBridge(tile) && IsBridgeMiddle(tile) && IsTransportUnderBridge(tile)) {

@@ -1069,12 +1069,12 @@ static uint32 VehicleEnter_Road(Vehicle *v, TileIndex tile, int x, int y)
 static void ChangeTileOwner_Road(TileIndex tile, PlayerID old_player, PlayerID new_player)
 {
 	if (IsLevelCrossing(tile) && GetCrossingRoadOwner(tile) == old_player) {
-		SetCrossingRoadOwner(tile, new_player == OWNER_SPECTATOR ? OWNER_NONE : new_player);
+		SetCrossingRoadOwner(tile, new_player == PLAYER_SPECTATOR ? OWNER_NONE : new_player);
 	}
 
 	if (!IsTileOwner(tile, old_player)) return;
 
-	if (new_player != OWNER_SPECTATOR) {
+	if (new_player != PLAYER_SPECTATOR) {
 		SetTileOwner(tile, new_player);
 	} else {
 		switch (GetRoadTileType(tile)) {
