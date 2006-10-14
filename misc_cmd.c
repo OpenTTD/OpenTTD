@@ -291,7 +291,7 @@ int32 CmdGiveMoney(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	/* You can only transfer funds that is in excess of your loan */
 	if (p->money64 - p->current_loan < amount || amount <= 0) return CMD_ERROR;
-	if (!_networking || p2 >= MAX_PLAYERS) return CMD_ERROR;
+	if (!_networking || !IsValidPlayer((PlayerID)p2)) return CMD_ERROR;
 
 	if (flags & DC_EXEC) {
 		/* Add money to player */

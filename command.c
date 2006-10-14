@@ -383,7 +383,7 @@ error:
 	if (--_docommand_recursive == 0) {
 		SubtractMoneyFromPlayer(res);
 		// XXX - Old AI hack which doesn't use DoCommandDP; update last build coord of player
-		if (tile != 0 && _current_player < MAX_PLAYERS) {
+		if (tile != 0 && IsValidPlayer(_current_player)) {
 			GetPlayer(_current_player)->last_build_coordinate = tile;
 		}
 	}
@@ -395,7 +395,7 @@ error:
 int32 GetAvailableMoneyForCommand(void)
 {
 	PlayerID pid = _current_player;
-	if (pid >= MAX_PLAYERS) return 0x7FFFFFFF; // max int
+	if (!IsValidPlayer(pid)) return 0x7FFFFFFF; // max int
 	return GetPlayer(pid)->player_money;
 }
 
@@ -508,7 +508,7 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 #endif /* ENABLE_NETWORK */
 
 	// update last build coordinate of player.
-	if (tile != 0 && _current_player < MAX_PLAYERS) {
+	if (tile != 0 && IsValidPlayer(_current_player)) {
 		GetPlayer(_current_player)->last_build_coordinate = tile;
 	}
 

@@ -1024,7 +1024,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 		if (st == NULL) return CMD_ERROR;
 
 		st->town = ClosestTownFromTile(tile_org, (uint)-1);
-		if (_current_player < MAX_PLAYERS && flags & DC_EXEC)
+		if (IsValidPlayer(_current_player) && (flags & DC_EXEC))
 			SETBIT(st->town->have_ratings, _current_player);
 
 		if (!GenerateStationName(st, tile_org, 0)) return CMD_ERROR;
@@ -1452,7 +1452,7 @@ int32 CmdBuildRoadStop(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		FindRoadStopSpot(type, st, &currstop, &prev);
 
-		if (_current_player < MAX_PLAYERS && flags & DC_EXEC) {
+		if (IsValidPlayer(_current_player) && (flags & DC_EXEC)) {
 			SETBIT(t->have_ratings, _current_player);
 		}
 
@@ -1698,7 +1698,7 @@ int32 CmdBuildAirport(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->town = t;
 
-		if (_current_player < MAX_PLAYERS && flags & DC_EXEC)
+		if (IsValidPlayer(_current_player) && (flags & DC_EXEC))
 			SETBIT(t->have_ratings, _current_player);
 
 		st->sign.width_1 = 0;
@@ -1859,10 +1859,8 @@ static int32 RemoveBuoy(Station *st, uint32 flags)
 {
 	TileIndex tile;
 
-	if (_current_player >= MAX_PLAYERS) {
-		/* XXX: strange stuff */
-		return_cmd_error(INVALID_STRING_ID);
-	}
+	/* XXX: strange stuff */
+	if (!IsValidPlayer(_current_player))  return_cmd_error(INVALID_STRING_ID);
 
 	tile = st->dock_tile;
 
@@ -1967,7 +1965,7 @@ int32 CmdBuildDock(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 		st->town = t = ClosestTownFromTile(tile, (uint)-1);
 
-		if (_current_player < MAX_PLAYERS && flags&DC_EXEC)
+		if (IsValidPlayer(_current_player) && (flags & DC_EXEC))
 			SETBIT(t->have_ratings, _current_player);
 
 		st->sign.width_1 = 0;
@@ -2044,7 +2042,7 @@ static void DrawTile_Station(TileInfo *ti)
 	PlayerID owner = GetTileOwner(ti->tile);
 	uint32 palette;
 
-	if (owner < MAX_PLAYERS) {
+	if (IsValidPlayer(owner)) {
 		palette = PLAYER_SPRITE_COLOR(owner);
 	} else {
 		// Some stations are not owner by a player, namely oil rigs
@@ -2400,7 +2398,7 @@ void DeleteAllPlayerStations(void)
 	Station *st;
 
 	FOR_ALL_STATIONS(st) {
-		if (st->owner < MAX_PLAYERS) DeleteStation(st);
+		if (IsValidPlayer(st->owner)) DeleteStation(st);
 	}
 }
 
@@ -2448,8 +2446,7 @@ static void UpdateStationRating(Station *st)
 				(rating += 13, true);
 			}
 
-			if (st->owner < MAX_PLAYERS && HASBIT(st->town->statues, st->owner))
-				rating += 26;
+			if (IsValidPlayer(st->owner) && HASBIT(st->town->statues, st->owner)) rating += 26;
 
 			{
 				byte days = ge->days_since_pickup;

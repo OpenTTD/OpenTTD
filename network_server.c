@@ -1232,7 +1232,7 @@ void NetworkPopulateCompanyInfo(void)
 
 	// Go through all vehicles and count the type of vehicles
 	FOR_ALL_VEHICLES(v) {
-		if (v->owner >= MAX_PLAYERS) continue;
+		if (!IsValidPlayer(v->owner)) continue;
 		switch (v->type) {
 			case VEH_Train:
 				if (IsFrontEngine(v)) {
@@ -1266,7 +1266,7 @@ void NetworkPopulateCompanyInfo(void)
 
 	// Go through all stations and count the types of stations
 	FOR_ALL_STATIONS(s) {
-		if (s->owner < MAX_PLAYERS) {
+		if (IsValidPlayer(s->owner)) {
 			NetworkPlayerInfo* npi = &_network_player_info[s->owner];
 
 			if (s->facilities & FACIL_TRAIN)      npi->num_station[0]++;

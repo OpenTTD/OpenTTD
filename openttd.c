@@ -1257,7 +1257,7 @@ bool AfterLoadGame(void)
 			p->engine_renew_months = -6;
 			p->engine_renew_money = 100000;
 		}
-		if (_local_player < MAX_PLAYERS) {
+		if (IsValidPlayer(_local_player)) {
 			// Set the human controlled player to the patch settings
 			// Scenario editor do not have any companies
 			p = GetPlayer(_local_player);

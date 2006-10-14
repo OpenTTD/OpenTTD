@@ -423,7 +423,7 @@ not_valid_below:;
 
 		bridge_len += 2; // begin and end tiles/ramps
 
-		if (_current_player < MAX_PLAYERS && !_is_old_ai_player)
+		if (IsValidPlayer(_current_player) && !_is_old_ai_player)
 			bridge_len = CalcBridgeLenCostFactor(bridge_len);
 
 		cost += (int64)bridge_len * _price.build_bridge * b->price >> 8;

@@ -245,6 +245,11 @@ static inline bool IsLocalPlayer(void)
 	return _local_player == _current_player;
 }
 
+static inline bool IsValidPlayer(PlayerID pi)
+{
+	return pi < MAX_PLAYERS;
+}
+
 void DeletePlayerWindows(PlayerID pi);
 byte GetPlayerRailtypes(PlayerID p);
 

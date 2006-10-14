@@ -1290,12 +1290,12 @@ DEF_CONSOLE_HOOK(ConHookRconPW)
 bool NetworkChangeCompanyPassword(byte argc, char *argv[])
 {
 	if (argc == 0) {
-		if (_local_player >= MAX_PLAYERS) return true; // dedicated server
+		if (!IsValidPlayer(_local_player)) return true; // dedicated server
 		IConsolePrintF(_icolour_warn, "Current value for 'company_pw': %s", _network_player_info[_local_player].password);
 		return true;
 	}
 
-	if (_local_player >= MAX_PLAYERS) {
+	if (!IsValidPlayer(_local_player)) {
 		IConsoleError("You have to own a company to make use of this command.");
 		return false;
 	}

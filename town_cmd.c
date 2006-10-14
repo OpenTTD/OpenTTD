@@ -355,7 +355,7 @@ static int32 ClearTile_Town(TileIndex tile, byte flags)
 	_cleared_town_rating += rating;
 	_cleared_town = t = GetTownByTile(tile);
 
-	if (_current_player < MAX_PLAYERS) {
+	if (IsValidPlayer(_current_player)) {
 		if (rating > t->ratings[_current_player] && !(flags & DC_NO_TOWN_RATING) && !_cheats.magic_bulldozer.value) {
 			SetDParam(0, t->index);
 			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
@@ -1630,10 +1630,10 @@ static void UpdateTownGrowRate(Town *t)
 		if (DistanceSquare(st->xy, t->xy) <= t->radius[0]) {
 			if (st->time_since_load <= 20 || st->time_since_unload <= 20) {
 				n++;
-				if (st->owner < MAX_PLAYERS && t->ratings[st->owner] <= 1000-12)
+				if (IsValidPlayer(st->owner) && t->ratings[st->owner] <= 1000-12)
 					t->ratings[st->owner] += 12;
 			} else {
-				if (st->owner < MAX_PLAYERS && t->ratings[st->owner] >= -1000+15)
+				if (IsValidPlayer(st->owner) && t->ratings[st->owner] >= -1000+15)
 					t->ratings[st->owner] -= 15;
 			}
 		}
@@ -1704,7 +1704,7 @@ bool CheckIfAuthorityAllows(TileIndex tile)
 {
 	Town *t;
 
-	if (_current_player >= MAX_PLAYERS) return true;
+	if (!IsValidPlayer(_current_player)) return true;
 
 	t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 	if (t == NULL) return true;
@@ -1755,7 +1755,7 @@ void ChangeTownRating(Town *t, int add, int max)
 
 	// if magic_bulldozer cheat is active, town doesn't penaltize for removing stuff
 	if (t == NULL ||
-			_current_player >= MAX_PLAYERS ||
+			!IsValidPlayer(_current_player) ||
 			(_cheats.magic_bulldozer.value && add < 0)) {
 		return;
 	}
@@ -1791,7 +1791,7 @@ bool CheckforTownRating(uint32 flags, Town *t, byte type)
 	int modemod;
 
 	// if magic_bulldozer cheat is active, town doesn't restrict your destructive actions
-	if (t == NULL || _current_player >= MAX_PLAYERS || _cheats.magic_bulldozer.value)
+	if (t == NULL || !IsValidPlayer(_current_player) || _cheats.magic_bulldozer.value)
 		return true;
 
 	/* check if you're allowed to remove the street/bridge/tunnel/industry

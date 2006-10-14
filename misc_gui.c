@@ -155,7 +155,7 @@ static void Place_LandInfo(TileIndex tile)
 	lid.tile = tile;
 	lid.town = ClosestTownFromTile(tile, _patches.dist_local_authority);
 
-	p = GetPlayer(_local_player < MAX_PLAYERS ? _local_player : 0);
+	p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : 0);
 
 	old_money = p->money64;
 	p->money64 = p->player_money = 0x7fffffff;
@@ -1306,7 +1306,7 @@ static void GenerateFileName(void)
 {
 	/* Check if we are not a specatator who wants to generate a name..
 	    Let's use the name of player #0 for now. */
-	const Player *p = GetPlayer(_local_player < MAX_PLAYERS ? _local_player : 0);
+	const Player *p = GetPlayer(IsValidPlayer(_local_player) ? _local_player : 0);
 
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);
@@ -1636,9 +1636,9 @@ static int32 ClickMoneyCheat(int32 p1, int32 p2)
 // p1 player to set to, p2 is -1 or +1 (down/up)
 static int32 ClickChangePlayerCheat(int32 p1, int32 p2)
 {
-	while (p1 >= 0 && p1 < MAX_PLAYERS) {
+	while (IsValidPlayer((PlayerID)p1)) {
 		if (_players[p1].is_active) {
-			_local_player = p1;
+			_local_player = (PlayerID)p1;
 			MarkWholeScreenDirty();
 			return _local_player;
 		}

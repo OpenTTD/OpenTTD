@@ -1543,7 +1543,7 @@ int32 CmdBuyShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int64 cost;
 
 	/* Check if buying shares is allowed (protection against modified clients */
-	if (p1 >= MAX_PLAYERS || !_patches.allow_shares) return CMD_ERROR;
+	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = GetPlayer(p1);
@@ -1588,7 +1588,7 @@ int32 CmdSellShareInCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	int64 cost;
 
 	/* Check if buying shares is allowed (protection against modified clients */
-	if (p1 >= MAX_PLAYERS || !_patches.allow_shares) return CMD_ERROR;
+	if (!IsValidPlayer((PlayerID)p1) || !_patches.allow_shares) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = GetPlayer(p1);
@@ -1622,7 +1622,7 @@ int32 CmdBuyCompany(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	Player *p;
 
 	/* Disable takeovers in multiplayer games */
-	if (p1 >= MAX_PLAYERS || _networking) return CMD_ERROR;
+	if (!IsValidPlayer((PlayerID)p1) || _networking) return CMD_ERROR;
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 	p = GetPlayer(p1);

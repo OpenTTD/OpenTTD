@@ -204,7 +204,7 @@ bool CheckPlayerHasMoney(int32 cost)
 {
 	if (cost > 0) {
 		PlayerID pid = _current_player;
-		if (pid < MAX_PLAYERS && cost > GetPlayer(pid)->player_money) {
+		if (IsValidPlayer(pid) && cost > GetPlayer(pid)->player_money) {
 			SetDParam(0, cost);
 			_error_message = STR_0003_NOT_ENOUGH_CASH_REQUIRES;
 			return false;
@@ -233,7 +233,7 @@ void SubtractMoneyFromPlayer(int32 cost)
 {
 	PlayerID pid = _current_player;
 
-	if (pid < MAX_PLAYERS) SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
+	if (IsValidPlayer(pid)) SubtractMoneyFromAnyPlayer(GetPlayer(pid), cost);
 }
 
 void SubtractMoneyFromPlayerFract(PlayerID player, int32 cost)
@@ -264,7 +264,7 @@ void GetNameOfOwner(Owner owner, TileIndex tile)
 	SetDParam(2, owner);
 
 	if (owner != OWNER_TOWN) {
-		if (owner >= MAX_PLAYERS) {
+		if (!IsValidPlayer(owner)) {
 			SetDParam(0, STR_0150_SOMEONE);
 		} else {
 			const Player* p = GetPlayer(owner);
@@ -584,7 +584,7 @@ void OnTick_Players(void)
 // index is the next parameter in _decode_parameters to set up
 StringID GetPlayerNameString(PlayerID player, uint index)
 {
-	if (IsHumanPlayer(player) && player < MAX_PLAYERS) {
+	if (IsHumanPlayer(player) && IsValidPlayer(player)) {
 		SetDParam(index, player+1);
 		return STR_7002_PLAYER;
 	}
@@ -691,8 +691,7 @@ static void DeletePlayerStuff(PlayerID pi)
 int32 CmdSetAutoReplace(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Player *p;
-	if (!(_current_player < MAX_PLAYERS))
-		return CMD_ERROR;
+	if (!IsValidPlayer(_current_player)) return CMD_ERROR;
 
 	p = GetPlayer(_current_player);
 	switch (GB(p1, 0, 3)) {
@@ -824,7 +823,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Player *p;
 		PlayerID pid = p2;
 
-		if (!(flags & DC_EXEC) || pid >= MAX_PLAYERS) return 0;
+		if (!(flags & DC_EXEC) || !IsValidPlayer(pid)) return 0;
 
 		p = DoStartupNewPlayer(false);
 
@@ -910,7 +909,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	case 2: { /* Delete a player */
 		Player *p;
 
-		if (p2 >= MAX_PLAYERS) return CMD_ERROR;
+		if (!IsValidPlayer(p2)) return CMD_ERROR;
 
 		if (!(flags & DC_EXEC)) return 0;
 
@@ -938,7 +937,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		PlayerID pid_old = GB(p2,  0, 16);
 		PlayerID pid_new = GB(p2, 16, 16);
 
-		if (pid_old >= MAX_PLAYERS || pid_new >= MAX_PLAYERS) return CMD_ERROR;
+		if (!IsValidPlayer(pid_old) || !IsValidPlayer(pid_new)) return CMD_ERROR;
 
 		if (!(flags & DC_EXEC)) return CMD_ERROR;
 

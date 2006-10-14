@@ -213,7 +213,7 @@ void AI_RunGameLoop(void)
  */
 void AI_StartNewAI(PlayerID player)
 {
-	assert(player < MAX_PLAYERS);
+	assert(IsValidPlayer(player));
 
 	/* Called if a new AI is booted */
 	_ai_player[player].active = true;
