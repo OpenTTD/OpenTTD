@@ -606,7 +606,7 @@ static void DrawSmallMap(DrawPixelInfo *dpi, Window *w, int type, bool show_town
 		_owner_colors[OWNER_TOWN] = MKCOLOR(0xB4B4B4B4);
 		_owner_colors[OWNER_NONE] = MKCOLOR(0x54545454);
 		_owner_colors[OWNER_WATER] = MKCOLOR(0xCACACACA);
-		_owner_colors[OWNER_END+1]   = MKCOLOR(0x20202020); /* industry */
+		_owner_colors[OWNER_END]   = MKCOLOR(0x20202020); /* industry */
 
 		/* now fill with the player colors */
 		FOR_ALL_PLAYERS(p) {
