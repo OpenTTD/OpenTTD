@@ -527,8 +527,10 @@ void ParseConnectionString(const char **player, const char **port, char *connect
 	char *p;
 	for (p = connection_string; *p != '\0'; p++) {
 		if (*p == '#') {
-			*player = p + 1;
 			*p = '\0';
+			*player = ++p;
+			while (IsValidAsciiChar(*p, CS_NUMERAL)) p++;
+			if (*p == '\0') break;
 		} else if (*p == ':') {
 			*port = p + 1;
 			*p = '\0';
