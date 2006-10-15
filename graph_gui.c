@@ -739,10 +739,16 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		gd.unk61C = 10;
 
 		for (i = 0; i != NUM_CARGO; i++) {
-			GfxFillRect(x, y, x+8, y+5, 0);
-			GfxFillRect(x+1, y+1, x+7, y+4, _cargo_legend_colors[i]);
+			/* Since the buttons have no text, no images,
+			 * both the text and the colored box have to be manually painted.
+			 * clk_dif will move one pixel down and one pixel to the right
+			 * when the button is clicked */
+			byte clk_dif = IsWindowWidgetLowered(w, i + 3) ? 1 : 0;
+
+			GfxFillRect(x + clk_dif, y + clk_dif, x + 8 + clk_dif, y + 5 + clk_dif, 0);
+			GfxFillRect(x + 1 + clk_dif, y + 1 + clk_dif, x + 7 + clk_dif, y + 4 + clk_dif, _cargo_legend_colors[i]);
 			SetDParam(0, _cargoc.names_s[i]);
-			DrawString(x+14, y, STR_7065, 0);
+			DrawString(x + 14 + clk_dif, y + clk_dif, STR_7065, 0);
 			y += 8;
 			gd.colors[i] = _cargo_legend_colors[i];
 			for (j = 0; j != 20; j++) {
