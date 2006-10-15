@@ -821,9 +821,11 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	switch (p1) {
 	case 0: { /* Create a new player */
 		Player *p;
-		PlayerID pid = p2;
+		uint16 cid = p2; // ClientID
 
-		if (!(flags & DC_EXEC) || !IsValidPlayer(pid)) return 0;
+		/* ClientID would be valid up to MAX_CLIENT_INFO, but as it has to be a
+		 * new player, its valid range is restricted to that of players */
+		if (!(flags & DC_EXEC) || !IsValidPlayer((PlayerID)cid)) return 0;
 
 		p = DoStartupNewPlayer(false);
 
@@ -851,7 +853,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
 				 * server-side in network_server.c:838, function
 				 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
-				NetworkClientInfo *ci = &_network_client_info[pid];
+				NetworkClientInfo *ci = &_network_client_info[cid];
 				ci->client_playas = p->index + 1;
 				NetworkUpdateClientInfo(ci->client_index);
 
@@ -881,7 +883,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
 			 * server-side in network_server.c:838, function
 			 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
-			NetworkClientInfo *ci = &_network_client_info[pid];
+			NetworkClientInfo *ci = &_network_client_info[cid];
 			ci->client_playas = PLAYER_SPECTATOR;
 			NetworkUpdateClientInfo(ci->client_index);
 #endif /* ENABLE_NETWORK */
