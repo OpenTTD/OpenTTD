@@ -1027,15 +1027,17 @@ static void ShowBuildTrainDepotPicker(void)
 static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: LowerWindowWidget(w, _cur_waypoint_type - w->hscroll.pos); break;
-
 	case WE_PAINT: {
 		uint i;
 
+		for (i = 0; i < w->hscroll.cap; i++) {
+			SetWindowWidgetLoweredState(w, i + 3, (w->hscroll.pos + i) == _cur_waypoint_type);
+		}
+
 		DrawWindowWidgets(w);
 
-		for (i = 0; i < 5; i++) {
-			if (w->hscroll.pos + i < _waypoint_count) {
+		for (i = 0; i < w->hscroll.cap; i++) {
+			if (w->hscroll.pos + i < w->hscroll.count) {
 				const StationSpec *statspec = GetCustomStationSpec(STAT_CLASS_WAYP, w->hscroll.pos + i);
 
 				DrawWaypointSprite(2 + i * 68, 25, w->hscroll.pos + i, _cur_railtype);
@@ -1060,9 +1062,7 @@ static void BuildWaypointWndProc(Window *w, WindowEvent *e)
 					HASBIT(statspec->callbackmask, CBM_STATION_AVAIL) &&
 					GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) return;
 
-			RaiseWindowWidget(w, _cur_waypoint_type - w->hscroll.pos);
 			_cur_waypoint_type = type;
-			LowerWindowWidget(w, _cur_waypoint_type - w->hscroll.pos);
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
