@@ -938,8 +938,6 @@ void NetworkAddServer(const char *b)
 		rport = NETWORK_DEFAULT_PORT;
 
 		ParseConnectionString(&player, &port, host);
-
-		if (player != NULL) _network_playas = atoi(player);
 		if (port != NULL) rport = atoi(port);
 
 		item = NetworkQueryServer(host, rport, true);
