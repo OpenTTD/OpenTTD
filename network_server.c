@@ -844,6 +844,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 		}
 
 		// XXX - UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
+		cp->player = 0;
 		cp->p2 = cs - _clients;
 	}
 

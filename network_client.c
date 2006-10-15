@@ -521,9 +521,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			} else {
 				/* We have arrived and ready to start playing; send a command to make a new player;
 				 * the server will give us a client-id and let us in */
-				_local_player = 0;
-				NetworkSend_Command(0, 0, 0, CMD_PLAYER_CTRL, NULL);
 				_local_player = PLAYER_SPECTATOR;
+				NetworkSend_Command(0, 0, 0, CMD_PLAYER_CTRL, NULL);
 			}
 		} else {
 			// take control over an existing company
