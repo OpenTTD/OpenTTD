@@ -835,24 +835,12 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 #endif /* ENABLE_NETWORK */
 
 		if (p != NULL) {
-			if (_local_player == PLAYER_SPECTATOR &&
-					(!_ai.network_client || _ai.network_playas == PLAYER_SPECTATOR)) {
+			if (_local_player == PLAYER_SPECTATOR) {
 				/* Check if we do not want to be a spectator in network */
 				if (!_networking ||
 						(_network_server && !_network_dedicated) ||
-						_network_playas != PLAYER_SPECTATOR ||
-						_ai.network_client) {
-					if (_ai.network_client) {
-						/* As ai-network-client, we have our own rulez (disable GUI and stuff) */
-						_ai.network_playas = p->index;
-						_local_player      = PLAYER_SPECTATOR;
-						if (_ai.network_playas != PLAYER_SPECTATOR) {
-							/* If we didn't join the game as a spectator, activate the AI */
-							AI_StartNewAI(_ai.network_playas);
-						}
-					} else {
+						_network_playas != PLAYER_SPECTATOR) {
 						_local_player = p->index;
-					}
 					MarkWholeScreenDirty();
 				}
 			} else if (p->index == _local_player) {

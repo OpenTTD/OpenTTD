@@ -338,7 +338,7 @@ int ttd_main(int argc, char *argv[])
 	//   a letter means: it accepts that param (e.g.: -h)
 	//   a ':' behind it means: it need a param (e.g.: -m<driver>)
 	//   a '::' behind it means: it can optional have a param (e.g.: -d<debug>)
-	optformat = "bm:s:v:hDn::eit:d::r:g::G:c:"
+	optformat = "m:s:v:hDn::eit:d::r:g::G:c:"
 #if !defined(__MORPHOS__) && !defined(__AMIGA__) && !defined(WIN32)
 		"f"
 #endif
@@ -361,7 +361,6 @@ int ttd_main(int argc, char *argv[])
 			network = true;
 			network_conn = mgo.opt; // optional IP parameter, NULL if unset
 			break;
-		case 'b': _ai.network_client = true; break;
 		case 'r': ParseResolution(resolution, mgo.opt); break;
 		case 't': startyear = atoi(mgo.opt); break;
 		case 'd': {
@@ -387,11 +386,6 @@ int ttd_main(int argc, char *argv[])
 			showhelp();
 			return 0;
 		}
-	}
-
-	if (_ai.network_client && !network) {
-		_ai.network_client = false;
-		DEBUG(ai, 0) ("[AI] Can't enable network-AI, because '-n' is not used\n");
 	}
 
 	DeterminePaths();

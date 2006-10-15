@@ -32,10 +32,6 @@ typedef struct AIStruct {
 	/* General */
 	bool enabled;           ///< Is AI enabled?
 	uint tick;              ///< The current tick (something like _frame_counter, only for AIs)
-
-	/* For network-clients (a OpenTTD client who acts as an AI connected to a server) */
-	bool network_client;    ///< Are we a network_client?
-	uint8 network_playas;   ///< The current network player we are connected as
 } AIStruct;
 
 VARDEF AIStruct _ai;

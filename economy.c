@@ -449,8 +449,6 @@ static void PlayersCheckBankrupt(Player *p)
 
 				if (!IsHumanPlayer(owner) && (!_networking || _network_server) && _ai.enabled)
 					AI_PlayerDied(owner);
-				if (IsHumanPlayer(owner) && owner == _local_player && _ai.network_client)
-					AI_PlayerDied(owner);
 			}
 		}
 	}

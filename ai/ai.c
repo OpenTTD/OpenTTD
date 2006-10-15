@@ -170,12 +170,8 @@ void AI_RunGameLoop(void)
 	/* Don't do anything if ai is disabled */
 	if (!_ai.enabled) return;
 
-	/* Don't do anything if we are a network-client
-	 *  (too bad when a client joins, he thinks the AIs are real, so it wants to control
-	 *   them.. this avoids that, while loading a network game in singleplayer, does make
-	 *   the AIs to continue ;))
-	 */
-	if (_networking && !_network_server && !_ai.network_client) return;
+	/* Don't do anything if we are a network-client */
+	if (_networking && !_network_server) return;
 
 	/* New tick */
 	_ai.tick++;
@@ -185,11 +181,7 @@ void AI_RunGameLoop(void)
 	if ((_ai.tick & ((1 << (4 - _opt.diff.competitor_speed)) - 1)) != 0) return;
 
 	/* Check for AI-client (so joining a network with an AI) */
-	if (_ai.network_client && _ai_player[_ai.network_playas].active) {
-		/* Run the script */
-		AI_DequeueCommands(_ai.network_playas);
-		AI_RunTick(_ai.network_playas);
-	} else if (!_networking || _network_server) {
+	if (!_networking || _network_server) {
 		/* Check if we want to run AIs (server or SP only) */
 		const Player* p;
 
@@ -224,10 +216,6 @@ void AI_StartNewAI(PlayerID player)
  */
 void AI_PlayerDied(PlayerID player)
 {
-	if (_ai.network_client && _ai.network_playas == player) {
-		_ai.network_playas = PLAYER_SPECTATOR;
-	}
-
 	/* Called if this AI died */
 	_ai_player[player].active = false;
 }
@@ -237,16 +225,12 @@ void AI_PlayerDied(PlayerID player)
  */
 void AI_Initialize(void)
 {
-	bool ai_network_client = _ai.network_client;
-
 	/* First, make sure all AIs are DEAD! */
 	AI_Uninitialize();
 
 	memset(&_ai, 0, sizeof(_ai));
 	memset(&_ai_player, 0, sizeof(_ai_player));
 
-	_ai.network_client = ai_network_client;
-	_ai.network_playas = PLAYER_SPECTATOR;
 	_ai.enabled = true;
 }
 

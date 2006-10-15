@@ -48,9 +48,7 @@ static void AiNew_State_FirstTime(Player *p)
 	assert(p->ainew.state == AI_STATE_FIRST_TIME);
 	// We first have to init some things
 
-	if (_current_player == 1 || _ai.network_client) {
-		ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_IN_PROGRESS, 0, 0);
-	}
+	if (_current_player == 1) ShowErrorMessage(INVALID_STRING_ID, TEMP_AI_IN_PROGRESS, 0, 0);
 
 	// The PathFinder (AyStar)
 	// TODO: Maybe when an AI goes bankrupt, this is de-init

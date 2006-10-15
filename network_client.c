@@ -340,13 +340,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	if (index == _network_own_client_index) {
 		_network_playas = playas;
 
-		/* Are we a ai-network-client? Are we not joining as a SPECTATOR (playas == 0, means SPECTATOR) */
-		if (_ai.network_client && playas != 0) {
-			if (_ai.network_playas == PLAYER_SPECTATOR)
-				AI_StartNewAI(playas - 1);
-
-			_ai.network_playas = playas - 1;
-		}
 	}
 
 	ci = NetworkFindClientInfoFromIndex(index);
@@ -539,17 +532,6 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			_patches.autorenew_months = GetPlayer(_local_player)->engine_renew_months;
 			_patches.autorenew_money = GetPlayer(_local_player)->engine_renew_money;
 			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-		}
-
-		/* Check if we are an ai-network-client, and if so, disable GUI */
-		if (_ai.network_client) {
-			_ai.network_playas = _local_player;
-			_local_player      = PLAYER_SPECTATOR;
-
-			if (_ai.network_playas != PLAYER_SPECTATOR) {
-				/* If we didn't join the game as a spectator, activate the AI */
-				AI_StartNewAI(_ai.network_playas);
-			}
 		}
 	}
 
