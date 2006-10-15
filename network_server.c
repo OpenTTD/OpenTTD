@@ -596,7 +596,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 
 	// join another company does not affect these values
 	switch (playas) {
-		case 0: /* New company */
+		case PLAYER_NEW_COMPANY: /* New company */
 			if (ActivePlayerCount() >= _network_game_info.companies_max) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
 				return;
@@ -605,6 +605,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 		case PLAYER_SPECTATOR: /* Spectator */
 			if (NetworkSpectatorCount() >= _network_game_info.spectators_max) {
 				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_FULL);
+				return;
+			}
+			break;
+		default: /* Join another company (companies 1-8) */
+			if (!IsValidPlayer(playas - 1)) {
+				SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_PLAYER_MISMATCH);
 				return;
 			}
 			break;

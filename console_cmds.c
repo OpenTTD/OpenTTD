@@ -739,7 +739,8 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 
 	if (argc == 0) {
 		IConsoleHelp("Connect to a remote OTTD server and join the game. Usage: 'connect <ip>'");
-		IConsoleHelp("IP can contain port and player: 'IP#Player:Port', eg: 'server.ottd.org#2:443'");
+		IConsoleHelp("IP can contain port and player: 'IP[[#Player]:Port]', eg: 'server.ottd.org#2:443'");
+		IConsoleHelp("Player #0 is new company, #255 is spectator all others are a certain company");
 		return true;
 	}
 
@@ -749,14 +750,25 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 		NetworkDisconnect();
 
 	ip = argv[1];
+	/* Default settings: default port and new company */
 	rport = NETWORK_DEFAULT_PORT;
+	_network_playas = PLAYER_NEW_COMPANY;
 
 	ParseConnectionString(&player, &port, ip);
 
 	IConsolePrintF(_icolour_def, "Connecting to %s...", ip);
 	if (player != NULL) {
 		_network_playas = atoi(player);
-		IConsolePrintF(_icolour_def, "    player-no: %s", player);
+		IConsolePrintF(_icolour_def, "    player-no: %d", _network_playas);
+
+		/* From a user pov 0 is a new player, internally it's different and all
+		 * players are offset by one to ease up on users (eg players 1-8 not 0-7) */
+		if (_network_playas == 0) _network_playas = PLAYER_NEW_COMPANY;
+		if (!IsValidPlayer(_network_playas - 1) &&
+			  (_network_playas != PLAYER_SPECTATOR &&
+			   _network_playas != PLAYER_NEW_COMPANY)) {
+			return false;
+		}
 	}
 	if (port != NULL) {
 		rport = atoi(port);

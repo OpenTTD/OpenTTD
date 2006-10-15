@@ -511,7 +511,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		// Say we received the map and loaded it correctly!
 		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();
 
-		if (_network_playas == 0 || _network_playas > MAX_PLAYERS ||
+		// new company/spectator (invalid player) or company we want to join is not active
+		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayer(_network_playas - 1) ||
 				!GetPlayer(_network_playas - 1)->is_active) {
 
 			if (_network_playas == PLAYER_SPECTATOR) {

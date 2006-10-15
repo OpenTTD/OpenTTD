@@ -480,7 +480,10 @@ int ttd_main(int argc, char *argv[])
 
 			ParseConnectionString(&player, &port, network_conn);
 
-			if (player != NULL) _network_playas = atoi(player);
+			if (player != NULL) {
+				_network_playas = atoi(player);
+				if (_network_playas == 0) _network_playas = PLAYER_NEW_COMPANY;
+			}
 			if (port != NULL) rport = atoi(port);
 
 			LoadIntroGame();

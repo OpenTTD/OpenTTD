@@ -929,7 +929,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 			}
 			break;
 		case 8: /* New company */
-			_network_playas = 0;
+			_network_playas = PLAYER_NEW_COMPANY;
 			NetworkClientConnectGame(_network_last_host, _network_last_port);
 			break;
 		case 9: /* Spectate game */
@@ -1195,7 +1195,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	_clientlist_proc[i++] = &ClientList_SpeakToAll;
 
 	if (_network_own_client_index != ci->client_index) {
-		if (_network_playas >= 1 && _network_playas <= MAX_PLAYERS) {
+		if (IsValidPlayer(_network_playas - 1)) {
 			// We are no spectator
 			if (ci->client_playas >= 1 && ci->client_playas <= MAX_PLAYERS) {
 				GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY);
