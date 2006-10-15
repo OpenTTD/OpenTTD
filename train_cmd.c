@@ -1732,6 +1732,8 @@ int32 CmdReverseTrainDirection(TileIndex tile, uint32 flags, uint32 p1, uint32 p
 
 		if (flags & DC_EXEC) {
 			TOGGLEBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION);
+			InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
+			InvalidateWindow(WC_VEHICLE_DETAILS, v->index);
 		}
 	} else {
 		//turn the whole train around
