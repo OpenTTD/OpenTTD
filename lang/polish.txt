@@ -1152,6 +1152,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. w
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatycznie serwisuj helikoptery na ladowiskach: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Przylacz okno narzedzi krajobrazu do okien srodkow transportu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Przewijaj obraz myszka w przeciwnym kierunku: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Pokaz dymek z pomiarem podczas uzywania roznych narzedzi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Pokaz poboczne schematy koloru: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Zadne
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Wlasnej firmy
@@ -2915,10 +2916,10 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Budowa l
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Samolot - klik na samolocie aby uzyskac informacje
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Budowa samolotu (wymaga lotniska z hangarem)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Samolot - klik na samolocie aby uzyskac informacje
-STR_BLACK_PLANES                                                :{BLACK}Smiglowce
+STR_BLACK_PLANES                                                :{BLACK}Samoloty k.
 STR_BLACK_JETS                                                  :{BLACK}Odrzutowce
 STR_BLACK_HELICOPTERS                                           :{BLACK}Helikoptery
-STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknij aby widziec smiglowce
+STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknij aby widziec konwencjonalne samoloty
 STR_BUILD_JETS_TIP                                              :{BLACK}Kliknij aby widziec odrzutowce
 STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kliknij aby widziec helikoptery
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Budowa nowego samolotu
@@ -3221,4 +3222,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Male lot
 STR_LARGE_AIRPORTS                                              :{BLACK}Duze lotniska
 STR_HUB_AIRPORTS                                                :{BLACK}Glowne lotniska
 STR_HELIPORTS                                                   :{BLACK}Ladowiska
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Dlugosc: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Obszar: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dlugosc: {NUM} x {NUM}{}Roznica wysokosci: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Obszar: {NUM} x {NUM}{}Roznica wysokosci: {NUM} m
+
 ########

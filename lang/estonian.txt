@@ -2164,6 +2164,8 @@ STR_LIVERY_DIESEL                                               :Diiselmootor
 STR_LIVERY_ELECTRIC                                             :Elektrimootor
 STR_LIVERY_MONORAIL                                             :Monorelsi Mootor
 STR_LIVERY_MAGLEV                                               :Maglev'i Mootor
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Reisijate Vagun (Aur)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Reisijate Vagun (Diisel)
 STR_LIVERY_PASSENGER_WAGON_ELECTRIC                             :Reisijate Vagun(Elektriline)
@@ -3066,4 +3068,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Väikesed
 STR_LARGE_AIRPORTS                                              :{BLACK}Suured lennujaamad
 STR_HUB_AIRPORTS                                                :{BLACK}Suured lennujaamad
 STR_HELIPORTS                                                   :{BLACK}Helikopteri lennujaamad
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Pikkus: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Pindala: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Pikkus: {NUM}{}Kürguste erinevusj: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pindala: {NUM} x {NUM}{}Kõrguste erinevus: {NUM} m
+
 ########

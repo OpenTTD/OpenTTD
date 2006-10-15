@@ -1142,7 +1142,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avi
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Canviar clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canviar data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificació de valors de producció: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Deixar que els trens elèctrics marxen per rails normals
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Deixar que els trens elèctrics circulin per rails normals
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Cap a {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Cap a {WAYPOINT}, a {VELOCITY}
@@ -1502,7 +1502,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Via de t
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ja construit
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}S'ha de treure la via primer
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Construcció de Ferrocarril
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construcció de rail elèctric
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Construcció de Rail Electrificat
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Construcció de Monorail
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Construcció de Maglev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Selecciona pont per la via
@@ -1514,7 +1514,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}No es po
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}No es poden treure senyals d'aquí...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Cotxeres de Tren
 STR_1015_RAILROAD_CONSTRUCTION                                  :Construcció de Ferrocarril
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Contrucció de rail elèctric
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Contrucció de Rail Electrificat
 STR_1016_MONORAIL_CONSTRUCTION                                  :Construcció de Monorail
 STR_1017_MAGLEV_CONSTRUCTION                                    :Construcció de Maglev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Construir via de tren
@@ -2155,10 +2155,10 @@ STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessió Acabada!{}{}La millora als negocis dóna confiança a les indústries a la vegada que l'economia s'enforteix!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Intercanvia mida gran/petita de finestra
 STR_7076_COMPANY_VALUE                                          :{GOLD}Valor de l'Empresa: {WHITE}{CURRENCY64}
-STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Comprar el 25% de participació en l'Empresa
-STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vendre el 25% de participació en l'Empresa
-STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Comprar el 25% de participació en aquesta empresa
-STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vendre el 25% de participació en aquesta empresa
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Comprar un 25% d'accions de l'empresa
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vendre un 25% d'accions de l'empresa
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Comprar el 25% d'accions d'aquesta empresa
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vendre un 25% d'accions d'aquesta empresa
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}No pots comprar el 25% de participació en aquesta empresa...
 STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}No pots vendre el 25% de participació en aquesta empresa...
 STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% propietat de {COMPANY})
@@ -2169,8 +2169,8 @@ STR_7080_PROTECTED                                              :{WHITE}Aquesta 
 STR_LIVERY_DEFAULT                                              :Decoració estandard
 STR_LIVERY_STEAM                                                :Motor de vapor
 STR_LIVERY_DIESEL                                               :Motor Diesel
-STR_LIVERY_ELECTRIC                                             :Motor elèctric
-STR_LIVERY_MONORAIL                                             :Motor monorail
+STR_LIVERY_ELECTRIC                                             :Motor Elèctric
+STR_LIVERY_MONORAIL                                             :Motor Monorail
 STR_LIVERY_MAGLEV                                               :Motor maglev
 STR_LIVERY_DMU                                                  :DMU
 STR_LIVERY_EMU                                                  :EMU
@@ -2502,9 +2502,9 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren mas
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Els trens només es poden modificar quan s'han parat dintre d'una cotxera
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trens
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nous Vehicles
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nous vehicles de rail elèctric
-STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nous Vehicles Monorail
-STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nous Vehicles Maglev
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nous vehicles de Rail Electrificat
+STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nous Trens Monorail
+STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nous Trens Maglev
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Vehicle
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar Vehicle
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Fer una còpia del vehicle. Control-clic compartirà les ordres
@@ -3002,9 +3002,9 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}Ordre de
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Trens
-STR_ELRAIL_VEHICLES                                             :Vehicles de rail elèctric
-STR_MONORAIL_VEHICLES                                           :Monorrails
-STR_MAGLEV_VEHICLES                                             :Vehicles Maglev
+STR_ELRAIL_VEHICLES                                             :Trens Elèctrics
+STR_MONORAIL_VEHICLES                                           :Trens Monorail
+STR_MAGLEV_VEHICLES                                             :Trens Maglev
 
 ############ End of list of rail types
 

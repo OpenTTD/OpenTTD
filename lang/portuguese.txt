@@ -381,6 +381,9 @@ STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipo de Estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Avaliação de carga
+STR_ENGINE_SORT_COST                                            :Custo
+STR_ENGINE_SORT_INTRO_DATE                                      :Data de Introdução
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade de Carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Nenhuma carga em espera
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas as acções
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleccionar todos os tipos de carga (incluindo carga sem espera)
@@ -2542,6 +2545,7 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construi
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arraste o veículo ferroviário para aqui para o vender
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar visualização na localização de um depósito ferroviário
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
+STR_BLACK_BOTH                                                  :{BLACK}Ambos
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir o veículo ferroviário seleccionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomear tipo de veículo ferroviário
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarefa actual do comboio - clique aqui para iniciar/parar comboio
@@ -2769,6 +2773,7 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construi
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - clique na aeronave para informações
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir nova aeronave (necessita de aeroporto com hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - clique na aeronave para informações
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helicópteros
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir nova aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arraste a aeronave para aqui para a vender
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar visualização na localização do hangar
@@ -2890,6 +2895,7 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra t
 STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depósitos
 STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depósitos
 STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depósitos
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangares
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar para {SKIP}{SKIP}{SKIP}{STRING}
 
@@ -2902,6 +2908,7 @@ STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Enviar t
 
 STR_SELL                                                        :{BLACK}Vender
 STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Está prestes a vender todos os veículos no depósito
+STR_ARE_YOU_SURE                                                :{BLACK}Tem a certeza?
 
 STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirme que deseja vender todos os combóios no depósito
 STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirme que deseja vender todos os veículos de estrada no depósito
@@ -2958,6 +2965,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Pression
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
+
 
 ############ Lists rail types
 
@@ -3053,4 +3061,8 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Aeroport
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroportos grandes
 STR_HUB_AIRPORTS                                                :{BLACK}Aeroporto de ligação/transbordo
 STR_HELIPORTS                                                   :{BLACK}Heliportos
+
+############ Tooltip measurment
+
+
 ########

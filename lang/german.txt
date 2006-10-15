@@ -3093,4 +3093,11 @@ STR_LARGE_AIRPORTS                                              :{BLACK}große Fl
 STR_HUB_AIRPORTS                                                :{BLACK}Großflughäfen
 STR_HELIPORTS                                                   :{BLACK}Flughäfen für Hubschrauber
 
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Länge: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Gebiet: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Länge: {NUM}{}Höhenunterschied: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Gebiet: {NUM} x {NUM}{}Höhenunterschied: {NUM} m
+
 ########

@@ -1066,6 +1066,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Expansi
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Mantener los helicópteros en helipuertos automáticamente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Une la caja de paisaje a la barra de rail/carretera...: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}El scroll de ratón mueve la vista en dirección opuesta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Muestra información de medidas cuando usamos herramientras construcción: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Ver estaciones de la empresa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ninguno
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propia empresa
@@ -3093,4 +3094,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Aeropuer
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeropuerto grande
 STR_HUB_AIRPORTS                                                :{BLACK}Centro del aeropuerto
 STR_HELIPORTS                                                   :{BLACK}Aeropuerto helicopteros
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Longitud: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Longitud: {NUM}{}Diferencia altura: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferencia altura: {NUM} m
+
 ########
