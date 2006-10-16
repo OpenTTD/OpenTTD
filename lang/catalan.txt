@@ -2155,8 +2155,8 @@ STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessió Acabada!{}{}La millora als negocis dóna confiança a les indústries a la vegada que l'economia s'enforteix!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Intercanvia mida gran/petita de finestra
 STR_7076_COMPANY_VALUE                                          :{GOLD}Valor de l'Empresa: {WHITE}{CURRENCY64}
-STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Comprar un 25% d'accions de l'empresa
-STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vendre un 25% d'accions de l'empresa
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Comprar un 25% d'accions
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Vendre un 25% d'accions
 STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Comprar el 25% d'accions d'aquesta empresa
 STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Vendre un 25% d'accions d'aquesta empresa
 STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}No pots comprar el 25% de participació en aquesta empresa...
@@ -3001,7 +3001,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}Ordre de
 
 ############ Lists rail types
 
-STR_RAIL_VEHICLES                                               :Trens
+STR_RAIL_VEHICLES                                               :Trens de Vapor i Diesel
 STR_ELRAIL_VEHICLES                                             :Trens Elèctrics
 STR_MONORAIL_VEHICLES                                           :Trens Monorail
 STR_MAGLEV_VEHICLES                                             :Trens Maglev

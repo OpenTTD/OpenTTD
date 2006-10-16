@@ -210,7 +210,7 @@ STR_00F2_300M                                                   :{BLACK}{TINYFON
 STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
 STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Toge
-STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Lastbiler
+STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Vejkøretøjer
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Skibe
 STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Fly
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transportruter
@@ -971,10 +971,10 @@ STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COM
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA} har en ugyldig ordre
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har dobbelt ordre
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig station i sin køreplan
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Lastbil {COMMA} har for få ordre i sin køreplan
-STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Lastbil {COMMA} har en ugyldig ordre
-STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Lastbil {COMMA} har dobbelt ordre
-STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Lastbil {COMMA} har en ugyldig station i sin køreplan
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretøj {COMMA} har for få ordre i sin køreplan
+STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Køretøj {COMMA} har en ugyldig ordre
+STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Køretøj {COMMA} har dobbelt ordre
+STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Køretøj {COMMA} har en ugyldig station i sin køreplan
 STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skib {COMMA} har for få ordre i sin sejlplan
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skib {COMMA} har en ugyldig ordre
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skib {COMMA} har dobbelt ordre
@@ -985,10 +985,10 @@ STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Fly {COM
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Fly {COMMA} har en ugyldig station i sin flyveplan
 # end of order system
 
-STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornyelse mislykkedes på tog {COMMA} (ikke penge nok)
-STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisk fornyelse mislykkedes på lastbil {COMMA} (ikke penge nok)
-STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornyelse mislykkedes på skib {COMMA} (ikke penge nok)
-STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornyelse mislykkedes på fly {COMMA} (ikke penge nok)
+STR_TRAIN_AUTORENEW_FAILED                                      :{WHITE}Automatisk fornyelse af tog mislykkedes {COMMA} (ikke penge nok)
+STR_ROADVEHICLE_AUTORENEW_FAILED                                :{WHITE}Automatisk fornyelse af køretøj mislykkedes {COMMA} (ikke penge nok)
+STR_SHIP_AUTORENEW_FAILED                                       :{WHITE}Automatisk fornyelse af skib mislykkedes {COMMA} (ikke penge nok)
+STR_AIRCRAFT_AUTORENEW_FAILED                                   :{WHITE}Automatisk fornyelse af fly mislykkedes {COMMA} (ikke penge nok)
 STR_TRAIN_TOO_LONG_AFTER_REPLACEMENT                            :{WHITE}Tog {COMMA} er for langt efter udskiftning
 
 STR_CONFIG_PATCHES                                              :{BLACK}Indstil Patches
@@ -1018,7 +1018,7 @@ STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Vis alt
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Vis signaler i kørselssiden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Vis finansvinduet i slutningen af året: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch kombatibel nonstop håndtering: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kø dannelse af lastbiler (med kvante effekt): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Kødannelse af køretøjer (med kvanteeffekt): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pannorer vindue når musen er ved kanten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillad bestikkelse af de lokale myndigheder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING}
@@ -1065,18 +1065,19 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max sta
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Automatisk service på helikopterlandingspladser: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Link landskabs værktøjsbaren til skinne/vej/vand/lufthavn værktøjsbaren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Når der scrolles med musen, flyt viewet i den modsatte retning: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Vis værktøjstip for måling under brug af div. bygge-værktøjer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis firmafarver: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eget firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle firmaer
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal lastbiler per spiller: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal køretøjer per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal fly per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks antal skibe per spiller: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Deaktiver tog for computeren: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Deaktiver lastbiler for computeren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Deaktiver køretøjer for computeren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deaktiver fly for computeren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
 
@@ -1505,7 +1506,7 @@ STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektris
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorailkonstruktion
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magnetskinnekonstruktion
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Vælg togbro
-STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Kan ikke bygge et depot her...
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Kan ikke bygge en remise her...
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Kan ikke bygge en banegård her...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Kan ikke bygge signaler her...
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Kan ikke bygge jernbane her...
@@ -1548,7 +1549,7 @@ STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Kan ikke
 STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Kan ikke bygge fragtcentral...
 STR_180A_ROAD_CONSTRUCTION                                      :Vejkonstruktion
 STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Byg en sektion vej
-STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Byg garage (til servicering og bygning af lastbiler)
+STR_180C_BUILD_ROAD_VEHICLE_DEPOT                               :{BLACK}Byg værksted (til servicering og bygning af vejkøretøjer)
 STR_180D_BUILD_BUS_STATION                                      :{BLACK}Byg rutebilstation
 STR_180E_BUILD_TRUCK_LOADING_BAY                                :{BLACK}Byg fragtcentral
 STR_180F_BUILD_ROAD_BRIDGE                                      :{BLACK}Byg bro
@@ -1919,7 +1920,7 @@ STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...du ej
 STR_SV_EMPTY                                                    :
 STR_SV_UNNAMED                                                  :Ikke navngivet
 STR_SV_TRAIN_NAME                                               :Tog {COMMA}
-STR_SV_ROADVEH_NAME                                             :Lastbil {COMMA}
+STR_SV_ROADVEH_NAME                                             :Vejkøretøj {COMMA}
 STR_SV_SHIP_NAME                                                :Skib {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Fly {COMMA}
 
@@ -2051,13 +2052,13 @@ STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Udgifter
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Konstruktion
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nye Køretøjer
-STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Togkørselsudgift
-STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Lastbilskørselsudgift
-STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Flykørselsudgift
-STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Skibskørselsudgift
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Togdriftsomkostning
+STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Køretøjsdriftsomkostning
+STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Flydriftsomkostning
+STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Skibsdriftsomkostning
 STR_7017_PROPERTY_MAINTENANCE                                   :{GOLD}Vedligeholdelse af ejendom
 STR_7018_TRAIN_INCOME                                           :{GOLD}Togindkomst
-STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Lastbilsindkomst
+STR_7019_ROAD_VEHICLES_INCOME                                   :{GOLD}Køretøjsindkomst
 STR_701A_AIRCRAFT_INCOME                                        :{GOLD}Flyindkomst
 STR_701B_SHIP_INCOME                                            :{GOLD}Skibsindkomst
 STR_701C_LOAN_INTEREST                                          :{GOLD}Renter
@@ -2093,7 +2094,7 @@ STR_7037_PRESIDENT                                              :{WHITE}{PLAYERN
 STR_7038_INAUGURATED                                            :{GOLD}Indivet: {WHITE}{NUM}
 STR_7039_VEHICLES                                               :{GOLD}Køretøjer:
 STR_TRAINS                                                      :{WHITE}{COMMA} tog
-STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} lastbil{P "" er}
+STR_ROAD_VEHICLES                                               :{WHITE}{COMMA} køretøj{P "" er}
 STR_AIRCRAFT                                                    :{WHITE}{COMMA} fly
 STR_SHIPS                                                       :{WHITE}{COMMA} skib{P "" e}
 STR_7042_NONE                                                   :{WHITE}Ingen
@@ -2327,9 +2328,9 @@ STR_8080_PERRY_MAIL_TRUCK                                       :Perry Postlastb
 STR_8081_MIGHTYMOVER_MAIL_TRUCK                                 :MightyMover Postlastbil
 STR_8082_POWERNAUGHT_MAIL_TRUCK                                 :Powernaught Postlastbil
 STR_8083_WIZZOWOW_MAIL_TRUCK                                    :Wizzowow Postlastbil
-STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe Olietanklastbil
-STR_8085_FOSTER_OIL_TANKER                                      :Foster Olietanklastbil
-STR_8086_PERRY_OIL_TANKER                                       :Perry Olietanklastbil
+STR_8084_WITCOMBE_OIL_TANKER                                    :Witcombe Olietankbil
+STR_8085_FOSTER_OIL_TANKER                                      :Foster Olietankbil
+STR_8086_PERRY_OIL_TANKER                                       :Perry Olietankbil
 STR_8087_TALBOTT_LIVESTOCK_VAN                                  :Talbott Kreaturlastbil
 STR_8088_UHL_LIVESTOCK_VAN                                      :Uhl Kreaturlastbil
 STR_8089_FOSTER_LIVESTOCK_VAN                                   :Foster Kreaturlastbil
@@ -2360,9 +2361,9 @@ STR_80A1_MPS_PAPER_TRUCK                                        :MPS Papirlastbi
 STR_80A2_MPS_COPPER_ORE_TRUCK                                   :MPS Kobbermalmslastbil
 STR_80A3_UHL_COPPER_ORE_TRUCK                                   :Uhl Kobbermalmslastbil
 STR_80A4_GOSS_COPPER_ORE_TRUCK                                  :Goss Kobbermalmslastbil
-STR_80A5_UHL_WATER_TANKER                                       :Uhl Vandtankslastbil
-STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Vandtankslastbil
-STR_80A7_MPS_WATER_TANKER                                       :MPS Vandtankslastbil
+STR_80A5_UHL_WATER_TANKER                                       :Uhl Vandtankbil
+STR_80A6_BALOGH_WATER_TANKER                                    :Balogh Vandtankbil
+STR_80A7_MPS_WATER_TANKER                                       :MPS Vandtankbil
 STR_80A8_BALOGH_FRUIT_TRUCK                                     :Balogh Frugtlastbil
 STR_80A9_UHL_FRUIT_TRUCK                                        :Uhl Frugtlastbil
 STR_80AA_KELLING_FRUIT_TRUCK                                    :Kelling Frugtlastbil
@@ -2454,7 +2455,7 @@ STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helik
 STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Besked fra køretøjsfabrikken
 STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Vi har lige designet en ny {STRING} - er du interesseret i et års ekslusiv testkørsel, så vi kan se hvordan den klarer sig inden vi gør den frit tilgængelig ?
 STR_8102_RAILROAD_LOCOMOTIVE                                    :jernbanelokomotiv
-STR_8103_ROAD_VEHICLE                                           :lastbil
+STR_8103_ROAD_VEHICLE                                           :vejkøretøj
 STR_8104_AIRCRAFT                                               :fly
 STR_8105_SHIP                                                   :skib
 STR_8106_MONORAIL_LOCOMOTIVE                                    :monoraillokomotiv
@@ -2610,14 +2611,14 @@ STR_TRAIN_NO_POWER                                              :{RED}Ingen strø
 STR_TRAIN_START_NO_CATENARY                                     :Toget kan ikke køre fordi sporet ikke har nogen køreledninger
 
 ##id 0x9000
-STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Lastbil i vejen
-STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Lastbiler
+STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køretøj i vejen
+STR_9001_ROAD_VEHICLES                                          :{WHITE}{COMPANY} - {COMMA} Køretøj{P "" er}
 STR_9002                                                        :{WHITE}{VEHICLE}
 STR_9003_ROAD_VEHICLE_DEPOT                                     :{WHITE}{TOWN} Værksted
 STR_9004_NEW_VEHICLES                                           :{BLACK}Nye køretøjer
-STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye lastbiler
+STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Nye køretøjer
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Byg køretøj
-STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge lastbil...
+STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Kan ikke bygge køretøj...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaljer)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
 STR_900E_MAX_SPEED                                              :{BLACK}Maks hastighed: {LTBLUE}{VELOCITY}
@@ -2626,8 +2627,8 @@ STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålideli
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...skal være stoppet inde i et værksted først
-STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke sælge lastbil...
-STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke stoppe/starte lastbil...
+STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke sælge køretøj...
+STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke stoppe/starte køretøj...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Køretøj {COMMA} venter i værksted
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Kører til {TOWN} Værksted
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Kører til {TOWN} Værksted, {VELOCITY}
@@ -2746,7 +2747,7 @@ STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapac
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(ombygning mulig)
 STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} Dok
-SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} Skib Depot
+SERVICE_AT_SHIP_DEPOT                                           :Service i {TOWN} Skibsdok
 
 ##id 0xA000
 STR_A000_AIRPORTS                                               :{WHITE}Lufthavne
@@ -2910,9 +2911,9 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depoter
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depoter
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depoter
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Remiser
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Værksteder
+STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Skibsdokke
 STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarer
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Send til {SKIP}{SKIP}{SKIP}{STRING}
@@ -2925,32 +2926,32 @@ STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Send all
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Sælg
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du er ved at sælge alle køretøjer i depotet
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Du er ved at sælge alle køretøjer i værkstedet
 STR_ARE_YOU_SURE                                                :{BLACK}Er du sikker?
 
-STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bekræft at du ønsker at sælge alle toge i depotet
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bekræft at du ønsker at sælge alle køretøjer i depotet
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bekræft at du ønsker at sælge alle skibe i depotet
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Bekræft at du ønsker at sælge alle toge i remisen
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Bekræft at du ønsker at sælge alle køretøjer i værkstedet
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Bekræft at du ønsker at sælge alle skibe i dokken
 STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Bekræft at du ønsker at sælge alle fly i hangaren
 
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Sælg ikke togene i depotet
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Sælg ikke køretøjerne i depotet
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Sælg ikke skibene i depotet
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Sælg ikke togene i remisen
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Sælg ikke køretøjerne i værkstedet
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Sælg ikke skibene i dokken
 STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Sælg ikke flyene i hangaren
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sælg alle toge i depotet
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sælg alle køretøjer i depotet
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sælg alle skibe i depotet
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Sælg alle toge i remisen
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Sælg alle køretøjer i værkstedet
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Sælg alle skibe i dokken
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Sælg alle fly i hangaren
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Få vist en liste over alle toge med dette depot i deres ordreliste
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Få vist en liste over alle køretøjer med dette depot i deres ordreliste
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Få vist en liste over alle skibe med dette depot i deres ordreliste
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Få vist en liste over alle toge med denne remise i deres ordreliste
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Få vist en liste over alle køretøjer med dette værksted i deres ordreliste
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Få vist en liste over alle skibe med denne dok i deres ordreliste
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Få vist en liste over alle fly med en hangar ved denne lufthavn i deres ordreliste
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Udskift automatisk all toge i depotet
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Udskift automatisk alle køretøjer i depotet
-STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Udskift automatisk alle skibe i depotet
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Udskift automatisk all toge i remisen
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Udskift automatisk alle køretøjer i værkstedet
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Udskift automatisk alle skibe i dokken
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Udskift automatisk alle fly i hangaren
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tog{P "" e}
@@ -2980,14 +2981,14 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Køretøje
 STR_ENGINES                                                     :Lokomotiver
 STR_WAGONS                                                      :Vogne
 
-STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klik for at stoppe alle toge i depotet
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klik for at stoppe alle køretøjer i depotet
-STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klik for at stoppe alle skibe i depotet
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Klik for at stoppe alle toge i remisen
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Klik for at stoppe alle køretøjer i værkstedet
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Klik for at stoppe alle skibe i dokken
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Klik for at stoppe alle fly i hangaren
 
-STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klik for at starte alle toge i depotet
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klik for at starte alle køretøjer i depotet
-STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klik for at starte alle skibe i depotet
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Klik for at starte alle toge i remisen
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Klik for at starte alle køretøjer i værkstedet
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Klik for at starte alle skibe i dokken
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Klik for at starte alle fly i hangaren
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klik for at stoppe alle køretøjer i listen
@@ -2996,6 +2997,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klik for
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste of skilte - {COMMA} Skilte
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Ombygningsordre stoppet pga. fejl {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -3062,7 +3064,7 @@ STR_CLEARING_TILES                                              :{BLACK}Generer 
 STR_SETTINGUP_GAME                                              :{BLACK}Klargører spil
 STR_PREPARING_TILELOOP                                          :{BLACK}Kører flise-løkken
 STR_PREPARING_GAME                                              :{BLACK}Forbereder spil
-STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Denne handling ændrere sværhedsgraden til speciel
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Denne handling ændrer sværhedsgraden til speciel
 STR_SE_FLAT_WORLD                                               :{WHITE}Flat land
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generér flat land
 STR_SE_RANDOM_LAND                                              :{WHITE}Tilfældigt land
@@ -3091,4 +3093,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Små luft
 STR_LARGE_AIRPORTS                                              :{BLACK}Store lufthavne
 STR_HUB_AIRPORTS                                                :{BLACK}Central lufthavn
 STR_HELIPORTS                                                   :{BLACK}Helikopterlufthavn
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Længde: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Areal: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Længde: {NUM}{}Højdeforskel: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Areal: {NUM} x {NUM}{}Højdeforskel: {NUM} m
+
 ########
