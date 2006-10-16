@@ -150,9 +150,14 @@ void InitializeGame(int mode, uint size_x, uint size_y)
 	ResetObjectToPlace();
 }
 
+bool IsCustomName(StringID id)
+{
+	return GB(id, 11, 5) == 15;
+}
+
 void DeleteName(StringID id)
 {
-	if ((id & 0xF800) == 0x7800) {
+	if (IsCustomName(id)) {
 		memset(_name_array[id & 0x1FF], 0, sizeof(_name_array[id & 0x1FF]));
 	}
 }

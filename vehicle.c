@@ -2073,7 +2073,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 		MoveVehicleCargo(new_v->type == VEH_Train ? GetFirstVehicleInChain(new_v) : new_v, old_v);
 
 		// Get the name of the old vehicle if it has a custom name.
-		if ((old_v->string_id & 0xF800) != 0x7800) {
+		if (!IsCustomName(old_v->string_id)) {
 			vehicle_name[0] = '\0';
 		} else {
 			GetName(old_v->string_id & 0x7FF, vehicle_name);

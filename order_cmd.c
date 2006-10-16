@@ -823,7 +823,7 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 	bak->service_interval = v->service_interval;
 
 	/* Safe custom string, if any */
-	if ((v->string_id & 0xF800) != 0x7800) {
+	if (!IsCustomName(v->string_id)) {
 		bak->name[0] = '\0';
 	} else {
 		GetName(v->string_id & 0x7FF, bak->name);

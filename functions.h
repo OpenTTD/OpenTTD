@@ -138,6 +138,7 @@ void PlaceTreesRandomly(void);
 void InitializeLandscapeVariables(bool only_constants);
 
 /* misc.c */
+bool IsCustomName(StringID id);
 void DeleteName(StringID id);
 char *GetName(int id, char *buff);
 
