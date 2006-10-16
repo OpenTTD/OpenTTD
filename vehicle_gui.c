@@ -47,8 +47,6 @@ typedef struct vehiclelist_d {
 } vehiclelist_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vehiclelist_d));
 
-static uint32 _internal_name_sorter_id; // internal StringID for default vehicle-names
-static const Vehicle* _last_vehicle; // cached vehicle to hopefully speed up name-sorting
 static bool   _internal_sort_order;     // descending/ascending
 
 static RailType _railtype_selected_in_replace_gui;
@@ -149,8 +147,6 @@ static void SortVehicleList(vehiclelist_d *vl)
 	if (!(vl->l.flags & VL_RESORT)) return;
 
 	_internal_sort_order = vl->l.flags & VL_DESC;
-	_internal_name_sorter_id = STR_SV_TRAIN_NAME;
-	_last_vehicle = NULL; // used for "cache" in namesorting
 	qsort((void*)vl->sort_list, vl->l.list_length, sizeof(vl->sort_list[0]),
 		_vehicle_sorter[vl->l.sort_type]);
 
@@ -508,25 +504,34 @@ static int CDECL VehicleNumberSorter(const void *a, const void *b)
 	return (_internal_sort_order & 1) ? -r : r;
 }
 
-static char _bufcache[64]; // used together with _last_vehicle to hopefully speed up stringsorting
 static int CDECL VehicleNameSorter(const void *a, const void *b)
 {
+	static const Vehicle *last_vehicle[2] = { NULL, NULL };
+	static char           last_name[2][64] = { "", "" };
+
 	const Vehicle* va = *(const Vehicle**)a;
 	const Vehicle* vb = *(const Vehicle**)b;
-	char buf1[64] = "\0";
 	int r;
 
-	if (va->string_id != _internal_name_sorter_id) GetString(buf1, va->string_id);
-
-	if (vb != _last_vehicle) {
-		_last_vehicle = vb;
-		_bufcache[0] = '\0';
-		if (vb->string_id != _internal_name_sorter_id) {
-			GetString(_bufcache, vb->string_id);
+	if (va != last_vehicle[0]) {
+		last_vehicle[0] = va;
+		if (IsCustomName(va->string_id)) {
+			GetString(last_name[0], va->string_id);
+		} else {
+			last_name[0][0] = '\0';
 		}
 	}
 
-	r =  strcmp(buf1, _bufcache); // sort by name
+	if (vb != last_vehicle[1]) {
+		last_vehicle[1] = vb;
+		if (IsCustomName(vb->string_id)) {
+			GetString(last_name[1], vb->string_id);
+		} else {
+			last_name[1][0] = '\0';
+		}
+	}
+
+	r = strcmp(last_name[0], last_name[1]); // sort by name
 
 	VEHICLEUNITNUMBERSORTER(r, va, vb);
 
