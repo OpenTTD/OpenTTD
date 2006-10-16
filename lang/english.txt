@@ -2906,7 +2906,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Show all
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Show all ships which have this station on their schedule
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Shared orders of {COMMA} Vehicle{P "" s}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles which have the same schedule
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Show all vehicles that share this schedule
 
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
