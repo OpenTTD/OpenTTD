@@ -19,7 +19,7 @@ extern const uint32 _landscape_global_cargo_mask[NUM_LANDSCAPE];
 extern const CargoID _local_cargo_id_ctype[NUM_GLOBAL_CID];
 extern const uint32 cargo_classes[16];
 
-void SetWagonOverrideSprites(EngineID engine, const struct SpriteGroup *group, byte *train_id, int trains);
+void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const struct SpriteGroup *group, byte *train_id, int trains);
 void SetCustomEngineSprites(EngineID engine, byte cargo, const struct SpriteGroup *group);
 void SetRotorOverrideSprites(EngineID engine, const struct SpriteGroup *group);
 SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle* v, Direction direction);

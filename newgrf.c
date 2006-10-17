@@ -1870,8 +1870,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 			if (ctype == GC_INVALID) ctype = GC_PURCHASE;
 
 			if (wagover) {
-				// TODO: No multiple cargo types per vehicle yet. --pasky
-				SetWagonOverrideSprites(engine, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
+				SetWagonOverrideSprites(engine, ctype, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 			} else {
 				SetCustomEngineSprites(engine, ctype, _cur_grffile->spritegroups[groupid]);
 				last_engines[i] = engine;
@@ -1901,7 +1900,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 					SetRotorOverrideSprites(engine, _cur_grffile->spritegroups[groupid]);
 				} else {
 					// TODO: No multiple cargo types per vehicle yet. --pasky
-					SetWagonOverrideSprites(engine, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
+					SetWagonOverrideSprites(engine, GC_DEFAULT, _cur_grffile->spritegroups[groupid], last_engines, last_engines_count);
 				}
 			} else {
 				SetCustomEngineSprites(engine, GC_DEFAULT, _cur_grffile->spritegroups[groupid]);

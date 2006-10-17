@@ -58,11 +58,10 @@ static const uint16 _cargo_classes[NUM_GLOBAL_CID] = {
 int _traininfo_vehicle_pitch = 0;
 int _traininfo_vehicle_width = 29;
 
-// TODO: We don't support cargo-specific wagon overrides. Pretty exotic... ;-) --pasky
-
 typedef struct WagonOverride {
 	byte *train_id;
 	int trains;
+	CargoID cargo;
 	const SpriteGroup *group;
 } WagonOverride;
 
@@ -73,7 +72,7 @@ typedef struct WagonOverrides {
 
 static WagonOverrides _engine_wagon_overrides[TOTAL_NUM_ENGINES];
 
-void SetWagonOverrideSprites(EngineID engine, const SpriteGroup *group, byte *train_id, int trains)
+void SetWagonOverrideSprites(EngineID engine, CargoID cargo, const SpriteGroup *group, byte *train_id, int trains)
 {
 	WagonOverrides *wos;
 	WagonOverride *wo;
@@ -88,12 +87,13 @@ void SetWagonOverrideSprites(EngineID engine, const SpriteGroup *group, byte *tr
 	 * to prevent leaks. But first we need to refcount the SpriteGroup.
 	 * --pasky */
 	wo->group = group;
+	wo->cargo = cargo;
 	wo->trains = trains;
 	wo->train_id = malloc(trains);
 	memcpy(wo->train_id, train_id, trains);
 }
 
-static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, byte overriding_engine)
+static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, CargoID cargo, byte overriding_engine)
 {
 	const WagonOverrides *wos = &_engine_wagon_overrides[engine];
 	int i;
@@ -108,7 +108,7 @@ static const SpriteGroup *GetWagonOverrideSpriteSet(EngineID engine, byte overri
 		int j;
 
 		for (j = 0; j < wo->trains; j++) {
-			if (wo->train_id[j] == overriding_engine) return wo->group;
+			if (wo->train_id[j] == overriding_engine && (wo->cargo == cargo || wo->cargo == GC_DEFAULT)) return wo->group;
 		}
 	}
 	return NULL;
@@ -872,7 +872,7 @@ SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction dire
 	group = engine_custom_sprites[engine][cargo];
 
 	if (v != NULL && v->type == VEH_Train) {
-		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
+		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
 
 		if (overset != NULL) group = overset;
 	}
@@ -919,7 +919,7 @@ SpriteID GetRotorOverrideSprite(EngineID engine, const Vehicle *v, bool info_vie
 bool UsesWagonOverride(const Vehicle* v)
 {
 	assert(v->type == VEH_Train);
-	return GetWagonOverrideSpriteSet(v->engine_type, v->u.rail.first_engine) != NULL;
+	return GetWagonOverrideSpriteSet(v->engine_type, _global_cargo_id[_opt.landscape][v->cargo_type], v->u.rail.first_engine) != NULL;
 }
 
 /**
@@ -949,7 +949,7 @@ uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineI
 	group = engine_custom_sprites[engine][cargo];
 
 	if (v != NULL && v->type == VEH_Train) {
-		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
+		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
 
 		if (overset != NULL) group = overset;
 	}
@@ -991,7 +991,7 @@ uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, E
 	group = engine_custom_sprites[engine][cargo];
 
 	if (v != NULL && v->type == VEH_Train) {
-		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, v->u.rail.first_engine);
+		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
 
 		if (overset != NULL) group = overset;
 	}
@@ -1023,7 +1023,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 	group = engine_custom_sprites[v->engine_type][cargo];
 
 	if (v->type == VEH_Train) {
-		const SpriteGroup *overset = GetWagonOverrideSpriteSet(v->engine_type, v->u.rail.first_engine);
+		const SpriteGroup *overset = GetWagonOverrideSpriteSet(v->engine_type, cargo, v->u.rail.first_engine);
 		if (overset != NULL) group = overset;
 	}
 
