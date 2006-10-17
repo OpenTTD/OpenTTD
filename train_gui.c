@@ -998,7 +998,7 @@ static void DrawTrainDetailsWindow(Window *w)
 		do {
 			act_cargo[u->cargo_type] += u->cargo_count;
 			max_cargo[u->cargo_type] += u->cargo_cap;
-		} while ((u = GetNextVehicle(u)) != NULL);
+		} while ((u = u->next) != NULL);
 
 		/* Set scroll-amount seperately from counting, as to not compute num double
 		 * for more carriages of the same type
@@ -1009,8 +1009,8 @@ static void DrawTrainDetailsWindow(Window *w)
 		num++; // needs one more because first line is description string
 	} else {
 		do {
-			num++;
-		} while ((u = GetNextVehicle(u)) != NULL);
+			if (!IsArticulatedPart(u) || u->cargo_cap != 0) num++;
+		} while ((u = u->next) != NULL);
 	}
 
 	SetVScrollCount(w, num);
@@ -1070,19 +1070,30 @@ static void DrawTrainDetailsWindow(Window *w)
 					DrawSprite(GetTrainImage(u, DIR_W) | pal, x + 14 + WagonLengthToPixels(dx), y + 6 + (is_custom_sprite(RailVehInfo(u->engine_type)->image_index) ? _traininfo_vehicle_pitch : 0));
 					dx += u->u.rail.cached_veh_length;
 					u = u->next;
-				} while (u != NULL && IsArticulatedPart(u));
+				} while (u != NULL && IsArticulatedPart(u) && u->cargo_cap == 0);
 
 				px = x + WagonLengthToPixels(dx) + 2;
 				py = y + 2;
 				switch (det_tab) {
 					default: NOT_REACHED();
 					case 0: TrainDetailsCargoTab(   v, px, py); break;
-					case 1: TrainDetailsInfoTab(    v, px, py); break;
+					case 1:
+						// Only show name and value for the 'real' part
+						if (!IsArticulatedPart(v)) {
+							TrainDetailsInfoTab(v, px, py);
+						}
+						break;
 					case 2: TrainDetailsCapacityTab(v, px, py); break;
 				}
 				y += 14;
+
+				v = u;
+			} else {
+				// Move to the next line
+				do {
+					v = v->next;
+				} while (v != NULL && IsArticulatedPart(v) && v->cargo_cap == 0);
 			}
-			v = GetNextVehicle(v);
 			if (v == NULL) return;
 		}
 	} else {
