@@ -103,21 +103,25 @@ public:
 	/// return debug report character to identify the transportation type
 	FORCEINLINE char TransportTypeChar() const {return 't';}
 
-	static Trackdir stChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs)
+	static Trackdir stChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool *path_not_found)
 	{
 		// create pathfinder instance
 		Tpf pf;
-		return pf.ChooseRailTrack(v, tile, enterdir, trackdirs);
+		return pf.ChooseRailTrack(v, tile, enterdir, trackdirs, path_not_found);
 	}
 
-	FORCEINLINE Trackdir ChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs)
+	FORCEINLINE Trackdir ChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool *path_not_found)
 	{
 		// set origin and destination nodes
 		Yapf().SetOrigin(v->tile, GetVehicleTrackdir(v), INVALID_TILE, INVALID_TRACKDIR, 1, true);
 		Yapf().SetDestination(v);
 
 		// find the best path
-		Yapf().FindPath(v);
+		bool path_found = Yapf().FindPath(v);
+		if (!path_found && path_not_found != NULL) {
+			// tell controller that the path was only 'guessed'
+			*path_not_found = !path_found;
+		}
 
 		// if path not found - return INVALID_TRACKDIR
 		Trackdir next_trackdir = INVALID_TRACKDIR;
@@ -195,10 +199,10 @@ struct CYapfAnyDepotRail2 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail2, CFollowT
 struct CYapfAnyDepotRail3 : CYapfT<CYapfRail_TypesT<CYapfAnyDepotRail3, CFollowTrackRailNo90, CRailNodeListTrackDir, CYapfDestinationAnyDepotRailT     , CYapfFollowAnyDepotRailT> > {};
 
 
-Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs)
+Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir, TrackdirBits trackdirs, bool *path_not_found)
 {
 	// default is YAPF type 2
-	typedef Trackdir (*PfnChooseRailTrack)(Vehicle*, TileIndex, DiagDirection, TrackdirBits);
+	typedef Trackdir (*PfnChooseRailTrack)(Vehicle*, TileIndex, DiagDirection, TrackdirBits, bool*);
 	PfnChooseRailTrack pfnChooseRailTrack = &CYapfRail2::stChooseRailTrack;
 
 	// check if non-default YAPF type needed
@@ -207,7 +211,7 @@ Trackdir YapfChooseRailTrack(Vehicle *v, TileIndex tile, DiagDirection enterdir,
 	else if (_patches.yapf.disable_node_optimization)
 		pfnChooseRailTrack = &CYapfRail1::stChooseRailTrack; // Trackdir, allow 90-deg
 
-	Trackdir td_ret = pfnChooseRailTrack(v, tile, enterdir, trackdirs);
+	Trackdir td_ret = pfnChooseRailTrack(v, tile, enterdir, trackdirs, path_not_found);
 
 	return td_ret;
 }

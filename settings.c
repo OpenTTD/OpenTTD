@@ -1290,7 +1290,7 @@ const SettingDesc _patch_settings[] = {
 	SDT_BOOL(Patches, train_income_warn,             S, 0,  true,                    STR_CONFIG_PATCHES_WARN_INCOME_LESS,     NULL),
 	 SDT_VAR(Patches, order_review_system,SLE_UINT8, S,MS,     2,     0,       2, 0, STR_CONFIG_PATCHES_ORDER_REVIEW,         NULL),
 	SDT_BOOL(Patches, never_expire_vehicles,         0, 0, false,                    STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES,NULL),
-	 SDT_VAR(Patches, lost_train_days,   SLE_UINT16, S,D0,   180,   180,     720, 0, STR_CONFIG_PATCHES_LOST_TRAIN_DAYS,      NULL),
+	SDT_BOOL(Patches, lost_train_warn,               S, 0,  true,                    STR_CONFIG_PATCHES_WARN_LOST_TRAIN,      NULL),
 	SDT_BOOL(Patches, autorenew,                     S, 0, false,                    STR_CONFIG_PATCHES_AUTORENEW_VEHICLE,    EngineRenewUpdate),
 	 SDT_VAR(Patches, autorenew_months,   SLE_INT16, S, 0,     6,   -12,      12, 0, STR_CONFIG_PATCHES_AUTORENEW_MONTHS,     EngineRenewMonthsUpdate),
 	 SDT_VAR(Patches, autorenew_money,     SLE_UINT, S,CR,100000,     0, 2000000, 0, STR_CONFIG_PATCHES_AUTORENEW_MONEY,      EngineRenewMoneyUpdate),

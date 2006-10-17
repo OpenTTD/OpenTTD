@@ -631,7 +631,7 @@ static const char *_patches_vehicles[] = {
 	"train_income_warn",
 	"order_review_system",
 	"never_expire_vehicles",
-	"lost_train_days",
+	"lost_train_warn",
 	"autorenew",
 	"autorenew_months",
 	"autorenew_money",

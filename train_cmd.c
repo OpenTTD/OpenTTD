@@ -2278,6 +2278,9 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 {
 	TrainTrackFollowerData fd;
 	uint best_track;
+	// pathfinders are able to tell that route was only 'guessed'
+	bool path_not_found = false;
+
 #ifdef PF_BENCHMARK
 	TIC()
 #endif
@@ -2288,7 +2291,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 	if (KILL_FIRST_BIT(trackdirbits) == 0) return FIND_FIRST_BIT(trackdirbits);
 
 	if (_patches.yapf.rail_use_yapf) {
-		Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, trackdirbits);
+		Trackdir trackdir = YapfChooseRailTrack(v, tile, enterdir, trackdirbits, &path_not_found);
 		if (trackdir != INVALID_TRACKDIR) {
 			best_track = TrackdirToTrack(trackdir);
 		} else {
@@ -2319,6 +2322,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 			the direction we need to take to get there, if ftd.best_bird_dist is not 0,
 			we did not find our target, but ftd.best_trackdir contains the direction leading
 			to the tile closest to our target. */
+			if (ftd.best_bird_dist != 0) path_not_found = true;
 			/* Discard enterdir information, making it a normal track */
 			best_track = TrackdirToTrack(ftd.best_trackdir);
 		}
@@ -2339,6 +2343,9 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 		NewTrainPathfind(tile - TileOffsByDiagDir(enterdir), v->dest_tile,
 			v->u.rail.compatible_railtypes, enterdir, (NTPEnumProc*)NtpCallbFindStation, &fd);
 
+		// check whether the path was found or only 'guessed'
+		if (fd.best_bird_dist != 0) path_not_found = true;
+
 		if (fd.best_track == 0xff) {
 			// blaha
 			best_track = FIND_FIRST_BIT(trackdirbits);
@@ -2348,6 +2355,30 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 
 		time = NpfEndInterval(perf);
 		DEBUG(yapf, 4)("[YAPF][NTPT] %d us - %d rounds - %d open - %d closed -- ", time, 0, 0, 0);
+	}
+	// handle "path not found" state
+	if (path_not_found) {
+		// PF didn't find the route
+		if (!HASBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
+			// it is first time the problem occurred, set the "path not found" flag
+			SETBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
+			// and notify user about the event
+			if (_patches.lost_train_warn) {
+				SetDParam(0, v->unitnumber);
+				AddNewsItem(
+					STR_TRAIN_IS_LOST,
+					NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
+					v->index,
+					0);
+			}
+		}
+	} else {
+		// route found, is the train marked with "path not found" flag?
+		if (HASBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION)) {
+			// clear the flag as the PF's problem was solved
+			CLRBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
+			// can we also delete the "News" item somehow?
+		}
 	}
 
 #ifdef PF_BENCHMARK
@@ -3578,17 +3609,6 @@ void OnNewDay_Train(Vehicle *v)
 		AgeVehicle(v);
 
 		CheckIfTrainNeedsService(v);
-
-		// check if train hasn't advanced in its order list for a set number of days
-		if (_patches.lost_train_days && v->num_orders && !(v->vehstatus & (VS_STOPPED | VS_CRASHED) ) && ++v->u.rail.days_since_order_progr >= _patches.lost_train_days && v->owner == _local_player) {
-			v->u.rail.days_since_order_progr = 0;
-			SetDParam(0, v->unitnumber);
-			AddNewsItem(
-				STR_TRAIN_IS_LOST,
-				NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_VEHICLE, NT_ADVICE, 0),
-				v->index,
-				0);
-		}
 
 		CheckOrders(v);
 

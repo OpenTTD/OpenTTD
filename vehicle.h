@@ -92,6 +92,9 @@ enum {
 
 	// used to reverse the visible direction of the vehicle
 	VRF_REVERSE_DIRECTION = 4,
+
+	// used to mark train as lost because PF can't find the route
+	VRF_NO_PATH_TO_DESTINATION = 5,
 };
 
 typedef struct VehicleAir {
