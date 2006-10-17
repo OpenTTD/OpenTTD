@@ -2846,9 +2846,9 @@ STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Letadlo 
 STR_BLACK_PLANES                                                :{BLACK}Vrtulová letadla
 STR_BLACK_JETS                                                  :{BLACK}Proudová letadla
 STR_BLACK_HELICOPTERS                                           :{BLACK}Helikoptéry
-STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknutím zobrazí¨ vrtulová letadla
-STR_BUILD_JETS_TIP                                              :{BLACK}Kliknutím zobrazí¨ proudová letadla
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kliknutím zobrazí¨ helikoptéry
+STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknutím zobrazís vrtulová letadla
+STR_BUILD_JETS_TIP                                              :{BLACK}Kliknutím zobrazís proudová letadla
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kliknutím zobrazís helikoptéry
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Koupit nové letadlo
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Presun sem letadlo k prodeji
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Nastavit pohled na hangár
