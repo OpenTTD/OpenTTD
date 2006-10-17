@@ -154,7 +154,7 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcions del Joc
 STR_00B2_MESSAGE                                                :{YELLOW}Missatge
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Missatge de {STRING}
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}No es pot fer aixó....
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}No es pot fer això....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}No es pot netejar l'àrea....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Tots els drets reservats
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versió {REV}
@@ -517,8 +517,8 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Càrrega 
 
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jukebox de Jazz
-STR_01D3_SOUND_MUSIC                                            :Só/música
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Mostrar finestra de só/música
+STR_01D3_SOUND_MUSIC                                            :So/música
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Mostrar finestra de so/música
 STR_01D5_ALL                                                    :{TINYFONT}Tot
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Estil Vell
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Estil Nou
@@ -532,7 +532,7 @@ STR_01DE_SKIP_TO_PREVIOUS_TRACK                                 :{BLACK}Saltar a
 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION                        :{BLACK}Saltar a la pista següent de la selecció
 STR_01E0_STOP_PLAYING_MUSIC                                     :{BLACK}Parar la música
 STR_01E1_START_PLAYING_MUSIC                                    :{BLACK}Engegar la música
-STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Arrosega els controls per establir el volum de la música i els efectes de só
+STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC                              :{BLACK}Arrosega els controls per establir el volum de la música i els efectes de so
 STR_01E3                                                        :{DKGREEN}{TINYFONT}--
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
@@ -569,7 +569,7 @@ STR_MESSAGE_HISTORY_MENU                                        :Historial de Mi
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Mostrar darrers missatges/notícies, mostrar opcions de missatges
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Opcions de Missatges
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Tipus de Missages:
-STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribada del 1er. vehicle a una estació teva
+STR_0206_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribada del 1er. vehicle a una estació pròpia
 STR_0207_ARRIVAL_OF_FIRST_VEHICLE                               :{YELLOW}Arribada del 1er. vehicle a una estació competidora
 STR_0208_ACCIDENTS_DISASTERS                                    :{YELLOW}Accidents / desastres
 STR_0209_COMPANY_INFORMATION                                    :{YELLOW}Informació de l'Empresa
@@ -1026,6 +1026,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova ce
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permetre sempre aeroports petits: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avisa si un tren es perd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Revisar ordres dels vehicles: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :no
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :si, excepte vehicles parats
@@ -1572,7 +1573,7 @@ STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Població: {ORANGE}{COMMA}{BLACK}  Cases: {ORANGE}{COMMA}
 STR_2007_RENAME_TOWN                                            :Reanomena Població
 STR_2008_CAN_T_RENAME_TOWN                                      :{WHITE}No es pot reanomenar la població...
-STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} les autoritats locals rebutgen fer aixó
+STR_2009_LOCAL_AUTHORITY_REFUSES                                :{WHITE}Les autoritats locals de {TOWN} no permeten fer això
 STR_200A_TOWN_NAMES_CLICK_ON_NAME                               :{BLACK}Noms de Població - clica al nom per centrar la pantalla principal a la població
 STR_200B_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centra la pantalla principal a la població
 STR_200C_CHANGE_TOWN_NAME                                       :{BLACK}Canvia el nom de la població
@@ -1601,7 +1602,7 @@ STR_2022_LOCAL_AUTHORITY                                        :{WHITE}{TOWN} a
 STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Ratis de l'Empresa de Transports:
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subvencions
-STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvencions per prestació de serveis oferides:
+STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Subvencions per prestació de serveis oferts:
 STR_2027_FROM_TO                                                :{ORANGE}{STRING} de {STRING} a {STRING}
 STR_2028_BY                                                     :{YELLOW} (per {DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Cap
@@ -1682,8 +1683,8 @@ STR_280F_RAINFOREST                                             :Selva Tropical
 STR_2810_CACTUS_PLANTS                                          :Plantes de Cactus
 
 ##id 0x3000
-STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Selecció d'Estacions de Tren
-STR_3001_AIRPORT_SELECTION                                      :{WHITE}Selecció d'Aeroports
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Estacions de Tren
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Aeroports
 STR_3002_ORIENTATION                                            :{BLACK}Orientació
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Nombre de vies
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Mida de les andanes

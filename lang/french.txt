@@ -972,15 +972,15 @@ STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Train {C
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Train {COMMA} a un ordre vide
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Train {COMMA} a des ordres en double
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Train {COMMA} a une station invalide dans ses ordres
-STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Véhicule {COMMA} a trop peu d'ordres dans son itinéraire
+STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Véhicule {COMMA} a trop peu d'ordres dans son programme
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Véhicule {COMMA} a un ordre vide
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Véhicule {COMMA} a des ordres en double
 STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Véhicule {COMMA} a une station invalide dans ses ordres
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Navire {COMMA} a trop peu d'ordres dans son itinéraire
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Navire {COMMA} a trop peu d'ordres dans son programme
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Navire {COMMA} a un ordre vide
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Navire {COMMA} a des ordres en double
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Navire {COMMA} a une station invalide dans ses ordres
-STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aéronef {COMMA} a trop peu d'ordres dans son itinéraire
+STR_AIRCRAFT_HAS_TOO_FEW_ORDERS                                 :{WHITE}Aéronef {COMMA} a trop peu d'ordres dans son programme
 STR_AIRCRAFT_HAS_VOID_ORDER                                     :{WHITE}Aéronef {COMMA} a un ordre vide
 STR_AIRCRAFT_HAS_DUPLICATE_ENTRY                                :{WHITE}Aéronef {COMMA} a des ordres en double
 STR_AIRCRAFT_HAS_INVALID_ENTRY                                  :{WHITE}Aéronef {COMMA} a une station invalide dans ses ordres
@@ -1027,6 +1027,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nouvell
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Toujours permettre les petits aéroports: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avertir si le train est perdu: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Vérification des ordres des véhicules : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :non
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :de tous, sauf ceux stoppés
@@ -2574,7 +2575,7 @@ STR_8850_SHOW_DETAILS_OF_TRAIN_VEHICLES                         :{BLACK}Afficher
 STR_8851_SHOW_CAPACITIES_OF_EACH                                :{BLACK}Afficher la capacité de chaque wagon
 STR_8852_SHOW_TOTAL_CARGO                                       :{BLACK}Afficher la capacité totale du train, par type de cargaison
 STR_8852_ORDERS_LIST_CLICK_ON_ORDER                             :{BLACK}Liste des ordres - Cliquer sur un ordre pour le sélectionner.  Cliquer avec Ctrl déplace la vue sur la station
-STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Saute l'ordre courant, et enchaîne sur le suivant
+STR_8853_SKIP_THE_CURRENT_ORDER                                 :{BLACK}Sauter l'ordre courant, et enchaîner sur le suivant
 STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Supprime l'ordre sélectionné
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Transformer l'ordre sélectionné en Sans-Arrêt
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Insérer un nouvel ordre
@@ -2638,7 +2639,7 @@ STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Impossib
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Véhicules - Cliquer sur un véhicule pour obtenir des informations
 STR_901B_BUILD_NEW_ROAD_VEHICLES                                :{BLACK}Construire de nouveaux véhicules (nécessite un dépôt routier)
 STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Comportement courant du véhicule - cliquer pour le démarrer/l'arrêter
-STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Affiche les ordres
+STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Afficher les ordres
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centre la vue sur le véhicule
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Envoie le véhicule au dépôt. Ctrl-clic pour entretien seul
 STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Force le véhicule à faire demi-tour
@@ -2905,7 +2906,7 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Afficher
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afficher les navires ayant cette station dans leurs ordres
 
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres partagés de {COMMA} véhicule{P "" s}
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Afficher tous les véhicules ayant le même planning
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Afficher tous les véhicules partageant ce programme
 
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings

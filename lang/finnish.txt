@@ -157,7 +157,7 @@ STR_00B3_MESSAGE_FROM                                           :{YELLOW}Viesti:
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ei onnistu....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Aluetta ei voi tyhjentää....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Alkuperäiset oikeudet {COPYRIGHT} 1995 Chris Sawyer, kaikki oikeudet pidätetään
-STR_00B7_VERSION                                                :{BLACK}OpenTTD versio {REV}
+STR_00B7_VERSION                                                :{BLACK}OpenTTD-versio {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 OpenTTD-yhteisö
 STR_TRANSLATED_BY                                               :{BLACK}  Kääntäjä(t) -
 
@@ -204,11 +204,11 @@ STR_00EC_RAILROADS                                              :{BLACK}{TINYFON
 STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Asema/lentokenttä/satama
 STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Rakennus
 STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Liikenneväline
-STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
-STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
-STR_00F2_300M                                                   :{BLACK}{TINYFONT}300m
-STR_00F3_400M                                                   :{BLACK}{TINYFONT}400m
-STR_00F4_500M                                                   :{BLACK}{TINYFONT}500m
+STR_00F0_100M                                                   :{BLACK}{TINYFONT}100 m
+STR_00F1_200M                                                   :{BLACK}{TINYFONT}200 m
+STR_00F2_300M                                                   :{BLACK}{TINYFONT}300 m
+STR_00F3_400M                                                   :{BLACK}{TINYFONT}400 m
+STR_00F4_500M                                                   :{BLACK}{TINYFONT}500 m
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Juna
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Ajoneuvo
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Laiva
@@ -355,7 +355,7 @@ STR_015B_OPENTTD                                                :{WHITE}Tietoja 
 STR_015C_SAVE_GAME                                              :Tallenna peli
 STR_015D_LOAD_GAME                                              :Lataa peli
 STR_015E_QUIT_GAME                                              :Lopeta peli
-STR_015F_QUIT                                                   :Sulje
+STR_015F_QUIT                                                   :Poistu
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Lopetetaanko peli?
 STR_0161_QUIT_GAME                                              :{WHITE}Lopeta peli
 STR_SORT_ORDER_TIP                                              :{BLACK}Valitse järjestys (laskeva/nouseva).
@@ -1063,6 +1063,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurin 
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Huolla helikopterit helikopterialustoilla automaattisesti: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnitä maastonmuokkauspalkki rakentamistyökalupalkkeihin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Käänteinen vierityssuunta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Näytä yrityksen tunnukset: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ei yhtään
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Oma yritys
@@ -1139,7 +1140,7 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Suihkuk
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Vaihda ilmastoa: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuta päiväystä: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Muuntuvat tuotantoarvot: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Salli sähköjunien kulkeminen tavallisella junaradalla.
+STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Salli sähköveturien kulkeminen tavallisella rautatiellä.
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Kohde: {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Kohde: {WAYPOINT}, {VELOCITY}
@@ -3090,5 +3091,12 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Pienet l
 STR_LARGE_AIRPORTS                                              :{BLACK}Isot lentokentät
 STR_HUB_AIRPORTS                                                :{BLACK}Keskuslentokenttä
 STR_HELIPORTS                                                   :{BLACK}Helikopteri lentokenttä
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Pituus: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Pinta-ala: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Pituus: {NUM}{}Korkeusero: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Pinta-ala: {NUM} x {NUM}{}Korkeusero: {NUM} m
 
 ########

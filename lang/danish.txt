@@ -1165,7 +1165,7 @@ STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Ændre je
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Kan ikke bygge kontrolsted for tog her...
 STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Kan ikke fjerne kontrolsted for tog her...
 
-STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Byg togskinner ved hjælp af autotogskinner mode
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Byg jernbane med auto-jernbane-værktøj
 
 STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...der er ingen byer i dette scenarie
 
@@ -1176,7 +1176,7 @@ STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Mange ti
 STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Dæk kortet med tilfældigt placeret industrier
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Kan ikke lave industrier...
 
-STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Åben landskabsarkitektursværktøjslinien for at hæve/sænke land, plante træer, osv.
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Åbn landskabsværktøjslinien for at hæve/sænke terræn, plante træer, osv.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landskabsværktøjer
 STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Udjævn land
 
@@ -1197,8 +1197,8 @@ STR_BUOY_IS_IN_USE                                              :{WHITE}... bøje
 STR_LANDINFO_COORDS                                             :{BLACK}Koordinater: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan ikke fjerne en del af en station...
-STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan ikke konvertere togskinnetype her...
-STR_CONVERT_RAIL_TIP                                            :{BLACK}Konverter/Opgrader typen af togskinner
+STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan ikke konvertere jernbanetype her...
+STR_CONVERT_RAIL_TIP                                            :{BLACK}Konverter/opgrader typen af jernbane
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Træk lokomotivet her for at sælge hele toget
 
@@ -1527,10 +1527,10 @@ STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Vælg ori
 STR_1021_RAILROAD_TRACK                                         :Jernbaneskinner
 STR_1023_RAILROAD_TRAIN_DEPOT                                   :Remise
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...området ejes af et andet firma
-STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Togskinner med almindelige signaler
-STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Togskinner med indkørselssignaler
-STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Togskinner med udkørselssignaler
-STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Togskinner med kombineret ind- og udkørselssignaler
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Jernbane med almindelige signaler
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Jernbane med indkørselssignaler
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Jernbane med udkørselssignaler
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Jernbane med kombinerede ind- og udkørselssignaler
 
 
 
@@ -1608,9 +1608,9 @@ STR_202A_NONE                                                   :{ORANGE}Ingen
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Statsstøttede aftaler der allerede er vundet:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} fra {STATION} til {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, indtil {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Statsstøttet aftale udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse en bonus.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Statsstøttet aftale udløbet:{}{}{STRING} fra {STRING} til {STRING} vil ikke længere udløse tilskud.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Licitation af statsstøttet aftale tilbagetrukket:{}{}{STRING} fragt fra {STATION} til {STATION} er ikke længere i licitation.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Statsstøttet aftale i licitation:{}{}Første {STRING} fragt fra {STRING} til {STRING} vil udløse et års bonuskontrakt med de lokale myndigheder!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Statsstøttet aftale i licitation:{}{}Første {STRING} fragt fra {STRING} til {STRING} vil udløse et års tilskud fra de lokale myndigheder!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give 50% mere i de næste 12 måneder!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give dobbelt udbytte i de næste 12 måneder!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Statsstøttet aftale tildelt {COMPANY}!{}{}{STRING} fragt fra {STATION} til {STATION} vil give tredobbelt udbytte i de næste 12 måneder!
@@ -1980,7 +1980,7 @@ STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Køretøj
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Byggehastighed for modstandere: {ORANGE}{STRING}
 STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Modstandernes inteligens: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Nedbrud af køretøjer: {ORANGE}{STRING}
-STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Statsstøtte-bonus: {ORANGE}{STRING}
+STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Statstilskudsfaktor: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Konstruktionspris: {ORANGE}{STRING}
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Terræntype: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Antal søer/floder: {ORANGE}{STRING}
@@ -2729,7 +2729,7 @@ STR_982F_NAME_SHIP                                              :{BLACK}Giv skib
 STR_9831_NAME_SHIP                                              :{WHITE}Giv skibet et navn
 STR_9832_CAN_T_NAME_SHIP                                        :{WHITE}Kan ikke give skibet et navn...
 STR_9833_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Indbyggere fester . . .{}Første skib ankommer til {STATION}!
-STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Potitionsbøje, kan bruges som yderligere navigationspunkt
+STR_9834_POSITION_BUOY_WHICH_CAN                                :{BLACK}Positionsbøje, kan bruges som yderligere navigationspunkt
 STR_9835_CAN_T_POSITION_BUOY_HERE                               :{WHITE}Kan ikke placere en bøje her...
 STR_9836_RENAME                                                 :{BLACK}Omdøb
 STR_9837_RENAME_SHIP_TYPE                                       :{BLACK}Omdøb skibstypen
@@ -3029,7 +3029,7 @@ STR_RANDOM_HELP                                                 :{BLACK}Ændre de
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Verdensgenerering
 STR_RANDOM_SEED                                                 :{BLACK}Tilfældig
 STR_RANDOM_SEED_HELP                                            :{BLACK}Klik for at angive tilfældighed
-STR_LAND_GENERATOR                                              :{BLACK}Landskabsgenerator:
+STR_LAND_GENERATOR                                              :{BLACK}Terrængenerator:
 STR_TREE_PLACER                                                 :{BLACK}Træalgoritme:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Højdekortets rotation:
 STR_TERRAIN_TYPE                                                :{BLACK}Terræntype:
