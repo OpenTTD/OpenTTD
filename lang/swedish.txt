@@ -381,10 +381,10 @@ STR_SORT_BY_VALUE                                               :
 STR_SORT_BY_FACILITY                                            :Stationstyp
 STR_SORT_BY_WAITING                                             :Väntande last-värde
 STR_SORT_BY_RATING_MAX                                          :Last Värdering
-STR_ENGINE_SORT_ENGINE_ID                                       :LokID (classic sort)
+STR_ENGINE_SORT_ENGINE_ID                                       :Lok ID (normal sortering)
 STR_ENGINE_SORT_COST                                            :Kostnad
-STR_ENGINE_SORT_POWER                                           :Kraft
-STR_ENGINE_SORT_INTRO_DATE                                      :Introduktionsår
+STR_ENGINE_SORT_POWER                                           :Elektriskt
+STR_ENGINE_SORT_INTRO_DATE                                      :Introduktionsdatum
 STR_ENGINE_SORT_RUNNING_COST                                    :Driftkostnad
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Kraft/Driftkostnad
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastkapacitet
@@ -1026,6 +1026,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny glob
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Varna om tåg åker vilse: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Granska fordonens destinationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nej
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon
@@ -2554,8 +2555,8 @@ STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista av
 STR_BLACK_ENGINES                                               :{BLACK}Lok
 STR_BLACK_WAGONS                                                :{BLACK}Vagnar
 STR_BLACK_BOTH                                                  :{BLACK}Båda
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klicka för att se endast lok
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klicka för att se endast vagnar
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klicka för att endast se lok
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klicka för att endast se vagnar
 STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klicka för att se både lok och vagnar
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Bygg markerad tågvagn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Byt namn på tågvagn
@@ -2995,6 +2996,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klicka f
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skyltlista - {COMMA} Skylt{P "" ar}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Misslyckande av anpassning stoppat {STRING} {COMMA}
 
 ############ Lists rail types
 

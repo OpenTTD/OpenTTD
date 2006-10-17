@@ -1026,6 +1026,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nieuwe 
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Altijd kleine vliegvelden toestaan: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Waarschuwen als trein verdwaald is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Herzie voertuigorders: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nee
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, maar sluit gestopte voertuigen uit

@@ -24,6 +24,7 @@ STR_000F_PASSENGERS                                             :Utas
 STR_000F_PASSENGERS.t                                           :Utast
 STR_0010_COAL                                                   :Szén
 STR_0010_COAL.t                                                 :Szenet
+STR_0010_COAL.ba                                                :Szénbe
 STR_0011_MAIL                                                   :Levél
 STR_0011_MAIL.t                                                 :Levelet
 STR_0012_OIL                                                    :Olaj
@@ -1091,6 +1092,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Új útvo
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Mindig engedélyezze a kis repülõtereket: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Figyelmeztet ha a vonat eltévedt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Jármûvek menetrendjének ellenõrzése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nem
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :igen, de nem az álló jármûvekre

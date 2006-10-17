@@ -799,6 +799,8 @@ STR_AUTOSAVE_1_MONTH                                            :Всеки ме
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автозапазването е неуспешно
 
 
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Отиващ към {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Отиващ към {STATION}, {VELOCITY}
 
 STR_BAGS                                                        :торби
 STR_CRATES                                                      :кратери
@@ -966,6 +968,7 @@ STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Про�
 STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Позволяване ел. двигатели да работят на обикновени жп линии
 
 
+STR_GO_TO_WAYPOINT                                              :Отиди чрез  пътеводител {WAYPOINT}
 
 
 
@@ -1384,7 +1387,7 @@ STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Заре
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} пречи
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Мина за въглища
-STR_4803_POWER_STATION                                          :Електроцентрала
+STR_4803_POWER_STATION                                          :
 STR_4804_SAWMILL                                                :Дъскорезница
 STR_4805_FOREST                                                 :Гора
 STR_4806_OIL_REFINERY                                           :Нефтена рафинерия
@@ -1988,8 +1991,11 @@ STR_880E_GO_NON_STOP_TO_UNLOAD                                  :отиди бе
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Отиди без да спираш на {STATION} (Обмени и не товари)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Отиди без да спираш на {STATION} (Товари)
 STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Отиди без да спираш на {STATION} (Обмени и изчакай до пълен товар)
+STR_GO_TO_TRAIN_DEPOT                                           :Отиди до Влаковото депо на {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Отиди без да спираш на {TOWN} Влаково депо
 
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Отиващ към Влаковото депо на {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}На ремонт във Влаковото депо на {TOWN}
 
 
 STR_UNKNOWN_DESTINATION                                         :неизвестна дестинация
@@ -2115,6 +2121,10 @@ STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...тр�
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Не може да продаде колата...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Не може да пусне/спре колата...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Кола {COMMA} чака в сервиз
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Отиващ към Автодепото на {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Отиващ към Автодепото на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}На ремонт в Автодепото на {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}На ремонт в Автодепото на {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Не може да изпрати колата в сервиз...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Не може да намери локалния сервиз
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Коли - натиснете върху кола за информация
@@ -2177,6 +2187,10 @@ STR_9817_CAPACITY                                               :{BLACK}Вмес
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не може да спреш/задвижиш кораба...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не може да пратиш кораба в депото...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Не може да намери местното депо
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Отиващ към Корабното депо на {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Отиващ към Корабното депо на {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}На ремонт в Корабното депо на {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}На ремонт в Корабното депо на {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Кораб {COMMA} чака в депото
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Създай Пристанище
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Създай Корабно Депо (за закупуване и обслужване на кораби)
@@ -2216,6 +2230,7 @@ STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Избе�
 STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нов капацитет: {GOLD}{STRING}{}{BLACK}Цена за преустройство: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Не може да преустрои кораб...
 STR_9842_REFITTABLE                                             :(преустроим)
+STR_GO_TO_SHIP_DEPOT                                            :Отиди до Корабното депо до {TOWN}
 SERVICE_AT_SHIP_DEPOT                                           :Сервиз на {TOWN} док
 
 ##id 0xA000
@@ -2239,6 +2254,10 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Печа
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надеждност: {LTBLUE}{COMMA}%  {BLACK}Повреди от последния сервиз: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Произведен: {LTBLUE}{NUM}{BLACK} Стойност: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Не може да изпрати самолета в хангар...
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Отиващ към Хангара на летище {STATION}
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Отиващ към Хангара на летище {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}На ремонт в Хангара на летище {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}На ремонт в Хангара на летище {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Самолет {COMMA} чака в хангар
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Самолет на пътя
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Не може да спре/пусне самолет...
@@ -2290,6 +2309,7 @@ STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Преу
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Избор тип товар за превозване:
 STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нова вместимост: {GOLD}{STRING}{}{BLACK}Цена на преустройството: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не може да се преустрои самолета...
+STR_GO_TO_AIRPORT_HANGAR                                        :Отиди до Хангара на летище {STATION}
 SERVICE_AT_AIRPORT_HANGAR                                       :Сервиз в {STATION} хангар
 
 ##id 0xB000
