@@ -55,8 +55,7 @@ enum NewsFlags {
 	NF_TILE      = (1 << 2), ///< When clicked on the news message scroll to a given tile? Tile is in data_a/data_b
 	NF_VEHICLE   = (1 << 3), ///< When clicked on the message scroll to the vehicle? VehicleID is in data_a
 	NF_FORCE_BIG = (1 << 4), ///< Force the appearance of a news message if it has already been shown (internal)
-	NF_NOEXPIRE  = (1 << 5), ///< Some flag that I think is already deprecated
-	NF_INCOLOR   = (1 << 6), ///< Show the newsmessage in colour, otherwise it defaults to black & white
+	NF_INCOLOR   = (1 << 5), ///< Show the newsmessage in colour, otherwise it defaults to black & white
 };
 
 enum NewsCallback {

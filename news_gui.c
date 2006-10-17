@@ -235,8 +235,7 @@ static byte increaseIndex(byte i)
  * @param data_b news-specific value based on news type
  * @note flags exists of 4 byte-sized extra parameters.<br/>
  * 1.  0 -  7 display_mode, any of the NewsMode enums (NM_)<br/>
- * 2.  8 - 15 news flags, any of the NewsFlags enums (NF_) NF_NOEXPIRE and
- * NF_INCOLOR are set automatically if needed<br/>
+ * 2.  8 - 15 news flags, any of the NewsFlags enums (NF_) NF_INCOLOR are set automatically if needed<br/>
  * 3. 16 - 23 news category, any of the NewsType enums (NT_)<br/>
  * 4. 24 - 31 news callback function, any of the NewsCallback enums (DNC_)<br/>
  * If the display mode is NM_CALLBACK special news is shown and parameter
@@ -276,7 +275,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 
 	ni->string_id = string;
 	ni->display_mode = (byte)flags;
-	ni->flags = (byte)(flags >> 8) | NF_NOEXPIRE;
+	ni->flags = (byte)(flags >> 8);
 
 	// show this news message in color?
 	if (_cur_year >= _patches.colored_news_year)
@@ -384,7 +383,7 @@ static void ShowNewspaper(NewsItem *ni)
 	Window *w;
 	SoundFx sound;
 	int top;
-	ni->flags &= ~(NF_NOEXPIRE | NF_FORCE_BIG);
+	ni->flags &= ~NF_FORCE_BIG;
 	ni->duration = 555;
 
 	sound = _news_sounds[ni->type];
@@ -526,7 +525,7 @@ static void ShowNewsMessage(byte i)
 	if (_forced_news != INVALID_NEWS) {
 		NewsItem *ni = &_news_items[_forced_news];
 		ni->duration = 555;
-		ni->flags |= NF_NOEXPIRE | NF_FORCE_BIG;
+		ni->flags |= NF_FORCE_BIG;
 		DeleteWindowById(WC_NEWS_WINDOW, 0);
 		ShowNewspaper(ni);
 	}
