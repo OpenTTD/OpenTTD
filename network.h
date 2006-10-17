@@ -229,7 +229,7 @@ void NetworkShutDown(void);
 void NetworkGameLoop(void);
 void NetworkUDPGameLoop(void);
 bool NetworkServerStart(void);
-bool NetworkClientConnectGame(const char* host, unsigned short port);
+bool NetworkClientConnectGame(const char *host, uint16 port);
 void NetworkReboot(void);
 void NetworkDisconnect(void);
 
@@ -252,6 +252,6 @@ static inline void NetworkShutDown(void) {}
 /* These variables must always be registered! */
 VARDEF bool _network_dedicated;  ///< are we a dedicated server?
 VARDEF bool _network_advertise;  ///< is the server advertising to the master server?
-VARDEF PlayerID _network_playas; ///< an id to play as..
+VARDEF PlayerID _network_playas; ///< an id to play as.. (see players.h:Players)
 
 #endif /* NETWORK_H */

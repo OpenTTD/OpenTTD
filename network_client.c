@@ -283,19 +283,17 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMPANY_INFO)
 
 	company_info_version = NetworkRecv_uint8(MY_CLIENT, p);
 
-	if (!MY_CLIENT->quited && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
+	if (!MY_CLIENT->has_quit && company_info_version == NETWORK_COMPANY_INFO_VERSION) {
 		byte total;
 		byte current;
 
 		total = NetworkRecv_uint8(MY_CLIENT, p);
 
 		// There is no data at all..
-		if (total == 0)
-			return NETWORK_RECV_STATUS_CLOSE_QUERY;
+		if (total == 0) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		current = NetworkRecv_uint8(MY_CLIENT, p);
-		if (current >= MAX_PLAYERS)
-			return NETWORK_RECV_STATUS_CLOSE_QUERY;
+		if (!IsValidPlayer(current)) return NETWORK_RECV_STATUS_CLOSE_QUERY;
 
 		NetworkRecv_string(MY_CLIENT, p, _network_player_info[current].company_name, sizeof(_network_player_info[current].company_name));
 		_network_player_info[current].inaugurated_year = NetworkRecv_uint32(MY_CLIENT, p);
@@ -333,14 +331,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CLIENT_INFO)
 	NetworkRecv_string(MY_CLIENT, p, name, sizeof(name));
 	NetworkRecv_string(MY_CLIENT, p, unique_id, sizeof(unique_id));
 
-	if (MY_CLIENT->quited)
-		return NETWORK_RECV_STATUS_CONN_LOST;
+	if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
 
 	/* Do we receive a change of data? Most likely we changed playas */
-	if (index == _network_own_client_index) {
-		_network_playas = playas;
-
-	}
+	if (index == _network_own_client_index) _network_playas = playas;
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {
@@ -458,8 +452,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 
 	maptype = NetworkRecv_uint8(MY_CLIENT, p);
 
-	if (MY_CLIENT->quited)
-		return NETWORK_RECV_STATUS_CONN_LOST;
+	if (MY_CLIENT->has_quit) return NETWORK_RECV_STATUS_CONN_LOST;
 
 	// First packet, init some stuff
 	if (maptype == MAP_PACKET_START) {
@@ -511,18 +504,19 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		// Say we received the map and loaded it correctly!
 		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();
 
-		// new company/spectator (invalid player) or company we want to join is not active
+		/* New company/spectator (invalid player) or company we want to join is not active
+		 * Switch local player to spectator and await the server's judgement */
 		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayer(_network_playas) ||
 				!GetPlayer(_network_playas)->is_active) {
 
+			_local_player = PLAYER_SPECTATOR;
+
 			if (_network_playas == PLAYER_SPECTATOR) {
 				// The client wants to be a spectator..
-				_local_player = PLAYER_SPECTATOR;
 				DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 			} else {
 				/* We have arrived and ready to start playing; send a command to make a new player;
 				 * the server will give us a client-id and let us in */
-				_local_player = PLAYER_SPECTATOR;
 				NetworkSend_Command(0, 0, 0, CMD_PLAYER_CTRL, NULL);
 			}
 		} else {
@@ -609,7 +603,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 {
 	NetworkAction action = NetworkRecv_uint8(MY_CLIENT, p);
 	char msg[MAX_TEXT_MSG_LEN];
-	NetworkClientInfo *ci = NULL, *ci_to;
+	const NetworkClientInfo *ci = NULL, *ci_to;
 	uint16 index;
 	char name[NETWORK_NAME_LENGTH];
 	bool self_send;
@@ -814,7 +808,7 @@ NetworkRecvStatus NetworkClient_ReadPackets(NetworkClientState *cs)
 
 	while (res == NETWORK_RECV_STATUS_OKAY && (p = NetworkRecv_Packet(cs, &res)) != NULL) {
 		byte type = NetworkRecv_uint8(MY_CLIENT, p);
-		if (type < PACKET_END && _network_client_packet[type] != NULL && !MY_CLIENT->quited) {
+		if (type < PACKET_END && _network_client_packet[type] != NULL && !MY_CLIENT->has_quit) {
 			res = _network_client_packet[type](p);
 		} else {
 			res = NETWORK_RECV_STATUS_MALFORMED_PACKET;

@@ -191,7 +191,7 @@ bool NetworkSend_Packets(NetworkClientState *cs)
 uint8 NetworkRecv_uint8(NetworkClientState *cs, Packet *packet)
 {
 	/* Don't allow reading from a closed socket */
-	if (cs->quited) return 0;
+	if (cs->has_quit) return 0;
 
 	/* Check if variable is within packet-size */
 	if (packet->pos + 1 > packet->size) {
@@ -207,7 +207,7 @@ uint16 NetworkRecv_uint16(NetworkClientState *cs, Packet *packet)
 	uint16 n;
 
 	/* Don't allow reading from a closed socket */
-	if (cs->quited) return 0;
+	if (cs->has_quit) return 0;
 
 	/* Check if variable is within packet-size */
 	if (packet->pos + 2 > packet->size) {
@@ -225,7 +225,7 @@ uint32 NetworkRecv_uint32(NetworkClientState *cs, Packet *packet)
 	uint32 n;
 
 	/* Don't allow reading from a closed socket */
-	if (cs->quited) return 0;
+	if (cs->has_quit) return 0;
 
 	/* Check if variable is within packet-size */
 	if (packet->pos + 4 > packet->size) {
@@ -245,7 +245,7 @@ uint64 NetworkRecv_uint64(NetworkClientState *cs, Packet *packet)
 	uint64 n;
 
 	/* Don't allow reading from a closed socket */
-	if (cs->quited) return 0;
+	if (cs->has_quit) return 0;
 
 	/* Check if variable is within packet-size */
 	if (packet->pos + 8 > packet->size) {
@@ -271,7 +271,7 @@ void NetworkRecv_string(NetworkClientState *cs, Packet *p, char *buffer, size_t 
 	char *bufp = buffer;
 
 	/* Don't allow reading from a closed socket */
-	if (cs->quited) return;
+	if (cs->has_quit) return;
 
 	pos = p->pos;
 	while (--size > 0 && pos < p->size && (*buffer++ = p->buffer[pos++]) != '\0') {}

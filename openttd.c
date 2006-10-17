@@ -484,8 +484,8 @@ int ttd_main(int argc, char *argv[])
 			if (player != NULL) {
 				_network_playas = atoi(player);
 
-		    if (_network_playas != PLAYER_SPECTATOR) {
-				  _network_playas--;
+				if (_network_playas != PLAYER_SPECTATOR) {
+					_network_playas--;
 					if (!IsValidPlayer(_network_playas)) return false;
 				}
 			}

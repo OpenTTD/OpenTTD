@@ -105,7 +105,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_SERVER_RESPONSE)
 
 	game_info_version = NetworkRecv_uint8(&_udp_cs, p);
 
-	if (_udp_cs.quited) return;
+	if (_udp_cs.has_quit) return;
 
 	DEBUG(net, 6)("[NET][UDP] Server response from %s:%d", inet_ntoa(client_addr->sin_addr),ntohs(client_addr->sin_port));
 
@@ -247,6 +247,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 			NetworkSend_uint32(packet, ci->join_date);
 		}
 	}
+
 	/* Also check for the server itself */
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 	if (!IsValidPlayer(ci->client_playas)) {
@@ -280,8 +281,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_MASTER_RESPONSE_LIST)
 
 	ver = NetworkRecv_uint8(&_udp_cs, p);
 
-	if (_udp_cs.quited)
-		return;
+	if (_udp_cs.has_quit) return;
 
 	if (ver == 1) {
 		for (i = NetworkRecv_uint16(&_udp_cs, p); i != 0 ; i--) {
@@ -330,14 +330,14 @@ static void NetworkHandleUDPPacket(Packet* p, struct sockaddr_in* client_addr)
 
 	/* Fake a client, so we can see when there is an illegal packet */
 	_udp_cs.socket = INVALID_SOCKET;
-	_udp_cs.quited = false;
+	_udp_cs.has_quit = false;
 
 	type = NetworkRecv_uint8(&_udp_cs, p);
 
-	if (type < PACKET_UDP_END && _network_udp_packet[type] != NULL && !_udp_cs.quited) {
+	if (type < PACKET_UDP_END && _network_udp_packet[type] != NULL && !_udp_cs.has_quit) {
 		_network_udp_packet[type](p, client_addr);
 	} else {
-		if (!_udp_cs.quited) {
+		if (!_udp_cs.has_quit) {
 			DEBUG(net, 0)("[NET][UDP] Received invalid packet type %d", type);
 		} else {
 			DEBUG(net, 0)("[NET][UDP] Received illegal packet");

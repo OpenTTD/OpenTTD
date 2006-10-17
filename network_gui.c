@@ -100,7 +100,7 @@ enum {
 // called when a new server is found on the network
 void UpdateNetworkGameWindow(bool unselect)
 {
-	Window  *w = FindWindowById(WC_NETWORK_WINDOW, 0);
+	Window *w = FindWindowById(WC_NETWORK_WINDOW, 0);
 
 	if (w != NULL) {
 		if (unselect) WP(w, network_ql_d).n.server = NULL;
@@ -118,7 +118,7 @@ static int CDECL NGameNameSorter(const void *a, const void *b)
 	const NetworkGameList *cmp2 = *(const NetworkGameList**)b;
 	int r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
 
-	return (_internal_sort_order & 1) ? -r : r;
+	return _internal_sort_order ? -r : r;
 }
 
 /** Qsort function to sort by the amount of clients online on a
@@ -134,7 +134,7 @@ static int CDECL NGameClientSorter(const void *a, const void *b)
 	if (r == 0) r = cmp1->info.clients_max - cmp2->info.clients_max;
 	if (r == 0) r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
 
-	return (_internal_sort_order & 1) ? -r : r;
+	return _internal_sort_order ? -r : r;
 }
 
 /** Qsort function to sort by joinability. If both servers are the
@@ -149,7 +149,7 @@ static int CDECL NGameAllowedSorter(const void *a, const void *b)
 	if (r == 0) r = cmp1->info.use_password - cmp2->info.use_password;
 	if (r == 0) r = strcasecmp(cmp1->info.server_name, cmp2->info.server_name);
 
-	return (_internal_sort_order & 1) ? -r : r;
+	return _internal_sort_order ? -r : r;
 }
 
 /** (Re)build the network game list as its amount has changed because
@@ -195,7 +195,7 @@ static void SortNetworkGameList(network_ql_d *nqld)
 	if (!(nqld->l.flags & VL_RESORT)) return;
 	if (nqld->l.list_length == 0) return;
 
-	_internal_sort_order = nqld->l.flags & VL_DESC;
+	_internal_sort_order = !!(nqld->l.flags & VL_DESC);
 	qsort(nqld->sort_list, nqld->l.list_length, sizeof(nqld->sort_list[0]), ngame_sorter[nqld->l.sort_type]);
 
 	/* After sorting ngl->sort_list contains the sorted items. Put these back
@@ -1062,7 +1062,7 @@ static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 static void ClientList_Kick(byte client_no)
 {
 	if (client_no < MAX_PLAYERS)
-		SEND_COMMAND(PACKET_SERVER_ERROR)(&_clients[client_no], NETWORK_ERROR_KICKED);
+		SEND_COMMAND(PACKET_SERVER_ERROR)(DEREF_CLIENT(client_no), NETWORK_ERROR_KICKED);
 }
 
 static void ClientList_Ban(byte client_no)
@@ -1078,7 +1078,7 @@ static void ClientList_Ban(byte client_no)
 	}
 
 	if (client_no < MAX_PLAYERS)
-		SEND_COMMAND(PACKET_SERVER_ERROR)(&_clients[client_no], NETWORK_ERROR_KICKED);
+		SEND_COMMAND(PACKET_SERVER_ERROR)(DEREF_CLIENT(client_no), NETWORK_ERROR_KICKED);
 }
 
 static void ClientList_GiveMoney(byte client_no)
@@ -1202,7 +1202,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 		}
 	}
 
-	// A server can kick clients (but not hisself)
+	// A server can kick clients (but not himself)
 	if (_network_server && _network_own_client_index != ci->client_index) {
 		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_KICK);
 		_clientlist_proc[i++] = &ClientList_Kick;
@@ -1282,8 +1282,7 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 		// Our mouse hoovers over an action? Select it!
 		int index = (e->we.popupmenu.pt.y - w->top) / CLNWND_ROWSIZE;
 
-		if (index == -1 || index == WP(w,menu_d).sel_index)
-			return;
+		if (index == -1 || index == WP(w,menu_d).sel_index) return;
 
 		WP(w,menu_d).sel_index = index;
 		SetWindowDirty(w);
@@ -1537,9 +1536,7 @@ static const char *ChatTabCompletionNextItem(uint *item)
  */
 static char *ChatTabCompletionFindText(char *buf)
 {
-	char *p;
-
-	p = strrchr(buf, ' ');
+	char *p = strrchr(buf, ' ');
 	if (p == NULL) return buf;
 
 	*p = '\0';

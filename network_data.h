@@ -120,7 +120,7 @@ typedef struct NetworkClientState {
 
 	ClientStatus status;
 	bool writable; // is client ready to write to?
-	bool quited;
+	bool has_quit;
 
 	Packet *packet_queue; // Packets that are awaiting delivery
 	Packet *packet_recv; // Partially received packet

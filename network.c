@@ -221,7 +221,7 @@ static void ServerStartError(const char *error)
 	NetworkError(STR_NETWORK_ERR_SERVER_START);
 }
 
-static void NetworkClientError(byte res, NetworkClientState* cs)
+static void NetworkClientError(NetworkRecvStatus res, NetworkClientState* cs)
 {
 	// First, send a CLIENT_ERROR to the server, so he knows we are
 	//  disconnection (and why!)
@@ -229,7 +229,7 @@ static void NetworkClientError(byte res, NetworkClientState* cs)
 
 	// We just want to close the connection..
 	if (res == NETWORK_RECV_STATUS_CLOSE_QUERY) {
-		cs->quited = true;
+		cs->has_quit = true;
 		NetworkCloseClient(cs);
 		_networking = false;
 
@@ -289,11 +289,11 @@ char *GetNetworkErrorMsg(char *buf, NetworkErrorCode err)
 /* Count the number of active clients connected */
 static uint NetworkCountPlayers(void)
 {
-	NetworkClientState *cs;
+	const NetworkClientState *cs;
 	uint count = 0;
 
 	FOR_ALL_CLIENTS(cs) {
-		NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+		const NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 		if (IsValidPlayer(ci->client_playas)) count++;
 	}
 
@@ -543,34 +543,28 @@ void ParseConnectionString(const char **player, const char **port, char *connect
 static NetworkClientState *NetworkAllocClient(SOCKET s)
 {
 	NetworkClientState *cs;
-	NetworkClientInfo *ci;
-	byte client_no;
-
-	client_no = 0;
+	byte client_no = 0;
 
 	if (_network_server) {
 		// Can we handle a new client?
-		if (_network_clients_connected >= MAX_CLIENTS)
-			return NULL;
-
-		if (_network_game_info.clients_on >= _network_game_info.clients_max)
-			return NULL;
+		if (_network_clients_connected >= MAX_CLIENTS) return NULL;
+		if (_network_game_info.clients_on >= _network_game_info.clients_max) return NULL;
 
 		// Register the login
 		client_no = _network_clients_connected++;
 	}
 
-	cs = &_clients[client_no];
+	cs = DEREF_CLIENT(client_no);
 	memset(cs, 0, sizeof(*cs));
 	cs->socket = s;
 	cs->last_frame = 0;
-	cs->quited = false;
+	cs->has_quit = false;
 
 	cs->last_frame = _frame_counter;
 	cs->last_frame_server = _frame_counter;
 
 	if (_network_server) {
-		ci = DEREF_CLIENT_INFO(cs);
+		NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 		memset(ci, 0, sizeof(*ci));
 
 		cs->index = _network_client_index++;
@@ -590,13 +584,13 @@ void NetworkCloseClient(NetworkClientState *cs)
 	NetworkClientInfo *ci;
 	// Socket is already dead
 	if (cs->socket == INVALID_SOCKET) {
-		cs->quited = true;
+		cs->has_quit = true;
 		return;
 	}
 
 	DEBUG(net, 1) ("[NET] Closed client connection");
 
-	if (!cs->quited && _network_server && cs->status > STATUS_INACTIVE) {
+	if (!cs->has_quit && _network_server && cs->status > STATUS_INACTIVE) {
 		// We did not receive a leave message from this client...
 		NetworkErrorCode errorno = NETWORK_ERROR_CONNECTION_LOST;
 		char str[100];
@@ -625,7 +619,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 
 	closesocket(cs->socket);
 	cs->writable = false;
-	cs->quited = true;
+	cs->has_quit = true;
 
 	// Free all pending and partially received packets
 	while (cs->packet_queue != NULL) {
@@ -683,21 +677,17 @@ static bool NetworkConnect(const char *hostname, int port)
 		return false;
 	}
 
-	if (!SetNoDelay(s))
-		DEBUG(net, 1)("[NET] Setting TCP_NODELAY failed");
+	if (!SetNoDelay(s)) DEBUG(net, 1)("[NET] Setting TCP_NODELAY failed");
 
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = NetworkResolveHost(hostname);
 	sin.sin_port = htons(port);
 	_network_last_host_ip = sin.sin_addr.s_addr;
 
-	if (connect(s, (struct sockaddr*) &sin, sizeof(sin)) != 0) {
-		// We failed to connect for which reason what so ever
-		return false;
-	}
+	/* We failed to connect for which reason what so ever */
+	if (connect(s, (struct sockaddr*) &sin, sizeof(sin)) != 0) return false;
 
-	if (!SetNonBlocking(s))
-		DEBUG(net, 0)("[NET] Setting non-blocking failed"); // XXX should this be an error?
+	if (!SetNonBlocking(s)) DEBUG(net, 0)("[NET] Setting non-blocking failed"); // XXX should this be an error?
 
 	// in client mode, only the first client field is used. it's pointing to the server.
 	NetworkAllocClient(s);
@@ -711,7 +701,6 @@ static bool NetworkConnect(const char *hostname, int port)
 static void NetworkAcceptClients(void)
 {
 	struct sockaddr_in sin;
-	SOCKET s;
 	NetworkClientState *cs;
 	uint i;
 	bool banned;
@@ -720,10 +709,8 @@ static void NetworkAcceptClients(void)
 	assert(_listensocket != INVALID_SOCKET);
 
 	for (;;) {
-		socklen_t sin_len;
-
-		sin_len = sizeof(sin);
-		s = accept(_listensocket, (struct sockaddr*)&sin, &sin_len);
+		socklen_t sin_len = sizeof(sin);
+		SOCKET s = accept(_listensocket, (struct sockaddr*)&sin, &sin_len);
 		if (s == INVALID_SOCKET) return;
 
 		SetNonBlocking(s); // XXX error handling?
@@ -735,8 +722,7 @@ static void NetworkAcceptClients(void)
 		/* Check if the client is banned */
 		banned = false;
 		for (i = 0; i < lengthof(_network_ban_list); i++) {
-			if (_network_ban_list[i] == NULL)
-				continue;
+			if (_network_ban_list[i] == NULL) continue;
 
 			if (sin.sin_addr.s_addr == inet_addr(_network_ban_list[i])) {
 				Packet *p = NetworkSend_Init(PACKET_SERVER_BANNED);
@@ -756,8 +742,7 @@ static void NetworkAcceptClients(void)
 			}
 		}
 		/* If this client is banned, continue with next client */
-		if (banned)
-			continue;
+		if (banned) continue;
 
 		cs = NetworkAllocClient(s);
 		if (cs == NULL) {
@@ -781,12 +766,7 @@ static void NetworkAcceptClients(void)
 		//  the client stays inactive
 		cs->status = STATUS_INACTIVE;
 
-		{
-			// Save the IP of the client
-			NetworkClientInfo *ci;
-			ci = DEREF_CLIENT_INFO(cs);
-			ci->client_ip = sin.sin_addr.s_addr;
-		}
+		DEREF_CLIENT_INFO(cs)->client_ip = sin.sin_addr.s_addr; // Save the IP of the client
 	}
 }
 
@@ -795,11 +775,8 @@ static bool NetworkListen(void)
 {
 	SOCKET ls;
 	struct sockaddr_in sin;
-	int port;
 
-	port = _network_server_port;
-
-	DEBUG(net, 1) ("[NET] Listening on %s:%d", _network_server_bind_ip_host, port);
+	DEBUG(net, 1) ("[NET] Listening on %s:%d", _network_server_bind_ip_host, _network_server_port);
 
 	ls = socket(AF_INET, SOCK_STREAM, 0);
 	if (ls == INVALID_SOCKET) {
@@ -816,12 +793,11 @@ static bool NetworkListen(void)
 		}
 	}
 
-	if (!SetNonBlocking(ls))
-		DEBUG(net, 0)("[NET] Setting non-blocking failed"); // XXX should this be an error?
+	if (!SetNonBlocking(ls)) DEBUG(net, 0)("[NET] Setting non-blocking failed"); // XXX should this be an error?
 
 	sin.sin_family = AF_INET;
 	sin.sin_addr.s_addr = _network_server_bind_ip;
-	sin.sin_port = htons(port);
+	sin.sin_port = htons(_network_server_port);
 
 	if (bind(ls, (struct sockaddr*)&sin, sizeof(sin)) != 0) {
 		ServerStartError("bind() failed");
@@ -896,9 +872,7 @@ NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool 
 
 	NetworkDisconnect();
 
-	if (game_info) {
-		return NetworkUDPQueryServer(host, port);
-	}
+	if (game_info) return NetworkUDPQueryServer(host, port);
 
 	NetworkInitialize();
 
@@ -907,17 +881,13 @@ NetworkGameList *NetworkQueryServer(const char* host, unsigned short port, bool 
 	// Try to connect
 	_networking = NetworkConnect(host, port);
 
-//	ttd_strlcpy(_network_last_host, host, sizeof(_network_last_host));
-//	_network_last_port = port;
-
 	// We are connected
 	if (_networking) {
 		SEND_COMMAND(PACKET_CLIENT_COMPANY_INFO)();
-		return NULL;
+	} else { // No networking, close everything down again
+		NetworkDisconnect();
 	}
 
-	// No networking, close everything down again
-	NetworkDisconnect();
 	return NULL;
 }
 
@@ -952,7 +922,7 @@ void NetworkAddServer(const char *b)
 void NetworkRebuildHostList(void)
 {
 	uint i = 0;
-	NetworkGameList *item = _network_game_list;
+	const NetworkGameList *item = _network_game_list;
 	while (item != NULL && i != lengthof(_network_host_list)) {
 		if (item->manually) {
 			free(_network_host_list[i]);
@@ -968,7 +938,7 @@ void NetworkRebuildHostList(void)
 }
 
 // Used by clients, to connect to a server
-bool NetworkClientConnectGame(const char* host, unsigned short port)
+bool NetworkClientConnectGame(const char *host, uint16 port)
 {
 	if (!_network_available) return false;
 
@@ -1050,8 +1020,7 @@ bool NetworkServerStart(void)
 	if (_network_dedicated) IConsoleCmdExec("exec scripts/pre_dedicated.scr 0");
 
 	NetworkInitialize();
-	if (!NetworkListen())
-		return false;
+	if (!NetworkListen()) return false;
 
 	// Try to start UDP-server
 	_network_udp_server = true;
@@ -1123,8 +1092,7 @@ void NetworkDisconnect(void)
 		}
 	}
 
-	if (_network_advertise)
-		NetworkUDPRemoveAdvertise();
+	if (_network_advertise) NetworkUDPRemoveAdvertise();
 
 	DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
 
@@ -1158,9 +1126,7 @@ static bool NetworkReceive(void)
 	}
 
 	// take care of listener port
-	if (_network_server) {
-		FD_SET(_listensocket, &read_fd);
-	}
+	if (_network_server) FD_SET(_listensocket, &read_fd);
 
 	tv.tv_sec = tv.tv_usec = 0; // don't block at all.
 #if !defined(__MORPHOS__) && !defined(__AMIGA__)
@@ -1171,9 +1137,7 @@ static bool NetworkReceive(void)
 	if (n == -1 && !_network_server) NetworkError(STR_NETWORK_ERR_LOSTCONNECTION);
 
 	// accept clients..
-	if (_network_server && FD_ISSET(_listensocket, &read_fd)) {
-		NetworkAcceptClients();
-	}
+	if (_network_server && FD_ISSET(_listensocket, &read_fd)) NetworkAcceptClients();
 
 	// read stuff from clients
 	FOR_ALL_CLIENTS(cs) {
@@ -1182,10 +1146,10 @@ static bool NetworkReceive(void)
 			if (_network_server) {
 				NetworkServer_ReadPackets(cs);
 			} else {
-				byte res;
+				NetworkRecvStatus res;
 
 				// The client already was quiting!
-				if (cs->quited) return false;
+				if (cs->has_quit) return false;
 
 				res = NetworkClient_ReadPackets(cs);
 				if (res != NETWORK_RECV_STATUS_OKAY) {
@@ -1227,8 +1191,7 @@ static void NetworkHandleLocalQueue(void)
 
 		// The queue is always in order, which means
 		// that the first element will be executed first.
-		if (_frame_counter < cp->frame)
-			break;
+		if (_frame_counter < cp->frame) break;
 
 		if (_frame_counter > cp->frame) {
 			// If we reach here, it means for whatever reason, we've already executed
@@ -1347,9 +1310,7 @@ void NetworkGameLoop(void)
 			}
 		} else {
 			// Else, keep on going till _frame_counter_max
-			if (_frame_counter_max > _frame_counter) {
-				NetworkDoClientLoop();
-			}
+			if (_frame_counter_max > _frame_counter) NetworkDoClientLoop();
 		}
 	}
 

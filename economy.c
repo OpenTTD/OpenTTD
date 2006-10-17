@@ -420,14 +420,12 @@ static void PlayersCheckBankrupt(Player *p)
 				p->bankrupt_timeout = 0x456;
 			} else {
 #ifdef ENABLE_NETWORK
+				/* If we are the server make sure it is clear that this player is not active */
 				if (IsHumanPlayer(owner) && _network_server) {
-					// If we are the server, make sure it is clear that his player is no
-					//  longer with us!
-					NetworkClientInfo *ci;
-					NetworkClientState *cs;
+					const NetworkClientState *cs;
 					/* Find all clients that were in control of this company */
 					FOR_ALL_CLIENTS(cs) {
-						ci = DEREF_CLIENT_INFO(cs);
+						NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
 						if (ci->client_playas == owner) {
 							ci->client_playas = PLAYER_SPECTATOR;
 							// Send the new info to all the clients

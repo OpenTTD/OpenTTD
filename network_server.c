@@ -43,10 +43,8 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_CLIENT_INFO)(NetworkClientState *cs,
 	//    String: The unique id of the client
 	//
 
-	Packet *p;
-
 	if (ci->client_index != NETWORK_EMPTY_INDEX) {
-		p = NetworkSend_Init(PACKET_SERVER_CLIENT_INFO);
+		Packet *p = NetworkSend_Init(PACKET_SERVER_CLIENT_INFO);
 		NetworkSend_uint16(p, ci->client_index);
 		NetworkSend_uint8 (p, ci->client_playas);
 		NetworkSend_string(p, ci->client_name);
@@ -72,7 +70,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_COMPANY_INFO)
 	byte active = ActivePlayerCount();
 
 	if (active == 0) {
-		Packet *p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
+		p = NetworkSend_Init(PACKET_SERVER_COMPANY_INFO);
 
 		NetworkSend_uint8 (p, NETWORK_COMPANY_INFO_VERSION);
 		NetworkSend_uint8 (p, active);
@@ -140,10 +138,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 	//    uint8:  ErrorID (see network_data.h, NetworkErrorCode)
 	//
 
-	NetworkClientState *new_cs;
 	char str[100];
-	char client_name[NETWORK_CLIENT_NAME_LENGTH];
-
 	Packet *p = NetworkSend_Init(PACKET_SERVER_ERROR);
 
 	NetworkSend_uint8(p, error);
@@ -153,6 +148,9 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 
 	// Only send when the current client was in game
 	if (cs->status > STATUS_AUTH) {
+		NetworkClientState *new_cs;
+		char client_name[NETWORK_CLIENT_NAME_LENGTH];
+
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
 		DEBUG(net, 2) ("[NET] '%s' made an error and has been disconnected. Reason: %s", client_name, str);
@@ -173,7 +171,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 		DEBUG(net, 2) ("[NET] Client %d made an error and has been disconnected. Reason: %s", cs->index, str);
 	}
 
-	cs->quited = true;
+	cs->has_quit = true;
 
 	// Make sure the data get's there before we close the connection
 	NetworkSend_Packets(cs);
@@ -269,7 +267,6 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 	//      last 2 are repeated MAX_PLAYERS time
 	//
 
-	char filename[256];
 	static FILE *file_pointer;
 	static uint sent_packets; // How many packets we did send succecfully last time
 
@@ -278,7 +275,9 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 		return;
 	}
+
 	if (cs->status == STATUS_AUTH) {
+		char filename[256];
 		Packet *p;
 
 		// Make a dump of the current game
@@ -312,9 +311,9 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 			Packet *p = NetworkSend_Init(PACKET_SERVER_MAP);
 			NetworkSend_uint8(p, MAP_PACKET_NORMAL);
 			res = (int)fread(p->buffer + p->size, 1, SEND_MTU - p->size, file_pointer);
-			if (ferror(file_pointer)) {
-				error("Error reading temporary network savegame!");
-			}
+
+			if (ferror(file_pointer)) error("Error reading temporary network savegame!");
+
 			p->size += res;
 			NetworkSend_Packet(p, cs);
 			if (feof(file_pointer)) {
@@ -592,7 +591,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_JOIN)
 	client_lang = NetworkRecv_uint8(cs, p);
 	NetworkRecv_string(cs, p, unique_id, sizeof(unique_id));
 
-	if (cs->quited) return;
+	if (cs->has_quit) return;
 
 	// join another company does not affect these values
 	switch (playas) {
@@ -652,7 +651,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 {
 	NetworkPasswordType type;
 	char password[NETWORK_PASSWORD_LENGTH];
-	NetworkClientInfo *ci;
+	const NetworkClientInfo *ci;
 
 	type = NetworkRecv_uint8(cs, p);
 	NetworkRecv_string(cs, p, password, sizeof(password));
@@ -695,11 +694,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_PASSWORD)
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 {
-	NetworkClientState *new_cs;
+	const NetworkClientState *new_cs;
 
 	// The client was never joined.. so this is impossible, right?
 	//  Ignore the packet, give the client a warning, and close his connection
-	if (cs->status < STATUS_AUTH || cs->quited) {
+	if (cs->status < STATUS_AUTH || cs->has_quit) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_AUTHORIZED);
 		return;
 	}
@@ -721,7 +720,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_GETMAP)
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_MAP_OK)
 {
 	// Client has the map, now start syncing
-	if (cs->status == STATUS_DONE_MAP && !cs->quited) {
+	if (cs->status == STATUS_DONE_MAP && !cs->has_quit) {
 		char client_name[NETWORK_CLIENT_NAME_LENGTH];
 		NetworkClientState *new_cs;
 
@@ -778,6 +777,7 @@ static bool CheckCommandFlags(const CommandPacket *cp, const NetworkClientInfo *
 		IConsolePrintF(_icolour_err, "WARNING: offline only command from client %d (IP: %s), kicking...", ci->client_index, GetPlayerIP(ci));
 		return false;
 	}
+
 	return true;
 }
 
@@ -795,7 +795,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	// The client was never joined.. so this is impossible, right?
 	//  Ignore the packet, give the client a warning, and close his connection
-	if (cs->status < STATUS_DONE_MAP || cs->quited) {
+	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
 		SEND_COMMAND(PACKET_SERVER_ERROR)(cs, NETWORK_ERROR_NOT_EXPECTED);
 		return;
 	}
@@ -809,7 +809,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 
 	callback = NetworkRecv_uint8(cs, p);
 
-	if (cs->quited) return;
+	if (cs->has_quit) return;
 
 	ci = DEREF_CLIENT_INFO(cs);
 
@@ -847,9 +847,11 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND)
 			return;
 		}
 
-		// XXX - UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
+		/* XXX - Execute the command as a valid player. Normally this would be done by a
+		 * spectator, but that is not allowed any commands. So do an impersonation. The drawback
+		 * of this is that the first company's last_built_tile is also updated... */
 		cp->player = 0;
-		cp->p2 = cs - _clients;
+		cp->p2 = cs - _clients; // XXX - UGLY! p2 is mis-used to get the client-id in CmdPlayerCtrl
 	}
 
 	// The frame can be executed in the same frame as the next frame-packet
@@ -886,12 +888,12 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 	//  to us. Display the error and report it to the other clients
 	NetworkClientState *new_cs;
 	char str[100];
-	NetworkErrorCode errorno = NetworkRecv_uint8(cs, p);
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
+	NetworkErrorCode errorno = NetworkRecv_uint8(cs, p);
 
 	// The client was never joined.. thank the client for the packet, but ignore it
-	if (cs->status < STATUS_DONE_MAP || cs->quited) {
-		cs->quited = true;
+	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
+		cs->has_quit = true;
 		return;
 	}
 
@@ -909,7 +911,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 		}
 	}
 
-	cs->quited = true;
+	cs->has_quit = true;
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
@@ -921,8 +923,8 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 	char client_name[NETWORK_CLIENT_NAME_LENGTH];
 
 	// The client was never joined.. thank the client for the packet, but ignore it
-	if (cs->status < STATUS_DONE_MAP || cs->quited) {
-		cs->quited = true;
+	if (cs->status < STATUS_DONE_MAP || cs->has_quit) {
+		cs->has_quit = true;
 		return;
 	}
 
@@ -938,7 +940,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_QUIT)
 		}
 	}
 
-	cs->quited = true;
+	cs->has_quit = true;
 }
 
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
@@ -948,8 +950,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 	/* The client is trying to catch up with the server */
 	if (cs->status == STATUS_PRE_ACTIVE) {
 		/* The client is not yet catched up? */
-		if (frame + DAY_TICKS < _frame_counter)
-			return;
+		if (frame + DAY_TICKS < _frame_counter) return;
 
 		/* Now he is! Unpause the game */
 		cs->status = STATUS_ACTIVE;
@@ -976,7 +977,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ACK)
 void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest, const char *msg, uint16 from_index)
 {
 	NetworkClientState *cs;
-	NetworkClientInfo *ci, *ci_own, *ci_to;
+	const NetworkClientInfo *ci, *ci_own, *ci_to;
 
 	switch (desttype) {
 	case DESTTYPE_CLIENT:
@@ -1022,9 +1023,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 			ci = DEREF_CLIENT_INFO(cs);
 			if (ci->client_playas == dest) {
 				SEND_COMMAND(PACKET_SERVER_CHAT)(cs, action, from_index, false, msg);
-				if (cs->index == from_index) {
-					show_local = false;
-				}
+				if (cs->index == from_index) show_local = false;
 				ci_to = ci; // Remember a client that is in the company for company-name
 			}
 		}
@@ -1033,8 +1032,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		ci_own = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci != NULL && ci_own != NULL && ci_own->client_playas == dest) {
 			NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas), false, ci->client_name, "%s", msg);
-			if (from_index == NETWORK_SERVER_INDEX)
-				show_local = false;
+			if (from_index == NETWORK_SERVER_INDEX) show_local = false;
 			ci_to = ci_own;
 		}
 
@@ -1086,7 +1084,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_CHAT)
 DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_PASSWORD)
 {
 	char password[NETWORK_PASSWORD_LENGTH];
-	NetworkClientInfo *ci;
+	const NetworkClientInfo *ci;
 
 	NetworkRecv_string(cs, p, password, sizeof(password));
 	ci = DEREF_CLIENT_INFO(cs);
@@ -1104,8 +1102,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_SET_NAME)
 	NetworkRecv_string(cs, p, client_name, sizeof(client_name));
 	ci = DEREF_CLIENT_INFO(cs);
 
-	if (cs->quited)
-		return;
+	if (cs->has_quit) return;
 
 	if (ci != NULL) {
 		// Display change
@@ -1190,12 +1187,12 @@ assert_compile(lengthof(_network_server_packet) == PACKET_END);
 void NetworkPopulateCompanyInfo(void)
 {
 	char password[NETWORK_PASSWORD_LENGTH];
-	Player *p;
-	Vehicle *v;
-	Station *s;
-	NetworkClientState *cs;
-	NetworkClientInfo *ci;
-	int i;
+	const Player *p;
+	const Vehicle *v;
+	const Station *s;
+	const NetworkClientState *cs;
+	const NetworkClientInfo *ci;
+	uint i;
 	uint16 months_empty;
 
 	FOR_ALL_PLAYERS(p) {
@@ -1219,11 +1216,11 @@ void NetworkPopulateCompanyInfo(void)
 		// Check the income
 		if (_cur_year - 1 == p->inaugurated_year) {
 			// The player is here just 1 year, so display [2], else display[1]
-			for (i = 0; i < 13; i++) {
+			for (i = 0; i < lengthof(p->yearly_expenses[2]); i++) {
 				_network_player_info[p->index].income -= p->yearly_expenses[2][i];
 			}
 		} else {
-			for (i = 0; i < 13; i++) {
+			for (i = 0; i < lengthof(p->yearly_expenses[1]); i++) {
 				_network_player_info[p->index].income -= p->yearly_expenses[1][i];
 			}
 		}
@@ -1238,11 +1235,10 @@ void NetworkPopulateCompanyInfo(void)
 	// Go through all vehicles and count the type of vehicles
 	FOR_ALL_VEHICLES(v) {
 		if (!IsValidPlayer(v->owner)) continue;
+
 		switch (v->type) {
 			case VEH_Train:
-				if (IsFrontEngine(v)) {
-					_network_player_info[v->owner].num_vehicle[0]++;
-				}
+				if (IsFrontEngine(v)) _network_player_info[v->owner].num_vehicle[0]++;
 				break;
 
 			case VEH_Road:
@@ -1254,9 +1250,7 @@ void NetworkPopulateCompanyInfo(void)
 				break;
 
 			case VEH_Aircraft:
-				if (v->subtype <= 2) {
-					_network_player_info[v->owner].num_vehicle[3]++;
-				}
+				if (v->subtype <= 2) _network_player_info[v->owner].num_vehicle[3]++;
 				break;
 
 			case VEH_Ship:
@@ -1272,7 +1266,7 @@ void NetworkPopulateCompanyInfo(void)
 	// Go through all stations and count the types of stations
 	FOR_ALL_STATIONS(s) {
 		if (IsValidPlayer(s->owner)) {
-			NetworkPlayerInfo* npi = &_network_player_info[s->owner];
+			NetworkPlayerInfo *npi = &_network_player_info[s->owner];
 
 			if (s->facilities & FACIL_TRAIN)      npi->num_station[0]++;
 			if (s->facilities & FACIL_TRUCK_STOP) npi->num_station[1]++;
@@ -1306,9 +1300,7 @@ void NetworkPopulateCompanyInfo(void)
 void NetworkUpdateClientInfo(uint16 client_index)
 {
 	NetworkClientState *cs;
-	NetworkClientInfo *ci;
-
-	ci = NetworkFindClientInfoFromIndex(client_index);
+	NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(client_index);
 
 	if (ci == NULL) return;
 
@@ -1334,9 +1326,9 @@ static void NetworkCheckRestartMap(void)
            (and item 1. happens a year later) */
 static void NetworkAutoCleanCompanies(void)
 {
-	NetworkClientState *cs;
-	NetworkClientInfo *ci;
-	Player *p;
+	const NetworkClientState *cs;
+	const NetworkClientInfo *ci;
+	const Player *p;
 	bool clients_in_company[MAX_PLAYERS];
 
 	if (!_network_autoclean_companies) return;
@@ -1348,6 +1340,7 @@ static void NetworkAutoCleanCompanies(void)
 		ci = DEREF_CLIENT_INFO(cs);
 		if (IsValidPlayer(ci->client_playas)) clients_in_company[ci->client_playas] = true;
 	}
+
 	if (!_network_dedicated) {
 		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (IsValidPlayer(ci->client_playas)) clients_in_company[ci->client_playas] = true;
@@ -1366,7 +1359,7 @@ static void NetworkAutoCleanCompanies(void)
 			if (_network_player_info[p->index].months_empty > _network_autoclean_unprotected && _network_player_info[p->index].password[0] == '\0') {
 				/* Shut the company down */
 				DoCommandP(0, 2, p->index, NULL, CMD_PLAYER_CTRL);
-				IConsolePrintF(_icolour_def, "Auto-cleaned company #%d", p->index+1);
+				IConsolePrintF(_icolour_def, "Auto-cleaned company #%d", p->index + 1);
 			}
 			/* Is the compnay empty for autoclean_protected-months, and there is a protection? */
 			if (_network_player_info[p->index].months_empty > _network_autoclean_protected && _network_player_info[p->index].password[0] != '\0') {
@@ -1387,7 +1380,6 @@ static void NetworkAutoCleanCompanies(void)
 bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 {
 	NetworkClientState *new_cs;
-	NetworkClientInfo *ci;
 	bool found_name = false;
 	byte number = 0;
 	char original_name[NETWORK_CLIENT_NAME_LENGTH];
@@ -1396,6 +1388,8 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 	ttd_strlcpy(original_name, new_name, NETWORK_CLIENT_NAME_LENGTH);
 
 	while (!found_name) {
+		const NetworkClientInfo *ci;
+
 		found_name = true;
 		FOR_ALL_CLIENTS(new_cs) {
 			ci = DEREF_CLIENT_INFO(new_cs);
@@ -1408,10 +1402,7 @@ bool NetworkFindName(char new_name[NETWORK_CLIENT_NAME_LENGTH])
 		// Check if it is the same as the server-name
 		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
 		if (ci != NULL) {
-			if (strcmp(ci->client_name, new_name) == 0) {
-				// Name already in use
-				found_name = false;
-			}
+			if (strcmp(ci->client_name, new_name) == 0) found_name = false; // name already in use
 		}
 
 		if (!found_name) {
@@ -1433,7 +1424,7 @@ bool NetworkServer_ReadPackets(NetworkClientState *cs)
 	NetworkRecvStatus res;
 	while ((p = NetworkRecv_Packet(cs, &res)) != NULL) {
 		byte type = NetworkRecv_uint8(cs, p);
-		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->quited) {
+		if (type < PACKET_END && _network_server_packet[type] != NULL && !cs->has_quit) {
 			_network_server_packet[type](cs, p);
 		} else {
 			DEBUG(net, 0)("[NET][Server] Received invalid packet type %d", type);
@@ -1509,13 +1500,11 @@ void NetworkServer_Tick(bool send_frame)
 			NetworkHandleCommandQueue(cs);
 
 			// Send an updated _frame_counter_max to the client
-			if (send_frame)
-				SEND_COMMAND(PACKET_SERVER_FRAME)(cs);
+			if (send_frame) SEND_COMMAND(PACKET_SERVER_FRAME)(cs);
 
 #ifndef ENABLE_NETWORK_SYNC_EVERY_FRAME
 			// Send a sync-check packet
-			if (send_sync)
-				SEND_COMMAND(PACKET_SERVER_SYNC)(cs);
+			if (send_sync) SEND_COMMAND(PACKET_SERVER_SYNC)(cs);
 #endif
 		}
 	}
