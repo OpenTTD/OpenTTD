@@ -49,14 +49,11 @@ static void SkipToPrevSong(void)
 	byte *p = b;
 	byte t;
 
-	// empty playlist
-	if (b[0] == 0) return;
+	if (b[0] == 0) return; // empty playlist
 
-	// find the end
-	do p++; while (p[0] != 0);
+	do p++; while (p[0] != 0); // find the end
 
-	// and copy the bytes
-	t = *--p;
+	t = *--p; // and copy the bytes
 	while (p != b) {
 		p--;
 		p[1] = p[0];
@@ -109,13 +106,16 @@ static void SelectSongToPlay(void)
 
 	memset(_cur_playlist, 0, sizeof(_cur_playlist));
 	do {
-		snprintf(filename, sizeof(filename),  "%s%s",
-		_path.gm_dir, origin_songs_specs[_playlists[msf.playlist][i]].filename);
-		//we are now checking for the existence of that file prior
-		//to add it to the list of available songs
-		if (FileExists(filename)) {
-			_cur_playlist[j] = _playlists[msf.playlist][i];
-			j++;
+		if (_playlists[msf.playlist][i] != 0) {  // Don't evaluate playlist terminator
+			snprintf(filename, sizeof(filename),  "%s%s",
+				_path.gm_dir, origin_songs_specs[(_playlists[msf.playlist][i]) - 1].filename);
+
+			/* we are now checking for the existence of that file prior
+			 * to add it to the list of available songs */
+			if (FileExists(filename)) {
+				_cur_playlist[j] = _playlists[msf.playlist][i];
+				j++;
+			}
 		}
 	} while (_playlists[msf.playlist][i++] != 0 && i < lengthof(_cur_playlist) - 1);
 
@@ -147,9 +147,9 @@ static void PlayPlaylistSong(void)
 {
 	if (_cur_playlist[0] == 0) {
 		SelectSongToPlay();
-		//if there is not songs in the playlist, it may indicate
-		//no file on the gm folder, or even no gm folder.
-		//Stop the playback, then
+		/* if there is not songs in the playlist, it may indicate
+		 * no file on the gm folder, or even no gm folder.
+		 * Stop the playback, then */
 		if (_cur_playlist[0] == 0) {
 			_song_is_active = false;
 			_music_wnd_cursong = 0;
@@ -241,7 +241,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-		case 3: { /* add to playlist */
+		case 3: { // add to playlist
 			int y = (e->we.click.pt.y - 23) / 6;
 			uint i;
 			byte *p;
@@ -261,7 +261,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			}
 		} break;
 
-		case 4: { /* remove from playlist */
+		case 4: { // remove from playlist
 			int y = (e->we.click.pt.y - 23) / 6;
 			uint i;
 			byte *p;
@@ -278,7 +278,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			SelectSongToPlay();
 		} break;
 
-		case 11: /* clear */
+		case 11: // clear
 			_playlists[msf.playlist][0] = 0;
 			SetWindowDirty(w);
 			StopMusic();
@@ -286,7 +286,7 @@ static void MusicTrackSelectionWndProc(Window *w, WindowEvent *e)
 			break;
 
 #if 0
-		case 12: /* save */
+		case 12: // save
 			ShowInfo("MusicTrackSelectionWndProc:save not implemented\n");
 			break;
 #endif
