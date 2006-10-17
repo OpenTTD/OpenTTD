@@ -1026,6 +1026,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uusi gl
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Salli aina pienet lentokent‰t: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Varoita jos juna menetet‰‰n: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Tarkista ajoneuvojen pys‰hdykset: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :kyll‰, mutta ei pys‰ytetyille

@@ -610,6 +610,8 @@ STR_0229_DECREASE_SIZE_OF_LAND_AREA                             :{BLACK}Vähenda 
 STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Juhusliku kaardi genereerimine
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Kaardi tühjendamine
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Kaardi tühjendamine
+STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Kasuta Kõrguskaarti
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Kasuta Kõrguskaarti
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Oled sa kindel, et tahad maastikku nullida?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Maastiku loomine
 STR_022F_TOWN_GENERATION                                        :{BLACK}Linnade loomine
@@ -722,6 +724,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Kaardi s
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Lae Kaart
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Salvesta Kaart
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Mängi valmis kaarti
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Mängi Kõrguskaarti
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Oled sa kindel, et tahad kaardi tegemise lõpetada?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Lahku Kaardi tegemisest
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...saab ainult ehitada linna, mille populatsioon on üle 1200
@@ -1022,6 +1025,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uus tee
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Luba väikesed lennujaamad kuni mängu lõpuni: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Hoiata, kui rong on eksinud: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Sõidukite sihtpunktide ülevaade: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :jah, aga välja arvatud seisvad sõidukid
@@ -2157,6 +2161,7 @@ STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}
 STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} võeti üle ettevõtte {COMPANY} poolt!
 STR_7080_PROTECTED                                              :{WHITE}See kompanii pole veel piisavalt vana, et aktsiaid vahetada...
 
+STR_LIVERY_DEFAULT                                              :Tavaline Üleandmine
 STR_LIVERY_STEAM                                                :Aurumootor
 STR_LIVERY_DIESEL                                               :Diiselmootor
 STR_LIVERY_ELECTRIC                                             :Elektrimootor

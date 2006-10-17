@@ -80,6 +80,20 @@ STR_004A_TOFFEE                                                 :Карамел
 STR_004B_BATTERY                                                :Батерии
 STR_004C_PLASTIC                                                :Пластмаса
 STR_004D_FIZZY_DRINK                                            :Газирани напитки
+STR_QUANTITY_GOLD                                               :{COMMA} торб{P а и} със злато
+STR_QUANTITY_WATER                                              :{VOLUME} вода
+STR_QUANTITY_WHEAT                                              :{WEIGHT} пшеница
+STR_QUANTITY_RUBBER                                             :{VOLUME} каучук
+STR_QUANTITY_SUGAR                                              :{WEIGHT} захар
+STR_QUANTITY_TOYS                                               :{COMMA} играчк{P а и}
+STR_QUANTITY_SWEETS                                             :{COMMA} торб{P а и} със сладки
+STR_QUANTITY_COLA                                               :{VOLUME} кока-кола
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} захарен памук
+STR_QUANTITY_BUBBLES                                            :{COMMA} мехурче{P "" та}
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} карамел
+STR_QUANTITY_BATTERIES                                          :{COMMA} батери{P я ии}
+STR_QUANTITY_PLASTIC                                            :{VOLUME} пластмаса
+STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} газиран{P а и} напитк{P а и}
 STR_ABBREV_NOTHING                                              :
 STR_ABBREV_PASSENGERS                                           :{TINYFONT}ПН
 STR_ABBREV_COAL                                                 :{TINYFONT}ВГ
@@ -125,6 +139,7 @@ STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Изчи
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Авторски права {COPYRIGHT} 1995 Крис Сойер (Chris Sawyer), Всички права са запазени
 STR_00B7_VERSION                                                :{BLACK}OpenTTD версия {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 The OpenTTD team
+STR_TRANSLATED_BY                                               :{BLACK}  Преводач(и) -
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
@@ -240,6 +255,10 @@ STR_0132_CHOSEN_NAME_IN_USE_ALREADY                             :{WHITE}Избр
 STR_0133_WINDOWS                                                :Windows
 STR_0134_UNIX                                                   :Unix
 STR_0135_OSX                                                    :ОС Х
+STR_OSNAME_BEOS                                                 :BeOS
+STR_OSNAME_MORPHOS                                              :MorphOS
+STR_OSNAME_AMIGAOS                                              :AmigaOS
+STR_OSNAME_OS2                                                  :OS/2
 
 STR_013B_OWNED_BY                                               :{WHITE}...собственост на {STRING}
 STR_013C_CARGO                                                  :{BLACK}Товар
@@ -251,6 +270,8 @@ STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Обща
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Нова игра
 STR_0141_LOAD_GAME                                              :{BLACK}Отвори игра
+STR_SINGLE_PLAYER                                               :{BLACK}Сам играч
+STR_MULTIPLAYER                                                 :{BLACK}Много играчи
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -258,6 +279,7 @@ STR_256                                                         :256
 STR_512                                                         :512
 STR_1024                                                        :1024
 STR_2048                                                        :2048
+STR_MAPSIZE                                                     :{BLACK}Размер на картата:
 STR_BY                                                          :{BLACK}*
 STR_0148_GAME_OPTIONS                                           :{BLACK}Настройки
 
@@ -272,7 +294,9 @@ STR_UNITS_SI                                                    :СИ
 
 STR_UNITS_VELOCITY_IMPERIAL                                     :{COMMA} мили/ч
 STR_UNITS_VELOCITY_METRIC                                       :{COMMA} км/ч
+STR_UNITS_VELOCITY_SI                                           :{COMMA} m/s
 
+STR_UNITS_POWER_IMPERIAL                                        :{COMMA}к.с.
 STR_UNITS_POWER_METRIC                                          :{COMMA}кс
 STR_UNITS_POWER_SI                                              :{COMMA}кв
 
@@ -292,6 +316,9 @@ STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} гал�
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} литър{P "" и}
 STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} куб. м.
 
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_METRIC                                          :{COMMA} тон сила
+STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Графика на капитала
@@ -301,6 +328,7 @@ STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Графика 
 STR_0158_COMPANY_VALUE_GRAPH                                    :Стойност на компанията
 STR_0159_CARGO_PAYMENT_RATES                                    :Тарифи за доставка на стоки
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Класиране на компаниите
+STR_PERFORMANCE_DETAIL_MENU                                     :Рейтинг на представянето в детайли
 ############ range for menu	ends
 
 STR_015B_OPENTTD                                                :{WHITE}Относно OpenTTD
@@ -310,7 +338,29 @@ STR_015E_QUIT_GAME                                              :Преуста�
 STR_015F_QUIT                                                   :Изход
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Желаете ли да преустановите играта?
 STR_0161_QUIT_GAME                                              :{WHITE}Преустанови играта
+STR_SORT_ORDER_TIP                                              :{BLACK}Избери вида на сортирането (намаляващо/нарастващо)
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Избери критерий за сортиране
+STR_SORT_BY                                                     :{BLACK}Сортирай по
 
+STR_SORT_BY_POPULATION                                          :{BLACK}Население
+STR_SORT_BY_PRODUCTION                                          :{BLACK}Продукция
+STR_SORT_BY_TYPE                                                :{BLACK}Вид
+STR_SORT_BY_TRANSPORTED                                         :{BLACK}Транспортирано
+STR_SORT_BY_NAME                                                :{BLACK}Име
+STR_SORT_BY_DROPDOWN_NAME                                       :Име
+STR_SORT_BY_DATE                                                :{BLACK}Дата
+STR_SORT_BY_NUMBER                                              :Номер
+STR_SORT_BY_PROFIT_LAST_YEAR                                    :Чиста печалба миналата година
+STR_SORT_BY_PROFIT_THIS_YEAR                                    :Чиста печалба тази година
+STR_SORT_BY_AGE                                                 :Възраст
+STR_SORT_BY_RELIABILITY                                         :Надеждност
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Обща вместимост по вида на товара
+STR_SORT_BY_MAX_SPEED                                           :Максимална скорост
+STR_SORT_BY_MODEL                                               :Модел
+STR_SORT_BY_VALUE                                               :Цена
+STR_SORT_BY_FACILITY                                            :Вид на гарата
+STR_SORT_BY_WAITING                                             :Цена на чакащият товар
+STR_SORT_BY_RATING_MAX                                          :Рейтинг на товара
 
 ############ range for months starts
 STR_0162_JAN                                                    :Ян
@@ -680,7 +730,7 @@ STR_02D9_ABOUT_OPENTTD                                          :За 'OpenTTD'
 
 STR_02DB_OFF                                                    :{BLACK}Изключен
 STR_02DA_ON                                                     :{BLACK}Включен
-STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Покажи субсидиите
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}
 STR_02DD_SUBSIDIES                                              :Субсидии
 STR_02DE_MAP_OF_WORLD                                           :Карта на света
 STR_02DF_TOWN_DIRECTORY                                         :Списък на градовете
