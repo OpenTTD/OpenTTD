@@ -763,8 +763,10 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 		SetWindowWidgetDisabledState(w,  7, !is_localplayer);
 		SetWindowWidgetDisabledState(w,  8, !is_localplayer);
 		SetWindowWidgetDisabledState(w,  9, !is_localplayer);
-		SetWindowWidgetDisabledState(w, 12, !is_localplayer);
 		SetWindowWidgetDisabledState(w, 13, !is_localplayer);
+
+		/* Disable cargo refit button, until we know we can enable it below. */
+		DisableWindowWidget(w, 12);
 
 		if (is_localplayer) {
 			/* See if any vehicle can be refitted */
