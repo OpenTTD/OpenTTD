@@ -1026,8 +1026,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Uusi gl
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Salli aina pienet lentokentät: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Juna on eksynyt, jos edistystä ei tapahdu: {ORANGE}{STRING} päivään
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Juna menetetään, jos edistystä ei tapahdu: {ORANGE}pois käytöstä
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Tarkista ajoneuvojen pysähdykset: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :kyllä, mutta ei pysäytetyille

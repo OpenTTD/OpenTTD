@@ -1026,8 +1026,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuovo p
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Consenti la costruzione piccoli aeroporti: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Un treno è ritenuto perso in assenza di progressi da: {ORANGE}{STRING} giorni
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Un treno è ritenuto perso in assenza di progressi da: {ORANGE}disabilitato
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Controlla gli ordini dei veicoli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :disabilitato
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :si, ma escludi i veicoli fermi

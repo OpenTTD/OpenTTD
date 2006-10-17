@@ -1026,8 +1026,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny glob
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Et tog er faret vild hvis der ikke er sket fremskridt i: {ORANGE}{STRING} dage
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Et tog er faret vild hvis der ikke er sket fremskridt i: {ORANGE}deaktiveret
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Kontroller køretøjers ordreliste: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Nej
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Ja, på nær ved stoppet køretøjer

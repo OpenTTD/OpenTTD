@@ -979,8 +979,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Jauna' 
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vienme'r atl'aut mazas lidostas: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Vilciens tiek zaude'ts ja nav progresa: {ORANGE}{STRING} dienas
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Vilciens tiek zaude'ts ja nav progresa: {ORANGE} atsle'gts
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Pa'rskati't transporta uzdevumus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Ne'
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Ja', izn'emot transporta li'dzekl'us kas apsta'dina'ti

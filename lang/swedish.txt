@@ -1026,8 +1026,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny glob
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Ett tåg är vilse om ingen vidare framgång är nådd under: {ORANGE}{STRING} dagar
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Ett tåg är vilse om ingen vidare framgång är nådd under: {ORANGE}av
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Granska fordonens destinationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nej
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, förutom stannade fordon

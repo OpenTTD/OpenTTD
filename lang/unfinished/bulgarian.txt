@@ -853,8 +853,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Нов 
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Малки летища са винаги разрешени: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Влак се е загубил, ако няма прогрес за: {ORANGE}{STRING} дни
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Влак се е загубил, ако няма прогрес за: {ORANGE}изключено
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Преглед на маршрута: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :не
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :да, но пропусни спрените превозни средства

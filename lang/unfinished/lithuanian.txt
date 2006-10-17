@@ -1015,8 +1015,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Globalu
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Visada leisti statyti mazus oro uotus: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Traukinys laikomas pasimetusiu, jei neatnesa pelno: {ORANGE}{STRING} d.
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Traukinys laikomas pasimetusiu, jei neatnesa pelno: {ORANGE} Isjungta
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Perziureti tr. pr. uzduotis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :taip, bet isskyrus sustabdytas tr. pr.

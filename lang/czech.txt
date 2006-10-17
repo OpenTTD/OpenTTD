@@ -1076,8 +1076,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nový gl
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Malá letiste se budou moci stále stavet: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Vlak je pova¸ován za ztracený, kdy¸ nedojede do: {ORANGE}{STRING} dní
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Vlak je pova¸ován za ztracený, kdy¸ nedojede do: {ORANGE}vypnuto
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Obnovení prikazu vozidla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ne
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ano, krome zastavených vozidel (v depu)

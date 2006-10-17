@@ -1035,8 +1035,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Нов�
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Завжди будувати малі аеропорти: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Потяг заблукав, якщо не знайшов станцію: {ORANGE}{STRING} днів
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Потяг заблукав, якщо не знайшов станцію: {ORANGE}виключено
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Показ транспортних наказів: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ні
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :так, крім зупиненого транспорту

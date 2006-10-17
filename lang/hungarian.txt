@@ -1091,8 +1091,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Új útvo
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Mindig engedélyezze a kis repülõtereket: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}A vonat eltévedt, ha az úton töltött napok száma legalább : {ORANGE}{STRING} nap
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}A vonat eltévedt ha nem halad elõre: {ORANGE}kikapcsolva
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Jármûvek menetrendjének ellenõrzése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nem
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :igen, de nem az álló jármûvekre

@@ -1012,8 +1012,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nou pat
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Un tren este rãtãcit dacã nu face un progres timp de: {ORANGE}{STRING} zile
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Un tren este considerat rãtãcit dacã nu face un progres: {ORANGE}dezactivat
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Verificarea ordinelor vehiculelor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nu
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, dar exclude vehiculele oprite

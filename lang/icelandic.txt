@@ -1013,8 +1013,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nýtt he
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Alltaf leyfa litla flugvelli: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Lest týnist ef hún er aðgerðalaus í: {ORANGE}{STRING} daga
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Lest týnist ef hún er aðgerðalaus í: {ORANGE}óvirkt
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Endurskoða skipanir farartækis: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nei
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :já, en útiloka kyrrstæð farartæki

@@ -1019,8 +1019,6 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni ev
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Küçük havalimani her zaman etkin: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Tren kayboldu bildirisi(islem yapmadiginda): {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Tren kayboldu bildirisi(islem yapmadiginda): {ORANGE}kapali
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Arac talimatlarini önizle: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :hayir
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :evet, ama durmus araçlar hariç
