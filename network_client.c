@@ -512,8 +512,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 		SEND_COMMAND(PACKET_CLIENT_MAP_OK)();
 
 		// new company/spectator (invalid player) or company we want to join is not active
-		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayer(_network_playas - 1) ||
-				!GetPlayer(_network_playas - 1)->is_active) {
+		if (_network_playas == PLAYER_NEW_COMPANY || !IsValidPlayer(_network_playas) ||
+				!GetPlayer(_network_playas)->is_active) {
 
 			if (_network_playas == PLAYER_SPECTATOR) {
 				// The client wants to be a spectator..
@@ -527,7 +527,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 			}
 		} else {
 			// take control over an existing company
-			_local_player = _network_playas - 1;
+			_local_player = _network_playas;
 			_patches.autorenew = GetPlayer(_local_player)->engine_renew;
 			_patches.autorenew_months = GetPlayer(_local_player)->engine_renew_months;
 			_patches.autorenew_money = GetPlayer(_local_player)->engine_renew_money;
@@ -631,10 +631,10 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				break;
 			case NETWORK_ACTION_CHAT_PLAYER:
 			case NETWORK_ACTION_GIVE_MONEY:
-				/* For speak to player or give money, we need the player-name */
-				if (ci_to->client_playas > MAX_PLAYERS)
-					return NETWORK_RECV_STATUS_OKAY; // This should never happen
-				GetString(name, GetPlayer(ci_to->client_playas-1)->name_1);
+				/* For speaking to player or give money, we need the player-name */
+				if (!IsValidPlayer(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY; // This should never happen
+
+				GetString(name, GetPlayer(ci_to->client_playas)->name_1);
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 				break;
 			default:
@@ -649,7 +649,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 	}
 
 	if (ci != NULL)
-		NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas-1), self_send, name, "%s", msg);
+		NetworkTextMessage(action, GetDrawStringPlayerColor(ci->client_playas), self_send, name, "%s", msg);
 	return NETWORK_RECV_STATUS_OKAY;
 }
 

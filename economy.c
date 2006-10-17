@@ -428,7 +428,7 @@ static void PlayersCheckBankrupt(Player *p)
 					/* Find all clients that were in control of this company */
 					FOR_ALL_CLIENTS(cs) {
 						ci = DEREF_CLIENT_INFO(cs);
-						if ((ci->client_playas-1) == owner) {
+						if (ci->client_playas == owner) {
 							ci->client_playas = PLAYER_SPECTATOR;
 							// Send the new info to all the clients
 							NetworkUpdateClientInfo(_network_own_client_index);

@@ -214,6 +214,7 @@ VARDEF PlayerID _current_player;
 /* Player identifiers All players below MAX_PLAYERS are playable
  * players, above, they are special, computer controlled players */
 enum Players {
+	PLAYER_INACTIVE_CLIENT = 253,
 	PLAYER_NEW_COMPANY = 254, ///< Command 'player' in Multiplayer to create a new company
 	PLAYER_SPECTATOR   = 255, ///< Spectator in Multiplayer or the player in the scenario editor
 	MAX_PLAYERS        = 8,

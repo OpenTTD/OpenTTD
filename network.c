@@ -294,7 +294,7 @@ static uint NetworkCountPlayers(void)
 
 	FOR_ALL_CLIENTS(cs) {
 		NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
-		if (ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS) count++;
+		if (IsValidPlayer(ci->client_playas)) count++;
 	}
 
 	return count;
@@ -575,6 +575,7 @@ static NetworkClientState *NetworkAllocClient(SOCKET s)
 
 		cs->index = _network_client_index++;
 		ci->client_index = cs->index;
+		ci->client_playas = PLAYER_INACTIVE_CLIENT;
 		ci->join_date = _date;
 
 		InvalidateWindow(WC_CLIENT_LIST, 0);
@@ -1034,11 +1035,8 @@ static void NetworkInitGameInfo(void)
 	memset(ci, 0, sizeof(*ci));
 
 	ci->client_index = NETWORK_SERVER_INDEX;
-	if (_network_dedicated) {
-		ci->client_playas = PLAYER_SPECTATOR;
-	} else {
-		ci->client_playas = _local_player + 1;
-	}
+	ci->client_playas = _network_dedicated ? PLAYER_SPECTATOR : _local_player;
+
 	ttd_strlcpy(ci->client_name, _network_player_name, sizeof(ci->client_name));
 	ttd_strlcpy(ci->unique_id, _network_unique_id, sizeof(ci->unique_id));
 }
@@ -1067,8 +1065,8 @@ bool NetworkServerStart(void)
 	_last_sync_frame = 0;
 	_network_own_client_index = NETWORK_SERVER_INDEX;
 
-	if (!_network_dedicated)
-		_network_playas = 1;
+	/* Non-dedicated server will always be player #1 */
+	if (!_network_dedicated) _network_playas = 0;
 
 	_network_clients_connected = 0;
 

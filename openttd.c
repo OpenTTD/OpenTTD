@@ -477,12 +477,17 @@ int ttd_main(int argc, char *argv[])
 			uint16 rport;
 
 			rport = NETWORK_DEFAULT_PORT;
+			_network_playas = PLAYER_NEW_COMPANY;
 
 			ParseConnectionString(&player, &port, network_conn);
 
 			if (player != NULL) {
 				_network_playas = atoi(player);
-				if (_network_playas == 0) _network_playas = PLAYER_NEW_COMPANY;
+
+		    if (_network_playas != PLAYER_SPECTATOR) {
+				  _network_playas--;
+					if (!IsValidPlayer(_network_playas)) return false;
+				}
 			}
 			if (port != NULL) rport = atoi(port);
 

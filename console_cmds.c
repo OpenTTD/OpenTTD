@@ -551,7 +551,9 @@ DEF_CONSOLE_CMD(ConStatus)
 
 		status = (cs->status < lengthof(stat_str) ? stat_str[cs->status] : "unknown");
 		IConsolePrintF(8, "Client #%1d  name: '%s'  status: '%s'  frame-lag: %3d  company: %1d  IP: %s  unique-id: '%s'",
-			cs->index, ci->client_name, status, lag, ci->client_playas, GetPlayerIP(ci), ci->unique_id);
+			cs->index, ci->client_name, status, lag,
+			ci->client_playas + (IsValidPlayer(ci->client_playas) ? 1 : 0),
+			GetPlayerIP(ci), ci->unique_id);
 	}
 
 	return true;
@@ -669,16 +671,15 @@ DEF_CONSOLE_CMD(ConResetCompany)
 
 	if (argc != 2) return false;
 
-	index = atoi(argv[1]);
+	index = atoi(argv[1]) - 1;
 
 	/* Check valid range */
-	if (index < 1 || index > MAX_PLAYERS) {
+	if (!IsValidPlayer(index)) {
 		IConsolePrintF(_icolour_err, "Company does not exist. Company-id must be between 1 and %d.", MAX_PLAYERS);
 		return true;
 	}
 
 	/* Check if company does exist */
-	index--;
 	p = GetPlayer(index);
 	if (!p->is_active) {
 		IConsoleError("Company does not exist.");
@@ -693,13 +694,13 @@ DEF_CONSOLE_CMD(ConResetCompany)
 	/* Check if the company has active players */
 	FOR_ALL_CLIENTS(cs) {
 		ci = DEREF_CLIENT_INFO(cs);
-		if (ci->client_playas - 1 == index) {
+		if (ci->client_playas == index) {
 			IConsoleError("Cannot remove company: a client is connected to that company.");
 			return true;
 		}
 	}
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-	if (ci->client_playas - 1 == index) {
+	if (ci->client_playas == index) {
 		IConsoleError("Cannot remove company: the server is connected to that company.");
 		return true;
 	}
@@ -723,7 +724,9 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
 		if (ci->client_index != NETWORK_EMPTY_INDEX) {
 			IConsolePrintF(8, "Client #%1d  name: '%s'  company: %1d  IP: %s",
-				ci->client_index, ci->client_name, ci->client_playas, GetPlayerIP(ci));
+			               ci->client_index, ci->client_name,
+			               ci->client_playas + (IsValidPlayer(ci->client_playas) ? 1 : 0),
+			               GetPlayerIP(ci));
 		}
 	}
 
@@ -740,7 +743,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	if (argc == 0) {
 		IConsoleHelp("Connect to a remote OTTD server and join the game. Usage: 'connect <ip>'");
 		IConsoleHelp("IP can contain port and player: 'IP[[#Player]:Port]', eg: 'server.ottd.org#2:443'");
-		IConsoleHelp("Player #0 is new company, #255 is spectator all others are a certain company");
+		IConsoleHelp("Player #255 is spectator all others are a certain company with Company 1 being #1");
 		return true;
 	}
 
@@ -763,11 +766,9 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 
 		/* From a user pov 0 is a new player, internally it's different and all
 		 * players are offset by one to ease up on users (eg players 1-8 not 0-7) */
-		if (_network_playas == 0) _network_playas = PLAYER_NEW_COMPANY;
-		if (!IsValidPlayer(_network_playas - 1) &&
-			  (_network_playas != PLAYER_SPECTATOR &&
-			   _network_playas != PLAYER_NEW_COMPANY)) {
-			return false;
+		if (_network_playas != PLAYER_SPECTATOR) {
+			_network_playas--;
+			if (!IsValidPlayer(_network_playas)) return false;
 		}
 	}
 	if (port != NULL) {

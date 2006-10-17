@@ -214,7 +214,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 		/* Find the clients that are connected to this player */
 		FOR_ALL_CLIENTS(cs) {
 			ci = DEREF_CLIENT_INFO(cs);
-			if (ci->client_playas - 1 == player->index) {
+			if (ci->client_playas == player->index) {
 				/* The uint8 == 1 indicates that a client is following */
 				NetworkSend_uint8(packet, 1);
 				NetworkSend_string(packet, ci->client_name);
@@ -224,7 +224,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 		}
 		/* Also check for the server itself */
 		ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-		if (ci->client_playas - 1 == player->index) {
+		if (ci->client_playas == player->index) {
 			/* The uint8 == 1 indicates that a client is following */
 			NetworkSend_uint8(packet, 1);
 			NetworkSend_string(packet, ci->client_name);
@@ -239,7 +239,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 	/* And check if we have any spectators */
 	FOR_ALL_CLIENTS(cs) {
 		ci = DEREF_CLIENT_INFO(cs);
-		if (ci->client_playas - 1 > MAX_PLAYERS) {
+		if (!IsValidPlayer(ci->client_playas)) {
 			/* The uint8 == 1 indicates that a client is following */
 			NetworkSend_uint8(packet, 1);
 			NetworkSend_string(packet, ci->client_name);
@@ -249,7 +249,7 @@ DEF_UDP_RECEIVE_COMMAND(PACKET_UDP_CLIENT_DETAIL_INFO)
 	}
 	/* Also check for the server itself */
 	ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
-	if (ci->client_playas - 1 > MAX_PLAYERS) {
+	if (!IsValidPlayer(ci->client_playas)) {
 		/* The uint8 == 1 indicates that a client is following */
 		NetworkSend_uint8(packet, 1);
 		NetworkSend_string(packet, ci->client_name);

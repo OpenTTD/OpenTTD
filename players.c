@@ -854,10 +854,10 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				 * server-side in network_server.c:838, function
 				 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 				NetworkClientInfo *ci = &_network_client_info[cid];
-				ci->client_playas = p->index + 1;
+				ci->client_playas = p->index;
 				NetworkUpdateClientInfo(ci->client_index);
 
-				if (ci->client_playas != 0 && ci->client_playas <= MAX_PLAYERS) {
+				if (IsValidPlayer(ci->client_playas)) {
 					PlayerID player_backup = _local_player;
 					_network_player_info[p->index].months_empty = 0;
 
@@ -873,7 +873,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 					 * with joining to let it send itself the command, and not the server?
 					 * For example in network_client.c:534? */
 					_cmd_text = ci->client_name;
-					_local_player = ci->client_playas - 1;
+					_local_player = ci->client_playas;
 					NetworkSend_Command(0, 0, 0, CMD_CHANGE_PRESIDENT_NAME, NULL);
 					_local_player = player_backup;
 				}

@@ -924,7 +924,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 		}	break;
 		case 7: /* Join company */
 			if (nd->company != (byte)-1) {
-				_network_playas = nd->company + 1;
+				_network_playas = nd->company;
 				NetworkClientConnectGame(_network_last_host, _network_last_port);
 			}
 			break;
@@ -1084,7 +1084,7 @@ static void ClientList_Ban(byte client_no)
 static void ClientList_GiveMoney(byte client_no)
 {
 	if (NetworkFindClientInfo(client_no) != NULL)
-		ShowNetworkGiveMoneyWindow(NetworkFindClientInfo(client_no)->client_playas - 1);
+		ShowNetworkGiveMoneyWindow(NetworkFindClientInfo(client_no)->client_playas);
 }
 
 static void ClientList_SpeakToClient(byte client_no)
@@ -1187,7 +1187,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 		_clientlist_proc[i++] = &ClientList_SpeakToClient;
 	}
 
-	if (ci->client_playas >= 1 && ci->client_playas <= MAX_PLAYERS) {
+	if (IsValidPlayer(ci->client_playas)) {
 		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY);
 		_clientlist_proc[i++] = &ClientList_SpeakToPlayer;
 	}
@@ -1195,12 +1195,10 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 	_clientlist_proc[i++] = &ClientList_SpeakToAll;
 
 	if (_network_own_client_index != ci->client_index) {
-		if (IsValidPlayer(_network_playas - 1)) {
-			// We are no spectator
-			if (ci->client_playas >= 1 && ci->client_playas <= MAX_PLAYERS) {
-				GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY);
-				_clientlist_proc[i++] = &ClientList_GiveMoney;
-			}
+		/* We are no spectator and the player we want to give money to is no spectator */
+		if (IsValidPlayer(_network_playas) && IsValidPlayer(ci->client_playas)) {
+			GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY);
+			_clientlist_proc[i++] = &ClientList_GiveMoney;
 		}
 	}
 
@@ -1328,8 +1326,7 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 			}
 
 			// Filter out spectators
-			if (ci->client_playas > 0 && ci->client_playas <= MAX_PLAYERS)
-				DrawPlayerIcon(ci->client_playas - 1, 64, y + 1);
+			if (IsValidPlayer(ci->client_playas)) DrawPlayerIcon(ci->client_playas, 64, y + 1);
 
 			DoDrawString(ci->client_name, 81, y, colour);
 
