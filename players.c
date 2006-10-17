@@ -343,7 +343,7 @@ set_name:;
 
 		if (!IsHumanPlayer(p->index)) {
 			SetDParam(0, t->index);
-			AddNewsItem(p->index + (4 << 4), NEWS_FLAGS(NM_CALLBACK, NF_TILE, NT_COMPANY_INFO, DNC_BANKRUPCY), p->last_build_coordinate, 0);
+			AddNewsItem((StringID)(p->index | NB_BNEWCOMPANY), NEWS_FLAGS(NM_CALLBACK, NF_TILE, NT_COMPANY_INFO, DNC_BANKRUPCY), p->last_build_coordinate, 0);
 		}
 		return;
 	}
@@ -913,7 +913,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* Show the bankrupt news */
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
-			AddNewsItem( (StringID)(p->index + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+			AddNewsItem( (StringID)(p->index | NB_BBANKRUPT), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 			/* Remove the company */
 			ChangeOwnershipOfPlayerItems(p->index, PLAYER_SPECTATOR);

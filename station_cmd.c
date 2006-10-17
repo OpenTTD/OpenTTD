@@ -539,7 +539,7 @@ static void ShowRejectOrAcceptNews(const Station *st, uint32 items, StringID msg
 		SetDParam(2, GB(items, 16, 16));
 		SetDParam(1, GB(items,  0, 16));
 		SetDParam(0, st->index);
-		AddNewsItem(msg + ((items >> 16)?1:0), NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
+		AddNewsItem(msg + (GB(items, 16, 16) ? 1 : 0), NEWS_FLAGS(NM_SMALL, NF_VIEWPORT|NF_TILE, NT_ACCEPTANCE, 0), st->xy, 0);
 	}
 }
 

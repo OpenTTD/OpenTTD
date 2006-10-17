@@ -382,14 +382,14 @@ static void PlayersCheckBankrupt(Player *p)
 
 	switch (p->quarters_of_bankrupcy) {
 		case 2:
-			AddNewsItem( (StringID)(owner + 16),
+			AddNewsItem( (StringID)(owner | NB_BTROUBLE),
 				NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 			break;
 		case 3: {
 			/* XXX - In multiplayer, should we ask other players if it wants to take
 		          over when it is a human company? -- TrueLight */
 			if (IsHumanPlayer(owner)) {
-				AddNewsItem( (StringID)(owner + 16),
+				AddNewsItem( (StringID)(owner | NB_BTROUBLE),
 					NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 				break;
 			}
@@ -412,7 +412,7 @@ static void PlayersCheckBankrupt(Player *p)
 //		Show bankrupt news
 			SetDParam(0, p->name_1);
 			SetDParam(1, p->name_2);
-			AddNewsItem( (StringID)(owner + 16*3), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+			AddNewsItem( (StringID)(owner | NB_BBANKRUPT), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 			// If the player is human, and it is no network play, leave the player playing
 			if (IsHumanPlayer(owner) && !_networking) {
@@ -460,7 +460,7 @@ void DrawNewsBankrupcy(Window *w)
 
 	DrawNewsBorder(w);
 
-	p = GetPlayer(WP(w,news_d).ni->string_id & 15);
+	p = GetPlayer(GB(WP(w,news_d).ni->string_id, 0, 4));
 	DrawPlayerFace(p->face, p->player_color, 2, 23);
 	GfxFillRect(3, 23, 3+91, 23+118, 0x323 | USE_COLORTABLE);
 
@@ -469,8 +469,8 @@ void DrawNewsBankrupcy(Window *w)
 
 	DrawStringMultiCenter(49, 148, STR_7058_PRESIDENT, 94);
 
-	switch (WP(w,news_d).ni->string_id >> 4) {
-	case 1:
+	switch (WP(w,news_d).ni->string_id & 0xF0) {
+	case NB_BTROUBLE:
 		DrawStringCentered(w->width>>1, 1, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE, 0);
 
 		SetDParam(0, p->name_1);
@@ -483,7 +483,7 @@ void DrawNewsBankrupcy(Window *w)
 			w->width - 101);
 		break;
 
-	case 2: {
+	case NB_BMERGER: {
 		int32 price;
 
 		DrawStringCentered(w->width>>1, 1, STR_7059_TRANSPORT_COMPANY_MERGER, 0);
@@ -500,7 +500,7 @@ void DrawNewsBankrupcy(Window *w)
 		break;
 	}
 
-	case 3:
+	case NB_BBANKRUPT:
 		DrawStringCentered(w->width>>1, 1, STR_705C_BANKRUPT, 0);
 		COPY_IN_DPARAM(0,WP(w,news_d).ni->params, 2);
 		DrawStringMultiCenter(
@@ -510,7 +510,7 @@ void DrawNewsBankrupcy(Window *w)
 			w->width - 101);
 		break;
 
-	case 4:
+	case NB_BNEWCOMPANY:
 		DrawStringCentered(w->width>>1, 1, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED, 0);
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
@@ -529,16 +529,16 @@ void DrawNewsBankrupcy(Window *w)
 
 StringID GetNewsStringBankrupcy(const NewsItem *ni)
 {
-	const Player *p = GetPlayer(ni->string_id & 0xF);
+	const Player *p = GetPlayer(GB(ni->string_id, 0, 4));
 
-	switch (ni->string_id >> 4) {
-	case 1:
+	switch (ni->string_id & 0xF0) {
+	case NB_BTROUBLE:
 		SetDParam(0, STR_7056_TRANSPORT_COMPANY_IN_TROUBLE);
 		SetDParam(1, STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED);
 		SetDParam(2, p->name_1);
 		SetDParam(3, p->name_2);
 		return STR_02B6;
-	case 2:
+	case NB_BMERGER:
 		SetDParam(0, STR_7059_TRANSPORT_COMPANY_MERGER);
 		SetDParam(1, STR_705A_HAS_BEEN_SOLD_TO_FOR);
 		COPY_IN_DPARAM(2,ni->params, 2);
@@ -546,12 +546,12 @@ StringID GetNewsStringBankrupcy(const NewsItem *ni)
 		SetDParam(5, p->name_2);
 		COPY_IN_DPARAM(6,ni->params + 2, 1);
 		return STR_02B6;
-	case 3:
+	case NB_BBANKRUPT:
 		SetDParam(0, STR_705C_BANKRUPT);
 		SetDParam(1, STR_705D_HAS_BEEN_CLOSED_DOWN_BY);
 		COPY_IN_DPARAM(2,ni->params, 2);
 		return STR_02B6;
-	case 4:
+	case NB_BNEWCOMPANY:
 		SetDParam(0, STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED);
 		SetDParam(1, STR_705F_STARTS_CONSTRUCTION_NEAR);
 		SetDParam(2, p->name_1);
@@ -1501,7 +1501,7 @@ static void DoAcquireCompany(Player *p)
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);
 	SetDParam(2, p->bankrupt_value);
-	AddNewsItem( (StringID)(_current_player + 16*2), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
+	AddNewsItem( (StringID)(_current_player | NB_BMERGER), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
 	// original code does this a little bit differently
 	pi = p->index;

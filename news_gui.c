@@ -228,6 +228,27 @@ static byte increaseIndex(byte i)
 	return i;
 }
 
+/** Add a new newsitem to be shown.
+ * @param string String to display, can have special values based on parameter 'flags'
+ * @param flags various control bits that will show various news-types. See macro NEWS_FLAGS()
+ * @param data_a news-specific value based on news type
+ * @param data_b news-specific value based on news type
+ * @note flags exists of 4 byte-sized extra parameters.<br/>
+ * 1.  0 -  7 display_mode, any of the NewsMode enums (NM_)<br/>
+ * 2.  8 - 15 news flags, any of the NewsFlags enums (NF_) NF_NOEXPIRE and
+ * NF_INCOLOR are set automatically if needed<br/>
+ * 3. 16 - 23 news category, any of the NewsType enums (NT_)<br/>
+ * 4. 24 - 31 news callback function, any of the NewsCallback enums (DNC_)<br/>
+ * If the display mode is NM_CALLBACK special news is shown and parameter
+ * stringid has a special meaning.<br/>
+ * DNC_TRAINAVAIL, DNC_ROADAVAIL, DNC_SHIPAVAIL, DNC_AIRCRAFTAVAIL: StringID is
+ * the index of the engine that is shown<br/>
+ * DNC_BANKRUPCY: bytes 0-3 of StringID contains the player that is in trouble,
+ * and 4-7 contains what kind of bankrupcy message is shown, NewsBankrupcy enum (NB_)<br/>
+ * @see NewsMode
+ * @see NewsFlags
+ * @see NewsType
+ * @see NewsCallback */
 void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 {
 	NewsItem *ni;
