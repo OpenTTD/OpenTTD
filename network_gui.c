@@ -1475,18 +1475,13 @@ void ShowJoinStatusWindowAfterJoin(void)
 	AllocateWindowDesc(&_network_join_status_window_desc);
 }
 
-
-static byte _chat_type;
-static byte _chat_dest;
-
-
-static void SendChat(const char *buf)
+static void SendChat(const char *buf, DestType type, byte dest)
 {
 	if (buf[0] == '\0') return;
 	if (!_network_server) {
-		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT + _chat_type, _chat_type, _chat_dest, buf);
+		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT + type, type, dest, buf);
 	} else {
-		NetworkServer_HandleChat(NETWORK_ACTION_CHAT + _chat_type, _chat_type, _chat_dest, buf, NETWORK_SERVER_INDEX);
+		NetworkServer_HandleChat(NETWORK_ACTION_CHAT + type, type, dest, buf, NETWORK_SERVER_INDEX);
 	}
 }
 
@@ -1621,7 +1616,10 @@ static void ChatTabCompletion(Window *w)
 	free(pre_buf);
 }
 
-/* uses querystr_d WP macro */
+/* uses querystr_d WP macro
+ * uses querystr_d->caption to store
+ * - type of chat message (Private/Team/All) in bytes 0-7
+ * - destination of chat message in the case of Team/Private in bytes 8-15 */
 static void ChatWindowWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -1636,18 +1634,24 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 			STR_NETWORK_CHAT_COMPANY,
 			STR_NETWORK_CHAT_CLIENT
 		};
+		StringID msg;
 
 		DrawWindowWidgets(w);
 
-		assert(_chat_type < lengthof(chat_captions));
+		assert(GB(WP(w, querystr_d).caption, 0, 8) < lengthof(chat_captions));
+		msg = chat_captions[GB(WP(w, querystr_d).caption, 0, 8)];
 		SetDParam(0, STR_EMPTY);
-		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, chat_captions[_chat_type], 16);
+		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, msg, 16);
 		DrawEditBox(w, &WP(w, querystr_d), 2);
 	} break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-			case 3: /* Send */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
+			case 3: { /* Send */
+				DestType type = GB(WP(w, querystr_d).caption, 0, 8);
+				byte dest = GB(WP(w, querystr_d).caption, 8, 8);
+				SendChat(WP(w, querystr_d).text.buf, type, dest);
+			} /* FALLTHROUGH */
 			case 0: /* Cancel */ DeleteWindow(w); break;
 		}
 		break;
@@ -1662,7 +1666,11 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		} else {
 			_chat_tab_completion_active = false;
 			switch (HandleEditBoxKey(w, &WP(w, querystr_d), 2, e, CS_ALPHANUMERAL)) {
-				case 1: /* Return */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
+				case 1: { /* Return */
+				DestType type = GB(WP(w, querystr_d).caption, 0, 8);
+				byte dest = GB(WP(w, querystr_d).caption, 8, 8);
+				SendChat(WP(w, querystr_d).text.buf, type, dest);
+			} /* FALLTHROUGH */
 				case 2: /* Escape */ DeleteWindow(w); break;
 			}
 		}
@@ -1691,13 +1699,9 @@ static const WindowDesc _chat_window_desc = {
 	ChatWindowWndProc
 };
 
-
-void ShowNetworkChatQueryWindow(byte desttype, byte dest)
+void ShowNetworkChatQueryWindow(DestType type, byte dest)
 {
 	Window *w;
-
-	_chat_type = desttype;
-	_chat_dest = dest;
 
 	DeleteWindowById(WC_SEND_NETWORK_MSG, 0);
 
@@ -1707,7 +1711,7 @@ void ShowNetworkChatQueryWindow(byte desttype, byte dest)
 	w = AllocateWindowDesc(&_chat_window_desc);
 
 	LowerWindowWidget(w, 2);
-	WP(w,querystr_d).caption = STR_NULL;
+	WP(w,querystr_d).caption = GB(type, 0, 8) | (dest << 8); // Misuse of caption
 	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
 	WP(w,querystr_d).wnd_num = 0;
 	WP(w,querystr_d).text.caret = false;

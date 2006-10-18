@@ -9,7 +9,7 @@
 
 void ShowNetworkNeedPassword(NetworkPasswordType npt);
 void ShowNetworkGiveMoneyWindow(byte player); // PlayerID
-void ShowNetworkChatQueryWindow(byte desttype, byte dest);
+void ShowNetworkChatQueryWindow(DestType type, byte dest);
 void ShowJoinStatusWindowAfterJoin(void);
 void ShowNetworkGameWindow(void);
 void ShowClientList(void);
