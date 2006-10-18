@@ -665,18 +665,18 @@ static void TooltipsWndProc(Window *w, WindowEvent *e)
 * @param str String to be displayed
 * @param params (optional) up to 5 pieces of additional information that may be
 * added to a tooltip; currently only supports parameters of {NUM} (integer) */
-void GuiShowTooltipsWithArgs(StringID str, uint paramcount, uint32 params[])
+void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint32 params[])
 {
 	char buffer[512];
 	BoundingRect br;
+	Window *w;
 	uint i;
 	int x, y;
 
-	Window *w = FindWindowById(WC_TOOLTIPS, 0);
-	if (w != NULL) DeleteWindow(w);
+	DeleteWindowById(WC_TOOLTIPS, 0);
 
-	/* We only show measurement tooltips with shift pressed down */
-	if (paramcount != 0 && !_patches.measure_tooltip) return;
+	/* We only show measurement tooltips with patch setting on */
+	if (str == STR_NULL || (paramcount != 0 && !_patches.measure_tooltip)) return;
 
 	for (i = 0; i != paramcount; i++) SetDParam(i, params[i]);
 	GetString(buffer, str);

@@ -807,7 +807,7 @@ void CDECL SetWindowWidgetsHiddenState(Window *w, bool hidden_stat, int widgets,
 void CDECL SetWindowWidgetsLoweredState(Window *w, bool lowered_stat, int widgets, ...);
 
 /* misc_gui.c*/
-void GuiShowTooltipsWithArgs(StringID str, uint paramcount, uint params[]);
+void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint params[]);
 static inline void GuiShowTooltips(StringID str)
 {
 	GuiShowTooltipsWithArgs(str, 0, NULL);

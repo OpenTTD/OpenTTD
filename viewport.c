@@ -2110,6 +2110,8 @@ static int CalcHeightdiff(HighLightStyle style, uint distance, TileIndex start_t
 	return (int)(h1 - h0) * 50;
 }
 
+static const measure_strings_length[] = {STR_NULL, STR_MEASURE_LENGTH, STR_MEASURE_LENGTH_HEIGHTDIFF};
+
 // while dragging
 static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int method)
 {
@@ -2215,23 +2217,23 @@ static void CalcRaildirsDrawstyle(TileHighlightData *thd, int x, int y, int meth
 		TileIndex t0 = TileVirtXY(thd->selstart.x, thd->selstart.y);
 		TileIndex t1 = TileVirtXY(x, y);
 		uint distance = DistanceManhattan(t0, t1) + 1;
-		int heightdiff = CalcHeightdiff(b, distance, t0, t1);
+		byte index = 0;
 		uint params[2];
 
-		/* If we are showing a tooltip for horizontal or vertical drags,
-		 * 2 tiles have a length of 1. To bias towards the ceiling we add
-		 * one before division. It feels more natural to count 3 lengths as 2 */
-		if ((b & HT_DIR_MASK) != HT_DIR_X && (b & HT_DIR_MASK) != HT_DIR_Y) {
-			distance = (distance + 1) / 2;
+		if (distance != 1) {
+			int heightdiff = CalcHeightdiff(b, distance, t0, t1);
+			/* If we are showing a tooltip for horizontal or vertical drags,
+			 * 2 tiles have a length of 1. To bias towards the ceiling we add
+			 * one before division. It feels more natural to count 3 lengths as 2 */
+			if ((b & HT_DIR_MASK) != HT_DIR_X && (b & HT_DIR_MASK) != HT_DIR_Y) {
+				distance = (distance + 1) / 2;
+			}
+
+			params[index++] = distance;
+			if (heightdiff != 0) params[index++] = heightdiff;
 		}
 
-		params[0] = distance;
-		if (heightdiff == 0) {
-			GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH, 1, params);
-		} else {
-			params[1] = heightdiff;
-			GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH_HEIGHTDIFF, 2, params);
-		}
+		GuiShowTooltipsWithArgs(measure_strings_length[index], index, params);
 	}
 
 	thd->selend.x = x;
@@ -2294,21 +2296,22 @@ calc_heightdiff_single_direction:;
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
 				uint distance = DistanceManhattan(t0, t1) + 1;
-				/* With current code passing a HT_LINE style to calculate the height
-				 * difference is enough. However if/when a point-tool is created
-				 * with this method, function should be called with new_style (below)
-				 * instead of HT_LINE | style case HT_POINT is handled specially
-				 * new_style := (_thd.next_drawstyle & HT_RECT) ? HT_LINE | style : _thd.next_drawstyle; */
-				int heightdiff = CalcHeightdiff(HT_LINE | style, 0, t0, t1);
+				byte index = 0;
 				uint params[2];
 
-				params[0] = distance;
-				if (heightdiff == 0) {
-					GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH, 1, params);
-				} else {
-					params[1] = heightdiff;
-					GuiShowTooltipsWithArgs(STR_MEASURE_LENGTH_HEIGHTDIFF, 2, params);
+				if (distance != 1) {
+					/* With current code passing a HT_LINE style to calculate the height
+					 * difference is enough. However if/when a point-tool is created
+					 * with this method, function should be called with new_style (below)
+					 * instead of HT_LINE | style case HT_POINT is handled specially
+					 * new_style := (_thd.next_drawstyle & HT_RECT) ? HT_LINE | style : _thd.next_drawstyle; */
+					int heightdiff = CalcHeightdiff(HT_LINE | style, 0, t0, t1);
+
+					params[index++] = distance;
+					if (heightdiff != 0) params[index++] = heightdiff;
 				}
+
+				GuiShowTooltipsWithArgs(measure_strings_length[index], index, params);
 			} break;
 
 		case VPM_X_AND_Y_LIMITED: { /* drag an X by Y constrained rect area */
@@ -2316,13 +2319,17 @@ calc_heightdiff_single_direction:;
 			x = sx + clamp(x - sx, -limit, limit);
 			y = sy + clamp(y - sy, -limit, limit);
 			/* Fallthrough */
-		case VPM_X_AND_Y: { /* drag an X by Y area */
+		case VPM_X_AND_Y: /* drag an X by Y area */
 			if (_patches.measure_tooltip) {
+				static const StringID measure_strings_area[] = {
+					STR_NULL, STR_NULL, STR_MEASURE_AREA, STR_MEASURE_AREA_HEIGHTDIFF
+				};
+
 				TileIndex t0 = TileVirtXY(sx, sy);
 				TileIndex t1 = TileVirtXY(x, y);
 				uint dx = abs(TileX(t0) - TileX(t1)) + 1;
 				uint dy = abs(TileY(t0) - TileY(t1)) + 1;
-				int heightdiff;
+				byte index = 0;
 				uint params[3];
 
 				/* If dragging an area (eg dynamite tool) and it is actually a single
@@ -2336,18 +2343,17 @@ calc_heightdiff_single_direction:;
 					}
 				}
 
-				heightdiff = CalcHeightdiff(style, 0, t0, t1);
+				if (dx != 1 || dy != 1) {
+					int heightdiff = CalcHeightdiff(style, 0, t0, t1);
 
-				params[0] = dx;
-				params[1] = dy;
-				if (heightdiff == 0) {
-					GuiShowTooltipsWithArgs(STR_MEASURE_AREA, 2, params);
-				} else {
-					params[2] = heightdiff;
-					GuiShowTooltipsWithArgs(STR_MEASURE_AREA_HEIGHTDIFF, 3, params);
+					params[index++] = dx;
+					params[index++] = dy;
+					if (heightdiff != 0) params[index++] = heightdiff;
 				}
+
+				GuiShowTooltipsWithArgs(measure_strings_area[index], index, params);
 			}
-		} break;
+		break;
 
 		}
 		default: NOT_REACHED();
