@@ -2326,8 +2326,36 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				break;
 
 #ifdef ENABLE_NETWORK
-			case WKC_RETURN: case 'T' | WKC_SHIFT:
+			case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
+				if (_networking) {
+					const NetworkClientInfo *ci;
+					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
+					bool has_team = false;
+
+					/* Only players actually playing can speak to team. Eg spectators cannot */
+					if (IsValidPlayer(cio->client_playas)) {
+						FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+							if (ci->client_playas == cio->client_playas && ci != cio) {
+								has_team = true;
+								break;
+							}
+						}
+					}
+
+					ShowNetworkChatQueryWindow(has_team ? DESTTYPE_PLAYER : DESTTYPE_BROADCAST, ci->client_playas);
+					break;
+				}
+				break;
+
+			case WKC_SHIFT | WKC_RETURN: case WKC_SHIFT | 'T': // send text message to all players
 				if (_networking) ShowNetworkChatQueryWindow(DESTTYPE_BROADCAST, 0);
+				break;
+
+			case WKC_CTRL | WKC_RETURN: case WKC_CTRL | 'T': // send text to all team mates
+				if (_networking) {
+					const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+					ShowNetworkChatQueryWindow(DESTTYPE_PLAYER, ci->client_playas);
+				}
 				break;
 #endif
 

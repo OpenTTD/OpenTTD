@@ -169,9 +169,9 @@ typedef enum {
 } PacketType;
 
 typedef enum {
-	DESTTYPE_BROADCAST,
-	DESTTYPE_PLAYER,
-	DESTTYPE_CLIENT
+	DESTTYPE_BROADCAST, ///< Send message/notice to all players (All)
+	DESTTYPE_PLAYER,    ///< Send message/notice to everyone playing the same company (Team)
+	DESTTYPE_CLIENT,    ///< Send message/notice to only a certain player (Private)
 } DestType;
 
 CommandPacket *_local_command_queue;

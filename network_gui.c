@@ -1630,20 +1630,30 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 		SETBIT(_no_scroll, SCROLL_CHAT); // do not scroll the game with the arrow-keys
 		break;
 
-	case WE_PAINT:
+	case WE_PAINT: {
+		static const StringID chat_captions[] = {
+			STR_NETWORK_CHAT_ALL,
+			STR_NETWORK_CHAT_COMPANY,
+			STR_NETWORK_CHAT_CLIENT
+		};
+
 		DrawWindowWidgets(w);
-		DrawEditBox(w, &WP(w, querystr_d), 1);
-		break;
+
+		assert(_chat_type < lengthof(chat_captions));
+		SetDParam(0, STR_EMPTY);
+		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, chat_captions[_chat_type], 16);
+		DrawEditBox(w, &WP(w, querystr_d), 2);
+	} break;
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-			case 2: /* Send */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
-			case 3: /* Cancel */ DeleteWindow(w); break;
+			case 3: /* Send */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
+			case 0: /* Cancel */ DeleteWindow(w); break;
 		}
 		break;
 
 	case WE_MOUSELOOP:
-		HandleEditBox(w, &WP(w, querystr_d), 1);
+		HandleEditBox(w, &WP(w, querystr_d), 2);
 		break;
 
 	case WE_KEYPRESS:
@@ -1651,7 +1661,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 			ChatTabCompletion(w);
 		} else {
 			_chat_tab_completion_active = false;
-			switch (HandleEditBoxKey(w, &WP(w, querystr_d), 1, e, CS_ALPHANUMERAL)) {
+			switch (HandleEditBoxKey(w, &WP(w, querystr_d), 2, e, CS_ALPHANUMERAL)) {
 				case 1: /* Return */ SendChat(WP(w, querystr_d).text.buf); /* FALLTHROUGH */
 				case 2: /* Escape */ DeleteWindow(w); break;
 			}
@@ -1666,10 +1676,10 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _chat_window_widgets[] = {
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   639,     0,    13, STR_NULL,         STR_NULL}, // background
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   399,     1,    12, STR_NULL,         STR_NULL}, // text box
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   400,   519,     1,    12, STR_NETWORK_SEND, STR_NULL}, // send button
-{    WWT_TEXTBTN,   RESIZE_NONE,    14,   520,   639,     1,    12, STR_012E_CANCEL,  STR_NULL}, // cancel button
+{   WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,  0, 13, STR_00C5,         STR_018B_CLOSE_WINDOW},
+{     WWT_IMGBTN, RESIZE_NONE, 14,  11, 639,  0, 13, STR_NULL,         STR_NULL}, // background
+{     WWT_IMGBTN, RESIZE_NONE, 14,  75, 577,  1, 12, STR_NULL,         STR_NULL}, // text box
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 14, 578, 639,  1, 12, STR_NETWORK_SEND, STR_NULL}, // send button
 {   WIDGETS_END},
 };
 
@@ -1696,13 +1706,13 @@ void ShowNetworkChatQueryWindow(byte desttype, byte dest)
 
 	w = AllocateWindowDesc(&_chat_window_desc);
 
-	LowerWindowWidget(w, 1);
+	LowerWindowWidget(w, 2);
 	WP(w,querystr_d).caption = STR_NULL;
 	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
 	WP(w,querystr_d).wnd_num = 0;
 	WP(w,querystr_d).text.caret = false;
 	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf);
-	WP(w,querystr_d).text.maxwidth = w->widget[1].right - w->widget[1].left - 2; // widget[1] is the "text box"
+	WP(w,querystr_d).text.maxwidth = w->widget[2].right - w->widget[2].left - 2; // widget[1] is the "text box"
 	WP(w,querystr_d).text.buf = _edit_str_buf;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
 }
