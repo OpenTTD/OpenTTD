@@ -2328,7 +2328,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 #ifdef ENABLE_NETWORK
 			case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
 				if (_networking) {
-					const NetworkClientInfo *ci;
+					const NetworkClientInfo *ci = NULL;
 					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
 					bool has_team = false;
 
