@@ -1090,6 +1090,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy gl
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vzdy povolit stavbu malych letisk: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Upozornit na stratu vlaku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Obnovenie prikazov vozidla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nie
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ano, okrem zastavenych vozidiel

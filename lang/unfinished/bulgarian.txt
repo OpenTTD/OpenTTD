@@ -9,6 +9,7 @@ STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                               :{WHITE}Края
 STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Недостатъчно пари - трябват {CURRENCY}
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
+STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Трябва равна земя
 STR_0008_WAITING                                                :{BLACK}Чакане: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
@@ -361,6 +362,13 @@ STR_SORT_BY_VALUE                                               :Цена
 STR_SORT_BY_FACILITY                                            :Вид на гарата
 STR_SORT_BY_WAITING                                             :Цена на чакащият товар
 STR_SORT_BY_RATING_MAX                                          :Рейтинг на товара
+STR_ENGINE_SORT_ENGINE_ID                                       :Двигател № (класическо сортиране)
+STR_ENGINE_SORT_COST                                            :Цена
+STR_ENGINE_SORT_POWER                                           :Мощност
+STR_ENGINE_SORT_INTRO_DATE                                      :Дата на оповестяване
+STR_ENGINE_SORT_RUNNING_COST                                    :Цена за движение
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Мощност/Цена за движение
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Товарен капацитет
 
 ############ range for months starts
 STR_0162_JAN                                                    :Ян
@@ -695,6 +703,7 @@ STR_02A5_TOWN_SIZE                                              :{YELLOW}Гол�
 
 STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Покажи последното съобщение или отчет на новините
+STR_FULL                                                        :Пълно
 STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
 STR_02BB_TOWN_DIRECTORY                                         :Списък от градовете
 STR_02BC_VEHICLE_DESIGN_NAMES                                   :{BLACK}Имена на превозни средства
@@ -733,7 +742,13 @@ STR_02DA_ON                                                     :{BLACK}Вклю
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}
 STR_02DD_SUBSIDIES                                              :Субсидии
 STR_02DE_MAP_OF_WORLD                                           :Карта на света
+STR_EXTRA_VIEW_PORT                                             :Допълнителна камера
 STR_02DF_TOWN_DIRECTORY                                         :Списък на градовете
+STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Камера {COMMA}
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Преместване на камерата
+STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN_TT                             :{BLACK}Преместване на тази камера до глобалната
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW                                :{BLACK}Преместване глобалната камера
+STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Преместване глобалната камера до тази
 
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Валутна единица
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
@@ -858,7 +873,9 @@ STR_CRATES                                                      :кратери
 
 STR_CANT_SHARE_ORDER_LIST                                       :{WHITE}Не може да се споделя списъка със задачи...
 STR_CANT_COPY_ORDER_LIST                                        :{WHITE}Не може да се копира списъка от задачи...
+STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Край на Споделения пътен лист - -
 
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Европейски монетарен съюз!{}{}Еврото е прието като национална валута за всекидневни транзакции страната!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1019,9 +1036,11 @@ STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Поз�
 
 
 STR_GO_TO_WAYPOINT                                              :Отиди чрез  пътеводител {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Премини без спиране през {WAYPOINT}
 
 
 
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Редакция името на пътна точка
 
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Не може да се променя името на пункта...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Промяна ЖП линия на пункт
@@ -1031,6 +1050,7 @@ STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Отту
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK} Строеж на жп линия в режим Автоматичен
 
 
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Потвърдете създаването на случаен терен?
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Не може да се генерира промишленост...
 
 
@@ -1051,8 +1071,11 @@ STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Не м�
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Тук не може да се променя типа на жп линията...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Промяна/обновяване на ЖП линия
 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Преместване локомотива тук ще продаде целия влак
 
+STR_DRAG_DROP                                                   :{BLACK}Влачене & Пускане
 
+STR_FAST_FORWARD                                                :{BLACK}Бързо превъртане на играта
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Строене мина за въглища
 STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Засаждане на гора
@@ -1136,6 +1159,8 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Цена: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Приход: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Приход: {CURRENCY}
+STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Превод: {CURRENCY}
+STR_FEEDER                                                      :{YELLOW}Превод: {CURRENCY}
 STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Приблизителна цена: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Приблизителна цена: {CURRENCY}
 STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Приблизителен приход: {CURRENCY}
@@ -2077,6 +2102,7 @@ STR_8827_FULL_LOAD                                              :{BLACK}Пъле
 STR_8828_UNLOAD                                                 :{BLACK}Разтовари
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Заповеди)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Край на Заповедите - -
+STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Не може да купиш ЖП машина...
 STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Купи: {LTBLUE}{NUM}{BLACK} Цена: {LTBLUE}{CURRENCY}
 STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Цена: {LTBLUE}{CURRENCY}
@@ -2411,7 +2437,7 @@ STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Хангари
 
 ### depot strings
 
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Ще продадете всичко в депото
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Ще продадете всичко в депото.
 STR_ARE_YOU_SURE                                                :{BLACK}Сигурен ли си?
 
 STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Потвърдете продажбата всички влакове в депото
@@ -2429,6 +2455,10 @@ STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Прод
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Продажба всички кораби в депото
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Продажба всички самолети в хангара
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Списък на всички влакове с това депо в техния пътен лист
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Списък на всички автомобили с този гараж в техния пътен лист
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Списък на всички кораби с това депо в техния пътен лист
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Списък на всички самолети с хангар на това летище в техния пътен лист
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Автоматична замяна на всички влакове в депото
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Автоматична замяна на всички автомобили в депото
@@ -2436,7 +2466,9 @@ STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Авто
 STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Автоматична замяна на всички самолети в хангара
 
 
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Двигателя не е строим
 
+STR_ENGINES                                                     :Двигатели
 STR_WAGONS                                                      :Вагони
 
 
@@ -2446,6 +2478,7 @@ STR_WAGONS                                                      :Вагони
 
 ############ Lists rail types
 
+STR_ELRAIL_VEHICLES                                             :Електрически локомотиви
 
 ############ End of list of rail types
 
@@ -2453,8 +2486,21 @@ STR_WAGONS                                                      :Вагони
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Генериране
 STR_DATE                                                        :{BLACK}Дата:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_GENERATION_WORLD                                            :{WHITE}Създаване на свят...
+STR_GENERATION_ABORT                                            :{BLACK}Прекъсване
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Прекъсване генерирането на свят
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Потвърдете прекъсването на генерацията?
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_CLEARING_TILES                                              :{BLACK}Създаване на твърда и скална повърност
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Това действие промени нивото на трудност на custom
+STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Сваляне височината на плоска земя
+STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Повишаване височината на плоска земя
+STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Промяна височината на плоска земя
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Височина на плоска земя:
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 
 ########### String for new airports
