@@ -1048,9 +1048,7 @@ static const NetworkClientInfo *NetworkFindClientInfo(byte client_no)
 {
 	const NetworkClientInfo *ci;
 
-	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
-		// Skip non-active items
-		if (ci->client_index == NETWORK_EMPTY_INDEX) continue;
+	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
 		if (client_no == 0) return ci;
 		client_no--;
 	}
@@ -1123,12 +1121,10 @@ static void HandleClientListPopupClick(byte index, byte clientno) {
 static bool CheckClientListHeight(Window *w)
 {
 	int num = 0;
-	NetworkClientInfo *ci;
+	const NetworkClientInfo *ci;
 
 	// Should be replaced with a loop through all clients
-	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
-		// Skip non-active items
-		if (ci->client_index == NETWORK_EMPTY_INDEX) continue;
+	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
 		num++;
 	}
 
@@ -1307,10 +1303,7 @@ static void ClientListWndProc(Window *w, WindowEvent *e)
 
 		y = CLNWND_OFFSET;
 
-		for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
-			// Skip non-active items
-			if (ci->client_index == NETWORK_EMPTY_INDEX) continue;
-
+		FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
 			if (_selected_clientlist_item == i++) { // Selected item, highlight it
 				GfxFillRect(1, y, 248, y + CLNWND_ROWSIZE - 1, 0);
 				colour = 0xC;

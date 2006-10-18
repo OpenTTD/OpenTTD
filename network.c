@@ -55,7 +55,7 @@ NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index)
 {
 	NetworkClientInfo *ci;
 
-	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
+	for (ci = _network_client_info; ci != endof(_network_client_info); ci++) {
 		if (ci->client_index == client_index) return ci;
 	}
 
@@ -70,7 +70,7 @@ NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip)
 	NetworkClientInfo *ci;
 	uint32 ip_number = inet_addr(ip);
 
-	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
+	for (ci = _network_client_info; ci != endof(_network_client_info); ci++) {
 		if (ci->client_ip == ip_number) return ci;
 	}
 

@@ -198,7 +198,8 @@ NetworkClientState _clients[MAX_CLIENTS];
 #define SEND_COMMAND(type) NetworkPacketSend_ ## type ## _command
 #define RECEIVE_COMMAND(type) NetworkPacketReceive_ ## type ## _command
 
-#define FOR_ALL_CLIENTS(cs) for (cs = _clients; cs != &_clients[MAX_CLIENTS] && cs->socket != INVALID_SOCKET; cs++)
+#define FOR_ALL_CLIENTS(cs) for (cs = _clients; cs != endof(_clients) && cs->socket != INVALID_SOCKET; cs++)
+#define FOR_ALL_ACTIVE_CLIENT_INFOS(ci) for (ci = _network_client_info; ci != endof(_network_client_info); ci++) if (ci->client_index != NETWORK_EMPTY_INDEX)
 
 Packet *NetworkSend_Init(PacketType type);
 void NetworkSend_uint8(Packet *packet, uint8 data);

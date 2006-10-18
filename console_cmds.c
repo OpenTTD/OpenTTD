@@ -658,10 +658,10 @@ DEF_CONSOLE_CMD(ConKick)
 
 DEF_CONSOLE_CMD(ConResetCompany)
 {
-	Player *p;
-	NetworkClientState *cs;
-	NetworkClientInfo *ci;
-	byte index;
+	const Player *p;
+	const NetworkClientState *cs;
+	const NetworkClientInfo *ci;
+	PlayerID index;
 
 	if (argc == 0) {
 		IConsoleHelp("Remove an idle company from the game. Usage: 'reset_company <company-id>'");
@@ -721,13 +721,11 @@ DEF_CONSOLE_CMD(ConNetworkClients)
 		return true;
 	}
 
-	for (ci = _network_client_info; ci != &_network_client_info[MAX_CLIENT_INFO]; ci++) {
-		if (ci->client_index != NETWORK_EMPTY_INDEX) {
-			IConsolePrintF(8, "Client #%1d  name: '%s'  company: %1d  IP: %s",
-			               ci->client_index, ci->client_name,
-			               ci->client_playas + (IsValidPlayer(ci->client_playas) ? 1 : 0),
-			               GetPlayerIP(ci));
-		}
+	FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
+		IConsolePrintF(8, "Client #%1d  name: '%s'  company: %1d  IP: %s",
+		               ci->client_index, ci->client_name,
+		               ci->client_playas + (IsValidPlayer(ci->client_playas) ? 1 : 0),
+		               GetPlayerIP(ci));
 	}
 
 	return true;
@@ -748,9 +746,7 @@ DEF_CONSOLE_CMD(ConNetworkConnect)
 	}
 
 	if (argc < 2) return false;
-
-	if (_networking) // We are in network-mode, first close it!
-		NetworkDisconnect();
+	if (_networking) NetworkDisconnect(); // we are in network-mode, first close it!
 
 	ip = argv[1];
 	/* Default settings: default port and new company */
