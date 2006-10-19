@@ -195,7 +195,7 @@ static void DedicatedHandleKeyInput(void)
 	if (_exit_game) return;
 
 #if defined(UNIX) || defined(__OS2__)
-	fgets(input_line, lengthof(input_line), stdin);
+	if (fgets(input_line, lengthof(input_line), stdin) == NULL) return;
 #else
 	/* Handle console input, and singal console thread, it can accept input again */
 	strncpy(input_line, _win_console_thread_buffer, lengthof(input_line));
