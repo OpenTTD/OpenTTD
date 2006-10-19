@@ -19,10 +19,11 @@ static MemoryPool _spritegroup_pool;
 void DestroySpriteGroup(SpriteGroup *group)
 {
 	/* Free dynamically allocated memory */
+	/* XXX Cast away the consts due to MSVC being buggy... */
 	switch (group->type) {
 		case SGT_REAL:
-			free(group->g.real.loaded);
-			free(group->g.real.loading);
+			free((SpriteGroup**)group->g.real.loaded);
+			free((SpriteGroup**)group->g.real.loading);
 			break;
 
 		case SGT_DETERMINISTIC:
@@ -31,7 +32,7 @@ void DestroySpriteGroup(SpriteGroup *group)
 			break;
 
 		case SGT_RANDOMIZED:
-			free(group->g.random.groups);
+			free((SpriteGroup**)group->g.random.groups);
 			break;
 
 		default:
