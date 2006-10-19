@@ -19,8 +19,8 @@ typedef struct RealSpriteGroup {
 
 	byte num_loaded;       ///< Number of loaded groups
 	byte num_loading;      ///< Number of loading groups
-	SpriteGroup **loaded;  ///< List of loaded groups (can be SpriteIDs or Callback results)
-	SpriteGroup **loading; ///< List of loading groups (can be SpriteIDs or Callback results)
+	const SpriteGroup **loaded;  ///< List of loaded groups (can be SpriteIDs or Callback results)
+	const SpriteGroup **loading; ///< List of loading groups (can be SpriteIDs or Callback results)
 } RealSpriteGroup;
 
 /* Shared by deterministic and random groups. */
@@ -73,7 +73,7 @@ typedef struct DeterministicSpriteGroupAdjust {
 
 
 typedef struct DeterministicSpriteGroupRange {
-	SpriteGroup *group;
+	const SpriteGroup *group;
 	uint32 low;
 	uint32 high;
 } DeterministicSpriteGroupRange;
@@ -88,7 +88,7 @@ typedef struct DeterministicSpriteGroup {
 	DeterministicSpriteGroupRange *ranges; // Dynamically allocated
 
 	// Dynamically allocated, this is the sole owner
-	SpriteGroup *default_group;
+	const SpriteGroup *default_group;
 } DeterministicSpriteGroup;
 
 typedef enum RandomizedSpriteGroupCompareModes {
@@ -109,7 +109,7 @@ typedef struct RandomizedSpriteGroup {
 	byte num_groups; // must be power of 2
 
 	// Take the group with appropriate index:
-	SpriteGroup **groups;
+	const SpriteGroup **groups;
 } RandomizedSpriteGroup;
 
 
