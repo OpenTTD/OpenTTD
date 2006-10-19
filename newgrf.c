@@ -1395,7 +1395,7 @@ static void FeatureChangeInfo(byte *buf, int len)
  * @param value The value that was used to represent this callback result
  * @return A spritegroup representing that callback result
  */
-static SpriteGroup* NewCallBackResultSpriteGroup(uint16 value)
+static const SpriteGroup* NewCallBackResultSpriteGroup(uint16 value)
 {
 	SpriteGroup *group = AllocateSpriteGroup();
 
@@ -1420,7 +1420,7 @@ static SpriteGroup* NewCallBackResultSpriteGroup(uint16 value)
  * @param sprites The number of sprites per set.
  * @return A spritegroup representing the sprite number result.
  */
-static SpriteGroup* NewResultSpriteGroup(SpriteID sprite, byte num_sprites)
+static const SpriteGroup* NewResultSpriteGroup(SpriteID sprite, byte num_sprites)
 {
 	SpriteGroup *group = AllocateSpriteGroup();
 	group->type = SGT_RESULT;
@@ -1475,7 +1475,7 @@ static void NewSpriteSet(byte *buf, int len)
 
 /* Helper function to either create a callback or link to a previously
  * defined spritegroup. */
-static SpriteGroup* GetGroupFromGroupID(byte setid, byte type, uint16 groupid)
+static const SpriteGroup* GetGroupFromGroupID(byte setid, byte type, uint16 groupid)
 {
 	if (HASBIT(groupid, 15)) return NewCallBackResultSpriteGroup(groupid);
 
@@ -1488,7 +1488,7 @@ static SpriteGroup* GetGroupFromGroupID(byte setid, byte type, uint16 groupid)
 }
 
 /* Helper function to either create a callback or a result sprite group. */
-static SpriteGroup* CreateGroupFromGroupID(byte feature, byte setid, byte type, uint16 spriteid, uint16 num_sprites)
+static const SpriteGroup* CreateGroupFromGroupID(byte feature, byte setid, byte type, uint16 spriteid, uint16 num_sprites)
 {
 	if (HASBIT(spriteid, 15)) return NewCallBackResultSpriteGroup(spriteid);
 
