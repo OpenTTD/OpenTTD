@@ -269,9 +269,10 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	};
 
 	/* Cargo type + capacity, or N/A */
-	SetDParam(0, STR_8838_N_A);
-	SetDParam(2, STR_EMPTY);
-	if (rvi->capacity != 0) {
+	if (rvi->capacity == 0) {
+		SetDParam(0, CT_INVALID);
+		SetDParam(2, STR_EMPTY);
+	} else {
 		SetDParam(0, rvi->cargo_type);
 		SetDParam(1, (rvi->capacity * (CountArticulatedParts(engine_number) + 1)) << multihead);
 		SetDParam(2, STR_9842_REFITTABLE);
@@ -317,9 +318,10 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Cargo type + capacity, or N/A */
-	SetDParam(0, STR_8838_N_A);
-	SetDParam(2, STR_EMPTY);
-	if (rvi->capacity != 0) {
+	if (rvi->capacity == 0) {
+		SetDParam(0, CT_INVALID);
+		SetDParam(2, STR_EMPTY);
+	} else {
 		SetDParam(0, rvi->cargo_type);
 		SetDParam(1, rvi->capacity * (CountArticulatedParts(engine_number) + 1));
 		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);

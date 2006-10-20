@@ -731,7 +731,8 @@ static char *FormatString(char *buff, const char *str, const int32 *argv, uint c
 				// Layout now is:
 				//   8bit   - cargo type
 				//   16-bit - cargo count
-				StringID cargo_str = _cargoc.names_long[GetInt32(&argv)];
+				CargoID cargo = GetInt32(&argv);
+				StringID cargo_str = (cargo == CT_INVALID) ? STR_8838_N_A : _cargoc.names_long[cargo];
 				buff = GetStringWithArgs(buff, cargo_str, argv++);
 				break;
 			}

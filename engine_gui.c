@@ -139,7 +139,7 @@ static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)
 		SetDParam(5, rvi->cargo_type);
 		SetDParam(6, rvi->capacity << multihead);
 	} else {
-		SetDParam(5, STR_8838_N_A);
+		SetDParam(5, CT_INVALID);
 	}
 	DrawStringMultiCenter(x, y, STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER, maxw);
 }
