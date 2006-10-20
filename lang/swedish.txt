@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Platt mark krävs
 STR_0008_WAITING                                                :{BLACK}Väntar: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (på väg från
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (på väg från
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepterar: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepterar: {GOLD}
@@ -285,7 +285,7 @@ STR_013C_CARGO                                                  :{BLACK}Gods
 STR_013D_INFORMATION                                            :{BLACK}Information
 STR_013E_CAPACITIES                                             :{BLACK}Kapaciteter
 STR_013E_TOTAL_CARGO                                            :{BLACK}Gods Totalt
-STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Tågets totala kapacitet:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}{CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nytt spel
@@ -1235,8 +1235,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Bygg knä
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Bygg sockergruva
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrier
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transporterat)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transporterat)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transporterat)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transporterat)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... för nära en annan industri
@@ -1843,7 +1843,7 @@ STR_4829_REQUIRES                                               :{BLACK}Kräver: 
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion förra månaden:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transporterat)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporterat)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrera vyn ovanför industrin
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Ny {STRING} under byggnation nära {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Ny {STRING} planteras nära {TOWN}!
@@ -2583,7 +2583,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Gör mark
 STR_SERVICE_HINT                                                :{BLACK}Skippa den här ordern om inte servning behövs
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nytt {STRING} nu tillgängligt!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vikt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Effekt: {POWER}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kostnad: {CURRENCY} Vikt: {WEIGHT_S}{}Hastighet: {VELOCITY}  Effekt: {POWER}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Motorstopp
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ålder: {LTBLUE}{STRING}{BLACK}   Löpande kostnad: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vikt: {LTBLUE}{WEIGHT_S}  {BLACK}Effekt: {LTBLUE}{POWER}{BLACK} Tophastighet: {LTBLUE}{VELOCITY}
@@ -2624,7 +2624,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Tophasti
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra året: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...måste stoppas inuti ett bussgarage
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan inte sälja vägfordon...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan inte stoppa/starta vägfordon...
@@ -2651,7 +2651,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Vägfordo
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Bygg markerat vägfordon
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nytt vägfordon tillgängligt!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kostnad: {CURRENCY}{}Hastighet: {VELOCITY}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kostnad: {CURRENCY}{}Hastighet: {VELOCITY}{}Löpande kostnad: {CURRENCY}/år{}Kapacitet: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Byt namn på vägfordon
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan inte byta namn på vägfordon...
@@ -2698,7 +2698,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Tophasti
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Vinst detta år: {LTBLUE}{CURRENCY}  (förra år: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Tillförlitlighet: {LTBLUE}{COMMA}%  {BLACK}Motorstopp sedan senaste service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggt: {LTBLUE}{NUM}{BLACK} Värde: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan inte stoppa/starta skepp...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan inte skicka skepp till depå...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan inte finna en lokal depå
@@ -2724,7 +2724,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Skicka s
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Visa skeppdetaljer
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nytt skepp tillgängligt!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kostnad: {CURRENCY} Tophastighet: {VELOCITY}{}Kapacitet: {STRING}{}Löpande kostnad: {CURRENCY}/år
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kostnad: {CURRENCY} Tophastighet: {VELOCITY}{}Kapacitet: {CARGO}{}Löpande kostnad: {CURRENCY}/år
 STR_982F_NAME_SHIP                                              :{BLACK}Byt namn på skepp
 
 STR_9831_NAME_SHIP                                              :{WHITE}Byt namn på skepp
@@ -2742,7 +2742,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Anpassa 
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Välj typ av gods för skepp att frakta
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Anpassa skepp att frakta markerad godstyp
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Välj godstyp att frakta:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Anpassningens kostnad: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Anpassningens kostnad: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan inte anpassa skepp...
 STR_9842_REFITTABLE                                             :(anpassningsbart)
 STR_GO_TO_SHIP_DEPOT                                            :Åk till {TOWN}s båtdepå
@@ -2777,8 +2777,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flygplan
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flygplan i vägen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan inte stoppa/starta flygplan...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flygplan är i luften
-STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flygplan måste stoppas i hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kan inte sälja flygplan...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flygplatsbyggnation
@@ -3013,7 +3013,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kostnad:
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighet: {GOLD}{VELOCITY}{BLACK}   Effekt: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Driftkostnader: {GOLD}{CURRENCY}/år
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitet: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitet: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designår: {GOLD}{NUM}{BLACK} Livslängd: {GOLD}{COMMA} år
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. tillförlitlighet: {GOLD}{COMMA} %
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kostnad: {GOLD}{CURRENCY}

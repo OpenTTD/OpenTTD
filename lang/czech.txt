@@ -14,8 +14,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Je potreba plochá zeme
 STR_0008_WAITING                                                :{BLACK}Ceka tu: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (na ceste z
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (na ceste z
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Prijima: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Prijima: {GOLD}
@@ -342,7 +342,7 @@ STR_013C_CARGO                                                  :{BLACK}Náklad
 STR_013D_INFORMATION                                            :{BLACK}Informace
 STR_013E_CAPACITIES                                             :{BLACK}Kapacity
 STR_013E_TOTAL_CARGO                                            :{BLACK}Celkový náklad
-STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Celková kapacita tohoto vlaku:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nová hra
@@ -1292,8 +1292,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Vyhloubi
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Vyhloubit cukrový dul
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Prumysl
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA} % prepraveno)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA} %/{COMMA} % prepraveno)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA} % prepraveno)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA} %/{COMMA} % prepraveno)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}... prilis blízko k jinému prumyslu
@@ -1900,7 +1900,7 @@ STR_4829_REQUIRES                                               :{BLACK}Vy¸aduje
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produkce minulý mesic:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA} % prepraveno)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA} % prepraveno)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Nastavit pohled na prumysl
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}{STRING} se staví poblí¸ mesta {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nový {STRING} se vysazuje poblí¸ mesta {TOWN}!
@@ -2640,7 +2640,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Oznaceny
 STR_SERVICE_HINT                                                :{BLACK}Preskoc tento cíl, pokud není potreba pravidelná údr¸ba
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Dal¨í {STRING} je k dispozici!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY} rocne{}Kapacita: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cena: {CURRENCY} Hmotnost: {WEIGHT_S}{}Rychlost: {VELOCITY}  Výkon: {POWER}{}Cena provozu: {CURRENCY} rocne{}Kapacita: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Porucha
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Stari: {LTBLUE}{STRING}{BLACK}   Cena provozu: {LTBLUE}{CURRENCY} rocne
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Hmotnost: {LTBLUE}{WEIGHT_S}  {BLACK}Výkon: {LTBLUE}{POWER}{BLACK} Max. rychlost: {LTBLUE}{VELOCITY}
@@ -2681,7 +2681,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Max. ryc
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Prijem tento rok: {LTBLUE}{CURRENCY}  (minulý rok): {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupen: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}... musí být zastaven v gará¸i
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nemohu prodat silnicni vozidlo...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nemohu zastavit/rozjet silnicni vozidlo...
@@ -2708,7 +2708,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Seznam s
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Koupit oznacene vozidlo
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nové silnicni vozidlo je k dispozici!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Cena provozu: {CURRENCY} rocne{}Kapacita: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Rychlost: {VELOCITY}{}Cena provozu: {CURRENCY} rocne{}Kapacita: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Prejmenovat silnicni vozidlo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nelze prejmenovat silnicni vozidlo...
@@ -2755,7 +2755,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Max. ryc
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Prijem tento rok: {LTBLUE}{CURRENCY}  (minulý rok: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Spolehlivost: {LTBLUE}{COMMA}%  {BLACK}Poruch od posledního servisu: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Koupeno: {LTBLUE}{NUM}{BLACK} Cena: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nelze rozjet/zastavit lod...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nelze poslat lod do depa...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nemohu najít místní depo
@@ -2781,7 +2781,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Poslat l
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Ukázat detaily lodi
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nová lod je k dispozici!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {STRING}{}Cena provozu: {CURRENCY} rocne
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO}{}Cena provozu: {CURRENCY} rocne
 STR_982F_NAME_SHIP                                              :{BLACK}Prejmenovat lod
 
 STR_9831_NAME_SHIP                                              :{WHITE}Prejemnovat lod
@@ -2799,7 +2799,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Prestave
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Zvolit druh nákladu, který bude lod prevazet
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Prestavet pro prevoz oznaceneho nákladu
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Zvolit druh nákladu:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{STRING}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nová kapacita: {GOLD}{CARGO}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nelze prestavet lod...
 STR_9842_REFITTABLE                                             :(lze prestavet)
 STR_GO_TO_SHIP_DEPOT                                            :Zajet do lodního depa {TOWN}
@@ -2834,8 +2834,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Letadlo 
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Letadlo v ceste
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nemohu rozjet/zastavit letadlo...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Letadlo letí
-STR_A019_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Letadlo musi být zastaveno v hangáru
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nelze prodat letadlo...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Stavba letiste
@@ -3070,7 +3070,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {G
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Rychlost: {GOLD}{VELOCITY}{BLACK}   Výkon: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Provozní cena: {GOLD}{CURRENCY} rocne
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacita: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Vyvinuto: {GOLD}{NUM}{BLACK} ´ivotnost: {GOLD}{COMMA} {P rok roky let}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. spolehlivost: {GOLD}{COMMA} %
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}

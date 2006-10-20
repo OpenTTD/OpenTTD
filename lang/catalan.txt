@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Es necessita un terreny pla
 STR_0008_WAITING                                                :{BLACK}Esperant: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (en ruta des de
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (en ruta des de
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepta: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepta: {GOLD}
@@ -285,7 +285,7 @@ STR_013C_CARGO                                                  :{BLACK}Càrrega
 STR_013D_INFORMATION                                            :{BLACK}Informació
 STR_013E_CAPACITIES                                             :{BLACK}Capacitats
 STR_013E_TOTAL_CARGO                                            :{BLACK}Càrrega Total
-STR_013F_CAPACITY                                               :{BLACK}Capacitats: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Capacitats: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Càrrega total (capacitat) d'aquest tren:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Joc Nou
@@ -1235,8 +1235,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fundar C
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construir Mina de Sucre
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Indústries
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transportat)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportat)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportat)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transportat)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...massa a prop d'altres indústries
@@ -1843,7 +1843,7 @@ STR_4829_REQUIRES                                               :{BLACK}Necessit
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Producció del darrer mes:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportat)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportat)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrar la pantalla principal en la situació de l'indústria
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nou/nova {STRING} en construcció a prop de {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nou/nova {STRING} s'està plantant a prop de {TOWN}!
@@ -2583,7 +2583,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obligar 
 STR_SERVICE_HINT                                                :{BLACK}Saltar l'ordre a menys que es necessiti manteniment
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} disponible!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Pes: {WEIGHT_S}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Pes: {WEIGHT_S}{}Velocitat: {VELOCITY}  Potència: {POWER}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Avariat
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Edat: {LTBLUE}{STRING}{BLACK}   Cost de Circulació: {LTBLUE}{CURRENCY}/any
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Pes: {LTBLUE}{WEIGHT_S}  {BLACK}Potència: {LTBLUE}{POWER}{BLACK} Vel. Max.: {LTBLUE}{VELOCITY}
@@ -2624,7 +2624,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Vel. Max
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des del darrer manteniment: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...s'ha de parar dintre d'una cotxera
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}No pots vendre l'automòbil...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No es pot parar/arrencar l'automòbil...
@@ -2651,7 +2651,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Llista d
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Construeix l'automòbil seleccionat
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nou automòbil disponible!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Velocitat: {VELOCITY}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cost: {CURRENCY}{}Velocitat: {VELOCITY}{}Cost de circulació: {CURRENCY}/any{}Capacitat: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Anomenar automòbil
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}No es pot anomenar l'automòbil...
@@ -2698,7 +2698,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Max. vel
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Benefici enguany: {LTBLUE}{CURRENCY}  (darrer any: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Rendibilitat: {LTBLUE}{COMMA}%  {BLACK}Avaries des de l'últim manteniment: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valor: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}No es pot parar/arrencar el vaixell...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}No es pot enviar vaixell a la drassana...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Incapaç de trobar drassana local
@@ -2724,7 +2724,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Enviar e
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Mostrar els detalls del vaixell
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nou vaixell disponible!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Max. Velocitat: {VELOCITY}{}Capacitat: {STRING}{}Cost de Circulació: {CURRENCY}/any
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Max. Velocitat: {VELOCITY}{}Capacitat: {CARGO}{}Cost de Circulació: {CURRENCY}/any
 STR_982F_NAME_SHIP                                              :{BLACK}Anomenar vaixell
 
 STR_9831_NAME_SHIP                                              :{WHITE}Anomenar vaixell
@@ -2742,7 +2742,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Remodela
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Selecciona el tipus de càrrega a transportar
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Remodelar vaixell per portar el tipus de càrrega seleccionat
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Selecciona el tipus de càrrega a transportar:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacitat: {GOLD}{STRING}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nova capacitat: {GOLD}{CARGO}{}{BLACK}Cost de la remodelació: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}No es pot remodelar el vaixell...
 STR_9842_REFITTABLE                                             :(remodelable)
 STR_GO_TO_SHIP_DEPOT                                            :Anar a drassana de {TOWN}.
@@ -2777,8 +2777,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}L' aeron
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronau en el camí
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}No es pot parar/arrencar l'aeronau...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronau en vol
-STR_A019_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Capacitat: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}L' aeronau s'ha de parar a l'hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}No es pot vendre l' aeronau...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Construcció d'Aeroport
@@ -3013,7 +3013,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {G
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocitat: {GOLD}{VELOCITY}{BLACK}   Potència: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocitat: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost d'utilització: {GOLD}{CURRENCY}/any
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitat: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitat: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Dissenyat: {GOLD}{NUM}{BLACK} Vida: {GOLD}{COMMA} anys
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Rendiment: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}

@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Landskabet skal være fladt
 STR_0008_WAITING                                                :{BLACK}Venter: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (på vej fra
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (på vej fra
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accepterer: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accepterer: {GOLD}
@@ -285,7 +285,7 @@ STR_013C_CARGO                                                  :{BLACK}Last
 STR_013D_INFORMATION                                            :{BLACK}Information
 STR_013E_CAPACITIES                                             :{BLACK}Lasteevner
 STR_013E_TOTAL_CARGO                                            :{BLACK}Samlet last
-STR_013F_CAPACITY                                               :{BLACK}Lasteevne: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Lasteevne: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Samlet last (lasteevne) på dette tog:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nyt Spil
@@ -1235,8 +1235,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Opfør Ka
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Byg Sukkermine
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrier
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transporteret)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transported)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transporteret)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transported)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...for tæt på en anden industribygning
@@ -1843,7 +1843,7 @@ STR_4829_REQUIRES                                               :{BLACK}Kræver: 
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion sidste måned:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transporteret)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transporteret)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centrer skærmen over placeringen af industrien
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Ny {STRING} under opførelse tæt på {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Ny {STRING} bliver plantet tæt på {TOWN}!
@@ -2583,7 +2583,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den m
 STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over hvis der ikke er behov for service
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ny {STRING} tilgængelig nu!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S}  {BLACK}Styrke: {LTBLUE}{POWER}{BLACK} Maks hastighed: {LTBLUE}{VELOCITY}
@@ -2624,7 +2624,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Maks has
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dette års profit: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...skal være stoppet inde i et værksted først
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kan ikke sælge køretøj...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kan ikke stoppe/starte køretøj...
@@ -2651,7 +2651,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Liste ov
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Byg det markerede køretøj
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nyt køretøj er tilgængeligt!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pris: {CURRENCY}{}Hastighed: {VELOCITY}{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Giv køretøjet et navn
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kan ikke give køretøjet et navn...
@@ -2698,7 +2698,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Maks has
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Dette års profit: {LTBLUE}{CURRENCY}  (sidste år: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Pålidelighed: {LTBLUE}{COMMA}%  {BLACK}Nedbrud siden sidste service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Bygget: {LTBLUE}{NUM}{BLACK} Værdi: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kan ikke stoppe/starte skibet...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kan ikke sende skibet til dok...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kan ikke finde lokal dok
@@ -2724,7 +2724,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Send ski
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Vis detaljer omkring skibet
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nyt skib er tilgængeligt!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks Hastighed: {VELOCITY}{}Kapacitet: {STRING}{}Kørselsomkostning: {CURRENCY}/år
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Pris: {CURRENCY} Maks Hastighed: {VELOCITY}{}Kapacitet: {CARGO}{}Kørselsomkostning: {CURRENCY}/år
 STR_982F_NAME_SHIP                                              :{BLACK}Giv skibet et navn
 
 STR_9831_NAME_SHIP                                              :{WHITE}Giv skibet et navn
@@ -2742,7 +2742,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Ombyg sk
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vælg den slags last skibet skal sejle med
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Ombyg skibet til den markerede slags last
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vælg den lasttype der skal sejles med:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{STRING}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ny kapacitet: {GOLD}{CARGO}{}{BLACK}Pris for ombyggelse: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kan ikke ombygge skib...
 STR_9842_REFITTABLE                                             :(ombygning mulig)
 STR_GO_TO_SHIP_DEPOT                                            :Sejl til {TOWN} Dok
@@ -2777,8 +2777,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Fly {COM
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Fly i vejen
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kan ikke stoppe/starte fly...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Flyet er i luften
-STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flyet skal være stoppet i en flyhangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kan ikke sælge flyet...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lufthavnskonstruktion
@@ -3013,7 +3013,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Pris: {G
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hastighed: {GOLD}{VELOCITY}{BLACK}   Styrke: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hastighed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Kørselsudgift: {GOLD}{CURRENCY}/år
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Lasteevne: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Designet: {GOLD}{NUM}{BLACK} Liv: {GOLD}{COMMA} år
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Pålidelighed: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Pris: {GOLD}{CURRENCY}

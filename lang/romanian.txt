@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Necesitã teren plat
 STR_0008_WAITING                                                :{BLACK}În asteptare: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (plecat de la
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (plecat de la
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Acceptã: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Acceptã: {GOLD}
@@ -285,7 +285,7 @@ STR_013C_CARGO                                                  :{BLACK}Încãrcãt
 STR_013D_INFORMATION                                            :{BLACK}Informatii
 STR_013E_CAPACITIES                                             :{BLACK}Capacitãti
 STR_013E_TOTAL_CARGO                                            :{BLACK}Încãrcãturi
-STR_013F_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Încãrcãtura totalã (capacitatea) acestui tren:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Joc nou
@@ -1200,8 +1200,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Construi
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Construieste minã de zahãr
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrii
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transportat)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportat)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportat)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transportat)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...prea aproape de altã industrie
@@ -1804,7 +1804,7 @@ STR_4829_REQUIRES                                               :{BLACK}Are nevo
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Productia luna trecutã:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportat)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportat)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centreazã imaginea pe locatia industriei
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Un nou obiectiv industrial ({STRING}) se construieste lângã {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}O nouã {STRING} se planteazã lângã {TOWN}!
@@ -2534,7 +2534,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Forteazã
 STR_SERVICE_HINT                                                :{BLACK}Sãri peste aceastã comandã dacã nu este necesar un service
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Stiri: {STRING} este acum disponibil!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Greutate: {WEIGHT_S}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Cost: {CURRENCY} Greutate: {WEIGHT_S}{}Vitezã: {VELOCITY}  Putere: {POWER}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Defectiune
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Vechimea: {LTBLUE}{STRING}{BLACK}   Cost de rulare: {LTBLUE}{CURRENCY}/an
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Greutate: {LTBLUE}{WEIGHT_S}  {BLACK}Putere: {LTBLUE}{POWER}{BLACK} Vitezã max.: {LTBLUE}{VELOCITY}
@@ -2573,7 +2573,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Vitezã m
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Cumpãrat: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...trebuie oprit intr-o autobazã
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nu pot vinde autovehiculul...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nu pot opri/porni autovehiculul...
@@ -2600,7 +2600,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Road veh
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Cumpãrã autovehiculul selectat
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Un nou autovehicul disponibil!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pret: {CURRENCY}{}Vitezã: {VELOCITY}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Pret: {CURRENCY}{}Vitezã: {VELOCITY}{}Cost de rulare: {CURRENCY}/an{}Capacitate: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Numele autovehiculului
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nu pot redenumi autovehiculul...
@@ -2646,7 +2646,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Viteza m
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit anul acesta: {LTBLUE}{CURRENCY}  (anul trecut: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Eficientã: {LTBLUE}{COMMA}%  {BLACK}Defectiuni de la ultimul service: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Construit: {LTBLUE}{NUM}{BLACK} Valoare: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nu pot opri/porni nava...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nu pot trimite nava în santier...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nu pot gãsi un santier apropiat
@@ -2672,7 +2672,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Trimite 
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Afiseazã detaliile navei
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}O nouã navã este disponibilã!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {STRING}{}Cost de rulare: {CURRENCY}/an
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cost: {CURRENCY} Viteza max.: {VELOCITY}{}Capacitate: {CARGO}{}Cost de rulare: {CURRENCY}/an
 STR_982F_NAME_SHIP                                              :{BLACK}Alege un nume pentru aceastã navã
 
 STR_9831_NAME_SHIP                                              :{WHITE}Alege un nume pentru aceastã navã
@@ -2690,7 +2690,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Schimbã 
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de încãrcãturã ce va fi transportat de navã
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Schimbã tipul de încãrcãturã al acestei nave
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Alege tipul încãrcãturii:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{STRING}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Noua capacitate: {GOLD}{CARGO}{}{BLACK}Costul transformãrii: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nu pot schimba tipul navei...
 STR_9842_REFITTABLE                                             :(suportã alte mãrfuri)
 STR_GO_TO_SHIP_DEPOT                                            :Mergi la Santierul Naval {TOWN}
@@ -2725,8 +2725,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aeronava
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronavã în cale
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nu pot opri/porni aeronava...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aeronavã se aflã în zbor
-STR_A019_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Aeronava trebuie sã se afle într-un hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nu pot vinde aeronava...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Constructie aeroport
@@ -2892,7 +2892,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cost: {G
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Viteza: {GOLD}{VELOCITY}{BLACK}   Putere: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Viteza: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Cost de rulare: {GOLD}{CURRENCY}/an
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capacitate: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}An aparitie: {GOLD}{NUM}{BLACK} Durata de viata: {GOLD}{COMMA} years
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Eficienta max.: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cost: {GOLD}{CURRENCY}

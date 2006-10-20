@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Richiesto terreno piano
 STR_0008_WAITING                                                :{BLACK}In attesa: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (in viaggio da
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (in viaggio da
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Accettati: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Accettati: {GOLD}
@@ -285,7 +285,7 @@ STR_013C_CARGO                                                  :{BLACK}Carichi
 STR_013D_INFORMATION                                            :{BLACK}Informazioni
 STR_013E_CAPACITIES                                             :{BLACK}Capienza
 STR_013E_TOTAL_CARGO                                            :{BLACK}Carico totale
-STR_013F_CAPACITY                                               :{BLACK}Capacità: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Capacità: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carico totale (capacità) di questo treno:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nuovo Gioco
@@ -1235,8 +1235,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fonda To
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Costruisci Raffineria di Zucchero
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrie
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% trasportato)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% trasportate)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% trasportato)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% trasportate)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...troppo vicina ad un'altra industria.
@@ -1843,7 +1843,7 @@ STR_4829_REQUIRES                                               :{BLACK}Richiede
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produzione ultimo mese:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% trasportato)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% trasportato)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Centra visule sull'industria
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Nuova {STRING} in costruzione vicino a {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Nuova {STRING} è stata piantata vicino a {TOWN}!
@@ -2583,7 +2583,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fai dive
 STR_SERVICE_HINT                                                :{BLACK}Ignora l'ordine finché non sia necessaria la manutenzione
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nuova {STRING} ora disponibile!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Costo: {CURRENCY} Peso: {WEIGHT_S}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Consumi: {CURRENCY}/anno{}Capienza: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Costo: {CURRENCY} Peso: {WEIGHT_S}{}Velocità: {VELOCITY}  Potenza: {POWER}{}Consumi: {CURRENCY}/anno{}Capienza: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Guasto!
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Età: {LTBLUE}{STRING}{BLACK}   Consumi: {LTBLUE}{CURRENCY}/anno
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Peso: {LTBLUE}{WEIGHT_S}  {BLACK}Potenza: {LTBLUE}{POWER}{BLACK} Velocità Max: {LTBLUE}{VELOCITY}
@@ -2624,7 +2624,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Velocità
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profitto quest'anno: {LTBLUE}{CURRENCY}  (anno scorso: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenz.: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Costr. nel: {LTBLUE}{NUM}{BLACK} Valore: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...deve essere fermo nel deposito
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Non puoi vendere veicolo
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Non puoi far fermare/avviare veicolo...
@@ -2651,7 +2651,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Lista ve
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Costruisci veicolo stradale evidenziato
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Nuovo veicolo stradale disponibile!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Costo: {CURRENCY}{}Velocità: {VELOCITY}{}Consumi: {CURRENCY}/anno{}Capienza: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Costo: {CURRENCY}{}Velocità: {VELOCITY}{}Consumi: {CURRENCY}/anno{}Capienza: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nome Veicolo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Non puoi rinominare automezzo...
@@ -2698,7 +2698,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Velocità
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profitto quest'anno: {LTBLUE}{CURRENCY}  (anno scorso: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Affidabilità: {LTBLUE}{COMMA}%  {BLACK}Guasti dall'ultima manutenz.: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Costr. nel: {LTBLUE}{NUM}{BLACK} Valore: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Non puoi far fermare/ripartire la nave...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Non puoi mandare nave al deposito...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Non riesce a trovare il deposito locale
@@ -2724,7 +2724,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Manda la
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Mostra dettagli sulla nave
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}E' disponibile una nuova nave!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Costo: {CURRENCY} Velocità Max: {VELOCITY}{}Capienza: {STRING}{}Consumi: {CURRENCY}/anno
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Costo: {CURRENCY} Velocità Max: {VELOCITY}{}Capienza: {CARGO}{}Consumi: {CURRENCY}/anno
 STR_982F_NAME_SHIP                                              :{BLACK}Nome Nave
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nome Nave
@@ -2742,7 +2742,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Converti
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleziona tipo di merce da caricare
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Converti la nave per trasportare il tipo di merce evidenziata
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Seleziona il tipo di merce da caricare:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuova Capienza: {GOLD}{STRING}{}{BLACK}Costo conversione: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nuova Capienza: {GOLD}{CARGO}{}{BLACK}Costo conversione: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Non puoi convertire la nave...
 STR_9842_REFITTABLE                                             :(convertibile)
 STR_GO_TO_SHIP_DEPOT                                            :Vai a {TOWN} Deposito Navale
@@ -2777,8 +2777,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Aereo {C
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aereo in mezzo
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non puoi far fermare/ripartire l'aereo...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Aereo in volo
-STR_A019_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Capienza: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Dev'essere fermo nell'hangar
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Non puoi vendere l'aereo...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Costruzioni areoporto
@@ -3013,7 +3013,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Costo: {
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Velocità: {GOLD}{VELOCITY}{BLACK}   Potenza: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Costi d'esercizio: {GOLD}{CURRENCY}/anno
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capienza: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Capienza: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Progettato nel: {GOLD}{NUM}{BLACK} Vita: {GOLD}{COMMA} anni
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Affidabilità: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Costo: {GOLD}{CURRENCY}

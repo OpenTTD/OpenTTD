@@ -14,8 +14,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Ebenes Land erforderlich
 STR_0008_WAITING                                                :{BLACK}Wartend:  {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (unterwegs von
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (unterwegs von
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Akzeptiert: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Akzeptiert: {GOLD}
@@ -286,7 +286,7 @@ STR_013C_CARGO                                                  :{BLACK}Fracht
 STR_013D_INFORMATION                                            :{BLACK}Information
 STR_013E_CAPACITIES                                             :{BLACK}Kapazitäten
 STR_013E_TOTAL_CARGO                                            :{BLACK}Frachtübersicht
-STR_013F_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Frachtkapazität dieses Zuges:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}{CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Neues Spiel
@@ -1234,8 +1234,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Karamell
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Zuckermine errichten
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrien
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transportiert)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportiert)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportiert)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transportiert)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...zu nah an einer anderen Industrie
@@ -1842,7 +1842,7 @@ STR_4829_REQUIRES                                               :{BLACK}Benötigt
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Produktion im letzten Monat:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% befördert)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% befördert)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Zentriere die Ansicht auf das Industriegebiet
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} wird nahe {TOWN} gebaut!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Neue{G r "" s} {STRING} wird nahe {TOWN} aufgeforstet!
@@ -2582,7 +2582,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Beim mar
 STR_SERVICE_HINT                                                :{BLACK}Überspringe diesen Auftrag, sofern keine Wartung benötigt wird
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Neue {STRING} ist jetzt verfügbar!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosten: {CURRENCY}   Gewicht: {WEIGHT_S}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY}/Jahr{}Kapazität: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kosten: {CURRENCY}   Gewicht: {WEIGHT_S}{}Geschwindigk.: {VELOCITY} Leistung: {POWER}{}Betriebskosten: {CURRENCY}/Jahr{}Kapazität: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Panne
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alter: {LTBLUE}{STRING}{BLACK}  Betriebskosten: {LTBLUE}{CURRENCY}/Jahr
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Gewicht: {LTBLUE}{WEIGHT_S}  {BLACK}Leistung: {LTBLUE}{POWER}{BLACK}  Höchstgeschwindigk.: {LTBLUE}{VELOCITY}
@@ -2623,7 +2623,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Höchstge
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit lfd. Jahr: {LTBLUE}{CURRENCY}  (letztes Jahr: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Pannen seit letzter Wartung: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}  Gebaut: {LTBLUE}{NUM}{BLACK} Wert: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...muss in einem Fahrzeugdepot angehalten werden
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Kann das Fahrzeug nicht verkaufen...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Kann das Fahrzeug nicht anhalten/starten...
@@ -2650,7 +2650,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Fahrzeug
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Baue das ausgewählte Fahrzeug
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Neues Fahrzeug jetzt erhältlich!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY}/Jahr{}Ladevermögen: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kosten: {CURRENCY}{}Geschwindigk.: {VELOCITY}{}Betriebskosten: {CURRENCY}/Jahr{}Ladevermögen: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Name des Fahrzeuges
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Kann das Fahrzeug nicht benennen...
@@ -2697,7 +2697,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Höchstge
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Profit lfd. Jahr: {LTBLUE}{CURRENCY}  (letztes Jahr: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Zuverlässigkeit: {LTBLUE}{COMMA}% {BLACK}Pannen seit letzter Wartung: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK} Gebaut: {LTBLUE}{NUM}{BLACK}   Wert: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Kann das Schiff nicht anhalten/starten...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Kann das Schiff nicht in die Werft schicken...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Kann keine Werft finden
@@ -2723,7 +2723,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Schicke 
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zeige Einzelheiten des Schiffes
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Neues Schiff ist erhältlich!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}  Höchstgeschwindigk.: {VELOCITY}{}Kapazität: {STRING}{}Betriebskosten: {CURRENCY}/Jahr
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kosten: {CURRENCY}  Höchstgeschwindigk.: {VELOCITY}{}Kapazität: {CARGO}{}Betriebskosten: {CURRENCY}/Jahr
 STR_982F_NAME_SHIP                                              :{BLACK}Schiffsname
 
 STR_9831_NAME_SHIP                                              :{WHITE}Schiffsname
@@ -2741,7 +2741,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Schiff u
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Wähle die Frachtart aus, die das Schiff befördern soll
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Umrüstung des Schiffes auf die ausgewählte Frachtart
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Wähle Frachtart für die Beförderung:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Neue Kapazität: {GOLD}{STRING}{}{BLACK}Kosten der Umrüstung: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Neue Kapazität: {GOLD}{CARGO}{}{BLACK}Kosten der Umrüstung: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Kann das Schiff nicht umrüsten...
 STR_9842_REFITTABLE                                             :(umrüstbar)
 STR_GO_TO_SHIP_DEPOT                                            :Fahre zu {TOWN} Schiffswerft
@@ -2776,8 +2776,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugzeug
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugzeug ist auf dem Weg
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Kann das Flugzeug nicht anhalten/starten...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Das Flugzeug ist in der Luft
-STR_A019_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapazität: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flugzeug muss im Hangar angehalten werden
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Kann das Flugzeug nicht verkaufen...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flughafenbau
@@ -3011,7 +3011,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kosten: 
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Geschwindigk.: {GOLD}{VELOCITY}{BLACK}   Leistung: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Geschwindigkeit: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Betriebskosten: {GOLD}{CURRENCY}/Jahr
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapazität: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Entwurf: {GOLD}{NUM}{BLACK} Lebensdauer: {GOLD}{COMMA} Jahre
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. Zuverlässigkeit: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kosten: {GOLD}{CURRENCY}

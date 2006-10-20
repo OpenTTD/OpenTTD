@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Yerin duzlestirilmesi lazim
 STR_0008_WAITING                                                :{BLACK}Bekleyen: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (aktarma:
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (aktarma:
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}istenen: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}istenen: {GOLD}
@@ -285,7 +285,7 @@ STR_013C_CARGO                                                  :{BLACK}Kargo
 STR_013D_INFORMATION                                            :{BLACK}Bilgi
 STR_013E_CAPACITIES                                             :{BLACK}Kapasite
 STR_013E_TOTAL_CARGO                                            :{BLACK}Toplam Kargo
-STR_013F_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Bu trenin toplam kapasitesi:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Yeni Oyun
@@ -1225,8 +1225,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Bonbon M
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Seker Madeni Kur
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Fabrikalar
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} (%{COMMA} tasindi)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} (%{COMMA} tasindi)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} (%{COMMA}/%{COMMA} tasindi)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...baska bir fabrikaya çok yakin
@@ -1833,7 +1833,7 @@ STR_4829_REQUIRES                                               :{BLACK}istenenl
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Geçen ayki üretim:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} (%{COMMA} tasindi)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} (%{COMMA} tasindi)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Fabrikaya git
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Yeni bir {STRING}, {TOWN} sehri yakinlarinda kuruldu!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Yeni bir {STRING}, {TOWN} sehri yakinlarinda kuruldu!
@@ -2562,7 +2562,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Seçili k
 STR_SERVICE_HINT                                                :{BLACK}Bakim gerekmiyorsa bunu atla
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Yeni bir araç üretildi: {STRING}
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {CURRENCY} Agirlik: {WEIGHT_S}{}Hiz: {VELOCITY}  Güç: {POWER}{}Bakim: {CURRENCY}/sene{}Kapasite: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {CURRENCY} Agirlik: {WEIGHT_S}{}Hiz: {VELOCITY}  Güç: {POWER}{}Bakim: {CURRENCY}/sene{}Kapasite: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Bozuldu
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Yas: {LTBLUE}{STRING}{BLACK}   Bakim: {LTBLUE}{CURRENCY}/sene
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Agirlik: {LTBLUE}{WEIGHT_S}  {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Mak. hiz: {LTBLUE}{VELOCITY}
@@ -2603,7 +2603,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Mak. hiz
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kar: {LTBLUE}{CURRENCY}  (gecen sene: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Yapim yili: {LTBLUE}{NUM}{BLACK} Degeri: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...bir araba garajinda duruyor olmali
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Araba satilamiyor...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Araba kalkamiyor/duramiyor...
@@ -2630,7 +2630,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Araba li
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Seçili arabayi al
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Yeni bir araba üretildi!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Fiyat: {CURRENCY}{}Hiz: {VELOCITY}{}Bakim: {CURRENCY}/sene{}Kapasite: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Fiyat: {CURRENCY}{}Hiz: {VELOCITY}{}Bakim: {CURRENCY}/sene{}Kapasite: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Arabayi adlandir
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Araba adlandirilamiyor...
@@ -2676,7 +2676,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Mak. Hiz
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kar: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Güven: {LTBLUE}%{COMMA}  {BLACK}Son yolculuktaki bozulmalar: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Yapim yili: {LTBLUE}{NUM}{BLACK} Degeri: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Gemi durdurulamaz/baslatilamaz...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Gemi tershaneye gönderilemez...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel tershane bulunamadi
@@ -2702,7 +2702,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Tershane
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Gemi detaylarini göster
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Yeni gemi üretildi!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Fiyati: {CURRENCY} Mak. Hiz: {VELOCITY}{}Kapasite: {STRING}{}Bakim: {CURRENCY}/sene
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Fiyati: {CURRENCY} Mak. Hiz: {VELOCITY}{}Kapasite: {CARGO}{}Bakim: {CURRENCY}/sene
 STR_982F_NAME_SHIP                                              :{BLACK}Gemiyi adlandir
 
 STR_9831_NAME_SHIP                                              :{WHITE}Gemiyi adlandir
@@ -2720,7 +2720,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}modifiye
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Tasinacak kargoyu seçin
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Seçili kargoyu tasimak için modifiye et
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Tasinacak kargo türünü seçin:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Yeni kapasite: {GOLD}{STRING}{}{BLACK}Modifiye fiyati: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Yeni kapasite: {GOLD}{CARGO}{}{BLACK}Modifiye fiyati: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Modifiye edilemez...
 STR_9842_REFITTABLE                                             :(modifiyeli)
 STR_GO_TO_SHIP_DEPOT                                            :Git: {TOWN} Tershanesi
@@ -2755,8 +2755,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Uçak {CO
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Yolda uçak var
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Uçak durdurulamaz/baslatilamaz...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Su an uçusta
-STR_A019_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Uçak hangarda durdurulmali
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Uçak satilamiyor...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Havalimani binasi
@@ -2966,7 +2966,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Fiyat: {
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hiz: {GOLD}{VELOCITY}{BLACK}   Güç: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hiz: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Bakim: {GOLD}{CURRENCY}/sene
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasite: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasite: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Yapim yili: {GOLD}{NUM}{BLACK} Ömür: {GOLD}{COMMA} sene
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Mak. Güvenilirlik: {GOLD}%{COMMA}
 STR_PURCHASE_INFO_COST                                          :{BLACK}Fiyat: {GOLD}{CURRENCY}

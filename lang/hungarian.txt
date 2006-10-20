@@ -14,8 +14,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sima talaj szükséges
 STR_0008_WAITING                                                :{BLACK}Várakozik: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW} (elvitelre
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW} (elvitelre
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Elfogad:{WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Elfogad:{GOLD}
@@ -351,7 +351,7 @@ STR_013C_CARGO                                                  :{BLACK}Rakomány
 STR_013D_INFORMATION                                            :{BLACK}Információ
 STR_013E_CAPACITIES                                             :{BLACK}Kapacitás
 STR_013E_TOTAL_CARGO                                            :{BLACK}Teljes rakomány
-STR_013F_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Teljes rakománya (kapacitása) ennek a vonatnak:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Új játék
@@ -1301,8 +1301,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Tejkaram
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Cukorbánya építése
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gazdasági épületek
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% elszállítva)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% elszállítva)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% elszállítva)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% elszállítva)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...túl közel egy másik gazdasági épülethez
@@ -1946,7 +1946,7 @@ STR_4829_REQUIRES                                               :{BLACK}Felhaszn
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Múlt havi termelés:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% elszállítva)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% elszállítva)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}A fõ nézetet a gazdasági épületre állítja
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Új {STRING.t} építenek {TOWN} közelében!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Új {STRING.t} ültettek {TOWN} közelében!
@@ -2684,7 +2684,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}A kijelö
 STR_SERVICE_HINT                                                :{BLACK}Célpont kihagyása, ha javítás szükséges
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Új {STRING} használható!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ár: {CURRENCY}    Súly: {WEIGHT_S}{}Sebesség: {VELOCITY}    Teljesítmény: {POWER}{}Mûködtetési költség: {CURRENCY}/év{}Kapacitás: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ár: {CURRENCY}    Súly: {WEIGHT_S}{}Sebesség: {VELOCITY}    Teljesítmény: {POWER}{}Mûködtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Lerobbant
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Kor: {LTBLUE}{STRING}{BLACK}   Mûködtetési költség: {LTBLUE}{CURRENCY}/év
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Súly: {LTBLUE}{WEIGHT_S}   {BLACK}Teljesítmény: {LTBLUE}{POWER}{BLACK}   Végsebesség: {LTBLUE} {VELOCITY}
@@ -2725,7 +2725,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Végsebes
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...garázsban kellene állnia ehhez
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Nem adhatod el a közúti jármûvet...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Nem indíthatod el/ állíthatod meg a közúti jármûvet...
@@ -2752,7 +2752,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Közúti j
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}A kijelölt közúti jármû megvétele
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Új közúti jármû használható!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ár: {CURRENCY}{}Sebesség: {VELOCITY}{}Mûködtetési költség: {CURRENCY}/év{}Kapacitás: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ár: {CURRENCY}{}Sebesség: {VELOCITY}{}Mûködtetési költség: {CURRENCY}/év{}Kapacitás: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Közúti jármû átnevezése
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Nem nevezheted át a közúti jármûvet...
@@ -2799,7 +2799,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Végsebes
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Idei haszon: {LTBLUE}{CURRENCY}  (tavalyi: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Megbízhatóság: {LTBLUE}{COMMA}%   {BLACK}Lerobbanások az utolsó javítás óta: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Vásárlás éve: {LTBLUE}{NUM}{BLACK}   Érték: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Nem indíthatod el/ állíthatod meg a hajót...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nem küldheted a hajót a dokkba...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Nem találom a helyi dokkot
@@ -2825,7 +2825,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Dokkba k
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}A hajó adatai
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Új hajó használható!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ár: {CURRENCY}    Végsebesség: {VELOCITY}{}Kapacitás: {STRING}{}Mûködtetési költség: {CURRENCY}/év
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ár: {CURRENCY}    Végsebesség: {VELOCITY}{}Kapacitás: {CARGO}{}Mûködtetési költség: {CURRENCY}/év
 STR_982F_NAME_SHIP                                              :{BLACK}Hajó átnevezése
 
 STR_9831_NAME_SHIP                                              :{WHITE}Hajó átnevezése
@@ -2843,7 +2843,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Hajó áta
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Válaszd ki, milyen árut szállítson a hajó
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}A hajó átalakítása a kijelölt áru szállítására
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Átalakítás, hogy szállíthasson:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapacitás: {GOLD}{STRING}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Új kapacitás: {GOLD}{CARGO}{}{BLACK}Átalakítás költsége: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nem alakíthatod át a hajót...
 STR_9842_REFITTABLE                                             :(átalakítható)
 STR_GO_TO_SHIP_DEPOT                                            :Menj a {TOWN}i kikötõbe
@@ -2878,8 +2878,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}{COMMA}.
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Repülõgép van az útban
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Nem indíthatod el/ állíthatod meg a repülõgépet...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}... a levegõben van
-STR_A019_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}A hangárban kellene állnia ehhez
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Nem adhatod el a repülõgépet...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Repülõtér építése
@@ -3118,7 +3118,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ár: {GOL
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Sebesség: {GOLD}{VELOCITY}{BLACK} Telj.: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Üzemeltetés: {GOLD}{CURRENCY}/év
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitás: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapacitás: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Kifejlesztve: {GOLD}{NUM}{BLACK} Élettartam: {GOLD}{COMMA} év
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Max. üzemképesség: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ár: {GOLD}{CURRENCY}

@@ -14,8 +14,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Sléttlendi nauðsynlegt
 STR_0008_WAITING                                                :{BLACK}Bíður: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (á leið frá
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (á leið frá
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Tekur við: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Tekur við: {GOLD}
@@ -286,7 +286,7 @@ STR_013C_CARGO                                                  :{BLACK}Farmur
 STR_013D_INFORMATION                                            :{BLACK}Upplýsingar
 STR_013E_CAPACITIES                                             :{BLACK}Burðargeta
 STR_013E_TOTAL_CARGO                                            :{BLACK}Heildarfarmur
-STR_013F_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Farmur alls (burðargeta) þessarar lestar:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nýr leikur
@@ -1204,8 +1204,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Grafa Ka
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Grafa Sykurnámu
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Iðnaðir
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% flutt)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% flutt)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% flutt)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% flutt)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...of nálægt öðrum iðnaði
@@ -1808,7 +1808,7 @@ STR_4829_REQUIRES                                               :{BLACK}Tekur vi
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Framleiðsla síðasta mánaðar:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% flutt)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% flutt)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Miðja aðalsjónarhorn á iðnað
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Ný {STRING} í byggingu við {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Ný {STRING} er að rísa við {TOWN}!
@@ -2510,7 +2510,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Neyða le
 STR_SERVICE_HINT                                                :{BLACK}Sleppa þessarri skipun nema þörf sé á viðgerð
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ný {STRING} er nú fáanleg!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Verð: {CURRENCY} Þyngd: {WEIGHT_S}{}Hraði: {VELOCITY}  Hestöfl: {POWER}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Verð: {CURRENCY} Þyngd: {WEIGHT_S}{}Hraði: {VELOCITY}  Hestöfl: {POWER}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Bilaður
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Aldur: {LTBLUE}{STRING}{BLACK}   Rekstrarkostnaður: {LTBLUE}{CURRENCY} á ári
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Þyngd: {LTBLUE}{WEIGHT_S}  {BLACK}Hestöfl: {LTBLUE}{POWER}{BLACK} Hámarkshraði: {LTBLUE}{VELOCITY}
@@ -2549,7 +2549,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Hámarksh
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Hagnaður á þessu ári: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu viðgerð: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Byggður: {LTBLUE}{NUM}{BLACK} Virði: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...verður að stöðvast í bifreiðaskýli
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Get ekki selt bifreið...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Get ekki stöðvað/ræst bifreið...
@@ -2574,7 +2574,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Bifreiða
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Smíða valda bifreið
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Ný bifreið fáanleg!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Verð: {CURRENCY}{}Hraði: {VELOCITY}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Verð: {CURRENCY}{}Hraði: {VELOCITY}{}Rekstrarkostnaður: {CURRENCY} á ári{}Burðargeta: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nefna bifreið
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Get ekki nefnt bifreið...
@@ -2620,7 +2620,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Hámarksh
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Tekjur þessa árs: {LTBLUE}{CURRENCY}  (síðasta ár: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Áreiðanleiki: {LTBLUE}{COMMA}%  {BLACK}Bilanir frá síðustu skoðun: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Smíðað: {LTBLUE}{NUM}{BLACK} Verðmæti: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Get ekki stöðvað/ræst skip...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Get ekki sent skip í skýli...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Finnur ekkert nálægt skýli
@@ -2644,7 +2644,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Senda sk
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Sýna nánari upplýsingar um skip
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nýtt skip fáanlegt!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {STRING}{}Rekstrarkostnaður: {CURRENCY}á ári
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Verð: {CURRENCY} Hámarkshraði: {VELOCITY}{}Burðargeta: {CARGO}{}Rekstrarkostnaður: {CURRENCY}á ári
 STR_982F_NAME_SHIP                                              :{BLACK}Nefna skip
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nefna skip
@@ -2662,7 +2662,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Breyta s
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Veldu hvernig farm skipið á að flytja
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Breyta skipi svo það flytji valinn farm
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Veldu farm sem á að flytja:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ný burðargeta: {GOLD}{STRING}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Ný burðargeta: {GOLD}{CARGO}{}{BLACK}Breytingarkostnaður: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Get ekki breytt skipi...
 STR_9842_REFITTABLE                                             :(breytanlegt)
 STR_GO_TO_SHIP_DEPOT                                            :Fara í {TOWN} Skipaskýli
@@ -2695,8 +2695,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Flugvél 
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Flugvél er fyrir
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Get ekki stöðvað/ræst flugvél...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}flugvélin er á flugi
-STR_A019_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Burðargeta: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Flugvélin verður að vera stöðvuð í flugskýli
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Get ekki selt flugvélina...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Flugvallarframkvæmdir
@@ -2875,7 +2875,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Verð: {G
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Hámarkshraði: {GOLD}{VELOCITY}{BLACK}   Hestöfl: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Hraði: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Rekstrarkostnaður: {GOLD}{CURRENCY} á ári
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Burðargeta: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Burðargeta: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Hönnun: {GOLD}{NUM}{BLACK} Endingartími: {GOLD}{COMMA} ár
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Hámarks áreiðanleiki: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Verð: {GOLD}{CURRENCY}

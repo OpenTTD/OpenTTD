@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Tarvitaan tasaista maata.
 STR_0008_WAITING                                                :{BLACK}Lähdössä: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (matkalla:
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (matkalla:
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Vastaanottaa: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Vastaanottaa: {GOLD}
@@ -285,7 +285,7 @@ STR_013C_CARGO                                                  :{BLACK}Rahti
 STR_013D_INFORMATION                                            :{BLACK}Tietoja
 STR_013E_CAPACITIES                                             :{BLACK}Kapasiteetit
 STR_013E_TOTAL_CARGO                                            :{BLACK}Rahtia yhteensä
-STR_013F_CAPACITY                                               :{BLACK}Kapaisteetti: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Kapaisteetti: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Kokonaisrahtikapasiteetti:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Uusi peli
@@ -1235,8 +1235,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Rahoita 
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Rakenna sokerikaivos.
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Teollisuusala
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}{NBSP}% kuljetettu)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% kuljetettu)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}{NBSP}% kuljetettu)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% kuljetettu)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...liian lähellä toista teollisuutta.
@@ -1843,7 +1843,7 @@ STR_4829_REQUIRES                                               :{BLACK}Tarvitse
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Tuotto viime kuussa:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}{NBSP}% kuljetettu)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}{NBSP}% kuljetettu)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Keskitä päänäkymä teollisuuden sijaintiin.
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Uusi {STRING} rakennetaan kaupungin {TOWN} lähistölle!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Uusi {STRING} istutetaan kaupungin {TOWN} lähistölle!
@@ -2583,7 +2583,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Aseta ko
 STR_SERVICE_HINT                                                :{BLACK}Ohita tämä määräys, ellei palvelua tarvita.
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Uusi {STRING} saatavilla!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kulu: {CURRENCY} Paino: {WEIGHT_S}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Kulu: {CURRENCY} Paino: {WEIGHT_S}{}Nopeus: {VELOCITY}  Teho: {POWER}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Rikki
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Ikä: {LTBLUE}{STRING}{BLACK}   Käyttökustannukset: {LTBLUE}{CURRENCY}/vuosi
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Paino: {LTBLUE}{WEIGHT_S}  {BLACK}Teho: {LTBLUE}{POWER}{BLACK} Huippunopeus: {LTBLUE}{VELOCITY}
@@ -2624,7 +2624,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Huippuno
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Tuottoa tänä vuonna: {LTBLUE}{CURRENCY}  (viime vuonna: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Toimintavarmuus: {LTBLUE}{COMMA}%  {BLACK}Hajoamisia viime huollon jälkeen: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...sen pitää olla pysähtyneenä huoltoasemalle.
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ajoneuvoa ei voi myydä...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ajoneuvoa ei voi pysäyttää/laitta liikkeelle...
@@ -2651,7 +2651,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Ajoneuvo
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Rakenna valittu ajoneuvo.
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Uusi ajoneuvo on saatavilla!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kulu: {CURRENCY}{}Nopeus: {VELOCITY}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kulu: {CURRENCY}{}Nopeus: {VELOCITY}{}Käyttökustannukset: {CURRENCY}/vuosi{}Kapasiteetti: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nimeä ajoneuvo
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ajoneuvoa ei voi nimetä...
@@ -2698,7 +2698,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Huippuno
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Tuottoa tänä vuonna: {LTBLUE}{CURRENCY}  (viime vuonna: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Toimintavarmuus: {LTBLUE}{COMMA}%  {BLACK}Hajoamisia viime huollon jälkeen: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Rakennettu: {LTBLUE}{NUM}{BLACK} Arvo: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Laivaa ei voi pysäyttää/laittaa liikkeelle...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Laivaa ei voi lähettää telakalle...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Paikallista telakkaa ei löydy
@@ -2724,7 +2724,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Lähetä l
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Näytä laivan tiedot.
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Uusi laiva saatavilla!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kulu: {CURRENCY} Huippunopeus: {VELOCITY}{}Kapasiteetti: {STRING}{}Käyttökustannukset: {CURRENCY}/vuosi
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kulu: {CURRENCY} Huippunopeus: {VELOCITY}{}Kapasiteetti: {CARGO}{}Käyttökustannukset: {CURRENCY}/vuosi
 STR_982F_NAME_SHIP                                              :{BLACK}Nimeä laiva
 
 STR_9831_NAME_SHIP                                              :{WHITE}Nimeä laiva
@@ -2742,7 +2742,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Sovita l
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Valitse laivan kuljettama rahtityyppi.
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Sovita laiva korostetulle rahtityypille.
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Valitse kuljetettava rahtityyppi:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{STRING}{}{BLACK}Sovituksen kustannus: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uusi kapasiteetti: {GOLD}{CARGO}{}{BLACK}Sovituksen kustannus: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Laivaa ei voi sovittaa...
 STR_9842_REFITTABLE                                             :(sovitettava)
 STR_GO_TO_SHIP_DEPOT                                            :Aseta kohteeksi telakka, {TOWN}
@@ -2777,8 +2777,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lentokon
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lentokone on tiellä.
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Lentokonetta ei voi pysäyttää/laittaa liikkeelle...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lentokone on lennossa.
-STR_A019_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Kapasiteetti: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lentokoneen pitää olla pysähdyksissä lentokonehallissa.
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Lentokonetta ei voi myydä...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lentokentän rakentaminen
@@ -3013,7 +3013,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kulu: {G
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Nopeus: {GOLD}{VELOCITY}{BLACK}   Teho: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Käyttökukustannus: {GOLD}{CURRENCY}/vuosi
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Kapasiteetti: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Suunniteltu: {GOLD}{NUM}{BLACK} Elinikä: {GOLD}{COMMA} vuotta
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Enimmäisluotettavuus: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kulu: {GOLD}{CURRENCY}
