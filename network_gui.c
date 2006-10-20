@@ -306,17 +306,17 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		/* Draw the right menu */
 		GfxFillRect(311, 43, 539, 92, 157);
 		if (sel == NULL) {
-			DrawStringMultiCenter(425, 58, STR_NETWORK_GAME_INFO, 0);
+			DrawStringCentered(425, 58, STR_NETWORK_GAME_INFO, 0);
 		} else if (!sel->online) {
 			SetDParamStr(0, sel->info.server_name);
-			DrawStringMultiCenter(425, 68, STR_ORANGE, 2); // game name
+			DrawStringCentered(425, 68, STR_ORANGE, 0); // game name
 
-			DrawStringMultiCenter(425, 132, STR_NETWORK_SERVER_OFFLINE, 2); // server offline
+			DrawStringCentered(425, 132, STR_NETWORK_SERVER_OFFLINE, 0); // server offline
 		} else { // show game info
 			uint16 y = 100;
 			const uint16 x = w->widget[15].left + 5;
 
-			DrawStringMultiCenter(425, 48, STR_NETWORK_GAME_INFO, 0);
+			DrawStringCentered(425, 48, STR_NETWORK_GAME_INFO, 0);
 
 
 			SetDParamStr(0, sel->info.server_name);
@@ -365,12 +365,12 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			y += 2;
 
 			if (!sel->info.compatible) {
-					DrawStringMultiCenter(425, y, STR_NETWORK_VERSION_MISMATCH, 2); // server mismatch
+				DrawStringCentered(425, y, STR_NETWORK_VERSION_MISMATCH, 0); // server mismatch
 			} else if (sel->info.clients_on == sel->info.clients_max) {
 				// Show: server full, when clients_on == clients_max
-				DrawStringMultiCenter(425, y, STR_NETWORK_SERVER_FULL, 2); // server full
+				DrawStringCentered(425, y, STR_NETWORK_SERVER_FULL, 0); // server full
 			} else if (sel->info.use_password) {
-				DrawStringMultiCenter(425, y, STR_NETWORK_PASSWORD, 2); // password warning
+				DrawStringCentered(425, y, STR_NETWORK_PASSWORD, 0); // password warning
 			}
 
 			y += 10;
@@ -850,7 +850,7 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 
 		/* Draw info about selected company when it is selected in the left window */
 		GfxFillRect(174, 39, 403, 75, 157);
-		DrawStringMultiCenter(290, 50, STR_NETWORK_COMPANY_INFO, 0);
+		DrawStringCentered(290, 50, STR_NETWORK_COMPANY_INFO, 0);
 		if (nd->company != (byte)-1) {
 			const uint x = 183;
 			const uint trunc_width = w->widget[6].right - x;
