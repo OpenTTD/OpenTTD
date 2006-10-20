@@ -231,7 +231,7 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 	} else {
 		/* Note, if the default capacity is selected by the refit capacity
 		* callback, then the capacity shown is likely to be incorrect. */
-		SetDParam(0, _cargoc.names_long[cargo]);
+		SetDParam(0, cargo);
 		SetDParam(1, AircraftDefaultCargoCapacity(cargo, engine_number));
 		SetDParam(2, STR_9842_REFITTABLE);
 		DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);

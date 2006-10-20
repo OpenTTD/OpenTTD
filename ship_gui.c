@@ -40,7 +40,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Cargo type + capacity */
-	SetDParam(0, _cargoc.names_long[svi->cargo_type]);
+	SetDParam(0, svi->cargo_type);
 	SetDParam(1, svi->capacity);
 	SetDParam(2, svi->refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x,y, STR_PURCHASE_INFO_CAPACITY, 0);
@@ -140,7 +140,7 @@ static void ShipDetailsWndProc(Window *w, WindowEvent *e)
 		SetDParam(2, v->value);
 		DrawString(74, 57, STR_9816_BUILT_VALUE, 0);
 
-		SetDParam(0, _cargoc.names_long[v->cargo_type]);
+		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
 		DrawString(74, 67, STR_9817_CAPACITY, 0);
 

@@ -359,7 +359,7 @@ static void VehicleRefitWndProc(Window *w, WindowEvent *e)
 
 				cost = DoCommand(v->tile, v->index, WP(w,refit_d).cargo->cargo | WP(w,refit_d).cargo->subtype << 8, DC_QUERY_COST, cost);
 				if (!CmdFailed(cost)) {
-					SetDParam(0, _cargoc.names_long[WP(w,refit_d).cargo->cargo]);
+					SetDParam(0, WP(w,refit_d).cargo->cargo);
 					SetDParam(1, _returned_refit_capacity);
 					SetDParam(2, cost);
 					DrawString(2, w->widget[5].top + 1, STR_9840_NEW_CAPACITY_COST_OF_REFIT, 0);

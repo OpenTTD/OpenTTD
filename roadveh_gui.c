@@ -47,7 +47,7 @@ void DrawRoadVehPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Cargo type + capacity */
-	SetDParam(0, _cargoc.names_long[rvi->cargo_type]);
+	SetDParam(0, rvi->cargo_type);
 	SetDParam(1, rvi->capacity);
 	SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	DrawString(x, y, STR_PURCHASE_INFO_CAPACITY, 0);
@@ -141,7 +141,7 @@ static void RoadVehDetailsWndProc(Window *w, WindowEvent *e)
 		SetDParam(2, v->value);
 		DrawString(34, 57, STR_9011_BUILT_VALUE, 0);
 
-		SetDParam(0, _cargoc.names_long[v->cargo_type]);
+		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
 		DrawString(34, 67, STR_9012_CAPACITY, 0);
 

@@ -272,7 +272,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	SetDParam(0, STR_8838_N_A);
 	SetDParam(2, STR_EMPTY);
 	if (rvi->capacity != 0) {
-		SetDParam(0, _cargoc.names_long[rvi->cargo_type]);
+		SetDParam(0, rvi->cargo_type);
 		SetDParam(1, (rvi->capacity * (CountArticulatedParts(engine_number) + 1)) << multihead);
 		SetDParam(2, STR_9842_REFITTABLE);
 	}
@@ -320,7 +320,7 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 	SetDParam(0, STR_8838_N_A);
 	SetDParam(2, STR_EMPTY);
 	if (rvi->capacity != 0) {
-		SetDParam(0, _cargoc.names_long[rvi->cargo_type]);
+		SetDParam(0, rvi->cargo_type);
 		SetDParam(1, rvi->capacity * (CountArticulatedParts(engine_number) + 1));
 		SetDParam(2, refittable ? STR_9842_REFITTABLE : STR_EMPTY);
 	}
@@ -969,7 +969,7 @@ static void TrainDetailsInfoTab(const Vehicle *v, int x, int y)
 static void TrainDetailsCapacityTab(const Vehicle *v, int x, int y)
 {
 	if (v->cargo_cap != 0) {
-		SetDParam(0, _cargoc.names_long[v->cargo_type]);
+		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
 		DrawString(x, y, STR_013F_CAPACITY, 0);
 	}

@@ -315,7 +315,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 		if (i->produced_cargo[0] != CT_INVALID) {
 			DrawString(2, 117, STR_482A_PRODUCTION_LAST_MONTH, 0);
 
-			SetDParam(0, _cargoc.names_long[i->produced_cargo[0]]);
+			SetDParam(0, i->produced_cargo[0]);
 			SetDParam(1, i->total_production[0]);
 
 			SetDParam(2, i->pct_transported[0] * 100 >> 8);
@@ -327,7 +327,7 @@ static void IndustryViewWndProc(Window *w, WindowEvent *e)
 			}
 
 			if (i->produced_cargo[1] != CT_INVALID) {
-				SetDParam(0, _cargoc.names_long[i->produced_cargo[1]]);
+				SetDParam(0, i->produced_cargo[1]);
 				SetDParam(1, i->total_production[1]);
 				SetDParam(2, i->pct_transported[1] * 100 >> 8);
 				DrawString(4 + (IsProductionAlterable(i) ? 30 : 0), 137, STR_482B_TRANSPORTED, 0);
@@ -600,11 +600,11 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 			SetDParam(0, i->index);
 			if (i->produced_cargo[0] != CT_INVALID) {
-				SetDParam(1, _cargoc.names_long[i->produced_cargo[0]]);
+				SetDParam(1, i->produced_cargo[0]);
 				SetDParam(2, i->total_production[0]);
 
 				if (i->produced_cargo[1] != CT_INVALID) {
-					SetDParam(3, _cargoc.names_long[i->produced_cargo[1]]);
+					SetDParam(3, i->produced_cargo[1]);
 					SetDParam(4, i->total_production[1]);
 					SetDParam(5, i->pct_transported[0] * 100 >> 8);
 					SetDParam(6, i->pct_transported[1] * 100 >> 8);

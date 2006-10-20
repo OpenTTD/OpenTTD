@@ -95,10 +95,10 @@ static void AircraftDetailsWndProc(Window *w, WindowEvent *e)
 					DrawString(60, y, STR_A011_BUILT_VALUE, 0);
 					y += 10;
 
-					SetDParam(0, _cargoc.names_long[v->cargo_type]);
+					SetDParam(0, v->cargo_type);
 					SetDParam(1, v->cargo_cap);
 					u = v->next;
-					SetDParam(2, _cargoc.names_long[u->cargo_type]);
+					SetDParam(2, u->cargo_type);
 					SetDParam(3, u->cargo_cap);
 					DrawString(60, y, (u->cargo_cap != 0) ? STR_A019_CAPACITY : STR_A01A_CAPACITY, 0);
 					y += 14;
