@@ -381,6 +381,12 @@ STR_SORT_BY_VALUE                                               :Fiyat
 STR_SORT_BY_FACILITY                                            :istasyon türü
 STR_SORT_BY_WAITING                                             :Bekleyen kargo degeri
 STR_SORT_BY_RATING_MAX                                          :Kargo reytingi
+STR_ENGINE_SORT_COST                                            :Fiyat
+STR_ENGINE_SORT_POWER                                           :Güç
+STR_ENGINE_SORT_INTRO_DATE                                      :Piyasaya Girisi
+STR_ENGINE_SORT_RUNNING_COST                                    :Bakim Gideri
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Güç/Bakim Gideri
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapasite
 STR_NO_WAITING_CARGO                                            :{BLACK}Hiç kargo yok
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tüm türleri seç
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tüm kargo türlerini seç (hiç beklemeyenler dahil)
@@ -2537,6 +2543,9 @@ STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Tren seç
 STR_BLACK_ENGINES                                               :{BLACK}Lokomotifler
 STR_BLACK_WAGONS                                                :{BLACK}Vagonlar
 STR_BLACK_BOTH                                                  :{BLACK}ikisi de
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Sadece lokomotifleri görmek için tikla
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Sadece vagonlari görmek için tikla
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Lokomotifleri ve vagonlari görmek için tikla
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Seçili treni satin al
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Treni yeniden adlandir
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tren durumu - treni durdurmak/baslatmak için buraya tiklayin
@@ -2652,6 +2661,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Kamyonu 
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Kamyonu modifiye et
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Kamyonu seçili kargoyu tasiyabilmesi için modifiye et
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Kamyon modifiye edilemiyor...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Kamyonun tasiyacagi kargo türünü seçin
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :iskele yapimi
@@ -2766,6 +2776,8 @@ STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Yeni uça
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Uçak - bilgi için uçaga tikla
 STR_BLACK_JETS                                                  :{BLACK}Jetler
 STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterler
+STR_BUILD_JETS_TIP                                              :{BLACK}Jet uçaklarini görmek için tikla
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Helikopterleri görmek için tikla
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Yeni uçak al
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Satmak için uçagi buraya sürükleyin
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Hangari göster
@@ -3045,4 +3057,8 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Küçük ha
 STR_LARGE_AIRPORTS                                              :{BLACK}Büyük Havalimanlari
 STR_HUB_AIRPORTS                                                :{BLACK}Merkezi havalimanlari
 STR_HELIPORTS                                                   :{BLACK}Helikopter havalimanlari
+
+############ Tooltip measurment
+
+
 ########

@@ -438,13 +438,13 @@ STR_SORT_BY_VALUE                                               :hodnoty
 STR_SORT_BY_FACILITY                                            :druhu stanice
 STR_SORT_BY_WAITING                                             :mno¸ství cekajiciho nákladu
 STR_SORT_BY_RATING_MAX                                          :hodnocení prepravy
-STR_ENGINE_SORT_ENGINE_ID                                       :ID lokomotivy (klasické poradí)
+STR_ENGINE_SORT_ENGINE_ID                                       :ID lokomotivy (klasické poradi)
 STR_ENGINE_SORT_COST                                            :Cena
-STR_ENGINE_SORT_POWER                                           :Vykon
+STR_ENGINE_SORT_POWER                                           :Výkon
 STR_ENGINE_SORT_INTRO_DATE                                      :Datum uvedení na trh
 STR_ENGINE_SORT_RUNNING_COST                                    :Provozní náklady
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Vykon/Provozní náklady
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Prepravní kapacita
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Výkon/Provozní náklady
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Prepravni kapacita
 STR_NO_WAITING_CARGO                                            :{BLACK}Neceka ¸ádná komodita jakéhokoli druhu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit v¨echny druhy stanic
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit v¨echny druhy komodit (vcetne ¸ádného cekajiciho nákladu)
@@ -1121,7 +1121,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Nejvets
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Údr¸ba helikoptér na heliportech: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Otevírat li¨tu na úpravy terénu s li¨tami na výstavbu tratí/silnic atd.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Posouvat pohled opacnym smerem: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Ukázar rozmery pri pouziti stavebních nastroju: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Ukázat rozmery pri pou¸ití stavebních nastroju: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Zobrazovat barvy spolecnosti pro: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :¸ádnou spolecnost
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :jen vlastní spolecnost
@@ -2576,7 +2576,7 @@ STR_8826_GO_TO                                                  :{BLACK}Jet do
 STR_8827_FULL_LOAD                                              :{BLACK}Nalo¸it
 STR_8828_UNLOAD                                                 :{BLACK}Vylo¸it
 STR_REFIT                                                       :{BLACK}Prestavet
-STR_REFIT_TIP                                                   :{BLACK}Vyber na ktery druh nákladu prestavet. CTRL-klik odstrani prestavbu z prikazu.
+STR_REFIT_TIP                                                   :{BLACK}Vyber, na který druh nákladu prestavet. CTRL-klik odstraní prestavbu z prikazu.
 STR_REFIT_ORDER                                                 :(Prestavet na {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Konec prikazu - -
@@ -2612,9 +2612,9 @@ STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Seznam v
 STR_BLACK_ENGINES                                               :{BLACK}Lokomotivy
 STR_BLACK_WAGONS                                                :{BLACK}Vagony
 STR_BLACK_BOTH                                                  :{BLACK}Obojí
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Kliknutím zobrazís jen lokomotivy
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Kliknutím zobrazís jen vagony
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Kliknutím zobrazís obojí - lokomotivy i vagony
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Kliknutím zobrazí¨ jen lokomotivy
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Kliknutím zobrazí¨ jen vagony
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Kliknutím zobrazí¨ obojí - lokomotivy i vagony
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kup oznaceny vagon/lokomotivu
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Prejmenovat typ vlaku
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Momentalni akce vlaku - stiskni pro zastaveni/rozjeti vlaku
@@ -2730,7 +2730,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prestave
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Prestavet silnicni vozidlo
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Prestavet silnicni vozidlo, aby vozilo vybraný druh nákladu
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nelze prestavet silnicni vozidlo...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyber typ nákladu, který má vozidlo prevázet
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyber typ nákladu, který má vozidlo prevazet
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Konstrukce pristavu
@@ -3154,7 +3154,7 @@ STR_HELIPORTS                                                   :{BLACK}Letiste 
 
 STR_MEASURE_LENGTH                                              :{BLACK}Délka: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Oblast: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Délka: {NUM}{}Vyskovy rozdíl: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: {NUM} x {NUM}{}Vyskovy rozdíl: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Délka: {NUM}{}Vý¨kový rozdíl: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Oblast: {NUM} x {NUM}{}Vý¨kový rozdíl: {NUM} m
 
 ########

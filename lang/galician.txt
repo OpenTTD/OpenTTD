@@ -1074,6 +1074,8 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambia-lo valor
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}¡Algún ou tódolos intervalo(s) de servicio por defecto son incompatibles coa opción elixida! 5-90% e 30-800 días son válidos
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Usar YAPF para barcos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usar YAPF para os trens: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :escenario templado
 STR_SUB_ARCTIC_LANDSCAPE                                        :escenario sub-ártico
@@ -1407,6 +1409,7 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Tamaño 
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...arquivo non atopado.
 
 
 ##id 0x0800
@@ -2104,7 +2107,13 @@ STR_LIVERY_DIESEL                                               :Máquina Diésel
 STR_LIVERY_ELECTRIC                                             :Máquina Eléctrica
 STR_LIVERY_MONORAIL                                             :Máquina Monorraíl
 STR_LIVERY_MAGLEV                                               :Máquina Maglev
+STR_LIVERY_DMU                                                  :DMU
+STR_LIVERY_EMU                                                  :EMU
+STR_LIVERY_PASSENGER_SHIP                                       :Barco de Pasaxeiros
+STR_LIVERY_FREIGHT_SHIP                                         :Barco de Carga
 STR_LIVERY_HELICOPTER                                           :Helicóptero
+STR_LIVERY_SMALL_PLANE                                          :Aeronave Pequena
+STR_LIVERY_LARGE_PLANE                                          :Aeronave Grande
 
 
 ##id 0x8000
@@ -2659,6 +2668,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Non se pode envia-la aeronave ó hangar...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}Diríxese ó hangar de {STATION}
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Diríxese ó hangar de {STATION}, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}Servicio no Hangar de {STATION}
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}Servicio no Hangar de {STATION}, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}A aeronave {COMMA} está a esperar no hangar
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Aeronave no camiño
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Non se pode parar/arrincar a aeronave...
@@ -2875,4 +2886,8 @@ STR_HELIPORT                                                    :{BLACK}Heliport
 STR_SMALL_AIRPORTS                                              :{BLACK}Aeroportos pequenos
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroportos grandes
 STR_HELIPORTS                                                   :{BLACK}Aeroportos para helicópteros
+
+############ Tooltip measurment
+
+
 ########

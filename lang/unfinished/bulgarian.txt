@@ -539,6 +539,7 @@ STR_01FE_DIFFICULTY                                             :{BLACK}Слож
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Последно съобщение/новини
 STR_0201_MESSAGE_SETTINGS                                       :Настройки на съобщенията
+STR_MESSAGE_HISTORY_MENU                                        :История на съобщенията
 STR_0203_SHOW_LAST_MESSAGE_NEWS                                 :{BLACK}Покажи последното съобщение/новини, покажи настройките на съобщенията
 STR_0204_MESSAGE_OPTIONS                                        :{WHITE}Настройки на съобщенията
 STR_0205_MESSAGE_TYPES                                          :{BLACK}Типове съобщения:
@@ -552,6 +553,7 @@ STR_020C_NEW_VEHICLES                                           :{YELLOW}Нов�
 STR_020D_CHANGES_OF_CARGO_ACCEPTANCE                            :{YELLOW}Промени в приемането на товари
 STR_020E_SUBSIDIES                                              :{YELLOW}Субсидии
 STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Обща информация
+STR_MESSAGE_SOUND                                               :{YELLOW}Покажи обобщените новини със звук
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...прекалено далече от предходната цел
 STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Първите компании достигнали {NUM}{}({STRING} ниво)
 STR_0212                                                        :{BIGFONT}{COMMA}.
@@ -863,6 +865,18 @@ STR_CURR_CUSTOM                                                 :Поръчко�
 STR_AUTOSAVE_1_MONTH                                            :Всеки месец
 STR_AUTOSAVE_FAILED                                             :{WHITE}Автозапазването е неуспешно
 
+STR_MONTH_JAN                                                   :Януари
+STR_MONTH_FEB                                                   :Февруари
+STR_MONTH_MAR                                                   :Март
+STR_MONTH_APR                                                   :Април
+STR_MONTH_MAY                                                   :Май
+STR_MONTH_JUN                                                   :Юни
+STR_MONTH_JUL                                                   :Юли
+STR_MONTH_AUG                                                   :Август
+STR_MONTH_SEP                                                   :Сештември
+STR_MONTH_OCT                                                   :Октомври
+STR_MONTH_NOV                                                   :Ноември
+STR_MONTH_DEC                                                   :Декември
 
 STR_HEADING_FOR_STATION                                         :{LTBLUE}Отиващ към {STATION}
 STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Отиващ към {STATION}, {VELOCITY}
@@ -1076,6 +1090,7 @@ STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Прем
 STR_DRAG_DROP                                                   :{BLACK}Влачене & Пускане
 
 STR_FAST_FORWARD                                                :{BLACK}Бързо превъртане на играта
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Списък с последните новини
 
 STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Строене мина за въглища
 STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Засаждане на гора
@@ -1111,12 +1126,30 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Вним
 
 
 
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Кликни върху игра от списъка, за да я избереш
+
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Добави сървър
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Добяви сървър към списъкът, който винаги ще бъде проверяван за активни игри.
+
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Играчи
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Онлайн играчи / макс. брой играчи{}Онлайн компании / макс. компании
+STR_NETWORK_CLIENTS                                             :{SILVER}Играчи:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 
 
 
 
-
-
+STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 играча
+STR_NETWORK_1_PLAYERS                                           :1 играч
+STR_NETWORK_2_PLAYERS                                           :2 играча
+STR_NETWORK_3_PLAYERS                                           :3 играча
+STR_NETWORK_4_PLAYERS                                           :4 играча
+STR_NETWORK_5_PLAYERS                                           :5 играча
+STR_NETWORK_6_PLAYERS                                           :6 играча
+STR_NETWORK_7_PLAYERS                                           :7 играча
+STR_NETWORK_8_PLAYERS                                           :8 играча
+STR_NETWORK_9_PLAYERS                                           :9 играча
+STR_NETWORK_10_PLAYERS                                          :10 играча
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
@@ -1132,12 +1165,26 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Вним
 ############ End of leave-in-this-order
 
 
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Списък с играчите
 
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED                                       :се присъедини към играта
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}:
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] До {STRING}:
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}:
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] До {STRING}:
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
 
+STR_NETWORK_CLIENT                                              :Клиент
 
+STR_NETWORK_CLIENTLIST_NONE                                     :(никой)
+STR_NETWORK_CLIENTLIST_KICK                                     :Изгони
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Дай пари
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Кажи на всички
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Кажи на компания
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Лично съобщение
 
 
 
@@ -2479,6 +2526,7 @@ STR_WAGONS                                                      :Вагони
 ############ Lists rail types
 
 STR_ELRAIL_VEHICLES                                             :Електрически локомотиви
+STR_MONORAIL_VEHICLES                                           :Еднорелсови машини
 
 ############ End of list of rail types
 
@@ -2505,6 +2553,7 @@ STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 ########### String for new airports
 STR_CITY_AIRPORT                                                :{BLACK}Град
+STR_METRO_AIRPORT                                               :{BLACK}Метрополисно летище
 STR_COMMUTER_AIRPORT                                            :{BLACK}Комютър
 
 

@@ -233,7 +233,7 @@ STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFON
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Mina de Coure
 STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Plantació de Fruita
 STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Plantació de Cautxú
-STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Surtidor d'Aigua
+STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Sortidor d'Aigua
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Torre d'Aigua
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Cabana de Fusta
 STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFONT}Bosc de Cotó de Sucre
@@ -1203,7 +1203,7 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Converti
 
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Arrossega la màquina de tren aquí per vendre el tren sencer
 
-STR_DRAG_DROP                                                   :{BLACK}Arrossegar i Deixar
+STR_DRAG_DROP                                                   :{BLACK}Arrossega i Deixa
 STR_STATION_DRAG_DROP                                           :{BLACK}Construir una estació arrossegant i deixant
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Selecciona un tipus de estació a mostrar
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Selecciona el tipus de estació a construir

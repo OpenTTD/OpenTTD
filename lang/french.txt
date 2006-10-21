@@ -583,7 +583,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informa
 STR_MESSAGES_ALL                                                :{YELLOW}Pour tout types de messages (aucun/sommaire/complet)
 STR_MESSAGE_SOUND                                               :{YELLOW}Émettre son pour les bulletins sommaires
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...trop loin de la destination précédente
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Meilleures compagnies, qui ont atteint {NUM}{}({STRING} niveau)
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Meilleures compagnies, qui ont atteint {NUM}{}(Niveau {STRING})
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tableau du Championnat des compagnies en {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Homme d'affaires

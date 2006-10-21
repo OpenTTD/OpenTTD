@@ -1027,6 +1027,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Neue gl
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Kleine Flughäfen immer erlauben: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Warnung wenn der Zug verloren ist: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Fahrpläne prüfen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nein
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :ja, aber ohne gestoppte Fahrzeuge
