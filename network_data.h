@@ -99,7 +99,7 @@ typedef enum {
 	NETWORK_ACTION_JOIN,
 	NETWORK_ACTION_LEAVE,
 	NETWORK_ACTION_CHAT,
-	NETWORK_ACTION_CHAT_PLAYER,
+	NETWORK_ACTION_CHAT_COMPANY,
 	NETWORK_ACTION_CHAT_CLIENT,
 	NETWORK_ACTION_GIVE_MONEY,
 	NETWORK_ACTION_NAME_CHANGE,
@@ -170,7 +170,7 @@ typedef enum {
 
 typedef enum {
 	DESTTYPE_BROADCAST, ///< Send message/notice to all players (All)
-	DESTTYPE_PLAYER,    ///< Send message/notice to everyone playing the same company (Team)
+	DESTTYPE_TEAM,    ///< Send message/notice to everyone playing the same company (Team)
 	DESTTYPE_CLIENT,    ///< Send message/notice to only a certain player (Private)
 } DestType;
 

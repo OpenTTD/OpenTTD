@@ -1014,7 +1014,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 			}
 		}
 		break;
-	case DESTTYPE_PLAYER: {
+	case DESTTYPE_TEAM: {
 		bool show_local = true; // If this is false, the message is already displayed
 														// on the client who did sent it.
 		/* Find all clients that belong to this player */

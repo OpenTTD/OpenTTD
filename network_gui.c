@@ -1091,10 +1091,10 @@ static void ClientList_SpeakToClient(byte client_no)
 		ShowNetworkChatQueryWindow(DESTTYPE_CLIENT, NetworkFindClientInfo(client_no)->client_index);
 }
 
-static void ClientList_SpeakToPlayer(byte client_no)
+static void ClientList_SpeakToCompany(byte client_no)
 {
 	if (NetworkFindClientInfo(client_no) != NULL)
-		ShowNetworkChatQueryWindow(DESTTYPE_PLAYER, NetworkFindClientInfo(client_no)->client_playas);
+		ShowNetworkChatQueryWindow(DESTTYPE_TEAM, NetworkFindClientInfo(client_no)->client_playas);
 }
 
 static void ClientList_SpeakToAll(byte client_no)
@@ -1185,7 +1185,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 
 	if (IsValidPlayer(ci->client_playas)) {
 		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY);
-		_clientlist_proc[i++] = &ClientList_SpeakToPlayer;
+		_clientlist_proc[i++] = &ClientList_SpeakToCompany;
 	}
 	GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL);
 	_clientlist_proc[i++] = &ClientList_SpeakToAll;

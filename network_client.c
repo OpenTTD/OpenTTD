@@ -163,7 +163,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_COMMAND)(CommandPacket *cp)
 }
 
 // Send a chat-packet over the network
-DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType desttype, int dest, const char *msg)
+DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType type, int dest, const char *msg)
 {
 	//
 	// Packet: CLIENT_CHAT
@@ -178,7 +178,7 @@ DEF_CLIENT_SEND_COMMAND_PARAM(PACKET_CLIENT_CHAT)(NetworkAction action, DestType
 	Packet *p = NetworkSend_Init(PACKET_CLIENT_CHAT);
 
 	NetworkSend_uint8(p, action);
-	NetworkSend_uint8(p, desttype);
+	NetworkSend_uint8(p, type);
 	NetworkSend_uint8(p, dest);
 	NetworkSend_string(p, msg);
 	NetworkSend_Packet(p, MY_CLIENT);

@@ -1245,9 +1245,9 @@ DEF_CONSOLE_CMD(ConSayPlayer)
 	}
 
 	if (!_network_server) {
-		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2]);
+		SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, atoi(argv[1]), argv[2]);
 	} else {
-		NetworkServer_HandleChat(NETWORK_ACTION_CHAT_PLAYER, DESTTYPE_PLAYER, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
+		NetworkServer_HandleChat(NETWORK_ACTION_CHAT_COMPANY, DESTTYPE_TEAM, atoi(argv[1]), argv[2], NETWORK_SERVER_INDEX);
 	}
 
 	return true;
