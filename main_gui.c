@@ -83,9 +83,9 @@ void HandleOnEditText(WindowEvent *e)
 		snprintf(msg, sizeof(msg), "%d", money);
 
 		if (!_network_server) {
-			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_PLAYER, id + 1, msg);
+			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id + 1, msg);
 		} else {
-			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_PLAYER, id + 1, msg, NETWORK_SERVER_INDEX);
+			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id + 1, msg, NETWORK_SERVER_INDEX);
 		}
 		break;
 	}
@@ -2342,7 +2342,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 						}
 					}
 
-					ShowNetworkChatQueryWindow(has_team ? DESTTYPE_PLAYER : DESTTYPE_BROADCAST, cio->client_playas);
+					ShowNetworkChatQueryWindow(has_team ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas);
 					break;
 				}
 				break;
@@ -2354,7 +2354,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 			case WKC_CTRL | WKC_RETURN: case WKC_CTRL | 'T': // send text to all team mates
 				if (_networking) {
 					const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
-					ShowNetworkChatQueryWindow(DESTTYPE_PLAYER, ci->client_playas);
+					ShowNetworkChatQueryWindow(DESTTYPE_TEAM, ci->client_playas);
 				}
 				break;
 #endif
