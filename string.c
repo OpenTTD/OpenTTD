@@ -42,7 +42,7 @@ char* strecpy(char* dst, const char* src, const char* last)
 	assert(dst <= last);
 	for (; *src != '\0' && dst != last; ++dst, ++src) *dst = *src;
 	*dst = '\0';
-#if 0
+#if 1
 	if (dst == last && *src != '\0') {
 		error("String too long for destination buffer");
 	}
