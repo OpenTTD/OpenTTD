@@ -104,7 +104,7 @@ void ShowCheatWindow(void);
 
 void DrawEditBox(Window *w, querystr_d *string, int wid);
 void HandleEditBox(Window *w, querystr_d *string, int wid);
-int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we, CharSetFilter afilter);
+int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *we);
 bool HandleCaret(Textbuf *tb);
 
 void DeleteTextBufferAll(Textbuf *tb);

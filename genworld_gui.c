@@ -321,7 +321,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		case 16: // Random seed
 			_patches_newgame.generation_seed = InteractiveRandom();
 			ttd_strlcpy(_edit_str_buf, str_fmt("%u", _patches_newgame.generation_seed), lengthof(_edit_str_buf));
-			UpdateTextBufferSize(&((querystr_d *)&WP(w, querystr_d))->text);
+			UpdateTextBufferSize(&WP(w, querystr_d).text);
 			SetWindowDirty(w);
 			break;
 		case 17: // Generate
@@ -395,7 +395,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_KEYPRESS:
-		HandleEditBoxKey(w, &WP(w, querystr_d), SEED_EDIT, e, CS_NUMERAL);
+		HandleEditBoxKey(w, &WP(w, querystr_d), SEED_EDIT, e);
 		/* the seed is unsigned, therefore atoi cannot be used.
 		 * As 2^32 - 1 (MAX_UVALUE(uint32)) is a 'magic' value
 		 * (use random seed) it should not be possible to be
@@ -518,6 +518,7 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 		querystr->text.maxwidth = 120;
 		querystr->text.buf = _edit_str_buf;
 		querystr->caption = STR_NULL;
+		querystr->afilter = CS_NUMERAL;
 		UpdateTextBufferSize(&querystr->text);
 
 		InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);

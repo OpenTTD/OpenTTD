@@ -473,7 +473,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e, CS_ALPHANUMERAL) == 1) break; // enter pressed
+		if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e) == 1) break; // enter pressed
 
 		// The name is only allowed when it starts with a letter!
 		if (_edit_str_buf[0] != '\0' && _edit_str_buf[0] != ' ') {
@@ -567,6 +567,7 @@ void ShowNetworkGameWindow(void)
 		querystr->text.maxlength = lengthof(_edit_str_buf);
 		querystr->text.maxwidth = 120;
 		querystr->text.buf = _edit_str_buf;
+		querystr->afilter = CS_ALPHANUMERAL;
 		UpdateTextBufferSize(&querystr->text);
 
 		UpdateNetworkGameWindow(true);
@@ -716,7 +717,7 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		if (nd->field == 3) {
-			if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e, CS_ALPHANUMERAL) == 1) break; // enter pressed
+			if (HandleEditBoxKey(w, &WP(w, network_ql_d).q, 3, e) == 1) break; // enter pressed
 
 			ttd_strlcpy(_network_server_name, WP(w, network_ql_d).q.text.buf, sizeof(_network_server_name));
 			UpdateTextBufferSize(&WP(w, network_ql_d).q.text);
@@ -784,6 +785,7 @@ static void ShowNetworkStartServerWindow(void)
 	WP(w, network_ql_d).q.text.maxlength = lengthof(_edit_str_buf);
 	WP(w, network_ql_d).q.text.maxwidth = 160;
 	WP(w, network_ql_d).q.text.buf = _edit_str_buf;
+	WP(w, network_ql_d).q.afilter = CS_ALPHANUMERAL;
 	UpdateTextBufferSize(&WP(w, network_ql_d).q.text);
 }
 
@@ -1665,7 +1667,7 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 			ChatTabCompletion(w);
 		} else {
 			_chat_tab_completion_active = false;
-			switch (HandleEditBoxKey(w, &WP(w, querystr_d), 2, e, CS_ALPHANUMERAL)) {
+			switch (HandleEditBoxKey(w, &WP(w, querystr_d), 2, e)) {
 				case 1: { /* Return */
 				DestType type = GB(WP(w, querystr_d).caption, 0, 8);
 				byte dest = GB(WP(w, querystr_d).caption, 8, 8);
@@ -1714,6 +1716,7 @@ void ShowNetworkChatQueryWindow(DestType type, byte dest)
 	WP(w,querystr_d).caption = GB(type, 0, 8) | (dest << 8); // Misuse of caption
 	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
 	WP(w,querystr_d).wnd_num = 0;
+	WP(w,querystr_d).afilter = CS_ALPHANUMERAL;
 	WP(w,querystr_d).text.caret = false;
 	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf);
 	WP(w,querystr_d).text.maxwidth = w->widget[2].right - w->widget[2].left - 2; // widget[1] is the "text box"

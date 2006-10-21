@@ -901,7 +901,7 @@ void UpdateTextBufferSize(Textbuf *tb)
 	tb->caretxoffs = tb->width;
 }
 
-int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *e, CharSetFilter afilter)
+int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *e)
 {
 	e->we.keypress.cont = false;
 
@@ -925,11 +925,11 @@ int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *e, Cha
 			InvalidateWidget(w, wid);
 		break;
 	default:
-		if (IsValidAsciiChar(e->we.keypress.ascii, afilter)) {
+		if (IsValidAsciiChar(e->we.keypress.ascii, string->afilter)) {
 			if (InsertTextBufferChar(&string->text, e->we.keypress.ascii))
 				InvalidateWidget(w, wid);
 		} else { // key wasn't caught. Continue only if standard entry specified
-			e->we.keypress.cont = (afilter == CS_ALPHANUMERAL);
+			e->we.keypress.cont = (string->afilter == CS_ALPHANUMERAL);
 		}
 	}
 
@@ -1019,7 +1019,7 @@ press_ok:;
 	} break;
 
 	case WE_KEYPRESS: {
-		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 5, e, WP(w, querystr_d).afilter)) {
+		switch (HandleEditBoxKey(w, &WP(w, querystr_d), 5, e)) {
 		case 1: // Return
 			goto press_ok;
 		case 2: // Escape
@@ -1455,7 +1455,7 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 
 		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
-			if (HandleEditBoxKey(w, &WP(w, querystr_d), 10, e, CS_ALPHANUMERAL) == 1) /* Press Enter */
+			if (HandleEditBoxKey(w, &WP(w, querystr_d), 10, e) == 1) /* Press Enter */
 					HandleButtonClick(w, 12);
 		}
 		break;
@@ -1580,6 +1580,7 @@ void ShowSaveLoadDialog(int mode)
 	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf);
 	WP(w,querystr_d).text.maxwidth = 240;
 	WP(w,querystr_d).text.buf = _edit_str_buf;
+	WP(w,querystr_d).afilter = CS_ALPHANUMERAL;
 	UpdateTextBufferSize(&WP(w, querystr_d).text);
 
 	// pause is only used in single-player, non-editor mode, non-menu mode. It
