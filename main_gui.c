@@ -658,7 +658,7 @@ static int GetStringListMaxWidth(StringID base_string, byte count)
 
 	max_width = 0;
 	for (i = 0; i != count; i++) {
-		GetString(buffer, base_string + i);
+		GetString(buffer, base_string + i, lastof(buffer));
 		width = GetStringBoundingBox(buffer).width;
 		if (width > max_width) max_width = width;
 	}
@@ -2108,7 +2108,7 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos)
 		str = ni->string_id;
 	}
 
-	GetString(buf, str);
+	GetString(buf, str, lastof(buf));
 
 	s = buf;
 	d = buffer;

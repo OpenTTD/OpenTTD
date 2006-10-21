@@ -331,7 +331,7 @@ verify_name:;
 			if (pp->name_1 == str && pp->name_2 == strp) goto bad_town_name;
 		}
 
-		GetString(buffer, str);
+		GetString(buffer, str, lastof(buffer));
 		if (strlen(buffer) >= 32 || GetStringBoundingBox(buffer).width >= 150)
 			goto bad_town_name;
 
@@ -438,14 +438,14 @@ restart:;
 		p->president_name_1 = SPECSTR_PRESIDENT_NAME;
 
 		SetDParam(0, p->president_name_2);
-		GetString(buffer, p->president_name_1);
+		GetString(buffer, p->president_name_1, lastof(buffer));
 		if (strlen(buffer) >= 32 || GetStringBoundingBox(buffer).width >= 94)
 			continue;
 
 		FOR_ALL_PLAYERS(pp) {
 			if (pp->is_active && p != pp) {
 				SetDParam(0, pp->president_name_2);
-				GetString(buffer2, pp->president_name_1);
+				GetString(buffer2, pp->president_name_1, lastof(buffer));
 				if (strcmp(buffer2, buffer) == 0)
 					goto restart;
 			}
@@ -998,7 +998,7 @@ int8 SaveHighScoreValue(const Player *p)
 			SetDParam(1, p->president_name_2);
 			SetDParam(2, p->name_1);
 			SetDParam(3, p->name_2);
-			GetString(hs[i].company, STR_HIGHSCORE_NAME); // get manager/company name string
+			GetString(hs[i].company, STR_HIGHSCORE_NAME, lastof(hs[i].company)); // get manager/company name string
 			hs[i].score = score;
 			hs[i].title = EndGameGetPerformanceTitleFromValue(score);
 			return i;
@@ -1043,7 +1043,7 @@ int8 SaveHighScoreValueNetwork(void)
 			SetDParam(1, pl[i]->president_name_2);
 			SetDParam(2, pl[i]->name_1);
 			SetDParam(3, pl[i]->name_2);
-			GetString(hs->company, STR_HIGHSCORE_NAME); // get manager/company name string
+			GetString(hs->company, STR_HIGHSCORE_NAME, lastof(hs->company)); // get manager/company name string
 			hs->score = pl[i]->old_economy[0].performance_history;
 			hs->title = EndGameGetPerformanceTitleFromValue(hs->score);
 

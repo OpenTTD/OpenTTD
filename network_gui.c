@@ -1181,36 +1181,36 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 
 	i = 0;
 	if (_network_own_client_index != ci->client_index) {
-		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT);
+		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT, lastof(_clientlist_action[i]));
 		_clientlist_proc[i++] = &ClientList_SpeakToClient;
 	}
 
 	if (IsValidPlayer(ci->client_playas)) {
-		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY);
+		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY, lastof(_clientlist_action[i]));
 		_clientlist_proc[i++] = &ClientList_SpeakToCompany;
 	}
-	GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL);
+	GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL, lastof(_clientlist_action[i]));
 	_clientlist_proc[i++] = &ClientList_SpeakToAll;
 
 	if (_network_own_client_index != ci->client_index) {
 		/* We are no spectator and the player we want to give money to is no spectator */
 		if (IsValidPlayer(_network_playas) && IsValidPlayer(ci->client_playas)) {
-			GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY);
+			GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_GIVE_MONEY, lastof(_clientlist_action[i]));
 			_clientlist_proc[i++] = &ClientList_GiveMoney;
 		}
 	}
 
 	// A server can kick clients (but not himself)
 	if (_network_server && _network_own_client_index != ci->client_index) {
-		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_KICK);
+		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_KICK, lastof(_clientlist_action[i]));
 		_clientlist_proc[i++] = &ClientList_Kick;
 
-		sprintf(_clientlist_action[i],"Ban");
+		sprintf(_clientlist_action[i],"Ban"); // XXX GetString?
 		_clientlist_proc[i++] = &ClientList_Ban;
 	}
 
 	if (i == 0) {
-		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_NONE);
+		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_NONE, lastof(_clientlist_action[i]));
 		_clientlist_proc[i++] = &ClientList_None;
 	}
 
@@ -1511,7 +1511,7 @@ static const char *ChatTabCompletionNextItem(uint *item)
 		FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {
 			/* Get the town-name via the string-system */
 			SetDParam(0, t->townnameparts);
-			GetString(chat_tab_temp_buffer, t->townnametype);
+			GetString(chat_tab_temp_buffer, t->townnametype, lastof(chat_tab_temp_buffer));
 			return &chat_tab_temp_buffer[0];
 		}
 	}

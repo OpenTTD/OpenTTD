@@ -536,12 +536,12 @@ static int CDECL GeneralIndustrySorter(const void *a, const void *b)
 		char buf1[96];
 
 		SetDParam(0, i->town->index);
-		GetString(buf1, STR_TOWN);
+		GetString(buf1, STR_TOWN, lastof(buf1));
 
 		if (j != _last_industry) {
 			_last_industry = j;
 			SetDParam(0, j->town->index);
-			GetString(_bufcache, STR_TOWN);
+			GetString(_bufcache, STR_TOWN, lastof(_bufcache));
 		}
 		r = strcmp(buf1, _bufcache);
 	}

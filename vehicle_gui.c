@@ -516,7 +516,7 @@ static int CDECL VehicleNameSorter(const void *a, const void *b)
 	if (va != last_vehicle[0]) {
 		last_vehicle[0] = va;
 		if (IsCustomName(va->string_id)) {
-			GetString(last_name[0], va->string_id);
+			GetString(last_name[0], va->string_id, lastof(last_name[0]));
 		} else {
 			last_name[0][0] = '\0';
 		}
@@ -525,7 +525,7 @@ static int CDECL VehicleNameSorter(const void *a, const void *b)
 	if (vb != last_vehicle[1]) {
 		last_vehicle[1] = vb;
 		if (IsCustomName(vb->string_id)) {
-			GetString(last_name[1], vb->string_id);
+			GetString(last_name[1], vb->string_id, lastof(last_name[1]));
 		} else {
 			last_name[1][0] = '\0';
 		}

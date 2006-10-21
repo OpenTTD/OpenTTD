@@ -230,7 +230,7 @@ NetworkClientInfo *NetworkFindClientInfoFromIndex(uint16 client_index);
 NetworkClientInfo *NetworkFindClientInfoFromIP(const char *ip);
 NetworkClientState *NetworkFindClientStateFromIndex(uint16 client_index);
 unsigned long NetworkResolveHost(const char *hostname);
-char *GetNetworkErrorMsg(char *buf, NetworkErrorCode err);
+char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last);
 
 #endif /* ENABLE_NETWORK */
 

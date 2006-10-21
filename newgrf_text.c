@@ -292,7 +292,7 @@ StringID GetGRFStringID(uint32 grfid, uint16 stringid)
 }
 
 
-char *GetGRFString(char *buff, uint16 stringid)
+char *GetGRFString(char *buff, uint16 stringid, const char* last)
 {
 	const GRFText *default_text = NULL;
 	const GRFText *search_text;
@@ -319,7 +319,7 @@ char *GetGRFString(char *buff, uint16 stringid)
 	if (default_text != NULL) return strecpy(buff, default_text->text, NULL);
 
 	/* Use the default string ID if the fallback string isn't available */
-	return GetString(buff, _grf_text[stringid].def_string);
+	return GetString(buff, _grf_text[stringid].def_string, last);
 }
 
 /**

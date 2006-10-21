@@ -246,7 +246,7 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration)
 	te->params_1 = GetDParam(0);
 	te->params_2 = GetDParam(4);
 
-	GetString(buffer, msg);
+	GetString(buffer, msg, lastof(buffer));
 	w = GetStringBoundingBox(buffer).width;
 
 	te->x = x - (w >> 1);

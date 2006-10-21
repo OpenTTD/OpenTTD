@@ -11,7 +11,7 @@ static inline char* InlineString(char* buf, uint16 string)
 	return buf;
 }
 
-char *GetString(char *buffr, uint16 string);
+char *GetString(char *buffr, uint16 string, const char* last);
 
 extern char _userstring[128];
 

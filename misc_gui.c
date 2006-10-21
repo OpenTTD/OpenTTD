@@ -92,7 +92,7 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 
 		{
 			char buf[512];
-			char *p = GetString(buf, STR_01CE_CARGO_ACCEPTED);
+			char *p = GetString(buf, STR_01CE_CARGO_ACCEPTED, lastof(buf));
 			bool found = false;
 
 			for (i = 0; i < NUM_CARGO; ++i) {
@@ -108,9 +108,9 @@ static void LandInfoWndProc(Window *w, WindowEvent *e)
 					if (lid->ac[i] < 8) {
 						SetDParam(0, lid->ac[i]);
 						SetDParam(1, _cargoc.names_s[i]);
-						p = GetString(p, STR_01D1_8);
+						p = GetString(p, STR_01D1_8, lastof(buf));
 					} else {
-						p = GetString(p, _cargoc.names_s[i]);
+						p = GetString(p, _cargoc.names_s[i], lastof(buf));
 					}
 				}
 			}
@@ -679,7 +679,7 @@ void GuiShowTooltipsWithArgs(StringID str, uint paramcount, const uint32 params[
 	if (str == STR_NULL || (paramcount != 0 && !_patches.measure_tooltip)) return;
 
 	for (i = 0; i != paramcount; i++) SetDParam(i, params[i]);
-	GetString(buffer, str);
+	GetString(buffer, str, lastof(buffer));
 
 	br = GetStringBoundingBox(buffer);
 	br.width += 6; br.height += 4; // increase slightly to have some space around the box
@@ -1076,7 +1076,7 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 
 	w = AllocateWindowDesc(&_query_string_desc);
 
-	GetString(_edit_str_buf, str);
+	GetString(_edit_str_buf, str, lastof(_edit_str_buf));
 	_edit_str_buf[realmaxlen-1] = '\0';
 
 	if (maxlen & 0x1000) {
@@ -1311,7 +1311,7 @@ static void GenerateFileName(void)
 	SetDParam(0, p->name_1);
 	SetDParam(1, p->name_2);
 	SetDParam(2, _date);
-	GetString(_edit_str_buf, STR_4004);
+	GetString(_edit_str_buf, STR_4004, lastof(_edit_str_buf));
 }
 
 extern void StartupEngines(void);
@@ -1777,7 +1777,7 @@ static void CheatsWndProc(Window *w, WindowEvent *e)
 				/* Draw colored flag for change player cheat */
 				case STR_CHEAT_CHANGE_PLAYER:
 					SetDParam(0, val);
-					GetString(buf, STR_CHEAT_CHANGE_PLAYER);
+					GetString(buf, STR_CHEAT_CHANGE_PLAYER, lastof(buf));
 					DrawPlayerIcon(_current_player, 60 + GetStringBoundingBox(buf).width, y + 2);
 					break;
 				/* Set correct string for switch climate cheat */

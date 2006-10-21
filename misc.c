@@ -162,9 +162,9 @@ void DeleteName(StringID id)
 	}
 }
 
-char *GetName(int id, char *buff)
+char *GetName(char *buff, StringID id, const char* last)
 {
-	return strecpy(buff, _name_array[id & ~0x600], NULL);
+	return strecpy(buff, _name_array[id & ~0x600], last);
 }
 
 

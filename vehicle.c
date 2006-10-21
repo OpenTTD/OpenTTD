@@ -2076,7 +2076,7 @@ static int32 ReplaceVehicle(Vehicle **w, byte flags, int32 total_cost)
 		if (!IsCustomName(old_v->string_id)) {
 			vehicle_name[0] = '\0';
 		} else {
-			GetName(old_v->string_id & 0x7FF, vehicle_name);
+			GetName(vehicle_name, old_v->string_id & 0x7FF, lastof(vehicle_name));
 		}
 	} else { // flags & DC_EXEC not set
 		/* Ensure that the player will not end up having negative money while autoreplacing

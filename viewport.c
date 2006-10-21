@@ -1017,7 +1017,7 @@ void UpdateViewportSignPos(ViewportSign *sign, int left, int top, StringID str)
 
 	sign->top = top;
 
-	GetString(buffer, str);
+	GetString(buffer, str, lastof(buffer));
 	w = GetStringBoundingBox(buffer).width + 3;
 	sign->width_1 = w;
 	sign->left = left - w / 2;

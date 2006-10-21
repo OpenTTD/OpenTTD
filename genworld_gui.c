@@ -284,7 +284,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 				SetDParam(0, _heightmap_x);
 				SetDParam(1, _heightmap_y);
 			}
-			GetString(buffer, STR_HEIGHTMAP_SIZE);
+			GetString(buffer, STR_HEIGHTMAP_SIZE, lastof(buffer));
 			DrawStringRightAligned(326, 91, STR_HEIGHTMAP_SIZE, 0x10);
 
 			DrawString( 12,  91, STR_HEIGHTMAP_NAME, 0x10);

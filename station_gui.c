@@ -81,12 +81,12 @@ static int CDECL StationNameSorter(const void *a, const void *b)
 	int r;
 
 	SetDParam(0, st1->index);
-	GetString(buf1, STR_STATION);
+	GetString(buf1, STR_STATION, lastof(buf1));
 
 	if (st2 != _last_station) {
 		_last_station = st2;
 		SetDParam(0, st2->index);
-		GetString(_bufcache, STR_STATION);
+		GetString(_bufcache, STR_STATION, lastof(_bufcache));
 	}
 
 	r =  strcmp(buf1, _bufcache); // sort by name

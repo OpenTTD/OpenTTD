@@ -1135,11 +1135,11 @@ static int CDECL SignNameSorter(const void *a, const void *b)
 	const Sign *sign1 = *(const Sign**)b;
 	char buf1[64];
 
-	GetString(buf1, sign0->str);
+	GetString(buf1, sign0->str, lastof(buf1));
 
 	if (sign1 != _last_sign) {
 		_last_sign = sign1;
-		GetString(_bufcache, sign1->str);
+		GetString(_bufcache, sign1->str, lastof(_bufcache));
 	}
 
 	return strcmp(buf1, _bufcache); // sort by name

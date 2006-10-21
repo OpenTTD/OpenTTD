@@ -135,13 +135,13 @@ static int CDECL TrainEngineNameSorter(const void *a, const void *b)
 	char buf1[64];
 	int r;
 
-	GetString(buf1, GetCustomEngineName(va));
+	GetString(buf1, GetCustomEngineName(va), lastof(buf1));
 
 	if (vb != _last_engine) {
 		_last_engine = vb;
 		_bufcache[0] = '\0';
 
-		GetString(_bufcache, GetCustomEngineName(vb));
+		GetString(_bufcache, GetCustomEngineName(vb), lastof(_bufcache));
 	}
 
 	r =  strcasecmp(buf1, _bufcache); // sort by name

@@ -131,54 +131,54 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 
 	switch (action) {
 		case NETWORK_ACTION_JOIN:
-			GetString(temp, STR_NETWORK_CLIENT_JOINED);
+			GetString(temp, STR_NETWORK_CLIENT_JOINED, lastof(temp));
 			snprintf(message, sizeof(message), "*** %s %s", name, temp);
 			break;
 		case NETWORK_ACTION_LEAVE:
-			GetString(temp, STR_NETWORK_ERR_LEFT);
+			GetString(temp, STR_NETWORK_ERR_LEFT, lastof(temp));
 			snprintf(message, sizeof(message), "*** %s %s (%s)", name, temp, buf);
 			break;
 		case NETWORK_ACTION_GIVE_MONEY:
 			if (self_send) {
 				SetDParamStr(0, name);
 				SetDParam(1, atoi(buf));
-				GetString(temp, STR_NETWORK_GAVE_MONEY_AWAY);
+				GetString(temp, STR_NETWORK_GAVE_MONEY_AWAY, lastof(temp));
 				snprintf(message, sizeof(message), "*** %s", temp);
 			} else {
 				SetDParam(0, atoi(buf));
-				GetString(temp, STR_NETWORK_GIVE_MONEY);
+				GetString(temp, STR_NETWORK_GIVE_MONEY, lastof(temp));
 				snprintf(message, sizeof(message), "*** %s %s", name, temp);
 			}
 			break;
 		case NETWORK_ACTION_CHAT_COMPANY:
 			if (self_send) {
 				SetDParamStr(0, name);
-				GetString(temp, STR_NETWORK_CHAT_TO_COMPANY);
+				GetString(temp, STR_NETWORK_CHAT_TO_COMPANY, lastof(temp));
 				snprintf(message, sizeof(message), "%s %s", temp, buf);
 			} else {
 				SetDParamStr(0, name);
-				GetString(temp, STR_NETWORK_CHAT_COMPANY);
+				GetString(temp, STR_NETWORK_CHAT_COMPANY, lastof(temp));
 				snprintf(message, sizeof(message), "%s %s", temp, buf);
 			}
 			break;
 		case NETWORK_ACTION_CHAT_CLIENT:
 			if (self_send) {
 				SetDParamStr(0, name);
-				GetString(temp, STR_NETWORK_CHAT_TO_CLIENT);
+				GetString(temp, STR_NETWORK_CHAT_TO_CLIENT, lastof(temp));
 				snprintf(message, sizeof(message), "%s %s", temp, buf);
 			} else {
 				SetDParamStr(0, name);
-				GetString(temp, STR_NETWORK_CHAT_CLIENT);
+				GetString(temp, STR_NETWORK_CHAT_CLIENT, lastof(temp));
 				snprintf(message, sizeof(message), "%s %s", temp, buf);
 			}
 			break;
 		case NETWORK_ACTION_NAME_CHANGE:
-			GetString(temp, STR_NETWORK_NAME_CHANGE);
+			GetString(temp, STR_NETWORK_NAME_CHANGE, lastof(temp));
 			snprintf(message, sizeof(message), "*** %s %s %s", name, temp, buf);
 			break;
 		default:
 			SetDParamStr(0, name);
-			GetString(temp, STR_NETWORK_CHAT_ALL);
+			GetString(temp, STR_NETWORK_CHAT_ALL, lastof(temp));
 			snprintf(message, sizeof(message), "%s %s", temp, buf);
 			break;
 	}
@@ -260,7 +260,7 @@ static void NetworkClientError(NetworkRecvStatus res, NetworkClientState* cs)
  * @param buf buffer where the error message will be stored
  * @param err NetworkErrorCode
  * @return returns a pointer to the error message (buf) */
-char *GetNetworkErrorMsg(char *buf, NetworkErrorCode err)
+char* GetNetworkErrorMsg(char* buf, NetworkErrorCode err, const char* last)
 {
 	/* List of possible network errors, used by
 	 * PACKET_SERVER_ERROR and PACKET_CLIENT_ERROR */
@@ -283,7 +283,7 @@ char *GetNetworkErrorMsg(char *buf, NetworkErrorCode err)
 
 	if (err >= lengthof(network_error_strings)) err = 0;
 
-	return GetString(buf, network_error_strings[err]);
+	return GetString(buf, network_error_strings[err], last);
 }
 
 /* Count the number of active clients connected */
@@ -599,7 +599,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 
 		NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-		GetNetworkErrorMsg(str, errorno);
+		GetNetworkErrorMsg(str, errorno, lastof(str));
 
 		NetworkTextMessage(NETWORK_ACTION_LEAVE, 1, false, client_name, "%s", str);
 

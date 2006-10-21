@@ -3,6 +3,7 @@
 #ifdef ENABLE_NETWORK
 
 #include "stdafx.h"
+#include "openttd.h" // XXX StringID
 #include "debug.h"
 #include "string.h"
 #include "strings.h"
@@ -144,7 +145,7 @@ DEF_SERVER_SEND_COMMAND_PARAM(PACKET_SERVER_ERROR)(NetworkClientState *cs, Netwo
 	NetworkSend_uint8(p, error);
 	NetworkSend_Packet(p, cs);
 
-	GetNetworkErrorMsg(str, error);
+	GetNetworkErrorMsg(str, error, lastof(str));
 
 	// Only send when the current client was in game
 	if (cs->status > STATUS_AUTH) {
@@ -899,7 +900,7 @@ DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_ERROR)
 
 	NetworkGetClientName(client_name, sizeof(client_name), cs);
 
-	GetNetworkErrorMsg(str, errorno);
+	GetNetworkErrorMsg(str, errorno, lastof(str));
 
 	DEBUG(net, 2)("[NET] %s reported an error and is closing his connection (%s)", client_name, str);
 
@@ -1043,7 +1044,7 @@ void NetworkServer_HandleChat(NetworkAction action, DestType desttype, int dest,
 		if (ci != NULL && show_local) {
 			if (from_index == NETWORK_SERVER_INDEX) {
 				char name[NETWORK_NAME_LENGTH];
-				GetString(name, GetPlayer(ci_to->client_playas)->name_1);
+				GetString(name, GetPlayer(ci_to->client_playas)->name_1, lastof(name));
 				NetworkTextMessage(action, GetDrawStringPlayerColor(ci_own->client_playas), true, name, "%s", msg);
 			} else {
 				FOR_ALL_CLIENTS(cs) {
@@ -1211,7 +1212,7 @@ void NetworkPopulateCompanyInfo(void)
 		// Grap the company name
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
-		GetString(_network_player_info[p->index].company_name, STR_JUST_STRING);
+		GetString(_network_player_info[p->index].company_name, STR_JUST_STRING, lastof(_network_player_info[p->index].company_name));
 
 		// Check the income
 		if (_cur_year - 1 == p->inaugurated_year) {

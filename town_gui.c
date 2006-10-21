@@ -378,7 +378,7 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 	int r;
 
 	SetDParam(0, ta->index);
-	GetString(buf1, STR_TOWN);
+	GetString(buf1, STR_TOWN, lastof(buf1));
 
 	/* If 'b' is the same town as in the last round, use the cached value
 	 *  We do this to speed stuff up ('b' is called with the same value a lot of
@@ -386,7 +386,7 @@ static int CDECL TownNameSorter(const void *a, const void *b)
 	if (tb != _last_town) {
 		_last_town = tb;
 		SetDParam(0, tb->index);
-		GetString(_bufcache, STR_TOWN);
+		GetString(_bufcache, STR_TOWN, lastof(_bufcache));
 	}
 
 	r = strcmp(buf1, _bufcache);

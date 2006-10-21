@@ -826,7 +826,7 @@ void BackupVehicleOrders(const Vehicle *v, BackuppedOrders *bak)
 	if (!IsCustomName(v->string_id)) {
 		bak->name[0] = '\0';
 	} else {
-		GetName(v->string_id & 0x7FF, bak->name);
+		GetName(bak->name, v->string_id & 0x7FF, lastof(bak->name));
 	}
 
 	/* If we have shared orders, store it on a special way */

@@ -628,7 +628,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				/* For speaking to player or give money, we need the player-name */
 				if (!IsValidPlayer(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY; // This should never happen
 
-				GetString(name, GetPlayer(ci_to->client_playas)->name_1);
+				GetString(name, GetPlayer(ci_to->client_playas)->name_1, lastof(name));
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 				break;
 			default:
@@ -654,7 +654,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_ERROR_QUIT)
 	NetworkClientInfo *ci;
 
 	index = NetworkRecv_uint16(MY_CLIENT, p);
-	GetNetworkErrorMsg(str, NetworkRecv_uint8(MY_CLIENT, p));
+	GetNetworkErrorMsg(str, NetworkRecv_uint8(MY_CLIENT, p), lastof(str));
 
 	ci = NetworkFindClientInfoFromIndex(index);
 	if (ci != NULL) {

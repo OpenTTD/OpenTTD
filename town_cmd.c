@@ -886,7 +886,7 @@ restart:
 		r = Random();
 
 		SetDParam(0, r);
-		GetString(buf1, townnametype);
+		GetString(buf1, townnametype, lastof(buf1));
 
 		// Check size and width
 		if (strlen(buf1) >= 31 || GetStringBoundingBox(buf1).width > 130) continue;
@@ -895,7 +895,7 @@ restart:
 			// We can't just compare the numbers since
 			// several numbers may map to a single name.
 			SetDParam(0, t2->index);
-			GetString(buf2, STR_TOWN);
+			GetString(buf2, STR_TOWN, lastof(buf2));
 			if (strcmp(buf1, buf2) == 0) {
 				if (tries-- < 0) return false;
 				goto restart;

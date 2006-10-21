@@ -1,6 +1,8 @@
 /* $Id$ */
 
 #include "stdafx.h"
+#include "openttd.h"
+#include "functions.h"
 #include "string.h"
 
 #include <stdarg.h>
@@ -26,7 +28,7 @@ void ttd_strlcpy(char *dst, const char *src, size_t size)
 
 char* strecat(char* dst, const char* src, const char* last)
 {
-	assert(last == NULL || dst <= last);
+	assert(dst <= last);
 	for (; *dst != '\0'; ++dst)
 		if (dst == last) return dst;
 	for (; *src != '\0' && dst != last; ++dst, ++src) *dst = *src;
@@ -37,9 +39,14 @@ char* strecat(char* dst, const char* src, const char* last)
 
 char* strecpy(char* dst, const char* src, const char* last)
 {
-	assert(last == NULL || dst <= last);
+	assert(dst <= last);
 	for (; *src != '\0' && dst != last; ++dst, ++src) *dst = *src;
 	*dst = '\0';
+#if 0
+	if (dst == last && *src != '\0') {
+		error("String too long for destination buffer");
+	}
+#endif
 	return dst;
 }
 

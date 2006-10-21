@@ -329,9 +329,9 @@ static int TruncateString(char *str, int maxw)
 	return w;
 }
 
-static inline int TruncateStringID(StringID src, char *dest, int maxw)
+static inline int TruncateStringID(StringID src, char *dest, int maxw, const char* last)
 {
-	GetString(dest, src);
+	GetString(dest, src, last);
 	return TruncateString(dest, maxw);
 }
 
@@ -340,14 +340,14 @@ int DrawString(int x, int y, StringID str, uint16 color)
 {
 	char buffer[512];
 
-	GetString(buffer, str);
+	GetString(buffer, str, lastof(buffer));
 	return DoDrawString(buffer, x, y, color);
 }
 
 int DrawStringTruncated(int x, int y, StringID str, uint16 color, uint maxw)
 {
 	char buffer[512];
-	TruncateStringID(str, buffer, maxw);
+	TruncateStringID(str, buffer, maxw, lastof(buffer));
 	return DoDrawString(buffer, x, y, color);
 }
 
@@ -357,7 +357,7 @@ int DrawStringRightAligned(int x, int y, StringID str, uint16 color)
 	char buffer[512];
 	int w;
 
-	GetString(buffer, str);
+	GetString(buffer, str, lastof(buffer));
 	w = GetStringBoundingBox(buffer).width;
 	DoDrawString(buffer, x - w, y, color);
 
@@ -368,7 +368,7 @@ void DrawStringRightAlignedTruncated(int x, int y, StringID str, uint16 color, u
 {
 	char buffer[512];
 
-	TruncateStringID(str, buffer, maxw);
+	TruncateStringID(str, buffer, maxw, lastof(buffer));
 	DoDrawString(buffer, x - GetStringBoundingBox(buffer).width, y, color);
 }
 
@@ -384,7 +384,7 @@ int DrawStringCentered(int x, int y, StringID str, uint16 color)
 	char buffer[512];
 	int w;
 
-	GetString(buffer, str);
+	GetString(buffer, str, lastof(buffer));
 
 	w = GetStringBoundingBox(buffer).width;
 	DoDrawString(buffer, x - w / 2, y, color);
@@ -395,7 +395,7 @@ int DrawStringCentered(int x, int y, StringID str, uint16 color)
 int DrawStringCenteredTruncated(int xl, int xr, int y, StringID str, uint16 color)
 {
 	char buffer[512];
-	int w = TruncateStringID(str, buffer, xr - xl);
+	int w = TruncateStringID(str, buffer, xr - xl, lastof(buffer));
 	return DoDrawString(buffer, (xl + xr - w) / 2, y, color);
 }
 
@@ -466,7 +466,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 	const char *src;
 	byte c;
 
-	GetString(buffer, str);
+	GetString(buffer, str, lastof(buffer));
 
 	tmp = FormatStringLinebreaks(buffer, maxw);
 	num = GB(tmp, 0, 16);
@@ -508,7 +508,7 @@ void DrawStringMultiLine(int x, int y, StringID str, int maxw)
 	const char *src;
 	byte c;
 
-	GetString(buffer, str);
+	GetString(buffer, str, lastof(buffer));
 
 	tmp = FormatStringLinebreaks(buffer, maxw);
 	num = GB(tmp, 0, 16);

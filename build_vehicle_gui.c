@@ -99,12 +99,12 @@ static int CDECL EngineNameSorter(const void *a, const void *b)
 
 	if (va != last_engine[0]) {
 		last_engine[0] = va;
-		GetString(last_name[0], GetCustomEngineName(va));
+		GetString(last_name[0], GetCustomEngineName(va), lastof(last_name[0]));
 	}
 
 	if (vb != last_engine[1]) {
 		last_engine[1] = vb;
-		GetString(last_name[1], GetCustomEngineName(vb));
+		GetString(last_name[1], GetCustomEngineName(vb), lastof(last_name[1]));
 	}
 
 	r = strcmp(last_name[0], last_name[1]); // sort by name

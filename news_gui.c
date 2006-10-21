@@ -579,7 +579,7 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 		str = ni->string_id;
 	}
 
-	GetString(buffer, str);
+	GetString(buffer, str, lastof(buffer));
 	/* Copy the just gotten string to another buffer to remove any formatting
 	 * from it such as big fonts, etc. */
 	for (ptr = buffer, dest = buffer2; *ptr != '\0'; ptr++) {

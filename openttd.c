@@ -17,6 +17,7 @@
 #include "functions.h"
 #include "mixer.h"
 #include "spritecache.h"
+#include "strings.h"
 #include "gfx.h"
 #include "gfxinit.h"
 #include "gui.h"
@@ -878,16 +879,17 @@ static void DoAutosave(void)
 
 	if (_patches.keep_all_autosave && _local_player != PLAYER_SPECTATOR) {
 		const Player *p = GetPlayer(_local_player);
-		char *s;
-		sprintf(buf, "%s%s", _path.autosave_dir, PATHSEP);
+		char* s = buf;
+
+		s += snprintf(buf, lengthof(buf), "%s%s", _path.autosave_dir, PATHSEP);
 
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		SetDParam(2, _date);
-		s = GetString(buf + strlen(_path.autosave_dir) + strlen(PATHSEP), STR_4004);
-		strcpy(s, ".sav");
+		s = GetString(s, STR_4004, lastof(buf));
+		strecpy(s, ".sav", lastof(buf));
 	} else { /* generate a savegame name and number according to _patches.max_num_autosaves */
-		sprintf(buf, "%s%sautosave%d.sav", _path.autosave_dir, PATHSEP, _autosave_ctr);
+		snprintf(buf, lengthof(buf), "%s%sautosave%d.sav", _path.autosave_dir, PATHSEP, _autosave_ctr);
 
 		_autosave_ctr++;
 		if (_autosave_ctr >= _patches.max_num_autosaves) {

@@ -504,7 +504,7 @@ static char *MakeScreenshotName(const char *ext)
 		SetDParam(0, p->name_1);
 		SetDParam(1, p->name_2);
 		SetDParam(2, _date);
-		GetString(_screenshot_name, STR_4004);
+		GetString(_screenshot_name, STR_4004, lastof(_screenshot_name));
 	}
 
 	base = strchr(_screenshot_name, 0);

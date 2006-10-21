@@ -140,7 +140,7 @@ void InitializeLandscapeVariables(bool only_constants);
 /* misc.c */
 bool IsCustomName(StringID id);
 void DeleteName(StringID id);
-char *GetName(int id, char *buff);
+char *GetName(char *buff, StringID id, const char* last);
 
 // AllocateNameUnique also tests if the name used is not used anywere else
 //  and if it is used, it returns an error.
