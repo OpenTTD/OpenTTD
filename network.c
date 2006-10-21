@@ -150,7 +150,7 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 				snprintf(message, sizeof(message), "*** %s %s", name, temp);
 			}
 			break;
-		case NETWORK_ACTION_CHAT_PLAYER:
+		case NETWORK_ACTION_CHAT_COMPANY:
 			if (self_send) {
 				SetDParamStr(0, name);
 				GetString(temp, STR_NETWORK_CHAT_TO_COMPANY);

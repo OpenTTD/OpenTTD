@@ -623,7 +623,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				snprintf(name, sizeof(name), "%s", ci_to->client_name);
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 				break;
-			case NETWORK_ACTION_CHAT_PLAYER:
+			case NETWORK_ACTION_CHAT_COMPANY:
 			case NETWORK_ACTION_GIVE_MONEY:
 				/* For speaking to player or give money, we need the player-name */
 				if (!IsValidPlayer(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY; // This should never happen
