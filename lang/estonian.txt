@@ -2,6 +2,7 @@
 ##ownname Eesti keel
 ##isocode et_ET
 ##plural 0
+##case genitiiv
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -382,12 +383,12 @@ STR_SORT_BY_FACILITY                                            :Jaama tüüp
 STR_SORT_BY_WAITING                                             :Ootava kauba väärtus
 STR_SORT_BY_RATING_MAX                                          :Kauba hinnang
 STR_ENGINE_SORT_ENGINE_ID                                       :MootoriID (klassikaline)
-STR_ENGINE_SORT_COST                                            :Maksumus
+STR_ENGINE_SORT_COST                                            :Hind
 STR_ENGINE_SORT_POWER                                           :Võimsus
-STR_ENGINE_SORT_INTRO_DATE                                      :Teatamis Kuupäev
+STR_ENGINE_SORT_INTRO_DATE                                      :Esitluskuupäev
 STR_ENGINE_SORT_RUNNING_COST                                    :Teenindusmaks
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Jõud/Teenindusmaks
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kaubaruumi suurus Capacity
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Laadungi mahutavus
 STR_NO_WAITING_CARGO                                            :{BLACK}Kaupa pole ootamas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vali kõik tööstused
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vali kõik kaubatüüpid (ka mitteoodatav kaup)
@@ -1349,7 +1350,7 @@ STR_NETWORK_GAME_LOBBY                                          :{WHITE}Võrgumän
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Ühinemiseks valmistumine:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Nimekiri mängus oelvatest ettevõtetest. Saad liituda ühega või alustada uut, kui on vabu kohti
-STR_NETWORK_NEW_COMPANY                                         :{BLACK}Kuus ettevõte
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}Uus ettevõte
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Uue ettevõtte loomine
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Jälgi mängu
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Vaata mängu kõrvalt
@@ -1768,22 +1769,22 @@ STR_STAT_CLASS_WAYP                                             :Kontrollpunktid
 ##id 0x3800
 STR_3800_SHIP_DEPOT_ORIENTATION                                 :{WHITE}Paadikuuri Orientatsioon
 STR_3801_MUST_BE_BUILT_ON_WATER                                 :{WHITE}...peab ehitama vette
-STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Siia ei saa paadikuuri ehitada...
-STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Paadikuuri orientatsiooni valimine
+STR_3802_CAN_T_BUILD_SHIP_DEPOT                                 :{WHITE}Siia ei saa laevaangaari ehitada...
+STR_3803_SELECT_SHIP_DEPOT_ORIENTATION                          :{BLACK}Laevaangaari orientatsiooni valimine
 STR_3804_WATER                                                  :Vesi
 STR_3805_COAST_OR_RIVERBANK                                     :Kallas
-STR_3806_SHIP_DEPOT                                             :Paadikuur
-STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...ei saa vette ehitada
+STR_3806_SHIP_DEPOT                                             :Laevaangaar
+STR_3807_CAN_T_BUILD_ON_WATER                                   :{WHITE}...vette ei saa ehitada
 
 ##id 0x4000
 STR_4000_SAVE_GAME                                              :{WHITE}Salvesta mäng
-STR_4001_LOAD_GAME                                              :{WHITE}Lae mäng
+STR_4001_LOAD_GAME                                              :{WHITE}Laadi mäng
 STR_4002_SAVE                                                   :{BLACK}Salvesta
 STR_4003_DELETE                                                 :{BLACK}Kustuta
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
 STR_4005_BYTES_FREE                                             :{BLACK}{COMMA} megabaiti{P "" i} vaba
 STR_4006_UNABLE_TO_READ_DRIVE                                   :{BLACK}Ei suuda kettalt lugeda
-STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Mängu Salvestamine Ebaõnnestus
+STR_4007_GAME_SAVE_FAILED                                       :{WHITE}Mängu salvestamine ebaõnnestus
 STR_4008_UNABLE_TO_DELETE_FILE                                  :{WHITE}Faili ei saa kustutada
 STR_4009_GAME_LOAD_FAILED                                       :{WHITE}Mängu laadimine ebaõnnestus
 STR_400A_LIST_OF_DRIVES_DIRECTORIES                             :{BLACK}Nimekiri ketastest, kataloogidest ja salvestatud mängudest
@@ -2147,8 +2148,8 @@ STR_RELOCATE_COMPANY_HEADQUARTERS                               :{BLACK}Ehita et
 STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Ettevõtte peakorterit ei saa ehitada...
 STR_7072_VIEW_HQ                                                :{BLACK}Vaata peakorterit
 STR_RELOCATE_HQ                                                 :{BLACK}Liiguta peakorterit
-STR_COMPANY_PASSWORD                                            :{BLACK}Parool
-STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ettevõtte kaitsmine parooliga, et võõrad ei saaks ilma loata ühineda.
+STR_COMPANY_PASSWORD                                            :{BLACK}Salasõna
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Ettevõtte kaitsmine salasõnaga, et võõrad ei saaks ilma loata ühineda.
 STR_SET_COMPANY_PASSWORD                                        :Vali ettevõttele salasõna
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Majanduslik tagasilöök!{}{}Finantseksperdid ennustavad suurt majanduslangust!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Madalseis on läbi!{}{}Suurem kauplemine julgustab majanduse tugevnemisega ettevõtteid!
@@ -2862,8 +2863,8 @@ STR_PERFORMANCE_DETAIL_TOTAL                                    :{BLACK}Kokku:
 STR_PERFORMANCE_DETAIL_VEHICLES_TIP                             :{BLACK}Sõidukite arv; see sisaldab maanteesõidukeid, ronhe, laevu ja lennukeid
 STR_PERFORMANCE_DETAIL_STATIONS_TIP                             :{BLACK}Jaamade osade arv. Iga osa jaamast (nt. rongijaam, bussipeatus, lennujaam) loetakse eraldi, isegi kui naad on ühendatud üheks jaamaks
 STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP                           :{BLACK}Kasum sõidukil, millel on kõige väiksem sissetulek (ainult 2 aastat või vanemad sõidukid)
-STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Väikseim kasum kuus viimase 12 kvartali jooksul
-STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Suurim kasum kuus viimas 12 kvartali jooksul
+STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP                           :{BLACK}Väikseim kuukasum viimase 12 kvartali jooksul
+STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP                           :{BLACK}Suurim kuukasum viimase 12 kvartali jooksul
 STR_PERFORMANCE_DETAIL_DELIVERED_TIP                            :{BLACK}Kauba arv, mis on veatud viimase 4 kvartali jooksul
 STR_PERFORMANCE_DETAIL_CARGO_TIP                                :{BLACK}Kauba arv, mis on veatud viimasel kvartalil
 STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Raha arv, mis on sellel firmal pangas
@@ -2930,7 +2931,7 @@ STR_ARE_YOU_SURE                                                :{BLACK}Kas sa o
 
 STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Kinnita, et sa tahad müüa kõiki ronge jaamast
 STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Kinnita, et sa tahad müüa kõiki autosi garaa¸ist
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Kinnita, et sa tahad müüa kõiki laevu sadamast
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Kinnita, et sa tahad müüa kõiki laevaangaaris olevaid laevu
 STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Kinnita, et sa tahad müüa kõiki lennukeid angaaris
 
 STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Ära müü kõiki ronge jaamast
@@ -2975,9 +2976,9 @@ STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagunite
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Sunni automaatvahetus hoidma rongi pikkust samaks eemaldades vaguneid (alustades eestpoolt), kui vahetatav mootor muudaks rongi pikemaks.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vahetamisel: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} TESTIMISEL! {}Vaheta aken mootori ja vaguni vahetamise aknate vahel.{}Vaguni vahetus tehakse ainult siis kui uus vagun suudetakse muuta kandmaks sama tüüpi kaupa kui vana vagun. See valitakse igale vagunile kui tegelik vahetus käib
-STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Mootorit ei saa ehitada
+STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Vedurit ei saa ehitada
 
-STR_ENGINES                                                     :Mootorid
+STR_ENGINES                                                     :Vedurid
 STR_WAGONS                                                      :Vaguneid
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Vajuta, kui tahad seisata kõiki ronge jaamas
@@ -3001,7 +3002,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}Tellimus
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Raudteesõidukid
-STR_ELRAIL_VEHICLES                                             :Elektrilised Raudtee Sõidukid
+STR_ELRAIL_VEHICLES                                             :Elektrirongid
 STR_MONORAIL_VEHICLES                                           :Monorelsi sõidukid
 STR_MAGLEV_VEHICLES                                             :Maglevi Sõidukid
 
