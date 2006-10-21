@@ -720,7 +720,7 @@ static void CargoPaymentRatesWndProc(Window *w, WindowEvent *e)
 		DrawWindowWidgets(w);
 
 		x = 495;
-		y = 25;
+		y = 24;
 
 		gd.sel = _legend_cargobits;
 		gd.left = 2;
