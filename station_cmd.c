@@ -85,6 +85,30 @@ MemoryPool _roadstop_pool = { "RoadStop", ROADSTOP_POOL_MAX_BLOCKS, ROADSTOP_POO
 
 extern void UpdateAirplanesOnNewStation(Station *st);
 
+static bool TileBelongsToRailStation(const Station *st, TileIndex tile)
+{
+	return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index && IsRailwayStation(tile);
+}
+
+static void MarkStationTilesDirty(const Station *st)
+{
+	TileIndex tile = st->train_tile;
+	uint w, h;
+
+	// XXX No station is recorded as 0, not INVALID_TILE...
+	if (tile == 0) return;
+
+	for (h = 0; h < st->trainst_h; h++) {
+		for (w = 0; w < st->trainst_w; w++) {
+			if (TileBelongsToRailStation(st, tile)) {
+				MarkTileDirtyByTile(tile);
+			}
+			tile += TileDiffXY(1, 0);
+		}
+		tile += TileDiffXY(-w, 1);
+	}
+}
+
 static void MarkStationDirty(const Station* st)
 {
 	if (st->sign.width_1 != 0) {
@@ -1107,6 +1131,7 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 			tile_org += tile_delta ^ TileDiffXY(1, 1); // perpendicular to tile_delta
 		} while (--numtracks);
 
+		MarkStationTilesDirty(st);
 		UpdateStationVirtCoordDirty(st);
 		UpdateStationAcceptance(st, false);
 		RebuildStationLists();
@@ -1114,11 +1139,6 @@ int32 CmdBuildRailroadStation(TileIndex tile_org, uint32 flags, uint32 p1, uint3
 	}
 
 	return cost;
-}
-
-static bool TileBelongsToRailStation(const Station *st, TileIndex tile)
-{
-	return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index && IsRailwayStation(tile);
 }
 
 static void MakeRailwayStationAreaSmaller(Station *st)
@@ -1208,6 +1228,7 @@ int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint
 		// now we need to make the "spanned" area of the railway station smaller if we deleted something at the edges.
 		// we also need to adjust train_tile.
 		MakeRailwayStationAreaSmaller(st);
+		MarkStationTilesDirty(st);
 
 		// if we deleted the whole station, delete the train facility.
 		if (st->train_tile == 0) {
