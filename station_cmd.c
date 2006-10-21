@@ -93,7 +93,7 @@ static bool TileBelongsToRailStation(const Station *st, TileIndex tile)
 static void MarkStationTilesDirty(const Station *st)
 {
 	TileIndex tile = st->train_tile;
-	uint w, h;
+	int w, h;
 
 	// XXX No station is recorded as 0, not INVALID_TILE...
 	if (tile == 0) return;
