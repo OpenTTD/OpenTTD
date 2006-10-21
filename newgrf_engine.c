@@ -858,27 +858,47 @@ static inline void NewVehicleResolver(ResolverObject *res, EngineID engine_type,
 }
 
 
+/** Retrieve the SpriteGroup for the specified vehicle.
+ * If the vehicle is not specified, the purchase list group for the engine is
+ * chosen. For trains, an additional engine override lookup is performed.
+ * @param engine Engine type of the vehicle.
+ * @param v      The vehicle itself.
+ * @returns      The selected SpriteGroup for the vehicle.
+ */
+static const SpriteGroup *GetVehicleSpriteGroup(EngineID engine, const Vehicle *v)
+{
+	const SpriteGroup *group;
+	CargoID cargo;
+
+	if (v == NULL) {
+		cargo = GC_PURCHASE;
+	} else {
+		cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
+		assert(cargo != GC_INVALID);
+
+		if (v->type == VEH_Train) {
+			group = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
+
+			if (group != NULL) return group;
+		}
+	}
+
+	group = engine_custom_sprites[engine][cargo];
+	if (group != NULL) return group;
+
+	/* Fall back to the default set if the selected cargo type is not defined */
+	return engine_custom_sprites[engine][GC_DEFAULT];
+}
+
+
 SpriteID GetCustomEngineSprite(EngineID engine, const Vehicle *v, Direction direction)
 {
 	const SpriteGroup *group;
 	ResolverObject object;
-	CargoID cargo;
 
 	NewVehicleResolver(&object, engine, v);
 
-	cargo = (v == NULL) ? GC_PURCHASE : _global_cargo_id[_opt.landscape][v->cargo_type];
-	assert(cargo != GC_INVALID);
-
-	group = engine_custom_sprites[engine][cargo];
-
-	if (v != NULL && v->type == VEH_Train) {
-		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
-
-		if (overset != NULL) group = overset;
-	}
-
-	if (group == NULL) group = engine_custom_sprites[engine][GC_DEFAULT];
-	group = Resolve(group, &object);
+	group = Resolve(GetVehicleSpriteGroup(engine, v), &object);
 	if (group == NULL || group->type != SGT_RESULT) return 0;
 
 	return group->g.result.sprite + (direction % group->g.result.num_sprites);
@@ -935,7 +955,6 @@ uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineI
 {
 	const SpriteGroup *group;
 	ResolverObject object;
-	CargoID cargo;
 
 	NewVehicleResolver(&object, engine, v);
 
@@ -943,19 +962,7 @@ uint16 GetVehicleCallback(uint16 callback, uint32 param1, uint32 param2, EngineI
 	object.callback_param1 = param1;
 	object.callback_param2 = param2;
 
-	cargo = (v == NULL) ? GC_PURCHASE : _global_cargo_id[_opt.landscape][v->cargo_type];
-	assert(cargo != GC_INVALID);
-
-	group = engine_custom_sprites[engine][cargo];
-
-	if (v != NULL && v->type == VEH_Train) {
-		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
-
-		if (overset != NULL) group = overset;
-	}
-
-	if (group == NULL) group = engine_custom_sprites[engine][GC_DEFAULT];
-	group = Resolve(group, &object);
+	group = Resolve(GetVehicleSpriteGroup(engine, v), &object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
@@ -975,7 +982,6 @@ uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, E
 {
 	const SpriteGroup *group;
 	ResolverObject object;
-	CargoID cargo;
 
 	NewVehicleResolver(&object, engine, v);
 
@@ -985,19 +991,7 @@ uint16 GetVehicleCallbackParent(uint16 callback, uint32 param1, uint32 param2, E
 
 	object.u.vehicle.parent = parent;
 
-	cargo = (v == NULL) ? GC_PURCHASE : _global_cargo_id[_opt.landscape][v->cargo_type];
-	assert(cargo != GC_INVALID);
-
-	group = engine_custom_sprites[engine][cargo];
-
-	if (v != NULL && v->type == VEH_Train) {
-		const SpriteGroup *overset = GetWagonOverrideSpriteSet(engine, cargo, v->u.rail.first_engine);
-
-		if (overset != NULL) group = overset;
-	}
-
-	if (group == NULL) group = engine_custom_sprites[engine][GC_DEFAULT];
-	group = Resolve(group, &object);
+	group = Resolve(GetVehicleSpriteGroup(engine, v), &object);
 	if (group == NULL || group->type != SGT_CALLBACK) return CALLBACK_FAILED;
 
 	return group->g.callback.result;
@@ -1007,7 +1001,6 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 {
 	const SpriteGroup *group;
 	ResolverObject object;
-	CargoID cargo;
 	byte new_random_bits;
 
 	/* We can't trigger a non-existent vehicle... */
@@ -1017,18 +1010,7 @@ static void DoTriggerVehicle(Vehicle *v, VehicleTrigger trigger, byte base_rando
 
 	object.trigger = trigger;
 
-	cargo = _global_cargo_id[_opt.landscape][v->cargo_type];
-	assert(cargo != GC_INVALID);
-
-	group = engine_custom_sprites[v->engine_type][cargo];
-
-	if (v->type == VEH_Train) {
-		const SpriteGroup *overset = GetWagonOverrideSpriteSet(v->engine_type, cargo, v->u.rail.first_engine);
-		if (overset != NULL) group = overset;
-	}
-
-	if (group == NULL) group = engine_custom_sprites[v->engine_type][GC_DEFAULT];
-	group = Resolve(group, &object);
+	group = Resolve(GetVehicleSpriteGroup(v->engine_type, v), &object);
 
 	new_random_bits = Random();
 	v->random_bits &= ~object.reseed;
