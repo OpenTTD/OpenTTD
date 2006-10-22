@@ -1756,7 +1756,7 @@ static void FeatureMapSpriteGroup(byte *buf, int len)
 	/* If ``n-id'' (or ``idcount'') is zero, this is a ``feature
 	 * callback''. */
 	if (idcount == 0) {
-		grfmsg(GMS_WARN, "FeatureMapSpriteGroup: Feature callbacks not implemented yet.");
+		grfmsg(GMS_NOTICE, "FeatureMapSpriteGroup: Feature callbacks not implemented yet.");
 		return;
 	}
 
@@ -2576,11 +2576,11 @@ static void ParamSet(byte *buf, int len)
 		if (GB(data, 0, 8) == 0xFF) {
 			if (data == 0x0000FFFF) {
 				/* Patch variables */
-				grfmsg(GMS_WARN, "ParamSet: Reading Patch variables unsupported.");
+				grfmsg(GMS_NOTICE, "ParamSet: Reading Patch variables unsupported.");
 				return;
 			} else {
 				/* GRF Resource Management */
-				grfmsg(GMS_WARN, "ParamSet: GRF Resource Management unsupported.");
+				grfmsg(GMS_NOTICE, "ParamSet: GRF Resource Management unsupported.");
 				return;
 			}
 		} else {
@@ -2833,7 +2833,7 @@ static void ImportGRFSound(byte *buf, int len)
 static void GRFImportBlock(byte *buf, int len)
 {
 	if (_grf_data_blocks == 0) {
-		grfmsg(GMS_WARN, "GRFImportBlock: Unexpected import block, skipping.");
+		grfmsg(GMS_NOTICE, "GRFImportBlock: Unexpected import block, skipping.");
 		return;
 	}
 
@@ -2922,7 +2922,7 @@ static void GRFDataBlock(byte *buf, int len)
 	const char *name;
 
 	if (_grf_data_blocks == 0) {
-		grfmsg(GMS_WARN, "GRFDataBlock: unexpected data block, skipping.");
+		grfmsg(GMS_NOTICE, "GRFDataBlock: unexpected data block, skipping.");
 		return;
 	}
 
