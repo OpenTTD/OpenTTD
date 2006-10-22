@@ -921,7 +921,7 @@ static char *GetSpecialTownNameString(char *buff, int ind, uint32 seed, const ch
 {
 	char name[512];
 
-	_town_name_generators[ind](name, seed); // TODO
+	_town_name_generators[ind](name, seed, last);
 	return strecpy(buff, name, last);
 }
 
