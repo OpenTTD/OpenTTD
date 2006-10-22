@@ -158,7 +158,7 @@ static LangString *HashFind(const char *s)
 # define LINE_NUM_FMT ":%d"
 #endif
 
-static void CDECL Warning(const char *s, ...)
+static void CDECL warning(const char *s, ...)
 {
 	char buf[1024];
 	va_list va;
@@ -169,8 +169,7 @@ static void CDECL Warning(const char *s, ...)
 	_warnings++;
 }
 
-
-static void CDECL Error(const char *s, ...)
+void CDECL error(const char *s, ...)
 {
 	char buf[1024];
 	va_list va;
@@ -182,7 +181,7 @@ static void CDECL Error(const char *s, ...)
 }
 
 
-static void NORETURN CDECL Fatal(const char *s, ...)
+static void NORETURN CDECL fatal(const char *s, ...)
 {
 	char buf[1024];
 	va_list va;
@@ -195,21 +194,21 @@ static void NORETURN CDECL Fatal(const char *s, ...)
 
 static void PutByte(byte c)
 {
-	if (_put_pos == lengthof(_put_buf)) Fatal("Put buffer too small");
+	if (_put_pos == lengthof(_put_buf)) fatal("Put buffer too small");
 	_put_buf[_put_pos++] = c;
 }
 
 
 static void EmitSingleByte(char *buf, int value)
 {
-	if (*buf != '\0') Warning("Ignoring trailing letters in command");
+	if (*buf != '\0') warning("Ignoring trailing letters in command");
 	PutByte((byte)value);
 }
 
 
 static void EmitEscapedByte(char *buf, int value)
 {
-	if (*buf != '\0') Warning("Ignoring trailing letters in command");
+	if (*buf != '\0') warning("Ignoring trailing letters in command");
 	PutByte(0x85);
 	PutByte((byte)value);
 }
@@ -218,7 +217,7 @@ static void EmitSetX(char *buf, int value)
 {
 	char *err;
 	int x = strtol(buf, &err, 0);
-	if (*err != 0) Fatal("SetX param invalid");
+	if (*err != 0) fatal("SetX param invalid");
 	PutByte(1);
 	PutByte((byte)x);
 }
@@ -231,9 +230,9 @@ static void EmitSetXY(char *buf, int value)
 	int y;
 
 	x = strtol(buf, &err, 0);
-	if (*err != ' ') Fatal("SetXY param invalid");
+	if (*err != ' ') fatal("SetXY param invalid");
 	y = strtol(err + 1, &err, 0);
-	if (*err != 0) Fatal("SetXY param invalid");
+	if (*err != 0) fatal("SetXY param invalid");
 
 	PutByte(2);
 	PutByte((byte)x);
@@ -335,14 +334,14 @@ static void EmitPlural(char *buf, int value)
 	}
 
 	if (nw == 0)
-		Fatal("%s: No plural words", _cur_ident);
+		fatal("%s: No plural words", _cur_ident);
 
 	if (_plural_form_counts[_lang_pluralform] != nw) {
 		if (_translated) {
-			Fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
+			fatal("%s: Invalid number of plural forms. Expecting %d, found %d.", _cur_ident,
 				_plural_form_counts[_lang_pluralform], nw);
 		} else {
-			Warning("'%s' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
+			warning("'%s' is untranslated. Tweaking english string to allow compilation for plural forms", _cur_ident);
 			if (nw > _plural_form_counts[_lang_pluralform]) {
 				nw = _plural_form_counts[_lang_pluralform];
 			} else {
@@ -369,7 +368,7 @@ static void EmitGender(char *buf, int value)
 
 		// This is a {G=DER} command
 		for (nw = 0; ; nw++) {
-			if (nw >= 8) Fatal("G argument '%s' invalid", buf);
+			if (nw >= 8) fatal("G argument '%s' invalid", buf);
 			if (strcmp(buf, _genders[nw]) == 0) break;
 		}
 		// now nw contains the gender index
@@ -386,7 +385,7 @@ static void EmitGender(char *buf, int value)
 			words[nw] = ParseWord(&buf);
 			if (words[nw] == NULL) break;
 		}
-		if (nw != _numgenders) Fatal("Bad # of arguments for gender command");
+		if (nw != _numgenders) fatal("Bad # of arguments for gender command");
 		PutByte(0x85);
 		PutByte(13);
 		PutByte(TranslateArgumentIdx(argidx));
@@ -520,7 +519,7 @@ static uint ResolveCaseName(const char *str, uint len)
 	for (i = 0; i < MAX_NUM_CASES; i++) {
 		if (memcmp(_cases[i], str, len) == 0 && _cases[i][len] == 0) return i + 1;
 	}
-	Fatal("Invalid case-name '%s'", str);
+	fatal("Invalid case-name '%s'", str);
 }
 
 
@@ -545,7 +544,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 		char *end;
 
 		*argno = strtoul(s, &end, 0);
-		if (*end != ':') Fatal("missing arg #");
+		if (*end != ':') fatal("missing arg #");
 		s = end + 1;
 	}
 
@@ -557,7 +556,7 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 
 	cmd = FindCmd(start, s - start - 1);
 	if (cmd == NULL) {
-		Error("Undefined command '%.*s'", s - start - 1, start);
+		error("Undefined command '%.*s'", s - start - 1, start);
 		return NULL;
 	}
 
@@ -565,14 +564,14 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 		const char *casep = s;
 
 		if (!(cmd->flags & C_CASE))
-			Fatal("Command '%s' can't have a case", cmd->cmd);
+			fatal("Command '%s' can't have a case", cmd->cmd);
 
 		do c = *s++; while (c != '}' && c != ' ' && c != '\0');
 		*casei = ResolveCaseName(casep, s - casep - 1);
 	}
 
 	if (c == '\0') {
-		Error("Missing } from command '%s'", start);
+		error("Missing } from command '%s'", start);
 		return NULL;
 	}
 
@@ -585,10 +584,10 @@ static const CmdStruct *ParseCommandString(const char **str, char *param, int *a
 			c = *s++;
 			if (c == '}') break;
 			if (c == '\0') {
-				Error("Missing } from command '%s'", start);
+				error("Missing } from command '%s'", start);
 				return NULL;
 			}
-			if (s - start == 250) Fatal("param command too long");
+			if (s - start == 250) fatal("param command too long");
 			*param++ = c;
 		}
 	}
@@ -613,7 +612,7 @@ static void HandlePragma(char *str)
 	} else if (!memcmp(str, "plural ", 7)) {
 		_lang_pluralform = atoi(str + 7);
 		if (_lang_pluralform >= lengthof(_plural_form_counts))
-			Fatal("Invalid pluralform %d", _lang_pluralform);
+			fatal("Invalid pluralform %d", _lang_pluralform);
 	} else if (!memcmp(str, "gender ", 7)) {
 		char* buf = str + 7;
 
@@ -621,7 +620,7 @@ static void HandlePragma(char *str)
 			const char* s = ParseWord(&buf);
 
 			if (s == NULL) break;
-			if (_numgenders >= MAX_NUM_GENDER) Fatal("Too many genders, max %d", MAX_NUM_GENDER);
+			if (_numgenders >= MAX_NUM_GENDER) fatal("Too many genders, max %d", MAX_NUM_GENDER);
 			ttd_strlcpy(_genders[_numgenders], s, sizeof(_genders[_numgenders]));
 			_numgenders++;
 		}
@@ -632,12 +631,12 @@ static void HandlePragma(char *str)
 			const char* s = ParseWord(&buf);
 
 			if (s == NULL) break;
-			if (_numcases >= MAX_NUM_CASES) Fatal("Too many cases, max %d", MAX_NUM_CASES);
+			if (_numcases >= MAX_NUM_CASES) fatal("Too many cases, max %d", MAX_NUM_CASES);
 			ttd_strlcpy(_cases[_numcases], s, sizeof(_cases[_numcases]));
 			_numcases++;
 		}
 	} else {
-		Fatal("unknown pragma '%s'", str);
+		fatal("unknown pragma '%s'", str);
 	}
 }
 
@@ -657,16 +656,16 @@ static void ExtractCommandString(ParsedCommandStruct* p, const char* s, bool war
 		if (ar == NULL) break;
 
 		// Sanity checking
-		if (argno != -1 && ar->consumes == 0) Fatal("Non consumer param can't have a paramindex");
+		if (argno != -1 && ar->consumes == 0) fatal("Non consumer param can't have a paramindex");
 
 		if (ar->consumes) {
 			if (argno != -1) argidx = argno;
-			if (argidx < 0 || argidx >= lengthof(p->cmd)) Fatal("invalid param idx %d", argidx);
-			if (p->cmd[argidx] != NULL && p->cmd[argidx] != ar) Fatal("duplicate param idx %d", argidx);
+			if (argidx < 0 || argidx >= lengthof(p->cmd)) fatal("invalid param idx %d", argidx);
+			if (p->cmd[argidx] != NULL && p->cmd[argidx] != ar) fatal("duplicate param idx %d", argidx);
 
 			p->cmd[argidx++] = ar;
 		} else if (!(ar->flags & C_DONTCOUNT)) { // Ignore some of them
-			if (p->np >= lengthof(p->pairs)) Fatal("too many commands in string, max %d", lengthof(p->pairs));
+			if (p->np >= lengthof(p->pairs)) fatal("too many commands in string, max %d", lengthof(p->pairs));
 			p->pairs[p->np].a = ar;
 			p->pairs[p->np].v = param[0] != '\0' ? strdup(param) : "";
 			p->np++;
@@ -705,7 +704,7 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 
 	// For each string in templ, see if we find it in lang
 	if (templ.np != lang.np) {
-		Warning("%s: template string and language string have a different # of commands", name);
+		warning("%s: template string and language string have a different # of commands", name);
 		result = false;
 	}
 
@@ -723,7 +722,7 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 		}
 
 		if (!found) {
-			Warning("%s: command '%s' exists in template file but not in language file", name, templ.pairs[i].a->cmd);
+			warning("%s: command '%s' exists in template file but not in language file", name, templ.pairs[i].a->cmd);
 			result = false;
 		}
 	}
@@ -732,7 +731,7 @@ static bool CheckCommandsMatch(char *a, char *b, const char *name)
 	// Check if the non consumer commands match up also.
 	for (i = 0; i < lengthof(templ.cmd); i++) {
 		if (TranslateCmdForCompare(templ.cmd[i]) != TranslateCmdForCompare(lang.cmd[i])) {
-			Warning("%s: Param idx #%d '%s' doesn't match with template command '%s'", name, i,
+			warning("%s: Param idx #%d '%s' doesn't match with template command '%s'", name, i,
 				lang.cmd[i]  == NULL ? "<empty>" : lang.cmd[i]->cmd,
 				templ.cmd[i] == NULL ? "<empty>" : templ.cmd[i]->cmd);
 			result = false;
@@ -758,7 +757,7 @@ static void HandleString(char *str, bool master)
 
 	s = strchr(str, ':');
 	if (s == NULL) {
-		Error("Line has no ':' delimiter");
+		error("Line has no ':' delimiter");
 		return;
 	}
 
@@ -778,18 +777,18 @@ static void HandleString(char *str, bool master)
 
 	if (master) {
 		if (ent != NULL && casep == NULL) {
-			Error("String name '%s' is used multiple times", str);
+			error("String name '%s' is used multiple times", str);
 			return;
 		}
 
 		if (ent == NULL && casep != NULL) {
-			Error("Base string name '%s' doesn't exist yet. Define it before defining a case.", str);
+			error("Base string name '%s' doesn't exist yet. Define it before defining a case.", str);
 			return;
 		}
 
 		if (ent == NULL) {
 			if (_strings[_next_string_id]) {
-				Error("String ID 0x%X for '%s' already in use by '%s'", ent, str, _strings[_next_string_id]->name);
+				error("String ID 0x%X for '%s' already in use by '%s'", ent, str, _strings[_next_string_id]->name);
 				return;
 			}
 
@@ -816,12 +815,12 @@ static void HandleString(char *str, bool master)
 
 	} else {
 		if (ent == NULL) {
-			Warning("String name '%s' does not exist in master file", str);
+			warning("String name '%s' does not exist in master file", str);
 			return;
 		}
 
 		if (ent->translated && casep == NULL) {
-			Error("String name '%s' is used multiple times", str);
+			error("String name '%s' is used multiple times", str);
 			return;
 		}
 
@@ -869,7 +868,7 @@ static void ParseFile(const char *file, bool english)
 
 
 	in = fopen(file, "r");
-	if (in == NULL) Fatal("Cannot open file");
+	if (in == NULL) fatal("Cannot open file");
 	_cur_line = 1;
 	while (fgets(buf, sizeof(buf),in) != NULL) {
 		rstrip(buf);
@@ -944,7 +943,7 @@ bool CompareFiles(const char *n1, const char *n2)
 	if (f2 == NULL) return false;
 
 	f1 = fopen(n1, "rb");
-	if (f1 == NULL) Fatal("can't open %s", n1);
+	if (f1 == NULL) fatal("can't open %s", n1);
 
 	do {
 		l1 = fread(b1, 1, sizeof(b1), f1);
@@ -971,7 +970,7 @@ static void WriteStringsH(const char *filename)
 	int lastgrp;
 
 	out = fopen("tmp.xxx", "w");
-	if (out == NULL) Fatal("can't open tmp.xxx");
+	if (out == NULL) fatal("can't open tmp.xxx");
 
 	fprintf(out, "enum {");
 
@@ -1008,7 +1007,7 @@ static void WriteStringsH(const char *filename)
 #if defined(WIN32) || defined(WIN64)
 		unlink(filename);
 #endif
-		if (rename("tmp.xxx", filename) == -1) Fatal("rename() failed");
+		if (rename("tmp.xxx", filename) == -1) fatal("rename() failed");
 	}
 }
 
@@ -1017,7 +1016,7 @@ static int TranslateArgumentIdx(int argidx)
 	int i, sum;
 
 	if (argidx < 0 || argidx >= lengthof(_cur_pcs.cmd))
-		Fatal("invalid argidx %d", argidx);
+		fatal("invalid argidx %d", argidx);
 
 	for (i = sum = 0; i < argidx; i++) {
 		const CmdStruct *cs = _cur_pcs.cmd[i];
@@ -1068,7 +1067,7 @@ static void PutCommandString(const char *str)
 			// Output the one from the master string... it's always accurate.
 			cs = _cur_pcs.cmd[_cur_argidx++];
 			if (cs == NULL) {
-				Fatal("%s: No argument exists at position %d", _cur_ident, _cur_argidx - 1);
+				fatal("%s: No argument exists at position %d", _cur_ident, _cur_argidx - 1);
 			}
 		}
 
@@ -1084,7 +1083,7 @@ static void WriteLength(FILE *f, uint length)
 		fputc((length >> 8) | 0xC0, f);
 		fputc(length & 0xFF, f);
 	} else {
-		Fatal("string too long");
+		fatal("string too long");
 	}
 }
 
@@ -1098,7 +1097,7 @@ static void WriteLangfile(const char *filename, int show_todo)
 	uint j;
 
 	f = fopen(filename, "wb");
-	if (f == NULL) Fatal("can't open %s", filename);
+	if (f == NULL) fatal("can't open %s", filename);
 
 	memset(&hdr, 0, sizeof(hdr));
 	for (i = 0; i != 32; i++) {
@@ -1136,7 +1135,7 @@ static void WriteLangfile(const char *filename, int show_todo)
 			// Produce a message if a string doesn't have a translation.
 			if (show_todo > 0 && ls->translated == NULL) {
 				if (show_todo == 2) {
-					Warning("'%s' is untranslated", ls->name);
+					warning("'%s' is untranslated", ls->name);
 				} else {
 					const char *s = "<TODO> ";
 					while (*s != '\0') PutByte(*s++);
