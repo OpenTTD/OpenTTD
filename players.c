@@ -445,7 +445,7 @@ restart:;
 		FOR_ALL_PLAYERS(pp) {
 			if (pp->is_active && p != pp) {
 				SetDParam(0, pp->president_name_2);
-				GetString(buffer2, pp->president_name_1, lastof(buffer));
+				GetString(buffer2, pp->president_name_1, lastof(buffer2));
 				if (strcmp(buffer2, buffer) == 0)
 					goto restart;
 			}
