@@ -198,15 +198,15 @@ static char *GetStringWithArgs(char *buffr, uint string, const int32 *argv, cons
 			break;
 
 		case 28:
-			GetGRFString(buff, index, last);
+			GetGRFString(buff, index, lastof(buff));
 			return FormatString(buffr, buff, argv, 0, last);
 
 		case 29:
-			GetGRFString(buff, index + 0x800, last);
+			GetGRFString(buff, index + 0x800, lastof(buff));
 			return FormatString(buffr, buff, argv, 0, last);
 
 		case 30:
-			GetGRFString(buff, index + 0x1000, last);
+			GetGRFString(buff, index + 0x1000, lastof(buff));
 			return FormatString(buffr, buff, argv, 0, last);
 
 		case 31:
