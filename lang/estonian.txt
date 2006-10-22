@@ -2,7 +2,7 @@
 ##ownname Eesti keel
 ##isocode et_ET
 ##plural 0
-##case genitiiv
+##case g genitiiv
 
 ##id 0x0000
 STR_NULL                                                        :
@@ -22,18 +22,28 @@ STR_000D_ACCEPTS                                                :{BLACK}Võtab va
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Reisijad
 STR_0010_COAL                                                   :Kivisüsi
+STR_0010_COAL.g                                                 :Kivisöe
 STR_0011_MAIL                                                   :Post
+STR_0011_MAIL.g                                                 :Posti
 STR_0012_OIL                                                    :Nafta
+STR_0012_OIL.g                                                  :Nafta
 STR_0013_LIVESTOCK                                              :Kariloomad
 STR_0014_GOODS                                                  :Kaubad
 STR_0015_GRAIN                                                  :Teravili
+STR_0015_GRAIN.g                                                :Teravilja
 STR_0016_WOOD                                                   :Puit
+STR_0016_WOOD.g                                                 :Puidu
 STR_0017_IRON_ORE                                               :Rauamaak
+STR_0017_IRON_ORE.g                                             :Rauamaagi
 STR_0018_STEEL                                                  :Teras
+STR_0018_STEEL.g                                                :Terase
 STR_0019_VALUABLES                                              :Väärisasjad
 STR_001A_COPPER_ORE                                             :Vasemaak
+STR_001A_COPPER_ORE.g                                           :Vasemaagi
 STR_001B_MAIZE                                                  :Mais
+STR_001B_MAIZE.g                                                :Maisi
 STR_001C_FRUIT                                                  :Puuviljad
+STR_001C_FRUIT.g                                                :Puuviljade
 STR_001D_DIAMONDS                                               :Teemantid
 STR_001D_DIAMONDS.genitiiv                                      :Teemantite
 STR_001E_FOOD                                                   :Toit
@@ -1907,8 +1917,8 @@ STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT
 STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}{INDUSTRY} toodang langes 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Putukate rünnak - {INDUSTRY}!{}Toodang langes 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...saab ainult ehitada kaardi serva
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING.genitiiv} toodang ettevõttes {INDUSTRY} kasvab {COMMA}%!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING.genitiiv} toodang ettevõttes {INDUSTRY} langeb {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} toodang ettevõttes {INDUSTRY} kasvab {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} toodang ettevõttes {INDUSTRY} langeb {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Rong tunnelis
@@ -2671,7 +2681,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Maksimaa
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Selle aasta kasum: {LTBLUE}{CURRENCY}  (viimasel aastal: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Vastupidavus: {LTBLUE}{COMMA}%  {BLACK}Katkiminekuid viimasest hooldusest: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Ehitatud: {LTBLUE}{NUM}{BLACK} Väärtus: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Mahtuvus: {LTBLUE}{CARGO}
+STR_9012_CAPACITY                                               :{BLACK}Mahutavus: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...peab garaaþis olema
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Ei saa veokit müüa...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Ei saa veokit peatada, ega startida...
@@ -2698,7 +2708,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Maantees
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Ehita valitud maanteesõiduk
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Uus maanteesõiduk on nüüdsest olemas!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Maksumus: {CURRENCY}{}Kiirus: {VELOCITY}{}Hoolduskulud: {CURRENCY}/aastas{}Mahutuvus: {CARGO}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Hind: {CURRENCY}{}Kiirus: {VELOCITY}{}Hoolduskulud: {CURRENCY}/aastas{}Mahutavus: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Nimeta maanteeveok ümber
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Ei saa maanteveokit ümber nimetada...
@@ -2771,7 +2781,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Saada la
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Näita laeva detaile
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Uus laev on nüüdsest saadaval!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Maksumus: {CURRENCY} Maks. Kiirus: {VELOCITY}{}Mahutuvus: {CARGO}{}Hoolduskulud: {CURRENCY}/aasta
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Hind: {CURRENCY} Maks. Kiirus: {VELOCITY}{}Mahutavus: {CARGO}{}Hoolduskulud: {CURRENCY}/aasta
 STR_982F_NAME_SHIP                                              :{BLACK}Anna laevale nimi
 
 STR_9831_NAME_SHIP                                              :{WHITE}Anna laevale nimi
@@ -2789,7 +2799,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Seadista
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vali kauba tüüp, mida laev hakkab kandma
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Seadista laev ümber valitud kaubatüübi jaoks
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vali kaubatüüp, mida vedada:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus mahutuvus: {GOLD}{CARGO}{}{BLACK}Laeva ümberseadistamise hind: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Uus mahutavus: {GOLD}{CARGO}{}{BLACK}Laeva ümberseadistamise hind: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Ei saa laeva ümber seadistada...
 STR_9842_REFITTABLE                                             :(ümberseadistatav)
 STR_GO_TO_SHIP_DEPOT                                            :Mine {TOWN} paadikuuri
@@ -2824,8 +2834,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lennuk {
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Lennuk on teel
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Ei saa lennukit peatada/käivitada...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lennuk on õhus
-STR_A019_CAPACITY                                               :{BLACK}Mahutuvus: {LTBLUE}{CARGO}, {CARGO}
-STR_A01A_CAPACITY                                               :{BLACK}Mahutuvus: {LTBLUE}{CARGO}
+STR_A019_CAPACITY                                               :{BLACK}Mahutavus: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Mahutavus: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lennuk peab olema peatatud angaari sees
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Ei saa lennukit müüa...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Lennujaama ehitus

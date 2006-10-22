@@ -382,7 +382,10 @@ STR_SORT_BY_FACILITY                                            :Tipo de Estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Avaliação de carga
 STR_ENGINE_SORT_COST                                            :Custo
+STR_ENGINE_SORT_POWER                                           :Potência
 STR_ENGINE_SORT_INTRO_DATE                                      :Data de Introdução
+STR_ENGINE_SORT_RUNNING_COST                                    :Custo de circulação
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potência/Custo de circulação
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade de Carga
 STR_NO_WAITING_CARGO                                            :{BLACK}Nenhuma carga em espera
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar todas as acções
@@ -2543,6 +2546,7 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construi
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arraste o veículo ferroviário para aqui para o vender
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar visualização na localização de um depósito ferroviário
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
+STR_BLACK_WAGONS                                                :{BLACK}Vagões
 STR_BLACK_BOTH                                                  :{BLACK}Ambos
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir o veículo ferroviário seleccionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomear tipo de veículo ferroviário
@@ -2911,6 +2915,7 @@ STR_ARE_YOU_SURE                                                :{BLACK}Tem a ce
 STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirme que deseja vender todos os combóios no depósito
 STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirme que deseja vender todos os veículos de estrada no depósito
 STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirme que deseja vender todos os navios no depósito
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirme que quer vender todas as aeronaves no hangar
 
 STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Não vender os combóios no depósito
 STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Não vender os veículos de estrada no depósito
@@ -2918,6 +2923,7 @@ STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Não vend
 STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Não vender as aeronaves no hangar
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os combóios no depósito
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos os veículos no depósito
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter uma lista de todos os combóios em cujas ordens conste este depósito
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obter uma lista de todos os veículos em cujas ordens conste este depósito
@@ -3062,5 +3068,6 @@ STR_HELIPORTS                                                   :{BLACK}Heliport
 
 ############ Tooltip measurment
 
+STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} x {NUM}
 
 ########

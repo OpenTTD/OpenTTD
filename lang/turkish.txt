@@ -1025,6 +1025,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni ev
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Küçük havalimani her zaman etkin: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Tren kaybolunca uyar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Arac talimatlarini önizle: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :hayir
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :evet, ama durmus araçlar hariç
@@ -1062,6 +1063,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}istasyo
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Helikopterler helipadlerde otomatik servise girsin: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Arazi araç çubugunu diger araç çubuklarina bagla: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Fareyle kaydirma hareketini ters çevir: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}insa araçlari kullanilirken ölçüm ipucu göster: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Hiçbiri
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Sirketi al
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tüm sirketler
@@ -2182,7 +2184,12 @@ STR_LIVERY_SMALL_PLANE                                          :Küçük Uçak
 STR_LIVERY_LARGE_PLANE                                          :Büyük Uçak
 
 STR_LIVERY_GENERAL_TIP                                          :{BLACK}Genel renk semalarini göster
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Tren renk düzenlerini göster
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Araba renk düzenlerini göster
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Gemi renk düzenlerini göster
 STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Uçaklarin renk semalarini göster
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Seçili düzen için birincil rengi seç
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Seçili düzen için ikincil rengi seç
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Buhar)
