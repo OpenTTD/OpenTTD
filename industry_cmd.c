@@ -53,46 +53,6 @@ static void IndustryPoolNewBlock(uint start_item)
 /* Initialize the industry-pool */
 MemoryPool _industry_pool = { "Industry", INDUSTRY_POOL_MAX_BLOCKS, INDUSTRY_POOL_BLOCK_SIZE_BITS, sizeof(Industry), &IndustryPoolNewBlock, NULL, 0, 0, NULL };
 
-static const IndustryType _industry_close_mode[IT_END] = {
-	/* COAL_MINE */          INDUSTRYLIFE_PRODUCTION,
-	/* POWER_STATION */      INDUSTRYLIFE_NOT_CLOSABLE,
-	/* SAWMILL */            INDUSTRYLIFE_CLOSABLE,
-	/* FOREST */             INDUSTRYLIFE_PRODUCTION,
-	/* OIL_REFINERY */       INDUSTRYLIFE_CLOSABLE,
-	/* OIL_RIG */            INDUSTRYLIFE_PRODUCTION,
-	/* FACTORY */            INDUSTRYLIFE_CLOSABLE,
-	/* PRINTING_WORKS */     INDUSTRYLIFE_CLOSABLE,
-	/* STEEL_MILL */         INDUSTRYLIFE_CLOSABLE,
-	/* FARM */               INDUSTRYLIFE_PRODUCTION,
-	/* COPPER_MINE */        INDUSTRYLIFE_PRODUCTION,
-	/* OIL_WELL */           INDUSTRYLIFE_PRODUCTION,
-	/* BANK */               INDUSTRYLIFE_NOT_CLOSABLE,
-	/* FOOD_PROCESS */       INDUSTRYLIFE_CLOSABLE,
-	/* PAPER_MILL */         INDUSTRYLIFE_CLOSABLE,
-	/* GOLD_MINE */          INDUSTRYLIFE_PRODUCTION,
-	/* BANK_2,  */           INDUSTRYLIFE_NOT_CLOSABLE,
-	/* DIAMOND_MINE */       INDUSTRYLIFE_PRODUCTION,
-	/* IRON_MINE */          INDUSTRYLIFE_PRODUCTION,
-	/* FRUIT_PLANTATION */   INDUSTRYLIFE_PRODUCTION,
-	/* RUBBER_PLANTATION */  INDUSTRYLIFE_PRODUCTION,
-	/* WATER_SUPPLY */       INDUSTRYLIFE_PRODUCTION,
-	/* WATER_TOWER */        INDUSTRYLIFE_NOT_CLOSABLE,
-	/* FACTORY_2 */          INDUSTRYLIFE_CLOSABLE,
-	/* FARM_2 */             INDUSTRYLIFE_PRODUCTION,
-	/* LUMBER_MILL */        INDUSTRYLIFE_CLOSABLE,
-	/* COTTON_CANDY */       INDUSTRYLIFE_PRODUCTION,
-	/* CANDY_FACTORY */      INDUSTRYLIFE_CLOSABLE,
-	/* BATTERY_FARM */       INDUSTRYLIFE_PRODUCTION,
-	/* COLA_WELLS */         INDUSTRYLIFE_PRODUCTION,
-	/* TOY_SHOP */           INDUSTRYLIFE_NOT_CLOSABLE,
-	/* TOY_FACTORY */        INDUSTRYLIFE_CLOSABLE,
-	/* PLASTIC_FOUNTAINS */  INDUSTRYLIFE_PRODUCTION,
-	/* FIZZY_DRINK_FACTORY */INDUSTRYLIFE_CLOSABLE,
-	/* BUBBLE_GENERATOR */   INDUSTRYLIFE_PRODUCTION,
-	/* TOFFEE_QUARRY */      INDUSTRYLIFE_PRODUCTION,
-	/* SUGAR_MINE */         INDUSTRYLIFE_PRODUCTION
-};
-
 /**
  * Retrieve the type for this industry.  Although it is accessed by a tile,
  * it will return the general type of industry, and not the sprite index
@@ -1663,7 +1623,7 @@ static void ExtChangeIndustryProduction(Industry *i)
 	int j;
 	const IndustrySpec *indspec = GetIndustrySpec(i->type);
 
-	switch (_industry_close_mode[i->type]) {
+	switch (indspec->life_type) {
 		case INDUSTRYLIFE_NOT_CLOSABLE:
 			return;
 
@@ -1810,7 +1770,7 @@ static void ChangeIndustryProduction(Industry *i)
 	int type = i->type;
 	const IndustrySpec *indspec = GetIndustrySpec(type);
 
-	switch (_industry_close_mode[type]) {
+	switch (indspec->life_type) {
 		case INDUSTRYLIFE_NOT_CLOSABLE:
 			return;
 

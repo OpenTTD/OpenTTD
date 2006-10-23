@@ -12,6 +12,12 @@ enum {
 	INVALID_INDUSTRY = 0xFFFF,
 };
 
+typedef enum IndustryLifeTypes {
+	INDUSTRYLIFE_NOT_CLOSABLE,     ///< Industry can never close
+	INDUSTRYLIFE_PRODUCTION,       ///< Industry can close and change of production
+	INDUSTRYLIFE_CLOSABLE,         ///< Industry can only close (no production change)
+} IndustryLifeType;
+
 struct Industry {
 	TileIndex xy;
 	byte width; /* swapped order of w/h with town */
@@ -61,6 +67,8 @@ typedef struct IndustrySpec {
 	 * waiting cargo is less than this number, no cargo is moved to it*/
 	byte minimal_cargo;
 	CargoID accepts_cargo[3];
+
+	IndustryLifeType life_type;  //this is also known as Industry production flag, in newgrf specs
 
 	StringID closure_text;
 	StringID production_up_text;
@@ -190,11 +198,5 @@ enum {
 	IT_END,
 	IT_INVALID             = 255,
 };
-
-typedef enum IndustryLifeTypes {
-	INDUSTRYLIFE_NOT_CLOSABLE,     ///< Industry can never close
-	INDUSTRYLIFE_PRODUCTION,       ///< Industry can close and change of production
-	INDUSTRYLIFE_CLOSABLE,         ///< Industry can only close (no production change)
-} IndustryLifeType;
 
 #endif /* INDUSTRY_H */
