@@ -23,8 +23,8 @@ STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Utas
 STR_000F_PASSENGERS.t                                           :Utast
 STR_0010_COAL                                                   :Szén
-STR_0010_COAL.t                                                 :Szenet
 STR_0010_COAL.ba                                                :Szénbe
+STR_0010_COAL.t                                                 :Szenet
 STR_0011_MAIL                                                   :Levél
 STR_0011_MAIL.t                                                 :Levelet
 STR_0012_OIL                                                    :Olaj
@@ -3053,10 +3053,10 @@ STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Az össze
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Az összes, ezen dokkot menetrendszerüen látogató hajó listájának összeállítása
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Az összes, itteni hangárt menetrendszerüen látogató repülõgép listájának összeállítása
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}A depóban lévõ összes vonat automata cseréje
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}A depóben lévõ összes jármû automata cseréje
-STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}A dokkban lévõ összes hajó automata cseréje
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}A hangárban lévõ összes repülõ automata cseréje
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}A depóban lévõ összes vonat automatikus cseréje
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}A depóben lévõ összes jármû automatikus cseréje
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}A dokkban lévõ összes hajó automatikus cseréje
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}A hangárban lévõ összes repülõ automatikus cseréje
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} vonat
 STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} közúti jármû
@@ -3077,7 +3077,7 @@ STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Válaszd 
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Megmutatja, hogy melyik bal oldali mozdonyt akarod kicserélni
 STR_REPLACE_HELP                                                :{BLACK}Ez az opció lehetõve teszi, hogy kiválassz mozdonytípust és lecseréld másfajtára. Ez aztán automatikusan fog megtörténni, amikor a jármû karbantartásra a depóba megy
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Vagon törlés: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automata cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (elõröl kezdve), ha a csere után a mozdony hosszabb.
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Az automatikus cserénél a szerelvény hosszának a megtartása kocsik lekapcsolásával (elõröl kezdve), ha a csere után a mozdony hosszabb lenne.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Lecserél: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} KISÉRLETI TULAJDONSÁG {}Váltás a mozdony és a vasúti-kocsi cserélõ ablak között.{}A vagonok cseréje csak akkor történik meg, ha az új vagon átalakítható ugyanolyan típusú teher szállítására. Ez minden vagoncserénél ellenõrzõdik.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}A mozdony így nem építhetõ meg

@@ -1075,7 +1075,7 @@ STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks an
 STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Maks antal fly per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Maks antal skibe per spiller: {ORANGE}{STRING}
 
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Deaktiver tog for computeren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Deaktiver toge for computeren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Deaktiver køretøjer for computeren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Deaktiver fly for computeren: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Deaktiver skibe for computeren: {ORANGE}{STRING}
@@ -1130,7 +1130,7 @@ STR_SUB_TROPICAL_LANDSCAPE                                      :Tropisk klima
 STR_TOYLAND_LANDSCAPE                                           :Legetøjsland
 
 STR_CHEATS                                                      :{WHITE}Snydefunktioner
-STR_CHEATS_TIP                                                  :{BLACK}Checkbokse viser om du har brugt denne snydefunktion før
+STR_CHEATS_TIP                                                  :{BLACK}Checkbokse viser, om du har brugt denne snydefunktion før
 STR_CHEATS_WARNING                                              :{BLACK}Advarsel! Du er ved at forråde dine modstandere. Husk at dette vil blive husket i al evighed.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Forøg kassebeholdning med {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spil som spiller: {ORANGE}{COMMA}
@@ -1140,7 +1140,7 @@ STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Tillad 
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly vil ikke styrte (ofte) i små lufthavne: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skift klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ændre dato: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifisering af produktion: {ORANGE}{STRING}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifikation af produktion: {ORANGE}{STRING}
 STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Tillad elektriske tog at køre på almindelige skinner
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Retning mod {WAYPOINT}
@@ -1154,7 +1154,7 @@ STR_WAYPOINTNAME_CITY_SERIAL                                    :Kontrolsted {TO
 STR_LANDINFO_WAYPOINT                                           :Kontrolsted
 
 STR_WAYPOINT                                                    :{WHITE}Kontrolsted
-STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vælg udsendene på kontrolsteder
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Vælg udseende af kontrolsteder
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
@@ -1172,9 +1172,9 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...der e
 
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Er du sikker på, at ud vil have lavet et tilfældigt landskab?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Mange tilfældige byer
-STR_RANDOM_TOWNS_TIP                                            :{BLACK}Dæk kortet med tilfældigt placeret byer
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}Dæk kortet med tilfældigt placerede byer
 STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Mange tilfældige industrier
-STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Dæk kortet med tilfældigt placeret industrier
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Dæk kortet med tilfældigt placerede industrier
 STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Kan ikke lave industrier...
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Åbn landskabsværktøjslinien for at hæve/sænke terræn, plante træer, osv.
@@ -1249,9 +1249,9 @@ STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Kan ikke
 STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Service intervaller er i procent: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Skift produktion
 
-TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til den nye kunstige intelligents, der er under udarbejdelse. Du kan forvente problemer. Når det sker, så lav et screenshot og sæt det på forummet
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Velkommen til den nye kunstige intelligents, der er under udarbejdelse. Du kan forvente problemer. Når det sker, så lav et screenshot og sæt det på forummet.
 TEMP_AI_ACTIVATED                                               :{WHITE}Advarsel: den nye kunstige intelligents er i et tidligt stadie! Lige nu virker den kun med busser og lastbiler!
-TEMP_AI_MULTIPLAYER                                             :{WHITE}Advarsel: denne funktion er stadig experimential. Rapporter venligst problemer til truelight@openttd.org.
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Advarsel: denne funktion er stadig eksperimentel. Rapporter venligst problemer til truelight@openttd.org.
 
 ############ network gui strings
 
@@ -2148,7 +2148,7 @@ STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Kan ikke
 STR_7072_VIEW_HQ                                                :{BLACK}Vis HK
 STR_RELOCATE_HQ                                                 :{BLACK}Flyt hovedkvarter
 STR_COMPANY_PASSWORD                                            :{BLACK}Kodeord
-STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Beskydt din virksomhed med et kodeord for at undgå at fremmede slutter sig til dig
+STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Beskyt din virksomhed med et kodeord for at undgå at fremmede slutter sig til spillet.
 STR_SET_COMPANY_PASSWORD                                        :Set virksomhedens kodeord
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Lavkonjuktur over hele verden!{}{}Vismændende frygter det værste, økonomien skrumper!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
@@ -2753,7 +2753,7 @@ STR_A000_AIRPORTS                                               :{WHITE}Lufthavn
 STR_A001_CAN_T_BUILD_AIRPORT_HERE                               :{WHITE}Kan ikke bygge en lufthavn her...
 STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}{STATION} Flyhangar
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nyt fly
-STR_CLONE_AIRCRAFT                                              :{BLACK}Klon Fly
+STR_CLONE_AIRCRAFT                                              :{BLACK}Klon fly
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Dette vil bygge en kopi af et fly. Control-click vil dele ordre
 STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Dette vil bygge en kopi af et fly. Klik på denne knap, så på et fly indeni eller udenfor hangaren. Control-click vil dele ordre
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nyt fly
@@ -2835,7 +2835,7 @@ STR_B002_OIL_REFINERY_EXPLOSION                                 :{BLACK}{BIGFONT
 STR_B003_FACTORY_DESTROYED_IN_SUSPICIOUS                        :{BLACK}{BIGFONT}Fabrik ødelagt under mystiske omstændigheder ved {TOWN}!
 STR_B004_UFO_LANDS_NEAR                                         :{BLACK}{BIGFONT}En UFO lander tæt på {TOWN}!
 STR_B005_COAL_MINE_SUBSIDENCE_LEAVES                            :{BLACK}{BIGFONT}Sammenstyrtning af kulmine efterlader et spor af katastrofe ved {TOWN}!
-STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Oversvømmelse!{}Mindst {COMMA} antaget savnet eller omkommet efter pludslig oversvømmelse!
+STR_B006_FLOOD_VEHICLE_DESTROYED                                :{BLACK}{BIGFONT}Oversvømmelse!{}Mindst {COMMA} savnet og antages omkommet efter pludselig oversvømmelse!
 
 STR_BRIBE_FAILED                                                :{WHITE}Dit forsøg på bestikkelse er blevet
 STR_BRIBE_FAILED_2                                              :{WHITE}opdaget af en inspektør.
@@ -2894,17 +2894,17 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Tog
-STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Køretøjer
+STR_SCHEDULED_TRAINS                                            :{WHITE}{STATION} - {COMMA} Tog{P "" e}
+STR_SCHEDULED_ROAD_VEHICLES                                     :{WHITE}{STATION} - {COMMA} Køretøj{P "" er}
 STR_SCHEDULED_AIRCRAFT                                          :{WHITE}{STATION} - {COMMA} Fly
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skibe
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Skib{P "" e}
 
 STR_SCHEDULED_TRAINS_TIP                                        :{BLACK}Vis alle tog, som har denne station i deres køreplan
 STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Vis alle køretøjer, som har denne station i deres køreplan
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Vis alle fly, som har denne lufthavn i deres ruteplan
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle skibe, som har denne station i deres ruteplan
 
-STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordre af {COMMA} transportmiddel{P "" s}
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordrer af {COMMA} transportmid{P del ler}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, som har den samme rute
 
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
@@ -2967,14 +2967,14 @@ STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Intet kø
 STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Vælg en køretøjstype, som du ønsker udskiftet
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Vælg en køretøjstype, som du ønker at få i stedet for den type, du  har valgt i venste side
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Tryk for at stoppe udskiftningen at den køretøjstype, som du har valgt til venstre
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tryk for at begynde at udskifte køretøjet til venstre med køretøjet til højre
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Tryk for at begynde at udskifte køretøjstypen til venstre med køretøjstypen til højre
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Vælg den skinnetype, hvor du vil udskifte lokomotiver
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket køretøj at det valgte køretøj til venstre bliver udskiftet med, hvis det bliver udskiftet
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Viser hvilket køretøj det valgte køretøj til venstre bliver udskiftet med, hvis det udskiftes
 STR_REPLACE_HELP                                                :{BLACK}Dette giver dig mulighed for at udskifte en køretøjstype med en anden, når et køretøj af den oprindelige type kører i depot
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Fjern vogn: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Få autoudskift til at bevare længden af tog ved at fjerne vogne (startende fra fronten), hvis autoudskiftningen gør toget længere.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Udskifter: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTEL EGENSKAB {}Skift imellem lokomotiv- og vogn-udskiftningsvindue.{}Vognudskiftning vil kun finde sted hvis den nye vogn kan ændres til at transportere samme godstype some den gamle vogn. Dette bliver checket for hver vogn, når udskiftningen finder sted
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EKSPERIMENTEL EGENSKAB {}Skift imellem lokomotiv- og vogn-udskiftningsvindue.{}Vognudskiftning vil kun finde sted hvis den nye vogn kan ændres til at transportere samme godstype some den gamle vogn. Dette bliver checket for hver vogn, når udskiftningen finder sted.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Køretøjet kan ikke bygges
 
 STR_ENGINES                                                     :Lokomotiver
@@ -3059,7 +3059,7 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Verdensgenerering
 STR_TREE_GENERATION                                             :{BLACK}Trægenerering
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Ikke-flytbar generering
-STR_CLEARING_TILES                                              :{BLACK}Generer rå og stenet område
+STR_CLEARING_TILES                                              :{BLACK}Generer råt og stenet område
 STR_SETTINGUP_GAME                                              :{BLACK}Klargører spil
 STR_PREPARING_TILELOOP                                          :{BLACK}Kører flise-løkken
 STR_PREPARING_GAME                                              :{BLACK}Forbereder spil
