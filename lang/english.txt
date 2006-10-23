@@ -3021,6 +3021,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Weight: 
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Speed: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacity: {GOLD}{COMMA} passengers, {COMMA} bags of mail
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Powered Wagons: {GOLD}+{POWER}{BLACK} Weight: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refittable to: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :All cargo types
+STR_PURCHASE_INFO_ALL_BUT                                       :All but {GOLD}
 
 ########### String for New Landscape Generator
 

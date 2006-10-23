@@ -256,6 +256,7 @@ void DrawAircraftPurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 	/* Additional text from NewGRF */
 	y += ShowAdditionalText(x, y, w, engine_number);
+	y += ShowRefitOptionsList(x, y, w, engine_number);
 }
 
 void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)

@@ -482,7 +482,7 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 }
 
 /* Display additional text from NewGRF in the purchase information window */
-uint ShowAdditionalText(int x, int y, int w, EngineID engine)
+uint ShowAdditionalText(int x, int y, uint w, EngineID engine)
 {
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
 	if (callback == CALLBACK_FAILED) return 0;
@@ -490,6 +490,55 @@ uint ShowAdditionalText(int x, int y, int w, EngineID engine)
 	// STR_02BD is used to start the string with {BLACK}
 	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
 	return DrawStringMultiLine(x, y, STR_02BD, w);
+}
+
+/* Count the number of bits that are set in a mask */
+static uint CountBits(uint32 mask)
+{
+	uint c = 0;
+	for (; mask != 0; mask >>= 1) if (HASBIT(mask, 0)) c++;
+	return c;
+}
+
+/* Display list of cargo types of the engine, for the purchase information window */
+uint ShowRefitOptionsList(int x, int y, uint w, EngineID engine)
+{
+	/* List of cargo types of this engine */
+	uint32 cmask = EngInfo(engine)->refit_mask;
+	/* List of cargo types available in this climate */
+	uint32 lmask = _landscape_global_cargo_mask[_opt.landscape];
+	char *b = _userstring;
+
+	/* Draw nothing if the engine is not refittable */
+	if (CountBits(cmask) <= 1) return 0;
+
+	b = InlineString(b, STR_PURCHASE_INFO_REFITTABLE_TO);
+
+	if (cmask == lmask) {
+		/* Engine can be refitted to all types in this climate */
+		b = InlineString(b, STR_PURCHASE_INFO_ALL_TYPES);
+	} else {
+		CargoID cid;
+
+		/* Check if we are able to refit to more cargo types and unable to. If
+		 * so, invert the cargo types to list those that we can't refit to. */
+		if (CountBits(cmask ^ lmask) < CountBits(cmask)) {
+			cmask ^= lmask;
+			b = InlineString(b, STR_PURCHASE_INFO_ALL_BUT);
+		}
+
+		/* Add each cargo type to the list */
+		for (cid = 0; cmask != 0; cmask >>= 1, cid++) {
+			if (!HASBIT(cmask, 0)) continue;
+
+			b = InlineString(b, _cargoc.names_s[_local_cargo_id_ctype[cid]]);
+			if (cmask > 1) b = strecpy(b, ", ", lastof(_userstring));
+		}
+	}
+
+	/* Terminate and display the completed string */
+	*b = '\0';
+	return DrawStringMultiLine(x, y, STR_SPEC_USERSTRING, w);
 }
 
 

@@ -293,6 +293,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 	/* Additional text from NewGRF */
 	y += ShowAdditionalText(x, y, w, engine_number);
+	y += ShowRefitOptionsList(x, y, w, engine_number);
 }
 
 /**
@@ -337,6 +338,7 @@ void DrawTrainWagonPurchaseInfo(int x, int y, uint w, EngineID engine_number)
 
 	/* Additional text from NewGRF */
 	y += ShowAdditionalText(x, y, w, engine_number);
+	y += ShowRefitOptionsList(x, y, w, engine_number);
 }
 
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
