@@ -48,15 +48,15 @@ static const Widget _build_vehicle_widgets[] = {
 	{    WWT_TEXTBTN,   RESIZE_NONE,    14,   228,   239,    14,    25, STR_0225,                STR_SORT_CRITERIA_TIP},
 	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   227,    26,   121, 0x401,                   STR_A025_AIRCRAFT_SELECTION_LIST },
 	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   228,   239,    26,   121, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST },
-	{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   239,   122,   193, 0x0,                     STR_NULL },
+	{      WWT_PANEL,     RESIZE_TB,    14,     0,   239,   122,   213, 0x0,                     STR_NULL },
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    79,   194,   205, STR_BLACK_PLANES,        STR_BUILD_PLANES_TIP },
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    80,   159,   194,   205, STR_BLACK_JETS,          STR_BUILD_JETS_TIP },
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   160,   239,   194,   205, STR_BLACK_HELICOPTERS,   STR_BUILD_HELICOPTERS_TIP },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    79,   214,   225, STR_BLACK_PLANES,        STR_BUILD_PLANES_TIP },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    80,   159,   214,   225, STR_BLACK_JETS,          STR_BUILD_JETS_TIP },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   160,   239,   214,   225, STR_BLACK_HELICOPTERS,   STR_BUILD_HELICOPTERS_TIP },
 
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   206,   217, STR_A006_BUILD_AIRCRAFT, STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT },
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   115,   227,   206,   217, STR_A037_RENAME,         STR_A038_RENAME_AIRCRAFT_TYPE },
-	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   228,   239,   206,   217, 0x0,                     STR_RESIZE_BUTTON },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   114,   226,   237, STR_A006_BUILD_AIRCRAFT, STR_A026_BUILD_THE_HIGHLIGHTED_AIRCRAFT },
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   115,   227,   226,   237, STR_A037_RENAME,         STR_A038_RENAME_AIRCRAFT_TYPE },
+	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   228,   239,   226,   237, 0x0,                     STR_RESIZE_BUTTON },
 	{   WIDGETS_END},
 };
 
@@ -539,7 +539,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _build_vehicle_desc = {
-	-1, -1, 240, 218,
+	-1, -1, 240, 238,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_build_vehicle_widgets,

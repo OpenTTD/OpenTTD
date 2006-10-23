@@ -49,13 +49,13 @@ static const Widget _new_rail_vehicle_widgets[] = {
 	{    WWT_TEXTBTN,   RESIZE_NONE,    14,   216,   227,    14,    25, STR_0225,               STR_SORT_CRITERIA_TIP},
 	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    26,   137, 0x801,                  STR_8843_TRAIN_VEHICLE_SELECTION},
 	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    26,   137, 0x0,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
-	{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   138,   209, 0x0,                    STR_NULL},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    76,   210,   221, STR_BLACK_ENGINES,      STR_BUILD_TRAIN_ENGINES_TIP},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    77,   151,   210,   221, STR_BLACK_WAGONS,       STR_BUILD_TRAIN_WAGONS_TIP},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   152,   227,   210,   221, STR_BLACK_BOTH,         STR_BUILD_TRAIN_BOTH_TIP},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   107,   222,   233, STR_881F_BUILD_VEHICLE, STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   108,   215,   222,   233, STR_8820_RENAME,        STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
-	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   216,   227,   222,   233, 0x0,                    STR_RESIZE_BUTTON},
+	{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   138,   239, 0x0,                    STR_NULL},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    76,   240,   251, STR_BLACK_ENGINES,      STR_BUILD_TRAIN_ENGINES_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    77,   151,   240,   251, STR_BLACK_WAGONS,       STR_BUILD_TRAIN_WAGONS_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   152,   227,   240,   251, STR_BLACK_BOTH,         STR_BUILD_TRAIN_BOTH_TIP},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   107,   252,   263, STR_881F_BUILD_VEHICLE, STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   108,   215,   252,   263, STR_8820_RENAME,        STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
+	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   216,   227,   252,   263, 0x0,                    STR_RESIZE_BUTTON},
 	{   WIDGETS_END},
 };
 
@@ -647,7 +647,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _new_rail_vehicle_desc = {
-	-1, -1, 228, 234,
+	-1, -1, 228, 264,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_rail_vehicle_widgets,

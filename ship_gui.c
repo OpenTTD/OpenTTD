@@ -336,15 +336,15 @@ static const Widget _new_ship_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   254,     0,    13, STR_9808_NEW_SHIPS,  STR_018C_WINDOW_TITLE_DRAG_THIS},
 {     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   242,    14,   109, 0x401,               STR_9825_SHIP_SELECTION_LIST_CLICK},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   243,   254,    14,   109, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
-{     WWT_IMGBTN,     RESIZE_TB,    14,     0,   254,   110,   161, 0x0,                 STR_NULL},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   121,   162,   173, STR_9809_BUILD_SHIP, STR_9826_BUILD_THE_HIGHLIGHTED_SHIP},
-{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   122,   242,   162,   173, STR_9836_RENAME,     STR_9837_RENAME_SHIP_TYPE},
-{  WWT_RESIZEBOX,     RESIZE_TB,    14,   243,   254,   162,   173, 0x0,                 STR_RESIZE_BUTTON},
+{      WWT_PANEL,     RESIZE_TB,    14,     0,   254,   110,   201, 0x0,                 STR_NULL},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   121,   202,   213, STR_9809_BUILD_SHIP, STR_9826_BUILD_THE_HIGHLIGHTED_SHIP},
+{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   122,   242,   202,   213, STR_9836_RENAME,     STR_9837_RENAME_SHIP_TYPE},
+{  WWT_RESIZEBOX,     RESIZE_TB,    14,   243,   254,   202,   213, 0x0,                 STR_RESIZE_BUTTON},
 {   WIDGETS_END},
 };
 
 static const WindowDesc _new_ship_desc = {
-	-1, -1, 255, 174,
+	-1, -1, 255, 214,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_ship_widgets,
