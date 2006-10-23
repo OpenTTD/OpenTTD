@@ -81,6 +81,12 @@ STR_004A_TOFFEE                                                 :Карамел
 STR_004B_BATTERY                                                :Батерии
 STR_004C_PLASTIC                                                :Пластмаса
 STR_004D_FIZZY_DRINK                                            :Газирани напитки
+STR_QUANTITY_PASSENGERS                                         :{COMMA} пътни{P к ици}
+STR_QUANTITY_COAL                                               :{WEIGHT} въглища
+STR_QUANTITY_MAIL                                               :{COMMA} торб{P а и} с поща
+STR_QUANTITY_OIL                                                :{VOLUME} нефт
+STR_QUANTITY_LIVESTOCK                                          :{COMMA} глав{P а и} добитък
+STR_QUANTITY_GOODS                                              :{COMMA} кашон{P "" и} със стоки
 STR_QUANTITY_GOLD                                               :{COMMA} торб{P а и} със злато
 STR_QUANTITY_WATER                                              :{VOLUME} вода
 STR_QUANTITY_WHEAT                                              :{WEIGHT} пшеница
