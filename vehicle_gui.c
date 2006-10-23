@@ -990,20 +990,20 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 	}
 }
 
-static void DrawVehiclePurchaseInfo(const int x, const int y, const EngineID engine_number)
+static void DrawVehiclePurchaseInfo(const int x, const int y, uint w, const EngineID engine_number)
 {
 	switch (GetEngine(engine_number)->type) {
 		case VEH_Train:
 			if ((RailVehInfo(engine_number)->flags & RVI_WAGON) == 0) {
-				DrawTrainEnginePurchaseInfo(x, y, engine_number);
+				DrawTrainEnginePurchaseInfo(x, y, w, engine_number);
 			} else {
-				DrawTrainWagonPurchaseInfo(x, y, engine_number);
+				DrawTrainWagonPurchaseInfo(x, y, w, engine_number);
 			}
 			break;
 
-		case VEH_Road: DrawRoadVehPurchaseInfo(x, y, engine_number);      break;
-		case VEH_Ship: DrawShipPurchaseInfo(x, y, engine_number);         break;
-		case VEH_Aircraft: DrawAircraftPurchaseInfo(x, y, engine_number); break;
+		case VEH_Road: DrawRoadVehPurchaseInfo(x, y, w, engine_number);      break;
+		case VEH_Ship: DrawShipPurchaseInfo(x, y, w, engine_number);         break;
+		case VEH_Aircraft: DrawAircraftPurchaseInfo(x, y, w, engine_number); break;
 		default: NOT_REACHED();
 	}
 }
@@ -1080,7 +1080,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 					SetDParam(0, STR_NOT_REPLACING_VEHICLE_SELECTED);
 				}
 
-				DrawString(145, 87 + w->resize.step_height * w->vscroll.cap, STR_02BD, 0x10);
+				DrawString(145, w->widget[5].top + 1, STR_02BD, 0x10);
 
 				/* now we draw the two arrays according to what we just counted */
 				DrawEngineArrayInReplaceWindow(w, x, y, x2, y2, pos, pos2, sel[0], sel[1], selected_id[0], selected_id[1]);
@@ -1090,7 +1090,8 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				/* now we draw the info about the vehicles we selected */
 				for (i = 0 ; i < 2 ; i++) {
 					if (selected_id[i] != INVALID_ENGINE) {
-						DrawVehiclePurchaseInfo((i == 1) ? 230 : 2 , 15 + (w->resize.step_height * w->vscroll.cap), selected_id[i]);
+						const Widget *wi = &w->widget[i == 0 ? 3 : 11];
+						DrawVehiclePurchaseInfo(wi->left + 2 , wi->top + 1, wi->right - wi->left - 2, selected_id[i]);
 					}
 				}
 			} break;   // end of paint

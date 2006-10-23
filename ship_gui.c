@@ -27,7 +27,7 @@
  * @param x,y location where to draw the info
  * @param engine_number the engine of which to draw the info of
  */
-void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
+void DrawShipPurchaseInfo(int x, int y, uint w, EngineID engine_number)
 {
 	YearMonthDay ymd;
 	const ShipVehicleInfo *svi = ShipVehInfo(engine_number);
@@ -65,8 +65,7 @@ void DrawShipPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Additional text from NewGRF */
-	// XXX 227 will become a calculated width...
-	y += ShowAdditionalText(x, y, 227, engine_number);
+	y += ShowAdditionalText(x, y, w, engine_number);
 }
 
 void DrawShipImage(const Vehicle *v, int x, int y, VehicleID selection)
@@ -284,7 +283,8 @@ static void NewShipWndProc(Window *w, WindowEvent *e)
 			WP(w,buildvehicle_d).sel_engine = selected_id;
 
 			if (selected_id != INVALID_ENGINE) {
-				DrawShipPurchaseInfo(2, w->widget[4].top + 1, selected_id);
+				const Widget *wi = &w->widget[4];
+				DrawShipPurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, selected_id);
 			}
 			break;
 		}

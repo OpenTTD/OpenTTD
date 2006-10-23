@@ -208,7 +208,7 @@ static const StringID _aircraft_sort_listing[] = {
  * @param x,y location where to draw the info
  * @param engine_number the engine of which to draw the info of
  */
-void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
+void DrawAircraftPurchaseInfo(int x, int y, uint w, EngineID engine_number)
 {
 	const AircraftVehicleInfo *avi = AircraftVehInfo(engine_number);
 	const Engine *e = GetEngine(engine_number);
@@ -255,8 +255,7 @@ void DrawAircraftPurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Additional text from NewGRF */
-	// XXX 227 will become a calculated width...
-	y += ShowAdditionalText(x, y, 227, engine_number);
+	y += ShowAdditionalText(x, y, w, engine_number);
 }
 
 void DrawAircraftImage(const Vehicle *v, int x, int y, VehicleID selection)
@@ -427,7 +426,8 @@ static void DrawBuildAircraftWindow(Window *w)
 		}
 
 		if (selected_id != INVALID_ENGINE) {
-			DrawAircraftPurchaseInfo(x, w->widget[BUILD_VEHICLE_WIDGET_PANEL].top + 1, selected_id);
+			const Widget *wi = &w->widget[BUILD_VEHICLE_WIDGET_PANEL];
+			DrawAircraftPurchaseInfo(x, wi->top + 1, wi->right - wi->left - 2, selected_id);
 		}
 	}
 	DrawString(85, 15, _aircraft_sort_listing[WP(w,buildvehicle_d).sort_criteria], 0x10);

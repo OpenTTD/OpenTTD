@@ -235,7 +235,7 @@ static const StringID _engine_sort_listing[] = {
  * @param x,y location where to draw the info
  * @param engine_number the engine of which to draw the info of
  */
-void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
+void DrawTrainEnginePurchaseInfo(int x, int y, uint w, EngineID engine_number)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine_number);
 	const Engine *e = GetEngine(engine_number);
@@ -292,8 +292,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
 	y += 10;
 
 	/* Additional text from NewGRF */
-	// XXX 227 will become a calculated width...
-	y += ShowAdditionalText(x, y, 227, engine_number);
+	y += ShowAdditionalText(x, y, w, engine_number);
 }
 
 /**
@@ -301,7 +300,7 @@ void DrawTrainEnginePurchaseInfo(int x, int y, EngineID engine_number)
  * @param x,y location where to draw the info
  * @param engine_number the engine of which to draw the info of
  */
-void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
+void DrawTrainWagonPurchaseInfo(int x, int y, uint w, EngineID engine_number)
 {
 	const RailVehicleInfo *rvi = RailVehInfo(engine_number);
 	bool refittable = (EngInfo(engine_number)->refit_mask != 0);
@@ -337,7 +336,7 @@ void DrawTrainWagonPurchaseInfo(int x, int y, EngineID engine_number)
 	}
 
 	/* Additional text from NewGRF */
-	y += ShowAdditionalText(x, y, 227, engine_number);
+	y += ShowAdditionalText(x, y, w, engine_number);
 }
 
 void CcBuildWagon(bool success, TileIndex tile, uint32 p1, uint32 p2)
@@ -519,11 +518,12 @@ static void DrawTrainBuildWindow(Window *w)
 
 	if (selected_id != INVALID_ENGINE) {
 		const RailVehicleInfo *rvi = RailVehInfo(selected_id);
+		const Widget *wi = &w->widget[BUILD_TRAIN_WIDGET_PANEL];
 
 		if (rvi->flags & RVI_WAGON) {
-			DrawTrainWagonPurchaseInfo(2, w->widget[BUILD_TRAIN_WIDGET_PANEL].top + 1, selected_id);
+			DrawTrainWagonPurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, selected_id);
 		} else {
-			DrawTrainEnginePurchaseInfo(2, w->widget[BUILD_TRAIN_WIDGET_PANEL].top + 1, selected_id);
+			DrawTrainEnginePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, selected_id);
 		}
 	}
 	DrawString(85, 15, _engine_sort_listing[WP(w,buildvehicle_d).sort_criteria], 0x10);
