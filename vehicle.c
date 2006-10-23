@@ -1828,10 +1828,10 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (flags & DC_EXEC) {
 			w = GetVehicle(_new_vehicle_id);
 
-			if (v->cargo_type != w->cargo_type) {
+			if (v->cargo_type != w->cargo_type || v->cargo_subtype != w->cargo_subtype) {
 				// we can't pay for refitting because we can't estimate refitting costs for a vehicle before it's build
 				// if we pay for it anyway, the cost and the estimated cost will not be the same and we will have an assert
-				DoCommand(0, w->index, v->cargo_type, flags, CMD_REFIT_VEH(v->type));
+				DoCommand(0, w->index, v->cargo_type | (v->cargo_subtype << 8), flags, CMD_REFIT_VEH(v->type));
 			}
 			if (v->type == VEH_Train && HASBIT(v->u.rail.flags, VRF_REVERSE_DIRECTION)) {
 				SETBIT(w->u.rail.flags, VRF_REVERSE_DIRECTION);
