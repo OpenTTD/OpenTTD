@@ -736,7 +736,13 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			break;
 
 		case 0x09: /* Helicopter */
-			FOR_EACH_OBJECT SB(avi[i].subtype, 0, 1, (grf_load_byte(&buf) != 0 ? 1 : 0));
+			FOR_EACH_OBJECT {
+				if (grf_load_byte(&buf) == 0) {
+					avi[i].subtype = 0;
+				} else {
+					SB(avi[i].subtype, 0, 1, 1);
+				}
+			}
 			break;
 
 		case 0x0A: /* Large */
