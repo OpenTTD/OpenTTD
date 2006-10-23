@@ -482,13 +482,14 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 }
 
 /* Display additional text from NewGRF in the purchase information window */
-int ShowAdditionalText(int x, int y, int w, EngineID engine)
+uint ShowAdditionalText(int x, int y, int w, EngineID engine)
 {
 	uint16 callback = GetVehicleCallback(CBID_VEHICLE_ADDITIONAL_TEXT, 0, 0, engine, NULL);
 	if (callback == CALLBACK_FAILED) return 0;
 
-	DrawStringTruncated(x, y, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback), 16, w);
-	return 10;
+	// STR_02BD is used to start the string with {BLACK}
+	SetDParam(0, GetGRFStringID(GetEngineGRFID(engine), 0xD000 + callback));
+	return DrawStringMultiLine(x, y, STR_02BD, w);
 }
 
 

@@ -70,7 +70,7 @@ void GfxDrawLine(int left, int top, int right, int bottom, int color);
 BoundingRect GetStringBoundingBox(const char *str);
 void LoadStringWidthTable(void);
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw);
-void DrawStringMultiLine(int x, int y, StringID str, int maxw);
+uint DrawStringMultiLine(int x, int y, StringID str, int maxw);
 void DrawDirtyBlocks(void);
 void SetDirtyBlocks(int left, int top, int right, int bottom);
 void MarkWholeScreenDirty(void);
