@@ -990,11 +990,11 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 	}
 }
 
-static void DrawVehiclePurchaseInfo(const int x, const int y, const EngineID engine_number, const bool draw_locomotive)
+static void DrawVehiclePurchaseInfo(const int x, const int y, const EngineID engine_number)
 {
 	switch (GetEngine(engine_number)->type) {
 		case VEH_Train:
-			if (draw_locomotive) {
+			if ((RailVehInfo(engine_number)->flags & RVI_WAGON) == 0) {
 				DrawTrainEnginePurchaseInfo(x, y, engine_number);
 			} else {
 				DrawTrainWagonPurchaseInfo(x, y, engine_number);
@@ -1090,7 +1090,7 @@ static void ReplaceVehicleWndProc(Window *w, WindowEvent *e)
 				/* now we draw the info about the vehicles we selected */
 				for (i = 0 ; i < 2 ; i++) {
 					if (selected_id[i] != INVALID_ENGINE) {
-						DrawVehiclePurchaseInfo((i == 1) ? 230 : 2 , 15 + (w->resize.step_height * w->vscroll.cap), selected_id[i], WP(w, replaceveh_d).wagon_btnstate);
+						DrawVehiclePurchaseInfo((i == 1) ? 230 : 2 , 15 + (w->resize.step_height * w->vscroll.cap), selected_id[i]);
 					}
 				}
 			} break;   // end of paint
