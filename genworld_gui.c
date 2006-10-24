@@ -513,13 +513,9 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 
 		ttd_strlcpy(_edit_str_buf, str_fmt("%u", _patches_newgame.generation_seed), lengthof(_edit_str_buf));
 
-		querystr->text.caret = true;
-		querystr->text.maxlength = lengthof(_edit_str_buf);
-		querystr->text.maxwidth = 120;
-		querystr->text.buf = _edit_str_buf;
+		InitializeTextBuffer(&querystr->text, _edit_str_buf, lengthof(_edit_str_buf), 120);
 		querystr->caption = STR_NULL;
 		querystr->afilter = CS_NUMERAL;
-		UpdateTextBufferSize(&querystr->text);
 
 		InvalidateWindow(WC_GENERATE_LANDSCAPE, mode);
 	}

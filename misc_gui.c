@@ -880,6 +880,23 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
 }
 
 /**
+ * Initialize the textbuffer by supplying it the buffer to write into
+ * and the maximum length of this buffer
+ * @param tb @Textbuf type which is getting initialized
+ * @param buf the buffer that will be holding the data for input
+ * @param maxlength maximum length in characters of this buffer
+ * @param maxwidth maximum length in pixels of this buffer. If reached, buffer
+ * cannot grow, even if maxlength would allow because there is space */
+void InitializeTextBuffer(Textbuf *tb, const char *buf, uint16 maxlength, uint16 maxwidth)
+{
+	tb->buf = (char*)buf;
+	tb->maxlength = maxlength;
+	tb->maxwidth  = maxwidth;
+	tb->caret = true;
+	UpdateTextBufferSize(tb);
+}
+
+/**
  * Update @Textbuf type with its actual physical character and screenlength
  * Get the count of characters in the string as well as the width in pixels.
  * Useful when copying in a larger amount of text at once
@@ -1090,12 +1107,8 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	WP(w, querystr_d).caption = caption;
 	WP(w, querystr_d).wnd_class = window_class;
 	WP(w, querystr_d).wnd_num = window_number;
-	WP(w, querystr_d).text.caret = false;
-	WP(w, querystr_d).text.maxlength = realmaxlen;
-	WP(w, querystr_d).text.maxwidth = maxwidth;
-	WP(w, querystr_d).text.buf = _edit_str_buf;
 	WP(w, querystr_d).afilter = afilter;
-	UpdateTextBufferSize(&WP(w, querystr_d).text);
+	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, realmaxlen, maxwidth);
 }
 
 static void QueryWndProc(Window *w, WindowEvent *e)
@@ -1576,12 +1589,9 @@ void ShowSaveLoadDialog(int mode)
 	w->resize.step_height = 10;
 	w->resize.height = w->height - 14 * 10; // Minimum of 10 items
 	LowerWindowWidget(w, 7);
-	WP(w,querystr_d).text.caret = false;
-	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf);
-	WP(w,querystr_d).text.maxwidth = 240;
-	WP(w,querystr_d).text.buf = _edit_str_buf;
-	WP(w,querystr_d).afilter = CS_ALPHANUMERAL;
-	UpdateTextBufferSize(&WP(w, querystr_d).text);
+
+	WP(w, querystr_d).afilter = CS_ALPHANUMERAL;
+	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 240);
 
 	// pause is only used in single-player, non-editor mode, non-menu mode. It
 	// will be unpaused in the WE_DESTROY event handler.

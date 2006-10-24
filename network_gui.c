@@ -563,12 +563,8 @@ void ShowNetworkGameWindow(void)
 		ttd_strlcpy(_edit_str_buf, _network_player_name, lengthof(_edit_str_buf));
 		w->vscroll.cap = 12;
 
-		querystr->text.caret = true;
-		querystr->text.maxlength = lengthof(_edit_str_buf);
-		querystr->text.maxwidth = 120;
-		querystr->text.buf = _edit_str_buf;
 		querystr->afilter = CS_ALPHANUMERAL;
-		UpdateTextBufferSize(&querystr->text);
+		InitializeTextBuffer(&querystr->text, _edit_str_buf, lengthof(_edit_str_buf), 120);
 
 		UpdateNetworkGameWindow(true);
 	}
@@ -781,12 +777,8 @@ static void ShowNetworkStartServerWindow(void)
 	w->vscroll.cap = 12;
 	w->vscroll.count = _fios_num+1;
 
-	WP(w, network_ql_d).q.text.caret = true;
-	WP(w, network_ql_d).q.text.maxlength = lengthof(_edit_str_buf);
-	WP(w, network_ql_d).q.text.maxwidth = 160;
-	WP(w, network_ql_d).q.text.buf = _edit_str_buf;
 	WP(w, network_ql_d).q.afilter = CS_ALPHANUMERAL;
-	UpdateTextBufferSize(&WP(w, network_ql_d).q.text);
+	InitializeTextBuffer(&WP(w, network_ql_d).q.text, _edit_str_buf, lengthof(_edit_str_buf), 160);
 }
 
 static byte NetworkLobbyFindCompanyIndex(byte pos)
@@ -1716,11 +1708,7 @@ void ShowNetworkChatQueryWindow(DestType type, byte dest)
 	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
 	WP(w,querystr_d).wnd_num = 0;
 	WP(w,querystr_d).afilter = CS_ALPHANUMERAL;
-	WP(w,querystr_d).text.caret = false;
-	WP(w,querystr_d).text.maxlength = lengthof(_edit_str_buf);
-	WP(w,querystr_d).text.maxwidth = w->widget[2].right - w->widget[2].left - 2; // widget[1] is the "text box"
-	WP(w,querystr_d).text.buf = _edit_str_buf;
-	UpdateTextBufferSize(&WP(w, querystr_d).text);
+	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), w->widget[2].right - w->widget[2].left);
 }
 
 #endif /* ENABLE_NETWORK */

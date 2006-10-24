@@ -112,6 +112,7 @@ bool DeleteTextBufferChar(Textbuf *tb, int delmode);
 bool InsertTextBufferChar(Textbuf *tb, byte key);
 bool InsertTextBufferClipboard(Textbuf *tb);
 bool MoveTextBufferPos(Textbuf *tb, int navmode);
+void InitializeTextBuffer(Textbuf *tb, const char *buf, uint16 maxlength, uint16 maxwidth);
 void UpdateTextBufferSize(Textbuf *tb);
 
 void BuildFileList(void);
