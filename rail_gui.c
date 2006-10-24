@@ -521,21 +521,21 @@ static const Widget _build_rail_widgets[] = {
 
 {      WWT_PANEL,   RESIZE_NONE,     7,   110,   113,    14,    35, 0x0,                            STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,    0,     21,    14,    35, 0x4E3,                          STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,   RESIZE_NONE,     7,    22,    43,    14,    35, 0x4E4,                          STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,   RESIZE_NONE,     7,    44,    65,    14,    35, 0x4E5,                          STR_1018_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,   RESIZE_NONE,     7,    66,    87,    14,    35, 0x4E6,                          STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,   RESIZE_NONE,     7,    0,     21,    14,    35, SPR_IMG_RAIL_NS,                STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,   RESIZE_NONE,     7,    22,    43,    14,    35, SPR_IMG_RAIL_NE,                STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,   RESIZE_NONE,     7,    44,    65,    14,    35, SPR_IMG_RAIL_EW,                STR_1018_BUILD_RAILROAD_TRACK},
+{      WWT_PANEL,   RESIZE_NONE,     7,    66,    87,    14,    35, SPR_IMG_RAIL_NW,                STR_1018_BUILD_RAILROAD_TRACK},
 {      WWT_PANEL,   RESIZE_NONE,     7,    88,   109,    14,    35, SPR_IMG_AUTORAIL,               STR_BUILD_AUTORAIL_TIP},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,   114,   135,    14,    35, 0x2BF,                          STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,   RESIZE_NONE,     7,   136,   157,    14,    35, 0x50E,                          STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
+{      WWT_PANEL,   RESIZE_NONE,     7,   114,   135,    14,    35, SPR_IMG_DYNAMITE,               STR_018D_DEMOLISH_BUILDINGS_ETC},
+{      WWT_PANEL,   RESIZE_NONE,     7,   136,   157,    14,    35, SPR_IMG_DEPOT_RAIL,             STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING},
 {      WWT_PANEL,   RESIZE_NONE,     7,   158,   179,    14,    35, SPR_IMG_WAYPOINT,               STR_CONVERT_RAIL_TO_WAYPOINT_TIP},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,   180,   221,    14,    35, 0x512,                          STR_101A_BUILD_RAILROAD_STATION},
-{      WWT_PANEL,   RESIZE_NONE,     7,   222,   243,    14,    35, 0x50B,                          STR_101B_BUILD_RAILROAD_SIGNALS},
-{      WWT_PANEL,   RESIZE_NONE,     7,   244,   285,    14,    35, 0xA22,                          STR_101C_BUILD_RAILROAD_BRIDGE},
+{      WWT_PANEL,   RESIZE_NONE,     7,   180,   221,    14,    35, SPR_IMG_RAIL_STATION,           STR_101A_BUILD_RAILROAD_STATION},
+{      WWT_PANEL,   RESIZE_NONE,     7,   222,   243,    14,    35, SPR_IMG_RAIL_SIGNALS,           STR_101B_BUILD_RAILROAD_SIGNALS},
+{      WWT_PANEL,   RESIZE_NONE,     7,   244,   285,    14,    35, SPR_IMG_BRIDGE,                 STR_101C_BUILD_RAILROAD_BRIDGE},
 {      WWT_PANEL,   RESIZE_NONE,     7,   286,   305,    14,    35, SPR_IMG_TUNNEL_RAIL,            STR_101D_BUILD_RAILROAD_TUNNEL},
-{      WWT_PANEL,   RESIZE_NONE,     7,   306,   327,    14,    35, 0x2CA,                          STR_101E_TOGGLE_BUILD_REMOVE_FOR},
+{      WWT_PANEL,   RESIZE_NONE,     7,   306,   327,    14,    35, SPR_IMG_REMOVE,                 STR_101E_TOGGLE_BUILD_REMOVE_FOR},
 {      WWT_PANEL,   RESIZE_NONE,     7,   328,   349,    14,    35, SPR_IMG_CONVERT_RAIL,           STR_CONVERT_RAIL_TIP},
 
 {      WWT_PANEL,   RESIZE_NONE,     7,   350,   371,    14,    35, SPR_IMG_LANDSCAPING,            STR_LANDSCAPING_TOOLBAR_TIP},

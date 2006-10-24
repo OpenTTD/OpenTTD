@@ -196,11 +196,11 @@ static const Widget _build_docks_toolb_widgets[] = {
 
 {      WWT_PANEL,   RESIZE_NONE,     7,    44,    47,    14,    35, 0x0,                        STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,     7,    48,    69,    14,    35, 703,                        STR_018D_DEMOLISH_BUILDINGS_ETC},
-{      WWT_PANEL,   RESIZE_NONE,     7,    70,    91,    14,    35, 748,                        STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},
-{      WWT_PANEL,   RESIZE_NONE,     7,    92,   113,    14,    35, 746,                        STR_981D_BUILD_SHIP_DOCK},
-{      WWT_PANEL,   RESIZE_NONE,     7,   114,   135,    14,    35, 693,                        STR_9834_POSITION_BUOY_WHICH_CAN},
-{      WWT_PANEL,   RESIZE_NONE,     7,   136,   157,    14,    35, SPR_IMG_LANDSCAPING,        STR_LANDSCAPING_TOOLBAR_TIP},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    48,    69,    14,    35, SPR_IMG_DYNAMITE,           STR_018D_DEMOLISH_BUILDINGS_ETC},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    70,    91,    14,    35, SPR_IMG_SHIP_DEPOT,         STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    92,   113,    14,    35, SPR_IMG_SHIP_DOCK,          STR_981D_BUILD_SHIP_DOCK},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   114,   135,    14,    35, SPR_IMG_BOUY,               STR_9834_POSITION_BUOY_WHICH_CAN},
+{     WWT_IMGBTN,   RESIZE_NONE,     7,   136,   157,    14,    35, SPR_IMG_LANDSCAPING,        STR_LANDSCAPING_TOOLBAR_TIP},
 {   WIDGETS_END},
 };
 

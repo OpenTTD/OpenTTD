@@ -100,46 +100,46 @@ static void DrawPlayerEconomyStats(const Player *p, byte mode)
 }
 
 static const Widget _player_finances_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, 0x2AA,             STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,               STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,               STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   202,   204,   215, STR_7029_BORROW,   STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   203,   406,   204,   215, STR_702A_REPAY,    STR_7036_REPAY_PART_OF_LOAN},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,                    STR_STICKY_BUTTON},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406,    14,   169, STR_NULL,               STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406,   170,   203, STR_NULL,               STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   202,   204,   215, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   203,   406,   204,   215, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},
 {   WIDGETS_END},
 };
 
 static const Widget _other_player_finances_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, 0x2AA,             STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,    14,   169, 0x0,               STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   406,   170,   203, 0x0,               STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   379,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   380,   394,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   395,   406,     0,    13, 0x0,                    STR_STICKY_BUTTON},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406,    14,   169, STR_NULL,               STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   406,   170,   203, STR_NULL,               STR_NULL},
 {   WIDGETS_END},
 };
 
 static const Widget _other_player_finances_small_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   254,   267,     0,    13, 0x2AA,             STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   268,   279,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,               STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    47, 0x0,               STR_NULL},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   254,   267,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   268,   279,     0,    13, 0x0,                    STR_STICKY_BUTTON},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   279,    14,    47, STR_NULL,               STR_NULL},
 {   WIDGETS_END},
 };
 
 static const Widget _player_finances_small_widgets[] = {
-{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
-{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   254,   267,     0,    13, 0x2AA,             STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
-{  WWT_STICKYBOX,   RESIZE_NONE,    14,   268,   279,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,               STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   279,    14,    47, 0x0,               STR_NULL},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   139,    48,    59, STR_7029_BORROW,   STR_7035_INCREASE_SIZE_OF_LOAN},
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   140,   279,    48,    59, STR_702A_REPAY,    STR_7036_REPAY_PART_OF_LOAN},
+{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION,   RESIZE_NONE,    14,    11,   253,     0,    13, STR_700E_FINANCES,      STR_018C_WINDOW_TITLE_DRAG_THIS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   254,   267,     0,    13, SPR_LARGE_SMALL_WINDOW, STR_7075_TOGGLE_LARGE_SMALL_WINDOW},
+{  WWT_STICKYBOX,   RESIZE_NONE,    14,   268,   279,     0,    13, 0x0,                    STR_STICKY_BUTTON},
+{      WWT_EMPTY,   RESIZE_NONE,     0,     0,     0,     0,     0, 0x0,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   279,    14,    47, STR_NULL,               STR_NULL},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,   139,    48,    59, STR_7029_BORROW,        STR_7035_INCREASE_SIZE_OF_LOAN},
+{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   140,   279,    48,    59, STR_702A_REPAY,         STR_7036_REPAY_PART_OF_LOAN},
 {   WIDGETS_END},
 };
 

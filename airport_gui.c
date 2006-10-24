@@ -116,9 +116,9 @@ static const Widget _air_toolbar_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW },
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,    73,     0,    13, STR_A000_AIRPORTS,   STR_018C_WINDOW_TITLE_DRAG_THIS },
 {  WWT_STICKYBOX,   RESIZE_NONE,     7,    74,    85,     0,    13, 0x0,                 STR_STICKY_BUTTON },
-{      WWT_PANEL,   RESIZE_NONE,     7,     0,    41,    14,    35, 0x2E8,               STR_A01E_BUILD_AIRPORT },
-{      WWT_PANEL,   RESIZE_NONE,     7,    42,    63,    14,    35, 0x2BF,               STR_018D_DEMOLISH_BUILDINGS_ETC },
-{      WWT_PANEL,   RESIZE_NONE,     7,    64,    85,    14,    35, SPR_IMG_LANDSCAPING, STR_LANDSCAPING_TOOLBAR_TIP },
+{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,    41,    14,    35, SPR_IMG_AIRPORT,     STR_A01E_BUILD_AIRPORT },
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    42,    63,    14,    35, SPR_IMG_DYNAMITE,    STR_018D_DEMOLISH_BUILDINGS_ETC },
+{     WWT_IMGBTN,   RESIZE_NONE,     7,    64,    85,    14,    35, SPR_IMG_LANDSCAPING, STR_LANDSCAPING_TOOLBAR_TIP },
 {   WIDGETS_END},
 };
 

@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "table/strings.h"
+#include "table/sprites.h"
 #include "functions.h"
 #include "window.h"
 #include "gfx.h"
@@ -472,10 +473,10 @@ static void MusicWindowWndProc(Window *w, WindowEvent *e)
 static const Widget _music_window_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   299,     0,    13, STR_01D2_JAZZ_JUKEBOX, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,    21,    14,    35, 0x2C5,                 STR_01DE_SKIP_TO_PREVIOUS_TRACK},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    22,    43,    14,    35, 0x2C6,                 STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    44,    65,    14,    35, 0x2C7,                 STR_01E0_STOP_PLAYING_MUSIC},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    66,    87,    14,    35, 0x2C8,                 STR_01E1_START_PLAYING_MUSIC},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,     0,    21,    14,    35, SPR_IMG_SKIP_TO_PREV,  STR_01DE_SKIP_TO_PREVIOUS_TRACK},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    22,    43,    14,    35, SPR_IMG_SKIP_TO_NEXT,  STR_01DF_SKIP_TO_NEXT_TRACK_IN_SELECTION},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    44,    65,    14,    35, SPR_IMG_STOP_MUSIC,    STR_01E0_STOP_PLAYING_MUSIC},
+{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,    66,    87,    14,    35, SPR_IMG_PLAY_MUSIC,    STR_01E1_START_PLAYING_MUSIC},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,    88,   299,    14,    35, 0x0,                   STR_01E2_DRAG_SLIDERS_TO_SET_MUSIC},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,   186,   201,    15,    34, 0x0,                   STR_NULL},
 {     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   299,    36,    57, 0x0,                   STR_NULL},
