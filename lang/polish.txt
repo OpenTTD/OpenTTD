@@ -3150,6 +3150,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Waga: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Koszt: {GOLD}{CURRENCY}{BLACK} Predkosc: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ladownosc: {GOLD}{COMMA} pasazerow, {COMMA} paczek poczty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moc: {GOLD}+{POWER}{BLACK} Waga: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Mozna przebudowac na: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Wszystkie typy towarow
+STR_PURCHASE_INFO_ALL_BUT                                       :Wszystko oprocz {GOLD}}
 
 ########### String for New Landscape Generator
 
