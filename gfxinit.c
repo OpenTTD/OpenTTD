@@ -281,7 +281,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	616, 616, // nordic char: Æ
 	666, 666, // nordic char: ø
 	634, 634, // nordic char: Ø
-	SPR_PIN_UP, SPR_CURSOR_CLONE, // more icons
+	SPR_PIN_UP, SPR_CURSOR_CLONE_TRAIN, // more icons
 	382, 383, // ¼ ½ tiny
 	158, 159, // ¼ ½ medium
 	606, 607, // ¼ ½ large
@@ -314,7 +314,7 @@ static const SpriteID _openttd_grf_indexes[] = {
 	594, 597, // ° ± ² ³ large
 	633, 633, // × large
 	665, 665, // ÷ large
-	SPR_SELL_TRAIN, SPR_SELL_CHAIN_TRAIN,
+	SPR_SELL_TRAIN, SPR_SHARED_ORDERS_ICON,
 	END
 };
 

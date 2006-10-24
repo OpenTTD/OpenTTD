@@ -63,15 +63,6 @@ static void DrawOrdersWindow(Window *w)
 	v = GetVehicle(w->window_number);
 	not_localplayer = v->owner != _local_player;
 
-	if (v->type != VEH_Train) {
-		switch (v->type) {
-			case VEH_Road:     w->widget[11].data = STR_LORRY; break;
-			case VEH_Ship:     w->widget[11].data = STR_SHIP;  break;
-			case VEH_Aircraft: w->widget[11].data = STR_PLANE; break;
-			default: NOT_REACHED(); break;
-		}
-	}
-
 	shared_orders = IsOrderListShared(v);
 
 	SetVScrollCount(w, v->num_orders + 1);
@@ -572,7 +563,7 @@ static const Widget _orders_train_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   212,   264,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   265,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   373,   386,    76,    87, STR_TRAIN,               STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
+{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   373,   386,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   372,    76,    87, STR_REFIT,               STR_REFIT_TIP},
 {      WWT_PANEL,   RESIZE_RTB,     14,   387,   386,    76,    87, 0x0,                     STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   387,   398,    76,    87, 0x0,                     STR_RESIZE_BUTTON},
@@ -599,7 +590,7 @@ static const Widget _orders_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   193,   256,    76,    87, STR_FULLLOAD_OR_SERVICE, STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   257,   319,    76,    87, STR_8828_UNLOAD,         STR_8858_MAKE_THE_HIGHLIGHTED_ORDER},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_886F_TRANSFER,       STR_886D_MAKE_THE_HIGHLIGHTED_ORDER},
-{ WWT_PUSHTXTBTN,   RESIZE_TB,      14,   384,   397,    76,    87, STR_EMPTY,               STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
+{ WWT_PUSHIMGBTN,   RESIZE_TB,      14,   384,   397,    76,    87, SPR_SHARED_ORDERS_ICON,  STR_VEH_WITH_SHARED_ORDERS_LIST_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_TB,      14,   320,   383,    76,    87, STR_REFIT,               STR_REFIT_TIP},
 {      WWT_PANEL,   RESIZE_RTB,     14,   397,   396,    76,    87, 0x0,                     STR_NULL},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   398,   409,    76,    87, 0x0,                     STR_RESIZE_BUTTON},

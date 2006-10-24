@@ -692,8 +692,13 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 					ToggleWidgetLoweredState(w, DEPOT_WIDGET_CLONE);
 
 					if (IsWindowWidgetLowered(w, DEPOT_WIDGET_CLONE)) {
+						static const CursorID clone_icons[] = {
+							SPR_CURSOR_CLONE_TRAIN, SPR_CURSOR_CLONE_ROADVEH,
+							SPR_CURSOR_CLONE_SHIP, SPR_CURSOR_CLONE_AIRPLANE
+						};
+
 						_place_clicked_vehicle = NULL;
-						SetObjectToPlaceWnd(SPR_CURSOR_CLONE, VHM_RECT, w);
+						SetObjectToPlaceWnd(clone_icons[WP(w, depot_d).type - VEH_Train], VHM_RECT, w);
 					} else {
 						ResetObjectToPlace();
 					}
