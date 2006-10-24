@@ -150,36 +150,27 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 				snprintf(message, sizeof(message), "*** %s %s", name, temp);
 			}
 			break;
-		case NETWORK_ACTION_CHAT_COMPANY:
-			if (self_send) {
-				SetDParamStr(0, name);
-				GetString(temp, STR_NETWORK_CHAT_TO_COMPANY, lastof(temp));
-				snprintf(message, sizeof(message), "%s %s", temp, buf);
-			} else {
-				SetDParamStr(0, name);
-				GetString(temp, STR_NETWORK_CHAT_COMPANY, lastof(temp));
-				snprintf(message, sizeof(message), "%s %s", temp, buf);
-			}
-			break;
-		case NETWORK_ACTION_CHAT_CLIENT:
-			if (self_send) {
-				SetDParamStr(0, name);
-				GetString(temp, STR_NETWORK_CHAT_TO_CLIENT, lastof(temp));
-				snprintf(message, sizeof(message), "%s %s", temp, buf);
-			} else {
-				SetDParamStr(0, name);
-				GetString(temp, STR_NETWORK_CHAT_CLIENT, lastof(temp));
-				snprintf(message, sizeof(message), "%s %s", temp, buf);
-			}
-			break;
 		case NETWORK_ACTION_NAME_CHANGE:
 			GetString(temp, STR_NETWORK_NAME_CHANGE, lastof(temp));
 			snprintf(message, sizeof(message), "*** %s %s %s", name, temp, buf);
 			break;
+		case NETWORK_ACTION_CHAT_COMPANY:
+			SetDParamStr(0, name);
+			SetDParamStr(1, buf);
+			GetString(temp, self_send ? STR_NETWORK_CHAT_TO_COMPANY : STR_NETWORK_CHAT_COMPANY, lastof(temp));
+			ttd_strlcpy(message, temp, sizeof(message));
+			break;
+		case NETWORK_ACTION_CHAT_CLIENT:
+			SetDParamStr(0, name);
+			SetDParamStr(1, buf);
+			GetString(temp, self_send ? STR_NETWORK_CHAT_TO_CLIENT : STR_NETWORK_CHAT_CLIENT, lastof(temp));
+			ttd_strlcpy(message, temp, sizeof(message));
+			break;
 		default:
 			SetDParamStr(0, name);
+			SetDParamStr(1, buf);
 			GetString(temp, STR_NETWORK_CHAT_ALL, lastof(temp));
-			snprintf(message, sizeof(message), "%s %s", temp, buf);
+			ttd_strlcpy(message, temp, sizeof(message));
 			break;
 	}
 

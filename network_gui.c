@@ -1632,9 +1632,9 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 	case WE_PAINT: {
 		static const StringID chat_captions[] = {
-			STR_NETWORK_CHAT_ALL,
-			STR_NETWORK_CHAT_COMPANY,
-			STR_NETWORK_CHAT_CLIENT
+			STR_NETWORK_CHAT_ALL_CAPTION,
+			STR_NETWORK_CHAT_COMPANY_CAPTION,
+			STR_NETWORK_CHAT_CLIENT_CAPTION
 		};
 		StringID msg;
 
@@ -1642,7 +1642,6 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 		assert(GB(WP(w, querystr_d).caption, 0, 8) < lengthof(chat_captions));
 		msg = chat_captions[GB(WP(w, querystr_d).caption, 0, 8)];
-		SetDParam(0, STR_EMPTY);
 		DrawStringRightAligned(w->widget[2].left - 2, w->widget[2].top + 1, msg, 16);
 		DrawEditBox(w, &WP(w, querystr_d), 2);
 	} break;
