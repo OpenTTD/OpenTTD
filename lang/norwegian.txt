@@ -1422,11 +1422,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er ful
 STR_NETWORK_CLIENT_JOINED                                       :har blitt med i spillet
 STR_NETWORK_GIVE_MONEY                                          :gav deg penger ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :Du gav {STRING} noen penger ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Lag] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Lag] Til {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Lag] :
+STR_NETWORK_CHAT_COMPANY                                        :[Lag] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Lag] Til {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alle] :
+STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :har skiftet navn til
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Tjeneren avsluttet spillet
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Tjeneren starter på nytt...{}Vennligst vent

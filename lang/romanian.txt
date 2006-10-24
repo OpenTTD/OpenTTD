@@ -1396,11 +1396,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server plin
 STR_NETWORK_CLIENT_JOINED                                       :a intrat in joc
 STR_NETWORK_GIVE_MONEY                                          :ti-a dat o suma de bani ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :ai donat o suma de bani companiei {STRING} ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] pentru {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] To {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] pentru {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :si-a schimbat numele in
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}Serverul a inchis conexiunea
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Serverul este repornit...{}Va rugam asteptati...

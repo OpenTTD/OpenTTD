@@ -1495,11 +1495,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server je plny
 STR_NETWORK_CLIENT_JOINED                                       :vstupil do hry
 STR_NETWORK_GIVE_MONEY                                          :ti poslal peniaze ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :poslal si {STRING} penazie ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Osobny] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Vsetci] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tim] :
+STR_NETWORK_CHAT_COMPANY                                        :[Tim] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Tim] pre {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privany] :
+STR_NETWORK_CHAT_CLIENT                                         :[Osobny] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privatny] pre {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Vsetci] :
+STR_NETWORK_CHAT_ALL                                            :[Vsetci] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :si zmenil meno na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server ukoncil relaciu
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server sa restartuje ...{}Cakajte prosim ...

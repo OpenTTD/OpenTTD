@@ -1378,11 +1378,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor cheo
 STR_NETWORK_CLIENT_JOINED                                       :uniuse á partida
 STR_NETWORK_GIVE_MONEY                                          :deu a túa compañía algún diñeiro ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :diches a {STRING} algún diñeiro ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] A {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] A {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipo] :
+STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] A {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privado] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] A {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
+STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :cambiou o seu nome por
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} O servidor pechou a conexión
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servidor estase a reiniciar...{}Espera por favor...

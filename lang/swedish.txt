@@ -1431,11 +1431,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servern är full
 STR_NETWORK_CLIENT_JOINED                                       :har anslutit till spelet
 STR_NETWORK_GIVE_MONEY                                          :gav dig en del pengar ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :Du gav {STRING} en del pengar ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Företaget] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Företaget] Till {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Till {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Alla] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Företaget] :
+STR_NETWORK_CHAT_COMPANY                                        :[Företaget] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Företaget] Till {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Till {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alla] :
+STR_NETWORK_CHAT_ALL                                            :[Alla] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :har ändrat sitt namn till
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Servern avslutade sessionen
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Servern startar om...{}Var vänlig vänta...

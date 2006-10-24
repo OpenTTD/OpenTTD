@@ -1431,11 +1431,13 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serveren er ful
 STR_NETWORK_CLIENT_JOINED                                       :har tilsluttet sig spillet
 STR_NETWORK_GIVE_MONEY                                          :gav din virksomhed nogle penge ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :du gav {STRING} nogle penge ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Hold] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Hold] Til {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}:
+STR_NETWORK_CHAT_COMPANY                                        :[Hold] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Hold] Til {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] Til {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alle] :
+STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :har skiftet navn til
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serveren har lukket ned for dette spil
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Serveren genstarter...{}Vent venligst...

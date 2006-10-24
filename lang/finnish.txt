@@ -1431,11 +1431,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :palvelin täynnä
 STR_NETWORK_CLIENT_JOINED                                       :liittyi peliin
 STR_NETWORK_GIVE_MONEY                                          :antoi yhtiöllesi rahaa ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :annoit rahaa toiselle pelaajalle ({STRING}, {CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Joukkue] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Joukkue] {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Yksityinen] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Yksityinen] {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Kaikki] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Joukkue] :
+STR_NETWORK_CHAT_COMPANY                                        :[Joukkue] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Joukkue] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Yksityinen] :
+STR_NETWORK_CHAT_CLIENT                                         :[Yksityinen] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Yksityinen] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Kaikki] :
+STR_NETWORK_CHAT_ALL                                            :[Kaikki] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :vaihtoi nimensä:
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Palvelin sulki istunnon
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Palvelin käynnistyy uudelleen...{}Odota, ole hyvä...

@@ -1431,11 +1431,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :Server voll
 STR_NETWORK_CLIENT_JOINED                                       :hat das Spiel betreten
 STR_NETWORK_GIVE_MONEY                                          :gab dir etwas Geld ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :Du hast {STRING} etwas Geld gegeben ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] An {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] An {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] An {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privat] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privat] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privat] An {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Alle] :
+STR_NETWORK_CHAT_ALL                                            :[Alle] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :hat seinen Namen geändert zu
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}Der Server hat das Spiel beendet
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Der Server startet neu...{}Bitte warten...

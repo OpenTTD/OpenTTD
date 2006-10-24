@@ -1429,11 +1429,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :sunucu dolu
 STR_NETWORK_CLIENT_JOINED                                       :oyuna katildi
 STR_NETWORK_GIVE_MONEY                                          :sana para verdi ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :para gönderildi: {STRING} <-- ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Takim] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Takim] -> {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Özel] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Özel] -> {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Herkes] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Takim] :
+STR_NETWORK_CHAT_COMPANY                                        :[Takim] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Takim] -> {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Özel] :
+STR_NETWORK_CHAT_CLIENT                                         :[Özel] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Özel] -> {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Herkes] :
+STR_NETWORK_CHAT_ALL                                            :[Herkes] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :ismini degistirdi:
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Sunucu kapandi
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Sunucu bastan baslatiliyor...{}Lütfen bekleyin...

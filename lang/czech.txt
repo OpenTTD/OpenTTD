@@ -1488,11 +1488,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :na serveru je p
 STR_NETWORK_CLIENT_JOINED                                       :vstoupil do hry
 STR_NETWORK_GIVE_MONEY                                          :ti dal nejake peníze ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :dal jsi {STRING} trochu penez ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Tým] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Tým] pro {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Osobní] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Osobní] pro {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[V¨ichni] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Tým] :
+STR_NETWORK_CHAT_COMPANY                                        :[Tým] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Tým] pro {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Osobní] :
+STR_NETWORK_CHAT_CLIENT                                         :[Osobní] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Osobní] pro {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[V¨ichni] :
+STR_NETWORK_CHAT_ALL                                            :[V¨ichni] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :si zmenil jméno na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE}Server ukoncil relaci
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Server se restartuje...{}Pockejte prosím...

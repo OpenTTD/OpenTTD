@@ -1497,11 +1497,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :a szerver megte
 STR_NETWORK_CLIENT_JOINED                                       :belépett a játékba
 STR_NETWORK_GIVE_MONEY                                          :adott egy kis pénzt ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :{STRING} játékosnak adományoztál ({CURRENCY}) összeget
-STR_NETWORK_CHAT_COMPANY                                        :[Csapat] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Csapat] {STRING} számára:
-STR_NETWORK_CHAT_CLIENT                                         :[Privát] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privát] {STRING} számára:
-STR_NETWORK_CHAT_ALL                                            :[Mindenkinek] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Csapat] :
+STR_NETWORK_CHAT_COMPANY                                        :[Csapat] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Csapat] {STRING} számára: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privát] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privát] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privát] {STRING} számára: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Mindenkinek] :
+STR_NETWORK_CHAT_ALL                                            :[Mindenkinek] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :megváltoztatta a nevét erre:
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} A szerver leállította a játékot
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} A szerver újraindul...{}Türelem...

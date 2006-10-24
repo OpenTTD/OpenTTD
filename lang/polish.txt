@@ -1518,11 +1518,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :serwer jest pel
 STR_NETWORK_CLIENT_JOINED                                       :przylaczyl sie do gry
 STR_NETWORK_GIVE_MONEY                                          :dal Ci troche pieniedzy ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :przekazales {STRING} troche pieniedzy ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Zespol] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Zespol] do {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] do {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Zespol] :
+STR_NETWORK_CHAT_COMPANY                                        :[Zespol] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Zespol] do {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Prywatna] :
+STR_NETWORK_CHAT_CLIENT                                         :[Prywatna] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Prywatna] do {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Wszyscy] :
+STR_NETWORK_CHAT_ALL                                            :[Wszyscy] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :zmienil/-a swoja nazwe na
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Serwer zamknal sesje
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Restart serwera...{}Prosze czekac...

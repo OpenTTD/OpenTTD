@@ -1432,11 +1432,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servidor lleno
 STR_NETWORK_CLIENT_JOINED                                       :se ha unido al juego
 STR_NETWORK_GIVE_MONEY                                          :te ha enviado dinero ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :das a {STRING} algo de dinero ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] a {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] a {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Equipo] :
+STR_NETWORK_CHAT_COMPANY                                        :[Equipo] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Equipo] a {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privado] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privado] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privado] a {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Todos] :
+STR_NETWORK_CHAT_ALL                                            :[Todos] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :ha cambiado su nombre a
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} El servidor ha cerrado la sesión
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Se está reiniciando el servidor...{}Espere por favor...

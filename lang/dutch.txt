@@ -1431,11 +1431,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server is vol
 STR_NETWORK_CLIENT_JOINED                                       :heeft zich bij het spel gevoegd
 STR_NETWORK_GIVE_MONEY                                          :heeft je geld gegeven ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :je hebt {STRING} wat geld gegeven ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Aan {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Prive] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Prive] Aan {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Iedereen] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] Aan {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Prive] :
+STR_NETWORK_CHAT_CLIENT                                         :[Prive] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Prive] Aan {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Iedereen] :
+STR_NETWORK_CHAT_ALL                                            :[Iedereen] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :heeft zijn naam veranderd in
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} De server heeft de sessie gestopt.
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} De server wordt opnieuw gestart...{}Wacht aub...

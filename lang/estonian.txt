@@ -1442,11 +1442,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server on täis
 STR_NETWORK_CLIENT_JOINED                                       :liitus mänguga
 STR_NETWORK_GIVE_MONEY                                          :andis sinu ettevõtele raha ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :sina andsid ettevõttele {STRING} raha ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] kohta {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] kohta {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] kohta {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] kohta {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :muutis oma nimeks
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Server sulges sessiooni
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server restardib...{}Palun oota...

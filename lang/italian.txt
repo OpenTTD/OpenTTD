@@ -1431,11 +1431,14 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server pieno
 STR_NETWORK_CLIENT_JOINED                                       :è entrato nel gioco
 STR_NETWORK_GIVE_MONEY                                          :ha donato alla tua compagnia del denaro ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :hai donato a {STRING} del denaro ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Gruppo] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Gruppo] A {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Privato] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Privato] A {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Tutti] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Gruppo] :
+STR_NETWORK_CHAT_COMPANY                                        :[Gruppo] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Gruppo] A {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privato] :
+STR_NETWORK_CHAT_CLIENT                                         :[Privato] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Privato] A {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Tutti] :
+STR_NETWORK_CHAT_ALL                                            :[Tutti] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :ha cambiato il suo nome in
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Il server ha chiuso la sessione
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Il server si sta riavviando...{}Attendere prego...
