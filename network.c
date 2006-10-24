@@ -130,11 +130,17 @@ void CDECL NetworkTextMessage(NetworkAction action, uint16 color, bool self_send
 	va_end(va);
 
 	switch (action) {
+		case NETWORK_ACTION_SERVER_MESSAGE:
+			color = 1;
+			snprintf(message, sizeof(message), "*** %s", buf);
+			break;
 		case NETWORK_ACTION_JOIN:
+			color = 1;
 			GetString(temp, STR_NETWORK_CLIENT_JOINED, lastof(temp));
 			snprintf(message, sizeof(message), "*** %s %s", name, temp);
 			break;
 		case NETWORK_ACTION_LEAVE:
+			color = 1;
 			GetString(temp, STR_NETWORK_ERR_LEFT, lastof(temp));
 			snprintf(message, sizeof(message), "*** %s %s (%s)", name, temp, buf);
 			break;
@@ -303,13 +309,13 @@ void CheckMinPlayers(void)
 
 		_min_players_paused = true;
 		DoCommandP(0, 1, 0, NULL, CMD_PAUSE);
-		NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", NETWORK_SERVER_INDEX);
+		NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game paused (not enough players)", NETWORK_SERVER_INDEX);
 	} else {
 		if (!_min_players_paused) return;
 
 		_min_players_paused = false;
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", NETWORK_SERVER_INDEX);
+		NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused (enough players)", NETWORK_SERVER_INDEX);
 	}
 }
 
@@ -605,7 +611,7 @@ void NetworkCloseClient(NetworkClientState *cs)
 	/* When the client was PRE_ACTIVE, the server was in pause mode, so unpause */
 	if (cs->status == STATUS_PRE_ACTIVE && _network_pause_on_join) {
 		DoCommandP(0, 0, 0, NULL, CMD_PAUSE);
-		NetworkServer_HandleChat(NETWORK_ACTION_CHAT, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
+		NetworkServer_HandleChat(NETWORK_ACTION_SERVER_MESSAGE, DESTTYPE_BROADCAST, 0, "Game unpaused", NETWORK_SERVER_INDEX);
 	}
 
 	closesocket(cs->socket);

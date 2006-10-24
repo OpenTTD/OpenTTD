@@ -30,10 +30,9 @@
 
 uint16 GetDrawStringPlayerColor(PlayerID player)
 {
-	/* Get the color for DrawString-subroutines which matches the color of the
-	 * player
-	 */
-	if (player == PLAYER_SPECTATOR || player == PLAYER_SPECTATOR - 1) return 1;
+	/* Get the color for DrawString-subroutines which matches the color
+	 * of the player */
+	if (!IsValidPlayer(player)) return _colour_gradient[COLOUR_WHITE][4] | IS_PALETTE_COLOR;
 	return (_colour_gradient[_player_colors[player]][4]) | IS_PALETTE_COLOR;
 }
 
