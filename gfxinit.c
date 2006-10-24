@@ -161,6 +161,12 @@ void CheckExternalFiles(void)
 	if (!FileMD5(sample_cat_win, false) && !FileMD5(sample_cat_dos, false))
 		fprintf(stderr, "Your sample.cat file is corrupted or missing!\n");
 
+	for (i = 0; i < lengthof(files_openttd); i++) {
+		if (!FileMD5(files_openttd[i], false)) {
+			fprintf(stderr, "Your %s file is corrupted or missing!\n", files_openttd[i].filename);
+		}
+	}
+
 	/*
 	 * forced DOS palette via command line -> leave it that way
 	 * all Windows files present -> Windows palette
