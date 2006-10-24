@@ -548,34 +548,37 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
 enum WindowWidgetBehaviours {
 	WWB_PUSHBUTTON  = 1 << 5,
 	WWB_NODISBUTTON = 2 << 5,
+
+	WWB_MASK        = 0xE0,
 };
 
 
 enum WindowWidgetTypes {
-	WWT_EMPTY = 0,
+	WWT_EMPTY      =  0,
 
-	WWT_IMGBTN     =  1,         /* button with image */
-	WWT_PANEL      = WWT_IMGBTN,
-	WWT_PANEL_2    =  2,         /* button with diff image when clicked */
+	WWT_PANEL      =  1,         /* simple panel */
+	WWT_IMGBTN     =  2,         /* button with image */
+	WWT_IMGBTN_2   =  3,         /* button with diff image when clicked */
 
-	WWT_TEXTBTN    =  3,         /* button with text */
-	WWT_4          =  4,         /* button with diff text when clicked */
-	WWT_LABEL       = 5,         /* centered label */
-	WWT_6          =  6,         /* combo box text area */
-	WWT_MATRIX     =  7,
-	WWT_SCROLLBAR  =  8,
-	WWT_FRAME      =  9,         /* frame */
-	WWT_CAPTION    = 10,
+	WWT_TEXTBTN    =  4,         /* button with text */
+	WWT_4          =  5,         /* button with diff text when clicked */
+	WWT_LABEL      =  6,         /* centered label */
+	WWT_6          =  7,         /* combo box text area */
+	WWT_MATRIX     =  8,
+	WWT_SCROLLBAR  =  9,
+	WWT_FRAME      = 10,         /* frame */
+	WWT_CAPTION    = 11,
 
-	WWT_HSCROLLBAR = 11,
-	WWT_STICKYBOX  = 12,
-	WWT_SCROLL2BAR = 13,         /* 2nd vertical scrollbar*/
-	WWT_RESIZEBOX  = 14,
-	WWT_CLOSEBOX   = 15,
-	WWT_LAST       = 16,         /* Last Item. use WIDGETS_END to fill up padding!! */
+	WWT_HSCROLLBAR = 12,
+	WWT_STICKYBOX  = 13,
+	WWT_SCROLL2BAR = 14,         /* 2nd vertical scrollbar*/
+	WWT_RESIZEBOX  = 15,
+	WWT_CLOSEBOX   = 16,
+	WWT_LAST       = 17,         /* Last Item. use WIDGETS_END to fill up padding!! */
 
 	WWT_MASK       = 31,
 
+	WWT_PUSHBTN     = WWT_PANEL   | WWB_PUSHBUTTON,
 	WWT_PUSHTXTBTN  = WWT_TEXTBTN | WWB_PUSHBUTTON,
 	WWT_PUSHIMGBTN  = WWT_IMGBTN  | WWB_PUSHBUTTON,
 	WWT_NODISTXTBTN = WWT_TEXTBTN | WWB_NODISBUTTON,

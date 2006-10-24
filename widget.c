@@ -203,18 +203,21 @@ void DrawWindowWidgets(const Window *w)
 		}
 
 		switch (wi->type & WWT_MASK) {
-		case WWT_PANEL: /* WWT_IMGBTN */
-		case WWT_PANEL_2: {
+		case WWT_IMGBTN:
+		case WWT_IMGBTN_2: {
 			int img = wi->data;
-
+			assert(img != 0);
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 
-			if (img != 0) { // has an image
-				// show diff image when clicked
-				if ((wi->type & WWT_MASK) == WWT_PANEL_2 && clicked) img++;
+			/* show different image when clicked for WWT_IMGBTN_2 */
+			if ((wi->type & WWT_MASK) == WWT_IMGBTN_2 && clicked) img++;
+			DrawSprite(img, r.left + 1 + clicked, r.top + 1 + clicked);
+			goto draw_default;
+		}
 
-				DrawSprite(img, r.left + 1 + clicked, r.top + 1 + clicked);
-			}
+		case WWT_PANEL: {
+			assert(wi->data == 0);
+			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 			goto draw_default;
 		}
 
@@ -471,7 +474,7 @@ draw_default:;
 }
 
 static const Widget _dropdown_menu_widgets[] = {
-{     WWT_IMGBTN,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 

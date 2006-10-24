@@ -158,11 +158,11 @@ static const Widget _aircraft_details_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW },
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   349,     0,    13, STR_A00C_DETAILS, STR_018C_WINDOW_TITLE_DRAG_THIS },
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   350,   389,     0,    13, STR_01AA_NAME,    STR_A032_NAME_AIRCRAFT },
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   389,    14,    55, 0x0,              STR_NULL },
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   389,    56,   101, 0x0,              STR_NULL },
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   389,    14,    55, 0x0,              STR_NULL },
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   389,    56,   101, 0x0,              STR_NULL },
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   102,   107, STR_0188,         STR_884D_INCREASE_SERVICING_INTERVAL },
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    10,   108,   113, STR_0189,         STR_884E_DECREASE_SERVICING_INTERVAL },
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    11,   389,   102,   113, 0x0,              STR_NULL },
+{      WWT_PANEL,   RESIZE_NONE,    14,    11,   389,   102,   113, 0x0,              STR_NULL },
 {   WIDGETS_END},
 };
 
@@ -198,7 +198,7 @@ static const Widget _aircraft_view_widgets[] = {
 {  WWT_STICKYBOX,    RESIZE_LR,  14, 238, 249,   0,  13, 0x0,                      STR_STICKY_BUTTON },
 {      WWT_PANEL,    RESIZE_RB,  14,   0, 231,  14, 103, 0x0,                      STR_NULL },
 {          WWT_6,    RESIZE_RB,  14,   2, 229,  16, 101, 0x0,                      STR_NULL },
-{ WWT_PUSHIMGBTN,   RESIZE_RTB,  14,   0, 237, 104, 115, 0x0,                      STR_A027_CURRENT_AIRCRAFT_ACTION },
+{    WWT_PUSHBTN,   RESIZE_RTB,  14,   0, 237, 104, 115, 0x0,                      STR_A027_CURRENT_AIRCRAFT_ACTION },
 { WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE,  STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT },
 { WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  32,  49, SPR_SEND_AIRCRAFT_TODEPOT,STR_A02A_SEND_AIRCRAFT_TO_HANGAR },
 { WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  50,  67, SPR_REFIT_VEHICLE,        STR_A03B_REFIT_AIRCRAFT_TO_CARRY },

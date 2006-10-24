@@ -665,7 +665,7 @@ static const Widget _message_history_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,    10,     0,    13, STR_00C5,            STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,  RESIZE_RIGHT,    13,    11,   387,     0,    13, STR_MESSAGE_HISTORY, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,     RESIZE_LR,    13,   388,   399,     0,    13, 0x0,                 STR_STICKY_BUTTON},
-{     WWT_IMGBTN,     RESIZE_RB,    13,     0,   387,    14,   139, 0x0,                 STR_MESSAGE_HISTORY_TIP},
+{      WWT_PANEL,     RESIZE_RB,    13,     0,   387,    14,   139, 0x0,                 STR_MESSAGE_HISTORY_TIP},
 {  WWT_SCROLLBAR,    RESIZE_LRB,    13,   388,   399,    14,   127, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {  WWT_RESIZEBOX,   RESIZE_LRTB,    13,   388,   399,   128,   139, 0x0,                 STR_RESIZE_BUTTON},
 {   WIDGETS_END},
@@ -809,7 +809,7 @@ static void MessageOptionsWndProc(Window *w, WindowEvent *e)
 static const Widget _message_options_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    13,     0,   10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    13,    11,  409,     0,    13, STR_0204_MESSAGE_OPTIONS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   184, STR_NULL,                 STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    13,     0,  409,    14,   184, 0x0,                      STR_NULL},
 
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,    26,    37, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,    26,    37, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
@@ -841,7 +841,7 @@ static const Widget _message_options_widgets[] = {
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,     4,   12,   134,   145, SPR_ARROW_LEFT,           STR_HSCROLL_BAR_SCROLLS_LIST},
 { WWT_PUSHIMGBTN,   RESIZE_NONE,     3,    90,   98,   134,   145, SPR_ARROW_RIGHT,          STR_HSCROLL_BAR_SCROLLS_LIST},
 
-{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   154,   165, STR_NULL,                 STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   154,   165, 0x0,                      STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   154,   165, STR_0225,                 STR_NULL},
 {          WWT_4,   RESIZE_NONE,     3,     4,   98,   166,   177, STR_02DB_OFF,             STR_NULL},
 

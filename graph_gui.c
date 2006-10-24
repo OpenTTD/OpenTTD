@@ -270,15 +270,15 @@ static void GraphLegendWndProc(Window *w, WindowEvent *e)
 static const Widget _graph_legend_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   249,     0,    13, STR_704E_KEY_TO_COMPANY_GRAPHS, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   249,    14,   113, 0x0,                            STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   247,    16,    27, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   247,    28,    39, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   247,    40,    51, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   247,    52,    63, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   247,    64,    75, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   247,    76,    87, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   247,    88,    99, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,   247,   100,   111, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   249,    14,   113, 0x0,                            STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   247,    16,    27, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   247,    28,    39, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   247,    40,    51, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   247,    52,    63, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   247,    64,    75, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   247,    76,    87, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   247,    88,    99, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,   247,   100,   111, 0x0,                            STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {   WIDGETS_END},
 };
 
@@ -379,7 +379,7 @@ static const Widget _operating_profit_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   525,     0,    13, STR_7025_OPERATING_PROFIT_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,                    STR_704D_SHOW_KEY_TO_GRAPHS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   575,    14,   173, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   575,    14,   173, 0x0,                             STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -454,7 +454,7 @@ static const Widget _income_graph_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,              STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   525,     0,    13, STR_7022_INCOME_GRAPH, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,          STR_704D_SHOW_KEY_TO_GRAPHS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   575,    14,   141, 0x0,                   STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   575,    14,   141, 0x0,                   STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -527,7 +527,7 @@ static const Widget _delivered_cargo_graph_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   525,     0,    13, STR_7050_UNITS_OF_CARGO_DELIVERED, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,                      STR_704D_SHOW_KEY_TO_GRAPHS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   575,    14,   141, 0x0,                               STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   575,    14,   141, 0x0,                               STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -603,7 +603,7 @@ static const Widget _performance_history_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   475,     0,    13, STR_7051_COMPANY_PERFORMANCE_RATINGS, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,                         STR_704D_SHOW_KEY_TO_GRAPHS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   476,   525,     0,    13, STR_PERFORMANCE_DETAIL_KEY,           STR_704D_SHOW_KEY_TO_GRAPHS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   575,    14,   237, 0x0,                                  STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   575,    14,   237, 0x0,                                  STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -676,7 +676,7 @@ static const Widget _company_value_graph_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   525,     0,    13, STR_7052_COMPANY_VALUES, STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    14,   526,   575,     0,    13, STR_704C_KEY,            STR_704D_SHOW_KEY_TO_GRAPHS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   575,    14,   237, 0x0,                     STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   575,    14,   237, 0x0,                     STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -883,7 +883,7 @@ static const Widget _company_league_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,  0, 13, STR_00C5,                      STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION, RESIZE_NONE, 14,  11, 387,  0, 13, STR_7053_COMPANY_LEAGUE_TABLE, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX, RESIZE_NONE, 14, 388, 399,  0, 13, STR_NULL,                      STR_STICKY_BUTTON},
-{     WWT_IMGBTN, RESIZE_NONE, 14,   0, 399, 14, 96, 0x0,                           STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 14,   0, 399, 14, 96, 0x0,                           STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -1085,27 +1085,27 @@ static void PerformanceRatingDetailWndProc(Window *w, WindowEvent *e)
 static const Widget _performance_rating_detail_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   298,     0,    13, STR_PERFORMANCE_DETAIL, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,    14,    27, 0x0,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,    14,    27, 0x0,                    STR_NULL},
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,    28,    47, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,    48,    67, 0x0,                    STR_PERFORMANCE_DETAIL_STATIONS_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,    68,    87, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,    88,   107, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,   108,   127, 0x0,                    STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,   128,   147, 0x0,                    STR_PERFORMANCE_DETAIL_DELIVERED_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,   148,   167, 0x0,                    STR_PERFORMANCE_DETAIL_CARGO_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,   168,   187, 0x0,                    STR_PERFORMANCE_DETAIL_MONEY_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,   188,   207, 0x0,                    STR_PERFORMANCE_DETAIL_LOAN_TIP},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   298,   208,   227, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,    28,    47, 0x0,                    STR_PERFORMANCE_DETAIL_VEHICLES_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,    48,    67, 0x0,                    STR_PERFORMANCE_DETAIL_STATIONS_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,    68,    87, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_PROFIT_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,    88,   107, 0x0,                    STR_PERFORMANCE_DETAIL_MIN_INCOME_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,   108,   127, 0x0,                    STR_PERFORMANCE_DETAIL_MAX_INCOME_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,   128,   147, 0x0,                    STR_PERFORMANCE_DETAIL_DELIVERED_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,   148,   167, 0x0,                    STR_PERFORMANCE_DETAIL_CARGO_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,   168,   187, 0x0,                    STR_PERFORMANCE_DETAIL_MONEY_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,   188,   207, 0x0,                    STR_PERFORMANCE_DETAIL_LOAN_TIP},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   298,   208,   227, 0x0,                    STR_PERFORMANCE_DETAIL_TOTAL_TIP},
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     2,    38,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    39,    75,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,    76,   112,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   113,   149,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   150,   186,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   187,   223,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   224,   260,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,   261,   297,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,     2,    38,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,    39,    75,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,    76,   112,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,   113,   149,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,   150,   186,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,   187,   223,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,   224,   260,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
+{      WWT_PANEL,   RESIZE_NONE,    14,   261,   297,    14,    26, 0x0,                    STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY},
 {   WIDGETS_END},
 };
 

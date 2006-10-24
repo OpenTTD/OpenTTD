@@ -497,14 +497,14 @@ static void MenuWndProc(Window *w, WindowEvent *e)
 /* Dynamic widget length determined by toolbar-string length.
  * See PopupMainToolbMenu en MenuWndProc */
 static const Widget _menu_widgets[] = {
-{    WWT_PANEL, RESIZE_NONE, 14, 0,  0, 0, 0, STR_NULL, STR_NULL},
+{    WWT_PANEL, RESIZE_NONE, 14, 0,  0, 0, 0, 0x0, STR_NULL},
 { WIDGETS_END},
 };
 
 
 static const Widget _player_menu_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,   240,     0,    81,     0, STR_NULL},
-{   WIDGETS_END},
+{    WWT_PANEL, RESIZE_NONE, 14, 0, 240, 0, 81, 0x0, STR_NULL},
+{ WIDGETS_END},
 };
 
 
@@ -1178,7 +1178,7 @@ static const Widget _scen_edit_land_gen_widgets[] = {
 {  WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW},
 {   WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_0223_LAND_GENERATION,  STR_018C_WINDOW_TITLE_DRAG_THIS},
 { WWT_STICKYBOX,   RESIZE_NONE,     7,   170,   181,     0,    13, STR_NULL,                  STR_STICKY_BUTTON},
-{    WWT_IMGBTN,   RESIZE_NONE,     7,     0,   181,    14,    95, STR_NULL,                  STR_NULL},
+{     WWT_PANEL,   RESIZE_NONE,     7,     0,   181,    14,    95, 0x0,                       STR_NULL},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,     2,    23,    14,    35, SPR_IMG_DYNAMITE,          STR_018D_DEMOLISH_BUILDINGS_ETC},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    24,    45,    14,    35, SPR_IMG_TERRAFORM_DOWN,    STR_018E_LOWER_A_CORNER_OF_LAND},
 {    WWT_IMGBTN,   RESIZE_NONE,    14,    46,    67,    14,    35, SPR_IMG_TERRAFORM_UP,      STR_018F_RAISE_A_CORNER_OF_LAND},
@@ -1402,7 +1402,7 @@ static const Widget _scen_edit_town_gen_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   147,     0,    13, STR_0233_TOWN_GENERATION, STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,     7,   148,   159,     0,    13, 0x0,                      STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   159,    14,    81, 0x0,                      STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   159,    14,    81, 0x0,                      STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    16,    27, STR_0234_NEW_TOWN,        STR_0235_CONSTRUCT_NEW_TOWN},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    29,    40, STR_023D_RANDOM_TOWN,     STR_023E_BUILD_TOWN_IN_RANDOM_LOCATION},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   157,    42,    53, STR_MANY_RANDOM_TOWNS,    STR_RANDOM_TOWNS_TIP},
@@ -1499,7 +1499,7 @@ static void ToolbarScenGenTown(Window *w)
 static const Widget _scenedit_industry_normal_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_023F_INDUSTRY_GENERATION, STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,                          STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,                          STR_NULL},
 
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_MANY_RANDOM_INDUSTRIES,   STR_RANDOM_INDUSTRIES_TIP},
 
@@ -1522,7 +1522,7 @@ static const Widget _scenedit_industry_normal_widgets[] = {
 static const Widget _scenedit_industry_hilly_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                       STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_023F_INDUSTRY_GENERATION,   STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,                            STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,                            STR_NULL},
 
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_MANY_RANDOM_INDUSTRIES,     STR_RANDOM_INDUSTRIES_TIP},
 
@@ -1543,7 +1543,7 @@ static const Widget _scenedit_industry_hilly_widgets[] = {
 static const Widget _scenedit_industry_desert_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_023F_INDUSTRY_GENERATION,    STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,                             STR_NULL},
 
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_MANY_RANDOM_INDUSTRIES,      STR_RANDOM_INDUSTRIES_TIP},
 
@@ -1566,7 +1566,7 @@ static const Widget _scenedit_industry_desert_widgets[] = {
 static const Widget _scenedit_industry_candy_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     7,     0,    10,     0,    13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     7,    11,   169,     0,    13, STR_023F_INDUSTRY_GENERATION, STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,                          STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     7,     0,   169,    14,   224, 0x0,                          STR_NULL},
 
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,     2,   167,    16,    27, STR_MANY_RANDOM_INDUSTRIES,   STR_RANDOM_INDUSTRIES_TIP},
 
@@ -1896,39 +1896,39 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _toolb_normal_widgets[] = {
-{      WWT_PANEL,   RESIZE_NONE,    14,     0,    21,     0,    21, SPR_IMG_PAUSE,           STR_0171_PAUSE_GAME},
-{      WWT_PANEL,   RESIZE_NONE,    14,    22,    43,     0,    21, SPR_IMG_FASTFORWARD,     STR_FAST_FORWARD},
-{      WWT_PANEL,   RESIZE_NONE,    14,    44,    65,     0,    21, SPR_IMG_SETTINGS,        STR_0187_OPTIONS},
-{    WWT_PANEL_2,   RESIZE_NONE,    14,    66,    87,     0,    21, SPR_IMG_SAVE,            STR_0172_SAVE_GAME_ABANDON_GAME},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,    21,     0,    21, SPR_IMG_PAUSE,           STR_0171_PAUSE_GAME},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,    22,    43,     0,    21, SPR_IMG_FASTFORWARD,     STR_FAST_FORWARD},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,    44,    65,     0,    21, SPR_IMG_SETTINGS,        STR_0187_OPTIONS},
+{   WWT_IMGBTN_2,   RESIZE_NONE,    14,    66,    87,     0,    21, SPR_IMG_SAVE,            STR_0172_SAVE_GAME_ABANDON_GAME},
 
-{      WWT_PANEL,   RESIZE_NONE,    14,    96,   117,     0,    21, SPR_IMG_SMALLMAP,        STR_0174_DISPLAY_MAP},
-{      WWT_PANEL,   RESIZE_NONE,    14,   118,   139,     0,    21, SPR_IMG_TOWN,            STR_0176_DISPLAY_TOWN_DIRECTORY},
-{      WWT_PANEL,   RESIZE_NONE,    14,   140,   161,     0,    21, SPR_IMG_SUBSIDIES,       STR_02DC_DISPLAY_SUBSIDIES},
-{      WWT_PANEL,   RESIZE_NONE,    14,   162,   183,     0,    21, SPR_IMG_COMPANY_LIST,    STR_0173_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,    96,   117,     0,    21, SPR_IMG_SMALLMAP,        STR_0174_DISPLAY_MAP},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   118,   139,     0,    21, SPR_IMG_TOWN,            STR_0176_DISPLAY_TOWN_DIRECTORY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   140,   161,     0,    21, SPR_IMG_SUBSIDIES,       STR_02DC_DISPLAY_SUBSIDIES},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   162,   183,     0,    21, SPR_IMG_COMPANY_LIST,    STR_0173_DISPLAY_LIST_OF_COMPANY},
 
-{      WWT_PANEL,   RESIZE_NONE,    14,   191,   212,     0,    21, SPR_IMG_COMPANY_FINANCE, STR_0177_DISPLAY_COMPANY_FINANCES},
-{      WWT_PANEL,   RESIZE_NONE,    14,   213,   235,     0,    21, SPR_IMG_COMPANY_GENERAL, STR_0178_DISPLAY_COMPANY_GENERAL},
-{      WWT_PANEL,   RESIZE_NONE,    14,   236,   257,     0,    21, SPR_IMG_GRAPHS,          STR_0179_DISPLAY_GRAPHS},
-{      WWT_PANEL,   RESIZE_NONE,    14,   258,   279,     0,    21, SPR_IMG_COMPANY_LEAGUE,  STR_017A_DISPLAY_COMPANY_LEAGUE},
-{      WWT_PANEL,   RESIZE_NONE,    14,   280,   301,     0,    21, SPR_IMG_INDUSTRY,        STR_0312_FUND_CONSTRUCTION_OF_NEW},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   191,   212,     0,    21, SPR_IMG_COMPANY_FINANCE, STR_0177_DISPLAY_COMPANY_FINANCES},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   213,   235,     0,    21, SPR_IMG_COMPANY_GENERAL, STR_0178_DISPLAY_COMPANY_GENERAL},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   236,   257,     0,    21, SPR_IMG_GRAPHS,          STR_0179_DISPLAY_GRAPHS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   258,   279,     0,    21, SPR_IMG_COMPANY_LEAGUE,  STR_017A_DISPLAY_COMPANY_LEAGUE},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   280,   301,     0,    21, SPR_IMG_INDUSTRY,        STR_0312_FUND_CONSTRUCTION_OF_NEW},
 
-{      WWT_PANEL,   RESIZE_NONE,    14,   310,   331,     0,    21, SPR_IMG_TRAINLIST,       STR_017B_DISPLAY_LIST_OF_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,    14,   332,   353,     0,    21, SPR_IMG_TRUCKLIST,       STR_017C_DISPLAY_LIST_OF_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,    14,   354,   375,     0,    21, SPR_IMG_SHIPLIST,        STR_017D_DISPLAY_LIST_OF_COMPANY},
-{      WWT_PANEL,   RESIZE_NONE,    14,   376,   397,     0,    21, SPR_IMG_AIRPLANESLIST,   STR_017E_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   310,   331,     0,    21, SPR_IMG_TRAINLIST,       STR_017B_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   332,   353,     0,    21, SPR_IMG_TRUCKLIST,       STR_017C_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   354,   375,     0,    21, SPR_IMG_SHIPLIST,        STR_017D_DISPLAY_LIST_OF_COMPANY},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   376,   397,     0,    21, SPR_IMG_AIRPLANESLIST,   STR_017E_DISPLAY_LIST_OF_COMPANY},
 
-{      WWT_PANEL,   RESIZE_NONE,    14,   406,   427,     0,    21, SPR_IMG_ZOOMIN,          STR_017F_ZOOM_THE_VIEW_IN},
-{      WWT_PANEL,   RESIZE_NONE,    14,   428,   449,     0,    21, SPR_IMG_ZOOMOUT,         STR_0180_ZOOM_THE_VIEW_OUT},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   406,   427,     0,    21, SPR_IMG_ZOOMIN,          STR_017F_ZOOM_THE_VIEW_IN},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   428,   449,     0,    21, SPR_IMG_ZOOMOUT,         STR_0180_ZOOM_THE_VIEW_OUT},
 
-{      WWT_PANEL,   RESIZE_NONE,    14,   457,   478,     0,    21, SPR_IMG_BUILDRAIL,       STR_0181_BUILD_RAILROAD_TRACK},
-{      WWT_PANEL,   RESIZE_NONE,    14,   479,   500,     0,    21, SPR_IMG_BUILDROAD,       STR_0182_BUILD_ROADS},
-{      WWT_PANEL,   RESIZE_NONE,    14,   501,   522,     0,    21, SPR_IMG_BUILDWATER,      STR_0183_BUILD_SHIP_DOCKS},
-{      WWT_PANEL,   RESIZE_NONE,    14,   523,   544,     0,    21, SPR_IMG_BUILDAIR,        STR_0184_BUILD_AIRPORTS},
-{      WWT_PANEL,   RESIZE_NONE,    14,   545,   566,     0,    21, SPR_IMG_LANDSCAPING,     STR_LANDSCAPING_TOOLBAR_TIP}, // tree icon is 0x2E6
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   457,   478,     0,    21, SPR_IMG_BUILDRAIL,       STR_0181_BUILD_RAILROAD_TRACK},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   479,   500,     0,    21, SPR_IMG_BUILDROAD,       STR_0182_BUILD_ROADS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   501,   522,     0,    21, SPR_IMG_BUILDWATER,      STR_0183_BUILD_SHIP_DOCKS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   523,   544,     0,    21, SPR_IMG_BUILDAIR,        STR_0184_BUILD_AIRPORTS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   545,   566,     0,    21, SPR_IMG_LANDSCAPING,     STR_LANDSCAPING_TOOLBAR_TIP}, // tree icon is 0x2E6
 
-{      WWT_PANEL,   RESIZE_NONE,    14,   574,   595,     0,    21, SPR_IMG_MUSIC,           STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
-{      WWT_PANEL,   RESIZE_NONE,    14,   596,   617,     0,    21, SPR_IMG_MESSAGES,        STR_0203_SHOW_LAST_MESSAGE_NEWS},
-{      WWT_PANEL,   RESIZE_NONE,    14,   618,   639,     0,    21, SPR_IMG_QUERY,           STR_0186_LAND_BLOCK_INFORMATION},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   574,   595,     0,    21, SPR_IMG_MUSIC,           STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   596,   617,     0,    21, SPR_IMG_MESSAGES,        STR_0203_SHOW_LAST_MESSAGE_NEWS},
+{     WWT_IMGBTN,   RESIZE_NONE,    14,   618,   639,     0,    21, SPR_IMG_QUERY,           STR_0186_LAND_BLOCK_INFORMATION},
 {   WIDGETS_END},
 };
 
@@ -1942,39 +1942,39 @@ static const WindowDesc _toolb_normal_desc = {
 
 
 static const Widget _toolb_scen_widgets[] = {
-{  WWT_PANEL, RESIZE_NONE, 14,   0,  21,  0, 21, SPR_IMG_PAUSE,       STR_0171_PAUSE_GAME},
-{  WWT_PANEL, RESIZE_NONE, 14,  22,  43,  0, 21, SPR_IMG_FASTFORWARD, STR_FAST_FORWARD},
-{  WWT_PANEL, RESIZE_NONE, 14,  44,  65,  0, 21, SPR_IMG_SETTINGS,    STR_0187_OPTIONS},
-{WWT_PANEL_2, RESIZE_NONE, 14,  66,  87,  0, 21, SPR_IMG_SAVE,        STR_0297_SAVE_SCENARIO_LOAD_SCENARIO},
+{  WWT_IMGBTN, RESIZE_NONE, 14,   0,  21,  0, 21, SPR_IMG_PAUSE,       STR_0171_PAUSE_GAME},
+{  WWT_IMGBTN, RESIZE_NONE, 14,  22,  43,  0, 21, SPR_IMG_FASTFORWARD, STR_FAST_FORWARD},
+{  WWT_IMGBTN, RESIZE_NONE, 14,  44,  65,  0, 21, SPR_IMG_SETTINGS,    STR_0187_OPTIONS},
+{WWT_IMGBTN_2, RESIZE_NONE, 14,  66,  87,  0, 21, SPR_IMG_SAVE,        STR_0297_SAVE_SCENARIO_LOAD_SCENARIO},
 
-{  WWT_PANEL, RESIZE_NONE, 14,  96, 225,  0, 21, 0x0,                 STR_NULL},
+{   WWT_PANEL, RESIZE_NONE, 14,  96, 225,  0, 21, 0x0,                 STR_NULL},
 
-{  WWT_PANEL, RESIZE_NONE, 14, 233, 362,  0, 21, 0x0,                 STR_NULL},
-{ WWT_IMGBTN, RESIZE_NONE, 14, 236, 247,  5, 16, SPR_ARROW_DOWN,      STR_029E_MOVE_THE_STARTING_DATE},
-{ WWT_IMGBTN, RESIZE_NONE, 14, 347, 358,  5, 16, SPR_ARROW_UP,        STR_029F_MOVE_THE_STARTING_DATE},
+{   WWT_PANEL, RESIZE_NONE, 14, 233, 362,  0, 21, 0x0,                 STR_NULL},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 236, 247,  5, 16, SPR_ARROW_DOWN,      STR_029E_MOVE_THE_STARTING_DATE},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 347, 358,  5, 16, SPR_ARROW_UP,        STR_029F_MOVE_THE_STARTING_DATE},
 
-{  WWT_PANEL, RESIZE_NONE, 14, 371, 392,  0, 21, SPR_IMG_SMALLMAP,    STR_0175_DISPLAY_MAP_TOWN_DIRECTORY},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 371, 392,  0, 21, SPR_IMG_SMALLMAP,    STR_0175_DISPLAY_MAP_TOWN_DIRECTORY},
 
-{  WWT_PANEL, RESIZE_NONE, 14, 400, 421,  0, 21, SPR_IMG_ZOOMIN,      STR_017F_ZOOM_THE_VIEW_IN},
-{  WWT_PANEL, RESIZE_NONE, 14, 422, 443,  0, 21, SPR_IMG_ZOOMOUT,     STR_0180_ZOOM_THE_VIEW_OUT},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 400, 421,  0, 21, SPR_IMG_ZOOMIN,      STR_017F_ZOOM_THE_VIEW_IN},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 422, 443,  0, 21, SPR_IMG_ZOOMOUT,     STR_0180_ZOOM_THE_VIEW_OUT},
 
-{  WWT_PANEL, RESIZE_NONE, 14, 452, 473,  0, 21, SPR_IMG_LANDSCAPING, STR_022E_LANDSCAPE_GENERATION},
-{  WWT_PANEL, RESIZE_NONE, 14, 474, 495,  0, 21, SPR_IMG_TOWN,        STR_022F_TOWN_GENERATION},
-{  WWT_PANEL, RESIZE_NONE, 14, 496, 517,  0, 21, SPR_IMG_INDUSTRY,    STR_0230_INDUSTRY_GENERATION},
-{  WWT_PANEL, RESIZE_NONE, 14, 518, 539,  0, 21, SPR_IMG_BUILDROAD,   STR_0231_ROAD_CONSTRUCTION},
-{  WWT_PANEL, RESIZE_NONE, 14, 540, 561,  0, 21, SPR_IMG_PLANTTREES,  STR_0288_PLANT_TREES},
-{  WWT_PANEL, RESIZE_NONE, 14, 562, 583,  0, 21, SPR_IMG_SIGN,        STR_0289_PLACE_SIGN},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 452, 473,  0, 21, SPR_IMG_LANDSCAPING, STR_022E_LANDSCAPE_GENERATION},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 474, 495,  0, 21, SPR_IMG_TOWN,        STR_022F_TOWN_GENERATION},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 496, 517,  0, 21, SPR_IMG_INDUSTRY,    STR_0230_INDUSTRY_GENERATION},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 518, 539,  0, 21, SPR_IMG_BUILDROAD,   STR_0231_ROAD_CONSTRUCTION},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 540, 561,  0, 21, SPR_IMG_PLANTTREES,  STR_0288_PLANT_TREES},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 562, 583,  0, 21, SPR_IMG_SIGN,        STR_0289_PLACE_SIGN},
 
-{  WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_PANEL, RESIZE_NONE, 14, 596, 617,  0, 21, SPR_IMG_MUSIC,       STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
-{  WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
-{  WWT_PANEL, RESIZE_NONE, 14, 618, 639,  0, 21, SPR_IMG_QUERY,       STR_0186_LAND_BLOCK_INFORMATION},
+{   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
+{   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
+{   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
+{   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
+{   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
+{   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
+{   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 596, 617,  0, 21, SPR_IMG_MUSIC,       STR_01D4_SHOW_SOUND_MUSIC_WINDOW},
+{   WWT_EMPTY, RESIZE_NONE,  0,   0,   0,  0,  0, 0x0,                 STR_NULL},
+{  WWT_IMGBTN, RESIZE_NONE, 14, 618, 639,  0, 21, SPR_IMG_QUERY,       STR_0186_LAND_BLOCK_INFORMATION},
 {WIDGETS_END},
 };
 
@@ -2211,9 +2211,9 @@ static void StatusBarWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _main_status_widgets[] = {
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   139,     0,    11, 0x0, STR_NULL},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   140,   499,     0,    11, 0x0, STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS},
-{ WWT_PUSHIMGBTN,   RESIZE_NONE,    14,   500,   639,     0,    11, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   139,     0,    11, 0x0, STR_NULL},
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   140,   499,     0,    11, 0x0, STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS},
+{    WWT_PUSHBTN,   RESIZE_NONE,    14,   500,   639,     0,    11, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 

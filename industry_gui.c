@@ -422,11 +422,11 @@ static const Widget _industry_view_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     9,     0,    10,     0,    13, STR_00C5,          STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     9,    11,   247,     0,    13, STR_4801,          STR_018C_WINDOW_TITLE_DRAG_THIS},
 {  WWT_STICKYBOX,   RESIZE_NONE,     9,   248,   259,     0,    13, 0x0,               STR_STICKY_BUTTON},
-{     WWT_IMGBTN,   RESIZE_NONE,     9,     0,   259,    14,   105, 0x0,               STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,    14,   105, 0x0,               STR_NULL},
 {          WWT_6,   RESIZE_NONE,     9,     2,   257,    16,   103, 0x0,               STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,     9,     0,   259,   106,   147, 0x0,               STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     9,     0,   259,   106,   147, 0x0,               STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     9,     0,   129,   148,   159, STR_00E4_LOCATION, STR_482C_CENTER_THE_MAIN_VIEW_ON},
-{     WWT_IMGBTN,   RESIZE_NONE,     9,   130,   259,   148,   159, 0x0,               STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     9,   130,   259,   148,   159, 0x0,               STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -460,7 +460,7 @@ static const Widget _industry_directory_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   201,   300,    14,    25, STR_SORT_BY_PRODUCTION,  STR_SORT_ORDER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,    13,   301,   400,    14,    25, STR_SORT_BY_TRANSPORTED, STR_SORT_ORDER_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    13,   401,   495,    14,    25, 0x0,                     STR_NULL},
-{     WWT_IMGBTN, RESIZE_BOTTOM,    13,     0,   495,    26,   189, 0x0,                     STR_200A_TOWN_NAMES_CLICK_ON_NAME},
+{      WWT_PANEL, RESIZE_BOTTOM,    13,     0,   495,    26,   189, 0x0,                     STR_200A_TOWN_NAMES_CLICK_ON_NAME},
 {  WWT_SCROLLBAR, RESIZE_BOTTOM,    13,   496,   507,    14,   177, 0x0,                     STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {  WWT_RESIZEBOX,     RESIZE_TB,    13,   496,   507,   178,   189, 0x0,                     STR_RESIZE_BUTTON},
 {   WIDGETS_END},

@@ -498,10 +498,10 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 static const Widget _network_game_window_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                    STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   549,     0,    13, STR_NETWORK_MULTIPLAYER,     STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,     0,   549,    14,   249, STR_NULL,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   549,    14,   249, 0x0,                         STR_NULL},
 
 /* LEFT SIDE */
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   310,   461,    22,    33, STR_NULL,                    STR_NETWORK_ENTER_NAME_TIP},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   461,    22,    33, 0x0,                         STR_NETWORK_ENTER_NAME_TIP},
 
 {          WWT_6,   RESIZE_NONE,   BGC,    90,   181,    22,    33, STR_NETWORK_COMBO1,          STR_NETWORK_CONNECTION_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   170,   180,    23,    32, STR_0225,                    STR_NETWORK_CONNECTION_TIP},
@@ -520,7 +520,7 @@ static const Widget _network_game_window_widgets[] = {
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   232,   243, STR_NETWORK_START_SERVER,    STR_NETWORK_START_SERVER_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   232,   243, STR_012E_CANCEL,             STR_NULL},
 
-{      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   540,    42,   222, STR_NULL,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   540,    42,   222, 0x0,                         STR_NULL},
 
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   315,   415,   201,   212, STR_NETWORK_JOIN_GAME,       STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   430,   535,   201,   212, STR_NETWORK_REFRESH,         STR_NETWORK_REFRESH_TIP},
@@ -735,9 +735,9 @@ static void NetworkStartServerWindowWndProc(Window *w, WindowEvent *e)
 static const Widget _network_start_server_window_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                      STR_018B_CLOSE_WINDOW },
 {    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   419,     0,    13, STR_NETWORK_START_GAME_WINDOW, STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,     0,   419,    14,   243, 0x0,                           STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   419,    14,   243, 0x0,                           STR_NULL},
 
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,   100,   272,    22,    33, 0x0,                           STR_NETWORK_NEW_GAME_NAME_TIP},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   100,   272,    22,    33, 0x0,                           STR_NETWORK_NEW_GAME_NAME_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,      STR_NETWORK_PASSWORD_TIP},
 
 {          WWT_6,   RESIZE_NONE,   BGC,    10,   271,    62,   216, 0x0,                           STR_NETWORK_SELECT_MAP_TIP},
@@ -953,15 +953,15 @@ static void NetworkLobbyWindowWndProc(Window *w, WindowEvent *e)
 static const Widget _network_lobby_window_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,   BGC,     0,    10,     0,    13, STR_00C5,                  STR_018B_CLOSE_WINDOW },
 {    WWT_CAPTION,   RESIZE_NONE,   BGC,    11,   419,     0,    13, STR_NETWORK_GAME_LOBBY,    STR_NULL},
-{     WWT_IMGBTN,   RESIZE_NONE,   BGC,     0,   419,    14,   234, STR_NULL,                  STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,     0,   419,    14,   234, 0x0,                       STR_NULL},
 
 // company list
-{      WWT_PANEL,   RESIZE_NONE,   BTC,    10,   155,    38,    49, STR_NULL,                  STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BTC,    10,   155,    38,    49, 0x0,                       STR_NULL},
 {     WWT_MATRIX,   RESIZE_NONE,   BGC,    10,   155,    50,   190, (10 << 8) + 1,             STR_NETWORK_COMPANY_LIST_TIP},
 {  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   156,   167,    38,   190, STR_NULL,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 
 // company/player info
-{      WWT_PANEL,   RESIZE_NONE,   BGC,   173,   404,    38,   190, STR_NULL,                  STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,   BGC,   173,   404,    38,   190, 0x0,                       STR_NULL},
 
 // buttons
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   151,   200,   211, STR_NETWORK_JOIN_COMPANY,  STR_NETWORK_JOIN_COMPANY_TIP},
@@ -1028,7 +1028,7 @@ static const Widget _client_list_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                 STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   249,     0,    13, STR_NETWORK_CLIENT_LIST,  STR_018C_WINDOW_TITLE_DRAG_THIS},
 
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   249,    14,    14 + CLNWND_ROWSIZE + 1, 0x0, STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   249,    14,    14 + CLNWND_ROWSIZE + 1, 0x0, STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -1447,7 +1447,7 @@ static void NetworkJoinStatusWindowWndProc(Window *w, WindowEvent *e)
 static const Widget _network_join_status_window_widget[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    14,    11,   249,     0,    13, STR_NETWORK_CONNECTING, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   249,    14,    84, 0x0,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   249,    14,    84, 0x0,                    STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    75,   175,    69,    80, STR_NETWORK_DISCONNECT, STR_NULL},
 {   WIDGETS_END},
 };
@@ -1687,8 +1687,8 @@ static void ChatWindowWndProc(Window *w, WindowEvent *e)
 
 static const Widget _chat_window_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE, 14,   0,  10,  0, 13, STR_00C5,         STR_018B_CLOSE_WINDOW},
-{     WWT_IMGBTN, RESIZE_NONE, 14,  11, 639,  0, 13, STR_NULL,         STR_NULL}, // background
-{     WWT_IMGBTN, RESIZE_NONE, 14,  75, 577,  1, 12, STR_NULL,         STR_NULL}, // text box
+{      WWT_PANEL, RESIZE_NONE, 14,  11, 639,  0, 13, 0x0,              STR_NULL}, // background
+{      WWT_PANEL, RESIZE_NONE, 14,  75, 577,  1, 12, 0x0,              STR_NULL}, // text box
 { WWT_PUSHTXTBTN, RESIZE_NONE, 14, 578, 639,  1, 12, STR_NETWORK_SEND, STR_NULL}, // send button
 {   WIDGETS_END},
 };

@@ -84,8 +84,9 @@ static const Widget _depot_widgets[] = {
 	{    WWT_CAPTION,  RESIZE_RIGHT,    14,    11,   292,     0,    13, 0x0,                 STR_018C_WINDOW_TITLE_DRAG_THIS},  // DEPOT_WIDGET_CAPTION
 	{  WWT_STICKYBOX,     RESIZE_LR,    14,   293,   304,     0,    13, 0x0,                 STR_STICKY_BUTTON},                // DEPOT_WIDGET_STICKY
 
+	/* Widgets are set up run-time */
 	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    14,    37, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL
-	{      WWT_PANEL,   RESIZE_LRTB,    14,   326,   348,     0,     0, SPR_SELL_CHAIN_TRAIN,STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
+	{     WWT_IMGBTN,   RESIZE_LRTB,    14,   326,   348,     0,     0, SPR_SELL_CHAIN_TRAIN,STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    38,    60, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL_ALL
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    61,    83, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_AUTOREPLACE
 

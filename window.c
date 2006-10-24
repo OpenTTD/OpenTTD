@@ -102,15 +102,15 @@ static void DispatchLeftClickEvent(Window *w, int x, int y)
 		/* don't allow any interaction if the button has been disabled */
 		if (IsWidgetDisabled(wi)) return;
 
-		if (wi->type & 0xE0) {
+		if (wi->type & WWB_MASK) {
 			/* special widget handling for buttons*/
 			switch (wi->type) {
-			case WWT_IMGBTN  | WWB_PUSHBUTTON: /* WWT_PUSHIMGBTN */
-			case WWT_TEXTBTN | WWB_PUSHBUTTON: /* WWT_PUSHTXTBTN */
-				HandleButtonClick(w, e.we.click.widget);
-				break;
-			case WWT_NODISTXTBTN:
-				break;
+				case WWT_PANEL   | WWB_PUSHBUTTON: /* WWT_PUSHBTN */
+				case WWT_IMGBTN  | WWB_PUSHBUTTON: /* WWT_PUSHIMGBTN */
+				case WWT_TEXTBTN | WWB_PUSHBUTTON: /* WWT_PUSHTXTBTN */
+					HandleButtonClick(w, e.we.click.widget);
+					break;
+				case WWT_NODISTXTBTN: break;
 			}
 		} else if (wi->type == WWT_SCROLLBAR || wi->type == WWT_SCROLL2BAR || wi->type == WWT_HSCROLLBAR) {
 			ScrollbarClickHandler(w, wi, e.we.click.pt.x, e.we.click.pt.y);

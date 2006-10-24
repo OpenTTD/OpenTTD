@@ -61,24 +61,24 @@ static inline void SetNewLandscapeType(byte landscape)
 const Widget _generate_landscape_widgets[] = {
 {  WWT_CLOSEBOX,  RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 337,  14, 267, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 13,   0, 337,  14, 267, 0x0,                          STR_NULL},
 
-{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,         STR_030E_SELECT_TEMPERATE_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 166,  24,  78, SPR_SELECT_SUB_ARCTIC,        STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  24,  78, SPR_SELECT_SUB_TROPICAL,      STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,           STR_0311_SELECT_TOYLAND_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,         STR_030E_SELECT_TEMPERATE_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12,  90, 166,  24,  78, SPR_SELECT_SUB_ARCTIC,        STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12, 170, 246,  24,  78, SPR_SELECT_SUB_TROPICAL,      STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,           STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 149,  90, 101, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 149,  90, 101, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 150, 161,  90, 101, STR_0225,                     STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 180, 215,  90, 101, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 180, 215,  90, 101, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 227,  90, 101, STR_0225,                     STR_NULL}, // Mapsize Y
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 112, 123, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 112, 123, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 112, 123, STR_0225,                     STR_NULL}, // Number of towns
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 130, 141, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 130, 141, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 130, 141, STR_0225,                     STR_NULL}, // Number of industries
 
-{     WWT_IMGBTN, RESIZE_NONE, 15, 114, 207, 152, 163, STR_NULL,                     STR_RANDOM_SEED_HELP}, // Edit box for seed
+{      WWT_PANEL, RESIZE_NONE, 15, 114, 207, 152, 163, 0x0,                          STR_RANDOM_SEED_HELP}, // Edit box for seed
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 326, 152, 163, STR_RANDOM,                   STR_RANDOM_HELP},
 
 {    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 228, 257, STR_GENERATE,                 STR_NULL}, // Generate button
@@ -91,16 +91,16 @@ const Widget _generate_landscape_widgets[] = {
 {      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 130, 141, 0x0,                          STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 130, 141, SPR_ARROW_UP,                 STR_SNOW_LINE_UP},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 192, 203, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 192, 203, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 192, 203, STR_0225,                     STR_NULL}, // Tree placer
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 174, 185, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 174, 185, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 174, 185, STR_0225,                     STR_NULL}, // Landscape generator
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 210, 221, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 210, 221, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 210, 221, STR_0225,                     STR_NULL}, // Terrain type
-{      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 228, 239, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 228, 239, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 228, 239, STR_0225,                     STR_NULL}, // Water quantity
-{      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 246, 257, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 113, 219, 246, 257, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 246, 257, STR_0225,                     STR_NULL}, // Map smoothness
 {   WIDGETS_END},
 };
@@ -108,24 +108,24 @@ const Widget _generate_landscape_widgets[] = {
 const Widget _heightmap_load_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                     STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_WORLD_GENERATION_CAPTION, STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 337,  14, 235, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 13,   0, 337,  14, 235, 0x0,                          STR_NULL},
 
-{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,        STR_030E_SELECT_TEMPERATE_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 166,  24,  78, SPR_SELECT_SUB_ARCTIC,       STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  24,  78, SPR_SELECT_SUB_TROPICAL,     STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,          STR_0311_SELECT_TOYLAND_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,        STR_030E_SELECT_TEMPERATE_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12,  90, 166,  24,  78, SPR_SELECT_SUB_ARCTIC,       STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12, 170, 246,  24,  78, SPR_SELECT_SUB_TROPICAL,     STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,          STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 149, 112, 123, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 149, 112, 123, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 150, 161, 112, 123, STR_0225,                     STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 180, 215, 112, 123, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 180, 215, 112, 123, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 216, 227, 112, 123, STR_0225,                     STR_NULL}, // Mapsize Y
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 134, 145, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 134, 145, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 134, 145, STR_0225,                     STR_NULL}, // Number of towns
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 152, 163, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 163, 152, 163, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 164, 175, 152, 163, STR_0225,                     STR_NULL}, // Number of industries
 
-{     WWT_IMGBTN, RESIZE_NONE, 15, 114, 194, 174, 185, STR_NULL,                     STR_RANDOM_SEED_HELP}, // Edit box for seed
+{      WWT_PANEL, RESIZE_NONE, 15, 114, 194, 174, 185, 0x0,                          STR_RANDOM_SEED_HELP}, // Edit box for seed
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 203, 285, 174, 185, STR_RANDOM,                   STR_RANDOM_HELP},
 
 {    WWT_TEXTBTN, RESIZE_NONE,  6, 243, 326, 196, 225, STR_GENERATE,                 STR_NULL}, // Generate button
@@ -138,10 +138,10 @@ const Widget _heightmap_load_widgets[] = {
 {      WWT_PANEL, RESIZE_NONE, 12, 294, 314, 152, 163, 0x0,                          STR_NULL},
 {     WWT_IMGBTN, RESIZE_NONE, 12, 315, 326, 152, 163, SPR_ARROW_UP,                 STR_SNOW_LINE_UP},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 196, 207, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 196, 207, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 196, 207, STR_0225,                     STR_NULL}, // Tree placer
 
-{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 214, 225, STR_NULL,                     STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 114, 219, 214, 225, 0x0,                          STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 220, 231, 214, 225, STR_0225,                     STR_NULL}, // Heightmap rotation
 {   WIDGETS_END},
 };
@@ -671,16 +671,16 @@ void CreateScenarioWndProc(Window *w, WindowEvent *e)
 const Widget _create_scenario_widgets[] = {
 {   WWT_CLOSEBOX, RESIZE_NONE, 13,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION, RESIZE_NONE, 13,  11, 337,   0,  13, STR_SE_CAPTION,          STR_NULL},
-{     WWT_IMGBTN, RESIZE_NONE, 13,   0, 337,  14, 179, STR_NULL,                STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 13,   0, 337,  14, 179, 0x0,                     STR_NULL},
 
-{    WWT_PANEL_2, RESIZE_NONE, 12,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,    STR_030E_SELECT_TEMPERATE_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12,  90, 166,  24,  78, SPR_SELECT_SUB_ARCTIC,   STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 170, 246,  24,  78, SPR_SELECT_SUB_TROPICAL, STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
-{    WWT_PANEL_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,      STR_0311_SELECT_TOYLAND_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12,  10,  86,  24,  78, SPR_SELECT_TEMPERATE,    STR_030E_SELECT_TEMPERATE_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12,  90, 166,  24,  78, SPR_SELECT_SUB_ARCTIC,   STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12, 170, 246,  24,  78, SPR_SELECT_SUB_TROPICAL, STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE},
+{   WWT_IMGBTN_2, RESIZE_NONE, 12, 250, 326,  24,  78, SPR_SELECT_TOYLAND,      STR_0311_SELECT_TOYLAND_LANDSCAPE},
 
-{      WWT_PANEL, RESIZE_NONE, 12, 162, 197,  95, 106, STR_NULL,                STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 162, 197,  95, 106, 0x0,                     STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 198, 209,  95, 106, STR_0225,                STR_NULL}, // Mapsize X
-{      WWT_PANEL, RESIZE_NONE, 12, 228, 263,  95, 106, STR_NULL,                STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 12, 228, 263,  95, 106, 0x0,                     STR_NULL},
 {    WWT_TEXTBTN, RESIZE_NONE, 12, 264, 275,  95, 106, STR_0225,                STR_NULL}, // Mapsize Y
 
 {    WWT_TEXTBTN, RESIZE_NONE,  6,  12, 145, 117, 128, STR_SE_FLAT_WORLD,       STR_SE_FLAT_WORLD_TIP},                      // Empty (sea-level) map
@@ -714,7 +714,7 @@ void ShowCreateScenario(void)
 
 static const Widget _show_terrain_progress_widgets[] = {
 {    WWT_CAPTION,   RESIZE_NONE,    14,     0,   180,     0,    13, STR_GENERATION_WORLD,   STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,    14,     0,   180,    14,    96, 0x0,                    STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    14,     0,   180,    14,    96, 0x0,                    STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,    15,    20,   161,    74,    85, STR_GENERATION_ABORT,   STR_NULL}, // Abort button
 {   WIDGETS_END},
 };

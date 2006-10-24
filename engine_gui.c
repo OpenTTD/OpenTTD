@@ -39,7 +39,7 @@ static StringID GetEngineCategoryName(EngineID engine)
 static const Widget _engine_preview_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,     5,     0,    10,     0,    13, STR_00C5,                                  STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     5,    11,   299,     0,    13, STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE, STR_018C_WINDOW_TITLE_DRAG_THIS},
-{     WWT_IMGBTN,   RESIZE_NONE,     5,     0,   299,    14,   191, 0x0,                                       STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,     5,     0,   299,    14,   191, 0x0,                                       STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     5,    85,   144,   172,   183, STR_00C9_NO,                               STR_NULL},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,     5,   155,   214,   172,   183, STR_00C8_YES,                              STR_NULL},
 {   WIDGETS_END},
