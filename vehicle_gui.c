@@ -210,6 +210,9 @@ static RefitList *BuildRefitList(const Vehicle *v)
 		uint32 cmask = EngInfo(u->engine_type)->refit_mask;
 		byte callbackmask = EngInfo(u->engine_type)->callbackmask;
 
+		/* Skip this engine if it has no capacity */
+		if (u->cargo_cap == 0) continue;
+
 		/* Loop through all cargos in the refit mask */
 		for (cid = 0; cmask != 0 && num_lines < max_lines; cmask >>= 1, cid++) {
 			CargoID lcid;
@@ -274,8 +277,7 @@ static RefitList *BuildRefitList(const Vehicle *v)
 				}
 			}
 		}
-		u = u->next;
-	} while (v->type == VEH_Train && u != NULL && num_lines < max_lines);
+	} while (v->type == VEH_Train && (u = u->next) != NULL && num_lines < max_lines);
 
 	list->num_lines = num_lines;
 	list->items = refit;
