@@ -20,6 +20,7 @@
 #include "table/landscape_const.h"
 #include "music.h"
 #include "date.h"
+#include "industry.h"
 
 #ifdef WIN32
 /* for opendir/readdir/closedir */
@@ -697,7 +698,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				// First print the town name and the industry type name
 				// The string STR_INDUSTRY_PATTERN controls the formatting
 				args[0] = i->town->index;
-				args[1] = i->type + STR_4802_COAL_MINE;
+				args[1] = GetIndustrySpec(i->type)->name;
 				buff = FormatString(buff, GetStringPtr(STR_INDUSTRY_FORMAT), args, modifier >> 24, last);
 				modifier = 0;
 				break;

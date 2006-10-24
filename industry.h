@@ -37,7 +37,7 @@ struct Industry {
 
 	byte type;
 	byte owner;
-	byte color_map;
+	byte random_color;
 	Year last_prod_year;
 	byte was_cargo_delivered;
 
@@ -68,8 +68,9 @@ typedef struct IndustrySpec {
 	byte minimal_cargo;
 	CargoID accepts_cargo[3];
 
-	IndustryLifeType life_type;  //this is also known as Industry production flag, in newgrf specs
+	IndustryLifeType life_type;  // This is also known as Industry production flag, in newgrf specs
 
+	StringID name;
 	StringID closure_text;
 	StringID production_up_text;
 	StringID production_down_text;

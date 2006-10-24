@@ -215,7 +215,7 @@ static void DrawTile_Industry(TileInfo *ti)
 
 	/* Pointer to industry */
 	ind = GetIndustryByTile(ti->tile);
-	ormod = GENERAL_SPRITE_COLOR(ind->color_map);
+	ormod = GENERAL_SPRITE_COLOR(ind->random_color);
 
 	/* Retrieve pointer to the draw industry tile struct */
 	dits = &_industry_draw_tile_data[GetIndustryGfx(ti->tile) << 2 | GetIndustryConstructionStage(ti->tile)];
@@ -290,7 +290,7 @@ static void GetTileDesc_Industry(TileIndex tile, TileDesc *td)
 	const Industry *i = GetIndustryByTile(tile);
 
 	td->owner = i->owner;
-	td->str = STR_4802_COAL_MINE + i->type;
+	td->str = GetIndustrySpec(i->type)->name;
 	if (!IsIndustryCompleted(tile)) {
 		SetDParamX(td->dparam, 0, td->str);
 		td->str = STR_2058_UNDER_CONSTRUCTION;
@@ -309,7 +309,7 @@ static int32 ClearTile_Industry(TileIndex tile, byte flags)
 	if ((_current_player != OWNER_WATER && _game_mode != GM_EDITOR &&
 			!_cheats.magic_bulldozer.value) ||
 			(_current_player == OWNER_WATER && i->type == IT_OIL_RIG)) {
-		SetDParam(0, STR_4802_COAL_MINE + i->type);
+		SetDParam(0, GetIndustrySpec(i->type)->name);
 		return_cmd_error(STR_4800_IN_THE_WAY);
 	}
 
@@ -1413,7 +1413,7 @@ static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const Ind
 	i->owner = owner;
 
 	r = Random();
-	i->color_map = GB(r, 8, 4);
+	i->random_color = GB(r, 8, 4);
 	i->counter = GB(r, 0, 12);
 	i->cargo_waiting[0] = 0;
 	i->cargo_waiting[1] = 0;
@@ -1754,7 +1754,7 @@ static void MaybeNewIndustry(uint32 r)
 		if (--j == 0) return;
 	}
 
-	SetDParam(0, type + STR_4802_COAL_MINE);
+	SetDParam(0, GetIndustrySpec(type)->name);
 	SetDParam(1, i->town->index);
 	AddNewsItem(
 		(type != IT_FOREST && type != IT_FRUIT_PLANTATION && type != IT_RUBBER_PLANTATION && type != IT_COTTON_CANDY) ?
@@ -1904,7 +1904,7 @@ static const SaveLoad _industry_desc[] = {
 
 	    SLE_VAR(Industry, type,                SLE_UINT8),
 	    SLE_VAR(Industry, owner,               SLE_UINT8),
-	    SLE_VAR(Industry, color_map,           SLE_UINT8),
+	    SLE_VAR(Industry, random_color,        SLE_UINT8),
 	SLE_CONDVAR(Industry, last_prod_year,      SLE_FILE_U8 | SLE_VAR_I32,  0, 30),
 	SLE_CONDVAR(Industry, last_prod_year,      SLE_INT32,                 31, SL_MAX_VERSION),
 	    SLE_VAR(Industry, was_cargo_delivered, SLE_UINT8),

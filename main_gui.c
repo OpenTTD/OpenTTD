@@ -39,6 +39,7 @@
 #include "network_client.h"
 #include "network_server.h"
 #include "network_gui.h"
+#include "industry.h"
 
 static int _rename_id;
 static int _rename_what;
@@ -1665,7 +1666,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		// Show error if no town exists at all
 		type = _industry_type_to_place;
 		if (!AnyTownExists()) {
-			SetDParam(0, type + STR_4802_COAL_MINE);
+			SetDParam(0, GetIndustrySpec(type)->name);
 			ShowErrorMessage(STR_0286_MUST_BUILD_TOWN_FIRST, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
 			return;
 		}
@@ -1674,7 +1675,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 		_generating_world = true;
 		_ignore_restrictions = true;
 		if (!TryBuildIndustry(e->we.place.tile,type)) {
-			SetDParam(0, type + STR_4802_COAL_MINE);
+			SetDParam(0, GetIndustrySpec(type)->name);
 			ShowErrorMessage(_error_message, STR_0285_CAN_T_BUILD_HERE, e->we.place.pt.x, e->we.place.pt.y);
 		}
 		_ignore_restrictions = false;

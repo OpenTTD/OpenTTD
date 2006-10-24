@@ -695,7 +695,7 @@ static const OldChunks industry_chunk[] = {
 
 	OCL_SVAR(  OC_UINT8, Industry, type ),
 	OCL_SVAR(  OC_UINT8, Industry, owner ),
-	OCL_SVAR(  OC_UINT8, Industry, color_map ),
+	OCL_SVAR(  OC_UINT8, Industry, random_color ),
 	OCL_SVAR( OC_FILE_U8 | OC_VAR_I32, Industry, last_prod_year ),
 	OCL_SVAR( OC_UINT16, Industry, counter ),
 	OCL_SVAR(  OC_UINT8, Industry, was_cargo_delivered ),
