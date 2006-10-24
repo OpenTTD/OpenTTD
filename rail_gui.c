@@ -916,7 +916,7 @@ static const Widget _newstation_builder_widgets[] = {
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,    74,   133,   242,   253, STR_02DA_ON,                     STR_3064_HIGHLIGHT_COVERAGE_AREA},
 
 /* newstations gui additions */
-{          WWT_6,   RESIZE_NONE,    14,     7,   140,    17,    28, STR_02BD,                        STR_SELECT_STATION_CLASS_TIP},
+{      WWT_INSET,   RESIZE_NONE,    14,     7,   140,    17,    28, STR_02BD,                        STR_SELECT_STATION_CLASS_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   129,   139,    18,    27, STR_0225,                        STR_SELECT_STATION_CLASS_TIP},
 {     WWT_MATRIX,   RESIZE_NONE,    14,     7,   128,    32,   102, 0x501,                           STR_SELECT_STATION_TYPE_TIP},
 {  WWT_SCROLLBAR,   RESIZE_NONE,    14,   129,   140,    32,   102, 0x0,                             STR_0190_SCROLL_BAR_SCROLLS_LIST},

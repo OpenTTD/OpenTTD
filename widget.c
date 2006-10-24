@@ -221,8 +221,8 @@ void DrawWindowWidgets(const Window *w)
 			goto draw_default;
 		}
 
-		case WWT_TEXTBTN: /* WWT_TEXTBTN */
-		case WWT_4: {
+		case WWT_TEXTBTN:
+		case WWT_TEXTBTN_2: {
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, (clicked) ? FR_LOWERED : 0);
 			}
 		/* fall through */
@@ -230,14 +230,13 @@ void DrawWindowWidgets(const Window *w)
 		case WWT_LABEL: {
 			StringID str = wi->data;
 
-			if ((wi->type&WWT_MASK) == WWT_4 && clicked) str++;
+			if ((wi->type & WWT_MASK) == WWT_TEXTBTN_2 && clicked) str++;
 
 			DrawStringCentered(((r.left + r.right + 1) >> 1) + clicked, ((r.top + r.bottom + 1) >> 1) - 5 + clicked, str, 0);
-			//DrawStringCentered((r.left + r.right+1)>>1, ((r.top+r.bottom + 1)>>1) - 5, str, 0);
 			goto draw_default;
 		}
 
-		case WWT_6: {
+		case WWT_INSET: {
 			StringID str = wi->data;
 			DrawFrameRect(r.left, r.top, r.right, r.bottom, wi->color, FR_LOWERED | FR_DARKENED);
 

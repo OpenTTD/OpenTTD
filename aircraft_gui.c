@@ -197,7 +197,7 @@ static const Widget _aircraft_view_widgets[] = {
 {    WWT_CAPTION, RESIZE_RIGHT,  14,  11, 237,   0,  13, STR_A00A,                 STR_018C_WINDOW_TITLE_DRAG_THIS },
 {  WWT_STICKYBOX,    RESIZE_LR,  14, 238, 249,   0,  13, 0x0,                      STR_STICKY_BUTTON },
 {      WWT_PANEL,    RESIZE_RB,  14,   0, 231,  14, 103, 0x0,                      STR_NULL },
-{          WWT_6,    RESIZE_RB,  14,   2, 229,  16, 101, 0x0,                      STR_NULL },
+{      WWT_INSET,    RESIZE_RB,  14,   2, 229,  16, 101, 0x0,                      STR_NULL },
 {    WWT_PUSHBTN,   RESIZE_RTB,  14,   0, 237, 104, 115, 0x0,                      STR_A027_CURRENT_AIRCRAFT_ACTION },
 { WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE,  STR_A029_CENTER_MAIN_VIEW_ON_AIRCRAFT },
 { WWT_PUSHIMGBTN,    RESIZE_LR,  14, 232, 249,  32,  49, SPR_SEND_AIRCRAFT_TODEPOT,STR_A02A_SEND_AIRCRAFT_TO_HANGAR },

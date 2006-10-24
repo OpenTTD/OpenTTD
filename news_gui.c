@@ -330,7 +330,7 @@ static const Widget _news_type0_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,     5,     0,   279,    14,    86, 0x0,              STR_NULL},
 {   WWT_CLOSEBOX,   RESIZE_NONE,     5,     0,    10,     0,    13, STR_00C5,         STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,     5,    11,   279,     0,    13, STR_012C_MESSAGE, STR_NULL},
-{          WWT_6,   RESIZE_NONE,     5,     2,   277,    16,    64, 0x0,              STR_NULL},
+{      WWT_INSET,   RESIZE_NONE,     5,     2,   277,    16,    64, 0x0,              STR_NULL},
 {   WIDGETS_END},
 };
 
@@ -843,7 +843,7 @@ static const Widget _message_options_widgets[] = {
 
 {      WWT_PANEL,   RESIZE_NONE,     3,     4,   86,   154,   165, 0x0,                      STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,     3,    87,   98,   154,   165, STR_0225,                 STR_NULL},
-{          WWT_4,   RESIZE_NONE,     3,     4,   98,   166,   177, STR_02DB_OFF,             STR_NULL},
+{  WWT_TEXTBTN_2,   RESIZE_NONE,     3,     4,   98,   166,   177, STR_02DB_OFF,             STR_NULL},
 
 {      WWT_LABEL,   RESIZE_NONE,    13,     0,  409,    13,    26, STR_0205_MESSAGE_TYPES,   STR_NULL},
 {   WIDGETS_END},

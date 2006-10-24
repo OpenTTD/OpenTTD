@@ -503,7 +503,7 @@ static const Widget _network_game_window_widgets[] = {
 /* LEFT SIDE */
 {      WWT_PANEL,   RESIZE_NONE,   BGC,   310,   461,    22,    33, 0x0,                         STR_NETWORK_ENTER_NAME_TIP},
 
-{          WWT_6,   RESIZE_NONE,   BGC,    90,   181,    22,    33, STR_NETWORK_COMBO1,          STR_NETWORK_CONNECTION_TIP},
+{      WWT_INSET,   RESIZE_NONE,   BGC,    90,   181,    22,    33, STR_NETWORK_COMBO1,          STR_NETWORK_CONNECTION_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   170,   180,    23,    32, STR_0225,                    STR_NETWORK_CONNECTION_TIP},
 
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    10,   170,    42,    53, STR_NETWORK_GAME_NAME,       STR_NETWORK_GAME_NAME_TIP},
@@ -740,18 +740,18 @@ static const Widget _network_start_server_window_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,   BGC,   100,   272,    22,    33, 0x0,                           STR_NETWORK_NEW_GAME_NAME_TIP},
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,   285,   405,    22,    33, STR_NETWORK_SET_PASSWORD,      STR_NETWORK_PASSWORD_TIP},
 
-{          WWT_6,   RESIZE_NONE,   BGC,    10,   271,    62,   216, 0x0,                           STR_NETWORK_SELECT_MAP_TIP},
+{      WWT_INSET,   RESIZE_NONE,   BGC,    10,   271,    62,   216, 0x0,                           STR_NETWORK_SELECT_MAP_TIP},
 {  WWT_SCROLLBAR,   RESIZE_NONE,   BGC,   259,   270,    63,   215, 0x0,                           STR_0190_SCROLL_BAR_SCROLLS_LIST},
 /* Combo boxes to control Connection Type / Max Clients / Max Companies / Max Observers / Language */
-{          WWT_6,   RESIZE_NONE,   BGC,   280,   410,    77,    88, STR_NETWORK_COMBO1,            STR_NETWORK_CONNECTION_TIP},
+{      WWT_INSET,   RESIZE_NONE,   BGC,   280,   410,    77,    88, STR_NETWORK_COMBO1,            STR_NETWORK_CONNECTION_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,    78,    87, STR_0225,                      STR_NETWORK_CONNECTION_TIP},
-{          WWT_6,   RESIZE_NONE,   BGC,   280,   410,   109,   120, STR_NETWORK_COMBO2,            STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
+{      WWT_INSET,   RESIZE_NONE,   BGC,   280,   410,   109,   120, STR_NETWORK_COMBO2,            STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,   110,   119, STR_0225,                      STR_NETWORK_NUMBER_OF_CLIENTS_TIP},
-{          WWT_6,   RESIZE_NONE,   BGC,   280,   410,   141,   152, STR_NETWORK_COMBO3,            STR_NETWORK_NUMBER_OF_COMPANIES_TIP},
+{      WWT_INSET,   RESIZE_NONE,   BGC,   280,   410,   141,   152, STR_NETWORK_COMBO3,            STR_NETWORK_NUMBER_OF_COMPANIES_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,   142,   151, STR_0225,                      STR_NETWORK_NUMBER_OF_COMPANIES_TIP},
-{          WWT_6,   RESIZE_NONE,   BGC,   280,   410,   173,   184, STR_NETWORK_COMBO4,            STR_NETWORK_NUMBER_OF_SPECTATORS_TIP},
+{      WWT_INSET,   RESIZE_NONE,   BGC,   280,   410,   173,   184, STR_NETWORK_COMBO4,            STR_NETWORK_NUMBER_OF_SPECTATORS_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,   174,   183, STR_0225,                      STR_NETWORK_NUMBER_OF_SPECTATORS_TIP},
-{          WWT_6,   RESIZE_NONE,   BGC,   280,   410,   205,   216, STR_NETWORK_COMBO5,            STR_NETWORK_LANGUAGE_TIP},
+{      WWT_INSET,   RESIZE_NONE,   BGC,   280,   410,   205,   216, STR_NETWORK_COMBO5,            STR_NETWORK_LANGUAGE_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,   BGC,   399,   409,   206,   215, STR_0225,                      STR_NETWORK_LANGUAGE_TIP},
 
 { WWT_PUSHTXTBTN,   RESIZE_NONE,   BTC,    40,   140,   224,   235, STR_NETWORK_START_GAME,        STR_NETWORK_START_GAME_TIP},

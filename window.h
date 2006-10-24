@@ -554,29 +554,29 @@ enum WindowWidgetBehaviours {
 
 
 enum WindowWidgetTypes {
-	WWT_EMPTY      =  0,
+	WWT_EMPTY,
 
-	WWT_PANEL      =  1,         /* simple panel */
-	WWT_IMGBTN     =  2,         /* button with image */
-	WWT_IMGBTN_2   =  3,         /* button with diff image when clicked */
+	WWT_PANEL,      /* simple depressed panel */
+	WWT_INSET,      /* pressed (inset) panel, most commonly used as combo box _text_ area */
+	WWT_IMGBTN,     /* button with image */
+	WWT_IMGBTN_2,   /* button with diff image when clicked */
 
-	WWT_TEXTBTN    =  4,         /* button with text */
-	WWT_4          =  5,         /* button with diff text when clicked */
-	WWT_LABEL      =  6,         /* centered label */
-	WWT_6          =  7,         /* combo box text area */
-	WWT_MATRIX     =  8,
-	WWT_SCROLLBAR  =  9,
-	WWT_FRAME      = 10,         /* frame */
-	WWT_CAPTION    = 11,
+	WWT_TEXTBTN,    /* button with text */
+	WWT_TEXTBTN_2,  /* button with diff text when clicked */
+	WWT_LABEL,      /* centered label */
+	WWT_MATRIX,
+	WWT_SCROLLBAR,
+	WWT_FRAME,      /* frame */
+	WWT_CAPTION,
 
-	WWT_HSCROLLBAR = 12,
-	WWT_STICKYBOX  = 13,
-	WWT_SCROLL2BAR = 14,         /* 2nd vertical scrollbar*/
-	WWT_RESIZEBOX  = 15,
-	WWT_CLOSEBOX   = 16,
-	WWT_LAST       = 17,         /* Last Item. use WIDGETS_END to fill up padding!! */
+	WWT_HSCROLLBAR,
+	WWT_STICKYBOX,
+	WWT_SCROLL2BAR, /* 2nd vertical scrollbar*/
+	WWT_RESIZEBOX,
+	WWT_CLOSEBOX,
+	WWT_LAST,       /* Last Item. use WIDGETS_END to fill up padding!! */
 
-	WWT_MASK       = 31,
+	WWT_MASK = 0x1F,
 
 	WWT_PUSHBTN     = WWT_PANEL   | WWB_PUSHBUTTON,
 	WWT_PUSHTXTBTN  = WWT_TEXTBTN | WWB_PUSHBUTTON,

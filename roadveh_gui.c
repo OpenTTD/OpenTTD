@@ -359,11 +359,11 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _roadveh_view_widgets[] = {
-{ WWT_CLOSEBOX,   RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW },
-{ WWT_CAPTION,    RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_9002,                STR_018C_WINDOW_TITLE_DRAG_THIS },
-{ WWT_STICKYBOX,  RESIZE_LR,    14, 238, 249,   0,  13, 0x0,                     STR_STICKY_BUTTON },
-{  WWT_PANEL,     RESIZE_RB,    14,   0, 231,  14, 103, 0x0,                     STR_NULL },
-{ WWT_6,          RESIZE_RB,    14,   2, 229,  16, 101, 0x0,                     STR_NULL },
+{   WWT_CLOSEBOX, RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW },
+{    WWT_CAPTION, RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_9002,                STR_018C_WINDOW_TITLE_DRAG_THIS },
+{  WWT_STICKYBOX, RESIZE_LR,    14, 238, 249,   0,  13, 0x0,                     STR_STICKY_BUTTON },
+{      WWT_PANEL, RESIZE_RB,    14,   0, 231,  14, 103, 0x0,                     STR_NULL },
+{      WWT_INSET, RESIZE_RB,    14,   2, 229,  16, 101, 0x0,                     STR_NULL },
 {    WWT_PUSHBTN, RESIZE_RTB,   14,   0, 237, 104, 115, 0x0,                     STR_901C_CURRENT_VEHICLE_ACTION },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE, STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_SEND_ROADVEH_TODEPOT,STR_901F_SEND_VEHICLE_TO_DEPOT },
@@ -372,8 +372,8 @@ static const Widget _roadveh_view_widgets[] = {
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS,STR_9021_SHOW_ROAD_VEHICLE_DETAILS },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_ROADVEH,       STR_CLONE_ROAD_VEHICLE_INFO },
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  50,  67, SPR_REFIT_VEHICLE,       STR_REFIT_ROAD_VEHICLE_TO_CARRY },
-{ WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,                     STR_NULL },
-{ WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,                     STR_NULL },
+{      WWT_PANEL, RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,                     STR_NULL },
+{  WWT_RESIZEBOX, RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,                     STR_NULL },
 { WIDGETS_END }
 };
 

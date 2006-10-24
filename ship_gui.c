@@ -497,11 +497,11 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 }
 
 static const Widget _ship_view_widgets[] = {
-{ WWT_CLOSEBOX,   RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
-{ WWT_CAPTION,    RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_980F,                STR_018C_WINDOW_TITLE_DRAG_THIS},
-{ WWT_STICKYBOX,  RESIZE_LR,    14, 238, 249,   0,  13, 0x0,                     STR_STICKY_BUTTON},
-{  WWT_PANEL,     RESIZE_RB,    14,   0, 231,  14, 103, 0x0,                     STR_NULL},
-{ WWT_6,          RESIZE_RB,    14,   2, 229,  16, 101, 0x0,                     STR_NULL},
+{   WWT_CLOSEBOX, RESIZE_NONE,  14,   0,  10,   0,  13, STR_00C5,                STR_018B_CLOSE_WINDOW},
+{    WWT_CAPTION, RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_980F,                STR_018C_WINDOW_TITLE_DRAG_THIS},
+{  WWT_STICKYBOX, RESIZE_LR,    14, 238, 249,   0,  13, 0x0,                     STR_STICKY_BUTTON},
+{      WWT_PANEL, RESIZE_RB,    14,   0, 231,  14, 103, 0x0,                     STR_NULL},
+{      WWT_INSET, RESIZE_RB,    14,   2, 229,  16, 101, 0x0,                     STR_NULL},
 {    WWT_PUSHBTN, RESIZE_RTB,   14,   0, 237, 104, 115, 0x0,                     STR_9827_CURRENT_SHIP_ACTION_CLICK},
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE, STR_9829_CENTER_MAIN_VIEW_ON_SHIP},
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_SEND_SHIP_TODEPOT,   STR_982A_SEND_SHIP_TO_DEPOT},
@@ -509,8 +509,8 @@ static const Widget _ship_view_widgets[] = {
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  68,  85, SPR_SHOW_ORDERS,         STR_9828_SHOW_SHIP_S_ORDERS},
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  86, 103, SPR_SHOW_VEHICLE_DETAILS,STR_982B_SHOW_SHIP_DETAILS},
 { WWT_PUSHIMGBTN, RESIZE_LR,    14, 232, 249,  32,  49, SPR_CLONE_SHIP,          STR_CLONE_SHIP_INFO},
-{ WWT_PANEL,      RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,                     STR_NULL },
-{ WWT_RESIZEBOX,  RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,                     STR_NULL },
+{      WWT_PANEL, RESIZE_LRB,   14, 232, 249, 104, 103, 0x0,                     STR_NULL },
+{  WWT_RESIZEBOX, RESIZE_LRTB,  14, 238, 249, 104, 115, 0x0,                     STR_NULL },
 { WIDGETS_END }
 };
 

@@ -736,7 +736,7 @@ static const Widget _train_view_widgets[] = {
 {    WWT_CAPTION, RESIZE_RIGHT, 14,  11, 237,   0,  13, STR_882E,                STR_018C_WINDOW_TITLE_DRAG_THIS },
 {  WWT_STICKYBOX,    RESIZE_LR, 14, 238, 249,   0,  13, 0x0,                     STR_STICKY_BUTTON },
 {      WWT_PANEL,    RESIZE_RB, 14,   0, 231,  14, 121, 0x0,                     STR_NULL },
-{          WWT_6,    RESIZE_RB, 14,   2, 229,  16, 119, 0x0,                     STR_NULL },
+{      WWT_INSET,    RESIZE_RB, 14,   2, 229,  16, 119, 0x0,                     STR_NULL },
 {    WWT_PUSHBTN,   RESIZE_RTB, 14,   0, 237, 122, 133, 0x0,                     STR_8846_CURRENT_TRAIN_ACTION_CLICK },
 { WWT_PUSHIMGBTN,    RESIZE_LR, 14, 232, 249,  14,  31, SPR_CENTRE_VIEW_VEHICLE, STR_8848_CENTER_MAIN_VIEW_ON_TRAIN },
 { WWT_PUSHIMGBTN,    RESIZE_LR, 14, 232, 249,  32,  49, SPR_SEND_TRAIN_TODEPOT,  STR_8849_SEND_TRAIN_TO_DEPOT },
