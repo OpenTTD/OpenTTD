@@ -49,7 +49,8 @@ enum Sprites {
 
 	/* Extra graphic spritenumbers */
 	OPENTTD_SPRITES_COUNT = 116, // number of gfx-sprites in openttd.grf
-	SPR_CANALS_BASE   = 5382,
+	SPR_SIGNALS_BASE  = 4896,
+	SPR_CANALS_BASE   = SPR_SIGNALS_BASE + 486,
 	SPR_SLOPES_BASE   = SPR_CANALS_BASE + 70,
 	SPR_AUTORAIL_BASE = SPR_SLOPES_BASE + 78,
 	SPR_ELRAIL_BASE   = SPR_AUTORAIL_BASE + 55,
