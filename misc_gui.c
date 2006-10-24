@@ -1094,12 +1094,12 @@ void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth,
 	w = AllocateWindowDesc(&_query_string_desc);
 
 	GetString(_edit_str_buf, str, lastof(_edit_str_buf));
-	_edit_str_buf[realmaxlen-1] = '\0';
+	_edit_str_buf[realmaxlen - 1] = '\0';
 
 	if (maxlen & 0x1000) {
 		WP(w, querystr_d).orig = NULL;
 	} else {
-		strcpy(_orig_str_buf, _edit_str_buf);
+		strecpy(_orig_str_buf, _edit_str_buf, lastof(_orig_str_buf));
 		WP(w, querystr_d).orig = _orig_str_buf;
 	}
 

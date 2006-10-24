@@ -57,11 +57,9 @@ static void DrawOrdersWindow(Window *w)
 	int sel;
 	int y, i;
 	bool shared_orders;
-	bool not_localplayer;
 	byte color;
 
 	v = GetVehicle(w->window_number);
-	not_localplayer = v->owner != _local_player;
 
 	shared_orders = IsOrderListShared(v);
 
@@ -72,31 +70,32 @@ static void DrawOrdersWindow(Window *w)
 
 	order = GetVehicleOrder(v, sel);
 
-	/* skip */
-	SetWindowWidgetDisabledState(w,  4, not_localplayer || v->num_orders == 0);
+	if (v->owner == _local_player) {
+		/* skip */
+		SetWindowWidgetDisabledState(w,  4, v->num_orders == 0);
 
-	/* delete */
-	SetWindowWidgetDisabledState(w,  5, not_localplayer ||
-			(uint)v->num_orders + (shared_orders ? 1 : 0) <= (uint)WP(w, order_d).sel);
+		/* delete */
+		SetWindowWidgetDisabledState(w,  5,
+				(uint)v->num_orders + (shared_orders ? 1 : 0) <= (uint)WP(w, order_d).sel);
 
-	/* non-stop only for trains */
-	SetWindowWidgetDisabledState(w,  6, not_localplayer || v->type != VEH_Train
-			|| order == NULL);
-	SetWindowWidgetDisabledState(w,  7, not_localplayer); // go-to
-	SetWindowWidgetDisabledState(w,  8, not_localplayer || order == NULL); // full load
-	SetWindowWidgetDisabledState(w,  9, not_localplayer || order == NULL); // unload
-	SetWindowWidgetDisabledState(w, 10, not_localplayer || order == NULL); // transfer
-	SetWindowWidgetDisabledState(w, 11, !shared_orders || v->orders == NULL); // Disable list of vehicles with the same shared orders if there are no list
-	SetWindowWidgetDisabledState(w, 12, not_localplayer || order == NULL); // Refit
-
+		/* non-stop only for trains */
+		SetWindowWidgetDisabledState(w,  6, v->type != VEH_Train || order == NULL);
+		SetWindowWidgetDisabledState(w,  8, order == NULL); // full load
+		SetWindowWidgetDisabledState(w,  9, order == NULL); // unload
+		SetWindowWidgetDisabledState(w, 10, order == NULL); // transfer
+		/* Disable list of vehicles with the same shared orders if there is no list */
+		SetWindowWidgetDisabledState(w, 11, !shared_orders || v->orders == NULL);
+		SetWindowWidgetDisabledState(w, 12, order == NULL); // Refit
+	} else {
+		DisableWindowWidget(w, 10);
+	}
 
 	ShowWindowWidget(w, 9); // Unload
 	HideWindowWidget(w, 12); // Refit
 
 	if (order != NULL) {
 		switch (order->type) {
-			case OT_GOTO_STATION:
-				break;
+			case OT_GOTO_STATION: break;
 
 			case OT_GOTO_DEPOT:
 				DisableWindowWidget(w, 10);
@@ -495,6 +494,8 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		Vehicle *v = GetVehicle(w->window_number);
 		uint i;
 
+		if (v->owner != _local_player) break;
+
 		for (i = 0; i < lengthof(_order_keycodes); i++) {
 			if (e->we.keypress.keycode == _order_keycodes[i]) {
 				e->we.keypress.cont = false;
@@ -536,7 +537,7 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		 * This is because of all open order windows WE_MOUSELOOP is called
 		 * and if you have 3 windows open, and this check is not done
 		 * the order is copied to the last open window instead of the
-		 * one where GOTO is enalbed
+		 * one where GOTO is enabled
 		 */
 		if (v != NULL && IsWindowWidgetLowered(w, 7)) {
 			_place_clicked_vehicle = NULL;

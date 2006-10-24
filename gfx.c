@@ -33,21 +33,18 @@ static byte _string_colorremap[3];
 #define DIRTY_BYTES_PER_LINE (MAX_SCREEN_WIDTH / 64)
 static byte _dirty_blocks[DIRTY_BYTES_PER_LINE * MAX_SCREEN_HEIGHT / 8];
 
-
-
-void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch)
+void memcpy_pitch(void *dst, void *src, int w, int h, int srcpitch, int dstpitch)
 {
-	byte *dp = (byte*)d;
-	byte *sp = (byte*)s;
+	byte *dstp = (byte*)dst;
+	byte *srcp = (byte*)src;
 
 	assert(h >= 0);
 	for (; h != 0; --h) {
-		memcpy(dp, sp, w);
-		dp += dpitch;
-		sp += spitch;
+		memcpy(dstp, srcp, w);
+		dstp += dstpitch;
+		srcp += srcpitch;
 	}
 }
-
 
 void GfxScroll(int left, int top, int width, int height, int xo, int yo)
 {
@@ -583,7 +580,14 @@ BoundingRect GetStringBoundingBox(const char *str)
 	return br;
 }
 
-
+/** Draw a string at the given coordinates with the given colour
+ * @param string the string to draw
+ * @param x offset from left side of the screen, if negative offset from the right side
+ * @param x offset from top side of the screen, if negative offset from the bottom
+ * @param real_color colour of the string, see _string_colormap in
+ * table/palettes.h or docs/ottd-colourtext-palette.png
+ * @return the x-coordinates where the drawing has finished. If nothing is drawn
+ * the originally passed x-coordinate is returned */
 int DoDrawString(const char *string, int x, int y, uint16 real_color)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
