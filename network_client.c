@@ -601,25 +601,22 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_COMMAND)
 
 DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 {
-	NetworkAction action = NetworkRecv_uint8(MY_CLIENT, p);
-	char msg[MAX_TEXT_MSG_LEN];
+	char name[NETWORK_NAME_LENGTH], msg[MAX_TEXT_MSG_LEN];
 	const NetworkClientInfo *ci = NULL, *ci_to;
-	uint16 index;
-	char name[NETWORK_NAME_LENGTH];
-	bool self_send;
 
-	index = NetworkRecv_uint16(MY_CLIENT, p);
-	self_send = NetworkRecv_uint8(MY_CLIENT, p);
+	NetworkAction action = NetworkRecv_uint8(MY_CLIENT, p);
+	uint16 index = NetworkRecv_uint16(MY_CLIENT, p);
+	bool self_send = NetworkRecv_uint8(MY_CLIENT, p);
 	NetworkRecv_string(MY_CLIENT, p, msg, MAX_TEXT_MSG_LEN);
 
 	ci_to = NetworkFindClientInfoFromIndex(index);
 	if (ci_to == NULL) return NETWORK_RECV_STATUS_OKAY;
 
-	/* Do we display the action locally? */
+	/* Did we initiate the action locally? */
 	if (self_send) {
 		switch (action) {
 			case NETWORK_ACTION_CHAT_CLIENT:
-				/* For speak to client we need the client-name */
+				/* For speaking to client we need the client-name */
 				snprintf(name, sizeof(name), "%s", ci_to->client_name);
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 				break;
@@ -634,10 +631,8 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				GetString(name, str, lastof(name));
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 			} break;
-			default:
-				/* This should never happen */
-				NOT_REACHED();
-				break;
+
+			default: NOT_REACHED(); break;
 		}
 	} else {
 		/* Display message from somebody else */
