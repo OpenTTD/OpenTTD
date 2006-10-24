@@ -623,14 +623,17 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_CHAT)
 				snprintf(name, sizeof(name), "%s", ci_to->client_name);
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
 				break;
-			case NETWORK_ACTION_CHAT_COMPANY:
-			case NETWORK_ACTION_GIVE_MONEY:
-				/* For speaking to player or give money, we need the player-name */
-				if (!IsValidPlayer(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY; // This should never happen
 
-				GetString(name, GetPlayer(ci_to->client_playas)->name_1, lastof(name));
+			/* For speaking to company or giving money, we need the player-name */
+			case NETWORK_ACTION_GIVE_MONEY:
+				if (!IsValidPlayer(ci_to->client_playas)) return NETWORK_RECV_STATUS_OKAY;
+				/* fallthrough */
+			case NETWORK_ACTION_CHAT_COMPANY: {
+				StringID str = IsValidPlayer(ci_to->client_playas) ? GetPlayer(ci_to->client_playas)->name_1 : STR_NETWORK_SPECTATORS;
+
+				GetString(name, str, lastof(name));
 				ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
-				break;
+			} break;
 			default:
 				/* This should never happen */
 				NOT_REACHED();

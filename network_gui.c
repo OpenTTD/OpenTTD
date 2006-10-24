@@ -1185,7 +1185,7 @@ static Window *PopupClientList(Window *w, int client_no, int x, int y)
 		_clientlist_proc[i++] = &ClientList_SpeakToClient;
 	}
 
-	if (IsValidPlayer(ci->client_playas)) {
+	if (IsValidPlayer(ci->client_playas) || ci->client_playas == PLAYER_SPECTATOR) {
 		GetString(_clientlist_action[i], STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY, lastof(_clientlist_action[i]));
 		_clientlist_proc[i++] = &ClientList_SpeakToCompany;
 	}
