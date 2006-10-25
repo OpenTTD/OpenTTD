@@ -1431,17 +1431,21 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сървъръ�
 STR_NETWORK_CLIENT_JOINED                                       :се присъедини към играта
 STR_NETWORK_GIVE_MONEY                                          :даде пари на вашата компания ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :дадохте на {STRING} пари ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] До {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] До {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[All] {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
+STR_NETWORK_CHAT_COMPANY                                        :[Team] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Team] До {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] До {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[All] :
+STR_NETWORK_CHAT_ALL                                            :[All] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :смени името си на
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сървъра прекъсна сесията
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Сървъра се рестартира...{}Моля изчакайте...
 
 STR_NETWORK_SERVER                                              :Сървър
 STR_NETWORK_CLIENT                                              :Клиент
+STR_NETWORK_SPECTATORS                                          :Наблюдатели
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(никой)
 STR_NETWORK_CLIENTLIST_KICK                                     :Изгони
@@ -2996,6 +3000,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Стар
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Списък с табели - {COMMA} Табел{P а и}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Преустройството не може да се направи защото {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -3068,14 +3073,19 @@ STR_PREPARING_GAME                                              :{BLACK}Подг
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Това действие промени нивото на трудност на custom
 STR_SE_FLAT_WORLD                                               :{WHITE}Плоска земя
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Генериране на плоска земя
+STR_SE_RANDOM_LAND                                              :{WHITE}Случайна карта
+STR_SE_NEW_WORLD                                                :{BLACK}Създаване на нов сценарий
+STR_SE_CAPTION                                                  :{WHITE}Тип на сценария
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Сваляне височината на плоска земя
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Повишаване височината на плоска земя
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Промяна височината на плоска земя
 STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Височина на плоска земя:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Центриране на малката карта на текущата позиция
 
 ########### String for new airports
+STR_SMALL_AIRPORT                                               :{BLACK}Малко
 STR_CITY_AIRPORT                                                :{BLACK}Град
 STR_METRO_AIRPORT                                               :{BLACK}Метрополисно летище
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Международно летище
@@ -3085,6 +3095,7 @@ STR_HELIPORT                                                    :{BLACK}Хели
 STR_HELIDEPOT                                                   :{BLACK}Хеликоптерен хангар
 STR_HELISTATION                                                 :{BLACK}Хеликоптерна станция
 
+STR_SMALL_AIRPORTS                                              :{BLACK}Малки летища
 STR_LARGE_AIRPORTS                                              :{BLACK}Голямо летище
 STR_HUB_AIRPORTS                                                :{BLACK}Централни летища
 STR_HELIPORTS                                                   :{BLACK}Хеликоптерни самолети

@@ -1153,8 +1153,8 @@ STR_WAYPOINTNAME_CITY                                           :Kontrollstation
 STR_WAYPOINTNAME_CITY_SERIAL                                    :Kontrollstation {TOWN} #{COMMA}
 STR_LANDINFO_WAYPOINT                                           :Kontrollpunkt
 
-STR_WAYPOINT                                                    :{WHITE}Vägpunkt
-STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Välj vägpunkts typ
+STR_WAYPOINT                                                    :{WHITE}Kontrollstation
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Välj kontrollstationstyp
 
 STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
 STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
@@ -1445,6 +1445,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Servern
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
+STR_NETWORK_SPECTATORS                                          :Åskådare
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(ingen)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kasta ut
@@ -3024,6 +3025,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Vikt: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad: {GOLD}{CURRENCY}{BLACK} Hastighet: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{COMMA} passagerare, {COMMA} säckar post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserade vagnar: {GOLD}+{POWER}{BLACK} Vikt: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Upprustningsbar till: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Alla last-typer
+STR_PURCHASE_INFO_ALL_BUT                                       :Alla utom {GOLD}
 
 ########### String for New Landscape Generator
 

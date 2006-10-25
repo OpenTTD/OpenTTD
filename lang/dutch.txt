@@ -1445,6 +1445,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} De serv
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
+STR_NETWORK_SPECTATORS                                          :Toeschouwer
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(geen)
 STR_NETWORK_CLIENTLIST_KICK                                     :Schop uit het spel

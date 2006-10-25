@@ -1384,8 +1384,8 @@ STR_NETWORK_10_PLAYERS                                          :10 hracu
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maximální pocet spolecnosti:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Omezit serverem pocet spolecnosti
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maximální pocet divaku:
-STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Omezit serverem pocet divaku
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maximální pocet pozorovatelu:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Omezit serverem pocet pozorovatelu
 STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Jazyk ve hre:
 STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aby ostatní hraci vedeli, jakým jazykem se bude ve hre mluvit.
@@ -1409,7 +1409,7 @@ STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Soucasny
 STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nová spolecnost
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Zalo¸it novou spolecnost
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Nav¨tívit hru
-STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Pripojit se do hry jako divák
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Pripojit se do hry jako pozorovatel
 STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Vstoupit do spolecnosti
 STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Pomoz vést tuto spolecnost
 STR_NETWORK_REFRESH                                             :{BLACK}Obnovit info
@@ -1502,6 +1502,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Server s
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
+STR_NETWORK_SPECTATORS                                          :Pozorovatelé
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(nikdo)
 STR_NETWORK_CLIENTLIST_KICK                                     :Vyhodit
@@ -3081,6 +3082,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestující{P "" "" ch}, {COMMA} bal{P ík íky iku} po¨ty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanene vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Refitovatelné na: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :V¨echny druhy nákladu
+STR_PURCHASE_INFO_ALL_BUT                                       :V¨echny krome {GOLD}
 
 ########### String for New Landscape Generator
 

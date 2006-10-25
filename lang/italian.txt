@@ -1688,7 +1688,7 @@ STR_2810_CACTUS_PLANTS                                          :Cactus
 
 ##id 0x3000
 STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Selezione Stazione
-STR_3001_AIRPORT_SELECTION                                      :{WHITE}Selezione Aereoporto
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Selezione Aeroporto
 STR_3002_ORIENTATION                                            :{BLACK}Orientamento
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Numero binari
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Lunghezza
@@ -1940,7 +1940,7 @@ STR_SV_STNAME_HEIGHTS                                           :{STRING} Altura
 STR_SV_STNAME_WOODS                                             :{STRING} Bosco
 STR_SV_STNAME_LAKESIDE                                          :{STRING} Lago
 STR_SV_STNAME_EXCHANGE                                          :{STRING} Scambio
-STR_SV_STNAME_AIRPORT                                           :{STRING} Aereoporto
+STR_SV_STNAME_AIRPORT                                           :{STRING} Aeroporto
 STR_SV_STNAME_OILFIELD                                          :{STRING} Giacimento petrolifero
 STR_SV_STNAME_MINES                                             :{STRING} Miniere
 STR_SV_STNAME_DOCKS                                             :{STRING} Mol

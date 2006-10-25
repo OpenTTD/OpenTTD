@@ -2429,6 +2429,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Face-lo servici
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}En camiño ó Depósito de {TOWN}
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}En camiño ó Depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}Servicio no Depósito de {TOWN}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}Servicio no Depósito de {TOWN}, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Orde Inválida)
 
@@ -2488,7 +2490,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construí
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrastra un vehículo do tren aquí para vendelo
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centra-la vista principal na situación do depósito de trens
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de selección de vehículos para trens - pincha nun vehículo para máis información
+STR_BLACK_ENGINES                                               :{BLACK}Máquinas
+STR_BLACK_WAGONS                                                :{BLACK}Vagóns
 STR_BLACK_BOTH                                                  :{BLACK}Ambos
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Pincha para ver só as máquinas
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Pincha para ver só os vagóns
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Pincha para ver as máquinas e os vagóns
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construílo vehículo de ferrocarril seleccionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomea-lo tipo de vehículo de ferrocarril
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarea actual do tren - pincha aquí para parar/arrincar o tren
@@ -2535,6 +2542,7 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 
 STR_TRAIN_STOPPING                                              :{RED}Parando
 STR_TRAIN_STOPPING_VEL                                          :{RED}Parando, {VELOCITY}
+STR_TRAIN_NO_POWER                                              :{RED}Sen enerxía
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Haí un vehículo de estrada no camiño
@@ -2558,6 +2566,8 @@ STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}No se po
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}O vehículo de estrada {COMMA} está a esperar no depósito
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Diríxese o depósito de {TOWN}
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Diríxese o depósito de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}Servicio no Depósito de {TOWN}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}Servicio no Depósito de {TOWN}, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Non se pode envia-lo vehículo ó depósito de estrada...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se pode atopar unha ruta o depósito local
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Vehículos de estrada - pincha nun vehículo para máis información
@@ -2593,7 +2603,9 @@ STR_9037_CAN_T_RENAME_ROAD_VEHICLE                              :{WHITE}Non se p
 STR_9038_GO_TO_ROADVEH_DEPOT                                    :Ir ó Depósito de Vehículos de Estrada de {TOWN}
 STR_SERVICE_AT_ROADVEH_DEPOT                                    :Servicio no Depósito de Vehículos de Estrada de {TOWN}
 
+STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reaxustar vehículo para levar un tipo diferente de carga
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reparar vehículo
+STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reaxustar vehículo para levar o tipo de carga seleccionado
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Non se pode repara-lo vehículo
 
 ##id 0x9800
@@ -2625,6 +2637,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Non se p
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}No se pode atopar unha ruta ó depósito local
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Diríxese o Depósito de Barcos de {TOWN}
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Diríxese o Depósito de Barcos de {TOWN}, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}Servicio no Depósito de Barcos de {TOWN}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}Servicio no Depósito de Barcos de {TOWN}, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}O barco {COMMA} esta a esperar no depósito
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Construír peirao para barcos
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Construír depósito para barcos (para construír e dar servicio os barcos)
@@ -2674,6 +2688,7 @@ STR_A002_AIRCRAFT_HANGAR                                        :{WHITE}Hangar d
 STR_A003_NEW_AIRCRAFT                                           :{BLACK}Nova Aeronave
 STR_CLONE_AIRCRAFT                                              :{BLACK}Clonar Aeronave
 STR_CLONE_AIRCRAFT_INFO                                         :{BLACK}Esto construirá una copia da aeronave. CTRL-Click compartirá as ordes
+STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW                           :{BLACK}Esto construirá unha copia da aeronave. Pincha neste botón e nunha aeronave que estea dentro ou fora do hangar. Control-Click compartirá as ordes
 STR_A005_NEW_AIRCRAFT                                           :{WHITE}Nova Aeronave
 STR_A006_BUILD_AIRCRAFT                                         :{BLACK}Construír Aeronave
 STR_A008_CAN_T_BUILD_AIRCRAFT                                   :{WHITE}Non se pode construí-lo avíon...
@@ -2704,7 +2719,9 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construí
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronaves - pincha na aeronave para máis información
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construír nova aeronave (necesitas un aeroporto con hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronaves - pincha na aeronave para máis información
+STR_BLACK_JETS                                                  :{BLACK}Jets
 STR_BLACK_HELICOPTERS                                           :{BLACK}Helicópteros
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Pincha aquí para ver os helicópteros
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construír nova aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrastra a aeronave aquí para vendela
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}centra-la vista principal na situación do hangar
@@ -2835,6 +2852,10 @@ STR_ARE_YOU_SURE                                                :{BLACK}¿Estás s
 
 
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autorreemprazar tódolos trens no depósito
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autorreemprazar tódolos vehículos no depósito
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autorreemprazar tódolos barcos no depósito
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autorreemprazar tódolas aeronaves no hangar
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Barco{P "" s}
@@ -2846,6 +2867,7 @@ STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar 
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de Reemplazar Vehículos
 STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Non hai vehículos seleccionados
 STR_REPLACE_HELP                                                :{BLACK}Permíteche reemplazar untipo de máquina cunha doutro tipo, cando trens do tipo orixinal entran nun depósito
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Eliminar os vagóns: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reemprazando: {ORANGE}{SKIP}{SKIP}{STRING}
 
 STR_ENGINES                                                     :Máquinas
