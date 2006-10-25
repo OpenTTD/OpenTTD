@@ -1445,6 +1445,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} El serv
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Client
+STR_NETWORK_SPECTATORS                                          :Espectadors
 
 STR_NETWORK_CLIENTLIST_NONE                                     :
 STR_NETWORK_CLIENTLIST_KICK                                     :Breu

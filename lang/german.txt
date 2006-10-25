@@ -1046,10 +1046,10 @@ STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Maximaler Abstand der Ölraffinerien vom Kartenrand{ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Schneegrenze auf: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rauheit (nur TerraGenesis) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Rauhheit (nur TerraGenesis) : {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Sehr sanft
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Sanft
-STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rau
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Rauh
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Sehr rauh
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Baumplazierungsalgorithmus: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Keiner
@@ -1065,6 +1065,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximal
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Hubschrauber auf Helipads automatisch warten: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Landschaftsbau-Toolbar an Eisenbahn/Straßen/Hafen/Flughafen-Toolbar binden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Beim Verschieben mit der Maus die Ansicht in die Gegenrichtung verschieben: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Zeige Tooltip mit Abmessungen bei verschiedenen Bauwerkzeugen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Anzeigen der Firmenlackierungen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Keine
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eigene Firma
@@ -2999,6 +3000,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Hier kli
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Schilderliste - {COMMA} Schild{P "" er}
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}{STRING} {COMMA} wurde wegen Problemen beim Umrüsten angehalten
 
 ############ Lists rail types
 
@@ -3023,6 +3025,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht:
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Geschwindigk.: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapazität: {GOLD}{COMMA} Passagiere, {COMMA} Postsäcke
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Angetriebene Waggons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Umrüstbar auf: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Alle Frachtarten
+STR_PURCHASE_INFO_ALL_BUT                                       :Alles außer {GOLD}
 
 ########### String for New Landscape Generator
 

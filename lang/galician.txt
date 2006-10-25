@@ -378,6 +378,12 @@ STR_SORT_BY_MAX_SPEED                                           :Velocidade Máxi
 STR_SORT_BY_MODEL                                               :Modelo
 STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipo de estación
+STR_ENGINE_SORT_COST                                            :Coste
+STR_ENGINE_SORT_POWER                                           :Potencia
+STR_ENGINE_SORT_INTRO_DATE                                      :Data de Presentación
+STR_ENGINE_SORT_RUNNING_COST                                    :Coste Mantemento
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potencia/Coste Mantemento
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade De Carga
 
 ############ range for months starts
 STR_0162_JAN                                                    :Xan
@@ -765,6 +771,7 @@ STR_02DA_ON                                                     :{BLACK}On
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Amosa-los subsidios
 STR_02DD_SUBSIDIES                                              :Subsidios
 STR_02DE_MAP_OF_WORLD                                           :Mapa do Mundo
+STR_EXTRA_VIEW_PORT                                             :Fiestra Extra
 STR_SIGN_LIST                                                   :Lista de sinais
 STR_02DF_TOWN_DIRECTORY                                         :Directorio de cidades
 STR_TOWN_POPULATION                                             :{BLACK}Poboación mundial: {COMMA}
@@ -883,7 +890,9 @@ STR_CURR_NOK                                                    :Corona Norugues
 STR_CURR_PLN                                                    :Zloty Polaco (PLN)
 STR_CURR_ROL                                                    :Leu Rumano (ROL)
 STR_CURR_RUR                                                    :Rublo Ruso (RUR)
+STR_CURR_SIT                                                    :Tolar Esloveno (SIT)
 STR_CURR_SEK                                                    :Corona Sueca(SEK)
+STR_CURR_YTL                                                    :Lira Turca (YTL)
 
 STR_CURR_CUSTOM                                                 :Persoal...
 
@@ -980,7 +989,7 @@ STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Permiti
 STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Permiti-la eliminación de máis estradas, etc... das cidades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Permiti-la construcción de trens moi largos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Habilita-la aceleración realista nos trens: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos facer xiros de 90 grados: {ORANGE}{STRING} {LTBLUE} (require NPF)
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibir os trens e os barcos facer xiros de 90 graos: {ORANGE}{STRING} {LTBLUE} (require NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Xunta-las estacións construídas xuntas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Saír se calquera carga está chea,cando 'Carga chea': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usa-lo algoritmo de carga mellorado: {ORANGE}{STRING}
@@ -1016,9 +1025,14 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Duració
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Mostra-la poboación da cidade na etiqueta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Árbores invisibles (con edificios transparentes): {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Xerador de mapas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Orixinal
 STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGenesis
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altura da liña de neve: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritmo de colocación de árbores: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ningún
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Orixinal
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Mellorado
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Extensión Max. Estación: {ORANGE}{STRING} {RED}Aviso: Valores altos reducen rendemento
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Face-lo servicio os helicópteros no heliporto automáticam.: {ORANGE}{STRING}
@@ -1047,6 +1061,7 @@ STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Intervalo de servicio para as aeronaves: {ORANGE}deshabilitado
 STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Intervalo de servicio para os barcos: {ORANGE}{STRING} días
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de servicio para os barcos: {ORANGE}deshabilitado
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deshabilita-lo servicio cando as roturas están a ningún: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Data de aparición das noticias en color: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data de comezo: {ORANGE}{STRING}
@@ -1075,6 +1090,7 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Cambia-lo valor
 STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}¡Algún ou tódolos intervalo(s) de servicio por defecto son incompatibles coa opción elixida! 5-90% e 30-800 días son válidos
 STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Usar YAPF para barcos: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Usar YAPF para vehículos de estrada: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Usar YAPF para os trens: {ORANGE}{STRING}
 
 STR_TEMPERATE_LANDSCAPE                                         :escenario templado
@@ -1412,7 +1428,9 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Tamaño 
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Non se pode cargar o mapa do PNG...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...arquivo non atopado.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...non se puido convertir o tipo de imaxe. Necesítase unha imaxe PNG de 8 ou 24 bit.
 
 
 ##id 0x0800
@@ -2397,13 +2415,13 @@ STR_8807_GO_TO_TRANSFER                                         :Ir a {STATION} 
 STR_8808_GO_TO_UNLOAD                                           :Ir a {STATION} (Descargar)
 STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Ir a {STATION} (Transferir e sair valeiro)
 STR_880A_GO_TO_LOAD                                             :Ir a {STATION} (Cargar)
-STR_880B_GO_TO_TRANSFER_LOAD                                    :Ir a {STATION} (Transferir e esperar a encher)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Ir a {STATION} (Transferir e esperar a cargar)
 STR_880C_GO_NON_STOP_TO                                         :Ir sen parar a {STATION}
 STR_880D_GO_TO_NON_STOP_TRANSFER                                :Ir sen parar a {STATION} (Transferir e coller carga)
 STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Ir sen parar a {STATION} (Descargar)
 STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Ir sen parar a {STATION} (Descargar e saír baleiro)
 STR_8810_GO_NON_STOP_TO_LOAD                                    :Ir sen parar a {STATION} (Cargar)
-STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Ir sen parar a {STATION} (Transferir e esperar a encher)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Ir sen parar a {STATION} (Transferir e esperar a cargar)
 STR_GO_TO_TRAIN_DEPOT                                           :Ir o Depósito De Trens de {TOWN}
 STR_SERVICE_AT_TRAIN_DEPOT                                      :Face-lo servicio no Depósito de Trens de {TOWN}
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Ir sen paradas o Depósito de Trens de {TOWN}
@@ -2438,7 +2456,7 @@ STR_8823_SKIP                                                   :{BLACK}Saltar
 STR_8824_DELETE                                                 :{BLACK}Borrar
 STR_8825_NON_STOP                                               :{BLACK}Non Parar
 STR_8826_GO_TO                                                  :{BLACK}Ir a
-STR_8827_FULL_LOAD                                              :{BLACK}Encher
+STR_8827_FULL_LOAD                                              :{BLACK}Cargar
 STR_8828_UNLOAD                                                 :{BLACK}Descarga
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordes)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fin das Ordes - -
@@ -2833,8 +2851,18 @@ STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Reempraz
 STR_ENGINES                                                     :Máquinas
 STR_WAGONS                                                      :Vagóns
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Pincha para parar tódolos trens que hai no depósito
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Pincha para parar tódolos vehículos que hai no depósito
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Pincha para parar tódolos barcos que hai no depósito
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Pincha para parar tódalas aeronaves que hai no hangar
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Pincha para iniciar tódolos trens que hai no depósito
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Pincha para iniciar tódolos vehículos que hai no depósito
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Pincha para iniciar tódolos barcos que hai no depósito
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Pincha para iniciar tódalas aeronaves que hai no hangar
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Pincha para parar tódolos vehículos da lista
+STR_MASS_START_LIST_TIP                                         :{BLACK}Pincha para iniciar tódolos vehículos da lista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de Sinais - {COMMA} Sinais
@@ -2865,16 +2893,30 @@ STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns t
 
 ########### String for New Landscape Generator
 
+STR_GENERATE                                                    :{WHITE}Xerar
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Xeración do mundo
+STR_RANDOM_SEED                                                 :{BLACK}Semilla Aleatoria:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Pincha para introducir unha semilla
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreo:
+STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de industrias:
+STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Cambia-lo ano de inicio
 STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
+STR_HEIGHTMAP_SIZE                                              :{BLACK}Tamaño: {ORANGE}{NUM} x {NUM}
+STR_GENERATION_WORLD                                            :{WHITE}Xerando mundo...
+STR_GENERATION_ABORT                                            :{BLACK}Cancelar
+STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Cancelar Xeración De Mundo
+STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}¿Estás seguro de querer terminar a xeración?
+STR_PROGRESS                                                    :{WHITE}{NUM}% completado
+STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
 STR_WORLD_GENERATION                                            :{BLACK}Xeración do mundo
 STR_SETTINGUP_GAME                                              :{BLACK}Configurando partida
+STR_PREPARING_GAME                                              :{BLACK}Preparando partida
 STR_SE_NEW_WORLD                                                :{BLACK}Crear novo escenario
 STR_SE_CAPTION                                                  :{WHITE}Tipo de escenario
+STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
 STR_SMALLMAP_CENTER                                             :{BLACK}Centra-lo mapa pequeno na posición actual
 
@@ -2885,6 +2927,8 @@ STR_METRO_AIRPORT                                               :{BLACK}Aeroport
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroporto Internacional
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
 STR_HELIPORT                                                    :{BLACK}Heliporto
+STR_HELIDEPOT                                                   :{BLACK}Helidepósito
+STR_HELISTATION                                                 :{BLACK}Heliporto
 
 STR_SMALL_AIRPORTS                                              :{BLACK}Aeroportos pequenos
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroportos grandes
@@ -2892,5 +2936,7 @@ STR_HELIPORTS                                                   :{BLACK}Aeroport
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Lonxitude: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} x {NUM}
 
 ########

@@ -285,7 +285,7 @@ STR_013C_CARGO                                                  :{BLACK}Това
 STR_013D_INFORMATION                                            :{BLACK}Информация
 STR_013E_CAPACITIES                                             :{BLACK}Вместимости
 STR_013E_TOTAL_CARGO                                            :{BLACK}Общо товар
-STR_013F_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Вместимост: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Обща товарна вместимост на влака:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Нова игра
@@ -1843,7 +1843,7 @@ STR_4829_REQUIRES                                               :{BLACK}Нужд
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Произведено миналия месец:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% транспортирано)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% превозено)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Центриране главния прозорец върху индустрията
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Нова {STRING} се строи близо до {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Нова {STRING} се засажда близо до {TOWN}!
@@ -2968,6 +2968,13 @@ STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Избо
 STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Изберете нов двигател, който бихте желали да поставите на мястото на избрания в ляво двигател
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натиснете за спиране подновяването на избрания в ляво двигател
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натиснете за започване подмяната на ляво избрания двигател с избрания в дясно
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Избор на ЖП линия с която да се заменят локомотивите
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Показване с кой двигател се заменя ляво избрания, ако има
+STR_REPLACE_HELP                                                :{BLACK}От тук можете да заменяте един локомотив с друг, когато локомотиви от избрания тип влязат в депо
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Премахване на вагон: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Автоматичната замяна ще запази дължината на влака като премахне вагони (започвайки от предните), ако замяната довежда до по-дълъг влак.
+STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Замяна: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} ЕКСПЕРИМЕНТАЛНА ВЪЗМОЖНОСТ {}Превключване между замяна на локомотиви и вагони.{}Замяната на вагони ще бъде направена само ако новия тип вагони може да се преустрои да превозва същия тип товар като старите. Това се проверява за всеки вагон когато замяната се случва.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Двигателя не е строим
 
 STR_ENGINES                                                     :Двигатели

@@ -3024,6 +3024,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Gewicht:
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kosten: {GOLD}{CURRENCY}{BLACK} Snelheid: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capaciteit: {GOLD}{COMMA} passagiers, {COMMA} zakken post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Aangedreven wagons: {GOLD}+{POWER}{BLACK} Gewicht: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Herindeel naar: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Alle vracht typen
+STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {GOLD}
 
 ########### String for New Landscape Generator
 

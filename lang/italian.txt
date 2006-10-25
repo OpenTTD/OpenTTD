@@ -201,7 +201,7 @@ STR_00E9_VEGETATION                                             :Vegetazione
 STR_00EA_OWNERS                                                 :Proprietari
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Strade
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Ferrovie
-STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stazioni/Aereoporti/Moli
+STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stazioni/Aeroporti/Moli
 STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Edifici/Industrie
 STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Veicoli
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
@@ -250,7 +250,7 @@ STR_011A_SUGAR_MINE                                             :{BLACK}{TINYFON
 STR_011B_RAILROAD_STATION                                       :{BLACK}{TINYFONT}Stazione Ferroviaria
 STR_011C_TRUCK_LOADING_BAY                                      :{BLACK}{TINYFONT}Area di carico per Camion
 STR_011D_BUS_STATION                                            :{BLACK}{TINYFONT}Stazione Bus
-STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aereoporto/Eliporto
+STR_011E_AIRPORT_HELIPORT                                       :{BLACK}{TINYFONT}Aeroporto/Eliporto
 STR_011F_DOCK                                                   :{BLACK}{TINYFONT}Molo
 STR_0120_ROUGH_LAND                                             :{BLACK}{TINYFONT}Terreno Accidentato
 STR_0121_GRASS_LAND                                             :{BLACK}{TINYFONT}Terreno Erboso
@@ -1431,7 +1431,7 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :server pieno
 STR_NETWORK_CLIENT_JOINED                                       :è entrato nel gioco
 STR_NETWORK_GIVE_MONEY                                          :ha donato alla tua compagnia del denaro ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :hai donato a {STRING} del denaro ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Gruppo] :
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Team] :
 STR_NETWORK_CHAT_COMPANY                                        :[Gruppo] {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_TO_COMPANY                                     :[Gruppo] A {STRING}: {GRAY}{STRING}
 STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Privato] :
@@ -1445,6 +1445,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Il serv
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
+STR_NETWORK_SPECTATORS                                          :Spettatori
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(niente)
 STR_NETWORK_CLIENTLIST_KICK                                     :Espelli
@@ -3024,6 +3025,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Costo: {GOLD}{CURRENCY}{BLACK} Velocità: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capienza: {GOLD}{COMMA} passeggeri, {COMMA} sacchi postali
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Potenza Vagone: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Modificabile a: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Tutti i tipi di merci
+STR_PURCHASE_INFO_ALL_BUT                                       :Tutti meno {GOLD}
 
 ########### String for New Landscape Generator
 

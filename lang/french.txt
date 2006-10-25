@@ -1446,6 +1446,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Le serv
 
 STR_NETWORK_SERVER                                              :Serveur
 STR_NETWORK_CLIENT                                              :Client
+STR_NETWORK_SPECTATORS                                          :Spectateurs
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(aucun)
 STR_NETWORK_CLIENTLIST_KICK                                     :Jeter
@@ -3025,6 +3026,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Poids: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Prix: {GOLD}{CURRENCY}{BLACK} Vitesse: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacité: {GOLD}{COMMA} passagers, {COMMA} sacs de courrier
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Wagons Motorisés: {GOLD}+{POWER}{BLACK} Poids: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Réaménageable pour: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Tous les types de cargaison
+STR_PURCHASE_INFO_ALL_BUT                                       :Tous sauf {GOLD}
 
 ########### String for New Landscape Generator
 
