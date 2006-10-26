@@ -3068,6 +3068,21 @@ static void ResetCustomStations(void)
 	}
 }
 
+static void ResetNewGRF(void)
+{
+	GRFFile *f, *next;
+
+	for (f = _first_grffile; f != NULL; f = next) {
+		next = f->next;
+
+		free(f->filename);
+		free(f);
+	}
+
+	_first_grffile = NULL;
+	_cur_grffile   = NULL;
+}
+
 /**
  * Reset all NewGRF loaded data
  * TODO
@@ -3117,6 +3132,9 @@ static void ResetNewGRFData(void)
 	// Reset station classes
 	ResetStationClasses();
 	ResetCustomStations();
+
+	/* Reset NewGRF files */
+	ResetNewGRF();
 
 	// Add engine type to engine data. This is needed for the refit precalculation.
 	AddTypeToEngines();
