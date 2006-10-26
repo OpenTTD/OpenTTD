@@ -577,7 +577,10 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x1C: /* Miscellaneous flags */
-			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
+			FOR_EACH_OBJECT {
+				ei[i].misc_flags = grf_load_byte(&buf);
+				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
+			}
 			break;
 
 		case 0x1D: /* Cargo classes allowed */
@@ -684,7 +687,10 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			break;
 
 		case 0x17: /* Miscellaneous flags */
-			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
+			FOR_EACH_OBJECT {
+				ei[i].misc_flags = grf_load_byte(&buf);
+				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
+			}
 			break;
 
 		case 0x18: /* Cargo classes allowed */
@@ -790,7 +796,10 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 			break;
 
 		case 0x17: /* Miscellaneous flags */
-			FOR_EACH_OBJECT ei[i].misc_flags = grf_load_byte(&buf);
+			FOR_EACH_OBJECT {
+				ei[i].misc_flags = grf_load_byte(&buf);
+				if (HASBIT(ei[i].misc_flags, EF_USES_2CC)) _have_2cc = true;
+			}
 			break;
 
 		case 0x18: /* Cargo classes allowed */
