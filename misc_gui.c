@@ -972,12 +972,35 @@ void HandleEditBox(Window *w, querystr_d *string, int wid)
 
 void DrawEditBox(Window *w, querystr_d *string, int wid)
 {
-	const Widget *wi = w->widget + wid;
+	DrawPixelInfo dpi, *old_dpi;
+	int delta;
+	const Widget *wi = &w->widget[wid];
 	const Textbuf *tb = &string->text;
 
-	GfxFillRect(wi->left+1, wi->top+1, wi->right-1, wi->bottom-1, 215);
-	DoDrawString(tb->buf, wi->left+2, wi->top+1, 8);
-	if (tb->caret) DoDrawString("_", wi->left + 2 + tb->caretxoffs, wi->top + 1, 12);
+	/* Limit the drawing of the string inside the widget boundaries */
+	if (!FillDrawPixelInfo(&dpi,
+	     	wi->left + 4,
+	     	wi->top + 1,
+	     	wi->right - wi->left - 4,
+	     	wi->bottom - wi->top - 1)
+	) return;
+
+	GfxFillRect(wi->left + 1, wi->top + 1, wi->right - 1, wi->bottom - 1, 215);
+
+	old_dpi = _cur_dpi;
+	_cur_dpi = &dpi;
+
+	/* We will take the current widget length as maximum width, with a small
+	 * space reserved at the end for the caret to show */
+	delta = (wi->right - wi->left) - tb->width - 10;
+	if (delta > 0) delta = 0;
+
+	if (tb->caretxoffs + delta < 0) delta = -tb->caretxoffs;
+
+	DoDrawString(tb->buf, delta, 0, 8);
+	if (tb->caret) DoDrawString("_", tb->caretxoffs + delta, 0, 12);
+
+	_cur_dpi = old_dpi;
 }
 
 static void QueryStringWndProc(Window *w, WindowEvent *e)
