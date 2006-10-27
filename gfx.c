@@ -415,41 +415,66 @@ void DrawStringCenterUnderlineTruncated(int xl, int xr, int y, StringID str, uin
 	GfxFillRect((xl + xr - w) / 2, y + 10, (xl + xr + w) / 2, y + 10, _string_colorremap[1]);
 }
 
-static uint32 FormatStringLinebreaks(char *str, int maxw)
+/** 'Correct' a string to a maximum length. Longer strings will be cut into
+ * additional lines at whitespace characters if possible. The string parameter
+ * is modified with terminating characters mid-string which are the
+ * placeholders for the newlines.<br/>
+ * The string WILL be truncated if there was no whitespace for the current
+ * line's maximum width.
+ *
+ * @note To know if the the terminating '\0' is the string end or just a
+ * newline, the returned 'num' value should be consulted. The num'th '\0',
+ * starting with index 0 is the real string end.
+ *
+ * @param str string to check and correct for length restrictions
+ * @param maxw the maximum width the string can have on one line
+ * @return return a 32bit wide number consisting of 2 packed values:
+ *  0 - 15 the number of lines ADDED to the string
+ * 16 - 31 the fontsize in which the length calculation was done at */
+uint32 FormatStringLinebreaks(char *str, int maxw)
 {
-	int num = 0;
 	FontSize size = _cur_fontsize;
-	int w;
-	char *last_space;
-	byte c;
+	int num = 0;
+
+	assert(maxw > 0);
 
 	for (;;) {
-		w = 0;
-		last_space = NULL;
+		char *last_space = NULL;
+		int w = 0;
 
 		for (;;) {
-			c = *str++;
+			byte c = *str++;
+			/* whitespace is where we will insert the line-break */
 			if (c == ASCII_LETTERSTART) last_space = str;
 
 			if (c >= ASCII_LETTERSTART) {
 				w += GetCharacterWidth(size, c);
+				/* string is longer than maximum width so we need to decide what to
+				 * do. We can do two things:
+				 * 1. If no whitespace was found at all up until now (on this line) then
+				 *    we will truncate the string and bail out.
+				 * 2. In all other cases force a linebreak at the last seen whitespace */
 				if (w > maxw) {
-					str = last_space;
-					if (str == NULL)
+					if (last_space == NULL) {
+						str[-1] = '\0';
 						return num + (size << 16);
+					}
+					str = last_space;
 					break;
 				}
 			} else {
-				if (c == 0) return num + (size << 16);
-				if (c == ASCII_NL) break;
-
-				if (c == ASCII_SETX) str++;
-				else if (c == ASCII_SETXY) str += 2;
-				else if (c == ASCII_TINYFONT) size = FS_SMALL;
-				else if (c == ASCII_BIGFONT) size = FS_LARGE;
+				switch (c) {
+					case '\0': return num + (size << 16); break;
+					case ASCII_SETX:  str++; break;
+					case ASCII_SETXY: str +=2; break;
+					case ASCII_TINYFONT: size = FS_SMALL; break;
+					case ASCII_BIGFONT:  size = FS_LARGE; break;
+					case ASCII_NL: goto end_of_inner_loop;
+				}
 			}
 		}
-
+end_of_inner_loop:
+		/* string didn't fit on line, so 'dummy' terminate and increase linecount */
 		num++;
 		str[-1] = '\0';
 	}

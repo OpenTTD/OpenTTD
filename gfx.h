@@ -68,6 +68,7 @@ void GfxFillRect(int left, int top, int right, int bottom, int color);
 void GfxDrawLine(int left, int top, int right, int bottom, int color);
 
 BoundingRect GetStringBoundingBox(const char *str);
+uint32 FormatStringLinebreaks(char *str, int maxw);
 void LoadStringWidthTable(void);
 void DrawStringMultiCenter(int x, int y, StringID str, int maxw);
 uint DrawStringMultiLine(int x, int y, StringID str, int maxw);
