@@ -1503,22 +1503,11 @@ int32 CmdBuildIndustry(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	SET_EXPENSES_TYPE(EXPENSES_OTHER);
 
-	/* Check if the to-be built/founded industry is available for this climate.
-	 * Unfortunately we have no easy way of checking, except for looping the table */
-	{
-		const byte *i;
-		bool found = false;
-
-		for (i = &_build_industry_types[_opt_ptr->landscape][0]; i != endof(_build_industry_types[_opt_ptr->landscape]); i++) {
-			if (*i == p1) {
-				found = true;
-				break;
-			}
-		}
-		if (!found) return CMD_ERROR;
-	}
-
 	indspec = GetIndustrySpec(p1);
+
+	/* Check if the to-be built/founded industry is available for this climate. */
+	if (!HASBIT(indspec->climate_availability, _opt_ptr->landscape)) return CMD_ERROR;
+
 	/* If the patch for raw-material industries is not on, you cannot build raw-material industries.
 	 * Raw material industries are industries that do not accept cargo (at least for now)
 	 * Exclude the lumber mill (only "raw" industry that can be built) */
