@@ -3,6 +3,7 @@
 #include "stdafx.h"
 #include "openttd.h"
 #include "functions.h"
+#include "macros.h"
 #include "strings.h"
 #include "gfx.h"
 #include "viewport.h"
@@ -26,7 +27,7 @@ typedef struct TextEffect {
 	uint32 params_2;
 } TextEffect;
 
-#define MAX_TEXTMESSAGE_LENGTH 250
+#define MAX_TEXTMESSAGE_LENGTH 150
 
 typedef struct TextMessage {
 	char message[MAX_TEXTMESSAGE_LENGTH];
@@ -44,48 +45,61 @@ static bool _textmessage_visible = false;
 
 /* The chatbox grows from the bottom so the coordinates are pixels from
  * the left and pixels from the bottom. The height is the maximum height */
-static const Oblong _textmsg_box = {10, 30, 400, 150};
-static Pixel _textmessage_backup[150 * 400]; // (height * width)
+static const Oblong _textmsg_box = {10, 30, 500, 150};
+static Pixel _textmessage_backup[150 * 500]; // (height * width)
 
 extern void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch);
 
-// Duration is in game-days
+static inline uint GetTextMessageCount(void)
+{
+	uint i = 0;
+
+	for (i; i < MAX_CHAT_MESSAGES; i++) {
+		if (_textmsg_list[i].message[0] == '\0') break;
+	}
+
+	return i;
+}
+
+/* Add a text message to the 'chat window' to be shown
+ * @param color The colour this message is to be shown in
+ * @param duration The duration of the chat message in game-days
+ * @param message message itself in printf() style */
 void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...)
 {
 	char buf[MAX_TEXTMESSAGE_LENGTH];
+	const char *bufp;
 	va_list va;
-	size_t length;
-	uint i;
+	uint msg_count;
+	uint16 lines;
 
 	va_start(va, message);
 	vsnprintf(buf, lengthof(buf), message, va);
 	va_end(va);
 
-	/* Special color magic */
-	if ((color & 0xFF) == 0xC9) color = 0x1CA;
+	/* Force linebreaks for strings that are too long */
+	lines = GB(FormatStringLinebreaks(buf, _textmsg_box.width - 8), 0, 16) + 1;
+	if (lines >= MAX_CHAT_MESSAGES) return;
 
-	/* Cut the message till it fits inside the chatbox */
-	length = strlen(buf);
-	while (GetStringBoundingBox(buf).width > _textmsg_box.width - 9) buf[--length] = '\0';
-
-	/* Find an empty spot and put the message there */
-	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_textmsg_list[i].message[0] == '\0') {
-			// Empty spot
-			ttd_strlcpy(_textmsg_list[i].message, buf, sizeof(_textmsg_list[i].message));
-			_textmsg_list[i].color = color;
-			_textmsg_list[i].end_date = _date + duration;
-
-			_textmessage_dirty = true;
-			return;
-		}
+	msg_count = GetTextMessageCount();
+	/* We want to add more chat messages than there is free space for, remove 'old' */
+	if (lines > MAX_CHAT_MESSAGES - msg_count) {
+		int i = lines - (MAX_CHAT_MESSAGES - msg_count);
+		memmove(&_textmsg_list[0], &_textmsg_list[i], sizeof(_textmsg_list[0]) * (msg_count - i));
+		msg_count = MAX_CHAT_MESSAGES - lines;
 	}
 
-	// We did not found a free spot, trash the first one, and add to the end
-	memmove(&_textmsg_list[0], &_textmsg_list[1], sizeof(_textmsg_list[0]) * (MAX_CHAT_MESSAGES - 1));
-	ttd_strlcpy(_textmsg_list[MAX_CHAT_MESSAGES - 1].message, buf, sizeof(_textmsg_list[MAX_CHAT_MESSAGES - 1].message));
-	_textmsg_list[MAX_CHAT_MESSAGES - 1].color = color;
-	_textmsg_list[MAX_CHAT_MESSAGES - 1].end_date = _date + duration;
+	for (bufp = buf; lines != 0; lines--) {
+		TextMessage *tmsg = &_textmsg_list[msg_count++];
+		ttd_strlcpy(tmsg->message, bufp, sizeof(tmsg->message));
+
+		/* The default colour for a message is player colour. Replace this with
+		 * white for any additional lines */
+		tmsg->color = (bufp == buf && color & IS_PALETTE_COLOR) ? color : (0x1D - 15) | IS_PALETTE_COLOR;
+		tmsg->end_date = _date + duration;
+
+		bufp += strlen(bufp) + 1; // jump to 'next line' in the formatted string
+	}
 
 	_textmessage_dirty = true;
 }
@@ -142,12 +156,13 @@ void TextMessageDailyLoop(void)
 	uint i;
 
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_textmsg_list[i].message[0] == '\0') continue;
+		TextMessage *tmsg = &_textmsg_list[i];
+		if (tmsg->message[0] == '\0') continue;
 
-		if (_date > _textmsg_list[i].end_date) {
+		/* Message has expired, remove from the list */
+		if (tmsg->end_date < _date) {
 			/* Move the remaining messages over the current message */
-			if (i != MAX_CHAT_MESSAGES - 1)
-				memmove(&_textmsg_list[i], &_textmsg_list[i + 1], sizeof(_textmsg_list[i]) * (MAX_CHAT_MESSAGES - i - 1));
+			if (i != MAX_CHAT_MESSAGES - 1) memmove(tmsg, tmsg + 1, sizeof(*tmsg) * (MAX_CHAT_MESSAGES - i - 1));
 
 			/* Mark the last item as empty */
 			_textmsg_list[MAX_CHAT_MESSAGES - 1].message[0] = '\0';
@@ -199,7 +214,6 @@ void DrawTextMessage(void)
 		j++;
 		GfxFillRect(_textmsg_box.x, _screen.height-_textmsg_box.y-j*13-2, _textmsg_box.x+_textmsg_box.width - 1, _screen.height-_textmsg_box.y-j*13+10, /* black, but with some alpha */ 0x322 | USE_COLORTABLE);
 
-		DoDrawString(_textmsg_list[i].message, _textmsg_box.x + 2, _screen.height - _textmsg_box.y - j * 13 - 1, 0x10);
 		DoDrawString(_textmsg_list[i].message, _textmsg_box.x + 3, _screen.height - _textmsg_box.y - j * 13, _textmsg_list[i].color);
 	}
 

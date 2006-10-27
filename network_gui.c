@@ -49,7 +49,7 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(network_ql_d));
 /* Global to remember sorting after window has been closed */
 static Listing _ng_sorting;
 
-static char _edit_str_buf[64];
+static char _edit_str_buf[150];
 static bool _chat_tab_completion_active;
 
 static void ShowNetworkStartServerWindow(void);
@@ -1708,7 +1708,7 @@ void ShowNetworkChatQueryWindow(DestType type, byte dest)
 	WP(w,querystr_d).wnd_class = WC_MAIN_TOOLBAR;
 	WP(w,querystr_d).wnd_num = 0;
 	WP(w,querystr_d).afilter = CS_ALPHANUMERAL;
-	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), w->widget[2].right - w->widget[2].left);
+	InitializeTextBuffer(&WP(w, querystr_d).text, _edit_str_buf, lengthof(_edit_str_buf), 0);
 }
 
 #endif /* ENABLE_NETWORK */
