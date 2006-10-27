@@ -98,7 +98,7 @@ static const Widget _depot_widgets[] = {
 	/* The buttons in the bottom of the window. left and right is not important as they are later resized to be equal in size
 	 * This calculation is based on right in DEPOT_WIDGET_LOCATION and it presumes left of DEPOT_WIDGET_BUILD is 0            */
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    85,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_BUILD
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    86,   170,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
+	{    WWT_TEXTBTN,     RESIZE_TB,    14,    86,   170,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   171,   257,    84,    95, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
 	{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   258,   269,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_VEHICLE_LIST
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   280,    84,    95, SPR_FLAG_VEH_STOPPED,STR_NULL},                         // DEPOT_WIDGET_STOP_ALL
