@@ -1532,6 +1532,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Restart
 
 STR_NETWORK_SERVER                                              :Serwer
 STR_NETWORK_CLIENT                                              :Klient
+STR_NETWORK_SPECTATORS                                          :Widzowie
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(brak)
 STR_NETWORK_CLIENTLIST_KICK                                     :Wyrzuc
@@ -3232,7 +3233,7 @@ STR_HELIPORTS                                                   :{BLACK}Ladowisk
 
 STR_MEASURE_LENGTH                                              :{BLACK}Dlugosc: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Obszar: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dlugosc: {NUM} x {NUM}{}Roznica wysokosci: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dlugosc: {NUM}{}Roznica wysokosci: {NUM} m
 STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Obszar: {NUM} x {NUM}{}Roznica wysokosci: {NUM} m
 
 ########

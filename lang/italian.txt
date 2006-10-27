@@ -1933,7 +1933,7 @@ STR_SV_STNAME_SOUTH                                             :{STRING} Sud
 STR_SV_STNAME_EAST                                              :{STRING} Est
 STR_SV_STNAME_WEST                                              :{STRING} Ovest
 STR_SV_STNAME_CENTRAL                                           :{STRING} Centrale
-STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
+STR_SV_STNAME_TRANSFER                                          :{STRING} Interscambio
 STR_SV_STNAME_HALT                                              :{STRING} Fermata
 STR_SV_STNAME_VALLEY                                            :{STRING} Valle
 STR_SV_STNAME_HEIGHTS                                           :{STRING} Altura
@@ -1943,7 +1943,7 @@ STR_SV_STNAME_EXCHANGE                                          :{STRING} Scambi
 STR_SV_STNAME_AIRPORT                                           :{STRING} Aeroporto
 STR_SV_STNAME_OILFIELD                                          :{STRING} Giacimento petrolifero
 STR_SV_STNAME_MINES                                             :{STRING} Miniere
-STR_SV_STNAME_DOCKS                                             :{STRING} Mol
+STR_SV_STNAME_DOCKS                                             :{STRING} Molo
 STR_SV_STNAME_BUOY_1                                            :{STRING} Boa 1
 STR_SV_STNAME_BUOY_2                                            :{STRING} Boa 2
 STR_SV_STNAME_BUOY_3                                            :{STRING} Boa 3
@@ -1958,7 +1958,7 @@ STR_SV_STNAME_SIDINGS                                           :{STRING} Raccor
 STR_SV_STNAME_BRANCH                                            :{STRING} Ramo
 STR_SV_STNAME_UPPER                                             :Alta {STRING}
 STR_SV_STNAME_LOWER                                             :Bassa {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Heliporto
+STR_SV_STNAME_HELIPORT                                          :{STRING} Eliporto
 STR_SV_STNAME_FOREST                                            :{STRING} Foresta
 
 ############ end of	savegame specific region!
@@ -2055,7 +2055,7 @@ STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Spese/Ri
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Costruzioni
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nuovi Veicoli
-STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Costi UsoTreni
+STR_7013_TRAIN_RUNNING_COSTS                                    :{GOLD}Costi Uso Treni
 STR_7014_ROAD_VEH_RUNNING_COSTS                                 :{GOLD}Costi Uso Veicoli
 STR_7015_AIRCRAFT_RUNNING_COSTS                                 :{GOLD}Costi Uso Aerei
 STR_7016_SHIP_RUNNING_COSTS                                     :{GOLD}Costi Uso Navi

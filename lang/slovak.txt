@@ -1509,6 +1509,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server 
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
+STR_NETWORK_SPECTATORS                                          :Pozorovatelia
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(nikto)
 STR_NETWORK_CLIENTLIST_KICK                                     :Vyhodit
@@ -3088,6 +3089,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Hmotnost
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Rychlost: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestujucich, {COMMA} balikov posty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prestavatelne na: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :V¨etky druhy nákladu
+STR_PURCHASE_INFO_ALL_BUT                                       :V¨etko okrem {GOLD}
 
 ########### String for New Landscape Generator
 
