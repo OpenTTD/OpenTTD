@@ -52,9 +52,9 @@ extern void memcpy_pitch(void *dst, void *src, int w, int h, int srcpitch, int d
 
 static inline uint GetTextMessageCount(void)
 {
-	uint i = 0;
+	uint i;
 
-	for (i; i < MAX_CHAT_MESSAGES; i++) {
+	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
 		if (_textmsg_list[i].message[0] == '\0') break;
 	}
 
@@ -185,8 +185,7 @@ void DrawTextMessage(void)
 	// First undraw if needed
 	UndrawTextMessage();
 
-	if (_iconsole_mode == ICONSOLE_FULL)
-		return;
+	if (_iconsole_mode == ICONSOLE_FULL) return;
 
 	/* Check if we have anything to draw at all */
 	has_message = false;
