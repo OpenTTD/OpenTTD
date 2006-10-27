@@ -90,14 +90,14 @@ typedef enum grfspec_feature {
 
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
 
-static const uint _vehcounts[4] = {
+static const int _vehcounts[4] = {
 	/* GSF_TRAIN */    NUM_TRAIN_ENGINES,
 	/* GSF_ROAD */     NUM_ROAD_ENGINES,
 	/* GSF_SHIP */     NUM_SHIP_ENGINES,
 	/* GSF_AIRCRAFT */ NUM_AIRCRAFT_ENGINES
 };
 
-static const uint _vehshifts[4] = {
+static const int _vehshifts[4] = {
 	/* GSF_TRAIN */    0,
 	/* GSF_ROAD */     ROAD_ENGINES_INDEX,
 	/* GSF_SHIP */     SHIP_ENGINES_INDEX,
@@ -2615,7 +2615,7 @@ static void ParamSet(byte *buf, int len)
 							uint start = 0;
 							uint size  = 0;
 							uint shift = _vehshifts[feature];
-							uint i;
+							int i;
 
 							if (op == 6) {
 								/* Return GRFID of set that reserved ID */
