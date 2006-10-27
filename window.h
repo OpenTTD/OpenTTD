@@ -547,7 +547,6 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(dropdown_d));
 /****************** THESE ARE NOT WIDGET TYPES!!!!! *******************/
 enum WindowWidgetBehaviours {
 	WWB_PUSHBUTTON  = 1 << 5,
-	WWB_NODISBUTTON = 2 << 5,
 
 	WWB_MASK        = 0xE0,
 };
@@ -581,7 +580,6 @@ enum WindowWidgetTypes {
 	WWT_PUSHBTN     = WWT_PANEL   | WWB_PUSHBUTTON,
 	WWT_PUSHTXTBTN  = WWT_TEXTBTN | WWB_PUSHBUTTON,
 	WWT_PUSHIMGBTN  = WWT_IMGBTN  | WWB_PUSHBUTTON,
-	WWT_NODISTXTBTN = WWT_TEXTBTN | WWB_NODISBUTTON,
 };
 
 #define WIDGETS_END WWT_LAST,   RESIZE_NONE,     0,     0,     0,     0,     0, 0, STR_NULL
