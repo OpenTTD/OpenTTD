@@ -90,14 +90,14 @@ typedef enum grfspec_feature {
 
 typedef void (*SpecialSpriteHandler)(byte *buf, int len);
 
-static const int _vehcounts[4] = {
+static const uint _vehcounts[4] = {
 	/* GSF_TRAIN */    NUM_TRAIN_ENGINES,
 	/* GSF_ROAD */     NUM_ROAD_ENGINES,
 	/* GSF_SHIP */     NUM_SHIP_ENGINES,
 	/* GSF_AIRCRAFT */ NUM_AIRCRAFT_ENGINES
 };
 
-static const int _vehshifts[4] = {
+static const uint _vehshifts[4] = {
 	/* GSF_TRAIN */    0,
 	/* GSF_ROAD */     ROAD_ENGINES_INDEX,
 	/* GSF_SHIP */     SHIP_ENGINES_INDEX,
@@ -110,6 +110,9 @@ enum {
 
 static uint16 cargo_allowed[TOTAL_NUM_ENGINES];
 static uint16 cargo_disallowed[TOTAL_NUM_ENGINES];
+
+/* Contains the GRF ID of the owner of a vehicle if it has been reserved */
+static uint32 _grm_engines[TOTAL_NUM_ENGINES];
 
 /* Debugging messages policy:
  *
@@ -2595,8 +2598,91 @@ static void ParamSet(byte *buf, int len)
 				return;
 			} else {
 				/* GRF Resource Management */
-				grfmsg(GMS_NOTICE, "ParamSet: GRF Resource Management unsupported.");
-				return;
+				if (_cur_stage != 2) {
+					/* Ignore GRM during initialization */
+					src1 = 0;
+				} else {
+					uint8  op      = src1;
+					uint8  feature = GB(data, 8, 8);
+					uint16 count   = GB(data, 16, 16);
+
+					switch (feature) {
+						case 0x00: /* Trains */
+						case 0x01: /* Road Vehicles */
+						case 0x02: /* Ships */
+						case 0x03: /* Aircraft */
+						{
+							uint start = 0;
+							uint size  = 0;
+							uint shift = _vehshifts[feature];
+							uint i;
+
+							if (op == 6) {
+								/* Return GRFID of set that reserved ID */
+								src1 = _grm_engines[shift + _cur_grffile->param[target]];
+								break;
+							}
+
+							/* With an operation of 2 or 3, we want to reserve a specific block of IDs */
+							if (op == 2 || op == 3) start = _cur_grffile->param[target];
+
+							for (i = start; i < _vehcounts[feature]; i++) {
+								if (_grm_engines[shift + i] == 0) {
+									size++;
+								} else {
+									if (op == 2 || op == 3) break;
+									start = i + 1;
+									size = 0;
+								}
+
+								if (size == count) break;
+							}
+
+							if (size == count) {
+								/* Got the slot... */
+								if (op == 0 || op == 3) {
+									grfmsg(GMS_NOTICE, "GRM: Reserving %d vehicles at %d", count, start);
+									for (i = 0; i < count; i++) _grm_engines[shift + start + i] = _cur_grffile->grfid;
+								}
+								src1 = start;
+							} else {
+								/* Unable to allocate */
+								if (op != 4 && op != 5) {
+									/* Deactivate GRF */
+									grfmsg(GMS_FATAL, "GRM: Unable to allocate %d vehicles, deactivating", count);
+									SETBIT(_cur_grffile->flags, 2);
+									return;
+								}
+
+								grfmsg(GMS_WARN, "GRM: Unable to allocate %d vehicles", count);
+								src1 = -1;
+							}
+							break;
+						}
+
+						case 0x08: /* General sprites */
+							switch (op) {
+								case 0:
+									/* 'Reserve' space at the current sprite ID */
+									src1 = _cur_spriteid;
+									_cur_spriteid += count;
+									break;
+
+								case 1:
+									src1 = _cur_spriteid;
+									break;
+
+								default:
+									grfmsg(GMS_WARN, "GRM: Unsupported operation %d for general sprites", op);
+									return;
+							}
+							break;
+
+						default:
+							grfmsg(GMS_WARN, "GRM: Unsupported feature 0x%X", feature);
+							return;
+					}
+				}
 			}
 		} else {
 			/* Read another GRF File's parameter */
@@ -3116,6 +3202,9 @@ static void ResetNewGRFData(void)
 	memset(&cargo_allowed, 0, sizeof(cargo_allowed));
 	memset(&cargo_disallowed, 0, sizeof(cargo_disallowed));
 
+	// Reset GRM reservations
+	memset(&_grm_engines, 0, sizeof(_grm_engines));
+
 	// Unload sprite group data
 	UnloadWagonOverrides();
 	UnloadRotorOverrideSprites();
@@ -3361,6 +3450,11 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 		if (type == 0xFF) {
 			if (_skip_sprites == 0) {
 				DecodeSpecialSprite(num, stage);
+				if (HASBIT(_cur_grffile->flags, 2)) {
+					/* GRF has been deactivated... */
+					CLRBIT(_cur_grffile->flags, 1);
+					return;
+				}
 				continue;
 			} else {
 				FioSkipBytes(num);
