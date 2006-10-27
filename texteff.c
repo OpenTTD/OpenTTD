@@ -177,8 +177,7 @@ void TextMessageDailyLoop(void)
 // Draw the textmessage-box
 void DrawTextMessage(void)
 {
-	int i, j;
-	bool has_message;
+	uint y, count;
 
 	if (!_textmessage_dirty) return;
 
@@ -188,13 +187,8 @@ void DrawTextMessage(void)
 	if (_iconsole_mode == ICONSOLE_FULL) return;
 
 	/* Check if we have anything to draw at all */
-	has_message = false;
-	for ( i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_textmsg_list[i].message[0] == '\0') break;
-
-		has_message = true;
-	}
-	if (!has_message) return;
+	count = GetTextMessageCount();
+	if (count == 0) return;
 
 	// Make a copy of the screen as it is before painting (for undraw)
 	memcpy_pitch(
@@ -202,19 +196,21 @@ void DrawTextMessage(void)
 		_screen.dst_ptr + _textmsg_box.x + (_screen.height - _textmsg_box.y - _textmsg_box.height) * _screen.pitch,
 		_textmsg_box.width, _textmsg_box.height, _screen.pitch, _textmsg_box.width);
 
-	// Switch to _screen painting
-	_cur_dpi = &_screen;
+	_cur_dpi = &_screen; // switch to _screen painting
 
-	j = 0;
-	// Paint the messages
-	for (i = MAX_CHAT_MESSAGES - 1; i >= 0; i--) {
-		if (_textmsg_list[i].message[0] == '\0') continue;
+	/* Paint a half-transparent box behind the text messages */
+	GfxFillRect(
+			_textmsg_box.x,
+			_screen.height - _textmsg_box.y - count * 13 - 2,
+			_textmsg_box.x + _textmsg_box.width - 1,
+			_screen.height - _textmsg_box.y - 2,
+			0x322 | USE_COLORTABLE // black, but with some alpha for background
+		);
 
-		j++;
-		GfxFillRect(_textmsg_box.x, _screen.height-_textmsg_box.y-j*13-2, _textmsg_box.x+_textmsg_box.width - 1, _screen.height-_textmsg_box.y-j*13+10, /* black, but with some alpha */ 0x322 | USE_COLORTABLE);
-
-		DoDrawString(_textmsg_list[i].message, _textmsg_box.x + 3, _screen.height - _textmsg_box.y - j * 13, _textmsg_list[i].color);
-	}
+	/* Paint the messages starting with the lowest at the bottom */
+	for (y = 13; count-- != 0; y += 13) {
+		DoDrawString(_textmsg_list[count].message, _textmsg_box.x + 3, _screen.height - _textmsg_box.y - y + 1, _textmsg_list[count].color);
+ 	}
 
 	// Make sure the data is updated next flush
 	_video_driver->make_dirty(_textmsg_box.x, _screen.height - _textmsg_box.y - _textmsg_box.height, _textmsg_box.width, _textmsg_box.height);
