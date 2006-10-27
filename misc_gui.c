@@ -886,7 +886,8 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
  * @param buf the buffer that will be holding the data for input
  * @param maxlength maximum length in characters of this buffer
  * @param maxwidth maximum length in pixels of this buffer. If reached, buffer
- * cannot grow, even if maxlength would allow because there is space */
+ * cannot grow, even if maxlength would allow because there is space. A length
+ * of zero '0' means the buffer is only restricted by maxlength */
 void InitializeTextBuffer(Textbuf *tb, const char *buf, uint16 maxlength, uint16 maxwidth)
 {
 	tb->buf = (char*)buf;

@@ -48,7 +48,7 @@ static bool _textmessage_visible = false;
 static const Oblong _textmsg_box = {10, 30, 500, 150};
 static Pixel _textmessage_backup[150 * 500]; // (height * width)
 
-extern void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch);
+extern void memcpy_pitch(void *dst, void *src, int w, int h, int srcpitch, int dstpitch);
 
 static inline uint GetTextMessageCount(void)
 {
@@ -240,8 +240,7 @@ void AddTextEffect(StringID msg, int x, int y, uint16 duration)
 	int w;
 	char buffer[100];
 
-	if (_game_mode == GM_MENU)
-		return;
+	if (_game_mode == GM_MENU) return;
 
 	for (te = _text_effect_list; te->string_id != INVALID_STRING_ID; ) {
 		if (++te == endof(_text_effect_list)) return;
