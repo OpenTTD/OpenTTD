@@ -36,20 +36,16 @@ typedef struct TextMessage {
 
 #define MAX_CHAT_MESSAGES 10
 static TextEffect _text_effect_list[30];
-static TextMessage _text_message_list[MAX_CHAT_MESSAGES];
+static TextMessage _textmsg_list[MAX_CHAT_MESSAGES];
 TileIndex _animated_tile_list[256];
 
-
-static int _textmessage_width = 0;
-static bool _textmessage_dirty = true;
+static bool _textmessage_dirty = false;
 static bool _textmessage_visible = false;
 
-static const int _textmessage_box_left = 10; // Pixels from left
-static const int _textmessage_box_y = 150;  // Height of box
-static const int _textmessage_box_bottom = 30; // Pixels from bottom
-static const int _textmessage_box_max_width = 400; // Max width of box
-
-static Pixel _textmessage_backup[150 * 400]; // (y * max_width)
+/* The chatbox grows from the bottom so the coordinates are pixels from
+ * the left and pixels from the bottom. The height is the maximum height */
+static const Oblong _textmsg_box = {10, 30, 400, 150};
+static Pixel _textmessage_backup[150 * 400]; // (height * width)
 
 extern void memcpy_pitch(void *d, void *s, int w, int h, int spitch, int dpitch);
 
@@ -70,15 +66,15 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 
 	/* Cut the message till it fits inside the chatbox */
 	length = strlen(buf);
-	while (GetStringBoundingBox(buf).width > _textmessage_width - 9) buf[--length] = '\0';
+	while (GetStringBoundingBox(buf).width > _textmsg_box.width - 9) buf[--length] = '\0';
 
 	/* Find an empty spot and put the message there */
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_text_message_list[i].message[0] == '\0') {
+		if (_textmsg_list[i].message[0] == '\0') {
 			// Empty spot
-			ttd_strlcpy(_text_message_list[i].message, buf, sizeof(_text_message_list[i].message));
-			_text_message_list[i].color = color;
-			_text_message_list[i].end_date = _date + duration;
+			ttd_strlcpy(_textmsg_list[i].message, buf, sizeof(_textmsg_list[i].message));
+			_textmsg_list[i].color = color;
+			_textmsg_list[i].end_date = _date + duration;
 
 			_textmessage_dirty = true;
 			return;
@@ -86,10 +82,10 @@ void CDECL AddTextMessage(uint16 color, uint8 duration, const char *message, ...
 	}
 
 	// We did not found a free spot, trash the first one, and add to the end
-	memmove(&_text_message_list[0], &_text_message_list[1], sizeof(_text_message_list[0]) * (MAX_CHAT_MESSAGES - 1));
-	ttd_strlcpy(_text_message_list[MAX_CHAT_MESSAGES - 1].message, buf, sizeof(_text_message_list[MAX_CHAT_MESSAGES - 1].message));
-	_text_message_list[MAX_CHAT_MESSAGES - 1].color = color;
-	_text_message_list[MAX_CHAT_MESSAGES - 1].end_date = _date + duration;
+	memmove(&_textmsg_list[0], &_textmsg_list[1], sizeof(_textmsg_list[0]) * (MAX_CHAT_MESSAGES - 1));
+	ttd_strlcpy(_textmsg_list[MAX_CHAT_MESSAGES - 1].message, buf, sizeof(_textmsg_list[MAX_CHAT_MESSAGES - 1].message));
+	_textmsg_list[MAX_CHAT_MESSAGES - 1].color = color;
+	_textmsg_list[MAX_CHAT_MESSAGES - 1].end_date = _date + duration;
 
 	_textmessage_dirty = true;
 }
@@ -99,10 +95,8 @@ void InitTextMessage(void)
 	uint i;
 
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		_text_message_list[i].message[0] = '\0';
+		_textmsg_list[i].message[0] = '\0';
 	}
-
-	_textmessage_width = _textmessage_box_max_width;
 }
 
 // Hide the textbox
@@ -120,10 +114,10 @@ void UndrawTextMessage(void)
 		// (and now hope this story above makes sense to you ;))
 
 		if (_cursor.visible) {
-			if (_cursor.draw_pos.x + _cursor.draw_size.x >= _textmessage_box_left &&
-				_cursor.draw_pos.x <= _textmessage_box_left + _textmessage_width &&
-				_cursor.draw_pos.y + _cursor.draw_size.y >= _screen.height - _textmessage_box_bottom - _textmessage_box_y &&
-				_cursor.draw_pos.y <= _screen.height - _textmessage_box_bottom) {
+			if (_cursor.draw_pos.x + _cursor.draw_size.x >= _textmsg_box.x &&
+				_cursor.draw_pos.x <= _textmsg_box.x + _textmsg_box.width &&
+				_cursor.draw_pos.y + _cursor.draw_size.y >= _screen.height - _textmsg_box.y - _textmsg_box.height &&
+				_cursor.draw_pos.y <= _screen.height - _textmsg_box.y) {
 				UndrawMouseCursor();
 			}
 		}
@@ -131,12 +125,12 @@ void UndrawTextMessage(void)
 		_textmessage_visible = false;
 		// Put our 'shot' back to the screen
 		memcpy_pitch(
-			_screen.dst_ptr + _textmessage_box_left + (_screen.height-_textmessage_box_bottom-_textmessage_box_y) * _screen.pitch,
+			_screen.dst_ptr + _textmsg_box.x + (_screen.height - _textmsg_box.y - _textmsg_box.height) * _screen.pitch,
 			_textmessage_backup,
-			_textmessage_width, _textmessage_box_y, _textmessage_width, _screen.pitch);
+			_textmsg_box.width, _textmsg_box.height, _textmsg_box.width, _screen.pitch);
 
 		// And make sure it is updated next time
-		_video_driver->make_dirty(_textmessage_box_left, _screen.height-_textmessage_box_bottom-_textmessage_box_y, _textmessage_width, _textmessage_box_y);
+		_video_driver->make_dirty(_textmsg_box.x, _screen.height - _textmsg_box.y - _textmsg_box.height, _textmsg_box.width, _textmsg_box.height);
 
 		_textmessage_dirty = true;
 	}
@@ -148,15 +142,15 @@ void TextMessageDailyLoop(void)
 	uint i;
 
 	for (i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_text_message_list[i].message[0] == '\0') continue;
+		if (_textmsg_list[i].message[0] == '\0') continue;
 
-		if (_date > _text_message_list[i].end_date) {
+		if (_date > _textmsg_list[i].end_date) {
 			/* Move the remaining messages over the current message */
 			if (i != MAX_CHAT_MESSAGES - 1)
-				memmove(&_text_message_list[i], &_text_message_list[i + 1], sizeof(_text_message_list[i]) * (MAX_CHAT_MESSAGES - i - 1));
+				memmove(&_textmsg_list[i], &_textmsg_list[i + 1], sizeof(_textmsg_list[i]) * (MAX_CHAT_MESSAGES - i - 1));
 
 			/* Mark the last item as empty */
-			_text_message_list[MAX_CHAT_MESSAGES - 1].message[0] = '\0';
+			_textmsg_list[MAX_CHAT_MESSAGES - 1].message[0] = '\0';
 			_textmessage_dirty = true;
 
 			/* Go one item back, because we moved the array 1 to the left */
@@ -182,7 +176,7 @@ void DrawTextMessage(void)
 	/* Check if we have anything to draw at all */
 	has_message = false;
 	for ( i = 0; i < MAX_CHAT_MESSAGES; i++) {
-		if (_text_message_list[i].message[0] == '\0') break;
+		if (_textmsg_list[i].message[0] == '\0') break;
 
 		has_message = true;
 	}
@@ -191,8 +185,8 @@ void DrawTextMessage(void)
 	// Make a copy of the screen as it is before painting (for undraw)
 	memcpy_pitch(
 		_textmessage_backup,
-		_screen.dst_ptr + _textmessage_box_left + (_screen.height-_textmessage_box_bottom-_textmessage_box_y) * _screen.pitch,
-		_textmessage_width, _textmessage_box_y, _screen.pitch, _textmessage_width);
+		_screen.dst_ptr + _textmsg_box.x + (_screen.height - _textmsg_box.y - _textmsg_box.height) * _screen.pitch,
+		_textmsg_box.width, _textmsg_box.height, _screen.pitch, _textmsg_box.width);
 
 	// Switch to _screen painting
 	_cur_dpi = &_screen;
@@ -200,17 +194,17 @@ void DrawTextMessage(void)
 	j = 0;
 	// Paint the messages
 	for (i = MAX_CHAT_MESSAGES - 1; i >= 0; i--) {
-		if (_text_message_list[i].message[0] == '\0') continue;
+		if (_textmsg_list[i].message[0] == '\0') continue;
 
 		j++;
-		GfxFillRect(_textmessage_box_left, _screen.height-_textmessage_box_bottom-j*13-2, _textmessage_box_left+_textmessage_width - 1, _screen.height-_textmessage_box_bottom-j*13+10, /* black, but with some alpha */ 0x322 | USE_COLORTABLE);
+		GfxFillRect(_textmsg_box.x, _screen.height-_textmsg_box.y-j*13-2, _textmsg_box.x+_textmsg_box.width - 1, _screen.height-_textmsg_box.y-j*13+10, /* black, but with some alpha */ 0x322 | USE_COLORTABLE);
 
-		DoDrawString(_text_message_list[i].message, _textmessage_box_left + 2, _screen.height - _textmessage_box_bottom - j * 13 - 1, 0x10);
-		DoDrawString(_text_message_list[i].message, _textmessage_box_left + 3, _screen.height - _textmessage_box_bottom - j * 13, _text_message_list[i].color);
+		DoDrawString(_textmsg_list[i].message, _textmsg_box.x + 2, _screen.height - _textmsg_box.y - j * 13 - 1, 0x10);
+		DoDrawString(_textmsg_list[i].message, _textmsg_box.x + 3, _screen.height - _textmsg_box.y - j * 13, _textmsg_list[i].color);
 	}
 
 	// Make sure the data is updated next flush
-	_video_driver->make_dirty(_textmessage_box_left, _screen.height-_textmessage_box_bottom-_textmessage_box_y, _textmessage_width, _textmessage_box_y);
+	_video_driver->make_dirty(_textmsg_box.x, _screen.height - _textmsg_box.y - _textmsg_box.height, _textmsg_box.width, _textmsg_box.height);
 
 	_textmessage_visible = true;
 	_textmessage_dirty = false;

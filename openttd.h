@@ -12,6 +12,11 @@ typedef struct Rect {
 	int left,top,right,bottom;
 } Rect;
 
+typedef struct Oblong {
+	int x, y;
+	int width, height;
+} Oblong;
+
 typedef struct BoundingRect {
 	int width;
 	int height;
