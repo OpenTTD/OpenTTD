@@ -221,7 +221,7 @@ static IniFile *ini_load(const char *filename)
 		*e = '\0';
 
 		// skip comments and empty lines
-		if (*s == '#' || *s == '\0') {
+		if (*s == '#' || *s == ';' || *s == '\0') {
 			uint ns = comment_size + (e - s + 1);
 			uint a = comment_alloc;
 			uint pos;
