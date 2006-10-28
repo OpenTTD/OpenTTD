@@ -32,12 +32,6 @@ void DeleteOilRig(TileIndex tile);
 static byte _industry_sound_ctr;
 static TileIndex _industry_sound_tile;
 
-enum {
-	/* Max industries: 64000 (8 * 8000) */
-	INDUSTRY_POOL_BLOCK_SIZE_BITS = 3,       /* In bits, so (1 << 3) == 8 */
-	INDUSTRY_POOL_MAX_BLOCKS      = 8000,
-};
-
 /**
  * Called if a new block is added to the industry-pool
  */
@@ -47,11 +41,10 @@ static void IndustryPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (i = GetIndustry(start_item); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL) i->index = start_item++;
+	for (i = GetIndustry(start_item); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) i->index = start_item++;
 }
 
-/* Initialize the industry-pool */
-MemoryPool _industry_pool = { "Industry", INDUSTRY_POOL_MAX_BLOCKS, INDUSTRY_POOL_BLOCK_SIZE_BITS, sizeof(Industry), &IndustryPoolNewBlock, NULL, 0, 0, NULL };
+DEFINE_POOL(Industry, Industry, IndustryPoolNewBlock, NULL)
 
 /**
  * Retrieve the type for this industry.  Although it is accessed by a tile,
@@ -1369,7 +1362,7 @@ static Industry *AllocateIndustry(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (i = GetIndustry(0); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL) {
+	for (i = GetIndustry(0); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) {
 		IndustryID index = i->index;
 
 		if (IsValidIndustry(i)) continue;
@@ -1383,7 +1376,7 @@ static Industry *AllocateIndustry(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	return AddBlockToPool(&_industry_pool) ? AllocateIndustry() : NULL;
+	return AddBlockToPool(&_Industry_pool) ? AllocateIndustry() : NULL;
 }
 
 static void DoCreateNewIndustry(Industry *i, TileIndex tile, int type, const IndustryTileTable *it, const Town *t, byte owner)
@@ -1848,8 +1841,8 @@ void IndustryMonthlyLoop(void)
 
 void InitializeIndustries(void)
 {
-	CleanPool(&_industry_pool);
-	AddBlockToPool(&_industry_pool);
+	CleanPool(&_Industry_pool);
+	AddBlockToPool(&_Industry_pool);
 
 	_total_industries = 0;
 	_industry_sort_dirty = true;
@@ -1924,7 +1917,7 @@ static void Load_INDY(void)
 	while ((index = SlIterateArray()) != -1) {
 		Industry *i;
 
-		if (!AddBlockIfNeeded(&_industry_pool, index))
+		if (!AddBlockIfNeeded(&_Industry_pool, index))
 			error("Industries: failed loading savegame: too many industries");
 
 		i = GetIndustry(index);

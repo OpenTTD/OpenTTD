@@ -80,7 +80,7 @@ typedef struct IndustrySpec {
 
 const IndustrySpec *GetIndustrySpec(IndustryType thistype);
 
-extern MemoryPool _industry_pool;
+DECLARE_POOL(Industry, Industry, 3, 8000)
 
 /**
  * Check if an Industry really exists.
@@ -88,22 +88,6 @@ extern MemoryPool _industry_pool;
 static inline bool IsValidIndustry(const Industry *industry)
 {
 	return industry->xy != 0;
-}
-
-/**
- * Get the pointer to the industry with index 'index'
- */
-static inline Industry *GetIndustry(uint index)
-{
-	return (Industry*)GetItemFromPool(&_industry_pool, index);
-}
-
-/**
- * Get the current size of the IndustryPool
- */
-static inline uint16 GetIndustryPoolSize(void)
-{
-	return _industry_pool.total_items;
 }
 
 VARDEF int _total_industries;
@@ -150,7 +134,7 @@ static inline void DeleteIndustry(Industry *i)
 	i->xy = 0;
 }
 
-#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1 < GetIndustryPoolSize()) ? GetIndustry(i->index + 1) : NULL) if (IsValidIndustry(i))
+#define FOR_ALL_INDUSTRIES_FROM(i, start) for (i = GetIndustry(start); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) if (IsValidIndustry(i))
 #define FOR_ALL_INDUSTRIES(i) FOR_ALL_INDUSTRIES_FROM(i, 0)
 
 VARDEF const Industry** _industry_sort;

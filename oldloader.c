@@ -709,7 +709,7 @@ static bool LoadOldIndustry(LoadgameState *ls, int num)
 {
 	Industry *i;
 
-	if (!AddBlockIfNeeded(&_industry_pool, num))
+	if (!AddBlockIfNeeded(&_Industry_pool, num))
 		error("Industries: failed loading savegame: too many industries");
 
 	i = GetIndustry(num);
