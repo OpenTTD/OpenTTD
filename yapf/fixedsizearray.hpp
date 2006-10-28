@@ -41,7 +41,7 @@ struct CFixedSizeArrayT {
 	CFixedSizeArrayT(const CFixedSizeArrayT<Titem_, Tcapacity_>& src)
 	{
 		// share block (header + items) with the source array
-		m_items = const_cast<Titem*>(src.m_items); // here we break the 'const' modifier
+		m_items = src.m_items;
 		RefCnt()++; // now we share block with the source
 	}
 
