@@ -2167,10 +2167,10 @@ static uint32 GetParamVal(byte param, uint32 *cond_val)
 
 		case 0x8B: { /* TTDPatch version */
 			uint major    = 2;
-			uint minor    = 0;
-			uint revision = 10; // special case: 2.0.1 is 2.0.10
-			uint build    = 73;
-			return (major << 24) | (minor << 20) | (revision << 16) | (build * 10);
+			uint minor    = 6;
+			uint revision = 0; // special case: 2.0.1 is 2.0.10
+			uint build    = 1168;
+			return (major << 24) | (minor << 20) | (revision << 16) | build;
 		}
 
 		case 0x8D: /* TTD Version, 00=DOS, 01=Windows */
