@@ -535,7 +535,6 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		}
 	} else {
 		bool next_airport_has_hangar = true;
-		/* If bit 17 is set, next airport is specified by low word of p2, otherwise it's the target airport */
 		StationID next_airport_index = v->u.air.targetairport;
 		const Station *st = GetStation(next_airport_index);
 		/* If the station is not a valid airport or if it has no hangars */
@@ -556,7 +555,7 @@ int32 CmdSendAircraftToHangar(TileIndex tile, uint32 flags, uint32 p1, uint32 p2
 		if (flags & DC_EXEC) {
 			v->current_order.type = OT_GOTO_DEPOT;
 			v->current_order.flags = OF_NON_STOP;
-			if (!(p1 & DEPOT_SERVICE)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
+			if (!(p2 & DEPOT_SERVICE)) SETBIT(v->current_order.flags, OFB_HALT_IN_DEPOT);
 			v->current_order.dest = next_airport_index;
 			InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 			if (p2 & DEPOT_LOCATE_HANGAR || (p2 & DEPOT_SERVICE && v->u.air.state == FLYING && !next_airport_has_hangar)) {
