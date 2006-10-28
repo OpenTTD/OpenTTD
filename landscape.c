@@ -183,8 +183,13 @@ static bool HasFoundationNW(TileIndex tile, Slope slope_here, uint z_here)
 	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, 0, -1), &z);
 
 	return
-		(z_here + (slope_here & SLOPE_N ? TILE_HEIGHT : 0) > z + (slope & SLOPE_E ? TILE_HEIGHT : 0)) ||
-		(z_here + (slope_here & SLOPE_W ? TILE_HEIGHT : 0) > z + (slope & SLOPE_S ? TILE_HEIGHT : 0));
+		(
+			z_here + (slope_here & SLOPE_N ? TILE_HEIGHT : 0) + (slope_here == SLOPE_STEEP_N ? TILE_HEIGHT : 0) >
+			z      + (slope      & SLOPE_E ? TILE_HEIGHT : 0) + (slope      == SLOPE_STEEP_E ? TILE_HEIGHT : 0)
+		) || (
+			z_here + (slope_here & SLOPE_W ? TILE_HEIGHT : 0) + (slope_here == SLOPE_STEEP_W ? TILE_HEIGHT : 0) >
+			z      + (slope      & SLOPE_S ? TILE_HEIGHT : 0) + (slope      == SLOPE_STEEP_S ? TILE_HEIGHT : 0)
+		);
 }
 
 
@@ -194,8 +199,13 @@ static bool HasFoundationNE(TileIndex tile, Slope slope_here, uint z_here)
 	Slope slope = GetFoundationSlope(TILE_ADDXY(tile, -1, 0), &z);
 
 	return
-		(z_here + (slope_here & SLOPE_N ? TILE_HEIGHT : 0) > z + (slope & SLOPE_W ? TILE_HEIGHT : 0)) ||
-		(z_here + (slope_here & SLOPE_E ? TILE_HEIGHT : 0) > z + (slope & SLOPE_S ? TILE_HEIGHT : 0));
+		(
+			z_here + (slope_here & SLOPE_N ? TILE_HEIGHT : 0) + (slope_here == SLOPE_STEEP_N ? TILE_HEIGHT : 0) >
+			z      + (slope      & SLOPE_W ? TILE_HEIGHT : 0) + (slope      == SLOPE_STEEP_W ? TILE_HEIGHT : 0)
+		) || (
+			z_here + (slope_here & SLOPE_E ? TILE_HEIGHT : 0) + (slope_here == SLOPE_STEEP_E ? TILE_HEIGHT : 0) >
+			z      + (slope      & SLOPE_S ? TILE_HEIGHT : 0) + (slope      == SLOPE_STEEP_S ? TILE_HEIGHT : 0)
+		);
 }
 
 
