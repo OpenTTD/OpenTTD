@@ -33,12 +33,6 @@
 #include "yapf/yapf.h"
 #include "date.h"
 
-enum {
-	/* Max roadstops: 64000 (32 * 2000) */
-	ROADSTOP_POOL_BLOCK_SIZE_BITS = 5,       /* In bits, so (1 << 5) == 32 */
-	ROADSTOP_POOL_MAX_BLOCKS      = 2000,
-};
-
 /**
  * Called if a new block is added to the station-pool
  */
