@@ -10,29 +10,24 @@
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
 
-enum {
-	SOUND_POOL_BLOCK_SIZE_BITS = 3, /* (1 << 3) == 8 items */
-	SOUND_POOL_MAX_BLOCKS      = 1000,
-};
-
 static uint _sound_count = 0;
-static MemoryPool _sound_pool = { "Sound", SOUND_POOL_MAX_BLOCKS, SOUND_POOL_BLOCK_SIZE_BITS, sizeof(FileEntry), NULL, NULL, 0, 0, NULL };
+STATIC_POOL(SoundInternal, FileEntry, 3, 1000, NULL, NULL)
 
 
 /* Allocate a new FileEntry */
 FileEntry *AllocateFileEntry(void)
 {
-	if (_sound_count == _sound_pool.total_items) {
-		if (!AddBlockToPool(&_sound_pool)) return NULL;
+	if (_sound_count == GetSoundInternalPoolSize()) {
+		if (!AddBlockToPool(&_SoundInternal_pool)) return NULL;
 	}
 
-	return (FileEntry*)GetItemFromPool(&_sound_pool, _sound_count++);
+	return GetSoundInternal(_sound_count++);
 }
 
 
 void InitializeSoundPool(void)
 {
-	CleanPool(&_sound_pool);
+	CleanPool(&_SoundInternal_pool);
 	_sound_count = 0;
 
 	/* Copy original sound data to the pool */
@@ -43,7 +38,7 @@ void InitializeSoundPool(void)
 FileEntry *GetSound(uint index)
 {
 	if (index >= _sound_count) return NULL;
-	return (FileEntry*)GetItemFromPool(&_sound_pool, index);
+	return GetSoundInternal(index);
 }
 
 
