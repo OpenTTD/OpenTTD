@@ -1273,7 +1273,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			return GetRoadStop(index);
 		}
 		case REF_ENGINE_RENEWS: {
-			if (!AddBlockIfNeeded(&_engine_renew_pool, index))
+			if (!AddBlockIfNeeded(&_EngineRenew_pool, index))
 				error("EngineRenews: failed loading savegame: too many EngineRenews");
 			return GetEngineRenew(index);
 		}

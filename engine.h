@@ -236,15 +236,7 @@ typedef struct EngineRenew EngineRenew;
  * placed here so the only exception to this rule, the saveload code, can use
  * it.
  */
-extern MemoryPool _engine_renew_pool;
-
-/**
- * Get the current size of the EngineRenewPool
- */
-static inline uint16 GetEngineRenewPoolSize(void)
-{
-	return _engine_renew_pool.total_items;
-}
+DECLARE_POOL(EngineRenew, EngineRenew, 3, 8000)
 
 /**
  * Check if a EngineRenew really exists.
@@ -259,18 +251,8 @@ static inline void DeleteEngineRenew(EngineRenew *er)
 	er->from = INVALID_ENGINE;
 }
 
-#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) if (er->from != INVALID_ENGINE) if (IsValidEngineRenew(er))
+#define FOR_ALL_ENGINE_RENEWS_FROM(er, start) for (er = GetEngineRenew(start); er != NULL; er = (er->index + 1U < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1U) : NULL) if (er->from != INVALID_ENGINE) if (IsValidEngineRenew(er))
 #define FOR_ALL_ENGINE_RENEWS(er) FOR_ALL_ENGINE_RENEWS_FROM(er, 0)
-
-/**
- * DO NOT USE outside of engine.c. Is
- * placed here so the only exception to this rule, the saveload code, can use
- * it.
- */
-static inline EngineRenew *GetEngineRenew(uint16 index)
-{
-	return (EngineRenew*)GetItemFromPool(&_engine_renew_pool, index);
-}
 
 
 /**

@@ -450,13 +450,9 @@ bool IsEngineBuildable(uint engine, byte type)
  * Engine Replacement stuff
  ************************************************************************/
 
-static void EngineRenewPoolNewBlock(uint start_item); /* Forward declare for initializer of _engine_renew_pool */
-enum {
-	ENGINE_RENEW_POOL_BLOCK_SIZE_BITS = 3,
-	ENGINE_RENEW_POOL_MAX_BLOCKS      = 8000,
-};
+static void EngineRenewPoolNewBlock(uint start_item);
 
-MemoryPool _engine_renew_pool = { "EngineRe", ENGINE_RENEW_POOL_MAX_BLOCKS, ENGINE_RENEW_POOL_BLOCK_SIZE_BITS, sizeof(EngineRenew), &EngineRenewPoolNewBlock, NULL, 0, 0, NULL };
+DEFINE_POOL(EngineRenew, EngineRenew, EngineRenewPoolNewBlock, NULL)
 
 static void EngineRenewPoolNewBlock(uint start_item)
 {
@@ -464,7 +460,7 @@ static void EngineRenewPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (er = GetEngineRenew(start_item); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) {
+	for (er = GetEngineRenew(start_item); er != NULL; er = (er->index + 1U < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1U) : NULL) {
 		er->index = start_item++;
 		er->from = INVALID_ENGINE;
 	}
@@ -477,7 +473,7 @@ static EngineRenew *AllocateEngineRenew(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (er = GetEngineRenew(0); er != NULL; er = (er->index + 1 < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1) : NULL) {
+	for (er = GetEngineRenew(0); er != NULL; er = (er->index + 1U < GetEngineRenewPoolSize()) ? GetEngineRenew(er->index + 1U) : NULL) {
 		if (IsValidEngineRenew(er)) continue;
 
 		er->to = INVALID_ENGINE;
@@ -486,7 +482,7 @@ static EngineRenew *AllocateEngineRenew(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_engine_renew_pool)) return AllocateEngineRenew();
+	if (AddBlockToPool(&_EngineRenew_pool)) return AllocateEngineRenew();
 
 	return NULL;
 }
@@ -603,7 +599,7 @@ static void Load_ERNW(void)
 	while ((index = SlIterateArray()) != -1) {
 		EngineRenew *er;
 
-		if (!AddBlockIfNeeded(&_engine_renew_pool, index))
+		if (!AddBlockIfNeeded(&_EngineRenew_pool, index))
 			error("EngineRenews: failed loading savegame: too many EngineRenews");
 
 		er = GetEngineRenew(index);
@@ -670,6 +666,6 @@ const ChunkHandler _engine_chunk_handlers[] = {
 void InitializeEngines(void)
 {
 	/* Clean the engine renew pool and create 1 block in it */
-	CleanPool(&_engine_renew_pool);
-	AddBlockToPool(&_engine_renew_pool);
+	CleanPool(&_EngineRenew_pool);
+	AddBlockToPool(&_EngineRenew_pool);
 }
