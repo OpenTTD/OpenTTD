@@ -1196,7 +1196,7 @@ static bool LoadOldVehicle(LoadgameState *ls, int num)
 
 		_current_vehicle_id = num * _old_vehicle_multiplier + i;
 
-		if (!AddBlockIfNeeded(&_vehicle_pool, _current_vehicle_id))
+		if (!AddBlockIfNeeded(&_Vehicle_pool, _current_vehicle_id))
 			error("Vehicles: failed loading savegame: too many vehicles");
 
 		v = GetVehicle(_current_vehicle_id);

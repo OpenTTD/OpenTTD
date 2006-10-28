@@ -1253,7 +1253,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			return GetOrder(index);
 		}
 		case REF_VEHICLE: {
-			if (!AddBlockIfNeeded(&_vehicle_pool, index))
+			if (!AddBlockIfNeeded(&_Vehicle_pool, index))
 				error("Vehicles: failed loading savegame: too many vehicles");
 			return GetVehicle(index);
 		}
@@ -1286,7 +1286,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			if (index == INVALID_VEHICLE)
 				return NULL;
 
-			if (!AddBlockIfNeeded(&_vehicle_pool, index))
+			if (!AddBlockIfNeeded(&_Vehicle_pool, index))
 				error("Vehicles: failed loading savegame: too many vehicles");
 			return GetVehicle(index);
 		}

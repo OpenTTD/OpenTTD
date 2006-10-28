@@ -359,23 +359,7 @@ Direction GetDirectionTowards(const Vehicle* v, int x, int y);
 #define BEGIN_ENUM_WAGONS(v) do {
 #define END_ENUM_WAGONS(v) } while ( (v=v->next) != NULL);
 
-extern MemoryPool _vehicle_pool;
-
-/**
- * Get the pointer to the vehicle with index 'index'
- */
-static inline Vehicle *GetVehicle(VehicleID index)
-{
-	return (Vehicle*)GetItemFromPool(&_vehicle_pool, index);
-}
-
-/**
- * Get the current size of the VehiclePool
- */
-static inline uint16 GetVehiclePoolSize(void)
-{
-	return _vehicle_pool.total_items;
-}
+DECLARE_POOL(Vehicle, Vehicle, 9, 125)
 
 static inline VehicleID GetVehicleArraySize(void)
 {
@@ -403,7 +387,7 @@ static inline void DeleteVehicle(Vehicle *v)
 	v->type = 0;
 }
 
-#define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))
+#define FOR_ALL_VEHICLES_FROM(v, start) for (v = GetVehicle(start); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) if (IsValidVehicle(v))
 #define FOR_ALL_VEHICLES(v) FOR_ALL_VEHICLES_FROM(v, 0)
 
 /**

@@ -79,10 +79,6 @@ const uint32 _send_to_depot_proc_table[] = {
 
 
 enum {
-	/* Max vehicles: 64000 (512 * 125) */
-	VEHICLES_POOL_BLOCK_SIZE_BITS = 9,       /* In bits, so (1 << 9) == 512 */
-	VEHICLES_POOL_MAX_BLOCKS      = 125,
-
 	BLOCKS_FOR_SPECIAL_VEHICLES   = 2, ///< Blocks needed for special vehicles
 };
 
@@ -95,11 +91,11 @@ static void VehiclePoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (v = GetVehicle(start_item); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) v->index = start_item++;
+	for (v = GetVehicle(start_item); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) v->index = start_item++;
 }
 
 /* Initialize the vehicle-pool */
-MemoryPool _vehicle_pool = { "Vehicle", VEHICLES_POOL_MAX_BLOCKS, VEHICLES_POOL_BLOCK_SIZE_BITS, sizeof(Vehicle), &VehiclePoolNewBlock, NULL, 0, 0, NULL };
+DEFINE_POOL(Vehicle, Vehicle, VehiclePoolNewBlock, NULL)
 
 void VehicleServiceInDepot(Vehicle *v)
 {
@@ -297,9 +293,9 @@ Vehicle *ForceAllocateSpecialVehicle(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (v = GetVehicle(0); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
+	for (v = GetVehicle(0); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 		/* No more room for the special vehicles, return NULL */
-		if (v->index >= (1 << _vehicle_pool.block_size_bits) * BLOCKS_FOR_SPECIAL_VEHICLES)
+		if (v->index >= (1 << Vehicle_POOL_BLOCK_SIZE_BITS) * BLOCKS_FOR_SPECIAL_VEHICLES)
 			return NULL;
 
 		if (!IsValidVehicle(v)) return InitializeVehicle(v);
@@ -314,26 +310,26 @@ Vehicle *ForceAllocateSpecialVehicle(void)
  * *skip_vehicles is an offset to where in the array we should begin looking
  * this is to avoid looping though the same vehicles more than once after we learned that they are not free
  * this feature is used by AllocateVehicles() since it need to allocate more than one and when
- * another block is added to _vehicle_pool, since we only do that when we know it's already full
+ * another block is added to _Vehicle_pool, since we only do that when we know it's already full
  */
 static Vehicle *AllocateSingleVehicle(VehicleID *skip_vehicles)
 {
 	/* See note by ForceAllocateSpecialVehicle() why we skip the
 	 * first blocks */
 	Vehicle *v;
-	const int offset = (1 << VEHICLES_POOL_BLOCK_SIZE_BITS) * BLOCKS_FOR_SPECIAL_VEHICLES;
+	const int offset = (1 << Vehicle_POOL_BLOCK_SIZE_BITS) * BLOCKS_FOR_SPECIAL_VEHICLES;
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	if (*skip_vehicles < (_vehicle_pool.total_items - offset)) { // make sure the offset in the array is not larger than the array itself
-		for (v = GetVehicle(offset + *skip_vehicles); v != NULL; v = (v->index + 1 < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
+	if (*skip_vehicles < (_Vehicle_pool.total_items - offset)) { // make sure the offset in the array is not larger than the array itself
+		for (v = GetVehicle(offset + *skip_vehicles); v != NULL; v = (v->index + 1U < GetVehiclePoolSize()) ? GetVehicle(v->index + 1) : NULL) {
 			(*skip_vehicles)++;
 			if (!IsValidVehicle(v)) return InitializeVehicle(v);
 		}
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_vehicle_pool))
+	if (AddBlockToPool(&_Vehicle_pool))
 		return AllocateSingleVehicle(skip_vehicles);
 
 	return NULL;
@@ -451,10 +447,10 @@ void InitializeVehicles(void)
 	/* Clean the vehicle pool, and reserve enough blocks
 	 *  for the special vehicles, plus one for all the other
 	 *  vehicles (which is increased on-the-fly) */
-	CleanPool(&_vehicle_pool);
-	AddBlockToPool(&_vehicle_pool);
+	CleanPool(&_Vehicle_pool);
+	AddBlockToPool(&_Vehicle_pool);
 	for (i = 0; i < BLOCKS_FOR_SPECIAL_VEHICLES; i++)
-		AddBlockToPool(&_vehicle_pool);
+		AddBlockToPool(&_Vehicle_pool);
 
 	for (i = 0; i < lengthof(_vehicle_position_hash); i++) {
 		_vehicle_position_hash[i] = INVALID_VEHICLE;
@@ -3177,7 +3173,7 @@ static void Load_VEHS(void)
 	while ((index = SlIterateArray()) != -1) {
 		Vehicle *v;
 
-		if (!AddBlockIfNeeded(&_vehicle_pool, index))
+		if (!AddBlockIfNeeded(&_Vehicle_pool, index))
 			error("Vehicles: failed loading savegame: too many vehicles");
 
 		v = GetVehicle(index);
