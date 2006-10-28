@@ -1961,13 +1961,17 @@ static void FeatureNewName(byte *buf, int len)
 	uint16 endid;
 	const char* name;
 	bool new_scheme = _cur_grffile->grf_version >= 7;
+	bool generic;
 
 	check_length(len, 6, "FeatureNewName");
 	buf++;
 	feature  = grf_load_byte(&buf);
 	lang     = grf_load_byte(&buf);
 	num      = grf_load_byte(&buf);
-	id       = (lang & 0x80) ? grf_load_word(&buf) : grf_load_byte(&buf);
+	generic  = HASBIT(lang, 7);
+	id       = generic ? grf_load_word(&buf) : grf_load_byte(&buf);
+
+	CLRBIT(lang, 7);
 
 	if (feature <= GSF_AIRCRAFT && id < _vehcounts[feature]) {
 		id += _vehshifts[feature];
@@ -1978,7 +1982,8 @@ static void FeatureNewName(byte *buf, int len)
 	               id, endid, feature, lang);
 
 	name = (const char*)buf; /*transfer read value*/
-	len -= (lang & 0x80) ? 6 : 5;
+	len -= generic ? 6 : 5;
+
 	for (; id < endid && len > 0; id++) {
 		size_t ofs = strlen(name) + 1;
 

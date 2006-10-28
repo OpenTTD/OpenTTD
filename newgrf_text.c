@@ -233,7 +233,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 
 	newtext = malloc(sizeof(*newtext) + strlen(text_to_add) + 1);
 	newtext->next   = NULL;
-	newtext->langid = GB(langid_to_add, 0, 6);
+	newtext->langid = langid_to_add;
 	strcpy(newtext->text, text_to_add);
 
 	TranslateTTDPatchCodes(newtext->text);
@@ -252,7 +252,7 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 
 		/* Loop through all languages and see if we can replace a string */
 		for (ptext = &_grf_text[id].textholder; (text = *ptext) != NULL; ptext = &text->next) {
-			if (text->langid != GB(langid_to_add, 0, 6)) continue;
+			if (text->langid != langid_to_add) continue;
 			newtext->next = text->next;
 			*ptext = newtext;
 			free(text);
@@ -310,7 +310,7 @@ char *GetGRFString(char *buff, uint16 stringid, const char* last)
 
 		/* If the current string is English or American, set it as the
 		 * fallback language if the specific language isn't available. */
-		if (search_text->langid == GRFLX_ENGLISH || search_text->langid == GRFLX_AMERICAN) {
+		if (search_text->langid == GRFLX_UNSPECIFIED || (default_text == NULL && (search_text->langid == GRFLX_ENGLISH || search_text->langid == GRFLX_AMERICAN))) {
 			default_text = search_text;
 		}
 	}
