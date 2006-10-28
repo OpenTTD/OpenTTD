@@ -24,23 +24,7 @@ struct Waypoint {
 	byte deleted;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 };
 
-extern MemoryPool _waypoint_pool;
-
-/**
- * Get the pointer to the waypoint with index 'index'
- */
-static inline Waypoint *GetWaypoint(WaypointID index)
-{
-	return (Waypoint*)GetItemFromPool(&_waypoint_pool, index);
-}
-
-/**
- * Get the current size of the WaypointPool
- */
-static inline uint16 GetWaypointPoolSize(void)
-{
-	return _waypoint_pool.total_items;
-}
+DECLARE_POOL(Waypoint, Waypoint, 3, 8000)
 
 /**
  * Check if a Waypoint really exists.
@@ -63,7 +47,7 @@ static inline void DeleteWaypoint(Waypoint *wp)
 	wp->xy = 0;
 }
 
-#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL) if (IsValidWaypoint(wp))
+#define FOR_ALL_WAYPOINTS_FROM(wp, start) for (wp = GetWaypoint(start); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) if (IsValidWaypoint(wp))
 #define FOR_ALL_WAYPOINTS(wp) FOR_ALL_WAYPOINTS_FROM(wp, 0)
 
 

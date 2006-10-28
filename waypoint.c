@@ -21,11 +21,7 @@
 #include "date.h"
 
 enum {
-	/* Max waypoints: 64000 (8 * 8000) */
-	WAYPOINT_POOL_BLOCK_SIZE_BITS = 3,       /* In bits, so (1 << 3) == 8 */
-	WAYPOINT_POOL_MAX_BLOCKS      = 8000,
-
-	MAX_WAYPOINTS_PER_TOWN        = 64,
+	MAX_WAYPOINTS_PER_TOWN = 64,
 };
 
 /**
@@ -37,11 +33,10 @@ static void WaypointPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (wp = GetWaypoint(start_item); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL) wp->index = start_item++;
+	for (wp = GetWaypoint(start_item); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) wp->index = start_item++;
 }
 
-/* Initialize the town-pool */
-MemoryPool _waypoint_pool = { "Waypoints", WAYPOINT_POOL_MAX_BLOCKS, WAYPOINT_POOL_BLOCK_SIZE_BITS, sizeof(Waypoint), &WaypointPoolNewBlock, NULL, 0, 0, NULL };
+DEFINE_POOL(Waypoint, Waypoint, WaypointPoolNewBlock, NULL)
 
 /* Create a new waypoint */
 static Waypoint* AllocateWaypoint(void)
@@ -50,7 +45,7 @@ static Waypoint* AllocateWaypoint(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (wp = GetWaypoint(0); wp != NULL; wp = (wp->index + 1 < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1) : NULL) {
+	for (wp = GetWaypoint(0); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) {
 		if (!IsValidWaypoint(wp)) {
 			uint index = wp->index;
 
@@ -62,7 +57,7 @@ static Waypoint* AllocateWaypoint(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_waypoint_pool)) return AllocateWaypoint();
+	if (AddBlockToPool(&_Waypoint_pool)) return AllocateWaypoint();
 
 	return NULL;
 }
@@ -392,8 +387,8 @@ void FixOldWaypoints(void)
 
 void InitializeWaypoints(void)
 {
-	CleanPool(&_waypoint_pool);
-	AddBlockToPool(&_waypoint_pool);
+	CleanPool(&_Waypoint_pool);
+	AddBlockToPool(&_Waypoint_pool);
 }
 
 static const SaveLoad _waypoint_desc[] = {
@@ -429,7 +424,7 @@ static void Load_WAYP(void)
 	while ((index = SlIterateArray()) != -1) {
 		Waypoint *wp;
 
-		if (!AddBlockIfNeeded(&_waypoint_pool, index))
+		if (!AddBlockIfNeeded(&_Waypoint_pool, index))
 			error("Waypoints: failed loading savegame: too many waypoints");
 
 		wp = GetWaypoint(index);
