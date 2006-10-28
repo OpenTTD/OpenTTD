@@ -1004,11 +1004,6 @@ static void UninitNoComp(void)
 //********** START OF MEMORY CODE (in ram)****
 //********************************************
 
-enum {
-	SAVE_POOL_BLOCK_SIZE_BITS = 17,
-	SAVE_POOL_MAX_BLOCKS = 500
-};
-
 #include "network.h"
 #include "table/strings.h"
 #include "table/sprites.h"
@@ -1024,12 +1019,12 @@ typedef struct ThreadedSave {
 } ThreadedSave;
 
 /* A maximum size of of 128K * 500 = 64.000KB savegames */
-static MemoryPool _save_pool = {"Savegame", SAVE_POOL_MAX_BLOCKS, SAVE_POOL_BLOCK_SIZE_BITS, sizeof(byte), NULL, NULL, 0, 0, NULL};
+STATIC_POOL(Savegame, byte, 17, 500, NULL, NULL)
 static ThreadedSave _ts;
 
 static bool InitMem(void)
 {
-	_ts.save = &_save_pool;
+	_ts.save = &_Savegame_pool;
 	_ts.count = 0;
 
 	CleanPool(_ts.save);
@@ -1394,7 +1389,7 @@ void SaveFileError(void)
 
 static OTTDThread* save_thread;
 
-/** We have written the whole game into memory, _save_pool, now find
+/** We have written the whole game into memory, _Savegame_pool, now find
  * and appropiate compressor and start writing to file.
  */
 static void* SaveFileToDisk(void *arg)
