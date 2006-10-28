@@ -16,12 +16,6 @@
 #include "saveload.h"
 #include "vehicle_gui.h"
 
-enum {
-	/* Max orders: 64000 (64 * 1000) */
-	ORDER_POOL_BLOCK_SIZE_BITS = 6,       /* In bits, so (1 << 6) == 64 */
-	ORDER_POOL_MAX_BLOCKS      = 1000,
-};
-
 /**
  * Called if a new block is added to the order-pool
  */
