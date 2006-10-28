@@ -17,23 +17,7 @@ struct Depot {
 	DepotID index;
 };
 
-extern MemoryPool _depot_pool;
-
-/**
- * Get the pointer to the depot with index 'index'
- */
-static inline Depot *GetDepot(DepotID index)
-{
-	return (Depot*)GetItemFromPool(&_depot_pool, index);
-}
-
-/**
- * Get the current size of the DepotPool
- */
-static inline uint16 GetDepotPoolSize(void)
-{
-	return _depot_pool.total_items;
-}
+DECLARE_POOL(Depot, Depot, 3, 8000);
 
 /**
  * Check if a depot really exists.
@@ -58,7 +42,7 @@ static inline void DeleteDepot(Depot *depot)
 
 void ShowDepotWindow(TileIndex tile, byte type);
 
-#define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL) if (IsValidDepot(d))
+#define FOR_ALL_DEPOTS_FROM(d, start) for (d = GetDepot(start); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) if (IsValidDepot(d))
 #define FOR_ALL_DEPOTS(d) FOR_ALL_DEPOTS_FROM(d, 0)
 
 #define MIN_SERVINT_PERCENT  5

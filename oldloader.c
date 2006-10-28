@@ -521,7 +521,7 @@ static const OldChunks depot_chunk[] = {
 
 static bool LoadOldDepot(LoadgameState *ls, int num)
 {
-	if (!AddBlockIfNeeded(&_depot_pool, num))
+	if (!AddBlockIfNeeded(&_Depot_pool, num))
 		error("Depots: failed loading savegame: too many depots");
 
 	if (!LoadChunk(ls, GetDepot(num), depot_chunk)) return false;

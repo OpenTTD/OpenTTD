@@ -10,11 +10,6 @@
 #include "saveload.h"
 #include "order.h"
 
-enum {
-	/* Max depots: 64000 (8 * 8000) */
-	DEPOT_POOL_BLOCK_SIZE_BITS = 3,       /* In bits, so (1 << 3) == 8 */
-	DEPOT_POOL_MAX_BLOCKS      = 8000,
-};
 
 /**
  * Called if a new block is added to the depot-pool
@@ -25,11 +20,10 @@ static void DepotPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (d = GetDepot(start_item); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL) d->index = start_item++;
+	for (d = GetDepot(start_item); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) d->index = start_item++;
 }
 
-/* Initialize the town-pool */
-MemoryPool _depot_pool = { "Depots", DEPOT_POOL_MAX_BLOCKS, DEPOT_POOL_BLOCK_SIZE_BITS, sizeof(Depot), &DepotPoolNewBlock, NULL, 0, 0, NULL };
+DEFINE_POOL(Depot, Depot, DepotPoolNewBlock, NULL)
 
 
 /**
@@ -57,7 +51,7 @@ Depot *AllocateDepot(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (d = GetDepot(0); d != NULL; d = (d->index + 1 < GetDepotPoolSize()) ? GetDepot(d->index + 1) : NULL) {
+	for (d = GetDepot(0); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) {
 		if (!IsValidDepot(d)) {
 			DepotID index = d->index;
 
@@ -69,7 +63,7 @@ Depot *AllocateDepot(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_depot_pool)) return AllocateDepot();
+	if (AddBlockToPool(&_Depot_pool)) return AllocateDepot();
 
 	return NULL;
 }
@@ -91,8 +85,8 @@ void DestroyDepot(Depot *depot)
 
 void InitializeDepots(void)
 {
-	CleanPool(&_depot_pool);
-	AddBlockToPool(&_depot_pool);
+	CleanPool(&_Depot_pool);
+	AddBlockToPool(&_Depot_pool);
 }
 
 
@@ -120,7 +114,7 @@ static void Load_DEPT(void)
 	while ((index = SlIterateArray()) != -1) {
 		Depot *depot;
 
-		if (!AddBlockIfNeeded(&_depot_pool, index))
+		if (!AddBlockIfNeeded(&_Depot_pool, index))
 			error("Depots: failed loading savegame: too many depots");
 
 		depot = GetDepot(index);
