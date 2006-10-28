@@ -464,7 +464,7 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_PLACE_MOUSEUP:
-		if (e->we.click.pt.x != -1) {
+		if (e->we.place.pt.x != -1) {
 			TileIndex start_tile = e->we.place.starttile;
 			TileIndex end_tile = e->we.place.tile;
 

@@ -147,7 +147,7 @@ static void BuildDocksToolbWndProc(Window *w, WindowEvent *e)
 	}
 
 	case WE_PLACE_MOUSEUP:
-		if (e->we.click.pt.x != -1) {
+		if (e->we.place.pt.x != -1) {
 			if ((e->we.place.userdata & 0xF) == VPM_X_AND_Y) { // dragged actions
 				GUIPlaceProcDragXY(e);
 			} else if (e->we.place.userdata == VPM_X_OR_Y) {
