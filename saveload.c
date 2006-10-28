@@ -1248,7 +1248,7 @@ static void *IntToReference(uint index, SLRefType rt)
 
 	switch (rt) {
 		case REF_ORDER: {
-			if (!AddBlockIfNeeded(&_order_pool, index))
+			if (!AddBlockIfNeeded(&_Order_pool, index))
 				error("Orders: failed loading savegame: too many orders");
 			return GetOrder(index);
 		}

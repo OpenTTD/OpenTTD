@@ -497,7 +497,7 @@ static const OldChunks order_chunk[] = {
 
 static bool LoadOldOrder(LoadgameState *ls, int num)
 {
-	if (!AddBlockIfNeeded(&_order_pool, num))
+	if (!AddBlockIfNeeded(&_Order_pool, num))
 		error("Orders: failed loading savegame: too many orders");
 
 	if (!LoadChunk(ls, NULL, order_chunk)) return false;

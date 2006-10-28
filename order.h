@@ -107,23 +107,7 @@ typedef struct {
 VARDEF TileIndex _backup_orders_tile;
 VARDEF BackuppedOrders _backup_orders_data[1];
 
-extern MemoryPool _order_pool;
-
-/**
- * Get the pointer to the order with index 'index'
- */
-static inline Order *GetOrder(OrderID index)
-{
-	return (Order*)GetItemFromPool(&_order_pool, index);
-}
-
-/**
- * Get the current size of the OrderPool
- */
-static inline uint16 GetOrderPoolSize(void)
-{
-	return _order_pool.total_items;
-}
+DECLARE_POOL(Order, Order, 6, 1000)
 
 static inline VehicleOrderID GetOrderArraySize(void)
 {
@@ -149,7 +133,7 @@ static inline void DeleteOrder(Order *o)
 	o->next = NULL;
 }
 
-#define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1 < GetOrderPoolSize()) ? GetOrder(order->index + 1) : NULL) if (IsValidOrder(order))
+#define FOR_ALL_ORDERS_FROM(order, start) for (order = GetOrder(start); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) if (IsValidOrder(order))
 #define FOR_ALL_ORDERS(order) FOR_ALL_ORDERS_FROM(order, 0)
 
 
@@ -160,7 +144,7 @@ static inline bool HasOrderPoolFree(uint amount)
 	const Order *order;
 
 	/* There is always room if not all blocks in the pool are reserved */
-	if (_order_pool.current_blocks < _order_pool.max_blocks)
+	if (_Order_pool.current_blocks < _Order_pool.max_blocks)
 		return true;
 
 	FOR_ALL_ORDERS(order)
