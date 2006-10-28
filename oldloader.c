@@ -1245,7 +1245,7 @@ static const OldChunks sign_chunk[] = {
 
 static bool LoadOldSign(LoadgameState *ls, int num)
 {
-	if (!AddBlockIfNeeded(&_sign_pool, num))
+	if (!AddBlockIfNeeded(&_Sign_pool, num))
 		error("Signs: failed loading savegame: too many signs");
 
 	return LoadChunk(ls, GetSign(num), sign_chunk);

@@ -12,12 +12,6 @@
 
 static Sign *_new_sign;
 
-enum {
-	/* Max signs: 64000 (4 * 16000) */
-	SIGN_POOL_BLOCK_SIZE_BITS = 2,       /* In bits, so (1 << 2) == 4 */
-	SIGN_POOL_MAX_BLOCKS      = 16000,
-};
-
 /**
  * Called if a new block is added to the sign-pool
  */
@@ -27,11 +21,11 @@ static void SignPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (si = GetSign(start_item); si != NULL; si = (si->index + 1 < GetSignPoolSize()) ? GetSign(si->index + 1) : NULL) si->index = start_item++;
+	for (si = GetSign(start_item); si != NULL; si = (si->index + 1U < GetSignPoolSize()) ? GetSign(si->index + 1U) : NULL) si->index = start_item++;
 }
 
 /* Initialize the sign-pool */
-MemoryPool _sign_pool = { "Signs", SIGN_POOL_MAX_BLOCKS, SIGN_POOL_BLOCK_SIZE_BITS, sizeof(Sign), &SignPoolNewBlock, NULL, 0, 0, NULL };
+DEFINE_POOL(Sign, Sign, SignPoolNewBlock, NULL)
 
 /**
  *
@@ -85,7 +79,7 @@ static Sign *AllocateSign(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (si = GetSign(0); si != NULL; si = (si->index + 1 < GetSignPoolSize()) ? GetSign(si->index + 1) : NULL) {
+	for (si = GetSign(0); si != NULL; si = (si->index + 1U < GetSignPoolSize()) ? GetSign(si->index + 1U) : NULL) {
 		if (!IsValidSign(si)) {
 			uint index = si->index;
 
@@ -97,7 +91,7 @@ static Sign *AllocateSign(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_sign_pool))
+	if (AddBlockToPool(&_Sign_pool))
 		return AllocateSign();
 
 	return NULL;
@@ -227,8 +221,8 @@ void PlaceProc_Sign(TileIndex tile)
  */
 void InitializeSigns(void)
 {
-	CleanPool(&_sign_pool);
-	AddBlockToPool(&_sign_pool);
+	CleanPool(&_Sign_pool);
+	AddBlockToPool(&_Sign_pool);
 }
 
 static const SaveLoad _sign_desc[] = {
@@ -268,7 +262,7 @@ static void Load_SIGN(void)
 	while ((index = SlIterateArray()) != -1) {
 		Sign *si;
 
-		if (!AddBlockIfNeeded(&_sign_pool, index))
+		if (!AddBlockIfNeeded(&_Sign_pool, index))
 			error("Signs: failed loading savegame: too many signs");
 
 		si = GetSign(index);

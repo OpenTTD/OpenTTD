@@ -16,23 +16,7 @@ typedef struct Sign {
 	SignID       index;
 } Sign;
 
-extern MemoryPool _sign_pool;
-
-/**
- * Get the pointer to the sign with index 'index'
- */
-static inline Sign *GetSign(SignID index)
-{
-	return (Sign *)GetItemFromPool(&_sign_pool, index);
-}
-
-/**
- * Get the current size of the SignPool
- */
-static inline uint16 GetSignPoolSize(void)
-{
-	return _sign_pool.total_items;
-}
+DECLARE_POOL(Sign, Sign, 2, 16000)
 
 static inline SignID GetSignArraySize(void)
 {
@@ -65,7 +49,7 @@ static inline void DeleteSign(Sign *si)
 	si->str = STR_NULL;
 }
 
-#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1 < GetSignPoolSize()) ? GetSign(ss->index + 1) : NULL) if (IsValidSign(ss))
+#define FOR_ALL_SIGNS_FROM(ss, start) for (ss = GetSign(start); ss != NULL; ss = (ss->index + 1U < GetSignPoolSize()) ? GetSign(ss->index + 1U) : NULL) if (IsValidSign(ss))
 #define FOR_ALL_SIGNS(ss) FOR_ALL_SIGNS_FROM(ss, 0)
 
 VARDEF bool _sign_sort_dirty;
