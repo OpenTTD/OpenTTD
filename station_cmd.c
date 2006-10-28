@@ -71,11 +71,11 @@ static void RoadStopPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL) rs->index = start_item++;
+	for (rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) rs->index = start_item++;
 }
 
 DEFINE_POOL(Station, Station, StationPoolNewBlock, StationPoolCleanBlock)
-MemoryPool _roadstop_pool = { "RoadStop", ROADSTOP_POOL_MAX_BLOCKS, ROADSTOP_POOL_BLOCK_SIZE_BITS, sizeof(RoadStop), &RoadStopPoolNewBlock, NULL, 0, 0, NULL };
+DEFINE_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
 
 
 extern void UpdateAirplanesOnNewStation(Station *st);
@@ -168,7 +168,7 @@ RoadStop *AllocateRoadStop(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (rs = GetRoadStop(0); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL) {
+	for (rs = GetRoadStop(0); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) {
 		if (!IsValidRoadStop(rs)) {
 			RoadStopID index = rs->index;
 
@@ -180,7 +180,7 @@ RoadStop *AllocateRoadStop(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_roadstop_pool)) return AllocateRoadStop();
+	if (AddBlockToPool(&_RoadStop_pool)) return AllocateRoadStop();
 
 	return NULL;
 }
@@ -2879,8 +2879,8 @@ void InitializeStations(void)
 	AddBlockToPool(&_Station_pool);
 
 	/* Clean the roadstop pool and create 1 block in it */
-	CleanPool(&_roadstop_pool);
-	AddBlockToPool(&_roadstop_pool);
+	CleanPool(&_RoadStop_pool);
+	AddBlockToPool(&_RoadStop_pool);
 
 	_station_tick_ctr = 0;
 
@@ -3114,7 +3114,7 @@ static void Load_ROADSTOP(void)
 	while ((index = SlIterateArray()) != -1) {
 		RoadStop *rs;
 
-		if (!AddBlockIfNeeded(&_roadstop_pool, index))
+		if (!AddBlockIfNeeded(&_RoadStop_pool, index))
 			error("RoadStops: failed loading savegame: too many RoadStops");
 
 		rs = GetRoadStop(index);

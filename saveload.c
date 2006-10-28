@@ -1263,7 +1263,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			return GetTown(index);
 		}
 		case REF_ROADSTOPS: {
-			if (!AddBlockIfNeeded(&_roadstop_pool, index))
+			if (!AddBlockIfNeeded(&_RoadStop_pool, index))
 				error("RoadStops: failed loading savegame: too many RoadStops");
 			return GetRoadStop(index);
 		}

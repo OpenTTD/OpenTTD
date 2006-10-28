@@ -181,23 +181,7 @@ static inline void DeleteStation(Station *st)
 
 /* Stuff for ROADSTOPS */
 
-extern MemoryPool _roadstop_pool;
-
-/**
- * Get the pointer to the roadstop with index 'index'
- */
-static inline RoadStop *GetRoadStop(uint index)
-{
-	return (RoadStop*)GetItemFromPool(&_roadstop_pool, index);
-}
-
-/**
- * Get the current size of the RoadStoptPool
- */
-static inline uint16 GetRoadStopPoolSize(void)
-{
-	return _roadstop_pool.total_items;
-}
+DECLARE_POOL(RoadStop, RoadStop, 5, 2000)
 
 /**
  * Check if a RaodStop really exists.
@@ -215,7 +199,7 @@ static inline void DeleteRoadStop(RoadStop *rs)
 	rs->used = false;
 }
 
-#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL) if (IsValidRoadStop(rs))
+#define FOR_ALL_ROADSTOPS_FROM(rs, start) for (rs = GetRoadStop(start); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) if (IsValidRoadStop(rs))
 #define FOR_ALL_ROADSTOPS(rs) FOR_ALL_ROADSTOPS_FROM(rs, 0)
 
 /* End of stuff for ROADSTOPS */
