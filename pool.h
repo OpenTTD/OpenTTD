@@ -16,7 +16,7 @@ typedef void MemoryPoolCleanBlock(uint start_item, uint end_item);
  *  please try to avoid manual calls!
  */
 struct MemoryPool {
-	const char name[10];        ///< Name of the pool (just for debugging)
+	const char* const name;     ///< Name of the pool (just for debugging)
 
 	const uint max_blocks;      ///< The max amount of blocks this pool can have
 	const uint block_size_bits; ///< The size of each block in bits
@@ -55,5 +55,48 @@ static inline byte *GetItemFromPool(const MemoryPool *pool, uint index)
 	assert(index < pool->total_items);
 	return (pool->blocks[index >> pool->block_size_bits] + (index & ((1 << pool->block_size_bits) - 1)) * pool->item_size);
 }
+
+
+#define POOL_ENUM(name, type, block_size_bits, max_blocks) \
+	enum { \
+		name##_POOL_BLOCK_SIZE_BITS = block_size_bits, \
+		name##_POOL_MAX_BLOCKS      = max_blocks \
+	};
+
+
+#define POOL_ACCESSORS(name, type) \
+	static inline type* Get##name(uint index) \
+	{ \
+		assert(index < _##name##_pool.total_items); \
+		return (type*)( \
+			_##name##_pool.blocks[index >> name##_POOL_BLOCK_SIZE_BITS] + \
+			(index & ((1 << name##_POOL_BLOCK_SIZE_BITS) - 1)) * sizeof(type) \
+		); \
+	} \
+\
+	static inline uint Get##name##PoolSize(void) \
+	{ \
+		return _##name##_pool.total_items; \
+	}
+
+
+#define DECLARE_POOL(name, type, block_size_bits, max_blocks) \
+	POOL_ENUM(name, type, block_size_bits, max_blocks) \
+	extern MemoryPool _##name##_pool; \
+	POOL_ACCESSORS(name, type)
+
+
+#define DEFINE_POOL(name, type, new_block_proc, clean_block_proc) \
+	MemoryPool _##name##_pool = { \
+		#name, name##_POOL_MAX_BLOCKS, name##_POOL_BLOCK_SIZE_BITS, sizeof(type), \
+		new_block_proc, clean_block_proc, \
+		0, 0, NULL \
+	};
+
+
+#define STATIC_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \
+	POOL_ENUM(name, type, block_size_bits, max_blocks) \
+	static DEFINE_POOL(name, type, new_block_proc, clean_block_proc) \
+	POOL_ACCESSORS(name, type)
 
 #endif /* POOL_H */
