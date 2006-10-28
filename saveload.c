@@ -1258,7 +1258,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			return GetStation(index);
 		}
 		case REF_TOWN: {
-			if (!AddBlockIfNeeded(&_town_pool, index))
+			if (!AddBlockIfNeeded(&_Town_pool, index))
 				error("Towns: failed loading savegame: too many towns");
 			return GetTown(index);
 		}

@@ -483,7 +483,7 @@ static const OldChunks town_chunk[] = {
 };
 static bool LoadOldTown(LoadgameState *ls, int num)
 {
-	if (!AddBlockIfNeeded(&_town_pool, num))
+	if (!AddBlockIfNeeded(&_Town_pool, num))
 		error("Towns: failed loading savegame: too many towns");
 
 	return LoadChunk(ls, GetTown(num), town_chunk);

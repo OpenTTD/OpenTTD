@@ -152,7 +152,7 @@ bool CheckforTownRating(uint32 flags, Town *t, byte type);
 
 VARDEF const Town** _town_sort;
 
-extern MemoryPool _town_pool;
+DECLARE_POOL(Town, Town, 3, 8000)
 
 /**
  * Check if a Town really exists.
@@ -160,22 +160,6 @@ extern MemoryPool _town_pool;
 static inline bool IsValidTown(const Town* town)
 {
 	return town->xy != 0;
-}
-
-/**
- * Get the pointer to the town with index 'index'
- */
-static inline Town *GetTown(uint index)
-{
-	return (Town*)GetItemFromPool(&_town_pool, index);
-}
-
-/**
- * Get the current size of the TownPool
- */
-static inline uint16 GetTownPoolSize(void)
-{
-	return _town_pool.total_items;
 }
 
 VARDEF uint _total_towns;
@@ -225,7 +209,7 @@ static inline void DeleteTown(Town *t)
 	t->xy = 0;
 }
 
-#define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL) if (IsValidTown(t))
+#define FOR_ALL_TOWNS_FROM(t, start) for (t = GetTown(start); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) if (IsValidTown(t))
 #define FOR_ALL_TOWNS(t) FOR_ALL_TOWNS_FROM(t, 0)
 
 VARDEF bool _town_sort_dirty;

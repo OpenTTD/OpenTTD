@@ -30,12 +30,6 @@
 #include "table/town_land.h"
 #include "genworld.h"
 
-enum {
-	/* Max towns: 64000 (8 * 8000) */
-	TOWN_POOL_BLOCK_SIZE_BITS = 3,       /* In bits, so (1 << 3) == 8 */
-	TOWN_POOL_MAX_BLOCKS      = 8000,
-};
-
 /**
  * Called if a new block is added to the town-pool
  */
@@ -45,11 +39,11 @@ static void TownPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (t = GetTown(start_item); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL) t->index = start_item++;
+	for (t = GetTown(start_item); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) t->index = start_item++;
 }
 
 /* Initialize the town-pool */
-MemoryPool _town_pool = { "Towns", TOWN_POOL_MAX_BLOCKS, TOWN_POOL_BLOCK_SIZE_BITS, sizeof(Town), &TownPoolNewBlock, NULL, 0, 0, NULL };
+DEFINE_POOL(Town, Town, TownPoolNewBlock, NULL)
 
 void DestroyTown(Town *t)
 {
@@ -985,7 +979,7 @@ static Town *AllocateTown(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (t = GetTown(0); t != NULL; t = (t->index + 1 < GetTownPoolSize()) ? GetTown(t->index + 1) : NULL) {
+	for (t = GetTown(0); t != NULL; t = (t->index + 1U < GetTownPoolSize()) ? GetTown(t->index + 1U) : NULL) {
 		if (!IsValidTown(t)) {
 			TownID index = t->index;
 
@@ -999,7 +993,7 @@ static Town *AllocateTown(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_town_pool))
+	if (AddBlockToPool(&_Town_pool))
 		return AllocateTown();
 
 	return NULL;
@@ -1830,8 +1824,8 @@ void InitializeTowns(void)
 	Subsidy *s;
 
 	/* Clean the town pool and create 1 block in it */
-	CleanPool(&_town_pool);
-	AddBlockToPool(&_town_pool);
+	CleanPool(&_Town_pool);
+	AddBlockToPool(&_Town_pool);
 
 	memset(_subsidies, 0, sizeof(_subsidies));
 	for (s=_subsidies; s != endof(_subsidies); s++)
@@ -1943,7 +1937,7 @@ static void Load_TOWN(void)
 	while ((index = SlIterateArray()) != -1) {
 		Town *t;
 
-		if (!AddBlockIfNeeded(&_town_pool, index))
+		if (!AddBlockIfNeeded(&_Town_pool, index))
 			error("Towns: failed loading savegame: too many towns");
 
 		t = GetTown(index);
