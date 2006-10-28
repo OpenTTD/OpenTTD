@@ -50,12 +50,6 @@ bool AddBlockToPool(MemoryPool *array);
  */
 bool AddBlockIfNeeded(MemoryPool *array, uint index);
 
-static inline byte *GetItemFromPool(const MemoryPool *pool, uint index)
-{
-	assert(index < pool->total_items);
-	return (pool->blocks[index >> pool->block_size_bits] + (index & ((1 << pool->block_size_bits) - 1)) * pool->item_size);
-}
-
 
 #define POOL_ENUM(name, type, block_size_bits, max_blocks) \
 	enum { \
