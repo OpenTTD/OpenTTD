@@ -256,7 +256,7 @@ static void UnInitializeDynamicVariables(void)
 	/* Dynamic stuff needs to be free'd somewhere... */
 	CleanPool(&_town_pool);
 	CleanPool(&_Industry_pool);
-	CleanPool(&_station_pool);
+	CleanPool(&_Station_pool);
 	CleanPool(&_Vehicle_pool);
 	CleanPool(&_Sign_pool);
 	CleanPool(&_Order_pool);

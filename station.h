@@ -142,23 +142,7 @@ void UpdateAllStationVirtCoord(void);
 void RebuildStationLists(void);
 void ResortStationLists(void);
 
-extern MemoryPool _station_pool;
-
-/**
- * Get the pointer to the station with index 'index'
- */
-static inline Station *GetStation(StationID index)
-{
-	return (Station*)GetItemFromPool(&_station_pool, index);
-}
-
-/**
- * Get the current size of the StationPool
- */
-static inline uint16 GetStationPoolSize(void)
-{
-	return _station_pool.total_items;
-}
+DECLARE_POOL(Station, Station, 6, 1000)
 
 static inline StationID GetStationArraySize(void)
 {
@@ -191,7 +175,7 @@ static inline void DeleteStation(Station *st)
 	st->xy = 0;
 }
 
-#define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL) if (IsValidStation(st))
+#define FOR_ALL_STATIONS_FROM(st, start) for (st = GetStation(start); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) if (IsValidStation(st))
 #define FOR_ALL_STATIONS(st) FOR_ALL_STATIONS_FROM(st, 0)
 
 

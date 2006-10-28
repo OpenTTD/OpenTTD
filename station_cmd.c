@@ -34,10 +34,6 @@
 #include "date.h"
 
 enum {
-	/* Max stations: 64000 (64 * 1000) */
-	STATION_POOL_BLOCK_SIZE_BITS = 6,       /* In bits, so (1 << 6) == 64 */
-	STATION_POOL_MAX_BLOCKS      = 1000,
-
 	/* Max roadstops: 64000 (32 * 2000) */
 	ROADSTOP_POOL_BLOCK_SIZE_BITS = 5,       /* In bits, so (1 << 5) == 32 */
 	ROADSTOP_POOL_MAX_BLOCKS      = 2000,
@@ -52,7 +48,7 @@ static void StationPoolNewBlock(uint start_item)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 *  TODO - This is just a temporary stage, this will be removed. */
-	for (st = GetStation(start_item); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL) st->index = start_item++;
+	for (st = GetStation(start_item); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) st->index = start_item++;
 }
 
 static void StationPoolCleanBlock(uint start_item, uint end_item)
@@ -78,8 +74,7 @@ static void RoadStopPoolNewBlock(uint start_item)
 	for (rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1 < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1) : NULL) rs->index = start_item++;
 }
 
-/* Initialize the station-pool and roadstop-pool */
-MemoryPool _station_pool = { "Stations", STATION_POOL_MAX_BLOCKS, STATION_POOL_BLOCK_SIZE_BITS, sizeof(Station), &StationPoolNewBlock, &StationPoolCleanBlock, 0, 0, NULL };
+DEFINE_POOL(Station, Station, StationPoolNewBlock, StationPoolCleanBlock)
 MemoryPool _roadstop_pool = { "RoadStop", ROADSTOP_POOL_MAX_BLOCKS, ROADSTOP_POOL_BLOCK_SIZE_BITS, sizeof(RoadStop), &RoadStopPoolNewBlock, NULL, 0, 0, NULL };
 
 
@@ -282,7 +277,7 @@ static Station *AllocateStation(void)
 
 	/* We don't use FOR_ALL here, because FOR_ALL skips invalid items.
 	 * TODO - This is just a temporary stage, this will be removed. */
-	for (st = GetStation(0); st != NULL; st = (st->index + 1 < GetStationPoolSize()) ? GetStation(st->index + 1) : NULL) {
+	for (st = GetStation(0); st != NULL; st = (st->index + 1U < GetStationPoolSize()) ? GetStation(st->index + 1U) : NULL) {
 		if (!IsValidStation(st)) {
 			StationID index = st->index;
 
@@ -294,7 +289,7 @@ static Station *AllocateStation(void)
 	}
 
 	/* Check if we can add a block to the pool */
-	if (AddBlockToPool(&_station_pool)) return AllocateStation();
+	if (AddBlockToPool(&_Station_pool)) return AllocateStation();
 
 	_error_message = STR_3008_TOO_MANY_STATIONS_LOADING;
 	return NULL;
@@ -2880,8 +2875,8 @@ static int32 ClearTile_Station(TileIndex tile, byte flags)
 void InitializeStations(void)
 {
 	/* Clean the station pool and create 1 block in it */
-	CleanPool(&_station_pool);
-	AddBlockToPool(&_station_pool);
+	CleanPool(&_Station_pool);
+	AddBlockToPool(&_Station_pool);
 
 	/* Clean the roadstop pool and create 1 block in it */
 	CleanPool(&_roadstop_pool);
@@ -3061,7 +3056,7 @@ static void Load_STNS(void)
 	while ((index = SlIterateArray()) != -1) {
 		Station *st;
 
-		if (!AddBlockIfNeeded(&_station_pool, index))
+		if (!AddBlockIfNeeded(&_Station_pool, index))
 			error("Stations: failed loading savegame: too many stations");
 
 		st = GetStation(index);

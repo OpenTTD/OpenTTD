@@ -635,7 +635,7 @@ static bool LoadOldStation(LoadgameState *ls, int num)
 {
 	Station *st;
 
-	if (!AddBlockIfNeeded(&_station_pool, num))
+	if (!AddBlockIfNeeded(&_Station_pool, num))
 		error("Stations: failed loading savegame: too many stations");
 
 	st = GetStation(num);

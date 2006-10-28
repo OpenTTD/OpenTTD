@@ -1253,7 +1253,7 @@ static void *IntToReference(uint index, SLRefType rt)
 			return GetVehicle(index);
 		}
 		case REF_STATION: {
-			if (!AddBlockIfNeeded(&_station_pool, index))
+			if (!AddBlockIfNeeded(&_Station_pool, index))
 				error("Stations: failed loading savegame: too many stations");
 			return GetStation(index);
 		}
