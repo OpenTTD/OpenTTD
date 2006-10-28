@@ -1011,7 +1011,6 @@ static void UninitNoComp(void)
 #include "gui.h"
 
 typedef struct ThreadedSave {
-	MemoryPool *save;
 	uint count;
 	bool ff_state;
 	bool saveinprogress;
@@ -1024,30 +1023,28 @@ static ThreadedSave _ts;
 
 static bool InitMem(void)
 {
-	_ts.save = &_Savegame_pool;
 	_ts.count = 0;
 
-	CleanPool(_ts.save);
-	AddBlockToPool(_ts.save);
+	CleanPool(&_Savegame_pool);
+	AddBlockToPool(&_Savegame_pool);
 
 	/* A block from the pool is a contigious area of memory, so it is safe to write to it sequentially */
-	_sl.bufsize = _ts.save->total_items;
-	_sl.buf = (byte*)GetItemFromPool(_ts.save, _ts.count);
+	_sl.bufsize = GetSavegamePoolSize();
+	_sl.buf = GetSavegame(_ts.count);
 	return true;
 }
 
 static void UnInitMem(void)
 {
-	CleanPool(_ts.save);
-	_ts.save = NULL;
+	CleanPool(&_Savegame_pool);
 }
 
 static void WriteMem(uint size)
 {
 	_ts.count += size;
 	/* Allocate new block and new buffer-pointer */
-	AddBlockIfNeeded(_ts.save, _ts.count);
-	_sl.buf = (byte*)GetItemFromPool(_ts.save, _ts.count);
+	AddBlockIfNeeded(&_Savegame_pool, _ts.count);
+	_sl.buf = GetSavegame(_ts.count);
 }
 
 //********************************************
@@ -1423,17 +1420,17 @@ static void* SaveFileToDisk(void *arg)
 
 	{
 		uint i;
-		uint count = 1 << _ts.save->block_size_bits;
+		uint count = 1 << Savegame_POOL_BLOCK_SIZE_BITS;
 
 		assert(_ts.count == _sl.offs_base);
-		for (i = 0; i != _ts.save->current_blocks - 1; i++) {
-			_sl.buf = _ts.save->blocks[i];
+		for (i = 0; i != _Savegame_pool.current_blocks - 1; i++) {
+			_sl.buf = _Savegame_pool.blocks[i];
 			fmt->writer(count);
 		}
 
 		/* The last block is (almost) always not fully filled, so only write away
 		 * as much data as it is in there */
-		_sl.buf = _ts.save->blocks[i];
+		_sl.buf = _Savegame_pool.blocks[i];
 		fmt->writer(_ts.count - (i * count));
 	}
 
