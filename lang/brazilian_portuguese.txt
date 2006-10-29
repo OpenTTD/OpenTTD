@@ -1445,6 +1445,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servi
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente
+STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(nenhum)
 STR_NETWORK_CLIENTLIST_KICK                                     :Banir
