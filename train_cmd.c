@@ -2363,7 +2363,7 @@ static byte ChooseTrainTrack(Vehicle* v, TileIndex tile, DiagDirection enterdir,
 			// it is first time the problem occurred, set the "path not found" flag
 			SETBIT(v->u.rail.flags, VRF_NO_PATH_TO_DESTINATION);
 			// and notify user about the event
-			if (_patches.lost_train_warn) {
+			if (_patches.lost_train_warn && v->owner == _local_player) {
 				SetDParam(0, v->unitnumber);
 				AddNewsItem(
 					STR_TRAIN_IS_LOST,
