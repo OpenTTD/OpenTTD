@@ -17,9 +17,12 @@
 #include "town.h"
 #include "variables.h"
 
-/* Present in table/build_industry.h" */
-extern const byte _build_industry_types[4][12];
-extern const byte _industry_type_costs[37];
+const byte _build_industry_types[4][12] = {
+	{  1,  2,  4,  6,  8,  0,  3,  5,  9, 11, 18 },
+	{  1, 14,  4, 13,  7,  0,  3,  9, 11, 15 },
+	{ 25, 13,  4, 23, 22, 11, 17, 10, 24, 19, 20, 21 },
+	{ 27, 30, 31, 33, 26, 28, 29, 32, 34, 35, 36 },
+};
 
 static void UpdateIndustryProduction(Industry *i);
 
