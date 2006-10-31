@@ -63,6 +63,14 @@ static byte *_preload_sprite = NULL;
 bool _have_2cc = false;
 
 
+typedef enum GrfLoadingStage {
+	GLS_LABELSCAN,
+	GLS_INIT,
+	GLS_ACTIVATION,
+	GLS_END,
+} GrfLoadingStage;
+
+
 typedef enum GrfDataType {
 	GDT_SOUND,
 } GrfDataType;
@@ -3334,7 +3342,7 @@ static void CalculateRefitMasks(void)
 /* XXX: We consider GRF files trusted. It would be trivial to exploit OTTD by
  * a crafted invalid GRF file. We should tell that to the user somehow, or
  * better make this more robust in the future. */
-static void DecodeSpecialSprite(uint num, uint stage)
+static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 {
 	/* XXX: There is a difference between staged loading in TTDPatch and
 	 * here.  In TTDPatch, for some reason actions 1 and 2 are carried out
@@ -3348,27 +3356,25 @@ static void DecodeSpecialSprite(uint num, uint stage)
 	/* We need a pre-stage to set up GOTO labels of Action 0x10 because the grf
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
-	static const uint32 action_mask[] = {0x10000, 0x0002FB40, 0x0000FFFF};
-
-	static const SpecialSpriteHandler handlers[] = {
-		/* 0x00 */ FeatureChangeInfo,
-		/* 0x01 */ NewSpriteSet,
-		/* 0x02 */ NewSpriteGroup,
-		/* 0x03 */ FeatureMapSpriteGroup,
-		/* 0x04 */ FeatureNewName,
-		/* 0x05 */ GraphicsNew,
-		/* 0x06 */ CfgApply,
-		/* 0x07 */ SkipIf,
-		/* 0x08 */ GRFInfo,
-		/* 0x09 */ SkipIf,
-		/* 0x0A */ SpriteReplace,
-		/* 0x0B */ GRFError,
-		/* 0x0C */ GRFComment,
-		/* 0x0D */ ParamSet,
-		/* 0x0E */ GRFInhibit,
-		/* 0x0F */ NULL, // TODO implement
-		/* 0x10 */ DefineGotoLabel,
-		/* 0x11 */ GRFSound,
+	static const SpecialSpriteHandler handlers[][GLS_END] = {
+		/* 0x00 */ { NULL,            NULL,       FeatureChangeInfo, },
+		/* 0x01 */ { NULL,            NULL,       NewSpriteSet, },
+		/* 0x02 */ { NULL,            NULL,       NewSpriteGroup, },
+		/* 0x03 */ { NULL,            NULL,       FeatureMapSpriteGroup, },
+		/* 0x04 */ { NULL,            NULL,       FeatureNewName, },
+		/* 0x05 */ { NULL,            NULL,       GraphicsNew, },
+		/* 0x06 */ { NULL,            CfgApply,   CfgApply, },
+		/* 0x07 */ { NULL,            NULL,       SkipIf, },
+		/* 0x08 */ { NULL,            GRFInfo,    GRFInfo, },
+		/* 0x09 */ { NULL,            SkipIf,     SkipIf, },
+		/* 0x0A */ { NULL,            NULL,       SpriteReplace, },
+		/* 0x0B */ { NULL,            GRFError,   GRFError, },
+		/* 0x0C */ { NULL,            GRFComment, GRFComment, },
+		/* 0x0D */ { NULL,            ParamSet,   ParamSet, },
+		/* 0x0E */ { NULL,            GRFInhibit, GRFInhibit, },
+		/* 0x0F */ { NULL,            NULL,       NULL, },
+		/* 0x10 */ { DefineGotoLabel, NULL,       NULL, },
+		/* 0x11 */ { NULL,            NULL,       GRFSound, },
 	};
 
 	byte* buf;
@@ -3400,13 +3406,11 @@ static void DecodeSpecialSprite(uint num, uint stage)
 		GRFImportBlock(buf, num);
 	} else if (action >= lengthof(handlers)) {
 		DEBUG(grf, 7) ("Skipping unknown action 0x%02X", action);
-	} else if (!HASBIT(action_mask[stage], action)) {
+	} else if (handlers[action][stage] == NULL) {
 		DEBUG(grf, 7) ("Skipping action 0x%02X in stage %d", action, stage);
-	} else if (handlers[action] == NULL) {
-		DEBUG(grf, 7) ("Skipping unsupported Action 0x%02X", action);
 	} else {
 		DEBUG(grf, 7) ("Handling action 0x%02X in stage %d", action, stage);
-		handlers[action](buf, num);
+		handlers[action][stage](buf, num);
 	}
 	free(buf);
 }
@@ -3494,7 +3498,7 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 
 void LoadNewGRF(uint load_index, uint file_index)
 {
-	uint stage;
+	GrfLoadingStage stage;
 
 	InitializeGRFSpecial();
 
@@ -3503,7 +3507,7 @@ void LoadNewGRF(uint load_index, uint file_index)
 	/* Load newgrf sprites
 	 * in each loading stage, (try to) open each file specified in the config
 	 * and load information from it. */
-	for (stage = 0; stage <= 2; stage++) {
+	for (stage = GLS_LABELSCAN; stage <= GLS_ACTIVATION; stage++) {
 		uint slot = file_index;
 		GRFConfig *c;
 
@@ -3515,9 +3519,9 @@ void LoadNewGRF(uint load_index, uint file_index)
 				error("NewGRF file missing: %s", c->filename);
 			}
 
-			if (stage == 0) InitNewGRFFile(c, _cur_spriteid);
+			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
 			LoadNewGRFFile(c->filename, slot++, stage);
-			if (stage == 2) ClearTemporaryNewGRFData();
+			if (stage == GLS_ACTIVATION) ClearTemporaryNewGRFData();
 			DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
 		}
 	}
