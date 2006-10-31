@@ -549,29 +549,37 @@ TileIndex CheckTunnelBusy(TileIndex tile, uint *length)
 	return tile;
 }
 
+static inline bool CheckAllowRemoveTunnelBridge(TileIndex tile)
+{
+	/* Floods can remove anything as well as the scenario editor */
+	if (_current_player == OWNER_WATER || _game_mode == GM_EDITOR) return true;
+	/* Obviously if the bridge/tunnel belongs to us, or no-one, we can remove it */
+	if (CheckTileOwnership(tile) || IsTileOwner(tile, OWNER_NONE)) return true;
+	/* Otherwise we can only remove town-owned stuff with extra patch-settings, or cheat */
+	if (IsTileOwner(tile, OWNER_TOWN) && (_patches.extra_dynamite || _cheats.magic_bulldozer.value)) return true;
+	return false;
+}
+
 static int32 DoClearTunnel(TileIndex tile, uint32 flags)
 {
-	Town *t;
+	Town *t = NULL;
 	TileIndex endtile;
 	uint length;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
-	// in scenario editor you can always destroy tunnels
-	if (_game_mode != GM_EDITOR && !CheckTileOwnership(tile)) {
-		if (!(_patches.extra_dynamite || _cheats.magic_bulldozer.value) || !IsTileOwner(tile, OWNER_TOWN))
-			return CMD_ERROR;
-	}
+	if (!CheckAllowRemoveTunnelBridge(tile)) return CMD_ERROR;
 
 	endtile = CheckTunnelBusy(tile, &length);
 	if (endtile == INVALID_TILE) return CMD_ERROR;
 
 	_build_tunnel_endtile = endtile;
 
-	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
-	// check if you're allowed to remove the tunnel owned by a town
-	// removal allowal depends on difficulty settings
 	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
+		t = ClosestTownFromTile(tile, (uint)-1); // town penalty rating
+
+		/* Check if you are allowed to remove the tunnel owned by a town
+		 * Removal depends on difficulty settings */
 		if (!CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE)) {
 			SetDParam(0, t->index);
 			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
@@ -620,7 +628,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	TileIndexDiff delta;
 	TileIndex endtile;
 	Vehicle *v;
-	Town *t;
+	Town *t = NULL;
 
 	SET_EXPENSES_TYPE(EXPENSES_CONSTRUCTION);
 
@@ -660,11 +668,7 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 		tile = GetSouthernBridgeEnd(tile);
 	}
 
-	// floods, scenario editor can always destroy bridges
-	if (_current_player != OWNER_WATER && _game_mode != GM_EDITOR && !CheckTileOwnership(tile)) {
-		if (!(_patches.extra_dynamite || _cheats.magic_bulldozer.value) || !IsTileOwner(tile, OWNER_TOWN))
-			return CMD_ERROR;
-	}
+	if (!CheckAllowRemoveTunnelBridge(tile)) return CMD_ERROR;
 
 	endtile = GetOtherBridgeEnd(tile);
 
@@ -685,11 +689,15 @@ static int32 DoClearBridge(TileIndex tile, uint32 flags)
 	);
 	if (v != NULL) return_cmd_error(VehicleInTheWayErrMsg(v));
 
-	t = ClosestTownFromTile(tile, (uint)-1); //needed for town rating penalty
-	// check if you're allowed to remove the bridge owned by a town.
-	// removal allowal depends on difficulty settings
 	if (IsTileOwner(tile, OWNER_TOWN) && _game_mode != GM_EDITOR) {
-		if (!CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE)) return CMD_ERROR;
+		t = ClosestTownFromTile(tile, (uint)-1); // town penalty rating
+
+		/* Check if you are allowed to remove the bridge owned by a town
+		 * Removal depends on difficulty settings */
+		if (!CheckforTownRating(flags, t, TUNNELBRIDGE_REMOVE)) {
+			SetDParam(0, t->index);
+			return_cmd_error(STR_2009_LOCAL_AUTHORITY_REFUSES);
+		}
 	}
 
 	if (flags & DC_EXEC) {

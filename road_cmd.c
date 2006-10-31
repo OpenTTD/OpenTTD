@@ -110,7 +110,10 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	owner = IsLevelCrossingTile(tile) ? GetCrossingRoadOwner(tile) : GetTileOwner(tile);
 
 	if (owner == OWNER_TOWN && _game_mode != GM_EDITOR) {
-		if (IsTileType(tile, MP_TUNNELBRIDGE)) { // index of town is not saved for bridge (no space)
+		/* Are we removing a piece of road below a bridge, or not. If below
+		 * a bridge we need to calculate the town's index as it is not saved
+		 * in the map array (no space) */
+		if (IsTileType(tile, MP_TUNNELBRIDGE)) {
 			t = ClosestTownFromTile(tile, _patches.dist_local_authority);
 		} else {
 			t = GetTownByTile(tile);
