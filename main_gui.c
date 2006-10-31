@@ -2034,21 +2034,23 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 
 	case WE_KEYPRESS:
 		switch (e->we.keypress.keycode) {
-		case WKC_F1: ToolbarPauseClick(w); break;
-		case WKC_F2: ShowGameOptions(); break;
-		case WKC_F3: MenuClickSaveLoad(0); break;
-		case WKC_F4: ToolbarScenGenLand(w); break;
-		case WKC_F5: ToolbarScenGenTown(w); break;
-		case WKC_F6: ToolbarScenGenIndustry(w); break;
-		case WKC_F7: ToolbarScenBuildRoad(w); break;
-		case WKC_F8: ToolbarScenPlantTrees(w); break;
-		case WKC_F9: ToolbarScenPlaceSign(w); break;
-		case WKC_F10: ShowMusicWindow(); break;
-		case WKC_F11: PlaceLandBlockInfo(); break;
-		case WKC_CTRL | 'S': MenuClickSmallScreenshot(); break;
-		case WKC_CTRL | 'G': MenuClickWorldScreenshot(); break;
-		case 'L': ShowEditorTerraformToolBar(); break;
+			case WKC_F1: ToolbarPauseClick(w); break;
+			case WKC_F2: ShowGameOptions(); break;
+			case WKC_F3: MenuClickSaveLoad(0); break;
+			case WKC_F4: ToolbarScenGenLand(w); break;
+			case WKC_F5: ToolbarScenGenTown(w); break;
+			case WKC_F6: ToolbarScenGenIndustry(w); break;
+			case WKC_F7: ToolbarScenBuildRoad(w); break;
+			case WKC_F8: ToolbarScenPlantTrees(w); break;
+			case WKC_F9: ToolbarScenPlaceSign(w); break;
+			case WKC_F10: ShowMusicWindow(); break;
+			case WKC_F11: PlaceLandBlockInfo(); break;
+			case WKC_CTRL | 'S': MenuClickSmallScreenshot(); break;
+			case WKC_CTRL | 'G': MenuClickWorldScreenshot(); break;
+			case 'L': ShowEditorTerraformToolBar(); break;
+			default: return;
 		}
+		e->we.keypress.cont = false;
 		break;
 
 	case WE_PLACE_OBJ: {
