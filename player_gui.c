@@ -967,11 +967,14 @@ static void EndGameWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 	case WE_PAINT: {
-		const Player *p = GetPlayer(_local_player);
+		const Player *p;
 		uint x, y;
 
 		SetupHighScoreEndWindow(w, &x, &y);
 
+		if (!IsValidPlayer(_local_player)) break;
+
+		p = GetPlayer(_local_player);
 		/* We need to get performance from last year because the image is shown
 		 * at the start of the new year when these things have already been copied */
 		if (WP(w, highscore_d).background_img == SPR_TYCOON_IMG2_BEGIN) { // Tycoon of the century \o/
