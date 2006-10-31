@@ -315,6 +315,9 @@ static const SpriteID _openttd_grf_indexes[] = {
 	633, 633, // × large
 	665, 665, // ÷ large
 	SPR_SELL_TRAIN, SPR_SHARED_ORDERS_ICON,
+	377, 377, // · small
+	153, 153, // · medium
+	601, 601, // · large
 	END
 };
 
