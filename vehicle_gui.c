@@ -939,22 +939,21 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			int num = NUM_ROAD_ENGINES;
 			const Engine* e = GetEngine(ROAD_ENGINES_INDEX);
 			EngineID engine_id = ROAD_ENGINES_INDEX;
-			byte cargo;
 
-			if (selected_id[0] >= ROAD_ENGINES_INDEX && selected_id[0] < SHIP_ENGINES_INDEX) {
-				cargo = RoadVehInfo(selected_id[0])->cargo_type;
-
-				do {
-					if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
-						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-							DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-							DrawRoadVehEngine(x+29, y+6, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
-							SetDParam(0, p->num_engines[engine_id]);
-							DrawStringRightAligned(213, y+5, STR_TINY_BLACK, 0);
-							y += 14;
-						}
-					sel[0]--;
+			do {
+				if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
+					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
+						DrawString(x+59, y+2, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
+						DrawRoadVehEngine(x+29, y+6, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
+						SetDParam(0, p->num_engines[engine_id]);
+						DrawStringRightAligned(213, y+5, STR_TINY_BLACK, 0);
+						y += 14;
 					}
+				sel[0]--;
+				}
+
+				if (selected_id[0] != INVALID_ENGINE) {
+					byte cargo = RoadVehInfo(selected_id[0])->cargo_type;
 
 					if (RoadVehInfo(engine_id)->cargo_type == cargo && HASBIT(e->player_avail, _local_player)) {
 						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0) && RoadVehInfo(engine_id)->cargo_type == cargo) {
@@ -964,8 +963,8 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 						}
 						sel[1]--;
 					}
-				} while (++engine_id, ++e,--num);
-			}
+				}
+			} while (++engine_id, ++e,--num);
 			break;
 		}
 
@@ -973,57 +972,57 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 			int num = NUM_SHIP_ENGINES;
 			const Engine* e = GetEngine(SHIP_ENGINES_INDEX);
 			EngineID engine_id = SHIP_ENGINES_INDEX;
-			byte cargo, refittable;
 
-			if (selected_id[0] != INVALID_ENGINE) {
-				cargo = ShipVehInfo(selected_id[0])->cargo_type;
-				refittable = ShipVehInfo(selected_id[0])->refittable;
+			do {
+				if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
+					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
+						DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
+						DrawShipEngine(x+35, y+10, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
+						SetDParam(0, p->num_engines[engine_id]);
+						DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
+						y += 24;
+					}
+					sel[0]--;
+				}
 
-				do {
-					if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
-						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-							DrawString(x+75, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-							DrawShipEngine(x+35, y+10, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
-							SetDParam(0, p->num_engines[engine_id]);
-							DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
-							y += 24;
+				if (selected_id[0] != INVALID_ENGINE) {
+					CargoID cargo = ShipVehInfo(selected_id[0])->cargo_type;
+					bool refittable = ShipVehInfo(selected_id[0])->refittable;
+
+					if (HASBIT(e->player_avail, _local_player) && ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
+						if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
+							DrawString(x2+75, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
+							DrawShipEngine(x2+35, y2+10, engine_id, GetEnginePalette(engine_id, _local_player));
+							y2 += 24;
 						}
-						sel[0]--;
+						sel[1]--;
 					}
-					if (selected_id[0] != INVALID_ENGINE) {
-						if (HASBIT(e->player_avail, _local_player) && ( cargo == ShipVehInfo(engine_id)->cargo_type || refittable & ShipVehInfo(engine_id)->refittable)) {
-							if (IS_INT_INSIDE(--pos2, -w->vscroll.cap, 0)) {
-								DrawString(x2+75, y2+7, GetCustomEngineName(engine_id), sel[1]==0 ? 0xC : 0x10);
-								DrawShipEngine(x2+35, y2+10, engine_id, GetEnginePalette(engine_id, _local_player));
-								y2 += 24;
-							}
-							sel[1]--;
-						}
-					}
-				} while (++engine_id, ++e,--num);
-			}
+				}
+			} while (++engine_id, ++e, --num);
 			break;
 		}   //end of ship
 
 		case VEH_Aircraft: {
-			if (selected_id[0] != INVALID_ENGINE) {
-				int num = NUM_AIRCRAFT_ENGINES;
-				const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
-				EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
-				byte subtype = AircraftVehInfo(selected_id[0])->subtype;
+			int num = NUM_AIRCRAFT_ENGINES;
+			const Engine* e = GetEngine(AIRCRAFT_ENGINES_INDEX);
+			EngineID engine_id = AIRCRAFT_ENGINES_INDEX;
 
-				do {
-					if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
-						if (sel[0] == 0) selected_id[0] = engine_id;
-						if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
-							DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
-							DrawAircraftEngine(x+29, y+10, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
-							SetDParam(0, p->num_engines[engine_id]);
-							DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
-							y += 24;
-						}
-						sel[0]--;
+			do {
+				if (p->num_engines[engine_id] > 0 || EngineHasReplacementForPlayer(p, engine_id)) {
+					if (sel[0] == 0) selected_id[0] = engine_id;
+					if (IS_INT_INSIDE(--pos, -w->vscroll.cap, 0)) {
+						DrawString(x+62, y+7, GetCustomEngineName(engine_id), sel[0]==0 ? 0xC : 0x10);
+						DrawAircraftEngine(x+29, y+10, engine_id, p->num_engines[engine_id] > 0 ? GetEnginePalette(engine_id, _local_player) : PALETTE_CRASH);
+						SetDParam(0, p->num_engines[engine_id]);
+						DrawStringRightAligned(213, y+15, STR_TINY_BLACK, 0);
+						y += 24;
 					}
+					sel[0]--;
+				}
+
+				if (selected_id[0] != INVALID_ENGINE) {
+					byte subtype = AircraftVehInfo(selected_id[0])->subtype;
+
 					if ((subtype & AIR_CTOL) == (AircraftVehInfo(engine_id)->subtype & AIR_CTOL) &&
 							HASBIT(e->player_avail, _local_player)) {
 						if (sel[1] == 0) selected_id[1] = engine_id;
@@ -1034,8 +1033,8 @@ static void DrawEngineArrayInReplaceWindow(Window *w, int x, int y, int x2, int 
 						}
 						sel[1]--;
 					}
-				} while (++engine_id, ++e,--num);
-			}
+				}
+			} while (++engine_id, ++e,--num);
 			break;
 		}   // end of aircraft
 	}
