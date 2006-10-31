@@ -381,6 +381,10 @@ STR_SORT_BY_VALUE                                               :Verdi
 STR_SORT_BY_FACILITY                                            :Stasjonstype
 STR_SORT_BY_WAITING                                             :Verdi av ventende last
 STR_SORT_BY_RATING_MAX                                          :Vurdering av last
+STR_ENGINE_SORT_COST                                            :Kostnad
+STR_ENGINE_SORT_POWER                                           :Kraft
+STR_ENGINE_SORT_RUNNING_COST                                    :Driftskostnad
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Kraft/Driftskostnad
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen last venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg alle anlegg
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velg alle lasttyper (inkludert last som ikke venter)
@@ -2983,6 +2987,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Klikk fo
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Skiltliste - {COMMA} skilt
 
+
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Jernbanelokomotiv
@@ -3077,4 +3082,8 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Små flyp
 STR_LARGE_AIRPORTS                                              :{BLACK}Store flyplasser
 STR_HUB_AIRPORTS                                                :{BLACK}Sentrumsflyplasser
 STR_HELIPORTS                                                   :{BLACK}Helikopterlufthavner
+
+############ Tooltip measurment
+
+
 ########

@@ -2666,6 +2666,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Reconver
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Reconverter veiculo
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Reconverter veículo para transportar o tipo de carga seleccionado
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Não é possível reconverter veículo
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Seleccione o tipo de carga para o veículo
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Construir docas
@@ -2779,6 +2780,7 @@ STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir nova aeronave (necessita de aeroporto com hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - clique na aeronave para informações
 STR_BLACK_HELICOPTERS                                           :{BLACK}Helicópteros
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Clique para ver helicópteros
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir nova aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arraste a aeronave para aqui para a vender
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar visualização na localização do hangar
@@ -2927,6 +2929,8 @@ STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Não vend
 
 STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vender todos os combóios no depósito
 STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vender todos os veículos no depósito
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vender todos os navios no depósito
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vender todos os aviões no hangar
 
 STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obter uma lista de todos os combóios em cujas ordens conste este depósito
 STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obter uma lista de todos os veículos em cujas ordens conste este depósito
@@ -2934,6 +2938,8 @@ STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obter um
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obter uma lista de todas as aeronaves em cujas ordens conste um hangar deste aeroporto
 
 
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Comboio{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Barco{P "" s}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
@@ -2997,6 +3003,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} passageiros, {COMMA} sacos de correio
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões Motorizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Todos os tipos de carga
 
 ########### String for New Landscape Generator
 
