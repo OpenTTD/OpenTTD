@@ -3555,7 +3555,6 @@ static void AiStateRemoveStation(Player *p)
 {
 	// Remove stations that aren't in use by any vehicle
 	byte *in_use;
-	const byte *used;
 	const Order *ord;
 	const Station *st;
 	TileIndex tile;
@@ -3571,9 +3570,8 @@ static void AiStateRemoveStation(Player *p)
 	}
 
 	// Go through all stations and delete those that aren't in use
-	used = in_use;
 	FOR_ALL_STATIONS(st) {
-		if (st->owner == _current_player && !*used &&
+		if (st->owner == _current_player && !in_use[st->index] &&
 				( (st->bus_stops != NULL && (tile = st->bus_stops->xy) != 0) ||
 					(st->truck_stops != NULL && (tile = st->truck_stops->xy)) != 0 ||
 					(tile = st->train_tile) != 0 ||
@@ -3581,7 +3579,6 @@ static void AiStateRemoveStation(Player *p)
 					(tile = st->airport_tile) != 0)) {
 			DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
 		}
-		used++;
 	}
 
 	free(in_use);
