@@ -1856,8 +1856,11 @@ static const WindowDesc _player_vehicle_list_aircraft_desc = {
 static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, StationID station, OrderID order, uint16 depot_airport_index)
 {
 	Window *w;
-	WindowNumber num = (vehicle_type << 11) | player;
+	WindowNumber num;
 
+	if (!IsValidPlayer(player)) return;
+
+	num = (vehicle_type << 11) | player;
 	if (order != INVALID_ORDER) {
 		num |= (order << 16) | VLW_SHARED_ORDERS;
 	} else if (depot_airport_index != INVALID_STATION) {

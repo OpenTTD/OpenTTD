@@ -214,7 +214,8 @@ static const WindowDesc _build_docks_toolbar_desc = {
 
 void ShowBuildDocksToolbar(void)
 {
-	if (_current_player == PLAYER_SPECTATOR) return;
+	if (!IsValidPlayer(_current_player)) return;
+
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 	AllocateWindowDesc(&_build_docks_toolbar_desc);
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();

@@ -450,6 +450,7 @@ static const WindowDesc _build_trees_scen_desc = {
 
 void ShowBuildTreesToolbar(void)
 {
+	if (!IsValidPlayer(_current_player)) return;
 	AllocateWindowDescFront(&_build_trees_desc, 0);
 }
 

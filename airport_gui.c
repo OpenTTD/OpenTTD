@@ -133,7 +133,8 @@ static const WindowDesc _air_toolbar_desc = {
 
 void ShowBuildAirToolbar(void)
 {
-	if (_current_player == PLAYER_SPECTATOR) return;
+	if (!IsValidPlayer(_current_player)) return;
+
 	DeleteWindowById(WC_BUILD_TOOLBAR, 0);
 	AllocateWindowDescFront(&_air_toolbar_desc, 0);
 	if (_patches.link_terraform_toolbar) ShowTerraformToolbar();

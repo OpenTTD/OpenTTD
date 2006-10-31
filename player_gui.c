@@ -219,24 +219,24 @@ static const WindowDesc _other_player_finances_small_desc = {
 	PlayerFinancesWndProc
 };
 
-static const WindowDesc * const desc_table[2*2] = {
-	&_player_finances_desc,&_player_finances_small_desc,
-	&_other_player_finances_desc,&_other_player_finances_small_desc,
-};
-
 static void DoShowPlayerFinances(PlayerID player, bool show_small, bool show_stickied)
 {
 	Window *w;
 	int mode;
+
+	static const WindowDesc * const desc_table[2 * 2] = {
+		&_player_finances_desc, &_player_finances_small_desc,
+		&_other_player_finances_desc, &_other_player_finances_small_desc,
+	};
+
+	if (!IsValidPlayer(player)) return;
 
 	mode = (player != _local_player) * 2 + show_small;
 	w = AllocateWindowDescFront(desc_table[mode], player);
 	if (w != NULL) {
 		w->caption_color = w->window_number;
 		WP(w,def_d).data_1 = mode;
-		if (show_stickied) {
-			w->flags4 |= WF_STICKY;
-		}
+		if (show_stickied) w->flags4 |= WF_STICKY;
 	}
 }
 
@@ -877,6 +877,8 @@ static const WindowDesc _player_company_desc = {
 void ShowPlayerCompany(PlayerID player)
 {
 	Window *w;
+
+	if (!IsValidPlayer(player)) return;
 
 	w = AllocateWindowDescFront(&_player_company_desc, player);
 	if (w != NULL) w->caption_color = w->window_number;

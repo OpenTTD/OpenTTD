@@ -1821,30 +1821,26 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 	} break;
 
 	case WE_KEYPRESS: {
-		PlayerID local = (_local_player != PLAYER_SPECTATOR) ? _local_player : 0;
-
 		switch (e->we.keypress.keycode) {
-		case WKC_F1: case WKC_PAUSE:
-			ToolbarPauseClick(w);
-			break;
+		case WKC_F1: case WKC_PAUSE: ToolbarPauseClick(w); break;
 		case WKC_F2: ShowGameOptions(); break;
 		case WKC_F3: MenuClickSaveLoad(0); break;
 		case WKC_F4: ShowSmallMap(); break;
 		case WKC_F5: ShowTownDirectory(); break;
 		case WKC_F6: ShowSubsidiesList(); break;
-		case WKC_F7: ShowPlayerStations(local); break;
-		case WKC_F8: ShowPlayerFinances(local); break;
-		case WKC_F9: ShowPlayerCompany(local); break;
+		case WKC_F7: ShowPlayerStations(_local_player); break;
+		case WKC_F8: ShowPlayerFinances(_local_player); break;
+		case WKC_F9: ShowPlayerCompany(_local_player); break;
 		case WKC_F10:ShowOperatingProfitGraph(); break;
 		case WKC_F11: ShowCompanyLeagueTable(); break;
 		case WKC_F12: ShowBuildIndustryWindow(); break;
-		case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(local, INVALID_STATION, VEH_Train); break;
-		case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(local, INVALID_STATION, VEH_Road); break;
-		case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(local, INVALID_STATION, VEH_Ship); break;
-		case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(local, INVALID_STATION, VEH_Aircraft); break;
+		case WKC_SHIFT | WKC_F1: ShowVehicleListWindow(_local_player, INVALID_STATION, VEH_Train); break;
+		case WKC_SHIFT | WKC_F2: ShowVehicleListWindow(_local_player, INVALID_STATION, VEH_Road); break;
+		case WKC_SHIFT | WKC_F3: ShowVehicleListWindow(_local_player, INVALID_STATION, VEH_Ship); break;
+		case WKC_SHIFT | WKC_F4: ShowVehicleListWindow(_local_player, INVALID_STATION, VEH_Aircraft); break;
 		case WKC_SHIFT | WKC_F5: ToolbarZoomInClick(w); break;
 		case WKC_SHIFT | WKC_F6: ToolbarZoomOutClick(w); break;
-		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype,-1); break;
+		case WKC_SHIFT | WKC_F7: ShowBuildRailToolbar(_last_built_railtype, -1); break;
 		case WKC_SHIFT | WKC_F8: ShowBuildRoadToolbar(); break;
 		case WKC_SHIFT | WKC_F9: ShowBuildDocksToolbar(); break;
 		case WKC_SHIFT | WKC_F10:ShowBuildAirToolbar(); break;

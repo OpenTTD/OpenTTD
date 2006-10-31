@@ -506,6 +506,8 @@ void ShowPlayerStations(PlayerID player)
 {
 	Window *w;
 
+	if (!IsValidPlayer(player)) return;
+
 	w = AllocateWindowDescFront(&_player_stations_desc, player);
 	if (w != NULL) {
 		w->caption_color = (byte)w->window_number;
