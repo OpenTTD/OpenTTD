@@ -266,7 +266,7 @@ STR_012A_DESERT                                                 :{BLACK}{TINYFON
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Neu
 STR_012C_MESSAGE                                                :{WHITE}Missatge
 STR_012D                                                        :{WHITE}{STRING}
-STR_012E_CANCEL                                                 :{BLACK}Cancel·lar
+STR_012E_CANCEL                                                 :{BLACK}Cancel.lar
 STR_012F_OK                                                     :{BLACK}Bé
 STR_0130_RENAME                                                 :{BLACK}Reanomena
 STR_0131_TOO_MANY_NAMES_DEFINED                                 :{WHITE}Massa noms definits
@@ -389,7 +389,7 @@ STR_ENGINE_SORT_RUNNING_COST                                    :Cost d'utilitza
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potència/Cost d'utilització
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitat de càrrega
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha carrega de aquest tipus esperant
-STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal·lacions
+STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal.lacions
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (inloent carga sense espera)
 
 ############ range for months starts
@@ -1022,7 +1022,7 @@ STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Cues d'
 STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Finestra d'avis quan el ratolí és al marc del programa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permetre subornar a les autoritats locals: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacions no uniformes: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova cerca de rutes global (NPF, anul·la NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova cerca de rutes global (NPF, anul.la NTP): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permetre sempre aeroports petits: {ORANGE}{STRING}
 
@@ -1283,7 +1283,7 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}INFORMA
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Clients:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Idioma:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Grup de cel·les:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Grup de cel.les:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Tamany del mapa:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Versió del servidor:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adreça del servidor:  {WHITE}{STRING} : {NUM}
@@ -1651,7 +1651,7 @@ STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}
 STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Patrocinar la reconstrucció de la xarxa local de carrers. Causa una notable distorsió del trànsit durant 6 mesos.{}  Cost: {CURRENCY}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Construir una estatua en honor a la teva empresa.{} Cost: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Patrocinar la construcció de nous edificis comercials en la població.{}  Cost: {CURRENCY}
-STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Comprar per 1 any els drets exclusius de transport en la població. La autoritat local només permetrà utilitzar les instal·lacions de la teva empresa de transports als passatgers i les mercaderies.{} Cost: {CURRENCY}
+STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Comprar per 1 any els drets exclusius de transport en la població. La autoritat local només permetrà utilitzar les instal.lacions de la teva empresa de transports als passatgers i les mercaderies.{} Cost: {CURRENCY}
 STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Subornar les autoritats locals per incrementar el teu rati, a risc de greus penalitzacions si et pesquen!!.{}  Cost: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Caos de trànsit en  {TOWN}!{}{}El programa de rehabilitació dels carrers patrocinat per {COMPANY} porta 6 mesos de misèria als motoristes!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
@@ -1983,7 +1983,7 @@ STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Màxim p
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Interès inicial: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Cost de circulació de Vehicles: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Velocitat de Construcció dels competidors: {ORANGE}{STRING}
-STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intel·ligència dels competidors: {ORANGE}{STRING}
+STR_680D_INTELLIGENCE_OF_COMPETITORS                            :{LTBLUE}Intel.ligència dels competidors: {ORANGE}{STRING}
 STR_680E_VEHICLE_BREAKDOWNS                                     :{LTBLUE}Avaries dels Vehicles: {ORANGE}{STRING}
 STR_680F_SUBSIDY_MULTIPLIER                                     :{LTBLUE}Multiplicador de Subvencions: {ORANGE}{STRING}
 STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Cost de construcció: {ORANGE}{STRING}
@@ -2105,7 +2105,7 @@ STR_7043_FACE_SELECTION                                         :{WHITE}Selecció
 STR_7044_MALE                                                   :{BLACK}Home
 STR_7045_FEMALE                                                 :{BLACK}Dona
 STR_7046_NEW_FACE                                               :{BLACK}Nova Cara
-STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Cancel·lar la selecció de nova cara
+STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Cancel.lar la selecció de nova cara
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Acceptar la selecció de nova cara
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Selecciona cares d'home
 STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Selecciona cares de dona
@@ -2877,8 +2877,8 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuracions de Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar canvis
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Establir paràmetres
-STR_NEWGRF_TIP                                                  :{BLACK}Llista de totes les opcions de Newgrf que has instal·lat. Prem en un grup d'opcions per canviar els seus atributs.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Ara no hi ha arxius de Newgrf instal·lats! Consulta el manual per a les instruccions d'instal·lació de nous gràfics.
+STR_NEWGRF_TIP                                                  :{BLACK}Llista de totes les opcions de Newgrf que has instal.lat. Prem en un grup d'opcions per canviar els seus atributs.
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Ara no hi ha arxius de Newgrf instal.lats! Consulta el manual per a les instruccions d'instal.lació de nous gràfics.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nom d'arxiu:
 STR_NEWGRF_GRF_ID                                               :{BLACK}Id de GRF:
 
@@ -3068,7 +3068,7 @@ STR_TREE_GENERATION                                             :{BLACK}Generaci
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Generació innamovible
 STR_CLEARING_TILES                                              :{BLACK}Generar area escarpada i rocosa
 STR_SETTINGUP_GAME                                              :{BLACK}Configurant el joc
-STR_PREPARING_TILELOOP                                          :{BLACK}Passant el bucle de cel·les
+STR_PREPARING_TILELOOP                                          :{BLACK}Passant el bucle de cel.les
 STR_PREPARING_GAME                                              :{BLACK}Preparant el joc
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Aquesta acció canviarà el nivell de dificultat a personalitzat
 STR_SE_FLAT_WORLD                                               :{WHITE}Terreny pla
