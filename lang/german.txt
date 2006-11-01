@@ -384,7 +384,7 @@ STR_SORT_BY_WAITING                                             :Menge der warte
 STR_SORT_BY_RATING_MAX                                          :Frachtbewertung
 STR_ENGINE_SORT_ENGINE_ID                                       :Baureihe
 STR_ENGINE_SORT_COST                                            :Kosten
-STR_ENGINE_SORT_POWER                                           :Energie
+STR_ENGINE_SORT_POWER                                           :Leistung
 STR_ENGINE_SORT_INTRO_DATE                                      :Einführungsdatum
 STR_ENGINE_SORT_RUNNING_COST                                    :Betriebskosten
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Energie-/Betriebskosten
@@ -1446,6 +1446,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Der Serv
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Teilnehmer
+STR_NETWORK_SPECTATORS                                          :Zuschauer
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(keiner)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kicken

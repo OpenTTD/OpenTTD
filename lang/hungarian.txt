@@ -1511,6 +1511,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} A szerv
 
 STR_NETWORK_SERVER                                              :Szerver
 STR_NETWORK_CLIENT                                              :Kliens
+STR_NETWORK_SPECTATORS                                          :Megfigyelõk
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(nincs)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kirúgás
@@ -2625,6 +2626,7 @@ STR_8826_GO_TO                                                  :{BLACK}Új cél
 STR_8827_FULL_LOAD                                              :{BLACK}Telepakol
 STR_8828_UNLOAD                                                 :{BLACK}Lepakol
 STR_REFIT                                                       :{BLACK}Átalakít
+STR_REFIT_TIP                                                   :{BLACK}Válaszd ki minek a szállítására álljunk át. Ctrl+kattintással eltávolítod az átalakítási utasítást.
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} menetrendje
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Menetrend vége - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3129,6 +3131,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Súly: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ár: {GOLD}{CURRENCY}{BLACK} Sebesség: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitás: {GOLD}{COMMA} utas, {COMMA} csomag levél
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Meghajtott vagonok: {GOLD}+{POWER}{BLACK} Súly: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Átalakítható:  {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Minden szállítmány típusra
+STR_PURCHASE_INFO_ALL_BUT                                       :Mindenre, kivéve {GOLD}
 
 ########### String for New Landscape Generator
 

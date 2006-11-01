@@ -383,8 +383,10 @@ STR_SORT_BY_WAITING                                             :Verdi av venten
 STR_SORT_BY_RATING_MAX                                          :Vurdering av last
 STR_ENGINE_SORT_COST                                            :Kostnad
 STR_ENGINE_SORT_POWER                                           :Kraft
+STR_ENGINE_SORT_INTRO_DATE                                      :Introduksjonsdato
 STR_ENGINE_SORT_RUNNING_COST                                    :Driftskostnad
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Kraft/Driftskostnad
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastkapasitet
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen last venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velg alle anlegg
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velg alle lasttyper (inkludert last som ikke venter)
@@ -1440,6 +1442,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Tjenere
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
+STR_NETWORK_SPECTATORS                                          :Tilskuere
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(ingen)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kast ut
@@ -2783,6 +2786,8 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Bygg fly
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Fly - trykk på fly for mer informasjon
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Bygg nytt fly (krever flyplass med hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Fly - trykk på fly for mer informasjon
+STR_BLACK_PLANES                                                :{BLACK}Propellfly
+STR_BLACK_JETS                                                  :{BLACK}Jetfly
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Bygg nytt fly
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Dra fly hit for å selge
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Vis hvor hangaren ligger
