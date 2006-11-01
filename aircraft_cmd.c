@@ -144,8 +144,10 @@ void DrawAircraftEngine(int x, int y, EngineID engine, uint32 image_ormod)
 
 	if (is_custom_sprite(spritenum)) {
 		sprite = GetCustomVehicleIcon(engine, DIR_W);
-		if (!sprite)
+		if (sprite == 0) {
 			spritenum = orig_aircraft_vehicle_info[engine - AIRCRAFT_ENGINES_INDEX].image_index;
+			sprite = (6 + _aircraft_sprite[spritenum]);
+		}
 	}
 
 	DrawSprite(sprite | image_ormod, x, y);
