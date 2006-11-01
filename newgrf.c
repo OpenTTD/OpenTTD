@@ -2664,6 +2664,9 @@ static void ParamSet(byte *buf, int len)
 									/* Deactivate GRF */
 									grfmsg(GMS_FATAL, "GRM: Unable to allocate %d vehicles, deactivating", count);
 									SETBIT(_cur_grffile->flags, 2);
+									CLRBIT(_cur_grffile->flags, 1);
+
+									_skip_sprites = -1;
 									return;
 								}
 
@@ -3459,11 +3462,10 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 		if (type == 0xFF) {
 			if (_skip_sprites == 0) {
 				DecodeSpecialSprite(num, stage);
-				if (HASBIT(_cur_grffile->flags, 2)) {
-					/* GRF has been deactivated... */
-					CLRBIT(_cur_grffile->flags, 1);
-					return;
-				}
+
+				/* Stop all processing if we are to skip the remaining sprites */
+				if (_skip_sprites == -1) break;
+
 				continue;
 			} else {
 				FioSkipBytes(num);
