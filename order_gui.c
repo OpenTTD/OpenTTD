@@ -549,6 +549,17 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 		/* Update the scroll + matrix */
 		w->vscroll.cap = (w->widget[2].bottom - w->widget[2].top) / 10;
 		break;
+
+	case WE_TIMEOUT: { // handle button unclick ourselves...
+		// unclick all buttons except for the 'goto' button (7), which is 'persistent'
+		int i;
+		for (i = 0; w->widget[i].type != WWT_LAST; i++) {
+			if (IsWindowWidgetLowered(w, i) && i != 7) {
+				RaiseWindowWidget(w, i);
+				InvalidateWidget(w, i);
+			}
+		}
+	} break;
 	}
 }
 
@@ -574,7 +585,7 @@ static const Widget _orders_train_widgets[] = {
 static const WindowDesc _orders_train_desc = {
 	-1,-1, 399, 88,
 	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_orders_train_widgets,
 	OrdersWndProc
 };
@@ -601,7 +612,7 @@ static const Widget _orders_widgets[] = {
 static const WindowDesc _orders_desc = {
 	-1,-1, 410, 88,
 	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_orders_widgets,
 	OrdersWndProc
 };
