@@ -297,6 +297,7 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 {
 	Point pt;
 	int a,b;
+	uint z;
 
 	if ( (uint)(x -= vp->left) >= (uint)vp->width ||
 				(uint)(y -= vp->top) >= (uint)vp->height) {
@@ -315,20 +316,20 @@ static Point TranslateXYToTileCoord(const ViewPort *vp, int x, int y)
 	b = x-y;
 #endif
 
-	if ((uint)a < MapMaxX() * TILE_SIZE && (uint)b < MapMaxY() * TILE_SIZE) {
-		uint z;
+	/* we need to move variables in to the valid range, as the
+	 * GetTileZoomCenterWindow() function can call here with invalid x and/or y,
+	 * when the user tries to zoom out along the sides of the map */
+	a = clamp(a, 0, (int)(MapMaxX() * TILE_SIZE) - 1);
+	b = clamp(b, 0, (int)(MapMaxY() * TILE_SIZE) - 1);
 
-		z = GetSlopeZ(a,     b    ) / 2;
-		z = GetSlopeZ(a + z, b + z) / 2;
-		z = GetSlopeZ(a + z, b + z) / 2;
-		z = GetSlopeZ(a + z, b + z) / 2;
-		z = GetSlopeZ(a + z, b + z) / 2;
+	z = GetSlopeZ(a,     b    ) / 2;
+	z = GetSlopeZ(a + z, b + z) / 2;
+	z = GetSlopeZ(a + z, b + z) / 2;
+	z = GetSlopeZ(a + z, b + z) / 2;
+	z = GetSlopeZ(a + z, b + z) / 2;
 
-		pt.x = a + z;
-		pt.y = b + z;
-	} else {
-		pt.x = pt.y = -1;
-	}
+	pt.x = a + z;
+	pt.y = b + z;
 
 	return pt;
 }
