@@ -455,7 +455,7 @@ void DrawWindowWidgets(const Window *w)
 				GfxFillRect(r.left+2, r.top+2, r.right-2, r.bottom-2, _colour_gradient[_player_colors[w->caption_color]][4]);
 			}
 
-			DrawStringCentered( (r.left+r.right+1)>>1, r.top+2, wi->data, 0x84);
+			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top+2, wi->data, 0x84);
 draw_default:;
 			if (IsWidgetDisabled(wi)) {
 				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _colour_gradient[wi->color&0xF][2] | PALETTE_MODIFIER_GREYOUT);
