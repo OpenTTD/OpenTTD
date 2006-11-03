@@ -296,8 +296,8 @@ static uint32 ConvertSdlKeyIntoMy(SDL_keysym *sym)
 	if (sym->mod & KMOD_ALT)   key |= WKC_ALT;
 	// these two lines really help porting hotkey combos. Uncomment to use -- Bjarni
 #if 0
-	printf("scancode character pressed %d\n", sym->scancode);
-	printf("unicode character pressed %d\n", sym->unicode);
+	DEBUG(driver, 0) ("scancode character pressed %d", sym->scancode);
+	DEBUG(driver, 0) ("unicode character pressed %d", sym->unicode);
 #endif
 	return (key << 16) + sym->unicode;
 }

@@ -1629,7 +1629,7 @@ int GetSavegameType(char *file)
 
 	f = fopen(file, "rb");
 	if (fread(&hdr, sizeof(hdr), 1, f) != 1) {
-		printf("Savegame is obsolete or invalid format.\n");
+		DEBUG(misc, 0) ("[Sl] Savegame is obsolete or invalid format");
 		mode = SL_LOAD; // don't try to get filename, just show name as it is written
 	} else {
 		// see if we have any loader for this type.

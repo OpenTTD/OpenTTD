@@ -641,7 +641,7 @@ static void StartScenario(void)
 
 	// invalid type
 	if (_file_to_saveload.mode == SL_INVALID) {
-		printf("Savegame is obsolete or invalid format: %s\n", _file_to_saveload.name);
+		DEBUG(misc, 0) ("[Sl] Savegame is obsolete or invalid format: %s", _file_to_saveload.name);
 		ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		_game_mode = GM_MENU;
 		return;

@@ -993,7 +993,7 @@ static void AiNew_State_BuildStation(Player *p)
 		p->ainew.state = AI_STATE_BUILD_PATH;
 	}
 	if (CmdFailed(res)) {
-		DEBUG(ai,0)("[AiNew - BuildStation] Strange but true... station can not be build!");
+		DEBUG(ai,0)("[AiNew - BuildStation] Strange but true... station can not be built!");
 		p->ainew.state = AI_STATE_NOTHING;
 		// If the first station _was_ build, destroy it
 		if (p->ainew.temp != 0)
@@ -1122,7 +1122,7 @@ static void AiNew_State_BuildDepot(Player *p)
 
 	res = AiNew_Build_Depot(p, p->ainew.depot_tile, p->ainew.depot_direction, DC_EXEC);
 	if (CmdFailed(res)) {
-		DEBUG(ai,0)("[AiNew - BuildDepot] Strange but true... depot can not be build!");
+		DEBUG(ai,0)("[AiNew - BuildDepot] Strange but true... depot can not be built!");
 		p->ainew.state = AI_STATE_NOTHING;
 		return;
 	}
