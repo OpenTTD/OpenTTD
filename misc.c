@@ -211,9 +211,6 @@ void InitializeLandscapeVariables(bool only_constants)
 
 	lpd = &_cargo_types_base_values[_opt.landscape];
 
-	memcpy(_cargoc.ai_roadveh_start, lpd->road_veh_by_cargo_start,sizeof(lpd->road_veh_by_cargo_start));
-	memcpy(_cargoc.ai_roadveh_count, lpd->road_veh_by_cargo_count,sizeof(lpd->road_veh_by_cargo_count));
-
 	for (i = 0; i != NUM_CARGO; i++) {
 		_cargoc.sprites[i] = lpd->sprites[i];
 

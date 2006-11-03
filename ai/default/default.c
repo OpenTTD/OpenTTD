@@ -163,8 +163,8 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex til
 {
 	EngineID best_veh_index = INVALID_ENGINE;
 	int32 best_veh_cost = 0;
-	EngineID i = _cargoc.ai_roadveh_start[cargo];
-	EngineID end = i + _cargoc.ai_roadveh_count[cargo];
+	EngineID i = ROAD_ENGINES_INDEX;
+	EngineID end = i + NUM_ROAD_ENGINES;
 
 	for (; i != end; i++) {
 		const Engine* e = GetEngine(i);
@@ -173,6 +173,9 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex til
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
 			continue;
 		}
+
+		/* Skip vehicles which can't take our cargo type */
+		if (RoadVehInfo(i)->cargo_type != cargo) continue;
 
 		ret = DoCommand(tile, i, 0, 0, CMD_BUILD_ROAD_VEH);
 		if (!CmdFailed(ret) && ret <= money && ret >= best_veh_cost) {

@@ -232,14 +232,17 @@ EngineID AiNew_PickVehicle(Player *p)
 		// Not supported yet
 		return INVALID_ENGINE;
 	} else {
-		EngineID start = _cargoc.ai_roadveh_start[p->ainew.cargo];
-		EngineID end = start + _cargoc.ai_roadveh_count[p->ainew.cargo];
+		EngineID start = ROAD_ENGINES_INDEX;
+		EngineID end   = ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES;
 		EngineID i;
 
 		// Let's check it backwards.. we simply want to best engine available..
 		for (i = end - 1; i >= start; i--) {
 			const Engine* e = GetEngine(i);
 			int32 ret;
+
+			/* Skip vehicles which can't take our cargo type */
+			if (RoadVehInfo(i)->cargo_type != p->ainew.cargo) continue;
 
 			// Is it availiable?
 			// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY

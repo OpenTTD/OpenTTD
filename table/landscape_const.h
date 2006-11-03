@@ -11,9 +11,6 @@ typedef struct CargoTypesValues {
 	uint16 initial_cargo_payment[NUM_CARGO];
 	byte transit_days_table_1[NUM_CARGO];
 	byte transit_days_table_2[NUM_CARGO];
-
-	byte road_veh_by_cargo_start[NUM_CARGO];
-	byte road_veh_by_cargo_count[NUM_CARGO];
 } CargoTypesValues;
 
 
@@ -76,10 +73,6 @@ static const CargoTypesValues _cargo_types_base_values[4] = {
 		{
 			24, 255, 90, 255, 18, 28, 40, 255, 255, 255, 32, 30,
 		},
-
-		/* normal road veh by cargo start & count */
-		{116, 123, 126, 132, 135, 138, 141, 144, 147, 150, 153, 156},
-		{7, 3, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3}
 	},
 
 	{
@@ -140,10 +133,6 @@ static const CargoTypesValues _cargo_types_base_values[4] = {
 		{
 			24, 255, 90, 255, 18, 28, 40, 255, 255, 60, 40, 30
 		},
-
-		/* hilly road veh by cargo start & count */
-		{116, 123, 126, 132, 135, 138, 141, 144, 147, 159, 153, 156},
-		{7, 3, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3},
 	},
 
 	{
@@ -204,10 +193,6 @@ static const CargoTypesValues _cargo_types_base_values[4] = {
 		{
 			24, 20, 90, 255, 15, 28, 40, 255, 255, 80, 255, 30
 		},
-
-		/* desert road veh by cargo start & count */
-		{116, 171, 126, 132, 168, 138, 141, 144, 162, 165, 153, 156},
-		{7, 3, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3}
 	},
 
 	{
@@ -268,9 +253,5 @@ static const CargoTypesValues _cargo_types_base_values[4] = {
 		{
 			24, 255, 90, 255, 30, 40, 60, 75, 25, 80, 255, 50
 		},
-
-		/* candy road veh by cargo start & count */
-		{116, 174, 126, 186, 192, 189, 183, 177, 180, 201, 198, 195},
-		{7, 3, 6, 3, 3, 3, 3, 3, 3, 3, 3, 3}
 	}
 };
