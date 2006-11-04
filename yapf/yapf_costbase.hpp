@@ -8,7 +8,7 @@ struct CYapfCostBase {
 
 	FORCEINLINE static bool stSlopeCost(TileIndex tile, Trackdir td)
 	{
-		if (IsDiagonalTrackdir(td)) {
+		if (IsDiagonalTrackdir(td) && !IsTunnelTile(tile)) {
 			uint tile_slope = GetTileSlope(tile, NULL) & 0x0F;
 			if ((c_upwards_slopes[tile_slope] & TrackdirToTrackdirBits(td)) != 0) {
 				return true;
