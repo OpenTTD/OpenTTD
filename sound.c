@@ -186,7 +186,7 @@ void SndCopyToPool(void)
 		FileEntry *orig = &_files[_sound_idx[i]];
 		FileEntry *fe = AllocateFileEntry();
 
-		memcpy(fe, orig, sizeof(*orig));
+		*fe = *orig;
 		fe->volume = _sound_base_vol[i];
 		fe->priority = 0;
 	}

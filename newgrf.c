@@ -1272,7 +1272,7 @@ static bool SoundEffectChangeInfo(uint sid, int numinfo, int prop, byte **bufp, 
 					FileEntry *oldfe = GetSound(orig_sound);
 
 					/* Literally copy the data of the new sound over the original */
-					memcpy(oldfe, newfe, sizeof(*oldfe));
+					*oldfe = *newfe;
 				}
 			}
 			break;
@@ -2939,7 +2939,7 @@ static void ImportGRFSound(byte *buf, int len)
 
 	grfmsg(GMS_NOTICE, "ImportGRFSound: Copying sound %d (%d) from file %X", sound, file->sound_offset + sound, grfid);
 
-	memcpy(se, GetSound(file->sound_offset + sound), sizeof(*se));
+	*se = *GetSound(file->sound_offset + sound);
 
 	/* Reset volume and priority, which TTDPatch doesn't copy */
 	se->volume   = 128;

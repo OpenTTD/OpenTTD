@@ -456,7 +456,7 @@ int ttd_main(int argc, char *argv[])
 
 	/* Make sure _patches is filled with _patches_newgame if we switch to a game directly */
 	if (_switch_mode != SM_NONE) {
-		memcpy(&_opt, &_opt_newgame, sizeof(_opt));
+		_opt = _opt_newgame;
 		GfxLoadSprites();
 		UpdatePatches();
 	}
@@ -662,7 +662,7 @@ static void StartScenario(void)
 	}
 
 	_opt_ptr = &_opt;
-	memcpy(&_opt_ptr->diff, &_opt_newgame.diff, sizeof(_opt_ptr->diff));
+	_opt_ptr->diff = _opt_newgame.diff;
 	_opt.diff_level = _opt_newgame.diff_level;
 
 	// Inititalize data

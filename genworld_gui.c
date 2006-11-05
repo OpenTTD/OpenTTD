@@ -163,7 +163,7 @@ static void StartGeneratingLandscape(glwp_modes mode)
 	/* Copy all XXX_newgame to XXX */
 	UpdatePatches();
 	_opt_ptr = &_opt;
-	memcpy(_opt_ptr, &_opt_newgame, sizeof(GameOptions));
+	*_opt_ptr = _opt_newgame;
 	/* Load the right landscape stuff */
 	GfxLoadSprites();
 

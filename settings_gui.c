@@ -554,7 +554,7 @@ void ShowGameDifficulty(void)
 	DeleteWindowById(WC_GAME_OPTIONS, 0);
 	/* Copy current settings (ingame or in intro) to temporary holding place
 	 * change that when setting stuff, copy back on clicking 'OK' */
-	memcpy(&_opt_mod_temp, _opt_ptr, sizeof(GameOptions));
+	_opt_mod_temp = *_opt_ptr;
 	AllocateWindowDesc(&_game_difficulty_desc);
 }
 
