@@ -162,12 +162,14 @@ static EngineID AiChooseTrainToBuild(RailType railtype, int32 money, byte flag, 
 static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex tile)
 {
 	EngineID best_veh_index = INVALID_ENGINE;
-	int32 best_veh_cost = 0;
+	int32 best_veh_rating = 0;
 	EngineID i = ROAD_ENGINES_INDEX;
 	EngineID end = i + NUM_ROAD_ENGINES;
 
 	for (; i != end; i++) {
+		const RoadVehicleInfo *rvi = RoadVehInfo(i);
 		const Engine* e = GetEngine(i);
+		int32 rating;
 		int32 ret;
 
 		if (!HASBIT(e->player_avail, _current_player) || e->reliability < 0x8A3D) {
@@ -175,13 +177,17 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex til
 		}
 
 		/* Skip vehicles which can't take our cargo type */
-		if (RoadVehInfo(i)->cargo_type != cargo) continue;
+		if (rvi->cargo_type != cargo) continue;
+
+		/* Rate and compare the engine by speed & capacity */
+		rating = rvi->max_speed * rvi->capacity;
+		if (rating <= best_veh_rating) continue;
 
 		ret = DoCommand(tile, i, 0, 0, CMD_BUILD_ROAD_VEH);
-		if (!CmdFailed(ret) && ret <= money && ret >= best_veh_cost) {
-			best_veh_cost = ret;
-			best_veh_index = i;
-		}
+		if (CmdFailed(ret) || ret > money) continue;
+
+		best_veh_rating = rating;
+		best_veh_index = i;
 	}
 
 	return best_veh_index;

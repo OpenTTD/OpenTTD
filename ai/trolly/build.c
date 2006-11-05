@@ -232,27 +232,39 @@ EngineID AiNew_PickVehicle(Player *p)
 		// Not supported yet
 		return INVALID_ENGINE;
 	} else {
+		EngineID best_veh_index = INVALID_ENGINE;
+		int32 best_veh_rating = 0;
 		EngineID start = ROAD_ENGINES_INDEX;
 		EngineID end   = ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES;
 		EngineID i;
 
 		// Let's check it backwards.. we simply want to best engine available..
-		for (i = end - 1; i >= start; i--) {
+		for (i = start; i != end; i--) {
+			const RoadVehicleInfo *rvi = RoadVehInfo(i);
 			const Engine* e = GetEngine(i);
+			int32 rating;
 			int32 ret;
 
 			/* Skip vehicles which can't take our cargo type */
-			if (RoadVehInfo(i)->cargo_type != p->ainew.cargo) continue;
+			if (rvi->cargo_type != p->ainew.cargo) continue;
 
 			// Is it availiable?
 			// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
 			if (!HASBIT(e->player_avail, _current_player) || e->reliability * 100 < AI_VEHICLE_MIN_RELIABILTY << 16) continue;
+
+			/* Rate and compare the engine by speed & capacity */
+			rating = rvi->max_speed * rvi->capacity;
+			if (rating <= best_veh_rating) continue;
+
 			// Can we build it?
 			ret = AI_DoCommand(0, i, 0, DC_QUERY_COST, CMD_BUILD_ROAD_VEH);
-			if (!CmdFailed(ret)) return i;
+			if (CmdFailed(ret)) continue;
+
+			best_veh_rating = rating;
+			best_veh_index = i;
 		}
-		// We did not find a vehicle :(
-		return INVALID_ENGINE;
+
+		return best_veh_index;
 	}
 }
 
