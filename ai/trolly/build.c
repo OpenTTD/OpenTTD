@@ -246,7 +246,7 @@ EngineID AiNew_PickVehicle(Player *p)
 			int32 ret;
 
 			/* Skip vehicles which can't take our cargo type */
-			if (rvi->cargo_type != p->ainew.cargo) continue;
+			if (rvi->cargo_type != p->ainew.cargo && !CanRefitTo(i, p->ainew.cargo)) continue;
 
 			// Is it availiable?
 			// Also, check if the reliability of the vehicle is above the AI_VEHICLE_MIN_RELIABILTY
@@ -276,6 +276,17 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 	if (success) {
 		p->ainew.state = AI_STATE_GIVE_ORDERS;
 		p->ainew.veh_id = _new_vehicle_id;
+
+		if (GetVehicle(p->ainew.veh_id)->cargo_type != p->ainew.cargo) {
+			/* Cargo type doesn't match, so refit it */
+			debug("doing refit");
+			if (CmdFailed(DoCommand(tile, p->ainew.veh_id, p->ainew.cargo, DC_EXEC, CMD_REFIT_ROAD_VEH))) {
+				debug("refit failed, selling");
+				/* Refit failed, so sell the vehicle */
+				DoCommand(tile, p->ainew.veh_id, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
+				p->ainew.state = AI_STATE_NOTHING;
+			}
+		}
 	} else {
 		/* XXX this should be handled more gracefully */
 		p->ainew.state = AI_STATE_NOTHING;

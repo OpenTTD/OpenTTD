@@ -177,14 +177,18 @@ static EngineID AiChooseRoadVehToBuild(CargoID cargo, int32 money, TileIndex til
 		}
 
 		/* Skip vehicles which can't take our cargo type */
-		if (rvi->cargo_type != cargo) continue;
+		if (rvi->cargo_type != cargo && !CanRefitTo(i, cargo)) continue;
 
 		/* Rate and compare the engine by speed & capacity */
 		rating = rvi->max_speed * rvi->capacity;
 		if (rating <= best_veh_rating) continue;
 
 		ret = DoCommand(tile, i, 0, 0, CMD_BUILD_ROAD_VEH);
-		if (CmdFailed(ret) || ret > money) continue;
+		if (CmdFailed(ret)) continue;
+
+		/* Add the cost of refitting */
+		if (rvi->cargo_type != cargo) ret += GetRefitCost(i);
+		if (ret > money) continue;
 
 		best_veh_rating = rating;
 		best_veh_index = i;
@@ -3183,6 +3187,15 @@ static void AiStateBuildRoadVehicles(Player *p)
 	if (CmdFailed(DoCommand(tile, veh, 0, DC_EXEC, CMD_BUILD_ROAD_VEH))) return;
 
 	loco_id = _new_vehicle_id;
+
+	if (GetVehicle(loco_id)->cargo_type != p->ai.cargo_type) {
+		/* Cargo type doesn't match, so refit it */
+		if (CmdFailed(DoCommand(tile, loco_id, p->ai.cargo_type, DC_EXEC, CMD_REFIT_ROAD_VEH))) {
+			/* Refit failed... sell the vehicle */
+			DoCommand(tile, loco_id, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
+			return;
+		}
+	}
 
 	for (i = 0; p->ai.order_list_blocks[i] != 0xFF; i++) {
 		const AiBuildRec* aib = &p->ai.src + p->ai.order_list_blocks[i];
