@@ -12,7 +12,7 @@
 	//   |  separator        |     postfix   |
 	//   |   |    Euro year  |       |       |    name
 	//   |   |    |          |       |       |    |
-const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
+static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    1, ',', CF_NOEURO, "\xA3", "",      0,  STR_CURR_GBP    }, // british pounds
 	{    2, ',', CF_NOEURO, "$",    "",      0,  STR_CURR_USD    }, // us dollars
 	{    2, ',', CF_ISEURO, "¤",    "",      0,  STR_CURR_EUR    }, // Euro
