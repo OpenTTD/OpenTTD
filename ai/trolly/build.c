@@ -238,8 +238,8 @@ EngineID AiNew_PickVehicle(Player *p)
 		EngineID end   = ROAD_ENGINES_INDEX + NUM_ROAD_ENGINES;
 		EngineID i;
 
-		// Let's check it backwards.. we simply want to best engine available..
-		for (i = start; i != end; i--) {
+		/* Loop through all road vehicles */
+		for (i = start; i != end; i++) {
 			const RoadVehicleInfo *rvi = RoadVehInfo(i);
 			const Engine* e = GetEngine(i);
 			int32 rating;
