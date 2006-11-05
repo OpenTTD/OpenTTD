@@ -814,11 +814,23 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 	}
 }
 
+
+static void AddStation(const Station *st, StringID str, uint16 width)
+{
+	StringSpriteToDraw *sstd;
+
+	sstd = AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, 0);
+	if (sstd != NULL) {
+		sstd->color = (st->owner == OWNER_NONE || st->facilities == 0) ? 0xE : _player_colors[st->owner];
+		sstd->width = width;
+	}
+}
+
+
 static void ViewportAddStationNames(DrawPixelInfo *dpi)
 {
 	int left, top, right, bottom;
-	Station *st;
-	StringSpriteToDraw *sstd;
+	const Station *st;
 
 	if (!(_display_opt & DO_SHOW_STATION_NAMES) || _game_mode == GM_MENU)
 		return;
@@ -834,12 +846,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 					top < st->sign.top + 12 &&
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_1) {
-
-				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_305C_0, st->index, st->facilities, 0);
-				if (sstd != NULL) {
-					sstd->color = (st->owner == OWNER_NONE || !st->facilities) ? 0xE : _player_colors[st->owner];
-					sstd->width = st->sign.width_1;
-				}
+				AddStation(st, STR_305C_0, st->sign.width_1);
 			}
 		}
 	} else if (dpi->zoom == 1) {
@@ -851,12 +858,7 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 					top < st->sign.top + 24 &&
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_1*2) {
-
-				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_305C_0, st->index, st->facilities, 0);
-				if (sstd != NULL) {
-					sstd->color = (st->owner == OWNER_NONE || !st->facilities) ? 0xE : _player_colors[st->owner];
-					sstd->width = st->sign.width_1;
-				}
+				AddStation(st, STR_305C_0, st->sign.width_1);
 			}
 		}
 
@@ -871,22 +873,29 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 					top < st->sign.top + 24 &&
 					right > st->sign.left &&
 					left < st->sign.left + st->sign.width_2*4) {
-
-				sstd=AddStringToDraw(st->sign.left + 1, st->sign.top + 1, STR_STATION_SIGN_TINY, st->index, st->facilities, 0);
-				if (sstd != NULL) {
-					sstd->color = (st->owner == OWNER_NONE || !st->facilities) ? 0xE : _player_colors[st->owner];
-					sstd->width = st->sign.width_2 | 0x8000;
-				}
+				AddStation(st, STR_STATION_SIGN_TINY, st->sign.width_2 | 0x8000);
 			}
 		}
 	}
 }
 
+
+static void AddSign(const Sign *si, StringID str, uint16 width)
+{
+	StringSpriteToDraw *sstd;
+
+	sstd = AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->str, 0, 0);
+	if (sstd != NULL) {
+		sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
+		sstd->width = width;
+	}
+}
+
+
 static void ViewportAddSigns(DrawPixelInfo *dpi)
 {
-	Sign *si;
+	const Sign *si;
 	int left, top, right, bottom;
-	StringSpriteToDraw *sstd;
 
 	if (!(_display_opt & DO_SHOW_SIGNS))
 		return;
@@ -902,12 +911,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 					top < si->sign.top + 12 &&
 					right > si->sign.left &&
 					left < si->sign.left + si->sign.width_1) {
-
-				sstd=AddStringToDraw(si->sign.left + 1, si->sign.top + 1, STR_2806, si->str, 0, 0);
-				if (sstd != NULL) {
-					sstd->width = si->sign.width_1;
-					sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
-				}
+				AddSign(si, STR_2806, si->sign.width_1);
 			}
 		}
 	} else if (dpi->zoom == 1) {
@@ -918,12 +922,7 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 					top < si->sign.top + 24 &&
 					right > si->sign.left &&
 					left < si->sign.left + si->sign.width_1 * 2) {
-
-				sstd=AddStringToDraw(si->sign.left + 1, si->sign.top + 1, STR_2806, si->str, 0, 0);
-				if (sstd != NULL) {
-					sstd->width = si->sign.width_1;
-					sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
-				}
+				AddSign(si, STR_2806, si->sign.width_1);
 			}
 		}
 	} else {
@@ -935,23 +934,29 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 					top < si->sign.top + 24 &&
 					right > si->sign.left &&
 					left < si->sign.left + si->sign.width_2 * 4) {
-
-				sstd=AddStringToDraw(si->sign.left + 1, si->sign.top + 1, STR_2002, si->str, 0, 0);
-				if (sstd != NULL) {
-					sstd->width = si->sign.width_2 | 0x8000;
-					sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
-				}
+				AddSign(si, STR_2002, si->sign.width_2 | 0x8000);
 			}
 		}
 	}
 }
 
+
+static void AddWaypoint(const Waypoint *wp, StringID str, uint16 width)
+{
+	StringSpriteToDraw *sstd;
+
+	sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0, 0);
+	if (sstd != NULL) {
+		sstd->color = (wp->deleted ? 0xE : 11);
+		sstd->width = width;
+	}
+}
+
+
 static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 {
-	Waypoint *wp;
-
+	const Waypoint *wp;
 	int left, top, right, bottom;
-	StringSpriteToDraw *sstd;
 
 	if (!(_display_opt & DO_WAYPOINTS))
 		return;
@@ -967,12 +972,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 					top < wp->sign.top + 12 &&
 					right > wp->sign.left &&
 					left < wp->sign.left + wp->sign.width_1) {
-
-				sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, STR_WAYPOINT_VIEWPORT, wp->index, 0, 0);
-				if (sstd != NULL) {
-					sstd->width = wp->sign.width_1;
-					sstd->color = (wp->deleted ? 0xE : 11);
-				}
+				AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_1);
 			}
 		}
 	} else if (dpi->zoom == 1) {
@@ -983,12 +983,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 					top < wp->sign.top + 24 &&
 					right > wp->sign.left &&
 					left < wp->sign.left + wp->sign.width_1*2) {
-
-				sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, STR_WAYPOINT_VIEWPORT, wp->index, 0, 0);
-				if (sstd != NULL) {
-					sstd->width = wp->sign.width_1;
-					sstd->color = (wp->deleted ? 0xE : 11);
-				}
+				AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_1);
 			}
 		}
 	} else {
@@ -1000,12 +995,7 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 					top < wp->sign.top + 24 &&
 					right > wp->sign.left &&
 					left < wp->sign.left + wp->sign.width_2*4) {
-
-				sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, STR_WAYPOINT_VIEWPORT_TINY, wp->index, 0, 0);
-				if (sstd != NULL) {
-					sstd->width = wp->sign.width_2 | 0x8000;
-					sstd->color = (wp->deleted ? 0xE : 11);
-				}
+				AddWaypoint(wp, STR_WAYPOINT_VIEWPORT_TINY, wp->sign.width_2 | 0x8000);
 			}
 		}
 	}
@@ -1132,6 +1122,8 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 	dp.height >>= zoom;
 
 	do {
+		uint16 colour;
+
 		if (ss->width != 0) {
 			int x = (ss->x >> zoom) - 1;
 			int y = (ss->y >> zoom) - 1;
@@ -1165,16 +1157,14 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 				) && ss->width != 0) {
 			/* Real colors need the IS_PALETTE_COLOR flag
 			 * otherwise colors from _string_colormap are assumed. */
-			DrawString(
-				ss->x >> zoom, (ss->y >> zoom) - (ss->width & 0x8000 ? 2 : 0),
-				ss->string, _colour_gradient[ss->color][6] | IS_PALETTE_COLOR
-			);
+			colour = _colour_gradient[ss->color][6] | IS_PALETTE_COLOR;
 		} else {
-			DrawString(
-				ss->x >> zoom, (ss->y >> zoom) - (ss->width & 0x8000 ? 2 : 0),
-				ss->string, 16
-			);
+			colour = 16;
 		}
+		DrawString(
+			ss->x >> zoom, (ss->y >> zoom) - (ss->width & 0x8000 ? 2 : 0),
+			ss->string, colour
+		);
 
 		ss = ss->next;
 	} while (ss != NULL);
