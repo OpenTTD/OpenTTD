@@ -34,6 +34,7 @@ bool _double_size;
 bool _window_maximize;
 uint _display_hz;
 uint _fullscreen_bpp;
+static uint16 _bck_resolution[2];
 
 static void MakePalette(void)
 {
@@ -257,6 +258,13 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			HandleExitGameRequest();
 			return 0;
 
+		case WM_DESTROY:
+			if (_window_maximize) {
+				_cur_resolution[0] = _bck_resolution[0];
+				_cur_resolution[1] = _bck_resolution[1];
+			}
+			return 0;
+
 		case WM_LBUTTONDOWN:
 			SetCapture(hwnd);
 			_left_button_down = true;
@@ -392,6 +400,10 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				/* Set maximized flag when we maximize (obviously), but also when we
 				 * switched to fullscreen from a maximized state */
 				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
+				if (_window_maximize) {
+					_bck_resolution[0] = _cur_resolution[0];
+					_bck_resolution[1] = _cur_resolution[1];
+				}
 				ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
 			}
 			return 0;
