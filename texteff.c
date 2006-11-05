@@ -298,7 +298,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 						dpi->top  <= te->bottom &&
 						dpi->left + dpi->width  > te->x &&
 						dpi->top  + dpi->height > te->y) {
-					AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2, 0);
+					AddStringToDraw(te->x, te->y, te->string_id, te->params_1, te->params_2);
 				}
 			}
 			break;
@@ -310,7 +310,7 @@ void DrawTextEffects(DrawPixelInfo *dpi)
 						dpi->top  <= te->bottom * 2 - te->y &&
 						dpi->left + dpi->width  > te->x &&
 						dpi->top  + dpi->height > te->y) {
-					AddStringToDraw(te->x, te->y, (StringID)(te->string_id-1), te->params_1, te->params_2, 0);
+					AddStringToDraw(te->x, te->y, (StringID)(te->string_id-1), te->params_1, te->params_2);
 				}
 			}
 			break;

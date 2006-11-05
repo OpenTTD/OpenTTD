@@ -29,7 +29,7 @@ void OffsetGroundSprite(int x, int y);
 void DrawGroundSprite(uint32 image);
 void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z);
 void AddSortableSpriteToDraw(uint32 image, int x, int y, int w, int h, byte dz, byte z);
-void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 params_2, uint32 params_3);
+void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 params_2);
 void AddChildSpriteScreen(uint32 image, int x, int y);
 
 

@@ -46,7 +46,7 @@ typedef struct StringSpriteToDraw {
 	struct StringSpriteToDraw *next;
 	int32 x;
 	int32 y;
-	uint32 params[3];
+	uint32 params[2];
 	uint16 width;
 } StringSpriteToDraw;
 
@@ -534,7 +534,7 @@ void AddChildSpriteScreen(uint32 image, int x, int y)
 }
 
 /* Returns a StringSpriteToDraw */
-void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 params_2, uint32 params_3)
+void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 params_2)
 {
 	ViewportDrawer *vd = _cur_vd;
 	StringSpriteToDraw *ss;
@@ -553,7 +553,6 @@ void *AddStringToDraw(int x, int y, StringID string, uint32 params_1, uint32 par
 	ss->y = y;
 	ss->params[0] = params_1;
 	ss->params[1] = params_2;
-	ss->params[2] = params_3;
 	ss->width = 0;
 
 	*vd->last_string = ss;
@@ -778,7 +777,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 
 				AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
 					_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
-					t->index, t->population, 0);
+					t->index, t->population);
 			}
 		}
 	} else if (dpi->zoom == 1) {
@@ -793,7 +792,7 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 
 				AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
 					_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
-					t->index, t->population, 0);
+					t->index, t->population);
 			}
 		}
 	} else {
@@ -807,8 +806,8 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 					right > t->sign.left &&
 					left < t->sign.left + t->sign.width_2*4) {
 
-				AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_TOWN_LABEL_TINY_BLACK, t->index, 0, 0);
-				AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_TOWN_LABEL_TINY_WHITE, t->index, 0, 0);
+				AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_TOWN_LABEL_TINY_BLACK, t->index, 0);
+				AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_TOWN_LABEL_TINY_WHITE, t->index, 0);
 			}
 		}
 	}
@@ -819,7 +818,7 @@ static void AddStation(const Station *st, StringID str, uint16 width)
 {
 	StringSpriteToDraw *sstd;
 
-	sstd = AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities, 0);
+	sstd = AddStringToDraw(st->sign.left + 1, st->sign.top + 1, str, st->index, st->facilities);
 	if (sstd != NULL) {
 		sstd->color = (st->owner == OWNER_NONE || st->facilities == 0) ? 0xE : _player_colors[st->owner];
 		sstd->width = width;
@@ -884,7 +883,7 @@ static void AddSign(const Sign *si, StringID str, uint16 width)
 {
 	StringSpriteToDraw *sstd;
 
-	sstd = AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->str, 0, 0);
+	sstd = AddStringToDraw(si->sign.left + 1, si->sign.top + 1, str, si->str, 0);
 	if (sstd != NULL) {
 		sstd->color = (si->owner == OWNER_NONE) ? 14 : _player_colors[si->owner];
 		sstd->width = width;
@@ -945,7 +944,7 @@ static void AddWaypoint(const Waypoint *wp, StringID str, uint16 width)
 {
 	StringSpriteToDraw *sstd;
 
-	sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0, 0);
+	sstd = AddStringToDraw(wp->sign.left + 1, wp->sign.top + 1, str, wp->index, 0);
 	if (sstd != NULL) {
 		sstd->color = (wp->deleted ? 0xE : 11);
 		sstd->width = width;
@@ -1148,7 +1147,6 @@ static void ViewportDrawStrings(DrawPixelInfo *dpi, const StringSpriteToDraw *ss
 
 		SetDParam(0, ss->params[0]);
 		SetDParam(1, ss->params[1]);
-		SetDParam(2, ss->params[2]);
 		/* if we didn't draw a rectangle, or if transparant building is on,
 		 * draw the text in the color the rectangle would have */
 		if ((
