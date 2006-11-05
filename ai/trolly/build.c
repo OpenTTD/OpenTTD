@@ -279,9 +279,7 @@ void CcAI(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 		if (GetVehicle(p->ainew.veh_id)->cargo_type != p->ainew.cargo) {
 			/* Cargo type doesn't match, so refit it */
-			debug("doing refit");
 			if (CmdFailed(DoCommand(tile, p->ainew.veh_id, p->ainew.cargo, DC_EXEC, CMD_REFIT_ROAD_VEH))) {
-				debug("refit failed, selling");
 				/* Refit failed, so sell the vehicle */
 				DoCommand(tile, p->ainew.veh_id, 0, DC_EXEC, CMD_SELL_ROAD_VEH);
 				p->ainew.state = AI_STATE_NOTHING;
