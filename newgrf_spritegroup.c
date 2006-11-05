@@ -13,7 +13,7 @@ static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item);
 static uint _spritegroup_count = 0;
 STATIC_POOL(SpriteGroup, SpriteGroup, 4, 8000, NULL, SpriteGroupPoolCleanBlock);
 
-void DestroySpriteGroup(SpriteGroup *group)
+static void DestroySpriteGroup(SpriteGroup *group)
 {
 	/* Free dynamically allocated memory */
 	/* XXX Cast away the consts due to MSVC being buggy... */
