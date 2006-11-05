@@ -180,9 +180,7 @@ int RedrawScreenDebug(void)
 }
 #endif
 
-/* Windows 95 will not have a WM_MOUSELEAVE message, so define it if
- * needed. There is no such event as WM_MOUSEENTER, we just made this up :) */
-#define WM_MOUSEENTER WM_USER + 1
+/* Windows 95 will not have a WM_MOUSELEAVE message, so define it if needed */
 #if !defined(WM_MOUSELEAVE)
 #define WM_MOUSELEAVE 0x02A3
 #endif
@@ -287,15 +285,12 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			_right_button_down = false;
 			return 0;
 
-		case WM_MOUSEENTER:
-			_cursor.in_window = true;
-			DrawMouseCursor();
-			break;
-
 		case WM_MOUSELEAVE:
 			UndrawMouseCursor();
 			_cursor.in_window = false;
-			break;
+
+			if (!_left_button_down && !_right_button_down) MyShowCursor(true);
+			return 0;
 
 		case WM_MOUSEMOVE: {
 			int x = (int16)LOWORD(lParam);
@@ -303,13 +298,13 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			POINT pt;
 
 			/* If the mouse was not in the window and it has moved it means it has
-			 * come into the window, so send a WM_MOUSEENTER message. Also start
+			 * come into the window, so start drawing the mouse. Also start
 			 * tracking the mouse for exiting the window */
 			if (!_cursor.in_window) {
 				_cursor.in_window = true;
 				SetTimer(hwnd, TID_POLLMOUSE, MOUSE_POLL_DELAY, (TIMERPROC)TrackMouseTimerProc);
 
-				if (hwnd != GetCapture()) PostMessage(hwnd, WM_MOUSEENTER, 0, 0L);
+				DrawMouseCursor();
 			}
 
 			if (_wnd.double_size) {
@@ -390,10 +385,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 					break;
 			}
 			break;
-
-		case WM_NCMOUSEMOVE:
-			MyShowCursor(true);
-			return 0;
 
 		case WM_SIZE:
 			if (wParam != SIZE_MINIMIZED) {
