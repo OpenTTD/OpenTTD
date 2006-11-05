@@ -2806,6 +2806,7 @@ static bool AiCheckRoadFinished(Player *p)
 	are.dest = p->ai.cur_tile_b;
 	tile = TILE_MASK(p->ai.cur_tile_a + TileOffsByDiagDir(dir));
 
+	if (IsRoadStopTile(tile) || IsTileDepotType(tile, TRANSPORT_ROAD)) return false;
 	bits = GetTileTrackStatus(tile, TRANSPORT_ROAD) & _ai_road_table_and[dir];
 	if (bits == 0) return false;
 
