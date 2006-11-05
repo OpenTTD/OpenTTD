@@ -255,7 +255,6 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 		case WM_CLOSE:
 			HandleExitGameRequest();
-			_window_maximize = IsZoomed(_wnd.main_wnd);
 			return 0;
 
 		case WM_LBUTTONDOWN:
@@ -390,6 +389,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 		case WM_SIZE:
 			if (wParam != SIZE_MINIMIZED) {
+				/* Set maximized flag when we maximize (obviously), but also when we
+				 * switched to fullscreen from a maximized state */
+				_window_maximize = (wParam == SIZE_MAXIMIZED || (_window_maximize && _fullscreen));
 				ClientSizeChanged(LOWORD(lParam), HIWORD(lParam));
 			}
 			return 0;
@@ -557,6 +559,8 @@ static void MakeWindow(bool full_screen)
 			SetRect(&r, 0, 0, _wnd.width_org, _wnd.height_org);
 		} else {
 			style = WS_OVERLAPPEDWINDOW | WS_VISIBLE;
+			/* On window creation, check if we were in maximize mode before */
+			if (_window_maximize) style |= WS_MAXIMIZE;
 			SetRect(&r, 0, 0, _wnd.width, _wnd.height);
 		}
 
@@ -577,12 +581,6 @@ static void MakeWindow(bool full_screen)
 
 			_wnd.main_wnd = CreateWindow("OTTD", Windowtitle, style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
 			if (_wnd.main_wnd == NULL) error("CreateWindow failed");
-
-			/* On startup let's see if we quit maximized the last time, restore that */
-			if (_window_maximize) {
-				ShowWindow(_wnd.main_wnd, SW_MAXIMIZE);
-				_window_maximize = false;
-			}
 		}
 	}
 	GameSizeChanged(); // invalidate all windows, force redraw
