@@ -768,48 +768,51 @@ static void ViewportAddTownNames(DrawPixelInfo *dpi)
 	right = left + dpi->width;
 	bottom = top + dpi->height;
 
-	if (dpi->zoom < 1) {
-		FOR_ALL_TOWNS(t) {
-			if (bottom > t->sign.top &&
-					top < t->sign.top + 12 &&
-					right > t->sign.left &&
-					left < t->sign.left + t->sign.width_1) {
-
-				AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
-					_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
-					t->index, t->population);
+	switch (dpi->zoom) {
+		case 0:
+			FOR_ALL_TOWNS(t) {
+				if (bottom > t->sign.top &&
+						top    < t->sign.top + 12 &&
+						right  > t->sign.left &&
+						left   < t->sign.left + t->sign.width_1) {
+					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
+						_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
+						t->index, t->population);
+				}
 			}
-		}
-	} else if (dpi->zoom == 1) {
-		right += 2;
-		bottom += 2;
+			break;
 
-		FOR_ALL_TOWNS(t) {
-			if (bottom > t->sign.top &&
-					top < t->sign.top + 24 &&
-					right > t->sign.left &&
-					left < t->sign.left + t->sign.width_1*2) {
+		case 1:
+			right += 2;
+			bottom += 2;
 
-				AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
-					_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
-					t->index, t->population);
+			FOR_ALL_TOWNS(t) {
+				if (bottom > t->sign.top &&
+						top    < t->sign.top + 24 &&
+						right  > t->sign.left &&
+						left   < t->sign.left + t->sign.width_1*2) {
+					AddStringToDraw(t->sign.left + 1, t->sign.top + 1,
+						_patches.population_in_label ? STR_TOWN_LABEL_POP : STR_TOWN_LABEL,
+						t->index, t->population);
+				}
 			}
-		}
-	} else {
-		right += 4;
-		bottom += 5;
+			break;
 
-		assert(dpi->zoom == 2);
-		FOR_ALL_TOWNS(t) {
-			if (bottom > t->sign.top &&
-					top < t->sign.top + 24 &&
-					right > t->sign.left &&
-					left < t->sign.left + t->sign.width_2*4) {
+		default: NOT_REACHED();
+		case 2:
+			right += 4;
+			bottom += 5;
 
-				AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_TOWN_LABEL_TINY_BLACK, t->index, 0);
-				AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_TOWN_LABEL_TINY_WHITE, t->index, 0);
+			FOR_ALL_TOWNS(t) {
+				if (bottom > t->sign.top &&
+						top    < t->sign.top + 24 &&
+						right  > t->sign.left &&
+						left   < t->sign.left + t->sign.width_2*4) {
+					AddStringToDraw(t->sign.left + 5, t->sign.top + 1, STR_TOWN_LABEL_TINY_BLACK, t->index, 0);
+					AddStringToDraw(t->sign.left + 1, t->sign.top - 3, STR_TOWN_LABEL_TINY_WHITE, t->index, 0);
+				}
 			}
-		}
+			break;
 	}
 }
 
@@ -839,42 +842,44 @@ static void ViewportAddStationNames(DrawPixelInfo *dpi)
 	right = left + dpi->width;
 	bottom = top + dpi->height;
 
-	if (dpi->zoom < 1) {
-		FOR_ALL_STATIONS(st) {
-			if (bottom > st->sign.top &&
-					top < st->sign.top + 12 &&
-					right > st->sign.left &&
-					left < st->sign.left + st->sign.width_1) {
-				AddStation(st, STR_305C_0, st->sign.width_1);
+	switch (dpi->zoom) {
+		case 0:
+			FOR_ALL_STATIONS(st) {
+				if (bottom > st->sign.top &&
+						top    < st->sign.top + 12 &&
+						right  > st->sign.left &&
+						left   < st->sign.left + st->sign.width_1) {
+					AddStation(st, STR_305C_0, st->sign.width_1);
+				}
 			}
-		}
-	} else if (dpi->zoom == 1) {
-		right += 2;
-		bottom += 2;
+			break;
 
-		FOR_ALL_STATIONS(st) {
-			if (bottom > st->sign.top &&
-					top < st->sign.top + 24 &&
-					right > st->sign.left &&
-					left < st->sign.left + st->sign.width_1*2) {
-				AddStation(st, STR_305C_0, st->sign.width_1);
+		case 1:
+			right += 2;
+			bottom += 2;
+			FOR_ALL_STATIONS(st) {
+				if (bottom > st->sign.top &&
+						top    < st->sign.top + 24 &&
+						right  > st->sign.left &&
+						left   < st->sign.left + st->sign.width_1*2) {
+					AddStation(st, STR_305C_0, st->sign.width_1);
+				}
 			}
-		}
+			break;
 
-	} else {
-		assert(dpi->zoom == 2);
-
-		right += 4;
-		bottom += 5;
-
-		FOR_ALL_STATIONS(st) {
-			if (bottom > st->sign.top &&
-					top < st->sign.top + 24 &&
-					right > st->sign.left &&
-					left < st->sign.left + st->sign.width_2*4) {
-				AddStation(st, STR_STATION_SIGN_TINY, st->sign.width_2 | 0x8000);
+		default: NOT_REACHED();
+		case 2:
+			right += 4;
+			bottom += 5;
+			FOR_ALL_STATIONS(st) {
+				if (bottom > st->sign.top &&
+						top    < st->sign.top + 24 &&
+						right  > st->sign.left &&
+						left   < st->sign.left + st->sign.width_2*4) {
+					AddStation(st, STR_STATION_SIGN_TINY, st->sign.width_2 | 0x8000);
+				}
 			}
-		}
+			break;
 	}
 }
 
@@ -904,38 +909,44 @@ static void ViewportAddSigns(DrawPixelInfo *dpi)
 	right = left + dpi->width;
 	bottom = top + dpi->height;
 
-	if (dpi->zoom < 1) {
-		FOR_ALL_SIGNS(si) {
-			if (bottom > si->sign.top &&
-					top < si->sign.top + 12 &&
-					right > si->sign.left &&
-					left < si->sign.left + si->sign.width_1) {
-				AddSign(si, STR_2806, si->sign.width_1);
+	switch (dpi->zoom) {
+		case 0:
+			FOR_ALL_SIGNS(si) {
+				if (bottom > si->sign.top &&
+						top    < si->sign.top + 12 &&
+						right  > si->sign.left &&
+						left   < si->sign.left + si->sign.width_1) {
+					AddSign(si, STR_2806, si->sign.width_1);
+				}
 			}
-		}
-	} else if (dpi->zoom == 1) {
-		right += 2;
-		bottom += 2;
-		FOR_ALL_SIGNS(si) {
-			if (bottom > si->sign.top &&
-					top < si->sign.top + 24 &&
-					right > si->sign.left &&
-					left < si->sign.left + si->sign.width_1 * 2) {
-				AddSign(si, STR_2806, si->sign.width_1);
-			}
-		}
-	} else {
-		right += 4;
-		bottom += 5;
+			break;
 
-		FOR_ALL_SIGNS(si) {
-			if (bottom > si->sign.top &&
-					top < si->sign.top + 24 &&
-					right > si->sign.left &&
-					left < si->sign.left + si->sign.width_2 * 4) {
-				AddSign(si, STR_2002, si->sign.width_2 | 0x8000);
+		case 1:
+			right += 2;
+			bottom += 2;
+			FOR_ALL_SIGNS(si) {
+				if (bottom > si->sign.top &&
+						top    < si->sign.top + 24 &&
+						right  > si->sign.left &&
+						left   < si->sign.left + si->sign.width_1 * 2) {
+					AddSign(si, STR_2806, si->sign.width_1);
+				}
 			}
-		}
+			break;
+
+		default: NOT_REACHED();
+		case 2:
+			right += 4;
+			bottom += 5;
+			FOR_ALL_SIGNS(si) {
+				if (bottom > si->sign.top &&
+						top    < si->sign.top + 24 &&
+						right  > si->sign.left &&
+						left   < si->sign.left + si->sign.width_2 * 4) {
+					AddSign(si, STR_2002, si->sign.width_2 | 0x8000);
+				}
+			}
+			break;
 	}
 }
 
@@ -965,38 +976,44 @@ static void ViewportAddWaypoints(DrawPixelInfo *dpi)
 	right = left + dpi->width;
 	bottom = top + dpi->height;
 
-	if (dpi->zoom < 1) {
-		FOR_ALL_WAYPOINTS(wp) {
-			if (bottom > wp->sign.top &&
-					top < wp->sign.top + 12 &&
-					right > wp->sign.left &&
-					left < wp->sign.left + wp->sign.width_1) {
-				AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_1);
+	switch (dpi->zoom) {
+		case 0:
+			FOR_ALL_WAYPOINTS(wp) {
+				if (bottom > wp->sign.top &&
+						top    < wp->sign.top + 12 &&
+						right  > wp->sign.left &&
+						left   < wp->sign.left + wp->sign.width_1) {
+					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_1);
+				}
 			}
-		}
-	} else if (dpi->zoom == 1) {
-		right += 2;
-		bottom += 2;
-		FOR_ALL_WAYPOINTS(wp) {
-			if (bottom > wp->sign.top &&
-					top < wp->sign.top + 24 &&
-					right > wp->sign.left &&
-					left < wp->sign.left + wp->sign.width_1*2) {
-				AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_1);
-			}
-		}
-	} else {
-		right += 4;
-		bottom += 5;
+			break;
 
-		FOR_ALL_WAYPOINTS(wp) {
-			if (bottom > wp->sign.top &&
-					top < wp->sign.top + 24 &&
-					right > wp->sign.left &&
-					left < wp->sign.left + wp->sign.width_2*4) {
-				AddWaypoint(wp, STR_WAYPOINT_VIEWPORT_TINY, wp->sign.width_2 | 0x8000);
+		case 1:
+			right += 2;
+			bottom += 2;
+			FOR_ALL_WAYPOINTS(wp) {
+				if (bottom > wp->sign.top &&
+						top    < wp->sign.top + 24 &&
+						right  > wp->sign.left &&
+						left   < wp->sign.left + wp->sign.width_1*2) {
+					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT, wp->sign.width_1);
+				}
 			}
-		}
+			break;
+
+		default: NOT_REACHED();
+		case 2:
+			right += 4;
+			bottom += 5;
+			FOR_ALL_WAYPOINTS(wp) {
+				if (bottom > wp->sign.top &&
+						top    < wp->sign.top + 24 &&
+						right  > wp->sign.left &&
+						left   < wp->sign.left + wp->sign.width_2*4) {
+					AddWaypoint(wp, STR_WAYPOINT_VIEWPORT_TINY, wp->sign.width_2 | 0x8000);
+				}
+			}
+			break;
 	}
 }
 
