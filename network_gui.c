@@ -97,15 +97,12 @@ enum {
 	NET_PRC__SIZE_OF_ROW                = 14,
 };
 
-// called when a new server is found on the network
+/** Update the network new window because a new server is
+ * found on the network.
+ * @param unselect unselect the currently selected item */
 void UpdateNetworkGameWindow(bool unselect)
 {
-	Window *w = FindWindowById(WC_NETWORK_WINDOW, 0);
-
-	if (w != NULL) {
-		if (unselect) WP(w, network_ql_d).n.server = NULL;
-		SendWindowMessage(WC_NETWORK_WINDOW, 0, true, 0, 0);
-	}
+	SendWindowMessage(WC_NETWORK_WINDOW, 0, unselect, 0, 0);
 }
 
 static bool _internal_sort_order; // Used for Qsort order-flipping
@@ -457,6 +454,7 @@ static void NetworkGameWindowWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_MESSAGE:
+		if (e->we.message.msg != 0) nd->server = NULL;
 		ld->flags |= VL_REBUILD;
 		SetWindowDirty(w);
 		break;
