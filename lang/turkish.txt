@@ -2913,6 +2913,8 @@ STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarlar
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Gönder {SKIP}{SKIP}{SKIP}{STRING}
 
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Listedeki bütün gemileri tersanelere gönder. CTRL+tiklama sadece servis için
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Listedeki bütün uçaklari hangarlara gönder. CTRL+tiklama sadece servis için
 
 ### depot strings
 
@@ -2923,6 +2925,7 @@ STR_ARE_YOU_SURE                                                :{BLACK}Emin mis
 STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Gardaki tüm trenleri satmayi onaylayin
 STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Garajdaki tüm arabalari satmayi onaylayin
 STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Tersanedeki tüm gemileri satmayi onaylayin
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Hangardaki bütün uçaklari satmayi onayla
 
 STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Gardaki tüm trenlari satma
 STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Garajdaki tüm arabalari satma
@@ -2934,6 +2937,10 @@ STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Garajdak
 STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Tersanedeki tüm gemileri sat
 STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Hangardaki butun hava araclarini sat
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Bu gari talimat listesinde içeren trenleri listele
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Bu garaji talimat listesinde içeren arabalari listele
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Bu tersaneyi talimat listesinde içeren gemileri listele
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Bu havalimanindaki hangarlardan birini talimat listesinde içeren uçaklari listele
 
 STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Gardaki tüm trenleri otomatik yenile
 STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Garajdaki tüm arabalari otomatik yenile
@@ -2971,6 +2978,9 @@ STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Gardaki 
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Tersanedeki tüm gemileri durdurmak için tikla
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Hangardaki tüm uçaklari durdurmak için tikla
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Gardaki tüm trenleri baslatmak için tikla
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Tersanedeki tüm gemileri baslatmak için tikla
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Hangardaki tüm uçaklari baslatmak için tikla
 
 STR_MASS_STOP_LIST_TIP                                          :{BLACK}Listedeki tüm araçlari durdurmak için bas
 STR_MASS_START_LIST_TIP                                         :{BLACK}Listedeki tüm araçlari baslatmak için bas
@@ -3003,6 +3013,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Fiyat: {
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasite: {GOLD}{COMMA} yolcu, {COMMA} çanta posta
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Güç Veren Vagonlar: {GOLD}+{POWER}{BLACK} Agirlik: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Tüm kargo türleri
+STR_PURCHASE_INFO_ALL_BUT                                       :{GOLD} hariç hepsi
 
 ########### String for New Landscape Generator
 
@@ -3077,5 +3088,7 @@ STR_HELIPORTS                                                   :{BLACK}Helikopt
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Uzunluk: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Alan: {NUM} x {NUM}
 
 ########
