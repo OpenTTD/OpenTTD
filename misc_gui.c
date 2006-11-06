@@ -715,25 +715,29 @@ static void DrawStationCoverageText(const AcceptedCargo accepts,
 	int str_x, int str_y, uint mask)
 {
 	char *b = _userstring;
+	bool first = true;
 	int i;
 
 	b = InlineString(b, STR_000D_ACCEPTS);
 
 	for (i = 0; i != NUM_CARGO; i++, mask >>= 1) {
+		if (b >= lastof(_userstring) - 5) break;
 		if (accepts[i] >= 8 && mask & 1) {
+			if (first) {
+				first = false;
+			} else {
+				/* Add a comma if this is not the first item */
+				*b++ = ',';
+				*b++ = ' ';
+			}
 			b = InlineString(b, _cargoc.names_s[i]);
-			*b++ = ',';
-			*b++ = ' ';
 		}
 	}
 
-	if (b == &_userstring[3]) {
-		b = InlineString(b, STR_00D0_NOTHING);
-		*b++ = '\0';
-	} else {
-		b[-2] = '\0';
-	}
+	/* If first is still true then no cargo is accepted */
+	if (first) b = InlineString(b, STR_00D0_NOTHING);
 
+	*b = '\0';
 	DrawStringMultiLine(str_x, str_y, STR_SPEC_USERSTRING, 144);
 }
 

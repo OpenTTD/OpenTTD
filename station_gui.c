@@ -637,25 +637,28 @@ static void DrawStationViewWindow(Window *w)
 
 	if (IsWindowOfPrototype(w, _station_view_widgets)) {
 		char *b = _userstring;
+		bool first = true;
 
 		b = InlineString(b, STR_000C_ACCEPTS);
 
 		for (i = 0; i != NUM_CARGO; i++) {
 			if (b >= endof(_userstring) - 5 - 1) break;
 			if (st->goods[i].waiting_acceptance & 0x8000) {
+				if (first) {
+					first = false;
+				} else {
+					/* Add a comma if this is not the first item */
+					*b++ = ',';
+					*b++ = ' ';
+				}
 				b = InlineString(b, _cargoc.names_s[i]);
-				*b++ = ',';
-				*b++ = ' ';
 			}
 		}
 
-		if (b == &_userstring[3]) {
-			b = InlineString(b, STR_00D0_NOTHING);
-			*b++ = '\0';
-		} else {
-			b[-2] = '\0';
-		}
+		/* If first is still true then no cargo is accepted */
+		if (first) b = InlineString(b, STR_00D0_NOTHING);
 
+		*b = '\0';
 		DrawStringMultiLine(2, 67, STR_SPEC_USERSTRING, 245);
 	} else {
 		DrawString(2, 67, STR_3034_LOCAL_RATING_OF_TRANSPORT, 0);
