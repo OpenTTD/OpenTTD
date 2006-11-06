@@ -25,7 +25,6 @@
 // This file handles all the server-commands
 
 static void NetworkHandleCommandQueue(NetworkClientState* cs);
-void NetworkPopulateCompanyInfo(void);
 
 // **********
 // Sending functions

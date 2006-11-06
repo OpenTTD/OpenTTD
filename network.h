@@ -221,6 +221,7 @@ void NetworkAddServer(const char *b);
 void NetworkRebuildHostList(void);
 bool NetworkChangeCompanyPassword(byte argc, char *argv[]);
 void NetworkPopulateCompanyInfo(void);
+void UpdateNetworkGameWindow(bool unselect);
 void CheckMinPlayers(void);
 
 void NetworkStartUp(void);

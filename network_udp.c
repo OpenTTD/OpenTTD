@@ -12,9 +12,6 @@
 #include "network_udp.h"
 #include "variables.h"
 
-extern void UpdateNetworkGameWindow(bool unselect);
-extern void NetworkPopulateCompanyInfo(void);
-
 //
 // This file handles all the LAN-stuff
 // Stuff like:

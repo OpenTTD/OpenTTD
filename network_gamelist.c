@@ -9,8 +9,6 @@
 // This file handles the GameList
 // Also, it handles the request to a server for data about the server
 
-extern void UpdateNetworkGameWindow(bool unselect);
-
 /** Add a new item to the linked gamelist. If the IP and Port match
  * return the existing item instead of adding it again
  * @param ip the IP-address (inet_addr) of the to-be added item
