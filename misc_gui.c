@@ -1502,6 +1502,10 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_TIMEOUT:
+		/* This test protects against using widgets 11 and 12 which are only available
+		 * in those two saveload mode  */
+		if (!(_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO)) break;
+
 		if (IsWindowWidgetLowered(w, 11)) { /* Delete button clicked */
 			if (!FiosDelete(OTTD2FS(WP(w,querystr_d).text.buf))) {
 				ShowErrorMessage(INVALID_STRING_ID, STR_4008_UNABLE_TO_DELETE_FILE, 0, 0);
