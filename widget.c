@@ -474,6 +474,7 @@ draw_default:;
 
 static const Widget _dropdown_menu_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_NULL},
+{  WWT_SCROLLBAR,   RESIZE_NONE,     0,     0, 0,     0, 0, 0x0, STR_0190_SCROLL_BAR_SCROLLS_LIST},
 {   WIDGETS_END},
 };
 
@@ -485,7 +486,7 @@ static int GetDropdownItem(const Window *w)
 	if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) < 0)
 		return -1;
 
-	y = _cursor.pos.y - w->top - 2;
+	y = _cursor.pos.y - w->top - 2 + w->vscroll.pos;
 
 	if (y < 0)
 		return - 1;
@@ -508,12 +509,28 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_PAINT: {
 			int x,y,i,sel;
+			int width;
+			bool scroll = w->vscroll.count > 0;
+			DrawPixelInfo tmp_dpi, *old_dpi = NULL;
 
 			DrawWindowWidgets(w);
 
 			x = 1;
-			y = 2;
-			sel    = WP(w,dropdown_d).selected_index;
+			y = 2 - w->vscroll.pos;
+
+			if (scroll) {
+				/* Set up the bounding box for drawing the list content */
+				if (!FillDrawPixelInfo(&tmp_dpi, w->widget[0].left + 1, w->widget[0].top + 1, w->widget[0].right - 1, w->widget[0].bottom - 1)) return;
+				old_dpi = _cur_dpi;
+				_cur_dpi = &tmp_dpi;
+
+				/* Adjust x and y for the 1 pixel offset of the bounding box */
+				x--;
+				y--;
+			}
+
+			sel   = WP(w,dropdown_d).selected_index;
+			width = w->widget[0].right - 3;
 
 			for (i = 0; WP(w,dropdown_d).items[i] != INVALID_STRING_ID; i++) {
 				if (HASBIT(WP(w,dropdown_d).hidden_state, i)) {
@@ -521,11 +538,11 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 					continue;
 				}
 				if (WP(w,dropdown_d).items[i] != STR_NULL) {
-					if (sel == 0) GfxFillRect(x + 1, y, x + w->width - 4, y + 9, 0);
-					DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16, w->width - 4);
+					if (sel == 0) GfxFillRect(x + 1, y, x + width, y + 9, 0);
+					DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16, x + width);
 
 					if (HASBIT(WP(w,dropdown_d).disabled_state, i)) {
-						GfxFillRect(x, y, x + w->width - 3, y + 9,
+						GfxFillRect(x, y, x + width, y + 9,
 							PALETTE_MODIFIER_GREYOUT | _colour_gradient[_dropdown_menu_widgets[0].color][5]
 						);
 					}
@@ -539,9 +556,13 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 				y += 10;
 				sel--;
 			}
+
+			/* Reset the bounding box if we had set it up */
+			if (scroll) _cur_dpi = old_dpi;
 		} break;
 
 		case WE_CLICK: {
+			if (e->we.click.widget != 0) break;
 			item = GetDropdownItem(w);
 			if (item >= 0) {
 				WP(w,dropdown_d).click_delay = 4;
@@ -600,7 +621,11 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	int i;
 	const Widget *wi;
 	Window *w2;
+	const Window *w3;
 	bool is_dropdown_menu_shown = IsWindowWidgetLowered(w, button);
+	int top, height;
+	int screen_top, screen_bottom;
+	bool scroll = false;
 
 	cls = w->window_class;
 	num = w->window_number;
@@ -626,19 +651,58 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 		}
 	}
 
+	/* The preferred position is just below the dropdown calling widget */
+	top = w->top + wi->bottom + 2;
+	height = i * 10 + 4;
+
+	w3 = FindWindowById(WC_STATUS_BAR, 0);
+	screen_bottom = w3 == NULL ? _screen.height : w3->top;
+
+	/* Check if the dropdown will fully fit below the widget */
+	if (top + height >= screen_bottom) {
+		w3 = FindWindowById(WC_MAIN_TOOLBAR, 0);
+		screen_top = w3 == NULL ? 0 : w3->top + w3->height;
+
+		/* If not, check if it will fit above the widget */
+		if (w->top + wi->top - height - 1 > screen_top) {
+			top = w->top + wi->top - height - 1;
+		} else {
+			/* ... and lastly if it won't, enable the scroll bar and fit the
+			 * list in below the widget */
+			height = screen_bottom - top;
+			scroll = true;
+		}
+	}
+
 	w2 = AllocateWindow(
 		w->left + wi[-1].left + 1,
-		w->top + wi->bottom + 2,
+		top,
 		wi->right - wi[-1].left + 1,
-		i * 10 + 4,
+		height,
 		DropdownMenuWndProc,
 		WC_DROPDOWN_MENU,
 		_dropdown_menu_widgets);
 
 	w2->widget[0].color = wi->color;
 	w2->widget[0].right = wi->right - wi[-1].left;
-	w2->widget[0].bottom = i * 10 + 3;
+	w2->widget[0].bottom = height - 1;
 
+	SetWindowWidgetHiddenState(w2, 1, !scroll);
+
+	if (scroll) {
+		/* We're scrolling, so enable the scroll bar and shrink the list by
+		 * the scrollbar's width */
+		w2->widget[1].color  = wi->color;
+		w2->widget[1].right  = w2->widget[0].right;
+		w2->widget[1].left   = w2->widget[1].right - 11;
+		w2->widget[1].bottom = height - 1;
+		w2->widget[0].right -= 12;
+
+		w2->vscroll.cap   = height - 1;
+		w2->vscroll.count = i * 10 + 3;
+	}
+
+	w2->desc_flags = WDF_DEF_WIDGET;
 	w2->flags4 &= ~WF_WHITE_BORDER_MASK;
 
 	WP(w2,dropdown_d).disabled_state = disabled_mask;
