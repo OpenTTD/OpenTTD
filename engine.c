@@ -34,28 +34,6 @@ enum {
 	YEAR_ENGINE_AGING_STOPS = 2050,
 };
 
-/** Bitmasked values of what type of cargo is refittable for the given vehicle-type.
- * This coupled with the landscape information (_landscape_global_cargo_mask) gives
- * us exactly what is refittable and what is not */
-#define MC(cargo) (1 << cargo)
-const uint32 _default_refitmasks[NUM_VEHICLE_TYPES] = {
-	/* Trains */
-	MC(GC_PASSENGERS) | MC(GC_COAL)      | MC(GC_MAIL)   | MC(GC_LIVESTOCK) | MC(GC_GOODS)        | MC(GC_GRAIN)      | MC(GC_WOOD)    | MC(GC_IRON_ORE)    |
-	MC(GC_STEEL)      | MC(GC_VALUABLES) | MC(GC_PAPER)  | MC(GC_FOOD)      | MC(GC_FRUIT)        | MC(GC_COPPER_ORE) | MC(GC_WATER)   | MC(GC_SUGAR)       |
-	MC(GC_TOYS)       | MC(GC_CANDY)     | MC(GC_TOFFEE) | MC(GC_COLA)      | MC(GC_COTTON_CANDY) | MC(GC_BUBBLES)    | MC(GC_PLASTIC) | MC(GC_FIZZY_DRINKS),
-	/* Road vehicles (not refittable by default) */
-	0,
-	/* Ships */
-	MC(GC_COAL)  | MC(GC_MAIL)   | MC(GC_LIVESTOCK) | MC(GC_GOODS)        | MC(GC_GRAIN)   | MC(GC_WOOD)    | MC(GC_IRON_ORE) | MC(GC_STEEL) | MC(GC_VALUABLES) |
-	MC(GC_PAPER) | MC(GC_FOOD)   | MC(GC_FRUIT)     | MC(GC_COPPER_ORE)   | MC(GC_WATER)   | MC(GC_RUBBER)  | MC(GC_SUGAR)    | MC(GC_TOYS)  | MC(GC_BATTERIES) |
-	MC(GC_CANDY) | MC(GC_TOFFEE) | MC(GC_COLA)      | MC(GC_COTTON_CANDY) | MC(GC_BUBBLES) | MC(GC_PLASTIC) | MC(GC_FIZZY_DRINKS),
-	/* Aircraft */
-	MC(GC_PASSENGERS) | MC(GC_MAIL)  | MC(GC_GOODS)  | MC(GC_VALUABLES) | MC(GC_FOOD)         | MC(GC_FRUIT)   | MC(GC_SUGAR)   | MC(GC_TOYS) |
-	MC(GC_BATTERIES)  | MC(GC_CANDY) | MC(GC_TOFFEE) | MC(GC_COLA)      | MC(GC_COTTON_CANDY) | MC(GC_BUBBLES) | MC(GC_PLASTIC) | MC(GC_FIZZY_DRINKS),
-	/* Special/Disaster */
-	0,0
-};
-#undef MC
 
 void ShowEnginePreviewWindow(EngineID engine);
 

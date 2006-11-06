@@ -128,8 +128,6 @@ void AddTypeToEngines(void);
 void StartupEngines(void);
 
 
-VARDEF const uint32 _default_refitmasks[NUM_VEHICLE_TYPES];
-
 void DrawTrainEngine(int x, int y, EngineID engine, uint32 image_ormod);
 void DrawRoadVehEngine(int x, int y, EngineID engine, uint32 image_ormod);
 void DrawShipEngine(int x, int y, EngineID engine, uint32 image_ormod);
