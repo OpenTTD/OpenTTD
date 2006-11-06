@@ -385,11 +385,6 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_MESSAGE:
-		ttd_strlcpy(_edit_str_buf, str_fmt("%u", _patches_newgame.generation_seed), lengthof(_edit_str_buf));
-		DrawEditBox(w, &WP(w, querystr_d), SEED_EDIT);
-		break;
-
 	case WE_MOUSELOOP:
 		HandleEditBox(w, &WP(w, querystr_d), SEED_EDIT);
 		break;
