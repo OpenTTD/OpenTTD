@@ -607,6 +607,7 @@ void CallWindowEventNP(Window *w, int event);
 void CallWindowTickEvent(void);
 void SetWindowDirty(const Window *w);
 void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, uint wparam, uint lparam);
+void SendWindowMessageClass(WindowClass wnd_class, uint msg, uint wparam, uint lparam);
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindow(Window *w);

@@ -1325,6 +1325,22 @@ void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, ui
 	if (w != NULL) SendWindowMessageW(w, msg, wparam, lparam);
 }
 
+/** Send a message from one window to another. The message will be sent
+ * to ALL windows of the windowclass specified in the first parameter
+ * @param wnd_class @see WindowClass class
+ * @param msg Specifies the message to be sent
+ * @param wparam Specifies additional message-specific information
+ * @param lparam Specifies additional message-specific information
+ */
+void SendWindowMessageClass(WindowClass wnd_class, uint msg, uint wparam, uint lparam)
+{
+	Window *w;
+
+	for (w = _windows; w != _last_window; w++) {
+		if (w->window_class == wnd_class) SendWindowMessageW(w, msg, wparam, lparam);
+	}
+}
+
 static void HandleKeypress(uint32 key)
 {
 	Window *w;
