@@ -1450,7 +1450,6 @@ const SettingDesc _patch_settings[] = {
 	SDT_CONDVAR(Patches,      generation_seed,          SLE_UINT32, 30, SL_MAX_VERSION, 0, 0,    GENERATE_NEW_SEED,   0, MAX_UVALUE(uint32), 0, STR_NULL,                                    NULL),
 	SDT_CONDVAR(Patches,      tree_placer,              SLE_UINT8,  30, SL_MAX_VERSION, 0, MS,   2,                   0,    2,               0, STR_CONFIG_PATCHES_TREE_PLACER,              NULL),
 	SDT_VAR    (Patches,      heightmap_rotation,       SLE_UINT8,                      S, MS,   0,                   0,    1,               0, STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION,       NULL),
-	SDT_VAR    (Patches,      progress_update_interval, SLE_UINT16,                     S, 0,  200,                   0, 5000,               0, STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL, NULL),
 	SDT_VAR    (Patches,      se_flat_world_height,     SLE_UINT8,                      S, 0,    0,                   0,   15,               0, STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT,     NULL),
 
 	SDT_END()

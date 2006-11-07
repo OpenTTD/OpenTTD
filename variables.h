@@ -114,7 +114,6 @@ typedef struct Patches {
 	uint32 generation_seed;             // noise seed for world generation
 	byte tree_placer;                   // the tree placer algorithm
 	byte heightmap_rotation;            // rotation director for the heightmap
-	uint16 progress_update_interval;    // interval between two updates of the progress in hundreds of milliseconds
 	byte se_flat_world_height;          // land height a flat world gets in SE
 	bool bribe;                         // enable bribing the local authority
 	bool nonuniform_stations;           // allow nonuniform train stations

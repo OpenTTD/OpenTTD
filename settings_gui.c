@@ -571,7 +571,6 @@ static const char *_patches_ui[] = {
 	"invisible_trees",
 	"population_in_label",
 	"link_terraform_toolbar",
-	"progress_update_interval",
 	"liveries",
 };
 
