@@ -260,14 +260,11 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 		ShowGenerateWorldProgress();
 	}
 
-	/* Zoom out and center on the map (is pretty ;)) */
+	/* Hide vital windows, because we don't allow to use them */
+	if (_gw.thread != NULL) HideVitalWindows();
+
+	/* Centre the view on the map */
 	if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) {
-		while (DoZoomInOutWindow(ZOOM_OUT, FindWindowById(WC_MAIN_WINDOW, 0) ) ) {}
 		ScrollMainWindowToTile(TileXY(MapSizeX() / 2, MapSizeY() / 2));
 	}
-
-	/* Hide vital windows, because we don't allow to use them */
-	/* XXX -- Ideal it is done after ShowGenerateWorldProgress, but stupid
-	 * enough, DoZoomInOutWindow _needs_ the toolbar to exist... */
-	if (_gw.thread != NULL) HideVitalWindows();
 }

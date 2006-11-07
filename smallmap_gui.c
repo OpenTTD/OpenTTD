@@ -1070,6 +1070,13 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 		case WE_MOUSEWHEEL:
 			ZoomInOrOutToCursorWindow(e->we.wheel.wheel < 0, w);
 			break;
+
+
+		case WE_MESSAGE:
+			/* Only handle zoom message if intended for us (msg ZOOM_IN/ZOOM_OUT) */
+			if (e->we.message.wparam != w->window_number) break;
+			HandleZoomMessage(w, w->viewport, 5, 6);
+			break;
 	}
 }
 

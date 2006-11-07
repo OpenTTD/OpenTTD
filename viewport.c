@@ -375,6 +375,21 @@ Point GetTileZoomCenterWindow(bool in, Window * w)
 	return GetTileFromScreenXY(_cursor.pos.x, _cursor.pos.y, x + vp->left, y + vp->top);
 }
 
+/** Update the status of the zoom-buttons according to the zoom-level
+ * of the viewport. This will update their status and invalidate accordingly
+ * @param window pointer to the window that has the zoom buttons
+ * @param vp pointer to the viewport whose zoom-level the buttons represent
+ * @param widget_zoom_in widget index for window with zoom-in button
+ * @param widget_zoom_out widget index for window with zoom-out button */
+void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out)
+{
+	SetWindowWidgetDisabledState(w, widget_zoom_in, vp->zoom == 0);
+	InvalidateWidget(w, widget_zoom_in);
+
+	SetWindowWidgetDisabledState(w, widget_zoom_out, vp->zoom == 2);
+	InvalidateWidget(w, widget_zoom_out);
+}
+
 void DrawGroundSpriteAt(uint32 image, int32 x, int32 y, byte z)
 {
 	ViewportDrawer *vd = _cur_vd;

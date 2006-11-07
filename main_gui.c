@@ -855,15 +855,8 @@ static void ToolbarAirClick(Window *w)
 bool DoZoomInOutWindow(int how, Window *w)
 {
 	ViewPort *vp;
-	int button;
 
-	switch (_game_mode) {
-		case GM_EDITOR: button = 9;  break;
-		case GM_NORMAL: button = 17; break;
-		default: return false;
-	}
-
-	assert(w);
+	assert(w != NULL);
 	vp = w->viewport;
 
 	switch (how) {
@@ -890,31 +883,8 @@ bool DoZoomInOutWindow(int how, Window *w)
 	}
 
 	SetWindowDirty(w);
-
-	// routine to disable/enable the zoom buttons. Didn't know where to place these otherwise
-	{
-		Window *wt = NULL;
-
-		switch (w->window_class) {
-			case WC_MAIN_WINDOW:
-				wt = FindWindowById(WC_MAIN_TOOLBAR, 0);
-				break;
-
-			case WC_EXTRA_VIEW_PORT:
-				wt = FindWindowById(WC_EXTRA_VIEW_PORT, w->window_number);
-				button = 5;
-				break;
-		}
-
-		assert(wt);
-
-		// update the toolbar button too
-		SetWindowWidgetDisabledState(wt, button, vp->zoom == 0);
-		SetWindowWidgetDisabledState(wt, button + 1, vp->zoom == 2);
-
-		SetWindowDirty(wt);
-	}
-
+	/* Update the windows that have zoom-buttons to perhaps disable their buttons */
+	SendWindowMessageClass(w->window_class, how, w->window_number, 0);
 	return true;
 }
 
@@ -1891,6 +1861,10 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	}
+
+		case WE_MESSAGE:
+			HandleZoomMessage(w, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 17, 18);
+			break;
 	}
 }
 
@@ -2078,6 +2052,9 @@ static void ScenEditToolbarWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
+		case WE_MESSAGE:
+			HandleZoomMessage(w, FindWindowById(WC_MAIN_WINDOW, 0)->viewport, 9, 10);
+			break;
 	}
 }
 
@@ -2379,6 +2356,11 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 
 		case WE_MOUSEWHEEL:
 			ZoomInOrOutToCursorWindow(e->we.wheel.wheel < 0, w);
+			break;
+
+		case WE_MESSAGE:
+			/* Forward the message to the appropiate toolbar (ingame or scenario editor) */
+			SendWindowMessage(WC_MAIN_TOOLBAR, 0, e->we.message.msg, e->we.message.wparam, e->we.message.lparam);
 			break;
 	}
 }
