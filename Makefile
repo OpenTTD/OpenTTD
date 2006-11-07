@@ -441,12 +441,14 @@ endif
 # SDL config
 ifdef WITH_SDL
 CDEFS += -DWITH_SDL
-CFLAGS += $(shell $(SDL_CONFIG) --cflags)
+CCFLAGS_SDL := $(shell $(SDL_CONFIG) --cflags)
+CFLAGS += $(CCFLAGS_SDL)
 ifdef STATIC
-LIBS += $(shell $(SDL_CONFIG) --static-libs)
+LDFLAGS_SDL := $(shell $(SDL_CONFIG) --static-libs)
 else
-LIBS += $(shell $(SDL_CONFIG) --libs)
+LDFLAGS_SDL := $(shell $(SDL_CONFIG) --libs)
 endif
+LIBS += $(LDFLAGS_SDL)
 endif
 
 # zlib config
