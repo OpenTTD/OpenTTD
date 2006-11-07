@@ -866,28 +866,30 @@ bool DoZoomInOutWindow(int how, Window *w)
 	assert(w);
 	vp = w->viewport;
 
-	if (how == ZOOM_IN) {
-		if (vp->zoom == 0) return false;
-		vp->zoom--;
-		vp->virtual_width >>= 1;
-		vp->virtual_height >>= 1;
+	switch (how) {
+		case ZOOM_IN:
+			if (vp->zoom == 0) return false;
+			vp->zoom--;
+			vp->virtual_width >>= 1;
+			vp->virtual_height >>= 1;
 
-		WP(w,vp_d).scrollpos_x += vp->virtual_width >> 1;
-		WP(w,vp_d).scrollpos_y += vp->virtual_height >> 1;
+			WP(w,vp_d).scrollpos_x += vp->virtual_width >> 1;
+			WP(w,vp_d).scrollpos_y += vp->virtual_height >> 1;
+			break;
+		case ZOOM_OUT:
+			if (vp->zoom == 2) return false;
+			vp->zoom++;
 
-		SetWindowDirty(w);
-	} else if (how == ZOOM_OUT) {
-		if (vp->zoom == 2) return false;
-		vp->zoom++;
+			WP(w,vp_d).scrollpos_x -= vp->virtual_width >> 1;
+			WP(w,vp_d).scrollpos_y -= vp->virtual_height >> 1;
 
-		WP(w,vp_d).scrollpos_x -= vp->virtual_width >> 1;
-		WP(w,vp_d).scrollpos_y -= vp->virtual_height >> 1;
-
-		vp->virtual_width <<= 1;
-		vp->virtual_height <<= 1;
-
-		SetWindowDirty(w);
+			vp->virtual_width <<= 1;
+			vp->virtual_height <<= 1;
+			break;
+		default: return false;
 	}
+
+	SetWindowDirty(w);
 
 	// routine to disable/enable the zoom buttons. Didn't know where to place these otherwise
 	{

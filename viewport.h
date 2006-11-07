@@ -20,9 +20,17 @@ void AssignWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, byte zoom);
 ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);
 Point GetTileBelowCursor(void);
+void UpdateViewportPosition(Window *w);
+
+enum {
+	ZOOM_IN   = 0,
+	ZOOM_OUT  = 1,
+	ZOOM_NONE = 2, // hack, used to update the button status
+};
+
+bool DoZoomInOutWindow(int how, Window *w);
 void ZoomInOrOutToCursorWindow(bool in, Window * w);
 Point GetTileZoomCenterWindow(bool in, Window * w);
-void UpdateViewportPosition(Window *w);
 
 void OffsetGroundSprite(int x, int y);
 

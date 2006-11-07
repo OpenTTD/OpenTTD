@@ -124,13 +124,6 @@ extern const byte _fios_colors[];
 /* bridge_gui.c */
 void ShowBuildBridgeWindow(uint start, uint end, byte type);
 
-enum {
-	ZOOM_IN   = 0,
-	ZOOM_OUT  = 1,
-	ZOOM_NONE = 2, // hack, used to update the button status
-};
-
-bool DoZoomInOutWindow(int how, Window *w);
 void ShowBuildIndustryWindow(void);
 void ShowQueryString(StringID str, StringID caption, uint maxlen, uint maxwidth, WindowClass window_class, WindowNumber window_number, CharSetFilter afilter);
 void ShowQuery(StringID caption, StringID message, void (*ok_cancel_callback)(bool ok_clicked), WindowClass window_class, WindowNumber window_number);
