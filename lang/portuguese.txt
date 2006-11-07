@@ -1025,6 +1025,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova pr
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avisar quando comboios andam perdidos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Analisar ordens dos veículos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :Não
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :Sim, mas excluir veículos parados
@@ -1442,6 +1443,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} O servi
 
 STR_NETWORK_SERVER                                              :Servidor
 STR_NETWORK_CLIENT                                              :Cliente
+STR_NETWORK_SPECTATORS                                          :Espectadores
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(nenhum)
 STR_NETWORK_CLIENTLIST_KICK                                     :Banir
@@ -2518,6 +2520,8 @@ STR_8825_NON_STOP                                               :{BLACK}Sem para
 STR_8826_GO_TO                                                  :{BLACK}Ir Para
 STR_8827_FULL_LOAD                                              :{BLACK}Carga
 STR_8828_UNLOAD                                                 :{BLACK}Descarga
+STR_REFIT                                                       :{BLACK}Reconverter
+STR_REFIT_ORDER                                                 :(Reconverter para {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -3003,6 +3007,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Custo: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} passageiros, {COMMA} sacos de correio
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões Motorizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reconvertível em: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos os tipos de carga
 
 ########### String for New Landscape Generator

@@ -387,7 +387,7 @@ STR_ENGINE_SORT_COST                                            :Kosten
 STR_ENGINE_SORT_POWER                                           :Leistung
 STR_ENGINE_SORT_INTRO_DATE                                      :Einführungsdatum
 STR_ENGINE_SORT_RUNNING_COST                                    :Betriebskosten
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Energie-/Betriebskosten
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Leistung/Betriebskosten
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Frachtkapazität
 STR_NO_WAITING_CARGO                                            :{BLACK}Keine Fracht wartet
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Wähle alle Anlagen

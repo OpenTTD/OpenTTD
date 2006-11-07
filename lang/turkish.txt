@@ -381,6 +381,7 @@ STR_SORT_BY_VALUE                                               :Fiyat
 STR_SORT_BY_FACILITY                                            :istasyon türü
 STR_SORT_BY_WAITING                                             :Bekleyen kargo degeri
 STR_SORT_BY_RATING_MAX                                          :Kargo reytingi
+STR_ENGINE_SORT_ENGINE_ID                                       :Lokoismi (klasik sira)
 STR_ENGINE_SORT_COST                                            :Fiyat
 STR_ENGINE_SORT_POWER                                           :Güç
 STR_ENGINE_SORT_INTRO_DATE                                      :Piyasaya Girisi
@@ -452,7 +453,7 @@ STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Haritada
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Haritada bitkileri göster
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Haritada arsa sahiplerini göster
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Haritada sehir isimlerini aç/kapa
-STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Bu seneki kar: {CURRENCY} (last year: {CURRENCY})
+STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Bu seneki kar: {CURRENCY} (geçen sene: {CURRENCY})
 
 ############ range for service numbers starts
 STR_AGE                                                         :{COMMA} sene ({COMMA})
@@ -1443,6 +1444,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Sunucu 
 
 STR_NETWORK_SERVER                                              :Sunucu
 STR_NETWORK_CLIENT                                              :istemci
+STR_NETWORK_SPECTATORS                                          :izleyiciler
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(yok)
 STR_NETWORK_CLIENTLIST_KICK                                     :At
@@ -2585,7 +2587,7 @@ STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Fiyat: {
 STR_885C_BROKEN_DOWN                                            :{RED}Bozuldu
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Yas: {LTBLUE}{STRING}{BLACK}   Bakim: {LTBLUE}{CURRENCY}/sene
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Agirlik: {LTBLUE}{WEIGHT_S}  {BLACK}Güç: {LTBLUE}{POWER}{BLACK} Mak. hiz: {LTBLUE}{VELOCITY}
-STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kar: {LTBLUE}{CURRENCY}  (gecen sene: {CURRENCY})
+STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kar: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Son servisteki bozulmalar: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Durdu
 STR_8862_CAN_T_MAKE_TRAIN_PASS_SIGNAL                           :{WHITE}Tehlikedeki tren sinyali geçemez...
@@ -2619,7 +2621,7 @@ STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Araba al
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Detaylar)
 STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Yas: {LTBLUE}{STRING}{BLACK}   Bakim: {LTBLUE}{CURRENCY}/sene
 STR_900E_MAX_SPEED                                              :{BLACK}Mak. hiz: {LTBLUE}{VELOCITY}
-STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kar: {LTBLUE}{CURRENCY}  (gecen sene: {CURRENCY})
+STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kar: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Breakdowns since last service: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Yapim yili: {LTBLUE}{NUM}{BLACK} Degeri: {LTBLUE}{CURRENCY}
 STR_9012_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{CARGO}
@@ -2763,7 +2765,7 @@ STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Detaylar)
 STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Yas: {LTBLUE}{STRING}{BLACK}   Running Cost: {LTBLUE}{CURRENCY}/yr
 STR_A00E_MAX_SPEED                                              :{BLACK}Mak. hiz: {LTBLUE}{VELOCITY}
-STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki gelir: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
+STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Bu seneki kar: {LTBLUE}{CURRENCY}  (geçen sene: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Güvenilirlik: {LTBLUE}%{COMMA}  {BLACK}Son servisten beri bozulmalar: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Yapim: {LTBLUE}{NUM}{BLACK} Degeri: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Hangara gönderilemiyor...
@@ -2913,6 +2915,8 @@ STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarlar
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Gönder {SKIP}{SKIP}{SKIP}{STRING}
 
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Listedeki tüm trenleri garlara gönder. CTRL+tiklama sadece bakim için
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Listedeki tüm arabalari garajlara gönder. CTRL+tiklama sadece bakim için
 STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Listedeki bütün gemileri tersanelere gönder. CTRL+tiklama sadece servis için
 STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Listedeki bütün uçaklari hangarlara gönder. CTRL+tiklama sadece servis için
 
@@ -2975,10 +2979,12 @@ STR_ENGINES                                                     :Lokomotifler
 STR_WAGONS                                                      :Vagon
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Gardaki tüm trenleri durdurmak için tikla
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Garajdaki tüm arabalari durdurmak için tikla
 STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Tersanedeki tüm gemileri durdurmak için tikla
 STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Hangardaki tüm uçaklari durdurmak için tikla
 
 STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Gardaki tüm trenleri baslatmak için tikla
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Garajdaki tüm arabalari baslatmak için tikla
 STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Tersanedeki tüm gemileri baslatmak için tikla
 STR_MASS_START_HANGAR_TIP                                       :{BLACK}Hangardaki tüm uçaklari baslatmak için tikla
 
@@ -3090,5 +3096,7 @@ STR_HELIPORTS                                                   :{BLACK}Helikopt
 
 STR_MEASURE_LENGTH                                              :{BLACK}Uzunluk: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Alan: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Uzunluk: {NUM}{}Yükseklik farki: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Alan: {NUM} x {NUM}{}Yükseklik farki: {NUM} m
 
 ########
