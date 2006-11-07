@@ -631,6 +631,30 @@ static void HandleStationPlacement(TileIndex start, TileIndex end)
 			CMD_BUILD_RAILROAD_STATION | CMD_NO_WATER | CMD_AUTO | CMD_MSG(STR_100F_CAN_T_BUILD_RAILROAD_STATION));
 }
 
+/* Check if the currently selected station size is allowed */
+static void CheckSelectedSize(Window *w, const StationSpec *statspec)
+{
+	if (statspec == NULL || _railstation.dragdrop) return;
+
+	if (HASBIT(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+		RaiseWindowWidget(w, _railstation.numtracks + 4);
+		_railstation.numtracks = 1;
+		while (HASBIT(statspec->disallowed_platforms, _railstation.numtracks - 1)) {
+			_railstation.numtracks++;
+		}
+		LowerWindowWidget(w, _railstation.numtracks + 4);
+	}
+
+	if (HASBIT(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+		RaiseWindowWidget(w, _railstation.platlength + 11);
+		_railstation.platlength = 1;
+		while (HASBIT(statspec->disallowed_lengths, _railstation.platlength - 1)) {
+			_railstation.platlength++;
+		}
+		LowerWindowWidget(w, _railstation.platlength + 11);
+	}
+}
+
 static void StationBuildWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
@@ -824,6 +848,9 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 				GetStationCallback(CBID_STATION_AVAILABILITY, 0, 0, statspec, NULL, INVALID_TILE) == 0) return;
 
 			_railstation.station_type = y;
+
+			CheckSelectedSize(w, statspec);
+
 			SndPlayFx(SND_15_BEEP);
 			SetWindowDirty(w);
 			break;
@@ -836,6 +863,8 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 			_railstation.station_class = e->we.dropdown.index;
 			_railstation.station_type  = 0;
 			_railstation.station_count = GetNumCustomStations(_railstation.station_class);
+
+			CheckSelectedSize(w, GetCustomStationSpec(_railstation.station_class, _railstation.station_type));
 
 			w->vscroll.count = _railstation.station_count;
 			w->vscroll.pos   = _railstation.station_type;
