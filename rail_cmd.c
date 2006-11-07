@@ -273,7 +273,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return CMD_ERROR;
 			}
 			if (!IsTileOwner(tile, _current_player) ||
-					GetRailType(tile) != p1) {
+					!IsCompatibleRail(GetRailType(tile), p1)) {
 				// Get detailed error message
 				return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
@@ -281,6 +281,15 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			ret = CheckRailSlope(tileh, trackbit, GetTrackBits(tile), tile);
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
+
+			/* XXX Assume a 'higher' railtype has preference. This means we
+			 * will convert from normal rail to electrified rail, but not
+			 * the other way around. */
+			if (GetRailType(tile) < p1) {
+				ret = DoCommand(tile, tile, p1, flags, CMD_CONVERT_RAIL);
+				if (CmdFailed(ret)) return ret;
+				cost += ret;
+			}
 
 			if (flags & DC_EXEC) {
 				SetRailGroundType(tile, RAIL_GROUND_BARREN);
