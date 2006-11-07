@@ -888,11 +888,6 @@ bool DoZoomInOutWindow(int how, Window *w)
 	return true;
 }
 
-static void MaxZoomIn(void)
-{
-	while (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0) ) ) {}
-}
-
 static void ToolbarZoomInClick(Window *w)
 {
 	if (DoZoomInOutWindow(ZOOM_IN, FindWindowById(WC_MAIN_WINDOW, 0))) {
@@ -2272,7 +2267,7 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				Point pt = GetTileBelowCursor();
 				if (pt.x != -1) {
 					ScrollMainWindowTo(pt.x, pt.y);
-					if (e->we.keypress.keycode == 'Z') MaxZoomIn();
+					if (e->we.keypress.keycode == 'Z') MaxZoomInOut(ZOOM_IN, w);
 				}
 				break;
 			}

@@ -33,6 +33,11 @@ void ZoomInOrOutToCursorWindow(bool in, Window * w);
 Point GetTileZoomCenterWindow(bool in, Window * w);
 void HandleZoomMessage(Window *w, const ViewPort *vp, byte widget_zoom_in, byte widget_zoom_out);
 
+static inline void MaxZoomInOut(int how, Window *w)
+{
+	while (DoZoomInOutWindow(how, w) ) {};
+}
+
 void OffsetGroundSprite(int x, int y);
 
 void DrawGroundSprite(uint32 image);
