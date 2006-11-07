@@ -469,20 +469,22 @@ endif
 # libpng config
 ifdef WITH_PNG
 CDEFS += -DWITH_PNG
-CFLAGS += $(shell $(LIBPNG_CONFIG) --cppflags --I_opts)
+CCFLAGS_PNG := $(shell $(LIBPNG_CONFIG) --cppflags --I_opts)
+CFLAGS += $(CCFLAGS_PNG)
 
 # seems like older libpng versions are broken and need this
 PNGCONFIG_FLAGS = --ldflags --libs
 ifdef STATIC
 ifdef OSX
 # Seems like we need a tiny hack for OSX static to work
-LIBS += $(shell $(LIBPNG_CONFIG) --prefix)/lib/libpng.a
+LDFLAGS_PNG := $(shell $(LIBPNG_CONFIG) --prefix)/lib/libpng.a
 else
-LIBS += $(shell $(LIBPNG_CONFIG) --static $(PNGCONFIG_FLAGS))
+LDFLAGS_PNG := $(shell $(LIBPNG_CONFIG) --static $(PNGCONFIG_FLAGS))
 endif
 else
-LIBS += $(shell $(LIBPNG_CONFIG)  --L_opts $(PNGCONFIG_FLAGS))
+LDFLAGS_PNG := $(shell $(LIBPNG_CONFIG) --L_opts $(PNGCONFIG_FLAGS))
 endif
+LIBS += $(LDFLAGS_PNG)
 endif
 
 # use std C++ lib:
