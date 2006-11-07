@@ -320,7 +320,7 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 			break;
 		case 16: // Random seed
 			_patches_newgame.generation_seed = InteractiveRandom();
-			ttd_strlcpy(_edit_str_buf, str_fmt("%u", _patches_newgame.generation_seed), lengthof(_edit_str_buf));
+			snprintf(_edit_str_buf, lengthof(_edit_str_buf), "%u", _patches_newgame.generation_seed);
 			UpdateTextBufferSize(&WP(w, querystr_d).text);
 			SetWindowDirty(w);
 			break;
@@ -506,7 +506,7 @@ static void _ShowGenerateLandscape(glwp_modes mode)
 	if (w != NULL) {
 		querystr_d *querystr = &WP(w, querystr_d);
 
-		ttd_strlcpy(_edit_str_buf, str_fmt("%u", _patches_newgame.generation_seed), lengthof(_edit_str_buf));
+		snprintf(_edit_str_buf, lengthof(_edit_str_buf), "%u", _patches_newgame.generation_seed);
 
 		InitializeTextBuffer(&querystr->text, _edit_str_buf, lengthof(_edit_str_buf), 120);
 		querystr->caption = STR_NULL;
