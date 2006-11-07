@@ -249,19 +249,23 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	/* Create toolbars */
 	SetupColorsAndInitialWindow();
 
-	if (_network_dedicated || (_gw.thread = OTTDCreateThread(&_GenerateWorld, (void *)"")) == NULL) {
+	/* Load the right landscape stuff */
+	GfxLoadSprites();
+	if (_network_dedicated ||
+	    (_gw.thread = OTTDCreateThread(&_GenerateWorld, NULL)) == NULL) {
+		DEBUG(misc, 1) ("[Sl] Cannot create savegame thread, reverting to single-threaded mode...");
 		_gw.threaded = false;
 		_GenerateWorld(NULL);
-	} else {
-		/* Remove any open window */
-		DeleteAllNonVitalWindows();
-
-		/* Don't show the dialog if we don't have a thread */
-		ShowGenerateWorldProgress();
+		return;
 	}
 
+	/* Remove any open window */
+	DeleteAllNonVitalWindows();
 	/* Hide vital windows, because we don't allow to use them */
-	if (_gw.thread != NULL) HideVitalWindows();
+	HideVitalWindows();
+
+	/* Don't show the dialog if we don't have a thread */
+	ShowGenerateWorldProgress();
 
 	/* Centre the view on the map */
 	if (FindWindowById(WC_MAIN_WINDOW, 0) != NULL) {

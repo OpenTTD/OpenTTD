@@ -164,8 +164,6 @@ static void StartGeneratingLandscape(glwp_modes mode)
 	UpdatePatches();
 	_opt_ptr = &_opt;
 	*_opt_ptr = _opt_newgame;
-	/* Load the right landscape stuff */
-	GfxLoadSprites();
 
 	SndPlayFx(SND_15_BEEP);
 	switch (mode) {

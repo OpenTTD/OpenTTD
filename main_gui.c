@@ -879,7 +879,6 @@ bool DoZoomInOutWindow(int how, Window *w)
 			vp->virtual_width <<= 1;
 			vp->virtual_height <<= 1;
 			break;
-		default: return false;
 	}
 
 	SetWindowDirty(w);
@@ -2413,13 +2412,9 @@ void ShowVitalWindows(void)
 {
 	Window *w;
 
-	if (_game_mode != GM_EDITOR) {
-		w = AllocateWindowDesc(&_toolb_normal_desc);
-		DisableWindowWidget(w, 18);
-	} else {
-		w = AllocateWindowDesc(&_toolb_scen_desc);
-		DisableWindowWidget(w, 10);
-	}
+	w = AllocateWindowDesc((_game_mode != GM_EDITOR) ? &_toolb_normal_desc : &_toolb_scen_desc);
+	DoZoomInOutWindow(ZOOM_NONE, w);
+
 	CLRBITS(w->flags4, WF_WHITE_BORDER_MASK);
 
 	SetWindowWidgetDisabledState(w, 0, _networking && !_network_server); // if not server, disable pause button
