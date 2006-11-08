@@ -24,6 +24,7 @@
 #include "table/build_industry.h"
 #include "genworld.h"
 #include "date.h"
+#include "water_map.h"
 
 void ShowIndustryViewWindow(int industry);
 void BuildOilRig(TileIndex tile);
@@ -1158,11 +1159,11 @@ static bool CheckIfIndustryTilesAreFree(TileIndex tile, const IndustryTileTable 
 			if (!EnsureNoVehicle(cur_tile)) return false;
 
 			if (type == IT_OIL_RIG)  {
-				if (!IsTileType(cur_tile, MP_WATER) || _m[cur_tile].m5 != 0) return false;
+				if (!IsClearWaterTile(cur_tile)) return false;
 			} else {
 				Slope tileh;
 
-				if (IsTileType(cur_tile, MP_WATER) && _m[cur_tile].m5 == 0) return false;
+				if (IsClearWaterTile(cur_tile)) return false;
 
 				tileh = GetTileSlope(cur_tile, NULL);
 				if (IsSteepSlope(tileh)) return false;
