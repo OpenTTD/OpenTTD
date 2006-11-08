@@ -14,8 +14,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Треба рівна ділянка
 STR_0008_WAITING                                                :{BLACK}Чекає: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW} (перевезено з
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW} (перевезено з
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Приймає: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Приймає: {GOLD}
@@ -286,7 +286,7 @@ STR_013C_CARGO                                                  :{BLACK}Вант
 STR_013D_INFORMATION                                            :{BLACK}Інформація
 STR_013E_CAPACITIES                                             :{BLACK}Місткість
 STR_013E_TOTAL_CARGO                                            :{BLACK}Повна місткість
-STR_013F_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Повна місткість цього поїзду:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Нова гра
@@ -752,30 +752,17 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Збер
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Налаштування гри
-STR_02C4_GAME_OPTIONS                                           :Налаштування гри
 STR_02C5_DIFFICULTY_SETTINGS                                    :Налаштування складності
-STR_02C6_DIFFICULTY_SETTINGS                                    :Налаштування складності
 STR_02C7_CONFIG_PATCHES                                         :Розширені налаштування4
-STR_02C8_CONFIG_PATCHES                                         :Розширені налаштування5
 STR_NEWGRF_SETTINGS                                             :Нова графіка
-STR_NEWGRF_SETTINGS2                                            :Нова графіка
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Показ назви міст
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Показ назви міст
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Показ назви станцій
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Показ назви станцій
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Показ позначення
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Показ позначення
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Показ точки маршруту
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Показ точки маршруту
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Повна анімація
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Повна анімація
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Повна деталізація
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Повна деталізація
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Прозорі будівлі
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Прозорі будівлі
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Прозорі назви станцій
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Прозорі назви станцій
 ############ range ends	here
 
@@ -1233,8 +1220,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Буду
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Збудувати цукрову копальню
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Промисловість
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% перевезено)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% перевезено)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...дуже близько до іншої промисловості
@@ -1429,10 +1416,13 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сервер п
 STR_NETWORK_CLIENT_JOINED                                       :приєднався до гри
 STR_NETWORK_GIVE_MONEY                                          :ви отримали({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :ви дали {STRING} ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Команда] до {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Приватно] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Приватно] до {STRING}:
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Команда] :
+STR_NETWORK_CHAT_COMPANY                                        :[Команда] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Команда] до {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Приватно] :
+STR_NETWORK_CHAT_CLIENT                                         :[Приватно] {STRING}:{GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Приватно] до {STRING}:{GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всім] :
 STR_NETWORK_CHAT_ALL                                            :[Всім] {STRING}:
 STR_NETWORK_NAME_CHANGE                                         :змінив своє ім'я на
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сервер закрив сеанс
@@ -1440,6 +1430,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Пер�
 
 STR_NETWORK_SERVER                                              :Сервер
 STR_NETWORK_CLIENT                                              :Клієнт
+STR_NETWORK_SPECTATORS                                          :Спостерігачі
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(нічого)
 STR_NETWORK_CLIENTLIST_KICK                                     :Відключити гравця
@@ -1838,7 +1829,7 @@ STR_4829_REQUIRES                                               :{BLACK}Потр
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Вироблено за місяць:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% перевезено)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% перевезено)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Показати в центрі екрану
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Будується {STRING} біля {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Насаджено {STRING} біля {TOWN}!
@@ -2573,7 +2564,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Лише
 STR_SERVICE_HINT                                                :{BLACK}Пропустити це завдання поки обслуговування потрібне!!!
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Доступний новий {STRING}!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}  Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Ціна: {CURRENCY} Вага: {WEIGHT_S}{}Швидкість: {VELOCITY}  Потужність: {POWER}{}Вартість експлуатації: {CURRENCY}/рік{}Місткість: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Зламався
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Вік: {LTBLUE}{STRING}{BLACK}   Транспортні витрати: {LTBLUE}{CURRENCY}/рік
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вага: {LTBLUE}{WEIGHT_S}  {BLACK}Потужність: {LTBLUE}{POWER}{BLACK} Макс. швидкість: {LTBLUE}{VELOCITY}
@@ -2613,7 +2604,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Макс
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійнітсь: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...авто повинно стояти в депо
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Неможливо продати авто...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Неможливо зупинити авто...
@@ -2640,7 +2631,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Спис
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Будувати вибране авто
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Доступне нове авто!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ціна: {CURRENCY}{}Швидкість: {VELOCITY}{}Транспортні витрати: {CURRENCY}/рік{}Місткість: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Ціна: {CURRENCY}{}Швидкість: {VELOCITY}{}Транспортні витрати: {CURRENCY}/рік{}Місткість: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Назвати авто
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Неможливо назвати авто...
@@ -2687,7 +2678,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Макс
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибуток цього року: {LTBLUE}{CURRENCY}  (минулого року: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надійність: {LTBLUE}{COMMA}%  {BLACK}Поломок після останнього техогляду: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Рік випуску: {LTBLUE}{NUM}{BLACK} Ціна: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Неможливо зупинити корабель...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Неможливо направити корабель в депо...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Неможливо знайти місцеве депо
@@ -2713,7 +2704,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Напр
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Показати корабель детально
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Доступний новий корабель!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ціна: {CURRENCY} Макс. Швидкітсь: {VELOCITY}{}Місткість: {STRING}{}Транспортні витрати: {CURRENCY}/рік
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Ціна: {CURRENCY} Макс. Швидкітсь: {VELOCITY}{}Місткість: {CARGO}{}Транспортні витрати: {CURRENCY}/рік
 STR_982F_NAME_SHIP                                              :{BLACK}Назвати корабель
 
 STR_9831_NAME_SHIP                                              :{WHITE}Назвати корабель
@@ -2731,7 +2722,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Пере
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Виберіть вид вантажу для переобладнання
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Переобладнати корабель для перевезення вибраного виду вантажу
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Виберіть вид вантажу для перевезення:-
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нова місткість: {GOLD}{STRING}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Нова місткість: {GOLD}{CARGO}{}{BLACK}Вартість переобладнання: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Неможливо переобладнати корабель...
 STR_9842_REFITTABLE                                             :(змінюється)
 STR_GO_TO_SHIP_DEPOT                                            :Пливти в {TOWN} депо
@@ -2766,8 +2757,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Літа
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Літак на шляху
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Неможливо зупинити літак...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Літак у польоті
-STR_A019_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Літак повинен стояти в ангарі
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Неможливо продати літак...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Будувати аеропорт
@@ -3004,6 +2995,7 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вага
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Ціна: {GOLD}{CURRENCY}{BLACK}  Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Місткість: {GOLD}{COMMA} пасажир{P "" и ів}, {COMMA} міш{P ок ки ків} пошти
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Потужність: {GOLD}+{POWER}{BLACK} Вага: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Всі типи вантажів
 
 ########### String for New Landscape Generator
 
@@ -3056,4 +3048,10 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Малі
 STR_LARGE_AIRPORTS                                              :{BLACK}Великі аеропорти
 STR_HUB_AIRPORTS                                                :{BLACK}Мега-аеропорти
 STR_HELIPORTS                                                   :{BLACK}Геліко-аеропорт
+
+############ Tooltip measurment
+
+STR_MEASURE_LENGTH                                              :{BLACK}Довжина: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Область: {NUM} x {NUM}
+
 ########
