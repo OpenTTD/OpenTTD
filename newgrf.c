@@ -3165,7 +3165,18 @@ static void ResetCustomStations(void)
 				free(statspec->renderdata);
 			}
 
-			// TODO: Release platforms and layouts
+			/* Release platforms and layouts */
+			if (!statspec->copied_layouts) {
+				uint l, p;
+				for (l = 0; l < statspec->lengths; l++) {
+					for (p = 0; p < statspec->platforms[l]; p++) {
+						free(statspec->layouts[l][p]);
+					}
+					free(statspec->layouts[l]);
+				}
+				free(statspec->layouts);
+				free(statspec->platforms);
+			}
 
 			/* Release this station */
 			free(statspec);
