@@ -1851,6 +1851,10 @@ int32 CmdCloneVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		// for trains this needs to be the front engine due to the callback function
 		_new_vehicle_id = w_front->index;
 	}
+
+	/* Set the expense type last as refitting will make the cost go towards
+	 * running costs... */
+	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 	return total_cost;
 }
 
