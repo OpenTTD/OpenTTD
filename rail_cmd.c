@@ -285,10 +285,9 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
 
-			/* XXX Assume a 'higher' railtype has preference. This means we
-			 * will convert from normal rail to electrified rail, but not
-			 * the other way around. */
-			if (GetRailType(tile) < railtype) {
+			/* If the rail types don't match, try to convert only if engines of
+			 * the present rail type are powered on the new rail type. */
+			if (GetRailType(tile) != railtype && HasPowerOnRail(GetRailType(tile), railtype)) {
 				ret = DoCommand(tile, tile, railtype, flags, CMD_CONVERT_RAIL);
 				if (CmdFailed(ret)) return ret;
 				cost += ret;
