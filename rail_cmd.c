@@ -231,12 +231,15 @@ static inline bool ValParamTrackOrientation(Track track) {return IsValidTrack(tr
 int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 {
 	Slope tileh;
-	Track track = (Track)p2;
+	RailType railtype;
+	Track track;
 	TrackBits trackbit;
 	int32 cost = 0;
 	int32 ret;
 
-	if (!ValParamRailtype(p1) || !ValParamTrackOrientation(track)) return CMD_ERROR;
+	if (!ValParamRailtype(p1) || !ValParamTrackOrientation(p2)) return CMD_ERROR;
+	railtype = (RailType)p1;
+	track = (Track)p2;
 
 	tileh = GetTileSlope(tile, NULL);
 	trackbit = TrackToTrackBits(track);
@@ -257,7 +260,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if (CmdFailed(ret)) return ret;
 				cost += ret;
 
-				if (flags & DC_EXEC) SetRailUnderBridge(tile, _current_player, p1);
+				if (flags & DC_EXEC) SetRailUnderBridge(tile, _current_player, railtype);
 			} else if (IsTransportUnderBridge(tile) &&
 					GetTransportTypeUnderBridge(tile) == TRANSPORT_RAIL) {
 				return_cmd_error(STR_1007_ALREADY_BUILT);
@@ -273,7 +276,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				return CMD_ERROR;
 			}
 			if (!IsTileOwner(tile, _current_player) ||
-					!IsCompatibleRail(GetRailType(tile), p1)) {
+					!IsCompatibleRail(GetRailType(tile), railtype)) {
 				// Get detailed error message
 				return DoCommand(tile, 0, 0, flags, CMD_LANDSCAPE_CLEAR);
 			}
@@ -285,8 +288,8 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			/* XXX Assume a 'higher' railtype has preference. This means we
 			 * will convert from normal rail to electrified rail, but not
 			 * the other way around. */
-			if (GetRailType(tile) < (RailType)p1) {
-				ret = DoCommand(tile, tile, p1, flags, CMD_CONVERT_RAIL);
+			if (GetRailType(tile) < railtype) {
+				ret = DoCommand(tile, tile, railtype, flags, CMD_CONVERT_RAIL);
 				if (CmdFailed(ret)) return ret;
 				cost += ret;
 			}
@@ -313,7 +316,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				if ((track == TRACK_X && GetRoadBits(tile) == ROAD_Y) ||
 						(track == TRACK_Y && GetRoadBits(tile) == ROAD_X)) {
 					if (flags & DC_EXEC) {
-						MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), p1, GetTownIndex(tile));
+						MakeRoadCrossing(tile, GetTileOwner(tile), _current_player, (track == TRACK_X ? AXIS_Y : AXIS_X), railtype, GetTownIndex(tile));
 					}
 					break;
 				}
@@ -333,7 +336,7 @@ int32 CmdBuildSingleRail(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (CmdFailed(ret)) return ret;
 			cost += ret;
 
-			if (flags & DC_EXEC) MakeRailNormal(tile, _current_player, trackbit, p1);
+			if (flags & DC_EXEC) MakeRailNormal(tile, _current_player, trackbit, railtype);
 			break;
 	}
 
