@@ -1310,7 +1310,7 @@ static uint32 GetTileTrackStatus_TunnelBridge(TileIndex tile, TransportType mode
 				result = AxisToTrackBits(GetBridgeAxis(tile)) * 0x101;
 			}
 			if ((IsTransportUnderBridge(tile) && mode == GetTransportTypeUnderBridge(tile)) ||
-					(IsWaterUnderBridge(tile)     && mode == TRANSPORT_WATER)) {
+					(IsWaterUnderBridge(tile)     && mode == TRANSPORT_WATER && GetTileSlope(tile, NULL) == SLOPE_FLAT)) {
 				result |= AxisToTrackBits(OtherAxis(GetBridgeAxis(tile))) * 0x101;
 			}
 			return result;
