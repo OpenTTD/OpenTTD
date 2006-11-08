@@ -67,6 +67,7 @@ typedef struct StationSpec {
 	byte lengths;
 	byte *platforms;
 	StationLayout **layouts;
+	bool copied_layouts;
 
 	/**
 	 * NUM_GLOBAL_CID sprite groups.

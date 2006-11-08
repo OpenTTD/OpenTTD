@@ -952,6 +952,8 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			FOR_EACH_OBJECT {
 				StationSpec *statspec = _cur_grffile->stations[stid + i];
 
+				statspec->copied_layouts = false;
+
 				while (buf < *bufp + len) {
 					byte length = grf_load_byte(&buf);
 					byte number = grf_load_byte(&buf);
@@ -1001,11 +1003,16 @@ static bool StationChangeInfo(uint stid, int numinfo, int prop, byte **bufp, int
 			break;
 
 		case 0x0F: /* Copy custom layout */
-			/* TODO */
 			FOR_EACH_OBJECT {
-				grf_load_byte(&buf);
+				StationSpec *statspec = _cur_grffile->stations[stid + i];
+				byte srcid = grf_load_byte(&buf);
+				const StationSpec *srcstatspec = _cur_grffile->stations[srcid];
+
+				statspec->lengths   = srcstatspec->lengths;
+				statspec->platforms = srcstatspec->platforms;
+				statspec->layouts   = srcstatspec->layouts;
+				statspec->copied_layouts = true;
 			}
-			ret = true;
 			break;
 
 		case 0x10: /* Little/lots cargo threshold */
