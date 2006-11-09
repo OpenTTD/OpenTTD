@@ -1502,10 +1502,11 @@ static void TownActionBuildStatue(Town* t)
 	TileIndex tile = t->xy;
 	const TileIndexDiffC *p;
 
-	SETBIT(t->statues, _current_player);
-
 	for (p = _statue_tiles; p != endof(_statue_tiles); ++p) {
-		if (DoBuildStatueOfCompany(tile)) return;
+		if (DoBuildStatueOfCompany(tile)) {
+			SETBIT(t->statues, _current_player);
+			return;
+		}
 		tile = TILE_ADD(tile, ToTileIndexDiff(*p));
 	}
 }
