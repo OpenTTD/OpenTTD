@@ -46,7 +46,7 @@ static int _rename_what;
 
 static byte _terraform_size = 1;
 static RailType _last_built_railtype;
-static int _scengen_town_size = 1;
+static int _scengen_town_size = 2; // depress medium-sized towns per default
 
 extern void GenerateIndustries(void);
 extern bool GenerateTowns(void);
@@ -1388,7 +1388,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_CREATE:
-		LowerWindowWidget(w, _scengen_town_size + 7);
+		LowerWindowWidget(w, (_scengen_town_size - 1)+ 7);
 		break;
 
 	case WE_CLICK:
@@ -1422,9 +1422,9 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		}
 
 		case 7: case 8: case 9:
-			RaiseWindowWidget(w, _scengen_town_size + 7);
-			_scengen_town_size = e->we.click.widget - 7;
-			LowerWindowWidget(w, _scengen_town_size + 7);
+			RaiseWindowWidget(w, (_scengen_town_size - 1) + 7);
+			_scengen_town_size = (e->we.click.widget - 7) + 1;
+			LowerWindowWidget(w, (_scengen_town_size - 1) + 7);
 			SetWindowDirty(w);
 			break;
 		}
@@ -1440,7 +1440,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 		break;
 	case WE_ABORT_PLACE_OBJ:
 		RaiseWindowButtons(w);
-		LowerWindowWidget(w, _scengen_town_size + 7);
+		LowerWindowWidget(w, (_scengen_town_size - 1) + 7);
 		SetWindowDirty(w);
 		break;
 	}

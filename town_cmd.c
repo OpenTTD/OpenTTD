@@ -1003,7 +1003,7 @@ static Town *AllocateTown(void)
  * This obviously only works in the scenario editor. Function not removed
  * as it might be possible in the future to fund your own town :)
  * @param tile coordinates where town is built
- * @param p1 size of the town (1 = small, 2 = medium, 3 = large)
+ * @param p1 size of the town (0 = random, 1 = small, 2 = medium, 3 = large)
  * @param p2 unused
  */
 int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
