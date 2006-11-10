@@ -795,12 +795,8 @@ static int32 CmdSignalTrackHelper(TileIndex tile, uint32 flags, uint32 p1, uint3
 		if (signal_ctr % signal_density == 0) {
 			ret = DoCommand(tile, TrackdirToTrack(trackdir) | semaphores, signals, flags, (mode == 1) ? CMD_REMOVE_SIGNALS : CMD_BUILD_SIGNALS);
 
-			/* Abort placement for any other error than NOT_SUITABLE_TRACK
-			 * This includes vehicles on track, competitor's tracks, etc. */
-			if (CmdFailed(ret)) {
-				if (_error_message != STR_1005_NO_SUITABLE_RAILROAD_TRACK && mode != 1) return CMD_ERROR;
-				_error_message = INVALID_STRING_ID;
-			} else {
+			/* Be user-friendly and try placing signals as much as possible */
+			if (!CmdFailed(ret)) {
 				error = false;
 				total_cost += ret;
 			}
