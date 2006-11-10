@@ -819,74 +819,81 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	switch (p1) {
 	case 0: { /* Create a new player */
+		/* Joining Client:
+		 * _local_player: PLAYER_SPECTATOR
+		 * _network_playas/cid = requested company/player
+		 *
+		 * Other client(s)/server:
+		 * _local_player/_network_playas: what they play as
+		 * cid = requested company/player of joining client */
 		Player *p;
 		uint16 cid = p2; // ClientID
+
+		/* This command is only executed in a multiplayer game */
+		if (!_networking) return CMD_ERROR;
 
 		/* ClientID would be valid up to MAX_CLIENT_INFO, but as it has to be a
 		 * new player, its valid range is restricted to that of players */
 		if (!(flags & DC_EXEC) || !IsValidPlayer((PlayerID)cid)) return 0;
 
+		/* Delete multiplayer progress bar */
+		DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
+
 		p = DoStartupNewPlayer(false);
 
-#ifdef ENABLE_NETWORK
-		if (_networking && !_network_server && _local_player == PLAYER_SPECTATOR) {
-			/* In case we are a client joining a server... */
-			DeleteWindowById(WC_NETWORK_STATUS_WINDOW, 0);
-		}
-#endif /* ENABLE_NETWORK */
-
-		if (p != NULL) {
-			if (_local_player == PLAYER_SPECTATOR) {
-				/* Check if we do not want to be a spectator in network */
-				if (!_networking ||
-						(_network_server && !_network_dedicated) ||
-						_network_playas != PLAYER_SPECTATOR) {
-						_local_player = p->index;
-					MarkWholeScreenDirty();
-				}
-			} else if (p->index == _local_player) {
-				DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
-			}
+		/* A new player could not be created, revert to being a spectator */
+		if (p == NULL) {
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
-				/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
-				 * server-side in network_server.c:838, function
-				 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 				NetworkClientInfo *ci = &_network_client_info[cid];
-				ci->client_playas = p->index;
+				ci->client_playas = PLAYER_SPECTATOR;
 				NetworkUpdateClientInfo(ci->client_index);
-
-				if (IsValidPlayer(ci->client_playas)) {
-					PlayerID player_backup = _local_player;
-					_network_player_info[p->index].months_empty = 0;
-
-					/* XXX - When a client joins, we automatically set its name to the
-					 * player's name (for some reason). As it stands now only the server
-					 * knows the client's name, so it needs to send out a "broadcast" to
-					 * do this. To achieve this we send a network command. However, it
-					 * uses _local_player to execute the command as.  To prevent abuse
-					 * (eg. only yourself can change your name/company), we 'cheat' by
-					 * impersonation _local_player as the server. Not the best solution;
-					 * but it works.
-					 * TODO: Perhaps this could be improved by when the client is ready
-					 * with joining to let it send itself the command, and not the server?
-					 * For example in network_client.c:534? */
-					_cmd_text = ci->client_name;
-					_local_player = ci->client_playas;
-					NetworkSend_Command(0, 0, 0, CMD_CHANGE_PRESIDENT_NAME, NULL);
-					_local_player = player_backup;
-				}
+			} else
+#endif /* ENABLE_NETWORK */
+			{
+				_local_player = _network_playas = PLAYER_SPECTATOR;
 			}
-		} else if (_network_server) {
-			// Creating player failed, defer client to spectator
+			break;
+		}
+
+		/* This is the joining client who wants a new company */
+		if (_local_player != _network_playas) {
+			assert(_local_player == PLAYER_SPECTATOR && _network_playas == p->index);
+			_local_player = p->index;
+			MarkWholeScreenDirty();
+		}
+
+#ifdef ENABLE_NETWORK
+		if (_network_server) {
 			/* XXX - UGLY! p2 (pid) is mis-used to fetch the client-id, done at
 			 * server-side in network_server.c:838, function
 			 * DEF_SERVER_RECEIVE_COMMAND(PACKET_CLIENT_COMMAND) */
 			NetworkClientInfo *ci = &_network_client_info[cid];
-			ci->client_playas = PLAYER_SPECTATOR;
+			ci->client_playas = p->index;
 			NetworkUpdateClientInfo(ci->client_index);
-#endif /* ENABLE_NETWORK */
+
+			if (IsValidPlayer(ci->client_playas)) {
+				PlayerID player_backup = _local_player;
+				_network_player_info[p->index].months_empty = 0;
+
+				/* XXX - When a client joins, we automatically set its name to the
+				 * player's name (for some reason). As it stands now only the server
+				 * knows the client's name, so it needs to send out a "broadcast" to
+				 * do this. To achieve this we send a network command. However, it
+				 * uses _local_player to execute the command as.  To prevent abuse
+				 * (eg. only yourself can change your name/company), we 'cheat' by
+				 * impersonation _local_player as the server. Not the best solution;
+				 * but it works.
+				 * TODO: Perhaps this could be improved by when the client is ready
+				 * with joining to let it send itself the command, and not the server?
+				 * For example in network_client.c:534? */
+				_cmd_text = ci->client_name;
+				_local_player = ci->client_playas;
+				NetworkSend_Command(0, 0, 0, CMD_CHANGE_PRESIDENT_NAME, NULL);
+				_local_player = player_backup;
+			}
 		}
+#endif /* ENABLE_NETWORK */
 	} break;
 
 	case 1: /* Make a new AI player */
@@ -933,6 +940,7 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		ChangeOwnershipOfPlayerItems(pid_old, pid_new);
 		DeletePlayerStuff(pid_old);
 	} break;
+
 	default: return CMD_ERROR;
 	}
 

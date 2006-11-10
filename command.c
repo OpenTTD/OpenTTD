@@ -424,9 +424,9 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	error_part1 = GB(cmd, 16, 16);
 	_additional_cash_required = 0;
 
-	/** Spectator has no rights except for the dedicated server which
-	 * is a spectator but is the server, so can do anything */
-	if (_current_player == PLAYER_SPECTATOR && !_network_dedicated) {
+	/** Spectator has no rights except for the (dedicated) server which
+	 * is/can be a spectator but as the server it can do anything */
+	if (_current_player == PLAYER_SPECTATOR && !_network_server) {
 		ShowErrorMessage(_error_message, error_part1, x, y);
 		_cmd_text = NULL;
 		return false;
@@ -495,12 +495,14 @@ bool DoCommandP(TileIndex tile, uint32 p1, uint32 p2, CommandCallback *callback,
 	 * send it to the command-queue and abort execution
 	 * If we are a dedicated server temporarily switch local player, otherwise
 	 * the other parties won't be able to execute our command and will desync.
-	 * @todo Rewrite dedicated server to something more than a dirty hack!
+	 * We also need to do this if the server's company has gone bankrupt
+	 * @todo Rewrite (dedicated) server to something more than a dirty hack!
 	 */
 	if (_networking && !(cmd & CMD_NETWORK_COMMAND)) {
-		if (_network_dedicated) _local_player = 0;
+		PlayerID pbck = _local_player;
+		if (_network_dedicated || (_network_server && pbck == PLAYER_SPECTATOR)) _local_player = 0;
 		NetworkSend_Command(tile, p1, p2, cmd, callback);
-		if (_network_dedicated) _local_player = PLAYER_SPECTATOR;
+		if (_network_dedicated || (_network_server && pbck == PLAYER_SPECTATOR)) _local_player = pbck;
 		_docommand_recursive = 0;
 		_cmd_text = NULL;
 		return true;

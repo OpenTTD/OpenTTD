@@ -414,40 +414,51 @@ static void PlayersCheckBankrupt(Player *p)
 			SetDParam(1, p->name_2);
 			AddNewsItem( (StringID)(owner | NB_BBANKRUPT), NEWS_FLAGS(NM_CALLBACK, 0, NT_COMPANY_INFO, DNC_BANKRUPCY),0,0);
 
-			// If the player is human, and it is no network play, leave the player playing
-			if (IsHumanPlayer(owner) && !_networking) {
-				p->bankrupt_asked = 255;
-				p->bankrupt_timeout = 0x456;
-			} else {
+			if (IsHumanPlayer(owner)) {
+				/* XXX - If we are in offline mode, leave the player playing. Eg. there
+				 * is no THE-END, otherwise mark the player as spectator to make sure
+				 * he/she is no long in control of this company */
+				if (!_networking) {
+					p->bankrupt_asked = 0xFF;
+					p->bankrupt_timeout = 0x456;
+					break;
+				} else if (owner == _local_player) {
+					_local_player = _network_playas = PLAYER_SPECTATOR;
+				}
+
 #ifdef ENABLE_NETWORK
-				/* If we are the server make sure it is clear that this player is not active */
-				if (IsHumanPlayer(owner) && _network_server) {
+				/* The server has to handle all administrative issues, for example
+				 * updating and notifying all clients of what has happened */
+				if (_network_server) {
 					const NetworkClientState *cs;
-					/* Find all clients that were in control of this company */
+					NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(NETWORK_SERVER_INDEX);
+
+					/* The server has just gone belly-up, mark it as spectator */
+					if (owner == ci->client_playas) {
+						ci->client_playas = PLAYER_SPECTATOR;
+						NetworkUpdateClientInfo(NETWORK_SERVER_INDEX);
+					}
+
+					/* Find all clients that were in control of this company,
+					 * and mark them as spectator; broadcast this message to everyone */
 					FOR_ALL_CLIENTS(cs) {
-						NetworkClientInfo *ci = DEREF_CLIENT_INFO(cs);
+						ci = DEREF_CLIENT_INFO(cs);
 						if (ci->client_playas == owner) {
 							ci->client_playas = PLAYER_SPECTATOR;
-							// Send the new info to all the clients
-							NetworkUpdateClientInfo(_network_own_client_index);
+							NetworkUpdateClientInfo(ci->client_index);
 						}
 					}
 				}
-				// Make sure the player no longer controls the company
-				if (IsHumanPlayer(owner) && owner == _local_player) {
-					// Switch the player to spectator..
-					_local_player = PLAYER_SPECTATOR;
-				}
 #endif /* ENABLE_NETWORK */
-
-				/* Remove the player */
-				ChangeOwnershipOfPlayerItems(owner, PLAYER_SPECTATOR);
-				// Register the player as not-active
-				p->is_active = false;
-
-				if (!IsHumanPlayer(owner) && (!_networking || _network_server) && _ai.enabled)
-					AI_PlayerDied(owner);
 			}
+
+			/* Remove the player */
+			ChangeOwnershipOfPlayerItems(owner, PLAYER_SPECTATOR);
+			/* Register the player as not-active */
+			p->is_active = false;
+
+			if (!IsHumanPlayer(owner) && (!_networking || _network_server) && _ai.enabled)
+				AI_PlayerDied(owner);
 		}
 	}
 }
