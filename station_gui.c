@@ -494,7 +494,7 @@ static const Widget _player_stations_widgets[] = {
 };
 
 static const WindowDesc _player_stations_desc = {
-	-1, -1, 358, 162,
+	WDP_AUTO, WDP_AUTO, 358, 162,
 	WC_STATION_LIST,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_player_stations_widgets,
@@ -763,7 +763,7 @@ static void StationViewWndProc(Window *w, WindowEvent *e)
 
 
 static const WindowDesc _station_view_desc = {
-	-1, -1, 249, 110,
+	WDP_AUTO, WDP_AUTO, 249, 110,
 	WC_STATION_VIEW,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_station_view_widgets,

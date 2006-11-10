@@ -583,7 +583,7 @@ static const Widget _orders_train_widgets[] = {
 };
 
 static const WindowDesc _orders_train_desc = {
-	-1,-1, 399, 88,
+	WDP_AUTO, WDP_AUTO, 399, 88,
 	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_orders_train_widgets,
@@ -610,7 +610,7 @@ static const Widget _orders_widgets[] = {
 };
 
 static const WindowDesc _orders_desc = {
-	-1,-1, 410, 88,
+	WDP_AUTO, WDP_AUTO, 410, 88,
 	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_RESIZABLE,
 	_orders_widgets,
@@ -634,7 +634,7 @@ static const Widget _other_orders_widgets[] = {
 };
 
 static const WindowDesc _other_orders_desc = {
-	-1,-1, 332, 88,
+	WDP_AUTO, WDP_AUTO, 332, 88,
 	WC_VEHICLE_ORDERS,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_other_orders_widgets,

@@ -1331,7 +1331,7 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _scen_edit_land_gen_desc = {
-	-1,-1, 182, 96,
+	WDP_AUTO, WDP_AUTO, 182, 96,
 	WC_SCEN_LAND_GEN,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_land_gen_widgets,
@@ -1447,7 +1447,7 @@ static void ScenEditTownGenWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _scen_edit_town_gen_desc = {
-	-1,-1, 160, 82,
+	WDP_AUTO, WDP_AUTO, 160, 82,
 	WC_SCEN_TOWN_GEN,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_scen_edit_town_gen_widgets,
@@ -1659,7 +1659,7 @@ static void ScenEditIndustryWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _scenedit_industry_normal_desc = {
-	-1,-1, 170, 225,
+	WDP_AUTO, WDP_AUTO, 170, 225,
 	WC_SCEN_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_scenedit_industry_normal_widgets,
@@ -1667,7 +1667,7 @@ static const WindowDesc _scenedit_industry_normal_desc = {
 };
 
 static const WindowDesc _scenedit_industry_hilly_desc = {
-	-1,-1, 170, 225,
+	WDP_AUTO, WDP_AUTO, 170, 225,
 	WC_SCEN_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_scenedit_industry_hilly_widgets,
@@ -1675,7 +1675,7 @@ static const WindowDesc _scenedit_industry_hilly_desc = {
 };
 
 static const WindowDesc _scenedit_industry_desert_desc = {
-	-1,-1, 170, 225,
+	WDP_AUTO, WDP_AUTO, 170, 225,
 	WC_SCEN_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_scenedit_industry_desert_widgets,
@@ -1683,7 +1683,7 @@ static const WindowDesc _scenedit_industry_desert_desc = {
 };
 
 static const WindowDesc _scenedit_industry_candy_desc = {
-	-1,-1, 170, 225,
+	WDP_AUTO, WDP_AUTO, 170, 225,
 	WC_SCEN_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_scenedit_industry_candy_widgets,

@@ -309,8 +309,8 @@ static const Widget _build_road_widgets[] = {
 };
 
 static const WindowDesc _build_road_desc = {
-	640-240, 22, 240, 36,
-	WC_BUILD_TOOLBAR,0,
+	0, 22, 240, 36,
+	WC_BUILD_TOOLBAR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_widgets,
 	BuildRoadToolbWndProc
@@ -344,7 +344,7 @@ static const Widget _build_road_scen_widgets[] = {
 };
 
 static const WindowDesc _build_road_scen_desc = {
-	-1, -1, 174, 36,
+	WDP_AUTO, WDP_AUTO, 174, 36,
 	WC_SCEN_BUILD_ROAD,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_scen_widgets,
@@ -404,8 +404,8 @@ static const Widget _build_road_depot_widgets[] = {
 };
 
 static const WindowDesc _build_road_depot_desc = {
-	-1,-1, 140, 122,
-	WC_BUILD_DEPOT,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 140, 122,
+	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_road_depot_widgets,
 	BuildRoadDepotWndProc
@@ -500,8 +500,8 @@ static const Widget _bus_station_picker_widgets[] = {
 };
 
 static const WindowDesc _bus_station_picker_desc = {
-	-1,-1, 140, 177,
-	WC_BUS_STATION,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 140, 177,
+	WC_BUS_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_bus_station_picker_widgets,
 	RoadStationPickerWndProc
@@ -527,8 +527,8 @@ static const Widget _truck_station_picker_widgets[] = {
 };
 
 static const WindowDesc _truck_station_picker_desc = {
-	-1,-1, 140, 177,
-	WC_TRUCK_STATION,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 140, 177,
+	WC_TRUCK_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_truck_station_picker_widgets,
 	RoadStationPickerWndProc

@@ -266,7 +266,7 @@ static const Widget _terraform_widgets[] = {
 
 static const WindowDesc _terraform_desc = {
 	640-157, 22+36, 158, 36,
-	WC_SCEN_LAND_GEN,0,
+	WC_SCEN_LAND_GEN, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_terraform_widgets,
 	TerraformToolbWndProc

@@ -968,7 +968,7 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _smallmap_desc = {
-	-1,-1, 446, 314,
+	WDP_AUTO, WDP_AUTO, 446, 314,
 	WC_SMALLMAP,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_smallmap_widgets,
@@ -1081,7 +1081,7 @@ static void ExtraViewPortWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _extra_view_port_desc = {
-	-1,-1, 300, 268,
+	WDP_AUTO, WDP_AUTO, 300, 268,
 	WC_EXTRA_VIEW_PORT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_extra_view_port_widgets,

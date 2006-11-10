@@ -133,7 +133,7 @@ static const Widget _land_info_widgets[] = {
 };
 
 static const WindowDesc _land_info_desc = {
-	-1, -1, 280, 93,
+	WDP_AUTO, WDP_AUTO, 280, 93,
 	WC_LAND_INFO,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_land_info_widgets,
@@ -440,7 +440,7 @@ static const Widget _build_trees_scen_widgets[] = {
 };
 
 static const WindowDesc _build_trees_scen_desc = {
-	-1, -1, 143, 184,
+	WDP_AUTO, WDP_AUTO, 143, 184,
 	WC_BUILD_TREES,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_trees_scen_widgets,

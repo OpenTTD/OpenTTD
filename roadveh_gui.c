@@ -205,7 +205,7 @@ static const Widget _roadveh_details_widgets[] = {
 };
 
 static const WindowDesc _roadveh_details_desc = {
-	-1,-1, 380, 101,
+	WDP_AUTO, WDP_AUTO, 380, 101,
 	WC_VEHICLE_DETAILS,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_roadveh_details_widgets,
@@ -378,7 +378,7 @@ static const Widget _roadveh_view_widgets[] = {
 };
 
 static const WindowDesc _roadveh_view_desc = {
-	-1,-1, 250, 116,
+	WDP_AUTO, WDP_AUTO, 250, 116,
 	WC_VEHICLE_VIEW,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_roadveh_view_widgets,
@@ -520,7 +520,7 @@ static const Widget _new_road_veh_widgets[] = {
 };
 
 static const WindowDesc _new_road_veh_desc = {
-	-1, -1, 248, 230,
+	WDP_AUTO, WDP_AUTO, 248, 230,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_road_veh_widgets,

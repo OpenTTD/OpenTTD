@@ -649,7 +649,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _new_rail_vehicle_desc = {
-	-1, -1, 228, 264,
+	WDP_AUTO, WDP_AUTO, 228, 264,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_rail_vehicle_widgets,
@@ -923,7 +923,7 @@ static void TrainViewWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _train_view_desc = {
-	-1,-1, 250, 134,
+	WDP_AUTO, WDP_AUTO, 250, 134,
 	WC_VEHICLE_VIEW,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_train_view_widgets,
@@ -1200,7 +1200,7 @@ static const Widget _train_details_widgets[] = {
 
 
 static const WindowDesc _train_details_desc = {
-	-1,-1, 370, 164,
+	WDP_AUTO, WDP_AUTO, 370, 164,
 	WC_VEHICLE_DETAILS,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_train_details_widgets,

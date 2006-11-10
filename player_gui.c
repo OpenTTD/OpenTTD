@@ -188,7 +188,7 @@ static void PlayerFinancesWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _player_finances_desc = {
-	-1,-1, 407, 216,
+	WDP_AUTO, WDP_AUTO, 407, 216,
 	WC_FINANCES,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_widgets,
@@ -196,7 +196,7 @@ static const WindowDesc _player_finances_desc = {
 };
 
 static const WindowDesc _player_finances_small_desc = {
-	-1,-1, 280, 60,
+	WDP_AUTO, WDP_AUTO, 280, 60,
 	WC_FINANCES,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_player_finances_small_widgets,
@@ -204,7 +204,7 @@ static const WindowDesc _player_finances_small_desc = {
 };
 
 static const WindowDesc _other_player_finances_desc = {
-	-1,-1, 407, 204,
+	WDP_AUTO, WDP_AUTO, 407, 204,
 	WC_FINANCES,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_other_player_finances_widgets,
@@ -212,7 +212,7 @@ static const WindowDesc _other_player_finances_desc = {
 };
 
 static const WindowDesc _other_player_finances_small_desc = {
-	-1,-1, 280, 48,
+	WDP_AUTO, WDP_AUTO, 280, 48,
 	WC_FINANCES,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_other_player_finances_small_widgets,
@@ -470,7 +470,7 @@ static const Widget _select_player_livery_2cc_widgets[] = {
 };
 
 static const WindowDesc _select_player_livery_2cc_desc = {
-	-1,-1, 400, 49 + 1 * 14,
+	WDP_AUTO, WDP_AUTO, 400, 49 + 1 * 14,
 	WC_PLAYER_COLOR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_player_livery_2cc_widgets,
@@ -497,7 +497,7 @@ static const Widget _select_player_livery_widgets[] = {
 };
 
 static const WindowDesc _select_player_livery_desc = {
-	-1, -1, 275, 49 + 1 * 14,
+	WDP_AUTO, WDP_AUTO, 275, 49 + 1 * 14,
 	WC_PLAYER_COLOR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_select_player_livery_widgets,
@@ -551,7 +551,7 @@ static const Widget _select_player_face_widgets[] = {
 };
 
 static const WindowDesc _select_player_face_desc = {
-	-1,-1, 190, 149,
+	WDP_AUTO, WDP_AUTO, 190, 149,
 	WC_PLAYER_FACE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_player_face_widgets,
@@ -867,7 +867,7 @@ static void PlayerCompanyWndProc(Window *w, WindowEvent *e)
 
 
 static const WindowDesc _player_company_desc = {
-	-1, -1, 360, 170,
+	WDP_AUTO, WDP_AUTO, 360, 170,
 	WC_COMPANY, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_player_company_widgets,
@@ -928,7 +928,7 @@ static const Widget _buy_company_widgets[] = {
 };
 
 static const WindowDesc _buy_company_desc = {
-	153,171, 334, 137,
+	153, 171, 334, 137,
 	WC_BUY_COMPANY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_buy_company_widgets,

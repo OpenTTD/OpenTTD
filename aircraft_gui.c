@@ -167,7 +167,7 @@ static const Widget _aircraft_details_widgets[] = {
 };
 
 static const WindowDesc _aircraft_details_desc = {
-	-1, -1, 390, 114,
+	WDP_AUTO, WDP_AUTO, 390, 114,
 	WC_VEHICLE_DETAILS, WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_aircraft_details_widgets,
@@ -331,7 +331,7 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 
 
 static const WindowDesc _aircraft_view_desc = {
-	-1,-1, 250, 116,
+	WDP_AUTO, WDP_AUTO, 250, 116,
 	WC_VEHICLE_VIEW ,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_aircraft_view_widgets,

@@ -210,7 +210,7 @@ static void TownAuthorityWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _town_authority_desc = {
-	-1, -1, 317, 222,
+	WDP_AUTO, WDP_AUTO, 317, 222,
 	WC_TOWN_AUTHORITY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_town_authority_widgets,
@@ -304,7 +304,7 @@ static const Widget _town_view_widgets[] = {
 };
 
 static const WindowDesc _town_view_desc = {
-	-1, -1, 260, 150,
+	WDP_AUTO, WDP_AUTO, 260, 150,
 	WC_TOWN_VIEW,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_town_view_widgets,
@@ -327,7 +327,7 @@ static const Widget _town_view_scen_widgets[] = {
 };
 
 static const WindowDesc _town_view_scen_desc = {
-	-1, -1, 260, 150,
+	WDP_AUTO, WDP_AUTO, 260, 150,
 	WC_TOWN_VIEW,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_town_view_scen_widgets,
@@ -505,7 +505,7 @@ static void TownDirectoryWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _town_directory_desc = {
-	-1, -1, 208, 202,
+	WDP_AUTO, WDP_AUTO, 208, 202,
 	WC_TOWN_DIRECTORY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_town_directory_widgets,

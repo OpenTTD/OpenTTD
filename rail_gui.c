@@ -544,8 +544,8 @@ static const Widget _build_rail_widgets[] = {
 };
 
 static const WindowDesc _build_rail_desc = {
-	640-372, 22, 372, 36,
-	WC_BUILD_TOOLBAR,0,
+	0, 22, 372, 36,
+	WC_BUILD_TOOLBAR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_rail_widgets,
 	BuildRailToolbWndProc
@@ -953,16 +953,16 @@ static const Widget _newstation_builder_widgets[] = {
 };
 
 static const WindowDesc _station_builder_desc = {
-	-1, -1, 148, 200,
-	WC_BUILD_STATION,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 148, 200,
+	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_station_builder_widgets,
 	StationBuildWndProc
 };
 
 static const WindowDesc _newstation_builder_desc = {
-	-1, -1, 148, 290,
-	WC_BUILD_STATION,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 148, 290,
+	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_newstation_builder_widgets,
 	StationBuildWndProc
@@ -1040,8 +1040,8 @@ static const Widget _build_depot_widgets[] = {
 };
 
 static const WindowDesc _build_depot_desc = {
-	-1,-1, 140, 122,
-	WC_BUILD_DEPOT,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 140, 122,
+	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_depot_widgets,
 	BuildTrainDepotWndProc
@@ -1126,8 +1126,8 @@ static const Widget _build_waypoint_widgets[] = {
 };
 
 static const WindowDesc _build_waypoint_desc = {
-	-1,-1, 344, 92,
-	WC_BUILD_DEPOT,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 344, 92,
+	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_waypoint_widgets,
 	BuildWaypointWndProc

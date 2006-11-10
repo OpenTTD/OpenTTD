@@ -1028,7 +1028,7 @@ static const Widget _client_list_popup_widgets[] = {
 };
 
 static WindowDesc _client_list_desc = {
-	-1, -1, 250, 1,
+	WDP_AUTO, WDP_AUTO, 250, 1,
 	WC_CLIENT_LIST,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_client_list_widgets,

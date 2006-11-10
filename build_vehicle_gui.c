@@ -540,7 +540,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _build_vehicle_desc = {
-	-1, -1, 240, 238,
+	WDP_AUTO, WDP_AUTO, 240, 238,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_build_vehicle_widgets,

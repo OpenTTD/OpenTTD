@@ -87,8 +87,8 @@ static const Widget _build_bridge_widgets[] = {
 };
 
 static const WindowDesc _build_bridge_desc = {
-	-1, -1, 200, 102,
-	WC_BUILD_BRIDGE,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 200, 102,
+	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_bridge_widgets,
 	BuildBridgeWndProc
@@ -104,8 +104,8 @@ static const Widget _build_road_bridge_widgets[] = {
 };
 
 static const WindowDesc _build_road_bridge_desc = {
-	-1, -1, 200, 102,
-	WC_BUILD_BRIDGE,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 200, 102,
+	WC_BUILD_BRIDGE, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_road_bridge_widgets,
 	BuildBridgeWndProc

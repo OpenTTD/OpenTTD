@@ -283,7 +283,7 @@ static const Widget _graph_legend_widgets[] = {
 };
 
 static const WindowDesc _graph_legend_desc = {
-	-1, -1, 250, 114,
+	WDP_AUTO, WDP_AUTO, 250, 114,
 	WC_GRAPH_LEGEND,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_graph_legend_widgets,
@@ -384,7 +384,7 @@ static const Widget _operating_profit_widgets[] = {
 };
 
 static const WindowDesc _operating_profit_desc = {
-	-1, -1, 576, 174,
+	WDP_AUTO, WDP_AUTO, 576, 174,
 	WC_OPERATING_PROFIT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_operating_profit_widgets,
@@ -459,7 +459,7 @@ static const Widget _income_graph_widgets[] = {
 };
 
 static const WindowDesc _income_graph_desc = {
-	-1, -1, 576, 142,
+	WDP_AUTO, WDP_AUTO, 576, 142,
 	WC_INCOME_GRAPH,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_income_graph_widgets,
@@ -532,7 +532,7 @@ static const Widget _delivered_cargo_graph_widgets[] = {
 };
 
 static const WindowDesc _delivered_cargo_graph_desc = {
-	-1, -1, 576, 142,
+	WDP_AUTO, WDP_AUTO, 576, 142,
 	WC_DELIVERED_CARGO,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_delivered_cargo_graph_widgets,
@@ -608,7 +608,7 @@ static const Widget _performance_history_widgets[] = {
 };
 
 static const WindowDesc _performance_history_desc = {
-	-1, -1, 576, 238,
+	WDP_AUTO, WDP_AUTO, 576, 238,
 	WC_PERFORMANCE_HISTORY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_performance_history_widgets,
@@ -681,7 +681,7 @@ static const Widget _company_value_graph_widgets[] = {
 };
 
 static const WindowDesc _company_value_graph_desc = {
-	-1, -1, 576, 238,
+	WDP_AUTO, WDP_AUTO, 576, 238,
 	WC_COMPANY_VALUE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_company_value_graph_widgets,
@@ -796,7 +796,7 @@ static const Widget _cargo_payment_rates_widgets[] = {
 };
 
 static const WindowDesc _cargo_payment_rates_desc = {
-	-1, -1, 568, 142,
+	WDP_AUTO, WDP_AUTO, 568, 142,
 	WC_PAYMENT_RATES,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_cargo_payment_rates_widgets,
@@ -888,7 +888,7 @@ static const Widget _company_league_widgets[] = {
 };
 
 static const WindowDesc _company_league_desc = {
-	-1, -1, 400, 97,
+	WDP_AUTO, WDP_AUTO, 400, 97,
 	WC_COMPANY_LEAGUE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_company_league_widgets,
@@ -1110,7 +1110,7 @@ static const Widget _performance_rating_detail_widgets[] = {
 };
 
 static const WindowDesc _performance_rating_detail_desc = {
-	-1, -1, 299, 228,
+	WDP_AUTO, WDP_AUTO, 299, 228,
 	WC_PERFORMANCE_DETAIL,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_performance_rating_detail_widgets,
@@ -1239,7 +1239,7 @@ static const Widget _sign_list_widget[] = {
 };
 
 static const WindowDesc _sign_list_desc = {
-	-1, -1, 358, 138,
+	WDP_AUTO, WDP_AUTO, 358, 138,
 	WC_SIGN_LIST,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_sign_list_widget,

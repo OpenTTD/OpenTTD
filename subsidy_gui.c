@@ -162,7 +162,7 @@ static const Widget _subsidies_list_widgets[] = {
 };
 
 static const WindowDesc _subsidies_list_desc = {
-	-1, -1, 630, 127,
+	WDP_AUTO, WDP_AUTO, 630, 127,
 	WC_SUBSIDIES_LIST,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_subsidies_list_widgets,

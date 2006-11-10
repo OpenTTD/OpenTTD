@@ -124,8 +124,8 @@ static const Widget _air_toolbar_widgets[] = {
 
 
 static const WindowDesc _air_toolbar_desc = {
-	640-86, 22, 86, 36,
-	WC_BUILD_TOOLBAR,0,
+	0, 22, 86, 36,
+	WC_BUILD_TOOLBAR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_air_toolbar_widgets,
 	BuildAirToolbWndProc
@@ -262,8 +262,8 @@ static const Widget _build_airport_picker_widgets[] = {
 };
 
 static const WindowDesc _build_airport_desc = {
-	-1, -1, 148, 240,
-	WC_BUILD_STATION,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 148, 240,
+	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_airport_picker_widgets,
 	BuildAirportPickerWndProc

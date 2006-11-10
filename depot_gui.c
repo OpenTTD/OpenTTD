@@ -110,7 +110,7 @@ static const Widget _depot_widgets[] = {
 static void DepotWndProc(Window *w, WindowEvent *e);
 
 static const WindowDesc _train_depot_desc = {
-	-1, -1, 361, 122,
+	WDP_AUTO, WDP_AUTO, 361, 122,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -118,7 +118,7 @@ static const WindowDesc _train_depot_desc = {
 };
 
 static const WindowDesc _road_depot_desc = {
-	-1, -1, 315, 96,
+	WDP_AUTO, WDP_AUTO, 315, 96,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -126,7 +126,7 @@ static const WindowDesc _road_depot_desc = {
 };
 
 static const WindowDesc _ship_depot_desc = {
-	-1, -1, 305, 98,
+	WDP_AUTO, WDP_AUTO, 305, 98,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -134,7 +134,7 @@ static const WindowDesc _ship_depot_desc = {
 };
 
 static const WindowDesc _aircraft_depot_desc = {
-	-1, -1, 331, 98,
+	WDP_AUTO, WDP_AUTO, 331, 98,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,

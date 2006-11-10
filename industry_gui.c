@@ -188,7 +188,7 @@ static const Widget _build_industry_land3_widgets_extra[] = {
 
 
 static const WindowDesc _build_industry_land0_desc = {
-	-1, -1, 170, 116,
+	WDP_AUTO, WDP_AUTO, 170, 116,
 	WC_BUILD_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_industry_land0_widgets,
@@ -196,7 +196,7 @@ static const WindowDesc _build_industry_land0_desc = {
 };
 
 static const WindowDesc _build_industry_land1_desc = {
-	-1, -1, 170, 116,
+	WDP_AUTO, WDP_AUTO, 170, 116,
 	WC_BUILD_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_industry_land1_widgets,
@@ -204,7 +204,7 @@ static const WindowDesc _build_industry_land1_desc = {
 };
 
 static const WindowDesc _build_industry_land2_desc = {
-	-1, -1, 170, 116,
+	WDP_AUTO, WDP_AUTO, 170, 116,
 	WC_BUILD_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_industry_land2_widgets,
@@ -212,7 +212,7 @@ static const WindowDesc _build_industry_land2_desc = {
 };
 
 static const WindowDesc _build_industry_land3_desc = {
-	-1, -1, 170, 116,
+	WDP_AUTO, WDP_AUTO, 170, 116,
 	WC_BUILD_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_industry_land3_widgets,
@@ -220,7 +220,7 @@ static const WindowDesc _build_industry_land3_desc = {
 };
 
 static const WindowDesc _build_industry_land0_desc_extra = {
-	-1, -1, 170, 188,
+	WDP_AUTO, WDP_AUTO, 170, 188,
 	WC_BUILD_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_industry_land0_widgets_extra,
@@ -228,7 +228,7 @@ static const WindowDesc _build_industry_land0_desc_extra = {
 };
 
 static const WindowDesc _build_industry_land1_desc_extra = {
-	-1, -1, 170, 175,
+	WDP_AUTO, WDP_AUTO, 170, 175,
 	WC_BUILD_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_industry_land1_widgets_extra,
@@ -236,7 +236,7 @@ static const WindowDesc _build_industry_land1_desc_extra = {
 };
 
 static const WindowDesc _build_industry_land2_desc_extra = {
-	-1, -1, 170, 201,
+	WDP_AUTO, WDP_AUTO, 170, 201,
 	WC_BUILD_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_industry_land2_widgets_extra,
@@ -244,7 +244,7 @@ static const WindowDesc _build_industry_land2_desc_extra = {
 };
 
 static const WindowDesc _build_industry_land3_desc_extra = {
-	-1, -1, 170, 188,
+	WDP_AUTO, WDP_AUTO, 170, 188,
 	WC_BUILD_INDUSTRY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_industry_land3_widgets_extra,
@@ -434,7 +434,7 @@ static const Widget _industry_view_widgets[] = {
 };
 
 static const WindowDesc _industry_view_desc = {
-	-1, -1, 260, 160,
+	WDP_AUTO, WDP_AUTO, 260, 160,
 	WC_INDUSTRY_VIEW,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON,
 	_industry_view_widgets,
@@ -676,7 +676,7 @@ static void IndustryDirectoryWndProc(Window *w, WindowEvent *e)
 
 /* Industry List */
 static const WindowDesc _industry_directory_desc = {
-	-1, -1, 508, 190,
+	WDP_AUTO, WDP_AUTO, 508, 190,
 	WC_INDUSTRY_DIRECTORY,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_industry_directory_widgets,

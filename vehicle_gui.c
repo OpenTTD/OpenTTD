@@ -426,7 +426,7 @@ static const Widget _vehicle_refit_widgets[] = {
 };
 
 static const WindowDesc _vehicle_refit_desc = {
-	-1,-1, 240, 174,
+	WDP_AUTO, WDP_AUTO, 240, 174,
 	WC_VEHICLE_REFIT,WC_VEHICLE_VIEW,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_vehicle_refit_widgets,
@@ -1278,7 +1278,7 @@ static const Widget _replace_ship_aircraft_vehicle_widgets[] = {
 };
 
 static const WindowDesc _replace_rail_vehicle_desc = {
-	-1, -1, 456, 252,
+	WDP_AUTO, WDP_AUTO, 456, 252,
 	WC_REPLACE_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_rail_vehicle_widgets,
@@ -1286,7 +1286,7 @@ static const WindowDesc _replace_rail_vehicle_desc = {
 };
 
 static const WindowDesc _replace_road_vehicle_desc = {
-	-1, -1, 456, 230,
+	WDP_AUTO, WDP_AUTO, 456, 230,
 	WC_REPLACE_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_road_vehicle_widgets,
@@ -1294,7 +1294,7 @@ static const WindowDesc _replace_road_vehicle_desc = {
 };
 
 static const WindowDesc _replace_ship_aircraft_vehicle_desc = {
-	-1, -1, 456, 214,
+	WDP_AUTO, WDP_AUTO, 456, 214,
 	WC_REPLACE_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_replace_ship_aircraft_vehicle_widgets,
@@ -1822,15 +1822,15 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _player_vehicle_list_train_desc = {
-	-1, -1, 325, 220,
-    WC_TRAINS_LIST,0,
-    WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
-    _vehicle_list_widgets,
-    PlayerVehWndProc
+	WDP_AUTO, WDP_AUTO, 325, 220,
+	WC_TRAINS_LIST, 0,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	_vehicle_list_widgets,
+	PlayerVehWndProc
 };
 
 static const WindowDesc _player_vehicle_list_road_veh_desc = {
-	-1, -1, 260, 220,
+	WDP_AUTO, WDP_AUTO, 260, 220,
 	WC_ROADVEH_LIST,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
@@ -1838,7 +1838,7 @@ static const WindowDesc _player_vehicle_list_road_veh_desc = {
 };
 
 static const WindowDesc _player_vehicle_list_ship_desc = {
-	-1, -1, 260, 182,
+	WDP_AUTO, WDP_AUTO, 260, 182,
 	WC_SHIPS_LIST,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
@@ -1846,7 +1846,7 @@ static const WindowDesc _player_vehicle_list_ship_desc = {
 };
 
 static const WindowDesc _player_vehicle_list_aircraft_desc = {
-	-1, -1, 260, 182,
+	WDP_AUTO, WDP_AUTO, 260, 182,
 	WC_AIRCRAFT_LIST,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,

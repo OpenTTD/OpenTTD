@@ -205,8 +205,8 @@ static const Widget _build_docks_toolb_widgets[] = {
 };
 
 static const WindowDesc _build_docks_toolbar_desc = {
-	640-158, 22, 158, 36,
-	WC_BUILD_TOOLBAR,0,
+	0, 22, 158, 36,
+	WC_BUILD_TOOLBAR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_docks_toolb_widgets,
 	BuildDocksToolbWndProc
@@ -279,8 +279,8 @@ static const Widget _build_dock_station_widgets[] = {
 };
 
 static const WindowDesc _build_dock_station_desc = {
-	-1, -1, 148, 75,
-	WC_BUILD_STATION,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 148, 75,
+	WC_BUILD_STATION, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_dock_station_widgets,
 	BuildDockStationWndProc
@@ -348,8 +348,8 @@ static const Widget _build_docks_depot_widgets[] = {
 };
 
 static const WindowDesc _build_docks_depot_desc = {
-	-1, -1, 204, 86,
-	WC_BUILD_DEPOT,WC_BUILD_TOOLBAR,
+	WDP_AUTO, WDP_AUTO, 204, 86,
+	WC_BUILD_DEPOT, WC_BUILD_TOOLBAR,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_build_docks_depot_widgets,
 	BuildDocksDepotWndProc
