@@ -776,6 +776,8 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 			case SDT_MANYOFMANY:
 				switch (GetVarMemType(sld->conv)) {
 				case SLE_VAR_BL:
+					if (*(bool*)ptr == (bool)(unsigned long)p) continue;
+					break;
 				case SLE_VAR_I8:
 				case SLE_VAR_U8:
 					if (*(byte*)ptr == (byte)(unsigned long)p) continue;
