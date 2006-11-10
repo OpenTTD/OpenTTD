@@ -860,6 +860,8 @@ int32 CmdPlayerCtrl(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		if (_local_player != _network_playas) {
 			assert(_local_player == PLAYER_SPECTATOR && _network_playas == p->index);
 			_local_player = p->index;
+			DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
+
 			MarkWholeScreenDirty();
 		}
 
