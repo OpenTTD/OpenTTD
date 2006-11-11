@@ -309,7 +309,7 @@ static const Widget _build_road_widgets[] = {
 };
 
 static const WindowDesc _build_road_desc = {
-	0, 22, 240, 36,
+	WDP_ALIGN_TBR, 22, 240, 36,
 	WC_BUILD_TOOLBAR, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON,
 	_build_road_widgets,

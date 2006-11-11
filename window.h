@@ -275,8 +275,10 @@ enum {
 
 /* can be used as x or y coordinates to cause a specific placement */
 enum {
-	WDP_AUTO   = -1,
-	WDP_CENTER = -2,
+	WDP_AUTO      = -1, ///< Find a place automatically
+	WDP_CENTER    = -2, ///< Center the window (left/right or top/bottom)
+	WDP_ALIGN_TBR = -3, ///< Align the right side of the window with the right side of the main toolbar
+	WDP_ALIGN_TBL = -4, ///< Align the left side of the window with the left side of the main toolbar
 };
 
 typedef struct Textbuf {

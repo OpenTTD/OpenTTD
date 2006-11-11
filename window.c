@@ -694,30 +694,44 @@ static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number
 			pt.x = (_screen.width + 10 - desc->width) - 20;
 		}
 		pt.y = w->top + 10;
-	} else if (desc->cls == WC_BUILD_TOOLBAR) { // open Build Toolbars aligned
-		/* Override the position if a toolbar is opened according to the place of the maintoolbar
-		 * The main toolbar (WC_MAIN_TOOLBAR) is 640px in width */
-		switch (_patches.toolbar_pos) {
-			case 1:  pt.x = ((_screen.width + 640) >> 1) - desc->width; break;
-			case 2:  pt.x = _screen.width - desc->width; break;
-			default: pt.x = 640 - desc->width;
-		}
-		pt.y = desc->top;
 	} else {
-		pt.x = desc->left;
-		pt.y = desc->top;
-		if (pt.x == WDP_AUTO) {
-			pt = GetAutoPlacePosition(desc->width, desc->height);
-		} else {
-			if (pt.x == WDP_CENTER) pt.x = (_screen.width - desc->width) >> 1;
-			if (pt.y == WDP_CENTER) {
-				pt.y = (_screen.height - desc->height) >> 1;
-			} else if (pt.y < 0) {
-				pt.y = _screen.height + pt.y; // if y is negative, it's from the bottom of the screen
-			}
+		switch (desc->left) {
+			case WDP_ALIGN_TBR: { /* Align the right side with the top toolbar */
+				w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+				pt.x = (w->left + w->width) - desc->width;
+			}	break;
+			case WDP_ALIGN_TBL: /* Align the left side with the top toolbar */
+				pt.x = FindWindowById(WC_MAIN_TOOLBAR, 0)->left;
+				break;
+			case WDP_AUTO: /* Find a good automatic position for the window */
+				pt = GetAutoPlacePosition(desc->width, desc->height);
+				goto allocate_window;
+			case WDP_CENTER: /* Centre the window horizontally */
+				pt.x = (_screen.width - desc->width) / 2;
+				break;
+			default:
+				pt.x = desc->left;
+				if (pt.x < 0) pt.x += _screen.width; // negative is from right of the screen
+		}
+
+		switch (desc->top) {
+			case WDP_CENTER: /* Centre the window vertically */
+				pt.y = (_screen.height - desc->height) / 2;
+				break;
+			/* WDP_AUTO sets the position at once and is controlled by desc->left.
+			 * Both left and top must be set to WDP_AUTO */
+			case WDP_AUTO:
+				NOT_REACHED();
+				assert(desc->left == WDP_AUTO && desc->top != WDP_AUTO);
+				/* fallthrough */
+			default:
+				pt.y = desc->top;
+				if (pt.y < 0) pt.y += _screen.height; // negative is from bottom of the screen
+				break;
 		}
 	}
 
+allocate_window:
 	w = LocalAllocateWindow(pt.x, pt.y, desc->width, desc->height, desc->proc, desc->cls, desc->widgets, window_number);
 	w->desc_flags = desc->flags;
 	return w;
