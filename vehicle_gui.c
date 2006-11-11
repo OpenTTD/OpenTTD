@@ -442,9 +442,7 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 
 	DeleteWindowById(WC_VEHICLE_REFIT, v->index);
 
-	_alloc_wnd_parent_num = v->index;
-
-	w = AllocateWindowDesc(&_vehicle_refit_desc);
+	w = AllocateWindowDescFront(&_vehicle_refit_desc, v->index);
 	WP(w, refit_d).order = order;
 
 	if (w != NULL) {

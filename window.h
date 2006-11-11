@@ -840,8 +840,6 @@ VARDEF bool _left_button_clicked;
 VARDEF bool _right_button_down;
 VARDEF bool _right_button_clicked;
 
-VARDEF int _alloc_wnd_parent_num;
-
 VARDEF int _scrollbar_start_pos;
 VARDEF int _scrollbar_size;
 VARDEF byte _scroller_click_timeout;

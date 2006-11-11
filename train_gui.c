@@ -1216,10 +1216,8 @@ static void ShowTrainDetailsWindow(const Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
 
-	_alloc_wnd_parent_num = veh;
-	w = AllocateWindowDesc(&_train_details_desc);
+	w = AllocateWindowDescFront(&_train_details_desc, veh);
 
-	w->window_number = veh;
 	w->caption_color = v->owner;
 	w->vscroll.cap = 6;
 	w->widget[4].data = (w->vscroll.cap << 8) + 1;

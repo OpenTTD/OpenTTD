@@ -217,9 +217,7 @@ static void ShowShipDetailsWindow(const Vehicle *v)
 
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
-	_alloc_wnd_parent_num = veh;
-	w = AllocateWindowDesc(&_ship_details_desc);
-	w->window_number = veh;
+	w = AllocateWindowDescFront(&_ship_details_desc, veh);
 	w->caption_color = v->owner;
 }
 

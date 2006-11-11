@@ -649,16 +649,13 @@ void ShowOrdersWindow(const Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_ORDERS, veh);
 	DeleteWindowById(WC_VEHICLE_DETAILS, veh);
 
-	_alloc_wnd_parent_num = veh;
-
 	if (v->owner != _local_player) {
-		w = AllocateWindowDesc(&_other_orders_desc);
+		w = AllocateWindowDescFront(&_other_orders_desc, veh);
 	} else {
-		w = AllocateWindowDesc((v->type == VEH_Train) ? &_orders_train_desc : &_orders_desc);
+		w = AllocateWindowDescFront((v->type == VEH_Train) ? &_orders_train_desc : &_orders_desc, veh);
 	}
 
 	if (w != NULL) {
-		w->window_number = veh;
 		w->caption_color = v->owner;
 		w->vscroll.cap = 6;
 		w->resize.step_height = 10;

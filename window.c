@@ -682,12 +682,17 @@ static Window *LocalAllocateWindowDesc(const WindowDesc *desc, int window_number
 	Point pt;
 	Window *w;
 
-	if (desc->parent_cls != WC_MAIN_WINDOW &&
-			(w = FindWindowById(desc->parent_cls, _alloc_wnd_parent_num), _alloc_wnd_parent_num=0, w) != NULL &&
-			w->left < _screen.width-20 && w->left > -60 && w->top < _screen.height-20) {
+	/* By default position a child window at an offset of 10/10 of its parent.
+	 * However if it falls too extremely outside window positions, reposition
+	 * it to an automatic place */
+	if (desc->parent_cls != 0 /* WC_MAIN_WINDOW */ &&
+			(w = FindWindowById(desc->parent_cls, window_number)) != NULL &&
+			w->left < _screen.width - 20 && w->left > -60 && w->top < _screen.height - 20) {
+
 		pt.x = w->left + 10;
-		if (pt.x > _screen.width + 10 - desc->width)
+		if (pt.x > _screen.width + 10 - desc->width) {
 			pt.x = (_screen.width + 10 - desc->width) - 20;
+		}
 		pt.y = w->top + 10;
 	} else if (desc->cls == WC_BUILD_TOOLBAR) { // open Build Toolbars aligned
 		/* Override the position if a toolbar is opened according to the place of the maintoolbar
@@ -1715,7 +1720,7 @@ int PositionMainToolbar(Window *w)
 	}
 
 	switch (_patches.toolbar_pos) {
-		case 1:  w->left = (_screen.width - w->width) >> 1; break;
+		case 1:  w->left = (_screen.width - w->width) / 2; break;
 		case 2:  w->left = _screen.width - w->width; break;
 		default: w->left = 0;
 	}

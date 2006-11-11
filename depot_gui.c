@@ -221,10 +221,7 @@ static const WindowDesc _depot_sell_all_desc = {
 
 static void ShowDepotSellAllWindow(TileIndex tile, byte type)
 {
-	Window *w;
-
-	_alloc_wnd_parent_num = tile;
-	w = AllocateWindowDescFront(&_depot_sell_all_desc, tile);
+	Window *w = AllocateWindowDescFront(&_depot_sell_all_desc, tile);
 
 	if (w != NULL) {
 		w->caption_color = GetTileOwner(tile);
