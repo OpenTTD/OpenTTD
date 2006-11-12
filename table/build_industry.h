@@ -1129,7 +1129,7 @@ static const IndustrySpec _industry_specs[] = {
 	   IT_OIL_RIG,        IT_INVALID,          IT_INVALID,       CHECK_REFINERY,
 	   CT_GOODS,       0, CT_INVALID,       0, 5,
 	   CT_OIL,            CT_INVALID,          CT_INVALID,
-	   INDUSTRYLIFE_CLOSABLE,                  1 << LT_NORMAL | 1 << LT_HILLY || LT_DESERT,
+	   INDUSTRYLIFE_CLOSABLE,                  1 << LT_NORMAL | 1 << LT_HILLY | LT_DESERT,
 	   STR_4806_OIL_REFINERY,
 	   STR_4833_SUPPLY_PROBLEMS_CAUSE_TO,      STR_4835_INCREASES_PRODUCTION,     STR_4839_PRODUCTION_DOWN_BY_50),
 
