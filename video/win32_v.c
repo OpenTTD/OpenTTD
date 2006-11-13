@@ -789,7 +789,7 @@ static void Win32GdiMainLoop(void)
 		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0) {
 			/* Disable speeding up game with ALT+TAB (if syskey is pressed, the
 			 * real key is in the upper 16 bits (see WM_SYSKEYDOWN in WndProcGdi()) */
-			if ((_pressed_key >> 16) & WKC_TAB &&
+			 if (GetAsyncKeyState(VK_MENU) >= 0 &&
 #endif
 			    !_networking && _game_mode != GM_MENU)
 				_fast_forward |= 2;
