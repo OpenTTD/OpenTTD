@@ -333,13 +333,8 @@ void ChangeOwnershipOfPlayerItems(PlayerID old_player, PlayerID new_player)
 		} while (++tile != MapSize());
 	}
 
-	// Change color of existing windows
-	if (new_player != PLAYER_SPECTATOR) {
-		Window *w;
-		for (w = _windows; w != _last_window; w++) {
-			if (w->caption_color == old_player) w->caption_color = new_player;
-		}
-	}
+	/* Change color of existing windows */
+	if (new_player != PLAYER_SPECTATOR) ChangeWindowOwner(old_player, new_player);
 
 	{
 		Player *p;

@@ -252,7 +252,6 @@ static inline bool IsValidPlayer(PlayerID pi)
 	return pi < MAX_PLAYERS;
 }
 
-void DeletePlayerWindows(PlayerID pi);
 byte GetPlayerRailtypes(PlayerID p);
 
 /** Finds out if a Player has a certain railtype available */

@@ -613,6 +613,8 @@ void SendWindowMessageClass(WindowClass wnd_class, uint msg, uint wparam, uint l
 
 Window *FindWindowById(WindowClass cls, WindowNumber number);
 void DeleteWindow(Window *w);
+void DeletePlayerWindows(PlayerID pi);
+void ChangeWindowOwner(PlayerID old_player, PlayerID new_player);
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number);
 Window *FindWindowFromPt(int x, int y);
 

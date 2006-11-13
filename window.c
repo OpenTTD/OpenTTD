@@ -348,6 +348,43 @@ void DeleteWindowByClass(WindowClass cls)
 	}
 }
 
+void DeletePlayerWindows(PlayerID pi)
+{
+	Window *w;
+
+	for (w = _windows; w != _last_window;) {
+		if (w->caption_color == pi) {
+			DeleteWindow(w);
+			w = _windows;
+		} else {
+			w++;
+		}
+	}
+
+	/* Also delete the player specific windows, that haven't got the caption set */
+	DeleteWindowById(WC_BUY_COMPANY, pi);
+}
+
+/* Change the owner of all the windows one player can take over from another player (like vehicle view windows) */
+void ChangeWindowOwner(PlayerID old_player, PlayerID new_player)
+{
+	Window *w;
+
+	for (w = _windows; w != _last_window; w++) {
+		if (w->caption_color != old_player)      continue;
+		if (w->window_class == WC_PLAYER_COLOR)  continue;
+		if (w->window_class == WC_FINANCES)      continue;
+		if (w->window_class == WC_STATION_LIST)  continue;
+		if (w->window_class == WC_TRAINS_LIST)   continue;
+		if (w->window_class == WC_ROADVEH_LIST)  continue;
+		if (w->window_class == WC_SHIPS_LIST)    continue;
+		if (w->window_class == WC_AIRCRAFT_LIST) continue;
+		if (w->window_class == WC_BUY_COMPANY)   continue;
+		if (w->window_class == WC_COMPANY)       continue;
+		w->caption_color = new_player;
+	}
+}
+
 
 static Window *BringWindowToFront(Window *w);
 

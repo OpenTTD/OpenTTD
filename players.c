@@ -26,6 +26,7 @@
 #include "engine.h"
 #include "ai/ai.h"
 #include "date.h"
+#include "window.h"
 
 
 uint16 GetDrawStringPlayerColor(PlayerID player)
@@ -614,19 +615,6 @@ void PlayersYearlyLoop(void)
 			SndPlayFx(SND_00_GOOD_YEAR);
 		}
 	}
-}
-
-void DeletePlayerWindows(PlayerID pi)
-{
-	DeleteWindowById(WC_COMPANY, pi);
-	DeleteWindowById(WC_PLAYER_COLOR, pi);
-	DeleteWindowById(WC_FINANCES, pi);
-	DeleteWindowById(WC_STATION_LIST, pi);
-	DeleteWindowById(WC_TRAINS_LIST,   (INVALID_STATION << 16) | pi);
-	DeleteWindowById(WC_ROADVEH_LIST,  (INVALID_STATION << 16) | pi);
-	DeleteWindowById(WC_SHIPS_LIST,    (INVALID_STATION << 16) | pi);
-	DeleteWindowById(WC_AIRCRAFT_LIST, (INVALID_STATION << 16) | pi);
-	DeleteWindowById(WC_BUY_COMPANY, pi);
 }
 
 byte GetPlayerRailtypes(PlayerID p)
