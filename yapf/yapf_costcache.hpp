@@ -106,7 +106,7 @@ struct CSegmentCostCacheT
 
 	FORCEINLINE Tsegment& Get(Key& key, bool *found)
 	{
-		Tsegment* item = &m_map.Find(key);
+		Tsegment* item = m_map.Find(key);
 		if (item == NULL) {
 			*found = false;
 			item = new (&m_heap.AddNC()) Tsegment(key);

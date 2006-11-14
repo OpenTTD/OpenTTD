@@ -69,7 +69,7 @@ public:
 	/** insert given item as open node (into m_open and m_open_queue) */
 	FORCEINLINE void InsertOpenNode(Titem_& item)
 	{
-		assert(&m_closed.Find(item.GetKey()) == NULL);
+		assert(m_closed.Find(item.GetKey()) == NULL);
 		m_open.Push(item);
 		// TODO: check if m_open_queue is not full
 		assert(!m_open_queue.IsFull());
@@ -78,50 +78,48 @@ public:
 			m_new_node = NULL;
 	}
 	/** return the best open node */
-	FORCEINLINE Titem_& GetBestOpenNode()
+	FORCEINLINE Titem_* GetBestOpenNode()
 	{
 		if (!m_open_queue.IsEmpty()) {
 			Titem_& item = m_open_queue.GetHead();
-			return item;
+			return &item;
 		}
-		return *(Titem_*)NULL;
+		return NULL;
 	}
 	/** remove and return the best open node */
-	FORCEINLINE Titem_& PopBestOpenNode()
+	FORCEINLINE Titem_* PopBestOpenNode()
 	{
 		if (!m_open_queue.IsEmpty()) {
 			Titem_& item = m_open_queue.PopHead();
 			m_open.Pop(item);
-			return item;
+			return &item;
 		}
-		return *(Titem_*)NULL;
+		return NULL;
 	}
 	/** return the open node specified by a key or NULL if not found */
-	FORCEINLINE Titem_& FindOpenNode(const Key& key)
+	FORCEINLINE Titem_* FindOpenNode(const Key& key)
 	{
-		Titem_& item = m_open.Find(key);
+		Titem_* item = m_open.Find(key);
 		return item;
 	}
 	/** remove and return the open node specified by a key */
 	FORCEINLINE Titem_& PopOpenNode(const Key& key)
 	{
 		Titem_& item = m_open.Pop(key);
-		if (&item != NULL) {
-			int idxPop = m_open_queue.FindLinear(item);
-			m_open_queue.RemoveByIdx(idxPop);
-		}
+		int idxPop = m_open_queue.FindLinear(item);
+		m_open_queue.RemoveByIdx(idxPop);
 		return item;
 	}
 	/** close node */
 	FORCEINLINE void InsertClosedNode(Titem_& item)
 	{
-		assert(&m_open.Find(item.GetKey()) == NULL);
+		assert(m_open.Find(item.GetKey()) == NULL);
 		m_closed.Push(item);
 	}
 	/** return the closed node specified by a key or NULL if not found */
-	FORCEINLINE Titem_& FindClosedNode(const Key& key)
+	FORCEINLINE Titem_* FindClosedNode(const Key& key)
 	{
-		Titem_& item = m_closed.Find(key);
+		Titem_* item = m_closed.Find(key);
 		return item;
 	}
 

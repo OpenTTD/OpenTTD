@@ -116,18 +116,18 @@ public:
 
 		while (true) {
 			m_num_steps++;
-			Node& n = m_nodes.GetBestOpenNode();
-			if (&n == NULL)
+			Node* n = m_nodes.GetBestOpenNode();
+			if (n == NULL)
 				break;
 
 			// if the best open node was worse than the best path found, we can finish
-			if (m_pBestDestNode != NULL && m_pBestDestNode->GetCost() < n.GetCostEstimate())
+			if (m_pBestDestNode != NULL && m_pBestDestNode->GetCost() < n->GetCostEstimate())
 				break;
 
-			Yapf().PfFollowNode(n);
+			Yapf().PfFollowNode(*n);
 			if (m_max_search_nodes == 0 || m_nodes.ClosedCount() < m_max_search_nodes) {
-				m_nodes.PopOpenNode(n.GetKey());
-				m_nodes.InsertClosedNode(n);
+				m_nodes.PopOpenNode(n->GetKey());
+				m_nodes.InsertClosedNode(*n);
 			} else {
 				m_pBestDestNode = m_pBestIntermediateNode;
 				break;
@@ -172,7 +172,7 @@ public:
 	{
 		Yapf().PfNodeCacheFetch(n);
 		// insert the new node only if it is not there
-		if (&m_nodes.FindOpenNode(n.m_key) == NULL) {
+		if (m_nodes.FindOpenNode(n.m_key) == NULL) {
 			m_nodes.InsertOpenNode(n);
 		} else {
 			// if we are here, it means that node is already there - how it is possible?
@@ -231,27 +231,27 @@ public:
 		}
 
 		// check new node against open list
-		Node& openNode = m_nodes.FindOpenNode(n.GetKey());
-		if (&openNode != NULL) {
+		Node* openNode = m_nodes.FindOpenNode(n.GetKey());
+		if (openNode != NULL) {
 			// another node exists with the same key in the open list
 			// is it better than new one?
-			if (n.GetCostEstimate() < openNode.GetCostEstimate()) {
+			if (n.GetCostEstimate() < openNode->GetCostEstimate()) {
 				// update the old node by value from new one
 				m_nodes.PopOpenNode(n.GetKey());
-				openNode = n;
+				*openNode = n;
 				// add the updated old node back to open list
-				m_nodes.InsertOpenNode(openNode);
+				m_nodes.InsertOpenNode(*openNode);
 			}
 			return;
 		}
 
 		// check new node against closed list
-		Node& closedNode = m_nodes.FindClosedNode(n.GetKey());
-		if (&closedNode != NULL) {
+		Node* closedNode = m_nodes.FindClosedNode(n.GetKey());
+		if (closedNode != NULL) {
 			// another node exists with the same key in the closed list
 			// is it better than new one?
 			int node_est = n.GetCostEstimate();
-			int closed_est = closedNode.GetCostEstimate();
+			int closed_est = closedNode->GetCostEstimate();
 			if (node_est < closed_est) {
 				// If this assert occurs, you have probably problem in
 				// your Tderived::PfCalcCost() or Tderived::PfCalcEstimate().

@@ -13,27 +13,27 @@ struct CHashTableSlotT
 	CHashTableSlotT() : m_pFirst(NULL) {}
 
 	/** hash table slot helper - linear search for item with given key through the given blob - const version */
-	FORCEINLINE const Titem_& Find(const Key& key) const
+	FORCEINLINE const Titem_* Find(const Key& key) const
 	{
 		for (const Titem_* pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
 				// we have found the item, return it
-				return *pItem;
+				return pItem;
 			}
 		}
-		return *(Titem_*)NULL;
+		return NULL;
 	}
 
 	/** hash table slot helper - linear search for item with given key through the given blob - non-const version */
-	FORCEINLINE Titem_& Find(const Key& key)
+	FORCEINLINE Titem_* Find(const Key& key)
 	{
 		for (Titem_* pItem = m_pFirst; pItem != NULL; pItem = pItem->GetHashNext()) {
 			if (pItem->GetKey() == key) {
 				// we have found the item, return it
-				return *pItem;
+				return pItem;
 			}
 		}
-		return *(Titem_*)NULL;
+		return NULL;
 	}
 
 	/** hash table slot helper - add new item to the slot */
@@ -67,18 +67,18 @@ struct CHashTableSlotT
 	}
 
 	/** hash table slot helper - remove and return item from a slot */
-	FORCEINLINE Titem_& Detach(const Key& key)
+	FORCEINLINE Titem_* Detach(const Key& key)
 	{
 		// do we have any items?
 		if (m_pFirst == NULL) {
-			return *(Titem_*)NULL;
+			return NULL;
 		}
 		// is it our first item?
 		if (m_pFirst->GetKey() == key) {
 			Titem_& ret_item = *m_pFirst;
 			m_pFirst = m_pFirst->GetHashNext();
 			ret_item.SetHashNext(NULL);
-			return ret_item;
+			return &ret_item;
 		}
 		// find it in the following items
 		Titem_* pPrev = m_pFirst;
@@ -87,10 +87,10 @@ struct CHashTableSlotT
 				// we have found the item, unlink and return it
 				pPrev->SetHashNext(pItem->GetHashNext());
 				pItem->SetHashNext(NULL);
-				return *pItem;
+				return pItem;
 			}
 		}
-		return *(Titem_*)NULL;
+		return NULL;
 	}
 };
 
@@ -163,30 +163,30 @@ public:
 	FORCEINLINE int Count() const {return m_num_items;}
 
 	/** const item search */
-	const Titem_& Find(const Tkey& key) const
+	const Titem_* Find(const Tkey& key) const
 	{
 		int hash = CalcHash(key);
 		const Slot& slot = m_slots[hash];
-		const Titem_& item = slot.Find(key);
+		const Titem_* item = slot.Find(key);
 		return item;
 	}
 
 	/** non-const item search */
-	Titem_& Find(const Tkey& key)
+	Titem_* Find(const Tkey& key)
 	{
 		int hash = CalcHash(key);
 		Slot& slot = m_slots[hash];
-		Titem_& item = slot.Find(key);
+		Titem_* item = slot.Find(key);
 		return item;
 	}
 
 	/** non-const item search & optional removal (if found) */
-	Titem_& TryPop(const Tkey& key)
+	Titem_* TryPop(const Tkey& key)
 	{
 		int hash = CalcHash(key);
 		Slot& slot = m_slots[hash];
-		Titem_& item = slot.Detach(key);
-		if (&item != NULL) {
+		Titem_* item = slot.Detach(key);
+		if (item != NULL) {
 			m_num_items--;
 		}
 		return item;
@@ -195,9 +195,9 @@ public:
 	/** non-const item search & removal */
 	Titem_& Pop(const Tkey& key)
 	{
-		Titem_& item = TryPop(key);
-		assert(&item != NULL);
-		return item;
+		Titem_* item = TryPop(key);
+		assert(item != NULL);
+		return *item;
 	}
 
 	/** non-const item search & optional removal (if found) */
@@ -225,7 +225,7 @@ public:
 	{
 		int hash = CalcHash(new_item);
 		Slot& slot = m_slots[hash];
-		assert(&slot.Find(new_item.GetKey()) == NULL);
+		assert(slot.Find(new_item.GetKey()) == NULL);
 		slot.Attach(new_item);
 		m_num_items++;
 	}
