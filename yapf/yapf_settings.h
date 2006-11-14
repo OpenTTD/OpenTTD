@@ -59,7 +59,7 @@ YS_DEF_BEGIN
 	YS_DEF(uint32, rail_longer_platform_per_tile_penalty)  ///< penalty for longer  station platform than train (per tile)
 	YS_DEF(uint32, rail_shorter_platform_penalty)          ///< penalty for shorter station platform than train
 	YS_DEF(uint32, rail_shorter_platform_per_tile_penalty) ///< penalty for shorter station platform than train (per tile)
-YS_DEF_END;
+YS_DEF_END
 
 #undef YS_DEF_BEGIN
 #undef YS_DEF

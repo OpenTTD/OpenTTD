@@ -18,9 +18,9 @@ protected:
 	CSuperArray     m_a; ///< array of arrays of items
 
 public:
-	ST_CONST(int, Tblock_size = Tblock_size_); ///< block size is now visible from outside
-	ST_CONST(int, Tnum_blocks = Tnum_blocks_); ///< number of blocks is now visible from outside
-	ST_CONST(int, Tcapacity = Tblock_size * Tnum_blocks); ///< total max number of items
+	ST_CONST(int, Tblock_size = Tblock_size_) ///< block size is now visible from outside
+	ST_CONST(int, Tnum_blocks = Tnum_blocks_) ///< number of blocks is now visible from outside
+	ST_CONST(int, Tcapacity = Tblock_size * Tnum_blocks) ///< total max number of items
 
 	/** implicit constructor */
 	FORCEINLINE CArrayT() { }

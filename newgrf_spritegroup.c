@@ -11,7 +11,7 @@
 static void SpriteGroupPoolCleanBlock(uint start_item, uint end_item);
 
 static uint _spritegroup_count = 0;
-STATIC_POOL(SpriteGroup, SpriteGroup, 4, 8000, NULL, SpriteGroupPoolCleanBlock);
+STATIC_POOL(SpriteGroup, SpriteGroup, 4, 8000, NULL, SpriteGroupPoolCleanBlock)
 
 static void DestroySpriteGroup(SpriteGroup *group)
 {

@@ -26,10 +26,10 @@ EXTERN_C_END
 	FORCEINLINE mask_t operator << (mask_t m, int i) {return (mask_t)(((int)m) << i);} \
 	FORCEINLINE mask_t operator >> (mask_t m, int i) {return (mask_t)(((int)m) >> i);}
 
-DECLARE_ENUM_AS_BIT_MASK(TrackBits);
-DECLARE_ENUM_AS_BIT_INDEX(Track, TrackBits);
+DECLARE_ENUM_AS_BIT_MASK(TrackBits)
+DECLARE_ENUM_AS_BIT_INDEX(Track, TrackBits)
 
-DECLARE_ENUM_AS_BIT_MASK(TrackdirBits);
-DECLARE_ENUM_AS_BIT_INDEX(Trackdir, TrackdirBits);
+DECLARE_ENUM_AS_BIT_MASK(TrackdirBits)
+DECLARE_ENUM_AS_BIT_INDEX(Trackdir, TrackdirBits)
 
 #endif /* TRACK_DIR_HPP */

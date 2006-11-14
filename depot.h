@@ -17,7 +17,7 @@ struct Depot {
 	DepotID index;
 };
 
-DECLARE_POOL(Depot, Depot, 3, 8000);
+DECLARE_POOL(Depot, Depot, 3, 8000)
 
 /**
  * Check if a depot really exists.
