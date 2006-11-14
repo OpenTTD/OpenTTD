@@ -301,15 +301,4 @@ assert_compile(sizeof(uint8)  == 1);
 #define EXTERN_C_BEGIN extern "C" {
 #define EXTERN_C_END   }
 
-
-// workaround for VC6 bug: Error C2258 and error C2252 occur if you try
-//  to perform in-place initialization of static const integral member
-//  data in Visual C++ (see http://support.microsoft.com/kb/241569/)
-#if defined(_MSC_VER) && (_MSC_VER < 1300)
-# define ST_CONST(type, name_val) enum {name_val};
-#else
-# define ST_CONST(type, name_val) static const type name_val;
-#endif
-
-
 #endif /* STDAFX_H */

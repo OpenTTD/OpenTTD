@@ -24,9 +24,9 @@ struct CFixedSizeArrayT {
 	// make types and constants visible from outside
 	typedef Titem_ Titem; // type of array item
 
-	ST_CONST(int, Tcapacity = Tcapacity_) // the array capacity (maximum size)
-	ST_CONST(int, TitemSize = sizeof(Titem_)) // size of item
-	ST_CONST(int, ThdrSize  = sizeof(CHdr)) // size of header
+	static const int Tcapacity = Tcapacity_;     // the array capacity (maximum size)
+	static const int TitemSize = sizeof(Titem_); // size of item
+	static const int ThdrSize  = sizeof(CHdr);   // size of header
 
 	/** Default constructor. Preallocate space for items and header, then initialize header. */
 	CFixedSizeArrayT()

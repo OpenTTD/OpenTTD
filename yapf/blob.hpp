@@ -32,7 +32,7 @@ protected:
 	} ptr_u;
 
 public:
-	ST_CONST(int, Ttail_reserve = 4) // four extra bytes will be always allocated and zeroed at the end
+	static const int Ttail_reserve = 4; // four extra bytes will be always allocated and zeroed at the end
 
 	FORCEINLINE CBlobBaseSimple() { InitEmpty(); }
 	FORCEINLINE CBlobBaseSimple(const CBlobBaseSimple& src)
@@ -169,7 +169,7 @@ public:
 	typedef Titem_ Titem;
 	typedef Tbase_ Tbase;
 
-	ST_CONST(int, Titem_size = sizeof(Titem))
+	static const int Titem_size = sizeof(Titem);
 
 	FORCEINLINE CBlobT() : Tbase() {}
 	FORCEINLINE CBlobT(const Tbase& src) : Tbase(src) {assert((RawSize() % Titem_size) == 0);}

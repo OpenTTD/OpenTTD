@@ -118,10 +118,10 @@ struct CHashTableSlotT
 template <class Titem_, int Thash_bits_>
 class CHashTableT {
 public:
-	typedef Titem_ Titem;                       // make Titem_ visible from outside of class
-	typedef typename Titem_::Key Tkey;          // make Titem_::Key a property of HashTable
-	ST_CONST(int, Thash_bits = Thash_bits_)    // publish num of hash bits
-	ST_CONST(int, Tcapacity = 1 << Thash_bits) // and num of slots 2^bits
+	typedef Titem_ Titem;                         // make Titem_ visible from outside of class
+	typedef typename Titem_::Key Tkey;            // make Titem_::Key a property of HashTable
+	static const int Thash_bits = Thash_bits_;    // publish num of hash bits
+	static const int Tcapacity = 1 << Thash_bits; // and num of slots 2^bits
 
 protected:
 	/** each slot contains pointer to the first item in the list,
