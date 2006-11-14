@@ -235,11 +235,13 @@ static void RoadVehViewWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		Vehicle *v = GetVehicle(w->window_number);
 		StringID str;
+		bool is_localplayer = v->owner == _local_player;
 
-		SetWindowWidgetDisabledState(w, 7, v->owner != _local_player);
-		SetWindowWidgetDisabledState(w, 8, v->owner != _local_player);
+		SetWindowWidgetDisabledState(w,  7, !is_localplayer);
+		SetWindowWidgetDisabledState(w,  8, !is_localplayer);
+		SetWindowWidgetDisabledState(w, 11, !is_localplayer);
 		/* Disable refit button if vehicle not refittable */
-		SetWindowWidgetDisabledState(w, 12, v->owner != _local_player ||
+		SetWindowWidgetDisabledState(w, 12, !is_localplayer ||
 				_engine_info[v->engine_type].refit_mask == 0);
 
 		/* draw widgets & caption */

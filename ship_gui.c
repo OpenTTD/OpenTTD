@@ -380,11 +380,13 @@ static void ShipViewWndProc(Window *w, WindowEvent *e)
 			Vehicle *v = GetVehicle(w->window_number);
 			StringID str;
 			bool refitable_and_stopped_in_depot = ShipVehInfo(v->engine_type)->refittable && IsShipInDepotStopped(v);
+			bool is_localplayer = v->owner == _local_player;
 
-			SetWindowWidgetDisabledState(w, 7, v->owner != _local_player);
-			SetWindowWidgetDisabledState(w, 8,
-			                             v->owner != _local_player ||      // Disable if owner is not local player
+			SetWindowWidgetDisabledState(w,  7, !is_localplayer);
+			SetWindowWidgetDisabledState(w,  8,
+			                             !is_localplayer ||      // Disable if owner is not local player
 			                             !refitable_and_stopped_in_depot); // Disable if the ship is not refitable or stopped in a depot
+			SetWindowWidgetDisabledState(w, 11, !is_localplayer);
 
 			/* draw widgets & caption */
 			SetDParam(0, v->string_id);

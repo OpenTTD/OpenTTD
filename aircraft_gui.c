@@ -215,9 +215,11 @@ static void AircraftViewWndProc(Window *w, WindowEvent *e)
 	case WE_PAINT: {
 		const Vehicle *v = GetVehicle(w->window_number);
 		StringID str;
+		bool is_localplayer = v->owner == _local_player;
 
-		SetWindowWidgetDisabledState(w, 7, v->owner != _local_player);
-		SetWindowWidgetDisabledState(w, 8, !IsAircraftInHangarStopped(v) || v->owner != _local_player);
+		SetWindowWidgetDisabledState(w,  7, !is_localplayer);
+		SetWindowWidgetDisabledState(w,  8, !IsAircraftInHangarStopped(v) || !is_localplayer);
+		SetWindowWidgetDisabledState(w, 11, !is_localplayer);
 
 
 		/* draw widgets & caption */
