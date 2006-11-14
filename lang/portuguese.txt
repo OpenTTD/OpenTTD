@@ -1056,7 +1056,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Melhorada
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotação mapa de alt.: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Sentido anti-horário
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Sentido horário
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Intervalo actualização progresso: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Altura com que um cenário plano fica: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho máx. de estações: {ORANGE}{STRING} {RED}Valores altos tornam o jogo lento!

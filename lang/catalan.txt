@@ -1057,7 +1057,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Millorat
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotació del mapa d'alçades: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Anti-horari
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Horari
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Interval d'actualització del progrés: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Alçada que un escenari pla pren: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max extensió de estacions: {ORANGE}{STRING}{RED}Avís: Un valor alt enlenteix el joc

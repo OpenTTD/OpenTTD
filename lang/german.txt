@@ -1058,7 +1058,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Verbessert
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Drehung der Reliefkarte: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :links
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :rechts
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Intervall der Fortschrittsaktualisierung {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Höhenstufe der Karte eines flachen Szenarios: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale Stationsgröße: {ORANGE}{STRING} {RED}Achtung: Große Werte verlangsamen das Spiel

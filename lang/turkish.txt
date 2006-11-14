@@ -1057,7 +1057,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Gelismis
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Yükseklik haritasini döndür: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Saat yönünün tersi
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Saat yönü
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Islem guncelleme zaman araligi: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Düzlük bir senaryonun yükseklik seviyesi: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}istasyon genisleme siniri: {ORANGE}{STRING} {RED}Uyari: Yüksek degerler oyunu yavaslatir

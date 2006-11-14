@@ -1057,7 +1057,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Forbedret
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotér højdekort: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mod uret
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med uret
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Opdatering af landskabsgeneratorens vindue: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Den højde et flat scenariekort får: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station udbreddelse: {ORANGE}{STRING} {RED}Advarsel: Høj værdi gør spillet langsomt

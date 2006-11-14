@@ -1057,7 +1057,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Improved
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap rotation: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Counter clockwise
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Clockwise
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Progress update interval: {ORANGE}{STRING1} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}The height level a flat scenario map gets: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max station spread: {ORANGE}{STRING1} {RED}Warning: High setting slows game

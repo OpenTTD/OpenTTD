@@ -1055,7 +1055,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Forbedret
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Høydekartrotering: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Mot klokka
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Med klokka
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Intervall på fremgangsoppdatering: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Høyden et flatt scenariokart får: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks stasjonspedning: {ORANGE}{STRING} {RED}Advarsel: Høy instilling gir tregere spill

@@ -1121,7 +1121,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Vylepseny
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Orientacia vyskovej mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Proti smeru hodinovych ruciciek
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :V smere hodinovych ruciciek
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Interval obnovy stavu pri vytvarani mapy: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Vyskova uroven pre rovinaty scenar: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Max. rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoke hodnoty spomaluju hru

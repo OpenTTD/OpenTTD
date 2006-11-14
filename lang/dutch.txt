@@ -1057,7 +1057,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Verbeterd
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Heightmap draaiing: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Tegen de klok
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Met de klok mee
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Aanpassingsinterval van de voortgang: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}De hoogte van een plat scenario wordt: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maximale stationsomvang: {ORANGE}{STRING} {RED}Pas op: Hoge waarde vertraagt spel

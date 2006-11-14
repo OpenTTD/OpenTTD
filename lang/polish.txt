@@ -1144,7 +1144,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Ulepszony
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Obrot mapy wysokosci: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Przec. do wsk. zegara
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Zg. ze wsk. zegara
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Interwal odswiezania paskow postepu: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Wysokosc jaka dostaje plaska mapa: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maks. wielkosc stacji: {ORANGE}{STRING} {RED}Uwaga: Duze wartosci spowalniaja gre

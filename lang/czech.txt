@@ -1114,7 +1114,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :vylep¨ené
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Otoceni vý¨kové mapy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Doleva
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Doprava
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Obnovovací interval ukazatele prubehu: {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Vý¨ková uroven pro plochou krajinu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Nejvetsi rozsah stanice: {ORANGE}{STRING} {RED}Pozor: Vysoké nastavení zpomalí hru

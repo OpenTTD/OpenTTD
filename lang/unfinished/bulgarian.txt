@@ -1057,7 +1057,6 @@ STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Подобре�
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Завъртане на картата: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Обратрно на часовниковата стрелка
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :По часовниковата стрелка
-STR_CONFIG_PATCHES_PROGRESS_UPDATE_INTERVAL                     :{LTBLUE}Интервал на обновяване на развитието : {ORANGE}{STRING} ms
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Височина на картата за плосък сценарий: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Макс. разпръснатост на станция: {ORANGE}{STRING} {RED}Внимание: Високите стойности забавят играта
