@@ -1501,6 +1501,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Server 
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Klient
+STR_NETWORK_SPECTATORS                                          :Pealtvaatajad
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(pole)
 STR_NETWORK_CLIENTLIST_KICK                                     :Viska välja

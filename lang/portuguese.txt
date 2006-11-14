@@ -381,6 +381,7 @@ STR_SORT_BY_VALUE                                               :Valor
 STR_SORT_BY_FACILITY                                            :Tipo de Estação
 STR_SORT_BY_WAITING                                             :Valor da carga em espera
 STR_SORT_BY_RATING_MAX                                          :Avaliação de carga
+STR_ENGINE_SORT_ENGINE_ID                                       :Ordenação clássica
 STR_ENGINE_SORT_COST                                            :Custo
 STR_ENGINE_SORT_POWER                                           :Potência
 STR_ENGINE_SORT_INTRO_DATE                                      :Data de Introdução
@@ -1062,6 +1063,7 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Tamanho
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Manutenção automática de helicópteros em heliportos: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Ligar ferramentas de paisagem com as de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Ao deslizar com o rato, mover a vista na direcção oposta: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Mostrar as medidas quando se usam ferramentas de construção: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar estampagens da companhia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia
@@ -2520,6 +2522,7 @@ STR_8826_GO_TO                                                  :{BLACK}Ir Para
 STR_8827_FULL_LOAD                                              :{BLACK}Carga
 STR_8828_UNLOAD                                                 :{BLACK}Descarga
 STR_REFIT                                                       :{BLACK}Reconverter
+STR_REFIT_TIP                                                   :{BLACK}Escolha o tipo de carga para reconverter nesta ordem. Control click para remover a instrução de reconversão
 STR_REFIT_ORDER                                                 :(Reconverter para {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Ordens)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Fim de Ordens - -
@@ -2552,8 +2555,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construi
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arraste o veículo ferroviário para aqui para o vender
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar visualização na localização de um depósito ferroviário
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de veículos ferroviários - clique num veículo para informações
+STR_BLACK_ENGINES                                               :{BLACK}Locomotivas
 STR_BLACK_WAGONS                                                :{BLACK}Vagões
 STR_BLACK_BOTH                                                  :{BLACK}Ambos
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Clique para ver apenas locomotivas
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Clique para ver apenas os vagões
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Clique para ver locomotivas e vagões
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir o veículo ferroviário seleccionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomear tipo de veículo ferroviário
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarefa actual do comboio - clique aqui para iniciar/parar comboio
@@ -2782,7 +2789,11 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construi
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - clique na aeronave para informações
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir nova aeronave (necessita de aeroporto com hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - clique na aeronave para informações
+STR_BLACK_PLANES                                                :{BLACK}Aviões
+STR_BLACK_JETS                                                  :{BLACK}Jactos
 STR_BLACK_HELICOPTERS                                           :{BLACK}Helicópteros
+STR_BUILD_PLANES_TIP                                            :{BLACK}Clique para ver os aviões
+STR_BUILD_JETS_TIP                                              :{BLACK}Clique para ver os jactos
 STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Clique para ver helicópteros
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir nova aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arraste a aeronave para aqui para a vender
@@ -2940,9 +2951,15 @@ STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obter um
 STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obter uma lista de todos os navios em cujas ordens conste este depósito
 STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obter uma lista de todas as aeronaves em cujas ordens conste um hangar deste aeroporto
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Autosubstituir todos os comboios no depósito
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Autosubstituir todos os veículos de estrada no depósito
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Autosubstituir todos os barcos no depósito
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Autosubstituir todas as aeronaves no depósito
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Comboio{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Veículo{P "" s} de Estrada
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Barco{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave{P "" s}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Veículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substituir {STRING}
@@ -2982,6 +2999,7 @@ STR_MASS_START_LIST_TIP                                         :{BLACK}Pression
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de sinais - {COMMA} Sinais
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Erro na ordem de reconversão {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -3008,6 +3026,7 @@ STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacida
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagões Motorizados: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Reconvertível em: {GOLD}
 STR_PURCHASE_INFO_ALL_TYPES                                     :Todos os tipos de carga
+STR_PURCHASE_INFO_ALL_BUT                                       :Todas menos {GOLD}
 
 ########### String for New Landscape Generator
 
@@ -3082,6 +3101,9 @@ STR_HELIPORTS                                                   :{BLACK}Heliport
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Tamanho: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Área: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Comprimento: {NUM}{}Diferença de altura: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Área: {NUM} x {NUM}{}Diferença de altura: {NUM} m
 
 ########

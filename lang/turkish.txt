@@ -11,7 +11,7 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Para Yet
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Yerin duzlestirilmesi lazim
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Yerin düzlestirilmesi lazim
 STR_0008_WAITING                                                :{BLACK}Bekleyen: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (aktarma:
@@ -2487,8 +2487,8 @@ STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Durmadan bakima
 
 STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}{TOWN} Tren Garina gidiyor
 STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}{TOWN} Tren Garina gidiyor, {VELOCITY}
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} Tren Garinda Hizmet
-STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} Tren Garinda Hizmet, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE                             :{LTBLUE}{TOWN} Garinda Bakim
+STR_HEADING_FOR_TRAIN_DEPOT_SERVICE_VEL                         :{LTBLUE}{TOWN} Garinda Bakim, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Hatali talimat)
 
@@ -2631,7 +2631,7 @@ STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Araba {C
 STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}{TOWN} Garajina gidiyor
 STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}{TOWN} Garajina gidiyor, {VELOCITY}
 STR_HEADING_FOR_ROAD_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Garajinda Bakima Gir
-STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} Yol Istasyonunda Hizmet, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} Garajinda Bakim, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Araç garaja gidemiyor...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel garaj bulunamadi
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Arabalar - bilgi için arabaya tiklayin
@@ -2703,8 +2703,8 @@ STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Gemi ter
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Yerel tershane bulunamadi
 STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Gidiyor: {TOWN} Tershanesi
 STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Gidiyor: {TOWN} Tershanesi, {VELOCITY}
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Gemi Limaninda Hizmet
-STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} Gemi Limaninda Hizmet, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE                              :{LTBLUE}{TOWN} Tershanesinde Bakim
+STR_HEADING_FOR_SHIP_DEPOT_SERVICE_VEL                          :{LTBLUE}{TOWN} Tershanesinde Bakim, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Gemi {COMMA} tershanede bekliyor
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}iskele yap
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Tershane yap (gemi yapmak ve bakimlari için)
@@ -2770,8 +2770,8 @@ STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Hangara gönderilemiyor...
 STR_HEADING_FOR_HANGAR                                          :{ORANGE}{STATION} Hangarina gidiyor
 STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}{STATION} Hangarina gidiyor, {VELOCITY}
-STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION} Hangarinda Hizmet
-STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION} Hangarinda Hizmet, {VELOCITY}
+STR_HEADING_FOR_HANGAR_SERVICE                                  :{LTBLUE}{STATION} Hangarinda Bakim
+STR_HEADING_FOR_HANGAR_SERVICE_VEL                              :{LTBLUE}{STATION} Hangarinda Bakim, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Uçak {COMMA} hangarda bekliyor
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Yolda uçak var
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Uçak durdurulamaz/baslatilamaz...
@@ -2785,8 +2785,10 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Havalima
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Uçak - click ayrintili bilgi için uçagi tikla
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Yeni uçak al (requires airport with hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Uçak - bilgi için uçaga tikla
+STR_BLACK_PLANES                                                :{BLACK}Pervaneliler
 STR_BLACK_JETS                                                  :{BLACK}Jetler
 STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterler
+STR_BUILD_PLANES_TIP                                            :{BLACK}Pervaneli uçaklari görmek için tikla
 STR_BUILD_JETS_TIP                                              :{BLACK}Jet uçaklarini görmek için tikla
 STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Helikopterleri görmek için tikla
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Yeni uçak al
