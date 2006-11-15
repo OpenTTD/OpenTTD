@@ -3,6 +3,7 @@
 #ifndef  CRC32_HPP
 #define  CRC32_HPP
 
+#if 0 // reenable when needed
 struct CCrc32
 {
 	static uint32 Calc(const void *pBuffer, int nCount)
@@ -59,5 +60,6 @@ struct CCrc32
 		return Table;
 	}
 };
+#endif // 0
 
 #endif /* CRC32_HPP */

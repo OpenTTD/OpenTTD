@@ -54,7 +54,9 @@ public:
 	FORCEINLINE int MaxRawSize() const { return Hdr().m_max_size; };
 	FORCEINLINE int8* RawData() { return ptr_u.m_pData; }
 	FORCEINLINE const int8* RawData() const { return ptr_u.m_pData; }
+#if 0 // reenable when needed
 	FORCEINLINE uint32 Crc32() const {return CCrc32::Calc(RawData(), RawSize());}
+#endif //0
 	FORCEINLINE void Clear() { RawSizeRef() = 0; }
 	FORCEINLINE void Free() { if (MaxRawSize() > 0) {RawFree(&Hdr()); InitEmpty();} }
 	FORCEINLINE void CopyFrom(const CBlobBaseSimple& src) { Clear(); AppendRaw(src); }
