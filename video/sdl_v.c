@@ -423,7 +423,6 @@ static void SdlVideoMainLoop(void)
 	uint32 next_tick = SDL_CALL SDL_GetTicks() + 30;
 	uint32 cur_ticks;
 	uint32 pal_tick = 0;
-	int i;
 	uint32 mod;
 	int numkeys;
 	Uint8 *keys;
@@ -431,7 +430,7 @@ static void SdlVideoMainLoop(void)
 	for (;;) {
 		InteractiveRandom(); // randomness
 
-		while ((i = PollEvent()) == -1) {}
+		while (PollEvent() == -1) {}
 		if (_exit_game) return;
 
 		mod = SDL_CALL SDL_GetModState();

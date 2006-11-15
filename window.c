@@ -1422,8 +1422,8 @@ void HandleKeypress(uint32 key)
 
 	// Setup event
 	e.event = WE_KEYPRESS;
-	e.we.keypress.ascii = key & 0xFF;
-	e.we.keypress.keycode = key >> 16;
+	e.we.keypress.ascii = GB(key, 0, 8);
+	e.we.keypress.keycode = GB(key, 16, 16);
 	e.we.keypress.cont = true;
 
 	// check if we have a query string window open before allowing hotkeys
@@ -1597,15 +1597,12 @@ void InputLoop(void)
 	MouseLoop(click, mousewheel);
 }
 
-
-static int _we4_timer;
-
 void UpdateWindows(void)
 {
 	Window *w;
-	int t;
+	static int we4_timer = 0;
+	int t = we4_timer + 1;
 
-	t = _we4_timer + 1;
 	if (t >= 100) {
 		for (w = _last_window; w != _windows;) {
 			w--;
@@ -1613,7 +1610,7 @@ void UpdateWindows(void)
 		}
 		t = 0;
 	}
-	_we4_timer = t;
+	we4_timer = t;
 
 	for (w = _last_window; w != _windows;) {
 		w--;

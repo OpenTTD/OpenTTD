@@ -358,7 +358,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			scancode = GB(lParam, 16, 8);
 			if (scancode == 41) pressed_key = w | WKC_BACKQUOTE << 16;
 
-			if ((pressed_key >> 16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
+			if (GB(pressed_key, 16, 16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
 				_double_size ^= 1;
 				_wnd.double_size = _double_size;
 				ClientSizeChanged(_wnd.width, _wnd.height);
@@ -785,16 +785,13 @@ static void Win32GdiMainLoop(void)
 		if (_exit_game) return;
 
 #if defined(_DEBUG)
-		if (_wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0) {
-			if (
+		if (_wnd.has_focus && GetAsyncKeyState(VK_SHIFT) < 0 &&
 #else
-		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0) {
-			/* Disable speeding up game with ALT+TAB (if syskey is pressed, the
-			 * real key is in the upper 16 bits (see WM_SYSKEYDOWN in WndProcGdi()) */
-			 if (GetAsyncKeyState(VK_MENU) >= 0 &&
+		/* Speed up using TAB, but disable for ALT+TAB of course */
+		if (_wnd.has_focus && GetAsyncKeyState(VK_TAB) < 0 && GetAsyncKeyState(VK_MENU) >= 0 &&
 #endif
-			    !_networking && _game_mode != GM_MENU)
-				_fast_forward |= 2;
+			  !_networking && _game_mode != GM_MENU) {
+			_fast_forward |= 2;
 		} else if (_fast_forward & 2) {
 			_fast_forward = 0;
 		}
