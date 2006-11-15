@@ -16,30 +16,30 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{    1, ',', CF_NOEURO, "\xA3", "",      0,  STR_CURR_GBP    }, // british pounds
 	{    2, ',', CF_NOEURO, "$",    "",      0,  STR_CURR_USD    }, // us dollars
 	{    2, ',', CF_ISEURO, "¤",    "",      0,  STR_CURR_EUR    }, // Euro
-	{  200, ',', CF_NOEURO, "\xA5", "",      0,  STR_CURR_YEN    }, // yen
-	{   19, ',', 2002,      "",     " S.",   1,  STR_CURR_ATS    }, // austrian schilling
-	{   57, ',', 2002,      "BEF ", "",      0,  STR_CURR_BEF    }, // belgian franc
+	{  220, ',', CF_NOEURO, "\xA5", "",      0,  STR_CURR_YEN    }, // yen
+	{   20, ',', 2002,      "",     " S.",   1,  STR_CURR_ATS    }, // austrian schilling
+	{   59, ',', 2002,      "BEF ", "",      0,  STR_CURR_BEF    }, // belgian franc
 	{    2, ',', CF_NOEURO, "CHF ", "",      0,  STR_CURR_CHF    }, // swiss franc
-	{   50, ',', CF_NOEURO, "",     " Kc",   1,  STR_CURR_CZK    }, // czech koruna // TODO: Should use the "c" with an upside down "^"
-	{    4, '.', 2002,      "DM ",  "",      0,  STR_CURR_DEM    }, // deutsche mark
-	{   10, '.', CF_NOEURO, "",     " kr",   1,  STR_CURR_DKK    }, // danish krone
-	{  200, '.', 2002,      "Pts ", "",      0,  STR_CURR_ESP    }, // spanish pesetas
-	{    8, ',', 2002,      "",     " mk",   1,  STR_CURR_FIM    }, // finnish markka
+	{   41, ',', CF_NOEURO, "",     " Kc",   1,  STR_CURR_CZK    }, // czech koruna // TODO: Should use the "c" with an upside down "^"
+	{    3, '.', 2002,      "DM ",  "",      0,  STR_CURR_DEM    }, // deutsche mark
+	{   11, '.', CF_NOEURO, "",     " kr",   1,  STR_CURR_DKK    }, // danish krone
+	{  245, '.', 2002,      "Pts ", "",      0,  STR_CURR_ESP    }, // spanish pesetas
+	{    9, ',', 2002,      "",     " mk",   1,  STR_CURR_FIM    }, // finnish markka
 	{   10, '.', 2002,      "FF ",  "",      0,  STR_CURR_FRF    }, // french francs
-	{  480, ',', 2002,      "",     "Dr.",   1,  STR_CURR_GRD    }, // greek drachma
-	{  376, ',', 2002,      "",     " Ft",   1,  STR_CURR_HUF    }, // hungarian forint
+	{  500, ',', 2002,      "",     "Dr.",   1,  STR_CURR_GRD    }, // greek drachma
+	{  378, ',', 2010,      "",     " Ft",   1,  STR_CURR_HUF    }, // hungarian forint
 	{  130, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_ISK    }, // icelandic krona
-	{ 2730, ',', 2002,      "",     " L.",   1,  STR_CURR_ITL    }, // italian lira
+	{ 2850, ',', 2002,      "",     " L.",   1,  STR_CURR_ITL    }, // italian lira
 	{    3, ',', 2002,      "NLG ", "",      0,  STR_CURR_NLG    }, // dutch gulden
-	{   11, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_NOK    }, // norwegian krone
+	{   12, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_NOK    }, // norwegian krone
 	{    6, ' ', CF_NOEURO, "",     " zl",   1,  STR_CURR_PLN    }, // polish zloty
-	{    6, '.', CF_NOEURO, "",     " Lei",  1,  STR_CURR_ROL    }, // romanian Lei
-	{    5, ' ', CF_NOEURO, "",     " p",    1,  STR_CURR_RUR    }, // russian rouble
-	{  350, '.', CF_NOEURO, "",     " SIT",  1,  STR_CURR_SIT    }, // slovenian tolar
+	{    5, '.', CF_NOEURO, "",     " Lei",  1,  STR_CURR_ROL    }, // romanian Lei
+	{   50, ' ', CF_NOEURO, "",     " p",    1,  STR_CURR_RUR    }, // russian rouble
+	{  352, '.', CF_NOEURO, "",     " SIT",  1,  STR_CURR_SIT    }, // slovenian tolar
 	{   13, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_SEK    }, // swedish krona
-	{    2, '.', CF_NOEURO, "",     " YTL",  1,  STR_CURR_YTL    }, // turkish lira
-	{   50, ',', CF_NOEURO, "",     " Sk",   1,  STR_CURR_SKK    }, // slovak koruna
-	{    6, ',', CF_NOEURO, "R$ ",  "",      0,  STR_CURR_BRR    }, // brazil real
+	{    3, '.', CF_NOEURO, "",     " YTL",  1,  STR_CURR_YTL    }, // turkish lira
+	{   52, ',', CF_NOEURO, "",     " Sk",   1,  STR_CURR_SKK    }, // slovak koruna
+	{    4, ',', CF_NOEURO, "R$ ",  "",      0,  STR_CURR_BRR    }, // brazil real
 	{    1, ' ', CF_NOEURO, "",     "",      2,  STR_CURR_CUSTOM }, // custom currency
 };
 
