@@ -382,10 +382,13 @@ STR_SORT_BY_VALUE                                               :Value
 STR_SORT_BY_FACILITY                                            :Вид станцій
 STR_SORT_BY_WAITING                                             :Waiting cargo value
 STR_SORT_BY_RATING_MAX                                          :Рейтинг вантажів
+STR_ENGINE_SORT_ENGINE_ID                                       :Потяг(класичне)
 STR_ENGINE_SORT_COST                                            :Ціна
 STR_ENGINE_SORT_POWER                                           :Потужність
+STR_ENGINE_SORT_INTRO_DATE                                      :Дата випуску
 STR_ENGINE_SORT_RUNNING_COST                                    :Вартість експлуатації
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Потужність/Вартість експлуатації
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Місткість
 STR_NO_WAITING_CARGO                                            :{BLACK}Звідси поки-що нічого перевозити
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Вибрати весь транспорт
 STR_SELECT_ALL_TYPES                                            :{BLACK}Вибрати всі типи вантажів
@@ -750,6 +753,7 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Збер
 STR_02C1_VEHICLE_DESIGN_NAMES_SELECTION                         :{BLACK}Задати назви транспортним засобам
 STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Зберегти задані назви транспортних засобів
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Налаштування гри
 STR_02C5_DIFFICULTY_SETTINGS                                    :Налаштування складності
@@ -1022,6 +1026,7 @@ STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Нов�
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Завжди будувати малі аеропорти: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Повідомляти, коли поїзд загубився {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Показ транспортних наказів: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :ні
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :так, крім зупиненого транспорту
@@ -1423,7 +1428,7 @@ STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Приватн
 STR_NETWORK_CHAT_CLIENT                                         :[Приватно] {STRING}:{GRAY}{STRING}
 STR_NETWORK_CHAT_TO_CLIENT                                      :[Приватно] до {STRING}:{GRAY}{STRING}
 STR_NETWORK_CHAT_ALL_CAPTION                                    :[Всім] :
-STR_NETWORK_CHAT_ALL                                            :[Всім] {STRING}:
+STR_NETWORK_CHAT_ALL                                            :[Всім] {STRING}:{GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :змінив своє ім'я на
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сервер закрив сеанс
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Перезавантаження сервера...{}Зачекайте...
@@ -2766,6 +2771,7 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Буду
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Літаки - натисніть на літак для інформації
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Будувати новий літак (потрібен аеропорт з ангаром)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Літаки - натисніть на літак для інформації
+STR_BLACK_HELICOPTERS                                           :{BLACK}Гелікоптери
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Будувати літак
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Перетягніть літак сюди, щоб продати
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Показати ангар в центрі екрану
@@ -2987,7 +2993,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Ціна
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Швидкість: {GOLD}{VELOCITY}{BLACK} Потужність: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Швидкість: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Транспортні витрати: {GOLD}{CURRENCY}/рік
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Місткість: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Місткість: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Рік випуску: {GOLD}{NUM}{BLACK}   Вік: {GOLD}{COMMA} р {P ік оки оків}
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Надійність: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Ціна: {GOLD}{CURRENCY}
