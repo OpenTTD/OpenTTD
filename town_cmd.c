@@ -1020,8 +1020,8 @@ int32 CmdBuildTown(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	if (DistanceFromEdge(tile) < 12)
 		return_cmd_error(STR_0237_TOO_CLOSE_TO_EDGE_OF_MAP);
 
-	// Can only build on clear flat areas.
-	if (!IsTileType(tile, MP_CLEAR) || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
+	// Can only build on clear flat areas, possibly with trees.
+	if ((!IsTileType(tile, MP_CLEAR) && !IsTileType(tile, MP_TREES)) || GetTileSlope(tile, NULL) != SLOPE_FLAT) {
 		return_cmd_error(STR_0239_SITE_UNSUITABLE);
 	}
 
