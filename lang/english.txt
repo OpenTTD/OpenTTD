@@ -907,6 +907,8 @@ STR_CURR_RUR                                                    :Russian Rubles 
 STR_CURR_SIT                                                    :Slovenian Tolar (SIT)
 STR_CURR_SEK                                                    :Swedish Krona (SEK)
 STR_CURR_YTL                                                    :Turkish Lira (YTL)
+STR_CURR_SKK                                                    :Slovak Koruna (SKK)
+STR_CURR_BRR                                                    :Brazilian Real (BRL)
 
 STR_CURR_CUSTOM                                                 :Custom...
 

@@ -38,6 +38,8 @@ static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
 	{  350, '.', CF_NOEURO, "",     " SIT",  1,  STR_CURR_SIT    }, // slovenian tolar
 	{   13, '.', CF_NOEURO, "",     " Kr",   1,  STR_CURR_SEK    }, // swedish krona
 	{    2, '.', CF_NOEURO, "",     " YTL",  1,  STR_CURR_YTL    }, // turkish lira
+	{   50, ',', CF_NOEURO, "",     " Sk",   1,  STR_CURR_SKK    }, // slovak koruna
+	{    6, ',', CF_NOEURO, "R$ ",  "",      0,  STR_CURR_BRR    }, // brazil real
 	{    1, ' ', CF_NOEURO, "",     "",      2,  STR_CURR_CUSTOM }, // custom currency
 };
 
