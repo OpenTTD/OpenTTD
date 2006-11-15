@@ -347,8 +347,9 @@ static void QZ_KeyEvent(unsigned short keycode, unsigned short unicode, BOOL dow
 	}
 
 	if (down) {
-		_pressed_key = QZ_MapKey(keycode) | unicode;
-		DEBUG(driver, 2)("cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, _pressed_key);
+		uint32 pressed_key = QZ_MapKey(keycode) | unicode;
+		HandleKeypress(pressed_key);
+		DEBUG(driver, 2)("cocoa_v: QZ_KeyEvent: %x (%x), down, mapping: %x", keycode, unicode, pressed_key);
 	} else {
 		DEBUG(driver, 2)("cocoa_v: QZ_KeyEvent: %x (%x), up", keycode, unicode);
 	}

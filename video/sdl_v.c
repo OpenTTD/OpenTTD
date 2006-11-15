@@ -380,9 +380,8 @@ static int PollEvent(void)
 					(ev.key.keysym.sym == SDLK_RETURN || ev.key.keysym.sym == SDLK_f)) {
 				ToggleFullScreen(!_fullscreen);
 			} else {
-				_pressed_key = ConvertSdlKeyIntoMy(&ev.key.keysym);
+				HandleKeypress(ConvertSdlKeyIntoMy(&ev.key.keysym));
 			}
-
 			break;
 
 		case SDL_VIDEORESIZE: {

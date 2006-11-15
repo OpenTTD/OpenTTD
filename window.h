@@ -801,6 +801,7 @@ void UnInitWindowSystem(void);
 void ResetWindowSystem(void);
 int GetMenuItemIndex(const Window *w, int x, int y);
 void InputLoop(void);
+void HandleKeypress(uint32 key);
 void UpdateWindows(void);
 void InvalidateWidget(const Window *w, byte widget_index);
 void InvalidateThisWindowData(Window *w);

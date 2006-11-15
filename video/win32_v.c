@@ -346,23 +346,25 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			WORD w = 0;
 			byte ks[256];
 			uint scancode;
+			uint32 pressed_key;
 
 			GetKeyboardState(ks);
 			if (ToAscii(wParam, 0, ks, &w, 0) == 0) {
 				w = 0; // no translation was possible
 			}
 
-			_pressed_key = w | MapWindowsKey(wParam) << 16;
+			pressed_key = w | MapWindowsKey(wParam) << 16;
 
 			scancode = GB(lParam, 16, 8);
-			if (scancode == 41) _pressed_key = w | WKC_BACKQUOTE << 16;
+			if (scancode == 41) pressed_key = w | WKC_BACKQUOTE << 16;
 
-			if ((_pressed_key >> 16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
+			if ((pressed_key >> 16) == ('D' | WKC_CTRL) && !_wnd.fullscreen) {
 				_double_size ^= 1;
 				_wnd.double_size = _double_size;
 				ClientSizeChanged(_wnd.width, _wnd.height);
 				MarkWholeScreenDirty();
 			}
+			HandleKeypress(pressed_key);
 			break;
 		}
 
@@ -377,11 +379,11 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 					return 0; // do nothing
 
 				case VK_F10: /* F10, ignore activation of menu */
-					_pressed_key = MapWindowsKey(wParam) << 16;
+					HandleKeypress(MapWindowsKey(wParam) << 16);
 					return 0;
 
 				default: /* ALT in combination with something else */
-					_pressed_key = MapWindowsKey(wParam) << 16;
+					HandleKeypress(MapWindowsKey(wParam) << 16);
 					break;
 			}
 			break;

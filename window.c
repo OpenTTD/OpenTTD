@@ -1397,7 +1397,10 @@ void SendWindowMessageClass(WindowClass wnd_class, uint msg, uint wparam, uint l
 	}
 }
 
-static void HandleKeypress(uint32 key)
+/** Handle keyboard input.
+ * @param key Lower 8 bits contain the ASCII character, the higher
+ * 16 bits the keycode */
+void HandleKeypress(uint32 key)
 {
 	Window *w;
 	WindowEvent e;
@@ -1405,6 +1408,17 @@ static void HandleKeypress(uint32 key)
 	 * If this is the case, keypress events are only passed to windows with text fields and
 	 * to thein this main toolbar. */
 	bool query_open = false;
+
+	/*
+	* During the generation of the world, there might be
+	* another thread that is currently building for example
+	* a road. To not interfere with those tasks, we should
+	* NOT change the _current_player here.
+	*
+	* This is not necessary either, as the only events that
+	* can be handled are the 'close application' events
+	*/
+	if (!IsGeneratingWorld()) _current_player = _local_player;
 
 	// Setup event
 	e.event = WE_KEYPRESS;
@@ -1563,12 +1577,6 @@ void InputLoop(void)
 	 * can be handled are the 'close application' events
 	 */
 	if (!IsGeneratingWorld()) _current_player = _local_player;
-
-	// Handle pressed keys
-	if (_pressed_key != 0) {
-		HandleKeypress(_pressed_key);
-		_pressed_key = 0;
-	}
 
 	// Mouse event?
 	click = 0;
