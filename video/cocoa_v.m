@@ -404,6 +404,7 @@ static void QZ_MouseMovedEvent(int x, int y)
 		_cursor.pos.y = y;
 		_cursor.dirty = true;
 	}
+	HandleMouseEvents();
 }
 
 
@@ -417,6 +418,7 @@ static void QZ_MouseButtonEvent(int button, BOOL down)
 				_left_button_down = false;
 				_left_button_clicked = false;
 			}
+			HandleMouseEvents();
 			break;
 
 		case 1:
@@ -426,6 +428,7 @@ static void QZ_MouseButtonEvent(int button, BOOL down)
 			} else {
 				_right_button_down = false;
 			}
+			HandleMouseEvents();
 			break;
 	}
 }

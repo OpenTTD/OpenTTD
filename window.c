@@ -1461,7 +1461,47 @@ void HandleKeypress(uint32 key)
 extern void UpdateTileSelection(void);
 extern bool VpHandlePlaceSizingDrag(void);
 
-static void MouseLoop(int click, int mousewheel)
+static int _input_events_this_tick = 0;
+
+static void HandleAutoscroll(void)
+{
+	Window *w;
+	ViewPort *vp;
+	int x = _cursor.pos.x;
+	int y = _cursor.pos.y;
+
+	if (_input_events_this_tick != 0) {
+		/* HandleAutoscroll is called only once per GameLoop() - so we can clear the counter here */
+		_input_events_this_tick = 0;
+		/* there were some inputs this tick, don't scroll ??? */
+		return;
+	}
+
+	if (_patches.autoscroll && _game_mode != GM_MENU && !IsGeneratingWorld()) {
+		w = FindWindowFromPt(x, y);
+		if (w == NULL || w->flags4 & WF_DISABLE_VP_SCROLL) return;
+		vp = IsPtInWindowViewport(w, x, y);
+		if (vp != NULL) {
+			x -= vp->left;
+			y -= vp->top;
+			//here allows scrolling in both x and y axis
+#define scrollspeed 3
+			if (x - 15 < 0) {
+				WP(w, vp_d).scrollpos_x += (x - 15) * scrollspeed << vp->zoom;
+			} else if (15 - (vp->width - x) > 0) {
+				WP(w, vp_d).scrollpos_x += (15 - (vp->width - x)) * scrollspeed << vp->zoom;
+			}
+			if (y - 15 < 0) {
+				WP(w, vp_d).scrollpos_y += (y - 15) * scrollspeed << vp->zoom;
+			} else if (15 - (vp->height - y) > 0) {
+				WP(w,vp_d).scrollpos_y += (15 - (vp->height - y)) * scrollspeed << vp->zoom;
+			}
+#undef scrollspeed
+		}
+	}
+}
+
+void MouseLoop(int click, int mousewheel)
 {
 	int x,y;
 	Window *w;
@@ -1481,31 +1521,7 @@ static void MouseLoop(int click, int mousewheel)
 	x = _cursor.pos.x;
 	y = _cursor.pos.y;
 
-	if (click == 0 && mousewheel == 0) {
-		if (_patches.autoscroll && _game_mode != GM_MENU && !IsGeneratingWorld()) {
-			w = FindWindowFromPt(x, y);
-			if (w == NULL || w->flags4 & WF_DISABLE_VP_SCROLL) return;
-			vp = IsPtInWindowViewport(w, x, y);
-			if (vp != NULL) {
-				x -= vp->left;
-				y -= vp->top;
-				//here allows scrolling in both x and y axis
-#define scrollspeed 3
-				if (x - 15 < 0) {
-					WP(w, vp_d).scrollpos_x += (x - 15) * scrollspeed << vp->zoom;
-				} else if (15 - (vp->width - x) > 0) {
-					WP(w, vp_d).scrollpos_x += (15 - (vp->width - x)) * scrollspeed << vp->zoom;
-				}
-				if (y - 15 < 0) {
-					WP(w, vp_d).scrollpos_y += (y - 15) * scrollspeed << vp->zoom;
-				} else if (15 - (vp->height - y) > 0) {
-					WP(w,vp_d).scrollpos_y += (15 - (vp->height - y)) * scrollspeed << vp->zoom;
-				}
-#undef scrollspeed
-			}
-		}
-		return;
-	}
+	if (click == 0 && mousewheel == 0) return;
 
 	w = FindWindowFromPt(x, y);
 	if (w == NULL) return;
@@ -1562,7 +1578,7 @@ static void MouseLoop(int click, int mousewheel)
 	}
 }
 
-void InputLoop(void)
+void HandleMouseEvents(void)
 {
 	int click;
 	int mousewheel;
@@ -1583,18 +1599,27 @@ void InputLoop(void)
 	if (_left_button_down && !_left_button_clicked) {
 		_left_button_clicked = true;
 		click = 1;
+		_input_events_this_tick++;
 	} else if (_right_button_clicked) {
 		_right_button_clicked = false;
 		click = 2;
+		_input_events_this_tick++;
 	}
 
 	mousewheel = 0;
 	if (_cursor.wheel) {
 		mousewheel = _cursor.wheel;
 		_cursor.wheel = 0;
+		_input_events_this_tick++;
 	}
 
 	MouseLoop(click, mousewheel);
+}
+
+void InputLoop(void)
+{
+	HandleMouseEvents();
+	HandleAutoscroll();
 }
 
 void UpdateWindows(void)

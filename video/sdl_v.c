@@ -325,6 +325,7 @@ static int PollEvent(void)
 				_cursor.pos.y = ev.motion.y;
 				_cursor.dirty = true;
 			}
+			HandleMouseEvents();
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
@@ -347,6 +348,7 @@ static int PollEvent(void)
 
 				default: break;
 			}
+			HandleMouseEvents();
 			break;
 
 		case SDL_MOUSEBUTTONUP:
@@ -360,6 +362,7 @@ static int PollEvent(void)
 			} else if (ev.button.button == SDL_BUTTON_RIGHT) {
 				_right_button_down = false;
 			}
+			HandleMouseEvents();
 			break;
 
 		case SDL_ACTIVEEVENT:

@@ -266,23 +266,27 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		case WM_LBUTTONDOWN:
 			SetCapture(hwnd);
 			_left_button_down = true;
+			HandleMouseEvents();
 			return 0;
 
 		case WM_LBUTTONUP:
 			ReleaseCapture();
 			_left_button_down = false;
 			_left_button_clicked = false;
+			HandleMouseEvents();
 			return 0;
 
 		case WM_RBUTTONDOWN:
 			SetCapture(hwnd);
 			_right_button_down = true;
 			_right_button_clicked = true;
+			HandleMouseEvents();
 			return 0;
 
 		case WM_RBUTTONUP:
 			ReleaseCapture();
 			_right_button_down = false;
+			HandleMouseEvents();
 			return 0;
 
 		case WM_MOUSELEAVE:
@@ -290,6 +294,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			_cursor.in_window = false;
 
 			if (!_left_button_down && !_right_button_down) MyShowCursor(true);
+			HandleMouseEvents();
 			return 0;
 
 		case WM_MOUSEMOVE: {
@@ -337,6 +342,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 				_cursor.dirty = true;
 			}
 			MyShowCursor(false);
+			HandleMouseEvents();
 			return 0;
 		}
 
@@ -483,6 +489,7 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			} else if (delta > 0) {
 				_cursor.wheel--;
 			}
+			HandleMouseEvents();
 			return 0;
 		}
 
