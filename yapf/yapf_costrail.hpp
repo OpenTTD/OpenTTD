@@ -100,9 +100,16 @@ public:
 				n.m_segment->flags_u.flags_s.m_end_of_line = true;
 			} else if (has_signal_along) {
 				SignalState sig_state = GetSignalStateByTrackdir(tile, trackdir);
+				// cache the look-ahead polynomial constant only if we didn't pass more signals than the look-ahead limit is
+				int look_ahead_cost = (n.m_num_signals_passed < m_sig_look_ahead_costs.Size()) ? m_sig_look_ahead_costs.Data()[n.m_num_signals_passed] : 0;
 				if (sig_state != SIGNAL_STATE_RED) {
 					// green signal
 					n.flags_u.flags_s.m_last_signal_was_red = false;
+					// negative look-ahead red-signal penalties would cause problems later, so use them as positive penalties for green signal
+					if (look_ahead_cost < 0) {
+						// add its negation to the cost
+						cost -= look_ahead_cost;
+					}
 				} else {
 					// we have a red signal in our direction
 					// was it first signal which is two-way?
@@ -116,8 +123,9 @@ public:
 					n.flags_u.flags_s.m_last_signal_was_red = true;
 
 					// look-ahead signal penalty
-					if (n.m_num_signals_passed < m_sig_look_ahead_costs.Size()) {
-						cost += m_sig_look_ahead_costs.Data()[n.m_num_signals_passed];
+					if (look_ahead_cost > 0) {
+						// add the look ahead penalty only if it is positive
+						cost += look_ahead_cost;
 					}
 
 					// special signal penalties
