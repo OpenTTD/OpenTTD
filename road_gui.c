@@ -183,12 +183,11 @@ static OnButtonClick* const _build_road_button_proc[] = {
 static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
+	case WE_CREATE: DisableWindowWidget(w, 11); break;
+
 	case WE_PAINT:
 		if (IsWindowWidgetLowered(w, 3) || IsWindowWidgetLowered(w, 4)) {
 			EnableWindowWidget(w, 11);
-		} else {
-			DisableWindowWidget(w, 11);
-			RaiseWindowWidget(w, 11);
 		}
 		DrawWindowWidgets(w);
 		break;
@@ -222,6 +221,8 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_ABORT_PLACE_OBJ:
 		RaiseWindowButtons(w);
+		DisableWindowWidget(w, 11);
+		InvalidateWidget(w, 11);
 
 		w = FindWindowById(WC_BUS_STATION, 0);
 		if (w != NULL) WP(w,def_d).close = true;
