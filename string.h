@@ -29,6 +29,9 @@ char* CDECL str_fmt(const char* str, ...);
  * replaces them with a question mark '?' */
 void str_validate(char *str);
 
+/** Scans the string for colour codes and strips them */
+void str_strip_colours(char *str);
+
 /**
  * Valid filter types for IsValidAsciiChar.
  */

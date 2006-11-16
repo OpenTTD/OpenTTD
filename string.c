@@ -72,6 +72,19 @@ void str_validate(char *str)
 		if (!IsValidAsciiChar(*str, CS_ALPHANUMERAL)) *str = '?';
 }
 
+void str_strip_colours(char *str)
+{
+	char *dst = str;
+	for (; *str != '\0';) {
+		if (*str >= 15 && *str <= 31) { // magic colour codes
+			str++;
+		} else {
+			*dst++ = *str++;
+		}
+	}
+	*dst = '\0';
+}
+
 /**
  * Only allow certain keys. You can define the filter to be used. This makes
  *  sure no invalid keys can get into an editbox, like BELL.

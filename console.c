@@ -400,6 +400,7 @@ void IConsolePrint(uint16 color_code, const char *string)
 	memmove(&_iconsole_buffer[0], &_iconsole_buffer[1], sizeof(_iconsole_buffer[0]) * ICON_BUFFER);
 	_iconsole_buffer[ICON_BUFFER] = strdup(string);
 
+	str_strip_colours(_iconsole_buffer[ICON_BUFFER]);
 	str_validate(_iconsole_buffer[ICON_BUFFER]);
 
 	memmove(&_iconsole_cbuffer[0], &_iconsole_cbuffer[1], sizeof(_iconsole_cbuffer[0]) * ICON_BUFFER);
