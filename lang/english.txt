@@ -1070,7 +1070,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Show co
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :None
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Own company
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :All companies
-STR_CONFIG_PATCHES_CHAT_TARGET                                  :{LTBLUE}Prefer Team chat with <ENTER>: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prefer team chat with <ENTER>: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max trains per player: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max road vehicles per player: {ORANGE}{STRING1}

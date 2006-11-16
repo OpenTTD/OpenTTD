@@ -1266,7 +1266,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, map_y,              SLE_UINT8, S, 0,  8, 6, 11, 0, STR_CONFIG_PATCHES_MAP_Y,                 NULL),
 	SDT_BOOL(Patches, link_terraform_toolbar,        S, 0, false,        STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR,NULL),
 	 SDT_VAR(Patches, liveries,           SLE_UINT8, S,MS,  2, 0,  2, 0, STR_CONFIG_PATCHES_LIVERIES,              RedrawScreen),
-	SDT_BOOL(Patches, chat_target,                   S, 0, false,        STR_CONFIG_PATCHES_CHAT_TARGET,           NULL),
+	SDT_BOOL(Patches, prefer_teamchat,               S, 0, false,        STR_CONFIG_PATCHES_PREFER_TEAMCHAT,       NULL),
 
 	/***************************************************************************/
 	/* Construction section of the GUI-configure patches window */
