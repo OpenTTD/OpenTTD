@@ -695,8 +695,8 @@ skip_column:
 					(v->vehstatus & (VS_HIDDEN | VS_UNCLICKABLE)) == 0) {
 				// Remap into flat coordinates.
 				Point pt = RemapCoords(
-					(v->x_pos - WP(w,smallmap_d).scroll_x) / TILE_SIZE,
-					(v->y_pos - WP(w,smallmap_d).scroll_y) / TILE_SIZE,
+					v->x_pos / TILE_SIZE - WP(w,smallmap_d).scroll_x / TILE_SIZE, // divide each one separately because (a-b)/c != a/c-b/c in integer world
+					v->y_pos / TILE_SIZE - WP(w,smallmap_d).scroll_y / TILE_SIZE, //    dtto
 					0);
 				x = pt.x;
 				y = pt.y;
