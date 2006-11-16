@@ -1,6 +1,6 @@
 ##name Original vehicle names (ENG)
 ##ownname Original vehicle names (ENG)
-##isocode xx
+##isocode xx.UTF-8
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM			:Collett Pannier Tank (Steam)
@@ -220,8 +220,8 @@ STR_80D5_MIGHTYMOVER_CARGO_SHIP			:Mightymover Cargo ship
 STR_80D6_POWERNAUT_CARGO_SHIP			:Powernaut Cargo ship
 STR_80D7_SAMPSON_U52					:Junkers JU52
 STR_80D8_COLEMAN_COUNT					:Vickers Viscount
-STR_80D9_FFP_DART						:Aërospatiale SE-310 Caravelle
-STR_80DA_YATE_HAUGAN					:BAC-Aërospatiale Concorde
+STR_80D9_FFP_DART						:AÃ«rospatiale SE-310 Caravelle
+STR_80DA_YATE_HAUGAN					:BAC-AÃ«rospatiale Concorde
 STR_80DB_BAKEWELL_COTSWALD_LB_3			:Douglas DC-3 Dakota
 STR_80DC_BAKEWELL_LUCKETT_LB_8			:McDonnell Douglas DC-8
 STR_80DD_BAKEWELL_LUCKETT_LB_9			:McDonnell Douglas DC-9

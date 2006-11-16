@@ -1,6 +1,6 @@
 ##name Russian
 ##ownname Russkiy
-##isocode ru_RU
+##isocode ru_RU.UTF-8
 ##plural 6
 #@charset utf-8
 

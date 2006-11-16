@@ -1,6 +1,6 @@
 ##name Lithuanian
 ##ownname Lietuviu
-##isocode lt_LT
+##isocode lt_LT.UTF-8
 ##plural 5
 
 ##id 0x0000
@@ -11,7 +11,7 @@ STR_0003_NOT_ENOUGH_CASH_REQUIRES                               :{WHITE}Neuztenk
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Reikia lygaus pavir¨iaus
+STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Reikia lygaus pavirÅ¡iaus
 STR_0008_WAITING                                                :{BLACK}Laukia: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{STRING}
 STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (marsrutas is
@@ -845,7 +845,7 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Ekrano v
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Nusipirkti zeme velesniam naudojimui
 STR_032F_AUTOSAVE                                               :{RED}AUTOMATINIS SAUGOJIMAS
 STR_SAVING_GAME                                                 :{RED}*  *  Issaugomas zaidimas  *  *
-STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Vyksta i¨saugojimas,{}palaukite kol baigsis!
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Vyksta iÅ¡saugojimas,{}palaukite kol baigsis!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Pasirink 'Ezy Street' muzikos stiliaus programa
 
 STR_0335_6                                                      :{BLACK}6
@@ -873,10 +873,10 @@ STR_TOWNNAME_DANISH                                             :Daniski
 STR_TOWNNAME_TURKISH                                            :Turkiski
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Svarai sterlingai (£)
+STR_CURR_GBP                                                    :Svarai sterlingai (Â£)
 STR_CURR_USD                                                    :Doleriai ($)
-STR_CURR_EUR                                                    :Eurai (¤)
-STR_CURR_YEN                                                    :Jenos (¥)
+STR_CURR_EUR                                                    :Eurai (â‚¬)
+STR_CURR_YEN                                                    :Jenos (Â¥)
 STR_CURR_ATS                                                    :Austru silingai (ATS)
 STR_CURR_BEF                                                    :Belgijos frankai (BEF)
 STR_CURR_CHF                                                    :Sveicarijos frankai (CHF)
@@ -2803,7 +2803,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Failo va
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Pasirinkti valiuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Keitimo santykis: {ORANGE}{CURRENCY} = Â£ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Skyriklis:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Priesdelis:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pavadinimas:

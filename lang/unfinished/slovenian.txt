@@ -1,6 +1,6 @@
 ##name Slovenian
 ##ownname Slovenscina
-##isocode sl_SL
+##isocode sl_SL.UTF-8
 ##plural 8
 
 ##id 0x0000
@@ -327,11 +327,11 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m≥
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m¬≥
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litrov{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m≥
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m¬≥
 
 
 ############ range for menu	starts
@@ -419,7 +419,7 @@ STR_018B_CLOSE_WINDOW                                           :{BLACK}Zapri ok
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Naslov okna - premakni to, da premaknes okno
 STR_STICKY_BUTTON                                               :{BLACK}Oznaci to okno za nezapirljivo z 'Zapri vsa okna' tipko
 STR_RESIZE_BUTTON                                               :{BLACK}Klikni in dragaj to, da zmanjsas okno
-STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikni tukaj za skok na mapo shrani/nalo∏i
+STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klikni tukaj za skok na mapo shrani/nalo≈æi
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Podri zgradbe itd. na kvadratu zemlje
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Znizaj rob teren
 STR_018F_RAISE_A_CORNER_OF_LAND                                 :{BLACK}Zvisaj rob teren
@@ -497,7 +497,7 @@ STR_01CE_CARGO_ACCEPTED                                         :{BLACK}Tovor sp
 STR_01D1_8                                                      :({COMMA}/8 {STRING})
 STR_01D2_JAZZ_JUKEBOX                                           :{WHITE}Jazz Jukebox
 STR_01D3_SOUND_MUSIC                                            :Zvok/glasba
-STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Poka∏i okno za zvok/glasbo
+STR_01D4_SHOW_SOUND_MUSIC_WINDOW                                :{BLACK}Poka≈æi okno za zvok/glasbo
 STR_01D5_ALL                                                    :{TINYFONT}Vsi
 STR_01D6_OLD_STYLE                                              :{TINYFONT}Star stil
 STR_01D7_NEW_STYLE                                              :{TINYFONT}Novi stil
@@ -525,7 +525,7 @@ STR_01EC_0                                                      :{TINYFONT}{LTBL
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Spisek skladb
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Program - '{STRING}'
-STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Zbri®i
+STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Zbri≈°i
 STR_01F1_SAVE                                                   :{TINYFONT}{BLACK}Shrani
 STR_01F2_CURRENT_PROGRAM_OF_MUSIC                               :{BLACK}Trenutni program glasbe
 STR_01F3_SELECT_ALL_TRACKS_PROGRAM                              :{BLACK}Izberi glasbeni program 'vse skladbe'
@@ -533,13 +533,13 @@ STR_01F4_SELECT_OLD_STYLE_MUSIC                                 :{BLACK}Izberi g
 STR_01F5_SELECT_NEW_STYLE_MUSIC                                 :{BLACK}Izberi glasbeni program 'novi stil'
 STR_01F6_SELECT_CUSTOM_1_USER_DEFINED                           :{BLACK}Izberi glasbeni program 'po meri 1'
 STR_01F7_SELECT_CUSTOM_2_USER_DEFINED                           :{BLACK}Izberi glasbeni program 'po meri 2'
-STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Zbri®i trenuten glasbeni program (samo po meri 1 in 2)
+STR_01F8_CLEAR_CURRENT_PROGRAM_CUSTOM1                          :{BLACK}Zbri≈°i trenuten glasbeni program (samo po meri 1 in 2)
 STR_01F9_SAVE_MUSIC_SETTINGS                                    :{BLACK}Shrani glasbene nastavitve
 STR_01FA_CLICK_ON_MUSIC_TRACK_TO                                :{BLACK}Klikni na skladbo da jo dodats na trenutni program (samo po meri 1 in 2)
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Preklapljaj Mesaj on/off
-STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Poka∏i okno z izborom glasbe
+STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Poka≈æi okno z izborom glasbe
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Klikni na servis za centrirat pogled na industrijo/mesto
-STR_01FE_DIFFICULTY                                             :{BLACK}Te∏avnost ({STRING})
+STR_01FE_DIFFICULTY                                             :{BLACK}Te≈æavnost ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Zadnje sporocilo/novica
 STR_0201_MESSAGE_SETTINGS                                       :Nastavitve sporocil
@@ -797,7 +797,7 @@ STR_0336_7                                                      :{BLACK}7
 ############ start of townname region
 STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Angleska (Originalna)
 STR_TOWNNAME_FRENCH                                             :Francoska
-STR_TOWNNAME_GERMAN                                             :Nem®ka
+STR_TOWNNAME_GERMAN                                             :Nem≈°ka
 STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Angleska (Dodatna)
 STR_TOWNNAME_LATIN_AMERICAN                                     :Latinsko-Ameriska
 STR_TOWNNAME_SILLY                                              :Neumna
@@ -814,10 +814,10 @@ STR_TOWNNAME_SWISS                                              :Svicarska
 STR_TOWNNAME_DANISH                                             :Danska
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Funt (£)
+STR_CURR_GBP                                                    :Funt (¬£)
 STR_CURR_USD                                                    :Dolar ($)
-STR_CURR_EUR                                                    :Euro (§)
-STR_CURR_YEN                                                    :Jen (•)
+STR_CURR_EUR                                                    :Euro (‚Ç¨)
+STR_CURR_YEN                                                    :Jen (¬•)
 STR_CURR_ATS                                                    :Avstrijski Siling (ATS)
 STR_CURR_BEF                                                    :Belgijski Frank (BEF)
 STR_CURR_CHF                                                    :Svicarski Frank (CHF)
@@ -1000,7 +1000,7 @@ STR_1004_TOO_HIGH                                               :{WHITE}Previsok
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nobene uporabne tracnice
 STR_1007_ALREADY_BUILT                                          :{WHITE}...ze zgrajeno
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najprej moras odstraniti tracnice
-STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gradnja ∏eleznice
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Gradnja ≈æeleznice
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrificirana Zeleznica
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Izberi zelezniski most
 STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Tu ne morete zgraditi zelezniskega skladisca...
@@ -1227,7 +1227,7 @@ STR_4800_IN_THE_WAY                                             :{WHITE}{STRING}
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4802_COAL_MINE                                              :Rudnik premoga
 STR_4803_POWER_STATION                                          :Termoelektrarna
-STR_4804_SAWMILL                                                :¥aga
+STR_4804_SAWMILL                                                :≈Ωaga
 STR_4805_FOREST                                                 :Gozd
 STR_4806_OIL_REFINERY                                           :Naftna rafinerija
 STR_4807_OIL_RIG                                                :Naftna ploscad
@@ -1420,8 +1420,8 @@ STR_706A_DIRECTOR                                               :Direktor
 STR_706C_CHAIRMAN                                               :Minister
 STR_706D_PRESIDENT                                              :Predsednik
 STR_706E_TYCOON                                                 :Velekapitalist
-STR_706F_BUILD_HQ                                               :{BLACK}Izgradi sede∏ podjetja
-STR_7072_VIEW_HQ                                                :{BLACK}Poglej sede∏ podjetja
+STR_706F_BUILD_HQ                                               :{BLACK}Izgradi sede≈æ podjetja
+STR_7072_VIEW_HQ                                                :{BLACK}Poglej sede≈æ podjetja
 
 ##id 0x8000
 STR_804F_CANDY_VAN                                              :Tovornjak slascic
@@ -1480,9 +1480,9 @@ STR_8098_KELLING_STEEL_TRUCK                                    :Kelling kamion 
 STR_8099_BALOGH_ARMORED_TRUCK                                   :Balogh oklepni kamion
 STR_809A_UHL_ARMORED_TRUCK                                      :Uhl oklepni kamion
 STR_809B_FOSTER_ARMORED_TRUCK                                   :Foster oklepni kamion
-STR_809C_FOSTER_FOOD_VAN                                        :Foster kamion ∏ivil
-STR_809D_PERRY_FOOD_VAN                                         :Perry kamion ∏ivil
-STR_809E_CHIPPY_FOOD_VAN                                        :Chippy kamion ∏ivil
+STR_809C_FOSTER_FOOD_VAN                                        :Foster kamion ≈æivil
+STR_809D_PERRY_FOOD_VAN                                         :Perry kamion ≈æivil
+STR_809E_CHIPPY_FOOD_VAN                                        :Chippy kamion ≈æivil
 STR_809F_UHL_PAPER_TRUCK                                        :Uhl kamion papirja
 STR_80A0_BALOGH_PAPER_TRUCK                                     :Balogh kamion papirja
 STR_80A1_MPS_PAPER_TRUCK                                        :MPS kamion papirja

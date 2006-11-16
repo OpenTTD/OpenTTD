@@ -1,6 +1,6 @@
 ##name Polish
 ##ownname Polski
-##isocode pl_PL
+##isocode pl_PL.UTF-8
 ##plural 7
 ##case d c b n m w
 ##gender m f n
@@ -383,13 +383,13 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}mÂ³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y ow}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litr{P "" y ow}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} mÂ³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³ lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10Â³ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} kilonewtony
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -969,10 +969,10 @@ STR_TOWNNAME_ITALIAN                                            :Wloskie
 STR_TOWNNAME_CATALAN                                            :Katalonskie
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Funty (£)
+STR_CURR_GBP                                                    :Funty (Â£)
 STR_CURR_USD                                                    :Dolary ($)
-STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Jeny (¥)
+STR_CURR_EUR                                                    :Euro (â‚¬)
+STR_CURR_YEN                                                    :Jeny (Â¥)
 STR_CURR_ATS                                                    :Szylingi (ATS)
 STR_CURR_BEF                                                    :Franki belgijskie (BEF)
 STR_CURR_CHF                                                    :Franki szwajcarskie (CHF)
@@ -3011,7 +3011,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Nazwa pl
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Wlasna waluta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wspolczynnik wymiany: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wspolczynnik wymiany: {ORANGE}{CURRENCY} = Â£ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefiks:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Sufiks:

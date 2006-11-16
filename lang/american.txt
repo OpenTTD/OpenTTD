@@ -1,6 +1,6 @@
 ##name American
 ##ownname English (US)
-##isocode en_US
+##isocode en_US.UTF-8
 ##plural 0
 
 ##id 0x0000
@@ -330,13 +330,13 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m³
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}mÂ³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} litre{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} mÂ³
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10³lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10Â³lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} tonne force
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -882,10 +882,10 @@ STR_TOWNNAME_ITALIAN                                            :Italian
 STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Pounds (£)
+STR_CURR_GBP                                                    :Pounds (Â£)
 STR_CURR_USD                                                    :Dollars ($)
-STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Yen (¥)
+STR_CURR_EUR                                                    :Euro (â‚¬)
+STR_CURR_YEN                                                    :Yen (Â¥)
 STR_CURR_ATS                                                    :Austrian Shilling (ATS)
 STR_CURR_BEF                                                    :Belgian Franc (BEF)
 STR_CURR_CHF                                                    :Swiss Franc (CHF)
@@ -2882,7 +2882,7 @@ STR_NEWGRF_FILENAME                                             :{BLACK}Filename
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Custom currency
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Exchange rate: {ORANGE}{CURRENCY} = Â£ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Separator:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Prefix:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffix:

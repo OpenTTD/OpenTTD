@@ -1,6 +1,6 @@
 ##name Dutch
 ##ownname Nederlands
-##isocode nl_NL
+##isocode nl_NL.UTF-8
 ##plural 0
 
 ##id 0x0000
@@ -31,7 +31,7 @@ STR_0017_IRON_ORE                                               :IJzererts
 STR_0018_STEEL                                                  :Staal
 STR_0019_VALUABLES                                              :Kostbaarheden
 STR_001A_COPPER_ORE                                             :Kopererts
-STR_001B_MAIZE                                                  :Maïs
+STR_001B_MAIZE                                                  :MaÃ¯s
 STR_001C_FRUIT                                                  :Fruit
 STR_001D_DIAMONDS                                               :Diamanten
 STR_001E_FOOD                                                   :Voedsel
@@ -63,7 +63,7 @@ STR_0037_IRON_ORE                                               :IJzererts
 STR_0038_STEEL                                                  :Staal
 STR_0039_VALUABLES                                              :Kostbaarheden
 STR_003A_COPPER_ORE                                             :Kopererts
-STR_003B_MAIZE                                                  :Maïs
+STR_003B_MAIZE                                                  :MaÃ¯s
 STR_003C_FRUIT                                                  :Fruit
 STR_003D_DIAMOND                                                :Diamant
 STR_003E_FOOD                                                   :Voedsel
@@ -95,7 +95,7 @@ STR_QUANTITY_IRON_ORE                                           :{WEIGHT} ijzere
 STR_QUANTITY_STEEL                                              :{WEIGHT} staal
 STR_QUANTITY_VALUABLES                                          :{COMMA} zak{P "" ken} kostbaarheden
 STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} kopererts
-STR_QUANTITY_MAIZE                                              :{WEIGHT} maïs
+STR_QUANTITY_MAIZE                                              :{WEIGHT} maÃ¯s
 STR_QUANTITY_FRUIT                                              :{WEIGHT} fruit
 STR_QUANTITY_DIAMONDS                                           :{COMMA} zak{P "" ken} diamanten
 STR_QUANTITY_FOOD                                               :{WEIGHT} voedsel
@@ -182,7 +182,7 @@ STR_00D6_LIGHT_BLUE                                             :Lichtblauw
 STR_00D7_GREEN                                                  :Groen
 STR_00D8_DARK_GREEN                                             :Donkergroen
 STR_00D9_BLUE                                                   :Blauw
-STR_00DA_CREAM                                                  :Crème
+STR_00DA_CREAM                                                  :CrÃ¨me
 STR_00DB_MAUVE                                                  :Mauve
 STR_00DC_PURPLE                                                 :Paars
 STR_00DD_ORANGE                                                 :Oranje
@@ -195,14 +195,14 @@ STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Locatie
 STR_00E5_CONTOURS                                               :Contouren
 STR_00E6_VEHICLES                                               :Voertuigen
-STR_00E7_INDUSTRIES                                             :Industrieën
+STR_00E7_INDUSTRIES                                             :IndustrieÃ«n
 STR_00E8_ROUTES                                                 :Routes
-STR_00E9_VEGETATION                                             :Begroeiïng
+STR_00E9_VEGETATION                                             :BegroeiÃ¯ng
 STR_00EA_OWNERS                                                 :Eigenaren
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Wegen
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Spoorwegen
 STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stations/Vliegvelden/Havens
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Gebouwen/Industrieën
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Gebouwen/IndustrieÃ«n
 STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Voertuigen
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
 STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
@@ -261,7 +261,7 @@ STR_0125_ROCKS                                                  :{BLACK}{TINYFON
 STR_0126_WATER                                                  :{BLACK}{TINYFONT}Water
 STR_0127_NO_OWNER                                               :{BLACK}{TINYFONT}Geen eigenaar
 STR_0128_TOWNS                                                  :{BLACK}{TINYFONT}Steden
-STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}Industrieën
+STR_0129_INDUSTRIES                                             :{BLACK}{TINYFONT}IndustrieÃ«n
 STR_012A_DESERT                                                 :{BLACK}{TINYFONT}Woestijn
 STR_012B_SNOW                                                   :{BLACK}{TINYFONT}Sneeuw
 STR_012C_MESSAGE                                                :{WHITE}Bericht
@@ -330,11 +330,11 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} m³
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA} mÂ³
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} gallon{P "" s}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} liter{P "" s}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m³
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} mÂ³
 
 STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10^3 lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} ton trekkracht
@@ -416,7 +416,7 @@ STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Toon lij
 STR_0174_DISPLAY_MAP                                            :{BLACK}Toon kaart
 STR_0175_DISPLAY_MAP_TOWN_DIRECTORY                             :{BLACK}Toon kaart, stedenlijst
 STR_0176_DISPLAY_TOWN_DIRECTORY                                 :{BLACK}Toon stedenlijst
-STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Toon financiële informatie van het bedrijf
+STR_0177_DISPLAY_COMPANY_FINANCES                               :{BLACK}Toon financiÃ«le informatie van het bedrijf
 STR_0178_DISPLAY_COMPANY_GENERAL                                :{BLACK}Toon algemene informatie van het bedrijf
 STR_0179_DISPLAY_GRAPHS                                         :{BLACK}Toon grafieken
 STR_017A_DISPLAY_COMPANY_LEAGUE                                 :{BLACK}Toon bedrijfscompetitietabel
@@ -448,9 +448,9 @@ STR_0190_SCROLL_BAR_SCROLLS_LIST                                :{BLACK}Scrollba
 STR_HSCROLL_BAR_SCROLLS_LIST                                    :{BLACK}Schuifbalk - verschuift de lijst naar links/rechts
 STR_0191_SHOW_LAND_CONTOURS_ON_MAP                              :{BLACK}Toon landcontouren op de kaart
 STR_0192_SHOW_VEHICLES_ON_MAP                                   :{BLACK}Toon voertuigen op de kaart
-STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Toon industrieën op de kaart
+STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Toon industrieÃ«n op de kaart
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Toon transportroutes op de kaart
-STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Toon begroeiïng op de kaart
+STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Toon begroeiÃ¯ng op de kaart
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Toon landeigenaren op de kaart
 STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Plaatsnamen op de kaart aan/uit
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Winst dit jaar: {CURRENCY} (vorig jaar: {CURRENCY})
@@ -703,7 +703,7 @@ STR_0283_CONSTRUCT_TOFFEE_QUARRY                                :{BLACK}Plaats t
 STR_0284_CONSTRUCT_SUGAR_MINE                                   :{BLACK}Plaats suikermijn
 STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Kan {STRING} hier niet bouwen...
 STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...plaats eerst stad
-STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...slechts één per stad toegestaan
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...slechts Ã©Ã©n per stad toegestaan
 STR_0288_PLANT_TREES                                            :{BLACK}Plant bomen
 STR_0289_PLACE_SIGN                                             :{BLACK}Plaats bord
 STR_028A_RANDOM_TREES                                           :{BLACK}Verspreid willekeurige bomen
@@ -819,7 +819,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Iedere 12 maand
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Start een nieuw spel
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Laad een opgeslagen spel
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Maak een eigen spelwereld/scenario
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Kies een éénspelerspel
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Kies een Ã©Ã©nspelerspel
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Selecteer multiplayer spel van 2-8 spelers
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Bekijk opties
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Bekijk moeilijkheidsgraad
@@ -882,10 +882,10 @@ STR_TOWNNAME_ITALIAN                                            :Italiaans
 STR_TOWNNAME_CATALAN                                            :Catalaans
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Pond (£)
+STR_CURR_GBP                                                    :Pond (Â£)
 STR_CURR_USD                                                    :Dollar ($)
-STR_CURR_EUR                                                    :Euro (¤)
-STR_CURR_YEN                                                    :Yen (¥)
+STR_CURR_EUR                                                    :Euro (â‚¬)
+STR_CURR_YEN                                                    :Yen (Â¥)
 STR_CURR_ATS                                                    :Australische Shilling (ATS)
 STR_CURR_BEF                                                    :Belgische Franken (BEF)
 STR_CURR_CHF                                                    :Zwitserse Franken (CHF)
@@ -965,7 +965,7 @@ STR_END_OF_SHARED_ORDERS                                        :{SETX 10}- - Ei
 
 STR_TRAIN_IS_LOST                                               :{WHITE}Trein {COMMA} is verdwaald.
 STR_TRAIN_IS_UNPROFITABLE                                       :{WHITE}Winst van trein {COMMA} was vorig jaar {CURRENCY}
-STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europese Monetaire Unie!{}{}De Euro is geïntroduceerd als de enige munt voor alledaagse transacties in jouw land!
+STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT}Europese Monetaire Unie!{}{}De Euro is geÃ¯ntroduceerd als de enige munt voor alledaagse transacties in jouw land!
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
@@ -1007,15 +1007,15 @@ STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Zeer la
 STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Realistische acceleratie van treinen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbied schepen en treinen om 90 graden te draaien: {ORANGE}{STRING} {LTBLUE} (Vereist NPF)
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Verlaat station wanneer één lading geladen is, met 'vol laden': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Verlaat station wanneer Ã©Ã©n lading geladen is, met 'vol laden': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gebruik verbeterde laad algorithme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflatie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Lading alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Bouwen van zeer lange bruggen toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}'Ga naar depot' order toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Plaatsen van grondstofproducerende industrie toestaan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Meerdere vergelijkbare industrieën per stad toestaan: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Industrieën van hetzelfde type dicht bij elkaar toestaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Meerdere vergelijkbare industrieÃ«n per stad toestaan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}IndustrieÃ«n van hetzelfde type dicht bij elkaar toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Altijd lange datum in statusbalk weergeven: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Seinen aan rijzijde plaatsen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Financieel overzicht aan het eind van het jaar weergeven: {ORANGE}{STRING}
@@ -1135,7 +1135,7 @@ STR_CHEATS_TIP                                                  :{BLACK}Keuzevak
 STR_CHEATS_WARNING                                              :{BLACK}Waarschuwing! Je staat op het punt je concurrenten te verraden. Bedenk dat zo'n schande eeuwig wordt onthouden.
 STR_CHEAT_MONEY                                                 :{LTBLUE}Verhoog geld met {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Spelend als speler: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieën en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magische bulldozer (industrieÃ«n en andere onverplaatsbare objecten verwijderen): {ORANGE}{STRING}
 STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tunnels mogen elkaar kruisen: {ORANGE}{STRING}
 STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Bouwen in gepauzeerde toestand: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetvliegtuigen storten niet (vaak) neer op kleine vliegvelden: {ORANGE} {STRING}
@@ -1174,9 +1174,9 @@ STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...er is
 STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Weet je zeker dat je een willekeurig landschap wil maken?
 STR_MANY_RANDOM_TOWNS                                           :{BLACK}Veel willekeurige steden
 STR_RANDOM_TOWNS_TIP                                            :{BLACK}Bedek de kaart met willekeurig geplaatste steden
-STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Veel willekeurige industrieën
-STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Bedek de kaart met willekeurig geplaatste industrieën
-STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Kan geen industrieën genereren
+STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Veel willekeurige industrieÃ«n
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Bedek de kaart met willekeurig geplaatste industrieÃ«n
+STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Kan geen industrieÃ«n genereren
 
 STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Open de landschapsbalk om land te verhogen/verlagen, bomen te planten, etc.
 STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Terreinvorming
@@ -1196,7 +1196,7 @@ STR_LANDINFO_LOCK                                               :Sluis
 
 STR_BUOY_IS_IN_USE                                              :{WHITE}... boei is in gebruik!
 
-STR_LANDINFO_COORDS                                             :{BLACK}Coördinaten: {LTBLUE}{NUM}x{NUM} ({STRING})
+STR_LANDINFO_COORDS                                             :{BLACK}CoÃ¶rdinaten: {LTBLUE}{NUM}x{NUM} ({STRING})
 
 STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Kan deel van station niet weghalen...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Kan railtype hier niet veranderen...
@@ -1469,7 +1469,7 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-groot
 
 STR_PNGMAP_ERROR                                                :{WHITE}Kan landschap uit PNG niet laden...
 STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...bestand niet gevonden.
-STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kon plaatje niet omzetten. 8 óf 24-bit PNG benodigd.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...kon plaatje niet omzetten. 8 Ã³f 24-bit PNG benodigd.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}...er ging iets fout. Sorry. (waarschijnlijk corrupt bestand)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Kan het landschap uit de BMP niet laden...
@@ -1506,7 +1506,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Geen bru
 STR_1007_ALREADY_BUILT                                          :{WHITE}...reeds gebouwd
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Bestaand spoor moet eerst weggehaald worden
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Spoorwegconstructie
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Geëlectrificeerde spoorwegconstructie
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}GeÃ«lectrificeerde spoorwegconstructie
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Monorailconstructie
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLevconstructie
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Kies spoorbrug
@@ -1518,7 +1518,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Kan hier
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Kan hier geen seinen weghalen...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Bouw Treindepot
 STR_1015_RAILROAD_CONSTRUCTION                                  :Spoorwegconstructie
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Geëlectrificeerde spoorwegconstructie
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :GeÃ«lectrificeerde spoorwegconstructie
 STR_1016_MONORAIL_CONSTRUCTION                                  :Monorailconstructie
 STR_1017_MAGLEV_CONSTRUCTION                                    :MagLevconstructie
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Plaats spoor
@@ -1694,7 +1694,7 @@ STR_3002_ORIENTATION                                            :{BLACK}Richting
 STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Aantal sporen
 STR_3004_PLATFORM_LENGTH                                        :{BLACK}Platformlengte
 STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Te dicht bij een ander station
-STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Voegt meer dan één bestaand (laad)station samen
+STR_3006_ADJOINS_MORE_THAN_ONE_EXISTING                         :{WHITE}Voegt meer dan Ã©Ã©n bestaand (laad)station samen
 STR_3007_TOO_MANY_STATIONS_LOADING                              :{WHITE}Teveel (laad)stations in de buurt van deze stad
 STR_3008_TOO_MANY_STATIONS_LOADING                              :{WHITE}Teveel (laad)stations
 STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Te veel bushaltes
@@ -1979,7 +1979,7 @@ STR_6804_CUSTOM                                                 :{BLACK}Aangepas
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maximaal aantal tegenstanders: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Starttijd van tegenstanders: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Aantal steden: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Aantal industrieën: {ORANGE}{STRING}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Aantal industrieÃ«n: {ORANGE}{STRING}
 STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maximale lening: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Startrente: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Brandstofkosten: {ORANGE}{STRING}
@@ -2051,7 +2051,7 @@ STR_700A_COMPANY_NAME                                           :Bedrijfsnaam
 STR_700B_PRESIDENT_S_NAME                                       :Naam van directeur
 STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Kan bedrijfsnaam niet veranderen...
 STR_700D_CAN_T_CHANGE_PRESIDENT                                 :{WHITE}Kan naam directeur niet veranderen...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Financiën {BLACK}{PLAYERNAME}
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} FinanciÃ«n {BLACK}{PLAYERNAME}
 STR_700F_EXPENDITURE_INCOME                                     :{WHITE}Uitgaven/inkomsten
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Bouwkosten
@@ -2139,7 +2139,7 @@ STR_7064_TOGGLE_GRAPH_FOR_CARGO                                 :{BLACK}Schakel 
 STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
 STR_7066_ENGINEER                                               :Ingenieur
 STR_7067_TRAFFIC_MANAGER                                        :Verkeersleider
-STR_7068_TRANSPORT_COORDINATOR                                  :Transport Coördinator
+STR_7068_TRANSPORT_COORDINATOR                                  :Transport CoÃ¶rdinator
 STR_7069_ROUTE_SUPERVISOR                                       :Route Opzichter
 STR_706A_DIRECTOR                                               :Onderdirecteur
 STR_706B_CHIEF_EXECUTIVE                                        :Directeur
@@ -2155,7 +2155,7 @@ STR_RELOCATE_HQ                                                 :{BLACK}Verplaat
 STR_COMPANY_PASSWORD                                            :{BLACK}Wachtwoord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Bescherm het bedrijf met een wachtwoord zodat niet geautoriseerde personen niet mee kunnen doen.
 STR_SET_COMPANY_PASSWORD                                        :Geef bedrijfswachtwoord op
-STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Wereld Recessie!{}{}Financiële experts vrezen het ergste terwijl economie ineen stort!
+STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Wereld Recessie!{}{}FinanciÃ«le experts vrezen het ergste terwijl economie ineen stort!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Recessie Voorbij!{}{}Stijgende handel geeft industrie vertrouwen terwijl economie verstevigt!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Schakel tussen groot/klein venster
 STR_7076_COMPANY_VALUE                                          :{GOLD}Bedrijfswaarde: {WHITE}{CURRENCY64}
@@ -2878,13 +2878,13 @@ STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totaal a
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf instellingen
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Wijzigingen doorvoeren
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Stel parameters in
-STR_NEWGRF_TIP                                                  :{BLACK}Een lijst van alle geïnstalleerde Newgrf sets. Klik op een set om de instellingen te wijzigen.
-STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Er zijn op dit moment geen newgrf bestanden geïnstalleerd! Raadpleeg het handboek voor instructies voor het installeren van nieuwe graphics.
+STR_NEWGRF_TIP                                                  :{BLACK}Een lijst van alle geÃ¯nstalleerde Newgrf sets. Klik op een set om de instellingen te wijzigen.
+STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Er zijn op dit moment geen newgrf bestanden geÃ¯nstalleerd! Raadpleeg het handboek voor instructies voor het installeren van nieuwe graphics.
 STR_NEWGRF_FILENAME                                             :{BLACK}Bestandsnaam:
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = Â£ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Scheidingsteken:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Voorvoegsel:
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Achtervoegsel:
@@ -3032,7 +3032,7 @@ STR_PURCHASE_INFO_ALL_BUT                                       :Alles behalve {
 
 ########### String for New Landscape Generator
 
-STR_GENERATE                                                    :{WHITE}Creeër
+STR_GENERATE                                                    :{WHITE}CreeÃ«r
 STR_RANDOM                                                      :{BLACK}Willekeurig maken
 STR_RANDOM_HELP                                                 :{BLACK}Wijzig het willekeurige getal voor terrein creatie
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Wereld maken
@@ -3047,10 +3047,10 @@ STR_SMOOTHNESS                                                  :{BLACK}Vlakte:
 STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sneeuwlijn hoogte:
 STR_DATE                                                        :{BLACK}Datum:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Aantal steden:
-STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Aantal Industrieën:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Aantal IndustrieÃ«n:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
-STR_SNOW_LINE_UP                                                :{BLACK}Verschuif de sneeuwlijn één omhoog
-STR_SNOW_LINE_DOWN                                              :{BLACK}Verschuif de sneeuwlijn één naar beneden
+STR_SNOW_LINE_UP                                                :{BLACK}Verschuif de sneeuwlijn Ã©Ã©n omhoog
+STR_SNOW_LINE_DOWN                                              :{BLACK}Verschuif de sneeuwlijn Ã©Ã©n naar beneden
 STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Verander sneeuwlijn hoogte
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Verander begin jaar
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Schaal waarschuwing
@@ -3075,7 +3075,7 @@ STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Deze akt
 STR_SE_FLAT_WORLD                                               :{WHITE}Vlak land
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereer een platte kaart
 STR_SE_RANDOM_LAND                                              :{WHITE}Willekeurig land
-STR_SE_NEW_WORLD                                                :{BLACK}Creeër nieuw scenario
+STR_SE_NEW_WORLD                                                :{BLACK}CreeÃ«r nieuw scenario
 STR_SE_CAPTION                                                  :{WHITE}Scenario type
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Maak de hoogte van plat land een lager
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Maak de hoogte van plat land een hoger

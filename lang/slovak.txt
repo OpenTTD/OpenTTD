@@ -1,6 +1,6 @@
 ##name Slovak
 ##ownname Slovensky
-##isocode sk_SK
+##isocode sk_SK.UTF-8
 ##plural 6
 ##case g
 ##gender m z s
@@ -352,10 +352,10 @@ STR_013E_TOTAL_CARGO                                            :{BLACK}Celkovy 
 STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Celkovy naklad (kapacita) tohoto vlaku:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
-STR_0140_NEW_GAME                                               :{BLACK}Nov· hra
+STR_0140_NEW_GAME                                               :{BLACK}Nov√° hra
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrat hru
 STR_SINGLE_PLAYER                                               :{BLACK}Jeden hrac
-STR_MULTIPLAYER                                                 :{BLACK}Viacero hr·cov
+STR_MULTIPLAYER                                                 :{BLACK}Viacero hr√°cov
 
 STR_64                                                          :64
 STR_128                                                         :128
@@ -394,13 +394,13 @@ STR_UNITS_WEIGHT_LONG_SI                                        :{COMMA} kg
 
 STR_UNITS_VOLUME_SHORT_IMPERIAL                                 :{COMMA}gal
 STR_UNITS_VOLUME_SHORT_METRIC                                   :{COMMA}l
-STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m≥
+STR_UNITS_VOLUME_SHORT_SI                                       :{COMMA}m¬≥
 
 STR_UNITS_VOLUME_LONG_IMPERIAL                                  :{COMMA} galon{P "" y ov}
 STR_UNITS_VOLUME_LONG_METRIC                                    :{COMMA} lit{P er re rov}
-STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m≥
+STR_UNITS_VOLUME_LONG_SI                                        :{COMMA} m¬≥
 
-STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10≥ lbf
+STR_UNITS_FORCE_IMPERIAL                                        :{COMMA}x10¬≥ lbf
 STR_UNITS_FORCE_METRIC                                          :{COMMA} megapond{P "" y ov}
 STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
@@ -445,13 +445,13 @@ STR_SORT_BY_VALUE                                               :Hodnota
 STR_SORT_BY_FACILITY                                            :Typ stanice
 STR_SORT_BY_WAITING                                             :Mnozstvo cakajuceho nakladu
 STR_SORT_BY_RATING_MAX                                          :Hodnotenie prepravy
-STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (netriedenÈ)
+STR_ENGINE_SORT_ENGINE_ID                                       :EngineID (netrieden√©)
 STR_ENGINE_SORT_COST                                            :Cena
-STR_ENGINE_SORT_POWER                                           :V˝kon
+STR_ENGINE_SORT_POWER                                           :V√Ωkon
 STR_ENGINE_SORT_INTRO_DATE                                      :Uvedenie na trh
-STR_ENGINE_SORT_RUNNING_COST                                    :N·klady na prev·dzku
-STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :V˝kon/N·klady na prev·dzku
-STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacita n·kladu
+STR_ENGINE_SORT_RUNNING_COST                                    :N√°klady na prev√°dzku
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :V√Ωkon/N√°klady na prev√°dzku
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacita n√°kladu
 STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
@@ -625,7 +625,7 @@ STR_CLICK_ON_TRACK_TO_REMOVE                                    :{BLACK}Kliknite
 STR_01FB_TOGGLE_PROGRAM_SHUFFLE                                 :{BLACK}Zapnut / Vypnut nahodny vyber
 STR_01FC_SHOW_MUSIC_TRACK_SELECTION                             :{BLACK}Zobrazit okno pre vyber hudobnych stop
 STR_01FD_CLICK_ON_SERVICE_TO_CENTER                             :{BLACK}Kliknut na trasu pre centrovanie pohladu na tovaren/mesto
-STR_01FE_DIFFICULTY                                             :{BLACK}Obtia∏nost ({STRING})
+STR_01FE_DIFFICULTY                                             :{BLACK}Obtia≈ænost ({STRING})
 STR_01FF                                                        :{TINYFONT}{BLACK}{DATE_LONG}
 STR_0200_LAST_MESSAGE_NEWS_REPORT                               :Zobrazit poslednu spravu
 STR_0201_MESSAGE_SETTINGS                                       :Nastavenia sprav
@@ -780,12 +780,12 @@ STR_CREATE_LAKE                                                 :{BLACK}Vytvorit
 STR_0290_DELETE                                                 :{BLACK}Vymazat
 STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Kompletne vymazat toto mesto
 STR_0292_SAVE_SCENARIO                                          :Ulozit scenar
-STR_0293_LOAD_SCENARIO                                          :Nahrat scen·r
+STR_0293_LOAD_SCENARIO                                          :Nahrat scen√°r
 STR_0294_QUIT_EDITOR                                            :Ukoncit editor
 STR_0295                                                        :
 STR_0296_QUIT                                                   :Ukoncit program
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Ulozit scenar, nahrat scenar, ukoncit editor scenara, ukoncit program
-STR_0298_LOAD_SCENARIO                                          :{WHITE}Nahrat scen·r
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Nahrat scen√°r
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Ulozit scenar
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Hrat scenar
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Hrat vyskovu mapu
@@ -863,7 +863,7 @@ STR_02E1                                                        :{BLACK}{SKIP}{S
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Vyber meny
 STR_MEASURING_UNITS                                             :{BLACK}Jednotky vzdialenosti
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_MEASURING_UNITS_SELECTION                                   :{BLACK}V˝ber jednotiek vzdialenosti
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}V√Ωber jednotiek vzdialenosti
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cestne vozidla
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Strana po ktorej jazdia cestne vozidla
@@ -881,7 +881,7 @@ STR_02F8_EVERY_3_MONTHS                                         :Kazde 3 mesiace
 STR_02F9_EVERY_6_MONTHS                                         :Kazdych 6 mesiacov
 STR_02FA_EVERY_12_MONTHS                                        :Kazdych 12 mesiacov
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Spustit novu hru
-STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrat ulozen˙ hru
+STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Nahrat ulozen√∫ hru
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Vytvorit vlastny svet / scenar
 STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Vyberte hru pre 1 hraca
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Vyberte hru pre 2-8 hracov
@@ -941,15 +941,15 @@ STR_TOWNNAME_ROMANIAN                                           :Rumunske
 STR_TOWNNAME_CZECH                                              :Ceske
 STR_TOWNNAME_SWISS                                              :Svajciarske
 STR_TOWNNAME_DANISH                                             :Danske
-STR_TOWNNAME_TURKISH                                            :TureckÈ
+STR_TOWNNAME_TURKISH                                            :Tureck√©
 STR_TOWNNAME_ITALIAN                                            :Talianske
 STR_TOWNNAME_CATALAN                                            :Katalanske
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Libry (£)
+STR_CURR_GBP                                                    :Libry (¬£)
 STR_CURR_USD                                                    :Dolare ($)
-STR_CURR_EUR                                                    :Euro (§)
-STR_CURR_YEN                                                    :Jeny (•)
+STR_CURR_EUR                                                    :Euro (‚Ç¨)
+STR_CURR_YEN                                                    :Jeny (¬•)
 STR_CURR_ATS                                                    :Rakuske Silingy (ATS)
 STR_CURR_BEF                                                    :Belgicke Franky (BEF)
 STR_CURR_CHF                                                    :Svajciarske Franky (CHF)
@@ -972,7 +972,7 @@ STR_CURR_SIT                                                    :Slovinske Tolia
 STR_CURR_SEK                                                    :Svedske Koruny (SEK)
 STR_CURR_YTL                                                    :Turecke Liry (YTL)
 STR_CURR_SKK                                                    :Slovenske Koruny (SKK)
-STR_CURR_BRR                                                    :BrazÌlske Realy (BRL)
+STR_CURR_BRR                                                    :Braz√≠lske Realy (BRL)
 
 STR_CURR_CUSTOM                                                 :Vlastna ...
 
@@ -1320,7 +1320,7 @@ TEMP_AI_MULTIPLAYER                                             :{WHITE}Varovani
 
 ############ network gui strings
 
-STR_NETWORK_MULTIPLAYER                                         :{WHITE}Hra pre viac hr·cov
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Hra pre viac hr√°cov
 
 STR_NETWORK_PLAYER_NAME                                         :{BLACK}Meno hraca:
 STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Toto je meno podla ktoreho vas ostatny identifikuju
@@ -1380,15 +1380,15 @@ STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oznam
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_0_PLAYERS                                           :0 hracov
 STR_NETWORK_1_PLAYERS                                           :1 hrac
-STR_NETWORK_2_PLAYERS                                           :2 hr·ci
-STR_NETWORK_3_PLAYERS                                           :3 hr·ci
-STR_NETWORK_4_PLAYERS                                           :4 hr·ci
-STR_NETWORK_5_PLAYERS                                           :5 hr·cov
-STR_NETWORK_6_PLAYERS                                           :6 hr·cov
-STR_NETWORK_7_PLAYERS                                           :7 hr·cov
-STR_NETWORK_8_PLAYERS                                           :8 hr·cov
-STR_NETWORK_9_PLAYERS                                           :9 hr·cov
-STR_NETWORK_10_PLAYERS                                          :10 hr·cov
+STR_NETWORK_2_PLAYERS                                           :2 hr√°ci
+STR_NETWORK_3_PLAYERS                                           :3 hr√°ci
+STR_NETWORK_4_PLAYERS                                           :4 hr√°ci
+STR_NETWORK_5_PLAYERS                                           :5 hr√°cov
+STR_NETWORK_6_PLAYERS                                           :6 hr√°cov
+STR_NETWORK_7_PLAYERS                                           :7 hr√°cov
+STR_NETWORK_8_PLAYERS                                           :8 hr√°cov
+STR_NETWORK_9_PLAYERS                                           :9 hr√°cov
+STR_NETWORK_10_PLAYERS                                          :10 hr√°cov
 STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Max. pocet spolocnosti:
 STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Obmedzi maximalny pocet spolocnosti na serveri
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1414,7 +1414,7 @@ STR_NETWORK_GAME_LOBBY                                          :{WHITE}Sietova 
 
 STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Pripravuje sa k vstupu:   {ORANGE}{STRING}
 STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Aktualny zoznam spolocnosti v tejto hre. Bud mozes do jednej vstupit, alebo zalozit novu spolocnost.
-STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nov· spolocnost
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nov√° spolocnost
 STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Zalozit novu spolocnost
 STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Sledovat hru
 STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Sledovat hru len ako divak
@@ -1536,7 +1536,7 @@ STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}... subo
 STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nie je mozne zkonvertovat format obrazku. Potrebne 8 alebo 24 bitove PNG.
 STR_PNGMAP_ERR_MISC                                             :{WHITE}... neocakavana chyba (pravdepodobne poskodeny subor)
 
-STR_BMPMAP_ERROR                                                :{WHITE}Nie je mo∏nÈ nahrat povrch z BMP suboru ...
+STR_BMPMAP_ERROR                                                :{WHITE}Nie je mo≈æn√© nahrat povrch z BMP suboru ...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nie je mozne zkonvertovat format obrazku.
 
 ##id 0x0800
@@ -1570,7 +1570,7 @@ STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Ziadne p
 STR_1007_ALREADY_BUILT                                          :{WHITE}... uz bolo vytvorene
 STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Najskor treba odstranit zeleznicne kolaje
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Zeleznica
-STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifikovana ∏eleznica
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Elektrifikovana ≈æeleznica
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Jednokolajka - Monorail
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Magneticka draha - MagLev
 STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Vyber zeleznicny most
@@ -1582,7 +1582,7 @@ STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Tu nemoz
 STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Tu nemozno odstranit semafory ...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientacia depa
 STR_1015_RAILROAD_CONSTRUCTION                                  :Zeleznica
-STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrifikovana ∏eleznica
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrifikovana ≈æeleznica
 STR_1016_MONORAIL_CONSTRUCTION                                  :Jednokolajka - Monorail
 STR_1017_MAGLEV_CONSTRUCTION                                    :Magneticka draha - MagLev
 STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Postavit zeleznicne kolaje
@@ -1830,8 +1830,8 @@ STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}... stan
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}... roznorode stanice nie su povolene
 STR_USE_CTRL_TO_SELECT_MORE                                     :{BLACK}Podrzte CTRL pre vyber viacerych poloziek
 
-STR_UNDEFINED                                                   :(nedefinovan˝ retezec)
-STR_STAT_CLASS_DFLT                                             :PÙvodn· stanica
+STR_UNDEFINED                                                   :(nedefinovan√Ω retezec)
+STR_STAT_CLASS_DFLT                                             :P√¥vodn√° stanica
 STR_STAT_CLASS_WAYP                                             :Smerove body
 
 ##id 0x3800
@@ -1862,7 +1862,7 @@ STR_400D_SAVE_THE_CURRENT_GAME_USING                            :{BLACK}Ulozit a
 STR_400E_SELECT_NEW_GAME_TYPE                                   :{WHITE}Vyber typ novej hry
 STR_400F_SELECT_SCENARIO_GREEN_PRE                              :{BLACK}Vyber scenar (zeleny), prednastavenu hra (modra), alebo nahodnu hru
 STR_4010_GENERATE_RANDOM_NEW_GAME                               :Vygenerovat nahodnu novu hru
-STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Nahrat v˝®kov˙ mapu
+STR_4011_LOAD_HEIGHTMAP                                         :{WHITE}Nahrat v√Ω≈°kov√∫ mapu
 
 ##id 0x4800
 STR_4800_IN_THE_WAY                                             :{WHITE}{STRING} v ceste
@@ -2105,10 +2105,10 @@ STR_683B_HOSTILE                                                :Odmietavy
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7002_PLAYER                                                 :(Hrac {COMMA})
-STR_7004_NEW_FACE                                               :{BLACK}Nov· tv·r
+STR_7004_NEW_FACE                                               :{BLACK}Nov√° tv√°r
 STR_7005_COLOR_SCHEME                                           :{BLACK}Farebna schema
 STR_7006_COLOR_SCHEME                                           :{GOLD}Farebna schema:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nov· farebn· schÈma
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nov√° farebn√° sch√©ma
 STR_7008_COMPANY_NAME                                           :{BLACK}Nazov spolocnosti
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Meno prezidenta
 STR_700A_COMPANY_NAME                                           :Nazov spolocnosti
@@ -2169,7 +2169,7 @@ STR_7042_NONE                                                   :{WHITE}Ziadne
 STR_7043_FACE_SELECTION                                         :{WHITE}Vyber tvare
 STR_7044_MALE                                                   :{BLACK}Muz
 STR_7045_FEMALE                                                 :{BLACK}Zena
-STR_7046_NEW_FACE                                               :{BLACK}Nov· tv·r
+STR_7046_NEW_FACE                                               :{BLACK}Nov√° tv√°r
 STR_7047_CANCEL_NEW_FACE_SELECTION                              :{BLACK}Zrusit vyber novej tvare
 STR_7048_ACCEPT_NEW_FACE_SELECTION                              :{BLACK}Potvrdit vyber tvare
 STR_7049_SELECT_MALE_FACES                                      :{BLACK}Vyber muzskych tvari
@@ -2254,14 +2254,14 @@ STR_LIVERY_HELICOPTER                                           :Helikoptera
 STR_LIVERY_SMALL_PLANE                                          :Male lietadlo
 STR_LIVERY_LARGE_PLANE                                          :Velke lietadlo
 
-STR_LIVERY_GENERAL_TIP                                          :{BLACK}Zobrazit v®eobecnÈ farebnÈ schÈmy
-STR_LIVERY_TRAIN_TIP                                            :{BLACK}Zobrazit farebnÈ schÈmy pre vlaky
-STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Zobrazit farebnÈ schÈmy pre cestnÈ vozidl·
-STR_LIVERY_SHIP_TIP                                             :{BLACK}Zobrazit farebnÈ schÈmy pre lode
-STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Zobrazit farebnÈ schÈmy pre lietadl·
-STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Vyberte prim·rnu farbu pre vybran˙ farebn˙ schÈmu
-STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Vybrat sekund·rnu farbu pre vybran˙ farebn˙ schÈmu
-STR_LIVERY_PANEL_TIP                                            :{BLACK}Vybrat farebn˙ schÈmu na zmenenie (pre viacero schÈm pou∏ite CTRL+klik). Kliknite na ®tvorec pre prepnutie pou∏Ìvania schÈmy
+STR_LIVERY_GENERAL_TIP                                          :{BLACK}Zobrazit v≈°eobecn√© farebn√© sch√©my
+STR_LIVERY_TRAIN_TIP                                            :{BLACK}Zobrazit farebn√© sch√©my pre vlaky
+STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Zobrazit farebn√© sch√©my pre cestn√© vozidl√°
+STR_LIVERY_SHIP_TIP                                             :{BLACK}Zobrazit farebn√© sch√©my pre lode
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Zobrazit farebn√© sch√©my pre lietadl√°
+STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Vyberte prim√°rnu farbu pre vybran√∫ farebn√∫ sch√©mu
+STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Vybrat sekund√°rnu farbu pre vybran√∫ farebn√∫ sch√©mu
+STR_LIVERY_PANEL_TIP                                            :{BLACK}Vybrat farebn√∫ sch√©mu na zmenenie (pre viacero sch√©m pou≈æite CTRL+klik). Kliknite na ≈°tvorec pre prepnutie pou≈æ√≠vania sch√©my
 
 ##id 0x8000
 STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Parny)
@@ -2570,7 +2570,7 @@ STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je 
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaky sa daju nahradit len v depe
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Vlak{P "" y ov}
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nove vlaky
-STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}NovÈ elektrickÈ lokomotÌvy a vagÛny
+STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nov√© elektrick√© lokomot√≠vy a vag√≥ny
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nove jednokolajove vlaky
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nove magneticke vlaky
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Zakupit vozidlo
@@ -2588,7 +2588,7 @@ STR_8826_GO_TO                                                  :{BLACK}Chod do
 STR_8827_FULL_LOAD                                              :{BLACK}Plne naloz
 STR_8828_UNLOAD                                                 :{BLACK}Vylozit
 STR_REFIT                                                       :{BLACK}Prestavba
-STR_REFIT_TIP                                                   :{BLACK}Vyberte typ n·kladu na prestavbu v tomto poradÌ. CTRL+klik na odstr·nenie prÌkazu prestavby
+STR_REFIT_TIP                                                   :{BLACK}Vyberte typ n√°kladu na prestavbu v tomto porad√≠. CTRL+klik na odstr√°nenie pr√≠kazu prestavby
 STR_REFIT_ORDER                                                 :(Prestavba na {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Prikazy)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Koniec prikazov - -
@@ -2607,7 +2607,7 @@ STR_8833_CAN_T_INSERT_NEW_ORDER                                 :{WHITE}Nemozno 
 STR_8834_CAN_T_DELETE_THIS_ORDER                                :{WHITE}Nemozno vymazat tebnto prikaz ...
 STR_8835_CAN_T_MODIFY_THIS_ORDER                                :{WHITE}Nemozno zmenit tento prikaz ...
 STR_8837_CAN_T_MOVE_VEHICLE                                     :{WHITE}Nemozno posuvat vozdlo ...
-STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadn˝ stroj v∏dy doprev·dza svoj druh˝ stroj vpredu
+STR_REAR_ENGINE_FOLLOW_FRONT_ERROR                              :{WHITE}Zadn√Ω stroj v≈ædy doprev√°dza svoj druh√Ω stroj vpredu
 STR_8838_N_A                                                    :Nie je{SKIP}
 STR_8839_CAN_T_SELL_RAILROAD_VEHICLE                            :{WHITE}Nemozno predat automobil ...
 STR_883A_UNABLE_TO_FIND_ROUTE_TO                                :{WHITE}Nemoze najst cestu do depa
@@ -2621,12 +2621,12 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Kupit no
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Pre predaj vlaku ho potiahni sem
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vycentrovat pohlad na poziciu depa
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Vyber vlakov - kliknut na vlak pre informacie
-STR_BLACK_ENGINES                                               :{BLACK}Ru®ne
-STR_BLACK_WAGONS                                                :{BLACK}VagÛny
+STR_BLACK_ENGINES                                               :{BLACK}Ru≈°ne
+STR_BLACK_WAGONS                                                :{BLACK}Vag√≥ny
 STR_BLACK_BOTH                                                  :{BLACK}Obidva
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Kliknite pre zobrazenie ru®nov
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Kliknite pre zobrazenie vagÛnov
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Kliknite pre zobrazenie ru®nov aj vagÛnov
+STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Kliknite pre zobrazenie ru≈°nov
+STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Kliknite pre zobrazenie vag√≥nov
+STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Kliknite pre zobrazenie ru≈°nov aj vag√≥nov
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kupit vybrany vlak
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Premenovat vlak
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aktualna cinnost vlaku - kliknut pre zastavenie/spustenie
@@ -2730,7 +2730,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Dopravna nehoda!{}Vodic zahynul po kolizii s vlakom
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Dopravna nehoda!{}{COMMA} mrtvych po kolizii s vlakom
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Nemozno otocit vozidlo ...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nie je mozne otacat vozidla zlozenÈ z viacerych jednotiek
+STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Nie je mozne otacat vozidla zlozen√© z viacerych jednotiek
 STR_9034_RENAME                                                 :{BLACK}Premenovat
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Premenovat typ automobilu
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Premenovat typ automobilu
@@ -2742,7 +2742,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Prestava
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Prestavat vozidlo
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Prestavat vozidlo na prepravu vyznaceneho druhu nakladu
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Prestavba vozidla nie je mozna ...
-STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyberte po∏adovan˝ typ n·kladu pre cestnÈ vozidlo
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyberte po≈æadovan√Ω typ n√°kladu pre cestn√© vozidlo
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Stavba pristavu
@@ -2791,7 +2791,7 @@ STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Zobrazit
 STR_9829_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Vycentrovat pohlad na lod
 STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Poslat lod do lodenice
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Zobrazit detaily o lodi
-STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nov· lod je dostupn·!
+STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Nov√° lod je dostupn√°!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Cena: {CURRENCY} Max. rychlost: {VELOCITY}{}Kapacita: {CARGO}{}Naklady na prevadzku: {CURRENCY}/rok
 STR_982F_NAME_SHIP                                              :{BLACK}Pomenovat lod
@@ -2811,7 +2811,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Prestava
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vybrat typ nakladu pre lod
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Prestavat lod na vybrany typ nakladu
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vyber typ nakladu:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nov· kapacita: {GOLD}{CARGO}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nov√° kapacita: {GOLD}{CARGO}{}{BLACK}Cena prestavby: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Nemozno prestavat lod...
 STR_9842_REFITTABLE                                             :(mozna prestavba)
 STR_GO_TO_SHIP_DEPOT                                            :Chod do {TOWN} Lodenice
@@ -2855,12 +2855,12 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Postavit
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lietadlo - kliknut pre informacie
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Vyrobit nove lietadlo (potrebne letisko z hangarom)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lietadlo - kliknut pre informacie
-STR_BLACK_PLANES                                                :{BLACK}VrtulovÈ
-STR_BLACK_JETS                                                  :{BLACK}Pr˙dovÈ
-STR_BLACK_HELICOPTERS                                           :{BLACK}HelikoptÈry
-STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknite pre zobrazenie vrtulov˝ch lietadiel
-STR_BUILD_JETS_TIP                                              :{BLACK}Kliknite pre zobrazenie pr˙dov˝ch lietadiel
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kliknite pre zobrazenie helikoptÈr
+STR_BLACK_PLANES                                                :{BLACK}Vrtulov√©
+STR_BLACK_JETS                                                  :{BLACK}Pr√∫dov√©
+STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopt√©ry
+STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknite pre zobrazenie vrtulov√Ωch lietadiel
+STR_BUILD_JETS_TIP                                              :{BLACK}Kliknite pre zobrazenie pr√∫dov√Ωch lietadiel
+STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kliknite pre zobrazenie helikopt√©r
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Vyrobit nove lietadlo
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Potiahni lietadlo sem pre predaj
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Vycentrovat pohlad na hangar
@@ -2892,7 +2892,7 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Prestava
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Vyber novy typ nakladu
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Prestavat lietadlo na novy typ nakladu
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Vybrat typ noveho nakladu:
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nov· kapacita: {GOLD}{STRING}{}{BLACK}N·klady na prestavbu: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nov√° kapacita: {GOLD}{STRING}{}{BLACK}N√°klady na prestavbu: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Nie je mozne prestavat na novy typ nakladu ...
 STR_GO_TO_AIRPORT_HANGAR                                        :Chod do {STATION} Hangaru
 SERVICE_AT_AIRPORT_HANGAR                                       :Opravit v {STATION} Hangare
@@ -2947,11 +2947,11 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nie su n
 STR_NEWGRF_FILENAME                                             :{BLACK}Nazov suboru:
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF:
 
-STR_CURRENCY_WINDOW                                             :{WHITE}Vlastn· mena
-STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = £ {COMMA}
+STR_CURRENCY_WINDOW                                             :{WHITE}Vlastn√° mena
+STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = ¬£ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Oddelovac:
 STR_CURRENCY_PREFIX                                             :{LTBLUE}Predpona:
-STR_CURRENCY_SUFFIX                                             :{LTBLUE}PrÌpona:
+STR_CURRENCY_SUFFIX                                             :{LTBLUE}Pr√≠pona:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Prechod na Euro: {ORANGE}{NUM}
 STR_CURRENCY_SWITCH_TO_EURO_NEVER                               :{LTBLUE}Prechod na Euro: {ORANGE}nikdy
 STR_CURRENCY_PREVIEW                                            :{LTBLUE}Nahlad: {ORANGE}{CURRENCY}
@@ -2979,53 +2979,53 @@ STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Dep·
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Gar·∏e
+STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Dep√°
+STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Gar√°≈æe
 STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Lodenice
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hang·re
+STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hang√°re
 
 STR_SEND_TO_DEPOTS                                              :{BLACK}Poslat do {SKIP}{SKIP}{SKIP}{STRING}
 
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Poslat v®etky vlaky v zozname do depa. CTRL+klik pre vykonanie servisu
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Poslat v®etky vozidl· do gar·∏e. CTRL+klik pre vykonanie servisu
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Poslat v®etky lode v zozname do lodenice. CTRL+klik pre vykonanie servisu
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Poslat v®etky lietadl· do hang·ru. CTRL+klik pre vykonanie servisu
+STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Poslat v≈°etky vlaky v zozname do depa. CTRL+klik pre vykonanie servisu
+STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Poslat v≈°etky vozidl√° do gar√°≈æe. CTRL+klik pre vykonanie servisu
+STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Poslat v≈°etky lode v zozname do lodenice. CTRL+klik pre vykonanie servisu
+STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Poslat v≈°etky lietadl√° do hang√°ru. CTRL+klik pre vykonanie servisu
 
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Predat
-STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}V®etky vozidl· bud˙ poslanÈ do depa
-STR_ARE_YOU_SURE                                                :{BLACK}Ste si istÌ?
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}V≈°etky vozidl√° bud√∫ poslan√© do depa
+STR_ARE_YOU_SURE                                                :{BLACK}Ste si ist√≠?
 
 STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Potvrdte predaj vlakov v depe
-STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Potvrdte predaj v®etk˝ch vozidiel v gar·∏i
-STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Potvrdte predaj v®etk˝ch lodÌ v lodenici
-STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Potvrdte predaj v®etk˝ch lietadiel v hang·ri
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Potvrdte predaj v≈°etk√Ωch vozidiel v gar√°≈æi
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Potvrdte predaj v≈°etk√Ωch lod√≠ v lodenici
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Potvrdte predaj v≈°etk√Ωch lietadiel v hang√°ri
 
-STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Nepredavat v®etky vlaky v depe
-STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Nepredavat v®etky vozidl· v gar·∏i
-STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Nepredavat v®etky lode v lodenici
-STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Nepredavat v®etky lietadl· v hang·ri
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Nepredavat v≈°etky vlaky v depe
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Nepredavat v≈°etky vozidl√° v gar√°≈æi
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Nepredavat v≈°etky lode v lodenici
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Nepredavat v≈°etky lietadl√° v hang√°ri
 
-STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Predat v®etky vlaky v depe
-STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Predat v®etky vozidl· v gar·∏i
-STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Predat v®etky lode v lodenici
-STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Predat v®etky lietadl· v hang·ri
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Predat v≈°etky vlaky v depe
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Predat v≈°etky vozidl√° v gar√°≈æi
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Predat v≈°etky lode v lodenici
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Predat v≈°etky lietadl√° v hang√°ri
 
-STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Zobrazit zoznam v®etk˝ch vlakov, ktorÈ maj˙ toto depo v zozname prÌkazov
-STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Zobrazit zoznam v®etk˝ch vozidiel, ktorÈ maj˙ t˙to gar·∏ v zozname prÌkazov
-STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Zobrazit zoznam v®etk˝ch lodÌ, ktorÈ maj˙ t˙to lodenicu v zozname prÌkazov
-STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Zobrazit zoznam v®etk˝ch lietadiel, ktorÈ maj˙ toto letisko v zozname prÌkazov
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Zobrazit zoznam v≈°etk√Ωch vlakov, ktor√© maj√∫ toto depo v zozname pr√≠kazov
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Zobrazit zoznam v≈°etk√Ωch vozidiel, ktor√© maj√∫ t√∫to gar√°≈æ v zozname pr√≠kazov
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Zobrazit zoznam v≈°etk√Ωch lod√≠, ktor√© maj√∫ t√∫to lodenicu v zozname pr√≠kazov
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Zobrazit zoznam v≈°etk√Ωch lietadiel, ktor√© maj√∫ toto letisko v zozname pr√≠kazov
 
-STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Automaticky nahradit v®etky vlaky v depe
-STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Automaticky nahradit v®etky vozidl· v gar·∏i
-STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automaticky nahradit v®etky lode v lodenici
-STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automaticky nahradit v®etky lietadl· v hang·ri
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Automaticky nahradit v≈°etky vlaky v depe
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Automaticky nahradit v≈°etky vozidl√° v gar√°≈æi
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Automaticky nahradit v≈°etky lode v lodenici
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Automaticky nahradit v≈°etky lietadl√° v hang√°ri
 
 STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Vlak{P "" y ov}
-STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vozid{P lo l· iel}
-STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Lod{P "" e Ì}
-STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lietad{P lo l· iel}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Vozid{P lo l√° iel}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Lod{P "" e √≠}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lietad{P lo l√° iel}
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Vymena vozidiel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena {STRING}
@@ -3043,24 +3043,24 @@ STR_REPLACE_HELP                                                :{BLACK}Umoznuje
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Odstranenie vagonu: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Funkcia automatickeho vylepsovania vlakov moze udrzovat rovnaku dlzku vlakov odstranovanim vagonov (od zaciatku vlakov), pokial by zmena rusna vlak predlzila.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Vymena: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTALNA VLASTNOST {}Prepne medzi oknami na vymenu lokomotiv a vagonov.{}Vagon sa vymeni, len ked je nov˝ vagon schopny vozit rovnaky naklad, ako ten stary. Toto sa overuje pre kazdy vagon.
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTALNA VLASTNOST {}Prepne medzi oknami na vymenu lokomotiv a vagonov.{}Vagon sa vymeni, len ked je nov√Ω vagon schopny vozit rovnaky naklad, ako ten stary. Toto sa overuje pre kazdy vagon.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Lokomotiva sa nevyraba
 
-STR_ENGINES                                                     :LokomotÌvy
+STR_ENGINES                                                     :Lokomot√≠vy
 STR_WAGONS                                                      :Vagonov
 
-STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kliknite pre zastavenie v®etk˝ch vlakov v depe
-STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kliknite pre zastavenie v®etk˝ch vozidiel v gar·∏i
-STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kliknite pre zastavenie v®etk˝ch lodÌ v lodenici
-STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kliknite pre zastavenie v®etk˝ch lietadiel v hang·ri
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Kliknite pre zastavenie v≈°etk√Ωch vlakov v depe
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Kliknite pre zastavenie v≈°etk√Ωch vozidiel v gar√°≈æi
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Kliknite pre zastavenie v≈°etk√Ωch lod√≠ v lodenici
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Kliknite pre zastavenie v≈°etk√Ωch lietadiel v hang√°ri
 
-STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kliknite pre spustenie v®etk˝ch vlakov v depe
-STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kliknite pre spustenie v®etk˝ch vozidiel v gar·∏i
-STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kliknite pre spustenie v®etk˝ch lodÌ v lodenici
-STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kliknite pre spustenie v®etk˝ch lietadiel v hang·ri
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Kliknite pre spustenie v≈°etk√Ωch vlakov v depe
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Kliknite pre spustenie v≈°etk√Ωch vozidiel v gar√°≈æi
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Kliknite pre spustenie v≈°etk√Ωch lod√≠ v lodenici
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Kliknite pre spustenie v≈°etk√Ωch lietadiel v hang√°ri
 
-STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliknite pre zastavenie v®etk˝ch vozidiel v zozname
-STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknite pre spustenie v®etk˝ch vozidiel v zozname
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Kliknite pre zastavenie v≈°etk√Ωch vozidiel v zozname
+STR_MASS_START_LIST_TIP                                         :{BLACK}Kliknite pre spustenie v≈°etk√Ωch vozidiel v zozname
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zoznam popisov - {COMMA} popis{P "" y ov}
@@ -3070,7 +3070,7 @@ STR_ORDER_REFIT_FAILED                                          :{WHITE}Zlyhala 
 ############ Lists rail types
 
 STR_RAIL_VEHICLES                                               :Lokomotiva pre zeleznicu
-STR_ELRAIL_VEHICLES                                             :ElektrickÈ lokomotÌvy
+STR_ELRAIL_VEHICLES                                             :Elektrick√© lokomot√≠vy
 STR_MONORAIL_VEHICLES                                           :Lokomotiva pre jednokolajovku
 STR_MAGLEV_VEHICLES                                             :Lokomotiva pre magneticku drahu
 
@@ -3091,8 +3091,8 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {G
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacita: {GOLD}{COMMA} cestujucich, {COMMA} balikov posty
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Pohanane vagony: {GOLD}+{POWER}{BLACK} Hmotnost: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Prestavatelne na: {GOLD}
-STR_PURCHASE_INFO_ALL_TYPES                                     :V®etky druhy n·kladu
-STR_PURCHASE_INFO_ALL_BUT                                       :V®etko okrem {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :V≈°etky druhy n√°kladu
+STR_PURCHASE_INFO_ALL_BUT                                       :V≈°etko okrem {GOLD}
 
 ########### String for New Landscape Generator
 
@@ -3135,7 +3135,7 @@ STR_CLEARING_TILES                                              :{BLACK}Generova
 STR_SETTINGUP_GAME                                              :{BLACK}Nastavovanie hry
 STR_PREPARING_TILELOOP                                          :{BLACK}Spustam tile-loop
 STR_PREPARING_GAME                                              :{BLACK}Priprava hry
-STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Obtia∏nost sa zmenila na vlastn˙
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Obtia≈ænost sa zmenila na vlastn√∫
 STR_SE_FLAT_WORLD                                               :{WHITE}Rovna krajina
 STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generovat rovnu krajinu
 STR_SE_RANDOM_LAND                                              :{WHITE}Nahodna krajina
@@ -3167,9 +3167,9 @@ STR_HELIPORTS                                                   :{BLACK}Heliport
 
 ############ Tooltip measurment
 
-STR_MEASURE_LENGTH                                              :{BLACK}Dl∏ka: {NUM}
+STR_MEASURE_LENGTH                                              :{BLACK}Dl≈æka: {NUM}
 STR_MEASURE_AREA                                                :{BLACK}Plocha: {NUM} x {NUM}
-STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dl∏ka: {NUM}{}V˝®kov˝ rozdiel: {NUM} m
-STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plocha: {NUM} x {NUM}{}V˝®kov˝ rozdiel: {NUM} m
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Dl≈æka: {NUM}{}V√Ω≈°kov√Ω rozdiel: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Plocha: {NUM} x {NUM}{}V√Ω≈°kov√Ω rozdiel: {NUM} m
 
 ########

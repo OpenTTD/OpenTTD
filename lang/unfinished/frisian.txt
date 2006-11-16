@@ -1,6 +1,6 @@
 ##name Frisian
 ##ownname Frysk
-##isocode fy_NL
+##isocode fy_NL.UTF-8
 ##plural 0
 
 ##id 0x0000
@@ -28,11 +28,11 @@ STR_0020_GOLD                                                   :Goud
 STR_0021_WATER                                                  :Wetter
 STR_0022_WHEAT                                                  :Weet
 STR_0023_RUBBER                                                 :Rubber
-STR_0024_SUGAR                                                  :S鹝er
+STR_0024_SUGAR                                                  :S没ker
 STR_0025_TOYS                                                   :Boartersguod
 STR_0026_CANDY                                                  :Snobbersguod
 STR_0027_COLA                                                   :Cola
-STR_0028_COTTON_CANDY                                           :S鹝erspin
+STR_0028_COTTON_CANDY                                           :S没kerspin
 STR_0029_BUBBLES                                                :Bubbels
 STR_002A_TOFFEE                                                 :Toffee
 STR_002B_BATTERIES                                              :Batterijen
@@ -43,7 +43,7 @@ STR_0031_MAIL                                                   :Post
 STR_0032_OIL                                                    :Oalje
 STR_0033_LIVESTOCK                                              :Fee
 STR_0034_GOODS                                                  :Guod
-STR_0035_GRAIN                                                  :N魌
+STR_0035_GRAIN                                                  :N么t
 STR_0036_WOOD                                                   :Hout
 STR_0037_IRON_ORE                                               :Izer Erts
 STR_0038_STEEL                                                  :Stiel
@@ -57,7 +57,7 @@ STR_003F_PAPER                                                  :Papier
 STR_0040_GOLD                                                   :Goud
 STR_0041_WATER                                                  :Wetter
 STR_0043_RUBBER                                                 :Rubber
-STR_0044_SUGAR                                                  :S鹝er
+STR_0044_SUGAR                                                  :S没ker
 STR_0045_TOY                                                    :Boartesguod
 STR_0046_CANDY                                                  :Snobbersguod
 STR_0047_COLA                                                   :Cola
@@ -95,7 +95,7 @@ STR_00D8_DARK_GREEN                                             :Tsjuster Grien
 STR_00D9_BLUE                                                   :Blauw
 STR_00DC_PURPLE                                                 :Pears
 STR_00DD_ORANGE                                                 :Oranje
-STR_00DE_BROWN                                                  :Br鷑
+STR_00DE_BROWN                                                  :Br煤n
 STR_00DF_GREY                                                   :Griis
 STR_00E0_WHITE                                                  :Wyt
 

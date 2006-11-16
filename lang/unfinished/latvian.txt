@@ -1,6 +1,6 @@
 ##name Latvian
-##ownname Latvie®u valoda
-##isocode lv_LV
+##ownname Latvie≈°u valoda
+##isocode lv_LV.UTF-8
 ##plural 3
 
 ##id 0x0000
@@ -154,7 +154,7 @@ STR_00B2_MESSAGE                                                :{YELLOW}Zin'oju
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Zin'ojums no {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ta' nevar dari't....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}S'o laukumu nevar noli'dzina't....
-STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Org'Ïina'la's autortiesi'bas {COPYRIGHT} 1995 Chris Sawyer, Visas tiesi'bas rezerve'tas
+STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Org'√¨ina'la's autortiesi'bas {COPYRIGHT} 1995 Chris Sawyer, Visas tiesi'bas rezerve'tas
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versija {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2004 OpenTTD grupa
 STR_TRANSLATED_BY                                               :{BLACK}  Tulkota'js(i) - Leo Selavo
@@ -210,16 +210,16 @@ STR_00F4_500M                                                   :{BLACK}{TINYFON
 STR_00F5_TRAINS                                                 :{BLACK}{TINYFONT}Vilcieni
 STR_00F6_ROAD_VEHICLES                                          :{BLACK}{TINYFONT}Cel'u transporta li'dzekl'i
 STR_00F7_SHIPS                                                  :{BLACK}{TINYFONT}Kug'i
-STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lidma®i'na
+STR_00F8_AIRCRAFT                                               :{BLACK}{TINYFONT}Lidma≈°i'na
 STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFONT}Transporta mars'ruti
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Ogl'u raktuve
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Elektrostacija
-STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Me∏s
+STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Me≈æs
 STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Koku za'g'e'tava
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Naftas apstra'des stacija
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Ferma
-STR_0100_FACTORY                                                :{BLACK}{TINYFONT}RupnÓca
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Tipogr‚fija
+STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Rupn√Æca
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Tipogr√¢fija
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Naftas atradnes
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Dzelzs ru'das raktuves
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Te'rauda lietuve
@@ -238,8 +238,8 @@ STR_0110_COTTON_CANDY_FOREST                                    :{BLACK}{TINYFON
 STR_0111_CANDY_FACTORY                                          :{BLACK}{TINYFONT}Saldumu ru'pni'ca
 STR_0112_BATTERY_FARM                                           :{BLACK}{TINYFONT}Bateriju ferma
 STR_0113_COLA_WELLS                                             :{BLACK}{TINYFONT}Kolas akas
-STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}RotaÔlietu Veikals
-STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}RotaÔlietu RupnÓca
+STR_0114_TOY_SHOP                                               :{BLACK}{TINYFONT}Rota√Ølietu Veikals
+STR_0115_TOY_FACTORY                                            :{BLACK}{TINYFONT}Rota√Ølietu Rupn√Æca
 STR_0116_PLASTIC_FOUNTAINS                                      :{BLACK}{TINYFONT}Plastmasas stru'klakas
 STR_0117_FIZZY_DRINK_FACTORY                                    :{BLACK}{TINYFONT}Burbul'u'den'u ru'pni'ca
 STR_0118_BUBBLE_GENERATOR                                       :{BLACK}{TINYFONT}Burbul'u g'enera'tors
@@ -351,8 +351,8 @@ STR_0163_FEB                                                    :Feb
 STR_0164_MAR                                                    :Mar
 STR_0165_APR                                                    :Apr
 STR_0166_MAY                                                    :Mai
-STR_0167_JUN                                                    :J˚n
-STR_0168_JUL                                                    :J˚l
+STR_0167_JUN                                                    :J√ªn
+STR_0168_JUL                                                    :J√ªl
 STR_0169_AUG                                                    :Aug
 STR_016A_SEP                                                    :Sep
 STR_016B_OCT                                                    :Okt
@@ -392,7 +392,7 @@ STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Nevar ma
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Aiztaisi't logu
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Loga virsraksts - velc s'o lai pa'rvietotu logu
 STR_STICKY_BUTTON                                               :{BLACK}Atzi'me' s'o logu ka' neaiztaisa'mu ar
-STR_RESIZE_BUTTON                                               :{BLACK}UzklikÌini un velc lai mainÓtu Ó loga izmÁrus
+STR_RESIZE_BUTTON                                               :{BLACK}Uzklik√∞√≠ini un velc lai main√Ætu √∞√Æ loga izm√ßrus
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Klik te lai ietu uz tekos'o saglaba's'anas un iela'de's'anas direktorju
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demole't celtnes un tml. uz zemes laucin'a
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Pazemina't zemes stu'ri
@@ -839,10 +839,10 @@ STR_TOWNNAME_SWISS                                              :S'veices
 STR_TOWNNAME_DANISH                                             :Da'n'u
 ############ end of	townname region
 
-STR_CURR_GBP                                                    :Ma'rcin'as (£)
+STR_CURR_GBP                                                    :Ma'rcin'as (¬£)
 STR_CURR_USD                                                    :Dola'ri ($)
-STR_CURR_EUR                                                    :Eiro (§)
-STR_CURR_YEN                                                    :Jenas (•)
+STR_CURR_EUR                                                    :Eiro (‚Ç¨)
+STR_CURR_YEN                                                    :Jenas (¬•)
 STR_CURR_ATS                                                    :Austrijas s'ilin'i (ATS)
 STR_CURR_BEF                                                    :Bel'g'ijas franki (BEF)
 STR_CURR_CHF                                                    :S'veices franki (CHF)
@@ -989,7 +989,7 @@ STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Automa'
 STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Automa'tiski atjaunot transporta li'dzekli {ORANGE}{STRING}{LTBLUE} me'nes'us pirms/pe'c maksima'la' vecuma
 STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Automa'tiski atjaunot minima'lo naudu kas nepiecies'ama atjaunos'anai: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Kl'u'das zin'ojuma ilgums: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}R‚dÓt pilsÁtas iedzÓvot‚ju skaitu pie pilsÁtas nosaukuma: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}R√¢d√Æt pils√ßtas iedz√Ævot√¢ju skaitu pie pils√ßtas nosaukuma: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Neredzami koki (ar caurspi'di'ga'm celtne'm): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Sniega li'nijas augstums: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksima'lais staciju izkaisijums: {ORANGE}{STRING} {RED}Uzmani'bu: augsts li'menis pale'lina spe'li
@@ -1000,9 +1000,9 @@ STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Maksima
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Aizliedz servisu kad saboja's'ana's izsle'gta: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Nobeidz spe'li: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}AtÔauj akciju pirkanu no cit‚m komp‚nij‚m
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}At√Øauj akciju pirk√∞anu no cit√¢m komp√¢nij√¢m
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Pa kreisi
-STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centr‚
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centr√¢
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Pa labi
 
 STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stacijas
@@ -1027,7 +1027,7 @@ STR_WAYPOINT_RAW                                                :{WAYPOINT}
 
 
 
-STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Izlidzin‚t zemi
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Izlidzin√¢t zemi
 
 
 
@@ -1042,7 +1042,7 @@ STR_BUOY_IS_IN_USE                                              :{WHITE}...boja 
 
 
 
-STR_INDUSTRYDIR_CAPTION                                         :{WHITE}IndustrÓjas
+STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industr√Æjas
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 
@@ -1052,10 +1052,10 @@ STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Maini't 
 ############ network gui strings
 
 
-STR_NETWORK_PLAYER_NAME                                         :{BLACK}SpelÁt‚ja v‚rds:
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spel√ßt√¢ja v√¢rds:
 
 
-STR_NETWORK_GAME_NAME                                           :{BLACK}V‚rds
+STR_NETWORK_GAME_NAME                                           :{BLACK}V√¢rds
 
 
 STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
@@ -1073,10 +1073,10 @@ STR_NETWORK_LAN_INTERNET                                        :LAN / Internets
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_2_PLAYERS                                           :2 clienti
 STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_NETWORK_START_GAME                                          :{BLACK}Sakt spÁli
+STR_NETWORK_START_GAME                                          :{BLACK}Sakt sp√ßli
 
 ############ Leave those lines in this order!!
-STR_NETWORK_LANG_ENGLISH                                        :AngÔu
+STR_NETWORK_LANG_ENGLISH                                        :Ang√Øu
 ############ End of leave-in-this-order
 
 
@@ -1093,10 +1093,10 @@ STR_NETWORK_CONNECTING                                          :{WHITE}Savienoj
 
 
 STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Nepareiza Parole
-STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} J˚s esat izraidÓts no Ó servera
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} J√ªs esat izraid√Æts no √∞√Æ servera
 
 ############ Leave those lines in this order!!
-STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :o v‚rdu jau lieto
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :√∞o v√¢rdu jau lieto
 ############ End of leave-in-this-order
 
 STR_NETWORK_SERVER                                              :Serveris
@@ -1113,16 +1113,16 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}kartes 
 ##id 0x0800
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Pa'rved: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Pa'rved: {CURRENCY}
-STR_080A_ROCKS                                                  :AkmeÚi
+STR_080A_ROCKS                                                  :Akme√≤i
 
 ##id 0x1000
-STR_1021_RAILROAD_TRACK                                         :DzelzceÔa ceÔs
+STR_1021_RAILROAD_TRACK                                         :Dzelzce√Øa ce√Øs
 
 
 
 ##id 0x1800
-STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}AutoceÔa Construction
-STR_1814_ROAD                                                   :AutoceÔ
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Autoce√Øa Construction
+STR_1814_ROAD                                                   :Autoce√Ø√∞
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Pilse'tas
@@ -1156,13 +1156,13 @@ STR_201E_STADIUM                                                :Stadions
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Subsidijas
 STR_202A_NONE                                                   :{ORANGE}Neviens
-STR_2036_COTTAGES                                               :Koted∏i
+STR_2036_COTTAGES                                               :Koted≈æi
 STR_203D_STADIUM                                                :Stadions
-STR_203F_HOUSES                                                 :M‚jas
+STR_203F_HOUSES                                                 :M√¢jas
 STR_2040_CINEMA                                                 :Coca-Cola Plaza
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
-STR_205C_PIGGY_BANK                                             :C˚ku-Banka
+STR_205C_PIGGY_BANK                                             :C√ªku-Banka
 
 STR_INDUSTRY                                                    :{INDUSTRY}
 STR_TOWN                                                        :{TOWN}
@@ -1171,7 +1171,7 @@ STR_STATION                                                     :{STATION}
 
 ##id 0x2800
 STR_2806                                                        :{WHITE}{STRING}
-STR_280A_SIGN                                                   :ZÓme
+STR_280A_SIGN                                                   :Z√Æme
 STR_280E_TREES                                                  :Koki
 
 ##id 0x3000
@@ -1187,7 +1187,7 @@ STR_3032_RATINGS                                                :{BLACK}Reitingi
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
 STR_3059_SMALL                                                  :{BLACK}Mazs
-STR_305A_LARGE                                                  :{BLACK}PilsÁtas
+STR_305A_LARGE                                                  :{BLACK}Pils√ßtas
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
 STR_3060_AIRPORT                                                :Lidosta
@@ -1197,7 +1197,7 @@ STR_3068_DOCK                                                   :{WHITE}Osta
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...neregula'ras stacijas nav atl'autas
 
 ##id 0x3800
-STR_3804_WATER                                                  :€dens
+STR_3804_WATER                                                  :√õdens
 
 ##id 0x4000
 STR_4004                                                        :{COMPANY}, {DATE_LONG}
@@ -1205,19 +1205,19 @@ STR_4004                                                        :{COMPANY}, {DAT
 ##id 0x4800
 STR_4801                                                        :{WHITE}{INDUSTRY}
 STR_4804_SAWMILL                                                :Gateris
-STR_4805_FOREST                                                 :Me∏s
+STR_4805_FOREST                                                 :Me≈æs
 STR_480B_FARM                                                   :Ferma
 STR_4812_BANK                                                   :Banka
-STR_4819_FACTORY                                                :R˚pnÓca
+STR_4819_FACTORY                                                :R√ªpn√Æca
 
 ############ range for requires	starts
 ############ range for requires	ends
 
 
 ##id 0x5000
-STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vilciens tunelÓ
+STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Vilciens tunel√Æ
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
-STR_500E_SUSPENSION_STEEL                                       :Van®u, Terauda
+STR_500E_SUSPENSION_STEEL                                       :Van≈°u, Terauda
 
 ##id 0x5800
 STR_5803_COMPANY_HEADQUARTERS                                   :Firmas Ofiss
@@ -1230,12 +1230,12 @@ STR_SV_EMPTY                                                    :
 STR_SV_TRAIN_NAME                                               :Vilciens {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_FOREST                                            :{STRING} Me∏s
+STR_SV_STNAME_FOREST                                            :{STRING} Me≈æs
 
 ############ end of	savegame specific region!
 
 ##id 0x6800
-STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Saglab‚t
+STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Saglab√¢t
 
 ############ range for difficulty levels starts
 STR_6801_EASY                                                   :{BLACK}Viegls
@@ -1246,7 +1246,7 @@ STR_6801_EASY                                                   :{BLACK}Viegls
 
 STR_6819                                                        :{BLACK}<
 STR_681A                                                        :{BLACK}>
-STR_6824_REDUCED                                                :Samazin‚ts
+STR_6824_REDUCED                                                :Samazin√¢ts
 STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2
 STR_6828_X3                                                     :x3
@@ -1257,9 +1257,9 @@ STR_6830_IMMEDIATE                                              :Uzreiz
 STR_7000                                                        :
 STR_7001                                                        :{WHITE}{COMPANY} {BLACK}{PLAYERNAME}
 STR_7004_NEW_FACE                                               :{BLACK}Jauna Seja
-STR_7005_COLOR_SCHEME                                           :{BLACK}Krasas shÁma
-STR_7006_COLOR_SCHEME                                           :{GOLD}Krasas shÁma:
-STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Jaun‚ Krasas shÁma
+STR_7005_COLOR_SCHEME                                           :{BLACK}Krasas sh√ßma
+STR_7006_COLOR_SCHEME                                           :{GOLD}Krasas sh√ßma:
+STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Jaun√¢ Krasas sh√ßma
 STR_7010                                                        :{WHITE}{NUM}
 STR_701D_OTHER                                                  :{GOLD}Citi
 STR_701E                                                        :{BLACK}-{CURRENCY64}
@@ -1272,8 +1272,8 @@ STR_MAX_LOAN                                                    :{WHITE}Maksmala
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_INSUFFICIENT_FUNDS                                          :{WHITE}Naudu, kas ir bankas aizn'e'mums, nevar dot prom...
 STR_7042_NONE                                                   :{WHITE}Neviens
-STR_7044_MALE                                                   :{BLACK}Virie®u
-STR_7045_FEMALE                                                 :{BLACK}Sievie®u
+STR_7044_MALE                                                   :{BLACK}Virie≈°u
+STR_7045_FEMALE                                                 :{BLACK}Sievie≈°u
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
 STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrots!
@@ -1327,14 +1327,14 @@ STR_8077_FOSTER_MKII_SUPERBUS                                   :Foster MkII Sup
 STR_8078_PLODDYPHUT_MKI_BUS                                     :Ploddyphut MkI Autobuss
 STR_8079_PLODDYPHUT_MKII_BUS                                    :Ploddyphut MkII Autobuss
 STR_807A_PLODDYPHUT_MKIII_BUS                                   :Ploddyphut MkIII Autobuss
-STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Koku VedÁjs
-STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Br˚Úotais Auto
+STR_8090_WITCOMBE_WOOD_TRUCK                                    :Witcombe Koku Ved√ßjs
+STR_809A_UHL_ARMORED_TRUCK                                      :Uhl Br√ª√≤otais Auto
 STR_80B0_WIZZOWOW_SUGAR_TRUCK                                   :Wizzowow Cukura Auto
-STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Pasa∏ieru Pramis
-STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Pasa∏ieru Pramis
+STR_80CE_MPS_PASSENGER_FERRY                                    :MPS Pasa≈æieru Pramis
+STR_80CF_FFP_PASSENGER_FERRY                                    :FFP Pasa≈æieru Pramis
 STR_80D0_BAKEWELL_300_HOVERCRAFT                                :Bakewell 300 Hovercraft
-STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Pasa∏ieru Pramis
-STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Pasa∏ieru Pramis
+STR_80D1_CHUGGER_CHUG_PASSENGER                                 :Chugger-Chug Pasa≈æieru Pramis
+STR_80D2_SHIVERSHAKE_PASSENGER_FERRY                            :Shivershake Pasa≈æieru Pramis
 STR_80D7_SAMPSON_U52                                            :Sampson U52
 STR_80D8_COLEMAN_COUNT                                          :Coleman Count
 STR_80D9_FFP_DART                                               :FFP Dart
@@ -1376,7 +1376,7 @@ STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzz
 STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
 STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
 STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
-STR_8104_AIRCRAFT                                               :lidmaÓna
+STR_8104_AIRCRAFT                                               :lidma√∞√Æna
 
 ##id 0x8800
 STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
@@ -1396,14 +1396,14 @@ STR_GO_TO_TRAIN_DEPOT                                           :Uz {TOWN} Vilci
 
 
 
-STR_8812_EMPTY                                                  :{LTBLUE}Tuk®s
+STR_8812_EMPTY                                                  :{LTBLUE}Tuk≈°s
 STR_8816                                                        :{BLACK}-
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
 STR_SERVICE                                                     :{BLACK}Serviss
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vilciens ja'apsta'dina kad tas ierodas depo
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Sv‚rs: {LTBLUE}{COMMA}t  {BLACK}Power: {LTBLUE}{COMMA}hp{BLACK} Max. speed: {LTBLUE}{VELOCITY}
+STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Sv√¢rs: {LTBLUE}{COMMA}t  {BLACK}Power: {LTBLUE}{COMMA}hp{BLACK} Max. speed: {LTBLUE}{VELOCITY}
 STR_8861_STOPPED                                                :{RED}Stoppets
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Nosaukt vilcienu
@@ -1414,34 +1414,34 @@ STR_886F_TRANSFER                                               :{BLACK}Tranzi't
 
 ##id 0x9000
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9012_CAPACITY                                               :{BLACK}Capacit‚te: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Capacit√¢te: {LTBLUE}{STRING}
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
 STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Atrums: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {STRING}
 
-STR_9034_RENAME                                                 :{BLACK}P‚rsaukt
+STR_9034_RENAME                                                 :{BLACK}P√¢rsaukt
 
 ##id 0x9800
-STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} KuÏi
+STR_9805_SHIPS                                                  :{WHITE}{COMPANY} - {COMMA} Ku√¨i
 STR_980F                                                        :{WHITE}{VEHICLE}
-STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Uzb˚vet jauno kuÏi
+STR_9820_BUILD_NEW_SHIP                                         :{BLACK}Uzb√ªvet jauno ku√¨i
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
 
-STR_9836_RENAME                                                 :{BLACK}P‚rsaukt
+STR_9836_RENAME                                                 :{BLACK}P√¢rsaukt
 
 ##id 0xA000
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A02D                                                        :{BLACK}{BIGFONT}{STRING}
 
-STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}LidmaÓnas av‚rija!{}LidmaÓnai pietr˚ka degviela, {COMMA} nogalin‚ti!
+STR_PLANE_CRASH_OUT_OF_FUEL                                     :{BLACK}{BIGFONT}Lidma√∞√Ænas av√¢rija!{}Lidma√∞√Ænai pietr√ªka degviela, {COMMA} nogalin√¢ti!
 STR_A036                                                        :{TINYFONT}{BLACK}{STATION}
-STR_A037_RENAME                                                 :{BLACK}P‚rsaukt
-STR_GO_TO_AIRPORT_HANGAR                                        :Uz {STATION} Ang‚ru
-SERVICE_AT_AIRPORT_HANGAR                                       :Serviss  {STATION} Angar‚
+STR_A037_RENAME                                                 :{BLACK}P√¢rsaukt
+STR_GO_TO_AIRPORT_HANGAR                                        :Uz {STATION} Ang√¢ru
+SERVICE_AT_AIRPORT_HANGAR                                       :Serviss  {STATION} Angar√¢
 
 ##id 0xB000
 
 
-STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}DetaÔas
+STR_PERFORMANCE_DETAIL_KEY                                      :{BLACK}Deta√Øas
 STR_PERFORMANCE_DETAIL_AMOUNT_CURRENCY                          :{BLACK}({CURRCOMPACT}/{CURRCOMPACT})
 STR_PERFORMANCE_DETAIL_AMOUNT_INT                               :{BLACK}({COMMA}/{COMMA})
 STR_PERFORMANCE_DETAIL_PERCENT                                  :{WHITE}{NUM}%
@@ -1463,31 +1463,31 @@ STR_LORRY                                                       :{BLACK}{LORRY}
 STR_PLANE                                                       :{BLACK}{PLANE}
 STR_SHIP                                                        :{BLACK}{SHIP}
 
-STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} KuÏi
+STR_SCHEDULED_SHIPS                                             :{WHITE}{STATION} - {COMMA} Ku√¨i
 
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Nomaini transporta lÓdzekÔus
-STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomaini transporta lÓdzekÔus
-STR_REPLACE_VEHICLES_START                                      :{BLACK}S‚c nomainÓt transporta lÓdzekÔus
-STR_REPLACE_VEHICLES_STOP                                       :{BLACK}P‚rtrauc nomainÓt transporta lÓdzekÔus
-STR_NOT_REPLACING                                               :{BLACK}Netiks nomainÓts
-STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Neviens transporta lÓdzeklis nebija izvÁlÁts
-STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}IzvÁlies lokomatÓves tipu kuru tu gribi nomainÓt
-STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}IzvÁlies jaun‚s lokomatÓves tipu kuru tu gribi lietot kreis‚ pusÁ atzÓmÁt‚s lokomatÓves viet‚
-STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nospied lai apturÁtu kreis‚ pusÁ atzÓmÁt‚s lokomatÓves aizvietoanu
-STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nospied lai s‚ktu kreis‚ pusÁ atzÓmÁt‚s lokomatÓves aizvietoanu
-STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}IzvÁlies slie˛u tipu kur‚m tu gribi nomainÓt lokomatÓves
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Par‚da kura lokomatÓve no pa kreisi atzÓmÁtaj‚m tiek nomainÓta, ja vien k‚da ir
-STR_REPLACE_HELP                                                :{BLACK}is atÔauj nomainÓt vienu lokomatÓves tipu pret citu kad vilcieni ien‚k depo
+STR_REPLACE_VEHICLES                                            :{BLACK}Nomaini transporta l√Ædzek√Øus
+STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Nomaini transporta l√Ædzek√Øus
+STR_REPLACE_VEHICLES_START                                      :{BLACK}S√¢c nomain√Æt transporta l√Ædzek√Øus
+STR_REPLACE_VEHICLES_STOP                                       :{BLACK}P√¢rtrauc nomain√Æt transporta l√Ædzek√Øus
+STR_NOT_REPLACING                                               :{BLACK}Netiks nomain√Æts
+STR_NOT_REPLACING_VEHICLE_SELECTED                              :{BLACK}Neviens transporta l√Ædzeklis nebija izv√ßl√ßts
+STR_REPLACE_HELP_LEFT_ARRAY                                     :{BLACK}Izv√ßlies lokomat√Æves tipu kuru tu gribi nomain√Æt
+STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Izv√ßlies jaun√¢s lokomat√Æves tipu kuru tu gribi lietot kreis√¢ pus√ß atz√Æm√ßt√¢s lokomat√Æves viet√¢
+STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Nospied lai aptur√ßtu kreis√¢ pus√ß atz√Æm√ßt√¢s lokomat√Æves aizvieto√∞anu
+STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Nospied lai s√¢ktu kreis√¢ pus√ß atz√Æm√ßt√¢s lokomat√Æves aizvieto√∞anu
+STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Izv√ßlies slie√æu tipu kur√¢m tu gribi nomain√Æt lokomat√Æves
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Par√¢da kura lokomat√Æve no pa kreisi atz√Æm√ßtaj√¢m tiek nomain√Æta, ja vien k√¢da ir
+STR_REPLACE_HELP                                                :{BLACK}√∞is at√Øauj nomain√Æt vienu lokomat√Æves tipu pret citu kad vilcieni ien√¢k depo
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Zi'mju saraksts- {COMMA} Zi'mes
 
 ############ Lists rail types
 
-STR_RAIL_VEHICLES                                               :Slie˛u transporta lÓdzekÔi
-STR_MONORAIL_VEHICLES                                           :Monoslie˛u transporta lÓdzekÔi
-STR_MAGLEV_VEHICLES                                             :Maglev transporta lÓdzekÔi
+STR_RAIL_VEHICLES                                               :Slie√æu transporta l√Ædzek√Øi
+STR_MONORAIL_VEHICLES                                           :Monoslie√æu transporta l√Ædzek√Øi
+STR_MAGLEV_VEHICLES                                             :Maglev transporta l√Ædzek√Øi
 
 ############ End of list of rail types
 
