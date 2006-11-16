@@ -2298,23 +2298,10 @@ static void MainWindowWndProc(Window *w, WindowEvent *e)
 				break;
 
 #ifdef ENABLE_NETWORK
-			case WKC_RETURN: case 'T': // smart chat; send to team if any, otherwise to all
+			case WKC_RETURN: case 'T': // send to all players or to your team depending on setting
 				if (_networking) {
-					const NetworkClientInfo *cio = NetworkFindClientInfoFromIndex(_network_own_client_index);
-					bool has_team = false;
-
-					/* Only players actually playing can speak to team. Eg spectators cannot */
-					if (IsValidPlayer(cio->client_playas)) {
-						const NetworkClientInfo *ci;
-						FOR_ALL_ACTIVE_CLIENT_INFOS(ci) {
-							if (ci->client_playas == cio->client_playas && ci != cio) {
-								has_team = true;
-								break;
-							}
-						}
-					}
-
-					ShowNetworkChatQueryWindow(has_team ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, cio->client_playas);
+					const NetworkClientInfo *ci = NetworkFindClientInfoFromIndex(_network_own_client_index);
+					ShowNetworkChatQueryWindow(_patches.chat_target ? DESTTYPE_TEAM : DESTTYPE_BROADCAST, ci->client_playas);
 					break;
 				}
 				break;

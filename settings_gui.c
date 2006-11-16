@@ -572,6 +572,7 @@ static const char *_patches_ui[] = {
 	"population_in_label",
 	"link_terraform_toolbar",
 	"liveries",
+	"chat_target",
 };
 
 static const char *_patches_construction[] = {
