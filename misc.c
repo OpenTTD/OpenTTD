@@ -202,6 +202,38 @@ StringID RealAllocateName(const char *name, byte skip, bool check_double)
 	}
 }
 
+void ConvertNameArray(void)
+{
+	uint i;
+
+	for (i = 0; i < lengthof(_name_array); i++) {
+		const char *strfrom = _name_array[i];
+		char tmp[sizeof(*_name_array)];
+		char *strto = tmp;
+
+		for (; *strfrom != '\0'; strfrom++) {
+			WChar c = (byte)*strfrom;
+			switch (c) {
+				case 0xA4: c = 0x20AC; break; // Euro
+				case 0xA6: c = 0x0160; break; // S with caron
+				case 0xA8: c = 0x0161; break; // s with caron
+				case 0xB4: c = 0x017D; break; // Z with caron
+				case 0xB8: c = 0x017E; break; // z with caron
+				case 0xBC: c = 0x0152; break; // OE ligature
+				case 0xBD: c = 0x0153; break; // oe ligature
+				case 0xBE: c = 0x0178; break; // Y with diaresis
+				default: break;
+			}
+			if (strto + Utf8CharLen(c) > lastof(tmp)) break;
+			strto += Utf8Encode(strto, c);
+		}
+
+		/* Terminate the new string and copy it back to the name array */
+		*strto = '\0';
+		memcpy(_name_array[i], tmp, sizeof(*_name_array));
+	}
+}
+
 // Calculate constants that depend on the landscape type.
 void InitializeLandscapeVariables(bool only_constants)
 {

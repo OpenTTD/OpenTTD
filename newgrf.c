@@ -23,6 +23,7 @@
 #include "vehicle.h"
 #include "newgrf_text.h"
 #include "table/sprites.h"
+#include "fontcache.h"
 #include "date.h"
 #include "currency.h"
 #include "sound.h"
@@ -3039,6 +3040,42 @@ static void LoadGRFSound(byte *buf, int len)
 	}
 }
 
+/* Action 0x12 */
+static void LoadFontGlyph(byte *buf, int len)
+{
+	/* <12> <num_def> <font_size> <num_char> <base_char>
+	 *
+	 * B num_def      Number of definitions
+	 * B font_size    Size of font (0 = normal, 1 = small, 2 = large)
+	 * B num_char     Number of consecutive glyphs
+	 * W base_char    First character index */
+
+	uint8 num_def;
+	uint i;
+
+	buf++; len--;
+	check_length(len, 1, "LoadFontGlyph");
+
+	num_def = grf_load_byte(&buf);
+
+	check_length(len, 1 + num_def * 4, "LoadFontGlyph");
+
+	for (i = 0; i < num_def; i++) {
+		FontSize size    = grf_load_byte(&buf);
+		uint8  num_char  = grf_load_byte(&buf);
+		uint16 base_char = grf_load_word(&buf);
+		uint c;
+
+		DEBUG(grf, 7) ("LoadFontGlyph: Loading %u glyph(s) at 0x%04X for size %u", num_char, base_char, size);
+
+		for (c = 0; c < num_char; c++) {
+			SetUnicodeGlyph(size, base_char + c, _cur_spriteid);
+			LoadNextSprite(_cur_spriteid++, _file_index);
+			_nfo_line++;
+		}
+	}
+}
+
 /* 'Action 0xFF' */
 static void GRFDataBlock(byte *buf, int len)
 {
@@ -3421,6 +3458,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 		/* 0x0F */ { NULL,            NULL,       NULL, },
 		/* 0x10 */ { DefineGotoLabel, NULL,       NULL, },
 		/* 0x11 */ { NULL,            NULL,       GRFSound, },
+		/* 0x12 */ { NULL,            NULL,       LoadFontGlyph, },
 	};
 
 	byte* buf;

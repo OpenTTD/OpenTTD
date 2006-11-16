@@ -13,14 +13,14 @@
 	//   |   |    Euro year  |       |       |    name
 	//   |   |    |          |       |       |    |
 static const CurrencySpec origin_currency_specs[NUM_CURRENCY] = {
-	{    1, ',', CF_NOEURO, "\xA3", "",      0,  STR_CURR_GBP    }, // british pounds
+	{    1, ',', CF_NOEURO, "£",    "",      0,  STR_CURR_GBP    }, // british pounds
 	{    2, ',', CF_NOEURO, "$",    "",      0,  STR_CURR_USD    }, // us dollars
-	{    2, ',', CF_ISEURO, "�",    "",      0,  STR_CURR_EUR    }, // Euro
-	{  220, ',', CF_NOEURO, "\xA5", "",      0,  STR_CURR_YEN    }, // yen
+	{    2, ',', CF_ISEURO, "€",    "",      0,  STR_CURR_EUR    }, // Euro
+	{  220, ',', CF_NOEURO, "¥",    "",      0,  STR_CURR_YEN    }, // yen
 	{   20, ',', 2002,      "",     " S.",   1,  STR_CURR_ATS    }, // austrian schilling
 	{   59, ',', 2002,      "BEF ", "",      0,  STR_CURR_BEF    }, // belgian franc
 	{    2, ',', CF_NOEURO, "CHF ", "",      0,  STR_CURR_CHF    }, // swiss franc
-	{   41, ',', CF_NOEURO, "",     " Kc",   1,  STR_CURR_CZK    }, // czech koruna // TODO: Should use the "c" with an upside down "^"
+	{   41, ',', CF_NOEURO, "",     " Kč",   1,  STR_CURR_CZK    }, // czech koruna
 	{    3, '.', 2002,      "DM ",  "",      0,  STR_CURR_DEM    }, // deutsche mark
 	{   11, '.', CF_NOEURO, "",     " kr",   1,  STR_CURR_DKK    }, // danish krone
 	{  245, '.', 2002,      "Pts ", "",      0,  STR_CURR_ESP    }, // spanish pesetas

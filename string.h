@@ -3,6 +3,8 @@
 #ifndef STRING_H
 #define STRING_H
 
+#include "macros.h"
+
 /*
  * dst: destination buffer
  * src: string to copy/concatenate
@@ -33,13 +35,18 @@ void str_validate(char *str);
 void str_strip_colours(char *str);
 
 /**
- * Valid filter types for IsValidAsciiChar.
+ * Valid filter types for IsValidChar.
  */
 typedef enum CharSetFilter {
 	CS_ALPHANUMERAL,      //! Both numeric and alphabetic and spaces and stuff
 	CS_NUMERAL,           //! Only numeric ones
 	CS_ALPHA,             //! Only alphabetic values
 } CharSetFilter;
+
+/** Convert the given string to lowercase */
+void strtolower(char *str);
+
+typedef uint32 WChar;
 
 /**
  * Only allow certain keys. You can define the filter to be used. This makes
@@ -48,9 +55,50 @@ typedef enum CharSetFilter {
  * @param afilter the filter to use
  * @return true or false depending if the character is printable/valid or not
  */
-bool IsValidAsciiChar(byte key, CharSetFilter afilter);
+bool IsValidChar(WChar key, CharSetFilter afilter);
 
-/** Convert the given string to lowercase */
-void strtolower(char *str);
+size_t Utf8Decode(WChar *c, const char *s);
+size_t Utf8Encode(char *buf, WChar c);
+
+
+static inline WChar Utf8Consume(const char **s)
+{
+	WChar c;
+	*s += Utf8Decode(&c, *s);
+	return c;
+}
+
+
+/** Return the length of a UTF-8 encoded character.
+ * @param c Unicode character.
+ * @return Length of UTF-8 encoding for character.
+ */
+static inline size_t Utf8CharLen(WChar c)
+{
+	if (c < 0x80)       return 1;
+	if (c < 0x800)      return 2;
+	if (c < 0x10000)    return 3;
+	if (c < 0x110000)   return 4;
+
+	/* Invalid valid, we encode as a '?' */
+	return 1;
+}
+
+
+/* Check if the given character is part of a UTF8 sequence */
+static inline bool IsUtf8Part(char c)
+{
+	return GB(c, 6, 2) == 2;
+}
+
+
+static inline bool IsPrintable(WChar c)
+{
+	if (c < 0x20)   return false;
+	if (c < 0xE000) return true;
+	if (c < 0xE200) return false;
+	return true;
+}
+
 
 #endif /* STRING_H */

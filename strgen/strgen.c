@@ -3,6 +3,7 @@
 #include "../stdafx.h"
 #include "../macros.h"
 #include "../string.h"
+#include "../table/control_codes.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -199,26 +200,41 @@ static void PutByte(byte c)
 }
 
 
-static void EmitSingleByte(char *buf, int value)
+static void PutUtf8(uint32 value)
 {
-	if (*buf != '\0') warning("Ignoring trailing letters in command");
-	PutByte((byte)value);
+	if (value < 0x80) {
+		PutByte(value);
+	} else if (value < 0x800) {
+		PutByte(0xC0 + GB(value,  6, 5));
+		PutByte(0x80 + GB(value,  0, 6));
+	} else if (value < 0x10000) {
+		PutByte(0xE0 + GB(value, 12, 4));
+		PutByte(0x80 + GB(value,  6, 6));
+		PutByte(0x80 + GB(value,  0, 6));
+	} else if (value < 0x110000) {
+		PutByte(0xF0 + GB(value, 18, 3));
+		PutByte(0x80 + GB(value, 12, 6));
+		PutByte(0x80 + GB(value,  6, 6));
+		PutByte(0x80 + GB(value,  0, 6));
+	} else {
+		warning("Invalid unicode value U+0x%X\n", value);
+	}
 }
 
 
-static void EmitEscapedByte(char *buf, int value)
+static void EmitSingleChar(char *buf, int value)
 {
 	if (*buf != '\0') warning("Ignoring trailing letters in command");
-	PutByte(0x85);
-	PutByte((byte)value);
+	PutUtf8(value);
 }
+
 
 static void EmitSetX(char *buf, int value)
 {
 	char *err;
 	int x = strtol(buf, &err, 0);
 	if (*err != 0) fatal("SetX param invalid");
-	PutByte(1);
+	PutUtf8(SCC_SETX);
 	PutByte((byte)x);
 }
 
@@ -234,7 +250,7 @@ static void EmitSetXY(char *buf, int value)
 	y = strtol(err + 1, &err, 0);
 	if (*err != 0) fatal("SetXY param invalid");
 
-	PutByte(2);
+	PutUtf8(SCC_SETXY);
 	PutByte((byte)x);
 	PutByte((byte)y);
 }
@@ -352,7 +368,7 @@ static void EmitPlural(char *buf, int value)
 		}
 	}
 
-	PutByte(0x8D);
+	PutUtf8(SCC_PLURAL_LIST);
 	PutByte(TranslateArgumentIdx(argidx));
 	EmitWordList(words, nw);
 }
@@ -372,7 +388,7 @@ static void EmitGender(char *buf, int value)
 			if (strcmp(buf, _genders[nw]) == 0) break;
 		}
 		// now nw contains the gender index
-		PutByte(0x87);
+		PutUtf8(SCC_GENDER_INDEX);
 		PutByte(nw);
 	} else {
 		const char* words[8];
@@ -386,8 +402,7 @@ static void EmitGender(char *buf, int value)
 			if (words[nw] == NULL) break;
 		}
 		if (nw != _numgenders) fatal("Bad # of arguments for gender command");
-		PutByte(0x85);
-		PutByte(13);
+		PutUtf8(SCC_GENDER_LIST);
 		PutByte(TranslateArgumentIdx(argidx));
 		EmitWordList(words, nw);
 	}
@@ -396,109 +411,108 @@ static void EmitGender(char *buf, int value)
 
 static const CmdStruct _cmd_structs[] = {
 	// Update position
-	{"SETX",  EmitSetX,  1, 0, 0},
-	{"SETXY", EmitSetXY, 2, 0, 0},
+	{"SETX",  EmitSetX,  SCC_SETX,  0, 0},
+	{"SETXY", EmitSetXY, SCC_SETXY, 0, 0},
 
 	// Font size
-	{"TINYFONT", EmitSingleByte, 8, 0, 0},
-	{"BIGFONT",  EmitSingleByte, 9, 0, 0},
+	{"TINYFONT", EmitSingleChar, SCC_TINYFONT, 0, 0},
+	{"BIGFONT",  EmitSingleChar, SCC_BIGFONT,  0, 0},
 
 	// Colors
-	{"BLUE",    EmitSingleByte, 15, 0, 0},
-	{"SILVER",  EmitSingleByte, 16, 0, 0},
-	{"GOLD",    EmitSingleByte, 17, 0, 0},
-	{"RED",     EmitSingleByte, 18, 0, 0},
-	{"PURPLE",  EmitSingleByte, 19, 0, 0},
-	{"LTBROWN", EmitSingleByte, 20, 0, 0},
-	{"ORANGE",  EmitSingleByte, 21, 0, 0},
-	{"GREEN",   EmitSingleByte, 22, 0, 0},
-	{"YELLOW",  EmitSingleByte, 23, 0, 0},
-	{"DKGREEN", EmitSingleByte, 24, 0, 0},
-	{"CREAM",   EmitSingleByte, 25, 0, 0},
-	{"BROWN",   EmitSingleByte, 26, 0, 0},
-	{"WHITE",   EmitSingleByte, 27, 0, 0},
-	{"LTBLUE",  EmitSingleByte, 28, 0, 0},
-	{"GRAY",    EmitSingleByte, 29, 0, 0},
-	{"DKBLUE",  EmitSingleByte, 30, 0, 0},
-	{"BLACK",   EmitSingleByte, 31, 0, 0},
+	{"BLUE",    EmitSingleChar, SCC_BLUE,    0, 0},
+	{"SILVER",  EmitSingleChar, SCC_SILVER,  0, 0},
+	{"GOLD",    EmitSingleChar, SCC_GOLD,    0, 0},
+	{"RED",     EmitSingleChar, SCC_RED,     0, 0},
+	{"PURPLE",  EmitSingleChar, SCC_PURPLE,  0, 0},
+	{"LTBROWN", EmitSingleChar, SCC_LTBROWN, 0, 0},
+	{"ORANGE",  EmitSingleChar, SCC_ORANGE,  0, 0},
+	{"GREEN",   EmitSingleChar, SCC_GREEN,   0, 0},
+	{"YELLOW",  EmitSingleChar, SCC_YELLOW,  0, 0},
+	{"DKGREEN", EmitSingleChar, SCC_DKGREEN, 0, 0},
+	{"CREAM",   EmitSingleChar, SCC_CREAM,   0, 0},
+	{"BROWN",   EmitSingleChar, SCC_BROWN,   0, 0},
+	{"WHITE",   EmitSingleChar, SCC_WHITE,   0, 0},
+	{"LTBLUE",  EmitSingleChar, SCC_LTBLUE,  0, 0},
+	{"GRAY",    EmitSingleChar, SCC_GRAY,    0, 0},
+	{"DKBLUE",  EmitSingleChar, SCC_DKBLUE,  0, 0},
+	{"BLACK",   EmitSingleChar, SCC_BLACK,   0, 0},
 
-	{"CURRCOMPACT",   EmitEscapedByte, 0, 1, 0}, // compact currency (32 bits)
-	{"REV",           EmitEscapedByte, 2, 0, 0}, // openttd revision string
-	{"SHORTCARGO",    EmitEscapedByte, 3, 2, 0}, // short cargo description, only ### tons, or ### litres
-	{"CURRCOMPACT64", EmitEscapedByte, 4, 2, 0}, // compact currency 64 bits
+	{"CURRCOMPACT",   EmitSingleChar, SCC_CURRENCY_COMPACT,    1, 0}, // compact currency (32 bits)
+	{"REV",           EmitSingleChar, SCC_REVISION,            0, 0}, // openttd revision string
+	{"SHORTCARGO",    EmitSingleChar, SCC_CARGO_SHORT,         2, 0}, // short cargo description, only ### tons, or ### litres
+	{"CURRCOMPACT64", EmitSingleChar, SCC_CURRENCY_COMPACT_64, 2, 0}, // compact currency 64 bits
 
 	// These are special versions of {STRING1}
 	// The first string includes the second string.
-	{"COMPANY",    EmitEscapedByte, 5, 1, 0},
-	{"PLAYERNAME", EmitEscapedByte, 5, 1, 0},
-	{"VEHICLE",    EmitEscapedByte, 5, 1, 0},
+	{"COMPANY",    EmitSingleChar, SCC_STRING1, 1, 0},
+	{"PLAYERNAME", EmitSingleChar, SCC_STRING1, 1, 0},
+	{"VEHICLE",    EmitSingleChar, SCC_STRING1, 1, 0},
 
-	{"STRING1", EmitEscapedByte, 5, 1, C_CASE}, // included string that consumes ONE argument
-	{"STRING2", EmitEscapedByte, 6, 2, C_CASE}, // included string that consumes TWO arguments
-	{"STRING3", EmitEscapedByte, 7, 3, C_CASE}, // included string that consumes THREE arguments
-	{"STRING4", EmitEscapedByte, 8, 4, C_CASE}, // included string that consumes FOUR arguments
-	{"STRING5", EmitEscapedByte, 9, 5, C_CASE}, // included string that consumes FIVE arguments
+	{"STRING1", EmitSingleChar, SCC_STRING1, 1, C_CASE}, // included string that consumes ONE argument
+	{"STRING2", EmitSingleChar, SCC_STRING2, 2, C_CASE}, // included string that consumes TWO arguments
+	{"STRING3", EmitSingleChar, SCC_STRING3, 3, C_CASE}, // included string that consumes THREE arguments
+	{"STRING4", EmitSingleChar, SCC_STRING4, 4, C_CASE}, // included string that consumes FOUR arguments
+	{"STRING5", EmitSingleChar, SCC_STRING5, 5, C_CASE}, // included string that consumes FIVE arguments
 
-	{"STATIONFEATURES", EmitEscapedByte, 10, 1, 0}, // station features string, icons of the features
-	{"INDUSTRY",        EmitEscapedByte, 11, 1, 0}, // industry, takes an industry #
-	{"VOLUME",          EmitEscapedByte, 12, 1, 0},
-	{"DATE_TINY",       EmitEscapedByte, 14, 1, 0},
-	{"CARGO",           EmitEscapedByte, 15, 2, 0},
-	{"POWER",           EmitEscapedByte, 16, 1, 0},
-	{"VOLUME_S",        EmitEscapedByte, 17, 1, 0},
-	{"WEIGHT",          EmitEscapedByte, 18, 1, 0},
-	{"WEIGHT_S",        EmitEscapedByte, 19, 1, 0},
-	{"FORCE",           EmitEscapedByte, 20, 1, 0},
+	{"STATIONFEATURES", EmitSingleChar, SCC_STATION_FEATURES, 1, 0}, // station features string, icons of the features
+	{"INDUSTRY",        EmitSingleChar, SCC_INDUSTRY_NAME,    1, 0}, // industry, takes an industry #
+	{"CARGO",           EmitSingleChar, SCC_CARGO,            2, 0},
+	{"POWER",           EmitSingleChar, SCC_POWER,            1, 0},
+	{"VOLUME",          EmitSingleChar, SCC_VOLUME,           1, 0},
+	{"VOLUME_S",        EmitSingleChar, SCC_VOLUME_SHORT,     1, 0},
+	{"WEIGHT",          EmitSingleChar, SCC_WEIGHT,           1, 0},
+	{"WEIGHT_S",        EmitSingleChar, SCC_WEIGHT_SHORT,     1, 0},
+	{"FORCE",           EmitSingleChar, SCC_FORCE,            1, 0},
+	{"VELOCITY",        EmitSingleChar, SCC_VELOCITY,         1, 0},
 
 	{"P", EmitPlural, 0, 0, C_DONTCOUNT}, // plural specifier
 	{"G", EmitGender, 0, 0, C_DONTCOUNT}, // gender specifier
 
-	{"DATE_LONG",  EmitSingleByte, 0x82, 1, 0},
-	{"DATE_SHORT", EmitSingleByte, 0x83, 1, 0},
+	{"DATE_TINY",  EmitSingleChar, SCC_DATE_TINY, 1, 0},
+	{"DATE_SHORT", EmitSingleChar, SCC_DATE_SHORT, 1, 0},
+	{"DATE_LONG",  EmitSingleChar, SCC_DATE_LONG, 1, 0},
 
-	{"VELOCITY", EmitSingleByte, 0x84, 1, 0},
+	{"SKIP", EmitSingleChar, SCC_SKIP, 1, 0},
 
-	// 0x85 is the marker for escaped commands
-
-	{"SKIP", EmitSingleByte, 0x86, 1, 0},
-
-	{"STRING", EmitSingleByte, 0x88, 1, C_CASE},
+	{"STRING", EmitSingleChar, SCC_STRING, 1, C_CASE},
 
 	// Numbers
-	{"COMMA", EmitSingleByte, 0x8B, 1, 0}, // Number with comma
-	{"NUM",   EmitSingleByte, 0x8E, 1, 0}, // Signed number
+	{"COMMA", EmitSingleChar, SCC_COMMA, 1, 0}, // Number with comma
+	{"NUM",   EmitSingleChar, SCC_NUM,   1, 0}, // Signed number
 
-	{"CURRENCY",   EmitSingleByte, 0x8F, 1, 0},
-	{"CURRENCY64", EmitSingleByte, 0x9C, 2, 0},
+	{"CURRENCY",   EmitSingleChar, SCC_CURRENCY,    1, 0},
+	{"CURRENCY64", EmitSingleChar, SCC_CURRENCY_64, 2, 0},
 
-	{"WAYPOINT", EmitSingleByte, 0x99, 1, 0}, // waypoint name
-	{"STATION",  EmitSingleByte, 0x9A, 1, 0},
-	{"TOWN",     EmitSingleByte, 0x9B, 1, 0},
+	{"WAYPOINT", EmitSingleChar, SCC_WAYPOINT_NAME, 1, 0}, // waypoint name
+	{"STATION",  EmitSingleChar, SCC_STATION_NAME,  1, 0},
+	{"TOWN",     EmitSingleChar, SCC_TOWN_NAME,     1, 0},
 
 	// 0x9D is used for the pseudo command SETCASE
 	// 0x9E is used for case switching
 
-	{"",               EmitSingleByte, '\n', 0, C_DONTCOUNT},
-	{"{",              EmitSingleByte, '{',  0, C_DONTCOUNT},
-	{"UPARROW",        EmitSingleByte, 0x80, 0, 0},
-	{"SMALLUPARROW",   EmitSingleByte, 0x90, 0, 0},
-	{"SMALLDOWNARROW", EmitSingleByte, 0x91, 0, 0},
-	{"TRAIN",          EmitSingleByte, 0x94, 0, 0},
-	{"LORRY",          EmitSingleByte, 0x95, 0, 0},
-	{"BUS",            EmitSingleByte, 0x96, 0, 0},
-	{"PLANE",          EmitSingleByte, 0x97, 0, 0},
-	{"SHIP",           EmitSingleByte, 0x98, 0, 0},
-	{"NBSP",           EmitSingleByte, 0xA0, 0, C_DONTCOUNT},
-	{"CENT",           EmitSingleByte, '¢',  0, C_DONTCOUNT},
-	{"POUNDSIGN",      EmitSingleByte, '£',  0, C_DONTCOUNT},
-	{"EURO",           EmitSingleByte, '¤',  0, C_DONTCOUNT},
-	{"YENSIGN",        EmitSingleByte, '¥',  0, C_DONTCOUNT},
-	{"COPYRIGHT",      EmitSingleByte, '©',  0, C_DONTCOUNT},
-	{"DOWNARROW",      EmitSingleByte, 0xAA, 0, C_DONTCOUNT},
-	{"CHECKMARK",      EmitSingleByte, 0xAC, 0, C_DONTCOUNT},
-	{"CROSS",          EmitSingleByte, 0xAD, 0, C_DONTCOUNT},
-	{"REGISTERED",     EmitSingleByte, '®',  0, C_DONTCOUNT},
-	{"RIGHTARROW",     EmitSingleByte, 0xAF, 0, C_DONTCOUNT},
+	{"",               EmitSingleChar, '\n',               0, C_DONTCOUNT},
+	{"{",              EmitSingleChar, '{',                0, C_DONTCOUNT},
+	{"UPARROW",        EmitSingleChar, SCC_UPARROW,        0, 0},
+	{"SMALLUPARROW",   EmitSingleChar, SCC_SMALLUPARROW,   0, 0},
+	{"SMALLDOWNARROW", EmitSingleChar, SCC_SMALLDOWNARROW, 0, 0},
+	{"TRAIN",          EmitSingleChar, SCC_TRAIN,          0, 0},
+	{"LORRY",          EmitSingleChar, SCC_LORRY,          0, 0},
+	{"BUS",            EmitSingleChar, SCC_BUS,            0, 0},
+	{"PLANE",          EmitSingleChar, SCC_PLANE,          0, 0},
+	{"SHIP",           EmitSingleChar, SCC_SHIP,           0, 0},
+	{"NBSP",           EmitSingleChar, 0xA0,               0, C_DONTCOUNT},
+	{"CENT",           EmitSingleChar, 0xA2,               0, C_DONTCOUNT},
+	{"POUNDSIGN",      EmitSingleChar, 0xA3,               0, C_DONTCOUNT},
+	{"EURO",           EmitSingleChar, 0x20AC,             0, C_DONTCOUNT},
+	{"YENSIGN",        EmitSingleChar, 0xA5,               0, C_DONTCOUNT},
+	{"COPYRIGHT",      EmitSingleChar, 0xA9,               0, C_DONTCOUNT},
+	{"DOWNARROW",      EmitSingleChar, SCC_DOWNARROW,      0, C_DONTCOUNT},
+	{"CHECKMARK",      EmitSingleChar, SCC_CHECKMARK,      0, C_DONTCOUNT},
+	{"CROSS",          EmitSingleChar, SCC_CROSS,          0, C_DONTCOUNT},
+	{"REGISTERED",     EmitSingleChar, 0xAE,               0, C_DONTCOUNT},
+	{"RIGHTARROW",     EmitSingleChar, SCC_RIGHTARROW,     0, C_DONTCOUNT},
+	{"SMALLLEFTARROW", EmitSingleChar, SCC_LESSTHAN,       0, C_DONTCOUNT},
+	{"SMALLRIGHTARROW",EmitSingleChar, SCC_GREATERTHAN,    0, C_DONTCOUNT},
 };
 
 
@@ -1028,7 +1042,7 @@ static int TranslateArgumentIdx(int argidx)
 
 static void PutArgidxCommand(void)
 {
-	PutByte(0x8C);
+	PutUtf8(SCC_ARG_INDEX);
 	PutByte(TranslateArgumentIdx(_cur_argidx));
 }
 
@@ -1052,7 +1066,7 @@ static void PutCommandString(const char *str)
 		if (cs == NULL) break;
 
 		if (casei != -1) {
-			PutByte(0x9D); // {SETCASE}
+			PutUtf8(SCC_SETCASE); // {SETCASE}
 			PutByte(casei);
 		}
 
@@ -1163,7 +1177,7 @@ static void WriteLangfile(const char *filename, int show_todo)
 				// It has this format
 				// <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
 				// Each LEN is printed using 2 bytes in big endian order.
-				PutByte(0x9E);
+				PutUtf8(SCC_SWITCH_CASE);
 				// Count the number of cases
 				for (num = 0, c = casep; c; c = c->next) num++;
 				PutByte(num);

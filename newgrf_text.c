@@ -18,6 +18,7 @@
 #include "macros.h"
 #include "table/strings.h"
 #include "newgrf_text.h"
+#include "table/control_codes.h"
 
 #define GRFTAB  28
 #define TABSIZE 11
@@ -153,46 +154,104 @@ static GRFTextEntry _grf_text[(1 << TABSIZE) * 3];
 static byte _currentLangID = GRFLX_ENGLISH;  //by default, english is used.
 
 
-static void TranslateTTDPatchCodes(char *str)
+static char *TranslateTTDPatchCodes(const char *str)
 {
-	char *c;
+	char *tmp = malloc(strlen(str) * 10); /* Allocate space to allow for expansion */
+	char *d = tmp;
+	bool unicode = false;
+	WChar c = Utf8Consume(&str);
 
-	for (c = str; *c != '\0'; c++) {
-		switch ((byte)*c) {
-			case 0x01: c++; break;
-			case 0x0D: *c = 10; break;
-			case 0x0E: *c = 8; break;
-			case 0x0F: *c = 9; break;
-			case 0x1F: *c = 2; c += 2; break;
+	if (c == 0x00DE) {
+		/* The thorn ('þ') indicates a unicode string to TTDPatch */
+		unicode = true;
+	} else {
+		str--;
+	}
+
+	for (;;) {
+		const char *tmp = str; /* Used for UTF-8 decoding */
+
+		c = (byte)*str++;
+		if (c == 0) break;
+
+		switch (c) {
+			case 0x01:
+				d += Utf8Encode(d, SCC_SETX);
+				*d++ = *str++;
+				break;
+			case 0x0D: *d++ = 10; break;
+			case 0x0E: d += Utf8Encode(d, SCC_TINYFONT); break;
+			case 0x0F: d += Utf8Encode(d, SCC_BIGFONT); break;
+			case 0x1F:
+				d += Utf8Encode(d, SCC_SETXY);
+				*d++ = *str++;
+				*d++ = *str++;
+				break;
 			case 0x7B:
 			case 0x7C:
 			case 0x7D:
-			case 0x7E: *c = 0x8E; break;
-			case 0x81: c += 2; break;
-			case 0x85: *c = 0x86; break;
-			case 0x88: *c = 15; break;
-			case 0x89: *c = 16; break;
-			case 0x8A: *c = 17; break;
-			case 0x8B: *c = 18; break;
-			case 0x8C: *c = 19; break;
-			case 0x8D: *c = 20; break;
-			case 0x8E: *c = 21; break;
-			case 0x8F: *c = 22; break;
-			case 0x90: *c = 23; break;
-			case 0x91: *c = 24; break;
-			case 0x92: *c = 25; break;
-			case 0x93: *c = 26; break;
-			case 0x94: *c = 27; break;
-			case 0x95: *c = 28; break;
-			case 0x96: *c = 29; break;
-			case 0x97: *c = 30; break;
-			case 0x98: *c = 31; break;
+			case 0x7E: d += Utf8Encode(d, SCC_NUM); break;
+			case 0x7F: d += Utf8Encode(d, SCC_CURRENCY); break;
+			case 0x80: d += Utf8Encode(d, SCC_STRING); break;
+			case 0x81: {
+				StringID string;
+				string  = *str++;
+				string |= *str++ << 8;
+				d += Utf8Encode(d, SCC_STRING_ID);
+				d += Utf8Encode(d, string);
+				break;
+			}
+			case 0x82: d += Utf8Encode(d, SCC_DATE_TINY); break;
+			case 0x83: d += Utf8Encode(d, SCC_DATE_SHORT); break;
+			case 0x84: d += Utf8Encode(d, SCC_VELOCITY); break;
+			case 0x85: d += Utf8Encode(d, SCC_SKIP);    break;
+			case 0x86: /* "Rotate down top 4 words on stack" */ break;
+			case 0x87: d += Utf8Encode(d, SCC_VOLUME);  break;
+			case 0x88: d += Utf8Encode(d, SCC_BLUE);    break;
+			case 0x89: d += Utf8Encode(d, SCC_SILVER);  break;
+			case 0x8A: d += Utf8Encode(d, SCC_GOLD);    break;
+			case 0x8B: d += Utf8Encode(d, SCC_RED);     break;
+			case 0x8C: d += Utf8Encode(d, SCC_PURPLE);  break;
+			case 0x8D: d += Utf8Encode(d, SCC_LTBROWN); break;
+			case 0x8E: d += Utf8Encode(d, SCC_ORANGE);  break;
+			case 0x8F: d += Utf8Encode(d, SCC_GREEN);   break;
+			case 0x90: d += Utf8Encode(d, SCC_YELLOW);  break;
+			case 0x91: d += Utf8Encode(d, SCC_DKGREEN); break;
+			case 0x92: d += Utf8Encode(d, SCC_CREAM);   break;
+			case 0x93: d += Utf8Encode(d, SCC_BROWN);   break;
+			case 0x94: d += Utf8Encode(d, SCC_WHITE);   break;
+			case 0x95: d += Utf8Encode(d, SCC_LTBLUE);  break;
+			case 0x96: d += Utf8Encode(d, SCC_GRAY);    break;
+			case 0x97: d += Utf8Encode(d, SCC_DKBLUE);  break;
+			case 0x98: d += Utf8Encode(d, SCC_BLACK);   break;
+			case 0x9E: d += Utf8Encode(d, 0x20AC); break; // Euro
+			case 0x9F: d += Utf8Encode(d, 0x0178); break; // Y with diaeresis
+			case 0xA0: d += Utf8Encode(d, SCC_UPARROW); break;
+			case 0xAA: d += Utf8Encode(d, SCC_DOWNARROW); break;
+			case 0xAC: d += Utf8Encode(d, SCC_CHECKMARK); break;
+			case 0xAD: d += Utf8Encode(d, SCC_CROSS); break;
+			case 0xAF: d += Utf8Encode(d, SCC_RIGHTARROW); break;
+			case 0xB4: d += Utf8Encode(d, SCC_TRAIN); break;
+			case 0xB5: d += Utf8Encode(d, SCC_LORRY); break;
+			case 0xB6: d += Utf8Encode(d, SCC_BUS); break;
+			case 0xB7: d += Utf8Encode(d, SCC_PLANE); break;
+			case 0xB8: d += Utf8Encode(d, SCC_SHIP); break;
 			default:
+				if (unicode) {
+					d += Utf8Encode(d, Utf8Consume(&tmp));
+					str = tmp;
+					break;
+				}
+
 				/* Validate any unhandled character */
-				if (!IsValidAsciiChar(*c, CS_ALPHANUMERAL)) *c = '?';
+				if (!IsValidChar(c, CS_ALPHANUMERAL)) c = '?';
+				d += Utf8Encode(d, c);
 				break;
 		}
 	}
+
+	*d = '\0';
+	return realloc(tmp, strlen(tmp) + 1);
 }
 
 
@@ -201,6 +260,7 @@ static void TranslateTTDPatchCodes(char *str)
  */
 StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool new_scheme, const char *text_to_add, StringID def_string)
 {
+	char *translatedtext;
 	GRFText *newtext;
 	uint id;
 
@@ -231,12 +291,14 @@ StringID AddGRFString(uint32 grfid, uint16 stringid, byte langid_to_add, bool ne
 	/* Too many strings allocated, return empty */
 	if (id == lengthof(_grf_text)) return STR_EMPTY;
 
-	newtext = malloc(sizeof(*newtext) + strlen(text_to_add) + 1);
+	translatedtext = TranslateTTDPatchCodes(text_to_add);
+
+	newtext = malloc(sizeof(*newtext) + strlen(translatedtext) + 1);
 	newtext->next   = NULL;
 	newtext->langid = langid_to_add;
-	strcpy(newtext->text, text_to_add);
+	strcpy(newtext->text, translatedtext);
 
-	TranslateTTDPatchCodes(newtext->text);
+	free(translatedtext);
 
 	/* If we didn't find our stringid and grfid in the list, allocate a new id */
 	if (id == _num_grf_texts) _num_grf_texts++;

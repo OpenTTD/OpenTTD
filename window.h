@@ -160,7 +160,7 @@ struct WindowEvent {
 
 		struct {
 			bool cont;     // continue the search? (default true)
-			byte ascii;    // 8-bit ASCII-value of the key
+			uint16 key;    // 16-bit Unicode value of the key
 			uint16 keycode;// untranslated key (including shift-state)
 		} keypress;
 

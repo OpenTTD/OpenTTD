@@ -35,11 +35,13 @@ function showhelp() {
 	echo " iconv              Do you want iconv-support?          [no]"
 	echo " network            Do you want network-support?        [yes]"
 	echo " cocoa              Do you want cocoa-support? (MacOSX) [no]"
+	echo " freetype           Do you want freetype-support?       [yes]"
 	echo ""
 	echo "Params used to configure external libs:"
 	echo " --static-zlib-path Set the path to your static zlib    []"
 	echo " --sdl-config       Where is your sdl-config            [sdl-config]"
 	echo " --libpng-config    Where is your libpng-config         [libpng-config]"
+	echo " --freetype-config  Where is your freetype-config       [freetype-config]"
 	echo " --with-iconv       Set the path to your iconv headers  []"
 	echo " "
 }
@@ -181,6 +183,12 @@ do
 		--without-cocoa)
 			PARAM="$PARAM WITH_COCOA="
 			;;
+		--with-freetype)
+			PARAM="$PARAM WITH_FREETYPE=1"
+			;;
+		--without-freetype)
+			PARAM="$PARAM WITH_FREETYPE="
+			;;
 		--static-zlib-path=*)
 			handle STATIC_ZLIB_PATH "$n"
 			;;
@@ -198,6 +206,12 @@ do
 			;;
 		--libpng-config)
 			ITEM="LIBPNG_CONFIG"
+			;;
+		--freetype-config=*)
+			handle FREETYPE_CONFIG "$n"
+			;;
+		--freetype-config)
+			ITEM="FREETYPE_CONFIG"
 			;;
 
 		--*=*)

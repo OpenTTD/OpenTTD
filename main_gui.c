@@ -29,6 +29,7 @@
 #include "variables.h"
 #include "train.h"
 #include "unmovable_map.h"
+#include "string.h"
 #include "screenshot.h"
 #include "genworld.h"
 #include "settings.h"
@@ -2085,15 +2086,16 @@ static bool DrawScrollingStatusText(const NewsItem *ni, int pos)
 	s = buf;
 	d = buffer;
 
-	for (;; s++) {
-		if (*s == '\0') {
+	for (;;) {
+		WChar c = Utf8Consume(&s);
+		if (c == 0) {
 			*d = '\0';
 			break;
 		} else if (*s == 0x0D) {
 			d[0] = d[1] = d[2] = d[3] = ' ';
 			d += 4;
-		} else if ((byte)*s >= ' ' && ((byte)*s < 0x88 || (byte)*s >= 0x99)) {
-			*d++ = *s;
+		} else if (IsPrintable(c)) {
+			d += Utf8Encode(d, c);
 		}
 	}
 

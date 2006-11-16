@@ -21,6 +21,7 @@ int _debug_oldloader_level;
 int _debug_ntp_level;
 int _debug_npf_level;
 int _debug_yapf_level;
+int _debug_freetype_level;
 
 
 void CDECL debug(const char *s, ...)
@@ -53,7 +54,8 @@ typedef struct DebugLevel {
 	DEBUG_LEVEL(oldloader),
 	DEBUG_LEVEL(ntp),
 	DEBUG_LEVEL(npf),
-	DEBUG_LEVEL(yapf)
+	DEBUG_LEVEL(yapf),
+	DEBUG_LEVEL(freetype)
 	};
 #undef DEBUG_LEVEL
 

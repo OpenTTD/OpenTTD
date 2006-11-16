@@ -235,6 +235,12 @@ $(error WITH_PNG can't be used when LIBPNG_CONFIG is not set. Edit Makefile.conf
 	endif
 endif
 
+ifdef WITH_FREETYPE
+	ifndef FREETYPE_CONFIG
+$(error WITH_FREETYPE can't be used when FREETYPE_CONFIG is not set. Edit Makefile.config to correct this)
+	endif
+endif
+
 ##############################################################################
 #
 # Compiler configuration
@@ -493,6 +499,15 @@ ifndef MINGW
 	LIBS += -lc
 endif
 
+# freetype config
+ifdef WITH_FREETYPE
+CDEFS += -DWITH_FREETYPE
+CCFLAGS_FREETYPE := $(shell $(FREETYPE_CONFIG) --cflags)
+LDFLAGS_FREETYPE := $(shell $(FREETYPE_CONFIG) --libs)
+CFLAGS += $(CCFLAGS_FREETYPE)
+LIBS += $(LDFLAGS_FREETYPE)
+endif
+
 # iconv is enabled defaultly on OSX >= 10.3
 ifdef OSX
 	ifndef JAGUAR
@@ -670,6 +685,7 @@ SRCS += engine.c
 SRCS += engine_gui.c
 SRCS += fileio.c
 SRCS += fios.c
+SRCS += fontcache.c
 SRCS += genworld.c
 SRCS += genworld_gui.c
 SRCS += gfx.c
@@ -884,7 +900,7 @@ $(TTD): $(OBJS) $(MAKE_CONFIG)
 	$(Q)$(CXX_TARGET) $(LDFLAGS) $(TTDLDFLAGS) $(OBJS) $(LIBS) -o $@
 endif
 
-$(STRGEN): strgen/strgen.c string.c endian_host.h
+$(STRGEN): strgen/strgen.c string.c endian_host.h table/control_codes.h
 	@echo '===> Compiling and Linking $@'
 	$(Q)$(CC_HOST) $(CFLAGS_HOST) -DSTRGEN strgen/strgen.c string.c -o $@
 

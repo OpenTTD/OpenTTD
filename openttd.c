@@ -52,6 +52,7 @@
 #include "genworld.h"
 #include "date.h"
 #include "clear_map.h"
+#include "fontcache.h"
 
 #include <stdarg.h>
 
@@ -432,10 +433,15 @@ int ttd_main(int argc, char *argv[])
 	MxInitialize(11025);
 	SoundInitialize("sample.cat");
 
+	/* Initialize FreeType */
+	InitFreeType();
+
 	// This must be done early, since functions use the InvalidateWindow* calls
 	InitWindowSystem();
 
 	GfxLoadSprites();
+	/* Initialize the unicode to sprite mapping table */
+	InitializeUnicodeGlyphMap();
 	LoadStringWidthTable();
 
 	DEBUG(driver, 1) ("Loading drivers...");
@@ -1524,6 +1530,10 @@ bool AfterLoadGame(void)
 			v->current_order.refit_cargo   = CT_NO_REFIT;
 			v->current_order.refit_subtype = CT_NO_REFIT;
 		}
+	}
+
+	if (CheckSavegameVersion(37)) {
+		ConvertNameArray();
 	}
 
 	return true;

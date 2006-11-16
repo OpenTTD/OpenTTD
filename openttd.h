@@ -464,6 +464,10 @@ enum {
 	EXPENSES_OTHER        = 12,
 };
 
+enum {
+	MAX_LANG = 64,
+};
+
 // special string constants
 enum SpecialStrings {
 
@@ -506,17 +510,17 @@ enum SpecialStrings {
 	SPECSTR_PRESIDENT_NAME     = 0x70E7,
 	SPECSTR_SONGNAME           = 0x70E8,
 
-	// reserve 32 strings for the *.lng files
+	// reserve MAX_LANG strings for the *.lng files
 	SPECSTR_LANGUAGE_START     = 0x7100,
-	SPECSTR_LANGUAGE_END       = 0x711f,
+	SPECSTR_LANGUAGE_END       = SPECSTR_LANGUAGE_START + MAX_LANG - 1,
 
 	// reserve 32 strings for various screen resolutions
-	SPECSTR_RESOLUTION_START   = 0x7120,
-	SPECSTR_RESOLUTION_END     = 0x713f,
+	SPECSTR_RESOLUTION_START   = SPECSTR_LANGUAGE_END + 1,
+	SPECSTR_RESOLUTION_END     = SPECSTR_RESOLUTION_START + 0x1F,
 
 	// reserve 32 strings for screenshot formats
-	SPECSTR_SCREENSHOT_START   = 0x7140,
-	SPECSTR_SCREENSHOT_END     = 0x715F,
+	SPECSTR_SCREENSHOT_START   = SPECSTR_RESOLUTION_END + 1,
+	SPECSTR_SCREENSHOT_END     = SPECSTR_SCREENSHOT_START + 0x1F,
 
 	// Used to implement SetDParamStr
 	STR_SPEC_DYNSTRING         = 0xF800,

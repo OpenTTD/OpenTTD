@@ -480,13 +480,15 @@ static byte MakeCzechTownName(char *buf, uint32 seed, const char *last)
 
 		strecat(buf, name_czech_adj[prefix].name, last);
 		endpos = strlen(buf) - 1;
+		/* Find the first character in a UTF-8 sequence */
+		while (GB(buf[endpos], 6, 2) == 2) endpos--;
 		if (gender == CZG_SMASC && pattern == CZP_PRIVL) {
 			/* -ovX -> -uv */
 			buf[endpos - 2] = 'u';
 			assert(buf[endpos - 1] == 'v');
 			buf[endpos] = '\0';
 		} else {
-			buf[endpos] = name_czech_patmod[gender][pattern];
+			strecpy(buf + endpos, name_czech_patmod[gender][pattern], last);
 		}
 
 		strecat(buf, " ", last);

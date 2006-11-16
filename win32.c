@@ -926,39 +926,67 @@ void DeterminePaths(void)
  */
 bool InsertTextBufferClipboard(Textbuf *tb)
 {
-	if (IsClipboardFormatAvailable(CF_TEXT)) {
-		HGLOBAL cbuf;
-		const byte *data, *dataptr;
-		uint16 width = 0;
-		uint16 length = 0;
+	HGLOBAL cbuf;
+	char utf8_buf[512];
+	const char *ptr;
+
+	WChar c;
+	uint16 width, length;
+
+	if (IsClipboardFormatAvailable(CF_UNICODETEXT)) {
+		int bytec;
 
 		OpenClipboard(NULL);
-		cbuf = GetClipboardData(CF_TEXT);
-		data = GlobalLock(cbuf); // clipboard data
-		dataptr = data;
+		cbuf = GetClipboardData(CF_UNICODETEXT);
 
-		for (; IsValidAsciiChar(*dataptr, CS_ALPHANUMERAL) && (tb->length + length) < (tb->maxlength - 1) &&
-				(tb->maxwidth == 0 || width + tb->width + GetCharacterWidth(FS_NORMAL, (byte)*dataptr) <= tb->maxwidth); dataptr++) {
-					width += GetCharacterWidth(FS_NORMAL, (byte)*dataptr);
-			length++;
-		}
-
-		if (length == 0) return false;
-
-		memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->length - tb->caretpos);
-		memcpy(tb->buf + tb->caretpos, data, length);
-		tb->width += width;
-		tb->caretxoffs += width;
-
-		tb->length += length;
-		tb->caretpos += length;
-		tb->buf[tb->length] = '\0'; // terminating zero
-
+		ptr = GlobalLock(cbuf);
+		bytec = WideCharToMultiByte(CP_UTF8, 0, (wchar_t*)ptr, -1, utf8_buf, lengthof(utf8_buf), NULL, NULL);
 		GlobalUnlock(cbuf);
 		CloseClipboard();
-		return true;
+
+		if (bytec == 0) {
+			DEBUG(misc, 0) ("[utf8] Error converting '%s'. Errno %d", ptr, GetLastError());
+			return false;
+		}
+	} else if (IsClipboardFormatAvailable(CF_TEXT)) {
+		OpenClipboard(NULL);
+		cbuf = GetClipboardData(CF_TEXT);
+
+		ptr = GlobalLock(cbuf);
+		ttd_strlcpy(utf8_buf, ptr, lengthof(utf8_buf));
+		GlobalUnlock(cbuf);
+		CloseClipboard();
+	} else {
+		return false;
 	}
-	return false;
+
+	width = length = 0;
+
+	for (ptr = utf8_buf; (c = Utf8Consume(&ptr)) != '\0';) {
+		byte charwidth;
+
+		if (!IsPrintable(c)) break;
+		if (tb->length + length >= tb->maxlength - 1) break;
+		charwidth = GetCharacterWidth(FS_NORMAL, c);
+
+		if (tb->maxwidth != 0 && width + tb->width + charwidth > tb->maxwidth) break;
+
+		width += charwidth;
+		length += Utf8CharLen(c);
+	}
+
+	if (length == 0) return false;
+
+	memmove(tb->buf + tb->caretpos + length, tb->buf + tb->caretpos, tb->length - tb->caretpos);
+	memcpy(tb->buf + tb->caretpos, utf8_buf, length);
+	tb->width += width;
+	tb->caretxoffs += width;
+
+	tb->length += length;
+	tb->caretpos += length;
+	tb->buf[tb->length] = '\0'; // terminating zero
+
+	return true;
 }
 
 

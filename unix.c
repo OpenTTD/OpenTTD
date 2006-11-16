@@ -291,7 +291,7 @@ void CSleep(int milliseconds)
 #include <errno.h>
 #include "debug.h"
 
-#define INTERNALCODE "ISO-8859-15"
+#define INTERNALCODE "UTF-8"
 
 /** Try and try to decipher the current locale from environmental
  * variables. MacOSX is hardcoded, other OS's are dynamic. If no suitable

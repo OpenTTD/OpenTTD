@@ -1422,7 +1422,7 @@ void HandleKeypress(uint32 key)
 
 	// Setup event
 	e.event = WE_KEYPRESS;
-	e.we.keypress.ascii = GB(key, 0, 8);
+	e.we.keypress.key     = GB(key,  0, 16);
 	e.we.keypress.keycode = GB(key, 16, 16);
 	e.we.keypress.cont = true;
 

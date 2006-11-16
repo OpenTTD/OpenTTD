@@ -205,8 +205,8 @@ static const char *credits[] = {
 	"  Bjarni Corfitzen (Bjarni) - MacOSX port, coder",
 	"  Matthijs Kooijman (blathijs) - Pathfinder-god",
 	"  Victor Fischer (Celestar) - Programming everywhere you need him to",
-	"  Tamás Faragó (Darkvater) - Lead coder",
-	"  Attila Bán (MiHaMiX) - WebTranslator, Nightlies, Wiki and bugtracker host",
+	"  TamÃ¡s FaragÃ³ (Darkvater) - Lead coder",
+	"  Attila BÃ¡n (MiHaMiX) - WebTranslator, Nightlies, Wiki and bugtracker host",
 	"  Owen Rudge (orudge) - Forum- and masterserver host, OS/2 port",
 	"  Peter Nelson (peter1138) - Spiritual descendant from newgrf gods",
 	"  Christoph Mallon (Tron) - Programmer, code correctness police",
@@ -221,13 +221,13 @@ static const char *credits[] = {
 	"  Josef Drexler - For his great work on TTDPatch",
 	"  Marcin Grzegorczyk - For his documentation of TTD internals",
 	"  Petr Baudis (pasky) - Many patches, newgrf support",
-	"  Stefan Meißner (sign_de) - For his work on the console",
+	"  Stefan MeiÃŸner (sign_de) - For his work on the console",
 	"  Simon Sasburg (HackyKid) - Many bugfixes he has blessed us with (and PBS)",
 	"  Cian Duffy (MYOB) - BeOS port / manual writing",
 	"  Christian Rosentreter (tokai) - MorphOS / AmigaOS port",
 	"",
-	"  Michael Blunck - Pre-Signals and Semaphores © 2003",
-	"  George - Canal/Lock graphics © 2003-2004",
+	"  Michael Blunck - Pre-Signals and Semaphores Â© 2003",
+	"  George - Canal/Lock graphics Â© 2003-2004",
 	"  Marcin Grzegorczyk - Foundations for Tracks on Slopes",
 	"  All Translators - Who made OpenTTD a truly international game",
 	"  Bug Reporters - Without whom OpenTTD would still be full of bugs!",
@@ -782,11 +782,30 @@ void SetHScrollCount(Window *w, int num)
 	if (num < w->hscroll.pos) w->hscroll.pos = num;
 }
 
-static void DelChar(Textbuf *tb)
+/* Delete a character at the caret position in a text buf.
+ * If backspace is set, delete the character before the caret,
+ * else delete the character after it. */
+static void DelChar(Textbuf *tb, bool backspace)
 {
-	tb->width -= GetCharacterWidth(FS_NORMAL, (byte)tb->buf[tb->caretpos]);
-	memmove(tb->buf + tb->caretpos, tb->buf + tb->caretpos + 1, tb->length - tb->caretpos);
-	tb->length--;
+	WChar c;
+	uint width;
+	size_t len;
+
+	if (backspace) {
+		do {
+			tb->caretpos--;
+		} while (IsUtf8Part(*(tb->buf + tb->caretpos)));
+	}
+
+	len = Utf8Decode(&c, tb->buf + tb->caretpos);
+	width = GetCharacterWidth(FS_NORMAL, c);
+
+	tb->width  -= width;
+	if (backspace) tb->caretxoffs -= width;
+
+	/* Move the remaining characters over the marker */
+	memmove(tb->buf + tb->caretpos, tb->buf + tb->caretpos + len, tb->length - tb->caretpos - len + 1);
+	tb->length -= len;
 }
 
 /**
@@ -799,13 +818,10 @@ static void DelChar(Textbuf *tb)
 bool DeleteTextBufferChar(Textbuf *tb, int delmode)
 {
 	if (delmode == WKC_BACKSPACE && tb->caretpos != 0) {
-		tb->caretpos--;
-		tb->caretxoffs -= GetCharacterWidth(FS_NORMAL, (byte)tb->buf[tb->caretpos]);
-
-		DelChar(tb);
+		DelChar(tb, true);
 		return true;
 	} else if (delmode == WKC_DELETE && tb->caretpos < tb->length) {
-		DelChar(tb);
+		DelChar(tb, false);
 		return true;
 	}
 
@@ -831,16 +847,17 @@ void DeleteTextBufferAll(Textbuf *tb)
  * @param key Character to be inserted
  * @return Return true on successfull change of Textbuf, or false otherwise
  */
-bool InsertTextBufferChar(Textbuf *tb, byte key)
+bool InsertTextBufferChar(Textbuf *tb, WChar key)
 {
 	const byte charwidth = GetCharacterWidth(FS_NORMAL, key);
-	if (tb->length < (tb->maxlength - 1) && (tb->maxwidth == 0 || tb->width + charwidth <= tb->maxwidth)) {
-		memmove(tb->buf + tb->caretpos + 1, tb->buf + tb->caretpos, (tb->length - tb->caretpos) + 1);
-		tb->buf[tb->caretpos] = key;
-		tb->length++;
-		tb->width += charwidth;
+	size_t len = Utf8CharLen(key);
+	if (tb->length < (tb->maxlength - len) && (tb->maxwidth == 0 || tb->width + charwidth <= tb->maxwidth)) {
+		memmove(tb->buf + tb->caretpos + len, tb->buf + tb->caretpos, tb->length - tb->caretpos + 1);
+		Utf8Encode(tb->buf + tb->caretpos, key);
+		tb->length += len;
+		tb->width  += charwidth;
 
-		tb->caretpos++;
+		tb->caretpos   += len;
 		tb->caretxoffs += charwidth;
 		return true;
 	}
@@ -859,15 +876,25 @@ bool MoveTextBufferPos(Textbuf *tb, int navmode)
 	switch (navmode) {
 	case WKC_LEFT:
 		if (tb->caretpos != 0) {
-			tb->caretpos--;
-			tb->caretxoffs -= GetCharacterWidth(FS_NORMAL, (byte)tb->buf[tb->caretpos]);
+			WChar c;
+
+			do {
+				tb->caretpos--;
+			} while (IsUtf8Part(*(tb->buf + tb->caretpos)));
+
+			Utf8Decode(&c, tb->buf + tb->caretpos);
+			tb->caretxoffs -= GetCharacterWidth(FS_NORMAL, c);
+
 			return true;
 		}
 		break;
 	case WKC_RIGHT:
 		if (tb->caretpos < tb->length) {
-			tb->caretxoffs += GetCharacterWidth(FS_NORMAL, (byte)tb->buf[tb->caretpos]);
-			tb->caretpos++;
+			WChar c;
+
+			tb->caretpos   += Utf8Decode(&c, tb->buf + tb->caretpos);
+			tb->caretxoffs += GetCharacterWidth(FS_NORMAL, c);
+
 			return true;
 		}
 		break;
@@ -910,16 +937,16 @@ void InitializeTextBuffer(Textbuf *tb, const char *buf, uint16 maxlength, uint16
  */
 void UpdateTextBufferSize(Textbuf *tb)
 {
-	const char *buf;
+	const char *buf = tb->buf;
+	WChar c = Utf8Consume(&buf);
 
-	tb->length = 0;
 	tb->width = 0;
 
-	for (buf = tb->buf; *buf != '\0' && tb->length < (tb->maxlength - 1); buf++) {
-		tb->length++;
-		tb->width += GetCharacterWidth(FS_NORMAL, (byte)*buf);
+	for (; c != '\0' && tb->length < (tb->maxlength - 1); c = Utf8Consume(&buf)) {
+		tb->width += GetCharacterWidth(FS_NORMAL, c);
 	}
 
+	tb->length = buf - tb->buf - 1;
 	tb->caretpos = tb->length;
 	tb->caretxoffs = tb->width;
 }
@@ -948,9 +975,10 @@ int HandleEditBoxKey(Window *w, querystr_d *string, int wid, WindowEvent *e)
 			InvalidateWidget(w, wid);
 		break;
 	default:
-		if (IsValidAsciiChar(e->we.keypress.ascii, string->afilter)) {
-			if (InsertTextBufferChar(&string->text, e->we.keypress.ascii))
+		if (IsValidChar(e->we.keypress.key, string->afilter)) {
+			if (InsertTextBufferChar(&string->text, e->we.keypress.key)) {
 				InvalidateWidget(w, wid);
+			}
 		} else { // key wasn't caught. Continue only if standard entry specified
 			e->we.keypress.cont = (string->afilter == CS_ALPHANUMERAL);
 		}

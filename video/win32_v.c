@@ -349,14 +349,15 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 		case WM_KEYDOWN: {
 			// this is the rewritten ascii input function
 			// it disables windows deadkey handling --> more linux like :D
-			WORD w = 0;
+			wchar_t w = 0;
 			byte ks[256];
 			uint scancode;
 			uint32 pressed_key;
 
 			GetKeyboardState(ks);
-			if (ToAscii(wParam, 0, ks, &w, 0) == 0) {
-				w = 0; // no translation was possible
+			if (ToUnicode(wParam, 0, ks, &w, 1, 0) == 0) {
+				/* On win9x ToUnicode always fails, so fall back to ToAscii */
+				if (ToAscii(wParam, 0, ks, &w, 0) == 0) w = 0; // no translation was possible
 			}
 
 			pressed_key = w | MapWindowsKey(wParam) << 16;

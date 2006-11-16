@@ -15,6 +15,7 @@
 #include "sound.h"
 #include "variables.h"
 #include "date.h"
+#include "string.h"
 
 /* News system
  * News system is realized as a FIFO queue (in an array)
@@ -569,7 +570,8 @@ static byte getNews(byte i)
 static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint maxw)
 {
 	char buffer[512], buffer2[512];
-	char *ptr, *dest;
+	const char *ptr;
+	char *dest;
 	StringID str;
 
 	if (ni->display_mode == 3) {
@@ -582,12 +584,16 @@ static void DrawNewsString(int x, int y, uint16 color, const NewsItem *ni, uint 
 	GetString(buffer, str, lastof(buffer));
 	/* Copy the just gotten string to another buffer to remove any formatting
 	 * from it such as big fonts, etc. */
-	for (ptr = buffer, dest = buffer2; *ptr != '\0'; ptr++) {
-		if (*ptr == '\r') {
+	ptr  = buffer;
+	dest = buffer2;
+	for (;;) {
+		WChar c = Utf8Consume(&ptr);
+		if (c == 0) break;
+		if (c == '\r') {
 			dest[0] = dest[1] = dest[2] = dest[3] = ' ';
 			dest += 4;
-		} else if ((byte)*ptr >= ' ' && ((byte)*ptr < 0x88 || (byte)*ptr >= 0x99)) {
-			*dest++ = *ptr;
+		} else if (IsPrintable(c)) {
+			dest += Utf8Encode(dest, c);
 		}
 	}
 

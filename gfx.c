@@ -12,6 +12,8 @@
 #include "table/sprites.h"
 #include "hal.h"
 #include "variables.h"
+#include "table/control_codes.h"
+#include "fontcache.h"
 #include "genworld.h"
 
 #ifdef _DEBUG
@@ -244,40 +246,6 @@ void GfxDrawLine(int x, int y, int x2, int y2, int color)
 }
 
 
-static inline SpriteID GetFontBase(FontSize size)
-{
-	switch (size) {
-		default: NOT_REACHED();
-		case FS_NORMAL: return SPR_ASCII_SPACE;
-		case FS_SMALL:  return SPR_ASCII_SPACE_SMALL;
-		case FS_LARGE:  return SPR_ASCII_SPACE_BIG;
-	}
-}
-
-
-// ASSIGNMENT OF ASCII LETTERS < 32
-// 0 - end of string
-// 1 - SETX <BYTE>
-// 2 - SETXY <BYTE> <BYTE>
-// 3-7 -
-// 8 - TINYFONT
-// 9 - BIGFONT
-// 10 - newline
-// 11-14 -
-// 15-31 - 17 colors
-
-
-enum {
-	ASCII_SETX       =  1,
-	ASCII_SETXY      =  2,
-
-	ASCII_TINYFONT   =  8,
-	ASCII_BIGFONT    =  9,
-	ASCII_NL         = 10,
-
-	ASCII_COLORSTART = 15,
-};
-
 /** Truncate a given string to a maximum width if neccessary.
  * If the string is truncated, add three dots ('...') to show this.
  * @param *dest string that is checked and possibly truncated
@@ -289,13 +257,13 @@ static int TruncateString(char *str, int maxw)
 	FontSize size = _cur_fontsize;
 	int ddd, ddd_w;
 
-	byte c;
+	WChar c;
 	char *ddd_pos;
 
 	ddd_w = ddd = GetCharacterWidth(size, '.') * 3;
 
-	for (ddd_pos = str; (c = *str++) != '\0'; ) {
-		if (c >= ASCII_LETTERSTART) {
+	for (ddd_pos = str; (c = Utf8Consume((const char **)&str)) != '\0'; ) {
+		if (IsPrintable(c)) {
 			w += GetCharacterWidth(size, c);
 
 			if (w >= maxw) {
@@ -305,12 +273,12 @@ static int TruncateString(char *str, int maxw)
 				return ddd_w;
 			}
 		} else {
-			if (c == ASCII_SETX) str++;
-			else if (c == ASCII_SETXY) str += 2;
-			else if (c == ASCII_TINYFONT) {
+			if (c == SCC_SETX) str++;
+			else if (c == SCC_SETXY) str += 2;
+			else if (c == SCC_TINYFONT) {
 				size = FS_SMALL;
 				ddd = GetCharacterWidth(size, '.') * 3;
-			} else if (c == ASCII_BIGFONT) {
+			} else if (c == SCC_BIGFONT) {
 				size = FS_LARGE;
 				ddd = GetCharacterWidth(size, '.') * 3;
 			}
@@ -443,11 +411,11 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 		int w = 0;
 
 		for (;;) {
-			byte c = *str++;
+			WChar c = Utf8Consume((const char **)&str);
 			/* whitespace is where we will insert the line-break */
-			if (c == ASCII_LETTERSTART) last_space = str;
+			if (c == ' ') last_space = str;
 
-			if (c >= ASCII_LETTERSTART) {
+			if (IsPrintable(c)) {
 				w += GetCharacterWidth(size, c);
 				/* string is longer than maximum width so we need to decide what to
 				 * do. We can do two things:
@@ -465,11 +433,11 @@ uint32 FormatStringLinebreaks(char *str, int maxw)
 			} else {
 				switch (c) {
 					case '\0': return num + (size << 16); break;
-					case ASCII_SETX:  str++; break;
-					case ASCII_SETXY: str +=2; break;
-					case ASCII_TINYFONT: size = FS_SMALL; break;
-					case ASCII_BIGFONT:  size = FS_LARGE; break;
-					case ASCII_NL: goto end_of_inner_loop;
+					case SCC_SETX:  str++; break;
+					case SCC_SETXY: str +=2; break;
+					case SCC_TINYFONT: size = FS_SMALL; break;
+					case SCC_BIGFONT:  size = FS_LARGE; break;
+					case '\n': goto end_of_inner_loop;
 				}
 			}
 		}
@@ -486,7 +454,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 	uint32 tmp;
 	int num, w, mt;
 	const char *src;
-	byte c;
+	WChar c;
 
 	GetString(buffer, str, lastof(buffer));
 
@@ -505,7 +473,7 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
-			c = *src++;
+			c = Utf8Consume(&src);
 			if (c == 0) {
 				y += mt;
 				if (--num < 0) {
@@ -513,9 +481,9 @@ void DrawStringMultiCenter(int x, int y, StringID str, int maxw)
 					return;
 				}
 				break;
-			} else if (c == ASCII_SETX) {
+			} else if (c == SCC_SETX) {
 				src++;
-			} else if (c == ASCII_SETXY) {
+			} else if (c == SCC_SETXY) {
 				src+=2;
 			}
 		}
@@ -530,7 +498,7 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw)
 	int num, mt;
 	uint total_height;
 	const char *src;
-	byte c;
+	WChar c;
 
 	GetString(buffer, str, lastof(buffer));
 
@@ -547,7 +515,7 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw)
 		_cur_fontsize = _last_fontsize;
 
 		for (;;) {
-			c = *src++;
+			c = Utf8Consume(&src);
 			if (c == 0) {
 				y += mt;
 				if (--num < 0) {
@@ -555,9 +523,9 @@ uint DrawStringMultiLine(int x, int y, StringID str, int maxw)
 					return total_height;
 				}
 				break;
-			} else if (c == ASCII_SETX) {
+			} else if (c == SCC_SETX) {
 				src++;
-			} else if (c == ASCII_SETXY) {
+			} else if (c == SCC_SETXY) {
 				src+=2;
 			}
 		}
@@ -576,22 +544,24 @@ BoundingRect GetStringBoundingBox(const char *str)
 	FontSize size = _cur_fontsize;
 	BoundingRect br;
 	int max_width;
-	byte c;
+	WChar c;
 
 	br.width = br.height = max_width = 0;
-	for (c = *str; c != '\0'; c = *(++str)) {
-		if (c >= ASCII_LETTERSTART) {
+	for (;;) {
+		c = Utf8Consume(&str);
+		if (c == 0) break;
+		if (IsPrintable(c)) {
 			br.width += GetCharacterWidth(size, c);
 		} else {
 			switch (c) {
-				case ASCII_SETX: br.width += (byte)*++str; break;
-				case ASCII_SETXY:
+				case SCC_SETX: br.width += (byte)*++str; break;
+				case SCC_SETXY:
 					br.width += (byte)*++str;
 					br.height += (byte)*++str;
 					break;
-				case ASCII_TINYFONT: size = FS_SMALL; break;
-				case ASCII_BIGFONT:  size = FS_LARGE; break;
-				case ASCII_NL:
+				case SCC_TINYFONT: size = FS_SMALL; break;
+				case SCC_BIGFONT:  size = FS_LARGE; break;
+				case '\n':
 					br.height += GetCharacterHeight(size);
 					if (br.width > max_width) max_width = br.width;
 					br.width = 0;
@@ -617,7 +587,7 @@ int DoDrawString(const char *string, int x, int y, uint16 real_color)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 	FontSize size = _cur_fontsize;
-	byte c;
+	WChar c;
 	byte color;
 	int xo = x, yo = y;
 
@@ -647,39 +617,39 @@ check_bounds:
 	if (y + 19 <= dpi->top || dpi->top + dpi->height <= y) {
 skip_char:;
 		for (;;) {
-			c = *string++;
-			if (c < ASCII_LETTERSTART) goto skip_cont;
+			c = Utf8Consume(&string);
+			if (!IsPrintable(c)) goto skip_cont;
 		}
 	}
 
 	for (;;) {
-		c = *string++;
+		c = Utf8Consume(&string);
 skip_cont:;
 		if (c == 0) {
 			_last_fontsize = size;
 			return x;
 		}
-		if (c >= ASCII_LETTERSTART) {
+		if (IsPrintable(c)) {
 			if (x >= dpi->left + dpi->width) goto skip_char;
 			if (x + 26 >= dpi->left) {
-				GfxMainBlitter(GetSprite(GetFontBase(size) + c - ASCII_LETTERSTART), x, y, 1);
+				GfxMainBlitter(GetGlyph(size, c), x, y, 1);
 			}
 			x += GetCharacterWidth(size, c);
-		} else if (c == ASCII_NL) { // newline = {}
+		} else if (c == '\n') { // newline = {}
 			x = xo;
 			y += GetCharacterHeight(size);
 			goto check_bounds;
-		} else if (c >= ASCII_COLORSTART) { // change color?
-			color = (byte)(c - ASCII_COLORSTART);
+		} else if (c >= SCC_BLUE && c <= SCC_BLACK) { // change color?
+			color = (byte)(c - SCC_BLUE);
 			goto switch_color;
-		} else if (c == ASCII_SETX) { // {SETX}
+		} else if (c == SCC_SETX) { // {SETX}
 			x = xo + (byte)*string++;
-		} else if (c == ASCII_SETXY) {// {SETXY}
+		} else if (c == SCC_SETXY) {// {SETXY}
 			x = xo + (byte)*string++;
 			y = yo + (byte)*string++;
-		} else if (c == ASCII_TINYFONT) { // {TINYFONT}
+		} else if (c == SCC_TINYFONT) { // {TINYFONT}
 			size = FS_SMALL;
-		} else if (c == ASCII_BIGFONT) { // {BIGFONT}
+		} else if (c == SCC_BIGFONT) { // {BIGFONT}
 			size = FS_LARGE;
 		} else {
 			printf("Unknown string command character %d\n", c);
@@ -1641,27 +1611,32 @@ void DoPaletteAnimations(void)
 
 void LoadStringWidthTable(void)
 {
-	SpriteID base;
 	uint i;
 
 	/* Normal font */
-	base = GetFontBase(FS_NORMAL);
 	for (i = 0; i != 224; i++) {
-		_stringwidth_table[FS_NORMAL][i] = SpriteExists(base + i) ? GetSprite(base + i)->width : 0;
+		_stringwidth_table[FS_NORMAL][i] = GetGlyphWidth(FS_NORMAL, i + 32);
 	}
 
 	/* Small font */
-	base = GetFontBase(FS_SMALL);
 	for (i = 0; i != 224; i++) {
-		_stringwidth_table[FS_SMALL][i] = SpriteExists(base + i) ? GetSprite(base + i)->width + 1 : 0;
+		_stringwidth_table[FS_SMALL][i] = GetGlyphWidth(FS_SMALL, i + 32);
 	}
 
 	/* Large font */
-	base = GetFontBase(FS_LARGE);
 	for (i = 0; i != 224; i++) {
-		_stringwidth_table[FS_LARGE][i] = SpriteExists(base + i) ? GetSprite(base + i)->width + 1 : 0;
+		_stringwidth_table[FS_LARGE][i] = GetGlyphWidth(FS_LARGE, i + 32);
 	}
 }
+
+
+byte GetCharacterWidth(FontSize size, WChar key)
+{
+	if (key >= 32 && key < 256) return _stringwidth_table[size][key - 32];
+
+	return GetGlyphWidth(size, key);
+}
+
 
 void ScreenSizeChanged(void)
 {

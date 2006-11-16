@@ -147,6 +147,7 @@ char *GetName(char *buff, StringID id, const char* last);
 #define AllocateNameUnique(name, skip) RealAllocateName(name, skip, true)
 #define AllocateName(name, skip) RealAllocateName(name, skip, false)
 StringID RealAllocateName(const char *name, byte skip, bool check_double);
+void ConvertNameArray(void);
 
 /* misc functions */
 void MarkTileDirty(int x, int y);

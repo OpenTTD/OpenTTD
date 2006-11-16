@@ -181,9 +181,9 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					}
 					break;
 				default:
-					if (IsValidAsciiChar(e->we.keypress.ascii, CS_ALPHANUMERAL)) {
+					if (IsValidChar(e->we.keypress.key, CS_ALPHANUMERAL)) {
 						_iconsole_scroll = ICON_BUFFER;
-						InsertTextBufferChar(&_iconsole_cmdline, e->we.keypress.ascii);
+						InsertTextBufferChar(&_iconsole_cmdline, e->we.keypress.key);
 						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
 					} else {
@@ -1057,7 +1057,7 @@ void IConsoleCmdExec(const char *cmdstr)
 	if (cmdstr[0] == '#') return; // comments
 
 	for (cmdptr = cmdstr; *cmdptr != '\0'; cmdptr++) {
-		if (!IsValidAsciiChar(*cmdptr, CS_ALPHANUMERAL)) {
+		if (!IsValidChar(*cmdptr, CS_ALPHANUMERAL)) {
 			IConsoleError("command contains malformed characters, aborting");
 			IConsolePrintF(_icolour_err, "ERROR: command was: '%s'", cmdstr);
 			return;

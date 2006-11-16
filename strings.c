@@ -18,6 +18,7 @@
 #include "variables.h"
 #include "newgrf_text.h"
 #include "table/landscape_const.h"
+#include "table/control_codes.h"
 #include "music.h"
 #include "date.h"
 #include "industry.h"
@@ -233,6 +234,14 @@ static char *GetStringWithArgs(char *buffr, uint string, const int32 *argv, cons
 char *GetString(char *buffr, StringID string, const char* last)
 {
 	return GetStringWithArgs(buffr, string, (int32*)_decode_parameters, last);
+}
+
+
+char *InlineString(char *buf, StringID string)
+{
+	buf += Utf8Encode(buf, SCC_STRING_ID);
+	buf += Utf8Encode(buf, string);
+	return buf;
 }
 
 
@@ -564,54 +573,57 @@ static const Units units[] = {
 static char* FormatString(char* buff, const char* str, const int32* argv, uint casei, const char* last)
 {
 	extern const char _openttd_revision[];
-	byte b;
+	WChar b;
 	const int32 *argv_orig = argv;
 	uint modifier = 0;
 
-	while ((b = *str++) != '\0') {
+	while ((b = Utf8Consume(&str)) != '\0') {
 		switch (b) {
-		case 0x1: // {SETX}
-			if (buff != last && buff + 1 != last) {
-				*buff++ = b;
-				*buff++ = *str++;
-			}
-			break;
-		case 0x2: // {SETXY}
-			if (buff != last && buff + 1 != last && buff + 2 != last) {
-				*buff++ = b;
-				*buff++ = *str++;
-				*buff++ = *str++;
-			}
-			break;
+			case SCC_SETX: // {SETX}
+				if (buff + Utf8CharLen(SCC_SETX) + 1 < last) {
+					buff += Utf8Encode(buff, SCC_SETX);
+					*buff++ = *str++;
+				}
+				break;
 
-		case 0x81: // {STRINL}
-			buff = GetStringWithArgs(buff, ReadLE16Unaligned(str), argv, last);
-			str += 2;
-			break;
-		case 0x82: // {DATE_LONG}
-			buff = FormatYmdString(buff, GetInt32(&argv), last);
-			break;
-		case 0x83: // {DATE_SHORT}
-			buff = FormatMonthAndYear(buff, GetInt32(&argv), last);
-			break;
-		case 0x84: {// {VELOCITY}
-			int32 args[1];
-			assert(_opt_ptr->units < lengthof(units));
-			args[0] = GetInt32(&argv) * units[_opt_ptr->units].s_m >> units[_opt_ptr->units].s_s;
-			buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].velocity), args, modifier >> 24, last);
-			modifier = 0;
-			break;
-		}
-		// 0x85 is used as escape character..
-		case 0x85:
-			switch (*str++) {
-			case 0: /* {CURRCOMPACT} */
+			case SCC_SETXY: // {SETXY}
+				if (buff + Utf8CharLen(SCC_SETXY) + 2 < last) {
+					buff += Utf8Encode(buff, SCC_SETXY);
+					*buff++ = *str++;
+					*buff++ = *str++;
+				}
+				break;
+
+			case SCC_STRING_ID: // {STRINL}
+				buff = GetStringWithArgs(buff, Utf8Consume(&str), argv, last);
+				break;
+
+			case SCC_DATE_LONG: // {DATE_LONG}
+				buff = FormatYmdString(buff, GetInt32(&argv), last);
+				break;
+
+			case SCC_DATE_SHORT: // {DATE_SHORT}
+				buff = FormatMonthAndYear(buff, GetInt32(&argv), last);
+				break;
+
+			case SCC_VELOCITY: {// {VELOCITY}
+				int32 args[1];
+				assert(_opt_ptr->units < lengthof(units));
+				args[0] = GetInt32(&argv) * units[_opt_ptr->units].s_m >> units[_opt_ptr->units].s_s;
+				buff = FormatString(buff, GetStringPtr(units[_opt_ptr->units].velocity), args, modifier >> 24, last);
+				modifier = 0;
+				break;
+			}
+
+			case SCC_CURRENCY_COMPACT: /* {CURRCOMPACT} */
 				buff = FormatGenericCurrency(buff, _currency, GetInt32(&argv), true, last);
 				break;
-			case 2: /* {REV} */
+
+			case SCC_REVISION: /* {REV} */
 				buff = strecpy(buff, _openttd_revision, last);
 				break;
-			case 3: { /* {SHORTCARGO} */
+
+			case SCC_CARGO_SHORT: { /* {SHORTCARGO} */
 				// Short description of cargotypes. Layout:
 				// 8-bit = cargo type
 				// 16-bit = cargo count
@@ -642,40 +654,46 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 						break;
 				}
 			} break;
-			case 4: {/* {CURRCOMPACT64} */
+
+			case SCC_CURRENCY_COMPACT_64: { /* {CURRCOMPACT64} */
 				// 64 bit compact currency-unit
 				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), true, last);
 				break;
 			}
-			case 5: { /* {STRING1} */
+
+			case SCC_STRING1: { /* {STRING1} */
 				// String that consumes ONE argument
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 1), last);
 				modifier = 0;
 				break;
 			}
-			case 6: { /* {STRING2} */
+
+			case SCC_STRING2: { /* {STRING2} */
 				// String that consumes TWO arguments
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 2), last);
 				modifier = 0;
 				break;
 			}
-			case 7: { /* {STRING3} */
+
+			case SCC_STRING3: { /* {STRING3} */
 				// String that consumes THREE arguments
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 3), last);
 				modifier = 0;
 				break;
 			}
-			case 8: { /* {STRING4} */
+
+			case SCC_STRING4: { /* {STRING4} */
 				// String that consumes FOUR arguments
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 4), last);
 				modifier = 0;
 				break;
 			}
-			case 9: { /* {STRING5} */
+
+			case SCC_STRING5: { /* {STRING5} */
 				// String that consumes FIVE arguments
 				uint str = modifier + GetInt32(&argv);
 				buff = GetStringWithArgs(buff, str, GetArgvPtr(&argv, 5), last);
@@ -683,12 +701,12 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 			}
 
-			case 10: { /* {STATIONFEATURES} */
+			case SCC_STATION_FEATURES: { /* {STATIONFEATURES} */
 				buff = StationGetSpecialString(buff, GetInt32(&argv), last);
 				break;
 			}
 
-			case 11: { /* {INDUSTRY} */
+			case SCC_INDUSTRY_NAME: { /* {INDUSTRY} */
 				const Industry* i = GetIndustry(GetInt32(&argv));
 				int32 args[2];
 
@@ -704,7 +722,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 			}
 
-			case 12: { // {VOLUME}
+			case SCC_VOLUME: { // {VOLUME}
 				int32 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].v_m >> units[_opt_ptr->units].v_s;
@@ -713,22 +731,22 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 			}
 
-			case 13: { // {G 0 Der Die Das}
-				const byte* s = (const byte*)GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
+			case SCC_GENDER_LIST: { // {G 0 Der Die Das}
+				const char* s = GetStringPtr(argv_orig[(byte)*str++]); // contains the string that determines gender.
 				int len;
 				int gender = 0;
-				if (s != NULL && s[0] == 0x87) gender = s[1];
+				if (s != NULL && Utf8Consume(&s) == SCC_GENDER_INDEX) gender = (byte)s[0];
 				str = ParseStringChoice(str, gender, buff, &len);
 				buff += len;
 				break;
 			}
 
-			case 14: { // {DATE_TINY}
+			case SCC_DATE_TINY: { // {DATE_TINY}
 				buff = FormatTinyDate(buff, GetInt32(&argv), last);
 				break;
 			}
 
-			case 15: { // {CARGO}
+			case SCC_CARGO: { // {CARGO}
 				// Layout now is:
 				//   8bit   - cargo type
 				//   16-bit - cargo count
@@ -738,7 +756,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 			}
 
-			case 16: { // {POWER}
+			case SCC_POWER: { // {POWER}
 				int32 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].p_m >> units[_opt_ptr->units].p_s;
@@ -747,7 +765,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 			}
 
-			case 17: { // {VOLUME_S}
+			case SCC_VOLUME_SHORT: { // {VOLUME_S}
 				int32 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].v_m >> units[_opt_ptr->units].v_s;
@@ -756,7 +774,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 			}
 
-			case 18: { // {WEIGHT}
+			case SCC_WEIGHT: { // {WEIGHT}
 				int32 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].w_m >> units[_opt_ptr->units].w_s;
@@ -765,7 +783,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 			}
 
-			case 19: { // {WEIGHT_S}
+			case SCC_WEIGHT_SHORT: { // {WEIGHT_S}
 				int32 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].w_m >> units[_opt_ptr->units].w_s;
@@ -774,7 +792,7 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 			}
 
-			case 20: { // {FORCE}
+			case SCC_FORCE: { // {FORCE}
 				int32 args[1];
 				assert(_opt_ptr->units < lengthof(units));
 				args[0] = GetInt32(&argv) * units[_opt_ptr->units].f_m >> units[_opt_ptr->units].f_s;
@@ -783,124 +801,122 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 				break;
 			}
 
-			default:
-				error("!invalid escape sequence in string");
+			case SCC_SKIP: // {SKIP}
+				argv++;
+				break;
+
+			// This sets up the gender for the string.
+			// We just ignore this one. It's used in {G 0 Der Die Das} to determine the case.
+			case SCC_GENDER_INDEX: // {GENDER 0}
+				str++;
+				break;
+
+			case SCC_STRING: {// {STRING}
+				uint str = modifier + GetInt32(&argv);
+				// WARNING. It's prohibited for the included string to consume any arguments.
+				// For included strings that consume argument, you should use STRING1, STRING2 etc.
+				// To debug stuff you can set argv to NULL and it will tell you
+				buff = GetStringWithArgs(buff, str, argv, last);
+				modifier = 0;
+				break;
 			}
-			break;
 
-		case 0x86: // {SKIP}
-			argv++;
-			break;
+			case SCC_COMMA: // {COMMA}
+				buff = FormatCommaNumber(buff, GetInt32(&argv), last);
+				break;
 
-		// This sets up the gender for the string.
-		// We just ignore this one. It's used in {G 0 Der Die Das} to determine the case.
-		case 0x87: // {GENDER 0}
-			str++;
-			break;
+			case SCC_ARG_INDEX: // Move argument pointer
+				argv = argv_orig + (byte)*str++;
+				break;
 
-		case 0x88: {// {STRING}
-			uint str = modifier + GetInt32(&argv);
-			// WARNING. It's prohibited for the included string to consume any arguments.
-			// For included strings that consume argument, you should use STRING1, STRING2 etc.
-			// To debug stuff you can set argv to NULL and it will tell you
-			buff = GetStringWithArgs(buff, str, argv, last);
-			modifier = 0;
-			break;
-		}
-
-		case 0x8B: // {COMMA}
-			buff = FormatCommaNumber(buff, GetInt32(&argv), last);
-			break;
-
-		case 0x8C: // Move argument pointer
-			argv = argv_orig + (byte)*str++;
-			break;
-
-		case 0x8D: { // {P}
-			int32 v = argv_orig[(byte)*str++]; // contains the number that determines plural
-			int len;
-			str = ParseStringChoice(str, DeterminePluralForm(v), buff, &len);
-			buff += len;
-			break;
-		}
-
-		case 0x8E: // {NUM}
-			buff = FormatNoCommaNumber(buff, GetInt32(&argv), last);
-			break;
-
-		case 0x8F: // {CURRENCY}
-			buff = FormatGenericCurrency(buff, _currency, GetInt32(&argv), false, last);
-			break;
-
-		case 0x99: { // {WAYPOINT}
-			int32 temp[2];
-			Waypoint *wp = GetWaypoint(GetInt32(&argv));
-			StringID str;
-			if (wp->string != STR_NULL) {
-				str = wp->string;
-			} else {
-				temp[0] = wp->town_index;
-				temp[1] = wp->town_cn + 1;
-				str = wp->town_cn == 0 ? STR_WAYPOINTNAME_CITY : STR_WAYPOINTNAME_CITY_SERIAL;
+			case SCC_PLURAL_LIST: { // {P}
+				int32 v = argv_orig[(byte)*str++]; // contains the number that determines plural
+				int len;
+				str = ParseStringChoice(str, DeterminePluralForm(v), buff, &len);
+				buff += len;
+				break;
 			}
-			buff = GetStringWithArgs(buff, str, temp, last);
-		} break;
 
-		case 0x9A: { // {STATION}
-			const Station* st = GetStation(GetInt32(&argv));
+			case SCC_NUM: // {NUM}
+				buff = FormatNoCommaNumber(buff, GetInt32(&argv), last);
+				break;
 
-			if (!IsValidStation(st)) { // station doesn't exist anymore
-				buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
-			} else {
+			case SCC_CURRENCY: // {CURRENCY}
+				buff = FormatGenericCurrency(buff, _currency, GetInt32(&argv), false, last);
+				break;
+
+			case SCC_WAYPOINT_NAME: { // {WAYPOINT}
 				int32 temp[2];
-				temp[0] = st->town->townnametype;
-				temp[1] = st->town->townnameparts;
-				buff = GetStringWithArgs(buff, st->string_id, temp, last);
-			}
-			break;
-		}
-		case 0x9B: { // {TOWN}
-			const Town* t = GetTown(GetInt32(&argv));
-			int32 temp[1];
-
-			assert(IsValidTown(t));
-
-			temp[0] = t->townnameparts;
-			buff = GetStringWithArgs(buff, t->townnametype, temp, last);
-			break;
-		}
-
-		case 0x9C: { // {CURRENCY64}
-			buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), false, last);
-			break;
-		}
-
-		case 0x9D: { // {SETCASE}
-			// This is a pseudo command, it's outputted when someone does {STRING.ack}
-			// The modifier is added to all subsequent GetStringWithArgs that accept the modifier.
-			modifier = (byte)*str++ << 24;
-			break;
-		}
-
-		case 0x9E: { // {Used to implement case switching}
-			// <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
-			// Each LEN is printed using 2 bytes in big endian order.
-			uint num = (byte)*str++;
-			while (num) {
-				if ((byte)str[0] == casei) {
-					// Found the case, adjust str pointer and continue
-					str += 3;
-					break;
+				Waypoint *wp = GetWaypoint(GetInt32(&argv));
+				StringID str;
+				if (wp->string != STR_NULL) {
+					str = wp->string;
+				} else {
+					temp[0] = wp->town_index;
+					temp[1] = wp->town_cn + 1;
+					str = wp->town_cn == 0 ? STR_WAYPOINTNAME_CITY : STR_WAYPOINTNAME_CITY_SERIAL;
 				}
-				// Otherwise skip to the next case
-				str += 3 + (str[1] << 8) + str[2];
-				num--;
+				buff = GetStringWithArgs(buff, str, temp, last);
+				break;
 			}
-			break;
-		}
 
-		default:
-			if (buff != last) *buff++ = b;
+			case SCC_STATION_NAME: { // {STATION}
+				const Station* st = GetStation(GetInt32(&argv));
+
+				if (!IsValidStation(st)) { // station doesn't exist anymore
+					buff = GetStringWithArgs(buff, STR_UNKNOWN_DESTINATION, NULL, last);
+				} else {
+					int32 temp[2];
+					temp[0] = st->town->townnametype;
+					temp[1] = st->town->townnameparts;
+					buff = GetStringWithArgs(buff, st->string_id, temp, last);
+				}
+				break;
+			}
+
+			case SCC_TOWN_NAME: { // {TOWN}
+				const Town* t = GetTown(GetInt32(&argv));
+				int32 temp[1];
+
+				assert(IsValidTown(t));
+
+				temp[0] = t->townnameparts;
+				buff = GetStringWithArgs(buff, t->townnametype, temp, last);
+				break;
+			}
+
+			case SCC_CURRENCY_64: { // {CURRENCY64}
+				buff = FormatGenericCurrency(buff, _currency, GetInt64(&argv), false, last);
+				break;
+			}
+
+			case SCC_SETCASE: { // {SETCASE}
+				// This is a pseudo command, it's outputted when someone does {STRING.ack}
+				// The modifier is added to all subsequent GetStringWithArgs that accept the modifier.
+				modifier = (byte)*str++ << 24;
+				break;
+			}
+
+			case SCC_SWITCH_CASE: { // {Used to implement case switching}
+				// <0x9E> <NUM CASES> <CASE1> <LEN1> <STRING1> <CASE2> <LEN2> <STRING2> <CASE3> <LEN3> <STRING3> <STRINGDEFAULT>
+				// Each LEN is printed using 2 bytes in big endian order.
+				uint num = (byte)*str++;
+				while (num) {
+					if ((byte)str[0] == casei) {
+						// Found the case, adjust str pointer and continue
+						str += 3;
+						break;
+					}
+					// Otherwise skip to the next case
+					str += 3 + (str[1] << 8) + str[2];
+					num--;
+				}
+				break;
+			}
+
+			default:
+				if (buff + Utf8CharLen(b) < last) buff += Utf8Encode(buff, b);
+				break;
 		}
 	}
 	*buff = '\0';
@@ -910,11 +926,12 @@ static char* FormatString(char* buff, const char* str, const int32* argv, uint c
 
 static char *StationGetSpecialString(char *buff, int x, const char* last)
 {
-	if (x & 0x01) buff = strecpy(buff, "\x94", last);
-	if (x & 0x02) buff = strecpy(buff, "\x95", last);
-	if (x & 0x04) buff = strecpy(buff, "\x96", last);
-	if (x & 0x08) buff = strecpy(buff, "\x97", last);
-	if (x & 0x10) buff = strecpy(buff, "\x98", last);
+	if ((x & 0x01) && (buff + Utf8CharLen(SCC_TRAIN) < last)) buff += Utf8Encode(buff, SCC_TRAIN);
+	if ((x & 0x02) && (buff + Utf8CharLen(SCC_LORRY) < last)) buff += Utf8Encode(buff, SCC_LORRY);
+	if ((x & 0x04) && (buff + Utf8CharLen(SCC_BUS)   < last)) buff += Utf8Encode(buff, SCC_BUS);
+	if ((x & 0x08) && (buff + Utf8CharLen(SCC_PLANE) < last)) buff += Utf8Encode(buff, SCC_PLANE);
+	if ((x & 0x10) && (buff + Utf8CharLen(SCC_SHIP)  < last)) buff += Utf8Encode(buff, SCC_SHIP);
+	*buff = '\0';
 	return buff;
 }
 
@@ -1122,7 +1139,7 @@ bool ReadLanguagePack(int lang_index)
 
 	{
 		char *lang = str_fmt("%s%s", _path.lang_dir, _dynlang.ent[lang_index].file);
-		lang_pack = ReadFileToMem(lang, &len, 100000);
+		lang_pack = ReadFileToMem(lang, &len, 200000);
 		free(lang);
 	}
 	if (lang_pack == NULL) return false;
@@ -1237,7 +1254,7 @@ void InitializeLanguagePacks(void)
 	int fallback;
 	LanguagePack hdr;
 	FILE *in;
-	char *files[32];
+	char *files[MAX_LANG];
 	const char* lang;
 
 	lang = GetCurrentLocale("LC_MESSAGES");

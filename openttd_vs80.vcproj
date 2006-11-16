@@ -561,6 +561,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\fontcache.c"
+				>
+			</File>
+			<File
 				RelativePath=".\genworld.c"
 				>
 			</File>
@@ -929,6 +933,10 @@
 			</File>
 			<File
 				RelativePath=".\fileio.h"
+				>
+			</File>
+			<File
+				RelativePath=".\fontcache.h"
 				>
 			</File>
 			<File
@@ -1436,6 +1444,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\table\control_codes.h"
+				>
+			</File>
+			<File
 				RelativePath=".\table\elrail_data.h"
 				>
 			</File>
@@ -1509,6 +1521,10 @@
 			</File>
 			<File
 				RelativePath=".\table\tunnel_land.h"
+				>
+			</File>
+			<File
+				RelativePath=".\table\unicode.h"
 				>
 			</File>
 			<File

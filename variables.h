@@ -323,12 +323,12 @@ VARDEF char _ini_videodriver[16], _ini_musicdriver[16], _ini_sounddriver[16];
 typedef struct {
 	int num; // number of languages
 	int curr; // currently selected language index
-	char curr_file[32]; // currently selected language file
-	StringID dropdown[32 + 1]; // used in settings dialog
+	char curr_file[MAX_LANG]; // currently selected language file
+	StringID dropdown[MAX_LANG + 1]; // used in settings dialog
 	struct {
 		char *name;
 		char *file;
-	} ent[32];
+	} ent[MAX_LANG];
 } DynamicLanguages;
 
 VARDEF DynamicLanguages _dynlang;

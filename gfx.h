@@ -43,8 +43,8 @@ void GfxScroll(int left, int top, int width, int height, int xo, int yo);
 
 // XXX doesn't really belong here, but the only
 // consumers always use it in conjunction with DoDrawString()
-#define UPARROW   "\x80"
-#define DOWNARROW "\xAA"
+#define UPARROW   "\xEE\x8A\x80"
+#define DOWNARROW "\xEE\x8A\xAA"
 
 
 int DrawStringCentered(int x, int y, StringID str, uint16 color);
@@ -96,13 +96,8 @@ void ToggleFullScreen(bool fs);
 /* gfx.c */
 #define ASCII_LETTERSTART 32
 extern FontSize _cur_fontsize;
-extern byte _stringwidth_table[FS_END][224];
 
-static inline byte GetCharacterWidth(FontSize size, byte key)
-{
-	assert(key >= ASCII_LETTERSTART);
-	return _stringwidth_table[size][key - ASCII_LETTERSTART];
-}
+byte GetCharacterWidth(FontSize size, uint32 key);
 
 static inline byte GetCharacterHeight(FontSize size)
 {
