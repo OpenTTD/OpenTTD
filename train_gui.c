@@ -412,8 +412,8 @@ static void GenerateBuildList(EngineID **engines, uint16 *num_engines, EngineID 
 	(*num_engines) = 0;
 	(*num_wagons)  = 0;
 
-	if (engines == NULL) ExtendEngineListSize((const EngineID**)engines, &engine_length, 25);
-	if (wagons  == NULL) ExtendEngineListSize((const EngineID**)wagons,  &wagon_length,  25);
+	if (*engines == NULL) ExtendEngineListSize((const EngineID**)engines, &engine_length, 25);
+	if (*wagons  == NULL) ExtendEngineListSize((const EngineID**)wagons,  &wagon_length,  25);
 
 	for (j = 0; j < NUM_TRAIN_ENGINES; j++) {
 		EngineID i = GetRailVehAtPosition(j); // XXX Can be removed when the wagon list is also sorted.
