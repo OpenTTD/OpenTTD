@@ -234,37 +234,6 @@ static Station* GetStationAround(TileIndex tile, int w, int h, StationID closest
 	return (closest_station == INVALID_STATION) ? NULL : GetStation(closest_station);
 }
 
-
-static bool CheckStationSpreadOut(Station *st, TileIndex tile, int w, int h)
-{
-	StationID station_index = st->index;
-	uint i;
-	uint x1 = TileX(tile);
-	uint y1 = TileY(tile);
-	uint x2 = x1 + w - 1;
-	uint y2 = y1 + h - 1;
-	uint t;
-
-	for (i = 0; i != MapSize(); i++) {
-		if (IsTileType(i, MP_STATION) && GetStationIndex(i) == station_index) {
-			t = TileX(i);
-			if (t < x1) x1 = t;
-			if (t > x2) x2 = t;
-
-			t = TileY(i);
-			if (t < y1) y1 = t;
-			if (t > y2) y2 = t;
-		}
-	}
-
-	if (y2 - y1 >= _patches.station_spread || x2 - x1 >= _patches.station_spread) {
-		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
-		return false;
-	}
-
-	return true;
-}
-
 static Station *AllocateStation(void)
 {
 	Station *st = NULL;
@@ -652,7 +621,7 @@ typedef struct ottd_Rectangle {
 	uint max_y;
 } ottd_Rectangle;
 
-static void MergePoint(ottd_Rectangle* rect, TileIndex tile)
+static inline void MergePoint(ottd_Rectangle* rect, TileIndex tile)
 {
 	uint x = TileX(tile);
 	uint y = TileY(tile);
@@ -763,6 +732,23 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	InvalidateWindowWidget(WC_STATION_VIEW, st->index, 4);
 }
 
+static bool CheckStationSpreadOut(Station *st, TileIndex tile, int w, int h)
+{
+	StationID station_index = st->index;
+	uint x1 = TileX(tile);
+	uint y1 = TileY(tile);
+	ottd_Rectangle r = {x1, y1, x1 + w - 1, y1 + h - 1};
+	// get station bounding rect
+	for (tile = 0; tile < MapSize(); tile++) {
+		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == station_index) MergePoint(&r, tile);
+	}
+	// check if bounding rect doesn't exceed the maximum station spread
+	if (r.max_x - r.min_x >= _patches.station_spread || r.max_y - r.min_y >= _patches.station_spread) {
+		_error_message = STR_306C_STATION_TOO_SPREAD_OUT;
+		return false;
+	}
+	return true;
+}
 
 static void UpdateStationSignCoord(Station *st)
 {
