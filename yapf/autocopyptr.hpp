@@ -3,6 +3,7 @@
 #ifndef  AUTOCOPYPTR_HPP
 #define  AUTOCOPYPTR_HPP
 
+#if 0 // reenable when needed
 /** CAutoCopyPtrT - kind of CoW (Copy on Write) pointer.
  *  It is non-invasive smart pointer (reference counter is held outside
  *  of Tdata).
@@ -78,5 +79,5 @@ public:
 	}
 };
 
-
+#endif /* 0 */
 #endif /* AUTOCOPYPTR_HPP */

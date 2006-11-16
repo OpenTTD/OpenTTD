@@ -3,6 +3,7 @@
 #ifndef COUNTEDPTR_HPP
 #define COUNTEDPTR_HPP
 
+#if 0 // reenable when needed
 /** @file CCountedPtr - smart pointer implementation */
 
 /** CCountedPtr - simple reference counting smart pointer.
@@ -95,5 +96,5 @@ FORCEINLINE void CCountedPtr<Tcls_>::Assign(Tcls* pT)
 	}
 }
 
-
+#endif /* 0 */
 #endif /* COUNTEDPTR_HPP */
