@@ -378,9 +378,7 @@ STR_SORT_BY_RELIABILITY                                         :за надій
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :за місткістю
 STR_SORT_BY_MAX_SPEED                                           :за швидкістю
 STR_SORT_BY_MODEL                                               :Модель
-STR_SORT_BY_VALUE                                               :Value
 STR_SORT_BY_FACILITY                                            :Вид станцій
-STR_SORT_BY_WAITING                                             :Waiting cargo value
 STR_SORT_BY_RATING_MAX                                          :Рейтинг вантажів
 STR_ENGINE_SORT_ENGINE_ID                                       :Потяг(класичне)
 STR_ENGINE_SORT_COST                                            :Ціна
@@ -1273,7 +1271,6 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}Інф�
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :{SILVER}Tileset:  {WHITE}{STRING}
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING} : {NUM}
@@ -1301,7 +1298,6 @@ STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{S
 STR_NETWORK_LAN                                                 :Локальна
 STR_NETWORK_INTERNET                                            :Інтернет
 STR_NETWORK_LAN_INTERNET                                        :Локальна/Інтернет
-STR_NETWORK_INTERNET_ADVERTISE                                  :Інтернет (advertise)
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_0_PLAYERS                                           :0 гравців
 STR_NETWORK_1_PLAYERS                                           :1 гравець
@@ -1915,22 +1911,6 @@ STR_SV_SHIP_NAME                                                :Корабел�
 STR_SV_AIRCRAFT_NAME                                            :Літак {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :{STRING} North
-STR_SV_STNAME_SOUTH                                             :{STRING} South
-STR_SV_STNAME_EAST                                              :{STRING} East
-STR_SV_STNAME_WEST                                              :{STRING} West
-STR_SV_STNAME_CENTRAL                                           :{STRING} Central
-STR_SV_STNAME_TRANSFER                                          :{STRING} Transfer
-STR_SV_STNAME_HALT                                              :{STRING} Halt
-STR_SV_STNAME_VALLEY                                            :{STRING} Valley
-STR_SV_STNAME_HEIGHTS                                           :{STRING} Heights
-STR_SV_STNAME_WOODS                                             :{STRING} Woods
-STR_SV_STNAME_LAKESIDE                                          :{STRING} Lakeside
-STR_SV_STNAME_EXCHANGE                                          :{STRING} Exchange
-STR_SV_STNAME_AIRPORT                                           :{STRING} Airport
-STR_SV_STNAME_OILFIELD                                          :{STRING} Oilfield
-STR_SV_STNAME_MINES                                             :{STRING} Mines
-STR_SV_STNAME_DOCKS                                             :{STRING} Docks
 STR_SV_STNAME_BUOY_1                                            :{STRING} Бакен 1
 STR_SV_STNAME_BUOY_2                                            :{STRING} Бакен 2
 STR_SV_STNAME_BUOY_3                                            :{STRING} Бакен 3
@@ -1940,13 +1920,6 @@ STR_SV_STNAME_BUOY_6                                            :{STRING} Бак
 STR_SV_STNAME_BUOY_7                                            :{STRING} Бакен 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} Бакен 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} Бакен 9
-STR_SV_STNAME_ANNEXE                                            :{STRING} Annexe
-STR_SV_STNAME_SIDINGS                                           :{STRING} Sidings
-STR_SV_STNAME_BRANCH                                            :{STRING} Branch
-STR_SV_STNAME_UPPER                                             :Upper {STRING}
-STR_SV_STNAME_LOWER                                             :Lower {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Heliport
-STR_SV_STNAME_FOREST                                            :{STRING} Forest
 
 ############ end of	savegame specific region!
 
@@ -2161,8 +2134,6 @@ STR_LIVERY_DIESEL                                               :Дизельн�
 STR_LIVERY_ELECTRIC                                             :Електричні потяги
 STR_LIVERY_MONORAIL                                             :Монорельсові потяги
 STR_LIVERY_MAGLEV                                               :Потяги на магнітній подушці
-STR_LIVERY_DMU                                                  :DMU
-STR_LIVERY_EMU                                                  :EMU
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (пар)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (дизель)
 STR_LIVERY_BUS                                                  :Автобус
@@ -2646,7 +2617,6 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Неможливо розвернути авто...
-STR_ONLY_TURN_SINGLE_UNIT                                       :{WHITE}Can't turn vehicles consisting of multiple units
 STR_9034_RENAME                                                 :{BLACK}Зміна назви
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Перейменувати тип авто
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Перейменувати тип авто
@@ -2949,12 +2919,10 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Вибе
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів що вибрані ліворуч
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч на потяги що вибрані праворуч
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Displays which engine the left selected engine is being replaced with, if any
 STR_REPLACE_HELP                                                :{BLACK}Це дозволить Вам оновити одні види потягів іншими, коли потяг прибуде в депо
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів!!!: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони зберігаючи довжину потягу(починаючи спереду), якщо оновлення робить поїзд довшим.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} EXPERIMENTAL FEATURE {}Switch between engine and wagon replacement windows.{}Wagon replacement will only be done if the new wagon can be refitted into carrying the same type of cargo as the old one. This is checked for each wagon when the actual replacement takes place.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}потяг неможна будувати
 
 STR_ENGINES                                                     :Потяги
