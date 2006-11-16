@@ -782,11 +782,11 @@ STR_02D9_ABOUT_OPENTTD                                          :За 'OpenTTD'
 STR_02DB_OFF                                                    :{BLACK}Изключен
 STR_02DA_ON                                                     :{BLACK}Включен
 STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}
-STR_02DD_SUBSIDIES                                              :Субсидии
-STR_02DE_MAP_OF_WORLD                                           :Карта на света
+STR_02DD_SUBSIDIES                                              :
+STR_02DE_MAP_OF_WORLD                                           :
 STR_EXTRA_VIEW_PORT                                             :Допълнителна камера
 STR_SIGN_LIST                                                   :Списък с табели
-STR_02DF_TOWN_DIRECTORY                                         :Списък на градовете
+STR_02DF_TOWN_DIRECTORY                                         :
 STR_TOWN_POPULATION                                             :{BLACK}Световна популация: {COMMA}
 STR_EXTRA_VIEW_PORT_TITLE                                       :{WHITE}Камера {COMMA}
 STR_EXTRA_VIEW_MOVE_VIEW_TO_MAIN                                :{BLACK}Преместване на камерата
@@ -907,6 +907,8 @@ STR_CURR_RUR                                                    :Руска ру
 STR_CURR_SIT                                                    :Словенски толар (SIT)
 STR_CURR_SEK                                                    :Шведска крона (SEK)
 STR_CURR_YTL                                                    :Турска лира (YTL)
+STR_CURR_SKK                                                    :Словашка коруна (SKK)
+STR_CURR_BRR                                                    :Бразилски реал (BRL)
 
 STR_CURR_CUSTOM                                                 :Поръчкова...
 
@@ -1880,7 +1882,7 @@ STR_500B_SITE_UNSUITABLE_FOR_TUNNEL                             :{WHITE}Мяст
 STR_500D                                                        :{GOLD}{STRING},{} {VELOCITY} {WHITE}{CURRENCY}
 STR_500E_SUSPENSION_STEEL                                       :Висящ, Стоманен
 STR_500F_GIRDER_STEEL                                           :Гредоред, Стоманен
-STR_5010_CANTILEVER_STEEL                                       :Конзолен, Стомана
+STR_5010_CANTILEVER_STEEL                                       :Конзолен, Стоманен
 STR_5011_SUSPENSION_CONCRETE                                    :Висящ, Бетонен
 STR_5012_WOODEN                                                 :Дървен
 STR_5013_CONCRETE                                               :Бетонен
@@ -1970,7 +1972,7 @@ STR_OPTIONS_SAVE_CHANGES                                        :{BLACK}Запи
 STR_6801_EASY                                                   :{BLACK}Лесно
 STR_6802_MEDIUM                                                 :{BLACK}Средно
 STR_6803_HARD                                                   :{BLACK}Трудно
-STR_6804_CUSTOM                                                 :{BLACK}По ваш избор
+STR_6804_CUSTOM                                                 :{BLACK}По твой избор
 ############ range for difficulty levels ends
 
 ############ range for difficulty settings starts
