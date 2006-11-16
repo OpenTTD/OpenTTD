@@ -763,6 +763,24 @@ static void UpdateStationAcceptance(Station *st, bool show_msg)
 	InvalidateWindowWidget(WC_STATION_VIEW, st->index, 4);
 }
 
+
+static void UpdateStationSignCoord(Station *st)
+{
+	ottd_Rectangle r = {MapSizeX(), MapSizeY(), 0, 0};
+	TileIndex tile;
+
+	// get station bounding rect
+	for (tile = 0; tile < MapSize(); tile++) {
+		if (IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index) MergePoint(&r, tile);
+	}
+
+	if (r.max_x < r.min_x) return; // no tiles belong to this station
+
+	// clamp sign coord to be inside the rect
+	st->xy = TileXY(clampu(TileX(st->xy), r.min_x, r.max_x), clampu(TileY(st->xy), r.min_y, r.max_y));
+	UpdateStationVirtCoordDirty(st);
+}
+
 // This is called right after a station was deleted.
 // It checks if the whole station is free of substations, and if so, the station will be
 // deleted after a little while.
@@ -773,6 +791,8 @@ static void DeleteStationIfEmpty(Station* st)
 		RebuildStationLists();
 		InvalidateWindow(WC_STATION_LIST, st->owner);
 	}
+	/* station remains but it probably lost some parts - station sign should stay in the station boundaries */
+	UpdateStationSignCoord(st);
 }
 
 static int32 ClearTile_Station(TileIndex tile, byte flags);
@@ -1218,6 +1238,7 @@ int32 CmdRemoveFromRailroadStation(TileIndex tile, uint32 flags, uint32 p1, uint
 		// we also need to adjust train_tile.
 		MakeRailwayStationAreaSmaller(st);
 		MarkStationTilesDirty(st);
+		UpdateStationSignCoord(st);
 
 		// if we deleted the whole station, delete the train facility.
 		if (st->train_tile == 0) {
