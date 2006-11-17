@@ -1197,7 +1197,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktii
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Vaheta kliimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Muuda kuupäeva: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Luba muutuvad tootmisväärtused: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Luba elektrirongidel sõita tavalisel raudteel
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Suudub kontrollpunti: {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Suundub {WAYPOINT}, {VELOCITY}

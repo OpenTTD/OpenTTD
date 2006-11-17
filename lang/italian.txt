@@ -1142,7 +1142,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}I jet n
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Cambia paesaggio: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Cambia data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permetti la modifica dei valori di produzione: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Permetti l'uso di locomotori elettrici sui binari normali
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Direzione {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Direzione {WAYPOINT}, {VELOCITY}

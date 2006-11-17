@@ -465,4 +465,7 @@ void DrawDefaultWaypointSprite(int x, int y, RailType railtype);
 void DrawCatenary(const TileInfo *ti);
 
 uint GetRailFoundation(Slope tileh, TrackBits bits);
+
+int32 SettingsDisableElrail(int32 p1); ///< _patches.disable_elrail callback
+
 #endif /* RAIL_H */

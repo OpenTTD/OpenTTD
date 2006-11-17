@@ -192,6 +192,13 @@ void TrainConsistChanged(Vehicle* v)
 				v->u.rail.compatible_railtypes |= GetRailTypeInfo(u->u.rail.railtype)->powered_railtypes;
 			}
 
+			/* Some electric engines can be allowed to run on normal rail. It happens to all
+			 * existing electric engines when elrails are disabled and then re-enabled */
+			if (HASBIT(u->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL)) {
+				u->u.rail.railtype = RAILTYPE_RAIL;
+				u->u.rail.compatible_railtypes |= (1 << RAILTYPE_RAIL);
+			}
+
 			// max speed is the minimum of the speed limits of all vehicles in the consist
 			if (!(rvi_u->flags & RVI_WAGON) || _patches.wagon_speed_limits)
 				if (rvi_u->max_speed != 0 && !UsesWagonOverride(u))

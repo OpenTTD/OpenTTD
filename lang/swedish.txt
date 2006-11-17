@@ -1140,7 +1140,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplan
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Byt klimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Byt datum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktivera modifierande produceringsvärden: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Tillåt elektriska lok att använda vanlig räls
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}På väg mot {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}På väg mot {WAYPOINT}, {VELOCITY}

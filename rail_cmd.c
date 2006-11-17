@@ -883,6 +883,9 @@ static int32 DoConvertRail(TileIndex tile, RailType totype, bool exec)
 	// tile is already of requested type?
 	if (GetRailType(tile) == totype) return CMD_ERROR;
 
+	// 'hidden' elrails can't be downgraded to normal rail when elrails are disabled
+	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
+
 	// change type.
 	if (exec) {
 		TrackBits tracks;

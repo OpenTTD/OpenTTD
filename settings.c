@@ -38,6 +38,7 @@
 #include "newgrf.h"
 #include "genworld.h"
 #include "date.h"
+#include "rail.h"
 #ifdef WITH_FREETYPE
 #include "gfx.h"
 #include "fontcache.h"
@@ -1320,6 +1321,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, servint_aircraft,  SLE_UINT16, 0,D0,   100,     5,     800, 0, STR_CONFIG_PATCHES_SERVINT_AIRCRAFT,     InValidateDetailsWindow),
 	SDT_BOOL(Patches, no_servicing_if_no_breakdowns, 0, 0, false,                    STR_CONFIG_PATCHES_NOSERVICE,            NULL),
 	SDT_BOOL(Patches, wagon_speed_limits,            0, 0,  true,                    STR_CONFIG_PATCHES_WAGONSPEEDLIMITS,     NULL),
+	SDT_CONDBOOL(Patches, disable_elrails, 38, SL_MAX_VERSION, 0, 0, false,          STR_CONFIG_PATCHES_DISABLE_ELRAILS,      SettingsDisableElrail),
 
 	/***************************************************************************/
 	/* Station section of the GUI-configure patches window */

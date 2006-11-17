@@ -1682,18 +1682,6 @@ static int32 ClickChangeDateCheat(int32 p1, int32 p2)
 	return _cur_year;
 }
 
-static int32 ClickAllowConvrail(int32 p1, int32 p2)
-{
-	Vehicle *v;
-	SB(_railtypes[RAILTYPE_ELECTRIC].powered_railtypes, RAILTYPE_RAIL, 1, p1);
-
-	FOR_ALL_VEHICLES(v) {
-		if (v->type == VEH_Train && IsFrontEngine(v)) TrainConsistChanged(v);
-	}
-	return p1;
-}
-
-
 typedef int32 CheckButtonClick(int32, int32);
 
 enum ce_flags {CE_CLICK = 1 << 0};
@@ -1720,7 +1708,6 @@ static const CheatEntry _cheats_ui[] = {
 	{SLE_BOOL,       0, STR_CHEAT_SETUP_PROD,     &_cheats.setup_prod.value,      &_cheats.setup_prod.been_used,      NULL,                     0,  0},
 	{SLE_UINT8,      0, STR_CHEAT_SWITCH_CLIMATE, &_opt.landscape,                &_cheats.switch_climate.been_used,  &ClickChangeClimateCheat,-1,  4},
 	{SLE_INT32,      0, STR_CHEAT_CHANGE_DATE,    &_cur_year,                     &_cheats.change_date.been_used,     &ClickChangeDateCheat,   -1,  1},
-	{SLE_BOOL,       0, STR_CHEAT_ALLOW_CONVRAIL, &_cheats.elrail.value,          &_cheats.elrail.been_used,          &ClickAllowConvrail,      0,  0},
 };
 
 

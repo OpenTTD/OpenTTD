@@ -1095,6 +1095,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Default
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Default service interval for ships: {ORANGE}disabled
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disable servicing when breakdowns set to none: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Enable wagon speed limits: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Disable electric rails: {ORANGE}{STRING1}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Coloured news appears in: {ORANGE}{STRING1}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Starting year: {ORANGE}{STRING1}
@@ -1143,7 +1144,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetplan
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Switch climate: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Change date: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Enable modifying production values: {ORANGE}{STRING1}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Allow electric engines to run on normal rail
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Heading for {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Heading for {WAYPOINT}, {VELOCITY}

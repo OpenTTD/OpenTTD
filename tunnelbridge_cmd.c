@@ -772,6 +772,9 @@ int32 DoConvertTunnelBridgeRail(TileIndex tile, RailType totype, bool exec)
 
 		if (GetRailType(tile) == totype) return CMD_ERROR;
 
+		// 'hidden' elrails can't be downgraded to normal rail when elrails are disabled
+		if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailType(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
+
 		endtile = CheckTunnelBusy(tile, &length);
 		if (endtile == INVALID_TILE) return CMD_ERROR;
 

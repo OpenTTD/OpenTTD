@@ -1140,7 +1140,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Aviões
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Mudar de clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Alterar data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ativar modificação de valores de produção: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Permite Trens elétricos em trilho normal
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Dirigindo-se para {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Dirigindo-se para {WAYPOINT}, {VELOCITY}

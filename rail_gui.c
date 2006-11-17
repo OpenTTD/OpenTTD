@@ -22,6 +22,7 @@
 #include "variables.h"
 #include "newgrf_callbacks.h"
 #include "newgrf_station.h"
+#include "train.h"
 
 static RailType _cur_railtype;
 static bool _remove_button_clicked;
@@ -1150,3 +1151,20 @@ void InitializeRailGui(void)
 	_railstation.platlength = 1;
 	_railstation.dragdrop = true;
 }
+
+void ReinitGuiAfterToggleElrail(bool disable)
+{
+	extern RailType _last_built_railtype;
+	if (disable && _last_built_railtype == RAILTYPE_ELECTRIC) {
+		Window *w;
+		_last_built_railtype = _cur_railtype = RAILTYPE_RAIL;
+		w = FindWindowById(WC_BUILD_TOOLBAR, 0);
+		if (w != NULL && w->wndproc == BuildRailToolbWndProc) {
+			SetupRailToolbar(_cur_railtype, w);
+			SetWindowDirty(w);
+		}
+	}
+	MarkWholeScreenDirty();
+}
+
+

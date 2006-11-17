@@ -1141,7 +1141,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Flugzeu
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Wechsle Klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ändere Datum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiviere Veränderung der Produktionswerte: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Erlaube E-Loks auf normalen Gleisen zu fahren
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Fahre zu {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Fahre zu {WAYPOINT}, {VELOCITY}

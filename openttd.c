@@ -606,6 +606,8 @@ static void MakeNewGameDone(void)
 	_current_player = _local_player;
 	DoCommandP(0, (_patches.autorenew << 15 ) | (_patches.autorenew_months << 16) | 4, _patches.autorenew_money, NULL, CMD_SET_AUTOREPLACE);
 
+	SettingsDisableElrail(_patches.disable_elrails);
+
 	MarkWholeScreenDirty();
 }
 
@@ -1535,6 +1537,20 @@ bool AfterLoadGame(void)
 	if (CheckSavegameVersion(37)) {
 		ConvertNameArray();
 	}
+
+	/* from version 38 we have optional elrails */
+	if (CheckSavegameVersion(38)) {
+		/* old game - before elrails made optional */
+		if (CheckSavegameVersion(24)) {
+			/* very old game - before elrail was introduced */
+			_patches.disable_elrails = true; // disable elrails
+		} else {
+			/* game with mandatory elrails (r4150+) */
+			_patches.disable_elrails = false; // enable elrails
+		}
+	}
+	/* do the same as when elrails were enabled/disabled manually just now */
+	SettingsDisableElrail(_patches.disable_elrails);
 
 	return true;
 }

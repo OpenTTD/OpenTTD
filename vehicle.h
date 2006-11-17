@@ -95,6 +95,9 @@ enum {
 
 	// used to mark train as lost because PF can't find the route
 	VRF_NO_PATH_TO_DESTINATION = 5,
+
+	// used to mark that electric train engine is allowed to run on normal rail
+	VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL = 6,
 };
 
 typedef struct VehicleAir {

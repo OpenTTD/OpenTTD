@@ -1142,7 +1142,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetvlie
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Verander klimaat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Verander datum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Sta aanpassen productiewaarden toe: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Sta elektrische locomotieven toe op normale rails
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Op weg naar {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Op weg naar {WAYPOINT}, {VELOCITY}

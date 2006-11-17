@@ -646,6 +646,7 @@ static const char *_patches_vehicles[] = {
 	"servint_aircraft",
 	"no_servicing_if_no_breakdowns",
 	"wagon_speed_limits",
+	"disable_elrails",
 };
 
 typedef struct PatchEntry {

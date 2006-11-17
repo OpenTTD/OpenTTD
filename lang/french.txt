@@ -1141,7 +1141,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Les jet
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Changer de climat : {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Changer la date: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Permettre la modification des valeurs de production : {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Autoriser les locomotives électriques à circuler sur des voies non-électrifiées
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}En route pour {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}En route pour {WAYPOINT}, {VELOCITY}

@@ -1227,7 +1227,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Odrzuto
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmien klimat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmien date: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Pozwol modyfikowac wielkosc produkcji przedsiebiorstw: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Pozwol lokomotywom elektrycznym pracowac na zwyklych torach
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Zmierza do {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Zmierza do {WAYPOINT}, {VELOCITY}

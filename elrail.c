@@ -61,6 +61,9 @@
 #include "rail_map.h"
 #include "table/sprites.h"
 #include "table/elrail_data.h"
+#include "vehicle.h"
+#include "train.h"
+#include "gui.h"
 
 static inline TLG GetTLG(TileIndex t)
 {
@@ -360,6 +363,8 @@ static void DrawCatenaryOnBridge(const TileInfo *ti)
 
 void DrawCatenary(const TileInfo *ti)
 {
+	if (_patches.disable_elrails) return;
+
 	switch (GetTileType(ti->tile)) {
 		case MP_RAILWAY:
 			if (IsRailDepot(ti->tile)) {
@@ -384,4 +389,56 @@ void DrawCatenary(const TileInfo *ti)
 		default: return;
 	}
 	DrawCatenaryRailway(ti);
+}
+
+int32 SettingsDisableElrail(int32 p1)
+{
+	EngineID e_id;
+	Vehicle* v;
+	Player *p;
+	bool disable = (p1 != 0);
+
+	/* we will now walk through all electric train engines and change their railtypes if it is the wrong one*/
+	const RailType old_railtype = disable ? RAILTYPE_ELECTRIC : RAILTYPE_RAIL;
+	const RailType new_railtype = disable ? RAILTYPE_RAIL : RAILTYPE_ELECTRIC;
+
+	/* walk through all train engines */
+	for (e_id = 0; e_id < NUM_TRAIN_ENGINES; e_id++)
+	{
+		const RailVehicleInfo *rv_info = RailVehInfo(e_id);
+		Engine *e = GetEngine(e_id);
+		/* if it is an electric rail engine and its railtype is the wrong one */
+		if (rv_info->engclass == 2 && e->railtype == old_railtype) {
+			/* change it to the proper one */
+			e->railtype = new_railtype;
+		}
+	}
+
+	/* when disabling elrails, make sure that all existing trains can run on
+	*  normal rail too */
+	if (disable) {
+		FOR_ALL_VEHICLES(v) {
+			if (v->type == VEH_Train && v->u.rail.railtype == RAILTYPE_ELECTRIC) {
+				/* this railroad vehicle is now compatible only with elrail,
+				*  so add there also normal rail compatibility */
+				v->u.rail.compatible_railtypes |= (1 << RAILTYPE_RAIL);
+				v->u.rail.railtype = RAILTYPE_RAIL;
+				SETBIT(v->u.rail.flags, VRF_EL_ENGINE_ALLOWED_NORMAL_RAIL);
+			}
+		}
+	}
+
+	/* setup total power for trains */
+	FOR_ALL_VEHICLES(v) {
+		/* power is cached only for front engines */
+		if (v->type == VEH_Train && IsFrontEngine(v)) TrainPowerChanged(v);
+	}
+
+	FOR_ALL_PLAYERS(p) p->avail_railtypes = GetPlayerRailtypes(p->index);
+
+	/* This resets the _last_built_railtype, which will be invalid for electric
+	* rails. It may have unintended consequences if that function is ever
+	* extended, though. */
+	ReinitGuiAfterToggleElrail(disable);
+	return 0;
 }

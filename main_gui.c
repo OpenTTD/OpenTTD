@@ -46,7 +46,7 @@ static int _rename_id;
 static int _rename_what;
 
 static byte _terraform_size = 1;
-static RailType _last_built_railtype;
+RailType _last_built_railtype;
 static int _scengen_town_size = 2; // depress medium-sized towns per default
 
 extern void GenerateIndustries(void);
@@ -2448,3 +2448,4 @@ void InitializeMainGui(void)
 	/* Clean old GUI values */
 	_last_built_railtype = 0;
 }
+

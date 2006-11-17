@@ -1110,7 +1110,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Þotur 
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skipta um loftslag: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Breyta dagsetningu: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leyfa breytingar á verðmæti framleiðslu: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Leyfa rafdrifnum lestum að nota venjuleg spor
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Á leiðinni til {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Á leiðinni til {WAYPOINT}, {VELOCITY}

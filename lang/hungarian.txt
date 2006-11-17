@@ -1206,7 +1206,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet-rep
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Klíma változtatás: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Dátum módosítás: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}A nyersanyagüzemek termelése változtatható: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Közlekedhessenek elektromos mozdonyok hagyományos síneken
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Úton {WAYPOINT} felé
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Úton {WAYPOINT} felé, {VELOCITY}

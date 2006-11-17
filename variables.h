@@ -125,6 +125,7 @@ typedef struct Patches {
 	bool no_servicing_if_no_breakdowns; // dont send vehicles to depot when breakdowns are disabled
 	bool link_terraform_toolbar;        // display terraform toolbar when displaying rail, road, water and airport toolbars
 	bool reverse_scroll;                // Right-Click-Scrolling scrolls in the opposite direction
+	bool disable_elrails;               // when true, the elrails are disabled
 	bool measure_tooltip;               // Show a permanent tooltip when dragging tools
 	byte liveries;                      // Options for displaying company liveries, 0=none, 1=self, 2=all
 	bool prefer_teamchat;               // Choose the chat message target with <ENTER>, true=all players, false=your team
@@ -240,7 +241,7 @@ typedef struct Cheats {
 	Cheat switch_climate;
 	Cheat change_date;      // changes date ingame
 	Cheat setup_prod;       // setup raw-material production in game
-	Cheat elrail;           // allow electric engines to be powered on conventional rail
+	Cheat dummy;            // empty cheat (enable running el-engines on normal rail)
 } Cheats;
 
 VARDEF Cheats _cheats;

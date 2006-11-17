@@ -1137,7 +1137,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly 
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Bytt klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Bytt dato: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Tillat endring av produksjonsmengder: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Tillat elektriske lokomotiv å kjøre på vanlige skinner
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Har kurs mot {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Har kurs mot {WAYPOINT}, {VELOCITY}

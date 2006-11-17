@@ -430,6 +430,9 @@ int32 DoConvertStreetRail(TileIndex tile, RailType totype, bool exec)
 
 	if (GetRailTypeCrossing(tile) == totype) return CMD_ERROR;
 
+	// 'hidden' elrails can't be downgraded to normal rail when elrails are disabled
+	if (_patches.disable_elrails && totype == RAILTYPE_RAIL && GetRailTypeCrossing(tile) == RAILTYPE_ELECTRIC) return CMD_ERROR;
+
 	if (exec) {
 		SetRailTypeCrossing(tile, totype);
 		MarkTileDirtyByTile(tile);

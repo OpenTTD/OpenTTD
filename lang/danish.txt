@@ -1140,7 +1140,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jetfly 
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skift klima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ændre dato: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Aktiver modifikation af produktion: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Tillad elektriske tog at køre på almindelige skinner
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Retning mod {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Retning mod {WAYPOINT}, {VELOCITY}

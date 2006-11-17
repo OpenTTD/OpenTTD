@@ -1140,7 +1140,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Els avi
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Canviar clima: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Canviar data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Activar modificació de valors de producció: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Deixar que els trens elèctrics circulin per rails normals
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Cap a {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Cap a {WAYPOINT}, a {VELOCITY}

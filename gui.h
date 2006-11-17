@@ -35,9 +35,10 @@ void ShowLastNewsMessage(void);
 void ShowMessageOptions(void);
 void ShowMessageHistory(void);
 
-/* traintoolb_gui.c */
+/* rail_gui.c */
 void ShowBuildRailToolbar(RailType railtype, int button);
 void PlaceProc_BuyLand(TileIndex tile);
+void ReinitGuiAfterToggleElrail(bool disable);
 
 /* train_gui.c */
 void ShowTrainViewWindow(const Vehicle *v);

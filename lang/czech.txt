@@ -1197,7 +1197,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Letadla
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Zmenit podnebí: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Zmenit datum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Povolit zmenu produkce prumyslu: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Povolit elektrickým lokomotivám vyjet na normální koleje
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Mirim do {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Mirim do {WAYPOINT}, {VELOCITY}
