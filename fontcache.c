@@ -18,6 +18,10 @@
 #include FT_FREETYPE_H
 #include FT_GLYPH_H
 
+#ifdef WITH_FONTCONFIG
+#include <fontconfig/fontconfig.h>
+#endif
+
 static FT_Library _library = NULL;
 static FT_Face _face_small = NULL;
 static FT_Face _face_medium = NULL;
@@ -31,6 +35,12 @@ enum {
 };
 
 
+/**
+ * Loads the freetype font.
+ * First type to load the fontname as if it were a path. If that fails,
+ * try to resolve the filename of the font using fontconfig, where the
+ * format is 'font family name' or 'font family name, font style'.
+ */
 static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *type)
 {
 	FT_Error error;
@@ -38,6 +48,69 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 	if (strlen(font_name) == 0) return;
 
 	error = FT_New_Face(_library, font_name, 0, face);
+#ifdef WITH_FONTCONFIG
+	/* Failed to load the font, so try it with fontconfig */
+	if (error != FT_Err_Ok) {
+		if (!FcInit()) {
+ 			ShowInfoF("Unable to load font configuration");
+		} else {
+			FcPattern *match;
+			FcPattern *pat;
+			FcFontSet *fs;
+			FcResult  result;
+			char *font_style;
+			char *font_family;
+
+			/* Split & strip the font's style */
+			font_family = strdup(font_name);
+			font_style = strchr(font_family, ',');
+			if (font_style != NULL) {
+				font_style[0] = '\0';
+				font_style++;
+				while (*font_style == ' ' || *font_style == '\t') font_style++;
+			}
+
+			/* Resolve the name and populate the information structure */
+			pat = FcNameParse((FcChar8*)font_family);
+			if (font_style != NULL) FcPatternAddString(pat, FC_STYLE, (FcChar8*)font_style);
+			FcConfigSubstitute(0, pat, FcMatchPattern);
+			FcDefaultSubstitute(pat);
+			fs = FcFontSetCreate();
+			match = FcFontMatch(0, pat, &result);
+
+			if (fs != NULL && match != NULL) {
+				int i;
+				FcChar8 *family;
+				FcChar8 *style;
+				FcChar8 *file;
+				FcFontSetAdd(fs, match);
+
+				for (i = 0; error != FT_Err_Ok && i < fs->nfont; i++) {
+					/* Try the new filename */
+					if (FcPatternGetString(fs->fonts[i], FC_FILE,   0, &file)   == FcResultMatch &&
+							FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
+							FcPatternGetString(fs->fonts[i], FC_STYLE,  0, &style)  == FcResultMatch) {
+
+						/* The correct style? */
+						if (font_style != NULL && strcasecmp(font_style, (char*)style) != 0) continue;
+
+						/* Font config takes the best shot, which, if the family name is spelled
+						* wrongly a 'random' font, so check whether the family name is the
+						* same as the supplied name */
+						if (strcasecmp(font_family, (char*)family) == 0) {
+							error = FT_New_Face(_library, (char *)file, 0, face);
+						}
+					}
+				}
+			}
+
+			free(font_family);
+			FcPatternDestroy(pat);
+			FcFontSetDestroy(fs);
+			FcFini();
+		}
+	}
+#endif
 	if (error == FT_Err_Ok) {
 		/* Attempt to select the unicode character map */
 		error = FT_Select_Charmap(*face, ft_encoding_unicode);

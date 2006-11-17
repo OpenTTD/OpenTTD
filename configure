@@ -10,39 +10,41 @@ function showhelp() {
 	echo " $0 --your_options"
 	echo ""
 	echo "Params:"
-	echo " --debug            Create debug-release                [no]"
-	echo " --profile          Create profile-release              [no]"
-	echo " --dedicated        Make a dedicated build              [no]"
-	echo " --revision         Set the revision of the compilation [detected]"
-	echo " --target-cc        Sets the target-compiler            [\$CC]"
-	echo " --target-cxx       Sets the C++ target-compiler        []"
-	echo " --host-cc          Sets the host-compiler              [\$CC]"
-	echo " --host-cxx         Sets the C++ host-compiler          []"
-	echo " --os               Sets the OS. Listens to:            [detected]"
-	echo "                       UNIX, OSX, FREEBSD, MORPHOS"
-	echo "                       BEOS, SUNOS, CYGWIN, MINGW"
-	echo " --windres          Sets the windres (Windows)          [windres]"
-	echo " --force-le         Force LE platform                   [no]"
-	echo " --force-be         Force BE platform                   [no]"
+	echo " --debug             Create debug-release                [no]"
+	echo " --profile           Create profile-release              [no]"
+	echo " --dedicated         Make a dedicated build              [no]"
+	echo " --revision          Set the revision of the compilation [detected]"
+	echo " --target-cc         Sets the target-compiler            [\$CC]"
+	echo " --target-cxx        Sets the C++ target-compiler        []"
+	echo " --host-cc           Sets the host-compiler              [\$CC]"
+	echo " --host-cxx          Sets the C++ host-compiler          []"
+	echo " --os                Sets the OS. Listens to:            [detected]"
+	echo "                        UNIX, OSX, FREEBSD, MORPHOS"
+	echo "                        BEOS, SUNOS, CYGWIN, MINGW"
+	echo " --windres           Sets the windres (Windows)          [windres]"
+	echo " --force-le          Force LE platform                   [no]"
+	echo " --force-be          Force BE platform                   [no]"
 	echo ""
 	echo "Params that can be used with --with or --without"
 	echo "   (e.g.: --without-static disables static (default))"
-	echo " static             Do you want a static build?         [no]"
-	echo " directmusic        Do you want direct-music?           [no]"
-	echo " zlib               Do you want zlib-support?           [yes]"
-	echo " sdl                Do you want SDL-support?            [yes]"
-	echo " png                Do you want PNG-support?            [yes]"
-	echo " iconv              Do you want iconv-support?          [no]"
-	echo " network            Do you want network-support?        [yes]"
-	echo " cocoa              Do you want cocoa-support? (MacOSX) [no]"
-	echo " freetype           Do you want freetype-support?       [yes]"
+	echo " static              Do you want a static build?         [no]"
+	echo " directmusic         Do you want direct-music?           [no]"
+	echo " zlib                Do you want zlib-support?           [yes]"
+	echo " sdl                 Do you want SDL-support?            [yes]"
+	echo " png                 Do you want PNG-support?            [yes]"
+	echo " iconv               Do you want iconv-support?          [no]"
+	echo " network             Do you want network-support?        [yes]"
+	echo " cocoa               Do you want cocoa-support? (MacOSX) [no]"
+	echo " freetype            Do you want freetype-support?       [yes]"
+	echo " fontconfig          Do you want fontconfig-support?     [yes]"
 	echo ""
 	echo "Params used to configure external libs:"
-	echo " --static-zlib-path Set the path to your static zlib    []"
-	echo " --sdl-config       Where is your sdl-config            [sdl-config]"
-	echo " --libpng-config    Where is your libpng-config         [libpng-config]"
-	echo " --freetype-config  Where is your freetype-config       [freetype-config]"
-	echo " --with-iconv       Set the path to your iconv headers  []"
+	echo " --static-zlib-path  Set the path to your static zlib    []"
+	echo " --sdl-config        Where is your sdl-config            [sdl-config]"
+	echo " --libpng-config     Where is your libpng-config         [libpng-config]"
+	echo " --freetype-config   Where is your freetype-config       [freetype-config]"
+	echo " --fontconfig-config Where is your fontconfig-config     [pkg-config fontconfig]"
+	echo " --with-iconv        Set the path to your iconv headers  []"
 	echo " "
 }
 
@@ -189,6 +191,12 @@ do
 		--without-freetype)
 			PARAM="$PARAM WITH_FREETYPE="
 			;;
+		--with-fontconfig)
+			PARAM="$PARAM WITH_FONTCONFIG=1"
+			;;
+		--without-fontconfig)
+			PARAM="$PARAM WITH_FONTCONFIG="
+			;;
 		--static-zlib-path=*)
 			handle STATIC_ZLIB_PATH "$n"
 			;;
@@ -212,6 +220,12 @@ do
 			;;
 		--freetype-config)
 			ITEM="FREETYPE_CONFIG"
+			;;
+		--fontconfig-config=*)
+			handle FONTCONFIG_CONFIG "$n"
+			;;
+		--fontconfig-config)
+			ITEM="FONTCONFIG_CONFIG"
 			;;
 
 		--*=*)

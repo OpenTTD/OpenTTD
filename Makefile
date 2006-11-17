@@ -241,6 +241,12 @@ $(error WITH_FREETYPE can't be used when FREETYPE_CONFIG is not set. Edit Makefi
 	endif
 endif
 
+ifdef WITH_FONTCONFIG
+	ifndef FONTCONFIG_CONFIG
+$(error WITH_FONTCONFIG can't be used when FONTOCNFIG_CONFIG is not set. Edit Makefile.config to correct this)
+	endif
+endif
+
 ##############################################################################
 #
 # Compiler configuration
@@ -506,6 +512,15 @@ CCFLAGS_FREETYPE := $(shell $(FREETYPE_CONFIG) --cflags)
 LDFLAGS_FREETYPE := $(shell $(FREETYPE_CONFIG) --libs)
 CFLAGS += $(CCFLAGS_FREETYPE)
 LIBS += $(LDFLAGS_FREETYPE)
+endif
+
+# fontconfig config
+ifdef WITH_FONTCONFIG
+CDEFS += -DWITH_FONTCONFIG
+CCFLAGS_FONTCONFIG := $(shell $(FONTCONFIG_CONFIG) --cflags)
+LDFLAGS_FONTCONFIG := $(shell $(FONTCONFIG_CONFIG) --libs)
+CFLAGS += $(CCFLAGS_FONTCONFIG)
+LIBS += $(LDFLAGS_FONTCONFIG)
 endif
 
 # iconv is enabled defaultly on OSX >= 10.3

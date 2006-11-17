@@ -69,6 +69,9 @@ LIBPNG_CONFIG :=libpng-config
 # set freetype-config to the default value
 FREETYPE_CONFIG:=freetype-config
 
+# set pkg-config to the default value
+FONTCONFIG_CONFIG:=pkg-config fontconfig
+
 # Networking, enabled by default
 WITH_NETWORK:=1
 
@@ -80,6 +83,9 @@ WITH_PNG:=$(shell $(LIBPNG_CONFIG) --version 2>/dev/null)
 
 # Freetype detection
 WITH_FREETYPE:=$(shell $(FREETYPE_CONFIG) --ftversion 2>/dev/null)
+
+# fontconfig detection
+WITH_FONTCONFIG:=$(shell $(FONTCONFIG_CONFIG) --modversion 2>/dev/null)
 
 ifdef WITH_PNG
 	# LibPNG depends on Zlib
