@@ -488,6 +488,10 @@ static bool RailVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT cargo_disallowed[engine + i] = grf_load_word(&buf);
 			break;
 
+		case 0x2A: /* Long format introduction date (days since year 0) */
+			FOR_EACH_OBJECT ei[i].base_intro = grf_load_dword(&buf);
+			break;
+
 		/* TODO */
 		/* Fall-through for unimplemented one byte long properties. */
 		case 0x1F: /* Tractive effort */
@@ -603,6 +607,10 @@ static bool RoadVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT cargo_disallowed[ROAD_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
+		case 0x1F: /* Long format introduction date (days since year 0) */
+			FOR_EACH_OBJECT ei[i].base_intro = grf_load_dword(&buf);
+			break;
+
 		case 0x18: /* Tractive effort */
 		case 0x19: /* Air drag */
 		case 0x1B: /* Retire vehicle early */
@@ -713,6 +721,10 @@ static bool ShipVehicleChangeInfo(uint engine, int numinfo, int prop, byte **buf
 			FOR_EACH_OBJECT cargo_disallowed[SHIP_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
 			break;
 
+		case 0x1A: /* Long format introduction date (days since year 0) */
+			FOR_EACH_OBJECT ei[i].base_intro = grf_load_dword(&buf);
+			break;
+
 		case 0x14: /* Ocean speed fraction */
 		case 0x15: /* Canal speed fraction */
 		case 0x16: /* Retire vehicle early */
@@ -820,6 +832,10 @@ static bool AircraftVehicleChangeInfo(uint engine, int numinfo, int prop, byte *
 
 		case 0x19: /* Cargo classes disallowed */
 			FOR_EACH_OBJECT cargo_disallowed[AIRCRAFT_ENGINES_INDEX + engine + i] = grf_load_word(&buf);
+			break;
+
+		case 0x1A: /* Long format introduction date (days since year 0) */
+			FOR_EACH_OBJECT ei[i].base_intro = grf_load_dword(&buf);
 			break;
 
 		case 0x16: /* Retire vehicle early */
@@ -1108,6 +1124,10 @@ static bool BridgeChangeInfo(uint brid, int numinfo, int prop, byte **bufp, int 
 
 		case 0x0E: /* Flags; bit 0 - disable far pillars */
 			FOR_EACH_OBJECT _bridge[brid + i].flags = grf_load_byte(&buf);
+			break;
+
+		case 0x0F: /* Long format year of availability (year since year 0) */
+			FOR_EACH_OBJECT _bridge[brid + i].avail_year = clamp(grf_load_dword(&buf), MIN_YEAR, MAX_YEAR);
 			break;
 
 		default:
