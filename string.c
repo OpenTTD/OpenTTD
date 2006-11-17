@@ -8,7 +8,8 @@
 #include "table/control_codes.h"
 
 #include <stdarg.h>
-#include <ctype.h> // required for tolower()
+#include <wctype.h> // required for towlower()
+#include <locale.h> // required for setlocale()
 
 void ttd_strlcat(char *dst, const char *src, size_t size)
 {
@@ -68,13 +69,14 @@ char* CDECL str_fmt(const char* str, ...)
 	return p;
 }
 
+
 void str_validate(char *str)
 {
 	char *dst = str;
 	WChar c;
-	size_t len = Utf8Decode(&c, str);
+	size_t len;
 
-	for (; c != '\0'; len = Utf8Decode(&c, str)) {
+	for (len = Utf8Decode(&c, str); c != '\0'; len = Utf8Decode(&c, str)) {
 		if (IsPrintable(c) && (c < SCC_SPRITE_START || c > SCC_SPRITE_END ||
 			IsValidChar(c - SCC_SPRITE_START, CS_ALPHANUMERAL))) {
 			/* Copy the character back. Even if dst is current the same as str
@@ -82,7 +84,7 @@ void str_validate(char *str)
 			 * moving the pointers ahead by len */
 			do {
 				*dst++ = *str++;
-			} while (--len);
+			} while (--len != 0);
 		} else {
 			/* Replace the undesirable character with a question mark */
 			str += len;
@@ -93,18 +95,48 @@ void str_validate(char *str)
 	*dst = '\0';
 }
 
+
 void str_strip_colours(char *str)
 {
 	char *dst = str;
-	for (; *str != '\0';) {
-		if (*str >= 15 && *str <= 31) { // magic colour codes
-			str++;
+	WChar c;
+	size_t len;
+
+	strtolower(str);
+	for (len = Utf8Decode(&c, str); c != '\0'; len = Utf8Decode(&c, str)) {
+		if (c < SCC_BLUE || c > SCC_BLACK) {
+			/* Copy the character back. Even if dst is current the same as str
+			 * (i.e. no characters have been changed) this is quicker than
+			 * moving the pointers ahead by len */
+			do {
+				*dst++ = *str++;
+			} while (--len != 0);
 		} else {
-			*dst++ = *str++;
+			/* Just skip (strip) the colour codes */
+			str += len;
 		}
 	}
 	*dst = '\0';
 }
+
+
+void strtolower(char *str)
+{
+	WChar c;
+	/* Convert according to native locale, needed for unicode characters
+	 * We backup the current locale, then set it to native "", the set back */
+	char *locale = strdup(setlocale(LC_CTYPE, NULL));
+
+	setlocale(LC_CTYPE, "");
+	for (Utf8Decode(&c, str); c != '\0'; Utf8Decode(&c, str)) {
+		/* XXX - assume lowercase version does not use more bytes */
+		c = towlower(c);
+		str += Utf8Encode(str, c);
+	}
+	setlocale(LC_CTYPE, locale);
+	free(locale);
+}
+
 
 /**
  * Only allow certain keys. You can define the filter to be used. This makes
@@ -122,11 +154,6 @@ bool IsValidChar(WChar key, CharSetFilter afilter)
 	}
 
 	return false;
-}
-
-void strtolower(char *str)
-{
-	for (; *str != '\0'; str++) *str = tolower(*str);
 }
 
 #ifdef WIN32
