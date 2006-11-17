@@ -1582,6 +1582,7 @@ int32 CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		Patches *patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
 		void *var = ini_get_variable(&sd->save, patches_ptr);
 		Write_ValidateSetting(var, sd, (int32)p2);
+		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
 
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 	}
@@ -1611,6 +1612,7 @@ bool SetPatchValue(uint index, const Patches *object, int32 value)
 			void *var2 = ini_get_variable(&sd->save, &_patches_newgame);
 			Write_ValidateSetting(var2, sd, value);
 		}
+		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
 		InvalidateWindow(WC_GAME_OPTIONS, 0);
 		return true;
 	}
@@ -1653,7 +1655,6 @@ bool IConsoleSetPatchSetting(const char *name, int32 value)
 	ptr = ini_get_variable(&sd->save, patches_ptr);
 
 	success = SetPatchValue(index, patches_ptr, value);
-	if (success && sd->desc.proc != NULL) sd->desc.proc(value);
 	return success;
 }
 

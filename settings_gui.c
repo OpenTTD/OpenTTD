@@ -833,7 +833,6 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 				if (value != oldvalue) {
 					SetPatchValue(page->entries[btn].index, patches_ptr, value);
 					SetWindowDirty(w);
-					if (sdb->proc != NULL) sdb->proc((int32)ReadValue(var, sd->save.conv));
 				}
 			} else {
 				/* only open editbox for types that its sensible for */
@@ -868,7 +867,6 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		if (e->we.edittext.str != NULL) {
 			const PatchEntry *pe = &_patches_page[WP(w,def_d).data_1].entries[WP(w,def_d).data_3];
 			const SettingDesc *sd = pe->setting;
-			void *var = ini_get_variable(&sd->save, patches_ptr);
 			int32 value = atoi(e->we.edittext.str);
 
 			/* Save the correct currency-translated value */
@@ -876,8 +874,6 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 
 			SetPatchValue(pe->index, patches_ptr, value);
 			SetWindowDirty(w);
-
-			if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
 		}
 		break;
 	}
