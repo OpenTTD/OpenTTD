@@ -1564,28 +1564,26 @@ static bool AnyTownExists(void)
 
 extern Industry *CreateNewIndustry(TileIndex tile, int type);
 
+/**
+ * Search callback function for TryBuildIndustry
+ * @param tile to test
+ * @param data that is passed by the caller.  In this case, the type of industry been tested
+ * @result of the operation
+ */
+static bool SearchTileForIndustry(TileIndex tile, uint32 data)
+{
+	return CreateNewIndustry(tile, data) != NULL;
+}
+
+/**
+ * Perform a 9*9 tiles circular search around a tile
+ * in order to find a suitable zone to create the desired industry
+ * @param tile to start search for
+ * @param type of the desired industry
+ */
 static bool TryBuildIndustry(TileIndex tile, int type)
 {
-	int n;
-
-	if (CreateNewIndustry(tile, type)) return true;
-
-	n = 100;
-	do {
-		if (CreateNewIndustry(AdjustTileCoordRandomly(tile, 1), type)) return true;
-	} while (--n);
-
-	n = 200;
-	do {
-		if (CreateNewIndustry(AdjustTileCoordRandomly(tile, 2), type)) return true;
-	} while (--n);
-
-	n = 700;
-	do {
-		if (CreateNewIndustry(AdjustTileCoordRandomly(tile, 4), type)) return true;
-	} while (--n);
-
-	return false;
+	return CircularTileSearch(tile, 9, SearchTileForIndustry, type);
 }
 
 

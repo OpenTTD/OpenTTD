@@ -845,51 +845,44 @@ static void MaybePlantFarmField(const Industry *i)
 	if (CHANCE16(1, 8)) PlantRandomFarmField(i);
 }
 
+/**
+ * Search callback function for ChopLumberMillTrees
+ * @param tile to test
+ * @param data that is passed by the caller.  In this case, nothing
+ * @result of the test
+ */
+static bool SearchLumberMillTrees(TileIndex tile, uint32 data)
+{
+	if (IsTileType(tile, MP_TREES)) {
+		PlayerID old_player = _current_player;
+		/* found a tree */
+
+		_current_player = OWNER_NONE;
+		_industry_sound_ctr = 1;
+		_industry_sound_tile = tile;
+		SndPlayTileFx(SND_38_CHAINSAW, tile);
+
+		DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
+		SetTropicZone(tile, TROPICZONE_INVALID);
+
+		_current_player = old_player;
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Perform a circular search around the Lumber Mill in order to find trees to cut
+ * @param i industry
+ */
 static void ChopLumberMillTrees(Industry *i)
 {
-	static const TileIndexDiffC _chop_dir[] = {
-		{ 0,  1},
-		{ 1,  0},
-		{ 0, -1},
-		{-1,  0}
-	};
-
 	TileIndex tile = i->xy;
-	int a;
 
-	if (!IsIndustryCompleted(tile)) return;
+	if (!IsIndustryCompleted(tile)) return;  ///< Can't proceed if not completed
 
-	/* search outwards as a rectangular spiral */
-	for (a = 1; a != 41; a += 2) {
-		uint dir;
-
-		for (dir = 0; dir != 4; dir++) {
-			int j = a;
-
-			do {
-				tile = TILE_MASK(tile);
-				if (IsTileType(tile, MP_TREES)) {
-					PlayerID old_player = _current_player;
-					/* found a tree */
-
-					_current_player = OWNER_NONE;
-					_industry_sound_ctr = 1;
-					_industry_sound_tile = tile;
-					SndPlayTileFx(SND_38_CHAINSAW, tile);
-
-					DoCommand(tile, 0, 0, DC_EXEC, CMD_LANDSCAPE_CLEAR);
-					SetTropicZone(tile, TROPICZONE_INVALID);
-
-					i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + 45);
-
-					_current_player = old_player;
-					return;
-				}
-				tile += ToTileIndexDiff(_chop_dir[dir]);
-			} while (--j);
-		}
-		tile -= TileDiffXY(1, 1);
-	}
+	if (CircularTileSearch(tile, 40, SearchLumberMillTrees, 0)) ///< 40x40 tiles  to search
+		i->cargo_waiting[0] = min(0xffff, i->cargo_waiting[0] + 45); ///< Found a tree, add according value to waiting cargo
 }
 
 static const byte _industry_sounds[37][2] = {

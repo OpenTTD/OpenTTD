@@ -1476,39 +1476,27 @@ static bool DoBuildStatueOfCompany(TileIndex tile)
 	return true;
 }
 
+/**
+ * Search callback function for TownActionBuildStatue
+ * @param data that is passed by the caller.  In this case, nothing
+ * @result of the test
+ */
+static bool SearchTileForStatue(TileIndex tile, uint32 data)
+{
+	return DoBuildStatueOfCompany(tile);
+}
+
+/**
+ * Perform a 9x9 tiles circular search from the center of the town
+ * in order to find a free tile to place a statue
+ * @param t town to search in
+ */
 static void TownActionBuildStatue(Town* t)
 {
-	// Layouted as an outward spiral
-	static const TileIndexDiffC _statue_tiles[] = {
-		{-1, 0},
-		{ 0, 1},
-		{ 1, 0}, { 1, 0},
-		{ 0,-1}, { 0,-1},
-		{-1, 0}, {-1, 0}, {-1, 0},
-		{ 0, 1}, { 0, 1}, { 0, 1},
-		{ 1, 0}, { 1, 0}, { 1, 0}, { 1, 0},
-		{ 0,-1}, { 0,-1}, { 0,-1}, { 0,-1},
-		{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0},
-		{ 0, 1}, { 0, 1}, { 0, 1}, { 0, 1}, { 0, 1},
-		{ 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0},
-		{ 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1},
-		{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0},
-		{ 0, 1}, { 0, 1}, { 0, 1}, { 0, 1}, { 0, 1}, { 0, 1}, { 0, 1},
-		{ 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0}, { 1, 0},
-		{ 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1}, { 0,-1},
-		{-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0}, {-1, 0},
-		{ 0, 0}
-	};
 	TileIndex tile = t->xy;
-	const TileIndexDiffC *p;
 
-	for (p = _statue_tiles; p != endof(_statue_tiles); ++p) {
-		if (DoBuildStatueOfCompany(tile)) {
-			SETBIT(t->statues, _current_player);
-			return;
-		}
-		tile = TILE_ADD(tile, ToTileIndexDiff(*p));
-	}
+	if (CircularTileSearch(tile, 9, SearchTileForStatue, 0))
+		SETBIT(t->statues, _current_player); ///< Once found and built, "inform" the Town
 }
 
 static void TownActionFundBuildings(Town* t)

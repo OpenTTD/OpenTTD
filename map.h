@@ -176,6 +176,9 @@ static inline TileIndexDiff TileOffsByDir(uint dir)
 	return ToTileIndexDiff(_tileoffs_by_dir[dir]);
 }
 
+typedef bool TestTileOnSearchProc(TileIndex tile, uint32 data);
+bool CircularTileSearch(TileIndex tile, uint size, TestTileOnSearchProc proc, uint32 data);
+
 /* Approximation of the length of a straight track, relative to a diagonal
  * track (ie the size of a tile side). #defined instead of const so it can
  * stay integer. (no runtime float operations) Is this needed?

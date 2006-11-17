@@ -6,6 +6,7 @@
 #include "functions.h"
 #include "macros.h"
 #include "map.h"
+#include "direction.h"
 
 #if defined(_MSC_VER) && _MSC_VER >= 1400 /* VStudio 2005 is stupid! */
 /* Why the hell is that not in all MSVC headers?? */
@@ -178,4 +179,68 @@ uint DistanceFromEdge(TileIndex tile)
 	const uint minl = xl < yl ? xl : yl;
 	const uint minh = xh < yh ? xh : yh;
 	return minl < minh ? minl : minh;
+}
+
+/**
+ * Function performing a search around a center tile and going outward, thus in circle.
+ * Although it really is a square search...
+ * Every tile will be tested by means of the callback function proc,
+ * which will determine if yes or no the given tile meets criteria of search.
+ * @param tile to start the search from
+ * @param size: number of tiles per side of the desired search area
+ * @param proc: callback testing function pointer.
+ * @param data to be passed to the callback function. Depends on the implementation
+ * @result of the search
+ * @pre proc != NULL
+ * @pre size > 0
+ */
+bool CircularTileSearch(TileIndex tile, uint size, TestTileOnSearchProc proc, uint32 data)
+{
+	uint n, x, y;
+	DiagDirection dir;
+
+	assert(proc != NULL);
+	assert(size > 0);
+
+	x = TileX(tile);
+	y = TileY(tile);
+
+	if (size % 2 == 1) {
+		/* If the length of the side is uneven, the center has to be checked
+		 * separately, as the pattern of uneven sides requires to go around the center */
+		n = 2;
+		if (proc(TileXY(x, y), data)) return true;
+
+		/* If tile test is not successfull, get one tile down and left,
+		 * ready for a test in first circle around center tile */
+		x += _tileoffs_by_dir[DIR_W].x;
+		y += _tileoffs_by_dir[DIR_W].y;
+	} else {
+		n = 1;
+		/* To use _tileoffs_by_diagdir's order, we must relocate to
+		 * another tile, as we now first go 'up', 'right', 'down', 'left'
+		 * instead of 'right', 'down', 'left', 'up', which the calling
+		 * function assume. */
+		x++;
+	}
+
+	for (; n < size; n += 2) {
+		for (dir = DIAGDIR_NE; dir < DIAGDIR_END; dir++) {
+			uint j;
+			for (j = n; j != 0; j--) {
+				if (x <= MapMaxX() && y <= MapMaxY() && ///< Is the tile within the map?
+						proc(TileXY(x, y), data)) {     ///< Is the callback successfulll?
+					return true;                        ///< then stop the search
+				}
+
+				/* Step to the next 'neighbour' in the circular line */
+				x += _tileoffs_by_diagdir[dir].x;
+				y += _tileoffs_by_diagdir[dir].y;
+			}
+		}
+		/* Jump to next circle to test */
+		x += _tileoffs_by_dir[DIR_W].x;
+		y += _tileoffs_by_dir[DIR_W].y;
+	}
+	return false;
 }
