@@ -222,6 +222,31 @@ static void PutUtf8(uint32 value)
 }
 
 
+size_t Utf8Validate(const char *s)
+{
+	uint32 c;
+
+	if (!HASBIT(s[0], 7)) {
+		/* 1 byte */
+		return 1;
+	} else if (GB(s[0], 5, 3) == 6 && IsUtf8Part(s[1])) {
+		/* 2 bytes */
+		c = GB(s[0], 0, 5) << 6 | GB(s[1], 0, 6);
+		if (c >= 0x80) return 2;
+	} else if (GB(s[0], 4, 4) == 14 && IsUtf8Part(s[1]) && IsUtf8Part(s[2])) {
+		/* 3 bytes */
+		c = GB(s[0], 0, 4) << 12 | GB(s[1], 0, 6) << 6 | GB(s[2], 0, 6);
+		if (c >= 0x800) return 3;
+	} else if (GB(s[0], 3, 5) == 30 && IsUtf8Part(s[1]) && IsUtf8Part(s[2]) && IsUtf8Part(s[3])) {
+		/* 4 bytes */
+		c = GB(s[0], 0, 3) << 18 | GB(s[1], 0, 6) << 12 | GB(s[2], 0, 6) << 6 | GB(s[3], 0, 6);
+		if (c >= 0x10000 && c <= 0x10FFFF) return 4;
+	}
+
+	return 0;
+}
+
+
 static void EmitSingleChar(char *buf, int value)
 {
 	if (*buf != '\0') warning("Ignoring trailing letters in command");
@@ -780,6 +805,16 @@ static void HandleString(char *str, bool master)
 	for (t = s; t > str && (t[-1] == ' ' || t[-1] == '\t'); t--);
 	*t = 0;
 	s++;
+
+	/* Check string is valid UTF-8 */
+	{
+		const char *tmp;
+		for (tmp = s; *tmp != '\0';) {
+			size_t len = Utf8Validate(tmp);
+			if (len == 0) fatal("Invalid UTF-8 sequence in '%s'", s);
+			tmp += len;
+		}
+	}
 
 	// Check if the string has a case..
 	// The syntax for cases is IDENTNAME.case
