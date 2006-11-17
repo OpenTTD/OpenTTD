@@ -355,9 +355,9 @@ static LRESULT CALLBACK WndProcGdi(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 			uint32 pressed_key;
 
 			GetKeyboardState(ks);
-			if (ToUnicode(wParam, 0, ks, &w, 1, 0) == 0) {
+			if (ToUnicode(wParam, 0, ks, &w, 1, 0) != 1) {
 				/* On win9x ToUnicode always fails, so fall back to ToAscii */
-				if (ToAscii(wParam, 0, ks, &w, 0) == 0) w = 0; // no translation was possible
+				if (ToAscii(wParam, 0, ks, &w, 0) != 1) w = 0; // no translation was possible
 			}
 
 			pressed_key = w | MapWindowsKey(wParam) << 16;
@@ -787,7 +787,6 @@ static void Win32GdiMainLoop(void)
 	for (;;) {
 		while (PeekMessage(&mesg, NULL, 0, 0, PM_REMOVE)) {
 			InteractiveRandom(); // randomness
-			TranslateMessage(&mesg);
 			DispatchMessage(&mesg);
 		}
 		if (_exit_game) return;
