@@ -616,8 +616,6 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 
 void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int button, uint32 disabled_mask, uint32 hidden_mask)
 {
-	WindowNumber num;
-	WindowClass cls;
 	int i;
 	const Widget *wi;
 	Window *w2;
@@ -627,10 +625,7 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 	int screen_top, screen_bottom;
 	bool scroll = false;
 
-	cls = w->window_class;
-	num = w->window_number;
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
-	w = FindWindowById(cls, num);
 
 	if (is_dropdown_menu_shown) return;
 

@@ -454,7 +454,6 @@ void ShowVehicleRefitWindow(const Vehicle *v, VehicleOrderID order)
 	WP(w, refit_d).order = order;
 
 	if (w != NULL) {
-		w->window_number = v->index;
 		w->caption_color = v->owner;
 		w->vscroll.cap = 8;
 		w->resize.step_height = 14;

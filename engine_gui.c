@@ -93,12 +93,10 @@ static void EnginePreviewWndProc(Window *w, WindowEvent *e)
 
 	case WE_CLICK:
 		switch (e->we.click.widget) {
-			case 3:
-				DeleteWindow(w);
-				break;
-
 			case 4:
 				DoCommandP(0, w->window_number, 0, NULL, CMD_WANT_ENGINE_PREVIEW);
+				/* Fallthrough */
+			case 3:
 				DeleteWindow(w);
 				break;
 		}
@@ -117,10 +115,7 @@ static const WindowDesc _engine_preview_desc = {
 
 void ShowEnginePreviewWindow(EngineID engine)
 {
-	Window *w;
-
-	w = AllocateWindowDesc(&_engine_preview_desc);
-	w->window_number = engine;
+	Window *w = AllocateWindowDescFront(&_engine_preview_desc, engine);
 }
 
 static void DrawTrainEngineInfo(EngineID engine, int x, int y, int maxw)

@@ -357,8 +357,7 @@ void ShowBuildShipWindow(TileIndex tile)
 
 	DeleteWindowById(WC_BUILD_VEHICLE, tile);
 
-	w = AllocateWindowDesc(&_new_ship_desc);
-	w->window_number = tile;
+	w = AllocateWindowDescFront(&_new_ship_desc, tile);
 	w->vscroll.cap = 4;
 	w->widget[2].data = (w->vscroll.cap << 8) + 1;
 

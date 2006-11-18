@@ -189,11 +189,8 @@ static void DepotSellAllWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case 4:
-					/* Weird issue here. If We execute the DoCommandP first, then the window is not closed */
-					DeleteWindow(w);
 					DoCommandP(tile, vehicle_type, 0, NULL, CMD_DEPOT_SELL_ALL_VEHICLES);
-					break;
-
+					/* Fallthrough */
 				case 3:
 					DeleteWindow(w);
 					break;

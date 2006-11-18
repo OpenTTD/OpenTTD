@@ -1258,11 +1258,6 @@ static void ClientListPopupWndProc(Window *w, WindowEvent *e)
 		if (index >= 0 && e->we.popupmenu.pt.y >= w->top)
 			HandleClientListPopupClick(index, WP(w,menu_d).main_button);
 
-		// Sometimes, because of the bad DeleteWindow-proc, the 'w' pointer is
-		//  invalid after the last functions (mostly because it kills a window
-		//  that is in front of 'w', and because of a silly memmove, the address
-		//  'w' was pointing to becomes invalid), so we need to refetch
-		//  the right address...
 		DeleteWindowById(WC_TOOLBAR_MENU, 0);
 	}	break;
 

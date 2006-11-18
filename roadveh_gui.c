@@ -534,8 +534,7 @@ void ShowBuildRoadVehWindow(TileIndex tile)
 
 	DeleteWindowById(WC_BUILD_VEHICLE, tile);
 
-	w = AllocateWindowDesc(&_new_road_veh_desc);
-	w->window_number = tile;
+	w = AllocateWindowDescFront(&_new_road_veh_desc, tile);
 	w->vscroll.cap = 8;
 	w->widget[2].data = (w->vscroll.cap << 8) + 1;
 

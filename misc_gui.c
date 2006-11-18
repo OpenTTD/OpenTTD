@@ -1856,8 +1856,6 @@ void ShowCheatWindow(void)
 
 	DeleteWindowById(WC_CHEATS, 0);
 	w = AllocateWindowDesc(&_cheats_desc);
-
-	if (w != NULL) SetWindowDirty(w);
 }
 
 /** Resize the widgets in a window
