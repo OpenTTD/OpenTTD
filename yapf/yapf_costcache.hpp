@@ -104,6 +104,9 @@ struct CSegmentCostCacheT
 
 	FORCEINLINE CSegmentCostCacheT() {}
 
+	/** flush (clear) the cache */
+	FORCEINLINE void Flush() {m_map.Clear(); m_heap.Clear();};
+
 	FORCEINLINE Tsegment& Get(Key& key, bool *found)
 	{
 		Tsegment* item = m_map.Find(key);
@@ -143,12 +146,11 @@ protected:
 	/// to access inherited path finder
 	FORCEINLINE Tpf& Yapf() {return *static_cast<Tpf*>(this);}
 
-	FORCEINLINE static Cache*& stGlobalCachePtr() {static Cache* pC = NULL; return pC;}
-
 	FORCEINLINE static Cache& stGetGlobalCache()
 	{
 		static int last_rail_change_counter = 0;
 		static Date last_date = 0;
+		static Cache C;
 
 		// some statistics
 		if (last_date != _date) {
@@ -157,18 +159,12 @@ protected:
 			_total_pf_time_us = 0;
 		}
 
-		Cache*& pC = stGlobalCachePtr();
-
 		// delete the cache sometimes...
-		if (pC != NULL && last_rail_change_counter != Cache::s_rail_change_counter) {
+		if (last_rail_change_counter != Cache::s_rail_change_counter) {
 			last_rail_change_counter = Cache::s_rail_change_counter;
-			delete pC;
-			pC = NULL;
+			C.Flush();
 		}
-
-		if (pC == NULL)
-			pC = new Cache();
-		return *pC;
+		return C;
 	}
 
 public:

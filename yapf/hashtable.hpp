@@ -12,6 +12,9 @@ struct CHashTableSlotT
 
 	CHashTableSlotT() : m_pFirst(NULL) {}
 
+	/** hash table slot helper - clears the slot by simple forgetting its items */
+	FORCEINLINE void Clear() {m_pFirst = NULL;}
+
 	/** hash table slot helper - linear search for item with given key through the given blob - const version */
 	FORCEINLINE const Titem_* Find(const Key& key) const
 	{
@@ -161,6 +164,9 @@ protected:
 public:
 	/** item count */
 	FORCEINLINE int Count() const {return m_num_items;}
+
+	/** simple clear - forget all items - used by CSegmentCostCacheT.Flush() */
+	FORCEINLINE void Clear() const {for (int i = 0; i < Tcapacity; i++) m_slots[i].Clear();}
 
 	/** const item search */
 	const Titem_* Find(const Tkey& key) const

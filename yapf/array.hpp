@@ -24,6 +24,8 @@ public:
 
 	/** implicit constructor */
 	FORCEINLINE CArrayT() { }
+	/** Clear (destroy) all items */
+	FORCEINLINE void Clear() {m_a.Clear();}
 	/** Return actual number of items */
 	FORCEINLINE int Size() const
 	{

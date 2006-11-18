@@ -51,12 +51,21 @@ struct CFixedSizeArrayT {
 		// release one reference to the shared block
 		if ((--RefCnt()) > 0) return; // and return if there is still some owner
 
+		Clear();
+		// free the memory block occupied by items
+		free(((int8*)m_items) - ThdrSize);
+		m_items = NULL;
+	}
+
+	/** Clear (destroy) all items */
+	FORCEINLINE void Clear()
+	{
 		// walk through all allocated items backward and destroy them
 		for (Titem* pItem = &m_items[Size() - 1]; pItem >= m_items; pItem--) {
 			pItem->~Titem_();
 		}
-		free(((int8*)m_items) - ThdrSize);
-		m_items = NULL;
+		// number of items become zero
+		SizeRef() = 0;
 	}
 
 protected:
