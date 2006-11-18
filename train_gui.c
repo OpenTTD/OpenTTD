@@ -664,8 +664,7 @@ void ShowBuildTrainWindow(TileIndex tile)
 
 	DeleteWindowById(WC_BUILD_VEHICLE, tile);
 
-	w = AllocateWindowDesc(&_new_rail_vehicle_desc);
-	w->window_number = tile;
+	w = AllocateWindowDescFront(&_new_rail_vehicle_desc, tile);
 	w->vscroll.cap = 8;
 	w->widget[BUILD_TRAIN_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
 

@@ -194,12 +194,12 @@ void SndCopyToPool(void)
 
 static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 {
-	const Window *w;
+	const Window* const *wz;
 
 	if (msf.effect_vol == 0) return;
 
-	for (w = _windows; w != _last_window; w++) {
-		const ViewPort* vp = w->viewport;
+	FOR_ALL_WINDOWS(wz) {
+		const ViewPort *vp = (*wz)->viewport;
 
 		if (vp != NULL &&
 				IS_INSIDE_1D(x, vp->virtual_left, vp->virtual_width) &&

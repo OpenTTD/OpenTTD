@@ -18,6 +18,10 @@
 // delta between mouse cursor and upper left corner of dragged window
 static Point _drag_delta;
 
+static Window _windows[25];
+Window *_z_windows[lengthof(_windows)];
+Window **_last_z_window; // always points to the next free space in the z-array
+
 void CDECL SetWindowWidgetsDisabledState(Window *w, bool disab_stat, int widgets, ...)
 {
 	va_list wdg_list;
@@ -81,8 +85,8 @@ void HandleButtonClick(Window *w, byte widget)
 }
 
 
-static Window *StartWindowDrag(Window *w);
-static Window *StartWindowSizing(Window *w);
+static void StartWindowDrag(Window *w);
+static void StartWindowSizing(Window *w);
 
 static void DispatchLeftClickEvent(Window *w, int x, int y)
 {
@@ -122,13 +126,13 @@ static void DispatchLeftClickEvent(Window *w, int x, int y)
 			}
 
 			if (e.we.click.widget == 1) { /* 'Title bar' */
-				StartWindowDrag(w); // if not return then w = StartWindowDrag(w); to get correct pointer
+				StartWindowDrag(w);
 				return;
 			}
 		}
 
 		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX) {
-			StartWindowSizing(w); // if not return then w = StartWindowSizing(w); to get correct pointer
+			StartWindowSizing(w);
 			return;
 		}
 
@@ -197,55 +201,58 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 	}
 }
 
-static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom);
+static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right, int bottom);
 
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 {
-	Window *w;
+	Window* const *wz;
 	DrawPixelInfo bk;
 	_cur_dpi = &bk;
 
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		const Window *w = *wz;
 		if (right > w->left &&
 				bottom > w->top &&
 				left < w->left + w->width &&
 				top < w->top + w->height) {
-			DrawOverlappedWindow(w, left, top, right, bottom);
+			DrawOverlappedWindow(wz, left, top, right, bottom);
 		}
 	}
 }
 
-static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom)
+static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right, int bottom)
 {
-	const Window *v = w;
+	const Window* const *vz = wz;
 	int x;
 
-	while (++v != _last_window) {
+	while (++vz != _last_z_window) {
+		const Window *v = *vz;
+
 		if (right > v->left &&
 				bottom > v->top &&
 				left < v->left + v->width &&
 				top < v->top + v->height) {
 			if (left < (x=v->left)) {
-				DrawOverlappedWindow(w, left, top, x, bottom);
-				DrawOverlappedWindow(w, x, top, right, bottom);
+				DrawOverlappedWindow(wz, left, top, x, bottom);
+				DrawOverlappedWindow(wz, x, top, right, bottom);
 				return;
 			}
 
 			if (right > (x=v->left + v->width)) {
-				DrawOverlappedWindow(w, left, top, x, bottom);
-				DrawOverlappedWindow(w, x, top, right, bottom);
+				DrawOverlappedWindow(wz, left, top, x, bottom);
+				DrawOverlappedWindow(wz, x, top, right, bottom);
 				return;
 			}
 
 			if (top < (x=v->top)) {
-				DrawOverlappedWindow(w, left, top, right, x);
-				DrawOverlappedWindow(w, left, x, right, bottom);
+				DrawOverlappedWindow(wz, left, top, right, x);
+				DrawOverlappedWindow(wz, left, x, right, bottom);
 				return;
 			}
 
 			if (bottom > (x=v->top + v->height)) {
-				DrawOverlappedWindow(w, left, top, right, x);
-				DrawOverlappedWindow(w, left, x, right, bottom);
+				DrawOverlappedWindow(wz, left, top, right, x);
+				DrawOverlappedWindow(wz, left, x, right, bottom);
 				return;
 			}
 
@@ -257,12 +264,12 @@ static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bo
 		DrawPixelInfo *dp = _cur_dpi;
 		dp->width = right - left;
 		dp->height = bottom - top;
-		dp->left = left - w->left;
-		dp->top = top - w->top;
+		dp->left = left - (*wz)->left;
+		dp->top = top - (*wz)->top;
 		dp->pitch = _screen.pitch;
 		dp->dst_ptr = _screen.dst_ptr + top * _screen.pitch + left;
 		dp->zoom = 0;
-		CallWindowEventNP(w, WE_PAINT);
+		CallWindowEventNP(*wz, WE_PAINT);
 	}
 }
 
@@ -280,13 +287,21 @@ void SetWindowDirty(const Window *w)
 	SetDirtyBlocks(w->left, w->top, w->left + w->width, w->top + w->height);
 }
 
+/** Find the z-value of a window. A window must already be open
+ * or the behaviour is undefined but function should never fail */
+Window **FindWindowZPosition(const Window *w)
+{
+	Window **wz;
+
+	for (wz = _z_windows;; wz++) {
+		assert(wz < _last_z_window);
+		if (*wz == w) return wz;
+	}
+}
+
 void DeleteWindow(Window *w)
 {
-	WindowClass wc;
-	WindowNumber wn;
-	Window *v;
-	int count;
-
+	Window **wz;
 	if (w == NULL) return;
 
 	if (_thd.place_mode != VHM_NONE &&
@@ -295,29 +310,26 @@ void DeleteWindow(Window *w)
 		ResetObjectToPlace();
 	}
 
-	wc = w->window_class;
-	wn = w->window_number;
-
 	CallWindowEventNP(w, WE_DESTROY);
-
-	w = FindWindowById(wc, wn);
-
 	if (w->viewport != NULL) DeleteWindowViewport(w);
 
 	SetWindowDirty(w);
-
 	free(w->widget);
+	w->widget = NULL;
 
-	v = --_last_window;
-	count = (byte*)v - (byte*)w;
-	memmove(w, w + 1, count);
+	/* Find the window in the z-array, and effectively remove it
+	 * by moving all windows after it one to the left */
+	wz = FindWindowZPosition(w);
+	memmove(wz, wz + 1, (byte*)_last_z_window - (byte*)wz);
+	_last_z_window--;
 }
 
 Window *FindWindowById(WindowClass cls, WindowNumber number)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
 		if (w->window_class == cls && w->window_number == number) return w;
 	}
 
@@ -331,12 +343,14 @@ void DeleteWindowById(WindowClass cls, WindowNumber number)
 
 void DeleteWindowByClass(WindowClass cls)
 {
-	Window *w;
+	Window* const *wz;
 
 restart_search:
 	/* When we find the window to delete, we need to restart the search
-	 * as deleting this window could cascade in deleting (many) others */
-	for (w = _windows; w != _last_window; w++) {
+	 * as deleting this window could cascade in deleting (many) others
+	 * anywhere in the z-array */
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
 		if (w->window_class == cls) {
 			DeleteWindow(w);
 			goto restart_search;
@@ -350,12 +364,14 @@ restart_search:
  * @param id PlayerID player identifier */
 void DeletePlayerWindows(PlayerID id)
 {
-	Window *w;
+	Window* const *wz;
 
 restart_search:
 	/* When we find the window to delete, we need to restart the search
-	 * as deleting this window could cascade in deleting (many) others */
-	for (w = _windows; w != _last_window; w++) {
+	 * as deleting this window could cascade in deleting (many) others
+	 * anywhere in the z-array */
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
 		if (w->caption_color == id) {
 			DeleteWindow(w);
 			goto restart_search;
@@ -373,9 +389,11 @@ restart_search:
  * @param new_player PlayerID of the new owner of the window */
 void ChangeWindowOwner(PlayerID old_player, PlayerID new_player)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
+
 		if (w->caption_color != old_player)      continue;
 		if (w->window_class == WC_PLAYER_COLOR)  continue;
 		if (w->window_class == WC_FINANCES)      continue;
@@ -391,17 +409,20 @@ void ChangeWindowOwner(PlayerID old_player, PlayerID new_player)
 	}
 }
 
+static void BringWindowToFront(const Window *w);
 
-static Window *BringWindowToFront(Window *w);
-
+/** Find a window and make it the top-window on the screen. The window
+ * gets a white border for a brief period of time to visualize its
+ * "activation"
+ * @return a pointer to the window thus activated */
 Window *BringWindowToFrontById(WindowClass cls, WindowNumber number)
 {
 	Window *w = FindWindowById(cls, number);
 
 	if (w != NULL) {
 		w->flags4 |= WF_WHITE_BORDER_MASK;
+		BringWindowToFront(w);
 		SetWindowDirty(w);
-		w = BringWindowToFront(w);
 	}
 
 	return w;
@@ -419,29 +440,27 @@ static inline bool IsVitalWindow(const Window *w)
  * - New window, Chatbar (only if open)
  * The window is marked dirty for a repaint if the window is actually moved
  * @param w window that is put into the foreground
- * @return pointer to the window, can be different!
+ * @return pointer to the window, the same as the input pointer
  */
-static Window *BringWindowToFront(Window *w)
+static void BringWindowToFront(const Window *w)
 {
-	Window *v;
-	Window temp;
+	Window *tempz;
+	Window **wz = FindWindowZPosition(w);
+	Window **vz = _last_z_window;
 
-	v = _last_window;
+	/* Bring the window just below the vital windows */
 	do {
-		if (--v < _windows) return w;
-	} while (IsVitalWindow(v));
+		if (--vz < _z_windows) return;
+	} while (IsVitalWindow(*vz));
 
-	if (w == v) return w;
+	if (wz == vz) return; // window is already in the right position
+	assert(wz < vz);
 
-	assert(w < v);
+	tempz = *wz;
+	memmove(wz, wz + 1, (byte*)vz - (byte*)wz);
+	*vz = tempz;
 
-	temp = *w;
-	memmove(w, w + 1, (v - w) * sizeof(Window));
-	*v = temp;
-
-	SetWindowDirty(v);
-
-	return v;
+	SetWindowDirty(w);
 }
 
 /** We have run out of windows, so find a suitable candidate for replacement.
@@ -453,9 +472,10 @@ static Window *BringWindowToFront(Window *w)
  */
 static Window *FindDeletableWindow(void)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w < endof(_windows); w++) {
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
 		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w) && !(w->flags4 & WF_STICKY)) {
 			return w;
 		}
@@ -466,15 +486,17 @@ static Window *FindDeletableWindow(void)
 /** A window must be freed, and all are marked as important windows. Ease the
  * restriction a bit by allowing to delete sticky windows. Keep important/vital
  * windows intact (Main window, Toolbar, Statusbar, News Window, Chatbar)
+ * Start finding an appropiate candidate from the lowest z-values (bottom)
  * @see FindDeletableWindow()
  * @return w Pointer to the window that is being deleted
  */
 static Window *ForceFindDeletableWindow(void)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows;; w++) {
-		assert(w < _last_window);
+	for (wz = _z_windows;; wz++) {
+		Window *w = *wz;
+		assert(wz < _last_z_window);
 		if (w->window_class != WC_MAIN_WINDOW && !IsVitalWindow(w)) return w;
 	}
 }
@@ -502,6 +524,28 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 	}
 }
 
+static Window *FindFreeWindow(void)
+{
+	Window *w;
+
+	for (w = _windows; w < endof(_windows); w++) {
+		Window* const *wz;
+		bool window_in_use = false;
+
+		FOR_ALL_WINDOWS(wz) {
+			if (*wz == w) {
+				window_in_use = true;
+				break;
+			}
+		}
+
+		if (!window_in_use) return w;
+	}
+
+	assert(_last_z_window == endof(_z_windows));
+	return NULL;
+}
+
 /* Open a new window.
  * This function is called from AllocateWindow() or AllocateWindowDesc()
  * See descriptions for those functions for usage
@@ -512,47 +556,13 @@ static Window *LocalAllocateWindow(
 							int x, int y, int width, int height,
 							WindowProc *proc, WindowClass cls, const Widget *widget, int window_number)
 {
-	Window *w = _last_window; // last window keeps track of the highest open window
+	Window *w = FindFreeWindow();
 
-	// We have run out of windows, close one and use that as the place for our new one
-	if (w >= endof(_windows)) {
+	/* We have run out of windows, close one and use that as the place for our new one */
+	if (w == NULL) {
 		w = FindDeletableWindow();
-
 		if (w == NULL) w = ForceFindDeletableWindow();
-
 		DeleteWindow(w);
-		w = _last_window;
-	}
-
-	/* XXX - This very strange construction makes sure that the chatbar is always
-	 * on top of other windows. Why? It is created as last_window (so, on top).
-	 * Any other window will go below toolbar/statusbar/news window, which implicitely
-	 * also means it is below the chatbar. Very likely needs heavy improvement
-	 * to de-braindeadize */
-	if (w != _windows && cls != WC_SEND_NETWORK_MSG) {
-		Window *v;
-
-		/* XXX - if not this order (toolbar/statusbar and then news), game would
-		 * crash because it will try to copy a negative size for the news-window.
-		 * Eg. window was already moved BELOW news (which is below toolbar/statusbar)
-		 * and now needs to move below those too. That is a negative move. */
-		v = FindWindowById(WC_MAIN_TOOLBAR, 0);
-		if (v != NULL) {
-			memmove(v+1, v, (byte*)w - (byte*)v);
-			w = v;
-		}
-
-		v = FindWindowById(WC_STATUS_BAR, 0);
-		if (v != NULL) {
-			memmove(v+1, v, (byte*)w - (byte*)v);
-			w = v;
-		}
-
-		v = FindWindowById(WC_NEWS_WINDOW, 0);
-		if (v != NULL) {
-			memmove(v+1, v, (byte*)w - (byte*)v);
-			w = v;
-		}
 	}
 
 	// Set up window properties
@@ -572,10 +582,32 @@ static Window *LocalAllocateWindow(
 	w->resize.step_height = 1;
 	w->window_number = window_number;
 
-	_last_window++;
+	{
+		Window **wz = _last_z_window;
+
+		/* Hacky way of specifying always-on-top windows. These windows are
+		 * always above other windows because they are moved below them.
+		 * status-bar is above news-window because it has been created earlier.
+		 * Also, as the chat-window is excluded from this, it will always be
+		 * the last window, thus always on top.
+		 * XXX - Yes, ugly, probably needs something like w->always_on_top flag
+		 * to implement correctly, but even then you need some kind of distinction
+		 * between on-top of chat/news and status windows, because these conflict */
+		if (wz != _z_windows && w->window_class != WC_SEND_NETWORK_MSG) {
+			if (FindWindowById(WC_MAIN_TOOLBAR, 0)     != NULL) wz--;
+			if (FindWindowById(WC_STATUS_BAR, 0)       != NULL) wz--;
+			if (FindWindowById(WC_NEWS_WINDOW, 0)      != NULL) wz--;
+			if (FindWindowById(WC_SEND_NETWORK_MSG, 0) != NULL) wz--;
+
+			assert(wz >= _z_windows);
+			if (wz != _last_z_window) memmove(wz + 1, wz, (byte*)_last_z_window - (byte*)wz);
+		}
+
+		*wz = w;
+		_last_z_window++;
+	}
 
 	SetWindowDirty(w);
-
 	CallWindowEventNP(w, WE_CREATE);
 
 	return w;
@@ -612,7 +644,7 @@ static SizeRect _awap_r;
 static bool IsGoodAutoPlace1(int left, int top)
 {
 	int right,bottom;
-	Window *w;
+	Window* const *wz;
 
 	_awap_r.left= left;
 	_awap_r.top = top;
@@ -623,7 +655,8 @@ static bool IsGoodAutoPlace1(int left, int top)
 		return false;
 
 	// Make sure it is not obscured by any window.
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
 
 		if (right > w->left &&
@@ -640,7 +673,7 @@ static bool IsGoodAutoPlace1(int left, int top)
 static bool IsGoodAutoPlace2(int left, int top)
 {
 	int width,height;
-	Window *w;
+	Window* const *wz;
 
 	_awap_r.left= left;
 	_awap_r.top = top;
@@ -651,7 +684,8 @@ static bool IsGoodAutoPlace2(int left, int top)
 	if (top < 22 || top > _screen.height - (height>>2)) return false;
 
 	// Make sure it is not obscured by any window.
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
 
 		if (left + width > w->left &&
@@ -667,7 +701,7 @@ static bool IsGoodAutoPlace2(int left, int top)
 
 static Point GetAutoPlacePosition(int width, int height)
 {
-	Window *w;
+	Window* const *wz;
 	Point pt;
 
 	_awap_r.width = width;
@@ -675,7 +709,8 @@ static Point GetAutoPlacePosition(int width, int height)
 
 	if (IsGoodAutoPlace1(0, 24)) goto ok_pos;
 
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
 
 		if (IsGoodAutoPlace1(w->left+w->width+2,w->top)) goto ok_pos;
@@ -688,7 +723,8 @@ static Point GetAutoPlacePosition(int width, int height)
 		if (IsGoodAutoPlace1(w->left+w->width-width,w->top-   height-2)) goto ok_pos;
 	}
 
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		const Window *w = *wz;
 		if (w->window_class == WC_MAIN_WINDOW) continue;
 
 		if (IsGoodAutoPlace2(w->left+w->width+2,w->top)) goto ok_pos;
@@ -701,7 +737,9 @@ static Point GetAutoPlacePosition(int width, int height)
 		int left=0,top=24;
 
 restart:;
-		for (w = _windows; w != _last_window; w++) {
+		FOR_ALL_WINDOWS(wz) {
+			const Window *w = *wz;
+
 			if (w->left == left && w->top == top) {
 				left += 5;
 				top += 5;
@@ -810,10 +848,10 @@ Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
  * @return a pointer to the found window if any, NULL otherwise */
 Window *FindWindowFromPt(int x, int y)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _last_window; w != _windows;) {
-		--w;
+	for (wz = _last_z_window; wz != _z_windows;) {
+		Window *w = *--wz;
 		if (IS_INSIDE_1D(x, w->left, w->width) && IS_INSIDE_1D(y, w->top, w->height)) {
 			return w;
 		}
@@ -827,18 +865,18 @@ void InitWindowSystem(void)
 	IConsoleClose();
 
 	memset(&_windows, 0, sizeof(_windows));
-	_last_window = _windows;
+	_last_z_window = _z_windows;
 	InitViewports();
 	_no_scroll = 0;
 }
 
 void UnInitWindowSystem(void)
 {
-	Window *w;
+	Window* const *wz;
 	// delete all malloced widgets
-	for (w = _windows; w != _last_window; w++) {
-		free(w->widget);
-		w->widget = NULL;
+	FOR_ALL_WINDOWS(wz) {
+		free((*wz)->widget);
+		(*wz)->widget = NULL;
 	}
 }
 
@@ -855,10 +893,10 @@ void ResetWindowSystem(void)
 static void DecreaseWindowCounters(void)
 {
 	Window *w;
+	Window* const *wz;
 
-
-	for (w = _last_window; w != _windows;) {
-		--w;
+	for (wz = _last_z_window; wz != _z_windows;) {
+		w = *--wz;
 		// Unclick scrollbar buttons if they are pressed.
 		if (w->flags4 & (WF_SCROLL_DOWN | WF_SCROLL_UP)) {
 			w->flags4 &= ~(WF_SCROLL_DOWN | WF_SCROLL_UP);
@@ -867,8 +905,8 @@ static void DecreaseWindowCounters(void)
 		CallWindowEventNP(w, WE_MOUSELOOP);
 	}
 
-	for (w = _last_window; w != _windows;) {
-		--w;
+	for (wz = _last_z_window; wz != _z_windows;) {
+		w = *--wz;
 
 		if (w->flags4&WF_TIMEOUT_MASK && !(--w->flags4&WF_TIMEOUT_MASK)) {
 			CallWindowEventNP(w, WE_TIMEOUT);
@@ -990,12 +1028,14 @@ static bool _dragging_window;
 
 static bool HandleWindowDragging(void)
 {
-	Window *w;
+	Window* const *wz;
 	// Get out immediately if no window is being dragged at all.
 	if (!_dragging_window) return true;
 
 	// Otherwise find the window...
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
+
 		if (w->flags4 & WF_DRAGGING) {
 			const Widget *t = &w->widget[1]; // the title bar ... ugh
 			const Window *v;
@@ -1018,11 +1058,15 @@ static bool HandleWindowDragging(void)
 			ny = y;
 
 			if (_patches.window_snap_radius != 0) {
+				const Window* const *vz;
+
 				int hsnap = _patches.window_snap_radius;
 				int vsnap = _patches.window_snap_radius;
 				int delta;
 
-				for (v = _windows; v != _last_window; ++v) {
+				FOR_ALL_WINDOWS(vz) {
+					const Window *v = *vz;
+
 					if (v == w) continue; // Don't snap at yourself
 
 					if (y + w->height > v->top && y < v->top + v->height) {
@@ -1220,7 +1264,7 @@ static bool HandleWindowDragging(void)
 	return false;
 }
 
-static Window *StartWindowDrag(Window *w)
+static void StartWindowDrag(Window *w)
 {
 	w->flags4 |= WF_DRAGGING;
 	_dragging_window = true;
@@ -1228,12 +1272,11 @@ static Window *StartWindowDrag(Window *w)
 	_drag_delta.x = w->left - _cursor.pos.x;
 	_drag_delta.y = w->top  - _cursor.pos.y;
 
-	w = BringWindowToFront(w);
+	BringWindowToFront(w);
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
-	return w;
 }
 
-static Window *StartWindowSizing(Window *w)
+static void StartWindowSizing(Window *w)
 {
 	w->flags4 |= WF_SIZING;
 	_dragging_window = true;
@@ -1241,16 +1284,14 @@ static Window *StartWindowSizing(Window *w)
 	_drag_delta.x = _cursor.pos.x;
 	_drag_delta.y = _cursor.pos.y;
 
-	w = BringWindowToFront(w);
+	BringWindowToFront(w);
 	DeleteWindowById(WC_DROPDOWN_MENU, 0);
-	SetWindowDirty(w);
-	return w;
 }
 
 
 static bool HandleScrollbarScrolling(void)
 {
-	Window *w;
+	Window* const *wz;
 	int i;
 	int pos;
 	Scrollbar *sb;
@@ -1259,7 +1300,9 @@ static bool HandleScrollbarScrolling(void)
 	if (!_scrolling_scrollbar) return true;
 
 	// Find the scrolling window
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
+
 		if (w->flags4 & WF_SCROLL_MIDDLE) {
 			// Abort if no button is clicked any more.
 			if (!_left_button_down) {
@@ -1325,18 +1368,22 @@ static bool HandleViewportScroll(void)
 	return false;
 }
 
-static Window *MaybeBringWindowToFront(Window *w)
+static void MaybeBringWindowToFront(const Window *w)
 {
-	Window *u;
+	const Window* const *wz;
+	const Window* const *uz;
 
 	if (w->window_class == WC_MAIN_WINDOW ||
 			IsVitalWindow(w) ||
 			w->window_class == WC_TOOLTIPS ||
 			w->window_class == WC_DROPDOWN_MENU) {
-		return w;
+		return;
 	}
 
-	for (u = w; ++u != _last_window;) {
+	wz = FindWindowZPosition(w);
+	for (uz = wz; ++uz != _last_z_window;) {
+		const Window *u = *uz;
+
 		if (u->window_class == WC_MAIN_WINDOW ||
 				IsVitalWindow(u) ||
 				u->window_class == WC_TOOLTIPS ||
@@ -1351,10 +1398,9 @@ static Window *MaybeBringWindowToFront(Window *w)
 			continue;
 		}
 
-		return BringWindowToFront(w);
+		BringWindowToFront(w);
+		return;
 	}
-
-	return w;
 }
 
 /** Send a message from one window to another. The receiving window is found by
@@ -1397,10 +1443,10 @@ void SendWindowMessage(WindowClass wnd_class, WindowNumber wnd_num, uint msg, ui
  */
 void SendWindowMessageClass(WindowClass wnd_class, uint msg, uint wparam, uint lparam)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; w++) {
-		if (w->window_class == wnd_class) SendWindowMessageW(w, msg, wparam, lparam);
+	FOR_ALL_WINDOWS(wz) {
+		if ((*wz)->window_class == wnd_class) SendWindowMessageW(*wz, msg, wparam, lparam);
 	}
 }
 
@@ -1409,7 +1455,7 @@ void SendWindowMessageClass(WindowClass wnd_class, uint msg, uint wparam, uint l
  * 16 bits the keycode */
 void HandleKeypress(uint32 key)
 {
-	Window *w;
+	Window* const *wz;
 	WindowEvent e;
 	/* Stores if a window with a textfield for typing is open
 	 * If this is the case, keypress events are only passed to windows with text fields and
@@ -1443,8 +1489,9 @@ void HandleKeypress(uint32 key)
 	}
 
 	// Call the event, start with the uppermost window.
-	for (w = _last_window; w != _windows;) {
-		--w;
+	for (wz = _last_z_window; wz != _z_windows;) {
+		Window *w = *--wz;
+
 		// if a query window is open, only call the event for certain window types
 		if (query_open &&
 				w->window_class != WC_QUERY_STRING &&
@@ -1459,7 +1506,7 @@ void HandleKeypress(uint32 key)
 	}
 
 	if (e.we.keypress.cont) {
-		w = FindWindowById(WC_MAIN_TOOLBAR, 0);
+		Window *w = FindWindowById(WC_MAIN_TOOLBAR, 0);
 		// When there is no toolbar w is null, check for that
 		if (w != NULL) w->wndproc(w, &e);
 	}
@@ -1532,7 +1579,7 @@ void MouseLoop(int click, int mousewheel)
 
 	w = FindWindowFromPt(x, y);
 	if (w == NULL) return;
-	w = MaybeBringWindowToFront(w);
+	MaybeBringWindowToFront(w);
 	vp = IsPtInWindowViewport(w, x, y);
 
 	/* Don't allow any action in a viewport if either in menu of in generating world */
@@ -1631,21 +1678,20 @@ void InputLoop(void)
 
 void UpdateWindows(void)
 {
-	Window *w;
+	Window* const *wz;
 	static int we4_timer = 0;
 	int t = we4_timer + 1;
 
 	if (t >= 100) {
-		for (w = _last_window; w != _windows;) {
-			w--;
-			CallWindowEventNP(w, WE_4);
+		for (wz = _last_z_window; wz != _z_windows;) {
+			CallWindowEventNP(*--wz, WE_4);
 		}
 		t = 0;
 	}
 	we4_timer = t;
 
-	for (w = _last_window; w != _windows;) {
-		w--;
+	for (wz = _last_z_window; wz != _z_windows;) {
+		Window *w = *--wz;
 		if (w->flags4 & WF_WHITE_BORDER_MASK) {
 			w->flags4 -= WF_WHITE_BORDER_ONE;
 
@@ -1655,8 +1701,8 @@ void UpdateWindows(void)
 
 	DrawDirtyBlocks();
 
-	for (w = _windows; w != _last_window; w++) {
-		if (w->viewport != NULL) UpdateViewportPosition(w);
+	FOR_ALL_WINDOWS(wz) {
+		if ((*wz)->viewport != NULL) UpdateViewportPosition(*wz);
 	}
 	DrawTextMessage();
 	// Redraw mouse cursor in case it was hidden
@@ -1679,9 +1725,10 @@ int GetMenuItemIndex(const Window *w, int x, int y)
 
 void InvalidateWindow(WindowClass cls, WindowNumber number)
 {
-	const Window *w;
+	const Window* const *wz;
 
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		const Window *w = *wz;
 		if (w->window_class == cls && w->window_number == number) SetWindowDirty(w);
 	}
 }
@@ -1698,9 +1745,10 @@ void InvalidateWidget(const Window *w, byte widget_index)
 
 void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index)
 {
-	const Window *w;
+	const Window* const *wz;
 
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		const Window *w = *wz;
 		if (w->window_class == cls && w->window_number == number) {
 			InvalidateWidget(w, widget_index);
 		}
@@ -1709,10 +1757,10 @@ void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_in
 
 void InvalidateWindowClasses(WindowClass cls)
 {
-	const Window *w;
+	const Window* const *wz;
 
-	for (w = _windows; w != _last_window; w++) {
-		if (w->window_class == cls) SetWindowDirty(w);
+	FOR_ALL_WINDOWS(wz) {
+		if ((*wz)->window_class == cls) SetWindowDirty(*wz);
 	}
 }
 
@@ -1723,40 +1771,42 @@ void InvalidateThisWindowData(Window *w)
 
 void InvalidateWindowData(WindowClass cls, WindowNumber number)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
 		if (w->window_class == cls && w->window_number == number) InvalidateThisWindowData(w);
 	}
 }
 
 void InvalidateWindowClassesData(WindowClass cls)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; w++) {
-		if (w->window_class == cls) InvalidateThisWindowData(w);
+	FOR_ALL_WINDOWS(wz) {
+		if ((*wz)->window_class == cls) InvalidateThisWindowData(*wz);
 	}
 }
 
 void CallWindowTickEvent(void)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _last_window; w != _windows;) {
-		--w;
-		CallWindowEventNP(w, WE_TICK);
+	for (wz = _last_z_window; wz != _z_windows;) {
+		CallWindowEventNP(*--wz, WE_TICK);
 	}
 }
 
 void DeleteNonVitalWindows(void)
 {
-	Window *w;
+	Window* const *wz;
 
 restart_search:
 	/* When we find the window to delete, we need to restart the search
-	 * as deleting this window could cascade in deleting (many) others */
-	for (w = _windows; w != _last_window; w++) {
+	 * as deleting this window could cascade in deleting (many) others
+	 * anywhere in the z-array */
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
 		if (w->window_class != WC_MAIN_WINDOW &&
 				w->window_class != WC_SELECT_GAME &&
 				w->window_class != WC_MAIN_TOOLBAR &&
@@ -1764,6 +1814,7 @@ restart_search:
 				w->window_class != WC_TOOLBAR_MENU &&
 				w->window_class != WC_TOOLTIPS &&
 				(w->flags4 & WF_STICKY) == 0) { // do not delete windows which are 'pinned'
+
 			DeleteWindow(w);
 			goto restart_search;
 		}
@@ -1777,16 +1828,18 @@ restart_search:
  * that standard windows (status bar, etc.) are not stickied, so these aren't affected */
 void DeleteAllNonVitalWindows(void)
 {
-	Window *w;
+	Window* const *wz;
 
 	/* Delete every window except for stickied ones, then sticky ones as well */
 	DeleteNonVitalWindows();
+
 restart_search:
 	/* When we find the window to delete, we need to restart the search
-	 * as deleting this window could cascade in deleting (many) others */
-	for (w = _windows; w != _last_window; w++) {
-		if (w->flags4 & WF_STICKY) {
-			DeleteWindow(w);
+	 * as deleting this window could cascade in deleting (many) others
+	 * anywhere in the z-array */
+	FOR_ALL_WINDOWS(wz) {
+		if ((*wz)->flags4 & WF_STICKY) {
+			DeleteWindow(*wz);
 			goto restart_search;
 		}
 	}
@@ -1818,9 +1871,10 @@ int PositionMainToolbar(Window *w)
 
 void RelocateAllWindows(int neww, int newh)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; w++) {
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
 		int left, top;
 
 		if (w->window_class == WC_MAIN_WINDOW) {

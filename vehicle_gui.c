@@ -102,32 +102,40 @@ static const StringID _rail_types_list[] = {
 
 void RebuildVehicleLists(void)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; ++w)
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
+
 		switch (w->window_class) {
-		case WC_TRAINS_LIST: case WC_ROADVEH_LIST:
-		case WC_SHIPS_LIST:  case WC_AIRCRAFT_LIST:
-			WP(w, vehiclelist_d).l.flags |= VL_REBUILD;
-			SetWindowDirty(w);
-			break;
-		default: break;
+			case WC_TRAINS_LIST:
+			case WC_ROADVEH_LIST:
+			case WC_SHIPS_LIST:
+			case WC_AIRCRAFT_LIST:
+				WP(w, vehiclelist_d).l.flags |= VL_REBUILD;
+				SetWindowDirty(w);
+				break;
 		}
+	}
 }
 
 void ResortVehicleLists(void)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; ++w)
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
+
 		switch (w->window_class) {
-		case WC_TRAINS_LIST: case WC_ROADVEH_LIST:
-		case WC_SHIPS_LIST:  case WC_AIRCRAFT_LIST:
-			WP(w, vehiclelist_d).l.flags |= VL_RESORT;
-			SetWindowDirty(w);
-			break;
-		default: break;
+			case WC_TRAINS_LIST:
+			case WC_ROADVEH_LIST:
+			case WC_SHIPS_LIST:
+			case WC_AIRCRAFT_LIST:
+				WP(w, vehiclelist_d).l.flags |= VL_RESORT;
+				SetWindowDirty(w);
+				break;
 		}
+	}
 }
 
 static void BuildVehicleList(vehiclelist_d* vl, PlayerID owner, StationID station, OrderID order, uint16 depot_airport_index, uint16 window_type)

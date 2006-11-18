@@ -148,9 +148,10 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(plstations_d));
 
 void RebuildStationLists(void)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; ++w) {
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
 		if (w->window_class == WC_STATION_LIST) {
 			WP(w, plstations_d).flags |= SL_REBUILD;
 			SetWindowDirty(w);
@@ -160,9 +161,10 @@ void RebuildStationLists(void)
 
 void ResortStationLists(void)
 {
-	Window *w;
+	Window* const *wz;
 
-	for (w = _windows; w != _last_window; ++w) {
+	FOR_ALL_WINDOWS(wz) {
+		Window *w = *wz;
 		if (w->window_class == WC_STATION_LIST) {
 			WP(w, plstations_d).flags |= SL_RESORT;
 			SetWindowDirty(w);

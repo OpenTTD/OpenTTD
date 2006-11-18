@@ -833,10 +833,12 @@ void DeleteNonVitalWindows(void);
 void DeleteAllNonVitalWindows(void);
 void HideVitalWindows(void);
 void ShowVitalWindows(void);
+Window **FindWindowZPosition(const Window *w);
 
 /* window.c */
-VARDEF Window _windows[25];
-VARDEF Window *_last_window;
+extern Window *_z_windows[];
+extern Window **_last_z_window;
+#define FOR_ALL_WINDOWS(wz) for (wz = _z_windows; wz != _last_z_window; wz++)
 
 VARDEF Point _cursorpos_drag_start;
 
