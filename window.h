@@ -472,11 +472,11 @@ typedef struct {
 	int32 scrollpos_x;
 	int32 scrollpos_y;
 } vp_d;
-assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d) + 3 * sizeof(byte)); // + 3 * byte is a hack from Miham
+assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(vp_d));
 
 // vp2_d is the same as vp_d, except for the data_# values..
 typedef struct {
-	uint16 follow_vehicle;
+	VehicleID follow_vehicle;
 	int32 scrollpos_x;
 	int32 scrollpos_y;
 	byte data_1;
