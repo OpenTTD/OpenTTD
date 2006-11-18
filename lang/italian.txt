@@ -1999,8 +1999,8 @@ STR_26816_NONE                                                  :Nessuno
 STR_6816_LOW                                                    :Basso
 STR_6817_NORMAL                                                 :Normale
 STR_6818_HIGH                                                   :Alto
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Molto lenta
 STR_681C_SLOW                                                   :Lenta
 STR_681D_MEDIUM                                                 :Media

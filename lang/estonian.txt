@@ -2054,8 +2054,8 @@ STR_26816_NONE                                                  :Pole
 STR_6816_LOW                                                    :Madal
 STR_6817_NORMAL                                                 :Normaalne
 STR_6818_HIGH                                                   :Kõrge
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Väga aeglane
 STR_681C_SLOW                                                   :Aeglane
 STR_681D_MEDIUM                                                 :Keskmine

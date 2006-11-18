@@ -1962,8 +1962,8 @@ STR_26816_NONE                                                  :Engin
 STR_6816_LOW                                                    :Lág
 STR_6817_NORMAL                                                 :Venjuleg
 STR_6818_HIGH                                                   :Há
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Mjög hægt
 STR_681C_SLOW                                                   :Hægt
 STR_681D_MEDIUM                                                 :Miðlungs

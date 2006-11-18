@@ -2000,8 +2000,8 @@ STR_26816_NONE                                                  :Николко
 STR_6816_LOW                                                    :Ниско/Малко
 STR_6817_NORMAL                                                 :Нормално
 STR_6818_HIGH                                                   :Високо/Много
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Много бавно
 STR_681C_SLOW                                                   :Бавно
 STR_681D_MEDIUM                                                 :Средно

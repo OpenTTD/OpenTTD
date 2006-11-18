@@ -2054,8 +2054,8 @@ STR_26816_NONE                                                  :žadný
 STR_6816_LOW                                                    :nízké
 STR_6817_NORMAL                                                 :stredni
 STR_6818_HIGH                                                   :vysoké
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :velmi nízká
 STR_681C_SLOW                                                   :nízká
 STR_681D_MEDIUM                                                 :stredne vysoká

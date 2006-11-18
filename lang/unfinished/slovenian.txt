@@ -1364,8 +1364,8 @@ STR_26816_NONE                                                  :Noben
 STR_6816_LOW                                                    :Nizko
 STR_6817_NORMAL                                                 :Normalno
 STR_6818_HIGH                                                   :Visoko
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Zelo pocasno
 STR_681C_SLOW                                                   :Pocasno
 STR_681D_MEDIUM                                                 :Srednje

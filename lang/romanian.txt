@@ -1958,8 +1958,8 @@ STR_26816_NONE                                                  :zero
 STR_6816_LOW                                                    :scãzut
 STR_6817_NORMAL                                                 :normal
 STR_6818_HIGH                                                   :ridicat
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :foarte încet
 STR_681C_SLOW                                                   :încet
 STR_681D_MEDIUM                                                 :mediu

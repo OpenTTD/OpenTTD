@@ -2100,8 +2100,8 @@ STR_26816_NONE                                                  :Egyiksem
 STR_6816_LOW                                                    :Kevés
 STR_6817_NORMAL                                                 :Normál
 STR_6818_HIGH                                                   :Sok
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Nagyon lassú
 STR_681C_SLOW                                                   :Lassú
 STR_681D_MEDIUM                                                 :Közepes

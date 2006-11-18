@@ -2063,8 +2063,8 @@ STR_26816_NONE                                                  :Ziadny
 STR_6816_LOW                                                    :Nizke
 STR_6817_NORMAL                                                 :Normalne
 STR_6818_HIGH                                                   :Vysoke
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Velmi Pomale
 STR_681C_SLOW                                                   :Pomale
 STR_681D_MEDIUM                                                 :Stredne

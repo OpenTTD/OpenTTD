@@ -1997,8 +1997,8 @@ STR_26816_NONE                                                  :Cap
 STR_6816_LOW                                                    :Baix
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Alt
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Molt lent
 STR_681C_SLOW                                                   :Lent
 STR_681D_MEDIUM                                                 :Mitjà

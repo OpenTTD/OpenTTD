@@ -1254,8 +1254,8 @@ STR_26816_NONE                                                  :Κανένα
 STR_6816_LOW                                                    :Χαμηλό
 STR_6817_NORMAL                                                 :Κανονικό
 STR_6818_HIGH                                                   :Υψηλό
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Πολύ αργό
 STR_681C_SLOW                                                   :Αργό
 STR_681D_MEDIUM                                                 :Μέτριο

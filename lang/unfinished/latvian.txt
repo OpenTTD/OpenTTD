@@ -1244,8 +1244,8 @@ STR_6801_EASY                                                   :{BLACK}Viegls
 ############ range for difficulty settings starts
 ############ range for difficulty settings ends
 
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_6824_REDUCED                                                :Samazinâts
 STR_6826_X1_5                                                   :x1.5
 STR_6827_X2                                                     :x2

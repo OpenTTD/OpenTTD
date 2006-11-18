@@ -1948,8 +1948,8 @@ STR_26816_NONE                                                  :Nera
 STR_6816_LOW                                                    :Zemas
 STR_6817_NORMAL                                                 :Normalus
 STR_6818_HIGH                                                   :Aukstas
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Labai letas
 STR_681C_SLOW                                                   :Letas
 STR_681D_MEDIUM                                                 :Vidutinis

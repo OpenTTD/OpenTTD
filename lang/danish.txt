@@ -1997,8 +1997,8 @@ STR_26816_NONE                                                  :Ingen
 STR_6816_LOW                                                    :Lav
 STR_6817_NORMAL                                                 :Normal
 STR_6818_HIGH                                                   :Høj
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Meget Langsom
 STR_681C_SLOW                                                   :Langsom
 STR_681D_MEDIUM                                                 :Mellem

@@ -1241,8 +1241,8 @@ STR_26816_NONE                                                  :没有
 STR_6816_LOW                                                    :较低
 STR_6817_NORMAL                                                 :正常
 STR_6818_HIGH                                                   :较高
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :很慢
 STR_681C_SLOW                                                   :慢
 STR_681D_MEDIUM                                                 :中等

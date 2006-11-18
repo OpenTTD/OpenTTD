@@ -2120,8 +2120,8 @@ STR_26816_NONE                                                  :Brak
 STR_6816_LOW                                                    :Malo
 STR_6817_NORMAL                                                 :Srednio
 STR_6818_HIGH                                                   :Duzo
-STR_6819                                                        :{BLACK}<
-STR_681A                                                        :{BLACK}>
+STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
+STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
 STR_681B_VERY_SLOW                                              :Bardzo wolno
 STR_681C_SLOW                                                   :Wolno
 STR_681D_MEDIUM                                                 :Srednio
