@@ -16,6 +16,8 @@ struct ViewPort {
 void SetSelectionRed(bool);
 
 /* viewport.c */
+void InitViewports(void);
+void DeleteWindowViewport(Window *w);
 void AssignWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, byte zoom);
 ViewPort *IsPtInWindowViewport(const Window *w, int x, int y);
@@ -138,11 +140,6 @@ typedef struct TileHighlightData {
 
 // common button handler
 bool HandlePlacePushButton(Window *w, int widget, uint32 cursor, int mode, PlaceProc *placeproc);
-
-/* viewport.c */
-// XXX - maximum viewports is maximum windows - 2 (main toolbar + status bar)
-VARDEF ViewPort _viewports[25 - 2];
-VARDEF uint32 _active_viewports;
 
 VARDEF Point _tile_fract_coords;
 

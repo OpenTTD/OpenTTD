@@ -302,11 +302,7 @@ void DeleteWindow(Window *w)
 
 	w = FindWindowById(wc, wn);
 
-	if (w->viewport != NULL) {
-		CLRBIT(_active_viewports, w->viewport - _viewports);
-		w->viewport->width = 0;
-		w->viewport = NULL;
-	}
+	if (w->viewport != NULL) DeleteWindowViewport(w);
 
 	SetWindowDirty(w);
 
@@ -832,8 +828,7 @@ void InitWindowSystem(void)
 
 	memset(&_windows, 0, sizeof(_windows));
 	_last_window = _windows;
-	memset(_viewports, 0, sizeof(_viewports));
-	_active_viewports = 0;
+	InitViewports();
 	_no_scroll = 0;
 }
 

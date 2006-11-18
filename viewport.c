@@ -23,6 +23,12 @@
 
 #define VIEWPORT_DRAW_MEM (65536 * 2)
 
+/* viewport.c */
+// XXX - maximum viewports is maximum windows - 2 (main toolbar + status bar)
+static ViewPort _viewports[25 - 2];
+static uint32 _active_viewports;    ///< bitmasked variable where each bit signifies if a viewport is in use or not
+assert_compile(lengthof(_viewports) < sizeof(_active_viewports) * 8);
+
 static bool _added_tile_sprite;
 static bool _offset_ground_sprites;
 
@@ -119,6 +125,18 @@ static Point MapXYZToViewport(const ViewPort *vp, uint x, uint y, uint z)
 	return p;
 }
 
+void InitViewports(void) {
+	memset(_viewports, 0, sizeof(_viewports));
+	_active_viewports = 0;
+}
+
+void DeleteWindowViewport(Window *w)
+{
+	CLRBIT(_active_viewports, w->viewport - _viewports);
+	w->viewport->width = 0;
+	w->viewport = NULL;
+}
+
 void AssignWindowViewport(Window *w, int x, int y,
 	int width, int height, uint32 follow_flags, byte zoom)
 {
@@ -126,11 +144,11 @@ void AssignWindowViewport(Window *w, int x, int y,
 	Point pt;
 	uint32 bit;
 
-	for (vp = _viewports, bit = 1; ; vp++, bit <<= 1) {
+	for (vp = _viewports, bit = 0; ; vp++, bit++) {
 		assert(vp != endof(_viewports));
 		if (vp->width == 0) break;
 	}
-	_active_viewports |= bit;
+	SETBIT(_active_viewports, bit);
 
 	vp->left = x + w->left;
 	vp->top = y + w->top;
