@@ -337,12 +337,13 @@ void DeleteWindowByClass(WindowClass cls)
 {
 	Window *w;
 
-	for (w = _windows; w != _last_window;) {
+restart_search:
+	/* When we find the window to delete, we need to restart the search
+	 * as deleting this window could cascade in deleting (many) others */
+	for (w = _windows; w != _last_window; w++) {
 		if (w->window_class == cls) {
 			DeleteWindow(w);
-			w = _windows;
-		} else {
-			w++;
+			goto restart_search;
 		}
 	}
 }
@@ -355,12 +356,13 @@ void DeletePlayerWindows(PlayerID id)
 {
 	Window *w;
 
-	for (w = _windows; w != _last_window;) {
+restart_search:
+	/* When we find the window to delete, we need to restart the search
+	 * as deleting this window could cascade in deleting (many) others */
+	for (w = _windows; w != _last_window; w++) {
 		if (w->caption_color == id) {
 			DeleteWindow(w);
-			w = _windows;
-		} else {
-			w++;
+			goto restart_search;
 		}
 	}
 
@@ -1756,7 +1758,10 @@ void DeleteNonVitalWindows(void)
 {
 	Window *w;
 
-	for (w = _windows; w != _last_window;) {
+restart_search:
+	/* When we find the window to delete, we need to restart the search
+	 * as deleting this window could cascade in deleting (many) others */
+	for (w = _windows; w != _last_window; w++) {
 		if (w->window_class != WC_MAIN_WINDOW &&
 				w->window_class != WC_SELECT_GAME &&
 				w->window_class != WC_MAIN_TOOLBAR &&
@@ -1765,9 +1770,7 @@ void DeleteNonVitalWindows(void)
 				w->window_class != WC_TOOLTIPS &&
 				(w->flags4 & WF_STICKY) == 0) { // do not delete windows which are 'pinned'
 			DeleteWindow(w);
-			w = _windows;
-		} else {
-			w++;
+			goto restart_search;
 		}
 	}
 }
@@ -1781,15 +1784,15 @@ void DeleteAllNonVitalWindows(void)
 {
 	Window *w;
 
-	// Delete every window except for stickied ones
+	/* Delete every window except for stickied ones, then sticky ones as well */
 	DeleteNonVitalWindows();
-	// Delete all sticked windows
-	for (w = _windows; w != _last_window;) {
+restart_search:
+	/* When we find the window to delete, we need to restart the search
+	 * as deleting this window could cascade in deleting (many) others */
+	for (w = _windows; w != _last_window; w++) {
 		if (w->flags4 & WF_STICKY) {
 			DeleteWindow(w);
-			w = _windows;
-		} else {
-			w++;
+			goto restart_search;
 		}
 	}
 }
