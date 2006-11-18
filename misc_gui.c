@@ -541,7 +541,7 @@ static void ErrmsgWndProc(Window *w, WindowEvent *e)
 void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 {
 	Window *w;
-	ViewPort *vp;
+	const ViewPort *vp;
 	Point pt;
 
 	DeleteWindowById(WC_ERRMSG, 0);
@@ -553,15 +553,13 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 	_errmsg_message_2 = msg_2;
 	COPY_OUT_DPARAM(_errmsg_decode_params, 0, lengthof(_errmsg_decode_params));
 	_errmsg_duration = _patches.errmsg_duration;
-	if (!_errmsg_duration)
-		return;
+	if (!_errmsg_duration) return;
 
 	if (_errmsg_message_1 != STR_013B_OWNED_BY || GetDParamX(_errmsg_decode_params,2) >= 8) {
 
 		if ( (x|y) != 0) {
 			pt = RemapCoords2(x, y);
-			for (w = _windows; w->window_class != WC_MAIN_WINDOW; w++) {}
-			vp = w->viewport;
+			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 
 			// move x pos to opposite corner
 			pt.x = ((pt.x - vp->virtual_left) >> vp->zoom) + vp->left;
@@ -579,8 +577,7 @@ void ShowErrorMessage(StringID msg_1, StringID msg_2, int x, int y)
 	} else {
 		if ( (x|y) != 0) {
 			pt = RemapCoords2(x, y);
-			for (w = _windows; w->window_class != WC_MAIN_WINDOW; w++) {}
-			vp = w->viewport;
+			vp = FindWindowById(WC_MAIN_WINDOW, 0)->viewport;
 			pt.x = clamp(((pt.x - vp->virtual_left) >> vp->zoom) + vp->left - (334/2), 0, _screen.width - 334);
 			pt.y = clamp(((pt.y - vp->virtual_top) >> vp->zoom) + vp->top - (137/2), 22, _screen.height - 137);
 		} else {
@@ -1013,10 +1010,10 @@ void DrawEditBox(Window *w, querystr_d *string, int wid)
 
 	/* Limit the drawing of the string inside the widget boundaries */
 	if (!FillDrawPixelInfo(&dpi,
-	     	wi->left + 4,
-	     	wi->top + 1,
-	     	wi->right - wi->left - 4,
-	     	wi->bottom - wi->top - 1)
+	      wi->left + 4,
+	      wi->top + 1,
+	      wi->right - wi->left - 4,
+	      wi->bottom - wi->top - 1)
 	) return;
 
 	GfxFillRect(wi->left + 1, wi->top + 1, wi->right - 1, wi->bottom - 1, 215);

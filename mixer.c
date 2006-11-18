@@ -89,15 +89,6 @@ void MxMixSamples(void *buffer, uint samples)
 			if (mc->samples_left == 0) MxCloseChannel(mc);
 		}
 	}
-
-	#if 0
-	{
-		static FILE *out = NULL;
-		if (out == NULL)
-			out = fopen("d:\\dump.raw", "wb");
-		fwrite(buffer, samples * 4, 1, out);
-	}
-	#endif
 }
 
 MixerChannel *MxAllocateChannel(void)

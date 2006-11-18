@@ -197,7 +197,6 @@ static void DispatchMouseWheelEvent(Window *w, int widget, int wheel)
 	}
 }
 
-
 static void DrawOverlappedWindow(Window *w, int left, int top, int right, int bottom);
 
 void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
@@ -348,12 +347,16 @@ void DeleteWindowByClass(WindowClass cls)
 	}
 }
 
-void DeletePlayerWindows(PlayerID pi)
+/** Delete all windows of a player. We identify windows of a player
+ * by looking at the caption colour. If it is equal to the player ID
+ * then we say the window belongs to the player and should be deleted
+ * @param id PlayerID player identifier */
+void DeletePlayerWindows(PlayerID id)
 {
 	Window *w;
 
 	for (w = _windows; w != _last_window;) {
-		if (w->caption_color == pi) {
+		if (w->caption_color == id) {
 			DeleteWindow(w);
 			w = _windows;
 		} else {
@@ -361,11 +364,15 @@ void DeletePlayerWindows(PlayerID pi)
 		}
 	}
 
-	/* Also delete the player specific windows, that haven't got the caption set */
-	DeleteWindowById(WC_BUY_COMPANY, pi);
+	/* Also delete the player specific windows, that don't have a player-colour */
+	DeleteWindowById(WC_BUY_COMPANY, id);
 }
 
-/* Change the owner of all the windows one player can take over from another player (like vehicle view windows) */
+/** Change the owner of all the windows one player can take over from another
+ * player in the case of a company merger. Do not change ownership of windows
+ * that need to be deleted once takeover is complete
+ * @param old_player PlayerID of original owner of the window
+ * @param new_player PlayerID of the new owner of the window */
 void ChangeWindowOwner(PlayerID old_player, PlayerID new_player)
 {
 	Window *w;
@@ -381,6 +388,7 @@ void ChangeWindowOwner(PlayerID old_player, PlayerID new_player)
 		if (w->window_class == WC_AIRCRAFT_LIST) continue;
 		if (w->window_class == WC_BUY_COMPANY)   continue;
 		if (w->window_class == WC_COMPANY)       continue;
+
 		w->caption_color = new_player;
 	}
 }
@@ -411,7 +419,9 @@ static inline bool IsVitalWindow(const Window *w)
  * there are certain windows that always need to be on-top; these include
  * - Toolbar, Statusbar (always on)
  * - New window, Chatbar (only if open)
+ * The window is marked dirty for a repaint if the window is actually moved
  * @param w window that is put into the foreground
+ * @return pointer to the window, can be different!
  */
 static Window *BringWindowToFront(Window *w)
 {
@@ -548,7 +558,7 @@ static Window *LocalAllocateWindow(
 	}
 
 	// Set up window properties
-	memset(w, 0, sizeof(Window));
+	memset(w, 0, sizeof(*w));
 	w->window_class = cls;
 	w->flags4 = WF_WHITE_BORDER_MASK; // just opened windows have a white border
 	w->caption_color = 0xFF;
@@ -639,10 +649,8 @@ static bool IsGoodAutoPlace2(int left, int top)
 	width = _awap_r.width;
 	height = _awap_r.height;
 
-	if (left < -(width>>2) || left > _screen.width - (width>>1))
-		return false;
-	if (top < 22 || top > _screen.height - (height>>2))
-		return false;
+	if (left < -(width>>2) || left > _screen.width - (width>>1)) return false;
+	if (top < 22 || top > _screen.height - (height>>2)) return false;
 
 	// Make sure it is not obscured by any window.
 	for (w = _windows; w != _last_window; w++) {
@@ -799,14 +807,16 @@ Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number)
 	return w;
 }
 
+/** Do a search for a window at specific coordinates. For this we start
+ * at the topmost window, obviously and work our way down to the bottom
+ * @return a pointer to the found window if any, NULL otherwise */
 Window *FindWindowFromPt(int x, int y)
 {
 	Window *w;
 
 	for (w = _last_window; w != _windows;) {
 		--w;
-		if (IS_INSIDE_1D(x, w->left, w->width) &&
-				IS_INSIDE_1D(y, w->top, w->height)) {
+		if (IS_INSIDE_1D(x, w->left, w->width) && IS_INSIDE_1D(y, w->top, w->height)) {
 			return w;
 		}
 	}
@@ -1641,9 +1651,8 @@ void UpdateWindows(void)
 		w--;
 		if (w->flags4 & WF_WHITE_BORDER_MASK) {
 			w->flags4 -= WF_WHITE_BORDER_ONE;
-			if (!(w->flags4 & WF_WHITE_BORDER_MASK)) {
-				SetWindowDirty(w);
-			}
+
+			if (!(w->flags4 & WF_WHITE_BORDER_MASK)) SetWindowDirty(w);
 		}
 	}
 

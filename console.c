@@ -296,7 +296,7 @@ void IConsoleResize(void)
 			_iconsole_win->height = _screen.height - ICON_BOTTOM_BORDERWIDTH;
 			_iconsole_win->width = _screen.width;
 			break;
-		default: break;
+		default: return;
 	}
 
 	MarkWholeScreenDirty();

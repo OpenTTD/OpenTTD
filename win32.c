@@ -637,7 +637,6 @@ static inline void dir_free(DIR *d)
 
 DIR *opendir(const char *path)
 {
-	char search_path[MAX_PATH];
 	DIR *d;
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
 	DWORD fa = GetFileAttributes(path);
@@ -645,6 +644,7 @@ DIR *opendir(const char *path)
 	if ((fa != INVALID_FILE_ATTRIBUTES) && (fa & FILE_ATTRIBUTE_DIRECTORY)) {
 		d = dir_calloc();
 		if (d != NULL) {
+			char search_path[MAX_PATH];
 			/* build search path for FindFirstFile */
 			snprintf(search_path, lengthof(search_path), "%s" PATHSEP "*", path);
 			d->hFind = FindFirstFile(search_path, &d->fd);
@@ -893,7 +893,7 @@ void DeterminePaths(void)
 	GetCurrentDirectory(MAX_PATH - 1, cfg);
 
 	cfg[0] = toupper(cfg[0]);
-	s = strchr(cfg, 0);
+	s = strchr(cfg, '\0');
 	if (s[-1] != '\\') strcpy(s, "\\");
 
 	_path.save_dir = str_fmt("%ssave", cfg);

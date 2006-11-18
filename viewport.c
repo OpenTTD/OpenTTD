@@ -165,7 +165,7 @@ void AssignWindowViewport(Window *w, int x, int y,
 
 static Point _vp_move_offs;
 
-static void DoSetViewportPosition(Window *w, int left, int top, int width, int height)
+static void DoSetViewportPosition(const Window *w, int left, int top, int width, int height)
 {
 	for (; w < _last_window; w++) {
 		if (left + width > w->left &&
@@ -1271,7 +1271,7 @@ void ViewportDoDraw(const ViewPort *vp, int left, int top, int right, int bottom
 
 // Make sure we don't draw a too big area at a time.
 // If we do, the sprite memory will overflow.
-static void ViewportDrawChk(ViewPort *vp, int left, int top, int right, int bottom)
+static void ViewportDrawChk(const ViewPort *vp, int left, int top, int right, int bottom)
 {
 	if (((bottom - top) * (right - left) << vp->zoom) > 180000) {
 		if ((bottom - top) > (right - left)) {
@@ -1293,7 +1293,7 @@ static void ViewportDrawChk(ViewPort *vp, int left, int top, int right, int bott
 	}
 }
 
-static inline void ViewportDraw(ViewPort *vp, int left, int top, int right, int bottom)
+static inline void ViewportDraw(const ViewPort *vp, int left, int top, int right, int bottom)
 {
 	if (right <= vp->left || bottom <= vp->top) return;
 
@@ -1310,7 +1310,7 @@ static inline void ViewportDraw(ViewPort *vp, int left, int top, int right, int 
 	ViewportDrawChk(vp, left, top, right, bottom);
 }
 
-void DrawWindowViewport(Window *w)
+void DrawWindowViewport(const Window *w)
 {
 	DrawPixelInfo *dpi = _cur_dpi;
 

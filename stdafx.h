@@ -102,16 +102,11 @@
 # define WIN32_LEAN_AND_MEAN     // Exclude rarely-used stuff from Windows headers
 # pragma warning(disable: 4244)  // 'conversion' conversion from 'type1' to 'type2', possible loss of data
 # pragma warning(disable: 4761)  // integral size mismatch in argument : conversion supplied
-# if _MSC_VER < 1300             // MSVC 6 borkdness
-#  pragma warning(disable: 4018) // 'expression' : signed/unsigned mismatch
-#  pragma warning(disable: 4305) // 'identifier' : truncation from 'type1' to 'type2'
-#  pragma warning(disable: 4786) // 'identifier' : identifier was truncated to '255' characters in the browser information
-# endif /* _MSC_VER < 1300 */
+
 # if _MSC_VER >= 1400              // MSVC 2005 safety checks
 #  pragma warning(disable: 4996)   // 'strdup' was declared deprecated
 #  define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
-#  pragma comment(linker, "/NODEFAULTLIB:LIBC.LIB")
-                                   // allow linking to non-recompiled libs
+#  pragma comment(linker, "/NODEFAULTLIB:LIBCMT.LIB")  // allow linking to non-recompiled libs
 # endif /* _MSC_VER >= 1400 */
 
 # include <malloc.h> // alloca()
