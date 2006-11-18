@@ -20,7 +20,7 @@ static Point _drag_delta;
 
 static Window _windows[25];
 Window *_z_windows[lengthof(_windows)];
-Window **_last_z_window; // always points to the next free space in the z-array
+Window **_last_z_window; ///< always points to the next free space in the z-array
 
 void CDECL SetWindowWidgetsDisabledState(Window *w, bool disab_stat, int widgets, ...)
 {
@@ -1886,8 +1886,8 @@ void RelocateAllWindows(int neww, int newh)
 			continue; // don't modify top,left
 		}
 
-		IConsoleResize();
-
+		/* XXX - this probably needs something more sane. For example specying
+		 * in a 'backup'-desc that the window should always be centred. */
 		switch (w->window_class) {
 			case WC_MAIN_TOOLBAR:
 				top = w->top;
@@ -1914,6 +1914,10 @@ void RelocateAllWindows(int neww, int newh)
 			case WC_SEND_NETWORK_MSG:
 				top = (newh - 26); // 26 = height of status bar + height of chat bar
 				left = (neww - w->width) >> 1;
+				break;
+
+			case WC_CONSOLE:
+				IConsoleResize(w);
 				break;
 
 			default:
