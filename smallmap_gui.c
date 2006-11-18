@@ -842,19 +842,20 @@ static void SmallMapWindowProc(Window *w, WindowEvent *e)
 				case 4: { // Map window
 					Window *w2 = FindWindowById(WC_MAIN_WINDOW, 0);
 					Point pt;
-					int x, y;
+
+					/*
+					 * XXX: scrolling with the left mouse button is done by subsequently
+					 * clicking with the left mouse button; clicking once centers the
+					 * large map at the selected point. So by unclicking the left mouse
+					 * button here, it gets reclicked during the next inputloop, which
+					 * would make it look like the mouse is being dragged, while it is
+					 * actually being (virtually) clicked every inputloop.
+					 */
+					_left_button_clicked = false;
 
 					pt = RemapCoords(WP(w,smallmap_d).scroll_x, WP(w,smallmap_d).scroll_y, 0);
-					x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
-					y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
-
-					/* If you press twice on a place in the smallmap, center there */
-					if (WP(w2, vp_d).scrollpos_x == x && WP(w2, vp_d).scrollpos_y == y) {
-						SmallMapCenterOnCurrentPos(w);
-					} else {
-						WP(w2, vp_d).scrollpos_x = x;
-						WP(w2, vp_d).scrollpos_y = y;
-					}
+					WP(w2, vp_d).scrollpos_x = pt.x + ((_cursor.pos.x - w->left + 2) << 4) - (w2->viewport->virtual_width >> 1);
+					WP(w2, vp_d).scrollpos_y = pt.y + ((_cursor.pos.y - w->top - 16) << 4) - (w2->viewport->virtual_height >> 1);
 
 					SetWindowDirty(w);
 				} break;
