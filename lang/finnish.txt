@@ -1,6 +1,6 @@
 ##name Finnish
 ##ownname Suomi
-##isocode fi_FI
+##isocode fi_FI.UTF-8
 ##plural 0
 
 ##id 0x0000
@@ -902,13 +902,11 @@ STR_CURR_ITL                                                    :Italian liira (
 STR_CURR_NLG                                                    :Hollannin guildeni (NLG)
 STR_CURR_NOK                                                    :Norjan kruunu (NOK)
 STR_CURR_PLN                                                    :Puolan zloty (PLN)
-STR_CURR_RON                                                    :Romanian leu (RON)
+STR_CURR_ROL                                                    :Romanian leu (ROL)
 STR_CURR_RUR                                                    :Venjän rupla (RUR)
 STR_CURR_SIT                                                    :Slovenian tolari (SIT)
 STR_CURR_SEK                                                    :Ruotsin kruunu (SEK)
 STR_CURR_YTL                                                    :Turkin liira (YTL)
-STR_CURR_SKK                                                    :Slovakian koruna (SKK)
-STR_CURR_BRR                                                    :Brasilian reali (BRL)
 
 STR_CURR_CUSTOM                                                 :Oma...
 
@@ -1057,8 +1055,8 @@ STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Ei mitään
 STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Alkuperäinen
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Kehitetty
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Korkeuskartan pyöritys:{ORANGE}{STRING}
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastap�iv��n
-STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :My�t�p�iv��n
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Vastapäivään
+STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :Myötäpäivään
 STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Litteälle maisemalle annettava korkeus: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Suurin aseman levittäytyminen: {ORANGE}{STRING} {RED}Huom: korkea asetus hidastaa peliä
@@ -1067,7 +1065,7 @@ STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Kiinnit
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Käänteinen vierityssuunta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Näytä mittauksen työkaluvihje, kun käytetään rakennustyökaluja: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Näytä yrityksen tunnukset: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ei yht��n
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ei yhtään
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Oma yritys
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Kaikki yritykset
 
@@ -1445,7 +1443,6 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Palveli
 
 STR_NETWORK_SERVER                                              :Palvelin
 STR_NETWORK_CLIENT                                              :Pelaaja
-STR_NETWORK_SPECTATORS                                          :Katsojat
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(tyhjä)
 STR_NETWORK_CLIENTLIST_KICK                                     :Potkaise
@@ -3025,9 +3022,6 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Paino: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteetti: {GOLD}{COMMA} matkustajaa, {COMMA} säkkiä postia
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoroidut vaunut: {GOLD}+{POWER}{BLACK} Paino: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit
-STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {GOLD}
 
 ########### String for New Landscape Generator
 

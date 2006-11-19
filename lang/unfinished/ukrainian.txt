@@ -378,9 +378,7 @@ STR_SORT_BY_RELIABILITY                                         :за надій
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :за місткістю
 STR_SORT_BY_MAX_SPEED                                           :за швидкістю
 STR_SORT_BY_MODEL                                               :Модель
-STR_SORT_BY_VALUE                                               :
 STR_SORT_BY_FACILITY                                            :Вид станцій
-STR_SORT_BY_WAITING                                             :
 STR_SORT_BY_RATING_MAX                                          :Рейтинг вантажів
 STR_ENGINE_SORT_ENGINE_ID                                       :Потяг(класичне)
 STR_ENGINE_SORT_COST                                            :Ціна
@@ -902,12 +900,11 @@ STR_CURR_ITL                                                    :Італійс�
 STR_CURR_NLG                                                    :Голландський гульден
 STR_CURR_NOK                                                    :Норвежська крона
 STR_CURR_PLN                                                    :Польський злотий
+STR_CURR_ROL                                                    :Румунський лей
 STR_CURR_RUR                                                    :Російський рубль
 STR_CURR_SIT                                                    :Словенський Талер (SIT)
 STR_CURR_SEK                                                    :Шведська крона
 STR_CURR_YTL                                                    :Турецька ліра (YTL)
-STR_CURR_SKK                                                    :Словацька крона (SKK)
-STR_CURR_BRR                                                    :Бразильський реал (BRL)
 
 STR_CURR_CUSTOM                                                 :Вибрана...
 
@@ -1042,16 +1039,12 @@ STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Пок�
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Невидимі дерева і прозорі будівлі: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Генератор ландшафту: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Класичний
-STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :ТерраГен
-STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Макс віддаленість від нафтової свердловини {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Висота рівня снігу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Дуже гладкий
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Гладкий
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Грубий
 STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Дуже грубий
 STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Алгоритм насадження дерев: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Класичний
 STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Покращений
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Обертання карти висот: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :Проти годинниковї
@@ -1277,7 +1270,6 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}Інф�
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING} : {NUM}
@@ -1305,7 +1297,6 @@ STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{S
 STR_NETWORK_LAN                                                 :Локальна
 STR_NETWORK_INTERNET                                            :Інтернет
 STR_NETWORK_LAN_INTERNET                                        :Локальна/Інтернет
-STR_NETWORK_INTERNET_ADVERTISE                                  :
 STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
 STR_NETWORK_0_PLAYERS                                           :0 гравців
 STR_NETWORK_1_PLAYERS                                           :1 гравець
@@ -1919,22 +1910,6 @@ STR_SV_SHIP_NAME                                                :Корабел�
 STR_SV_AIRCRAFT_NAME                                            :Літак {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :
-STR_SV_STNAME_SOUTH                                             :
-STR_SV_STNAME_EAST                                              :
-STR_SV_STNAME_WEST                                              :
-STR_SV_STNAME_CENTRAL                                           :
-STR_SV_STNAME_TRANSFER                                          :
-STR_SV_STNAME_HALT                                              :
-STR_SV_STNAME_VALLEY                                            :
-STR_SV_STNAME_HEIGHTS                                           :
-STR_SV_STNAME_WOODS                                             :
-STR_SV_STNAME_LAKESIDE                                          :
-STR_SV_STNAME_EXCHANGE                                          :
-STR_SV_STNAME_AIRPORT                                           :
-STR_SV_STNAME_OILFIELD                                          :
-STR_SV_STNAME_MINES                                             :
-STR_SV_STNAME_DOCKS                                             :
 STR_SV_STNAME_BUOY_1                                            :{STRING} Бакен 1
 STR_SV_STNAME_BUOY_2                                            :{STRING} Бакен 2
 STR_SV_STNAME_BUOY_3                                            :{STRING} Бакен 3
@@ -1944,13 +1919,6 @@ STR_SV_STNAME_BUOY_6                                            :{STRING} Бак
 STR_SV_STNAME_BUOY_7                                            :{STRING} Бакен 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} Бакен 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} Бакен 9
-STR_SV_STNAME_ANNEXE                                            :
-STR_SV_STNAME_SIDINGS                                           :
-STR_SV_STNAME_BRANCH                                            :
-STR_SV_STNAME_UPPER                                             :
-STR_SV_STNAME_LOWER                                             :
-STR_SV_STNAME_HELIPORT                                          :
-STR_SV_STNAME_FOREST                                            :
 
 ############ end of	savegame specific region!
 
@@ -2165,8 +2133,6 @@ STR_LIVERY_DIESEL                                               :Дизельн�
 STR_LIVERY_ELECTRIC                                             :Електричні потяги
 STR_LIVERY_MONORAIL                                             :Монорельсові потяги
 STR_LIVERY_MAGLEV                                               :Потяги на магнітній подушці
-STR_LIVERY_DMU                                                  :
-STR_LIVERY_EMU                                                  :
 STR_LIVERY_PASSENGER_WAGON_STEAM                                :Пасажирський вагон (пар)
 STR_LIVERY_PASSENGER_WAGON_DIESEL                               :Пасажирський вагон (дизель)
 STR_LIVERY_BUS                                                  :Автобус
@@ -2650,7 +2616,6 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Неможливо розвернути авто...
-STR_ONLY_TURN_SINGLE_UNIT                                       :
 STR_9034_RENAME                                                 :{BLACK}Зміна назви
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Перейменувати тип авто
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Перейменувати тип авто
@@ -2953,12 +2918,10 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Вибе
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів що вибрані ліворуч
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч на потяги що вибрані праворуч
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :
 STR_REPLACE_HELP                                                :{BLACK}Це дозволить Вам оновити одні види потягів іншими, коли потяг прибуде в депо
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів!!!: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони зберігаючи довжину потягу(починаючи спереду), якщо оновлення робить поїзд довшим.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}потяг неможна будувати
 
 STR_ENGINES                                                     :Потяги

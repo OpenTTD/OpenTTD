@@ -1,6 +1,6 @@
 ##name Polish
 ##ownname Polski
-##isocode pl_PL
+##isocode pl_PL.UTF-8
 ##plural 7
 ##case d c b n m w
 ##gender m f n
@@ -970,32 +970,30 @@ STR_TOWNNAME_CATALAN                                            :Katalonskie
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Funty (£)
-STR_CURR_USD                                                    :Dolar ($)
+STR_CURR_USD                                                    :Dolary ($)
 STR_CURR_EUR                                                    :Euro (€)
 STR_CURR_YEN                                                    :Jeny (¥)
-STR_CURR_ATS                                                    :Szyling austriacki (ATS)
-STR_CURR_BEF                                                    :Frank belgijski (BEF)
-STR_CURR_CHF                                                    :Frank szwajcarski (CHF)
-STR_CURR_CZK                                                    :Korona czeska (CZK)
+STR_CURR_ATS                                                    :Szylingi (ATS)
+STR_CURR_BEF                                                    :Franki belgijskie (BEF)
+STR_CURR_CHF                                                    :Franki szwajcarskie (CHF)
+STR_CURR_CZK                                                    :Korony czeskie (CZK)
 STR_CURR_DEM                                                    :Marki niemieckie (DEM)
-STR_CURR_DKK                                                    :Korona dunska (DKK)
-STR_CURR_ESP                                                    :Peseta hiszpanska (ESP)
-STR_CURR_FIM                                                    :Marka finska (FIM)
-STR_CURR_FRF                                                    :Frank francuski (FRF)
-STR_CURR_GRD                                                    :Drachma grecka (GRD)
-STR_CURR_HUF                                                    :Forint wegierski (HUF)
-STR_CURR_ISK                                                    :Korona islandzcka (ISK)
-STR_CURR_ITL                                                    :Lira wloska (ITL)
-STR_CURR_NLG                                                    :Gulden holenderski (NLG)
-STR_CURR_NOK                                                    :Korona norweska (NOK)
-STR_CURR_PLN                                                    :Zloty polski (PLN)
-STR_CURR_RON                                                    :Lej rumunski (RON)
-STR_CURR_RUR                                                    :Rubel rosyjski (RUR)
-STR_CURR_SIT                                                    :Tolar slowenski (SIT)
-STR_CURR_SEK                                                    :Korona szwedzka (SEK)
-STR_CURR_YTL                                                    :Lira turecka (YTL)
-STR_CURR_SKK                                                    :Korona slowacka (SKK)
-STR_CURR_BRR                                                    :Real brazylijski (BRL)
+STR_CURR_DKK                                                    :Korony dunskie (DKK)
+STR_CURR_ESP                                                    :Pesety (ESP)
+STR_CURR_FIM                                                    :Marki finskie (FIM)
+STR_CURR_FRF                                                    :Franki francuskie (FRF)
+STR_CURR_GRD                                                    :Drachmy (GRD)
+STR_CURR_HUF                                                    :Forinty (HUF)
+STR_CURR_ISK                                                    :Korony islandzckie (ISK)
+STR_CURR_ITL                                                    :Liry (ITL)
+STR_CURR_NLG                                                    :Guldeny (NLG)
+STR_CURR_NOK                                                    :Korony norweskie (NOK)
+STR_CURR_PLN                                                    :Zloty (PLN)
+STR_CURR_ROL                                                    :Lewy rumunskie (ROL)
+STR_CURR_RUR                                                    :Ruble (RUR)
+STR_CURR_SIT                                                    :Tolary slowenskie (SIT)
+STR_CURR_SEK                                                    :Korony szweckie (SEK)
+STR_CURR_YTL                                                    :Lira Turecka (YTL)
 
 STR_CURR_CUSTOM                                                 :Wlasna...
 
@@ -1157,7 +1155,6 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Pokaz p
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Zadne
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Wlasnej firmy
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Wszystkich firm
-STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferuj czat druzynowy po uzyciu <ENTER> lub <T>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks. liczba pociagow na gracza: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks. liczba samochodow na gracza: {ORANGE}{STRING}
@@ -1182,7 +1179,6 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Domysln
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Domyslny okres miedzy serwis. dla statkow: {ORANGE}niedostepne
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Wylacz serwisowanie jesli awarie pojazdow sa wylaczone: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Wlacz limity predkosci wagonow: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Zabron korzystanie z koleji elektrycznych: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Pojawianie sie kolorowych wiadomosci w: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data rozpoczecia gry: {ORANGE}{STRING}
