@@ -1,6 +1,6 @@
 ##name German
 ##ownname Deutsch
-##isocode de_DE.UTF-8
+##isocode de_DE
 ##plural 0
 ##gender m w n
 
@@ -903,11 +903,13 @@ STR_CURR_ITL                                                    :Italienische Li
 STR_CURR_NLG                                                    :Niederländ. Gulden (NLG)
 STR_CURR_NOK                                                    :Norwegische Kronen (NOK)
 STR_CURR_PLN                                                    :Polnische Zloty (PLN)
-STR_CURR_ROL                                                    :Rumänische Lei (ROL)
+STR_CURR_RON                                                    :Rum�nische Leu
 STR_CURR_RUR                                                    :Russische Rubel (RUR)
 STR_CURR_SIT                                                    :Slovenischer Tolar (SIT)
 STR_CURR_SEK                                                    :Schwedische Kronen (SEK)
 STR_CURR_YTL                                                    :türkische Lira (YTL)
+STR_CURR_SKK                                                    :Slowakische Krone
+STR_CURR_BRR                                                    :Brasilianischer Real
 
 STR_CURR_CUSTOM                                                 :Eigene...
 
@@ -1069,6 +1071,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Anzeige
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Keine
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eigene Firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle Firmen
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Bevorzuge Teamchat mit <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximale Anzahl der Züge pro Spieler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximale Anzahl der Straßenfahrzeuge pro Spieler: {ORANGE}{STRING}

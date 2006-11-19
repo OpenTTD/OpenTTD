@@ -1,6 +1,6 @@
 ##name Turkish
-##ownname Türkçe
-##isocode tr_TR.UTF-8
+##ownname T�rk�e
+##isocode tr_TR
 ##plural 1
 
 ##id 0x0000
@@ -902,11 +902,12 @@ STR_CURR_ITL                                                    :italyan Lirasi 
 STR_CURR_NLG                                                    :Hollanda Guilder (NLG)
 STR_CURR_NOK                                                    :Norweç Krone (NOK)
 STR_CURR_PLN                                                    :Polon Zilotu (PLN)
-STR_CURR_ROL                                                    :Romanya Leusu (ROL)
 STR_CURR_RUR                                                    :Rus Rublesi (RUR)
 STR_CURR_SIT                                                    :Slovenya Tolari (SIT)
 STR_CURR_SEK                                                    :isveç Kronasi (SEK)
 STR_CURR_YTL                                                    :Türk Lirasi (YTL)
+STR_CURR_SKK                                                    :Slovak Korunasi (SKK)
+STR_CURR_BRR                                                    :Brezilya Reali (BRL)
 
 STR_CURR_CUSTOM                                                 :Özel...
 

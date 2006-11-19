@@ -1,6 +1,6 @@
 ##name Portuguese
-##ownname Português
-##isocode pt_PT.UTF-8
+##ownname Portugu�s
+##isocode pt_PT
 ##plural 0
 
 ##id 0x0000
@@ -902,11 +902,13 @@ STR_CURR_ITL                                                    :Lira Italiana (
 STR_CURR_NLG                                                    :Guilda Holandesa (NLG)
 STR_CURR_NOK                                                    :Coroa Norueguesa (NOK)
 STR_CURR_PLN                                                    :Zloty Polaco (PLN)
-STR_CURR_ROL                                                    :Lei Romeno (ROL)
+STR_CURR_RON                                                    :Leu Romeno (RON)
 STR_CURR_RUR                                                    :Rublo Russo (RUR)
 STR_CURR_SIT                                                    :Tolar Esloveno (SIT)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)
 STR_CURR_YTL                                                    :Lira Turca (YTL)
+STR_CURR_SKK                                                    :Koruna Eslovaco (SKK)
+STR_CURR_BRR                                                    :Real Brasileiro (BRL)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
 
@@ -1068,6 +1070,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Própria companhia
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas as companhias
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Escolher chat de equipa com <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de comboios por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -1092,6 +1095,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}desactivado
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Não fazer manutenção se avarias desactivadas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activar limites de velocidade para vagões: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Desactivar carris electrificados: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Noticias a cores aparecem em: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data de início: {ORANGE}{STRING}

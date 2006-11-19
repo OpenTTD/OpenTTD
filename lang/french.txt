@@ -1,6 +1,6 @@
 ##name French
-##ownname Fran√ßais
-##isocode fr_FR.UTF-8
+##ownname FranÁais
+##isocode fr_FR
 ##plural 2
 ##gender m m2 f
 
@@ -903,11 +903,13 @@ STR_CURR_ITL                                                    :Lire Italienne 
 STR_CURR_NLG                                                    :Florint Hollandais (NLG)
 STR_CURR_NOK                                                    :Courronne Norv√©gienne (NOK)
 STR_CURR_PLN                                                    :Nouv. Zloty Polonais (PLN)
-STR_CURR_ROL                                                    :Leu Roumain (ROL)
+STR_CURR_RON                                                    :Leu Roumain (RON)
 STR_CURR_RUR                                                    :Rouble Russe (RUR)
 STR_CURR_SIT                                                    :Tolar Slov√©nien (SIT)
 STR_CURR_SEK                                                    :Couronne Su√©doise (SEK)
 STR_CURR_YTL                                                    :Lire Turque (YTL)
+STR_CURR_SKK                                                    :Couronne Slovaque (SKK)
+STR_CURR_BRR                                                    :RÈal BrÈsilien (BRL)
 
 STR_CURR_CUSTOM                                                 :Personnalis√©e...
 
@@ -1069,6 +1071,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Afficha
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Aucune
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propre compagnie
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Toutes les compagnies
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}PrÈfÈrer le chat d'Èquipe avec <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de v√©hicules routiers max. par joueur: {ORANGE}{STRING}
@@ -1093,6 +1096,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Entreti
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Entretien des navires tous les: {ORANGE}inactif
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}D√©sactiver les r√©parations quand les pannes sont inactives: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Permettre vitesse limite des Wagons: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}DÈsactiver les rails Èlectriques: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Les journaux en couleur apparaissent en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Ann√©e de d√©part: {ORANGE}{STRING}

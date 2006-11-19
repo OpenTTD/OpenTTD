@@ -1,6 +1,6 @@
 ##name Romanian
-##ownname Românã
-##isocode ro_RO.UTF-8
+##ownname Rom�n�
+##isocode ro_RO
 ##plural 0
 
 ##id 0x0000
@@ -381,6 +381,13 @@ STR_SORT_BY_VALUE                                               :Valoare
 STR_SORT_BY_FACILITY                                            :Tipul de statie
 STR_SORT_BY_WAITING                                             :In asteptarea valorii  încãrcãturii
 STR_SORT_BY_RATING_MAX                                          :Evaluare încãrcãturã
+STR_ENGINE_SORT_ENGINE_ID                                       :IDMotor (model clasic)
+STR_ENGINE_SORT_COST                                            :Cost
+STR_ENGINE_SORT_POWER                                           :Putere
+STR_ENGINE_SORT_INTRO_DATE                                      :Data lansarii
+STR_ENGINE_SORT_RUNNING_COST                                    :Cost exploatare
+STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Cost exploatare/putere
+STR_ENGINE_SORT_CARGO_CAPACITY                                  :Cargo Capacity
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
@@ -604,6 +611,7 @@ STR_022A_GENERATE_RANDOM_LAND                                   :{BLACK}Genereaz
 STR_022B_RESET_LANDSCAPE                                        :{BLACK}Reseteazã peisajul
 STR_022C_RESET_LANDSCAPE                                        :{WHITE}Resetare peisaj
 STR_LOAD_GAME_HEIGHTMAP                                         :{WHITE}Foloseste harta de inaltimi
+STR_LOAD_SCEN_HEIGHTMAP                                         :{BLACK}Foloseste harta inaltimi
 STR_022D_ARE_YOU_SURE_YOU_WANT_TO                               :{WHITE}Esti sigur cã vrei sa resetezi peisajul?
 STR_022E_LANDSCAPE_GENERATION                                   :{BLACK}Generare peisaj
 STR_022F_TOWN_GENERATION                                        :{BLACK}Generare oras
@@ -716,6 +724,7 @@ STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Salveaz�
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Încarcã scenariu
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Salveazã scenariu
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Joacã scenariu
+STR_PLAY_HEIGHTMAP                                              :{BLACK}Reda harta inaltimi
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Esti sigur cã vrei sã renunti la acest scenariu?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Iesire din editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...Se poate construi doar in orase cu populatia de cel putin 1200
@@ -890,7 +899,6 @@ STR_CURR_ITL                                                    :Lirã italianã
 STR_CURR_NLG                                                    :Gulden olandez (NLG)
 STR_CURR_NOK                                                    :Coroanã norvegianã (NOK)
 STR_CURR_PLN                                                    :Zlot (PLN)
-STR_CURR_ROL                                                    :Leu românesc (ROL)
 STR_CURR_RUR                                                    :Rublã ruseascã (RUR)
 STR_CURR_SEK                                                    :Coroanã suedezã (SEK)
 
@@ -1960,8 +1968,8 @@ STR_6817_NORMAL                                                 :normal
 STR_6818_HIGH                                                   :ridicat
 STR_6819                                                        :{BLACK}{SMALLLEFTARROW}
 STR_681A                                                        :{BLACK}{SMALLRIGHTARROW}
-STR_681B_VERY_SLOW                                              :foarte încet
-STR_681C_SLOW                                                   :încet
+STR_681B_VERY_SLOW                                              :foarte incet
+STR_681C_SLOW                                                   :Incet
 STR_681D_MEDIUM                                                 :mediu
 STR_681E_FAST                                                   :repede
 STR_681F_VERY_FAST                                              :foarte repede
@@ -2849,8 +2857,21 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Afiseaza
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afiseaza toate navele care opresc in aceasta statie
 
 
+### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
+### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
+
+
+
+
+### depot strings
 
 STR_ARE_YOU_SURE                                                :{BLACK}Esti sigur?
+
+
+
+
+
+
 
 STR_REPLACE_VEHICLES                                            :{BLACK}Inlocuieste vehicule
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieste {STRING}
@@ -2874,10 +2895,13 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motorul 
 STR_ENGINES                                                     :Motoare
 STR_WAGONS                                                      :Vagoane
 
+
+
 STR_MASS_START_LIST_TIP                                         :{BLACK}Apasa pentru pornirea tuturor vehiclulelor din lista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne
+
 
 ############ Lists rail types
 
@@ -2940,4 +2964,8 @@ STR_SMALL_AIRPORTS                                              :{BLACK}Aeroport
 STR_LARGE_AIRPORTS                                              :{BLACK}Aeroporturi mari
 STR_HUB_AIRPORTS                                                :{BLACK}Aeroporturi centrale
 STR_HELIPORTS                                                   :{BLACK}Aeroporturi elicoptere
+
+############ Tooltip measurment
+
+
 ########
