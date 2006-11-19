@@ -1070,6 +1070,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Laat al
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Niets
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eigen bedrijf
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle bedrijven
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Voorkeur voor team chat met <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximaal aantal treinen per speler: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximaal aantal wegvoertuigen per speler: {ORANGE}{STRING}
@@ -1094,6 +1095,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standaa
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standaard reparatie interval voor schepen: {ORANGE}uit
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Schakel onderhoud uit wanneer defecten uit staan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zet wagon snelheidslimieten aan: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Schakel electrische sporen uit: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Kleurenfoto's komen in: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Beginjaar: {ORANGE}{STRING}

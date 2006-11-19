@@ -908,6 +908,8 @@ STR_CURR_RUR                                                    :Rublo Ruso (RUR
 STR_CURR_SIT                                                    :Tolar Eslovenio (SIT)
 STR_CURR_SEK                                                    :Corona Sueca (SEK)
 STR_CURR_YTL                                                    :Lira Turca (YTL)
+STR_CURR_SKK                                                    :Corona Eslovaca
+STR_CURR_BRR                                                    :Real Brasileño (BRL)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
 
@@ -3024,7 +3026,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidad: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidad: {GOLD}{COMMA} pasajeros, {COMMA} sacas de correo
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagones con motor: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carta
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Convertible a: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Todos los tipos de carga
+STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
 
 ########### String for New Landscape Generator
 

@@ -907,6 +907,8 @@ STR_CURR_RUR                                                    :Rublo Russo (RU
 STR_CURR_SIT                                                    :Tolar Eslovênio (SIT)
 STR_CURR_SEK                                                    :Coroa Sueca (SEK)
 STR_CURR_YTL                                                    :Lira Turca (YTL)
+STR_CURR_SKK                                                    :Koruna Eslovaca (SKK)
+STR_CURR_BRR                                                    :Real Brasileiro (BRL)
 
 STR_CURR_CUSTOM                                                 :Personalizado...
 
@@ -1068,6 +1070,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostrar
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nenhum
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Minha empresa
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Todas as empresas
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Falar em time com <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Máximo de trens por jogador: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Máximo de veículos de estrada por jogador: {ORANGE}{STRING}
@@ -1092,6 +1095,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalo de serviço predefinido para barcos: {ORANGE}desactivado
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Desativar manutenção quando as quebras estão desativadas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Ativar limite de velocidade dos vagões: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Disativar ferrovias elétricas: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Noticias coloridas aparecem em: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data de início: {ORANGE}{STRING}

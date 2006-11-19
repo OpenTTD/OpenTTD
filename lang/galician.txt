@@ -1945,7 +1945,7 @@ STR_6810_COST_OF_CONSTRUCTION                                   :{LTBLUE}Costes 
 STR_6811_TERRAIN_TYPE                                           :{LTBLUE}Tipo de Terreo: {ORANGE}{STRING}
 STR_6812_QUANTITY_OF_SEA_LAKES                                  :{LTBLUE}Cantidade de mares/lagos: {ORANGE}{STRING}
 STR_6813_ECONOMY                                                :{LTBLUE}Economía: {ORANGE}{STRING}
-STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Xiro do sentido do tren: {ORANGE}{STRING}
+STR_6814_TRAIN_REVERSING                                        :{LTBLUE}Inverti-lo sentido do tren: {ORANGE}{STRING}
 STR_6815_DISASTERS                                              :{LTBLUE}Desastres: {ORANGE}{STRING}
 STR_16816_CITY_APPROVAL                                         :{LTBLUE}Actitude do consello sobre a reestructuración de áreas: {ORANGE}{STRING}
 ############ range for difficulty settings ends
@@ -2831,6 +2831,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar 
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar tódolas aeronaves que teñen esta estación nas súas ordes
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
 
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tÃ³dolos vehÃ­culos que comparte esta planificaciÃ³n
 
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
@@ -2912,14 +2913,18 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Peso: {G
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Coste: {GOLD}{CURRENCY}{BLACK} Velocidade: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacidade: {GOLD}{COMMA} pasaxeiros, {COMMA} sacos de correo
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagóns tractores: {GOLD}+{POWER}{BLACK} Peso: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_ALL_BUT                                       :Todo excepto {GOLD}
 
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Xerar
+STR_RANDOM                                                      :{BLACK}Aleatorio
 STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Xeración do mundo
 STR_RANDOM_SEED                                                 :{BLACK}Semilla Aleatoria:
 STR_RANDOM_SEED_HELP                                            :{BLACK}Pincha para introducir unha semilla
 STR_TERRAIN_TYPE                                                :{BLACK}Tipo de terreo:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivel do mar:
+STR_SMOOTHNESS                                                  :{BLACK}Suavidade:
 STR_DATE                                                        :{BLACK}Data:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Num. de cidades:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Num. de industrias:
@@ -2936,6 +2941,7 @@ STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / 
 STR_WORLD_GENERATION                                            :{BLACK}Xeración do mundo
 STR_SETTINGUP_GAME                                              :{BLACK}Configurando partida
 STR_PREPARING_GAME                                              :{BLACK}Preparando partida
+STR_SE_FLAT_WORLD                                               :{WHITE}Terreo Chan
 STR_SE_NEW_WORLD                                                :{BLACK}Crear novo escenario
 STR_SE_CAPTION                                                  :{WHITE}Tipo de escenario
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
@@ -2947,6 +2953,7 @@ STR_SMALL_AIRPORT                                               :{BLACK}Pequeno
 STR_CITY_AIRPORT                                                :{BLACK}Cidade
 STR_METRO_AIRPORT                                               :{BLACK}Aeroporto metropolitano
 STR_INTERNATIONAL_AIRPORT                                       :{BLACK}Aeroporto Internacional
+STR_COMMUTER_AIRPORT                                            :{BLACK}Conmutador
 STR_INTERCONTINENTAL_AIRPORT                                    :{BLACK}Intercontinental
 STR_HELIPORT                                                    :{BLACK}Heliporto
 STR_HELIDEPOT                                                   :{BLACK}Helidepósito

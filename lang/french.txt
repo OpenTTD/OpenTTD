@@ -908,6 +908,8 @@ STR_CURR_RUR                                                    :Rouble Russe (R
 STR_CURR_SIT                                                    :Tolar Slovénien (SIT)
 STR_CURR_SEK                                                    :Couronne Suédoise (SEK)
 STR_CURR_YTL                                                    :Lire Turque (YTL)
+STR_CURR_SKK                                                    :Couronne Slovaque (SKK)
+STR_CURR_BRR                                                    :Réal Brésilien (BRL)
 
 STR_CURR_CUSTOM                                                 :Personnalisée...
 
@@ -1069,6 +1071,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Afficha
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Aucune
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propre compagnie
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Toutes les compagnies
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Préférer le chat d'équipe avec <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nombre de trains max. par joueur: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nombre de véhicules routiers max. par joueur: {ORANGE}{STRING}
@@ -1093,6 +1096,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Entreti
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Entretien des navires tous les: {ORANGE}inactif
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Désactiver les réparations quand les pannes sont inactives: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Permettre vitesse limite des Wagons: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Désactiver les rails électriques: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Les journaux en couleur apparaissent en: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Année de départ: {ORANGE}{STRING}

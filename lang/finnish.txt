@@ -907,6 +907,8 @@ STR_CURR_RUR                                                    :Venjän rupla (
 STR_CURR_SIT                                                    :Slovenian tolari (SIT)
 STR_CURR_SEK                                                    :Ruotsin kruunu (SEK)
 STR_CURR_YTL                                                    :Turkin liira (YTL)
+STR_CURR_SKK                                                    :Slovakian koruna (SKK)
+STR_CURR_BRR                                                    :Brasilian reali (BRL)
 
 STR_CURR_CUSTOM                                                 :Oma...
 
@@ -1443,6 +1445,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Palveli
 
 STR_NETWORK_SERVER                                              :Palvelin
 STR_NETWORK_CLIENT                                              :Pelaaja
+STR_NETWORK_SPECTATORS                                          :Katsojat
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(tyhjä)
 STR_NETWORK_CLIENTLIST_KICK                                     :Potkaise
@@ -3022,6 +3025,9 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Paino: {
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kulu: {GOLD}{CURRENCY}{BLACK} Nopeus: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapasiteetti: {GOLD}{COMMA} matkustajaa, {COMMA} säkkiä postia
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Moottoroidut vaunut: {GOLD}+{POWER}{BLACK} Paino: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Sovitettavissa: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Kaikki rahtityypit
+STR_PURCHASE_INFO_ALL_BUT                                       :Kaikki paitsi {GOLD}
 
 ########### String for New Landscape Generator
 

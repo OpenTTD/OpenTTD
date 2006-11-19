@@ -959,11 +959,13 @@ STR_CURR_ITL                                                    :Italské liry (
 STR_CURR_NLG                                                    :Holandské guldeny (NLG)
 STR_CURR_NOK                                                    :Norské koruny (NOK)
 STR_CURR_PLN                                                    :Polské zloté (PLN)
-STR_CURR_ROL                                                    :Rumunský Lei (ROL)
+STR_CURR_ROL                                                    :RumunskÃœ Lei (ROL)
 STR_CURR_RUR                                                    :Ruské rubly (RUR)
 STR_CURR_SIT                                                    :Slovinský tolar (SIT)
 STR_CURR_SEK                                                    :Švédské koruny (SEK)
 STR_CURR_YTL                                                    :Turecká lira (YTL)
+STR_CURR_SKK                                                    :Slovenská koruna (SKK)
+STR_CURR_BRR                                                    :Brazilský real (BRL)
 
 STR_CURR_CUSTOM                                                 :Vlastní...
 
@@ -1125,6 +1127,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Zobrazo
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :žádnou spolecnost
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :jen vlastní spolecnost
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :všechny spolecnosti
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prepnout na týmový chat <ENTER>em: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vlaku na hrace: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum silnicnich vozidel na hrace: {ORANGE}{STRING}
@@ -1149,6 +1152,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Základ
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Základní servisní interval pro lode: {ORANGE}vypnuto
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Vypnout servisy, když jsou vypnuty poruchy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Zapnout omezení rychlosti vagonu: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Vypnout elektrickou železnici: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Barevné noviny se objeví: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Pocatecni datum: {ORANGE}{STRING}

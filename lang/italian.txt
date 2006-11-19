@@ -1070,6 +1070,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Mostra 
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Nessuna
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propria società
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Tutte le società
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferisce team chat con <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max treni per giocatore: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max veicoli stradali per giocatore: {ORANGE}{STRING}
@@ -1094,6 +1095,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervallo di servizio predefinito per le navi: {ORANGE}disabilitato
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Disabilità servicing quando i guasti sono "nessuno": {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Abilita limite velocità vagoni: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Disabilita ferrovie elettrificate: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Notizie colorate appaiono dal: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Data di inizio: {ORANGE}{STRING}
