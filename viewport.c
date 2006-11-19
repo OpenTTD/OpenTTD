@@ -183,7 +183,7 @@ void AssignWindowViewport(Window *w, int x, int y,
 
 static Point _vp_move_offs;
 
-static void DoSetViewportPosition(const Window* const *wz, int left, int top, int width, int height)
+static void DoSetViewportPosition(Window* const *wz, int left, int top, int width, int height)
 {
 
 	for (; wz != _last_z_window; wz++) {

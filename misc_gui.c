@@ -1852,10 +1852,8 @@ static const WindowDesc _cheats_desc = {
 
 void ShowCheatWindow(void)
 {
-	Window *w;
-
 	DeleteWindowById(WC_CHEATS, 0);
-	w = AllocateWindowDesc(&_cheats_desc);
+	AllocateWindowDesc(&_cheats_desc);
 }
 
 /** Resize the widgets in a window

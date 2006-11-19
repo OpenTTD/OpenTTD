@@ -222,7 +222,7 @@ void DrawOverlappedWindowForAll(int left, int top, int right, int bottom)
 
 static void DrawOverlappedWindow(Window* const *wz, int left, int top, int right, int bottom)
 {
-	const Window* const *vz = wz;
+	Window* const *vz = wz;
 	int x;
 
 	while (++vz != _last_z_window) {
@@ -1058,7 +1058,7 @@ static bool HandleWindowDragging(void)
 			ny = y;
 
 			if (_patches.window_snap_radius != 0) {
-				const Window* const *vz;
+				Window* const *vz;
 
 				int hsnap = _patches.window_snap_radius;
 				int vsnap = _patches.window_snap_radius;
@@ -1370,8 +1370,8 @@ static bool HandleViewportScroll(void)
 
 static void MaybeBringWindowToFront(const Window *w)
 {
-	const Window* const *wz;
-	const Window* const *uz;
+	Window* const *wz;
+	Window* const *uz;
 
 	if (w->window_class == WC_MAIN_WINDOW ||
 			IsVitalWindow(w) ||
@@ -1725,7 +1725,7 @@ int GetMenuItemIndex(const Window *w, int x, int y)
 
 void InvalidateWindow(WindowClass cls, WindowNumber number)
 {
-	const Window* const *wz;
+	Window* const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
@@ -1745,7 +1745,7 @@ void InvalidateWidget(const Window *w, byte widget_index)
 
 void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_index)
 {
-	const Window* const *wz;
+	Window* const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
@@ -1757,7 +1757,7 @@ void InvalidateWindowWidget(WindowClass cls, WindowNumber number, byte widget_in
 
 void InvalidateWindowClasses(WindowClass cls)
 {
-	const Window* const *wz;
+	Window* const *wz;
 
 	FOR_ALL_WINDOWS(wz) {
 		if ((*wz)->window_class == cls) SetWindowDirty(*wz);
@@ -1917,8 +1917,8 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WC_CONSOLE:
-				IConsoleResize(w);
-				break;
+				IConsoleResize();
+				continue;
 
 			default:
 				left = w->left;

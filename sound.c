@@ -194,7 +194,7 @@ void SndCopyToPool(void)
 
 static void SndPlayScreenCoordFx(SoundFx sound, int x, int y)
 {
-	const Window* const *wz;
+	Window* const *wz;
 
 	if (msf.effect_vol == 0) return;
 

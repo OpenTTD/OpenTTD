@@ -152,7 +152,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					break;
 				case WKC_CTRL | WKC_RETURN:
 					_iconsole_mode = (_iconsole_mode == ICONSOLE_FULL) ? ICONSOLE_OPENED : ICONSOLE_FULL;
-					IConsoleResize(w);
+					IConsoleResize();
 					MarkWholeScreenDirty();
 					break;
 				case (WKC_CTRL | 'V'):
@@ -283,10 +283,8 @@ void IConsoleFree(void)
 	CloseConsoleLogIfActive();
 }
 
-void IConsoleResize(Window *w)
+void IConsoleResize(void)
 {
-	assert(_iconsole_win == w);
-
 	switch (_iconsole_mode) {
 		case ICONSOLE_OPENED:
 			_iconsole_win->height = _screen.height / 3;
