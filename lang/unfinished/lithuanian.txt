@@ -1102,7 +1102,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Reaktyv
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Perjungti klimata: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Pakeisti data: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Leisti keisti produkcijos vertes: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Leisti elektriniams traukiniams vaziuoti paprastais begiais
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Juda i {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Juda i {WAYPOINT}, {VELOCITY}

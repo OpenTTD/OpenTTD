@@ -1142,7 +1142,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Реа�
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Промяна на климата: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Промяна на датата: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Промяна на производствените стойности: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Позволяване ел. двигатели да работят на обикновени жп линии
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Отиващ към {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Отиващ към {WAYPOINT}, {VELOCITY}

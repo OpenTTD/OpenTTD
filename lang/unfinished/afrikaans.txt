@@ -953,7 +953,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Straalv
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Skakel klimaat: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Verander datum: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Stel modifikasie van produksie waarde in staak: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Toelaat elektriese enjine om op normale spoore te loop
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Op pad na {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Op pad na {WAYPOINT}, {VELOCITY}

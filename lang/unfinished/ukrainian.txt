@@ -1129,7 +1129,6 @@ STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Літ�
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Змінити клімат: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Змінити дату: {ORANGE} {DATE_SHORT}
 STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Дозволити зміну рівня виробництва: {ORANGE}{STRING}
-STR_CHEAT_ALLOW_CONVRAIL                                        :{LTBLUE}Дозволити електричці їздити на звичайній колії
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Прямує до {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Прямує до {WAYPOINT}, {VELOCITY}
