@@ -719,7 +719,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 		for (i = 0; i != page->num; i++) {
 			const SettingDesc *sd = page->entries[i].setting;
 			const SettingDescBase *sdb = &sd->desc;
-			const void *var = ini_get_variable(&sd->save, patches_ptr);
+			const void *var = GetVariableAddress(patches_ptr, &sd->save);
 			bool editable = true;
 			bool disabled = false;
 
@@ -788,7 +788,7 @@ static void PatchesSelectionWndProc(Window *w, WindowEvent *e)
 			if ((sd->desc.flags & SGF_NETWORK_ONLY) && !_networking) return;
 			if (!(sd->save.conv & SLF_NETWORK_NO) && _networking && !_network_server) return;
 
-			var = ini_get_variable(&sd->save, patches_ptr);
+			var = GetVariableAddress(patches_ptr, &sd->save);
 			value = (int32)ReadValue(var, sd->save.conv);
 
 			/* clicked on the icon on the left side. Either scroller or bool on/off */

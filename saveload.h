@@ -271,6 +271,15 @@ static inline VarType GetVarFileType(VarType type)
 	return type & 0xF; // GB(type, 0, 4);
 }
 
+/** Get the address of the variable. Which one to pick depends on the object
+ * pointer. If it is NULL we are dealing with global variables so the address
+ * is taken. If non-null only the offset is stored in the union and we need
+ * to add this to the address of the object */
+static inline void *GetVariableAddress(const void *object, const SaveLoad *sld)
+{
+	return (byte*)object + (ptrdiff_t)sld->address;
+}
+
 int64 ReadValue(const void *ptr, VarType conv);
 void WriteValue(void *ptr, VarType conv, int64 val);
 

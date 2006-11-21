@@ -66,15 +66,6 @@ typedef enum {
 	IGT_LIST      = 1, ///< a list of values, seperated by \n and terminated by the next group block
 } IniGroupType;
 
-/** Get the address of the variable. Which one to pick depends on the object
- * pointer. If it is NULL we are dealing with global variables so the address
- * is taken. If non-null only the offset is stored in the union and we need
- * to add this to the address of the object */
-static inline void *ini_get_variable(const SaveLoad *sld, const void *object)
-{
-	return (object == NULL) ? sld->address : (byte*)object + (ptrdiff_t)sld->address;
-}
-
 /** The patch values that are used for new games and/or modified in config file */
 extern Patches _patches_newgame;
 

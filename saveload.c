@@ -751,7 +751,7 @@ void SlObject(void *object, const SaveLoad *sld)
 	}
 
 	for (; sld->cmd != SL_END; sld++) {
-		void *ptr = (byte*)object + (ptrdiff_t)sld->address;
+		void *ptr = GetVariableAddress(object, sld);
 		SlObjectMember(ptr, sld);
 	}
 }

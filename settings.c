@@ -690,7 +690,7 @@ static void ini_load_settings(IniFile *ini, const SettingDesc *sd, const char *g
 
 		item = ini_getitem(group, s, false);
 		p = (item == NULL) ? sdb->def : string_to_val(sdb, item->value);
-		ptr = ini_get_variable(sld, object);
+		ptr = GetVariableAddress(object, sld);
 
 		switch (sdb->cmd) {
 		case SDT_BOOLX: /* All four are various types of (integer) numbers */
@@ -766,7 +766,7 @@ static void ini_save_settings(IniFile *ini, const SettingDesc *sd, const char *g
 		}
 
 		item = ini_getitem(group, s, true);
-		ptr = ini_get_variable(sld, object);
+		ptr = GetVariableAddress(object, sld);
 
 		if (item->value != NULL) {
 			// check if the value is the same as the old value
@@ -1582,7 +1582,7 @@ int32 CmdChangePatchSetting(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 	if (flags & DC_EXEC) {
 		Patches *patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
-		void *var = ini_get_variable(&sd->save, patches_ptr);
+		void *var = GetVariableAddress(patches_ptr, &sd->save);
 		Write_ValidateSetting(var, sd, (int32)p2);
 		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
 
@@ -1607,11 +1607,11 @@ bool SetPatchValue(uint index, const Patches *object, int32 value)
 	 * of patches because changing a player-based setting in a game also
 	 * changes its defaults. At least that is the convention we have chosen */
 	if (sd->save.conv & SLF_NETWORK_NO) {
-		void *var = ini_get_variable(&sd->save, object);
+		void *var = GetVariableAddress(object, &sd->save);
 		Write_ValidateSetting(var, sd, value);
 
 		if (_game_mode != GM_MENU) {
-			void *var2 = ini_get_variable(&sd->save, &_patches_newgame);
+			void *var2 = GetVariableAddress(&_patches_newgame, &sd->save);
 			Write_ValidateSetting(var2, sd, value);
 		}
 		if (sd->desc.proc != NULL) sd->desc.proc((int32)ReadValue(var, sd->save.conv));
@@ -1654,7 +1654,7 @@ bool IConsoleSetPatchSetting(const char *name, int32 value)
 	}
 
 	patches_ptr = (_game_mode == GM_MENU) ? &_patches_newgame : &_patches;
-	ptr = ini_get_variable(&sd->save, patches_ptr);
+	ptr = GetVariableAddress(patches_ptr, &sd->save);
 
 	success = SetPatchValue(index, patches_ptr, value);
 	return success;
@@ -1672,7 +1672,7 @@ void IConsoleGetPatchSetting(const char *name)
 		return;
 	}
 
-	ptr = ini_get_variable(&sd->save, (_game_mode == GM_MENU) ? &_patches_newgame : &_patches);
+	ptr = GetVariableAddress((_game_mode == GM_MENU) ? &_patches_newgame : &_patches, &sd->save);
 
 	if (sd->desc.cmd == SDT_BOOLX) {
 		snprintf(value, sizeof(value), (*(bool*)ptr == 1) ? "on" : "off");
@@ -1692,7 +1692,7 @@ static void LoadSettings(const SettingDesc *osd, void *object)
 {
 	for (; osd->save.cmd != SL_END; osd++) {
 		const SaveLoad *sld = &osd->save;
-		void *ptr = ini_get_variable(sld, object);
+		void *ptr = GetVariableAddress(object, sld);
 
 		if (!SlObjectMember(ptr, sld)) continue;
 	}
@@ -1722,7 +1722,7 @@ static void SaveSettings(const SettingDesc *sd, void *object)
 	SlSetLength(length);
 
 	for (i = sd; i->save.cmd != SL_END; i++) {
-		void *ptr = ini_get_variable(&i->save, object);
+		void *ptr = GetVariableAddress(object, &i->save);
 		SlObjectMember(ptr, &i->save);
 	}
 }
