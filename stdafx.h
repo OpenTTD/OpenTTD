@@ -106,7 +106,6 @@
 # if _MSC_VER >= 1400              // MSVC 2005 safety checks
 #  pragma warning(disable: 4996)   // 'strdup' was declared deprecated
 #  define _CRT_SECURE_NO_DEPRECATE // all deprecated 'unsafe string functions
-#  pragma comment(linker, "/NODEFAULTLIB:LIBCMT.LIB")  // allow linking to non-recompiled libs
 # endif /* _MSC_VER >= 1400 */
 
 # include <malloc.h> // alloca()
