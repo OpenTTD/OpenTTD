@@ -1917,7 +1917,7 @@ void RelocateAllWindows(int neww, int newh)
 				break;
 
 			case WC_CONSOLE:
-				IConsoleResize();
+				IConsoleResize(w);
 				continue;
 
 			default:

@@ -26,12 +26,9 @@
 #define ICON_TOKEN_COUNT 20
 
 // ** main console ** //
-static Window *_iconsole_win; // Pointer to console window
-static bool _iconsole_inited;
 static char *_iconsole_buffer[ICON_BUFFER + 1];
 static uint16 _iconsole_cbuffer[ICON_BUFFER + 1];
 static Textbuf _iconsole_cmdline;
-static byte _iconsole_scroll;
 
 // ** stdlib ** //
 byte _stdlib_developer = 1;
@@ -53,7 +50,7 @@ static void IConsoleClearCommand(void)
 	_iconsole_cmdline.width = 0;
 	_iconsole_cmdline.caretpos = 0;
 	_iconsole_cmdline.caretxoffs = 0;
-	SetWindowDirty(_iconsole_win);
+	SetWindowDirty(FindWindowById(WC_CONSOLE, 0));
 }
 
 static inline void IConsoleResetHistoryPos(void) {_iconsole_historypos = ICON_HISTORY_SIZE - 1;}
@@ -65,15 +62,17 @@ static void IConsoleHistoryNavigate(int direction);
 // ** console window ** //
 static void IConsoleWndProc(Window *w, WindowEvent *e)
 {
+	static byte iconsole_scroll = ICON_BUFFER;
+
 	switch (e->event) {
 		case WE_PAINT: {
-			int i = _iconsole_scroll;
+			int i = iconsole_scroll;
 			int max = (w->height / ICON_LINE_HEIGHT) - 1;
 			int delta = 0;
 			GfxFillRect(w->left, w->top, w->width, w->height - 1, 0);
-			while ((i > 0) && (i > _iconsole_scroll - max) && (_iconsole_buffer[i] != NULL)) {
+			while ((i > 0) && (i > iconsole_scroll - max) && (_iconsole_buffer[i] != NULL)) {
 				DoDrawString(_iconsole_buffer[i], 5,
-					w->height - (_iconsole_scroll + 2 - i) * ICON_LINE_HEIGHT, _iconsole_cbuffer[i]);
+					w->height - (iconsole_scroll + 2 - i) * ICON_LINE_HEIGHT, _iconsole_cbuffer[i]);
 				i--;
 			}
 			/* If the text is longer than the window, don't show the starting ']' */
@@ -94,7 +93,6 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 				SetWindowDirty(w);
 			break;
 		case WE_DESTROY:
-			_iconsole_win = NULL;
 			_iconsole_mode = ICONSOLE_CLOSED;
 			break;
 		case WE_KEYPRESS:
@@ -109,34 +107,34 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_PAGEUP:
-					if (_iconsole_scroll - (w->height / ICON_LINE_HEIGHT) - 1 < 0) {
-						_iconsole_scroll = 0;
+					if (iconsole_scroll - (w->height / ICON_LINE_HEIGHT) - 1 < 0) {
+						iconsole_scroll = 0;
 					} else {
-						_iconsole_scroll -= (w->height / ICON_LINE_HEIGHT) - 1;
+						iconsole_scroll -= (w->height / ICON_LINE_HEIGHT) - 1;
 					}
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_PAGEDOWN:
-					if (_iconsole_scroll + (w->height / ICON_LINE_HEIGHT) - 1 > ICON_BUFFER) {
-						_iconsole_scroll = ICON_BUFFER;
+					if (iconsole_scroll + (w->height / ICON_LINE_HEIGHT) - 1 > ICON_BUFFER) {
+						iconsole_scroll = ICON_BUFFER;
 					} else {
-						_iconsole_scroll += (w->height / ICON_LINE_HEIGHT) - 1;
+						iconsole_scroll += (w->height / ICON_LINE_HEIGHT) - 1;
 					}
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_UP:
-					if (_iconsole_scroll <= 0) {
-						_iconsole_scroll = 0;
+					if (iconsole_scroll <= 0) {
+						iconsole_scroll = 0;
 					} else {
-						--_iconsole_scroll;
+						--iconsole_scroll;
 					}
 					SetWindowDirty(w);
 					break;
 				case WKC_SHIFT | WKC_DOWN:
-					if (_iconsole_scroll >= ICON_BUFFER) {
-						_iconsole_scroll = ICON_BUFFER;
+					if (iconsole_scroll >= ICON_BUFFER) {
+						iconsole_scroll = ICON_BUFFER;
 					} else {
-						++_iconsole_scroll;
+						++iconsole_scroll;
 					}
 					SetWindowDirty(w);
 					break;
@@ -152,7 +150,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					break;
 				case WKC_CTRL | WKC_RETURN:
 					_iconsole_mode = (_iconsole_mode == ICONSOLE_FULL) ? ICONSOLE_OPENED : ICONSOLE_FULL;
-					IConsoleResize();
+					IConsoleResize(w);
 					MarkWholeScreenDirty();
 					break;
 				case (WKC_CTRL | 'V'):
@@ -182,7 +180,7 @@ static void IConsoleWndProc(Window *w, WindowEvent *e)
 					break;
 				default:
 					if (IsValidChar(e->we.keypress.key, CS_ALPHANUMERAL)) {
-						_iconsole_scroll = ICON_BUFFER;
+						iconsole_scroll = ICON_BUFFER;
 						InsertTextBufferChar(&_iconsole_cmdline, e->we.keypress.key);
 						IConsoleResetHistoryPos();
 						SetWindowDirty(w);
@@ -215,11 +213,8 @@ void IConsoleInit(void)
 	_icolour_warn = 13;
 	_icolour_dbg  =  5;
 	_icolour_cmd  =  2;
-	_iconsole_scroll = ICON_BUFFER;
 	_iconsole_historypos = ICON_HISTORY_SIZE - 1;
-	_iconsole_inited = true;
 	_iconsole_mode = ICONSOLE_CLOSED;
-	_iconsole_win = NULL;
 
 #ifdef ENABLE_NETWORK /* Initialize network only variables */
 	_redirect_console_to_client = 0;
@@ -278,21 +273,20 @@ bool CloseConsoleLogIfActive(void)
 
 void IConsoleFree(void)
 {
-	_iconsole_inited = false;
 	IConsoleClear();
 	CloseConsoleLogIfActive();
 }
 
-void IConsoleResize(void)
+void IConsoleResize(Window *w)
 {
 	switch (_iconsole_mode) {
 		case ICONSOLE_OPENED:
-			_iconsole_win->height = _screen.height / 3;
-			_iconsole_win->width = _screen.width;
+			w->height = _screen.height / 3;
+			w->width = _screen.width;
 			break;
 		case ICONSOLE_FULL:
-			_iconsole_win->height = _screen.height - ICON_BOTTOM_BORDERWIDTH;
-			_iconsole_win->width = _screen.width;
+			w->height = _screen.height - ICON_BOTTOM_BORDERWIDTH;
+			w->width = _screen.width;
 			break;
 		default: return;
 	}
@@ -303,16 +297,15 @@ void IConsoleResize(void)
 void IConsoleSwitch(void)
 {
 	switch (_iconsole_mode) {
-		case ICONSOLE_CLOSED:
-			_iconsole_win = AllocateWindowDesc(&_iconsole_window_desc);
-			_iconsole_win->height = _screen.height / 3;
-			_iconsole_win->width = _screen.width;
+		case ICONSOLE_CLOSED: {
+			Window *w = AllocateWindowDesc(&_iconsole_window_desc);
+			w->height = _screen.height / 3;
+			w->width = _screen.width;
 			_iconsole_mode = ICONSOLE_OPENED;
 			SETBIT(_no_scroll, SCROLL_CON); // override cursor arrows; the gamefield will not scroll
-			break;
+		} break;
 		case ICONSOLE_OPENED: case ICONSOLE_FULL:
 			DeleteWindowById(WC_CONSOLE, 0);
-			_iconsole_win = NULL;
 			_iconsole_mode = ICONSOLE_CLOSED;
 			CLRBIT(_no_scroll, SCROLL_CON);
 			break;
@@ -390,8 +383,6 @@ void IConsolePrint(uint16 color_code, const char *string)
 		return;
 	}
 
-	if (!_iconsole_inited) return;
-
 	/* move up all the strings in the buffer one place and do the same for colour
 	 * to accomodate for the new command/message */
 	free(_iconsole_buffer[0]);
@@ -406,7 +397,7 @@ void IConsolePrint(uint16 color_code, const char *string)
 
 	IConsoleWriteToLogFile(string);
 
-	if (_iconsole_win != NULL) SetWindowDirty(_iconsole_win);
+	SetWindowDirty(FindWindowById(WC_CONSOLE, 0));
 }
 
 /**
