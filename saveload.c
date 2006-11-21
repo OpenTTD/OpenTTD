@@ -489,7 +489,7 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
  * @param ptr pointer to the stringbuffer
  * @param length maximum length of the string (buffer)
  * @return return the net length of the string */
-static inline size_t SlCalcNetStringLen(const char *ptr, uint length)
+static inline size_t SlCalcNetStringLen(const char *ptr, size_t length)
 {
 	return minu(strlen(ptr), length - 1);
 }
@@ -500,9 +500,15 @@ static inline size_t SlCalcNetStringLen(const char *ptr, uint length)
  * @param ptr pointer to the stringbuffer
  * @param length maximum length of the string (buffer size, etc.)
  * @return return the gross length of the string */
-static inline size_t SlCalcStringLen(const char *ptr, uint length)
+static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType conv)
 {
-	uint len = SlCalcNetStringLen(ptr, length);
+	size_t len;
+	const char *str;
+
+	conv = GetVarMemType(conv);
+	/* For strings without a pre-allocated buffer, we need an extra indirection of course */
+	str = (conv == SLE_VAR_STR || conv == SLE_VAR_STRQ) ? *(const char**)ptr : (const char*)ptr;
+	len = SlCalcNetStringLen(str, length);
 	return len + SlGetArrayLength(len); // also include the length of the index
 }
 
@@ -510,34 +516,54 @@ static inline size_t SlCalcStringLen(const char *ptr, uint length)
  * Save/Load a string.
  * @param ptr the string being manipulated
  * @param the length of the string (full length)
- * @param conv must be SLE_FILE_STRING
- * XXX - only works with global strings of a pre-allocated buffer */
-static void SlString(void *ptr, uint length, VarType conv)
+ * @param conv must be SLE_FILE_STRING */
+static void SlString(void *ptr, size_t length, VarType conv)
 {
-	uint len;
-	assert(GetVarFileType(conv) == SLE_FILE_STRING);
-	assert(GetVarMemType(conv) == SLE_VAR_STRB || GetVarMemType(conv) == SLE_VAR_STRBQ);
-	assert(ptr != NULL);
+	size_t len;
 
-	if (_sl.save) {
-		len = SlCalcNetStringLen(ptr, length);
+	if (_sl.save) { /* SAVE string */
+		switch (GetVarMemType(conv)) {
+			case SLE_VAR_STRB:
+			case SLE_VAR_STRBQ:
+				len = SlCalcNetStringLen(ptr, length);
+				break;
+			case SLE_VAR_STR:
+			case SLE_VAR_STRQ:
+				ptr = *(char**)ptr;
+				len = SlCalcNetStringLen(ptr, 0);
+				break;
+			default: NOT_REACHED();
+		}
+
 		SlWriteArrayLength(len);
 		SlCopyBytes(ptr, len);
-		return;
+	} else { /* LOAD string */
+		len = SlReadArrayLength();
+
+		switch (GetVarMemType(conv)) {
+			case SLE_VAR_STRB:
+			case SLE_VAR_STRBQ:
+				if (len >= length) {
+					DEBUG(misc, 0) ("[Sl] String length in savegame is bigger than buffer, truncating");
+					SlCopyBytes(ptr, length);
+					SlSkipBytes(len - length);
+					len = length - 1;
+				} else {
+					SlCopyBytes(ptr, len);
+				}
+				break;
+			case SLE_VAR_STR:
+			case SLE_VAR_STRQ: /* Malloc'd string, free previous incarnation, and allocate */
+				free(*(char**)ptr);
+				*(char**)ptr = malloc(len + 1); // terminating '\0'
+				ptr = *(char**)ptr;
+				SlCopyBytes(ptr, len);
+				break;
+			default: NOT_REACHED();
+		}
+
+		((char*)ptr)[len] = '\0'; // properly terminate the string
 	}
-
-	len = SlReadArrayLength();
-
-	if (len >= length) {
-		DEBUG(misc, 0) ("[Sl] String length in savegame is bigger than buffer, truncating");
-		SlCopyBytes(ptr, length);
-		SlSkipBytes(len - length);
-		len = length - 1;
-	} else {
-		SlCopyBytes(ptr, len);
-	}
-
-	((char*)ptr)[len] = '\0'; // properly terminate the string
 }
 
 /**
@@ -643,7 +669,7 @@ size_t SlCalcObjMemberLength(const SaveLoad *sld)
 			case SL_VAR: return SlCalcConvFileLen(sld->conv);
 			case SL_REF: return SlCalcRefLen();
 			case SL_ARR: return SlCalcArrayLen(sld->length, sld->conv);
-			case SL_STR: return SlCalcStringLen(sld->address, sld->length);
+			case SL_STR: return SlCalcStringLen(sld->address, sld->length, sld->conv);
 			default: NOT_REACHED();
 			}
 			break;

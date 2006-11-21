@@ -100,10 +100,10 @@ enum VarTypes {
 	SLE_VAR_I64   =  7 << 4,
 	SLE_VAR_U64   =  8 << 4,
 	SLE_VAR_NULL  =  9 << 4, ///< useful to write zeros in savegame.
-	SLE_VAR_STRB  = 10 << 4, ///< normal string (with pre-allocated buffer)
+	SLE_VAR_STRB  = 10 << 4, ///< string (with pre-allocated buffer)
 	SLE_VAR_STRBQ = 11 << 4, ///< string enclosed in quotes (with pre-allocated buffer)
 	SLE_VAR_STR   = 12 << 4, ///< string pointer
-	SLE_VAR_STRQ  = 13 << 4, ///< string enclosed in quotes
+	SLE_VAR_STRQ  = 13 << 4, ///< string pointer enclosed in quotes
 	/* 2 more possible memory-primitives */
 
 	/* Shortcut values */
