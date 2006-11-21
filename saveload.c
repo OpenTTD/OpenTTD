@@ -487,7 +487,8 @@ static void SlSaveLoadConv(void *ptr, VarType conv)
  * just strlen(), but if the string is not properly terminated, we'll
  * resort to the maximum length of the buffer.
  * @param ptr pointer to the stringbuffer
- * @param length maximum length of the string (buffer)
+ * @param length maximum length of the string (buffer). If -1 we don't care
+ * about a maximum length, but take string length as it is.
  * @return return the net length of the string */
 static inline size_t SlCalcNetStringLen(const char *ptr, size_t length)
 {
@@ -505,10 +506,21 @@ static inline size_t SlCalcStringLen(const void *ptr, size_t length, VarType con
 	size_t len;
 	const char *str;
 
-	conv = GetVarMemType(conv);
-	/* For strings without a pre-allocated buffer, we need an extra indirection of course */
-	str = (conv == SLE_VAR_STR || conv == SLE_VAR_STRQ) ? *(const char**)ptr : (const char*)ptr;
-	len = SlCalcNetStringLen(str, length);
+	switch (GetVarMemType(conv)) {
+		default: NOT_REACHED();
+		case SLE_VAR_STR:
+		case SLE_VAR_STRQ:
+			str = *(const char**)ptr;
+			len = -1;
+			break;
+		case SLE_VAR_STRB:
+		case SLE_VAR_STRBQ:
+			str = (const char*)ptr;
+			len = length;
+			break;
+	}
+
+	len = SlCalcNetStringLen(str, len);
 	return len + SlGetArrayLength(len); // also include the length of the index
 }
 
@@ -523,6 +535,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 
 	if (_sl.save) { /* SAVE string */
 		switch (GetVarMemType(conv)) {
+			default: NOT_REACHED();
 			case SLE_VAR_STRB:
 			case SLE_VAR_STRBQ:
 				len = SlCalcNetStringLen(ptr, length);
@@ -530,9 +543,8 @@ static void SlString(void *ptr, size_t length, VarType conv)
 			case SLE_VAR_STR:
 			case SLE_VAR_STRQ:
 				ptr = *(char**)ptr;
-				len = SlCalcNetStringLen(ptr, 0);
+				len = SlCalcNetStringLen(ptr, -1);
 				break;
-			default: NOT_REACHED();
 		}
 
 		SlWriteArrayLength(len);
@@ -541,6 +553,7 @@ static void SlString(void *ptr, size_t length, VarType conv)
 		len = SlReadArrayLength();
 
 		switch (GetVarMemType(conv)) {
+			default: NOT_REACHED();
 			case SLE_VAR_STRB:
 			case SLE_VAR_STRBQ:
 				if (len >= length) {
@@ -559,7 +572,6 @@ static void SlString(void *ptr, size_t length, VarType conv)
 				ptr = *(char**)ptr;
 				SlCopyBytes(ptr, len);
 				break;
-			default: NOT_REACHED();
 		}
 
 		((char*)ptr)[len] = '\0'; // properly terminate the string
@@ -642,18 +654,18 @@ static inline bool SlSkipVariableOnLoad(const SaveLoad *sld)
  * Calculate the size of an object.
  * @param sld The @SaveLoad description of the object so we know how to manipulate it
  */
-static size_t SlCalcObjLength(const SaveLoad *sld)
+static size_t SlCalcObjLength(const void *object, const SaveLoad *sld)
 {
 	size_t length = 0;
 
 	// Need to determine the length and write a length tag.
 	for (; sld->cmd != SL_END; sld++) {
-		length += SlCalcObjMemberLength(sld);
+		length += SlCalcObjMemberLength(object, sld);
 	}
 	return length;
 }
 
-size_t SlCalcObjMemberLength(const SaveLoad *sld)
+size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld)
 {
 	assert(_sl.save);
 
@@ -669,12 +681,12 @@ size_t SlCalcObjMemberLength(const SaveLoad *sld)
 			case SL_VAR: return SlCalcConvFileLen(sld->conv);
 			case SL_REF: return SlCalcRefLen();
 			case SL_ARR: return SlCalcArrayLen(sld->length, sld->conv);
-			case SL_STR: return SlCalcStringLen(sld->address, sld->length, sld->conv);
+			case SL_STR: return SlCalcStringLen(GetVariableAddress(object, sld), sld->length, sld->conv);
 			default: NOT_REACHED();
 			}
 			break;
 		case SL_WRITEBYTE: return 1; // a byte is logically of size 1
-		case SL_INCLUDE: return SlCalcObjLength(_sl.includes[sld->version_from]);
+		case SL_INCLUDE: return SlCalcObjLength(object, _sl.includes[sld->version_from]);
 		default: NOT_REACHED();
 	}
 	return 0;
@@ -746,7 +758,7 @@ void SlObject(void *object, const SaveLoad *sld)
 {
 	// Automatically calculate the length?
 	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcObjLength(sld));
+		SlSetLength(SlCalcObjLength(object, sld));
 		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 
@@ -763,7 +775,7 @@ void SlObject(void *object, const SaveLoad *sld)
 void SlGlobList(const SaveLoadGlobVarList *sldg)
 {
 	if (_sl.need_length != NL_NONE) {
-		SlSetLength(SlCalcObjLength((const SaveLoad*)sldg));
+		SlSetLength(SlCalcObjLength(NULL, (const SaveLoad*)sldg));
 		if (_sl.need_length == NL_CALCLENGTH) return;
 	}
 

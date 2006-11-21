@@ -289,7 +289,7 @@ int SlIterateArray(void);
 void SlAutolength(AutolengthProc *proc, void *arg);
 uint SlGetFieldLength(void);
 void SlSetLength(size_t length);
-size_t SlCalcObjMemberLength(const SaveLoad *sld);
+size_t SlCalcObjMemberLength(const void *object, const SaveLoad *sld);
 
 byte SlReadByte(void);
 void SlWriteByte(byte b);
