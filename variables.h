@@ -313,8 +313,6 @@ VARDEF SmallFiosItem _file_to_saveload;
 
 VARDEF byte _get_z_hint; // used as a hint to getslopez to return the right height at a bridge.
 
-VARDEF char *_newgrf_files[32];
-
 
 VARDEF Vehicle *_place_clicked_vehicle;
 
