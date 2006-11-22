@@ -1449,9 +1449,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Încasãri: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferã: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Transferã: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Cheltuieli estimate: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Cost estimat: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Venit estimat: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Venit estimat: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Nu pot înãlta terenul...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Nu pot sãpa terenul...

@@ -1483,9 +1483,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Einnahmen: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Umladen: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Umladen: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Geschätzte Kosten: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Geschätzte Kosten: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Geschätzte Einnahmen: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Geschätzte Einnahmen: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kann das Land nicht anheben...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kann das Land nicht absenken...

@@ -1545,9 +1545,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}{CURRENCY} bevétel
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Elszállít: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Elszállít: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Becsült ár: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Becsült ár: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Becsült bevétel: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Becsült bevétel: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Nem emelheted fel itt a földet...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Nem süllyesztheted le itt a földet...

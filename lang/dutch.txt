@@ -1483,9 +1483,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Inkomsten: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Overladen: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Overladen: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Verwachte kosten: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Verwachte kosten: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Verwachte inkomsten: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Verwachte inkomsten: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kan het land hier niet verhogen...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kan het land hier niet verlagen...

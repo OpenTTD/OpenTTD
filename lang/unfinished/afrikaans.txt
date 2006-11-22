@@ -1255,9 +1255,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Inkome: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Oorplaas: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Oorplaas: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Geraamde Koste: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Geraamde Koste: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Geraamde Inkome: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Geraamde Inkome: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kan nie land verhoog hier nie...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kan nie land verlaag hier nie...

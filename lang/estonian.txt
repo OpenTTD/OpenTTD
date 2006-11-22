@@ -1536,9 +1536,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Sissetulek: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Kanna üle: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Kanna üle: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Eeldatav hind: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Eeldatav hind: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Eeldatav sissetulek: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Eeldatav sissetulek: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Siin ei saa maad kõrgendada...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Siin ei saa maad madaldada...

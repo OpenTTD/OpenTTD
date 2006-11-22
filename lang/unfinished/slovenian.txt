@@ -978,9 +978,7 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Stroski: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Prihodek: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Prihodek: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Ocenjeni strosek: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Ocenjeni strosek: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Predviden prihodek: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Predviden prihodek: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Tukaj nemore?dvigniti terena...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Tukaj nemore?znizati terena...

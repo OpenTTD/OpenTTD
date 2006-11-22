@@ -1483,9 +1483,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Ingressos: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Transferir: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Transferir: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Cost Estimat: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Cost Estimat: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Ingressos Estimats: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Ingressos Estimats: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}No es pot elevar el terreny aquí...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}No es pot rebaixar el terreny aquí...

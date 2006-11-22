@@ -1444,9 +1444,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Tekjur: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Yfirfæra: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Yfirfæra: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Áætlaður kostnaður: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Áætlaður kostnaður: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Áætlaðar tekjur: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Áætlaðar tekjur: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Get ekki lyft landssvæði hér...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Get ekki lækkað landssvæði hér...

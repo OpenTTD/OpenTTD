@@ -1433,9 +1433,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Pajamos: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Pervesti: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Pervesti: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Numatoma kaina: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Numatoma kaina: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Numatomos pajamos: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Numatomos pajamos: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Negali pakelti zemiu cia...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Negali nukasti zemiu cia...

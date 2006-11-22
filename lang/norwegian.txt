@@ -1476,9 +1476,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Inntekt: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Overføring: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Overføring: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Anslått kostnad: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Anslått kostand: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Anslått inntekt: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Anslått inntekt: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kan ikke heve land her...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kan ikke senke land her...

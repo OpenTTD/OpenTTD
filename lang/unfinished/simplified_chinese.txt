@@ -792,9 +792,7 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}费用: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}收入: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}收入: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}预期费用: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}预期费用: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}预期收入: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}预期收入: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}不能提升地表...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}不能降低地表...

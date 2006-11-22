@@ -1480,9 +1480,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Gelir: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Gönder: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Gönder: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Beklenen Fiyat: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Beklenen Gider: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Beklenen Gelir: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Beklenen Gelir: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Burasi yükseltilemez...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Burasi alçaltilamaz...

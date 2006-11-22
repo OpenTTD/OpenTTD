@@ -1481,9 +1481,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Tulo: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Siirrä: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Siirrä: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Arvioitu kustannus: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Arvioitu kustannus: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Arvioitu tulo: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Arvioitu tulo: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Maata ei voi korottaa...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Maata ei voi madaltaa...

@@ -1479,9 +1479,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Inkomst: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Omlastning: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Omlastning: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Uppskattad kostnad: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Uppskattad kostnad: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Uppskattad inkomst: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Uppskattad inkomst: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Kan inte höja marken här...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Kan inte sänka marken här...

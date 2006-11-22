@@ -1540,9 +1540,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Prijem: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Prekladka: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Prekladka: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Odhadovaná cena: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Odhadovaná cena: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Odhadovaný prijem: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Odhadovaný prijem: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Zde nemohu zvednout zemi...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Zde nemohu snížit zemi...

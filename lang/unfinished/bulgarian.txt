@@ -1481,9 +1481,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Приход: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Превод: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Превод: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Приблизителна цена: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Приблизителна цена: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Приблизителен приход: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Приблизителен приход: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Не може да повдигаш земята тук...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Не може да понижиш земята тук...

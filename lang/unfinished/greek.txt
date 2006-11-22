@@ -802,9 +802,7 @@ STR_0800_COST                                                   :{TINYFONT}{RED}
 STR_0801_COST                                                   :{RED}Κόστος: {CURRENCY}
 STR_0802_INCOME                                                 :{TINYFONT}{GREEN}Έσοδα: {CURRENCY}
 STR_0803_INCOME                                                 :{GREEN}Έσοδα: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Υπολογιζόμενο Κόστος: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Υπολογιζόμενο Κόστος: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Υπολογιζόμενα Έσοδα: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Υπολογιζόμενα Έσοδα: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Αδύνατο να υψωθεί η γη εδώ...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Αδύνατο να χαμηλώσει η γη εδώ...

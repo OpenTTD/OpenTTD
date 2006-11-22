@@ -1545,9 +1545,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Zisk: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Prekladka: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Prekladka: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Priblizna cena: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Priblizna cena: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Priblizny zisk: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Priblizny zisk: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Tu nemozno zdvihnut teren ...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Tu nemozno znizit teren ...
