@@ -735,14 +735,14 @@ static void DrawRoadBits(TileInfo* ti)
 
 	DrawGroundSprite(image);
 
-	// Return if full detail is disabled, or we are zoomed fully out.
-	if (!(_display_opt & DO_FULL_DETAIL) || _cur_dpi->zoom == 2) return;
-
 	if (HasRoadWorks(ti->tile)) {
 		// Road works
 		DrawGroundSprite(road & ROAD_X ? SPR_EXCAVATION_X : SPR_EXCAVATION_Y);
 		return;
 	}
+
+	// Return if full detail is disabled, or we are zoomed fully out.
+	if (!(_display_opt & DO_FULL_DETAIL) || _cur_dpi->zoom == 2) return;
 
 	// Draw extra details.
 	for (drts = _road_display_table[roadside][road]; drts->image != 0; drts++) {
