@@ -107,59 +107,73 @@ static void PlaceRoad_DemolishArea(TileIndex tile)
 	VpStartPlaceSizing(tile, 4);
 }
 
+
+enum {
+	RTW_ROAD_X        =  3,
+	RTW_ROAD_Y        =  4,
+	RTW_DEMOLISH      =  5,
+	RTW_DEPOT         =  6,
+	RTW_BUS_STATION   =  7,
+	RTW_TRUCK_STATION =  8,
+	RTW_BUILD_BRIDGE  =  9,
+	RTW_BUILD_TUNNEL  = 10,
+	RTW_REMOVE        = 11
+};
+
+
 typedef void OnButtonClick(Window *w);
 
 static void BuildRoadClick_NE(Window *w)
 {
-	HandlePlacePushButton(w, 3, SPR_CURSOR_ROAD_NESW, 1, PlaceRoad_NE);
+	HandlePlacePushButton(w, RTW_ROAD_X, SPR_CURSOR_ROAD_NESW, 1, PlaceRoad_NE);
 }
 
 static void BuildRoadClick_NW(Window *w)
 {
-	HandlePlacePushButton(w, 4, SPR_CURSOR_ROAD_NWSE, 1, PlaceRoad_NW);
+	HandlePlacePushButton(w, RTW_ROAD_Y, SPR_CURSOR_ROAD_NWSE, 1, PlaceRoad_NW);
 }
 
 
 static void BuildRoadClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, 5, ANIMCURSOR_DEMOLISH, 1, PlaceRoad_DemolishArea);
+	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, 1, PlaceRoad_DemolishArea);
 }
 
 static void BuildRoadClick_Depot(Window *w)
 {
 	if (_game_mode == GM_EDITOR) return;
-	if (HandlePlacePushButton(w, 6, SPR_CURSOR_ROAD_DEPOT, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
+	if (HandlePlacePushButton(w, RTW_DEPOT, SPR_CURSOR_ROAD_DEPOT, 1, PlaceRoad_Depot)) ShowRoadDepotPicker();
 }
 
 static void BuildRoadClick_BusStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR) return;
-	if (HandlePlacePushButton(w, 7, SPR_CURSOR_BUS_STATION, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
+	if (HandlePlacePushButton(w, RTW_BUS_STATION, SPR_CURSOR_BUS_STATION, 1, PlaceRoad_BusStation)) ShowBusStationPicker();
 }
 
 static void BuildRoadClick_TruckStation(Window *w)
 {
 	if (_game_mode == GM_EDITOR) return;
-	if (HandlePlacePushButton(w, 8, SPR_CURSOR_TRUCK_STATION, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
+	if (HandlePlacePushButton(w, RTW_TRUCK_STATION, SPR_CURSOR_TRUCK_STATION, 1, PlaceRoad_TruckStation)) ShowTruckStationPicker();
 }
 
 static void BuildRoadClick_Bridge(Window *w)
 {
-	HandlePlacePushButton(w, 9, SPR_CURSOR_BRIDGE, 1, PlaceRoad_Bridge);
+	HandlePlacePushButton(w, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, 1, PlaceRoad_Bridge);
 }
 
 static void BuildRoadClick_Tunnel(Window *w)
 {
-	HandlePlacePushButton(w, 10, SPR_CURSOR_ROAD_TUNNEL, 3, PlaceRoad_Tunnel);
+	HandlePlacePushButton(w, RTW_BUILD_TUNNEL, SPR_CURSOR_ROAD_TUNNEL, 3, PlaceRoad_Tunnel);
 }
 
 static void BuildRoadClick_Remove(Window *w)
 {
-	if (IsWindowWidgetDisabled(w, 11)) return;
+	if (IsWindowWidgetDisabled(w, RTW_REMOVE)) return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
-	ToggleWidgetLoweredState(w, 11);
-	SetSelectionRed(IsWindowWidgetLowered(w, 11));
+	ToggleWidgetLoweredState(w, RTW_REMOVE);
+	SetSelectionRed(IsWindowWidgetLowered(w, RTW_REMOVE));
 }
 
 static void BuildRoadClick_Landscaping(Window *w)
@@ -183,11 +197,11 @@ static OnButtonClick* const _build_road_button_proc[] = {
 static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: DisableWindowWidget(w, 11); break;
+	case WE_CREATE: DisableWindowWidget(w, RTW_REMOVE); break;
 
 	case WE_PAINT:
-		if (IsWindowWidgetLowered(w, 3) || IsWindowWidgetLowered(w, 4)) {
-			EnableWindowWidget(w, 11);
+		if (IsWindowWidgetLowered(w, RTW_ROAD_X) || IsWindowWidgetLowered(w, RTW_ROAD_Y)) {
+			EnableWindowWidget(w, RTW_REMOVE);
 		}
 		DrawWindowWidgets(w);
 		break;
@@ -215,14 +229,14 @@ static void BuildRoadToolbWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_PLACE_OBJ:
-		_remove_button_clicked = IsWindowWidgetLowered(w, 11);
+		_remove_button_clicked = IsWindowWidgetLowered(w, RTW_REMOVE);
 		_place_proc(e->we.place.tile);
 		break;
 
 	case WE_ABORT_PLACE_OBJ:
 		RaiseWindowButtons(w);
-		DisableWindowWidget(w, 11);
-		InvalidateWidget(w, 11);
+		DisableWindowWidget(w, RTW_REMOVE);
+		InvalidateWidget(w, RTW_REMOVE);
 
 		w = FindWindowById(WC_BUS_STATION, 0);
 		if (w != NULL) WP(w,def_d).close = true;

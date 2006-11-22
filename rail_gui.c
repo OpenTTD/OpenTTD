@@ -225,39 +225,60 @@ static void PlaceRail_AutoSignals(TileIndex tile)
 	VpStartPlaceSizing(tile, VPM_SIGNALDIRS);
 }
 
+
+/** Enum referring to the widgets of the build rail toolbar */
+enum {
+	RTW_CAPTION        =  1,
+	RTW_BUILD_NS       =  4,
+	RTW_BUILD_X        =  5,
+	RTW_BUILD_EW       =  6,
+	RTW_BUILD_Y        =  7,
+	RTW_AUTORAIL       =  8,
+	RTW_DEMOLISH       =  9,
+	RTW_BUILD_DEPOT    = 10,
+	RTW_BUILD_WAYPOINT = 11,
+	RTW_BUILD_STATION  = 12,
+	RTW_BUILD_SIGNALS  = 13,
+	RTW_BUILD_BRIDGE   = 14,
+	RTW_BUILD_TUNNEL   = 15,
+	RTW_REMOVE         = 16,
+	RTW_CONVERT_RAIL   = 17
+};
+
+
 static void BuildRailClick_N(Window *w)
 {
-	HandlePlacePushButton(w, 4, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, 1, PlaceRail_N);
+	HandlePlacePushButton(w, RTW_BUILD_NS, GetRailTypeInfo(_cur_railtype)->cursor.rail_ns, 1, PlaceRail_N);
 }
 
 static void BuildRailClick_NE(Window *w)
 {
-	HandlePlacePushButton(w, 5, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, 1, PlaceRail_NE);
+	HandlePlacePushButton(w, RTW_BUILD_X, GetRailTypeInfo(_cur_railtype)->cursor.rail_swne, 1, PlaceRail_NE);
 }
 
 static void BuildRailClick_E(Window *w)
 {
-	HandlePlacePushButton(w, 6, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, 1, PlaceRail_E);
+	HandlePlacePushButton(w, RTW_BUILD_EW, GetRailTypeInfo(_cur_railtype)->cursor.rail_ew, 1, PlaceRail_E);
 }
 
 static void BuildRailClick_NW(Window *w)
 {
-	HandlePlacePushButton(w, 7, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, 1, PlaceRail_NW);
+	HandlePlacePushButton(w, RTW_BUILD_Y, GetRailTypeInfo(_cur_railtype)->cursor.rail_nwse, 1, PlaceRail_NW);
 }
 
 static void BuildRailClick_AutoRail(Window *w)
 {
-	HandlePlacePushButton(w, 8, GetRailTypeInfo(_cur_railtype)->cursor.autorail, VHM_RAIL, PlaceRail_AutoRail);
+	HandlePlacePushButton(w, RTW_AUTORAIL, GetRailTypeInfo(_cur_railtype)->cursor.autorail, VHM_RAIL, PlaceRail_AutoRail);
 }
 
 static void BuildRailClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, 9, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
+	HandlePlacePushButton(w, RTW_DEMOLISH, ANIMCURSOR_DEMOLISH, 1, PlaceProc_DemolishArea);
 }
 
 static void BuildRailClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, 10, GetRailTypeInfo(_cur_railtype)->cursor.depot, 1, PlaceRail_Depot)) {
+	if (HandlePlacePushButton(w, RTW_BUILD_DEPOT, GetRailTypeInfo(_cur_railtype)->cursor.depot, 1, PlaceRail_Depot)) {
 		ShowBuildTrainDepotPicker();
 	}
 }
@@ -265,7 +286,7 @@ static void BuildRailClick_Depot(Window *w)
 static void BuildRailClick_Waypoint(Window *w)
 {
 	_waypoint_count = GetNumCustomStations(STAT_CLASS_WAYP);
-	if (HandlePlacePushButton(w, 11, SPR_CURSOR_WAYPOINT, 1, PlaceRail_Waypoint) &&
+	if (HandlePlacePushButton(w, RTW_BUILD_WAYPOINT, SPR_CURSOR_WAYPOINT, 1, PlaceRail_Waypoint) &&
 			_waypoint_count > 1) {
 		ShowBuildWaypointPicker();
 	}
@@ -273,32 +294,32 @@ static void BuildRailClick_Waypoint(Window *w)
 
 static void BuildRailClick_Station(Window *w)
 {
-	if (HandlePlacePushButton(w, 12, SPR_CURSOR_RAIL_STATION, 1, PlaceRail_Station)) ShowStationBuilder();
+	if (HandlePlacePushButton(w, RTW_BUILD_STATION, SPR_CURSOR_RAIL_STATION, 1, PlaceRail_Station)) ShowStationBuilder();
 }
 
 static void BuildRailClick_AutoSignals(Window *w)
 {
-	HandlePlacePushButton(w, 13, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals);
+	HandlePlacePushButton(w, RTW_BUILD_SIGNALS, ANIMCURSOR_BUILDSIGNALS, VHM_RECT, PlaceRail_AutoSignals);
 }
 
 static void BuildRailClick_Bridge(Window *w)
 {
-	HandlePlacePushButton(w, 14, SPR_CURSOR_BRIDGE, 1, PlaceRail_Bridge);
+	HandlePlacePushButton(w, RTW_BUILD_BRIDGE, SPR_CURSOR_BRIDGE, 1, PlaceRail_Bridge);
 }
 
 static void BuildRailClick_Tunnel(Window *w)
 {
-	HandlePlacePushButton(w, 15, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, 3, PlaceRail_Tunnel);
+	HandlePlacePushButton(w, RTW_BUILD_TUNNEL, GetRailTypeInfo(_cur_railtype)->cursor.tunnel, 3, PlaceRail_Tunnel);
 }
 
 static void BuildRailClick_Remove(Window *w)
 {
-	if (IsWindowWidgetDisabled(w, 16)) return;
+	if (IsWindowWidgetDisabled(w, RTW_REMOVE)) return;
 	SetWindowDirty(w);
 	SndPlayFx(SND_15_BEEP);
 
-	ToggleWidgetLoweredState(w, 16);
-	_remove_button_clicked = IsWindowWidgetLowered(w, 16);
+	ToggleWidgetLoweredState(w, RTW_REMOVE);
+	_remove_button_clicked = IsWindowWidgetLowered(w, RTW_REMOVE);
 	SetSelectionRed(_remove_button_clicked);
 
 	// handle station builder
@@ -309,7 +330,7 @@ static void BuildRailClick_Remove(Window *w)
 
 static void BuildRailClick_Convert(Window *w)
 {
-	HandlePlacePushButton(w, 17, GetRailTypeInfo(_cur_railtype)->cursor.convert, 1, PlaceRail_ConvertRail);
+	HandlePlacePushButton(w, RTW_CONVERT_RAIL, GetRailTypeInfo(_cur_railtype)->cursor.convert, 1, PlaceRail_ConvertRail);
 }
 
 static void BuildRailClick_Landscaping(Window *w)
@@ -406,20 +427,27 @@ static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
 {
 	/* If it is the removal button that has been clicked, do nothing,
 	 * as it is up to the other buttons to drive removal status */
-	if (clicked_widget == 16) return;
+	if (clicked_widget == RTW_REMOVE) return;
 
 	switch (clicked_widget) {
-		case 4: case 5: case 6: case 7: case 8: case 11: case 12: case 13:
+		case RTW_BUILD_NS:
+		case RTW_BUILD_X:
+		case RTW_BUILD_EW:
+		case RTW_BUILD_Y:
+		case RTW_AUTORAIL:
+		case RTW_BUILD_WAYPOINT:
+		case RTW_BUILD_STATION:
+		case RTW_BUILD_SIGNALS:
 			/* Removal button is enabled only if the rail/signal/waypoint/station
 			 * button is still lowered.  Once raised, it has to be disabled */
-			SetWindowWidgetDisabledState(w, 16, !IsWindowWidgetLowered(w, clicked_widget));
+			SetWindowWidgetDisabledState(w, RTW_REMOVE, !IsWindowWidgetLowered(w, clicked_widget));
 			break;
 
 		default:
 			/* When any other buttons than rail/signal/waypoint/station, raise and
 			 * disable the removal button*/
-			DisableWindowWidget(w, 16);
-			RaiseWindowWidget(w, 16);
+			DisableWindowWidget(w, RTW_REMOVE);
+			RaiseWindowWidget(w, RTW_REMOVE);
 			break;
 	}
 }
@@ -427,7 +455,7 @@ static void UpdateRemoveWidgetStatus(Window *w, int clicked_widget)
 static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-	case WE_CREATE: DisableWindowWidget(w, 16); break;
+	case WE_CREATE: DisableWindowWidget(w, RTW_REMOVE); break;
 
 	case WE_PAINT: DrawWindowWidgets(w); break;
 
@@ -494,8 +522,8 @@ static void BuildRailToolbWndProc(Window *w, WindowEvent *e)
 
 	case WE_ABORT_PLACE_OBJ:
 		RaiseWindowButtons(w);
-		DisableWindowWidget(w, 16);
-		InvalidateWidget(w, 16);
+		DisableWindowWidget(w, RTW_REMOVE);
+		InvalidateWidget(w, RTW_REMOVE);
 
 		w = FindWindowById(WC_BUILD_STATION, 0);
 		if (w != NULL) WP(w,def_d).close = true;
@@ -554,19 +582,6 @@ static const WindowDesc _build_rail_desc = {
 	BuildRailToolbWndProc
 };
 
-/** Enum referring to the widgets of the build rail toolbar
- */
-typedef enum {
-	RTW_CAPTION = 1,
-	RTW_BUILD_NS = 4,
-	RTW_BUILD_X = 5,
-	RTW_BUILD_EW = 6,
-	RTW_BUILD_Y = 7,
-	RTW_AUTORAIL = 8,
-	RTW_BUILD_DEPOT = 10,
-	RTW_BUILD_TUNNEL = 15,
-	RTW_CONVERT_RAIL = 17
-} RailToolbarWidgets;
 
 /** Configures the rail toolbar for railtype given
  * @param railtype the railtype to display

@@ -41,14 +41,20 @@ static void PlaceAir_DemolishArea(TileIndex tile)
 }
 
 
+enum {
+	ATW_AIRPORT  = 3,
+	ATW_DEMOLISH = 4
+};
+
+
 static void BuildAirClick_Airport(Window *w)
 {
-	if (HandlePlacePushButton(w, 3, SPR_CURSOR_AIRPORT, 1, PlaceAirport)) ShowBuildAirportPicker();
+	if (HandlePlacePushButton(w, ATW_AIRPORT, SPR_CURSOR_AIRPORT, 1, PlaceAirport)) ShowBuildAirportPicker();
 }
 
 static void BuildAirClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, 4, ANIMCURSOR_DEMOLISH, 1, PlaceAir_DemolishArea);
+	HandlePlacePushButton(w, ATW_DEMOLISH, ANIMCURSOR_DEMOLISH, 1, PlaceAir_DemolishArea);
 }
 
 static void BuildAirClick_Landscaping(Window *w)

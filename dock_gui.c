@@ -65,35 +65,44 @@ static void PlaceDocks_BuildLock(TileIndex tile)
 }
 
 
+enum {
+	DTW_CANAL    = 3,
+	DTW_LOCK     = 4,
+	DTW_DEMOLISH = 6,
+	DTW_DEPOT    = 7,
+	DTW_STATION  = 8,
+	DTW_BUOY     = 9
+};
+
+
 static void BuildDocksClick_Canal(Window *w)
 {
-	HandlePlacePushButton(w, 3, SPR_CURSOR_CANAL, 1, PlaceDocks_BuildCanal);
+	HandlePlacePushButton(w, DTW_CANAL, SPR_CURSOR_CANAL, 1, PlaceDocks_BuildCanal);
 }
 
 static void BuildDocksClick_Lock(Window *w)
 {
-	HandlePlacePushButton(w, 4, SPR_CURSOR_LOCK, 1, PlaceDocks_BuildLock);
+	HandlePlacePushButton(w, DTW_LOCK, SPR_CURSOR_LOCK, 1, PlaceDocks_BuildLock);
 }
 
 static void BuildDocksClick_Demolish(Window *w)
 {
-	HandlePlacePushButton(w, 6, ANIMCURSOR_DEMOLISH, 1, PlaceDocks_DemolishArea);
+	HandlePlacePushButton(w, DTW_DEMOLISH, ANIMCURSOR_DEMOLISH, 1, PlaceDocks_DemolishArea);
 }
 
 static void BuildDocksClick_Depot(Window *w)
 {
-	if (HandlePlacePushButton(w, 7, SPR_CURSOR_SHIP_DEPOT, 1, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
+	if (HandlePlacePushButton(w, DTW_DEPOT, SPR_CURSOR_SHIP_DEPOT, 1, PlaceDocks_Depot)) ShowBuildDocksDepotPicker();
 }
 
 static void BuildDocksClick_Dock(Window *w)
 {
-
-	if (HandlePlacePushButton(w, 8, SPR_CURSOR_DOCK, 3, PlaceDocks_Dock)) ShowBuildDockStationPicker();
+	if (HandlePlacePushButton(w, DTW_STATION, SPR_CURSOR_DOCK, 3, PlaceDocks_Dock)) ShowBuildDockStationPicker();
 }
 
 static void BuildDocksClick_Buoy(Window *w)
 {
-	HandlePlacePushButton(w, 9, SPR_CURSOR_BOUY, 1, PlaceDocks_Buoy);
+	HandlePlacePushButton(w, DTW_BUOY, SPR_CURSOR_BOUY, 1, PlaceDocks_Buoy);
 }
 
 static void BuildDocksClick_Landscaping(Window *w)
