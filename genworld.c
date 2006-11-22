@@ -165,6 +165,15 @@ void GenerateWorldSetCallback(gw_done_proc *proc)
 }
 
 /**
+ * Set here the function, if any, that you want to be called when landscape
+ *  generation is aborted.
+ */
+void GenerateWorldSetAbortCallback(gw_abort_proc *proc)
+{
+	_gw.abortp = proc;
+}
+
+/**
  * This will wait for the thread to finish up his work. It will not continue
  *  till the work is done.
  */
@@ -201,12 +210,15 @@ void HandleGeneratingWorldAbortion(void)
 	/* Clean up - in SE create an empty map, otherwise, go to intro menu */
 	_switch_mode = (_game_mode == GM_EDITOR) ? SM_EDITOR : SM_MENU;
 
+	if (_gw.abortp != NULL) _gw.abortp();
+
 	if (_cursor.sprite == SPR_CURSOR_ZZZ) SetMouseCursor(SPR_CURSOR_MOUSE);
 	/* Show all vital windows again, because we have hidden them */
 	if (_gw.threaded && _game_mode != GM_MENU) ShowVitalWindows();
 	_gw.active   = false;
 	_gw.thread   = NULL;
 	_gw.proc     = NULL;
+	_gw.abortp   = NULL;
 	_gw.threaded = false;
 
 	DeleteWindowById(WC_GENERATE_PROGRESS_WINDOW, 0);
@@ -229,6 +241,7 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	_gw.size_y = size_y;
 	_gw.active = true;
 	_gw.abort  = false;
+	_gw.abortp = NULL;
 	_gw.lp     = _local_player;
 	_gw.wait_for_draw = false;
 	_gw.quit_thread   = false;

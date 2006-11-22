@@ -798,6 +798,8 @@ void GenerateTerrainPerlin(void)
 	uint x, y;
 
 	if (!AllocHeightMap()) return;
+	GenerateWorldSetAbortCallback(FreeHeightMap);
+
 	HeightMapGenerate();
 
 	IncreaseGeneratingWorldProgress(GWP_LANDSCAPE);
@@ -823,4 +825,5 @@ void GenerateTerrainPerlin(void)
 	for (x = 0; x < _height_map.size_x;     x++) MakeVoid(_height_map.size_x * y + x);
 
 	FreeHeightMap();
+	GenerateWorldSetAbortCallback(NULL);
 }

@@ -25,6 +25,7 @@ enum {
 };
 
 typedef void gw_done_proc(void);
+typedef void gw_abort_proc(void);
 
 typedef struct gw_info {
 	bool active;           //! Is generating world active
@@ -37,6 +38,7 @@ typedef struct gw_info {
 	uint size_x;           //! X-size of the map
 	uint size_y;           //! Y-size of the map
 	gw_done_proc *proc;    //! Proc that is called when done (can be NULL)
+	gw_abort_proc *abortp; //! Proc that is called when aborting (can be NULL)
 	OTTDThread *thread;    //! The thread we are in (can be NULL)
 } gw_info;
 
@@ -74,6 +76,7 @@ void SetGeneratingWorldPaintStatus(bool status);
 bool IsGeneratingWorldReadyForPaint(void);
 bool IsGenerateWorldThreaded(void);
 void GenerateWorldSetCallback(gw_done_proc *proc);
+void GenerateWorldSetAbortCallback(gw_abort_proc *proc);
 void WaitTillGeneratedWorld(void);
 void GenerateWorld(int mode, uint size_x, uint size_y);
 void AbortGeneratingWorld(void);
