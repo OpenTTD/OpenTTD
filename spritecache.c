@@ -45,7 +45,9 @@ static bool ReadSpriteHeaderSkipData(void)
 	type = FioReadByte();
 	if (type == 0xFF) {
 		FioSkipBytes(num);
-		return true;
+		/* Some NewGRF files have "empty" pseudo-sprites which are 1
+		 * byte long. Catch these so the sprites won't be displayed. */
+		return num != 1;
 	}
 
 	FioSkipBytes(7);
