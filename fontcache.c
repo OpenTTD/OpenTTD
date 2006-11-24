@@ -372,6 +372,7 @@ void InitializeUnicodeGlyphMap(void)
 			for (i = 0; i < 256; i++) {
 				if (_unicode_glyph_map[size][i] != NULL) free(_unicode_glyph_map[size][i]);
 			}
+			free(_unicode_glyph_map[size]);
 			_unicode_glyph_map[size] = NULL;
 		}
 
