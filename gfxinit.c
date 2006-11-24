@@ -13,6 +13,7 @@
 #include "newgrf.h"
 #include "md5.h"
 #include "variables.h"
+#include "fontcache.h"
 #include <string.h>
 
 typedef struct MD5File {
@@ -371,6 +372,9 @@ static void LoadSpriteTables(void)
 
 	assert(load_index == SPR_AIRPORTX_BASE);
 	load_index += LoadGrfFile("airports.grf", load_index, i++);
+
+	/* Initialize the unicode to sprite mapping table */
+	InitializeUnicodeGlyphMap();
 
 	LoadNewGRF(load_index, i);
 }
