@@ -321,7 +321,6 @@ static const SpriteID _openttd_grf_indexes[] = {
 	END
 };
 
-static byte _sprite_page_to_load = 0xFF;
 
 static void LoadSpriteTables(void)
 {
@@ -339,10 +338,11 @@ static void LoadSpriteTables(void)
 		load_index += LoadGrfFile(files->basic[i].filename, load_index, i);
 	}
 
-	if (_sprite_page_to_load != 0) {
+	/* Load additional sprites for climates other than temperate */
+	if (_opt.landscape != LT_NORMAL) {
 		LoadGrfIndexed(
-			files->landscape[_sprite_page_to_load - 1].filename,
-			_landscape_spriteindexes[_sprite_page_to_load - 1],
+			files->landscape[_opt.landscape - 1].filename,
+			_landscape_spriteindexes[_opt.landscape - 1],
 			i++
 		);
 	}
@@ -378,15 +378,9 @@ static void LoadSpriteTables(void)
 
 void GfxLoadSprites(void)
 {
-	// Need to reload the sprites only if the landscape changed
-	if (_sprite_page_to_load != _opt.landscape) {
-		_sprite_page_to_load = _opt.landscape;
+	DEBUG(spritecache, 1) ("Loading sprite set %d.", _opt.landscape);
 
-		// Sprite cache
-		DEBUG(spritecache, 1) ("Loading sprite set %d.", _sprite_page_to_load);
-
-		GfxInitSpriteMem();
-		LoadSpriteTables();
-		GfxInitPalettes();
-	}
+	GfxInitSpriteMem();
+	LoadSpriteTables();
+	GfxInitPalettes();
 }
