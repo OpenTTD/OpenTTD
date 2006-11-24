@@ -367,6 +367,14 @@ void InitializeUnicodeGlyphMap(void)
 	uint i;
 
 	for (size = FS_NORMAL; size != FS_END; size++) {
+		/* Clear out existing glyph map if it exists */
+		if (_unicode_glyph_map[size] != NULL) {
+			for (i = 0; i < 256; i++) {
+				if (_unicode_glyph_map[size][i] != NULL) free(_unicode_glyph_map[size][i]);
+			}
+			_unicode_glyph_map[size] = NULL;
+		}
+
 		base = GetFontBase(size);
 		for (i = ASCII_LETTERSTART; i < 256; i++) {
 			sprite = base + i - ASCII_LETTERSTART;
