@@ -1613,6 +1613,9 @@ void LoadStringWidthTable(void)
 {
 	uint i;
 
+	/* Initialize the unicode to sprite mapping table */
+	InitializeUnicodeGlyphMap();
+
 	/* Normal font */
 	for (i = 0; i != 224; i++) {
 		_stringwidth_table[FS_NORMAL][i] = GetGlyphWidth(FS_NORMAL, i + 32);

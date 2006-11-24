@@ -281,9 +281,6 @@ static void LoadIntroGame(void)
 	CLRBITS(_display_opt, DO_TRANS_BUILDINGS); // don't make buildings transparent in intro
 	_opt_ptr = &_opt_newgame;
 
-	GfxLoadSprites();
-	LoadStringWidthTable();
-
 	// Setup main window
 	ResetWindowSystem();
 	SetupColorsAndInitialWindow();
@@ -439,11 +436,6 @@ int ttd_main(int argc, char *argv[])
 	// This must be done early, since functions use the InvalidateWindow* calls
 	InitWindowSystem();
 
-	GfxLoadSprites();
-	/* Initialize the unicode to sprite mapping table */
-	InitializeUnicodeGlyphMap();
-	LoadStringWidthTable();
-
 	DEBUG(driver, 1) ("Loading drivers...");
 	LoadDriver(SOUND_DRIVER, _ini_sounddriver);
 	LoadDriver(MUSIC_DRIVER, _ini_musicdriver);
@@ -463,7 +455,6 @@ int ttd_main(int argc, char *argv[])
 	/* Make sure _patches is filled with _patches_newgame if we switch to a game directly */
 	if (_switch_mode != SM_NONE) {
 		_opt = _opt_newgame;
-		GfxLoadSprites();
 		UpdatePatches();
 	}
 
@@ -655,11 +646,8 @@ static void StartScenario(void)
 		return;
 	}
 
-	GfxLoadSprites();
-
 	// Reinitialize windows
 	ResetWindowSystem();
-	LoadStringWidthTable();
 
 	SetupColorsAndInitialWindow();
 
@@ -1157,6 +1145,7 @@ bool AfterLoadGame(void)
 
 	// Load the sprites
 	GfxLoadSprites();
+	LoadStringWidthTable();
 
 	/* Connect front and rear engines of multiheaded trains and converts
 	 * subtype to the new format */

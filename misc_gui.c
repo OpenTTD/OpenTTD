@@ -1659,6 +1659,7 @@ static int32 ClickChangeClimateCheat(int32 p1, int32 p2)
 	if (p1 ==  4) p1 = 0;
 	_opt.landscape = p1;
 	GfxLoadSprites();
+	LoadStringWidthTable();
 	MarkWholeScreenDirty();
 	return _opt.landscape;
 }

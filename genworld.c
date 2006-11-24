@@ -252,18 +252,19 @@ void GenerateWorld(int mode, uint size_x, uint size_y)
 	/* Make sure everything is done via OWNER_NONE */
 	_current_player = OWNER_NONE;
 
+	/* Load the right landscape stuff */
+	GfxLoadSprites();
+	LoadStringWidthTable();
+
 	InitializeGame(IG_DATE_RESET, _gw.size_x, _gw.size_y);
 	PrepareGenerateWorldProgress();
 
 	/* Re-init the windowing system */
 	ResetWindowSystem();
-	LoadStringWidthTable();
 
 	/* Create toolbars */
 	SetupColorsAndInitialWindow();
 
-	/* Load the right landscape stuff */
-	GfxLoadSprites();
 	if (_network_dedicated ||
 	    (_gw.thread = OTTDCreateThread(&_GenerateWorld, NULL)) == NULL) {
 		DEBUG(misc, 1) ("[Sl] Cannot create savegame thread, reverting to single-threaded mode...");
