@@ -903,7 +903,7 @@ STR_CURR_ITL                                                    :Italienische Li
 STR_CURR_NLG                                                    :Niederländ. Gulden (NLG)
 STR_CURR_NOK                                                    :Norwegische Kronen (NOK)
 STR_CURR_PLN                                                    :Polnische Zloty (PLN)
-STR_CURR_ROL                                                    :RumÃ€nische Lei (ROL)
+STR_CURR_ROL                                                    :Rumänische Lei (ROL)
 STR_CURR_RUR                                                    :Russische Rubel (RUR)
 STR_CURR_SIT                                                    :Slovenischer Tolar (SIT)
 STR_CURR_SEK                                                    :Schwedische Kronen (SEK)

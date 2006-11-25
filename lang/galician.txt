@@ -2829,7 +2829,7 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Mostrar 
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Mostrar tódolas aeronaves que teñen esta estación nas súas ordes
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar tódolos barcos que teñen esta estación nas súas ordes
 
-STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tÃ³dolos vehÃ­culos que comparte esta planificaciÃ³n
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tódolos vehículos que comparte esta planificación
 
 ### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
 ### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
