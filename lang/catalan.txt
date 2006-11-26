@@ -902,7 +902,7 @@ STR_CURR_ITL                                                    :Lires Italianes
 STR_CURR_NLG                                                    :Florins Holandesos (NLG)
 STR_CURR_NOK                                                    :Corones Noruegues (NOK)
 STR_CURR_PLN                                                    :Zloty Polac (PLN)
-STR_CURR_ROL                                                    :Leu Romanès (ROL)
+STR_CURR_ROL                                                    :Leu RomanÃšs (ROL)
 STR_CURR_RUR                                                    :Rubles Russos (RUR)
 STR_CURR_SIT                                                    :Eslovè Tolar (SIT)
 STR_CURR_SEK                                                    :Corones Sueques (SEK)
@@ -2568,7 +2568,7 @@ STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Acció d
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Mostrar ordres de trens
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar la vista de la pantalla principal en la situació del tren
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Enviar tren a cotxera
-STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Obligar al tren a actuar sense esperar a tenir senyal lliure
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Obliga el tren a actuar sense esperar a tenir senyal lliure
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Invertir la direcció del tren
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Mostrar detalls del tren
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Augmentar l'interval de manteniment
@@ -2583,7 +2583,7 @@ STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Esborrar
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer sense parades l'ordre seleccionada
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Afegir una nova ordre abans de la seleccionada, o afegir-la al final de la llista
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que en l'ordre seleccionada s'esperi a que l'element tingui càrrega total
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obligar en l'ordre seleccionada a descarregar l'element
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obliga en l'ordre seleccionada a descarregar l'element
 STR_SERVICE_HINT                                                :{BLACK}Saltar l'ordre a menys que es necessiti manteniment
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} disponible!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2645,7 +2645,7 @@ STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Acció s
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Mostrar les ordres dels vehicles
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrar la pantalla principal en la situació del vehicle
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Enviar vehicle a cotxera
-STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Obliga al vehicle a tornar
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Obliga el vehicle a tornar
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Mostrar detalls del vehicle
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vehicles - clica en un vehicle per informació
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construir nou automòbil
@@ -2719,7 +2719,7 @@ STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrosseg
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrar pantalla principal en la situació de la drassana
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per informació
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construir nous vaixells (necessites una drassana)
-STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}LLista de selecció de Vaixells - clica en un vaixell per informació
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per informació
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construir el vaixell seleccionat
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Accions del vaixell actual - clica aquí per parar/arrencar el vaixell
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostrar les ordres del vaixell

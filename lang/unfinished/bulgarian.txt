@@ -1070,6 +1070,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Пок�
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Нито една
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Твоята компания
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Всички компании
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Избери предпочитания отбор за чатене <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Макс. влакове на играч: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Макс. брой коли на играч: {ORANGE}{STRING}
@@ -1094,6 +1095,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Инт�
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Интервал на сервиз за кораби: {ORANGE}изключен
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Изключване на сервиза когато повредите са изключени: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Вагоните имат ограничение на скоростта: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Без електрически влакове: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Цветни нови се появяват през: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Начална година: {ORANGE}{STRING}

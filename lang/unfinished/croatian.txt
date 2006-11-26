@@ -13,11 +13,11 @@ STR_0004                                                        :{WHITE}{CURRENC
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebna ravna površina
-STR_0008_WAITING                                                :{BLACK}Čekanje: {WHITE}{STRING}
+STR_0008_WAITING                                                :{BLACK}Na čekanju: {WHITE}{STRING}
 STR_0009                                                        :{WHITE}{CARGO}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (na putu od
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (na putu iz
 STR_000B                                                        :{YELLOW}{STATION})
-STR_000C_ACCEPTS                                                :{BLACK}Prihvaća: {WHITE}
+STR_000C_ACCEPTS                                                :{BLACK}Prima: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Prihvaća: {GOLD}
 STR_000E                                                        :
 STR_000F_PASSENGERS                                             :Putnici
@@ -25,71 +25,71 @@ STR_0010_COAL                                                   :Ugljen
 STR_0011_MAIL                                                   :Pošta
 STR_0012_OIL                                                    :Nafta
 STR_0013_LIVESTOCK                                              :Stoka
-STR_0014_GOODS                                                  :Robe
-STR_0015_GRAIN                                                  :Žito
-STR_0016_WOOD                                                   :Drvo
-STR_0017_IRON_ORE                                               :Željezna rudača
-STR_0018_STEEL                                                  :Željezo
-STR_0019_VALUABLES                                              :Dragocjenosti
-STR_001A_COPPER_ORE                                             :Bakrena rudača
-STR_001B_MAIZE                                                  :Kukuruz
+STR_0014_GOODS                                                  :Dobra
+STR_0015_GRAIN                                                  :
+STR_0016_WOOD                                                   :
+STR_0017_IRON_ORE                                               :
+STR_0018_STEEL                                                  :Čelik
+STR_0019_VALUABLES                                              :Vrijednosnice
+STR_001A_COPPER_ORE                                             :
+STR_001B_MAIZE                                                  :
 STR_001C_FRUIT                                                  :Voće
-STR_001D_DIAMONDS                                               :Dijamantii
-STR_001E_FOOD                                                   :Hrana
-STR_001F_PAPER                                                  :Papir
-STR_0020_GOLD                                                   :Zlato
-STR_0021_WATER                                                  :Voda
-STR_0022_WHEAT                                                  :Pšenica
-STR_0023_RUBBER                                                 :Guma
-STR_0024_SUGAR                                                  :Šećer
-STR_0025_TOYS                                                   :Igračke
-STR_0026_CANDY                                                  :Bomboni
-STR_0027_COLA                                                   :Cola
-STR_0028_COTTON_CANDY                                           :Šećerna vata
-STR_0029_BUBBLES                                                :Baloni
-STR_002A_TOFFEE                                                 :Mliječne karamele
-STR_002B_BATTERIES                                              :Baterije
-STR_002C_PLASTIC                                                :Plastika
-STR_002D_FIZZY_DRINKS                                           :Gazirana pića
+STR_001D_DIAMONDS                                               :Dijamanti
+STR_001E_FOOD                                                   :
+STR_001F_PAPER                                                  :
+STR_0020_GOLD                                                   :
+STR_0021_WATER                                                  :
+STR_0022_WHEAT                                                  :
+STR_0023_RUBBER                                                 :
+STR_0024_SUGAR                                                  :
+STR_0025_TOYS                                                   :
+STR_0026_CANDY                                                  :Slatkiši
+STR_0027_COLA                                                   :
+STR_0028_COTTON_CANDY                                           :
+STR_0029_BUBBLES                                                :
+STR_002A_TOFFEE                                                 :
+STR_002B_BATTERIES                                              :
+STR_002C_PLASTIC                                                :
+STR_002D_FIZZY_DRINKS                                           :
 STR_002E                                                        :
-STR_002F_PASSENGER                                              :Putnik
-STR_0030_COAL                                                   :Ugljen
-STR_0031_MAIL                                                   :Pošta
-STR_0032_OIL                                                    :Nafta
-STR_0033_LIVESTOCK                                              :Životinje
-STR_0034_GOODS                                                  :Dobra
-STR_0035_GRAIN                                                  :Žito
-STR_0036_WOOD                                                   :Drvo
-STR_0037_IRON_ORE                                               :Željezna rudača
-STR_0038_STEEL                                                  :Željezo
-STR_0039_VALUABLES                                              :Dragocjenosti
-STR_003A_COPPER_ORE                                             :Bakrena rudača
-STR_003B_MAIZE                                                  :Kukuruz
-STR_003C_FRUIT                                                  :Voće
-STR_003D_DIAMOND                                                :Dijamanti
-STR_003E_FOOD                                                   :Hrana
-STR_003F_PAPER                                                  :Papir
-STR_0040_GOLD                                                   :Zlato
-STR_0041_WATER                                                  :Voda
-STR_0042_WHEAT                                                  :Pšenica
-STR_0043_RUBBER                                                 :Guma
-STR_0044_SUGAR                                                  :Šećer
-STR_0045_TOY                                                    :Igračke
-STR_0046_CANDY                                                  :Slatkiši
-STR_0047_COLA                                                   :Cola
-STR_0048_COTTON_CANDY                                           :Šećerna vata
-STR_0049_BUBBLE                                                 :Baloni
-STR_004A_TOFFEE                                                 :Mliječna karamela
-STR_004B_BATTERY                                                :Baterije
-STR_004C_PLASTIC                                                :Plastika
-STR_004D_FIZZY_DRINK                                            :Gazirana pića
+STR_002F_PASSENGER                                              :
+STR_0030_COAL                                                   :
+STR_0031_MAIL                                                   :
+STR_0032_OIL                                                    :
+STR_0033_LIVESTOCK                                              :Stoka
+STR_0034_GOODS                                                  :
+STR_0035_GRAIN                                                  :
+STR_0036_WOOD                                                   :
+STR_0037_IRON_ORE                                               :
+STR_0038_STEEL                                                  :Čelik
+STR_0039_VALUABLES                                              :Vrijednosnice
+STR_003A_COPPER_ORE                                             :
+STR_003B_MAIZE                                                  :
+STR_003C_FRUIT                                                  :
+STR_003D_DIAMOND                                                :
+STR_003E_FOOD                                                   :
+STR_003F_PAPER                                                  :
+STR_0040_GOLD                                                   :
+STR_0041_WATER                                                  :
+STR_0042_WHEAT                                                  :
+STR_0043_RUBBER                                                 :
+STR_0044_SUGAR                                                  :
+STR_0045_TOY                                                    :Igračka
+STR_0046_CANDY                                                  :
+STR_0047_COLA                                                   :
+STR_0048_COTTON_CANDY                                           :
+STR_0049_BUBBLE                                                 :
+STR_004A_TOFFEE                                                 :
+STR_004B_BATTERY                                                :
+STR_004C_PLASTIC                                                :
+STR_004D_FIZZY_DRINK                                            :Gazirano piće
 STR_00AE                                                        :{WHITE}{DATE_SHORT}
 STR_00AF                                                        :{WHITE}{DATE_LONG}
 STR_00B0_MAP                                                    :{WHITE}Karta - {STRING}
-STR_00B1_GAME_OPTIONS                                           :{WHITE}Opcije za igru
+STR_00B1_GAME_OPTIONS                                           :{WHITE}Postavke igre
 STR_00B2_MESSAGE                                                :{YELLOW}Poruka
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Poruka od {STRING}
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Ne mogu to učiniti....
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}To se ne može učiniti....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Nije moguće očistiti ovo područje....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Izvorno autorsko pravo {COPYRIGHT} 1995 Chris Sawyer, sva prava pridržana
 STR_00B7_VERSION                                                :{BLACK}OpenTTD verzija {REV}
@@ -97,10 +97,10 @@ STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD 
 
 STR_00C5                                                        :{BLACK}{CROSS}
 STR_00C6                                                        :{SILVER}{CROSS}
-STR_00C7_QUIT                                                   :{WHITE}Prekid
+STR_00C7_QUIT                                                   :{WHITE}Kraj
 STR_00C8_YES                                                    :{BLACK}Da
 STR_00C9_NO                                                     :{BLACK}Ne
-STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Jesi li siguran da želiš napustiti ovu igru i vratiti se {STRING}?
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Sigurno želiš napustiti ovu igru i vratiti se {STRING}?
 STR_00CB_1                                                      :{BLACK}1
 STR_00CC_2                                                      :{BLACK}2
 STR_00CD_3                                                      :{BLACK}3
@@ -794,15 +794,183 @@ STR_7055                                                        :{YELLOW}{STRING
 STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportno društvo u neprilikama!
 STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} će biti rasprodano ili objaviti bankrot ukoliko se učinak uskoro ne poboljša!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Direktor)
+STR_705A_HAS_BEEN_SOLD_TO_FOR                                   :{BLACK}{BIGFONT}{COMPANY} je prodan(a) društvu  {COMPANY} for {CURRENCY}!
+STR_705B_WE_ARE_LOOKING_FOR_A_TRANSPORT                         :{WHITE}Traži se transportno društvo za preuzimanje našeg društva.{}{}Želiš li kupiti {COMPANY} za {CURRENCY}?
+STR_705C_BANKRUPT                                               :{BLACK}{BIGFONT}Bankrot!
+STR_705D_HAS_BEEN_CLOSED_DOWN_BY                                :{BLACK}{BIGFONT}Ulagači su zatvorili i rasprodali svu imovinu društva {COMPANY} !
+STR_705E_NEW_TRANSPORT_COMPANY_LAUNCHED                         :{BLACK}{BIGFONT}Osnovano novo transportno društvo!
+STR_705F_STARTS_CONSTRUCTION_NEAR                               :{BLACK}{BIGFONT}{COMPANY} započinje izgradnju u biliini {TOWN}!
+STR_7060_CAN_T_BUY_COMPANY                                      :{WHITE}Ne možeš kupiti društvo...
+STR_7061_CARGO_PAYMENT_RATES                                    :{WHITE}Plaćanja po teretu
+STR_7062_DAYS_IN_TRANSIT                                        :{BLACK}{TINYFONT}Dana u tranzitu.
+STR_7065                                                        :{BLACK}{TINYFONT}{STRING}
+STR_7066_ENGINEER                                               :Inženjer
+STR_7067_TRAFFIC_MANAGER                                        :Prometni direktor
+STR_7068_TRANSPORT_COORDINATOR                                  :Koordinator transporta
+STR_7069_ROUTE_SUPERVISOR                                       :Nadzornik rute
+STR_706A_DIRECTOR                                               :Direktor
+STR_706B_CHIEF_EXECUTIVE                                        :Glavni izvršni direktor
+STR_706C_CHAIRMAN                                               :Gazda!
+STR_706D_PRESIDENT                                              :Predsjednik
+STR_706E_TYCOON                                                 :Tajkun
+STR_706F_BUILD_HQ                                               :{BLACK}Izgradi sjedište društva
+STR_7070_BUILD_COMPANY_HEADQUARTERS                             :{BLACK}Izdragi / pogledaj sjedište društva
+STR_7071_CAN_T_BUILD_COMPANY_HEADQUARTERS                       :{WHITE}Ne možeš izgraditi sjedište društva...
+STR_7072_VIEW_HQ                                                :{BLACK}Pogledaj sjedište društva
+STR_7076_COMPANY_VALUE                                          :{GOLD}Vrijednost društva: {WHITE}{CURRENCY64}
+STR_7077_BUY_25_SHARE_IN_COMPANY                                :{BLACK}Kupi 25% dionica društva
+STR_7078_SELL_25_SHARE_IN_COMPANY                               :{BLACK}Prodaj 25% dionica društva
+STR_7079_BUY_25_SHARE_IN_THIS_COMPANY                           :{BLACK}Kupi 25% dionica ovog društva
+STR_707A_SELL_25_SHARE_IN_THIS_COMPANY                          :{BLACK}Prodaj 25% dionica ovog društva
+STR_707B_CAN_T_BUY_25_SHARE_IN_THIS                             :{WHITE}Ne možeš kupiti 25% dionica ovog društva...
+STR_707C_CAN_T_SELL_25_SHARE_IN                                 :{WHITE}Ne možeš prodati 25% dionica ovog društva
+STR_707D_OWNED_BY                                               :{WHITE}({COMMA}% u vlasništvu društva {COMPANY})
+STR_707E_OWNED_BY_OWNED_BY                                      :{WHITE}({COMMA}% u vlasništvu društva {COMPANY}{}   {COMMA}% u vlasništvu društva {COMPANY})
+STR_707F_HAS_BEEN_TAKEN_OVER_BY                                 :{BLACK}{BIGFONT}{COMPANY} preuzeto u vlasništvo i upravnje društva {COMPANY}!
+STR_7080_PROTECTED                                              :{WHITE}Ovo društvo još nije dovoljno staro da prodaje svoje dionice...
 
 
 
 ##id 0x8000
+STR_8000_KIRBY_PAUL_TANK_STEAM                                  :Kirby Paul Tank (Parna)
+STR_8001_MJS_250_DIESEL                                         :MJS 250 (Diesel)
+STR_8002_PLODDYPHUT_CHOO_CHOO                                   :Ploddyphut Choo-Choo
+STR_8003_POWERNAUT_CHOO_CHOO                                    :Powernaut Choo-Choo
+STR_8004_MIGHTYMOVER_CHOO_CHOO                                  :Mightymover Choo-Choo
+STR_8005_PLODDYPHUT_DIESEL                                      :Ploddyphut Diesel
+STR_8006_POWERNAUT_DIESEL                                       :Powernaut Diesel
+STR_8007_WILLS_2_8_0_STEAM                                      :Wills 2-8-0 (Parna)
+STR_8008_CHANEY_JUBILEE_STEAM                                   :Chaney 'Jubilee' (Parna)
+STR_8009_GINZU_A4_STEAM                                         :Ginzu 'A4' (Parna)
+STR_800A_SH_8P_STEAM                                            :SH '8P' (Parna)
+STR_800B_MANLEY_MOREL_DMU_DIESEL                                :Manley-Morel DMU (Diesel)
+STR_800C_DASH_DIESEL                                            :'Dash' (Diesel)
+STR_800D_SH_HENDRY_25_DIESEL                                    :SH/Hendry '25' (Diesel)
+STR_800E_UU_37_DIESEL                                           :UU '37' (Diesel)
+STR_800F_FLOSS_47_DIESEL                                        :Floss '47' (Diesel)
+STR_8010_CS_4000_DIESEL                                         :CS 4000 (Diesel)
+STR_8011_CS_2400_DIESEL                                         :CS 2400 (Diesel)
+STR_8012_CENTENNIAL_DIESEL                                      :Centennial (Diesel)
+STR_8013_KELLING_3100_DIESEL                                    :Kelling 3100 (Diesel)
+STR_8014_TURNER_TURBO_DIESEL                                    :Turner Turbo (Diesel)
+STR_8015_MJS_1000_DIESEL                                        :MJS 1000 (Diesel)
+STR_8016_SH_125_DIESEL                                          :SH '125' (Diesel)
+STR_8017_SH_30_ELECTRIC                                         :SH '30' (Električna)
+STR_8018_SH_40_ELECTRIC                                         :SH '40' (Električna)
+STR_8019_T_I_M_ELECTRIC                                         :'T.I.M.' (Električna)
+STR_801A_ASIASTAR_ELECTRIC                                      :'AsiaStar' (Električna)
+STR_801B_PASSENGER_CAR                                          :Putni vagon
+STR_801C_MAIL_VAN                                               :Vagon za poštu
+STR_801D_COAL_CAR                                               :Vagon za ugalj
+STR_801E_OIL_TANKER                                             :Tanker za naftu
+STR_801F_LIVESTOCK_VAN                                          :Kamion za prijevoz blaga (stoke)
+STR_8020_GOODS_VAN                                              :Kamion za prijevoz dobara (proizvoda)
+STR_8021_GRAIN_HOPPER                                           :Kamion za prijevoz žitarica
+STR_8022_WOOD_TRUCK                                             :Kamion za prijevoz drva
+STR_8023_IRON_ORE_HOPPER                                        :Kamion za prijevoz željezne rudače
+STR_8024_STEEL_TRUCK                                            :Kamion za prijevoz čelika
+STR_8025_ARMORED_VAN                                            :Oklopno vozilo - prijevoz vrijednosnica
+STR_8026_FOOD_VAN                                               :Kamion za prijevoz hrane
+STR_8027_PAPER_TRUCK                                            :Kamion za prijevoz papira
+STR_8036_X2001_ELECTRIC                                         :'X2001' (Električna)
+STR_8037_MILLENNIUM_Z1_ELECTRIC                                 :'Millennium Z1' (Električna)
+STR_8038_WIZZOWOW_Z99                                           :Wizzowow Z99
+STR_8054_LEV1_LEVIATHAN_ELECTRIC                                :Lev1 'Leviathan' (Električna)
+STR_8055_LEV2_CYCLOPS_ELECTRIC                                  :Lev2 'Cyclops' (Električna)
+STR_8056_LEV3_PEGASUS_ELECTRIC                                  :Lev3 'Pegasus' (Električna)
+STR_8057_LEV4_CHIMAERA_ELECTRIC                                 :Lev4 'Chimaera' (Električna)
+STR_80DC_BAKEWELL_LUCKETT_LB_8                                  :Bakewell Luckett LB-8
+STR_80DD_BAKEWELL_LUCKETT_LB_9                                  :Bakewell Luckett LB-9
+STR_80DE_BAKEWELL_LUCKETT_LB80                                  :Bakewell Luckett LB80
+STR_80DF_BAKEWELL_LUCKETT_LB_10                                 :Bakewell Luckett LB-10
+STR_80E0_BAKEWELL_LUCKETT_LB_11                                 :Bakewell Luckett LB-11
+STR_80E1_YATE_AEROSPACE_YAC_1_11                                :Yate Aerospace YAC 1-11
+STR_80E2_DARWIN_100                                             :Darwin 100
+STR_80E3_DARWIN_200                                             :Darwin 200
+STR_80E4_DARWIN_300                                             :Darwin 300
+STR_80E5_DARWIN_400                                             :Darwin 400
+STR_80E6_DARWIN_500                                             :Darwin 500
+STR_80E7_DARWIN_600                                             :Darwin 600
+STR_80E8_GURU_GALAXY                                            :Guru Galaxy
+STR_80E9_AIRTAXI_A21                                            :Airtaxi A21
+STR_80EA_AIRTAXI_A31                                            :Airtaxi A31
+STR_80EB_AIRTAXI_A32                                            :Airtaxi A32
+STR_80EC_AIRTAXI_A33                                            :Airtaxi A33
+STR_80ED_YATE_AEROSPACE_YAE46                                   :Yate Aerospace YAe46
+STR_80EE_DINGER_100                                             :Dinger 100
+STR_80EF_AIRTAXI_A34_1000                                       :AirTaxi A34-1000
+STR_80F0_YATE_Z_SHUTTLE                                         :Yate Z-Shuttle
+STR_80F1_KELLING_K1                                             :Kelling K1
+STR_80F2_KELLING_K6                                             :Kelling K6
+STR_80F3_KELLING_K7                                             :Kelling K7
+STR_80F4_DARWIN_700                                             :Darwin 700
+STR_80F5_FFP_HYPERDART_2                                        :FFP Hyperdart 2
+STR_80F6_DINGER_200                                             :Dinger 200
+STR_80F7_DINGER_1000                                            :Dinger 1000
+STR_80F8_PLODDYPHUT_100                                         :Ploddyphut 100
+STR_80F9_PLODDYPHUT_500                                         :Ploddyphut 500
+STR_80FA_FLASHBANG_X1                                           :Flashbang X1
+STR_80FB_JUGGERPLANE_M1                                         :Juggerplane M1
+STR_80FC_FLASHBANG_WIZZER                                       :Flashbang Wizzer
+STR_80FD_TRICARIO_HELICOPTER                                    :Tricario Helicopter
+STR_80FE_GURU_X2_HELICOPTER                                     :Guru X2 Helicopter
+STR_80FF_POWERNAUT_HELICOPTER                                   :Powernaut Helicopter
+STR_8100_MESSAGE_FROM_VEHICLE_MANUFACTURE                       :{WHITE}Poruka proizvođača vozila
+STR_8101_WE_HAVE_JUST_DESIGNED_A                                :{GOLD}Upravo smo proizveli novi {STRING} - želite li koristiti ekskluzivna prava godinu dana dok utvrdimo ponašanje prije serijske proizvodnje?
+STR_8102_RAILROAD_LOCOMOTIVE                                    :željeznička lokomotiva
+STR_8103_ROAD_VEHICLE                                           :cestovno vozilo
+STR_8104_AIRCRAFT                                               :zrakoplov
+STR_8105_SHIP                                                   :brod
+STR_8106_MONORAIL_LOCOMOTIVE                                    :lokomotiva za jednotračnu željeznicz
+STR_8107_MAGLEV_LOCOMOTIVE                                      :magtski levitirana lokomotiva
 
 ##id 0x8800
+STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Željeznička stanica
+STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Građani slave . . .{}Prvi vlak stigao na {STATION}!
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Detalji)
+STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Vlak na putu
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8806_GO_TO                                                  :Idi na{STATION}
+STR_8807_GO_TO_TRANSFER                                         :Idi na {STATION} (Prevezi i preuzmi teret)
+STR_8808_GO_TO_UNLOAD                                           :Idi na {STATION} (Istovari)
+STR_8809_GO_TO_TRANSFER_UNLOAD                                  :Idi na {STATION} (Prevezi i ostavi prazno)
+STR_880A_GO_TO_LOAD                                             :Idi na {STATION} (Utovari)
+STR_880B_GO_TO_TRANSFER_LOAD                                    :Idi na {STATION} (Prevezi i čekaj puni utovar)
+STR_880C_GO_NON_STOP_TO                                         :Idi non-stop na {STATION}
+STR_880D_GO_TO_NON_STOP_TRANSFER                                :Idi non-stop na {STATION} (Prevezi i preuzmi teret)
+STR_880E_GO_NON_STOP_TO_UNLOAD                                  :Idi non-stop na {STATION} (Istovari)
+STR_880F_GO_TO_NON_STOP_TRANSFER_UNLOAD                         :Idi non-stop na {STATION} (Prevezi i ostavi prazno)
+STR_8810_GO_NON_STOP_TO_LOAD                                    :Idi non-stop na {STATION} (Utavari)
+STR_8811_GO_TO_NON_STOP_TRANSFER_LOAD                           :Idi non-stop na {STATION} (Prevezi i čekaj puni utovar)
+STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Idi non-stop na {TOWN} Servis vlakova
 
 
 
+STR_8812_EMPTY                                                  :{LTBLUE}Prazno
+STR_8813_FROM                                                   :{LTBLUE}{CARGO} iz {STATION}
+STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak{COMMA} čeka u servisu
+STR_8815_NEW_VEHICLES                                           :{BLACK}Nova vozila
+STR_8816                                                        :{BLACK}-
+STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak predugačak!
+STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlakovi se mogu mjenjati samo dok su zaustavljeni u servisu
+STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nova željeznička vozila
+STR_881F_BUILD_VEHICLE                                          :{BLACK}Izgradi/kupi vozilo
+STR_8820_RENAME                                                 :{BLACK}Preimenuj
+STR_8823_SKIP                                                   :{BLACK}Preskoči
+STR_8824_DELETE                                                 :{BLACK}Obriši
+STR_8825_NON_STOP                                               :{BLACK}Non-Stop
+STR_8826_GO_TO                                                  :{BLACK}Idi na
+STR_8827_FULL_LOAD                                              :{BLACK}Puni utovar
+STR_8828_UNLOAD                                                 :{BLACK}Istovar
+STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Naredbe)
+STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Kraj naredbi - -
+STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE                           :{WHITE}Ne možeš izgraditi/kupiti željezničko vozilo...
+STR_882C_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Izgrađeno/kupljeno: {LTBLUE}{NUM}{BLACK} vrijednost: {LTBLUE}{CURRENCY}
+STR_882D_VALUE                                                  :{LTBLUE}{STRING}{BLACK}   Vrijednost: {LTBLUE}{CURRENCY}
+STR_882E                                                        :{WHITE}{VEHICLE}
+STR_882F_LOADING_UNLOADING                                      :{LTBLUE}Utovar / Istovar u tijeku
+STR_8830_CAN_T_SEND_TRAIN_TO_DEPOT                              :{WHITE}Ne možeš poslati vlaku servis...
 
 
 
@@ -812,7 +980,7 @@ STR_7058_PRESIDENT                                              :{BLACK}{PLAYERN
 
 ##id 0x9800
 
-SERVICE_AT_SHIP_DEPOT                                           :Servis u brodskom skladišu grada {TOWN}
+SERVICE_AT_SHIP_DEPOT                                           :Servis u brodskom skladišu - {TOWN}
 
 ##id 0xA000
 

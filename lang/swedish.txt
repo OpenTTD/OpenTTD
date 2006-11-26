@@ -902,11 +902,13 @@ STR_CURR_ITL                                                    :Italienska lire
 STR_CURR_NLG                                                    :Holländska guilder (NLG)
 STR_CURR_NOK                                                    :Norska kronor (NOK)
 STR_CURR_PLN                                                    :Polska Zloty (PLN)
-STR_CURR_ROL                                                    :Rumänsk Leu (ROL)
+STR_CURR_ROL                                                    :RumÃ€nsk Leu (ROL)
 STR_CURR_RUR                                                    :Ryska rubel (RUR)
 STR_CURR_SIT                                                    :Slovenska Tolar (SIT)
 STR_CURR_SEK                                                    :Svenska kronor (SEK)
 STR_CURR_YTL                                                    :Turkisk Lire (YTL)
+STR_CURR_SKK                                                    :Slovakiska Koruna (SKK)
+STR_CURR_BRR                                                    :Brasilianska Real (BRL)
 
 STR_CURR_CUSTOM                                                 :Egen...
 
@@ -1068,6 +1070,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Visa f�
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Inga
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Egna företaget
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alla företag
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Prioritera lagchat med <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Max antal tåg per spelare: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Max antal vägfordon per spelare: {ORANGE}{STRING}
@@ -1092,6 +1095,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standar
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard serviceintervall för skepp: {ORANGE}av
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Avaktivera service när motorstopp är av: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Använd hastighetsbegränsningar för tågvagnar: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Stäng av elektriska spår: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Färgade nyheter visas i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}
