@@ -48,11 +48,11 @@ static const byte _state_dir_table[4] = { 0x20, 8, 0x10, 4 };
 static void TrainCargoChanged(Vehicle* v)
 {
 	Vehicle *u;
-	uint16 weight = 0;
+	uint32 weight = 0;
 
 	for (u = v; u != NULL; u = u->next) {
 		const RailVehicleInfo *rvi = RailVehInfo(u->engine_type);
-		uint16 vweight = (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
+		uint32 vweight = (_cargoc.weights[u->cargo_type] * u->cargo_count) / 16;
 
 		// Vehicle weight is not added for articulated parts.
 		if (!IsArticulatedPart(u)) {

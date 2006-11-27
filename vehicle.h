@@ -54,8 +54,8 @@ typedef struct VehicleRail {
 	uint16 cached_total_length; ///< Length of the whole train, valid only for first engine.
 
 	// cached values, recalculated when the cargo on a train changes (in addition to the conditions above)
-	uint16 cached_weight;     // total weight of the consist.
-	uint16 cached_veh_weight; // weight of the vehicle.
+	uint32 cached_weight;     // total weight of the consist.
+	uint32 cached_veh_weight; // weight of the vehicle.
 	/**
 	 * Position/type of visual effect.
 	 * bit 0 - 3 = position of effect relative to vehicle. (0 = front, 8 = centre, 15 = rear)
