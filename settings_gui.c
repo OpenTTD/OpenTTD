@@ -647,6 +647,7 @@ static const char *_patches_vehicles[] = {
 	"no_servicing_if_no_breakdowns",
 	"wagon_speed_limits",
 	"disable_elrails",
+	"freight_trains",
 };
 
 typedef struct PatchEntry {
@@ -889,7 +890,7 @@ static const Widget _patches_selection_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    10,     0,    10,     0,    13, STR_00C5,                        STR_018B_CLOSE_WINDOW},
 {    WWT_CAPTION,   RESIZE_NONE,    10,    11,   369,     0,    13, STR_CONFIG_PATCHES_CAPTION,      STR_018C_WINDOW_TITLE_DRAG_THIS},
 {      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    14,    41, 0x0,                             STR_NULL},
-{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   360, 0x0,                             STR_NULL},
+{      WWT_PANEL,   RESIZE_NONE,    10,     0,   369,    42,   370, 0x0,                             STR_NULL},
 
 {    WWT_TEXTBTN,   RESIZE_NONE,     3,    10,    96,    16,    27, STR_CONFIG_PATCHES_GUI,          STR_NULL},
 {    WWT_TEXTBTN,   RESIZE_NONE,     3,    97,   183,    16,    27, STR_CONFIG_PATCHES_CONSTRUCTION, STR_NULL},
@@ -901,7 +902,7 @@ static const Widget _patches_selection_widgets[] = {
 };
 
 static const WindowDesc _patches_selection_desc = {
-	WDP_CENTER, WDP_CENTER, 370, 361,
+	WDP_CENTER, WDP_CENTER, 370, 371,
 	WC_GAME_OPTIONS,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET,
 	_patches_selection_widgets,

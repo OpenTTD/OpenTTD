@@ -951,7 +951,8 @@ static void TrainDetailsCargoTab(const Vehicle *v, int x, int y)
 			SetDParam(0, v->cargo_type);
 			SetDParam(1, num);
 			SetDParam(2, v->cargo_source);
-			str = STR_8813_FROM;
+			SetDParam(3, _patches.freight_trains);
+			str = FreightWagonMult(v) > 1 ? STR_FROM_MULT : STR_8813_FROM;
 		}
 		DrawString(x, y, str, 0);
 	}
@@ -976,7 +977,8 @@ static void TrainDetailsCapacityTab(const Vehicle *v, int x, int y)
 	if (v->cargo_cap != 0) {
 		SetDParam(0, v->cargo_type);
 		SetDParam(1, v->cargo_cap);
-		DrawString(x, y, STR_013F_CAPACITY, 0);
+		SetDParam(2, _patches.freight_trains);
+		DrawString(x, y, FreightWagonMult(v) > 1 ? STR_CAPACITY_MULT : STR_013F_CAPACITY, 0);
 	}
 }
 
@@ -1113,7 +1115,8 @@ static void DrawTrainDetailsWindow(Window *w)
 				SetDParam(1, act_cargo[i]); // {CARGO} #2
 				SetDParam(2, i);            // {SHORTCARGO} #1
 				SetDParam(3, max_cargo[i]); // {SHORTCARGO} #2
-				DrawString(x, y + 2, STR_013F_TOTAL_CAPACITY, 0);
+				SetDParam(4, _patches.freight_trains);
+				DrawString(x, y + 2, FreightWagonMult(v) > 1 ? STR_TOTAL_CAPACITY_MULT : STR_013F_TOTAL_CAPACITY, 0);
 			}
 		}
 	}

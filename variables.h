@@ -213,6 +213,8 @@ typedef struct Patches {
 
 	bool population_in_label; // Show the population of a town in his label?
 
+	uint8 freight_trains; ///< Value to multiply the weight of cargo by
+
 	/** YAPF settings */
 	YapfSettings  yapf;
 
