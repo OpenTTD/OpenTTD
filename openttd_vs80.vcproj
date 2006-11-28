@@ -860,6 +860,10 @@
 			Filter="h;hpp;hxx;hm;inl"
 			>
 			<File
+				RelativePath=".win32.h"
+				>
+			</File>
+			<File
 				RelativePath=".\aircraft.h"
 				>
 			</File>
