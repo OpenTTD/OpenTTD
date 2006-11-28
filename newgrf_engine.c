@@ -582,7 +582,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 					u = u->next;
 				}
 
-				return chain_before | chain_after << 8 | (chain_before + chain_after) << 16;
+				return chain_before | chain_after << 8 | (chain_before + chain_after + (variable == 0x41)) << 16;
 			}
 
 		case 0x42: { /* Consist cargo information */
