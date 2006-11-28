@@ -17,7 +17,7 @@
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2"
+			CharacterSet="1"
 			WholeProgramOptimization="TRUE">
 			<Tool
 				Name="VCCLCompilerTool"
@@ -97,7 +97,7 @@
 			ConfigurationType="1"
 			UseOfMFC="0"
 			ATLMinimizesCRunTimeLibraryUsage="FALSE"
-			CharacterSet="2">
+			CharacterSet="1">
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
@@ -121,7 +121,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib"
+				AdditionalDependencies="unicows.lib winmm.lib ws2_32.lib libpng.lib zlibstat.lib dxguid.lib"
 				OutputFile=".\Debug/openttd.exe"
 				LinkIncremental="0"
 				SuppressStartupBanner="TRUE"
@@ -672,6 +672,9 @@
 			</File>
 			<File
 				RelativePath=".\waypoint.h">
+			</File>
+			<File
+				RelativePath=".\win32.h">
 			</File>
 			<File
 				RelativePath=".\music\win32_m.h">

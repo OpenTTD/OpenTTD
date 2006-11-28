@@ -668,9 +668,12 @@ static void FindResolutions(void)
 {
 	uint n = 0;
 	uint i;
-	DEVMODE dm;
+	DEVMODEA dm;
 
-	for (i = 0; EnumDisplaySettings(NULL, i, &dm) != 0; i++) {
+	/* XXX - EnumDisplaySettingsW crashes with unicows.dll on Windows95
+	 * Doesn't really matter since we don't pass a string anyways, but still
+	 * a letdown */
+	for (i = 0; EnumDisplaySettingsA(NULL, i, &dm) != 0; i++) {
 		if (dm.dmBitsPerPel == 8 && IS_INT_INSIDE(dm.dmPelsWidth, 640, MAX_SCREEN_WIDTH + 1) &&
 				IS_INT_INSIDE(dm.dmPelsHeight, 480, MAX_SCREEN_HEIGHT + 1)) {
 			uint j;
