@@ -43,7 +43,7 @@ typedef enum CharSetFilter {
 	CS_ALPHA,             //! Only alphabetic values
 } CharSetFilter;
 
-/** Convert the given string to lowercase */
+/** Convert the given string to lowercase, only works with ASCII! */
 void strtolower(char *str);
 
 typedef uint32 WChar;
