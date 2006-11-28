@@ -1516,7 +1516,7 @@ SaveOrLoadResult SaveOrLoad(const char *filename, int mode)
 		return SL_OK;
 	}
 
-	_sl.fh = (mode == SL_SAVE) ? fopen(OTTD2FS(filename), "wb") : fopen(filename, "rb");
+	_sl.fh = (mode == SL_SAVE) ? fopen(filename, "wb") : fopen(filename, "rb");
 	if (_sl.fh == NULL) {
 		DEBUG(misc, 0) ("[Sl] Cannot open savegame for saving/loading.");
 		return SL_ERROR;

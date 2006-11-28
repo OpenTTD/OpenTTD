@@ -76,7 +76,7 @@ static bool MakeBmpImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat != 8)
 		return false;
 
-	f = fopen(OTTD2FS(name), "wb");
+	f = fopen(name, "wb");
 	if (f == NULL) return false;
 
 	// each scanline must be aligned on a 32bit boundary
@@ -180,7 +180,7 @@ static bool MakePNGImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat != 8)
 		return false;
 
-	f = fopen(OTTD2FS(name), "wb");
+	f = fopen(name, "wb");
 	if (f == NULL) return false;
 
 	png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, (char *)name, png_my_error, png_my_warning);
@@ -292,7 +292,7 @@ static bool MakePCXImage(const char *name, ScreenshotCallback *callb, void *user
 	if (pixelformat != 8 || w == 0)
 		return false;
 
-	f = fopen(OTTD2FS(name), "wb");
+	f = fopen(name, "wb");
 	if (f == NULL) return false;
 
 	memset(&pcx, 0, sizeof(pcx));

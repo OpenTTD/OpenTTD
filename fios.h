@@ -57,7 +57,7 @@ int CDECL compare_FiosItems(const void *a, const void *b);
 typedef struct DIR DIR;
 
 typedef struct dirent { // XXX - only d_name implemented
-	char *d_name; /* name of found file */
+	wchar_t *d_name; /* name of found file */
 	/* little hack which will point to parent DIR struct which will
 	 * save us a call to GetFileAttributes if we want information
 	 * about the file (for example in function fio_bla */
@@ -70,7 +70,7 @@ struct DIR {
 	 * note: having only one global instance is not possible because
 	 * multiple independent opendir/readdir sequences must be supported. */
 	dirent ent;
-	WIN32_FIND_DATA fd;
+	WIN32_FIND_DATAW fd;
 	/* since opendir calls FindFirstFile, we need a means of telling the
 	 * first call to readdir that we already have a file.
 	 * that's the case iff this is true */

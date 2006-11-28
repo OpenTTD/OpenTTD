@@ -639,7 +639,7 @@ DIR *opendir(const char *path)
 {
 	DIR *d;
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS); // disable 'no-disk' message box
-	DWORD fa = GetFileAttributes(path);
+	DWORD fa = GetFileAttributesW(OTTD2FS(path));
 
 	if ((fa != INVALID_FILE_ATTRIBUTES) && (fa & FILE_ATTRIBUTE_DIRECTORY)) {
 		d = dir_calloc();
@@ -647,7 +647,7 @@ DIR *opendir(const char *path)
 			char search_path[MAX_PATH];
 			/* build search path for FindFirstFile */
 			snprintf(search_path, lengthof(search_path), "%s" PATHSEP "*", path);
-			d->hFind = FindFirstFile(search_path, &d->fd);
+			d->hFind = FindFirstFileW(OTTD2FS(search_path), &d->fd);
 
 			if (d->hFind != INVALID_HANDLE_VALUE ||
 					GetLastError() == ERROR_NO_MORE_FILES) { // the directory is empty
@@ -678,7 +678,7 @@ struct dirent *readdir(DIR *d)
 		/* the directory was empty when opened */
 		if (d->hFind == INVALID_HANDLE_VALUE) return NULL;
 		d->at_first_entry = false;
-	} else if (!FindNextFile(d->hFind, &d->fd)) { // determine cause and bail
+	} else if (!FindNextFileW(d->hFind, &d->fd)) { // determine cause and bail
 		if (GetLastError() == ERROR_NO_MORE_FILES) SetLastError(prev_err);
 		return NULL;
 	}
@@ -721,7 +721,7 @@ bool FiosIsValidFile(const char *path, const struct dirent *ent, struct stat *sb
 {
 	// hectonanoseconds between Windows and POSIX epoch
 	static const int64 posix_epoch_hns = 0x019DB1DED53E8000LL;
-	const WIN32_FIND_DATA *fd = &ent->dir->fd;
+	const WIN32_FIND_DATAW *fd = &ent->dir->fd;
 	if (fd->dwFileAttributes & (FILE_ATTRIBUTE_HIDDEN | FILE_ATTRIBUTE_SYSTEM)) return false;
 
 	sb->st_size  = ((uint64) fd->nFileSizeHigh << 32) + fd->nFileSizeLow;
@@ -886,11 +886,12 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 void DeterminePaths(void)
 {
-	char *s;
-	char *cfg;
+	char *s, *cfg;
+	wchar_t path[MAX_PATH];
 
 	_path.personal_dir = _path.game_data_dir = cfg = malloc(MAX_PATH);
-	GetCurrentDirectory(MAX_PATH - 1, cfg);
+	GetCurrentDirectoryW(MAX_PATH - 1, path);
+	WideCharToMultiByte(CP_UTF8, 0, path, -1, cfg, MAX_PATH, NULL, NULL);
 
 	cfg[0] = toupper(cfg[0]);
 	s = strchr(cfg, '\0');
@@ -911,10 +912,10 @@ void DeterminePaths(void)
 	_log_file = str_fmt("%sopenttd.log", _path.personal_dir);
 
 	// make (auto)save and scenario folder
-	CreateDirectory(_path.save_dir, NULL);
-	CreateDirectory(_path.autosave_dir, NULL);
-	CreateDirectory(_path.scenario_dir, NULL);
-	CreateDirectory(_path.heightmap_dir, NULL);
+	CreateDirectoryW(OTTD2FS(_path.save_dir), NULL);
+	CreateDirectoryW(OTTD2FS(_path.autosave_dir), NULL);
+	CreateDirectoryW(OTTD2FS(_path.scenario_dir), NULL);
+	CreateDirectoryW(OTTD2FS(_path.heightmap_dir), NULL);
 }
 
 /**
@@ -1008,4 +1009,39 @@ int64 GetTS(void)
 	}
 	QueryPerformanceCounter((LARGE_INTEGER*)&value);
 	return (__int64)(value * freq);
+}
+
+/** Convert from OpenTTD's encoding to that of the local environment
+ * First convert from UTF8 to wide-char, then to local
+ * @param name pointer to a valid string that will be converted
+ * @return pointer to a new stringbuffer that contains the converted string */
+const wchar_t *OTTD2FS(const char *name)
+{
+	static wchar_t ucs2_buf[MAX_PATH];
+	int len;
+
+	len = MultiByteToWideChar(CP_UTF8, 0, name, -1, ucs2_buf, lengthof(ucs2_buf));
+	if (len == 0) {
+		DEBUG(misc, 0) ("[utf8] Error converting '%s'. Errno %d", name, GetLastError());
+		return L"";
+	}
+
+	return (const wchar_t*)ucs2_buf;
+}
+
+/** Convert to OpenTTD's encoding from that of the local environment
+ * @param name pointer to a valid string that will be converted
+ * @return pointer to a new stringbuffer that contains the converted string */
+const char *FS2OTTD(const wchar_t *name)
+{
+	static char utf8_buf[512];
+	int len;
+
+	len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, lengthof(utf8_buf), NULL, NULL);
+	if (len == 0) {
+		DEBUG(misc, 0) ("[utf8] Error converting string. Errno %d", GetLastError());
+		return "";
+	}
+
+	return (const char*)utf8_buf;
 }

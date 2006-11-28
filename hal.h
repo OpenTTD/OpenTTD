@@ -46,12 +46,4 @@ void GameLoop(void);
 
 void CreateConsole(void);
 
-#if defined(WIN32) || defined(WIN64) || defined(__WATCOMC__)
-# define FS2OTTD(name) name
-# define OTTD2FS(name) name
-#else
-const char *FS2OTTD(const char *name);
-const char *OTTD2FS(const char *name);
-#endif
-
 #endif /* HAL_H */

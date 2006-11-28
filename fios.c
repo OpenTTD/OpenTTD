@@ -170,12 +170,16 @@ void FiosMakeSavegameName(char *buf, const char *name, size_t size)
 	snprintf(buf, size, "%s" PATHSEP "%s%s", _fios_path, name, extension);
 }
 
+#if defined(WIN32) || defined(WIN64)
+# define unlink _wunlink
+#endif
+
 bool FiosDelete(const char *name)
 {
 	char filename[512];
 
 	FiosMakeSavegameName(filename, name, lengthof(filename));
-	return unlink(filename) == 0;
+	return unlink(OTTD2FS(filename)) == 0;
 }
 
 bool FileExists(const char *filename)
@@ -210,14 +214,16 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 	/* Show subdirectories */
 	if (mode != SLD_NEW_GAME && (dir = opendir(_fios_path)) != NULL) {
 		while ((dirent = readdir(dir)) != NULL) {
+			const char *d_name = FS2OTTD(dirent->d_name);
+
 			/* found file must be directory, but not '.' or '..' */
 			if (FiosIsValidFile(_fios_path, dirent, &sb) && (sb.st_mode & S_IFDIR) &&
-				strcmp(dirent->d_name, ".") != 0 && strcmp(dirent->d_name, "..") != 0) {
+				strcmp(d_name, ".") != 0 && strcmp(d_name, "..") != 0) {
 				fios = FiosAlloc();
 				fios->type = FIOS_TYPE_DIR;
 				fios->mtime = 0;
-				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
-				snprintf(fios->title, lengthof(fios->title), "%s" PATHSEP " (Directory)", FS2OTTD(dirent->d_name));
+				ttd_strlcpy(fios->name, d_name, lengthof(fios->name));
+				snprintf(fios->title, lengthof(fios->title), "%s" PATHSEP " (Directory)", d_name);
 				str_validate(fios->title);
 			}
 		}
@@ -241,25 +247,26 @@ static FiosItem *FiosGetFileList(int mode, fios_getlist_callback_proc *callback_
 		while ((dirent = readdir(dir)) != NULL) {
 			char fios_title[64];
 			char *t;
+			char *d_name = (char*)FS2OTTD(dirent->d_name);
 			byte type;
 
 			if (!FiosIsValidFile(_fios_path, dirent, &sb) || !(sb.st_mode & S_IFREG)) continue;
 
 			/* File has no extension, skip it */
-			if ((t = strrchr(dirent->d_name, '.')) == NULL) continue;
+			if ((t = strrchr(d_name, '.')) == NULL) continue;
 			fios_title[0] = '\0'; // reset the title;
 
-			type = callback_proc(mode, dirent->d_name, t, fios_title);
+			type = callback_proc(mode, d_name, t, fios_title);
 			if (type != FIOS_TYPE_INVALID) {
 				fios = FiosAlloc();
 				fios->mtime = sb.st_mtime;
 				fios->type = type;
-				ttd_strlcpy(fios->name, dirent->d_name, lengthof(fios->name));
+				ttd_strlcpy(fios->name, d_name, lengthof(fios->name));
 
 				/* Some callbacks want to lookup the title of the file. Allow that.
 				 * If we just copy the title from the filename, strip the extension */
-				t = (fios_title[0] == '\0') ? *t = '\0', dirent->d_name : fios_title;
-				ttd_strlcpy(fios->title, FS2OTTD(t), lengthof(fios->title));
+				t = (fios_title[0] == '\0') ? *t = '\0', d_name : fios_title;
+				ttd_strlcpy(fios->title, t, lengthof(fios->title));
 				str_validate(fios->title);
 			}
 		}

@@ -261,3 +261,6 @@ void CSleep(int milliseconds)
 {
 	delay(milliseconds);
 }
+
+const char *FS2OTTD(const char *name) {return name;}
+const char *OTTD2FS(const char *name) {return name;}
