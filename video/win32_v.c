@@ -11,6 +11,7 @@
 #include "../window.h"
 #include "win32_v.h"
 #include <windows.h>
+#include <tchar.h>
 
 static struct {
 	HWND main_wnd;
@@ -517,7 +518,7 @@ static void RegisterWndClass(void)
 			LoadCursor(NULL, IDC_ARROW),
 			0,
 			0,
-			"OTTD"
+			_T("OTTD")
 		};
 
 		registered = true;
@@ -588,11 +589,11 @@ static void MakeWindow(bool full_screen)
 			SetWindowPos(_wnd.main_wnd, 0, x, y, w, h, SWP_NOACTIVATE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 		} else {
 			extern const char _openttd_revision[];
-			char Windowtitle[50];
+			TCHAR Windowtitle[50];
 
-			snprintf(Windowtitle, lengthof(Windowtitle), "OpenTTD %s", _openttd_revision);
+			_sntprintf(Windowtitle, sizeof(Windowtitle), _T("OpenTTD %s"), MB_TO_WIDE(_openttd_revision));
 
-			_wnd.main_wnd = CreateWindow("OTTD", Windowtitle, style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
+			_wnd.main_wnd = CreateWindow(_T("OTTD"), Windowtitle, style, x, y, w, h, 0, 0, GetModuleHandle(NULL), 0);
 			if (_wnd.main_wnd == NULL) error("CreateWindow failed");
 		}
 	}

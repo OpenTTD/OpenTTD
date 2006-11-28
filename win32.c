@@ -18,6 +18,7 @@
 #include "win32.h"
 #include "fios.h" // opendir/readdir/closedir
 #include <ctype.h>
+#include <tchar.h>
 #include <errno.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -40,12 +41,14 @@ bool MyShowCursor(bool show)
 	return !show;
 }
 
-
-// Helper function needed by dynamically loading SDL
-bool LoadLibraryList(Function proc[], const char* dll)
+/** Helper function needed by dynamically loading libraries
+ * XXX: Hurray for MS only having an ANSI GetProcAddress function
+ * on normal windows and no Wide version except for in Windows Mobile/CE */
+bool LoadLibraryList(Function proc[], const char *dll)
 {
 	while (*dll != '\0') {
-		HMODULE lib = LoadLibrary(dll);
+		HMODULE lib;
+		lib = LoadLibrary(MB_TO_WIDE(dll));
 
 		if (lib == NULL) return false;
 		for (;;) {
@@ -53,7 +56,11 @@ bool LoadLibraryList(Function proc[], const char* dll)
 
 			while (*dll++ != '\0');
 			if (*dll == '\0') break;
+#if defined(WINCE)
+			p = GetProcAddress(lib, MB_TO_WIDE(dll);
+#else
 			p = GetProcAddress(lib, dll);
+#endif
 			if (p == NULL) return false;
 			*proc++ = (Function)p;
 		}
@@ -63,13 +70,13 @@ bool LoadLibraryList(Function proc[], const char* dll)
 }
 
 #ifdef _MSC_VER
-static const char *_exception_string;
+static const char *_exception_string = NULL;
 #endif
 
 void ShowOSErrorBox(const char *buf)
 {
 	MyShowCursor(true);
-	MessageBoxA(GetActiveWindow(), buf, "Error!", MB_ICONSTOP);
+	MessageBox(GetActiveWindow(), MB_TO_WIDE(buf), _T("Error!"), MB_ICONSTOP);
 
 // if exception tracker is enabled, we crash here to let the exception handler handle it.
 #if defined(WIN32_EXCEPTION_TRACKER) && !defined(_DEBUG)
@@ -119,7 +126,7 @@ static uint32 CalcCRC(byte *data, uint size, uint32 crc) {
 	return crc;
 }
 
-static void GetFileInfo(DebugFileInfo *dfi, const char *filename)
+static void GetFileInfo(DebugFileInfo *dfi, const TCHAR *filename)
 {
 	memset(dfi, 0, sizeof(dfi));
 
@@ -155,13 +162,13 @@ static void GetFileInfo(DebugFileInfo *dfi, const char *filename)
 
 static char *PrintModuleInfo(char *output, HMODULE mod)
 {
-	char buffer[MAX_PATH];
+	TCHAR buffer[MAX_PATH];
 	DebugFileInfo dfi;
 
 	GetModuleFileName(mod, buffer, MAX_PATH);
 	GetFileInfo(&dfi, buffer);
 	output += sprintf(output, " %-20s handle: %p size: %d crc: %.8X date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n",
-		buffer,
+		WIDE_TO_MB(buffer),
 		mod,
 		dfi.size,
 		dfi.crc32,
@@ -184,7 +191,7 @@ static char *PrintModuleList(char *output)
 	BOOL res;
 	int count,i;
 
-	if (LoadLibraryList((Function*)&EnumProcessModules, "psapi.dll\0EnumProcessModules\0")) {
+	if (LoadLibraryList((Function*)&EnumProcessModules, "psapi.dll\0EnumProcessModules\0\0")) {
 		proc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, GetCurrentProcessId());
 		if (proc) {
 			res = EnumProcessModules(proc, modules, sizeof(modules), &needed);
@@ -202,17 +209,17 @@ static char *PrintModuleList(char *output)
 	return output;
 }
 
-static const char _crash_desc[] =
-	"A serious fault condition occured in the game. The game will shut down.\n"
-	"Press \"Submit report\" to send crash information to the developers. "
-	"This will greatly help debugging. "
-	"The information contained in the report is displayed below.\n"
-	"Press \"Emergency save\" to attempt saving the game.";
+static const TCHAR _crash_desc[] =
+	_T("A serious fault condition occured in the game. The game will shut down.\n")
+	_T("Press \"Submit report\" to send crash information to the developers. ")
+	_T("This will greatly help debugging. ")
+	_T("The information contained in the report is displayed below.\n")
+	_T("Press \"Emergency save\" to attempt saving the game.");
 
-static const char _save_succeeded[] =
-	"Emergency save succeeded.\n"
-	"Be aware that critical parts of the internal game state may have become "
-	"corrupted. The saved game is not guaranteed to work.";
+static const TCHAR _save_succeeded[] =
+	_T("Emergency save succeeded.\n")
+	_T("Be aware that critical parts of the internal game state may have become ")
+	_T("corrupted. The saved game is not guaranteed to work.");
 
 static bool EmergencySave(void)
 {
@@ -221,57 +228,63 @@ static bool EmergencySave(void)
 }
 
 typedef struct {
-	HINTERNET (WINAPI *InternetOpenA)(LPCSTR,DWORD, LPCSTR, LPCSTR, DWORD);
-	HINTERNET (WINAPI *InternetConnectA)(HINTERNET, LPCSTR, INTERNET_PORT, LPCSTR, LPCSTR, DWORD, DWORD, DWORD);
-	HINTERNET (WINAPI *HttpOpenRequestA)(HINTERNET, LPCSTR, LPCSTR, LPCSTR, LPCSTR, LPCSTR *, DWORD, DWORD);
-	BOOL (WINAPI *HttpSendRequestA)(HINTERNET, LPCSTR, DWORD, LPVOID, DWORD);
+	HINTERNET (WINAPI *InternetOpen)(LPCTSTR,DWORD, LPCTSTR, LPCTSTR, DWORD);
+	HINTERNET (WINAPI *InternetConnect)(HINTERNET, LPCTSTR, INTERNET_PORT, LPCTSTR, LPCTSTR, DWORD, DWORD, DWORD);
+	HINTERNET (WINAPI *HttpOpenRequest)(HINTERNET, LPCTSTR, LPCTSTR, LPCTSTR, LPCTSTR, LPCTSTR *, DWORD, DWORD);
+	BOOL (WINAPI *HttpSendRequest)(HINTERNET, LPCTSTR, DWORD, LPVOID, DWORD);
 	BOOL (WINAPI *InternetCloseHandle)(HINTERNET);
 	BOOL (WINAPI *HttpQueryInfo)(HINTERNET, DWORD, LPVOID, LPDWORD, LPDWORD);
 } WinInetProcs;
 
 #define M(x) x "\0"
+#if defined(UNICODE)
+# define W(x) x "W"
+#else
+# define W(x) x "A"
+#endif
 static const char wininet_files[] =
 	M("wininet.dll")
-	M("InternetOpenA")
-	M("InternetConnectA")
-	M("HttpOpenRequestA")
-	M("HttpSendRequestA")
+	M(W("InternetOpen"))
+	M(W("InternetConnect"))
+	M(W("HttpOpenRequest"))
+	M(W("HttpSendRequest"))
 	M("InternetCloseHandle")
-	M("HttpQueryInfoA")
+	M(W("HttpQueryInfo"))
 	M("");
+#undef W
 #undef M
 
 static WinInetProcs _wininet;
 
 
-static const char *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const char *arg)
+static const TCHAR *SubmitCrashReport(HWND wnd, void *msg, size_t msglen, const TCHAR *arg)
 {
 	HINTERNET inet, conn, http;
-	const char *err = NULL;
+	const TCHAR *err = NULL;
 	DWORD code, len;
-	static char buf[100];
-	char buff[100];
+	static TCHAR buf[100];
+	TCHAR buff[100];
 
-	if (_wininet.InternetOpen == NULL && !LoadLibraryList((Function*)&_wininet, wininet_files)) return "can't load wininet.dll";
+	if (_wininet.InternetOpen == NULL && !LoadLibraryList((Function*)&_wininet, wininet_files)) return _T("can't load wininet.dll");
 
-	inet = _wininet.InternetOpen("OTTD", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0 );
-	if (inet == NULL) { err = "internetopen failed"; goto error1; }
+	inet = _wininet.InternetOpen(_T("OTTD"), INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0 );
+	if (inet == NULL) { err = _T("internetopen failed"); goto error1; }
 
-	conn = _wininet.InternetConnect(inet, "openttd.com", INTERNET_DEFAULT_HTTP_PORT, "", "", INTERNET_SERVICE_HTTP, 0, 0);
-	if (conn == NULL) { err = "internetconnect failed"; goto error2; }
+	conn = _wininet.InternetConnect(inet, _T("www.openttd.org"), INTERNET_DEFAULT_HTTP_PORT, _T(""), _T(""), INTERNET_SERVICE_HTTP, 0, 0);
+	if (conn == NULL) { err = _T("internetconnect failed"); goto error2; }
 
-	sprintf(buff, "/crash.php?file=%s&ident=%d", arg, _ident);
+	_sntprintf(buff, lengthof(buff), _T("/crash.php?file=%s&ident=%d"), arg, _ident);
 
-	http = _wininet.HttpOpenRequest(conn, "POST", buff, NULL, NULL, NULL, INTERNET_FLAG_NO_CACHE_WRITE , 0);
-	if (http == NULL) { err = "httpopenrequest failed"; goto error3; }
+	http = _wininet.HttpOpenRequest(conn, _T("POST"), buff, NULL, NULL, NULL, INTERNET_FLAG_NO_CACHE_WRITE , 0);
+	if (http == NULL) { err = _T("httpopenrequest failed"); goto error3; }
 
-	if (!_wininet.HttpSendRequest(http, "Content-type: application/binary", -1, msg, (DWORD)msglen)) { err = "httpsendrequest failed"; goto error4; }
+	if (!_wininet.HttpSendRequest(http, _T("Content-type: application/binary"), -1, msg, (DWORD)msglen)) { err = _T("httpsendrequest failed"); goto error4; }
 
 	len = sizeof(code);
-	if (!_wininet.HttpQueryInfo(http, HTTP_QUERY_STATUS_CODE | HTTP_QUERY_FLAG_NUMBER, &code, &len, 0)) { err = "httpqueryinfo failed"; goto error4; }
+	if (!_wininet.HttpQueryInfo(http, HTTP_QUERY_STATUS_CODE | HTTP_QUERY_FLAG_NUMBER, &code, &len, 0)) { err = _T("httpqueryinfo failed"); goto error4; }
 
 	if (code != 200) {
-		int l = sprintf(buf, "Server said: %d ", code);
+		int l = _sntprintf(buf, lengthof(buf), _T("Server said: %d "), code);
 		len = sizeof(buf) - l;
 		_wininet.HttpQueryInfo(http, HTTP_QUERY_STATUS_TEXT, buf + l, &len, 0);
 		err = buf;
@@ -287,7 +300,7 @@ error1:
 	return err;
 }
 
-static void SubmitFile(HWND wnd, const char *file)
+static void SubmitFile(HWND wnd, const TCHAR *file)
 {
 	HANDLE h;
 	unsigned long size;
@@ -313,7 +326,7 @@ error1:
 	CloseHandle(h);
 }
 
-static const char * const _expand_texts[] = {"S&how report >>", "&Hide report <<" };
+static const TCHAR * const _expand_texts[] = {_T("S&how report >>"), _T("&Hide report <<") };
 
 static void SetWndSize(HWND wnd, int mode)
 {
@@ -353,48 +366,54 @@ static bool DoEmergencySave(HWND wnd)
 static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM lParam)
 {
 	switch (msg) {
-	case WM_INITDIALOG:
+	case WM_INITDIALOG: {
+#if defined(UNICODE)
+# define crash_msg crash_msgW
+		TCHAR crash_msgW[8096];
+		MultiByteToWideChar(CP_ACP, 0, _crash_msg, -1, crash_msgW, lengthof(crash_msgW));
+#else
+# define crash_msg _crash_msg
+#endif
 		SetDlgItemText(wnd, 10, _crash_desc);
-		SetDlgItemText(wnd, 11, _crash_msg);
+		SetDlgItemText(wnd, 11, crash_msg);
 		SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 		SetWndSize(wnd, -1);
-		return TRUE;
+	} return TRUE;
 	case WM_COMMAND:
 		switch (wParam) {
 		case 12: // Close
 			ExitProcess(0);
 		case 13: { // Emergency save
 			if (DoEmergencySave(wnd)) {
-				MessageBoxA(wnd, _save_succeeded, "Save successful", MB_ICONINFORMATION);
+				MessageBox(wnd, _save_succeeded, _T("Save successful"), MB_ICONINFORMATION);
 			} else {
-				MessageBoxA(wnd, "Save failed", "Save failed", MB_ICONINFORMATION);
+				MessageBox(wnd, _T("Save failed"), _T("Save failed"), MB_ICONINFORMATION);
 			}
 			break;
 		}
 		case 14: { // Submit crash report
-			const char *s;
+			const TCHAR *s;
 
 			SetCursor(LoadCursor(NULL, IDC_WAIT));
 
-			s = SubmitCrashReport(wnd, _crash_msg, strlen(_crash_msg), "");
-			if (s) {
-				MessageBoxA(wnd, s, "Error", MB_ICONSTOP);
+			s = SubmitCrashReport(wnd, _crash_msg, strlen(_crash_msg), _T(""));
+			if (s != NULL) {
+				MessageBox(wnd, s, _T("Error"), MB_ICONSTOP);
 				break;
 			}
 
 			// try to submit emergency savegame
-			if (_did_emerg_save || DoEmergencySave(wnd)) {
-				SubmitFile(wnd, "crash.sav");
-			}
+			if (_did_emerg_save || DoEmergencySave(wnd)) SubmitFile(wnd, _T("crash.sav"));
+
 			// try to submit the autosaved game
 			if (_opt.autosave) {
-				char buf[40];
-				sprintf(buf, "autosave%d.sav", (_autosave_ctr - 1) & 3);
+				TCHAR buf[40];
+				_sntprintf(buf, lengthof(buf), _T("autosave%d.sav"), (_autosave_ctr - 1) & 3);
 				SubmitFile(wnd, buf);
 			}
 			EnableWindow(GetDlgItem(wnd, 14), FALSE);
 			SetCursor(LoadCursor(NULL, IDC_ARROW));
-			MessageBoxA(wnd, "Crash report submitted. Thank you.", "Crash Report", MB_ICONINFORMATION);
+			MessageBox(wnd, _T("Crash report submitted. Thank you."), _T("Crash Report"), MB_ICONINFORMATION);
 			break;
 		}
 		case 15: // Expand
@@ -423,7 +442,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 {
 	extern const char _openttd_revision[];
 	char *output;
-	static bool had_exception;
+	static bool had_exception = false;
 
 	if (had_exception) ExitProcess(0);
 	had_exception = true;
@@ -436,7 +455,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	{
 		SYSTEMTIME time;
 		GetLocalTime(&time);
-		output += snprintf(output, 8192,
+		output += sprintf(output,
 			"*** OpenTTD Crash Report ***\r\n"
 			"Date: %d-%.2d-%.2d %.2d:%.2d:%.2d\r\n"
 			"Build: %s built on " __DATE__ " " __TIME__ "\r\n",
@@ -559,7 +578,7 @@ static LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep)
 	}
 
 	{
-		HANDLE file = CreateFile("crash.log", GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
+		HANDLE file = CreateFile(_T("crash.log"), GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, 0);
 		DWORD num_written;
 		if (file != INVALID_HANDLE_VALUE) {
 			WriteFile(file, _crash_msg, output - _crash_msg, &num_written, NULL);
@@ -703,15 +722,15 @@ bool FiosIsRoot(const char *file)
 
 void FiosGetDrives(void)
 {
-	char drives[256];
-	const char *s;
+	TCHAR drives[256];
+	const TCHAR *s;
 
 	GetLogicalDriveStrings(sizeof(drives), drives);
 	for (s = drives; *s != '\0';) {
 		FiosItem *fios = FiosAlloc();
 		fios->type = FIOS_TYPE_DRIVE;
 		fios->mtime = 0;
-		snprintf(fios->name,  lengthof(fios->name),  "%c:", s[0]);
+		snprintf(fios->name, lengthof(fios->name),  "%c:", s[0] & 0xFF);
 		ttd_strlcpy(fios->title, fios->name, lengthof(fios->title));
 		while (*s++ != '\0');
 	}
@@ -740,10 +759,10 @@ bool FiosGetDiskFreeSpace(const char *path, uint32 *tot)
 {
 	UINT sem = SetErrorMode(SEM_FAILCRITICALERRORS);  // disable 'no-disk' message box
 	bool retval = false;
-	char root[4];
+	TCHAR root[4];
 	DWORD spc, bps, nfc, tnc;
 
-	snprintf(root, lengthof(root), "%c:" PATHSEP, path[0]);
+	_sntprintf(root, lengthof(root), _T("%c:") _T(PATHSEP), path[0]);
 	if (tot != NULL && GetDiskFreeSpace(root, &spc, &bps, &nfc, &tnc)) {
 		*tot = ((spc * bps) * (uint64)nfc) >> 20;
 		retval = true;
@@ -830,7 +849,7 @@ void ShowInfo(const char *str)
 		_left_button_clicked =_left_button_down = false;
 
 		old = MyShowCursor(true);
-		if (MessageBoxA(GetActiveWindow(), str, "OpenTTD", MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL) {
+		if (MessageBox(GetActiveWindow(), MB_TO_WIDE(str), _T("OpenTTD"), MB_ICONINFORMATION | MB_OKCANCEL) == IDCANCEL) {
 			CreateConsole();
 		}
 		MyShowCursor(old);
@@ -846,11 +865,20 @@ void ShowInfo(const char *str)
 	int _set_error_mode(int);
 #endif
 
-int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
+int APIENTRY _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPTSTR lpCmdLine, int nCmdShow)
 {
 	int argc;
 	char *argv[64]; // max 64 command line arguments
+
+#if defined(UNICODE)
+	/* We need to backup the command line (arguments) because the pointer
+	 * of FS2OTTD() is only temporary */
+	char cmdline[MAX_PATH];
+	ttd_strlcpy(cmdline, FS2OTTD(GetCommandLine()), sizeof(cmdline));
+#else
+	char *cmdline = GetCommandLine();
+#endif
 
 #if defined(_DEBUG)
 	CreateConsole();
@@ -863,17 +891,15 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	_random_seeds[1][1] = _random_seeds[0][1] = _random_seeds[0][0] * 0x1234567;
 	SeedMT(_random_seeds[0][0]);
 
-	argc = ParseCommandLine(GetCommandLine(), argv, lengthof(argv));
+	argc = ParseCommandLine(cmdline, argv, lengthof(argv));
 
 #if defined(WIN32_EXCEPTION_TRACKER)
-	{
-		Win32InitializeExceptions();
-	}
+	Win32InitializeExceptions();
 #endif
 
 #if defined(WIN32_EXCEPTION_TRACKER_DEBUG)
 	_try {
-		uint32 _stdcall ExceptionHandler(void *ep);
+		LONG WINAPI ExceptionHandler(EXCEPTION_POINTERS *ep);
 #endif
 		ttd_main(argc, argv);
 

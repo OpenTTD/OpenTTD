@@ -64,6 +64,7 @@ static void DedicatedSignalHandler(int sig)
 #include <windows.h> /* GetTickCount */
 #include <conio.h>
 #include <time.h>
+#include <tchar.h>
 static HANDLE _hInputReady, _hWaitForInputHandling;
 static HANDLE _hThread; // Thread to close
 static char _win_console_thread_buffer[200];
@@ -121,10 +122,10 @@ static const char *DedicatedVideoStart(const char * const *parm)
 	_debug_misc_level = 0;
 
 #ifdef WIN32
-	// For win32 we need to allocate an console (debug mode does the same)
+	// For win32 we need to allocate a console (debug mode does the same)
 	CreateConsole();
 	CreateWindowsConsoleThread();
-	SetConsoleTitle("OpenTTD Dedicated Server");
+	SetConsoleTitle(_T("OpenTTD Dedicated Server"));
 #endif
 
 #ifdef __OS2__
