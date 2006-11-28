@@ -371,7 +371,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		case 0xF2: return st->truck_stops->status;
 		case 0xF3: return st->bus_stops->status;
 		case 0xF6: return st->airport_flags;
-		case 0xF7: return st->airport_flags & 0xFF;
+		case 0xF7: return GB(st->airport_flags, 8, 8);
 		case 0xFA: return max(st->build_date - DAYS_TILL_ORIGINAL_BASE_YEAR, 0);
 	}
 
@@ -380,7 +380,7 @@ static uint32 StationGetVariable(const ResolverObject *object, byte variable, by
 		const GoodsEntry *g = &st->goods[GB(variable - 0x8C, 3, 4)];
 		switch (GB(variable - 0x8C, 0, 3)) {
 			case 0: return g->waiting_acceptance;
-			case 1: return g->waiting_acceptance & 0xFF;
+			case 1: return GB(g->waiting_acceptance, 8, 8);
 			case 2: return g->days_since_pickup;
 			case 3: return g->rating;
 			case 4: return g->enroute_from;
