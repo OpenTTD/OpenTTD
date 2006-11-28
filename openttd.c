@@ -436,6 +436,9 @@ int ttd_main(int argc, char *argv[])
 	// This must be done early, since functions use the InvalidateWindow* calls
 	InitWindowSystem();
 
+	/* Initialize game palette */
+	GfxInitPalettes();
+
 	DEBUG(driver, 1) ("Loading drivers...");
 	LoadDriver(SOUND_DRIVER, _ini_sounddriver);
 	LoadDriver(MUSIC_DRIVER, _ini_musicdriver);
