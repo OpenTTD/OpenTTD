@@ -67,7 +67,7 @@ TileIndex TileAdd(TileIndex tile, TileIndexDiff add,
 	if (x >= MapSizeX() || y >= MapSizeY()) {
 		char buf[512];
 
-		sprintf(buf, "TILE_ADD(%s) when adding 0x%.4X and 0x%.4X failed",
+		snprintf(buf, lengthof(buf), "TILE_ADD(%s) when adding 0x%.4X and 0x%.4X failed",
 			exp, tile, add);
 #if !defined(_MSC_VER)
 		fprintf(stderr, "%s:%d %s\n", file, line, buf);

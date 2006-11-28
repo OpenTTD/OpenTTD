@@ -117,7 +117,7 @@ FILE *FioFOpenFile(const char *filename)
 	FILE *f;
 	char buf[MAX_PATH];
 
-	sprintf(buf, "%s%s", _path.data_dir, filename);
+	snprintf(buf, lengthof(buf), "%s%s", _path.data_dir, filename);
 
 	f = fopen(buf, "rb");
 #if !defined(WIN32)
@@ -128,7 +128,7 @@ FILE *FioFOpenFile(const char *filename)
 #if defined SECOND_DATA_DIR
 		// tries in the 2nd data directory
 		if (f == NULL) {
-			sprintf(buf, "%s%s", _path.second_data_dir, filename);
+			snprintf(buf, lengthof(buf), "%s%s", _path.second_data_dir, filename);
 			strtolower(buf + strlen(_path.second_data_dir) - 1);
 			f = fopen(buf, "rb");
 		}

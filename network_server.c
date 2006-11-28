@@ -281,7 +281,7 @@ DEF_SERVER_SEND_COMMAND(PACKET_SERVER_MAP)
 		Packet *p;
 
 		// Make a dump of the current game
-		sprintf(filename, "%s%snetwork_server.tmp",  _path.autosave_dir, PATHSEP);
+		snprintf(filename, lengthof(filename), "%s%snetwork_server.tmp",  _path.autosave_dir, PATHSEP);
 		if (SaveOrLoad(filename, SL_SAVE) != SL_OK) error("network savedump failed");
 
 		file_pointer = fopen(filename, "rb");

@@ -78,7 +78,7 @@ void CDECL error(const char *s, ...)
 	char buf[512];
 
 	va_start(va, s);
-	vsprintf(buf, s, va);
+	vsnprintf(buf, lengthof(buf), s, va);
 	va_end(va);
 
 	ShowOSErrorBox(buf);
@@ -93,7 +93,7 @@ void CDECL ShowInfoF(const char *str, ...)
 	va_list va;
 	char buf[1024];
 	va_start(va, str);
-	vsprintf(buf, str, va);
+	vsnprintf(buf, lengthof(buf), str, va);
 	va_end(va);
 	ShowInfo(buf);
 }
@@ -132,10 +132,10 @@ static void showhelp(void)
 	extern const char _openttd_revision[];
 	char buf[4096], *p;
 
-	p    = buf;
+	p = buf;
 
-	p += sprintf(p, "OpenTTD %s\n", _openttd_revision);
-	p += sprintf(p,
+	p += snprintf(p, lengthof(buf), "OpenTTD %s\n", _openttd_revision);
+	p = strecpy(p,
 		"\n"
 		"\n"
 		"Command line options:\n"
@@ -157,10 +157,11 @@ static void showhelp(void)
 		"  -i                  = Force to use the DOS palette\n"
 		"                          (use this if you see a lot of pink)\n"
 		"  -c config_file      = Use 'config_file' instead of 'openttd.cfg'\n"
-		"\n"
+		"\n",
+		lastof(buf)
 	);
 
-	p = GetDriverList(p);
+	p = GetDriverList(p, lastof(buf));
 
 	ShowInfo(buf);
 }
@@ -286,10 +287,10 @@ static void LoadIntroGame(void)
 	SetupColorsAndInitialWindow();
 
 	// Generate a world.
-	sprintf(filename, "%sopntitle.dat",  _path.data_dir);
+	snprintf(filename, lengthof(filename), "%sopntitle.dat",  _path.data_dir);
 #if defined SECOND_DATA_DIR
 	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {
-		sprintf(filename, "%sopntitle.dat",  _path.second_data_dir);
+		snprintf(filename, lengthof(filename), "%sopntitle.dat",  _path.second_data_dir);
 	}
 #endif
 	if (SaveOrLoad(filename, SL_LOAD) != SL_OK) {

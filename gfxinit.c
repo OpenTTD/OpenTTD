@@ -111,7 +111,7 @@ static bool FileMD5(const MD5File file, bool warn)
 	char buf[MAX_PATH];
 
 	// open file
-	sprintf(buf, "%s%s", _path.data_dir, file.filename);
+	snprintf(buf, lengthof(buf), "%s%s", _path.data_dir, file.filename);
 	f = fopen(buf, "rb");
 
 #if !defined(WIN32)

@@ -457,7 +457,7 @@ DEF_CLIENT_RECEIVE_COMMAND(PACKET_SERVER_MAP)
 	// First packet, init some stuff
 	if (maptype == MAP_PACKET_START) {
 		// The name for the temp-map
-		sprintf(filename, "%s%snetwork_client.tmp",  _path.autosave_dir, PATHSEP);
+		snprintf(filename, lengthof(filename), "%s%snetwork_client.tmp",  _path.autosave_dir, PATHSEP);
 
 		file_pointer = fopen(filename, "wb");
 		if (file_pointer == NULL) {
