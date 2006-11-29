@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Необходима ровная земля
 STR_0008_WAITING                                                :{BLACK}Ожидает: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (маршрут из
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (маршрут из
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Принимает: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Принимает: {GOLD}
@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Пластик
 STR_004D_FIZZY_DRINK                                            :Шипучка
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} пассажиров
-STR_QUANTITY_COAL                                               :{COMMA} тонн угля
+STR_QUANTITY_COAL                                               :{WEIGHT} угля
 STR_QUANTITY_MAIL                                               :{COMMA} сумок почты
 STR_QUANTITY_OIL                                                :{VOLUME} нефти
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} голов домашнего скота
 STR_QUANTITY_GOODS                                              :{COMMA} коробок товара
-STR_QUANTITY_GRAIN                                              :{COMMA} тонн зерна
-STR_QUANTITY_WOOD                                               :{COMMA} тонн дерева
-STR_QUANTITY_IRON_ORE                                           :{COMMA} тонн железной руды
-STR_QUANTITY_STEEL                                              :{COMMA} тонн стали
+STR_QUANTITY_GRAIN                                              :{WEIGHT} зерна
+STR_QUANTITY_WOOD                                               :{WEIGHT} дерева
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} железной руды
+STR_QUANTITY_STEEL                                              :{WEIGHT} стали
 STR_QUANTITY_VALUABLES                                          :{COMMA} сумок ценностей
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} тонн медной руды
-STR_QUANTITY_MAIZE                                              :{COMMA} тонн кукурузы
-STR_QUANTITY_FRUIT                                              :{COMMA} тонн фруктов
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} медной руды
+STR_QUANTITY_MAIZE                                              :{WEIGHT} кукурузы
+STR_QUANTITY_FRUIT                                              :{WEIGHT} фруктов
 STR_QUANTITY_DIAMONDS                                           :{COMMA} мешков алмазов
-STR_QUANTITY_FOOD                                               :{COMMA} тонн еды
-STR_QUANTITY_PAPER                                              :{COMMA} тонн бумаги
+STR_QUANTITY_FOOD                                               :{WEIGHT} еды
+STR_QUANTITY_PAPER                                              :{WEIGHT} бумаги
 STR_QUANTITY_GOLD                                               :{COMMA} мешков золота
 STR_QUANTITY_WATER                                              :{VOLUME} воды
-STR_QUANTITY_WHEAT                                              :{COMMA} тонн пшеницы
+STR_QUANTITY_WHEAT                                              :{WEIGHT} пшеницы
 STR_QUANTITY_RUBBER                                             :{VOLUME} каучука
-STR_QUANTITY_SUGAR                                              :{COMMA} тонн сахара
+STR_QUANTITY_SUGAR                                              :{WEIGHT} сахара
 STR_QUANTITY_TOYS                                               :{COMMA} игрушек
 STR_QUANTITY_SWEETS                                             :{COMMA} мешков конфет
 STR_QUANTITY_COLA                                               :{VOLUME} лимонада
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} тонн сахарной ваты
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} сахарной ваты
 STR_QUANTITY_BUBBLES                                            :{COMMA} пузырьков
-STR_QUANTITY_TOFFEE                                             :{COMMA} тонн ирисок
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} ирисок
 STR_QUANTITY_BATTERIES                                          :{COMMA} батареек
 STR_QUANTITY_PLASTIC                                            :{VOLUME} пластика
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} шипучки
@@ -279,14 +279,12 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Дюймы (мили)
-STR_013A_METRIC_KILOMETERS                                      :Метры (километры)
 STR_013B_OWNED_BY                                               :{WHITE}...принадлежит {STRING}
 STR_013C_CARGO                                                  :{BLACK}Груз
 STR_013D_INFORMATION                                            :{BLACK}Информация
 STR_013E_CAPACITIES                                             :{BLACK}Мощность
 STR_013E_TOTAL_CARGO                                            :{BLACK}Полный груз
-STR_013F_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Полностью вмещает этот поезда:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Новая Игра
@@ -336,7 +334,6 @@ STR_SORT_BY_TRANSPORTED                                         :{BLACK}Пере
 STR_SORT_BY_NAME                                                :{BLACK}Название
 STR_SORT_BY_DROPDOWN_NAME                                       :Название
 STR_SORT_BY_DATE                                                :{BLACK}Дата
-STR_SORT_BY_UNSORTED                                            :Несортированный
 STR_SORT_BY_NUMBER                                              :Число
 STR_SORT_BY_PROFIT_LAST_YEAR                                    :Прибыль в прошлом году
 STR_SORT_BY_PROFIT_THIS_YEAR                                    :Прибыль в этом году
@@ -700,30 +697,17 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Сохр
 
 ############ range for menu     starts
 STR_02C3_GAME_OPTIONS                                           :Настройки игры
-STR_02C4_GAME_OPTIONS                                           :Настройки игры
 STR_02C5_DIFFICULTY_SETTINGS                                    :Настройки сложности
-STR_02C6_DIFFICULTY_SETTINGS                                    :Настройки сложности
 STR_02C7_CONFIG_PATCHES                                         :Формирование заплат
-STR_02C8_CONFIG_PATCHES                                         :Формирование заплат
 STR_NEWGRF_SETTINGS                                             :Настройки Графики
-STR_NEWGRF_SETTINGS2                                            :Настройки Графики
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Вид названий городов
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Вид названий городов
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Вид названий станций
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Вид названий станций
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Вид меток
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Вид меток
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Вид указателей
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Вид указателей
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Полная анимация
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Полная анимация
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Полная детализация
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Полная детализация
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Прозрачные строения
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Прозрачные строения
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Фон названий станций
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Фон названий станций
 ############ range ends here
 
@@ -753,9 +737,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Вста
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Единицы валюты
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Выбор единиц валюты
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Единицы расстояний
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Выбор единиц расстояний
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Сторона движения
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Выбор стороны движения транспорта
@@ -970,8 +952,6 @@ STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Раз�
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Неоднотипные станции: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новый поиск путей (NPF, без NTP): {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Всегда разрешать малые аэропорты: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Поезд теряется если не отремонтировать за: {ORANGE}{STRING} дней
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Поезд будет утерян если не отремонтировать за: {ORANGE} отключено
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Пересмотр маршрутов транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :нет
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :да, но случись остановит транспорт
@@ -1009,9 +989,6 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Инт�
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Интервал ремонта для кораблей: {ORANGE}отключено
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Ремонт когда поломок неустановлено: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Включить ограничение скорости вагона: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Красивые новости появляются в: {ORANGE}{STRING}
-STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Начальная дата {ORANGE}{STRING}
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Конец игры в: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (более мелкие изменения)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить покупать долги других компаний
 STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При перемещении, места сигнализируется: {ORANGE}{STRING}
@@ -1123,8 +1100,8 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Стро
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Строить Карьер Ирисок
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Строить Сахарная Шахта
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Промышленность
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% перевезено)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% перевезено)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...слишком близко к другому предприятию
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Переделка поезда для иного типа груза
@@ -1297,11 +1274,11 @@ STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :сервер п
 STR_NETWORK_CLIENT_JOINED                                       :присоединился к игре
 STR_NETWORK_GIVE_MONEY                                          :дал вашей компании немного денег ({CURRENCY})
 STR_NETWORK_GAVE_MONEY_AWAY                                     :вы дали {STRING} немного денег ({CURRENCY})
-STR_NETWORK_CHAT_COMPANY                                        :[Команде] {STRING}:
-STR_NETWORK_CHAT_TO_COMPANY                                     :[Команде] К {STRING}:
-STR_NETWORK_CHAT_CLIENT                                         :[Лично] {STRING}:
-STR_NETWORK_CHAT_TO_CLIENT                                      :[Лично] К {STRING}:
-STR_NETWORK_CHAT_ALL                                            :[Всем] {STRING}:
+STR_NETWORK_CHAT_COMPANY                                        :[Команде] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Команде] К {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT                                         :[Лично] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Лично] К {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL                                            :[Всем] {STRING}: {GRAY}{STRING}
 STR_NETWORK_NAME_CHANGE                                         :изменил его/ее название на
 STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Сервер закрыл сессию
 STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Сервер перезапускается...{}Пожалуйста ждите...
@@ -1327,9 +1304,7 @@ STR_0802_INCOME                                                 :{TINYFONT}{GREE
 STR_0803_INCOME                                                 :{GREEN}Доход: {CURRENCY}
 STR_FEEDER_TINY                                                 :{TINYFONT}{YELLOW}Перевод: {CURRENCY}
 STR_FEEDER                                                      :{YELLOW}Перевод: {CURRENCY}
-STR_0804_ESTIMATED_COST                                         :{TINYFONT}{WHITE}Ожидаемая Стоимость: {CURRENCY}
 STR_0805_ESTIMATED_COST                                         :{WHITE}Ожидаемая Стоимость: {CURRENCY}
-STR_0806_ESTIMATED_INCOME                                       :{TINYFONT}{WHITE}Ожидаемый Доход: {CURRENCY}
 STR_0807_ESTIMATED_INCOME                                       :{WHITE}Ожидаемый Доход: {CURRENCY}
 STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Не могу поднять землю здесь...
 STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Не могу опустить землю здесь...
@@ -1382,7 +1357,6 @@ STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Ж/Д путь 
 STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Ж/Д путь с комбо-светофором
 
 ##id 0x1800
-STR_1800_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Неровная земля для дороги
 STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Для начала удалите дорогу
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Дорога строится
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Дорожное Строительство
@@ -1589,11 +1563,6 @@ STR_3055_CHANGE_NAME_OF_STATION                                 :{BLACK}Изме
 STR_3056_SHOW_LIST_OF_ACCEPTED_CARGO                            :{BLACK}Вывод списка принятого груза
 STR_3057_STATION_NAMES_CLICK_ON                                 :{BLACK}Название станции - для перемещения к станции нажать
 STR_3058_SELECT_SIZE_TYPE_OF_AIRPORT                            :{BLACK}Выбор размера/типа аэропорта
-STR_3059_SMALL                                                  :{BLACK}Маленький
-STR_305A_LARGE                                                  :{BLACK}Городской
-STR_305AA_LARGE                                                 :{BLACK}Столичный
-STR_305AB_LARGE                                                 :{BLACK}Международный
-STR_305B_SIZE                                                   :{BLACK}Размер
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION}
 STR_305E_RAILROAD_STATION                                       :Ж/Д станция
@@ -1608,7 +1577,6 @@ STR_3066_COVERAGE_AREA_HIGHLIGHT                                :{BLACK}Обла
 STR_3068_DOCK                                                   :{WHITE}Док
 STR_3069_BUOY                                                   :Бакен
 STR_306A_BUOY_IN_THE_WAY                                        :{WHITE}...бакен в пути
-STR_306B_HELIPORT                                               :{BLACK}Вертопорт
 STR_306C_STATION_TOO_SPREAD_OUT                                 :{WHITE}...станция также расширилась
 STR_306D_NONUNIFORM_STATIONS_DISALLOWED                         :{WHITE}...неоднотипные станции отключены
 
@@ -1689,7 +1657,7 @@ STR_4829_REQUIRES                                               :{BLACK}Треб
 ############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Произведено в прошлом месяце:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% перевезено)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% перевезено)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Наблюдать за промышленностью
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Новый {STRING} строиться вблизи {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Новый {STRING} сажается вблизи {TOWN}!
@@ -2283,8 +2251,8 @@ STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} �
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Граждане празднуют . . .{}Первый поезд прибыл на {STATION}!
 STR_8802_DETAILS                                                :{WHITE}{STRING} (Детали)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поезд в пути
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING} {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING} {STRING}
 STR_8806_GO_TO                                                  :Идти в {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Идти в {STATION} (Передает и берет груз)
 STR_8808_GO_TO_UNLOAD                                           :Идти в {STATION} (Выгрузка)
@@ -2302,8 +2270,8 @@ STR_SERVICE_AT_TRAIN_DEPOT                                      :Ремонт в
 STR_880F_GO_NON_STOP_TO_TRAIN_DEPOT                             :Идти мимо в {TOWN} Депо
 STR_SERVICE_NON_STOP_AT_TRAIN_DEPOT                             :Ремонт мимо в {TOWN} Депо
 
-STR_HEADING_FOR_TRAIN_DEPOT                                     :{LTBLUE}Следует в {TOWN} Депо
-STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{LTBLUE}Следует в {TOWN} Депо, {VELOCITY}
+STR_HEADING_FOR_TRAIN_DEPOT                                     :{ORANGE}Следует в {TOWN} Депо
+STR_HEADING_FOR_TRAIN_DEPOT_VEL                                 :{ORANGE}Следует в {TOWN} Депо, {VELOCITY}
 
 STR_INVALID_ORDER                                               :{RED} (Неверный Маршрут)
 
@@ -2389,10 +2357,10 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}На в�
 STR_SERVICE_HINT                                                :{BLACK}Мимо этого маршрута если ремонт не требуется
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Новейший {STRING} теперь доступен!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Цена: {CURRENCY} Вес: {COMMA}т{}Скорость: {VELOCITY}  Мощность: {COMMA}л.с.{}Ремонт: {CURRENCY}/год{}Вмещает: {STRING}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Цена: {CURRENCY} Вес: {WEIGHT_S}{}Скорость: {VELOCITY}  Мощность: {POWER}{}Ремонт: {CURRENCY}/год{}Вмещает: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Сломан
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Лет: {LTBLUE}{STRING}{BLACK}   Ремонт: {LTBLUE}{CURRENCY}/год
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Вес: {LTBLUE}{COMMA}т  {BLACK}Мощность: {LTBLUE}{COMMA}л.с.{BLACK} Пик. скорость: {LTBLUE}{VELOCITY}
+STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Вес: {LTBLUE}{WEIGHT_S}  {BLACK}Мощность: {LTBLUE}{POWER}{BLACK} Пик. скорость: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломки начиная с последнего ремонта: {LTBLUE}{COMMA}
 STR_8861_STOPPED                                                :{RED}Остановлен
@@ -2427,13 +2395,13 @@ STR_900E_MAX_SPEED                                              :{BLACK}Пик. 
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломки начиная с последнего ремонта: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Построен: {LTBLUE}{NUM}{BLACK} Ценность: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...машину надо остановить на автостанции
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Не могу продать машину...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Не могу остановить/запустить машину...
 STR_9016_ROAD_VEHICLE_IS_WAITING                                :{WHITE}Машина {COMMA} ожидает на автостанции
-STR_HEADING_FOR_ROAD_DEPOT                                      :{LTBLUE}Следует в {TOWN} Автостанцию
-STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{LTBLUE}Следует в {TOWN} Автостанцию, {VELOCITY}
+STR_HEADING_FOR_ROAD_DEPOT                                      :{ORANGE}Следует в {TOWN} Автостанцию
+STR_HEADING_FOR_ROAD_DEPOT_VEL                                  :{ORANGE}Следует в {TOWN} Автостанцию, {VELOCITY}
 STR_9018_CAN_T_SEND_VEHICLE_TO_DEPOT                            :{WHITE}Не могу отправить машину на автостанцию...
 STR_9019_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Невозможно найти местную автостанцию
 STR_901A_ROAD_VEHICLES_CLICK_ON                                 :{BLACK}Машины - для информации щелкнуть на машине
@@ -2452,7 +2420,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Спис
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Строить выбранную машину
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Новейший автомобиль, теперь доступен!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорость: {VELOCITY}{}Ремонт: {CURRENCY}/год{}Вмещает: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорость: {VELOCITY}{}Ремонт: {CURRENCY}/год{}Вмещает: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Название машины
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Не могу назвать машину...
@@ -2492,12 +2460,12 @@ STR_9813_MAX_SPEED                                              :{BLACK}Пик. 
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломки начиная с последнего ремонта: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Построен: {LTBLUE}{NUM}{BLACK} Ценность: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не могу остановть/запустить корабль...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не могу отправить корабль в док...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Невозможно найти местный док
-STR_HEADING_FOR_SHIP_DEPOT                                      :{LTBLUE}Следует в {TOWN} Корабельный Док
-STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{LTBLUE}Следует в {TOWN} Корабельный Док, {VELOCITY}
+STR_HEADING_FOR_SHIP_DEPOT                                      :{ORANGE}Следует в {TOWN} Корабельный Док
+STR_HEADING_FOR_SHIP_DEPOT_VEL                                  :{ORANGE}Следует в {TOWN} Корабельный Док, {VELOCITY}
 STR_981C_SHIP_IS_WAITING_IN_DEPOT                               :{WHITE}Корабль {COMMA} ожидает в доке
 STR_981D_BUILD_SHIP_DOCK                                        :{BLACK}Строить корабельный док
 STR_981E_BUILD_SHIP_DEPOT_FOR_BUILDING                          :{BLACK}Строить корабельный док (для постройки и ремонта кораблей)
@@ -2516,7 +2484,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Отпр
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Показать детали корабля
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Новейший корабль, теперь доступен!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Пик. Скорость: {VELOCITY}{}Вмещает: {STRING}{}Ремонт: {CURRENCY}/год
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Пик. Скорость: {VELOCITY}{}Вмещает: {CARGO}{}Ремонт: {CURRENCY}/год
 STR_982F_NAME_SHIP                                              :{BLACK}Название корабля
 
 STR_9831_NAME_SHIP                                              :{WHITE}Название корабля
@@ -2534,7 +2502,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Пере
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выберите тип груза для корабля
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Переделка корабля под выбранный тип груза
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Выбор тип груза для перевозки:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Будет вмещать: {GOLD}{STRING}{}{BLACK}Стоимость переделки: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Будет вмещать: {GOLD}{CARGO}{}{BLACK}Стоимость переделки: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Не могу переделать корабль......
 STR_9842_REFITTABLE                                             :(переделка)
 STR_GO_TO_SHIP_DEPOT                                            :Идти в {TOWN} Док
@@ -2561,14 +2529,14 @@ STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Приб
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломки начиная с последнего ремонта: {LTBLUE}{COMMA}
 STR_A011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Построен: {LTBLUE}{NUM}{BLACK} Ценность: {LTBLUE}{CURRENCY}
 STR_A012_CAN_T_SEND_AIRCRAFT_TO                                 :{WHITE}Не могу отправить самолет в ангар...
-STR_HEADING_FOR_HANGAR                                          :{LTBLUE}Следует в {STATION} Ангар
-STR_HEADING_FOR_HANGAR_VEL                                      :{LTBLUE}Следует в {STATION} Ангар, {VELOCITY}
+STR_HEADING_FOR_HANGAR                                          :{ORANGE}Следует в {STATION} Ангар
+STR_HEADING_FOR_HANGAR_VEL                                      :{ORANGE}Следует в {STATION} Ангар, {VELOCITY}
 STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Самолет {COMMA} ожидает в ангаре
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Самолет в пути
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Не могу остановить/запустить самолет...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Самолет в полете
-STR_A019_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Самолет нужно остановить в ангаре
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не могу продать самолет...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Строительство аэропорта
@@ -2717,15 +2685,15 @@ STR_MAGLEV_VEHICLES                                             :Магнитн�
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Вес: {GOLD}{COMMA}т
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK}   Мощность: {GOLD}{COMMA}л.с.
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Вес: {GOLD}{WEIGHT_S}
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK}   Мощность: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Ремонт: {GOLD}{CURRENCY}/год
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Вмещает: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Вмещает: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Разработка: {GOLD}{NUM}{BLACK} Срок: {GOLD}{COMMA} лет
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Пик. Износа: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Цена: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вес: {GOLD}{COMMA}t  ({COMMA}т)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Вес: {GOLD}{WEIGHT_S}  ({WEIGHT_S})
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Цена: {GOLD}{CURRENCY}{BLACK} Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Вмещает: {GOLD}{COMMA} пассажиров, {COMMA} сумок почты
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Мощность вагонов: {GOLD}+{COMMA}л.с.{BLACK} Вес: {GOLD}+{COMMA}т
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Мощность вагонов: {GOLD}+{POWER}{BLACK} Вес: {GOLD}+{WEIGHT_S}
