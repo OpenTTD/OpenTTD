@@ -710,7 +710,7 @@ static uint32 VehicleGetVariable(const ResolverObject *object, byte variable, by
 		case 0x28: return v->cur_image;
 		case 0x29: return GB(v->cur_image, 8, 8);
 		case 0x32: return v->vehstatus;
-		case 0x33: return GB(v->vehstatus, 8, 8);
+		case 0x33: return 0; // non-existent high byte of vehstatus
 		case 0x34: return v->cur_speed;
 		case 0x35: return GB(v->cur_speed, 8, 8);
 		case 0x36: return v->subspeed;
