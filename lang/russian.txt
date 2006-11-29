@@ -833,10 +833,10 @@ STR_TOWNNAME_TURKISH                                            :Турецки�
 STR_TOWNNAME_ITALIAN                                            :Итальянские
 ############ end of     townname region
 
-STR_CURR_GBP                                                    :Фунт (Ј)
+STR_CURR_GBP                                                    :Фунт (£)
 STR_CURR_USD                                                    :Доллар ($)
-STR_CURR_EUR                                                    :Евро (¤)
-STR_CURR_YEN                                                    :Йена (Ґ)
+STR_CURR_EUR                                                    :Евро (€)
+STR_CURR_YEN                                                    :Йена (¥)
 STR_CURR_ATS                                                    :Австрийский шиллинг (ATS)
 STR_CURR_BEF                                                    :Бельгийский Франк (BEF)
 STR_CURR_CHF                                                    :Швейцарский Форинт (CHF)
