@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Необходима ровная земля
 STR_0008_WAITING                                                :{BLACK}Ожидает: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING1}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING1}{YELLOW}  (маршрут из
+STR_0009                                                        :{WHITE}{STRING}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (маршрут из
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Принимает: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Принимает: {GOLD}
@@ -151,7 +151,7 @@ STR_00AF                                                        :{WHITE}{DATE_LO
 STR_00B0_MAP                                                    :{WHITE}Карта - {STRING}
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Настройки Игры
 STR_00B2_MESSAGE                                                :{YELLOW}Сообщение
-STR_00B3_MESSAGE_FROM                                           :{YELLOW}Сообщение от {STRING1}
+STR_00B3_MESSAGE_FROM                                           :{YELLOW}Сообщение от {STRING}
 STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Не могу сделать это....
 STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Не могу очистить это место....
 
@@ -281,12 +281,12 @@ STR_OSNAME_OS2                                                  :OS/2
 
 STR_0139_IMPERIAL_MILES                                         :Дюймы (мили)
 STR_013A_METRIC_KILOMETERS                                      :Метры (километры)
-STR_013B_OWNED_BY                                               :{WHITE}...принадлежит {STRING2}
+STR_013B_OWNED_BY                                               :{WHITE}...принадлежит {STRING}
 STR_013C_CARGO                                                  :{BLACK}Груз
 STR_013D_INFORMATION                                            :{BLACK}Информация
 STR_013E_CAPACITIES                                             :{BLACK}Мощность
 STR_013E_TOTAL_CARGO                                            :{BLACK}Полный груз
-STR_013F_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING1}
+STR_013F_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Полностью вмещает этот поезда:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Новая Игра
@@ -362,7 +362,7 @@ STR_016D_DEC                                                    :Дек
 
 STR_016E                                                        :{TINYFONT}{STRING}{} {STRING}
 STR_016F                                                        :{TINYFONT}{STRING}{} {STRING}{}{NUM}
-STR_0170                                                        :{TINYFONT}{STRING2}-
+STR_0170                                                        :{TINYFONT}{STRING}-
 STR_0171_PAUSE_GAME                                             :{BLACK}Перерыв игры
 STR_0172_SAVE_GAME_ABANDON_GAME                                 :{BLACK}Сохранить игру, оставить игру, выйти
 STR_0173_DISPLAY_LIST_OF_COMPANY                                :{BLACK}Показать список станций компаний
@@ -424,8 +424,8 @@ STR_01A3_LAND_AREA_INFORMATION                                  :{WHITE}Инфо
 STR_01A4_COST_TO_CLEAR_N_A                                      :{BLACK}Стоимость очистки: {LTBLUE}N/A
 STR_01A5_COST_TO_CLEAR                                          :{BLACK}Стоимость очистки: {LTBLUE}{CURRENCY}
 STR_01A6_N_A                                                    :N/A
-STR_01A7_OWNER                                                  :{BLACK}Владелец: {LTBLUE}{STRING1}
-STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Власти: {LTBLUE}{STRING1}
+STR_01A7_OWNER                                                  :{BLACK}Владелец: {LTBLUE}{STRING}
+STR_01A8_LOCAL_AUTHORITY                                        :{BLACK}Власти: {LTBLUE}{STRING}
 STR_01A9_NONE                                                   :Ни один
 STR_01AA_NAME                                                   :{BLACK}Имя
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
@@ -488,13 +488,13 @@ STR_01E3                                                        :{DKGREEN}{TINYF
 STR_01E4_0                                                      :{DKGREEN}{TINYFONT}0{COMMA}
 STR_01E5                                                        :{DKGREEN}{TINYFONT}{COMMA}
 STR_01E6                                                        :{DKGREEN}{TINYFONT}------
-STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING1}"
+STR_01E7                                                        :{DKGREEN}{TINYFONT}"{STRING}"
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Дорожка{SETX 88}Заголовок
 STR_01E9_SHUFFLE                                                :{TINYFONT}Случайно
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Программы
 STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Выбор Музыкальной Программы
-STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING1}"
-STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING1}"
+STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
+STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Индекс Дорожки
 STR_01EF_PROGRAM                                                :{TINYFONT}{BLACK}Программы - '{STRING}'
 STR_01F0_CLEAR                                                  :{TINYFONT}{BLACK}Очистить
@@ -683,7 +683,7 @@ STR_02A2_MEDIUM                                                 :{BLACK}Сред
 STR_02A3_LARGE                                                  :{BLACK}Большой
 STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Выбор размера города
 STR_02A5_TOWN_SIZE                                              :{YELLOW}Размер города:
-STR_02B6                                                        :{STRING}  -  {STRING5}
+STR_02B6                                                        :{STRING}  -  {STRING}
 STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Показать последнее сообщение или новые отчеты
 STR_OFF                                                         :Выкл
 STR_SUMMARY                                                     :Кратко
@@ -943,83 +943,83 @@ STR_CONFIG_PATCHES_TIP                                          :{BLACK}Форм
 STR_CONFIG_PATCHES_CAPTION                                      :{WHITE}Формирование Заплат
 STR_CONFIG_PATCHES_OFF                                          :Выкл
 STR_CONFIG_PATCHES_ON                                           :Вкл
-STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Скорость транспорта в строке: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Строить на неровной земле: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Более реальные размеры рек: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Удаление большого количества дорог, мостов, и т.д.: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Построение очень длинных поездов: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Реальное ускорение для поездов: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить повороты на 90 грд.: {ORANGE}{STRING1} {LTBLUE} (требуется NPF)
-STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Строительство станций рядом: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Отпуск со станции при загрузке, если 'Загрузка': {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Улучшенный алгоритм погрузки: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Инфляция: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Принимать груз на станции только если есть спрос: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Построение очень длинных мостов: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Разрешить в маршрутах идти в депо: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Строить сырье-производящие отрасли: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Разрешить повторение промыленности на город: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Строительство однотипной промышленности рядом: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Показывать длинную дату в строке состояния: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Показывать сигналы на стороне движения: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показывать финансовое окно в конце года: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch совместимая безостановочная обработка: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Дорожная организация очередей: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Двигать окно когда мышь на краю: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Разрешить подкуп властей: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Неоднотипные станции: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новый поиск путей (NPF, без NTP): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Всегда разрешать малые аэропорты: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Поезд теряется если не отремонтировать за: {ORANGE}{STRING1} дней
+STR_CONFIG_PATCHES_VEHICLESPEED                                 :{LTBLUE}Скорость транспорта в строке: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDONSLOPES                                :{LTBLUE}Строить на неровной земле: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_CATCHMENT                                    :{LTBLUE}Более реальные размеры рек: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_EXTRADYNAMITE                                :{LTBLUE}Удаление большого количества дорог, мостов, и т.д.: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAMMOTHTRAINS                                :{LTBLUE}Построение очень длинных поездов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REALISTICACCEL                               :{LTBLUE}Реальное ускорение для поездов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Запретить повороты на 90 грд.: {ORANGE}{STRING} {LTBLUE} (требуется NPF)
+STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Строительство станций рядом: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Отпуск со станции при загрузке, если 'Загрузка': {ORANGE}{STRING}
+STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Улучшенный алгоритм погрузки: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Инфляция: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Принимать груз на станции только если есть спрос: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Построение очень длинных мостов: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GOTODEPOT                                    :{LTBLUE}Разрешить в маршрутах идти в депо: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BUILDXTRAIND                                 :{LTBLUE}Строить сырье-производящие отрасли: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MULTIPINDTOWN                                :{LTBLUE}Разрешить повторение промыленности на город: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SAMEINDCLOSE                                 :{LTBLUE}Строительство однотипной промышленности рядом: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LONGDATE                                     :{LTBLUE}Показывать длинную дату в строке состояния: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SIGNALSIDE                                   :{LTBLUE}Показывать сигналы на стороне движения: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SHOWFINANCES                                 :{LTBLUE}Показывать финансовое окно в конце года: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_NONSTOP                                  :{LTBLUE}TTDPatch совместимая безостановочная обработка: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROADVEH_QUEUE                                :{LTBLUE}Дорожная организация очередей: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Двигать окно когда мышь на краю: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Разрешить подкуп властей: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Неоднотипные станции: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новый поиск путей (NPF, без NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Всегда разрешать малые аэропорты: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LOST_TRAIN_DAYS                              :{LTBLUE}Поезд теряется если не отремонтировать за: {ORANGE}{STRING} дней
 STR_CONFIG_PATCHES_LOST_TRAIN_DAYS_DISABLED                     :{LTBLUE}Поезд будет утерян если не отремонтировать за: {ORANGE} отключено
-STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Пересмотр маршрутов транспорта: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Пересмотр маршрутов транспорта: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :нет
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :да, но случись остановит транспорт
 STR_CONFIG_PATCHES_ORDER_REVIEW_ON                              :из всего транспорта
-STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать если доход от поезда отрицателен: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт бесконечен: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_WARN_INCOME_LESS                             :{LTBLUE}Предупреждать если доход от поезда отрицателен: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_NEVER_EXPIRE_VEHICLES                        :{LTBLUE}Транспорт бесконечен: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_AUTORENEW_VEHICLE                            :{LTBLUE}Автообновление транспорта когда он устареет
-STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Обновлять когда {ORANGE}{STRING1}{LTBLUE} месяцев до/после пик лет
-STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Обновлять при минимуме необходимых денег: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Продолжительность ошибочного сообщения: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Отображать население города в названии города: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Невидимые деревья (с прозрачными постройками): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Высота линии снега: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Охват станции: {ORANGE}{STRING1} {RED}Внимание: повышение замедляет игру
-STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Ремонт вертолетов на площадках автоматически: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Открывать панель землестроения автоматически: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обратная прокрутка списка: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Пик поездов у игрока: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Пик машин у игрока: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Пик самолетов у игрока: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Пик кораблей у игрока: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Отключить поезда для компьютера: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Отключить машины для компьютера: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Отключить самолеты для компьютера: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Отключить корабли для компьютера: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Включить новый ИИ (ИИ альфа): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить ИИ в сетевой игре (тест): {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Интервал ремонта для поездов: {ORANGE}{STRING1} дней/%
+STR_CONFIG_PATCHES_AUTORENEW_MONTHS                             :{LTBLUE}Обновлять когда {ORANGE}{STRING}{LTBLUE} месяцев до/после пик лет
+STR_CONFIG_PATCHES_AUTORENEW_MONEY                              :{LTBLUE}Обновлять при минимуме необходимых денег: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Продолжительность ошибочного сообщения: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Отображать население города в названии города: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Невидимые деревья (с прозрачными постройками): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Высота линии снега: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Охват станции: {ORANGE}{STRING} {RED}Внимание: повышение замедляет игру
+STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Ремонт вертолетов на площадках автоматически: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Открывать панель землестроения автоматически: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Обратная прокрутка списка: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Пик поездов у игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Пик машин у игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Пик самолетов у игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Пик кораблей у игрока: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Отключить поезда для компьютера: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Отключить машины для компьютера: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Отключить самолеты для компьютера: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Отключить корабли для компьютера: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Включить новый ИИ (ИИ альфа): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Разрешить ИИ в сетевой игре (тест): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Интервал ремонта для поездов: {ORANGE}{STRING} дней/%
 STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Интервал ремонта для поездов: {ORANGE}отключено
-STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Интервал ремонта для машин: {ORANGE}{STRING1} дней/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Интервал ремонта для машин: {ORANGE}{STRING} дней/%
 STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Интервал ремонта для машин: {ORANGE}отключено
-STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал ремонта для самолетов: {ORANGE}{STRING1} дней/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Интервал ремонта для самолетов: {ORANGE}{STRING} дней/%
 STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Интервал ремонта для самолетов: {ORANGE}отключено
-STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Интервал ремонта для кораблей: {ORANGE}{STRING1} дней/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Интервал ремонта для кораблей: {ORANGE}{STRING} дней/%
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Интервал ремонта для кораблей: {ORANGE}отключено
-STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Ремонт когда поломок неустановлено: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Включить ограничение скорости вагона: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Красивые новости появляются в: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Начальная дата {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Конец игры в: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Ремонт когда поломок неустановлено: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Включить ограничение скорости вагона: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_COLORED_NEWS_DATE                            :{LTBLUE}Красивые новости появляются в: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_DATE                                :{LTBLUE}Начальная дата {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_DATE                                  :{LTBLUE}Конец игры в: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Включить плавную экономику (более мелкие изменения)
 STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Разрешить покупать долги других компаний
-STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При перемещении, места сигнализируется: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}При перемещении, места сигнализируется: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Положение главной панели инструментов: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Лево
 STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Центр
 STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Право
-STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Радиус охвата окна: {ORANGE}{STRING1} точек
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Радиус охвата окна: {ORANGE}{STRING} точек
 STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Радиус охвата окна: {ORANGE}отключено
 STR_CONFIG_PATCHES_GUI                                          :{BLACK}Интерфейс
 STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Постройки
@@ -1043,13 +1043,13 @@ STR_CHEATS_TIP                                                  :{BLACK}Гало
 STR_CHEATS_WARNING                                              :{BLACK}Внимание! Вы собираетесь предать поддерживающих вас конкурентов. Имейте в виду, что такой позор будут помнить всю вечность...
 STR_CHEAT_MONEY                                                 :{LTBLUE}Увеличение денег {CURRENCY64}
 STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Играть как игрок: {ORANGE}{COMMA}
-STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный бульдозер (удаляет промышленность, недвижимость): {ORANGE}{STRING1}
-STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Туннели могут пересечь друг друга: {ORANGE}{STRING1}
-STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Строить пока на перерыве: {ORANGE}{STRING1}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Волшебный бульдозер (удаляет промышленность, недвижимость): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Туннели могут пересечь друг друга: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Строить пока на перерыве: {ORANGE}{STRING}
 STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Дирижабль не будет терпеть крушение (часто) на маленьких аэропортах: {ORANGE} {STRING}
 STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Переключатель климата: {ORANGE} {STRING}
 STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Изменение даты: {ORANGE} {DATE_SHORT}
-STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Включить изменение значений продукции: {ORANGE}{STRING1}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Включить изменение значений продукции: {ORANGE}{STRING}
 
 STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Следует в {WAYPOINT}
 STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Следует в {WAYPOINT}, {VELOCITY}
@@ -1123,8 +1123,8 @@ STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Стро
 STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Строить Карьер Ирисок
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Строить Сахарная Шахта
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Промышленность
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}){YELLOW} ({COMMA}% перевезено)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING1}/{STRING1}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% перевезено)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% перевезено)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...слишком близко к другому предприятию
 STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Переделка поезда для иного типа груза
@@ -1132,7 +1132,7 @@ STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Пере
 STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выбор типа груза для поезда
 STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Переделка поезда для выделенного типа груза
 STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Не могу переделать поезд...
-STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Интервал ремонта в процентах: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Интервал ремонта в процентах: {ORANGE}{STRING}
 STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Загрузка продукции
 TEMP_AI_IN_PROGRESS                                             :{WHITE}Добро пожаловать в новый ИИ, он совершенствуется. Вы должны быть готовы к проблемам. Когда это случится сделайте снимок и отправьте на форум. Наслаждайтесь!
 TEMP_AI_ACTIVATED                                               :{WHITE}Внимание: это новый ИИ еще тестируется! В настоящее время работает только с грузовиками и автобусами!
@@ -1317,8 +1317,8 @@ STR_NETWORK_SEND                                                :{BLACK}Посл
 
 ############ end network gui strings
 
-STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-размер карты: {ORANGE}{STRING1}
-STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-размер карты: {ORANGE}{STRING1}
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-размер карты: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-размер карты: {ORANGE}{STRING}
 
 ##id 0x0800
 STR_0800_COST                                                   :{TINYFONT}{RED}Стоимость: {CURRENCY}
@@ -1414,7 +1414,7 @@ STR_TOWN_LABEL_POP                                              :{WHITE}{TOWN} (
 STR_TOWN_LABEL                                                  :{WHITE}{TOWN}
 STR_TOWN_LABEL_TINY_BLACK                                       :{TINYFONT}{BLACK}{TOWN}
 STR_TOWN_LABEL_TINY_WHITE                                       :{TINYFONT}{WHITE}{TOWN}
-STR_2002                                                        :{TINYFONT}{BLACK}{STRING1}
+STR_2002                                                        :{TINYFONT}{BLACK}{STRING}
 STR_2004_BUILDING_MUST_BE_DEMOLISHED                            :{WHITE}Сначала надо демонтировать строение
 STR_2005                                                        :{WHITE}{TOWN}
 STR_2006_POPULATION                                             :{BLACK}Население: {ORANGE}{COMMA}{BLACK}  Дома: {ORANGE}{COMMA}
@@ -1450,15 +1450,15 @@ STR_2023_TRANSPORT_COMPANY_RATINGS                              :{BLACK}Оцен
 STR_2024                                                        :{YELLOW}{COMPANY}{PLAYERNAME}: {ORANGE}{STRING}
 STR_2025_SUBSIDIES                                              :{WHITE}Субсидии
 STR_2026_SUBSIDIES_ON_OFFER_FOR                                 :{BLACK}Предлагаемые субсидии на услуги:
-STR_2027_FROM_TO                                                :{ORANGE}{STRING} из {STRING2} в {STRING2}
+STR_2027_FROM_TO                                                :{ORANGE}{STRING} из {STRING} в {STRING}
 STR_2028_BY                                                     :{YELLOW} ({DATE_SHORT})
 STR_202A_NONE                                                   :{ORANGE}Ничего
 STR_202B_SERVICES_ALREADY_SUBSIDISED                            :{BLACK}Услуга уже субсидируется:
 STR_202C_FROM_TO                                                :{ORANGE}{STRING} из {STATION} в {STATION}{YELLOW} ({COMPANY}
 STR_202D_UNTIL                                                  :{YELLOW}, до {DATE_SHORT})
-STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Предложенная субсидия истекла:{}{}{STRING} из {STRING2} в {STRING2} больше не будет субсидироваться.
+STR_202E_OFFER_OF_SUBSIDY_EXPIRED                               :{BLACK}{BIGFONT}Предложенная субсидия истекла:{}{}{STRING} из {STRING} в {STRING} больше не будет субсидироваться.
 STR_202F_SUBSIDY_WITHDRAWN_SERVICE                              :{BLACK}{BIGFONT}Изъятая субсидия:{}{}{STRING} услуга из {STATION} в {STATION} больше не субсидируется.
-STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Предложена субсидия:{}{}Первый {STRING} услуга из {STRING2} в {STRING2} привлечет годовую субсидию от властей!
+STR_2030_SERVICE_SUBSIDY_OFFERED                                :{BLACK}{BIGFONT}Предложена субсидия:{}{}Первый {STRING} услуга из {STRING} в {STRING} привлечет годовую субсидию от властей!
 STR_2031_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Предоставлена субсидия {COMPANY}!{}{}{STRING} услуга из {STATION} в {STATION} заплатит 50% сверх в течении следующего года!
 STR_2032_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Предоставлена субсидия {COMPANY}!{}{}{STRING} услуга из {STATION} в {STATION} заплатит вдвойне в течении следующего года!
 STR_2033_SERVICE_SUBSIDY_AWARDED                                :{BLACK}{BIGFONT}Предоставлена субсидия {COMPANY}!{}{}{STRING} услуга из {STATION} в {STATION} заплатит втройне в течении следующего года!
@@ -1689,7 +1689,7 @@ STR_4829_REQUIRES                                               :{BLACK}Треб
 ############ range for requires ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Произведено в прошлом месяце:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING1}{BLACK} ({COMMA}% перевезено)
+STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% перевезено)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Наблюдать за промышленностью
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Новый {STRING} строиться вблизи {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Новый {STRING} сажается вблизи {TOWN}!
@@ -1769,39 +1769,39 @@ STR_SV_ROADVEH_NAME                                             :Машина {C
 STR_SV_SHIP_NAME                                                :Корабль {COMMA}
 STR_SV_AIRCRAFT_NAME                                            :Самолет {COMMA}
 
-STR_SV_STNAME                                                   :{STRING1}
-STR_SV_STNAME_NORTH                                             :{STRING1} Север
-STR_SV_STNAME_SOUTH                                             :{STRING1} Юг
-STR_SV_STNAME_EAST                                              :{STRING1} Восток
-STR_SV_STNAME_WEST                                              :{STRING1} Запад
-STR_SV_STNAME_CENTRAL                                           :{STRING1} Центр
-STR_SV_STNAME_TRANSFER                                          :{STRING1} Передатчик
-STR_SV_STNAME_HALT                                              :{STRING1} Остановка
-STR_SV_STNAME_VALLEY                                            :{STRING1} Долина
-STR_SV_STNAME_HEIGHTS                                           :{STRING1} Высоты
-STR_SV_STNAME_WOODS                                             :{STRING1} Леса
-STR_SV_STNAME_LAKESIDE                                          :{STRING1} Горные Озера
-STR_SV_STNAME_EXCHANGE                                          :{STRING1} Обмен
-STR_SV_STNAME_AIRPORT                                           :{STRING1} Аэропорт
-STR_SV_STNAME_OILFIELD                                          :{STRING1} Скважины
-STR_SV_STNAME_MINES                                             :{STRING1} Шахты
-STR_SV_STNAME_DOCKS                                             :{STRING1} Доки
-STR_SV_STNAME_BUOY_1                                            :{STRING1} Бакен 1
-STR_SV_STNAME_BUOY_2                                            :{STRING1} Бакен 2
-STR_SV_STNAME_BUOY_3                                            :{STRING1} Бакен 3
-STR_SV_STNAME_BUOY_4                                            :{STRING1} Бакен 4
-STR_SV_STNAME_BUOY_5                                            :{STRING1} Бакен 5
-STR_SV_STNAME_BUOY_6                                            :{STRING1} Бакен 6
-STR_SV_STNAME_BUOY_7                                            :{STRING1} Бакен 7
-STR_SV_STNAME_BUOY_8                                            :{STRING1} Бакен 8
-STR_SV_STNAME_BUOY_9                                            :{STRING1} Бакен 9
-STR_SV_STNAME_ANNEXE                                            :{STRING1} Приложение
-STR_SV_STNAME_SIDINGS                                           :{STRING1} Тупики
-STR_SV_STNAME_BRANCH                                            :{STRING1} Ветвь
-STR_SV_STNAME_UPPER                                             :Верхний {STRING1}
-STR_SV_STNAME_LOWER                                             :Нижний {STRING1}
-STR_SV_STNAME_HELIPORT                                          :{STRING1} Вертопорт
-STR_SV_STNAME_FOREST                                            :{STRING1} Лес
+STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :{STRING} Север
+STR_SV_STNAME_SOUTH                                             :{STRING} Юг
+STR_SV_STNAME_EAST                                              :{STRING} Восток
+STR_SV_STNAME_WEST                                              :{STRING} Запад
+STR_SV_STNAME_CENTRAL                                           :{STRING} Центр
+STR_SV_STNAME_TRANSFER                                          :{STRING} Передатчик
+STR_SV_STNAME_HALT                                              :{STRING} Остановка
+STR_SV_STNAME_VALLEY                                            :{STRING} Долина
+STR_SV_STNAME_HEIGHTS                                           :{STRING} Высоты
+STR_SV_STNAME_WOODS                                             :{STRING} Леса
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Горные Озера
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Обмен
+STR_SV_STNAME_AIRPORT                                           :{STRING} Аэропорт
+STR_SV_STNAME_OILFIELD                                          :{STRING} Скважины
+STR_SV_STNAME_MINES                                             :{STRING} Шахты
+STR_SV_STNAME_DOCKS                                             :{STRING} Доки
+STR_SV_STNAME_BUOY_1                                            :{STRING} Бакен 1
+STR_SV_STNAME_BUOY_2                                            :{STRING} Бакен 2
+STR_SV_STNAME_BUOY_3                                            :{STRING} Бакен 3
+STR_SV_STNAME_BUOY_4                                            :{STRING} Бакен 4
+STR_SV_STNAME_BUOY_5                                            :{STRING} Бакен 5
+STR_SV_STNAME_BUOY_6                                            :{STRING} Бакен 6
+STR_SV_STNAME_BUOY_7                                            :{STRING} Бакен 7
+STR_SV_STNAME_BUOY_8                                            :{STRING} Бакен 8
+STR_SV_STNAME_BUOY_9                                            :{STRING} Бакен 9
+STR_SV_STNAME_ANNEXE                                            :{STRING} Приложение
+STR_SV_STNAME_SIDINGS                                           :{STRING} Тупики
+STR_SV_STNAME_BRANCH                                            :{STRING} Ветвь
+STR_SV_STNAME_UPPER                                             :Верхний {STRING}
+STR_SV_STNAME_LOWER                                             :Нижний {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} Вертопорт
+STR_SV_STNAME_FOREST                                            :{STRING} Лес
 
 ############ end of     savegame specific region!
 
@@ -2281,10 +2281,10 @@ STR_8107_MAGLEV_LOCOMOTIVE                                      :магнитн�
 ##id 0x8800
 STR_8800_TRAIN_DEPOT                                            :{WHITE}{TOWN} Депо
 STR_8801_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT}Граждане празднуют . . .{}Первый поезд прибыл на {STATION}!
-STR_8802_DETAILS                                                :{WHITE}{STRING1} (Детали)
+STR_8802_DETAILS                                                :{WHITE}{STRING} (Детали)
 STR_8803_TRAIN_IN_THE_WAY                                       :{WHITE}Поезд в пути
-STR_8804                                                        :{SETX 10}{COMMA}: {STRING1}
-STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING1}
+STR_8804                                                        :{SETX 10}{COMMA}: {STRING}
+STR_8805                                                        :{RIGHTARROW}{SETX 10}{COMMA}: {STRING}
 STR_8806_GO_TO                                                  :Идти в {STATION}
 STR_8807_GO_TO_TRANSFER                                         :Идти в {STATION} (Передает и берет груз)
 STR_8808_GO_TO_UNLOAD                                           :Идти в {STATION} (Выгрузка)
@@ -2389,9 +2389,9 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}На в�
 STR_SERVICE_HINT                                                :{BLACK}Мимо этого маршрута если ремонт не требуется
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Новейший {STRING} теперь доступен!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Цена: {CURRENCY} Вес: {COMMA}т{}Скорость: {VELOCITY}  Мощность: {COMMA}л.с.{}Ремонт: {CURRENCY}/год{}Вмещает: {STRING1}
+STR_885B_COST_WEIGHT_T_SPEED_POWER                              :{BLACK}Цена: {CURRENCY} Вес: {COMMA}т{}Скорость: {VELOCITY}  Мощность: {COMMA}л.с.{}Ремонт: {CURRENCY}/год{}Вмещает: {STRING}
 STR_885C_BROKEN_DOWN                                            :{RED}Сломан
-STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Лет: {LTBLUE}{STRING2}{BLACK}   Ремонт: {LTBLUE}{CURRENCY}/год
+STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Лет: {LTBLUE}{STRING}{BLACK}   Ремонт: {LTBLUE}{CURRENCY}/год
 STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Вес: {LTBLUE}{COMMA}т  {BLACK}Мощность: {LTBLUE}{COMMA}л.с.{BLACK} Пик. скорость: {LTBLUE}{VELOCITY}
 STR_885F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_8860_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломки начиная с последнего ремонта: {LTBLUE}{COMMA}
@@ -2422,12 +2422,12 @@ STR_9006_NEW_ROAD_VEHICLES                                      :{WHITE}Нова
 STR_9007_BUILD_VEHICLE                                          :{BLACK}Строить Машину
 STR_9009_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Не могу строить машину...
 STR_900C_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
-STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Лет: {LTBLUE}{STRING2}{BLACK}   Ремонт: {LTBLUE}{CURRENCY}/год
+STR_900D_AGE_RUNNING_COST_YR                                    :{BLACK}Лет: {LTBLUE}{STRING}{BLACK}   Ремонт: {LTBLUE}{CURRENCY}/год
 STR_900E_MAX_SPEED                                              :{BLACK}Пик. скорость: {LTBLUE}{VELOCITY}
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломки начиная с последнего ремонта: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Построен: {LTBLUE}{NUM}{BLACK} Ценность: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING1}
+STR_9012_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...машину надо остановить на автостанции
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Не могу продать машину...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Не могу остановить/запустить машину...
@@ -2452,7 +2452,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Спис
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Строить выбранную машину
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Новейший автомобиль, теперь доступен!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорость: {VELOCITY}{}Ремонт: {CURRENCY}/год{}Вмещает: {STRING1}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Цена: {CURRENCY}{}Скорость: {VELOCITY}{}Ремонт: {CURRENCY}/год{}Вмещает: {STRING}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Название машины
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Не могу назвать машину...
@@ -2487,12 +2487,12 @@ STR_980D_CAN_T_BUILD_SHIP                                       :{WHITE}Не м�
 STR_980E_SHIP_IN_THE_WAY                                        :{WHITE}Корабль в пути
 STR_980F                                                        :{WHITE}{VEHICLE}
 STR_9811_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
-STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Лет: {LTBLUE}{STRING2}{BLACK}   Ремонт: {LTBLUE}{CURRENCY}/год
+STR_9812_AGE_RUNNING_COST_YR                                    :{BLACK}Лет: {LTBLUE}{STRING}{BLACK}   Ремонт: {LTBLUE}{CURRENCY}/год
 STR_9813_MAX_SPEED                                              :{BLACK}Пик. скорость: {LTBLUE}{VELOCITY}
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломки начиная с последнего ремонта: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Построен: {LTBLUE}{NUM}{BLACK} Ценность: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING1}
+STR_9817_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Не могу остановть/запустить корабль...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Не могу отправить корабль в док...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Невозможно найти местный док
@@ -2516,7 +2516,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Отпр
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Показать детали корабля
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Новейший корабль, теперь доступен!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Пик. Скорость: {VELOCITY}{}Вмещает: {STRING1}{}Ремонт: {CURRENCY}/год
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Цена: {CURRENCY} Пик. Скорость: {VELOCITY}{}Вмещает: {STRING}{}Ремонт: {CURRENCY}/год
 STR_982F_NAME_SHIP                                              :{BLACK}Название корабля
 
 STR_9831_NAME_SHIP                                              :{WHITE}Название корабля
@@ -2534,7 +2534,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Пере
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выберите тип груза для корабля
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Переделка корабля под выбранный тип груза
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Выбор тип груза для перевозки:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Будет вмещать: {GOLD}{STRING1}{}{BLACK}Стоимость переделки: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Будет вмещать: {GOLD}{STRING}{}{BLACK}Стоимость переделки: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Не могу переделать корабль......
 STR_9842_REFITTABLE                                             :(переделка)
 STR_GO_TO_SHIP_DEPOT                                            :Идти в {TOWN} Док
@@ -2555,7 +2555,7 @@ STR_A009_AIRCRAFT                                               :{WHITE}{COMPANY
 STR_A00A                                                        :{WHITE}{VEHICLE}
 STR_A00B_ORDERS                                                 :{WHITE}{VEHICLE} (Маршруты)
 STR_A00C_DETAILS                                                :{WHITE}{VEHICLE} (Детали)
-STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Лет: {LTBLUE}{STRING2}{BLACK}   Ремонт: {LTBLUE}{CURRENCY}/год
+STR_A00D_AGE_RUNNING_COST_YR                                    :{BLACK}Лет: {LTBLUE}{STRING}{BLACK}   Ремонт: {LTBLUE}{CURRENCY}/год
 STR_A00E_MAX_SPEED                                              :{BLACK}Пик. скорость: {LTBLUE}{VELOCITY}
 STR_A00F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Прибыль в этом году: {LTBLUE}{CURRENCY}  (прошлый год: {CURRENCY})
 STR_A010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Надежность: {LTBLUE}{COMMA}%  {BLACK}Поломки начиная с последнего ремонта: {LTBLUE}{COMMA}
@@ -2567,8 +2567,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Само
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Самолет в пути
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Не могу остановить/запустить самолет...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Самолет в полете
-STR_A019_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING1}, {STRING1}
-STR_A01A_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING1}
+STR_A019_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}, {STRING}
+STR_A01A_CAPACITY                                               :{BLACK}Вмещает: {LTBLUE}{STRING}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Самолет нужно остановить в ангаре
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Не могу продать самолет...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Строительство аэропорта
@@ -2607,7 +2607,7 @@ STR_A03D_REFIT_AIRCRAFT                                         :{BLACK}Пере
 STR_A03E_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Выберите тип груза для самолета
 STR_A03F_REFIT_AIRCRAFT_TO_CARRY                                :{BLACK}Переделка самолета под выбранный тип груза
 STR_A040_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Выберите тип груза для перевозки::
-STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Будет вмещать: {GOLD}{STRING1}{}{BLACK}Стоимость переделки: {GOLD}{CURRENCY}
+STR_A041_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Будет вмещать: {GOLD}{STRING}{}{BLACK}Стоимость переделки: {GOLD}{CURRENCY}
 STR_A042_CAN_T_REFIT_AIRCRAFT                                   :{WHITE}Не могу переделать самолет...
 STR_GO_TO_AIRPORT_HANGAR                                        :Иди в {STATION} Ангар
 SERVICE_AT_AIRPORT_HANGAR                                       :Ремонт в {STATION} Ангар
@@ -2721,7 +2721,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Цена
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Скорость: {GOLD}{VELOCITY}{BLACK}   Мощность: {GOLD}{COMMA}л.с.
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Скорость: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Ремонт: {GOLD}{CURRENCY}/год
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Вмещает: {GOLD}{STRING1} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Вмещает: {GOLD}{STRING} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Разработка: {GOLD}{NUM}{BLACK} Срок: {GOLD}{COMMA} лет
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Пик. Износа: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Цена: {GOLD}{CURRENCY}
