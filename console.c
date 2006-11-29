@@ -369,6 +369,7 @@ static void IConsoleHistoryNavigate(int direction)
  */
 void IConsolePrint(uint16 color_code, const char *string)
 {
+	char *str;
 #ifdef ENABLE_NETWORK
 	if (_redirect_console_to_client != 0) {
 		/* Redirect the string to the client */
@@ -377,9 +378,16 @@ void IConsolePrint(uint16 color_code, const char *string)
 	}
 #endif
 
+	/* Create a copy of the string, strip if of colours and invalid
+	 * characters and (when applicable) assign it to the console buffer */
+	str = strdup(string);
+	str_strip_colours(str);
+	str_validate(str);
+
 	if (_network_dedicated) {
-		printf("%s\n", string);
-		IConsoleWriteToLogFile(string);
+		printf("%s\n", str);
+		IConsoleWriteToLogFile(str);
+		free(str); // free duplicated string since it's not used anymore
 		return;
 	}
 
@@ -387,15 +395,12 @@ void IConsolePrint(uint16 color_code, const char *string)
 	 * to accomodate for the new command/message */
 	free(_iconsole_buffer[0]);
 	memmove(&_iconsole_buffer[0], &_iconsole_buffer[1], sizeof(_iconsole_buffer[0]) * ICON_BUFFER);
-	_iconsole_buffer[ICON_BUFFER] = strdup(string);
-
-	str_strip_colours(_iconsole_buffer[ICON_BUFFER]);
-	str_validate(_iconsole_buffer[ICON_BUFFER]);
+	_iconsole_buffer[ICON_BUFFER] = str;
 
 	memmove(&_iconsole_cbuffer[0], &_iconsole_cbuffer[1], sizeof(_iconsole_cbuffer[0]) * ICON_BUFFER);
 	_iconsole_cbuffer[ICON_BUFFER] = color_code;
 
-	IConsoleWriteToLogFile(string);
+	IConsoleWriteToLogFile(_iconsole_buffer[ICON_BUFFER]);
 
 	SetWindowDirty(FindWindowById(WC_CONSOLE, 0));
 }
