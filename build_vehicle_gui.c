@@ -406,8 +406,9 @@ static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
 
 		case BUILD_VEHICLE_WIDGET_BUILD: {
 			EngineID sel_eng = bv->sel_engine;
-			if (sel_eng != INVALID_ENGINE)
+			if (sel_eng != INVALID_ENGINE) {
 				DoCommandP(w->window_number, sel_eng, 0, CcBuildAircraft, CMD_BUILD_AIRCRAFT | CMD_MSG(STR_A008_CAN_T_BUILD_AIRCRAFT));
+			}
 			break;
 		}
 
@@ -415,8 +416,7 @@ static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
 			EngineID sel_eng = bv->sel_engine;
 			if (sel_eng != INVALID_ENGINE) {
 				bv->rename_engine = sel_eng;
-				ShowQueryString(GetCustomEngineName(sel_eng),
-								STR_A039_RENAME_AIRCRAFT_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
+				ShowQueryString(GetCustomEngineName(sel_eng), STR_A039_RENAME_AIRCRAFT_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
 			}
 			break;
 		}
@@ -447,8 +447,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 		case WE_ON_EDIT_TEXT: {
 			if (e->we.edittext.str[0] != '\0') {
 				_cmd_text = e->we.edittext.str;
-				DoCommandP(0, bv->rename_engine, 0, NULL,
-						   CMD_RENAME_ENGINE | CMD_MSG(STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE));
+				DoCommandP(0, bv->rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(STR_A03A_CAN_T_RENAME_AIRCRAFT_TYPE));
 			}
 			break;
 		}
@@ -460,12 +459,12 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 				GenerateBuildList(w);
 			}
 			SetWindowDirty(w);
-				break;
+			break;
 
-			case WE_RESIZE:
-				w->vscroll.cap += e->we.sizing.diff.y / 24;
-				w->widget[BUILD_VEHICLE_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
-				break;
+		case WE_RESIZE:
+			w->vscroll.cap += e->we.sizing.diff.y / 24;
+			w->widget[BUILD_VEHICLE_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
+			break;
 	}
 }
 
