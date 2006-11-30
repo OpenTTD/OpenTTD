@@ -335,8 +335,6 @@ static void DrawBuildAircraftWindow(Window *w)
 
 	SetWindowWidgetDisabledState(w, BUILD_VEHICLE_WIDGET_BUILD, w->window_number == 0);
 
-	GenerateBuildList(w);
-
 	if (bv->sel_engine != INVALID_ENGINE) {
 		int i;
 		bool found = false;
@@ -429,6 +427,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 
 	switch (e->event) {
 		case WE_INVALIDATE_DATA:
+			GenerateBuildList(w);
 			SetWindowDirty(w);
 			break;
 
