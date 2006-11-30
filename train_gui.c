@@ -447,7 +447,6 @@ static void DrawTrainBuildWindow(Window *w)
 	uint16 scrollcount = 0;
 
 	SetWindowWidgetDisabledState(w, BUILD_TRAIN_WIDGET_BUILD, w->window_number == 0); // Disable unless we got a depot to build in
-	GenerateBuildList(w);
 
 	/* Make sure that the selected engine is still in the list*/
 	if (bv->sel_engine != INVALID_ENGINE) {
@@ -493,9 +492,11 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			bv->sel_engine            = INVALID_ENGINE;
 			bv->sort_criteria         = _last_sort_criteria;
 			bv->descending_sort_order = _last_sort_order;
+			GenerateBuildList(w);
 			break;
 
 		case WE_INVALIDATE_DATA:
+			GenerateBuildList(w);
 			SetWindowDirty(w);
 			break;
 
@@ -511,6 +512,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			switch (e->we.click.widget) {
 				case BUILD_TRAIN_WIDGET_SORT_ASCENDING_DESCENDING:
 					_last_sort_order = bv->descending_sort_order = !bv->descending_sort_order;
+					GenerateBuildList(w);
 					SetWindowDirty(w);
 					break;
 
@@ -557,8 +559,9 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			if (bv->sort_criteria != e->we.dropdown.index) {
 				bv->sort_criteria = e->we.dropdown.index;
 				_last_sort_criteria = e->we.dropdown.index;
+				GenerateBuildList(w);
+				SetWindowDirty(w);
 			}
-			SetWindowDirty(w);
 			break;
 
 		case WE_RESIZE: {
