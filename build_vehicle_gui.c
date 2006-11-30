@@ -319,14 +319,14 @@ static void GenerateBuildList(Window *w)
 	}
 }
 
-static inline const EngineID *GetEngineArray(Window *w)
+static inline const EngineID *GetEngineArray(const Window *w)
 {
-	return WP(w, buildvehicle_d).eng_list;
+	return WP(w, const buildvehicle_d).eng_list;
 }
 
-static inline uint16 GetEngineArrayLength(Window *w)
+static inline uint16 GetEngineArrayLength(const Window *w)
 {
-	return EngList_Count(&WP(w, buildvehicle_d).eng_list);
+	return EngList_Count(&WP(w, const buildvehicle_d).eng_list);
 }
 
 static void DrawBuildAircraftWindow(Window *w)
