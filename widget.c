@@ -486,7 +486,7 @@ static int GetDropdownItem(const Window *w)
 	if (GetWidgetFromPos(w, _cursor.pos.x - w->left, _cursor.pos.y - w->top) < 0)
 		return -1;
 
-	y = _cursor.pos.y - w->top - 2 + w->vscroll.pos;
+	y = _cursor.pos.y - w->top - 2 + w->vscroll.pos * 10;
 
 	if (y < 0)
 		return - 1;
@@ -509,56 +509,40 @@ static void DropdownMenuWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_PAINT: {
 			int x,y,i,sel;
-			int width;
-			bool scroll = w->vscroll.count > 0;
-			DrawPixelInfo tmp_dpi, *old_dpi = NULL;
+			int width, height;
 
 			DrawWindowWidgets(w);
 
 			x = 1;
-			y = 2 - w->vscroll.pos;
+			y = 2 - w->vscroll.pos * 10;
 
-			if (scroll) {
-				/* Set up the bounding box for drawing the list content */
-				if (!FillDrawPixelInfo(&tmp_dpi, w->widget[0].left + 1, w->widget[0].top + 1, w->widget[0].right - 1, w->widget[0].bottom - 1)) return;
-				old_dpi = _cur_dpi;
-				_cur_dpi = &tmp_dpi;
+			sel    = WP(w,dropdown_d).selected_index;
+			width  = w->widget[0].right - 3;
+			height = w->widget[0].bottom - 3;
 
-				/* Adjust x and y for the 1 pixel offset of the bounding box */
-				x--;
-				y--;
-			}
+			for (i = 0; WP(w,dropdown_d).items[i] != INVALID_STRING_ID; i++, sel--) {
+				if (HASBIT(WP(w,dropdown_d).hidden_state, i)) continue;
 
-			sel   = WP(w,dropdown_d).selected_index;
-			width = w->widget[0].right - 3;
+				if (y >= 0 && y <= height) {
+					if (WP(w,dropdown_d).items[i] != STR_NULL) {
+						if (sel == 0) GfxFillRect(x + 1, y, x + width, y + 9, 0);
+						DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16, x + width);
 
-			for (i = 0; WP(w,dropdown_d).items[i] != INVALID_STRING_ID; i++) {
-				if (HASBIT(WP(w,dropdown_d).hidden_state, i)) {
-					sel--;
-					continue;
-				}
-				if (WP(w,dropdown_d).items[i] != STR_NULL) {
-					if (sel == 0) GfxFillRect(x + 1, y, x + width, y + 9, 0);
-					DrawStringTruncated(x + 2, y, WP(w,dropdown_d).items[i], sel == 0 ? 12 : 16, x + width);
+						if (HASBIT(WP(w,dropdown_d).disabled_state, i)) {
+							GfxFillRect(x, y, x + width, y + 9,
+								PALETTE_MODIFIER_GREYOUT | _colour_gradient[_dropdown_menu_widgets[0].color][5]
+							);
+						}
+					} else {
+						int c1 = _colour_gradient[_dropdown_menu_widgets[0].color][3];
+						int c2 = _colour_gradient[_dropdown_menu_widgets[0].color][7];
 
-					if (HASBIT(WP(w,dropdown_d).disabled_state, i)) {
-						GfxFillRect(x, y, x + width, y + 9,
-							PALETTE_MODIFIER_GREYOUT | _colour_gradient[_dropdown_menu_widgets[0].color][5]
-						);
+						GfxFillRect(x + 1, y + 3, x + w->width - 5, y + 3, c1);
+						GfxFillRect(x + 1, y + 4, x + w->width - 5, y + 4, c2);
 					}
-				} else {
-					int c1 = _colour_gradient[_dropdown_menu_widgets[0].color][3];
-					int c2 = _colour_gradient[_dropdown_menu_widgets[0].color][7];
-
-					GfxFillRect(x + 1, y + 3, x + w->width - 5, y + 3, c1);
-					GfxFillRect(x + 1, y + 4, x + w->width - 5, y + 4, c2);
 				}
 				y += 10;
-				sel--;
 			}
-
-			/* Reset the bounding box if we had set it up */
-			if (scroll) _cur_dpi = old_dpi;
 		} break;
 
 		case WE_CLICK: {
@@ -664,7 +648,8 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 		} else {
 			/* ... and lastly if it won't, enable the scroll bar and fit the
 			 * list in below the widget */
-			height = screen_bottom - top;
+			int rows = (screen_bottom - 4 - top) / 10;
+			height = rows * 10 + 4;
 			scroll = true;
 		}
 	}
@@ -693,8 +678,8 @@ void ShowDropDownMenu(Window *w, const StringID *strings, int selected, int butt
 		w2->widget[1].bottom = height - 1;
 		w2->widget[0].right -= 12;
 
-		w2->vscroll.cap   = height - 1;
-		w2->vscroll.count = i * 10 + 3;
+		w2->vscroll.cap   = (height - 4) / 10;
+		w2->vscroll.count = i;
 	}
 
 	w2->desc_flags = WDF_DEF_WIDGET;
