@@ -183,8 +183,8 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 	 * Because of this, the return value have to be reversed as well and we return b - a instead of a - b.
 	 * Another thing is that both power and running costs should be doubled for multiheaded engines.
 	 * Since it would be multipling with 2 in both numerator and denumerator, it will even themselves out and we skip checking for multiheaded. */
-	const int va = (rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class]) / rvi_a->power;
-	const int vb = (rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class]) / rvi_b->power;
+	const int va = (rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class]) / max(1, rvi_a->power);
+	const int vb = (rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class]) / max(1, rvi_b->power);
 	const int r = vb - va;
 
 	if (r == 0) {
@@ -400,19 +400,16 @@ static void engine_drawing_loop(const EngineList *engines, int x, int *y, Engine
 
 static void GenerateBuildList(Window *w)
 {
-	EngineID j;
+	EngineID id;
 	int num_engines = 0;
+	int num_wagons  = 0;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
-	if (w->window_number != 0)
-		bv->filter.railtype = GetRailType(w->window_number);
-	else
-		bv->filter.railtype = RAILTYPE_END;
+	bv->filter.railtype = w->window_number == 0 ? RAILTYPE_END : GetRailType(w->window_number);
 
 	EngList_RemoveAll(&bv->eng_list);
 	// make list of all available cars
-	for (j = 0; j < NUM_TRAIN_ENGINES; j++) {
-		EngineID id = GetRailVehAtPosition(j); // XXX Can be removed when the wagon list is also sorted.
+	for (id = 0; id < NUM_TRAIN_ENGINES; id++) {
 		const Engine *e = GetEngine(id);
 		const RailVehicleInfo *rvi = RailVehInfo(id);
 
@@ -420,14 +417,23 @@ static void GenerateBuildList(Window *w)
 		if (!IsEngineBuildable(id, VEH_Train)) continue;
 
 		EngList_Add(&bv->eng_list, id);
-		if ((rvi->flags & RVI_WAGON) == 0) num_engines++;
+		if ((rvi->flags & RVI_WAGON) == 0) {
+			num_engines++;
+		} else {
+			num_wagons++;
+		}
 	}
+
 	// make engines first, and then wagons
 	_internal_sort_order = false;
 	EngList_Sort(&bv->eng_list, TrainEnginesThenWagonsSorter);
+
 	// and then sort engines
 	_internal_sort_order = WP(w,buildvehicle_d).descending_sort_order;
 	EngList_SortPartial(&bv->eng_list, _engine_sorter[bv->sort_criteria], 0, num_engines);
+
+	// and finally sort wagons
+	EngList_SortPartial(&bv->eng_list, _engine_sorter[bv->sort_criteria], num_engines, num_wagons);
 }
 
 static void DrawTrainBuildWindow(Window *w)
