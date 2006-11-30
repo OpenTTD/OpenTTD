@@ -57,6 +57,15 @@ static bool _internal_sort_order; // false = ascending, true = descending
 static byte _last_sort_criteria = 0;
 static bool _last_sort_order = false;
 
+static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
+{
+	const EngineID va = *(const EngineID*)a;
+	const EngineID vb = *(const EngineID*)b;
+	int r = ListPositionOfEngine(va) - ListPositionOfEngine(vb);
+
+	return _internal_sort_order ? -r : r;
+}
+
 static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
 {
 	EngineID va = *(const EngineID*)a;
@@ -64,15 +73,11 @@ static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
 	int val_a = ((RailVehInfo(va)->flags & RVI_WAGON) != 0) ? 1 : 0;
 	int val_b = ((RailVehInfo(vb)->flags & RVI_WAGON) != 0) ? 1 : 0;
 	int r = val_a - val_b;
-	return _internal_sort_order ? -r : r;
-}
 
-static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
-{
-	const EngineID va = *(const EngineID*)a;
-	const EngineID vb = *(const EngineID*)b;
-	int r = ListPositionOfEngine(va) - ListPositionOfEngine(vb);
-
+	if (r == 0) {
+		/* Use EngineID to sort instead since we want consistent sorting */
+		return TrainEngineNumberSorter(a, b);
+	}
 	return _internal_sort_order ? -r : r;
 }
 
@@ -91,10 +96,6 @@ static int CDECL TrainEngineSpeedSorter(const void *a, const void *b)
 	const int vb = RailVehInfo(*(const EngineID*)b)->max_speed;
 	const int r = va - vb;
 
-	if (r == 0) {
-		/* Use EngineID to sort instead since we want consistent sorting */
-		return TrainEngineNumberSorter(a, b);
-	}
 	return _internal_sort_order ? -r : r;
 }
 
@@ -107,10 +108,6 @@ static int CDECL TrainEnginePowerSorter(const void *a, const void *b)
 	const int vb = rvi_b->power << (rvi_b->flags & RVI_MULTIHEAD ? 1 : 0);
 	const int r = va - vb;
 
-	if (r == 0) {
-		/* Use EngineID to sort instead since we want consistent sorting */
-		return TrainEngineNumberSorter(a, b);
-	}
 	return _internal_sort_order ? -r : r;
 }
 
@@ -120,10 +117,6 @@ static int CDECL TrainEngineIntroDateSorter(const void *a, const void *b)
 	const int vb = GetEngine(*(const EngineID*)b)->intro_date;
 	const int r = va - vb;
 
-	if (r == 0) {
-		/* Use EngineID to sort instead since we want consistent sorting */
-		return TrainEngineNumberSorter(a, b);
-	}
 	return _internal_sort_order ? -r : r;
 }
 
@@ -148,11 +141,6 @@ static int CDECL TrainEngineNameSorter(const void *a, const void *b)
 
 	r =  strcasecmp(buf1, _bufcache); // sort by name
 
-	if (r == 0) {
-		/* Use EngineID to sort instead since we want consistent sorting */
-		return TrainEngineNumberSorter(a, b);
-	}
-
 	return _internal_sort_order ? -r : r;
 }
 
@@ -165,10 +153,6 @@ static int CDECL TrainEngineRunningCostSorter(const void *a, const void *b)
 	const int vb = rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class] * (rvi_b->flags & RVI_MULTIHEAD ? 2 : 1);
 	const int r = va - vb;
 
-	if (r == 0) {
-		/* Use EngineID to sort instead since we want consistent sorting */
-		return TrainEngineNumberSorter(a, b);
-	}
 	return _internal_sort_order ? -r : r;
 }
 
@@ -187,10 +171,6 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 	const int vb = (rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class]) / max(1, rvi_b->power);
 	const int r = vb - va;
 
-	if (r == 0) {
-		/* Use EngineID to sort instead since we want consistent sorting */
-		return TrainEngineNumberSorter(a, b);
-	}
 	return _internal_sort_order ? -r : r;
 }
 
@@ -200,10 +180,6 @@ static int CDECL TrainEngineReliabilitySorter(const void *a, const void *b)
 	const int vb = GetEngine(*(const EngineID*)b)->reliability;
 	const int r = va - vb;
 
-	if (r == 0) {
-		/* Use EngineID to sort instead since we want consistent sorting */
-		return TrainEngineNumberSorter(a, b);
-	}
 	return _internal_sort_order ? -r : r;
 }
 
@@ -424,7 +400,7 @@ static void GenerateBuildList(Window *w)
 		}
 	}
 
-	// make engines first, and then wagons
+	// make engines first, and then wagons, sorted by ListPositionOfEngine()
 	_internal_sort_order = false;
 	EngList_Sort(&bv->eng_list, TrainEnginesThenWagonsSorter);
 
