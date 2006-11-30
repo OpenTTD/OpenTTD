@@ -2556,12 +2556,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Costruis
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Trascina veicolo qui per venderlo
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centra visuale sul deposito ferroviario
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista treni - fai clic sul veicolo per le informazioni
-STR_BLACK_ENGINES                                               :{BLACK}Locomotive
-STR_BLACK_WAGONS                                                :{BLACK}Vagoni
-STR_BLACK_BOTH                                                  :{BLACK}Entrambi
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Clicca per vedere solo le locomotive
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Clicca per vedere solo i vagoni
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Clicca per vedere entrambi locomotive e vagoni
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Costruisci veicolo ferroviario evidenziato
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Rinomina tipo di veicolo
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Azione corrente del treno - Clicca qui per fermarlo/farlo partire
@@ -2790,12 +2784,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Costruis
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aereo - fai clic sull'aereo per le informazioni
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Costruisci un nuovo aereo (richiesto aeroporto con hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aereo - clicca sull'aereo per le informazioni
-STR_BLACK_PLANES                                                :{BLACK}Eliche
-STR_BLACK_JETS                                                  :{BLACK}Reattori
-STR_BLACK_HELICOPTERS                                           :{BLACK}Elicotteri
-STR_BUILD_PLANES_TIP                                            :{BLACK}Clicca per vedere gli aerei a elica
-STR_BUILD_JETS_TIP                                              :{BLACK}Clicca per vedere gli aerei a reazione
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Clicca per vedere gli elicotteri
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Costruisci un nuovo aereo
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Trascina qui l'aereo per venderlo
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centra visuale sull'hangar

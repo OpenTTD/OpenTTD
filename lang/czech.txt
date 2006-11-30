@@ -2615,12 +2615,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Koupit n
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Přesuň sem vagon pro prodej
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Nastav pohled na vlakové depo
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Seznam vlaků - stiskni na vlaku pro informace
-STR_BLACK_ENGINES                                               :{BLACK}Lokomotivy
-STR_BLACK_WAGONS                                                :{BLACK}Vagony
-STR_BLACK_BOTH                                                  :{BLACK}Obojí
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Kliknutím zobrazíš jen lokomotivy
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Kliknutím zobrazíš jen vagony
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Kliknutím zobrazíš obojí - lokomotivy i vagony
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Kup označený vagon/lokomotivu
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Přejmenovat typ vlaku
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Momentální akce vlaku - stiskni pro zastavení/rozjetí vlaku
@@ -2849,12 +2843,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Postavit
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Letadlo - klepni na letadlo pro informace
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Koupit nové letadlo (je potřeba letiště)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Letadlo - klepni na letadlo pro informace
-STR_BLACK_PLANES                                                :{BLACK}Vrtulová letadla
-STR_BLACK_JETS                                                  :{BLACK}Proudová letadla
-STR_BLACK_HELICOPTERS                                           :{BLACK}Vrtulníky
-STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknutím zobrazíš vrtulová letadla
-STR_BUILD_JETS_TIP                                              :{BLACK}Kliknutím zobrazíš proudová letadla
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kliknutím zobrazíš vrtulníky
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Koupit nové letadlo
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Přesuň sem letadlo k prodeji
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Nastavit pohled na hangár

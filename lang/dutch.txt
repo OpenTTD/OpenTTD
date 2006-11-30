@@ -2556,12 +2556,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Bouw nie
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Sleep treinonderdeel hier om het te verkopen
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centreer het scherm op de locatie van de trein depot
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Treinonderdeel selectie lijst - klik op een voertuig voor informatie
-STR_BLACK_ENGINES                                               :{BLACK}Motor
-STR_BLACK_WAGONS                                                :{BLACK}Wagons
-STR_BLACK_BOTH                                                  :{BLACK}Beide
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klik om alleen motoren te zien
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klik om alleen wagons te zien
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klik om motoren en wagons te bekijken
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Bouw de geselecteerde treinonderdeel
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Hernoem treinonderdeel
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Huidige trein actie - klik hier om de trein te starten/stoppen
@@ -2790,12 +2784,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Bouw vli
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Vliegtuig - klik op vliegtuig voor informatie
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Bouw nieuw vliegtuig (heeft vliegveld met hangar nodig)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Vliegtuig - klik op vliegtuig voor informatie
-STR_BLACK_PLANES                                                :{BLACK}Propellers
-STR_BLACK_JETS                                                  :{BLACK}Vliegtuigen
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopter
-STR_BUILD_PLANES_TIP                                            :{BLACK}Klik om propellervliegtuigen te zien
-STR_BUILD_JETS_TIP                                              :{BLACK}Klik om straalvliegtuigen te zien
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Klik om helikopters te zien
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Bouw nieuw vliegtuig
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Sleep vliegtuig hierheen om het te verkopen
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centreer hoofdbeeld op hangarlokatie

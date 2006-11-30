@@ -2661,12 +2661,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Új vas�
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Dobj ide egy jármûvet az eladásához
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}A fõ nézetet a jármûtelepre állítja
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Vasúti jármû kiválasztása - kattints egy jármûre az adataihoz
-STR_BLACK_ENGINES                                               :{BLACK}Mozdonyok
-STR_BLACK_WAGONS                                                :{BLACK}Vagonok
-STR_BLACK_BOTH                                                  :{BLACK}Mindkettõ
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Kattints ide csak a mozdonyok mutatásához
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Kattints ide csak a vagonok mutatásához
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Kattints ide a mozdonyok és a vagonok mutatásához
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}A kijelölt vasúti jármû megvétele
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}A vasúti jármû márkanevének megváltoztatása
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aktuális vonatesemény - kattints ide a vonat elindításához/megállításához
@@ -2895,12 +2889,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Repülõ
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Repülõgépek - kattints egy repülõgépre az adataihoz
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Új repülõgépek vásárlása (hangár szükséges hozzá)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Repülõgépek - kattints egy repülõgépre az adataihoz
-STR_BLACK_PLANES                                                :{BLACK}Propelleres gépek
-STR_BLACK_JETS                                                  :{BLACK}Jetek
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterek
-STR_BUILD_PLANES_TIP                                            :{BLACK}Kattints ide csak a propelleres repülõgépek mutatásához
-STR_BUILD_JETS_TIP                                              :{BLACK}Kattints ide csak a jetrepülõgépek mutatásához
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kattints ide csak a helikopterek mutatásához
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Új repülõgépek vásárlása
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Dobj ide egy repülõgépet az eladásához
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}A fõ nézetet a hangárra állítja

@@ -2550,12 +2550,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Yeni tre
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Satmak için aracı buraya sürükleyin
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Tren garini göster
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Tren seçim listesi - daha fazla bilgi için araca tıklayın
-STR_BLACK_ENGINES                                               :{BLACK}Lokomotifler
-STR_BLACK_WAGONS                                                :{BLACK}Vagonlar
-STR_BLACK_BOTH                                                  :{BLACK}İkisi de
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Sadece lokomotifleri görmek için tıkla
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Sadece vagonları görmek için tıkla
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Lokomotifleri ve vagonları görmek için tıkla
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Seçili treni satın al
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Treni yeniden adlandır
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tren durumu - treni durdurmak/başlatmak için buraya tıklayın
@@ -2784,12 +2778,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Havalima
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Uçak - ayrıntılı bilgi için uçağı tıkla
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Yeni uçak al (hangarlı havalimanı gerekir)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Uçak - bilgi için uçaga tıkla
-STR_BLACK_PLANES                                                :{BLACK}Pervaneliler
-STR_BLACK_JETS                                                  :{BLACK}Jetler
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterler
-STR_BUILD_PLANES_TIP                                            :{BLACK}Pervaneli uçakları görmek için tıkla
-STR_BUILD_JETS_TIP                                              :{BLACK}Jet uçaklarını görmek için tıkla
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Helikopterleri görmek için tıkla
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Yeni uçak al
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Satmak için uçağı buraya sürükleyin
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Hangarı göster

@@ -2685,12 +2685,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Buduj no
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Przeciagnij tutaj pociag aby go sprzedac
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrowanie glownego okna na pozycji zajezdni
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista wyboru pociagow - klik na pojezdzie aby uzyskac inforamcje
-STR_BLACK_ENGINES                                               :{BLACK}Lokomotywy
-STR_BLACK_WAGONS                                                :{BLACK}Wagony
-STR_BLACK_BOTH                                                  :{BLACK}Wszystko
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Kliknij aby widziec tylko lokomotywy
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Kliknij aby widziec tylko wagony
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Kliknij aby widziec i lokomotywy i wagony
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Zbuduj wybrany pojazd
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Zmiana nazwy typu pociagu
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Obecny stan pociagu - klik tutaj aby zatrzymac/ruszyc pociag
@@ -2919,12 +2913,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Budowa l
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Samolot - klik na samolocie aby uzyskac informacje
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Budowa samolotu (wymaga lotniska z hangarem)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Samolot - klik na samolocie aby uzyskac informacje
-STR_BLACK_PLANES                                                :{BLACK}Samoloty k.
-STR_BLACK_JETS                                                  :{BLACK}Odrzutowce
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helikoptery
-STR_BUILD_PLANES_TIP                                            :{BLACK}Kliknij aby widziec konwencjonalne samoloty
-STR_BUILD_JETS_TIP                                              :{BLACK}Kliknij aby widziec odrzutowce
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Kliknij aby widziec helikoptery
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Budowa nowego samolotu
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Przeciagnij tutaj samolot aby go sprzedac
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centruj glowne okno na pozycji hangaru

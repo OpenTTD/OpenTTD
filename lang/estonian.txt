@@ -2609,12 +2609,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Osta uus
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Tiri rongi veok siia et müüa
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskenda põhivaade rongidepoo kohale
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Rongivagunite nimekiri - vajuta sõidukile info jaoks
-STR_BLACK_ENGINES                                               :{BLACK}Mootorid
-STR_BLACK_WAGONS                                                :{BLACK}Vagunid
-STR_BLACK_BOTH                                                  :{BLACK}Mõlemad
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Vajuta, et näha ainult vedureid
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Vajuta, et näha ainult vaguneid
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Vajuta, et näha nii vedureid kui vaguneid
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Ehita valitud rongi sõiduk
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Nimeta ümber rongisõiduki tüüp
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Praegune rongi tegevus - vajuta siia et peatada/käivitada rong
@@ -2843,12 +2837,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Ehita le
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lennuk - info saamiseks vajuta lennukile
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Ehita uus lennuk (vajab angaariga lennujaama)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lennuk - info saamiseks vajuta lennukile
-STR_BLACK_PLANES                                                :{BLACK}Propellerid
-STR_BLACK_JETS                                                  :{BLACK}Reaktiivmootoriga
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterid
-STR_BUILD_PLANES_TIP                                            :{BLACK}Vajuta siia et näha propelleritega lennukeid
-STR_BUILD_JETS_TIP                                              :{BLACK}Vajuta siia et näha reaktiivmootoritega lennukeid
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Vajuta et vaadata helikoptereid
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Ehita uus lennuk
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Müümiseks tiri lennuk siia
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Vii vaade angaarile

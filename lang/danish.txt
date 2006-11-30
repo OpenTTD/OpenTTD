@@ -2554,12 +2554,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Byg nyt 
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Træk tog/togvogn her hend for at sælge
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer skærmen over placeringen af remisen
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Tog valgsliste - klik på et køretøj for mere information
-STR_BLACK_ENGINES                                               :{BLACK}Lokomotiver
-STR_BLACK_WAGONS                                                :{BLACK}Vogne
-STR_BLACK_BOTH                                                  :{BLACK}Begge
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klik for kun at se lokomotiver
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klik for kun at se vogne
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klik for at se både lokomotiver og vogne
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Byg det markerede lokomotiv/togvogn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Omdøb tog-/togvognstypen
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Nuværende opførsel - klik her for at starte/stoppe toget
@@ -2788,12 +2782,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Byg en l
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Fly - klik på et fly for information
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Byg nyt fly (kræver en lufthavn med hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Fly - klik på et fly for information
-STR_BLACK_PLANES                                                :{BLACK}Propelfly
-STR_BLACK_JETS                                                  :{BLACK}Jetfly
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helikoptere
-STR_BUILD_PLANES_TIP                                            :{BLACK}Klik for at se propelfly
-STR_BUILD_JETS_TIP                                              :{BLACK}Klik for at se jetfly
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Klik for at se helikoptere
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Byg nyt fly
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Træk fly herhend for at sælge
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrer skærmen over placeringen af hangaren

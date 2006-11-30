@@ -2560,12 +2560,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construi
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrossega l'element de tren fins aquí per vendre'l
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar la vista de la pantalla principal en la situació de la cotxera
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Llista de selecció d'elements de tren - clica a l'element per informació
-STR_BLACK_ENGINES                                               :{BLACK}Motors
-STR_BLACK_WAGONS                                                :{BLACK}Vagons
-STR_BLACK_BOTH                                                  :{BLACK}Ambdós
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Clica per veure només els motors
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Clica per veure només els vagons
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Clica per veure els motors i els vagons
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir l'element de tren seleccionat
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Reanomenar el tipus d'element de tren
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Acció de tren actual - clica aquí per parar/arrencar el tren
@@ -2794,12 +2788,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construi
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l'aeronau per informació
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir noves aeronaus (necessites un aeroport amb hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronau - clica en l' aeronau per informació
-STR_BLACK_PLANES                                                :{BLACK}Avions d'hèlix
-STR_BLACK_JETS                                                  :{BLACK}Avions a reacció
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helicòpters
-STR_BUILD_PLANES_TIP                                            :{BLACK}Clica per veure avions d'hèlix
-STR_BUILD_JETS_TIP                                              :{BLACK}Clica per veure avions a reacció
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Clica per veure els helicòpters
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir noves aeronaus
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrossega l'aeronau fins aquí per vendre-la
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar pantalla principal en la situació de l'hangar

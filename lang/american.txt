@@ -2556,12 +2556,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Build ne
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Drag train vehicle to here to sell it
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Center main view on train depot location
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Train vehicle selection list - click on vehicle for information
-STR_BLACK_ENGINES                                               :{BLACK}Engines
-STR_BLACK_WAGONS                                                :{BLACK}Train cars
-STR_BLACK_BOTH                                                  :{BLACK}Both
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Click to see engines only
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Click to see train cars only
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Click to see both engines and train cars
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Build the highlighted train vehicle
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Rename train vehicle type
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Current train action - click here to stop/start train
@@ -2790,12 +2784,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Build ai
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aircraft - click on aircraft for information
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Build new aircraft (requires airport with hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aircraft - click on aircraft for information
-STR_BLACK_PLANES                                                :{BLACK}Propellers
-STR_BLACK_JETS                                                  :{BLACK}Jets
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helicopters
-STR_BUILD_PLANES_TIP                                            :{BLACK}Click to see propeller planes
-STR_BUILD_JETS_TIP                                              :{BLACK}Click to see jet planes
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Click to see helicopters
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Build new aircraft
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Drag aircraft to here to sell it
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Center main view on hangar location

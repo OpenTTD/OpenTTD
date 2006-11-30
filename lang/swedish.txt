@@ -2556,12 +2556,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Bygg ny 
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Dra tågvagn hit för att sälja den
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrera vyn på depån
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista av tågvagnar - klicka på tågvagn för information
-STR_BLACK_ENGINES                                               :{BLACK}Lok
-STR_BLACK_WAGONS                                                :{BLACK}Vagnar
-STR_BLACK_BOTH                                                  :{BLACK}Båda
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klicka för att endast se lok
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klicka för att endast se vagnar
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klicka för att se både lok och vagnar
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Bygg markerad tågvagn
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Byt namn på tågvagn
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Aktuell tågorder - klicka här för att stoppa/starta tåg
@@ -2790,12 +2784,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Bygg fly
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flygplan - Klicka på flygplan för information
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Bygg nytt flygplan (kräver flygplats med hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flygplan - Klicka på flygplan för information
-STR_BLACK_PLANES                                                :{BLACK}Propellerflyg
-STR_BLACK_JETS                                                  :{BLACK}Jetflyg
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helikoptrar
-STR_BUILD_PLANES_TIP                                            :{BLACK}Klicka för att se propellerplan
-STR_BUILD_JETS_TIP                                              :{BLACK}Klicka för att se jetplan
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Klicka för att se helikoptrar
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Bygg nytt flygplan
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Dra flygplan hit för att sälja det
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrera vyn ovanför hangaren

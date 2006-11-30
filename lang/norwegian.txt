@@ -2549,12 +2549,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Bygg nyt
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Dra tog (vogn) her for å selge
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Vis stedet togstallen ligger på
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Liste over tog/vogner - trykk på tog/vogn for mer informasjon
-STR_BLACK_ENGINES                                               :{BLACK}Motorer
-STR_BLACK_WAGONS                                                :{BLACK}Vogner
-STR_BLACK_BOTH                                                  :{BLACK}Begge
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klikk for kun å se motorer
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klikk for kun å se vogner
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klikk for å se både motorer og vogner
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Bygg den valgte enheten
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Endre navnet til den valgte enheten
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Gjeldende togstatus - trykk her for å stoppe/starte tog
@@ -2782,8 +2776,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Bygg fly
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Fly - trykk på fly for mer informasjon
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Bygg nytt fly (krever flyplass med hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Fly - trykk på fly for mer informasjon
-STR_BLACK_PLANES                                                :{BLACK}Propellfly
-STR_BLACK_JETS                                                  :{BLACK}Jetfly
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Bygg nytt fly
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Dra fly hit for å selge
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Vis hvor hangaren ligger

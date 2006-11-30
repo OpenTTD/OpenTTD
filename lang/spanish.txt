@@ -2555,12 +2555,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construi
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrastrar aquí vehículo para venderlo
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar vista en posición del depósito
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de selección de vehículo - click en vehículo para información
-STR_BLACK_ENGINES                                               :{BLACK}Locomotoras
-STR_BLACK_WAGONS                                                :{BLACK}Vagones
-STR_BLACK_BOTH                                                  :{BLACK}Ambos
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Pulsa para ver solo las locomotoras
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Pulsa para ver solo los vagones
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Pulsa para ver locomotoras y vagones
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construir el vehículo resaltado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renombrar tipo de vehículo
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Acción actual del tren - click aquí para detener/arrancar el tren
@@ -2789,12 +2783,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Construi
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}La aeronave - click en la aeronave para información
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construir nueva aeronave (requiere aeropuerto con hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronave - click en la aeronave para información
-STR_BLACK_PLANES                                                :{BLACK}Aviones a Hélices
-STR_BLACK_JETS                                                  :{BLACK}Jets
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helicopteros
-STR_BUILD_PLANES_TIP                                            :{BLACK}Pulsa para ver los aviones a hélices
-STR_BUILD_JETS_TIP                                              :{BLACK}Pulsa para ver los Jets
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Pulsa para ver helicopteros
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construir aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrastra aeronave aquí para venderla
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Centrar vista en posición del hangar

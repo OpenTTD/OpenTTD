@@ -2554,12 +2554,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Rakenna 
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Vedä yksikkö tähän myydäksesi sen.
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Keskitä näkymä veturitallin sijaintiin.
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Yksikön valintalista - napsauta kohteita saadaksesi tietoja.
-STR_BLACK_ENGINES                                               :{BLACK}Veturit
-STR_BLACK_WAGONS                                                :{BLACK}Vaunut
-STR_BLACK_BOTH                                                  :{BLACK}Molemmat
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klikkaa nähdäksesi vain veturit
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klikkaa nähdäksesi vain vaunut
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klikkaa nähdäksesi veturit ja vaunut
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Rakenna valittu yksikkö.
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Nimeä yksikön tyyppi uudelleen.
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Valitun junan toiminnot - napsauta tässä pysäyttääksesi/lähettääksesi.
@@ -2788,12 +2782,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Rakenna 
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lentokoneet - napsauta lentokonetta saadaksesi tietoja.
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Rakenna uusi lentokone (tarvitaan lentokenttä lentokonehallilla).
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Lentokoneet - napsauta lentokonetta saadaksesi tietoja.
-STR_BLACK_PLANES                                                :{BLACK}Potkurikoneet
-STR_BLACK_JETS                                                  :{BLACK}Suihkukoneet
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helikopterit
-STR_BUILD_PLANES_TIP                                            :{BLACK}Klikkaa nähdäksesi potkurikoneet
-STR_BUILD_JETS_TIP                                              :{BLACK}Klikkaa nähdäksesi suihkukoneet
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Klikkaa nähdäksesi helikopterit
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Rakenna uusi lentokone
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Vedä lentokone tähän myydäksesi sen.
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Keskitä näkymä lentokonehallin sijaintiin.

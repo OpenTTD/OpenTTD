@@ -2557,12 +2557,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Baue neu
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Schienenfahrzeug hierher ziehen, um es zu verkaufen
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Ansicht auf das Zugdepot zentrieren
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Zugfahrzeugliste - Einzelheiten durch Anklicken des Fahrzeuges
-STR_BLACK_ENGINES                                               :{BLACK}Loks
-STR_BLACK_WAGONS                                                :{BLACK}Waggons
-STR_BLACK_BOTH                                                  :{BLACK}Beides
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Klicken, um nur Loks zu sehen
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Klicken, um nur Waggons zu sehen
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Klicken, um Loks und Waggons zu sehen
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Baue das angewählte Fahrzeug
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Umbenennen der Waggontypen
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Laufende Zugbewegung - Klicke hier, um den Zug anzuhalten / zu starten
@@ -2791,12 +2785,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Baue Flu
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Baue neues Flugzeug (setzt Flughafen mit Hangar voraus)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Flugzeuge - für Einzelheiten auf das Flugzeug klicken
-STR_BLACK_PLANES                                                :{BLACK}Propellermaschinen
-STR_BLACK_JETS                                                  :{BLACK}Düsenflugzeuge
-STR_BLACK_HELICOPTERS                                           :{BLACK}Hubschrauber
-STR_BUILD_PLANES_TIP                                            :{BLACK}Klicke hier um die Propellermaschinen zu sehen
-STR_BUILD_JETS_TIP                                              :{BLACK}Klicke hier um die Düsenflugzeuge zu sehen
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Klicke hier um die Helikopter zu sehen
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Baue neues Flugzeug
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Zum Verkauf des Flugzeuges hierher ziehen
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Ansicht auf den Hangar zentrieren

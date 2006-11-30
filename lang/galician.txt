@@ -2488,12 +2488,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Constru�
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Arrastra un vehículo do tren aquí para vendelo
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centra-la vista principal na situación do depósito de trens
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Lista de selección de vehículos para trens - pincha nun vehículo para máis información
-STR_BLACK_ENGINES                                               :{BLACK}Máquinas
-STR_BLACK_WAGONS                                                :{BLACK}Vagóns
-STR_BLACK_BOTH                                                  :{BLACK}Ambos
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Pincha para ver só as máquinas
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Pincha para ver só os vagóns
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Pincha para ver as máquinas e os vagóns
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construílo vehículo de ferrocarril seleccionado
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renomea-lo tipo de vehículo de ferrocarril
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Tarea actual do tren - pincha aquí para parar/arrincar o tren
@@ -2717,9 +2711,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Constru�
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronaves - pincha na aeronave para máis información
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Construír nova aeronave (necesitas un aeroporto con hangar)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Aeronaves - pincha na aeronave para máis información
-STR_BLACK_JETS                                                  :{BLACK}Jets
-STR_BLACK_HELICOPTERS                                           :{BLACK}Helicópteros
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Pincha aquí para ver os helicópteros
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Construír nova aeronave
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Arrastra a aeronave aquí para vendela
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}centra-la vista principal na situación do hangar
