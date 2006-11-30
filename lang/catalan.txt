@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informac
 STR_013E_CAPACITIES                                             :{BLACK}Capacitats
 STR_013E_TOTAL_CARGO                                            :{BLACK}Càrrega Total
 STR_013F_CAPACITY                                               :{BLACK}Capacitats: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Capacitat: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Càrrega total (capacitat) d'aquest tren:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Joc Nou
 STR_0141_LOAD_GAME                                              :{BLACK}Carregar Joc
 STR_SINGLE_PLAYER                                               :{BLACK}Jugador individual
@@ -478,37 +480,37 @@ STR_01AA_NAME                                                   :{BLACK}Nom
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
-STR_01AC_1ST                                                    :1
-STR_01AD_2ND                                                    :2
-STR_01AE_3RD                                                    :3
-STR_01AF_4TH                                                    :4
-STR_01B0_5TH                                                    :5
-STR_01B1_6TH                                                    :6
-STR_01B2_7TH                                                    :7
-STR_01B3_8TH                                                    :8
-STR_01B4_9TH                                                    :9
-STR_01B5_10TH                                                   :10
-STR_01B6_11TH                                                   :11
-STR_01B7_12TH                                                   :12
-STR_01B8_13TH                                                   :13
-STR_01B9_14TH                                                   :14
-STR_01BA_15TH                                                   :15
-STR_01BB_16TH                                                   :16
-STR_01BC_17TH                                                   :17
-STR_01BD_18TH                                                   :18
-STR_01BE_19TH                                                   :19
-STR_01BF_20TH                                                   :20
-STR_01C0_21ST                                                   :21
-STR_01C1_22ND                                                   :22
-STR_01C2_23RD                                                   :23
-STR_01C3_24TH                                                   :24
-STR_01C4_25TH                                                   :25
-STR_01C5_26TH                                                   :26
-STR_01C6_27TH                                                   :27
-STR_01C7_28TH                                                   :28
-STR_01C8_29TH                                                   :29
-STR_01C9_30TH                                                   :30
-STR_01CA_31ST                                                   :31
+STR_01AC_1ST                                                    :1er
+STR_01AD_2ND                                                    :2on
+STR_01AE_3RD                                                    :3er
+STR_01AF_4TH                                                    :4rt
+STR_01B0_5TH                                                    :5e
+STR_01B1_6TH                                                    :6e
+STR_01B2_7TH                                                    :7e
+STR_01B3_8TH                                                    :8e
+STR_01B4_9TH                                                    :9e
+STR_01B5_10TH                                                   :10e
+STR_01B6_11TH                                                   :11e
+STR_01B7_12TH                                                   :12e
+STR_01B8_13TH                                                   :13e
+STR_01B9_14TH                                                   :14e
+STR_01BA_15TH                                                   :15e
+STR_01BB_16TH                                                   :16e
+STR_01BC_17TH                                                   :17e
+STR_01BD_18TH                                                   :18e
+STR_01BE_19TH                                                   :19e
+STR_01BF_20TH                                                   :20e
+STR_01C0_21ST                                                   :21e
+STR_01C1_22ND                                                   :22e
+STR_01C2_23RD                                                   :23e
+STR_01C3_24TH                                                   :24e
+STR_01C4_25TH                                                   :25e
+STR_01C5_26TH                                                   :26e
+STR_01C6_27TH                                                   :27e
+STR_01C7_28TH                                                   :28e
+STR_01C8_29TH                                                   :29e
+STR_01C9_30TH                                                   :30e
+STR_01CA_31ST                                                   :31e
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -1025,6 +1027,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Finestr
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permetre subornar a les autoritats locals: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estacions no uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nova cerca de rutes global (NPF, anul·la NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de pes per contenidor per simular trens pesats: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permetre sempre aeroports petits: {ORANGE}{STRING}
 
@@ -2498,6 +2501,7 @@ STR_INVALID_ORDER                                               :{RED} (Ordre in
 STR_UNKNOWN_DESTINATION                                         :destí desconegut
 STR_8812_EMPTY                                                  :{LTBLUE}Buit
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} procedent{P "" s} de {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} des de {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tren {COMMA} en espera en cotxeres
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nous Vehicles
 STR_8816                                                        :{BLACK}-
@@ -2568,7 +2572,7 @@ STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Acció d
 STR_8847_SHOW_TRAIN_S_ORDERS                                    :{BLACK}Mostrar ordres de trens
 STR_8848_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrar la vista de la pantalla principal en la situació del tren
 STR_8849_SEND_TRAIN_TO_DEPOT                                    :{BLACK}Enviar tren a cotxera
-STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Obliga el tren a actuar sense esperar a tenir senyal lliure
+STR_884A_FORCE_TRAIN_TO_PROCEED                                 :{BLACK}Obligar al tren a actuar sense esperar a tenir senyal lliure
 STR_884B_REVERSE_DIRECTION_OF_TRAIN                             :{BLACK}Invertir la direcció del tren
 STR_884C_SHOW_TRAIN_DETAILS                                     :{BLACK}Mostrar detalls del tren
 STR_884D_INCREASE_SERVICING_INTERVAL                            :{BLACK}Augmentar l'interval de manteniment
@@ -2583,7 +2587,7 @@ STR_8854_DELETE_THE_HIGHLIGHTED                                 :{BLACK}Esborrar
 STR_8855_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer sense parades l'ordre seleccionada
 STR_8856_INSERT_A_NEW_ORDER_BEFORE                              :{BLACK}Afegir una nova ordre abans de la seleccionada, o afegir-la al final de la llista
 STR_8857_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Fer que en l'ordre seleccionada s'esperi a que l'element tingui càrrega total
-STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obliga en l'ordre seleccionada a descarregar l'element
+STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Obligar en l'ordre seleccionada a descarregar l'element
 STR_SERVICE_HINT                                                :{BLACK}Saltar l'ordre a menys que es necessiti manteniment
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Nova {STRING} disponible!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
@@ -2645,7 +2649,7 @@ STR_901C_CURRENT_VEHICLE_ACTION                                 :{BLACK}Acció s
 STR_901D_SHOW_VEHICLE_S_ORDERS                                  :{BLACK}Mostrar les ordres dels vehicles
 STR_901E_CENTER_MAIN_VIEW_ON_VEHICLE                            :{BLACK}Centrar la pantalla principal en la situació del vehicle
 STR_901F_SEND_VEHICLE_TO_DEPOT                                  :{BLACK}Enviar vehicle a cotxera
-STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Obliga el vehicle a tornar
+STR_9020_FORCE_VEHICLE_TO_TURN_AROUND                           :{BLACK}Obliga al vehicle a tornar
 STR_9021_SHOW_ROAD_VEHICLE_DETAILS                              :{BLACK}Mostrar detalls del vehicle
 STR_9022_VEHICLES_CLICK_ON_VEHICLE                              :{BLACK}Vehicles - clica en un vehicle per informació
 STR_9023_BUILD_NEW_ROAD_VEHICLE                                 :{BLACK}Construir nou automòbil
@@ -2719,7 +2723,7 @@ STR_9821_DRAG_SHIP_TO_HERE_TO_SELL                              :{BLACK}Arrosseg
 STR_9822_CENTER_MAIN_VIEW_ON_SHIP                               :{BLACK}Centrar pantalla principal en la situació de la drassana
 STR_9823_SHIPS_CLICK_ON_SHIP_FOR                                :{BLACK}Vaixells - clica en un vaixell per informació
 STR_9824_BUILD_NEW_SHIPS_REQUIRES                               :{BLACK}Construir nous vaixells (necessites una drassana)
-STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}Llista de selecció de Vaixells - clica en un vaixell per informació
+STR_9825_SHIP_SELECTION_LIST_CLICK                              :{BLACK}LLista de selecció de Vaixells - clica en un vaixell per informació
 STR_9826_BUILD_THE_HIGHLIGHTED_SHIP                             :{BLACK}Construir el vaixell seleccionat
 STR_9827_CURRENT_SHIP_ACTION_CLICK                              :{BLACK}Accions del vaixell actual - clica aquí per parar/arrencar el vaixell
 STR_9828_SHOW_SHIP_S_ORDERS                                     :{BLACK}Mostrar les ordres del vaixell

@@ -57,7 +57,7 @@ STR_0031_MAIL                                                   :Correspondênci
 STR_0032_OIL                                                    :Petróleo
 STR_0033_LIVESTOCK                                              :Gado
 STR_0034_GOODS                                                  :Bens
-STR_0035_GRAIN                                                  :Grãos
+STR_0035_GRAIN                                                  :Cereais
 STR_0036_WOOD                                                   :Madeira
 STR_0037_IRON_ORE                                               :Minério de Ferro
 STR_0038_STEEL                                                  :Aço
@@ -154,8 +154,8 @@ STR_00B0_MAP                                                    :{WHITE}Mapa - {
 STR_00B1_GAME_OPTIONS                                           :{WHITE}Opções do Jogo
 STR_00B2_MESSAGE                                                :{YELLOW}Mensagem
 STR_00B3_MESSAGE_FROM                                           :{YELLOW}Mensagem de {STRING}
-STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Inpossível fazer isto....
-STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Impossível limpar esta área....
+STR_00B4_CAN_T_DO_THIS                                          :{WHITE}Não é possível fazer isto....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                  :{WHITE}Não é possível limpar esta área....
 STR_00B6_ORIGINAL_COPYRIGHT                                     :{BLACK}Copyright original {COPYRIGHT} 1995 Chris Sawyer, Todos os direitos reservados
 STR_00B7_VERSION                                                :{BLACK}OpenTTD versão {REV}
 STR_00BA_COPYRIGHT_OPENTTD                                      :{BLACK}OpenTTD {COPYRIGHT}2002-2006 A equipe do OpenTTD
@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informa�
 STR_013E_CAPACITIES                                             :{BLACK}Capacidades
 STR_013E_TOTAL_CARGO                                            :{BLACK}Carga Total
 STR_013F_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Capacidade {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Capacidade total deste trem:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Novo Jogo
 STR_0141_LOAD_GAME                                              :{BLACK}Abrir Jogo
 STR_SINGLE_PLAYER                                               :{BLACK}1 jogador
@@ -478,37 +480,37 @@ STR_01AA_NAME                                                   :{BLACK}Nome
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
-STR_01AC_1ST                                                    :1
-STR_01AD_2ND                                                    :2
-STR_01AE_3RD                                                    :3
-STR_01AF_4TH                                                    :4
-STR_01B0_5TH                                                    :5
-STR_01B1_6TH                                                    :6
-STR_01B2_7TH                                                    :7
-STR_01B3_8TH                                                    :8
-STR_01B4_9TH                                                    :9
-STR_01B5_10TH                                                   :10
-STR_01B6_11TH                                                   :11
-STR_01B7_12TH                                                   :12
-STR_01B8_13TH                                                   :13
-STR_01B9_14TH                                                   :14
-STR_01BA_15TH                                                   :15
-STR_01BB_16TH                                                   :16
-STR_01BC_17TH                                                   :17
-STR_01BD_18TH                                                   :18
-STR_01BE_19TH                                                   :19
-STR_01BF_20TH                                                   :20
-STR_01C0_21ST                                                   :21
-STR_01C1_22ND                                                   :22
-STR_01C2_23RD                                                   :23
-STR_01C3_24TH                                                   :24
-STR_01C4_25TH                                                   :25
-STR_01C5_26TH                                                   :26
-STR_01C6_27TH                                                   :27
-STR_01C7_28TH                                                   :28
-STR_01C8_29TH                                                   :29
-STR_01C9_30TH                                                   :30
-STR_01CA_31ST                                                   :31
+STR_01AC_1ST                                                    :1o
+STR_01AD_2ND                                                    :2o
+STR_01AE_3RD                                                    :3o
+STR_01AF_4TH                                                    :4o
+STR_01B0_5TH                                                    :5o
+STR_01B1_6TH                                                    :6o
+STR_01B2_7TH                                                    :7o
+STR_01B3_8TH                                                    :8o
+STR_01B4_9TH                                                    :9o
+STR_01B5_10TH                                                   :10o
+STR_01B6_11TH                                                   :11o
+STR_01B7_12TH                                                   :12o
+STR_01B8_13TH                                                   :13o
+STR_01B9_14TH                                                   :14o
+STR_01BA_15TH                                                   :15o
+STR_01BB_16TH                                                   :16o
+STR_01BC_17TH                                                   :17o
+STR_01BD_18TH                                                   :18o
+STR_01BE_19TH                                                   :19o
+STR_01BF_20TH                                                   :20o
+STR_01C0_21ST                                                   :21o
+STR_01C1_22ND                                                   :22o
+STR_01C2_23RD                                                   :23o
+STR_01C3_24TH                                                   :24o
+STR_01C4_25TH                                                   :25o
+STR_01C5_26TH                                                   :26o
+STR_01C6_27TH                                                   :27o
+STR_01C7_28TH                                                   :28o
+STR_01C8_29TH                                                   :29o
+STR_01C9_30TH                                                   :30o
+STR_01CA_31ST                                                   :31o
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -582,7 +584,7 @@ STR_020F_GENERAL_INFORMATION                                    :{YELLOW}Informa
 STR_MESSAGES_ALL                                                :{YELLOW}Configurações para todos os tipos de mensagem(on/off/resumo)
 STR_MESSAGE_SOUND                                               :{YELLOW}Tocar som para notícias resumidas
 STR_0210_TOO_FAR_FROM_PREVIOUS_DESTINATIO                       :{WHITE}...muito distante do destino anterior
-STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top de companhias que chegaram ao Nível {NUM}{}(Nível {STRING})
+STR_0211_TOP_COMPANIES_WHO_REACHED                              :{BIGFONT}{BLACK}Top de companhias que chegaram a {NUM}{}({STRING} Nivél)
 STR_TOP_COMPANIES_NETWORK_GAME                                  :{BIGFONT}{BLACK}Tabela da Liga de Companhias em {NUM}
 STR_0212                                                        :{BIGFONT}{COMMA}.
 STR_0213_BUSINESSMAN                                            :Negociante
@@ -722,7 +724,7 @@ STR_0295                                                        :
 STR_0296_QUIT                                                   :Sair
 STR_0297_SAVE_SCENARIO_LOAD_SCENARIO                            :{BLACK}Salvar cenário, abrir cenário, abandonar editor de cenário, sair
 STR_0298_LOAD_SCENARIO                                          :{WHITE}Abrir Cenário
-STR_0299_SAVE_SCENARIO                                          :{WHITE}Salvar Cenário
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Guardar Cenário
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Jogar Cenário
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Jogar num mapa de altitudes
 STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Inica um novo jogo, a partir de um mapa de altitude
@@ -1025,6 +1027,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Desloca
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permitir o suborno da autoridade local: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Estações não uniformes: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novo busca de caminho global (NPF, sobrepõe NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicador de peso para comboios para simular trens pesados: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permitir sempre aeroportos pequenos: {ORANGE}{STRING}
 
@@ -1857,15 +1860,15 @@ STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}...a flo
 STR_4832_ANNOUNCES_IMMINENT_CLOSURE                             :{BLACK}{BIGFONT}Em {INDUSTRY} anuncia fechamento em breve!
 STR_4833_SUPPLY_PROBLEMS_CAUSE_TO                               :{BLACK}{BIGFONT}Problemas de abastecimento forçaram {INDUSTRY} a anunciar falência iminente!
 STR_4834_LACK_OF_NEARBY_TREES_CAUSES                            :{BLACK}{BIGFONT}Falta de árvores nas proximidades forçaram {INDUSTRY} a anunciar falência iminente!
-STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Aumenta a produção em {INDUSTRY}
+STR_4835_INCREASES_PRODUCTION                                   :{BLACK}{BIGFONT}Em {INDUSTRY} aumenta a produção!
 STR_4836_NEW_COAL_SEAM_FOUND_AT                                 :{BLACK}{BIGFONT}Nova jazida de carvão encontrada em {INDUSTRY}!{}A expectativa é de dobrar a produção!
 STR_4837_NEW_OIL_RESERVES_FOUND                                 :{BLACK}{BIGFONT}Novas reservas de petróleo encontradas em {INDUSTRY}!{}A expectativa é de dobrar a produção!
 STR_4838_IMPROVED_FARMING_METHODS                               :{BLACK}{BIGFONT}Métodos aperfeiçoados de agricultura em {INDUSTRY}! A expectativa é de dobrar a produção!
-STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Diminui a produção em {INDUSTRY} em 50%
+STR_4839_PRODUCTION_DOWN_BY_50                                  :{BLACK}{BIGFONT}Em {INDUSTRY} diminui produção em 50%
 STR_483A_INSECT_INFESTATION_CAUSES                              :{BLACK}{BIGFONT}Infestação de insetos causa destruição em {INDUSTRY}!{}Produção diminui em 50%
 STR_483B_CAN_ONLY_BE_POSITIONED                                 :{WHITE}...só pode ser colocado perto das bordas do mapa
-STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}A produção de {STRING} em {INDUSTRY} aumenta em {COMMA} %!
-STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}A produção de {STRING} em {INDUSTRY} diminui em {COMMA}%!
+STR_INDUSTRY_PROD_GOUP                                          :{BLACK}{BIGFONT}{STRING} a produção em {INDUSTRY} aumenta {COMMA}%!
+STR_INDUSTRY_PROD_GODOWN                                        :{BLACK}{BIGFONT}{STRING} a produção em {INDUSTRY} diminui {COMMA}%!
 
 ##id 0x5000
 STR_5000_TRAIN_IN_TUNNEL                                        :{WHITE}Há um trem no túnel
@@ -2498,6 +2501,7 @@ STR_INVALID_ORDER                                               :{RED} (Ordem In
 STR_UNKNOWN_DESTINATION                                         :destino desconhecido
 STR_8812_EMPTY                                                  :{LTBLUE}Vazio
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trem {COMMA} está aguardando no depósito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Novos Veículos
 STR_8816                                                        :{BLACK}-

@@ -903,7 +903,7 @@ STR_CURR_ITL                                                    :Italienische Li
 STR_CURR_NLG                                                    :Niederländ. Gulden (NLG)
 STR_CURR_NOK                                                    :Norwegische Kronen (NOK)
 STR_CURR_PLN                                                    :Polnische Zloty (PLN)
-STR_CURR_ROL                                                    :Rumänische Lei (ROL)
+STR_CURR_ROL                                                    :RumÃ€nische Lei (ROL)
 STR_CURR_RUR                                                    :Russische Rubel (RUR)
 STR_CURR_SIT                                                    :Slovenischer Tolar (SIT)
 STR_CURR_SEK                                                    :Schwedische Kronen (SEK)
@@ -1096,6 +1096,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Vorgege
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Vorgegebener Wartungsintervall für Schiffe: {ORANGE}abgeschaltet
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Wartung deaktivieren, wenn Pannen abgeschaltet: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Berücksichtige Waggonhöchstgeschwindigkeit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Deaktiviere elektrifizierte Strecken: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Farbige Nachrichten erscheinen ab: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Startdatum: {ORANGE}{STRING}

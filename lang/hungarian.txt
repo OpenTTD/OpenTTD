@@ -352,8 +352,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informá
 STR_013E_CAPACITIES                                             :{BLACK}Kapacitás
 STR_013E_TOTAL_CARGO                                            :{BLACK}Teljes rakomány
 STR_013F_CAPACITY                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Kapacitás: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Teljes rakománya (kapacitása) ennek a vonatnak:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Új játék
 STR_0141_LOAD_GAME                                              :{BLACK}Játék betöltése
 STR_SINGLE_PLAYER                                               :{BLACK}Egyjátékos
@@ -968,11 +970,13 @@ STR_CURR_ITL                                                    :Olasz Líra (IT
 STR_CURR_NLG                                                    :Holland Guilder (NLG)
 STR_CURR_NOK                                                    :Norvég Korona (NOK)
 STR_CURR_PLN                                                    :Legyel Zlotyi (PLN)
-STR_CURR_ROL                                                    :Román Lej (ROL)
+STR_CURR_ROL                                                    :RomÃ¡n Lej (ROL)
 STR_CURR_RUR                                                    :Orosz Rubel (RUR)
 STR_CURR_SIT                                                    :Szlovén Tolár (SIT)
 STR_CURR_SEK                                                    :Svéd Korona (SEK)
 STR_CURR_YTL                                                    :Török Lira (YTL)
+STR_CURR_SKK                                                    :Szlovák korona (SKK)
+STR_CURR_BRR                                                    :Brazil Real (BRL)
 
 STR_CURR_CUSTOM                                                 :Saját...
 
@@ -1089,6 +1093,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Ablakmo
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Önkormányzatok lefizethetõsége: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Különbözõ vágánytípusok engedélyezése egy állomáson: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Új útvonalkeresõ (NPF, felülbírálja az NTP-t): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Tömegszorzó tehervonatoknak (szimulációs célból): {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Mindig engedélyezze a kis repülõtereket: {ORANGE}{STRING}
 
@@ -1134,6 +1139,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Cégek 
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Egyikét sem
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Csak a sajátét
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Minden cégét
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Alapesetben csapatban beszélsz <ENTER>-re: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximum vonat játékosonként: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximum közúti jármû játékosonként: {ORANGE}{STRING}
@@ -1158,6 +1164,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Alapér
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Alap szervízelési idõ a hajókra: {ORANGE}kikapcsolva
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Ne legyen szervízelés ha lerobbanások sincsenek: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}A vagonok sebessége korlátozható: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Elektromos vágányok letiltása: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Színes újságcikkek megjelenése: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Játék induló dátuma: {ORANGE}{STRING}
