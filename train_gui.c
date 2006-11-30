@@ -8,6 +8,7 @@
 #include "table/sprites.h"
 #include "table/strings.h"
 #include "map.h"
+#include "engine.h"
 #include "window.h"
 #include "gui.h"
 #include "gfx.h"
@@ -16,7 +17,6 @@
 #include "station.h"
 #include "command.h"
 #include "player.h"
-#include "engine.h"
 #include "vehicle_gui.h"
 #include "depot.h"
 #include "train.h"
@@ -27,15 +27,12 @@
 typedef enum BuildTrainWidgets {
 	BUILD_TRAIN_WIDGET_CLOSEBOX = 0,
 	BUILD_TRAIN_WIDGET_CAPTION,
-	BUILD_TRAIN_WIDGET_SORT_ASSENDING_DESCENDING,
+	BUILD_TRAIN_WIDGET_SORT_ASCENDING_DESCENDING,
 	BUILD_TRAIN_WIDGET_SORT_TEXT,
 	BUILD_TRAIN_WIDGET_SORT_DROPDOWN,
 	BUILD_TRAIN_WIDGET_LIST,
 	BUILD_TRAIN_WIDGET_SCROLLBAR,
 	BUILD_TRAIN_WIDGET_PANEL,
-	BUILD_TRAIN_WIDGET_ENGINES,
-	BUILD_TRAIN_WIDGET_WAGONS,
-	BUILD_TRAIN_WIDGET_BOTH,
 	BUILD_TRAIN_WIDGET_BUILD,
 	BUILD_TRAIN_WIDGET_RENAME,
 	BUILD_TRAIN_WIDGET_RESIZE,
@@ -50,20 +47,25 @@ static const Widget _new_rail_vehicle_widgets[] = {
 	{     WWT_MATRIX, RESIZE_BOTTOM,    14,     0,   215,    26,   137, 0x801,                  STR_8843_TRAIN_VEHICLE_SELECTION},
 	{  WWT_SCROLLBAR, RESIZE_BOTTOM,    14,   216,   227,    26,   137, 0x0,                    STR_0190_SCROLL_BAR_SCROLLS_LIST},
 	{      WWT_PANEL,     RESIZE_TB,    14,     0,   227,   138,   239, 0x0,                    STR_NULL},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    76,   240,   251, STR_BLACK_ENGINES,      STR_BUILD_TRAIN_ENGINES_TIP},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,    77,   151,   240,   251, STR_BLACK_WAGONS,       STR_BUILD_TRAIN_WAGONS_TIP},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   152,   227,   240,   251, STR_BLACK_BOTH,         STR_BUILD_TRAIN_BOTH_TIP},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   107,   252,   263, STR_881F_BUILD_VEHICLE, STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   108,   215,   252,   263, STR_8820_RENAME,        STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
-	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   216,   227,   252,   263, 0x0,                    STR_RESIZE_BUTTON},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   107,   240,   251, STR_881F_BUILD_VEHICLE, STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN},
+	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   108,   215,   240,   251, STR_8820_RENAME,        STR_8845_RENAME_TRAIN_VEHICLE_TYPE},
+	{  WWT_RESIZEBOX,     RESIZE_TB,    14,   216,   227,   240,   251, 0x0,                    STR_RESIZE_BUTTON},
 	{   WIDGETS_END},
 };
 
-static bool _internal_sort_order; // descending/ascending
+static bool _internal_sort_order; // false = ascending, true = descending
 static byte _last_sort_criteria = 0;
 static bool _last_sort_order = false;
 
-typedef int CDECL VehicleSortListingTypeFunction(const void*, const void*);
+static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
+{
+	EngineID va = *(const EngineID*)a;
+	EngineID vb = *(const EngineID*)b;
+	int val_a = ((RailVehInfo(va)->flags & RVI_WAGON) != 0) ? 1 : 0;
+	int val_b = ((RailVehInfo(vb)->flags & RVI_WAGON) != 0) ? 1 : 0;
+	int r = val_a - val_b;
+	return _internal_sort_order ? -r : r;
+}
 
 static int CDECL TrainEngineNumberSorter(const void *a, const void *b)
 {
@@ -205,7 +207,7 @@ static int CDECL TrainEngineReliabilitySorter(const void *a, const void *b)
 	return _internal_sort_order ? -r : r;
 }
 
-static VehicleSortListingTypeFunction* const _engine_sorter[] = {
+static EngList_SortTypeFunction * const _engine_sorter[] = {
 	&TrainEngineNumberSorter,
 	&TrainEngineCostSorter,
 	&TrainEngineSpeedSorter,
@@ -385,138 +387,82 @@ void CcCloneTrain(bool success, TileIndex tile, uint32 p1, uint32 p2)
 {
 	if (success) ShowTrainViewWindow(GetVehicle(_new_vehicle_id));
 }
-static void engine_drawing_loop(const EngineID *engines, const uint16 engine_count,
-								const int x, int *y, const EngineID sel, EngineID *position, const int16 show_max)
-{
-	for (; (*position) < min(engine_count, show_max); (*position)++) {
-		EngineID i = engines[*position];
 
-		DrawString(x + 59, *y + 2, GetCustomEngineName(i), sel == i ? 0xC : 0x10);
-		DrawTrainEngine(x + 29, *y + 6, i, GetEnginePalette(i, _local_player));
-		*y += 14;
+static void engine_drawing_loop(const EngineList *engines, int x, int *y, EngineID sel, EngineID position, int16 show_max)
+{
+	int count = min(EngList_Count(engines), show_max);
+	for (; position < count; *y += 14, position++) {
+		EngineID id = (*engines)[position];
+		DrawString(x + 59, *y + 2, GetCustomEngineName(id), sel == id ? 0xC : 0x10);
+		DrawTrainEngine(x + 29, *y + 6, id, GetEnginePalette(id, _local_player));
 	}
 }
 
-static inline void ExtendEngineListSize(const EngineID **engine_list, uint16 *engine_list_length, uint16 step_size)
+static void GenerateBuildList(Window *w)
 {
-	*engine_list_length = min(*engine_list_length + step_size, NUM_TRAIN_ENGINES);
-	*engine_list = realloc((void*)*engine_list, (*engine_list_length) * sizeof((*engine_list)[0]));
-}
-
-static void GenerateBuildList(EngineID **engines, uint16 *num_engines, EngineID **wagons, uint16 *num_wagons, RailType railtype)
-{
-	uint16 engine_length = *num_engines;
-	uint16 wagon_length  = *num_wagons;
 	EngineID j;
+	int num_engines = 0;
+	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
-	(*num_engines) = 0;
-	(*num_wagons)  = 0;
+	if (w->window_number != 0)
+		bv->filter.railtype = GetRailType(w->window_number);
+	else
+		bv->filter.railtype = RAILTYPE_END;
 
-	if (*engines == NULL) ExtendEngineListSize((const EngineID**)engines, &engine_length, 25);
-	if (*wagons  == NULL) ExtendEngineListSize((const EngineID**)wagons,  &wagon_length,  25);
-
+	EngList_RemoveAll(&bv->eng_list);
+	// make list of all available cars
 	for (j = 0; j < NUM_TRAIN_ENGINES; j++) {
-		EngineID i = GetRailVehAtPosition(j); // XXX Can be removed when the wagon list is also sorted.
-		const Engine *e = GetEngine(i);
-		const RailVehicleInfo *rvi = RailVehInfo(i);
+		EngineID id = GetRailVehAtPosition(j); // XXX Can be removed when the wagon list is also sorted.
+		const Engine *e = GetEngine(id);
+		const RailVehicleInfo *rvi = RailVehInfo(id);
 
-		if (!HasPowerOnRail(e->railtype, railtype)) continue;
-		if (!IsEngineBuildable(i, VEH_Train)) continue;
+		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(e->railtype, bv->filter.railtype)) continue;
+		if (!IsEngineBuildable(id, VEH_Train)) continue;
 
-		if (rvi->flags & RVI_WAGON) {
-			if (*num_wagons == wagon_length) ExtendEngineListSize((const EngineID**)wagons, &wagon_length, 5);
-			(*wagons)[(*num_wagons)++] = i;
-		} else {
-			if (*num_engines == engine_length) ExtendEngineListSize((const EngineID**)engines, &engine_length, 5);
-			(*engines)[(*num_engines)++] = i;
-		}
+		EngList_Add(&bv->eng_list, id);
+		if ((rvi->flags & RVI_WAGON) == 0) num_engines++;
 	}
-
-	/* Reduce array sizes if they are too big */
-	if (*num_engines != engine_length) *engines = realloc((void*)*engines, (*num_engines) * sizeof((*engines)[0]));
-	if (*num_wagons  != wagon_length)  *wagons  = realloc((void*)*wagons,  (*num_wagons)  * sizeof((*wagons)[0]));
-}
-
-static void SortTrainBuildList(Window *w)
-{
-	_internal_sort_order = WP(w,buildvehicle_d).decenting_sort_order;
-	qsort((void*)WP(w, buildvehicle_d).list_a, WP(w, buildvehicle_d).list_a_length, sizeof(WP(w, buildvehicle_d).list_a[0]),
-		  _engine_sorter[WP(w,buildvehicle_d).sort_criteria]);
+	// make engines first, and then wagons
+	_internal_sort_order = false;
+	EngList_Sort(&bv->eng_list, TrainEnginesThenWagonsSorter);
+	// and then sort engines
+	_internal_sort_order = WP(w,buildvehicle_d).descending_sort_order;
+	EngList_SortPartial(&bv->eng_list, _engine_sorter[bv->sort_criteria], 0, num_engines);
 }
 
 static void DrawTrainBuildWindow(Window *w)
 {
+	buildvehicle_d *bv = &WP(w,buildvehicle_d);
+	int num_engines = EngList_Count(&bv->eng_list);
 	int x = 1;
 	int y = 27;
-	EngineID position = w->vscroll.pos;
-	EngineID selected_id = WP(w,buildvehicle_d).sel_engine;
+	EngineID selected_id = bv->sel_engine;
 	int max = w->vscroll.pos + w->vscroll.cap;
 	uint16 scrollcount = 0;
 
 	SetWindowWidgetDisabledState(w, BUILD_TRAIN_WIDGET_BUILD, w->window_number == 0); // Disable unless we got a depot to build in
+	GenerateBuildList(w);
 
-	/* Draw the clicked engine/wagon/both button pressed and unpress the other two */
-	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_ENGINES, WP(w,buildvehicle_d).show_engine_button == 1);
-	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_WAGONS,  WP(w,buildvehicle_d).show_engine_button == 2);
-	SetWindowWidgetLoweredState(w, BUILD_TRAIN_WIDGET_BOTH,    WP(w,buildvehicle_d).show_engine_button == 3);
-
-	if (WP(w,buildvehicle_d).data_invalidated) {
-		GenerateBuildList(&WP(w, buildvehicle_d).list_a, &WP(w, buildvehicle_d).list_a_length, &WP(w, buildvehicle_d).list_b, &WP(w, buildvehicle_d).list_b_length, WP(w,buildvehicle_d).railtype);
-		WP(w,buildvehicle_d).data_invalidated = false;
-		SortTrainBuildList(w);
-
-		/* Make sure that the selected engine is still in the list*/
-		if (WP(w,buildvehicle_d).sel_engine != INVALID_ENGINE) {
-			int i;
-			bool found = false;
-			if (HASBIT(WP(w,buildvehicle_d).show_engine_button, 0)) {
-				for (i = 0; i < WP(w, buildvehicle_d).list_a_length; i++) {
-					if (WP(w,buildvehicle_d).sel_engine != WP(w, buildvehicle_d).list_a[i]) continue;
-					found = true;
-					break;
-				}
-			}
-			if (!found && HASBIT(WP(w,buildvehicle_d).show_engine_button, 1)) {
-				for (i = 0; i < WP(w, buildvehicle_d).list_b_length; i++) {
-					if (WP(w,buildvehicle_d).sel_engine != WP(w, buildvehicle_d).list_b[i]) continue;
-					found = true;
-					break;
-				}
-			}
-			if (!found) WP(w,buildvehicle_d).sel_engine = INVALID_ENGINE;
+	/* Make sure that the selected engine is still in the list*/
+	if (bv->sel_engine != INVALID_ENGINE) {
+		int i;
+		bool found = false;
+		for (i = 0; i < num_engines; i++) {
+			if (bv->sel_engine != bv->eng_list[i]) continue;
+			found = true;
+			break;
 		}
+		if (!found) bv->sel_engine = INVALID_ENGINE;
 	}
 
-	if (HASBIT(WP(w,buildvehicle_d).show_engine_button, 0)) scrollcount += WP(w, buildvehicle_d).list_a_length;
-	if (HASBIT(WP(w,buildvehicle_d).show_engine_button, 1)) scrollcount += WP(w, buildvehicle_d).list_b_length;
+	scrollcount = EngList_Count(&bv->eng_list);
 
 	SetVScrollCount(w, scrollcount);
-	SetDParam(0, WP(w,buildvehicle_d).railtype + STR_881C_NEW_RAIL_VEHICLES);
+	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES);
 	DrawWindowWidgets(w);
 
-	if (selected_id == INVALID_ENGINE && scrollcount != 0) {
-		if (HASBIT(WP(w,buildvehicle_d).show_engine_button, 0) && WP(w, buildvehicle_d).list_a_length != 0) {
-			selected_id = WP(w, buildvehicle_d).list_a[0];
-		} else {
-			selected_id = WP(w, buildvehicle_d).list_b[0];
-		}
-		WP(w,buildvehicle_d).sel_engine = selected_id;
-	}
-
 	/* Draw the engines */
-	if (HASBIT(WP(w,buildvehicle_d).show_engine_button, 0)) {
-		engine_drawing_loop(WP(w, buildvehicle_d).list_a, WP(w, buildvehicle_d).list_a_length, x, &y, selected_id, &position, max);
-
-		/* Magically set the number 0 line to the one right after the last engine
-		* This way the line numbers fit the indexes in the wagon array */
-		position -= WP(w, buildvehicle_d).list_a_length;
-		max      -= WP(w, buildvehicle_d).list_a_length;
-	}
-
-	/* Draw the wagons */
-	if (HASBIT(WP(w,buildvehicle_d).show_engine_button, 1)) {
-		engine_drawing_loop(WP(w, buildvehicle_d).list_b,  WP(w, buildvehicle_d).list_b_length,  x, &y, selected_id, &position, max);
-	}
+	engine_drawing_loop(&bv->eng_list, x, &y, selected_id, w->vscroll.pos, max);
 
 	if (selected_id != INVALID_ENGINE) {
 		const RailVehicleInfo *rvi = RailVehInfo(selected_id);
@@ -528,115 +474,83 @@ static void DrawTrainBuildWindow(Window *w)
 			DrawTrainEnginePurchaseInfo(2, wi->top + 1, wi->right - wi->left - 2, selected_id);
 		}
 	}
-	DrawString(85, 15, _engine_sort_listing[WP(w,buildvehicle_d).sort_criteria], 0x10);
-	DoDrawString(WP(w,buildvehicle_d).decenting_sort_order ? DOWNARROW : UPARROW, 69, 15, 0x10);
+	DrawString(85, 15, _engine_sort_listing[bv->sort_criteria], 0x10);
+	DoDrawString(bv->descending_sort_order ? DOWNARROW : UPARROW, 69, 15, 0x10);
 }
 
 static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 {
+	buildvehicle_d *bv = &WP(w,buildvehicle_d);
 	switch (e->event) {
 		case WE_CREATE:
-			WP(w, buildvehicle_d).list_a_length = 0;
-			WP(w, buildvehicle_d).list_b_length = 0;
-			WP(w, buildvehicle_d).list_a        = NULL;
-			WP(w, buildvehicle_d).list_b        = NULL;
-			WP(w, buildvehicle_d).show_engine_button   = 3;
-			WP(w, buildvehicle_d).data_invalidated     = true;
-			WP(w, buildvehicle_d).sel_engine           = INVALID_ENGINE;
-			WP(w, buildvehicle_d).sort_criteria        = _last_sort_criteria;
-			WP(w, buildvehicle_d).decenting_sort_order = _last_sort_order;
+			EngList_Create(&bv->eng_list);
+			bv->sel_engine            = INVALID_ENGINE;
+			bv->sort_criteria         = _last_sort_criteria;
+			bv->descending_sort_order = _last_sort_order;
 			break;
 
 		case WE_INVALIDATE_DATA:
-			if (w->window_number != 0) WP(w,buildvehicle_d).railtype = GetRailType(w->window_number);
-			WP(w,buildvehicle_d).data_invalidated = true;
 			SetWindowDirty(w);
 			break;
 
 		case WE_DESTROY:
-			free((void*)WP(w, buildvehicle_d).list_a);
-			free((void*)WP(w, buildvehicle_d).list_b);
+			EngList_Destroy(&bv->eng_list);
 			break;
 
 		case WE_PAINT:
 			DrawTrainBuildWindow(w);
 			break;
 
-
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
-				case BUILD_TRAIN_WIDGET_SORT_ASSENDING_DESCENDING:
-					WP(w,buildvehicle_d).decenting_sort_order = !WP(w,buildvehicle_d).decenting_sort_order;
-					_last_sort_order = WP(w,buildvehicle_d).decenting_sort_order;
-					SortTrainBuildList(w);
+				case BUILD_TRAIN_WIDGET_SORT_ASCENDING_DESCENDING:
+					_last_sort_order = bv->descending_sort_order = !bv->descending_sort_order;
 					SetWindowDirty(w);
 					break;
 
 				case BUILD_TRAIN_WIDGET_SORT_TEXT: case BUILD_TRAIN_WIDGET_SORT_DROPDOWN:/* Select sorting criteria dropdown menu */
-					ShowDropDownMenu(w, _engine_sort_listing, WP(w,buildvehicle_d).sort_criteria, BUILD_TRAIN_WIDGET_SORT_DROPDOWN, 0, 0);
+					ShowDropDownMenu(w, _engine_sort_listing, bv->sort_criteria, BUILD_TRAIN_WIDGET_SORT_DROPDOWN, 0, 0);
 					return;
 
 				case BUILD_TRAIN_WIDGET_LIST: {
 					uint i = ((e->we.click.pt.y - 26) / 14) + w->vscroll.pos;
-					uint num_items = (HASBIT(WP(w,buildvehicle_d).show_engine_button, 0) ? WP(w, buildvehicle_d).list_a_length : 0)
-					               + (HASBIT(WP(w,buildvehicle_d).show_engine_button, 1) ? WP(w, buildvehicle_d).list_b_length : 0);
-					if (i < num_items) {
-						if (i < WP(w, buildvehicle_d).list_a_length && HASBIT(WP(w,buildvehicle_d).show_engine_button, 0)) {
-							WP(w,buildvehicle_d).sel_engine = WP(w, buildvehicle_d).list_a[i];
-						} else {
-							WP(w,buildvehicle_d).sel_engine = WP(w, buildvehicle_d).list_b[i - (HASBIT(WP(w,buildvehicle_d).show_engine_button, 0) ? WP(w, buildvehicle_d).list_a_length : 0)];
-						}
-						SetWindowDirty(w);
-					}
-				} break;
-
-				case BUILD_TRAIN_WIDGET_ENGINES:
-				case BUILD_TRAIN_WIDGET_WAGONS:
-				case BUILD_TRAIN_WIDGET_BOTH: {
-					/* First we need to figure out the new show_engine_wagon setting
-					 * Because the button widgets are ordered as they are (in a row), we can calculate as following:
-					 * engines = bit 0 (1 for set), wagons bit 1 (2 for set), both (2 | 1 = 3)
-					 * Those numbers are the same as the clicked button - BUILD_TRAIN_WIDGET_ENGINES + 1 */
-
-					byte click_state = e->we.click.widget - BUILD_TRAIN_WIDGET_ENGINES + 1;
-					if (WP(w,buildvehicle_d).show_engine_button == click_state) break; // We clicked the pressed button
-					WP(w,buildvehicle_d).sel_engine = INVALID_ENGINE;
-					WP(w,buildvehicle_d).show_engine_button = click_state;
-					w->vscroll.pos = 0;
+					uint num_items = EngList_Count(&bv->eng_list);
+					bv->sel_engine = (i < num_items) ? bv->eng_list[i] : INVALID_ENGINE;
 					SetWindowDirty(w);
-					}
 					break;
+				}
 
 				case BUILD_TRAIN_WIDGET_BUILD: {
-					EngineID sel_eng = WP(w,buildvehicle_d).sel_engine;
+					EngineID sel_eng = bv->sel_engine;
 					if (sel_eng != INVALID_ENGINE)
 						DoCommandP(w->window_number, sel_eng, 0, (RailVehInfo(sel_eng)->flags & RVI_WAGON) ? CcBuildWagon : CcBuildLoco, CMD_BUILD_RAIL_VEHICLE | CMD_MSG(STR_882B_CAN_T_BUILD_RAILROAD_VEHICLE));
-				}	break;
+					break;
+				}
 
 				case BUILD_TRAIN_WIDGET_RENAME: {
-					EngineID sel_eng = WP(w,buildvehicle_d).sel_engine;
+					EngineID sel_eng = bv->sel_engine;
 					if (sel_eng != INVALID_ENGINE) {
-						WP(w,buildvehicle_d).rename_engine = sel_eng;
-						ShowQueryString(GetCustomEngineName(sel_eng),
-										STR_886A_RENAME_TRAIN_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
+						bv->rename_engine = sel_eng;
+						ShowQueryString(GetCustomEngineName(sel_eng), STR_886A_RENAME_TRAIN_VEHICLE_TYPE, 31, 160, w->window_class, w->window_number, CS_ALPHANUMERAL);
 					}
-				} break;
+					break;
+				}
 			}
-		} break;
+		}
+		break;
 
 		case WE_ON_EDIT_TEXT: {
 			if (e->we.edittext.str[0] != '\0') {
 				_cmd_text = e->we.edittext.str;
-				DoCommandP(0, WP(w,buildvehicle_d).rename_engine, 0, NULL,
-					CMD_RENAME_ENGINE | CMD_MSG(STR_886B_CAN_T_RENAME_TRAIN_VEHICLE));
+				DoCommandP(0, bv->rename_engine, 0, NULL, CMD_RENAME_ENGINE | CMD_MSG(STR_886B_CAN_T_RENAME_TRAIN_VEHICLE));
 			}
-		} break;
+			break;
+		}
 
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
-			if (WP(w,buildvehicle_d).sort_criteria != e->we.dropdown.index) {
-				WP(w,buildvehicle_d).sort_criteria = e->we.dropdown.index;
+			if (bv->sort_criteria != e->we.dropdown.index) {
+				bv->sort_criteria = e->we.dropdown.index;
 				_last_sort_criteria = e->we.dropdown.index;
-				SortTrainBuildList(w);
 			}
 			SetWindowDirty(w);
 			break;
@@ -646,12 +560,13 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 			w->vscroll.cap += e->we.sizing.diff.y / 14;
 			w->widget[BUILD_TRAIN_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
-		} break;
+			break;
+		}
 	}
 }
 
 static const WindowDesc _new_rail_vehicle_desc = {
-	WDP_AUTO, WDP_AUTO, 228, 264,
+	WDP_AUTO, WDP_AUTO, 228, 252,
 	WC_BUILD_VEHICLE,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_RESIZABLE,
 	_new_rail_vehicle_widgets,
@@ -673,10 +588,10 @@ void ShowBuildTrainWindow(TileIndex tile)
 
 	if (tile != 0) {
 		w->caption_color = GetTileOwner(tile);
-		WP(w,buildvehicle_d).railtype = GetRailType(tile);
+		WP(w,buildvehicle_d).filter.railtype = GetRailType(tile);
 	} else {
 		w->caption_color = _local_player;
-		WP(w,buildvehicle_d).railtype = GetBestRailtype(GetPlayer(_local_player));
+		WP(w,buildvehicle_d).filter.railtype = RAILTYPE_END;
 	}
 }
 
@@ -986,8 +901,8 @@ static void TrainDetailsCapacityTab(const Vehicle *v, int x, int y)
 static void DrawTrainDetailsWindow(Window *w)
 {
 	byte det_tab = WP(w, traindetails_d).tab;
-	const Vehicle* v;
-	const Vehicle* u;
+	const Vehicle *v;
+	const Vehicle *u;
 	AcceptedCargo act_cargo;
 	AcceptedCargo max_cargo;
 	uint i;

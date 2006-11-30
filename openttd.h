@@ -55,6 +55,7 @@ typedef uint32 CursorID;
 typedef uint16 EngineID;
 typedef uint16 UnitID;
 typedef uint16 StringID;
+typedef EngineID *EngineList; ///< engine list type placeholder acceptable for C code (see helpers.cpp)
 
 /* IDs used in Pools */
 typedef uint16 VehicleID;

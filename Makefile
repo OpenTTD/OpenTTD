@@ -707,6 +707,7 @@ SRCS += gfx.c
 SRCS += gfxinit.c
 SRCS += graph_gui.c
 SRCS += heightmap.c
+SRCS += helpers.cpp
 SRCS += industry_cmd.c
 SRCS += industry_gui.c
 SRCS += intro_gui.c

@@ -396,20 +396,16 @@ assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(tooltips_d));
 
 typedef struct {
 	byte vehicle_type;
-	byte railtype;
+	union {
+		byte railtype;
+		byte acc_planes; // AIRCRAFT_ONLY, ALL, HELICOPTERS_ONLY
+	} filter;
 	byte sel_index;
-	byte show_engine_button;
-	bool data_invalidated;
-	bool decenting_sort_order;
+	bool descending_sort_order;
 	byte sort_criteria;
 	EngineID sel_engine;
 	EngineID rename_engine;
-	EngineID *list_a;
-	EngineID *list_b;
-	EngineID *list_c;
-	uint16 list_a_length;
-	uint16 list_b_length;
-	uint16 list_c_length;
+	EngineList eng_list;
 } buildvehicle_d;
 assert_compile(WINDOW_CUSTOM_SIZE >= sizeof(buildvehicle_d));
 
