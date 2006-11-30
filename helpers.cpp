@@ -1,3 +1,4 @@
+/* $Id$ */
 #include "stdafx.h"
 
 EXTERN_C_BEGIN
