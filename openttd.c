@@ -759,7 +759,9 @@ void SwitchMode(int new_mode)
 			LoadIntroGame();
 			ShowErrorMessage(INVALID_STRING_ID, STR_4009_GAME_LOAD_FAILED, 0, 0);
 		} else {
-			_local_player = 0;
+			/* Update the local player for a loaded game. It is either always
+			 * player #1 (eg 0) or in the case of a dedicated server a spectator */
+			_local_player = _network_dedicated ? PLAYER_SPECTATOR : 0;
 			DoCommandP(0, 0, 0, NULL, CMD_PAUSE); // decrease pause counter (was increased from opening load dialog)
 #ifdef ENABLE_NETWORK
 			if (_network_server) {
