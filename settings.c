@@ -1445,7 +1445,7 @@ const SettingDesc _patch_settings[] = {
 	// This is the penalty for level crossings (for trains only)
 	SDT_CONDVAR (Patches, yapf.rail_crossing_penalty      , SLE_UINT, 28, SL_MAX_VERSION, 0, 0,     3 * YAPF_TILE_LENGTH,        0, 1000000, 0, STR_NULL, NULL),
 	// look-ahead how many signals are checked
-	SDT_CONDVAR (Patches, yapf.rail_look_ahead_max_signals, SLE_UINT, 28, SL_MAX_VERSION, 0, 0,    10                   ,        0,     100, 0, STR_NULL, NULL),
+	SDT_CONDVAR (Patches, yapf.rail_look_ahead_max_signals, SLE_UINT, 28, SL_MAX_VERSION, 0, 0,    10                   ,        1,     100, 0, STR_NULL, NULL),
 	// look-ahead n-th red signal penalty polynomial: penalty = p2 * n^2 + p1 * n + p0
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p0  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,   500                   , -1000000, 1000000, 0, STR_NULL, NULL),
 	SDT_CONDVAR (Patches, yapf.rail_look_ahead_signal_p1  , SLE_INT , 28, SL_MAX_VERSION, 0, 0,  -100                   , -1000000, 1000000, 0, STR_NULL, NULL),
