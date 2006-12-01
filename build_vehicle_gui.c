@@ -428,7 +428,6 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 		case WE_INVALIDATE_DATA:
 			GenerateBuildList(w);
-			SetWindowDirty(w);
 			break;
 
 		case WE_DESTROY:

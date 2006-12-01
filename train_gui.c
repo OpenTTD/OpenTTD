@@ -473,7 +473,6 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 		case WE_INVALIDATE_DATA:
 			GenerateBuildList(w);
-			SetWindowDirty(w);
 			break;
 
 		case WE_DESTROY:

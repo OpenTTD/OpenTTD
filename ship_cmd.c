@@ -884,7 +884,6 @@ int32 CmdBuildShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		GetPlayer(_current_player)->num_engines[p1]++;
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())

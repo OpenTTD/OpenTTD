@@ -851,7 +851,6 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 			GetPlayer(_current_player)->num_engines[p1]++;
 			InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-			InvalidateWindow(WC_VEHICLE_DEPOT, tile);
 			RebuildVehicleLists();
 			InvalidateWindow(WC_COMPANY, v->owner);
 			if (IsLocalPlayer()) {
@@ -1682,7 +1681,6 @@ static void ReverseTrainDirection(Vehicle *v)
 
 	if (IsTileDepotType(v->tile, TRANSPORT_RAIL)) {
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 
 	/* Check if we were approaching a rail/road-crossing */
@@ -1716,7 +1714,6 @@ static void ReverseTrainDirection(Vehicle *v)
 
 	if (IsTileDepotType(v->tile, TRANSPORT_RAIL)) {
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	}
 
 	CLRBIT(v->u.rail.flags, VRF_REVERSING);
@@ -2213,7 +2210,6 @@ static bool CheckTrainStayInDepot(Vehicle *v)
 	UpdateSignalsOnSegment(v->tile, DirToDiagDir(v->direction));
 	UpdateTrainAcceleration(v);
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 
 	return false;
 }

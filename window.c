@@ -1767,6 +1767,7 @@ void InvalidateWindowClasses(WindowClass cls)
 void InvalidateThisWindowData(Window *w)
 {
 	CallWindowEventNP(w, WE_INVALIDATE_DATA);
+	SetWindowDirty(w);
 }
 
 void InvalidateWindowData(WindowClass cls, WindowNumber number)

@@ -242,10 +242,6 @@ void CcCloneShip(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void NewShipWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-		case WE_INVALIDATE_DATA:
-			SetWindowDirty(w);
-			break;
-
 		case WE_PAINT: {
 			EngineID selected_id;
 			EngineID eid;

@@ -402,7 +402,6 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		GetPlayer(_current_player)->num_engines[p1]++;
 
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-		InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		if (IsLocalPlayer())
@@ -1435,7 +1434,6 @@ static void AircraftLeaveHangar(Vehicle *v)
 	VehicleServiceInDepot(v);
 	SetAircraftPosition(v, v->x_pos, v->y_pos, v->z_pos);
 	InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
-	InvalidateWindow(WC_VEHICLE_DEPOT, v->tile);
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }
 

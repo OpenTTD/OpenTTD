@@ -455,10 +455,6 @@ void CcBuildRoadVeh(bool success, TileIndex tile, uint32 p1, uint32 p2)
 static void NewRoadVehWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
-		case WE_INVALIDATE_DATA:
-			SetWindowDirty(w);
-			break;
-
 	case WE_PAINT:
 		DrawNewRoadVehWindow(w);
 		break;
