@@ -296,8 +296,7 @@ static void GenerateBuildAircraftList(Window *w)
 					if (avi->subtype == 0) continue; // if helicopter
 					break;
 
-				case ALL:
-					break;
+				case ALL: break;
 			}
 			EngList_Add(&bv->eng_list, eid);
 		}
@@ -311,8 +310,8 @@ static void GenerateBuildList(Window *w)
 	switch (bv->vehicle_type) {
 		case VEH_Aircraft:
 			GenerateBuildAircraftList(w);
-			_internal_sort_order = WP(w,buildvehicle_d).descending_sort_order;
-			EngList_Sort(&WP(w, buildvehicle_d).eng_list, _aircraft_sorter[WP(w,buildvehicle_d).sort_criteria]);
+			_internal_sort_order = bv->descending_sort_order;
+			EngList_Sort(&bv->eng_list, _aircraft_sorter[bv->sort_criteria]);
 			break;
 
 		default: NOT_REACHED();
@@ -359,7 +358,7 @@ static void DrawBuildAircraftWindow(Window *w)
 		uint16 list_length = GetEngineArrayLength(w);
 		uint16 max = min(w->vscroll.pos + w->vscroll.cap, list_length);
 
-		for(; eid < max; eid++) {
+		for (; eid < max; eid++) {
 			const EngineID engine = list[eid];
 
 			DrawString(x + 62, y + 7, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
@@ -382,7 +381,7 @@ static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
 
 	switch (e->we.click.widget) {
 		case BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING:
-			bv->descending_sort_order = !bv->descending_sort_order;
+			bv->descending_sort_order ^= true;
 			_last_sort_order = bv->descending_sort_order;
 			GenerateBuildList(w);
 			SetWindowDirty(w);
@@ -452,8 +451,7 @@ static void NewAircraftWndProc(Window *w, WindowEvent *e)
 
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 			if (bv->sort_criteria != e->we.dropdown.index) {
-				bv->sort_criteria = e->we.dropdown.index;
-				_last_sort_criteria = e->we.dropdown.index;
+				bv->sort_criteria = _last_sort_criteria = e->we.dropdown.index;
 				GenerateBuildList(w);
 			}
 			SetWindowDirty(w);
@@ -483,20 +481,15 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 	w = AllocateWindowDescFront(&_build_vehicle_desc, tile);
 	if (w == NULL) return;
 
-	if (tile != 0) {
-		w->caption_color = GetTileOwner(tile);
-	} else {
-		w->caption_color = _local_player;
-	}
-
+	w->caption_color = (tile != 0) ? GetTileOwner(tile) : _local_player;
 	w->resize.step_height = GetVehicleListHeight(type);
 	w->vscroll.cap = 4;
 	w->widget[BUILD_VEHICLE_WIDGET_LIST].data = (w->vscroll.cap << 8) + 1;
 
 	bv = &WP(w, buildvehicle_d);
 	EngList_Create(&bv->eng_list);
-	bv->sel_engine           = INVALID_ENGINE;
-	bv->sort_criteria        = _last_sort_criteria;
+	bv->sel_engine            = INVALID_ENGINE;
+	bv->sort_criteria         = _last_sort_criteria;
 	bv->descending_sort_order = _last_sort_order;
 
 	bv->vehicle_type = type;

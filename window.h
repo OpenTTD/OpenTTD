@@ -400,7 +400,7 @@ typedef struct {
 		byte railtype;
 		byte acc_planes; // AIRCRAFT_ONLY, ALL, HELICOPTERS_ONLY
 	} filter;
-	byte sel_index;
+	byte sel_index;  // deprecated value, used for 'unified' ship and road
 	bool descending_sort_order;
 	byte sort_criteria;
 	EngineID sel_engine;

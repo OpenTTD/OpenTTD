@@ -74,17 +74,16 @@ static int CDECL TrainEnginesThenWagonsSorter(const void *a, const void *b)
 	int val_b = ((RailVehInfo(vb)->flags & RVI_WAGON) != 0) ? 1 : 0;
 	int r = val_a - val_b;
 
-	if (r == 0) {
-		/* Use EngineID to sort instead since we want consistent sorting */
-		return TrainEngineNumberSorter(a, b);
-	}
+	/* Use EngineID to sort instead since we want consistent sorting */
+	if (r == 0) return TrainEngineNumberSorter(a, b);
+
 	return _internal_sort_order ? -r : r;
 }
 
 static int CDECL TrainEngineCostSorter(const void *a, const void *b)
 {
-	const int va = RailVehInfo(*(const EngineID*)a)->base_cost;
-	const int vb = RailVehInfo(*(const EngineID*)b)->base_cost;
+	int va = RailVehInfo(*(const EngineID*)a)->base_cost;
+	int vb = RailVehInfo(*(const EngineID*)b)->base_cost;
 	int r = va - vb;
 
 	return _internal_sort_order ? -r : r;
@@ -92,9 +91,9 @@ static int CDECL TrainEngineCostSorter(const void *a, const void *b)
 
 static int CDECL TrainEngineSpeedSorter(const void *a, const void *b)
 {
-	const int va = RailVehInfo(*(const EngineID*)a)->max_speed;
-	const int vb = RailVehInfo(*(const EngineID*)b)->max_speed;
-	const int r = va - vb;
+	int va = RailVehInfo(*(const EngineID*)a)->max_speed;
+	int vb = RailVehInfo(*(const EngineID*)b)->max_speed;
+	int r = va - vb;
 
 	return _internal_sort_order ? -r : r;
 }
@@ -104,18 +103,18 @@ static int CDECL TrainEnginePowerSorter(const void *a, const void *b)
 	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
 	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
 
-	const int va = rvi_a->power << (rvi_a->flags & RVI_MULTIHEAD ? 1 : 0);
-	const int vb = rvi_b->power << (rvi_b->flags & RVI_MULTIHEAD ? 1 : 0);
-	const int r = va - vb;
+	int va = rvi_a->power << (rvi_a->flags & RVI_MULTIHEAD ? 1 : 0);
+	int vb = rvi_b->power << (rvi_b->flags & RVI_MULTIHEAD ? 1 : 0);
+	int r = va - vb;
 
 	return _internal_sort_order ? -r : r;
 }
 
 static int CDECL TrainEngineIntroDateSorter(const void *a, const void *b)
 {
-	const int va = GetEngine(*(const EngineID*)a)->intro_date;
-	const int vb = GetEngine(*(const EngineID*)b)->intro_date;
-	const int r = va - vb;
+	int va = GetEngine(*(const EngineID*)a)->intro_date;
+	int vb = GetEngine(*(const EngineID*)b)->intro_date;
+	int r = va - vb;
 
 	return _internal_sort_order ? -r : r;
 }
@@ -149,9 +148,9 @@ static int CDECL TrainEngineRunningCostSorter(const void *a, const void *b)
 	const RailVehicleInfo *rvi_a = RailVehInfo(*(const EngineID*)a);
 	const RailVehicleInfo *rvi_b = RailVehInfo(*(const EngineID*)b);
 
-	const int va = rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class] * (rvi_a->flags & RVI_MULTIHEAD ? 2 : 1);
-	const int vb = rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class] * (rvi_b->flags & RVI_MULTIHEAD ? 2 : 1);
-	const int r = va - vb;
+	int va = rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class] * (rvi_a->flags & RVI_MULTIHEAD ? 2 : 1);
+	int vb = rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class] * (rvi_b->flags & RVI_MULTIHEAD ? 2 : 1);
+	int r = va - vb;
 
 	return _internal_sort_order ? -r : r;
 }
@@ -167,18 +166,18 @@ static int CDECL TrainEnginePowerVsRunningCostSorter(const void *a, const void *
 	 * Because of this, the return value have to be reversed as well and we return b - a instead of a - b.
 	 * Another thing is that both power and running costs should be doubled for multiheaded engines.
 	 * Since it would be multipling with 2 in both numerator and denumerator, it will even themselves out and we skip checking for multiheaded. */
-	const int va = (rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class]) / max(1, rvi_a->power);
-	const int vb = (rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class]) / max(1, rvi_b->power);
-	const int r = vb - va;
+	int va = (rvi_a->running_cost_base * _price.running_rail[rvi_a->running_cost_class]) / max(1, rvi_a->power);
+	int vb = (rvi_b->running_cost_base * _price.running_rail[rvi_b->running_cost_class]) / max(1, rvi_b->power);
+	int r = vb - va;
 
 	return _internal_sort_order ? -r : r;
 }
 
 static int CDECL TrainEngineReliabilitySorter(const void *a, const void *b)
 {
-	const int va = GetEngine(*(const EngineID*)a)->reliability;
-	const int vb = GetEngine(*(const EngineID*)b)->reliability;
-	const int r = va - vb;
+	int va = GetEngine(*(const EngineID*)a)->reliability;
+	int vb = GetEngine(*(const EngineID*)b)->reliability;
+	int r = va - vb;
 
 	return _internal_sort_order ? -r : r;
 }
@@ -376,23 +375,24 @@ static void engine_drawing_loop(const EngineList *engines, int x, int *y, Engine
 
 static void GenerateBuildList(Window *w)
 {
-	EngineID id;
+	EngineID eid;
 	int num_engines = 0;
 	int num_wagons  = 0;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
-	bv->filter.railtype = w->window_number == 0 ? RAILTYPE_END : GetRailType(w->window_number);
+	bv->filter.railtype = (w->window_number == 0) ? RAILTYPE_END : GetRailType(w->window_number);
 
 	EngList_RemoveAll(&bv->eng_list);
-	// make list of all available cars
-	for (id = 0; id < NUM_TRAIN_ENGINES; id++) {
-		const Engine *e = GetEngine(id);
-		const RailVehicleInfo *rvi = RailVehInfo(id);
+
+	// make a list of all available cars
+	for (eid = 0; eid < NUM_TRAIN_ENGINES; eid++) {
+		const Engine *e = GetEngine(eid);
+		const RailVehicleInfo *rvi = RailVehInfo(eid);
 
 		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(e->railtype, bv->filter.railtype)) continue;
-		if (!IsEngineBuildable(id, VEH_Train)) continue;
+		if (!IsEngineBuildable(eid, VEH_Train)) continue;
 
-		EngList_Add(&bv->eng_list, id);
+		EngList_Add(&bv->eng_list, eid);
 		if ((rvi->flags & RVI_WAGON) == 0) {
 			num_engines++;
 		} else {
@@ -405,7 +405,7 @@ static void GenerateBuildList(Window *w)
 	EngList_Sort(&bv->eng_list, TrainEnginesThenWagonsSorter);
 
 	// and then sort engines
-	_internal_sort_order = WP(w,buildvehicle_d).descending_sort_order;
+	_internal_sort_order = bv->descending_sort_order;
 	EngList_SortPartial(&bv->eng_list, _engine_sorter[bv->sort_criteria], 0, num_engines);
 
 	// and finally sort wagons
@@ -414,7 +414,7 @@ static void GenerateBuildList(Window *w)
 
 static void DrawTrainBuildWindow(Window *w)
 {
-	buildvehicle_d *bv = &WP(w,buildvehicle_d);
+	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
 	int num_engines = EngList_Count(&bv->eng_list);
 	int x = 1;
 	int y = 27;
@@ -461,7 +461,7 @@ static void DrawTrainBuildWindow(Window *w)
 
 static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 {
-	buildvehicle_d *bv = &WP(w,buildvehicle_d);
+	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 	switch (e->event) {
 		case WE_CREATE:
 			EngList_Create(&bv->eng_list);
@@ -486,7 +486,8 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 		case WE_CLICK: {
 			switch (e->we.click.widget) {
 				case BUILD_TRAIN_WIDGET_SORT_ASCENDING_DESCENDING:
-					_last_sort_order = bv->descending_sort_order = !bv->descending_sort_order;
+					bv->descending_sort_order ^= true;
+					_last_sort_order = bv->descending_sort_order;
 					GenerateBuildList(w);
 					SetWindowDirty(w);
 					break;
@@ -532,8 +533,7 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 
 		case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 			if (bv->sort_criteria != e->we.dropdown.index) {
-				bv->sort_criteria = e->we.dropdown.index;
-				_last_sort_criteria = e->we.dropdown.index;
+				bv->sort_criteria = _last_sort_criteria = e->we.dropdown.index;
 				GenerateBuildList(w);
 				SetWindowDirty(w);
 			}
