@@ -1278,7 +1278,6 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}Інф�
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
-STR_NETWORK_TILESET                                             :
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING} : {NUM}
@@ -1918,22 +1917,6 @@ STR_SV_SHIP_NAME                                                :Корабел�
 STR_SV_AIRCRAFT_NAME                                            :Літак {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :
-STR_SV_STNAME_SOUTH                                             :
-STR_SV_STNAME_EAST                                              :
-STR_SV_STNAME_WEST                                              :
-STR_SV_STNAME_CENTRAL                                           :
-STR_SV_STNAME_TRANSFER                                          :
-STR_SV_STNAME_HALT                                              :
-STR_SV_STNAME_VALLEY                                            :
-STR_SV_STNAME_HEIGHTS                                           :
-STR_SV_STNAME_WOODS                                             :
-STR_SV_STNAME_LAKESIDE                                          :
-STR_SV_STNAME_EXCHANGE                                          :
-STR_SV_STNAME_AIRPORT                                           :
-STR_SV_STNAME_OILFIELD                                          :
-STR_SV_STNAME_MINES                                             :
-STR_SV_STNAME_DOCKS                                             :
 STR_SV_STNAME_BUOY_1                                            :{STRING} Бакен 1
 STR_SV_STNAME_BUOY_2                                            :{STRING} Бакен 2
 STR_SV_STNAME_BUOY_3                                            :{STRING} Бакен 3
@@ -1943,13 +1926,6 @@ STR_SV_STNAME_BUOY_6                                            :{STRING} Бак
 STR_SV_STNAME_BUOY_7                                            :{STRING} Бакен 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} Бакен 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} Бакен 9
-STR_SV_STNAME_ANNEXE                                            :
-STR_SV_STNAME_SIDINGS                                           :
-STR_SV_STNAME_BRANCH                                            :
-STR_SV_STNAME_UPPER                                             :
-STR_SV_STNAME_LOWER                                             :
-STR_SV_STNAME_HELIPORT                                          :
-STR_SV_STNAME_FOREST                                            :
 
 ############ end of	savegame specific region!
 
@@ -2542,11 +2518,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Буду
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Перетягніть потяг сюди, щоб продати його
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Показати депо в центрі головного екрану
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Список поїздів - клікніть на поїзді для інформації
-STR_BLACK_WAGONS                                                :{BLACK}Вагони
-STR_BLACK_BOTH                                                  :{BLACK}Обидва
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Натисніть щоб бачити лише потяги
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Натисніть щоб бачити лише вагони
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Натисніть щоб бачити потяги та вагони
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Будувати вибраний поїзд
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Перейменуйте тип транспорту
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Діяльність поїзда - клікніть тут для його запуску/зупинення
@@ -2649,7 +2620,6 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Неможливо розвернути авто...
-STR_ONLY_TURN_SINGLE_UNIT                                       :
 STR_9034_RENAME                                                 :{BLACK}Зміна назви
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Перейменувати тип авто
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Перейменувати тип авто
@@ -2774,7 +2744,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Буду
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Літаки - натисніть на літак для інформації
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Будувати новий літак (потрібен аеропорт з ангаром)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Літаки - натисніть на літак для інформації
-STR_BLACK_HELICOPTERS                                           :{BLACK}Гелікоптери
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Будувати літак
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Перетягніть літак сюди, щоб продати
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Показати ангар в центрі екрану
@@ -2952,12 +2921,10 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Вибе
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів що вибрані ліворуч
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч на потяги що вибрані праворуч
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
-STR_REPLACE_HELP_REPLACE_INFO_TAB                               :
 STR_REPLACE_HELP                                                :{BLACK}Це дозволить Вам оновити одні види потягів іншими, коли потяг прибуде в депо
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів!!!: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони зберігаючи довжину потягу(починаючи спереду), якщо оновлення робить поїзд довшим.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
-STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}потяг неможна будувати
 
 STR_ENGINES                                                     :Потяги

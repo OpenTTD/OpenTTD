@@ -2556,12 +2556,6 @@ STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Купи
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Домъкни ЖП машина тук, за да я продадеш
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Фокусирай върху мястото на влаковото депо
 STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Списък с влакове - натисни върху влак за информация
-STR_BLACK_ENGINES                                               :{BLACK}Двигатели
-STR_BLACK_WAGONS                                                :{BLACK}Вагони
-STR_BLACK_BOTH                                                  :{BLACK}Двете
-STR_BUILD_TRAIN_ENGINES_TIP                                     :{BLACK}Показване само на двигатели
-STR_BUILD_TRAIN_WAGONS_TIP                                      :{BLACK}Показване само на вагони
-STR_BUILD_TRAIN_BOTH_TIP                                        :{BLACK}Показване на двигатели и вагони
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Строене на избрания влак
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Преименуване на влак
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Текущо същояние на влака - натиснете за спиране/пускане
@@ -2790,12 +2784,6 @@ STR_A01E_BUILD_AIRPORT                                          :{BLACK}Стро
 STR_A01F_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Самолет - натиснете върху самолет за информация
 STR_A020_BUILD_NEW_AIRCRAFT_REQUIRES                            :{BLACK}Строене на самолет (необходимо е летище с хангар)
 STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT                             :{BLACK}Самолет - натиснете върху самолет за информация
-STR_BLACK_PLANES                                                :{BLACK}Витлови самолети
-STR_BLACK_JETS                                                  :{BLACK}Реактивни самолети
-STR_BLACK_HELICOPTERS                                           :{BLACK}Хелокоптери
-STR_BUILD_PLANES_TIP                                            :{BLACK}Показване на витлови самолети
-STR_BUILD_JETS_TIP                                              :{BLACK}Показване на реактивни самолети
-STR_BUILD_HELICOPTERS_TIP                                       :{BLACK}Показване на хеликоптери
 STR_A022_BUILD_NEW_AIRCRAFT                                     :{BLACK}Строене на самолет
 STR_A023_DRAG_AIRCRAFT_TO_HERE_TO                               :{BLACK}Преместете самолет тук за да го продадете
 STR_A024_CENTER_MAIN_VIEW_ON_HANGAR                             :{BLACK}Центриране на главния прозорец върху хангара

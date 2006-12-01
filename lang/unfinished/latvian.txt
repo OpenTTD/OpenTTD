@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Zemei ja'bu't plakanai
 STR_0008_WAITING                                                :{BLACK}Gaidam: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (cel'a' no
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (cel'a' no
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Pien'em: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Pien'em: {GOLD}
@@ -84,33 +84,33 @@ STR_004C_PLASTIC                                                :Plastmasas
 STR_004D_FIZZY_DRINK                                            :Burbul'u'den'u
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} pasaz'ieris
-STR_QUANTITY_COAL                                               :{COMMA} tonna ogl'u
+STR_QUANTITY_COAL                                               :{WEIGHT} tonna ogl'u
 STR_QUANTITY_MAIL                                               :{COMMA} pasta maiss
 STR_QUANTITY_OIL                                                :{VOLUME} naftas
 STR_QUANTITY_LIVESTOCK                                          :{COMMA} liellops
 STR_QUANTITY_GOODS                                              :{COMMA} prec'u kaste
-STR_QUANTITY_GRAIN                                              :{COMMA} tonna graudu
-STR_QUANTITY_WOOD                                               :{COMMA} tonna kokmaterea'lu
-STR_QUANTITY_IRON_ORE                                           :{COMMA} tonna dzelzs ru'das
-STR_QUANTITY_STEEL                                              :{COMMA} tonna te'rauda
+STR_QUANTITY_GRAIN                                              :{WEIGHT} tonna graudu
+STR_QUANTITY_WOOD                                               :{WEIGHT} tonna kokmaterea'lu
+STR_QUANTITY_IRON_ORE                                           :{WEIGHT} tonna dzelzs ru'das
+STR_QUANTITY_STEEL                                              :{WEIGHT} tonna te'rauda
 STR_QUANTITY_VALUABLES                                          :{COMMA} maiss ar ve'rtspapi'riem
-STR_QUANTITY_COPPER_ORE                                         :{COMMA} tonna vara ru'das
-STR_QUANTITY_MAIZE                                              :{COMMA} tonna kukuru'zas
-STR_QUANTITY_FRUIT                                              :{COMMA} tonna augl'u
+STR_QUANTITY_COPPER_ORE                                         :{WEIGHT} tonna vara ru'das
+STR_QUANTITY_MAIZE                                              :{WEIGHT} tonna kukuru'zas
+STR_QUANTITY_FRUIT                                              :{WEIGHT} tonna augl'u
 STR_QUANTITY_DIAMONDS                                           :{COMMA} maiss ar dimantiem
-STR_QUANTITY_FOOD                                               :{COMMA} tonna pa'rtikas prec'u
-STR_QUANTITY_PAPER                                              :{COMMA} tonna papi'ra
+STR_QUANTITY_FOOD                                               :{WEIGHT} tonna pa'rtikas prec'u
+STR_QUANTITY_PAPER                                              :{WEIGHT} tonna papi'ra
 STR_QUANTITY_GOLD                                               :{COMMA} zelta maiss
 STR_QUANTITY_WATER                                              :{VOLUME} u'dens
-STR_QUANTITY_WHEAT                                              :{COMMA} tonna kvies'u
+STR_QUANTITY_WHEAT                                              :{WEIGHT} tonna kvies'u
 STR_QUANTITY_RUBBER                                             :{VOLUME} tonna gumijas
-STR_QUANTITY_SUGAR                                              :{COMMA} tonna cukura
+STR_QUANTITY_SUGAR                                              :{WEIGHT} tonna cukura
 STR_QUANTITY_TOYS                                               :{COMMA} rotal'lieta
 STR_QUANTITY_SWEETS                                             :{COMMA} saldumu maiss
 STR_QUANTITY_COLA                                               :{VOLUME} kolas
-STR_QUANTITY_CANDYFLOSS                                         :{COMMA} tonna cukurvates
+STR_QUANTITY_CANDYFLOSS                                         :{WEIGHT} tonna cukurvates
 STR_QUANTITY_BUBBLES                                            :{COMMA} burbulis
-STR_QUANTITY_TOFFEE                                             :{COMMA} tonna cukurpla'ksni's'u
+STR_QUANTITY_TOFFEE                                             :{WEIGHT} tonna cukurpla'ksni's'u
 STR_QUANTITY_BATTERIES                                          :{COMMA} baterija
 STR_QUANTITY_PLASTIC                                            :{VOLUME} plastmasas
 STR_QUANTITY_FIZZY_DRINKS                                       :{COMMA} burbul'u'dens
@@ -278,14 +278,12 @@ STR_OSNAME_MORPHOS                                              :MorphOS
 STR_OSNAME_AMIGAOS                                              :AmigaOS
 STR_OSNAME_OS2                                                  :OS/2
 
-STR_0139_IMPERIAL_MILES                                         :Imperia'la's (ju'dzes)
-STR_013A_METRIC_KILOMETERS                                      :Metriska's (kilometri)
 STR_013B_OWNED_BY                                               :{WHITE}...pieder {STRING}
 STR_013C_CARGO                                                  :{BLACK}Krava
 STR_013D_INFORMATION                                            :{BLACK}Informa'cija
 STR_013E_CAPACITIES                                             :{BLACK}Ietilpi'ba
 STR_013E_TOTAL_CARGO                                            :{BLACK}Krava kopa'
-STR_013F_CAPACITY                                               :{BLACK}Ietilpi'ba: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Ietilpi'ba: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Kope'ja' vilciena kravas ietilpi'ba:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Jauna spe'le
@@ -703,30 +701,17 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Saglaba'
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Spe'les rez'i'mi
-STR_02C4_GAME_OPTIONS                                           :Spe'les rez'i'mi
 STR_02C5_DIFFICULTY_SETTINGS                                    :Gru'ti'bas paka'pes
-STR_02C6_DIFFICULTY_SETTINGS                                    :Gru'ti'bas paka'pes
 STR_02C7_CONFIG_PATCHES                                         :Konfigure't labojumus (pac'us)
-STR_02C8_CONFIG_PATCHES                                         :Konfigure't labojumus (pac'us)
 STR_NEWGRF_SETTINGS                                             :Newgrf rez'i'mi
-STR_NEWGRF_SETTINGS2                                            :Newgrf rez'i'mi
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Ra'di't pilse'tu nosaukumus
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ra'di't pilse'tu nosaukumus
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Ra'di't staciju nosaukumus
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Ra'di't staciju nosaukumus
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Ra'di't zi'mes
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Ra'di't zi'mes
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Ra'di't cel'a-zi'mes
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Ra'di't cel'a-zi'mes
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Pilna anima'cija
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Pilna anima'cija
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Pilnas detal'as
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Pilnas detal'as
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Caurspi'di'gas e'kas
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Caurspi'di'gas e'kas
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Caurspidi'gas staciju zi'mes
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Caurspidi'gas staciju zi'mes
 ############ range ends	here
 
@@ -757,9 +742,7 @@ STR_EXTRA_VIEW_MOVE_MAIN_TO_VIEW_TT                             :{BLACK}Kope't a
 STR_02E0_CURRENCY_UNITS                                         :{BLACK}Naudas vieni'bas
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
 STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Naudas vieni'bu izve'le
-STR_02E3_DISTANCE_UNITS                                         :{BLACK}Atta'luma vieni'bas
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
-STR_02E5_DISTANCE_UNITS_SELECTION                               :{BLACK}Atta'luma vieni'bu izve'le
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cel'a satiksmes li'dzekl'i
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Braucama's cel'a puses izve'le
@@ -1058,7 +1041,6 @@ STR_NETWORK_PLAYER_NAME                                         :{BLACK}Spelçt�
 STR_NETWORK_GAME_NAME                                           :{BLACK}Vârds
 
 
-STR_NETWORK_CLIENTS_ONLINE                                      :{BLACK}{COMMA}/{COMMA}
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Valoda:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Servera adrese:  {WHITE}{STRING} : {NUM}
@@ -1186,8 +1168,6 @@ STR_3032_RATINGS                                                :{BLACK}Reitingi
 
 STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
 STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
-STR_3059_SMALL                                                  :{BLACK}Mazs
-STR_305A_LARGE                                                  :{BLACK}Pilsçtas
 STR_305C_0                                                      :{STATION} {STATIONFEATURES}
 STR_STATION_SIGN_TINY                                           :{TINYFONT}{STATION} {STATIONFEATURES}
 STR_3060_AIRPORT                                                :Lidosta
@@ -1403,7 +1383,6 @@ STR_SERVICE                                                     :{BLACK}Serviss
 STR_882E                                                        :{WHITE}{VEHICLE}
 STR_TRAIN_MUST_BE_STOPPED                                       :{WHITE}Vilciens ja'apsta'dina kad tas ierodas depo
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_885E_WEIGHT_T_POWER_HP_MAX_SPEED                            :{BLACK}Svârs: {LTBLUE}{COMMA}t  {BLACK}Power: {LTBLUE}{COMMA}hp{BLACK} Max. speed: {LTBLUE}{VELOCITY}
 STR_8861_STOPPED                                                :{RED}Stoppets
 
 STR_8865_NAME_TRAIN                                             :{WHITE}Nosaukt vilcienu
@@ -1414,9 +1393,9 @@ STR_886F_TRANSFER                                               :{BLACK}Tranzi't
 
 ##id 0x9000
 STR_9002                                                        :{WHITE}{VEHICLE}
-STR_9012_CAPACITY                                               :{BLACK}Capacitâte: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Capacitâte: {LTBLUE}{CARGO}
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Atrums: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Cena: {CURRENCY}{}Atrums: {VELOCITY}{}Running Cost: {CURRENCY}/yr{}Capacity: {CARGO}
 
 STR_9034_RENAME                                                 :{BLACK}Pârsaukt
 
@@ -1493,14 +1472,14 @@ STR_MAGLEV_VEHICLES                                             :Maglev transpor
 
 STR_TINY_BLACK                                                  :{BLACK}{TINYFONT}{COMMA}
 
-STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Svars: {GOLD}{COMMA}t
-STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}A'trums: {GOLD}{VELOCITY}{BLACK}   Jauda: {GOLD}{COMMA}zs
+STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} Svars: {GOLD}{WEIGHT_S}t
+STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}A'trums: {GOLD}{VELOCITY}{BLACK}   Jauda: {GOLD}{POWER}zs
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Ekspua'tacijas izmaksas: {GOLD}{CURRENCY}/gada'
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ietilpi'ba: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Ietilpi'ba: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Raz'ots: {GOLD}{NUM}{BLACK} Termin's': {GOLD}{COMMA} gadi
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks.Dros'i'ba: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Cena: {GOLD}{CURRENCY}
-STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {GOLD}{COMMA}t  ({COMMA}t)
+STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Svars: {GOLD}{WEIGHT_S}t  ({WEIGHT_S}t)
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cena: {GOLD}{CURRENCY}{BLACK} A'trums: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Ietilpi'ba: {GOLD}{COMMA} pasaz'ieru, {COMMA} pasta somas
-STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{COMMA}zs{BLACK} Sva'rs: {GOLD}+{COMMA}t
+STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motor-vagoni: {GOLD}+{POWER}zs{BLACK} Sva'rs: {GOLD}+{WEIGHT_S}t

@@ -12,8 +12,8 @@ STR_0004                                                        :{WHITE}{CURRENC
 STR_0005                                                        :{RED}{CURRENCY64}.
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Απαιτείται επίπεδο εδαφος
 STR_0008_WAITING                                                :{BLACK}Αναμονη: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (καθ'οδόν από
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (καθ'οδόν από
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Δέχεται: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Δέχεται: {GOLD}
@@ -213,7 +213,7 @@ STR_013C_CARGO                                                  :{BLACK}Φορτ
 STR_013D_INFORMATION                                            :{BLACK}Πληροφορίες
 STR_013E_CAPACITIES                                             :{BLACK}Χωρητικότητες
 STR_013E_TOTAL_CARGO                                            :{BLACK}Συνολικό Φορτίο
-STR_013F_CAPACITY                                               :{BLACK}Χωρητικότητα: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Χωρητικότητα: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Συνολική χωρητικότητα φορτίου του τραίνου:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Νέο Παιχνίδι
@@ -599,22 +599,13 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Αποθ
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Επιλογές παιχνιδιού
-STR_02C4_GAME_OPTIONS                                           :Επιλογές παιχνιδιού
 STR_02C5_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
-STR_02C6_DIFFICULTY_SETTINGS                                    :Ρυθμίσεις δυσκολίας
 STR_02C7_CONFIG_PATCHES                                         :Ρύθμιση διορθώσεων
-STR_02C8_CONFIG_PATCHES                                         :Ρύθμιση διορθώσεων
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Ονόματα πόλεων που εμφανίζονται
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Ονόματα πόλεων που εμφανίζονται
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Ονόματα σταθμών που εμφανίζονται
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Ονόματα σταθμών που εμφανίζονται
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Πινακίδες που εμφανίζονται
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Πινακίδες που εμφανίζονται
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Πλήρες animation
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Πλήρες animation
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Πλήρης λεπτομέρεια
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Πλήρης λεπτομέρεια
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Διαφανή κτίρια
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Διαφανή κτίρια
 ############ range ends	here
 
@@ -1143,7 +1134,7 @@ STR_4829_REQUIRES                                               :{BLACK}Απαι
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Παραγωγή προηγούμενου μήνα:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% μεταφέρθηκαν)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% μεταφέρθηκαν)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Κεντράρισμα εικόνας στην περιοχή της βιομηχανίας
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Νέο {STRING} υπό κατασκευή κοντά στην πόλη {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Νέα {STRING} φυτεύεται κοντά στην πόλη {TOWN}!

@@ -10,8 +10,8 @@ STR_0004                                                        :{WHITE}{CURRENC
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}需要一块平地
 STR_0008_WAITING                                                :{BLACK}正在等待：{WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (从
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (从
 STR_000B                                                        :{YELLOW}{STATION} 出发的途中)
 STR_000C_ACCEPTS                                                :{BLACK}接受: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}接受: {GOLD}
@@ -210,7 +210,7 @@ STR_013C_CARGO                                                  :{BLACK}货舱
 STR_013D_INFORMATION                                            :{BLACK}信息
 STR_013E_CAPACITIES                                             :{BLACK}容量
 STR_013E_TOTAL_CARGO                                            :{BLACK}总货物
-STR_013F_CAPACITY                                               :{BLACK}容量：{LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}容量：{LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}此列车的总容量为：
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}新游戏
@@ -596,22 +596,13 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}保存�
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :游戏选项
-STR_02C4_GAME_OPTIONS                                           :游戏选项
 STR_02C5_DIFFICULTY_SETTINGS                                    :难度设定
-STR_02C6_DIFFICULTY_SETTINGS                                    :难度设定
 STR_02C7_CONFIG_PATCHES                                         :配置patch
-STR_02C8_CONFIG_PATCHES                                         :配置patch
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}显示城镇名称
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}显示城镇名称
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}显示车站名称
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}显示车站名称
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}显示标牌
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}显示标牌
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}完整动画
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}完整动画
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}完整细节
 STR_02D2_FULL_DETAIL                                            :{SETX 12}完整细节
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}建筑物透明
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}建筑物透明
 ############ range ends	here
 
@@ -1130,7 +1121,7 @@ STR_4829_REQUIRES                                               :{BLACK}需要: 
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}上月产量:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% 被运走)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% 被运走)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}将视点移动到工厂位置
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}新的 {STRING} 在 {TOWN} 附近开始建设!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}新的 {STRING} 在 {TOWN} 附近开始生长!

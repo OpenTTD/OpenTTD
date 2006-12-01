@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Potrebno je ravno zemljisce
 STR_0008_WAITING                                                :{BLACK}Cakam: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (iz
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (iz
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Sprejema: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Sprejema: {GOLD}
@@ -282,7 +282,7 @@ STR_013C_CARGO                                                  :{BLACK}Tovor
 STR_013D_INFORMATION                                            :{BLACK}Informacije
 STR_013E_CAPACITIES                                             :{BLACK}Sposobnost
 STR_013E_TOTAL_CARGO                                            :{BLACK}Skupni tovor
-STR_013F_CAPACITY                                               :{BLACK}Sposobnost: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Sposobnost: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Skupna tovorna sposobnost tega vlaka:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Nova igra
@@ -703,24 +703,14 @@ STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Shrani
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Moznosti igre
-STR_02C4_GAME_OPTIONS                                           :Moznosti igre
 STR_02C5_DIFFICULTY_SETTINGS                                    :Nastavitve tezavnosti
-STR_02C6_DIFFICULTY_SETTINGS                                    :Nastavitve tezavnosti
 STR_02C7_CONFIG_PATCHES                                         :Urejevanje popravkov
-STR_02C8_CONFIG_PATCHES                                         :Urejevanje popravkov
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Imena mest prikazana
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Imena mest prikazana
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Imena postaj prikazana
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Imena postaj prikazana
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Sporocila prikazana
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Sporocila prikazana
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Smerokazi prikazani
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Smerokazi prikazani
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Polna animacija
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Polna animacija
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Vse podrobnisti
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Vse podrobnisti
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Prozorne stavbe
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Prozorne stavbe
 ############ range ends	here
 
@@ -1268,7 +1258,7 @@ STR_4829_REQUIRES                                               :{BLACK}Potrebuj
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Proizvodnja prejsnega meseca:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportirano)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportirano)
 STR_482F_COST                                                   :{BLACK}Cena: {YELLOW}{CURRENCY}
 STR_4830_CAN_T_CONSTRUCT_THIS_INDUSTRY                          :{WHITE}Tukaj ni mozno zgraditi tega tipa industrije...
 STR_4831_FOREST_CAN_ONLY_BE_PLANTED                             :{WHITE}... gozd je mozno nasaditi samo nad snezno mejo

@@ -13,8 +13,8 @@ STR_0005                                                        :{RED}{CURRENCY6
 STR_EMPTY                                                       :
 STR_0007_FLAT_LAND_REQUIRED                                     :{WHITE}Reikia lygaus paviršiaus
 STR_0008_WAITING                                                :{BLACK}Laukia: {WHITE}{STRING}
-STR_0009                                                        :{WHITE}{STRING}
-STR_000A_EN_ROUTE_FROM                                          :{WHITE}{STRING}{YELLOW}  (marsrutas is
+STR_0009                                                        :{WHITE}{CARGO}
+STR_000A_EN_ROUTE_FROM                                          :{WHITE}{CARGO}{YELLOW}  (marsrutas is
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000C_ACCEPTS                                                :{BLACK}Laukia: {WHITE}
 STR_000D_ACCEPTS                                                :{BLACK}Laukia: {GOLD}
@@ -284,7 +284,7 @@ STR_013C_CARGO                                                  :{BLACK}Keliamoj
 STR_013D_INFORMATION                                            :{BLACK}Informacija
 STR_013E_CAPACITIES                                             :{BLACK}Talpumas
 STR_013E_TOTAL_CARGO                                            :{BLACK}Visa keliamoji galia
-STR_013F_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{STRING}
+STR_013F_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Visa traukinio keliamoji galia:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
 STR_0140_NEW_GAME                                               :{BLACK}Naujas zaidimas
@@ -736,30 +736,17 @@ STR_02C2_SAVE_CUSTOMIZED_VEHICLE                                :{BLACK}Issaugot
 
 ############ range for menu	starts
 STR_02C3_GAME_OPTIONS                                           :Zaidimo nustatymai
-STR_02C4_GAME_OPTIONS                                           :Zaidimo nustatymai
 STR_02C5_DIFFICULTY_SETTINGS                                    :Sunkumo nustatymai
-STR_02C6_DIFFICULTY_SETTINGS                                    :Sunkumo nustatymai
 STR_02C7_CONFIG_PATCHES                                         :Nustatymai
-STR_02C8_CONFIG_PATCHES                                         :Nustatymai
 STR_NEWGRF_SETTINGS                                             :Papild. grafikos nustatymai
-STR_NEWGRF_SETTINGS2                                            :Papild. grafikos nustatymai
 STR_GAMEOPTMENU_0A                                              :
-STR_GAMEOPTMENU_0B                                              :
-STR_02C9_TOWN_NAMES_DISPLAYED                                   :{CHECKMARK}{SETX 12}Rodyti miestu pavadinimus
 STR_02CA_TOWN_NAMES_DISPLAYED                                   :{SETX 12}Rodyti miestu pavadinimus
-STR_02CB_STATION_NAMES_DISPLAYED                                :{CHECKMARK}{SETX 12}Rodyti stoteliu pavadinimus
 STR_02CC_STATION_NAMES_DISPLAYED                                :{SETX 12}Rodyti stoteliu pavadinimus
-STR_02CD_SIGNS_DISPLAYED                                        :{CHECKMARK}{SETX 12}Rodyti zenklus
 STR_02CE_SIGNS_DISPLAYED                                        :{SETX 12}Rodyti zenklus
-STR_WAYPOINTS_DISPLAYED                                         :{CHECKMARK}{SETX 12}Rodyti tarpines stoteles
 STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Rodyti tarpines stoteles
-STR_02CF_FULL_ANIMATION                                         :{CHECKMARK}{SETX 12}Pilna animacija
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Pilna animacija
-STR_02D1_FULL_DETAIL                                            :{CHECKMARK}{SETX 12}Pilna detalizacija
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Pilna detalizacija
-STR_02D3_TRANSPARENT_BUILDINGS                                  :{CHECKMARK}{SETX 12}Permatomi pastatai
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Permatomi pastatai
-STR_TRANSPARENT_SIGNS_C                                         :{CHECKMARK}{SETX 12}Permatomi stociu zenklai
 STR_TRANSPARENT_SIGNS                                           :{SETX 12}Permatomi stociu zenklai
 ############ range ends	here
 
@@ -1195,8 +1182,8 @@ STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Statyti 
 STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Statyti cukraus kasykla
 
 STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gamyklos
-STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({STRING}){YELLOW} ({COMMA}% transportuota)
-STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({STRING}/{STRING}){YELLOW} ({COMMA}%/{COMMA}% transportuota)
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportuota)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transportuota)
 STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
 STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...per arti kitos gamyklos
@@ -1793,7 +1780,7 @@ STR_4829_REQUIRES                                               :{BLACK}Laukia: 
 ############ range for requires	ends
 
 STR_482A_PRODUCTION_LAST_MONTH                                  :{BLACK}Progukcija praeita menesi:
-STR_482B_TRANSPORTED                                            :{YELLOW}{STRING}{BLACK} ({COMMA}% transportuota)
+STR_482B_TRANSPORTED                                            :{YELLOW}{CARGO}{BLACK} ({COMMA}% transportuota)
 STR_482C_CENTER_THE_MAIN_VIEW_ON                                :{BLACK}Rodyti gamykla ekrano centre
 STR_482D_NEW_UNDER_CONSTRUCTION                                 :{BLACK}{BIGFONT}Statomas naujas {STRING} netoli miesto: {TOWN}!
 STR_482E_NEW_BEING_PLANTED_NEAR                                 :{BLACK}{BIGFONT}Sodinamas naujas {STRING} netoli miesto: {TOWN}!
@@ -2555,7 +2542,7 @@ STR_900E_MAX_SPEED                                              :{BLACK}Maks. gr
 STR_900F_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas siais metais: {LTBLUE}{CURRENCY}  (praejusiais metais: {CURRENCY})
 STR_9010_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Sugedo po paskutinio remonto: {LTBLUE}{COMMA}
 STR_9011_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Pastatytas: {LTBLUE}{NUM}{BLACK} Verte: {LTBLUE}{CURRENCY}
-STR_9012_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{STRING}
+STR_9012_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}
 STR_9013_MUST_BE_STOPPED_INSIDE                                 :{WHITE}...automobilis turi buti sustabdytas garaze
 STR_9014_CAN_T_SELL_ROAD_VEHICLE                                :{WHITE}Automobilio parduoti negalima...
 STR_9015_CAN_T_STOP_START_ROAD_VEHICLE                          :{WHITE}Automobilio sustabdyti/paleisti negalima...
@@ -2582,7 +2569,7 @@ STR_9026_ROAD_VEHICLE_SELECTION                                 :{BLACK}Automobi
 STR_9027_BUILD_THE_HIGHLIGHTED_ROAD                             :{BLACK}Isigyti pazymeta automobili
 STR_9028_NEW_ROAD_VEHICLE_NOW_AVAILABLE                         :{BLACK}{BIGFONT}Atsirado naujas automobilis!
 STR_9029                                                        :{BLACK}{BIGFONT}{STRING}
-STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kaina: {CURRENCY}{}Greitis: {VELOCITY}{}Eksploatavimo kaina: {CURRENCY}/met{}Talpa: {STRING}
+STR_902A_COST_SPEED_RUNNING_COST                                :{BLACK}Kaina: {CURRENCY}{}Greitis: {VELOCITY}{}Eksploatavimo kaina: {CURRENCY}/met{}Talpa: {CARGO}
 
 STR_902C_NAME_ROAD_VEHICLE                                      :{WHITE}Pavadinti automobili
 STR_902D_CAN_T_NAME_ROAD_VEHICLE                                :{WHITE}Automobilio pavadinti nepavyko...
@@ -2626,7 +2613,7 @@ STR_9813_MAX_SPEED                                              :{BLACK}Maks. gr
 STR_9814_PROFIT_THIS_YEAR_LAST_YEAR                             :{BLACK}Pelnas siais metais: {LTBLUE}{CURRENCY}  (praeitais metais: {CURRENCY})
 STR_9815_RELIABILITY_BREAKDOWNS                                 :{BLACK}Patikimumas: {LTBLUE}{COMMA}%  {BLACK}Gedimai po paskutinio remonto: {LTBLUE}{COMMA}
 STR_9816_BUILT_VALUE                                            :{LTBLUE}{STRING}{BLACK}   Pastatytas: {LTBLUE}{NUM}{BLACK} Verte: {LTBLUE}{CURRENCY}
-STR_9817_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{STRING}
+STR_9817_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}
 STR_9818_CAN_T_STOP_START_SHIP                                  :{WHITE}Sustabdyti/paleisti laivo negalima...
 STR_9819_CAN_T_SEND_SHIP_TO_DEPOT                               :{WHITE}Nusiusti i laivu depa negalima...
 STR_981A_UNABLE_TO_FIND_LOCAL_DEPOT                             :{WHITE}Negali rasti artimiausio laivu depo
@@ -2652,7 +2639,7 @@ STR_982A_SEND_SHIP_TO_DEPOT                                     :{BLACK}Nukreipt
 STR_982B_SHOW_SHIP_DETAILS                                      :{BLACK}Rodyti laivo informacija
 STR_982C_NEW_SHIP_NOW_AVAILABLE                                 :{BLACK}{BIGFONT}Atsirado naujas laivas!
 STR_982D                                                        :{BLACK}{BIGFONT}{STRING}
-STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kainuoja: {CURRENCY} Maks. Greitis: {VELOCITY}{}Talpa: {STRING}{}Vaziavimo kaina: {CURRENCY}/m
+STR_982E_COST_MAX_SPEED_CAPACITY                                :{BLACK}Kainuoja: {CURRENCY} Maks. Greitis: {VELOCITY}{}Talpa: {CARGO}{}Vaziavimo kaina: {CURRENCY}/m
 STR_982F_NAME_SHIP                                              :{BLACK}Laivo vardas
 
 STR_9831_NAME_SHIP                                              :{WHITE}Laivo vardas
@@ -2670,7 +2657,7 @@ STR_983C_REFIT_SHIP                                             :{BLACK}Perorien
 STR_983D_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Pasirink krovinio tipa, kuri laivas tures 'sergeti'
 STR_983E_REFIT_SHIP_TO_CARRY_HIGHLIGHTED                        :{BLACK}Pakeisti pervezamo krovinio tipa
 STR_983F_SELECT_CARGO_TYPE_TO_CARRY                             :{GOLD}Pasirink 'sergimo' krovinio tipa:
-STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nauja talpa: {GOLD}{STRING}{}{BLACK}Remonto kaina: {GOLD}{CURRENCY}
+STR_9840_NEW_CAPACITY_COST_OF_REFIT                             :{BLACK}Nauja talpa: {GOLD}{CARGO}{}{BLACK}Remonto kaina: {GOLD}{CURRENCY}
 STR_9841_CAN_T_REFIT_SHIP                                       :{WHITE}Negalima perorientuotilaivo...
 STR_9842_REFITTABLE                                             :(perorientuotinas)
 STR_GO_TO_SHIP_DEPOT                                            :Uzduotis: laivu depas {TOWN}
@@ -2704,8 +2691,8 @@ STR_A014_AIRCRAFT_IS_WAITING_IN                                 :{WHITE}Lektuvas
 STR_A015_AIRCRAFT_IN_THE_WAY                                    :{WHITE}Oro uostai
 STR_A016_CAN_T_STOP_START_AIRCRAFT                              :{WHITE}Negalima cia statyti oro uosto...
 STR_A017_AIRCRAFT_IS_IN_FLIGHT                                  :{WHITE}Lektuvas dabar skrenda
-STR_A019_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{STRING}, {STRING}
-STR_A01A_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{STRING}
+STR_A019_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}, {CARGO}
+STR_A01A_CAPACITY                                               :{BLACK}Talpa: {LTBLUE}{CARGO}
 STR_A01B_AIRCRAFT_MUST_BE_STOPPED                               :{WHITE}Lektuvas turi buti sustabdytas angare
 STR_A01C_CAN_T_SELL_AIRCRAFT                                    :{WHITE}Negalima parduoti lektuvo...
 STR_A01D_AIRPORT_CONSTRUCTION                                   :Oro uostu konstr.
@@ -2869,7 +2856,7 @@ STR_PURCHASE_INFO_COST_WEIGHT                                   :{BLACK}Kaina: {
 STR_PURCHASE_INFO_SPEED_POWER                                   :{BLACK}Greitis: {GOLD}{VELOCITY}{BLACK}   Galia: {GOLD}{POWER}
 STR_PURCHASE_INFO_SPEED                                         :{BLACK}Greitis: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_RUNNINGCOST                                   :{BLACK}Vaziavimo kaina: {GOLD}{CURRENCY}/m
-STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Talpa: {GOLD}{STRING} {STRING}
+STR_PURCHASE_INFO_CAPACITY                                      :{BLACK}Talpa: {GOLD}{CARGO} {STRING}
 STR_PURCHASE_INFO_DESIGNED_LIFE                                 :{BLACK}Sukurtas: {GOLD}{NUM}{BLACK} Tarnavimo laikas: {GOLD}{COMMA} metu
 STR_PURCHASE_INFO_RELIABILITY                                   :{BLACK}Maks. Patikimumas: {GOLD}{COMMA}%
 STR_PURCHASE_INFO_COST                                          :{BLACK}Kaina: {GOLD}{CURRENCY}

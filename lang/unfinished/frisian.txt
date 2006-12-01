@@ -8,7 +8,7 @@ STR_NULL                                                        :
 STR_0004                                                        :{WHITE}{CURRENCY64}
 STR_0005                                                        :{RED}{CURRENCY64}
 STR_EMPTY                                                       :
-STR_0009                                                        :{WHITE}{STRING}
+STR_0009                                                        :{WHITE}{CARGO}
 STR_000B                                                        :{YELLOW}{STATION})
 STR_000E                                                        :
 STR_0011_MAIL                                                   :Post
@@ -66,17 +66,17 @@ STR_004B_BATTERY                                                :Batterij
 STR_004C_PLASTIC                                                :Plestik
 STR_QUANTITY_NOTHING                                            :
 STR_QUANTITY_PASSENGERS                                         :{COMMA} passazjier
-STR_QUANTITY_COAL                                               :{COMMA} ton coal
+STR_QUANTITY_COAL                                               :{WEIGHT} ton coal
 STR_QUANTITY_MAIL                                               :{COMMA} tassen mei post
 STR_QUANTITY_OIL                                                :{VOLUME} oalje
-STR_QUANTITY_GRAIN                                              :{COMMA} ton graan
-STR_QUANTITY_WOOD                                               :{COMMA} ton hout
-STR_QUANTITY_STEEL                                              :{COMMA} ton stiel
+STR_QUANTITY_GRAIN                                              :{WEIGHT} ton graan
+STR_QUANTITY_WOOD                                               :{WEIGHT} ton hout
+STR_QUANTITY_STEEL                                              :{WEIGHT} ton stiel
 STR_QUANTITY_VALUABLES                                          :{COMMA} tas kostber guod
-STR_QUANTITY_MAIZE                                              :{COMMA} ton mais
-STR_QUANTITY_FRUIT                                              :{COMMA} ton fruit
-STR_QUANTITY_FOOD                                               :{COMMA} ton iten
-STR_QUANTITY_PAPER                                              :{COMMA} ton papier
+STR_QUANTITY_MAIZE                                              :{WEIGHT} ton mais
+STR_QUANTITY_FRUIT                                              :{WEIGHT} ton fruit
+STR_QUANTITY_FOOD                                               :{WEIGHT} ton iten
+STR_QUANTITY_PAPER                                              :{WEIGHT} ton papier
 STR_QUANTITY_GOLD                                               :{COMMA} tas goud
 STR_QUANTITY_WATER                                              :{VOLUME} wetter
 STR_00B2_MESSAGE                                                :{YELLOW}Bericht
