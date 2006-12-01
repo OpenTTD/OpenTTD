@@ -290,6 +290,18 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\russian.txt">
+			<FileConfiguration
+				Name="Debug|Win32">
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating russian language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;
+"
+					Outputs="lang\russian.lng"/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\slovak.txt">
 			<FileConfiguration
 				Name="Debug|Win32">
