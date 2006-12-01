@@ -375,7 +375,7 @@ static void engine_drawing_loop(const EngineList *engines, int x, int *y, Engine
 
 static void GenerateBuildList(Window *w)
 {
-	EngineID eid;
+	EngineID eid, sel_id;
 	int num_engines = 0;
 	int num_wagons  = 0;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
@@ -384,8 +384,11 @@ static void GenerateBuildList(Window *w)
 
 	EngList_RemoveAll(&bv->eng_list);
 
-	// make a list of all available cars
-	for (eid = 0; eid < NUM_TRAIN_ENGINES; eid++) {
+	/* Make list of all available train engines and wagons.
+	 * Also check to see if the previously selected engine is still available,
+	 * and if not, reset selection to INVALID_ENGINE. This could be the case
+	 * when engines become obsolete and are removed */
+	for (sel_id = INVALID_ENGINE, eid = 0; eid < NUM_TRAIN_ENGINES; eid++) {
 		const Engine *e = GetEngine(eid);
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
 
@@ -398,7 +401,11 @@ static void GenerateBuildList(Window *w)
 		} else {
 			num_wagons++;
 		}
+
+		if (eid == bv->sel_engine) sel_id = eid;
 	}
+
+	bv->sel_engine = sel_id;
 
 	// make engines first, and then wagons, sorted by ListPositionOfEngine()
 	_internal_sort_order = false;
@@ -420,25 +427,10 @@ static void DrawTrainBuildWindow(Window *w)
 	int y = 27;
 	EngineID selected_id = bv->sel_engine;
 	int max = w->vscroll.pos + w->vscroll.cap;
-	uint16 scrollcount = 0;
 
 	SetWindowWidgetDisabledState(w, BUILD_TRAIN_WIDGET_BUILD, w->window_number == 0); // Disable unless we got a depot to build in
 
-	/* Make sure that the selected engine is still in the list*/
-	if (bv->sel_engine != INVALID_ENGINE) {
-		int i;
-		bool found = false;
-		for (i = 0; i < num_engines; i++) {
-			if (bv->sel_engine != bv->eng_list[i]) continue;
-			found = true;
-			break;
-		}
-		if (!found) bv->sel_engine = INVALID_ENGINE;
-	}
-
-	scrollcount = EngList_Count(&bv->eng_list);
-
-	SetVScrollCount(w, scrollcount);
+	SetVScrollCount(w, EngList_Count(&bv->eng_list));
 	SetDParam(0, bv->filter.railtype + STR_881C_NEW_RAIL_VEHICLES);
 	DrawWindowWidgets(w);
 
@@ -469,6 +461,8 @@ static void NewRailVehicleWndProc(Window *w, WindowEvent *e)
 			bv->sort_criteria         = _last_sort_criteria;
 			bv->descending_sort_order = _last_sort_order;
 			GenerateBuildList(w);
+			/* Select the first engine in the list as default when opening the window */
+			if (EngList_Count(&bv->eng_list) > 0) bv->sel_engine = bv->eng_list[0];
 			break;
 
 		case WE_INVALIDATE_DATA:

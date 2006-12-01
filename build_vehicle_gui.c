@@ -279,11 +279,16 @@ void CcBuildAircraft(bool success, TileIndex tile, uint32 p1, uint32 p2)
 
 static void GenerateBuildAircraftList(Window *w)
 {
-	EngineID eid;
+	EngineID eid, sel_id;
 	buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
 	EngList_RemoveAll(&bv->eng_list);
 
+	/* Make list of all available planes.
+	 * Also check to see if the previously selected plane is still available,
+	 * and if not, reset selection to INVALID_ENGINE. This could be the case
+	 * when planes become obsolete and are removed */
+	sel_id = INVALID_ENGINE;
 	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
 		if (IsEngineBuildable(eid, VEH_Aircraft)) {
 			const AircraftVehicleInfo *avi = AircraftVehInfo(eid);
@@ -299,8 +304,12 @@ static void GenerateBuildAircraftList(Window *w)
 				case ALL: break;
 			}
 			EngList_Add(&bv->eng_list, eid);
+
+			if (eid == bv->sel_engine) sel_id = eid;
 		}
 	}
+
+	bv->sel_engine = sel_id;
 }
 
 static void GenerateBuildList(Window *w)
@@ -330,21 +339,9 @@ static inline uint16 GetEngineArrayLength(const Window *w)
 
 static void DrawBuildAircraftWindow(Window *w)
 {
-	buildvehicle_d *bv = &WP(w, buildvehicle_d);
+	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
 	SetWindowWidgetDisabledState(w, BUILD_VEHICLE_WIDGET_BUILD, w->window_number == 0);
-
-	if (bv->sel_engine != INVALID_ENGINE) {
-		int i;
-		bool found = false;
-		int num_planes = GetEngineArrayLength(w);
-		for (i = 0; i < num_planes; i++) {
-			if (bv->sel_engine != GetEngineArray(w)[i]) continue;
-			found = true;
-			break;
-		}
-		if (!found) bv->sel_engine = INVALID_ENGINE;
-	}
 
 	SetVScrollCount(w, GetEngineArrayLength(w));
 	DrawWindowWidgets(w);
@@ -504,4 +501,6 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 	}
 
 	GenerateBuildList(w);
+	/* Select the first plane in the list as default when opening the window */
+	if (EngList_Count(&bv->eng_list) > 0) bv->sel_engine = bv->eng_list[0];
 }
