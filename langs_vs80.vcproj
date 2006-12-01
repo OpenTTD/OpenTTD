@@ -74,6 +74,20 @@
 			</FileConfiguration>
 		</File>
 		<File
+			RelativePath=".\lang\bulgarian.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating bulgarian language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs="lang\bulgarian.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
 			RelativePath=".\lang\catalan.txt"
 			>
 			<FileConfiguration
@@ -407,6 +421,20 @@
 					Description="Generating turkish language file"
 					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
 					Outputs="lang\turkish.lng"
+				/>
+			</FileConfiguration>
+		</File>
+		<File
+			RelativePath=".\lang\ukrainian.txt"
+			>
+			<FileConfiguration
+				Name="Debug|Win32"
+				>
+				<Tool
+					Name="VCCustomBuildTool"
+					Description="Generating ukrainian language file"
+					CommandLine="strgen\debug\strgen.exe -s lang -d lang &quot;$(InputPath)&quot;&#x0D;&#x0A;"
+					Outputs="lang\ukrainian.lng"
 				/>
 			</FileConfiguration>
 		</File>
