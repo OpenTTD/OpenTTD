@@ -422,7 +422,6 @@ static void GenerateBuildList(Window *w)
 static void DrawTrainBuildWindow(Window *w)
 {
 	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
-	int num_engines = EngList_Count(&bv->eng_list);
 	int x = 1;
 	int y = 27;
 	EngineID selected_id = bv->sel_engine;
