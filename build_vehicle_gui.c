@@ -327,23 +327,13 @@ static void GenerateBuildList(Window *w)
 	}
 }
 
-static inline const EngineID *GetEngineArray(const Window *w)
-{
-	return WP(w, const buildvehicle_d).eng_list;
-}
-
-static inline uint16 GetEngineArrayLength(const Window *w)
-{
-	return EngList_Count(&WP(w, const buildvehicle_d).eng_list);
-}
-
 static void DrawBuildAircraftWindow(Window *w)
 {
 	const buildvehicle_d *bv = &WP(w, buildvehicle_d);
 
 	SetWindowWidgetDisabledState(w, BUILD_VEHICLE_WIDGET_BUILD, w->window_number == 0);
 
-	SetVScrollCount(w, GetEngineArrayLength(w));
+	SetVScrollCount(w, EngList_Count(&bv->eng_list));
 	DrawWindowWidgets(w);
 
 	{
@@ -351,12 +341,10 @@ static void DrawBuildAircraftWindow(Window *w)
 		int y = 27;
 		EngineID selected_id = bv->sel_engine;
 		EngineID eid = w->vscroll.pos;
-		const EngineID *list = GetEngineArray(w);
-		uint16 list_length = GetEngineArrayLength(w);
-		uint16 max = min(w->vscroll.pos + w->vscroll.cap, list_length);
+		uint16 max = min(w->vscroll.pos + w->vscroll.cap, EngList_Count(&bv->eng_list));
 
 		for (; eid < max; eid++) {
-			const EngineID engine = list[eid];
+			const EngineID engine = bv->eng_list[eid];
 
 			DrawString(x + 62, y + 7, GetCustomEngineName(engine), engine == selected_id ? 0xC : 0x10);
 			DrawAircraftEngine(x + 29, y + 10, engine, GetEnginePalette(engine, _local_player));
@@ -385,12 +373,10 @@ static void BuildAircraftClickEvent(Window *w, WindowEvent *e)
 			break;
 
 		case BUILD_VEHICLE_WIDGET_LIST: {
-			uint i = (e->we.click.pt.y - 26) / 24;
-			if (i < w->vscroll.cap) {
-				i += w->vscroll.pos;
-				bv->sel_engine = (i < GetEngineArrayLength(w)) ? GetEngineArray(w)[i] : INVALID_ENGINE;
-				SetWindowDirty(w);
-			}
+			uint i = (e->we.click.pt.y - 26) / 24 + w->vscroll.pos;
+			uint num_items = EngList_Count(&bv->eng_list);
+			bv->sel_engine = (i < num_items) ? bv->eng_list[i] : INVALID_ENGINE;
+			SetWindowDirty(w);
 			break;
 		}
 
