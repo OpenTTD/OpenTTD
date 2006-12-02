@@ -1335,6 +1335,7 @@ const SettingDesc _patch_settings[] = {
 	 SDT_VAR(Patches, station_spread,SLE_UINT8,0, 0, 12, 4, 64, 0, STR_CONFIG_PATCHES_STATION_SPREAD,     InvalidateStationBuildWindow),
 	SDT_BOOL(Patches, serviceathelipad,        0, 0,  true,        STR_CONFIG_PATCHES_SERVICEATHELIPAD,   NULL),
 	SDT_BOOL(Patches, modified_catchment,      0, 0,  true,        STR_CONFIG_PATCHES_CATCHMENT,          NULL),
+	SDT_CONDBOOL(Patches, gradual_loading, 40, SL_MAX_VERSION, 0, 0,  true, STR_CONFIG_PATCHES_GRADUAL_LOADING,    NULL),
 
 	/***************************************************************************/
 	/* Economy section of the GUI-configure patches window */

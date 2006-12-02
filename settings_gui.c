@@ -595,6 +595,7 @@ static const char *_patches_stations[] = {
 	"station_spread",
 	"serviceathelipad",
 	"modified_catchment",
+	"gradual_loading",
 };
 
 static const char *_patches_economy[] = {

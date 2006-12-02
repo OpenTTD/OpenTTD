@@ -1258,9 +1258,10 @@ static void HandleAircraftLoading(Vehicle *v, int mode)
 		if (mode != 0) return;
 		if (--v->load_unload_time_rem != 0) return;
 
-		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
+		if (CanFillVehicle(v) && (v->current_order.flags & OF_FULL_LOAD ||
+				(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED)))) {
 			SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
-			if (LoadUnloadVehicle(v)) {
+			if (LoadUnloadVehicle(v, false)) {
 				InvalidateWindow(WC_AIRCRAFT_LIST, v->owner);
 				MarkAircraftDirty(v);
 			}
@@ -1377,7 +1378,7 @@ static void AircraftEntersTerminal(Vehicle *v)
 	}
 
 	SET_EXPENSES_TYPE(EXPENSES_AIRCRAFT_INC);
-	LoadUnloadVehicle(v);
+	LoadUnloadVehicle(v, true);
 	MarkAircraftDirty(v);
 	InvalidateWindowWidget(WC_VEHICLE_VIEW, v->index, STATUS_BAR);
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);

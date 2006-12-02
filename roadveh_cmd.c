@@ -736,9 +736,10 @@ static void HandleRoadVehLoading(Vehicle *v)
 
 			if (--v->load_unload_time_rem != 0) return;
 
-			if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
+			if (CanFillVehicle(v) && (v->current_order.flags & OF_FULL_LOAD ||
+					(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED)))) {
 				SET_EXPENSES_TYPE(EXPENSES_ROADVEH_INC);
-				if (LoadUnloadVehicle(v)) {
+				if (LoadUnloadVehicle(v, false)) {
 					InvalidateWindow(WC_ROADVEH_LIST, v->owner);
 					MarkRoadVehDirty(v);
 				}
@@ -1513,7 +1514,7 @@ again:
 			}
 
 			SET_EXPENSES_TYPE(EXPENSES_ROADVEH_INC);
-			if (LoadUnloadVehicle(v)) {
+			if (LoadUnloadVehicle(v, true)) {
 				InvalidateWindow(WC_ROADVEH_LIST, v->owner);
 				MarkRoadVehDirty(v);
 			}

@@ -725,7 +725,7 @@ bool CanFillVehicle(Vehicle *v)
 			))) {
 
 		// If patch is active, use alternative CanFillVehicle-function
-		if (_patches.full_load_any) return CanFillVehicle_FullLoadAny(v);
+		if (_patches.full_load_any && v->current_order.flags & OF_FULL_LOAD) return CanFillVehicle_FullLoadAny(v);
 
 		do {
 			if (v->cargo_count != v->cargo_cap) return true;
@@ -2987,6 +2987,7 @@ const SaveLoad _common_veh_desc[] = {
 	SLE_CONDVAR(Vehicle, build_year,           SLE_INT32,                 31, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, load_unload_time_rem, SLE_UINT16),
+	SLE_CONDVAR(Vehicle, load_status,          SLE_UINT8,                 40, SL_MAX_VERSION),
 
 	    SLE_VAR(Vehicle, profit_this_year,     SLE_INT32),
 	    SLE_VAR(Vehicle, profit_last_year,     SLE_INT32),

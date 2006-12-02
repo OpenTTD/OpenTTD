@@ -2609,10 +2609,11 @@ static void HandleTrainLoading(Vehicle *v, bool mode)
 
 		if (--v->load_unload_time_rem) return;
 
-		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
+		if (CanFillVehicle(v) && (v->current_order.flags & OF_FULL_LOAD ||
+				(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED)))) {
 			v->u.rail.days_since_order_progr = 0; /* Prevent a train lost message for full loading trains */
 			SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
-			if (LoadUnloadVehicle(v)) {
+			if (LoadUnloadVehicle(v, false)) {
 				InvalidateWindow(WC_TRAINS_LIST, v->owner);
 				MarkTrainDirty(v);
 
@@ -2712,7 +2713,7 @@ static void TrainEnterStation(Vehicle *v, StationID station)
 	v->current_order.dest = 0;
 
 	SET_EXPENSES_TYPE(EXPENSES_TRAIN_INC);
-	if (LoadUnloadVehicle(v) != 0) {
+	if (LoadUnloadVehicle(v, true) != 0) {
 		InvalidateWindow(WC_TRAINS_LIST, v->owner);
 		TrainCargoChanged(v);
 		UpdateTrainAcceleration(v);

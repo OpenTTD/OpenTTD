@@ -9,21 +9,35 @@
 
 #include "../sound.h"
 
-/** Writes the properties of a vehicle into the EngineInfo struct.
+/** Writes the properties of a train or road vehicle into the EngineInfo struct.
  * @see EngineInfo
  * @param a Introduction date
  * @param e Rail Type of the vehicle
  * @param f Bitmask of the climates
+ * @note the 5 between d and e is the load amount
  */
-#define MK(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, e, f, 0, 8, 0, 0 }
+#define MK(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, 5, e, f, 0, 8, 0, 0 }
 /** Writes the properties of a train carriage into the EngineInfo struct.
  * @see EngineInfo
  * @param a Introduction date
  * @param e Rail Type of the vehicle
  * @param f Bitmask of the climates
  * @note the 0x80 in parameter b sets the "is carriage bit"
+ * @note the 5 between d and e is the load amount
  */
-#define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b | 0x80, c, d, e, f, 0, 8, 0, 0 }
+#define MW(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b | 0x80, c, d, 5, e, f, 0, 8, 0, 0 }
+
+/** Writes the properties of a ship into the EngineInfo struct.
+ * @see MK
+ * @note the 10 between d and e is the load amount
+ */
+#define MS(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, 10, e, f, 0, 8, 0, 0 }
+
+/** Writes the properties of an aeroplane into the EngineInfo struct.
+ * @see MK
+ * @note the 20 between d and e is the load amount
+ */
+#define MA(a, b, c, d, e, f) { DAYS_TILL_ORIGINAL_BASE_YEAR + a, b, c, d, 20, e, f, 0, 8, 0, 0 }
 
 // Rail types
 // R = Conventional railway
@@ -248,57 +262,57 @@ const EngineInfo orig_engine_info[] = {
 	MK(  5479,  20,  15,  55, 0,       Y), /* 201 MightyMover Bubble Truck */
 	MK( 20970,  20,  15,  55, 0,       Y), /* 202 Powernaught Bubble Truck */
 	MK( 33023,  20,  15,  85, 0,       Y), /* 203 Wizzowow Bubble Truck */
-	MK(  2922,   5,  30,  50, 0, T|A|S  ), /* 204 MPS Oil Tanker */
-	MK( 17167,   5,  30,  90, 0, T|A|S  ), /* 205 CS-Inc. Oil Tanker */
-	MK(  2192,   5,  30,  55, 0, T|A|S  ), /* 206 MPS Passenger Ferry */
-	MK( 18628,   5,  30,  90, 0, T|A|S  ), /* 207 FFP Passenger Ferry */
-	MK( 17257,  10,  25,  90, 0, T|A|S  ), /* 208 Bakewell 300 Hovercraft */
-	MK(  9587,   5,  30,  40, 0,       Y), /* 209 Chugger-Chug Passenger Ferry */
-	MK( 20544,   5,  30,  90, 0,       Y), /* 210 Shivershake Passenger Ferry */
-	MK(  2557,   5,  30,  55, 0, T|A|S  ), /* 211 Yate Cargo ship */
-	MK( 19724,   5,  30,  98, 0, T|A|S  ), /* 212 Bakewell Cargo ship */
-	MK(  9587,   5,  30,  45, 0,       Y), /* 213 Mightymover Cargo ship */
-	MK( 22371,   5,  30,  90, 0,       Y), /* 214 Powernaut Cargo ship */
-	MK(  2922,  20,  20,  20, 0, T|A|S  ), /* 215 Sampson U52 */
-	MK(  9922,  20,  24,  20, 0, T|A|S  ), /* 216 Coleman Count */
-	MK( 12659,  20,  18,  20, 0, T|A|S  ), /* 217 FFP Dart */
-	MK( 17652,  20,  25,  35, 0, T|A|S  ), /* 218 Yate Haugan */
-	MK(  4929,  20,  30,  30, 0, T|A|S  ), /* 219 Bakewell Cotswald LB-3 */
-	MK( 13695,  20,  23,  25, 0, T|A|S  ), /* 220 Bakewell Luckett LB-8 */
-	MK( 16341,  20,  26,  30, 0, T|A|S  ), /* 221 Bakewell Luckett LB-9 */
-	MK( 21395,  20,  25,  30, 0, T|A|S  ), /* 222 Bakewell Luckett LB80 */
-	MK( 18263,  20,  20,  30, 0, T|A|S  ), /* 223 Bakewell Luckett LB-10 */
-	MK( 25233,  20,  25,  30, 0, T|A|S  ), /* 224 Bakewell Luckett LB-11 */
-	MK( 15371,  20,  22,  25, 0, T|A|S  ), /* 225 Yate Aerospace YAC 1-11 */
-	MK( 15461,  20,  25,  25, 0, T|A|S  ), /* 226 Darwin 100 */
-	MK( 16952,  20,  22,  25, 0, T|A|S  ), /* 227 Darwin 200 */
-	MK( 17227,  20,  25,  30, 0, T|A|S  ), /* 228 Darwin 300 */
-	MK( 22371,  20,  25,  35, 0, T|A|S  ), /* 229 Darwin 400 */
-	MK( 22341,  20,  25,  30, 0, T|A|S  ), /* 230 Darwin 500 */
-	MK( 27209,  20,  25,  30, 0, T|A|S  ), /* 231 Darwin 600 */
-	MK( 17988,  20,  20,  30, 0, T|A|S  ), /* 232 Guru Galaxy */
-	MK( 18993,  20,  24,  35, 0, T|A|S  ), /* 233 Airtaxi A21 */
-	MK( 22401,  20,  24,  30, 0, T|A|S  ), /* 234 Airtaxi A31 */
-	MK( 24472,  20,  24,  30, 0, T|A|S  ), /* 235 Airtaxi A32 */
-	MK( 26724,  20,  24,  30, 0, T|A|S  ), /* 236 Airtaxi A33 */
-	MK( 22005,  20,  25,  30, 0, T|A|S  ), /* 237 Yate Aerospace YAe46 */
-	MK( 24107,  20,  20,  35, 0, T|A|S  ), /* 238 Dinger 100 */
-	MK( 29310,  20,  25,  60, 0, T|A|S  ), /* 239 AirTaxi A34-1000 */
-	MK( 35520,  20,  22,  30, 0, T|A|S  ), /* 240 Yate Z-Shuttle */
-	MK( 36981,  20,  22,  30, 0, T|A|S  ), /* 241 Kelling K1 */
-	MK( 38807,  20,  22,  50, 0, T|A|S  ), /* 242 Kelling K6 */
-	MK( 42094,  20,  25,  30, 0, T|A|S  ), /* 243 Kelling K7 */
-	MK( 44651,  20,  23,  30, 0, T|A|S  ), /* 244 Darwin 700 */
-	MK( 40268,  20,  25,  30, 0, T|A|S  ), /* 245 FFP Hyperdart 2 */
-	MK( 33693,  20,  25,  50, 0, T|A|S  ), /* 246 Dinger 200 */
-	MK( 32963,  20,  20,  60, 0, T|A|S  ), /* 247 Dinger 1000 */
-	MK(  9222,  20,  20,  35, 0,       Y), /* 248 Ploddyphut 100 */
-	MK( 12874,  20,  20,  35, 0,       Y), /* 249 Ploddyphut 500 */
-	MK( 16892,  20,  20,  35, 0,       Y), /* 250 Flashbang X1 */
-	MK( 21275,  20,  20,  99, 0,       Y), /* 251 Juggerplane M1 */
-	MK( 23832,  20,  20,  99, 0,       Y), /* 252 Flashbang Wizzer */
-	MK( 13575,  20,  20,  40, 0, T|A|S  ), /* 253 Tricario Helicopter */
-	MK( 28215,  20,  20,  30, 0, T|A|S  ), /* 254 Guru X2 Helicopter */
+	MS(  2922,   5,  30,  50, 0, T|A|S  ), /* 204 MPS Oil Tanker */
+	MS( 17167,   5,  30,  90, 0, T|A|S  ), /* 205 CS-Inc. Oil Tanker */
+	MS(  2192,   5,  30,  55, 0, T|A|S  ), /* 206 MPS Passenger Ferry */
+	MS( 18628,   5,  30,  90, 0, T|A|S  ), /* 207 FFP Passenger Ferry */
+	MS( 17257,  10,  25,  90, 0, T|A|S  ), /* 208 Bakewell 300 Hovercraft */
+	MS(  9587,   5,  30,  40, 0,       Y), /* 209 Chugger-Chug Passenger Ferry */
+	MS( 20544,   5,  30,  90, 0,       Y), /* 210 Shivershake Passenger Ferry */
+	MS(  2557,   5,  30,  55, 0, T|A|S  ), /* 211 Yate Cargo ship */
+	MS( 19724,   5,  30,  98, 0, T|A|S  ), /* 212 Bakewell Cargo ship */
+	MS(  9587,   5,  30,  45, 0,       Y), /* 213 Mightymover Cargo ship */
+	MS( 22371,   5,  30,  90, 0,       Y), /* 214 Powernaut Cargo ship */
+	MA(  2922,  20,  20,  20, 0, T|A|S  ), /* 215 Sampson U52 */
+	MA(  9922,  20,  24,  20, 0, T|A|S  ), /* 216 Coleman Count */
+	MA( 12659,  20,  18,  20, 0, T|A|S  ), /* 217 FFP Dart */
+	MA( 17652,  20,  25,  35, 0, T|A|S  ), /* 218 Yate Haugan */
+	MA(  4929,  20,  30,  30, 0, T|A|S  ), /* 219 Bakewell Cotswald LB-3 */
+	MA( 13695,  20,  23,  25, 0, T|A|S  ), /* 220 Bakewell Luckett LB-8 */
+	MA( 16341,  20,  26,  30, 0, T|A|S  ), /* 221 Bakewell Luckett LB-9 */
+	MA( 21395,  20,  25,  30, 0, T|A|S  ), /* 222 Bakewell Luckett LB80 */
+	MA( 18263,  20,  20,  30, 0, T|A|S  ), /* 223 Bakewell Luckett LB-10 */
+	MA( 25233,  20,  25,  30, 0, T|A|S  ), /* 224 Bakewell Luckett LB-11 */
+	MA( 15371,  20,  22,  25, 0, T|A|S  ), /* 225 Yate Aerospace YAC 1-11 */
+	MA( 15461,  20,  25,  25, 0, T|A|S  ), /* 226 Darwin 100 */
+	MA( 16952,  20,  22,  25, 0, T|A|S  ), /* 227 Darwin 200 */
+	MA( 17227,  20,  25,  30, 0, T|A|S  ), /* 228 Darwin 300 */
+	MA( 22371,  20,  25,  35, 0, T|A|S  ), /* 229 Darwin 400 */
+	MA( 22341,  20,  25,  30, 0, T|A|S  ), /* 230 Darwin 500 */
+	MA( 27209,  20,  25,  30, 0, T|A|S  ), /* 231 Darwin 600 */
+	MA( 17988,  20,  20,  30, 0, T|A|S  ), /* 232 Guru Galaxy */
+	MA( 18993,  20,  24,  35, 0, T|A|S  ), /* 233 Airtaxi A21 */
+	MA( 22401,  20,  24,  30, 0, T|A|S  ), /* 234 Airtaxi A31 */
+	MA( 24472,  20,  24,  30, 0, T|A|S  ), /* 235 Airtaxi A32 */
+	MA( 26724,  20,  24,  30, 0, T|A|S  ), /* 236 Airtaxi A33 */
+	MA( 22005,  20,  25,  30, 0, T|A|S  ), /* 237 Yate Aerospace YAe46 */
+	MA( 24107,  20,  20,  35, 0, T|A|S  ), /* 238 Dinger 100 */
+	MA( 29310,  20,  25,  60, 0, T|A|S  ), /* 239 AirTaxi A34-1000 */
+	MA( 35520,  20,  22,  30, 0, T|A|S  ), /* 240 Yate Z-Shuttle */
+	MA( 36981,  20,  22,  30, 0, T|A|S  ), /* 241 Kelling K1 */
+	MA( 38807,  20,  22,  50, 0, T|A|S  ), /* 242 Kelling K6 */
+	MA( 42094,  20,  25,  30, 0, T|A|S  ), /* 243 Kelling K7 */
+	MA( 44651,  20,  23,  30, 0, T|A|S  ), /* 244 Darwin 700 */
+	MA( 40268,  20,  25,  30, 0, T|A|S  ), /* 245 FFP Hyperdart 2 */
+	MA( 33693,  20,  25,  50, 0, T|A|S  ), /* 246 Dinger 200 */
+	MA( 32963,  20,  20,  60, 0, T|A|S  ), /* 247 Dinger 1000 */
+	MA(  9222,  20,  20,  35, 0,       Y), /* 248 Ploddyphut 100 */
+	MA( 12874,  20,  20,  35, 0,       Y), /* 249 Ploddyphut 500 */
+	MA( 16892,  20,  20,  35, 0,       Y), /* 250 Flashbang X1 */
+	MA( 21275,  20,  20,  99, 0,       Y), /* 251 Juggerplane M1 */
+	MA( 23832,  20,  20,  99, 0,       Y), /* 252 Flashbang Wizzer */
+	MA( 13575,  20,  20,  40, 0, T|A|S  ), /* 253 Tricario Helicopter */
+	MA( 28215,  20,  20,  30, 0, T|A|S  ), /* 254 Guru X2 Helicopter */
 	MK( 13575,  20,  20,  99, 0,       Y), /* 255  */
 };
 #undef Y
@@ -309,6 +323,10 @@ const EngineInfo orig_engine_info[] = {
 #undef M
 #undef R
 #undef E
+#undef MK
+#undef MW
+#undef MS
+#undef MA
 
 /** Writes the properties of a rail vehicle into the RailVehicleInfo struct.
  * @see RailVehicleInfo

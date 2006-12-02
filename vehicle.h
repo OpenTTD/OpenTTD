@@ -28,6 +28,11 @@ enum VehStatus {
 	VS_CRASHED         = 0x80,
 };
 
+enum LoadStatus {
+	LS_LOADING_FINISHED,
+	LS_CARGO_UNLOADING,
+};
+
 /* Effect vehicle types */
 typedef enum EffectVehicle {
 	EV_CHIMNEY_SMOKE   = 0,
@@ -230,6 +235,7 @@ struct Vehicle {
 	bool leave_depot_instantly; // NOSAVE: stores if the vehicle needs to leave the depot it just entered. Used by autoreplace
 
 	uint16 load_unload_time_rem;
+	byte load_status;
 
 	int32 profit_this_year;
 	int32 profit_last_year;
@@ -311,7 +317,7 @@ void ShowAircraftViewWindow(const Vehicle* v);
 
 UnitID GetFreeUnitNumber(byte type);
 
-int LoadUnloadVehicle(Vehicle *v);
+int LoadUnloadVehicle(Vehicle *v, bool just_arrived);
 
 void TrainConsistChanged(Vehicle *v);
 void TrainPowerChanged(Vehicle *v);

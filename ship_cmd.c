@@ -273,9 +273,10 @@ static void HandleShipLoading(Vehicle *v)
 		if (v->current_order.type != OT_LOADING) return;
 		if (--v->load_unload_time_rem) return;
 
-		if (v->current_order.flags & OF_FULL_LOAD && CanFillVehicle(v)) {
+		if (CanFillVehicle(v) && (v->current_order.flags & OF_FULL_LOAD ||
+				(_patches.gradual_loading && !HASBIT(v->load_status, LS_LOADING_FINISHED)))) {
 			SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
-			if (LoadUnloadVehicle(v)) {
+			if (LoadUnloadVehicle(v, false)) {
 				InvalidateWindow(WC_SHIPS_LIST, v->owner);
 				MarkShipDirty(v);
 			}
@@ -705,7 +706,7 @@ static void ShipController(Vehicle *v)
 								ShipArrivesAt(v, st);
 
 								SET_EXPENSES_TYPE(EXPENSES_SHIP_INC);
-								if (LoadUnloadVehicle(v)) {
+								if (LoadUnloadVehicle(v, true)) {
 									InvalidateWindow(WC_SHIPS_LIST, v->owner);
 									MarkShipDirty(v);
 								}

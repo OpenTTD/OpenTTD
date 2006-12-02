@@ -29,6 +29,7 @@
 #include "train.h"
 #include "newgrf_engine.h"
 #include "newgrf_sound.h"
+#include "newgrf_callbacks.h"
 #include "unmovable.h"
 #include "date.h"
 
@@ -1301,7 +1302,7 @@ static bool LoadWait(const Vehicle* v, const Vehicle* u)
 	return false;
 }
 
-int LoadUnloadVehicle(Vehicle *v)
+int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 {
 	int profit = 0;
 	int v_profit = 0; //virtual profit for feeder systems
@@ -1315,10 +1316,12 @@ int LoadUnloadVehicle(Vehicle *v)
 	uint count, cap;
 	PlayerID old_player;
 	bool completely_empty = true;
+	byte load_amount;
 
 	assert(v->current_order.type == OT_LOADING);
 
 	v->cur_speed = 0;
+	SETBIT(v->load_status, LS_LOADING_FINISHED);
 
 	old_player = _current_player;
 	_current_player = v->owner;
@@ -1328,26 +1331,41 @@ int LoadUnloadVehicle(Vehicle *v)
 
 	for (; v != NULL; v = v->next) {
 		GoodsEntry* ge;
+		load_amount = EngInfo(v->engine_type)->load_amount;
+		if (_patches.gradual_loading) {
+			uint16 cb_load_amount = GetVehicleCallback(CBID_VEHICLE_LOAD_AMOUNT, 0, 0, v->engine_type, v);
+			if (cb_load_amount != CALLBACK_FAILED) load_amount = cb_load_amount & 0xFF;
+		}
 
 		if (v->cargo_cap == 0) continue;
 
+		/* If the train has just arrived, set it to unload. */
+		if (just_arrived) SETBIT(v->load_status, LS_CARGO_UNLOADING);
+
 		ge = &st->goods[v->cargo_type];
+		count = GB(ge->waiting_acceptance, 0, 12);
 
 		/* unload? */
-		if (v->cargo_count != 0) {
+		if (v->cargo_count != 0 && HASBIT(v->load_status, LS_CARGO_UNLOADING)) {
 			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000 && !(u->current_order.flags & OF_TRANSFER)) {
 				// deliver goods to the station
 				st->time_since_unload = 0;
 
 				unloading_time += v->cargo_count; /* TTDBUG: bug in original TTD */
-				profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
+				if (just_arrived) profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
 				result |= 1;
-				v->cargo_count = 0;
+				if (_patches.gradual_loading) {
+					v->cargo_count -= min(load_amount, v->cargo_count);
+					if (v->cargo_count != 0 || (count != 0 && !(u->current_order.flags & OF_UNLOAD))) CLRBIT(u->load_status, LS_LOADING_FINISHED);
+					continue;
+				} else {
+					v->cargo_count = 0;
+				}
 			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
+				uint16 amount_unloaded = _patches.gradual_loading ? min(v->cargo_count, load_amount) : v->cargo_count;
 				/* unload goods and let it wait at the station */
 				st->time_since_unload = 0;
-
-				if (u->current_order.flags & OF_TRANSFER) {
+				if (just_arrived && (u->current_order.flags & OF_TRANSFER)) {
 					v_profit = GetTransportedGoodsIncome(
 						v->cargo_count,
 						DistanceManhattan(GetStation(v->cargo_source)->xy, GetStation(last_visited)->xy),
@@ -1371,14 +1389,18 @@ int LoadUnloadVehicle(Vehicle *v)
 						ge->enroute_from = v->cargo_source;
 				}
 				// Update amount of waiting cargo
-				SB(ge->waiting_acceptance, 0, 12, min(v->cargo_count + t, 0xFFF));
+				SB(ge->waiting_acceptance, 0, 12, min(amount_unloaded + t, 0xFFF));
 
 				if (u->current_order.flags & OF_TRANSFER) {
 					ge->feeder_profit += v_profit;
 					u->profit_this_year += v_profit;
 				}
 				result |= 2;
-				v->cargo_count = 0;
+				v->cargo_count -= amount_unloaded;
+				if (_patches.gradual_loading) {
+					if (v->cargo_count != 0 || (count != 0 && !(u->current_order.flags & OF_UNLOAD))) CLRBIT(u->load_status, LS_LOADING_FINISHED);
+					continue;
+				}
 			}
 
 			if (v->cargo_count != 0) completely_empty = false;
@@ -1386,6 +1408,10 @@ int LoadUnloadVehicle(Vehicle *v)
 
 		/* don't pick up goods that we unloaded */
 		if (u->current_order.flags & OF_UNLOAD) continue;
+
+		/* The vehicle must have been unloaded because it is either empty, or
+		 * v->cargo_unloading is already false. */
+		CLRBIT(v->load_status, LS_CARGO_UNLOADING);
 
 		/* update stats */
 		ge->days_since_pickup = 0;
@@ -1401,7 +1427,6 @@ int LoadUnloadVehicle(Vehicle *v)
 
 		// If there's goods waiting at the station, and the vehicle
 		//  has capacity for it, load it on the vehicle.
-		count = GB(ge->waiting_acceptance, 0, 12);
 		if (count != 0 &&
 				(cap = v->cargo_cap - v->cargo_count) != 0) {
 			int cargoshare;
@@ -1412,7 +1437,7 @@ int LoadUnloadVehicle(Vehicle *v)
 
 			/* Skip loading this vehicle if another train/vehicle is already handling
 			 * the same cargo type at this station */
-			if (_patches.improved_load && LoadWait(v,u)) continue;
+			if (_patches.improved_load && (u->current_order.flags & OF_FULL_LOAD) && LoadWait(v,u)) continue;
 
 			/* TODO: Regarding this, when we do gradual loading, we
 			 * should first unload all vehicles and then start
@@ -1424,6 +1449,8 @@ int LoadUnloadVehicle(Vehicle *v)
 			completely_empty = false;
 
 			if (cap > count) cap = count;
+			if (_patches.gradual_loading) cap = min(cap, load_amount);
+			if (cap < count) CLRBIT(u->load_status, LS_LOADING_FINISHED);
 			cargoshare = cap * 10000 / ge->waiting_acceptance;
 			feeder_profit_share = ge->feeder_profit * cargoshare / 10000;
 			v->cargo_count += cap;
@@ -1441,8 +1468,16 @@ int LoadUnloadVehicle(Vehicle *v)
 		}
 	}
 
-
 	v = u;
+
+	if (_patches.gradual_loading) {
+		/* The time it takes to load one 'slice' of cargo or passengers depends
+		 * on the vehicle type - the values here are those found in TTDPatch */
+		uint gradual_loading_wait_time[] = { 40, 20, 10, 20 };
+
+		unloading_time = gradual_loading_wait_time[v->type - VEH_Train];
+		if (HASBIT(v->load_status, LS_LOADING_FINISHED)) unloading_time += 20;
+	}
 
 	if (v_profit_total > 0) {
 		ShowFeederIncomeAnimation(v->x_pos, v->y_pos, v->z_pos, v_profit_total);

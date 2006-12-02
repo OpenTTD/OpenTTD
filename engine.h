@@ -77,6 +77,7 @@ typedef struct EngineInfo {
 	byte unk2;              ///< Carriages have the highest bit set in this one
 	Year lifelength;
 	Year base_life;
+	byte load_amount;
 	byte railtype:4;
 	byte climates:4;
 	uint32 refit_mask;
