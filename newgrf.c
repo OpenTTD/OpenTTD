@@ -42,7 +42,7 @@
 
 static int _skip_sprites; // XXX
 static uint _file_index; // XXX
-SpriteID _signal_base = 0;
+SpriteID _signal_base;
 
 static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
@@ -3325,6 +3325,7 @@ static void ResetNewGRFData(void)
 	_traininfo_vehicle_pitch = 0;
 	_traininfo_vehicle_width = 29;
 	_have_2cc = false;
+	_signal_base = 0;
 
 	InitializeSoundPool();
 	InitializeSpriteGroupPool();
