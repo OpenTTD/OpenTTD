@@ -61,6 +61,7 @@ typedef struct GRFConfig {
 
 extern GRFConfig *_first_grfconfig;
 extern SpriteID _signal_base;
+extern SpriteID _coast_base;
 extern bool _have_2cc;
 
 void LoadNewGRF(uint load_index, uint file_index);

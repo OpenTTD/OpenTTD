@@ -43,6 +43,7 @@
 static int _skip_sprites; // XXX
 static uint _file_index; // XXX
 SpriteID _signal_base;
+SpriteID _coast_base;
 
 static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
@@ -2159,6 +2160,14 @@ static void GraphicsNew(byte *buf, int len)
 			replace = SPR_CANALS_BASE + 5;
 			break;
 
+		case 0x0D: /* Coast graphics */
+			if (num != 16) {
+				grfmsg(GMS_WARN, "GraphicsNews: Coast graphics sprite count must be 16, skipping.");
+				return;
+			}
+			_coast_base = _cur_spriteid;
+			break;
+
 		default:
 			grfmsg(GMS_NOTICE, "GraphicsNew: Custom graphics (type 0x%02X) sprite block of length %u (unimplemented, ignoring).\n",
 					type, num);
@@ -3326,6 +3335,7 @@ static void ResetNewGRFData(void)
 	_traininfo_vehicle_width = 29;
 	_have_2cc = false;
 	_signal_base = 0;
+	_coast_base = 0;
 
 	InitializeSoundPool();
 	InitializeSpriteGroupPool();

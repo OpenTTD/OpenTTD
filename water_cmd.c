@@ -19,6 +19,7 @@
 #include "vehicle_gui.h"
 #include "train.h"
 #include "water_map.h"
+#include "newgrf.h"
 
 const SpriteID _water_shore_sprites[15] = {
 	0,
@@ -452,7 +453,11 @@ static void DrawTile_Water(TileInfo *ti)
 
 		case WATER_COAST:
 			assert(!IsSteepSlope(ti->tileh));
-			DrawGroundSprite(_water_shore_sprites[ti->tileh]);
+			if (_coast_base != 0) {
+				DrawGroundSprite(_coast_base + ti->tileh);
+			} else {
+				DrawGroundSprite(_water_shore_sprites[ti->tileh]);
+			}
 			break;
 
 		case WATER_LOCK: {
