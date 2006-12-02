@@ -159,13 +159,13 @@ static char *TranslateTTDPatchCodes(const char *str)
 	char *tmp = malloc(strlen(str) * 10 + 1); /* Allocate space to allow for expansion */
 	char *d = tmp;
 	bool unicode = false;
-	WChar c = Utf8Consume(&str);
+	WChar c;
+	size_t len = Utf8Decode(&c, str);
 
 	if (c == 0x00DE) {
 		/* The thorn ('þ') indicates a unicode string to TTDPatch */
 		unicode = true;
-	} else {
-		str--;
+		str += len;
 	}
 
 	for (;;) {
