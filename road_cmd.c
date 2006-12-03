@@ -191,6 +191,7 @@ int32 CmdRemoveRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 						MakeRailNormal(tile, GetTileOwner(tile), GetCrossingRailBits(tile), GetRailTypeCrossing(tile));
 						MarkTileDirtyByTile(tile);
+						YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(GetTrackBits(tile)));
 					}
 					return _price.remove_road * 2;
 				}
@@ -354,6 +355,7 @@ int32 CmdBuildRoad(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			if (!EnsureNoVehicle(tile)) return CMD_ERROR;
 
 			if (flags & DC_EXEC) {
+				YapfNotifyTrackLayoutChange(tile, FIND_FIRST_BIT(GetTrackBits(tile)));
 				MakeRoadCrossing(tile, _current_player, GetTileOwner(tile), roaddir, GetRailType(tile), p2);
 				MarkTileDirtyByTile(tile);
 			}
