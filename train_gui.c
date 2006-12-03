@@ -393,7 +393,7 @@ static void GenerateBuildList(Window *w)
 		const RailVehicleInfo *rvi = RailVehInfo(eid);
 
 		if (bv->filter.railtype != RAILTYPE_END && !HasPowerOnRail(e->railtype, bv->filter.railtype)) continue;
-		if (!IsEngineBuildable(eid, VEH_Train)) continue;
+		if (!IsEngineBuildable(eid, VEH_Train, _local_player)) continue;
 
 		EngList_Add(&bv->eng_list, eid);
 		if ((rvi->flags & RVI_WAGON) == 0) {

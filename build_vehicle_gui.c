@@ -290,7 +290,7 @@ static void GenerateBuildAircraftList(Window *w)
 	 * when planes become obsolete and are removed */
 	sel_id = INVALID_ENGINE;
 	for (eid = AIRCRAFT_ENGINES_INDEX; eid < AIRCRAFT_ENGINES_INDEX + NUM_AIRCRAFT_ENGINES; eid++) {
-		if (IsEngineBuildable(eid, VEH_Aircraft)) {
+		if (IsEngineBuildable(eid, VEH_Aircraft, _local_player)) {
 			const AircraftVehicleInfo *avi = AircraftVehInfo(eid);
 			switch (bv->filter.acc_planes) {
 				case HELICOPTERS_ONLY:

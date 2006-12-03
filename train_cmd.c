@@ -743,7 +743,7 @@ int32 CmdBuildRailVehicle(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	uint num_vehicles;
 
 	/* Check if the engine-type is valid (for the player) */
-	if (!IsEngineBuildable(p1, VEH_Train)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if (!IsEngineBuildable(p1, VEH_Train, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
 	/* Check if the train is actually being built in a depot belonging
 	 * to the player. Doesn't matter if only the cost is queried */

@@ -401,12 +401,13 @@ int32 CmdRenameEngine(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 
 /*
  * returns true if an engine is valid, of the specified type, and buildable by
- * the current player, false otherwise
+ * the given player, false otherwise
  *
  * engine = index of the engine to check
  * type   = the type the engine should be of (VEH_xxx)
+ * player = index of the player
  */
-bool IsEngineBuildable(uint engine, byte type)
+bool IsEngineBuildable(EngineID engine, byte type, PlayerID player)
 {
 	const Engine *e;
 
@@ -419,7 +420,7 @@ bool IsEngineBuildable(uint engine, byte type)
 	if (e->type != type) return false;
 
 	// check if it's available
-	if (!HASBIT(e->player_avail, _current_player)) return false;
+	if (!HASBIT(e->player_avail, player)) return false;
 
 	return true;
 }

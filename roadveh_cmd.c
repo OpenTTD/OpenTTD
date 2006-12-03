@@ -114,7 +114,7 @@ int32 CmdBuildRoadVeh(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	UnitID unit_num;
 	Engine *e;
 
-	if (!IsEngineBuildable(p1, VEH_Road)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if (!IsEngineBuildable(p1, VEH_Road, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
 	SET_EXPENSES_TYPE(EXPENSES_NEW_VEHICLES);
 

@@ -207,7 +207,7 @@ int32 CmdBuildAircraft(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 	const AirportFTAClass* ap;
 	Engine *e;
 
-	if (!IsEngineBuildable(p1, VEH_Aircraft)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
+	if (!IsEngineBuildable(p1, VEH_Aircraft, _current_player)) return_cmd_error(STR_ENGINE_NOT_BUILDABLE);
 
 	value = EstimateAircraftCost(p1);
 
