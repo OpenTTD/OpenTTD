@@ -881,7 +881,10 @@ bool DoZoomInOutWindow(int how, Window *w)
 			vp->virtual_height <<= 1;
 			break;
 	}
-
+	if (vp != NULL) { // the vp can be null when how == ZOOM_NONE
+		vp->virtual_left = WP(w, vp_d).scrollpos_x;
+		vp->virtual_top = WP(w, vp_d).scrollpos_y;
+	}
 	SetWindowDirty(w);
 	/* Update the windows that have zoom-buttons to perhaps disable their buttons */
 	SendWindowMessageClass(w->window_class, how, w->window_number, 0);
