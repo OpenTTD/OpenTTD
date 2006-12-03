@@ -206,8 +206,10 @@ void GenerateLandscapeWndProc(Window *w, WindowEvent *e)
 
 	case WE_PAINT:
 		/* You can't select smoothness if not terragenesis */
-		SetWindowWidgetDisabledState(w, 32, _patches_newgame.land_generator == 0);
-		SetWindowWidgetDisabledState(w, 33, _patches_newgame.land_generator == 0);
+		if (mode == GLWP_GENERATE) {
+			SetWindowWidgetDisabledState(w, 32, _patches_newgame.land_generator == 0);
+			SetWindowWidgetDisabledState(w, 33, _patches_newgame.land_generator == 0);
+		}
 		/* Disable snowline if not hilly */
 		SetWindowWidgetDisabledState(w, 22, _opt_newgame.landscape != LT_HILLY);
 		/* Disable town and industry in SE */
