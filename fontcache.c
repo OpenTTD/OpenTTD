@@ -34,6 +34,170 @@ enum {
 	SHADOW_COLOUR = 2,
 };
 
+#ifdef WIN32
+#include <windows.h>
+#include <tchar.h>
+#include <shlobj.h> // SHGetFolderPath
+#include "win32.h"
+
+#define FONT_DIR_NT "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts"
+#define FONT_DIR_9X "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Fonts"
+static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
+{
+	FT_Error err = FT_Err_Cannot_Open_Resource;
+	HKEY hKey;
+	LONG ret;
+	TCHAR vbuffer[MAX_PATH], dbuffer[256];
+	char *font_path;
+	uint index;
+
+	/* On windows NT (2000, NT3.5, XP, etc.) the fonts are stored in the
+	 * "Windows NT" key, on Windows 9x in the Windows key. To save us having
+	 * to retrieve the windows version, we'll just query both */
+	ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T(FONT_DIR_NT), 0, KEY_READ, &hKey);
+	if (ret != ERROR_SUCCESS) ret = RegOpenKeyEx(HKEY_LOCAL_MACHINE, _T(FONT_DIR_9X), 0, KEY_READ, &hKey);
+
+	if (ret != ERROR_SUCCESS) {
+		DEBUG(freetype, 0) ("Cannot open registry key HKLM\\SOFTWARE\\Microsoft\\Windows (NT)\\CurrentVersion\\Fonts");
+		return err;
+	}
+
+	for (index = 0;; index++) {
+		char *s;
+		DWORD vbuflen = lengthof(vbuffer);
+		DWORD dbuflen = lengthof(dbuffer);
+
+		ret = RegEnumValue(hKey, index, vbuffer, &vbuflen, NULL, NULL, dbuffer, &dbuflen);
+		if (ret != ERROR_SUCCESS) break;
+
+		/* The font names in the registry are of the following 3 forms:
+		 * - ADMUI3.fon
+		 * - Book Antiqua Bold (TrueType)
+		 * - Batang & BatangChe & Gungsuh & GungsuhChe (TrueType)
+		 * We will strip the font-type '()' if any and work with the font name
+		 * itself, which must match exactly; if...
+		 * TTC files, font files which contain more than one font are seperated
+		 * byt '&'. Our best bet will be to do substr match for the fontname
+		 * and then let FreeType figure out which index to load */
+		s = _tcschr(vbuffer, '(');
+		if (s != NULL) s[-1] = '\0';
+
+		if (_tcschr(vbuffer, '&') == NULL) {
+			if (_tcsicmp(vbuffer, font_name) == 0) break;
+		} else {
+			if (_tcsstr(vbuffer, font_name) != NULL) break;
+		}
+	}
+
+	if (!SUCCEEDED(SHGetFolderPath(NULL, CSIDL_FONTS, NULL, SHGFP_TYPE_CURRENT, vbuffer))) {
+		DEBUG(freetype, 0) ("SHGetFolderPath cannot return fonts directory");
+		goto folder_error;
+	}
+
+	/* Some fonts are contained in .ttc files, TrueType Collection fonts. These
+	 * contain multiple fonts inside this single file. GetFontData however
+	 * returns the whole file, so we need to check each font inside to get the
+	 * proper font. If not found, we will use the last font in the ttc.
+	 * Also note that FreeType does not support UNICODE filesnames! */
+#if defined(UNICODE)
+	font_path = malloc(MAX_PATH);
+	font_path = convert_from_fs(vbuffer, font_path, MAX_PATH);
+#else
+	font_path = vbuffer;
+#endif
+
+	ttd_strlcat(font_path, "\\", MAX_PATH);
+	ttd_strlcat(font_path, WIDE_TO_MB(dbuffer), MAX_PATH);
+	index = 0;
+	do {
+		err = FT_New_Face(_library, font_path, index, face);
+		if (err != FT_Err_Ok) break;
+
+		if (strncasecmp(font_name, (*face)->family_name, strlen((*face)->family_name)) == 0) break;
+		err = FT_Err_Cannot_Open_Resource;
+
+	} while ((FT_Long)++index != (*face)->num_faces);
+
+#if defined(UNICODE)
+	free(font_path);
+#endif
+
+folder_error:
+	RegCloseKey(hKey);
+	return err;
+}
+#else
+# ifdef WITH_FONTCONFIG
+static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
+{
+	FT_Error err = FT_Err_Cannot_Open_Resource;
+
+	if (!FcInit()) {
+		ShowInfoF("Unable to load font configuration");
+	} else {
+		FcPattern *match;
+		FcPattern *pat;
+		FcFontSet *fs;
+		FcResult  result;
+		char *font_style;
+		char *font_family;
+
+		/* Split & strip the font's style */
+		font_family = strdup(font_name);
+		font_style = strchr(font_family, ',');
+		if (font_style != NULL) {
+			font_style[0] = '\0';
+			font_style++;
+			while (*font_style == ' ' || *font_style == '\t') font_style++;
+		}
+
+		/* Resolve the name and populate the information structure */
+		pat = FcNameParse((FcChar8*)font_family);
+		if (font_style != NULL) FcPatternAddString(pat, FC_STYLE, (FcChar8*)font_style);
+		FcConfigSubstitute(0, pat, FcMatchPattern);
+		FcDefaultSubstitute(pat);
+		fs = FcFontSetCreate();
+		match = FcFontMatch(0, pat, &result);
+
+		if (fs != NULL && match != NULL) {
+			int i;
+			FcChar8 *family;
+			FcChar8 *style;
+			FcChar8 *file;
+			FcFontSetAdd(fs, match);
+
+			for (i = 0; err != FT_Err_Ok && i < fs->nfont; i++) {
+				/* Try the new filename */
+				if (FcPatternGetString(fs->fonts[i], FC_FILE,   0, &file)   == FcResultMatch &&
+						FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
+						FcPatternGetString(fs->fonts[i], FC_STYLE,  0, &style)  == FcResultMatch) {
+
+					/* The correct style? */
+					if (font_style != NULL && strcasecmp(font_style, (char*)style) != 0) continue;
+
+					/* Font config takes the best shot, which, if the family name is spelled
+					* wrongly a 'random' font, so check whether the family name is the
+					* same as the supplied name */
+					if (strcasecmp(font_family, (char*)family) == 0) {
+						err = FT_New_Face(_library, (char *)file, 0, face);
+					}
+				}
+			}
+		}
+
+		free(font_family);
+		FcPatternDestroy(pat);
+		FcFontSetDestroy(fs);
+		FcFini();
+	}
+
+	return err;
+}
+# else
+FT_Error GetFontByFaceName(const char *font_name, FT_Face *face) {return FT_Err_Cannot_Open_Resource;}
+# endif /* WITH_FONTCONFIG */
+
+#endif
 
 /**
  * Loads the freetype font.
@@ -48,76 +212,17 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 	if (strlen(font_name) == 0) return;
 
 	error = FT_New_Face(_library, font_name, 0, face);
-#ifdef WITH_FONTCONFIG
-	/* Failed to load the font, so try it with fontconfig */
-	if (error != FT_Err_Ok) {
-		if (!FcInit()) {
- 			ShowInfoF("Unable to load font configuration");
-		} else {
-			FcPattern *match;
-			FcPattern *pat;
-			FcFontSet *fs;
-			FcResult  result;
-			char *font_style;
-			char *font_family;
 
-			/* Split & strip the font's style */
-			font_family = strdup(font_name);
-			font_style = strchr(font_family, ',');
-			if (font_style != NULL) {
-				font_style[0] = '\0';
-				font_style++;
-				while (*font_style == ' ' || *font_style == '\t') font_style++;
-			}
+	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, face);
 
-			/* Resolve the name and populate the information structure */
-			pat = FcNameParse((FcChar8*)font_family);
-			if (font_style != NULL) FcPatternAddString(pat, FC_STYLE, (FcChar8*)font_style);
-			FcConfigSubstitute(0, pat, FcMatchPattern);
-			FcDefaultSubstitute(pat);
-			fs = FcFontSetCreate();
-			match = FcFontMatch(0, pat, &result);
-
-			if (fs != NULL && match != NULL) {
-				int i;
-				FcChar8 *family;
-				FcChar8 *style;
-				FcChar8 *file;
-				FcFontSetAdd(fs, match);
-
-				for (i = 0; error != FT_Err_Ok && i < fs->nfont; i++) {
-					/* Try the new filename */
-					if (FcPatternGetString(fs->fonts[i], FC_FILE,   0, &file)   == FcResultMatch &&
-							FcPatternGetString(fs->fonts[i], FC_FAMILY, 0, &family) == FcResultMatch &&
-							FcPatternGetString(fs->fonts[i], FC_STYLE,  0, &style)  == FcResultMatch) {
-
-						/* The correct style? */
-						if (font_style != NULL && strcasecmp(font_style, (char*)style) != 0) continue;
-
-						/* Font config takes the best shot, which, if the family name is spelled
-						* wrongly a 'random' font, so check whether the family name is the
-						* same as the supplied name */
-						if (strcasecmp(font_family, (char*)family) == 0) {
-							error = FT_New_Face(_library, (char *)file, 0, face);
-						}
-					}
-				}
-			}
-
-			free(font_family);
-			FcPatternDestroy(pat);
-			FcFontSetDestroy(fs);
-			FcFini();
-		}
-	}
-#endif
 	if (error == FT_Err_Ok) {
+		DEBUG(freetype, 2) ("Requested font '%s', found '%s %s'", font_name, (*face)->family_name, (*face)->style_name);
+
 		/* Attempt to select the unicode character map */
 		error = FT_Select_Charmap(*face, ft_encoding_unicode);
-		if (error == FT_Err_Ok) {
-			/* Success */
-			return;
-		} else if (error == FT_Err_Invalid_CharMap_Handle) {
+		if (error == FT_Err_Ok) return; // Success
+
+		if (error == FT_Err_Invalid_CharMap_Handle) {
 			/* Try to pick a different character map instead. We default to
 			 * the first map, but platform_id 0 encoding_id 0 should also
 			 * be unicode (strange system...) */

@@ -23,4 +23,8 @@ wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen);
 # define WIDE_TO_MB_BUFFER(str, buffer, buflen) (str)
 #endif
 
+#if defined(__MINGW32__)
+#define SHGFP_TYPE_CURRENT 0
+#endif /* __MINGW32__ */
+
 #endif /* WIN32_H */
