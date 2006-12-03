@@ -368,14 +368,10 @@ static INT_PTR CALLBACK CrashDialogFunc(HWND wnd,UINT msg,WPARAM wParam,LPARAM l
 	switch (msg) {
 	case WM_INITDIALOG: {
 #if defined(UNICODE)
-# define crash_msg crash_msgW
-		TCHAR crash_msgW[8096];
-		MultiByteToWideChar(CP_ACP, 0, _crash_msg, -1, crash_msgW, lengthof(crash_msgW));
-#else
-# define crash_msg _crash_msg
+		wchar_t crash_msgW[8096];
 #endif
 		SetDlgItemText(wnd, 10, _crash_desc);
-		SetDlgItemText(wnd, 11, crash_msg);
+		SetDlgItemText(wnd, 11, MB_TO_WIDE_BUFFER(_crash_msg, crash_msgW, lengthof(crash_msgW)));
 		SendDlgItemMessage(wnd, 11, WM_SETFONT, (WPARAM)GetStockObject(ANSI_FIXED_FONT), FALSE);
 		SetWndSize(wnd, -1);
 	} return TRUE;
@@ -917,7 +913,7 @@ void DeterminePaths(void)
 
 	_path.personal_dir = _path.game_data_dir = cfg = malloc(MAX_PATH);
 	GetCurrentDirectoryW(MAX_PATH - 1, path);
-	WideCharToMultiByte(CP_UTF8, 0, path, -1, cfg, MAX_PATH, NULL, NULL);
+	convert_from_fs(path, cfg, MAX_PATH);
 
 	cfg[0] = toupper(cfg[0]);
 	s = strchr(cfg, '\0');
@@ -1037,37 +1033,62 @@ int64 GetTS(void)
 	return (__int64)(value * freq);
 }
 
-/** Convert from OpenTTD's encoding to that of the local environment
- * First convert from UTF8 to wide-char, then to local
+/** Convert from OpenTTD's encoding to that of the local environment in
+ * UNICODE. OpenTTD encoding is UTF8, local is wide-char
  * @param name pointer to a valid string that will be converted
- * @return pointer to a new stringbuffer that contains the converted string */
-const wchar_t *OTTD2FS(const char *name)
+ * @param utf16_buf pointer to a valid wide-char buffer that will receive the
+ * converted string
+ * @param buflen length in wide characters of the receiving buffer
+ * @return pointer to utf16_buf. If conversion fails the string is of zero-length */
+wchar_t *convert_to_fs(const char *name, wchar_t *utf16_buf, size_t buflen)
 {
-	static wchar_t ucs2_buf[MAX_PATH];
-	int len;
-
-	len = MultiByteToWideChar(CP_UTF8, 0, name, -1, ucs2_buf, lengthof(ucs2_buf));
+	int len = MultiByteToWideChar(CP_UTF8, 0, name, -1, utf16_buf, buflen);
 	if (len == 0) {
 		DEBUG(misc, 0) ("[utf8] Error converting '%s'. Errno %d", name, GetLastError());
-		return L"";
+		utf16_buf[0] = '\0';
 	}
 
-	return (const wchar_t*)ucs2_buf;
+	return utf16_buf;
 }
 
-/** Convert to OpenTTD's encoding from that of the local environment
+/** Convert from OpenTTD's encoding to that of the local environment in
+ * UNICODE. OpenTTD encoding is UTF8, local is wide-char.
+ * The returned value's contents can only be guaranteed until the next call to
+ * this function. So if the value is needed for anything else, use convert_from_fs
  * @param name pointer to a valid string that will be converted
- * @return pointer to a new stringbuffer that contains the converted string */
+ * @return pointer to the converted string; if failed string is of zero-length */
+const wchar_t *OTTD2FS(const char *name)
+{
+	static wchar_t utf16_buf[MAX_PATH];
+	return convert_to_fs(name, utf16_buf, lengthof(utf16_buf));
+}
+
+
+/** Convert to OpenTTD's encoding from that of the local environment in
+ * UNICODE. OpenTTD encoding is UTF8, local is wide-char
+ * @param name pointer to a valid string that will be converted
+ * @param utf8_buf pointer to a valid buffer that will receive the converted string
+ * @param buflen length in characters of the receiving buffer
+ * @return pointer to utf8_buf. If conversion fails the string is of zero-length */
+char *convert_from_fs(const wchar_t *name, char *utf8_buf, size_t buflen)
+{
+	int len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, buflen, NULL, NULL);
+	if (len == 0) {
+		DEBUG(misc, 0) ("[utf8] Error converting string. Errno %d", GetLastError());
+		utf8_buf[0] = '\0';
+	}
+
+	return utf8_buf;
+}
+
+/** Convert to OpenTTD's encoding from that of the local environment in
+ * UNICODE. OpenTTD encoding is UTF8, local is wide-char.
+ * The returned value's contents can only be guaranteed until the next call to
+ * this function. So if the value is needed for anything else, use convert_from_fs
+ * @param name pointer to a valid string that will be converted
+ * @return pointer to the converted string; if failed string is of zero-length */
 const char *FS2OTTD(const wchar_t *name)
 {
 	static char utf8_buf[512];
-	int len;
-
-	len = WideCharToMultiByte(CP_UTF8, 0, name, -1, utf8_buf, lengthof(utf8_buf), NULL, NULL);
-	if (len == 0) {
-		DEBUG(misc, 0) ("[utf8] Error converting string. Errno %d", GetLastError());
-		return "";
-	}
-
-	return (const char*)utf8_buf;
+	return convert_from_fs(name, utf8_buf, lengthof(utf8_buf));
 }
