@@ -79,7 +79,7 @@ static bool TileBelongsToRailStation(const Station *st, TileIndex tile)
 	return IsTileType(tile, MP_STATION) && GetStationIndex(tile) == st->index && IsRailwayStation(tile);
 }
 
-static void MarkStationTilesDirty(const Station *st)
+void MarkStationTilesDirty(const Station *st)
 {
 	TileIndex tile = st->train_tile;
 	int w, h;
@@ -2591,6 +2591,7 @@ static void UpdateStationWaiting(Station *st, int type, uint amount)
 	st->goods[type].enroute_time = 0;
 	st->goods[type].enroute_from = st->index;
 	InvalidateWindow(WC_STATION_VIEW, st->index);
+	MarkStationTilesDirty(st);
 }
 
 /** Rename a station
