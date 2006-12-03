@@ -5,6 +5,13 @@
 
 #include "station.h"
 
+typedef enum GrfLoadingStage {
+	GLS_LABELSCAN,
+	GLS_INIT,
+	GLS_ACTIVATION,
+	GLS_END,
+} GrfLoadingStage;
+
 typedef struct GRFLabel {
 	byte label;
 	uint32 nfo_line;

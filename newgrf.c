@@ -49,7 +49,7 @@ static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
 GRFConfig *_first_grfconfig;
 static SpriteID _cur_spriteid;
-static int _cur_stage;
+static GrfLoadingStage _cur_stage;
 static uint32 _nfo_line;
 
 /* Miscellaneous GRF features, set by Action 0x0D, parameter 0x9E */
@@ -63,14 +63,6 @@ static byte *_preload_sprite = NULL;
 
 /* Set if any vehicle is loaded which uses 2cc (two company colours) */
 bool _have_2cc = false;
-
-
-typedef enum GrfLoadingStage {
-	GLS_LABELSCAN,
-	GLS_INIT,
-	GLS_ACTIVATION,
-	GLS_END,
-} GrfLoadingStage;
 
 
 typedef enum GrfDataType {
@@ -2554,7 +2546,7 @@ static void GRFError(byte *buf, int len)
 	msgid = buf[3];
 
 	// Undocumented TTDPatch feature.
-	if ((severity & 0x80) == 0 && _cur_stage < 2) {
+	if ((severity & 0x80) == 0 && _cur_stage < GLS_ACTIVATION) {
 		DEBUG(grf, 7) ("Skipping non-fatal GRFError in stage 1");
 		return;
 	}
@@ -2645,7 +2637,7 @@ static void ParamSet(byte *buf, int len)
 				return;
 			} else {
 				/* GRF Resource Management */
-				if (_cur_stage != 2) {
+				if (_cur_stage != GLS_ACTIVATION) {
 					/* Ignore GRM during initialization */
 					src1 = 0;
 				} else {
@@ -3528,7 +3520,7 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 }
 
 
-static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
+static void LoadNewGRFFile(const char *filename, uint file_index, GrfLoadingStage stage)
 {
 	uint16 num;
 
@@ -3541,7 +3533,7 @@ static void LoadNewGRFFile(const char* filename, uint file_index, uint stage)
 	 * During activation, only actions 0, 1, 2, 3, 4, 5, 7, 8, 9, 0A and 0B are
 	 * carried out.  All others are ignored, because they only need to be
 	 * processed once at initialization.  */
-	if (stage != 0) {
+	if (stage != GLS_LABELSCAN) {
 		_cur_grffile = GetFileByFilename(filename);
 		if (_cur_grffile == NULL) error("File ``%s'' lost in cache.\n", filename);
 		if (stage > 1 && !(_cur_grffile->flags & 0x0001)) return;
