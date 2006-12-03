@@ -3,7 +3,7 @@
 #ifndef WAYPOINT_H
 #define WAYPOINT_H
 
-#include "pool.h"
+#include "oldpool.h"
 #include "rail_map.h"
 
 struct Waypoint {
@@ -24,7 +24,7 @@ struct Waypoint {
 	byte deleted;      ///< Delete counter. If greater than 0 then it is decremented until it reaches 0; the waypoint is then is deleted.
 };
 
-DECLARE_POOL(Waypoint, Waypoint, 3, 8000)
+DECLARE_OLD_POOL(Waypoint, Waypoint, 3, 8000)
 
 /**
  * Check if a Waypoint really exists.

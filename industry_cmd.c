@@ -45,7 +45,7 @@ static void IndustryPoolNewBlock(uint start_item)
 	for (i = GetIndustry(start_item); i != NULL; i = (i->index + 1U < GetIndustryPoolSize()) ? GetIndustry(i->index + 1U) : NULL) i->index = start_item++;
 }
 
-DEFINE_POOL(Industry, Industry, IndustryPoolNewBlock, NULL)
+DEFINE_OLD_POOL(Industry, Industry, IndustryPoolNewBlock, NULL)
 
 /**
  * Retrieve the type for this industry.  Although it is accessed by a tile,

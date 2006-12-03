@@ -68,8 +68,8 @@ static void RoadStopPoolNewBlock(uint start_item)
 	for (rs = GetRoadStop(start_item); rs != NULL; rs = (rs->index + 1U < GetRoadStopPoolSize()) ? GetRoadStop(rs->index + 1U) : NULL) rs->index = start_item++;
 }
 
-DEFINE_POOL(Station, Station, StationPoolNewBlock, StationPoolCleanBlock)
-DEFINE_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
+DEFINE_OLD_POOL(Station, Station, StationPoolNewBlock, StationPoolCleanBlock)
+DEFINE_OLD_POOL(RoadStop, RoadStop, RoadStopPoolNewBlock, NULL)
 
 
 extern void UpdateAirplanesOnNewStation(Station *st);

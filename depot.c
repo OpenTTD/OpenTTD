@@ -23,7 +23,7 @@ static void DepotPoolNewBlock(uint start_item)
 	for (d = GetDepot(start_item); d != NULL; d = (d->index + 1U < GetDepotPoolSize()) ? GetDepot(d->index + 1U) : NULL) d->index = start_item++;
 }
 
-DEFINE_POOL(Depot, Depot, DepotPoolNewBlock, NULL)
+DEFINE_OLD_POOL(Depot, Depot, DepotPoolNewBlock, NULL)
 
 
 /**

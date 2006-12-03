@@ -3,19 +3,19 @@
 #ifndef POOL_H
 #define POOL_H
 
-typedef struct MemoryPool MemoryPool;
+typedef struct OldMemoryPool OldMemoryPool;
 
 /* The function that is called after a new block is added
      start_item is the first item of the new made block */
-typedef void MemoryPoolNewBlock(uint start_item);
+typedef void OldMemoryPoolNewBlock(uint start_item);
 /* The function that is called before a block is cleaned up */
-typedef void MemoryPoolCleanBlock(uint start_item, uint end_item);
+typedef void OldMemoryPoolCleanBlock(uint start_item, uint end_item);
 
 /**
- * Stuff for dynamic vehicles. Use the wrappers to access the MemoryPool
+ * Stuff for dynamic vehicles. Use the wrappers to access the OldMemoryPool
  *  please try to avoid manual calls!
  */
-struct MemoryPool {
+struct OldMemoryPool {
 	const char* const name;     ///< Name of the pool (just for debugging)
 
 	const uint max_blocks;      ///< The max amount of blocks this pool can have
@@ -23,9 +23,9 @@ struct MemoryPool {
 	const uint item_size;       ///< How many bytes one block is
 
 	/// Pointer to a function that is called after a new block is added
-	MemoryPoolNewBlock *new_block_proc;
+	OldMemoryPoolNewBlock *new_block_proc;
 	/// Pointer to a function that is called to clean a block
-	MemoryPoolCleanBlock *clean_block_proc;
+	OldMemoryPoolCleanBlock *clean_block_proc;
 
 	uint current_blocks;        ///< How many blocks we have in our pool
 	uint total_items;           ///< How many items we now have in this pool
@@ -40,25 +40,25 @@ struct MemoryPool {
  *   AddBlockToPool adds 1 more block to the pool. Returns false if there is no
  *     more room
  */
-void CleanPool(MemoryPool *array);
-bool AddBlockToPool(MemoryPool *array);
+void CleanPool(OldMemoryPool *array);
+bool AddBlockToPool(OldMemoryPool *array);
 
 /**
  * Adds blocks to the pool if needed (and possible) till index fits inside the pool
  *
  * @return Returns false if adding failed
  */
-bool AddBlockIfNeeded(MemoryPool *array, uint index);
+bool AddBlockIfNeeded(OldMemoryPool *array, uint index);
 
 
-#define POOL_ENUM(name, type, block_size_bits, max_blocks) \
+#define OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
 	enum { \
 		name##_POOL_BLOCK_SIZE_BITS = block_size_bits, \
 		name##_POOL_MAX_BLOCKS      = max_blocks \
 	};
 
 
-#define POOL_ACCESSORS(name, type) \
+#define OLD_POOL_ACCESSORS(name, type) \
 	static inline type* Get##name(uint index) \
 	{ \
 		assert(index < _##name##_pool.total_items); \
@@ -74,23 +74,23 @@ bool AddBlockIfNeeded(MemoryPool *array, uint index);
 	}
 
 
-#define DECLARE_POOL(name, type, block_size_bits, max_blocks) \
-	POOL_ENUM(name, type, block_size_bits, max_blocks) \
-	extern MemoryPool _##name##_pool; \
-	POOL_ACCESSORS(name, type)
+#define DECLARE_OLD_POOL(name, type, block_size_bits, max_blocks) \
+	OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
+	extern OldMemoryPool _##name##_pool; \
+	OLD_POOL_ACCESSORS(name, type)
 
 
-#define DEFINE_POOL(name, type, new_block_proc, clean_block_proc) \
-	MemoryPool _##name##_pool = { \
+#define DEFINE_OLD_POOL(name, type, new_block_proc, clean_block_proc) \
+	OldMemoryPool _##name##_pool = { \
 		#name, name##_POOL_MAX_BLOCKS, name##_POOL_BLOCK_SIZE_BITS, sizeof(type), \
 		new_block_proc, clean_block_proc, \
 		0, 0, NULL \
 	};
 
 
-#define STATIC_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \
-	POOL_ENUM(name, type, block_size_bits, max_blocks) \
-	static DEFINE_POOL(name, type, new_block_proc, clean_block_proc) \
-	POOL_ACCESSORS(name, type)
+#define STATIC_OLD_POOL(name, type, block_size_bits, max_blocks, new_block_proc, clean_block_proc) \
+	OLD_POOL_ENUM(name, type, block_size_bits, max_blocks) \
+	static DEFINE_OLD_POOL(name, type, new_block_proc, clean_block_proc) \
+	OLD_POOL_ACCESSORS(name, type)
 
 #endif /* POOL_H */

@@ -3,7 +3,7 @@
 #ifndef TOWN_H
 #define TOWN_H
 
-#include "pool.h"
+#include "oldpool.h"
 #include "player.h"
 
 struct Town {
@@ -152,7 +152,7 @@ bool CheckforTownRating(uint32 flags, Town *t, byte type);
 
 VARDEF const Town** _town_sort;
 
-DECLARE_POOL(Town, Town, 3, 8000)
+DECLARE_OLD_POOL(Town, Town, 3, 8000)
 
 /**
  * Check if a Town really exists.

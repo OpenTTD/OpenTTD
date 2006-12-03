@@ -95,7 +95,7 @@ static void VehiclePoolNewBlock(uint start_item)
 }
 
 /* Initialize the vehicle-pool */
-DEFINE_POOL(Vehicle, Vehicle, VehiclePoolNewBlock, NULL)
+DEFINE_OLD_POOL(Vehicle, Vehicle, VehiclePoolNewBlock, NULL)
 
 void VehicleServiceInDepot(Vehicle *v)
 {

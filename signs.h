@@ -3,7 +3,7 @@
 #ifndef SIGNS_H
 #define SIGNS_H
 
-#include "pool.h"
+#include "oldpool.h"
 
 typedef struct Sign {
 	StringID     str;
@@ -16,7 +16,7 @@ typedef struct Sign {
 	SignID       index;
 } Sign;
 
-DECLARE_POOL(Sign, Sign, 2, 16000)
+DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
 
 static inline SignID GetSignArraySize(void)
 {

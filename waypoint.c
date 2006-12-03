@@ -36,7 +36,7 @@ static void WaypointPoolNewBlock(uint start_item)
 	for (wp = GetWaypoint(start_item); wp != NULL; wp = (wp->index + 1U < GetWaypointPoolSize()) ? GetWaypoint(wp->index + 1U) : NULL) wp->index = start_item++;
 }
 
-DEFINE_POOL(Waypoint, Waypoint, WaypointPoolNewBlock, NULL)
+DEFINE_OLD_POOL(Waypoint, Waypoint, WaypointPoolNewBlock, NULL)
 
 /* Create a new waypoint */
 static Waypoint* AllocateWaypoint(void)

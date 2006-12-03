@@ -5,7 +5,7 @@
 
 /** @file engine.h */
 
-#include "pool.h"
+#include "oldpool.h"
 
 typedef struct RailVehicleInfo {
 	byte image_index;
@@ -235,7 +235,7 @@ typedef struct EngineRenew EngineRenew;
  * placed here so the only exception to this rule, the saveload code, can use
  * it.
  */
-DECLARE_POOL(EngineRenew, EngineRenew, 3, 8000)
+DECLARE_OLD_POOL(EngineRenew, EngineRenew, 3, 8000)
 
 /**
  * Check if a EngineRenew really exists.

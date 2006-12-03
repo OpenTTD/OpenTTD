@@ -361,7 +361,7 @@
 				RelativePath="players.c">
 			</File>
 			<File
-				RelativePath=".\pool.c">
+				RelativePath=".\oldpool.c">
 			</File>
 			<File
 				RelativePath=".\queue.c">
@@ -611,7 +611,7 @@
 				RelativePath=".\player.h">
 			</File>
 			<File
-				RelativePath=".\pool.h">
+				RelativePath=".\oldpool.h">
 			</File>
 			<File
 				RelativePath=".\queue.h">

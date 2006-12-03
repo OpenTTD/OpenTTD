@@ -3,7 +3,7 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
-#include "pool.h"
+#include "oldpool.h"
 #include "order.h"
 #include "rail.h"
 
@@ -368,7 +368,7 @@ Direction GetDirectionTowards(const Vehicle* v, int x, int y);
 #define BEGIN_ENUM_WAGONS(v) do {
 #define END_ENUM_WAGONS(v) } while ( (v=v->next) != NULL);
 
-DECLARE_POOL(Vehicle, Vehicle, 9, 125)
+DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 
 static inline VehicleID GetVehicleArraySize(void)
 {

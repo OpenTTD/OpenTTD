@@ -7,7 +7,7 @@
  *  @see depot.c */
 
 #include "direction.h"
-#include "pool.h"
+#include "oldpool.h"
 #include "tile.h"
 #include "variables.h"
 
@@ -17,7 +17,7 @@ struct Depot {
 	DepotID index;
 };
 
-DECLARE_POOL(Depot, Depot, 3, 8000)
+DECLARE_OLD_POOL(Depot, Depot, 3, 8000)
 
 /**
  * Check if a depot really exists.

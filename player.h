@@ -3,7 +3,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "pool.h"
+#include "oldpool.h"
 #include "aystar.h"
 #include "rail.h"
 #include "engine.h"

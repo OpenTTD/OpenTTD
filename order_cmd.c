@@ -28,7 +28,7 @@ static void OrderPoolNewBlock(uint start_item)
 	for (order = GetOrder(start_item); order != NULL; order = (order->index + 1U < GetOrderPoolSize()) ? GetOrder(order->index + 1U) : NULL) order->index = start_item++;
 }
 
-DEFINE_POOL(Order, Order, OrderPoolNewBlock, NULL)
+DEFINE_OLD_POOL(Order, Order, OrderPoolNewBlock, NULL)
 
 /**
  *

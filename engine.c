@@ -431,7 +431,7 @@ bool IsEngineBuildable(EngineID engine, byte type, PlayerID player)
 
 static void EngineRenewPoolNewBlock(uint start_item);
 
-DEFINE_POOL(EngineRenew, EngineRenew, EngineRenewPoolNewBlock, NULL)
+DEFINE_OLD_POOL(EngineRenew, EngineRenew, EngineRenewPoolNewBlock, NULL)
 
 static void EngineRenewPoolNewBlock(uint start_item)
 {

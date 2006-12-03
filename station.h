@@ -4,7 +4,7 @@
 #define STATION_H
 
 #include "player.h"
-#include "pool.h"
+#include "oldpool.h"
 #include "sprite.h"
 #include "tile.h"
 #include "newgrf_station.h"
@@ -142,7 +142,7 @@ void UpdateAllStationVirtCoord(void);
 void RebuildStationLists(void);
 void ResortStationLists(void);
 
-DECLARE_POOL(Station, Station, 6, 1000)
+DECLARE_OLD_POOL(Station, Station, 6, 1000)
 
 static inline StationID GetStationArraySize(void)
 {
@@ -181,7 +181,7 @@ static inline void DeleteStation(Station *st)
 
 /* Stuff for ROADSTOPS */
 
-DECLARE_POOL(RoadStop, RoadStop, 5, 2000)
+DECLARE_OLD_POOL(RoadStop, RoadStop, 5, 2000)
 
 /**
  * Check if a RaodStop really exists.

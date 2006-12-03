@@ -25,7 +25,7 @@ static void SignPoolNewBlock(uint start_item)
 }
 
 /* Initialize the sign-pool */
-DEFINE_POOL(Sign, Sign, SignPoolNewBlock, NULL)
+DEFINE_OLD_POOL(Sign, Sign, SignPoolNewBlock, NULL)
 
 /**
  *

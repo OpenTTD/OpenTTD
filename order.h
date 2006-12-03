@@ -6,7 +6,7 @@
 #define ORDER_H
 
 #include "macros.h"
-#include "pool.h"
+#include "oldpool.h"
 
 enum {
 	INVALID_VEH_ORDER_ID = 0xFF,
@@ -107,7 +107,7 @@ typedef struct {
 VARDEF TileIndex _backup_orders_tile;
 VARDEF BackuppedOrders _backup_orders_data[1];
 
-DECLARE_POOL(Order, Order, 6, 1000)
+DECLARE_OLD_POOL(Order, Order, 6, 1000)
 
 static inline VehicleOrderID GetOrderArraySize(void)
 {

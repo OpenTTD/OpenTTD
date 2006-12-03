@@ -43,7 +43,7 @@ static void TownPoolNewBlock(uint start_item)
 }
 
 /* Initialize the town-pool */
-DEFINE_POOL(Town, Town, TownPoolNewBlock, NULL)
+DEFINE_OLD_POOL(Town, Town, TownPoolNewBlock, NULL)
 
 void DestroyTown(Town *t)
 {

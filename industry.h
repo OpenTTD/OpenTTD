@@ -3,7 +3,7 @@
 #ifndef INDUSTRY_H
 #define INDUSTRY_H
 
-#include "pool.h"
+#include "oldpool.h"
 
 typedef byte IndustryGfx;
 typedef uint8 IndustryType;
@@ -80,7 +80,7 @@ typedef struct IndustrySpec {
 
 const IndustrySpec *GetIndustrySpec(IndustryType thistype);
 
-DECLARE_POOL(Industry, Industry, 3, 8000)
+DECLARE_OLD_POOL(Industry, Industry, 3, 8000)
 
 /**
  * Check if an Industry really exists.

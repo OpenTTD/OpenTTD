@@ -4,12 +4,12 @@
 #include "openttd.h"
 #include "debug.h"
 #include "functions.h"
-#include "pool.h"
+#include "oldpool.h"
 
 /**
  * Clean a pool in a safe way (does free all blocks)
  */
-void CleanPool(MemoryPool *pool)
+void CleanPool(OldMemoryPool *pool)
 {
 	uint i;
 
@@ -38,7 +38,7 @@ void CleanPool(MemoryPool *pool)
  *
  * @return Returns false if the pool could not be increased
  */
-bool AddBlockToPool(MemoryPool *pool)
+bool AddBlockToPool(OldMemoryPool *pool)
 {
 	/* Is the pool at his max? */
 	if (pool->max_blocks == pool->current_blocks)
@@ -76,7 +76,7 @@ bool AddBlockToPool(MemoryPool *pool)
  *
  * @return Returns false if adding failed
  */
-bool AddBlockIfNeeded(MemoryPool *pool, uint index)
+bool AddBlockIfNeeded(OldMemoryPool *pool, uint index)
 {
 	while (index >= pool->total_items) {
 		if (!AddBlockToPool(pool))

@@ -729,7 +729,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\pool.c"
+				RelativePath=".\oldpool.c"
 				>
 			</File>
 			<File
@@ -1112,7 +1112,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\pool.h"
+				RelativePath=".\oldpool.h"
 				>
 			</File>
 			<File
