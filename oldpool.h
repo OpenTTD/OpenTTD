@@ -1,7 +1,7 @@
 /* $Id$ */
 
-#ifndef POOL_H
-#define POOL_H
+#ifndef OLDPOOL_H
+#define OLDPOOL_H
 
 typedef struct OldMemoryPool OldMemoryPool;
 
@@ -93,4 +93,4 @@ bool AddBlockIfNeeded(OldMemoryPool *array, uint index);
 	static DEFINE_OLD_POOL(name, type, new_block_proc, clean_block_proc) \
 	OLD_POOL_ACCESSORS(name, type)
 
-#endif /* POOL_H */
+#endif /* OLDPOOL_H */
