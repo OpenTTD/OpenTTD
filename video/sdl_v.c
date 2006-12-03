@@ -495,7 +495,7 @@ static void SdlVideoFullScreen(bool full_screen)
 {
 	_fullscreen = full_screen;
 	GetVideoModes(); // get the list of available video modes
-	if (!_video_driver->change_resolution(_cur_resolution[0], _cur_resolution[1])) {
+	if (_num_resolutions == 0 || !_video_driver->change_resolution(_cur_resolution[0], _cur_resolution[1])) {
 		// switching resolution failed, put back full_screen to original status
 		_fullscreen ^= true;
 	}

@@ -15,6 +15,7 @@
 #include "table/control_codes.h"
 #include "fontcache.h"
 #include "genworld.h"
+#include "debug.h"
 
 #ifdef _DEBUG
 bool _dbg_screen_rect;
@@ -1998,7 +1999,13 @@ bool ChangeResInGame(int w, int h)
 		_video_driver->change_resolution(w, h);
 }
 
-void ToggleFullScreen(bool fs) {_video_driver->toggle_fullscreen(fs);}
+void ToggleFullScreen(bool fs)
+{
+	_video_driver->toggle_fullscreen(fs);
+	if (_fullscreen != fs && _num_resolutions == 0) {
+		DEBUG(misc, 0) ("Could not find a suitable fullscreen resolution.");
+	}
+}
 
 static int CDECL compare_res(const void *pa, const void *pb)
 {
