@@ -100,10 +100,10 @@ static void DispatchLeftClickEvent(Window *w, int x, int y)
 		e.we.click.widget = GetWidgetFromPos(w, x, y);
 		if (e.we.click.widget < 0) return; /* exit if clicked outside of widgets */
 
-		wi = &w->widget[e.we.click.widget];
-
 		/* don't allow any interaction if the button has been disabled */
-		if (IsWidgetDisabled(wi)) return;
+		if (IsWindowWidgetDisabled(w, e.we.click.widget)) return;
+
+		wi = &w->widget[e.we.click.widget];
 
 		if (wi->type & WWB_MASK) {
 			/* special widget handling for buttons*/
@@ -1741,7 +1741,7 @@ void InvalidateWidget(const Window *w, byte widget_index)
 	const Widget *wi = &w->widget[widget_index];
 
 	/* Don't redraw the window if the widget is invisible or of no-type */
-	if (wi->type == WWT_EMPTY || IsWidgetHidden(wi)) return;
+	if (wi->type == WWT_EMPTY || IsWindowWidgetHidden(w, widget_index)) return;
 
 	SetDirtyBlocks(w->left + wi->left, w->top + wi->top, w->left + wi->right + 1, w->top + wi->bottom + 1);
 }

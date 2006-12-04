@@ -667,17 +667,6 @@ static inline void EnableWindowWidget(Window *w, byte widget_index)
 
 /**
  * Gets the enabled/disabled status of a widget.
- * This is the same as IsWindowWidgetDisabled, only working on direct widget, instead of an index
- * @param wi : Widget to get the status from
- * @return status of the widget ie: disabled = true, enabled = false
- */
-static inline bool IsWidgetDisabled(const Widget *wi)
-{
-	return HASBIT(wi->display_flags, WIDG_DISABLED);
-}
-
-/**
- * Gets the enabled/disabled status of a widget.
  * @param w : Window on which the widget is located
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: disabled = true, enabled = false
@@ -685,7 +674,7 @@ static inline bool IsWidgetDisabled(const Widget *wi)
 static inline bool IsWindowWidgetDisabled(const Window *w, byte widget_index)
 {
 	assert(widget_index < w->widget_count);
-	return IsWidgetDisabled(&w->widget[widget_index]);
+	return HASBIT(w->widget[widget_index].display_flags, WIDG_DISABLED);
 }
 
 /**
@@ -724,17 +713,6 @@ static inline void ShowWindowWidget(Window *w, byte widget_index)
 
 /**
  * Gets the visibility of a widget.
- * Works directly on a widget, instead of an index
- * @param wi Widget to get the status from
- * @return status of the widget ie. hidden = true, visible = false
- */
-static inline bool IsWidgetHidden(const Widget *wi)
-{
-	return HASBIT(wi->display_flags, WIDG_HIDDEN);
-}
-
-/**
- * Gets the visibility of a widget.
  * @param w : Window on which the widget is located
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: hidden = true, visible = false
@@ -742,7 +720,7 @@ static inline bool IsWidgetHidden(const Widget *wi)
 static inline bool IsWindowWidgetHidden(const Window *w, byte widget_index)
 {
 	assert(widget_index < w->widget_count);
-	return IsWidgetHidden(&w->widget[widget_index]);
+	return HASBIT(w->widget[widget_index].display_flags, WIDG_HIDDEN);
 }
 
 /**

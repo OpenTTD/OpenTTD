@@ -132,16 +132,17 @@ void ScrollbarClickHandler(Window *w, const Widget *wi, int x, int y)
  */
 int GetWidgetFromPos(const Window *w, int x, int y)
 {
-	const Widget *wi;
-	int index, found_index = -1;
+	uint index;
+	int found_index = -1;
 
 	// Go through the widgets and check if we find the widget that the coordinate is
 	// inside.
-	for (index = 0,wi = w->widget; wi->type != WWT_LAST; index++, wi++) {
+	for (index = 0; index < w->widget_count; index++) {
+		const Widget *wi = &w->widget[index];
 		if (wi->type == WWT_EMPTY || wi->type == WWT_FRAME) continue;
 
 		if (x >= wi->left && x <= wi->right && y >= wi->top &&  y <= wi->bottom &&
-				!IsWidgetHidden(wi)) {
+				!IsWindowWidgetHidden(w, index)) {
 			found_index = index;
 		}
 	}
@@ -184,21 +185,19 @@ void DrawFrameRect(int left, int top, int right, int bottom, int ctab, FrameFlag
 
 void DrawWindowWidgets(const Window *w)
 {
-	const Widget *wi;
 	const DrawPixelInfo* dpi = _cur_dpi;
 	Rect r;
-	int i = 0;
+	uint i;
 
-	wi = w->widget;
-
-	do {
-		bool clicked = IsWindowWidgetLowered((Window*)w, i);
+	for (i = 0; i < w->widget_count; i++) {
+		const Widget *wi = &w->widget[i];
+		bool clicked = IsWindowWidgetLowered(w, i);
 
 		if (dpi->left > (r.right=/*w->left + */wi->right) ||
 				dpi->left + dpi->width <= (r.left=wi->left/* + w->left*/) ||
 				dpi->top > (r.bottom=/*w->top +*/ wi->bottom) ||
 				dpi->top + dpi->height <= (r.top = /*w->top +*/ wi->top) ||
-				IsWidgetHidden(wi)) {
+				IsWindowWidgetHidden(w, i)) {
 			continue;
 		}
 
@@ -457,12 +456,12 @@ void DrawWindowWidgets(const Window *w)
 
 			DrawStringCenteredTruncated(r.left + 2, r.right - 2, r.top+2, wi->data, 0x84);
 draw_default:;
-			if (IsWidgetDisabled(wi)) {
+			if (IsWindowWidgetDisabled(w, i)) {
 				GfxFillRect(r.left+1, r.top+1, r.right-1, r.bottom-1, _colour_gradient[wi->color&0xF][2] | PALETTE_MODIFIER_GREYOUT);
 			}
 		}
 		}
-	} while (i++, (++wi)->type != WWT_LAST);
+	}
 
 
 	if (w->flags4 & WF_WHITE_BORDER_MASK) {
