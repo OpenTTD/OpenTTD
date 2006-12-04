@@ -721,8 +721,11 @@ static void StationBuildWndProc(Window *w, WindowEvent *e)
 		if (newstations) {
 			const StationSpec *statspec = GetCustomStationSpec(_railstation.station_class, _railstation.station_type);
 
-			if (statspec != NULL) {
-				for (bits = 0; bits < 7; bits++) {
+			for (bits = 0; bits < 7; bits++) {
+				if (statspec == NULL) {
+					EnableWindowWidget(w, bits +  5);
+					EnableWindowWidget(w, bits + 12);
+				} else {
 					SetWindowWidgetDisabledState(w, bits +  5, HASBIT(statspec->disallowed_platforms, bits));
 					SetWindowWidgetDisabledState(w, bits + 12, HASBIT(statspec->disallowed_lengths,   bits));
 				}
