@@ -68,7 +68,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		DWORD dbuflen = lengthof(dbuffer);
 
 		ret = RegEnumValue(hKey, index, vbuffer, &vbuflen, NULL, NULL, dbuffer, &dbuflen);
-		if (ret != ERROR_SUCCESS) break;
+		if (ret != ERROR_SUCCESS) goto registry_no_font_found;
 
 		/* The font names in the registry are of the following 3 forms:
 		 * - ADMUI3.fon
@@ -97,7 +97,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	/* Some fonts are contained in .ttc files, TrueType Collection fonts. These
 	 * contain multiple fonts inside this single file. GetFontData however
 	 * returns the whole file, so we need to check each font inside to get the
-	 * proper font. If not found, we will use the last font in the ttc.
+	 * proper font.
 	 * Also note that FreeType does not support UNICODE filesnames! */
 #if defined(UNICODE)
 	font_path = malloc(MAX_PATH);
@@ -123,6 +123,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 #endif
 
 folder_error:
+registry_no_font_found:
 	RegCloseKey(hKey);
 	return err;
 }
@@ -241,10 +242,10 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 				if (error == FT_Err_Ok) return;
 			}
 		}
-
-		FT_Done_Face(*face);
-		*face = NULL;
 	}
+
+	FT_Done_Face(*face);
+	*face = NULL;
 
 	ShowInfoF("Unable to use '%s' for %s font, FreeType reported error 0x%X, using sprite font instead", font_name, type, error);
 }
