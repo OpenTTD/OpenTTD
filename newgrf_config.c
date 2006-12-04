@@ -176,7 +176,7 @@ static uint ScanPath(const char *path)
 		} else if (sb.st_mode & S_IFREG) {
 			/* File */
 			char *ext = strrchr(filename, '.');
-			char *file = strchr(filename, PATHSEPCHAR) + 1; // Crop base path
+			char *file = filename + strlen(_path.data_dir) + 1; // Crop base path
 
 			/* If no extension or extension isn't .grf, skip the file */
 			if (ext == NULL) continue;
