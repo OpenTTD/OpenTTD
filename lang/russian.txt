@@ -1,7 +1,7 @@
 ##name Russian
 ##ownname Русский
 ##isocode ru_RU.UTF-8
-##plural 0
+##plural 6
 
 ##id 0x0000
 STR_NULL                                                        :
