@@ -1467,7 +1467,9 @@ static void SaveLoadDlgWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 	case WE_MOUSELOOP:
-		HandleEditBox(w, &WP(w, querystr_d), 10);
+		if (_saveload_mode == SLD_SAVE_GAME || _saveload_mode == SLD_SAVE_SCENARIO) {
+			HandleEditBox(w, &WP(w, querystr_d), 10);
+		}
 		break;
 	case WE_KEYPRESS:
 		if (e->we.keypress.keycode == WKC_ESC) {
