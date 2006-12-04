@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Bilgi
 STR_013E_CAPACITIES                                             :{BLACK}Kapasite
 STR_013E_TOTAL_CARGO                                            :{BLACK}Toplam Kargo
 STR_013F_CAPACITY                                               :{BLACK}Kapasite: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Kapasite: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Bu trenin toplam kapasitesi:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Yeni Oyun
 STR_0141_LOAD_GAME                                              :{BLACK}Oyun Yükle
 STR_SINGLE_PLAYER                                               :{BLACK}Tek Oyunculu
@@ -1025,6 +1027,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Fare ke
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Belediye rüşveti izinli: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Özel istasyonlar: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Yeni evrensel yol bulma (NPF, NTP üzerinde): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Ağır yük trenleri için ağırlık çarpanı: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Küçük havalimanı her zaman etkin: {ORANGE}{STRING}
 
@@ -1093,6 +1096,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Gemiler
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Gemiler için varsayılan servis gecikmesi: {ORANGE}kapalı
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Bozulmalar kapalıysa sevisler kapalı olsun: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Vagonların treni yavaşlatması izinli: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Elektrikli rayları iptal et: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Renkli gazete şu senede çıksın: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Başlangıç tarihi: {ORANGE}{STRING}
@@ -2500,10 +2504,13 @@ STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren çok uzun
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Sadece garda durdurulmuş trenler üzerinde işlem yapılabilir
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tren
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Yeni Tren
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Yeni Elektrikli Trenler
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Yeni Monoray
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Yeni Maglev
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Trenler
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Satın Al
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Arabayı kopyala
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Arabanın bir kopyasını yapar. CTRL-tıklama talimatları paylaştırır

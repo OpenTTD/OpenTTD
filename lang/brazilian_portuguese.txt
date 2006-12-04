@@ -2508,10 +2508,13 @@ STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trem muito longo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Os trens só podem ser alterados quando parados num depósito
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trens
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novos Veículos Ferroviários
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Máquinas Elétricas Novas
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Veículos Ferroviários(Monotrilho)
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Veículos Ferroviários(Trem-Bala)
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Trens
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Veículo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar Veículo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Isso vai construir uma cópia do veículo. Control-clique vai compartilhar as ordens

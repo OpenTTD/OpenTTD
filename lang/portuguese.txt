@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informa�
 STR_013E_CAPACITIES                                             :{BLACK}Capacidades
 STR_013E_TOTAL_CARGO                                            :{BLACK}Carga Total
 STR_013F_CAPACITY                                               :{BLACK}Capacidade: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Capacidade: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carga total (capacidade) deste comboio:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Novo Jogo
 STR_0141_LOAD_GAME                                              :{BLACK}Abrir Jogo
 STR_SINGLE_PLAYER                                               :{BLACK}1 jogador
@@ -2498,16 +2500,20 @@ STR_INVALID_ORDER                                               :{RED} (Ordem In
 STR_UNKNOWN_DESTINATION                                         :destino desconhecido
 STR_8812_EMPTY                                                  :{LTBLUE}Vazio
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Comboio {COMMA} está a aguardar no depósito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Novos Veículos
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Comboio muito longo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Os comboios só podem ser alterados quando parados num depósito
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Comboios
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Novos Veículos Ferroviários
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Novos comboios para carris electrificados
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Novos Veículos Monocarril
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Novos Veículos Maglev
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Veículos sobre carris
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construir Veículo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clonar Veículo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Esta acção criará uma cópia do veículo. Pressione Ctrl enquanto clica, para partilhar as ordens

@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informat
 STR_013E_CAPACITIES                                             :{BLACK}Capaciteiten
 STR_013E_TOTAL_CARGO                                            :{BLACK}Totale lading
 STR_013F_CAPACITY                                               :{BLACK}Capaciteit: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Capaciteit: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Totale lading (capaciteit) van deze trein:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nieuw spel
 STR_0141_LOAD_GAME                                              :{BLACK}Laad spel
 STR_SINGLE_PLAYER                                               :{BLACK}Een speler
@@ -1025,6 +1027,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Verschu
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Omkopen van de gemeente toestaan: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Vrij gevormde stations: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nieuwe globale routeplanner (NPF, voorkeur over NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Gewichtsverhouding voor vracht om zware treinen te simuleren: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Altijd kleine vliegvelden toestaan: {ORANGE}{STRING}
 
@@ -2498,16 +2501,20 @@ STR_INVALID_ORDER                                               :{RED} (Ongeldig
 STR_UNKNOWN_DESTINATION                                         :onbekende bestemming
 STR_8812_EMPTY                                                  :{LTBLUE}Leeg
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} van {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} van {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trein {COMMA} wacht in depot
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nieuwe voertuigen
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Trein te lang
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Treinen kunnen alleen aangepast worden wanneer ze gestopt zijn binnen een depot
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Treinen
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nieuwe spoorvoertuigen
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nieuwe electrische spoorvoertuigen
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nieuwe monorailvoertuigen
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nieuwe maglevvoertuigen
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rails Voertuig
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bouw voertuig
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloon voertuig
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Hierdoor wordt een kopie gebouw van dit voertuig. Control-click deelt de orders

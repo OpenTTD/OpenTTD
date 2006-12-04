@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informaz
 STR_013E_CAPACITIES                                             :{BLACK}Capienza
 STR_013E_TOTAL_CARGO                                            :{BLACK}Carico totale
 STR_013F_CAPACITY                                               :{BLACK}Capacità: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Capacità: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Carico totale (capacità) di questo treno:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nuovo Gioco
 STR_0141_LOAD_GAME                                              :{BLACK}Carica Gioco
 STR_SINGLE_PLAYER                                               :{BLACK}Giocatore singolo
@@ -1025,6 +1027,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Scorri 
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Consenti corruzione autorità locale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Stazioni non uniformi: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nuovo pathfinding globale (NPF, sovrascrive NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Moltiplicatore di peso per simulare treni pesanti: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Consenti la costruzione piccoli aeroporti: {ORANGE}{STRING}
 
@@ -2498,16 +2501,20 @@ STR_INVALID_ORDER                                               :{RED} (Ordine n
 STR_UNKNOWN_DESTINATION                                         :destinazione sconosciuta
 STR_8812_EMPTY                                                  :{LTBLUE}Vuoto
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} da {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} da {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Treno {COMMA} sta aspettando nel deposito
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nuovi Veicoli
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Treno troppo lungo
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Un treno può essere modificato solo quando è fermo nel deposito
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tren{P o i}
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nuovo Veicolo Ferroviario
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nuovi Veicoli Ferroviari Elettrici
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nuovo  Veicolo Monorotaia
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nuovo Veicolo Maglev
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Veicoli su rotaia
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Costruisci Veicolo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Clona Veicolo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Costruisce una copia del veicolo stradale. Premere contemporaneamente Control per condividere gli ordini

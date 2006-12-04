@@ -2509,10 +2509,13 @@ STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Train trop long
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Les trains peuvent être manipulés qu'une fois stoppés au dépôt
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Train{P "" s}
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nouveaux véhicules ferroviaires
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nouveaux véhicules ferroviaires électriques
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nouveaux véhicules monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nouveaux véhicules magnétiques
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Véhicules sur rail
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Construire
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Copier Véhicule
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Effectuer la copie d'un véhicule routier. Ctrl-clic partagera les ordres
