@@ -66,10 +66,9 @@ void CDECL SetWindowWidgetsLoweredState(Window *w, bool lowered_stat, int widget
 
 void RaiseWindowButtons(Window *w)
 {
-	const Widget *wi = w->widget;
-	uint i = 0;
+	uint i;
 
-	for (i = 0; wi->type != WWT_LAST; i++, wi++) {
+	for (i = 0; i < w->widget_count; i++) {
 		if (IsWindowWidgetLowered(w, i)) {
 			RaiseWindowWidget(w, i);
 			InvalidateWidget(w, i);

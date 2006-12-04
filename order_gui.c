@@ -552,8 +552,8 @@ static void OrdersWndProc(Window *w, WindowEvent *e)
 
 	case WE_TIMEOUT: { // handle button unclick ourselves...
 		// unclick all buttons except for the 'goto' button (7), which is 'persistent'
-		int i;
-		for (i = 0; w->widget[i].type != WWT_LAST; i++) {
+		uint i;
+		for (i = 0; i < w->widget_count; i++) {
 			if (IsWindowWidgetLowered(w, i) && i != 7) {
 				RaiseWindowWidget(w, i);
 				InvalidateWidget(w, i);

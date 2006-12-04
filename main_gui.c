@@ -1303,8 +1303,8 @@ static void ScenEditLandGenWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_TIMEOUT: {
-		int i;
-		for (i = 0; w->widget[i].type != WWT_LAST; i++) {
+		uint i;
+		for (i = 0; i < w->widget_count; i++) {
 			if (IsWindowWidgetLowered(w, i)) {
 				RaiseWindowWidget(w, i);
 				InvalidateWidget(w, i);
@@ -1848,8 +1848,8 @@ static void MainToolbarWndProc(Window *w, WindowEvent *e)
 		break;
 
 	case WE_TIMEOUT: {
-		int i;
-		for (i = 2; w->widget[i].type != WWT_LAST; i++) {
+		uint i;
+		for (i = 2; i < w->widget_count; i++) {
 			if (IsWindowWidgetLowered(w, i)) {
 				RaiseWindowWidget(w, i);
 				InvalidateWidget(w, i);
