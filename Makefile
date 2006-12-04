@@ -735,6 +735,7 @@ SRCS += newgrf.c
 SRCS += newgrf_cargo.c
 SRCS += newgrf_config.c
 SRCS += newgrf_engine.c
+SRCS += newgrf_gui.c
 SRCS += newgrf_sound.c
 SRCS += newgrf_spritegroup.c
 SRCS += newgrf_station.c

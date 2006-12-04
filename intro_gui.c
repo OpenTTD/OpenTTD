@@ -15,10 +15,11 @@
 #include "heightmap.h"
 #include "genworld.h"
 #include "network_gui.h"
+#include "newgrf.h"
 
 static const Widget _select_game_widgets[] = {
 {    WWT_CAPTION, RESIZE_NONE, 13,   0, 335,   0,  13, STR_0307_OPENTTD,         STR_NULL},
-{      WWT_PANEL, RESIZE_NONE, 13,   0, 335,  14, 176, 0x0,                      STR_NULL},
+{      WWT_PANEL, RESIZE_NONE, 13,   0, 335,  14, 194, 0x0,                      STR_NULL},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  22,  33, STR_0140_NEW_GAME,        STR_02FB_START_A_NEW_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325,  22,  33, STR_0141_LOAD_GAME,       STR_02FC_LOAD_A_SAVED_GAME},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167,  40,  51, STR_029A_PLAY_SCENARIO,   STR_0303_START_A_NEW_GAME_USING},
@@ -34,7 +35,9 @@ static const Widget _select_game_widgets[] = {
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 139, 150, STR_0148_GAME_OPTIONS,    STR_0301_DISPLAY_GAME_OPTIONS},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 139, 150, STR_01FE_DIFFICULTY,      STR_0302_DISPLAY_DIFFICULTY_OPTIONS},
 { WWT_PUSHTXTBTN, RESIZE_NONE, 12,  10, 167, 157, 168, STR_CONFIG_PATCHES,       STR_CONFIG_PATCHES_TIP},
-{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 157, 168, STR_0304_QUIT,            STR_0305_QUIT_OPENTTD},
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 157, 168, STR_NEWGRF_SETTINGS_BUTTON, STR_NULL},
+
+{ WWT_PUSHTXTBTN, RESIZE_NONE, 12, 168, 325, 175, 186, STR_0304_QUIT,            STR_0305_QUIT_OPENTTD},
 {   WIDGETS_END},
 };
 
@@ -81,7 +84,8 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 		case 12: ShowGameOptions(); break;
 		case 13: ShowGameDifficulty(); break;
 		case 14: ShowPatchesSelection(); break;
-		case 15: HandleExitGameRequest(); break;
+		case 15: ShowNewGRFSettings(true, true, &_grfconfig_newgame); break;
+		case 16: HandleExitGameRequest(); break;
 		}
 		break;
 
@@ -90,7 +94,7 @@ static void SelectGameWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _select_game_desc = {
-	WDP_CENTER, WDP_CENTER, 336, 177,
+	WDP_CENTER, WDP_CENTER, 336, 195,
 	WC_SELECT_GAME,0,
 	WDF_STD_TOOLTIPS | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS,
 	_select_game_widgets,

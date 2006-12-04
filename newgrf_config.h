@@ -41,4 +41,7 @@ void ResetGRFConfig(bool defaults);
 bool IsGoodGRFConfigList(void);
 bool FillGRFDetails(GRFConfig *config);
 
+/* In newgrf_gui.c */
+void ShowNewGRFSettings(bool editable, bool show_params, GRFConfig **config);
+
 #endif /* NEWGRF_CONFIG_H */

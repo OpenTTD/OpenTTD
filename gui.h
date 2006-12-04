@@ -17,7 +17,6 @@ void CcTerraform(bool success, TileIndex tile, uint32 p1, uint32 p2);
 void ShowGameOptions(void);
 void ShowGameDifficulty(void);
 void ShowPatchesSelection(void);
-void ShowNewgrf(void);
 void DrawArrowButtons(int x, int y, int ctab, byte state, bool clickable_left, bool clickable_right);
 
 /* graph_gui.c */

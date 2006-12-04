@@ -35,6 +35,7 @@
 #include "settings.h"
 #include "date.h"
 #include "vehicle_gui.h"
+#include "newgrf_config.h"
 
 #include "network_data.h"
 #include "network_client.h"
@@ -152,7 +153,7 @@ static void MenuClickSettings(int index)
 		case 0: ShowGameOptions();      return;
 		case 1: ShowGameDifficulty();   return;
 		case 2: ShowPatchesSelection(); return;
-		case 3: ShowNewgrf();           return;
+		case 3: ShowNewGRFSettings(false, true, &_grfconfig);   return;
 
 		case  5: _display_opt ^= DO_SHOW_TOWN_NAMES;    break;
 		case  6: _display_opt ^= DO_SHOW_STATION_NAMES; break;
@@ -2449,4 +2450,5 @@ void InitializeMainGui(void)
 	/* Clean old GUI values */
 	_last_built_railtype = 0;
 }
+
 
