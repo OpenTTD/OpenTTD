@@ -331,6 +331,7 @@ struct Window {
 	ViewPort *viewport;
 	const Widget *original_widget;
 	Widget *widget;
+	uint widget_count;
 	uint32 desc_flags;
 
 	WindowMessage message;
@@ -640,6 +641,7 @@ void DrawWindowViewport(const Window *w);
  */
 static inline void SetWindowWidgetDisabledState(Window *w, byte widget_index, bool disab_stat)
 {
+	assert(widget_index < w->widget_count);
 	SB(w->widget[widget_index].display_flags, WIDG_DISABLED, 1, !!disab_stat);
 }
 
@@ -682,6 +684,7 @@ static inline bool IsWidgetDisabled(const Widget *wi)
  */
 static inline bool IsWindowWidgetDisabled(Window *w, byte widget_index)
 {
+	assert(widget_index < w->widget_count);
 	return IsWidgetDisabled(&w->widget[widget_index]);
 }
 
@@ -695,6 +698,7 @@ static inline bool IsWindowWidgetDisabled(Window *w, byte widget_index)
  */
 static inline void SetWindowWidgetHiddenState(Window *w, byte widget_index, bool hidden_stat)
 {
+	assert(widget_index < w->widget_count);
 	SB(w->widget[widget_index].display_flags, WIDG_HIDDEN, 1, !!hidden_stat);
 }
 
@@ -737,6 +741,7 @@ static inline bool IsWidgetHidden(const Widget *wi)
  */
 static inline bool IsWindowWidgetHidden(Window *w, byte widget_index)
 {
+	assert(widget_index < w->widget_count);
 	return IsWidgetHidden(&w->widget[widget_index]);
 }
 
@@ -748,6 +753,7 @@ static inline bool IsWindowWidgetHidden(Window *w, byte widget_index)
  */
 static inline void SetWindowWidgetLoweredState(Window *w, byte widget_index, bool lowered_stat)
 {
+	assert(widget_index < w->widget_count);
 	SB(w->widget[widget_index].display_flags, WIDG_LOWERED, 1, !!lowered_stat);
 }
 
@@ -758,6 +764,7 @@ static inline void SetWindowWidgetLoweredState(Window *w, byte widget_index, boo
  */
 static inline void ToggleWidgetLoweredState(Window *w, byte widget_index)
 {
+	assert(widget_index < w->widget_count);
 	TOGGLEBIT(w->widget[widget_index].display_flags, WIDG_LOWERED);
 }
 
@@ -789,6 +796,7 @@ static inline void RaiseWindowWidget(Window *w, byte widget_index)
  */
 static inline bool IsWindowWidgetLowered(Window *w, byte widget_index)
 {
+	assert(widget_index < w->widget_count);
 	return HASBIT(w->widget[widget_index].display_flags, WIDG_LOWERED);
 }
 

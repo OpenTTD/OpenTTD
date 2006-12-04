@@ -316,6 +316,7 @@ void DeleteWindow(Window *w)
 	SetWindowDirty(w);
 	free(w->widget);
 	w->widget = NULL;
+	w->widget_count = 0;
 
 	/* Find the window in the z-array, and effectively remove it
 	 * by moving all windows after it one to the left */
@@ -519,8 +520,10 @@ void AssignWidgetToWindow(Window *w, const Widget *widget)
 
 		w->widget = realloc(w->widget, sizeof(*w->widget) * index);
 		memcpy(w->widget, widget, sizeof(*w->widget) * index);
+		w->widget_count = index - 1;
 	} else {
 		w->widget = NULL;
+		w->widget_count = 0;
 	}
 }
 
@@ -877,6 +880,7 @@ void UnInitWindowSystem(void)
 	FOR_ALL_WINDOWS(wz) {
 		free((*wz)->widget);
 		(*wz)->widget = NULL;
+		(*wz)->widget_count = 0;
 	}
 }
 
