@@ -682,7 +682,7 @@ static inline bool IsWidgetDisabled(const Widget *wi)
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: disabled = true, enabled = false
  */
-static inline bool IsWindowWidgetDisabled(Window *w, byte widget_index)
+static inline bool IsWindowWidgetDisabled(const Window *w, byte widget_index)
 {
 	assert(widget_index < w->widget_count);
 	return IsWidgetDisabled(&w->widget[widget_index]);
@@ -739,7 +739,7 @@ static inline bool IsWidgetHidden(const Widget *wi)
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: hidden = true, visible = false
  */
-static inline bool IsWindowWidgetHidden(Window *w, byte widget_index)
+static inline bool IsWindowWidgetHidden(const Window *w, byte widget_index)
 {
 	assert(widget_index < w->widget_count);
 	return IsWidgetHidden(&w->widget[widget_index]);
@@ -794,7 +794,7 @@ static inline void RaiseWindowWidget(Window *w, byte widget_index)
  * @param widget_index : index of this widget in the window
  * @return status of the widget ie: lowered = true, raised= false
  */
-static inline bool IsWindowWidgetLowered(Window *w, byte widget_index)
+static inline bool IsWindowWidgetLowered(const Window *w, byte widget_index)
 {
 	assert(widget_index < w->widget_count);
 	return HASBIT(w->widget[widget_index].display_flags, WIDG_LOWERED);
