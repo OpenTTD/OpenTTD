@@ -2385,28 +2385,43 @@ static void SkipIf(byte *buf, int len)
 			break;
 		case 5: result = (param_val > cond_val);
 			break;
+
 		/* Tests 6 to 10 are only for param 0x88, GRFID checks */
-		case 6: /* Is GRFID active? */
-		case 9: /* GRFID is or will be active? */
-			result = (GetFileByGRFID(cond_val)->flags & 1) == 1;
+		case 6: { /* Is GRFID active? */
+			const GRFConfig *c = GetGRFConfig(cond_val);
+			if (c == NULL) return;
+			result = HASBIT(c->flags, GCF_ACTIVATED);
 			break;
-		case 7: /* Is GRFID non-active? */
-		case 10: /* GRFID is not nor will be active */
-			result = (GetFileByGRFID(cond_val)->flags & 1) == 0;
+		}
+
+		case 7: { /* Is GRFID non-active? */
+			const GRFConfig *c = GetGRFConfig(cond_val);
+			if (c == NULL) return;
+			result = !HASBIT(c->flags, GCF_ACTIVATED);
 			break;
-		case 8: /* GRFID is not but will be active? */
-			result = 0;
-			if ((GetFileByGRFID(cond_val)->flags & 1) == 1) {
-				const GRFFile *file;
-				for (file = _first_grffile; file != NULL; file = file->next) {
-					if (file->grfid == cond_val) break;
-					if (file == _cur_grffile) {
-						result = 1;
-						break;
-					}
-				}
-			}
+		}
+
+		case 8: { /* GRFID is not but will be active? */
+			const GRFConfig *c = GetGRFConfig(cond_val);
+			if (c == NULL) return;
+			result = !HASBIT(c->flags, GCF_ACTIVATED) && !HASBIT(c->flags, GCF_DISABLED);
 			break;
+		}
+
+		case 9: { /* GRFID is or will be active? */
+			const GRFConfig *c = GetGRFConfig(cond_val);
+			if (c == NULL) return;
+			result = !HASBIT(c->flags, GCF_NOT_FOUND) && !HASBIT(c->flags, GCF_DISABLED);
+			break;
+		}
+
+		case 10: { /* GRFID is not nor will be active */
+			const GRFConfig *c = GetGRFConfig(cond_val);
+			/* This is the only condtype that doesn't get ignored if the GRFID is not found */
+			result = c == NULL || HASBIT(c->flags, GCF_DISABLED) || HASBIT(c->flags, GCF_NOT_FOUND);
+			break;
+		}
+
 		default:
 			grfmsg(GMS_WARN, "Unsupported test %d. Ignoring.", condtype);
 			return;
@@ -2496,7 +2511,7 @@ static void GRFInfo(byte *buf, int len)
 
 	_cur_grffile->grfid = grfid;
 	_cur_grffile->grf_version = version;
-	_cur_grffile->flags |= 0x0001; /* set active flag */
+	SETBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
 
 	/* Do swap the GRFID for displaying purposes since people expect that */
 	DEBUG(grf, 1) ("[%s] Loaded GRFv%d set %08lx - %s:\n%s",
@@ -2712,8 +2727,8 @@ static void ParamSet(byte *buf, int len)
 								if (op != 4 && op != 5) {
 									/* Deactivate GRF */
 									grfmsg(GMS_FATAL, "GRM: Unable to allocate %d vehicles, deactivating", count);
-									SETBIT(_cur_grffile->flags, 2);
-									CLRBIT(_cur_grffile->flags, 1);
+									SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
+									CLRBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
 
 									_skip_sprites = -1;
 									return;
@@ -2912,7 +2927,8 @@ static void GRFInhibit(byte *buf, int len)
 		/* Unset activation flag */
 		if (file != NULL) {
 			grfmsg(GMS_NOTICE, "GRFInhibit: Deactivating file ``%s''", file->filename);
-			file->flags &= 0xFFFE;
+			SETBIT(_cur_grfconfig->flags, GCF_DISABLED);
+			CLRBIT(_cur_grfconfig->flags, GCF_ACTIVATED);
 		}
 	}
 }
@@ -3560,7 +3576,7 @@ void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 	if (stage != GLS_FILESCAN && stage != GLS_LABELSCAN) {
 		_cur_grffile = GetFileByFilename(filename);
 		if (_cur_grffile == NULL) error("File ``%s'' lost in cache.\n", filename);
-		if (stage == GLS_ACTIVATION && !(_cur_grffile->flags & 0x0001)) return;
+		if (stage == GLS_ACTIVATION && !HASBIT(config->flags, GCF_ACTIVATED)) return;
 	}
 
 	FioOpenFile(file_index, filename);

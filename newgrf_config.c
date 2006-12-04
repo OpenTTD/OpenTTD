@@ -248,6 +248,19 @@ const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum)
 }
 
 
+/* Retrieve a NewGRF from the current config by its grfid */
+const GRFConfig *GetGRFConfig(uint32 grfid)
+{
+	GRFConfig *c;
+
+	for (c = _grfconfig; c != NULL; c = c->next) {
+		if (c->grfid == grfid) return c;
+	}
+
+	return NULL;
+}
+
+
 static const SaveLoad _grfconfig_desc[] = {
 	SLE_STR(GRFConfig, filename,   SLE_STR, 0x40),
 	SLE_VAR(GRFConfig, grfid,      SLE_UINT32),

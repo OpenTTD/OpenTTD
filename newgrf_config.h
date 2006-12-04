@@ -35,6 +35,7 @@ extern GRFConfig *_grfconfig_newgame;
 
 void ScanNewGRFFiles(void);
 const GRFConfig *FindGRFConfig(uint32 grfid, uint8 *md5sum);
+const GRFConfig *GetGRFConfig(uint32 grfid);
 void ClearGRFConfigList(GRFConfig *config);
 void ResetGRFConfig(bool defaults);
 bool IsGoodGRFConfigList(void);
