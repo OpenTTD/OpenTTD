@@ -1312,6 +1312,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\newgrf_gui.c"
+				>
+			</File>
+			<File
 				RelativePath=".\news_gui.c"
 				>
 			</File>
