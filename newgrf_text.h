@@ -11,5 +11,6 @@ StringID GetGRFStringID(uint32 grfid, uint16 stringid);
 char *GetGRFString(char *buff, uint16 stringid, const char* last);
 void CleanUpStrings(void);
 void SetCurrentGrfLangID(const char *iso_name);
+char *TranslateTTDPatchCodes(const char *str);
 
 #endif /* NEWGRF_TEXT_H */

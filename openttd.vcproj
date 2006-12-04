@@ -316,6 +316,9 @@
 				RelativePath=".\newgrf_cargo.c">
 			</File>
 			<File
+				RelativePath=".\newgrf_config.c">
+			</File>
+			<File
 				RelativePath=".\newgrf_engine.c">
 			</File>
 			<File
@@ -570,6 +573,9 @@
 			</File>
 			<File
 				RelativePath=".\newgrf_cargo.h">
+			</File>
+			<File
+				RelativePath=".\newgrf_config.h">
 			</File>
 			<File
 				RelativePath=".\newgrf_engine.h">

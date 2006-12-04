@@ -53,6 +53,7 @@
 #include "date.h"
 #include "clear_map.h"
 #include "fontcache.h"
+#include "newgrf_config.h"
 
 #include <stdarg.h>
 
@@ -281,6 +282,7 @@ static void LoadIntroGame(void)
 	_game_mode = GM_MENU;
 	CLRBITS(_display_opt, DO_TRANS_BUILDINGS); // don't make buildings transparent in intro
 	_opt_ptr = &_opt_newgame;
+	ResetGRFConfig(false);
 
 	// Setup main window
 	ResetWindowSystem();
@@ -451,7 +453,10 @@ int ttd_main(int argc, char *argv[])
 
 	NetworkStartUp(); // initialize network-core
 
+	ScanNewGRFFiles();
+
 	_opt_ptr = &_opt_newgame;
+	ResetGRFConfig(false);
 
 	/* XXX - ugly hack, if diff_level is 9, it means we got no setting from the config file */
 	if (_opt_newgame.diff_level == 9) SetDifficultyLevel(0, &_opt_newgame);
@@ -754,6 +759,7 @@ void SwitchMode(int new_mode)
 
 	case SM_LOAD: { /* Load game, Play Scenario */
 		_opt_ptr = &_opt;
+		ResetGRFConfig(true);
 
 		if (!SafeSaveOrLoad(_file_to_saveload.name, _file_to_saveload.mode, GM_NORMAL)) {
 			LoadIntroGame();
@@ -793,6 +799,7 @@ void SwitchMode(int new_mode)
 			Player *p;
 
 			_opt_ptr = &_opt;
+			ResetGRFConfig(true);
 
 			_local_player = OWNER_NONE;
 			_generating_world = true;
@@ -1148,6 +1155,9 @@ bool AfterLoadGame(void)
 
 	// convert road side to my format.
 	if (_opt.road_side) _opt.road_side = 1;
+
+	/* Check all NewGRFs are present */
+	if (!IsGoodGRFConfigList()) return false;
 
 	// Load the sprites
 	GfxLoadSprites();

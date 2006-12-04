@@ -22,6 +22,7 @@
 #include "network.h"
 #include "thread.h"
 #include "date.h"
+#include "newgrf_config.h"
 
 enum {
 	START_DATE_QUERY,
@@ -164,6 +165,7 @@ static void StartGeneratingLandscape(glwp_modes mode)
 	UpdatePatches();
 	_opt_ptr = &_opt;
 	*_opt_ptr = _opt_newgame;
+	ResetGRFConfig(true);
 
 	SndPlayFx(SND_15_BEEP);
 	switch (mode) {

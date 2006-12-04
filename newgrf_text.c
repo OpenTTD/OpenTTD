@@ -154,7 +154,7 @@ static GRFTextEntry _grf_text[(1 << TABSIZE) * 3];
 static byte _currentLangID = GRFLX_ENGLISH;  //by default, english is used.
 
 
-static char *TranslateTTDPatchCodes(const char *str)
+char *TranslateTTDPatchCodes(const char *str)
 {
 	char *tmp = malloc(strlen(str) * 10 + 1); /* Allocate space to allow for expansion */
 	char *d = tmp;

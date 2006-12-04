@@ -36,6 +36,7 @@
 #include "npf.h"
 #include "yapf/yapf.h"
 #include "newgrf.h"
+#include "newgrf_config.h"
 #include "genworld.h"
 #include "date.h"
 #include "rail.h"
@@ -1504,6 +1505,7 @@ const char *GRFProcessParams(const IniItem *item, uint index)
 	/* Loading newgrf stuff from configuration file */
 	c = calloc(1, sizeof(*c));
 	c->filename = strdup(item->name);
+	FillGRFDetails(c);
 
 	if (*item->value != '\0') {
 		c->num_params = parse_intlist(item->value, (int*)c->param, lengthof(c->param));
@@ -1513,12 +1515,12 @@ const char *GRFProcessParams(const IniItem *item, uint index)
 		}
 	}
 
-	if (_first_grfconfig == NULL) {
-		_first_grfconfig = c;
+	if (_grfconfig_newgame == NULL) {
+		_grfconfig_newgame = c;
 	} else {
 		GRFConfig *c2;
 		/* Attach the label to the end of the list */
-		for (c2 = _first_grfconfig; c2->next != NULL; c2 = c2->next);
+		for (c2 = _grfconfig_newgame; c2->next != NULL; c2 = c2->next);
 		c2->next = c;
 	}
 

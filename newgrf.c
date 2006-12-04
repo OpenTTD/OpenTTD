@@ -27,6 +27,7 @@
 #include "date.h"
 #include "currency.h"
 #include "sound.h"
+#include "newgrf_config.h"
 #include "newgrf_sound.h"
 #include "newgrf_spritegroup.h"
 
@@ -47,10 +48,11 @@ SpriteID _coast_base;
 
 static GRFFile *_cur_grffile;
 GRFFile *_first_grffile;
-GRFConfig *_first_grfconfig;
 static SpriteID _cur_spriteid;
 static GrfLoadingStage _cur_stage;
 static uint32 _nfo_line;
+
+static GRFConfig *_cur_grfconfig;
 
 /* Miscellaneous GRF features, set by Action 0x0D, parameter 0x9E */
 static byte _misc_grf_features = 0;
@@ -2450,6 +2452,27 @@ static void SkipIf(byte *buf, int len)
 	}
 }
 
+/* Action 0x08 (GLS_FILESCAN) */
+static void ScanInfo(byte *buf, int len)
+{
+	uint8 version;
+	uint32 grfid;
+	const char *name;
+	const char *info;
+
+	check_length(len, 8, "Info"); buf++;
+	version = grf_load_byte(&buf);
+	grfid = grf_load_dword(&buf);
+	name = (const char*)buf;
+	info = name + strlen(name) + 1;
+
+	_cur_grfconfig->grfid = grfid;
+	_cur_grfconfig->name  = TranslateTTDPatchCodes(name);
+	_cur_grfconfig->info  = TranslateTTDPatchCodes(info);
+
+	_skip_sprites = -1;
+}
+
 /* Action 0x08 */
 static void GRFInfo(byte *buf, int len)
 {
@@ -3460,25 +3483,25 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 	 * is not in memory and scanning the file every time would be too expensive.
 	 * In other stages we skip action 0x10 since it's already dealt with. */
 	static const SpecialSpriteHandler handlers[][GLS_END] = {
-		/* 0x00 */ { NULL,            NULL,       FeatureChangeInfo, },
-		/* 0x01 */ { NULL,            NULL,       NewSpriteSet, },
-		/* 0x02 */ { NULL,            NULL,       NewSpriteGroup, },
-		/* 0x03 */ { NULL,            NULL,       FeatureMapSpriteGroup, },
-		/* 0x04 */ { NULL,            NULL,       FeatureNewName, },
-		/* 0x05 */ { NULL,            NULL,       GraphicsNew, },
-		/* 0x06 */ { NULL,            CfgApply,   CfgApply, },
-		/* 0x07 */ { NULL,            NULL,       SkipIf, },
-		/* 0x08 */ { NULL,            GRFInfo,    GRFInfo, },
-		/* 0x09 */ { NULL,            SkipIf,     SkipIf, },
-		/* 0x0A */ { NULL,            NULL,       SpriteReplace, },
-		/* 0x0B */ { NULL,            GRFError,   GRFError, },
-		/* 0x0C */ { NULL,            GRFComment, GRFComment, },
-		/* 0x0D */ { NULL,            ParamSet,   ParamSet, },
-		/* 0x0E */ { NULL,            GRFInhibit, GRFInhibit, },
-		/* 0x0F */ { NULL,            NULL,       NULL, },
-		/* 0x10 */ { DefineGotoLabel, NULL,       NULL, },
-		/* 0x11 */ { NULL,            NULL,       GRFSound, },
-		/* 0x12 */ { NULL,            NULL,       LoadFontGlyph, },
+		/* 0x00 */ { NULL,     NULL,            NULL,       FeatureChangeInfo, },
+		/* 0x01 */ { NULL,     NULL,            NULL,       NewSpriteSet, },
+		/* 0x02 */ { NULL,     NULL,            NULL,       NewSpriteGroup, },
+		/* 0x03 */ { NULL,     NULL,            NULL,       FeatureMapSpriteGroup, },
+		/* 0x04 */ { NULL,     NULL,            NULL,       FeatureNewName, },
+		/* 0x05 */ { NULL,     NULL,            NULL,       GraphicsNew, },
+		/* 0x06 */ { NULL,     NULL,            CfgApply,   CfgApply, },
+		/* 0x07 */ { NULL,     NULL,            NULL,       SkipIf, },
+		/* 0x08 */ { ScanInfo, NULL,            GRFInfo,    GRFInfo, },
+		/* 0x09 */ { NULL,     NULL,            SkipIf,     SkipIf, },
+		/* 0x0A */ { NULL,     NULL,            NULL,       SpriteReplace, },
+		/* 0x0B */ { NULL,     NULL,            GRFError,   GRFError, },
+		/* 0x0C */ { NULL,     NULL,            GRFComment, GRFComment, },
+		/* 0x0D */ { NULL,     NULL,            ParamSet,   ParamSet, },
+		/* 0x0E */ { NULL,     NULL,            GRFInhibit, GRFInhibit, },
+		/* 0x0F */ { NULL,     NULL,            NULL,       NULL, },
+		/* 0x10 */ { NULL,     DefineGotoLabel, NULL,       NULL, },
+		/* 0x11 */ { NULL,     NULL,            NULL,       GRFSound, },
+		/* 0x12 */ { NULL,     NULL,            NULL,       LoadFontGlyph, },
 	};
 
 	byte* buf;
@@ -3520,8 +3543,9 @@ static void DecodeSpecialSprite(uint num, GrfLoadingStage stage)
 }
 
 
-static void LoadNewGRFFile(const char *filename, uint file_index, GrfLoadingStage stage)
+void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage)
 {
+	const char *filename = config->filename;
 	uint16 num;
 
 	/* A .grf file is activated only if it was active when the game was
@@ -3533,14 +3557,16 @@ static void LoadNewGRFFile(const char *filename, uint file_index, GrfLoadingStag
 	 * During activation, only actions 0, 1, 2, 3, 4, 5, 7, 8, 9, 0A and 0B are
 	 * carried out.  All others are ignored, because they only need to be
 	 * processed once at initialization.  */
-	if (stage != GLS_LABELSCAN) {
+	if (stage != GLS_FILESCAN && stage != GLS_LABELSCAN) {
 		_cur_grffile = GetFileByFilename(filename);
 		if (_cur_grffile == NULL) error("File ``%s'' lost in cache.\n", filename);
-		if (stage > 1 && !(_cur_grffile->flags & 0x0001)) return;
+		if (stage == GLS_ACTIVATION && !(_cur_grffile->flags & 0x0001)) return;
 	}
 
 	FioOpenFile(file_index, filename);
 	_file_index = file_index; // XXX
+
+	_cur_grfconfig = config;
 
 	DEBUG(grf, 7) ("Reading NewGRF-file '%s'", filename);
 
@@ -3550,7 +3576,8 @@ static void LoadNewGRFFile(const char *filename, uint file_index, GrfLoadingStag
 	if (FioReadWord() == 4 && FioReadByte() == 0xFF) {
 		FioReadDword();
 	} else {
-		error("Custom .grf has invalid format.");
+		DEBUG(grf, 7) ("Custom .grf has invalid format.");
+		return;
 	}
 
 	_skip_sprites = 0; // XXX
@@ -3616,14 +3643,16 @@ void LoadNewGRF(uint load_index, uint file_index)
 
 		_cur_stage = stage;
 		_cur_spriteid = load_index;
-		for (c = _first_grfconfig; c != NULL; c = c->next) {
+		for (c = _grfconfig; c != NULL; c = c->next) {
+			if (HASBIT(c->flags, GCF_DISABLED) || HASBIT(c->flags, GCF_NOT_FOUND)) continue;
+
 			if (!FioCheckFileExists(c->filename)) {
 				// TODO: usrerror()
 				error("NewGRF file missing: %s", c->filename);
 			}
 
 			if (stage == GLS_LABELSCAN) InitNewGRFFile(c, _cur_spriteid);
-			LoadNewGRFFile(c->filename, slot++, stage);
+			LoadNewGRFFile(c, slot++, stage);
 			if (stage == GLS_ACTIVATION) ClearTemporaryNewGRFData();
 			DEBUG(spritecache, 2) ("Currently %i sprites are loaded", load_index);
 		}
@@ -3632,3 +3661,4 @@ void LoadNewGRF(uint load_index, uint file_index)
 	// Pre-calculate all refit masks after loading GRF files
 	CalculateRefitMasks();
 }
+

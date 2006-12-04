@@ -4,8 +4,10 @@
 #define NEWGRF_H
 
 #include "station.h"
+#include "newgrf_config.h"
 
 typedef enum GrfLoadingStage {
+	GLS_FILESCAN,
 	GLS_LABELSCAN,
 	GLS_INIT,
 	GLS_ACTIVATION,
@@ -58,19 +60,11 @@ typedef struct GRFFile {
 
 extern GRFFile *_first_grffile;
 
-typedef struct GRFConfig {
-	const char *filename;
-	uint32 param[0x80];
-	byte num_params;
-
-	struct GRFConfig *next;
-} GRFConfig;
-
-extern GRFConfig *_first_grfconfig;
 extern SpriteID _signal_base;
 extern SpriteID _coast_base;
 extern bool _have_2cc;
 
+void LoadNewGRFFile(GRFConfig *config, uint file_index, GrfLoadingStage stage);
 void LoadNewGRF(uint load_index, uint file_index);
 
 #endif /* NEWGRF_H */
