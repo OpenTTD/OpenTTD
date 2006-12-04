@@ -299,6 +299,10 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
+		case WE_INVALIDATE_DATA:
+			SetupNewGRFWindow(w);
+			break;
+
 		case WE_CLICK:
 			switch (e->we.click.widget) {
 				case 3: { /* Add GRF */
