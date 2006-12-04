@@ -2929,8 +2929,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Potvrdit
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Nastavit parametre
 STR_NEWGRF_TIP                                                  :{BLACK}Zoznam vsetkych sad nainstalovanych novych grafik. Nastavenie zmenite kliknutim na set.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nie su nainstalovane ziadne subory s novou grafikou. Postup instalacie novych grafik najdete v manuali.
-STR_NEWGRF_FILENAME                                             :{BLACK}Nazov suboru:
-STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF:
+STR_NEWGRF_FILENAME                                             :{BLACK}Nazov suboru: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastná mena
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = £ {COMMA}

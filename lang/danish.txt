@@ -2865,8 +2865,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Anvend �
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Indstil parametre
 STR_NEWGRF_TIP                                                  :{BLACK}Liste med alle Newgrf sæt du har installeret. Marker et sæt for at ændre indstilliger.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Der er ingen newgrf filer installeret! Du kan læse i manualen hvordan man installerer newgrf sæt.
-STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn:
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
+STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}

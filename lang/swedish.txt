@@ -2867,8 +2867,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Spara ä
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parametrar
 STR_NEWGRF_TIP                                                  :{BLACK}En lista av alla Newgrf som du har installerade. Clicka på en för att ändra inställningar.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Det finns för närvarande inga newgrf filer installerade! Vänligen kolla manualen hur man installerar ny grafik.
-STR_NEWGRF_FILENAME                                             :{BLACK}Filnamn:
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
+STR_NEWGRF_FILENAME                                             :{BLACK}Filnamn: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}

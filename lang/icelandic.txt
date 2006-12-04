@@ -2787,8 +2787,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Virkja b
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Stilla breytur
 STR_NEWGRF_TIP                                                  :{BLACK}Listi yfir öll nýgrf sett sem þú hefur sett inn. Smelltu til að breyta stillingunum
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Það eru engar nýgrf skrár innsettar! Vinsamlegast skoðaðu leiðbeiningarnar fyrir upplýsingar um hvernig setja á inn nýja grafík
-STR_NEWGRF_FILENAME                                             :{BLACK}Skráarnafn:
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF einkenni:
+STR_NEWGRF_FILENAME                                             :{BLACK}Skráarnafn: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF einkenni: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Sérvalinn gjaldeyrir
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Gengi: {ORANGE}{CURRENCY} = £ {COMMA}

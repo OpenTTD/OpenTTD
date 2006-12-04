@@ -2827,8 +2827,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Заст
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Встановлення параметрів
 STR_NEWGRF_TIP                                                  :{BLACK}Список усіх ваших установок нової графіки. Виберіть для налаштування
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Відсутні файли нової графіки! Прочитайте інструкцію по встановленню нової графіки
-STR_NEWGRF_FILENAME                                             :{BLACK}Ім'я файлу:
-STR_NEWGRF_GRF_ID                                               :{BLACK}ID графіки:
+STR_NEWGRF_FILENAME                                             :{BLACK}Ім'я файлу: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}ID графіки: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Вибір грошової одиниці
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY} = Ј {COMMA}

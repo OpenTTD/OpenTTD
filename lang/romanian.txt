@@ -2826,8 +2826,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplica s
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Seteaza parametri
 STR_NEWGRF_TIP                                                  :{BLACK}Lista tuturor setarilor Newgrf pe care le-ai instalat. Click pentru a schimba setarile.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nu exista fisiere newgrf instalate! Citeste manualul pentru instructiunile de instalare a fisierelor grafice noi.
-STR_NEWGRF_FILENAME                                             :{BLACK}Nume fisier:
-STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF:
+STR_NEWGRF_FILENAME                                             :{BLACK}Nume fisier: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda proprie
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = £ {COMMA}

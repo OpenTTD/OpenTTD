@@ -2996,8 +2996,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Zastosuj
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Ustaw parametry
 STR_NEWGRF_TIP                                                  :{BLACK}Lista plikow Newgrf jakie sa zainstalowane. Kliknij na ustawnienia by zmienic
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Obecnie nie ma zainstalowanych zadnych plikow newgrf! Prosze sprawdzic instrukcje jak zainstalowac nowe grafiki
-STR_NEWGRF_FILENAME                                             :{BLACK}Nazwa pliku:
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
+STR_NEWGRF_FILENAME                                             :{BLACK}Nazwa pliku: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Wlasna waluta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wspolczynnik wymiany: {ORANGE}{CURRENCY} = £ {COMMA}

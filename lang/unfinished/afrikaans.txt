@@ -2491,8 +2491,8 @@ STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Die bedr
 
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf stellings
 STR_NEWGRF_TIP                                                  :{BLACK}'n Lys van al die Newgrf stelle wat ingestel is. Kliek op 'n stel om die stellings te verander
-STR_NEWGRF_FILENAME                                             :{BLACK}Leernaam:
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
+STR_NEWGRF_FILENAME                                             :{BLACK}Leernaam: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Gewoonte koers
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} =  {COMMA}

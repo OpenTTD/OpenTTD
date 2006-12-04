@@ -2920,8 +2920,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Kinnita 
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Vali parameetrid
 STR_NEWGRF_TIP                                                  :{BLACK}Nimekiri kõikidest uue graafika sätted mida oled installeerinud. Vajuta komplektile et vahetada sätteid
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Sa ei ole installeerinud ühtegi uue graafika komplekti! Vaata õpetust et vaadata juhendit uue graafika installeerimisek
-STR_NEWGRF_FILENAME                                             :{BLACK}Faili nimi:
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
+STR_NEWGRF_FILENAME                                             :{BLACK}Faili nimi: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Personaalne valuuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vahetuskurss: {ORANGE}{CURRENCY} = £ {COMMA}

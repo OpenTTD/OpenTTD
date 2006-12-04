@@ -2859,8 +2859,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Bruk for
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Sett parametre
 STR_NEWGRF_TIP                                                  :{BLACK}En liste over alle de nye grafikkpakkene du har installert. Klikk på en pakke for å forandre innstillingene.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Der er for tiden ikke noen nye grafikkfiler installert! Manualen inneholder instruksjoner for installering av ny grafikk
-STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn:
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
+STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vanlig valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Valutakurs: {ORANGE}{CURRENCY} = £ {COMMA}

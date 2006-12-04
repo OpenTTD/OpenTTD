@@ -1431,7 +1431,7 @@ STR_PERFORMANCE_DETAIL_MONEY                                    :{BLACK}Nauda:
 STR_PERFORMANCE_DETAIL_LOAN                                     :{BLACK}Aizdevums:
 ############ End of order list
 
-STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID:
+STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
 STR_CURRENCY_SUFFIX                                             :{LTBLUE}Suffikss:
 STR_CURRENCY_SWITCH_TO_EURO                                     :{LTBLUE}Pariet uz Eiro: {ORANGE}{NUM}

@@ -2874,8 +2874,8 @@ STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar 
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Establir paràmetres
 STR_NEWGRF_TIP                                                  :{BLACK}Llista de totes les opcions de Newgrf que has instal·lat. Prem en un grup d'opcions per canviar els seus atributs.
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Ara no hi ha arxius de Newgrf instal·lats! Consulta el manual per a les instruccions d'instal·lació de nous gràfics.
-STR_NEWGRF_FILENAME                                             :{BLACK}Nom d'arxiu:
-STR_NEWGRF_GRF_ID                                               :{BLACK}Id de GRF:
+STR_NEWGRF_FILENAME                                             :{BLACK}Nom d'arxiu: {SILVER}{STRING}
+STR_NEWGRF_GRF_ID                                               :{BLACK}Id de GRF: {SILVER}{STRING}
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalitzada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Canvi de moneda: {ORANGE}{CURRENCY} = £ {COMMA}
