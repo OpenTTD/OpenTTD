@@ -52,7 +52,7 @@ void DrawNewsNewRoadVehAvail(Window *w);
 void DrawNewsNewShipAvail(Window *w);
 void DrawNewsNewAircraftAvail(Window *w);
 void DrawNewsBankrupcy(Window *w);
-static void MoveToNexItem(void);
+static void MoveToNextItem(void);
 
 StringID GetNewsStringNewTrainAvail(const NewsItem *ni);
 StringID GetNewsStringNewRoadVehAvail(const NewsItem *ni);
@@ -264,7 +264,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 
 	// check the rare case that the oldest (to be overwritten) news item is open
 	if (_total_news == MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news))
-		MoveToNexItem();
+		MoveToNextItem();
 
 	_forced_news = INVALID_NEWS;
 	if (_total_news < MAX_NEWS) _total_news++;
@@ -474,7 +474,7 @@ static bool ReadyForNextItem(void)
 	return true;
 }
 
-static void MoveToNexItem(void)
+static void MoveToNextItem(void)
 {
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
 	_forced_news = INVALID_NEWS;
@@ -519,7 +519,7 @@ void NewsLoop(void)
 	// no news item yet
 	if (_total_news == 0) return;
 
-	if (ReadyForNextItem()) MoveToNexItem();
+	if (ReadyForNextItem()) MoveToNextItem();
 }
 
 /* Do a forced show of a specific message */
@@ -878,7 +878,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 				(news == INVALID_STRING_ID || ni->string_id == news)) {
 			Window *w;
 
-			if (_forced_news == n || _current_news == n) MoveToNexItem();
+			if (_forced_news == n || _current_news == n) MoveToNextItem();
 
 			// If this is the last news item, invalidate _latest_news
 			if (_latest_news == _oldest_news) _latest_news = INVALID_NEWS;
