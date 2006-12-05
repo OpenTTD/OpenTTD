@@ -1317,10 +1317,16 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 	PlayerID old_player;
 	bool completely_empty = true;
 	byte load_amount;
+	bool anything_loaded = false;
 
 	assert(v->current_order.type == OT_LOADING);
 
 	v->cur_speed = 0;
+
+	/* Loading can only have finished when all the cargo has been unloaded, and
+	 * there is nothing left to load. It's easier to clear this if the
+	 * conditions haven't been met than attempting to check them all before
+	 * enabling though. */
 	SETBIT(v->load_status, LS_LOADING_FINISHED);
 
 	old_player = _current_player;
@@ -1339,7 +1345,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 		if (v->cargo_cap == 0) continue;
 
-		/* If the train has just arrived, set it to unload. */
+		/* If the vehicle has just arrived, set it to unload. */
 		if (just_arrived) SETBIT(v->load_status, LS_CARGO_UNLOADING);
 
 		ge = &st->goods[v->cargo_type];
@@ -1347,25 +1353,26 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 
 		/* unload? */
 		if (v->cargo_count != 0 && HASBIT(v->load_status, LS_CARGO_UNLOADING)) {
+			uint16 amount_unloaded = _patches.gradual_loading ? min(v->cargo_count, load_amount) : v->cargo_count;
+
+			CLRBIT(u->load_status, LS_LOADING_FINISHED);
+
 			if (v->cargo_source != last_visited && ge->waiting_acceptance & 0x8000 && !(u->current_order.flags & OF_TRANSFER)) {
 				// deliver goods to the station
 				st->time_since_unload = 0;
 
 				unloading_time += v->cargo_count; /* TTDBUG: bug in original TTD */
-				if (just_arrived) profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
-				result |= 1;
-				if (_patches.gradual_loading) {
-					v->cargo_count -= min(load_amount, v->cargo_count);
-					if (v->cargo_count != 0 || (count != 0 && !(u->current_order.flags & OF_UNLOAD))) CLRBIT(u->load_status, LS_LOADING_FINISHED);
-					continue;
-				} else {
-					v->cargo_count = 0;
+				if (just_arrived && !HASBIT(v->load_status, LS_CARGO_PAID_FOR)) {
+					profit += DeliverGoods(v->cargo_count, v->cargo_type, v->cargo_source, last_visited, v->cargo_days);
+					SETBIT(v->load_status, LS_CARGO_PAID_FOR);
 				}
+				result |= 1;
+				v->cargo_count -= amount_unloaded;
+				if (_patches.gradual_loading) continue;
 			} else if (u->current_order.flags & (OF_UNLOAD | OF_TRANSFER)) {
-				uint16 amount_unloaded = _patches.gradual_loading ? min(v->cargo_count, load_amount) : v->cargo_count;
 				/* unload goods and let it wait at the station */
 				st->time_since_unload = 0;
-				if (just_arrived && (u->current_order.flags & OF_TRANSFER)) {
+				if (just_arrived && (u->current_order.flags & OF_TRANSFER) && !HASBIT(v->load_status, LS_CARGO_PAID_FOR)) {
 					v_profit = GetTransportedGoodsIncome(
 						v->cargo_count,
 						DistanceManhattan(GetStation(v->cargo_source)->xy, GetStation(last_visited)->xy),
@@ -1373,6 +1380,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 						v->cargo_type) * 3 / 2;
 
 					v_profit_total += v_profit;
+					SETBIT(v->load_status, LS_CARGO_PAID_FOR);
 				}
 
 				unloading_time += v->cargo_count;
@@ -1397,21 +1405,19 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 				}
 				result |= 2;
 				v->cargo_count -= amount_unloaded;
-				if (_patches.gradual_loading) {
-					if (v->cargo_count != 0 || (count != 0 && !(u->current_order.flags & OF_UNLOAD))) CLRBIT(u->load_status, LS_LOADING_FINISHED);
-					continue;
-				}
+				if (_patches.gradual_loading) continue;
 			}
 
 			if (v->cargo_count != 0) completely_empty = false;
 		}
 
+		/* The vehicle must have been unloaded because it is either empty, or
+		 * the UNLOADING bit is already clear in v->load_status. */
+		CLRBIT(v->load_status, LS_CARGO_UNLOADING);
+		CLRBIT(v->load_status, LS_CARGO_PAID_FOR);
+
 		/* don't pick up goods that we unloaded */
 		if (u->current_order.flags & OF_UNLOAD) continue;
-
-		/* The vehicle must have been unloaded because it is either empty, or
-		 * v->cargo_unloading is already false. */
-		CLRBIT(v->load_status, LS_CARGO_UNLOADING);
 
 		/* update stats */
 		ge->days_since_pickup = 0;
@@ -1447,6 +1453,7 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 			 * @completely_empty assignment can then be safely
 			 * removed; that's how TTDPatch behaves too. --pasky */
 			completely_empty = false;
+			anything_loaded = true;
 
 			if (cap > count) cap = count;
 			if (_patches.gradual_loading) cap = min(cap, load_amount);
@@ -1476,7 +1483,13 @@ int LoadUnloadVehicle(Vehicle *v, bool just_arrived)
 		uint gradual_loading_wait_time[] = { 40, 20, 10, 20 };
 
 		unloading_time = gradual_loading_wait_time[v->type - VEH_Train];
-		if (HASBIT(v->load_status, LS_LOADING_FINISHED)) unloading_time += 20;
+		if (HASBIT(v->load_status, LS_LOADING_FINISHED)) {
+			if (anything_loaded) {
+				unloading_time += 20;
+			} else {
+				unloading_time = 20;
+			}
+		}
 	}
 
 	if (v_profit_total > 0) {

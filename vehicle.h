@@ -31,6 +31,7 @@ enum VehStatus {
 enum LoadStatus {
 	LS_LOADING_FINISHED,
 	LS_CARGO_UNLOADING,
+	LS_CARGO_PAID_FOR,
 };
 
 /* Effect vehicle types */
