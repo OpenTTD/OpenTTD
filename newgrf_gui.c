@@ -331,15 +331,24 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 				}
 
 				case 4: { /* Remove GRF */
-					GRFConfig **pc, *c;
+					GRFConfig **pc, *c, *newsel;
+
+					/* Choose the next GRF file to be the selected file */
+					newsel = WP(w, newgrf_d).sel->next;
+
 					for (pc = WP(w, newgrf_d).list; (c = *pc) != NULL; pc = &c->next) {
+						/* If the new selection is empty (i.e. we're deleting the last item
+						 * in the list, pick the file just before the selected file */
+						if (newsel == NULL && c->next == WP(w, newgrf_d).sel) newsel = c;
+
 						if (c == WP(w, newgrf_d).sel) {
 							*pc = c->next;
 							free(c);
 							break;
 						}
 					}
-					WP(w, newgrf_d).sel = NULL;
+
+					WP(w, newgrf_d).sel = newsel;
 					SetupNewGRFWindow(w);
 					SetWindowDirty(w);
 					break;
