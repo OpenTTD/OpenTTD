@@ -230,7 +230,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
  * queue and deals with overflows when increasing the index */
 static inline NewsID increaseIndex(NewsID i)
 {
-	if (i == INVALID_NEWS) return 0;
+	assert(i != INVALID_NEWS);
 	return (i + 1) % MAX_NEWS;
 }
 
@@ -275,9 +275,11 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 	_forced_news = INVALID_NEWS;
 	if (_total_news < MAX_NEWS) _total_news++;
 
-	// make sure our pointer isn't overflowing
+	/* Increase _latest_news. If we have no news yet, use _oldest news as an
+	 * index. We cannot use 0 as _oldest_news can jump around due to
+	 * DeleteVehicleNews */
 	l_news = _latest_news;
-	_latest_news = increaseIndex(_latest_news);
+	_latest_news = (_latest_news == INVALID_NEWS) ? _oldest_news : increaseIndex(_latest_news);
 
 	/* If the fifo-buffer is full, overwrite the oldest entry */
 	if (l_news != INVALID_NEWS && _latest_news == _oldest_news) {
@@ -489,7 +491,7 @@ static void MoveToNextItem(void)
 	if (_current_news != _latest_news) {
 		NewsItem *ni;
 
-		_current_news = increaseIndex(_current_news);
+		_current_news = (_current_news == INVALID_NEWS) ? _oldest_news : increaseIndex(_current_news);
 		ni = &_news_items[_current_news];
 
 		// check the date, don't show too old items
