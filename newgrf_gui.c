@@ -167,13 +167,26 @@ static void NewGRFAddDlgWndProc(Window *w, WindowEvent *e)
 				case 6: /* Add selection to list */
 					if (WP(w, newgrf_add_d).sel != NULL) {
 						const GRFConfig *src = WP(w, newgrf_add_d).sel;
-						GRFConfig *c = calloc(1, sizeof(*c));
+						GRFConfig **list, *c;
+
+						/* Find last entry in the list, checking for duplicate grfid on the way */
+						for (list = WP(w, newgrf_add_d).list; *list != NULL; list = &(*list)->next) {
+							if ((*list)->grfid == src->grfid) {
+								ShowErrorMessage(INVALID_STRING_ID, STR_NEWGRF_DUPLICATE_GRFID, 0, 0);
+								return;
+							}
+						}
+
+						/* Copy GRF details from scanned list */
+						c = calloc(1, sizeof(*c));
 						*c = *src;
 						c->filename = strdup(src->filename);
 						if (src->name != NULL) c->name = strdup(src->name);
 						if (src->info != NULL) c->info = strdup(src->info);
 						c->next = NULL;
-						*WP(w, newgrf_add_d).list = c;
+
+						/* Append GRF config to configuration list */
+						*list = c;
 
 						DeleteWindowByClass(WC_SAVELOAD);
 						InvalidateWindowData(WC_GAME_OPTIONS, 0);
@@ -313,8 +326,6 @@ static void NewGRFWndProc(Window *w, WindowEvent *e)
 					w = AllocateWindowDesc(&_newgrf_add_dlg_desc);
 					w->resize.step_height = 10;
 
-					/* Find the last entry in the list */
-					for (; *list != NULL; list = &(*list)->next);
 					WP(w, newgrf_add_d).list = list;
 					break;
 				}
