@@ -34,7 +34,7 @@
 #include "date.h"
 
 static bool TrainCheckIfLineEnds(Vehicle *v);
-static void TrainController(Vehicle *v);
+static void TrainController(Vehicle *v, bool update_image);
 
 static const byte _vehicle_initial_x_fract[4] = {10, 8, 4,  8};
 static const byte _vehicle_initial_y_fract[4] = { 8, 4, 8, 10};
@@ -1662,7 +1662,7 @@ static void AdvanceWagons(Vehicle *v, bool before)
 			tempnext = last->next;
 			last->next = NULL;
 
-			for (i = 0; i < differential; i++) TrainController(first);
+			for (i = 0; i < differential; i++) TrainController(first, false);
 
 			last->next = tempnext;
 		}
@@ -3007,7 +3007,7 @@ static void *CheckVehicleAtSignal(Vehicle *v, void *data)
 	return NULL;
 }
 
-static void TrainController(Vehicle *v)
+static void TrainController(Vehicle *v, bool update_image)
 {
 	Vehicle *prev;
 	GetNewVehiclePosResult gp;
@@ -3168,7 +3168,7 @@ static void TrainController(Vehicle *v)
 		/* update image of train, as well as delta XY */
 		newdir = GetNewVehicleDirection(v, gp.x, gp.y);
 		UpdateTrainDeltaXY(v, newdir);
-		v->cur_image = GetTrainImage(v, newdir);
+		if (update_image) v->cur_image = GetTrainImage(v, newdir);
 
 		v->x_pos = gp.x;
 		v->y_pos = gp.y;
@@ -3520,7 +3520,7 @@ static void TrainLocoHandler(Vehicle *v, bool mode)
 		TrainCheckIfLineEnds(v);
 
 		do {
-			TrainController(v);
+			TrainController(v, true);
 			CheckTrainCollision(v);
 			if (v->cur_speed <= 0x100)
 				break;
