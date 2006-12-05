@@ -920,6 +920,7 @@ int32 CmdSellShip(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 		RebuildVehicleLists();
 		InvalidateWindow(WC_COMPANY, v->owner);
 		DeleteWindowById(WC_VEHICLE_VIEW, v->index);
+		DeleteDepotHighlightOfVehicle(v);
 		DeleteVehicle(v);
 		if (IsLocalPlayer())
 			InvalidateWindow(WC_REPLACE_VEHICLE, VEH_Ship); // updates the replace Ship window

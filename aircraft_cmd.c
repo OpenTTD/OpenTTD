@@ -417,6 +417,7 @@ static void DoDeleteAircraft(Vehicle *v)
 	DeleteWindowById(WC_VEHICLE_VIEW, v->index);
 	RebuildVehicleLists();
 	InvalidateWindow(WC_COMPANY, v->owner);
+	DeleteDepotHighlightOfVehicle(v);
 	DeleteVehicleChain(v);
 	InvalidateWindowClasses(WC_AIRCRAFT_LIST);
 }

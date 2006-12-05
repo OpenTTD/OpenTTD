@@ -1049,5 +1049,6 @@ void DeleteDepotHighlightOfVehicle(const Vehicle *v)
 			WP(w, depot_d).sel = INVALID_VEHICLE;
 			ResetObjectToPlace();
 		}
+		return;
 	}
 }

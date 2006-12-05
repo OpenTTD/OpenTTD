@@ -1373,6 +1373,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				cost -= rear->value;
 				if (flags & DC_EXEC) {
 					UnlinkWagon(rear, first);
+					DeleteDepotHighlightOfVehicle(rear);
 					DeleteVehicle(rear);
 				}
 			}
@@ -1417,6 +1418,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 			cost -= v->value;
 			if (flags & DC_EXEC) {
 				first = UnlinkWagon(v, first);
+				DeleteDepotHighlightOfVehicle(v);
 				DeleteVehicle(v);
 
 				/* 4 If the second wagon was an engine, update it to front_engine
@@ -1463,6 +1465,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 							cost -= rear->value;
 							if (flags & DC_EXEC) {
 								first = UnlinkWagon(rear, first);
+								DeleteDepotHighlightOfVehicle(rear);
 								DeleteVehicle(rear);
 							}
 						}
@@ -1475,6 +1478,7 @@ int32 CmdSellRailWagon(TileIndex tile, uint32 flags, uint32 p1, uint32 p2)
 				cost -= v->value;
 				if (flags & DC_EXEC) {
 					first = UnlinkWagon(v, first);
+					DeleteDepotHighlightOfVehicle(v);
 					DeleteVehicle(v);
 				}
 			}
