@@ -86,12 +86,12 @@ static void DrawOrdersWindow(Window *w)
 		/* Disable list of vehicles with the same shared orders if there is no list */
 		SetWindowWidgetDisabledState(w, 11, !shared_orders || v->orders == NULL);
 		SetWindowWidgetDisabledState(w, 12, order == NULL); // Refit
+		HideWindowWidget(w, 12); // Refit
 	} else {
 		DisableWindowWidget(w, 10);
 	}
 
 	ShowWindowWidget(w, 9); // Unload
-	HideWindowWidget(w, 12); // Refit
 
 	if (order != NULL) {
 		switch (order->type) {
