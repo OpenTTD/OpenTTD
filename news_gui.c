@@ -29,6 +29,12 @@
  * [O------------F-------------C---------L           ]
  *               |
  *            forced
+ *
+ * Of course by using an array we can have situations like
+ *
+ * [----L          O-----F---------C-----------------]
+ * This is where we have wrapped around the array and have
+ * (MAX_NEWS - O) + L news items
  */
 
 #define MAX_NEWS 30
@@ -870,7 +876,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 {
 	NewsID n;
 
-	for (n = _oldest_news; _latest_news != INVALID_NEWS && n != increaseIndex(_latest_news); n = increaseIndex(n)) {
+	for (n = _oldest_news; _latest_news != INVALID_NEWS; n = increaseIndex(n)) {
 		const NewsItem *ni = &_news_items[n];
 
 		if (ni->flags & NF_VEHICLE &&
@@ -879,18 +885,32 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			Window *w;
 
 			if (_forced_news == n || _current_news == n) MoveToNextItem();
+			_total_news--;
 
 			// If this is the last news item, invalidate _latest_news
-			if (_latest_news == _oldest_news) _latest_news = INVALID_NEWS;
+			if (_latest_news == _oldest_news) {
+				assert(_total_news == 0);
+				_latest_news = INVALID_NEWS;
+			}
 
-			if (n != _oldest_news) {
+			/* Since we only imitate a FIFO removing an arbitrary element does need
+			 * some magic. Remove the item by shifting head towards the tail. eg
+			 *    oldest    remove  last
+			 *        |        |     |
+			 * [------O--------n-----L--]
+			 * will become (change dramatized to make clear)
+			 * [---------O-----------L--]
+			 * Also update the current news item in case it was pointing to the
+			 * oldest, now shifted item */
+			if (_total_news != 0) {
 				NewsID i;
 				for (i = n; i != _oldest_news; i = decreaseIndex(i)) {
 					_news_items[i] = _news_items[decreaseIndex(i)];
 				}
+
+				if (_current_news == _oldest_news) _current_news = increaseIndex(_current_news);
 				_oldest_news = increaseIndex(_oldest_news);
 			}
-			_total_news--;
 
 			w = FindWindowById(WC_MESSAGE_HISTORY, 0);
 			if (w != NULL) {
@@ -898,5 +918,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 				w->vscroll.count = _total_news;
 			}
 		}
+
+		if (n == _latest_news) break;
 	}
 }
