@@ -219,14 +219,20 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 	}
 }
 
-// returns the correct index in the array
-// (to deal with overflows)
-static byte increaseIndex(byte i)
+/** Return the correct index in the pseudo-fifo
+ * queue and deals with overflows when increasing the index */
+static inline byte increaseIndex(byte i)
 {
 	if (i == INVALID_NEWS) return 0;
-	i++;
-	if (i >= MAX_NEWS) i = i % MAX_NEWS;
-	return i;
+	return (i + 1) % MAX_NEWS;
+}
+
+/** Return the correct index in the pseudo-fifo
+ * queue and deals with overflows when decreasing the index */
+static inline byte decreaseIndex(byte i)
+{
+	assert(i != INVALID_NEWS);
+	return (i + MAX_NEWS - 1) % MAX_NEWS;
 }
 
 /** Add a new newsitem to be shown.
@@ -251,14 +257,12 @@ static byte increaseIndex(byte i)
  * @see NewsCallback */
 void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 {
-	NewsItem *ni;
-	Window *w;
 	byte l_news;
 
 	if (_game_mode == GM_MENU) return;
 
 	// check the rare case that the oldest (to be overwritten) news item is open
-	if (_total_news==MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news))
+	if (_total_news == MAX_NEWS && (_oldest_news == _current_news || _oldest_news == _forced_news))
 		MoveToNexItem();
 
 	_forced_news = INVALID_NEWS;
@@ -269,32 +273,35 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 	_latest_news = increaseIndex(_latest_news);
 
 	/* If the fifo-buffer is full, overwrite the oldest entry */
-	if (l_news != INVALID_NEWS && _latest_news == _oldest_news)
-		_oldest_news = increaseIndex(_oldest_news); // but make sure we're not overflowing here
+	if (l_news != INVALID_NEWS && _latest_news == _oldest_news) {
+		assert(_total_news == MAX_NEWS);
+		_oldest_news = increaseIndex(_oldest_news);
+	}
 
-	// add news to _latest_news
-	ni = &_news_items[_latest_news];
-	memset(ni, 0, sizeof(*ni));
+	{ /* Add news to _latest_news */
+		Window *w;
+		NewsItem *ni = &_news_items[_latest_news];
+		memset(ni, 0, sizeof(*ni));
 
-	ni->string_id = string;
-	ni->display_mode = (byte)flags;
-	ni->flags = (byte)(flags >> 8);
+		ni->string_id = string;
+		ni->display_mode = (byte)flags;
+		ni->flags = (byte)(flags >> 8);
 
-	// show this news message in color?
-	if (_cur_year >= _patches.colored_news_year)
-		ni->flags |= NF_INCOLOR;
+		// show this news message in color?
+		if (_cur_year >= _patches.colored_news_year) ni->flags |= NF_INCOLOR;
 
-	ni->type = (byte)(flags >> 16);
-	ni->callback = (byte)(flags >> 24);
-	ni->data_a = data_a;
-	ni->data_b = data_b;
-	ni->date = _date;
-	COPY_OUT_DPARAM(ni->params, 0, lengthof(ni->params));
+		ni->type = (byte)(flags >> 16);
+		ni->callback = (byte)(flags >> 24);
+		ni->data_a = data_a;
+		ni->data_b = data_b;
+		ni->date = _date;
+		COPY_OUT_DPARAM(ni->params, 0, lengthof(ni->params));
 
-	w = FindWindowById(WC_MESSAGE_HISTORY, 0);
-	if (w == NULL) return;
-	SetWindowDirty(w);
-	w->vscroll.count = _total_news;
+		w = FindWindowById(WC_MESSAGE_HISTORY, 0);
+		if (w == NULL) return;
+		SetWindowDirty(w);
+		w->vscroll.count = _total_news;
+	}
 }
 
 
@@ -471,7 +478,7 @@ static void MoveToNexItem(void)
 	DeleteWindowById(WC_NEWS_WINDOW, 0);
 	_forced_news = INVALID_NEWS;
 
-	// if we're not at the last item, than move on
+	// if we're not at the last item, then move on
 	if (_current_news != _latest_news) {
 		NewsItem *ni;
 
@@ -536,12 +543,16 @@ static void ShowNewsMessage(byte i)
 
 void ShowLastNewsMessage(void)
 {
-	if (_forced_news == INVALID_NEWS) {
-		ShowNewsMessage(_current_news);
-	} else if (_forced_news != 0) {
-		ShowNewsMessage(_forced_news - 1);
-	} else {
-		ShowNewsMessage(_total_news != MAX_NEWS ? _latest_news : MAX_NEWS - 1);
+	switch (_forced_news) {
+		case INVALID_NEWS: // Not forced any news yet, show the current one
+			ShowNewsMessage(_current_news);
+			break;
+		case 0: //
+			ShowNewsMessage(_total_news != MAX_NEWS ? _latest_news : MAX_NEWS - 1);
+			break;
+		default: // 'Scrolling' through news history show each one in turn
+			ShowNewsMessage(_forced_news - 1);
+			break;
 	}
 }
 
@@ -876,8 +887,8 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 {
 	byte n;
 
-	for (n = _oldest_news; _latest_news != INVALID_NEWS && n != (_latest_news + 1) % MAX_NEWS; n = (n + 1) % MAX_NEWS) {
-		const NewsItem* ni = &_news_items[n];
+	for (n = _oldest_news; _latest_news != INVALID_NEWS && n != increaseIndex(_latest_news); n = increaseIndex(n)) {
+		const NewsItem *ni = &_news_items[n];
 
 		if (ni->flags & NF_VEHICLE &&
 				ni->data_a == vid &&
@@ -885,8 +896,7 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			Window *w;
 			byte i;
 
-			if (_forced_news  == n) MoveToNexItem();
-			if (_current_news == n) MoveToNexItem();
+			if (_forced_news  == n || _current_news == n) MoveToNexItem();
 
 			// If this is the last news item, invalidate _latest_news
 			if (_latest_news == _oldest_news) _latest_news = INVALID_NEWS;
