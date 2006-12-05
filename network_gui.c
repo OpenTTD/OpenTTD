@@ -1490,7 +1490,9 @@ static const char *ChatTabCompletionNextItem(uint *item)
 	}
 
 	/* Then, try townnames */
-	if (*item < (uint)MAX_CLIENT_INFO + GetTownArraySize()) {
+	/* Not that the following assumes all town indices are adjacent, ie no
+	 * towns have been deleted. */
+	if (*item <= (uint)MAX_CLIENT_INFO + GetMaxTownIndex()) {
 		const Town *t;
 
 		FOR_ALL_TOWNS_FROM(t, *item - MAX_CLIENT_INFO) {

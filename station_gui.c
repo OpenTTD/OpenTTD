@@ -182,7 +182,7 @@ static void BuildStationsList(plstations_d* sl, PlayerID owner, byte facilities,
 	if (!(sl->flags & SL_REBUILD)) return;
 
 	/* Create array for sorting */
-	station_sort = malloc(GetStationArraySize() * sizeof(station_sort[0]));
+	station_sort = malloc((GetMaxStationIndex() + 1) * sizeof(station_sort[0]));
 	if (station_sort == NULL)
 		error("Could not allocate memory for the station-sorting-list");
 

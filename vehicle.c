@@ -2248,7 +2248,7 @@ static int32 MaybeReplaceVehicle(Vehicle *v, bool check, bool display_costs)
 /* Extend the list size for BuildDepotVehicleList() */
 static inline void ExtendVehicleListSize(const Vehicle ***engine_list, uint16 *engine_list_length, uint16 step_size)
 {
-	*engine_list_length = min(*engine_list_length + step_size, GetVehicleArraySize());
+	*engine_list_length = min(*engine_list_length + step_size, GetMaxVehicleIndex() + 1);
 	*engine_list = realloc((void*)*engine_list, (*engine_list_length) * sizeof((*engine_list)[0]));
 }
 
@@ -2391,7 +2391,7 @@ uint GenerateVehicleSortList(const Vehicle ***sort_list, uint16 *length_of_array
 					(type == VEH_Train && IsFrontEngine(v)) ||
 					(type != VEH_Train && v->subtype <= subtype))) {
 					/* TODO find a better estimate on the total number of vehicles for current player */
-					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetVehicleArraySize()/4);
+					if (n == *length_of_array) ExtendVehicleListSize(sort_list, length_of_array, GetNumVehicles()/4);
 					(*sort_list)[n++] = v;
 				}
 			}

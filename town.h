@@ -164,13 +164,18 @@ static inline bool IsValidTown(const Town* town)
 
 VARDEF uint _total_towns;
 
-static inline TownID GetTownArraySize(void)
+static inline TownID GetMaxTownIndex(void)
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
+	return _total_towns - 1;
+}
+
+static inline uint GetNumTowns(void)
+{
 	return _total_towns;
 }
 
@@ -179,7 +184,7 @@ static inline TownID GetTownArraySize(void)
  */
 static inline Town *GetRandomTown(void)
 {
-	uint num = RandomRange(GetTownArraySize());
+	uint num = RandomRange(GetNumTowns());
 	uint index = 0;
 
 	while (num > 0) {
@@ -189,7 +194,7 @@ static inline Town *GetRandomTown(void)
 		/* Make sure we have a valid industry */
 		while (GetTown(index) == NULL) {
 			index++;
-			if (index == GetTownArraySize()) index = 0;
+			if (index > GetMaxTownIndex()) index = 0;
 		}
 	}
 

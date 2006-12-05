@@ -436,12 +436,12 @@ void OnTick_Town(void)
 
 	/* Make sure each town's tickhandler invocation frequency is about the
 	 * same - TOWN_GROWTH_FREQUENCY - independent on the number of towns. */
-	for (_cur_town_iter += GetTownArraySize();
+	for (_cur_town_iter += GetMaxTownIndex() + 1;
 	     _cur_town_iter >= TOWN_GROWTH_FREQUENCY;
 	     _cur_town_iter -= TOWN_GROWTH_FREQUENCY) {
 		uint32 i = _cur_town_ctr;
 
-		if (++_cur_town_ctr >= GetTownArraySize())
+		if (++_cur_town_ctr > GetMaxTownIndex())
 			_cur_town_ctr = 0;
 
 		if (IsValidTownID(i)) TownTickHandler(GetTown(i));
@@ -1093,7 +1093,7 @@ bool GenerateTowns(void)
 
 	// give it a last try, but now more aggressive
 	if (num == 0 && CreateRandomTown(10000, 0) == NULL) {
-		if (GetTownArraySize() == 0) {
+		if (GetNumTowns() == 0) {
 			/* XXX - can we handle that more gracefully? */
 			if (_game_mode != GM_EDITOR) error("Could not generate any town");
 
@@ -1937,7 +1937,7 @@ static void Load_TOWN(void)
 
 	/* This is to ensure all pointers are within the limits of
 	 *  the size of the TownPool */
-	if (_cur_town_ctr >= GetTownArraySize())
+	if (_cur_town_ctr > GetMaxTownIndex())
 		_cur_town_ctr = 0;
 }
 

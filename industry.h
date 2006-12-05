@@ -92,13 +92,18 @@ static inline bool IsValidIndustry(const Industry *industry)
 
 VARDEF int _total_industries;
 
-static inline IndustryID GetIndustryArraySize(void)
+static inline IndustryID GetMaxIndustryIndex(void)
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
+	return _total_industries - 1;
+}
+
+static inline uint GetNumIndustries(void)
+{
 	return _total_industries;
 }
 
@@ -107,10 +112,10 @@ static inline IndustryID GetIndustryArraySize(void)
  */
 static inline Industry *GetRandomIndustry(void)
 {
-	uint num = RandomRange(GetIndustryArraySize());
+	uint num = RandomRange(GetNumIndustries());
 	uint index = 0;
 
-	if (GetIndustryArraySize() == 0) return NULL;
+	if (GetNumIndustries() == 0) return NULL;
 
 	while (num > 0) {
 		num--;
@@ -119,7 +124,7 @@ static inline Industry *GetRandomIndustry(void)
 		/* Make sure we have a valid industry */
 		while (GetIndustry(index) == NULL) {
 			index++;
-			if (index == GetIndustryArraySize()) index = 0;
+			if (index > GetMaxIndustryIndex()) index = 0;
 		}
 	}
 

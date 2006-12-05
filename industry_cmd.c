@@ -1820,7 +1820,7 @@ void IndustryMonthlyLoop(void)
 	/* 3% chance that we start a new industry */
 	if (CHANCE16(3, 100)) {
 		MaybeNewIndustry(Random());
-	} else if (!_patches.smooth_economy && GetIndustryArraySize() > 0) {
+	} else if (!_patches.smooth_economy) {
 		i = GetRandomIndustry();
 		if (i != NULL) ChangeIndustryProduction(i);
 	}

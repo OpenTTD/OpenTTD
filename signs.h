@@ -18,13 +18,18 @@ typedef struct Sign {
 
 DECLARE_OLD_POOL(Sign, Sign, 2, 16000)
 
-static inline SignID GetSignArraySize(void)
+static inline SignID GetMaxSignIndex(void)
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
+	return GetSignPoolSize() - 1;
+}
+
+static inline uint GetNumSigns(void)
+{
 	return GetSignPoolSize();
 }
 

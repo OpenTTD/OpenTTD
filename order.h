@@ -109,13 +109,18 @@ VARDEF BackuppedOrders _backup_orders_data[1];
 
 DECLARE_OLD_POOL(Order, Order, 6, 1000)
 
-static inline VehicleOrderID GetOrderArraySize(void)
+static inline VehicleOrderID GetMaxOrderIndex(void)
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
+	return GetOrderPoolSize() - 1;
+}
+
+static inline VehicleOrderID GetNumOrders(void)
+{
 	return GetOrderPoolSize();
 }
 

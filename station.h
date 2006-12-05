@@ -144,13 +144,18 @@ void ResortStationLists(void);
 
 DECLARE_OLD_POOL(Station, Station, 6, 1000)
 
-static inline StationID GetStationArraySize(void)
+static inline StationID GetMaxStationIndex(void)
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
+	return GetStationPoolSize() - 1;
+}
+
+static inline uint GetNumStations(void)
+{
 	return GetStationPoolSize();
 }
 

@@ -3586,8 +3586,8 @@ static void AiStateRemoveStation(Player *p)
 	p->ai.state = AIS_1;
 
 	// Get a list of all stations that are in use by a vehicle
-	in_use = malloc(GetStationArraySize());
-	memset(in_use, 0, GetStationArraySize());
+	in_use = malloc(GetMaxStationIndex() + 1);
+	memset(in_use, 0, GetMaxStationIndex() + 1);
 	FOR_ALL_ORDERS(ord) {
 		if (ord->type == OT_GOTO_STATION) in_use[ord->dest] = 1;
 	}

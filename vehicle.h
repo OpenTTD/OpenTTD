@@ -370,13 +370,18 @@ Direction GetDirectionTowards(const Vehicle* v, int x, int y);
 
 DECLARE_OLD_POOL(Vehicle, Vehicle, 9, 125)
 
-static inline VehicleID GetVehicleArraySize(void)
+static inline VehicleID GetMaxVehicleIndex(void)
 {
 	/* TODO - This isn't the real content of the function, but
 	 *  with the new pool-system this will be replaced with one that
-	 *  _really_ returns the highest index + 1. Now it just returns
+	 *  _really_ returns the highest index. Now it just returns
 	 *  the next safe value we are sure about everything is below.
 	 */
+	return GetVehiclePoolSize() - 1;
+}
+
+static inline uint GetNumVehicles(void)
+{
 	return GetVehiclePoolSize();
 }
 
