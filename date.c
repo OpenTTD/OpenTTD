@@ -196,7 +196,7 @@ static const Month _autosave_months[] = {
  */
 static void RunVehicleDayProc(uint daytick)
 {
-	uint total = GetVehiclePoolSize();
+	uint total = GetMaxVehicleIndex() + 1;
 	uint i;
 
 	for (i = daytick; i < total; i += DAY_TICKS) {
