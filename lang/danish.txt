@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informat
 STR_013E_CAPACITIES                                             :{BLACK}Lasteevner
 STR_013E_TOTAL_CARGO                                            :{BLACK}Samlet last
 STR_013F_CAPACITY                                               :{BLACK}Lasteevne: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Samlet last (lasteevne) på dette tog:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nyt Spil
 STR_0141_LOAD_GAME                                              :{BLACK}Hent Spil
 STR_SINGLE_PLAYER                                               :{BLACK}En spiller
@@ -308,7 +310,7 @@ STR_0151_MAP_OF_WORLD                                           :Kort over verde
 STR_0152_TOWN_DIRECTORY                                         :Byoversigt
 STR_0153_SUBSIDIES                                              :Statsstøttede aftaler
 
-STR_UNITS_IMPERIAL                                              :Imperialistisk
+STR_UNITS_IMPERIAL                                              :Britisk standard
 STR_UNITS_METRIC                                                :Metersystem
 STR_UNITS_SI                                                    :SI
 
@@ -359,7 +361,7 @@ STR_015F_QUIT                                                   :Afslut
 STR_0160_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Er du sikker på, at du vil afslutte dette spil ?
 STR_0161_QUIT_GAME                                              :{WHITE}Afslut Spil
 STR_SORT_ORDER_TIP                                              :{BLACK}Vælg sorteringsorden (faldende/stigende)
-STR_SORT_CRITERIA_TIP                                           :{BLACK}Vælg sortering kriterie
+STR_SORT_CRITERIA_TIP                                           :{BLACK}Vælg sorteringskriterie
 STR_SORT_BY                                                     :{BLACK}Sorter efter
 
 STR_SORT_BY_POPULATION                                          :{BLACK}Indbyggertal
@@ -375,12 +377,12 @@ STR_SORT_BY_PROFIT_THIS_YEAR                                    :Profit dette å
 STR_SORT_BY_AGE                                                 :Alder
 STR_SORT_BY_RELIABILITY                                         :Pålidelighed
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Total kapacitet for hver lasttype
-STR_SORT_BY_MAX_SPEED                                           :Top hastighed
+STR_SORT_BY_MAX_SPEED                                           :Tophastighed
 STR_SORT_BY_MODEL                                               :Model
 STR_SORT_BY_VALUE                                               :Værdi
 STR_SORT_BY_FACILITY                                            :Stationstype
 STR_SORT_BY_WAITING                                             :Værdi af ventende fragt
-STR_SORT_BY_RATING_MAX                                          :Fragts rangering
+STR_SORT_BY_RATING_MAX                                          :Fragtrangering
 STR_ENGINE_SORT_ENGINE_ID                                       :LokomotivID (klassisk sortering)
 STR_ENGINE_SORT_COST                                            :Omkostning
 STR_ENGINE_SORT_POWER                                           :Drivmiddel
@@ -390,7 +392,7 @@ STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Drivmiddel/drif
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lasteevne
 STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
-STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle last typer (inklusiv fragttyper, der ikke venter)
+STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -767,7 +769,7 @@ STR_WAYPOINTS_DISPLAYED2                                        :{SETX 12}Kontro
 STR_02D0_FULL_ANIMATION                                         :{SETX 12}Fuld animation
 STR_02D2_FULL_DETAIL                                            :{SETX 12}Fuld detalje
 STR_02D4_TRANSPARENT_BUILDINGS                                  :{SETX 12}Gennemsigtige bygninger
-STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gennemsigtige station skilte
+STR_TRANSPARENT_SIGNS                                           :{SETX 12}Gennemsigtige stationsskilte
 ############ range ends	here
 
 ############ range for menu	starts
@@ -878,8 +880,8 @@ STR_TOWNNAME_CZECH                                              :Tjekkiske
 STR_TOWNNAME_SWISS                                              :Schweiziske
 STR_TOWNNAME_DANISH                                             :Danske
 STR_TOWNNAME_TURKISH                                            :Tyrkiske
-STR_TOWNNAME_ITALIAN                                            :Italiensk
-STR_TOWNNAME_CATALAN                                            :Catalansk
+STR_TOWNNAME_ITALIAN                                            :Italienske
+STR_TOWNNAME_CATALAN                                            :Catalanske
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Pund (£)
@@ -950,7 +952,7 @@ STR_NO_ORDERS_VEL                                               :{LTBLUE}Ingen o
 
 STR_PASSENGERS                                                  :passagerer
 STR_BAGS                                                        :sække
-STR_TONS                                                        :ton
+STR_TONS                                                        :tons
 STR_LITERS                                                      :liter
 STR_ITEMS                                                       :stykker
 STR_CRATES                                                      :kasser
@@ -969,7 +971,7 @@ STR_EURO_INTRODUCE                                              :{BLACK}{BIGFONT
 
 # Start of order review system.
 # DON'T ADD OR REMOVE LINES HERE
-STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordre i sin køreplan
+STR_TRAIN_HAS_TOO_FEW_ORDERS                                    :{WHITE}Tog {COMMA} har for få ordrer i sin køreplan
 STR_TRAIN_HAS_VOID_ORDER                                        :{WHITE}Tog {COMMA} har en ugyldig ordre
 STR_TRAIN_HAS_DUPLICATE_ENTRY                                   :{WHITE}Tog {COMMA} har dobbelt ordre
 STR_TRAIN_HAS_INVALID_ENTRY                                     :{WHITE}Tog {COMMA} har en ugyldig station i sin køreplan
@@ -977,7 +979,7 @@ STR_ROADVEHICLE_HAS_TOO_FEW_ORDERS                              :{WHITE}Køretø
 STR_ROADVEHICLE_HAS_VOID_ORDER                                  :{WHITE}Køretøj {COMMA} har en ugyldig ordre
 STR_ROADVEHICLE_HAS_DUPLICATE_ENTRY                             :{WHITE}Køretøj {COMMA} har dobbelt ordre
 STR_ROADVEHICLE_HAS_INVALID_ENTRY                               :{WHITE}Køretøj {COMMA} har en ugyldig station i sin køreplan
-STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skib {COMMA} har for få ordre i sin sejlplan
+STR_SHIP_HAS_TOO_FEW_ORDERS                                     :{WHITE}Skib {COMMA} har for få ordrer i sin sejlplan
 STR_SHIP_HAS_VOID_ORDER                                         :{WHITE}Skib {COMMA} har en ugyldig ordre
 STR_SHIP_HAS_DUPLICATE_ENTRY                                    :{WHITE}Skib {COMMA} har dobbelt ordre
 STR_SHIP_HAS_INVALID_ENTRY                                      :{WHITE}Skib {COMMA} har en ugyldig havn i sin sejlplan
@@ -1009,6 +1011,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Forbyd 
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Foren togstationer der bygges ved siden af hinanden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Forlad stationen hvis en slags last bliver fyldt, hvis 'fuld last': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Brug forbedret indlæsnings algoritme: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Last køretøjer gradvist: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Aflever kun last til en station hvis der er en forespørgsel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Tillad bygning af meget lange broer: {ORANGE}{STRING}
@@ -1025,6 +1028,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Pannore
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillad bestikkelse af de lokale myndigheder: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Ikke uniforme stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny global ruteplanlægger (NPF, tilsidesætter NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Vægtfaktor for fragt for at simulere tunge tog: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillad altid små lufthavne: {ORANGE}{STRING}
 
@@ -1070,6 +1074,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Vis fir
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ingen
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Eget firma
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Alle firmaer
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Foretræk hold-chat med <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maks antal tog per spiller: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maks antal køretøjer per spiller: {ORANGE}{STRING}
@@ -1094,6 +1099,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Standar
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Standard service interval for skibe: {ORANGE}slået fra
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Slå service fra, når nedbrud er sat til ingen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktiver hastigheds begrænsning for vogne: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Slå elektriske jernbaner fra: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Farvede nyheder dukker op i: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Start dato: {ORANGE}{STRING}
@@ -1204,7 +1210,7 @@ STR_CONVERT_RAIL_TIP                                            :{BLACK}Konverte
 STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Træk lokomotivet her for at sælge hele toget
 
 STR_DRAG_DROP                                                   :{BLACK}Træk & slip
-STR_STATION_DRAG_DROP                                           :{BLACK}Byg en station via træk & slip
+STR_STATION_DRAG_DROP                                           :{BLACK}Byg en station vha. træk & slip
 STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Vælg hvilken stationstype, der skal vises
 STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Vælg hvilen stationstype du vil bygge
 
@@ -1650,7 +1656,7 @@ STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}
 STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Byg en statue til ære for dit firma.{} Pris: {CURRENCY}
 STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Betal for opførelse af forretningsbygninger i byen.{}  Pris: {CURRENCY}
 STR_2053_BUY_1_YEAR_S_EXCLUSIVE                                 :{WHITE}{STRING}{}{YELLOW} Køb et års eksklusive rettigheder til transport i byen. De lokale myndigheder vil kun tillade passagerer og last at bruge dine stationer.{} Prist: {CURRENCY}
-STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestik de lokale myndigheder til at høve din bedømmelse, med sandsynlighed for en stor straf hvis det bliver opdaget.{}  Pris: {CURRENCY}
+STR_TOWN_BRIBE_THE_LOCAL_AUTHORITY_DESC                         :{WHITE}{STRING}{}{YELLOW} Bestik de lokale myndigheder til at hæve din bedømmelse, med sandsynlighed for en stor straf hvis det bliver opdaget.{}  Pris: {CURRENCY}
 STR_2055_TRAFFIC_CHAOS_IN_ROAD_REBUILDING                       :{BIGFONT}{BLACK}Trafikkaos i byen {TOWN}!{}{}Vejfornyelse betalt af {COMPANY} forårsager 6 måneders kaos i trafikken!
 STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
 STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
@@ -1956,7 +1962,7 @@ STR_SV_STNAME_SIDINGS                                           :{STRING} Sidesp
 STR_SV_STNAME_BRANCH                                            :{STRING} Torv
 STR_SV_STNAME_UPPER                                             :Øvre {STRING}
 STR_SV_STNAME_LOWER                                             :Nedre {STRING}
-STR_SV_STNAME_HELIPORT                                          :{STRING} Helicopterplads
+STR_SV_STNAME_HELIPORT                                          :{STRING} Helikopterplads
 STR_SV_STNAME_FOREST                                            :{STRING} Skov
 
 ############ end of	savegame specific region!
@@ -2151,7 +2157,7 @@ STR_7072_VIEW_HQ                                                :{BLACK}Vis HK
 STR_RELOCATE_HQ                                                 :{BLACK}Flyt hovedkvarter
 STR_COMPANY_PASSWORD                                            :{BLACK}Kodeord
 STR_COMPANY_PASSWORD_TOOLTIP                                    :{BLACK}Beskyt din virksomhed med et kodeord for at undgå at fremmede slutter sig til spillet.
-STR_SET_COMPANY_PASSWORD                                        :Set virksomhedens kodeord
+STR_SET_COMPANY_PASSWORD                                        :Sæt virksomhedens kodeord
 STR_7073_WORLD_RECESSION_FINANCIAL                              :{BIGFONT}{BLACK}Lavkonjuktur over hele verden!{}{}Vismændende frygter det værste, økonomien skrumper!
 STR_7074_RECESSION_OVER_UPTURN_IN                               :{BIGFONT}{BLACK}Økonomisk krise overvundet!{}{}Stigning i forbrug giver industrien selvtilliden tilbage, produktionen øges!
 STR_7075_TOGGLE_LARGE_SMALL_WINDOW                              :{BLACK}Skift mellem stort/lille vindue
@@ -2496,16 +2502,20 @@ STR_INVALID_ORDER                                               :{RED} (Ugyldig 
 STR_UNKNOWN_DESTINATION                                         :ukendt destination
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} fra {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} fra {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tog {COMMA} venter i remise
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nye køretøjer
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Toget er for langt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tog kan kun ændres når de er stoppet i en remise
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tog
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nye Jernbanekøretøjer
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nyt Elektrisk lokomotiv
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nye Monorailkøretøjer
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nye Magnetskinne køretøjer
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Jernbanekøretøjer
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Byg Køretøj
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klon Køretøj
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Dette vil bygge en kopi af køretøjet. Control-click vil dele ordre
@@ -2579,7 +2589,7 @@ STR_8858_MAKE_THE_HIGHLIGHTED_ORDER                             :{BLACK}Få den 
 STR_SERVICE_HINT                                                :{BLACK}Spring denne ordre over hvis der ikke er behov for service
 STR_8859_NEW_NOW_AVAILABLE                                      :{BLACK}{BIGFONT}Ny {STRING} tilgængelig nu!
 STR_885A                                                        :{BLACK}{BIGFONT}{STRING}
-STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Kørselsomkostning: {CURRENCY}/år{}Kapacitet: {CARGO}
+STR_VEHICLE_INFO_COST_WEIGHT_SPEED_POWER                        :{BLACK}Pris: {CURRENCY} Vægt: {WEIGHT_S}{}Hastighed: {VELOCITY}  Styrke: {POWER}{}Driftsomkostninger: {CURRENCY}/år{}Kapacitet: {CARGO}
 STR_885C_BROKEN_DOWN                                            :{RED}Gået i stykker
 STR_885D_AGE_RUNNING_COST_YR                                    :{BLACK}Alder: {LTBLUE}{STRING}{BLACK}   Kørselsomkostning: {LTBLUE}{CURRENCY}/år
 STR_VEHICLE_INFO_WEIGHT_POWER_MAX_SPEED                         :{BLACK}Vægt: {LTBLUE}{WEIGHT_S}  {BLACK}Styrke: {LTBLUE}{POWER}{BLACK} Maks hastighed: {LTBLUE}{VELOCITY}
@@ -2603,7 +2613,7 @@ STR_TRAIN_STOPPING                                              :{RED}Stopper
 STR_TRAIN_STOPPING_VEL                                          :{RED}Stopper, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Skinnetyperne passer ikke sammen
 STR_TRAIN_NO_POWER                                              :{RED}Ingen strøm
-STR_TRAIN_START_NO_CATENARY                                     :Toget kan ikke køre fordi sporet ikke har nogen køreledninger
+STR_TRAIN_START_NO_CATENARY                                     :Toget kan ikke køre, fordi sporet ikke har køreledninger
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Køretøj i vejen
@@ -2860,6 +2870,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Kapital 
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Har du et stort lån?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Samlet point af max point
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF indstillinger
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf indstillinger
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Anvend ændringer
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Indstil parametre
@@ -2867,6 +2878,9 @@ STR_NEWGRF_TIP                                                  :{BLACK}Liste me
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Der er ingen newgrf filer installeret! Du kan læse i manualen hvordan man installerer newgrf sæt.
 STR_NEWGRF_FILENAME                                             :{BLACK}Filnavn: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Brugerdefineret møntfod
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2984,7 +2998,7 @@ STR_MASS_STOP_LIST_TIP                                          :{BLACK}Klik for
 STR_MASS_START_LIST_TIP                                         :{BLACK}Klik for at starte alle køretøjer i listen
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
-STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste of skilte - {COMMA} Skilte
+STR_SIGN_LIST_CAPTION                                           :{WHITE}Liste over skilte - {COMMA} Skilt{P "" e}
 
 STR_ORDER_REFIT_FAILED                                          :{WHITE}Ombygningsordre stoppet pga. fejl {STRING} {COMMA}
 
@@ -3029,14 +3043,14 @@ STR_HEIGHTMAP_ROTATION                                          :{BLACK}Højdeko
 STR_TERRAIN_TYPE                                                :{BLACK}Terræntype:
 STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Havniveau
 STR_SMOOTHNESS                                                  :{BLACK}Blødhed:
-STR_SNOW_LINE_HEIGHT                                            :{BLACK}Sneliniehøjde
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Snegrænse
 STR_DATE                                                        :{BLACK}Dato:
 STR_NUMBER_OF_TOWNS                                             :{BLACK}Antal byer:
 STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Antal industrier:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
-STR_SNOW_LINE_UP                                                :{BLACK}Flyt sneliniehøjden een op
-STR_SNOW_LINE_DOWN                                              :{BLACK}Flyt sneliniehøjden een ned
-STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ændre sneliniehøjden
+STR_SNOW_LINE_UP                                                :{BLACK}Flyt snegrænsen een op
+STR_SNOW_LINE_DOWN                                              :{BLACK}Flyt snegrænsen een ned
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Ændre snegrænsen
 STR_START_DATE_QUERY_CAPT                                       :{WHITE}Ændre startår
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Skalerings advarsel
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}At ændre størrelsen på kildebilledet anbefales ikke. Fortsæt genereringen?
@@ -3053,14 +3067,14 @@ STR_WORLD_GENERATION                                            :{BLACK}Verdensg
 STR_TREE_GENERATION                                             :{BLACK}Trægenerering
 STR_UNMOVABLE_GENERATION                                        :{BLACK}Ikke-flytbar generering
 STR_CLEARING_TILES                                              :{BLACK}Generer råt og stenet område
-STR_SETTINGUP_GAME                                              :{BLACK}Klargører spil
+STR_SETTINGUP_GAME                                              :{BLACK}Klargør spil
 STR_PREPARING_TILELOOP                                          :{BLACK}Kører flise-løkken
 STR_PREPARING_GAME                                              :{BLACK}Forbereder spil
 STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Denne handling ændrer sværhedsgraden til speciel
-STR_SE_FLAT_WORLD                                               :{WHITE}Flat land
-STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generér flat land
+STR_SE_FLAT_WORLD                                               :{WHITE}Fladt land
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Generér fladt land
 STR_SE_RANDOM_LAND                                              :{WHITE}Tilfældigt land
-STR_SE_NEW_WORLD                                                :{BLACK}Opret nyt scenare
+STR_SE_NEW_WORLD                                                :{BLACK}Opret nyt scenarie
 STR_SE_CAPTION                                                  :{WHITE}Scenarietype
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Flyt højden af flat land en ned
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Flyt højden af flat land en up

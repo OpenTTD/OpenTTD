@@ -544,7 +544,7 @@ STR_01E7                                                        :{DKGREEN}{TINYF
 STR_01E8_TRACK_XTITLE                                           :{BLACK}{TINYFONT}Piste{SETX 88}Titre
 STR_01E9_SHUFFLE                                                :{TINYFONT}Aléatoire
 STR_01EA_PROGRAM                                                :{TINYFONT}{BLACK}Programme
-STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Selection du Programme Musical
+STR_01EB_MUSIC_PROGRAM_SELECTION                                :{WHITE}Sélection du Programme Musical
 STR_01EC_0                                                      :{TINYFONT}{LTBLUE}0{COMMA} "{STRING}"
 STR_01ED                                                        :{TINYFONT}{LTBLUE}{COMMA} "{STRING}"
 STR_01EE_TRACK_INDEX                                            :{TINYFONT}{BLACK}Index de Piste
@@ -822,7 +822,7 @@ STR_02FA_EVERY_12_MONTHS                                        :Tous les 12 moi
 STR_02FB_START_A_NEW_GAME                                       :{BLACK}Commencer une nouvelle partie
 STR_02FC_LOAD_A_SAVED_GAME                                      :{BLACK}Charger une partie sauvée
 STR_02FE_CREATE_A_CUSTOMIZED_GAME                               :{BLACK}Créer un monde/scénario de jeu personnalisé
-STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Selectionner mode joueur simple
+STR_02FF_SELECT_SINGLE_PLAYER_GAME                              :{BLACK}Sélectionner mode joueur simple
 STR_0300_SELECT_MULTIPLAYER_GAME                                :{BLACK}Sélectionnner une partie multi-joueurs de 2 à 8 joueurs
 STR_0301_DISPLAY_GAME_OPTIONS                                   :{BLACK}Afficher les options du jeu
 STR_0302_DISPLAY_DIFFICULTY_OPTIONS                             :{BLACK}Afficher les options de niveau de difficulté
@@ -831,10 +831,10 @@ STR_0304_QUIT                                                   :{BLACK}Quitter
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Quitter 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...peut seulement être construit en ville
-STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Selectionner l'environnement 'Tempéré'
-STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Selectionner l'environnement 'Arctique'
-STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Selectionner l'environnement 'Tropical'
-STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Selectionner l'environnement 'Jouets'
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Sélectionner l'environnement 'Tempéré'
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Sélectionner l'environnement 'Arctique'
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Sélectionner l'environnement 'Tropical'
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Sélectionner l'environnement 'Jouets'
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financer la construction de nouvelles industries
 
 ############ range for menu	starts
@@ -856,7 +856,7 @@ STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Acheter 
 STR_032F_AUTOSAVE                                               :{RED}ENREGISTREMENT AUTOMATIQUE
 STR_SAVING_GAME                                                 :{RED}*  *  Partie en Sauvegarde  *  *
 STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Sauvegarde en cours,{}Veuillez attendre la fin du processus!
-STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Selectionner programme de musique 'Ezy Street'
+STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Sélectionner programme de musique 'Ezy Street'
 
 STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
@@ -917,14 +917,14 @@ STR_CURR_CUSTOM                                                 :Personnalisée.
 
 STR_OPTIONS_LANG                                                :{BLACK}Langue
 STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_LANG_TIP                                            :{BLACK}Selectionner la langue d'interface à utiliser
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Sélectionner la langue d'interface à utiliser
 
 STR_OPTIONS_FULLSCREEN                                          :{BLACK}Plein écran
 STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Cocher cette case pour jouer à OpenTTD plein écran
 
 STR_OPTIONS_RES                                                 :{BLACK}Résolution
 STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
-STR_OPTIONS_RES_TIP                                             :{BLACK}Selectionner la résolution d'écran à utiliser
+STR_OPTIONS_RES_TIP                                             :{BLACK}Sélectionner la résolution d'écran à utiliser
 
 STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format de la copie d'écran
 STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
@@ -1012,6 +1012,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interdi
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Joindre les gares juxtaposées: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Pleine cargaison par un seul type, si 'chargement complet': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Utiliser l'algorithme amélioré de chargement : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Charger les véhicules graduellement: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livrer cargaison seulement sur demande: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permettre la construction de longs ponts: {ORANGE}{STRING}
@@ -2563,7 +2564,7 @@ STR_883F_TRAINS_CLICK_ON_TRAIN_FOR                              :{BLACK}Trains -
 STR_8840_BUILD_NEW_TRAIN_VEHICLE                                :{BLACK}Construire un nouveau train/wagon
 STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE                             :{BLACK}Glisser le véhicule ici pour le vendre
 STR_8842_CENTER_MAIN_VIEW_ON_TRAIN                              :{BLACK}Centrer la vue sur le dépôt
-STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Selection du véhicule - Cliquer pour obtenir des informations
+STR_8843_TRAIN_VEHICLE_SELECTION                                :{BLACK}Sélection du véhicule - Cliquer pour obtenir des informations
 STR_8844_BUILD_THE_HIGHLIGHTED_TRAIN                            :{BLACK}Construire le véhicule sélectionné
 STR_8845_RENAME_TRAIN_VEHICLE_TYPE                              :{BLACK}Renommer le type du véhicule
 STR_8846_CURRENT_TRAIN_ACTION_CLICK                             :{BLACK}Action courante du train - cliquer pour le démarrer/l'arrêter
@@ -2870,6 +2871,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Quantit�
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Le montant emprunté par cette compagnie
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total des points par rapport aux points possibles.
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Paramètres NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Paramètres Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Appliquer les changements
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Changer les paramètres
@@ -2877,6 +2879,30 @@ STR_NEWGRF_TIP                                                  :{BLACK}Une list
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Il n'y a actuellement aucun fichier Newgrf installé ! Veuillez vous référer au manuel pour des instructions sur l'installation de nouveaux graphiques.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nom de fichier: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Ajouter
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Ajouter un fichier NewGRF à la liste
+STR_NEWGRF_REMOVE                                               :{BLACK}Retirer
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Retirer le fichier NewGRF sélectionné de la liste
+STR_NEWGRF_MOVEUP                                               :{BLACK}Monter
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Monter le fichier NewGRG sélectionné dans la liste
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Descendre
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Descendre le fichier NewGRG sélectionné dans la liste
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Liste des fichiers NewGRF installés. Cliquer sur un fichier pour modifier ses paramètres
+STR_NEWGRF_PARAMETER                                            :{BLACK}Paramètres: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Entrer les paramètres NewGRF
+STR_NEWGRF_NO_INFO                                              :{BLACK}Pas d'informations disponibles
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Fichier NewGRF disponibles
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Ajouter à la sélection
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Ajouter le fichier NewGRF sélectionné à votre configuration
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Re-scanner les fichiers
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Mettre à jour la liste des fichiers NewGRF disponibles
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Ajout impossible: GRF ID en double
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}Fichier correspondant non trouvé
+STR_NEWGRF_DISABLED                                             :{RED}Désactivé
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Devise personnalisée
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taux de change : {ORANGE}{CURRENCY} = £ {COMMA}

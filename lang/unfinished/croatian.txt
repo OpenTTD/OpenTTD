@@ -151,14 +151,14 @@ STR_00E3                                                        :{RED}{COMMA}
 STR_00E4_LOCATION                                               :{BLACK}Lokacija
 STR_00E5_CONTOURS                                               :Obrisi
 STR_00E6_VEHICLES                                               :Vozila
-STR_00E7_INDUSTRIES                                             :Tvornice
+STR_00E7_INDUSTRIES                                             :Gospodarstva
 STR_00E8_ROUTES                                                 :Trase
 STR_00E9_VEGETATION                                             :Vegetacija
 STR_00EA_OWNERS                                                 :Vlasnici
 STR_00EB_ROADS                                                  :{BLACK}{TINYFONT}Ceste
 STR_00EC_RAILROADS                                              :{BLACK}{TINYFONT}Željeznice
 STR_00ED_STATIONS_AIRPORTS_DOCKS                                :{BLACK}{TINYFONT}Stanice/Zrakoplovne luke/Pristaništa
-STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Građevine/Tvornice
+STR_00EE_BUILDINGS_INDUSTRIES                                   :{BLACK}{TINYFONT}Građevine/Gospodarstva
 STR_00EF_VEHICLES                                               :{BLACK}{TINYFONT}Vozila
 STR_00F0_100M                                                   :{BLACK}{TINYFONT}100m
 STR_00F1_200M                                                   :{BLACK}{TINYFONT}200m
@@ -252,10 +252,10 @@ STR_SINGLE_PLAYER                                               :{BLACK}Jedan ig
 STR_MULTIPLAYER                                                 :{BLACK}Više igrača
 
 STR_64                                                          :64
-STR_128                                                         :128
+STR_128                                                         :
 STR_256                                                         :256
 STR_512                                                         :512
-STR_1024                                                        :1024
+STR_1024                                                        :
 STR_2048                                                        :2048
 STR_MAPSIZE                                                     :{BLACK}Veličina karte:
 STR_BY                                                          :{BLACK}*
@@ -297,11 +297,11 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Graf operativne zarade
 STR_0155_INCOME_GRAPH                                           :Graf prihoda
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Graf isporučenog tereta
-STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Graf povijesti izvedbe
+STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Graf povijesti učinka
 STR_0158_COMPANY_VALUE_GRAPH                                    :Graf vrijednosti tvrtke
 STR_0159_CARGO_PAYMENT_RATES                                    :Iznosi plaćanja tereta
 STR_015A_COMPANY_LEAGUE_TABLE                                   :Tablica lige tvrtki
-STR_PERFORMANCE_DETAIL_MENU                                     :Detaljna ocjena izvedbe
+STR_PERFORMANCE_DETAIL_MENU                                     :Detaljna ocjena učinka
 ############ range for menu	ends
 
 STR_015B_OPENTTD                                                :{WHITE}O OpenTTD
@@ -381,7 +381,7 @@ STR_0180_ZOOM_THE_VIEW_OUT                                      :{BLACK}Udalji p
 STR_0181_BUILD_RAILROAD_TRACK                                   :{BLACK}Izgradi željezničku prugu
 STR_0182_BUILD_ROADS                                            :{BLACK}Izgradi cestu
 STR_0183_BUILD_SHIP_DOCKS                                       :{BLACK}Izgradi pristanište za brodove
-STR_0184_BUILD_AIRPORTS                                         :{BLACK}Izgradi aerodrom
+STR_0184_BUILD_AIRPORTS                                         :{BLACK}Izgradi zračnu luku
 STR_0185_PLANT_TREES_PLACE_SIGNS                                :{BLACK}Posadi drveće, postavi znakove itd.
 STR_0186_LAND_BLOCK_INFORMATION                                 :{BLACK}Podatci o zemlji
 STR_0187_OPTIONS                                                :{BLACK}Postavke
@@ -401,7 +401,7 @@ STR_0193_SHOW_INDUSTRIES_ON_MAP                                 :{BLACK}Prikaži
 STR_0194_SHOW_TRANSPORT_ROUTES_ON                               :{BLACK}Prikaži prijevozne trase na karti
 STR_0195_SHOW_VEGETATION_ON_MAP                                 :{BLACK}Prikaži vegetaciju na karti
 STR_0196_SHOW_LAND_OWNERS_ON_MAP                                :{BLACK}Prikaži vlasnike zemlje na karti
-STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Prikažij/sakrij ime grada na karti
+STR_0197_TOGGLE_TOWN_NAMES_ON_OFF                               :{BLACK}Prikaži/sakrij ime grada na karti
 STR_0198_PROFIT_THIS_YEAR_LAST_YEAR                             :{TINYFONT}{BLACK}Zarada ove godine: {CURRENCY} (prošle godine: {CURRENCY})
 
 ############ range for service numbers starts
@@ -515,19 +515,101 @@ STR_021F                                                        :{BLUE}{COMMA}
 STR_0221_OPENTTD                                                :{YELLOW}OpenTTD
 STR_0224                                                        :{BLACK}{UPARROW}
 STR_0225                                                        :{BLACK}{DOWNARROW}
+STR_025E_FIZZY_DRINK_FACTORY                                    :{BLACK}Tvornica gaziranih pića
+STR_025F_BUBBLE_GENERATOR                                       :{BLACK}Generator balona
+STR_0260_TOFFEE_QUARRY                                          :{BLACK}Iskop mliječne karamele
+STR_0261_SUGAR_MINE                                             :{BLACK}Rudnik šećera
+STR_0262_CONSTRUCT_COAL_MINE                                    :{BLACK}Izgradi rudnik ugljena
+STR_0263_CONSTRUCT_POWER_STATION                                :{BLACK}Izgradi elektranu
+STR_0264_CONSTRUCT_SAWMILL                                      :{BLACK}Izgradi pilanu
+STR_0265_PLANT_FOREST                                           :{BLACK}Posadi šumu
+STR_0266_CONSTRUCT_OIL_REFINERY                                 :{BLACK}Izgradi naftnu rafineriju
+STR_0267_CONSTRUCT_OIL_RIG_CAN_ONLY                             :{BLACK}Izgradi naftnu bušotinu (može biti sagrađena samo blizu rubova karte)
+STR_0268_CONSTRUCT_FACTORY                                      :{BLACK}Izgradi tvornicu
+STR_0269_CONSTRUCT_STEEL_MILL                                   :{BLACK}Izgradi čeličanu
+STR_026A_CONSTRUCT_FARM                                         :{BLACK}Izgradi farmu
+STR_026B_CONSTRUCT_IRON_ORE_MINE                                :{BLACK}Izgradi rudnik bakra
+STR_026C_CONSTRUCT_OIL_WELLS                                    :{BLACK}Izgradi naftna polja
+STR_026D_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Izgradi banku (može biti izgrađena samo u gradovima s brojem stanovnika većim od 1200)
+STR_026E_CONSTRUCT_PAPER_MILL                                   :{BLACK}Izgradi tvornicu papira
+STR_026F_CONSTRUCT_FOOD_PROCESSING                              :{BLACK}Izgradi tvornicu hrane
+STR_0270_CONSTRUCT_PRINTING_WORKS                               :{BLACK}Izgradi tiskaru
+STR_0271_CONSTRUCT_GOLD_MINE                                    :{BLACK}Izgradi rudnik zlata
+STR_0272_CONSTRUCT_BANK_CAN_ONLY                                :{BLACK}Izgradi banku (može biti izgrađena samo u gradovima)
+STR_0274_PLANT_FRUIT_PLANTATION                                 :{BLACK}Posadi plantažu voća
+STR_0275_PLANT_RUBBER_PLANTATION                                :{BLACK}Posadi plantažu gume
+STR_0277_CONSTRUCT_WATER_TOWER_CAN                              :{BLACK}Izgradi vodotoranj (može biti izgrađen samo u gradovima)
+STR_0278_CONSTRUCT_DIAMOND_MINE                                 :{BLACK}Izgradi rudnik dijamanata
+STR_027B_CONSTRUCT_CANDY_FACTORY                                :{BLACK}Izgradi tvornicu slatkiša
+STR_0285_CAN_T_BUILD_HERE                                       :{WHITE}Ne možeš graditi {STRING} ovdje...
+STR_0286_MUST_BUILD_TOWN_FIRST                                  :{WHITE}...moraš prvo izgraditi grad
+STR_0287_ONLY_ONE_ALLOWED_PER_TOWN                              :{WHITE}...dozvoljen samo jedan po gradu
+STR_0288_PLANT_TREES                                            :{BLACK}Posadi drveće
+STR_0289_PLACE_SIGN                                             :{BLACK}Stavi znak
+STR_028A_RANDOM_TREES                                           :{BLACK}Nasumično odabrano drveće
+STR_028D_PLACE_LIGHTHOUSE                                       :{BLACK}Postavi svjetionik
+STR_028E_PLACE_TRANSMITTER                                      :{BLACK}Postavi odašiljač
+STR_0290_DELETE                                                 :{BLACK}Obriši
+STR_0291_DELETE_THIS_TOWN_COMPLETELY                            :{BLACK}Obriši ovaj grad u cjelosti
+STR_0292_SAVE_SCENARIO                                          :Spremi scenarij
+STR_0293_LOAD_SCENARIO                                          :Učitaj secenarij
+STR_0295                                                        :
+STR_0296_QUIT                                                   :Završi
+STR_0298_LOAD_SCENARIO                                          :{WHITE}Učitaj scenarij
+STR_0299_SAVE_SCENARIO                                          :{WHITE}Spremi scenarij
+STR_029A_PLAY_SCENARIO                                          :{BLACK}Igraj scenarij
+STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Jesi li siguran da želiš odustati od ovog scenarija?
+STR_029E_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomakni početni datum 1 godinu unatrag
+STR_029F_MOVE_THE_STARTING_DATE                                 :{BLACK}Pomakni početni datum 1 godinu unaprijed
+STR_02A0_ENDS_OF_BRIDGE_MUST_BOTH                               :{WHITE}...oba kraja mosta moraju biti na zemlji
+STR_02A1_SMALL                                                  :{BLACK}Malo
+STR_02A2_MEDIUM                                                 :{BLACK}Srednje
+STR_02A3_LARGE                                                  :{BLACK}Veliko
+STR_02A4_SELECT_TOWN_SIZE                                       :{BLACK}Izaberi veličinu grada
+STR_02A5_TOWN_SIZE                                              :{YELLOW}Veličina grada:
 
+STR_02B7_SHOW_LAST_MESSAGE_OR_NEWS                              :{BLACK}Prikaži posljednu poruku ili novinski izvještaj
+STR_OFF                                                         :Isključeno
+STR_SUMMARY                                                     :Sažetak
+STR_FULL                                                        :Puno
+STR_02BA                                                        :{SILVER}- -  {COMPANY}  - -
+STR_02BB_TOWN_DIRECTORY                                         :Popis gradova
+STR_02BD                                                        :{BLACK}{STRING}
+STR_02BE_DEFAULT                                                :Inicijalno
+STR_02BF_CUSTOM                                                 :Prilagođeno
+STR_02C0_SAVE_CUSTOM_NAMES                                      :{BLACK}Spremi prilagođena imena
 
+STR_CHECKMARK                                                   :{CHECKMARK}
 ############ range for menu	starts
+STR_02C3_GAME_OPTIONS                                           :Opcije igre
+STR_02C5_DIFFICULTY_SETTINGS                                    :Postavke težine
+STR_02C7_CONFIG_PATCHES                                         :Konfiguriraj zakrpe
+STR_GAMEOPTMENU_0A                                              :
 ############ range ends	here
 
 ############ range for menu	starts
+STR_02D5_LAND_BLOCK_INFO                                        :Podatci o zemljištu
+STR_02D6                                                        :
+STR_02D7_SCREENSHOT_CTRL_S                                      :Slika ekrana (Ctrl-S)
+STR_02D8_GIANT_SCREENSHOT_CTRL_G                                :Ogromna slika ekrana(Ctrl-G)
+STR_02D9_ABOUT_OPENTTD                                          :O 'OpenTTD'
 ############ range ends	here
 
+STR_02DB_OFF                                                    :{BLACK}Isključeno
+STR_02DA_ON                                                     :{BLACK}Uključeno
+STR_02DC_DISPLAY_SUBSIDIES                                      :{BLACK}Prikaži subvencije
+STR_02DD_SUBSIDIES                                              :Subvencije
 STR_02DE_MAP_OF_WORLD                                           :Karta svijeta
+STR_SIGN_LIST                                                   :Popis znakova
 STR_02DF_TOWN_DIRECTORY                                         :Direktorij gradova
+STR_TOWN_POPULATION                                             :{BLACK}Svjetska populacija: {COMMA}
 
+STR_02E0_CURRENCY_UNITS                                         :{BLACK}Novčane jedinice
 STR_02E1                                                        :{BLACK}{SKIP}{STRING}
+STR_02E2_CURRENCY_UNITS_SELECTION                               :{BLACK}Odabir novčanih jedinica
+STR_MEASURING_UNITS                                             :{BLACK}Mjerne jedinice
 STR_02E4                                                        :{BLACK}{SKIP}{SKIP}{STRING}
+STR_MEASURING_UNITS_SELECTION                                   :{BLACK}Odabir mjernih jedinica
 STR_02E6_ROAD_VEHICLES                                          :{BLACK}Cestovna vozila
 STR_02E7                                                        :{BLACK}{SKIP}{SKIP}{SKIP}{STRING}
 STR_02E8_SELECT_SIDE_OF_ROAD_FOR                                :{BLACK}Izaberi na kojoj će strani ceste vozila prometovati
@@ -556,13 +638,19 @@ STR_0304_QUIT                                                   :{BLACK}Odustani
 STR_0305_QUIT_OPENTTD                                           :{BLACK}Odustani od 'OpenTTD'
 STR_0307_OPENTTD                                                :{WHITE}OpenTTD {REV}
 STR_030D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...može biti izgrađen samo u gradovima
+STR_030E_SELECT_TEMPERATE_LANDSCAPE                             :{BLACK}Odaberi 'umjeren' stil krajolika
+STR_030F_SELECT_SUB_ARCTIC_LANDSCAPE                            :{BLACK}Odaberi 'subarktički' stil krajolika
+STR_0310_SELECT_SUB_TROPICAL_LANDSCAPE                          :{BLACK}Odaberi 'subtropski' stil krajolika
+STR_0311_SELECT_TOYLAND_LANDSCAPE                               :{BLACK}Odaberi 'zemlju igračka' stil krajolika
 STR_0312_FUND_CONSTRUCTION_OF_NEW                               :{BLACK}Financiraj konstrukciju nove industrije
 
 ############ range for menu	starts
-STR_0313_FUND_NEW_INDUSTRY                                      :Financiraj novu industriju
+STR_INDUSTRY_DIR                                                :Lista gospodarstava
+STR_0313_FUND_NEW_INDUSTRY                                      :Financiraj novo gospodarstvo
 ############ range ends here
 
 STR_0314_FUND_NEW_INDUSTRY                                      :{WHITE}Financiraj novu industriju
+STR_JUST_STRING                                                 :{STRING}
 STR_0316_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...može biti izgrađen samo u gradovima
 STR_0317_CAN_ONLY_BE_BUILT_IN_RAINFOREST                        :{WHITE}...može biti izgrađen samo u predjelima kišnih šuma
 STR_0318_CAN_ONLY_BE_BUILT_IN_DESERT                            :{WHITE}...može biti izgrađen samo u pustinjskim područjima
@@ -573,24 +661,113 @@ STR_031C_SCREENSHOT_FAILED                                      :{WHITE}Slika ek
 
 STR_0329_PURCHASE_LAND_FOR_FUTURE                               :{BLACK}Kupi zemlju za buduću uporabu
 STR_032F_AUTOSAVE                                               :{RED}AUTOMATSKO SPREMANJE
+STR_SAVING_GAME                                                 :{RED}*  *  SAVING GAME  *  *
+STR_SAVE_STILL_IN_PROGRESS                                      :{WHITE}Spremanje još u tijeku,{}molimo pričekajte dok se ne završi!
 STR_0330_SELECT_EZY_STREET_STYLE                                :{BLACK}Izaberi glazbeni program 'Ezy Street style'
 
 STR_0335_6                                                      :{BLACK}6
 STR_0336_7                                                      :{BLACK}7
 
 ############ start of townname region
+STR_TOWNNAME_ORIGINAL_ENGLISH                                   :Engleski (original)
+STR_TOWNNAME_FRENCH                                             :Francuski
+STR_TOWNNAME_GERMAN                                             :Njemački
+STR_TOWNNAME_ADDITIONAL_ENGLISH                                 :Engleski (dodatno)
+STR_TOWNNAME_LATIN_AMERICAN                                     :Latinoamerički
+STR_TOWNNAME_SILLY                                              :Blesavo
+STR_TOWNNAME_SWEDISH                                            :Švedski
+STR_TOWNNAME_DUTCH                                              :Nizozemski
+STR_TOWNNAME_FINNISH                                            :Finski
+STR_TOWNNAME_POLISH                                             :Poljski
+STR_TOWNNAME_SLOVAKISH                                          :Slovački
+STR_TOWNNAME_NORWEGIAN                                          :Norveški
+STR_TOWNNAME_HUNGARIAN                                          :Mađarski
+STR_TOWNNAME_AUSTRIAN                                           :Austrijski
+STR_TOWNNAME_ROMANIAN                                           :Rumunjski
+STR_TOWNNAME_CZECH                                              :Češki
+STR_TOWNNAME_SWISS                                              :Švicarski
+STR_TOWNNAME_DANISH                                             :Danski
+STR_TOWNNAME_TURKISH                                            :Turski
+STR_TOWNNAME_ITALIAN                                            :Talijanski
+STR_TOWNNAME_CATALAN                                            :Katalonski
 ############ end of	townname region
 
+STR_CURR_GBP                                                    :Funte (£)
+STR_CURR_USD                                                    :Dolari ($)
+STR_CURR_EUR                                                    :Euri (€)
+STR_CURR_YEN                                                    :Jeni (¥)
+STR_CURR_ATS                                                    :Austrijski šiling (ATS)
+STR_CURR_BEF                                                    :Belgijski franak (BEF)
+STR_CURR_CHF                                                    :Švicarski franak (CHF)
+STR_CURR_CZK                                                    :Češka kruna (CZK)
+STR_CURR_DEM                                                    :Njemačka marka (DEM)
+STR_CURR_DKK                                                    :Danska kruna (DKK)
+STR_CURR_ESP                                                    :Pezeta (ESP)
+STR_CURR_FIM                                                    :Finska marka (FIM)
+STR_CURR_FRF                                                    :Franak (FRF)
+STR_CURR_GRD                                                    :Grčka drahma (GRD)
+STR_CURR_HUF                                                    :Mađarski forint (HUF)
+STR_CURR_ISK                                                    :Islandska kruna (ISK)
+STR_CURR_ITL                                                    :Talijanska lira (ITL)
+STR_CURR_NLG                                                    :Nizozemski gulden (NLG)
+STR_CURR_NOK                                                    :Norveška kruna (NOK)
+STR_CURR_PLN                                                    :Poljski zloti (PLN)
+STR_CURR_ROL                                                    :Rumunjski lev (ROL)
+STR_CURR_RUR                                                    :Ruske rublje (RUR)
+STR_CURR_SIT                                                    :Slovenski tolar (SIT)
+STR_CURR_SEK                                                    :Švedska kruna (SEK)
+STR_CURR_YTL                                                    :Turska lira(YTL)
+STR_CURR_SKK                                                    :Slovačka kruna (SKK)
+STR_CURR_BRR                                                    :Brazilski real (BRL)
 
+STR_CURR_CUSTOM                                                 :Proizvoljno...
 
+STR_OPTIONS_LANG                                                :{BLACK}Jezik
+STR_OPTIONS_LANG_CBO                                            :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_LANG_TIP                                            :{BLACK}Izaberi jezično sučelje
 
+STR_OPTIONS_FULLSCREEN                                          :{BLACK}Cijeli ekran
+STR_OPTIONS_FULLSCREEN_TIP                                      :{BLACK}Označi ovu kućicu kako bi igrao OpenTTD preko cijelog ekrana
 
+STR_OPTIONS_RES                                                 :{BLACK}Razlučivost ekrana
+STR_OPTIONS_RES_CBO                                             :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_RES_TIP                                             :{BLACK}Izaberi rezoluciju ekrana
 
+STR_OPTIONS_SCREENSHOT_FORMAT                                   :{BLACK}Format za sliku ekrana
+STR_OPTIONS_SCREENSHOT_FORMAT_CBO                               :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_OPTIONS_SCREENSHOT_FORMAT_TIP                               :{BLACK}Izaberi format za sliku ekrana
 
+STR_AUTOSAVE_1_MONTH                                            :Svaki mjesec
+STR_AUTOSAVE_FAILED                                             :{WHITE}Automatsko spremanje neuspješno
 
+STR_MONTH_JAN                                                   :Siječanj
+STR_MONTH_FEB                                                   :Veljača
+STR_MONTH_MAR                                                   :Ožujak
+STR_MONTH_APR                                                   :Travanj
+STR_MONTH_MAY                                                   :Svibanj
+STR_MONTH_JUN                                                   :Lipanj
+STR_MONTH_JUL                                                   :Srpanj
+STR_MONTH_AUG                                                   :Kolovoz
+STR_MONTH_SEP                                                   :Rujan
+STR_MONTH_OCT                                                   :Listopad
+STR_MONTH_NOV                                                   :Studeni
+STR_MONTH_DEC                                                   :Prosinac
 
+STR_HEADING_FOR_STATION                                         :{LTBLUE}Kreće se prema {STATION}
+STR_HEADING_FOR_STATION_VEL                                     :{LTBLUE}Kreće se prema {STATION}, {VELOCITY}
+STR_NO_ORDERS                                                   :{LTBLUE}Nema narudžbi
+STR_NO_ORDERS_VEL                                               :{LTBLUE}Nema narudžbi, {VELOCITY}
 
+STR_PASSENGERS                                                  :putnici
+STR_BAGS                                                        :vreće
+STR_TONS                                                        :tone
+STR_LITERS                                                      :litre
+STR_ITEMS                                                       :jedinice
+STR_CRATES                                                      :sanduci
+STR_RES_OTHER                                                   :ostalo
+STR_NOTHING                                                     :
 
+STR_SMALL_RIGHT_ARROW                                           :{TINYFONT}{RIGHTARROW}
 
 
 
@@ -677,8 +854,18 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} Poslužitelj je zatvorio sesiju
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} Poslužitelj se ponovno pokreće...{}Molimo pričekajte...
 
+STR_NETWORK_SERVER                                              :Poslužitelj
+STR_NETWORK_CLIENT                                              :Klijent
+STR_NETWORK_SPECTATORS                                          :Promatrači
 
+STR_NETWORK_CLIENTLIST_NONE                                     :(nitko)
+STR_NETWORK_CLIENTLIST_KICK                                     :Izbaci
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Daj novac
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Razgovaraj sa svima
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Razgovaraj s tvrtkom
 
 
 
@@ -735,6 +922,22 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta sa semafo
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Gradovi
+STR_2036_COTTAGES                                               :Kolibe
+STR_2037_HOUSES                                                 :Kuće
+STR_2038_FLATS                                                  :Stanovi
+STR_2039_TALL_OFFICE_BLOCK                                      :Visoki uredski blok
+STR_203A_SHOPS_AND_OFFICES                                      :Trgovine i uredi
+STR_203B_SHOPS_AND_OFFICES                                      :Trgovine i uredi
+STR_203C_THEATER                                                :Kazalište
+STR_203D_STADIUM                                                :Stadion
+STR_203E_OFFICES                                                :Uredi
+STR_203F_HOUSES                                                 :Kuće
+STR_2040_CINEMA                                                 :Kino
+STR_2041_SHOPPING_MALL                                          :Trgovački centar
+STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Financiraj rekonstrukciju lokalne prometnice
+STR_204A_BUILD_STATUE_OF_COMPANY                                :Izgradi kip vlasnika tvrke
+STR_204B_FUND_NEW_BUILDINGS                                     :Financiraj nove građevine
+STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Kupi ekskluzivna prijevozna prava
 
 
 ##id 0x2800
@@ -820,9 +1023,9 @@ STR_5026_CONCRETE_ROAD_BRIDGE                                   :Betonski cestov
 STR_5800_OBJECT_IN_THE_WAY                                      :{WHITE}Smeta objekt
 STR_5801_TRANSMITTER                                            :Odašiljač
 STR_5802_LIGHTHOUSE                                             :Svjetionik
-STR_5803_COMPANY_HEADQUARTERS                                   :Glavni uredi društva
-STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...smetaju glavni uredi društva
-STR_5805_COMPANY_OWNED_LAND                                     :Zemlja u posjedu društva
+STR_5803_COMPANY_HEADQUARTERS                                   :Sjedište tvrke
+STR_5804_COMPANY_HEADQUARTERS_IN                                :{WHITE}...smeta sjedište tvrke
+STR_5805_COMPANY_OWNED_LAND                                     :Zemlja u posjedu tvrke
 STR_5806_CAN_T_PURCHASE_THIS_LAND                               :{WHITE}Ova zemlja nemože se kupiti...
 STR_5807_YOU_ALREADY_OWN_IT                                     :{WHITE}...već je u tvom vlasništvu!
 
@@ -848,8 +1051,8 @@ STR_6804_CUSTOM                                                 :{BLACK}Prilago�
 STR_6805_MAXIMUM_NO_COMPETITORS                                 :{LTBLUE}Maksimalna količina natjecatelja: {ORANGE}{COMMA}
 STR_6806_COMPETITOR_START_TIME                                  :{LTBLUE}Vrijeme početka igre natjecatelja: {ORANGE}{STRING}
 STR_6807_NO_OF_TOWNS                                            :{LTBLUE}Broj gradova: {ORANGE}{STRING}
-STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Količina gospodarstava: {ORANGE}{STRING}
-STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Makimalni početni kredit: {ORANGE}{CURRENCY}
+STR_6808_NO_OF_INDUSTRIES                                       :{LTBLUE}Broj gospodarstava: {ORANGE}{STRING}
+STR_6809_MAXIMUM_INITIAL_LOAN_000                               :{LTBLUE}Maksimalni početni kredit: {ORANGE}{CURRENCY}
 STR_680A_INITIAL_INTEREST_RATE                                  :{LTBLUE}Početna rata kredita: {ORANGE}{COMMA}%
 STR_680B_VEHICLE_RUNNING_COSTS                                  :{LTBLUE}Troškovi uporabe vozila: {ORANGE}{STRING}
 STR_680C_CONSTRUCTION_SPEED_OF_COMPETITOR                       :{LTBLUE}Brzina razvoja konkurenata: {ORANGE}{STRING}
@@ -913,10 +1116,10 @@ STR_7006_COLOR_SCHEME                                           :{GOLD}Boja:
 STR_7007_NEW_COLOR_SCHEME                                       :{WHITE}Nova Boja
 STR_7008_COMPANY_NAME                                           :{BLACK}Ime tvrtke
 STR_7009_PRESIDENT_NAME                                         :{BLACK}Ime direktora
-STR_700A_COMPANY_NAME                                           :Ime tvrke
+STR_700A_COMPANY_NAME                                           :Ime tvrtke
 STR_700B_PRESIDENT_S_NAME                                       :Direktorovo ime
-STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ime tvrke nemože se promjeniti...
-STR_700E_FINANCES                                               :{WHITE}{COMPANY} Financije{BLACK}{PLAYERNAME}
+STR_700C_CAN_T_CHANGE_COMPANY_NAME                              :{WHITE}Ime tvrtke ne može se promijeniti...
+STR_700E_FINANCES                                               :{WHITE}{COMPANY} Financije {BLACK}{PLAYERNAME}
 STR_7010                                                        :{WHITE}{NUM}
 STR_7011_CONSTRUCTION                                           :{GOLD}Građenje
 STR_7012_NEW_VEHICLES                                           :{GOLD}Nova Vozila
@@ -943,14 +1146,14 @@ STR_7027_LOAN                                                   :{WHITE}Kredit
 STR_7028                                                        :{BLACK}{CURRENCY64}
 STR_7029_BORROW                                                 :{BLACK}Pozajmi {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
 STR_702A_REPAY                                                  :{BLACK}Vrati {SKIP}{SKIP}{SKIP}{SKIP}{CURRENCY}
-STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...najveći došušteni kretid je {CURRENCY}
+STR_702B_MAXIMUM_PERMITTED_LOAN                                 :{WHITE}...najveći dopušteni kredit iznosi {CURRENCY}
 STR_702C_CAN_T_BORROW_ANY_MORE_MONEY                            :{WHITE}Nemožeš dobiti još kredita...
 STR_702D_LOAN_ALREADY_REPAYED                                   :{WHITE}...nemaš kredita.
 STR_702E_REQUIRED                                               :{WHITE}...{CURRENCY} potrebno
 STR_702F_CAN_T_REPAY_LOAN                                       :{WHITE}Nemožeš platiti kredit...
 STR_7030_SELECT_NEW_FACE_FOR_PRESIDENT                          :{BLACK}Odaberi novo direktorovo lice
 STR_7032_CHANGE_THE_PRESIDENT_S                                 :{BLACK}Promjeni ime direktora
-STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Promjeni ime društva
+STR_7033_CHANGE_THE_COMPANY_NAME                                :{BLACK}Promijeni ime tvrtke
 STR_7034_CLICK_ON_SELECTED_NEW_COLOR                            :{BLACK}Klikni na odabranu boju
 STR_7035_INCREASE_SIZE_OF_LOAN                                  :{BLACK}Povećaj iznos kredita
 STR_7036_REPAY_PART_OF_LOAN                                     :{BLACK}Vradi dio kredita
@@ -969,16 +1172,16 @@ STR_704A_SELECT_FEMALE_FACES                                    :{BLACK}Odaberi 
 STR_704B_GENERATE_RANDOM_NEW_FACE                               :{BLACK}Generiraj novo lice
 STR_704C_KEY                                                    :{BLACK}Ključ
 STR_704D_SHOW_KEY_TO_GRAPHS                                     :{BLACK}Prikaži ključeve po grafovima
-STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Ključ za grafove društva
-STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klikni ovdje za promjenu početka društva na grafu uključeno/isključeno
+STR_704E_KEY_TO_COMPANY_GRAPHS                                  :{WHITE}Ključ za grafove tvrtke
+STR_704F_CLICK_HERE_TO_TOGGLE_COMPANY                           :{BLACK}Klikni ovdje za uključivanje/isključivanje tvrke s grafa
 STR_7050_UNITS_OF_CARGO_DELIVERED                               :{WHITE}Dostavljenih jedinica tereta
-STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ocjena učinka društva (najveća ocjena = 1000)
-STR_7052_COMPANY_VALUES                                         :{WHITE}Vrijendosti društava
-STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tablica lige društava
+STR_7051_COMPANY_PERFORMANCE_RATINGS                            :{WHITE}Ocjena učinka tvrtke (najveća ocjena = 1000)
+STR_7052_COMPANY_VALUES                                         :{WHITE}Vrijendosti tvrtke
+STR_7053_COMPANY_LEAGUE_TABLE                                   :{WHITE}Tablica lige tvrtki
 STR_7054                                                        :{WHITE}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME} '{STRING}'
 STR_7055                                                        :{YELLOW}{STRING}{SETX 45}{ORANGE}{COMPANY} {BLACK}{PLAYERNAME}  '{STRING}'
-STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Transportno društvo u neprilikama!
-STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} će biti rasprodano ili objaviti bankrot ukoliko se učinak uskoro ne poboljša!
+STR_7056_TRANSPORT_COMPANY_IN_TROUBLE                           :{BLACK}{BIGFONT}Prijevozna tvrtka u nevoljama!
+STR_7057_WILL_BE_SOLD_OFF_OR_DECLARED                           :{BLACK}{BIGFONT}{COMPANY} će biti rasprodana ili objaviti bankrot ukoliko se učinak uskoro ne poboljša!
 STR_7058_PRESIDENT                                              :{BLACK}{PLAYERNAME}{}(Direktor)
 
 
@@ -1025,6 +1228,9 @@ SERVICE_AT_AIRPORT_HANGAR                                       :Servisiranje u 
 SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 ############ Those following lines need to be in this order!!
 ############ End of order list
+
+
+
 
 
 

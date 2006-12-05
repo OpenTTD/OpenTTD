@@ -1011,6 +1011,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Proibir
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Unir estações ferroviárias construídas juntas: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Deixar a estação quando uma das cargas estiver completa: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algoritmo de carregamento melhorado: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Carregar veículos gradualmente: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflação: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Somente entregar carga a uma estação quando houver procura: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permitir a construção de pontes muito longas: {ORANGE}{STRING}
@@ -2869,6 +2870,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Dinheiro
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tem um empréstimo muito elevado?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de pontos sobre o máximo de pontos
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Configurações de NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Definições Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar alterações
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Definir parâmetros
@@ -2876,6 +2878,30 @@ STR_NEWGRF_TIP                                                  :{BLACK}Lista de
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Não existem ficheiros newgrf actualmente instalados! Por favor consulte o manual para instruções sobre instalar novos gráficos.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nome do ficheiro: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}SomaMD5 (verf. de segurança): {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Adicionar
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Adiciona um NewGRF à lista
+STR_NEWGRF_REMOVE                                               :{BLACK}Remover
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Remove to NewGRF selecionado da lista
+STR_NEWGRF_MOVEUP                                               :{BLACK}Mover para cima
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Move o NewGRF selecionado para cima
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mover para baixo
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Move o NewGRF selecionado para baixo
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Lista dos NewGRF instalados. Clique em um deles para mudar seus parâmetros
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parâmetros: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Insira novos parâmetros de NewGRF
+STR_NEWGRF_NO_INFO                                              :{BLACK}Sem informação disponível
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}NewGRF disponíveis
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Adicionar à seleção
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Adiciona o NewGRF selecionado à sua configuração
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Reescanear arquivos NewGRF
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Atualiza a lista de NewGRF disponíveis
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Impossível adicionar: registro de GRF já existe
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}Arquivo correspondente não encontrado
+STR_NEWGRF_DISABLED                                             :{RED}Desativado
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moeda Modificada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Taxa de câmbio: {ORANGE}{CURRENCY} = £ {COMMA}

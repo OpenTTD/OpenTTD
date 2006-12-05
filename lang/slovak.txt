@@ -350,8 +350,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informac
 STR_013E_CAPACITIES                                             :{BLACK}Kapacita
 STR_013E_TOTAL_CARGO                                            :{BLACK}Celkovy naklad
 STR_013F_CAPACITY                                               :{BLACK}Kapacita: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Kapacita: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Celkovy naklad (kapacita) tohoto vlaku:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nová hra
 STR_0141_LOAD_GAME                                              :{BLACK}Nahrat hru
 STR_SINGLE_PLAYER                                               :{BLACK}Jeden hrac
@@ -1073,6 +1075,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Zakazat
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Umoznit spajanie stanic: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Opustit stanicu ked jeden z nakladov je plny, pri 'plne naloz': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Pouzit vylepseny algoritmus nakladania: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Postupné nakladanie vozidiel: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflacia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Vykladat tovar len v stanici kde je dopyt: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Umoznit stavbu dlhych mostov: {ORANGE}{STRING}
@@ -1089,6 +1092,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Posuvat
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Umoznit podplacanie miestnej spravy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Roznorode stanice: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Novy globalny algoritmus hladania cesty (NPF namiesto NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Váhový násobok pre nákladné vlaky: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Vzdy povolit stavbu malych letisk: {ORANGE}{STRING}
 
@@ -1134,6 +1138,7 @@ STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Zobrazi
 STR_CONFIG_PATCHES_LIVERIES_NONE                                :Ziadne
 STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Vlastna spolocnost
 STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Vsetky spolocnosti
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Preferrovaný teamový chat s: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Maximalny pocet vlakov hraca: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Maximalny pocet automobilov hraca: {ORANGE}{STRING}
@@ -1158,6 +1163,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Implici
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Implicitny servisny interval pre lode: {ORANGE}vypnuty
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Vypnut servisy, ak su vypnute poruchy: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Obmedzenie rychlosti pre vagony: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Zakázat elektrifikovanú železnicu: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Farebne spravy sa prvykrat objavia v roku: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Zaciatok hry v roku: {ORANGE}{STRING}
@@ -2560,16 +2566,20 @@ STR_INVALID_ORDER                                               :{RED} (Neplatny
 STR_UNKNOWN_DESTINATION                                         :neznamy ciel
 STR_8812_EMPTY                                                  :{LTBLUE}Prazdny
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} z {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} from {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Vlak {COMMA} caka v depe
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nove vozidla
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Vlak je prilis dlhy
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Vlaky sa daju nahradit len v depe
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Vlak{P "" y ov}
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nove vlaky
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nové elektrické lokomotívy a vagóny
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nove jednokolajove vlaky
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nove magneticke vlaky
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Železnicne vozidlá
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Zakupit vozidlo
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klonovat vozidlo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Vytvori kopiu cestneho vozidla. Stlacenim Control budu prikazy zdielane
@@ -2931,6 +2941,9 @@ STR_NEWGRF_TIP                                                  :{BLACK}Zoznam v
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nie su nainstalovane ziadne subory s novou grafikou. Postup instalacie novych grafik najdete v manuali.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nazov suboru: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
+
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Vlastná mena
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Kurz meny: {ORANGE}{CURRENCY} = £ {COMMA}

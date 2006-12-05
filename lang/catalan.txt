@@ -480,37 +480,37 @@ STR_01AA_NAME                                                   :{BLACK}Nom
 STR_01AB                                                        :{BLACK}{TINYFONT}{STRING}
 
 ############ range for days	starts
-STR_01AC_1ST                                                    :1er
-STR_01AD_2ND                                                    :2on
-STR_01AE_3RD                                                    :3er
-STR_01AF_4TH                                                    :4rt
-STR_01B0_5TH                                                    :5e
-STR_01B1_6TH                                                    :6e
-STR_01B2_7TH                                                    :7e
-STR_01B3_8TH                                                    :8e
-STR_01B4_9TH                                                    :9e
-STR_01B5_10TH                                                   :10e
-STR_01B6_11TH                                                   :11e
-STR_01B7_12TH                                                   :12e
-STR_01B8_13TH                                                   :13e
-STR_01B9_14TH                                                   :14e
-STR_01BA_15TH                                                   :15e
-STR_01BB_16TH                                                   :16e
-STR_01BC_17TH                                                   :17e
-STR_01BD_18TH                                                   :18e
-STR_01BE_19TH                                                   :19e
-STR_01BF_20TH                                                   :20e
-STR_01C0_21ST                                                   :21e
-STR_01C1_22ND                                                   :22e
-STR_01C2_23RD                                                   :23e
-STR_01C3_24TH                                                   :24e
-STR_01C4_25TH                                                   :25e
-STR_01C5_26TH                                                   :26e
-STR_01C6_27TH                                                   :27e
-STR_01C7_28TH                                                   :28e
-STR_01C8_29TH                                                   :29e
-STR_01C9_30TH                                                   :30e
-STR_01CA_31ST                                                   :31e
+STR_01AC_1ST                                                    :1
+STR_01AD_2ND                                                    :2
+STR_01AE_3RD                                                    :3
+STR_01AF_4TH                                                    :4
+STR_01B0_5TH                                                    :5
+STR_01B1_6TH                                                    :6
+STR_01B2_7TH                                                    :7
+STR_01B3_8TH                                                    :8
+STR_01B4_9TH                                                    :9
+STR_01B5_10TH                                                   :10
+STR_01B6_11TH                                                   :11
+STR_01B7_12TH                                                   :12
+STR_01B8_13TH                                                   :13
+STR_01B9_14TH                                                   :14
+STR_01BA_15TH                                                   :15
+STR_01BB_16TH                                                   :16
+STR_01BC_17TH                                                   :17
+STR_01BD_18TH                                                   :18
+STR_01BE_19TH                                                   :19
+STR_01BF_20TH                                                   :20
+STR_01C0_21ST                                                   :21
+STR_01C1_22ND                                                   :22
+STR_01C2_23RD                                                   :23
+STR_01C3_24TH                                                   :24
+STR_01C4_25TH                                                   :25
+STR_01C5_26TH                                                   :26
+STR_01C6_27TH                                                   :27
+STR_01C7_28TH                                                   :28
+STR_01C8_29TH                                                   :29
+STR_01C9_30TH                                                   :30
+STR_01CA_31ST                                                   :31
 ############ range for days	ends
 
 STR_01CB                                                        :{TINYFONT}{COMMA}
@@ -1011,6 +1011,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Prohibi
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Juntar estacions de tren fetes al costat d'un altre: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Marxar de l'estació quan un tipus de càrrega és ple, si 'càrrega completa': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Usar algorisme millorat de càrrega: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Carrega els vehicles gradualment: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflació: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Entregar càrreges en una estació només quan ho demana: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permetre construir ponts molt llargs: {ORANGE}{STRING}
@@ -2869,6 +2870,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Quantita
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tens un prèstec elevat?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Total de punts sobre els punts possibles
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Paràmetres NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Configuracions de Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplicar canvis
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Establir paràmetres
@@ -2876,6 +2878,30 @@ STR_NEWGRF_TIP                                                  :{BLACK}Llista d
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Ara no hi ha arxius de Newgrf instal·lats! Consulta el manual per a les instruccions d'instal·lació de nous gràfics.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nom d'arxiu: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}Id de GRF: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Afegeix
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Afegeix un arxiu NewGRF a la llista
+STR_NEWGRF_REMOVE                                               :{BLACK}Treu
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Treu l'arxiu NewGRF seleccionat de la llista
+STR_NEWGRF_MOVEUP                                               :{BLACK}Mou Amunt
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Mou amunt l'arxiu NewGRF seleccionat de la llista
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Mou Avall
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Mou avall l'arxiu NewGRF seleccionat de la llista
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Una llista d'arxius NewGRF que ha estat instal·lada. Clica un arxiu per canviar els seus paràmetres
+STR_NEWGRF_PARAMETER                                            :{BLACK}Paràmetres: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Introdueix els paràmetres NewGRF
+STR_NEWGRF_NO_INFO                                              :{BLACK}No hi ha informació disponible
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Arxius NewGRF disponibles
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Afegeix a la selecció
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Afegeix l'arxiu NewGRF seleccionat a la teva configuració
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Reescaneja arxius
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Actualitza la llista d'arxius NewGRF disponibles
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}No es pot afegir l'arxiu: ID GRF duplicada
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}No s'ha trobat cap arxiu coincident
+STR_NEWGRF_DISABLED                                             :{RED}Desactivat
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda personalitzada
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Canvi de moneda: {ORANGE}{CURRENCY} = £ {COMMA}

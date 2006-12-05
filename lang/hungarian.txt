@@ -970,7 +970,7 @@ STR_CURR_ITL                                                    :Olasz Líra (IT
 STR_CURR_NLG                                                    :Holland Guilder (NLG)
 STR_CURR_NOK                                                    :Norvég Korona (NOK)
 STR_CURR_PLN                                                    :Legyel Zlotyi (PLN)
-STR_CURR_ROL                                                    :RomÃ¡n Lej (ROL)
+STR_CURR_ROL                                                    :Román Lej (ROL)
 STR_CURR_RUR                                                    :Orosz Rubel (RUR)
 STR_CURR_SIT                                                    :Szlovén Tolár (SIT)
 STR_CURR_SEK                                                    :Svéd Korona (SEK)
@@ -2610,10 +2610,13 @@ STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Túl hosszú a vonat
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Csak a jármûtelepen álló vonatokat lehet megváltoztatni
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} vonatai - {COMMA}
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Új vasúti jármûvek
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Új elektromos vasúti jármûvek
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Új egysínû jármûvek
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Új MagLev jármûvek
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Vasúti járművek
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Megvesz
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Jármû másolása
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Ide kattintva ezen jármû másolatát készítheted el. Control+kattintás esetén a menetrendet is megosztja
@@ -2967,6 +2970,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Elérhet
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Magas kölcsönöd van?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Megszerzett pontok az elérhetõ pontokból
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF beállítások
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf beállítások
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Alkalmazás
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Paraméterek beállítása
@@ -2974,6 +2978,30 @@ STR_NEWGRF_TIP                                                  :{BLACK}Az álta
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Jelenleg nincsennek newgrf csomagok felinstallálva. Olvasd el a manuálban, hogyan kell installálni az új grafikákat.
 STR_NEWGRF_FILENAME                                             :{BLACK}Fájlnév: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Hozzáad
+STR_NEWGRF_ADD_TIP                                              :{BLACK}A NewGRF-et hozzáadja a listához
+STR_NEWGRF_REMOVE                                               :{BLACK}Eltávolít
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Eltávolítja a kiválasztott NewGRF-et a listáról
+STR_NEWGRF_MOVEUP                                               :{BLACK}Fel
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}A kiválasztott NewGRF-et felfelé mozgatja a listán
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Le
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}A kiválasztott NewGRF-et lefelé mozgatja a listán
+STR_NEWGRF_FILE_TIP                                             :{BLACK}A feltelepített NewGRF-ek listája. Kattints a fileokra azok beállításához
+STR_NEWGRF_PARAMETER                                            :{BLACK}Paraméterek: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Add meg a NewGRF paramétereket
+STR_NEWGRF_NO_INFO                                              :{BLACK}Nem érhető el információ
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Elérhető NewGRF fileok
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Kiválasztáshoz hozzáad
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}A kiválasztott NewGRF filet hozzáadja a konfigurációdhoz
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Fileok újraellenőrzése
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Az elérhető NewGRF fileok listájának frissítése
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nem lehetséges a file hozzáadása: duplikált GRF azonosító
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}File nem található
+STR_NEWGRF_DISABLED                                             :{RED}Kikapcsolva
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Saját pénznem
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Értékarány: {ORANGE}{CURRENCY} = £ {COMMA}
