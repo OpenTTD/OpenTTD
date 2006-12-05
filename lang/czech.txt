@@ -2,7 +2,7 @@
 ##ownname Cesky
 ##isocode cs_CS.UTF-8
 ##plural 6
-##case news subs
+##case big gen news subs
 
 ##id 0x0000
 STR_NULL                                                        :
