@@ -566,6 +566,8 @@ void DestroyVehicle(Vehicle *v)
 		InvalidateWindowData(WC_VEHICLE_DEPOT, v->tile);
 	}
 
+	DeleteDepotHighlightOfVehicle(v);
+
 	UpdateVehiclePosHash(v, INVALID_COORD, 0);
 	v->next_hash = INVALID_VEHICLE;
 	if (v->orders != NULL) DeleteVehicleOrders(v);

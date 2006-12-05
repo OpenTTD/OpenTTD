@@ -1033,3 +1033,21 @@ void ShowDepotWindow(TileIndex tile, byte type)
 		ResizeDepotButtons(w);
 	}
 }
+
+/** Removes the highlight of a vehicle in a depot window
+ * @param *v Vehicle to remove all highlights from
+ */
+void DeleteDepotHighlightOfVehicle(const Vehicle *v)
+{
+	Window* const *wz;
+
+	FOR_ALL_WINDOWS(wz) {
+		const Window *w = *wz;
+		if (w->window_class != WC_VEHICLE_DEPOT) continue;
+		if (w->window_number != v->tile) continue;
+		if (WP(w, depot_d).sel == v->index) {
+			WP(w, depot_d).sel = INVALID_VEHICLE;
+			ResetObjectToPlace();
+		}
+	}
+}

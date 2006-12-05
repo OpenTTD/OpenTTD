@@ -107,4 +107,6 @@ Depot *GetDepotByTile(TileIndex tile);
 void InitializeDepots(void);
 Depot *AllocateDepot(void);
 
+void DeleteDepotHighlightOfVehicle(const Vehicle *v);
+
 #endif /* DEPOT_H */
