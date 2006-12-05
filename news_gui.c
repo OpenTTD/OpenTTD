@@ -33,16 +33,17 @@
 
 #define MAX_NEWS 30
 
+typedef byte NewsID;
 #define INVALID_NEWS 255
 
 static NewsItem _news_items[MAX_NEWS];
-static byte _current_news = INVALID_NEWS; // points to news item that should be shown next
-static byte _oldest_news = 0;    // points to first item in fifo queue
-static byte _latest_news = INVALID_NEWS;  // points to last item in fifo queue
+static NewsID _current_news = INVALID_NEWS; // points to news item that should be shown next
+static NewsID _oldest_news = 0;    // points to first item in fifo queue
+static NewsID _latest_news = INVALID_NEWS;  // points to last item in fifo queue
 /* if the message being shown was forced by the user, its index is stored in
  * _forced_news. forced_news is INVALID_NEWS otherwise.
  * (Users can force messages through history or "last message") */
-static byte _forced_news = INVALID_NEWS;
+static NewsID _forced_news = INVALID_NEWS;
 
 static byte _total_news = 0; // total news count
 
@@ -221,7 +222,7 @@ static void NewsWindowProc(Window *w, WindowEvent *e)
 
 /** Return the correct index in the pseudo-fifo
  * queue and deals with overflows when increasing the index */
-static inline byte increaseIndex(byte i)
+static inline NewsID increaseIndex(NewsID i)
 {
 	if (i == INVALID_NEWS) return 0;
 	return (i + 1) % MAX_NEWS;
@@ -229,7 +230,7 @@ static inline byte increaseIndex(byte i)
 
 /** Return the correct index in the pseudo-fifo
  * queue and deals with overflows when decreasing the index */
-static inline byte decreaseIndex(byte i)
+static inline NewsID decreaseIndex(NewsID i)
 {
 	assert(i != INVALID_NEWS);
 	return (i + MAX_NEWS - 1) % MAX_NEWS;
@@ -257,7 +258,7 @@ static inline byte decreaseIndex(byte i)
  * @see NewsCallback */
 void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 {
-	byte l_news;
+	NewsID l_news;
 
 	if (_game_mode == GM_MENU) return;
 
@@ -451,7 +452,7 @@ static void ShowTicker(const NewsItem *ni)
 static bool ReadyForNextItem(void)
 {
 	const Window *w;
-	byte item = _forced_news == INVALID_NEWS ? _current_news : _forced_news;
+	NewsID item = (_forced_news == INVALID_NEWS) ? _current_news : _forced_news;
 	NewsItem *ni;
 
 	if (item >= MAX_NEWS) return true;
@@ -522,7 +523,7 @@ void NewsLoop(void)
 }
 
 /* Do a forced show of a specific message */
-static void ShowNewsMessage(byte i)
+static void ShowNewsMessage(NewsID i)
 {
 	if (_total_news == 0) return;
 
@@ -559,7 +560,7 @@ void ShowLastNewsMessage(void)
 
 /* return news by number, with 0 being the most
  * recent news. Returns INVALID_NEWS if end of queue reached. */
-static byte getNews(byte i)
+static NewsID getNews(NewsID i)
 {
 	if (i >= _total_news) return INVALID_NEWS;
 
@@ -621,7 +622,7 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 	switch (e->event) {
 	case WE_PAINT: {
 		int y = 19;
-		byte p, show;
+		NewsID p, show;
 
 		SetVScrollCount(w, _total_news);
 		DrawWindowWidgets(w);
@@ -646,29 +647,11 @@ static void MessageHistoryWndProc(Window *w, WindowEvent *e)
 		switch (e->we.click.widget) {
 		case 3: {
 			int y = (e->we.click.pt.y - 19) / 12;
-			byte p, q;
+			NewsID p = getNews(y + w->vscroll.pos);
 
-			#if 0 // === DEBUG code only
-			for (p = 0; p < _total_news; p++) {
-				NewsItem *ni;
-				byte buffer[256];
-				ni = &_news_items[p];
-				GetNewsString(ni, buffer);
-				printf("%i\t%i\t%s\n", p, ni->date, buffer);
-			}
-			printf("=========================\n");
-			#endif
+			if (p == INVALID_NEWS) break;
 
-			p = y + w->vscroll.pos;
-			if (p > _total_news - 1) break;
-
-			if (_latest_news >= p) {
-				q = _latest_news - p;
-			} else {
-				q = _latest_news + MAX_NEWS - p;
-			}
-			ShowNewsMessage(q);
-
+			ShowNewsMessage(p);
 			break;
 		}
 		}
@@ -885,7 +868,7 @@ void ShowMessageOptions(void)
 
 void DeleteVehicleNews(VehicleID vid, StringID news)
 {
-	byte n;
+	NewsID n;
 
 	for (n = _oldest_news; _latest_news != INVALID_NEWS && n != increaseIndex(_latest_news); n = increaseIndex(n)) {
 		const NewsItem *ni = &_news_items[n];
@@ -894,16 +877,16 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 				ni->data_a == vid &&
 				(news == INVALID_STRING_ID || ni->string_id == news)) {
 			Window *w;
-			byte i;
 
-			if (_forced_news  == n || _current_news == n) MoveToNexItem();
+			if (_forced_news == n || _current_news == n) MoveToNexItem();
 
 			// If this is the last news item, invalidate _latest_news
 			if (_latest_news == _oldest_news) _latest_news = INVALID_NEWS;
 
 			if (n != _oldest_news) {
-				for (i = n; i != _oldest_news; i = (i + MAX_NEWS - 1) % MAX_NEWS) {
-					_news_items[i] = _news_items[(i + MAX_NEWS - 1) % MAX_NEWS];
+				NewsID i;
+				for (i = n; i != _oldest_news; i = decreaseIndex(i)) {
+					_news_items[i] = _news_items[decreaseIndex(i)];
 				}
 				_oldest_news = increaseIndex(_oldest_news);
 			}
