@@ -253,6 +253,7 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 {
 	NewsItem *ni;
 	Window *w;
+	byte l_news;
 
 	if (_game_mode == GM_MENU) return;
 
@@ -264,10 +265,11 @@ void AddNewsItem(StringID string, uint32 flags, uint data_a, uint data_b)
 	if (_total_news < MAX_NEWS) _total_news++;
 
 	// make sure our pointer isn't overflowing
+	l_news = _latest_news;
 	_latest_news = increaseIndex(_latest_news);
 
-	// overwrite oldest news entry
-	if (_oldest_news == _latest_news && _news_items[_oldest_news].string_id != 0)
+	/* If the fifo-buffer is full, overwrite the oldest entry */
+	if (l_news != INVALID_NEWS && _latest_news == _oldest_news)
 		_oldest_news = increaseIndex(_oldest_news); // but make sure we're not overflowing here
 
 	// add news to _latest_news
@@ -889,10 +891,12 @@ void DeleteVehicleNews(VehicleID vid, StringID news)
 			// If this is the last news item, invalidate _latest_news
 			if (_latest_news == _oldest_news) _latest_news = INVALID_NEWS;
 
-			for (i = n; i != _oldest_news; i = (i + MAX_NEWS - 1) % MAX_NEWS) {
-				_news_items[i] = _news_items[(i + MAX_NEWS - 1) % MAX_NEWS];
+			if (n != _oldest_news) {
+				for (i = n; i != _oldest_news; i = (i + MAX_NEWS - 1) % MAX_NEWS) {
+					_news_items[i] = _news_items[(i + MAX_NEWS - 1) % MAX_NEWS];
+				}
+				_oldest_news = increaseIndex(_oldest_news);
 			}
-			_oldest_news = (_oldest_news + 1) % MAX_NEWS;
 			_total_news--;
 
 			w = FindWindowById(WC_MESSAGE_HISTORY, 0);
