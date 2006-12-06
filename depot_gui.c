@@ -1041,6 +1041,10 @@ void DeleteDepotHighlightOfVehicle(const Vehicle *v)
 {
 	Window* const *wz;
 
+	/* If we haven't got any vehicles on the mouse pointer, we haven't got any highlighted in any depots either
+	 * If that is the case, we can skip looping though the windows and save time                                */
+	if (_special_mouse_mode != WSM_DRAGDROP) return;
+
 	FOR_ALL_WINDOWS(wz) {
 		const Window *w = *wz;
 		if (w->window_class != WC_VEHICLE_DEPOT) continue;
