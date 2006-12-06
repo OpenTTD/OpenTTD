@@ -287,8 +287,10 @@ STR_013D_INFORMATION                                            :{BLACK}Інфо
 STR_013E_CAPACITIES                                             :{BLACK}Місткість
 STR_013E_TOTAL_CARGO                                            :{BLACK}Повна місткість
 STR_013F_CAPACITY                                               :{BLACK}Місткість: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Місткість:{LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Повна місткість цього поїзду:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Нова гра
 STR_0141_LOAD_GAME                                              :{BLACK}Завантажити гру
 STR_SINGLE_PLAYER                                               :{BLACK}Один гравець
@@ -1009,6 +1011,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Пої�
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Будувати суміжні залізничні станції: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Від'їжджати при повному завантажені будь-якого вантажу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Використовувати покращений алгоритм завантаження: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Завантажувати поступово: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Інфляція: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Доставляти вантаж за умови, що там приймається: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Будувати дуже довгі мости: {ORANGE}{STRING}
@@ -1025,6 +1028,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Про�
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Дозволити підкупляти місцеву владу: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Неоднорідні станції: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Новий глобальний пошук шляху(NPF, замість NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Множник ваги для імітації важких потягів: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Завжди будувати малі аеропорти: {ORANGE}{STRING}
 
@@ -1089,6 +1093,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Інт�
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Інтервал техогляду для кораблів: {ORANGE}без тех.огляду
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Не робити техогляд, коли вимкнено аварії: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Обмежити швидкість вагонів: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Відключити електрички: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Поява кольорових новин у: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Початкова дата: {ORANGE}{STRING}
@@ -1918,22 +1923,22 @@ STR_SV_SHIP_NAME                                                :Корабел�
 STR_SV_AIRCRAFT_NAME                                            :Літак {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
-STR_SV_STNAME_NORTH                                             :
-STR_SV_STNAME_SOUTH                                             :
-STR_SV_STNAME_EAST                                              :
-STR_SV_STNAME_WEST                                              :
-STR_SV_STNAME_CENTRAL                                           :
-STR_SV_STNAME_TRANSFER                                          :
-STR_SV_STNAME_HALT                                              :
-STR_SV_STNAME_VALLEY                                            :
-STR_SV_STNAME_HEIGHTS                                           :
-STR_SV_STNAME_WOODS                                             :
-STR_SV_STNAME_LAKESIDE                                          :
-STR_SV_STNAME_EXCHANGE                                          :
-STR_SV_STNAME_AIRPORT                                           :
-STR_SV_STNAME_OILFIELD                                          :
-STR_SV_STNAME_MINES                                             :
-STR_SV_STNAME_DOCKS                                             :
+STR_SV_STNAME_NORTH                                             :{STRING} Північна
+STR_SV_STNAME_SOUTH                                             :{STRING} Південна
+STR_SV_STNAME_EAST                                              :{STRING} Східна
+STR_SV_STNAME_WEST                                              :{STRING} Західна
+STR_SV_STNAME_CENTRAL                                           :{STRING} Центральна
+STR_SV_STNAME_TRANSFER                                          :{STRING} База
+STR_SV_STNAME_HALT                                              :{STRING} Зупинка
+STR_SV_STNAME_VALLEY                                            :{STRING} Долина
+STR_SV_STNAME_HEIGHTS                                           :{STRING} Висоти
+STR_SV_STNAME_WOODS                                             :{STRING} Ліси
+STR_SV_STNAME_LAKESIDE                                          :{STRING} Озера
+STR_SV_STNAME_EXCHANGE                                          :{STRING} Хм..
+STR_SV_STNAME_AIRPORT                                           :{STRING} Аеропорт
+STR_SV_STNAME_OILFIELD                                          :{STRING} Нафтовина
+STR_SV_STNAME_MINES                                             :{STRING} Шахти
+STR_SV_STNAME_DOCKS                                             :{STRING} Доки
 STR_SV_STNAME_BUOY_1                                            :{STRING} Бакен 1
 STR_SV_STNAME_BUOY_2                                            :{STRING} Бакен 2
 STR_SV_STNAME_BUOY_3                                            :{STRING} Бакен 3
@@ -1943,13 +1948,13 @@ STR_SV_STNAME_BUOY_6                                            :{STRING} Бак
 STR_SV_STNAME_BUOY_7                                            :{STRING} Бакен 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} Бакен 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} Бакен 9
-STR_SV_STNAME_ANNEXE                                            :
-STR_SV_STNAME_SIDINGS                                           :
-STR_SV_STNAME_BRANCH                                            :
-STR_SV_STNAME_UPPER                                             :
-STR_SV_STNAME_LOWER                                             :
-STR_SV_STNAME_HELIPORT                                          :
-STR_SV_STNAME_FOREST                                            :
+STR_SV_STNAME_ANNEXE                                            :{STRING} Флігель
+STR_SV_STNAME_SIDINGS                                           :{STRING} Хм2..
+STR_SV_STNAME_BRANCH                                            :{STRING} Відділення
+STR_SV_STNAME_UPPER                                             :Верхній {STRING}
+STR_SV_STNAME_LOWER                                             :Нижній {STRING}
+STR_SV_STNAME_HELIPORT                                          :{STRING} ГелМайданчик
+STR_SV_STNAME_FOREST                                            :{STRING} Ліс
 
 ############ end of	savegame specific region!
 
@@ -2484,6 +2489,7 @@ STR_INVALID_ORDER                                               :{RED} (Неві
 STR_UNKNOWN_DESTINATION                                         :невідомий напрям
 STR_8812_EMPTY                                                  :{LTBLUE}порожній
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} з {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} з {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Поїзд {COMMA} чекає в депо
 STR_8815_NEW_VEHICLES                                           :{BLACK}Новий транспорт
 STR_8816                                                        :{BLACK}-
@@ -2849,6 +2855,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Сума
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Сума кредиту, що надано компанії
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Загальна кількісь балів
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Налаштування
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Налаштування нової графіки
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Застосувати зміни
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Встановлення параметрів
@@ -2856,13 +2863,26 @@ STR_NEWGRF_TIP                                                  :{BLACK}Спис
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Відсутні файли нової графіки! Прочитайте інструкцію по встановленню нової графіки
 STR_NEWGRF_FILENAME                                             :{BLACK}Ім'я файлу: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID графіки: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5сума: {SILVER}{STRING}
 
+STR_NEWGRF_ADD                                                  :{BLACK}Додати
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Додатифайли NewGRF до списку
+STR_NEWGRF_REMOVE                                               :{BLACK}Видалити
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Видалити обрані файли NewGRF зі списку
+STR_NEWGRF_MOVEUP                                               :{BLACK}Перемістити вверх
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Перемістити вибрані файли вверх по списку
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Перемістити вниз
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Перемістити вибрані файли вниз по списку
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Список встановлених NewGRF файлів. Кслікніть на файлі щоб змінити його параметри
+STR_NEWGRF_PARAMETER                                            :{BLACK}Параметри: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}ВведітьNewGRF параметри
 STR_NEWGRF_NO_INFO                                              :{BLACK}Немає доступної інформації
 
 STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Доступні NewGRF файли
 STR_NEWGRF_ADD_FILE                                             :{BLACK}Додати файл
 STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Додати вибраний NewGRF файл до Вашої конфігурації
 STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Переглянути файли
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Оновити список доступних NewGRF файлів
 STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Неможу додати файл: дублювання GRF ID
 
 STR_NEWGRF_NOT_FOUND                                            :{RED}Таких файлів не знайдено

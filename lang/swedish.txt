@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informat
 STR_013E_CAPACITIES                                             :{BLACK}Kapaciteter
 STR_013E_TOTAL_CARGO                                            :{BLACK}Gods Totalt
 STR_013F_CAPACITY                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Kapacitet: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Tågets totala kapacitet:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}{CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Nytt spel
 STR_0141_LOAD_GAME                                              :{BLACK}Ladda spel
 STR_SINGLE_PLAYER                                               :{BLACK}En spelare
@@ -1025,6 +1027,7 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Scrolla
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Tillåt mutning av de lokala myndigheterna: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Icke-rektangulära stationer: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Ny globalt sätt att hitta rutt (NPF, åsidosätter NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Godsfaktor för att simulera tunga tåg: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Tillåt alltid små flygplatser: {ORANGE}{STRING}
 
@@ -2498,16 +2501,20 @@ STR_INVALID_ORDER                                               :{RED} (Ogiltig 
 STR_UNKNOWN_DESTINATION                                         :okänd destination
 STR_8812_EMPTY                                                  :{LTBLUE}Tom
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} från {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} från {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tåg {COMMA} väntar i depå
 STR_8815_NEW_VEHICLES                                           :{BLACK}Nytt fordon
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tåg för långt
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Tåg kan bara ändras när det står still inuti en depå
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Tåg
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Nytt tågfordon
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Nya elektriska järnvägsfordon
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Nytt monorail-fordon
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Nytt maglevfordon
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Rälsfordon
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Bygg fordon
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Klona fordon
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Det här bygger en kopia av fordonet. Control-klickning gör så att de delar order
@@ -2862,6 +2869,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Mängden
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Har du ett stort lån?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totalt antal poäng utav möjligt antal poäng
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Inställningar
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf inställningar
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Spara ändringar
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Parametrar
@@ -2869,6 +2877,28 @@ STR_NEWGRF_TIP                                                  :{BLACK}En lista
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Det finns för närvarande inga newgrf filer installerade! Vänligen kolla manualen hur man installerar ny grafik.
 STR_NEWGRF_FILENAME                                             :{BLACK}Filnamn: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Lägg till
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Lägg till en ny NewGRF-fil till listan
+STR_NEWGRF_REMOVE                                               :{BLACK}Ta bort
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Ta bort den markerade NewGRF-filen från listan
+STR_NEWGRF_MOVEUP                                               :{BLACK}Flytta upp
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Flytta upp den markerade NewGRF-filen i listan
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Fytta ned
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Flytta ner den markerade NewGRF-filen i listan
+STR_NEWGRF_FILE_TIP                                             :{BLACK}En lista med installerade NewGRF-filer . Välj en fil för att ändra dess parametrar
+STR_NEWGRF_PARAMETER                                            :{BLACK}Paramerar: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Skriv NewGRF parameterar
+STR_NEWGRF_NO_INFO                                              :{BLACK}Ingen information tillgänglig
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Tillgängliga NewGRF filer
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Lägg till markering
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Lägg till den markerade NewGRF-filen till din konfiguration
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Läs om filer
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Uppdatera listan med tillgängliga NewGRF-filer
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan inte lägga till filen: redan existerande GRF ID
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Egen valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Växlingskurs: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -3014,7 +3044,7 @@ STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Kostnad:
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Kapacitet: {GOLD}{COMMA} passagerare, {COMMA} säckar post
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Motoriserade vagnar: {GOLD}+{POWER}{BLACK} Vikt: {GOLD}+{WEIGHT_S}
 STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Upprustningsbar till: {GOLD}
-STR_PURCHASE_INFO_ALL_TYPES                                     :Alla last-typer
+STR_PURCHASE_INFO_ALL_TYPES                                     :Alla typer av last
 STR_PURCHASE_INFO_ALL_BUT                                       :Alla utom {GOLD}
 
 ########### String for New Landscape Generator

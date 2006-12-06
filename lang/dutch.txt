@@ -1011,6 +1011,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Verbied
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Stations samenvoegen als ze naast elkaar worden gebouwd: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Verlaat station wanneer één lading geladen is, met 'vol laden': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Gebruik verbeterde laad algorithme: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Voertuigen geleidelijk laden: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflatie: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Lading alleen bezorgen aan een station als er vraag naar is: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Bouwen van zeer lange bruggen toestaan: {ORANGE}{STRING}
@@ -2869,6 +2870,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Hoeveelh
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Heb je een hoge lening?
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Totaal aantal punten uit de mogelijke punten
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF Instellingen
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf instellingen
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Wijzigingen doorvoeren
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Stel parameters in
@@ -2876,6 +2878,30 @@ STR_NEWGRF_TIP                                                  :{BLACK}Een lijs
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Er zijn op dit moment geen newgrf bestanden geïnstalleerd! Raadpleeg het handboek voor instructies voor het installeren van nieuwe graphics.
 STR_NEWGRF_FILENAME                                             :{BLACK}Bestandsnaam: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Toevoegen
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Voeg een NewGRF bestand toe aan te lijst
+STR_NEWGRF_REMOVE                                               :{BLACK}Verwijderen
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Verwijder de geselecteerde NewGRF bestanden van de lijst
+STR_NEWGRF_MOVEUP                                               :{BLACK}Naar Boven
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Verplaats het geselecteerde NewGRF bestand naar boven
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Naar Beneden
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Verplaats het geselecteerde NewGRF bestand naar beneden
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Een lijst van de NewGRF bestanden die zijn geïnstalleerd. Klik op een bestand om de parameters te wijzigen
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parameters: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}NewGRF parameters ingeven
+STR_NEWGRF_NO_INFO                                              :{BLACK}Geen informatie beschikbaar
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Beschikbare NewGRF bestanden
+STR_NEWGRF_ADD_FILE                                             :{BLACK}voeg toe aan selectie
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Voeg het geselecteerde NewGRF bestand toe aan je configuratie
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Bestanden opnieuw lezen
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Werk de lijst van beschikbare NewGRF bestanden bij
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Kan bestand niet toevoegen: identieke GRF ID
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}Bestand niet gevonden
+STR_NEWGRF_DISABLED                                             :{RED}Uitgeschakeld
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Aangepaste valuta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Wisselkoers: {ORANGE}{CURRENCY} = £ {COMMA}

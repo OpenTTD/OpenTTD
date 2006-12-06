@@ -217,11 +217,11 @@ STR_00F9_TRANSPORT_ROUTES                                       :{BLACK}{TINYFON
 STR_00FA_COAL_MINE                                              :{BLACK}{TINYFONT}Miniera di Carbone
 STR_00FB_POWER_STATION                                          :{BLACK}{TINYFONT}Centrale Elettrica
 STR_00FC_FOREST                                                 :{BLACK}{TINYFONT}Foresta
-STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Falegnameria
+STR_00FD_SAWMILL                                                :{BLACK}{TINYFONT}Segheria
 STR_00FE_OIL_REFINERY                                           :{BLACK}{TINYFONT}Raffineria
 STR_00FF_FARM                                                   :{BLACK}{TINYFONT}Fattoria
 STR_0100_FACTORY                                                :{BLACK}{TINYFONT}Fabbrica
-STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Casa Editrice
+STR_0101_PRINTING_WORKS                                         :{BLACK}{TINYFONT}Stamperia
 STR_0102_OIL_WELLS                                              :{BLACK}{TINYFONT}Pozzi Petroliferi
 STR_0103_IRON_ORE_MINE                                          :{BLACK}{TINYFONT}Miniera di Ferro
 STR_0104_STEEL_MILL                                             :{BLACK}{TINYFONT}Acciaieria
@@ -231,8 +231,8 @@ STR_0107_GOLD_MINE                                              :{BLACK}{TINYFON
 STR_0108_FOOD_PROCESSING_PLANT                                  :{BLACK}{TINYFONT}Azienda Alimentare
 STR_0109_DIAMOND_MINE                                           :{BLACK}{TINYFONT}Miniera di Diamanti
 STR_010A_COPPER_ORE_MINE                                        :{BLACK}{TINYFONT}Miniera di Rame
-STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Piantaggio di Frutta
-STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Piantaggio di Gomma
+STR_010B_FRUIT_PLANTATION                                       :{BLACK}{TINYFONT}Piantagione di Frutta
+STR_010C_RUBBER_PLANTATION                                      :{BLACK}{TINYFONT}Piantagione di Gomma
 STR_010D_WATER_SUPPLY                                           :{BLACK}{TINYFONT}Falda Acquifera
 STR_010E_WATER_TOWER                                            :{BLACK}{TINYFONT}Cisterna d'Acqua
 STR_010F_LUMBER_MILL                                            :{BLACK}{TINYFONT}Falegnameria
@@ -344,7 +344,7 @@ STR_UNITS_FORCE_SI                                              :{COMMA} kN
 
 ############ range for menu	starts
 STR_0154_OPERATING_PROFIT_GRAPH                                 :Grafico profitto operativo
-STR_0155_INCOME_GRAPH                                           :Grafico degli incassi
+STR_0155_INCOME_GRAPH                                           :Grafico incassi
 STR_0156_DELIVERED_CARGO_GRAPH                                  :Grafico merce consegnata
 STR_0157_PERFORMANCE_HISTORY_GRAPH                              :Grafico storico prestazioni
 STR_0158_COMPANY_VALUE_GRAPH                                    :Grafico valore società
@@ -3002,7 +3002,7 @@ STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sostituz
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FEATURE SPERIMENTALE {}Scambia tra loro le finestre di sostituizione locomotive e vagoni. {}La sostituizione del vagone avverrà solo se il nuovo vagone può essere convertito nello stesso tipo di merce del  vecchio vagone. Questo controllo viene fatto per ogni vagone sostituito.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi costruire la locomotiva
 
-STR_ENGINES                                                     :Motrici
+STR_ENGINES                                                     :Locomotive
 STR_WAGONS                                                      :Vagoni
 
 STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Clicca per fermare tutti i treni dentro il deposito
