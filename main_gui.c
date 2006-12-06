@@ -86,9 +86,9 @@ void HandleOnEditText(WindowEvent *e)
 		snprintf(msg, sizeof(msg), "%d", money);
 
 		if (!_network_server) {
-			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id + 1, msg);
+			SEND_COMMAND(PACKET_CLIENT_CHAT)(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id, msg);
 		} else {
-			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id + 1, msg, NETWORK_SERVER_INDEX);
+			NetworkServer_HandleChat(NETWORK_ACTION_GIVE_MONEY, DESTTYPE_TEAM, id, msg, NETWORK_SERVER_INDEX);
 		}
 		break;
 	}
