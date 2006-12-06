@@ -1,0 +1,375 @@
+##name Esperanto
+##ownname Esperanto
+##isocode eo_EO
+##plural 0
+
+##id 0x0000
+STR_NULL                                                       :
+STR_0001_OFF_EDGE_OF_MAP                                       :{WHITE}For de la mapo
+STR_0002_TOO_CLOSE_TO_EDGE_OF_MAP                              :{WHITE}Tro proksime al la mapa rando
+STR_0003_NOT_ENOUGH_CASH_REQUIRES                              :{WHITE}Ne sufiĉe da mono - vi bezonas {CURRENCY}
+STR_0004                                                       :{WHITE}{CURRENCY64}
+STR_0005                                                       :{RED}{CURRENCY64}
+STR_EMPTY                                                      :
+STR_0007_FLAT_LAND_REQUIRED                                    :{WHITE}Necesas ebena lando
+STR_0008_WAITING                                               :{BLACK}Atendas: {WHITE}{STRING}
+STR_0009                                                       :{WHITE}{STRING1}
+STR_000A_EN_ROUTE_FROM                                         :{WHITE}{STRING1}{YELLOW}  (survoje de
+STR_000B                                                       :{YELLOW}{STATION})
+STR_000C_ACCEPTS                                               :{BLACK}Akceptas: {WHITE}
+STR_000D_ACCEPTS                                               :{BLACK}Akceptas: {GOLD}
+STR_000E                                                       :
+STR_000F_PASSENGERS                                            :Pasaĝeroj
+STR_0010_COAL                                                  :Karbo
+STR_0011_MAIL                                                  :Poŝto
+STR_0012_OIL                                                   :Oleo
+STR_0013_LIVESTOCK                                             :Brutoj
+STR_0014_GOODS                                                 :Varoj
+STR_0015_GRAIN                                                 :Greno
+STR_0016_WOOD                                                  :Ligno
+STR_0017_IRON_ORE                                              :Fera Erco
+STR_0018_STEEL                                                 :Ŝtalo
+STR_0019_VALUABLES                                             :Valoraĵoj
+STR_001A_COPPER_ORE                                            :Kupra Erco
+STR_001B_MAIZE                                                 :Maizo
+STR_001C_FRUIT                                                 :Fruktoj
+STR_001D_DIAMONDS                                              :Diamantoj
+STR_001E_FOOD                                                  :Manĝaĵoj
+STR_001F_PAPER                                                 :Papero
+STR_0020_GOLD                                                  :Oro
+STR_0021_WATER                                                 :Akvo
+STR_0022_WHEAT                                                 :Tritiko
+STR_0023_RUBBER                                                :Kaŭĉuko
+STR_0024_SUGAR                                                 :Sukero
+STR_0025_TOYS                                                  :Ludiloj
+STR_0026_CANDY                                                 :Dolĉaĵoj
+STR_0027_COLA                                                  :Kolao
+STR_0028_COTTON_CANDY                                          :Sukerŝpinaĵoj
+STR_0029_BUBBLES                                               :Vezikoj
+STR_002A_TOFFEE                                                :Tofeoj
+STR_002B_BATTERIES                                             :Baterioj
+STR_002C_PLASTIC                                               :Plastiko
+STR_002D_FIZZY_DRINKS                                          :Amuzaj Trinkaĵoj
+STR_002E                                                       :
+STR_002F_PASSENGER                                             :Pasaĝero
+STR_0030_COAL                                                  :Karbo
+STR_0031_MAIL                                                  :Poŝto
+STR_0032_OIL                                                   :Oleo
+STR_0033_LIVESTOCK                                             :Bruto
+STR_0034_GOODS                                                 :Varo
+STR_0035_GRAIN                                                 :Greno
+STR_0036_WOOD                                                  :Ligno
+STR_0037_IRON_ORE                                              :Fera Erco
+STR_0038_STEEL                                                 :Ŝtalo
+STR_0039_VALUABLES                                             :Valoraĵoj
+STR_003A_COPPER_ORE                                            :Kupra Erco
+STR_003B_MAIZE                                                 :Maizp
+STR_003C_FRUIT                                                 :Frukto
+STR_003D_DIAMOND                                               :Diamanto
+STR_003E_FOOD                                                  :Manĝaĵo
+STR_003F_PAPER                                                 :Papero
+STR_0040_GOLD                                                  :Oro
+STR_0041_WATER                                                 :Akvo
+STR_0042_WHEAT                                                 :Tritiko
+STR_0043_RUBBER                                                :Kaŭĉuko
+STR_0044_SUGAR                                                 :Sukero
+STR_0045_TOY                                                   :Ludilo
+STR_0046_CANDY                                                 :Dolĉaĵo
+STR_0047_COLA                                                  :Kolao
+STR_0048_COTTON_CANDY                                          :Sukerŝpinaĵo
+STR_0049_BUBBLE                                                :Veziko
+STR_004A_TOFFEE                                                :Tofeo
+STR_004B_BATTERY                                               :Baterio
+STR_004C_PLASTIC                                               :Plastiko
+STR_004D_FIZZY_DRINK                                           :Amuza Trinkaĵo
+STR_QUANTITY_NOTHING                                           :
+STR_QUANTITY_PASSENGERS                                        :{COMMA} pasaĝero{P "" j}
+STR_QUANTITY_COAL                                              :{COMMA} tuno{P "" j} da karbo
+STR_QUANTITY_MAIL                                              :{COMMA} sako{P "" j} da poŝto
+STR_QUANTITY_OIL                                               :{VOLUME} da oleo
+STR_QUANTITY_LIVESTOCK                                         :{COMMA} bruto{P "" j}
+STR_QUANTITY_GOODS                                             :{COMMA} kesto{P "" j} da varoj
+STR_QUANTITY_GRAIN                                             :{COMMA} tuno{P "" j} da greno
+STR_QUANTITY_WOOD                                              :{COMMA} tuno{P "" j} da ligno
+STR_QUANTITY_IRON_ORE                                          :{COMMA} tuno{P "" j} da fera erco
+STR_QUANTITY_STEEL                                             :{COMMA} tuno{P "" j} da ŝtalo
+STR_QUANTITY_VALUABLES                                         :{COMMA} sako{P "" j} da valoraĵoj
+STR_QUANTITY_COPPER_ORE                                        :{COMMA} tuno{P "" j} da kupra erco
+STR_QUANTITY_MAIZE                                             :{COMMA} tuno{P "" j} da maizo
+STR_QUANTITY_FRUIT                                             :{COMMA} tuno{P "" j} da fruktoj
+STR_QUANTITY_DIAMONDS                                          :{COMMA} sako{P "" j} da diamantoj
+STR_QUANTITY_FOOD                                              :{COMMA} tuno{P "" j} da manĝaĵoj
+STR_QUANTITY_PAPER                                             :{COMMA} tuno{P "" j} da papero
+STR_QUANTITY_GOLD                                              :{COMMA} sako{P "" j} da oro
+STR_QUANTITY_WATER                                             :{VOLUME} da akvo
+STR_QUANTITY_WHEAT                                             :{COMMA} tuno{P "" j} da tritiko
+STR_QUANTITY_RUBBER                                            :{VOLUME} da kaŭĉuko
+STR_QUANTITY_SUGAR                                             :{COMMA} tuno{P "" j} da sukero
+STR_QUANTITY_TOYS                                              :{COMMA} ludilo{P "" j}
+STR_QUANTITY_SWEETS                                            :{COMMA} sako{P "" j} da dolĉaĵoj
+STR_QUANTITY_COLA                                              :{VOLUME} da kolao
+STR_QUANTITY_CANDYFLOSS                                        :{COMMA} tuno{P "" j} of da sukerŝpinaĵo
+STR_QUANTITY_BUBBLES                                           :{COMMA} veziko{P "" j}
+STR_QUANTITY_TOFFEE                                            :{COMMA} tuno{P "" j} da tofeo
+STR_QUANTITY_BATTERIES                                         :{COMMA} baterio{P "" j}
+STR_QUANTITY_PLASTIC                                           :{VOLUME} da plastiko
+STR_QUANTITY_FIZZY_DRINKS                                      :{COMMA} amuza{P "" j} trinkaĵo{P "" j}
+STR_ABBREV_NOTHING                                             :
+STR_ABBREV_PASSENGERS                                          :{TINYFONT}PS
+STR_ABBREV_COAL                                                :{TINYFONT}KB
+STR_ABBREV_MAIL                                                :{TINYFONT}PT
+STR_ABBREV_OIL                                                 :{TINYFONT}OL
+STR_ABBREV_LIVESTOCK                                           :{TINYFONT}BR
+STR_ABBREV_GOODS                                               :{TINYFONT}VR
+STR_ABBREV_GRAIN                                               :{TINYFONT}GR
+STR_ABBREV_WOOD                                                :{TINYFONT}LG
+STR_ABBREV_IRON_ORE                                            :{TINYFONT}FE
+STR_ABBREV_STEEL                                               :{TINYFONT}ŜT
+STR_ABBREV_VALUABLES                                           :{TINYFONT}VL
+STR_ABBREV_COPPER_ORE                                          :{TINYFONT}KE
+STR_ABBREV_MAIZE                                               :{TINYFONT}MZ
+STR_ABBREV_FRUIT                                               :{TINYFONT}FT
+STR_ABBREV_DIAMONDS                                            :{TINYFONT}DM
+STR_ABBREV_FOOD                                                :{TINYFONT}MN
+STR_ABBREV_PAPER                                               :{TINYFONT}PR
+STR_ABBREV_GOLD                                                :{TINYFONT}OR
+STR_ABBREV_WATER                                               :{TINYFONT}AK
+STR_ABBREV_WHEAT                                               :{TINYFONT}TT
+STR_ABBREV_RUBBER                                              :{TINYFONT}KA
+STR_ABBREV_SUGAR                                               :{TINYFONT}SK
+STR_ABBREV_TOYS                                                :{TINYFONT}LD
+STR_ABBREV_SWEETS                                              :{TINYFONT}DL
+STR_ABBREV_COLA                                                :{TINYFONT}KL
+STR_ABBREV_CANDYFLOSS                                          :{TINYFONT}SS
+STR_ABBREV_BUBBLES                                             :{TINYFONT}VZ
+STR_ABBREV_TOFFEE                                              :{TINYFONT}TF
+STR_ABBREV_BATTERIES                                           :{TINYFONT}BA
+STR_ABBREV_PLASTIC                                             :{TINYFONT}PL
+STR_ABBREV_FIZZY_DRINKS                                        :{TINYFONT}AT
+STR_00AE                                                       :{WHITE}{DATE_SHORT}
+STR_00AF                                                       :{WHITE}{DATE_LONG}
+STR_00B0_MAP                                                   :{WHITE}Mapo - {STRING}
+STR_00B1_GAME_OPTIONS                                          :{WHITE}Ludaj Opcioj
+STR_00B2_MESSAGE                                               :{YELLOW}Mesaĝo
+STR_00B3_MESSAGE_FROM                                          :{YELLOW}Mesaĝo de {STRING1}
+STR_00B4_CAN_T_DO_THIS                                         :{WHITE}Ne eblas fari ĉi tion....
+STR_00B5_CAN_T_CLEAR_THIS_AREA                                 :{WHITE}Ne eblas malplenigi la regionon....
+STR_00B6_ORIGINAL_COPYRIGHT                                    :{BLACK}Origina kopirajto {COPYRIGHT} 1995 Chris Sawyer, Ĉiuj rajtoj rezervitaj
+STR_00B7_VERSION                                               :{BLACK}OpenTTD-versio {REV}
+STR_00BA_COPYRIGHT_OPENTTD                                     :{BLACK}OpenTTD {COPYRIGHT}2002-2006 La teamo de OpenTTD
+STR_TRANSLATED_BY                                              :{BLACK}  Tradukanto(j) -
+
+STR_00C5                                                       :{BLACK}{CROSS}
+STR_00C6                                                       :{SILVER}{CROSS}
+STR_00C7_QUIT                                                  :{WHITE}Fermi
+STR_00C8_YES                                                   :{BLACK}Jes
+STR_00C9_NO                                                    :{BLACK}Ne
+STR_00CA_ARE_YOU_SURE_YOU_WANT_TO                              :{YELLOW}Ĉu vi vere volas fermi la ludon kaj reiri al {STRING}?
+STR_00CB_1                                                     :{BLACK}1
+STR_00CC_2                                                     :{BLACK}2
+STR_00CD_3                                                     :{BLACK}3
+STR_00CE_4                                                     :{BLACK}4
+STR_00CF_5                                                     :{BLACK}5
+STR_00D0_NOTHING                                               :Nenio
+STR_00D1_DARK_BLUE                                             :Malhelblua
+STR_00D2_PALE_GREEN                                            :Palverda
+STR_00D3_PINK                                                  :Roza
+STR_00D4_YELLOW                                                :Flava
+STR_00D5_RED                                                   :Ruĝa
+STR_00D6_LIGHT_BLUE                                            :Helblua
+STR_00D7_GREEN                                                 :Verda
+STR_00D8_DARK_GREEN                                            :Malhelverda
+STR_00D9_BLUE                                                  :Blua
+STR_00DA_CREAM                                                 :Krema
+STR_00DB_MAUVE                                                 :Purpurverda
+STR_00DC_PURPLE                                                :Purpura
+STR_00DD_ORANGE                                                :Oranĝa
+STR_00DE_BROWN                                                 :Bruna
+STR_00DF_GREY                                                  :Griza
+STR_00E0_WHITE                                                 :Blanka
+STR_00E1_TOO_MANY_VEHICLES_IN_GAME                             :{WHITE}Tro da veturiloj en la ludo
+STR_00E2                                                       :{BLACK}{COMMA}
+STR_00E3                                                       :{RED}{COMMA}
+STR_00E4_LOCATION                                              :{BLACK}Loko
+STR_00E5_CONTOURS                                              :Konturoj
+STR_00E6_VEHICLES                                              :Veturiloj
+STR_00E7_INDUSTRIES                                            :Industrioj
+STR_00E8_ROUTES                                                :Vojiroj
+STR_00E9_VEGETATION                                            :Verdaĵo
+STR_00EA_OWNERS                                                :Posedantoj
+STR_00EB_ROADS                                                 :{BLACK}{TINYFONT}Vojoj
+STR_00EC_RAILROADS                                             :{BLACK}{TINYFONT}Fervojoj
+STR_00ED_STATIONS_AIRPORTS_DOCKS                               :{BLACK}{TINYFONT}Stacidomoj/Flughavenoj/Havenoj
+STR_00EE_BUILDINGS_INDUSTRIES                                  :{BLACK}{TINYFONT}Konstruaĵoj/Industrioj
+STR_00EF_VEHICLES                                              :{BLACK}{TINYFONT}Veturiloj
+STR_00F0_100M                                                  :{BLACK}{TINYFONT}100m
+STR_00F1_200M                                                  :{BLACK}{TINYFONT}200m
+STR_00F2_300M                                                  :{BLACK}{TINYFONT}300m
+STR_00F3_400M                                                  :{BLACK}{TINYFONT}400m
+STR_00F4_500M                                                  :{BLACK}{TINYFONT}500m
+STR_00F5_TRAINS                                                :{BLACK}{TINYFONT}Trajnoj
+STR_00F6_ROAD_VEHICLES                                         :{BLACK}{TINYFONT}Vojaj Veturiloj
+STR_00F7_SHIPS                                                 :{BLACK}{TINYFONT}Ŝipoj
+STR_00F8_AIRCRAFT                                              :{BLACK}{TINYFONT}Aviadiloj
+STR_00F9_TRANSPORT_ROUTES                                      :{BLACK}{TINYFONT}Transportvojoj
+STR_00FA_COAL_MINE                                             :{BLACK}{TINYFONT}Karbminejo
+STR_00FB_POWER_STATION                                         :{BLACK}{TINYFONT}Elektrejo
+STR_00FC_FOREST                                                :{BLACK}{TINYFONT}Arbaro
+STR_00FD_SAWMILL                                               :{BLACK}{TINYFONT}Segejo
+STR_00FE_OIL_REFINERY                                          :{BLACK}{TINYFONT}Oleproduktejo
+STR_00FF_FARM                                                  :{BLACK}{TINYFONT}Farmbieno
+STR_0100_FACTORY                                               :{BLACK}{TINYFONT}Farejo
+STR_0101_PRINTING_WORKS                                        :{BLACK}{TINYFONT}Printejo
+STR_0102_OIL_WELLS                                             :{BLACK}{TINYFONT}Olefonto
+STR_0103_IRON_ORE_MINE                                         :{BLACK}{TINYFONT}Ferercminejo
+STR_0104_STEEL_MILL                                            :{BLACK}{TINYFONT}Ŝtalejo
+STR_0105_BANK                                                  :{BLACK}{TINYFONT}Banko
+STR_0106_PAPER_MILL                                            :{BLACK}{TINYFONT}Paperejo
+STR_0107_GOLD_MINE                                             :{BLACK}{TINYFONT}Orminejo
+STR_0108_FOOD_PROCESSING_PLANT                                 :{BLACK}{TINYFONT}Manĝaĵfarejo
+STR_0109_DIAMOND_MINE                                          :{BLACK}{TINYFONT}Diamantminejo
+STR_010A_COPPER_ORE_MINE                                       :{BLACK}{TINYFONT}Kuproercminejo
+STR_010B_FRUIT_PLANTATION                                      :{BLACK}{TINYFONT}Fruktkulturejo
+STR_010C_RUBBER_PLANTATION                                     :{BLACK}{TINYFONT}Kaŭĉukkulturejo
+STR_010D_WATER_SUPPLY                                          :{BLACK}{TINYFONT}Akvofonto
+STR_010E_WATER_TOWER                                           :{BLACK}{TINYFONT}Akvoturo
+STR_010F_LUMBER_MILL                                           :{BLACK}{TINYFONT}Lignejo
+STR_0110_COTTON_CANDY_FOREST                                   :{BLACK}{TINYFONT}Sukerŝpinaĵaro
+STR_0111_CANDY_FACTORY                                         :{BLACK}{TINYFONT}Dolĉaĵfarejo
+STR_0112_BATTERY_FARM                                          :{BLACK}{TINYFONT}Bateribieno
+STR_0113_COLA_WELLS                                            :{BLACK}{TINYFONT}Kolafonto
+STR_0114_TOY_SHOP                                              :{BLACK}{TINYFONT}Ludilvendejo
+STR_0115_TOY_FACTORY                                           :{BLACK}{TINYFONT}Ludilfarejo
+STR_0116_PLASTIC_FOUNTAINS                                     :{BLACK}{TINYFONT}Plastikfontanaro
+STR_0117_FIZZY_DRINK_FACTORY                                   :{BLACK}{TINYFONT}Farejo de Amuzaj Trinkaĵoj
+STR_0118_BUBBLE_GENERATOR                                      :{BLACK}{TINYFONT}Vezikgenerilo
+STR_0119_TOFFEE_QUARRY                                         :{BLACK}{TINYFONT}Tofeminejo
+STR_011A_SUGAR_MINE                                            :{BLACK}{TINYFONT}Sukerminejo
+STR_011B_RAILROAD_STATION                                      :{BLACK}{TINYFONT}Fervoja Stacidomo
+STR_011C_TRUCK_LOADING_BAY                                     :{BLACK}{TINYFONT}Ŝarĝaŭta Ŝarĝejo
+STR_011D_BUS_STATION                                           :{BLACK}{TINYFONT}Busstacio
+STR_011E_AIRPORT_HELIPORT                                      :{BLACK}{TINYFONT}Flughaveno/Helikopterejo
+STR_011F_DOCK                                                  :{BLACK}{TINYFONT}Haveno
+STR_0120_ROUGH_LAND                                            :{BLACK}{TINYFONT}Hazardlando
+STR_0121_GRASS_LAND                                            :{BLACK}{TINYFONT}Herba Lando
+STR_0122_BARE_LAND                                             :{BLACK}{TINYFONT}Senuza lando
+STR_0123_FIELDS                                                :{BLACK}{TINYFONT}Kampoj
+STR_0124_TREES                                                 :{BLACK}{TINYFONT}Arboj
+STR_0125_ROCKS                                                 :{BLACK}{TINYFONT}Rokoj
+STR_0126_WATER                                                 :{BLACK}{TINYFONT}Akvo
+STR_0127_NO_OWNER                                              :{BLACK}{TINYFONT}Sen posedanto
+STR_0128_TOWNS                                                 :{BLACK}{TINYFONT}Urboj
+STR_0129_INDUSTRIES                                            :{BLACK}{TINYFONT}Industrioj
+STR_012A_DESERT                                                :{BLACK}{TINYFONT}Dezerto
+STR_012B_SNOW                                                  :{BLACK}{TINYFONT}Neĝo
+STR_012C_MESSAGE                                               :{WHITE}Mesaĝo
+STR_012D                                                       :{WHITE}{STRING}
+STR_012E_CANCEL                                                :{BLACK}Nuligu
+STR_012F_OK                                                    :{BLACK}Bone
+STR_0130_RENAME                                                :{BLACK}Renomu
+STR_0131_TOO_MANY_NAMES_DEFINED                                :{WHITE}Tro da nomoj difinitaj
+STR_0132_CHOSEN_NAME_IN_USE_ALREADY                            :{WHITE}La elektita nomo jam uziĝas
+
+STR_0133_WINDOWS                                               :Vindozo
+STR_0134_UNIX                                                  :Unikso
+STR_OSNAME_BEOS                                                :BeOS
+STR_OSNAME_MORPHOS                                             :MorphOS
+STR_OSNAME_AMIGAOS                                             :AmigaOS
+STR_OSNAME_OS2                                                 :OS/2
+
+STR_0139_IMPERIAL_MILES                                        :Imperie (mejloj)
+STR_013A_METRIC_KILOMETERS                                     :Metre (kilometroj)
+STR_013B_OWNED_BY                                              :{WHITE}...posedata de {STRING2}
+STR_013C_CARGO                                                 :{BLACK}Ŝarĝo
+STR_013D_INFORMATION                                           :{BLACK}Informoj
+STR_013E_CAPACITIES                                            :{BLACK}Kapabloj
+STR_013E_TOTAL_CARGO                                           :{BLACK}Tuta Ŝarĝo
+STR_013F_CAPACITY                                              :{BLACK}Enhavkapablo: {LTBLUE}{STRING1}
+STR_013F_TOTAL_CAPACITY_TEXT                                   :{BLACK}Tuta ŝarĝkapablo de ĉi tiu trajno:
+STR_013F_TOTAL_CAPACITY                                        :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_0140_NEW_GAME                                              :{BLACK}Nova Ludo
+STR_0141_LOAD_GAME                                             :{BLACK}Ŝarĝu ludon
+STR_SINGLE_PLAYER                                              :{BLACK}Unu Ludanto
+STR_MULTIPLAYER                                                :{BLACK}Pluraj Ludantoj
+
+STR_64                                                         :64
+STR_128                                                        :128
+STR_256                                                        :256
+STR_512                                                        :512
+STR_1024                                                       :1024
+STR_2048                                                       :2048
+STR_MAPSIZE                                                    :{BLACK}Mapgrandeco:
+STR_BY                                                         :{BLACK}*
+STR_0148_GAME_OPTIONS                                          :{BLACK}Ludaj Opcioj
+
+STR_0150_SOMEONE                                               :iu{SKIP}{SKIP}
+STR_0151_MAP_OF_WORLD                                          :Mondomapo
+STR_0152_TOWN_DIRECTORY                                        :Urbaro
+STR_0153_SUBSIDIES                                             :Subvencioj
+
+############ range for menu	starts
+STR_0154_OPERATING_PROFIT_GRAPH                                :Gajna grafiko
+STR_0155_INCOME_GRAPH                                          :Enspeza grafiko
+STR_0156_DELIVERED_CARGO_GRAPH                                 :Liveriteca grafiko
+STR_0157_PERFORMANCE_HISTORY_GRAPH                             :Kvalithistoria grafiko
+STR_0158_COMPANY_VALUE_GRAPH                                   :Kompanivalora grafiko
+STR_0159_CARGO_PAYMENT_RATES                                   :Ŝarĝpaga grafiko
+STR_015A_COMPANY_LEAGUE_TABLE                                  :Kompaniara tabelo
+STR_PERFORMANCE_DETAIL_MENU                                    :Detala kvalittakso
+############ range for menu	ends
+
+STR_015B_OPENTTD                                               :{WHITE}Pri OpenTTD
+STR_015C_SAVE_GAME                                             :Konservu ludon
+STR_015D_LOAD_GAME                                             :Ŝarĝu ludon
+STR_015E_QUIT_GAME                                             :Foriru de la ludo
+STR_015F_QUIT                                                  :Fermu
+STR_0160_ARE_YOU_SURE_YOU_WANT_TO                              :{YELLOW}Ĉu vi certas ke vi volas foriri?
+STR_0161_QUIT_GAME                                             :{WHITE}Foriri de la ludo
+STR_SORT_ORDER_TIP                                             :{BLACK}Elektu vicordo (deira/alira)
+STR_SORT_CRITERIA_TIP                                          :{BLACK}Elektu ordigaj kondiĉoj
+STR_SORT_BY                                                    :{BLACK}Ordigu laŭ
+
+STR_SORT_BY_POPULATION                                         :{BLACK}Enloĝantaro
+STR_SORT_BY_PRODUCTION                                         :{BLACK}Produktado
+STR_SORT_BY_TYPE                                               :{BLACK}Tipo
+STR_SORT_BY_TRANSPORTED                                        :{BLACK}Transportiĝis
+STR_SORT_BY_NAME                                               :{BLACK}Nomo
+STR_SORT_BY_DROPDOWN_NAME                                      :Nomo
+STR_SORT_BY_DATE                                               :{BLACK}Dato
+STR_SORT_BY_UNSORTED                                           :Ne ordigite
+STR_SORT_BY_NUMBER                                             :Numero
+STR_SORT_BY_PROFIT_LAST_YEAR                                   :Gajno lastjara
+STR_SORT_BY_PROFIT_THIS_YEAR                                   :Gajno ĉi-jara
+STR_SORT_BY_AGE                                                :Aĝo
+STR_SORT_BY_RELIABILITY                                        :Fidebleco
+STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                       :Tuta kapablo por ĉiu ŝarĝtipo
+STR_SORT_BY_MAX_SPEED                                          :Maksimuma rapideco
+
+############ range for months starts
+STR_0162_JAN                                                   :Jan
+STR_0163_FEB                                                   :Feb
+STR_0164_MAR                                                   :Mar
+STR_0165_APR                                                   :Apr
+STR_0166_MAY                                                   :Maj
+STR_0167_JUN                                                   :Jun
+STR_0168_JUL                                                   :Jul
+STR_0169_AUG                                                   :Aug
+STR_016A_SEP                                                   :Sep
+STR_016B_OCT                                                   :Okt
+STR_016C_NOV                                                   :Nov
+STR_016D_DEC                                                   :Dec
+############ range for months ends
+
+STR_016E                                                       :{TINYFONT}{STRING}{} {STRING}
+STR_016F                                                       :{TINYFONT}{STRING}{} {STRING}{}{NUM}
+STR_0170                                                       :{TINYFONT}{STRING2}-
+STR_0171_PAUSE_GAME                                            :{BLACK}Paŭzigu la ludon
+STR_0172_SAVE_GAME_ABANDON_GAME                                :{BLACK}Konservu ludon, foriru de la ludo, fermu
+
+############ Lists rail types
+
+STR_RAIL_VEHICLES                                              :Relaj Veturiloj
+STR_MONORAIL_VEHICLES                                          :Unurelaj Veturiloj
+STR_MAGLEV_VEHICLES                                            :Maglevaj Veturiloj
+
+############ End of list of rail types
