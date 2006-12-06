@@ -34,12 +34,22 @@ enum {
 	SHADOW_COLOUR = 2,
 };
 
+/** Get the font loaded into a Freetype face by using a font-name.
+ * If no appropiate font is found, the function returns an error */
 #ifdef WIN32
 #include <windows.h>
 #include <tchar.h>
 #include <shlobj.h> // SHGetFolderPath
 #include "win32.h"
 
+/* Get the font file to be loaded into Freetype by looping the registry
+ * location where windows lists all installed fonts. Not very nice, will
+ * surely break if the registry path changes, but it works. Much better
+ * solution would be to use CreateFont, and extract the font data from it
+ * by GetFontData. The problem with this is that the font file needs to be
+ * kept in memory then until the font is no longer needed. This could mean
+ * an additional memory usage of 30MB (just for fonts!) when using an eastern
+ * font for all font sizes */
 #define FONT_DIR_NT "SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts"
 #define FONT_DIR_9X "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Fonts"
 static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
@@ -48,6 +58,7 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	HKEY hKey;
 	LONG ret;
 	TCHAR vbuffer[MAX_PATH], dbuffer[256];
+	TCHAR *font_namep;
 	char *font_path;
 	uint index;
 
@@ -62,12 +73,22 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		return err;
 	}
 
+	/* For Unicode we need some conversion between widechar and
+	 * normal char to match the data returned by RegEnumValue,
+	 * otherwise just use parameter */
+#if defined(UNICODE)
+	font_namep = malloc(MAX_PATH * sizeof(TCHAR));
+	MB_TO_WIDE_BUFFER(font_name, font_namep, MAX_PATH * sizeof(TCHAR));
+#else
+	font_namep = (char*)font_name; // only cast because in unicode pointer is not const
+#endif
+
 	for (index = 0;; index++) {
-		char *s;
+		TCHAR *s;
 		DWORD vbuflen = lengthof(vbuffer);
 		DWORD dbuflen = lengthof(dbuffer);
 
-		ret = RegEnumValue(hKey, index, vbuffer, &vbuflen, NULL, NULL, dbuffer, &dbuflen);
+		ret = RegEnumValue(hKey, index, vbuffer, &vbuflen, NULL, NULL, (byte*)dbuffer, &dbuflen);
 		if (ret != ERROR_SUCCESS) goto registry_no_font_found;
 
 		/* The font names in the registry are of the following 3 forms:
@@ -79,13 +100,13 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 		 * TTC files, font files which contain more than one font are seperated
 		 * byt '&'. Our best bet will be to do substr match for the fontname
 		 * and then let FreeType figure out which index to load */
-		s = _tcschr(vbuffer, '(');
+		s = _tcschr(vbuffer, _T('('));
 		if (s != NULL) s[-1] = '\0';
 
-		if (_tcschr(vbuffer, '&') == NULL) {
-			if (_tcsicmp(vbuffer, font_name) == 0) break;
+		if (_tcschr(vbuffer, _T('&')) == NULL) {
+			if (_tcsicmp(vbuffer, font_namep) == 0) break;
 		} else {
-			if (_tcsstr(vbuffer, font_name) != NULL) break;
+			if (_tcsstr(vbuffer, font_namep) != NULL) break;
 		}
 	}
 
@@ -100,14 +121,17 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 	 * proper font.
 	 * Also note that FreeType does not support UNICODE filesnames! */
 #if defined(UNICODE)
-	font_path = malloc(MAX_PATH);
-	font_path = convert_from_fs(vbuffer, font_path, MAX_PATH);
+	/* We need a cast here back from wide because FreeType doesn't support
+	 * widechar filenames. Just use the buffer we allocated before for the
+	 * font_name search */
+	font_path = (char*)font_namep;
+	WIDE_TO_MB_BUFFER(vbuffer, font_path, MAX_PATH * sizeof(TCHAR));
 #else
 	font_path = vbuffer;
 #endif
 
-	ttd_strlcat(font_path, "\\", MAX_PATH);
-	ttd_strlcat(font_path, WIDE_TO_MB(dbuffer), MAX_PATH);
+	ttd_strlcat(font_path, "\\", MAX_PATH * sizeof(TCHAR));
+	ttd_strlcat(font_path, WIDE_TO_MB(dbuffer), MAX_PATH * sizeof(TCHAR));
 	index = 0;
 	do {
 		err = FT_New_Face(_library, font_path, index, face);
@@ -118,11 +142,11 @@ static FT_Error GetFontByFaceName(const char *font_name, FT_Face *face)
 
 	} while ((FT_Long)++index != (*face)->num_faces);
 
+
+folder_error:
 #if defined(UNICODE)
 	free(font_path);
 #endif
-
-folder_error:
 registry_no_font_found:
 	RegCloseKey(hKey);
 	return err;
