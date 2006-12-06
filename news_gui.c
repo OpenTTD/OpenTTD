@@ -471,15 +471,11 @@ static bool ReadyForNextItem(void)
 	w = FindWindowById(WC_STATUS_BAR, 0);
 	if (w != NULL && WP(w, const def_d).data_1 > -1280) return false;
 
-	// Newspaper message
-	// Wait until duration reaches 0
-	if (ni->duration != 0) {
-		ni->duration--;
-		return false;
-	}
+	// Newspaper message, decrement duration counter
+	if (ni->duration != 0) ni->duration--;
 
 	// neither newsticker nor newspaper are running
-	return true;
+	return (ni->duration == 0 || FindWindowById(WC_NEWS_WINDOW, 0) == NULL);
 }
 
 static void MoveToNextItem(void)
