@@ -1170,7 +1170,7 @@ STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Cambia i
 STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Impossibile cambiare il nome al waypoint...
 STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Trasforma la ferrovia in un waypoint
 STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Impossibile costruire un waypoint ferroviario qui...
-STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Impossibile rimuovere un waypoint ferroviario qui...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Impossibile demolire un waypoint ferroviario qui...
 
 STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Costruisci binario usando la modalità automatica
 
@@ -1203,7 +1203,7 @@ STR_BUOY_IS_IN_USE                                              :{WHITE}...la bo
 
 STR_LANDINFO_COORDS                                             :{BLACK}Coordinate: {LTBLUE}{NUM}x{NUM} ({STRING})
 
-STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Impossibile rimuovere una porzione di stazione...
+STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Impossibile demolire una porzione di stazione...
 STR_CANT_CONVERT_RAIL                                           :{WHITE}Impossibile convertire il tipo di rotaie...
 STR_CONVERT_RAIL_TIP                                            :{BLACK}Converti/aggiorna il tipo di rotaie
 
@@ -1507,7 +1507,7 @@ STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Già al 
 STR_1004_TOO_HIGH                                               :{WHITE}Troppo alto
 STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Tipo di binari non adatti
 STR_1007_ALREADY_BUILT                                          :{WHITE}...già costruito
-STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Rimuovere i binari prima
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Devi demolire prima i binari
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Costruzione Ferrovie
 STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Costruzione Ferrovie Elettrificate
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Costruzione Monorotaia
@@ -1517,8 +1517,8 @@ STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Non puoi
 STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Non puoi costruire stazione qui...
 STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Non puoi piazzare segnali qui..
 STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Non puoi costruire i binari qui...
-STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Non puoi rimuovere i binari da qui
-STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Non puoi rimuovere segnali da qui...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Non puoi demolire da qui i binari...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Non puoi rimuovere da qui i segnali...
 STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Orientamento Deposito
 STR_1015_RAILROAD_CONSTRUCTION                                  :Costruzione ferrovie
 STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Costruzione ferrovie elettrificate
@@ -1530,7 +1530,7 @@ STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Costruis
 STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Costruisci segnale ferroviario
 STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Costruisci ponte ferroviario
 STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Costruisci tunnel ferroviario
-STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Seleziona costruisci/rimuovi per binari e segnali
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Seleziona costruisci/demolisci per binari e segnali
 STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Selezione ponte - clicca sul ponte selezionato per costruirlo
 STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Seleziona orientamento deposito ferroviario
 STR_1021_RAILROAD_TRACK                                         :Binari
@@ -1544,12 +1544,12 @@ STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Binario ferrovi
 
 
 ##id 0x1800
-STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Devi rimuovere la strada prima
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Devi demolire prima la strada
 STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Lavori stradali in progresso
 STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Costruzione Strade
 STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Seleziona ponte stradale
 STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Non puoi costruire strada da qui...
-STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Non puoi rimuovere strada da qui...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Non puoi demolire da qui  la strada...
 STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Orientamento Deposito
 STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Non puoi costruire deposito stradale qui...
 STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Non puoi costruire fermata bus...
@@ -2996,8 +2996,8 @@ STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Premi pe
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Seleziona il tipo di ferrovia per la quale vuoi rimpiazzare i locomotori
 STR_REPLACE_HELP_REPLACE_INFO_TAB                               :{BLACK}Mostra con quale locomotore verrà rimpiazzato il tipo selezionato a sinistra, se alcuno
 STR_REPLACE_HELP                                                :{BLACK}Permette di rimpiazzare un locomotere con uno di un'altro tipo, quando il treno entra in un deposito
-STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimuovi vagoni: {ORANGE}{SKIP}{STRING}
-STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Autosostituzione deve mantenere uguale la lunghezza del treno, rimuovendo vagoni (iniziando davanti), se la sostituzione del treno lo farebbe piu lungo.
+STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Rimozione vagoni: {ORANGE}{SKIP}{STRING}
+STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}La autosostituzione mantiene la lunghezza del treno togliendo vagoni (iniziando dalla testa), se la sostituzione della locomotiva lo farebbe piu lungo.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Sostituzione: {ORANGE}{SKIP}{SKIP}{STRING}
 STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :{BLACK} FEATURE SPERIMENTALE {}Scambia tra loro le finestre di sostituizione locomotive e vagoni. {}La sostituizione del vagone avverrà solo se il nuovo vagone può essere convertito nello stesso tipo di merce del  vecchio vagone. Questo controllo viene fatto per ogni vagone sostituito.
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Non puoi costruire la locomotiva

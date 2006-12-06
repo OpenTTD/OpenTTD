@@ -810,31 +810,141 @@ STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
 
 
 
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Stavi drveće nasumičnog tipa
+
+STR_CANT_BUILD_CANALS                                           :{WHITE}Ovdje ne možeš graditi kanale...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Izgradi kanale. Pritisni CTRL kako bi smjestio vodone pločice (samo na razini mora).
+STR_LANDINFO_CANAL                                              :Kanal
+
+
+STR_BUOY_IS_IN_USE                                              :{WHITE}...plutača je u uporabi!
+
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinate: {LTBLUE}{NUM}x{NUM} ({STRING})
+
+STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Ne možeš ukloniti dio stanice...
 
 
 
+STR_FAST_FORWARD                                                :{BLACK}Premotaj igru naprijed
+STR_MESSAGE_HISTORY                                             :{WHITE}Povijest poruka
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Popis nedavnih novinskih poruka
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Onemogući sve
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Omogući sve
 
+STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Izgradi rudnik ugljena
+STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Posadi šumu
+STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Izgradi naftnu bušotinu
+STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Financiraj farmu
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Izgradi rudnik bakra
+STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Bušenjem traži naftu
+STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Izgradi rudnik zlata
+STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Izgradi rudnik dijamanata
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Izgradi rudnik željeza
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Financiraj plantažu voća
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Financiraj plantažu gume
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Financiraj izvor vode
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Posadi šumu šećerne vune
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Financiraj tvornicu baterija
+STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Bušenjem traži Colu
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Financiraj izvore plastike
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Izgradi generator balona
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Financiraj kamenolom mliječne karamele
+STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Izgradi šećeranu
 
+STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Gospodarstva
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% prevezeno)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% prevezeno)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...preblizu drugom gospodarstvu
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Prepravi vlak kako bi nosio drugu vrstu tereta
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Prepravi vlak
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Izaberi vrstu tereta koju će vlak nositi
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Prepravi vlak kako bi nosio označenu vrstu tereta
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Ne možeš prepraviti vlak...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Servisni intervali u postotcima: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Promijeni proizvodnju
 
-
-
-
-
-
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Dobrodošli u novi AI pod razvojem. Ukoliko naiđete na probleme, napravite sliku ekrana i stavite ju na forum.
+TEMP_AI_ACTIVATED                                               :{WHITE}Upozorenje: ovaj novi AI je još uvijek alfa! Trenutno, samo kamioni i autobusi rade!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Upozorenje: implementacije je još uvijek pokusna (koristeći novi AI). Molimo prijavite bilo kakav problem na truelight@openttd.org
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Više igrača
+
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Ime igrača:
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Ovo je ime po kojem će te drugi igrači identificirati
+STR_NETWORK_CONNECTION                                          :{BLACK}Veza:
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Izaberi između internetske igre ili igre preko lokalne mreže (LAN)
+
+STR_NETWORK_START_SERVER                                        :{BLACK}Pokreni poslužitelj
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Pokreni vlastiti poslužitelj
+
+STR_NETWORK_GAME_NAME                                           :{BLACK}Ime
+STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Ime igre
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Jezik, verzija poslužitelja, itd.
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Klikni na igru s liste kako bi ju izabrao
+
+STR_NETWORK_FIND_SERVER                                         :{BLACK}Pronađi poslužitelj
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Pronađi poslužitelje u mreži
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Dodaj poslužitelj
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Dodaje poslužitelj na popis koji će uvijek biti provjeren postoje li igre u tijeku.
+STR_NETWORK_ENTER_IP                                            :{BLACK}Unesi adresu domaćina
+
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klijenti
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klijenata online / klijenata maks{}Tvrki online / tvrki maks
+STR_NETWORK_GAME_INFO                                           :{SILVER}INFO O IGRI
+STR_ORANGE                                                      :{ORANGE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klijenti:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Jezik:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Set pločica:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Veličina karte:  {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Verzija poslužitelja:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Adresa poslužitelja:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_START_DATE                                          :{SILVER}Datum početka:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Trenutni datum:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD                                            :{SILVER}Zaštićeno zaporkom!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}POSLUŽITELJ NEDOSTUPAN
+STR_NETWORK_SERVER_FULL                                         :{SILVER}POSLUŽITELJ PUN
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}RAZLIKA U VERZIJAMA
+
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Pridruži se igri
 
 
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Započni novu igru za više igrača
 
-
-
-
-
-
-
+STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Ime igre:
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}Ime igre bit će prikazno drugim igračima u izborniku za odabir igre s više igrača
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Postavi zaporku
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Zaštiti svoju igru pomoću zaporke ukoliko ne želiš da bude javno dostupna
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Izaberi kartu:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Koju kartu želiš igrati?
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Maks klijenata:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Izaberi maksimalan broj klijenata. Ne moraju sva mjesta biti popunjena.
+STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :LAN
+STR_NETWORK_INTERNET                                            :Internet
+STR_NETWORK_LAN_INTERNET                                        :LAN / Internet
+STR_NETWORK_INTERNET_ADVERTISE                                  :Internet (oglasi)
+STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 igrača
+STR_NETWORK_1_PLAYERS                                           :1 igrač
+STR_NETWORK_2_PLAYERS                                           :2 igrača
+STR_NETWORK_3_PLAYERS                                           :3 igrača
+STR_NETWORK_4_PLAYERS                                           :4 igrača
+STR_NETWORK_5_PLAYERS                                           :5 igrača
+STR_NETWORK_6_PLAYERS                                           :6 igrača
+STR_NETWORK_7_PLAYERS                                           :7 igrača
+STR_NETWORK_8_PLAYERS                                           :8 igrača
+STR_NETWORK_9_PLAYERS                                           :9 igrača
+STR_NETWORK_10_PLAYERS                                          :10 igrača
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Maks tvrki:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Ograniči poslužitelj na određeni broj tvrtki
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Maks promatrača:
 
 ############ Leave those lines in this order!!
 ############ End of leave-in-this-order

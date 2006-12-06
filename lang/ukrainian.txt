@@ -1278,6 +1278,7 @@ STR_NETWORK_GAME_INFO                                           :{SILVER}Інф�
 STR_ORANGE                                                      :{ORANGE}{STRING}
 STR_NETWORK_CLIENTS                                             :{SILVER}Клієнт:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
 STR_NETWORK_LANGUAGE                                            :{SILVER}Мова:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :
 STR_NETWORK_MAP_SIZE                                            :{SILVER}Розмір карти:  {WHITE}{COMMA}x{COMMA}
 STR_NETWORK_SERVER_VERSION                                      :{SILVER}Версія серверу:  {WHITE}{STRING}
 STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Адреса серверу:  {WHITE}{STRING} : {NUM}
@@ -1917,6 +1918,22 @@ STR_SV_SHIP_NAME                                                :Корабел�
 STR_SV_AIRCRAFT_NAME                                            :Літак {COMMA}
 
 STR_SV_STNAME                                                   :{STRING}
+STR_SV_STNAME_NORTH                                             :
+STR_SV_STNAME_SOUTH                                             :
+STR_SV_STNAME_EAST                                              :
+STR_SV_STNAME_WEST                                              :
+STR_SV_STNAME_CENTRAL                                           :
+STR_SV_STNAME_TRANSFER                                          :
+STR_SV_STNAME_HALT                                              :
+STR_SV_STNAME_VALLEY                                            :
+STR_SV_STNAME_HEIGHTS                                           :
+STR_SV_STNAME_WOODS                                             :
+STR_SV_STNAME_LAKESIDE                                          :
+STR_SV_STNAME_EXCHANGE                                          :
+STR_SV_STNAME_AIRPORT                                           :
+STR_SV_STNAME_OILFIELD                                          :
+STR_SV_STNAME_MINES                                             :
+STR_SV_STNAME_DOCKS                                             :
 STR_SV_STNAME_BUOY_1                                            :{STRING} Бакен 1
 STR_SV_STNAME_BUOY_2                                            :{STRING} Бакен 2
 STR_SV_STNAME_BUOY_3                                            :{STRING} Бакен 3
@@ -1926,6 +1943,13 @@ STR_SV_STNAME_BUOY_6                                            :{STRING} Бак
 STR_SV_STNAME_BUOY_7                                            :{STRING} Бакен 7
 STR_SV_STNAME_BUOY_8                                            :{STRING} Бакен 8
 STR_SV_STNAME_BUOY_9                                            :{STRING} Бакен 9
+STR_SV_STNAME_ANNEXE                                            :
+STR_SV_STNAME_SIDINGS                                           :
+STR_SV_STNAME_BRANCH                                            :
+STR_SV_STNAME_UPPER                                             :
+STR_SV_STNAME_LOWER                                             :
+STR_SV_STNAME_HELIPORT                                          :
+STR_SV_STNAME_FOREST                                            :
 
 ############ end of	savegame specific region!
 
@@ -2466,10 +2490,12 @@ STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Поїзд дуже довгий
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Поїзд можна змінювати тільки тоді, коли зупинений в депо
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Поїзд{P "" и ів}
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Новий залізничний транспорт
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Нові елекричні потяги
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Новий монорельсовий транспорт
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Новий транспорт на магнітній подушці
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Будувати
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Клонувати
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Будувати копію авто. Утримуйте CTRL для спільного завдання
@@ -2620,6 +2646,7 @@ STR_9030_CITIZENS_CELEBRATE_FIRST                               :{BLACK}{BIGFONT
 STR_9031_ROAD_VEHICLE_CRASH_DRIVER                              :{BLACK}{BIGFONT}Аварія!{}Водій загинув при зіткненні авто з поїздом
 STR_9032_ROAD_VEHICLE_CRASH_DIE                                 :{BLACK}{BIGFONT}Аварія!{}{COMMA} загинуло при зіткненні авто з поїздом
 STR_9033_CAN_T_MAKE_VEHICLE_TURN                                :{WHITE}Неможливо розвернути авто...
+STR_ONLY_TURN_SINGLE_UNIT                                       :
 STR_9034_RENAME                                                 :{BLACK}Зміна назви
 STR_9035_RENAME_ROAD_VEHICLE_TYPE                               :{BLACK}Перейменувати тип авто
 STR_9036_RENAME_ROAD_VEHICLE_TYPE                               :{WHITE}Перейменувати тип авто
@@ -2830,6 +2857,17 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Відс
 STR_NEWGRF_FILENAME                                             :{BLACK}Ім'я файлу: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID графіки: {SILVER}{STRING}
 
+STR_NEWGRF_NO_INFO                                              :{BLACK}Немає доступної інформації
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Доступні NewGRF файли
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Додати файл
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Додати вибраний NewGRF файл до Вашої конфігурації
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Переглянути файли
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Неможу додати файл: дублювання GRF ID
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}Таких файлів не знайдено
+STR_NEWGRF_DISABLED                                             :{RED}Вимкнено
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Вибір грошової одиниці
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Валютний курс: {ORANGE}{CURRENCY} = Ј {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Роздільник:
@@ -2921,10 +2959,12 @@ STR_REPLACE_HELP_RIGHT_ARRAY                                    :{BLACK}Вибе
 STR_REPLACE_HELP_STOP_BUTTON                                    :{BLACK}Натисніть для припинення процесу оновлення потягів що вибрані ліворуч
 STR_REPLACE_HELP_START_BUTTON                                   :{BLACK}Натисніть для запуску оновлення потягів, що вибрані праворуч на потяги що вибрані праворуч
 STR_REPLACE_HELP_RAILTYPE                                       :{BLACK}Виберіть тип колії, для якої Ви хочете оновити потяг
+STR_REPLACE_HELP_REPLACE_INFO_TAB                               :
 STR_REPLACE_HELP                                                :{BLACK}Це дозволить Вам оновити одні види потягів іншими, коли потяг прибуде в депо
 STR_REPLACE_REMOVE_WAGON                                        :{BLACK}Продаж вагонів!!!: {ORANGE}{SKIP}{STRING}
 STR_REPLACE_REMOVE_WAGON_HELP                                   :{BLACK}Дозволити автооновленню видаляти вагони зберігаючи довжину потягу(починаючи спереду), якщо оновлення робить поїзд довшим.
 STR_REPLACE_ENGINE_WAGON_SELECT                                 :{BLACK}Оновлення: {ORANGE}{SKIP}{SKIP}{STRING}
+STR_REPLACE_ENGINE_WAGON_SELECT_HELP                            :
 STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}потяг неможна будувати
 
 STR_ENGINES                                                     :Потяги

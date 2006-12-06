@@ -2871,6 +2871,24 @@ STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Yüklenm
 STR_NEWGRF_FILENAME                                             :{BLACK}Dosya adı: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
 
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle
+STR_NEWGRF_REMOVE                                               :{BLACK}Kaldır
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Seçili NewGRF dosyasını listeden kaldır
+STR_NEWGRF_MOVEUP                                               :{BLACK}Yukarı Taşı
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Seçili NewGRF dosyasını listenin yukarısına taşı
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Aşağı Taşı
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Seçili NewGRF dosyasını listenin aşağısına taşı
+STR_NEWGRF_FILE_TIP                                             :{BLACK}Yüklü NewGRF dosyalarının listesidir. Seçeneklerini değiştirmek için bir dosyayı tıklayın
+STR_NEWGRF_PARAMETER                                            :{BLACK}Seçenekler: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}NewGRF seçeneklerini girin
+STR_NEWGRF_NO_INFO                                              :{BLACK}Hiç bilgi yok
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Mümkün olan NewGRF dosyaları
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Seçime ekle
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Dosyaları tekrar tara
+
+STR_NEWGRF_DISABLED                                             :{RED}Etkisiz
+
 STR_CURRENCY_WINDOW                                             :{WHITE}Özel Para Birimi
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Çarpan: {ORANGE}{CURRENCY} = £ {COMMA}
 STR_CURRENCY_SEPARATOR                                          :{LTBLUE}Ayraç:
