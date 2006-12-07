@@ -394,6 +394,11 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacité
 STR_NO_WAITING_CARGO                                            :{BLACK}Pas de marchandises en attente
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Tous les types de station
 STR_SELECT_ALL_TYPES                                            :{BLACK}Tous les types de marchandise (y compris pas en attente)
+STR_REPLACE_VEHICLES                                            :Remplacer véhicules
+STR_SEND_TRAIN_TO_DEPOT                                         :Envoyer aux Dépôt
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Envoyer aux Dépôt
+STR_SEND_SHIP_TO_DEPOT                                          :Envoyer aux Dépôt
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Envoyer aux Hangar
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -2933,21 +2938,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afficher
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres partagés de {COMMA} véhicule{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Afficher tous les véhicules partageant ce programme
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Dépôts
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Dépôts
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Dépôts
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Envoyer aux {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Envoyer tous les trains de la liste aux dépôts. Ctrl-clic pour entretien seul
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Envoyer tous les véhicules routiers de la liste aux dépôts. Ctrl-clic pour entretien seul
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Envoyer tous les navires de la liste aux dépôts. Ctrl-clic pour entretien seul
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Envoyer tous les aéronefs de la liste aux hangars. Ctrl-clic pour entretien seul
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Vendre
@@ -2984,7 +2974,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Navire{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aéronef{P "" s}
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Remplacer véhicules
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Remplacer {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Démarrer le remplacement
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stopper le remplacement

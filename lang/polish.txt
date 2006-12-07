@@ -446,6 +446,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Pojemnosc
 STR_NO_WAITING_CARGO                                            :{BLACK}Nie ma zadnego czekajacego towaru
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Zaznacz wszystkie typy stacji
 STR_SELECT_ALL_TYPES                                            :{BLACK}Zaznacz wszystkie typy towaru (oraz brak czekajacego towaru)
+STR_REPLACE_VEHICLES                                            :Zastap pojazdy
 
 ############ range for months starts
 STR_0162_JAN                                                    :Sty
@@ -3061,21 +3062,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Pokazuje
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Wspoldzielone polecenia {COMMA} pojazd{P u ow ow}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Pokaz wszystkie pojazdy wspoldzielace te polecenia
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :zajezdni
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :zajezdni
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :stoczni
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :hangarow
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Wyslij do {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Wyslij do zajezdni wszystkie pociagi. CTRL+klik tylko serwisuje
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Wyslij do zajezdni wszystkie samochody na liscie. CTRL+klik tylko serwisuje
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Wyslij do stoczni wszystkie statkina liscie. CTRL+klik tylko serwisuje
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Wyslij do hangarow wszystkie samoloty na liscie. CTRL+klik tylko serwisuje
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Sprzedaj
@@ -3112,7 +3098,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Stat{P ek ki kow}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Samolot{P "" y ow}
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Zastap pojazdy
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Zastap {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Rozpocznij zastepowanie
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zatrzymaj zastepowanie

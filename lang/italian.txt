@@ -393,6 +393,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacità Cargo
 STR_NO_WAITING_CARGO                                            :{BLACK}Non c'è nessun tipo di merce in attesa
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleziona tuti i fabbricati
 STR_SELECT_ALL_TYPES                                            :{BLACK}Seleziona tutti i tipi di merce (comprese le merci non in attesa)
+STR_REPLACE_VEHICLES                                            :Rimpiazza Veicoli
 
 ############ range for months starts
 STR_0162_JAN                                                    :Gen
@@ -2932,21 +2933,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra t
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordini comuni di {COMMA} Veicol{P o i}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostra tutti i veicoli con la stessa lista ordini
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depositi
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depositi
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depositi
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangar
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Manda a {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Manda tutti i treni in lista al deposito. CTRL+click per solo servizio
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Manda tutti i veicoli stradali in lista al deposito. CTRL+click per solo servizio
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Manda tutte le navi in lista al deposito. CTRL+click per solo servizio
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Manda tutti gli aerei in lista all'hangar. CTRL+click per solo servizio
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Vendi
@@ -2983,7 +2969,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Nav{P e i}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aere{P o i}
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Rimpiazza Veicoli
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Rimpiazza {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Inizia Rimpiazzo Veicoli
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Finisci Rimpiazzo Veicoli

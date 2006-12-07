@@ -393,6 +393,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lastkapacitet
 STR_NO_WAITING_CARGO                                            :{BLACK}Ingen sorts last väntar
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Markera alla inrättningar
 STR_SELECT_ALL_TYPES                                            :{BLACK}Välj alla last-typer (inklusive icke väntande last)
+STR_REPLACE_VEHICLES                                            :Byt ut fordon
 
 ############ range for months starts
 STR_0162_JAN                                                    :jan
@@ -2929,21 +2930,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Visa all
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delade order med {COMMA} Fordon{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Visa alla fordon med samma körschema
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depåer
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depåer
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depåer
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarer
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Skicka till {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Skicka alla tåg i listan till depåer. CTRL+klick servar endast
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Skicka alla fordon i listan till depåer. CTRL+klick servar endast
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Skicka alla skepp i listan till depåer. CTRL+klick servar endast
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Skicka alla flygplan i listan till hangarer. CTRL+klick servar endast
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Sälj
@@ -2980,7 +2966,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Skepp
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Flygplan
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Byt ut fordon
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Byt ut {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Börja byta ut fordon
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Sluta byta ut fordon

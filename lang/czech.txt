@@ -506,6 +506,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Přepravní kap
 STR_NO_WAITING_CARGO                                            :{BLACK}Nečeká žádná komodita jakéhokoli druhu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Označit všechny druhy stanic
 STR_SELECT_ALL_TYPES                                            :{BLACK}Označit všechny druhy komodit (včetne žádného čekajícího nákladu)
+STR_REPLACE_VEHICLES                                            :Vyměňování vozidel
 
 ############ range for months starts
 STR_0162_JAN                                                    :led
@@ -3019,21 +3020,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Sdílené příkazy {COMMA} vozid{P lo la el}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit všechny prostředky se stejným jízdním řádem
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :depa
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :depa
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :depa
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :hangáru
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Poslat do {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Poslat všechny vlaky v tomto seznamu do dep. Při CTRL+kliknutí se pouze provede údržba
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Poslat všechna silniční vozidla v tomto seznamu do dep. Při CTRL+kliknutí se pouze provede údržba
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Poslat všechny lodě v tomto seznamu do dep. Při CTRL+kliknutí se pouze provede údržba
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Poslat všechna letadla a vrtulníky v tomto seznamu seznamu do hangárů. Při CTRL+kliknutí se pouze provede údržba
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Prodat
@@ -3070,7 +3056,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} lo{P ď dě dí}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} letad{P lo la el}
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Vyměňování vozidel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vyměňování {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zapnout vyměňování
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Vypnout vyměňování

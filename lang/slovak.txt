@@ -457,6 +457,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Kapacita nákla
 STR_NO_WAITING_CARGO                                            :{BLACK}Necaka ziadny typ nakladu
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Oznacit vsetky moznosti
 STR_SELECT_ALL_TYPES                                            :{BLACK}Oznacit vsetky druhy nakladu (vratane druhu, kt. necaka na prepravu)
+STR_REPLACE_VEHICLES                                            :Vymena vozidiel
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -2974,21 +2975,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Zobrazit
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Zdielane prikazy  {COMMA} vozid{P la iel iel}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Zobrazit vsetky vozidla s rovnakym zoznamom prikazov
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depá
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Garáže
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Lodenice
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangáre
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Poslat do {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Poslat všetky vlaky v zozname do depa. CTRL+klik pre vykonanie servisu
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Poslat všetky vozidlá do garáže. CTRL+klik pre vykonanie servisu
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Poslat všetky lode v zozname do lodenice. CTRL+klik pre vykonanie servisu
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Poslat všetky lietadlá do hangáru. CTRL+klik pre vykonanie servisu
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Predat
@@ -3025,7 +3011,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Lod{P "" e í}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lietad{P lo lá iel}
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Vymena vozidiel
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vymena {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Zacat vymenu vozidiel
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Zastavit vymenu vozidiel

@@ -393,6 +393,11 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Vracht capacite
 STR_NO_WAITING_CARGO                                            :{BLACK}Er wacht geen vracht van enig type
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Kies alle faciliteiten
 STR_SELECT_ALL_TYPES                                            :{BLACK}Kies alle vracht typen (inclusief niet wachtende vracht)
+STR_REPLACE_VEHICLES                                            :Vervang voertuigen
+STR_SEND_TRAIN_TO_DEPOT                                         :Stuur naar Depot
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Stuur naar Depot
+STR_SEND_SHIP_TO_DEPOT                                          :Stuur naar Depot
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Stuur naar Hangar
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -2932,21 +2937,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Geef all
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Gedeelde orders van {COMMA} voertuig{P "" en}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Toon alle voertuigen met de zelfde orders
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depots
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depots
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depots
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Stuur naar {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Stuur alle treinen in de lijst naar depots CTRL+Klik voor alleen onderhoud
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Stuur alle weg voertuigen in de lijst naar de hangars. CTRL+Klik zorgt alleen voor onderhoudsbeurt
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Stuur alle schepen in de lijst naar de hangars. CTRL+Klik zorgt alleen voor onderhoudsbeurt
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Stuur alle vliegtuigen in de lijst naar de hangars. CTRL+Klik zorgt alleen voor onderhoudsbeurt
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Verkoop
@@ -2983,7 +2973,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Schip{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Vliegtuig
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Vervang voertuigen
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Vervang {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start het Vervangen
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop het Vervangen

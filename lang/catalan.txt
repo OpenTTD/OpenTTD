@@ -393,6 +393,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitat de c�
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha carrega de aquest tipus esperant
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal·lacions
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (inloent carga sense espera)
+STR_REPLACE_VEHICLES                                            :Substituir Vehicles
 
 ############ range for months starts
 STR_0162_JAN                                                    :Gen
@@ -2932,21 +2933,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostra t
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Ordres compartides de {COMMA} Vehicle{P "" s}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tots els vehicles que tenen les mateixes ordres
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Cotxeres
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Cotxeres
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Drassanes
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangars
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Enviar tots els trens de la llista a les cotxeres. CTRL+click farà només revisió
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Enviar tots els vehicles de la llista a les cotxeres. CTRL+click farà només revisió
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Enviar tots els vaixells de la llista a les drassanes. CTRL+click farà només revisió
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Enviar tots els avions de la llista als hangars. CTRL+click farà només revisió
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Vendre
@@ -2983,7 +2969,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Vaixell{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Avió
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Substituir Vehicles
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Substitueix {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Començar a substituir
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de substituir

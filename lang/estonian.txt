@@ -450,6 +450,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Laadungi mahuta
 STR_NO_WAITING_CARGO                                            :{BLACK}Kaupa pole ootamas
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vali kõik tööstused
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vali kõik kaubatüüpid (ka mitteoodatav kaup)
+STR_REPLACE_VEHICLES                                            :Asenda sõidukeid
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jaan
@@ -2969,21 +2970,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Näita k
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Jagatud sõiduplaan{COMMA} Auto{P "" d}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Näita kõiki sama sõidukavaga sõidukeid
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Rongijaamad
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depood
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Sadamad
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Angaarid
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Saada {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Saada kõik nimekirjas olevad rongid depoodesse. CTRL+klõps ainult teenindab
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Saada kõik nimekirjas olevad sõidukid depoodesse. CTRL+klõps ainult teenindab
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Saada kõik nimekirjas olevad laevad angaaridesse. CTRL+klõps ainult teenindab
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Saada kõik lennukid angaari. CTRL+klõps ainult teenindab
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Müü
@@ -3020,7 +3006,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Laev{P "" ad}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Lennumasin
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Asenda sõidukeid
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Asenda {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Alusa sõidukite asendamist
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Lõppeta sõidukite asendamist

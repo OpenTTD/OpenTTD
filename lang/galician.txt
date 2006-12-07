@@ -384,6 +384,7 @@ STR_ENGINE_SORT_INTRO_DATE                                      :Data de Present
 STR_ENGINE_SORT_RUNNING_COST                                    :Coste Mantemento
 STR_ENGINE_SORT_POWER_VS_RUNNING_COST                           :Potencia/Coste Mantemento
 STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacidade De Carga
+STR_REPLACE_VEHICLES                                            :Reemplazar Vehículos
 
 ############ range for months starts
 STR_0162_JAN                                                    :Xan
@@ -2822,17 +2823,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Mostrar 
 
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Mostrar tódolos vehículos que comparte esta planificación
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Depósitos
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Depósitos
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Depósitos
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangares
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Enviar a {SKIP}{SKIP}{SKIP}{STRING}
-
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Vender
@@ -2851,7 +2841,6 @@ STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Barco{P "" s}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronave
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Reemplazar Vehículos
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Reemplazar {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Comezar a Reemplazar Vehículos
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Parar de Reemplazar Vehículos

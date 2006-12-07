@@ -459,6 +459,11 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Teherkapacitás
 STR_NO_WAITING_CARGO                                            :{BLACK}Semmilyen áru nem várakozik
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Minden szállítóegység kiválasztása
 STR_SELECT_ALL_TYPES                                            :{BLACK}Minden rakománytípus mutatása (beleértve ha nincs várakozó rakomány)
+STR_REPLACE_VEHICLES                                            :Jármûvek lecserélése
+STR_SEND_TRAIN_TO_DEPOT                                         :Elküldi depóba
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Elküldi depóba
+STR_SEND_SHIP_TO_DEPOT                                          :Elküldi dokkba
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Elküldi hangárba
 
 ############ range for months starts
 STR_0162_JAN                                                    :jan
@@ -3032,25 +3037,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Kilistá
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}{COMMA} jármû megosztott menetrendje
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Megmutatja az összes jármûvet, aminek ugyanaz a menetrendje
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :depó
-STR_TRAIN_DEPOTS__DEPOT_ONLY.ba                                 :depóba
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :depó
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY.ba                          :depóba
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :dokk
-STR_SHIP_DEPOTS__DEPOT_ONLY.ba                                  :dokkba
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :hangár
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY.ba                             :hangárba
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Elküldi {SKIP}{SKIP}{SKIP}{STRING.ba}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}A listán lévõ összes vonat depóba küldése. CTRL+kattintásra csak javításra küld
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}A listán lévõ összes közúti jármû depóba küldése. CTRL+kattintásra csak javításra küld.
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}A listán lévõ összes hajó dokkba küldése. CTRL+kattintásra csak javításra küld.
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}A listán lévõ összes repülõ hangárba küldése. CTRL+kattintásra csak javításra küld.
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Elad
@@ -3087,7 +3073,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} hajó
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} repülõgép
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Jármûvek lecserélése
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Lecserél {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Jármûcsere elkezdése
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Jármûcsere befejezése

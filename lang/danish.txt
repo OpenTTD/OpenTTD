@@ -393,6 +393,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Lasteevne
 STR_NO_WAITING_CARGO                                            :{BLACK}Der er ingen fragt af nogen type, der venter
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Vælg alle faciliteter
 STR_SELECT_ALL_TYPES                                            :{BLACK}Vælg alle lasttyper (inklusiv fragttyper, der ikke venter)
+STR_REPLACE_VEHICLES                                            :Udskift Køretøjer
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -2911,21 +2912,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Vis alle
 STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Delte ordrer af {COMMA} transportmid{P del ler}
 STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Vis alle transportmidler, som har den samme rute
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
-STR_TRAIN_DEPOTS__DEPOT_ONLY                                    :Remiser
-STR_ROAD_VEHICLE_DEPOTS__DEPOT_ONLY                             :Værksteder
-STR_SHIP_DEPOTS__DEPOT_ONLY                                     :Skibsdokke
-STR_AIRCRAFT_HANGARS__DEPOT_ONLY                                :Hangarer
-
-STR_SEND_TO_DEPOTS                                              :{BLACK}Send til {SKIP}{SKIP}{SKIP}{STRING}
-
-STR_SEND_TO_DEPOTS_TRAIN_TIP                                    :{BLACK}Send alle toge i listen i remise. CTRL+klik for kun eftersyn
-STR_SEND_TO_DEPOTS_ROADVEH_TIP                                  :{BLACK}Send alle køretøjer i listen til værksted. CTRL+klik for kun eftersyn
-STR_SEND_TO_DEPOTS_SHIP_TIP                                     :{BLACK}Send alle skibe i listen til dok. CTRL+klik for kun eftersyn
-STR_SEND_TO_DEPOTS_AIRCRAFT_TIP                                 :{BLACK}Send alle fly i listen til hangar. CTRL+klik for kun eftersyn
-
 ### depot strings
 
 STR_SELL                                                        :{BLACK}Sælg
@@ -2962,7 +2948,6 @@ STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING}
 STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Skib{P "" e}
 STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Fly
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Udskift Køretøjer
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Udskift {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Start udskiftning
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stop udskiftning
