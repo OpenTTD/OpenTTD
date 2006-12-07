@@ -1026,6 +1026,55 @@ static bool HandleMouseOver(void)
 	return true;
 }
 
+/** Update all the widgets of a window based on their resize flags
+ * Both the areas of the old window and the new sized window are set dirty
+ * ensuring proper redrawal.
+ * @param w Window to resize
+ * @param x delta x-size of changed window (positive if larger, etc.(
+ * @param y delta y-size of changed window */
+void ResizeWindow(Window *w, int x, int y)
+{
+	Widget *wi;
+	bool resize_height = false;
+	bool resize_width = false;
+
+	if (x == 0 && y == 0) return;
+
+	SetWindowDirty(w);
+	for (wi = w->widget; wi->type != WWT_LAST; wi++) {
+		/* Isolate the resizing flags */
+		byte rsizeflag = GB(wi->display_flags, 0, 4);
+
+		if (rsizeflag == RESIZE_NONE) continue;
+
+		/* Resize the widget based on its resize-flag */
+		if (rsizeflag & RESIZE_LEFT) {
+			wi->left += x;
+			resize_width = true;
+		}
+
+		if (rsizeflag & RESIZE_RIGHT) {
+			wi->right += x;
+			resize_width = true;
+		}
+
+		if (rsizeflag & RESIZE_TOP) {
+			wi->top += y;
+			resize_height = true;
+		}
+
+		if (rsizeflag & RESIZE_BOTTOM) {
+			wi->bottom += y;
+			resize_height = true;
+		}
+	}
+
+	/* We resized at least 1 widget, so let's resize the window totally */
+	if (resize_width)  w->width  += x;
+	if (resize_height) w->height += y;
+
+	SetWindowDirty(w);
+}
 
 static bool _dragging_window;
 
@@ -1211,45 +1260,8 @@ static bool HandleWindowDragging(void)
 			_drag_delta.x += x;
 			_drag_delta.y += y;
 
-			SetWindowDirty(w);
-
-			/* Scroll through all the windows and update the widgets if needed */
-			{
-				Widget *wi = w->widget;
-				bool resize_height = false;
-				bool resize_width = false;
-
-				while (wi->type != WWT_LAST) {
-					/* Isolate the resizing flags */
-					byte rsizeflag = GB(wi->display_flags, 0, 4);
-
-					if (rsizeflag != RESIZE_NONE) {
-						/* Resize this widget */
-						if (rsizeflag & RESIZE_LEFT) {
-							wi->left += x;
-							resize_width = true;
-						}
-						if (rsizeflag & RESIZE_RIGHT) {
-							wi->right += x;
-							resize_width = true;
-						}
-
-						if (rsizeflag & RESIZE_TOP) {
-							wi->top += y;
-							resize_height = true;
-						}
-						if (rsizeflag & RESIZE_BOTTOM) {
-							wi->bottom += y;
-							resize_height = true;
-						}
-					}
-					wi++;
-				}
-
-				/* We resized at least 1 widget, so let's rezise the window totally */
-				if (resize_width)  w->width  = x + w->width;
-				if (resize_height) w->height = y + w->height;
-			}
+			/* ResizeWindow sets both pre- and after-size to dirty for redrawal */
+			ResizeWindow(w, x, y);
 
 			e.event = WE_RESIZE;
 			e.we.sizing.size.x = x + w->width;
@@ -1257,8 +1269,6 @@ static bool HandleWindowDragging(void)
 			e.we.sizing.diff.x = x;
 			e.we.sizing.diff.y = y;
 			w->wndproc(w, &e);
-
-			SetWindowDirty(w);
 			return false;
 		}
 	}

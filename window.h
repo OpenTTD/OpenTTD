@@ -630,6 +630,7 @@ Window *AllocateWindowDesc(const WindowDesc *desc);
 Window *AllocateWindowDescFront(const WindowDesc *desc, int window_number);
 
 void DrawWindowViewport(const Window *w);
+void ResizeWindow(Window *w, int x, int y);
 
 /**
  * Sets the enabled/disabled status of a widget.
