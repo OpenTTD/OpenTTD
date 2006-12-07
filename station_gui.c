@@ -28,7 +28,7 @@ enum StationListWidgets {
 	STATIONLIST_WIDGET_AIRPLANE,
 	STATIONLIST_WIDGET_SHIP,
 	STATIONLIST_WIDGET_CARGOSTART = 12,
-	STATIONLIST_WIDGET_CARGONONE = 24,
+	STATIONLIST_WIDGET_NOCARGOWAITING = 24,
 	STATIONLIST_WIDGET_FACILALL = 26,
 	STATIONLIST_WIDGET_CARGOALL,
 	STATIONLIST_WIDGET_SORTBY,
@@ -277,7 +277,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		}
 		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
 		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGOALL, cargo_filter == CARGO_ALL_SELECTED);
-		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGONONE, cargo_filter == CARGO_NONE_SELECTED);
+		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_NOCARGOWAITING, cargo_filter == CARGO_NONE_SELECTED);
 
 		sl->sort_list = NULL;
 		sl->flags = SL_REBUILD;
@@ -324,7 +324,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 				x += 14;
 			}
 
-			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_CARGONONE) ? 1 : 0;
+			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_NOCARGOWAITING) ? 1 : 0;
 			DrawString(x + 2 + cg_ofst, y + 2 + cg_ofst, STR_ABBREV_NONE, 16);
 			x += 14;
 			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_CARGOALL) ? 1 : 0;
@@ -424,7 +424,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			for (i = 0; i < NUM_CARGO; i++) {
 				LowerWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
 			}
-			RaiseWindowWidget(w, STATIONLIST_WIDGET_CARGONONE);
+			RaiseWindowWidget(w, STATIONLIST_WIDGET_NOCARGOWAITING);
 			LowerWindowWidget(w, STATIONLIST_WIDGET_CARGOALL);
 
 			cargo_filter = CARGO_ALL_SELECTED;
@@ -446,7 +446,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		break;
 
 		default:
-			if (e->we.click.widget >= STATIONLIST_WIDGET_CARGOSTART && e->we.click.widget <= STATIONLIST_WIDGET_CARGONONE) { //change cargo_filter
+			if (e->we.click.widget >= STATIONLIST_WIDGET_CARGOSTART && e->we.click.widget <= STATIONLIST_WIDGET_NOCARGOWAITING) { //change cargo_filter
 				if (_ctrl_pressed) {
 					TOGGLEBIT(cargo_filter, e->we.click.widget - STATIONLIST_WIDGET_CARGOSTART);
 					ToggleWidgetLoweredState(w, e->we.click.widget);
