@@ -479,7 +479,7 @@ void ShowBuildVehicleWindow(TileIndex tile, byte type)
 
 	switch (type) {
 		case VEH_Aircraft: {
-			byte acc_planes = GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
+			byte acc_planes = (tile == 0) ? ALL : GetAirport(GetStationByTile(tile)->airport_type)->acc_planes;
 			bv->filter.acc_planes = acc_planes;
 			break;
 		}
