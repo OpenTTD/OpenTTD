@@ -27,7 +27,6 @@
 #include "aircraft.h"
 #include "roadveh.h"
 #include "depot.h"
-#include "resize_window_widgets.h"
 
 typedef struct Sorting {
 	Listing aircraft;
@@ -1390,7 +1389,7 @@ enum {
 	PLY_WND_PRC__SIZE_OF_ROW_BIG   = 36,
 };
 
-typedef enum VehicleListWindowWidgets {
+enum VehicleListWindowWidgets {
 	VLW_WIDGET_CLOSEBOX = 0,
 	VLW_WIDGET_CAPTION,
 	VLW_WIDGET_STICKY,
@@ -1406,24 +1405,6 @@ typedef enum VehicleListWindowWidgets {
 	VLW_WIDGET_STOP_ALL,
 	VLW_WIDGET_START_ALL,
 	VLW_WIDGET_RESIZE,
-} VehicleListWindowWidget;
-
-static const byte vehicle_list_widget_moves[] = {
-	WIDGET_MOVE_NONE,               // VLW_WIDGET_CLOSEBOX
-	WIDGET_STRETCH_RIGHT,           // VLW_WIDGET_CAPTION
-	WIDGET_MOVE_RIGHT,              // VLW_WIDGET_STICKY
-	WIDGET_MOVE_NONE,               // VLW_WIDGET_SORT_ORDER
-	WIDGET_MOVE_NONE,               // VLW_WIDGET_SORT_BY_TEXT
-	WIDGET_MOVE_NONE,               // VLW_WIDGET_SORT_BY_PULLDOWN
-	WIDGET_STRETCH_RIGHT,           // VLW_WIDGET_EMPTY_SPACE_TOP_RIGHT
-	WIDGET_STRETCH_DOWN_RIGHT,      // VLW_WIDGET_LIST
-	WIDGET_MOVE_RIGHT_STRETCH_DOWN, // VLW_WIDGET_SCROLLBAR
-	WIDGET_MOVE_DOWN_STRETCH_RIGHT, // VLW_WIDGET_OTHER_PLAYER_FILLER
-	WIDGET_MOVE_DOWN,               // VLW_WIDGET_SEND_TO_DEPOT
-	WIDGET_MOVE_DOWN,               // VLW_WIDGET_AUTOREPLACE
-	WIDGET_MOVE_DOWN_RIGHT,         // VLW_WIDGET_STOP_ALL
-	WIDGET_MOVE_DOWN_RIGHT,         // VLW_WIDGET_START_ALL
-	WIDGET_MOVE_DOWN_RIGHT,         // VLW_WIDGET_RESIZE
 };
 
 static const Widget _vehicle_list_widgets[] = {
@@ -1438,7 +1419,7 @@ static const Widget _vehicle_list_widgets[] = {
 	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   170,   181, 0x0,                  STR_NULL},
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   124,   170,   181, STR_SEND_TO_DEPOTS,   STR_NULL},
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   125,   247,   170,   181, STR_REPLACE_VEHICLES, STR_REPLACE_HELP},
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   125,   223,   170,   181, STR_REPLACE_VEHICLES, STR_REPLACE_HELP},
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   224,   235,   170,   181, SPR_FLAG_VEH_STOPPED, STR_MASS_STOP_LIST_TIP},
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   236,   247,   170,   181, SPR_FLAG_VEH_RUNNING, STR_MASS_START_LIST_TIP},
 	{  WWT_RESIZEBOX,   RESIZE_LRTB,    14,   248,   259,   170,   181, 0x0,                  STR_RESIZE_BUTTON},
@@ -1448,7 +1429,6 @@ static const Widget _vehicle_list_widgets[] = {
 /* Resize the bottom row of buttons to make them equal in size when resizing */
 static void ResizeVehicleListWidgets(Window *w)
 {
-	w->widget[VLW_WIDGET_AUTOREPLACE].right   = w->widget[VLW_WIDGET_STOP_ALL].left - 1;
 	w->widget[VLW_WIDGET_SEND_TO_DEPOT].right = w->widget[VLW_WIDGET_AUTOREPLACE].right / 2;
 	w->widget[VLW_WIDGET_AUTOREPLACE].left    = w->widget[VLW_WIDGET_SEND_TO_DEPOT].right + 1;
 }
@@ -1572,13 +1552,6 @@ static void CreateVehicleListWindow(Window *w)
 	vl->l.sort_type = vl->_sorting->criteria;
 	vl->sort_list = NULL;
 	vl->l.resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;	// Set up resort timer
-
-	/* Resize the widgets to fit the window size.
-	 * Aircraft and ships already got the right size widgets */
-	if (w->resize.step_height == PLY_WND_PRC__SIZE_OF_ROW_SMALL) {
-		ResizeWindowWidgets(w, vehicle_list_widget_moves, lengthof(vehicle_list_widget_moves), vl->vehicle_type == VEH_Train ? 65 : 0, 38);
-	}
-	ResizeVehicleListWidgets(w);
 }
 
 static void DrawSmallOrderList(const Vehicle *v, int x, int y)
@@ -1827,7 +1800,7 @@ void PlayerVehWndProc(Window *w, WindowEvent *e)
 }
 
 static const WindowDesc _player_vehicle_list_train_desc = {
-	WDP_AUTO, WDP_AUTO, 325, 220,
+	WDP_AUTO, WDP_AUTO, 260, 182,
 	WC_TRAINS_LIST, 0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
@@ -1835,7 +1808,7 @@ static const WindowDesc _player_vehicle_list_train_desc = {
 };
 
 static const WindowDesc _player_vehicle_list_road_veh_desc = {
-	WDP_AUTO, WDP_AUTO, 260, 220,
+	WDP_AUTO, WDP_AUTO, 260, 182,
 	WC_ROADVEH_LIST,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_vehicle_list_widgets,
@@ -1876,12 +1849,32 @@ static void ShowVehicleListWindowLocal(PlayerID player, byte vehicle_type, Stati
 		num |= (station << 16) | VLW_STATION_LIST;
 	}
 
+	/* The vehicle list windows have been unified. Just some strings need
+	 * to be changed which happens in the WE_CREATE event and resizing
+	 * some of the windows to the correct size */
 	switch (vehicle_type) {
-		case VEH_Train:    w = AllocateWindowDescFront(&_player_vehicle_list_train_desc, num);    break;
-		case VEH_Road:     w = AllocateWindowDescFront(&_player_vehicle_list_road_veh_desc, num); break;
-		case VEH_Ship:     w = AllocateWindowDescFront(&_player_vehicle_list_ship_desc, num);     break;
-		case VEH_Aircraft: w = AllocateWindowDescFront(&_player_vehicle_list_aircraft_desc, num); break;
 		default: NOT_REACHED();
+		case VEH_Train:
+			w = AllocateWindowDescFront(&_player_vehicle_list_train_desc, num);
+			if (w != NULL) ResizeWindow(w, 65, 38);
+			break;
+		case VEH_Road:
+			w = AllocateWindowDescFront(&_player_vehicle_list_road_veh_desc, num);
+			if (w != NULL) ResizeWindow(w, 0, 38);
+			break;
+		case VEH_Ship:
+			w = AllocateWindowDescFront(&_player_vehicle_list_ship_desc, num);
+			break;
+		case VEH_Aircraft:
+			w = AllocateWindowDescFront(&_player_vehicle_list_aircraft_desc, num);
+			break;
+	}
+
+	if (w != NULL) {
+		ResizeVehicleListWidgets(w);
+		/* Set the minimum window size to the current window size */
+		w->resize.width = w->width;
+		w->resize.height = w->height;
 	}
 }
 

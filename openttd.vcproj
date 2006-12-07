@@ -626,9 +626,6 @@
 				RelativePath=".\rail.h">
 			</File>
 			<File
-				RelativePath=".\resize_window_widgets.h">
-			</File>
-			<File
 				RelativePath=".\saveload.h">
 			</File>
 			<File

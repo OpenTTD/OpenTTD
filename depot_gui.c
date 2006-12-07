@@ -18,7 +18,6 @@
 #include "vehicle_gui.h"
 #include "station_map.h"
 #include "newgrf_engine.h"
-#include "resize_window_widgets.h"
 
 /*
  * Since all depot window sizes aren't the same, we need to modify sizes a little.
@@ -27,7 +26,7 @@
  */
 
 /* Names of the widgets. Keep them in the same order as in the widget array */
-typedef enum DepotWindowWidgets {
+enum DepotWindowWidgets {
 	DEPOT_WIDGET_CLOSEBOX = 0,
 	DEPOT_WIDGET_CAPTION,
 	DEPOT_WIDGET_STICKY,
@@ -45,28 +44,6 @@ typedef enum DepotWindowWidgets {
 	DEPOT_WIDGET_STOP_ALL,
 	DEPOT_WIDGET_START_ALL,
 	DEPOT_WIDGET_RESIZE,
-	DEPOT_WIDGET_LAST, // used to assert if DepotWindowWidgets and widget_moves got different lengths. Due to this usage, it needs to be last
-} DepotWindowWidget;
-
-/* Define how to move each widget. The order is important */
-static const byte widget_moves[] = {
-	WIDGET_MOVE_NONE,               // DEPOT_WIDGET_CLOSEBOX
-	WIDGET_STRETCH_RIGHT,           // DEPOT_WIDGET_CAPTION
-	WIDGET_MOVE_RIGHT,              // DEPOT_WIDGET_STICKY
-	WIDGET_MOVE_RIGHT_STRETCH_DOWN, // DEPOT_WIDGET_SELL
-	WIDGET_MOVE_NONE,               // DEPOT_WIDGET_SELL_CHAIN
-	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_SELL_ALL
-	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_AUTOREPLACE
-	WIDGET_STRETCH_DOWN_RIGHT,      // DEPOT_WIDGET_MATRIX
-	WIDGET_MOVE_RIGHT_STRETCH_DOWN, // DEPOT_WIDGET_V_SCROLL
-	WIDGET_MOVE_NONE,               // DEPOT_WIDGET_H_SCROLL
-	WIDGET_MOVE_DOWN,               // DEPOT_WIDGET_BUILD
-	WIDGET_MOVE_DOWN,               // DEPOT_WIDGET_CLONE
-	WIDGET_MOVE_DOWN,               // DEPOT_WIDGET_LOCATION
-	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_VEHICLE_LIST
-	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_STOP_ALL
-	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_START_ALL
-	WIDGET_MOVE_DOWN_RIGHT,         // DEPOT_WIDGET_RESIZE
 };
 
 /* Widget array for all depot windows.
@@ -86,20 +63,20 @@ static const Widget _depot_widgets[] = {
 
 	/* Widgets are set up run-time */
 	{     WWT_IMGBTN,    RESIZE_LRB,    14,   270,   292,    14,    37, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL
-	{     WWT_IMGBTN,   RESIZE_LRTB,    14,   326,   348,     0,     0, SPR_SELL_CHAIN_TRAIN,STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
+	{     WWT_IMGBTN,   RESIZE_LRTB,    14,   270,   292,    14,    37, SPR_SELL_CHAIN_TRAIN,STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP}, // DEPOT_WIDGET_SELL_CHAIN, trains only
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    38,    60, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_SELL_ALL
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   292,    61,    83, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_AUTOREPLACE
 
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   269,    14,    83, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_MATRIX
 	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   293,   304,    14,    83, 0x0,                 STR_0190_SCROLL_BAR_SCROLLS_LIST}, // DEPOT_WIDGET_V_SCROLL
 
-	{ WWT_HSCROLLBAR,    RESIZE_RTB,    14,     0,   325,    98,   109, 0x0,                 STR_HSCROLL_BAR_SCROLLS_LIST},     // DEPOT_WIDGET_H_SCROLL, trains only
+	{ WWT_HSCROLLBAR,    RESIZE_RTB,    14,     0,   269,    72,    83, 0x0,                 STR_HSCROLL_BAR_SCROLLS_LIST},     // DEPOT_WIDGET_H_SCROLL, trains only
 
 	/* The buttons in the bottom of the window. left and right is not important as they are later resized to be equal in size
 	 * This calculation is based on right in DEPOT_WIDGET_LOCATION and it presumes left of DEPOT_WIDGET_BUILD is 0            */
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,    85,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_BUILD
 	{    WWT_TEXTBTN,     RESIZE_TB,    14,    86,   170,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_CLONE
-	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,   171,   257,    84,    95, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
+	{ WWT_PUSHTXTBTN,    RESIZE_RTB,    14,   171,   257,    84,    95, STR_00E4_LOCATION,   STR_NULL},                         // DEPOT_WIDGET_LOCATION
 	{ WWT_PUSHTXTBTN,   RESIZE_LRTB,    14,   258,   269,    84,    95, 0x0,                 STR_NULL},                         // DEPOT_WIDGET_VEHICLE_LIST
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   270,   280,    84,    95, SPR_FLAG_VEH_STOPPED,STR_NULL},                         // DEPOT_WIDGET_STOP_ALL
 	{ WWT_PUSHIMGBTN,   RESIZE_LRTB,    14,   281,   292,    84,    95, SPR_FLAG_VEH_RUNNING,STR_NULL},                         // DEPOT_WIDGET_START_ALL
@@ -110,7 +87,7 @@ static const Widget _depot_widgets[] = {
 static void DepotWndProc(Window *w, WindowEvent *e);
 
 static const WindowDesc _train_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 361, 122,
+	WDP_AUTO, WDP_AUTO, 305, 96,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -118,7 +95,7 @@ static const WindowDesc _train_depot_desc = {
 };
 
 static const WindowDesc _road_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 315, 96,
+	WDP_AUTO, WDP_AUTO, 305, 96,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -126,7 +103,7 @@ static const WindowDesc _road_depot_desc = {
 };
 
 static const WindowDesc _ship_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 305, 98,
+	WDP_AUTO, WDP_AUTO, 305, 96,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -134,7 +111,7 @@ static const WindowDesc _ship_depot_desc = {
 };
 
 static const WindowDesc _aircraft_depot_desc = {
-	WDP_AUTO, WDP_AUTO, 331, 98,
+	WDP_AUTO, WDP_AUTO, 305, 96,
 	WC_VEHICLE_DEPOT,0,
 	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_depot_widgets,
@@ -596,10 +573,9 @@ static void ClonePlaceObj(const Window *w)
 
 static void ResizeDepotButtons(Window *w)
 {
-	/* We got the widget moved around. Now we will make some widgets to fill the gab between some widgets in equal sizes */
+	/* We got the widget moved around. Now we will make some widgets to fill the gap between some widgets in equal sizes */
 
 	/* Make the buttons in the bottom equal in size */
-	w->widget[DEPOT_WIDGET_LOCATION].right = w->widget[DEPOT_WIDGET_VEHICLE_LIST].left - 1;
 	w->widget[DEPOT_WIDGET_BUILD].right    = w->widget[DEPOT_WIDGET_LOCATION].right / 3;
 	w->widget[DEPOT_WIDGET_LOCATION].left  = w->widget[DEPOT_WIDGET_BUILD].right * 2;
 	w->widget[DEPOT_WIDGET_CLONE].left     = w->widget[DEPOT_WIDGET_BUILD].right + 1;
@@ -608,10 +584,173 @@ static void ResizeDepotButtons(Window *w)
 	if (WP(w, depot_d).type == VEH_Train) {
 		/* Divide the size of DEPOT_WIDGET_SELL into two equally big buttons so DEPOT_WIDGET_SELL and DEPOT_WIDGET_SELL_CHAIN will get the same size.
 		* This way it will stay the same even if DEPOT_WIDGET_SELL_CHAIN is resized for some reason                                                  */
-		w->widget[DEPOT_WIDGET_SELL_CHAIN].bottom = w->widget[DEPOT_WIDGET_SELL_ALL].top - 1;
 		w->widget[DEPOT_WIDGET_SELL_CHAIN].top    = ((w->widget[DEPOT_WIDGET_SELL_CHAIN].bottom - w->widget[DEPOT_WIDGET_SELL].top) / 2) + w->widget[DEPOT_WIDGET_SELL].top;
 		w->widget[DEPOT_WIDGET_SELL].bottom     = w->widget[DEPOT_WIDGET_SELL_CHAIN].top - 1;
 	}
+}
+
+/* Function to set up vehicle specific sprites and strings
+ * Only use this if it's the same widget, that's used for more than one vehicle type and it needs different text/sprites
+ * Vehicle specific text/sprites, that's in a widget, that's only shown for one vehicle type (like sell whole train) is set in the widget array
+ */
+static void SetupStringsForDepotWindow(Window *w, byte type)
+{
+	switch (type) {
+		case VEH_Train:
+			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_8800_TRAIN_DEPOT;
+			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_TRAIN_TIP;
+			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_DEPOT_TRAIN_TIP;
+			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE;
+			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP;
+			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_883F_TRAINS_CLICK_ON_TRAIN_FOR;
+
+			w->widget[DEPOT_WIDGET_BUILD].data        = STR_8815_NEW_VEHICLES;
+			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_8840_BUILD_NEW_TRAIN_VEHICLE;
+			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_TRAIN;
+			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_TRAIN_DEPOT_INFO;
+
+			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_8842_CENTER_MAIN_VIEW_ON_TRAIN;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_TRAIN;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_TRAIN_TIP;
+
+			/* Sprites */
+			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_TRAIN;
+			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_TRAIN;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_TRAIN;
+			break;
+
+		case VEH_Road:
+			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_9003_ROAD_VEHICLE_DEPOT;
+			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_ROADVEH_TIP;
+			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_DEPOT_ROADVEH_TIP;
+			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9024_DRAG_ROAD_VEHICLE_TO_HERE;
+			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP;
+			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_9022_VEHICLES_CLICK_ON_VEHICLE;
+
+			w->widget[DEPOT_WIDGET_BUILD].data        = STR_9004_NEW_VEHICLES;
+			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9023_BUILD_NEW_ROAD_VEHICLE;
+			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_ROAD_VEHICLE;
+			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_ROAD_VEHICLE_DEPOT_INFO;
+
+			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9025_CENTER_MAIN_VIEW_ON_ROAD;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_LORRY;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_ROADVEH_TIP;
+
+			/* Sprites */
+			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_ROADVEH;
+			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_ROADVEH;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_ROADVEH;
+			break;
+
+		case VEH_Ship:
+			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_9803_SHIP_DEPOT;
+			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_SHIP_TIP;
+			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_DEPOT_SHIP_TIP;
+			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9821_DRAG_SHIP_TO_HERE_TO_SELL;
+			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP;
+			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_981F_SHIPS_CLICK_ON_SHIP_FOR;
+
+			w->widget[DEPOT_WIDGET_BUILD].data        = STR_9804_NEW_SHIPS;
+			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9820_BUILD_NEW_SHIP;
+			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_SHIP;
+			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_SHIP_DEPOT_INFO;
+
+			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9822_CENTER_MAIN_VIEW_ON_SHIP;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_SHIP;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_SHIP_TIP;
+
+			/* Sprites */
+			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_SHIP;
+			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_SHIP;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_SHIP;
+			break;
+
+		case VEH_Aircraft:
+			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_A002_AIRCRAFT_HANGAR;
+			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_HANGAR_TIP;
+			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_HANGAR_TIP;
+			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_A023_DRAG_AIRCRAFT_TO_HERE_TO;
+			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP;
+			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT;
+
+			w->widget[DEPOT_WIDGET_BUILD].data        = STR_A003_NEW_AIRCRAFT;
+			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_A022_BUILD_NEW_AIRCRAFT;
+			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_AIRCRAFT;
+			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW;
+
+			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_A024_CENTER_MAIN_VIEW_ON_HANGAR;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_PLANE;
+			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP;
+
+			/* Sprites */
+			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_AIRCRAFT;
+			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_AIRCRAFT;
+			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_AIRCRAFT;
+			break;
+	}
+}
+
+static void CreateDepotListWindow(Window *w, byte type)
+{
+	WP(w, depot_d).type = type;
+	_backup_orders_tile = 0;
+
+	/* Resize the window according to the vehicle type */
+	switch (type) {
+		default: NOT_REACHED();
+		case VEH_Train:
+			w->vscroll.cap = 6;
+			w->hscroll.cap = 10 * 29;
+			w->resize.step_width = 1;
+			ResizeWindow(w, 56, 26);
+			break;
+
+		case VEH_Road:
+			w->vscroll.cap = 5;
+			w->hscroll.cap = 5;
+			w->resize.step_width = 56;
+			ResizeWindow(w, 10, 0);
+			break;
+
+		case VEH_Ship:
+			w->vscroll.cap = 3;
+			w->hscroll.cap = 3;
+			w->resize.step_width = 90;
+			ResizeWindow(w, 0, 2);
+			break;
+
+		case VEH_Aircraft:
+			w->vscroll.cap = 3;
+			w->hscroll.cap = 4;
+			w->resize.step_width = 74;
+			ResizeWindow(w, 26, 2);
+			break;
+	}
+
+	/* Set the minimum window size to the current window size */
+	w->resize.width = w->width;
+	w->resize.height = w->height;
+	w->resize.step_height = GetVehicleListHeight(type);
+
+	SetupStringsForDepotWindow(w, type);
+
+	w->widget[DEPOT_WIDGET_MATRIX].data =
+		(w->vscroll.cap * 0x100) // number of rows to draw on the background
+		+ (type == VEH_Train ? 1 : w->hscroll.cap); // number of boxes in each row. Trains always have just one
+
+
+	SetWindowWidgetsHiddenState(w, type != VEH_Train,
+		DEPOT_WIDGET_H_SCROLL,
+		DEPOT_WIDGET_SELL_CHAIN,
+		WIDGET_LIST_END);
+
+	/* The train depot has a horizontal scroller, make the matrix that much shorter to fit */
+	if (type == VEH_Train) w->widget[DEPOT_WIDGET_MATRIX].bottom -= 12;
+	ResizeDepotButtons(w);
 }
 
 void DepotSortList(Vehicle **v, uint16 length);
@@ -620,6 +759,7 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 {
 	switch (e->event) {
 		case WE_CREATE:
+			WP(w, depot_d).sel = INVALID_VEHICLE;
 			WP(w, depot_d).vehicle_list  = NULL;
 			WP(w, depot_d).wagon_list    = NULL;
 			WP(w, depot_d).engine_count  = 0;
@@ -831,111 +971,6 @@ static void DepotWndProc(Window *w, WindowEvent *e)
 	}
 }
 
-/* Function to set up vehicle specific sprites and strings
- * Only use this if it's the same widget, that's used for more than one vehicle type and it needs different text/sprites
- * Vehicle specific text/sprites, that's in a widget, that's only shown for one vehicle type (like sell whole train) is set in the widget array
- */
-static void SetupStringsForDepotWindow(Window *w, byte type)
-{
-	switch (type) {
-		case VEH_Train:
-			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_8800_TRAIN_DEPOT;
-			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_TRAIN_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_DEPOT_TRAIN_TIP;
-			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_8841_DRAG_TRAIN_VEHICLE_TO_HERE;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP;
-			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_883F_TRAINS_CLICK_ON_TRAIN_FOR;
-
-			w->widget[DEPOT_WIDGET_BUILD].data        = STR_8815_NEW_VEHICLES;
-			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_8840_BUILD_NEW_TRAIN_VEHICLE;
-			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_TRAIN;
-			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_TRAIN_DEPOT_INFO;
-
-			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_8842_CENTER_MAIN_VIEW_ON_TRAIN;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_TRAIN;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_TRAIN_TIP;
-
-			/* Sprites */
-			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_TRAIN;
-			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_TRAIN;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_TRAIN;
-			break;
-
-		case VEH_Road:
-			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_9003_ROAD_VEHICLE_DEPOT;
-			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_ROADVEH_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_DEPOT_ROADVEH_TIP;
-			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9024_DRAG_ROAD_VEHICLE_TO_HERE;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP;
-			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_9022_VEHICLES_CLICK_ON_VEHICLE;
-
-			w->widget[DEPOT_WIDGET_BUILD].data        = STR_9004_NEW_VEHICLES;
-			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9023_BUILD_NEW_ROAD_VEHICLE;
-			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_ROAD_VEHICLE;
-			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_ROAD_VEHICLE_DEPOT_INFO;
-
-			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9025_CENTER_MAIN_VIEW_ON_ROAD;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_LORRY;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_ROADVEH_TIP;
-
-			/* Sprites */
-			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_ROADVEH;
-			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_ROADVEH;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_ROADVEH;
-			break;
-
-		case VEH_Ship:
-			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_9803_SHIP_DEPOT;
-			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_DEPOT_SHIP_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_DEPOT_SHIP_TIP;
-			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_9821_DRAG_SHIP_TO_HERE_TO_SELL;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP;
-			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_981F_SHIPS_CLICK_ON_SHIP_FOR;
-
-			w->widget[DEPOT_WIDGET_BUILD].data        = STR_9804_NEW_SHIPS;
-			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_9820_BUILD_NEW_SHIP;
-			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_SHIP;
-			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_SHIP_DEPOT_INFO;
-
-			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_9822_CENTER_MAIN_VIEW_ON_SHIP;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_SHIP;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_SHIP_TIP;
-
-			/* Sprites */
-			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_SHIP;
-			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_SHIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_SHIP;
-			break;
-
-		case VEH_Aircraft:
-			w->widget[DEPOT_WIDGET_CAPTION].data      = STR_A002_AIRCRAFT_HANGAR;
-			w->widget[DEPOT_WIDGET_STOP_ALL].tooltips = STR_MASS_STOP_HANGAR_TIP;
-			w->widget[DEPOT_WIDGET_START_ALL].tooltips=	STR_MASS_START_HANGAR_TIP;
-			w->widget[DEPOT_WIDGET_SELL].tooltips     = STR_A023_DRAG_AIRCRAFT_TO_HERE_TO;
-			w->widget[DEPOT_WIDGET_SELL_ALL].tooltips =	STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP;
-			w->widget[DEPOT_WIDGET_MATRIX].tooltips   = STR_A021_AIRCRAFT_CLICK_ON_AIRCRAFT;
-
-			w->widget[DEPOT_WIDGET_BUILD].data        = STR_A003_NEW_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_BUILD].tooltips    = STR_A022_BUILD_NEW_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_CLONE].data        = STR_CLONE_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_CLONE].tooltips    = STR_CLONE_AIRCRAFT_INFO_HANGAR_WINDOW;
-
-			w->widget[DEPOT_WIDGET_LOCATION].tooltips = STR_A024_CENTER_MAIN_VIEW_ON_HANGAR;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].data = STR_PLANE;
-			w->widget[DEPOT_WIDGET_VEHICLE_LIST].tooltips = STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].tooltips = STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP;
-
-			/* Sprites */
-			w->widget[DEPOT_WIDGET_SELL].data        = SPR_SELL_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_SELL_ALL].data    = SPR_SELL_ALL_AIRCRAFT;
-			w->widget[DEPOT_WIDGET_AUTOREPLACE].data = SPR_REPLACE_AIRCRAFT;
-			break;
-	}
-}
-
 /** Opens a depot window
  * @param tile The tile where the depot/hangar is located
  * @param type The type of vehicles in the depot
@@ -944,93 +979,21 @@ void ShowDepotWindow(TileIndex tile, byte type)
 {
 	Window *w;
 
-	/* First we ensure that the widget counts are equal in all 3 lists to prevent bad stuff from happening */
-	assert(lengthof(widget_moves) == lengthof(_depot_widgets) - 1); // we should not count WIDGETS_END
-	assert(lengthof(widget_moves) == DEPOT_WIDGET_LAST);
-
 	switch (type) {
-		case VEH_Train:    w = AllocateWindowDescFront(&_train_depot_desc, tile);    break;
-		case VEH_Road:     w = AllocateWindowDescFront(&_road_depot_desc, tile);     break;
-		case VEH_Ship:     w = AllocateWindowDescFront(&_ship_depot_desc, tile);     break;
-		case VEH_Aircraft: w = AllocateWindowDescFront(&_aircraft_depot_desc, tile); break;
-		default: NOT_REACHED(); w = NULL;
+		default: NOT_REACHED();
+		case VEH_Train:
+			w = AllocateWindowDescFront(&_train_depot_desc, tile); break;
+		case VEH_Road:
+			w = AllocateWindowDescFront(&_road_depot_desc, tile); break;
+		case VEH_Ship:
+			w = AllocateWindowDescFront(&_ship_depot_desc, tile); break;
+		case VEH_Aircraft:
+			w = AllocateWindowDescFront(&_aircraft_depot_desc, tile); break;
 	}
 
 	if (w != NULL) {
-		int16 horizontal = 0, vertical = 0;
 		w->caption_color = GetTileOwner(tile);
-		WP(w, depot_d).type = type;
-		WP(w, depot_d).sel = INVALID_VEHICLE;
-		_backup_orders_tile = 0;
-
-		/* Resize the window according to the vehicle type */
-		switch (type) {
-			case VEH_Train:
-				horizontal = 56;
-				vertical = 26;
-				w->vscroll.cap = 6;
-				w->hscroll.cap = 10 * 29;
-				w->resize.step_width = 1;
-				break;
-
-			case VEH_Road:
-				horizontal = 10;
-				w->vscroll.cap = 5;
-				w->hscroll.cap = 5;
-				w->resize.step_width = 56;
-				break;
-
-			case VEH_Ship:
-				vertical = 2;
-				w->vscroll.cap = 3;
-				w->hscroll.cap = 3;
-				w->resize.step_width = 90;
-				break;
-
-			case VEH_Aircraft:
-				horizontal = 26;
-				vertical = 2;
-				w->vscroll.cap = 3;
-				w->hscroll.cap = 4;
-				w->resize.step_width = 74;
-				break;
-
-			default: NOT_REACHED();
-		}
-
-		w->resize.step_height = GetVehicleListHeight(type);
-
-		SetupStringsForDepotWindow(w, type);
-
-		w->widget[DEPOT_WIDGET_MATRIX].data =
-			(w->vscroll.cap * 0x100) // number of rows to draw on the background
-			+ (type == VEH_Train ? 1 : w->hscroll.cap); // number of boxes in each row. Trains always have just one
-
-
-		SetWindowWidgetsHiddenState(w, type != VEH_Train,
-			DEPOT_WIDGET_H_SCROLL,
-			DEPOT_WIDGET_SELL_CHAIN,
-			WIDGET_LIST_END);
-
-		/* Move the widgets to their right locations */
-		ResizeWindowWidgets(w, widget_moves, lengthof(widget_moves), horizontal, vertical);
-
-		if (type == VEH_Train) {
-			/* Now we move the train only widgets so they are placed correctly
-			 * Doing it here will ensure that they move if the widget they are placed on top of/aligned to are moved */
-
-			/* DEPOT_WIDGET_H_SCROLL is placed in the lowest part of DEPOT_WIDGET_MATRIX */
-			w->widget[DEPOT_WIDGET_H_SCROLL].left = w->widget[DEPOT_WIDGET_MATRIX].left;
-			w->widget[DEPOT_WIDGET_H_SCROLL].right = w->widget[DEPOT_WIDGET_MATRIX].right;
-			w->widget[DEPOT_WIDGET_H_SCROLL].bottom = w->widget[DEPOT_WIDGET_MATRIX].bottom;
-			w->widget[DEPOT_WIDGET_H_SCROLL].top = w->widget[DEPOT_WIDGET_MATRIX].bottom - 11;
-			w->widget[DEPOT_WIDGET_MATRIX].bottom -= 12;
-
-			/* DEPOT_WIDGET_SELL_CHAIN is under DEPOT_WIDGET_SELL. They got the same left and right and height is controlled in ResizeDepotButtons() */
-			w->widget[DEPOT_WIDGET_SELL_CHAIN].left = w->widget[DEPOT_WIDGET_SELL].left;
-			w->widget[DEPOT_WIDGET_SELL_CHAIN].right = w->widget[DEPOT_WIDGET_SELL].right;
-		}
-		ResizeDepotButtons(w);
+		CreateDepotListWindow(w, type);
 	}
 }
 

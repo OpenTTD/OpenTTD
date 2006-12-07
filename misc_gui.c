@@ -30,7 +30,6 @@
 #include "tgp.h"
 #include "settings.h"
 #include "date.h"
-#include "resize_window_widgets.h"
 
 #include "fios.h"
 /* Variables to display file lists */
@@ -1857,23 +1856,4 @@ void ShowCheatWindow(void)
 {
 	DeleteWindowById(WC_CHEATS, 0);
 	AllocateWindowDesc(&_cheats_desc);
-}
-
-/** Resize the widgets in a window
- * @param *w Window to resize in
- * @param *resizearray Bytearray of the same length as the window contains widgets. Each byte tells how to move the widget of the same index using the flags in resize_window_widgets.h
- * @param length Length of the bytearray
- * @param horizontal Tells how far to the right the widgets should be moved (note: negative moves left)
- * @param vertical Tells how far down the widgets should be moved (note: negative moves up)
-*/
-void ResizeWindowWidgets(Window *w, const byte *resizearray, int16 length, byte horizontal, int16 vertical)
-{
-	byte i;
-
-	for (i = 0; i < length; i++) {
-		if (resizearray[i] & WIDGET_DEFINE_MOVE_LEFT)   w->widget[i].left   += horizontal;
-		if (resizearray[i] & WIDGET_DEFINE_MOVE_RIGHT)  w->widget[i].right  += horizontal;
-		if (resizearray[i] & WIDGET_DEFINE_MOVE_TOP)    w->widget[i].top    += vertical;
-		if (resizearray[i] & WIDGET_DEFINE_MOVE_BOTTOM) w->widget[i].bottom += vertical;
-	}
 }
