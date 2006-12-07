@@ -391,6 +391,7 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Cargo Capacity
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
+STR_REPLACE_VEHICLES                                            :Inlocuieste vehicule
 
 ############ range for months starts
 STR_0162_JAN                                                    :Ian
@@ -2856,9 +2857,6 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Afiseaza
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afiseaza toate navele care opresc in aceasta statie
 
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
 
 
 
@@ -2872,7 +2870,6 @@ STR_ARE_YOU_SURE                                                :{BLACK}Esti sig
 
 
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Inlocuieste vehicule
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieste {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Incepere inlocuire vehicule
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Oprire inlocuire vehicuke

@@ -400,7 +400,6 @@ STR_SEND_TRAIN_TO_DEPOT                                         :Send to Depot
 STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Send to Depot
 STR_SEND_SHIP_TO_DEPOT                                          :Send to Depot
 STR_SEND_AIRCRAFT_TO_HANGAR                                     :Send to Hangar
-STR_SEND_TO_DEPOTS                                              :Send to {SKIP}{SKIP}{SKIP}{STRING}
 STR_SEND_FOR_SERVICING                                          :Send for Servicing
 
 ############ range for months starts

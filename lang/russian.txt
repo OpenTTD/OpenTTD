@@ -341,6 +341,7 @@ STR_SORT_BY_AGE                                                 :Возраст
 STR_SORT_BY_RELIABILITY                                         :Надежность
 STR_SORT_BY_TOTAL_CAPACITY_PER_CARGOTYPE                        :Вмещает грузов
 STR_SORT_BY_MAX_SPEED                                           :Пиковая скорость
+STR_REPLACE_VEHICLES                                            :Замена Транспорта
 
 ############ range for months starts
 STR_0162_JAN                                                    :Янв
@@ -2655,7 +2656,6 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Пока
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Показать все самолеты, содержащие эту станцию в маршруте
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Показать все корабли, содержащие эту станцию в маршруте
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Замена Транспорта
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Замена {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Пуск Замены Транспорта
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Стоп Замены Транспорта

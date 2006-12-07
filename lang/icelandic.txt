@@ -385,6 +385,7 @@ STR_SORT_BY_RATING_MAX                                          :Flutningur farm
 STR_NO_WAITING_CARGO                                            :{BLACK}Enginn farmur bíður
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Velja allar gerðir
 STR_SELECT_ALL_TYPES                                            :{BLACK}Velja allar tegundir farms (einnig þær sem ekki bíða)
+STR_REPLACE_VEHICLES                                            :Skipta út vögnum
 
 ############ range for months starts
 STR_0162_JAN                                                    :Jan
@@ -2817,9 +2818,6 @@ STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Sýna al
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Sýna öll skip sem hafa þessa stöð á áætlun
 
 
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
-
 
 
 
@@ -2832,7 +2830,6 @@ STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Sýna ö
 
 
 
-STR_REPLACE_VEHICLES                                            :{BLACK}Skipta út vögnum
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Endurnýja {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Hefja skipti
 STR_REPLACE_VEHICLES_STOP                                       :{BLACK}Stöðva skipti
