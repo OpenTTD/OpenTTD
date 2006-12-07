@@ -739,92 +739,473 @@ STR_028B_PLANT_TREES_RANDOMLY_OVER                              :{BLACK}Hazarde 
 
 
 
+STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Vojveturila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_AIRCRAFT                                 :{LTBLUE}Aviadila maksimumo por ĉiu ludanto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAX_SHIPS                                    :{LTBLUE}Ŝipa maksimumo por ĉiu ludanto: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AI_BUILDS_TRAINS                             :{LTBLUE}Malebligu trajnojn por la komputilo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_ROADVEH                            :{LTBLUE}Malebligu vojveturilojn por la komputilo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_AIRCRAFT                           :{LTBLUE}Malebligu aviadilojn por la komputilo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_BUILDS_SHIPS                              :{LTBLUE}Malebligu ŝipojn por la komputilo: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_AINEW_ACTIVE                                 :{LTBLUE}Aktivigu novan AI (alfa): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_AI_IN_MULTIPLAYER                            :{LTBLUE}Permesu komputilludantojn ĉe pluraj ludantoj (eksperimente): {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_SERVINT_TRAINS                               :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}{STRING} tagoj/%
+STR_CONFIG_PATCHES_SERVINT_TRAINS_DISABLED                      :{LTBLUE}Defaŭlta prizorgintervalo por trajnoj: {ORANGE}malaktiva
+STR_CONFIG_PATCHES_SERVINT_ROADVEH                              :{LTBLUE}Defaŭlta prizorgintervalo por vojveturiloj: {ORANGE}{STRING} tagoj/%
+STR_CONFIG_PATCHES_SERVINT_ROADVEH_DISABLED                     :{LTBLUE}Defaŭlta prizorgintervalo por vojveturiloj: {ORANGE}malaktiva
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT                             :{LTBLUE}Defaŭlta prizorgintervalo por aviadiloj: {ORANGE}{STRING} tagoj/%
+STR_CONFIG_PATCHES_SERVINT_AIRCRAFT_DISABLED                    :{LTBLUE}Defaŭlta prizorgintervalo por aviadiloj: {ORANGE}malaktiva
+STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Defaŭlta prizorgintervalo por ŝipoj: {ORANGE}{STRING} tagoj/%
+STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Defaŭlta prizorgintervalo por ŝipoj: {ORANGE}malaktiva
+STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Malŝaltu prizorgadon se rompiĝoj ne okazas: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Aktivigu vagonajn rapideclimojn: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Malŝaltu elektrajn relojn: {ORANGE}{STRING}
+
+STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Koloraj novaĵoj aperas en: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Komenca jaro: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ENDING_YEAR                                  :{LTBLUE}Finu ludon en: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_SMOOTH_ECONOMY                               :{LTBLUE}Aktivigu glatan ekonomion (pliaj, etaj ŝanĝoj)
+STR_CONFIG_PATCHES_ALLOW_SHARES                                 :{LTBLUE}Permesu aĉetadon de dividaĵoj en aliaj kompanioj
+STR_CONFIG_PATCHES_DRAG_SIGNALS_DENSITY                         :{LTBLUE}Tirante metu signalojn je ĉiuj: {ORANGE}{STRING} kvadrado(j)
+STR_CONFIG_PATCHES_TOOLBAR_POS                                  :{LTBLUE}Loko de ĉefa ilbreto: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TOOLBAR_POS_LEFT                             :Maldekstre
+STR_CONFIG_PATCHES_TOOLBAR_POS_CENTER                           :Centre
+STR_CONFIG_PATCHES_TOOLBAR_POS_RIGHT                            :Dekstre
+STR_CONFIG_PATCHES_SNAP_RADIUS                                  :{LTBLUE}Fenestroliga distanco: {ORANGE}{STRING} px
+STR_CONFIG_PATCHES_SNAP_RADIUS_DISABLED                         :{LTBLUE}Fenestroliga distanco: {ORANGE}malaktiva
+
+STR_CONFIG_PATCHES_GUI                                          :{BLACK}Interfaco
+STR_CONFIG_PATCHES_CONSTRUCTION                                 :{BLACK}Konstruado
+STR_CONFIG_PATCHES_VEHICLES                                     :{BLACK}Veturiloj
+STR_CONFIG_PATCHES_STATIONS                                     :{BLACK}Stacidomoj
+STR_CONFIG_PATCHES_ECONOMY                                      :{BLACK}Ekonomio
+STR_CONFIG_PATCHES_AI                                           :{BLACK}Konkurantoj
+
+STR_CONFIG_PATCHES_DISABLED                                     :malaktiva
+STR_CONFIG_PATCHES_INT32                                        :{NUM}
+STR_CONFIG_PATCHES_CURRENCY                                     :{CURRENCY}
+
+STR_CONFIG_PATCHES_QUERY_CAPT                                   :{WHITE}Ŝanĝu agord-valoron
+STR_CONFIG_PATCHES_SERVICE_INTERVAL_INCOMPATIBLE                :{WHITE}Iuj aŭ ĉiuj defaŭltaj prizorgintervaloj ne validas laŭ la agordoj! 5-90% kaj 30-800 tagoj validas
+STR_CONFIG_PATCHES_YAPF_SHIPS                                   :{LTBLUE}Uzu YAPF por ŝipoj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_ROAD                                    :{LTBLUE}Uzu YAPF por vojveturiloj: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_YAPF_RAIL                                    :{LTBLUE}Uzu YAPF por trajnoj: {ORANGE}{STRING}
+
+STR_TEMPERATE_LANDSCAPE                                         :Modera landaspekto
+STR_SUB_ARCTIC_LANDSCAPE                                        :Arktikeca landaspekto
+STR_SUB_TROPICAL_LANDSCAPE                                      :Tropikeca landaspekto
+STR_TOYLAND_LANDSCAPE                                           :Ludolandaspekto
+
+STR_CHEATS                                                      :{WHITE}Filudaĵoj
+STR_CHEATS_TIP                                                  :{BLACK}La kvadratetoj indikas ĉu vi jam uzis la filudaĵon antaŭe.
+STR_CHEATS_WARNING                                              :{BLACK}Atentu! Vi perfidos viajn kunulajn konkurantojn. Memoru ke io tia rememoriĝos eterne.
+STR_CHEAT_MONEY                                                 :{LTBLUE}Altigu monkvanton per {CURRENCY64}
+STR_CHEAT_CHANGE_PLAYER                                         :{LTBLUE}Ludu kiel ludanto: {ORANGE}{COMMA}
+STR_CHEAT_EXTRA_DYNAMITE                                        :{LTBLUE}Magia forigilo (forviŝu industriojn, nemoveblaĵojn): {ORANGE}{STRING}
+STR_CHEAT_CROSSINGTUNNELS                                       :{LTBLUE}Tuneloj rajtas kruciĝi unu kun la alia: {ORANGE}{STRING}
+STR_CHEAT_BUILD_IN_PAUSE                                        :{LTBLUE}Konstruado eblas dum paŭzo: {ORANGE}{STRING}
+STR_CHEAT_NO_JETCRASH                                           :{LTBLUE}Jet-aviadiloj ne kraŝos (frekvente) sur etaj flughavenoj: {ORANGE} {STRING}
+STR_CHEAT_SWITCH_CLIMATE                                        :{LTBLUE}Ŝanĝu klimaton: {ORANGE} {STRING}
+STR_CHEAT_CHANGE_DATE                                           :{LTBLUE}Ŝanĝu daton: {ORANGE} {DATE_SHORT}
+STR_CHEAT_SETUP_PROD                                            :{LTBLUE}Ebligu ŝanĝi produktvalorojn: {ORANGE}{STRING}
+
+STR_HEADING_FOR_WAYPOINT                                        :{LTBLUE}Iranta al {WAYPOINT}
+STR_HEADING_FOR_WAYPOINT_VEL                                    :{LTBLUE}Iranta al {WAYPOINT}, {VELOCITY}
+
+STR_GO_TO_WAYPOINT                                              :Iru laŭ {WAYPOINT}
+STR_GO_NON_STOP_TO_WAYPOINT                                     :Iru senhalte laŭ {WAYPOINT}
+
+STR_WAYPOINTNAME_CITY                                           :Trairejo {TOWN}
+STR_WAYPOINTNAME_CITY_SERIAL                                    :Trairejo {TOWN} #{COMMA}
+STR_LANDINFO_WAYPOINT                                           :Trairejo
+
+STR_WAYPOINT                                                    :{WHITE}Trairejo
+STR_WAYPOINT_GRAPHICS_TIP                                       :{BLACK}Elektu trairejan tipon
+
+STR_WAYPOINT_VIEWPORT                                           :{WHITE}{WAYPOINT}
+STR_WAYPOINT_VIEWPORT_TINY                                      :{TINYFONT}{WHITE}{WAYPOINT}
+STR_WAYPOINT_RAW                                                :{WAYPOINT}
+STR_EDIT_WAYPOINT_NAME                                          :{WHITE}Ŝanĝu trairejan nomon
+
+STR_CANT_CHANGE_WAYPOINT_NAME                                   :{WHITE}Ne povas ŝanĝi trairejan nomon...
+STR_CONVERT_RAIL_TO_WAYPOINT_TIP                                :{BLACK}Ŝanĝu relon al trairejo
+STR_CANT_BUILD_TRAIN_WAYPOINT                                   :{WHITE}Ne povas konstrui trajnan trairejon ĉi tie...
+STR_CANT_REMOVE_TRAIN_WAYPOINT                                  :{WHITE}Ne povas forigi trajnan trairejon ĉi tie...
+
+STR_BUILD_AUTORAIL_TIP                                          :{BLACK}Konstruu fervojojn per Aŭtomata relo
+
+STR_NO_TOWN_IN_SCENARIO                                         :{WHITE}...mankas urboj en ĉi tiu scenaro
+
+STR_GENERATE_RANDOM_LANDSCAPE                                   :{WHITE}Ĉu vi certas ke vi volas krei hazardan landaspekton?
+STR_MANY_RANDOM_TOWNS                                           :{BLACK}Multaj hazardaj urboj
+STR_RANDOM_TOWNS_TIP                                            :{BLACK}Kovru la mapon per hazarde metitajn urbojn
+STR_MANY_RANDOM_INDUSTRIES                                      :{BLACK}Multaj hazardaj industrioj
+STR_RANDOM_INDUSTRIES_TIP                                       :{BLACK}Kovru la mapon per hazarde metitajn industriojn
+STR_CAN_T_GENERATE_INDUSTRIES                                   :{WHITE}Ne povas generi industriojn...
+
+STR_LANDSCAPING_TOOLBAR_TIP                                     :{BLACK}Malfermu la landaspektan ilbreton por (mal)altigi landon, planti arbojn ktp.
+STR_LANDSCAPING_TOOLBAR                                         :{WHITE}Landaspekto
+STR_LEVEL_LAND_TOOLTIP                                          :{BLACK}Ebenigu landon
 
 
+STR_TREES_RANDOM_TYPE                                           :{BLACK}Arboj de hazardaj tipoj
+STR_TREES_RANDOM_TYPE_TIP                                       :{BLACK}Metu arbojn de hazardaj tipoj
 
+STR_CANT_BUILD_CANALS                                           :{WHITE}Ne povas konstrui kanalojn ĉi tie...
+STR_BUILD_CANALS_TIP                                            :{BLACK}Konstruu kanalojn. Premu CTRL por meti mar-kvadratojn (nur marnivele.)
+STR_LANDINFO_CANAL                                              :Kanalo
 
+STR_CANT_BUILD_LOCKS                                            :{WHITE}Ne povas konstrui kluzojn ĉi tie...
+STR_BUILD_LOCKS_TIP                                             :{BLACK}Konstruu kluzojn
+STR_LANDINFO_LOCK                                               :Kluzo
 
+STR_BUOY_IS_IN_USE                                              :{WHITE}...buo estas uzata
 
+STR_LANDINFO_COORDS                                             :{BLACK}Koordinatoj: {LTBLUE}{NUM}x{NUM} ({STRING})
 
+STR_CANT_REMOVE_PART_OF_STATION                                 :{WHITE}Ne povas forigi stacidomeron...
+STR_CANT_CONVERT_RAIL                                           :{WHITE}Ne povas transigi reltipon ĉi tie...
+STR_CONVERT_RAIL_TIP                                            :{BLACK}Transigu reltipon
 
+STR_DRAG_WHOLE_TRAIN_TO_SELL_TIP                                :{BLACK}Tiru la lokomotivon ĉi tien por vendi la tutan trajnon.
 
+STR_DRAG_DROP                                                   :{BLACK}Tiru
+STR_STATION_DRAG_DROP                                           :{BLACK}Tiru por konstrui stacidomon
+STR_SELECT_STATION_CLASS_TIP                                    :{BLACK}Elektu stacidomklason por montri
+STR_SELECT_STATION_TYPE_TIP                                     :{BLACK}Elektu stacidomtipon por konstrui
 
+STR_FAST_FORWARD                                                :{BLACK}Rapide pluirigu la ludon
+STR_MESSAGE_HISTORY                                             :{WHITE}Mesaĝa Historio
+STR_MESSAGE_HISTORY_TIP                                         :{BLACK}Listo da aktualaj novaĵoj
+STR_MESSAGES_DISABLE_ALL                                        :{BLACK}Malaktivigu ĉiujn
+STR_MESSAGES_ENABLE_ALL                                         :{BLACK}Aktivigu ĉiujn
 
+STR_CONSTRUCT_COAL_MINE_TIP                                     :{BLACK}Konstruu Karbminejon
+STR_CONSTRUCT_FOREST_TIP                                        :{BLACK}Plantu Arbaron
+STR_CONSTRUCT_OIL_RIG_TIP                                       :{BLACK}Konstruu Oleplatformon
+STR_CONSTRUCT_FARM_TIP                                          :{BLACK}Fondu Farmbienon
+STR_CONSTRUCT_COPPER_ORE_MINE_TIP                               :{BLACK}Konstruu Kuproercminejo
+STR_CONSTRUCT_OIL_WELLS_TIP                                     :{BLACK}Boru por Oleo
+STR_CONSTRUCT_GOLD_MINE_TIP                                     :{BLACK}Konstruu Orminejon
+STR_CONSTRUCT_DIAMOND_MINE_TIP                                  :{BLACK}Konstruu Diamantminejon
+STR_CONSTRUCT_IRON_ORE_MINE_TIP                                 :{BLACK}Konstruu Ferercminejon
+STR_CONSTRUCT_FRUIT_PLANTATION_TIP                              :{BLACK}Fondu Fruktkulturejon
+STR_CONSTRUCT_RUBBER_PLANTATION_TIP                             :{BLACK}Fondu Kaŭĉukkulturejon
+STR_CONSTRUCT_WATER_SUPPLY_TIP                                  :{BLACK}Fondu Akvofonton
+STR_CONSTRUCT_COTTON_CANDY_TIP                                  :{BLACK}Plantu Sukerŝpinaĵaron
+STR_CONSTRUCT_BATTERY_FARM_TIP                                  :{BLACK}Fondu Bateribienon
+STR_CONSTRUCT_COLA_WELLS_TIP                                    :{BLACK}Boru por Kolao
+STR_CONSTRUCT_PLASTIC_FOUNTAINS_TIP                             :{BLACK}Fondu Plastikfontanaron
+STR_CONSTRUCT_BUBBLE_GENERATOR_TIP                              :{BLACK}Konstruu Vezikgenerilon
+STR_CONSTRUCT_TOFFEE_QUARRY_TIP                                 :{BLACK}Fondu Tofeminejon
+STR_CONSTRUCT_SUGAR_MINE_TIP                                    :{BLACK}Konstruu Sukerminejon
 
+STR_INDUSTRYDIR_CAPTION                                         :{WHITE}Industrioj
+STR_INDUSTRYDIR_ITEM                                            :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}){YELLOW} ({COMMA}% transportite)
+STR_INDUSTRYDIR_ITEM_TWO                                        :{ORANGE}{INDUSTRY}{BLACK} ({CARGO}/{CARGO}){YELLOW} ({COMMA}%/{COMMA}% transportite)
+STR_INDUSTRYDIR_ITEM_NOPROD                                     :{ORANGE}{INDUSTRY}
 
+STR_INDUSTRY_TOO_CLOSE                                          :{WHITE}...tro proksime al alia industrio
 
+STR_RAIL_REFIT_VEHICLE_TO_CARRY                                 :{BLACK}Transformu trajnon por ke ĝi portu alian ŝarĝon
+STR_RAIL_REFIT_VEHICLE                                          :{BLACK}Transformu trajnon
+STR_RAIL_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Elektu ŝarĝospecon portotan de la trajno
+STR_RAIL_REFIT_TO_CARRY_HIGHLIGHTED                             :{BLACK}Transformu trajnon por porti la elektitan ŝarĝotipon
+STR_RAIL_CAN_T_REFIT_VEHICLE                                    :{WHITE}Ne povas transformi la trajnon...
+STR_CONFIG_PATCHES_SERVINT_ISPERCENT                            :{LTBLUE}Prizorgintervala procentaĵo: {ORANGE}{STRING}
+STR_CONFIG_GAME_PRODUCTION                                      :{WHITE}Ŝanĝu produktadon
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+TEMP_AI_IN_PROGRESS                                             :{WHITE}Bonvenon al la novkreata AI. Se vi vidas problemojn, ekranfotu tion kaj metu ĝin en la forumon.
+TEMP_AI_ACTIVATED                                               :{WHITE}Atentu: la nova AI ankoraŭ estas alfaversia! Nur ŝarĝaŭtoj kaj busoj funkcias!
+TEMP_AI_MULTIPLAYER                                             :{WHITE}Atentu: implementado ankoraŭ estas eksperimenta (per nova AI). Bv raporti problemojn al truelight@openttd.org.
 
 ############ network gui strings
 
+STR_NETWORK_MULTIPLAYER                                         :{WHITE}Pluraj ludantoj
+
+STR_NETWORK_PLAYER_NAME                                         :{BLACK}Ludantnomo:
+STR_NETWORK_ENTER_NAME_TIP                                      :{BLACK}Ĉi tio estas la nomo per kiu la aliaj ekkonas vin
+STR_NETWORK_CONNECTION                                          :{BLACK}Konekto:
+STR_NETWORK_CONNECTION_TIP                                      :{BLACK}Elektu inter interreta kaj lokareta ludo
+
+STR_NETWORK_START_SERVER                                        :{BLACK}Startu servilon
+STR_NETWORK_START_SERVER_TIP                                    :{BLACK}Startu propran servilon
+
+STR_NETWORK_GAME_NAME                                           :{BLACK}Nomo
+STR_NETWORK_GAME_NAME_TIP                                       :{BLACK}Nomo de la ludo
+STR_NETWORK_INFO_ICONS_TIP                                      :{BLACK}Lingvo, servila versio ktp.
+STR_NETWORK_CLICK_GAME_TO_SELECT                                :{BLACK}Alklaku ludon el la listo por elekti ĝin
+
+STR_NETWORK_FIND_SERVER                                         :{BLACK}Trovu servilon
+STR_NETWORK_FIND_SERVER_TIP                                     :{BLACK}Serĉu reton por servilo
+STR_NETWORK_ADD_SERVER                                          :{BLACK}Aldonu servilon
+STR_NETWORK_ADD_SERVER_TIP                                      :{BLACK}Aldonas servilon al la listo kiu ĉiam estos kontrolata pri kurantaj ludoj.
+STR_NETWORK_ENTER_IP                                            :{BLACK}Enigu la adreson de la gastiganto
+
+STR_NETWORK_GENERAL_ONLINE                                      :{BLACK}{COMMA}/{COMMA} - {COMMA}/{COMMA}
+STR_NETWORK_CLIENTS_CAPTION                                     :{BLACK}Klientoj
+STR_NETWORK_CLIENTS_CAPTION_TIP                                 :{BLACK}Klientoj surrete / maksimume{}Kompanioj surrete / maksimume
+STR_NETWORK_GAME_INFO                                           :{SILVER}LUDINFORMOJ
+STR_ORANGE                                                      :{ORANGE}{STRING}
+STR_NETWORK_CLIENTS                                             :{SILVER}Klientoj:  {WHITE}{COMMA} / {COMMA} - {COMMA} / {COMMA}
+STR_NETWORK_LANGUAGE                                            :{SILVER}Lingvo:  {WHITE}{STRING}
+STR_NETWORK_TILESET                                             :{SILVER}Tegolaro:  {WHITE}{STRING}
+STR_NETWORK_MAP_SIZE                                            :{SILVER}Mapgrandeco:  {WHITE}{COMMA}x{COMMA}
+STR_NETWORK_SERVER_VERSION                                      :{SILVER}Servila versio:  {WHITE}{STRING}
+STR_NETWORK_SERVER_ADDRESS                                      :{SILVER}Servila adreso:  {WHITE}{STRING} : {NUM}
+STR_NETWORK_START_DATE                                          :{SILVER}Komenca dato:  {WHITE}{DATE_SHORT}
+STR_NETWORK_CURRENT_DATE                                        :{SILVER}Nuna dato:  {WHITE}{DATE_SHORT}
+STR_NETWORK_PASSWORD                                            :{SILVER}Protektata per pasvorto!
+STR_NETWORK_SERVER_OFFLINE                                      :{SILVER}SERVILO NE SURRETAS
+STR_NETWORK_SERVER_FULL                                         :{SILVER}SERVILO PLENAS
+STR_NETWORK_VERSION_MISMATCH                                    :{SILVER}VERSIOJ NE KONGRUAS
+
+STR_NETWORK_JOIN_GAME                                           :{BLACK}Aliĝu al la ludo
 
 
+STR_NETWORK_START_GAME_WINDOW                                   :{WHITE}Komencu novan ludon por pluraj ludantoj
 
-
-
-
-
-
-
+STR_NETWORK_NEW_GAME_NAME                                       :{BLACK}Ludnomo:
+STR_NETWORK_NEW_GAME_NAME_TIP                                   :{BLACK}La ludnomo estos montrata al aliaj ludantoj en la ludelektejo por plurludantaj ludoj.
+STR_NETWORK_SET_PASSWORD                                        :{BLACK}Agordu pasvorton
+STR_NETWORK_PASSWORD_TIP                                        :{BLACK}Protektu vian ludon per pasvorto por ne publike atingebligi ĝin
+STR_NETWORK_SELECT_MAP                                          :{BLACK}Elektu mapon:
+STR_NETWORK_SELECT_MAP_TIP                                      :{BLACK}Kiun mapon vi volas ludi?
+STR_NETWORK_NUMBER_OF_CLIENTS                                   :{BLACK}Klienta maksimumo:
+STR_NETWORK_NUMBER_OF_CLIENTS_TIP                               :{BLACK}Elektu klientan maksimumon. Ne ĉiuj lokoj estas plenigendaj
+STR_NETWORK_COMBO1                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LAN                                                 :Loka reto
+STR_NETWORK_INTERNET                                            :Interreto
+STR_NETWORK_LAN_INTERNET                                        :Loka reto / Interreto
+STR_NETWORK_INTERNET_ADVERTISE                                  :Interreto (reklamu)
+STR_NETWORK_COMBO2                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_0_PLAYERS                                           :0 ludantoj
+STR_NETWORK_1_PLAYERS                                           :1 ludanto
+STR_NETWORK_2_PLAYERS                                           :2 ludantoj
+STR_NETWORK_3_PLAYERS                                           :3 ludantoj
+STR_NETWORK_4_PLAYERS                                           :4 ludantoj
+STR_NETWORK_5_PLAYERS                                           :5 ludantoj
+STR_NETWORK_6_PLAYERS                                           :6 ludantoj
+STR_NETWORK_7_PLAYERS                                           :7 ludantoj
+STR_NETWORK_8_PLAYERS                                           :8 ludantoj
+STR_NETWORK_9_PLAYERS                                           :9 ludantoj
+STR_NETWORK_10_PLAYERS                                          :10 ludantoj
+STR_NETWORK_NUMBER_OF_COMPANIES                                 :{BLACK}Kompania maksimumo:
+STR_NETWORK_NUMBER_OF_COMPANIES_TIP                             :{BLACK}Limu la servilon al certa kvanto da kompanioj
+STR_NETWORK_COMBO3                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_NUMBER_OF_SPECTATORS                                :{BLACK}Spektanta maksimumo:
+STR_NETWORK_NUMBER_OF_SPECTATORS_TIP                            :{BLACK}Limigu la servilon al certa kvanto da spektantoj
+STR_NETWORK_COMBO4                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_LANGUAGE_SPOKEN                                     :{BLACK}Parolata lingvo:
+STR_NETWORK_LANGUAGE_TIP                                        :{BLACK}Aliaj ludantoj scios kiu lingvo paroliĝas en la servilo
+STR_NETWORK_COMBO5                                              :{BLACK}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{SKIP}{STRING}
+STR_NETWORK_START_GAME                                          :{BLACK}Startu Ludon
+STR_NETWORK_START_GAME_TIP                                      :{BLACK}Komencu novan retan ludon de hazarda mapo, aŭ scenaro
+STR_NETWORK_LOAD_GAME                                           :{BLACK}Ŝarĝu Ludon
+STR_NETWORK_LOAD_GAME_TIP                                       :{BLACK}Restartu antaŭan plurludantan ludon (certigu ke vi kiel la korekta ludanto konektu)
 
 ############ Leave those lines in this order!!
+STR_NETWORK_LANG_ANY                                            :Ajna
+STR_NETWORK_LANG_ENGLISH                                        :Angla
+STR_NETWORK_LANG_GERMAN                                         :Germana
+STR_NETWORK_LANG_FRENCH                                         :Franca
 ############ End of leave-in-this-order
 
+STR_NETWORK_GAME_LOBBY                                          :{WHITE}Atendejo por plurludantaj ludoj
 
+STR_NETWORK_PREPARE_TO_JOIN                                     :{BLACK}Preparas por aliĝi:   {ORANGE}{STRING}
+STR_NETWORK_COMPANY_LIST_TIP                                    :{BLACK}Listo da kompanioj haveblaj en ĉi tiu ludo. Vi povas aliĝi al unu aŭ komenci novan kompanion se restas loko
+STR_NETWORK_NEW_COMPANY                                         :{BLACK}Nova kompanio
+STR_NETWORK_NEW_COMPANY_TIP                                     :{BLACK}Kreu novan kompanion
+STR_NETWORK_SPECTATE_GAME                                       :{BLACK}Spektu ludon
+STR_NETWORK_SPECTATE_GAME_TIP                                   :{BLACK}Spektu la ludon kiel spektanto
+STR_NETWORK_JOIN_COMPANY                                        :{BLACK}Aliĝu al kompanio
+STR_NETWORK_JOIN_COMPANY_TIP                                    :{BLACK}Helpu manaĝi ĉi tiun kompanion
+STR_NETWORK_REFRESH                                             :{BLACK}Refreŝigu servilon
+STR_NETWORK_REFRESH_TIP                                         :{BLACK}Refreŝigu servilajn informojn
 
+STR_NETWORK_COMPANY_INFO                                        :{SILVER}KOMPANIAJ INFORMOJ
 
+STR_NETWORK_COMPANY_NAME                                        :{SILVER}Kompaninomo:  {WHITE}{STRING}
+STR_NETWORK_INAUGURATION_YEAR                                   :{SILVER}Enaŭguro:  {WHITE}{NUM}
+STR_NETWORK_VALUE                                               :{SILVER}Kompanivaloro:  {WHITE}{CURRENCY64}
+STR_NETWORK_CURRENT_BALANCE                                     :{SILVER}Nuna monstato:  {WHITE}{CURRENCY64}
+STR_NETWORK_LAST_YEARS_INCOME                                   :{SILVER}Lastjara enspezo:  {WHITE}{CURRENCY64}
+STR_NETWORK_PERFORMANCE                                         :{SILVER}Rendimento:  {WHITE}{NUM}
 
+STR_NETWORK_VEHICLES                                            :{SILVER}Veturiloj:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_STATIONS                                            :{SILVER}Stacioj:  {WHITE}{NUM} {TRAIN}, {NUM} {LORRY}, {NUM} {BUS}, {NUM} {PLANE}, {NUM} {SHIP}
+STR_NETWORK_PLAYERS                                             :{SILVER}Ludantoj:  {WHITE}{STRING}
 
+STR_NETWORK_CONNECTING                                          :{WHITE}Konektante...
 
 ############ Leave those lines in this order!!
+STR_NETWORK_CONNECTING_1                                        :{BLACK}(1/6) Konektante..
+STR_NETWORK_CONNECTING_2                                        :{BLACK}(2/6) Rajtigante..
+STR_NETWORK_CONNECTING_3                                        :{BLACK}(3/6) Atendante..
+STR_NETWORK_CONNECTING_4                                        :{BLACK}(4/6) Elŝutante mapon..
+STR_NETWORK_CONNECTING_5                                        :{BLACK}(5/6) Procesante datenojn..
+STR_NETWORK_CONNECTING_6                                        :{BLACK}(6/6) Registante..
 
+STR_NETWORK_CONNECTING_SPECIAL_1                                :{BLACK}Kaptante ludinformojn..
+STR_NETWORK_CONNECTING_SPECIAL_2                                :{BLACK}Kaptante kompaniajn informojn..
 ############ End of leave-in-this-order
+STR_NETWORK_CONNECTING_DOWNLOADING                              :{BLACK}{NUM} / {NUM} kilobitokoj ĝis nun elŝutiĝis
 
+STR_NETWORK_DISCONNECT                                          :{BLACK}Malkonektu
 
+STR_NETWORK_GIVE_MONEY_CAPTION                                  :{WHITE}Enigu la monkvanton kiun vi volas doni
+STR_NETWORK_NEED_GAME_PASSWORD_CAPTION                          :{WHITE}Servilo estas protektata. Enigu pasvorton
+STR_NETWORK_NEED_COMPANY_PASSWORD_CAPTION                       :{WHITE}Kompanio estas protektata. Enigu pasvorton
+STR_NETWORK_CLIENT_LIST                                         :{WHITE}Klientlisto
 
+STR_NETWORK_ERR_NOTAVAILABLE                                    :{WHITE} Ne trovis retstirilojn aŭ kompiliĝis sen ENABLE_NETWORK
+STR_NETWORK_ERR_NOSERVER                                        :{WHITE} Ne troveblas ajna reta ludo
+STR_NETWORK_ERR_NOCONNECTION                                    :{WHITE} La servilo ne respondis al la peto
+STR_NETWORK_ERR_DESYNC                                          :{WHITE} Retluda sinkronigado fiaskis
+STR_NETWORK_ERR_LOSTCONNECTION                                  :{WHITE} Perdis konekton al Retludo
+STR_NETWORK_ERR_SAVEGAMEERROR                                   :{WHITE} Ne povis ŝarĝi konservitan ludon
+STR_NETWORK_ERR_SERVER_START                                    :{WHITE} Ne povis starti la servilon
+STR_NETWORK_ERR_CLIENT_START                                    :{WHITE} Ne povis konekti
+STR_NETWORK_ERR_TIMEOUT                                         :{WHITE} Konekto #{NUM} ekstertempiĝis
+STR_NETWORK_ERR_SERVER_ERROR                                    :{WHITE} Protokoleraro fariĝis kaj la konekto fermiĝis
+STR_NETWORK_ERR_WRONG_REVISION                                  :{WHITE} La revidaĵo de la kliento ne kongruas la servilan revidaĵon
+STR_NETWORK_ERR_WRONG_PASSWORD                                  :{WHITE} Malĝusta pasvorto
+STR_NETWORK_ERR_SERVER_FULL                                     :{WHITE} La servilo plenas
+STR_NETWORK_ERR_SERVER_BANNED                                   :{WHITE} Oni forbaris vin de la servilo
+STR_NETWORK_ERR_KICKED                                          :{WHITE} Oni forbatis vin de la ludo
+STR_NETWORK_ERR_CHEATER                                         :{WHITE} Vi ne rajtas filudi en ĉi tiu servilo
 
+STR_NETWORK_ERR_LEFT                                            :foriris de la ludo
 ############ Leave those lines in this order!!
+STR_NETWORK_ERR_CLIENT_GENERAL                                  :ĝenerala eraro
+STR_NETWORK_ERR_CLIENT_DESYNC                                   :sensinkroneca eraro
+STR_NETWORK_ERR_CLIENT_SAVEGAME                                 :ne povis ŝarĝi mapon
+STR_NETWORK_ERR_CLIENT_CONNECTION_LOST                          :konekto perdiĝis
+STR_NETWORK_ERR_CLIENT_PROTOCOL_ERROR                           :protokola eraro
+STR_NETWORK_ERR_CLIENT_NOT_AUTHORIZED                           :ne rajtigite
+STR_NETWORK_ERR_CLIENT_NOT_EXPECTED                             :ricevis strangan pakaĵon
+STR_NETWORK_ERR_CLIENT_WRONG_REVISION                           :malĝusta revidaĵo
+STR_NETWORK_ERR_CLIENT_NAME_IN_USE                              :nomo jam uziĝas
+STR_NETWORK_ERR_CLIENT_WRONG_PASSWORD                           :malĝusta pasvorto
+STR_NETWORK_ERR_CLIENT_PLAYER_MISMATCH                          :malĝusta ludant-id en FarKomando
+STR_NETWORK_ERR_CLIENT_KICKED                                   :forbatite de servilo
+STR_NETWORK_ERR_CLIENT_CHEATER                                  :provis uzi filudaĵon
+STR_NETWORK_ERR_CLIENT_SERVER_FULL                              :servilo plenas
 ############ End of leave-in-this-order
+STR_NETWORK_CLIENT_JOINED                                       :aliĝis al la ludo
+STR_NETWORK_GIVE_MONEY                                          :donis iom da mono al via kompanio ({CURRENCY})
+STR_NETWORK_GAVE_MONEY_AWAY                                     :vi donis al {STRING} iom da mono ({CURRENCY})
+STR_NETWORK_CHAT_COMPANY_CAPTION                                :[Teamo] :
+STR_NETWORK_CHAT_COMPANY                                        :[Teamo] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_COMPANY                                     :[Teamo] Al {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_CLIENT_CAPTION                                 :[Private] :
+STR_NETWORK_CHAT_CLIENT                                         :[Private] {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_TO_CLIENT                                      :[Private] Al {STRING}: {GRAY}{STRING}
+STR_NETWORK_CHAT_ALL_CAPTION                                    :[Ĉiuj] :
+STR_NETWORK_CHAT_ALL                                            :[Ĉiuj] {STRING}: {GRAY}{STRING}
+STR_NETWORK_NAME_CHANGE                                         :ŝanĝis sian nomon al
+STR_NETWORK_SERVER_SHUTDOWN                                     :{WHITE} La servilo fermis la sesion
+STR_NETWORK_SERVER_REBOOT                                       :{WHITE} La servilo restartiĝas...{}Bonvolu atendi...
+
+STR_NETWORK_SERVER                                              :Servilo
+STR_NETWORK_CLIENT                                              :Kliento
+STR_NETWORK_SPECTATORS                                          :Spektantoj
+
+STR_NETWORK_CLIENTLIST_NONE                                     :(neniu)
+STR_NETWORK_CLIENTLIST_KICK                                     :Forbatu
+STR_NETWORK_CLIENTLIST_GIVE_MONEY                               :Donu monon
+STR_NETWORK_CLIENTLIST_SPEAK_TO_ALL                             :Parolu al ĉiuj
+STR_NETWORK_CLIENTLIST_SPEAK_TO_COMPANY                         :Parolu al kompanio
+STR_NETWORK_CLIENTLIST_SPEAK_TO_CLIENT                          :Privata mesaĝo
 
 
-
-
+STR_NETWORK_SEND                                                :{BLACK}Sendu
 
 ############ end network gui strings
 
 
+STR_CONFIG_PATCHES_MAP_X                                        :{LTBLUE}X-grandeco de la mapo: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Y-grandeco de la mapo: {ORANGE}{STRING}
 
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Ne povas ŝarĝi landaspekton de PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...dosiero ne troviĝis.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...ne povis transformi bildtipon. Necesas 8-bita aŭ 24-bita PNG-bildo.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...io simple fiaskis. Pardonu. (probable aĉa dosiero)
 
+STR_BMPMAP_ERROR                                                :{WHITE}Ne povas ŝarĝi landaspekton el BMP...
 
 ##id 0x0800
+STR_0808_CAN_T_RAISE_LAND_HERE                                  :{WHITE}Ne povas altigi landon ĉi tie...
+STR_0809_CAN_T_LOWER_LAND_HERE                                  :{WHITE}Ne povas malaltigi landon ĉi tie...
+STR_080A_ROCKS                                                  :Rokoj
+STR_080D_GRASS                                                  :Herbo
+STR_080E_FIELDS                                                 :Kampoj
+STR_080F_SNOW_COVERED_LAND                                      :Neĝkovrita lando
+STR_0810_DESERT                                                 :Dezerto
 
 ##id 0x1000
+STR_1000_LAND_SLOPED_IN_WRONG_DIRECTION                         :{WHITE}Lando ne ĝuste kliniĝas
+STR_1001_IMPOSSIBLE_TRACK_COMBINATION                           :{WHITE}Neebla trakkombino
+STR_1002_EXCAVATION_WOULD_DAMAGE                                :{WHITE}Elkavigo damaĝus tunelon
+STR_1003_ALREADY_AT_SEA_LEVEL                                   :{WHITE}Jam marnivele
+STR_1004_TOO_HIGH                                               :{WHITE}Tro alte
+STR_1005_NO_SUITABLE_RAILROAD_TRACK                             :{WHITE}Nekonvena fervojtrako
+STR_1007_ALREADY_BUILT                                          :{WHITE}...jam konstruite
+STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Antaŭe forigu relon
+STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Konstruado de Reloj
+STR_TITLE_ELRAIL_CONSTRUCTION                                   :{WHITE}Konstruado de Elektraj Reloj
+STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Konstruado de Unurela Fervojo
+STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}Konstruado de Magleva Fervojo
+STR_100D_SELECT_RAIL_BRIDGE                                     :{WHITE}Elektu Relan Ponton
+STR_100E_CAN_T_BUILD_TRAIN_DEPOT                                :{WHITE}Ne povas konstrui trajndeponejon ĉi tie...
+STR_100F_CAN_T_BUILD_RAILROAD_STATION                           :{WHITE}Ne povas konstrui stacidomon ĉi tie...
+STR_1010_CAN_T_BUILD_SIGNALS_HERE                               :{WHITE}Ne povas konstrui signalojn ĉi tie...
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Ne povas konstrui relojn ĉi tie...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Ne povas forigi relojn de ĉi tie...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Ne povas forigi signalojn de ĉi tie...
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Trajndeponeja Orientado
+STR_1015_RAILROAD_CONSTRUCTION                                  :Fervoja Konstruado
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Elektrofervoja konstruado
+STR_1016_MONORAIL_CONSTRUCTION                                  :Unurelfervoja konstruado
+STR_1017_MAGLEV_CONSTRUCTION                                    :Maglevfervoja konstruado
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Konstruu relojn
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Konstruu trajndeponejon (por konstrui kaj prizorgi trajnojn)
+STR_101A_BUILD_RAILROAD_STATION                                 :{BLACK}Konstruu stacidomon
+STR_101B_BUILD_RAILROAD_SIGNALS                                 :{BLACK}Konstruu signalojn
+STR_101C_BUILD_RAILROAD_BRIDGE                                  :{BLACK}Konstruu fervojan ponton
+STR_101D_BUILD_RAILROAD_TUNNEL                                  :{BLACK}Konstruu fervojtunelon
+STR_101E_TOGGLE_BUILD_REMOVE_FOR                                :{BLACK}Elektu inter konstruado kaj forigado de reloj kaj signaloj
+STR_101F_BRIDGE_SELECTION_CLICK                                 :{BLACK}Pontelekton - alklaku vian preferatan ponton por konstrui ĝin
+STR_1020_SELECT_RAILROAD_DEPOT_ORIENTATIO                       :{BLACK}Elektu deponejan orientadon
+STR_1021_RAILROAD_TRACK                                         :Reloj
+STR_1023_RAILROAD_TRAIN_DEPOT                                   :Trajndeponejo
+STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...regiono estas posedata de alia kompanio
+STR_RAILROAD_TRACK_WITH_NORMAL_SIGNALS                          :Reloj kun normalaj signaloj
+STR_RAILROAD_TRACK_WITH_PRESIGNALS                              :Reloj kun antaŭ-signaloj
+STR_RAILROAD_TRACK_WITH_EXITSIGNALS                             :Reloj kun elir-signaloj
+STR_RAILROAD_TRACK_WITH_COMBOSIGNALS                            :Reloj kun kombin-signaloj
 
 
 
 ##id 0x1800
+STR_1801_MUST_REMOVE_ROAD_FIRST                                 :{WHITE}Antaŭe forigu vojon
+STR_ROAD_WORKS_IN_PROGRESS                                      :{WHITE}Aktivas vojprilaborado
+STR_1802_ROAD_CONSTRUCTION                                      :{WHITE}Vojkonstruado
+STR_1803_SELECT_ROAD_BRIDGE                                     :{WHITE}Elektu Vojan Ponton
+STR_1804_CAN_T_BUILD_ROAD_HERE                                  :{WHITE}Ne povas konstrui vojon ĉi tie...
+STR_1805_CAN_T_REMOVE_ROAD_FROM                                 :{WHITE}Ne povas forigi vojon de ĉi tie...
+STR_1806_ROAD_DEPOT_ORIENTATION                                 :{WHITE}Deponeja Orientado
+STR_1807_CAN_T_BUILD_ROAD_VEHICLE                               :{WHITE}Ne povas konstrui vojveturilan deponejon ĉi tie...
+STR_1808_CAN_T_BUILD_BUS_STATION                                :{WHITE}Ne povas konstrui bushaltejon...
+STR_1809_CAN_T_BUILD_TRUCK_STATION                              :{WHITE}Ne povas konstrui ŝarĝstacion...
+STR_180A_ROAD_CONSTRUCTION                                      :Vojkonstruado
+STR_180B_BUILD_ROAD_SECTION                                     :{BLACK}Konstruu vojeron
 
 ##id 0x2000
 
@@ -909,12 +1290,6 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
-
-
-
-
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
 
 

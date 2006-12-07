@@ -1017,6 +1017,16 @@ STR_1008_MUST_REMOVE_RAILROAD_TRACK                             :{WHITE}Moraš u
 STR_100A_RAILROAD_CONSTRUCTION                                  :{WHITE}Željeznička konstrukcija
 STR_100B_MONORAIL_CONSTRUCTION                                  :{WHITE}Jednotračna konstrukcija
 STR_100C_MAGLEV_CONSTRUCTION                                    :{WHITE}MagLev konstrukcija
+STR_1011_CAN_T_BUILD_RAILROAD_TRACK                             :{WHITE}Ne možeš graditi tračnice ovdje...
+STR_1012_CAN_T_REMOVE_RAILROAD_TRACK                            :{WHITE}Ne možeš ukloniti tračnice odavdje...
+STR_1013_CAN_T_REMOVE_SIGNALS_FROM                              :{WHITE}Ne možeš maknuti signale odavdje...
+STR_1014_TRAIN_DEPOT_ORIENTATION                                :{WHITE}Smjer spremišta vlakova
+STR_1015_RAILROAD_CONSTRUCTION                                  :Izgradnja željezničke pruge
+STR_TOOLB_ELRAIL_CONSTRUCTION                                   :Izgradnja električne željezničke pruge
+STR_1016_MONORAIL_CONSTRUCTION                                  :Izgradnja Monoraila
+STR_1017_MAGLEV_CONSTRUCTION                                    :Izgradnja MagLeva
+STR_1018_BUILD_RAILROAD_TRACK                                   :{BLACK}Izgradi željezničke tračnice
+STR_1019_BUILD_TRAIN_DEPOT_FOR_BUILDING                         :{BLACK}Izgradi spremište vlakova (za gradnju i servisiranje vlakova)
 STR_1024_AREA_IS_OWNED_BY_ANOTHER                               :{WHITE}...područje je u vlasništvu druge tvrke
 
 
@@ -1032,6 +1042,9 @@ STR_1815_ROAD_WITH_STREETLIGHTS                                 :Cesta sa semafo
 
 ##id 0x2000
 STR_2000_TOWNS                                                  :{WHITE}Gradovi
+STR_202C_FROM_TO                                                :{ORANGE}{STRING} iz {STATION} prema {STATION}{YELLOW} ({COMPANY}
+STR_202D_UNTIL                                                  :{YELLOW}, do {DATE_SHORT})
+STR_2035_LOCAL_AUTHORITY_REFUSES                                :{WHITE}{TOWN} lokalne vlasti odbijaju dozvoliti izgradnju još jedne zračne luke u ovom gradu
 STR_2036_COTTAGES                                               :Kolibe
 STR_2037_HOUSES                                                 :Kuće
 STR_2038_FLATS                                                  :Stanovi
@@ -1044,20 +1057,87 @@ STR_203E_OFFICES                                                :Uredi
 STR_203F_HOUSES                                                 :Kuće
 STR_2040_CINEMA                                                 :Kino
 STR_2041_SHOPPING_MALL                                          :Trgovački centar
+STR_2042_DO_IT                                                  :{BLACK}Učini to
+STR_2043_LIST_OF_THINGS_TO_DO_AT                                :{BLACK}Popis stvari koje treba učiniti u ovom gradu - klikni za dodatne informacije
+STR_2044_CARRY_OUT_THE_HIGHLIGHTED                              :{BLACK}Izvrši označene akcije na listi iznad
+STR_2045_ACTIONS_AVAILABLE                                      :{BLACK}Dostupne akcije:
+STR_2046_SMALL_ADVERTISING_CAMPAIGN                             :Mala oglasna kampanja
+STR_2047_MEDIUM_ADVERTISING_CAMPAIGN                            :Srednja oglasna kampanja
+STR_2048_LARGE_ADVERTISING_CAMPAIGN                             :Velika oglasna kampanja
 STR_2049_FUND_LOCAL_ROAD_RECONSTRUCTION                         :Financiraj rekonstrukciju lokalne prometnice
 STR_204A_BUILD_STATUE_OF_COMPANY                                :Izgradi kip vlasnika tvrke
 STR_204B_FUND_NEW_BUILDINGS                                     :Financiraj nove građevine
 STR_204C_BUY_EXCLUSIVE_TRANSPORT                                :Kupi ekskluzivna prijevozna prava
+STR_204D_INITIATE_A_SMALL_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciraj malu oglasnu kampanju, kako bi privukao više putnika i tereta za svoje prijevozne usluge.{}  Trošak: {CURRENCY}
+STR_204E_INITIATE_A_MEDIUM_LOCAL                                :{WHITE}{STRING}{}{YELLOW} Iniciraj srednju oglasnu kampanju, kako bi privukao više putnika i tereta za svoje prijevozne usluge.{} Trošak: {CURRENCY}
+STR_204F_INITIATE_A_LARGE_LOCAL                                 :{WHITE}{STRING}{}{YELLOW} Iniciraj veliku oglasnu kampanju, kako bi privukao više putnika i tereta za svoje prijevozne usluge.{} Trošak: {CURRENCY}
+STR_2050_FUND_THE_RECONSTRUCTION                                :{WHITE}{STRING}{}{YELLOW} Financiraj rekonstrukciju urbane mreže prometnica. Uzrokuje značajne poremećaje u cestovnom prometu do 6 mjeseci.{}  Trošak: {CURRENCY}
+STR_2051_BUILD_A_STATUE_IN_HONOR                                :{WHITE}{STRING}{}{YELLOW} Izgradi kip u čast svoje tvrke.{} Trošak: {CURRENCY}
+STR_2052_FUND_THE_CONSTRUCTION_OF                               :{WHITE}{STRING}{}{YELLOW} Financiraj izgradnju novih poslovnih prostora u gradu.{}  Trošak: {CURRENCY}
+STR_2056                                                        :{TINYFONT}{WHITE}{TOWN}
+STR_2057                                                        :{ORANGE}{TOWN}{BLACK} ({COMMA})
 
 
 ##id 0x2800
+STR_2800_PLANT_TREES                                            :Posadi drveće
+STR_2801_PLACE_SIGN                                             :Postavi znak
+STR_2802_TREES                                                  :{WHITE}Drveće
+STR_2803_TREE_ALREADY_HERE                                      :{WHITE}...ovdje je već drvo
+STR_2804_SITE_UNSUITABLE                                        :{WHITE}...mjesto neprikladno
+STR_2805_CAN_T_PLANT_TREE_HERE                                  :{WHITE}Ne možeš posaditi drvo ovdje...
+STR_2806                                                        :{WHITE}{STRING}
+STR_2808_TOO_MANY_SIGNS                                         :{WHITE}...previše znakova
+STR_2809_CAN_T_PLACE_SIGN_HERE                                  :{WHITE}Ne možeš postaviti znak ovdje...
+STR_280A_SIGN                                                   :Znak
+STR_280B_EDIT_SIGN_TEXT                                         :{WHITE}Uredi tekst znaka
+STR_280C_CAN_T_CHANGE_SIGN_NAME                                 :{WHITE}Ne možeš promijeniti ime znaka
+STR_280D_SELECT_TREE_TYPE_TO_PLANT                              :{BLACK}Izaberi vrstu drveta za sadnju
+STR_280E_TREES                                                  :Drveće
+STR_280F_RAINFOREST                                             :Kišna šuma
+STR_2810_CACTUS_PLANTS                                          :Kaktusi
 
 ##id 0x3000
+STR_3000_RAIL_STATION_SELECTION                                 :{WHITE}Odabir željezničke stanice
+STR_3001_AIRPORT_SELECTION                                      :{WHITE}Odabir zračne luke
+STR_3002_ORIENTATION                                            :{BLACK}Smjer
+STR_3003_NUMBER_OF_TRACKS                                       :{BLACK}Broj tračnica
+STR_3004_PLATFORM_LENGTH                                        :{BLACK}Dužina platforme
+STR_3005_TOO_CLOSE_TO_ANOTHER_RAILROAD                          :{WHITE}Preblizu drugoj željezničkoj stanici
+STR_3008A_TOO_MANY_BUS_STOPS                                    :{WHITE}Previše autobusnih stanica
+STR_3008B_TOO_MANY_TRUCK_STOPS                                  :{WHITE}Previše kamionskih stanica
+STR_300A_0                                                      :{WHITE}{STATION} {STATIONFEATURES}
+STR_300D_TOO_CLOSE_TO_ANOTHER_AIRPORT                           :{WHITE}Preblizu drugoj zračnoj luci
+STR_300E_MUST_DEMOLISH_AIRPORT_FIRST                            :{WHITE}Moraš uništiti zračnu luku prvo
 
+STR_3030_RENAME_STATION_LOADING                                 :Preimenuj stanicu/terminal
+STR_3031_CAN_T_RENAME_STATION                                   :{WHITE}Ne možeš preimenovati stanicu...
+STR_3032_RATINGS                                                :{BLACK}Ocjene
+STR_3033_ACCEPTS                                                :{BLACK}Prihvaća
 
 ############ range for rating starts
+STR_3035_APPALLING                                              :Užasno
+STR_3036_VERY_POOR                                              :Vrlo loše
+STR_3037_POOR                                                   :Loše
+STR_3038_MEDIOCRE                                               :Osrednje
+STR_3039_GOOD                                                   :Dobro
+STR_303A_VERY_GOOD                                              :Vrlo dobro
+STR_303B_EXCELLENT                                              :Izvrsno
+STR_303C_OUTSTANDING                                            :Izvanredno
 ############ range for rating ends
 
+STR_303D                                                        :{WHITE}{STRING}: {YELLOW}{STRING} ({COMMA}%)
+STR_303E_NO_LONGER_ACCEPTS                                      :{WHITE}{STATION} više ne prihvaća {STRING}
+STR_303F_NO_LONGER_ACCEPTS_OR                                   :{WHITE}{STATION} više ne prihvaća {STRING} or {STRING}
+STR_3040_NOW_ACCEPTS                                            :{WHITE}{STATION} sad prihvaća {STRING}
+STR_3041_NOW_ACCEPTS_AND                                        :{WHITE}{STATION} od sada prihvaća {STRING} i {STRING}
+STR_3042_BUS_STATION_ORIENTATION                                :{WHITE}Smjer autobusne stanice
+STR_3043_TRUCK_STATION_ORIENT                                   :{WHITE}Smjer kamionskog terminala
+STR_3046_MUST_DEMOLISH_BUS_STATION                              :{WHITE}Moraš uništiti autobusnu stanicu prvo
+STR_3047_MUST_DEMOLISH_TRUCK_STATION                            :{WHITE}Moraš uništiti kamionski terminal prvo
+STR_3049_0                                                      :{YELLOW}{STATION} {STATIONFEATURES}
+STR_304A_NONE                                                   :{YELLOW}- Ništa -
+STR_304B_SITE_UNSUITABLE                                        :{WHITE}...mjesto neprikladno
+STR_304C_TOO_CLOSE_TO_ANOTHER_DOCK                              :{WHITE}Preblizu drugom pristaništu
 
 
 ##id 0x3800
@@ -1344,12 +1424,6 @@ SET_PERFORMANCE_DETAIL_INT                                      :{BLACK}{NUM}
 
 
 
-
-
-
-
-### looks odd, but trainslators requested this as depots aren't the same for all vehicles in all translations
-### we can use there whenever we want a depot mentioned in another string to avoid making 4 versions of all strings
 
 
 

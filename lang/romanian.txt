@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Informat
 STR_013E_CAPACITIES                                             :{BLACK}Capacitãti
 STR_013E_TOTAL_CARGO                                            :{BLACK}Încãrcãturi
 STR_013F_CAPACITY                                               :{BLACK}Capacitate: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Capacitate: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Încãrcãtura totalã (capacitatea) acestui tren:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Joc nou
 STR_0141_LOAD_GAME                                              :{BLACK}Încarcã joc
 STR_SINGLE_PLAYER                                               :{BLACK}Un singur jucãtor
@@ -391,7 +393,14 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Cargo Capacity
 STR_NO_WAITING_CARGO                                            :{BLACK}Nu este în asteptare nici un fel de încãrcãturã
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Alege toate facilitãtile
 STR_SELECT_ALL_TYPES                                            :{BLACK}Alege toate tipurile de încãrcãturi (inclusiv încãrcãturile care nu sunt în asteptare)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Vezi o lista de proiecte disponibile de motoare pentru acest tip de vehicul.
+STR_MANAGE_LIST                                                 :{BLACK}Gestioneaza lista
 STR_REPLACE_VEHICLES                                            :Inlocuieste vehicule
+STR_SEND_TRAIN_TO_DEPOT                                         :Trimite la depou
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Trimite la depou
+STR_SEND_SHIP_TO_DEPOT                                          :Trimite la depou
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Trimite la hangar
+STR_SEND_FOR_SERVICING                                          :Trimite in service
 
 ############ range for months starts
 STR_0162_JAN                                                    :Ian
@@ -440,7 +449,7 @@ STR_018A_CAN_T_CHANGE_SERVICING                                 :{WHITE}Nu pot s
 STR_018B_CLOSE_WINDOW                                           :{BLACK}Închide fereastra
 STR_018C_WINDOW_TITLE_DRAG_THIS                                 :{BLACK}Titlul ferestrei - trage de aici pentru a muta fereastra
 STR_STICKY_BUTTON                                               :{BLACK}Mark this window as undeletable for the 'Close All Windows' key
-STR_RESIZE_BUTTON                                               :{BLACK}Click&drag pentru a schimba marimea ferestrei
+STR_RESIZE_BUTTON                                               :{BLACK}Click&trage pt redimensionarea ferestrei
 STR_SAVELOAD_HOME_BUTTON                                        :{BLACK}Click aici pentru a ajunge la directorul predefinit pentru salvari
 STR_018D_DEMOLISH_BUILDINGS_ETC                                 :{BLACK}Demoleazã clãdiri, strãzi, etc. pe un pãtrat de teren
 STR_018E_LOWER_A_CORNER_OF_LAND                                 :{BLACK}Scade altitudinea unui vârf de teren
@@ -726,6 +735,7 @@ STR_0298_LOAD_SCENARIO                                          :{WHITE}Încarc�
 STR_0299_SAVE_SCENARIO                                          :{WHITE}Salveazã scenariu
 STR_029A_PLAY_SCENARIO                                          :{BLACK}Joacã scenariu
 STR_PLAY_HEIGHTMAP                                              :{BLACK}Reda harta inaltimi
+STR_PLAY_HEIGHTMAP_HINT                                         :{BLACK}Porneste un nou joc, folosind o scara de inaltimi ca peisaj
 STR_029B_ARE_YOU_SURE_YOU_WANT_TO                               :{YELLOW}Esti sigur cã vrei sã renunti la acest scenariu?
 STR_029C_QUIT_EDITOR                                            :{WHITE}Iesire din editor
 STR_029D_CAN_ONLY_BE_BUILT_IN_TOWNS                             :{WHITE}...Se poate construi doar in orase cu populatia de cel putin 1200
@@ -878,6 +888,8 @@ STR_TOWNNAME_CZECH                                              :Cehe
 STR_TOWNNAME_SWISS                                              :Elvetian
 STR_TOWNNAME_DANISH                                             :Danezã
 STR_TOWNNAME_TURKISH                                            :Turcã
+STR_TOWNNAME_ITALIAN                                            :Italian
+STR_TOWNNAME_CATALAN                                            :Catalan
 ############ end of	townname region
 
 STR_CURR_GBP                                                    :Lira sterlina (£)
@@ -902,7 +914,11 @@ STR_CURR_NOK                                                    :Coroanã norveg
 STR_CURR_PLN                                                    :Zlot (PLN)
 STR_CURR_ROL                                                    :Leu românesc (ROL)
 STR_CURR_RUR                                                    :Rublã ruseascã (RUR)
+STR_CURR_SIT                                                    :Tolar Sloven (SIT)
 STR_CURR_SEK                                                    :Coroanã suedezã (SEK)
+STR_CURR_YTL                                                    :Lira Turceasca (YTL)
+STR_CURR_SKK                                                    :Coroana Slovaca (SKK)
+STR_CURR_BRR                                                    :Real Brazilian (BRL)
 
 STR_CURR_CUSTOM                                                 :Propriu...
 
@@ -1003,6 +1019,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Interzi
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Uneste gãrile alãturate: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Pãrãseste statia când orice tip de marfã este 'full load': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Foloseste algoritmul de LOAD imbunatatit: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Incarca vehiculele gradual: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflatia: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Livreazã marfa doar in statiile unde aceasta este ceruta: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Permite constructia de poduri foarte lungi: {ORANGE}{STRING}
@@ -1019,9 +1036,11 @@ STR_CONFIG_PATCHES_AUTOSCROLL                                   :{LTBLUE}Mutã i
 STR_CONFIG_PATCHES_BRIBE                                        :{LTBLUE}Permite mituirea autoritãtilor locale: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NONUNIFORM_STATIONS                          :{LTBLUE}Statii neuniforme: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_NEW_PATHFINDING_ALL                          :{LTBLUE}Nou pathfinding global(NPF, dezactiveaza NTP): {ORANGE}{STRING}
+STR_CONFIG_PATCHES_FREIGHT_TRAINS                               :{LTBLUE}Multiplicator greutate pt marfar pt simularea trenurilor grele: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_SMALL_AIRPORTS                               :{LTBLUE}Permite întotdeauna aeroporturi mici: {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_WARN_LOST_TRAIN                              :{LTBLUE}Avertizeaza daca trenul este pierdut: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW                                 :{LTBLUE}Verificarea ordinelor vehiculelor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_ORDER_REVIEW_OFF                             :nu
 STR_CONFIG_PATCHES_ORDER_REVIEW_EXDEPOT                         :da, dar exclude vehiculele oprite
@@ -1035,15 +1054,35 @@ STR_CONFIG_PATCHES_ERRMSG_DURATION                              :{LTBLUE}Durata 
 STR_CONFIG_PATCHES_POPULATION_IN_LABEL                          :{LTBLUE}Afiseaza populatia unui oras langa nume: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INVISIBLE_TREES                              :{LTBLUE}Ascunde arborii la alegerea optiunii 'clãdiri transparente': {ORANGE}{STRING}
 
+STR_CONFIG_PATCHES_LAND_GENERATOR                               :{LTBLUE}Generator teren: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LAND_GENERATOR_ORIGINAL                      :Original
+STR_CONFIG_PATCHES_LAND_GENERATOR_TERRA_GENESIS                 :TerraGeneza
+STR_CONFIG_PATCHES_OIL_REF_EDGE_DISTANCE                        :{LTBLUE}Distanta maxima de la margine pt Rafinariile de petrol {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SNOWLINE_HEIGHT                              :{LTBLUE}Altitudinea de înzãpezire: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN                         :{LTBLUE}Duritatea terenului (Doar pt TerraGeneza) : {ORANGE}{STRING}
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_SMOOTH             :Foarte fin
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_SMOOTH                  :Fin
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_ROUGH                   :Dur
+STR_CONFIG_PATCHES_ROUGHNESS_OF_TERRAIN_VERY_ROUGH              :Foarte dur
+STR_CONFIG_PATCHES_TREE_PLACER                                  :{LTBLUE}Algoritm amplasare arbori: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_TREE_PLACER_NONE                             :Niciunul
+STR_CONFIG_PATCHES_TREE_PLACER_ORIGINAL                         :Original
+STR_CONFIG_PATCHES_TREE_PLACER_IMPROVED                         :Imbunatatit
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION                           :{LTBLUE}Rotatie harta inaltimiHeightmap rotation: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_COUNTER_CLOCKWISE         :In sens invers al acelor de ceasornic
 STR_CONFIG_PATCHES_HEIGHTMAP_ROTATION_CLOCKWISE                 :In sensul acelor de ceasornic
+STR_CONFIG_PATCHES_SE_FLAT_WORLD_HEIGHT                         :{LTBLUE}Nivelul inaltimii atins de o harta plana: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_STATION_SPREAD                               :{LTBLUE}Mãrimea maximã a statiilor: {ORANGE}{STRING} {RED}(valorile mari încetinesc jocul!)
 STR_CONFIG_PATCHES_SERVICEATHELIPAD                             :{LTBLUE}Service automat pentru elicoptere la helipaduri: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LINK_TERRAFORM_TOOLBAR                       :{LTBLUE}Conecteaza bara de instrumente pentru peisaj cu cea de constructii feroviare/auto/aeriane: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_REVERSE_SCROLLING                            :{LTBLUE}Cand faci scroll cu mouse-ul muta ecranul in directia opusã: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_MEASURE_TOOLTIP                              :{LTBLUE}Arata o bara de unelte de masuratori la folosirea uneltelor de constructie: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES                                     :{LTBLUE}Arata unifromete companiilor: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_LIVERIES_NONE                                :Niciunul
+STR_CONFIG_PATCHES_LIVERIES_OWN                                 :Propria companie
+STR_CONFIG_PATCHES_LIVERIES_ALL                                 :Toate companiile
+STR_CONFIG_PATCHES_PREFER_TEAMCHAT                              :{LTBLUE}Echipa preferata pentru chat <ENTER>: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_MAX_TRAINS                                   :{LTBLUE}Nr. max. de trenuri pentru un jucãtor: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_MAX_ROADVEH                                  :{LTBLUE}Nr. max. de autovehicule pentru un jucãtor: {ORANGE}{STRING}
@@ -1068,6 +1107,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Interva
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Intervalul de service presetat pentru nave: {ORANGE}dezactivat
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Deactivare service cand defectiunile sunt anulate: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Activeazã limite de vitezã pt. vagoane: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Dezactiveaza sinele electrice: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Stirile în culori apar în anul: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Anul de început a jocului: {ORANGE}{STRING}
@@ -1419,6 +1459,7 @@ STR_NETWORK_SERVER_REBOOT                                       :{WHITE}Serverul
 
 STR_NETWORK_SERVER                                              :Server
 STR_NETWORK_CLIENT                                              :Client
+STR_NETWORK_SPECTATORS                                          :Spectatori
 
 STR_NETWORK_CLIENTLIST_NONE                                     :(none)
 STR_NETWORK_CLIENTLIST_KICK                                     :Kick
@@ -1439,6 +1480,10 @@ STR_CONFIG_PATCHES_MAP_Y                                        :{LTBLUE}Marimea
 
 ##### PNG-MAP-Loader
 
+STR_PNGMAP_ERROR                                                :{WHITE}Nu pot incarca peisajul din PNG...
+STR_PNGMAP_ERR_FILE_NOT_FOUND                                   :{WHITE}...fisierul lipseste.
+STR_PNGMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nu am reusit conversia tipului de imagine. Introdu un imagine PNG 8 sau 24-bit.
+STR_PNGMAP_ERR_MISC                                             :{WHITE}...ceva a mers gresit. Scuze. (probabil fisierul este defect)
 
 STR_BMPMAP_ERROR                                                :{WHITE}Nu pot incarca peisajul din BMP...
 STR_BMPMAP_ERR_IMAGE_TYPE                                       :{WHITE}...nu am putut converti tipul de imagine.
@@ -2160,6 +2205,7 @@ STR_LIVERY_GENERAL_TIP                                          :{BLACK}Afiseaza
 STR_LIVERY_TRAIN_TIP                                            :{BLACK}Arata schemele de culori pentru trenuri
 STR_LIVERY_ROADVEH_TIP                                          :{BLACK}Arata schemele de culori pentru autovehiculele rutiere
 STR_LIVERY_SHIP_TIP                                             :{BLACK}Arata schemele de culori pentru vase
+STR_LIVERY_AIRCRAFT_TIP                                         :{BLACK}Arata schemele de culori pentru avioane
 STR_LIVERY_PRIMARY_TIP                                          :{BLACK}Alege culoarea primara pentru schema selectata
 STR_LIVERY_SECONDARY_TIP                                        :{BLACK}Alege culoarea secundara pentru schema selectata
 STR_LIVERY_PANEL_TIP                                            :{BLACK}Alege o schema de culori pentru modificare sau mai multe scheme, folosind CTRL+click. Apasa pe casuta pentru a comuta schema
@@ -2464,16 +2510,20 @@ STR_INVALID_ORDER                                               :{RED} (Comenzi 
 STR_UNKNOWN_DESTINATION                                         :destinatie necunoscutã
 STR_8812_EMPTY                                                  :{LTBLUE}Gol
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} de la {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} de la {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Trenul {COMMA} asteaptã în depou
 STR_8815_NEW_VEHICLES                                           :{BLACK}Vehicule noi
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Tren prea lung
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Trenurile pot fi modificate doar când se aflã într-un depou
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} Trenuri
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Noi vehicule feroviare
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Noi Vehicule Electrice pe Sine
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Noi vehicule monorail
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Noi vehicule maglev
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Vehicule pe sine
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Cumpãrã vehicul
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Cloneazã vehiculul
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Acest buton va crea o copie a autovehiculului. Control+click pentru comenzi comune
@@ -2488,6 +2538,9 @@ STR_8825_NON_STOP                                               :{BLACK}Non-stop
 STR_8826_GO_TO                                                  :{BLACK}Mergi la
 STR_8827_FULL_LOAD                                              :{BLACK}Full-load
 STR_8828_UNLOAD                                                 :{BLACK}Descãrcare
+STR_REFIT                                                       :{BLACK}Rearanjeaza
+STR_REFIT_TIP                                                   :{BLACK}Alege tipul de marfa pentru rearanjare. Control+click pt a anula rearanjarea
+STR_REFIT_ORDER                                                 :(Rearanjeaza in {STRING})
 STR_8829_ORDERS                                                 :{WHITE}{VEHICLE} (Comenzi)
 STR_882A_END_OF_ORDERS                                          :{SETX 10}- - Sfârsitul comenzilor - -
 STR_FULLLOAD_OR_SERVICE                                         :{SKIP}{SKIP}{STRING}
@@ -2567,6 +2620,8 @@ STR_886F_TRANSFER                                               :{BLACK}Transfer
 STR_TRAIN_STOPPING                                              :{RED}Oprire
 STR_TRAIN_STOPPING_VEL                                          :{RED}Oprire, {VELOCITY}
 STR_INCOMPATIBLE_RAIL_TYPES                                     :Tipuri de sine incompatibile
+STR_TRAIN_NO_POWER                                              :{RED}Fara curent
+STR_TRAIN_START_NO_CATENARY                                     :Aceasta sina nu este electrificata, deci trenul nu poate porni
 
 ##id 0x9000
 STR_9000_ROAD_VEHICLE_IN_THE_WAY                                :{WHITE}Autovehicul in cale
@@ -2632,6 +2687,7 @@ STR_REFIT_ROAD_VEHICLE_TO_CARRY                                 :{BLACK}Adapteaz
 STR_REFIT_ROAD_VEHICLE                                          :{BLACK}Adaptare autovehicul
 STR_REFIT_ROAD_VEHICLE_TO_CARRY_HIGHLIGHTED                     :{BLACK}Adapteaza autovehiculul pentru transportul incarcaturii evidentiate
 STR_REFIT_ROAD_VEHICLE_CAN_T                                    :{WHITE}Nu pot adapta autovehiculul...
+STR_ROAD_SELECT_TYPE_OF_CARGO_FOR                               :{BLACK}Alege tipul de marfa pentru transport cu autovehiculul
 
 ##id 0x9800
 STR_9800_DOCK_CONSTRUCTION                                      :Constructii navale
@@ -2822,6 +2878,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Balanta 
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Ponderea creditelor
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Punctajul total din numãrul maxim posibil
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}Setari NewGRF
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Setari Newgrf
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Aplica schimbarile
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Seteaza parametri
@@ -2829,6 +2886,30 @@ STR_NEWGRF_TIP                                                  :{BLACK}Lista tu
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Nu exista fisiere newgrf instalate! Citeste manualul pentru instructiunile de instalare a fisierelor grafice noi.
 STR_NEWGRF_FILENAME                                             :{BLACK}Nume fisier: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}ID GRF: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Adauga
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Adauga un fisier NewGRF in lista
+STR_NEWGRF_REMOVE                                               :{BLACK}Elimina
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Elimina fisierul NewGRF ales din lista
+STR_NEWGRF_MOVEUP                                               :{BLACK}Muta Sus
+STR_NEWGRF_MOVEUP_TIP                                           :{BLACK}Muta fisierul NewGRF ales mai sus in lista
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Muta Jos
+STR_NEWGRF_MOVEDOWN_TIP                                         :{BLACK}Muta fisierul NewGRF ales mai jos in lista
+STR_NEWGRF_FILE_TIP                                             :{BLACK}O lista a fisierelor NewGRF instalate. Fa click pe un fisier pt a-i modifica parameterii
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parametri: {SILVER}{STRING}
+STR_NEWGRF_PARAMETER_QUERY                                      :{BLACK}Introdu parametrii NewGRF
+STR_NEWGRF_NO_INFO                                              :{BLACK}Nici o informatie disponibila
+
+STR_NEWGRF_ADD_CAPTION                                          :{WHITE}Fisiere NewGRF disponibile
+STR_NEWGRF_ADD_FILE                                             :{BLACK}Adauga la selectie
+STR_NEWGRF_ADD_FILE_TIP                                         :{BLACK}Adauga fisierul NewGRF ales in configuratie
+STR_NEWGRF_RESCAN_FILES                                         :{BLACK}Redetecteaza fisierele
+STR_NEWGRF_RESCAN_FILES_TIP                                     :{BLACK}Actualizeaza lista de fisiere NewGRF disponibile
+STR_NEWGRF_DUPLICATE_GRFID                                      :{WHITE}Nu pot adauga fisierul: ID GRF duplicat
+
+STR_NEWGRF_NOT_FOUND                                            :{RED}Nici un fisier potrivit
+STR_NEWGRF_DISABLED                                             :{RED}Dezactivat
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Moneda proprie
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Curs de schimb: {ORANGE}{CURRENCY} = £ {COMMA}
@@ -2856,19 +2937,44 @@ STR_SCHEDULED_ROAD_VEHICLES_TIP                                 :{BLACK}Afiseaza
 STR_SCHEDULED_AIRCRAFT_TIP                                      :{BLACK}Afiseaza toate aeronavele care opresc in aceasta statie
 STR_SCHEDULED_SHIPS_TIP                                         :{BLACK}Afiseaza toate navele care opresc in aceasta statie
 
-
-
-
+STR_VEH_WITH_SHARED_ORDERS_LIST                                 :{WHITE}Comenzi comune ale {COMMA} Vehicul{P "" s}
+STR_VEH_WITH_SHARED_ORDERS_LIST_TIP                             :{BLACK}Arata toate vehiculele care se incadreaza in acest program
 
 ### depot strings
 
+STR_SELL                                                        :{BLACK}Vinde
+STR_DEPOT_SELL_ALL_VEHICLE_CONFIRM                              :{BLACK}Esti pe punctul de a vinde toate vehiculele din depou.
 STR_ARE_YOU_SURE                                                :{BLACK}Esti sigur?
 
+STR_DEPOT_SELL_ALL_TRAIN_TIP                                    :{BLACK}Confirma vinderea tuturor trenurilor din depou
+STR_DEPOT_SELL_ALL_ROADVEH_TIP                                  :{BLACK}Confirma vinderea tuturor autovehiculelor din depou
+STR_DEPOT_SELL_ALL_SHIP_TIP                                     :{BLACK}Confirma vindere tuturor vaselor din depou
+STR_DEPOT_SELL_ALL_AIRCRAFT_TIP                                 :{BLACK}Confirma vinderea tuturor aeronavelor din hangar
 
+STR_DEPOT_SELL_ALL_CANCEL_TRAIN_TIP                             :{BLACK}Nu vinde toate trenurile din depou
+STR_DEPOT_SELL_ALL_CANCEL_ROADVEH_TIP                           :{BLACK}Nu vinde toate autovehiculele din depou
+STR_DEPOT_SELL_ALL_CANCEL_SHIP_TIP                              :{BLACK}Nu vinde toate vasele din depou
+STR_DEPOT_SELL_ALL_CANCEL_AIRCRAFT_TIP                          :{BLACK}Nu vinde toate aeronavele din hangar
 
+STR_DEPOT_SELL_ALL_BUTTON_TRAIN_TIP                             :{BLACK}Vinde toate trenurile din the depou
+STR_DEPOT_SELL_ALL_BUTTON_ROADVEH_TIP                           :{BLACK}Vinde toate autovehiculele din depou
+STR_DEPOT_SELL_ALL_BUTTON_SHIP_TIP                              :{BLACK}Vinde toate vasele din depou
+STR_DEPOT_SELL_ALL_BUTTON_AIRCRAFT_TIP                          :{BLACK}Vinde toate aeronavele din hangar
 
+STR_DEPOT_VEHICLE_ORDER_LIST_TRAIN_TIP                          :{BLACK}Obtine o lista ordonata a tuturor trenurilor din depoul actual
+STR_DEPOT_VEHICLE_ORDER_LIST_ROADVEH_TIP                        :{BLACK}Obtine o lista ordonata a tuturor autovehiculelor din depoul actual
+STR_DEPOT_VEHICLE_ORDER_LIST_SHIP_TIP                           :{BLACK}Obtine o lista ordonata a tuturor vaselor din depoul actual
+STR_DEPOT_VEHICLE_ORDER_LIST_AIRCRAFT_TIP                       :{BLACK}Obtine o lista ordonata a tuturor aeronavelor din orice hangar al acestui aeroport
 
+STR_DEPOT_AUTOREPLACE_TRAIN_TIP                                 :{BLACK}Inlocuieste automat toate trenurile din depou
+STR_DEPOT_AUTOREPLACE_ROADVEH_TIP                               :{BLACK}Inlocuieste automat toate autovehiculele din depou
+STR_DEPOT_AUTOREPLACE_SHIP_TIP                                  :{BLACK}Inlocuieste automat toate vasele din depou
+STR_DEPOT_AUTOREPLACE_AIRCRAFT_TIP                              :{BLACK}Inlocuieste automat toate aeronavele din hangar
 
+STR_VEHICLE_LIST_TRAIN_DEPOT                                    :{BLACK}{STRING} - {COMMA} Tren{P "" s}
+STR_VEHICLE_LIST_ROADVEH_DEPOT                                  :{BLACK}{STRING} - {COMMA} Autovehicul{P "" s}
+STR_VEHICLE_LIST_SHIP_DEPOT                                     :{BLACK}{STRING} - {COMMA} Vas{P "" s}
+STR_VEHICLE_LIST_AIRCRAFT_DEPOT                                 :{BLACK}{STRING} - {COMMA} Aeronava
 
 STR_REPLACE_VEHICLES_WHITE                                      :{WHITE}Înlocuieste {STRING}
 STR_REPLACE_VEHICLES_START                                      :{BLACK}Incepere inlocuire vehicule
@@ -2891,13 +2997,23 @@ STR_ENGINE_NOT_BUILDABLE                                        :{WHITE}Motorul 
 STR_ENGINES                                                     :Motoare
 STR_WAGONS                                                      :Vagoane
 
+STR_MASS_STOP_DEPOT_TRAIN_TIP                                   :{BLACK}Click pt oprirea tuturor trenurilor din depou
+STR_MASS_STOP_DEPOT_ROADVEH_TIP                                 :{BLACK}Click pt oprirea tuturor autovehiculelor din depou
+STR_MASS_STOP_DEPOT_SHIP_TIP                                    :{BLACK}Click pt oprirea tuturor vaselor din depou
+STR_MASS_STOP_HANGAR_TIP                                        :{BLACK}Click pt oprirea tuturor aeronavelor din hangar
 
+STR_MASS_START_DEPOT_TRAIN_TIP                                  :{BLACK}Click pt pornirea tuturor trenurilor din depou
+STR_MASS_START_DEPOT_ROADVEH_TIP                                :{BLACK}Click pt pornirea tuturor autovehiculelor din depou
+STR_MASS_START_DEPOT_SHIP_TIP                                   :{BLACK}Click pt pornirea tuturor vaselor din depou
+STR_MASS_START_HANGAR_TIP                                       :{BLACK}Click pt pornirea tuturor aeronavelor din hangar
 
+STR_MASS_STOP_LIST_TIP                                          :{BLACK}Click pt oprirea tuturor vehiculelor din lista
 STR_MASS_START_LIST_TIP                                         :{BLACK}Apasa pentru pornirea tuturor vehiclulelor din lista
 
 STR_SHORT_DATE                                                  :{WHITE}{DATE_TINY}
 STR_SIGN_LIST_CAPTION                                           :{WHITE}Lista de semne - {COMMA} Semne
 
+STR_ORDER_REFIT_FAILED                                          :{WHITE}Comanda oprirea rearanjarilor esuate {STRING} {COMMA}
 
 ############ Lists rail types
 
@@ -2922,28 +3038,64 @@ STR_PURCHASE_INFO_WEIGHT_CWEIGHT                                :{BLACK}Greutate
 STR_PURCHASE_INFO_COST_SPEED                                    :{BLACK}Cost: {GOLD}{CURRENCY}{BLACK} Viteza: {GOLD}{VELOCITY}
 STR_PURCHASE_INFO_AIRCRAFT_CAPACITY                             :{BLACK}Capacitate: {GOLD}{COMMA} calatori, {COMMA} saci de posta
 STR_PURCHASE_INFO_PWAGPOWER_PWAGWEIGHT                          :{BLACK}Vagoane electrificate: {GOLD}+{POWER}{BLACK} Greutate: {GOLD}+{WEIGHT_S}
+STR_PURCHASE_INFO_REFITTABLE_TO                                 :{BLACK}Rearanjabil in: {GOLD}
+STR_PURCHASE_INFO_ALL_TYPES                                     :Toate tipurile de incarcaturi
+STR_PURCHASE_INFO_ALL_BUT                                       :Toate, cu exceptia {GOLD}
 
 ########### String for New Landscape Generator
 
 STR_GENERATE                                                    :{WHITE}Genereaza
+STR_RANDOM                                                      :{BLACK}Aleator
+STR_RANDOM_HELP                                                 :{BLACK}Modifica parametrul aleator folosit la Generarea lumii
+STR_WORLD_GENERATION_CAPTION                                    :{WHITE}Generare lume
+STR_RANDOM_SEED                                                 :{BLACK}Parametru aleator:
+STR_RANDOM_SEED_HELP                                            :{BLACK}Click pt introducerea unui parametru aleator
 STR_LAND_GENERATOR                                              :{BLACK}Generator de teren:
+STR_TREE_PLACER                                                 :{BLACK}Algoritm arbore:
 STR_HEIGHTMAP_ROTATION                                          :{BLACK}Rotatie harta inaltimi:
+STR_TERRAIN_TYPE                                                :{BLACK}Tip teren:
+STR_QUANTITY_OF_SEA_LAKES                                       :{BLACK}Nivelul marii:
+STR_SMOOTHNESS                                                  :{BLACK}Netezime:
+STR_SNOW_LINE_HEIGHT                                            :{BLACK}Inaltimea zapezii:
+STR_DATE                                                        :{BLACK}Data:
+STR_NUMBER_OF_TOWNS                                             :{BLACK}Nr. de orase:
+STR_NUMBER_OF_INDUSTRIES                                        :{BLACK}Nr. de industrii:
 STR_GENERATE_DATE                                               :{BLACK}{DATE_LONG}
+STR_SNOW_LINE_UP                                                :{BLACK}Muta linia zapezii cu un punct in sus
+STR_SNOW_LINE_DOWN                                              :{BLACK}Muta linia zapezii cu un punct in jos
+STR_SNOW_LINE_QUERY_CAPT                                        :{WHITE}Nu pot modifica inaltimea zapezii
+STR_START_DATE_QUERY_CAPT                                       :{WHITE}Modifica inceputul anului
 STR_HEIGHTMAP_SCALE_WARNING_CAPTION                             :{WHITE}Avertisment de scala
 STR_HEIGHTMAP_SCALE_WARNING_MESSAGE                             :{YELLOW}Redimensionarea excesiva a hartii nu este recomandata. Continui cu generarea?
+STR_SNOW_LINE_HEIGHT_NUM                                        :{NUM}
 STR_HEIGHTMAP_NAME                                              :{BLACK}Nume harta inaltimi:
 STR_HEIGHTMAP_SIZE                                              :{BLACK}Dimensiune: {ORANGE}{NUM} x {NUM}
 STR_GENERATION_WORLD                                            :{WHITE}Generez lumea...
 STR_GENERATION_ABORT                                            :{BLACK}Anuleaza
 STR_GENERATION_ABORT_CAPTION                                    :{WHITE}Anuleaza Generarea Lumii
 STR_GENERATION_ABORT_MESSAGE                                    :{YELLOW}Sigur doresti sa anulezi generarea?
+STR_PROGRESS                                                    :{WHITE}{NUM}% efectuat
 STR_GENERATION_PROGRESS                                         :{BLACK}{NUM} / {NUM}
+STR_WORLD_GENERATION                                            :{BLACK}Generare lume
+STR_TREE_GENERATION                                             :{BLACK}Generare arbori
+STR_UNMOVABLE_GENERATION                                        :{BLACK}Generare fixa
 STR_CLEARING_TILES                                              :{BLACK}Generare zona dura si pietroasa
+STR_SETTINGUP_GAME                                              :{BLACK}Fac setarile jocului
+STR_PREPARING_TILELOOP                                          :{BLACK}Initializez ciclul dalelor
+STR_PREPARING_GAME                                              :{BLACK}Pregatesc jocul
+STR_DIFFICULTY_TO_CUSTOM                                        :{WHITE}Aceasta actiune a modificat nivelul de difficultate la custom
+STR_SE_FLAT_WORLD                                               :{WHITE}Teren plat
+STR_SE_FLAT_WORLD_TIP                                           :{BLACK}Genereaza un teren plat
+STR_SE_RANDOM_LAND                                              :{WHITE}Teren aleator
+STR_SE_NEW_WORLD                                                :{BLACK}Creeaza o harta noua
+STR_SE_CAPTION                                                  :{WHITE}Tip harta
 STR_FLAT_WORLD_HEIGHT_DOWN                                      :{BLACK}Muta in jos, cu o unitate, inaltimea terenului plan
 STR_FLAT_WORLD_HEIGHT_UP                                        :{BLACK}Muta in sus, cu o unitate, inaltimea terenului plan
 STR_FLAT_WORLD_HEIGHT_QUERY_CAPT                                :{WHITE}Modifica inaltimea terenului plan
+STR_FLAT_WORLD_HEIGHT                                           :{BLACK}Inaltimea terenului plat:
 STR_FLAT_WORLD_HEIGHT_NUM                                       :{NUM}
 
+STR_SMALLMAP_CENTER                                             :{BLACK}Centreaza harta mica la pozitia actuala
 
 ########### String for new airports
 STR_SMALL_AIRPORT                                               :{BLACK}Mic
@@ -2963,5 +3115,9 @@ STR_HELIPORTS                                                   :{BLACK}Aeroport
 
 ############ Tooltip measurment
 
+STR_MEASURE_LENGTH                                              :{BLACK}Lungime: {NUM}
+STR_MEASURE_AREA                                                :{BLACK}Suprafata: {NUM} x {NUM}
+STR_MEASURE_LENGTH_HEIGHTDIFF                                   :{BLACK}Lungime: {NUM}{}Diferenta inaltime: {NUM} m
+STR_MEASURE_AREA_HEIGHTDIFF                                     :{BLACK}Suprafata: {NUM} x {NUM}{}Diferenta inaltime: {NUM} m
 
 ########

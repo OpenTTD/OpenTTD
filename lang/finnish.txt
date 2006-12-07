@@ -286,8 +286,10 @@ STR_013D_INFORMATION                                            :{BLACK}Tietoja
 STR_013E_CAPACITIES                                             :{BLACK}Kapasiteetit
 STR_013E_TOTAL_CARGO                                            :{BLACK}Rahtia yhteensä
 STR_013F_CAPACITY                                               :{BLACK}Kapaisteetti: {LTBLUE}{CARGO}
+STR_CAPACITY_MULT                                               :{BLACK}Kapasiteetti: {LTBLUE}{CARGO} (x{NUM})
 STR_013F_TOTAL_CAPACITY_TEXT                                    :{BLACK}Kokonaisrahtikapasiteetti:
 STR_013F_TOTAL_CAPACITY                                         :{LTBLUE}- {CARGO} ({SHORTCARGO})
+STR_TOTAL_CAPACITY_MULT                                         :{LTBLUE}- {CARGO} ({SHORTCARGO}) (x{NUM})
 STR_0140_NEW_GAME                                               :{BLACK}Uusi peli
 STR_0141_LOAD_GAME                                              :{BLACK}Lataa peli
 STR_SINGLE_PLAYER                                               :{BLACK}Yksinpeli
@@ -1010,6 +1012,7 @@ STR_CONFIG_PATCHES_FORBID_90_DEG                                :{LTBLUE}Junat j
 STR_CONFIG_PATCHES_JOINSTATIONS                                 :{LTBLUE}Yhdistä vierekkäiset rautatieasemat: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_FULLLOADANY                                  :{LTBLUE}Jätä asema, kun mikä tahansa rahti on täysi, jos 'täysi lastaus': {ORANGE}{STRING}
 STR_CONFIG_PATCHES_IMPROVEDLOAD                                 :{LTBLUE}Käytä kehittyneempää lastausalgoritmia: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_GRADUAL_LOADING                              :{LTBLUE}Lataa kulkuneuvot vähitellen: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_INFLATION                                    :{LTBLUE}Inflaatio: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_SELECTGOODS                                  :{LTBLUE}Kuljeta rahti asemalle vain, kun on kysyntää: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_LONGBRIDGES                                  :{LTBLUE}Erittäin pitkien siltojen rakentaminen: {ORANGE}{STRING}
@@ -1095,6 +1098,7 @@ STR_CONFIG_PATCHES_SERVINT_SHIPS                                :{LTBLUE}Oletush
 STR_CONFIG_PATCHES_SERVINT_SHIPS_DISABLED                       :{LTBLUE}Oletushuoltoväli laivoille: {ORANGE}pois päältä
 STR_CONFIG_PATCHES_NOSERVICE                                    :{LTBLUE}Huollot pois käytöstä, kun rikkoutumiset on pois: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_WAGONSPEEDLIMITS                             :{LTBLUE}Ota käyttöön vaunujen nopeusrajoitukset: {ORANGE}{STRING}
+STR_CONFIG_PATCHES_DISABLE_ELRAILS                              :{LTBLUE}Poista sähköradat käytöstä: {ORANGE}{STRING}
 
 STR_CONFIG_PATCHES_COLORED_NEWS_YEAR                            :{LTBLUE}Värjätyt uutiset: {ORANGE}{STRING}
 STR_CONFIG_PATCHES_STARTING_YEAR                                :{LTBLUE}Aloitusvuosi: {ORANGE}{STRING}
@@ -2497,16 +2501,20 @@ STR_INVALID_ORDER                                               :{RED} (virheell
 STR_UNKNOWN_DESTINATION                                         :tuntematon päämäärä
 STR_8812_EMPTY                                                  :{LTBLUE}Tyhjä
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} asemalta {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} asemalta {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Juna {COMMA} odottaa veturitallilla
 STR_8815_NEW_VEHICLES                                           :{BLACK}Uusia liikennevälineitä
 STR_8816                                                        :{BLACK}-
 STR_8819_TRAIN_TOO_LONG                                         :{WHITE}Juna on liian pitkä.
 STR_881A_TRAINS_CAN_ONLY_BE_ALTERED                             :{WHITE}Junia voi muunnella vain, kun ne ovat pysähdyksissä veturitallilla.
 STR_881B_TRAINS                                                 :{WHITE}{COMPANY} - {COMMA} junaa
+
 STR_881C_NEW_RAIL_VEHICLES                                      :{WHITE}Uusi juna
 STR_NEW_ELRAIL_VEHICLES                                         :{WHITE}Uusi sähköjuna
 STR_881D_NEW_MONORAIL_VEHICLES                                  :{WHITE}Uusi yksiraidejuna
 STR_881E_NEW_MAGLEV_VEHICLES                                    :{WHITE}Uusi MagLev-juna
+STR_ALL_AVAIL_RAIL_VEHICLES                                     :{WHITE}Ratakulkuneuvot
+
 STR_881F_BUILD_VEHICLE                                          :{BLACK}Rakenna yksikkö
 STR_CLONE_ROAD_VEHICLE                                          :{BLACK}Kloonaa ajoneuvo
 STR_CLONE_ROAD_VEHICLE_INFO                                     :{BLACK}Tämä rakentaa kopion ajoneuvosta. Control-click jakaa komennot
@@ -2861,6 +2869,7 @@ STR_PERFORMANCE_DETAIL_MONEY_TIP                                :{BLACK}Käteisv
 STR_PERFORMANCE_DETAIL_LOAN_TIP                                 :{BLACK}Tämän yhtiön ottaman lainan määrä
 STR_PERFORMANCE_DETAIL_TOTAL_TIP                                :{BLACK}Summa kaikista mahdollisista pisteistä.
 
+STR_NEWGRF_SETTINGS_BUTTON                                      :{BLACK}NewGRF-asetukset
 STR_NEWGRF_SETTINGS_CAPTION                                     :{WHITE}Newgrf-asetukset
 STR_NEWGRF_APPLY_CHANGES                                        :{BLACK}Ota käyttöön
 STR_NEWGRF_SET_PARAMETERS                                       :{BLACK}Aseta parametrit
@@ -2868,6 +2877,17 @@ STR_NEWGRF_TIP                                                  :{BLACK}Lista ka
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Yhtään Newgrf-tiedostoa ei ole asennettuna! Lue manuaalista ohjeet uusien grafiikoiden asentamiseksi.
 STR_NEWGRF_FILENAME                                             :{BLACK}Tiedostonimi: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5-summa: {SILVER}{STRING}
+
+STR_NEWGRF_ADD                                                  :{BLACK}Lisää
+STR_NEWGRF_ADD_TIP                                              :{BLACK}Lisää NewGRF-tiedosto listaan
+STR_NEWGRF_REMOVE                                               :{BLACK}Poista
+STR_NEWGRF_REMOVE_TIP                                           :{BLACK}Poista valittu NewGRF-tiedosto listalta
+STR_NEWGRF_MOVEUP                                               :{BLACK}Siirrä ylös
+STR_NEWGRF_MOVEDOWN                                             :{BLACK}Siirrä alas
+STR_NEWGRF_PARAMETER                                            :{BLACK}Parametrit: {SILVER}{STRING}
+
+
 
 STR_CURRENCY_WINDOW                                             :{WHITE}Oma valuutta
 STR_CURRENCY_EXCHANGE_RATE                                      :{LTBLUE}Vaihtokurssi: {ORANGE}{CURRENCY} = £ {COMMA}

@@ -393,7 +393,14 @@ STR_ENGINE_SORT_CARGO_CAPACITY                                  :Capacitat de c�
 STR_NO_WAITING_CARGO                                            :{BLACK}No hi ha carrega de aquest tipus esperant
 STR_SELECT_ALL_FACILITIES                                       :{BLACK}Seleccionar totes les instal·lacions
 STR_SELECT_ALL_TYPES                                            :{BLACK}Selecciona tots els tipus de càrrega (inloent carga sense espera)
+STR_AVAILABLE_ENGINES_TIP                                       :{BLACK}Veure una llista dels motors disponibles per aquest tipus de vehicle
+STR_MANAGE_LIST                                                 :{BLACK}Administrar llista
 STR_REPLACE_VEHICLES                                            :Substituir Vehicles
+STR_SEND_TRAIN_TO_DEPOT                                         :Enviar a la Cotxera
+STR_SEND_ROAD_VEHICLE_TO_DEPOT                                  :Enviar a la Cotxera
+STR_SEND_SHIP_TO_DEPOT                                          :Enviar a la Drassana
+STR_SEND_AIRCRAFT_TO_HANGAR                                     :Enviar a l'Hangar
+STR_SEND_FOR_SERVICING                                          :Enviar a fer Revisió
 
 ############ range for months starts
 STR_0162_JAN                                                    :Gen

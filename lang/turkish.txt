@@ -2499,6 +2499,7 @@ STR_INVALID_ORDER                                               :{RED} (Hatalı 
 STR_UNKNOWN_DESTINATION                                         :bilinmeyen hedef
 STR_8812_EMPTY                                                  :{LTBLUE}Boş
 STR_8813_FROM                                                   :{LTBLUE}{CARGO} - {STATION}
+STR_FROM_MULT                                                   :{LTBLUE}{CARGO} geldiği yer: {STATION} (x{NUM})
 STR_8814_TRAIN_IS_WAITING_IN_DEPOT                              :{WHITE}Tren {COMMA} garda bekliyor
 STR_8815_NEW_VEHICLES                                           :{BLACK}Yeni Araç
 STR_8816                                                        :{BLACK}-
@@ -2871,6 +2872,7 @@ STR_NEWGRF_TIP                                                  :{BLACK}Yükledi
 STR_NEWGRF_NO_FILES_INSTALLED                                   :{BLACK}Yüklenmiş newgrf dosyası yok! Newgrf yüklemek için kılavuza başvurun
 STR_NEWGRF_FILENAME                                             :{BLACK}Dosya adı: {SILVER}{STRING}
 STR_NEWGRF_GRF_ID                                               :{BLACK}GRF ID: {SILVER}{STRING}
+STR_NEWGRF_MD5SUM                                               :{BLACK}MD5sum: {SILVER}{STRING}
 
 STR_NEWGRF_ADD_TIP                                              :{BLACK}Listeye NewGRF dosyası ekle
 STR_NEWGRF_REMOVE                                               :{BLACK}Kaldır
