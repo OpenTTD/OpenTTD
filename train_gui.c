@@ -24,7 +24,7 @@
 #include "date.h"
 #include "strings.h"
 
-typedef enum BuildTrainWidgets {
+enum BuildTrainWidgets {
 	BUILD_TRAIN_WIDGET_CLOSEBOX = 0,
 	BUILD_TRAIN_WIDGET_CAPTION,
 	BUILD_TRAIN_WIDGET_SORT_ASCENDING_DESCENDING,
@@ -36,7 +36,7 @@ typedef enum BuildTrainWidgets {
 	BUILD_TRAIN_WIDGET_BUILD,
 	BUILD_TRAIN_WIDGET_RENAME,
 	BUILD_TRAIN_WIDGET_RESIZE,
-} BuildTrainWidget;
+};
 
 static const Widget _new_rail_vehicle_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,               STR_018B_CLOSE_WINDOW},

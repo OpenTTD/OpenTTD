@@ -559,7 +559,7 @@ static const WindowDesc _select_player_face_desc = {
 };
 
 /* Names of the widgets. Keep them in the same order as in the widget array */
-typedef enum PlayerCompanyWindowWidgets {
+enum PlayerCompanyWindowWidgets {
 	PCW_WIDGET_CLOSEBOX = 0,
 	PCW_WIDGET_CAPTION,
 	PCW_WIDGET_FACE,
@@ -572,7 +572,7 @@ typedef enum PlayerCompanyWindowWidgets {
 	PCW_WIDGET_BUY_SHARE,
 	PCW_WIDGET_SELL_SHARE,
 	PCW_WIDGET_COMPANY_PASSWORD,
-} PlayerCompanyWindowWidget;
+};
 
 static const Widget _player_company_widgets[] = {
 {   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                          STR_018B_CLOSE_WINDOW},

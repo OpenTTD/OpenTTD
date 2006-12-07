@@ -23,7 +23,7 @@
 #include "strings.h"
 
 
-typedef enum BuildVehicleWidgets {
+enum BuildVehicleWidgets {
 	BUILD_VEHICLE_WIDGET_CLOSEBOX = 0,
 	BUILD_VEHICLE_WIDGET_CAPTION,
 	BUILD_VEHICLE_WIDGET_SORT_ASSENDING_DESCENDING,
@@ -35,7 +35,7 @@ typedef enum BuildVehicleWidgets {
 	BUILD_VEHICLE_WIDGET_BUILD,
 	BUILD_VEHICLE_WIDGET_RENAME,
 	BUILD_VEHICLE_WIDGET_RESIZE,
-} BuildVehicleWidget;
+};
 
 static const Widget _build_vehicle_widgets[] = {
 	{   WWT_CLOSEBOX,   RESIZE_NONE,    14,     0,    10,     0,    13, STR_00C5,                STR_018B_CLOSE_WINDOW },
