@@ -1420,7 +1420,7 @@ static const Widget _vehicle_list_widgets[] = {
 	{     WWT_MATRIX,     RESIZE_RB,    14,     0,   247,    26,   169, 0x0,                  STR_NULL},
 	{  WWT_SCROLLBAR,    RESIZE_LRB,    14,   248,   259,    26,   169, 0x0,                  STR_0190_SCROLL_BAR_SCROLLS_LIST},
 	/* Widget to be shown for other players hiding the following 6 widgets */
-	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   259,   170,   181, 0x0,                  STR_NULL},
+	{      WWT_PANEL,    RESIZE_RTB,    14,     0,   247,   170,   181, 0x0,                  STR_NULL},
 
 	{ WWT_PUSHTXTBTN,     RESIZE_TB,    14,     0,   105,   170,   181, 0x0,                  STR_AVAILABLE_ENGINES_TIP},
 	{    WWT_TEXTBTN,     RESIZE_TB,    14,   106,   211,   170,   181, STR_MANAGE_LIST,      STR_SORT_CRITERIA_TIP},
