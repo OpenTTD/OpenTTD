@@ -19,6 +19,25 @@
 #include "date.h"
 #include "vehicle.h"
 
+enum StationListWidgets {
+	STATIONLIST_WIDGET_CLOSEBOX = 0,
+	STATIONLIST_WIDGET_LIST = 3,
+	STATIONLIST_WIDGET_TRAIN =6,
+	STATIONLIST_WIDGET_TRUCK,
+	STATIONLIST_WIDGET_BUS,
+	STATIONLIST_WIDGET_AIRPLANE,
+	STATIONLIST_WIDGET_SHIP,
+	STATIONLIST_WIDGET_CARGOSTART = 12,
+	STATIONLIST_WIDGET_CARGONONE = 24,
+	STATIONLIST_WIDGET_FACILALL = 26,
+	STATIONLIST_WIDGET_CARGOALL,
+	STATIONLIST_WIDGET_SORTBY,
+	STATIONLIST_WIDGET_SORTCRITERIA,
+	STATIONLIST_WIDGET_SORTDROPBTN,
+	CARGO_ALL_SELECTED = 0x1FFF,
+	CARGO_NONE_SELECTED = 0x1000,
+};
+
 typedef int CDECL StationSortListingTypeFunction(const void*, const void*);
 
 static StationSortListingTypeFunction StationNameSorter;
@@ -244,10 +263,29 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 {
 	const PlayerID owner = w->window_number;
 	static byte facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
-	static uint16 cargo_filter = 0x1FFF;
+	static uint16 cargo_filter = CARGO_ALL_SELECTED;
 	plstations_d *sl = &WP(w, plstations_d);
 
 	switch (e->event) {
+	case WE_CREATE: { /* set up resort timer */
+		int i;
+		for (i = 0; i < 5; i++) {
+			if (HASBIT(facilities, i)) LowerWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
+		}
+		for (i = 0; i < NUM_CARGO; i++) {
+			if (HASBIT(cargo_filter, i)) LowerWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
+		}
+		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGOALL, cargo_filter == CARGO_ALL_SELECTED);
+		SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGONONE, cargo_filter == CARGO_NONE_SELECTED);
+
+		sl->sort_list = NULL;
+		sl->flags = SL_REBUILD;
+		sl->sort_type = 0;
+		sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+		break;
+	}
+
 	case WE_PAINT: {
 		BuildStationsList(sl, owner, facilities, cargo_filter);
 		SortStationsList(sl);
@@ -265,7 +303,7 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 
 		{
 			int max;
-			int i;
+			int i, cg_ofst;
 			int x = 0, y = 0, xb = 2; // offset from top of widget
 			static const byte _cargo_legend_colors[NUM_CARGO] = {152, 32, 15, 174, 208, 194, 191, 84, 184, 10, 202, 215};
 
@@ -279,15 +317,21 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			y = 14;
 
 			for (i = 0; i < NUM_CARGO; i++) {
-				GfxFillRect(x + 1, y + 2, x + 11, y + 8, _cargo_legend_colors[i]);
-				DrawString(x + 3, y + 2, _cargoc.names_short[i], i == 11 ? 15 : 16);
+				cg_ofst = IsWindowWidgetLowered(w, i + STATIONLIST_WIDGET_CARGOSTART) ? 2 : 1;
+
+				GfxFillRect(x + cg_ofst, y + cg_ofst + 1, x + cg_ofst + 10 , y + cg_ofst + 7, _cargo_legend_colors[i]);
+				DrawString(x + cg_ofst + 2, y + cg_ofst + 1, _cargoc.names_short[i], i == 11 ? 15 : 16);
 				x += 14;
 			}
 
-			DrawString(x + 2, y + 2, STR_ABBREV_NONE, 16);
+			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_CARGONONE) ? 1 : 0;
+			DrawString(x + 2 + cg_ofst, y + 2 + cg_ofst, STR_ABBREV_NONE, 16);
 			x += 14;
-			DrawString(x + 2, y + 2, STR_ABBREV_ALL, 16);
-			DrawString(72, y + 2, STR_ABBREV_ALL, 16);
+			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_CARGOALL) ? 1 : 0;
+			DrawString(x + 2 + cg_ofst, y + 2 + cg_ofst, STR_ABBREV_ALL, 16);
+
+			cg_ofst = IsWindowWidgetLowered(w, STATIONLIST_WIDGET_FACILALL) ? 1 : 0;
+			DrawString(72 + cg_ofst, y + 2 + cg_ofst, STR_ABBREV_ALL, 16);
 
 			if (w->vscroll.count == 0) { // player has no stations
 				DrawString(xb, 40, STR_304A_NONE, 0);
@@ -322,9 +366,10 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			}
 		}
 	} break;
+
 	case WE_CLICK: {
 		switch (e->we.click.widget) {
-		case 3: {
+		case STATIONLIST_WIDGET_LIST: {
 			const Station* st;
 
 			uint32 id_v = (e->we.click.pt.y - 41) / 10;
@@ -341,77 +386,85 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 			break;
 		}
 
-		case 6: /* train */
-		case 7: /* truck */
-		case 8: /* bus */
-		case 9: /* airport */
-		case 10: /* dock */
+		case STATIONLIST_WIDGET_TRAIN:
+		case STATIONLIST_WIDGET_TRUCK:
+		case STATIONLIST_WIDGET_BUS:
+		case STATIONLIST_WIDGET_AIRPLANE:
+		case STATIONLIST_WIDGET_SHIP:
 			if (_ctrl_pressed) {
-				TOGGLEBIT(facilities, e->we.click.widget - 6);
+				TOGGLEBIT(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
 				ToggleWidgetLoweredState(w, e->we.click.widget);
 			} else {
 				int i;
 				for (i = 0; facilities != 0; i++, facilities >>= 1) {
-					if (HASBIT(facilities, 0)) RaiseWindowWidget(w, i + 6);
+					if (HASBIT(facilities, 0)) RaiseWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
 				}
-				SETBIT(facilities, e->we.click.widget - 6);
+				SETBIT(facilities, e->we.click.widget - STATIONLIST_WIDGET_TRAIN);
 				LowerWindowWidget(w, e->we.click.widget);
 			}
-			SetWindowWidgetLoweredState(w, 26, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
+			SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_FACILALL, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 		break;
-		case 26: {
+
+		case STATIONLIST_WIDGET_FACILALL: {
 			int i;
 			for (i = 0; i < 5; i++) {
-				LowerWindowWidget(w, i + 6);
+				LowerWindowWidget(w, i + STATIONLIST_WIDGET_TRAIN);
 			}
-			LowerWindowWidget(w, 26);
+			LowerWindowWidget(w, STATIONLIST_WIDGET_FACILALL);
 
 			facilities = FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK;
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 			break;
 		}
-		case 27: {
+		case STATIONLIST_WIDGET_CARGOALL: {
 			int i;
 			for (i = 0; i < NUM_CARGO; i++) {
-				LowerWindowWidget(w, i + 12);
+				LowerWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
 			}
-			LowerWindowWidget(w, 27);
+			RaiseWindowWidget(w, STATIONLIST_WIDGET_CARGONONE);
+			LowerWindowWidget(w, STATIONLIST_WIDGET_CARGOALL);
 
-			cargo_filter = 0x1FFF; /* select everything */
+			cargo_filter = CARGO_ALL_SELECTED;
 			sl->flags |= SL_REBUILD;
 			SetWindowDirty(w);
 			break;
 		}
-		case 28: /*flip sorting method asc/desc*/
+		case STATIONLIST_WIDGET_SORTBY: /*flip sorting method asc/desc*/
 			TOGGLEBIT(sl->flags, 0); //DESC-flag
 			sl->flags |= SL_RESORT;
+			w->flags4 |= 5 << WF_TIMEOUT_SHL;
+			LowerWindowWidget(w, STATIONLIST_WIDGET_SORTBY);
 			SetWindowDirty(w);
 		break;
-		case 29: case 30: /* select sorting criteria dropdown menu */
-			ShowDropDownMenu(w, _station_sort_listing, sl->sort_type, 30, 0, 0);
+
+		case STATIONLIST_WIDGET_SORTCRITERIA:
+		case STATIONLIST_WIDGET_SORTDROPBTN: /* select sorting criteria dropdown menu */
+			ShowDropDownMenu(w, _station_sort_listing, sl->sort_type, STATIONLIST_WIDGET_SORTDROPBTN, 0, 0);
 		break;
+
 		default:
-			if (e->we.click.widget >= 12 && e->we.click.widget <= 24) { //change cargo_filter
+			if (e->we.click.widget >= STATIONLIST_WIDGET_CARGOSTART && e->we.click.widget <= STATIONLIST_WIDGET_CARGONONE) { //change cargo_filter
 				if (_ctrl_pressed) {
-					TOGGLEBIT(cargo_filter, e->we.click.widget - 12);
+					TOGGLEBIT(cargo_filter, e->we.click.widget - STATIONLIST_WIDGET_CARGOSTART);
 					ToggleWidgetLoweredState(w, e->we.click.widget);
 				} else {
 					int i;
 					for (i = 0; cargo_filter != 0; i++, cargo_filter >>= 1) {
-						if (HASBIT(cargo_filter, 0)) RaiseWindowWidget(w, i + 12);
+						if (HASBIT(cargo_filter, 0)) RaiseWindowWidget(w, i + STATIONLIST_WIDGET_CARGOSTART);
 					}
-					SETBIT(cargo_filter, e->we.click.widget - 12);
+					SETBIT(cargo_filter, e->we.click.widget - STATIONLIST_WIDGET_CARGOSTART);
 					LowerWindowWidget(w, e->we.click.widget);
 				}
 				sl->flags |= SL_REBUILD;
-				SetWindowWidgetLoweredState(w, 27, cargo_filter == 0x1FFF);
+				SetWindowWidgetLoweredState(w, STATIONLIST_WIDGET_CARGOALL, cargo_filter == CARGO_ALL_SELECTED);
 				SetWindowDirty(w);
 			}
 		}
 	} break;
+
 	case WE_DROPDOWN_SELECT: /* we have selected a dropdown item in the list */
 		if (sl->sort_type != e->we.dropdown.index) {
 			// value has changed -> resort
@@ -430,22 +483,10 @@ static void PlayerStationsWndProc(Window *w, WindowEvent *e)
 		}
 		break;
 
-	case WE_CREATE: { /* set up resort timer */
-		int i;
-		for (i = 0; i < 5; i++) {
-			if (HASBIT(facilities, i)) LowerWindowWidget(w, i + 6);
-		}
-		for (i = 0; i < NUM_CARGO; i++) {
-			if (HASBIT(cargo_filter, i)) LowerWindowWidget(w, i + 12);
-		}
-		SetWindowWidgetLoweredState(w, 26, facilities == (FACIL_TRAIN | FACIL_TRUCK_STOP | FACIL_BUS_STOP | FACIL_AIRPORT | FACIL_DOCK));
-		SetWindowWidgetLoweredState(w, 27, cargo_filter == 0x1FFF);
-		sl->sort_list = NULL;
-		sl->flags = SL_REBUILD;
-		sl->sort_type = 0;
-		sl->resort_timer = DAY_TICKS * PERIODIC_RESORT_DAYS;
+	case WE_TIMEOUT:
+		RaiseWindowWidget(w, STATIONLIST_WIDGET_SORTBY);
+		SetWindowDirty(w);
 		break;
-	}
 
 	case WE_RESIZE:
 		w->vscroll.cap += e->we.sizing.diff.y / 10;
@@ -488,7 +529,7 @@ static const Widget _player_stations_widgets[] = {
 {      WWT_PANEL,   RESIZE_NONE,    14,   271,   284,    14,    24, 0x0,               STR_SELECT_ALL_TYPES},
 
 //28
-{ WWT_PUSHTXTBTN,   RESIZE_NONE,    14,     0,    80,    25,    36, STR_SORT_BY,       STR_SORT_ORDER_TIP},
+{    WWT_TEXTBTN,   RESIZE_NONE,    14,     0,    80,    25,    36, STR_SORT_BY,       STR_SORT_ORDER_TIP},
 {      WWT_PANEL,   RESIZE_NONE,    14,    81,   232,    25,    36, 0x0,               STR_SORT_CRITERIA_TIP},
 {    WWT_TEXTBTN,   RESIZE_NONE,    14,   233,   243,    25,    36, STR_0225,          STR_SORT_CRITERIA_TIP},
 {      WWT_PANEL,  RESIZE_RIGHT,    14,   244,   357,    25,    36, 0x0,               STR_NULL},
@@ -498,7 +539,7 @@ static const Widget _player_stations_widgets[] = {
 static const WindowDesc _player_stations_desc = {
 	WDP_AUTO, WDP_AUTO, 358, 162,
 	WC_STATION_LIST,0,
-	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_UNCLICK_BUTTONS | WDF_STICKY_BUTTON | WDF_RESIZABLE,
+	WDF_STD_TOOLTIPS | WDF_STD_BTN | WDF_DEF_WIDGET | WDF_STICKY_BUTTON | WDF_RESIZABLE,
 	_player_stations_widgets,
 	PlayerStationsWndProc
 };
