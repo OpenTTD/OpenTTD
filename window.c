@@ -132,6 +132,7 @@ static void DispatchLeftClickEvent(Window *w, int x, int y)
 
 		if (w->desc_flags & WDF_RESIZABLE && wi->type == WWT_RESIZEBOX) {
 			StartWindowSizing(w);
+			InvalidateWidget(w, e.we.click.widget);
 			return;
 		}
 
