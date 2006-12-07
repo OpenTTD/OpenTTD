@@ -400,7 +400,9 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 	resistance += incl;
 	resistance *= 4; //[N]
 
-	if (speed > 0) {
+	/* Due to the mph to m/s conversion below, at speeds below 3 mph the force is
+	 * actually double the train's power */
+	if (speed > 2) {
 		switch (v->u.rail.railtype) {
 			case RAILTYPE_RAIL:
 			case RAILTYPE_ELECTRIC:
@@ -416,7 +418,7 @@ static int GetTrainAcceleration(Vehicle *v, bool mode)
 		}
 	} else {
 		//"kickoff" acceleration
-		force = (mass * 8) + resistance;
+		force = max(power, (mass * 8) + resistance);
 	}
 
 	if (force <= 0) force = 10000;
