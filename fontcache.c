@@ -241,7 +241,7 @@ static void LoadFreeTypeFont(const char *font_name, FT_Face *face, const char *t
 	if (error != FT_Err_Ok) error = GetFontByFaceName(font_name, face);
 
 	if (error == FT_Err_Ok) {
-		DEBUG(freetype, 2) ("Requested font '%s', found '%s %s'", font_name, (*face)->family_name, (*face)->style_name);
+		DEBUG(freetype, 2) ("[FreeType] Requested '%s', using '%s %s'", font_name, (*face)->family_name, (*face)->style_name);
 
 		/* Attempt to select the unicode character map */
 		error = FT_Select_Charmap(*face, ft_encoding_unicode);
